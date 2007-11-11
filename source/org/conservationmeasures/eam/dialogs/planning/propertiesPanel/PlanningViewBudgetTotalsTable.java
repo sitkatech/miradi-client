@@ -18,10 +18,10 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	public PlanningViewBudgetTotalsTable(TableModel model)
 	{
 		super(model);
-		setBackground(getColumnBackGroundColor(0, 0));
+		setBackground(getColumnBackGroundColor(0));
 	}
 
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 	}

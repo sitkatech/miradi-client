@@ -17,10 +17,10 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
-		setBackground(getColumnBackGroundColor(0, 0));
+		setBackground(getColumnBackGroundColor(0));
 	}
 
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;
 	}

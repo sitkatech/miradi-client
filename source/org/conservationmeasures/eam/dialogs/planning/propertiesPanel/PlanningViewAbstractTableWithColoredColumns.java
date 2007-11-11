@@ -32,7 +32,7 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		for (int col = 0; col < columnCount; ++col)
 		{	
 			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this, getColumnAlignment(), getColumnBackGroundColor(columnCount, col)));
+			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this, getColumnAlignment(), getColumnBackGroundColor(col)));
 		}
 	}
 	
@@ -41,7 +41,7 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		return getColumnHeaderWidth(column);
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int modelColumn)
+	public Color getColumnBackGroundColor(int tableColumn)
 	{
 		return getBackground();
 	}

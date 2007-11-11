@@ -20,11 +20,11 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
 		super(modelToUse);
-		setBackground(getColumnBackGroundColor(0, 0));	
+		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 	}

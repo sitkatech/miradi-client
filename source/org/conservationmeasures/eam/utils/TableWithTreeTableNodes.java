@@ -8,9 +8,11 @@ package org.conservationmeasures.eam.utils;
 import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewFullSizeTable;
+import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.objects.BaseObject;
 
-abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable implements TreeNodeForRowProvider
+abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable implements TreeNodeForRowProvider, RowBaseObjectProvider
 {
 	public TableWithTreeTableNodes(PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
 	{
@@ -22,6 +24,11 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 		return getSyncedModel().getNodeForRow(row);
 	}
 	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getNodeForRow(row).getObject();
+	}
+
 	PlanningViewAbstractTreeTableSyncedTableModel getSyncedModel()
 	{
 		return (PlanningViewAbstractTreeTableSyncedTableModel)getModel();

@@ -43,12 +43,12 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		super(modelToUse);
 		model = modelToUse;
 		
-		setBackground(getColumnBackGroundColor(0, 0));
+		setBackground(getColumnBackGroundColor(0));
 		selectionListeners = new Vector();
 		rebuildColumnEditorsAndRenderers();
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 	}
