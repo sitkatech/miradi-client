@@ -15,8 +15,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.TreeNodeForRowProvider;
-import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithColor;
+import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.objects.Goal;
@@ -25,22 +24,27 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 
-class MeasurementValueRenderer extends TableCellRendererWithColor
+class MeasurementValueRenderer extends TableCellRendererForObjects
 {
-	public MeasurementValueRenderer(TreeNodeForRowProvider providerToUse)
+	public MeasurementValueRenderer(TargetViabilityTreeTable providerToUse)
 	{
 		super(providerToUse);
+		question = new StatusQuestion(columnTag);
+	}
+	
+	public void setColumnTag(String columnTagToUse)
+	{
+		columnTag = columnTagToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String columnTag = nodeProvider.getColumnTag(tableColumn);
-		Color color = getBackgroundColor(columnTag);
+		Color color = getBackground();
 		renderer.setIcon(null);
 		if(value != null && !value.equals(""))
 		{
-			ChoiceItem choice = new StatusQuestion("").findChoiceByCode(columnTag);
+			ChoiceItem choice = question.findChoiceByCode(columnTag);
 			color = choice.getColor();
 			renderer.setIcon(getCellIcon(row, choice));
 		}
@@ -53,7 +57,8 @@ class MeasurementValueRenderer extends TableCellRendererWithColor
 
 	public Icon getCellIcon(int row, ChoiceItem choice)
 	{
-		TreeTableNode node = nodeProvider.getNodeForRow(row);
+		TargetViabilityTreeTable treeTable = (TargetViabilityTreeTable)getObjectProvider();
+		TreeTableNode node = treeTable.getNodeForRow(row);
 		if (node.getType() == Goal.getObjectType())
 			return new GoalIcon();
 		
@@ -72,4 +77,6 @@ class MeasurementValueRenderer extends TableCellRendererWithColor
 		return findChoiceByCode.getIcon();
 	}
 
+	private String columnTag;
+	private StatusQuestion question;
 }

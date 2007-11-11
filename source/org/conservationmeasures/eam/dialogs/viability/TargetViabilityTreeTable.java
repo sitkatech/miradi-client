@@ -60,7 +60,10 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		boolean isFutureStatusNode = node.getType() == Goal.getObjectType() && node.getObject().getType() == Indicator.getObjectType();
 		boolean isValueColumn = getViabilityModel().isValueColumn(columnTag);
 		if((isMeasurementNode || isIndicatorNode || isFutureStatusNode) && isValueColumn)
+		{
+			measurementValueRenderer.setColumnTag(columnTag);
 			return measurementValueRenderer;
+		}
 		
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
@@ -90,7 +93,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
-	private TableCellRenderer measurementValueRenderer;
+	private MeasurementValueRenderer measurementValueRenderer;
 	private BasicTableCellRenderer otherRenderer;
 	private ChoiceItemTableCellRenderer statusQuestionRenderer;
 }
