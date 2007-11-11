@@ -23,12 +23,12 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 {
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
-		super(model);	
+		super(model);
+		renderer = new NumericTableCellRenderer(this);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
 	{
-		BasicTableCellRenderer renderer = new NumericTableCellRenderer(this);
 		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
 		return renderer;	
 	}
@@ -65,5 +65,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 		return UNIQUE_IDENTIFIER;
 	}
 	
+	private BasicTableCellRenderer renderer;
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetAnnualTotalsTable";
 }
