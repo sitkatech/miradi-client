@@ -28,7 +28,7 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 		return getNodeForRow(row).getObject();
 	}
 
-	PlanningViewAbstractTreeTableSyncedTableModel getSyncedModel()
+	protected PlanningViewAbstractTreeTableSyncedTableModel getSyncedModel()
 	{
 		return (PlanningViewAbstractTreeTableSyncedTableModel)getModel();
 	}

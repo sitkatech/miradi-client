@@ -24,7 +24,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model)
 	{
 		super(model);
-		renderer = new PossiblyAllocatedNumericTableCellRenderer(model);
+		renderer = new PossiblyAllocatedNumericTableCellRenderer(model, getSyncedModel().getTreeTableModelAdapter());
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
