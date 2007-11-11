@@ -23,6 +23,7 @@ import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -51,8 +52,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.java.sun.jtreetable.TreeTableModel;
+import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
+public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, RowBaseObjectProvider
 {
 	public TreeTableWithIcons(Project projectToUse, GenericTreeTableModel treeTableModelToUse)
 	{
@@ -400,6 +402,21 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		return getTreeTableModel().getColumnTag(modelColumn);
+	}
+	
+	public TreeTableModelAdapter getTreeTableAdapter()
+	{
+		return (TreeTableModelAdapter)getModel();
+	}
+	
+	public TreeTableNode getNodeForRow(int row)
+	{
+		return (TreeTableNode)getTreeTableAdapter().nodeForRow(row);
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getNodeForRow(row).getObject();
 	}
 
 	private GenericTreeTableModel treeTableModel;

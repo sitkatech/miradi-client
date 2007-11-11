@@ -13,7 +13,7 @@ import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedNumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -62,7 +62,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	private BasicTableCellRenderer createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new NumericTableCellRenderer(this);
+			return new PossiblyAllocatedNumericTableCellRenderer(this, getTreeTableAdapter());
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRenderer(this);
 		return new TableCellRendererForObjects(this);

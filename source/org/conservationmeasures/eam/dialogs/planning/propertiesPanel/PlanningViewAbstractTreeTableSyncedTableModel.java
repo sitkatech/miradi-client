@@ -42,6 +42,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Abst
 	{
 		return getNodeForRow(row).getObject();
 	}
+	
+	public TreeTableModelAdapter getTreeTableModelAdapter()
+	{
+		return adapter;
+	}
 
 	protected Project project;
 	private TreeTableModelAdapter adapter;

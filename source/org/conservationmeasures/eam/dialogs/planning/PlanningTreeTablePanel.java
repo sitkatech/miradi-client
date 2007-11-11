@@ -96,7 +96,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 
 	private void createRightSideTables(PlanningTreeTable treeTableToUse) throws Exception
 	{
-		TreeTableModelAdapter treeTableModelAdapter = (TreeTableModelAdapter)treeTableToUse.getModel();
+		TreeTableModelAdapter treeTableModelAdapter = treeTableToUse.getTreeTableAdapter();
 		
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);

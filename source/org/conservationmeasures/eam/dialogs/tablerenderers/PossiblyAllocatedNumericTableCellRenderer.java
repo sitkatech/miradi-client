@@ -11,18 +11,20 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.icons.AllocatedCostIcon;
 import org.conservationmeasures.eam.objects.Task;
 
+import com.java.sun.jtreetable.TreeTableModelAdapter;
+
 public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellRenderer
 {
-	public PossiblyAllocatedNumericTableCellRenderer(PlanningViewAbstractTreeTableSyncedTableModel providerToUse)
+	public PossiblyAllocatedNumericTableCellRenderer(RowBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse)
 	{
 		super(providerToUse);
 		allocatedIcon = new AllocatedCostIcon();
+		adapter = adapterToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -53,9 +55,9 @@ public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellR
 	
 	protected TreeTableNode getNodeForRow(int row)
 	{
-		PlanningViewAbstractTreeTableSyncedTableModel model = (PlanningViewAbstractTreeTableSyncedTableModel)getObjectProvider();
-		return model.getNodeForRow(row);
+		return (TreeTableNode)adapter.nodeForRow(row);
 	}
 	
+	TreeTableModelAdapter adapter;
 	Icon allocatedIcon;
 }
