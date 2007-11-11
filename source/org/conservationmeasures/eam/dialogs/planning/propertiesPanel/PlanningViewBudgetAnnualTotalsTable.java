@@ -11,8 +11,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.PossiblyAllocatedNumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedNumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.main.AppPreferences;

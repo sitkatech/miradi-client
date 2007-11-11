@@ -11,8 +11,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 
 public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize

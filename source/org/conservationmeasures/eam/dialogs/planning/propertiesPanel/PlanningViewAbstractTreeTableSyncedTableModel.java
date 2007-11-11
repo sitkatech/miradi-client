@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import javax.swing.table.AbstractTableModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;

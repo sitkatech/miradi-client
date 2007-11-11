@@ -10,9 +10,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.objects.BaseObject;

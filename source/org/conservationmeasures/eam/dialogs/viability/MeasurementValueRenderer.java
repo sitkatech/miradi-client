@@ -15,7 +15,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererForObjects;
+import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.objects.Goal;

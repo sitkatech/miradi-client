@@ -11,11 +11,11 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
-import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.ChoiceItemTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.treetables.RowBaseObjectProvider;
-import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererForObjects;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objects.BaseObject;
