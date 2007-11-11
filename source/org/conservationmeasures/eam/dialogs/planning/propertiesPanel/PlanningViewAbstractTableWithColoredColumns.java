@@ -8,12 +8,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.dialogs.treetables.TableCellRendererWithCustomAlignedFontText;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
@@ -23,24 +20,8 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setTableColumnRenderer();
 	}
 		
-	private void setTableColumnRenderer()
-	{
-		int columnCount = getColumnModel().getColumnCount();
-		for (int col = 0; col < columnCount; ++col)
-		{	
-			TableColumn tableColumn = getColumnModel().getColumn(col);
-			tableColumn.setCellRenderer(new TableCellRendererWithCustomAlignedFontText(this, getColumnAlignment(), getColumnBackGroundColor(col)));
-		}
-	}
-	
-	protected int getColumnWidth(int column)
-	{
-		return getColumnHeaderWidth(column);
-	}
-	
 	public Color getColumnBackGroundColor(int tableColumn)
 	{
 		return getBackground();
@@ -51,8 +32,4 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends TableW
 		return TreeTableWithIcons.Renderer.getPlainFont();
 	}
 	
-	public int getColumnAlignment()
-	{
-		return JLabel.LEFT;
-	}
 }
