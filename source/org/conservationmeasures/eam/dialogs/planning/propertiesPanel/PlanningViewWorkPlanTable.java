@@ -8,9 +8,12 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
+import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
@@ -22,6 +25,13 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 		super(modelToUse);
 		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
+		renderer = new NumericTableCellRenderer(modelToUse);
+	}
+	
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
+		return renderer;	
 	}
 	
 	public Color getColumnBackGroundColor(int column)
@@ -56,4 +66,6 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewWorkPlanTable";
+
+	private BasicTableCellRenderer renderer;
 }
