@@ -17,7 +17,7 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 		super(model);	
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return FactorRenderer.ANNOTATIONS_COLOR;
 	}

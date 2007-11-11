@@ -11,7 +11,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
-import org.conservationmeasures.eam.dialogs.treetables.AstrickRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.treetables.NumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -27,7 +28,9 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
 	{
-		return new AstrickRenderer(this, getColumnBackGroundColor(getColumnCount(), column));	
+		BasicTableCellRenderer renderer = new NumericTableCellRenderer(this);
+		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
+		return renderer;	
 	}
 	
 	protected int getColumnWidth(int column)
@@ -35,10 +38,11 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 		return 125;
 	}	
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int tableColumn)
 	{
+		int columnCount = getColumnCount();
 		final int TOTALS_COLUMN = columnCount - 1;
-		if (column == TOTALS_COLUMN)
+		if (convertColumnIndexToModel(tableColumn) == TOTALS_COLUMN)
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 		
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;

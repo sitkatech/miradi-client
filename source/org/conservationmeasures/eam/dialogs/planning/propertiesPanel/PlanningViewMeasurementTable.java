@@ -17,7 +17,7 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 		super(model);	
 	}
 	
-	public Color getColumnBackGroundColor(int columnCount, int column)
+	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.MEASUREMENT_COLOR_BACKGROUND;
 	}
