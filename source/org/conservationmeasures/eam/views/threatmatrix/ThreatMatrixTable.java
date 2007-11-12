@@ -225,7 +225,7 @@ public class ThreatMatrixTable extends PanelTable
 			FactorId targetId = model.getTargetId(modelColumn);
 			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
 
-			if (!userConfirmsLinkDeletion())
+			if (!userConfirmsLinkDeletion(model.getThreatName(row), model.getTargetName(modelColumn)))
 				return;
 			
 			try
@@ -251,10 +251,12 @@ public class ThreatMatrixTable extends PanelTable
 			}
 		}
 		
-		private boolean userConfirmsLinkDeletion()
+		private boolean userConfirmsLinkDeletion(String threatName, String targetName)
 		{
-			String[] body = new String[] {EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
-	  												" and Results Chains, not just this one. ")};	
+			String text = EAM.text("This link will be deleted from any Conceptual Model pages" +
+				  					" and Results Chains that it appears on: ");
+			String threatAndTarget = "      " + threatName + " -> " + targetName;
+			String[] body = new String[] {text, threatAndTarget,};	
 			
 			String[] buttons = new String[] {EAM.text("Delete Link"), EAM.text("Cancel")};
 			return EAM.confirmDialog(EAM.text("Delete a link?"), body, buttons);
