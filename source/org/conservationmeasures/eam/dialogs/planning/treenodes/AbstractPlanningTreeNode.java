@@ -140,10 +140,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			if(diff != 0)
 				return diff;
 			
-			ORef refA = nodeA.getObjectReference();
-			ORef refB = nodeB.getObjectReference();
-			String labelA = project.findObject(refA).toString();
-			String labelB = project.findObject(refB).toString();
+			String labelA = nodeA.toString();
+			String labelB = nodeB.toString();
 			return labelA.compareTo(labelB);
 		}
 		
