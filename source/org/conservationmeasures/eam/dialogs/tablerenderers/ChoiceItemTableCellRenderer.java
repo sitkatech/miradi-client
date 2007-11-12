@@ -26,7 +26,8 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		ChoiceItem choice = getChoiceItem(value);
-		renderer.setBackground(choice.getColor());
+		if(!isSelected)
+			renderer.setBackground(choice.getColor());
 		renderer.setText(choice.getLabel());
 		return renderer;
 	}
