@@ -255,6 +255,14 @@ public class Indicator extends BaseObject
 		}
 		return list;
 	}
+	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getMethods());
+		
+		return deepObjectRefsToCopy;
+	}
 
 	public String getShortLabel()
 	{

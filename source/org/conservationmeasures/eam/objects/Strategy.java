@@ -199,6 +199,14 @@ public class Strategy extends Factor
 		return combineShortLabelAndLabel(shortLabel.toString(), label.toString());
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getActivities());
+		
+		return deepObjectRefsToCopy;
+	}
+	
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
