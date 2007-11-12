@@ -80,11 +80,8 @@ public class ProjectResource extends BaseObject
 
 	public String toString()
 	{
-		if(name.get().length() > 0)
-			return name.get();
-		
-		return EAM.text("Label|(Undefined Resource Name)");
-	}
+		return getWho();
+}
 	
 	public String getWho()
 	{
