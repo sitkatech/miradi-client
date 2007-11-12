@@ -29,6 +29,11 @@ abstract public class PanelTreeTable extends JTreeTable
 		setFont(getMainWindow().getUserDataPanelFont());
 		setRowHeight(getFontMetrics(getFont()).getHeight());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
+		
+		// NOTE: Without this, each node's size is fixed based on the initial text,
+		// so if you later change the value to be longer, you'll get ... (ellipsis)
+		// and the text will be truncated. With it, it "just works"
+		getTree().setLargeModel(true);
 	}
 	
 	public void rebuildTableCompletely()
