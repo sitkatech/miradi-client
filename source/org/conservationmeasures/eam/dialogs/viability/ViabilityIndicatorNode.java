@@ -64,10 +64,10 @@ public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
-		String data = getObject().getData(tag);
-		if (tag.equals(Measurement.TAG_STATUS))
-			return new StatusQuestion(tag).findChoiceByCode(data);
+		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
+			return new StatusQuestion(tag).findChoiceByCode(getObject().getPseudoData(tag));
 		
+		String data = getObject().getData(tag);
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
 		
@@ -103,7 +103,7 @@ public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
 		Indicator.TAG_EMPTY,
-		Measurement.TAG_STATUS, 
+		Indicator.PSEUDO_TAG_STATUS_VALUE, 
 		Indicator.TAG_EMPTY,
 		
 		Indicator.TAG_INDICATOR_THRESHOLD,
