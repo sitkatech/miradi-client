@@ -35,14 +35,14 @@ public class ObjectDeepCopier
 		if (objectToDeepCopy == null)
 			return;
 		
-		ORefList ownedObjects = objectToDeepCopy.getAllOwnedObjects();		
+		ORefList objectsToDeepCopy = objectToDeepCopy.getAllObjectsToDeepCopy();		
 		EnhancedJsonObject json = getJsonWithType(objectToDeepCopy);
 		allOwnedObjects.add(json.toString());
-		for (int i = 0; i < ownedObjects.size(); ++i)
+		for (int i = 0; i < objectsToDeepCopy.size(); ++i)
 		{
-			ORef objectRef = ownedObjects.get(i);
-			BaseObject ownedObject = project.findObject(objectRef);
-			recursivelyCreateDeepCopy(ownedObject);
+			ORef objectRef = objectsToDeepCopy.get(i);
+			BaseObject thisObjectToDeepCopy = project.findObject(objectRef);
+			recursivelyCreateDeepCopy(thisObjectToDeepCopy);
 		}
 	}
 
