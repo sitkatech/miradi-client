@@ -655,6 +655,11 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		return getAllOwnedObjects();
+	}
+	
 	public ORefList getAllOwnedObjects()
 	{
 		ORefList allOwnedObjects = new ORefList();
