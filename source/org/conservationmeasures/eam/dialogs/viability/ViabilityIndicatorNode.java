@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
@@ -89,15 +90,16 @@ public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 	public void rebuild() throws Exception
 	{
 		ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector measurementsAndFutureStartus = new Vector();
+		Vector measurementAndFutureStatusObjects = new Vector();
 		for (int i = 0; i < measurementRefs.size(); ++i)
 		{
 			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
-			measurementsAndFutureStartus.add(new KeyEcologicalAttributeMeasurementNode(this, measurement));
+			measurementAndFutureStatusObjects.add(new KeyEcologicalAttributeMeasurementNode(this, measurement));
 		}
-		
-		measurementsAndFutureStartus.add(new KeyEcologicalAttributeFutureStatusNode(this));
-		measurements = (TreeTableNode[]) measurementsAndFutureStartus.toArray(new TreeTableNode[0]); 
+
+		Collections.sort(measurementAndFutureStatusObjects);		
+		measurementAndFutureStatusObjects.add(new KeyEcologicalAttributeFutureStatusNode(this));
+		measurements = (TreeTableNode[]) measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
 	}
 	
 	public static final String[] COLUMN_TAGS = {

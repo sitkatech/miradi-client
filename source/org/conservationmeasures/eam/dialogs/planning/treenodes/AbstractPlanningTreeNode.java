@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -130,7 +129,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return true;
 	}
 
-	class NodeSorter implements Comparator<AbstractPlanningTreeNode>
+	public class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 	{
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
@@ -143,8 +142,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			ORef refA = nodeA.getObjectReference();
 			ORef refB = nodeB.getObjectReference();
-			String labelA = project.getObjectData(refA, BaseObject.TAG_LABEL);
-			String labelB = project.getObjectData(refB, BaseObject.TAG_LABEL);
+			String labelA = project.findObject(refA).toString();
+			String labelB = project.findObject(refB).toString();
 			return labelA.compareTo(labelB);
 		}
 		
@@ -223,7 +222,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		children.add(createChildNode(refToAdd, diagram));
 	}
 
-	private AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
+	protected AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
 	{
 		int type = refToAdd.getObjectType();
 		if(type == ConceptualModelDiagram.getObjectType())
