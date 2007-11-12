@@ -42,8 +42,8 @@ public abstract class TreeTableNode implements Comparable
 		return false;
 	}
 	
-	public int compareTo(Object o)
+	public int compareTo(Object otherObject)
 	{
-		return -1;
+		return toString().compareTo(otherObject.toString());
 	}
 }
