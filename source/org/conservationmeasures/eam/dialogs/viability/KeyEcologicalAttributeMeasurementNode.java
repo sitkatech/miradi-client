@@ -82,6 +82,11 @@ public class KeyEcologicalAttributeMeasurementNode extends ViabilityTreeTableNod
 	public void rebuild() throws Exception
 	{
 	}
+	
+	public int compareTo(Object otherObject)
+	{
+		return toString().compareTo(otherObject.toString());
+	}
 
 	public static final String POOR = StatusQuestion.POOR;
 	public static final String FAIR = StatusQuestion.FAIR;

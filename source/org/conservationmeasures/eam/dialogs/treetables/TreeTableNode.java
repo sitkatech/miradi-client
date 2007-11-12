@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.treetables;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 
-public abstract class TreeTableNode
+public abstract class TreeTableNode implements Comparable
 {
 	abstract public ORef getObjectReference();
 	public abstract String toString();
@@ -40,5 +40,10 @@ public abstract class TreeTableNode
 	public boolean isAlwaysExpanded()
 	{
 		return false;
+	}
+	
+	public int compareTo(Object o)
+	{
+		return -1;
 	}
 }
