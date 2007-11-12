@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedNumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
@@ -26,9 +27,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowBaseObjectProvider
 {
-	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse)
+	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
+		fontProvider = fontProviderToUse;
 		setTableColumnRenderer();
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
@@ -62,10 +64,10 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	private BasicTableCellRenderer createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new PossiblyAllocatedNumericTableCellRenderer(this, getTreeTableAdapter());
+			return new PossiblyAllocatedNumericTableCellRenderer(this, getTreeTableAdapter(), fontProvider);
 		if(isQuestionColumn(columnTag))
-			return new ChoiceItemTableCellRenderer(this);
-		return new TableCellRendererForObjects(this);
+			return new ChoiceItemTableCellRenderer(this, fontProvider);
+		return new TableCellRendererForObjects(this, fontProvider);
 	}
 	
 	protected Color getBackgroundColor(String columnTag)
@@ -111,4 +113,5 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 
 	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 
+	private FontForObjectTypeProvider fontProvider;
 }

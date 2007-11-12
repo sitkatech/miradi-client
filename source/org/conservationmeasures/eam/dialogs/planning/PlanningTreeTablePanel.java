@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewFutureStatusTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
+import org.conservationmeasures.eam.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTablePanel;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
@@ -62,7 +63,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
 		PlanningTreeModel model = new PlanningTreeModel(mainWindowToUse.getProject());
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model, new PlanningViewFontProvider());	
 		
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
@@ -71,6 +72,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		
+		fontProvider = new PlanningViewFontProvider();
 		
 		mainPanel = new JPanel(new BasicGridLayout(1, 4));
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
@@ -99,15 +102,15 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		TreeTableModelAdapter treeTableModelAdapter = treeTableToUse.getTreeTableAdapter();
 		
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
-		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel);
+		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
-		measurementTable = new PlanningViewMeasurementTable(measurementModel);
+		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
-		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel);
+		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
 	}
 	
@@ -327,6 +330,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		mainScrollPane.processMouseWheelEvent(e);
 	}
 	
+	private PlanningViewFontProvider fontProvider;
 	private JPanel mainPanel;
 	private MultipleTableSelectionController selectionController;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;

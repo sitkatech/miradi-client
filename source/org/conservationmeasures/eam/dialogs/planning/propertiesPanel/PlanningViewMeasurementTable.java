@@ -10,12 +10,13 @@ import java.awt.Color;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 {
-	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model)
+	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(model);	
 		renderer = new BasicTableCellRenderer();

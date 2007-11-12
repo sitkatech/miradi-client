@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 
 public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 {
-	public ChoiceItemTableCellRenderer(RowBaseObjectProvider providerToUse)
+	public ChoiceItemTableCellRenderer(RowBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(providerToUse);
+		super(providerToUse, fontProviderToUse);
 		emptyChoiceItem = new ChoiceItem("", "", Color.WHITE);
 	}
 

@@ -13,9 +13,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class NumericTableCellRenderer extends TableCellRendererForObjects
 {
-	public NumericTableCellRenderer(RowBaseObjectProvider providerToUse)
+	public NumericTableCellRenderer(RowBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(providerToUse);
+		super(providerToUse, fontProviderToUse);
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)

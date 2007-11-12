@@ -12,7 +12,10 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -28,13 +31,14 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 	public TargetViabilityTreeTable(Project projectToUse, ViabilityTreeModel targetViabilityModelToUse)
 	{
 		super(projectToUse, targetViabilityModelToUse);
+		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
-		measurementValueRenderer = new MeasurementValueRenderer(this);
-		otherRenderer = new BasicTableCellRenderer();
-		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this);
+		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
+		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
+		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
 		rebuildTableCompletely();
 	}
 	
