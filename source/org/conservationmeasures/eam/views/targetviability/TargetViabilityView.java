@@ -88,5 +88,5 @@ public class TargetViabilityView extends TabbedView
 	}
 	
 	
-	TargetViabilityTreeManagementPanel viabilityPanel;
+	private TargetViabilityTreeManagementPanel viabilityPanel;
 }
