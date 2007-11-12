@@ -62,7 +62,7 @@ public class EAM
 	{
 		try
 		{
-			File destination = new File(getHomeDirectory(), "exceptions.log");
+			File destination = getDefaultExceptionsLogFile();
 			FileOutputStream outputStream = new FileOutputStream(destination);
 			setExceptionLoggingDestination(outputStream);
 		}
@@ -71,6 +71,11 @@ public class EAM
 			System.out.println("Unable to create exception logging file: " + e.getLocalizedMessage());
 		}
 
+	}
+
+	private static File getDefaultExceptionsLogFile()
+	{
+		return new File(getHomeDirectory(), "exceptions.log");
 	}
 
 	public static void setExceptionLoggingDestination(OutputStream outputStream)
@@ -203,7 +208,9 @@ public class EAM
 	{
 		logException(e);
 		errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
-							 "\n\nPlease report this to the Miradi support team." +
+							 "\n\nPlease report this to the Miradi support team, " +
+							 "ideally including the contents of this file: " +
+							 "\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
 							 "\n\nMiradi has attempted to save your latest changes, and will now exit."));
 		System.exit(0);
 	}
