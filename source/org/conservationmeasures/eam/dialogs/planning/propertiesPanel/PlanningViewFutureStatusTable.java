@@ -10,8 +10,8 @@ import java.awt.Color;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
-import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.utils.TableWithTreeTableNodes;
 
 public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
@@ -19,7 +19,7 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 	public PlanningViewFutureStatusTable(PlanningViewFutureStatusTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(model);
-		renderer = new BasicTableCellRenderer();
+		renderer = new TableCellRendererForObjects(model, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
@@ -40,5 +40,5 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewFutureStatusTable";
 
-	private BasicTableCellRenderer renderer;
+	private TableCellRendererForObjects renderer;
 }
