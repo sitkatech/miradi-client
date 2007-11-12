@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -104,9 +105,21 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Object cell = getFirstCellForLocation(event.getX(), event.getY());
 		if (cell instanceof FactorCell) 
 		{
-			return ((FactorCell) cell).getToolTipString(event.getPoint());
+			FactorCell factorCell = (FactorCell)cell;
+			Point screenPoint = event.getPoint();
+			Point pointRelativeToCellOrigin = convertScreenPointToCellRelativePoint(screenPoint, factorCell);
+			return factorCell.getToolTipString(pointRelativeToCellOrigin);
 		}
 		return null;
+	}
+
+	public Point convertScreenPointToCellRelativePoint(Point screenPoint, FactorCell factorCell)
+	{
+		Point unscaledPoint = Utility.convertToPoint(fromScreen(screenPoint));
+		Point cellOrigin = factorCell.getLocation();
+		Point pointRelativeToCellOrigin = unscaledPoint; 
+		pointRelativeToCellOrigin.translate(-cellOrigin.x, -cellOrigin.y);
+		return pointRelativeToCellOrigin;
 	}
 
 	public void updateDiagramComponent()

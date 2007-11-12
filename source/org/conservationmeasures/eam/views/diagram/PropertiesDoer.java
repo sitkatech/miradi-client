@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
@@ -108,31 +109,31 @@ public class PropertiesDoer extends LocationDoer
 	}
 
 	// TODO: The tab should probably be computed elsewhere?
-	private int getTabToStartOn(FactorCell factorCell, Point at)
+	private int getTabToStartOn(FactorCell factorCell, Point screenPoint)
 	{
-		DiagramFactor factor = factorCell.getDiagramFactor();
-		if(at == null)
+		if(screenPoint == null)
 			return FactorPropertiesPanel.TAB_DETAILS;
 		
-		Point cellOrigin = factor.getLocation();
-		at.translate(-cellOrigin.x, -cellOrigin.y);
-		EAM.logDebug(at.toString());
-		if(factorCell.isPointInObjective(at))
+		DiagramComponent diagramComponent = getDiagramView().getDiagramComponent();
+		Point pointRelativeToCellOrigin = diagramComponent.convertScreenPointToCellRelativePoint(screenPoint, factorCell);
+
+		EAM.logDebug(screenPoint.toString() + "->" + pointRelativeToCellOrigin.toString());
+		if(factorCell.isPointInObjective(pointRelativeToCellOrigin))
 		{
 			EAM.logDebug("Objective");
 			return FactorPropertiesPanel.TAB_OBJECTIVES;
 		}
-		if (factorCell.isPointInViability(at))
+		if (factorCell.isPointInViability(pointRelativeToCellOrigin))
 		{
 			EAM.logDebug("ViabilityModeTNC");
 			return FactorPropertiesPanel.TAB_VIABILITY;
 		}
-		if(factorCell.isPointInIndicator(at))
+		if(factorCell.isPointInIndicator(pointRelativeToCellOrigin))
 		{
 			EAM.logDebug("Indicator");
 			return FactorPropertiesPanel.TAB_INDICATORS;
 		}
-		if(factorCell.isPointInGoal(at))
+		if(factorCell.isPointInGoal(pointRelativeToCellOrigin))
 		{
 			EAM.logDebug("Goal");
 			return FactorPropertiesPanel.TAB_GOALS;

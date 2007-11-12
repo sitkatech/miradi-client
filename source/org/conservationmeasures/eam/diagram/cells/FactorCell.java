@@ -55,11 +55,8 @@ abstract public class FactorCell extends EAMGraphCell
 		setPreviousSize(size);
 	}
 	
-	public String getToolTipString(Point p) 
+	public String getToolTipString(Point pointRelativeToCellOrigin) 
 	{
-		Point cellOrigin = getLocation();
-		p.translate(-cellOrigin.x, -cellOrigin.y);
-
 		Factor factor = getUnderlyingObject();
 		Project project = factor.getProject();
 		String label = factor.getLabel();
@@ -67,17 +64,17 @@ abstract public class FactorCell extends EAMGraphCell
 		
 		String header = "";
 		ORefList bullets = new ORefList();
-		if(isPointInIndicator(p))
+		if(isPointInIndicator(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Indicators:");
 			bullets = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
 		}
-		else if(isPointInGoal(p))
+		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Goals:");
 			bullets = new ORefList(Goal.getObjectType(), factor.getGoals());
 		}
-		else if(isPointInObjective(p))
+		else if(isPointInObjective(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Objectives:");
 			bullets = new ORefList(Objective.getObjectType(), factor.getObjectives());
@@ -358,30 +355,30 @@ abstract public class FactorCell extends EAMGraphCell
 		return !getSize().equals(getPreviousSize());
 	}
 	
-	public boolean isPointInObjective(Point p)
+	public boolean isPointInObjective(Point pointRelativeToOrigin)
 	{
 		if(getObjectives().size() == 0)
 			return false;
-		return getObjectiveRectWithinNode().contains(p);
+		return getObjectiveRectWithinNode().contains(pointRelativeToOrigin);
 	}
 	
-	public boolean isPointInIndicator(Point p)
+	public boolean isPointInIndicator(Point pointRelativeToOrigin)
 	{
-		return getIndicatorRectWithinNode().contains(p);
+		return getIndicatorRectWithinNode().contains(pointRelativeToOrigin);
 	}
 	
-	public boolean isPointInGoal(Point p)
+	public boolean isPointInGoal(Point pointRelativeToOrigin)
 	{
 		if(getGoals().size() == 0)
 			return false;
-		return getGoalRectWithinNode().contains(p);
+		return getGoalRectWithinNode().contains(pointRelativeToOrigin);
 	}
 	
-	public boolean isPointInViability(Point p)
+	public boolean isPointInViability(Point pointRelativeToOrigin)
 	{
 		if (isTarget() && ((Target)getUnderlyingObject()).isViabilityModeTNC())
 		{
-			return (isPointInIndicator(p) || isPointInGoal(p));
+			return (isPointInIndicator(pointRelativeToOrigin) || isPointInGoal(pointRelativeToOrigin));
 		}
 		return false;
 	}
