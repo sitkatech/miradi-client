@@ -67,7 +67,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public String getSplitterDescription()
 	{
-		return getPanelDescription() + SPLITTER_TAG;
+		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
 	}
 
 	public String getPanelDescription()
