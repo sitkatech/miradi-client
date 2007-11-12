@@ -32,7 +32,8 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 		
 		renderer.setBorder(getCellBorder());
 		renderer.setForeground(getCellForegroundColor(table, row, tableColumn));
-		renderer.setBackground(getCellBackgroundColor());
+		if(!isSelected)
+			renderer.setBackground(getCellBackgroundColor());
 		return renderer;
 	}
 	
