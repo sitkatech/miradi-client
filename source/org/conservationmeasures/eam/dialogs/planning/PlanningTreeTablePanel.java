@@ -149,6 +149,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		{		
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeTable();
+			
+			if(isSelectedObjectModification(event))
+				validate();
+		
+
 			// NOTE: The following is required to resize the table when 
 			// it grows due to a node being expanded (MRD-1123)
 			getTopLevelAncestor().repaint();
@@ -167,9 +172,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 			return true;
 		
 		if(isTaskMove(event))
-			return true;
-		
-		if(isSelectedObjectModification(event))
 			return true;
 		
 		if(isCreate(event) || isDeleteCommand(event))
