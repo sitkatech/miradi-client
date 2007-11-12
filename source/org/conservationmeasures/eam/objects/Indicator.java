@@ -109,7 +109,21 @@ public class Indicator extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_LATEST_MEASUREMENT_REF))
 			return getLatestMeasurementRef().toString();
 		
+		if(fieldTag.equals(PSEUDO_TAG_STATUS_VALUE))
+			return getCurrentStatus();
+		
 		return super.getPseudoData(fieldTag);
+	}
+	
+	String getCurrentStatus()
+	{
+		ORef measurementRef = getLatestMeasurementRef();
+		if(measurementRef == null || measurementRef.isInvalid())
+			return "";
+		
+		Measurement measurement = (Measurement)getProject().findObject(measurementRef);
+		String statusCode = measurement.getData(Measurement.TAG_STATUS);
+		return statusCode;
 	}
 	
 	public String getBudgetTotals()
