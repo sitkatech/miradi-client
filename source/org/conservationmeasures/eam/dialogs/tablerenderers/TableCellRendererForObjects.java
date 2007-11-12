@@ -16,26 +16,28 @@ import org.conservationmeasures.eam.objects.Task;
 
 public class TableCellRendererForObjects extends BasicTableCellRenderer
 {
-	public TableCellRendererForObjects(RowBaseObjectProvider providerToUse)
+	public TableCellRendererForObjects(RowBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		objectProvider = providerToUse;
+		fontProvider = fontProviderToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		Font font = getCellFont();
+		Font font = getCellFont(row);
 		if(isSharedObject(row))
 			font = font.deriveFont(Font.ITALIC);
 		renderer.setFont(font);
 		return renderer;
 	}
 	
-	public Font getCellFont()
+	public Font getCellFont(int row)
 	{
-		// TODO: This should return a font based on the object type 
-		// within the context of this specific table
-		return getFont();
+		BaseObject object = getObjectProvider().getBaseObjectForRow(row);
+		if(object == null)
+			return fontProvider.getPlainFont();
+		return fontProvider.getFont(object.getType());
 	}
 	
 	boolean isSharedObject(int row)
@@ -63,4 +65,5 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 	}
 
 	private RowBaseObjectProvider objectProvider;
+	private FontForObjectTypeProvider fontProvider;
 }

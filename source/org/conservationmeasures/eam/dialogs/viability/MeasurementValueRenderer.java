@@ -15,6 +15,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
+import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.icons.GoalIcon;
@@ -26,9 +27,9 @@ import org.conservationmeasures.eam.questions.TrendQuestion;
 
 class MeasurementValueRenderer extends TableCellRendererForObjects
 {
-	public MeasurementValueRenderer(TargetViabilityTreeTable providerToUse)
+	public MeasurementValueRenderer(TargetViabilityTreeTable providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(providerToUse);
+		super(providerToUse, fontProviderToUse);
 		question = new StatusQuestion(columnTag);
 	}
 	

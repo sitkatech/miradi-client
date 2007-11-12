@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 
@@ -21,7 +22,7 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	{
 		super(modelToUse);
 		setBackground(getColumnBackGroundColor(0));
-		renderer = new NumericTableCellRenderer(modelToUse);
+		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider());
 	}
 
 	public TableCellRenderer getCellRenderer(int row, int column)

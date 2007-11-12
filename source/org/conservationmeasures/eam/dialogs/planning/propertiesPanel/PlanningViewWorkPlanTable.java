@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.project.Project;
@@ -25,7 +26,7 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 		super(modelToUse);
 		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
-		renderer = new NumericTableCellRenderer(modelToUse);
+		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider());
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)

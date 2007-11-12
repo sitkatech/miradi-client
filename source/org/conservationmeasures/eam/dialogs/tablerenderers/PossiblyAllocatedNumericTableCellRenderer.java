@@ -20,9 +20,9 @@ import com.java.sun.jtreetable.TreeTableModelAdapter;
 
 public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellRenderer
 {
-	public PossiblyAllocatedNumericTableCellRenderer(RowBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse)
+	public PossiblyAllocatedNumericTableCellRenderer(RowBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(providerToUse);
+		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
 		adapter = adapterToUse;
 	}
