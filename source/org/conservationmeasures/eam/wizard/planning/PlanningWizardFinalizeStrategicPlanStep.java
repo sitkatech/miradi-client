@@ -5,15 +5,15 @@
 */ 
 package org.conservationmeasures.eam.wizard.planning;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
-public class ReviewStratAndMonPlansStep extends SplitWizardStep
+public class PlanningWizardFinalizeStrategicPlanStep extends SplitWizardStep
 {
-	public ReviewStratAndMonPlansStep(WizardPanel wizardToUse)
+	public PlanningWizardFinalizeStrategicPlanStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse, PlanningView.getViewName());
 	}
@@ -25,7 +25,7 @@ public class ReviewStratAndMonPlansStep extends SplitWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpReviewStratAndMonPlansStep.class;
+		return ActionJumpFinalizeStrategicPlanStep.class;
 	}
 
 }

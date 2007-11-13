@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpReviewStratAndMonPlansStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
@@ -29,7 +29,7 @@ public class ProcessMenu2a extends MiradiMenu
 		addMenuItem(ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
 		addMenuItem(ActionJumpStrategicPlanDevelopObjectivesStep.class, KeyEvent.VK_O);
 		addMenuItem(ActionJumpFinalizeConceptualModel.class, KeyEvent.VK_F);
-		addMenuItem(ActionJumpReviewStratAndMonPlansStep.class, KeyEvent.VK_E);
+		addMenuItem(ActionJumpFinalizeStrategicPlanStep.class, KeyEvent.VK_E);
 		//addMenuItem(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 	}
 }
