@@ -52,12 +52,6 @@ abstract public class AbstractSelectionDialog extends EAMDialog implements ListS
 		return objectSelected;
 	}
 	
-	public void dispose()
-	{
-		super.dispose();
-		list.dispose();
-	}
-
 	private Box createButtonBar()
 	{
 		PanelButton cancelButton = new PanelButton(new CancelAction());
