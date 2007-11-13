@@ -32,9 +32,9 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")),
+				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, EAM.text("Threat Reduction Results Only")),
-				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
 				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")),
 				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")),
 				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")),
