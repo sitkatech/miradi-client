@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpFinalizeStrategicPlanStep extends MainWindowAction
+public class ActionJumpPlanningWizardFinalizeStrategicPlanStep extends MainWindowAction
 {
-	public ActionJumpFinalizeStrategicPlanStep(MainWindow mainWindowToUse)
+	public ActionJumpPlanningWizardFinalizeStrategicPlanStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

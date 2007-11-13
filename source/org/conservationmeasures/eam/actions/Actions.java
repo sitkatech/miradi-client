@@ -57,7 +57,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpPlanProjectLifespan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeStrategicPlanStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
@@ -274,7 +274,7 @@ public class Actions
 		registerAction(new ActionJumpShare(mainWindow));
 		registerAction(new ActionJumpCreate(mainWindow));
 		registerAction(new ActionJumpCloseTheLoop(mainWindow));
-		registerAction(new ActionJumpFinalizeStrategicPlanStep(mainWindow));
+		registerAction(new ActionJumpPlanningWizardFinalizeStrategicPlanStep(mainWindow));
 		registerAction(new ActionJumpStrategicPlanViewAllGoals(mainWindow));
 		registerAction(new ActionJumpStrategicPlanViewAllObjectives(mainWindow));
 		registerAction(new ActionJumpStrategicPlanHowToConstructStep(mainWindow));
