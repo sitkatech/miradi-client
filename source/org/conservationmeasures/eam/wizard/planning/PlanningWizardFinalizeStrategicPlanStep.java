@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.wizard.planning;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeStrategicPlanStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.views.planning.PlanningView;
 import org.conservationmeasures.eam.wizard.SplitWizardStep;
@@ -25,7 +25,7 @@ public class PlanningWizardFinalizeStrategicPlanStep extends SplitWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpFinalizeStrategicPlanStep.class;
+		return ActionJumpPlanningWizardFinalizeStrategicPlanStep.class;
 	}
 
 }
