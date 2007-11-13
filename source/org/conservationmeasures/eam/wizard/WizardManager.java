@@ -59,9 +59,9 @@ import org.conservationmeasures.eam.wizard.planning.WorkPlanOverviewStep;
 import org.conservationmeasures.eam.wizard.schedule.ScheduleOverviewStep;
 import org.conservationmeasures.eam.wizard.summary.SummaryOverviewStep;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjecScope;
-import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.wizard.summary.SummaryWizardRolesAndResponsibilities;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViability3Step;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViability4Step;
 import org.conservationmeasures.eam.wizard.targetviability.TargetViability5Step;
@@ -216,7 +216,7 @@ public class WizardManager
 	{
 		createStepEntry(new SummaryOverviewStep(panel));
 		createStepEntry(new SummaryWizardDefineTeamMembers(panel));
-		createStepEntry(new SummaryWizardDefineProjectLeader(panel));
+		createStepEntry(new SummaryWizardRolesAndResponsibilities(panel));
 		createStepEntry(new SummaryWizardDefineProjecScope(panel));
 		createStepEntry(new SummaryWizardDefineProjectVision(panel));
 	}
@@ -323,7 +323,7 @@ public class WizardManager
 				
 				// STEP 1A
 				SummaryWizardDefineTeamMembers.class,
-				SummaryWizardDefineProjectLeader.class,
+				SummaryWizardRolesAndResponsibilities.class,
 				
 				// STEP 1B
 				SummaryWizardDefineProjecScope.class,

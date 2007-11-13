@@ -62,7 +62,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
@@ -301,7 +301,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineTeamMembers.class);
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectLeader.class);
-		addJumpDoerToMap(ActionJumpDevelopCharter.class);
+		addJumpDoerToMap(ActionJumpSummaryWizardRolesAndResponsibilities.class);
 		
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjecScope.class);
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectVision.class);
