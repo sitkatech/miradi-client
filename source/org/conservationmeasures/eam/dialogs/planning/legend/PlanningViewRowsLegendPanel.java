@@ -73,9 +73,9 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		
 		addIconLineWithCheckBox(panel, Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon());
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
-		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon());
 		addIconLineWithCheckBox(panel, ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon());
+		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(panel, Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon());
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.ACTIVITY_NAME, actions.getObjectsAction(ActionTreeCreateActivityIconOnly.class), picker);
 		addIconLineWithCheckBox(panel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
