@@ -27,7 +27,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopFundingProposals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopMap;
@@ -230,7 +230,7 @@ public class Actions
 		registerAction(new ActionTreeNodeDown(mainWindow));
 		
 		registerAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
-		registerAction(new ActionJumpDevelopCharter(mainWindow));
+		registerAction(new ActionJumpSummaryWizardRolesAndResponsibilities(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineTeamMembers(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineProjecScope(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineProjectVision(mainWindow));

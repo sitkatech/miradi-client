@@ -8,9 +8,8 @@ package org.conservationmeasures.eam.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 
 public class ProcessMenu1a extends MiradiMenu
 {
@@ -20,8 +19,7 @@ public class ProcessMenu1a extends MiradiMenu
 		setMnemonic(KeyEvent.VK_D);
 
 		addMenuItem(ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S);
-		addMenuItem(ActionJumpSummaryWizardDefineProjectLeader.class, KeyEvent.VK_D);
-		addMenuItem(ActionJumpDevelopCharter.class, KeyEvent.VK_C);
+		addMenuItem(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_C);
 
 	}
 
