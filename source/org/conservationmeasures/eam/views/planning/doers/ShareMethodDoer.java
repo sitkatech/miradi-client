@@ -37,7 +37,7 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return EAM.text("Share Method");
 	}
 
-	protected ObjectPoolTablePanel getShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
+	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
 		return new ShareableMethodPoolTablePanel(getProject(), parentOfSharedObjectRefs);
 	}

@@ -33,7 +33,7 @@ public class ShareActivityDoer extends AbstractShareDoer
 		return EAM.text("Share Activity");
 	}
 
-	protected ObjectPoolTablePanel getShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
+	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
 		return new ShareableActivityPoolTablePanel(getProject(), parentOfSharedObjectRefs);
 	}
