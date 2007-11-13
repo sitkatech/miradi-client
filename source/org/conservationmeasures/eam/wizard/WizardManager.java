@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.wizard.planning.MonitoringPlanOverviewStep;
 import org.conservationmeasures.eam.wizard.planning.MonitoringWizardDefineIndicatorsStep;
 import org.conservationmeasures.eam.wizard.planning.MonitoringWizardFocusStep;
 import org.conservationmeasures.eam.wizard.planning.PlanningOverviewStep;
+import org.conservationmeasures.eam.wizard.planning.PlanningWizardFinalizeMonitoringPlanStep;
 import org.conservationmeasures.eam.wizard.planning.PlanningWizardFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopGoalStep;
 import org.conservationmeasures.eam.wizard.planning.StrategicPlanDevelopObjectivesStep;
@@ -262,6 +263,7 @@ public class WizardManager
 		createStepEntry(new StrategicPlanDevelopObjectivesStep(panel));		
 		createStepEntry(new MonitoringWizardFocusStep(panel));		
 		createStepEntry(new MonitoringWizardDefineIndicatorsStep(panel));
+		createStepEntry(new PlanningWizardFinalizeMonitoringPlanStep(panel));
 	
 		createStepEntry(new DiagramWizardResultsChainStep(panel));
 		createStepEntry(new DiagramWizardConstructInitialResultsChain(panel));
@@ -391,6 +393,7 @@ public class WizardManager
 //				MonitoringPlanOverviewStep.class,
 				MonitoringWizardFocusStep.class,
 				MonitoringWizardDefineIndicatorsStep.class,
+				PlanningWizardFinalizeMonitoringPlanStep.class,
 
 				// STEP 3A
 				WorkPlanOverviewStep.class,
