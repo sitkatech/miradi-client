@@ -80,7 +80,7 @@ public class Measurement extends BaseObject
 		
 		trend= new ChoiceData();
 		status= new ChoiceData();
-		date= new DateData();;
+		date= new DateData();
 		summary= new StringData();
 		detail= new StringData();
 		statusConfidence = new ChoiceData();		

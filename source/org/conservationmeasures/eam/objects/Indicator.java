@@ -92,7 +92,7 @@ public class Indicator extends BaseObject
 			return getRelatedLabelsAsMultiLine(new TargetSet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
-			return getRelatedLabelsAsMultiLine(new DirectThreatSet());;
+			return getRelatedLabelsAsMultiLine(new DirectThreatSet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
