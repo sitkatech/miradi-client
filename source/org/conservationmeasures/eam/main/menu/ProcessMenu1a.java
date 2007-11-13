@@ -19,7 +19,7 @@ public class ProcessMenu1a extends MiradiMenu
 		setMnemonic(KeyEvent.VK_D);
 
 		addMenuItem(ActionJumpSummaryWizardDefineTeamMembers.class, KeyEvent.VK_S);
-		addMenuItem(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_C);
+		addMenuItem(ActionJumpSummaryWizardRolesAndResponsibilities.class, KeyEvent.VK_R);
 
 	}
 
