@@ -216,7 +216,7 @@ public class WizardManager
 	{
 		createStepEntry(new SummaryOverviewStep(panel));
 		createStepEntry(new SummaryWizardDefineTeamMembers(panel));
-		createStepEntry(new SummaryWizardDefineProjectLeader(panel));;
+		createStepEntry(new SummaryWizardDefineProjectLeader(panel));
 		createStepEntry(new SummaryWizardDefineProjecScope(panel));
 		createStepEntry(new SummaryWizardDefineProjectVision(panel));
 	}
