@@ -29,15 +29,16 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		if (parentOfSharedRef.isInvalid())
 			return;
 	
-		ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), getShareableObjectPoolTablePanel(parentOfSharedRef));
-		listDialog.setVisible(true); 
-		
-		BaseObject objectToShare = listDialog.getSelectedObject();
-		if (objectToShare == null)
-			return;
-		
+		ObjectPoolTablePanel shareableObjectPoolTablePanel = createShareableObjectPoolTablePanel(parentOfSharedRef);
 		try
 		{
+			ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), shareableObjectPoolTablePanel);
+			listDialog.setVisible(true); 
+			
+			BaseObject objectToShare = listDialog.getSelectedObject();
+			if (objectToShare == null)
+				return;
+			
 			BaseObject parentOfShared = getProject().findObject(parentOfSharedRef);
 			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, getParentTaskIdsTag(), objectToShare.getId());
 			getProject().executeCommand(appendSharedObjectCommand);
@@ -46,11 +47,15 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		{
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			shareableObjectPoolTablePanel.dispose();
+		}
 	}
 	
 	abstract protected String getShareDialogTitle();
 	
-	abstract protected ObjectPoolTablePanel getShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
+	abstract protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
 	
 	abstract protected ORef getParentRefOfShareableObjects();
 	
