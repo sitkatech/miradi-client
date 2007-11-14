@@ -10,6 +10,7 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -172,6 +173,7 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 
 	private void saveExpandedPath(ORefList newObjRefList) throws Exception
 	{
+		ObjectDataInputField.saveFocusedFieldPendingEdits();
 		ViewData viewData = project.getViewData(project.getCurrentView());		
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
 		project.executeCommand(cmd);
