@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.dialogs.indicator.IndicatorPoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.BaseObject;
 
 public class CloneIndicatorDoer extends CreateIndicator
 {
@@ -16,15 +15,8 @@ public class CloneIndicatorDoer extends CreateIndicator
 	{
 		if (!isAvailable())
 			return;
-	
-		BaseObject cloneAnnotation = displayAnnotationList(EAM.text("Choose Indicator to Clone"), new IndicatorPoolTablePanel(getProject()));	
-	
-		if (cloneAnnotation == null)
-			return;
-		
-		setAnnotationToClone(cloneAnnotation);
-		
+
+		askUserForObjectToClone(new IndicatorPoolTablePanel(getProject()), EAM.text("Choose Indicator to Clone"));
 		super.doIt();
 	}
-
 }

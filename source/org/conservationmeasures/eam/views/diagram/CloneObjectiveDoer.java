@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.dialogs.objective.ObjectivePoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.BaseObject;
 
 public class CloneObjectiveDoer extends CreateObjective
 {
@@ -17,14 +16,7 @@ public class CloneObjectiveDoer extends CreateObjective
 		if (!isAvailable())
 			return;
 	
-		BaseObject cloneAnnotation = displayAnnotationList(EAM.text("Choose Objective to Clone"), new ObjectivePoolTablePanel(getProject()));	
-		
-		if (cloneAnnotation == null)
-			return;
-		
-		setAnnotationToClone(cloneAnnotation);
-		
+		askUserForObjectToClone(new ObjectivePoolTablePanel(getProject()), EAM.text("Choose Objective to Clone"));
 		super.doIt();
 	}
-
 }
