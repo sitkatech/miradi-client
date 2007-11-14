@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import org.conservationmeasures.eam.actions.ActionCloneIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateIndicatorMeasurement;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
@@ -63,6 +64,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	static final Class[] buttonActions = new Class[] {
 		ActionCreateIndicator.class,
 		ActionDeleteIndicator.class,
+		ActionCloneIndicator.class,
 		ActionCreateIndicatorMeasurement.class,
 		ActionDeleteIndicatorMeasurement.class, 
 		};
