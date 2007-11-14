@@ -49,7 +49,6 @@ import org.conservationmeasures.eam.questions.DirectThreatQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextField;
 
 public class FactorPropertiesPanel extends DisposablePanel implements CommandExecutedListener
 {
@@ -188,7 +187,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		tabs = new PanelTabbedPane();
 		tabs.setFocusable(false);
-		detailsTab = new FactorSummaryPanel(getProject(), diagramFactor);
+		detailsTab = new FactorSummaryScrollablePanel(getProject(), diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
@@ -316,19 +315,15 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	public static final int TAB_GOALS = 3;
 	public static final int TAB_VIABILITY = 4;
 
-	JTabbedPane tabs;
-	FactorSummaryPanel detailsTab;
-	ObjectiveListManagementPanel objectivesTab;
-	TargetViabilityTreeManagementPanel indicatorsTab;
-	GoalListManagementPanel goalsTab;
-	TargetViabilityTreeManagementPanel viabilityTab;
-	ActivityListManagementPanel activitiesTab;
-	MainWindow mainWindow;
-	DiagramComponent diagram;
-	DiagramFactor currentDiagramFactor;
-	UiTextField textField;
-	boolean ignoreObjectiveChanges;
-	FactorInputPanel grid;
-
-
+	protected JTabbedPane tabs;
+	private FactorSummaryScrollablePanel detailsTab;
+	private ObjectiveListManagementPanel objectivesTab;
+	private TargetViabilityTreeManagementPanel indicatorsTab;
+	private GoalListManagementPanel goalsTab;
+	private TargetViabilityTreeManagementPanel viabilityTab;
+	private ActivityListManagementPanel activitiesTab;
+	private MainWindow mainWindow;
+	private DiagramComponent diagram;
+	private DiagramFactor currentDiagramFactor;
+	private FactorInputPanel grid;
 }
