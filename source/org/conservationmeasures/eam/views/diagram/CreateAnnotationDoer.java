@@ -102,15 +102,16 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return (Factor)selected;
 	}
 	
-	protected void askUserForObjectToClone(ObjectPoolTablePanel poolTablePanel, String panelText) throws CommandFailedException
+	protected boolean validUserChoiceForObjectToClone(ObjectPoolTablePanel poolTablePanel, String panelText) throws CommandFailedException
 	{
 		try
 		{
 			BaseObject cloneAnnotation = displayAnnotationList(panelText, poolTablePanel);	
 			if (cloneAnnotation == null)
-				return;
+				return false;
 
 			setAnnotationToClone(cloneAnnotation);
+			return true;
 		}
 		finally
 		{
