@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCloneIndicator extends MainWindowAction
+public class ActionCloneIndicator extends ObjectsAction
 {
 	public ActionCloneIndicator(MainWindow mainWindowToUse)
 	{
