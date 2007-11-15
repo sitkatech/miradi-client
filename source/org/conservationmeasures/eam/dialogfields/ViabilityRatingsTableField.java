@@ -59,7 +59,10 @@ public class ViabilityRatingsTableField extends ObjectStringMapTableField
 		
 		ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
 		if (latestMeasurementRef.isInvalid())
+		{
+			clearIconRows();
 			return;
+		}
 		
 		Measurement latestMeasurement = (Measurement) getProject().findObject(latestMeasurementRef);
 		measurementSummary = latestMeasurement.getData(Measurement.TAG_SUMMARY);
