@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -256,8 +257,9 @@ public class Target extends Factor
 		targetStatus = new ChoiceData();
 		viabiltyMode = new ChoiceData();
 		currentStatusJustification = new StringData();
-		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
+		stressRefs = new ORefListData();
 		
+		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_TARGET_STATUS));
 		viabiltyModeLabel = new PseudoQuestionData(new ViabilityModeQuestion(TAG_VIABILITY_MODE));
 		targetViabilityLabel = new PseudoQuestionData(new StatusQuestion(PSEUDO_TAG_TARGET_VIABILITY));
@@ -265,8 +267,9 @@ public class Target extends Factor
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
-		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
+		addField(TAG_STRESS_REFS, stressRefs);
 		
+		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_TARGET_VIABILITY_VALUE, targetViabilityLabel);
@@ -275,6 +278,7 @@ public class Target extends Factor
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
+	public static final String TAG_STRESS_REFS = "StressRefs";
 	public static final String OBJECT_NAME = "Target";
 	
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
@@ -282,11 +286,12 @@ public class Target extends Factor
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
 	public static final String PSEUDO_TAG_TARGET_VIABILITY_VALUE = "ViabilityValue";
 	
-	ChoiceData targetStatus;
-	ChoiceData viabiltyMode;
-	StringData currentStatusJustification;
-	PseudoStringData targetViability;
-	PseudoQuestionData targetStatusLabel;
+	private ChoiceData targetStatus;
+	private ChoiceData viabiltyMode;
+	private StringData currentStatusJustification;
+	private ORefListData stressRefs;
+	private PseudoStringData targetViability;
+	private PseudoQuestionData targetStatusLabel;
 	PseudoQuestionData viabiltyModeLabel;
-	PseudoQuestionData targetViabilityLabel;
+	private PseudoQuestionData targetViabilityLabel;
 }

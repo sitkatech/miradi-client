@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.SlidePool;
 import org.conservationmeasures.eam.objectpools.SlideShowPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
+import org.conservationmeasures.eam.objectpools.StressPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
@@ -110,6 +111,7 @@ public class ObjectManager
 		addNormalPool(new WwfProjectDataPool(ida));
 		addNormalPool(new CostAllocationRulePool(ida));
 		addNormalPool(new MeasurementPool(ida));
+		addNormalPool(new StressPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -386,6 +388,7 @@ public class ObjectManager
 		loadPool(ObjectType.WWF_PROJECT_DATA);
 		loadPool(ObjectType.COST_ALLOCATION_RULE);
 		loadPool(ObjectType.MEASUREMENT);
+		loadPool(ObjectType.STRESS);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
@@ -472,8 +475,8 @@ public class ObjectManager
 		
 	}
 	
-	Project project;
-	ProjectChainObject projectChainBuilder;
-	DiagramChainObject diagramChainBuilder;
-	HashMap pools;
+	private Project project;
+	private ProjectChainObject projectChainBuilder;
+	private DiagramChainObject diagramChainBuilder;
+	private HashMap pools;
 }

@@ -198,6 +198,10 @@ public class Actions
 		registerAction(new ActionCloneGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
 		
+		registerAction(new ActionCreateStress(mainWindow));
+		registerAction(new ActionDeleteStress(mainWindow));
+		registerAction(new ActionCloneStress(mainWindow));
+		
 		registerAction(new ActionCreateKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionDeleteKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionCreateKeyEcologicalAttributeIndicator(mainWindow));
