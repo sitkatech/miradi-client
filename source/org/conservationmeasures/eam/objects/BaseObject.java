@@ -249,6 +249,9 @@ abstract public class BaseObject
 				
 			case ObjectType.MEASUREMENT:
 				return new Measurement(objectManager, idAsInt, json);
+			
+			case ObjectType.STRESS:
+				return new Stress(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

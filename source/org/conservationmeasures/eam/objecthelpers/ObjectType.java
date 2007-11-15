@@ -39,7 +39,8 @@ public class ObjectType
 	public static final int WWF_PROJECT_DATA = 30;
 	public static final int COST_ALLOCATION_RULE = 31;
 	public static final int MEASUREMENT = 32;
+	public static final int STRESS = 33;
 	
-	public static final int OBJECT_TYPE_COUNT = 33;	
+	public static final int OBJECT_TYPE_COUNT = 34;	
 }
 

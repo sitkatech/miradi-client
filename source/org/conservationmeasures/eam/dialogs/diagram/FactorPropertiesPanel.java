@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.dialogs.goal.GoalListManagementPanel;
 import org.conservationmeasures.eam.dialogs.objective.ObjectiveListManagementPanel;
+import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -73,6 +74,8 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			activitiesTab.dispose();
 		if(viabilityTab != null)
 			viabilityTab.dispose();
+		if (stressTab != null)
+			stressTab.dispose();
 		if(grid != null)
 			grid.dispose();
 		getProject().removeCommandExecutedListener(this);
@@ -95,6 +98,8 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			case TAB_VIABILITY:
 				tabs.setSelectedComponent(viabilityTab);
 				break;
+			case TAB_STRESS:
+				tabs.setSelectedComponent(stressTab);
 			default:
 				tabs.setSelectedComponent(detailsTab);
 				break;
@@ -223,6 +228,8 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			{
 				handleViabilityTabON();
 			}
+			stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
 		}
 		
 		return tabs;
@@ -270,6 +277,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		
 		if (viabilityTab != null)
 			viabilityTab.updateSplitterLocation();
+		
+		if (stressTab != null)
+			stressTab.updateSplitterLocation();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -290,6 +300,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 			
 			SwingUtilities.getWindowAncestor(detailsTab).pack();
 			viabilityTab.updateSplitterLocation();
+			stressTab.updateSplitterLocation();
 			goalsTab.updateSplitterLocation();
 			indicatorsTab.updateSplitterLocation();
 			validate();
@@ -314,6 +325,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	public static final int TAB_OBJECTIVES = 2;
 	public static final int TAB_GOALS = 3;
 	public static final int TAB_VIABILITY = 4;
+	public static final int TAB_STRESS = 5;
 
 	protected JTabbedPane tabs;
 	private FactorSummaryScrollablePanel detailsTab;
@@ -321,6 +333,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	private TargetViabilityTreeManagementPanel indicatorsTab;
 	private GoalListManagementPanel goalsTab;
 	private TargetViabilityTreeManagementPanel viabilityTab;
+	private StressListManagementPanel stressTab;
 	private ActivityListManagementPanel activitiesTab;
 	private MainWindow mainWindow;
 	private DiagramComponent diagram;

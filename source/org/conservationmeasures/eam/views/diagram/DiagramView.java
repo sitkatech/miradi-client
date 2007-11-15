@@ -19,6 +19,7 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.actions.ActionCloneGoal;
 import org.conservationmeasures.eam.actions.ActionCloneIndicator;
 import org.conservationmeasures.eam.actions.ActionCloneObjective;
+import org.conservationmeasures.eam.actions.ActionCloneStress;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCreateActivity;
@@ -34,6 +35,7 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
+import org.conservationmeasures.eam.actions.ActionCreateStress;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
@@ -48,6 +50,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMe
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
+import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
@@ -125,6 +128,9 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
@@ -290,6 +296,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
 		addDoerToMap(ActionCloneGoal.class, new CloneGoalDoer());
 		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
+		
+		addDoerToMap(ActionCreateStress.class, new CreateStressDoer());
+		addDoerToMap(ActionDeleteStress.class, new DeleteStressDoer());
+		addDoerToMap(ActionCloneStress.class, new CloneStressDoer());
 		
 		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
