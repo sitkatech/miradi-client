@@ -21,7 +21,12 @@ public class SlideListTableModel extends ObjectListTableModel
 		super(project, containingOref.getObjectType(), containingOref.getObjectId(), SlideShow.TAG_SLIDE_REFS, Slide.getObjectType(), COLUMN_TAGS);
 	}
 
-	public IdList getLatestIdListFromProject()
+	public ORefList getLatestRefListFromProject()
+	{
+		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+	}
+	
+	private IdList getLatestIdListFromProject()
 	{
 		try
 		{

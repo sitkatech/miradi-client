@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -61,8 +62,13 @@ public class ObjectListTableModel extends ObjectTableModel
 		return project.findObject(containingObjectType, containingObjectId);
 	}
 
+	public ORefList getLatestRefListFromProject()
+	{
+		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+	}
+	
 	//TODO: the general model shold handle different list data types.
-	public IdList getLatestIdListFromProject()
+	private IdList getLatestIdListFromProject()
 	{
 		try
 		{
@@ -75,7 +81,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		}
 	}
 	
-	int containingObjectType;
-	BaseId containingObjectId;
-	String tagOfIdList;
+	private int containingObjectType;
+	private BaseId containingObjectId;
+	private String tagOfIdList;
 }

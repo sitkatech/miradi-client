@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
@@ -24,7 +25,12 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		rowObjectType = listedItemType;
 	}
 	
-	abstract public IdList getLatestIdListFromProject();
+	abstract public ORefList getLatestRefListFromProject();
+	
+	private IdList getLatestIdListFromProject()
+	{
+		return getLatestRefListFromProject().convertToIdList(getRowObjectType());
+	}
 	
 	public int getRowCount()
 	{
@@ -166,7 +172,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	}
 
 	protected Project project;
-	int rowObjectType;
+	private int rowObjectType;
 	private IdList rowObjectIds;
-	String[] columnTags;
+	private String[] columnTags;
 }

@@ -27,12 +27,17 @@ public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 		//FIXME include associated factor
 	};
 	
-	public IdList getLatestIdListFromProject()
+	public ORefList getLatestRefListFromProject()
+	{
+		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+	}
+	
+	private IdList getLatestIdListFromProject()
 	{
 		ORefList filteredTaskRefs = new ORefList();
 		Indicator  parentIndicator = (Indicator) getProject().findObject(parentRef);
 		ORefList parentsMethodRefs = parentIndicator.getMethods();
-		ORefList taskRefs = new ORefList(Task.getObjectType(), super.getLatestIdListFromProject());
+		ORefList taskRefs = super.getLatestRefListFromProject();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = (Task) project.findObject(taskRefs.get(i));

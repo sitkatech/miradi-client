@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -23,14 +24,19 @@ public class TeamModel extends ObjectPoolTableModel
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, COLUMN_TAGS);
 	}
 	
-	public IdList getLatestIdListFromProject()
+	public ORefList getLatestRefListFromProject()
+	{
+		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+	}
+	
+	private IdList getLatestIdListFromProject()
 	{
 		IdList filteredResources = new IdList();
 		
-		IdList resources = super.getLatestIdListFromProject();
-		for (int i=0; i<resources.size(); ++i)
+		ORefList resourceRefs = super.getLatestRefListFromProject();
+		for (int i=0; i<resourceRefs.size(); ++i)
 		{
-			BaseId baseId = resources.get(i);
+			BaseId baseId = resourceRefs.get(i).getObjectId();
 			CodeList listData = extractCodeList(baseId);
 			
 			if (listData.contains(ResourceRoleQuestion.TeamMemberRoleCode))
