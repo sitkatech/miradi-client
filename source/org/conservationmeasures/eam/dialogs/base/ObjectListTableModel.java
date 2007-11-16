@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.base;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -64,15 +65,13 @@ public class ObjectListTableModel extends ObjectTableModel
 
 	public ORefList getLatestRefListFromProject()
 	{
-		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
-	}
-	
-	//TODO: the general model shold handle different list data types.
-	private IdList getLatestIdListFromProject()
-	{
 		try
 		{
-			return new IdList(getContainingObject().getData(tagOfIdList));
+			ObjectData objectData = getContainingObject().getField(tagOfIdList);
+			if (objectData.isIdListData()) 
+				return new ORefList(getRowObjectType(), new IdList(getContainingObject().getData(tagOfIdList)));
+			
+			return new ORefList(getContainingObject().getData(tagOfIdList));
 		}
 		catch(Exception e)
 		{

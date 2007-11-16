@@ -97,5 +97,10 @@ public class IdListData extends ObjectData
 		ids.toXml(out);
 	}
 	
-	IdList ids;
+	public boolean isIdListData()
+	{
+		return true;
+	}
+	
+	private IdList ids;
 }
