@@ -31,9 +31,13 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		
 		renderer.setBorder(getCellBorder());
-		renderer.setForeground(getCellForegroundColor(table, row, tableColumn));
+		
 		if(!isSelected)
+		{
+			renderer.setForeground(getCellForegroundColor(table, row, tableColumn));
 			renderer.setBackground(getCellBackgroundColor());
+		}
+			
 		return renderer;
 	}
 	
