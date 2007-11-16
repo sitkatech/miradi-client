@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -33,9 +33,6 @@ import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public abstract class DeleteAnnotationDoer extends ObjectsDoer
 {
-	abstract String[] getDialogText();
-	abstract String getAnnotationIdListTag();
-
 	public boolean isAvailable()
 	{
 		return (getObjects().length == 1);
@@ -80,18 +77,24 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
-		Vector commands = new Vector();
-	
-		int type = annotationToDelete.getType();
-		BaseId idToRemove = annotationToDelete.getId();
-		commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, idToRemove));
-		commands.addAll(buildCommandsToDeleteMeasurements(project, new ORef(type, idToRemove)));
-		commands.addAll(buildCommandsToDeleteMethods(project, type, idToRemove));
-		commands.addAll(buildCommandsToDeleteKEAIndicators(project, type, idToRemove));
+		Vector commands = new Vector();	
+		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete.getRef()));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
-		commands.add(new CommandDeleteObject(type, idToRemove));
+		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
+	}
+
+	private static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
+	{
+		ObjectData objectData = owner.getField(annotationIdListTag);
+		if (objectData.isIdListData())
+			return CommandSetObjectData.createRemoveIdCommand(owner, annotationIdListTag, refToRemove.getObjectId());
+		
+		return CommandSetObjectData.createRemoveORefCommand(owner, annotationIdListTag, refToRemove);
 	}
 
 	public Factor getSelectedFactor()
@@ -107,13 +110,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	private static Vector buildCommandsToDeleteKEAIndicators(Project project, int type, BaseId id) throws Exception
+	private static Vector buildCommandsToDeleteKEAIndicators(Project project, ORef ref) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!(type == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))
+		if (!(ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))
 			return commands;
 	
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(type, id);
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ref);
 		commands.addAll(Arrays.asList(kea.createCommandsToClear()));
 		
 		IdList indicatorList = kea.getIndicatorIds();
@@ -153,13 +156,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector buildCommandsToDeleteMethods(Project project, int type, BaseId id) throws Exception
+	private static Vector buildCommandsToDeleteMethods(Project project, ORef ref) throws Exception
 	{
 		Vector commands = new Vector();
-		if (type != ObjectType.INDICATOR)
+		if (ref.getObjectType() != ObjectType.INDICATOR)
 			return commands;
 	
-		Indicator indicator = (Indicator)project.findObject(type, id);
+		Indicator indicator = (Indicator)project.findObject(ref);
 		IdList subtaskList = indicator.getTaskIdList();
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
@@ -175,4 +178,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 
+	abstract public String[] getDialogText();
+	abstract public String getAnnotationIdListTag();
 }

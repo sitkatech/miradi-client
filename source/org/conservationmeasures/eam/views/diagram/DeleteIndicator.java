@@ -24,12 +24,12 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 		return true;
 	}
 	
-	String[] getDialogText()
+	public String[] getDialogText()
 	{
 		return new String[] { "Are you sure you want to delete this Indicator?",};
 	}
 
-	String getAnnotationIdListTag()
+	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_INDICATOR_IDS;
 	}
