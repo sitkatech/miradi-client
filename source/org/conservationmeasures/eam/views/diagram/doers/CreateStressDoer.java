@@ -16,12 +16,6 @@ import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
-	//FIXME  temporarly disabled
-	public boolean isAvailable()
-	{
-		return false;
-	}
-	
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
