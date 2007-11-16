@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -58,7 +62,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
+public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener, TableColumnModelListener
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
@@ -80,6 +84,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		mainScrollPane = new FastScrollPane(mainPanel);
 		treeTableScrollPane.addMouseWheelListener(this);
+		listenForColumnWidthChanges(getTree());
 		add(mainScrollPane);
 		
 		selectionController = new MultipleTableSelectionController();
@@ -104,14 +109,22 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
+		listenForColumnWidthChanges(annualTotalsTable);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
 		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
+		listenForColumnWidthChanges(measurementTable);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
 		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
+		listenForColumnWidthChanges(futureStatusTable);
+	}
+	
+	private void listenForColumnWidthChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(this);
 	}
 	
 	private void turnOffVerticalHorizontalScrolling(FastScrollPane scrollPaneToUse)
@@ -327,11 +340,43 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		return (PlanningTreeModel)getModel();
 	}
 	
+	private void resizeTablesToExactlyFitAllColumns() 
+	{
+		validate();
+	}
+	
+	
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
 		mainScrollPane.processMouseWheelEvent(e);
 	}
 	
+	// Begin TableColumnModelListener
+	public void columnAdded(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnMarginChanged(ChangeEvent e)
+	{
+		resizeTablesToExactlyFitAllColumns();
+	}
+
+	public void columnMoved(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnRemoved(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnSelectionChanged(ListSelectionEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
 	private PlanningViewFontProvider fontProvider;
 	private JPanel mainPanel;
 	private MultipleTableSelectionController selectionController;
