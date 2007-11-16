@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.base;
 
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectPoolTableModel extends ObjectTableModel
@@ -20,7 +21,12 @@ public class ObjectPoolTableModel extends ObjectTableModel
 		super(projectToUse, listedItemType, columnTagsToUse);
 	}
 	
-	public IdList getLatestIdListFromProject()
+	public ORefList getLatestRefListFromProject()
+	{
+		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+	}
+	
+	private IdList getLatestIdListFromProject()
 	{
 		IdList idList = project.getPool(getRowObjectType()).getIdList();
 		idList.sort();
