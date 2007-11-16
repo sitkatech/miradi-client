@@ -83,6 +83,34 @@ public class Target extends Factor
 		return list;
 	}
 
+	public static boolean canReferToThisType(int type)
+	{
+		switch(type)
+		{
+			case ObjectType.STRESS: 
+				return true;
+
+			default:
+				return false;
+		}
+	}
+	
+	public ORefList getReferencedObjects(int objectType)
+	{
+		ORefList list = super.getReferencedObjects(objectType);
+		switch(objectType)
+		{
+			case ObjectType.STRESS: 
+				list.addAll(getStressRefs());
+				break;
+		}
+		return list;
+	}
+
+	public ORefList getStressRefs()
+	{
+		return stressRefs.getORefList();
+	}
 	
 	public boolean isTarget()
 	{

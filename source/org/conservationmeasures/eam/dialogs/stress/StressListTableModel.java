@@ -15,6 +15,6 @@ public class StressListTableModel extends ObjectListTableModel
 {
 	public StressListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef.getObjectType(), nodeRef.getObjectId(), Target.TAG_STRESS_REFS, Stress.getObjectType(), Stress.TAG_LABEL);
+		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), new String[]{Stress.TAG_LABEL});
 	}
 }
