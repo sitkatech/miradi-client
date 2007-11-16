@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class StressPropertiesPanel extends ObjectDataInputPanel
 {
@@ -18,7 +19,12 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 	{
 		this(projectToUse, BaseId.INVALID);
 		
+		addField(createStringField(Stress.TAG_LABEL));
 		addField(createStringField(Stress.TAG_SHORT_LABEL));
+		addField(createRatingChoiceField(Stress.getObjectType(), new StatusQuestion(Stress.TAG_SCOPE)));
+		addField(createRatingChoiceField(Stress.getObjectType(), new StatusQuestion(Stress.TAG_SEVERITY)));
+		addField(createRatingChoiceField(Stress.getObjectType(), new StatusQuestion(Stress.PSEUDO_STRESS_RATING)));
+		
 		updateFieldsFromProject();
 	}
 	
