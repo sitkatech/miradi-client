@@ -19,8 +19,8 @@ import org.conservationmeasures.eam.dialogs.base.ObjectPoolTable;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 
@@ -128,17 +128,18 @@ abstract public class DiagramPageList extends ObjectPoolTable
 
 		private ORef getSelectedRef()
 		{
-			if (getSelectedObjects().length == 0)
+			if (getSelectedHierarchies().length == 0)
 				return ORef.INVALID;
 			
-			BaseObject selectedDiagramObject = getSelectedObjects()[0];
-			if (selectedDiagramObject == null)
+			ORefList selectedDiagramObjectRefs = getSelectedHierarchies()[0];
+			ORef selectedDiagramObjectRef = selectedDiagramObjectRefs.get(0);
+			if (selectedDiagramObjectRef.isInvalid())
 				return ORef.INVALID;
 			
-			return selectedDiagramObject.getRef();
+			return selectedDiagramObjectRef;
 		}
 		
-		Project project;
+		private Project project;
 	}
 	
 	public boolean shouldSaveColumnWidth()
