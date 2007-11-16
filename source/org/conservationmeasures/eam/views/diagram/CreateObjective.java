@@ -10,11 +10,12 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class CreateObjective extends CreateAnnotationDoer
 {
-	int getAnnotationType()
+	public int getAnnotationType()
 	{
 		return ObjectType.OBJECTIVE;
 	}
-	String getAnnotationIdListTag()
+	
+	public String getAnnotationListTag()
 	{
 		return Factor.TAG_OBJECTIVE_IDS;
 	}

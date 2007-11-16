@@ -5,19 +5,34 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ObjectsDoer;
+import java.text.ParseException;
 
-public class CreateStressDoer extends ObjectsDoer
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
+
+public class CreateStressDoer extends CreateAnnotationDoer
 {
+	//FIXME  temporarly disabled
 	public boolean isAvailable()
 	{
 		return false;
 	}
-
-	public void doIt() throws CommandFailedException
+	
+	public int getAnnotationType()
 	{
-		if (!isAvailable())
-			return;
+		return Stress.getObjectType();
+	}
+	public String getAnnotationListTag()
+	{
+		return Target.TAG_STRESS_REFS;
+	}
+	
+	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
+	{
+		return CommandSetObjectData.createAppendORefCommand(factor, getAnnotationListTag(), refToAppend);
 	}
 }

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -13,7 +15,6 @@ import org.conservationmeasures.eam.dialogs.AnnotationSelectionDlg;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -22,12 +23,7 @@ import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public abstract class CreateAnnotationDoer extends ObjectsDoer
-{
-	
-	abstract int getAnnotationType();
-	abstract String getAnnotationIdListTag();
-
-
+{	
 	public boolean isAvailable()
 	{
 		if (! isDiagramView())
@@ -47,13 +43,12 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		try
 		{
 			CommandCreateObject create = createObject();
-			BaseId createdId = create.getCreatedId();
-			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(factor, getAnnotationIdListTag(), createdId));
+			CommandSetObjectData appendCommand = createAppendCommand(factor, create.getObjectRef());
+			getProject().executeCommand(appendCommand);
 			
-			ORef ref = new ORef(create.getObjectType(), createdId);
 			ObjectPicker picker = getPicker();
 			if(picker != null)
-				picker.ensureObjectVisible(ref);
+				picker.ensureObjectVisible(create.getObjectRef());
 		}
 		catch(Exception e)
 		{
@@ -64,6 +59,11 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
+	{
+		return CommandSetObjectData.createAppendIdCommand(factor, getAnnotationListTag(), refToAppend.getObjectId());
 	}
 
 	protected CommandCreateObject createObject() throws CommandFailedException
@@ -119,6 +119,8 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	BaseObject objectToClone;
+	public abstract int getAnnotationType();
+	public abstract String getAnnotationListTag();
 
+	private BaseObject objectToClone;
 }

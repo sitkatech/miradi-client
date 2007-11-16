@@ -22,12 +22,12 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		return false;
 	}
 
-	int getAnnotationType()
+	public int getAnnotationType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 	
-	String getAnnotationIdListTag()
+	public String getAnnotationListTag()
 	{
 		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
