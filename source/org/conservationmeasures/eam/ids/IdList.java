@@ -222,6 +222,6 @@ public class IdList
 
 	private static final String TAG_IDS = "Ids";
 
-	Vector data;
-	int idListType;
+	private Vector data;
+	private int idListType;
 }
