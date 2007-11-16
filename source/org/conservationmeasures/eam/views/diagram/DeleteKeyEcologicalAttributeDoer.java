@@ -23,12 +23,12 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 	}
 
 	
-	String[] getDialogText()
+	public String[] getDialogText()
 	{
 		return new String[] { "Are you sure you want to delete this Key Ecological Attribute?",};
 	}
 
-	String getAnnotationIdListTag()
+	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
