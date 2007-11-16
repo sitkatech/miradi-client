@@ -362,7 +362,7 @@ abstract public class BaseObject
 		return (String[])fields.keySet().toArray(new String[0]);
 	}
 
-	ObjectData getField(String fieldTag)
+	public ObjectData getField(String fieldTag)
 	{
 		ObjectData data = (ObjectData)fields.get(fieldTag);
 		return data;
