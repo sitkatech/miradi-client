@@ -87,7 +87,15 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public ORefList[] getSelectedHierarchies()
 	{
-		return new ORefList[] {getSelectionHierarchy()};
+		int[] rows = getSelectedRows();
+		ORefList selectedObjectRefs = new ORefList();
+		for(int i = 0; i < rows.length; ++i)
+		{
+			BaseObject objectFromRow = getObjectFromRow(rows[i]);
+			selectedObjectRefs.add(objectFromRow.getRef());
+		}
+		
+		return new ORefList[] {selectedObjectRefs};
 	}
 
 	public void ensureObjectVisible(ORef ref)
@@ -209,7 +217,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 			table.sort(sortColumn);
 		}
 
-		ObjectTable table;
+		private ObjectTable table;
 	}
 	
 	static class TableColumnComparator extends IgnoreCaseStringComparator
@@ -233,6 +241,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		int column;
 	}
 
-	Vector selectionListeners;
-	int currentSortColumn;
+	private Vector selectionListeners;
+	private int currentSortColumn;
 }
