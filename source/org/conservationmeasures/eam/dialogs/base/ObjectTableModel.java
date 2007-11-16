@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.base;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -25,42 +24,35 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		rowObjectType = listedItemType;
 	}
 	
-	abstract public ORefList getLatestRefListFromProject();
-	
-	private IdList getLatestIdListFromProject()
-	{
-		return getLatestRefListFromProject().convertToIdList(getRowObjectType());
-	}
-	
 	public int getRowCount()
 	{
-		return getRowObjectIds().size();
+		return getRowObjectRefs().size();
 	}
 	
 	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
 	{
-		IdList newList = new IdList();
+		ORefList newList = new ORefList();
 		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
 		{
 			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
-			newList.add(getRowObjectIds().get(nextExistingRowIndex));
+			newList.add(getRowObjectRefs().get(nextExistingRowIndex));
 		}
-		setRowObjectIds(newList);
+		setRowObjectRefs(newList);
 	}
 
 	public void resetRows()
 	{
-		setRowObjectIds(getLatestIdListFromProject());
+		setRowObjectRefs(getLatestRefListFromProject());
 	}
 	
 	public BaseObject getObjectFromRow(int row) throws RuntimeException
 	{
 		try
 		{
-			BaseId rowObjectId = getRowObjectIds().get(row);
-			BaseObject rowObject = project.findObject(rowObjectType, rowObjectId);
+			ORef rowObjectRef = getRowObjectRefs().get(row);
+			BaseObject rowObject = project.findObject(rowObjectRef);
 			if(rowObject == null)
-				EAM.logDebug("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
+				EAM.logDebug("ObjectTableModel.getObjectFromRow: Missing object: " + rowObjectRef);
 			return rowObject;
 		}
 		catch(Exception e)
@@ -90,7 +82,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	{
 		try
 		{
-			ORef rowObjectRef = new ORef(rowObjectType, getRowObjectIds().get(row));
+			ORef rowObjectRef = getRowObjectRefs().get(row);
 			return getValueToDisplay(rowObjectRef, getColumnTag(column));
 		}
 		catch(Exception e)
@@ -108,29 +100,29 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	public void rowsWereAddedOrRemoved()
 	{
 		//NOTE: Assumes one row at a time insert or delete
-		IdList availableIds = getLatestIdListFromProject();
-		IdList newList = new IdList();
+		ORefList availableRefs = getLatestRefListFromProject();
+		ORefList newList = new ORefList();
 		int deletedRowIndex = 0;
-		for(int row = 0; row < getRowObjectIds().size(); ++row)
+		for(int row = 0; row < getRowObjectRefs().size(); ++row)
 		{
-			BaseId thisId = getRowObjectIds().get(row);
-			if(availableIds.contains(thisId))
+			ORef thisRef = getRowObjectRefs().get(row);
+			if(availableRefs.contains(thisRef))
 			{
-				newList.add(thisId);
-				availableIds.removeId(thisId);
+				newList.add(thisRef);
+				availableRefs.remove(thisRef);
 			}
 			else
 			{
 				deletedRowIndex = row;
 			}
 		}
-		for(int i = 0; i < availableIds.size(); ++i)
+		for(int i = 0; i < availableRefs.size(); ++i)
 		{
-			newList.add(availableIds.get(i));
+			newList.add(availableRefs.get(i));
 		}
 		
-		int priorCount = getRowObjectIds().size();
-		setRowObjectIds(newList);
+		int priorCount = getRowObjectRefs().size();
+		setRowObjectRefs(newList);
 		
 		if (newList.size() > priorCount)
 			fireTableRowsInserted(newList.size()-1, newList.size()-1);
@@ -158,21 +150,23 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		return project;
 	}
 
-	void setRowObjectIds(IdList rowObjectIdsToUse)
+	void setRowObjectRefs(ORefList rowObjectRefsToUse)
 	{
-		rowObjectIds = rowObjectIdsToUse;
+		rowObjectRefs = rowObjectRefsToUse;
 	}
 
-	private IdList getRowObjectIds()
+	private ORefList getRowObjectRefs()
 	{
-		if (rowObjectIds == null)
+		if (rowObjectRefs == null)
 			resetRows();
 			
-		return rowObjectIds;
+		return rowObjectRefs;
 	}
-
+	
+	abstract public ORefList getLatestRefListFromProject();
+	
 	protected Project project;
 	private int rowObjectType;
-	private IdList rowObjectIds;
+	private ORefList rowObjectRefs;
 	private String[] columnTags;
 }
