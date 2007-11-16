@@ -34,7 +34,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
 
-		setRowObjectIds(getLatestIdListFromProject());
+		setRowObjectRefs(getLatestRefListFromProject());
 	}
 	
 	public ORef getContainingRef()
