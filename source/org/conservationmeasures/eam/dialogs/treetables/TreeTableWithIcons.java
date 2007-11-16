@@ -366,6 +366,11 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		
 		return selectionHierarchyNodeRefs;
 	}
+		
+	public ORefList[] getSelectedHierarchies()
+	{
+		return new ORefList[] {getSelectionHierarchy()};
+	}
 
 	public void ensureObjectVisible(ORef ref)
 	{

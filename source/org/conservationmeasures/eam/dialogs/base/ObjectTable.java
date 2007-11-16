@@ -84,6 +84,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	{
 		return new ORefList(getSelectedObjects());
 	}
+	
+	public ORefList[] getSelectedHierarchies()
+	{
+		return new ORefList[] {getSelectionHierarchy()};
+	}
 
 	public void ensureObjectVisible(ORef ref)
 	{

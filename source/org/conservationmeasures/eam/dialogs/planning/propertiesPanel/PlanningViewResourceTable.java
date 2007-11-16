@@ -196,6 +196,11 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 	{
 		return null;
 	}
+		
+	public ORefList[] getSelectedHierarchies()
+	{
+		return new ORefList[0];
+	}
 
 	public void ensureObjectVisible(ORef ref)
 	{
