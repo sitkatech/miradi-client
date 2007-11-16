@@ -82,20 +82,22 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public ORefList getSelectionHierarchy()
 	{
-		return new ORefList(getSelectedObjects());
+		return getSelectedHierarchies()[0];
 	}
 	
 	public ORefList[] getSelectedHierarchies()
 	{
 		int[] rows = getSelectedRows();
-		ORefList selectedObjectRefs = new ORefList();
+		ORefList[] selectedHierarchies = new ORefList[rows.length];
 		for(int i = 0; i < rows.length; ++i)
 		{
 			BaseObject objectFromRow = getObjectFromRow(rows[i]);
+			ORefList selectedObjectRefs = new ORefList();
 			selectedObjectRefs.add(objectFromRow.getRef());
+			selectedHierarchies[i] = selectedObjectRefs;
 		}
 		
-		return new ORefList[] {selectedObjectRefs};
+		return selectedHierarchies;
 	}
 
 	public void ensureObjectVisible(ORef ref)
