@@ -33,7 +33,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		super(projectToUse, listedItemType, tableColumnTags);
 		containingObjectType = objectType;
 		containingObjectId = objectId;
-		tagOfIdList = idListFieldTag;
+		tagOfList = idListFieldTag;
 
 		setRowObjectRefs(getLatestRefListFromProject());
 	}
@@ -55,7 +55,7 @@ public class ObjectListTableModel extends ObjectTableModel
 	
 	public String getFieldTag()
 	{
-		return tagOfIdList;
+		return tagOfList;
 	}
 
 	public BaseObject getContainingObject()
@@ -67,11 +67,11 @@ public class ObjectListTableModel extends ObjectTableModel
 	{
 		try
 		{
-			ObjectData objectData = getContainingObject().getField(tagOfIdList);
+			ObjectData objectData = getContainingObject().getField(tagOfList);
 			if (objectData.isIdListData()) 
-				return new ORefList(getRowObjectType(), new IdList(getContainingObject().getData(tagOfIdList)));
+				return new ORefList(getRowObjectType(), new IdList(getContainingObject().getData(tagOfList)));
 			
-			return new ORefList(getContainingObject().getData(tagOfIdList));
+			return new ORefList(getContainingObject().getData(tagOfList));
 		}
 		catch(Exception e)
 		{
@@ -82,5 +82,5 @@ public class ObjectListTableModel extends ObjectTableModel
 	
 	private int containingObjectType;
 	private BaseId containingObjectId;
-	private String tagOfIdList;
+	private String tagOfList;
 }
