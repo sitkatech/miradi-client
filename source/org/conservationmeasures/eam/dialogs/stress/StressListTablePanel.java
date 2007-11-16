@@ -25,7 +25,7 @@ public class StressListTablePanel extends ObjectListTablePanel
 	
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateStress.class,
-		ActionDeleteStress.class,
 		ActionCloneStress.class,
+		ActionDeleteStress.class,
 	};
 }
