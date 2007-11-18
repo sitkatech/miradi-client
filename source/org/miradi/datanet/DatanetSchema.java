@@ -6,7 +6,9 @@
 package org.miradi.datanet;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Vector;
 
 public class DatanetSchema
 {
@@ -34,6 +36,20 @@ public class DatanetSchema
 	public LinkageType getLinkageType(String typeName)
 	{
 		return linkageTypes.get(typeName);
+	}
+	
+	public LinkageType[] getLinkageTypesOwnedBy(String recordTypeName)
+	{
+		Vector<LinkageType> ownedTypes = new Vector<LinkageType>();
+		Iterator<String> linkageTypeNameIterator = linkageTypes.keySet().iterator();
+		while(linkageTypeNameIterator.hasNext())
+		{
+			String linkageTypeName = linkageTypeNameIterator.next();
+			LinkageType type = getLinkageType(linkageTypeName);
+			if(type.getOwnerClassName().equals(recordTypeName))
+				ownedTypes.add(type);
+		}
+		return ownedTypes.toArray(new LinkageType[0]);
 	}
 	
 	private Map<String, RecordType> recordTypes;

@@ -46,6 +46,16 @@ public class RecordInstance
 		fieldValues.put(fieldName, fieldValue);
 	}
 	
+	public int getMemberCount(String linkageTypeName)
+	{
+		return datanet.getMemberCount(this, linkageTypeName);
+	}
+	
+	public Object getMember(String linkageTypeName, int index)
+	{
+		return datanet.getMember(this, linkageTypeName, index);
+	}
+
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof RecordInstance))
