@@ -62,12 +62,4 @@ public class TestRecordType extends TestCaseEnhanced
 		rt.addField("date", RecordType.DATE);
 	}
 	
-	public void testCreate() throws Exception
-	{
-		RecordType rt = new RecordType("x");
-		rt.addField("string", RecordType.STRING);
-		
-		RecordInstance ri = rt.create(1);
-		assertEquals(rt.getName(), ri.getType().getName());
-	}
 }

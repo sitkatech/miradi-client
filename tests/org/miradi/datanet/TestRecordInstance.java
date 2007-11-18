@@ -5,9 +5,8 @@
 */ 
 package org.miradi.datanet;
 
-import org.martus.util.TestCaseEnhanced;
 
-public class TestRecordInstance extends TestCaseEnhanced
+public class TestRecordInstance extends TestCaseWithSampleDatanet
 {
 	public TestRecordInstance(String name)
 	{
@@ -16,39 +15,30 @@ public class TestRecordInstance extends TestCaseEnhanced
 
 	public void testGetKey() throws Exception
 	{
-		RecordType rt = new RecordType("x");
-		RecordInstance first = rt.create(1);
-		RecordInstance second = rt.create(2);
+		RecordInstance first = createOwnerRecord();
+		RecordInstance second = createOwnerRecord();
 		
-		assertContains(rt.getName(), first.getKey());
+		assertContains(first.getType().getName(), first.getKey());
 		assertNotEquals(first.getKey(), second.getKey());
 	}
 	
 	public void testSetGet() throws Exception
 	{
-		String FIRST = "first";
-		String SECOND = "second";
-
-		RecordType rt = new RecordType("x");
-		rt.addField(FIRST, RecordType.STRING);
-		rt.addField(SECOND, RecordType.STRING);
-		RecordInstance ri = rt.create(3);
-		
 		try
 		{
-			ri.getFieldData("unknown");
+			owner.getFieldData("unknown");
 			fail("Should have thrown for unknown field");
 		}
 		catch(RecordInstance.UnknownFieldException ignoreExpected)
 		{
 			
 		}
-		assertEquals("", ri.getFieldData(FIRST));
-		assertEquals("", ri.getFieldData(SECOND));
+		assertEquals("", owner.getFieldData(SampleDatanetSchema.LABEL));
+		assertEquals("", owner.getFieldData(SampleDatanetSchema.COMMENTS));
 		
 		try
 		{
-			ri.setFieldData("unknown", "whatever");
+			owner.setFieldData("unknown", "whatever");
 			fail("Should have thrown for unknown field");
 		}
 		catch(RecordInstance.UnknownFieldException ignoreExpected)
@@ -56,27 +46,25 @@ public class TestRecordInstance extends TestCaseEnhanced
 			
 		}
 		String SAMPLE_DATA = "Sample date";
-		ri.setFieldData(FIRST, SAMPLE_DATA);
-		assertEquals(SAMPLE_DATA, ri.getFieldData(FIRST));
+		owner.setFieldData(SampleDatanetSchema.LABEL, SAMPLE_DATA);
+		assertEquals(SAMPLE_DATA, owner.getFieldData(SampleDatanetSchema.LABEL));
 	}
 	
 	public void testEquals() throws Exception
 	{
 		String LABEL = "Label";
 		
-		RecordType rt = new RecordType("x");
-		rt.addField(LABEL, RecordType.STRING);
-		RecordInstance first = rt.create(1);
-		RecordInstance second = rt.create(2);
-		assertNotEquals("Different record instances were equal?", first, second);
+		RecordInstance owner2 = createOwnerRecord();
+		assertNotEquals("Different record instances were equal?", owner, owner2);
+		
+		int ID = 100;
+		RecordInstance similar1 = new RecordInstance(datanet, owner.getType(), ID);
+		RecordInstance similar2 = new RecordInstance(datanet, owner.getType(), ID);
+		similar1.setFieldData(LABEL, "blah");
+		assertEquals("Same key not equal?", similar1, similar2);
+		assertEquals("Same key different hashCode?", similar1.hashCode(), similar2.hashCode());
 
-		RecordInstance dupe = rt.create(2);
-		dupe.setFieldData(LABEL, "blah");
-		assertEquals("Same key not equal?", second, dupe);
-		assertEquals("Same key different hashCode?", second.hashCode(), dupe.hashCode());
-
-		RecordType rt2 = new RecordType("y");
-		RecordInstance other = rt2.create(2);
-		assertNotEquals("Same id different type were equal?", second, other);
+		RecordInstance different = new RecordInstance(datanet, member.getType(), ID);
+		assertNotEquals("Same id different type were equal?", similar1, different);
 	}
 }

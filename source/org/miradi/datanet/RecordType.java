@@ -68,12 +68,6 @@ public class RecordType
 		return new Vector(Arrays.asList(LEGAL_FIELD_TYPES)).contains(fieldType);
 	}
 	
-	public RecordInstance create(int id)
-	{
-		RecordInstance ri = new RecordInstance(this, id);
-		return ri;
-	}
-
 	public static final String STRING = "String";
 	public static final String SHORT_STRING = "ShortString";
 	public static final String LONG_STRING = "LongString";

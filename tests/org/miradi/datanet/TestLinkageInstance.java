@@ -5,9 +5,8 @@
 */ 
 package org.miradi.datanet;
 
-import org.martus.util.TestCaseEnhanced;
 
-public class TestLinkageInstance extends TestCaseEnhanced
+public class TestLinkageInstance extends TestCaseWithSampleDatanet
 {
 	public TestLinkageInstance(String name)
 	{
@@ -16,34 +15,32 @@ public class TestLinkageInstance extends TestCaseEnhanced
 
 	public void testBasics() throws Exception
 	{
-		RecordType ownerType = new RecordType("owner");
-		RecordType memberType = new RecordType("member");
-		LinkageType linkageType = new LinkageType("linkage", ownerType, memberType, LinkageType.CONTAINS);
-		RecordInstance owner = new RecordInstance(ownerType, 1);
-		RecordInstance member = new RecordInstance(memberType, 2);
-		LinkageInstance linkage = new LinkageInstance(linkageType, owner);
-		assertEquals(0, linkage.getMemberCount());
-		assertEquals(owner.getKey(), linkage.getOwner().getKey());
+		RecordInstance anotherOwner = createOwnerRecord();
+		LinkageType linkageType = datanet.getSampleSchema().getLinkageType(SampleDatanetSchema.OWNER_TO_MEMBER);
+		LinkageInstance localLinkage = new LinkageInstance(datanet, linkageType, anotherOwner);
+		assertEquals(anotherOwner, localLinkage.getOwner());
 		try
 		{
-			linkage.addMember(owner);
+			localLinkage.addMember(anotherOwner);
 			fail("Should have thrown for wrong member type");
 		}
 		catch(LinkageInstance.WrongMemberTypeException ignoreExpected)
 		{
 			
 		}
-		linkage.addMember(member);
-		assertEquals(1, linkage.getMemberCount());
+		
+		RecordInstance anotherMember = createMemberRecord();
+		localLinkage.addMember(anotherMember);
+		assertEquals(1, localLinkage.getMemberCount());
 		try
 		{
-			linkage.addMember(member);
+			localLinkage.addMember(anotherMember);
 			fail("Should have thrown for member already exists");	
 		}
 		catch(LinkageInstance.MemberAlreadyExistsException ignoreExpected)
 		{
 			
 		}
-		assertEquals(member.getKey(), linkage.getMember(0).getKey());
+		assertEquals(anotherMember, localLinkage.getMember(0));
 	}
 }

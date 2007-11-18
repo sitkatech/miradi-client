@@ -10,8 +10,9 @@ import java.util.Map;
 
 public class RecordInstance
 {
-	public RecordInstance(RecordType typeToUse, int id)
+	public RecordInstance(Datanet datanetToUse, RecordType typeToUse, int id)
 	{
+		datanet = datanetToUse;
 		type = typeToUse;
 		
 		key = typeToUse.getName() + ":" + id;
@@ -66,6 +67,7 @@ public class RecordInstance
 		}
 	}
 	
+	private Datanet datanet;
 	private RecordType type;
 	private String key;
 	Map<String, String> fieldValues;

@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class LinkageInstance
 {
-	public LinkageInstance(LinkageType typeToUse, RecordInstance ownerToUse)
+	public LinkageInstance(Datanet datanetToUse, LinkageType typeToUse, RecordInstance ownerToUse)
 	{
 		type = typeToUse;
 		owner = ownerToUse;
