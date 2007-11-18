@@ -22,8 +22,11 @@ public class Datanet
 	{
 	}
 
-	public RecordInstance getRecord(RecordKey key)
+	public RecordInstance getRecord(RecordKey key) throws RecordNotFoundException
 	{
+		if(!records.containsKey(key))
+			throw new RecordNotFoundException(key);
+		
 		return records.get(key);
 	}
 	
@@ -38,7 +41,7 @@ public class Datanet
 		return created.getKey();
 	}
 	
-	public void deleteRecord(RecordKey recordKey)
+	public void deleteRecord(RecordKey recordKey) throws Exception
 	{
 
 		// remove as member from all linkages
@@ -57,9 +60,24 @@ public class Datanet
 				linkage.removeMember(record);
 			}
 		}
+		for(LinkageKey linkageKey : linkages.keySet())
+		{
+			LinkageType linkageType = getSchema().getLinkageType(linkageKey.getTypeName());
+			String ownerClassName = linkageType.getOwnerClassName();
+			String recordTypeName = record.getType().getName();
+			if(!recordTypeName.equals(ownerClassName))
+				continue;
+			LinkageInstance linkage = linkages.get(linkageKey);
+			if(!linkage.getOwner().equals(record))
+				continue;
+			
+			RecordInstanceSet members = linkage.getMembers();
+			for(RecordInstance member : members)
+			{
+				removeMemberKey(record.getKey(), linkageType.getName(), member.getKey());
+			}
+		}
 
-		// remove all members
-		
 		records.remove(recordKey);
 	}
 	
@@ -69,19 +87,20 @@ public class Datanet
 		linkage.addMember(getRecord(memberKey));
 	}
 	
-	public void removeMemberKey(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey)
+	public void removeMemberKey(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey) throws Exception
 	{
 		LinkageInstance linkage = getLinkage(getRecord(ownerKey), linkageTypeName);
 		linkage.removeMember(getRecord(memberKey));
+		deleteRecord(memberKey);
 	}
 
-	public int getMemberCount(RecordKey ownerKey, String linkageTypeName)
+	public int getMemberCount(RecordKey ownerKey, String linkageTypeName) throws Exception
 	{
 		LinkageInstance linkage = getLinkage(ownerKey, linkageTypeName);
 		return linkage.getMemberCount();
 	}
 
-	public RecordKeySet getMemberKeys(RecordKey ownerKey, String linkageTypeName)
+	public RecordKeySet getMemberKeys(RecordKey ownerKey, String linkageTypeName) throws Exception
 	{
 		LinkageInstance linkage = getLinkage(ownerKey, linkageTypeName);
 		RecordKeySet memberKeys = new RecordKeySet();
@@ -131,7 +150,7 @@ public class Datanet
 		}
 	}
 	
-	LinkageInstance getLinkage(RecordKey ownerKey, String linkageTypeName)
+	LinkageInstance getLinkage(RecordKey ownerKey, String linkageTypeName) throws Exception
 	{
 		RecordInstance owner = getRecord(ownerKey);
 		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
@@ -169,6 +188,13 @@ public class Datanet
 		}
 	}
 	
+	static public class RecordNotFoundException extends Exception
+	{
+		public RecordNotFoundException(RecordKey recordKey)
+		{
+			super(recordKey.toString());
+		}
+	}
 	
 	private DatanetSchema schema;
 	private int nextId;

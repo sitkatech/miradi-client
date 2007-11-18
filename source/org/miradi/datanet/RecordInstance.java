@@ -46,13 +46,13 @@ public class RecordInstance
 		fieldValues.put(fieldName, fieldValue);
 	}
 	
-	public int getMemberCount(String linkageTypeName)
+	public int getMemberCount(String linkageTypeName) throws Exception
 	{
 		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
 		return linkage.getMemberCount();
 	}
 	
-	public RecordInstanceSet getMembers(String linkageTypeName)
+	public RecordInstanceSet getMembers(String linkageTypeName) throws Exception
 	{
 		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
 		return linkage.getMembers();
