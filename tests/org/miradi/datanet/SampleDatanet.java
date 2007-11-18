@@ -11,9 +11,9 @@ public class SampleDatanet extends Datanet
 	{
 		super(new SampleDatanetSchema());
 		
-		owner = createOwnerRecord();
-		member = createMemberRecord();
-		other = createOtherRecord();
+		owner = getRecord(createOwnerRecord());
+		member = getRecord(createMemberRecord());
+		other = getRecord(createOtherRecord());
 //		addMember(owner, SampleDatanetSchema.OWNER_TO_MEMBER, member);
 	}
 	
@@ -22,17 +22,17 @@ public class SampleDatanet extends Datanet
 		return (SampleDatanetSchema)getSchema();
 	}
 	
-	public RecordInstance createOwnerRecord() throws Exception
+	public RecordKey createOwnerRecord() throws Exception
 	{
 		return createRecord(SampleDatanetSchema.OWNER);
 	}
 	
-	public RecordInstance createMemberRecord() throws Exception
+	public RecordKey createMemberRecord() throws Exception
 	{
 		return createRecord(SampleDatanetSchema.MEMBER);
 	}
 	
-	public RecordInstance createOtherRecord() throws Exception
+	public RecordKey createOtherRecord() throws Exception
 	{
 		return createRecord(SampleDatanetSchema.OTHER);
 	}

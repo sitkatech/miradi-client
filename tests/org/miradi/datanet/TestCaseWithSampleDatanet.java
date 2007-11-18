@@ -29,17 +29,17 @@ abstract public class TestCaseWithSampleDatanet extends TestCaseEnhanced
 		super.tearDown();
 	}
 	
-	RecordInstance createOwnerRecord() throws Exception
+	RecordKey createOwnerRecord() throws Exception
 	{
 		return datanet.createOwnerRecord();
 	}
 	
-	RecordInstance createMemberRecord() throws Exception
+	RecordKey createMemberRecord() throws Exception
 	{
 		return datanet.createRecord(SampleDatanetSchema.MEMBER);
 	}
 	
-	RecordInstance createOtherRecord() throws Exception
+	RecordKey createOtherRecord() throws Exception
 	{
 		return datanet.createRecord(SampleDatanetSchema.OTHER);
 	}

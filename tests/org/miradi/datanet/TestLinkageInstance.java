@@ -15,7 +15,7 @@ public class TestLinkageInstance extends TestCaseWithSampleDatanet
 
 	public void testBasics() throws Exception
 	{
-		RecordInstance anotherOwner = createOwnerRecord();
+		RecordInstance anotherOwner = datanet.getRecord(createOwnerRecord());
 		LinkageType linkageType = datanet.getSampleSchema().getLinkageType(SampleDatanetSchema.OWNER_TO_MEMBER);
 		LinkageInstance localLinkage = new LinkageInstance(datanet, linkageType, anotherOwner);
 		assertEquals(anotherOwner, localLinkage.getOwner());
@@ -29,7 +29,7 @@ public class TestLinkageInstance extends TestCaseWithSampleDatanet
 			
 		}
 		
-		RecordInstance anotherMember = createMemberRecord();
+		RecordInstance anotherMember = datanet.getRecord(createMemberRecord());
 		localLinkage.addMember(anotherMember);
 		assertEquals(1, localLinkage.getMemberCount());
 		try
