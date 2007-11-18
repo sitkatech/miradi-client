@@ -29,14 +29,13 @@ public class TestDatanet extends TestCaseEnhanced
 		RecordInstance owner1 = datanet.getRecord(ownerKey1);
 		assertEquals(ownerType.getName(), owner1.getType().getName());
 		RecordKey ownerKey2 = datanet.createRecord(ownerType.getName());
-		RecordInstance owner2 = datanet.getRecord(ownerKey2);
-		assertNotEquals("Different records are equal?", owner1, owner2);
+		assertNotEquals("Different records are equal?", ownerKey1, ownerKey2);
 		
 		String linkageTypeName = linkageType.getName();
 
 		RecordKey memberKey1 = datanet.createRecord(memberType.getName());
 		datanet.addMember(ownerKey1, linkageTypeName, memberKey1);
-		assertEquals(1, owner1.getMemberCount(linkageTypeName));
+		assertEquals(1, datanet.getMemberCount(ownerKey1, linkageTypeName));
 
 		RecordKey memberKey2 = datanet.createRecord(memberType.getName());
 		datanet.addMember(ownerKey1, linkageTypeName, memberKey2);
