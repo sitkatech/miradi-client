@@ -10,14 +10,6 @@ import java.util.Map;
 
 public class RecordInstance
 {
-	static public class UnknownFieldException extends Exception
-	{
-		public UnknownFieldException(String fieldName)
-		{
-			super(fieldName);
-		}
-	}
-	
 	public RecordInstance(RecordType typeToUse, int id)
 	{
 		type = typeToUse;
@@ -64,6 +56,14 @@ public class RecordInstance
 	public int hashCode()
 	{
 		return getKey().hashCode();
+	}
+	
+	static public class UnknownFieldException extends Exception
+	{
+		public UnknownFieldException(String fieldName)
+		{
+			super(fieldName);
+		}
 	}
 	
 	private RecordType type;
