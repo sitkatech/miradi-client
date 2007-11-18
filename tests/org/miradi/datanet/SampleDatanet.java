@@ -14,7 +14,7 @@ public class SampleDatanet extends Datanet
 		owner = getRecord(createOwnerRecord());
 		member = getRecord(createMemberRecord());
 		other = getRecord(createOtherRecord());
-//		addMember(owner, SampleDatanetSchema.OWNER_TO_MEMBER, member);
+		addMemberKey(owner.getKey(), SampleDatanetSchema.OWNER_TO_MEMBER, member.getKey());
 	}
 	
 	public SampleDatanetSchema getSampleSchema()

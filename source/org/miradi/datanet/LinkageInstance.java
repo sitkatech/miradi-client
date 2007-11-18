@@ -16,11 +16,6 @@ public class LinkageInstance
 		members = new Vector<RecordInstance>();
 	}
 	
-	public String getKey()
-	{
-		return null;
-	}
-	
 	public int getMemberCount()
 	{
 		return members.size();
@@ -38,6 +33,11 @@ public class LinkageInstance
 		if(members.contains(newMember))
 			throw new MemberAlreadyExistsException(newMember.getKey().toString());
 		members.add(newMember);
+	}
+	
+	public RecordInstance[] getMembers()
+	{
+		return members.toArray(new RecordInstance[0]);
 	}
 	
 	public RecordInstance getMember(int index)

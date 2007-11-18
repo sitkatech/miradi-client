@@ -46,16 +46,19 @@ public class Datanet
 
 	public int getMemberCount(RecordKey ownerKey, String linkageTypeName)
 	{
-		RecordInstance owner = getRecord(ownerKey);
-		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
+		LinkageInstance linkage = getLinkage(ownerKey, linkageTypeName);
 		return linkage.getMemberCount();
 	}
 
-	public RecordKey getMemberKey(RecordKey ownerKey, String linkageTypeName, int index)
+	public RecordKey[] getMemberKeys(RecordKey ownerKey, String linkageTypeName)
 	{
-		RecordInstance owner = getRecord(ownerKey);
-		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
-		return linkage.getMember(index).getKey();
+		LinkageInstance linkage = getLinkage(ownerKey, linkageTypeName);
+		RecordKey[] memberKeys = new RecordKey[linkage.getMemberCount()];
+		for(int i = 0; i < memberKeys.length; ++i)
+		{
+			memberKeys[i] = linkage.getMember(i).getKey();
+		}
+		return memberKeys;
 	}
 
 	RecordType getRecordType(String typeName)
@@ -77,6 +80,13 @@ public class Datanet
 			LinkageInstance linkage = new LinkageInstance(this, linkageTypes[type], newRecord);
 			linkages.put(linkageKey, linkage);
 		}
+	}
+	
+	LinkageInstance getLinkage(RecordKey ownerKey, String linkageTypeName)
+	{
+		RecordInstance owner = getRecord(ownerKey);
+		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
+		return linkage;
 	}
 	
 	private LinkageInstance getLinkage(RecordInstance owner, String linkageTypeName)
