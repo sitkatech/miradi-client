@@ -1,0 +1,72 @@
+/* 
+* Copyright 2005-2007, Wildlife Conservation Society, 
+* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.datanet;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RecordInstance
+{
+	static public class UnknownFieldException extends Exception
+	{
+		public UnknownFieldException(String fieldName)
+		{
+			super(fieldName);
+		}
+	}
+	
+	public RecordInstance(RecordType typeToUse, int id)
+	{
+		type = typeToUse;
+		
+		key = typeToUse.getName() + ":" + id;
+		fieldValues = new HashMap<String, String>();
+	}
+	
+	public RecordType getType()
+	{
+		return type;
+	}
+	
+	public String getKey()
+	{
+		return key;
+	}
+	
+	public String getFieldData(String fieldName) throws UnknownFieldException
+	{
+		if(!type.fieldExists(fieldName))
+			throw new UnknownFieldException(fieldName);
+		String fieldValue = fieldValues.get(fieldName);
+		if(fieldValue == null)
+			fieldValue = "";
+		return fieldValue;
+	}
+	
+	public void setFieldData(String fieldName, String fieldValue) throws UnknownFieldException
+	{
+		if(!type.fieldExists(fieldName))
+			throw new UnknownFieldException(fieldName);
+		fieldValues.put(fieldName, fieldValue);
+	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(! (rawOther instanceof RecordInstance))
+			return false;
+		RecordInstance other = (RecordInstance)rawOther;
+		return (getKey().equals(other.getKey()));
+	}
+	
+	public int hashCode()
+	{
+		return getKey().hashCode();
+	}
+	
+	private RecordType type;
+	private String key;
+	Map<String, String> fieldValues;
+}
