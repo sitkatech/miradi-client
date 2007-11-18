@@ -38,10 +38,10 @@ public class Datanet
 		return records.get(key);
 	}
 	
-	public void addMember(RecordInstance owner, String linkageTypeName, RecordInstance member) throws Exception
+	public void addMember(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey) throws Exception
 	{
-		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
-		linkage.addMember(member);
+		LinkageInstance linkage = getLinkage(getRecord(ownerKey), linkageTypeName);
+		linkage.addMember(getRecord(memberKey));
 	}
 
 	public int getMemberCount(RecordKey ownerKey, String linkageTypeName)

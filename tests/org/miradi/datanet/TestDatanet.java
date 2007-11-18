@@ -36,12 +36,12 @@ public class TestDatanet extends TestCaseEnhanced
 
 		RecordKey memberKey1 = datanet.createRecord(memberType.getName());
 		RecordInstance member1 = datanet.getRecord(memberKey1);
-		datanet.addMember(owner1, linkageTypeName, member1);
+		datanet.addMember(ownerKey1, linkageTypeName, memberKey1);
 		assertEquals(1, owner1.getMemberCount(linkageTypeName));
 
 		RecordKey memberKey2 = datanet.createRecord(memberType.getName());
 		RecordInstance member2 = datanet.getRecord(memberKey2);
-		datanet.addMember(owner1, linkageTypeName, member2);
+		datanet.addMember(ownerKey1, linkageTypeName, memberKey2);
 		assertEquals(member1, owner1.getMember(linkageTypeName, 0));
 		assertEquals(member2, owner1.getMember(linkageTypeName, 1));
 	}
