@@ -51,11 +51,11 @@ public class Datanet
 		return linkage.getMemberCount();
 	}
 
-	public Object getMember(RecordKey ownerKey, String linkageTypeName, int index)
+	public RecordKey getMember(RecordKey ownerKey, String linkageTypeName, int index)
 	{
 		RecordInstance owner = getRecord(ownerKey);
 		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
-		return linkage.getMember(index);
+		return linkage.getMember(index).getKey();
 	}
 
 	RecordType getRecordType(String typeName)
