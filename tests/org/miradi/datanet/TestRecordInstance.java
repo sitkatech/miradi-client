@@ -64,6 +64,11 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 		assertContains(secondMember, members);
 	}
 	
+	public void testGetOnwer() throws Exception
+	{
+		assertEquals(owner, member.getOwner(SampleDatanetSchema.OWNER_TO_MEMBER));
+	}
+	
 	public void testEquals() throws Exception
 	{
 		String LABEL = "Label";

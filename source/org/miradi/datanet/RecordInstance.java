@@ -57,6 +57,11 @@ public class RecordInstance
 		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
 		return linkage.getMembers();
 	}
+	
+	public RecordInstance getOwner(String linkageTypeName) throws Exception
+	{
+		return datanet.getRecord(datanet.getOwnerKey(getKey(), linkageTypeName));
+	}
 
 	public boolean equals(Object rawOther)
 	{
