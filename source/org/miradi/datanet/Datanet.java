@@ -44,8 +44,9 @@ public class Datanet
 		linkage.addMember(member);
 	}
 
-	public int getMemberCount(RecordInstance owner, String linkageTypeName)
+	public int getMemberCount(RecordKey ownerKey, String linkageTypeName)
 	{
+		RecordInstance owner = getRecord(ownerKey);
 		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
 		return linkage.getMemberCount();
 	}

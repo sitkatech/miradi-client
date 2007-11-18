@@ -48,7 +48,7 @@ public class RecordInstance
 	
 	public int getMemberCount(String linkageTypeName)
 	{
-		return datanet.getMemberCount(this, linkageTypeName);
+		return datanet.getMemberCount(getKey(), linkageTypeName);
 	}
 	
 	public Object getMember(String linkageTypeName, int index)
