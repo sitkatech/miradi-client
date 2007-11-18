@@ -20,6 +20,7 @@ abstract public class TestCaseWithSampleDatanet extends TestCaseEnhanced
 		datanet = new SampleDatanet();
 		owner = datanet.owner;
 		member = datanet.member;
+		secondMember = datanet.secondMember;
 		other = datanet.other;
 	}
 	
@@ -47,5 +48,6 @@ abstract public class TestCaseWithSampleDatanet extends TestCaseEnhanced
 	SampleDatanet datanet;
 	RecordInstance owner;
 	RecordInstance member;
+	RecordInstance secondMember;
 	RecordInstance other;
 }

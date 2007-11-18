@@ -58,9 +58,10 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 	
 	public void testMembers() throws Exception
 	{
-		assertEquals(1, owner.getMemberCount(SampleDatanetSchema.OWNER_TO_MEMBER));
+		assertEquals(2, owner.getMemberCount(SampleDatanetSchema.OWNER_TO_MEMBER));
 		RecordInstanceSet members = owner.getMembers(SampleDatanetSchema.OWNER_TO_MEMBER);
 		assertContains(member, members);
+		assertContains(secondMember, members);
 	}
 	
 	public void testEquals() throws Exception
