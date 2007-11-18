@@ -14,17 +14,26 @@ public class Datanet
 //		linkages = new HashMap<RecordInstance, LinkageInstance>();
 	}
 	
+	public void close()
+	{
+	}
+
 	public RecordInstance createRecord(String typeName) throws UnknownRecordTypeException
 	{
 		RecordType type = getRecordType(typeName);
 		if(type == null)
 			throw new UnknownRecordTypeException(typeName);
-		return type.create(nextId++);
+		return new RecordInstance(this, type, nextId++);
 	}
 	
 	RecordType getRecordType(String typeName)
 	{
 		return schema.getRecordType(typeName);
+	}
+	
+	DatanetSchema getSchema()
+	{
+		return schema;
 	}
 	
 	static public class UnknownRecordTypeException extends Exception
