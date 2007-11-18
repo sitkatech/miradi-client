@@ -39,7 +39,7 @@ public class TestDatanet extends TestCaseEnhanced
 
 		RecordKey memberKey2 = datanet.createRecord(memberType.getName());
 		datanet.addMemberKey(ownerKey1, linkageTypeName, memberKey2);
-		RecordKey[] memberKeys = datanet.getMemberKeys(ownerKey1, linkageTypeName);
+		RecordKeySet memberKeys = datanet.getMemberKeys(ownerKey1, linkageTypeName);
 		assertContains(memberKey1, memberKeys);
 		assertContains(memberKey2, memberKeys);
 	}

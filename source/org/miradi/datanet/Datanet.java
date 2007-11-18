@@ -7,7 +7,6 @@ package org.miradi.datanet;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 
 public class Datanet
@@ -51,15 +50,14 @@ public class Datanet
 		return linkage.getMemberCount();
 	}
 
-	public RecordKey[] getMemberKeys(RecordKey ownerKey, String linkageTypeName)
+	public RecordKeySet getMemberKeys(RecordKey ownerKey, String linkageTypeName)
 	{
 		LinkageInstance linkage = getLinkage(ownerKey, linkageTypeName);
-		Vector<RecordKey> memberKeys = new Vector<RecordKey>();
+		RecordKeySet memberKeys = new RecordKeySet();
 		for(RecordInstance record : linkage.getMembers())
-		{
 			memberKeys.add(record.getKey());
-		}
-		return memberKeys.toArray(new RecordKey[0]);
+
+		return memberKeys;
 	}
 
 	RecordType getRecordType(String typeName)
