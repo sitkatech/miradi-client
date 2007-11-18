@@ -42,5 +42,10 @@ public class TestDatanet extends TestCaseEnhanced
 		RecordKeySet memberKeys = datanet.getMemberKeys(ownerKey1, linkageTypeName);
 		assertContains(memberKey1, memberKeys);
 		assertContains(memberKey2, memberKeys);
+		
+		datanet.removeMemberKey(ownerKey1, linkageTypeName, memberKey1);
+		datanet.removeMemberKey(ownerKey1, linkageTypeName, memberKey2);
+		assertEquals(0, datanet.getMemberCount(ownerKey1, linkageTypeName));
+		
 	}
 }

@@ -34,6 +34,11 @@ public class LinkageInstance
 		members.add(newMember);
 	}
 	
+	public void removeMember(RecordInstance record)
+	{
+		members.remove(record);
+	}
+
 	public RecordInstanceSet getMembers()
 	{
 		return members;

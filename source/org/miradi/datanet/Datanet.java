@@ -43,6 +43,12 @@ public class Datanet
 		LinkageInstance linkage = getLinkage(getRecord(ownerKey), linkageTypeName);
 		linkage.addMember(getRecord(memberKey));
 	}
+	
+	public void removeMemberKey(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey)
+	{
+		LinkageInstance linkage = getLinkage(getRecord(ownerKey), linkageTypeName);
+		linkage.removeMember(getRecord(memberKey));
+	}
 
 	public int getMemberCount(RecordKey ownerKey, String linkageTypeName)
 	{
