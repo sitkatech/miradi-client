@@ -65,6 +65,21 @@ public class Datanet
 
 		return memberKeys;
 	}
+	
+	public RecordKey getOwnerKey(RecordKey memberKey, String linkageTypeName) throws Exception
+	{
+		RecordInstance member = getRecord(memberKey);
+		for(LinkageKey linkageKey : linkages.keySet())
+		{
+			if(!linkageTypeName.equals(linkageKey.getTypeName()))
+				continue;
+			LinkageInstance linkage = linkages.get(linkageKey);
+			if(linkage.getMembers().contains(member))
+				return linkage.getOwner().getKey();
+		}
+		
+		throw new NoOwnerException(memberKey.toString() + " " + linkageTypeName);
+	}
 
 	RecordType getRecordType(String typeName)
 	{
@@ -106,6 +121,14 @@ public class Datanet
 		public UnknownRecordTypeException(String typeName)
 		{
 			super(typeName);
+		}
+	}
+	
+	static public class NoOwnerException extends Exception
+	{
+		public NoOwnerException(String details)
+		{
+			super(details);
 		}
 	}
 	

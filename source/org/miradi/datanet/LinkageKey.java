@@ -13,6 +13,11 @@ public class LinkageKey
 		linkageTypeName = linkageTypeNameToUse;
 	}
 	
+	public String getTypeName()
+	{
+		return linkageTypeName;
+	}
+
 	public String toString()
 	{
 		return ownerKey.toString() + ":" + linkageTypeName;
