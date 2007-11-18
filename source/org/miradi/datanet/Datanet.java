@@ -68,6 +68,10 @@ public class Datanet
 	
 	public RecordKey getOwnerKey(RecordKey memberKey, String linkageTypeName) throws Exception
 	{
+		LinkageType linkageType = getSchema().getLinkageType(linkageTypeName);
+		if(!linkageType.getMemberClassName().equals(memberKey.getRecordTypeName()))
+			throw new NotMemberOfThatLinkageException(memberKey.toString() + " " + linkageTypeName);
+		
 		RecordInstance member = getRecord(memberKey);
 		for(LinkageKey linkageKey : linkages.keySet())
 		{
@@ -131,6 +135,15 @@ public class Datanet
 			super(details);
 		}
 	}
+	
+	static public class NotMemberOfThatLinkageException extends Exception
+	{
+		public NotMemberOfThatLinkageException(String details)
+		{
+			super(details);
+		}
+	}
+	
 	
 	private DatanetSchema schema;
 	private int nextId;
