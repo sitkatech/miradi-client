@@ -52,7 +52,7 @@ public class RecordInstance
 		return linkage.getMemberCount();
 	}
 	
-	public RecordInstance[] getMembers(String linkageTypeName)
+	public RecordInstanceSet getMembers(String linkageTypeName)
 	{
 		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
 		return linkage.getMembers();

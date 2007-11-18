@@ -5,7 +5,6 @@
 */ 
 package org.miradi.datanet;
 
-import java.util.Vector;
 
 public class LinkageInstance
 {
@@ -13,7 +12,7 @@ public class LinkageInstance
 	{
 		type = typeToUse;
 		owner = ownerToUse;
-		members = new Vector<RecordInstance>();
+		members = new RecordInstanceSet();
 	}
 	
 	public int getMemberCount()
@@ -35,14 +34,9 @@ public class LinkageInstance
 		members.add(newMember);
 	}
 	
-	public RecordInstance[] getMembers()
+	public RecordInstanceSet getMembers()
 	{
-		return members.toArray(new RecordInstance[0]);
-	}
-	
-	public RecordInstance getMember(int index)
-	{
-		return members.get(index);
+		return members;
 	}
 	
 	static public class WrongMemberTypeException extends Exception
@@ -63,5 +57,5 @@ public class LinkageInstance
 	
 	private LinkageType type;
 	private RecordInstance owner;
-	private Vector<RecordInstance> members;
+	private RecordInstanceSet members;
 }
