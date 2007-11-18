@@ -14,6 +14,7 @@ public class Datanet
 	public Datanet(DatanetSchema schemaToUse)
 	{
 		schema = schemaToUse;
+		records = new HashMap<RecordKey, RecordInstance>();
 		linkages = new HashMap<String, LinkageInstance>();
 	}
 	
@@ -21,14 +22,20 @@ public class Datanet
 	{
 	}
 
-	public RecordInstance createRecord(String typeName) throws UnknownRecordTypeException
+	public RecordKey createRecord(String typeName) throws UnknownRecordTypeException
 	{
 		RecordType type = getRecordType(typeName);
 		if(type == null)
 			throw new UnknownRecordTypeException(typeName);
 		RecordInstance created = new RecordInstance(this, type, nextId++);
+		records.put(created.getKey(), created);
 		createLinkages(created);
-		return created;
+		return created.getKey();
+	}
+	
+	public RecordInstance getRecord(RecordKey key)
+	{
+		return records.get(key);
 	}
 	
 	public void addMember(RecordInstance owner, String linkageTypeName, RecordInstance member) throws Exception
@@ -93,5 +100,6 @@ public class Datanet
 	
 	private DatanetSchema schema;
 	private int nextId;
+	private Map<RecordKey,RecordInstance> records;
 	private Map<String,LinkageInstance> linkages;
 }

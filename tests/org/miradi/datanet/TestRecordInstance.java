@@ -15,8 +15,8 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 
 	public void testGetKey() throws Exception
 	{
-		RecordInstance first = createOwnerRecord();
-		RecordInstance second = createOwnerRecord();
+		RecordInstance first = datanet.getRecord(createOwnerRecord());
+		RecordInstance second = datanet.getRecord(createOwnerRecord());
 		assertNotEquals("Different keys equal?", first.getKey(), second.getKey());
 		
 		RecordInstance dupe1 = new RecordInstance(datanet, datanet.getRecordType(SampleDatanetSchema.OWNER), 100);
@@ -60,7 +60,7 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 	{
 		String LABEL = "Label";
 		
-		RecordInstance owner2 = createOwnerRecord();
+		RecordInstance owner2 = datanet.getRecord(createOwnerRecord());
 		assertNotEquals("Different record instances were equal?", owner, owner2);
 		
 		int ID = 100;
