@@ -13,8 +13,10 @@ public class SampleDatanet extends Datanet
 		
 		owner = getRecord(createOwnerRecord());
 		member = getRecord(createMemberRecord());
+		secondMember = getRecord(createMemberRecord());
 		other = getRecord(createOtherRecord());
 		addMemberKey(owner.getKey(), SampleDatanetSchema.OWNER_TO_MEMBER, member.getKey());
+		addMemberKey(owner.getKey(), SampleDatanetSchema.OWNER_TO_MEMBER, secondMember.getKey());
 	}
 	
 	public SampleDatanetSchema getSampleSchema()
@@ -39,5 +41,6 @@ public class SampleDatanet extends Datanet
 	
 	RecordInstance owner;
 	RecordInstance member;
+	RecordInstance secondMember;
 	RecordInstance other;
 }
