@@ -48,12 +48,14 @@ public class RecordInstance
 	
 	public int getMemberCount(String linkageTypeName)
 	{
-		return datanet.getMemberCount(getKey(), linkageTypeName);
+		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
+		return linkage.getMemberCount();
 	}
 	
-	public Object getMember(String linkageTypeName, int index)
+	public RecordInstance[] getMembers(String linkageTypeName)
 	{
-		return datanet.getMemberKey(getKey(), linkageTypeName, index);
+		LinkageInstance linkage = datanet.getLinkage(getKey(), linkageTypeName);
+		return linkage.getMembers();
 	}
 
 	public boolean equals(Object rawOther)
