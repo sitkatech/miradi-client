@@ -47,5 +47,17 @@ public class TestDatanet extends TestCaseEnhanced
 		datanet.deleteRecord(memberKey2);
 		assertEquals(0, datanet.getMemberCount(ownerKey1, linkageTypeName));
 		
+		RecordKey thirdMemberKey = datanet.createRecord(memberType.getName());
+		datanet.addMemberKey(ownerKey1, linkageTypeName, thirdMemberKey);
+		datanet.deleteRecord(ownerKey1);
+		try
+		{
+			datanet.getRecord(thirdMemberKey);
+			fail("Should have thrown for member auto-deleted");
+		}
+		catch(Datanet.RecordNotFoundException ignoreExpected)
+		{
+			
+		}
 	}
 }
