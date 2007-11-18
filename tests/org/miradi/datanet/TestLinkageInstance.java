@@ -41,6 +41,6 @@ public class TestLinkageInstance extends TestCaseWithSampleDatanet
 		{
 			
 		}
-		assertEquals(anotherMember, localLinkage.getMember(0));
+		assertContains(anotherMember, localLinkage.getMembers());
 	}
 }
