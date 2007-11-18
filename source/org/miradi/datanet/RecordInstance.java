@@ -53,7 +53,7 @@ public class RecordInstance
 	
 	public Object getMember(String linkageTypeName, int index)
 	{
-		return datanet.getMember(getKey(), linkageTypeName, index);
+		return datanet.getMemberKey(getKey(), linkageTypeName, index);
 	}
 
 	public boolean equals(Object rawOther)

@@ -38,7 +38,7 @@ public class Datanet
 		return records.get(key);
 	}
 	
-	public void addMember(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey) throws Exception
+	public void addMemberKey(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey) throws Exception
 	{
 		LinkageInstance linkage = getLinkage(getRecord(ownerKey), linkageTypeName);
 		linkage.addMember(getRecord(memberKey));
@@ -51,7 +51,7 @@ public class Datanet
 		return linkage.getMemberCount();
 	}
 
-	public RecordKey getMember(RecordKey ownerKey, String linkageTypeName, int index)
+	public RecordKey getMemberKey(RecordKey ownerKey, String linkageTypeName, int index)
 	{
 		RecordInstance owner = getRecord(ownerKey);
 		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
