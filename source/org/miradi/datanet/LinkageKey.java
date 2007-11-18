@@ -41,6 +41,6 @@ public class LinkageKey
 	
 
 
-	RecordKey ownerKey;
-	String linkageTypeName;
+	private RecordKey ownerKey;
+	private String linkageTypeName;
 }

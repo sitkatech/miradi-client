@@ -22,6 +22,11 @@ public class Datanet
 	{
 	}
 
+	public RecordInstance getRecord(RecordKey key)
+	{
+		return records.get(key);
+	}
+	
 	public RecordKey createRecord(String typeName) throws UnknownRecordTypeException
 	{
 		RecordType type = getRecordType(typeName);
@@ -33,9 +38,29 @@ public class Datanet
 		return created.getKey();
 	}
 	
-	public RecordInstance getRecord(RecordKey key)
+	public void deleteRecord(RecordKey recordKey)
 	{
-		return records.get(key);
+
+		// remove as member from all linkages
+		RecordInstance record = getRecord(recordKey);
+		for(LinkageKey linkageKey : linkages.keySet())
+		{
+			LinkageType linkageType = getSchema().getLinkageType(linkageKey.getTypeName());
+			String memberClassName = linkageType.getMemberClassName();
+			String recordTypeName = record.getType().getName();
+			if(!recordTypeName.equals(memberClassName))
+				continue;
+
+			LinkageInstance linkage = linkages.get(linkageKey);
+			if(linkage.hasMember(record))
+			{
+				linkage.removeMember(record);
+			}
+		}
+
+		// remove all members
+		
+		records.remove(recordKey);
 	}
 	
 	public void addMemberKey(RecordKey ownerKey, String linkageTypeName, RecordKey memberKey) throws Exception

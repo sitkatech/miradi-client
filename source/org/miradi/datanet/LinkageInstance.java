@@ -38,6 +38,11 @@ public class LinkageInstance
 	{
 		members.remove(record);
 	}
+	
+	public boolean hasMember(RecordInstance possibleMember)
+	{
+		return getMembers().contains(possibleMember);
+	}
 
 	public RecordInstanceSet getMembers()
 	{

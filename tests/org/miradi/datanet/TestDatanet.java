@@ -44,7 +44,7 @@ public class TestDatanet extends TestCaseEnhanced
 		assertContains(memberKey2, memberKeys);
 		
 		datanet.removeMemberKey(ownerKey1, linkageTypeName, memberKey1);
-		datanet.removeMemberKey(ownerKey1, linkageTypeName, memberKey2);
+		datanet.deleteRecord(memberKey2);
 		assertEquals(0, datanet.getMemberCount(ownerKey1, linkageTypeName));
 		
 	}
