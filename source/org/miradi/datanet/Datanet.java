@@ -5,13 +5,16 @@
 */ 
 package org.miradi.datanet;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Datanet
 {
 	public Datanet(DatanetSchema schemaToUse)
 	{
 		schema = schemaToUse;
-//		linkages = new HashMap<RecordInstance, LinkageInstance>();
+		linkages = new HashMap<String, LinkageInstance>();
 	}
 	
 	public void close()
@@ -23,9 +26,29 @@ public class Datanet
 		RecordType type = getRecordType(typeName);
 		if(type == null)
 			throw new UnknownRecordTypeException(typeName);
-		return new RecordInstance(this, type, nextId++);
+		RecordInstance created = new RecordInstance(this, type, nextId++);
+		createLinkages(created);
+		return created;
 	}
 	
+	public void addMember(RecordInstance owner, String linkageTypeName, RecordInstance member) throws Exception
+	{
+		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
+		linkage.addMember(member);
+	}
+
+	public int getMemberCount(RecordInstance owner, String linkageTypeName)
+	{
+		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
+		return linkage.getMemberCount();
+	}
+
+	public Object getMember(RecordInstance owner, String linkageTypeName, int index)
+	{
+		LinkageInstance linkage = getLinkage(owner, linkageTypeName);
+		return linkage.getMember(index);
+	}
+
 	RecordType getRecordType(String typeName)
 	{
 		return schema.getRecordType(typeName);
@@ -34,6 +57,30 @@ public class Datanet
 	DatanetSchema getSchema()
 	{
 		return schema;
+	}
+	
+	private void createLinkages(RecordInstance newRecord)
+	{
+		LinkageType[] linkageTypes = getSchema().getLinkageTypesOwnedBy(newRecord.getType().getName());
+		for(int type = 0; type < linkageTypes.length; ++type)
+		{
+			String linkageKey = getLinkageKey(newRecord, linkageTypes[type].getName());
+			LinkageInstance linkage = new LinkageInstance(this, linkageTypes[type], newRecord);
+			linkages.put(linkageKey, linkage);
+		}
+	}
+	
+	private LinkageInstance getLinkage(RecordInstance owner, String linkageTypeName)
+	{
+		String linkageKey = getLinkageKey(owner, linkageTypeName);
+		LinkageInstance linkage = linkages.get(linkageKey);
+		return linkage;
+	}
+
+	private String getLinkageKey(RecordInstance owner, String linkageTypeName)
+	{
+		String linkageKey = owner.getKey() + "/" + linkageTypeName;
+		return linkageKey;
 	}
 	
 	static public class UnknownRecordTypeException extends Exception
@@ -46,5 +93,5 @@ public class Datanet
 	
 	private DatanetSchema schema;
 	private int nextId;
-//	private Map<RecordInstance,LinkageInstance> linkages;
+	private Map<String,LinkageInstance> linkages;
 }
