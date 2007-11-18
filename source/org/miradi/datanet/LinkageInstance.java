@@ -9,22 +9,6 @@ import java.util.Vector;
 
 public class LinkageInstance
 {
-	static public class WrongMemberTypeException extends Exception
-	{
-		public WrongMemberTypeException(String memberTypeName)
-		{
-			super(memberTypeName);
-		}
-	}
-	
-	static public class MemberAlreadyExistsException extends Exception
-	{
-		public MemberAlreadyExistsException(String key)
-		{
-			super(key);
-		}
-	}
-	
 	public LinkageInstance(LinkageType typeToUse, RecordInstance ownerToUse)
 	{
 		type = typeToUse;
@@ -59,6 +43,22 @@ public class LinkageInstance
 	public RecordInstance getMember(int index)
 	{
 		return members.get(index);
+	}
+	
+	static public class WrongMemberTypeException extends Exception
+	{
+		public WrongMemberTypeException(String memberTypeName)
+		{
+			super(memberTypeName);
+		}
+	}
+	
+	static public class MemberAlreadyExistsException extends Exception
+	{
+		public MemberAlreadyExistsException(String key)
+		{
+			super(key);
+		}
 	}
 	
 	private LinkageType type;

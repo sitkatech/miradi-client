@@ -8,14 +8,6 @@ package org.miradi.datanet;
 
 public class Datanet
 {
-	static public class UnknownRecordTypeException extends Exception
-	{
-		public UnknownRecordTypeException(String typeName)
-		{
-			super(typeName);
-		}
-	}
-	
 	public Datanet(DatanetSchema schemaToUse)
 	{
 		schema = schemaToUse;
@@ -33,6 +25,14 @@ public class Datanet
 	RecordType getRecordType(String typeName)
 	{
 		return schema.getRecordType(typeName);
+	}
+	
+	static public class UnknownRecordTypeException extends Exception
+	{
+		public UnknownRecordTypeException(String typeName)
+		{
+			super(typeName);
+		}
 	}
 	
 	private DatanetSchema schema;
