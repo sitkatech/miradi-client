@@ -18,6 +18,11 @@ public class RecordKey
 		return typeName + ":" + id;
 	}
 	
+	public String getRecordTypeName()
+	{
+		return typeName;
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof RecordKey))

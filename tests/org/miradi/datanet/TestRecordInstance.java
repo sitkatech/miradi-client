@@ -64,9 +64,29 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 		assertContains(secondMember, members);
 	}
 	
-	public void testGetOnwer() throws Exception
+	public void testGetOwner() throws Exception
 	{
 		assertEquals(owner, member.getOwner(SampleDatanetSchema.OWNER_TO_MEMBER));
+		try
+		{
+			RecordInstance orphan = datanet.getRecord(createMemberRecord());
+			orphan.getOwner(SampleDatanetSchema.OWNER_TO_MEMBER);
+			fail("Should have thrown for no owner");
+		}
+		catch(Datanet.NoOwnerException ignoreExpected)
+		{
+			
+		}
+		
+		try
+		{
+			owner.getOwner(SampleDatanetSchema.OWNER_TO_MEMBER);
+			fail("Should have thrown for wrong linkage type");
+		}
+		catch(Datanet.NotMemberOfThatLinkageException ignoreExpected)
+		{
+			
+		}
 	}
 	
 	public void testEquals() throws Exception
