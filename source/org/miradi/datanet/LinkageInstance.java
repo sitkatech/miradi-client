@@ -36,7 +36,7 @@ public class LinkageInstance
 		if(!type.getMemberClassName().equals(newMember.getType().getName()))
 			throw new WrongMemberTypeException(newMember.getType().getName());
 		if(members.contains(newMember))
-			throw new MemberAlreadyExistsException(newMember.getKey());
+			throw new MemberAlreadyExistsException(newMember.getKey().toString());
 		members.add(newMember);
 	}
 	

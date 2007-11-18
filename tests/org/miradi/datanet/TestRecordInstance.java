@@ -17,9 +17,15 @@ public class TestRecordInstance extends TestCaseWithSampleDatanet
 	{
 		RecordInstance first = createOwnerRecord();
 		RecordInstance second = createOwnerRecord();
+		assertNotEquals("Different keys equal?", first.getKey(), second.getKey());
 		
-		assertContains(first.getType().getName(), first.getKey());
-		assertNotEquals(first.getKey(), second.getKey());
+		RecordInstance dupe1 = new RecordInstance(datanet, datanet.getRecordType(SampleDatanetSchema.OWNER), 100);
+		RecordInstance dupe2 = new RecordInstance(datanet, datanet.getRecordType(SampleDatanetSchema.OWNER), 100);
+		assertEquals("Identical keys not equal?", dupe1, dupe2);
+		
+		RecordInstance sameId1 = new RecordInstance(datanet, datanet.getRecordType(SampleDatanetSchema.OWNER), 100);
+		RecordInstance sameId2 = new RecordInstance(datanet, datanet.getRecordType(SampleDatanetSchema.MEMBER), 100);
+		assertNotEquals("Different types same id equal?", sameId1.getKey(), sameId2.getKey());
 	}
 	
 	public void testSetGet() throws Exception

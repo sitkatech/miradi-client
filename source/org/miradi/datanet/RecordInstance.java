@@ -15,7 +15,7 @@ public class RecordInstance
 		datanet = datanetToUse;
 		type = typeToUse;
 		
-		key = typeToUse.getName() + ":" + id;
+		key = new RecordKey(typeToUse.getName(), id);
 		fieldValues = new HashMap<String, String>();
 	}
 	
@@ -24,7 +24,7 @@ public class RecordInstance
 		return type;
 	}
 	
-	public String getKey()
+	public RecordKey getKey()
 	{
 		return key;
 	}
@@ -79,6 +79,6 @@ public class RecordInstance
 	
 	private Datanet datanet;
 	private RecordType type;
-	private String key;
+	private RecordKey key;
 	Map<String, String> fieldValues;
 }
