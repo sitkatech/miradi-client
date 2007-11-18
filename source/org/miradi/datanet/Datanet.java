@@ -15,7 +15,7 @@ public class Datanet
 	{
 		schema = schemaToUse;
 		records = new HashMap<RecordKey, RecordInstance>();
-		linkages = new HashMap<String, LinkageInstance>();
+		linkages = new HashMap<LinkageKey, LinkageInstance>();
 	}
 	
 	public void close()
@@ -75,7 +75,7 @@ public class Datanet
 		LinkageType[] linkageTypes = getSchema().getLinkageTypesOwnedBy(newRecord.getType().getName());
 		for(int type = 0; type < linkageTypes.length; ++type)
 		{
-			String linkageKey = getLinkageKey(newRecord, linkageTypes[type].getName());
+			LinkageKey linkageKey = new LinkageKey(newRecord.getKey(), linkageTypes[type].getName());
 			LinkageInstance linkage = new LinkageInstance(this, linkageTypes[type], newRecord);
 			linkages.put(linkageKey, linkage);
 		}
@@ -90,17 +90,11 @@ public class Datanet
 	
 	private LinkageInstance getLinkage(RecordInstance owner, String linkageTypeName)
 	{
-		String linkageKey = getLinkageKey(owner, linkageTypeName);
+		LinkageKey linkageKey = new LinkageKey(owner.getKey(), linkageTypeName);
 		LinkageInstance linkage = linkages.get(linkageKey);
 		return linkage;
 	}
 
-	private String getLinkageKey(RecordInstance owner, String linkageTypeName)
-	{
-		String linkageKey = owner.getKey() + "/" + linkageTypeName;
-		return linkageKey;
-	}
-	
 	static public class UnknownRecordTypeException extends Exception
 	{
 		public UnknownRecordTypeException(String typeName)
@@ -112,5 +106,5 @@ public class Datanet
 	private DatanetSchema schema;
 	private int nextId;
 	private Map<RecordKey,RecordInstance> records;
-	private Map<String,LinkageInstance> linkages;
+	private Map<LinkageKey,LinkageInstance> linkages;
 }
