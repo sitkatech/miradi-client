@@ -21,10 +21,9 @@ import javax.swing.table.TableCellRenderer;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
-import org.conservationmeasures.eam.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -52,14 +51,14 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		resizeTable(4);
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		
-		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();
+		DefaultFontProvider fontProvider = new DefaultFontProvider();
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
 	}
 	
-	public TableCellRenderer getCellRenderer(int row, int column)
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(column);
+		int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
 			return statusQuestionRenderer;
 		
