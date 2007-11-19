@@ -12,16 +12,19 @@ import org.conservationmeasures.eam.objects.BaseObject;
 
 public interface ObjectPicker
 {
+	public ORefList[] getSelectedHierarchies();
+	
+	//NOTE: No longer use the below methods they are deprecated.  Use getSelectedHierarchies instead
+	public ORefList getSelectionHierarchy();
 	public BaseObject[] getSelectedObjects();
-	public void clearSelection();
-	public void ensureObjectVisible(ORef ref);
 	//TODO: to be extracted to its own interface (TreeObjectPicker) later
 	public TreeTableNode[] getSelectedTreeNodes();
+
+	public void clearSelection();
+	public void ensureObjectVisible(ORef ref);
 	
 	public void addSelectionChangeListener(SelectionChangeListener listener);
 	public void removeSelectionChangeListener(SelectionChangeListener listener);
-	public ORefList getSelectionHierarchy();
-	public ORefList[] getSelectedHierarchies();
 	
 	public interface SelectionChangeListener
 	{
