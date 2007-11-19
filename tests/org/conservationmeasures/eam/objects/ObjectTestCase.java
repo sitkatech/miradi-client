@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.CodeListData;
@@ -38,7 +38,7 @@ import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.StringMapData;
 import org.martus.util.MultiCalendar;
 
-public class ObjectTestCase extends EAMTestCase
+public class ObjectTestCase extends TestCaseWithProject
 {
 	public ObjectTestCase(String name)
 	{

@@ -50,37 +50,37 @@ public class TestProjectRepairer extends TestCaseWithProject
 	private void verifyDeleteOrphanAnnotations(int annotationType, int nodeType, String nodeTagForAnnotationList) throws Exception
 	{
 		//BaseId orphan = project.createObject(annotationType);
-		BaseId nonOrphan = project.createObjectAndReturnId(annotationType);
-		FactorId nodeId = (FactorId)project.createObject(nodeType, BaseId.INVALID);
+		BaseId nonOrphan = getProject().createObjectAndReturnId(annotationType);
+		FactorId nodeId = (FactorId)getProject().createObject(nodeType, BaseId.INVALID);
 		IdList annotationIds = new IdList();
 		annotationIds.add(nonOrphan);
-		project.setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
+		getProject().setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
 
 		EAM.setLogToString();
 
 //		TODO: removed orphan deletion code until a solution can be found to general extentions of having annoations having annoations
-		ProjectRepairer.repairAnyProblems(project);
+		ProjectRepairer.repairAnyProblems(getProject());
 		//assertContains("Deleting orphan", EAM.getLoggedString());
 		//assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
-		assertEquals("Deleted non-orphan?", nonOrphan, project.findObject(annotationType, nonOrphan).getId());
+		assertEquals("Deleted non-orphan?", nonOrphan, getProject().findObject(annotationType, nonOrphan).getId());
 	}
 	
 	public void testScanForCorruptedObjects() throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
-		Indicator indicator = (Indicator) project.findObject(indicatorRef);
+		ORef indicatorRef = getProject().createObject(Indicator.getObjectType());
+		Indicator indicator = (Indicator) getProject().findObject(indicatorRef);
 		BaseId nonExistantId = new BaseId(500);
 		CommandSetObjectData appendTask = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, nonExistantId);
-		project.executeCommand(appendTask);
+		getProject().executeCommand(appendTask);
 		assertEquals("task not appended?", 1, indicator.getTaskCount());		
 		
-		ORef taskRef = project.createObject(Task.getObjectType());
-		Task task = (Task) project.findObject(taskRef);
+		ORef taskRef = getProject().createObject(Task.getObjectType());
+		Task task = (Task) getProject().findObject(taskRef);
 		CommandSetObjectData appendSubTask = CommandSetObjectData.createAppendIdCommand(task, Task.TAG_SUBTASK_IDS, nonExistantId);
-		project.executeCommand(appendSubTask);
+		getProject().executeCommand(appendSubTask);
 		assertEquals("subtask not appended?", 1, task.getSubtaskCount());
 		
-		ProjectRepairer repairer = new ProjectRepairer(project);
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		ORefList corruptedObjectRefs = repairer.findAllCorruptedObjects();
 		assertEquals("found no corrupted objects?", 2, corruptedObjectRefs.size());
 	}
