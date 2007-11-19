@@ -46,9 +46,14 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		String tag = getAnnotationIdListTag();
 		String[] dialogText = getDialogText();
 		BaseObject annotationToDelete = getObjects()[0];
-		Factor selectedFactor = (Factor)annotationToDelete.getOwner();
+		BaseObject selectedFactor = getParent(annotationToDelete);
 		
 		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
+	}
+
+	protected BaseObject getParent(BaseObject annotationToDelete)
+	{
+		return annotationToDelete.getOwner();
 	}
 
 	public static void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException

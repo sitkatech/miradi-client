@@ -39,12 +39,33 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectionHierarchy();
 	}
 	
+	public ORefList[] getSelectedHierarchies()
+	{
+		if (picker == null)
+			return new ORefList[0];
+		
+		return picker.getSelectedHierarchies();
+	}
+	
 	public BaseObject[] getObjects()
 	{
 		if(picker == null)
 			return new BaseObject[0];
 		
 		return picker.getSelectedObjects();
+	}
+	
+	public BaseObject getSingleSelected(int type)
+	{
+		if(picker == null)
+			return null;
+		
+		ORefList selectionHierarchy = picker.getSelectedHierarchies()[0];
+		ORefList extractedList = selectionHierarchy.extractByType(type);
+		if (extractedList.size() == 0)
+			return null;
+		
+		return getProject().findObject(extractedList.get(0));
 	}
 	
 	public BaseId[] getSelectedIds()
