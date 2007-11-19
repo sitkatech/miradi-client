@@ -73,7 +73,7 @@ public class Stress extends BaseObject
 		int severityRating = Integer.parseInt(severityChoice.getCode());
 		int min = Math.min(scopeRating, severityRating);
 		
-		return Integer.toString(min).toString();
+		return Integer.toString(min);
 	}
 
 	public String toString()
