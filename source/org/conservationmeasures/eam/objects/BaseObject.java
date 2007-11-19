@@ -907,7 +907,10 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return  question.findChoiceByCode(getPseudoData(question.getTag())).getLabel();
+			String tag = question.getTag();
+			String pseudoData = getPseudoData(tag);
+			ChoiceItem choice = question.findChoiceByCode(pseudoData);
+			return  choice.getCode();
 		}
 		
 		public ChoiceItem getChoiceItem()
