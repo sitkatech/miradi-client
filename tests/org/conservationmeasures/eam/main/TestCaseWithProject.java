@@ -21,5 +21,10 @@ public class TestCaseWithProject extends EAMTestCase
 		project.close();
 	}
 
-	protected ProjectForTesting project;
+	public ProjectForTesting getProject()
+	{
+		return project;
+	}
+	
+	private ProjectForTesting project;
 }
