@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -121,6 +122,65 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testUpdateTo24CreateStressesFromFactorLinks() throws Exception
+	{
+		String factorLinkWithStressLabelData = "{\"FromId\":58,\"ToId\":3,\"ToRef\":{\"ObjectType\":22,\"ObjectId\":15},\"FromRef\":{\"ObjectType\":21,\"ObjectId\":58},\"Label\":\"\",\"StressLabel\":\"someLabel\",\"Id\":13}";
+		String factorLinkWithOutStressLabelData = "{\"FromId\":5,\"ToId\":78,\"ToRef\":{\"ObjectType\":22,\"ObjectId\":78},\"FromRef\":{\"ObjectType\":20,\"ObjectId\":5},\"Label\":\"\",\"StressLabel\":\"\",\"Id\":14}";
+		File jsonDir = createJsonDir();
+		File factorLinkDir = createObjects6FactorLinkDir(jsonDir);
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":15}");
+		
+		int[] factorLinkIds = {13, 14};
+		File factorLinkManifestFile = createManifestFile(factorLinkDir, factorLinkIds);
+		assertTrue(factorLinkManifestFile.exists());
+		
+		File factorLink13WithStressLabel = new File(factorLinkDir, Integer.toString(factorLinkIds[0]));
+		createFile(factorLink13WithStressLabel, factorLinkWithStressLabelData);
+		assertTrue(factorLink13WithStressLabel.exists());
+		
+		File factorLink14WithoutStressLabel = new File(factorLinkDir, Integer.toString(factorLinkIds[1]));
+		createFile(factorLink14WithoutStressLabel, factorLinkWithOutStressLabelData);
+		assertTrue(factorLink14WithoutStressLabel.exists());
+		
+		File targetDir = createObjects4TargetDir(jsonDir);
+		int[] targetIds = {15};
+		File targetManifestFile = createManifestFile(targetDir, targetIds);
+		assertTrue(targetManifestFile.exists());
+		
+		File target = new File(targetDir, Integer.toString(targetIds[0]));
+		String targetData = "{\"ObjectiveIds\":\"\",\"ViabilityMode\":\"TNC\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"Comment\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":17},{\\\"ObjectType\\\":33,\\\"ObjectId\\\":18},{\\\"ObjectType\\\":33,\\\"ObjectId\\\":27}]}\",\"TargetStatus\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1195497623367\",\"KeyEcologicalAttributeIds\":\"{\\\"Ids\\\":[28,30]}\",\"Id\":15,\"Label\":\"New Target\",\"CurrentStatusJustification\":\"\"}";
+		createFile(target, targetData);
+		assertTrue(target.exists());
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion24();
+		
+		File stressDir = new File(jsonDir, "objects-33");
+		assertTrue("stress dir does not exist?", stressDir.exists());
+		
+		File stressManifestFile = new File(stressDir, "manifest");
+		assertTrue("stress manifest does not exist?", stressManifestFile.exists());
+
+		ObjectManifest stressObjectManifestFile = new ObjectManifest(JSONFile.read(stressManifestFile));
+		BaseId[] allStressIds = stressObjectManifestFile.getAllKeys();
+		assertEquals("wrong number of stresses created?", 1, allStressIds.length);
+		
+		String idAsString = Integer.toString(16);
+		File stressFile = new File(stressDir, idAsString);
+		assertTrue("stress file does not exist?", stressFile.exists());
+		EnhancedJsonObject stressJson = DataUpgrader.readFile(stressFile);
+		assertEquals("wrong id?", "16", stressJson.getString("Id"));
+		assertEquals("wrong label?", "someLabel", stressJson.getString("Label"));
+		
+		EnhancedJsonObject targetJson = DataUpgrader.readFile(target);
+		String stressRefsAsString = targetJson.getString("StressRefs");
+		ORefList stressRefs = new ORefList(stressRefsAsString);
+		assertEquals("wrong number of refs in list?", 1, stressRefs.size());
+		assertEquals("wrong ref in list?", new ORef(Stress.getObjectType(), new BaseId(16)), stressRefs.get(0));			
 	}
 	
 	public void testUpdateTo23CreateMeasurementFromDataInIndicator() throws Exception
@@ -709,7 +769,31 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		DataUpgrader.createFile(file, contents);
 	}
-
+	
+	private File createJsonDir()
+	{
+		File jsonDir = new File(tempDirectory, "json");
+		jsonDir.mkdirs();
+		
+		return jsonDir;
+	}
+	
+	private File createObjects6FactorLinkDir(File jsonDir)
+	{
+		File objects6Dir = new File(jsonDir, "objects-6");
+		objects6Dir.mkdirs();
+		
+		return objects6Dir;
+	}
+	
+	private File createObjects4TargetDir(File jsonDir)
+	{
+		File targetDir = new File(jsonDir, "objects-4");
+		targetDir.mkdirs();
+		
+		return targetDir;
+	}
+	
 	public static IdAssigner idAssigner = new IdAssigner();
 	File tempDirectory;
 }

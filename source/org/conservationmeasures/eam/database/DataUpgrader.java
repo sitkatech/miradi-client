@@ -22,6 +22,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
@@ -134,6 +136,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 22)
 				upgradeToVersion23();
+			
+			if (readDataVersion(getTopDirectory()) == 23)
+				upgradeToVersion24();
 		}
 		finally 
 		{
@@ -142,6 +147,79 @@ public class DataUpgrader extends FileBasedProjectServer
 				
 	}
 	
+	public void upgradeToVersion24() throws Exception
+	{
+		createdStressesFromFactorLinks();
+		writeVersion(24);
+	}
+	
+	private void createdStressesFromFactorLinks() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File factorLinkDir = getObjects6FactorLinkDir(jsonDir);
+		if (! factorLinkDir.exists())
+			return;
+
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+
+		File stressDir = getObject33StresDir(jsonDir);
+		if (stressDir.exists())
+			return;
+		
+		stressDir.mkdirs();
+		
+		File targetDir = getObjects4TargetDir(jsonDir);	
+		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		EnhancedJsonObject stressManifestJson = new EnhancedJsonObject();
+		stressManifestJson.put("Type", "ObjectManifest");
+		BaseId[] factorLinkIds = factorLinkManifest.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId factorLinkId = factorLinkIds[i];
+			File factorLinkFile = new File(factorLinkDir, Integer.toString(factorLinkId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkFile);
+			String stressLabel = factorLinkJson.optString("StressLabel");
+			if (stressLabel.length() == 0)
+				continue;
+			
+			ORef targetWithStressRef = getTargetEnd(factorLinkJson);
+			File targetFile = new File(targetDir, Integer.toString(targetWithStressRef.getObjectId().asInt()));
+			EnhancedJsonObject targetJson = readFile(targetFile);
+			
+			stressManifestJson.put(Integer.toString(++highestId), "true");
+			EnhancedJsonObject stressJson = new EnhancedJsonObject();
+			stressJson.put("Id", Integer.toString(highestId));
+			stressJson.put("Label", stressLabel);
+			
+			ORefList stressRefs = new ORefList();
+			stressRefs.add(new ORef(Stress.getObjectType(), new BaseId(highestId)));
+			targetJson.put("StressRefs", stressRefs.toString());
+			writeJson(targetFile, targetJson);
+			
+			File stressFile = new File(stressDir, Integer.toString(highestId));
+			createFile(stressFile, stressJson.toString());
+		}
+		
+		writeHighestIdToProjectFile(jsonDir, highestId);
+		File manifestFile = new File(stressDir, "manifest");
+		writeJson(manifestFile, stressManifestJson);
+	}
+
+	private ORef getTargetEnd(EnhancedJsonObject factorLinkJson)
+	{
+		ORef fromRef = factorLinkJson.getRef("FromRef");
+		ORef toRef = factorLinkJson.getRef("ToRef");
+		if (fromRef.getObjectType() == Target.getObjectType())
+			return fromRef;
+		else if (toRef.getObjectType() == Target.getObjectType())
+			return toRef;
+		
+		throw new RuntimeException("Link does not link to target");
+	}
+
 	public void upgradeToVersion23() throws Exception
 	{ 
 		createMeasurementFromDataInIndicator();
@@ -150,7 +228,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	private void createMeasurementFromDataInIndicator() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		
 		File indicatorDir = new File(jsonDir, "objects-8");
 		if (! indicatorDir.exists())
@@ -220,7 +298,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	private void switchDiagramFactorWrappedIdsToRefs() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		
 		File factorDir = new File(jsonDir, "objects-4");
 		if (! factorDir.exists())
@@ -272,7 +350,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	public void changeLinkFromToIdsToORefs() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		
 		File factorLinkDir = new File(jsonDir, "objects-6");
 		if (! factorLinkDir.exists())
@@ -394,7 +472,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	public BaseId[] removeGoalsFromIndicators() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		
 		File indicatorDir = new File(jsonDir, "objects-8");
 		if (! indicatorDir.exists())
@@ -461,7 +539,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	  
 	private void addLinksToDiagramContentsObject() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
 		if (! objects13Dir.exists())
@@ -500,7 +578,7 @@ public class DataUpgrader extends FileBasedProjectServer
 
 	private void createObject19DirAndFillFromDiagram() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		File objects19Dir = new File(jsonDir, "objects-19");
 		if (objects19Dir.exists())
 			throw new RuntimeException("objects-19 directory already exists " + objects19Dir.getAbsolutePath());
@@ -543,7 +621,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	
 	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		File objects13Dir = new File(jsonDir, "objects-13");
 		if (objects13Dir.exists())
 			throw new RuntimeException("objects-13 directory already exists " + objects13Dir.getAbsolutePath());
@@ -592,7 +670,7 @@ public class DataUpgrader extends FileBasedProjectServer
 
 	public HashMap createDiagramFactorsFromRawFactors() throws Exception
 	{
-		File jsonDir = new File(topDirectory, "json");
+		File jsonDir = getTopJsonDir();
 		File objects18Dir = new File(jsonDir, "objects-18");
 		if (objects18Dir.exists())
 			throw new RuntimeException("objects-18 directory already exists " + objects18Dir.getAbsolutePath());
@@ -713,5 +791,25 @@ public class DataUpgrader extends FileBasedProjectServer
 		UnicodeWriter writer = new UnicodeWriter(file);
 		writer.writeln(contents);
 		writer.close();
+	}
+	
+	private File getTopJsonDir()
+	{
+		return new File(topDirectory, "json");
+	}
+	
+	private File getObjects6FactorLinkDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-6");
+	}
+	
+	private File getObject33StresDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-33");
+	}
+	
+	private File getObjects4TargetDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-4");
 	}
 }
