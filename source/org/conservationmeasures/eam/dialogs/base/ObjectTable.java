@@ -16,8 +16,15 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -28,7 +35,7 @@ import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker
+abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowBaseObjectProvider
 {
 	public ObjectTable(ObjectTableModel modelToUse)
 	{
@@ -44,6 +51,24 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		columnHeader.addMouseListener(sortListener);
 		resizeTable(4);
 		setAutoResizeMode(AUTO_RESIZE_OFF);
+		
+		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();
+		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
+		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
+	}
+	
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		int modelColumn = convertColumnIndexToModel(column);
+		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
+			return statusQuestionRenderer;
+		
+		return otherRenderer;
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return getObjectTableModel().getObjectFromRow(row);
 	}
 	
 	public void scrollToAndSelectRow(int row)
@@ -259,4 +284,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 
 	private Vector selectionListeners;
 	private int currentSortColumn;
+	private ChoiceItemTableCellRenderer statusQuestionRenderer;
+	private BasicTableCellRenderer otherRenderer;
 }

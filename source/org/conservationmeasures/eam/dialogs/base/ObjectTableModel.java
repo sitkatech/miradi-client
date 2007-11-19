@@ -94,7 +94,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
 	{
-		return project.getObjectData(rowObjectRef.getObjectType(), rowObjectRef.getObjectId(), tag);
+		return project.getObjectData(rowObjectRef, tag);
 	}
 
 	public void rowsWereAddedOrRemoved()
@@ -133,6 +133,11 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	public String getColumnTag(int column)
 	{
 		return columnTags[column];
+	}
+	
+	public boolean isChoiceItemColumn(int column)
+	{
+		return false;
 	}
 	
 	public int getColumnCount()

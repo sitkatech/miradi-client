@@ -6,15 +6,48 @@
 package org.conservationmeasures.eam.dialogs.stress;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 public class StressListTableModel extends ObjectListTableModel
 {
 	public StressListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), new String[]{Stress.TAG_LABEL});
+		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags());
+	}
+
+	public Object getValueAt(int row, int column)
+	{
+		try
+		{
+			String dataToDisplay = super.getValueAt(row, column).toString();
+			if (getColumnTag(column) == Stress.TAG_LABEL)
+				return dataToDisplay;
+			
+			return new PriorityRatingQuestion(getColumnTag(column)).findChoiceByCode(dataToDisplay);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "(Error)";
+		}
+	}
+
+	public boolean isChoiceItemColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		boolean isChoiceItemColumn = columnTag.equals(Stress.TAG_SCOPE) ||
+									 columnTag.equals(Stress.TAG_SEVERITY) ||
+									 columnTag.equals(Stress.PSEUDO_STRESS_RATING);
+		return isChoiceItemColumn;
+	}
+	
+	private static String[] getColumnTags()
+	{
+		return new String[]{Stress.TAG_LABEL, Stress.TAG_SCOPE, Stress.TAG_SEVERITY, Stress.PSEUDO_STRESS_RATING};
 	}
 }
