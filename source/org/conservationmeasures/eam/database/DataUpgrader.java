@@ -169,12 +169,10 @@ public class DataUpgrader extends FileBasedProjectServer
 			return;
 		
 		stressDir.mkdirs();
-		
-		File targetDir = getObjects4TargetDir(jsonDir);	
-		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
-		int highestId = readHighestIdInProjectFile(jsonDir);
 		EnhancedJsonObject stressManifestJson = new EnhancedJsonObject();
 		stressManifestJson.put("Type", "ObjectManifest");
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifest.getAllKeys();
 		for (int i = 0; i < factorLinkIds.length; ++i)
 		{
@@ -186,6 +184,7 @@ public class DataUpgrader extends FileBasedProjectServer
 				continue;
 			
 			ORef targetWithStressRef = getTargetEnd(factorLinkJson);
+			File targetDir = getObjects4TargetDir(jsonDir);
 			File targetFile = new File(targetDir, Integer.toString(targetWithStressRef.getObjectId().asInt()));
 			EnhancedJsonObject targetJson = readFile(targetFile);
 			
@@ -193,17 +192,18 @@ public class DataUpgrader extends FileBasedProjectServer
 			EnhancedJsonObject stressJson = new EnhancedJsonObject();
 			stressJson.put("Id", Integer.toString(highestId));
 			stressJson.put("Label", stressLabel);
+		
+			File stressFile = new File(stressDir, Integer.toString(highestId));
+			createFile(stressFile, stressJson.toString());
 			
 			ORefList stressRefs = new ORefList();
 			stressRefs.add(new ORef(Stress.getObjectType(), new BaseId(highestId)));
 			targetJson.put("StressRefs", stressRefs.toString());
 			writeJson(targetFile, targetJson);
 			
-			File stressFile = new File(stressDir, Integer.toString(highestId));
-			createFile(stressFile, stressJson.toString());
+			writeHighestIdToProjectFile(jsonDir, highestId);
 		}
 		
-		writeHighestIdToProjectFile(jsonDir, highestId);
 		File manifestFile = new File(stressDir, "manifest");
 		writeJson(manifestFile, stressManifestJson);
 	}
@@ -212,10 +212,11 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
+		if (toRef.getObjectType() == Target.getObjectType())
+			return toRef;
+		
 		if (fromRef.getObjectType() == Target.getObjectType())
 			return fromRef;
-		else if (toRef.getObjectType() == Target.getObjectType())
-			return toRef;
 		
 		throw new RuntimeException("Link does not link to target");
 	}
