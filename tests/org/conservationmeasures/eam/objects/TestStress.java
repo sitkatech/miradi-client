@@ -24,10 +24,10 @@ public class TestStress extends ObjectTestCase
 	{
 		ORef stressRef = getProject().createObject(Stress.getObjectType());
 		Stress stress = (Stress) getProject().findObject(stressRef);
-		assertEquals("has value?", 0, stress.calculateStressRating().length());
+		assertEquals("has value?", "", stress.calculateStressRating());
 		
 		stress.setData(Stress.TAG_SCOPE, "1");
-		assertEquals("has value?", 0, stress.calculateStressRating().length());
+		assertEquals("has value?", "", stress.calculateStressRating());
 		
 		stress.setData(Stress.TAG_SEVERITY, "4");
 		assertEquals("has value?", 1, stress.calculateStressRating().length());
