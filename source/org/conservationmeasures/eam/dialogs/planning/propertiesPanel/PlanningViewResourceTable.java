@@ -199,7 +199,17 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		
 	public ORefList[] getSelectedHierarchies()
 	{
-		return new ORefList[0];
+		int[] rows = getSelectedRows();
+		ORefList[] selectedHierarchies = new ORefList[rows.length];
+		for(int i = 0; i < rows.length; ++i)
+		{
+			BaseObject objectFromRow = model.getBaseObjectForRow(rows[i]);
+			ORefList selectedObjectRefs = new ORefList();
+			selectedObjectRefs.add(objectFromRow.getRef());
+			selectedHierarchies[i] = selectedObjectRefs;
+		}
+		
+		return selectedHierarchies;
 	}
 
 	public void ensureObjectVisible(ORef ref)

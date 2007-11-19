@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -73,11 +74,19 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public BaseObject[] getSelectedObjects()
 	{
-		int[] rows = getSelectedRows();
-		BaseObject[] objects = new BaseObject[rows.length];
-		for(int i = 0; i < objects.length; ++i)
-			objects[i] = getObjectFromRow(rows[i]);
-		return objects;
+		ORefList[] selectionHierarchies = getSelectedHierarchies();
+		Vector<BaseObject> selectedObjects = new Vector();
+		for (int i = 0; i < selectionHierarchies.length; ++i)
+		{
+			ORefList thisSelectionHierarchy = selectionHierarchies[i];
+			if (thisSelectionHierarchy.size() == 0)
+				continue;
+			
+			BaseObject foundObject = getProject().findObject(thisSelectionHierarchy.get(0));
+			selectedObjects.add(foundObject);		
+		}
+		
+		return selectedObjects.toArray(new BaseObject[0]);
 	}
 	
 	public ORefList getSelectionHierarchy()
@@ -100,6 +109,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return selectedHierarchies;
 	}
 
+	public Project getProject()
+	{
+		return getObjectTableModel().getProject();
+	}
+	
 	public void ensureObjectVisible(ORef ref)
 	{
 		// TODO Auto-generated method stub
