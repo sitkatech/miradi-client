@@ -10,7 +10,8 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Stress extends BaseObject
@@ -54,12 +55,25 @@ public class Stress extends BaseObject
 	{
 		if (fieldTag.equals(PSEUDO_STRESS_RATING))
 			return calculateStressRating();
+		
 		return super.getPseudoData(fieldTag);
 	}
 
 	public String calculateStressRating()
 	{
-		return "";
+		ChoiceItem scopeChoice = new PriorityRatingQuestion(Stress.TAG_SCOPE).findChoiceByCode(scope.get());
+		if (scopeChoice.getCode().length() == 0)
+			return "";
+
+		ChoiceItem severityChoice = new PriorityRatingQuestion(TAG_SEVERITY).findChoiceByCode(severity.get());
+		if (severityChoice.getCode().length() == 0)
+			return "";
+		
+		int scopeRating = Integer.parseInt(scopeChoice.getCode());
+		int severityRating = Integer.parseInt(severityChoice.getCode());
+		int min = Math.min(scopeRating, severityRating);
+		
+		return Integer.toString(min).toString();
 	}
 
 	public String toString()
@@ -74,7 +88,7 @@ public class Stress extends BaseObject
 		shortLabel = new StringData();
 		scope = new ChoiceData();
 		severity = new ChoiceData();
-		pseudoStressRating = new PseudoQuestionData(new StatusQuestion(Stress.PSEUDO_STRESS_RATING));
+		pseudoStressRating = new PseudoQuestionData(new PriorityRatingQuestion(Stress.PSEUDO_STRESS_RATING));
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_SCOPE, scope);
