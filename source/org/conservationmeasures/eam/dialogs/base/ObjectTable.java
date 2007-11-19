@@ -74,11 +74,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public BaseObject[] getSelectedObjects()
 	{
-		ORefList[] selectionHierarchies = getSelectedHierarchies();
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
 		Vector<BaseObject> selectedObjects = new Vector();
-		for (int i = 0; i < selectionHierarchies.length; ++i)
+		for (int i = 0; i < selectedHierarchies.length; ++i)
 		{
-			ORefList thisSelectionHierarchy = selectionHierarchies[i];
+			ORefList thisSelectionHierarchy = selectedHierarchies[i];
 			if (thisSelectionHierarchy.size() == 0)
 				continue;
 			
