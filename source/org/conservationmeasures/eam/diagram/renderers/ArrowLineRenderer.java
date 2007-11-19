@@ -22,12 +22,10 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
-import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -65,8 +63,9 @@ public class ArrowLineRenderer extends EdgeRenderer
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		if(isArrowBodyVisible())
-			drawStress(g);
+		//FIXME temporarly disabled stress bubble
+		//if(isArrowBodyVisible())
+		//	drawStress(g);
 		
 		if (linkSelected)
 		{
@@ -354,32 +353,30 @@ public class ArrowLineRenderer extends EdgeRenderer
 		return textBounds;
 	}
 
-
-	
-
-	private void drawStress(Graphics g)
-	{
-		if (!getLinkCell().getFactorLink().isTargetLink())
-			return;
-		
-		if(stressText == null || stressText.length() < 1)
-			return;
-		
-		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
-		if (!layerManager.areStressesVisible())
-			return;
-		
-		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
-
-		int arc = 5;
-
-		Graphics2D g2 = (Graphics2D)g;
-		g2.setColor(DiagramConstants.COLOR_STRESS);
-		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-		g2.setColor(Color.BLACK);
-		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-		g2.drawString(stressText, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
-	}
+//FIXME temporarly disabled stress bubble
+//	private void drawStress(Graphics g)
+//	{
+//		if (!getLinkCell().getFactorLink().isTargetLink())
+//			return;
+//		
+//		if(stressText == null || stressText.length() < 1)
+//			return;
+//		
+//		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
+//		if (!layerManager.areStressesVisible())
+//			return;
+//		
+//		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
+//
+//		int arc = 5;
+//
+//		Graphics2D g2 = (Graphics2D)g;
+//		g2.setColor(DiagramConstants.COLOR_STRESS);
+//		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
+//		g2.setColor(Color.BLACK);
+//		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
+//		g2.drawString(stressText, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
+//	}
 	
 	private static final int CUSHION = 5;
 	public static final int ARROW_STUB_LINE = 23253;
