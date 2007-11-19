@@ -13,6 +13,8 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 
 public class ObjectListTable extends ObjectTable
 {
@@ -31,6 +33,18 @@ public class ObjectListTable extends ObjectTable
 	public ObjectListTableModel getObjectListTableModel()
 	{
 		return (ObjectListTableModel)getModel();
+	}
+	
+	public ORefList[] getSelectedHierarchies()
+	{
+		ORefList[] superHierarchies = super.getSelectedHierarchies();
+		for (int i = 0; i < superHierarchies.length; ++i)
+		{
+			ORef parentRef = getObjectListTableModel().getContainingRef();
+			superHierarchies[i].add(parentRef);
+		}
+		
+		return superHierarchies;
 	}
 	
 	public void updateTableAfterCommand(CommandSetObjectData cmd)
