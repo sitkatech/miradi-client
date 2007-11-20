@@ -86,7 +86,6 @@ import org.martus.util.xml.XmlUtilities;
 
 public class Project
 {
-
 	public Project() throws IOException
 	{
 		this(new FileBasedProjectServer());
@@ -102,9 +101,6 @@ public class Project
 
 	protected void clear() throws IOException
 	{
-		if(diagramSaver != null)
-			removeCommandExecutedListener(diagramSaver);
-		
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
 		undoRedoState = new UndoRedoState();
@@ -114,9 +110,6 @@ public class Project
 		threatRatingFramework = new ThreatRatingFramework(this);
 		
 		currentViewName = SummaryView.getViewName();
-		
-		diagramSaver = new DiagramSaver();
-		addCommandExecutedListener(diagramSaver);
 	}
 	
 	static public void validateNewProject(String newName) throws Exception
@@ -1035,31 +1028,6 @@ public class Project
 		return diagramClipboard;
 	}
 
-	class DiagramSaver implements CommandExecutedListener
-	{
-		public void commandExecuted(CommandExecutedEvent event)
-		{
-			save();
-		}
-
-		void save()
-		{
-			if(!isOpen())
-				return;
-			
-			try
-			{
-				saveProjectInfo();
-			}
-			catch (IOException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog(EAM.text("Error|Error writing to project"));
-			}
-		}
-
-	}
-	
 	public DecimalFormat getDecimalFormatter()
 	{
 		DecimalFormat formatter = new DecimalFormat("##0.##");
@@ -1115,7 +1083,6 @@ public class Project
 	Vector commandExecutedListeners;
 	
 	LayerManager layerManager;
-	DiagramSaver diagramSaver;
 	boolean inTransaction;
 	
 	// FIXME: This should go away, but it's difficult
