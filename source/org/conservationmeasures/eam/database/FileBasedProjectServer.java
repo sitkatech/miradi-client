@@ -9,9 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
+import org.martus.util.Stopwatch;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class FileBasedProjectServer extends ProjectServer
@@ -44,6 +46,11 @@ public class FileBasedProjectServer extends ProjectServer
 		topDirectory = null;
 		name = null;
 		lock.close();
+		
+		if(jsonFileWriteCount == 0)
+			return;
+		EAM.logDebug("Wrote " + jsonFileWriteCount + " files in " + jsonFileWriteMillis + 
+				"ms which is " + jsonFileWriteCount*1000/jsonFileWriteMillis + " files/second");
 	}
 
 	public boolean isOpen()
@@ -62,7 +69,10 @@ public class FileBasedProjectServer extends ProjectServer
 	void writeJsonFile(File file, JSONObject json) throws IOException
 	{
 		file.getParentFile().mkdirs();
+		Stopwatch sw = new Stopwatch();
 		JSONFile.write(file, json);
+		jsonFileWriteMillis += sw.elapsed();
+		++jsonFileWriteCount;
 	}
 	
 	EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException
@@ -99,5 +109,7 @@ public class FileBasedProjectServer extends ProjectServer
 		getJsonDirectory().mkdirs();
 	}
 
-	DirectoryLock lock;
+	private DirectoryLock lock;
+	private int jsonFileWriteCount;
+	private long jsonFileWriteMillis;
 }
