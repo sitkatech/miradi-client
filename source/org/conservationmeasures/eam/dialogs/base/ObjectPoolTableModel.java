@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.base;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 
 public class ObjectPoolTableModel extends ObjectTableModel
 {
@@ -31,5 +32,10 @@ public class ObjectPoolTableModel extends ObjectTableModel
 		IdList idList = project.getPool(getRowObjectType()).getIdList();
 		idList.sort();
 		return idList;
+	}
+
+	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
+	{
+		return null;
 	}
 }

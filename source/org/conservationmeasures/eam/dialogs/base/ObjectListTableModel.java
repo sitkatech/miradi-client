@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 
 public class ObjectListTableModel extends ObjectTableModel
 {
@@ -78,6 +79,11 @@ public class ObjectListTableModel extends ObjectTableModel
 			EAM.logException(e);
 			throw new RuntimeException();
 		}
+	}
+	
+	protected ChoiceItem getChoiceItem(int column, String dataToDisplay)
+	{
+		return null;
 	}
 	
 	private String tagOfList;
