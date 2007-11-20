@@ -166,6 +166,9 @@ abstract public class ProjectServer
 	void addToObjectManifest(int type, BaseId idToAdd) throws IOException, ParseException
 	{
 		ObjectManifest manifest = readObjectManifest(type);
+		if (manifest.has(idToAdd))
+			return;
+		
 		manifest.put(idToAdd);
 		writeObjectManifest(type, manifest);
 	}
