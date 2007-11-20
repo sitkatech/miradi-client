@@ -94,7 +94,7 @@ public class NudgeDoer extends LocationDoer
 		if (wouldMoveBendPointsOutOfBounds(links, deltaX, deltaY))
 			return;
 		
-		getProject().recordCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			diagramPanel.moveFactors(deltaX, deltaY, ids);
@@ -110,7 +110,7 @@ public class NudgeDoer extends LocationDoer
 		}
 		finally
 		{
-			getProject().recordCommand(new CommandEndTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 		
 		
