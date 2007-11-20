@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
+import org.conservationmeasures.eam.objectpools.ThreatStressRatingPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
@@ -112,6 +113,7 @@ public class ObjectManager
 		addNormalPool(new CostAllocationRulePool(ida));
 		addNormalPool(new MeasurementPool(ida));
 		addNormalPool(new StressPool(ida));
+		addNormalPool(new ThreatStressRatingPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -389,6 +391,7 @@ public class ObjectManager
 		loadPool(ObjectType.COST_ALLOCATION_RULE);
 		loadPool(ObjectType.MEASUREMENT);
 		loadPool(ObjectType.STRESS);
+		loadPool(ObjectType.THREAT_STRESS_RATING);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
