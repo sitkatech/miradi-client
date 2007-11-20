@@ -46,13 +46,14 @@ public class BendPointSelectionHelper
 		selectionIndexes.add(bendPointIndex);
 	}
 
-	public void mouseWasPressed(MouseEvent mouseEvent, int controlPointIndex)
+	public boolean mouseWasPressed(MouseEvent mouseEvent, int controlPointIndex)
 	{	
 		int bendPointIndex = getBendPointIndexForControlPointIndex(controlPointIndex);
 		if (bendPointIndex < 0)
-			return;
+			return false;
 		
 		updateSelectionList(mouseEvent, bendPointIndex);
+		return true;
 	}
 	
 	private int getBendPointIndexForControlPointIndex(int currentIndex)

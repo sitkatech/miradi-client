@@ -67,8 +67,8 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		if (isPortPoint(event))
 			return;
 		
-		bendSelectionHelper.mouseWasPressed(event, currentIndex);
-		bendPointSelectionChanged();
+		if(bendSelectionHelper.mouseWasPressed(event, currentIndex))
+			bendPointSelectionChanged();
 	}
 	
 	private boolean isPortPoint(MouseEvent event)
