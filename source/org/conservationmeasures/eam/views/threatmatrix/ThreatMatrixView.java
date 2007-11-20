@@ -34,11 +34,11 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 
-public class ThreatMatrixView extends UmbrellaView
+public class ThreatMatrixView extends TabbedView
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -79,22 +79,23 @@ public class ThreatMatrixView extends UmbrellaView
 		return MatrixTableImageCreator.createImage(grid.getThreatMatrixTable(),grid.getRowHeaderTable());
 	}
 
+	public void createTabs() throws Exception
+	{
+		model = new ThreatMatrixTableModel(getProject());
+		addTab(EAM.text("Threat Ratings"), createThreatMatrixPanel());
+	}
+
+	public void deleteTabs() throws Exception
+	{
+	}
 
 	public void becomeActive() throws Exception
 	{
-		super.becomeActive();
-		removeAll();
-
-		model = new ThreatMatrixTableModel(getProject());
-
-		add(createThreatMatrixPanel());
-			
+		super.becomeActive();			
 		selectBundle(null);
-		
 		grid.establishPriorSortState();
 	}
 
-	
 	private Container createThreatMatrixPanel() throws Exception
 	{
 		grid = new ThreatGridPanel(this, model);
@@ -232,9 +233,8 @@ public class ThreatMatrixView extends UmbrellaView
 		}
 	}
 
-	ThreatMatrixTableModel model;
-	ThreatGridPanel grid;
-	ThreatRatingBundlePanel details;
-	JPanel gridWithHeadings;
+	private ThreatMatrixTableModel model;
+	private ThreatGridPanel grid;
+	private ThreatRatingBundlePanel details;
 }
 
