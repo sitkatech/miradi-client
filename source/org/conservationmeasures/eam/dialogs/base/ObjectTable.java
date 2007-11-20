@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
@@ -60,8 +59,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		Object valueAt = getValueAt(row, modelColumn);
-		if (valueAt instanceof ChoiceItem)
+		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
 			return statusQuestionRenderer;
 		
 		return otherRenderer;

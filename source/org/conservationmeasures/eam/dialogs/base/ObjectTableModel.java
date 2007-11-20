@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
@@ -86,9 +86,8 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		{
 			ORef rowObjectRef = getRowObjectRefs().get(row);
 			String valueToDisplay = getValueToDisplay(rowObjectRef, getColumnTag(column));
-			ChoiceItem choiceItem = getChoiceItem(column, valueToDisplay);
-			if (choiceItem != null)
-				return choiceItem;
+			if (isChoiceItemColumn(column))
+				return getChoiceItem(column, valueToDisplay);
 			
 			return valueToDisplay;
 		}
@@ -170,9 +169,19 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		return rowObjectRefs;
 	}
 
+	public boolean isChoiceItemColumn(int column)
+	{
+		return getColumnQuestion(column) != null;
+	}
+	
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		return null;
+	}
+	
 	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
 	{
-		return new PriorityRatingQuestion(getColumnTag(column)).findChoiceByCode(dataToDisplay);
+		return getColumnQuestion(column).findChoiceByCode(dataToDisplay);
 	}
 
 	abstract public ORefList getLatestRefListFromProject();
