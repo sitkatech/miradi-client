@@ -29,7 +29,15 @@ public class SelectAllDoer extends ViewDoer
 	
 	public void doIt() throws CommandFailedException 
 	{
-		DiagramView diagramView = (DiagramView)getView();
-		diagramView.getDiagramComponent().selectAll();
+		getMainWindow().preventActionUpdates();
+		try
+		{
+			DiagramView diagramView = (DiagramView)getView();
+			diagramView.getDiagramComponent().selectAll();
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
+		}
 	}
 }
