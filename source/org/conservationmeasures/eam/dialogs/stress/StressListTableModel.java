@@ -10,6 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 public class StressListTableModel extends ObjectListTableModel
 {
@@ -18,6 +20,11 @@ public class StressListTableModel extends ObjectListTableModel
 		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags());
 	}
 
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		return new PriorityRatingQuestion(getColumnTag(column));
+	}
+	
 	private static String[] getColumnTags()
 	{
 		return new String[]{Stress.TAG_LABEL, Stress.TAG_SCOPE, Stress.TAG_SEVERITY, Stress.PSEUDO_STRESS_RATING};
