@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
@@ -83,7 +84,11 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		try
 		{
 			ORef rowObjectRef = getRowObjectRefs().get(row);
-			return getValueToDisplay(rowObjectRef, getColumnTag(column));
+			String valueToDisplay = getValueToDisplay(rowObjectRef, getColumnTag(column));
+			if (isChoiceItemColumn(column))
+				return getChoiceItem(column, valueToDisplay);
+			
+			return valueToDisplay;
 		}
 		catch(Exception e)
 		{
@@ -169,6 +174,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	}
 	
 	abstract public ORefList getLatestRefListFromProject();
+	abstract protected ChoiceItem getChoiceItem(int column, String dataToDisplay);
 	
 	protected Project project;
 	private int rowObjectType;

@@ -6,11 +6,11 @@
 package org.conservationmeasures.eam.dialogs.stress;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 public class StressListTableModel extends ObjectListTableModel
@@ -20,21 +20,9 @@ public class StressListTableModel extends ObjectListTableModel
 		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags());
 	}
 
-	public Object getValueAt(int row, int column)
+	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
 	{
-		try
-		{
-			String dataToDisplay = super.getValueAt(row, column).toString();
-			if (getColumnTag(column) == Stress.TAG_LABEL)
-				return dataToDisplay;
-			
-			return new PriorityRatingQuestion(getColumnTag(column)).findChoiceByCode(dataToDisplay);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "(Error)";
-		}
+		return new PriorityRatingQuestion(getColumnTag(column)).findChoiceByCode(dataToDisplay);
 	}
 
 	public boolean isChoiceItemColumn(int column)
