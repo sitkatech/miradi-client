@@ -274,8 +274,8 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		{
 			Integer row1 = (Integer)object1;
 			Integer row2 = (Integer)object2;
-			String value1 = (String)table.getValueAt(row1.intValue(), column);
-			String value2 = (String)table.getValueAt(row2.intValue(), column);
+			String value1 = table.getValueAt(row1.intValue(), column).toString();
+			String value2 = table.getValueAt(row2.intValue(), column).toString();
 			return super.compare(value1, value2);
 		}
 
