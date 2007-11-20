@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestTextBox;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatReductionResult;
+import org.conservationmeasures.eam.objects.TestThreatStressRating;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.objects.TestWwfProjectData;
@@ -269,6 +270,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCostAllocationRule.class));
 		suite.addTest(new TestSuite(TestMeasurement.class));
 		suite.addTest(new TestSuite(TestStress.class));
+		suite.addTest(new TestSuite(TestThreatStressRating.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
