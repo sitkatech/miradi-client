@@ -235,7 +235,7 @@ public class ResultsChainCreatorHelper
 
 	private DiagramFactor[] getRelatedDiagramFactors(FactorCell[] selectedFactorCells)
 	{
-		Vector allDiagramFactors = new Vector();
+		HashSet<DiagramFactor> allDiagramFactors = new HashSet<DiagramFactor>();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
@@ -246,7 +246,7 @@ public class ResultsChainCreatorHelper
 			allDiagramFactors.addAll(diagramFactors);
 		}
 	
-		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);	
+		return allDiagramFactors.toArray(new DiagramFactor[0]);	
 	}
 
 	private boolean containsOnlyStrategies(FactorCell[] selectedFactorCells)
@@ -299,7 +299,7 @@ public class ResultsChainCreatorHelper
 
 	private DiagramLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
 	{
-		Vector allDiagramLinks = new Vector();
+		HashSet<DiagramLink> allDiagramLinks = new HashSet<DiagramLink>();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			Factor factor = selectedFactorCells[i].getUnderlyingObject();
@@ -308,7 +308,7 @@ public class ResultsChainCreatorHelper
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
-		return (DiagramLink[]) allDiagramLinks.toArray(new DiagramLink[0]);
+		return allDiagramLinks.toArray(new DiagramLink[0]);
 	}
 
 	private Vector convertToDiagramLinks(FactorLink[] links) throws Exception
