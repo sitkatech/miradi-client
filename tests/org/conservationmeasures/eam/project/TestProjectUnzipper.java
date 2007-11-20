@@ -122,7 +122,8 @@ public class TestProjectUnzipper extends EAMTestCase
 			}
 			finally
 			{
-				
+				EAM.setLogLevel(EAM.LOG_NORMAL);
+				EAM.setLogToConsole();
 				zip.delete();
 			}
 		}
