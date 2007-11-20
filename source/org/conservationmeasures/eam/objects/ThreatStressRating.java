@@ -6,8 +6,10 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
@@ -32,6 +34,20 @@ public class ThreatStressRating extends BaseObject
 		return ObjectType.THREAT_STRESS_RATING;
 	}
 	
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING))
+			return calculateThreatRating();
+				
+		return super.getPseudoData(fieldTag);
+	}
+	
+	private String calculateThreatRating()
+	{
+		//FIXME add functionality to method along with test
+		return "";
+	}
+
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -45,7 +61,22 @@ public class ThreatStressRating extends BaseObject
 	public void clear()
 	{
 		super.clear();
+		contribution = new ChoiceData();
+		irreversibility = new ChoiceData();
+		pseudoThreatRating = new PseudoQuestionData(new PriorityRatingQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING));
+		
+		addField(TAG_CONTRIBUTION, contribution);
+		addField(TAG_IRREVERSIBILITY, irreversibility);
+		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
 	}
 	
 	public static final String OBJECT_NAME = "ThreatStressRating";
+	
+	public static final String TAG_CONTRIBUTION = "Contribution";
+	public static final String TAG_IRREVERSIBILITY = "Irreversibility";
+	public static final String PSEUDO_TAG_THREAT_RATING = "PseudoThreatRating";
+	
+	private ChoiceData contribution;
+	private ChoiceData irreversibility;
+	private PseudoQuestionData pseudoThreatRating;
 }
