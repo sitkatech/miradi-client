@@ -17,7 +17,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Arrays;
-import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -73,6 +72,7 @@ import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WizardTitlePanel;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
+import org.martus.util.Stopwatch;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 import edu.stanford.ejalbert.BrowserLauncherRunner;
@@ -91,7 +91,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager(this);
 		actions = new Actions(this);
-		preventActionUpdateStack = new Vector();
 	}
 	
 	public void start(String[] args) throws Exception
@@ -549,13 +548,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		public void run()
 		{
+			Stopwatch sw = new Stopwatch();
 			actions.updateActionStates();
+			System.out.println("updateActionStates took: " + sw.elapsed() + " millis");
 		}
 	}
 	
 	private boolean shouldPreventActionUpdates()
 	{
-		if(preventActionUpdatesFlag)
+		if(preventActionUpdatesCount > 0)
 			return true;
 		
 		return getProject().isInTransaction();
@@ -563,15 +564,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void preventActionUpdates()
 	{
-		preventActionUpdateStack.insertElementAt(new Boolean(preventActionUpdatesFlag), 0);
-		preventActionUpdatesFlag = true;
+		++preventActionUpdatesCount;
+		EAM.logDebug("preventActionsUpdates: " + preventActionUpdatesCount);
 	}
 	
 	public void allowActionUpdates()
 	{
-		boolean restoreTo = ((Boolean)preventActionUpdateStack.remove(0)).booleanValue();
-		preventActionUpdatesFlag = restoreTo;
-		updateActionStates();
+		if(preventActionUpdatesCount <= 0)
+			throw new RuntimeException("Calls to prevent/allowActionUpdates not nested properly");
+		--preventActionUpdatesCount;
+		EAM.logDebug("allowActionsUpdates: " + preventActionUpdatesCount);
 	}
 
 	private void setCurrentView(String viewName) throws Exception
@@ -844,6 +846,5 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private WizardPanel wizardPanel;
 	
 	private int existingCommandListenerCount;
-	private boolean preventActionUpdatesFlag;
-	private Vector preventActionUpdateStack;
+	private int preventActionUpdatesCount;
 }
