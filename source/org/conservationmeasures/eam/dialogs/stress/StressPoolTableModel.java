@@ -17,6 +17,9 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	}
 	
 	private static final String[] COLUMN_TAGS = new String[] {
-		Stress.TAG_LABEL,
+		Stress.TAG_LABEL, 
+		Stress.TAG_SCOPE, 
+		Stress.TAG_SEVERITY, 
+		Stress.PSEUDO_STRESS_RATING
 	};
 }
