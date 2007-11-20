@@ -59,9 +59,8 @@ public class PropertiesDoer extends LocationDoer
 		else if(selected.isProjectScope())
 			doProjectScopeProperties();
 		
-		//FIXME temporarly disabled factorLink properties dialog due to stress migaration and changes
-		//else if(selected.isFactorLink())
-		//	doFactorLinkProperties(selected.getDiagramLink());
+		else if(selected.isFactorLink())
+			doFactorLinkProperties(selected.getDiagramLink());
 	}
 	
 	private boolean isTextBoxFactor(DiagramFactor selected)
