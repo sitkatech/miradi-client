@@ -21,19 +21,9 @@ public class Stress extends BaseObject
 		super(objectManager, idToUse);
 	}
 	
-	public Stress(BaseId idToUse)
-	{
-		super(idToUse);
-	}
-	
 	public Stress(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-
-	public Stress(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 
 	public int getType()
