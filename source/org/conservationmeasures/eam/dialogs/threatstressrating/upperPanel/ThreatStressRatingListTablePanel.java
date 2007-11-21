@@ -14,15 +14,12 @@ public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 {
 	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse)
 	{
-		ThreatStressRatingListTableModel threatStressRatintListModel = new ThreatStressRatingListTableModel(projectToUse);
-		ThreatStressRatingListTable threatStressRatingListTable = new ThreatStressRatingListTable(threatStressRatintListModel);
-		
-		return new ThreatStressRatingListTablePanel(projectToUse, threatStressRatingListTable);
+		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse));
 	}
 	
-	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingListTable threatStressRatingListTable)
+	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanel)
 	{
-		super(projectToUse, threatStressRatingListTable);		
+		super(projectToUse, multiTablePanel.getObjectPicker());		
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
