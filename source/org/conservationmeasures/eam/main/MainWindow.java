@@ -550,7 +550,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			Stopwatch sw = new Stopwatch();
 			actions.updateActionStates();
-			System.out.println("updateActionStates took: " + sw.elapsed() + " millis");
+			EAM.logVerbose("updateActionStates took: " + sw.elapsed() + " millis");
 		}
 	}
 	
