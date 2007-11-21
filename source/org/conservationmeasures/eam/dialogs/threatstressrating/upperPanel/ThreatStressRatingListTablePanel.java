@@ -5,25 +5,36 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import org.conservationmeasures.eam.dialogs.base.ObjectCollectionPanel;
+import javax.swing.event.ListSelectionEvent;
+
+import org.conservationmeasures.eam.dialogs.MultiTableUpperPanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
+public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 {
-	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse) throws Exception
+	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
-		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse));
+		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse), propertiesPanel);
 	}
 	
-	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanel)
+	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
 	{
 		super(projectToUse, multiTablePanel.getObjectPicker());
+		propertiesPanel = propertiesPanelToUse;
 		
 		add(multiTablePanel);
 	}
 
+	public void valueChanged(ListSelectionEvent event)
+	{
+		super.valueChanged(event);
+		propertiesPanel.setObjectRefs(new ORef[0]);
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 	}
@@ -32,4 +43,6 @@ public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 	{
 		return null;
 	}
+	
+	private ThreatStressRatingPropertiesPanel propertiesPanel;
 }

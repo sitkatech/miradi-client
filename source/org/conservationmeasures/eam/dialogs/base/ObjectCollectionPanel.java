@@ -21,7 +21,7 @@ import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class ObjectCollectionPanel extends DisposablePanel implements  CommandExecutedListener
+abstract public class ObjectCollectionPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public ObjectCollectionPanel(Project projectToUse, ObjectPicker componentToUse)
 	{
@@ -68,6 +68,11 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements  
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public ObjectPicker getPicker()
+	{
+		return component;
 	}
 	
 	abstract public BaseObject getSelectedObject();
