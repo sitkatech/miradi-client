@@ -9,21 +9,23 @@ import java.awt.BorderLayout;
 
 import javax.swing.Box;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
+public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener
 {
 	public ThreatStressRatingMultiTablePanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-		
+	
 		createTables();
 		addTables();
 		addTablesToSelectionController();
+		targetThreatLinkTable.getSelectionModel().addListSelectionListener(this);
 	}
 	
 	private void addTablesToSelectionController()
@@ -61,6 +63,16 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 	public ORefList[] getSelectedHierarchies()
 	{
 		return targetThreatLinkTable.getSelectedHierarchies();
+	}
+	
+	public void addSelectionChangeListener(ListSelectionListener listener)
+	{
+		targetThreatLinkTable.getSelectionModel().addListSelectionListener(listener);
+	}
+
+	public void removeSelectionChangeListener(ListSelectionListener listener)
+	{
+		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
 	}
 	
 	private ThreatTableModel threatTableModel;

@@ -84,8 +84,9 @@ public class ThreatMatrixView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject());		
 		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getProject());
+		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject(), threatStressRatingPropertiesPanel);		
+		
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
 		
 		model = new ThreatMatrixTableModel(getProject());
