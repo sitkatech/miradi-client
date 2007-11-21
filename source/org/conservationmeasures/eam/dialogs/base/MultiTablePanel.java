@@ -10,6 +10,8 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -89,11 +91,11 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		return null;
 	}
 
-	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 	}
 	
-	public void addSelectionChangeListener(SelectionChangeListener listener)
+	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 	}
 
@@ -102,6 +104,10 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	}
 
 	public void ensureObjectVisible(ORef ref)
+	{
+	}
+	
+	public void valueChanged(ListSelectionEvent arg0)
 	{
 	}
 

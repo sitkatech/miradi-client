@@ -6,13 +6,14 @@
 package org.conservationmeasures.eam.actions;
 
 import javax.swing.Icon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker.SelectionChangeListener;
 
-public class ObjectsAction extends ViewAction implements SelectionChangeListener
+public class ObjectsAction extends ViewAction implements ListSelectionListener
 {
 	public ObjectsAction(MainWindow mainWindowToUse, String label)
 	{
@@ -44,7 +45,7 @@ public class ObjectsAction extends ViewAction implements SelectionChangeListener
 		return doer;
 	}
 
-	public void selectionHasChanged()
+	public void valueChanged(ListSelectionEvent event)
 	{
 		updateEnabledState();
 	}

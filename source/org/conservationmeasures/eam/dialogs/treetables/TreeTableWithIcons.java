@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
@@ -398,12 +399,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		// probably-newly-created object visible
 	}
 
-	public void addSelectionChangeListener(SelectionChangeListener listener)
+	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.add(listener);
 	}
 
-	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.remove(listener);
 	}
@@ -417,8 +418,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
-			listener.selectionHasChanged();
+			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			listener.valueChanged(null);
 		}
 	}
 

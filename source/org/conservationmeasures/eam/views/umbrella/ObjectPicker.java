@@ -5,12 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
+import javax.swing.event.ListSelectionListener;
+
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 
-public interface ObjectPicker
+public interface ObjectPicker extends ListSelectionListener
 {
 	public ORefList[] getSelectedHierarchies();
 	
@@ -23,11 +25,6 @@ public interface ObjectPicker
 	public void clearSelection();
 	public void ensureObjectVisible(ORef ref);
 	
-	public void addSelectionChangeListener(SelectionChangeListener listener);
-	public void removeSelectionChangeListener(SelectionChangeListener listener);
-	
-	public interface SelectionChangeListener
-	{
-		public void selectionHasChanged();
-	}
+	public void addSelectionChangeListener(ListSelectionListener listener);
+	public void removeSelectionChangeListener(ListSelectionListener listener);
 }
