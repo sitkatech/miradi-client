@@ -26,7 +26,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 	
 	private void createTables() throws Exception
 	{
-		threatTableModel = new ThreatTableModel2(getProject());
+		threatTableModel = new ThreatTableModel(getProject());
 		threatTable = new ThreatTable(threatTableModel);
 
 		threatStressRatintListModel = new ThreatStressRatingListTableModel(getProject());
