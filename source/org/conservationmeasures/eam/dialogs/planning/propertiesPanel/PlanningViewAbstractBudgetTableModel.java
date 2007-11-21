@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.text.DecimalFormat;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -23,8 +24,13 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 	{
 		super(projectToUse);
 		
-		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
+		dateRanges = getProjectCalendar().getQuarterlyDateDanges();
 		decimalFormatter = getProject().getDecimalFormatter();
+	}
+
+	private ProjectCalendar getProjectCalendar() throws Exception
+	{
+		return new ProjectCalendar(getProject());
 	}
 
 	public boolean isCellEditable(int rowIndex, int columnIndex)
@@ -34,7 +40,15 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 
 	public String getColumnName(int col)
 	{
-		return dateRanges[col].toString();
+		try
+		{
+			return getProjectCalendar().getDateRangeName(dateRanges[col]);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("(Error)");
+		}
 	}
 
 	public int getColumnCount()
