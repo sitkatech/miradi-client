@@ -19,6 +19,11 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		directThreatRows =  getProject().getCausePool().getDirectThreats();
 	}
 	
+	public Factor getDirectThreat(int row)
+	{
+		return directThreatRows[row];
+	}
+	
 	public int getRowCount()
 	{
 		return directThreatRows.length;

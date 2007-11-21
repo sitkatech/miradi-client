@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -22,6 +23,13 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 		
 		createTables();
 		addTables();
+		addTablesToSelectionController();
+	}
+	
+	private void addTablesToSelectionController()
+	{
+		selectionController.addTable(threatTable);
+		selectionController.addTable(targetThreatLinkTable);
 	}
 	
 	private void createTables() throws Exception
@@ -29,9 +37,6 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 		threatTableModel = new ThreatTableModel(getProject());
 		threatTable = new ThreatTable(threatTableModel);
 
-		threatStressRatintListModel = new ThreatStressRatingListTableModel(getProject());
-		threatStressRatingListTable = new ThreatStressRatingListTable(threatStressRatintListModel);
-		
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
 	}
@@ -47,17 +52,19 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 		
 		add(horizontalBox, BorderLayout.CENTER);
 	}
-
 	
 	public ObjectPicker getObjectPicker()
 	{
-		return threatStressRatingListTable;
+		return this;
 	}
 	
-	private MainThreatTableModel threatTableModel;
+	public ORefList[] getSelectedHierarchies()
+	{
+		return targetThreatLinkTable.getSelectedHierarchies();
+	}
+	
+	private ThreatTableModel threatTableModel;
 	private ThreatTable threatTable;
-	private ThreatStressRatingListTableModel threatStressRatintListModel;
-	private ThreatStressRatingListTable threatStressRatingListTable;
 	private TargetThreatLinkTableModel targetThreatLinkTableModel;
 	private TargetThreatLinkTable targetThreatLinkTable;
 }

@@ -37,6 +37,11 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return "";
 	}
 	
+	public Target getTarget(int modelColumn)
+	{
+		return targets[modelColumn];
+	}
+	
 	public String getColumnTag(int column)
 	{
 		return targets[column].getLabel();
