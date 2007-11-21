@@ -15,13 +15,12 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.base.AbstractEditorComponent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
@@ -32,11 +31,11 @@ import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class PlanningViewAssignmentEditorComponent extends DisposablePanel
+public class PlanningViewAssignmentEditorComponent extends AbstractEditorComponent
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(new BorderLayout());
+		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
@@ -156,11 +155,6 @@ public class PlanningViewAssignmentEditorComponent extends DisposablePanel
 		box.add(removeButton);
 		
 		return box;
-	}
-	
-	private Project getProject()
-	{
-		return mainWindow.getProject();
 	}
 	
 	private Actions getActions()
