@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
@@ -15,20 +17,27 @@ public class ThreatTableModel extends AbstractTableModel implements ColumnTagPro
 	public ThreatTableModel(Project projectToUse)
 	{
 		project = projectToUse;
+		directThreatRows =  getProject().getCausePool().getDirectThreats();
 	}
+	
 	public int getColumnCount()
 	{
 		return 1;
 	}
 
+	public String getColumnName(int column)
+	{
+		return EAM.text("Threats");
+	}
+	
 	public int getRowCount()
 	{
-		return 0;
+		return directThreatRows.length;
 	}
 
-	public Object getValueAt(int arg0, int arg1)
+	public Object getValueAt(int row, int column)
 	{
-		return null;
+		return directThreatRows[row];
 	}
 	
 	public Project getProject()
@@ -42,5 +51,5 @@ public class ThreatTableModel extends AbstractTableModel implements ColumnTagPro
 	}
 
 	private Project project;
-
+	private Factor[] directThreatRows;
 }
