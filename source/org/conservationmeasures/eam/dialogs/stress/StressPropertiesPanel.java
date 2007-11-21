@@ -20,7 +20,7 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 		this(projectToUse, BaseId.INVALID);
 		
 		addField(createStringField(Stress.TAG_LABEL));
-		addField(createStringField(Stress.TAG_SHORT_LABEL));
+		addField(createStringField(Stress.TAG_SHORT_LABEL, 10));
 		addField(createRatingChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.TAG_SCOPE)));
 		addField(createRatingChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.TAG_SEVERITY)));
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.PSEUDO_STRESS_RATING)));
