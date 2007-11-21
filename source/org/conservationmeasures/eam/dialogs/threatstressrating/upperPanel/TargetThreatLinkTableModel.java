@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
@@ -28,6 +29,11 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
+		Factor directThreat = directThreatRows[row];
+		Target target = targets[column];
+		if (getProject().isLinked(directThreat.getFactorId(), target.getFactorId()))
+			return "X";
+		
 		return "";
 	}
 	
