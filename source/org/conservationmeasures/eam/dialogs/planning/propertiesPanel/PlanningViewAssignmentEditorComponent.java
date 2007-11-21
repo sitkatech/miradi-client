@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -21,13 +20,8 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.utils.HideableScrollBar;
-import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
-import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
-import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiScrollPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -64,10 +58,6 @@ public class PlanningViewAssignmentEditorComponent extends AbstractEditorCompone
 	
 	private void createTables() throws Exception
 	{
-		selectionController = new MultipleTableSelectionController();
-		verticalController = new MultiTableVerticalScrollController();
-		horizontalController = new MultiTableHorizontalScrollController();
-		
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(resourceTableModel);
 		
@@ -99,42 +89,7 @@ public class PlanningViewAssignmentEditorComponent extends AbstractEditorCompone
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
-	
-	class AssignmentTableScrollPane extends UiScrollPane
-	{
-		public AssignmentTableScrollPane(JComponent contents)
-		{
-			super(contents);
-			setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-			setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-			getViewport().setBackground(contents.getBackground());
 			
-		}
-	}
-	
-	class ScrollPaneWithInvisibleVerticalScrollBar extends AssignmentTableScrollPane
-	{
-		public ScrollPaneWithInvisibleVerticalScrollBar(JComponent contents)
-		{
-			super(contents);
-			HideableScrollBar hideableScrollBar = new HideableScrollBar();
-			hideableScrollBar.visible = false;
-			setVerticalScrollBar(hideableScrollBar);
-		}
-	}
-	
-	private void addVerticalAndHorizontalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
-	{
-		horizontalController.addTable(scroller);
-		addVerticalScrollableControlledTable(horizontalBox, scroller);	
-	}
-	
-	private void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
-	{
-		verticalController.addTable(scroller);
-		horizontalBox.add(scroller);
-	}
-
 	private void addTablesToSelectionController()
 	{
 		selectionController.addTable(resourceTable);
@@ -192,9 +147,6 @@ public class PlanningViewAssignmentEditorComponent extends AbstractEditorCompone
 	}
 
 	private MainWindow mainWindow;
-	private MultiTableVerticalScrollController verticalController;
-	private MultiTableHorizontalScrollController horizontalController;
-	private MultipleTableSelectionController selectionController;
 	
 	private PlanningViewResourceTable resourceTable;
 	private PlanningViewWorkPlanTable workplanTable;
