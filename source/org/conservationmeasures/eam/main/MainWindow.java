@@ -565,7 +565,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void preventActionUpdates()
 	{
 		++preventActionUpdatesCount;
-		EAM.logDebug("preventActionsUpdates: " + preventActionUpdatesCount);
+		EAM.logVerbose("preventActionsUpdates: " + preventActionUpdatesCount);
 	}
 	
 	public void allowActionUpdates()
@@ -573,7 +573,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(preventActionUpdatesCount <= 0)
 			throw new RuntimeException("Calls to prevent/allowActionUpdates not nested properly");
 		--preventActionUpdatesCount;
-		EAM.logDebug("allowActionsUpdates: " + preventActionUpdatesCount);
+		EAM.logVerbose("allowActionsUpdates: " + preventActionUpdatesCount);
 	}
 
 	private void setCurrentView(String viewName) throws Exception
