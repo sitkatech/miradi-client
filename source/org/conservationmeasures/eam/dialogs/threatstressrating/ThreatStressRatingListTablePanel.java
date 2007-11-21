@@ -5,14 +5,32 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
-import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.dialogs.base.ObjectCollectionPanel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatStressRatingListTablePanel extends ObjectTablePanel
+public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 {
-	public ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingListTableModel stressRatingListModel)
+	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.THREAT_STRESS_RATING, new ThreatStressRatingListTable(stressRatingListModel));
+		ThreatStressRatingListTableModel threatStressRatintListModel = new ThreatStressRatingListTableModel(projectToUse);
+		ThreatStressRatingListTable threatStressRatingListTable = new ThreatStressRatingListTable(threatStressRatintListModel);
+		
+		return new ThreatStressRatingListTablePanel(projectToUse, threatStressRatingListTable);
+	}
+	
+	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingListTable threatStressRatingListTable)
+	{
+		super(projectToUse, threatStressRatingListTable);
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
+
+	public BaseObject getSelectedObject()
+	{
+		return null;
 	}
 }

@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
-import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingListTableModel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingListTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingManagementPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingPropertiesPanel;
@@ -85,7 +84,7 @@ public class ThreatMatrixView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		ThreatStressRatingListTablePanel tablePanel = new ThreatStressRatingListTablePanel(getProject(), new ThreatStressRatingListTableModel(getProject()));		
+		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject());		
 		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getProject());
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
 		
