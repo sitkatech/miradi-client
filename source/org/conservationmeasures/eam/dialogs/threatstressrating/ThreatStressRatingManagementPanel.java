@@ -10,7 +10,6 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectManagementPanel;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
@@ -44,5 +43,5 @@ public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 		return null;
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|ThreateStressRating"); 
+	private static String PANEL_DESCRIPTION = "ThreatStressRating"; 
 }

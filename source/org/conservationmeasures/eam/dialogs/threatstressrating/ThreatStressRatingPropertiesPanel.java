@@ -22,6 +22,6 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Threat Stress Rating Properties");
+		return EAM.text("Title|Stress-Based Threat Rating");
 	}
 }
