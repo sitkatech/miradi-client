@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatTableModel2 extends MainThreatTableModel
+public class ThreatTableModel extends MainThreatTableModel
 {
-	public ThreatTableModel2(Project projectToUse)
+	public ThreatTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
