@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.base.AbstractEditorComponent;
+import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class PlanningViewAssignmentEditorComponent extends AbstractEditorComponent
+public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{

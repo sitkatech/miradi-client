@@ -10,12 +10,12 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.dialogs.base.AbstractEditorComponent;
+import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatStressRatingEditorComponent extends AbstractEditorComponent
+public class ThreatStressRatingEditorComponent extends MultiTablePanel
 {
 	public ThreatStressRatingEditorComponent(Project projectToUse) throws Exception
 	{
