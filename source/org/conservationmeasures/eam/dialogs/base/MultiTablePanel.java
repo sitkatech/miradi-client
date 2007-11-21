@@ -11,14 +11,19 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiScrollPane;
 
-abstract public class MultiTablePanel extends DisposablePanel
+abstract public class MultiTablePanel extends DisposablePanel implements ObjectPicker
 {
 	public MultiTablePanel(Project projectToUse)
 	{
@@ -67,6 +72,37 @@ abstract public class MultiTablePanel extends DisposablePanel
 			setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 			getViewport().setBackground(contents.getBackground());
 		}
+	}
+	
+	public BaseObject[] getSelectedObjects()
+	{
+		return null;
+	}
+
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return null;
+	}
+
+	public ORefList getSelectionHierarchy()
+	{
+		return null;
+	}
+
+	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	{
+	}
+	
+	public void addSelectionChangeListener(SelectionChangeListener listener)
+	{
+	}
+
+	public void clearSelection()
+	{
+	}
+
+	public void ensureObjectVisible(ORef ref)
+	{
 	}
 
 	private Project project;

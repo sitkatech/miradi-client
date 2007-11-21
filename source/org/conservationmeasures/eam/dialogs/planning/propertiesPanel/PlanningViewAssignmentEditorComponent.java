@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
@@ -90,7 +91,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 			
-	private void addTablesToSelectionController()
+	protected void addTablesToSelectionController()
 	{
 		selectionController.addTable(resourceTable);
 		selectionController.addTable(workplanTable);
@@ -145,7 +146,12 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		budgetModel.setTask(task);
 		budgetTotalsModel.setTask(task);
 	}
-
+	
+	public ORefList[] getSelectedHierarchies()
+	{
+		return objectPicker.getSelectedHierarchies();
+	}
+	
 	private MainWindow mainWindow;
 	
 	private PlanningViewResourceTable resourceTable;

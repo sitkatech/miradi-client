@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatStressRatingEditorComponent extends MultiTablePanel
@@ -48,6 +49,11 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	public void dataWasChanged()
 	{
 		//udate model and table(repaint) here
+	}
+
+	public ORefList[] getSelectedHierarchies()
+	{
+		return new ORefList[0];
 	}
 	
 	ThreatStressRatingTableModel threatStressRatingTableModel;
