@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.dialogs.threatstressrating;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-public class ThreatStressRatingTableModel extends AbstractTableModel
+public class ThreatStressRatingTableModel extends AbstractTableModel implements ColumnTagProvider
 {
 	public ThreatStressRatingTableModel(Project projectToUse)
 	{
@@ -34,6 +35,11 @@ public class ThreatStressRatingTableModel extends AbstractTableModel
 	public Project getProject()
 	{
 		return project;
+	}
+
+	public String getColumnTag(int column)
+	{
+		return "";
 	}
 	
 	private Project project;

@@ -5,21 +5,30 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
-import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.dialogs.base.ObjectTableModel;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatStressRatingListTableModel extends ObjectListTableModel
+public class ThreatStressRatingListTableModel extends ObjectTableModel
 {
-	public ThreatStressRatingListTableModel(Project projectToUse, ORef nodeRef)
+	public ThreatStressRatingListTableModel(Project projectToUse)
 	{
-		//FIXME add correct parent list tag
-		super(projectToUse, nodeRef, "Replace me", ThreatStressRating.getObjectType(), getColumnTags());
+		super(projectToUse, ThreatStressRating.getObjectType(), getColumnTags());
 	}
 
+	public int getRowCount()
+	{
+		return 0;
+	}
+	
 	private static String[] getColumnTags()
 	{
 		return new String[]{};
+	}
+
+	public ORefList getLatestRefListFromProject()
+	{
+		return null;
 	}
 }
