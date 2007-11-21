@@ -26,11 +26,15 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		super(projectToUse, adapterToUse);
 
 		totalCalculator = new PlanniningViewBudgetTotalsCalculator(project);
-		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
+		yearlyDateRanges = getProjectCalendar().getYearlyDateRanges();
 		currencyFormatter = project.getCurrencyFormatter();
 	
 		combineAllDateRangesIntoOne();
-		combineColumnNames();
+	}
+
+	private ProjectCalendar getProjectCalendar() throws Exception
+	{
+		return new ProjectCalendar(project);
 	}
 
 	private void combineAllDateRangesIntoOne() throws Exception
@@ -40,21 +44,25 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		combinedDataRange = DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	private void combineColumnNames()
-	{
-		columnNames = new Vector();
-		columnNames.addAll(yearlyDateRanges);
-		columnNames.add(COST_COLUMN_NAME);
-	}
-
 	public String getColumnName(int column)
 	{
-		return columnNames.get(column).toString();
+		if(isCostColumn(column))
+			return COST_COLUMN_NAME;
+		
+		try
+		{
+			return getProjectCalendar().getDateRangeName((DateRange)yearlyDateRanges.get(column));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("(Error)");
+		}
 	}
 		
 	public int getColumnCount()
 	{
-		return columnNames.size();
+		return yearlyDateRanges.size() + 1;
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -85,7 +93,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	private Object getYearlyTotal(TreeTableNode node, int column) throws Exception
 	{	
-		DateRange dateRange = (DateRange)columnNames.get(column);
+		DateRange dateRange = (DateRange)yearlyDateRanges.get(column);
         double yearlyTotal = totalCalculator.calculateTotalCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
         if (yearlyTotal == 0)
         	return "";
@@ -118,7 +126,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	private DecimalFormat currencyFormatter;
 	
 	private DateRange combinedDataRange;
-	private Vector columnNames;
 	private Vector yearlyDateRanges;
 	private PlanniningViewBudgetTotalsCalculator totalCalculator;
 	

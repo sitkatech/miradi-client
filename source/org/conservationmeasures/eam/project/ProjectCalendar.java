@@ -23,6 +23,11 @@ public class ProjectCalendar
 		return dateRanges;
 	}
 	
+	public String getDateRangeName(DateRange dateRange)
+	{
+		return dateRange.toString();
+	}
+	
 	public Vector getYearlyDateRanges()
 	{
 		return yearlyDateRanges;
