@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
-import org.conservationmeasures.eam.dialogs.threatstressrating.management.ThreatStressRatingManagementPanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingManagementPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
