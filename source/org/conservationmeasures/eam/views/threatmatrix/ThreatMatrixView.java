@@ -20,6 +20,10 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingListTableModel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingListTablePanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingManagementPanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -81,12 +85,19 @@ public class ThreatMatrixView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
+		ThreatStressRatingListTablePanel tablePanel = new ThreatStressRatingListTablePanel(getProject(), new ThreatStressRatingListTableModel(getProject()));		
+		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getProject());
+		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
+		
 		model = new ThreatMatrixTableModel(getProject());
 		addTab(EAM.text("Threat Ratings"), createThreatMatrixPanel());
+		addTab(EAM.text("Threat Stress Rating"), threatStressRatingManagementPanel);
 	}
 
 	public void deleteTabs() throws Exception
 	{
+		threatStressRatingManagementPanel.dispose();
+		threatStressRatingPropertiesPanel.dispose();
 	}
 
 	public void becomeActive() throws Exception
@@ -236,5 +247,7 @@ public class ThreatMatrixView extends TabbedView
 	private ThreatMatrixTableModel model;
 	private ThreatGridPanel grid;
 	private ThreatRatingBundlePanel details;
+	private ThreatStressRatingManagementPanel threatStressRatingManagementPanel;
+	private ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel;
 }
 

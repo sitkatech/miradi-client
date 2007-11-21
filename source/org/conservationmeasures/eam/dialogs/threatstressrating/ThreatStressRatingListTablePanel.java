@@ -5,22 +5,14 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
-import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatStressRatingListTablePanel extends ObjectListTablePanel
+public class ThreatStressRatingListTablePanel extends ObjectTablePanel
 {
-	public ThreatStressRatingListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
+	public ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingListTableModel stressRatingListModel)
 	{
-		super(projectToUse, ObjectType.THREAT_STRESS_RATING, 
-				new ThreatStressRatingListTableModel(projectToUse, nodeRef), 
-				actions, buttonActionClasses);
+		super(projectToUse, ObjectType.THREAT_STRESS_RATING, new ThreatStressRatingListTable(stressRatingListModel));
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-	};
-
 }

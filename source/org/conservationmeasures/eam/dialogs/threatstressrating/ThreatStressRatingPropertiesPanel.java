@@ -25,8 +25,11 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		editorComponent.dispose();
-		editorComponent = null;
+		if (editorComponent != null)
+		{
+			editorComponent.dispose();
+			editorComponent = null;
+		}
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)

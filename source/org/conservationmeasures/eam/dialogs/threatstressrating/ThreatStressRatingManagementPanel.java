@@ -7,20 +7,15 @@ package org.conservationmeasures.eam.dialogs.threatstressrating;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectManagementPanel;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 {
-	public ThreatStressRatingManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public ThreatStressRatingManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
-		super(splitPositionSaverToUse, 
-			  new ThreatStressRatingListTablePanel(projectToUse, actions, nodeRef),
-			  new ThreatStressRatingPropertiesPanel(projectToUse));
+		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 	}
 
 	public String getSplitterDescription()
@@ -35,6 +30,7 @@ public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 	
 	public Icon getIcon()
 	{
+		//FIXME add new icon
 		return new StressIcon();
 	}
 	

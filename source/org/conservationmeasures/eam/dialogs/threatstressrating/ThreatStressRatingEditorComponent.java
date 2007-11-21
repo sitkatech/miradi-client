@@ -5,6 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
+import java.awt.BorderLayout;
+
+import javax.swing.Box;
+import javax.swing.JScrollPane;
+
 import org.conservationmeasures.eam.dialogs.base.AbstractEditorComponent;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
@@ -16,12 +21,22 @@ public class ThreatStressRatingEditorComponent extends AbstractEditorComponent
 		super(projectToUse);
 		
 		createTables();
+		addTables();
 	}
 	
 	private void createTables() throws Exception
 	{
 		threatStressRatingTableModel = new ThreatStressRatingTableModel(getProject());
 		threatStressRatingTable = new ThreatStressRatingTable(threatStressRatingTableModel);
+	}
+	
+	private void addTables()
+	{
+		Box horizontalBox = Box.createHorizontalBox();
+		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatStressRatingTable);
+		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
+
+		add(horizontalBox, BorderLayout.CENTER);
 	}
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
