@@ -39,25 +39,23 @@ public class FactorHtmlViewer extends HtmlFormViewer
 			graphCell = cell;
 	}
 	
-	public void addRuleFontSize(StyleSheet style)
-	{
-		String fontSize = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
-		if (fontSize.equals("0"))
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
-		else
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
-	}
-	
-	public void addRuleFontFamily(StyleSheet style)
-	{
-		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+fontFamily+";}"));
-	}
-
 	public void addRuleBackgroundColor(StyleSheet style)
 	{
 		Color color = graphCell.getColor();
 		style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
+	}
+
+	public String getFontFamily()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+	}
+
+	public int getFontSize()
+	{
+		String sizeAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
+		if(sizeAsString.length() == 0)
+			return 0;
+		return new Integer(sizeAsString).intValue();
 	}
 
 	private Project getProject()
