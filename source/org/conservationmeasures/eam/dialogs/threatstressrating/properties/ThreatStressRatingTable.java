@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.dialogs.threatstressrating.management.properties;
+package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
