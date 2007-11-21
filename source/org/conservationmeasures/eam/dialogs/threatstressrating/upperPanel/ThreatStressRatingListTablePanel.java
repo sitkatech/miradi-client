@@ -19,7 +19,9 @@ public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 	
 	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanel)
 	{
-		super(projectToUse, multiTablePanel.getObjectPicker());		
+		super(projectToUse, multiTablePanel.getObjectPicker());
+		
+		add(multiTablePanel);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)

@@ -104,6 +104,7 @@ public class ThreatMatrixView extends TabbedView
 		super.becomeActive();			
 		selectBundle(null);
 		grid.establishPriorSortState();
+		threatStressRatingManagementPanel.updateSplitterLocation();
 	}
 
 	private Container createThreatMatrixPanel() throws Exception
