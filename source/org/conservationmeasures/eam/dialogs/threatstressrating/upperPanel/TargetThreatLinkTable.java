@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class ThreatTable extends TableWithColumnWidthSaver
+public class TargetThreatLinkTable extends TableWithColumnWidthSaver
 {
-	public ThreatTable(MainThreatTableModel tableModel)
+	public TargetThreatLinkTable(TargetThreatLinkTableModel tableModel)
 	{
 		super(tableModel);
 	}

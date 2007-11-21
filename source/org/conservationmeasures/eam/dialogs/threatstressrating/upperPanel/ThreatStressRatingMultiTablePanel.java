@@ -31,14 +31,20 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 
 		threatStressRatintListModel = new ThreatStressRatingListTableModel(getProject());
 		threatStressRatingListTable = new ThreatStressRatingListTable(threatStressRatintListModel);
+		
+		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
+		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
 	}
 
 	private void addTables()
 	{
 		Box horizontalBox = Box.createHorizontalBox();
-		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatTable);
-		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
+		JScrollPane threatTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatTable);
+		addVerticalScrollableControlledTable(horizontalBox, threatTableScroller);
 
+		JScrollPane targetThreatLinkTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetThreatLinkTable);
+		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, targetThreatLinkTableScroller);
+		
 		add(horizontalBox, BorderLayout.CENTER);
 	}
 
@@ -48,8 +54,10 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel
 		return threatStressRatingListTable;
 	}
 	
-	private ThreatTableModel threatTableModel;
+	private MainThreatTableModel threatTableModel;
 	private ThreatTable threatTable;
 	private ThreatStressRatingListTableModel threatStressRatintListModel;
 	private ThreatStressRatingListTable threatStressRatingListTable;
+	private TargetThreatLinkTableModel targetThreatLinkTableModel;
+	private TargetThreatLinkTable targetThreatLinkTable;
 }
