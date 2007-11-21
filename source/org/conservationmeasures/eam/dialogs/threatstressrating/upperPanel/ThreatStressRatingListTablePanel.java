@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 {
-	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse)
+	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse) throws Exception
 	{
 		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse));
 	}
