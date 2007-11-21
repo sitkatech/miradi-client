@@ -145,12 +145,12 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		// probably-newly-created object visible
 	}
 
-	public void addSelectionChangeListener(SelectionChangeListener listener)
+	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.add(listener);
 	}
 
-	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.remove(listener);
 	}
@@ -230,8 +230,8 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
-			listener.selectionHasChanged();
+			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			listener.valueChanged(null);
 		}
 	}
 

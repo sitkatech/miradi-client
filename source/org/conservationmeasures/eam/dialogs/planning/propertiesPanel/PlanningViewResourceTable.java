@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -219,12 +220,12 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		// probably-newly-created object visible
 	}
 
-	public void addSelectionChangeListener(SelectionChangeListener listener)
+	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.add(listener);
 	}
 
-	public void removeSelectionChangeListener(SelectionChangeListener listener)
+	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.remove(listener);
 	}
@@ -237,8 +238,8 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			SelectionChangeListener listener = (SelectionChangeListener)selectionListeners.get(i);
-			listener.selectionHasChanged();
+			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			listener.valueChanged(null);
 		}
 	}
 	
