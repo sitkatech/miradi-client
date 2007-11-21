@@ -22,7 +22,7 @@ public class ThreatStressRatingListTablePanel extends ObjectCollectionPanel
 	
 	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingListTable threatStressRatingListTable)
 	{
-		super(projectToUse, threatStressRatingListTable);
+		super(projectToUse, threatStressRatingListTable);		
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)

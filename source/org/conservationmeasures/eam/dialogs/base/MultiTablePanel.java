@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.martus.swing.UiScrollPane;
 
-abstract public class AbstractEditorComponent extends DisposablePanel
+abstract public class MultiTablePanel extends DisposablePanel
 {
-	public AbstractEditorComponent(Project projectToUse)
+	public MultiTablePanel(Project projectToUse)
 	{
 		super(new BorderLayout());
 		
