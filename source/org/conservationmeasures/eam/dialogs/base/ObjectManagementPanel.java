@@ -43,12 +43,6 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 		return listComponent.getSelectedObject();
 	}
 	
-	public ObjectCollectionPanel getListComponent()
-	{
-		return listComponent;
-	}
-
-	ObjectCollectionPanel listComponent;
+	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
-
 }
