@@ -21,7 +21,7 @@ public class IdListData extends ObjectData
 	
 	public void set(String newValue) throws ParseException
 	{
-		set(new IdList(newValue));
+		set(new IdList(ids.getObjectType(), newValue));
 	}
 	
 	public String get()

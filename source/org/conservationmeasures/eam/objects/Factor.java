@@ -394,13 +394,13 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorGoalsAsMultiline() throws ParseException
 	{
-		IdList theseDesireIds = new IdList(getData(TAG_GOAL_IDS));
+		IdList theseDesireIds = new IdList(Goal.getObjectType(), getData(TAG_GOAL_IDS));
 		return getDesiresAsMultiline(ObjectType.GOAL, theseDesireIds);
 	}
 
 	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
-		IdList theseDesireIds = new IdList(getData(TAG_OBJECTIVE_IDS));
+		IdList theseDesireIds = new IdList(Objective.getObjectType(), getData(TAG_OBJECTIVE_IDS));
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	

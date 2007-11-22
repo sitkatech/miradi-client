@@ -669,7 +669,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
-		IdList diagramFactorIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_IDS));
+		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_IDS));
 		for(int i = 0; i < diagramFactorIds.size(); ++i)
 		{
 			try
@@ -687,7 +687,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinksToModel(EnhancedJsonObject json) throws Exception
 	{
-		IdList allDiagramFactorLinkIds = new IdList(json.getString(TAG_DIAGRAM_FACTOR_LINK_IDS));
+		IdList allDiagramFactorLinkIds = new IdList(DiagramLink.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_LINK_IDS));
 		for (int i = 0; i < allDiagramFactorLinkIds.size(); i++)
 		{
 			BaseId factorLinkId = allDiagramFactorLinkIds.get(i);
