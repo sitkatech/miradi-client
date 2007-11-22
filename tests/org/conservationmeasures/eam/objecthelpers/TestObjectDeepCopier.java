@@ -65,7 +65,7 @@ public class TestObjectDeepCopier extends EAMTestCase
 	
 	private IdList extractRefsFromStrings(Vector jsonStrings) throws Exception
 	{
-		IdList idList = new IdList();
+		IdList idList = new IdList(0);
 		for (int i = 0 ; i < jsonStrings.size(); ++i)
 		{
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonStrings.get(i).toString());

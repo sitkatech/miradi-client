@@ -19,7 +19,7 @@ public class TestIdList extends EAMTestCase
 
 	public void testBasics()
 	{
-		IdList list = new IdList();
+		IdList list = new IdList(0);
 		assertEquals("wrong initial size?", 0, list.size());
 		BaseId id1 = new BaseId(7);
 		BaseId id2 = new BaseId(19);
@@ -67,7 +67,7 @@ public class TestIdList extends EAMTestCase
 
 	private IdList createSampleIdList()
 	{
-		IdList list = new IdList();
+		IdList list = new IdList(0);
 		list.add(25);
 		list.add(13);
 		list.add(9998);
@@ -81,7 +81,7 @@ public class TestIdList extends EAMTestCase
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		IdList different = new IdList();
+		IdList different = new IdList(0);
 		different.add(list.get(0));
 		different.add(list.get(2));
 		different.add(list.get(1));
@@ -93,14 +93,14 @@ public class TestIdList extends EAMTestCase
 	
 	public void testSubtract()
 	{
-		IdList list12345 = new IdList();
+		IdList list12345 = new IdList(0);
 		list12345.add(1);
 		list12345.add(2);
 		list12345.add(3);
 		list12345.add(4);
 		list12345.add(5);
 		
-		IdList list654 = new IdList();
+		IdList list654 = new IdList(0);
 		list654.add(6);
 		list654.add(5);
 		list654.add(4);
@@ -121,7 +121,7 @@ public class TestIdList extends EAMTestCase
 	public void testFind()
 	{
 		BaseId[] ids = new BaseId[] { new BaseId(1), new BaseId(19), new BaseId(3), };
-		IdList list = new IdList();
+		IdList list = new IdList(0);
 		for(int i = 0; i < ids.length; ++i)
 			list.add(ids[i]);
 		for(int i = 0; i < ids.length; ++i)

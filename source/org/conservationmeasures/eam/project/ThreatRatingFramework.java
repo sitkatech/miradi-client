@@ -62,7 +62,7 @@ public class ThreatRatingFramework
 	
 	public IdList getCriterionIds()
 	{
-		IdList ids = new IdList();
+		IdList ids = new IdList(RatingCriterion.getObjectType());
 		for(int i = 0; i < criteria.length; ++i)
 			ids.add(criteria[i].getId());
 		return ids;
@@ -72,7 +72,7 @@ public class ThreatRatingFramework
 	{
 		if(criteria.length == 0)
 		{
-			IdList ids = new IdList();
+			IdList ids = new IdList(RatingCriterion.getObjectType());
 			ids.add(createDefaultCriterion("Scope")); 
 			ids.add(createDefaultCriterion("Severity"));
 			ids.add(createDefaultCriterion("Irreversibility"));
@@ -86,7 +86,7 @@ public class ThreatRatingFramework
 		
 		if(ratingValueOptions.length == 0)
 		{
-			IdList ids = new IdList();
+			IdList ids = new IdList(ValueOption.getObjectType());
 			ids.add(createDefaultValueOption("None", 0, Color.WHITE));
 			ids.add(createDefaultValueOption("Very High", 4, Color.RED));
 			ids.add(createDefaultValueOption("High", 3, Color.ORANGE));
