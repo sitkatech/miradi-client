@@ -29,7 +29,7 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendIdsCommand(BaseObject object, String idListTag, IdList idsToAppend) throws ParseException
 	{
-		IdList newList = new IdList(object.getData(idListTag));
+		IdList newList = new IdList(idsToAppend.getObjectType(), object.getData(idListTag));
 		newList.addAll(idsToAppend);
 		
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());

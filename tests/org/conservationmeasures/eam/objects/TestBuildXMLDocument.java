@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -162,7 +163,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 			
 			ObjectData field = object.getField(tags[i]);
 			if (tags[i].endsWith("Ids"))
-				buildFieldIDListElements(field);
+				buildFieldIDListElements((IdListData)field);
 			else
 				writeData(field.get());
 			
@@ -172,11 +173,11 @@ public class TestBuildXMLDocument extends EAMTestCase
 	}
 
 
-	private void buildFieldIDListElements(ObjectData field)
+	private void buildFieldIDListElements(IdListData field)
 	{
 		try 
 		{
-			IdList idList = new IdList(field.get());
+			IdList idList = new IdList(field.getIdList().getObjectType(), field.get());
 			for (int i=0; i<idList.size(); ++i )
 			{
 				writeLineReturn();
