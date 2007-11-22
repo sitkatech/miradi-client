@@ -282,7 +282,7 @@ public class Indicator extends BaseObject
 		shortLabel = new StringData();
 		priority = new ChoiceData();
 		status = new ChoiceData();
-		taskIds = new IdListData();
+		taskIds = new IdListData(Task.getObjectType());
 		indicatorThreshold = new StringMapData();
 		ratingSource= new ChoiceData();
 		measurementRefs = new ORefListData();

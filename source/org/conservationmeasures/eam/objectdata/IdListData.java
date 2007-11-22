@@ -14,7 +14,7 @@ import org.martus.util.UnicodeWriter;
 
 public class IdListData extends ObjectData
 {
-	public IdListData()
+	public IdListData(int objectTypeToStore)
 	{
 		ids = new IdList();
 	}

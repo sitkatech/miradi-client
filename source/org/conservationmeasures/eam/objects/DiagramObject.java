@@ -274,8 +274,8 @@ abstract public class DiagramObject extends BaseObject
 	{
 		super.clear();
 		
-		allDiagramFactorIds = new IdListData();
-		allDiagramFactorLinkIds = new IdListData();
+		allDiagramFactorIds = new IdListData(DiagramFactor.getObjectType());
+		allDiagramFactorLinkIds = new IdListData(DiagramLink.getObjectType());
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
