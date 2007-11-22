@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
@@ -496,12 +495,13 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(indicatrorManifestFile));
 		BaseId[] allIndicatorIds = indicatorManifestObject.getAllKeys();
 		
-		IdList goalIdsToBeRemoved = new IdList(Goal.getObjectType());
+		int goalType = 10;
+		IdList goalIdsToBeRemoved = new IdList(goalType);
 		for (int i = 0; i < allIndicatorIds.length; ++i)
 		{
 			File indicatorFile = new File(indicatorDir, Integer.toString(allIndicatorIds[i].asInt()));
 			JSONObject indicatorJson = JSONFile.read(indicatorFile);
-			IdList goalIds = new IdList(indicatorJson.optString("GoalIds"));
+			IdList goalIds = new IdList(goalType, indicatorJson.optString("GoalIds"));
 			goalIdsToBeRemoved.addAll(goalIds);
 			
 			EnhancedJsonObject readIn = readFile(indicatorFile);
@@ -596,7 +596,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			throw new RuntimeException("main file does not exist " + mainDiagram.getAbsolutePath());
 		
 		EnhancedJsonObject mainJson = JSONFile.read(mainDiagram);
-		IdList diagramFactorIds = new IdList(mainJson.getString(DiagramModel.TAG_DIAGRAM_FACTOR_IDS));
+		IdList diagramFactorIds = new IdList(18, mainJson.getString(DiagramModel.TAG_DIAGRAM_FACTOR_IDS));
 		
 		String manifest19Contents = "{\"Type\":\"ObjectManifest\"";
 		int highestId = readHighestIdInProjectFile(jsonDir);
