@@ -396,13 +396,13 @@ public class TestDataUpgrader extends EAMTestCase
 		File resultsChainFile26 = new File(resultsChainDir, resutlsChainIdAsString);
 		EnhancedJsonObject resultsChainJSon = DataUpgrader.readFile(resultsChainFile26);
 		String resultsChainLinksAsString = resultsChainJSon.getString("DiagramFactorLinkIds");
-		IdList resultsChainLinks = new IdList(resultsChainLinksAsString);
+		IdList resultsChainLinks = new IdList(26, resultsChainLinksAsString);
 		assertEquals("wrong results chain link size?", 2, resultsChainLinks.size());
 		
 		File conceptualModelFile = new File(conceptualModelDir, conceptualModelIdAsString);
 		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(conceptualModelFile);
 		String conceptualModelLinksAsString = conceptualModelJson.getString("DiagramFactorLinkIds");
-		IdList conceptualModelLinks = new IdList(conceptualModelLinksAsString);
+		IdList conceptualModelLinks = new IdList(19, conceptualModelLinksAsString);
 		assertEquals("wrong conceptual model link size?", 2, conceptualModelLinks.size());
 	}
 
@@ -521,7 +521,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(indicator33File));
 		String goalIdsAsString = json.getString("GoalIds");
-		IdList goalIds = new IdList(goalIdsAsString);
+		IdList goalIds = new IdList(10, goalIdsAsString);
 		assertEquals("has no goals", 0, goalIds.size());
 		
 		File goalDirManifest = new File(objectsGoals, "manifest");
@@ -560,14 +560,14 @@ public class TestDataUpgrader extends EAMTestCase
 		EnhancedJsonObject readIn30 = JSONFile.read(newFile30);
 
 		String factorIdsAsString = readIn30.getString("DiagramFactorIds");
-		IdList diagramFactorIds = new IdList(factorIdsAsString);
+		IdList diagramFactorIds = new IdList(18, factorIdsAsString);
 		assertEquals("same size?", 3, diagramFactorIds.size());
 		assertContains(1, diagramFactorIds.toIntArray());
 		assertContains(2, diagramFactorIds.toIntArray());
 		assertContains(3, diagramFactorIds.toIntArray());
 		
 		String linkIdsAsString = readIn30.getString("DiagramFactorLinkIds");
-		IdList diagramFactorLinkIds = new IdList(linkIdsAsString);
+		IdList diagramFactorLinkIds = new IdList(13, linkIdsAsString);
 		assertEquals("same size?", 2, diagramFactorLinkIds.size());
 		assertContains(20, diagramFactorLinkIds.toIntArray());
 		assertContains(21, diagramFactorLinkIds.toIntArray());
