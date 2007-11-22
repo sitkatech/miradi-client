@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -50,16 +52,16 @@ public class TestFactor extends TestCaseEnhanced
 			Factor.TAG_GOAL_IDS,
 			Factor.TAG_OBJECTIVE_IDS,
 		};
-		
-		IdList sampleIdList = new IdList();
-		sampleIdList.add(12);
-		sampleIdList.add(275);
+
+		Vector sampleIds = new Vector();
+		sampleIds.add(new BaseId(12));
+		sampleIds.add(new BaseId(275));
 		
 		String[] sampleData = {
 			"Whatever comment",
-			sampleIdList.toString(),
-			sampleIdList.toString(),
-			sampleIdList.toString(),
+			new IdList(Indicator.getObjectType(), sampleIds).toString(),
+			new IdList(Goal.getObjectType(), sampleIds).toString(),
+			new IdList(Objective.getObjectType(), sampleIds).toString(),
 		};
 		
 		for(int i = 0; i < tags.length; ++i)

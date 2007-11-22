@@ -53,6 +53,12 @@ public class IdList
 		
 	}
 	
+	public IdList(int objectTypeToStore, List dataToUse)
+	{
+		data = new Vector(dataToUse);
+		idListType = objectTypeToStore;
+	}
+	
 	// TODO: This constructor is deprecated and will be removed
 	public IdList()
 	{
@@ -68,12 +74,6 @@ public class IdList
 			array = new EnhancedJsonArray();
 		for(int i = 0; i < array.length(); ++i)
 			add(new BaseId(array.getInt(i)));
-	}
-	
-	private IdList(int objectTypeToStore, List dataToUse)
-	{
-		data = new Vector(dataToUse);
-		idListType = objectTypeToStore;
 	}
 	
 	public int getObjectType()
