@@ -93,22 +93,23 @@ public class Strategy extends Factor
 	
 	public ORefList getResultsChains()
 	{
-		ORefList diagramObjects = new ORefList();
-		ORefList diagramFactorList = findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for (int i=0; i<diagramFactorList.size(); ++i)
+		
+		ORefList diagramRefs = new ORefList();
+		ORefList resultsChainRefs = getProject().getPool(ResultsChainDiagram.getObjectType()).getORefList();
+		for(int diagramIndex = 0; diagramIndex < resultsChainRefs.size(); ++diagramIndex)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorList.get(i));
-			DiagramObject diagramObject = (DiagramObject)diagramFactor.getOwner();
-			//NOTE: Orphan DF's were seen in a real project on Kevin's machine
-			if (diagramObject==null)
+			ORef diagramRef = resultsChainRefs.get(diagramIndex);
+			ResultsChainDiagram diagram = (ResultsChainDiagram)getProject().findObject(diagramRef);
+			ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+			for(int diagramFactorIndex = 0; diagramFactorIndex < diagramFactorRefs.size(); ++diagramFactorIndex)
 			{
-				EAM.logError("getResultsChains:Owner not found for diagram factor:" +diagramFactor.getRef());
-				continue;
+				DiagramFactor diagramFactor = (DiagramFactor)getProject().findObject(diagramFactorRefs.get(diagramFactorIndex));
+				if(diagramFactor.getWrappedORef().equals(getRef()))
+					diagramRefs.add(diagramRef);
 			}
-			if (diagramObject.isResultsChain())
-				diagramObjects.add(diagramObject.getRef());
 		}
-		return diagramObjects;
+		
+		return diagramRefs;
 	}
 
 	
