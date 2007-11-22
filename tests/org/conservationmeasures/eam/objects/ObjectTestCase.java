@@ -159,7 +159,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		ObjectData field = object.getField(tag);
 		if(field instanceof IdListData)
 		{
-			IdList list = new IdList();
+			IdList list = new IdList(0);
 			list.add(new BaseId(7));
 			return list.toString();
 		}

@@ -60,15 +60,9 @@ public class IdList
 	}
 	
 	// TODO: This constructor is deprecated and will be removed
-	public IdList()
-	{
-		data = new Vector(new Vector());
-	}
-	
-	// TODO: This constructor is deprecated and will be removed
 	public IdList(String listAsJsonString) throws ParseException
 	{
-		this();
+		data = new Vector(new Vector());
 		EnhancedJsonArray array = new EnhancedJsonObject(listAsJsonString).optJsonArray(TAG_IDS);
 		if(array == null)
 			array = new EnhancedJsonArray();
