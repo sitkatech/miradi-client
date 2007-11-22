@@ -79,8 +79,8 @@ public class ObjectListTable extends ObjectTable
 		int desiredSelectionRow = getSelectedRow();
 		try
 		{
-			IdList oldList = new IdList(oldData);
-			IdList newList = new IdList(newData);
+			IdList oldList = new IdList(getObjectTableModel().getRowObjectType(), oldData);
+			IdList newList = new IdList(getObjectTableModel().getRowObjectType(), newData);
 			if(newList.size() > oldList.size())
 				desiredSelectionRow = newList.size() - 1;
 		}

@@ -101,7 +101,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		{
 			EnhancedJsonObject diagramObjectJson = diagramObjects[i];
 			String diagramFactorIdsAsString = diagramObjectJson.getString("DiagramFactorIds");
-			IdList diagramFactorIdsInDiagram = new IdList(diagramFactorIdsAsString);
+			IdList diagramFactorIdsInDiagram = new IdList(18, diagramFactorIdsAsString);
 			BaseId from = findAnIdInDiagram(fromDiagramFactorIds, diagramFactorIdsInDiagram);
 			BaseId to = findAnIdInDiagram(toDiagramFactorIds, diagramFactorIdsInDiagram);
 			
@@ -148,7 +148,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		
 		String diagramObjectFileName = diagramObjectJson.getString("Id");
 		String diagramObjectLinksAsString = diagramObjectJson.getString("DiagramFactorLinkIds");
-		IdList diagramObjectLinks = new IdList(diagramObjectLinksAsString);
+		IdList diagramObjectLinks = new IdList(18, diagramObjectLinksAsString);
 		diagramObjectLinks.add(new BaseId(highestId));
 		diagramObjectJson.put("DiagramFactorLinkIds", diagramObjectLinks.toJson());
 		File diagramObjectDir = findCorrectDiagramObjectDir(jsonDir, diagramObjectJson, diagramObjectFileName);
