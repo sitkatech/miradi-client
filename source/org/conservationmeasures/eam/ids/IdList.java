@@ -21,8 +21,7 @@ public class IdList
 {
 	public IdList(int type)
 	{
-		this();
-		idListType = type;
+		this(type, new Vector());
 	}
 	
 	public IdList(IdList copyFrom)
@@ -67,6 +66,13 @@ public class IdList
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
 	
+	private IdList(int objectTypeToStore, List dataToUse)
+	{
+		data = new Vector(dataToUse);
+		idListType = objectTypeToStore;
+	}
+	
+	// TODO: This constructor is deprecated and will be removed
 	private IdList(List dataToUse)
 	{
 		data = new Vector(dataToUse);
