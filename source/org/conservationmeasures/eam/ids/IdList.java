@@ -60,7 +60,13 @@ public class IdList
 	}
 	
 	// TODO: This constructor is deprecated and will be removed
-	public IdList(EnhancedJsonObject json)
+	public IdList(String listAsJsonString) throws ParseException
+	{
+		this(new EnhancedJsonObject(listAsJsonString));
+	}
+	
+	// TODO: This constructor is deprecated and will be removed
+	private IdList(EnhancedJsonObject json)
 	{
 		this();
 		EnhancedJsonArray array = json.optJsonArray(TAG_IDS);
@@ -72,21 +78,15 @@ public class IdList
 	}
 	
 	// TODO: This constructor is deprecated and will be removed
-	public IdList(String listAsJsonString) throws ParseException
+	private IdList(List dataToUse)
 	{
-		this(new EnhancedJsonObject(listAsJsonString));
+		data = new Vector(dataToUse);
 	}
 	
 	private IdList(int objectTypeToStore, List dataToUse)
 	{
 		data = new Vector(dataToUse);
 		idListType = objectTypeToStore;
-	}
-	
-	// TODO: This constructor is deprecated and will be removed
-	private IdList(List dataToUse)
-	{
-		data = new Vector(dataToUse);
 	}
 	
 	public int getObjectType()
