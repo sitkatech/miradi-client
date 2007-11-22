@@ -11,6 +11,7 @@ import java.util.HashMap;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.TemporaryIdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -37,21 +38,21 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendIdCommand(BaseObject object, String idListTag, BaseId idToAppend) throws ParseException
 	{
-		IdList newList = new IdList(object.getData(idListTag));
+		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.add(idToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 
 	static public CommandSetObjectData createInsertIdCommand(BaseObject object, String idListTag, BaseId idToInsert, int position) throws ParseException
 	{
-		IdList newList = new IdList(object.getData(idListTag));
+		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.insertAt(idToInsert, position);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 
 	static public CommandSetObjectData createRemoveIdCommand(BaseObject object, String idListTag, BaseId idToRemove) throws ParseException
 	{
-		IdList newList = new IdList(object.getData(idListTag));
+		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.removeId(idToRemove);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
