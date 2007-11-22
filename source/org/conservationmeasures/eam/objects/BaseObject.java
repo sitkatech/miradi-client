@@ -643,19 +643,15 @@ abstract public class BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
-		ORefList list = new ORefList();
-		Set<String> referencedTags = getReferencedObjectTags();
-		for(String tag : referencedTags)
+		ORefList referenced = new ORefList();
+		ORefList all = getAllReferncedObjects();
+		for(int i = 0; i < all.size(); ++i)
 		{
-			ORefList refList = getField(tag).getRefList();
-			for(int i = 0; i < refList.size(); ++i)
-			{
-				ORef ref = refList.get(i);
-				if(ref.getObjectType() == objectType)
-					list.add(ref);
-			}
+			ORef ref = all.get(i);
+			if(ref.getObjectType() == objectType)
+				referenced.add(ref);
 		}
-		return list;
+		return referenced;
 	}
 	
 	public Set<String> getReferencedObjectTags()
@@ -665,14 +661,14 @@ abstract public class BaseObject
 	
 	public ORefList getAllReferncedObjects()
 	{
-		ORefList allReferencedObjects = new ORefList();
-		for (int objectTypeIndex = 0; objectTypeIndex < ObjectType.OBJECT_TYPE_COUNT; ++objectTypeIndex)
+		ORefList list = new ORefList();
+		Set<String> referencedTags = getReferencedObjectTags();
+		for(String tag : referencedTags)
 		{
-			ORefList referencedObjects = getReferencedObjects(objectTypeIndex);
-			allReferencedObjects.addAll(referencedObjects);
+			ORefList refList = getField(tag).getRefList();
+			list.addAll(refList);
 		}
-		
-		return allReferencedObjects;	
+		return list;
 	}
 	
 	public ORefList getOwnedObjects(int objectType)
