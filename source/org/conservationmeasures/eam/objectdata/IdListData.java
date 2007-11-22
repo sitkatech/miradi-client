@@ -10,7 +10,6 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.UnicodeWriter;
 
 public class IdListData extends ObjectData
@@ -20,19 +19,6 @@ public class IdListData extends ObjectData
 		ids = new IdList();
 	}
 	
-	public IdListData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (ParseException e)
-		{
-			EAM.logDebug("IdListData ignoring invalid: " + valueToUse);
-		}
-	}
-
 	public void set(String newValue) throws ParseException
 	{
 		set(new IdList(newValue));
