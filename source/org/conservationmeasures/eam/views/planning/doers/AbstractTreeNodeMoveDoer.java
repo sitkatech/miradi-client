@@ -103,11 +103,11 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	{
 		ORef parentRef = getSelectedParentRef(task);
 		if (parentRef.isInvalid())
-			return new IdList();
+			return new IdList(Task.getObjectType());
 		
 		BaseObject parent = getProject().findObject(parentRef);
 		if(parent == null)
-			return new IdList();
+			return new IdList(Task.getObjectType());
 		
 		return getCurrentTaskList(parent);
 	}

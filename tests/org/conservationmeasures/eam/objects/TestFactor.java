@@ -71,15 +71,15 @@ public class TestFactor extends TestCaseEnhanced
 
 	public void testJson() throws Exception
 	{
-		IdList goals = new IdList();
+		IdList goals = new IdList(Goal.getObjectType());
 		goals.add(new BaseId(2));
 		goals.add(new BaseId(5));
 		
-		IdList objectives = new IdList();
+		IdList objectives = new IdList(Objective.getObjectType());
 		objectives.add(new BaseId(7));
 		objectives.add(new BaseId(9));
 		
-		IdList indicators = new IdList();
+		IdList indicators = new IdList(Indicator.getObjectType());
 		indicators.add(new BaseId(23));
 		indicators.add(new BaseId(422));
 

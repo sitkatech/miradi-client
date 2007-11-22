@@ -54,7 +54,7 @@ public class ThreatRatingFramework
 	
 	public IdList getValueOptionIds()
 	{
-		IdList ids = new IdList();
+		IdList ids = new IdList(ValueOption.getObjectType());
 		for(int i = 0; i < ratingValueOptions.length; ++i)
 			ids.add(ratingValueOptions[i].getId());
 		return ids;

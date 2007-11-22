@@ -639,7 +639,7 @@ public class DiagramModel extends DefaultGraphModel
 	public EnhancedJsonObject toJson()
 	{
 		Vector factors = getAllDiagramFactors();
-		IdList diagramFactorIds = new IdList();
+		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
 		for(int i=0; i < factors.size(); ++i)
 		{
 			FactorCell factorCell = (FactorCell)factors.get(i);

@@ -51,7 +51,7 @@ public class TestTask extends ObjectTestCase
 	
 	public void testData() throws Exception
 	{
-		IdList sampleIds = new IdList();
+		IdList sampleIds = new IdList(Task.getObjectType());
 		sampleIds.add(1);
 		sampleIds.add(1527);
 		String sampleIdData = sampleIds.toString(); 

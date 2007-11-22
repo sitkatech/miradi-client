@@ -69,7 +69,7 @@ public class TestStrategy extends ObjectTestCase
 		assertEquals("not empty to start?", 0, empty.size());
 		
 		BaseId activityId = new BaseId(828);
-		IdList oneItem = new IdList();
+		IdList oneItem = new IdList(Task.getObjectType());
 		oneItem.add(activityId);
 		intervention.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
 		

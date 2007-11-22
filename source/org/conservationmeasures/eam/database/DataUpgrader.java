@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
@@ -495,7 +496,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(indicatrorManifestFile));
 		BaseId[] allIndicatorIds = indicatorManifestObject.getAllKeys();
 		
-		IdList goalIdsToBeRemoved = new IdList();
+		IdList goalIdsToBeRemoved = new IdList(Goal.getObjectType());
 		for (int i = 0; i < allIndicatorIds.length; ++i)
 		{
 			File indicatorFile = new File(indicatorDir, Integer.toString(allIndicatorIds[i].asInt()));
@@ -686,7 +687,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		HashMap factorIdsMap = new HashMap();
 		String manifest18Contents = "{\"Type\":\"ObjectManifest\"";
-		IdList ids = new IdList();
+		IdList ids = new IdList(18);
 		
 		Iterator iter = nodes.keys();
 		while(iter.hasNext())

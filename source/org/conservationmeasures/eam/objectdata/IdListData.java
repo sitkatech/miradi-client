@@ -16,7 +16,7 @@ public class IdListData extends ObjectData
 {
 	public IdListData(int objectTypeToStore)
 	{
-		ids = new IdList();
+		ids = new IdList(objectTypeToStore);
 	}
 	
 	public void set(String newValue) throws ParseException

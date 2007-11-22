@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
@@ -33,12 +34,12 @@ public class TestCommandSetObjectData extends EAMTestCase
 	public void testListInsert() throws Exception
 	{
 		Task task = new Task(new BaseId(39));
-		BaseId id1 = new BaseId(75);
+		TaskId id1 = new TaskId(75);
 		CommandSetObjectData fromEmpty = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id1, 0);
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
 		assertEquals("wrong id?", task.getId(), fromEmpty.getObjectId());
 		assertEquals("wrong tag", Task.TAG_SUBTASK_IDS, fromEmpty.getFieldTag());
-		IdList expected = new IdList();
+		IdList expected = new IdList(Task.getObjectType());
 		expected.add(id1);
 		assertEquals("wrong data value?", expected.toString(), fromEmpty.getDataValue());
 		task.addSubtaskId(id1);

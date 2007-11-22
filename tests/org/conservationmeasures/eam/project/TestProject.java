@@ -44,6 +44,8 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.reports.ChainManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -639,7 +641,7 @@ public class TestProject extends EAMTestCase
 		
 		BaseId objectiveId1 = project.createObjectAndReturnId(ObjectType.OBJECTIVE);
 		
-		IdList objectiveId = new IdList();
+		IdList objectiveId = new IdList(Objective.getObjectType());
 		objectiveId.add(objectiveId1);
 
 		nodeContributingFactor.getUnderlyingObject().setObjectives(objectiveId);
@@ -661,7 +663,7 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
-		IdList indicators1 = new IdList();
+		IdList indicators1 = new IdList(Indicator.getObjectType());
 		indicators1.add(indicatorId1);
 		nodeContributingFactor.getUnderlyingObject().setIndicators(indicators1);
 		

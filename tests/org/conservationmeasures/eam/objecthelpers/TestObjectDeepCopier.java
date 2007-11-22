@@ -39,7 +39,7 @@ public class TestObjectDeepCopier extends EAMTestCase
 	{
 		ORef activityRef = project.createObject(Task.getObjectType());
 		Task activity = (Task) project.findObject(activityRef);
-		IdList activityIds = new IdList();
+		IdList activityIds = new IdList(Task.getObjectType());
 		activityIds.add(activityRef.getObjectId());
 	
 		BaseId taskId = project.createObjectAndReturnId(Task.getObjectType());

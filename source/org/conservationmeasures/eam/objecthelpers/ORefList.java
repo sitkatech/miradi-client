@@ -204,7 +204,7 @@ public class ORefList
 	
 	public IdList convertToIdList(int objectType)
 	{
-		IdList convertedList = new IdList();
+		IdList convertedList = new IdList(objectType);
 		for (int i = 0; i < data.size(); ++i)
 		{
 			ORef refToConvert = (ORef) data.get(i);
