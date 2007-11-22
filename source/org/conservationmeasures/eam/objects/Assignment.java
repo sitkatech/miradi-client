@@ -96,38 +96,23 @@ public class Assignment extends BaseObject
 	
 	public ORef getFundingSourceRef()
 	{
-		return new ORef(FundingSource.getObjectType(), getFundingSourceId());
-	}
-	
-	public BaseId getFundingSourceId()
-	{
-		return fundingIdData.getId();
+		return fundingIdData.getRef();
 	}
 	
 	public ORef getAccountingCodeRef()
 	{
-		return new ORef(AccountingCode.getObjectType(), getAccountingCodeId());
-	}
-	
-	public BaseId getAccountingCodeId()
-	{
-		return accountingIdData.getId();
+		return accountingIdData.getRef();
 	}
 	
 	public ORef getResourceRef()
 	{
-		return new ORef(ProjectResource.getObjectType(), getResourceId());
+		return resourceIdData.getRef();
 	}
 	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
 		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
-	}
-	
-	public BaseId getResourceId()
-	{
-		return resourceIdData.getId();
 	}
 	
 	public void clear()
