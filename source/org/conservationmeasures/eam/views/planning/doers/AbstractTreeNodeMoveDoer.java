@@ -138,7 +138,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	private IdList getCurrentTaskList(BaseObject parent) throws Exception, ParseException
 	{
 		String parentTasksTag = Task.getTaskIdsTag(parent);
-		IdList siblings = new IdList(parent.getData(parentTasksTag));
+		IdList siblings = new IdList(Task.getObjectType(), parent.getData(parentTasksTag));
 		return siblings;
 	}
 	
