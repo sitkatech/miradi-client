@@ -26,12 +26,12 @@ public class IdList
 	
 	public IdList(IdList copyFrom)
 	{
-		this(new Vector(copyFrom.data));
+		this(copyFrom.idListType, new Vector(copyFrom.data));
 	}
 	
 	public IdList(int objectTypeToStore, BaseId[] ids)
 	{
-		this();
+		this(objectTypeToStore);
 		for(int i = 0; i < ids.length; ++i)
 			add(ids[i]);
 	}
