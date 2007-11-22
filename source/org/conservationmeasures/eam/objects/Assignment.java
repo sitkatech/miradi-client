@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -65,23 +64,13 @@ public class Assignment extends BaseObject
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public String[] getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.PROJECT_RESOURCE: 
-				list.addAll(resourceIdData.getRefList());
-				break;
-			case ObjectType.ACCOUNTING_CODE: 
-				list.addAll(accountingIdData.getRefList());
-				break;
-			case ObjectType.FUNDING_SOURCE: 
-				list.addAll(fundingIdData.getRefList());
-				break;
-		}
-		return list;
+		return new String[] {
+			TAG_ASSIGNMENT_RESOURCE_ID,
+			TAG_ACCOUNTING_CODE,
+			TAG_FUNDING_SOURCE,
+		};
 	}
 	
 	public DateRangeEffortList getDetails()

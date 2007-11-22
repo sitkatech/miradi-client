@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objectdata;
 
 import java.io.IOException;
 
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 
@@ -41,5 +42,10 @@ abstract public class ObjectData
 	public boolean isIdListData()
 	{
 		return false;
+	}
+	
+	public ORefList getRefList()
+	{
+		return new ORefList();
 	}
 }
