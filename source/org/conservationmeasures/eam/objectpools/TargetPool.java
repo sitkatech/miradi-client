@@ -50,7 +50,7 @@ public class TargetPool extends EAMNormalObjectPool
 			}
 		}
 		
-		Target[] targets = (Target[]) map.values().toArray(new Target[0]);
+		Target[] targets = (Target[]) getValues().toArray(new Target[0]);
 		Arrays.sort(targets, new TargetSorter());
 		return targets;
 	}

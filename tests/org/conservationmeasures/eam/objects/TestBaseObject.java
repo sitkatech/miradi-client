@@ -39,7 +39,7 @@ public class TestBaseObject extends EAMTestCase
 		
 		ORef parentRef = project.createFactorAndReturnRef(Task.getObjectType());
 		Task parent = (Task)project.findObject(parentRef);
-		IdList children = new IdList(new BaseId[] {task.getId()});
+		IdList children = new IdList(Task.getObjectType(), new BaseId[] {task.getId()});
 		parent.setData(Task.TAG_SUBTASK_IDS, children.toString());
 		assertEquals("Owner not detected?", parentRef, task.getOwnerRef());
 	}

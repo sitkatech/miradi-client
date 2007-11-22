@@ -84,7 +84,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		BaseId taskId = project.createTask();
-		IdList taskList = new IdList(new BaseId[] {taskId});
+		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
 		//----------- start test -----------
@@ -117,13 +117,13 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId subTaskId = project.createTask();
 		BaseId assignmentId = project.createAssignment(new ORef(ObjectType.TASK,taskId));
 		
-		IdList taskList = new IdList(new BaseId[] {taskId});
+		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
-		IdList subTaskList = new IdList(new BaseId[] {subTaskId});
+		IdList subTaskList = new IdList(Task.getObjectType(), new BaseId[] {subTaskId});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
 
-		IdList assignmentList = new IdList(new BaseId[] {assignmentId});
+		IdList assignmentList = new IdList(Assignment.getObjectType(), new BaseId[] {assignmentId});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
@@ -207,7 +207,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		ORef indicatorRef = project.createObject(Indicator.getObjectType());
 	
 		ORef taskRef = project.createObject(Task.getObjectType());
-		IdList taskList = new IdList(new BaseId[] {taskRef.getObjectId()});
+		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskRef.getObjectId()});
 		project.setObjectData(indicatorRef, Indicator.TAG_TASK_IDS, taskList.toString());
 		
 		//----------- start test -----------
@@ -249,10 +249,10 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		DiagramFactor strategy = createFactorAndDiagramFactor(Strategy.getObjectType());
 		DiagramFactor cause = createFactorAndDiagramFactor(Cause.getObjectType());
 		DiagramFactor target = createFactorAndDiagramFactor(Target.getObjectType());
-		IdList factorList = new IdList(new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
+		IdList factorList = new IdList(DiagramFactor.getObjectType(), new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
 		
 		DiagramLink link = createDiagramFactorLink(strategy, cause);
-		IdList linkList = new IdList(new BaseId[] {link.getId()});
+		IdList linkList = new IdList(DiagramLink.getObjectType(), new BaseId[] {link.getId()});
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, factorList.toString());
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, linkList.toString());
 		

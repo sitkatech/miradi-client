@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objectpools;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -13,9 +14,15 @@ import org.conservationmeasures.eam.ids.IdList;
 
 public class ObjectPool
 {
-	public ObjectPool()
+	public ObjectPool(int objectTypeToStore)
 	{
+		objectType = objectTypeToStore;
 		map = new HashMap();
+	}
+	
+	public int getObjectType()
+	{
+		return objectType;
 	}
 	
 	public int size()
@@ -30,7 +37,7 @@ public class ObjectPool
 	
 	public IdList getIdList()
 	{
-		return new IdList(getIds());
+		return new IdList(objectType, getIds());
 	}
 
 	public void put(BaseId id, Object obj)
@@ -46,6 +53,11 @@ public class ObjectPool
 		return map.keySet();
 	}
 	
+	Collection getValues()
+	{
+		return map.values();
+	}
+
 	public Object getRawObject(BaseId id)
 	{
 		return map.get(id);
@@ -56,6 +68,6 @@ public class ObjectPool
 		map.remove(id);
 	}
 
-	
-	HashMap map;
+	private int objectType;
+	private HashMap map;
 }

@@ -62,12 +62,12 @@ public class ResultsChainCreatorHelper
 			
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
-			IdList idList = new IdList(clonedDiagramFactorIds);
+			IdList idList = new IdList(DiagramFactor.getObjectType(), clonedDiagramFactorIds);
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 
 			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
-			IdList diagramLinkList = new IdList(clonedDiagramLinkIds);
+			IdList diagramLinkList = new IdList(DiagramLink.getObjectType(), clonedDiagramLinkIds);
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			project.executeCommand(addLinksToChain);
 			
