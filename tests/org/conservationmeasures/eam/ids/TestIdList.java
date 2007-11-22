@@ -35,7 +35,7 @@ public class TestIdList extends EAMTestCase
 		IdList list = createSampleIdList();
 		EnhancedJsonObject json = list.toJson();
 		
-		IdList loaded = new IdList(json);
+		IdList loaded = new IdList(0, json);
 		assertEquals("wrong size?", list.size(), loaded.size());
 		for(int i =0; i < list.size(); ++i)
 			assertEquals("wrong member?", list.get(i), loaded.get(i));

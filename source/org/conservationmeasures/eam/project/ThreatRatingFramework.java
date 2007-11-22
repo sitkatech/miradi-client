@@ -413,9 +413,9 @@ public class ThreatRatingFramework
 			memorize(bundle);
 		}
 		
-		ratingValueOptions = findValueOptions(new IdList(json.optJson(TAG_VALUE_OPTION_IDS)));
+		ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), json.optJson(TAG_VALUE_OPTION_IDS)));
 		Arrays.sort(ratingValueOptions, new OptionSorter());
-		criteria = findCriteria(new IdList(json.optJson(TAG_CRITERION_IDS)));
+		criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), json.optJson(TAG_CRITERION_IDS)));
 		sortCriteria();
 	}
 
