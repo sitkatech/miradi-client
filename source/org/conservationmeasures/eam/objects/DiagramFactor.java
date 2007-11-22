@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.objectdata.PointData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -124,28 +123,14 @@ public class DiagramFactor extends BaseObject
 				return false;
 		}
 	}
-		
-	public ORefList getReferencedObjects(int objectType)
-	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TARGET:
-			case ObjectType.STRATEGY:
-			case ObjectType.CAUSE:
-			case ObjectType.INTERMEDIATE_RESULT:
-			case ObjectType.THREAT_REDUCTION_RESULT:
-			case ObjectType.TEXT_BOX:
-			{
-				Factor factor = objectManager.findFactor(underlyingObjectRef.getRawRef());
-				if (factor.getType() == objectType)
-					list.add(factor.getRef());
-			}
-		}
-		return list;
-	}
 	
+	public String[] getReferencedObjectTags()
+	{
+		return new String[] {
+			TAG_WRAPPED_REF,
+		};
+	}
+		
 	public DiagramFactorId getDiagramFactorId()
 	{
 		return (DiagramFactorId)getId(); 
