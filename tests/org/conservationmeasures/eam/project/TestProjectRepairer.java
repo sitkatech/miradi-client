@@ -52,7 +52,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		//BaseId orphan = project.createObject(annotationType);
 		BaseId nonOrphan = getProject().createObjectAndReturnId(annotationType);
 		FactorId nodeId = (FactorId)getProject().createObject(nodeType, BaseId.INVALID);
-		IdList annotationIds = new IdList();
+		IdList annotationIds = new IdList(annotationType);
 		annotationIds.add(nonOrphan);
 		getProject().setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
 

@@ -89,7 +89,7 @@ public class TestObjectManager extends EAMTestCase
 		Indicator condition1Indicator = createIndicator(FAIR);
 		KeyEcologicalAttribute conditionKea = createKEA(new Indicator[] {condition1Indicator});
 
-		IdList keas = new IdList();
+		IdList keas = new IdList(KeyEcologicalAttribute.getObjectType());
 		keas.add(conditionKea.id);
 		target.setData(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keas.toString());
 
@@ -119,7 +119,7 @@ public class TestObjectManager extends EAMTestCase
 		KeyEcologicalAttributeId keaId1 = (KeyEcologicalAttributeId)project.createObjectAndReturnId(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId1);
 
-		IdList indicatorIds = new IdList();
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
 		for(int i = 0; i < indicators.length; ++i)
 			indicatorIds.add(indicators[i].getId());
 		kea.setData(KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());

@@ -31,7 +31,7 @@ public class SlideListTableModel extends ObjectListTableModel
 		try
 		{
 			ORefList orefList = new ORefList(getContainingObject().getData(SlideShow.TAG_SLIDE_REFS));
-			IdList list = new IdList();
+			IdList list = new IdList(Slide.getObjectType());
 			for (int i=0; i<orefList.size(); ++i)
 				list.add(orefList.get(i).getObjectId());
 			return list;

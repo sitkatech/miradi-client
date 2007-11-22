@@ -146,7 +146,7 @@ public class Target extends Factor
 
 	public IdList findAllKeaIndicators()
 	{
-		IdList list = new IdList();
+		IdList list = new IdList(KeyEcologicalAttribute.getObjectType());
 		IdList keas = getKeyEcologicalAttributes();
 		for (int j=0; j<keas.size(); ++j)
 		{

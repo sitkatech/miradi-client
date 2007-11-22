@@ -31,7 +31,7 @@ public class TeamModel extends ObjectPoolTableModel
 	
 	private IdList getLatestIdListFromProject()
 	{
-		IdList filteredResources = new IdList();
+		IdList filteredResources = new IdList(ProjectResource.getObjectType());
 		
 		ORefList resourceRefs = super.getLatestRefListFromProject();
 		for (int i=0; i<resourceRefs.size(); ++i)

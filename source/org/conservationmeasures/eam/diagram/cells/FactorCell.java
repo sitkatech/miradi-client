@@ -219,7 +219,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		if (underlyingObject.canHaveGoal())
 			return ((Target)underlyingObject).getGoals();
-		return  new IdList();
+		return  new IdList(Goal.getObjectType());
 	}
 	
 	public IdList getObjectives()
