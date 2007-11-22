@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.awt.Point;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -19,7 +20,6 @@ import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -120,24 +120,13 @@ public class DiagramLink extends BaseObject
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.DIAGRAM_FACTOR: 
-				list.addAll(new ORefList(new ORef[] {
-						new ORef(objectType, fromId.getId()), 
-						new ORef(objectType, toId.getId())}));
-				break;
-			case ObjectType.FACTOR_LINK: 
-				list.addAll(new ORefList(new ORef[] {
-						new ORef(objectType, underlyingObjectId.getId())}));
-				break;
-		}
-		
-		return list;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_FROM_DIAGRAM_FACTOR_ID);
+		set.add(TAG_TO_DIAGRAM_FACTOR_ID);
+		set.add(TAG_WRAPPED_ID);
+		return set;
 	}
 	
 	public DiagramFactorId getFromDiagramFactorId()
@@ -234,6 +223,9 @@ public class DiagramLink extends BaseObject
 		toId = new BaseIdData(DiagramFactor.getObjectType());
 		bendPoints = new PointListData();
 		
+		addNoClearField(TAG_WRAPPED_ID, underlyingObjectId);
+		addNoClearField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
+		addNoClearField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 		addField(TAG_BEND_POINTS, bendPoints);
 	}
 	
