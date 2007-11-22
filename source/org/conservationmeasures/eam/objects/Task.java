@@ -306,8 +306,8 @@ public class Task extends BaseObject
 		for (int i = 0; i < assignmentIds.size(); ++i)
 		{
 			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(),assignmentIds.get(i));
-			BaseId resourceId = assignment.getResourceId();
-			ProjectResource resource = (ProjectResource) objectManager.findObject(ProjectResource.getObjectType(), resourceId);
+			ORef resourceRef = assignment.getResourceRef();
+			ProjectResource resource = (ProjectResource) objectManager.findObject(resourceRef);
 			if (resource == null)
 				continue;
 			if (i > 0)

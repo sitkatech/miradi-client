@@ -6,17 +6,24 @@
 package org.conservationmeasures.eam.objectdata;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public class BaseIdData extends ObjectData
 {
-	public BaseIdData(int objectType)
+	public BaseIdData(int objectTypeToStore)
 	{
+		objectType = objectTypeToStore;
 		id = BaseId.INVALID;
 	}
 	
 	public String get()
 	{
 		return id.toString();
+	}
+	
+	public ORef getRef()
+	{
+		return new ORef(objectType, id);
 	}
 	
 	public BaseId getId()
@@ -51,5 +58,6 @@ public class BaseIdData extends ObjectData
 		return id.hashCode();
 	}
 
+	int objectType;
 	BaseId id;
 }
