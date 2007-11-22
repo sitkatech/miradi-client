@@ -14,11 +14,6 @@ public class BaseIdData extends ObjectData
 		id = BaseId.INVALID;
 	}
 	
-	public BaseIdData(String data) throws Exception
-	{
-		set(data);
-	}
-	
 	public String get()
 	{
 		return id.toString();
