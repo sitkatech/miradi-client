@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objectdata;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 
 public class BaseIdData extends ObjectData
 {
@@ -24,6 +25,13 @@ public class BaseIdData extends ObjectData
 	public ORef getRef()
 	{
 		return new ORef(objectType, id);
+	}
+	
+	public ORefList getRefList()
+	{
+		ORefList list = new ORefList();
+		list.add(getRef());
+		return list;
 	}
 	
 	public BaseId getId()

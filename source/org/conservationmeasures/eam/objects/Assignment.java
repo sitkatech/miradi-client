@@ -72,13 +72,13 @@ public class Assignment extends BaseObject
 		switch(objectType)
 		{
 			case ObjectType.PROJECT_RESOURCE: 
-				list.addAll(new ORefList(new ORef[] {new ORef(objectType, resourceIdData.getId())}));
+				list.addAll(resourceIdData.getRefList());
 				break;
 			case ObjectType.ACCOUNTING_CODE: 
-				list.addAll(new ORefList(new ORef[] {new ORef(objectType, accountingIdData.getId())}));
+				list.addAll(accountingIdData.getRefList());
 				break;
 			case ObjectType.FUNDING_SOURCE: 
-				list.addAll(new ORefList(new ORef[] {new ORef(objectType, fundingIdData.getId())}));
+				list.addAll(fundingIdData.getRefList());
 				break;
 		}
 		return list;
