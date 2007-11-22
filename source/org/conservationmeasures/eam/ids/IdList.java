@@ -56,7 +56,7 @@ public class IdList
 	// TODO: This constructor is deprecated and will be removed
 	public IdList()
 	{
-		this(new Vector());
+		data = new Vector(new Vector());
 	}
 	
 	// TODO: This constructor is deprecated and will be removed
@@ -68,12 +68,6 @@ public class IdList
 			array = new EnhancedJsonArray();
 		for(int i = 0; i < array.length(); ++i)
 			add(new BaseId(array.getInt(i)));
-	}
-	
-	// TODO: This constructor is deprecated and will be removed
-	private IdList(List dataToUse)
-	{
-		data = new Vector(dataToUse);
 	}
 	
 	private IdList(int objectTypeToStore, List dataToUse)
