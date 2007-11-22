@@ -49,6 +49,11 @@ public class ORefListData extends ObjectData
 		return objectReferenceList;
 	}
 	
+	public ORefList getRefList()
+	{
+		return getORefList();
+	}
+	
 	public ORefList getORefList(int objectTypeToFilterOn)
 	{
 		return objectReferenceList.extractByType(objectTypeToFilterOn);

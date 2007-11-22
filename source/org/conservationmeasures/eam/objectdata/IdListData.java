@@ -10,6 +10,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.martus.util.UnicodeWriter;
 
 public class IdListData extends ObjectData
@@ -37,6 +38,11 @@ public class IdListData extends ObjectData
 	public IdList getIdList()
 	{
 		return ids;
+	}
+	
+	public ORefList getRefList()
+	{
+		return new ORefList(ids.getObjectType(), ids);
 	}
 	
 	public int size()
