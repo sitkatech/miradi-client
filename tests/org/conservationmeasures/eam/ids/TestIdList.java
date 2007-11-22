@@ -62,7 +62,7 @@ public class TestIdList extends EAMTestCase
 	public void testToString() throws Exception
 	{
 		IdList list = createSampleIdList();
-		assertEquals("Can't rount trip?", list, new IdList(list.toString()));
+		assertEquals("Can't rount trip?", list, new IdList(list.getObjectType(), list.toString()));
 	}
 
 	private IdList createSampleIdList()
