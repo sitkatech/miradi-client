@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -78,17 +80,11 @@ public class Strategy extends Factor
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(objectType, getActivityIds()));
-				break;
-		}
-		return list;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_ACTIVITY_IDS);
+		return set;
 	}
 	
 	public ORefList getResultsChains()
