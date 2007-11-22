@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -64,13 +66,13 @@ public class Assignment extends BaseObject
 		}
 	}
 	
-	public String[] getReferencedObjectTags()
+	public Set<String> getReferencedObjectTags()
 	{
-		return new String[] {
-			TAG_ASSIGNMENT_RESOURCE_ID,
-			TAG_ACCOUNTING_CODE,
-			TAG_FUNDING_SOURCE,
-		};
+		Set set = super.getReferencedObjectTags();
+		set.add(TAG_ASSIGNMENT_RESOURCE_ID);
+		set.add(TAG_ACCOUNTING_CODE);
+		set.add(TAG_FUNDING_SOURCE);
+		return set;
 	}
 	
 	public DateRangeEffortList getDetails()

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -240,12 +242,12 @@ public class Indicator extends BaseObject
 		}
 	}
 	
-	public String[] getReferencedObjectTags()
+	public Set<String> getReferencedObjectTags()
 	{
-		return new String[] {
-			TAG_TASK_IDS,
-			TAG_MEASUREMENT_REFS,
-		};
+		Set set = super.getReferencedObjectTags();
+		set.add(TAG_TASK_IDS);
+		set.add(TAG_MEASUREMENT_REFS);
+		return set;
 	}
 	
 	public ORefList getAllObjectsToDeepCopy()
