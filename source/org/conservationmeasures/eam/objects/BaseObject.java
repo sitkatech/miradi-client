@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.objects;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -642,10 +644,10 @@ abstract public class BaseObject
 	public ORefList getReferencedObjects(int objectType)
 	{
 		ORefList list = new ORefList();
-		String[] referencedTags = getReferencedObjectTags();
-		for(int field = 0; field < referencedTags.length; ++field)
+		Set<String> referencedTags = getReferencedObjectTags();
+		for(String tag : referencedTags)
 		{
-			ORefList refList = getField(referencedTags[field]).getRefList();
+			ORefList refList = getField(tag).getRefList();
 			for(int i = 0; i < refList.size(); ++i)
 			{
 				ORef ref = refList.get(i);
@@ -656,9 +658,9 @@ abstract public class BaseObject
 		return list;
 	}
 	
-	public String[] getReferencedObjectTags()
+	public Set<String> getReferencedObjectTags()
 	{
-		return new String[0];
+		return new HashSet<String>();
 	}
 	
 	public ORefList getAllReferncedObjects()

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -124,11 +125,11 @@ public class DiagramFactor extends BaseObject
 		}
 	}
 	
-	public String[] getReferencedObjectTags()
+	public Set<String> getReferencedObjectTags()
 	{
-		return new String[] {
-			TAG_WRAPPED_REF,
-		};
+		Set set = super.getReferencedObjectTags();
+		set.add(TAG_WRAPPED_REF);
+		return set;
 	}
 		
 	public DiagramFactorId getDiagramFactorId()
