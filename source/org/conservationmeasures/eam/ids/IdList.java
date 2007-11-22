@@ -38,10 +38,21 @@ public class IdList
 	
 	public IdList(int type, String listAsJsonString) throws ParseException
 	{
-		this(listAsJsonString);
+		this(type, new EnhancedJsonObject(listAsJsonString));
 		idListType = type;
 	}
 
+	public IdList(int objectTypeToStore, EnhancedJsonObject json)
+	{
+		this(objectTypeToStore);
+		EnhancedJsonArray array = json.optJsonArray(TAG_IDS);
+		if(array == null)
+			array = new EnhancedJsonArray();
+		for(int i = 0; i < array.length(); ++i)
+			add(new BaseId(array.getInt(i)));
+		
+	}
+	
 	// TODO: This constructor is deprecated and will be removed
 	public IdList()
 	{
