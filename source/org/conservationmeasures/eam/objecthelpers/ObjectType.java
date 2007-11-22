@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objecthelpers;
 
 public class ObjectType
 {
+	public static final int INVALID = -1;
+
 	public static final int RATING_CRITERION = 1;
 	public static final int VALUE_OPTION = 2;
 	public static final int TASK = 3;
@@ -42,6 +44,6 @@ public class ObjectType
 	public static final int STRESS = 33;
 	public static final int THREAT_STRESS_RATING = 34;
 	
-	public static final int OBJECT_TYPE_COUNT = 35;	
+	public static final int OBJECT_TYPE_COUNT = 35;
 }
 
