@@ -51,8 +51,8 @@ public class DiagramModelUpdater
 
 		String dataValueBefore = setCommand.getPreviousDataValue();
 		String dataValueAfter = setCommand.getDataValue();
-		IdList factorIdsBefore = new IdList(dataValueBefore);
-		IdList factorIdsAfter = new IdList(dataValueAfter);
+		IdList factorIdsBefore = new IdList(DiagramFactor.getObjectType(), dataValueBefore);
+		IdList factorIdsAfter = new IdList(DiagramFactor.getObjectType(), dataValueAfter);
 
 		IdList factorIdsToAdd = getAddedIds(factorIdsBefore, factorIdsAfter); 
 		addDiagramFactors(factorIdsToAdd);
@@ -69,8 +69,8 @@ public class DiagramModelUpdater
 		String dataValueBefore = setCommand.getPreviousDataValue();
 		String dataValueAfter = setCommand.getDataValue();
 		
-		IdList factorLinkIdsBefore = new IdList(dataValueBefore);
-		IdList factorLinkIdsAfter = new IdList(dataValueAfter);
+		IdList factorLinkIdsBefore = new IdList(DiagramLink.getObjectType(), dataValueBefore);
+		IdList factorLinkIdsAfter = new IdList(DiagramLink.getObjectType(), dataValueAfter);
 
 		IdList addedLinkIds = getAddedIds(factorLinkIdsBefore, factorLinkIdsAfter);
 		addDiagamLinks(addedLinkIds);
