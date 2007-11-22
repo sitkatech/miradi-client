@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -16,7 +17,6 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -91,35 +91,12 @@ public class FactorLink extends BaseObject
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.THREAT_REDUCTION_RESULT:
-			case ObjectType.INTERMEDIATE_RESULT:
-			case ObjectType.CAUSE:
-			case ObjectType.STRATEGY:
-			case ObjectType.TARGET:
-			{
-				if (shouldAddFactor(objectType, getToFactorRef()))
-					list.add(getToFactorRef());
-				
-				if (shouldAddFactor(objectType, getFromFactorRef()))
-					list.add(getFromFactorRef());
-			}
-		}
-		return list;
-	}
-
-	private boolean shouldAddFactor(int objectType, ORef factorToAddRef)
-	{
-		Factor factorToAdd = (Factor) objectManager.findObject(factorToAddRef);
-		if (factorToAdd == null)
-			return false;
-		
-		return factorToAdd.getType() == objectType;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_FROM_REF);
+		set.add(TAG_TO_REF);
+		return set;
 	}
 	
 	public ORef getFromFactorRef()
