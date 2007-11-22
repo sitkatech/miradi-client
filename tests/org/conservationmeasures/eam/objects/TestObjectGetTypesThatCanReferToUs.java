@@ -39,5 +39,6 @@ public class TestObjectGetTypesThatCanReferToUs extends EAMTestCase
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.STRATEGY));
 		assertContains(ObjectType.VIEW_DATA, BaseObject.getTypesThatCanReferToUs(ObjectType.TARGET));
 		
+		assertContains(ObjectType.INDICATOR, BaseObject.getTypesThatCanReferToUs(ObjectType.MEASUREMENT));
 	}
 }

@@ -210,9 +210,14 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskRef.getObjectId()});
 		project.setObjectData(indicatorRef, Indicator.TAG_TASK_IDS, taskList.toString());
 		
+		ORef measurementRef = project.createObject(Measurement.getObjectType());
+		ORefList measurementList = new ORefList(new ORef[] {measurementRef});
+		project.setObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementList.toString());
+		
 		//----------- start test -----------
 		
 		verifyRefer(indicatorRef, taskRef);
+		verifyRefer(indicatorRef, measurementRef);
 	}
 	
 	
