@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
+import java.util.Set;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -119,12 +120,11 @@ public class ViewData extends BaseObject
 		return Factor.isFactor(type);
 	}
 	
-	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		list.addAll(chainModeFactorRefs.getORefList(objectType));
-		return list;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_CHAIN_MODE_FACTOR_REFS);
+		return set;
 	}
 	
 	void clear()
