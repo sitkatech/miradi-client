@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objectdata;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.UnicodeWriter;
 
@@ -26,6 +27,11 @@ public class ORefData extends ObjectData
 	public ORef getRawRef()
 	{
 		return ref;
+	}
+	
+	public ORefList getRefList()
+	{
+		return new ORefList(new ORef[] {ref});
 	}
 	
 	public boolean isValid()
