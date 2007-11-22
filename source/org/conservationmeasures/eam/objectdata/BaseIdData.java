@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 
 public class BaseIdData extends ObjectData
 {
-	public BaseIdData()
+	public BaseIdData(int objectType)
 	{
 		id = BaseId.INVALID;
 	}
