@@ -89,6 +89,11 @@ public class IdList
 		data = new Vector(dataToUse);
 	}
 	
+	public int getObjectType()
+	{
+		return idListType;
+	}
+	
 	public int size()
 	{
 		return data.size();
