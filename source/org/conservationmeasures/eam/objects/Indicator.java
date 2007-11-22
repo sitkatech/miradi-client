@@ -240,20 +240,12 @@ public class Indicator extends BaseObject
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public String[] getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TASK: 
-				list.addAll(new ORefList(objectType, getTaskIdList()));
-				break;
-			case ObjectType.MEASUREMENT:
-				list.addAll(getMeasurementRefs());
-				break;
-		}
-		return list;
+		return new String[] {
+			TAG_TASK_IDS,
+			TAG_MEASUREMENT_REFS,
+		};
 	}
 	
 	public ORefList getAllObjectsToDeepCopy()
