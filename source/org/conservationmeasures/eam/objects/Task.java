@@ -439,8 +439,8 @@ public class Task extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		subtaskIds = new IdListData();
-		assignmentIds = new IdListData();
+		subtaskIds = new IdListData(Task.getObjectType());
+		assignmentIds = new IdListData(Assignment.getObjectType());
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);

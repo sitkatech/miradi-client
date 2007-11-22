@@ -422,10 +422,10 @@ abstract public class Factor extends BaseObject
 	{
 		super.clear();
 		comment = new StringData();
-	    indicators = new IdListData();
-		objectives = new IdListData();
-		goals = new IdListData();
-		keyEcologicalAttributes = new IdListData();
+	    indicators = new IdListData(Indicator.getObjectType());
+		objectives = new IdListData(Objective.getObjectType());
+		goals = new IdListData(Goal.getObjectType());
+		keyEcologicalAttributes = new IdListData(KeyEcologicalAttribute.getObjectType());
 		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
