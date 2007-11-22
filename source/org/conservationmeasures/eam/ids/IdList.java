@@ -25,11 +25,6 @@ public class IdList
 		idListType = type;
 	}
 	
-	public IdList()
-	{
-		this(new Vector());
-	}
-	
 	public IdList(IdList copyFrom)
 	{
 		this(new Vector(copyFrom.data));
@@ -42,6 +37,19 @@ public class IdList
 			add(ids[i]);
 	}
 	
+	public IdList(int type, String listAsJsonString) throws ParseException
+	{
+		this(listAsJsonString);
+		idListType = type;
+	}
+
+	// TODO: This constructor is deprecated and will be removed
+	public IdList()
+	{
+		this(new Vector());
+	}
+	
+	// TODO: This constructor is deprecated and will be removed
 	public IdList(EnhancedJsonObject json)
 	{
 		this();
@@ -53,12 +61,7 @@ public class IdList
 		
 	}
 	
-	public IdList(int type, String listAsJsonString) throws ParseException
-	{
-		this(listAsJsonString);
-		idListType = type;
-	}
-	
+	// TODO: This constructor is deprecated and will be removed
 	public IdList(String listAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
