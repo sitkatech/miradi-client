@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -95,18 +96,13 @@ public class Target extends Factor
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		switch(objectType)
-		{
-			case ObjectType.STRESS: 
-				list.addAll(getStressRefs());
-				break;
-		}
-		return list;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_STRESS_REFS);
+		return set;
 	}
-
+	
 	public ORefList getStressRefs()
 	{
 		return stressRefs.getORefList();
