@@ -69,7 +69,7 @@ public class ObjectListTableModel extends ObjectTableModel
 			ObjectData objectData = getContainingObject().getField(tagOfList);
 			String containedDataAsString = getContainingObject().getData(tagOfList);
 			if (objectData.isIdListData()) 
-				return new ORefList(getRowObjectType(), new IdList(containedDataAsString));
+				return new ORefList(getRowObjectType(), new IdList(getRowObjectType(), containedDataAsString));
 			
 			return new ORefList(containedDataAsString);
 		}

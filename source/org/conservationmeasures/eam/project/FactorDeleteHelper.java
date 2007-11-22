@@ -137,7 +137,7 @@ public class FactorDeleteHelper
 
 	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
 	{
-		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
+		IdList ids = new IdList(annotationType, factorToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
@@ -150,7 +150,7 @@ public class FactorDeleteHelper
 	{
 		ORefList hierarchyWithParent = new ORefList();
 		hierarchyWithParent.add(objectToDelete.getRef());
-		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
+		IdList ids = new IdList(Task.getObjectType(), objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
@@ -160,7 +160,7 @@ public class FactorDeleteHelper
 	
 	private void removeAndDeleteKeyEcologicalAttributesInList(Factor objectToDelete, String annotationListTag) throws Exception
 	{
-		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
+		IdList ids = new IdList(KeyEcologicalAttribute.getObjectType(), objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
