@@ -65,7 +65,7 @@ public class TestStrategy extends ObjectTestCase
 	{
 		FactorId interventionId = new FactorId(66);
 		Strategy intervention = new Strategy(interventionId);
-		IdList empty = new IdList(intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		IdList empty = new IdList(Task.getObjectType(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
 		BaseId activityId = new BaseId(828);
@@ -73,7 +73,7 @@ public class TestStrategy extends ObjectTestCase
 		oneItem.add(activityId);
 		intervention.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
 		
-		IdList got = new IdList(intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		IdList got = new IdList(Task.getObjectType(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("round trip failed?", oneItem, got);
 	}
 	

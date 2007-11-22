@@ -185,7 +185,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	public BaseId addItemToList(int parentType, BaseId parentId, int typeToCreate, String tag) throws Exception
 	{
 		BaseObject foundObject = findObject(new ORef(parentType, parentId));
-		IdList currentIdList = new IdList(foundObject.getData(tag));
+		IdList currentIdList = new IdList(typeToCreate, foundObject.getData(tag));
 		
 		BaseId baseId = createObjectAndReturnId(typeToCreate);
 		currentIdList.add(baseId);
