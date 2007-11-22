@@ -641,7 +641,24 @@ abstract public class BaseObject
 	
 	public ORefList getReferencedObjects(int objectType)
 	{
-		return new ORefList();
+		ORefList list = new ORefList();
+		String[] referencedTags = getReferencedObjectTags();
+		for(int field = 0; field < referencedTags.length; ++field)
+		{
+			ORefList refList = getField(referencedTags[field]).getRefList();
+			for(int i = 0; i < refList.size(); ++i)
+			{
+				ORef ref = refList.get(i);
+				if(ref.getObjectType() == objectType)
+					list.add(ref);
+			}
+		}
+		return list;
+	}
+	
+	public String[] getReferencedObjectTags()
+	{
+		return new String[0];
 	}
 	
 	public ORefList getAllReferncedObjects()
