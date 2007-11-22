@@ -181,18 +181,6 @@ public class DiagramLink extends BaseObject
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(fieldTag.equals(TAG_WRAPPED_ID))
-			underlyingObjectId.set(dataValue);
-		else if(fieldTag.equals(TAG_FROM_DIAGRAM_FACTOR_ID))
-			fromId.set(dataValue);
-		else if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
-			toId.set(dataValue);
-		else 
-			super.setData(fieldTag, dataValue);
-	}
- 	
 	public boolean bendPointAlreadyExists(Point location)
 	{
 		if (location == null)
