@@ -5,11 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.ids.SlideId;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -66,12 +67,11 @@ public class Slide extends BaseObject
 		}
 	}
 	
-	public ORefList getReferencedObjects(int objectType)
+	public Set<String> getReferencedObjectTags()
 	{
-		ORefList list = super.getReferencedObjects(objectType);
-		if (diagramObjectRef.getRawRef().getObjectType()==objectType)
-			list.add(diagramObjectRef.getRawRef());
-		return list;
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_DIAGRAM_OBJECT_REF);
+		return set;
 	}
 	
 	
