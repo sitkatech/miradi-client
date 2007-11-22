@@ -35,7 +35,7 @@ public class IdList
 		this(new Vector(copyFrom.data));
 	}
 	
-	public IdList(BaseId[] ids)
+	public IdList(int objectTypeToStore, BaseId[] ids)
 	{
 		this();
 		for(int i = 0; i < ids.length; ++i)

@@ -17,7 +17,7 @@ public class EAMObjectPool extends ObjectPool
 {
 	public EAMObjectPool(int objectTypeToStore)
 	{
-		objectType = objectTypeToStore;
+		super(objectTypeToStore);
 	}
 	
 	public BaseObject findObject(BaseId id)
@@ -27,18 +27,13 @@ public class EAMObjectPool extends ObjectPool
 	
 	public ORefList getORefList()
 	{
-		return new ORefList(getObjectType(), new IdList(getIds()));
+		return new ORefList(getObjectType(), new IdList(getObjectType(), getIds()));
 	}
 
 	
-	public int getObjectType()
-	{
-		return objectType;
-	}
-	
 	public void toXml(UnicodeWriter out) throws IOException
 	{
-		out.writeln("<Pool type='" + objectType + "'>");
+		out.writeln("<Pool type='" + getObjectType() + "'>");
 		IdList ids = getIdList();
 		for(int i = 0; i < ids.size(); ++i)
 		{
@@ -46,6 +41,4 @@ public class EAMObjectPool extends ObjectPool
 		}
 		out.writeln("</Pool>");
 	}
-	
-	int objectType;
 }

@@ -511,7 +511,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		ObjectManifest goalManifestObject = new ObjectManifest(JSONFile.read(goalManifestFile));
 		BaseId[] allGoalIds = goalManifestObject.getAllKeys();
 		BaseId[] newGoalIds = removeGoalIdsFoundInIndicators(goalIdsToBeRemoved, allGoalIds);
-		int[] goalIdsAsInts = new IdList(newGoalIds).toIntArray();
+		int[] goalIdsAsInts = new IdList(10, newGoalIds).toIntArray();
 		String manifestContent = buildManifestContents(goalIdsAsInts);
 		File manifestFile = new File(goalsDir, "manifest");
 		createFile(manifestFile, manifestContent);
@@ -565,7 +565,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		ObjectManifest manifest13 = new ObjectManifest(JSONFile.read(manifest13File));
 		BaseId[] ids = manifest13.getAllKeys();
-		IdList idList = new IdList(ids);
+		IdList idList = new IdList(13, ids);
 		readInOnlyFile.put("DiagramFactorLinkIds", idList.toString());
 							
 		writeJson(onlyFile, readInOnlyFile);

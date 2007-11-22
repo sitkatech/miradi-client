@@ -94,7 +94,7 @@ public class StrategyPool extends EAMNormalObjectPool
 	
 	public Strategy[] getAllStrategies()
 	{
-		return (Strategy[]) map.values().toArray(new Strategy[0]);
+		return (Strategy[]) getValues().toArray(new Strategy[0]);
 	}
 
 }
