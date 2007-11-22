@@ -59,17 +59,6 @@ public class IdList
 		idListType = objectTypeToStore;
 	}
 	
-	// TODO: This constructor is deprecated and will be removed
-	public IdList(String listAsJsonString) throws ParseException
-	{
-		data = new Vector(new Vector());
-		EnhancedJsonArray array = new EnhancedJsonObject(listAsJsonString).optJsonArray(TAG_IDS);
-		if(array == null)
-			array = new EnhancedJsonArray();
-		for(int i = 0; i < array.length(); ++i)
-			add(new BaseId(array.getInt(i)));
-	}
-	
 	public int getObjectType()
 	{
 		return idListType;
