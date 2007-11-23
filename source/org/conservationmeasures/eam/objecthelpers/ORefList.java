@@ -216,6 +216,18 @@ public class ORefList
 		
 		return convertedList;
 	}
+	
+	public static ORefList subtract(ORefList bigger, ORefList smaller)
+	{
+		ORefList result = new ORefList();
+		for(int i = 0; i < bigger.size(); ++i)
+		{
+			ORef ref = bigger.get(i);
+			if(!smaller.contains(ref))
+				result.add(ref);
+		}
+		return result;
+	}
 
 	private Vector data;
 	private static final String TAG_REFERENCES = "References";
