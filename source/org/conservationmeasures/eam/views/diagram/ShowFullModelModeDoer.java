@@ -49,6 +49,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 
+		getMainWindow().preventActionUpdates();
 		try
 		{
 			ORefList factorsToMakeSelected = getFactorsToMakeSelected();
@@ -70,6 +71,10 @@ public class ShowFullModelModeDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
 		}
 	}
 

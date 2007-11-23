@@ -56,6 +56,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 		
+		getMainWindow().preventActionUpdates();
 		try
 		{	
 			Project project = getMainWindow().getProject();
@@ -81,6 +82,10 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getMainWindow().allowActionUpdates();
 		}
 	}
 
