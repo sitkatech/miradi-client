@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 
@@ -63,6 +64,11 @@ public class ORefList
 		this();
 		for (int i=0; i<idList.size(); ++i)
 			add(new ORef(objectType,idList.get(i)));
+	}
+
+	public ORefList(HashSet<ORef> referringObjects)
+	{
+		this(referringObjects.toArray(new ORef[0]));
 	}
 
 	public EnhancedJsonObject toJson()
@@ -224,6 +230,18 @@ public class ORefList
 		{
 			ORef ref = bigger.get(i);
 			if(!smaller.contains(ref))
+				result.add(ref);
+		}
+		return result;
+	}
+
+	public static ORefList filterByType(ORefList list, int objectType)
+	{
+		ORefList result = new ORefList();
+		for(int i = 0; i < list.size(); ++i)
+		{
+			ORef ref = list.get(i);
+			if(ref.getObjectType() == objectType)
 				result.add(ref);
 		}
 		return result;
