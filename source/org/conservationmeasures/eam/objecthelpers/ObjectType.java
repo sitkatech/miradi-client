@@ -9,6 +9,7 @@ public class ObjectType
 {
 	public static final int INVALID = -1;
 
+	public static final int FIRST_OBJECT_TYPE = 1;
 	public static final int RATING_CRITERION = 1;
 	public static final int VALUE_OPTION = 2;
 	public static final int TASK = 3;
