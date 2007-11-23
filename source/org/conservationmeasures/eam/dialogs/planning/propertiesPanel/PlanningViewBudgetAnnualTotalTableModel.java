@@ -34,7 +34,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 	private ProjectCalendar getProjectCalendar() throws Exception
 	{
-		return new ProjectCalendar(project);
+		return project.getProjectCalendar();
 	}
 
 	private void combineAllDateRangesIntoOne() throws Exception

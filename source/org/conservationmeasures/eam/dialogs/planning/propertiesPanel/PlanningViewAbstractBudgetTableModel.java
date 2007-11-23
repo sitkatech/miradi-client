@@ -30,7 +30,7 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 
 	private ProjectCalendar getProjectCalendar() throws Exception
 	{
-		return new ProjectCalendar(getProject());
+		return getProject().getProjectCalendar();
 	}
 
 	public boolean isCellEditable(int rowIndex, int columnIndex)

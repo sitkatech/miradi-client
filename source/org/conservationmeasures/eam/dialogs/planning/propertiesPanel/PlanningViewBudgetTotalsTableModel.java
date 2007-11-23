@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsC
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 
 public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTotalsTableModel
@@ -21,7 +20,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 		super(projectToUse);
 		
 		totalsCalculator = new PlanniningViewBudgetTotalsCalculator(getProject());
-		dateRanges = new ProjectCalendar(getProject()).getQuarterlyDateDanges();
+		dateRanges = getProject().getProjectCalendar().getQuarterlyDateDanges();
 		currencyFormatter = getProject().getCurrencyFormatter();
 	}
 	
