@@ -270,6 +270,7 @@ public class ObjectManager
 
 	public void deleteObject(BaseObject object) throws IOException, ParseException
 	{
+		removeFromReferrerCache(object.getRef());
 		int objectType = object.getType();
 		BaseId objectId = object.getId();
 		EAMObjectPool pool = getPool(objectType);
@@ -473,31 +474,43 @@ public class ObjectManager
 		for(int i = 0; i < removedReferrals.size(); ++i)
 		{
 			ORef referredRef = removedReferrals.get(i);
-			getReferredRefsSet(referredRef).remove(referrerRef);
+			getReferrerRefsSet(referredRef).remove(referrerRef);
 		}
 
 		ORefList addedReferrals = ORefList.subtract(newReferrals, oldReferrals);
 		for(int i = 0; i < addedReferrals.size(); ++i)
 		{
 			ORef referredRef = addedReferrals.get(i);
-			getReferredRefsSet(referredRef).add(referrerRef);
+			getReferrerRefsSet(referredRef).add(referrerRef);
 		}
 	}
 
 	public HashSet<ORef> getReferringObjects(ORef ref)
 	{
-		return getReferredRefsSet(ref);
+		return getReferrerRefsSet(ref);
 	}
 
-	private HashSet<ORef> getReferredRefsSet(ORef referredRef)
+	private HashSet<ORef> getReferrerRefsSet(ORef referredRef)
 	{
-		HashSet<ORef> referredRefs = referrerCache.get(referredRef);
-		if(referredRefs == null)
+		HashSet<ORef> referringRefs = referrerCache.get(referredRef);
+		if(referringRefs == null)
 		{
-			referredRefs = new HashSet<ORef>();
-			referrerCache.put(referredRef, referredRefs);
+			referringRefs = new HashSet<ORef>();
+			referrerCache.put(referredRef, referringRefs);
 		}
-		return referredRefs;
+		return referringRefs;
+	}
+	
+	private void removeFromReferrerCache(ORef refToRemove)
+	{
+		BaseObject object = findObject(refToRemove);
+		ORefList referencedObjectRefs = object.getAllReferncedObjects();
+		for(int i = 0; i < referencedObjectRefs.size(); ++i)
+		{
+			ORef referencedRef = referencedObjectRefs.get(i);
+			getReferrerRefsSet(referencedRef).remove(refToRemove);
+		}
+		referrerCache.remove(refToRemove);
 	}
 
 	public void toXml(UnicodeWriter out) throws IOException
