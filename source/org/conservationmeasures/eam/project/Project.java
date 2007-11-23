@@ -86,12 +86,12 @@ import org.martus.util.xml.XmlUtilities;
 
 public class Project
 {
-	public Project() throws IOException
+	public Project() throws Exception
 	{
 		this(new FileBasedProjectServer());
 	}
 	
-	public Project(ProjectServer databaseToUse) throws IOException
+	public Project(ProjectServer databaseToUse) throws Exception
 	{
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
@@ -99,7 +99,7 @@ public class Project
 		clear();
 	}
 
-	protected void clear() throws IOException
+	protected void clear() throws Exception
 	{
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
@@ -108,6 +108,7 @@ public class Project
 		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
+		projectCalendar = null;
 		
 		currentViewName = SummaryView.getViewName();
 	}
@@ -302,6 +303,11 @@ public class Project
 		return threatRatingFramework;
 	}
 	
+	public ProjectCalendar getProjectCalendar()
+	{
+		return projectCalendar;
+	}
+
 	public BaseObject findObject(ORef ref)
 	{
 		return findObject(ref.getObjectType(), ref.getObjectId());
@@ -598,6 +604,7 @@ public class Project
 			createProjectMetadata();
 		
 		loadThreatRatingFramework();
+		projectCalendar = new ProjectCalendar(this);
 		
 		applyDefaultBehavior();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
@@ -1079,6 +1086,7 @@ public class Project
 	
 	ProjectServer database;
 	DiagramClipboard diagramClipboard;
+	private ProjectCalendar projectCalendar;
 
 	Vector commandExecutedListeners;
 	
