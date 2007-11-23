@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -77,6 +78,7 @@ public class ObjectManager
 		project = projectToUse;
 		projectChainBuilder = new ProjectChainObject();
 		diagramChainBuilder = new DiagramChainObject();
+		referrerCache = new HashMap<ORef, HashSet<ORef>>();
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
@@ -465,6 +467,39 @@ public class ObjectManager
 
 	}
 
+	public void updateReferrerCache(ORef referrerRef, ORefList oldReferrals, ORefList newReferrals)
+	{
+		ORefList removedReferrals = ORefList.subtract(oldReferrals, newReferrals);
+		for(int i = 0; i < removedReferrals.size(); ++i)
+		{
+			ORef referredRef = removedReferrals.get(i);
+			getReferredRefsSet(referredRef).remove(referrerRef);
+		}
+
+		ORefList addedReferrals = ORefList.subtract(newReferrals, oldReferrals);
+		for(int i = 0; i < addedReferrals.size(); ++i)
+		{
+			ORef referredRef = addedReferrals.get(i);
+			getReferredRefsSet(referredRef).add(referrerRef);
+		}
+	}
+
+	public HashSet<ORef> getReferringObjects(ORef ref)
+	{
+		return getReferredRefsSet(ref);
+	}
+
+	private HashSet<ORef> getReferredRefsSet(ORef referredRef)
+	{
+		HashSet<ORef> referredRefs = referrerCache.get(referredRef);
+		if(referredRefs == null)
+		{
+			referredRefs = new HashSet<ORef>();
+			referrerCache.put(referredRef, referredRefs);
+		}
+		return referredRefs;
+	}
+
 	public void toXml(UnicodeWriter out) throws IOException
 	{
 		out.writeln("<ObjectPools>");
@@ -482,4 +517,5 @@ public class ObjectManager
 	private ProjectChainObject projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;
 	private HashMap pools;
+	private HashMap<ORef, HashSet<ORef>> referrerCache;
 }

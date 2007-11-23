@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
+import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
@@ -75,6 +76,13 @@ abstract public class Factor extends BaseObject
 			default:
 				return false;
 		}
+	}
+	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_INDICATOR_IDS);
+		return set;
 	}
 	
 	public ORefList getOwnedObjects(int objectType)

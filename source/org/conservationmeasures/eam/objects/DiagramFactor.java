@@ -26,12 +26,12 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
 {
-	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo) throws Exception
 	{
 		super(objectManager, diagramFactorIdToUse);
 		
 		clear();
-		underlyingObjectRef.set(extraInfo.getFactorRef());
+		setData(TAG_WRAPPED_REF, extraInfo.getFactorRef().toString());
 		size.setDimension(getDefaultSize());
 	}
 	

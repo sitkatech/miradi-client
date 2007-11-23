@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -56,6 +58,12 @@ public class Cause extends Factor
 		return list;
 	}
 
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_OBJECTIVE_IDS);
+		return set;
+	}
 	
 	public boolean isCause()
 	{

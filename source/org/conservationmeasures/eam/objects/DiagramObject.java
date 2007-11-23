@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramContentsId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -217,6 +219,13 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_DIAGRAM_FACTOR_IDS);
+		set.add(TAG_DIAGRAM_FACTOR_LINK_IDS);
+		return set;
+	}
 	
 	public static boolean canReferToThisType(int type)
 	{

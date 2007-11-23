@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objectdata.ORefData;
@@ -23,20 +24,20 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
-	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromFactorRef, ORef toFactorRef)
+	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		super(objectManager, id);
 		clear();
-		setFromRef(fromFactorRef);
-		setToRef(toFactorRef);
+		setData(TAG_FROM_REF, fromFactorRef.toString());
+		setData(TAG_TO_REF, toFactorRef.toString());
 	}
 
-	public FactorLink(FactorLinkId id, ORef fromFactorRef, ORef toFactorRef)
+	public FactorLink(FactorLinkId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		super(id);
 		clear();
-		setFromRef(fromFactorRef);
-		setToRef(toFactorRef);
+		setData(TAG_FROM_REF, fromFactorRef.toString());
+		setData(TAG_TO_REF, toFactorRef.toString());
 	}
 	
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
@@ -44,16 +45,6 @@ public class FactorLink extends BaseObject
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
 	}
 	
-	public void setFromRef(ORef fromFactorRef)
-	{
-		fromRef.set(fromFactorRef);
-	}
-	
-	public void setToRef(ORef toFactorRef)
-	{
-		toRef.set(toFactorRef);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
@@ -101,12 +92,14 @@ public class FactorLink extends BaseObject
 	
 	public ORef getFromFactorRef()
 	{
-		return fromRef.getRawRef();
+		ORef rawRef = fromRef.getRawRef();
+		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
 	public ORef getToFactorRef()
 	{
-		return toRef.getRawRef();
+		ORef rawRef = toRef.getRawRef();
+		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
 	public FactorLinkId getFactorLinkId()

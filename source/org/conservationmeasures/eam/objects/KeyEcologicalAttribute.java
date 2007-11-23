@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
@@ -106,6 +108,13 @@ public class KeyEcologicalAttribute extends BaseObject
 		}
 	}
 	
+	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_INDICATOR_IDS);
+		return set;
+	}
 	
 	public static boolean canReferToThisType(int type)
 	{

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -69,6 +71,13 @@ public class IntermediateResult extends Factor
 			default:
 				return false;
 		}
+	}
+	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_OBJECTIVE_IDS);
+		return set;
 	}
 	
 	public boolean canHaveObjectives()

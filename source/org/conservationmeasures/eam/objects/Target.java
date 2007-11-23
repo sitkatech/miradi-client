@@ -100,6 +100,8 @@ public class Target extends Factor
 	{
 		Set<String> set = super.getReferencedObjectTags();
 		set.add(TAG_STRESS_REFS);
+		set.add(TAG_GOAL_IDS);
+		set.add(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		return set;
 	}
 	

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
@@ -71,6 +73,13 @@ public class ThreatReductionResult extends Factor
 			default:
 				return false;
 		}
+	}
+	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_OBJECTIVE_IDS);
+		return set;
 	}
 	
 	public boolean canHaveObjectives()
