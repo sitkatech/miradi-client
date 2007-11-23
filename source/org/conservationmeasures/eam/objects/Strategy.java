@@ -83,6 +83,7 @@ public class Strategy extends Factor
 	{
 		Set<String> set = super.getReferencedObjectTags();
 		set.add(TAG_ACTIVITY_IDS);
+		set.add(TAG_OBJECTIVE_IDS);
 		return set;
 	}
 	

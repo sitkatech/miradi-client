@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
@@ -49,26 +50,25 @@ abstract public class BaseObject
 
 	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
 	{
-		this(idToUse);
 		objectManager = objectManagerToUse;
-	}
-	
-	public BaseObject(BaseId idToUse)
-	{
 		setId(idToUse);
 		clear();
 	}
 	
+	public BaseObject(BaseId idToUse)
+	{
+		this(null, idToUse);
+	}
+	
 	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		this(idToUse, json);
-		objectManager = objectManagerToUse;
+		this(objectManagerToUse, idToUse);
+		loadFromJson(json);
 	}
 	
 	BaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		this(idToUse);
-		loadFromJson(json);
+		this(null, idToUse, json);
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
@@ -296,7 +296,13 @@ abstract public class BaseObject
 		if(!doesFieldExist(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 
+		ORefList oldReferrals = getAllReferncedObjects();
 		getField(fieldTag).set(dataValue);
+		ORefList newReferrals = getAllReferncedObjects();
+		if(getObjectManager() != null)
+		{
+			getObjectManager().updateReferrerCache(getRef(), oldReferrals, newReferrals);
+		}
 	}
 	
 	public boolean isPseudoField(String fieldTag)
@@ -600,12 +606,21 @@ abstract public class BaseObject
 	public ORefList findObjectsThatReferToUs()
 	{
 		ORefList owners = new ORefList();
-		int[] objectTypes = getTypesThatCanReferToUs(getType());
-		for (int i=0; i<objectTypes.length; ++i)
+		for (int i = ObjectType.FIRST_OBJECT_TYPE; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
 		{
-			ORefList orefs = findObjectsThatReferToUs(objectTypes[i]);
+			ORefList orefs = findObjectsThatReferToUs(i);
 			owners.addAll(orefs);
 		}
+
+// FIXME: For test purposes, this verifies that the cache is correct
+//		Set computedList = new HashSet<ORef>(Arrays.asList(owners.toArray()));
+//		Set cachedList = getObjectManager().getReferringObjects(getRef());
+//		if(!cachedList.equals(computedList))
+//		{
+//			EAM.logWarning("Cached referrers incorrect for " + getRef() + "! " + 
+//					cachedList.toString() + " instead of " + owners.toString());
+//		}
+
 		return owners;
 	}
 	
@@ -618,7 +633,11 @@ abstract public class BaseObject
 	static public ORefList findObjectsThatReferToUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
 		ORefList matchList = new ORefList();
-		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
+		EAMObjectPool pool = objectManager.getPool(objectType);
+		if(pool == null)
+			return matchList;
+		
+		ORefList orefsInPool = pool.getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)
 		{
 			BaseObject objectInPool = objectManager.findObject(orefsInPool.get(i));

@@ -145,11 +145,8 @@ public class ProjectRepairer
 		for (int i = 0; i < refList.size(); ++i)
 		{
 			BaseObject foundObject = project.findObject(refList.get(i));
-			ORefList ownedAndReferredRefs = new ORefList();
-			ownedAndReferredRefs.addAll(foundObject.getAllReferncedObjects());
-			ownedAndReferredRefs.addAll(foundObject.getAllOwnedObjects());
-			
-			corruptedObjectRefs.addAll(findCorruptedObjects(ownedAndReferredRefs));
+			ORefList referredRefs = foundObject.getAllReferncedObjects();
+			corruptedObjectRefs.addAll(findCorruptedObjects(referredRefs));
 		}
 		
 		return corruptedObjectRefs;

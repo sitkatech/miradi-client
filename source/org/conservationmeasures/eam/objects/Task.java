@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -127,7 +128,18 @@ public class Task extends BaseObject
 	
 	public static boolean canReferToThisType(int type)
 	{
+		if(type == Task.getObjectType())
+			return true;
+		
 		return false;
+	}
+	
+	public Set<String> getReferencedObjectTags()
+	{
+		Set<String> set = super.getReferencedObjectTags();
+		set.add(TAG_SUBTASK_IDS);
+		set.add(TAG_ASSIGNMENT_IDS);
+		return set;
 	}
 	
 
