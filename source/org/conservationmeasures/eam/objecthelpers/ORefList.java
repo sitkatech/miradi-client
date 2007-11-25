@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 
@@ -66,7 +65,7 @@ public class ORefList
 			add(new ORef(objectType,idList.get(i)));
 	}
 
-	public ORefList(HashSet<ORef> referringObjects)
+	public ORefList(ORefSet referringObjects)
 	{
 		this(referringObjects.toArray(new ORef[0]));
 	}
