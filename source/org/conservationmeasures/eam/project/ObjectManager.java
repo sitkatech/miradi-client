@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -24,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
@@ -78,7 +78,7 @@ public class ObjectManager
 		project = projectToUse;
 		projectChainBuilder = new ProjectChainObject();
 		diagramChainBuilder = new DiagramChainObject();
-		referrerCache = new HashMap<ORef, HashSet<ORef>>();
+		referrerCache = new HashMap<ORef, ORefSet>();
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
@@ -485,17 +485,17 @@ public class ObjectManager
 		}
 	}
 
-	public HashSet<ORef> getReferringObjects(ORef ref)
+	public ORefSet getReferringObjects(ORef ref)
 	{
 		return getReferrerRefsSet(ref);
 	}
 
-	private HashSet<ORef> getReferrerRefsSet(ORef referredRef)
+	private ORefSet getReferrerRefsSet(ORef referredRef)
 	{
-		HashSet<ORef> referringRefs = referrerCache.get(referredRef);
+		ORefSet referringRefs = referrerCache.get(referredRef);
 		if(referringRefs == null)
 		{
-			referringRefs = new HashSet<ORef>();
+			referringRefs = new ORefSet();
 			referrerCache.put(referredRef, referringRefs);
 		}
 		return referringRefs;
@@ -530,5 +530,5 @@ public class ObjectManager
 	private ProjectChainObject projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;
 	private HashMap pools;
-	private HashMap<ORef, HashSet<ORef>> referrerCache;
+	private HashMap<ORef, ORefSet> referrerCache;
 }

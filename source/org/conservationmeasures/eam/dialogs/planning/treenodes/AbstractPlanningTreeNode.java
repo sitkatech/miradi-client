@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.dialogs.planning.treenodes;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -75,9 +75,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().getLabel();
 	}
 
-	protected HashSet<ORef> getAllRefsInTree()
+	protected ORefSet getAllRefsInTree()
 	{
-		HashSet<ORef> refs = new HashSet();
+		ORefSet refs = new ORefSet();
 		for(int i = 0; i < children.size(); ++i)
 		{
 			AbstractPlanningTreeNode child = children.get(i);
@@ -92,7 +92,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
-		HashSet<ORef> newChildRefs = new HashSet();
+		ORefSet newChildRefs = new ORefSet();
 		for(int i = 0; i < children.size(); ++i)
 		{
 			AbstractPlanningTreeNode child = children.get(i);
@@ -182,7 +182,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected void addMissingChildren(ORefList potentialChildRefs, DiagramObject diagram) throws Exception
 	{
-		HashSet<ORef> everythingInTree = getAllRefsInTree();
+		ORefSet everythingInTree = getAllRefsInTree();
 		for(int i = 0; i < potentialChildRefs.size(); ++i)
 		{
 			ORef ref = potentialChildRefs.get(i);
