@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTable;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class ThreatStressRatingTable extends TableWithColumnWidthSaver
+public class ThreatStressRatingTable extends EditableObjectTable
 {
 	public ThreatStressRatingTable(ThreatStressRatingTableModel threatStressRatingTableModel)
 	{

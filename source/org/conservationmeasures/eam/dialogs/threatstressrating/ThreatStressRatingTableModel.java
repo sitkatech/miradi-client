@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
@@ -23,6 +24,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	{
 	}
 
+	public String getColumnName(int column)
+	{
+		return EAM.fieldLabel(ThreatStressRating.getObjectType(), getColumnTag(column));
+	}
+	
 	public String getColumnTag(int column)
 	{
 		return getColumnTags()[column];
