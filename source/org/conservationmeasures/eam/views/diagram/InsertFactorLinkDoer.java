@@ -18,16 +18,18 @@ public class InsertFactorLinkDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if (! getProject().isOpen())
-			return false;
-		
-		if (!isDiagramView())
-			return false;
-		
-		if (getDiagramView().getDiagramModel() == null)
-			return false;
-				
-		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);
+		return false;
+//FIXME temporarly disabled the creation of links due to migration of threatStressRatings and new rules
+//		if (! getProject().isOpen())
+//			return false;
+//		
+//		if (!isDiagramView())
+//			return false;
+//		
+//		if (getDiagramView().getDiagramModel() == null)
+//			return false;
+//				
+//		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);
 	}
 
 	public void doIt() throws CommandFailedException

@@ -16,6 +16,12 @@ import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
+	public boolean isAvailable()
+	{
+		//FIXME temporarly disabled the creation of stresses due to migration of threatStressRatings and new rules
+		return false;
+	}
+	
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
