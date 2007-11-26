@@ -14,13 +14,12 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	public ThreatStressRatingTable(ThreatStressRatingTableModel threatStressRatingTableModel)
 	{
 		super(threatStressRatingTableModel);
-		model = threatStressRatingTableModel;
 		rebuildColumnEditorsAndRenderers();
 	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()
 	{
-		return model;
+		return (ThreatStressRatingTableModel) getModel();
 	}
 	
 	public void rebuildColumnEditorsAndRenderers()
@@ -48,5 +47,4 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
-	private ThreatStressRatingTableModel model;
 }
