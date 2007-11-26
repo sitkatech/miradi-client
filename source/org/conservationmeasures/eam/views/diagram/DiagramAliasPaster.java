@@ -28,7 +28,8 @@ public class DiagramAliasPaster extends DiagramPaster
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
 	{
 		pasteFactors(startPoint);
-		createNewDiagramLinks();
+//FIXME paste factorLink has been diabled termporarly due to ThreatStressRating rules
+		//createNewDiagramLinks();
 		selectNewlyPastedItems();
 	}
 
