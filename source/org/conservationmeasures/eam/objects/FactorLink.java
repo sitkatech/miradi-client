@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -174,11 +175,13 @@ public class FactorLink extends BaseObject
 		toRef = new ORefData();
 		stressLabel = new StringData();
 		bidirectionalLink = new BooleanData();
+		threatStressRatingRefs = new ORefListData();
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
 		addField(TAG_STRESS_LABEL, stressLabel);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
+		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 	}
 	
 	
@@ -186,6 +189,7 @@ public class FactorLink extends BaseObject
 	public static final String TAG_TO_REF = "ToRef";
 	public static final String TAG_STRESS_LABEL = "StressLabel";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
+	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
 
 	public static final String OBJECT_NAME = "Link";
 	public static final String OBJECT_NAME_TARGETLINK = "Targetlink";
@@ -199,4 +203,5 @@ public class FactorLink extends BaseObject
 	private ORefData toRef;
 	private StringData stressLabel;
 	private BooleanData bidirectionalLink;
+	private ORefListData threatStressRatingRefs;
 }

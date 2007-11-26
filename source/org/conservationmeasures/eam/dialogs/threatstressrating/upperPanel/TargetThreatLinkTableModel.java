@@ -37,6 +37,15 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return "";
 	}
 	
+//FIXME finish method	
+//	public FactorLinkId getLink(int row, int column)
+//	{
+//		Factor directThreat = directThreatRows[row];
+//		Target target = targets[column];
+//		//factorLinkId = getProject().getFactorLinkPool().getLinkedId(directThreat.getFactorId(), target.getFactorId());
+//	}
+	
+	
 	public Target getTarget(int modelColumn)
 	{
 		return targets[modelColumn];

@@ -5,21 +5,32 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
-import javax.swing.table.AbstractTableModel;
-
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-public class ThreatStressRatingTableModel extends AbstractTableModel implements ColumnTagProvider
+public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
 {
-	public ThreatStressRatingTableModel(Project projectToUse)
+	public ThreatStressRatingTableModel(Project projectToUse, ORef refToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
 	}
 	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+	}
+
+	public String getColumnTag(int column)
+	{
+		return getColumnTags()[column];
+	}
+
 	public int getColumnCount()
 	{
-		return 0;
+		return getColumnTags().length;
 	}
 
 	public int getRowCount()
@@ -27,20 +38,26 @@ public class ThreatStressRatingTableModel extends AbstractTableModel implements 
 		return 0;
 	}
 
-	public Object getValueAt(int row, int tableColumn)
+	public Object getValueAt(int arg0, int arg1)
 	{
 		return null;
 	}
 	
-	public Project getProject()
+	public void setValueAt(Object value, int row, int column)
 	{
-		return project;
-	}
-
-	public String getColumnTag(int column)
-	{
-		return "";
+		super.setValueAt(value, row, column);
 	}
 	
-	private Project project;
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return null;
+	}
+
+	public static String[] getColumnTags()
+	{
+		return new String[] {
+				ThreatStressRating.TAG_CONTRIBUTION,
+				ThreatStressRating.TAG_IRREVERSIBILITY,
+		};
+	}
 }
