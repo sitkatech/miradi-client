@@ -119,7 +119,6 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		AccountingCode accountingCode = (AccountingCode)value;
 		BaseId accountingCodeId = accountingCode.getId();
 		setAssignmentData(assignmentRefForRow, accountingCodeId, Assignment.TAG_ACCOUNTING_CODE);
-		return;
 	}
 	
 	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
