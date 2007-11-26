@@ -5,20 +5,20 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import javax.swing.table.AbstractTableModel;
-
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends AbstractTableModel implements ColumnTagProvider, RowBaseObjectProvider
+abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel
 {
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
 	{
+		super(projectToUse);
+		
 		project = projectToUse;
 		adapter = adapterToUse;
 	}
@@ -48,6 +48,10 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Abst
 		return adapter;
 	}
 
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+	}
+	
 	protected Project project;
 	private TreeTableModelAdapter adapter;
 }

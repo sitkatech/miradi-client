@@ -9,14 +9,14 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTable;
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
 
 abstract public class PlanningViewAbstractTableWithColoredColumns extends EditableObjectTable
 {
-	public PlanningViewAbstractTableWithColoredColumns(TableModel modelToUse)
+	public PlanningViewAbstractTableWithColoredColumns(EditableObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

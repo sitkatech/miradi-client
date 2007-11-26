@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Dimension;
 
-import javax.swing.table.TableModel;
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 
 abstract public class PlanningViewFullSizeTable extends	PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewFullSizeTable(TableModel modelToUse)
+	public PlanningViewFullSizeTable(EditableObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 	}
