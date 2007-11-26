@@ -9,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
@@ -24,6 +25,11 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 		return project;
 	}
 	
+	protected ObjectManager getObjectManager()
+	{
+		return getProject().getObjectManager();
+	}
+		
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	
 	private Project project;

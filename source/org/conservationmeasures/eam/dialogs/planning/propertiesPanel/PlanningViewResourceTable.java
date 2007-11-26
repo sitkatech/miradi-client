@@ -15,8 +15,6 @@ import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.project.Project;
 
 public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
@@ -99,16 +97,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		return getObjectManager().getResourcePool();
 	}
 
-	private Project getProject()
-	{
-		return model.getProject();
-	}
-	
-	private ObjectManager getObjectManager()
-	{
-		return getProject().getObjectManager();
-	}
-	
 	private PlanningViewResourceTableModel model;
     public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }

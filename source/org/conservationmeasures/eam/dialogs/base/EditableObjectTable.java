@@ -25,6 +25,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -38,6 +40,16 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		selectionListeners = new Vector();
 	}
 	
+	public Project getProject()
+	{
+		return model.getProject();
+	}
+	
+	protected ObjectManager getObjectManager()
+	{
+		return getProject().getObjectManager();
+	}
+		
 	public TreeTableNode[] getSelectedTreeNodes()
 	{
 		return null;
