@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
@@ -63,10 +64,12 @@ public class ThreatStressRating extends BaseObject
 		super.clear();
 		contribution = new ChoiceData();
 		irreversibility = new ChoiceData();
+		stressRef = new ORefData();
 		pseudoThreatRating = new PseudoQuestionData(new PriorityRatingQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING));
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);
+		addField(TAG_STRESS_REF, stressRef);
 		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
 	}
 	
@@ -74,9 +77,11 @@ public class ThreatStressRating extends BaseObject
 	
 	public static final String TAG_CONTRIBUTION = "Contribution";
 	public static final String TAG_IRREVERSIBILITY = "Irreversibility";
+	public static final String TAG_STRESS_REF = "StressRef";
 	public static final String PSEUDO_TAG_THREAT_RATING = "PseudoThreatRating";
-	
+		
 	private ChoiceData contribution;
 	private ChoiceData irreversibility;
+	private ORefData stressRef;
 	private PseudoQuestionData pseudoThreatRating;
 }

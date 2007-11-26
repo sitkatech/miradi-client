@@ -124,12 +124,99 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
+	public void testCreateThreatStressRatingsForTargetThreatLinks() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":33}");
+		
+		String targetCauseLinkStresses = "{\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":17}\",\"TimeStampModified\":\"1196110783203\",\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":15}\",\"ThreatStressRatingRefs\":\"\",\"Label\":\"\",\"Id\":19,\"BidirectionalLink\":\"0\",\"StressLabel\":\"\"}";
+		String targetCauseLinkNoStress = "{\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":23}\",\"TimeStampModified\":\"1196110789735\",\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":21}\",\"ThreatStressRatingRefs\":\"\",\"Label\":\"\",\"Id\":25,\"BidirectionalLink\":\"0\",\"StressLabel\":\"\"}";
+		String causeCauseLink = "{\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":31}\",\"TimeStampModified\":\"1196111729305\",\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":17}\",\"ThreatStressRatingRefs\":\"\",\"Label\":\"\",\"Id\":33,\"BidirectionalLink\":\"0\",\"StressLabel\":\"\"}";
+		File factorLinkDir = DataUpgrader.createObjectsDir(jsonDir, 6);
+		int[] factorLinkIds = {19, 25, 33};
+		File factorLinkManifestFile = createManifestFile(factorLinkDir, factorLinkIds);
+		assertTrue(factorLinkManifestFile.exists());
+		
+		File factorLink19 = new File(factorLinkDir, Integer.toString(factorLinkIds[0]));
+		createFile(factorLink19, targetCauseLinkStresses);
+		assertTrue(factorLink19.exists());
+		
+		File factorLink25 = new File(factorLinkDir, Integer.toString(factorLinkIds[1]));
+		createFile(factorLink25, targetCauseLinkNoStress);
+		assertTrue(factorLink25.exists());
+		
+		File factorLink33 = new File(factorLinkDir, Integer.toString(factorLinkIds[2]));
+		createFile(factorLink33, causeCauseLink);
+		assertTrue(factorLink33.exists());
+		
+
+		String TargetWithStresses = "{\"ObjectiveIds\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"Comment\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":17},{\\\"ObjectType\\\":33,\\\"ObjectId\\\":18}]}\",\"TargetStatus\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1196110887955\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":15,\"Label\":\"New Target\",\"CurrentStatusJustification\":\"\"}";
+		String TargetNoStresses = "{\"ObjectiveIds\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"Comment\":\"\",\"StressRefs\":\"\",\"TargetStatus\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1196110895493\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":21,\"Label\":\"New Target\",\"CurrentStatusJustification\":\"\"}";
+		File targetDir = DataUpgrader.createObjectsDir(jsonDir, 4);
+		int[] targetIds = {15, 21};
+		File targetManifestFile = createManifestFile(targetDir, targetIds);
+		assertTrue(targetManifestFile.exists());
+		
+		File target15 = new File(targetDir, Integer.toString(targetIds[0]));
+		createFile(target15, TargetWithStresses);
+		assertTrue(target15.exists());
+		
+		File target21 = new File(targetDir, Integer.toString(targetIds[1]));
+		createFile(target21, TargetNoStresses);
+		assertTrue(target21.exists());
+
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion25();
+		
+		File threatStressRatingDir = new File(jsonDir, "objects-34");
+		assertTrue(threatStressRatingDir.exists());
+		
+		File threatStressRatingManifestFile = new File(threatStressRatingDir, "manifest");
+		assertTrue("threat stresss rating manifest does not exist?", threatStressRatingManifestFile.exists());
+		
+		ObjectManifest threatStressRatingObjectManifestFile = new ObjectManifest(JSONFile.read(threatStressRatingManifestFile));
+		BaseId[] allThreatStressRatingIds = threatStressRatingObjectManifestFile.getAllKeys();
+		assertEquals("wrong threat stress ratings count in dir", 2, allThreatStressRatingIds.length);
+		
+	
+		File threatStressRatingFile1 = new File(threatStressRatingDir, "34");
+		assertTrue("threat stress rating object file exists?", threatStressRatingFile1.exists());
+		EnhancedJsonObject threatStressRating1Json = DataUpgrader.readFile(threatStressRatingFile1);
+		assertEquals("wrong id?", new BaseId(34), threatStressRating1Json.getId("Id"));
+		assertEquals("wrong stress ref?", new ORef(33, new BaseId(17)), threatStressRating1Json.getRef("StressRef"));
+		
+		File threatStressRatingFile2 = new File(threatStressRatingDir, "35");
+		assertTrue("threat stress rating object file exists?", threatStressRatingFile2.exists());
+		EnhancedJsonObject threatStressRating2Json = DataUpgrader.readFile(threatStressRatingFile2);
+		assertEquals("wrong id?", new BaseId(35), threatStressRating2Json.getId("Id"));
+		assertEquals("wrong stress ref?", new ORef(33, new BaseId(18)), threatStressRating2Json.getRef("StressRef"));
+		
+		EnhancedJsonObject factorLinkWithThreatStressRatingJson = DataUpgrader.readFile(factorLink19);
+		String threatStressRating1AsString = factorLinkWithThreatStressRatingJson.getString("ThreatStressRatingRefs");
+		ORefList threatStressRating1Refs = new ORefList(threatStressRating1AsString);
+		assertEquals("wrong number of refs in list?", 2, threatStressRating1Refs.size());		
+		assertEquals("wrong first threat stress rating ref?", new ORef(34, new BaseId(34)), threatStressRating1Refs.get(0));
+		assertEquals("wrong second threat stress rating ref?", new ORef(34, new BaseId(35)), threatStressRating1Refs.get(1));
+		
+		EnhancedJsonObject factorLinkWithoutThreatStressRating1Json = DataUpgrader.readFile(factorLink25);
+		String threatStressRating2AsString = factorLinkWithoutThreatStressRating1Json.getString("ThreatStressRatingRefs");
+		ORefList threatStressRating2Refs = new ORefList(threatStressRating2AsString);
+		assertEquals("wrong number of refs in list?", 0, threatStressRating2Refs.size());
+			
+		EnhancedJsonObject factorLinkWithoutThreatStressRating2Json = DataUpgrader.readFile(factorLink25);
+		String threatStressRating3AsString = factorLinkWithoutThreatStressRating2Json.getString("ThreatStressRatingRefs");
+		ORefList threatStressRating3Refs = new ORefList(threatStressRating3AsString);
+		assertEquals("wrong number of refs in list?", 0, threatStressRating3Refs.size());
+	}
+	
 	public void testUpdateTo24CreateStressesFromFactorLinks() throws Exception
 	{
 		String factorLinkWithStressLabelData = "{\"FromId\":58,\"ToId\":3,\"ToRef\":{\"ObjectType\":22,\"ObjectId\":15},\"FromRef\":{\"ObjectType\":21,\"ObjectId\":58},\"Label\":\"\",\"StressLabel\":\"someLabel\",\"Id\":13}";
 		String factorLinkWithOutStressLabelData = "{\"FromId\":5,\"ToId\":78,\"ToRef\":{\"ObjectType\":22,\"ObjectId\":78},\"FromRef\":{\"ObjectType\":20,\"ObjectId\":5},\"Label\":\"\",\"StressLabel\":\"\",\"Id\":14}";
 		File jsonDir = createJsonDir();
-		File factorLinkDir = createObjects6FactorLinkDir(jsonDir);
+		File factorLinkDir = DataUpgrader.createObjectsDir(jsonDir, 6);
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":15}");
@@ -146,7 +233,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(factorLink14WithoutStressLabel, factorLinkWithOutStressLabelData);
 		assertTrue(factorLink14WithoutStressLabel.exists());
 		
-		File targetDir = createObjects4TargetDir(jsonDir);
+		File targetDir = DataUpgrader.createObjectsDir(jsonDir, 4);
 		int[] targetIds = {15};
 		File targetManifestFile = createManifestFile(targetDir, targetIds);
 		assertTrue(targetManifestFile.exists());
@@ -776,22 +863,6 @@ public class TestDataUpgrader extends EAMTestCase
 		jsonDir.mkdirs();
 		
 		return jsonDir;
-	}
-	
-	private File createObjects6FactorLinkDir(File jsonDir)
-	{
-		File objects6Dir = new File(jsonDir, "objects-6");
-		objects6Dir.mkdirs();
-		
-		return objects6Dir;
-	}
-	
-	private File createObjects4TargetDir(File jsonDir)
-	{
-		File targetDir = new File(jsonDir, "objects-4");
-		targetDir.mkdirs();
-		
-		return targetDir;
 	}
 	
 	public static IdAssigner idAssigner = new IdAssigner();

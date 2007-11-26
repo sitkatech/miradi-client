@@ -139,14 +139,87 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 23)
 				upgradeToVersion24();
+			
+			if (readDataVersion(getTopDirectory()) == 24)
+				upgradeToVersion25();
+					
 		}
 		finally 
 		{
 			migrationLock.close();
-		}
-				
+		}			
 	}
 	
+	public void upgradeToVersion25() throws Exception
+	{
+		createThreatStressRatingsForTargetThreatLinks();
+		writeVersion(25);
+	}
+	
+	private void createThreatStressRatingsForTargetThreatLinks() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File factorLinkDir = getObjects6FactorLinkDir(jsonDir);
+		if (! factorLinkDir.exists())
+			return;
+
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+
+		File threatStressRatingDir = getObjectsDir(jsonDir, 34);
+		if (threatStressRatingDir.exists())
+			return;
+
+		threatStressRatingDir.mkdirs();
+		
+		EnhancedJsonObject threatStressRatingManifestJson = new EnhancedJsonObject();
+		threatStressRatingManifestJson.put("Type", "ObjectManifest");
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		BaseId[] factorLinkIds = factorLinkManifest.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId factorLinkId = factorLinkIds[i];
+			File factorLinkFile = new File(factorLinkDir, Integer.toString(factorLinkId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkFile);
+			ORef targetRef = getPossibleTargetEnd(factorLinkJson);
+			if (targetRef.isInvalid())
+				continue;
+			
+			File targetDir = getObjects4TargetDir(jsonDir);
+			File targetFile = new File(targetDir, Integer.toString(targetRef.getObjectId().asInt()));
+			EnhancedJsonObject targetJson = readFile(targetFile);
+			ORefList stressRefs = new ORefList(targetJson.optString("StressRefs"));
+			ORefList threatStressRatingRefs = createThreatStressRatings(threatStressRatingDir, stressRefs, threatStressRatingManifestJson, highestId);
+								
+			factorLinkJson.put("ThreatStressRatingRefs", threatStressRatingRefs.toString());
+			writeJson(factorLinkFile, factorLinkJson);
+			writeHighestIdToProjectFile(jsonDir, highestId);
+		}
+		
+		File manifestFile = new File(threatStressRatingDir, "manifest");
+		writeJson(manifestFile, threatStressRatingManifestJson);
+	}
+
+	private ORefList createThreatStressRatings(File threatStressRatingDir, ORefList stressRefs, EnhancedJsonObject threatStressRatingManifestJson, int highestId) throws Exception
+	{
+		ORefList threatStressRatingRefs = new ORefList();
+		for (int i = 0; i < stressRefs.size(); ++i)
+		{
+			threatStressRatingManifestJson.put(Integer.toString(++highestId), "true");
+			EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
+			threatStressRatingJson.put("Id", Integer.toString(highestId));
+			threatStressRatingJson.put("StressRef", stressRefs.get(i).toJson());
+			File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(highestId));
+			createFile(threatStressRatingFile, threatStressRatingJson.toString());	
+		
+			threatStressRatingRefs.add(new ORef(34, new BaseId(highestId)));
+		}
+		
+		return threatStressRatingRefs;
+	}
+
 	public void upgradeToVersion24() throws Exception
 	{
 		createdStressesFromFactorLinks();
@@ -210,6 +283,15 @@ public class DataUpgrader extends FileBasedProjectServer
 
 	private ORef getTargetEnd(EnhancedJsonObject factorLinkJson)
 	{
+		ORef targetEnd = getPossibleTargetEnd(factorLinkJson);
+		if (!targetEnd.isInvalid())
+			return targetEnd;
+		
+		throw new RuntimeException("Link does not link to target");
+	}
+
+	private ORef getPossibleTargetEnd(EnhancedJsonObject factorLinkJson)
+	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
 		if (toRef.getObjectType() == Target.getObjectType())
@@ -218,7 +300,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (fromRef.getObjectType() == Target.getObjectType())
 			return fromRef;
 		
-		throw new RuntimeException("Link does not link to target");
+		return ORef.INVALID;
 	}
 
 	public void upgradeToVersion23() throws Exception
@@ -793,6 +875,19 @@ public class DataUpgrader extends FileBasedProjectServer
 		UnicodeWriter writer = new UnicodeWriter(file);
 		writer.writeln(contents);
 		writer.close();
+	}
+	
+	public static File createObjectsDir(File jsonDir, int type)
+	{
+		File objectsDir = getObjectsDir(jsonDir, type);
+		objectsDir.mkdirs();
+		
+		return objectsDir;
+	}
+	
+	public static File getObjectsDir(File jsonDir, int type)
+	{
+		return new File(jsonDir, "objects-" + type);
 	}
 	
 	private File getTopJsonDir()
