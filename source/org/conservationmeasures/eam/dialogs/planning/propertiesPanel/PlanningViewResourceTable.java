@@ -6,28 +6,19 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.util.Vector;
 
 import javax.swing.JLabel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.AccountingCode;
-import org.conservationmeasures.eam.objects.Assignment;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize implements ObjectPicker
+public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
 	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
 	{
@@ -35,7 +26,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		model = modelToUse;
 		
 		setBackground(getColumnBackGroundColor(0));
-		selectionListeners = new Vector();
 		rebuildColumnEditorsAndRenderers();
 	}
 	
@@ -119,78 +109,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		return getProject().getObjectManager();
 	}
 	
-	public TreeTableNode[] getSelectedTreeNodes()
-	{
-		return null;
-	}
-
-	public BaseObject[] getSelectedObjects()
-	{
-		int selectedRow = getSelectedRow();
-		if (selectedRow < 0)
-			return new BaseObject[0];
-		
-		if (selectedRow >=  model.getRowCount())
-			return new BaseObject[0];
-		
-		Assignment selectedAssignment = model.getAssignment(selectedRow);
-		if (selectedAssignment == null)
-			return new BaseObject[0];
-	
-		return new BaseObject[] {selectedAssignment};
-	}
-	
-	public ORefList getSelectionHierarchy()
-	{
-		return null;
-	}
-		
-	public ORefList[] getSelectedHierarchies()
-	{
-		int[] rows = getSelectedRows();
-		ORefList[] selectedHierarchies = new ORefList[rows.length];
-		for(int i = 0; i < rows.length; ++i)
-		{
-			BaseObject objectFromRow = model.getBaseObjectForRow(rows[i]);
-			ORefList selectedObjectRefs = new ORefList();
-			selectedObjectRefs.add(objectFromRow.getRef());
-			selectedHierarchies[i] = selectedObjectRefs;
-		}
-		
-		return selectedHierarchies;
-	}
-
-	public void ensureObjectVisible(ORef ref)
-	{
-		// TODO Auto-generated method stub
-		// we should scroll the table as needed to make this 
-		// probably-newly-created object visible
-	}
-
-	public void addSelectionChangeListener(ListSelectionListener listener)
-	{
-		selectionListeners.add(listener);
-	}
-
-	public void removeSelectionChangeListener(ListSelectionListener listener)
-	{
-		selectionListeners.remove(listener);
-	}
-
-	public void valueChanged(ListSelectionEvent e)
-	{
-		super.valueChanged(e);
-		if(selectionListeners == null)	
-			return;
-		
-		for(int i = 0; i < selectionListeners.size(); ++i)
-		{
-			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
-			listener.valueChanged(null);
-		}
-	}
-	
-	private Vector selectionListeners;
 	private PlanningViewResourceTableModel model;
     public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }

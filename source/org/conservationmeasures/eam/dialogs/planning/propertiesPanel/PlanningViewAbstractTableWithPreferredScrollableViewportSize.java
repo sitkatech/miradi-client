@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Dimension;
 
-import javax.swing.table.TableModel;
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 
 abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(TableModel modelToUse)
+	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(EditableObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 

@@ -9,26 +9,40 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-abstract public class EditableObjectTable extends TableWithColumnWidthSaver
+abstract public class EditableObjectTable extends TableWithColumnWidthSaver  implements ObjectPicker
 {
-	public EditableObjectTable(TableModel model)
+	public EditableObjectTable(EditableObjectTableModel modelToUse)
 	{
-		super(model);
+		super(modelToUse);
+		
+		model = modelToUse;
+		selectionListeners = new Vector();
 	}
 	
+	public TreeTableNode[] getSelectedTreeNodes()
+	{
+		return null;
+	}
+		
 	protected int getColumnWidth(int column)
 	{
 		return getColumnHeaderWidth(column);
@@ -61,6 +75,72 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver
 	
 		System.arraycopy(content, 0, comboContent, 1, content.length);	
 		return comboContent;
+	}
+	
+	public BaseObject[] getSelectedObjects()
+	{
+		int selectedRow = getSelectedRow();
+		if (selectedRow < 0)
+			return new BaseObject[0];
+		
+		if (selectedRow >=  model.getRowCount())
+			return new BaseObject[0];
+		
+		BaseObject selectedObject = model.getBaseObjectForRow(selectedRow);
+		if (selectedObject == null)
+			return new BaseObject[0];
+	
+		return new BaseObject[] {selectedObject};
+	}
+	
+	public ORefList getSelectionHierarchy()
+	{
+		return null;
+	}
+		
+	public ORefList[] getSelectedHierarchies()
+	{
+		int[] rows = getSelectedRows();
+		ORefList[] selectedHierarchies = new ORefList[rows.length];
+		for(int i = 0; i < rows.length; ++i)
+		{
+			BaseObject objectFromRow = model.getBaseObjectForRow(rows[i]);
+			ORefList selectedObjectRefs = new ORefList();
+			selectedObjectRefs.add(objectFromRow.getRef());
+			selectedHierarchies[i] = selectedObjectRefs;
+		}
+		
+		return selectedHierarchies;
+	}
+
+	public void ensureObjectVisible(ORef ref)
+	{
+		// TODO Auto-generated method stub
+		// we should scroll the table as needed to make this 
+		// probably-newly-created object visible
+	}
+
+	public void addSelectionChangeListener(ListSelectionListener listener)
+	{
+		selectionListeners.add(listener);
+	}
+
+	public void removeSelectionChangeListener(ListSelectionListener listener)
+	{
+		selectionListeners.remove(listener);
+	}
+
+	public void valueChanged(ListSelectionEvent e)
+	{
+		super.valueChanged(e);
+		if(selectionListeners == null)	
+			return;
+		
+		for(int i = 0; i < selectionListeners.size(); ++i)
+		{
+			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			listener.valueChanged(null);
+		}
 	}
 		
 	public class SorterByToString implements Comparator<BaseObject>
@@ -95,5 +175,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver
 	        setBackground(background);
 	    }
 	}
+	
+	private Vector selectionListeners;
+	private EditableObjectTableModel model;
 }
 
