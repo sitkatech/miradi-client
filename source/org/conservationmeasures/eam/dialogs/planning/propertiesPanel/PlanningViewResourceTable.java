@@ -6,25 +6,15 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -58,11 +48,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 	{
 		return getPreferredSize().width;
 	}
-	
-	protected int getColumnWidth(int column)
-	{
-		return getColumnHeaderWidth(column);
-	}	
 	
 	public void rebuildColumnEditorsAndRenderers()
 	{
@@ -104,16 +89,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		createComboColumn(fundingSources, column, invalidFundintSource);
 	}
 	
-	private void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
-	{
-		Arrays.sort(content, new SorterByToString());
-		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
-		PanelComboBox comboBox = new PanelComboBox(comboContent);
-		TableColumn tableColumn = getColumnModel().getColumn(col);
-		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
-		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
-	}
-	
 	public int getColumnAlignment()
 	{
 		return JLabel.RIGHT;
@@ -122,34 +97,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 	public String getUniqueTableIdentifier()
 	{
 		return UNIQUE_IDENTIFIER;
-	}
-	
-	class SorterByToString implements Comparator<BaseObject>
-	{
-		public int compare(BaseObject o1, BaseObject o2)
-		{
-			return o1.toString().compareToIgnoreCase(o2.toString());
-		}
-		
-	}
-	
-	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
-	{
-		final int EMPTY_SPACE = 0;
-		BaseObject[]  comboContent = new BaseObject[content.length + 1];
-		comboContent[EMPTY_SPACE] = invalidObject;
-
-		try
-		{
-			invalidObject.setLabel(" ");
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	
-		System.arraycopy(content, 0, comboContent, 1, content.length);	
-		return comboContent;
 	}
 	
 	public ProjectResource[] getAllProjectResources()
@@ -247,29 +194,3 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 	private PlanningViewResourceTableModel model;
     public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }
-
-class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
-{
-    public ComboBoxRenderer(Object[] items) 
-    {
-        super(items);
-    }
-
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
-    {
-        if (isSelected) 
-        	setColors(table.getSelectionBackground(), table.getSelectionForeground());
-        else 
-        	setColors(table.getBackground(), table.getForeground());
-
-        setSelectedItem(value);
-        return this;
-    }
-    
-    private void setColors(Color background, Color foreground)
-    {
-        setForeground(foreground);
-        setBackground(background);
-    }
-}
-

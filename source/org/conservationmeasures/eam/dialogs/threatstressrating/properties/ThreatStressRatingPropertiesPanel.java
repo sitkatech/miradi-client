@@ -5,20 +5,30 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
+import java.awt.Component;
+
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 {
 	public ThreatStressRatingPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
-
-		editorComponent = new ThreatStressRatingEditorComponent(projectToUse); 
+		setLayout(new BasicGridLayout(2, 1));
+		
+		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(projectToUse, ORef.INVALID); 
+		editorComponent = new ThreatStressRatingEditorComponent(projectToUse);
+		add(threatStressRatingFieldPanel);
+		add(editorComponent);
+		
 		updateFieldsFromProject();
 	}
 	
@@ -30,11 +40,26 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 			editorComponent.dispose();
 			editorComponent = null;
 		}
+		
+		if (threatStressRatingFieldPanel != null)
+		{
+			threatStressRatingFieldPanel.dispose();
+			threatStressRatingFieldPanel = null;
+		}
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		threatStressRatingFieldPanel.setObjectRefs(hierarchyToSelectedRef);
 		editorComponent.setObjectRefs(hierarchyToSelectedRef);
+	}
+	
+	public void setObjectRefs(ORefList[] hierarchiesToSelectedRefs)
+	{
+		if (hierarchiesToSelectedRefs.length == 0)
+			setObjectRefs(new ORef[0]);
+		else
+			setObjectRefs(hierarchiesToSelectedRefs[0].toArray());
 	}
 	
 	public void dataWasChanged()
@@ -46,6 +71,12 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Stress-Based Threat Rating");
 	}
+
+	public void addFieldComponent(Component component)
+	{
+		add(component);
+	}
 	
 	private ThreatStressRatingEditorComponent editorComponent;
+	private ThreatStressRatingFieldPanel threatStressRatingFieldPanel;
 }

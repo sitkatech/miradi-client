@@ -28,7 +28,7 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	private void createTables() throws Exception
 	{
-		threatStressRatingTableModel = new ThreatStressRatingTableModel(getProject());
+		threatStressRatingTableModel = new ThreatStressRatingTableModel(getProject(), getSelectedThreatStressRatingRef());
 		threatStressRatingTable = new ThreatStressRatingTable(threatStressRatingTableModel);
 	}
 	
@@ -56,6 +56,11 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 		return new ORefList[0];
 	}
 	
-	ThreatStressRatingTableModel threatStressRatingTableModel;
-	ThreatStressRatingTable threatStressRatingTable;
+	private ORef getSelectedThreatStressRatingRef()
+	{
+		return ORef.INVALID;
+	}
+	
+	private ThreatStressRatingTableModel threatStressRatingTableModel;
+	private ThreatStressRatingTable threatStressRatingTable;
 }

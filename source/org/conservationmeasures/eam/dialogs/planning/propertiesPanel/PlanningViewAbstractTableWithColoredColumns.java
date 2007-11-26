@@ -11,10 +11,10 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.dialogs.base.EditableObjectTable;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithIcons;
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-abstract public class PlanningViewAbstractTableWithColoredColumns extends TableWithColumnWidthSaver
+abstract public class PlanningViewAbstractTableWithColoredColumns extends EditableObjectTable
 {
 	public PlanningViewAbstractTableWithColoredColumns(TableModel modelToUse)
 	{

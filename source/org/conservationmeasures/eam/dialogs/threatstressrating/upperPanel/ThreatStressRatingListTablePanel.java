@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import org.conservationmeasures.eam.dialogs.MultiTableUpperPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -21,18 +21,21 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse), propertiesPanel);
 	}
 	
-	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
+	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
 	{
-		super(projectToUse, multiTablePanel.getObjectPicker());
+		super(projectToUse, multiTablePanelToUse.getObjectPicker());
+
+		multiTablePanel = multiTablePanelToUse;
 		propertiesPanel = propertiesPanelToUse;
 		
-		add(multiTablePanel);
+		add(multiTablePanelToUse);
 	}
 
 	public void valueChanged(ListSelectionEvent event)
 	{
 		super.valueChanged(event);
-		propertiesPanel.setObjectRefs(new ORef[0]);
+		ORefList[] selectedHierarcies = multiTablePanel.getSelectedHierarchies();
+		propertiesPanel.setObjectRefs(selectedHierarcies);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -45,4 +48,5 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	}
 	
 	private ThreatStressRatingPropertiesPanel propertiesPanel;
+	private ThreatStressRatingMultiTablePanel multiTablePanel;
 }
