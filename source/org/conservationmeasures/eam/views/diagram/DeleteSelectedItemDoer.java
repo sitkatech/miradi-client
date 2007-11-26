@@ -78,8 +78,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if(!cell.isFactorLink())
 			return;
 		
-		DiagramLink diagramLink = cell.getDiagramLink();
-		new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
+//FIXME delete factorLink has been diabled termporarly due to ThreatStressRating rules
+		//DiagramLink diagramLink = cell.getDiagramLink();
+		//new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 	}
 
 	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
