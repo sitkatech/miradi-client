@@ -129,16 +129,16 @@ public class FactorLink extends BaseObject
 	
 	public boolean isThreatTargetLink()
 	{
-		if (isThreatTargetLink(getFromFactorRef(), getToFactorRef()))
+		if (isThreatToTarget(getFromFactorRef(), getToFactorRef()))
 			return true;
 		
-		if (isThreatTargetLink(getToFactorRef(), getFromFactorRef()) && isBidirectional())
+		if (isThreatToTarget(getToFactorRef(), getFromFactorRef()) && isBidirectional())
 			return true;
 		
 		return false;
 	}
 	
-	private boolean isThreatTargetLink(ORef upstreamRef, ORef downstreamRef)
+	private boolean isThreatToTarget(ORef upstreamRef, ORef downstreamRef)
 	{
 		if (upstreamRef.getObjectType() != Cause.getObjectType())
 			return false;
