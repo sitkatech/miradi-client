@@ -71,12 +71,12 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
 	}
 	
-	protected void createComboColumn(ChoiceItem[] choices, int column)
+	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		PanelComboBox comboBox = new PanelComboBox(choices);
-		TableColumn tableColumn = getColumnModel().getColumn(column);
-		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
-		tableColumn.setCellRenderer(new ComboBoxRenderer(choices));
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		column.setCellEditor(new DefaultCellEditor(comboBox));
+		column.setCellRenderer(new ComboBoxRenderer(choices));
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
