@@ -145,7 +145,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isContributionColumn(column) || isIrreversibilityColumn(column))
 		{
 			ORef ref = getBaseObjectForRow(row).getRef();
-			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value).getCode());
+			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
 		}
 	}
 
