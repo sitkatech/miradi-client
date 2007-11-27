@@ -21,6 +21,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Cause.getObjectType(), Cause.TAG_LABEL));
 		addField(createReadonlyTextField(Target.getObjectType(), Target.TAG_LABEL));
 		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
+		addField(createReadonlyTextField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, 20));
 
 		updateFieldsFromProject();
 	}
