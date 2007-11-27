@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -68,6 +69,14 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		TableColumn tableColumn = getColumnModel().getColumn(col);
 		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
 		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+	}
+	
+	protected void createComboColumn(ChoiceItem[] choices, int column)
+	{
+		PanelComboBox comboBox = new PanelComboBox(choices);
+		TableColumn tableColumn = getColumnModel().getColumn(column);
+		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
+		tableColumn.setCellRenderer(new ComboBoxRenderer(choices));
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)

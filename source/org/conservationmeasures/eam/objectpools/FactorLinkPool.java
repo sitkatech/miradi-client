@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 
@@ -34,6 +35,11 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return (getLinkedId(nodeId1, nodeId2)!=null);
 	}
 	
+	public ORef getLinkedRef(ORef factorRef1, ORef factorRef2)
+	{
+		FactorLinkId factorLinkId = getLinkedId((FactorId)factorRef1.getObjectId(), (FactorId)factorRef2.getObjectId());
+		return new ORef(FactorLink.getObjectType(), factorLinkId);
+	}
 	
 	public FactorLinkId getLinkedId(FactorId nodeId1, FactorId nodeId2)
 	{
