@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -171,13 +172,13 @@ public class LinkCreator
 	
 	public ORef getTargetRef(ORef toFactorRef, ORef fromFactorRef)
 	{
-		if (toFactorRef.getObjectType() == Target.getObjectType())
-			return toFactorRef;
+		if (toFactorRef.getObjectType() != Target.getObjectType())
+			return ORef.INVALID;
 		
-		if (fromFactorRef.getObjectType() == Target.getObjectType())
-			return fromFactorRef;
+		if (fromFactorRef.getObjectType() != Cause.getObjectType())
+			return ORef.INVALID;
 		
-		return ORef.INVALID;
+		return toFactorRef;
 	}
 	
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
