@@ -10,10 +10,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Stress;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -35,14 +33,12 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 
 	private void rebuild(ORef[] hierarchyToSelectedRef)
 	{
-		Target target = (Target) getProject().findObject(hierarchyToSelectedRef[0]);
-		Cause cause = (Cause) getProject().findObject(hierarchyToSelectedRef[1]);
-		
-		ORef factorLinkRef = getProject().getFactorLinkPool().getLinkedRef(cause.getRef(), target.getRef());
-		FactorLink factorLink = (FactorLink) getProject().findObject(factorLinkRef);
-		if (factorLink == null)
+		ratings = new ThreatStressRating[0];
+		if (hierarchyToSelectedRef.length != 3)
 			return;
-		
+
+		ORef factorLinkRef = hierarchyToSelectedRef[2];
+		FactorLink factorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
 		ratings = new ThreatStressRating[threatStressRatingRefs.size()];
 		for (int i = 0; i < threatStressRatingRefs.size(); ++i)

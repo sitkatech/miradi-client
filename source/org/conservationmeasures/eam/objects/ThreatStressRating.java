@@ -58,14 +58,15 @@ public class ThreatStressRating extends BaseObject
 	
 	private String calculateThreatRating()
 	{
-		Stress stress = (Stress) getObjectManager().findObject(getStressRef());
-		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
-		int stressRating = Integer.parseInt(stressRatingAsString);
-		int contributionRating = Integer.parseInt(getContribution().getCode());
-		int irreverisbility = Integer.parseInt(getIrreversibility().getCode());
-		int max = Math.max(stressRating, contributionRating);
-		
-		return Integer.toString(Math.max(max, irreverisbility));
+		return "";
+//		Stress stress = (Stress) getObjectManager().findObject(getStressRef());
+//		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
+//		int stressRating = Integer.parseInt(stressRatingAsString);
+//		int contributionRating = Integer.parseInt(getContribution().getCode());
+//		int irreverisbility = Integer.parseInt(getIrreversibility().getCode());
+//		int max = Math.max(stressRating, contributionRating);
+//		
+//		return Integer.toString(Math.max(max, irreverisbility));
 	}
 	
 	public ORef getStressRef()

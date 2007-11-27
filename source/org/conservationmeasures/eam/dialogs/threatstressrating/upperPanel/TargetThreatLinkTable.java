@@ -5,9 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
 public class TargetThreatLinkTable extends TableWithColumnWidthSaver
@@ -27,12 +27,17 @@ public class TargetThreatLinkTable extends TableWithColumnWidthSaver
 		int threatIndex = getSelectedRow();
 		Factor directThreat = getTargetThreatLinkTableModel().getDirectThreat(threatIndex);
 		
-		int targetIndex = getSelectedColumn();
-		int modelColumn = convertColumnIndexToModel(targetIndex);
-		Target target = getTargetThreatLinkTableModel().getTarget(modelColumn);
+		int tableColumn = getSelectedColumn();
+		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ORefList hierarchyRefs = new ORefList();
-		hierarchyRefs.add(target.getRef());
+		ORef targetRef = getTargetThreatLinkTableModel().getTarget(modelColumn).getRef();
+		hierarchyRefs.add(targetRef);
 		hierarchyRefs.add(directThreat.getRef());
+		if (getTargetThreatLinkTableModel().isLinked(directThreat.getRef(), targetRef))
+		{
+			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat.getRef(), targetRef);
+			hierarchyRefs.add(linkRef);
+		}
 		
 		return new ORefList[]{hierarchyRefs};
 	}

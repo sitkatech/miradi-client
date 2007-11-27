@@ -35,9 +35,17 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return (getLinkedId(nodeId1, nodeId2)!=null);
 	}
 	
+	public boolean isLinked(ORef factorRef1, ORef factorRef2)
+	{
+		return !getLinkedRef(factorRef1, factorRef2).isInvalid();
+	}
+	
 	public ORef getLinkedRef(ORef factorRef1, ORef factorRef2)
 	{
 		FactorLinkId factorLinkId = getLinkedId((FactorId)factorRef1.getObjectId(), (FactorId)factorRef2.getObjectId());
+		if (factorLinkId == null)
+			return ORef.INVALID;
+			
 		return new ORef(FactorLink.getObjectType(), factorLinkId);
 	}
 	
