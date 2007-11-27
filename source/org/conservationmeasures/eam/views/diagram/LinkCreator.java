@@ -141,16 +141,14 @@ public class LinkCreator
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
-		createAndAddThreatStressRatingsFromTarget(createFactorLink.getObjectRef(), getTargetRef(toFactorRef, fromFactorRef));
+		if (isLinkToTarget(fromFactorRef, toFactorRef))
+			createAndAddThreatStressRatingsFromTarget(createFactorLink.getObjectRef(), getTargetRef(toFactorRef, fromFactorRef));
 		
 		return createFactorLink.getObjectRef();
 	}
 	
 	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
 	{
-		if (targetRef.isInvalid())
-			return;
-		
 		ORefList threatStressRatingRefs = new ORefList();
 		Target target = (Target) project.findObject(targetRef);
 		ORefList stressRefs = target.getStressRefs();
@@ -164,6 +162,11 @@ public class LinkCreator
 		
 		CommandSetObjectData setThreatStressRatingRefs = new CommandSetObjectData(FactorLinkRef, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
 		project.executeCommand(setThreatStressRatingRefs);
+	}
+
+	private boolean isLinkToTarget(ORef fromFactorRef, ORef toFactorRef)
+	{
+		return !getTargetRef(toFactorRef, fromFactorRef).isInvalid();
 	}
 	
 	public ORef getTargetRef(ORef toFactorRef, ORef fromFactorRef)
