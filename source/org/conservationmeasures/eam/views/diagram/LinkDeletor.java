@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 
@@ -82,13 +83,35 @@ public class LinkDeletor
 		if (diagramLinkReferrers.size() != 0)
 			return;
 		
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
 		project.executeCommandsWithoutTransaction(commandsToClear);
 		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
 		project.executeCommand(deleteLinkage);
+		
+		deleteOrphanedThreatStressRatings(threatStressRatingRefs);
 	}
 	
+	private void deleteOrphanedThreatStressRatings(ORefList threatStressRatingRefs) throws CommandFailedException
+	{
+		for (int i = 0; i < threatStressRatingRefs.size(); ++i)
+		{
+			ORef threatStressRatingRef = threatStressRatingRefs.get(i);
+			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingRef);
+			ORefList allReferrers = threatStressRating.findObjectsThatReferToUs();
+			if (allReferrers.size() != 0)
+				continue;
+			
+			Command[] commandsToClear = threatStressRating.createCommandsToClear();
+			project.executeCommandsWithoutTransaction(commandsToClear);
+			
+			CommandDeleteObject deleteThreatStressRating = new CommandDeleteObject(threatStressRatingRef);
+			project.executeCommand(deleteThreatStressRating);
+		}
+	}
+
 	private boolean isToOrFromFactorBeingDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
 	{
 		for (int i = 0; i < factorsAboutToBeDeleted.size(); ++i)
