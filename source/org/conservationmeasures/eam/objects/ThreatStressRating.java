@@ -58,8 +58,14 @@ public class ThreatStressRating extends BaseObject
 	
 	private String calculateThreatRating()
 	{
-		//FIXME add functionality to method along with test
-		return "";
+		Stress stress = (Stress) getObjectManager().findObject(getStressRef());
+		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
+		int stressRating = Integer.parseInt(stressRatingAsString);
+		int contributionRating = Integer.parseInt(getContribution().getCode());
+		int irreverisbility = Integer.parseInt(getIrreversibility().getCode());
+		int max = Math.max(stressRating, contributionRating);
+		
+		return Integer.toString(Math.max(max, irreverisbility));
 	}
 	
 	public ORef getStressRef()
@@ -110,6 +116,7 @@ public class ThreatStressRating extends BaseObject
 		
 	private ChoiceData contribution;
 	private ChoiceData irreversibility;
-	private PseudoQuestionData pseudoThreatRating;
 	private ORefData stressRef;
+	private PseudoQuestionData pseudoThreatRating;
+	
 }

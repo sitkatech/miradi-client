@@ -216,12 +216,14 @@ public class FactorLink extends BaseObject
 		stressLabel = new StringData();
 		bidirectionalLink = new BooleanData();
 		threatStressRatingRefs = new ORefListData();
+		comment = new StringData();
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
 		addField(TAG_STRESS_LABEL, stressLabel);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
+		addField(TAG_COMMENT, comment);
 	}
 	
 	
@@ -230,7 +232,8 @@ public class FactorLink extends BaseObject
 	public static final String TAG_STRESS_LABEL = "StressLabel";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
-
+	public static final String TAG_COMMENT = "Comment";
+	
 	public static final String OBJECT_NAME = "Link";
 	public static final String OBJECT_NAME_TARGETLINK = "Targetlink";
 	public static final String OBJECT_NAME_STRESS = "Stress";
@@ -244,4 +247,5 @@ public class FactorLink extends BaseObject
 	private StringData stressLabel;
 	private BooleanData bidirectionalLink;
 	private ORefListData threatStressRatingRefs;
+	private StringData comment;
 }
