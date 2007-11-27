@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objectpools;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
@@ -25,8 +26,8 @@ public class ThreatStressRatingPool extends EAMNormalObjectPool
 		return (ThreatStressRating)findObject(id);
 	}
 
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new ThreatStressRating(objectManager, actualId);
+		return new ThreatStressRating(objectManager, actualId, (CreateThreatStressRatingParameter) extraInfo);
 	}
 }
