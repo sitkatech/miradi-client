@@ -184,6 +184,18 @@ public class FactorLink extends BaseObject
 		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
 	}
 
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE))
+			return calculateThreatRatingBundleValue();
+			
+		return super.getPseudoData(fieldTag);
+	}
+	
+	private String calculateThreatRatingBundleValue()
+	{
+		return "";
+	}
 
 	public ORef getFactorRef(int direction)
 	{
@@ -217,6 +229,7 @@ public class FactorLink extends BaseObject
 		bidirectionalLink = new BooleanData();
 		threatStressRatingRefs = new ORefListData();
 		comment = new StringData();
+		PseudoThreatRatingBundleValue = new StringData();
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
@@ -224,6 +237,7 @@ public class FactorLink extends BaseObject
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 		addField(TAG_COMMENT, comment);
+		addField(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, PseudoThreatRatingBundleValue);
 	}
 	
 	
@@ -233,6 +247,7 @@ public class FactorLink extends BaseObject
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
 	public static final String TAG_COMMENT = "Comment";
+	public static final String PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE = "PseudoThreatRatingBundleValue";
 	
 	public static final String OBJECT_NAME = "Link";
 	public static final String OBJECT_NAME_TARGETLINK = "Targetlink";
@@ -248,4 +263,5 @@ public class FactorLink extends BaseObject
 	private BooleanData bidirectionalLink;
 	private ORefListData threatStressRatingRefs;
 	private StringData comment;
+	private StringData PseudoThreatRatingBundleValue;
 }
