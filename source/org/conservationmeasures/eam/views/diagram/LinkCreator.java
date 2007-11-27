@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -156,12 +157,10 @@ public class LinkCreator
 		Target target = (Target) project.findObject(targetRef);
 		ORefList stressRefs = target.getStressRefs();
 		for (int i = 0; i < stressRefs.size(); ++i)
-		{
-			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
+		{			
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRefs.get(i));
+			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 			project.executeCommand(createThreatStressRating);
-			
-			CommandSetObjectData setStressRef = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRefs.get(i).toString());
-			project.executeCommand(setStressRef);
 			
 			threatStressRatingRefs.add(createThreatStressRating.getObjectRef());
 		}

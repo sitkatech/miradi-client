@@ -153,6 +153,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		{
 			ORef threatStressRatingStressReferrer = findThreatStressRatingReferringToStress(project, factorLink, stressRef);
 			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingStressReferrer);
+			commands.add(CommandSetObjectData.createRemoveORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingStressReferrer));
 			commands.addAll(Arrays.asList(threatStressRating.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(threatStressRatingStressReferrer));
 		}

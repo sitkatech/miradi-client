@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -16,16 +18,24 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
 {
-	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse)
+	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse, CreateThreatStressRatingParameter extraInfo) throws Exception
 	{
 		super(objectManager, idToUse);
-	}
 		
+		clear();
+		setData(TAG_STRESS_REF, extraInfo.getStressRef().toString());
+	}
+	
 	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 
+	public CreateObjectParameter getCreationExtraInfo()
+	{
+		return new CreateThreatStressRatingParameter(getStressRef());
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
@@ -75,7 +85,7 @@ public class ThreatStressRating extends BaseObject
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);
-		addField(TAG_STRESS_REF, stressRef);
+		addNoClearField(TAG_STRESS_REF, stressRef);
 		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
 	}
 	
@@ -88,6 +98,6 @@ public class ThreatStressRating extends BaseObject
 		
 	private ChoiceData contribution;
 	private ChoiceData irreversibility;
-	private ORefData stressRef;
 	private PseudoQuestionData pseudoThreatRating;
+	private ORefData stressRef;
 }

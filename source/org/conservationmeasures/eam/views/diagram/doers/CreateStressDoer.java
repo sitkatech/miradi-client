@@ -9,6 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
@@ -33,11 +34,9 @@ public class CreateStressDoer extends CreateAnnotationDoer
 		FactorLinkSet directThreatTargetLinks = target.getDirectThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatTargetLinks)
 		{
-			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedObjectRef);
+			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 			getProject().executeCommand(createThreatStressRating);
-			
-			CommandSetObjectData setStressRef = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, newlyCreatedObjectRef.toString());
-			getProject().executeCommand(setStressRef);
 			
 			CommandSetObjectData setLinkThreatStressRatingRefs = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, createThreatStressRating.getObjectRef());
 			getProject().executeCommand(setLinkThreatStressRatingRefs);			

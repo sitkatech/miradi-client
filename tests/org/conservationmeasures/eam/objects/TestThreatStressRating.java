@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestThreatStressRating extends ObjectTestCase
@@ -16,6 +19,8 @@ public class TestThreatStressRating extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.THREAT_STRESS_RATING);
+		ORef stressRef = new ORef(33, new BaseId(30));
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		verifyFields(ObjectType.THREAT_STRESS_RATING, extraInfo);
 	}
 }
