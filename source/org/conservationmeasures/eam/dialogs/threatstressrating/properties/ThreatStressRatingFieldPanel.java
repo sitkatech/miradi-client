@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
@@ -19,6 +20,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Cause.getObjectType(), Cause.TAG_LABEL));
 		addField(createReadonlyTextField(Target.getObjectType(), Target.TAG_LABEL));
+		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
 
 		updateFieldsFromProject();
 	}
