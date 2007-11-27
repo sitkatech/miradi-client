@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -142,10 +141,13 @@ public class LinkCreator
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
-		if (isLinkToTarget(fromFactorRef, toFactorRef))
-			createAndAddThreatStressRatingsFromTarget(createFactorLink.getObjectRef(), getTargetRef(toFactorRef, fromFactorRef));
 		
-		return createFactorLink.getObjectRef();
+		ORef factorLinkRef = createFactorLink.getObjectRef();
+		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
+		if (factorLink.isThreatTargetLink())
+			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownStreamTargetRef());
+		
+		return factorLinkRef;
 	}
 	
 	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
@@ -165,22 +167,6 @@ public class LinkCreator
 		project.executeCommand(setThreatStressRatingRefs);
 	}
 
-	private boolean isLinkToTarget(ORef fromFactorRef, ORef toFactorRef)
-	{
-		return !getTargetRef(toFactorRef, fromFactorRef).isInvalid();
-	}
-	
-	public ORef getTargetRef(ORef toFactorRef, ORef fromFactorRef)
-	{
-		if (toFactorRef.getObjectType() != Target.getObjectType())
-			return ORef.INVALID;
-		
-		if (fromFactorRef.getObjectType() != Cause.getObjectType())
-			return ORef.INVALID;
-		
-		return toFactorRef;
-	}
-	
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));

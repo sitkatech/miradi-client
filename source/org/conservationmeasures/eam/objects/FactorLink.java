@@ -116,6 +116,39 @@ public class FactorLink extends BaseObject
 		return stressLabel.get();
 	}
 	
+	public ORef getDownStreamTargetRef() throws Exception
+	{
+		if (getToFactorRef().getObjectType() == Target.getObjectType())
+			return getToFactorRef();
+		
+		if (getFromFactorRef().getObjectType() == Target.getObjectType() && isBidirectional())
+			return getFromFactorRef();
+		
+		throw new Exception();
+	}
+	
+	public boolean isThreatTargetLink()
+	{
+		if (isThreatTargetLink(getFromFactorRef(), getToFactorRef()))
+			return true;
+		
+		if (isThreatTargetLink(getToFactorRef(), getFromFactorRef()) && isBidirectional())
+			return true;
+		
+		return false;
+	}
+	
+	private boolean isThreatTargetLink(ORef upstreamRef, ORef downstreamRef)
+	{
+		if (upstreamRef.getObjectType() != Cause.getObjectType())
+			return false;
+		
+		if (downstreamRef.getObjectType() != Target.getObjectType())
+			return false;
+		
+		return true;
+	}
+	
 	public boolean isBidirectional()
 	{
 		return bidirectionalLink.get().equals(BIDIRECTIONAL_LINK);

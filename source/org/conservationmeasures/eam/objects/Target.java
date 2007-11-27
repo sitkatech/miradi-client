@@ -14,6 +14,8 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -131,7 +133,21 @@ public class Target extends Factor
 			return getTargetViability();
 		return super.getPseudoData(fieldTag);
 	}
-	
+
+	public FactorLinkSet getDirectThreatTargetFactorLinks()
+	{
+		ORefList linkRefsThatReferToUs = findObjectsThatReferToUs(FactorLink.getObjectType());
+		FactorLinkSet directThreatTargetLinks = new FactorLinkSet();
+		for (int i = 0; i < linkRefsThatReferToUs.size(); ++i)
+		{
+			ORef linkRef = linkRefsThatReferToUs.get(i);
+			FactorLink factorLink = (FactorLink) objectManager.findObject(linkRef);
+			//FIXME use factorlin's isTarget method
+			if (factorLink.getFromFactorRef().getObjectType() == Cause.getObjectType())
+				directThreatTargetLinks.add(factorLink);
+		}
+		return directThreatTargetLinks;
+	}
 	
 	public IdList getDirectOrIndirectIndicators()
 	{
