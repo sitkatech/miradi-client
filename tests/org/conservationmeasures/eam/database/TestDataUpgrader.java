@@ -270,7 +270,10 @@ public class TestDataUpgrader extends EAMTestCase
 		String stressRefsAsString = targetJson.getString("StressRefs");
 		ORefList stressRefs = new ORefList(stressRefsAsString);
 		assertEquals("wrong number of refs in list?", 1, stressRefs.size());
-		assertEquals("wrong ref in list?", new ORef(Stress.getObjectType(), new BaseId(16)), stressRefs.get(0));			
+		assertEquals("wrong ref in list?", new ORef(Stress.getObjectType(), new BaseId(16)), stressRefs.get(0));
+		
+		int highestId = DataUpgrader.readHighestIdInProjectFile(jsonDir);
+		assertEquals("wrong highest Id?", 16, highestId);
 	}
 	
 	public void testUpdateTo23CreateMeasurementFromDataInIndicator() throws Exception
