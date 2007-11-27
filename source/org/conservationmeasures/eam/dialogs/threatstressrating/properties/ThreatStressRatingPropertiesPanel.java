@@ -9,6 +9,7 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -60,6 +61,13 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 			setObjectRefs(new ORef[0]);
 		else
 			setObjectRefs(hierarchiesToSelectedRefs[0].toArray());
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if(event.isSetDataCommand())
+			editorComponent.dataWasChanged();
 	}
 	
 	public String getPanelDescription()
