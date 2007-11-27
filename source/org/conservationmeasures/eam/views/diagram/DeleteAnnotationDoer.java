@@ -148,7 +148,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			return commands;
 		
 		Target target = (Target) owner;
-		FactorLinkSet directThreatLinkSet = target.getDirectThreatTargetFactorLinks();
+		FactorLinkSet directThreatLinkSet = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatLinkSet)
 		{
 			ORef threatStressRatingStressReferrer = findThreatStressRatingReferringToStress(project, factorLink, stressRef);

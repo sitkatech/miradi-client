@@ -134,7 +134,7 @@ public class Target extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
-	public FactorLinkSet getDirectThreatTargetFactorLinks()
+	public FactorLinkSet getThreatTargetFactorLinks()
 	{
 		ORefList linkRefsThatReferToUs = findObjectsThatReferToUs(FactorLink.getObjectType());
 		FactorLinkSet directThreatTargetLinks = new FactorLinkSet();
