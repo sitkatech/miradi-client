@@ -262,20 +262,21 @@ public class DataUpgrader extends FileBasedProjectServer
 			File targetFile = new File(targetDir, Integer.toString(targetWithStressRef.getObjectId().asInt()));
 			EnhancedJsonObject targetJson = readFile(targetFile);
 			
-			stressManifestJson.put(Integer.toString(++highestId), "true");
+			int id = ++highestId;
+			stressManifestJson.put(Integer.toString(id), "true");
 			EnhancedJsonObject stressJson = new EnhancedJsonObject();
-			stressJson.put("Id", Integer.toString(highestId));
+			stressJson.put("Id", Integer.toString(id));
 			stressJson.put("Label", stressLabel);
 		
-			File stressFile = new File(stressDir, Integer.toString(highestId));
+			File stressFile = new File(stressDir, Integer.toString(id));
 			createFile(stressFile, stressJson.toString());
 			
 			ORefList stressRefs = new ORefList();
-			stressRefs.add(new ORef(Stress.getObjectType(), new BaseId(highestId)));
+			stressRefs.add(new ORef(Stress.getObjectType(), new BaseId(id)));
 			targetJson.put("StressRefs", stressRefs.toString());
 			writeJson(targetFile, targetJson);
 			
-			writeHighestIdToProjectFile(jsonDir, highestId);
+			writeHighestIdToProjectFile(jsonDir, id);
 		}
 		
 		File manifestFile = new File(stressDir, "manifest");
