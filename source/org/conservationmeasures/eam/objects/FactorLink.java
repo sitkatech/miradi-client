@@ -78,6 +78,7 @@ public class FactorLink extends BaseObject
 			case ObjectType.CAUSE:
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:
+			case ObjectType.THREAT_STRESS_RATING:
 				return true;
 			default:
 				return false;
@@ -89,6 +90,7 @@ public class FactorLink extends BaseObject
 		Set<String> set = super.getReferencedObjectTags();
 		set.add(TAG_FROM_REF);
 		set.add(TAG_TO_REF);
+		set.add(TAG_THREAT_STRESS_RATING_REFS);
 		return set;
 	}
 	
