@@ -142,8 +142,7 @@ public class Target extends Factor
 		{
 			ORef linkRef = linkRefsThatReferToUs.get(i);
 			FactorLink factorLink = (FactorLink) objectManager.findObject(linkRef);
-			//FIXME use factorlin's isTarget method
-			if (factorLink.getFromFactorRef().getObjectType() == Cause.getObjectType())
+			if (factorLink.isThreatTargetLink())
 				directThreatTargetLinks.add(factorLink);
 		}
 		return directThreatTargetLinks;
