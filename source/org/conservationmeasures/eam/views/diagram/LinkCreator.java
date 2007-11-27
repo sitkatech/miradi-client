@@ -156,8 +156,10 @@ public class LinkCreator
 		ORefList stressRefs = target.getStressRefs();
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{
-			ORef threatStressRatingRef = project.createObject(ThreatStressRating.getObjectType());
-			threatStressRatingRefs.add(threatStressRatingRef);
+			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
+			project.executeCommand(createThreatStressRating);
+			
+			threatStressRatingRefs.add(createThreatStressRating.getObjectRef());
 		}
 		
 		CommandSetObjectData setThreatStressRatingRefs = new CommandSetObjectData(FactorLinkRef, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
