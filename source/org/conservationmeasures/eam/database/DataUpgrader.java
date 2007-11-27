@@ -210,7 +210,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			threatStressRatingManifestJson.put(Integer.toString(id), "true");
 			EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
 			threatStressRatingJson.put("Id", Integer.toString(id));
-			threatStressRatingJson.put("StressRef", stressRefs.get(i).toJson());
+			threatStressRatingJson.put("StressRef", stressRefs.get(i).toString());
 			File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(id));
 			createFile(threatStressRatingFile, threatStressRatingJson.toString());	
 		
