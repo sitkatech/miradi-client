@@ -59,6 +59,7 @@ public class ThreatStressRating extends BaseObject
 	private String calculateThreatRating()
 	{
 		return "";
+		//FIXME fix this calcuation
 //		Stress stress = (Stress) getObjectManager().findObject(getStressRef());
 //		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
 //		int stressRating = Integer.parseInt(stressRatingAsString);
