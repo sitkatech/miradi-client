@@ -27,6 +27,8 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 
 public class LinkCreator
@@ -134,13 +136,43 @@ public class LinkCreator
 		return (FactorLinkId) factorLinkRef.getObjectId();
 	}
 
-	public ORef createFactorLink(ORef toFactorRef, ORef fromFactorRef) throws CommandFailedException
+	public ORef createFactorLink(ORef toFactorRef, ORef fromFactorRef) throws Exception
 	{
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
+		createAndAddThreatStressRatingsFromTarget(createFactorLink.getObjectRef(), getTargetRef(toFactorRef, fromFactorRef));
 		
 		return createFactorLink.getObjectRef();
+	}
+	
+	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
+	{
+		if (targetRef.isInvalid())
+			return;
+		
+		ORefList threatStressRatingRefs = new ORefList();
+		Target target = (Target) project.findObject(targetRef);
+		ORefList stressRefs = target.getStressRefs();
+		for (int i = 0; i < stressRefs.size(); ++i)
+		{
+			ORef threatStressRatingRef = project.createObject(ThreatStressRating.getObjectType());
+			threatStressRatingRefs.add(threatStressRatingRef);
+		}
+		
+		CommandSetObjectData setThreatStressRatingRefs = new CommandSetObjectData(FactorLinkRef, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
+		project.executeCommand(setThreatStressRatingRefs);
+	}
+	
+	public ORef getTargetRef(ORef toFactorRef, ORef fromFactorRef)
+	{
+		if (toFactorRef.getObjectType() == Target.getObjectType())
+			return toFactorRef;
+		
+		if (fromFactorRef.getObjectType() == Target.getObjectType())
+			return fromFactorRef;
+		
+		return ORef.INVALID;
 	}
 	
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
