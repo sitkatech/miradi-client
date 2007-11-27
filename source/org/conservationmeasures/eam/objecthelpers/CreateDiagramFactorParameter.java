@@ -34,5 +34,5 @@ public class CreateDiagramFactorParameter extends CreateObjectParameter
 		return formatDataString(dataPairs);
 	}
 	
-	ORef factorRef;
+	private ORef factorRef;
 }

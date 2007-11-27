@@ -33,6 +33,6 @@ public class CreateFactorLinkParameter extends CreateObjectParameter
 		return formatDataString(dataPairs);
 	}
 	
-	ORef fromRef;
-	ORef toRef;
+	private ORef fromRef;
+	private ORef toRef;
 }
