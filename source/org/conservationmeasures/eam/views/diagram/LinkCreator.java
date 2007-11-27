@@ -160,6 +160,9 @@ public class LinkCreator
 			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
 			project.executeCommand(createThreatStressRating);
 			
+			CommandSetObjectData setStressRef = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRefs.get(i).toString());
+			project.executeCommand(setStressRef);
+			
 			threatStressRatingRefs.add(createThreatStressRating.getObjectRef());
 		}
 		
