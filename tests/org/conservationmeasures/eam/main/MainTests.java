@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.diagram.TestDiagramComponent;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.TestEamGraphCell;
+import org.conservationmeasures.eam.diagram.TestLinkCreator;
 import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
@@ -201,6 +202,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramComponent.class));
 		suite.addTest(new TestSuite(TestBendPointSelectionHelper.class));
 		suite.addTest(new TestSuite(TestLinkBendPointsMoveHandler.class));
+		suite.addTest(new TestSuite(TestLinkCreator.class));
 
 		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
