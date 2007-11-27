@@ -319,7 +319,7 @@ abstract public class DiagramPaster
 				continue;
 			
 			int type = json.getInt("Type");
-			ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
+			ORef factorLinkRef = linkCreator.createFactorLink(newToRef, newFromRef);
 			FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 			
 			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
