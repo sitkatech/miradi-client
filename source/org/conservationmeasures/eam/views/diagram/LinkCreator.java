@@ -146,7 +146,7 @@ public class LinkCreator
 		ORef factorLinkRef = createFactorLink.getObjectRef();
 		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
 		if (factorLink.isThreatTargetLink())
-			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownStreamTargetRef());
+			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
 		
 		return factorLinkRef;
 	}

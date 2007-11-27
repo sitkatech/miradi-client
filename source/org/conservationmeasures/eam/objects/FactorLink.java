@@ -116,7 +116,7 @@ public class FactorLink extends BaseObject
 		return stressLabel.get();
 	}
 	
-	public ORef getDownStreamTargetRef() throws Exception
+	public ORef getDownstreamTargetRef() throws Exception
 	{
 		if (getToFactorRef().getObjectType() == Target.getObjectType())
 			return getToFactorRef();
