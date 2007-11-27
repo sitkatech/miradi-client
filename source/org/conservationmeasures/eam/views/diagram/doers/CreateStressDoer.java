@@ -31,7 +31,7 @@ public class CreateStressDoer extends CreateAnnotationDoer
 			return;
 		
 		Target target = (Target) selectedFactor;
-		FactorLinkSet directThreatTargetLinks = target.getDirectThreatTargetFactorLinks();
+		FactorLinkSet directThreatTargetLinks = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatTargetLinks)
 		{
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedObjectRef);
