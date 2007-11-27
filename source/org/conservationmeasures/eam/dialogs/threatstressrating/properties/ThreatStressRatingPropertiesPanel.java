@@ -62,11 +62,6 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 			setObjectRefs(hierarchiesToSelectedRefs[0].toArray());
 	}
 	
-	public void dataWasChanged()
-	{
-		editorComponent.dataWasChanged();
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Stress-Based Threat Rating");

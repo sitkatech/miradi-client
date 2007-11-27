@@ -13,7 +13,9 @@ import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParame
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
@@ -64,7 +66,17 @@ public class ThreatStressRating extends BaseObject
 	{
 		return stressRef.getRawRef();
 	}
-
+	
+	public ChoiceItem getContribution()
+	{
+		return new StatusQuestion(TAG_CONTRIBUTION).findChoiceByCode(contribution.toString());
+	}
+	 
+	public ChoiceItem getIrreversibility()
+	{
+		return new StatusQuestion(TAG_IRREVERSIBILITY).findChoiceByCode(irreversibility.toString());
+	}
+	
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
