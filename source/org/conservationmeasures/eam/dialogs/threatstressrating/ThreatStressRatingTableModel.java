@@ -57,6 +57,16 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return false;
 	}
 	
+	public boolean isStressLabelColumn(int column)
+	{
+		return getColumnTag(column).equals(Stress.TAG_LABEL);
+	}
+	
+	public boolean isStressRatingColumn(int column)
+	{
+		return getColumnTag(column).equals(Stress.PSEUDO_STRESS_RATING);
+	}
+	
 	public boolean isIrreversibilityColumn(int column)
 	{
 		return getColumnTag(column).equals(ThreatStressRating.TAG_IRREVERSIBILITY);
@@ -66,9 +76,17 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	{
 		return getColumnTag(column).equals(ThreatStressRating.TAG_CONTRIBUTION);
 	}
+	
+	public boolean isThreatRatingColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+	}
 		
 	public String getColumnName(int column)
 	{
+		if (isStressLabelColumn(column) || isStressRatingColumn(column))
+			return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(column));
+		
 		return EAM.fieldLabel(ThreatStressRating.getObjectType(), getColumnTag(column));
 	}
 	
@@ -89,6 +107,12 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 
 	public Object getValueAt(int row, int column)
 	{
+		if (isStressLabelColumn(column))
+			return getStress(row).toString();
+
+		if (isStressRatingColumn(column))
+			return getStress(row).getPseudoData(getColumnTag(column));
+		
 		if (isContributionColumn(column))
 			return getThreatStressRating(row).getContribution();
 		
@@ -97,7 +121,14 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		
 		return null;
 	}
-	
+
+	private Stress getStress(int row)
+	{
+		ORef stressRef = getThreatStressRating(row).getStressRef();
+		Stress stress = (Stress) getProject().findObject(stressRef);
+		return stress;
+	}
+		
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
