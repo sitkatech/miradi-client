@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -37,14 +38,15 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return "";
 	}
 	
-//FIXME finish method	
-//	public FactorLinkId getLink(int row, int column)
-//	{
-//		Factor directThreat = directThreatRows[row];
-//		Target target = targets[column];
-//		//factorLinkId = getProject().getFactorLinkPool().getLinkedId(directThreat.getFactorId(), target.getFactorId());
-//	}
+	public ORef getLinkRef(ORef fromRef, ORef toRef)
+	{
+		return getProject().getFactorLinkPool().getLinkedRef(fromRef, toRef);
+	}
 	
+	public boolean isLinked(ORef fromRef, ORef toRef)
+	{
+		return getProject().getFactorLinkPool().isLinked(fromRef, toRef);
+	}
 	
 	public Target getTarget(int modelColumn)
 	{
