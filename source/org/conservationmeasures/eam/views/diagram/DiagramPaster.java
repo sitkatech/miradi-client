@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -320,8 +319,8 @@ abstract public class DiagramPaster
 				continue;
 			
 			int type = json.getInt("Type");
-			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(newFromRef, newToRef);
-			FactorLink newFactorLink = (FactorLink) createObject(type, extraInfo);
+			ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
+			FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 			
 			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
 			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
