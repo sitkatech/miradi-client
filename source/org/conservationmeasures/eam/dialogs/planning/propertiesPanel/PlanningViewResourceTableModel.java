@@ -5,9 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -108,7 +105,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 
 		ProjectResource projectResource = (ProjectResource)value;
 		BaseId resourceId = projectResource.getId();
-		setAssignmentData(assignmentRefForRow, resourceId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
+		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
 	}
 	
 	public void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
@@ -118,7 +115,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		
 		AccountingCode accountingCode = (AccountingCode)value;
 		BaseId accountingCodeId = accountingCode.getId();
-		setAssignmentData(assignmentRefForRow, accountingCodeId, Assignment.TAG_ACCOUNTING_CODE);
+		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId);
 	}
 	
 	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
@@ -128,22 +125,9 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		
 		FundingSource fundingSource = (FundingSource)value;
 		BaseId fundingSourceId = fundingSource.getId();
-		setAssignmentData(assignmentRefForRow, fundingSourceId, Assignment.TAG_FUNDING_SOURCE);
+		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_FUNDING_SOURCE, fundingSourceId);
 	}
 
-	public void setAssignmentData(ORef  assignmentRef, BaseId idToSave, String fieldTag)
-	{
-		try
-		{
-			Command command = new CommandSetObjectData(assignmentRef, fieldTag, idToSave.toString());
-			getProject().executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-		
 	private BaseObject getResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();

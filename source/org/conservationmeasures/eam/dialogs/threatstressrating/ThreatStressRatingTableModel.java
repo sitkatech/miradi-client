@@ -5,10 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -126,6 +123,9 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		
 		if (isIrreversibilityColumn(column))
 			return getThreatStressRating(row).getIrreversibility();
+
+		if (isThreatRatingColumn(column))
+			return getThreatStressRating(row).getPseudoData(getColumnTag(column));
 		
 		return null;
 	}
@@ -145,23 +145,10 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isContributionColumn(column) || isIrreversibilityColumn(column))
 		{
 			ORef ref = getBaseObjectForRow(row).getRef();
-			setThreatStressRatingData(ref, getColumnTag(column), ((ChoiceItem) value).getCode());
+			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value).getCode());
 		}
 	}
 
-	public void setThreatStressRatingData(ORef  threatStressRatingRef, String fieldTag, String valueToSave)
-	{
-		try
-		{
-			Command command = new CommandSetObjectData(threatStressRatingRef, fieldTag, valueToSave);
-			getProject().executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-			
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return ratings[row];
