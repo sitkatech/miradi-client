@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -40,6 +39,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
 public class ResultsChainCreatorHelper
 {
@@ -363,7 +363,7 @@ public class ResultsChainCreatorHelper
 	}
 
 
-	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws CommandFailedException
+	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws Exception
 	{
 		DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
@@ -387,16 +387,13 @@ public class ResultsChainCreatorHelper
 	}
 	
 	
-	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws CommandFailedException
+	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 	
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromCloned.getWrappedORef(), toCloned.getWrappedORef());
-		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-		project.executeCommand(createFactorLink);
-		
-		FactorLinkId factorLinkId = (FactorLinkId) createFactorLink.getCreatedId();
+		FactorLinkId factorLinkId = new LinkCreator(project).createFactorLink(fromCloned, toCloned);
+
 		return new CreateDiagramFactorLinkParameter(factorLinkId, fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 	}
 
