@@ -141,7 +141,7 @@ public class FactorDeleteHelper
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
-			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
+			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteReferencedObject(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
@@ -164,7 +164,7 @@ public class FactorDeleteHelper
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
-			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteAnnotation(getProject(), objectToDelete, annotationListTag, kea);
+			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteReferencedObject(getProject(), objectToDelete, annotationListTag, kea);
 			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}

@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
@@ -25,12 +24,6 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 			return false;
 		
 		return true;
-	}
-	
-	public void doIt() throws CommandFailedException
-	{
-		super.doIt();
-		//FIXME do rest of work, follow createStress doExtraWork pattern
 	}
 	
 	protected BaseObject getParent(BaseObject annotationToDelete)

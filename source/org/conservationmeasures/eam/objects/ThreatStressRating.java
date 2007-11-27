@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
@@ -47,6 +48,11 @@ public class ThreatStressRating extends BaseObject
 	{
 		//FIXME add functionality to method along with test
 		return "";
+	}
+	
+	public ORef getStressRef()
+	{
+		return stressRef.getRawRef();
 	}
 
 	public String getTypeName()
