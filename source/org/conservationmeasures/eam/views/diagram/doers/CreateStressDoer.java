@@ -20,18 +20,24 @@ import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
-	protected void doExtraWork() throws Exception
+	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
 	{
 		Factor selectedFactor = getSelectedFactor();
 		if(!selectedFactor.isTarget())
 			return;
 
+		if (newlyCreatedObjectRef.getObjectType() != Stress.getObjectType())
+			return;
+		
 		Target target = (Target) selectedFactor;
 		FactorLinkSet directThreatTargetLinks = target.getDirectThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatTargetLinks)
 		{
 			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
 			getProject().executeCommand(createThreatStressRating);
+			
+			CommandSetObjectData setStressRef = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, newlyCreatedObjectRef.toString());
+			getProject().executeCommand(setStressRef);
 			
 			CommandSetObjectData setLinkThreatStressRatingRefs = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, createThreatStressRating.getObjectRef());
 			getProject().executeCommand(setLinkThreatStressRatingRefs);			

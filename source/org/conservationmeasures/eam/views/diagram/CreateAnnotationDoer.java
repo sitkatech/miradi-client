@@ -45,7 +45,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			CommandCreateObject create = createObject();
 			CommandSetObjectData appendCommand = createAppendCommand(factor, create.getObjectRef());
 			getProject().executeCommand(appendCommand);
-			doExtraWork();
+			doExtraWork(create.getObjectRef());
 			
 			ObjectPicker picker = getPicker();
 			if(picker != null)
@@ -62,7 +62,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		}
 	}
 
-	protected void doExtraWork() throws Exception
+	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
 	{
 	}
 
