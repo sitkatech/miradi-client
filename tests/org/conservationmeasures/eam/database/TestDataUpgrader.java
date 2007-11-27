@@ -209,6 +209,9 @@ public class TestDataUpgrader extends EAMTestCase
 		String threatStressRating3AsString = factorLinkWithoutThreatStressRating2Json.getString("ThreatStressRatingRefs");
 		ORefList threatStressRating3Refs = new ORefList(threatStressRating3AsString);
 		assertEquals("wrong number of refs in list?", 0, threatStressRating3Refs.size());
+			
+		int highestId = DataUpgrader.readHighestIdInProjectFile(jsonDir);
+		assertEquals("wrong highest Id?", 35, highestId);
 	}
 	
 	public void testUpdateTo24CreateStressesFromFactorLinks() throws Exception
