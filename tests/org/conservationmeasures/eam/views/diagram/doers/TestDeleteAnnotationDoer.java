@@ -59,7 +59,7 @@ public class TestDeleteAnnotationDoer extends EAMTestCase
 		Task method = (Task) project.findObject(methodRef);
 		assertTrue("is not method?", method.isMethod());
 		
-		Command[] commandsToRemoveIndicator1 = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(project, strategy, Strategy.TAG_INDICATOR_IDS, indicator1);
+		Command[] commandsToRemoveIndicator1 = DeleteAnnotationDoer.buildCommandsToDeleteReferencedObject(project, strategy, Strategy.TAG_INDICATOR_IDS, indicator1);
 		project.executeCommandsAsTransaction(commandsToRemoveIndicator1);
 		
 		Task foundMethod = (Task) project.findObject(methodRef);

@@ -19,15 +19,20 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
+import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
@@ -56,7 +61,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return annotationToDelete.getOwner();
 	}
 
-	public static void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
@@ -65,7 +70,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = buildCommandsToDeleteAnnotation(project, owner, annotationIdListTag, annotationToDelete);
+			Command[] commands = buildCommandsToDeleteReferencedObject(project, owner, annotationIdListTag, annotationToDelete);
 			for(int i = 0; i < commands.length; ++i)
 				project.executeCommand(commands[i]);
 		}
@@ -80,13 +85,14 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteReferencedObject(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();	
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
@@ -128,11 +134,44 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
 			BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR,  indicatorList.get(i));
-			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
+			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteReferencedObject(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 			commands.addAll(Arrays.asList(deleteCommands));
 		}
 
 		return commands;
+	}
+
+	protected static Collection buildCommandsToDeleteThreatStressRatings(Project project, BaseObject owner, ORef stressRef) throws Exception
+	{
+		Vector commands = new Vector();
+		if (stressRef.getObjectType() != Stress.getObjectType())
+			return commands;
+		
+		Target target = (Target) owner;
+		FactorLinkSet directThreatLinkSet = target.getDirectThreatTargetFactorLinks();
+		for(FactorLink factorLink : directThreatLinkSet)
+		{
+			ORef threatStressRatingStressReferrer = findThreatStressRatingReferringToStress(project, factorLink, stressRef);
+			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingStressReferrer);
+			commands.addAll(Arrays.asList(threatStressRating.createCommandsToClear()));
+			commands.add(new CommandDeleteObject(threatStressRatingStressReferrer));
+		}
+		
+		return commands;
+	}
+	
+	private static ORef findThreatStressRatingReferringToStress(Project project, FactorLink factorLink, ORef stressRef) throws Exception
+	{
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
+		{
+			ORef threatStressRatingRef = threatStressRatingRefs.get(i);
+			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingRef);
+			if (stressRef.equals(threatStressRating.getStressRef()))
+				return threatStressRatingRef;
+		}
+		
+		throw new Exception(); 
 	}
 	
 	private static Collection buildCommandsToDeleteMeasurements(Project project, ORef ref) throws Exception
