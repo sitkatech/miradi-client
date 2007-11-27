@@ -132,11 +132,11 @@ public class LinkCreator
 
 	public FactorLinkId createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		ORef factorLinkRef = createFactorLink(toDiagramFactor.getWrappedORef(), fromDiagramFactor.getWrappedORef());
+		ORef factorLinkRef = createFactorLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		return (FactorLinkId) factorLinkRef.getObjectId();
 	}
 
-	public ORef createFactorLink(ORef toFactorRef, ORef fromFactorRef) throws Exception
+	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
