@@ -175,7 +175,6 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		EnhancedJsonObject threatStressRatingManifestJson = new EnhancedJsonObject();
 		threatStressRatingManifestJson.put("Type", "ObjectManifest");
-		int highestId = readHighestIdInProjectFile(jsonDir);
 		ObjectManifest factorLinkManifest = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifest.getAllKeys();
 		for (int i = 0; i < factorLinkIds.length; ++i)
@@ -191,30 +190,32 @@ public class DataUpgrader extends FileBasedProjectServer
 			File targetFile = new File(targetDir, Integer.toString(targetRef.getObjectId().asInt()));
 			EnhancedJsonObject targetJson = readFile(targetFile);
 			ORefList stressRefs = new ORefList(targetJson.optString("StressRefs"));
-			ORefList threatStressRatingRefs = createThreatStressRatings(threatStressRatingDir, stressRefs, threatStressRatingManifestJson, highestId);
+			ORefList threatStressRatingRefs = createThreatStressRatings(threatStressRatingDir, stressRefs, threatStressRatingManifestJson, jsonDir);
 								
 			factorLinkJson.put("ThreatStressRatingRefs", threatStressRatingRefs.toString());
-			writeJson(factorLinkFile, factorLinkJson);
-			writeHighestIdToProjectFile(jsonDir, highestId);
+			writeJson(factorLinkFile, factorLinkJson);	
 		}
 		
 		File manifestFile = new File(threatStressRatingDir, "manifest");
 		writeJson(manifestFile, threatStressRatingManifestJson);
 	}
 
-	private ORefList createThreatStressRatings(File threatStressRatingDir, ORefList stressRefs, EnhancedJsonObject threatStressRatingManifestJson, int highestId) throws Exception
+	private ORefList createThreatStressRatings(File threatStressRatingDir, ORefList stressRefs, EnhancedJsonObject threatStressRatingManifestJson, File jsonDir) throws Exception
 	{
+		int highestId = readHighestIdInProjectFile(jsonDir);
 		ORefList threatStressRatingRefs = new ORefList();
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{
-			threatStressRatingManifestJson.put(Integer.toString(++highestId), "true");
+			int id = ++highestId;
+			threatStressRatingManifestJson.put(Integer.toString(id), "true");
 			EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
-			threatStressRatingJson.put("Id", Integer.toString(highestId));
+			threatStressRatingJson.put("Id", Integer.toString(id));
 			threatStressRatingJson.put("StressRef", stressRefs.get(i).toJson());
-			File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(highestId));
+			File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(id));
 			createFile(threatStressRatingFile, threatStressRatingJson.toString());	
 		
-			threatStressRatingRefs.add(new ORef(34, new BaseId(highestId)));
+			threatStressRatingRefs.add(new ORef(34, new BaseId(id)));
+			writeHighestIdToProjectFile(jsonDir, id);
 		}
 		
 		return threatStressRatingRefs;
