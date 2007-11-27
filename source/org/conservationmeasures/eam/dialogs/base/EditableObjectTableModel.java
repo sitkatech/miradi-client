@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 abstract public class EditableObjectTableModel extends AbstractTableModel implements ColumnTagProvider, RowBaseObjectProvider
@@ -38,6 +39,11 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 	public void setValueUsingCommand(ORef refToUse, String fieldTag, BaseId idToSave)
 	{
 		setValueUsingCommand(refToUse, fieldTag, idToSave.toString());
+	}
+	
+	public void setValueUsingCommand(ORef refToUse, String fieldTag, ChoiceItem choiceToSave)
+	{
+		setValueUsingCommand(refToUse, fieldTag, choiceToSave.getCode());
 	}
 	
 	public void setValueUsingCommand(ORef  refToUse, String fieldTag, String valueToSave)
