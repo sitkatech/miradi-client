@@ -282,20 +282,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return BaseId.INVALID;
 	}
 	
-	
-	public static BaseId getObjectIdForTypeInThisList(int objectType, ORef[] orefsToUse)
-	{
-		for (int i=0; i<orefsToUse.length; ++i)
-		{
-			ORef oref = orefsToUse[i];
-			int type = oref.getObjectType();
-			if (objectType == type)
-				return  oref.getObjectId();
-		}
-		return BaseId.INVALID;
-	}
-	
-	
 	public ORef getORef(int index)
 	{
 		return orefs[index];
