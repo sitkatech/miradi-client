@@ -40,7 +40,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		{
 			Factor directThreat = directThreatRows[row];
 			Target target = targets[column];
-			if (!getProject().isLinked(directThreat.getFactorId(), target.getFactorId()))
+			if (!getProject().areLinked(directThreat.getFactorId(), target.getFactorId()))
 				return "";
 			
 			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));

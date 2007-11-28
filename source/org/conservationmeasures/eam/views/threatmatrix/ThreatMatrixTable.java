@@ -121,7 +121,7 @@ public class ThreatMatrixTable extends PanelTable
 	{
 		ThreatMatrixTableModel model = (ThreatMatrixTableModel) getModel();
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return model.getProject().isLinked(model.getThreatId(row), model.getTargetId(modelColumn));
+		return model.getProject().areLinked(model.getThreatId(row), model.getTargetId(modelColumn));
 	}
 	
 	private boolean canBeLinked(ThreatMatrixTable table, int row, int tableColumn)

@@ -981,7 +981,7 @@ public class Project
 		database.writeObject(cmNode);
 	}
 
-	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
+	public boolean areLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		return getFactorLinkPool().isLinked(nodeId1, nodeId2);
 	}
