@@ -215,6 +215,9 @@ public class FactorLink extends BaseObject
 	{
 		Target target = Target.findTarget(getObjectManager(), getDownstreamTargetRef());
 		ORefList stresses = target.getStressRefs();
+		if (stresses.size() == 0)
+			return 0;
+		
 		int totalStressRatings = 0;
 		for (int i = 0; i < stresses.size(); ++i)
 		{
