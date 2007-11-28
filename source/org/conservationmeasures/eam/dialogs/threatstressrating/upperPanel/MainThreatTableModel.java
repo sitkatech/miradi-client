@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -36,6 +37,11 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		return project;
 	}
 
+	public ORef getLinkRef(ORef fromRef, ORef toRef)
+	{
+		return getProject().getFactorLinkPool().getLinkedRef(fromRef, toRef);
+	}
+	
 	private Project project;
 	protected Factor[] directThreatRows;
 	protected Target[] targets;

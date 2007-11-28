@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-public class ThreatRatingFramework
+public class ThreatRatingFramework extends SimpleModeThreatRatingFramework
 {
+	public ThreatRatingFramework(Project projectToUse)
+	{
+		super(projectToUse);
+	}
 }

@@ -5,15 +5,29 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.TNCThreatFormula;
 
 public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 {
 	public ThreatSummaryColumnTableModel(Project projectToUse)
 	{
 		super(projectToUse);
+		
+		tNCThreatFormula = new TNCThreatFormula();
 	}
 
+	public String getColumnName(int column)
+	{
+		return "Summary Threat Rating";
+	}
+	
 	public String getColumnTag(int column)
 	{
 		return "";
@@ -24,8 +38,46 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		return 1;
 	}
 
-	public Object getValueAt(int arg0, int arg1)
+	public Object getValueAt(int row, int column)
 	{
-		return "";
+		return getCalculatedThreatRatingBundleValue(row);
 	}
+	
+	private String getCalculatedThreatRatingBundleValue(int row)
+	{
+		try
+		{
+			return Integer.toString(calculateThreatRatingBundleValue(row));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "ERROR";
+		}
+	}
+	
+	private int calculateThreatRatingBundleValue(int row) throws Exception
+	{
+		Vector<Integer> calculatedThreatRatingBundleValues = new Vector();
+		for (int i = 0; i < targets.length; ++i)
+		{
+			Target target = targets[i];
+			Factor directThreat = directThreatRows[row];
+			if (!getProject().isLinked(directThreat.getFactorId(), target.getFactorId()))
+				continue;
+			
+			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
+			calculatedThreatRatingBundleValues.add(factorLink.calculateThreatRatingBundleValue());
+		}
+		
+		int[] convertedValuesList = new int [calculatedThreatRatingBundleValues.size()];
+		for (int i = 0; i < convertedValuesList.length; ++i)
+		{
+			convertedValuesList[i] = calculatedThreatRatingBundleValues.get(i);
+		}
+		
+		return tNCThreatFormula.getSummaryOfBundles(convertedValuesList);
+	}
+	
+	private TNCThreatFormula tNCThreatFormula;
 }
