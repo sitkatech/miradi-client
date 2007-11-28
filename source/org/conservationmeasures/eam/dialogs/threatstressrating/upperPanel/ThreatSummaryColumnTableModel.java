@@ -48,7 +48,11 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			return Integer.toString(calculateThreatSummaryRatingValue(row));
+			int calculatedValue = calculateThreatSummaryRatingValue(row);
+			if (calculatedValue == 0)
+				return "";
+			
+			return Integer.toString(calculatedValue);
 		}
 		catch (Exception e)
 		{

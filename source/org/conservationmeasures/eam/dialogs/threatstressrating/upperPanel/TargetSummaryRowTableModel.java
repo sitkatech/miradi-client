@@ -43,7 +43,11 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			return Integer.toString(calculateTargetSummaryRatingValue(column));
+			int calculatedValue = calculateTargetSummaryRatingValue(column);
+			if (calculatedValue == 0)
+				return "";
+			
+			return Integer.toString(calculatedValue);
 		}
 		catch (Exception e)
 		{
