@@ -63,6 +63,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		JScrollPane targetThreatLinkTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetThreatLinkTable);
 		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(targetThreatLinkTableScroller);
+		addToHorizontalController(targetThreatLinkTableScroller);
 		
 		JScrollPane threatSummaryColumnTableScroller = new FastScrollPane(threatSummaryColumnTable);
 		addToVerticalController(threatSummaryColumnTableScroller);
@@ -73,7 +74,8 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		mainPanel.add(targetThreatLinkTableScroller);
 		mainPanel.add(threatSummaryColumnTableScroller);
 		
-		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable); 
+		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable);
+		addToHorizontalController(targetSummaryRowTableScroller);
 		mainPanel.add(new JLabel());
 		mainPanel.add(targetSummaryRowTableScroller);
 		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
