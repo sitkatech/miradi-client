@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class TargetThreatLinkTable extends TableWithColumnWidthSaver
+public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewportHeight
 {
 	public TargetThreatLinkTable(TargetThreatLinkTableModel tableModel)
 	{
 		super(tableModel);
+		setForcedPreferredScrollableViewportWidth(400);
 	}
 	
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
