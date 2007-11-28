@@ -51,6 +51,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(targetSummaryRowTableModel);
+		targetSummaryRowTable.resizeTable(1);
 	}
 
 	private void addTables()
