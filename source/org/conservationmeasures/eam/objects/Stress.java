@@ -8,8 +8,10 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -44,28 +46,45 @@ public class Stress extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_STRESS_RATING))
-			return calculateStressRating();
+			return getCalculatedStressRating();
 		
 		return super.getPseudoData(fieldTag);
 	}
 
-	public String calculateStressRating()
+	public String getCalculatedStressRating()
+	{
+		int calculatedStressRating = calculateStressRating();
+		if (calculatedStressRating == 0)
+			return "";
+		
+		return Integer.toString(calculatedStressRating);
+	}
+	
+	public int calculateStressRating()
 	{
 		ChoiceItem scopeChoice = new PriorityRatingQuestion(Stress.TAG_SCOPE).findChoiceByCode(scope.get());
 		if (scopeChoice.getCode().length() == 0)
-			return "";
+			return 0;
 
 		ChoiceItem severityChoice = new PriorityRatingQuestion(TAG_SEVERITY).findChoiceByCode(severity.get());
 		if (severityChoice.getCode().length() == 0)
-			return "";
+			return 0;
 		
 		int scopeRating = Integer.parseInt(scopeChoice.getCode());
 		int severityRating = Integer.parseInt(severityChoice.getCode());
-		int min = Math.min(scopeRating, severityRating);
-		
-		return Integer.toString(min);
+		return Math.min(scopeRating, severityRating);
 	}
-
+	
+	public static Stress findStress(ObjectManager objectManager, ORef stressRef)
+	{
+		return (Stress) objectManager.findObject(stressRef);
+	}
+	
+	public static Stress findStress(Project project, ORef stressRef)
+	{
+		return findStress(project.getObjectManager(), stressRef);
+	}
+		
 	public String toString()
 	{
 		return getLabel();

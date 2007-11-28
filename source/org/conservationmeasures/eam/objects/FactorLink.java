@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
@@ -22,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
@@ -187,15 +189,40 @@ public class FactorLink extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE))
-			return calculateThreatRatingBundleValue();
+			return getCalculatedThreatRatingBundleValue();
 			
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String calculateThreatRatingBundleValue()
+	public String getCalculatedThreatRatingBundleValue()
 	{
-		//FIXME finish calculation
-		return "TEMPVALUE";
+		try
+		{
+			int calculatedThreatRatingBundleValue = calculateThreatRatingBundleValue();
+			if (calculatedThreatRatingBundleValue == 0)
+				return "";
+			
+			return Integer.toString(calculatedThreatRatingBundleValue);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "Error";
+		}
+	}
+	
+	public int calculateThreatRatingBundleValue() throws Exception
+	{
+		Target target = findTarget(getObjectManager(), getDownstreamTargetRef());
+		ORefList stresses = target.getStressRefs();
+		int totalStressRatings = 0;
+		for (int i = 0; i < stresses.size(); ++i)
+		{
+			Stress stress = Stress.findStress(getObjectManager(), stresses.get(i));
+			totalStressRatings = totalStressRatings + stress.calculateStressRating();
+		}
+
+		return totalStressRatings/stresses.size();
 	}
 
 	public ORef getFactorRef(int direction)
@@ -219,6 +246,16 @@ public class FactorLink extends BaseObject
 	public ORefList getThreatStressRatingRefs()
 	{
 		return threatStressRatingRefs.getORefList();
+	}
+	
+	public static Target findTarget(ObjectManager objectManager, ORef targetRef)
+	{
+		return (Target) objectManager.findObject(targetRef);
+	}
+	
+	public static Target findTarget(Project project, ORef targetRef)
+	{
+		return findTarget(project.getObjectManager(), targetRef);
 	}
 
 	void clear()
