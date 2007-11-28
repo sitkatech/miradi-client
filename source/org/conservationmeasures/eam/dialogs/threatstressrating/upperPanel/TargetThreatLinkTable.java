@@ -54,5 +54,5 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public static final String UNIQUE_IDENTIFIER = "ThreatsTable";
+	public static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTable";
 }
