@@ -5,16 +5,18 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import java.awt.BorderLayout;
-
-import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener
 {
@@ -32,6 +34,8 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	{
 		selectionController.addTable(threatTable);
 		selectionController.addTable(targetThreatLinkTable);
+		selectionController.addTable(threatSummaryColumnTable);
+		selectionController.addTable(targetSummaryRowTable);
 	}
 	
 	private void createTables() throws Exception
@@ -41,18 +45,30 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
+		
+		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
+		threatSummaryColumnTable = new ThreatSummaryColumnTable(threatSummaryColumnTableModel);
+		
+		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
+		targetSummaryRowTable = new TargetSummaryRowTable(targetSummaryRowTableModel);
 	}
 
 	private void addTables()
 	{
-		Box horizontalBox = Box.createHorizontalBox();
+		JPanel mainPanel = new JPanel(new BasicGridLayout(2, 3));
 		JScrollPane threatTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatTable);
-		addVerticalScrollableControlledTable(horizontalBox, threatTableScroller);
-
 		JScrollPane targetThreatLinkTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetThreatLinkTable);
-		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, targetThreatLinkTableScroller);
+		JScrollPane threatSummaryColumnTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatSummaryColumnTable);
 		
-		add(horizontalBox, BorderLayout.CENTER);
+		mainPanel.add(threatTableScroller);
+		mainPanel.add(targetThreatLinkTableScroller);
+		mainPanel.add(threatSummaryColumnTableScroller);
+		
+		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable);
+		mainPanel.add(new JLabel());
+		mainPanel.add(targetSummaryRowTableScroller);
+		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
+		add(mainPanelScroller);		
 	}
 	
 	public ObjectPicker getObjectPicker()
@@ -79,4 +95,10 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	private ThreatTable threatTable;
 	private TargetThreatLinkTableModel targetThreatLinkTableModel;
 	private TargetThreatLinkTable targetThreatLinkTable;
+	
+	private ThreatSummaryColumnTableModel threatSummaryColumnTableModel;
+	private ThreatSummaryColumnTable threatSummaryColumnTable;
+	
+	private TargetSummaryRowTableModel targetSummaryRowTableModel;
+	private TargetSummaryRowTable targetSummaryRowTable;
 }
