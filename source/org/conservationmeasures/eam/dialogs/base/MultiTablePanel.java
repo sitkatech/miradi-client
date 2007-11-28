@@ -59,6 +59,11 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		verticalController.addTable(scroller);
 	}
 	
+	protected void addToHorizontalController(JScrollPane scroller)
+	{
+		horizontalController.addTable(scroller);
+	}
+	
 	protected class ScrollPaneWithInvisibleVerticalScrollBar extends AssignmentTableScrollPane
 	{
 		public ScrollPaneWithInvisibleVerticalScrollBar(JComponent contents)
