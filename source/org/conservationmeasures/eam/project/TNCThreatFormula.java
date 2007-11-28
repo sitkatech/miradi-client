@@ -11,7 +11,11 @@ import org.conservationmeasures.eam.objects.ValueOption;
 
 public class TNCThreatFormula
 {
-	TNCThreatFormula(SimpleModeThreatRatingFramework frameworkToUse)
+	public TNCThreatFormula()
+	{
+	}
+	
+	public TNCThreatFormula(SimpleModeThreatRatingFramework frameworkToUse)
 	{
 		framework = frameworkToUse;
 	}

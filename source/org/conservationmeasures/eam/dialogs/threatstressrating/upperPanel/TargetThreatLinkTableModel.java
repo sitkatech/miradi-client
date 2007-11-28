@@ -53,11 +53,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		}
 	}
 	
-	public ORef getLinkRef(ORef fromRef, ORef toRef)
-	{
-		return getProject().getFactorLinkPool().getLinkedRef(fromRef, toRef);
-	}
-	
 	public boolean isLinked(ORef fromRef, ORef toRef)
 	{
 		return getProject().getFactorLinkPool().isLinked(fromRef, toRef);

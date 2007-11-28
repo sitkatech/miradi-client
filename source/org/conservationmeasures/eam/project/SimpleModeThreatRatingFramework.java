@@ -31,12 +31,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class SimpleModeThreatRatingFramework extends ThreatRatingFramework
+public class SimpleModeThreatRatingFramework
 {
-	public SimpleModeThreatRatingFramework(Project owningProject)
+	public SimpleModeThreatRatingFramework(Project projectToUse)
 	{
-		project = owningProject;
-		
+		project = projectToUse;
 		clear();
 	}
 
@@ -45,11 +44,6 @@ public class SimpleModeThreatRatingFramework extends ThreatRatingFramework
 		bundles = new HashMap();
 		criteria = new RatingCriterion[0];
 		ratingValueOptions = new ValueOption[0];
-	}
-	
-	public Project getProject()
-	{
-		return project;
 	}
 	
 	public IdList getValueOptionIds()
@@ -460,6 +454,11 @@ public class SimpleModeThreatRatingFramework extends ThreatRatingFramework
 		return db;
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+		
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
 	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	public static final String TAG_CRITERION_IDS = "CriterionIds";
@@ -470,8 +469,7 @@ public class SimpleModeThreatRatingFramework extends ThreatRatingFramework
 	private static final String CRITERION_SEVERITY = "Severity";
 	private static final String CRITERION_SCOPE = "Scope";
 
-	private Project project;
-	
+	protected Project project;
 	private HashMap bundles;
 	private ValueOption[] ratingValueOptions;
 	private RatingCriterion[] criteria;
