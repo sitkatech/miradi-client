@@ -18,7 +18,8 @@ public class TargetSummaryRowTable extends TableWithColumnWidthSaver
 		super(model);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		getTableHeader().setPreferredSize(new Dimension(0, 0)); 
+		getTableHeader().setPreferredSize(new Dimension(0, 0));
+		setForcedPreferredScrollableViewportWidth(400);
 	}
 	
 	public String getUniqueTableIdentifier()
