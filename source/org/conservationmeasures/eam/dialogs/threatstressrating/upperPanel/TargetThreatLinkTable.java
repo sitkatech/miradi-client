@@ -30,6 +30,9 @@ public class TargetThreatLinkTable extends TableWithColumnWidthSaver
 		int tableColumn = getSelectedColumn();
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ORefList hierarchyRefs = new ORefList();
+		if (modelColumn < 0)
+			return new ORefList[0];
+		
 		ORef targetRef = getTargetThreatLinkTableModel().getTarget(modelColumn).getRef();
 		hierarchyRefs.add(targetRef);
 		hierarchyRefs.add(directThreat.getRef());
