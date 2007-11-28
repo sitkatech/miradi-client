@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
-import java.awt.Dimension;
-
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 
 abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
@@ -17,22 +15,7 @@ abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSi
 
 		//TODO planning table - find better solution - check the other tables two planning tables too
 		setRowHeight(getRowHeight() + 10);
-	}
-
-	public Dimension getPreferredScrollableViewportSize()
-	{
-		int preferredHeight = getPreferredScrollableViewportHeight();
-		int preferredWidth = getPreferredScrollableViewportWidth();
-		return new Dimension(preferredWidth, preferredHeight);
-	}
-
-	int getPreferredScrollableViewportWidth()
-	{
-		return 250;
-	}
-
-	int getPreferredScrollableViewportHeight()
-	{
-		return getRowHeight() * 5;
+		setForcedPreferredScrollableViewportHeight(getRowHeight() * 5);
+		setForcedPreferredScrollableViewportWidth(250);
 	}
 }
