@@ -21,7 +21,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		super(projectToUse);
 		
-		tNCThreatFormula = new TNCThreatFormula();
+		threatFormula = new TNCThreatFormula();
 	}
 
 	public String getColumnTag(int column)
@@ -66,8 +66,8 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 			calculatedThreatRatingBundleValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
-		return tNCThreatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedThreatRatingBundleValues));
+		return threatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedThreatRatingBundleValues));
 	}
 	
-	private TNCThreatFormula tNCThreatFormula;
+	private TNCThreatFormula threatFormula;
 }
