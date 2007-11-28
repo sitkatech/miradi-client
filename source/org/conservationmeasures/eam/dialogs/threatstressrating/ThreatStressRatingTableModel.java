@@ -28,17 +28,16 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		rebuild(hierarchyToSelectedRef);
+		rebuild(new ORefList(hierarchyToSelectedRef));
 	}
 
-	private void rebuild(ORef[] hierarchyToSelectedRef)
+	private void rebuild(ORefList hierarchyToSelectedRef)
 	{
 		ratings = new ThreatStressRating[0];
-		ORefList filteredList = ORefList.filterByType(hierarchyToSelectedRef, FactorLink.getObjectType());
-		if (filteredList.size() == 0)
+		ORef factorLinkRef = hierarchyToSelectedRef.getRefForType(FactorLink.getObjectType());
+		if (factorLinkRef.isInvalid())
 			return;
 
-		ORef factorLinkRef = hierarchyToSelectedRef[2];
 		FactorLink factorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
 		ratings = new ThreatStressRating[threatStressRatingRefs.size()];

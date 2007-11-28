@@ -110,7 +110,7 @@ public class ORefList
 	
 	public ORef get(int index)
 	{
-		return (ORef)data.get(index);
+		return data.get(index);
 	}
 		
 	private ORefList(List listToUse)
@@ -124,14 +124,14 @@ public class ORefList
 		for(int i = 0; i < data.size(); ++i)
 		{
 			if (get(i).getObjectType() == objectTypeToFilterOn)
-				newList.add((ORef)data.get(i));
+				newList.add(data.get(i));
 		}
 		return newList;
 	}
 	
 	public ORef[] toArray()
 	{
-		return (ORef[]) data.toArray(new ORef[0]);
+		return data.toArray(new ORef[0]);
 	}
 	
 	public String toString()
@@ -164,9 +164,9 @@ public class ORefList
 		ORefList overlappingRefs = new ORefList();
 		for (int i = 0; i < data.size(); ++i)
 		{
-			ORef thisRef = (ORef) data.get(i);
+			ORef thisRef = data.get(i);
 			if (otherList.contains(thisRef))
-				overlappingRefs.add((ORef) data.get(i));
+				overlappingRefs.add(data.get(i));
 		}
 		
 		return overlappingRefs;		
@@ -212,7 +212,7 @@ public class ORefList
 		IdList convertedList = new IdList(objectType);
 		for (int i = 0; i < data.size(); ++i)
 		{
-			ORef refToConvert = (ORef) data.get(i);
+			ORef refToConvert = data.get(i);
 			if (refToConvert.getObjectType() != objectType)
 				throw new RuntimeException("Found wrong type " + refToConvert.getObjectType() + " in ORefList thought to contain " + objectType);
 			
@@ -250,7 +250,18 @@ public class ORefList
 	{
 		return filterByType(new ORefList(list), objectType);
 	}
-
-	private Vector data;
+	
+	public ORef getRefForType(int objectType)
+	{
+		for (int i = 0; i < data.size(); ++i)
+		{
+			ORef oref = data.get(i);
+			if (objectType == oref.getObjectType())
+				return  oref;
+		}
+		return ORef.INVALID;
+	}
+	
+	private Vector<ORef> data;
 	private static final String TAG_REFERENCES = "References";
 }
