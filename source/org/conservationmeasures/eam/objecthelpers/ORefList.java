@@ -223,12 +223,12 @@ public class ORefList
 		return result;
 	}
 
-	public ORefList filterByType(int objectTypeToFilterOn)
+	public ORefList filterByType(int typeToFilterOn)
 	{
 		ORefList newList = new ORefList();
 		for(int i = 0; i < data.size(); ++i)
 		{
-			if (get(i).getObjectType() == objectTypeToFilterOn)
+			if (get(i).getObjectType() == typeToFilterOn)
 				newList.add(data.get(i));
 		}
 		return newList;
