@@ -35,7 +35,6 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		selectionController.addTable(threatTable);
 		selectionController.addTable(targetThreatLinkTable);
 		selectionController.addTable(threatSummaryColumnTable);
-		selectionController.addTable(targetSummaryRowTable);
 	}
 	
 	private void createTables() throws Exception
@@ -65,7 +64,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		mainPanel.add(targetThreatLinkTableScroller);
 		mainPanel.add(threatSummaryColumnTableScroller);
 		
-		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable);
+		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable); 
 		mainPanel.add(new JLabel());
 		mainPanel.add(targetSummaryRowTableScroller);
 		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
