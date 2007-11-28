@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParamet
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.Translation;
@@ -70,6 +72,11 @@ public class ListAllFields
 			DiagramFactorId fromId = new DiagramFactorId(BaseId.INVALID.asInt());
 			DiagramFactorId toId = new DiagramFactorId(BaseId.INVALID.asInt());
 			return new CreateDiagramFactorLinkParameter(factorLinkId, fromId, toId);
+		}
+		
+		if(type == ThreatStressRating.getObjectType())
+		{
+			return new CreateThreatStressRatingParameter(ORef.INVALID);
 		}
 		
 		return null;
