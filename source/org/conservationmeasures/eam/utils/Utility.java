@@ -13,6 +13,7 @@ import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.Utilities;
@@ -86,4 +87,14 @@ public class Utility
 		return fileName.substring(0, lastDotAt);
 	}
 	
+	public static int[] convertToIntArray(Vector<Integer> values)
+	{
+		int[] convertedValuesList = new int [values.size()];
+		for (int i = 0; i < convertedValuesList.length; ++i)
+		{
+			convertedValuesList[i] = values.get(i);
+		}
+		
+		return convertedValuesList;
+	}
 }
