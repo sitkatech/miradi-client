@@ -609,7 +609,7 @@ abstract public class BaseObject
 	
 	public ORefList findObjectsThatReferToUs(int objectType)
 	{
-		return ORefList.filterByType(findObjectsThatReferToUs(), objectType);
+		return findObjectsThatReferToUs().extractByType(objectType);
 	}
 	
 	
