@@ -1,0 +1,11 @@
+This Miradi source code is *NOT* yet for public release. 
+It is covered under the Miradi license as shown in the source files.
+
+Miradi development is done using Eclipse as the editing environment, 
+and Sun's Java 5 or 6 compiler. You will also need the third-party 
+libraries that are available from the normal Miradi download site.
+
+If you have any questions about this source code, please send them to:
+   info@miradi.org
+   
+   
