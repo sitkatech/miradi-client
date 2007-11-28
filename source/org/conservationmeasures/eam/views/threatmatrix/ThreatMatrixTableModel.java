@@ -183,7 +183,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	
 	public boolean isActiveThreatIdTargetIdPair(FactorId threatId, FactorId targetId)
 	{
-		return getProject().isLinked(threatId, targetId);
+		return getProject().areLinked(threatId, targetId);
 	}
 
 	public FactorId getThreatId(int threatIndex)

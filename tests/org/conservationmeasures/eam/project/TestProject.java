@@ -627,11 +627,11 @@ public class TestProject extends EAMTestCase
 		FactorLink cmLinkage = linkagePool.find(linkageId);
 		assertEquals("wrong from?", refA, cmLinkage.getFromFactorRef());
 		assertEquals("wrong to?", refB, cmLinkage.getToFactorRef());
-		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
+		assertTrue("not linked?", project.areLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
 		project.deleteObject(cmLinkage);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
-		assertFalse("still linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
+		assertFalse("still linked?", project.areLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 	}
 
 	public void testFindAllNodesRelatedToThisObjective() throws Exception

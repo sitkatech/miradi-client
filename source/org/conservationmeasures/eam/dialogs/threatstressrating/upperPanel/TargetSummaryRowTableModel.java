@@ -59,7 +59,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 		{
 			Factor directThreat = directThreatRows[i];
 			Target target = targets[column];
-			if (!getProject().isLinked(directThreat.getFactorId(), target.getFactorId()))
+			if (!getProject().areLinked(directThreat.getFactorId(), target.getFactorId()))
 				continue;
 			
 			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
