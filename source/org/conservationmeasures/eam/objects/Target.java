@@ -292,6 +292,16 @@ public class Target extends Factor
 		return ObjectType.TARGET;
 	}
 	
+	public static Target findTarget(ObjectManager objectManager, ORef targetRef)
+	{
+		return (Target) objectManager.findObject(targetRef);
+	}
+	
+	public static Target findTarget(Project project, ORef targetRef)
+	{
+		return findTarget(project.getObjectManager(), targetRef);
+	}
+	
 	void clear()
 	{
 		super.clear();
