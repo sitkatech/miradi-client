@@ -24,6 +24,11 @@ public class ColumnWidthSyncer implements TableColumnModelListener
 	public void columnMarginChanged(ChangeEvent event)
 	{
 		TableColumnModel model = (TableColumnModel) event.getSource();
+		syncPreferredColumnWidths(model);
+	}
+
+	public void syncPreferredColumnWidths(TableColumnModel model)
+	{
 		int columnCount = model.getColumnCount();
 		for (int i = 0; i < columnCount; ++i)
 		{

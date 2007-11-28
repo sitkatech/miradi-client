@@ -87,6 +87,8 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	{
 		ColumnWidthSyncer columnWidthSyncer = new ColumnWidthSyncer(targetSummaryRowTable);
 		targetThreatLinkTable.getColumnModel().addColumnModelListener(columnWidthSyncer);
+		
+		columnWidthSyncer.syncPreferredColumnWidths(targetThreatLinkTable.getColumnModel());
 	}
 	
 	public ObjectPicker getObjectPicker()
