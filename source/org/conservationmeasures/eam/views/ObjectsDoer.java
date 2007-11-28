@@ -61,7 +61,7 @@ abstract public class ObjectsDoer extends ViewDoer
 			return null;
 		
 		ORefList selectionHierarchy = picker.getSelectedHierarchies()[0];
-		ORefList extractedList = selectionHierarchy.extractByType(type);
+		ORefList extractedList = selectionHierarchy.filterByType(type);
 		if (extractedList.size() == 0)
 			return null;
 		

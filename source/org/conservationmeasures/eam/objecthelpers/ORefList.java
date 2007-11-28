@@ -223,7 +223,7 @@ public class ORefList
 		return result;
 	}
 
-	public ORefList extractByType(int objectTypeToFilterOn)
+	public ORefList filterByType(int objectTypeToFilterOn)
 	{
 		ORefList newList = new ORefList();
 		for(int i = 0; i < data.size(); ++i)
