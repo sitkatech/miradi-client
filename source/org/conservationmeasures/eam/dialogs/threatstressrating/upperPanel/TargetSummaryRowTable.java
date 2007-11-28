@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import java.awt.Dimension;
 
+import javax.swing.JTable;
+
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
 public class TargetSummaryRowTable extends TableWithColumnWidthSaver
@@ -15,7 +17,8 @@ public class TargetSummaryRowTable extends TableWithColumnWidthSaver
 	{
 		super(model);
 		
-		getTableHeader().setPreferredSize(new Dimension(1, 0)); 
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		getTableHeader().setPreferredSize(new Dimension(0, 0)); 
 	}
 	
 	public String getUniqueTableIdentifier()
