@@ -245,6 +245,11 @@ public class ORefList
 		}
 		return result;
 	}
+	
+	public static ORefList filterByType(ORef[] list, int objectType)
+	{
+		return filterByType(new ORefList(list), objectType);
+	}
 
 	private Vector data;
 	private static final String TAG_REFERENCES = "References";

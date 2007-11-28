@@ -34,7 +34,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	private void rebuild(ORef[] hierarchyToSelectedRef)
 	{
 		ratings = new ThreatStressRating[0];
-		if (hierarchyToSelectedRef.length != 3)
+		ORefList filteredList = ORefList.filterByType(hierarchyToSelectedRef, FactorLink.getObjectType());
+		if (filteredList.size() == 0)
 			return;
 
 		ORef factorLinkRef = hierarchyToSelectedRef[2];
