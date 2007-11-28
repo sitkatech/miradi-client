@@ -17,7 +17,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	public TargetThreatLinkTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		targets = getProject().getTargetPool().getTargets();
 	}
 	
 	public int getColumnCount()
@@ -73,6 +72,4 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		return targets[column].getLabel();
 	}
-	
-	private Target[] targets;
 }
