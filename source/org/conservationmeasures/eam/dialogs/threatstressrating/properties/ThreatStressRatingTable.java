@@ -14,8 +14,8 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	{
 		super(threatStressRatingTableModel);
 		rebuildColumnEditorsAndRenderers();
-		//TODO 
-		setRowHeight(20);
+		//TODO shouldn't set row height to constant value
+		setRowHeight(25);
 		setForcedPreferredScrollableViewportHeight(100);
 		setForcedPreferredScrollableViewportWidth(400);
 	}
