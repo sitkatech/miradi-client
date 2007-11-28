@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCThreatFormula;
+import org.conservationmeasures.eam.utils.Utility;
 
 public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 {
@@ -70,14 +71,8 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 			calculatedThreatRatingBundleValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
-		int[] convertedValuesList = new int [calculatedThreatRatingBundleValues.size()];
-		for (int i = 0; i < convertedValuesList.length; ++i)
-		{
-			convertedValuesList[i] = calculatedThreatRatingBundleValues.get(i);
-		}
-		
-		return tNCThreatFormula.getSummaryOfBundles(convertedValuesList);
+		return tNCThreatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedThreatRatingBundleValues));
 	}
-	
+
 	private TNCThreatFormula tNCThreatFormula;
 }
