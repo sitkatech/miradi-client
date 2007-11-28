@@ -44,10 +44,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 		try
 		{
 			int calculatedValue = calculateTargetSummaryRatingValue(column);
-			if (calculatedValue == 0)
-				return "";
-			
-			return Integer.toString(calculatedValue);
+			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
 		{
@@ -55,7 +52,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 			return "ERROR";
 		}
 	}
-	
+
 	private int calculateTargetSummaryRatingValue(int column) throws Exception
 	{
 		Vector<Integer> calculatedTargetSummaryRatingValues = new Vector();
