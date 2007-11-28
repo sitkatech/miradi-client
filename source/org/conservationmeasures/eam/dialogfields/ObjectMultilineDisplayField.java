@@ -17,9 +17,9 @@ public class ObjectMultilineDisplayField extends ObjectTextInputField
 		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 50);
 	}
 	
-	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int column)
+	public ObjectMultilineDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(1, column));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(1, columnCount));
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 		setEditable(false);
