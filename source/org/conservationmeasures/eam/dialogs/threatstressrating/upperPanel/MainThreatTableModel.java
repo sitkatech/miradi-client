@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
@@ -17,6 +18,7 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 	{
 		project = projectToUse;
 		directThreatRows =  getProject().getCausePool().getDirectThreats();
+		targets = getProject().getTargetPool().getTargets();
 	}
 	
 	public Factor getDirectThreat(int row)
@@ -36,4 +38,5 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 
 	private Project project;
 	protected Factor[] directThreatRows;
+	protected Target[] targets;
 }
