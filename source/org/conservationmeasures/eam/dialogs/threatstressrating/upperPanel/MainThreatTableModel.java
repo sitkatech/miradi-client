@@ -42,6 +42,14 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		return getProject().getFactorLinkPool().getLinkedRef(fromRef, toRef);
 	}
 	
+	protected String convertIntToString(int calculatedValue)
+	{
+		if (calculatedValue == 0)
+			return "";
+		
+		return Integer.toString(calculatedValue);
+	}
+	
 	private Project project;
 	protected Factor[] directThreatRows;
 	protected Target[] targets;
