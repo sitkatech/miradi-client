@@ -19,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
@@ -82,11 +83,11 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
-		PanelComboBox comboBox = new PanelComboBox(choices);
+		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		TableColumn column = getColumnModel().getColumn(modelColumn);
 		column.setCellEditor(new DefaultCellEditor(comboBox));
-		column.setCellRenderer(new ComboBoxRenderer(choices));
+		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
@@ -204,6 +205,31 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	protected class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
 	{
 	    public ComboBoxRenderer(Object[] items) 
+	    {
+	        super(items);
+	    }
+
+	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
+	    {
+	        if (isSelected) 
+	        	setColors(table.getSelectionBackground(), table.getSelectionForeground());
+	        else 
+	        	setColors(table.getBackground(), table.getForeground());
+
+	        setSelectedItem(value);
+	        return this;
+	    }
+	    
+	    private void setColors(Color background, Color foreground)
+	    {
+	        setForeground(foreground);
+	        setBackground(background);
+	    }
+	}
+	
+	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer 
+	{
+	    public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
 	    {
 	        super(items);
 	    }
