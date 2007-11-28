@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
 
 public class FactorComparator implements  Comparator
 {
@@ -65,6 +65,6 @@ public class FactorComparator implements  Comparator
 	int sortColumn = 0;
 	Factor[] targetList;
 	ThreatMatrixTableModel model;
-	ThreatRatingFramework framework;
+	SimpleModeThreatRatingFramework framework;
 
 }

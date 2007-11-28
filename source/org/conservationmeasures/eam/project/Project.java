@@ -107,7 +107,7 @@ public class Project
 		
 		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
-		threatRatingFramework = new ThreatRatingFramework(this);
+		threatRatingFramework = new SimpleModeThreatRatingFramework(this);
 		projectCalendar = null;
 		
 		currentViewName = SummaryView.getViewName();
@@ -298,7 +298,7 @@ public class Project
 		return getViewPool().find(createdId);
 	}
 	
-	public ThreatRatingFramework getThreatRatingFramework()
+	public SimpleModeThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatRatingFramework;
 	}
@@ -1082,7 +1082,7 @@ public class Project
 	boolean isExecuting;
 	boolean firingCommandExecutedEvents;
 
-	ThreatRatingFramework threatRatingFramework;
+	SimpleModeThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;
 	DiagramClipboard diagramClipboard;

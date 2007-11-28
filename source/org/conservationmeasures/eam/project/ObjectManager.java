@@ -423,7 +423,7 @@ public class ObjectManager
 		return project;
 	}
 
-	ThreatRatingFramework getThreatRatingFramework()
+	SimpleModeThreatRatingFramework getThreatRatingFramework()
 	{
 		return getProject().getThreatRatingFramework();
 	}

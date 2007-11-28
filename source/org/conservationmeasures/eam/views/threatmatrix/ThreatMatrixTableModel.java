@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
 
 public class ThreatMatrixTableModel extends AbstractTableModel
 {
@@ -142,7 +142,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	//***********************************************************************************
 	
 	
-	public ThreatRatingFramework getFramework() {
+	public SimpleModeThreatRatingFramework getFramework() {
 		return framework;
 	}
 	
@@ -304,7 +304,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	private Factor targetColumns[] =  null;
 	
 	private Project project;
-	private ThreatRatingFramework framework;
+	private SimpleModeThreatRatingFramework framework;
 	private ValueOption defaultValueOption;
 	private final static int SUMMARY_ROW_COLUMN_INCR = 1;
 

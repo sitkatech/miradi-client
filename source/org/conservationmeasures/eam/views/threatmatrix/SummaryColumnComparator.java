@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
 
 public class SummaryColumnComparator implements  Comparator
 {
@@ -51,6 +51,6 @@ public class SummaryColumnComparator implements  Comparator
 	}
 
 	ThreatMatrixTableModel model;
-	ThreatRatingFramework framework;
+	SimpleModeThreatRatingFramework framework;
 
 }
