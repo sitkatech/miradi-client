@@ -34,13 +34,13 @@ public class TargetThreatLinkTable extends TableWithColumnWidthSaver
 			return new ORefList[0];
 		
 		ORef targetRef = getTargetThreatLinkTableModel().getTarget(modelColumn).getRef();
-		hierarchyRefs.add(targetRef);
-		hierarchyRefs.add(directThreat.getRef());
 		if (getTargetThreatLinkTableModel().isLinked(directThreat.getRef(), targetRef))
 		{
 			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat.getRef(), targetRef);
 			hierarchyRefs.add(linkRef);
 		}
+		hierarchyRefs.add(targetRef);
+		hierarchyRefs.add(directThreat.getRef());
 		
 		return new ORefList[]{hierarchyRefs};
 	}
