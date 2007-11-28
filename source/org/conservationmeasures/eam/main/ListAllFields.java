@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.main;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -22,15 +25,26 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.Translation;
+import org.martus.util.DirectoryUtils;
 
 public class ListAllFields
 {
 	public static void main(String[] args) throws Exception
 	{
+		File tempDirectory = File.createTempFile("$$$Miradi-ListAllFields", null);
+		tempDirectory.delete();
+		tempDirectory.mkdirs();
+		Project project = new Project();
+		project.createOrOpen(tempDirectory);
+		listFieldsToConsole(project);
+		project.close();
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+	}
+
+	private static void listFieldsToConsole(Project project) throws IOException, Exception
+	{
 		Translation.loadFieldLabels();
-		Project project = new ProjectForTesting("ListAllFields");
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
 			if(project.getPool(type) == null)
