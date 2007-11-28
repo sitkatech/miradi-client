@@ -118,17 +118,6 @@ public class ORefList
 		data = new Vector(listToUse);
 	}
 		
-	public ORefList extractByType(int objectTypeToFilterOn)
-	{
-		ORefList newList = new ORefList();
-		for(int i = 0; i < data.size(); ++i)
-		{
-			if (get(i).getObjectType() == objectTypeToFilterOn)
-				newList.add(data.get(i));
-		}
-		return newList;
-	}
-	
 	public ORef[] toArray()
 	{
 		return data.toArray(new ORef[0]);
@@ -234,21 +223,15 @@ public class ORefList
 		return result;
 	}
 
-	public static ORefList filterByType(ORefList list, int objectType)
+	public ORefList extractByType(int objectTypeToFilterOn)
 	{
-		ORefList result = new ORefList();
-		for(int i = 0; i < list.size(); ++i)
+		ORefList newList = new ORefList();
+		for(int i = 0; i < data.size(); ++i)
 		{
-			ORef ref = list.get(i);
-			if(ref.getObjectType() == objectType)
-				result.add(ref);
+			if (get(i).getObjectType() == objectTypeToFilterOn)
+				newList.add(data.get(i));
 		}
-		return result;
-	}
-	
-	public static ORefList filterByType(ORef[] list, int objectType)
-	{
-		return filterByType(new ORefList(list), objectType);
+		return newList;
 	}
 	
 	public ORef getRefForType(int objectType)
