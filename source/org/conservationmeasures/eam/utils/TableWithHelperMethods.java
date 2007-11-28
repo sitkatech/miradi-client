@@ -27,6 +27,29 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		super(model);
 	}
 
+	public void setForcedPreferredScrollableViewportHeight(int viewportheight)
+	{
+		forcedPreferredScrollableViewportHeight = viewportheight;
+	}
+	
+	public void setForcedPreferredScrollableViewportWidth(int viewportWidth)
+	{
+		forcedPreferredScrollableViewportWidth = viewportWidth;
+	}
+	
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		int preferredHeight = super.getPreferredScrollableViewportSize().height;
+		if (forcedPreferredScrollableViewportHeight != 0)
+			preferredHeight = forcedPreferredScrollableViewportHeight;
+		
+		int preferredWidth = super.getPreferredScrollableViewportSize().width;
+		if (forcedPreferredScrollableViewportWidth != 0)
+			preferredWidth = forcedPreferredScrollableViewportWidth;
+		
+		return new Dimension(preferredWidth, preferredHeight);
+	}
+	
 	public void setColumnWidthToHeaderWidth(int column)
 	{
 		setColumnWidth(column, getColumnHeaderWidth(this, column));
@@ -110,4 +133,6 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 
 	private	int maxGridWidthPixels;
 	private	boolean useMaxWidth;
+	private int forcedPreferredScrollableViewportWidth;
+	private int forcedPreferredScrollableViewportHeight;
 }
