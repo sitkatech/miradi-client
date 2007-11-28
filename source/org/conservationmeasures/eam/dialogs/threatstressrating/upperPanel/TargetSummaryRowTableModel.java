@@ -36,14 +36,14 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 
 	public Object getValueAt(int row, int column)
 	{
-		return getCalculatedThreatRatingBundleValue(column);
+		return getCalculatedTargetSummaryRatingValue(column);
 	}
 	
-	private String getCalculatedThreatRatingBundleValue(int column)
+	private String getCalculatedTargetSummaryRatingValue(int column)
 	{
 		try
 		{
-			return Integer.toString(calculateThreatRatingBundleValue(column));
+			return Integer.toString(calculateTargetSummaryRatingValue(column));
 		}
 		catch (Exception e)
 		{
@@ -52,9 +52,9 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 		}
 	}
 	
-	private int calculateThreatRatingBundleValue(int column) throws Exception
+	private int calculateTargetSummaryRatingValue(int column) throws Exception
 	{
-		Vector<Integer> calculatedThreatRatingBundleValues = new Vector();
+		Vector<Integer> calculatedTargetSummaryRatingValues = new Vector();
 		for (int i = 0; i < directThreatRows.length; ++i)
 		{
 			Factor directThreat = directThreatRows[i];
@@ -63,10 +63,10 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 				continue;
 			
 			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
-			calculatedThreatRatingBundleValues.add(factorLink.calculateThreatRatingBundleValue());
+			calculatedTargetSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
-		return threatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedThreatRatingBundleValues));
+		return threatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedTargetSummaryRatingValues));
 	}
 	
 	private TNCThreatFormula threatFormula;
