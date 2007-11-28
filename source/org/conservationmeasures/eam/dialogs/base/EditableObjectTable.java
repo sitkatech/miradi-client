@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -61,7 +62,13 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	protected int getColumnWidth(int column)
 	{
 		return getColumnHeaderWidth(column);
-	}	
+	}
+	
+	protected String getColumnTag(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return model.getColumnTag(modelColumn);
+	}
 		
 	protected void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
 	{
@@ -174,6 +181,18 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		}
 	}
 		
+	protected void createComboChoiceItemColumn(int column)
+	{
+		StatusQuestion question = new StatusQuestion(getColumnTag(column));
+		createComboColumn(question.getChoices(), column);
+	}
+
+	protected void createReadonlyChoiceItemColumn(int column)
+	{
+		StatusQuestion question = new StatusQuestion(getColumnTag(column));
+		createReadonlyChoiceItemColumn(question.getChoices(), column);
+	}
+
 	public class SorterByToString implements Comparator<BaseObject>
 	{
 		public int compare(BaseObject o1, BaseObject o2)
