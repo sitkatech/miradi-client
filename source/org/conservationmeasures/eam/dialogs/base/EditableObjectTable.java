@@ -181,13 +181,13 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		}
 	}
 		
-	protected void createComboChoiceItemColumn(int column)
+	protected void createComboStatusRatingColumn(int column)
 	{
 		StatusQuestion question = new StatusQuestion(getColumnTag(column));
 		createComboColumn(question.getChoices(), column);
 	}
 
-	protected void createReadonlyChoiceItemColumn(int column)
+	protected void createReadonlyStatusRatingColumn(int column)
 	{
 		StatusQuestion question = new StatusQuestion(getColumnTag(column));
 		createReadonlyChoiceItemColumn(question.getChoices(), column);
