@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTable;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
+import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
@@ -31,11 +32,22 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	{
 		for (int i = 0; i < getThreatStressRatingTableModel().getColumnCount(); ++i)
 		{
+			createStressRatingColumn(i);
 			createContributionColumn(i);
 			creatIrreversibilityColumn(i);
+			createThreatRatingColumn(i);
 		}
 	}
 
+	private void createStressRatingColumn(int column)
+	{
+		if (!getThreatStressRatingTableModel().isStressRatingColumn(column))
+			return;
+		
+		StatusQuestion stressRatingQuestion = new StatusQuestion(Stress.PSEUDO_STRESS_RATING);
+		createReadonlyChoiceItemColumn(stressRatingQuestion.getChoices(), column);
+	}
+	
 	private void createContributionColumn(int column)
 	{
 		if (!getThreatStressRatingTableModel().isContributionColumn(column))
@@ -52,6 +64,15 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		
 		StatusQuestion irreversibilityQuestion = new StatusQuestion(ThreatStressRating.TAG_IRREVERSIBILITY);
 		createComboColumn(irreversibilityQuestion.getChoices(), column);
+	}
+	
+	private void createThreatRatingColumn(int column)
+	{
+		if (!getThreatStressRatingTableModel().isThreatRatingColumn(column))
+			return;
+		
+		StatusQuestion question = new StatusQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+		createReadonlyChoiceItemColumn(question.getChoices(), column);
 	}
 	
 	public String getUniqueTableIdentifier()

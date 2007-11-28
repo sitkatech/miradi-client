@@ -20,6 +20,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -74,9 +76,17 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		PanelComboBox comboBox = new PanelComboBox(choices);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		TableColumn column = getColumnModel().getColumn(modelColumn);
 		column.setCellEditor(new DefaultCellEditor(comboBox));
 		column.setCellRenderer(new ComboBoxRenderer(choices));
+	}
+	
+	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		TableColumn column = getColumnModel().getColumn(modelColumn);
+		column.setCellRenderer(new ChoiceItemTableCellRenderer(model, new DefaultFontProvider()));
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)

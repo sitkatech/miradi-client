@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
@@ -112,7 +113,10 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 			return getStress(row).toString();
 
 		if (isStressRatingColumn(column))
-			return getStress(row).getPseudoData(getColumnTag(column));
+		{
+			String code = getStress(row).getPseudoData(getColumnTag(column));
+			return getStatusQuestionChoiceItemFromCode(column, code);
+		}
 		
 		if (isContributionColumn(column))
 			return getThreatStressRating(row).getContribution();
@@ -121,9 +125,17 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 			return getThreatStressRating(row).getIrreversibility();
 
 		if (isThreatRatingColumn(column))
-			return getThreatStressRating(row).getPseudoData(getColumnTag(column));
+		{
+			String code = getThreatStressRating(row).getPseudoData(getColumnTag(column));
+			return getStatusQuestionChoiceItemFromCode(column, code);
+		}
 		
 		return null;
+	}
+
+	private Object getStatusQuestionChoiceItemFromCode(int column, String code)
+	{
+		return new StatusQuestion(getColumnTag(column)).findChoiceByCode(code);
 	}
 
 	private Stress getStress(int row)
