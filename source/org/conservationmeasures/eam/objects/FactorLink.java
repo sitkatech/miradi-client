@@ -194,7 +194,8 @@ public class FactorLink extends BaseObject
 	
 	private String calculateThreatRatingBundleValue()
 	{
-		return "";
+		//FIXME finish calculation
+		return "TEMPVALUE";
 	}
 
 	public ORef getFactorRef(int direction)
@@ -229,7 +230,7 @@ public class FactorLink extends BaseObject
 		bidirectionalLink = new BooleanData();
 		threatStressRatingRefs = new ORefListData();
 		comment = new StringData();
-		PseudoThreatRatingBundleValue = new StringData();
+		pseudoThreatRatingBundleValue = new PseudoStringData(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
@@ -237,7 +238,7 @@ public class FactorLink extends BaseObject
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 		addField(TAG_COMMENT, comment);
-		addField(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, PseudoThreatRatingBundleValue);
+		addField(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, pseudoThreatRatingBundleValue);
 	}
 	
 	
@@ -263,5 +264,5 @@ public class FactorLink extends BaseObject
 	private BooleanData bidirectionalLink;
 	private ORefListData threatStressRatingRefs;
 	private StringData comment;
-	private StringData PseudoThreatRatingBundleValue;
+	private PseudoStringData pseudoThreatRatingBundleValue;
 }
