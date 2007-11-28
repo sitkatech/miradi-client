@@ -213,7 +213,7 @@ public class FactorLink extends BaseObject
 	
 	public int calculateThreatRatingBundleValue() throws Exception
 	{
-		Target target = findTarget(getObjectManager(), getDownstreamTargetRef());
+		Target target = Target.findTarget(getObjectManager(), getDownstreamTargetRef());
 		ORefList stresses = target.getStressRefs();
 		int totalStressRatings = 0;
 		for (int i = 0; i < stresses.size(); ++i)
@@ -248,16 +248,16 @@ public class FactorLink extends BaseObject
 		return threatStressRatingRefs.getORefList();
 	}
 	
-	public static Target findTarget(ObjectManager objectManager, ORef targetRef)
+	public static FactorLink findFactorLink(ObjectManager objectManager, ORef factorLinkRef)
 	{
-		return (Target) objectManager.findObject(targetRef);
+		return (FactorLink) objectManager.findObject(factorLinkRef);
 	}
 	
-	public static Target findTarget(Project project, ORef targetRef)
+	public static FactorLink findFactorLink(Project project, ORef factorLinkRef)
 	{
-		return findTarget(project.getObjectManager(), targetRef);
+		return findFactorLink(project.getObjectManager(), factorLinkRef);
 	}
-
+	
 	void clear()
 	{
 		super.clear();
