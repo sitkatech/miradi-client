@@ -64,7 +64,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.Utility;
@@ -89,7 +89,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			node = (FactorCell)view.getCell();
 			DiagramModel model = (DiagramModel)graphToUse.getModel();
-			ThreatRatingFramework framework = model.getThreatRatingFramework();
+			SimpleModeThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
 			if(node.isDirectThreat())
 				priority = framework.getThreatThreatRatingValue(node.getWrappedId());

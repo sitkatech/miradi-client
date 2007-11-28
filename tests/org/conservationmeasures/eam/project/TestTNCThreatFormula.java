@@ -269,6 +269,6 @@ public class TestTNCThreatFormula extends EAMTestCase
 	}
 	
 	ProjectForTesting project;
-	ThreatRatingFramework framework;
+	SimpleModeThreatRatingFramework framework;
 	TNCThreatFormula formula;
 }
