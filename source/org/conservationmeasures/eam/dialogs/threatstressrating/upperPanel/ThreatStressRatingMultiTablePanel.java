@@ -28,6 +28,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		addTables();
 		addTablesToSelectionController();
 		targetThreatLinkTable.getSelectionModel().addListSelectionListener(this);
+		synchTableColumns();
 	}
 	
 	private void addTablesToSelectionController()
@@ -44,7 +45,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
-		
+
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(threatSummaryColumnTableModel);
 		
@@ -80,6 +81,12 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		mainPanel.add(targetSummaryRowTableScroller);
 		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
 		add(mainPanelScroller);		
+	}
+	
+	private void synchTableColumns()
+	{
+		ColumnWidthSyncer columnWidthSyncer = new ColumnWidthSyncer(targetSummaryRowTable);
+		targetThreatLinkTable.getColumnModel().addColumnModelListener(columnWidthSyncer);
 	}
 	
 	public ObjectPicker getObjectPicker()
