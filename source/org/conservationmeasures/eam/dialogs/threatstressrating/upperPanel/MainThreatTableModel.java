@@ -48,7 +48,7 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 	protected String convertIntToString(int calculatedValue)
 	{
 		if (calculatedValue == 0)
-			return "";
+			return null;
 		
 		return Integer.toString(calculatedValue);
 	}
