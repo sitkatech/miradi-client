@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -20,6 +21,8 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		setCellSelectionEnabled(true);
 	}
 	
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
