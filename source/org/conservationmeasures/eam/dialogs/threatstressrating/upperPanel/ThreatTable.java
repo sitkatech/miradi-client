@@ -13,7 +13,7 @@ public class ThreatTable extends TableWithColumnWidthSaver
 	public ThreatTable(MainThreatTableModel tableModel)
 	{
 		super(tableModel);
-		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportWidth(100);
 		setForcedPreferredScrollableViewportHeight(TargetThreatLinkTable.PREFERRED_VIEWPORT_HEIGHT);
 	}
 	
