@@ -51,4 +51,45 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		{
 		}
 	}
+	
+	public void testComputeContributionByIrreversibility()
+	{
+		int[] contribution    = {4, 3, 2, 1, 0};
+		int[] irreversibility = {4, 3, 2, 1, 0};
+		
+		int[][] contributionIrreversibility = 
+		{
+			/*Ir        Contribution  */	
+			/*re   	 	 4  3  2  1  0*/
+			/*ve   4 */	{4, 3, 3, 1, 0},	
+			/*rs   3 */	{4, 3, 2, 1, 0},
+			/*ib   2 */	{3, 2, 2, 1, 0},
+			/*il   1 */	{3, 2, 1, 1, 0},
+			/*ity  0 */ {0, 0, 0, 0, 0},
+		};
+		
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		for (int contributionIndex = 0; contributionIndex < contribution.length; ++contributionIndex)
+		{
+			for (int irreversibilityIndex = 0; irreversibilityIndex < irreversibility.length; ++irreversibilityIndex)
+			{
+				int computedValue = formula.computeContributionByIrreversibility(contribution[contributionIndex], irreversibility[irreversibilityIndex]);
+				int expectedValue = contributionIrreversibility[contributionIndex][irreversibilityIndex]; 
+				assertEquals(expectedValue, computedValue);
+			}
+		}
+		
+		try
+		{
+			formula.computeContributionByIrreversibility(-1, 0);
+			formula.computeContributionByIrreversibility(5, 0);
+			
+			formula.computeContributionByIrreversibility(0, -1);
+			formula.computeContributionByIrreversibility(0, 5);
+			fail();
+		}
+		catch(Exception e)
+		{
+		}
+	}
 }
