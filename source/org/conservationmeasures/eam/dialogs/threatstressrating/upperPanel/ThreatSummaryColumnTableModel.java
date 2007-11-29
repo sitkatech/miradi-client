@@ -27,7 +27,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 
 	public String getColumnName(int column)
 	{
-		return "Summary Threat Rating";
+		return EAM.text("Summary Threat Rating");
 	}
 	
 	public String getColumnTag(int column)
