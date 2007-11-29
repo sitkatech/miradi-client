@@ -12,11 +12,14 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 public class ThreatMatrixTableModel extends AbstractTableModel
 {
@@ -164,7 +167,9 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public ThreatRatingBundle getBundle(FactorId threatId,
 			FactorId targetId) throws Exception
 	{
-		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
+		ORef threatRef = new ORef(Cause.getObjectType(), threatId);
+		ORef targetRef = new ORef(Target.getObjectType(), targetId);
+		if(!getProject().areLinked(threatRef, targetRef))
 			return null;
 
 		return getFramework().getBundle(threatId, targetId);
@@ -176,16 +181,11 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
-		FactorId threatId = (FactorId)getDirectThreats()[threatIndex].getId();
-		FactorId targetId = (FactorId)getTargets()[targetIndex].getId();
-		return isActiveThreatIdTargetIdPair(threatId, targetId);
+		Factor threat = getDirectThreats()[threatIndex];
+		Factor target = getTargets()[targetIndex];
+		return getProject().areLinked(threat.getRef(), target.getRef());
 	}
 	
-	public boolean isActiveThreatIdTargetIdPair(FactorId threatId, FactorId targetId)
-	{
-		return getProject().areLinked(threatId, targetId);
-	}
-
 	public FactorId getThreatId(int threatIndex)
 	{
 		Factor cmNode = getThreatNode(threatIndex);
