@@ -13,7 +13,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
-public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowBaseObjectProvider 
+public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider 
 {
 	public TargetViabilityTreeTable(Project projectToUse, ViabilityTreeModel targetViabilityModelToUse)
 	{

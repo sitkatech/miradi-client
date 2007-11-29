@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRendere
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedNumericTableCellRenderer;
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowBaseObjectProvider
+public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider
 {
 	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{

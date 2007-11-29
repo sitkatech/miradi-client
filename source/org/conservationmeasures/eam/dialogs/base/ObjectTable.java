@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -34,7 +34,7 @@ import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowBaseObjectProvider
+abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowColumnBaseObjectProvider
 {
 	public ObjectTable(ObjectTableModel modelToUse)
 	{

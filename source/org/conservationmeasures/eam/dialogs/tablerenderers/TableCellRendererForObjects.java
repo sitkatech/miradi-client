@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Task;
 
 public class TableCellRendererForObjects extends BasicTableCellRenderer
 {
-	public TableCellRendererForObjects(RowBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public TableCellRendererForObjects(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		objectProvider = providerToUse;
 		fontProvider = fontProviderToUse;
@@ -59,11 +59,11 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 		return object;
 	}
 	
-	protected RowBaseObjectProvider getObjectProvider()
+	protected RowColumnBaseObjectProvider getObjectProvider()
 	{
 		return objectProvider;
 	}
 
-	private RowBaseObjectProvider objectProvider;
+	private RowColumnBaseObjectProvider objectProvider;
 	private FontForObjectTypeProvider fontProvider;
 }

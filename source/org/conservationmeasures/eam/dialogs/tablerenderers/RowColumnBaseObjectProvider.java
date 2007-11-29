@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.tablerenderers;
 
 import org.conservationmeasures.eam.objects.BaseObject;
 
-public interface RowBaseObjectProvider
+public interface RowColumnBaseObjectProvider
 {
 	public BaseObject getBaseObjectForRow(int row);
 }

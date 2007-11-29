@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class NumericTableCellRenderer extends TableCellRendererForObjects
 {
-	public NumericTableCellRenderer(RowBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public NumericTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
