@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.TNCThreatFormula;
+import org.conservationmeasures.eam.project.SimpleThreatFormula;
 import org.conservationmeasures.eam.utils.Utility;
 
 public class ThreatSummaryColumnTableModel extends MainThreatTableModel
@@ -22,7 +22,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	{
 		super(projectToUse);
 		
-		threatFormula = new TNCThreatFormula();
+		threatFormula = new SimpleThreatFormula();
 	}
 
 	public String getColumnName(int column)
@@ -82,5 +82,5 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		return getDirectThreat(row);
 	}
 
-	private TNCThreatFormula threatFormula;
+	private SimpleThreatFormula threatFormula;
 }

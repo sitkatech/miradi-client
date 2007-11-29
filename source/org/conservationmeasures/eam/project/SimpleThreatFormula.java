@@ -9,13 +9,13 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 
-public class TNCThreatFormula
+public class SimpleThreatFormula
 {
-	public TNCThreatFormula()
+	public SimpleThreatFormula()
 	{
 	}
 	
-	public TNCThreatFormula(SimpleModeThreatRatingFramework frameworkToUse)
+	public SimpleThreatFormula(SimpleModeThreatRatingFramework frameworkToUse)
 	{
 		framework = frameworkToUse;
 	}
