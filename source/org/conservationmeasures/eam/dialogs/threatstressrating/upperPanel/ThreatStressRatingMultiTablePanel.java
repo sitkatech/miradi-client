@@ -52,6 +52,10 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(targetSummaryRowTableModel);
 		targetSummaryRowTable.resizeTable(1);
+		
+		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
+		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(overallProjectSummaryCellTableModel);
+		overallProjectSummaryCellTable.resizeTable(1);
 	}
 
 	private void addTables()
@@ -75,10 +79,13 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		mainPanel.add(targetThreatLinkTableScroller);
 		mainPanel.add(threatSummaryColumnTableScroller);
 		
+		mainPanel.add(new JLabel());
 		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable);
 		addToHorizontalController(targetSummaryRowTableScroller);
-		mainPanel.add(new JLabel());
 		mainPanel.add(targetSummaryRowTableScroller);
+		
+		JScrollPane overallProjectSummaryCellTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(overallProjectSummaryCellTable);
+		mainPanel.add(overallProjectSummaryCellTableScroller);
 		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
 		add(mainPanelScroller);		
 	}
@@ -121,4 +128,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private TargetSummaryRowTableModel targetSummaryRowTableModel;
 	private TargetSummaryRowTable targetSummaryRowTable;
+	
+	private OverallProjectSummaryCellTable overallProjectSummaryCellTable;
+	private OverallProjectSummaryCellTableModel overallProjectSummaryCellTableModel;
 }
