@@ -97,9 +97,10 @@ import org.conservationmeasures.eam.project.TestProjectRepairer;
 import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
+import org.conservationmeasures.eam.project.TestSimpleThreatFormula;
 import org.conservationmeasures.eam.project.TestSlidePool;
 import org.conservationmeasures.eam.project.TestStrategyPool;
-import org.conservationmeasures.eam.project.TestSimpleThreatFormula;
+import org.conservationmeasures.eam.project.TestStressBasedThreatFormula;
 import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
 import org.conservationmeasures.eam.project.TestTargetPool;
 import org.conservationmeasures.eam.project.TestTextBoxPool;
@@ -183,6 +184,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
 		suite.addTest(new TestSuite(TestSlidePool.class));
 		suite.addTest(new TestSuite(TestFactorDeleteHelper.class));
+		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));
