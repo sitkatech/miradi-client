@@ -65,7 +65,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return otherRenderer;
 	}
 	
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
 	}

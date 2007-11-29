@@ -38,7 +38,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return (TreeTableNode)adapter.nodeForRow(row);
 	}
 		
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}
