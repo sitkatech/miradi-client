@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -38,12 +38,10 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			Factor directThreat = directThreatRows[row];
-			Target target = targets[column];
-			if (!getProject().areLinked(directThreat.getFactorId(), target.getFactorId()))
+			if (!areLinked(row, column))
 				return "";
 			
-			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
+			FactorLink factorLink = getFactorLink(row, column);
 			return Integer.toString(factorLink.calculateThreatRatingBundleValue());
 		}
 		catch (Exception e)
@@ -51,6 +49,17 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 			EAM.logException(e);
 			return "ERROR";
 		}
+	}
+
+	private FactorLink getFactorLink(int row, int column)
+	{
+		return FactorLink.findFactorLink(getProject(), getLinkRef(getDirectThreat(row).getRef(), getTarget(column).getRef()));
+	}
+
+	//TODO combine the two xxLinked method below
+	private boolean areLinked(int row, int column)
+	{
+		return getProject().areLinked(getDirectThreat(row).getFactorId(), getTarget(column).getFactorId());
 	}
 	
 	public boolean isLinked(ORef fromRef, ORef toRef)
@@ -66,5 +75,13 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	public String getColumnTag(int column)
 	{
 		return "";
+	}
+
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		if (areLinked(row, column))
+			return getFactorLink(row, column);
+			
+		return null;
 	}
 }

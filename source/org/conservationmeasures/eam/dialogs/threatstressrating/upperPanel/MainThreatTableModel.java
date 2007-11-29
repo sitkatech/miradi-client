@@ -7,13 +7,14 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class MainThreatTableModel extends AbstractTableModel implements ColumnTagProvider
+abstract public class MainThreatTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public MainThreatTableModel(Project projectToUse)
 	{

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
@@ -68,6 +69,11 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 		}
 		
 		return threatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedTargetSummaryRatingValues));
+	}
+	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return targets[column];
 	}
 	
 	private TNCThreatFormula threatFormula;
