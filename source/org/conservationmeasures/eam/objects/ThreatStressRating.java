@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.StressBasedThreatFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
@@ -68,10 +69,11 @@ public class ThreatStressRating extends BaseObject
 		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
 		int stressRating = parseInt(stressRatingAsString);
 		int contributionRating = parseInt(getContribution().getCode());
-		int irreverisbility = parseInt(getIrreversibility().getCode());
-		int max = Math.max(stressRating, contributionRating);
+		int irreversibilityRating = parseInt(getIrreversibility().getCode());
 		
-		return Math.max(max, irreverisbility);
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		int contributionIrreversibilityResult = formula.computeContributionByIrreversibility(contributionRating, irreversibilityRating);
+		return formula.computeThreatStressRating(contributionIrreversibilityResult, stressRating);
 	}
 	
 	private int parseInt(String intAsString)
