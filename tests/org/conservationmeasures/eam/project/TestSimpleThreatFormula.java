@@ -192,33 +192,33 @@ public class TestSimpleThreatFormula extends EAMTestCase
 		int[] bundles;
 		
 		bundles = new int[] {};
-		assertEquals(0, formula.getSummaryOfBundles(bundles));
+		assertEquals(0, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 		
 		bundles = new int[] {0, 0, 0,};
-		assertEquals(0, formula.getSummaryOfBundles(bundles));
+		assertEquals(0, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 
 		bundles = new int[] {1, 1, 1, 1, 1, 1, 1,};
-		assertEquals(1, formula.getSummaryOfBundles(bundles));
+		assertEquals(1, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 		
 		bundles = new int[] {1, 1, 1, 1, 1, 1, 1,
 				1, 1, 1, 1, 1, 1, 1,};
-		assertEquals(2, formula.getSummaryOfBundles(bundles));
+		assertEquals(2, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 
 		bundles = new int[] {2, 2, 2, 2, 2, 2, 2, 2, 2, 2,};
-		assertEquals(3, formula.getSummaryOfBundles(bundles));
+		assertEquals(3, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 		
 		bundles = new int[] {3, 3, 3, 3, 3, 3,};
-		assertEquals(4, formula.getSummaryOfBundles(bundles));		
+		assertEquals(4, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));		
 		
 		bundles = new int[] {2, 3, 1, 4, 2,};
-		assertEquals(3, formula.getSummaryOfBundles(bundles));
+		assertEquals(3, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 		
 		bundles = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 			2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3,};
-		assertEquals(3, formula.getSummaryOfBundles(bundles));
+		assertEquals(3, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 
 		bundles = new int[] {4, 4,};
-		assertEquals(4, formula.getSummaryOfBundles(bundles));
+		assertEquals(4, formula.getSummaryOfBundlesWithTwoPrimeRule(bundles));
 	}
 	
 	public void testGetHighestValue()

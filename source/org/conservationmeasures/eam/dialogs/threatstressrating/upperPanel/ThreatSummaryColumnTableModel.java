@@ -74,7 +74,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 			calculatedThreatSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
-		return threatFormula.getSummaryOfBundles(Utility.convertToIntArray(calculatedThreatSummaryRatingValues));
+		return threatFormula.getSummaryOfBundlesWithTwoPrimeRule(Utility.convertToIntArray(calculatedThreatSummaryRatingValues));
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

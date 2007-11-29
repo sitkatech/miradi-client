@@ -69,7 +69,7 @@ public class SimpleThreatFormula
 		return computeBundleValue(scope, severity, urgency);
 	}
 	
-	public int getSummaryOfBundles(int[] bundleValues)
+	public int getSummaryOfBundlesWithTwoPrimeRule(int[] bundleValues)
 	{
 		int low = count(bundleValues, 1);
 		int medium = count(bundleValues, 2);
