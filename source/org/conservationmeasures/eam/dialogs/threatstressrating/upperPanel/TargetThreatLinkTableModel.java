@@ -57,7 +57,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 
 	private FactorLink getFactorLink(int row, int column)
 	{
-		return FactorLink.findFactorLink(getProject(), getLinkRef(getDirectThreat(row).getRef(), getTarget(column).getRef()));
+		return FactorLink.find(getProject(), getLinkRef(getDirectThreat(row).getRef(), getTarget(column).getRef()));
 	}
 
 	//TODO combine the two xxLinked method below

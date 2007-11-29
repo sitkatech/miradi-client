@@ -250,14 +250,14 @@ public class FactorLink extends BaseObject
 		return threatStressRatingRefs.getORefList();
 	}
 	
-	public static FactorLink findFactorLink(ObjectManager objectManager, ORef factorLinkRef)
+	public static FactorLink find(ObjectManager objectManager, ORef factorLinkRef)
 	{
 		return (FactorLink) objectManager.findObject(factorLinkRef);
 	}
 	
-	public static FactorLink findFactorLink(Project project, ORef factorLinkRef)
+	public static FactorLink find(Project project, ORef factorLinkRef)
 	{
-		return findFactorLink(project.getObjectManager(), factorLinkRef);
+		return find(project.getObjectManager(), factorLinkRef);
 	}
 	
 	void clear()

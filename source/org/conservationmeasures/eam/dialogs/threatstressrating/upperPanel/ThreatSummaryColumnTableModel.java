@@ -70,7 +70,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 			if (!getProject().areLinked(directThreat.getFactorId(), target.getFactorId()))
 				continue;
 			
-			FactorLink factorLink = FactorLink.findFactorLink(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
+			FactorLink factorLink = FactorLink.find(getProject(), getLinkRef(directThreat.getRef(), target.getRef()));
 			calculatedThreatSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
