@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCThreatFormula;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.Utility;
 
 public class TargetSummaryRowTableModel extends MainThreatTableModel
@@ -39,7 +38,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	public Object getValueAt(int row, int column)
 	{
 		String valueToConvert = getCalculatedTargetSummaryRatingValue(column);
-		return new StatusQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE).findChoiceByCode(valueToConvert);
+		return convertToChoiceItem(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, valueToConvert);
 	}
 	
 	private String getCalculatedTargetSummaryRatingValue(int column)
