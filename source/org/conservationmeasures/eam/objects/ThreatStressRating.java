@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParame
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
@@ -51,12 +52,17 @@ public class ThreatStressRating extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING))
-			return calculateThreatRating();
+			return getCalculatedThreatRating();
 				
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String calculateThreatRating()
+	private String getCalculatedThreatRating()
+	{
+		return Integer.toString(calculateThreatRating());
+	}
+	
+	public int calculateThreatRating()
 	{
 		Stress stress = (Stress) getObjectManager().findObject(getStressRef());
 		String stressRatingAsString = stress.getPseudoData(Stress.PSEUDO_STRESS_RATING);
@@ -65,7 +71,7 @@ public class ThreatStressRating extends BaseObject
 		int irreverisbility = parseInt(getIrreversibility().getCode());
 		int max = Math.max(stressRating, contributionRating);
 		
-		return Integer.toString(Math.max(max, irreverisbility));
+		return Math.max(max, irreverisbility);
 	}
 	
 	private int parseInt(String intAsString)
@@ -101,6 +107,16 @@ public class ThreatStressRating extends BaseObject
 		return getLabel();
 	}
 	
+	public static ThreatStressRating find(ObjectManager objectManager, ORef threatStressRatingRef)
+	{
+		return (ThreatStressRating) objectManager.findObject(threatStressRatingRef);
+	}
+	
+	public static ThreatStressRating find(Project project, ORef threatStressRatingRef)
+	{
+		return find(project.getObjectManager(), threatStressRatingRef);
+	}
+		
 	public void clear()
 	{
 		super.clear();

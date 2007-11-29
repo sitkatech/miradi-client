@@ -213,19 +213,18 @@ public class FactorLink extends BaseObject
 	
 	public int calculateThreatRatingBundleValue() throws Exception
 	{
-		Target target = Target.findTarget(getObjectManager(), getDownstreamTargetRef());
-		ORefList stresses = target.getStressRefs();
-		if (stresses.size() == 0)
+		ORefList ratingRefs = getThreatStressRatingRefs();
+		if (ratingRefs.size() == 0)
 			return 0;
 		
-		int totalStressRatings = 0;
-		for (int i = 0; i < stresses.size(); ++i)
+		int totalThreatStressRatings = 0;
+		for (int i = 0; i < ratingRefs.size(); ++i)
 		{
-			Stress stress = Stress.findStress(getObjectManager(), stresses.get(i));
-			totalStressRatings = totalStressRatings + stress.calculateStressRating();
+			ThreatStressRating rating = ThreatStressRating.find(getObjectManager(), ratingRefs.get(i));
+			totalThreatStressRatings = totalThreatStressRatings + rating.calculateThreatRating();
 		}
 
-		return totalStressRatings/stresses.size();
+		return totalThreatStressRatings/ratingRefs.size();
 	}
 
 	public ORef getFactorRef(int direction)
