@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.SimpleThreatFormula;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
@@ -217,14 +218,15 @@ public class FactorLink extends BaseObject
 		if (ratingRefs.size() == 0)
 			return 0;
 		
-		int totalThreatStressRatings = 0;
+		int[] ratingBundleValues = new int[ratingRefs.size()];
 		for (int i = 0; i < ratingRefs.size(); ++i)
 		{
 			ThreatStressRating rating = ThreatStressRating.find(getObjectManager(), ratingRefs.get(i));
-			totalThreatStressRatings = totalThreatStressRatings + rating.calculateThreatRating();
+			ratingBundleValues[i] = rating.calculateThreatRating();
 		}
 
-		return totalThreatStressRatings/ratingRefs.size();
+		SimpleThreatFormula formula = new SimpleThreatFormula();
+		return formula.getSummaryOfBundlesWithTwoPrimeRule(ratingBundleValues);
 	}
 
 	public ORef getFactorRef(int direction)
