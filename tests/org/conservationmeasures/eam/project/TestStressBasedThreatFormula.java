@@ -34,17 +34,17 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		{
 			for (int severityIndex = 0; severityIndex < severity.length; ++severityIndex)
 			{
-				assertEquals(scopeSeverity[scopeIndex][severityIndex], formula.computeSevertyByScope(scope[scopeIndex], severity[severityIndex]));
+				assertEquals(scopeSeverity[scopeIndex][severityIndex], formula.computeSeverityByScope(scope[scopeIndex], severity[severityIndex]));
 			}
 		}
 		
 		try
 		{
-			formula.computeSevertyByScope(-1, 0);
-			formula.computeSevertyByScope(5, 0);
+			formula.computeSeverityByScope(-1, 0);
+			formula.computeSeverityByScope(5, 0);
 			
-			formula.computeSevertyByScope(0, -1);
-			formula.computeSevertyByScope(0, 5);
+			formula.computeSeverityByScope(0, -1);
+			formula.computeSeverityByScope(0, 5);
 			fail();
 		}
 		catch(Exception e)
