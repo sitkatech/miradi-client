@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -57,18 +57,18 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 
 	private FactorLink getFactorLink(int row, int column)
 	{
-		return FactorLink.find(getProject(), getLinkRef(getDirectThreat(row).getRef(), getTarget(column).getRef()));
+		return FactorLink.find(getProject(), getLinkRef(getDirectThreat(row), getTarget(column)));
 	}
 
 	//TODO combine the two xxLinked method below
 	private boolean areLinked(int row, int column)
 	{
-		return getProject().areLinked(getDirectThreat(row).getRef(), getTarget(column).getRef());
+		return isLinked(getDirectThreat(row), getTarget(column));
 	}
 	
-	public boolean isLinked(ORef fromRef, ORef toRef)
+	public boolean isLinked(Factor from, Factor to)
 	{
-		return getProject().getFactorLinkPool().isLinked(fromRef, toRef);
+		return getProject().getFactorLinkPool().areLinked(from, to);
 	}
 	
 	public Target getTarget(int modelColumn)
