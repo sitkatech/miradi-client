@@ -24,7 +24,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		framework = project.getThreatRatingFramework();
 		
-		formula = new TNCThreatFormula(framework);
+		formula = new SimpleThreatFormula(framework);
 	}
 	
 	public void tearDown() throws Exception
@@ -270,5 +270,5 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	ProjectForTesting project;
 	SimpleModeThreatRatingFramework framework;
-	TNCThreatFormula formula;
+	SimpleThreatFormula formula;
 }

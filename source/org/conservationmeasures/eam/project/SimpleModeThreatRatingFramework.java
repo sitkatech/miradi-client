@@ -162,7 +162,7 @@ public class SimpleModeThreatRatingFramework
 
 	public ValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula(this);
+		SimpleThreatFormula formula = new SimpleThreatFormula(this);
 		int numericResult = formula.computeBundleValue(bundle);
 		return findValueOptionByNumericValue(numericResult);
 		
@@ -291,14 +291,14 @@ public class SimpleModeThreatRatingFramework
 
 	private ValueOption getSummaryOfNumericValues(int[] bundleValues)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula(this);
+		SimpleThreatFormula formula = new SimpleThreatFormula(this);
 		int numericResult = formula.getSummaryOfBundles(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
 	
 	private ValueOption getMajorityOfNumericValues(int[] bundleValues)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula(this);
+		SimpleThreatFormula formula = new SimpleThreatFormula(this);
 		int numericResult = formula.getMajority(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
