@@ -75,14 +75,14 @@ public class Stress extends BaseObject
 		return Math.min(scopeRating, severityRating);
 	}
 	
-	public static Stress findStress(ObjectManager objectManager, ORef stressRef)
+	public static Stress find(ObjectManager objectManager, ORef stressRef)
 	{
 		return (Stress) objectManager.findObject(stressRef);
 	}
 	
-	public static Stress findStress(Project project, ORef stressRef)
+	public static Stress find(Project project, ORef stressRef)
 	{
-		return findStress(project.getObjectManager(), stressRef);
+		return find(project.getObjectManager(), stressRef);
 	}
 		
 	public String toString()
