@@ -67,7 +67,7 @@ public class StressBasedThreatFormula
 		return threatStressRatingTable[source][stress];
 	}
 	
-	private boolean isInvalidValue(int value)
+	public boolean isInvalidValue(int value)
 	{
 		return value < 0 || value > 4;
 	}
