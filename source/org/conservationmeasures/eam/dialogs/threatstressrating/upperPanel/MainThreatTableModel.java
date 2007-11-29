@@ -40,9 +40,9 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		return project;
 	}
 
-	public ORef getLinkRef(ORef fromRef, ORef toRef)
+	public ORef getLinkRef(Factor from, Factor to)
 	{
-		return getProject().getFactorLinkPool().getLinkedRef(fromRef, toRef);
+		return getProject().getFactorLinkPool().getLinkedRef(from, to);
 	}
 	
 	protected String convertIntToString(int calculatedValue)

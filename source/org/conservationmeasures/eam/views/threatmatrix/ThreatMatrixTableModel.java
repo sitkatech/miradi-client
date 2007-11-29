@@ -183,7 +183,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		
 		Factor threat = getDirectThreats()[threatIndex];
 		Factor target = getTargets()[targetIndex];
-		return getProject().areLinked(threat.getRef(), target.getRef());
+		return getProject().areLinked(threat, target);
 	}
 	
 	public FactorId getThreatId(int threatIndex)

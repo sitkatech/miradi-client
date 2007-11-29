@@ -9,8 +9,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 
 public class FactorLinkPool extends PoolWithIdAssigner
@@ -30,11 +33,32 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return (FactorLink)getRawObject(id);
 	}
 	
+	public boolean areLinked(Factor factor1, Factor factor2)
+	{
+		return !getLinkedRef(factor1, factor2).isInvalid();
+	}
+	
+	public ORef getLinkedRef(Factor factor1, Factor factor2)
+	{
+		ORefList links1 = factor1.findObjectsThatReferToUs(FactorLink.getObjectType());
+		ORefList links2 = factor2.findObjectsThatReferToUs(FactorLink.getObjectType());
+		
+		ORefList overlap = links1.getOverlappingRefs(links2);
+		if(overlap.size() > 1)
+			EAM.logWarning("Duplicate links from " + factor1.getRef() + " to " + factor2.getRef());
+		if(overlap.size() == 1)
+			return overlap.get(0);
+		
+		return ORef.INVALID;
+	}
+
+	// NOTE: This method is deprecated! Pass Factors instead!
 	public boolean isLinked(ORef factorRef1, ORef factorRef2)
 	{
 		return !getLinkedRef(factorRef1, factorRef2).isInvalid();
 	}
 	
+	// NOTE: This method is deprecated! Pass Factors instead!
 	public ORef getLinkedRef(ORef factorRef1, ORef factorRef2)
 	{
 		FactorLinkId factorLinkId = getLinkedId((FactorId)factorRef1.getObjectId(), (FactorId)factorRef2.getObjectId());
@@ -44,6 +68,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return new ORef(FactorLink.getObjectType(), factorLinkId);
 	}
 	
+	// NOTE: This method is deprecated! Pass Factors instead!
 	public FactorLinkId getLinkedId(FactorId nodeId1, FactorId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)

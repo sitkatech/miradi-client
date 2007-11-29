@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 
 public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewportHeight
 {
@@ -37,10 +38,11 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		if (modelColumn < 0)
 			return new ORefList[0];
 		
-		ORef targetRef = getTargetThreatLinkTableModel().getTarget(modelColumn).getRef();
-		if (getTargetThreatLinkTableModel().isLinked(directThreat.getRef(), targetRef))
+		Target target = getTargetThreatLinkTableModel().getTarget(modelColumn);
+		ORef targetRef = target.getRef();
+		if (getTargetThreatLinkTableModel().isLinked(directThreat, target))
 		{
-			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat.getRef(), targetRef);
+			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat, target);
 			hierarchyRefs.add(linkRef);
 		}
 		hierarchyRefs.add(targetRef);

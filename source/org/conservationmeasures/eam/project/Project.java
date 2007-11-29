@@ -983,7 +983,14 @@ public class Project
 
 	public boolean areLinked(ORef factorRef1, ORef factorRef2)
 	{
-		return getFactorLinkPool().isLinked(factorRef1, factorRef2);
+		Factor factor1 = (Factor)findObject(factorRef1);
+		Factor factor2 = (Factor)findObject(factorRef2);
+		return areLinked(factor1, factor2);
+	}
+
+	public boolean areLinked(Factor factor1, Factor factor2)
+	{
+		return getFactorLinkPool().areLinked(factor1, factor2);
 	}
 	
 	public int getGridSize()
