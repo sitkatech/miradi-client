@@ -439,7 +439,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		return (TreeTableNode)getTreeTableAdapter().nodeForRow(row);
 	}
 	
-	public BaseObject getBaseObjectForRow(int row)
+	public BaseObject getBaseObjectForRowColumn(int row)
 	{
 		return getNodeForRow(row).getObject();
 	}

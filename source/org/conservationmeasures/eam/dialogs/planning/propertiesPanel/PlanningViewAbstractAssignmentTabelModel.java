@@ -97,7 +97,7 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends EditableO
 		return (Assignment) getProject().findObject(getAssignmentForRow(row));
 	}
 	
-	public BaseObject getBaseObjectForRow(int row)
+	public BaseObject getBaseObjectForRowColumn(int row)
 	{
 		return getAssignment(row);
 	}
