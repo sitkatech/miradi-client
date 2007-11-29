@@ -292,7 +292,7 @@ public class SimpleModeThreatRatingFramework
 	private ValueOption getSummaryOfNumericValues(int[] bundleValues)
 	{
 		SimpleThreatFormula formula = new SimpleThreatFormula(this);
-		int numericResult = formula.getSummaryOfBundles(bundleValues);
+		int numericResult = formula.getSummaryOfBundlesWithTwoPrimeRule(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
 	
