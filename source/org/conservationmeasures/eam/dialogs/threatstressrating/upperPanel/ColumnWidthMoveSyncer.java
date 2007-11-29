@@ -13,10 +13,10 @@ import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-public class ColumnWidthSyncer implements TableColumnModelListener
+public class ColumnWidthMoveSyncer implements TableColumnModelListener
 {
 
-	public ColumnWidthSyncer(JTable otherTableToUse)
+	public ColumnWidthMoveSyncer(JTable otherTableToUse)
 	{
 		otherTable = otherTableToUse; 
 	}
