@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatTableModel extends MainThreatTableModel
@@ -32,6 +33,11 @@ public class ThreatTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		return directThreatRows[row];
+		return getDirectThreat(row);
+	}
+	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getDirectThreat(row);
 	}
 }
