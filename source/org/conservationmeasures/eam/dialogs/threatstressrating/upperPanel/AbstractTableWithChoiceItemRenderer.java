@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
 abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
@@ -20,12 +22,11 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 
 	private void setColumnRenderers()
 	{
-		//FIXME add renderer here and use this class for 3 upper threat rating tables
-		//ChoiceItemTableCellRenderer renderer = new ChoiceItemTableCellRenderer();
+		MainThreatTableModel model = (MainThreatTableModel) getModel();
+		ChoiceItemTableCellRenderer renderer = new ChoiceItemTableCellRenderer(model, new DefaultFontProvider());
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
-			//getColumnModel().getColumn(i).setCellRenderer();
+			getColumnModel().getColumn(i).setCellRenderer(renderer);
 		}
 	}
-	
 }

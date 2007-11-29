@@ -33,7 +33,7 @@ public class ThreatTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		return getDirectThreat(row);
+		return getDirectThreat(row).toString();
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

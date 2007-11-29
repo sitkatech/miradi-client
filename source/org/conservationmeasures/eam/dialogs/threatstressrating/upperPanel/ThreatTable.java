@@ -5,13 +5,16 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class ThreatTable extends TableWithSetPreferredScrollableViewportHeight
+
+public class ThreatTable extends TableWithColumnWidthSaver
 {
 	public ThreatTable(MainThreatTableModel tableModel)
 	{
 		super(tableModel);
 		setForcedPreferredScrollableViewportWidth(100);
+		setForcedPreferredScrollableViewportHeight(getRowHeight() * 5);
 	}
 	
 	public String getUniqueTableIdentifier()

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class TargetThreatLinkTableModel extends MainThreatTableModel
 {
@@ -31,7 +32,8 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		return getFactorLinkThreatRatingBundle(row, column);
+		String valueToConvert = getFactorLinkThreatRatingBundle(row, column);
+		return new StatusQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE).findChoiceByCode(valueToConvert);
 	}
 	
 	private String getFactorLinkThreatRatingBundle(int row, int column)

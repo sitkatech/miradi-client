@@ -9,9 +9,7 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
-
-public class TargetSummaryRowTable extends TableWithColumnWidthSaver
+public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
 	public TargetSummaryRowTable(TargetSummaryRowTableModel model)
 	{
