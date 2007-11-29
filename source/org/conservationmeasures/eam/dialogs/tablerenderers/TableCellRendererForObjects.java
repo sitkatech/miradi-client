@@ -34,7 +34,7 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 	
 	public Font getCellFont(int row)
 	{
-		BaseObject object = getObjectProvider().getBaseObjectForRow(row);
+		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row);
 		if(object == null)
 			return fontProvider.getPlainFont();
 		return fontProvider.getFont(object.getType());
@@ -55,7 +55,7 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 
 	protected BaseObject getBaseObjectForRow(int row)
 	{
-		BaseObject object = objectProvider.getBaseObjectForRow(row);
+		BaseObject object = objectProvider.getBaseObjectForRowColumn(row);
 		return object;
 	}
 	

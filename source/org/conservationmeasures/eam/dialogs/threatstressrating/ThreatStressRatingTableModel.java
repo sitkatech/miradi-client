@@ -152,19 +152,19 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		
 		if (isContributionColumn(column) || isIrreversibilityColumn(column))
 		{
-			ORef ref = getBaseObjectForRow(row).getRef();
+			ORef ref = getBaseObjectForRowColumn(row).getRef();
 			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
 		}
 	}
 
-	public BaseObject getBaseObjectForRow(int row)
+	public BaseObject getBaseObjectForRowColumn(int row)
 	{
 		return ratings[row];
 	}
 
 	public ThreatStressRating getThreatStressRating(int row)
 	{
-		return (ThreatStressRating) getBaseObjectForRow(row);
+		return (ThreatStressRating) getBaseObjectForRowColumn(row);
 	}
 	
 	public static String[] getColumnTags()
