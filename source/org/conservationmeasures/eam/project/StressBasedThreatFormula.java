@@ -11,7 +11,7 @@ public class StressBasedThreatFormula
 	{
 	}
 	
-	public int computeSevertyByScope(int scope, int severity)
+	public int computeSeverityByScope(int scope, int severity)
 	{
 		if (isInvalidValue(scope))
 			throw new RuntimeException("unknown scope" + scope);
