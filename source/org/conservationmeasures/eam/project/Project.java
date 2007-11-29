@@ -981,9 +981,9 @@ public class Project
 		database.writeObject(cmNode);
 	}
 
-	public boolean areLinked(FactorId nodeId1, FactorId nodeId2)
+	public boolean areLinked(ORef factorRef1, ORef factorRef2)
 	{
-		return getFactorLinkPool().isLinked(nodeId1, nodeId2);
+		return getFactorLinkPool().isLinked(factorRef1, factorRef2);
 	}
 	
 	public int getGridSize()

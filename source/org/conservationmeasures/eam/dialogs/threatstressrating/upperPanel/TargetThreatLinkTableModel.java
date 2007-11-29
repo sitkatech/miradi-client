@@ -63,7 +63,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	//TODO combine the two xxLinked method below
 	private boolean areLinked(int row, int column)
 	{
-		return getProject().areLinked(getDirectThreat(row).getFactorId(), getTarget(column).getFactorId());
+		return getProject().areLinked(getDirectThreat(row).getRef(), getTarget(column).getRef());
 	}
 	
 	public boolean isLinked(ORef fromRef, ORef toRef)

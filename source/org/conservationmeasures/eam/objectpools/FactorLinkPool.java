@@ -30,11 +30,6 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return (FactorLink)getRawObject(id);
 	}
 	
-	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
-	{
-		return (getLinkedId(nodeId1, nodeId2)!=null);
-	}
-	
 	public boolean isLinked(ORef factorRef1, ORef factorRef2)
 	{
 		return !getLinkedRef(factorRef1, factorRef2).isInvalid();
