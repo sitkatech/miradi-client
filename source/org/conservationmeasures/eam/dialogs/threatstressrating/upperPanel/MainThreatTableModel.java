@@ -12,6 +12,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 abstract public class MainThreatTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
@@ -49,6 +51,11 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 			return "";
 		
 		return Integer.toString(calculatedValue);
+	}
+	
+	protected ChoiceItem convertToChoiceItem(String fieldTag, String valueToConvert)
+	{
+		return new StatusQuestion(fieldTag).findChoiceByCode(valueToConvert);
 	}
 	
 	private Project project;
