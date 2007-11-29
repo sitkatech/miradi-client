@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
-abstract public class EditableObjectTableModel extends AbstractTableModel implements ColumnTagProvider, RowBaseObjectProvider
+abstract public class EditableObjectTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public EditableObjectTableModel(Project projectToUse)
 	{

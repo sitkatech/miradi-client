@@ -24,7 +24,7 @@ import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
-import org.conservationmeasures.eam.dialogs.tablerenderers.RowBaseObjectProvider;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import com.java.sun.jtreetable.TreeTableModel;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, RowBaseObjectProvider
+public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, RowColumnBaseObjectProvider
 {
 	public TreeTableWithIcons(Project projectToUse, GenericTreeTableModel treeTableModelToUse)
 	{
