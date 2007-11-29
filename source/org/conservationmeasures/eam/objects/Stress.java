@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.StressBasedThreatFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -72,7 +73,8 @@ public class Stress extends BaseObject
 		
 		int scopeRating = Integer.parseInt(scopeChoice.getCode());
 		int severityRating = Integer.parseInt(severityChoice.getCode());
-		return Math.min(scopeRating, severityRating);
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		return formula.computeSeverityByScope(scopeRating, severityRating);
 	}
 	
 	public static Stress find(ObjectManager objectManager, ORef stressRef)
