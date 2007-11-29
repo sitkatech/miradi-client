@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRendererWithGrayCells;
 import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
@@ -23,7 +23,7 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 	private void setColumnRenderers()
 	{
 		MainThreatTableModel model = (MainThreatTableModel) getModel();
-		ChoiceItemTableCellRenderer renderer = new ChoiceItemTableCellRenderer(model, new DefaultFontProvider());
+		ChoiceItemTableCellRendererWithGrayCells renderer = new ChoiceItemTableCellRendererWithGrayCells(model, new DefaultFontProvider());
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
 			getColumnModel().getColumn(i).setCellRenderer(renderer);
