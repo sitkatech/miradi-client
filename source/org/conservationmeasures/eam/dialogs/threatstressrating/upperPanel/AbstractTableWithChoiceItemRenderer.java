@@ -9,9 +9,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-abstract public class AbstractTableWithItemChoiceRenderer extends TableWithColumnWidthSaver
+abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
 {
-	public AbstractTableWithItemChoiceRenderer(TableModel model)
+	public AbstractTableWithChoiceItemRenderer(TableModel model)
 	{
 		super(model);
 		
