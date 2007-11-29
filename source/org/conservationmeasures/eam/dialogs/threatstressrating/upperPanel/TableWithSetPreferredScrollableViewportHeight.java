@@ -7,9 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
-
-abstract public class TableWithSetPreferredScrollableViewportHeight extends TableWithColumnWidthSaver
+abstract public class TableWithSetPreferredScrollableViewportHeight extends AbstractTableWithChoiceItemRenderer
 {
 	public TableWithSetPreferredScrollableViewportHeight(TableModel model)
 	{

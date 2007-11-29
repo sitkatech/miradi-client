@@ -32,7 +32,7 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		return renderer;
 	}
 	
-	ChoiceItem getChoiceItem(Object value)
+	private ChoiceItem getChoiceItem(Object value)
 	{
 		if(value == null || value.equals(""))
 			return emptyChoiceItem;
@@ -44,5 +44,5 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		return (ChoiceItem)value;
 	}
 
-	ChoiceItem emptyChoiceItem;
+	private ChoiceItem emptyChoiceItem;
 }
