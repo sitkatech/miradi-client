@@ -25,24 +25,24 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		Font font = getCellFont(row);
-		if(isSharedObject(row))
+		Font font = getCellFont(row, tableColumn);
+		if(isSharedObject(row, tableColumn))
 			font = font.deriveFont(Font.ITALIC);
 		renderer.setFont(font);
 		return renderer;
 	}
 	
-	public Font getCellFont(int row)
+	public Font getCellFont(int row, int column)
 	{
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row);
+		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, column);
 		if(object == null)
 			return fontProvider.getPlainFont();
 		return fontProvider.getFont(object.getType());
 	}
 	
-	boolean isSharedObject(int row)
+	boolean isSharedObject(int row, int column)
 	{
-		BaseObject object = getBaseObjectForRow(row);
+		BaseObject object = getBaseObjectForRow(row, column);
 		if(object == null)
 			return false;
 		
@@ -53,9 +53,9 @@ public class TableCellRendererForObjects extends BasicTableCellRenderer
 		return task.isShared();
 	}
 
-	protected BaseObject getBaseObjectForRow(int row)
+	protected BaseObject getBaseObjectForRow(int row, int column)
 	{
-		BaseObject object = objectProvider.getBaseObjectForRowColumn(row);
+		BaseObject object = objectProvider.getBaseObjectForRowColumn(row, column);
 		return object;
 	}
 	

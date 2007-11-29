@@ -23,7 +23,7 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 		return getSyncedModel().getNodeForRow(row);
 	}
 	
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}

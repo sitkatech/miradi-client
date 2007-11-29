@@ -106,7 +106,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 		return getPreferredSize();
 	}
 
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}

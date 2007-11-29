@@ -125,7 +125,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		if (selectedRow >=  model.getRowCount())
 			return new BaseObject[0];
 		
-		BaseObject selectedObject = model.getBaseObjectForRowColumn(selectedRow);
+		BaseObject selectedObject = model.getBaseObjectForRowColumn(selectedRow, 0);
 		if (selectedObject == null)
 			return new BaseObject[0];
 	
@@ -143,7 +143,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		ORefList[] selectedHierarchies = new ORefList[rows.length];
 		for(int i = 0; i < rows.length; ++i)
 		{
-			BaseObject objectFromRow = model.getBaseObjectForRowColumn(rows[i]);
+			BaseObject objectFromRow = model.getBaseObjectForRowColumn(rows[i], 0);
 			ORefList selectedObjectRefs = new ORefList();
 			selectedObjectRefs.add(objectFromRow.getRef());
 			selectedHierarchies[i] = selectedObjectRefs;

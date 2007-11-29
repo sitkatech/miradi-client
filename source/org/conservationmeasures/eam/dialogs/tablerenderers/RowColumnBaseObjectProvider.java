@@ -9,5 +9,5 @@ import org.conservationmeasures.eam.objects.BaseObject;
 
 public interface RowColumnBaseObjectProvider
 {
-	public BaseObject getBaseObjectForRowColumn(int row);
+	public BaseObject getBaseObjectForRowColumn(int row, int column);
 }

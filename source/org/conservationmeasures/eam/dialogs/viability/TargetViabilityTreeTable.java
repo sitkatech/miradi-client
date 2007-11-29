@@ -47,7 +47,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		return UNIQUE_IDENTIFIER;
 	}
 	
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
 	}

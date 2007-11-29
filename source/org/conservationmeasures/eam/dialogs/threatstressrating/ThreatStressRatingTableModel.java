@@ -110,23 +110,23 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public Object getValueAt(int row, int column)
 	{
 		if (isStressLabelColumn(column))
-			return getStress(row).toString();
+			return getStress(row, column).toString();
 
 		if (isStressRatingColumn(column))
 		{
-			String code = getStress(row).getPseudoData(getColumnTag(column));
+			String code = getStress(row, column).getPseudoData(getColumnTag(column));
 			return getStatusQuestionChoiceItemFromCode(column, code);
 		}
 		
 		if (isContributionColumn(column))
-			return getThreatStressRating(row).getContribution();
+			return getThreatStressRating(row, column).getContribution();
 		
 		if (isIrreversibilityColumn(column))
-			return getThreatStressRating(row).getIrreversibility();
+			return getThreatStressRating(row, column).getIrreversibility();
 
 		if (isThreatRatingColumn(column))
 		{
-			String code = getThreatStressRating(row).getPseudoData(getColumnTag(column));
+			String code = getThreatStressRating(row, column).getPseudoData(getColumnTag(column));
 			return getStatusQuestionChoiceItemFromCode(column, code);
 		}
 		
@@ -138,9 +138,9 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return new StatusQuestion(getColumnTag(column)).findChoiceByCode(code);
 	}
 
-	private Stress getStress(int row)
+	private Stress getStress(int row, int column)
 	{
-		ORef stressRef = getThreatStressRating(row).getStressRef();
+		ORef stressRef = getThreatStressRating(row, column).getStressRef();
 		Stress stress = (Stress) getProject().findObject(stressRef);
 		return stress;
 	}
@@ -152,19 +152,19 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		
 		if (isContributionColumn(column) || isIrreversibilityColumn(column))
 		{
-			ORef ref = getBaseObjectForRowColumn(row).getRef();
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
 		}
 	}
 
-	public BaseObject getBaseObjectForRowColumn(int row)
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return ratings[row];
 	}
 
-	public ThreatStressRating getThreatStressRating(int row)
+	public ThreatStressRating getThreatStressRating(int row, int column)
 	{
-		return (ThreatStressRating) getBaseObjectForRowColumn(row);
+		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
 	}
 	
 	public static String[] getColumnTags()
