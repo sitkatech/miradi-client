@@ -13,8 +13,8 @@ public class ThreatTable extends TableWithColumnWidthSaver
 	public ThreatTable(MainThreatTableModel tableModel)
 	{
 		super(tableModel);
-		setForcedPreferredScrollableViewportWidth(100);
-		setForcedPreferredScrollableViewportHeight(getRowHeight() * 5);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportHeight(TargetThreatLinkTable.PREFERRED_VIEWPORT_HEIGHT);
 	}
 	
 	public String getUniqueTableIdentifier()
@@ -22,5 +22,5 @@ public class ThreatTable extends TableWithColumnWidthSaver
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public static final String UNIQUE_IDENTIFIER = "ThreatsTable";
+	public static final String UNIQUE_IDENTIFIER = "ThreatsTable"; 
 }

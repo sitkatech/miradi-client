@@ -17,7 +17,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
-		setForcedPreferredScrollableViewportWidth(PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
 	}
 	
 	public String getUniqueTableIdentifier()
@@ -26,5 +26,4 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
-	public static final int PREFERRED_VIEWPORT_WIDTH = 400;
 }
