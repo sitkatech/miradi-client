@@ -32,7 +32,10 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	public Object getValueAt(int row, int column)
 	{
 		String valueToConvert = getFactorLinkThreatRatingBundle(row, column);
-		return convertToChoiceItem(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, valueToConvert);
+		if (valueToConvert != null)
+			return convertToChoiceItem(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, valueToConvert);
+			
+		return null;	
 	}
 
 	private String getFactorLinkThreatRatingBundle(int row, int column)
@@ -40,7 +43,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		try
 		{
 			if (!areLinked(row, column))
-				return "";
+				return null;
 			
 			FactorLink factorLink = getFactorLink(row, column);
 			return Integer.toString(factorLink.calculateThreatRatingBundleValue());
