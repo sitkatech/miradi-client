@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTable;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
-import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.TargetSummaryRowTable;
+import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.TargetThreatLinkTable;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
@@ -17,8 +17,8 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		rebuildColumnEditorsAndRenderers();
 		//TODO shouldn't set row height to constant value
 		setRowHeight(25);
-		setForcedPreferredScrollableViewportHeight(100);
-		setForcedPreferredScrollableViewportWidth(TargetSummaryRowTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportHeight(TargetThreatLinkTable.PREFERRED_VIEWPORT_HEIGHT);
 	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()

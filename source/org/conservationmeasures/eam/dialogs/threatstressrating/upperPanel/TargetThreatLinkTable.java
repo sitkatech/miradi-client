@@ -18,7 +18,7 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		super(tableModel);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setForcedPreferredScrollableViewportWidth(TargetSummaryRowTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
 	}
 	
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
@@ -55,4 +55,6 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTable";
+	public static final int PREFERRED_VIEWPORT_WIDTH = 400;
+	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;
 }
