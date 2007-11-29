@@ -92,4 +92,45 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		{
 		}
 	}
+	
+	public void testComputeThreatStressRating()
+	{
+		int[] source = {4, 3, 2, 1, 0};
+		int[] stress = {4, 3, 2, 1, 0};
+		
+		int[][] threatStressRating = 
+		{
+		 /*        source     */	
+	     /*s	 	 4  3  2  1  0*/
+		 /*t   4*/	{4, 4, 3, 2, 0},
+		 /*r   3*/	{3, 3, 2, 1, 0},
+		 /*e   2*/	{2, 2, 1, 1, 0},
+		 /*s   1*/	{1, 1, 1, 1, 0},
+		 /*s   0*/	{0, 0, 0, 0, 0},	
+		};
+		
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		for (int sourceIndex = 0; sourceIndex < source.length; ++sourceIndex)
+		{
+			for (int stressIndex = 0; stressIndex < stress.length; ++stressIndex)
+			{
+				int computedValue = formula.computeThreatStressRating(source[sourceIndex], stress[stressIndex]);
+				int expectedValue = threatStressRating[sourceIndex][stressIndex];
+				assertEquals(expectedValue, computedValue);
+			}
+		}
+		
+		try
+		{
+			formula.computeThreatStressRating(-1, 0);
+			formula.computeThreatStressRating(5, 0);
+			
+			formula.computeThreatStressRating(0, -1);
+			formula.computeThreatStressRating(0, 5);
+			fail();
+		}
+		catch(Exception e)
+		{
+		}
+	}
 }

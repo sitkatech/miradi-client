@@ -45,6 +45,28 @@ public class StressBasedThreatFormula
 		return contributionIrreversibilityTable[contribution][irreversibility];
 	}
 	
+	public int computeThreatStressRating(int source, int stress)
+	{		
+		if (isInvalidValue(source))
+			throw new RuntimeException("unknown source" + source);
+		
+		if (isInvalidValue(stress))
+			throw new RuntimeException("unknown stress" + stress);
+
+		int[][] threatStressRatingTable = 
+		{
+				{0, 0, 0, 0, 0}, // 0  s
+				{0, 1, 1, 1, 1}, // 1  t
+				{0, 1, 1, 2, 2}, // 2  r
+				{0, 1, 2, 3, 3}, // 3  e
+				{0, 2, 3, 4, 4}, // 4  s
+			//   0  1  2  3  4         s
+			//	 	source
+		};
+		
+		return threatStressRatingTable[source][stress];
+	}
+	
 	private boolean isInvalidValue(int value)
 	{
 		return value < 0 || value > 4;
