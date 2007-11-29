@@ -37,19 +37,6 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 				assertEquals(scopeSeverity[scopeIndex][severityIndex], formula.computeSeverityByScope(scope[scopeIndex], severity[severityIndex]));
 			}
 		}
-		
-		try
-		{
-			formula.computeSeverityByScope(-1, 0);
-			formula.computeSeverityByScope(5, 0);
-			
-			formula.computeSeverityByScope(0, -1);
-			formula.computeSeverityByScope(0, 5);
-			fail();
-		}
-		catch(Exception e)
-		{
-		}
 	}
 	
 	public void testComputeContributionByIrreversibility()
@@ -77,19 +64,6 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 				int expectedValue = contributionIrreversibility[contributionIndex][irreversibilityIndex]; 
 				assertEquals(expectedValue, computedValue);
 			}
-		}
-		
-		try
-		{
-			formula.computeContributionByIrreversibility(-1, 0);
-			formula.computeContributionByIrreversibility(5, 0);
-			
-			formula.computeContributionByIrreversibility(0, -1);
-			formula.computeContributionByIrreversibility(0, 5);
-			fail();
-		}
-		catch(Exception e)
-		{
 		}
 	}
 	
@@ -119,18 +93,18 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 				assertEquals(expectedValue, computedValue);
 			}
 		}
+	}
+	
+	public void testIsInvalidValue()
+	{
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		assertTrue(formula.isInvalidValue(-1));
+		assertTrue(formula.isInvalidValue(5));
 		
-		try
-		{
-			formula.computeThreatStressRating(-1, 0);
-			formula.computeThreatStressRating(5, 0);
-			
-			formula.computeThreatStressRating(0, -1);
-			formula.computeThreatStressRating(0, 5);
-			fail();
-		}
-		catch(Exception e)
-		{
-		}
+		assertFalse(formula.isInvalidValue(0));
+		assertFalse(formula.isInvalidValue(1));
+		assertFalse(formula.isInvalidValue(2));
+		assertFalse(formula.isInvalidValue(3));
+		assertFalse(formula.isInvalidValue(4));
 	}
 }
