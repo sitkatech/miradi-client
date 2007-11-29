@@ -16,23 +16,25 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 	
 	public void testComputeSevertyByScope()
 	{
-		int[] scope = {4, 3, 2, 1};
-		int[] severity = {4, 3, 2, 1};
+		int[] scope = {4, 3, 2, 1, 0};
+		int[] severity = {4, 3, 2, 1, 0};
 		int[][] scopeSeverity = 
 		{
- 		/*		 4  3  2 1 */
-		/*4*/	{4, 3, 2, 1},
-		/*3*/	{3, 3, 2, 1},
-		/*2*/	{2, 2, 2, 1},
-		/*1*/	{1, 1, 1, 1},
+		/*s      	  s c o p e   */
+		/*e 		 4  3  2  1  0*/
+		/*v  4*/	{4, 3, 2, 1, 0},
+		/*e	 3*/	{3, 3, 2, 1, 0},
+		/*r	 2*/	{2, 2, 2, 1, 0},
+		/*i	 1*/	{1, 1, 1, 1, 0},
+		/*ty 0*/	{0, 0, 0, 0, 0},
 		};
 		
 		StressBasedThreatFormula formula = new StressBasedThreatFormula();
-		for (int scopeI = 0; scopeI < scope.length; ++scopeI)
+		for (int scopeIndex = 0; scopeIndex < scope.length; ++scopeIndex)
 		{
-			for (int severityI = 0; severityI < severity.length; ++severityI)
+			for (int severityIndex = 0; severityIndex < severity.length; ++severityIndex)
 			{
-				assertEquals(scopeSeverity[scopeI][severityI], formula.computeSevertyByScope(scope[scopeI], severity[severityI]));
+				assertEquals(scopeSeverity[scopeIndex][severityIndex], formula.computeSevertyByScope(scope[scopeIndex], severity[severityIndex]));
 			}
 		}
 		
