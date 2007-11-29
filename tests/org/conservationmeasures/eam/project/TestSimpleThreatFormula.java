@@ -9,10 +9,10 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
-public class TestTNCThreatFormula extends EAMTestCase
+public class TestSimpleThreatFormula extends EAMTestCase
 {
 
-	public TestTNCThreatFormula(String name)
+	public TestSimpleThreatFormula(String name)
 	{
 		super(name);
 	}
