@@ -99,7 +99,7 @@ import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.project.TestSlidePool;
 import org.conservationmeasures.eam.project.TestStrategyPool;
-import org.conservationmeasures.eam.project.TestTNCThreatFormula;
+import org.conservationmeasures.eam.project.TestSimpleThreatFormula;
 import org.conservationmeasures.eam.project.TestTNCViabilityFormula;
 import org.conservationmeasures.eam.project.TestTargetPool;
 import org.conservationmeasures.eam.project.TestTextBoxPool;
@@ -177,7 +177,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestIdAssigner.class));
 		suite.addTest(new TestSuite(TestProjectInfo.class));
 		suite.addTest(new TestSuite(TestThreatRatingFramework.class));
-		suite.addTest(new TestSuite(TestTNCThreatFormula.class));
+		suite.addTest(new TestSuite(TestSimpleThreatFormula.class));
 		suite.addTest(new TestSuite(TestTNCViabilityFormula.class));
 		suite.addTest(new TestSuite(TestProjectZipper.class));
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
