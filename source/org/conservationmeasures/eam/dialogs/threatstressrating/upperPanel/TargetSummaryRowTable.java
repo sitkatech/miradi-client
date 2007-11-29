@@ -19,7 +19,7 @@ public class TargetSummaryRowTable extends TableWithColumnWidthSaver
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
-		setForcedPreferredScrollableViewportWidth(400);
+		setForcedPreferredScrollableViewportWidth(PREFERRED_VIEWPORT_WIDTH);
 	}
 	
 	public String getUniqueTableIdentifier()
@@ -28,4 +28,5 @@ public class TargetSummaryRowTable extends TableWithColumnWidthSaver
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
+	public static final int PREFERRED_VIEWPORT_WIDTH = 400;
 }
