@@ -44,6 +44,7 @@ public class ColumnWidthSyncer implements TableColumnModelListener
 	
 	public void columnMoved(TableColumnModelEvent event)
 	{
+		otherTable.getColumnModel().moveColumn(event.getFromIndex(), event.getToIndex());
 	}
 
 	public void columnRemoved(TableColumnModelEvent event)
