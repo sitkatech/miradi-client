@@ -107,6 +107,14 @@ public class Target extends Factor
 		return set;
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getStressRefs());
+		
+		return deepObjectRefsToCopy;
+	}
+		
 	public ORefList getStressRefs()
 	{
 		return stressRefs.getORefList();
