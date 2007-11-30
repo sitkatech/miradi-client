@@ -316,7 +316,7 @@ abstract public class DiagramPaster
 			if (type == FactorLink.getObjectType())
 				newObject = createFactorLink(json);
 			if (type == ThreatStressRating.getObjectType())
-				createThreatStressRatings(json);
+				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
 				fixObjectRefs(newObject, json);
@@ -360,8 +360,7 @@ abstract public class DiagramPaster
 		ORef targetRef = factorLink.getDownstreamTargetRef();
 		Target target = Target.find(getProject(), targetRef);
 		ORefList stresses = target.getStressRefs();
-		ORefList stressRefsWithoutRating = new ORefList();
-		stressRefsWithoutRating = ORefList.subtract(stresses, extractedStresses);
+		ORefList stressRefsWithoutRating = ORefList.subtract(stresses, extractedStresses);
 		return stressRefsWithoutRating;
 	}		
 
