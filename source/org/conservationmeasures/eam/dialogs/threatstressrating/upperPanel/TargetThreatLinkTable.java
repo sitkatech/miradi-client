@@ -23,8 +23,17 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		setColumnWidths();
 	}
 	
+	private void setColumnWidths()
+	{
+		for (int i = 0; i < getColumnCount(); ++i)
+		{
+			setColumnWidth(i, 100);
+		}
+	}
+
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
 	{
 		return (TargetThreatLinkTableModel) getModel();
@@ -63,6 +72,7 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTable";
-	public static final int PREFERRED_VIEWPORT_WIDTH = 400;
+	public static final int PREFERRED_VIEWPORT_WIDTH = 600;
+	public static final int PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH = 130;
 	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;
 }

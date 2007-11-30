@@ -18,7 +18,7 @@ public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemR
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
-		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH);
 	}
 
 	public String getUniqueTableIdentifier()
