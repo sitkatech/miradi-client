@@ -78,7 +78,7 @@ abstract public class DiagramPaster
 
 	protected void createNewFactors() throws Exception
 	{
-		oldToNewFactorRefMap = new HashMap();
+		factorRelatedPastedObjectMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{			
 			String jsonAsString = factorDeepCopies.get(i);
@@ -90,7 +90,7 @@ abstract public class DiagramPaster
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
-			oldToNewFactorRefMap.put(oldObjectRef, newObject.getRef());
+			factorRelatedPastedObjectMap.put(oldObjectRef, newObject.getRef());
 			fixupRefs(newObject);
 		}
 	}
@@ -173,8 +173,8 @@ abstract public class DiagramPaster
 
 	private ORef fixupSingleRef(ORef oldRef) throws Exception
 	{
-		if (oldToNewFactorRefMap.containsKey(oldRef))
-			return  (ORef) oldToNewFactorRefMap.get(oldRef);
+		if (factorRelatedPastedObjectMap.containsKey(oldRef))
+			return  (ORef) factorRelatedPastedObjectMap.get(oldRef);
 		
 		if (!isInBetweenProjectPaste())
 			return oldRef;
@@ -428,7 +428,7 @@ abstract public class DiagramPaster
 	{
 		BaseId oldThreatStressRatingRef = json.getId(ThreatStressRating.TAG_ID);
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-		ORef newStressRef = (ORef) oldToNewFactorRefMap.get(oldStressRef);
+		ORef newStressRef = (ORef) factorRelatedPastedObjectMap.get(oldStressRef);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
 		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
@@ -451,7 +451,7 @@ abstract public class DiagramPaster
 
 	private boolean haveBothFactorsBeenCopied(ORef oldFromRef, ORef oldToRef)
 	{
-		return (oldToNewFactorRefMap.get(oldFromRef) == null || oldToNewFactorRefMap.get(oldToRef) == null);
+		return (factorRelatedPastedObjectMap.get(oldFromRef) == null || factorRelatedPastedObjectMap.get(oldToRef) == null);
 	}
 	
 	public boolean wasAnyDataLost() throws Exception
@@ -658,7 +658,7 @@ abstract public class DiagramPaster
 
 	public HashMap getOldToNewFactorRefMap()
 	{
-		return oldToNewFactorRefMap;
+		return factorRelatedPastedObjectMap;
 	}
 	
 	private DiagramObject getDiagramObject()
@@ -683,7 +683,7 @@ abstract public class DiagramPaster
 	Vector<String> factorLinkDeepCopies;
 	Vector<String> diagramLinkDeepCopies;
 	
-	HashMap oldToNewFactorRefMap;
+	HashMap factorRelatedPastedObjectMap;
 	HashMap oldToNewDiagramFactorRefMap;
 	HashMap linkRelatedPastedObjectMap;
 	
