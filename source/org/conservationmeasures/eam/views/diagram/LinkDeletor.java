@@ -104,12 +104,17 @@ public class LinkDeletor
 			if (allReferrers.size() != 0)
 				continue;
 			
-			Command[] commandsToClear = threatStressRating.createCommandsToClear();
-			project.executeCommandsWithoutTransaction(commandsToClear);
-			
-			CommandDeleteObject deleteThreatStressRating = new CommandDeleteObject(threatStressRatingRef);
-			project.executeCommand(deleteThreatStressRating);
+			deleteThreatStressRating(threatStressRating);
 		}
+	}
+
+	public void deleteThreatStressRating(ThreatStressRating threatStressRating) throws CommandFailedException
+	{
+		Command[] commandsToClear = threatStressRating.createCommandsToClear();
+		project.executeCommandsWithoutTransaction(commandsToClear);
+		
+		CommandDeleteObject deleteThreatStressRating = new CommandDeleteObject(threatStressRating.getRef());
+		project.executeCommand(deleteThreatStressRating);
 	}
 
 	private boolean isToOrFromFactorBeingDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
