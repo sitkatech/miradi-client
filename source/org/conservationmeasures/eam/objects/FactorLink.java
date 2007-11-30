@@ -97,6 +97,14 @@ public class FactorLink extends BaseObject
 		return set;
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getThreatStressRatingRefs());
+		
+		return deepObjectRefsToCopy;
+	}
+			
 	public ORef getFromFactorRef()
 	{
 		ORef rawRef = fromRef.getRawRef();
