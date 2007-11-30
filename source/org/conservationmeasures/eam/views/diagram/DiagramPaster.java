@@ -323,10 +323,10 @@ abstract public class DiagramPaster
 		
 		Collection collection = oldToNewFactorLinkRefMap.values();
 		Vector newFactorLinks = new Vector(collection);
-		ensureStressThreatStressRatingExistance(newFactorLinks);
+		possiblyDeleteThreatStressRatingWithNonexistantStress(newFactorLinks);
 	}
 
-	private void ensureStressThreatStressRatingExistance(Vector newFactorLinks) throws Exception
+	private void possiblyDeleteThreatStressRatingWithNonexistantStress(Vector newFactorLinks) throws Exception
 	{
 		for (int i = 0; i < newFactorLinks.size(); ++i)
 		{
