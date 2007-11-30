@@ -7,11 +7,13 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
@@ -42,6 +44,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -318,6 +321,43 @@ abstract public class DiagramPaster
 			if (newObject != null)
 				fixObjectRefs(newObject, json);
 		}
+		
+		ensureStressThreatStressRatingExistance();
+	}
+
+	private void ensureStressThreatStressRatingExistance() throws Exception
+	{
+		Collection collection = oldToNewFactorLinkRefMap.values();
+		Vector newFactorLinks = new Vector(collection);
+		for (int i = 0; i < newFactorLinks.size(); ++i)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), (ORef) newFactorLinks.get(i));
+			deleteThreatStressRefsWithoutAStress(factorLink);
+		}
+	}
+
+	private void deleteThreatStressRefsWithoutAStress(FactorLink factorLink) throws Exception
+	{
+		ORefList threatStressRefs = factorLink.getThreatStressRatingRefs();
+		for(int i = 0; i < threatStressRefs.size(); ++i)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRefs.get(i));
+			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
+			if (stress == null)
+				deleteThreatStressRating(factorLink, threatStressRating);
+		}
+	}
+
+	private void deleteThreatStressRating(FactorLink factorLink, ThreatStressRating threatStressRating) throws Exception
+	{
+		CommandSetObjectData removeThreatStressRating = CommandSetObjectData.createRemoveORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRating.getRef());
+		getProject().executeCommand(removeThreatStressRating);
+		
+		Command[] commandsToClear = threatStressRating.createCommandsToClear();
+		getProject().executeCommandsWithoutTransaction(commandsToClear);
+		
+		CommandDeleteObject deleteCommand = new CommandDeleteObject(threatStressRating.getRef());
+		getProject().executeCommand(deleteCommand);
 	}
 
 	private void fixObjectRefs(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
@@ -357,7 +397,7 @@ abstract public class DiagramPaster
 		ORef newStressRef = (ORef) oldToNewFactorRefMap.get(oldStressRef);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		oldToNewFactorLinkRefMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
+		oldToNewFactorRefMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
 	}	
 
 	private boolean isInBetweenProjectPaste()
