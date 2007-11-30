@@ -33,6 +33,9 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 	public ORefList[] getSelectedHierarchies()
 	{
 		int threatIndex = getSelectedRow();
+		if(threatIndex < 0)
+			return new ORefList[0];
+		
 		Factor directThreat = getTargetThreatLinkTableModel().getDirectThreat(threatIndex);
 		
 		int tableColumn = getSelectedColumn();
