@@ -324,18 +324,18 @@ abstract public class DiagramPaster
 		
 		Collection collection = linkRelatedPastedObjectMap.values();
 		Vector newFactorLinks = new Vector(collection);
-		possiblyDeleteThreatStressRatingWithNonexistantStress(newFactorLinks);
+		ensureRatingsExistForStresses(newFactorLinks);
 	}
 
-	private void possiblyDeleteThreatStressRatingWithNonexistantStress(Vector newFactorLinks) throws Exception
+	private void ensureRatingsExistForStresses(Vector newFactorLinks) throws Exception
 	{
 		for (int i = 0; i < newFactorLinks.size(); ++i)
 		{
-			ORef newFactorLink = (ORef) newFactorLinks.get(i);
-			if (newFactorLink.getObjectType() != FactorLink.getObjectType())
+			ORef newFactorLinkRef = (ORef) newFactorLinks.get(i);
+			if (newFactorLinkRef.getObjectType() != FactorLink.getObjectType())
 				continue;
 			
-			FactorLink factorLink = FactorLink.find(getProject(), newFactorLink);
+			FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
 			deleteThreatStressRefsWithoutAStress(factorLink);
 			createThreatStressRatingForStress(factorLink);
 		}
