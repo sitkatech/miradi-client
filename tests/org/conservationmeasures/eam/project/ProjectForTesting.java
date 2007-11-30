@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -36,6 +37,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.PointList;
@@ -342,14 +344,30 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public FactorId createThreat() throws Exception
 	{
+		ORef factorLinkRef = createThreatTargetLink();
+		FactorLink factorLink = FactorLink.find(this, factorLinkRef);
+		
+		return (FactorId) factorLink.getFromFactorRef().getObjectId();
+	}
+	
+	public ORef createThreatTargetLink() throws Exception
+	{
 		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
-		createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
-		return threat.getWrappedId();
+		return createObjectAndReturnRef(ObjectType.FACTOR_LINK, parameter);
+	}
+	
+	public ORef creatThreatTargetBidirectionalLink() throws Exception
+	{
+		ORef factorLinkRef = createThreatTargetLink();
+		CommandSetObjectData setBidirectionality = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		executeCommand(setBidirectionality);
+		
+		return factorLinkRef;
 	}
 
-	DiagramModel diagramModel;
-	Vector commandStack;
+	private DiagramModel diagramModel;
+	private Vector commandStack;
 }

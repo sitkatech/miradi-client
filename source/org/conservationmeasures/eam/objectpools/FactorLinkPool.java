@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -52,6 +53,19 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return ORef.INVALID;
 	}
 
+	public FactorLinkSet getDirectThreatTargetLinks()
+	{
+		FactorLinkSet allDirectThreatLinks = new FactorLinkSet();
+		for(int i = 0; i < size(); ++i)
+		{
+			FactorLink factorLink = getLinkage(i);
+			if (factorLink.isThreatTargetLink())
+				allDirectThreatLinks.add(factorLink);
+		}
+		
+		return allDirectThreatLinks;
+	}
+	
 	// NOTE: This method is deprecated! Pass Factors instead!
 	public boolean isLinked(ORef factorRef1, ORef factorRef2)
 	{
