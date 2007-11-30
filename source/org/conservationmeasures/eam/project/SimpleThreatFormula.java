@@ -17,7 +17,7 @@ public class SimpleThreatFormula
 	{
 	}
 	
-	public SimpleThreatFormula(SimpleModeThreatRatingFramework frameworkToUse)
+	public SimpleThreatFormula(ThreatRatingFramework frameworkToUse)
 	{
 		framework = frameworkToUse;
 	}
@@ -186,5 +186,5 @@ public class SimpleThreatFormula
 	
 	static final int DEFAULT_VALUE = 0;
 	
-	SimpleModeThreatRatingFramework framework;
+	ThreatRatingFramework framework;
 }

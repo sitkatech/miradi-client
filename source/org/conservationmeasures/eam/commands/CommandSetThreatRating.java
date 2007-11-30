@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class CommandSetThreatRating extends Command
 {
@@ -49,7 +49,7 @@ public class CommandSetThreatRating extends Command
 	{
 		try
 		{
-			SimpleModeThreatRatingFramework framework = target.getThreatRatingFramework();
+			ThreatRatingFramework framework = target.getThreatRatingFramework();
 			ThreatRatingBundle bundle = framework.getBundle(getThreatId(), getTargetId());
 			BaseId oldValueId = bundle.getValueId(criterionId);
 			if(!expectedValueId.isInvalid() && !expectedValueId.equals(oldValueId))

@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
@@ -123,7 +123,7 @@ abstract public class ProjectServer
 	}
 	
 	
-	public void writeThreatRatingFramework(SimpleModeThreatRatingFramework framework) throws IOException
+	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
 	{
 		writeJsonFile(getThreatRatingFrameworkFile(), framework.toJson());
 	}
@@ -242,7 +242,7 @@ abstract public class ProjectServer
 	
 	private File getThreatBundleFile(BaseId threatId, BaseId targetId)
 	{
-		String bundleKey = SimpleModeThreatRatingFramework.getBundleKey(threatId, targetId);
+		String bundleKey = ThreatRatingFramework.getBundleKey(threatId, targetId);
 		return new File(getThreatRatingsDirectory(), bundleKey);
 	}
 	

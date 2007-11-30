@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.GroupOfDiagrams;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -101,7 +101,7 @@ public class DiagramModel extends DefaultGraphModel
 		return getDiagramObject().getDiagramChainBuilder();
 	}
 	
-	public SimpleModeThreatRatingFramework getThreatRatingFramework()
+	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return project.getThreatRatingFramework();
 	}

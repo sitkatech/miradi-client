@@ -35,7 +35,7 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
@@ -133,7 +133,7 @@ public class ThreatMatrixView extends TabbedView
 		return model;
 	}
 	
-	public SimpleModeThreatRatingFramework getThreatRatingFramework()
+	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return getProject().getThreatRatingFramework();
 	}
