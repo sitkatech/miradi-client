@@ -72,7 +72,7 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTable";
-	public static final int PREFERRED_VIEWPORT_WIDTH = 600;
+	public static final int PREFERRED_VIEWPORT_WIDTH = 500;
 	public static final int PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH = 130;
 	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;
 }
