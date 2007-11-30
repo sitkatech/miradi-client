@@ -306,7 +306,7 @@ abstract public class DiagramPaster
 	
 	protected void createNewFactorLinks() throws Exception
 	{
-		oldToNewFactorLinkRefMap = new HashMap();
+		linkRelatedPastedObjectMap = new HashMap();
 		
 		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
 		{
@@ -322,7 +322,7 @@ abstract public class DiagramPaster
 				fixObjectRefs(newObject, json);
 		}
 		
-		Collection collection = oldToNewFactorLinkRefMap.values();
+		Collection collection = linkRelatedPastedObjectMap.values();
 		Vector newFactorLinks = new Vector(collection);
 		possiblyDeleteThreatStressRatingWithNonexistantStress(newFactorLinks);
 	}
@@ -419,7 +419,7 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-		oldToNewFactorLinkRefMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
+		linkRelatedPastedObjectMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 		
 		return newFactorLink;
 	}
@@ -431,7 +431,7 @@ abstract public class DiagramPaster
 		ORef newStressRef = (ORef) oldToNewFactorRefMap.get(oldStressRef);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		oldToNewFactorLinkRefMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
+		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
 	}	
 
 	private boolean isInBetweenProjectPaste()
@@ -685,7 +685,7 @@ abstract public class DiagramPaster
 	
 	HashMap oldToNewFactorRefMap;
 	HashMap oldToNewDiagramFactorRefMap;
-	HashMap oldToNewFactorLinkRefMap;
+	HashMap linkRelatedPastedObjectMap;
 	
 	PointManipulater dataHelper;
 	TransferableMiradiList transferableList;
