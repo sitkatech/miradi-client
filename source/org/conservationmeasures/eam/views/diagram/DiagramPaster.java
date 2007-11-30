@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -306,8 +307,12 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int type = json.getInt("Type");
+			createThreatStressRatings(json);
+			if (type != FactorLink.getObjectType())
+				continue;
+			
 			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-		
 			if (cannotCreateNewFactorLinkFromAnotherProject(json))
 				continue;
 			
@@ -317,8 +322,7 @@ abstract public class DiagramPaster
 			LinkCreator linkCreator = new LinkCreator(project);
 			if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
 				continue;
-			
-			int type = json.getInt("Type");
+						
 			ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
 			FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 			
@@ -327,6 +331,13 @@ abstract public class DiagramPaster
 			
 			oldToNewFactorLinkRefMap.put(new ORef(type, oldFactorLinkId), newFactorLink.getRef());
 		}
+	}
+
+	private void createThreatStressRatings(EnhancedJsonObject json)
+	{
+		if (json.getInt("Type") != ThreatStressRating.getObjectType())
+			return;
+		
 	}
 
 	private boolean isInBetweenProjectPaste()
@@ -521,6 +532,8 @@ abstract public class DiagramPaster
 				ObjectType.ASSIGNMENT,
 				ObjectType.ACCOUNTING_CODE,
 				ObjectType.FUNDING_SOURCE,
+				ObjectType.STRESS,
+				ObjectType.THREAT_STRESS_RATING,
 				};
 	}
 	
@@ -539,6 +552,8 @@ abstract public class DiagramPaster
 				ObjectType.ASSIGNMENT,
 				ObjectType.ACCOUNTING_CODE,
 				ObjectType.FUNDING_SOURCE,
+				ObjectType.STRESS,
+				ObjectType.THREAT_STRESS_RATING,
 				};
 	}
 	
