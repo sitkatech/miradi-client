@@ -28,11 +28,11 @@ public class SummaryColumnComparator implements  Comparator
 		{
 			Factor factor1 = (Factor) object1;
 			BaseId baseId1 = factor1.getId();
-			ValueOption valueOption1 = framework.getThreatThreatRatingValue(baseId1);
+			ValueOption valueOption1 = framework.getThreatRatingValue(baseId1);
 
 			Factor factor2 = (Factor) object2;
 			BaseId baseId2 = factor2.getId();
-			ValueOption valueOption2 = framework.getThreatThreatRatingValue(baseId2);
+			ValueOption valueOption2 = framework.getThreatRatingValue(baseId2);
 			
 			Integer value1 = new Integer(valueOption1.getNumericValue());
 			Integer value2 = new Integer(valueOption2.getNumericValue());

@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.project;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.martus.util.TestCaseEnhanced;
 
-public class TestFactorLinkPool extends TestCaseEnhanced
+public class TestFactorLinkPool extends TestCaseWithProject
 {
 	public TestFactorLinkPool(String name)
 	{
@@ -43,6 +43,17 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 		assertFalse("Found link 1->3?", pool.isLinked(node1.getRef(), node3.getRef()));
 	}
 	
+	public void testGetDirectThreatTargetLinks() throws Exception
+	{
+		assertEquals("links found?", 0, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
+		
+		getProject().createThreatTargetLink();
+		assertEquals("wrong link count?", 1, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
+		
+		getProject().creatThreatTargetBidirectionalLink();
+		assertEquals("wrong link count?", 2, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
+	}
+	
 	class LinkageMonitor implements FactorLinkListener
 	{
 		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
@@ -60,5 +71,5 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 	}
 	
 
-	IdAssigner idAssigner;
+	private IdAssigner idAssigner;
 }
