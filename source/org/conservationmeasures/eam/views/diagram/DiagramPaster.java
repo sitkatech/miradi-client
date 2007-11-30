@@ -321,13 +321,13 @@ abstract public class DiagramPaster
 				fixObjectRefs(newObject, json);
 		}
 		
-		ensureStressThreatStressRatingExistance();
-	}
-
-	private void ensureStressThreatStressRatingExistance() throws Exception
-	{
 		Collection collection = oldToNewFactorLinkRefMap.values();
 		Vector newFactorLinks = new Vector(collection);
+		ensureStressThreatStressRatingExistance(newFactorLinks);
+	}
+
+	private void ensureStressThreatStressRatingExistance(Vector newFactorLinks) throws Exception
+	{
 		for (int i = 0; i < newFactorLinks.size(); ++i)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), (ORef) newFactorLinks.get(i));
