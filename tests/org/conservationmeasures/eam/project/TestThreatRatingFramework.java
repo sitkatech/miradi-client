@@ -190,8 +190,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ValueOption high = framework.findValueOptionByNumericValue(3);
 		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
 		
-		assertEquals("threat1 not none?", none, framework.getThreatRatingValue(threat1.getWrappedId()));
-		assertEquals("threat2 not none?", none, framework.getThreatRatingValue(threat2.getWrappedId()));
+		assertEquals("threat1 not none?", none, framework.getThreatThreatRatingValue(threat1.getWrappedId()));
+		assertEquals("threat2 not none?", none, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
 		assertEquals("target1 not none?", none, framework.getTargetThreatRatingValue(target1.getWrappedId()));
 		assertEquals("target2 not none?", none, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 
@@ -199,11 +199,11 @@ public class TestThreatRatingFramework extends EAMTestCase
 		createLinkageAndBundle(project, threat1, target2, veryHigh);
 		assertEquals("target1 not high?", high, framework.getTargetThreatRatingValue(target1.getWrappedId()));
 		createLinkageAndBundle(project, threat2, target1, veryHigh);
-		assertEquals("threat2 not high?", high, framework.getThreatRatingValue(threat2.getWrappedId()));
+		assertEquals("threat2 not high?", high, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
 		createLinkageAndBundle(project, threat2, target2, veryHigh);
 		
-		assertEquals("threat1 not very high?", veryHigh, framework.getThreatRatingValue(threat1.getWrappedId()));
-		assertEquals("threat2 not very high?", veryHigh, framework.getThreatRatingValue(threat2.getWrappedId()));
+		assertEquals("threat1 not very high?", veryHigh, framework.getThreatThreatRatingValue(threat1.getWrappedId()));
+		assertEquals("threat2 not very high?", veryHigh, framework.getThreatThreatRatingValue(threat2.getWrappedId()));
 		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(target1.getWrappedId()));
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
@@ -226,17 +226,17 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
 
 		populateBundle(framework, threatId, targetId, veryHigh);
-		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatRatingValue(threatId));
+		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		BaseId linkId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
-		assertEquals("linking didn't include value for threat?", high, framework.getThreatRatingValue(threatId));
+		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, linkId));
 		project.deleteObject(factorLink);
-		assertEquals("threat value included contributing factor?", none, framework.getThreatRatingValue(threatId));
+		assertEquals("threat value included contributing factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
 	

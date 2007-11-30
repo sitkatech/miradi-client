@@ -92,7 +92,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
 			if(node.isDirectThreat())
-				priority = framework.getThreatRatingValue(node.getWrappedId());
+				priority = framework.getThreatThreatRatingValue(node.getWrappedId());
 			if(node.isTarget())
 			{
 				Target target = (Target)node.getUnderlyingObject();
