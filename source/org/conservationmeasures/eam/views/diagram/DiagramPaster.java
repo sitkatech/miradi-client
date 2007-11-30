@@ -308,36 +308,37 @@ abstract public class DiagramPaster
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
-			createThreatStressRatings(json);
-			if (type != FactorLink.getObjectType())
-				continue;
-			
-			BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-			if (cannotCreateNewFactorLinkFromAnotherProject(json))
-				continue;
-			
-			ORef newFromRef = getFixedupFactorRef(json, FactorLink.TAG_FROM_REF);
-			ORef newToRef = getFixedupFactorRef(json, FactorLink.TAG_TO_REF);	
-			
-			LinkCreator linkCreator = new LinkCreator(project);
-			if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
-				continue;
-						
-			ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
-			FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
-			
-			Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
-			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
-			
-			oldToNewFactorLinkRefMap.put(new ORef(type, oldFactorLinkId), newFactorLink.getRef());
+			if (type == FactorLink.getObjectType())
+				createFactorLink(json);
+			if (type == ThreatStressRating.getObjectType())
+				createThreatStressRatings(json);
 		}
+	}
+	
+	private void createFactorLink(EnhancedJsonObject json) throws Exception
+	{
+		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
+		if (cannotCreateNewFactorLinkFromAnotherProject(json))
+			return;
+		
+		ORef newFromRef = getFixedupFactorRef(json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupFactorRef(json, FactorLink.TAG_TO_REF);	
+		
+		LinkCreator linkCreator = new LinkCreator(project);
+		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
+			return;
+					
+		ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
+		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
+		
+		Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
+		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
+		
+		oldToNewFactorLinkRefMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 	}
 
 	private void createThreatStressRatings(EnhancedJsonObject json)
 	{
-		if (json.getInt("Type") != ThreatStressRating.getObjectType())
-			return;
-		
 	}
 
 	private boolean isInBetweenProjectPaste()
