@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import java.awt.Color;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -23,6 +25,7 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		project = projectToUse;
 		directThreatRows =  getProject().getCausePool().getDirectThreats();
 		targets = getProject().getTargetPool().getTargets();
+		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
 	}
 	
 	public Factor getDirectThreat(int row)
@@ -48,16 +51,21 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 	protected String convertIntToString(int calculatedValue)
 	{
 		if (calculatedValue == 0)
-			return null;
+			return "";
 		
 		return Integer.toString(calculatedValue);
 	}
 	
 	protected ChoiceItem convertToChoiceItem(String fieldTag, String valueToConvert)
 	{
-		return new StatusQuestion(fieldTag).findChoiceByCode(valueToConvert);
+		ChoiceItem foundChoiceItem = new StatusQuestion(fieldTag).findChoiceByCode(valueToConvert);
+		if (foundChoiceItem == null)
+			return emptyChoiceItem;
+		
+		return foundChoiceItem;
 	}
 	
+	private ChoiceItem emptyChoiceItem;
 	private Project project;
 	protected Factor[] directThreatRows;
 	protected Target[] targets;

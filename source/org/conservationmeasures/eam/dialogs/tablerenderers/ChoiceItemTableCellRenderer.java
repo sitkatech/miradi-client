@@ -49,5 +49,6 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		return (ChoiceItem)value;
 	}
 
-	private ChoiceItem emptyChoiceItem;
+	protected ChoiceItem emptyChoiceItem;
+	
 }
