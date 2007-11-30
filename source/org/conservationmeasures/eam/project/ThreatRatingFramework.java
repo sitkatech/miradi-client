@@ -202,7 +202,7 @@ public class ThreatRatingFramework
 		return rollup;
 	}
 	
-	public ValueOption getThreatRatingValue(BaseId threatId)
+	public ValueOption getThreatThreatRatingValue(BaseId threatId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
 		return getSummaryOfBundles(bundleArray);
@@ -250,7 +250,7 @@ public class ThreatRatingFramework
 		int[] numericValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
-			ValueOption threatSummary = getThreatRatingValue(threats[i].getId());
+			ValueOption threatSummary = getThreatThreatRatingValue(threats[i].getId());
 			numericValues[i] = threatSummary.getNumericValue();
 		}
 		return getSummaryOfNumericValues(numericValues);

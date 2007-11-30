@@ -51,7 +51,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 			return getFramework().getTargetThreatRatingValue(getTargetId(column));
 	
 		if (isSumaryColumn(column))
-			return getFramework().getThreatRatingValue(getThreatId(row));
+			return getFramework().getThreatThreatRatingValue(getThreatId(row));
 
 		ThreatRatingBundle bundle = realDataGetValueAt(row,column);
 		if (bundle==null)
