@@ -168,15 +168,22 @@ public class LinkCreator
 		ORefList stressRefs = target.getStressRefs();
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{			
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRefs.get(i));
-			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			project.executeCommand(createThreatStressRating);
-			
-			threatStressRatingRefs.add(createThreatStressRating.getObjectRef());
+			ORef stressRef = stressRefs.get(i);
+			ORef threatStressRatingRef = createThreatStressRating(stressRef);
+			threatStressRatingRefs.add(threatStressRatingRef);
 		}
 		
 		CommandSetObjectData setThreatStressRatingRefs = new CommandSetObjectData(FactorLinkRef, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
 		project.executeCommand(setThreatStressRatingRefs);
+	}
+
+	public ORef createThreatStressRating(ORef stressRef) throws CommandFailedException
+	{
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
+		project.executeCommand(createThreatStressRating);
+		
+		return createThreatStressRating.getObjectRef();
 	}
 
 	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception

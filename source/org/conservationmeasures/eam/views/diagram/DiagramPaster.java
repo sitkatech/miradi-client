@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -332,7 +333,44 @@ abstract public class DiagramPaster
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), (ORef) newFactorLinks.get(i));
 			deleteThreatStressRefsWithoutAStress(factorLink);
+			createThreatStressRatingForStress(factorLink);
 		}
+	}
+
+	private void createThreatStressRatingForStress(FactorLink factorLink) throws Exception
+	{
+		if (!factorLink.isThreatTargetLink())
+			return;
+		
+		ORefList extractedStresses = extractThreatStressRatingStresses(factorLink);
+		ORef targetRef = factorLink.getDownstreamTargetRef();
+		Target target = Target.find(getProject(), targetRef);
+		ORefList stresses = target.getStressRefs();
+		ORefList subtractedORefList = new ORefList();
+		if (extractedStresses.size() > stresses.size())
+			subtractedORefList = ORefList.subtract(extractedStresses, stresses);
+		else
+			subtractedORefList = ORefList.subtract(stresses, extractedStresses);
+		
+		for (int i = 0; i < subtractedORefList.size(); ++i)
+		{
+			ORef newThreatStressRatingRef = new LinkCreator(getProject()).createThreatStressRating(subtractedORefList.get(i));
+			CommandSetObjectData appendThreatStressRating = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, newThreatStressRatingRef);
+			getProject().executeCommand(appendThreatStressRating);
+		}
+	}		
+
+	private ORefList extractThreatStressRatingStresses(FactorLink factorLink)
+	{
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		ORefList extractedStressRefs = new ORefList();
+		for (int i = 0; i < threatStressRatingRefs.size();++i)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
+			extractedStressRefs.add(threatStressRating.getStressRef());
+		}
+		
+		return extractedStressRefs;
 	}
 
 	private void deleteThreatStressRefsWithoutAStress(FactorLink factorLink) throws Exception
@@ -387,12 +425,10 @@ abstract public class DiagramPaster
 
 	private void createThreatStressRatings(EnhancedJsonObject json) throws Exception
 	{
-		BaseId oldThreatStressRatingRef = json.getId(ThreatStressRating.TAG_ID);
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		ORef newStressRef = (ORef) oldToNewFactorRefMap.get(oldStressRef);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
-		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		oldToNewFactorRefMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
+		createObject(ThreatStressRating.getObjectType(), extraInfo);
 	}	
 
 	private boolean isInBetweenProjectPaste()
