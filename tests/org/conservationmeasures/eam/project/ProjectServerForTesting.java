@@ -42,7 +42,7 @@ public class ProjectServerForTesting extends HybridFileBasedProjectServer
 	
 	
 
-	public void writeThreatRatingFramework(SimpleModeThreatRatingFramework framework) throws IOException
+	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
 	{
 		super.writeThreatRatingFramework(framework);
 		++callsToWriteThreatRatingFramework;

@@ -269,6 +269,6 @@ public class TestSimpleThreatFormula extends EAMTestCase
 	}
 	
 	ProjectForTesting project;
-	SimpleModeThreatRatingFramework framework;
+	ThreatRatingFramework framework;
 	SimpleThreatFormula formula;
 }

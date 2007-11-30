@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.SimpleModeThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -212,7 +212,7 @@ public class ThreatRatingPanel extends Box
 	}
 	
 	ThreatMatrixView view;
-	SimpleModeThreatRatingFramework framework;
+	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;
 	UiLabel ratingSummaryLabel;
 	JPanel ratingSummaryPanel;

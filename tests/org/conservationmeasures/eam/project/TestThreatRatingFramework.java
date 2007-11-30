@@ -50,7 +50,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testJson()
 	{
 		JSONObject json = framework.toJson();
-		JSONArray bundleKeys = json.getJSONArray(SimpleModeThreatRatingFramework.TAG_BUNDLE_KEYS);
+		JSONArray bundleKeys = json.getJSONArray(ThreatRatingFramework.TAG_BUNDLE_KEYS);
 		assertEquals("didn't jsonize bundle keys?", framework.getBundleCount(), bundleKeys.length());
 	}
 	
@@ -75,7 +75,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 			Project loadedProject = new Project();
 			loadedProject.createOrOpen(tempDir);
 			IdList loadedOptionIds = loadedProject.getThreatRatingFramework().getValueOptionIds();
-			SimpleModeThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
+			ThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
 			ThreatRatingBundle gotBundle = loadedProject.getThreatRatingFramework().getBundle(threatId, targetId);
 			assertEquals("didn't load bundles?", bundle.getValueId(createdId), gotBundle.getValueId(createdId));
@@ -243,7 +243,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testGetHighestValueForTarget() throws Exception
 	{
 		int[][] bundleValues = { {3,}, {4,}, };
-		SimpleModeThreatRatingFramework trf = createFramework(bundleValues);
+		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
 			FactorId targetId = trf.getProject().getTargetPool().getTargets()[0].getFactorId();
@@ -288,7 +288,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	private void verifyPureMajority(String message, int expected, int[][] bundleValues) throws Exception
 	{
-		SimpleModeThreatRatingFramework trf = createFramework(bundleValues);
+		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
 			assertEquals(message, expected, trf.getProjectMajorityRating().getNumericValue());
@@ -301,7 +301,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private void verifyOverallProjectRating(String message, int expected, int[][] bundleValues) throws Exception
 	{
-		SimpleModeThreatRatingFramework trf = createFramework(bundleValues);
+		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
 			assertEquals(message, expected, trf.getOverallProjectRating().getNumericValue());
@@ -326,7 +326,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 //		return threatId;
 	}
 	
-	void populateBundle(SimpleModeThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
+	void populateBundle(ThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
 		RatingCriterion criteria[] = frameworkToUse.getCriteria();
@@ -334,10 +334,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 			bundle.setValueId(criteria[i].getId(), value.getId());
 	}
 	
-	private SimpleModeThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
+	private ThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
 	{
 		ProjectForTesting tempProject = new ProjectForTesting(getName());
-		SimpleModeThreatRatingFramework trf = tempProject.getThreatRatingFramework();
+		ThreatRatingFramework trf = tempProject.getThreatRatingFramework();
 		
 		int threatCount = bundleValues.length;
 		DiagramFactor[] threats = new DiagramFactor[threatCount];
@@ -364,6 +364,6 @@ public class TestThreatRatingFramework extends EAMTestCase
 		return trf;
 	}
 	
-	SimpleModeThreatRatingFramework framework;
+	ThreatRatingFramework framework;
 	private ProjectForTesting project;
 }
