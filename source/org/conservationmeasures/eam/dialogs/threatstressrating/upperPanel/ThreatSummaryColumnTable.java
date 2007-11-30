@@ -11,7 +11,7 @@ public class ThreatSummaryColumnTable extends TableWithSetPreferredScrollableVie
 	public ThreatSummaryColumnTable(ThreatSummaryColumnTableModel model)
 	{
 		super(model);
-		setForcedPreferredScrollableViewportWidth(150);
+		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH);
 	}
 	
 	public String getUniqueTableIdentifier()
