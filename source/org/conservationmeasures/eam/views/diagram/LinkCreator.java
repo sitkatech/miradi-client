@@ -133,22 +133,32 @@ public class LinkCreator
 
 	public FactorLinkId createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		ORef factorLinkRef = createFactorLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
+		ORef factorLinkRef = createFactorLinkWithPossibleThreatStressRatings(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		return (FactorLinkId) factorLinkRef.getObjectId();
 	}
 
-	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
+	public ORef createFactorLinkWithPossibleThreatStressRatings(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
-		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
-		project.executeCommand(createFactorLink);
-		
-		ORef factorLinkRef = createFactorLink.getObjectRef();
+		ORef factorLinkRef = createFactorLink(fromFactorRef, toFactorRef);
 		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
 		if (factorLink.isThreatTargetLink())
 			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
 		
 		return factorLinkRef;
+	}
+	
+	public ORef createFactorLinkWithoutThreatStressRatings(ORef fromRef, ORef toRef) throws Exception
+	{
+		return createFactorLink(fromRef, toRef);
+	}
+	
+	private ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
+	{
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
+		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		project.executeCommand(createFactorLink);
+		
+		return createFactorLink.getObjectRef();
 	}
 	
 	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
