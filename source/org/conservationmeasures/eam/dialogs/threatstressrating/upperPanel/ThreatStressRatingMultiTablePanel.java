@@ -27,7 +27,6 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		createTables();
 		addTables();
 		addTablesToSelectionController();
-		targetThreatLinkTable.getSelectionModel().addListSelectionListener(this);
 		synchTableColumns();
 	}
 	
@@ -111,6 +110,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		targetThreatLinkTable.getSelectionModel().addListSelectionListener(listener);
+		targetThreatLinkTable.getColumnModel().getSelectionModel().addListSelectionListener(listener);
 	}
 
 	public void removeSelectionChangeListener(ListSelectionListener listener)
