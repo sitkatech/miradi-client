@@ -13,7 +13,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
@@ -353,11 +352,7 @@ abstract public class DiagramPaster
 		CommandSetObjectData removeThreatStressRating = CommandSetObjectData.createRemoveORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRating.getRef());
 		getProject().executeCommand(removeThreatStressRating);
 		
-		Command[] commandsToClear = threatStressRating.createCommandsToClear();
-		getProject().executeCommandsWithoutTransaction(commandsToClear);
-		
-		CommandDeleteObject deleteCommand = new CommandDeleteObject(threatStressRating.getRef());
-		getProject().executeCommand(deleteCommand);
+		new LinkDeletor(getProject()).deleteThreatStressRating(threatStressRating);
 	}
 
 	private void fixObjectRefs(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
