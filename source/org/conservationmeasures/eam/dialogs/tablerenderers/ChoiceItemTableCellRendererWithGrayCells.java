@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.tablerenderers;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
 public class ChoiceItemTableCellRendererWithGrayCells extends ChoiceItemTableCellRenderer
@@ -16,11 +17,16 @@ public class ChoiceItemTableCellRendererWithGrayCells extends ChoiceItemTableCel
 		super(providerToUse, fontProviderToUse);
 	}
 
-	protected Color getBackgroundColor(ChoiceItem choice)
+	protected ChoiceItem getChoiceItem(Object value)
 	{
-		if (choice.getCode().length() == 0)
-			return Color.GRAY.brighter();
+		if(value == null)
+			return new ChoiceItem("NOT LINKED", "", Color.GRAY.brighter());
 		
-		return choice.getColor();
-	}
+		if(value instanceof String)
+		{
+			EAM.logError("Expected ChoiceItem, not: " + value);
+			return emptyChoiceItem;
+		}
+		return (ChoiceItem)value;
+	}	
 }
