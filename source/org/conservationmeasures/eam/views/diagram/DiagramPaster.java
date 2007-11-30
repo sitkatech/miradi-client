@@ -142,6 +142,9 @@ abstract public class DiagramPaster
 		if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
 			return getCommandToFixId(newObject, ProjectResource.getObjectType(), tag);
 		
+		if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
+			return getCommandToFixRef(newObject, tag);
+			
 		return new Command[0];
 	}
 
@@ -149,6 +152,14 @@ abstract public class DiagramPaster
 	{
 		BaseId baseId = new BaseId(newObject.getData(tag));
 		ORef refToFix = new ORef(annotationType, baseId);
+		ORef fixedRef = fixupSingleRef(refToFix);
+		
+		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.getObjectId().toString())};
+	}
+
+	private Command[] getCommandToFixRef(BaseObject newObject, String tag) throws Exception
+	{
+		ORef refToFix = ORef.createFromString(newObject.getData(tag));
 		ORef fixedRef = fixupSingleRef(refToFix);
 		
 		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.getObjectId().toString())};
