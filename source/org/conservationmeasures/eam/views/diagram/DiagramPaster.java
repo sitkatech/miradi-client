@@ -162,7 +162,7 @@ abstract public class DiagramPaster
 		ORef refToFix = ORef.createFromString(newObject.getData(tag));
 		ORef fixedRef = fixupSingleRef(refToFix);
 		
-		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.getObjectId().toString())};
+		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.toString())};
 	}
 
 	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
