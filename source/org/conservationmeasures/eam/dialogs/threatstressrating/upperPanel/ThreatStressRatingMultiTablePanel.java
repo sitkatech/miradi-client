@@ -92,7 +92,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private void synchTableColumns()
 	{
-		ColumnWidthMoveSyncer columnWidthSyncer = new ColumnWidthMoveSyncer(targetSummaryRowTable);
+		ColumnChangeSyncer columnWidthSyncer = new ColumnChangeSyncer(targetSummaryRowTable);
 		targetThreatLinkTable.getColumnModel().addColumnModelListener(columnWidthSyncer);
 		
 		columnWidthSyncer.syncPreferredColumnWidths(targetThreatLinkTable.getColumnModel());
