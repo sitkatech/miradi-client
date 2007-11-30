@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateThreatStressRatingParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -303,30 +304,40 @@ abstract public class DiagramPaster
 	protected void createNewFactorLinks() throws Exception
 	{
 		oldToNewFactorLinkRefMap = new HashMap();
+		
 		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
 		{
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			BaseObject newObject = null;	
 			int type = json.getInt("Type");
 			if (type == FactorLink.getObjectType())
-				createFactorLink(json);
+				newObject = createFactorLink(json);
 			if (type == ThreatStressRating.getObjectType())
-				createThreatStressRatings(json);
+				createThreatStressRatings(json);		
+			if (newObject != null)
+				fixObjectRefs(newObject, json);
 		}
 	}
+
+	private void fixObjectRefs(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
+	{
+		loadNewObjectFromOldJson(newObject, json);
+		fixupRefs(newObject);
+	}
 	
-	private void createFactorLink(EnhancedJsonObject json) throws Exception
+	private FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
 	{
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
-			return;
+			return null;
 		
 		ORef newFromRef = getFixedupFactorRef(json, FactorLink.TAG_FROM_REF);
 		ORef newToRef = getFixedupFactorRef(json, FactorLink.TAG_TO_REF);	
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
-			return;
+			return null;
 					
 		ORef factorLinkRef = linkCreator.createFactorLinkWithoutThreatStressRatings(newFromRef, newToRef);
 		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
@@ -335,11 +346,19 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 		
 		oldToNewFactorLinkRefMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
+		
+		return newFactorLink;
 	}
 
-	private void createThreatStressRatings(EnhancedJsonObject json)
+	private void createThreatStressRatings(EnhancedJsonObject json) throws Exception
 	{
-	}
+		BaseId oldThreatStressRatingRef = json.getId(ThreatStressRating.TAG_ID);
+		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
+		ORef newStressRef = (ORef) oldToNewFactorRefMap.get(oldStressRef);
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
+		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
+		oldToNewFactorLinkRefMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
+	}	
 
 	private boolean isInBetweenProjectPaste()
 	{
