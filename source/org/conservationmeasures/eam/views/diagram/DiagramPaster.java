@@ -328,7 +328,6 @@ abstract public class DiagramPaster
 	
 	private FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
 	{
-		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
@@ -344,7 +343,8 @@ abstract public class DiagramPaster
 		
 		Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
-		
+
+		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 		oldToNewFactorLinkRefMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 		
 		return newFactorLink;
