@@ -472,8 +472,8 @@ abstract public class DiagramPaster
 	private BaseObject createThreatStressRatings(EnhancedJsonObject json) throws Exception
 	{
 		BaseId oldThreatStressRatingId = json.getId(ThreatStressRating.TAG_ID);
-		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(oldStressRef);
+		ORef newStressRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, ThreatStressRating.TAG_STRESS_REF);
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
 		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
 		return newThreatStressRating;
