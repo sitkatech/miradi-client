@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
-import org.conservationmeasures.eam.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class FactorDeleteHelper
@@ -132,7 +131,7 @@ public class FactorDeleteHelper
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		
 		if (factorToDelete.isTarget())
-			removeAndDeleteKeyEcologicalAttributesInList(factorToDelete, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			deleteAnnotations(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
 	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
@@ -155,17 +154,6 @@ public class FactorDeleteHelper
 		{
 			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
 			DeleteActivity.deleteTaskTree(getProject(), hierarchyWithParent, childTask);
-		}
-	}
-	
-	private void removeAndDeleteKeyEcologicalAttributesInList(Factor objectToDelete, String annotationListTag) throws Exception
-	{
-		IdList ids = new IdList(KeyEcologicalAttribute.getObjectType(), objectToDelete.getData(annotationListTag));
-		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
-		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getProject().findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, ids.get(annotationIndex));
-			Command[] commands = DeleteKeyEcologicalAttributeDoer.buildCommandsToDeleteReferencedObject(getProject(), objectToDelete, annotationListTag, kea);
-			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
 	
