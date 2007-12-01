@@ -88,7 +88,7 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (getField(tag).isPseudoField())
+			if (getField(tag).isPseudoField() || noneClearedFieldTags.contains(tag))
 				continue;
 			
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(getRef(), tag, json.optString(tag));
