@@ -7,14 +7,12 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class ThreatStressRatingEditorComponent extends MultiTablePanel
 {
@@ -34,11 +32,8 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	private void addTables()
 	{
-		Box horizontalBox = Box.createHorizontalBox();
-		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatStressRatingTable);
-		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
-
-		add(horizontalBox, BorderLayout.CENTER);
+		FastScrollPane resourceScroller = new FastScrollPane(threatStressRatingTable);
+		add(resourceScroller, BorderLayout.CENTER);
 	}
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
