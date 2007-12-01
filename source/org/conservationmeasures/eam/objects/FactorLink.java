@@ -6,10 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.util.Set;
-import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
@@ -174,18 +171,6 @@ public class FactorLink extends BaseObject
 			 return false;
 			 
 		 return (((Factor) objectManager.findObject(getFromFactorRef())).isTarget());
-	}
-	
-	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
-	{
-		Vector commandsToLoadFromJson = new Vector();
-		CommandSetObjectData setBidirectionalCommand = new CommandSetObjectData(getRef(), TAG_BIDIRECTIONAL_LINK, json.getString(TAG_BIDIRECTIONAL_LINK));
-		commandsToLoadFromJson.add(setBidirectionalCommand);
-
-		CommandSetObjectData setStressCommand = new CommandSetObjectData(getRef(), TAG_STRESS_LABEL, json.getString(TAG_STRESS_LABEL));
-		commandsToLoadFromJson.add(setStressCommand);
-
-		return (Command[]) commandsToLoadFromJson.toArray(new Command[0]);
 	}
 	
 	public boolean isRefList(String tag)
