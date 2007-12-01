@@ -33,7 +33,7 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 		
 		//return convertToChoiceItem("", Integer.toString(overallProjectRating));
 		
-		return "";
+		return null;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
