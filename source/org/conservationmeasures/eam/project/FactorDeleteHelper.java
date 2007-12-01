@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
@@ -120,9 +121,9 @@ public class FactorDeleteHelper
 	
 	private void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
-		deleteAnnotations(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
-		deleteAnnotations(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
-		deleteAnnotations(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
+		deleteAnnotationIds(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
+		deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
+		deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
 		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities
 		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 
@@ -131,15 +132,29 @@ public class FactorDeleteHelper
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		
 		if (factorToDelete.isTarget())
-			deleteAnnotations(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		{
+			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
+			deleteAnnotationIds(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		}
 	}
 
-	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
+	private void deleteAnnotationRefs(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
+	{
+		ORefList annotationRefs = new ORefList(factorToDelete.getData(annotationListTag));
+		deleteAnnotations(factorToDelete, annotationRefs, annotationListTag);
+	}
+	
+	private void deleteAnnotationIds(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
 	{
 		IdList ids = new IdList(annotationType, factorToDelete.getData(annotationListTag));
-		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
+		deleteAnnotations(factorToDelete, new ORefList(annotationType, ids), annotationListTag);
+	}
+	
+	private void deleteAnnotations(Factor factorToDelete, ORefList annotationRefs, String annotationListTag) throws Exception
+	{
+		for (int i = 0; i < annotationRefs.size(); ++i)
 		{
-			BaseObject thisAnnotation = getProject().findObject(annotationType, ids.get(annotationIndex));
+			BaseObject thisAnnotation = getProject().findObject(annotationRefs.get(i));
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteReferencedObject(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			getProject().executeCommandsWithoutTransaction(commands);
 		}
