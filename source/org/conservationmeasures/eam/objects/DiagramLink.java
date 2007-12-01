@@ -7,10 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Point;
 import java.util.Set;
-import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
@@ -73,15 +70,6 @@ public class DiagramLink extends BaseObject
 		json.putId(TAG_TO_DIAGRAM_FACTOR_ID, toId.getId());
 		
 		return json;
-	}
-
-	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
-	{
-		Vector commandsToLoadFromJson = new Vector();
-		CommandSetObjectData setBendPointsCommand = new CommandSetObjectData(getRef(), TAG_BEND_POINTS, json.getString(TAG_BEND_POINTS));
-		commandsToLoadFromJson.add(setBendPointsCommand);
-
-		return (Command[]) commandsToLoadFromJson.toArray(new Command[0]);
 	}
 
 	public int getType()
