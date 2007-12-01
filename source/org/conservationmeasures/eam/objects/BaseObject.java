@@ -113,6 +113,11 @@ abstract public class BaseObject
 		return false;
 	}
 	
+	public boolean isRefList(String tag)
+	{
+		return false;
+	}
+			
 	public int getAnnotationType(String tag)
 	{
 		throw new RuntimeException("Cannot find annotation type for " + tag);

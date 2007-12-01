@@ -187,6 +187,22 @@ public class FactorLink extends BaseObject
 
 		return (Command[]) commandsToLoadFromJson.toArray(new Command[0]);
 	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_THREAT_STRESS_RATING_REFS))
+			return true;
+			
+		return false;
+	}
+	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_THREAT_STRESS_RATING_REFS))
+			return ThreatStressRating.getObjectType();
+		
+		return super.getAnnotationType(tag);
+	}
 
 	public CreateObjectParameter getCreationExtraInfo()
 	{
