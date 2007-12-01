@@ -90,7 +90,7 @@ abstract public class DiagramPaster
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
 			factorRelatedPastedObjectMap.put(oldObjectRef, newObject.getRef());
-			fixupRefs(newObject);
+			fixupRefs(factorRelatedPastedObjectMap,newObject);
 		}
 	}
 
@@ -99,73 +99,86 @@ abstract public class DiagramPaster
 		return transferableList.getProjectFileName();
 	}
 
-	private void fixupRefs(BaseObject newObject) throws Exception
+	private void fixupRefs(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
-		Command[] commandsToFixRefs = createCommandToFixupRefLists(newObject);
+		Command[] commandsToFixRefs = createCommandToFixupRefLists(pastedObjectMap, newObject);
 		getProject().executeCommandsWithoutTransaction(commandsToFixRefs);
 	}
 	
-	public Command[] createCommandToFixupRefLists(BaseObject newObject) throws Exception
+	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
 		Vector commands = new Vector();
 		String[] fields = newObject.getFieldTags();
 		for (int i = 0; i < fields.length; ++i)
 		{
 			String tag = fields[i];
-			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(newObject, tag)));
-			commands.addAll(Arrays.asList(getCommandToFixUpIdRefs(newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(pastedObjectMap, newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandsToFixUpORefList(pastedObjectMap, newObject, tag)));
+			commands.addAll(Arrays.asList(getCommandToFixUpIdRefs(pastedObjectMap,newObject, tag)));
 		}
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
-	private Command[] getCommandsToFixUpIdListRefs(BaseObject newObject, String tag) throws Exception
+	private Command[] getCommandsToFixUpIdListRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
 		if (!newObject.isIdListTag(tag))
 			return new Command[0];
 		
-		Command commandToFixRefs = fixUpIdList(newObject, tag, newObject.getAnnotationType(tag));
+		Command commandToFixRefs = fixUpIdList(pastedObjectMap, newObject, tag, newObject.getAnnotationType(tag));
 		return new Command[] {commandToFixRefs};
 	}
 	
-	private Command[] getCommandToFixUpIdRefs(BaseObject newObject, String tag) throws Exception
+	private Command[] getCommandsToFixUpORefList(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (Assignment.getObjectType() != newObject.getType())
+		if (!newObject.isRefList(tag))
 			return new Command[0];
-
-		if (Assignment.TAG_ACCOUNTING_CODE.equals(tag))
-			return getCommandToFixId(newObject, AccountingCode.getObjectType(), tag);
 		
-		if (Assignment.TAG_FUNDING_SOURCE.equals(tag))
-			return getCommandToFixId(newObject, FundingSource.getObjectType(), tag);
-
-		if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
-			return getCommandToFixId(newObject, ProjectResource.getObjectType(), tag);
+		Command commandToFixRefs = fixUpRefList(pastedObjectMap, newObject, tag, newObject.getAnnotationType(tag));
+		return new Command[] {commandToFixRefs};
+	}
 		
-		if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
-			return getCommandToFixRef(newObject, tag);
-			
+	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
+	{
+		if (Assignment.getObjectType() == newObject.getType())
+		{
+			if (Assignment.TAG_ACCOUNTING_CODE.equals(tag))
+				return getCommandToFixId(pastedObjectMap, newObject, AccountingCode.getObjectType(), tag);
+
+			if (Assignment.TAG_FUNDING_SOURCE.equals(tag))
+				return getCommandToFixId(pastedObjectMap, newObject, FundingSource.getObjectType(), tag);
+
+			if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
+				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
+		}
+		
+		if (ThreatStressRating.getObjectType() == newObject.getType())
+		{
+			if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
+		
 		return new Command[0];
 	}
 
-	private Command[] getCommandToFixId(BaseObject newObject, int annotationType, String tag) throws Exception
+	private Command[] getCommandToFixId(HashMap pastedObjectMap, BaseObject newObject, int annotationType, String tag) throws Exception
 	{
 		BaseId baseId = new BaseId(newObject.getData(tag));
 		ORef refToFix = new ORef(annotationType, baseId);
-		ORef fixedRef = fixupSingleRef(refToFix);
+		ORef fixedRef = fixupSingleRef(pastedObjectMap, refToFix);
 		
 		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.getObjectId().toString())};
 	}
 
-	private Command[] getCommandToFixRef(BaseObject newObject, String tag) throws Exception
+	private Command[] getCommandToFixRef(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
 		ORef refToFix = ORef.createFromString(newObject.getData(tag));
-		ORef fixedRef = fixupSingleRef(refToFix);
+		ORef fixedRef = fixupSingleRef(pastedObjectMap, refToFix);
 		
 		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.toString())};
 	}
 
-	private Command fixUpIdList(BaseObject newObject, String annotationTag, int annotationType) throws Exception
+	private Command fixUpIdList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
@@ -173,7 +186,7 @@ abstract public class DiagramPaster
 		for (int i = 0; i < oldList.size(); ++i)
 		{
 			ORef oldRef = oldList.getRef(i);
-			ORef refToAdd = fixupSingleRef(oldRef);
+			ORef refToAdd = fixupSingleRef(pastedObjectMap, oldRef);
 			if (!refToAdd.isInvalid())
 				newList.addRef(refToAdd);
 		}
@@ -181,10 +194,28 @@ abstract public class DiagramPaster
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
 	}
 
-	private ORef fixupSingleRef(ORef oldRef) throws Exception
+	//TODO this is duplicate code as above exceot it deals in RefList,  
+	private Command fixUpRefList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
 	{
-		if (factorRelatedPastedObjectMap.containsKey(oldRef))
-			return  (ORef) factorRelatedPastedObjectMap.get(oldRef);
+		//FIXME currently items ids found in list but not in map are not added to new list
+		ORefList oldList = new ORefList(newObject.getData(annotationTag));
+		ORefList newList = new ORefList();
+		for (int i = 0; i < oldList.size(); ++i)
+		{
+			ORef oldRef = oldList.get(i);
+			ORef refToAdd = fixupSingleRef(pastedObjectMap, oldRef);
+			if (!refToAdd.isInvalid())
+				newList.add(refToAdd);
+		}
+		
+		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
+	}
+
+	
+	private ORef fixupSingleRef(HashMap pastedObjectMap, ORef oldRef) throws Exception
+	{
+		if (pastedObjectMap.containsKey(oldRef))
+			return  (ORef) pastedObjectMap.get(oldRef);
 		
 		if (!isInBetweenProjectPaste())
 			return oldRef;
@@ -192,10 +223,10 @@ abstract public class DiagramPaster
 		return ORef.INVALID;
 	}
 
-	private ORef getFixedupFactorRef(EnhancedJsonObject json, String tag) throws Exception
+	private ORef getFixedupFactorRef(HashMap pastedObjectMap, EnhancedJsonObject json, String tag) throws Exception
 	{
 		ORef oldRef = json.getRef(tag);
-		return fixupSingleRef(oldRef);
+		return fixupSingleRef(pastedObjectMap, oldRef);
 	}	
 	
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
@@ -223,7 +254,7 @@ abstract public class DiagramPaster
 	protected void createNewDiagramFactors() throws Exception
 	{
 		oldToNewDiagramFactorRefMap = new HashMap();
-		for (int i = 0; i < diagramFactorDeepCopies.size(); ++i)
+		for (int i = diagramFactorDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
@@ -317,8 +348,8 @@ abstract public class DiagramPaster
 	protected void createNewFactorLinks() throws Exception
 	{
 		linkRelatedPastedObjectMap = new HashMap();
-		
-		for (int i = 0; i < factorLinkDeepCopies.size(); ++i)
+
+		for (int i = factorLinkDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
@@ -330,7 +361,7 @@ abstract public class DiagramPaster
 				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
-				fixObjectRefs(newObject, json);
+				fixObjectRefs(linkRelatedPastedObjectMap, newObject, json);
 		}
 		
 		Vector newFactorLinks = new Vector(linkRelatedPastedObjectMap.values());
@@ -408,10 +439,10 @@ abstract public class DiagramPaster
 		new LinkDeletor(getProject()).deleteThreatStressRating(threatStressRating);
 	}
 
-	private void fixObjectRefs(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
+	private void fixObjectRefs(HashMap pastedObjectMap, BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
 		loadNewObjectFromOldJson(newObject, json);
-		fixupRefs(newObject);
+		fixupRefs(pastedObjectMap, newObject);
 	}
 	
 	private FactorLink createFactorLink(EnhancedJsonObject json) throws Exception
@@ -419,8 +450,8 @@ abstract public class DiagramPaster
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
-		ORef newFromRef = getFixedupFactorRef(json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupFactorRef(json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, FactorLink.TAG_TO_REF);	
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
@@ -440,12 +471,12 @@ abstract public class DiagramPaster
 
 	private BaseObject createThreatStressRatings(EnhancedJsonObject json) throws Exception
 	{
-		BaseId oldThreatStressRatingRef = json.getId(ThreatStressRating.TAG_ID);
+		BaseId oldThreatStressRatingId = json.getId(ThreatStressRating.TAG_ID);
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		ORef newStressRef = (ORef) factorRelatedPastedObjectMap.get(oldStressRef);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingRef), newThreatStressRating.getRef());
+		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
 		return newThreatStressRating;
 	}	
 
@@ -489,7 +520,7 @@ abstract public class DiagramPaster
 	protected void createNewDiagramLinks() throws Exception
 	{	
 		int offsetToAvoidOverlaying = dataHelper.getOffset(getProject());
-		for (int i = 0; i < diagramLinkDeepCopies.size(); ++i )
+		for (int i = diagramLinkDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
