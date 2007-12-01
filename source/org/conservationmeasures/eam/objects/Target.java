@@ -135,6 +135,22 @@ public class Target extends Factor
 		return true;
 	}
 	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_STRESS_REFS))
+			return true;
+		
+		return super.isRefList(tag);
+	}
+	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_STRESS_REFS))
+			return Stress.getObjectType();
+		
+		return super.getAnnotationType(tag);
+	}
+	
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
