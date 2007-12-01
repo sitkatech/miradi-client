@@ -40,6 +40,7 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		repaint();
 	}
 
 	public BaseObject getSelectedObject()
