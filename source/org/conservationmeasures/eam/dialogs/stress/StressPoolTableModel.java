@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
-import org.conservationmeasures.eam.questions.ScopeChoiceQuestion;
-import org.conservationmeasures.eam.questions.SeverityChoiceQuestion;
+import org.conservationmeasures.eam.questions.StressScopeChoiceQuestion;
+import org.conservationmeasures.eam.questions.StressSeverityChoiceQuestion;
 import org.conservationmeasures.eam.questions.StressRatingChoiceQuestion;
 
 public class StressPoolTableModel extends ObjectPoolTableModel
@@ -28,10 +28,10 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	public static ChoiceQuestion createQuestionForTag(String columnTag)
 	{
 		if (columnTag.equals(Stress.TAG_SCOPE))
-			return new ScopeChoiceQuestion(columnTag);
+			return new StressScopeChoiceQuestion(columnTag);
 		
 		if (columnTag.equals(Stress.TAG_SEVERITY))
-			return new SeverityChoiceQuestion(columnTag);
+			return new StressSeverityChoiceQuestion(columnTag);
 		
 		if (columnTag.equals(Stress.PSEUDO_STRESS_RATING))
 			return new StressRatingChoiceQuestion(columnTag);

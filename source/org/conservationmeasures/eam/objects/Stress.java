@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.StressBasedThreatFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.ScopeChoiceQuestion;
-import org.conservationmeasures.eam.questions.SeverityChoiceQuestion;
+import org.conservationmeasures.eam.questions.StressScopeChoiceQuestion;
+import org.conservationmeasures.eam.questions.StressSeverityChoiceQuestion;
 import org.conservationmeasures.eam.questions.StressRatingChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -65,11 +65,11 @@ public class Stress extends BaseObject
 	
 	public int calculateStressRating()
 	{
-		ChoiceItem scopeChoice = new ScopeChoiceQuestion(Stress.TAG_SCOPE).findChoiceByCode(scope.get());
+		ChoiceItem scopeChoice = new StressScopeChoiceQuestion(Stress.TAG_SCOPE).findChoiceByCode(scope.get());
 		if (scopeChoice.getCode().length() == 0)
 			return 0;
 
-		ChoiceItem severityChoice = new SeverityChoiceQuestion(TAG_SEVERITY).findChoiceByCode(severity.get());
+		ChoiceItem severityChoice = new StressSeverityChoiceQuestion(TAG_SEVERITY).findChoiceByCode(severity.get());
 		if (severityChoice.getCode().length() == 0)
 			return 0;
 		
