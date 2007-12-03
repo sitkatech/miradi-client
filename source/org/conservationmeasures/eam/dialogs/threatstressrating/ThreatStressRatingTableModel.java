@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.StressRatingChoiceQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
@@ -115,7 +116,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isStressRatingColumn(column))
 		{
 			String code = getStress(row, column).getPseudoData(getColumnTag(column));
-			return getStatusQuestionChoiceItemFromCode(column, code);
+			return new StressRatingChoiceQuestion(getColumnTag(column)).findChoiceByCode(code);
 		}
 		
 		if (isContributionColumn(column))
