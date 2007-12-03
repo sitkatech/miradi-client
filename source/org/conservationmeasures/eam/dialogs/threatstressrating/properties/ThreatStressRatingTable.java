@@ -28,16 +28,20 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	
 	public void rebuildColumnEditorsAndRenderers()
 	{
-		for (int tableColumn = 0; tableColumn < getThreatStressRatingTableModel().getColumnCount(); ++tableColumn)
+		ThreatStressRatingTableModel threatStressRatingTableModel = getThreatStressRatingTableModel();
+		for (int tableColumn = 0; tableColumn < threatStressRatingTableModel.getColumnCount(); ++tableColumn)
 		{
-			if (getThreatStressRatingTableModel().isStressRatingColumn(tableColumn))
-				createReadonlyStatusRatingColumn(tableColumn);
-			if (getThreatStressRatingTableModel().isContributionColumn(tableColumn))
-				createComboStatusRatingColumn(tableColumn);
-			if (getThreatStressRatingTableModel().isIrreversibilityColumn(tableColumn))
-				createComboStatusRatingColumn(tableColumn);
-			if (getThreatStressRatingTableModel().isThreatRatingColumn(tableColumn))
-				createReadonlyStatusRatingColumn(tableColumn);
+			if (threatStressRatingTableModel.isStressRatingColumn(tableColumn))
+				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createStressRatingQuestion(tableColumn), tableColumn);
+			
+			if (threatStressRatingTableModel.isContributionColumn(tableColumn))
+				createComboQuestionColumn(threatStressRatingTableModel.createContributionQuestion(tableColumn), tableColumn);
+			
+			if (threatStressRatingTableModel.isIrreversibilityColumn(tableColumn))
+				createComboQuestionColumn(threatStressRatingTableModel.createIrreversibilityQuestion(tableColumn), tableColumn);
+			
+			if (threatStressRatingTableModel.isThreatRatingColumn(tableColumn))
+				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createThreatStressRatingQuestion(tableColumn), tableColumn);
 		}
 	}
 

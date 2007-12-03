@@ -15,8 +15,10 @@ import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.StressContributionQuestion;
+import org.conservationmeasures.eam.questions.StressIrreversibilityQuestion;
 import org.conservationmeasures.eam.questions.StressRatingChoiceQuestion;
+import org.conservationmeasures.eam.questions.ThreatStressRatingChoiceQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
@@ -111,32 +113,33 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public Object getValueAt(int row, int column)
 	{
 		if (isStressLabelColumn(column))
+		{
 			return getStress(row, column).toString();
+		}
 
 		if (isStressRatingColumn(column))
 		{
 			String code = getStress(row, column).getPseudoData(getColumnTag(column));
-			return new StressRatingChoiceQuestion(getColumnTag(column)).findChoiceByCode(code);
+			return createStressRatingQuestion(column).findChoiceByCode(code);
 		}
 		
 		if (isContributionColumn(column))
+		{
 			return getThreatStressRating(row, column).getContribution();
+		}
 		
 		if (isIrreversibilityColumn(column))
+		{
 			return getThreatStressRating(row, column).getIrreversibility();
+		}
 
 		if (isThreatRatingColumn(column))
 		{
 			String code = getThreatStressRating(row, column).getPseudoData(getColumnTag(column));
-			return getStatusQuestionChoiceItemFromCode(column, code);
+			return createThreatStressRatingQuestion(column).findChoiceByCode(code);
 		}
 		
 		return null;
-	}
-
-	private Object getStatusQuestionChoiceItemFromCode(int column, String code)
-	{
-		return new StatusQuestion(getColumnTag(column)).findChoiceByCode(code);
 	}
 
 	private Stress getStress(int row, int column)
@@ -166,6 +169,26 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public ThreatStressRating getThreatStressRating(int row, int column)
 	{
 		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
+	}
+	
+	public StressContributionQuestion createContributionQuestion(int column)
+	{
+		return new StressContributionQuestion(getColumnTag(column));
+	}
+	
+	public StressIrreversibilityQuestion createIrreversibilityQuestion(int column)
+	{
+		return new StressIrreversibilityQuestion(getColumnTag(column));
+	}
+	
+	public StressRatingChoiceQuestion createStressRatingQuestion(int column)
+	{
+		return new StressRatingChoiceQuestion(getColumnTag(column));
+	}
+	
+	public ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
+	{
+		return new ThreatStressRatingChoiceQuestion(getColumnTag(column));
 	}
 	
 	public static String[] getColumnTags()

@@ -16,8 +16,9 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.StressBasedThreatFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
-import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.StressContributionQuestion;
+import org.conservationmeasures.eam.questions.StressIrreversibilityQuestion;
+import org.conservationmeasures.eam.questions.ThreatStressRatingChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
@@ -91,12 +92,12 @@ public class ThreatStressRating extends BaseObject
 	
 	public ChoiceItem getContribution()
 	{
-		return new StatusQuestion(TAG_CONTRIBUTION).findChoiceByCode(contribution.toString());
+		return new StressContributionQuestion(TAG_CONTRIBUTION).findChoiceByCode(contribution.toString());
 	}
 	 
 	public ChoiceItem getIrreversibility()
 	{
-		return new StatusQuestion(TAG_IRREVERSIBILITY).findChoiceByCode(irreversibility.toString());
+		return new StressIrreversibilityQuestion(TAG_IRREVERSIBILITY).findChoiceByCode(irreversibility.toString());
 	}
 	
 	public String getTypeName()
@@ -125,7 +126,7 @@ public class ThreatStressRating extends BaseObject
 		contribution = new ChoiceData();
 		irreversibility = new ChoiceData();
 		stressRef = new ORefData();
-		pseudoThreatRating = new PseudoQuestionData(new PriorityRatingQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING));
+		pseudoThreatRating = new PseudoQuestionData(new ThreatStressRatingChoiceQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING));
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);
