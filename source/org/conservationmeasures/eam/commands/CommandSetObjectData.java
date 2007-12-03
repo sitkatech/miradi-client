@@ -137,6 +137,11 @@ public class CommandSetObjectData extends Command
 		return COMMAND_NAME;
 	}
 	
+	public boolean isDoNothingCommand(Project project)
+	{
+		return getDataValue().equals(getExistingData(project));
+	}
+	
 	public String toString()
 	{
 		return getCommandName() + ": " + getObjectType() + ", " + getObjectId() + ", [" + getFieldTag() + "] = [" + getDataValue() + "]";
@@ -146,7 +151,7 @@ public class CommandSetObjectData extends Command
 	{
 		try
 		{
-			oldValue = target.getObjectData(type, id, tag);
+			oldValue = getExistingData(target);
 			target.setObjectData(type, id, tag, newValue);		
 		}
 		catch (Exception e)
@@ -154,6 +159,11 @@ public class CommandSetObjectData extends Command
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+
+	private String getExistingData(Project target)
+	{
+		return target.getObjectData(type, id, tag);
 	}
 
 	public Command getReverseCommand() throws CommandFailedException

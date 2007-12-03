@@ -703,9 +703,12 @@ public class Project
 
 	public void executeCommand(Command command) throws CommandFailedException
 	{
+		if(command.isDoNothingCommand(this))
+			return;
+		
+		isExecuting = true;
 		try
 		{
-			isExecuting = true;
 			executeWithoutRecording(command);
 			recordCommand(command);
 		}
