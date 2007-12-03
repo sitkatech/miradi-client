@@ -7,14 +7,14 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-public class SeverityChoiceQuestion extends StaticChoiceQuestion
+public class StressScopeChoiceQuestion extends StaticChoiceQuestion
 {
-	public SeverityChoiceQuestion(String tag)
+	public StressScopeChoiceQuestion(String tag)
 	{
-		super(tag, "Severity", getSeverityChoices());
+		super(tag, "Scope", getScopeChoices());
 	}
 	
-	public static ChoiceItem[] getSeverityChoices()
+	public static ChoiceItem[] getScopeChoices()
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
