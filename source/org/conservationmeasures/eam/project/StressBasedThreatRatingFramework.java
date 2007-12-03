@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.Utility;
 
-public class SimpleModeThreatRatingFramework
+public class StressBasedThreatRatingFramework
 {
-	public SimpleModeThreatRatingFramework(Project projectToUse)
+	public StressBasedThreatRatingFramework(Project projectToUse)
 	{
 		project = projectToUse;
 	}
