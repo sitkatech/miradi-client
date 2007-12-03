@@ -22,10 +22,10 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
-		return getPriorityQuestion(getColumnTag(column));
+		return createQuestionForTag(getColumnTag(column));
 	}
 
-	public static ChoiceQuestion getPriorityQuestion(String columnTag)
+	public static ChoiceQuestion createQuestionForTag(String columnTag)
 	{
 		if (columnTag.equals(Stress.TAG_SCOPE))
 			return new ScopeChoiceQuestion(columnTag);

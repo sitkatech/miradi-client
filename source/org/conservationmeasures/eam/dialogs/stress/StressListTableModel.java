@@ -21,7 +21,7 @@ public class StressListTableModel extends ObjectListTableModel
 
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
-		return StressPoolTableModel.getPriorityQuestion(getColumnTag(column));
+		return StressPoolTableModel.createQuestionForTag(getColumnTag(column));
 	}
 	
 	private static String[] getColumnTags()
