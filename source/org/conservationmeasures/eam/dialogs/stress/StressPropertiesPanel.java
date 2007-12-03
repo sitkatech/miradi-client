@@ -11,7 +11,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.ScopeChoiceQuestion;
+import org.conservationmeasures.eam.questions.SeverityChoiceQuestion;
+import org.conservationmeasures.eam.questions.StressRatingChoiceQuestion;
 
 public class StressPropertiesPanel extends ObjectDataInputPanel
 {
@@ -21,9 +23,9 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 		
 		addField(createStringField(Stress.TAG_LABEL));
 		addField(createStringField(Stress.TAG_SHORT_LABEL, 10));
-		addField(createRatingChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.TAG_SCOPE)));
-		addField(createRatingChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.TAG_SEVERITY)));
-		addField(createReadOnlyChoiceField(Stress.getObjectType(), new PriorityRatingQuestion(Stress.PSEUDO_STRESS_RATING)));
+		addField(createRatingChoiceField(Stress.getObjectType(), new ScopeChoiceQuestion(Stress.TAG_SCOPE)));
+		addField(createRatingChoiceField(Stress.getObjectType(), new SeverityChoiceQuestion(Stress.TAG_SEVERITY)));
+		addField(createReadOnlyChoiceField(Stress.getObjectType(), new StressRatingChoiceQuestion(Stress.PSEUDO_STRESS_RATING)));
 		
 		updateFieldsFromProject();
 	}
