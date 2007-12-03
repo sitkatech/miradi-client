@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.ThreatRatingQuestion;
 
 public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 {
@@ -22,7 +22,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Cause.getObjectType(), Cause.TAG_LABEL));
 		addField(createReadonlyTextField(Target.getObjectType(), Target.TAG_LABEL));
 		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
-		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), new StatusQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE)));
+		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE)));
 
 		updateFieldsFromProject();
 	}
