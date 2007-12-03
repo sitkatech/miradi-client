@@ -34,6 +34,11 @@ public abstract class Command
 		return false;
 	}
 	
+	public boolean isDoNothingCommand(Project project)
+	{
+		return false;
+	}
+	
 	public void executeAndLog(Project target) throws CommandFailedException
 	{
 		execute(target);
