@@ -90,9 +90,7 @@ public class SimpleThreatFormula
 		int high = computed357Values.get(3);
 		int veryHigh = computed357Values.get(4);
 		
-		int max1 = Math.max(veryHigh, high);
-		int max2 = Math.max(max1, medium);
-		return Math.max(max2, low);
+		return getHighestValue(new int[]{low, medium, high, veryHigh});
 	}
 
 	public HashMap<Integer, Integer> getBundleSummariesUsing357(int[] bundleValues)
