@@ -8,7 +8,8 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.Utility;
 
@@ -38,28 +39,36 @@ public class StressBasedThreatRatingFramework
 		}	
 	}
 	
+	//FIXME finish this method
 	public int getProjectRatingRollup() throws Exception
 	{
-		FactorLinkSet allThreatLinks = getProject().getFactorLinkPool().getDirectThreatTargetLinks();
-		int[] factorLinkRatingValues = getFactorLinkRatingValues(allThreatLinks);
-
-		return getSummaryOfRatingValues(factorLinkRatingValues);
-	}
-
-	private int[] getFactorLinkRatingValues(FactorLinkSet allThreatLinks) throws Exception
-	{
-		Vector<Integer> factorLinkRatingValues = new Vector<Integer>();
-		for(FactorLink factorLink : allThreatLinks)
+		Factor[] threats = getProject().getCausePool().getDirectThreats();
+		//int[] numericValues = new int[threats.length];
+		for(int i = 0; i < threats.length; ++i)
 		{
-			factorLinkRatingValues.add(factorLink.calculateThreatRatingBundleValue());
+			
 		}
-		return Utility.convertToIntArray(factorLinkRatingValues);
+		
+		return -1;
 	}
 	
-	protected int getSummaryOfRatingValues(int[] ratingValues)
+	public int getThreatSumaryRatingValue(Factor threat) throws Exception
 	{
-		SimpleThreatFormula formula = new SimpleThreatFormula();
-		return formula.getSummaryOfBundlesWithTwoPrimeRule(ratingValues);
+		return new SimpleThreatFormula().getHighestRatingRule(calculateThreatSummaryRatingValues(threat));
+	}
+	
+	public int[] calculateThreatSummaryRatingValues(Factor threat) throws Exception
+	{
+		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
+		Vector<Integer> calculatedThreatSummaryRatingValues = new Vector();
+		for (int i = 0; i < factorLinkReferrers.size(); ++i)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(i));
+			if (factorLink.isThreatTargetLink())
+				calculatedThreatSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
+		}
+		
+		return Utility.convertToIntArray(calculatedThreatSummaryRatingValues);
 	}
 	
 	public Project getProject()

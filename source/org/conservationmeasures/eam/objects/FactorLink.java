@@ -235,7 +235,7 @@ public class FactorLink extends BaseObject
 		}
 
 		SimpleThreatFormula formula = new SimpleThreatFormula();
-		return formula.getSummaryOfBundlesWithTwoPrimeRule(ratingBundleValues);
+		return formula.getHighestRatingRule(ratingBundleValues);
 	}
 
 	public ORef getFactorRef(int direction)
