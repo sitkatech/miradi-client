@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
@@ -26,6 +27,7 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 		directThreatRows =  getProject().getCausePool().getDirectThreats();
 		targets = getProject().getTargetPool().getTargets();
 		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
+		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 	
 	public Factor getDirectThreat(int row)
@@ -69,4 +71,5 @@ abstract public class MainThreatTableModel extends AbstractTableModel implements
 	private Project project;
 	protected Factor[] directThreatRows;
 	protected Target[] targets;
+	protected StressBasedThreatRatingFramework frameWork;
 }

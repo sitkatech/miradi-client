@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 
 public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 {
@@ -56,7 +55,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	
 	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
-		return new StressBasedThreatRatingFramework(getProject()).getThreatSumaryRatingValue(directThreat);
+		return frameWork.getFactorSumaryRatingValue(directThreat);
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

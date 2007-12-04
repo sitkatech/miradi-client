@@ -5,24 +5,17 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import java.util.Vector;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.SimpleThreatFormula;
-import org.conservationmeasures.eam.utils.Utility;
 
 public class TargetSummaryRowTableModel extends MainThreatTableModel
 {
 	public TargetSummaryRowTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		
-		threatFormula = new SimpleThreatFormula();
 	}
 
 	public String getColumnTag(int column)
@@ -45,7 +38,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			int calculatedValue = calculateTargetSummaryRatingValue(column);
+			int calculatedValue = calculateThreatSummaryRatingValue(targets[column]);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
@@ -55,27 +48,13 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 		}
 	}
 
-	private int calculateTargetSummaryRatingValue(int column) throws Exception
+	public int calculateThreatSummaryRatingValue(Factor target) throws Exception
 	{
-		Vector<Integer> calculatedTargetSummaryRatingValues = new Vector();
-		for (int i = 0; i < directThreatRows.length; ++i)
-		{
-			Factor directThreat = directThreatRows[i];
-			Target target = targets[column];
-			if (!getProject().areLinked(directThreat, target))
-				continue;
-			
-			FactorLink factorLink = FactorLink.find(getProject(), getLinkRef(directThreat, target));
-			calculatedTargetSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
-		}
-		
-		return threatFormula.getHighestRatingRule(Utility.convertToIntArray(calculatedTargetSummaryRatingValues));
+		return frameWork.getFactorSumaryRatingValue(target);
 	}
-	
+
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return targets[column];
 	}
-	
-	private SimpleThreatFormula threatFormula;
 }
