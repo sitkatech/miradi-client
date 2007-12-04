@@ -55,7 +55,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	
 	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
-		return frameWork.getFactorSumaryRatingValue(directThreat);
+		return frameWork.get2PrimeSummaryRatingValue(directThreat);
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
