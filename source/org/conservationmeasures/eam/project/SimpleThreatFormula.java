@@ -81,6 +81,19 @@ public class SimpleThreatFormula
 			
 		return applyTwoPrimeRule(low, medium, high, veryHigh);
 	}
+	
+	public int getHighestRatingRule(int[] bundleValues)
+	{
+		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
+		int low = computed357Values.get(1);
+		int medium = computed357Values.get(2);
+		int high = computed357Values.get(3);
+		int veryHigh = computed357Values.get(4);
+		
+		int max1 = Math.max(veryHigh, high);
+		int max2 = Math.max(max1, medium);
+		return Math.max(max2, low);
+	}
 
 	public HashMap<Integer, Integer> getBundleSummariesUsing357(int[] bundleValues)
 	{
