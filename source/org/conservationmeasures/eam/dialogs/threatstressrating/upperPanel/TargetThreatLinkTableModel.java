@@ -60,13 +60,12 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return FactorLink.find(getProject(), getLinkRef(getDirectThreat(row), getTarget(column)));
 	}
 
-	//TODO combine the two xxLinked method below
 	private boolean areLinked(int row, int column)
 	{
-		return isLinked(getDirectThreat(row), getTarget(column));
+		return areLinked(getDirectThreat(row), getTarget(column));
 	}
 	
-	public boolean isLinked(Factor from, Factor to)
+	public boolean areLinked(Factor from, Factor to)
 	{
 		return getProject().getFactorLinkPool().areLinked(from, to);
 	}
