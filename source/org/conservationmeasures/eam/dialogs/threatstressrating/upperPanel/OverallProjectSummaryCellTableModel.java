@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 
 public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 {
@@ -27,13 +28,10 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 
 	public Object getValueAt(int arg0, int arg1)
 	{
-		//FIXME add overall rating
-		//SimpleModeThreatRatingFramework framework = new SimpleModeThreatRatingFramework(getProject());
-		//int overallProjectRating = framework.getOverallProjectRating();
+		StressBasedThreatRatingFramework framework = new StressBasedThreatRatingFramework(getProject());
+		int overallProjectRating = framework.getOverallProjectRating();
 		
-		//return convertToChoiceItem("", Integer.toString(overallProjectRating));
-		
-		return null;
+		return convertToChoiceItem("", Integer.toString(overallProjectRating));
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
