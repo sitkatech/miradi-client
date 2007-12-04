@@ -5,24 +5,18 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import java.util.Vector;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.SimpleThreatFormula;
-import org.conservationmeasures.eam.utils.Utility;
+import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 
 public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 {
 	public ThreatSummaryColumnTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		
-		threatFormula = new SimpleThreatFormula();
 	}
 
 	public String getColumnName(int column)
@@ -50,7 +44,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(row);
+			int calculatedValue = calculateThreatSummaryRatingValue(directThreatRows[row]);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
@@ -60,27 +54,13 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		}
 	}
 	
-	private int calculateThreatSummaryRatingValue(int row) throws Exception
+	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
-		Vector<Integer> calculatedThreatSummaryRatingValues = new Vector();
-		for (int i = 0; i < targets.length; ++i)
-		{
-			Target target = targets[i];
-			Factor directThreat = directThreatRows[row];
-			if (!getProject().areLinked(directThreat, target))
-				continue;
-			
-			FactorLink factorLink = FactorLink.find(getProject(), getLinkRef(directThreat, target));
-			calculatedThreatSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
-		}
-		
-		return threatFormula.getSummaryOfBundlesWithTwoPrimeRule(Utility.convertToIntArray(calculatedThreatSummaryRatingValues));
+		return new StressBasedThreatRatingFramework(getProject()).getThreatSumaryRatingValue(directThreat);
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getDirectThreat(row);
 	}
-
-	private SimpleThreatFormula threatFormula;
 }
