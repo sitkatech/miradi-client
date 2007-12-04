@@ -47,6 +47,11 @@ public class StressBasedThreatRatingFramework
 		return getFormula().getHighestRatingRule(summaryValues);
 	}
 		
+	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
+	{
+		return getFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
+	}
+	
 	public int getFactorSumaryRatingValue(Factor factor) throws Exception
 	{
 		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
