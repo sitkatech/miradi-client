@@ -18,6 +18,7 @@ public class StressBasedThreatRatingFramework
 	public StressBasedThreatRatingFramework(Project projectToUse)
 	{
 		project = projectToUse;
+		formula = new SimpleThreatFormula();
 	}
 	
 	public int getOverallProjectRating()
@@ -39,22 +40,21 @@ public class StressBasedThreatRatingFramework
 		}	
 	}
 	
-	//FIXME finish this method
 	public int getProjectRatingRollup() throws Exception
 	{
 		Factor[] threats = getProject().getCausePool().getDirectThreats();
-		//int[] numericValues = new int[threats.length];
+		int[] threatSummaryValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
-			
+			threatSummaryValues[i] = getThreatSumaryRatingValue(threats[i]);
 		}
 		
-		return -1;
+		return getFormula().getHighestRatingRule(threatSummaryValues);
 	}
 	
 	public int getThreatSumaryRatingValue(Factor threat) throws Exception
 	{
-		return new SimpleThreatFormula().getHighestRatingRule(calculateThreatSummaryRatingValues(threat));
+		return getFormula().getHighestRatingRule(calculateThreatSummaryRatingValues(threat));
 	}
 	
 	public int[] calculateThreatSummaryRatingValues(Factor threat) throws Exception
@@ -76,5 +76,11 @@ public class StressBasedThreatRatingFramework
 		return project;
 	}
 	
+	public SimpleThreatFormula getFormula()
+	{
+		return formula;
+	}
+	
 	private Project project;
+	private SimpleThreatFormula formula;
 }
