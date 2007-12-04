@@ -57,9 +57,9 @@ public class StressBasedThreatRatingFramework
 		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
 	}
 	
-	public int[] calculateSummaryRatingValues(Factor target) throws Exception
+	public int[] calculateSummaryRatingValues(Factor factor) throws Exception
 	{
-		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
+		ORefList factorLinkReferrers = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
 		for (int i = 0; i < factorLinkReferrers.size(); ++i)
 		{
