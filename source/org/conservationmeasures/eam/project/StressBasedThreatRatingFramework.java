@@ -25,13 +25,9 @@ public class StressBasedThreatRatingFramework
 	{
 		try
 		{
-			int rollup = getProjectRatingRollup();
-			//FIXME add majority rating too
-			//ValueOption majority = getProjectMajorityRating();
-			//if(majority.getNumericValue() > rollup)
-			//	return majority;
-			
-			return rollup;
+			int rollup = getFactorRollupRating(getProject().getCausePool().getDirectThreats());
+			int majority = getFactorRollupRating(getProject().getTargetPool().getTargets());
+			return Math.max(rollup, majority);
 		}
 		catch(Exception e)
 		{
@@ -40,35 +36,34 @@ public class StressBasedThreatRatingFramework
 		}	
 	}
 	
-	public int getProjectRatingRollup() throws Exception
-	{
-		Factor[] threats = getProject().getCausePool().getDirectThreats();
-		int[] threatSummaryValues = new int[threats.length];
-		for(int i = 0; i < threats.length; ++i)
+	public int getFactorRollupRating(Factor[] factors) throws Exception
+	{ 
+		int[] summaryValues = new int[factors.length];
+		for (int i = 0; i < factors.length; ++i)
 		{
-			threatSummaryValues[i] = getThreatSumaryRatingValue(threats[i]);
+			summaryValues[i] = getFactorSumaryRatingValue(factors[i]);
 		}
 		
-		return getFormula().getHighestRatingRule(threatSummaryValues);
+		return getFormula().getHighestRatingRule(summaryValues);
+	}
+		
+	public int getFactorSumaryRatingValue(Factor factor) throws Exception
+	{
+		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
 	}
 	
-	public int getThreatSumaryRatingValue(Factor threat) throws Exception
+	public int[] calculateSummaryRatingValues(Factor target) throws Exception
 	{
-		return getFormula().getHighestRatingRule(calculateThreatSummaryRatingValues(threat));
-	}
-	
-	public int[] calculateThreatSummaryRatingValues(Factor threat) throws Exception
-	{
-		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
-		Vector<Integer> calculatedThreatSummaryRatingValues = new Vector();
+		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
+		Vector<Integer> calculatedSummaryRatingValues = new Vector();
 		for (int i = 0; i < factorLinkReferrers.size(); ++i)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(i));
 			if (factorLink.isThreatTargetLink())
-				calculatedThreatSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
+				calculatedSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
 		}
 		
-		return Utility.convertToIntArray(calculatedThreatSummaryRatingValues);
+		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
 	
 	public Project getProject()
