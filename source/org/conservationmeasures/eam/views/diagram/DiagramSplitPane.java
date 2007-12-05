@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Vector;
 
@@ -110,11 +111,13 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		Border cushion = BorderFactory.createEmptyBorder(5,5,5,5);
 		Border newBorder = BorderFactory.createCompoundBorder(cushion, selectionScrollPane.getBorder());
 		selectionScrollPane.setBorder(newBorder);
+		selectionScrollPane.setMinimumSize(new Dimension(0,0));
 
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = new FastScrollPane(legendPanel);
 		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollableLegendPanel.setMinimumSize(new Dimension(0,0));
 
 		JPanel topPanel = new JPanel(new BorderLayout());
 		UiLabel title = createControlPanelTitle();
@@ -135,6 +138,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
+		title.setMinimumSize(new Dimension(0,0));
 		return title;
 	}
 	
