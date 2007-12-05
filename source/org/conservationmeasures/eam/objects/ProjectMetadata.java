@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
@@ -240,16 +241,17 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
-
 		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
+		threatRatingMode = new ChoiceData();
 		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
 		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
 		projectTeamMembers = new PseudoORefListData(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
+		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
 		addField(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS, projectTeamMembers);
@@ -285,6 +287,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
+	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
 	
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
@@ -322,6 +325,7 @@ public class ProjectMetadata extends BaseObject
 	
 	private StringData diagramFontFamily;
 	private IntegerData diagramFontSize;
+	private ChoiceData threatRatingMode;
 	
 	private PseudoQuestionData diagramFontFamilyValue;
 	private PseudoQuestionData diagramFontSizeValue;
