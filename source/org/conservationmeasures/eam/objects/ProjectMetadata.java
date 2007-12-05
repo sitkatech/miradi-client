@@ -285,37 +285,37 @@ public class ProjectMetadata extends BaseObject
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
-	StringData currentWizardScreenName;
+	private StringData currentWizardScreenName;
 
-	StringData projectName;
-	StringData projectScope;
-	StringData shortProjectScope;
-	StringData projectVision;
-	StringData shortProjectVision;
-	DateData startDate;
-	DateData expectedEndDate;
-	DateData effectiveDate;
-	NumberData sizeInHectares;
-	IntegerData currencyDecimalPlaces;
-	FloatData latitude;
-	FloatData longitude;
+	private StringData projectName;
+	private StringData projectScope;
+	private StringData shortProjectScope;
+	private StringData projectVision;
+	private StringData shortProjectVision;
+	private DateData startDate;
+	private DateData expectedEndDate;
+	private DateData effectiveDate;
+	private NumberData sizeInHectares;
+	private IntegerData currencyDecimalPlaces;
+	private FloatData latitude;
+	private FloatData longitude;
 	private NumberData totalBudgetForFunding;
 	private NumberData budgetSecuredPercent;
 	
-	StringData tncLessonsLearned;
-	StringData tncWorkbookVersionNumber;
-	DateData tncWorkbookVersionDate;
-	DateData tncDatabaseDownloadDate;
-	StringData tncPlanningTeamComment;
-	StringData tncEcoregion;
-	StringData tncCountry;
-	StringData tncOperatingUnits;
+	private StringData tncLessonsLearned;
+	private StringData tncWorkbookVersionNumber;
+	private DateData tncWorkbookVersionDate;
+	private DateData tncDatabaseDownloadDate;
+	private StringData tncPlanningTeamComment;
+	private StringData tncEcoregion;
+	private StringData tncCountry;
+	private StringData tncOperatingUnits;
 
 	
-	StringData diagramFontFamily;
-	IntegerData diagramFontSize;
+	private StringData diagramFontFamily;
+	private IntegerData diagramFontSize;
 	
-	PseudoQuestionData diagramFontFamilyValue;
-	PseudoQuestionData diagramFontSizeValue;
+	private PseudoQuestionData diagramFontFamilyValue;
+	private PseudoQuestionData diagramFontSizeValue;
 	private PseudoORefListData projectTeamMembers;
 }
