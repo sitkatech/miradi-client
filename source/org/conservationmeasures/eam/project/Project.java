@@ -299,7 +299,7 @@ public class Project
 		return getViewPool().find(createdId);
 	}
 	
-	public SimpleThreatRatingFramework getThreatRatingFramework()
+	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
 	{
 		return threatRatingFramework;
 	}
@@ -604,7 +604,7 @@ public class Project
 
 	private void loadThreatRatingFramework() throws Exception
 	{
-		getThreatRatingFramework().load();
+		getSimpleThreatRatingFramework().load();
 	}
 	
 	protected void finishOpening() throws Exception

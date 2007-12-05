@@ -22,7 +22,7 @@ public class TestSimpleThreatFormula extends EAMTestCase
 		super.setUp();
 		
 		project = new ProjectForTesting(getName());
-		framework = project.getThreatRatingFramework();
+		framework = project.getSimpleThreatRatingFramework();
 		
 		formula = new SimpleThreatFormula(framework);
 	}

@@ -26,7 +26,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	public ThreatMatrixTableModel(Project projectToShow)
 	{
 		project = projectToShow;
-		framework = getProject().getThreatRatingFramework();
+		framework = getProject().getSimpleThreatRatingFramework();
 		resetMatrix();
 	}
 

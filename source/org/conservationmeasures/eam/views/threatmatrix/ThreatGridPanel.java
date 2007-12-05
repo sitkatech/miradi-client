@@ -71,7 +71,7 @@ public class ThreatGridPanel extends JPanel
 	
 	public SimpleThreatRatingFramework getThreatRatingFramework() 
 	{
-		return getProject().getThreatRatingFramework();
+		return getProject().getSimpleThreatRatingFramework();
 	}
 	
 	

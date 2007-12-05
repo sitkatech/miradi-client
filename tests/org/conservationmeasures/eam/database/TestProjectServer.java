@@ -161,9 +161,9 @@ public class TestProjectServer extends EAMTestCase
 	public void testReadAndWriteThreatRatingFramework() throws Exception
 	{
 		ProjectServerForTesting db = project.getTestDatabase();
-		db.writeThreatRatingFramework(project.getThreatRatingFramework());
+		db.writeThreatRatingFramework(project.getSimpleThreatRatingFramework());
 		JSONObject got = db.readRawThreatRatingFramework();
-		assertEquals(got.toString(), project.getThreatRatingFramework().toJson().toString());
+		assertEquals(got.toString(), project.getSimpleThreatRatingFramework().toJson().toString());
 		project.close();
 	}
 	

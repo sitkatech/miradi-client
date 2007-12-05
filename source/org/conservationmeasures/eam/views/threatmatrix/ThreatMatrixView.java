@@ -147,7 +147,7 @@ public class ThreatMatrixView extends CardedView
 	
 	public SimpleThreatRatingFramework getThreatRatingFramework()
 	{
-		return getProject().getThreatRatingFramework();
+		return getProject().getSimpleThreatRatingFramework();
 	}
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception

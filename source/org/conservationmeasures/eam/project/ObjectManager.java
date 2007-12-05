@@ -425,7 +425,7 @@ public class ObjectManager
 
 	SimpleThreatRatingFramework getThreatRatingFramework()
 	{
-		return getProject().getThreatRatingFramework();
+		return getProject().getSimpleThreatRatingFramework();
 	}
 
 	ProjectServer getDatabase()

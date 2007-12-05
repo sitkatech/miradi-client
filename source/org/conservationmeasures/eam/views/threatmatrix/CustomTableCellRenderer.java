@@ -99,7 +99,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 
 	private SimpleThreatRatingFramework getThreatRatingFramework()
 	{
-		return threatGridPanel.getProject().getThreatRatingFramework();
+		return threatGridPanel.getProject().getSimpleThreatRatingFramework();
 	}
 
 	private boolean isOverallRatingCell(JTable table, int row, int column)

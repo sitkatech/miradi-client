@@ -68,7 +68,7 @@ public class TestCommands extends EAMTestCase
 	{
 		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObjectAndReturnId(type);
-		RatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
+		RatingCriterion criterion = project.getSimpleThreatRatingFramework().getCriterion(createdId);
 		
 		String field = RatingCriterion.TAG_LABEL;
 		String value = "Blah";
@@ -133,10 +133,10 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong id?", createdId, cmd.getObjectId());
 		
 		project.executeCommand(cmd);
-		assertNull("Got deleted object?", project.getThreatRatingFramework().getValueOption(createdId));
+		assertNull("Got deleted object?", project.getSimpleThreatRatingFramework().getValueOption(createdId));
 		
 		project.undo();
-		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getValueOption(createdId));
+		assertNotNull("Didn't undelete?", project.getSimpleThreatRatingFramework().getValueOption(createdId));
 	}
 	
 	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
@@ -149,15 +149,15 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong id?", createdId, cmd.getObjectId());
 		
 		project.executeCommand(cmd);
-		assertNull("Got deleted object?", project.getThreatRatingFramework().getCriterion(createdId));
+		assertNull("Got deleted object?", project.getSimpleThreatRatingFramework().getCriterion(createdId));
 		
 		project.undo();
-		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getCriterion(createdId));
+		assertNotNull("Didn't undelete?", project.getSimpleThreatRatingFramework().getCriterion(createdId));
 	}
 	
 	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
 	{
-		SimpleThreatRatingFramework framework = project.getThreatRatingFramework();
+		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
 		int type = ObjectType.RATING_CRITERION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -228,7 +228,7 @@ public class TestCommands extends EAMTestCase
 		FactorId targetId = new FactorId(101);
 		BaseId criterionId = new BaseId(102);
 		BaseId valueId = new BaseId(103);
-		SimpleThreatRatingFramework framework = project.getThreatRatingFramework();
+		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
 		BaseId defaultValueId = framework.getDefaultValueId();
 		
 		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
