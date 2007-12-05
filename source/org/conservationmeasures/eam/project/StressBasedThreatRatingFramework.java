@@ -25,8 +25,8 @@ public class StressBasedThreatRatingFramework
 	{
 		try
 		{
-			int rollup = getFactorRollupRating();
-			int majority = getTargetRollupRating();
+			int rollup = getRollupRatingOfThreats();
+			int majority = getTargetMajorityRating();
 			return Math.max(rollup, majority);
 		}
 		catch(Exception e)
@@ -36,7 +36,7 @@ public class StressBasedThreatRatingFramework
 		}	
 	}
 	
-	private int getTargetRollupRating() throws Exception
+	private int getTargetMajorityRating() throws Exception
 	{
 		Factor[] targets = getProject().getTargetPool().getTargets();
 		int[] highestTargetRatingValues = new int[targets.length];
@@ -48,7 +48,7 @@ public class StressBasedThreatRatingFramework
 		return getFormula().getMajority(highestTargetRatingValues);
 	}
 	
-	private int getFactorRollupRating() throws Exception
+	private int getRollupRatingOfThreats() throws Exception
 	{ 
 		Factor[] factors = getProject().getCausePool().getDirectThreats();
 		int[] summaryValues = new int[factors.length];
