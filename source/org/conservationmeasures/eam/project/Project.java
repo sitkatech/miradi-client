@@ -108,6 +108,7 @@ public class Project
 		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new SimpleThreatRatingFramework(this);
+		stressBasedThreatFramework = new StressBasedThreatRatingFramework(this);
 		projectCalendar = null;
 		
 		currentViewName = SummaryView.getViewName();
@@ -302,6 +303,14 @@ public class Project
 	{
 		return threatRatingFramework;
 	}
+//FIXME and uncomment	
+//	public ThreatRatingFramework getThreatRatingFramework()
+//	{
+//		if (getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+//			return  stressBasedThreatFramework;
+//		
+//		return threatRatingFramework;
+//	}
 	
 	public ProjectCalendar getProjectCalendar()
 	{
@@ -1093,6 +1102,7 @@ public class Project
 	boolean firingCommandExecutedEvents;
 
 	SimpleThreatRatingFramework threatRatingFramework;
+	StressBasedThreatRatingFramework stressBasedThreatFramework;
 	
 	ProjectServer database;
 	DiagramClipboard diagramClipboard;
