@@ -84,7 +84,7 @@ public class ThreatMatrixView extends CardedView
 		return MatrixTableImageCreator.createImage(grid.getThreatMatrixTable(),grid.getRowHeaderTable());
 	}
 
-	public void createTabs() throws Exception
+	public void createCards() throws Exception
 	{
 		model = new ThreatMatrixTableModel(getProject());
 		createThreatMatrixPanel();
@@ -105,7 +105,7 @@ public class ThreatMatrixView extends CardedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
-		createTabs();
+		createCards();
 		selectBundle(null);
 		grid.establishPriorSortState();
 		threatStressRatingManagementPanel.updateSplitterLocation();
