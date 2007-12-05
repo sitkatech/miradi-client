@@ -42,7 +42,7 @@ public class StressBasedThreatRatingFramework
 		int[] highestTargetRatingValues = new int[targets.length];
 		for (int i = 0; i < targets.length; ++i)
 		{
-			highestTargetRatingValues[i] = getFactorSumaryRatingValue(targets[i]);
+			highestTargetRatingValues[i] = getHighestFactorSummaryRatingValue(targets[i]);
 		}
 		
 		return getFormula().getMajority(highestTargetRatingValues);
@@ -65,8 +65,7 @@ public class StressBasedThreatRatingFramework
 		return getFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
 	
-	//TODO refactor rename to getHighestFactorSummaryRatingValue
-	public int getFactorSumaryRatingValue(Factor factor) throws Exception
+	public int getHighestFactorSummaryRatingValue(Factor factor) throws Exception
 	{
 		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
 	}
