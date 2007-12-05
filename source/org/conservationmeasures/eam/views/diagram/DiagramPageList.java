@@ -35,6 +35,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		resizeTable(6);
 	}
 	
 	public void listChanged()
