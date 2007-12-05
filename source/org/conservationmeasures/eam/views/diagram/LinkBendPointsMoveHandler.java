@@ -99,18 +99,7 @@ public class LinkBendPointsMoveHandler
 			return;
 		
 		BendPointCreator bendPointCreator = new BendPointCreator(diagram);
-		LinkCell[] nearbyLinkCells = bendPointCreator.getNearbyLinks(pointToMove, linkCell);
-		for (int i = 0; i < nearbyLinkCells.length; ++i)
-		{
-			LinkCell nearByLinkCell = nearbyLinkCells[i];
-			DiagramLink nearbyDiagramLink = nearByLinkCell.getDiagramLink();
-			if (nearByLinkCell.equals(linkCell))
-				continue;
-			
-			PointList bendPoints = nearbyDiagramLink.getBendPoints();
-			if (! bendPoints.contains(pointToMove))
-				bendPointCreator.insertBendPointForLink(nearByLinkCell, pointToMove);
-		}
+		bendPointCreator.createBendPointOnNearbyLinks(linkCell, pointToMove);
 	}
 
 	private boolean moreThanOneBendPointSelected()
