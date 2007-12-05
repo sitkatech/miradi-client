@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
+import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -303,14 +304,14 @@ public class Project
 	{
 		return threatRatingFramework;
 	}
-//FIXME and uncomment	
-//	public ThreatRatingFramework getThreatRatingFramework()
-//	{
-//		if (getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
-//			return  stressBasedThreatFramework;
-//		
-//		return threatRatingFramework;
-//	}
+	
+	public ThreatRatingFramework getThreatRatingFramework()
+	{
+		if (getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+			return  stressBasedThreatFramework;
+		
+		return threatRatingFramework;
+	}
 	
 	public ProjectCalendar getProjectCalendar()
 	{
