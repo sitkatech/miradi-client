@@ -180,6 +180,14 @@ public class ProjectMetadata extends BaseObject
 		return currencyDecimalPlaces.asInt();
 	}
 
+	public int getDiagramFontSize()
+	{
+		String sizeAsString = diagramFontSize.get();
+		if(sizeAsString.length() == 0)
+			return 0;
+		return Integer.parseInt(sizeAsString);
+	}
+
 	void clear()
 	{
 		super.clear();
