@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -25,13 +26,16 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelSpeci
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 	
-		JPanel mainPropertiesPanel = new JPanel();
-		createKeaPropertiesPanel(mainPropertiesPanel);
-		addFieldComponent(mainPropertiesPanel);
+		createKeaPropertiesPanel();
 		updateFieldsFromProject();
 	}
 	
-	private void createKeaPropertiesPanel(JPanel mainPropertiesPanelPanel)
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Key Ecological Attribute Properties");
+	}
+
+	private void createKeaPropertiesPanel()
 	{
 		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
 		ObjectDataInputField keaDescription = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
@@ -45,10 +49,9 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelSpeci
 		JPanel keaDescPanel = createGridLayoutPanel(1,2);
 		keaDescPanel.add(createColumnJPanel(keaDescription));
 		
-		JPanel mainKeaPanel = createGridLayoutPanel(3, 1);
-		addBoldedTextBorder(mainKeaPanel, "KEA");
+		JPanel mainKeaPanel = createGridLayoutPanel(0, 1);
 		mainKeaPanel.add(keaPanel);
 		mainKeaPanel.add(keaDescPanel);
-		mainPropertiesPanelPanel.add(mainKeaPanel);
+		addFieldComponent(mainKeaPanel);
 	}
 }

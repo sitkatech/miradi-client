@@ -5,15 +5,22 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import javax.swing.JPanel;
+import java.awt.CardLayout;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.layout.OneColumnPanel;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
@@ -22,40 +29,73 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
-		JPanel mainPropertiesPanel = new OneColumnPanel();
+		cardLayout = new CardLayout();
+		setLayout(cardLayout);
+		
+		blankPropertiesPanel = new BlankPropertiesPanel();
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
 		targetViabilityIndicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(projectToUse, actions);
-		targetViabilityMeasurementPropertiesPanel = new TargetViabilityMeasurementPropertiesPanel(projectToUse, actions);
-		targetViabilityFutureStatusPropertiesPanel = new TargetViabilityFutureStatusPropertiesPanel(projectToUse, actions);
-		mainPropertiesPanel.add(targetViabilityKeaPropertiesPanel);
-		mainPropertiesPanel.add(targetViabilityIndicatorPropertiesPanel);
-		mainPropertiesPanel.add(targetViabilityMeasurementPropertiesPanel);
-		mainPropertiesPanel.add(targetViabilityFutureStatusPropertiesPanel);
+		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(projectToUse);
+		add(blankPropertiesPanel);
+		add(targetViabilityKeaPropertiesPanel);
+		add(targetViabilityIndicatorPropertiesPanel);
+		add(targetViabilityMeasurementPropertiesPanel);
 
-		addFieldComponent(mainPropertiesPanel);
 		updateFieldsFromProject();
 	}
 	
 	public void dispose()
 	{
 		super.dispose();
+		blankPropertiesPanel.dispose();
 		targetViabilityKeaPropertiesPanel.dispose();
 		targetViabilityIndicatorPropertiesPanel.dispose();
 		targetViabilityMeasurementPropertiesPanel.dispose();
-		targetViabilityFutureStatusPropertiesPanel.dispose();
 	}
 	
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Target Viability Properties");
+	}
+
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
+		String panelDescription = findPanel(orefsToUse).getPanelDescription();
+		System.out.println(panelDescription);
+		cardLayout.show(this, panelDescription);
+
 		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityIndicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityMeasurementPropertiesPanel.setObjectRefs(orefsToUse);
-		targetViabilityFutureStatusPropertiesPanel.setObjectRefs(orefsToUse);
 	}
 	
+	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
+	{
+		if(orefsToUse.length == 0)
+			return blankPropertiesPanel;
+
+		ORefList refs = new ORefList(orefsToUse);
+		System.out.println(refs);
+		int objectType = orefsToUse[0].getObjectType();
+		if(objectType == KeyEcologicalAttribute.getObjectType())
+			return targetViabilityKeaPropertiesPanel;
+		if(objectType == Indicator.getObjectType())
+			return targetViabilityIndicatorPropertiesPanel;
+		if(objectType == Measurement.getObjectType())
+			return targetViabilityMeasurementPropertiesPanel;
+
+		return blankPropertiesPanel;
+	}
+	
+	private void add(DisposablePanelWithDescription panelToAdd)
+	{
+		add(panelToAdd, panelToAdd.getPanelDescription());
+	}
+	
+	private CardLayout cardLayout;
+	private BlankPropertiesPanel blankPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private TargetViabilityIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
-	private TargetViabilityMeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
-	private TargetViabilityFutureStatusPropertiesPanel targetViabilityFutureStatusPropertiesPanel;
+	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
 }
