@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -30,18 +29,21 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.CardedView;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 
 
-public class ThreatMatrixView extends TabbedView
+public class ThreatMatrixView extends CardedView
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -84,14 +86,14 @@ public class ThreatMatrixView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
+		model = new ThreatMatrixTableModel(getProject());
+		createThreatMatrixPanel();
+		addCard(threatMatrixPanel, getThreatMatrixCardName());
+		
 		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getProject());
 		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject(), threatStressRatingPropertiesPanel);		
-		
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
-		
-		model = new ThreatMatrixTableModel(getProject());
-		addTab(EAM.text("Threat Ratings"), createThreatMatrixPanel());
-		addTab(EAM.text("Threat Stress Rating"), threatStressRatingManagementPanel);
+		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
 
 	public void deleteTabs() throws Exception
@@ -103,27 +105,30 @@ public class ThreatMatrixView extends TabbedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
+		createTabs();
 		selectBundle(null);
 		grid.establishPriorSortState();
 		threatStressRatingManagementPanel.updateSplitterLocation();
+		
+		String currentMode = getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
+		showCurrentCard(currentMode);
 	}
 
-	private Container createThreatMatrixPanel() throws Exception
+	private void createThreatMatrixPanel() throws Exception
 	{
 		grid = new ThreatGridPanel(this, model);
 		details = new ThreatRatingBundlePanel(this);
 		
-		Container bottomHalf = new JPanel(new BorderLayout());
-		bottomHalf.add(new FastScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
-		bottomHalf.add(grid, BorderLayout.CENTER); 
-
-		return bottomHalf;
+		threatMatrixPanel = new JPanel(new BorderLayout());
+		threatMatrixPanel.add(new FastScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
+		threatMatrixPanel.add(grid, BorderLayout.CENTER); 
 	}
 
 	
 	public void becomeInactive() throws Exception
 	{
 		// TODO: Should clear ALL view data
+		deleteTabs();
 		grid = null;
 		super.becomeInactive();
 	}
@@ -185,7 +190,37 @@ public class ThreatMatrixView extends TabbedView
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
+		updateCardToShow(event);
 		updateAfterCommand(event.getCommand());
+	}
+
+	private void updateCardToShow(CommandExecutedEvent event)
+	{
+		if (!event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+			return;
+		
+		CommandSetObjectData command = (CommandSetObjectData) event.getCommand();
+		String value = command.getDataValue();
+		ChoiceItem choice = new ThreatRatingModeChoiceQuestion(ProjectMetadata.TAG_THREAT_RATING_MODE).findChoiceByCode(value);
+		showCurrentCard(choice.getCode());
+	}
+
+	private void showCurrentCard(String code)
+	{
+		if (code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+			showCard(getThreatStressRatingCardName());
+		else
+			showCard(getThreatMatrixCardName());
+	}
+	
+	private String getThreatMatrixCardName()
+	{
+		return THREAT_MATRIX_CARD_NAME;
+	}
+
+	private String getThreatStressRatingCardName()
+	{
+		return threatStressRatingManagementPanel.getPanelDescription();
 	}
 
 	private void updateAfterCommand(Command rawCommand)
@@ -244,11 +279,14 @@ public class ThreatMatrixView extends TabbedView
 			selectBundle(bundle);
 		}
 	}
+	
+	private static final String THREAT_MATRIX_CARD_NAME = "ThreatMatrix";
 
 	private ThreatMatrixTableModel model;
 	private ThreatGridPanel grid;
 	private ThreatRatingBundlePanel details;
 	private ThreatStressRatingManagementPanel threatStressRatingManagementPanel;
 	private ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel;
+	private JPanel threatMatrixPanel;
 }
 

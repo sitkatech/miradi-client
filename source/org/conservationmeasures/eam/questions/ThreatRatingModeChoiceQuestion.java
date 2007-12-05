@@ -14,11 +14,13 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 		super(tagToUse, "Threat Rating Mode", getChoiceItems());
 	}
 
-	static ChoiceItem[] getChoiceItems()
+	public static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Simple Threat Rating Mode", Color.WHITE),
-				new ChoiceItem("StressBase", "Stress Based Threat Rating Mode", Color.WHITE),
+				new ChoiceItem(STRESS_BASED_CODE, "Stress Based Threat Rating Mode", Color.WHITE),
 		};
 	}
+	
+	public static final String STRESS_BASED_CODE = "StressBased";
 }
