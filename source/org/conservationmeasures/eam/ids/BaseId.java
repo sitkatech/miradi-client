@@ -10,7 +10,10 @@ public class BaseId implements Comparable
 {
 	public BaseId(String idAsString)
 	{
-		this(Integer.parseInt(idAsString));
+		if(idAsString.length() == 0)
+			id = 0;
+		else
+			id = Integer.parseInt(idAsString);
 	}
 	
 	public BaseId(int idToUse)
