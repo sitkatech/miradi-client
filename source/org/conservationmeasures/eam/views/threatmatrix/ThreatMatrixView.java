@@ -96,7 +96,7 @@ public class ThreatMatrixView extends CardedView
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
 
-	public void deleteTabs() throws Exception
+	public void deleteCards() throws Exception
 	{
 		threatStressRatingManagementPanel.dispose();
 		threatStressRatingPropertiesPanel.dispose();
@@ -128,7 +128,7 @@ public class ThreatMatrixView extends CardedView
 	public void becomeInactive() throws Exception
 	{
 		// TODO: Should clear ALL view data
-		deleteTabs();
+		deleteCards();
 		grid = null;
 		super.becomeInactive();
 	}
