@@ -130,8 +130,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			project.executeCommand(commandsToDelete[i]);
 		}
 		assertEquals("Didn't clear " + tag + "?", emptyData, object.getData(tag));
-		for(int i = 0; i < commandsToDelete.length; ++i)
-			project.undo();
+		project.undo();
 		assertEquals("Didn't restore " + tag + "?", sampleData, object.getData(tag));
 
 	}
