@@ -18,7 +18,7 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Simple Threat Rating Mode", Color.WHITE),
-				new ChoiceItem("1", "Stress Based Threat Rating Mode", Color.WHITE),
+				new ChoiceItem("StressBaseThreatMode", "Stress Based Threat Rating Mode", Color.WHITE),
 		};
 	}
 }
