@@ -95,7 +95,15 @@ public class ThreatMatrixView extends CardedView
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
-
+	
+	protected void showCurrentCard(String code)
+	{
+		if (code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+			showCard(getThreatStressRatingCardName());
+		else
+			showCard(getThreatMatrixCardName());
+	}
+	
 	public void deleteCards() throws Exception
 	{
 		threatStressRatingManagementPanel.dispose();
@@ -105,13 +113,9 @@ public class ThreatMatrixView extends CardedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
-		createCards();
 		selectBundle(null);
 		grid.establishPriorSortState();
 		threatStressRatingManagementPanel.updateSplitterLocation();
-		
-		String currentMode = getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
-		showCurrentCard(currentMode);
 	}
 
 	private void createThreatMatrixPanel() throws Exception
@@ -124,11 +128,14 @@ public class ThreatMatrixView extends CardedView
 		threatMatrixPanel.add(grid, BorderLayout.CENTER); 
 	}
 
+	protected String getCurrentCardChoiceName()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
+	}
 	
 	public void becomeInactive() throws Exception
 	{
 		// TODO: Should clear ALL view data
-		deleteCards();
 		grid = null;
 		super.becomeInactive();
 	}
@@ -206,14 +213,6 @@ public class ThreatMatrixView extends CardedView
 		getMainWindow().updateToolBar();
 	}
 
-	private void showCurrentCard(String code)
-	{
-		if (code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
-			showCard(getThreatStressRatingCardName());
-		else
-			showCard(getThreatMatrixCardName());
-	}
-	
 	private String getThreatMatrixCardName()
 	{
 		return THREAT_MATRIX_CARD_NAME;

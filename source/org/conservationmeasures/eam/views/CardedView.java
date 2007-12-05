@@ -20,7 +20,20 @@ abstract public class CardedView extends UmbrellaView
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 	}
-
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		createCards();
+		showCurrentCard(getCurrentCardChoiceName());
+	}
+	
+	public void becomeInactive() throws Exception
+	{
+		super.becomeInactive();
+		deleteCards();
+	}
+	
 	public void addCard(Component cardToAdd, String cardName)
 	{
 		add(cardToAdd, cardName);
@@ -30,6 +43,14 @@ abstract public class CardedView extends UmbrellaView
 	{
 		cardLayout.show(this, cardName);
 	}
+	
+	abstract protected void showCurrentCard(String code);
+		
+	abstract protected void createCards() throws Exception;
+	
+	abstract protected String getCurrentCardChoiceName();
+	
+	abstract public void deleteCards() throws Exception;
 	
 	private CardLayout cardLayout;
 }
