@@ -38,7 +38,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		framework = project.getThreatRatingFramework();
+		framework = project.getSimpleThreatRatingFramework();
 	}
 	
 	public void tearDown() throws Exception
@@ -65,19 +65,19 @@ public class TestThreatRatingFramework extends EAMTestCase
 			
 			FactorId threatId = new FactorId(283);
 			FactorId targetId = new FactorId(983);
-			ThreatRatingBundle bundle = realProject.getThreatRatingFramework().getBundle(threatId, targetId);
+			ThreatRatingBundle bundle = realProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
 			bundle.setValueId(createdId, new BaseId(838));
-			IdList realOptionIds = realProject.getThreatRatingFramework().getValueOptionIds();
-			realProject.getThreatRatingFramework().saveBundle(bundle);
-			realProject.getDatabase().writeThreatRatingFramework(realProject.getThreatRatingFramework());
+			IdList realOptionIds = realProject.getSimpleThreatRatingFramework().getValueOptionIds();
+			realProject.getSimpleThreatRatingFramework().saveBundle(bundle);
+			realProject.getDatabase().writeThreatRatingFramework(realProject.getSimpleThreatRatingFramework());
 			realProject.close();
 
 			Project loadedProject = new Project();
 			loadedProject.createOrOpen(tempDir);
-			IdList loadedOptionIds = loadedProject.getThreatRatingFramework().getValueOptionIds();
-			SimpleThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
+			IdList loadedOptionIds = loadedProject.getSimpleThreatRatingFramework().getValueOptionIds();
+			SimpleThreatRatingFramework loadedFramework = loadedProject.getSimpleThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
-			ThreatRatingBundle gotBundle = loadedProject.getThreatRatingFramework().getBundle(threatId, targetId);
+			ThreatRatingBundle gotBundle = loadedProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
 			assertEquals("didn't load bundles?", bundle.getValueId(createdId), gotBundle.getValueId(createdId));
 			assertEquals("didn't load options?", realOptionIds, loadedOptionIds);
 			loadedProject.close();
@@ -212,7 +212,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
-		populateBundle(projectToUse.getThreatRatingFramework(), threat.getWrappedId(), target.getWrappedId(), value);
+		populateBundle(projectToUse.getSimpleThreatRatingFramework(), threat.getWrappedId(), target.getWrappedId(), value);
 	}
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
@@ -337,7 +337,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private SimpleThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
 	{
 		ProjectForTesting tempProject = new ProjectForTesting(getName());
-		SimpleThreatRatingFramework trf = tempProject.getThreatRatingFramework();
+		SimpleThreatRatingFramework trf = tempProject.getSimpleThreatRatingFramework();
 		
 		int threatCount = bundleValues.length;
 		DiagramFactor[] threats = new DiagramFactor[threatCount];

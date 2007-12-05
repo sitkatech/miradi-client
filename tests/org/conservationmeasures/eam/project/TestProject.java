@@ -779,8 +779,8 @@ public class TestProject extends EAMTestCase
 		
 		try
 		{
-			assertEquals("default criterion not created?", 3, newProject.getThreatRatingFramework().getCriteria().length);
-			assertEquals("default valueoptions not created?", 5, newProject.getThreatRatingFramework().getValueOptions().length);
+			assertEquals("default criterion not created?", 3, newProject.getSimpleThreatRatingFramework().getCriteria().length);
+			assertEquals("default valueoptions not created?", 5, newProject.getSimpleThreatRatingFramework().getValueOptions().length);
 		}
 		finally
 		{

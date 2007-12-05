@@ -103,7 +103,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public SimpleThreatRatingFramework getThreatRatingFramework()
 	{
-		return project.getThreatRatingFramework();
+		return project.getSimpleThreatRatingFramework();
 	}
 	
 	public void addDiagramFactor(DiagramFactor diagramFactor) throws Exception

@@ -61,7 +61,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	private SimpleThreatRatingFramework getFramework()
 	{
-		return getMainWindow().getProject().getThreatRatingFramework();
+		return getMainWindow().getProject().getSimpleThreatRatingFramework();
 	}
 	
 	public void valueChanged(String widget, String newValue)

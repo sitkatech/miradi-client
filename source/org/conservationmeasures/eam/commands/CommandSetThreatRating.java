@@ -49,7 +49,7 @@ public class CommandSetThreatRating extends Command
 	{
 		try
 		{
-			SimpleThreatRatingFramework framework = target.getThreatRatingFramework();
+			SimpleThreatRatingFramework framework = target.getSimpleThreatRatingFramework();
 			ThreatRatingBundle bundle = framework.getBundle(getThreatId(), getTargetId());
 			BaseId oldValueId = bundle.getValueId(criterionId);
 			if(!expectedValueId.isInvalid() && !expectedValueId.equals(oldValueId))
