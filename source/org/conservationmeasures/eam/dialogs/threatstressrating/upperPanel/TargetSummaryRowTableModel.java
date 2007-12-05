@@ -22,6 +22,11 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		return "";
 	}
+	
+	public int getRowCount()
+	{
+		return 1;
+	}
 
 	public int getColumnCount()
 	{

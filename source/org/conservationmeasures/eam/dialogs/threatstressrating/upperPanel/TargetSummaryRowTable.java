@@ -17,7 +17,6 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
-		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
 	}
 	
 	public String getUniqueTableIdentifier()

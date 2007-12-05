@@ -9,9 +9,9 @@ import javax.swing.table.TableModel;
 
 abstract public class TableWithSetPreferredScrollableViewportHeight extends AbstractTableWithChoiceItemRenderer
 {
+	//TODO refactor inline this class
 	public TableWithSetPreferredScrollableViewportHeight(TableModel model)
 	{
 		super(model);
-		setForcedPreferredScrollableViewportHeight(getRowHeight() * 5);
 	}
 }

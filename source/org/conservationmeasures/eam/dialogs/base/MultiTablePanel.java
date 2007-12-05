@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -18,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
@@ -73,6 +76,73 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 			hideableScrollBar.visible = false;
 			setVerticalScrollBar(hideableScrollBar);
 		}
+	}
+	
+	public class FixedWidthScrollPaneWithInvisibleVerticalScrollBar extends FixedWidthScrollPane
+	{
+		public FixedWidthScrollPaneWithInvisibleVerticalScrollBar(JComponent contentToUse)
+		{
+			super(contentToUse);
+			HideableScrollBar hideableScrollBar = new HideableScrollBar();
+			hideableScrollBar.visible = false;
+			setVerticalScrollBar(hideableScrollBar);
+		}
+	}
+	
+	public class FixedWidthScrollPane extends FastScrollPane
+	{
+		public FixedWidthScrollPane(JComponent contentToUse)
+		{
+			super(contentToUse);
+			
+			content = contentToUse;
+		}
+
+		public Dimension getMinimumSize()
+		{
+			return getPreferredSize();
+		}
+		
+		public Dimension getMaximumSize()
+		{
+			return getPreferredSize();
+		} 
+		
+		public Dimension getPreferredSize()
+		{
+			Dimension preferredSize = content.getPreferredSize();
+			return new Dimension(120, preferredSize.height);
+		}
+			
+		private Component content;
+	}
+
+	public class FixedHeightScrollPane extends FastScrollPane
+	{
+		public FixedHeightScrollPane(JComponent contentToUse)
+		{
+			super(contentToUse);
+			
+			content = contentToUse;
+		}
+
+		public Dimension getMinimumSize()
+		{
+			return getPreferredSize();
+		}
+		
+		public Dimension getMaximumSize()
+		{
+			return getPreferredSize();
+		} 
+		
+		public Dimension getPreferredSize()
+		{
+			Dimension preferredSize = content.getPreferredSize();
+			return new Dimension(preferredSize.width, 50);
+		}
+			
+		private Component content;
 	}
 	
 	protected class AssignmentTableScrollPane extends UiScrollPane
