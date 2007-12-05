@@ -279,8 +279,8 @@ abstract public class TabbedView extends UmbrellaView
 		}
 	}
 
-	JTabbedPane tabs;
-	int currentTab;
-	boolean ignoreTabChanges;
+	private JTabbedPane tabs;
+	private int currentTab;
+	private boolean ignoreTabChanges;
 	
 }
