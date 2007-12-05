@@ -40,6 +40,8 @@ public class IntegerData extends ObjectData
 	
 	public String get()
 	{
+		if(value == 0)
+			return "";
 		return Integer.toString(value);
 	}
 	

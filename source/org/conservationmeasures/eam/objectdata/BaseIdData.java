@@ -19,6 +19,8 @@ public class BaseIdData extends ObjectData
 	
 	public String get()
 	{
+		if(id.isInvalid())
+			return "";
 		return id.toString();
 	}
 	

@@ -37,7 +37,7 @@ public class TestViewData extends EAMTestCase
 	public void testCurrentTab() throws Exception
 	{
 		ViewData vd = new ViewData(new BaseId(33));
-		assertEquals("0", vd.getData(ViewData.TAG_CURRENT_TAB));
+		assertEquals("", vd.getData(ViewData.TAG_CURRENT_TAB));
 		int tab = 6;
 		vd.setData(ViewData.TAG_CURRENT_TAB, Integer.toString(tab));
 		assertEquals(6, new Integer(vd.getData(ViewData.TAG_CURRENT_TAB)).intValue());

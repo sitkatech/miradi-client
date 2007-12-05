@@ -132,15 +132,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertEquals("Didn't clear " + tag + "?", emptyData, object.getData(tag));
 		project.undo();
 		assertEquals("Didn't restore " + tag + "?", sampleData, object.getData(tag));
-
 	}
 
 	private String getEmptyData(BaseObject object, String tag)
 	{
 		ObjectData field = object.getField(tag);
-		if(field instanceof BaseIdData)
-			return BaseId.INVALID.toString();
-
 		if(field instanceof DateRangeEffortListData)
 			return new DateRangeEffortList().toString();
 		
@@ -174,7 +170,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof BaseIdData)
 		{
-			return BaseId.INVALID.toString();
+			return new BaseId(15).toString();
 		}
 		else if(field instanceof DateData)
 		{

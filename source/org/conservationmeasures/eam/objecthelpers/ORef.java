@@ -69,6 +69,9 @@ public class ORef
 	
 	public boolean isInvalid()
 	{
+		if(getObjectId() == null)
+			return true;
+		
 		return getObjectId().isInvalid();
 	}
 	
@@ -91,7 +94,7 @@ public class ORef
 	
 	public String toString()
 	{
-		if (objectId == null)
+		if (isInvalid())
 			return "";
 		return toJson().toString();
 	}
