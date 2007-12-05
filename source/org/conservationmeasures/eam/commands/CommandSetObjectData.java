@@ -139,7 +139,9 @@ public class CommandSetObjectData extends Command
 	
 	public boolean isDoNothingCommand(Project project)
 	{
-		return getDataValue().equals(getExistingData(project));
+		String dataValue = getDataValue();
+		String existingData = getExistingData(project);
+		return dataValue.equals(existingData);
 	}
 	
 	public String toString()
