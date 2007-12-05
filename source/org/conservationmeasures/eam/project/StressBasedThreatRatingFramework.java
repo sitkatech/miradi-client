@@ -25,8 +25,8 @@ public class StressBasedThreatRatingFramework
 	{
 		try
 		{
-			int rollup = getFactorRollupRating(getProject().getCausePool().getDirectThreats());
-			int majority = getFactorRollupRating(getProject().getTargetPool().getTargets());
+			int rollup = getFactorRollupRating();
+			int majority = getTargetRollupRating();
 			return Math.max(rollup, majority);
 		}
 		catch(Exception e)
@@ -36,12 +36,25 @@ public class StressBasedThreatRatingFramework
 		}	
 	}
 	
-	public int getFactorRollupRating(Factor[] factors) throws Exception
+	private int getTargetRollupRating() throws Exception
+	{
+		Factor[] targets = getProject().getTargetPool().getTargets();
+		int[] highestTargetRatingValues = new int[targets.length];
+		for (int i = 0; i < targets.length; ++i)
+		{
+			highestTargetRatingValues[i] = getFactorSumaryRatingValue(targets[i]);
+		}
+		
+		return getFormula().getMajority(highestTargetRatingValues);
+	}
+	
+	private int getFactorRollupRating() throws Exception
 	{ 
+		Factor[] factors = getProject().getCausePool().getDirectThreats();
 		int[] summaryValues = new int[factors.length];
 		for (int i = 0; i < factors.length; ++i)
 		{
-			summaryValues[i] = getFactorSumaryRatingValue(factors[i]);
+			summaryValues[i] = get2PrimeSummaryRatingValue(factors[i]);
 		}
 		
 		return getFormula().getHighestRatingRule(summaryValues);
@@ -52,6 +65,7 @@ public class StressBasedThreatRatingFramework
 		return getFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
 	
+	//TODO refactor rename to getHighestFactorSummaryRatingValue
 	public int getFactorSumaryRatingValue(Factor factor) throws Exception
 	{
 		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
