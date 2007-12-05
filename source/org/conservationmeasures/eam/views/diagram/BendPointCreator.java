@@ -34,17 +34,16 @@ public class BendPointCreator
 	{
 		LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
 		Point insertPoint = selectedLinkCell.getNewBendPointLocation(model, getCache(), insertionLocation);
-		LinkCell[] nearbyLinks = getNearbyLinks(insertPoint, selectedLinkCell);
-		for (int i = 0; i < nearbyLinks.length; ++i)
-		{
-			insertBendPointForLink(nearbyLinks[i], insertPoint);
-		}
-	
+		insertBendPointForLink(selectedLinkCell, insertPoint);
 	}
 	
 	public void insertBendPointForLink(LinkCell linkCell, Point insertPoint) throws Exception
 	{
 		DiagramLink selectedLink = linkCell.getDiagramLink();
+		PointList bendPoints = selectedLink.getBendPoints();
+		if (bendPoints.contains(insertPoint))
+			return;
+
 		Point snapped = project.getSnapped(insertPoint);
 		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, getCache(), snapped);
 		
@@ -105,6 +104,22 @@ public class BendPointCreator
 		return diagram.getGraphLayoutCache();
 	}
 	
+	public void createBendPointOnNearbyLinks(DiagramLink link, Point pointToCreate) throws Exception
+	{
+		LinkCell linkCell = model.getDiagramFactorLink(link);
+		createBendPointOnNearbyLinks(linkCell, pointToCreate);
+	}
+	
+	public void createBendPointOnNearbyLinks(LinkCell linkCell, Point pointToCreate) throws Exception
+	{
+		LinkCell[] nearbyLinkCells = getNearbyLinks(pointToCreate, linkCell);
+		for (int i = 0; i < nearbyLinkCells.length; ++i)
+		{
+			LinkCell nearByLinkCell = nearbyLinkCells[i];
+			insertBendPointForLink(nearByLinkCell, pointToCreate);
+		}
+	}
+
 	DiagramComponent diagram;
 	DiagramModel model;
 	Project project;
