@@ -425,6 +425,34 @@ abstract public class Factor extends BaseObject
 		
 		return result.toString();
 	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+
+	public static boolean is(int objectType)
+	{
+		if(objectType == ObjectType.STRATEGY)
+			return true;
+
+		else if(objectType == ObjectType.CAUSE)
+			return true;
+		
+		else if(objectType == ObjectType.TARGET)
+			return true;
+	
+		else if (objectType == ObjectType.INTERMEDIATE_RESULT)
+			return true;
+		
+		else if (objectType == ObjectType.THREAT_REDUCTION_RESULT)
+			return true;
+		
+		else if (objectType == ObjectType.TEXT_BOX)
+			return true;
+
+		return false;
+	}
 
 	void clear()
 	{
