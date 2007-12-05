@@ -13,11 +13,12 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.Utility;
 
-public class StressBasedThreatRatingFramework
+public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 {
 	public StressBasedThreatRatingFramework(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
+		
 		formula = new SimpleThreatFormula();
 	}
 	
@@ -84,16 +85,10 @@ public class StressBasedThreatRatingFramework
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
 	
-	public Project getProject()
-	{
-		return project;
-	}
-	
 	public SimpleThreatFormula getFormula()
 	{
 		return formula;
 	}
 	
-	private Project project;
 	private SimpleThreatFormula formula;
 }
