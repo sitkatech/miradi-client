@@ -121,10 +121,7 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
 	}
 	
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Key Ecological Attribute Properties");
-	}
+	abstract public String getPanelDescription();
 	
 	protected static final int STD_SPACE_20 = 20;
 	protected static final int NARROW_DETAILS = 30;
