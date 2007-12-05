@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelComboBox;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatRatingPreferencesPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -54,6 +55,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		diagramProjectPreferencesPanel.dispose();
 		diagramProjectPreferencesPanel = null;
+		
+		threatRatingPreferencesPanel.dispose();
+		threatRatingPreferencesPanel = null;
 		super.dispose();
 	}
 	
@@ -113,6 +117,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);
 		threatTab.add(cellRatingsVisibleCheckBox);
+		
+		threatRatingPreferencesPanel = new ThreatRatingPreferencesPanel(project); 
+		threatTab.add(threatRatingPreferencesPanel);
+		
 		return threatTab;
 	}
 
@@ -307,21 +315,21 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		update();
 	}
 
+	private Project project;
+	private MainWindow mainWindow;
+	private DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
+	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
 	
-	Project project;
-	MainWindow mainWindow;
-	DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
+	private UiComboBox interventionDropdown;
+	private UiComboBox directThreatDropdown;
+	private UiComboBox indirectFactorDropdown;
+	private UiComboBox targetDropdown;
+	private UiComboBox scopeDropdown;
+	private UiComboBox intermediateResultDropDown;
+	private UiComboBox threatReductionResultDropDown;
+	private UiCheckBox gridVisibleCheckBox; 
+	private UiCheckBox cellRatingsVisibleCheckBox;
 	
-	UiComboBox interventionDropdown;
-	UiComboBox directThreatDropdown;
-	UiComboBox indirectFactorDropdown;
-	UiComboBox targetDropdown;
-	UiComboBox scopeDropdown;
-	UiComboBox intermediateResultDropDown;
-	UiComboBox threatReductionResultDropDown;
-	UiCheckBox gridVisibleCheckBox; 
-	UiCheckBox cellRatingsVisibleCheckBox;
-	
-	UiComboBox panelFontSizeCombo;
-	UiComboBox panelFontFamilyCombo;
+	private UiComboBox panelFontSizeCombo;
+	private UiComboBox panelFontFamilyCombo;
 }
