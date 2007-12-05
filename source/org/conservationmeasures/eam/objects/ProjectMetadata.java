@@ -188,6 +188,11 @@ public class ProjectMetadata extends BaseObject
 			return 0;
 		return Integer.parseInt(sizeAsString);
 	}
+	
+	public String getThreatRatingMode()
+	{
+		return threatRatingMode.get();
+	}
 
 	void clear()
 	{

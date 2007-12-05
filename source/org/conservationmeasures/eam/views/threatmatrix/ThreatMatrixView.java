@@ -54,7 +54,7 @@ public class ThreatMatrixView extends CardedView
 
 	public JToolBar createToolBar()
 	{
-		return new ThreatMatrixToolBar(getActions(), isCellRatingsVisible());
+		return new ThreatMatrixToolBar(getMainWindow(), isCellRatingsVisible());
 	}
 
 	private boolean isCellRatingsVisible()
@@ -203,6 +203,7 @@ public class ThreatMatrixView extends CardedView
 		String value = command.getDataValue();
 		ChoiceItem choice = new ThreatRatingModeChoiceQuestion(ProjectMetadata.TAG_THREAT_RATING_MODE).findChoiceByCode(value);
 		showCurrentCard(choice.getCode());
+		getMainWindow().updateToolBar();
 	}
 
 	private void showCurrentCard(String code)
