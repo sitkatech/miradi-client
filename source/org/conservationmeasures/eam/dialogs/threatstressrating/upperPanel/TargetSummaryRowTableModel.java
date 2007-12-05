@@ -50,7 +50,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 
 	public int calculateThreatSummaryRatingValue(Factor target) throws Exception
 	{
-		return frameWork.getFactorSumaryRatingValue(target);
+		return frameWork.get2PrimeSummaryRatingValue(target);
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
