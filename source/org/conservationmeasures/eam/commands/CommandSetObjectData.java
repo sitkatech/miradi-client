@@ -137,11 +137,18 @@ public class CommandSetObjectData extends Command
 		return COMMAND_NAME;
 	}
 	
-	public boolean isDoNothingCommand(Project project)
+	public boolean isDoNothingCommand(Project project) throws CommandFailedException
 	{
-		String dataValue = getDataValue();
-		String existingData = getExistingData(project);
-		return dataValue.equals(existingData);
+		try
+		{
+			String dataValue = getDataValue();
+			String existingData = getExistingData(project);
+			return dataValue.equals(existingData);
+		}
+		catch(RuntimeException e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
 	public String toString()

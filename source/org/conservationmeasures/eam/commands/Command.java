@@ -34,7 +34,7 @@ public abstract class Command
 		return false;
 	}
 	
-	public boolean isDoNothingCommand(Project project)
+	public boolean isDoNothingCommand(Project project) throws CommandFailedException
 	{
 		return false;
 	}
