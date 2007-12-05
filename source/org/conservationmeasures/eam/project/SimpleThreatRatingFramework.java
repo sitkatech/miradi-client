@@ -31,9 +31,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class ThreatRatingFramework
+public class SimpleThreatRatingFramework
 {
-	public ThreatRatingFramework(Project projectToUse)
+	public SimpleThreatRatingFramework(Project projectToUse)
 	{
 		project = projectToUse;
 		clear();

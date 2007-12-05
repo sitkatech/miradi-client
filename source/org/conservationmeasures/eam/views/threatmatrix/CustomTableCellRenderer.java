@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.utils.Utility;
 
 class CustomTableCellRenderer extends JComponent implements TableCellRenderer
@@ -97,7 +97,7 @@ class CustomTableCellRenderer extends JComponent implements TableCellRenderer
 		return EAM.getMainWindow().getAppPreferences();
 	}
 
-	private ThreatRatingFramework getThreatRatingFramework()
+	private SimpleThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatGridPanel.getProject().getThreatRatingFramework();
 	}
