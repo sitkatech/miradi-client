@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.martus.swing.UiLabel;
 
 public class ThreatGridPanel extends JPanel
@@ -69,7 +69,7 @@ public class ThreatGridPanel extends JPanel
 	}
 	
 	
-	public ThreatRatingFramework getThreatRatingFramework() 
+	public SimpleThreatRatingFramework getThreatRatingFramework() 
 	{
 		return getProject().getThreatRatingFramework();
 	}

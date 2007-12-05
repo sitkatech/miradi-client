@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestCommands extends EAMTestCase
@@ -157,7 +157,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
 	{
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
+		SimpleThreatRatingFramework framework = project.getThreatRatingFramework();
 		int type = ObjectType.RATING_CRITERION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -228,7 +228,7 @@ public class TestCommands extends EAMTestCase
 		FactorId targetId = new FactorId(101);
 		BaseId criterionId = new BaseId(102);
 		BaseId valueId = new BaseId(103);
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
+		SimpleThreatRatingFramework framework = project.getThreatRatingFramework();
 		BaseId defaultValueId = framework.getDefaultValueId();
 		
 		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);

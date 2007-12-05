@@ -35,7 +35,7 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -145,7 +145,7 @@ public class ThreatMatrixView extends CardedView
 		return model;
 	}
 	
-	public ThreatRatingFramework getThreatRatingFramework()
+	public SimpleThreatRatingFramework getThreatRatingFramework()
 	{
 		return getProject().getThreatRatingFramework();
 	}

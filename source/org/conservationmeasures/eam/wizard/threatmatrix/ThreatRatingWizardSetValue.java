@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -32,7 +32,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	public void refresh() throws Exception
 	{
-		ThreatRatingFramework framework = getFramework();
+		SimpleThreatRatingFramework framework = getFramework();
 		BaseId criterionId = framework.findCriterionByLabel(critertionName).getId();
 		ThreatRatingBundle bundle = getThreatView().getBundle();
 		criterion = getFramework().getCriterion(criterionId);
@@ -59,7 +59,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		return optionLabels;
 	}
 
-	private ThreatRatingFramework getFramework()
+	private SimpleThreatRatingFramework getFramework()
 	{
 		return getMainWindow().getProject().getThreatRatingFramework();
 	}
