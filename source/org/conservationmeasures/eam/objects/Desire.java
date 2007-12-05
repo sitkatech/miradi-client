@@ -6,9 +6,12 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -69,6 +72,32 @@ abstract public class Desire extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
+	public ORefList getIndicatorsOnSameFactor(DiagramObject diagram)
+	{
+		ORefList indicatorRefs = new ORefList();
+		
+		ORefList referrers = findObjectsThatReferToUs();
+		for(int i = 0; i < referrers.size(); ++i)
+		{
+			ORef thisRef = referrers.get(i);
+			if(!Factor.is(thisRef))
+				continue;
+			
+			Factor factor = getObjectManager().findFactor(thisRef);
+			IdList indicatorIds = factor.getDirectOrIndirectIndicators();
+			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
+			{
+				BaseId indicatorId = indicatorIds.get(idIndex);
+				if(indicatorId.isInvalid())
+					continue;
+				indicatorRefs.add(new ORef(Indicator.getObjectType(), indicatorId));
+			}
+		}
+		
+		return indicatorRefs;
+		
+	}
+
 	void clear()
 	{
 		super.clear();

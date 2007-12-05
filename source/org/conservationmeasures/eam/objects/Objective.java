@@ -6,9 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ObjectiveId;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -80,27 +78,5 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	// TODO: Consider combining with Goal.getUpstreamObjectives
-	public ORefList getUpstreamIndicators(DiagramObject diagram)
-	{
-		ORefList indicatorRefs = new ORefList();
-		
-		Factor[] upstreamFactors = getUpstreamFactors(diagram);
-		for(int i = 0; i < upstreamFactors.length; ++i)
-		{
-			IdList indicatorIds = upstreamFactors[i].getDirectOrIndirectIndicators();
-			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
-			{
-				BaseId indicatorId = indicatorIds.get(idIndex);
-				if(indicatorId.isInvalid())
-					continue;
-				indicatorRefs.add(new ORef(Indicator.getObjectType(), indicatorId));
-			}
-		}
-		
-		return indicatorRefs;
-		
-	}
-
 	public static final String OBJECT_NAME = "Objective";	
 }
