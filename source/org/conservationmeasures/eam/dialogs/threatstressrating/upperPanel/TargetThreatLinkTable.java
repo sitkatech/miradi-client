@@ -20,7 +20,6 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 		super(tableModel);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setForcedPreferredScrollableViewportWidth(TargetThreatLinkTable.PREFERRED_VIEWPORT_WIDTH);
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setColumnWidths();

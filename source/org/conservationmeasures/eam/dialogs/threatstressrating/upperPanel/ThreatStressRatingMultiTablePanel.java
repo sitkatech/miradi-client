@@ -5,7 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import javax.swing.JLabel;
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionListener;
@@ -13,10 +16,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener
 {
@@ -25,7 +25,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		super(projectToUse);
 	
 		createTables();
-		addTables();
+		addTableToGridBag();
 		addTablesToSelectionController();
 		synchTableColumns();
 	}
@@ -57,10 +57,12 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		overallProjectSummaryCellTable.resizeTable(1);
 	}
 
-	private void addTables()
-	{
-		JPanel mainPanel = new JPanel(new BasicGridLayout(2, 3));
-		JScrollPane threatTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(threatTable);
+	
+	private void addTableToGridBag()
+	{		
+		JPanel mainPanel = new JPanel(new GridBagLayout());
+		
+		JScrollPane threatTableScroller = new FixedWidthScrollPaneWithInvisibleVerticalScrollBar(threatTable);
 		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(threatTableScroller);
 		
@@ -69,24 +71,49 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		addToVerticalController(targetThreatLinkTableScroller);
 		addToHorizontalController(targetThreatLinkTableScroller);
 		
-		JScrollPane threatSummaryColumnTableScroller = new FastScrollPane(threatSummaryColumnTable);
+		JScrollPane threatSummaryColumnTableScroller = new FixedWidthScrollPane(threatSummaryColumnTable);
 		addToVerticalController(threatSummaryColumnTableScroller);
 		threatSummaryColumnTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatSummaryColumnTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		mainPanel.add(threatTableScroller);
-		mainPanel.add(targetThreatLinkTableScroller);
-		mainPanel.add(threatSummaryColumnTableScroller);
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.VERTICAL;
+		constraints.anchor = GridBagConstraints.WEST;
+		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, 1, 1, 0, 100);
 		
-		mainPanel.add(new JLabel());
-		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetSummaryRowTable);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.anchor = GridBagConstraints.CENTER;
+		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, 1, 1, 100, 100);
+		
+		constraints.fill = GridBagConstraints.VERTICAL;
+		constraints.anchor = GridBagConstraints.WEST;
+		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, 1, 1, 0, 100);
+
+		JScrollPane targetSummaryRowTableScroller = new FixedHeightScrollPane(targetSummaryRowTable);
 		addToHorizontalController(targetSummaryRowTableScroller);
-		mainPanel.add(targetSummaryRowTableScroller);
 		
-		JScrollPane overallProjectSummaryCellTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(overallProjectSummaryCellTable);
-		mainPanel.add(overallProjectSummaryCellTableScroller);
-		FastScrollPane mainPanelScroller = new FastScrollPane(mainPanel);
-		add(mainPanelScroller);		
+		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
+		
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.anchor = GridBagConstraints.NORTH;
+		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, 1, 1, 100, 0);
+		
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.anchor = GridBagConstraints.NORTHWEST;
+		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, 1, 1, 0, 100);
+		
+		add(mainPanel);
+	}
+
+	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y, int w, int h, int weightX, int weightY) 
+	{
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = w;
+		gbc.gridheight = h;
+		gbc.weightx = weightX;
+		gbc.weighty = weightY;
+		p.add(c,gbc);
 	}
 	
 	private void synchTableColumns()

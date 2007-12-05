@@ -21,6 +21,11 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 		return "";
 	}
 
+	public int getRowCount()
+	{
+		return 1;
+	}
+
 	public int getColumnCount()
 	{
 		return 1;
