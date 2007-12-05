@@ -7,5 +7,15 @@ package org.conservationmeasures.eam.project;
 
 public class ThreatRatingFramework
 {
-
+	public ThreatRatingFramework(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+			
+	protected Project project;
 }

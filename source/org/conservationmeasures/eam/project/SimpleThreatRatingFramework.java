@@ -31,11 +31,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class SimpleThreatRatingFramework
+public class SimpleThreatRatingFramework extends ThreatRatingFramework
 {
 	public SimpleThreatRatingFramework(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
+		
 		clear();
 	}
 
@@ -454,11 +455,6 @@ public class SimpleThreatRatingFramework
 		return db;
 	}
 	
-	public Project getProject()
-	{
-		return project;
-	}
-		
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
 	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	public static final String TAG_CRITERION_IDS = "CriterionIds";
@@ -469,7 +465,6 @@ public class SimpleThreatRatingFramework
 	private static final String CRITERION_SEVERITY = "Severity";
 	private static final String CRITERION_SCOPE = "Scope";
 
-	protected Project project;
 	private HashMap bundles;
 	private ValueOption[] ratingValueOptions;
 	private RatingCriterion[] criteria;
