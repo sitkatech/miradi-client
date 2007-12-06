@@ -51,8 +51,8 @@ public abstract class ChoiceQuestion
 		
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = DARK_YELLOW;
-	public static final Color OK = LIGHT_GREEN;
-	public static final Color GREAT = DARK_GREEN;
+	public static final Color COLOR_OK = LIGHT_GREEN;
+	public static final Color COLOR_GREAT = DARK_GREEN;
 	
 	String tag;
 	String label;

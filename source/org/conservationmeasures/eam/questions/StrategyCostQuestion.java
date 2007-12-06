@@ -21,8 +21,8 @@ public class StrategyCostQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", "Not Specified", Color.WHITE),
 			new ChoiceItem("1", "Prohibitively Expensive", COLOR_ALERT),
 			new ChoiceItem("2", "Expensive", COLOR_CAUTION),
-			new ChoiceItem("3", "Moderate", OK),
-			new ChoiceItem("4", "Inexpensive", GREAT),
+			new ChoiceItem("3", "Moderate", COLOR_OK),
+			new ChoiceItem("4", "Inexpensive", COLOR_GREAT),
 		};
 	}
 

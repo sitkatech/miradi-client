@@ -86,8 +86,8 @@ public class ValueOption extends BaseObject
 		{
 			case -1: return INVALID_GRAY;
 			case 0: return Color.WHITE;
-			case 1: return ChoiceQuestion.GREAT;
-			case 2: return ChoiceQuestion.OK;
+			case 1: return ChoiceQuestion.COLOR_GREAT;
+			case 2: return ChoiceQuestion.COLOR_OK;
 			case 3: return ChoiceQuestion.COLOR_CAUTION;
 			case 4: return ChoiceQuestion.COLOR_ALERT;
 		}
