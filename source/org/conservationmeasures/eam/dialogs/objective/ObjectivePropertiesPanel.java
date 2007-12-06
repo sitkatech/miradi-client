@@ -30,7 +30,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
 		
-		addField(createStringField(Objective.TAG_SHORT_LABEL));
+		addField(createShortStringField(Objective.TAG_SHORT_LABEL));
 		addField(createStringField(Objective.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_FACTOR));

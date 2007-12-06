@@ -30,7 +30,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.GOAL, idToShow);
 		
 		
-		addField(createStringField(Goal.TAG_SHORT_LABEL));
+		addField(createShortStringField(Goal.TAG_SHORT_LABEL));
 		addField(createStringField(Goal.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));

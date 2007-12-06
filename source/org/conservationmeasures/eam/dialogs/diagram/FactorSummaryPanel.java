@@ -46,7 +46,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, factorToEdit.getWrappedORef());
 		currentDiagramFactor = factorToEdit;
 
-		addField(createStringField(Factor.TAG_SHORT_LABEL));
+		addField(createShortStringField(Factor.TAG_SHORT_LABEL));
 		addField(createStringField(Factor.TAG_TEXT));
 	
 		if (getFactor().isDirectThreat())
