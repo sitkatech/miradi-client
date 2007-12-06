@@ -82,20 +82,20 @@ public class StressBasedThreatFormula extends ThreatFormula
 		int high = computed357Values.get(3);
 		int veryHigh = computed357Values.get(4);
 		
-		return getHighestWithValue(veryHigh, high, medium, low);
+		return getHighestWithValue(low, medium, high, veryHigh);
 	}
 	
-	public int getHighestWithValue(int veryHigh, int high, int medium, int low)
+	public int getHighestWithValue(int low, int medium, int high, int veryHigh)
 	{
 		if (veryHigh > 0)
-			return veryHigh;
+			return 4;
 		
 		if (high > 0)
-			return high;
+			return 3;
 		
 		if (medium > 0)
-			return medium;
+			return 2;
 		
-		return low;
+		return 1;
 	}
 }
