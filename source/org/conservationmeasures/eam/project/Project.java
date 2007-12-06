@@ -108,7 +108,7 @@ public class Project
 		
 		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
-		threatRatingFramework = new SimpleThreatRatingFramework(this);
+		simpleThreatFramework = new SimpleThreatRatingFramework(this);
 		stressBasedThreatFramework = new StressBasedThreatRatingFramework(this);
 		projectCalendar = null;
 		
@@ -302,7 +302,7 @@ public class Project
 	
 	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
 	{
-		return threatRatingFramework;
+		return simpleThreatFramework;
 	}
 	
 	public ThreatRatingFramework getThreatRatingFramework()
@@ -310,7 +310,7 @@ public class Project
 		if (getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
 			return  stressBasedThreatFramework;
 		
-		return threatRatingFramework;
+		return simpleThreatFramework;
 	}
 	
 	public ProjectCalendar getProjectCalendar()
@@ -476,7 +476,7 @@ public class Project
 	
 	private void applyDefaultBehavior() throws Exception
 	{
-		threatRatingFramework.createDefaultObjectsIfNeeded();
+		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
 		selectDefaultPlanningCustomization();
@@ -1102,7 +1102,7 @@ public class Project
 	boolean isExecuting;
 	boolean firingCommandExecutedEvents;
 
-	SimpleThreatRatingFramework threatRatingFramework;
+	SimpleThreatRatingFramework simpleThreatFramework;
 	StressBasedThreatRatingFramework stressBasedThreatFramework;
 	
 	ProjectServer database;
