@@ -318,9 +318,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return new Point(middleX, middleY);
 	}
 	
-	BendPointSelectionHelper bendSelectionHelper;
-	FactorLink link;
-	DiagramLink diagramLink;
-	FactorCell from;
-	FactorCell to;
+	private BendPointSelectionHelper bendSelectionHelper;
+	private FactorLink link;
+	private DiagramLink diagramLink;
+	private FactorCell from;
+	private FactorCell to;
 }
