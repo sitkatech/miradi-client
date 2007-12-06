@@ -160,7 +160,12 @@ public class DataUpgrader extends FileBasedProjectServer
 
 	private void notifyUserOfDeletedDuratingAndCostFields()
 	{
-		EAM.notifyDialog(EAM.text("Strategy ratings of Duration and Cost have been discarded."));
+		EAM.notifyDialog(EAM.text("<html>" +
+				"This version of Miradi has changed the Strategy rating options.<br>" +
+				"The Duration and Cost fields have been removed, and the <br>" +
+				"Impact and Feasibility fields now encompass those attribues.<br>" +
+				"<br>" +
+				"Please review your Strategy ratings to ensure they are appropriate."));
 	}
 
 	public void upgradeToVersion25() throws Exception
