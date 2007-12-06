@@ -81,7 +81,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
-		return getFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
+		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
 	
 	public int getHighestFactorSummaryRatingValue(Factor factor) throws Exception
