@@ -71,4 +71,18 @@ public class StressBasedThreatFormula
 	{
 		return value < 0 || value > 4;
 	}
+	
+	public int getHighestWithValue(int veryHigh, int high, int medium, int low)
+	{
+		if (veryHigh > 0)
+			return veryHigh;
+		
+		if (high > 0)
+			return high;
+		
+		if (medium > 0)
+			return medium;
+		
+		return low;
+	}
 }
