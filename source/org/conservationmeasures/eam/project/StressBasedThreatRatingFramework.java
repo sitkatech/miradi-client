@@ -57,7 +57,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 			highestTargetRatingValues[i] = getHighestFactorSummaryRatingValue(targets[i]);
 		}
 		
-		return getFormula().getMajority(highestTargetRatingValues);
+		return getStressBasedThreatFormula().getMajority(highestTargetRatingValues);
 	}
 	
 	private int getRollupRatingOfThreats() throws Exception
