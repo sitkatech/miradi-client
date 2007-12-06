@@ -21,8 +21,8 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", "Not Specified", Color.WHITE),
 			new ChoiceItem("1", "Impossible", COLOR_ALERT),
 			new ChoiceItem("2", "Difficult", COLOR_CAUTION),
-			new ChoiceItem("3", "Moderate", OK),
-			new ChoiceItem("4", "Easy", GREAT),
+			new ChoiceItem("3", "Moderate", COLOR_OK),
+			new ChoiceItem("4", "Easy", COLOR_GREAT),
 		};
 	}
 

@@ -21,8 +21,8 @@ public class StrategyDurationQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", "Not Specified", Color.WHITE),
 			new ChoiceItem("1", "Useless", COLOR_ALERT),
 			new ChoiceItem("2", "Short-Term", COLOR_CAUTION),
-			new ChoiceItem("3", "Long-Term", OK),
-			new ChoiceItem("4", "Permanent", GREAT),
+			new ChoiceItem("3", "Long-Term", COLOR_OK),
+			new ChoiceItem("4", "Permanent", COLOR_GREAT),
 		};
 	}
 

@@ -21,8 +21,8 @@ public class PriorityRatingQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", "Not Specified", Color.WHITE),
 			new ChoiceItem("1", "Low", COLOR_ALERT),
 			new ChoiceItem("2", "Medium", COLOR_CAUTION),
-			new ChoiceItem("3", "High", OK),
-			new ChoiceItem("4", "Very High", GREAT),
+			new ChoiceItem("3", "High", COLOR_OK),
+			new ChoiceItem("4", "Very High", COLOR_GREAT),
 		};
 	}
 }
