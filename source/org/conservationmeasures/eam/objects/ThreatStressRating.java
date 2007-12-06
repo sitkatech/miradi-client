@@ -72,9 +72,9 @@ public class ThreatStressRating extends BaseObject
 		int contributionRating = parseInt(getContribution().getCode());
 		int irreversibilityRating = parseInt(getIrreversibility().getCode());
 		
-		StressBasedThreatFormula formula = new StressBasedThreatFormula();
-		int contributionIrreversibilityResult = formula.computeContributionByIrreversibility(contributionRating, irreversibilityRating);
-		return formula.computeThreatStressRating(contributionIrreversibilityResult, stressRating);
+		StressBasedThreatFormula stressBasedThreatFormula = getProject().getStressBasedThreatFormula();
+		int contributionIrreversibilityResult = stressBasedThreatFormula.computeContributionByIrreversibility(contributionRating, irreversibilityRating);
+		return stressBasedThreatFormula.computeThreatStressRating(contributionIrreversibilityResult, stressRating);
 	}
 	
 	private int parseInt(String intAsString)
