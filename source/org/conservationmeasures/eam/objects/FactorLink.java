@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.SimpleThreatFormula;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
@@ -234,8 +233,7 @@ public class FactorLink extends BaseObject
 			ratingBundleValues[i] = rating.calculateThreatRating();
 		}
 
-		SimpleThreatFormula formula = new SimpleThreatFormula();
-		return formula.getHighestRatingRule(ratingBundleValues);
+		return getProject().getStressBasedThreatFormula().getHighestRatingRule(ratingBundleValues);
 	}
 
 	public ORef getFactorRef(int direction)

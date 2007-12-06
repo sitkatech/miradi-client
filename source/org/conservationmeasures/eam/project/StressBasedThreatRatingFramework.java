@@ -69,7 +69,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 			summaryValues[i] = get2PrimeSummaryRatingValue(factors[i]);
 		}
 		
-		return getFormula().getHighestRatingRule(summaryValues);
+		return getStressBasedThreatFormula().getHighestRatingRule(summaryValues);
 	}
 	
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
@@ -86,7 +86,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	
 	public int getHighestFactorSummaryRatingValue(Factor factor) throws Exception
 	{
-		return getFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
+		return getStressBasedThreatFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
 	}
 	
 	public int[] calculateSummaryRatingValues(Factor factor) throws Exception
