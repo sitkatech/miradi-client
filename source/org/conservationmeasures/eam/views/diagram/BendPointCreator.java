@@ -41,10 +41,10 @@ public class BendPointCreator
 	{
 		DiagramLink selectedLink = linkCell.getDiagramLink();
 		PointList bendPoints = selectedLink.getBendPoints();
-		if (bendPoints.contains(insertPoint))
+		Point snapped = project.getSnapped(insertPoint);
+		if (bendPoints.contains(snapped))
 			return;
 
-		Point snapped = project.getSnapped(insertPoint);
 		PointList newListWithBendPoint = linkCell.getNewBendPointList(model, getCache(), snapped);
 		
 		CommandSetObjectData setBendPointsCommand = CommandSetObjectData.createNewPointList(selectedLink, DiagramLink.TAG_BEND_POINTS, newListWithBendPoint);
