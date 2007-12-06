@@ -137,6 +137,16 @@ public class Cause extends Factor
 		return ObjectType.CAUSE;
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static Cause find(ObjectManager objectManager, ORef causeRef)
 	{
 		return (Cause) objectManager.findObject(causeRef);
