@@ -37,6 +37,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
+		addField(createMultilineField(Goal.TAG_COMMENTS));
 				
 		updateFieldsFromProject();
 	}
