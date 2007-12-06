@@ -166,7 +166,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 		catch (Exception e)
 		{
-			EAM.logException(e);
 			EAM.panic(e);
 		}
 		finally
