@@ -187,7 +187,7 @@ public class Strategy extends Factor
 
 	public String toString()
 	{
-		return combineShortLabelAndLabel(shortLabel.toString(), label.toString());
+		return combineShortLabelAndLabel(getShortLabel().toString(), label.toString());
 	}
 	
 	public ORefList getAllObjectsToDeepCopy()
@@ -242,11 +242,6 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
-	public String getShortLabel()
-	{
-		return shortLabel.toString();
-	}
-	
 	public String getBudgetTotals()
 	{
 		try
@@ -266,7 +261,6 @@ public class Strategy extends Factor
 		super.clear();
 		status = new StringData();
 		activityIds = new IdListData(Task.getObjectType());
-		shortLabel = new StringData();
 	
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
@@ -283,7 +277,6 @@ public class Strategy extends Factor
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
-		addField(TAG_SHORT_LABEL, shortLabel);
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
@@ -300,7 +293,6 @@ public class Strategy extends Factor
 	public static final String TAG_STATUS = "Status";
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
-	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
@@ -316,7 +308,6 @@ public class Strategy extends Factor
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
 	
 	private StringData status;
-	private StringData shortLabel;
 	private IdListData activityIds;
 	
 	private StringData taxonomyCode;

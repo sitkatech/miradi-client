@@ -46,6 +46,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, factorToEdit.getWrappedORef());
 		currentDiagramFactor = factorToEdit;
 
+		addField(createStringField(Factor.TAG_SHORT_LABEL));
+		addField(createStringField(Factor.TAG_TEXT));
+	
 		if (getFactor().isDirectThreat())
 		{
 			addField(createClassificationChoiceField(new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
@@ -59,7 +62,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 
 		if(getFactor().isStrategy())
 		{
-			addField(createStringField(Strategy.TAG_SHORT_LABEL));
+			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Strategy.TAG_TAXONOMY_CODE)));
 			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
@@ -68,8 +71,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 		
-		
 		addField(createMultilineField(Factor.TAG_COMMENT));
+		
 		
 		
 		if(getFactor().isTarget())
