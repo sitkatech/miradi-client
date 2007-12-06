@@ -120,7 +120,7 @@ public class BendPointCreator
 		}
 	}
 
-	DiagramComponent diagram;
-	DiagramModel model;
-	Project project;
+	private DiagramComponent diagram;
+	private DiagramModel model;
+	private Project project;
 }
