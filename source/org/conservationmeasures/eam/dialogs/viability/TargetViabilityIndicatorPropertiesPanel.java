@@ -63,6 +63,7 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 	{
 		ObjectDataInputField indicatorLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 		ObjectDataInputField indicatorShortLabel = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL,STD_SHORT));
+		ObjectDataInputField indicatorText = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_TEXT));
 		ObjectDataInputField indicatorPriority = addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		ObjectDataInputField monitoringStatus = addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		ObjectDataInputField ratingSource = addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
@@ -71,6 +72,8 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		box2.add(createColumnJPanel(indicatorLabel));
 		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
 		box2.add(createColumnJPanel(indicatorShortLabel));
+		box2.add(Box.createHorizontalStrut(STD_SPACE_20));
+		box2.add(createColumnJPanel(indicatorText));
 		
 		JPanel boxIndrPrty = createGridLayoutPanel(1,5);
 		boxIndrPrty.add(createColumnJPanel(indicatorPriority));

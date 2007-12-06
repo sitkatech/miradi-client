@@ -36,6 +36,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(Indicator.TAG_SHORT_LABEL,10));
 		addField(createStringField(Indicator.TAG_LABEL));
+		addField(createStringField(Indicator.TAG_TEXT));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
@@ -50,6 +51,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Measurement.getObjectType(), Measurement.TAG_DETAIL));
 		addField(createIconChoiceField(Measurement.getObjectType(), new TrendQuestion(Measurement.TAG_TREND)));
 		addField(createChoiceField(Measurement.getObjectType(), new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
+		
 				
 		updateFieldsFromProject();
 	}
