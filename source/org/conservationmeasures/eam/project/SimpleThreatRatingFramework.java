@@ -49,6 +49,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		ratingValueOptions = new ValueOption[0];
 	}
 	
+	public SimpleThreatFormula getSimpleThreatFormula()
+	{
+		return new SimpleThreatFormula(this);
+	}
+		
 	public IdList getValueOptionIds()
 	{
 		IdList ids = new IdList(ValueOption.getObjectType());
@@ -165,7 +170,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public ValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
-		SimpleThreatFormula formula = new SimpleThreatFormula(this);
+		SimpleThreatFormula formula = getSimpleThreatFormula();
 		int numericResult = formula.computeBundleValue(bundle);
 		return findValueOptionByNumericValue(numericResult);
 		
@@ -300,14 +305,14 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	protected ValueOption getSummaryOfNumericValues(int[] bundleValues)
 	{
-		SimpleThreatFormula formula = new SimpleThreatFormula(this);
+		SimpleThreatFormula formula = getSimpleThreatFormula();
 		int numericResult = formula.getSummaryOfBundlesWithTwoPrimeRule(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
-	
+
 	private ValueOption getMajorityOfNumericValues(int[] bundleValues)
 	{
-		SimpleThreatFormula formula = new SimpleThreatFormula(this);
+		SimpleThreatFormula formula = getSimpleThreatFormula();
 		int numericResult = formula.getMajority(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
