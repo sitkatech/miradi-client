@@ -74,7 +74,6 @@ public class StressBasedThreatFormula extends ThreatFormula
 		return value < 0 || value > 4;
 	}
 	
-	//TODO remove almost dup mehtod in simple threat formula
 	public int getHighestRatingRule(int[] bundleValues)
 	{
 		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
