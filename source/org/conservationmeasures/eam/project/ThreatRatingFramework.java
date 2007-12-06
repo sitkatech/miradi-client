@@ -5,7 +5,10 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-public class ThreatRatingFramework
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+
+abstract public class ThreatRatingFramework
 {
 	public ThreatRatingFramework(Project projectToUse)
 	{
@@ -16,6 +19,8 @@ public class ThreatRatingFramework
 	{
 		return project;
 	}
-			
+
+	abstract public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception;
+	
 	protected Project project;
 }

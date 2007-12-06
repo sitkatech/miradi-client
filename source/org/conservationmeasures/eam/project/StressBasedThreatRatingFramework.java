@@ -8,9 +8,13 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ThreatRatingQuestion;
 import org.conservationmeasures.eam.utils.Utility;
 
 public class StressBasedThreatRatingFramework extends ThreatRatingFramework
@@ -20,6 +24,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		super(projectToUse);
 		
 		formula = new SimpleThreatFormula();
+		threatRatingQuestion = new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
 	}
 	
 	public int getOverallProjectRating()
@@ -60,7 +65,14 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		
 		return getFormula().getHighestRatingRule(summaryValues);
 	}
-		
+	
+	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
+	{
+		Cause threat = Cause.find(getProject(), threatRef);
+		int highestSummaryRating = getHighestFactorSummaryRatingValue(threat);
+		return  threatRatingQuestion.findChoiceByCode(Integer.toString(highestSummaryRating));
+	}
+	
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
 		return getFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
@@ -91,4 +103,5 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	}
 	
 	private SimpleThreatFormula formula;
+	private ThreatRatingQuestion threatRatingQuestion;
 }

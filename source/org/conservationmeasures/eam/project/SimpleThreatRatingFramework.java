@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -25,6 +26,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -201,6 +203,12 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		if(majority.getNumericValue() > rollup.getNumericValue())
 			return majority;
 		return rollup;
+	}
+	
+	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
+	{
+		ValueOption valueOption = getThreatThreatRatingValue(threatRef.getObjectId());
+		return new ChoiceItem(Integer.toString(valueOption.getNumericValue()), valueOption.getLabel(), valueOption.getColor());
 	}
 	
 	public ValueOption getThreatThreatRatingValue(BaseId threatId)
