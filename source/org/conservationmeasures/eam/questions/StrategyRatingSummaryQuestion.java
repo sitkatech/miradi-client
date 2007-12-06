@@ -26,6 +26,22 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestion
 		};
 	}
 
+	public ChoiceItem getResult(ChoiceItem impact, ChoiceItem feasibility)
+	{
+		String impactCode = impact.getCode();
+		String feasibilityCode = feasibility.getCode();
+		
+		int impactValue = codeToInt(impactCode);
+		int feasibilityValue = codeToInt(feasibilityCode);
+		
+		int min = Math.min(impactValue, feasibilityValue);
+		if(min == 0)
+			return findChoiceByCode("");
+		
+		return findChoiceByCode(Integer.toString(min));
+	}
+	
+	//FIXME remove this method
 	public ChoiceItem getResult(ChoiceItem impact, ChoiceItem duration, ChoiceItem feasibility, ChoiceItem cost)
 	{
 		String impactCode = impact.getCode();
