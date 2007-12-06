@@ -41,35 +41,6 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestion
 		return findChoiceByCode(Integer.toString(min));
 	}
 	
-	//FIXME remove this method
-	public ChoiceItem getResult(ChoiceItem impact, ChoiceItem duration, ChoiceItem feasibility, ChoiceItem cost)
-	{
-		String impactCode = impact.getCode();
-		String durationCode = duration.getCode();
-		String feasibilityCode = feasibility.getCode();
-		String costCode = cost.getCode();
-		
-		int impactValue = codeToInt(impactCode);
-		int durationValue = codeToInt(durationCode);
-		int feasibilityValue = codeToInt(feasibilityCode);
-		int costValue = codeToInt(costCode);
-		
-		int average = 0;
-		if(impactValue * durationValue * feasibilityValue * costValue == 0)
-			average = 0;
-		else if(impactValue == 1 || durationValue == 1 || feasibilityValue == 1 || costValue == 1)
-			average = 1;
-		else
-		{
-			int total = impactValue + durationValue + feasibilityValue + costValue;
-			average = total / 4;
-		}
-		
-		if(average == 0)
-			return findChoiceByCode("");
-		return findChoiceByCode(Integer.toString(average));
-	}
-
 	private int codeToInt(String code)
 	{
 		if(code.length() == 0)
