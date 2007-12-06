@@ -313,6 +313,16 @@ public class Project
 		return simpleThreatFramework;
 	}
 	
+	public SimpleThreatFormula getSimpleThreatFormula()
+	{
+		return getSimpleThreatRatingFramework().getSimpleThreatFormula();
+	}
+	
+	public StressBasedThreatFormula getStressBasedThreatFormula()
+	{
+		return stressBasedThreatFramework.getStressBasedThreatFormula();
+	}
+	
 	public ProjectCalendar getProjectCalendar()
 	{
 		return projectCalendar;
