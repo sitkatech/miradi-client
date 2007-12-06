@@ -110,6 +110,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			Point pointRelativeToCellOrigin = convertScreenPointToCellRelativePoint(screenPoint, factorCell);
 			return factorCell.getToolTipString(pointRelativeToCellOrigin);
 		}
+		if (cell instanceof LinkCell)
+		{
+			LinkCell linkCell = (LinkCell) cell;
+			return linkCell.getToolTipString();
+		}
 		return null;
 	}
 
