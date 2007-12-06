@@ -280,6 +280,7 @@ public class Indicator extends BaseObject
 		indicatorThreshold = new StringMapData();
 		ratingSource= new ChoiceData();
 		measurementRefs = new ORefListData();
+		text = new StringData();
 		
 		futureStatusRating = new ChoiceData();
 		futureStatusDate = new DateData();;
@@ -308,6 +309,7 @@ public class Indicator extends BaseObject
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
+		addField(TAG_TEXT, text);
 		
 		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
@@ -336,6 +338,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
+	public final static String TAG_TEXT = "Text";
 	
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
@@ -369,6 +372,7 @@ public class Indicator extends BaseObject
 	private StringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
 	private ORefListData measurementRefs;
+	private StringData text;
 	
 	private ChoiceData futureStatusRating;
 	private DateData futureStatusDate;
