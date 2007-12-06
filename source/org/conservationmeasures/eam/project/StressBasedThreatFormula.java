@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.project;
 
+import java.util.HashMap;
+
 public class StressBasedThreatFormula extends ThreatFormula
 {
 	public StressBasedThreatFormula()
@@ -70,6 +72,18 @@ public class StressBasedThreatFormula extends ThreatFormula
 	public boolean isInvalidValue(int value)
 	{
 		return value < 0 || value > 4;
+	}
+	
+	//TODO remove almost dup mehtod in simple threat formula
+	public int getHighestRatingRule(int[] bundleValues)
+	{
+		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
+		int low = computed357Values.get(1);
+		int medium = computed357Values.get(2);
+		int high = computed357Values.get(3);
+		int veryHigh = computed357Values.get(4);
+		
+		return getHighestWithValue(veryHigh, high, medium, low);
 	}
 	
 	public int getHighestWithValue(int veryHigh, int high, int medium, int low)
