@@ -709,7 +709,7 @@ public class Project
 		return new String(asArray);
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<MiradiProject>");
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");

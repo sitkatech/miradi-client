@@ -80,7 +80,7 @@ abstract public class Desire extends BaseObject
 		for(int i = 0; i < referrers.size(); ++i)
 		{
 			ORef thisRef = referrers.get(i);
-			if(!Factor.is(thisRef))
+			if(!Factor.isFactor(thisRef))
 				continue;
 			
 			Factor factor = getObjectManager().findFactor(thisRef);

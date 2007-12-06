@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -451,7 +450,7 @@ abstract public class BaseObject
 		return json;
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<" + getTypeName() + ">");
 		out.writeln("<Id>" + id.asInt() + "</Id>");
@@ -466,7 +465,13 @@ abstract public class BaseObject
 			data.toXml(out);
 			out.writeln("</" + tag + ">");
 		}
+		writeNonFieldXml(out);
 		out.writeln("</" + getTypeName() + ">");
+	}
+	
+	public void writeNonFieldXml(UnicodeWriter out) throws Exception
+	{
+		
 	}
 	
 	public static String toHtml(BaseObject[] resources)

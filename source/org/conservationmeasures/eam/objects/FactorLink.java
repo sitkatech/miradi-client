@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.Set;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,7 +22,10 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.UnicodeWriter;
 
 public class FactorLink extends BaseObject
 {
@@ -130,6 +134,17 @@ public class FactorLink extends BaseObject
 		
 		if (getFromFactorRef().getObjectType() == Target.getObjectType() && isBidirectional())
 			return getFromFactorRef();
+		
+		throw new Exception();
+	}
+	
+	public ORef getUpstreamThreatRef() throws Exception
+	{
+		if (Cause.is(getFromFactorRef()))
+			return getFromFactorRef();
+		
+		if (Cause.is(getToFactorRef()) && isBidirectional())
+			return getToFactorRef();
 		
 		throw new Exception();
 	}
@@ -257,6 +272,42 @@ public class FactorLink extends BaseObject
 	public ORefList getThreatStressRatingRefs()
 	{
 		return threatStressRatingRefs.getORefList();
+	}
+
+	public void writeNonFieldXml(UnicodeWriter out) throws Exception
+	{
+		super.writeNonFieldXml(out);
+		if(!isThreatTargetLink())
+			return;
+		
+		ORef targetRef = getDownstreamTargetRef();
+		ORef threatRef = getUpstreamThreatRef();
+		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
+		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
+
+		RatingCriterion scopeCriterion = simpleThreatFramework.getScopeCriterion();
+		RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
+		RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
+		BaseId scopeId = bundle.getValueId(scopeCriterion.getId());
+		BaseId severityId = bundle.getValueId(severityCriterion.getId());
+		BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
+		ValueOption scope = (ValueOption)getProject().findObject(ValueOption.getObjectType(), scopeId);
+		ValueOption severity = (ValueOption)getProject().findObject(ValueOption.getObjectType(), severityId);
+		ValueOption irreversibility = (ValueOption)getProject().findObject(ValueOption.getObjectType(), irreversibilityId);
+
+		out.writeln("<ThreatRatingSimple>");
+		writeCriterionAndValue(out, scopeCriterion, scope);
+		writeCriterionAndValue(out, severityCriterion, severity);
+		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
+		out.writeln("</ThreatRatingSimple>");
+	}
+	
+	private void writeCriterionAndValue(UnicodeWriter out, RatingCriterion criterion, ValueOption value) throws Exception
+	{
+		out.write("<" + criterion.getLabel() + ">");
+		out.write(Integer.toString(value.getNumericValue()));
+		out.write("</" + criterion.getLabel() + ">");
+		out.writeln();
 	}
 	
 	public static FactorLink find(ObjectManager objectManager, ORef factorLinkRef)

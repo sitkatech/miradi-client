@@ -513,7 +513,7 @@ public class ObjectManager
 		referrerCache.remove(refToRemove);
 	}
 
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<ObjectPools>");
 		Iterator iter = pools.keySet().iterator();

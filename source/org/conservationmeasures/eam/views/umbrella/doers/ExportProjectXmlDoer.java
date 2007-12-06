@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -52,14 +51,14 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 			exportProjectXml(chosen);
 			EAM.notifyDialog(EAM.text("Export complete"));
 		}
-		catch(IOException e)
+		catch(Exception e)
 		{
 			EAM.errorDialog(EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
 					"don't have permission to write to it."));
 		}
 	}
 
-	private void exportProjectXml(File destination) throws IOException
+	private void exportProjectXml(File destination) throws Exception
 	{
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try

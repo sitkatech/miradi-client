@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectpools;
 
-import java.io.IOException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -31,7 +29,7 @@ public class EAMObjectPool extends ObjectPool
 	}
 
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<Pool type='" + getObjectType() + "'>");
 		IdList ids = getIdList();

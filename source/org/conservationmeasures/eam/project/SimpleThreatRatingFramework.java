@@ -382,6 +382,21 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return key;
 	}
 	
+	public RatingCriterion getScopeCriterion()
+	{
+		return findCriterionByLabel(CRITERION_SCOPE);
+	}
+	
+	public RatingCriterion getSeverityCriterion()
+	{
+		return findCriterionByLabel(CRITERION_SEVERITY);
+	}
+	
+	public RatingCriterion getIrreversibilityCriterion()
+	{
+		return findCriterionByLabel(CRITERION_IRREVERSIBILITY);
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
