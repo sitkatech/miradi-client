@@ -134,6 +134,6 @@ public class BendPointSelectionHelper
 		}
 	}
 	
-	IntVector selectionIndexes;
-	LinkCell linkCell;
+	private IntVector selectionIndexes;
+	private LinkCell linkCell;
 }
