@@ -36,7 +36,6 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(Indicator.TAG_SHORT_LABEL,10));
 		addField(createStringField(Indicator.TAG_LABEL));
-		addField(createStringField(Indicator.TAG_TEXT));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
