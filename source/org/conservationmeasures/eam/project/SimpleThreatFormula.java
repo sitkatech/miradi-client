@@ -71,17 +71,6 @@ public class SimpleThreatFormula extends ThreatFormula
 		return computeBundleValue(scope, severity, urgency);
 	}
 	
-	public int getSummaryOfBundlesWithTwoPrimeRule(int[] bundleValues)
-	{
-		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
-		int low = computed357Values.get(1);
-		int medium = computed357Values.get(2);
-		int high = computed357Values.get(3);
-		int veryHigh = computed357Values.get(4);
-			
-		return applyTwoPrimeRule(low, medium, high, veryHigh);
-	}
-	
 	public int getHighestRatingRule(int[] bundleValues)
 	{
 		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
@@ -106,20 +95,6 @@ public class SimpleThreatFormula extends ThreatFormula
 		return highestValue;
 	}
 
-	private int applyTwoPrimeRule(int low, int medium, int high, int veryHigh)
-	{
-		if(veryHigh >= 2)
-			return 4;
-		if(veryHigh == 1 || high >= 2)
-			return 3;
-		if(high == 1 || medium >= 2)
-			return 2;
-		if(medium >= 1 || low >= 1)
-			return 1;
-
-		return 0;
-	}
-	
 	public int getMajority(int values[])
 	{
 		int numberOfLegalValues = 5;
