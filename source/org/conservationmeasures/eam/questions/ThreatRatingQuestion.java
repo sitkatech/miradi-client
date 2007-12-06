@@ -18,10 +18,10 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified", Color.WHITE),
-				new ChoiceItem("1", "Low", COLOR_ALERT),
-				new ChoiceItem("2", "Medium", COLOR_CAUTION),
-				new ChoiceItem("3", "High", OK),
-				new ChoiceItem("4", "Very High", GREAT),
+				new ChoiceItem("1", "Low", GREAT),
+				new ChoiceItem("2", "Medium", OK),
+				new ChoiceItem("3", "High", COLOR_CAUTION),
+				new ChoiceItem("4", "Very High", COLOR_ALERT),
 		};
 	}
 }
