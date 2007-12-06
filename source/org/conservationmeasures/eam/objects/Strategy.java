@@ -292,9 +292,7 @@ public class Strategy extends Factor
 		
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
-		addField(PSEUDO_TAG_DURATION_RATING_VALUE, durationRatingLabel);
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
-		addField(PSEUDO_TAG_COST_RATING_VALUE, costRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 	}
 
@@ -311,9 +309,7 @@ public class Strategy extends Factor
 	
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
-	public static final String PSEUDO_TAG_DURATION_RATING_VALUE = "DurationRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
-	public static final String PSEUDO_TAG_COST_RATING_VALUE = "CostRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
 	
 	public static final String OBJECT_NAME = "Strategy";
@@ -330,8 +326,6 @@ public class Strategy extends Factor
 	
 	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoQuestionData impactRatingLabel;
-	private PseudoQuestionData durationRatingLabel;
 	private PseudoQuestionData feasibilityRatingLabel;
-	private PseudoQuestionData costRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
 }
