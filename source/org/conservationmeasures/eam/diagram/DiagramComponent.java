@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -373,24 +374,31 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setBackground(defaultBackgroundColor);
 	}
 
-	public void valueChanged(GraphSelectionEvent e)
+	public void valueChanged(GraphSelectionEvent event)
 	{
-		Object[] cells = e.getCells();
-		for(int i = 0; i < cells.length; ++i)
+		try
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells[i];
-			if(cell.isFactor())
+			Object[] cells = event.getCells();
+			for(int i = 0; i < cells.length; ++i)
 			{
-				GraphLayoutCache glc = getGraphLayoutCache();
-				repaintLinks(glc.getOutgoingEdges(cell, null, true, false));
-				repaintLinks(glc.getIncomingEdges(cell, null, true, false));
+				EAMGraphCell cell = (EAMGraphCell)cells[i];
+				if(cell.isFactor())
+				{
+					GraphLayoutCache glc = getGraphLayoutCache();
+					repaintLinks(glc.getOutgoingEdges(cell, null, true, false));
+					repaintLinks(glc.getIncomingEdges(cell, null, true, false));
+				}
+				else if(cell.isFactorLink())
+				{
+					Vector thisLink = new Vector();
+					thisLink.add(cell);
+					repaintLinks(thisLink);
+				}
 			}
-			else if(cell.isFactorLink())
-			{
-				Vector thisLink = new Vector();
-				thisLink.add(cell);
-				repaintLinks(thisLink);
-			}
+		}
+		catch (Exception e)
+		{
+			EAM.panic(e);
 		}
 	}
 
