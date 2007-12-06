@@ -17,8 +17,13 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -50,6 +55,30 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public BendPointSelectionHelper getBendPointSelectionHelper()
 	{
 		return bendSelectionHelper;
+	}
+	
+	public String getToolTipString() 
+	{
+		Project project = getFactorLink().getProject();
+		Factor fromFactor = Factor.findFactor(project, getFactorLink().getFromFactorRef());
+		Factor toFactor = Factor.findFactor(project, getFactorLink().getToFactorRef());
+		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
+				           		   "<b>To : " + toFactor.getLabel() + "</b>";
+		
+		ORefList threatStressRatingRefs = getFactorLink().getThreatStressRatingRefs();	
+		if(threatStressRatingRefs.size() == 0)
+			return toolTipText;
+		
+		String header = "Stresses:";
+		toolTipText += "<hr>" + header + "<ul>";
+		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(project, threatStressRatingRefs.get(i));
+			Stress stress = Stress.find(project, threatStressRating.getStressRef());
+			toolTipText += "<li>" + stress.toString() + "</li>";
+		}
+		
+		return toolTipText;
 	}
 	
 	public int[] getSelectedBendPointIndexes()
