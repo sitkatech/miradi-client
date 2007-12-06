@@ -23,7 +23,6 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		super(projectToUse);
 		
-		formula = new SimpleThreatFormula();
 		stressBasedThreatFormula = new StressBasedThreatFormula();
 		threatRatingQuestion = new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
 	}
@@ -103,12 +102,6 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
 	
-	public SimpleThreatFormula getFormula()
-	{
-		return formula;
-	}
-	
-	private SimpleThreatFormula formula;
 	private StressBasedThreatFormula stressBasedThreatFormula;
 	private ThreatRatingQuestion threatRatingQuestion;
 }
