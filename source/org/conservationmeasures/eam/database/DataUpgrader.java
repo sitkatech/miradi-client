@@ -142,7 +142,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 24)
 				upgradeToVersion25();
-					
+			
+			if (readDataVersion(getTopDirectory()) == 25)
+				upgradeToVersion26();
 		}
 		finally 
 		{
@@ -150,6 +152,17 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	public void upgradeToVersion26() throws Exception
+	{
+		notifyUserOfDeletedDuratingAndCostFields();
+		writeVersion(26);
+	}
+
+	private void notifyUserOfDeletedDuratingAndCostFields()
+	{
+		EAM.notifyDialog(EAM.text("Strategy ratings of Duration and Cost have been discarded."));
+	}
+
 	public void upgradeToVersion25() throws Exception
 	{
 		createThreatStressRatingsForTargetThreatLinks();
