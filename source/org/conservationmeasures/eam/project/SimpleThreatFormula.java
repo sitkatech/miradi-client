@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import java.util.HashMap;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -69,17 +67,6 @@ public class SimpleThreatFormula extends ThreatFormula
 		int urgency = getCriterionValue(bundle, "Irreversibility");
 		
 		return computeBundleValue(scope, severity, urgency);
-	}
-	
-	public int getHighestRatingRule(int[] bundleValues)
-	{
-		HashMap<Integer, Integer> computed357Values = getBundleSummariesUsing357(bundleValues);
-		int low = computed357Values.get(1);
-		int medium = computed357Values.get(2);
-		int high = computed357Values.get(3);
-		int veryHigh = computed357Values.get(4);
-		
-		return getHighestValue(new int[]{low, medium, high, veryHigh});
 	}
 	
 	public int getHighestValue(int[] values)
