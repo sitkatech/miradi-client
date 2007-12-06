@@ -102,7 +102,8 @@ abstract public class Desire extends BaseObject
 	{
 		super.clear();
 		shortLabel = new StringData();
-		fullText = new StringData();	
+		fullText = new StringData();
+		comments = new StringData();
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
@@ -110,6 +111,7 @@ abstract public class Desire extends BaseObject
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
+		addField(TAG_COMMENTS, comments);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
@@ -118,18 +120,19 @@ abstract public class Desire extends BaseObject
 	
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
+	public final static String TAG_COMMENTS = "Comments";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public final static String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
-	
 	public static final String OBJECT_NAME = "Desire";
 
-	StringData shortLabel;
-	StringData fullText;
-	PseudoStringData multiLineTargets;
-	PseudoStringData multiLineDirectThreats;
-	PseudoStringData multiLineStrategies;
-	PseudoStringData multiLineFactor;
+	private StringData shortLabel;
+	private StringData fullText;
+	private StringData comments;
+	private PseudoStringData multiLineTargets;
+	private PseudoStringData multiLineDirectThreats;
+	private PseudoStringData multiLineStrategies;
+	private PseudoStringData multiLineFactor;
 }
