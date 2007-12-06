@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-public class StressBasedThreatFormula
+public class StressBasedThreatFormula extends ThreatFormula
 {
 	public StressBasedThreatFormula()
 	{
