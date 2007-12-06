@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 
-public class SimpleThreatFormula
+public class SimpleThreatFormula extends ThreatFormula
 {
 	public SimpleThreatFormula()
 	{
