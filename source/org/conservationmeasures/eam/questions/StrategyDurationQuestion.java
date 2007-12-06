@@ -19,10 +19,10 @@ public class StrategyDurationQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Useless", COLOR_1_OF_4),
-			new ChoiceItem("2", "Short-Term", COLOR_2_OF_4),
-			new ChoiceItem("3", "Long-Term", COLOR_3_OF_4),
-			new ChoiceItem("4", "Permanent", COLOR_4_OF_4),
+			new ChoiceItem("1", "Useless", COLOR_ALERT),
+			new ChoiceItem("2", "Short-Term", COLOR_CAUTION),
+			new ChoiceItem("3", "Long-Term", OK),
+			new ChoiceItem("4", "Permanent", GREAT),
 		};
 	}
 

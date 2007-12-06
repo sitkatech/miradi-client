@@ -19,10 +19,10 @@ public class StrategyImpactQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "None", COLOR_1_OF_4),
-			new ChoiceItem("2", "Low", COLOR_2_OF_4),
-			new ChoiceItem("3", "Medium", COLOR_3_OF_4),
-			new ChoiceItem("4", "High", COLOR_4_OF_4),
+			new ChoiceItem("1", "None", COLOR_ALERT),
+			new ChoiceItem("2", "Low", COLOR_CAUTION),
+			new ChoiceItem("3", "Medium", OK),
+			new ChoiceItem("4", "High", GREAT),
 		};
 	}
 

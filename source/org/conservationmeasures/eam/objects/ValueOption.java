@@ -86,10 +86,10 @@ public class ValueOption extends BaseObject
 		{
 			case -1: return INVALID_GRAY;
 			case 0: return Color.WHITE;
-			case 1: return ChoiceQuestion.COLOR_4_OF_4;
-			case 2: return ChoiceQuestion.COLOR_3_OF_4;
-			case 3: return ChoiceQuestion.COLOR_2_OF_4;
-			case 4: return ChoiceQuestion.COLOR_1_OF_4;
+			case 1: return ChoiceQuestion.GREAT;
+			case 2: return ChoiceQuestion.OK;
+			case 3: return ChoiceQuestion.COLOR_CAUTION;
+			case 4: return ChoiceQuestion.COLOR_ALERT;
 		}
 		EAM.logDebug("ValueOption.getColor for unknown numeric value: " + getNumericValue());
 		return Color.BLACK;
