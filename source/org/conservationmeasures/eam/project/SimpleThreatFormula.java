@@ -82,30 +82,6 @@ public class SimpleThreatFormula extends ThreatFormula
 		return highestValue;
 	}
 
-	public int getMajority(int values[])
-	{
-		int numberOfLegalValues = 5;
-		int rankTotals[] = new int[numberOfLegalValues];
-		
-		for(int i = 0; i < values.length; ++i)
-		{
-			++rankTotals[values[i]];
-		}
-
-		int total = values.length;
-		int half = total/2;
-
-		int cumulative = 0;
-		for(int i = numberOfLegalValues -1; i >= 0; --i)
-		{
-			cumulative += rankTotals[i];
-			if(cumulative > half)
-				return i;
-		}
-
-		return 0;
-	}
-	
 	private int getCriterionValue(ThreatRatingBundle bundle, String label)
 	{
 		RatingCriterion criterion = framework.findCriterionByLabel(label);
