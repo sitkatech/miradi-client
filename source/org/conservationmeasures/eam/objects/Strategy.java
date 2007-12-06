@@ -178,15 +178,11 @@ public class Strategy extends Factor
 	{
 		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion("");
 		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
-		StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion("");
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");
-		StrategyCostQuestion costQuestion = new StrategyCostQuestion("");
 		
 		ChoiceItem impact = impactQuestion.findChoiceByCode(impactRating.get());
-		ChoiceItem duration = durationQuestion.findChoiceByCode(durationRating.get());
 		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
-		ChoiceItem cost = costQuestion.findChoiceByCode(costRating.get());
-		ChoiceItem result = summary.getResult(impact, duration, feasibility, cost);
+		ChoiceItem result = summary.getResult(impact, feasibility);
 
 		return result;
 	}
