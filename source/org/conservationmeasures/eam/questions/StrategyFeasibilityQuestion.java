@@ -19,10 +19,10 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Impossible", COLOR_1_OF_4),
-			new ChoiceItem("2", "Difficult", COLOR_2_OF_4),
-			new ChoiceItem("3", "Moderate", COLOR_3_OF_4),
-			new ChoiceItem("4", "Easy", COLOR_4_OF_4),
+			new ChoiceItem("1", "Impossible", COLOR_ALERT),
+			new ChoiceItem("2", "Difficult", COLOR_CAUTION),
+			new ChoiceItem("3", "Moderate", OK),
+			new ChoiceItem("4", "Easy", GREAT),
 		};
 	}
 

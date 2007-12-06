@@ -49,10 +49,10 @@ public abstract class ChoiceQuestion
 	public static final Color LIGHT_GREEN = new Color(128, 255, 0); 
 	public static final Color DARK_GREEN = new Color(0, 160, 0);
 		
-	public static final Color COLOR_1_OF_4 = Color.RED;
-	public static final Color COLOR_2_OF_4 = DARK_YELLOW;
-	public static final Color COLOR_3_OF_4 = LIGHT_GREEN;
-	public static final Color COLOR_4_OF_4 = DARK_GREEN;
+	public static final Color COLOR_ALERT = Color.RED;
+	public static final Color COLOR_CAUTION = DARK_YELLOW;
+	public static final Color OK = LIGHT_GREEN;
+	public static final Color GREAT = DARK_GREEN;
 	
 	String tag;
 	String label;
