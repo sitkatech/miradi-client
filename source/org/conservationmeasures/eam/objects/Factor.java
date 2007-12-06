@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -429,6 +430,16 @@ abstract public class Factor extends BaseObject
 		}
 		
 		return result.toString();
+	}
+	
+	public static Factor findFactor(ObjectManager objectManager, ORef factorRef)
+	{
+		return (Factor) objectManager.findObject(factorRef);
+	}
+	
+	public static Factor findFactor(Project project, ORef factorRef)
+	{
+		return findFactor(project.getObjectManager(), factorRef);
 	}
 	
 	void clear()
