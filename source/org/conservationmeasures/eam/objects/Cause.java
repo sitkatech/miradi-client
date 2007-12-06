@@ -11,10 +11,12 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -133,6 +135,16 @@ public class Cause extends Factor
 	public static int getObjectType()
 	{
 		return ObjectType.CAUSE;
+	}
+	
+	public static Cause find(ObjectManager objectManager, ORef causeRef)
+	{
+		return (Cause) objectManager.findObject(causeRef);
+	}
+	
+	public static Cause find(Project project, ORef causeRef)
+	{
+		return find(project.getObjectManager(), causeRef);
 	}
 	
 	void clear()

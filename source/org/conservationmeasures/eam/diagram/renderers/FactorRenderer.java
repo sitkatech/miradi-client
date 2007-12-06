@@ -63,8 +63,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
-import org.conservationmeasures.eam.objects.ValueOption;
-import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.Utility;
@@ -89,10 +88,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			node = (FactorCell)view.getCell();
 			DiagramModel model = (DiagramModel)graphToUse.getModel();
-			SimpleThreatRatingFramework framework = model.getThreatRatingFramework();
+			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
 			if(node.isDirectThreat())
-				priority = framework.getThreatThreatRatingValue(node.getWrappedId());
+			{
+				priority = framework.getThreatThreatRatingValue(node.getWrappedORef());
+			}
 			if(node.isTarget())
 			{
 				Target target = (Target)node.getUnderlyingObject();
@@ -300,12 +301,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	protected static final int PRIORITY_WIDTH = 20;
 	protected static final int PRIORITY_HEIGHT = 10;
-	ValueOption priority;
-	FactorCell node;
-	ChoiceItem rating;
-	String indicatorText;
-	String objectivesText;
-	String goalsText;
+	protected ChoiceItem priority;
+	protected FactorCell node;
+	protected ChoiceItem rating;
+	private String indicatorText;
+	private String objectivesText;
+	private String goalsText;
 	boolean stragetyInResultsChain;
 	boolean isAliased;
 }
