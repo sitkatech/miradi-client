@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
+import javax.swing.JOptionPane;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -217,12 +218,12 @@ public class EAM
 	
 	public static void errorDialog(String errorMessage)
 	{
-		okDialog("Error", new String[] {errorMessage});
+		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAM.text("Wintitle|Error"), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public static void notifyDialog(String text)
 	{
-		okDialog("Information", new String[] {text});
+		JOptionPane.showMessageDialog(getMainWindow(), text, EAM.text("Wintitle|Information"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static void okDialog(String title, String[] body)

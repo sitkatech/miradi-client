@@ -118,9 +118,9 @@ public class ProjectRepairer
 			EAM.logError("found corrupted object: " + corruptedObjectRefs.get(i));
 		}
 		
-		EAM.notifyDialog("This project has some data corruption, " +
-						 "which may cause error messages or unexpected results within " +
-						 "Miradi. Please contact the Miradi team to report this problem, " +
+		EAM.notifyDialog("<html>This project has some data corruption, " +
+						 "which may cause error messages or unexpected results within Miradi. <br>" +
+						 "Please contact the Miradi team to report this problem, " +
 						 "and/or to have them repair this project.");
 	}
 	
