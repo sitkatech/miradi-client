@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
-import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ToolTipManager;
@@ -270,8 +269,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private Point2D[] extractBendPoints(EdgeView edge)
 	{
-		List controlPoints = edge.getPoints();
-		Vector clonedControlPoints = new Vector(controlPoints);
+		Vector clonedControlPoints = new Vector(edge.getPoints());
 		//TODO nima could use arrayCopy like
 		//System.arrayCopy( oldpoints starting at 1 to new points at 0, len -2)
 		final int FIRST_PORT_INDEX = 0;
