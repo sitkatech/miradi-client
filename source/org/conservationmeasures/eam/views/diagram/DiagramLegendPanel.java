@@ -256,8 +256,16 @@ abstract public class DiagramLegendPanel extends LegendPanel
 
 	private void updateVisiblity()
 	{
-		mainWindow.getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
-		mainWindow.updateStatusBar();
+		mainWindow.preventActionUpdates();
+		try
+		{
+			mainWindow.getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
+			mainWindow.updateStatusBar();
+		}
+		finally
+		{
+			mainWindow.allowActionUpdates();
+		}
 	}
 		
 	private LayerManager getLayerManager()
