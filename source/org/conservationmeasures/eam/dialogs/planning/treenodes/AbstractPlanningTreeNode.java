@@ -72,7 +72,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	public String toString()
 	{
-		return getObject().getLabel();
+		return getObject().combineShortLabelAndLabel();
 	}
 
 	protected ORefSet getAllRefsInTree()

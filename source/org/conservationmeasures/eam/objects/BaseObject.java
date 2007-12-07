@@ -283,6 +283,11 @@ abstract public class BaseObject
 		return label.get();
 	}
 	
+	public String getShortLabel()
+	{
+		return "";
+	}
+	
 	public void setLabel(String newLabel) throws Exception
 	{
 		label.set(newLabel);
@@ -564,6 +569,11 @@ abstract public class BaseObject
 			return shortLabel;
 		
 		return shortLabel + "." + Longlabel;
+	}
+	
+	public String combineShortLabelAndLabel()
+	{
+		return combineShortLabelAndLabel(getShortLabel(), getLabel());
 	}
 	
 	public BaseObject getOwner()
