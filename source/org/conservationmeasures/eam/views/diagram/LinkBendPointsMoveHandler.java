@@ -58,7 +58,7 @@ public class LinkBendPointsMoveHandler
         for (int i = 0; i < selectionIndexes.length; ++i)
         {
         	int selectionIndex = selectionIndexes[i];
-        	Point newPointLocation = Utility.convertToPoint(bendPoints[selectionIndex]);
+        	Point newPointLocation = Utility.convertPoint2DToPoint(bendPoints[selectionIndex]);
         	Point snapped = project.getSnapped(newPointLocation);
         	boolean samePoint = pointsToMove.find(snapped) == selectionIndex;
 			boolean contains = pointsToMove.contains(snapped);

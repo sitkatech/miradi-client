@@ -280,7 +280,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public Point getTargetLocation(GraphLayoutCache cache)
 	{
 		PortView targetView = (PortView) cache.getMapping(getTarget(), false);
-		Point targetLocation = Utility.convertToPoint(targetView.getLocation());
+		Point targetLocation = Utility.convertPoint2DToPoint(targetView.getLocation());
 		
 		return targetLocation;
 	}
@@ -288,7 +288,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public Point getSourceLocation(GraphLayoutCache cache)
 	{
 		PortView sourceView = (PortView) cache.getMapping(getSource(), false);
-		Point sourceLocation = Utility.convertToPoint(sourceView.getLocation());
+		Point sourceLocation = Utility.convertPoint2DToPoint(sourceView.getLocation());
 	
 		return sourceLocation;
 	}
@@ -310,7 +310,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		
 		//note : view.getPoint(0) is not return the same thing as view.getpoints().get(0)
 		Point2D point = view.getPoint(0);
-		Point sourceLocation = Utility.convertToPoint(point);
+		Point sourceLocation = Utility.convertPoint2DToPoint(point);
 		
 		int middleX = (sourceLocation.x + firstBendPoint.x) / 2; 
 		int middleY = (sourceLocation.y + firstBendPoint.y) / 2;

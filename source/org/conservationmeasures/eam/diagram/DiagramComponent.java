@@ -121,7 +121,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	public Point convertScreenPointToCellRelativePoint(Point screenPoint, FactorCell factorCell)
 	{
-		Point unscaledPoint = Utility.convertToPoint(fromScreen(screenPoint));
+		Point unscaledPoint = Utility.convertPoint2DToPoint(fromScreen(screenPoint));
 		Point cellOrigin = factorCell.getLocation();
 		Point pointRelativeToCellOrigin = unscaledPoint; 
 		pointRelativeToCellOrigin.translate(-cellOrigin.x, -cellOrigin.y);

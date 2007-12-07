@@ -20,7 +20,7 @@ import org.martus.swing.Utilities;
 
 public class Utility
 {
-	public static Point convertToPoint(Point2D point2d)
+	public static Point convertPoint2DToPoint(Point2D point2d)
 	{
 		int x = (int) point2d.getX();
 		int y = (int) point2d.getY();
