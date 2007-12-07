@@ -59,9 +59,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		return mainWindow.getActions();
 	}
 
+	//Note: customMarquee Handler will get notified first
 	public void mousePressed(MouseEvent event)
 	{
-		mainWindow.getDiagramComponent().setMarquee(false);
 		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
@@ -69,6 +69,14 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		}
 
+		if (mainWindow.getDiagramComponent().isMarquee())
+			return;
+		
+		startDragOperation(event);
+	}
+
+	private void startDragOperation(MouseEvent event)
+	{
 		dragStartedAt = event.getPoint();
 //TODO commented by Nima - consult with kevin - getFirstCellForLocation does not return a bend point.
 //		Object cellBeingPressed = getDiagram().getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
@@ -96,14 +104,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		{
 			EAM.logException(e);
 		}
-
 	}
 
 	public void mouseReleased(MouseEvent event)
 	{
-		if (getDiagram().isMarquee())
-			return;
-	
 		if(event.isPopupTrigger())
 		{
 			getDiagram().showContextMenu(event);
