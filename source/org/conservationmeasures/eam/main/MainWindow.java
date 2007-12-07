@@ -542,16 +542,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		if(shouldPreventActionUpdates())
 			return;
-		new ActionUpdater().run();
+		new ActionUpdater().start();
 	}
 
-	class ActionUpdater implements Runnable
+	class ActionUpdater extends Thread
 	{
 		public void run()
 		{
 			Stopwatch sw = new Stopwatch();
 			actions.updateActionStates();
-			EAM.logVerbose("updateActionStates took: " + sw.elapsed() + " millis");
+			EAM.logDebug("updateActionStates took: " + sw.elapsed() + " millis");
 		}
 	}
 	
