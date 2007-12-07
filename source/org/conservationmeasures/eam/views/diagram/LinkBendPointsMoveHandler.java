@@ -60,7 +60,7 @@ public class LinkBendPointsMoveHandler
         	int selectionIndex = selectionIndexes[i];
         	Point newPointLocation = Utility.convertPoint2DToPoint(bendPoints[selectionIndex]);
         	Point snapped = project.getSnapped(newPointLocation);
-        	boolean samePoint = pointsToMove.find(snapped) == selectionIndex;
+        	boolean samePoint = (pointsToMove.find(snapped) == selectionIndex);
 			boolean contains = pointsToMove.contains(snapped);
 			if (contains && !samePoint)
         		duplicateBendPointIndexes.add(selectionIndex);
