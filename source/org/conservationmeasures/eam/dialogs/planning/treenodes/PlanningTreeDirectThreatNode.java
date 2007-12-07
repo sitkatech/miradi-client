@@ -26,6 +26,12 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
+	public String toString()
+	{
+		return threat.getShortLabel() + "." + getObject().getLabel();
+	}
+
+	
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
