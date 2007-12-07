@@ -122,7 +122,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		int deltaX = dragEndedAt.x - dragStartedAt.x; 
 		int deltaY = dragEndedAt.y - dragStartedAt.y;
 
-		if(deltaX == 0 && deltaY == 0)
+		Point snappedDeltaPoint = getProject().getSnapped(deltaX, deltaY);
+		if(snappedDeltaPoint.x == 0 && snappedDeltaPoint.y == 0)
 			return;
 		
 		moveHasHappened();

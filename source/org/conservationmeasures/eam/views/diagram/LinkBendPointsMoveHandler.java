@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.util.HashSet;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -53,19 +54,28 @@ public class LinkBendPointsMoveHandler
 		DiagramLink diagramLink = linkCell.getDiagramLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
 		
-		for (int i = 0; i < selectionIndexes.length; ++i)
-		{
-			int selectionIndex = selectionIndexes[i];
-			Point newPointLocation = Utility.convertToPoint(bendPoints[selectionIndex]);
-			Point snapped = project.getSnapped(newPointLocation);
-			newPointLocation.setLocation(snapped.x, snapped.y);
-			
-			Point point = pointsToMove.get(selectionIndex);
-			point.setLocation(newPointLocation);
-			
-			createBendPointOnNeabyLinks(linkCell, newPointLocation);
-		}
-		
+		HashSet<Integer> duplicateBendPointIndexes = new HashSet(); 
+        for (int i = 0; i < selectionIndexes.length; ++i)
+        {
+        	int selectionIndex = selectionIndexes[i];
+        	Point newPointLocation = Utility.convertToPoint(bendPoints[selectionIndex]);
+        	Point snapped = project.getSnapped(newPointLocation);
+        	boolean samePoint = pointsToMove.find(snapped) == selectionIndex;
+			boolean contains = pointsToMove.contains(snapped);
+			if (contains && !samePoint)
+        		duplicateBendPointIndexes.add(selectionIndex);
+
+        	newPointLocation.setLocation(snapped.x, snapped.y);
+        	Point point = pointsToMove.get(selectionIndex);
+        	point.setLocation(newPointLocation);                               
+        	createBendPointOnNeabyLinks(linkCell, newPointLocation);
+        }
+
+        for(Integer integer : duplicateBendPointIndexes)
+        {
+        	pointsToMove.removePoint(integer.intValue());
+        }
+
 		executeBendPointMoveCommand(diagramLink, pointsToMove);
 	}
 
