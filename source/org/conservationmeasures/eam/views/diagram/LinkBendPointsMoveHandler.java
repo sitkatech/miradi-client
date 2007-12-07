@@ -127,6 +127,6 @@ public class LinkBendPointsMoveHandler
 		return false;
 	}
 
-	DiagramComponent diagram;
-	Project project;
+	private DiagramComponent diagram;
+	private Project project;
 }
