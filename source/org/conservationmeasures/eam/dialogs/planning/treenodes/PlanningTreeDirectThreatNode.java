@@ -26,12 +26,6 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
-	public String toString()
-	{
-		return threat.getShortLabel() + "." + getObject().getLabel();
-	}
-
-	
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
@@ -56,7 +50,15 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 	{
 		return threat;
 	}
+	
+	public String toString()
+	{
+		if (threat.getShortLabel().length() > 0)
+			return threat.getShortLabel() + "." + getObject().getLabel();
+		
+		return super.toString();
+	}
 
-	DiagramObject diagramObject;
-	Cause threat;
+	private DiagramObject diagramObject;
+	private Cause threat;
 }
