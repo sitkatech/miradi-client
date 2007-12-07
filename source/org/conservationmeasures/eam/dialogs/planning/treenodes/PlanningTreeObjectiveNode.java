@@ -36,6 +36,6 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		return objective;
 	}
 
-	DiagramObject diagram;
-	Objective objective;
+	private DiagramObject diagram;
+	private Objective objective;
 }
