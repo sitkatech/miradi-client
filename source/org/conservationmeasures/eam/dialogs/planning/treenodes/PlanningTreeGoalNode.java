@@ -62,14 +62,6 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		return goal;
 	}
 	
-	public String toString()
-	{
-		if (goal.getShortLabel().length() > 0)
-			return goal.getShortLabel() + "." + getObject().getLabel();
-		
-		return super.toString();
-	}
-
 	private DiagramObject diagramObject;
 	private Goal goal;
 }
