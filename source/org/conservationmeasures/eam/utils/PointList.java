@@ -178,8 +178,8 @@ public class PointList
 	
 	public Line2D.Double createLineSegment(Point2D fromBendPoint, Point2D toBendPoint)
 	{
-		Point point1 = Utility.convertToPoint(fromBendPoint);
-		Point point2 = Utility.convertToPoint(toBendPoint);
+		Point point1 = Utility.convertPoint2DToPoint(fromBendPoint);
+		Point point2 = Utility.convertPoint2DToPoint(toBendPoint);
 		
 		return new Line2D.Double(point1, point2);
 	}
