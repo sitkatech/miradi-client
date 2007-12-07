@@ -28,6 +28,12 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 		super.mousePressed(e);
 		diagram.setMarquee(true);
 	}
+	
+	public void mouseReleased(MouseEvent arg0)
+	{
+		super.mouseReleased(arg0);
+		diagram.setMarquee(false);
+	}
 
 	public void handleMarqueeEvent(MouseEvent e, JGraph graph, Rectangle2D bounds)
 	{
