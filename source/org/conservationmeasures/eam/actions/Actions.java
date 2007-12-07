@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.SwingUtilities;
+
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
@@ -373,14 +375,34 @@ public class Actions
 			}
 		}
 		EAM.logVerbose("updateActionStates");
+		HashMap<EAMAction,Boolean> newStates = new HashMap<EAMAction, Boolean>();
 		Collection actualActions = actions.values();
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
 		{
 			EAMAction action = (EAMAction)iter.next();
 			boolean shouldBeEnabled = action.shouldBeEnabled();
-			action.setEnabled(shouldBeEnabled);
+			newStates.put(action, shouldBeEnabled);
 		}
+		SwingUtilities.invokeLater(new DelayedActionSetEnabled(newStates));
+	}
+	
+	class DelayedActionSetEnabled implements Runnable
+	{
+		public DelayedActionSetEnabled(HashMap<EAMAction,Boolean> newStatesToApply)
+		{
+			newStates = newStatesToApply;
+		}
+
+		public void run()
+		{
+			for(EAMAction action : newStates.keySet())
+			{
+				action.setEnabled(newStates.get(action));
+			}
+		}
+		
+		HashMap<EAMAction,Boolean> newStates;
 	}
 	
 	void registerAction(EAMAction action)
