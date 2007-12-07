@@ -65,7 +65,6 @@ public class WwfProjectData extends BaseObject
 		regions = new CodeListData();
 		countries = new CodeListData();
 		ecoRegions = new CodeListData();
-		linkToGlobalTargets = new CodeListData();
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);
@@ -73,7 +72,6 @@ public class WwfProjectData extends BaseObject
 		addField(TAG_REGIONS, regions);
 		addField(TAG_COUNTRIES, countries);
 		addField(TAG_ECOREGIONS, ecoRegions);
-		addField(TAG_LINK_TO_GLOBAL_TARGETS, linkToGlobalTargets);
 	}
 
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
@@ -82,7 +80,6 @@ public class WwfProjectData extends BaseObject
 	public static final String TAG_REGIONS = "Regions";
 	public static final String TAG_COUNTRIES = "Countries";
 	public static final String TAG_ECOREGIONS = "EcoRegions";
-	public static final String TAG_LINK_TO_GLOBAL_TARGETS = "LinkToGlobalTargets";
 	
 	public static final String OBJECT_NAME = "WwfProjectData";
 	
@@ -94,5 +91,4 @@ public class WwfProjectData extends BaseObject
 	private CodeListData regions;
 	private CodeListData countries;
 	private CodeListData ecoRegions;
-	private CodeListData linkToGlobalTargets;
 }
