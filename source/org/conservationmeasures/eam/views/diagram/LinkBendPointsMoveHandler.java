@@ -57,16 +57,16 @@ public class LinkBendPointsMoveHandler
 		HashSet<Integer> duplicateBendPointIndexes = new HashSet(); 
         for (int i = 0; i < selectionIndexes.length; ++i)
         {
-        	int selectionIndex = selectionIndexes[i];
-        	Point newPoint = Utility.convertPoint2DToPoint(bendPoints[selectionIndex]);
+        	int indexOfThisPoint = selectionIndexes[i];
+        	Point newPoint = Utility.convertPoint2DToPoint(bendPoints[indexOfThisPoint]);
         	Point newSnappedPoint = project.getSnapped(newPoint);
-        	boolean samePoint = (pointsToMove.find(newSnappedPoint) == selectionIndex);
-			boolean contains = pointsToMove.contains(newSnappedPoint);
-			if (contains && !samePoint)
-        		duplicateBendPointIndexes.add(selectionIndex);
+        	int indexOfFirstPointAtThisLocation = pointsToMove.find(newSnappedPoint);
+        	boolean firstPointAtIndexExists = (indexOfFirstPointAtThisLocation >= 0);
+			boolean sameLocation = (indexOfFirstPointAtThisLocation == indexOfThisPoint);
+			if(firstPointAtIndexExists && !sameLocation)
+        		duplicateBendPointIndexes.add(indexOfThisPoint);
 
-        	Point pointToMove = pointsToMove.get(selectionIndex);
-        	pointToMove.setLocation(newSnappedPoint);                               
+        	pointsToMove.set(indexOfThisPoint, newSnappedPoint);
         	createBendPointOnNeabyLinks(linkCell, newSnappedPoint);
         }
 

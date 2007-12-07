@@ -72,6 +72,11 @@ public class PointList
 		return (Point)data.get(index);
 	}
 	
+	public void set(int index, Point point)
+	{
+		data.set(index, point);
+	}
+	
 	public Vector getAllPoints()
 	{
 		return data;
