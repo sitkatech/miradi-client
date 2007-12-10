@@ -69,6 +69,8 @@ public class ObjectTestCase extends TestCaseWithProject
 			{
 				if(object.isPseudoField(tags[i]))
 					continue;
+				
+				verifyShortLabelField(object, tags[i]);
 				verifyFieldLifecycle(project, object, tags[i]);
 			}
 		}
@@ -132,6 +134,17 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertEquals("Didn't clear " + tag + "?", emptyData, object.getData(tag));
 		project.undo();
 		assertEquals("Didn't restore " + tag + "?", sampleData, object.getData(tag));
+	}
+
+	private void verifyShortLabelField(BaseObject object, String tag) throws Exception
+	{
+		if (!tag.equals("ShortLabel"))
+			return;
+		
+		object.setData(tag, "someShortLabelValue");
+		assertEquals("didnt return correct value for field " + tag + ":?", "someShortLabelValue", object.getShortLabel());
+		
+		object.setData(tag, "");
 	}
 
 	private String getEmptyData(BaseObject object, String tag)

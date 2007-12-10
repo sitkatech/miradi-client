@@ -79,6 +79,11 @@ public class Stress extends BaseObject
 		return formula.computeSeverityByScope(scopeRating, severityRating);
 	}
 	
+	public String getShortLabel()
+	{
+		return shortLabel.get();
+	}
+	
 	public static Stress find(ObjectManager objectManager, ORef stressRef)
 	{
 		return (Stress) objectManager.findObject(stressRef);
