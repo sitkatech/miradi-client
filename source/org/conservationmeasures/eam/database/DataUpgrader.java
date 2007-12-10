@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.PointList;
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
 import org.martus.util.UnicodeWriter;
@@ -145,6 +146,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 25)
 				upgradeToVersion26();
+			
+			if (readDataVersion(getTopDirectory()) == 26)
+				upgradeToVersion27();
 		}
 		finally 
 		{
@@ -152,6 +156,54 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	public void upgradeToVersion27() throws Exception
+	{
+		removeDuplicateBendPoints();
+		writeVersion(27);
+	}
+
+	private void removeDuplicateBendPoints() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File diagramLinkDir = getObjects13DiagramLinkDir(jsonDir);
+		if (! diagramLinkDir.exists())
+			return;
+
+		File diagramLinkManifestFile = new File(diagramLinkDir, "manifest");
+		if (! diagramLinkManifestFile.exists())
+			return;
+
+		ObjectManifest diagramLinkManifest = new ObjectManifest(JSONFile.read(diagramLinkManifestFile));
+		BaseId[] diagramLinkIds = diagramLinkManifest.getAllKeys();
+		for (int i = 0; i < diagramLinkIds.length; ++i)
+		{
+			BaseId diagramLinkId = diagramLinkIds[i];
+			File diagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
+			EnhancedJsonObject diagramLinkJson = readFile(diagramLinkFile);
+			PointList bendPointsWithPossibleDuplicates = new PointList(diagramLinkJson.getString("BendPoints"));
+			PointList nonDuplicateBendPointList = omitDuplicateBendPoints(bendPointsWithPossibleDuplicates);
+			if (nonDuplicateBendPointList.size() != bendPointsWithPossibleDuplicates.size())
+			{ 
+				diagramLinkJson.put("BendPoints", nonDuplicateBendPointList.toString());
+				writeJson(diagramLinkFile, diagramLinkJson);
+			}
+		}
+	}
+
+	private PointList omitDuplicateBendPoints(PointList bendPoints) throws Exception
+	{
+		
+		PointList nonDuplicates = new PointList();
+		for (int i = 0; i < bendPoints.size(); ++i)
+		{
+			Point point = bendPoints.get(i);
+			if (!nonDuplicates.contains(point))
+				nonDuplicates.add(point);
+		}
+
+		return nonDuplicates;
+	}
+
 	public void upgradeToVersion26() throws Exception
 	{
 		notifyUserOfDeletedDuratingAndCostFields();
@@ -928,5 +980,10 @@ public class DataUpgrader extends FileBasedProjectServer
 	private File getObjects4TargetDir(File jsonDir)
 	{
 		return new File(jsonDir, "objects-4");
+	}
+	
+	private File getObjects13DiagramLinkDir(File jsonDir)
+	{
+		return new File(jsonDir, "objects-13");
 	}
 }
