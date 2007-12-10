@@ -20,7 +20,6 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-							Desire.TAG_SHORT_LABEL,	
 							Strategy.PSEUDO_TAG_RATING_SUMMARY,
 							Desire.PSEUDO_TAG_FACTOR,
 							Task.PSEUDO_TAG_BUDGET_TOTAL,

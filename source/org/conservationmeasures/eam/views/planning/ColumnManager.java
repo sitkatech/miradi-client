@@ -32,7 +32,6 @@ public class ColumnManager
 	{
 		CodeList masterColumnList = new CodeList();
 		
-		masterColumnList.add(Desire.TAG_SHORT_LABEL);
 		masterColumnList.add(Desire.TAG_FULL_TEXT);
 		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
 		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
@@ -54,7 +53,6 @@ public class ColumnManager
 	public static CodeList getGoalColumns()
 	{
 		String[] list = {
-			Goal.TAG_SHORT_LABEL,
 			Goal.TAG_FULL_TEXT,
 			Goal.PSEUDO_TAG_FACTOR,
 			// % complete,
@@ -66,7 +64,6 @@ public class ColumnManager
 	public static CodeList getObjectiveColumns()
 	{
 		String[] list = {
-				Objective.TAG_SHORT_LABEL,
 				Objective.TAG_FULL_TEXT,
 				Objective.PSEUDO_TAG_FACTOR,
 				// % complete,
