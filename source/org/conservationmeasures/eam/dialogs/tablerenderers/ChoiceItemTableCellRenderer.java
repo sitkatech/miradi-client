@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
+import org.conservationmeasures.eam.icons.ColoredIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
@@ -20,6 +21,7 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 	{
 		super(providerToUse, fontProviderToUse);
 		emptyChoiceItem = new ChoiceItem("", "", Color.WHITE);
+		icon = new ColoredIcon();
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -29,6 +31,8 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		if(!isSelected)
 			renderer.setBackground(getBackgroundColor(choice));
 		renderer.setText(choice.getLabel());
+		icon.setColor(choice.getColor());
+		renderer.setIcon(icon);
 		return renderer;
 	}
 	
@@ -50,5 +54,5 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 	}
 
 	protected ChoiceItem emptyChoiceItem;
-	
+	private ColoredIcon icon;
 }
