@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.PointList;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 
@@ -122,6 +123,45 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testRemoveDuplicateBendPoints() throws Exception
+	{
+		File jsonDir = createJsonDir();
+			
+		String noDuplicateBendPointDiagramLink = "{\"FromDiagramFactorId\":1,\"ToDiagramFactorId\":2,\"TimeStampModified\":\"1197311302307\",\"Label\":\"\",\"Id\":90,\"WrappedLinkId\":1,\"BendPoints\":\"{\\\"Points\\\":[\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":390}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":585}\\\"]}\"}";
+		String duplicateBendPointDiagramLink   = "{\"FromDiagramFactorId\":2,\"ToDiagramFactorId\":3,\"TimeStampModified\":\"1197311519795\",\"Label\":\"\",\"Id\":91,\"WrappedLinkId\":2,\"BendPoints\":\"{\\\"Points\\\":[\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":390}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":405}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":405}\\\"]}\"}";
+		File diagramLinkDir = DataUpgrader.createObjectsDir(jsonDir, 13);
+		int[] diagramLinkIds = {90, 91};
+		File diagramLinkManifestFile = createManifestFile(diagramLinkDir, diagramLinkIds);
+		assertTrue(diagramLinkManifestFile.exists());
+		
+		File noDuplicateDiagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkIds[0]));
+		createFile(noDuplicateDiagramLinkFile, noDuplicateBendPointDiagramLink);
+		assertTrue(noDuplicateDiagramLinkFile.exists());
+
+		File duplicateBendPointDiagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkIds[1]));
+		createFile(duplicateBendPointDiagramLinkFile, duplicateBendPointDiagramLink);
+		assertTrue(duplicateBendPointDiagramLinkFile.exists());
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion27();
+				
+		File diagramLinkWithOldDuplicateBendPoints = new File(diagramLinkDir, "91");
+		assertTrue(" Diagram link with duplicate bend points file does not exist?", diagramLinkWithOldDuplicateBendPoints.exists());
+		EnhancedJsonObject noDuplicateDiagramLinkJson = DataUpgrader.readFile(diagramLinkWithOldDuplicateBendPoints);
+		PointList bendPoints1 = new PointList(noDuplicateDiagramLinkJson.getString("BendPoints"));
+		assertEquals("wrong bendpoints?", 2, bendPoints1.size());
+		assertTrue("does not contain bendpoint?", bendPoints1.contains(new Point(390, 285)));
+		assertTrue("does not contain bendpoint?", bendPoints1.contains(new Point(405, 285)));
+		
+		File neverHadDuplicateBendPointsDiagramLink = new File(diagramLinkDir, "90");
+		assertTrue(" Diagram link without duplicate bend points file does not exist?", neverHadDuplicateBendPointsDiagramLink.exists());
+		EnhancedJsonObject neverHadDuplicateBendPointsLinkJson = DataUpgrader.readFile(neverHadDuplicateBendPointsDiagramLink);
+		PointList bendPoints2 = new PointList(neverHadDuplicateBendPointsLinkJson.getString("BendPoints"));
+		assertEquals("wrong bendpoints?", 2, bendPoints2.size());
+		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(585, 285)));
+		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(390, 285)));
 	}
 	
 	public void testCreateThreatStressRatingsForTargetThreatLinks() throws Exception
