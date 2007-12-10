@@ -49,29 +49,41 @@ public class LinkBendPointsMoveHandler
 
 	//TODO nima check for possible duplicate code in this class
 	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] movedBendPoints) throws Exception
-	{
+	{		
+		PointList snappedMovedBendPoints = createSnappedBendPoints(movedBendPoints);
 	    for (int i = 0; i < selectionIndexes.length; ++i)
         {
         	int movedPointIndex = selectionIndexes[i];
-        	Point movedPoint = Utility.convertPoint2DToPoint(movedBendPoints[movedPointIndex]);
-        	Point movedSnappedPoint = project.getSnapped(movedPoint);
-        	createBendPointOnNeabyLinks(linkCell, movedSnappedPoint);
+        	createBendPointOnNeabyLinks(linkCell, snappedMovedBendPoints.get(movedPointIndex));
         }
 
-        PointList movedBendPointWithoutDuplicates = omitDuplicateBendPoints(movedBendPoints);
+        PointList movedBendPointWithoutDuplicates = omitDuplicateBendPoints(snappedMovedBendPoints);
         DiagramLink diagramLink = linkCell.getDiagramLink();
 		executeBendPointMoveCommand(diagramLink, movedBendPointWithoutDuplicates);
 	}
 
-	private PointList omitDuplicateBendPoints(Point2D[] movedBendPoints)
+	private PointList createSnappedBendPoints(Point2D[] movedBendPoints)
 	{
-		PointList bendPointsWithoutDuplicates = new PointList();
+		PointList snappedPoints = new PointList();
 		for (int i = 0; i < movedBendPoints.length; ++i)
 		{
-			Point convertedPoint = Utility.convertPoint2DToPoint(movedBendPoints[i]);
-			if (!bendPointsWithoutDuplicates.contains(convertedPoint))
-				bendPointsWithoutDuplicates.add(convertedPoint);
+			Point movedPoint = Utility.convertPoint2DToPoint(movedBendPoints[i]);
+        	snappedPoints.add(project.getSnapped(movedPoint));
 		}
+		
+		return snappedPoints;
+	}
+
+	private PointList omitDuplicateBendPoints(PointList movedBendPoints)
+	{
+		PointList bendPointsWithoutDuplicates = new PointList();
+		for (int i = 0; i < movedBendPoints.size(); ++i)
+		{
+			Point movedPoint = movedBendPoints.get(i);
+			if (!bendPointsWithoutDuplicates.contains(movedPoint))
+				bendPointsWithoutDuplicates.add(movedPoint);
+		}
+		
 		return bendPointsWithoutDuplicates;
 	}
 
