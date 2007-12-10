@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
-import java.util.HashSet;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -49,33 +48,31 @@ public class LinkBendPointsMoveHandler
 	}
 
 	//TODO nima check for possible duplicate code in this class
-	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] bendPoints) throws Exception
+	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] movedBendPoints) throws Exception
 	{
-		DiagramLink diagramLink = linkCell.getDiagramLink();
-		PointList pointsToMove = diagramLink.getBendPoints().createClone();
-		
-		HashSet<Integer> duplicateBendPointIndexes = new HashSet(); 
-        for (int i = 0; i < selectionIndexes.length; ++i)
+	    for (int i = 0; i < selectionIndexes.length; ++i)
         {
-        	int indexOfThisPoint = selectionIndexes[i];
-        	Point newPoint = Utility.convertPoint2DToPoint(bendPoints[indexOfThisPoint]);
-        	Point newSnappedPoint = project.getSnapped(newPoint);
-        	int indexOfFirstPointAtThisLocation = pointsToMove.find(newSnappedPoint);
-        	boolean firstPointAtIndexExists = (indexOfFirstPointAtThisLocation >= 0);
-			boolean sameLocation = (indexOfFirstPointAtThisLocation == indexOfThisPoint);
-			if(firstPointAtIndexExists && !sameLocation)
-        		duplicateBendPointIndexes.add(indexOfThisPoint);
-
-        	pointsToMove.set(indexOfThisPoint, newSnappedPoint);
-        	createBendPointOnNeabyLinks(linkCell, newSnappedPoint);
+        	int movedPointIndex = selectionIndexes[i];
+        	Point movedPoint = Utility.convertPoint2DToPoint(movedBendPoints[movedPointIndex]);
+        	Point movedSnappedPoint = project.getSnapped(movedPoint);
+        	createBendPointOnNeabyLinks(linkCell, movedSnappedPoint);
         }
 
-        for(Integer integer : duplicateBendPointIndexes)
-        {
-        	pointsToMove.removePoint(integer.intValue());
-        }
+        PointList movedBendPointWithoutDuplicates = omitDuplicateBendPoints(movedBendPoints);
+        DiagramLink diagramLink = linkCell.getDiagramLink();
+		executeBendPointMoveCommand(diagramLink, movedBendPointWithoutDuplicates);
+	}
 
-		executeBendPointMoveCommand(diagramLink, pointsToMove);
+	private PointList omitDuplicateBendPoints(Point2D[] movedBendPoints)
+	{
+		PointList bendPointsWithoutDuplicates = new PointList();
+		for (int i = 0; i < movedBendPoints.length; ++i)
+		{
+			Point convertedPoint = Utility.convertPoint2DToPoint(movedBendPoints[i]);
+			if (!bendPointsWithoutDuplicates.contains(convertedPoint))
+				bendPointsWithoutDuplicates.add(convertedPoint);
+		}
+		return bendPointsWithoutDuplicates;
 	}
 
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
