@@ -5,11 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -19,8 +17,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelCheckBox;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -81,8 +77,6 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		JPanel box3 = createGridLayoutPanel(0,2);
 		box3.add(indicatorThreshold.getComponent());
 		JPanel box4 = createGridLayoutPanel(2,1);
-		Box optionPanel = createOptionGroup();
-		box4.add(optionPanel);
 		box4.add(createColumnJPanel(ratingSource, ratingSource.getComponent().getPreferredSize()));
 		box3.add(box4);		
 		
@@ -108,23 +102,6 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		
 		setLayout(new OneColumnGridLayout());
 		add(mainIndicatorPanel);
-	}
-	
-	private Box createOptionGroup()
-	{
-		Box box = Box.createVerticalBox();
-		box.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		box.add(new PanelTitleLabel(EAM.text("OPTIONS")));
-		box.add(createCheckBox(EAM.text("Show Thresholds"), new OptionThresholdChangeListener()));
-		box.add(createCheckBox(EAM.text("Show Status"), new OptionStatusChangeListener()));
-		return box;
-	}
-	
-	private JCheckBox createCheckBox(String text, ItemListener listener)
-	{
-		JCheckBox check = new PanelCheckBox(text,true);
-		check.addItemListener(listener);
-		return check;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
