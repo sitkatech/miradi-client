@@ -35,7 +35,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 	{
 		String columnTag = getColumnTag(column);
 		if(isChoiceItemColumn(columnTag))
-			return getValueColumnChoice(columnTag).getLabel();
+			return getColumnChoiceItem(columnTag).getLabel();
 		
 		return EAM.fieldLabel(getObjectTypeForColumnLabel(columnTag), columnTag);
 	}
@@ -55,7 +55,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		return (choiceItem != null);
 	}
 
-	private ChoiceItem getValueColumnChoice(String columnTag)
+	private ChoiceItem getColumnChoiceItem(String columnTag)
 	{
 		return statusQuestion.findChoiceByCode(columnTag);	
 	}
