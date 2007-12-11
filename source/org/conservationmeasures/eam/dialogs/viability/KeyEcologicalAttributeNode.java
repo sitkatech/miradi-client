@@ -56,8 +56,12 @@ public class KeyEcologicalAttributeNode extends ViabilityTreeTableNode
 		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE))
 			return kea.getViabilityStatusValue();
 		
+		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE))
+			return kea.getKeyEcologicalAttributeTypeChoiceItem();
+		
 		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
 			return null;
+		
 		return kea.getData(tag);
 	}
 

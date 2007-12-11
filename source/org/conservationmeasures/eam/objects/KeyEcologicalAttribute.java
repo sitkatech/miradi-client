@@ -145,6 +145,11 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		return keyEcologicalAttributeType.toString();
 	}
+	
+	public ChoiceItem getKeyEcologicalAttributeTypeChoiceItem()
+	{
+		return keyEcologicalAttributeTypeValue.getChoiceItem();
+	}
 
 	public String getPseudoData(String fieldTag)
 	{
