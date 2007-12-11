@@ -5,19 +5,58 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributePoolTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
-public class CreateStressFromKeaDoer extends ObjectsDoer
+public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 {
-	public boolean isAvailable()
-	{
-		return false;
-	}
-	
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
 			return;
+		
+		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributePoolTablePanel(getProject()), EAM.text("Choose Key Ecological Attribute to Clone")))
+			super.doIt();
+	}
+	
+	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
+	{
+		String labelFromKea = getLabelForStress();
+		CommandSetObjectData setStressLabel = new CommandSetObjectData(newlyCreatedObjectRef, Stress.TAG_LABEL, labelFromKea);
+		getProject().executeCommand(setStressLabel);
+		
+		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, getSelectedFactor());
+	}
+
+	private String getLabelForStress()
+	{
+		if (getAnnotationToClone().getLabel().length() == 0)
+			return EAM.text("[NOT SPECIFIED]");
+		
+		return EAM.text("["+getAnnotationToClone().getLabel()+"]");
+	}
+	
+	protected ORef createObject() throws CommandFailedException
+	{
+		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
+		getProject().executeCommand(create);
+		return create.getObjectRef();
+	}
+
+	public String getAnnotationListTag()
+	{
+		return Target.TAG_STRESS_REFS;
+	}
+
+	public int getAnnotationType()
+	{
+		return Stress.getObjectType();
 	}
 }
