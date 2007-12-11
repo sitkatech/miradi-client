@@ -32,6 +32,10 @@ public class DiagramClipboard extends Clipboard
 		++pasteCount;
 	}
 	
+	public synchronized void decrementPasteCount()
+	{
+		--pasteCount;
+	}
 
 	private synchronized void resetPasteCount() 
 	{

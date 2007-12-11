@@ -58,8 +58,8 @@ public class Paste extends LocationDoer
 				return;
 			}
 
-			paste(diagramPaster);
 			clipboard.incrementPasteCount();
+			paste(diagramPaster);
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
 		catch (Exception e) 
