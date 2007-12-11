@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.stress;
 
 import org.conservationmeasures.eam.actions.ActionCloneStress;
 import org.conservationmeasures.eam.actions.ActionCreateStress;
+import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
@@ -26,6 +27,7 @@ public class StressListTablePanel extends ObjectListTablePanel
 	static Class[] buttonActionClasses = new Class[] {
 		ActionCreateStress.class,
 		ActionCloneStress.class,
+		ActionCreateStressFromKea.class,
 		ActionDeleteStress.class,
 	};
 }
