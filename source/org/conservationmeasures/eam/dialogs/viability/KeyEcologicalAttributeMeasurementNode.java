@@ -81,7 +81,7 @@ public class KeyEcologicalAttributeMeasurementNode extends ViabilityTreeTableNod
 			return choiceItem;
 		}
 		
-		return "";
+		return null;
 	}
 
 	public void rebuild() throws Exception

@@ -65,6 +65,9 @@ public class TargetViabilityNode extends ViabilityTreeTableNode
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE))
 			return target.getPseudoTargetViabilityChoiceItem();
 		
+		if(tag.equals(Target.TAG_EMPTY))
+			return null;
+		
 		return rawValue;
 	}
 

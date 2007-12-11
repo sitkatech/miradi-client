@@ -60,7 +60,7 @@ public class ViabilityProjectNode extends ViabilityTreeTableNode
 			return statusQuestion.findChoiceByCode(code);
 		}
 		
-		return "";
+		return null;
 	}
 
 	public String toString()
