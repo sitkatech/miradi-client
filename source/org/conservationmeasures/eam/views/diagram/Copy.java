@@ -47,4 +47,9 @@ public class Copy extends ViewDoer
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		clipboard.setContents(miradiList, getMainWindow());
 	}
+	
+	public  void decrementPasteCount()
+	{
+		getProject().getDiagramClipboard().decrementPasteCount();
+	}
 }
