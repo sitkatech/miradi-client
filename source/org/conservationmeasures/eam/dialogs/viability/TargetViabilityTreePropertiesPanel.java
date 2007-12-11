@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
@@ -62,7 +61,6 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		super.setObjectRefs(orefsToUse);
 		String panelDescription = findPanel(orefsToUse).getPanelDescription();
-		System.out.println(panelDescription);
 		cardLayout.show(this, panelDescription);
 
 		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);
@@ -74,9 +72,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
-
-		ORefList refs = new ORefList(orefsToUse);
-		System.out.println(refs);
+		
 		int objectType = orefsToUse[0].getObjectType();
 		if(objectType == KeyEcologicalAttribute.getObjectType())
 			return targetViabilityKeaPropertiesPanel;
