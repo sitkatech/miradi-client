@@ -72,7 +72,7 @@ public class KeyEcologicalAttributeFutureStatusNode extends ViabilityTreeTableNo
 		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return summaryData;
 		
-		return "";
+		return null;
 	}
 
 	public void rebuild() throws Exception

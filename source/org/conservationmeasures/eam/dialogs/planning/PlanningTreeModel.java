@@ -74,10 +74,10 @@ public class PlanningTreeModel extends GenericTreeTableModel
 		String columnTag = getColumnTag(col);
 		BaseObject baseObject = treeNode.getObject();
 		if(baseObject == null)
-			return "";
+			return null;
 		
 		if (! baseObject.doesFieldExist(columnTag))
-			return "";
+			return null;
 		
 		if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
 			return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);

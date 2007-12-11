@@ -68,12 +68,16 @@ public class ViabilityIndicatorNode extends ViabilityTreeTableNode
 		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
 			return new StatusQuestion(tag).findChoiceByCode(getObject().getPseudoData(tag));
 		
+		if(tag.equals(Indicator.TAG_EMPTY))
+			return null;
+		
 		String data = getObject().getData(tag);
 		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 			return data;
-		
+
 		int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
 		return indicator.getThreshold().get(Integer.toString(threasholdColumn));
+		
 	}
 	
 	public int getFirstIndexOfThreshold()
