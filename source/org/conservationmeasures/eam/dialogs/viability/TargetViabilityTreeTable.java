@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider 
 {
-	public TargetViabilityTreeTable(Project projectToUse, ViabilityTreeModel targetViabilityModelToUse)
+	public TargetViabilityTreeTable(Project projectToUse, GenericViabilityTreeModel targetViabilityModelToUse)
 	{
 		super(projectToUse, targetViabilityModelToUse);
 		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();
@@ -36,6 +36,8 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
+		//FIXME wating for nicks feeback if we want colored headers or not
+		//setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
@@ -81,6 +83,49 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		return otherRenderer;
 	}
 
+//FIXME wating for nicks feeback if we want colored headers or not
+//	private void setColumnHeaderRenderers()
+//	{
+//		ColumnHeaderRenderer headerRenderer = new ColumnHeaderRenderer();
+//		for (int i = 0; i < getModel().getColumnCount(); ++i)
+//		{
+//			getTableHeader().setDefaultRenderer(headerRenderer);
+//		}
+//	}
+//
+//	public static class ColumnHeaderRenderer extends DefaultTableCellRenderer
+//	{
+//		public ColumnHeaderRenderer()
+//		{
+//			statusQuestion = new StatusQuestion("");
+//		}
+//
+//		 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
+//		 {
+//			 JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//			 renderer.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+//			 renderer.setHorizontalAlignment(JLabel.CENTER);
+//			 renderer.setForeground(Color.BLACK);
+//			 renderer.setBackground(table.getTableHeader().getBackground());
+//			 
+//			 if (renderer.getText().equals(statusQuestion.getChoices()[1].getLabel()))
+//				 renderer.setBackground(statusQuestion.getChoices()[1].getColor());
+//			 
+//			 if (renderer.getText().equals(statusQuestion.getChoices()[2].getLabel()))
+//				 renderer.setBackground(statusQuestion.getChoices()[2].getColor());
+//			 
+//			 if (renderer.getText().equals(statusQuestion.getChoices()[3].getLabel()))
+//				 renderer.setBackground(statusQuestion.getChoices()[3].getColor());
+//			 
+//			 if (renderer.getText().equals(statusQuestion.getChoices()[4].getLabel()))
+//				 renderer.setBackground(statusQuestion.getChoices()[4].getColor());
+//			 
+//			 return renderer;
+//		 }
+//
+//		 private StatusQuestion statusQuestion;
+//	}
+	
 	public class ViabilityTreeCellRenderer extends Renderer
 	{
 		public ViabilityTreeCellRenderer()
@@ -90,9 +135,9 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		}
 	}
 	
-	private ViabilityTreeModel getViabilityModel()
+	private GenericViabilityTreeModel getViabilityModel()
 	{
-		return (ViabilityTreeModel)getTreeTableModel();
+		return (GenericViabilityTreeModel)getTreeTableModel();
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
