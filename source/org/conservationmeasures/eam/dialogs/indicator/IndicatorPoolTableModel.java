@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
@@ -19,20 +20,17 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, ObjectType.INDICATOR, COLUMN_TAGS);
 	}
-	
-	public Object getValueAt(int row, int column)
-	{
-		String rawValue = (String)super.getValueAt(row, column);
-		String tag = COLUMN_TAGS[column];
-		if(tag.equals(Indicator.TAG_PRIORITY))
-			return new PriorityRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
-		if(tag.equals(Indicator.TAG_STATUS))
-			return new IndicatorStatusRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
 		
-		return rawValue;
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		if (getColumnTag(column).equals(Indicator.TAG_PRIORITY))
+			return new PriorityRatingQuestion(getColumnTag(column));
+		
+		if (getColumnTag(column).equals(Indicator.TAG_STATUS))
+			return new IndicatorStatusRatingQuestion(getColumnTag(column));
+		
+		return null;
 	}
-
-
 
 	private static final String[] COLUMN_TAGS = new String[] {
 		Indicator.TAG_SHORT_LABEL,
