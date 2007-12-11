@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.dialogs.tablerenderers;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.conservationmeasures.eam.icons.ColoredIcon;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 
 public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
@@ -20,39 +20,58 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 	public ChoiceItemTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		emptyChoiceItem = new ChoiceItem("", "", Color.WHITE);
 		icon = new ColoredIcon();
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		ChoiceItem choice = getChoiceItem(value);
+		String labelText = getLabelText(value);
+
 		if(!isSelected)
-			renderer.setBackground(getBackgroundColor(choice));
-		renderer.setText(choice.getLabel());
-		icon.setColor(choice.getColor());
-		renderer.setIcon(icon);
+			renderer.setBackground(getBackgroundColor(value));
+
+		renderer.setText(labelText);
+		Icon configuredIcon = getConfiguredIcon(value);
+		renderer.setIcon(configuredIcon);
 		return renderer;
 	}
-	
-	protected Color getBackgroundColor(ChoiceItem choice)
+
+	private String getLabelText(Object value)
 	{
+		ChoiceItem choice = getChoiceItem(value);
+		if(choice == null)
+			return "";
+		return choice.getLabel();
+	}
+
+	protected Icon getConfiguredIcon(Object value)
+	{
+		if(value == null)
+			return null;
+		return getConfiguredIcon(getBackgroundColor(value));
+	}
+	
+	private Icon getConfiguredIcon(Color color)
+	{
+		icon.setColor(color);
+		return icon;
+	}
+	
+	protected Color getBackgroundColor(Object value)
+	{
+		ChoiceItem choice = getChoiceItem(value);
+		if(choice == null)
+			return Color.white;
 		return choice.getColor();
 	}
 	
-	protected ChoiceItem getChoiceItem(Object value)
+	private ChoiceItem getChoiceItem(Object value)
 	{
-		if(value == null || value.equals(""))
-			return emptyChoiceItem;
-		if(value instanceof String)
-		{
-			EAM.logError("Expected ChoiceItem, not: " + value);
-			return emptyChoiceItem;
-		}
+		if(! (value instanceof ChoiceItem) )
+			return null;
 		return (ChoiceItem)value;
 	}
 
-	protected ChoiceItem emptyChoiceItem;
 	private ColoredIcon icon;
 }
