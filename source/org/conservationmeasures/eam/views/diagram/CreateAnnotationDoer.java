@@ -42,14 +42,14 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CommandCreateObject create = createObject();
-			CommandSetObjectData appendCommand = createAppendCommand(factor, create.getObjectRef());
+			ORef createRef = createObject();
+			CommandSetObjectData appendCommand = createAppendCommand(factor, createRef);
 			getProject().executeCommand(appendCommand);
-			doExtraWork(create.getObjectRef());
+			doExtraWork(createRef);
 			
 			ObjectPicker picker = getPicker();
 			if(picker != null)
-				picker.ensureObjectVisible(create.getObjectRef());
+				picker.ensureObjectVisible(createRef);
 		}
 		catch(Exception e)
 		{
@@ -68,10 +68,13 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 
 	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
 	{
+		if (factor.isRefList(getAnnotationListTag()))
+			return CommandSetObjectData.createAppendORefCommand(factor, getAnnotationListTag(), refToAppend);
+		
 		return CommandSetObjectData.createAppendIdCommand(factor, getAnnotationListTag(), refToAppend.getObjectId());
 	}
 
-	protected CommandCreateObject createObject() throws CommandFailedException
+	protected ORef createObject() throws CommandFailedException
 	{
 		CommandCreateObject create = new CommandCreateObject(getAnnotationType());
 		getProject().executeCommand(create);
@@ -80,7 +83,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
 			getProject().executeCommandsWithoutTransaction(commands);
 		}
-		return create;
+		return create.getObjectRef();
 	}
 	
 	protected BaseObject displayAnnotationList(String title, ObjectTablePanel tablePanel)
@@ -93,6 +96,11 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	protected void setAnnotationToClone(BaseObject baseObject)
 	{
 		objectToClone = baseObject;
+	}
+	
+	protected BaseObject getAnnotationToClone()
+	{
+		return objectToClone;
 	}
 	
 	public Factor getSelectedFactor()

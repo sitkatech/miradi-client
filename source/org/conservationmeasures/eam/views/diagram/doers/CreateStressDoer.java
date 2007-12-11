@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
@@ -24,22 +25,27 @@ public class CreateStressDoer extends CreateAnnotationDoer
 	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
 	{
 		Factor selectedFactor = getSelectedFactor();
+		createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, selectedFactor);
+	}
+
+	public static void createThreatStressRatingsForAttachedLinks(Project project, ORef newlyCreatedStressRef, Factor selectedFactor) throws Exception
+	{
 		if(!selectedFactor.isTarget())
 			return;
 
-		if (newlyCreatedObjectRef.getObjectType() != Stress.getObjectType())
+		if (newlyCreatedStressRef.getObjectType() != Stress.getObjectType())
 			return;
 		
 		Target target = (Target) selectedFactor;
 		FactorLinkSet directThreatTargetLinks = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatTargetLinks)
 		{
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedObjectRef);
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedStressRef);
 			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			getProject().executeCommand(createThreatStressRating);
+			project.executeCommand(createThreatStressRating);
 			
 			CommandSetObjectData setLinkThreatStressRatingRefs = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, createThreatStressRating.getObjectRef());
-			getProject().executeCommand(setLinkThreatStressRatingRefs);			
+			project.executeCommand(setLinkThreatStressRatingRefs);			
 		}
 	}
 
