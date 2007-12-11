@@ -203,6 +203,7 @@ public class Actions
 		registerAction(new ActionCreateStress(mainWindow));
 		registerAction(new ActionDeleteStress(mainWindow));
 		registerAction(new ActionCloneStress(mainWindow));
+		registerAction(new ActionCreateStressFromKea(mainWindow));
 		
 		registerAction(new ActionCreateKeyEcologicalAttribute(mainWindow));
 		registerAction(new ActionDeleteKeyEcologicalAttribute(mainWindow));

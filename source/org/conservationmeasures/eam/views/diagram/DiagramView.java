@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionCreateStress;
+import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
@@ -130,6 +131,7 @@ import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
@@ -300,6 +302,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateStress.class, new CreateStressDoer());
 		addDoerToMap(ActionDeleteStress.class, new DeleteStressDoer());
 		addDoerToMap(ActionCloneStress.class, new CloneStressDoer());
+		addDoerToMap(ActionCreateStressFromKea.class, new CreateStressFromKeaDoer());
 		
 		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
