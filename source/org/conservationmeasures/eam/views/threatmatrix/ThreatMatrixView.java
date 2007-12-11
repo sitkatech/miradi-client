@@ -107,7 +107,6 @@ public class ThreatMatrixView extends CardedView
 	public void deleteCards() throws Exception
 	{
 		threatStressRatingManagementPanel.dispose();
-		threatStressRatingPropertiesPanel.dispose();
 	}
 
 	public void becomeActive() throws Exception
