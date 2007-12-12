@@ -101,7 +101,7 @@ public class NudgeDoer extends LocationDoer
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
-			moveBendPoints(diagramPanel, links, deltaY, deltaX);
+			moveBendPoints(links, deltaY, deltaX);
 		}
 		catch (Exception e)
 		{
@@ -116,9 +116,9 @@ public class NudgeDoer extends LocationDoer
 		
 	}
 
-	private void moveBendPoints(DiagramPanel diagramPanel, LinkCell[] links, int deltaY, int deltaX) throws Exception
+	private void moveBendPoints(LinkCell[] links, int deltaY, int deltaX) throws Exception
 	{
-		LinkBendPointsMoveHandler bendPointsMoveHandler = new LinkBendPointsMoveHandler(diagramPanel.getdiagramComponent(), getProject());
+		LinkBendPointsMoveHandler bendPointsMoveHandler = new LinkBendPointsMoveHandler(getProject());
 		bendPointsMoveHandler.moveLinkBendPoints(links, deltaX, deltaY);
 	}
 
