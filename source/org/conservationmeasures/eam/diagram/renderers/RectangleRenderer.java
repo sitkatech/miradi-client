@@ -53,7 +53,8 @@ public class RectangleRenderer extends FactorRenderer
 		triangle.addPoint(getWidth() - triangleInset, 0);
 		setPaint(g2, rect, Color.CYAN);
 		g2.fill(triangle);
-		setPaint(g2, rect, color);
+		
+		setPaint(g2, rect, Color.BLACK);
 		g2.drawPolygon(triangle);
 	}
 
