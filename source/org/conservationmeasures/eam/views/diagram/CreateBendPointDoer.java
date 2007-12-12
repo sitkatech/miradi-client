@@ -41,28 +41,10 @@ public class CreateBendPointDoer extends LocationDoer
 		
 		DiagramLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
 		BendPointCreator bendPointCreator = new BendPointCreator(getDiagramView().getDiagramComponent());
-
-		// NOTE: We want separate transactions for the initial insert, 
-		// and for the creation of points on nearby links
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			bendPointCreator.createBendPoint(getLocation(), selectedLink);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
-		}
-
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
-			bendPointCreator.createBendPointOnNearbyLinks(selectedLink, getLocation());
 		}
 		catch (Exception e)
 		{
