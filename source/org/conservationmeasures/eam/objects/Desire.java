@@ -47,6 +47,11 @@ abstract public class Desire extends BaseObject
 	{
 		return shortLabel.get();
 	}
+	
+	public String getFullText()
+	{
+		return fullText.get();
+	}
 
 	public String toString()
 	{

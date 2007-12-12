@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
@@ -87,9 +88,37 @@ abstract public class FactorCell extends EAMGraphCell
 		for(int i = 0; i < bullets.size(); ++i)
 		{
 			BaseObject object = project.findObject(bullets.get(i));
-			tip += "<li>" + object.toString() + "</li>";
+			tip += getObjectText(object);
 		}
 		return tip;
+	}
+
+	private String getObjectText(BaseObject object)
+	{
+		if (object.getType() != Objective.getObjectType() && object.getType() != Goal.getObjectType())
+			return "<li><B>" + object.combineShortLabelAndLabel() + "<B></li>";
+		
+		Desire desire = (Desire) object;
+		String fullTextTable = "<TABLE WIDTH=\"300\">" +
+									"<TR>" +		
+										"<TD>" + 
+											"<li></li>" + 
+										"</TD>" +		
+										"<TD>" + 
+											"<B>" + desire.combineShortLabelAndLabel() + "</B>" + 
+										"</TD>" +
+										
+									"</TR>" +
+									"<TR>" +
+										"<TD>" + 
+										"</TD>" +
+										"<TD>" + 
+											desire.getFullText() +
+										"</TD>" +
+									"</TR>" +
+								"</TABLE>";
+ 
+		return fullTextTable;
 	}
 
 	public Rectangle getRectangle()
