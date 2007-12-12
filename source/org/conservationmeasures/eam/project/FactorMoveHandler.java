@@ -5,6 +5,7 @@
  */ 
 package org.conservationmeasures.eam.project;
 
+import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -81,7 +82,9 @@ public class FactorMoveHandler
 
 	private Object buildMoveCommand(FactorCell node)
 	{
-		String currentLocation = EnhancedJsonObject.convertFromPoint(node.getLocation());
+		Point location = node.getLocation();
+		Point snappedLocation = getProject().getSnapped(location);
+		String currentLocation = EnhancedJsonObject.convertFromPoint(snappedLocation);
 		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, currentLocation);
 	}
 
@@ -91,11 +94,11 @@ public class FactorMoveHandler
 		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
 	}
 
-	Project getProject()
+	private Project getProject()
 	{
 		return project;
 	}
 
-	Project project;
-	DiagramModel model;
+	private Project project;
+	private DiagramModel model;
 }
