@@ -99,7 +99,7 @@ abstract public class FactorCell extends EAMGraphCell
 			return "<li><B>" + object.combineShortLabelAndLabel() + "<B></li>";
 		
 		Desire desire = (Desire) object;
-		String fullTextTable = "<TABLE WIDTH=\"300\">" +
+		String fullTextTable = "<TABLE WIDTH=\"400\">" +
 									"<TR>" +		
 										"<TD>" + 
 											"<li></li>" + 
