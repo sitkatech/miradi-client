@@ -131,8 +131,9 @@ public class TestDataUpgrader extends EAMTestCase
 			
 		String noDuplicateBendPointDiagramLink = "{\"FromDiagramFactorId\":1,\"ToDiagramFactorId\":2,\"TimeStampModified\":\"1197311302307\",\"Label\":\"\",\"Id\":90,\"WrappedLinkId\":1,\"BendPoints\":\"{\\\"Points\\\":[\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":390}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":585}\\\"]}\"}";
 		String duplicateBendPointDiagramLink   = "{\"FromDiagramFactorId\":2,\"ToDiagramFactorId\":3,\"TimeStampModified\":\"1197311519795\",\"Label\":\"\",\"Id\":91,\"WrappedLinkId\":2,\"BendPoints\":\"{\\\"Points\\\":[\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":390}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":405}\\\",\\\"{\\\\\\\"Y\\\\\\\":285,\\\\\\\"X\\\\\\\":405}\\\"]}\"}";
+		String noBendPointsDiagramLink   = "{\"FromDiagramFactorId\":2,\"ToDiagramFactorId\":3,\"TimeStampModified\":\"1197311519795\",\"Label\":\"\",\"Id\":92,\"WrappedLinkId\":2}";
 		File diagramLinkDir = DataUpgrader.createObjectsDir(jsonDir, 13);
-		int[] diagramLinkIds = {90, 91};
+		int[] diagramLinkIds = {90, 91, 92};
 		File diagramLinkManifestFile = createManifestFile(diagramLinkDir, diagramLinkIds);
 		assertTrue(diagramLinkManifestFile.exists());
 		
@@ -143,6 +144,10 @@ public class TestDataUpgrader extends EAMTestCase
 		File duplicateBendPointDiagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkIds[1]));
 		createFile(duplicateBendPointDiagramLinkFile, duplicateBendPointDiagramLink);
 		assertTrue(duplicateBendPointDiagramLinkFile.exists());
+
+		File noBendPointsDiagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkIds[2]));
+		createFile(noBendPointsDiagramLinkFile, noBendPointsDiagramLink);
+		assertTrue(noBendPointsDiagramLinkFile.exists());
 		
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion27();

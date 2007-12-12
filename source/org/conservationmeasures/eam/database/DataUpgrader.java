@@ -180,7 +180,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			BaseId diagramLinkId = diagramLinkIds[i];
 			File diagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
 			EnhancedJsonObject diagramLinkJson = readFile(diagramLinkFile);
-			PointList bendPointsWithPossibleDuplicates = new PointList(diagramLinkJson.getString("BendPoints"));
+			PointList bendPointsWithPossibleDuplicates = new PointList(diagramLinkJson.optString("BendPoints"));
 			PointList nonDuplicateBendPointList = omitDuplicateBendPoints(bendPointsWithPossibleDuplicates);
 			if (nonDuplicateBendPointList.size() != bendPointsWithPossibleDuplicates.size())
 			{ 
