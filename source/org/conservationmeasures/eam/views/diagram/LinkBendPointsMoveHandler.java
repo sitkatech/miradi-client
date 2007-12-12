@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.DiagramLink;
@@ -20,7 +19,7 @@ import org.conservationmeasures.eam.utils.Utility;
 public class LinkBendPointsMoveHandler
 {
 
-	public LinkBendPointsMoveHandler(DiagramComponent diagramToUse, Project projectToUse)
+	public LinkBendPointsMoveHandler(Project projectToUse)
 	{
 		project = projectToUse;
 	}

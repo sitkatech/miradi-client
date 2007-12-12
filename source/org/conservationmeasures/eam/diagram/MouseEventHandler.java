@@ -263,7 +263,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	{
 		EdgeView edge = getDiagram().getEdgeView(linkCell);
 		Point2D[] bendPoints = extractBendPoints(edge);
-		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getDiagram(), getProject());
+		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
 		moveHandler.moveBendPoints(linkCell, bendPoints);
 	}
 
