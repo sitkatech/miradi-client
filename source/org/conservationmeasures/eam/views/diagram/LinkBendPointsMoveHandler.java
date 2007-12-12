@@ -22,7 +22,6 @@ public class LinkBendPointsMoveHandler
 
 	public LinkBendPointsMoveHandler(DiagramComponent diagramToUse, Project projectToUse)
 	{
-		diagram = diagramToUse;
 		project = projectToUse;
 	}
 
@@ -51,12 +50,6 @@ public class LinkBendPointsMoveHandler
 	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] movedBendPoints) throws Exception
 	{		
 		PointList snappedMovedBendPoints = createSnappedBendPoints(movedBendPoints);
-	    for (int i = 0; i < selectionIndexes.length; ++i)
-        {
-        	int movedPointIndex = selectionIndexes[i];
-        	createBendPointOnNeabyLinks(linkCell, snappedMovedBendPoints.get(movedPointIndex));
-        }
-
         PointList movedBendPointWithoutDuplicates = omitDuplicateBendPoints(snappedMovedBendPoints);
         DiagramLink diagramLink = linkCell.getDiagramLink();
 		executeBendPointMoveCommand(diagramLink, movedBendPointWithoutDuplicates);
@@ -98,8 +91,6 @@ public class LinkBendPointsMoveHandler
 			newPointLocation.setLocation(newPointLocation.x + deltaX, newPointLocation.y + deltaY);
 			Point snapped = project.getSnapped(newPointLocation);
 			newPointLocation.setLocation(snapped);
-		
-			createBendPointOnNeabyLinks(linkCell, newPointLocation);
 		}
 		
 		executeBendPointMoveCommand(diagramLink, pointsToMove);
@@ -111,31 +102,5 @@ public class LinkBendPointsMoveHandler
 		project.executeCommand(bendPointMoveCommand);
 	}
 		
-	private void createBendPointOnNeabyLinks(LinkCell linkCell, Point pointToMove) throws Exception
-	{
-		if (moreThanOneBendPointSelected())
-			return;
-		
-		BendPointCreator bendPointCreator = new BendPointCreator(diagram);
-		bendPointCreator.createBendPointOnNearbyLinks(linkCell, pointToMove);
-	}
-
-	private boolean moreThanOneBendPointSelected()
-	{
-		LinkCell[] allCells = diagram.getDiagramModel().getAllFactorLinkCells();
-		int totalSelectedBendPointCount = 0;
-		for (int i = 0; i < allCells.length; ++i)
-		{
-			LinkCell linkCell = allCells[i];
-			int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
-			totalSelectedBendPointCount += selectedBendPointIndexes.length;
-			if (totalSelectedBendPointCount > 1)
-				return true;
-		}
-		
-		return false;
-	}
-
-	private DiagramComponent diagram;
 	private Project project;
 }
