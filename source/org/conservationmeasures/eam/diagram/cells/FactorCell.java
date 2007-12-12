@@ -84,41 +84,43 @@ abstract public class FactorCell extends EAMGraphCell
 		if(bullets.size() == 0)
 			return tip;
 		
-		tip += "<hr>" + header + "<ul>";
+		tip += "<TABLE width=300>";
+		tip += "<TR>" +
+					"<TD><B>" + header +"</B></TD>" +
+					"<TD></TD>" +		
+				"</TR>";
 		for(int i = 0; i < bullets.size(); ++i)
 		{
 			BaseObject object = project.findObject(bullets.get(i));
 			tip += getObjectText(object);
 		}
+		
+		tip += "</TABLE>";
 		return tip;
 	}
 
 	private String getObjectText(BaseObject object)
 	{
-		if (object.getType() != Objective.getObjectType() && object.getType() != Goal.getObjectType())
-			return "<li><B>" + object.combineShortLabelAndLabel() + "<B></li>";
+		String tableColumRows = 
+			"<TR>" +		
+				"<TD><li></li></TD>" +		
+				"<TD><B>" + object.combineShortLabelAndLabel() + "</B></TD>" +
+			"</TR>";
 		
-		Desire desire = (Desire) object;
-		String fullTextTable = "<TABLE WIDTH=\"400\">" +
-									"<TR>" +		
-										"<TD>" + 
-											"<li></li>" + 
-										"</TD>" +		
-										"<TD>" + 
-											"<B>" + desire.combineShortLabelAndLabel() + "</B>" + 
-										"</TD>" +
-										
-									"</TR>" +
-									"<TR>" +
-										"<TD>" + 
-										"</TD>" +
-										"<TD>" + 
-											desire.getFullText() +
-										"</TD>" +
-									"</TR>" +
-								"</TABLE>";
- 
-		return fullTextTable;
+		if (object.getType() == Objective.getObjectType() || object.getType() == Goal.getObjectType())
+		{ 
+			Desire desire = (Desire) object;
+			tableColumRows += 			
+					"<TR>" +
+						"<TD>" + 
+						"</TD>" +
+						"<TD>" + 
+							desire.getFullText() +
+						"</TD>" +
+					"</TR>";	
+		}
+		
+		return tableColumRows;
 	}
 
 	public Rectangle getRectangle()
