@@ -373,8 +373,9 @@ public class DiagramModel extends DefaultGraphModel
 			FactorCell factorToMove = getFactorCellById(id);
 			Point oldLocation = factorToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
-			EAM.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
-			factorToMove.setLocation(newLocation);
+			Point newSnappedLocation = getProject().getSnapped(newLocation);
+			EAM.logVerbose("moved Node from:"+ oldLocation +" to:"+ newSnappedLocation);
+			factorToMove.setLocation(newSnappedLocation);
 			updateCell(factorToMove);
 		}
 	}
