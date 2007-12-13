@@ -93,7 +93,7 @@ public class ThreatMatrixView extends CardedView
 		createThreatMatrixPanel();
 		addCard(threatMatrixPanel, getThreatMatrixCardName());
 		
-		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getProject());
+		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getMainWindow());
 		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject(), threatStressRatingPropertiesPanel);		
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());

@@ -11,22 +11,22 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.Project;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 {
-	public ThreatStressRatingPropertiesPanel(Project projectToUse) throws Exception
+	public ThreatStressRatingPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
+		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new BasicGridLayout(2, 1));
 		
-		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(projectToUse, ORef.INVALID); 
-		editorComponent = new ThreatStressRatingEditorComponent(projectToUse);
+		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject(), ORef.INVALID); 
+		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse);
 		add(threatStressRatingFieldPanel);
 		add(editorComponent);
 		
