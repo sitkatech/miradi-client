@@ -12,9 +12,6 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 {
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
-			return false;
-		
 		if (getObjects().length == 0)
 			return false;
 		
@@ -32,5 +29,10 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_INDICATOR_IDS;
+	}
+	
+	public int getAnnotationType()
+	{
+		return Indicator.getObjectType();
 	}
 }

@@ -40,7 +40,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return (getObjects().length == 1);
+		return (getSingleSelected(getAnnotationType()) != null);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -225,4 +225,5 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 
 	abstract public String[] getDialogText();
 	abstract public String getAnnotationIdListTag();
+	abstract public int getAnnotationType();
 }

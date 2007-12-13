@@ -14,9 +14,6 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 {
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
-			return false;
-		
 		if (getObjects().length == 0)
 			return false;
 		
@@ -39,5 +36,10 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 	public String getAnnotationIdListTag()
 	{
 		return Target.TAG_STRESS_REFS;
+	}
+	
+	public int getAnnotationType()
+	{
+		return Stress.getObjectType();
 	}
 }
