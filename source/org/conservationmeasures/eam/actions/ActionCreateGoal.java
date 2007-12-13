@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateGoal extends MainWindowAction
+public class ActionCreateGoal extends ObjectsAction
 {
 	public ActionCreateGoal(MainWindow mainWindowToUse)
 	{
