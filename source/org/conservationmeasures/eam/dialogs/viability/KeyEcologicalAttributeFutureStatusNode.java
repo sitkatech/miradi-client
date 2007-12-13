@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Goal;
@@ -22,12 +23,12 @@ public class KeyEcologicalAttributeFutureStatusNode extends ViabilityTreeTableNo
 	
 	public BaseObject getObject()
 	{
-		return parentNode.getObject();
+		return null;
 	}
 
 	public ORef getObjectReference()
 	{
-		return parentNode.getObjectReference();
+		return new ORef(Goal.getObjectType(), BaseId.INVALID);
 	}
 	
 	public int getType()
