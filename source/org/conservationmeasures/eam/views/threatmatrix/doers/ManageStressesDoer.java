@@ -34,6 +34,7 @@ public class ManageStressesDoer extends ObjectsDoer
 			StressListManagementPanel stressListManagementPanel = new StressListManagementPanel(getProject(), getMainWindow(), selectedTarget.getRef(), getMainWindow().getActions());
 			ManageStressesDialog manageStressesDialog = new ManageStressesDialog(getMainWindow(), stressListManagementPanel);
 
+			stressListManagementPanel.updateSplitterLocation();
 			manageStressesDialog.pack();
 			Utilities.centerDlg(manageStressesDialog);
 			manageStressesDialog.setVisible(true);
