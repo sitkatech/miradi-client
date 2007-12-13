@@ -24,6 +24,12 @@ public class ORefList
 		this(new Vector());
 	}
 	
+	public ORefList(ORef orefToAdd)
+	{
+		this();
+		add(orefToAdd);
+	}
+	
 	public ORefList(ORefList copyFrom)
 	{
 		this(copyFrom.toJson());
