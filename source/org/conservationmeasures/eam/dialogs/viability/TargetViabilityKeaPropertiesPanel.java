@@ -5,12 +5,8 @@
 */
 package org.conservationmeasures.eam.dialogs.viability;
 
-import javax.swing.Box;
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
-import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
+import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -20,7 +16,7 @@ import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 
-public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelSpecial
+public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanel
 {
 	public TargetViabilityKeaPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
@@ -37,21 +33,9 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelSpeci
 
 	private void createKeaPropertiesPanel()
 	{
-		ObjectDataInputField keaLabel = addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
-		ObjectDataInputField keaDescription = addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
-		ObjectDataInputField keaType = addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
+		addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
 
-		JPanel keaPanel = createGridLayoutPanel(1,2);
-		keaPanel.add(createColumnJPanel(keaLabel));
-		keaPanel.add(Box.createHorizontalStrut(STD_SPACE_20));
-		keaPanel.add(createColumnJPanel(keaType));
-		
-		JPanel keaDescPanel = createGridLayoutPanel(1,2);
-		keaDescPanel.add(createColumnJPanel(keaDescription));
-		
-		JPanel mainKeaPanel = createGridLayoutPanel(0, 1);
-		mainKeaPanel.add(keaPanel);
-		mainKeaPanel.add(keaDescPanel);
-		addFieldComponent(mainKeaPanel);
 	}
 }
