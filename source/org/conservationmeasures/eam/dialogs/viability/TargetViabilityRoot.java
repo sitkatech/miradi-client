@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -18,11 +17,6 @@ public class TargetViabilityRoot extends TargetViabilityNode
 		super(projectToUse, targetId);
 	}
 
-	public ORef getObjectReference()
-	{
-		return null;
-	}
-	
 	public boolean isAlwaysExpanded()
 	{
 		return true;
