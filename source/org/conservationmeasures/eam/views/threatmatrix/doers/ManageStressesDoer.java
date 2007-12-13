@@ -17,7 +17,7 @@ public class ManageStressesDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		if (getSelectedHierarchies().length == 0)
+		if (getSingleSelected(Target.getObjectType()) == null)
 			return false;
 		
 		return true;
