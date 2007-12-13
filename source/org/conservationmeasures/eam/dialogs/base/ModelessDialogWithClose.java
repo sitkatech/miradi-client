@@ -142,6 +142,7 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 
 	public void windowActivated(WindowEvent arg0)
 	{
+		mainWindow.updateActionStates();
 	}
 
 	public void windowClosed(WindowEvent arg0)
@@ -167,6 +168,7 @@ public class ModelessDialogWithClose extends EAMDialog implements WindowListener
 
 	public void windowOpened(WindowEvent arg0)
 	{
+		mainWindow.updateActionStates();
 	}
 	
 
