@@ -13,12 +13,13 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 {
-	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel threatStressRatingMultiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
-		return new ThreatStressRatingListTablePanel(projectToUse, new ThreatStressRatingMultiTablePanel(projectToUse), propertiesPanel);
+		return new ThreatStressRatingListTablePanel(projectToUse, threatStressRatingMultiTablePanel, propertiesPanel);
 	}
 	
 	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
@@ -29,6 +30,11 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 		propertiesPanel = propertiesPanelToUse;
 		
 		add(multiTablePanelToUse);
+	}
+	
+	public ObjectPicker getObjectPicker()
+	{
+		return multiTablePanel;
 	}
 
 	public void valueChanged(ListSelectionEvent event)
