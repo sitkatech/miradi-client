@@ -372,7 +372,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	{
 		TreePath[] selectionPaths = getTree().getSelectionModel().getSelectionPaths();
 		if (selectionPaths == null)
-			return new ORefList[0];
+			return new ORefList[] {new ORefList(getRootNodeRef())};
 		
 		ORefList[] selectionHierarchies = new ORefList[selectionPaths.length];
 		for (int i = 0; i < selectionPaths.length; ++i)
@@ -381,6 +381,11 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		}
 		
 		return selectionHierarchies;
+	}
+
+	private ORef getRootNodeRef()
+	{
+		return getTreeTableModel().getRootNode().getObjectReference();
 	}
 	
 	private ORefList convertPath(TreePath treePath)
