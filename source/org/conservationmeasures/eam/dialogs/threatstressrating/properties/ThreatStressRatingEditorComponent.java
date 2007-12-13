@@ -43,8 +43,8 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	private void addTablesWithManageStressesButton()
 	{
 		FastScrollPane resourceScroller = new FastScrollPane(threatStressRatingTable);
-		add(resourceScroller, BorderLayout.CENTER);
 		add(createButtonPanel(), BorderLayout.BEFORE_FIRST_LINE);
+		add(resourceScroller, BorderLayout.CENTER);
 	}
 	
 	protected JPanel createButtonPanel()
