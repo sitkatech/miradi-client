@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 
 public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 {
@@ -31,5 +32,10 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
+	}
+	
+	public int getAnnotationType()
+	{
+		return KeyEcologicalAttribute.getObjectType();
 	}
 }

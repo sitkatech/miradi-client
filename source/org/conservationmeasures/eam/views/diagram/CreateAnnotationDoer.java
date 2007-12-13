@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -26,7 +27,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 {	
 	public boolean isAvailable()
 	{
-		if (! isDiagramView())
+		if (!isDiagramView())
 			return false;
 		
 		return (getSelectedFactor() != null);
@@ -104,15 +105,21 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	}
 	
 	public Factor getSelectedFactor()
-	{
-		BaseObject selected = getView().getSelectedObject();
-		if(selected == null)
-			return null;
+	{		
+		for (int i = 0; i < getSelectedHierarchies().length; ++i)
+		{
+			ORefList selectedHierarchyRefs =  getSelectedHierarchies()[i];
+			for (int j = 0; j <  selectedHierarchyRefs.size(); ++j)
+			{
+				if (selectedHierarchyRefs.get(j) != null && Factor.isFactor(selectedHierarchyRefs.get(j)))
+				{
+					Factor factor = (Factor) getProject().findObject(selectedHierarchyRefs.get(j));
+					return factor;
+				}
+			}
+		}
 		
-		if(! Factor.isFactor(selected.getType()))
-			return null;
-		
-		return (Factor)selected;
+		return null;
 	}
 	
 	protected boolean validUserChoiceForObjectToClone(ObjectPoolTablePanel poolTablePanel, String panelText) throws CommandFailedException

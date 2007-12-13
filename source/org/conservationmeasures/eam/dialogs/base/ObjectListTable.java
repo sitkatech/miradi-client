@@ -38,10 +38,13 @@ public class ObjectListTable extends ObjectTable
 	public ORefList[] getSelectedHierarchies()
 	{
 		ORefList[] superHierarchies = super.getSelectedHierarchies();
+		ORef containingRef = getObjectListTableModel().getContainingRef();
+		if (superHierarchies.length == 0)
+			return new ORefList[]{new ORefList(containingRef)};
+
 		for (int i = 0; i < superHierarchies.length; ++i)
 		{
-			ORef parentRef = getObjectListTableModel().getContainingRef();
-			superHierarchies[i].add(parentRef);
+			superHierarchies[i].add(containingRef);
 		}
 		
 		return superHierarchies;

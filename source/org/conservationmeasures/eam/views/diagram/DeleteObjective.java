@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Objective;
 
 public class DeleteObjective extends DeleteAnnotationDoer
 {
@@ -18,5 +19,9 @@ public class DeleteObjective extends DeleteAnnotationDoer
 	{
 		return Factor.TAG_OBJECTIVE_IDS;
 	}
-
+	
+	public int getAnnotationType()
+	{
+		return Objective.getObjectType();
+	}
 }
