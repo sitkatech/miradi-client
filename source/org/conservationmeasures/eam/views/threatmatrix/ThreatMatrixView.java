@@ -11,6 +11,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCloneStress;
+import org.conservationmeasures.eam.actions.ActionCreateStress;
+import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
+import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
 import org.conservationmeasures.eam.actions.ActionManageStresses;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -42,6 +46,10 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.CardedView;
+import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
+import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 
@@ -71,6 +79,11 @@ public class ThreatMatrixView extends CardedView
 		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
 		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
+		
+		addDoerToMap(ActionCreateStress.class, new CreateStressDoer());
+		addDoerToMap(ActionDeleteStress.class, new DeleteStressDoer());
+		addDoerToMap(ActionCloneStress.class, new CloneStressDoer());
+		addDoerToMap(ActionCreateStressFromKea.class, new CreateStressFromKeaDoer());
 	}
 	
 	public String cardName()
