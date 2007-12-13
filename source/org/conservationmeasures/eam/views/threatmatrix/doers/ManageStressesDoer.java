@@ -12,12 +12,17 @@ public class ManageStressesDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return false;
+		if (getSelectedHierarchies().length == 0)
+			return false;
+		
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
 			return;
+		
+		
 	}
 }
