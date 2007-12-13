@@ -139,7 +139,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		Factor factor = (Factor) getProject().findObject(factorORef);
 		grid = new FactorInputPanel(getProject(), factorORef);
 		
-		grid.addFieldWithCustomLabel(grid.createStringField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
+		grid.addFieldWithCustomLabel(grid.createExpandableField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
 		
 		if (factor.isTarget())
 		{

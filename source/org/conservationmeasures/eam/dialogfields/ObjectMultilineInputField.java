@@ -14,7 +14,12 @@ public class ObjectMultilineInputField extends ObjectTextInputField
 {
 	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(3, columnsToUse));
+		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 3, columnsToUse);
+	}
+	
+	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
+	{
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(initialVisibleRows, columnsToUse));
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 	}

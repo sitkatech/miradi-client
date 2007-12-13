@@ -114,6 +114,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
+			formattedLabel = formattedLabel.replace("\n", "<br>");
 			setHtmlFormViewerText(getAdditionalHtmlFontTags() + formattedLabel);
 			
 			indicatorText = null;
