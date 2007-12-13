@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
+import org.conservationmeasures.eam.actions.ActionManageStresses;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionShowCellRatings;
 import org.conservationmeasures.eam.commands.Command;
@@ -40,6 +41,7 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.CardedView;
+import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 
 
@@ -67,6 +69,7 @@ public class ThreatMatrixView extends CardedView
 		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
 		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
 		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
+		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
 	}
 	
 	public String cardName()
