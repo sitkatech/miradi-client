@@ -7,21 +7,29 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
+
+import org.conservationmeasures.eam.actions.ActionManageStresses;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingEditorComponent extends MultiTablePanel
 {
-	public ThreatStressRatingEditorComponent(Project projectToUse) throws Exception
+	public ThreatStressRatingEditorComponent(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse);
+		super(mainWindowToUse.getProject());
 		
+		mainWindow = mainWindowToUse;
 		createTables();
-		addTables();
+		addTablesWithManageStressesButton();
 	}
 	
 	private void createTables() throws Exception
@@ -30,10 +38,25 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 		threatStressRatingTable = new ThreatStressRatingTable(threatStressRatingTableModel);
 	}
 	
-	private void addTables()
+	private void addTablesWithManageStressesButton()
 	{
 		FastScrollPane resourceScroller = new FastScrollPane(threatStressRatingTable);
 		add(resourceScroller, BorderLayout.CENTER);
+		add(createButtonPanel(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+	
+	protected JPanel createButtonPanel()
+	{
+		JPanel buttonPanel = new JPanel(new BasicGridLayout(1, 0));
+		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), threatStressRatingTable);
+		buttonPanel.add(manageStressesButton);
+		
+		return buttonPanel;
+	}
+	
+	private Actions getActions()
+	{
+		return mainWindow.getActions();
 	}
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -59,4 +82,5 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	private ThreatStressRatingTableModel threatStressRatingTableModel;
 	private ThreatStressRatingTable threatStressRatingTable;
+	private MainWindow mainWindow;
 }
