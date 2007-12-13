@@ -13,14 +13,13 @@ import org.conservationmeasures.eam.actions.ActionManageStresses;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.MultiTablePanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingTableModel;
+import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingEditorComponent extends MultiTablePanel
 {
@@ -49,7 +48,7 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	protected JPanel createButtonPanel()
 	{
-		JPanel buttonPanel = new JPanel(new BasicGridLayout(1, 0));
+		JPanel buttonPanel = new OneRowPanel();
 		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), getObjectPicker());
 		buttonPanel.add(manageStressesButton);
 		
