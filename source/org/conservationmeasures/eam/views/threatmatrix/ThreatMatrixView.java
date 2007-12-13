@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingManagementPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTablePanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -93,8 +94,9 @@ public class ThreatMatrixView extends CardedView
 		createThreatMatrixPanel();
 		addCard(threatMatrixPanel, getThreatMatrixCardName());
 		
-		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getMainWindow());
-		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject(), threatStressRatingPropertiesPanel);		
+		ThreatStressRatingMultiTablePanel threatRatingMultiTablePanel = new ThreatStressRatingMultiTablePanel(getProject());
+		threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(getMainWindow(), threatRatingMultiTablePanel);
+		ThreatStressRatingListTablePanel tablePanel = ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(getProject(), threatRatingMultiTablePanel, threatStressRatingPropertiesPanel);		
 		threatStressRatingManagementPanel = new ThreatStressRatingManagementPanel(getMainWindow(), tablePanel, threatStressRatingPropertiesPanel); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}

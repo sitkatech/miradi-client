@@ -15,18 +15,19 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 {
-	public ThreatStressRatingPropertiesPanel(MainWindow mainWindowToUse) throws Exception
+	public ThreatStressRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new BasicGridLayout(2, 1));
 		
 		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject(), ORef.INVALID); 
-		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse);
+		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 		add(threatStressRatingFieldPanel);
 		add(editorComponent);
 		

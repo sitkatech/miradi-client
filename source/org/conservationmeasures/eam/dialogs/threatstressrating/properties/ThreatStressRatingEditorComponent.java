@@ -18,16 +18,18 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatStressRatingEditorComponent extends MultiTablePanel
 {
-	public ThreatStressRatingEditorComponent(MainWindow mainWindowToUse) throws Exception
+	public ThreatStressRatingEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
+		objectPicker = objectPickerToUse;
 		createTables();
 		addTablesWithManageStressesButton();
 	}
@@ -48,7 +50,7 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	protected JPanel createButtonPanel()
 	{
 		JPanel buttonPanel = new JPanel(new BasicGridLayout(1, 0));
-		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), threatStressRatingTable);
+		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), getObjectPicker());
 		buttonPanel.add(manageStressesButton);
 		
 		return buttonPanel;
@@ -57,6 +59,11 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	private Actions getActions()
 	{
 		return mainWindow.getActions();
+	}
+	
+	private ObjectPicker getObjectPicker()
+	{
+		return objectPicker;
 	}
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -83,4 +90,5 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	private ThreatStressRatingTableModel threatStressRatingTableModel;
 	private ThreatStressRatingTable threatStressRatingTable;
 	private MainWindow mainWindow;
+	private ObjectPicker objectPicker;
 }
