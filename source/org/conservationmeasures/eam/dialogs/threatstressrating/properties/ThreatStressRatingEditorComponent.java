@@ -67,6 +67,7 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		threatStressRatingTable.stopCellEditing();
 		threatStressRatingTableModel.setObjectRefs(hierarchyToSelectedRef);
 		threatStressRatingTableModel.fireTableDataChanged();
 	}
