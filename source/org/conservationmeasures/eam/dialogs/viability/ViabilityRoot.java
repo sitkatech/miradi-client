@@ -39,7 +39,7 @@ public class ViabilityRoot extends ViabilityTreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return null;
+		return ORef.INVALID;
 	}
 	
 	public int getType()
