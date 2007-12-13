@@ -63,7 +63,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
 		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
 		boolean isIndicatorNode = node.getType() == Indicator.getObjectType();
-		boolean isFutureStatusNode = node.getType() == Goal.getObjectType() && node.getObject().getType() == Indicator.getObjectType();
+		boolean isFutureStatusNode = node.getType() == Goal.getObjectType() && node.getType() == Indicator.getObjectType();
 		boolean isValueColumn = getViabilityModel().isChoiceItemColumn(columnTag);
 		if((isMeasurementNode || isIndicatorNode || isFutureStatusNode) && isValueColumn)
 		{

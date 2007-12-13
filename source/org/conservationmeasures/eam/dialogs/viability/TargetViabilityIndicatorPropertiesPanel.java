@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
-import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.layout.OneColumnGridLayout;
@@ -80,25 +79,10 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		box4.add(createColumnJPanel(ratingSource, ratingSource.getComponent().getPreferredSize()));
 		box3.add(box4);		
 		
-		ObjectDataInputField futureStatusRating = addField(createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING)));
-		ObjectDataInputField futureStatusDate = addField(createDateChooserField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DATE));
-		ObjectDataInputField futureStatusSummary = addField(createStringField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_SUMMARY,STD_SHORT));
-		ObjectDataInputField futureStatusDetail = addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_DETAIL,NARROW_DETAILS));
-
-		JPanel box8 = createGridLayoutPanel(1,5);
-		addBoldedTextBorder(box8, EAM.text("Future Status"));
-		box8.add(createColumnJPanel(futureStatusDate));
-		box8.add(createColumnJPanel(futureStatusRating));
-		box8.add(Box.createHorizontalStrut(STD_SPACE_20));
-		box8.add(createColumnJPanelWithIcon(futureStatusSummary, new GoalIcon()));
-		box8.add(createColumnJPanel(futureStatusDetail));
-
 		JPanel mainIndicatorPanel = createGridLayoutPanel(3, 1);
-		addBoldedTextBorder(mainIndicatorPanel, "Indicator");
 		mainIndicatorPanel.add(box2);
 		mainIndicatorPanel.add(boxIndrPrty);
 		mainIndicatorPanel.add(box3);
-		mainIndicatorPanel.add(box8);
 		
 		setLayout(new OneColumnGridLayout());
 		add(mainIndicatorPanel);
