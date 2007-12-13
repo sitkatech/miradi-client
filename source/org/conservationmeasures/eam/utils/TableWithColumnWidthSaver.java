@@ -5,7 +5,6 @@
 */
 package org.conservationmeasures.eam.utils;
 
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
@@ -36,14 +35,6 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 	protected int getSavedColumnWidth(int column)
 	{
 		return columnWidthSaver.getColumnWidth(column);
-	}
-	
-	//FIXME is this enough 
-	public void tableChanged(TableModelEvent e)
-	{
-		super.tableChanged(e);
-		if (columnWidthSaver != null)
-			columnWidthSaver.restoreColumnWidths();
 	}
 	
 	public boolean shouldSaveColumnWidth()
