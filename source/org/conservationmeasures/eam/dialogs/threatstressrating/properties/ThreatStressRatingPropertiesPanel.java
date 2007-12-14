@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import java.awt.Component;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -15,6 +16,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -67,8 +69,29 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if(event.isSetDataCommand())
-			editorComponent.dataWasChanged();
+		setCommandExecuted(event);
+	}
+
+	private void setCommandExecuted(CommandExecutedEvent event)
+	{
+		if(!event.isSetDataCommand())
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		if (!setCommand.getFieldTag().equals(FactorLink.TAG_THREAT_STRESS_RATING_REFS))
+			return;
+		
+		try
+		{
+			ORefList newThreatStressRatingRefsWithLinkRef = new ORefList(setCommand.getDataValue());
+			newThreatStressRatingRefsWithLinkRef.add(setCommand.getObjectORef());
+			setObjectRefs(new ORefList[] {newThreatStressRatingRefsWithLinkRef});
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error Occured while updating Threat Stress Rating table."));
+		}
 	}
 	
 	public String getPanelDescription()
