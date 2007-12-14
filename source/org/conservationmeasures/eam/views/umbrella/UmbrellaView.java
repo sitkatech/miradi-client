@@ -340,7 +340,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpSelectAppropriateMethods.class);
 		addJumpDoerToMap(ActionJumpPlanDataStorage.class);
 		
-//		addJumpDoerToMap(ActionJumpMonitoringPlanOverviewStep.class);
 		addJumpDoerToMap(ActionJumpMonitoringWizardSelectMethodsStep.class);
 		
 		addJumpDoerToMap(ActionJumpBudgetWizardAccountingAndFunding.class);
@@ -351,7 +350,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpShorttermPlans.class);
 		addJumpDoerToMap(ActionJumpScheduleOverviewStep.class);
 		addJumpDoerToMap(ActionJumpDefineTasks.class);
-//		addJumpDoerToMap(ActionJumpFinancialOverviewStep.class);
 		addJumpDoerToMap(ActionJumpTeamRoles.class);
 		addJumpDoerToMap(ActionJumpRefinePlans.class);
 		addJumpDoerToMap(ActionJumpImplementWorkPlan.class);
@@ -386,9 +384,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpFinancialOverviewStep.class);
 		addJumpDoerToMap(ActionJumpBudgetFutureDemo.class);
 		addJumpDoerToMap(ActionJumpDiagramOverviewStep.class);
-//		addJumpDoerToMap(ActionJumpWorkPlanOverviewStep.class);
-		
-		
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)
@@ -449,10 +444,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			activePropertiesDlg.dispose();
 		activePropertiesPanel = null;
 		activePropertiesDlg = null;
-	}
-
-	public void setSplitterLocationToMiddle()
-	{
 	}
 
 	private MainWindow mainWindow;
