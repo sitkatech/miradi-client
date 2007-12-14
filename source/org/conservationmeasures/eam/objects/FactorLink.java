@@ -238,9 +238,6 @@ public class FactorLink extends BaseObject
 	public int calculateThreatRatingBundleValue() throws Exception
 	{
 		ORefList ratingRefs = getThreatStressRatingRefs();
-		if (ratingRefs.size() == 0)
-			return 0;
-		
 		int[] ratingBundleValues = new int[ratingRefs.size()];
 		for (int i = 0; i < ratingRefs.size(); ++i)
 		{
