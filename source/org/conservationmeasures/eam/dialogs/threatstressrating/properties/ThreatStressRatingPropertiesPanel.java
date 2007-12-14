@@ -69,10 +69,10 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		setCommandExecuted(event);
+		handleExecutedSetDataCommand(event);
 	}
 
-	private void setCommandExecuted(CommandExecutedEvent event)
+	private void handleExecutedSetDataCommand(CommandExecutedEvent event)
 	{
 		if(!event.isSetDataCommand())
 			return;
