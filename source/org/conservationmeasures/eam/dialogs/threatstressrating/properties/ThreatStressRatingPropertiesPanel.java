@@ -69,14 +69,12 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		handleExecutedSetDataCommand(event);
+		if(event.isSetDataCommand())
+			handleExecutedSetDataCommand(event);
 	}
 
 	private void handleExecutedSetDataCommand(CommandExecutedEvent event)
 	{
-		if(!event.isSetDataCommand())
-			return;
-		
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		if (!setCommand.getFieldTag().equals(FactorLink.TAG_THREAT_STRESS_RATING_REFS))
 			return;
