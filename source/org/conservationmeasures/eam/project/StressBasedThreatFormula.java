@@ -96,6 +96,9 @@ public class StressBasedThreatFormula extends ThreatFormula
 		if (medium > 0)
 			return 2;
 		
-		return 1;
+		if (low > 0)
+			return 1;
+		
+		return 0;
 	}
 }

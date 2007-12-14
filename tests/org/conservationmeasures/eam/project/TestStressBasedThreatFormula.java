@@ -115,10 +115,12 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		assertEquals(3, formula.getHighestWithValue(0, 0, 44, 0));
 		assertEquals(2, formula.getHighestWithValue(0, 44, 0, 0));
 		assertEquals(1, formula.getHighestWithValue(44, 0, 0, 0));
+		assertEquals(0, formula.getHighestWithValue(0, 0, 0, 0));
 		
 		assertEquals(4, formula.getHighestWithValue(1, 1, 1, 1));
 		assertEquals(3, formula.getHighestWithValue(1, 1, 1, 0));
 		assertEquals(2, formula.getHighestWithValue(1, 1, 0, 0));
 		assertEquals(1, formula.getHighestWithValue(1, 0, 0, 0));
+		assertEquals(0, formula.getHighestWithValue(0, 0, 0, 0));
 	}
 }
