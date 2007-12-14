@@ -155,7 +155,6 @@ public class ThreatMatrixView extends CardedView
 		// TODO: Should clear ALL view data
 		grid = null;
 		super.becomeInactive();
-		closeActivePropertiesDialog();
 	}
 
 	public ThreatMatrixTableModel getModel()
