@@ -30,8 +30,14 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 	}
 
 	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
-	{
-		if(priority == null || priority.getCode().length() == 0)
+	{		
+		if (priority == null)
+			return;
+		
+		if (priority.getCode().length() == 0)
+			return;
+		
+		if (priority.getCode().equals("0"))
 			return;
 
 		drawRatingBubble(g2, rect, priority.getColor(), priority.getLabel().substring(0,1));
