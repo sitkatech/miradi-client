@@ -324,12 +324,12 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData commandDiagramMove1 = (CommandSetObjectData)project.getLastCommand();
 		assertEquals(node2.getDiagramFactorId(), commandDiagramMove1.getObjectId());
 		Point point1 = EnhancedJsonObject.convertToPoint(commandDiagramMove1.getDataValue());
-		assertEquals(point1, node2Location);
+		assertEquals(point1, project.getSnapped(node2Location));
 		
 		CommandSetObjectData commandDiagramMove2 = (CommandSetObjectData)project.getLastCommand();
 		assertEquals(node1.getDiagramFactorId(), commandDiagramMove2.getObjectId());
 		Point point2 = EnhancedJsonObject.convertToPoint(commandDiagramMove2.getDataValue());
-		assertEquals(point2, deltaLocation);
+		assertEquals(point2, project.getSnapped(deltaLocation));
 		
 		project.getLastCommand(); //begin Transaction
 	}
