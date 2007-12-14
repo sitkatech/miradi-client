@@ -53,13 +53,12 @@ public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewpo
 			return new ORefList[0];
 		
 		Target target = getTargetThreatLinkTableModel().getTarget(modelColumn);
-		ORef targetRef = target.getRef();
 		if (getTargetThreatLinkTableModel().areLinked(directThreat, target))
 		{
 			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat, target);
 			hierarchyRefs.add(linkRef);
 		}
-		hierarchyRefs.add(targetRef);
+		hierarchyRefs.add(target.getRef());
 		hierarchyRefs.add(directThreat.getRef());
 		
 		return new ORefList[]{hierarchyRefs};
