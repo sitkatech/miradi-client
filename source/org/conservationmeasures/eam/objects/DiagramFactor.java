@@ -216,6 +216,12 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setLocationCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_LOCATION, locationAsString);
 		commands.add(setLocationCommand);
 		
+		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, fontSize.get());
+		commands.add(setFontSizeCommand);
+		
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_COLOR, fontColor.get());
+		commands.add(setFontColorCommand);
+		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
