@@ -23,7 +23,6 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.jgraph.JGraph;
@@ -48,7 +47,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 			renderer.lineWidth = 4;
 		}
 
-		stressText = getLinkCell().getFactorLink().getStressLabel();
+		//FIXME use some other method to get the label
+		//stressText = getLinkCell().getFactorLink().getStressLabel();
 
 		return renderer;
 	}
@@ -310,9 +310,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
 
-		LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		FactorLink factorLink = thisCell.getFactorLink();
-		String text = factorLink.getStressLabel();
+		//FIXME use some other way to get the stress label
+		//LinkCell thisCell = (LinkCell)viewToUse.getCell();
+		//FactorLink factorLink = thisCell.getFactorLink();
+		//String text = factorLink.getStressLabel();
+		String text = "";
 		if (text == null || text.length()==0)
 			return graphBounds;
 		

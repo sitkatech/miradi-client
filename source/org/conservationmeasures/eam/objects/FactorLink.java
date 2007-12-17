@@ -122,11 +122,6 @@ public class FactorLink extends BaseObject
 		return new FactorLinkId(getId().asInt());
 	}
 	
-	public String getStressLabel()
-	{
-		return stressLabel.get();
-	}
-	
 	public ORef getDownstreamTargetRef() throws Exception
 	{
 		if (getToFactorRef().getObjectType() == Target.getObjectType())
@@ -322,7 +317,6 @@ public class FactorLink extends BaseObject
 		super.clear();
 		fromRef = new ORefData();
 		toRef = new ORefData();
-		stressLabel = new StringData();
 		bidirectionalLink = new BooleanData();
 		threatStressRatingRefs = new ORefListData();
 		comment = new StringData();
@@ -330,7 +324,6 @@ public class FactorLink extends BaseObject
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
-		addField(TAG_STRESS_LABEL, stressLabel);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 		addField(TAG_COMMENT, comment);
@@ -340,7 +333,6 @@ public class FactorLink extends BaseObject
 	
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
-	public static final String TAG_STRESS_LABEL = "StressLabel";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
 	public static final String TAG_COMMENT = "Comment";
@@ -356,7 +348,6 @@ public class FactorLink extends BaseObject
 	
 	private ORefData fromRef;
 	private ORefData toRef;
-	private StringData stressLabel;
 	private BooleanData bidirectionalLink;
 	private ORefListData threatStressRatingRefs;
 	private StringData comment;
