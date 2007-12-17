@@ -145,7 +145,8 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		Vector filterdDiagramFactors = new Vector();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
-			if (allDiagramFactors[i].getWrappedType() != ObjectType.TEXT_BOX)
+			int wrappedType = allDiagramFactors[i].getWrappedType();
+			if (wrappedType != ObjectType.TEXT_BOX && wrappedType != ObjectType.GROUP_BOX)
 				filterdDiagramFactors.add(allDiagramFactors[i]);
 		}
 			
