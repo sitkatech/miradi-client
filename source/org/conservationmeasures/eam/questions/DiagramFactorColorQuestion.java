@@ -17,20 +17,19 @@ public class DiagramFactorColorQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getColorChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem("1", "Black", Color.BLACK),
-			new ChoiceItem("2", "Dark Gray", Color.GRAY.darker()),
-			new ChoiceItem("3", "Light Gray", Color.GRAY.brighter()),
-			new ChoiceItem("4", "Brown", BROWN),
-			new ChoiceItem("5", "Tan", TAN),
-			new ChoiceItem("6", "White", Color.WHITE),
-			new ChoiceItem("7", "Red", Color.RED),
-			new ChoiceItem("8", "Pink", Color.PINK),
-			new ChoiceItem("9", "Orange", Color.ORANGE),
-			new ChoiceItem("10", "Yellow", Color.YELLOW),
-			new ChoiceItem("11", "Dark Green", Color.GREEN.darker()),
-			new ChoiceItem("12", "Light Green", Color.GREEN.brighter()),
-			new ChoiceItem("13", "Dark Blue", Color.BLUE.darker()),
+			new ChoiceItem("", "Not Specified", Color.BLACK),
+			new ChoiceItem("DarkGray", "Dark Gray", Color.GRAY.darker()),
+			new ChoiceItem("LightGray", "Light Gray", Color.GRAY.brighter()),
+			new ChoiceItem("Brown", "Brown", BROWN),
+			new ChoiceItem("Tan", "Tan", TAN),
+			new ChoiceItem("White", "White", Color.WHITE),
+			new ChoiceItem("Red", "Red", Color.RED),
+			new ChoiceItem("Pink", "Pink", Color.PINK),
+			new ChoiceItem("Orange", "Orange", Color.ORANGE),
+			new ChoiceItem("Yello", "Yellow", Color.YELLOW),
+			new ChoiceItem("DarkGreen", "Dark Green", Color.GREEN.darker()),
+			new ChoiceItem("LightGreen", "Light Green", Color.GREEN.brighter()),
+			new ChoiceItem("DarkBlue", "Dark Blue", Color.BLUE.darker()),
 		};
 	}
 	
