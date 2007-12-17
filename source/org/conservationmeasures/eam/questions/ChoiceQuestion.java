@@ -36,12 +36,36 @@ public abstract class ChoiceQuestion
 		return getChoices()[index];
 	}
 	
+	public ChoiceItem findChoiceByLabel(String labelToFind)
+	{
+		int index = findIndexByLabel(labelToFind);
+		if (index < 0)
+			return null;
+		
+		return getChoices()[index];
+	}
+	
 	public int findIndexByCode(String code)
 	{
 		ChoiceItem[] choices = getChoices();
 		for(int i = 0; i < choices.length; ++i)
+		{
 			if(choices[i].getCode().equals(code))
 				return i;
+		}
+		
+		return -1;
+	}
+	
+	public int findIndexByLabel(String labelToFind)
+	{
+		ChoiceItem[] choices = getChoices();
+		for(int i = 0; i < choices.length; ++i)
+		{
+			if(choices[i].getLabel().equals(labelToFind))
+				return i;
+		}
+		
 		return -1;
 	}
 	
