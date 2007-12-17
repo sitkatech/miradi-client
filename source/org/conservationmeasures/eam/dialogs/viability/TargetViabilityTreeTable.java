@@ -6,7 +6,13 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -25,6 +31,8 @@ import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider 
 {
@@ -36,8 +44,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
-		//FIXME wating for nicks feeback if we want colored headers or not
-		//setColumnHeaderRenderers();
+		setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
@@ -82,49 +89,42 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		
 		return otherRenderer;
 	}
+	private void setColumnHeaderRenderers()
+	{
+		ColumnHeaderRenderer headerRenderer = new ColumnHeaderRenderer();
+		for (int i = 0; i < getModel().getColumnCount(); ++i)
+		{
+			getTableHeader().setDefaultRenderer(headerRenderer);
+		}
+	}
 
-//FIXME wating for nicks feeback if we want colored headers or not
-//	private void setColumnHeaderRenderers()
-//	{
-//		ColumnHeaderRenderer headerRenderer = new ColumnHeaderRenderer();
-//		for (int i = 0; i < getModel().getColumnCount(); ++i)
-//		{
-//			getTableHeader().setDefaultRenderer(headerRenderer);
-//		}
-//	}
-//
-//	public static class ColumnHeaderRenderer extends DefaultTableCellRenderer
-//	{
-//		public ColumnHeaderRenderer()
-//		{
-//			statusQuestion = new StatusQuestion("");
-//		}
-//
-//		 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
-//		 {
-//			 JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-//			 renderer.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-//			 renderer.setHorizontalAlignment(JLabel.CENTER);
-//			 renderer.setForeground(Color.BLACK);
-//			 renderer.setBackground(table.getTableHeader().getBackground());
-//			 
-//			 if (renderer.getText().equals(statusQuestion.getChoices()[1].getLabel()))
-//				 renderer.setBackground(statusQuestion.getChoices()[1].getColor());
-//			 
-//			 if (renderer.getText().equals(statusQuestion.getChoices()[2].getLabel()))
-//				 renderer.setBackground(statusQuestion.getChoices()[2].getColor());
-//			 
-//			 if (renderer.getText().equals(statusQuestion.getChoices()[3].getLabel()))
-//				 renderer.setBackground(statusQuestion.getChoices()[3].getColor());
-//			 
-//			 if (renderer.getText().equals(statusQuestion.getChoices()[4].getLabel()))
-//				 renderer.setBackground(statusQuestion.getChoices()[4].getColor());
-//			 
-//			 return renderer;
-//		 }
-//
-//		 private StatusQuestion statusQuestion;
-//	}
+	public static class ColumnHeaderRenderer extends DefaultTableCellRenderer
+	{
+		public ColumnHeaderRenderer()
+		{
+			statusQuestion = new StatusQuestion("");
+		}
+
+		 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
+		 {
+			 JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+			 renderer.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+			 renderer.setHorizontalAlignment(JLabel.CENTER);
+			 renderer.setForeground(Color.BLACK);
+			 renderer.setBackground(table.getTableHeader().getBackground());
+
+			 ChoiceItem[] choices = statusQuestion.getChoices();
+			 for (int i = 0; i <  choices.length; ++i)
+			 {
+				 if (renderer.getText().equals(choices[i].getLabel()))
+					 renderer.setBackground(choices[i].getColor());
+			 }
+
+			 return renderer;
+		 }
+
+		 private StatusQuestion statusQuestion;
+	}
 	
 	public class ViabilityTreeCellRenderer extends Renderer
 	{
