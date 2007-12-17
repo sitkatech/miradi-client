@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-public class DiagramFactorColorQuestion extends StaticChoiceQuestion
+public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 {
-	public DiagramFactorColorQuestion(String tag)
+	public DiagramFactorFontColorQuestion(String tag)
 	{
 		super(tag, "Diagram Factor Color", getColorChoices());
 	}
