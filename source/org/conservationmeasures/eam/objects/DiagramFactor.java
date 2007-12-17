@@ -120,7 +120,9 @@ public class DiagramFactor extends BaseObject
 				return true;
 			case ObjectType.TEXT_BOX:
 				return true;
-				
+			case ObjectType.GROUP_BOX:
+				return true;
+			
 			default:
 				return false;
 		}
