@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeGroupBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
@@ -167,6 +168,7 @@ abstract public class BaseObject
 			case ObjectType.TASK:
 				return new Task(objectManager, idAsInt, json);
 			
+			case ObjectType.GROUP_BOX:
 			case ObjectType.TEXT_BOX:
 			case ObjectType.THREAT_REDUCTION_RESULT:
 			case ObjectType.INTERMEDIATE_RESULT:	
@@ -194,6 +196,9 @@ abstract public class BaseObject
 				
 				if (typeString.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
 					return new TextBox(objectManager, new FactorId(idAsInt), json);
+				
+				if (typeString.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
+					return new GroupBox(objectManager, new FactorId(idAsInt), json);
 				
 				throw new RuntimeException("Read unknown node type: " + typeString);
 			}

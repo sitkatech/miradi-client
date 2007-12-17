@@ -89,6 +89,7 @@ import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestChainManager;
 import org.conservationmeasures.eam.project.TestFactorDeleteHelper;
 import org.conservationmeasures.eam.project.TestFactorLinkPool;
+import org.conservationmeasures.eam.project.TestGroupBoxPool;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestIntermediateResultPool;
 import org.conservationmeasures.eam.project.TestProject;
@@ -186,6 +187,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSlidePool.class));
 		suite.addTest(new TestSuite(TestFactorDeleteHelper.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
+		suite.addTest(new TestSuite(TestGroupBoxPool.class));
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));

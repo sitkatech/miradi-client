@@ -87,6 +87,9 @@ public abstract class FactorType
 		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
 			return ObjectType.TEXT_BOX;
 		
+		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
+			return ObjectType.GROUP_BOX;
+		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}
 
