@@ -18,18 +18,18 @@ public class DiagramFactorColorQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Black (Default)", Color.BLACK),
-			new ChoiceItem("DarkGray", "Dark Gray", Color.GRAY.darker()),
-			new ChoiceItem("LightGray", "Light Gray", Color.GRAY.brighter()),
-			new ChoiceItem("Brown", "Brown", BROWN),
-			new ChoiceItem("Tan", "Tan", TAN),
-			new ChoiceItem("White", "White", Color.WHITE),
-			new ChoiceItem("Red", "Red", Color.RED),
-			new ChoiceItem("Pink", "Pink", Color.PINK),
-			new ChoiceItem("Orange", "Orange", Color.ORANGE),
-			new ChoiceItem("Yellow", "Yellow", Color.YELLOW),
-			new ChoiceItem("DarkGreen", "Dark Green", Color.GREEN.darker()),
-			new ChoiceItem("LightGreen", "Light Green", Color.GREEN.brighter()),
-			new ChoiceItem("DarkBlue", "Dark Blue", Color.BLUE.darker()),
+			new ChoiceItem("#4E4848", "Dark Gray", Color.GRAY.darker()),
+			new ChoiceItem("#6D7B8D", "Light Gray", Color.GRAY.brighter()),
+			new ChoiceItem("#C85A17", "Brown", BROWN),
+			new ChoiceItem("#EDE275", "Tan", TAN),
+			new ChoiceItem("#FFFFFF", "White", Color.WHITE),
+			new ChoiceItem("#FF0000", "Red", Color.RED),
+			new ChoiceItem("#FF00FF", "Pink", Color.PINK),
+			new ChoiceItem("#FF8040", "Orange", Color.ORANGE),
+			new ChoiceItem("#FFFF00", "Yellow", Color.YELLOW),
+			new ChoiceItem("#254117", "Dark Green", Color.GREEN.darker()),
+			new ChoiceItem("#5FFB17", "Light Green", Color.GREEN.brighter()),
+			new ChoiceItem("#736AFF", "Dark Blue", Color.BLUE.darker()),
 		};
 	}
 	

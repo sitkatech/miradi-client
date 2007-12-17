@@ -175,10 +175,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	}
 	protected String getAdditionalHtmlFontTags()
 	{
+		String fontColor = node.getDiagramFactor().getFontColor();
+		String formatTags = "";
+		formatTags += "<Font color=" + fontColor + ">";
 		if (!isAliased)
-			return "";
+			return formatTags;
 	
-		return "<i>";
+		return formatTags += "<i>";
 	}
 
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)

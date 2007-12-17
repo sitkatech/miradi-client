@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Set;
@@ -170,9 +169,9 @@ public class DiagramFactor extends BaseObject
 		return fontSize.get();
 	}
 	
-	public Color getFontColor()
+	public String getFontColor()
 	{
-		return new DiagramFactorColorQuestion(TAG_FONT_COLOR).findChoiceByCode(fontColor.get()).getColor();
+		return new DiagramFactorColorQuestion(TAG_FONT_COLOR).findChoiceByCode(fontColor.get()).getCode();
 	}
 	
 	public void setLocation(Point pointToUse)
