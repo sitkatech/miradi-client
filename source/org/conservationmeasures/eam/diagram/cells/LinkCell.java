@@ -69,7 +69,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		if(threatStressRatingRefs.size() == 0)
 			return toolTipText;
 		
-		String[] calculatedRatings = getCalculatedRatingsAsHTML(project, threatStressRatingRefs);
+		String[] calculatedRatings = getRelevantStressesAsHTML(project, threatStressRatingRefs);
 		if (calculatedRatings.length == 0)
 			return toolTipText;
 		
@@ -83,7 +83,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return toolTipText;
 	}
 
-	private String[] getCalculatedRatingsAsHTML(Project project, ORefList threatStressRatingRefs)
+	private String[] getRelevantStressesAsHTML(Project project, ORefList threatStressRatingRefs)
 	{
 		Vector<String> calculatedStrings = new Vector();
 		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
