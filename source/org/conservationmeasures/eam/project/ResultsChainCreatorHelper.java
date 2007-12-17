@@ -171,6 +171,9 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.TEXT_BOX)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
+		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
+			return createNewFactorAndSetLabel(diagramFactor);
+		
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
 	}
 
