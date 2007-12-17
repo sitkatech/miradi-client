@@ -53,9 +53,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
 		addField(createShortStringField(Factor.TAG_SHORT_LABEL));
 		addField(createStringField(Factor.TAG_TEXT));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FONT_COLOR)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
 		
 		if (getFactor().isDirectThreat())
 		{
@@ -78,9 +75,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 			detailIcon = new StrategyIcon();
 		}
-		
-		addField(createMultilineField(Factor.TAG_COMMENT));
-		
+
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FONT_COLOR)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
+		addField(createMultilineField(Factor.TAG_COMMENT));		
 		
 		
 		if(getFactor().isTarget())
