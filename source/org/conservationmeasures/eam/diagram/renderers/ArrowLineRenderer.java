@@ -22,9 +22,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -47,8 +49,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			renderer.lineWidth = 4;
 		}
 
-		//FIXME use some other method to get the label
-		//stressText = getLinkCell().getFactorLink().getStressLabel();
+		stressText = getLinkCell().getRelevantStressNames();
 
 		return renderer;
 	}
@@ -63,9 +64,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		//FIXME temporarly disabled stress bubble
-		//if(isArrowBodyVisible())
-		//	drawStress(g);
+		if(isArrowBodyVisible())
+			drawStress(g);
 		
 		if (linkSelected)
 		{
@@ -309,32 +309,25 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
-
-		//FIXME use some other way to get the stress label
-		//LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		//FactorLink factorLink = thisCell.getFactorLink();
-		//String text = factorLink.getStressLabel();
-		String text = "";
-		if (text == null || text.length()==0)
+		LinkCell thisCell = (LinkCell)viewToUse.getCell();
+		String[] relevantStressNames = thisCell.getRelevantStressNames();
+		if (relevantStressNames.length == 0)
 			return graphBounds;
 		
-		Rectangle2D union = calculateNewBoundsForStress(graphBounds, text);
+		Rectangle2D union = calculateNewBoundsForStress(graphBounds, relevantStressNames);
 		return union;
 	}
-
 	
-	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, String text)
+	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, String[] text)
 	{
 		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, text);
 		Rectangle2D union = graphBounds.createUnion(textBounds);
 		return union;
 	}
-
 	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, String text)
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, String[] text)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
-		
 		Rectangle2D centerStressWithin = linkBounds;
 		PointList points = getLinkCell().getDiagramLink().getBendPoints();
 		if(points.size() > 0)
@@ -343,47 +336,62 @@ public class ArrowLineRenderer extends EdgeRenderer
 			Point point = points.get(centerPointIndex);
 			centerStressWithin = new Rectangle(point, new Dimension(1,1));
 		}
-
-		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
-		Rectangle textBounds = textLayout.getBounds().getBounds();
 		
-		textBounds.width = textBounds.width + 2*CUSHION;
-		textBounds.height = textBounds.height +2*CUSHION;
+		Rectangle multiLineTextBounds = new Rectangle(0, 0, 0, 0); 
+		for (int i = 0; i < text.length; ++i)
+		{
+			if (text[i].length() == 0)
+				continue;
 		
-		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), centerStressWithin.getBounds().getBounds());
-		textBounds.setLocation(upperLeftToDrawText);
-		return textBounds;
+			TextLayout textLayout = new TextLayout(text[i], g2.getFont(), g2.getFontRenderContext());
+			Rectangle singleLineTextBounds = textLayout.getBounds().getBounds();
+			int maxWidth = Math.max(multiLineTextBounds.width, singleLineTextBounds.width);
+		
+			int textHeight = g2.getFontMetrics().getHeight();  
+			int growingHeight = multiLineTextBounds.height + textHeight;
+			multiLineTextBounds.setSize(maxWidth, growingHeight);	
+		}
+		
+		multiLineTextBounds.width = multiLineTextBounds.width + 2*CUSHION;
+		multiLineTextBounds.height = multiLineTextBounds.height +2*CUSHION;
+		
+		Point upperLeftToDrawText = Utilities.center(multiLineTextBounds.getSize(), centerStressWithin.getBounds().getBounds());
+		multiLineTextBounds.setLocation(upperLeftToDrawText);
+		return multiLineTextBounds;
 	}
 
-//FIXME temporarly disabled stress bubble
-//	private void drawStress(Graphics g)
-//	{
-//		if (!getLinkCell().getFactorLink().isTargetLink())
-//			return;
-//		
-//		if(stressText == null || stressText.length() < 1)
-//			return;
-//		
-//		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
-//		if (!layerManager.areStressesVisible())
-//			return;
-//		
-//		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
-//
-//		int arc = 5;
-//
-//		Graphics2D g2 = (Graphics2D)g;
-//		g2.setColor(DiagramConstants.COLOR_STRESS);
-//		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-//		g2.setColor(Color.BLACK);
-//		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-//		g2.drawString(stressText, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
-//	}
+	private void drawStress(Graphics g)
+	{
+		if (!getLinkCell().getFactorLink().isTargetLink())
+			return;
+		
+		if(stressText == null || stressText.length == 0)
+			return;
+		
+		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
+		if (!layerManager.areStressesVisible())
+			return;
+		
+		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
+		if (rectangle == null)
+			return;
+	
+		int arc = 5;
+		Graphics2D g2 = (Graphics2D)g;
+		g2.setColor(DiagramConstants.COLOR_STRESS);
+		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
+		g2.setColor(Color.BLACK);
+		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
+		int textHeight = g2.getFontMetrics().getHeight();
+		for (int i = 0; i < stressText.length; ++i)
+		{
+			g2.drawString(stressText[i], rectangle.x + CUSHION, rectangle.y + (i * textHeight) + textHeight);
+		}
+	}
 	
 	private static final int CUSHION = 5;
 	public static final int ARROW_STUB_LINE = 23253;
 
-	boolean linkSelected;
-	boolean isVisible;
-	String stressText;
+	private boolean linkSelected;
+	private String[] stressText;
 }
