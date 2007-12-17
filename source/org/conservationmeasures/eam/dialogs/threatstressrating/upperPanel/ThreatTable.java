@@ -5,10 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
 
-public class ThreatTable extends TableWithColumnWidthSaver
+public class ThreatTable extends TableWithTwiceRowHeightSize
 {
 	public ThreatTable(MainThreatTableModel tableModel)
 	{
