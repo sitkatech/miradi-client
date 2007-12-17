@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.DiagramFactorColorQuestion;
-import org.conservationmeasures.eam.questions.DiagramFactorFontQuestion;
+import org.conservationmeasures.eam.questions.DiagramFactorFontSizeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
@@ -50,7 +50,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 
 		addField(createShortStringField(Factor.TAG_SHORT_LABEL));
 		addField(createStringField(Factor.TAG_TEXT));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontQuestion(DiagramFactor.TAG_FONT_SIZE)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
 		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorColorQuestion(DiagramFactor.TAG_FONT_COLOR)));
 		if (getFactor().isDirectThreat())
 		{

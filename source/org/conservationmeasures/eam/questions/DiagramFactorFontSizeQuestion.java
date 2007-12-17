@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-//TODO rename to DiagramFactorFontSizeQuestion
-public class DiagramFactorFontQuestion extends StaticChoiceQuestion
+
+public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 {
-	public DiagramFactorFontQuestion(String tag)
+	public DiagramFactorFontSizeQuestion(String tag)
 	{
 		super(tag, "Diagram Factor Font", getFontChoices());
 	}
