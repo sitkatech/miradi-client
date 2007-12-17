@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import java.awt.Color;
 
 public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 {
@@ -17,22 +16,20 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getColorChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Black (Default)", Color.BLACK),
-			new ChoiceItem("#4E4848", "Dark Gray", Color.GRAY.darker()),
-			new ChoiceItem("#6D7B8D", "Light Gray", Color.GRAY.brighter()),
-			new ChoiceItem("#C85A17", "Brown", BROWN),
-			new ChoiceItem("#EDE275", "Tan", TAN),
-			new ChoiceItem("#FFFFFF", "White", Color.WHITE),
-			new ChoiceItem("#FF0000", "Red", Color.RED),
-			new ChoiceItem("#FF00FF", "Pink", Color.PINK),
-			new ChoiceItem("#FF8040", "Orange", Color.ORANGE),
-			new ChoiceItem("#FFFF00", "Yellow", Color.YELLOW),
-			new ChoiceItem("#254117", "Dark Green", Color.GREEN.darker()),
-			new ChoiceItem("#5FFB17", "Light Green", Color.GREEN.brighter()),
-			new ChoiceItem("#736AFF", "Dark Blue", Color.BLUE.darker()),
+			new ChoiceItem("", "Black (Default)"),
+			new ChoiceItem("#4E4848", "Dark Gray"),
+			new ChoiceItem("#6D7B8D", "Light Gray"),
+			new ChoiceItem("#C85A17", "Brown"),
+			new ChoiceItem("#EDE275", "Tan"),
+			new ChoiceItem("#FFFFFF", "White"),
+			new ChoiceItem("#FF0000", "Red"),
+			new ChoiceItem("#FF00FF", "Pink"),
+			new ChoiceItem("#FF8040", "Orange"),
+			new ChoiceItem("#FFFF00", "Yellow"),
+			new ChoiceItem("#254117", "Dark Green"),
+			new ChoiceItem("#5FFB17", "Light Green"),
+			new ChoiceItem("#0000CC", "Dark Blue"),
+			new ChoiceItem("#00CCFF", "Light Blue"),
 		};
 	}
-	
-	public static final Color BROWN = new Color(180, 90, 0);
-	public static final Color TAN = new Color(230, 150, 0);
 }
