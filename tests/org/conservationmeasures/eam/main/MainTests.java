@@ -107,6 +107,7 @@ import org.conservationmeasures.eam.project.TestTextBoxPool;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.project.TestThreatReductionResultPool;
 import org.conservationmeasures.eam.questions.TestChoiceItem;
+import org.conservationmeasures.eam.questions.TestChoiceQuestion;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
@@ -188,6 +189,7 @@ public class MainTests extends TestCase
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));
+		suite.addTest(new TestSuite(TestChoiceQuestion.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));
