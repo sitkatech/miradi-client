@@ -199,8 +199,8 @@ public class DiagramFactor extends BaseObject
 		commands.add(setFontColorCommand);
 
 		String fontSizeAsString = json.optString(TAG_FONT_SIZE);
-		CommandSetObjectData setSizeColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
-		commands.add(setSizeColorCommand);
+		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
+		commands.add(setFontSizeCommand);
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
