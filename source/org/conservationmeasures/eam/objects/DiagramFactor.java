@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.DiagramFactorColorQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -171,7 +170,7 @@ public class DiagramFactor extends BaseObject
 	
 	public String getFontColor()
 	{
-		return new DiagramFactorColorQuestion(TAG_FONT_COLOR).findChoiceByCode(fontColor.get()).getCode();
+		return fontColor.get();
 	}
 	
 	public void setLocation(Point pointToUse)
@@ -194,6 +193,14 @@ public class DiagramFactor extends BaseObject
 		String locationAsString = json.getString(DiagramFactor.TAG_LOCATION);
 		CommandSetObjectData setLocationCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_LOCATION, locationAsString);
 		commands.add(setLocationCommand);
+		
+		String fontColorAsString = json.optString(TAG_FONT_COLOR);
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_COLOR, fontColorAsString);
+		commands.add(setFontColorCommand);
+
+		String fontSizeAsString = json.optString(TAG_FONT_SIZE);
+		CommandSetObjectData setSizeColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
+		commands.add(setSizeColorCommand);
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
