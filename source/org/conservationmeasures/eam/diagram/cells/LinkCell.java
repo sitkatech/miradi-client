@@ -69,16 +69,31 @@ public class LinkCell extends EAMGraphCell implements Edge
 		if(threatStressRatingRefs.size() == 0)
 			return toolTipText;
 		
+		String[] calculatedRatings = getCalculatedRatingsAsHTML(project, threatStressRatingRefs);
+		if (calculatedRatings.length == 0)
+			return toolTipText;
+		
 		String header = "Stresses:";
 		toolTipText += "<hr>" + header + "<ul>";
+		for (int i = 0; i < calculatedRatings.length; ++i)
+		{
+			toolTipText += calculatedRatings[i];
+		}
+
+		return toolTipText;
+	}
+
+	private String[] getCalculatedRatingsAsHTML(Project project, ORefList threatStressRatingRefs)
+	{
+		Vector<String> calculatedStrings = new Vector();
 		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(project, threatStressRatingRefs.get(i));
 			Stress stress = Stress.find(project, threatStressRating.getStressRef());
-			toolTipText += "<li>" + stress.toString() + "</li>";
+			if (threatStressRating.calculateThreatRating() > 0)
+				calculatedStrings.add("<li>" + stress.toString() + "</li>");
 		}
-		
-		return toolTipText;
+		return calculatedStrings.toArray(new String[0]);
 	}
 	
 	public int[] getSelectedBendPointIndexes()
