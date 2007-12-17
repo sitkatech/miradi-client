@@ -16,11 +16,13 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getFontChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Medium (Default"),
-				new ChoiceItem("-4", "Very Small"),
-				new ChoiceItem("-2", "Small"),
-				new ChoiceItem("+2", "Large"),
-				new ChoiceItem("+4", "Very Large"),
+				new ChoiceItem("", "Medium (Default)"),
+				new ChoiceItem("-3", "Smallest"),
+				new ChoiceItem("-2", "Very Small"),
+				new ChoiceItem("-1", "Small"),
+				new ChoiceItem("+1", "Large"),
+				new ChoiceItem("+2", "Very Large"),
+				new ChoiceItem("+3", "Largest"),
 		};
 	}
 }
