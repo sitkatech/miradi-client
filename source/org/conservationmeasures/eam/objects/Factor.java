@@ -207,6 +207,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.TEXT_BOX)
 			return true;
 		
+		if (typeToUse == ObjectType.GROUP_BOX)
+			return true;
+		
 		return false;
 	}
 
