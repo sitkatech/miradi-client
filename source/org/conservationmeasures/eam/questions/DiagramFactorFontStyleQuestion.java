@@ -18,6 +18,8 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Plain (Default)"),
 			new ChoiceItem("<B>", "Bold"),
+			new ChoiceItem("<U>", "Underline"),
+			new ChoiceItem("<S>", "Strike through"),
 		};
 	}
 }
