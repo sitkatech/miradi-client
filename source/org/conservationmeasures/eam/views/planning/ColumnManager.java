@@ -75,8 +75,8 @@ public class ColumnManager
 	public static CodeList getStrategyColumns()
 	{
 		String[] list = {
-				Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE,
-				Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+				Strategy.PSEUDO_TAG_RATING_SUMMARY,
+				Strategy.TAG_TAXONOMY_CODE,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 //				Task.PSEUDO_TAG_TASK_TOTAL, 
@@ -99,8 +99,8 @@ public class ColumnManager
 	public static CodeList getIndicatorColumns()
 	{
 		String[] list = {
-				Indicator.PSEUDO_TAG_PRIORITY_VALUE,
-				Indicator.PSEUDO_TAG_STATUS_VALUE,
+				Indicator.TAG_PRIORITY,
+				Indicator.TAG_STATUS,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 //				Task.PSEUDO_TAG_TASK_TOTAL, 
