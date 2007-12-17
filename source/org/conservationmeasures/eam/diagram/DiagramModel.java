@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramCauseCell;
+import org.conservationmeasures.eam.diagram.cells.DiagramGroupBoxCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramIntermediateResultCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
@@ -48,6 +49,7 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -134,6 +136,9 @@ public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.TEXT_BOX)
 			return new DiagramTextBoxCell((TextBox)factor, diagramFactor);
+		
+		if (factorType == ObjectType.GROUP_BOX)
+			return new DiagramGroupBoxCell((GroupBox)factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}
