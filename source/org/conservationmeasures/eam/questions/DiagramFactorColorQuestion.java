@@ -17,7 +17,7 @@ public class DiagramFactorColorQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getColorChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified", Color.BLACK),
+			new ChoiceItem("", "Black (Default)", Color.BLACK),
 			new ChoiceItem("DarkGray", "Dark Gray", Color.GRAY.darker()),
 			new ChoiceItem("LightGray", "Light Gray", Color.GRAY.brighter()),
 			new ChoiceItem("Brown", "Brown", BROWN),
@@ -26,7 +26,7 @@ public class DiagramFactorColorQuestion extends StaticChoiceQuestion
 			new ChoiceItem("Red", "Red", Color.RED),
 			new ChoiceItem("Pink", "Pink", Color.PINK),
 			new ChoiceItem("Orange", "Orange", Color.ORANGE),
-			new ChoiceItem("Yello", "Yellow", Color.YELLOW),
+			new ChoiceItem("Yellow", "Yellow", Color.YELLOW),
 			new ChoiceItem("DarkGreen", "Dark Green", Color.GREEN.darker()),
 			new ChoiceItem("LightGreen", "Light Green", Color.GREEN.brighter()),
 			new ChoiceItem("DarkBlue", "Dark Blue", Color.BLUE.darker()),
