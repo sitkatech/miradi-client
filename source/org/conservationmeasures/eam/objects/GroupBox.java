@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeGroupBox;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -16,7 +15,7 @@ public class GroupBox extends Factor
 {
 	public GroupBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new FactorTypeGroupBox());
+		super(objectManager, idToUse, Factor.TYPE_GROUP_BOX);
 		clear();
 	}
 		
