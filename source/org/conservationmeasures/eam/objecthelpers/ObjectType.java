@@ -44,7 +44,8 @@ public class ObjectType
 	public static final int MEASUREMENT = 32;
 	public static final int STRESS = 33;
 	public static final int THREAT_STRESS_RATING = 34;
+	public static final int GROUP_BOX = 35;
 	
-	public static final int OBJECT_TYPE_COUNT = 35;
+	public static final int OBJECT_TYPE_COUNT = 36;
 }
 

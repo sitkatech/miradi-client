@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
+import org.conservationmeasures.eam.objectpools.GroupBoxPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
@@ -265,7 +266,12 @@ public class Project
 	{
 		return objectManager.getPlanningConfigurationPool();
 	}
-
+	
+	public GroupBoxPool getGroupBoxPool()
+	{
+		return (GroupBoxPool) getPool(ObjectType.GROUP_BOX);
+	}
+	
 	public LayerManager getLayerManager()
 	{
 		return layerManager;

@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeGroupBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
@@ -322,6 +323,9 @@ abstract public class Factor extends BaseObject
 		
 		else if (objectType == ObjectType.TEXT_BOX)
 			return new TextBox(objectManager, idToCreate);
+	
+		else if (objectType == ObjectType.GROUP_BOX)
+			return new GroupBox(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
@@ -472,6 +476,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
 	}
 
+	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
 	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();
 	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
