@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -48,6 +49,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, factorToEdit.getWrappedORef());
 		currentDiagramFactor = factorToEdit;
 
+		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
 		addField(createShortStringField(Factor.TAG_SHORT_LABEL));
 		addField(createStringField(Factor.TAG_TEXT));
 		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
