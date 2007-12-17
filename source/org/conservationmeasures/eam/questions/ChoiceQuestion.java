@@ -54,6 +54,6 @@ public abstract class ChoiceQuestion
 	public static final Color COLOR_OK = LIGHT_GREEN;
 	public static final Color COLOR_GREAT = DARK_GREEN;
 	
-	String tag;
-	String label;
+	private String tag;
+	private String label;
 }
