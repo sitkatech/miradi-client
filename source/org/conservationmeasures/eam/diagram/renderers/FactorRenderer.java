@@ -176,6 +176,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	protected String getAdditionalHtmlFontTags()
 	{
 		String formatted = "<Font " + getDiagramFactorFontSize() + " " + getDiagramFactorFontColor() + ">";
+		formatted += getDiagramFactorFontStyle();
 		if (isAliased)
 			return formatted += "<i>";
 	
@@ -198,6 +199,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			return fontColor = "color=" + fontColor;
 		
 		return fontColor;
+	}
+	
+	private String getDiagramFactorFontStyle()
+	{
+		String fontStyle = node.getDiagramFactor().getFontStyle();
+		if (fontStyle.length() != 0)
+			return fontStyle;
+		
+		return fontStyle;
 	}
 
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)

@@ -175,6 +175,11 @@ public class DiagramFactor extends BaseObject
 		return fontColor.get();
 	}
 	
+	public String getFontStyle()
+	{
+		return fontStyle.get();
+	}
+	
 	public void setLocation(Point pointToUse)
 	{
 		location.setPoint(pointToUse);
@@ -204,6 +209,10 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_COLOR, fontColorAsString);
 		commands.add(setFontColorCommand);
 
+		String fontStyleAsString = json.optString(TAG_FONT_STYLE);
+		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_STYLE, fontStyleAsString);
+		commands.add(setFontStyleCommand);
+		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
@@ -224,6 +233,9 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_COLOR, fontColor.get());
 		commands.add(setFontColorCommand);
 		
+		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, fontStyle.get());
+		commands.add(setFontStyleCommand);
+		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
@@ -241,12 +253,14 @@ public class DiagramFactor extends BaseObject
 		underlyingObjectRef = new ORefData();
 		fontSize = new ChoiceData();
 		fontColor = new ChoiceData();
+		fontStyle = new ChoiceData();
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
 		addField(TAG_WRAPPED_REF, underlyingObjectRef);
 		addField(TAG_FONT_SIZE, fontSize);
 		addField(TAG_FONT_COLOR, fontColor);
+		addField(TAG_FONT_STYLE, fontStyle);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -254,6 +268,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
 	public static final String TAG_FONT_SIZE = "FontSize";
 	public static final String TAG_FONT_COLOR = "FontColor";
+	public static final String TAG_FONT_STYLE = "FontStyle";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
@@ -262,4 +277,5 @@ public class DiagramFactor extends BaseObject
 	private ORefData underlyingObjectRef;
 	private ChoiceData fontSize;
 	private ChoiceData fontColor;
+	private ChoiceData fontStyle;
 }
