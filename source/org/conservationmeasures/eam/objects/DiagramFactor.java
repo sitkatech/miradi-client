@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Set;
@@ -14,6 +15,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DimensionData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objectdata.PointData;
@@ -22,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.DiagramFactorColorQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -162,6 +165,16 @@ public class DiagramFactor extends BaseObject
 		return location.getPoint();
 	}
 	
+	public String getFontSize()
+	{
+		return fontSize.get();
+	}
+	
+	public Color getFontColor()
+	{
+		return new DiagramFactorColorQuestion(TAG_FONT_COLOR).findChoiceByCode(fontColor.get()).getColor();
+	}
+	
 	public void setLocation(Point pointToUse)
 	{
 		location.setPoint(pointToUse);
@@ -212,19 +225,27 @@ public class DiagramFactor extends BaseObject
 		size = new DimensionData();
 		location = new PointData();
 		underlyingObjectRef = new ORefData();
+		fontSize = new ChoiceData();
+		fontColor = new ChoiceData();
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
 		addField(TAG_WRAPPED_REF, underlyingObjectRef);
+		addField(TAG_FONT_SIZE, fontSize);
+		addField(TAG_FONT_COLOR, fontColor);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
+	public static final String TAG_FONT_SIZE = "FontSize";
+	public static final String TAG_FONT_COLOR = "FontColor";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
 	private DimensionData size;
 	private PointData location;
 	private ORefData underlyingObjectRef;
+	private ChoiceData fontSize;
+	private ChoiceData fontColor;
 }
