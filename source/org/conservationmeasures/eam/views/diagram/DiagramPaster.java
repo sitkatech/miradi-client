@@ -673,6 +673,7 @@ abstract public class DiagramPaster
 				ObjectType.FUNDING_SOURCE,
 				ObjectType.STRESS,
 				ObjectType.THREAT_STRESS_RATING,
+				ObjectType.GROUP_BOX,
 				};
 	}
 	
@@ -693,6 +694,7 @@ abstract public class DiagramPaster
 				ObjectType.FUNDING_SOURCE,
 				ObjectType.STRESS,
 				ObjectType.THREAT_STRESS_RATING,
+				ObjectType.GROUP_BOX,
 				};
 	}
 	
