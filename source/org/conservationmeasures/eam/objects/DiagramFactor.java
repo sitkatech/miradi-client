@@ -193,15 +193,15 @@ public class DiagramFactor extends BaseObject
 		String locationAsString = json.getString(DiagramFactor.TAG_LOCATION);
 		CommandSetObjectData setLocationCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_LOCATION, locationAsString);
 		commands.add(setLocationCommand);
-		
-		String fontColorAsString = json.optString(TAG_FONT_COLOR);
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_COLOR, fontColorAsString);
-		commands.add(setFontColorCommand);
 
 		String fontSizeAsString = json.optString(TAG_FONT_SIZE);
 		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
 		commands.add(setFontSizeCommand);
 		
+		String fontColorAsString = json.optString(TAG_FONT_COLOR);
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_COLOR, fontColorAsString);
+		commands.add(setFontColorCommand);
+
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
