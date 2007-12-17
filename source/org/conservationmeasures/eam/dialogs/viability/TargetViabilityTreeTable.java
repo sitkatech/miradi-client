@@ -110,14 +110,17 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 			 JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			 renderer.setBorder(UIManager.getBorder("TableHeader.cellBorder"));
 			 renderer.setHorizontalAlignment(JLabel.CENTER);
-			 renderer.setForeground(Color.BLACK);
 			 renderer.setBackground(table.getTableHeader().getBackground());
-
+			 renderer.setForeground(table.getTableHeader().getForeground());
+			
 			 ChoiceItem[] choices = statusQuestion.getChoices();
 			 for (int i = 0; i <  choices.length; ++i)
 			 {
 				 if (renderer.getText().equals(choices[i].getLabel()))
+				 {
 					 renderer.setBackground(choices[i].getColor());
+					 renderer.setForeground(Color.BLACK);
+				 }
 			 }
 
 			 return renderer;
