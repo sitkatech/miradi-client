@@ -65,11 +65,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
 		
-		ORefList threatStressRatingRefs = getFactorLink().getThreatStressRatingRefs();	
-		if(threatStressRatingRefs.size() == 0)
-			return toolTipText;
-		
-		String[] calculatedRatings = getRelevantStressesAsHTML(project, threatStressRatingRefs);
+		String[] calculatedRatings = getRelevantStressesAsHTML();
 		if (calculatedRatings.length == 0)
 			return toolTipText;
 		
@@ -83,9 +79,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return toolTipText;
 	}
 
-	private String[] getRelevantStressesAsHTML(Project project, ORefList threatStressRatingRefs)
+	private String[] getRelevantStressesAsHTML()
 	{
-		String[] stressNames = getRelevantStressNames(project, threatStressRatingRefs);
+		String[] stressNames = getRelevantStressNames();
 		String[] StressNamesAsHTML = new String[stressNames.length];
 		for (int i = 0; i < stressNames.length; ++i)
 		{
@@ -95,9 +91,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return StressNamesAsHTML;
 	}
 	
-	public String[] getRelevantStressNames(Project project, ORefList threatStressRatingRefs)
+	public String[] getRelevantStressNames()
 	{
+		Project project = getFactorLink().getProject();
 		Vector<String> stressNames = new Vector();
+		ORefList threatStressRatingRefs = getFactorLink().getThreatStressRatingRefs();
 		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(project, threatStressRatingRefs.get(i));
