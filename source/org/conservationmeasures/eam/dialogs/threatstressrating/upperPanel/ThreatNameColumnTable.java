@@ -6,10 +6,9 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 
-//TODO rename TheartNameColumnTable
-public class ThreatTable extends TableWithTwiceRowHeightSize
+public class ThreatNameColumnTable extends TableWithTwiceRowHeightSize
 {
-	public ThreatTable(MainThreatTableModel tableModel)
+	public ThreatNameColumnTable(MainThreatTableModel tableModel)
 	{
 		super(tableModel);
 	}
