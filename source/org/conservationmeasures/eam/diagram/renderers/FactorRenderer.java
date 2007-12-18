@@ -175,21 +175,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	}
 	protected String getAdditionalHtmlFontTags()
 	{
-		String formatted = "<Font " + getDiagramFactorFontSize() + " " + getDiagramFactorFontColor() + ">";
+		String formatted = "<Font "+ getDiagramFactorFontColor() + ">";
 		formatted += getDiagramFactorFontStyle();
 		if (isAliased)
 			return formatted += "<i>";
 	
 		return formatted;
-	}
-	
-	private String getDiagramFactorFontSize()
-	{
-		String fontSize = node.getDiagramFactor().getFontSize();
-		if (fontSize.length() != 0)
-			return fontSize = "size=\"" + fontSize + "\"";
-		
-		return fontSize;
 	}
 	
 	private String getDiagramFactorFontColor()
