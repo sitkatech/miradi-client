@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.GroupBoxIcon;
 import org.conservationmeasures.eam.icons.IntermediateResultIcon;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.TargetIcon;
@@ -40,6 +41,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -178,6 +180,9 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		
 		if (factor.isTextBox())
 			return new PanelTitleLabel(EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME), new TextBoxIcon(), UiLabel.LEADING);
+		
+		if (factor.isGroupBox())
+			return new PanelTitleLabel(EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME), new GroupBoxIcon(), UiLabel.LEADING);
 		
 		throw new RuntimeException("Unknown factor type");
 	}
