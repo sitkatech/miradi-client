@@ -189,6 +189,11 @@ public class ProjectMetadata extends BaseObject
 		return Integer.parseInt(sizeAsString);
 	}
 	
+	public String getDiagramFontFamily()
+	{
+		return diagramFontFamily.get();
+	}
+	
 	public String getThreatRatingMode()
 	{
 		return threatRatingMode.get();
