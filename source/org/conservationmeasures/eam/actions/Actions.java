@@ -335,6 +335,7 @@ public class Actions
 		registerAction(new ActionShowConceptualModel(mainWindow));
 		registerAction(new ActionCreateOrShowResultsChain(mainWindow));
 		registerAction(new ActionInsertTextBox(mainWindow));
+		registerAction(new ActionInsertGroupBox(mainWindow));
 		registerAction(new ActionCreateConceptualModel(mainWindow));
 		registerAction(new ActionDeleteConceptualModel(mainWindow));
 		registerAction(new ActionCreatePlanningViewConfiguration(mainWindow));

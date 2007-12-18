@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertGroupBox;
 import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -107,6 +108,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
 		

@@ -213,6 +213,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
+	public boolean isGroupBox()
+	{
+		return false;
+	}
+	
 	public boolean isTextBox()
 	{
 		return false;

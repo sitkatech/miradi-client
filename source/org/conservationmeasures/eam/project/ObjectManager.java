@@ -64,6 +64,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -328,6 +329,10 @@ public class ObjectManager
 			BaseObject textBox = getPool(TextBox.getObjectType()).findObject(objectId);
 			if (textBox != null)
 				return textBox;
+
+			BaseObject groupBox = getPool(GroupBox.getObjectType()).findObject(objectId);
+			if (groupBox != null)
+				return groupBox;
 			
 			return null;
 		}

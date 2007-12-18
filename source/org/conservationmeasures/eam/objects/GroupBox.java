@@ -39,6 +39,11 @@ public class GroupBox extends Factor
 		return ObjectType.GROUP_BOX;
 	}
 	
+	public boolean isGroupBox()
+	{
+		return true;
+	}
+	
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
