@@ -56,6 +56,7 @@ import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertGroupBox;
 import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -133,6 +134,7 @@ import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
@@ -320,6 +322,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
+		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
 		

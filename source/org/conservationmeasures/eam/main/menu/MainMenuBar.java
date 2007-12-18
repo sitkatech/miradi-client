@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertGroupBox;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
@@ -181,6 +182,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTextBox.class), KeyEvent.VK_X));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
 		
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);

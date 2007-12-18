@@ -260,6 +260,11 @@ abstract public class FactorCell extends EAMGraphCell
 
 	abstract public Color getColor();
 
+	public boolean isGroupBox()
+	{
+		return underlyingObject.isGroupBox();
+	}
+	
 	public boolean isTextBox()
 	{
 		return underlyingObject.isTextBox();

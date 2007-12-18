@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.diagram.FactorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.diagram.GroupBoxPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.diagram.ProjectScopePanel;
 import org.conservationmeasures.eam.dialogs.diagram.TextBoxPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -97,6 +98,8 @@ public class PropertiesDoer extends LocationDoer
 		DiagramView view = (DiagramView)getView();
 		if (isTextBoxFactor(diagramFactor))
 			doTextBoxProperties(diagramFactor);
+		else if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
+			doGroupBoxProperties(diagramFactor);
 		else
 			view.showNodeProperties(diagramFactor, tabToStartOn);
 	}
@@ -108,6 +111,13 @@ public class PropertiesDoer extends LocationDoer
 		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 
+	private void doGroupBoxProperties(DiagramFactor diagramFactor)
+	{
+		GroupBoxPropertiesPanel panel = new GroupBoxPropertiesPanel(getProject(), diagramFactor);
+		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		getView().showFloatingPropertiesDialog(propertiesDialog);
+	}
+	
 	// TODO: The tab should probably be computed elsewhere?
 	private int getTabToStartOn(FactorCell factorCell, Point screenPoint)
 	{

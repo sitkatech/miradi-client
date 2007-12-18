@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertGroupBox;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Objective;
@@ -86,6 +88,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		createCheckBox(Strategy.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
+		createCheckBox(GroupBox.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
 		createCheckBox(FactorLink.OBJECT_NAME_TARGETLINK);
@@ -121,6 +124,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_STRESS, new StressIcon());
 		addButtonLineWithCheckBox(jpanel, TextBox.getObjectType(), TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
+		addButtonLineWithCheckBox(jpanel, GroupBox.getObjectType(), GroupBox.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 		
 		return jpanel;
 	}
