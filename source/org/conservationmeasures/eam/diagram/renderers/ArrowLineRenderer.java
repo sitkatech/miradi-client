@@ -9,6 +9,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -37,12 +38,9 @@ import org.martus.swing.Utilities;
 public class ArrowLineRenderer extends EdgeRenderer
 {
 
-	public Component getRendererComponent(JGraph graphToUse, CellView cellView, 
-					boolean sel, boolean hasFocus, boolean previewMode)
+	public Component getRendererComponent(JGraph graphToUse, CellView cellView, boolean sel, boolean hasFocus, boolean previewMode)
 	{
-		ArrowLineRenderer renderer = 
-			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
-		
+		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
@@ -328,6 +326,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, String[] text)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
+		g2.setFont(creatFont());
 		Rectangle2D centerStressWithin = linkBounds;
 		PointList points = getLinkCell().getDiagramLink().getBendPoints();
 		if(points.size() > 0)
@@ -368,7 +367,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(stressText == null || stressText.length == 0)
 			return;
 		
-		LayerManager layerManager = getLinkCell().getFactorLink().getProject().getLayerManager();
+		LayerManager layerManager = getProject().getLayerManager();
 		if (!layerManager.areStressesVisible())
 			return;
 		
@@ -378,6 +377,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	
 		int arc = 5;
 		Graphics2D g2 = (Graphics2D)g;
+		g2.setFont(creatFont());
 		g2.setColor(DiagramConstants.COLOR_STRESS);
 		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
 		g2.setColor(Color.BLACK);
@@ -387,6 +387,26 @@ public class ArrowLineRenderer extends EdgeRenderer
 		{
 			g2.drawString(stressText[i], rectangle.x + CUSHION, rectangle.y + (i * textHeight) + textHeight);
 		}
+	}
+
+	private Font creatFont()
+	{
+		return new Font(getSystemFontFamily(), Font.PLAIN, getSystemFontSize());
+	}
+
+	private Project getProject()
+	{
+		return getLinkCell().getFactorLink().getProject();
+	}
+
+	private String getSystemFontFamily()
+	{
+		return getProject().getMetadata().getDiagramFontFamily();
+	}
+
+	private int getSystemFontSize()
+	{
+		return getProject().getMetadata().getDiagramFontSize();
 	}
 	
 	private static final int CUSHION = 5;
