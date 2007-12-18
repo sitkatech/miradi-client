@@ -342,6 +342,8 @@ public class Actions
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
+		registerAction(new ActionGroupBoxInsertFactor(mainWindow));
+		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
