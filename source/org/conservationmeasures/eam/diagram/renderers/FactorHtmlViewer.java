@@ -10,6 +10,7 @@ import java.awt.Color;
 import javax.swing.text.html.StyleSheet;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -52,10 +53,34 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public int getFontSize()
 	{
+		int systemFontSize = getSystemFontSize();
+		int diagramFactorFontSize = getDiagramFactorFontSize();
+		return systemFontSize + diagramFactorFontSize;
+	}
+
+	private int getSystemFontSize()
+	{
 		String sizeAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_SIZE);
 		if(sizeAsString.length() == 0)
 			return 0;
+		
 		return new Integer(sizeAsString).intValue();
+	}
+	
+	private int getDiagramFactorFontSize()
+	{
+		if (graphCell == null)
+			return 0;
+		
+		if (!graphCell.isFactor())
+			return 0;
+		
+		FactorCell factorCell = (FactorCell) graphCell;
+		String fontSizeAsString = factorCell.getDiagramFactor().getFontSize();
+		if (fontSizeAsString.length() == 0)
+			return 0;
+		
+		return Integer.parseInt(fontSizeAsString);
 	}
 
 	private Project getProject()
