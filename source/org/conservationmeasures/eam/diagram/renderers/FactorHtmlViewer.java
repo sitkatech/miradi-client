@@ -54,8 +54,18 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	public int getFontSize()
 	{
 		int systemFontSize = getSystemFontSize();
-		int diagramFactorFontSize = getDiagramFactorFontSize();
-		return systemFontSize + diagramFactorFontSize;
+		float diagramFactorFontSize = getDiagramFactorFontSize();
+		if (systemFontSize == 0 && diagramFactorFontSize == 0)
+			return 0;
+		
+		if (systemFontSize == 0)
+			systemFontSize = 11;
+		
+		if (diagramFactorFontSize == 0)
+			return systemFontSize;
+
+		int scaledFontSize = (int)(systemFontSize * diagramFactorFontSize);
+		return scaledFontSize;
 	}
 
 	private int getSystemFontSize()
@@ -67,20 +77,20 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		return new Integer(sizeAsString).intValue();
 	}
 	
-	private int getDiagramFactorFontSize()
+	private float getDiagramFactorFontSize()
 	{
 		if (graphCell == null)
-			return 0;
+			return 0.0f;
 		
 		if (!graphCell.isFactor())
-			return 0;
+			return 0.0f;
 		
 		FactorCell factorCell = (FactorCell) graphCell;
 		String fontSizeAsString = factorCell.getDiagramFactor().getFontSize();
 		if (fontSizeAsString.length() == 0)
-			return 0;
+			return 0.0f;
 		
-		return Integer.parseInt(fontSizeAsString);
+		return Float.parseFloat(fontSizeAsString);
 	}
 
 	private Project getProject()
