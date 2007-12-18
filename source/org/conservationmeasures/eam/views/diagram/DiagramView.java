@@ -52,6 +52,8 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
+import org.conservationmeasures.eam.actions.ActionGroupBoxInsertFactor;
+import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
@@ -134,6 +136,8 @@ import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
+import org.conservationmeasures.eam.views.diagram.doers.GroupBoxInsertFactorDoer;
+import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
@@ -325,6 +329,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
+		addDoerToMap(ActionGroupBoxInsertFactor.class, new GroupBoxInsertFactorDoer());
+		addDoerToMap(ActionGroupBoxRemoveFactor.class, new GroupBoxRemoveFactorDoer());
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
 		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());
