@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatGridPanel;
 
 abstract public class TableWithTwiceRowHeightSize extends TableWithColumnWidthSaver
 {
@@ -15,6 +16,6 @@ abstract public class TableWithTwiceRowHeightSize extends TableWithColumnWidthSa
 	{
 		super(model);
 		
-		setRowHeight(getRowHeight() * 2);
+		setRowHeight(ThreatGridPanel.ROW_HEIGHT);
 	}
 }

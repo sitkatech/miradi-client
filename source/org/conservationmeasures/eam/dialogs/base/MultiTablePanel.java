@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatGridPanel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiScrollPane;
 
@@ -140,10 +141,9 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		public Dimension getPreferredSize()
 		{
 			Dimension preferredSize = content.getPreferredSize();
-			return new Dimension(preferredSize.width, FIXED_HEIGHT);
+			return new Dimension(preferredSize.width, ThreatGridPanel.ROW_HEIGHT);
 		}
-			
-		private final static int FIXED_HEIGHT = 35;
+		
 		private Component content;
 	}
 	
