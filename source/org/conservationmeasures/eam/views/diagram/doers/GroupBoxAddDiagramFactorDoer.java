@@ -16,7 +16,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!super.isAvailable())
 			return false;
 		
-		if (!containsOnlyOneGroupBox())
+		if (!isAtLeastOneGroupBoxSelected())
 			return false;
 		
 		return true;
