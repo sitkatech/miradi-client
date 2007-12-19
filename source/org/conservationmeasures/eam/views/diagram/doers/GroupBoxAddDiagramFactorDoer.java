@@ -25,7 +25,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors();
-		DiagramFactor groupBoxDiagramFactor = getGroupBox();
+		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);

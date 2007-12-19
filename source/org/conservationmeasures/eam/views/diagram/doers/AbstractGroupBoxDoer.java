@@ -63,7 +63,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return extractSelectedGroupBoxes().size() == 1;		
 	}
 	
-	protected DiagramFactor getGroupBox()
+	protected DiagramFactor getSingleSelectedGroupBox()
 	{
 		final int FIRST_INDEX = 0;
 		return extractSelectedGroupBoxes().get(FIRST_INDEX);
