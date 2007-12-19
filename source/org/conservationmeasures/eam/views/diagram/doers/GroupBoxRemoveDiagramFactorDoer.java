@@ -36,8 +36,13 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 		for (int i = 0; i < selectedCells.length; ++i)
 		{ 
 			ORef groupBoxDiagramFactorRef = selectedCells[i].getDiagramFactor().getOwningGroupBox();
-			if (!groupBoxDiagramFactorRefs.contains(groupBoxDiagramFactorRef))
-				groupBoxDiagramFactorRefs.add(groupBoxDiagramFactorRef);
+			if (groupBoxDiagramFactorRef.isInvalid())
+				continue;
+			
+			if (groupBoxDiagramFactorRefs.contains(groupBoxDiagramFactorRef))
+				continue;
+			
+			groupBoxDiagramFactorRefs.add(groupBoxDiagramFactorRef);
 		}
 		
 		return groupBoxDiagramFactorRefs;
