@@ -803,12 +803,8 @@ public class Project
 		}
 	}
 
-	private void executeWithoutRecording(Command command) throws CommandFailedException
+	public void executeWithoutRecording(Command command) throws CommandFailedException
 	{
-		if(firingCommandExecutedEvents)
-		{
-			EAM.internalError(EAM.text("Attempt to execute command from command listener"));
-		}
 		try 
 		{
 			EAM.logVerbose("Executing: " + command.toString());
@@ -823,6 +819,11 @@ public class Project
 	
 	public void recordCommand(Command command)
 	{
+		if(firingCommandExecutedEvents)
+		{
+			EAM.internalError(EAM.text("Attempt to execute command from command listener"));
+		}
+		
 		try
 		{
 			undoRedoState.pushUndoableCommand(command);
