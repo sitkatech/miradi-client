@@ -38,7 +38,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 		model = modelToUse;
 		
 		getProject().addCommandExecutedListener(this);
-		autoSurroundTargets();
 		
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -95,6 +94,9 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	
 	public void autoSurroundTargets()
 	{
+		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
+			return;
+			
 		Rectangle2D targetBounds = computeCurrentChildrenBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
@@ -161,8 +163,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
 	}
-
-	
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
@@ -181,7 +181,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 
 	public void factorMoved(DiagramModelEvent event)
 	{
-		autoSurroundTargets();
 	}
 
 	public void linkAdded(DiagramModelEvent event)
@@ -194,6 +193,8 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+			autoSurroundTargets();
 	}
 
 	private final static int SIDE_MARGIN = 5;
