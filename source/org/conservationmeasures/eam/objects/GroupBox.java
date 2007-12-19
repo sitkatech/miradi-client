@@ -6,9 +6,11 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class GroupBox extends Factor
@@ -57,6 +59,16 @@ public class GroupBox extends Factor
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
+	}
+	
+	public static GroupBox find(ObjectManager objectManager, ORef groupBoxRef)
+	{
+		return (GroupBox) objectManager.findObject(groupBoxRef);
+	}
+	
+	public static GroupBox find(Project project, ORef groupBoxRef)
+	{
+		return find(project.getObjectManager(), groupBoxRef);
 	}
 	
 	public static final String OBJECT_NAME = "GroupBox";
