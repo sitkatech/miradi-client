@@ -15,8 +15,10 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.views.diagram.LocationDoer;
 
 abstract public class AbstractGroupBoxDoer extends LocationDoer
@@ -99,11 +101,21 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		{
 			FactorCell factorCell = selected[i];
 			int type = factorCell.getWrappedType();
-			if (type == Target.getObjectType() || type == Cause.getObjectType() || type == Strategy.getObjectType())
+			if (isAcceptableDiagramFactor(type))
+				
 				nonGroupBoxDiagramFactorRefs.add(factorCell.getDiagramFactorRef());		
 		}
 		
 		return nonGroupBoxDiagramFactorRefs;
+	}
+
+	private boolean isAcceptableDiagramFactor(int type)
+	{
+		return (type == Target.getObjectType() || 
+				type == Cause.getObjectType() || 
+				type == Strategy.getObjectType() ||
+				type == IntermediateResult.getObjectType() || 
+				type == ThreatReductionResult.getObjectType());
 	}
 	
 	abstract protected void getCommandsToUpdateGroupBoxChildren() throws Exception;
