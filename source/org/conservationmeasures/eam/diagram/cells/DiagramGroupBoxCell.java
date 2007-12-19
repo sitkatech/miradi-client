@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
-import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -61,22 +60,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 		return DiagramConstants.GROUP_BOX_COLOR;
 	}
 
-	public boolean isProjectScope()
-	{
-		return true;
-	}
-	
-	public boolean hasVision()
-	{
-		return getVision().length()>0;
-	}
-	
-	public String getVision()
-	{
-		ProjectMetadata metadata = getProject().getMetadata();
-		return metadata.getShortProjectVision();
-	}
-
 	private Project getProject()
 	{
 		return model.getProject();
@@ -85,11 +68,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	public Rectangle2D getBounds()
 	{
 		return GraphConstants.getBounds(getAttributes());
-	}
-	
-	public int getShortScopeHeight()
-	{
-		return shortScopeHeight;
 	}
 	
 	public void autoSurroundTargets()
@@ -153,12 +131,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 
 		double height = bounds.getHeight();
 		double y = bounds.getY();
-		if (hasVision())
-		{
-			height += VISION_HEIGHT;
-			y -= VISION_HEIGHT;
-		}
-		
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
@@ -199,7 +171,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 
 	private final static int SIDE_MARGIN = 5;
 	private final static int BOTTOM_MARGIN = 5;
-	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
 	private DiagramModel model;
 	private int shortScopeHeight;
