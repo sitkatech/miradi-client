@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.util.xml.XmlUtilities;
 
 public class ThreatNameColumnTableModel extends MainThreatTableModel
 {
@@ -33,7 +34,8 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		return getDirectThreat(row).toString();
+		String encodedName = XmlUtilities.getXmlEncoded(getDirectThreat(row).toString());
+		return "<HTML>" + encodedName + "</HTML>";
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
