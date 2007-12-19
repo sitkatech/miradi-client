@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class DiagramConstants
 {
-	public static final Color GROUP_BOX_COLOR = new Color(155, 155, 155);
+	public static final Color GROUP_BOX_COLOR = new Color(175, 175, 175);
 	public static final Color TEXT_BOX_COLOR = new Color(230, 230, 230);
 	public static final Color COLOR_STRESS = new Color(150, 150, 255);
 	public static final Color COLOR_DRAFT_STRATEGY = new Color(255, 255, 190);
