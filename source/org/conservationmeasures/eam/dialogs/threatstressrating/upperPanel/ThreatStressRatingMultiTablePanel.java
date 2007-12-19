@@ -92,14 +92,13 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		JScrollPane targetSummaryRowTableScroller = new FixedHeightScrollPane(targetSummaryRowTable);
 		addToHorizontalController(targetSummaryRowTableScroller);
 		
-		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
-		
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTH;
 		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, 1, 1, 100, 0);
 		
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTHWEST;
+		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, 1, 1, 0, 100);
 		
 		add(mainPanel);
