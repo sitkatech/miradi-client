@@ -5,7 +5,10 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
@@ -19,9 +22,26 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!isAtLeastOneGroupBoxSelected())
 			return false;
 		
+		if (hasOwnedSelectedDiagramFactors())
+			return false;
+		
 		return true;
 	}
 	
+	private boolean hasOwnedSelectedDiagramFactors()
+	{
+		Vector<DiagramFactor> selectedDiagramFactors = getSelectedNonGroupBoxDiagramFactors();
+		for (int i = 0; i < selectedDiagramFactors.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), selectedDiagramFactors.get(i).getRef());
+			ORef owningGroupBox = diagramFactor.getOwningGroupBox();
+			if (!owningGroupBox.isInvalid())
+				return true;
+		}
+		
+		return false;
+	}
+
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors();
