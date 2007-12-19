@@ -803,7 +803,7 @@ public class Project
 		}
 	}
 
-	public void executeWithoutRecording(Command command) throws CommandFailedException
+	private void executeWithoutRecording(Command command) throws CommandFailedException
 	{
 		try 
 		{
@@ -815,6 +815,16 @@ public class Project
 		{
 			throw(e);
 		}
+	}
+	
+	public void executeInsideListener(Command command) throws CommandFailedException
+	{
+		if(!firingCommandExecutedEvents)
+		{
+			EAM.internalError(EAM.text("Attempt to execute command from outside command listener"));
+		}
+		
+		executeWithoutRecording(command);
 	}
 	
 	public void recordCommand(Command command)
