@@ -55,18 +55,16 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	{
 		int systemFontSize = getSystemFontSize();
 		float diagramFactorFontSize = getDiagramFactorFontSize();
-		if (systemFontSize == 0 && diagramFactorFontSize == 0)
-			return 0;
-		
-		if (systemFontSize == 0)
-			systemFontSize = 11;
-		
 		if (diagramFactorFontSize == 0)
 			return systemFontSize;
+
+		if (systemFontSize == 0)
+			systemFontSize = 11;
 
 		int scaledFontSize = (int)(systemFontSize * diagramFactorFontSize);
 		return scaledFontSize;
 	}
+
 
 	private int getSystemFontSize()
 	{
