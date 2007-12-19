@@ -26,7 +26,7 @@ public class GroupBoxRemoveFactorDoer extends AbstractGroupBoxDoer
 				continue;
 			
 			DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
-			if (groupBoxDiagramFactor.getGroupBoxChildrenRefs().contains(diagramfactorRef))
+			if (groupBoxDiagramFactor.getGroupBoxChildernRefs().contains(diagramfactorRef))
 			{
 				CommandSetObjectData removeCommand = CommandSetObjectData.createRemoveORefCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDERN_REFS, diagramfactorRef);
 				getProject().executeCommand(removeCommand);
