@@ -37,7 +37,7 @@ public class GroupBoxInsertFactorDoer extends AbstractGroupBoxDoer
 			if (!groupBoxChildrenRefs.contains(diagramfactorRef))
 			{
 				
-				CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDERN_REFS, diagramfactorRef);
+				CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, diagramfactorRef);
 				getProject().executeCommand(appendCommand);
 			}
 		}
