@@ -135,7 +135,7 @@ public class DiagramFactor extends BaseObject
 	{
 		Set set = super.getReferencedObjectTags();
 		set.add(TAG_WRAPPED_REF);
-		set.add(TAG_GROUP_BOX_CHILDERN_REFS);
+		set.add(TAG_GROUP_BOX_CHILDREN_REFS);
 		return set;
 	}
 		
@@ -281,7 +281,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_SIZE, fontSize);
 		addField(TAG_FONT_COLOR, fontColor);
 		addField(TAG_FONT_STYLE, fontStyle);
-		addField(TAG_GROUP_BOX_CHILDERN_REFS, groupBoxChildernRefs);
+		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildernRefs);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -290,7 +290,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_SIZE = "FontSize";
 	public static final String TAG_FONT_COLOR = "FontColor";
 	public static final String TAG_FONT_STYLE = "FontStyle";
-	public static final String TAG_GROUP_BOX_CHILDERN_REFS = "GroupBoxChildernRefs";
+	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
