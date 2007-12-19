@@ -91,7 +91,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public void autoSurroundTargets()
 	{
-		System.out.println("Auto surrounding");
 		Rectangle2D targetBounds = computeCurrentChildrenBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
