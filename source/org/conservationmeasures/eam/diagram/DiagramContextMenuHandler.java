@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
-import org.conservationmeasures.eam.actions.ActionGroupBoxInsertFactor;
+import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -113,7 +113,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
 		
 		insertMenu.addSeparator();
-		insertMenu.add(createMenuItem(ActionGroupBoxInsertFactor.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
 		
 		insertMenu.addSeparator();

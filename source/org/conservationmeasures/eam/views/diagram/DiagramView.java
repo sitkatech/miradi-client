@@ -52,7 +52,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
-import org.conservationmeasures.eam.actions.ActionGroupBoxInsertFactor;
+import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -329,7 +329,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
-		addDoerToMap(ActionGroupBoxInsertFactor.class, new GroupBoxInsertFactorDoer());
+		addDoerToMap(ActionGroupBoxAddFactor.class, new GroupBoxInsertFactorDoer());
 		addDoerToMap(ActionGroupBoxRemoveFactor.class, new GroupBoxRemoveFactorDoer());
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
