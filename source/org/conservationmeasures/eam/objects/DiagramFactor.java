@@ -194,7 +194,7 @@ public class DiagramFactor extends BaseObject
 		size.setDimension(dimensionToUse);
 	}
 	
-	public ORefList getGroupBoxChildrenRefs()
+	public ORefList getGroupBoxChildernRefs()
 	{
 		return groupBoxChildernRefs.getORefList();
 	}

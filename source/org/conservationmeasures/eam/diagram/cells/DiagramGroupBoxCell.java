@@ -126,7 +126,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	public Rectangle2D computeCurrentChildrenBounds()
 	{
 		Rectangle2D bounds = null;
-		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
+		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildernRefs();
 		Vector<FactorCell> factorCells = model.getAllDiagramFactors();
 		for(int i = 0; i < factorCells.size(); ++i)
 		{
