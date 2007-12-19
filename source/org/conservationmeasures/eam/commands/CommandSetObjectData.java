@@ -79,6 +79,13 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
 	}
 	
+	static public CommandSetObjectData createAppendORefListCommand(BaseObject object, String idListTag, ORefList refListToAppend) throws ParseException
+	{
+		ORefList newList = new ORefList(object.getData(idListTag));
+		newList.addAll(refListToAppend);
+		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
+	}
+	
 	public CommandSetObjectData(ORef objectRef, String fieldTag, ORef oref)
 	{
 		this(objectRef.getObjectType(), objectRef.getObjectId(), fieldTag, oref.toString());
