@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
-public class GroupBoxInsertFactorDoer extends AbstractGroupBoxDoer
+public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 {
 	public boolean isAvailable()
 	{

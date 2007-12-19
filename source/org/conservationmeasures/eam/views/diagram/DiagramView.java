@@ -136,7 +136,7 @@ import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
-import org.conservationmeasures.eam.views.diagram.doers.GroupBoxInsertFactorDoer;
+import org.conservationmeasures.eam.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
@@ -329,7 +329,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
-		addDoerToMap(ActionGroupBoxAddFactor.class, new GroupBoxInsertFactorDoer());
+		addDoerToMap(ActionGroupBoxAddFactor.class, new GroupBoxAddDiagramFactorDoer());
 		addDoerToMap(ActionGroupBoxRemoveFactor.class, new GroupBoxRemoveFactorDoer());
 		
 		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
