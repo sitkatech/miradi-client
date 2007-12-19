@@ -18,51 +18,44 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!super.isAvailable())
 			return false;
 		
-		if (!areAllSelectedChildrenOfGroupBox())
+		if (!areAllSelectedChildrenOfSameGroupBox())
 			return false;
 		
 		return true;
 	}
 	
-	private boolean areAllSelectedChildrenOfGroupBox()
+	private boolean areAllSelectedChildrenOfSameGroupBox()
 	{
-		EAMGraphCell[] selectedCells = getSelectedCells();
-		for (int i = 0; i < selectedCells.length; ++i)
-		{
-			if (!isChildOfGroupBox(selectedCells[i]))
-				return false;
-		}
-		
-		return true;
+		return getGroupBoxRefsContainingSelectedDiagramFactors().size() == 1;
 	}
 
-	private boolean isChildOfGroupBox(EAMGraphCell cell)
+	private ORefList getGroupBoxRefsContainingSelectedDiagramFactors()
 	{
-		if (!cell.isFactor())
-			return false;
+		EAMGraphCell[] selectedCells = getSelectedCells();
+		ORefList groupBoxDiagramFactorRefs = new ORefList();
+		for (int i = 0; i < selectedCells.length; ++i)
+		{ 
+			if (!selectedCells[i].isFactor())
+				continue;
+			
+			ORef groupBoxDiagramFactorRef = selectedCells[i].getDiagramFactor().getOwningGroupBox();
+			if (!groupBoxDiagramFactorRefs.contains(groupBoxDiagramFactorRef))
+				groupBoxDiagramFactorRefs.add(groupBoxDiagramFactorRef);
+		}
 		
-		ORef owningGroupBox = cell.getDiagramFactor().getOwningGroupBox();
-		return !owningGroupBox.isInvalid();
+		return groupBoxDiagramFactorRefs;
 	}
 
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors(selected);
-		for (int i = 0; i < nonGroupBoxDiagramFactorRefs.size(); ++i)
-		{
-			ORef diagramfactorRef = nonGroupBoxDiagramFactorRefs.get(i);
-			ORefList diagramFactorReferers = DiagramFactor.findObjectsThatReferToUs(getProject().getObjectManager(), DiagramFactor.getObjectType(), diagramfactorRef);
-			ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactor.getObjectType());
-			if (groupBoxDiagramFactorRef.isInvalid())
-				continue;
-			
-			DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
-			if (groupBoxDiagramFactor.getGroupBoxChildrenRefs().contains(diagramfactorRef))
-			{
-				CommandSetObjectData removeCommand = CommandSetObjectData.createRemoveORefCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, diagramfactorRef);
-				getProject().executeCommand(removeCommand);
-			}
-		}
+		ORefList groupBoxChildrenToRemove = extractNonGroupBoxDiagramFactors(selected);
+		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactor.getObjectType());
+		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
+		ORefList groupBoxChildren = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
+		
+		ORefList newSubtractChildrenRefs = ORefList.subtract(groupBoxChildren, groupBoxChildrenToRemove);
+		CommandSetObjectData removeCommand = new CommandSetObjectData(groupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, newSubtractChildrenRefs.toString());
+		getProject().executeCommand(removeCommand);
 	}
 }
