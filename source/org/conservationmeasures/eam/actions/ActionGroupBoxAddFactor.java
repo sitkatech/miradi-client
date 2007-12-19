@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.icons.GroupBoxIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionGroupBoxInsertFactor extends LocationAction
+public class ActionGroupBoxAddFactor extends LocationAction
 {
-	public ActionGroupBoxInsertFactor(MainWindow mainWindow)
+	public ActionGroupBoxAddFactor(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new GroupBoxIcon());
 	}

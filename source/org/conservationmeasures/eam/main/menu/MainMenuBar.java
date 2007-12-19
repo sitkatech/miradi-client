@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
-import org.conservationmeasures.eam.actions.ActionGroupBoxInsertFactor;
+import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -187,7 +187,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
 		
 		menu.addSeparator();
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxInsertFactor.class), KeyEvent.VK_R));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxAddFactor.class), KeyEvent.VK_R));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxRemoveFactor.class), KeyEvent.VK_P));
 		
 		menu.addSeparator();

@@ -342,7 +342,7 @@ public class Actions
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
-		registerAction(new ActionGroupBoxInsertFactor(mainWindow));
+		registerAction(new ActionGroupBoxAddFactor(mainWindow));
 		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
 	}
 	
