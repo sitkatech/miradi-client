@@ -13,6 +13,38 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
+	public boolean isAvailable()
+	{
+		if (!super.isAvailable())
+			return false;
+		
+		if (!areAllSelectedChildrenOfGroupBox())
+			return false;
+		
+		return true;
+	}
+	
+	private boolean areAllSelectedChildrenOfGroupBox()
+	{
+		EAMGraphCell[] selectedCells = getSelectedCells();
+		for (int i = 0; i < selectedCells.length; ++i)
+		{
+			if (!isChildOfGroupBox(selectedCells[i]))
+				return false;
+		}
+		
+		return true;
+	}
+
+	private boolean isChildOfGroupBox(EAMGraphCell cell)
+	{
+		if (!cell.isFactor())
+			return false;
+		
+		ORef owningGroupBox = cell.getDiagramFactor().getOwningGroupBox();
+		return !owningGroupBox.isInvalid();
+	}
+
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();

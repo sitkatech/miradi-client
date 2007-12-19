@@ -199,6 +199,14 @@ public class DiagramFactor extends BaseObject
 		return groupBoxChildrenRefs.getORefList();
 	}
 	
+	public ORef getOwningGroupBox()
+	{
+		ORefList diagramFactorReferers = findObjectsThatReferToUs(getProject().getObjectManager(), DiagramFactor.getObjectType(), getRef());
+		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactor.getObjectType());
+
+		return groupBoxDiagramFactorRef;
+	}
+	
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();

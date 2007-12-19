@@ -27,11 +27,16 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		if (!isDiagramView())
 		return false;
 	
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getSelectedCells();
 		if (!containsAtleastOneFactor(selected))
 			return false;
 		
 		return true;
+	}
+
+	protected EAMGraphCell[] getSelectedCells()
+	{
+		return getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 	}
 	
 	public void doIt() throws CommandFailedException
