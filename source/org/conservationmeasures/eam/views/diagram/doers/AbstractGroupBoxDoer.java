@@ -22,6 +22,17 @@ import org.conservationmeasures.eam.views.diagram.LocationDoer;
 
 abstract public class AbstractGroupBoxDoer extends LocationDoer
 {
+	public boolean isAvailable()
+	{
+		if (!isDiagramView())
+		return false;
+	
+		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+		if (!containsAtleastOneFactor(selected))
+			return false;
+		
+		return true;
+	}
 	
 	public void doIt() throws CommandFailedException
 	{
@@ -42,6 +53,11 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 	
+	}
+	
+	protected boolean containsOnlyOneGroupBox(EAMGraphCell[] selected)
+	{
+		return extractSelectedGroupBoxes(selected).size() == 1;		
 	}
 	
 	protected DiagramFactor getGroupBox(EAMGraphCell[] selected)

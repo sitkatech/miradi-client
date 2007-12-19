@@ -13,18 +13,6 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 
 public class GroupBoxRemoveFactorDoer extends AbstractGroupBoxDoer
 {
-	public boolean isAvailable()
-	{
-		if (!isDiagramView())
-		return false;
-	
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		if (!containsAtleastOneFactor(selected))
-			return false;
-		
-		return true;
-	}
-	
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
