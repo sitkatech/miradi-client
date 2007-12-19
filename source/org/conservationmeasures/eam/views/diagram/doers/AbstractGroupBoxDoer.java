@@ -9,7 +9,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -27,16 +26,15 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		if (!isDiagramView())
 		return false;
 	
-		EAMGraphCell[] selected = getSelectedCells();
-		if (!containsAtleastOneFactor(selected))
+		if (!containsAtleastOneFactor())
 			return false;
 		
 		return true;
 	}
 
-	protected EAMGraphCell[] getSelectedCells()
+	protected FactorCell[] getSelectedCells()
 	{
-		return getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 	}
 	
 	public void doIt() throws CommandFailedException
@@ -60,26 +58,27 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	
 	}
 	
-	protected boolean containsOnlyOneGroupBox(EAMGraphCell[] selected)
+	protected boolean containsOnlyOneGroupBox()
 	{
-		return extractSelectedGroupBoxes(selected).size() == 1;		
+		return extractSelectedGroupBoxes().size() == 1;		
 	}
 	
-	protected DiagramFactor getGroupBox(EAMGraphCell[] selected)
+	protected DiagramFactor getGroupBox()
 	{
 		final int FIRST_INDEX = 0;
-		return extractSelectedGroupBoxes(selected).get(FIRST_INDEX);
+		return extractSelectedGroupBoxes().get(FIRST_INDEX);
 	}
 	
-	protected Vector<DiagramFactor> extractSelectedGroupBoxes(EAMGraphCell[] selected)
+	protected Vector<DiagramFactor> extractSelectedGroupBoxes()
 	{
+		FactorCell[] selected = getSelectedCells();
 		Vector<DiagramFactor> groupBoxDiagramFactors = new Vector();
 		for (int i = 0; i < selected.length; ++i)
 		{
 			if (!selected[i].isFactor())
 				continue;
 			
-			FactorCell factorCell = (FactorCell) selected[i];
+			FactorCell factorCell = selected[i];
 			if (factorCell.getWrappedType() == GroupBox.getObjectType())
 				groupBoxDiagramFactors.add(factorCell.getDiagramFactor());
 		}
@@ -87,20 +86,18 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return groupBoxDiagramFactors;
 	}
 	
-	protected boolean containsAtleastOneFactor(EAMGraphCell[] selected)
+	protected boolean containsAtleastOneFactor()
 	{
-		return extractNonGroupBoxDiagramFactors(selected).size() > 0;
+		return extractNonGroupBoxDiagramFactors().size() > 0;
 	}
 		
-	protected ORefList extractNonGroupBoxDiagramFactors(EAMGraphCell[] selected)
+	protected ORefList extractNonGroupBoxDiagramFactors()
 	{
+		FactorCell[] selected = getSelectedCells();
 		ORefList nonGroupBoxDiagramFactorRefs = new ORefList();
 		for (int i = 0; i < selected.length; ++i)
 		{
-			if (!selected[i].isFactor())
-				continue;
-			
-			FactorCell factorCell = (FactorCell) selected[i];
+			FactorCell factorCell = selected[i];
 			int type = factorCell.getWrappedType();
 			if (type == Target.getObjectType() || type == Cause.getObjectType() || type == Strategy.getObjectType())
 				nonGroupBoxDiagramFactorRefs.add(factorCell.getDiagramFactorRef());		

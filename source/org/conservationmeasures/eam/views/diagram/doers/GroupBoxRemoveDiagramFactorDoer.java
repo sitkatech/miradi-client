@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -31,13 +31,10 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private ORefList getGroupBoxRefsContainingSelectedDiagramFactors()
 	{
-		EAMGraphCell[] selectedCells = getSelectedCells();
+		FactorCell[] selectedCells = getSelectedCells();
 		ORefList groupBoxDiagramFactorRefs = new ORefList();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{ 
-			if (!selectedCells[i].isFactor())
-				continue;
-			
 			ORef groupBoxDiagramFactorRef = selectedCells[i].getDiagramFactor().getOwningGroupBox();
 			if (!groupBoxDiagramFactorRefs.contains(groupBoxDiagramFactorRef))
 				groupBoxDiagramFactorRefs.add(groupBoxDiagramFactorRef);
@@ -47,9 +44,8 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 	}
 
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
-	{
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		ORefList groupBoxChildrenToRemove = extractNonGroupBoxDiagramFactors(selected);
+	{ 
+		ORefList groupBoxChildrenToRemove = extractNonGroupBoxDiagramFactors();
 		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactor.getObjectType());
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
 		ORefList groupBoxChildren = groupBoxDiagramFactor.getGroupBoxChildrenRefs();

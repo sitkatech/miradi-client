@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
@@ -17,8 +16,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!super.isAvailable())
 			return false;
 		
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		if (!containsOnlyOneGroupBox(selected))
+		if (!containsOnlyOneGroupBox())
 			return false;
 		
 		return true;
@@ -26,9 +24,8 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors(selected);
-		DiagramFactor groupBoxDiagramFactor = getGroupBox(selected);
+		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors();
+		DiagramFactor groupBoxDiagramFactor = getGroupBox();
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);
