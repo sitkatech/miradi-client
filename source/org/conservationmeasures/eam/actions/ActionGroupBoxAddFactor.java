@@ -18,11 +18,11 @@ public class ActionGroupBoxAddFactor extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Add Factor(s) in Group Box");
+		return EAM.text("Action|Insert|Add Factor(s) to Group Box");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add Factor(s) into Group Box");
+		return EAM.text("TT|Add Factor(s) to Group Box");
 	}
 }
