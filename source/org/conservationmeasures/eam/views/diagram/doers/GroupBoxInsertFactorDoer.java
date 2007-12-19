@@ -15,14 +15,11 @@ public class GroupBoxInsertFactorDoer extends AbstractGroupBoxDoer
 {
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
+		if (!super.isAvailable())
 			return false;
 		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		if (!containsOnlyOneGroupBox(selected))
-			return false;
-		
-		if (!containsAtleastOneFactor(selected))
 			return false;
 		
 		return true;
@@ -44,10 +41,5 @@ public class GroupBoxInsertFactorDoer extends AbstractGroupBoxDoer
 				getProject().executeCommand(appendCommand);
 			}
 		}
-	}
-	
-	private boolean containsOnlyOneGroupBox(EAMGraphCell[] selected)
-	{
-		return extractSelectedGroupBoxes(selected).size() == 1;		
 	}
 }
