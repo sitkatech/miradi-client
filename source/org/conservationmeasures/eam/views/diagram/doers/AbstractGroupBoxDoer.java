@@ -60,16 +60,16 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	
 	protected boolean isAtLeastOneGroupBoxSelected()
 	{
-		return extractSelectedGroupBoxes().size() == 1;		
+		return getSelectedNonGroupBoxDiagramFactors().size() == 1;		
 	}
 	
 	protected DiagramFactor getSingleSelectedGroupBox()
 	{
 		final int FIRST_INDEX = 0;
-		return extractSelectedGroupBoxes().get(FIRST_INDEX);
+		return getSelectedNonGroupBoxDiagramFactors().get(FIRST_INDEX);
 	}
 	
-	protected Vector<DiagramFactor> extractSelectedGroupBoxes()
+	protected Vector<DiagramFactor> getSelectedNonGroupBoxDiagramFactors()
 	{
 		FactorCell[] selected = getSelectedCells();
 		Vector<DiagramFactor> groupBoxDiagramFactors = new Vector();
