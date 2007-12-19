@@ -75,13 +75,13 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
 			
-		Rectangle2D targetBounds = computeCurrentChildrenBounds();
+		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
-		if(!targetBounds.equals(newBounds))
+		if(!groupBoxBounds.equals(newBounds))
 		{
-			shortScopeHeight = calculateShortScopeHeight(targetBounds.getBounds().width);
-			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - shortScopeHeight);
-			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + shortScopeHeight  + BOTTOM_MARGIN);
+			shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
+			Point location = new Point((int)groupBoxBounds.getX() - SIDE_MARGIN, (int)groupBoxBounds.getY()  - shortScopeHeight);
+			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*SIDE_MARGIN, (int)groupBoxBounds.getHeight() + shortScopeHeight  + BOTTOM_MARGIN);
 			newBounds = new Rectangle(location, size);
 		}
 		
