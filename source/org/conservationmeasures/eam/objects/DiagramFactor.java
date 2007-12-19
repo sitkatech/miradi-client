@@ -196,7 +196,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return groupBoxChildernRefs.getORefList();
+		return groupBoxChildrenRefs.getORefList();
 	}
 	
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
@@ -273,7 +273,7 @@ public class DiagramFactor extends BaseObject
 		fontSize = new ChoiceData();
 		fontColor = new ChoiceData();
 		fontStyle = new ChoiceData();
-		groupBoxChildernRefs = new ORefListData();
+		groupBoxChildrenRefs = new ORefListData();
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -281,7 +281,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_SIZE, fontSize);
 		addField(TAG_FONT_COLOR, fontColor);
 		addField(TAG_FONT_STYLE, fontStyle);
-		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildernRefs);
+		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -300,5 +300,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontSize;
 	private ChoiceData fontColor;
 	private ChoiceData fontStyle;
-	private ORefListData groupBoxChildernRefs;
+	private ORefListData groupBoxChildrenRefs;
 }
