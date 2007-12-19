@@ -17,10 +17,12 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DimensionData;
 import org.conservationmeasures.eam.objectdata.ORefData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.PointData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -190,6 +192,11 @@ public class DiagramFactor extends BaseObject
 		size.setDimension(dimensionToUse);
 	}
 	
+	public ORefList getGroupBoxChildrenRefs()
+	{
+		return groupBoxChildernRefs.getORefList();
+	}
+	
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
@@ -254,6 +261,7 @@ public class DiagramFactor extends BaseObject
 		fontSize = new ChoiceData();
 		fontColor = new ChoiceData();
 		fontStyle = new ChoiceData();
+		groupBoxChildernRefs = new ORefListData();
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -261,6 +269,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_SIZE, fontSize);
 		addField(TAG_FONT_COLOR, fontColor);
 		addField(TAG_FONT_STYLE, fontStyle);
+		addField(TAG_GROUP_BOX_CHILDERN_REFS, groupBoxChildernRefs);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -269,6 +278,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_SIZE = "FontSize";
 	public static final String TAG_FONT_COLOR = "FontColor";
 	public static final String TAG_FONT_STYLE = "FontStyle";
+	public static final String TAG_GROUP_BOX_CHILDERN_REFS = "GroupBoxChildrenRefs";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
@@ -278,4 +288,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontSize;
 	private ChoiceData fontColor;
 	private ChoiceData fontStyle;
+	private ORefListData groupBoxChildernRefs;
 }
