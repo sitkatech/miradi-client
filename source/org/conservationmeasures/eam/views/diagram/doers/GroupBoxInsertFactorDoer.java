@@ -30,7 +30,7 @@ public class GroupBoxInsertFactorDoer extends AbstractGroupBoxDoer
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors(selected);
 		DiagramFactor groupBoxDiagramFactor = getGroupBox(selected);
-		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildernRefs();
+		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		for (int i = 0; i < nonGroupBoxDiagramFactorRefs.size(); ++i)
 		{
 			ORef diagramfactorRef = nonGroupBoxDiagramFactorRefs.get(i);
