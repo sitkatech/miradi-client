@@ -138,7 +138,7 @@ public class DiagramModel extends DefaultGraphModel
 			return new DiagramTextBoxCell((TextBox)factor, diagramFactor);
 		
 		if (factorType == ObjectType.GROUP_BOX)
-			return new DiagramGroupBoxCell((GroupBox)factor, diagramFactor);
+			return new DiagramGroupBoxCell(this, (GroupBox)factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}
