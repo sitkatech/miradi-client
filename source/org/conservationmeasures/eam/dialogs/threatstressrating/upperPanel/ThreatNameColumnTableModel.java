@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatTableModel extends MainThreatTableModel
+public class ThreatNameColumnTableModel extends MainThreatTableModel
 {
-	public ThreatTableModel(Project projectToUse)
+	public ThreatNameColumnTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
