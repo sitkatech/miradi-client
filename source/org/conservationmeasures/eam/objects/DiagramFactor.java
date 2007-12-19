@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -134,6 +135,7 @@ public class DiagramFactor extends BaseObject
 	{
 		Set set = super.getReferencedObjectTags();
 		set.add(TAG_WRAPPED_REF);
+		set.add(TAG_GROUP_BOX_CHILDERN_REFS);
 		return set;
 	}
 		
@@ -244,6 +246,16 @@ public class DiagramFactor extends BaseObject
 		commands.add(setFontStyleCommand);
 		
 		return (Command[]) commands.toArray(new Command[0]);
+	}
+	
+	public static DiagramFactor find(ObjectManager objectManager, ORef diagramFactorRef)
+	{
+		return (DiagramFactor) objectManager.findObject(diagramFactorRef);
+	}
+	
+	public static DiagramFactor find(Project project, ORef diagramFactorRef)
+	{
+		return find(project.getObjectManager(), diagramFactorRef);
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
