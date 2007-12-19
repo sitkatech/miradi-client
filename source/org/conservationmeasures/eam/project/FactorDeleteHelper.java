@@ -48,6 +48,7 @@ public class FactorDeleteHelper
 
 	public void deleteFactor(FactorCell factorToDelete) throws Exception
 	{
+		removeFromGroupBox(factorToDelete);
 		removeFromThreatReductionResults(factorToDelete);
 		removeFromView(factorToDelete.getWrappedId());
 		removeNodeFromDiagram(getDiagramObject(), factorToDelete.getDiagramFactor());
@@ -59,6 +60,17 @@ public class FactorDeleteHelper
 
 		deleteAnnotations(underlyingNode);
 		deleteUnderlyingNode(underlyingNode);
+	}
+
+	private void removeFromGroupBox(FactorCell factorToDelete) throws Exception
+	{
+		ORef owningGroupRef = factorToDelete.getDiagramFactor().getOwningGroupBox();
+		if (owningGroupRef.isInvalid())
+			return;
+		
+		DiagramFactor owningGroup = DiagramFactor.find(getProject(), owningGroupRef);
+		CommandSetObjectData removeDiagramFactorFromGroup = CommandSetObjectData.createRemoveORefCommand(owningGroup, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, factorToDelete.getDiagramFactorRef());
+		getProject().executeCommand(removeDiagramFactorFromGroup);
 	}
 
 	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
