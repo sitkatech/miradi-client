@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
-public class GroupBoxRemoveFactorDoer extends AbstractGroupBoxDoer
+public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
 	{
