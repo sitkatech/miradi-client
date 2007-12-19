@@ -26,7 +26,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		if (!isDiagramView())
 		return false;
 	
-		if (!containsAtleastOneFactor())
+		if (!isAtLeastOneFactorSelected())
 			return false;
 		
 		return true;
@@ -86,7 +86,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return groupBoxDiagramFactors;
 	}
 	
-	protected boolean containsAtleastOneFactor()
+	protected boolean isAtLeastOneFactorSelected()
 	{
 		return extractNonGroupBoxDiagramFactors().size() > 0;
 	}
