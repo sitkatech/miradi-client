@@ -140,9 +140,10 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		public Dimension getPreferredSize()
 		{
 			Dimension preferredSize = content.getPreferredSize();
-			return new Dimension(preferredSize.width, 50);
+			return new Dimension(preferredSize.width, FIXED_HEIGHT);
 		}
 			
+		private final static int FIXED_HEIGHT = 35;
 		private Component content;
 	}
 	
