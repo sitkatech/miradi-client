@@ -100,7 +100,8 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 
 		public Dimension getMinimumSize()
 		{
-			return getPreferredSize();
+			Dimension minimumSize = super.getMinimumSize();
+			return new Dimension(getPreferredSize().width, minimumSize.height);
 		}
 		
 		public Dimension getMaximumSize()
