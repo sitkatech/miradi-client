@@ -66,7 +66,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return extractSelectedGroupBoxes(selected).get(FIRST_INDEX);
 	}
 	
-	protected Vector<DiagramFactor>extractSelectedGroupBoxes(EAMGraphCell[] selected)
+	protected Vector<DiagramFactor> extractSelectedGroupBoxes(EAMGraphCell[] selected)
 	{
 		Vector<DiagramFactor> groupBoxDiagramFactors = new Vector();
 		for (int i = 0; i < selected.length; ++i)
