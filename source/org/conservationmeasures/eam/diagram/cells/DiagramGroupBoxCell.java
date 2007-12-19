@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
@@ -28,12 +30,14 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
+public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedListener, DiagramModelListener
 {
 	public DiagramGroupBoxCell(DiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactor)
 	{
 		super(groupBox, diagramFactor);
 		model = modelToUse;
+		
+		getProject().addCommandExecutedListener(this);
 		autoSurroundTargets();
 		
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
@@ -187,11 +191,15 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	public void linkDeleted(DiagramModelEvent event)
 	{
 	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
 
-	final static int SIDE_MARGIN = 5;
-	final static int BOTTOM_MARGIN = 5;
+	private final static int SIDE_MARGIN = 5;
+	private final static int BOTTOM_MARGIN = 5;
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
-	DiagramModel model;
-	int shortScopeHeight;
+	private DiagramModel model;
+	private int shortScopeHeight;
 }
