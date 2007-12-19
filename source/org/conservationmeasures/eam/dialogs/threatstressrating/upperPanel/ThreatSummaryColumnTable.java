@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 
 
-public class ThreatSummaryColumnTable extends TableWithSetPreferredScrollableViewportHeight
+public class ThreatSummaryColumnTable extends AbstractTableWithChoiceItemRenderer
 {
 	public ThreatSummaryColumnTable(ThreatSummaryColumnTableModel model)
 	{

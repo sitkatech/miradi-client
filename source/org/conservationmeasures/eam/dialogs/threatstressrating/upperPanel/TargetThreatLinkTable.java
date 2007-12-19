@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
-public class TargetThreatLinkTable extends TableWithSetPreferredScrollableViewportHeight
+public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 {
 	public TargetThreatLinkTable(TargetThreatLinkTableModel tableModel)
 	{
