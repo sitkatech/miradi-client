@@ -13,7 +13,8 @@ import org.conservationmeasures.eam.dialogs.threatstressrating.properties.Threat
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -48,14 +49,19 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS))
-			handleExecutedSetDataCommand((CommandSetObjectData) event.getCommand());
-		
+		handleExecutedSetDataCommand(event);
 		repaint();	
 	}
 
-	private void handleExecutedSetDataCommand(CommandSetObjectData setCommand)
+	private void handleExecutedSetDataCommand(CommandExecutedEvent event)
 	{
+		if (!event.isSetDataCommand())
+			return;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		if (setCommand.getObjectType() != ThreatStressRating.getObjectType() && setCommand.getObjectType() != Stress.getObjectType())
+			return;
+		
 		ORefList[] selectedHierarcies = multiTablePanel.getSelectedHierarchies();
 		propertiesPanel.setObjectRefs(selectedHierarcies);
 	}
