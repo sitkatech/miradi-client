@@ -49,16 +49,14 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		handleExecutedSetDataCommand(event);
+		if (event.isSetDataCommand())
+			handleExecutedSetDataCommand((CommandSetObjectData) event.getCommand());
+		
 		repaint();	
 	}
 
-	private void handleExecutedSetDataCommand(CommandExecutedEvent event)
+	private void handleExecutedSetDataCommand(CommandSetObjectData setCommand )
 	{
-		if (!event.isSetDataCommand())
-			return;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		if (setCommand.getObjectType() != ThreatStressRating.getObjectType() && setCommand.getObjectType() != Stress.getObjectType())
 			return;
 		
