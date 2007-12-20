@@ -57,6 +57,7 @@ abstract public class DiagramPaster
 		currentModel = modelToUse;
 		project = currentModel.getProject();
 		transferableList = transferableListToUse;
+		oldToNewPastedObjectMap = new HashMap();
 		
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
@@ -77,7 +78,6 @@ abstract public class DiagramPaster
 
 	protected void createNewFactors() throws Exception
 	{
-		factorRelatedPastedObjectMap = new HashMap();
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{			
 			String jsonAsString = factorDeepCopies.get(i);
@@ -89,8 +89,8 @@ abstract public class DiagramPaster
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
-			factorRelatedPastedObjectMap.put(oldObjectRef, newObject.getRef());
-			fixupRefs(factorRelatedPastedObjectMap,newObject);
+			getOldToNewFactorRefMap().put(oldObjectRef, newObject.getRef());
+			fixupRefs(getOldToNewFactorRefMap(),newObject);
 		}
 	}
 
@@ -253,7 +253,6 @@ abstract public class DiagramPaster
 
 	protected void createNewDiagramFactors() throws Exception
 	{
-		oldToNewDiagramFactorRefMap = new HashMap();
 		for (int i = diagramFactorDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
@@ -277,7 +276,7 @@ abstract public class DiagramPaster
 			
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
-			oldToNewDiagramFactorRefMap.put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+			getOldToNewFactorRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
 			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
 	}
@@ -347,8 +346,6 @@ abstract public class DiagramPaster
 	
 	protected void createNewFactorLinks() throws Exception
 	{
-		linkRelatedPastedObjectMap = new HashMap();
-
 		for (int i = factorLinkDeepCopies.size() - 1; i >= 0; --i)
 		{
 			String jsonAsString = factorLinkDeepCopies.get(i);
@@ -361,10 +358,10 @@ abstract public class DiagramPaster
 				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
-				fixObjectRefs(linkRelatedPastedObjectMap, newObject, json);
+				fixObjectRefs(getOldToNewFactorRefMap(), newObject, json);
 		}
 		
-		Vector newFactorLinks = new Vector(linkRelatedPastedObjectMap.values());
+		Vector newFactorLinks = new Vector(getOldToNewFactorRefMap().values());
 		ensureRatingListMatchesStressList(newFactorLinks);
 	}
 
@@ -450,8 +447,8 @@ abstract public class DiagramPaster
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
-		ORef newFromRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedupFactorRef(getOldToNewFactorRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupFactorRef(getOldToNewFactorRefMap(), json, FactorLink.TAG_TO_REF);	
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
@@ -464,7 +461,7 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-		linkRelatedPastedObjectMap.put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
+		getOldToNewFactorRefMap().put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 		
 		return newFactorLink;
 	}
@@ -472,10 +469,10 @@ abstract public class DiagramPaster
 	private BaseObject createThreatStressRatings(EnhancedJsonObject json) throws Exception
 	{
 		BaseId oldThreatStressRatingId = json.getId(ThreatStressRating.TAG_ID);
-		ORef newStressRef = getFixedupFactorRef(factorRelatedPastedObjectMap, json, ThreatStressRating.TAG_STRESS_REF);
+		ORef newStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		linkRelatedPastedObjectMap.put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
+		getOldToNewFactorRefMap().put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
 		return newThreatStressRating;
 	}	
 
@@ -496,7 +493,7 @@ abstract public class DiagramPaster
 
 	private boolean haveBothFactorsBeenCopied(ORef oldFromRef, ORef oldToRef)
 	{
-		return (factorRelatedPastedObjectMap.get(oldFromRef) == null || factorRelatedPastedObjectMap.get(oldToRef) == null);
+		return (getOldToNewFactorRefMap().get(oldFromRef) == null || getOldToNewFactorRefMap().get(oldToRef) == null);
 	}
 	
 	public boolean wasAnyDataLost() throws Exception
@@ -599,7 +596,7 @@ abstract public class DiagramPaster
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
-		ORef newRef = (ORef) oldToNewDiagramFactorRefMap.get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
+		ORef newRef = (ORef) getOldToNewFactorRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
 		if (newRef == null)
 			return new DiagramFactorId(oldId.asInt()); 
 			 
@@ -703,9 +700,10 @@ abstract public class DiagramPaster
 		return project;
 	}
 
+	//TODO refactor Rename this method, have combined all maps
 	public HashMap getOldToNewFactorRefMap()
 	{
-		return factorRelatedPastedObjectMap;
+		return oldToNewPastedObjectMap;
 	}
 	
 	private DiagramObject getDiagramObject()
@@ -730,10 +728,7 @@ abstract public class DiagramPaster
 	private Vector<String> factorLinkDeepCopies;
 	private Vector<String> diagramLinkDeepCopies;
 	
-	protected HashMap factorRelatedPastedObjectMap;
-	private HashMap oldToNewDiagramFactorRefMap;
-	protected HashMap linkRelatedPastedObjectMap;
-	
+	protected HashMap oldToNewPastedObjectMap;	
 	protected PointManipulater dataHelper;
 	protected TransferableMiradiList transferableList;
 	private Vector pastedCellsToSelect;
