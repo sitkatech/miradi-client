@@ -80,7 +80,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		
 	}
 	
-	public int getFirstIndexOfThreshold()
+	private int getFirstIndexOfThreshold()
 	{
 		for (int i = 0; i < COLUMN_TAGS.length; ++i)
 		{
