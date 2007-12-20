@@ -74,6 +74,7 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.DiagramPageList;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -499,6 +500,33 @@ public class Project
 		selectPlanningViewStrategicRadioButton();
 		createDefaultWwfProjectDataObject();
 		eliminateBlankConceptualModelPages();
+		ensureAllDiagramFactorsAreVisible();
+	}
+
+	public void ensureAllDiagramFactorsAreVisible() throws Exception
+	{
+		ORefList allDiagramFactorRefs = getDiagramFactorPool().getORefList();
+		for (int i = 0; i < allDiagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(this, allDiagramFactorRefs.get(i));
+			Point location = (Point) diagramFactor.getLocation().clone();
+			if (isOffScreenLocation(location))
+			{
+				CommandSetObjectData moveToOnScreen = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(0, 0)));
+				executeWithoutRecording(moveToOnScreen);
+			}	
+		}
+	}
+	
+	private boolean isOffScreenLocation(Point location)
+	{
+		if (location.x < 0)
+			return true;
+		
+		if (location.y < 0)
+			return true;
+		
+		return false;
 	}
 
 	private void createDefaultPlanningCustomization() throws Exception

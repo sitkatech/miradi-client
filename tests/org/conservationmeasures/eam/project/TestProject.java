@@ -816,8 +816,34 @@ public class TestProject extends EAMTestCase
 		
 		return diagramFactor;
 	}
+	
+	public void testEnsureAllDiagramFactorsAreVisible() throws Exception
+	{
+		verifyOnScreenLocation(new Point(50, 50), new Point(50, 50));
+		verifyOnScreenLocation(new Point(0, 0), new Point(0, 0));
+		verifyOnScreenLocation(new Point(0, 0), new Point(-10, 0));
+		verifyOnScreenLocation(new Point(0, 0), new Point(0, -10));
+		verifyOnScreenLocation(new Point(10, 0), new Point(10, 0));
+		verifyOnScreenLocation(new Point(0, 10), new Point(0, 10));
+	}
 
-	ProjectForTesting project;
-	IdAssigner idAssigner;
-	ChainManager chainManager;
+	private void verifyOnScreenLocation(Point expectedPoint, Point initialPoint) throws Exception
+	{
+		DiagramFactor onScreenDiagramFactor = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		CommandSetObjectData setOnScreenLocation = new CommandSetObjectData(onScreenDiagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(initialPoint));
+		getProject().executeCommand(setOnScreenLocation);
+		
+		project.ensureAllDiagramFactorsAreVisible();
+		DiagramFactor alreadyOnScreenDiagramFactor = (DiagramFactor) project.findObject(onScreenDiagramFactor.getRef());
+		assertEquals("did not move off screen diagram factor on screen?", expectedPoint, alreadyOnScreenDiagramFactor.getLocation());
+	}
+
+	public ProjectForTesting getProject()
+	{
+		return project;
+	}
+	
+	private ProjectForTesting project;
+	private IdAssigner idAssigner;
+	private ChainManager chainManager;
 }
