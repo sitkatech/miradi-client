@@ -7,7 +7,8 @@ package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributePoolTablePanel;
+import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeListTableModel;
+import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeListTablePanelWithoutButtons;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -22,7 +23,8 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		if (!isAvailable())
 			return;
 		
-		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributePoolTablePanel(getProject()), EAM.text("Choose Key Ecological Attribute to Clone")))
+		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), getSelectedFactor().getFactorId());
+		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributeListTablePanelWithoutButtons(getProject(), keyEcologicalAttributeListTableModel), EAM.text("Choose Key Ecological Attribute to Clone")))
 			super.doIt();
 	}
 	

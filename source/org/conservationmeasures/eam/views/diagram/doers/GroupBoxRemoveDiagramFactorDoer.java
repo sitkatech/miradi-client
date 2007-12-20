@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
@@ -32,20 +33,17 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 	private ORefList getGroupBoxRefsContainingSelectedDiagramFactors()
 	{
 		FactorCell[] selectedCells = getSelectedCells();
-		ORefList groupBoxDiagramFactorRefs = new ORefList();
+		ORefSet groupBoxDiagramFactorRefs = new ORefSet();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{ 
 			ORef groupBoxDiagramFactorRef = selectedCells[i].getDiagramFactor().getOwningGroupBox();
 			if (groupBoxDiagramFactorRef.isInvalid())
 				continue;
 			
-			if (groupBoxDiagramFactorRefs.contains(groupBoxDiagramFactorRef))
-				continue;
-			
 			groupBoxDiagramFactorRefs.add(groupBoxDiagramFactorRef);
 		}
 		
-		return groupBoxDiagramFactorRefs;
+		return new ORefList(groupBoxDiagramFactorRefs);
 	}
 
 	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
