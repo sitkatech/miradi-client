@@ -721,20 +721,20 @@ abstract public class DiagramPaster
 	
 	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;	
 	
-	Project project;
-	DiagramModel currentModel;
-	DiagramPanel diagramPanel;
+	private Project project;
+	private DiagramModel currentModel;
+	private DiagramPanel diagramPanel;
 	
-	Vector<String> factorDeepCopies;
-	Vector<String> diagramFactorDeepCopies;
-	Vector<String> factorLinkDeepCopies;
-	Vector<String> diagramLinkDeepCopies;
+	private Vector<String> factorDeepCopies;
+	private Vector<String> diagramFactorDeepCopies;
+	private Vector<String> factorLinkDeepCopies;
+	private Vector<String> diagramLinkDeepCopies;
 	
-	HashMap factorRelatedPastedObjectMap;
-	HashMap oldToNewDiagramFactorRefMap;
-	HashMap linkRelatedPastedObjectMap;
+	protected HashMap factorRelatedPastedObjectMap;
+	private HashMap oldToNewDiagramFactorRefMap;
+	protected HashMap linkRelatedPastedObjectMap;
 	
-	PointManipulater dataHelper;
-	TransferableMiradiList transferableList;
-	Vector pastedCellsToSelect;
+	protected PointManipulater dataHelper;
+	protected TransferableMiradiList transferableList;
+	private Vector pastedCellsToSelect;
 }
