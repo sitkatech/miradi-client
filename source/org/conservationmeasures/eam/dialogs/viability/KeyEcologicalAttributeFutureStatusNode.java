@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class KeyEcologicalAttributeFutureStatusNode extends ViabilityTreeTableNode
+public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 {
 	public KeyEcologicalAttributeFutureStatusNode(TreeTableNode parentNodeToUse) throws Exception
 	{

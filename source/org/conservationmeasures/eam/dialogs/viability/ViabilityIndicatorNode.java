@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class ViabilityIndicatorNode extends ViabilityTreeTableNode
+public class ViabilityIndicatorNode extends TreeTableNode
 {
 	public ViabilityIndicatorNode(Project projectToUse, TreeTableNode parent, Indicator indicatorToUse) throws Exception
 	{
