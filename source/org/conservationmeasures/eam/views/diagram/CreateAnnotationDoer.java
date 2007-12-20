@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.AnnotationSelectionDlg;
-import org.conservationmeasures.eam.dialogs.base.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -119,11 +118,11 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return null;
 	}
 	
-	protected boolean validUserChoiceForObjectToClone(ObjectPoolTablePanel poolTablePanel, String panelText) throws CommandFailedException
+	protected boolean validUserChoiceForObjectToClone(ObjectTablePanel tablePanel, String panelText) throws CommandFailedException
 	{
 		try
 		{
-			BaseObject cloneAnnotation = displayAnnotationList(panelText, poolTablePanel);	
+			BaseObject cloneAnnotation = displayAnnotationList(panelText, tablePanel);	
 			if (cloneAnnotation == null)
 				return false;
 
@@ -132,7 +131,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		}
 		finally
 		{
-			poolTablePanel.dispose();
+			tablePanel.dispose();
 		}
 	}
 	
