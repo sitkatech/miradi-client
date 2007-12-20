@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class KeyEcologicalAttributeMeasurementNode extends ViabilityTreeTableNode
+public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {
 	public KeyEcologicalAttributeMeasurementNode(ViabilityIndicatorNode parent, Measurement measurementToUse)
 	{

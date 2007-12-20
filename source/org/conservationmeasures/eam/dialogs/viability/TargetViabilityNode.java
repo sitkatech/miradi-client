@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
-public class TargetViabilityNode extends ViabilityTreeTableNode
+public class TargetViabilityNode extends TreeTableNode
 {
 	public TargetViabilityNode(Project projectToUse, FactorId targetId) throws Exception
 	{

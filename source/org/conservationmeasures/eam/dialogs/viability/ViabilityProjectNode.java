@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
-public class ViabilityProjectNode extends ViabilityTreeTableNode
+public class ViabilityProjectNode extends TreeTableNode
 {
 	public ViabilityProjectNode(Project projectToUse) throws Exception
 	{

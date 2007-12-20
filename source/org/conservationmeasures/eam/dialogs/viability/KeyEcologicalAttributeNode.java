@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
-public class KeyEcologicalAttributeNode extends ViabilityTreeTableNode
+public class KeyEcologicalAttributeNode extends TreeTableNode
 {
 	public KeyEcologicalAttributeNode(Project projectToUse, KeyEcologicalAttribute keaToUse) throws Exception
 	{

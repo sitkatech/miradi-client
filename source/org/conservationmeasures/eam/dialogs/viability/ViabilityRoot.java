@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ViabilityRoot extends ViabilityTreeTableNode
+public class ViabilityRoot extends TreeTableNode
 {
 	public ViabilityRoot(Project projectToUse) throws Exception
 	{
