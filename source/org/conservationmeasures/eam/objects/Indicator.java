@@ -197,6 +197,9 @@ public class Indicator extends BaseObject
 		if (tag.equals(TAG_TASK_IDS))
 			return Task.getObjectType();
 		
+		if (tag.equals(TAG_MEASUREMENT_REFS))
+			return Measurement.getObjectType();
+		
 		return super.getAnnotationType(tag);
 	}
 
@@ -206,6 +209,14 @@ public class Indicator extends BaseObject
 			return true;
 		
 		return super.isIdListTag(tag);
+	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_MEASUREMENT_REFS))
+			return true;
+		
+		return super.isRefList(tag);
 	}
 	
 	public int getType()
@@ -254,6 +265,7 @@ public class Indicator extends BaseObject
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
 		deepObjectRefsToCopy.addAll(getMethods());
+		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		
 		return deepObjectRefsToCopy;
 	}
