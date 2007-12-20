@@ -30,7 +30,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	
 	private boolean hasOwnedSelectedDiagramFactors()
 	{
-		Vector<DiagramFactor> selectedDiagramFactors = getSelectedNonGroupBoxDiagramFactors();
+		Vector<DiagramFactor> selectedDiagramFactors = getSelectedGroupBoxDiagramFactors();
 		for (int i = 0; i < selectedDiagramFactors.size(); ++i)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), selectedDiagramFactors.get(i).getRef());
