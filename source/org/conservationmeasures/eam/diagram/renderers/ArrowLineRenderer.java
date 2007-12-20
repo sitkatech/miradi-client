@@ -41,6 +41,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Component getRendererComponent(JGraph graphToUse, CellView cellView, boolean sel, boolean hasFocus, boolean previewMode)
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
+		diagramFontSize = ((DiagramComponent) graphToUse).getDiagramFontSize();
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
@@ -406,7 +407,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private int getSystemFontSize()
 	{
-		return getProject().getMetadata().getDiagramFontSize();
+		return diagramFontSize;
 	}
 	
 	private static final int CUSHION = 5;
@@ -414,4 +415,5 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private boolean linkSelected;
 	private String[] stressText;
+	private int diagramFontSize;
 }
