@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
@@ -123,8 +124,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
 				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
-		FactorId factorId = diagramFactor.getWrappedId();
-		doExtraSetup(factorId);
+		doExtraSetup(diagramFactor.getWrappedORef());
 
 		forceVisibleInLayerManager();
 		getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
@@ -252,7 +252,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 	}
 
-	protected void doExtraSetup(FactorId id) throws CommandFailedException
+	protected void doExtraSetup(ORef factorRef) throws CommandFailedException
 	{
 	}
 	
