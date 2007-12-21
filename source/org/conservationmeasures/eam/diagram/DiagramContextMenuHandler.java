@@ -102,12 +102,12 @@ public class DiagramContextMenuHandler
 
 	public UiMenu getGroupBoxMenu(Point menuInvokedAt)
 	{
-		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Group Box"));
-		insertMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
+		UiMenu groupBoxMenu = new UiMenu(EAM.text("Menu|Group Box"));
+		groupBoxMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
+		groupBoxMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
+		groupBoxMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
 		
-		return insertMenu;
+		return groupBoxMenu;
 	}	
 	
 	public UiMenu getInsertMenu(Point menuInvokedAt)
