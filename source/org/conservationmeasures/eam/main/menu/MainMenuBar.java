@@ -81,6 +81,7 @@ import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiMenu;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -184,12 +185,8 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTextBox.class), KeyEvent.VK_X));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
-		
 		menu.addSeparator();
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxAddFactor.class), KeyEvent.VK_R));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxRemoveFactor.class), KeyEvent.VK_P));
-		
+		menu.add(createGroupBoxMenu(actions));
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
@@ -210,7 +207,17 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 
-	
+	private JMenu createGroupBoxMenu(Actions actions)
+	{
+		UiMenu groupBoxMenu = new UiMenu(EAM.text("Menu|Group Box"));	
+		groupBoxMenu.setMnemonic(KeyEvent.VK_G);		
+		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
+		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxAddFactor.class), KeyEvent.VK_R));
+		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxRemoveFactor.class), KeyEvent.VK_P));
+			
+		return groupBoxMenu;
+	}
+		
 	private JMenu createViewMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
