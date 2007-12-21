@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
@@ -248,6 +249,47 @@ public class LinkCreator
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkId, fromId, toId);
 		
 		return diagramLinkExtraInfo;
+	}
+	
+	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
+	{
+		ORefList fromDiagramFactorRefs = getSelfOrChildren(fromDiagramFactorToUse);
+		ORefList toDiagramFactorRefs = getSelfOrChildren(toDiagramFactorToUse);
+		DiagramObject diagramObject = model.getDiagramObject();
+		for (int from = 0; from < fromDiagramFactorRefs.size(); ++from)
+		{
+			for (int to = 0; to < toDiagramFactorRefs.size(); ++to)
+			{
+				DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRefs.get(from));
+				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
+				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
+					continue;
+				
+				createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
+			}
+		}	
+	}
+	
+	public ORefList getSelfOrChildren(DiagramFactor diagramFactor)
+	{
+		ORefList diagramFactorRefs = new ORefList();
+		if (isGroupBoxFactor(diagramFactor))
+			return diagramFactor.getGroupBoxChildrenRefs();
+		
+		return diagramFactorRefs;
+	}
+	
+	public boolean isGroupBoxFactor(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.getWrappedType() == GroupBox.getObjectType())
+			return true;
+		
+		return false;
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	private Project project;
