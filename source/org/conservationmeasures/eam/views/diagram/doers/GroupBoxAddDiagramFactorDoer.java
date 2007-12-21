@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.project.Project;
 
 public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -20,18 +21,17 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!isAtLeastOneGroupBoxSelected())
 			return false;
 		
-		if (hasOwnedSelectedDiagramFactors())
+		if (hasOwnedSelectedDiagramFactors(getProject(), extractNonGroupBoxDiagramFactors()))
 			return false;
 		
 		return true;
 	}
 	
-	private boolean hasOwnedSelectedDiagramFactors()
+	public static boolean hasOwnedSelectedDiagramFactors(Project project, ORefList selectedDiagramFactorsRefs)
 	{
-		ORefList selectedDiagramFactorsRefs = extractNonGroupBoxDiagramFactors();
 		for (int i = 0; i < selectedDiagramFactorsRefs.size(); ++i)
 		{
-			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), selectedDiagramFactorsRefs.get(i));
+			DiagramFactor diagramFactor = DiagramFactor.find(project, selectedDiagramFactorsRefs.get(i));
 			ORef owningGroupBox = diagramFactor.getOwningGroupBox();
 			if (!owningGroupBox.isInvalid())
 				return true;
