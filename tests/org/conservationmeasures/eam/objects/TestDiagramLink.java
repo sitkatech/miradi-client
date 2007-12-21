@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.awt.Point;
+import java.util.Set;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -23,6 +24,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -154,6 +156,17 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("bend points not added?", 3, diagramLink.getBendPoints().size());
 		assertEquals("bend point doestn exist?", true, diagramLink.bendPointAlreadyExists(new Point(1, 1)));
 		assertEquals("bend point doestn exist?", false, diagramLink.bendPointAlreadyExists(new Point(4, 4)));
+	}
+	
+	public void testGetReferencedObjectTags() throws Exception
+	{
+		ORef diagramLinkRef = project.createDiagramLink();
+		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
+		Set<String> refererTags = diagramLink.getReferencedObjectTags();
+		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID));
+		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID));
+		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_WRAPPED_ID));
+		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS));
 	}
 
 	ProjectForTesting project;
