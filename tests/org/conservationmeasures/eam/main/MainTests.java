@@ -52,7 +52,7 @@ import org.conservationmeasures.eam.objects.TestConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestCostAllocationRule;
 import org.conservationmeasures.eam.objects.TestDiagramContentsObject;
-import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
+import org.conservationmeasures.eam.objects.TestDiagramLink;
 import org.conservationmeasures.eam.objects.TestDiagramObject;
 import org.conservationmeasures.eam.objects.TestFactor;
 import org.conservationmeasures.eam.objects.TestFactorLink;
@@ -232,7 +232,7 @@ public class MainTests extends TestCase
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
 		suite.addTest(new TestSuite(TestCause.class));
-		suite.addTest(new TestSuite(TestDiagramFactorLink.class));
+		suite.addTest(new TestSuite(TestDiagramLink.class));
 		suite.addTest(new TestSuite(TestFactorLink.class));
 		suite.addTest(new TestSuite(TestFactor.class));
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
