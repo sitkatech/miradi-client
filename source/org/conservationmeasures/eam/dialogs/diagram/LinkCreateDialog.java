@@ -46,7 +46,7 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 {
 	public LinkCreateDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{
-		super(parent, EAM.text("Title|Link Properties"));
+		super(parent, EAM.text("Title|Link Create Dialog"));
 		
 		diagramPanel = panelToUse;
 		UiVBox bigBox = new UiVBox();
