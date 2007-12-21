@@ -391,7 +391,7 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			try
 			{
-				FactorCell factor = getFactorCellById(ids[0]);
+				FactorCell factor = getFactorCellById(ids[i]);
 				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)
