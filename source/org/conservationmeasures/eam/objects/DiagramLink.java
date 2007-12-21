@@ -13,12 +13,14 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 
@@ -113,6 +115,8 @@ public class DiagramLink extends BaseObject
 		set.add(TAG_FROM_DIAGRAM_FACTOR_ID);
 		set.add(TAG_TO_DIAGRAM_FACTOR_ID);
 		set.add(TAG_WRAPPED_ID);
+		set.add(TAG_GROUPED_DIAGRAM_LINK_REFS);
+		
 		return set;
 	}
 	
@@ -189,6 +193,16 @@ public class DiagramLink extends BaseObject
 		return bendPoints.getPointList();
 	}
 	
+	public static DiagramLink find(ObjectManager objectManager, ORef diagramLinkRef)
+	{
+		return (DiagramLink) objectManager.findObject(diagramLinkRef);
+	}
+	
+	public static DiagramLink find(Project project, ORef diagramLinkRef)
+	{
+		return find(project.getObjectManager(), diagramLinkRef);
+	}
+		
 	void clear()
 	{
 		super.clear();
@@ -197,17 +211,20 @@ public class DiagramLink extends BaseObject
 		fromId = new BaseIdData(DiagramFactor.getObjectType());
 		toId = new BaseIdData(DiagramFactor.getObjectType());
 		bendPoints = new PointListData();
+		groupedDiagramLinkRefs = new ORefListData();
 		
 		addNoClearField(TAG_WRAPPED_ID, underlyingObjectId);
 		addNoClearField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
 		addNoClearField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 		addField(TAG_BEND_POINTS, bendPoints);
+		addField(TAG_GROUPED_DIAGRAM_LINK_REFS, groupedDiagramLinkRefs);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	public static final String TAG_BEND_POINTS = "BendPoints";
+	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
 	
 	static final String OBJECT_NAME = "DiagramLink";
 	
@@ -215,4 +232,5 @@ public class DiagramLink extends BaseObject
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private PointListData bendPoints;
+	private ORefListData groupedDiagramLinkRefs;
 }

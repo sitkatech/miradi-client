@@ -300,9 +300,14 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public BaseId createDiagramFactorLink() throws Exception
 	{
+		return createDiagramLink().getObjectId();
+	}
+
+	public ORef createDiagramLink() throws Exception
+	{
 		DiagramFactor from = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		return createDiagramFactorLink(from, to);
+		return createDiagramLink(from, to);
 	}
 
 	public ORef createDiagramLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
