@@ -29,8 +29,11 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		super.doExtraSetup(groupBoxDiagramFactor, selectedFactorCells);
 		if (!containsAllAcceptableDiagramFactors(selectedFactorCells))
 			return;
-				
+		
 		ORefList selectedDiagramFactorRefs = extractDiagramFactorRefs(selectedFactorCells);
+		if (GroupBoxAddDiagramFactorDoer.hasOwnedSelectedDiagramFactors(getProject(), selectedDiagramFactorRefs))
+			return;
+		
 		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, selectedDiagramFactorRefs);
 		getProject().executeCommand(appendCommand);
 	}
