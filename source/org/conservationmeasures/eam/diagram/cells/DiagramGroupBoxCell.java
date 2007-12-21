@@ -168,6 +168,9 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_LOCATION))
 			autoSurroundChildren();
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_SIZE))
+			autoSurroundChildren();
 	}
 
 	private final static int SIDE_MARGIN = 5;
