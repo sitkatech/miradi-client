@@ -30,9 +30,9 @@ import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.TestLinkBendPointsMoveHandler;
 
-public class TestDiagramFactorLink extends ObjectTestCase
+public class TestDiagramLink extends ObjectTestCase
 {
-	public TestDiagramFactorLink(String name)
+	public TestDiagramLink(String name)
 	{
 		super(name);
 	}
