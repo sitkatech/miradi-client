@@ -272,11 +272,10 @@ public class LinkCreator
 	
 	public ORefList getSelfOrChildren(DiagramFactor diagramFactor)
 	{
-		ORefList diagramFactorRefs = new ORefList();
 		if (isGroupBoxFactor(diagramFactor))
 			return diagramFactor.getGroupBoxChildrenRefs();
 		
-		return diagramFactorRefs;
+		return new ORefList(diagramFactor.getRef());
 	}
 	
 	public boolean isGroupBoxFactor(DiagramFactor diagramFactor)
