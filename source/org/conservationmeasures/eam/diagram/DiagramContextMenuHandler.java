@@ -74,6 +74,7 @@ public class DiagramContextMenuHandler
 		
 		menu.addSeparator();
 		menu.add(getInsertMenu(menuInvokedAt));
+		menu.add(getGroupBoxMenu(menuInvokedAt));
 		menu.add(createMenuItem(ActionCreateBendPoint.class, menuInvokedAt));
 		
 		MainWindowAction objectsAction = actions.getMainWindowAction(ActionDeleteBendPoint.class);
@@ -99,6 +100,16 @@ public class DiagramContextMenuHandler
 		return menu;
 	}
 
+	public UiMenu getGroupBoxMenu(Point menuInvokedAt)
+	{
+		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Group Box"));
+		insertMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
+		
+		return insertMenu;
+	}	
+	
 	public UiMenu getInsertMenu(Point menuInvokedAt)
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
@@ -110,11 +121,6 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
-		
-		insertMenu.addSeparator();
-		insertMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
 		
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
