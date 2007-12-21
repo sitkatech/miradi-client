@@ -7,10 +7,10 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ViewData;
 
@@ -47,9 +47,9 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 		return EAM.text("Label|New Draft Strategy");
 	}
 
-	protected void doExtraSetup(ORef factorRef) throws CommandFailedException
+	protected void doExtraSetup(DiagramFactor diagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
-		CommandSetObjectData setStatusCommand = new CommandSetObjectData(factorRef, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		CommandSetObjectData setStatusCommand = new CommandSetObjectData(diagramFactor.getWrappedORef(), Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
 	}
 
