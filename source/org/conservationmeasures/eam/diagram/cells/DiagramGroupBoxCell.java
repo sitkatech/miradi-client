@@ -138,6 +138,7 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
+		autoSurroundChildren();
 	}
 
 	public void factorChanged(DiagramModelEvent event)
