@@ -140,9 +140,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public void ensureObjectVisible(ORef ref)
 	{
-		// TODO Auto-generated method stub
-		// we should scroll the table as needed to make this 
-		// probably-newly-created object visible
+		setSelectedRow(ref);
 	}
 
 	public void addSelectionChangeListener(ListSelectionListener listener)
