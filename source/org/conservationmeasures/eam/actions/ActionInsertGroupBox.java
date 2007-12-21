@@ -18,11 +18,11 @@ public class ActionInsertGroupBox extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Insert Group Box");
+		return EAM.text("Action|Insert|Create Group Box");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Group Box");
+		return EAM.text("TT|Create a Group Box");
 	}
 }
