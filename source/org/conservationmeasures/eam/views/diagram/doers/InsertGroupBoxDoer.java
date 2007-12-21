@@ -5,10 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramGroupBoxCell;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.views.diagram.InsertFactorDoer;
 
@@ -22,10 +24,37 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		return true;
 	}
 	
-	protected void doExtraSetup(ORef factorRef) throws CommandFailedException
+	protected void doExtraSetup(DiagramFactor groupBoxDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
-		super.doExtraSetup(factorRef);
+		super.doExtraSetup(groupBoxDiagramFactor, selectedFactorCells);
+		if (!containsAllAcceptableDiagramFactors(selectedFactorCells))
+			return;
+				
+		ORefList selectedDiagramFactorRefs = extractDiagramFactorRefs(selectedFactorCells);
+		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, selectedDiagramFactorRefs);
+		getProject().executeCommand(appendCommand);
+	}
+	
+	private ORefList extractDiagramFactorRefs(FactorCell[] factorCells)
+	{
+		ORefList diagramFactorRefs = new ORefList();
+		for (int i = 0; i < factorCells.length; ++i)
+		{
+			diagramFactorRefs.add(factorCells[i].getDiagramFactorRef());
+		}
 		
+		return diagramFactorRefs;
+	}
+	
+	private boolean containsAllAcceptableDiagramFactors(FactorCell[] selectedFactorCells)
+	{
+		for (int i = 0; i < selectedFactorCells.length; ++i)
+		{
+			if (!AbstractGroupBoxDoer.isAcceptableDiagramFactor(selectedFactorCells[i].getWrappedType()))
+					return false;
+		}
+		
+		return true;
 	}
 	
 	public void forceVisibleInLayerManager()

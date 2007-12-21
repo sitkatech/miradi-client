@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
@@ -52,7 +51,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return;
 		
 		Project project = getProject();
-		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+		FactorCell[] selectedFactors = getSelectedFactorCells();
 		DiagramFactor diagramFactor = null;
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -72,7 +71,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		try
 		{
 			FactorId id = diagramFactor.getWrappedId();
-			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET))
+			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
 			{
 				// NOTE: Set up a second transaction, so the link creation is independently undoable
 				project.executeCommand(new CommandBeginTransaction());
@@ -100,6 +99,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 		}
 	}
 	
+	protected FactorCell[] getSelectedFactorCells()
+	{
+		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+	}
+	
 	protected void selectNewFactor(FactorId idToUse)
 	{
 		getDiagramView().getDiagramPanel().selectFactor(idToUse);
@@ -115,7 +119,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point createAt = getLocation();
 		Project project = getProject();
 		int factorType = getTypeToInsert();
-		FactorCell[] selectedNodes = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+		FactorCell[] selectedNodes = getSelectedFactorCells();
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize(factorType).width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
 		
@@ -124,7 +128,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
 				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
-		doExtraSetup(diagramFactor.getWrappedORef());
+		doExtraSetup(diagramFactor, selectedNodes);
 
 		forceVisibleInLayerManager();
 		getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
@@ -252,7 +256,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 	}
 
-	protected void doExtraSetup(ORef factorRef) throws CommandFailedException
+	protected void doExtraSetup(DiagramFactor newlyInserteddiagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
 	}
 	

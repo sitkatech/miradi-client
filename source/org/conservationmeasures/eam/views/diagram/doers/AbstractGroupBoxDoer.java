@@ -108,7 +108,8 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return nonGroupBoxDiagramFactorRefs;
 	}
 
-	private boolean isAcceptableDiagramFactor(int type)
+	//TODO rename,  isAcceptableFactor
+	public static boolean isAcceptableDiagramFactor(int type)
 	{
 		return (type == Target.getObjectType() || 
 				type == Cause.getObjectType() || 
