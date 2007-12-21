@@ -15,10 +15,14 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorMoveHandler
@@ -29,18 +33,28 @@ public class FactorMoveHandler
 		model = modelToUse;
 	}
 
+	//TODO this is for tesing purposes, change testing to have deltas
 	public void factorsWereMovedOrResized(DiagramFactorId[] ids) throws CommandFailedException
+	{
+		factorsWereMovedOrResized(ids, 0, 0);
+	}
+	
+	public void factorsWereMovedOrResized(DiagramFactorId[] ids, int deltaX, int deltaY) throws CommandFailedException
 	{
 		try 
 		{
 			model.factorsWereMoved(ids);
-
+			
+			ORefList diagramFactorRefs = new ORefList(DiagramFactor.getObjectType(), new IdList(DiagramFactor.getObjectType(), ids));
 			Vector commandsToExecute = new Vector();
-			for(int i = 0 ; i < ids.length; ++i)
+			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
-				FactorCell node = model.getFactorCellById(ids[i]);
+				FactorCell node = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
 				if(node.hasMoved())
+				{
 					commandsToExecute.add(buildMoveCommand(node));
+					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, node, deltaX, deltaY));
+				}
 
 				if(node.sizeHasChanged())
 					commandsToExecute.add(buildResizeCommand(node));
@@ -78,6 +92,31 @@ public class FactorMoveHandler
 			throw new CommandFailedException(e);
 		}
 
+	}
+
+	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell node, int deltaX, int deltaY)
+	{
+		Vector<Command> commandsToMove = new Vector();
+		if (node.getWrappedType() != GroupBox.getObjectType())
+			return new Vector();
+		
+		ORefList groupChildRefs = node.getDiagramFactor().getGroupBoxChildrenRefs();
+		for (int i = 0; i < groupChildRefs.size(); ++i)
+		{
+			ORef groupChildRef = groupChildRefs.get(i);
+			if (diagramFactorRefs.contains(groupChildRef))
+				continue;
+			
+			DiagramFactor groupChild = DiagramFactor.find(getProject(), groupChildRef);
+			Point currentLocation = (Point) groupChild.getLocation().clone();
+			currentLocation.translate(deltaX, deltaY);
+			Point snappedLocation = getProject().getSnapped(currentLocation);
+			String snappedLocationAsJson = EnhancedJsonObject.convertFromPoint(snappedLocation);
+			//FIXME DO not use new DiagramFactorId(ref.asInt);
+			commandsToMove.add(new CommandSetObjectData(DiagramFactor.getObjectType(), new DiagramFactorId(groupChildRef.getObjectId().asInt()), DiagramFactor.TAG_LOCATION, snappedLocationAsJson));
+		}
+				
+		return commandsToMove;
 	}
 
 	private Object buildMoveCommand(FactorCell node)

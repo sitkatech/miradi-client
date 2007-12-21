@@ -138,17 +138,14 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
-		autoSurroundChildren();
 	}
 
 	public void factorChanged(DiagramModelEvent event)
 	{
-		autoSurroundChildren();
 	}
 
 	public void factorDeleted(DiagramModelEvent event)
 	{
-		autoSurroundChildren();
 	}
 
 	public void factorMoved(DiagramModelEvent event)
@@ -166,6 +163,9 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+			autoSurroundChildren();
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_LOCATION))
 			autoSurroundChildren();
 	}
 
