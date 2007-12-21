@@ -5,14 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.JCheckBox;
-
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ViabilityRatingsTableField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -41,7 +34,8 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
-		addField(createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD)));
+		ratingThresholdTable = createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
+		addField(ratingThresholdTable);
 		updateFieldsFromProject();
 	}
 	
@@ -50,7 +44,7 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		return EAM.text("Title|Indicator Properties");
 	}
 
-	public ObjectDataInputField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
+	public ViabilityRatingsTableField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
 	{
 		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
 	}	
@@ -68,28 +62,9 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		
 		if (areIndicatorMeasurementFields)
 		{
-			CommandSetObjectData  command = (CommandSetObjectData) event.getCommand();
-			indicatorThreshold.setIconRowObject(command.getObjectORef());
+			ratingThresholdTable.dataHasChanged();
 		}
 	}
 	
-	class OptionThresholdChangeListener implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			JCheckBox check = (JCheckBox)event.getSource();
-			indicatorThreshold.showThreshold(check.isSelected());
-		}
-	}
-	
-	class OptionStatusChangeListener implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			JCheckBox check = (JCheckBox)event.getSource();
-			indicatorThreshold.showStatus(check.isSelected());
-		}
-	}
-	
-	private ViabilityRatingsTableField indicatorThreshold;
+	private ViabilityRatingsTableField ratingThresholdTable;
 }

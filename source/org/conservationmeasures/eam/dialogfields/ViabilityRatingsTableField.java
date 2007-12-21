@@ -10,215 +10,357 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextField;
+import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
+import org.conservationmeasures.eam.utils.ColumnTagProvider;
+import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
+import org.conservationmeasures.eam.utils.StringMapData;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
+import org.martus.swing.UiScrollPane;
 
-public class ViabilityRatingsTableField extends ObjectStringMapTableField
+public class ViabilityRatingsTableField extends ObjectDataInputField
 {
 
 	public ViabilityRatingsTableField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse);
-		model = (DefaultTableModel)table.getModel();
-		model.insertRow(1, new String[]{});
-		model.insertRow(2, new String[]{});
+		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		question = questionToUse;
-		table.setDefaultRenderer(Object.class, new TableCellRenderer());
-		table.getTableHeader().setDefaultRenderer(new HeaderRenderer());
-		table.setShowHorizontalLines(false);
-		table.setIntercellSpacing(new Dimension(3,0));
-		currentRowHeight = table.getRowHeight();
-		showStatus = true;
-	}
-	
-	public void setIconRow()
-	{	
-		if (getORef().isInvalid())
-			return;
+		model = new MyTableModel(question);
+		table = new MyTable(model);
 		
-		Indicator indicator = (Indicator) getProject().findObject(getORef());
-		futureStatusSummary = indicator.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		futureStatusCode = indicator.getData(Indicator.TAG_FUTURE_STATUS_RATING);
-		
-		ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
-		if (latestMeasurementRef.isInvalid())
-		{
-			clearIconRows();
-			return;
-		}
-		
-		Measurement latestMeasurement = (Measurement) getProject().findObject(latestMeasurementRef);
-		measurementSummary = latestMeasurement.getData(Measurement.TAG_SUMMARY);
-		measurementStatusCode = latestMeasurement.getData(Measurement.TAG_STATUS);
-		measurementTrendCode = latestMeasurement.getData(Measurement.TAG_TREND);
+		UiScrollPane requiredToMakeTableHeaderVisible = new UiScrollPane(table);
+		requiredToMakeTableHeaderVisible.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		requiredToMakeTableHeaderVisible.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		component = requiredToMakeTableHeaderVisible;
+
 	}
 	
-	public void showThreshold(boolean show)
+	
+	public JComponent getComponent()
 	{
-		if (show)
+		return component;
+	}
+
+
+	public String getText()
+	{
+		try
 		{
-			table.setRowHeight(0, currentRowHeight);
+			return model.getText();
 		}
-		else
+		catch(Exception e)
 		{
-			table.setRowHeight(0, 1);
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	public void setText(String dataString)
+	{
+		try
+		{
+			table.editingCanceled(null);
+			table.clearSelection();
+			model.setText(dataString);
+			table.repaint();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
 		}
 	}
 	
-	public void showStatus(boolean show)
+	public void updateEditableState()
 	{
-		showStatus = show;
-		if (show)
+		boolean editable = allowEdits() && isValidObject();
+		table.setEnabled(editable);
+		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		if(!editable)
 		{
-			table.setRowHeight(1, currentRowHeight);
-			table.setRowHeight(2, currentRowHeight);
+			fg = EAM.READONLY_FOREGROUND_COLOR;
+			bg = EAM.READONLY_BACKGROUND_COLOR;
 		}
-		else
-		{
-			table.setRowHeight(1, 1);
-			table.setRowHeight(2, 1);
-		}
+		table.setForeground(fg);
+		table.setBackground(bg);
+	}
+
+	public void saveSelection()
+	{
+		setNeedsSave();
+		saveIfNeeded();
 	}
 	
-	public void setObjectId(BaseId newId)
+	public void dataHasChanged()
 	{
-		super.setObjectId(newId);
-		if (newId!=BaseId.INVALID)
-			setIconRowObject(new ORef(Indicator.getObjectType(), newId));
-		else 
-			setIconRowObject(null);
-	}
-	
-	public void setIconRowObject(ORef oref)
-	{
-		if (oref==null)
-			clearIconRows();
-		else
-			setIconRow();
-		
 		table.repaint();
 	}
 	
-	private void clearIconRows()
+	
+	class MyTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 	{
-		measurementStatusCode = "";
-		futureStatusCode = "";
-		
-		for (int i=0; i<4; ++i)
+		public MyTableModel(ChoiceQuestion questionToUse)
 		{
-			model.setValueAt("", 1, i);
-			model.setValueAt("", 2, i);
+			question = questionToUse;
+			trendQuestion = new TrendQuestion("");
+			data = new StringMapData();
 		}
+		
+		public int getColumnCount()
+		{
+			return columnCodes.length;
+		}
+
+		public int getRowCount()
+		{
+			return 3;
+		}
+
+		public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+		{
+			if(!isThresholdRow(rowIndex))
+			{
+				EAM.logWarning("Attempted to setValueAt for row " + rowIndex);
+				return;
+			}
+			
+			String code = getChoiceItem(columnIndex).getCode();
+			data.add(code, (String)aValue);
+			saveSelection();
+		}
+		
+		public Object getValueAt(int rowIndex, int columnIndex)
+		{
+			
+			if(isThresholdRow(rowIndex))
+				return getThresholdValue(columnIndex);
+			if(rowIndex == 1)
+				return getCurrentStatus(columnIndex);
+			if(rowIndex == 2)
+				return getFutureStatus(columnIndex);
+			
+			EAM.logError("Unknown row: " + rowIndex);
+			return null;
+		}
+
+		private Object getThresholdValue(int columnIndex)
+		{
+			String code = getChoiceItem(columnIndex).getCode();
+			return data.get(code);
+		}
+
+		private Object getCurrentStatus(int columnIndex)
+		{
+			Indicator indicator = getIndicator();
+			ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
+			if(latestMeasurementRef.isInvalid())
+				return null;
+			Measurement measurement = (Measurement)getProject().findObject(latestMeasurementRef);
+			String statusCode = measurement.getData(Measurement.TAG_STATUS);
+			if(!statusCode.equals(getChoiceItem(columnIndex).getCode()))
+				return null;
+			String summary = measurement.getData(Measurement.TAG_SUMMARY);
+			String trendCode = measurement.getData(Measurement.TAG_TREND);
+			Icon trendIcon = trendQuestion.findChoiceByCode(trendCode).getIcon();
+			
+			// FIXME: After renderer is fixed, return ChoiceItem
+			//return new ChoiceItem(summary, summary, trendIcon);
+			return new JLabel(summary, trendIcon, SwingConstants.LEADING);
+		}
+
+		private Indicator getIndicator()
+		{
+			return (Indicator) getProject().findObject(getORef());
+		}
+
+		private Object getFutureStatus(int columnIndex)
+		{
+			Indicator indicator = getIndicator();
+			if(indicator == null)
+				return null;
+			String futureStatusCode = indicator.getData(Indicator.TAG_FUTURE_STATUS_RATING);
+			if(!futureStatusCode.equals(getChoiceItem(columnIndex).getCode()))
+				return null;
+			String futureValue = indicator.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+
+			// FIXME: After renderer is fixed, return ChoiceItem
+//			return new ChoiceItem(futureValue, futureValue, new GoalIcon());
+			return new JLabel(futureValue, new GoalIcon(), SwingConstants.LEADING);
+
+		}
+
+		public String getColumnTag(int column)
+		{
+			return getChoiceItem(column).getCode();
+		}
+
+		public String getColumnName(int column)
+		{
+			return getChoiceItem(column).getLabel();
+		}
+		
+		public void setText(String newData) throws Exception
+		{
+			data.set(newData);
+		}
+		
+		public String getText()
+		{
+			return data.get();
+		}
+		
+		public boolean isCellEditable(int rowIndex, int columnIndex)
+		{
+			return isThresholdRow(rowIndex);
+		}
+		
+		public BaseObject getBaseObjectForRowColumn(int row, int column)
+		{
+			return getIndicator();
+		}
+
+		public boolean isThresholdRow(int row)
+		{
+			return (row == 0);
+		}
+
+		private ChoiceItem getChoiceItem(int column)
+		{
+			return question.findChoiceByCode(columnCodes[column]);
+		}
+		
+		private String[] columnCodes =  {
+				StatusQuestion.POOR,
+				StatusQuestion.FAIR,
+				StatusQuestion.GOOD,
+				StatusQuestion.VERY_GOOD,
+		};
+
+		private ChoiceQuestion question;
+		private TrendQuestion trendQuestion;
+		private StringMapData data;
 	}
 		
-	class TableCellRenderer extends DefaultTableCellRenderer
+	class MyTable extends TableWithColumnWidthSaver
+	{
+		public MyTable(MyTableModel model)
+		{
+			super(model);
+			setSingleCellEditor();
+			Dimension preferredSize = getPreferredSize();
+			preferredSize.width = 600;
+			setPreferredScrollableViewportSize(preferredSize);
+			measurementRenderer = new JLabelRenderer();
+			getTableHeader().setDefaultRenderer(new HeaderRenderer());
+
+		}
+		
+		public String getUniqueTableIdentifier()
+		{
+			return UNIQUE_IDENTIFIER;
+		}
+
+		public Component prepareEditor(TableCellEditor editor, int row, int column)
+		{
+			Component c = super.prepareEditor(editor, row, column);
+			if (c instanceof JTextComponent)
+			{
+				if (row==0)
+				{
+					((JTextField)c).selectAll();
+				}
+			}
+
+			return c;
+		}
+
+		public TableCellRenderer getCellRenderer(int row, int column)
+		{
+			if(model.isThresholdRow(row))
+				return super.getCellRenderer(row, column);
+			return measurementRenderer;
+		}
+
+		public boolean isCellEditable(int row, int column)
+		{
+			return (row==0);
+		}
+		
+		private void setSingleCellEditor()
+		{
+			int colCount = question.getChoices().length-1;
+			for (int i = 0; i < colCount; i++)
+			{
+				TableColumn column = getColumnModel().getColumn(i);
+				column.setCellEditor(new SingleClickAutoSelectCellEditor(new PanelTextField()));
+			}
+		}
+		
+		private JLabelRenderer measurementRenderer;
+	
+		public static final String UNIQUE_IDENTIFIER = "IndicatorRatingsTable";
+
+	}
+	
+	// FIXME: This should really be very similar to MeasurementValueRenderer,
+	// and the model should return ChoiceItems instead of JLabels
+	class JLabelRenderer extends DefaultTableCellRenderer
 	{
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
-				boolean isSelected, boolean hasFocus, int row, int column)
+					boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			JComponent comp =  new PanelTextField(value.toString());
-			((JTextField)comp).setHorizontalAlignment(JTextField.CENTER);
-
+			JComponent label = (JComponent)value;
+			if(label == null)
+				return null;
 			
-			if ((row==1) && validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
-			{
-				if (showStatus) 
-					comp =  new JLabel(measurementSummary, getTrendIcon(), JLabel.CENTER);
-			}
-			
-			if ((row==2) && validCode(futureStatusCode)  && Integer.parseInt(futureStatusCode)-1 == column)
-			{
-				if (showStatus) 
-					comp =  new JLabel(futureStatusSummary, new GoalIcon(), JLabel.CENTER);
-			}
-
-			if (row!=0)
-				comp.setBorder(null);
-			else
-				comp.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY));
-			
-			return getComponent(comp, column);
-		}
-
-		private Icon getTrendIcon()
-		{
-			return new TrendQuestion(Measurement.TAG_TREND).findChoiceByCode(measurementTrendCode).getIcon();
+			return label;
 		}
 		
-		private JComponent getComponent(JComponent comp, int column)
-		{
-			if (validCode(measurementStatusCode) && Integer.parseInt(measurementStatusCode)-1 == column)
-			{
-				comp.setOpaque(true);
-				comp.setBackground(question.getChoices()[Integer.parseInt(measurementStatusCode)].getColor());
-			}
-			updateEditableState(comp);
-			return comp;
-		}
-
-		private boolean validCode(String code)
-		{
-			try
-			{
-				Integer.parseInt(code);
-			}
-			catch (Exception e)
-			{
-				return false;
-			}
-			return true;
-		}
-		
-		public void updateEditableState(JComponent comp)
-		{
-			boolean editable = allowEdits() && isValidObject();
-			comp.setEnabled(editable);
-			if(!editable)
-			{
-				comp.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-				comp.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-			}
-		}
 	}
 	
 	class HeaderRenderer extends DefaultTableCellRenderer
 	{
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value,
-				boolean isSelected, boolean hasFocus, int row, int column)
+				boolean isSelected, boolean hasFocus, int row, int tableColumn)
 		{
 			setOpaque(false);
 			JTextField field = new PanelTextField((String)value);
 			field.setFont(field.getFont().deriveFont(Font.BOLD));
 			field.setHorizontalAlignment(JTextField.CENTER);
-			field.setBackground(question.getChoices()[column+1].getColor());
+			int modelColumn = tableToUse.convertColumnIndexToModel(tableColumn);
+			field.setBackground(model.getChoiceItem(modelColumn).getColor());
 			return field;
 		}
 	}
 	
-	private boolean showStatus;
-	private String measurementStatusCode;
-	private String measurementSummary;
-	private String measurementTrendCode;
-	private String futureStatusCode;
-	private String futureStatusSummary;
 	private ChoiceQuestion question;
-	private DefaultTableModel model;
-	private int currentRowHeight;
+	private MyTable table;
+	private MyTableModel model;
+	private JComponent component;
 }
