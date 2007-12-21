@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramGroupBoxCell;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.views.diagram.InsertFactorDoer;
 
@@ -18,6 +20,12 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 			return false;
 				
 		return true;
+	}
+	
+	protected void doExtraSetup(ORef factorRef) throws CommandFailedException
+	{
+		super.doExtraSetup(factorRef);
+		
 	}
 	
 	public void forceVisibleInLayerManager()
