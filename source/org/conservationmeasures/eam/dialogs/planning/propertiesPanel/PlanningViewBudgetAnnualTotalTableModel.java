@@ -93,12 +93,24 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	private Object getYearlyTotal(TreeTableNode node, int column) throws Exception
 	{	
-		DateRange dateRange = (DateRange)yearlyDateRanges.get(column);
-        double yearlyTotal = totalCalculator.calculateTotalCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
+		if (isBudgetOverrideMode(node))
+			return "";
+		
+		DateRange dateRange = (DateRange)yearlyDateRanges.get(column);	
+		double yearlyTotal = totalCalculator.calculateTotalCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
         if (yearlyTotal == 0)
         	return "";
         
 		return  currencyFormatter.format(yearlyTotal);
+	}
+
+	private boolean isBudgetOverrideMode(TreeTableNode node)
+	{
+		if (node.getType() != Task.getObjectType())
+			return false;
+
+		Task task = (Task) node.getObject();
+		return task.isBudgetOverrideMode();
 	}
 
 	private double getCostAllocationProportion(TreeTableNode node)
@@ -111,6 +123,9 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 	private Object getCost(TreeTableNode node) throws Exception
 	{
+		if (isBudgetOverrideMode(node))
+			return ((Task)node.getObject()).getBudgetCostOverrideAsParsedString();
+		
 		double totalCost = totalCalculator.calculateTotalCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
 		if (totalCost == 0)
         	return "";
