@@ -87,9 +87,9 @@ public class ChoiceItem
 
 
 
-	boolean selectable;
-	String code;
-	String label;
-	Color color;
-	Icon icon;
+	private boolean selectable;
+	private String code;
+	private String label;
+	private Color color;
+	private Icon icon;
 }
