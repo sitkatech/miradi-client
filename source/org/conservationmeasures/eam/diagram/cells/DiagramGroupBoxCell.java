@@ -20,8 +20,6 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
@@ -29,14 +27,12 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedListener, DiagramModelListener
+public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
 	public DiagramGroupBoxCell(DiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactor)
 	{
 		super(groupBox, diagramFactor);
 		model = modelToUse;
-		
-		getProject().addCommandExecutedListener(this);
 		
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -44,7 +40,7 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 
 		model.addDiagramModelListener(this);
 	}
-
+	
 	public void setText(String text)
 	{
 		setUserObject(text);
@@ -161,18 +157,6 @@ public class DiagramGroupBoxCell extends FactorCell implements CommandExecutedLi
 	{
 	}
 	
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
-			autoSurroundChildren();
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_LOCATION))
-			autoSurroundChildren();
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_SIZE))
-			autoSurroundChildren();
-	}
-
 	private final static int SIDE_MARGIN = 5;
 	private final static int BOTTOM_MARGIN = 5;
 	
