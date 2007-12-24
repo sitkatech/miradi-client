@@ -218,6 +218,11 @@ public class Task extends BaseObject
 		return findObjectsThatReferToUs().size() > 1;
 	}
 
+	public boolean isBudgetOverrideMode()
+	{
+		return (budgetCostOverride.get().length() != 0);
+	}
+	
 	public void addSubtaskId(BaseId subtaskId)
 	{
 		subtaskIds.add(subtaskId);
@@ -353,6 +358,20 @@ public class Task extends BaseObject
 			return METHOD_NAME;
 		
 		return OBJECT_NAME;
+	}
+	
+	public String getBudgetCostOverrideAsParsedString()
+	{
+		try
+		{
+			Double.parseDouble(budgetCostOverride.get());
+			return budgetCostOverride.get();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	private String getTaskCost()
