@@ -19,7 +19,7 @@ public class TestChoiceQuestion extends TestCaseWithProject
 	
 	public void testFindChoiceByLabel()
 	{
-		DiagramFactorFontColorQuestion fontColorQuestion = new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FONT_COLOR);
+		DiagramFactorFontColorQuestion fontColorQuestion = new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR);
 		assertEquals("wrong choice?", null, fontColorQuestion.findChoiceByLabel("invalidLabel"));
 		assertEquals(new ChoiceItem("#FFFFFF", "White", Color.WHITE), fontColorQuestion.findChoiceByLabel("White"));
 	}

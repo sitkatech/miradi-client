@@ -227,8 +227,8 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
 		commands.add(setFontSizeCommand);
 		
-		String fontColorAsString = json.optString(TAG_FONT_COLOR);
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_COLOR, fontColorAsString);
+		String fontColorAsString = json.optString(TAG_FOREGROUND_COLOR);
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FOREGROUND_COLOR, fontColorAsString);
 		commands.add(setFontColorCommand);
 
 		String fontStyleAsString = json.optString(TAG_FONT_STYLE);
@@ -256,7 +256,7 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, fontSize.get());
 		commands.add(setFontSizeCommand);
 		
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_COLOR, fontColor.get());
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FOREGROUND_COLOR, fontColor.get());
 		commands.add(setFontColorCommand);
 		
 		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, fontStyle.get());
@@ -300,7 +300,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_LOCATION, location);
 		addField(TAG_WRAPPED_REF, underlyingObjectRef);
 		addField(TAG_FONT_SIZE, fontSize);
-		addField(TAG_FONT_COLOR, fontColor);
+		addField(TAG_FOREGROUND_COLOR, fontColor);
 		addField(TAG_FONT_STYLE, fontStyle);
 		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
 		addField(TAG_BACKGROUND_COLOR, backgroundColor);
@@ -310,7 +310,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_SIZE = "Size";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
 	public static final String TAG_FONT_SIZE = "FontSize";
-	public static final String TAG_FONT_COLOR = "FontColor";
+	public static final String TAG_FOREGROUND_COLOR = "FontColor";
 	public static final String TAG_FONT_STYLE = "FontStyle";
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "Color";
