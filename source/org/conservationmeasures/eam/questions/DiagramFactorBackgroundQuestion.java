@@ -20,19 +20,19 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Light Gray (Default)", DiagramConstants.TEXT_BOX_COLOR),
-			new ChoiceItem("1", "Black", new Color(0, 0, 0)),
-			new ChoiceItem("2", "Dark Gray", new Color(78, 72, 72)),
-			new ChoiceItem("3", "Brown", new Color(200, 90, 23)),
-			new ChoiceItem("4", "Tan", new Color(237, 226, 117)),
-			new ChoiceItem("5", "White", new Color(255, 255, 255)),
-			new ChoiceItem("6", "Red", new Color(255, 0, 0)),
-			new ChoiceItem("7", "Pink", new Color(255, 0, 255)),
-			new ChoiceItem("8", "Orange", new Color(255, 128, 64)),
-			new ChoiceItem("9", "Yellow", new Color(255, 255, 0)),
-			new ChoiceItem("10", "Dark Green", new Color(37, 65, 23)),
-			new ChoiceItem("11", "Light Green", new Color(95, 251, 23)),
-			new ChoiceItem("12", "Dark Blue", new Color(0, 0, 204)),
-			new ChoiceItem("13", "Light Blue", new Color(0, 204, 255)),
+			new ChoiceItem("Black", "Black", new Color(0, 0, 0)),
+			new ChoiceItem("DarkGray", "Dark Gray", new Color(78, 72, 72)),
+			new ChoiceItem("Brown", "Brown", new Color(200, 90, 23)),
+			new ChoiceItem("Tan", "Tan", new Color(237, 226, 117)),
+			new ChoiceItem("White", "White", new Color(255, 255, 255)),
+			new ChoiceItem("Red", "Red", new Color(255, 0, 0)),
+			new ChoiceItem("Pink", "Pink", new Color(255, 0, 255)),
+			new ChoiceItem("Orange", "Orange", new Color(255, 128, 64)),
+			new ChoiceItem("Yellow", "Yellow", new Color(255, 255, 0)),
+			new ChoiceItem("DarkGreen", "Dark Green", new Color(37, 65, 23)),
+			new ChoiceItem("LightGreen", "Light Green", new Color(95, 251, 23)),
+			new ChoiceItem("DarkBlue", "Dark Blue", new Color(0, 0, 204)),
+			new ChoiceItem("LightBlue", "Light Blue", new Color(0, 204, 255)),
 		};
 	}
 }
