@@ -403,7 +403,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public int getFactorCount()
 	{
-		return getAllDiagramFactors().size();
+		return getAllFactorCells().size();
 	}
 	
 	public int getFactorLinkCount()
@@ -430,7 +430,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void updateVisibilityOfFactors() throws Exception
 	{
-		Vector nodes = getAllDiagramFactors();
+		Vector nodes = getAllFactorCells();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			FactorCell node = (FactorCell)nodes.get(i);
@@ -573,7 +573,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (cellInventory.getFactorLinkById(link.getDiagramLinkageId()) != null);
 	}
 
-	public Vector getAllDiagramFactors()
+	public Vector getAllFactorCells()
 	{
 		return cellInventory.getAllFactors();
 	}
@@ -581,7 +581,7 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramFactor[] getAllDiagramFactorsAsArray()
 	{
 		Vector allDiagramFactors = new Vector();
-		Vector allFactorCells = getAllDiagramFactors();
+		Vector allFactorCells = getAllFactorCells();
 		for (int i = 0; i < allFactorCells.size(); i++)
 		{
 			FactorCell factorCell = (FactorCell) allFactorCells.get(i);
@@ -644,7 +644,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public EnhancedJsonObject toJson()
 	{
-		Vector factors = getAllDiagramFactors();
+		Vector factors = getAllFactorCells();
 		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
 		for(int i=0; i < factors.size(); ++i)
 		{
@@ -759,7 +759,7 @@ public class DiagramModel extends DefaultGraphModel
 	public FactorCell[] getAllDiagramTargets()
 	{
 		Vector allTargets = new Vector();
-		Vector allFactors = getAllDiagramFactors();
+		Vector allFactors = getAllFactorCells();
 		for (int i = 0; i < allFactors.size(); i++)
 		{
 			FactorCell diagramFactor = (FactorCell)allFactors.get(i);
@@ -783,7 +783,7 @@ public class DiagramModel extends DefaultGraphModel
 	public Vector getAllGroupBoxCells()
 	{
 		Vector allGroupBoxCells = new Vector();
-		Vector allFactors = getAllDiagramFactors();
+		Vector allFactors = getAllFactorCells();
 		for (int i = 0; i < allFactors.size(); i++)
 		{
 			FactorCell factorCell = (FactorCell)allFactors.get(i);

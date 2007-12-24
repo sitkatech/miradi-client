@@ -35,7 +35,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(ObjectType.TARGET);
 		DiagramModel model = project.getDiagramModel();
-		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
+		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -51,7 +51,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(ObjectType.CAUSE);
 		DiagramModel model = project.getDiagramModel();
-		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
+		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -67,7 +67,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
 		DiagramModel model = project.getDiagramModel();
-		FactorCell insertedNode = (FactorCell)model.getAllDiagramFactors().get(0);
+		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
