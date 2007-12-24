@@ -280,7 +280,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void selectAllFactors()
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
-		Vector allDiagramFactors = getDiagramModel().getAllDiagramFactors();
+		Vector allDiagramFactors = getDiagramModel().getAllFactorCells();
 		for (int i  = 0; i < allDiagramFactors.size(); i++)
 		{
 			FactorCell diagramFactor = (FactorCell)allDiagramFactors.elementAt(i);
