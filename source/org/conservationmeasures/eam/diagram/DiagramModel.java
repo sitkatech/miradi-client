@@ -816,15 +816,15 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
 	
-	Project project;
-	CellInventory cellInventory;
-	ProjectScopeBox projectScopeBox;
+	private Project project;
+	private CellInventory cellInventory;
+	private ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();
 	
-	DiagramObject diagramContents;
+	private DiagramObject diagramContents;
 	
-	HashMap factorsToDiagramFactors;
-	GraphLayoutCache graphLayoutCache;
+	private HashMap factorsToDiagramFactors;
+	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
 }
 
