@@ -18,14 +18,18 @@ public class DiagramTextBoxCell extends FactorCell
 	public DiagramTextBoxCell(TextBox cmFactor, DiagramFactor diagramFactorToUse)
 	{
 		super(cmFactor, diagramFactorToUse);
+		
+		diagramFactorBackgroundQuestion = new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR);
 	}
 
 	public Color getColor()
 	{
-		ChoiceItem choiceItem = new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR).findChoiceByCode(getDiagramFactor().getBackgroundColor());
+		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());
 		if (choiceItem == null)
 			return DiagramConstants.TEXT_BOX_COLOR;
 		
 		return choiceItem.getColor();
 	}
+	
+	private DiagramFactorBackgroundQuestion diagramFactorBackgroundQuestion;
 }
