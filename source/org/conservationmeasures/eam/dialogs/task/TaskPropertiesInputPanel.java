@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.martus.swing.UiLabel;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
@@ -46,7 +47,10 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	private void addCommonFields()
 	{
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
+		addField(createChoiceField(Task.getObjectType(), new BudgetCostModeQuestion(Task.TAG_BUDGET_COST_MODE)));
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_BUDGET_TOTAL));
+		addField(createStringField(Task.getObjectType(), Task.TAG_BUDGET_COST_OVERRIDE));
+		
 		addLabel(new UiLabel(""));
 		addLabel(hasBothSubTaskAssignmentsWarningLabel);
 		updateFieldsFromProject();
