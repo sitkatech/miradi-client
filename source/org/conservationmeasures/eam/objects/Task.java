@@ -27,6 +27,8 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -220,7 +222,10 @@ public class Task extends BaseObject
 
 	public boolean isBudgetOverrideMode()
 	{
-		return (budgetCostOverride.get().length() != 0);
+		BudgetCostModeQuestion question = new BudgetCostModeQuestion(TAG_BUDGET_COST_MODE);
+		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
+		
+		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 	}
 	
 	public void addSubtaskId(BaseId subtaskId)
@@ -278,6 +283,9 @@ public class Task extends BaseObject
 		
 		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
 			return getCombinedEffortDates();
+		
+		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
+			return getCaculatedTotalCost();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -404,8 +412,8 @@ public class Task extends BaseObject
 		}
 	}
 
-	public String getBudgetCost()
-	{	
+	private String getCaculatedTotalCost()
+	{
 		try
 		{
 			if (getSubtaskCount() > 0)
@@ -419,6 +427,14 @@ public class Task extends BaseObject
 			EAM.logWarning("Error occurred while calculating budget total for task");
 			return "";
 		}
+	}
+	
+	public String getBudgetCost()
+	{
+		if (isBudgetOverrideMode())
+			return getBudgetCostOverrideAsParsedString();
+		
+		return getCaculatedTotalCost();
 	}
 
 	private String formateResults(double cost)
@@ -484,6 +500,7 @@ public class Task extends BaseObject
 		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -497,6 +514,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_TASK_COST, taskCost);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
+		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 	}
 
 	
@@ -510,8 +528,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
-	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetCostRollup";
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
+	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -531,4 +549,5 @@ public class Task extends BaseObject
 	private PseudoStringData taskCost;
 	private PseudoStringData who;
 	private PseudoStringData when;
+	private PseudoStringData budgetCostRollup;
 }
