@@ -20,7 +20,7 @@ public class DiagramModelEvent extends EventObject
 		cell = cellToUse;
 	}
 	
-	public FactorCell getDiagramFactor()
+	public FactorCell getFactorCell()
 	{
 		return (FactorCell)cell;
 	}
