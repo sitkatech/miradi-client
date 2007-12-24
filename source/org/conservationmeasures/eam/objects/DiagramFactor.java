@@ -184,6 +184,11 @@ public class DiagramFactor extends BaseObject
 		return fontStyle.get();
 	}
 	
+	public String getBackgroundColor()
+	{
+		return backgroundColor.get();
+	}
+	
 	public void setLocation(Point pointToUse)
 	{
 		location.setPoint(pointToUse);
@@ -230,6 +235,10 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_STYLE, fontStyleAsString);
 		commands.add(setFontStyleCommand);
 		
+		String backgrounColorAsString = json.optString(TAG_BACKGROUND_COLOR);
+		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_BACKGROUND_COLOR, backgrounColorAsString);
+		commands.add(setBackgroundColorCommand);
+		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
@@ -252,6 +261,9 @@ public class DiagramFactor extends BaseObject
 		
 		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, fontStyle.get());
 		commands.add(setFontStyleCommand);
+		
+		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, backgroundColor.get());
+		commands.add(setBackgroundColorCommand);
 		
 		return (Command[]) commands.toArray(new Command[0]);
 	}
@@ -282,6 +294,7 @@ public class DiagramFactor extends BaseObject
 		fontColor = new ChoiceData();
 		fontStyle = new ChoiceData();
 		groupBoxChildrenRefs = new ORefListData();
+		backgroundColor = new ChoiceData();
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -290,6 +303,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_COLOR, fontColor);
 		addField(TAG_FONT_STYLE, fontStyle);
 		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
+		addField(TAG_BACKGROUND_COLOR, backgroundColor);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -299,6 +313,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_COLOR = "FontColor";
 	public static final String TAG_FONT_STYLE = "FontStyle";
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
+	public static final String TAG_BACKGROUND_COLOR = "Color";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
@@ -309,4 +324,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontColor;
 	private ChoiceData fontStyle;
 	private ORefListData groupBoxChildrenRefs;
+	private ChoiceData backgroundColor;
 }

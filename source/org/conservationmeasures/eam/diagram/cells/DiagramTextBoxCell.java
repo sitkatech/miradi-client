@@ -10,6 +10,8 @@ import java.awt.Color;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.TextBox;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.DiagramFactorBackgroundQuestion;
 
 public class DiagramTextBoxCell extends FactorCell
 {
@@ -20,6 +22,10 @@ public class DiagramTextBoxCell extends FactorCell
 
 	public Color getColor()
 	{
-		return DiagramConstants.TEXT_BOX_COLOR;
+		ChoiceItem choiceItem = new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR).findChoiceByCode(getDiagramFactor().getBackgroundColor());
+		if (choiceItem == null)
+			return DiagramConstants.TEXT_BOX_COLOR;
+		
+		return choiceItem.getColor();
 	}
 }

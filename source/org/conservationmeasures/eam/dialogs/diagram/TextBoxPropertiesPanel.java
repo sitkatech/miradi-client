@@ -7,18 +7,21 @@ package org.conservationmeasures.eam.dialogs.diagram;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.DiagramFactorBackgroundQuestion;
 
 public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public TextBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
 	{
-		super(projectToUse, ObjectType.TEXT_BOX, diagramFactor.getWrappedId());
+		super(projectToUse, diagramFactor.getWrappedORef());
 
+		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 		addField(createStringField(TextBox.TAG_LABEL));
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR)));
 		updateFieldsFromProject();
 	}
 
