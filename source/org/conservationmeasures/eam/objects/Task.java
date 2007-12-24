@@ -18,7 +18,9 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -453,6 +455,9 @@ public class Task extends BaseObject
 		super.clear();
 		subtaskIds = new IdListData(Task.getObjectType());
 		assignmentIds = new IdListData(Assignment.getObjectType());
+		budgetCostOverride = new StringData();
+		budgetCostMode = new ChoiceData();
+		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
@@ -463,6 +468,9 @@ public class Task extends BaseObject
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
+		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
+		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
+		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
@@ -484,7 +492,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetCostRollup";
-	
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	
 	public static final String OBJECT_NAME = "Task";
@@ -495,6 +502,9 @@ public class Task extends BaseObject
 	
 	private IdListData subtaskIds;
 	private IdListData assignmentIds;
+	private StringData budgetCostOverride;
+	private ChoiceData budgetCostMode;
+	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData subtaskTotal;
