@@ -493,13 +493,13 @@ public class Task extends BaseObject
 	
 	private String cachedObjectTypeName;
 	
-	IdListData subtaskIds;
-	IdListData assignmentIds;
-	PseudoStringData strategyLabel;
-	PseudoStringData indicatorLabel;
-	PseudoStringData subtaskTotal;
-	PseudoStringData taskTotal;
-	PseudoStringData taskCost;
-	PseudoStringData who;
-	PseudoStringData when;
+	private IdListData subtaskIds;
+	private IdListData assignmentIds;
+	private PseudoStringData strategyLabel;
+	private PseudoStringData indicatorLabel;
+	private PseudoStringData subtaskTotal;
+	private PseudoStringData taskTotal;
+	private PseudoStringData taskCost;
+	private PseudoStringData who;
+	private PseudoStringData when;
 }
