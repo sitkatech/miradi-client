@@ -103,6 +103,9 @@ public class PlanningTreeModel extends GenericTreeTableModel
 	{
 		try
 		{
+			if (taskNode.getTask().isBudgetOverrideMode())
+				return taskNode.getTask().getBudgetCostOverrideAsParsedString();
+			
 			return new PlanningViewBudgetCalculator(project).getBudgetTotals(taskNode.getObject(), taskNode.getCostAllocationProportion());
 		}
 		catch(Exception e)
