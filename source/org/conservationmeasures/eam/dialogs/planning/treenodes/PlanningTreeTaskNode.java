@@ -47,6 +47,11 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return task;
 	}
 	
+	public Task getTask()
+	{
+		return (Task) getObject();
+	}
+	
 	public double getCostAllocationProportion()
 	{
 		return costAllocationProportion;
@@ -56,7 +61,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	{
 		return false;
 	}
-
+     	
 	private Task task;
 	private double costAllocationProportion;
 }

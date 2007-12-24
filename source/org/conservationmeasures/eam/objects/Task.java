@@ -372,14 +372,22 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			Double.parseDouble(budgetCostOverride.get());
-			return budgetCostOverride.get();
+			return Double.toString(getBudgetCostOverrideValue());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		}
+	}
+	
+	public double getBudgetCostOverrideValue() throws Exception
+	{
+		String override = budgetCostOverride.get();
+		if (override.length() == 0)
+			return 0;
+		
+		return Double.parseDouble(override);
 	}
 	
 	private String getTaskCost()
