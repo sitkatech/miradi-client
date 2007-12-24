@@ -27,7 +27,7 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(TextBox.TAG_LABEL));
 		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR)));
 		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FONT_COLOR)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR)));
 		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
 
 		updateFieldsFromProject();
