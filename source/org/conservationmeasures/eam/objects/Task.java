@@ -383,6 +383,7 @@ public class Task extends BaseObject
 		}
 	}
 
+	// todo rename getBudgetCost()
 	public String getBudgetTotals()
 	{	
 		try
@@ -475,12 +476,15 @@ public class Task extends BaseObject
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
+	public final static String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
+	public final static String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
 	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
+	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetCostRollup";
 	
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	
