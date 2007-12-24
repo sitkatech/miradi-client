@@ -384,7 +384,7 @@ public class Task extends BaseObject
 	}
 
 	// todo rename getBudgetCost()
-	public String getBudgetTotals()
+	public String getBudgetCost()
 	{	
 		try
 		{

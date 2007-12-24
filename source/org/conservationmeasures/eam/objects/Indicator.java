@@ -128,7 +128,7 @@ public class Indicator extends BaseObject
 		return statusCode;
 	}
 	
-	public String getBudgetTotals()
+	public String getBudgetCost()
 	{
 		try
 		{
