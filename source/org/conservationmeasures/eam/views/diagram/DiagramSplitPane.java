@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -322,6 +323,27 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		
 		if (commandSetObjectData.getObjectType()== ObjectType.VIEW_DATA)
 			handleViewDataContentsChange(commandSetObjectData);
+		
+		handleGroupBoxTypes(commandSetObjectData);
+		
+	}
+
+	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData)
+	{
+		if (commandSetObjectData.getObjectType() != DiagramFactor.getObjectType())
+			return;
+		
+		if (getDiagramModel() == null)
+			return;
+		
+		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+			getDiagramModel().updateGroupBoxCells();
+		
+		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_LOCATION))
+			getDiagramModel().updateGroupBoxCells();
+	
+		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_SIZE))
+			getDiagramModel().updateGroupBoxCells();
 	}
 
 	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)
