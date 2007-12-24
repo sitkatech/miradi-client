@@ -770,6 +770,30 @@ public class DiagramModel extends DefaultGraphModel
 		return (FactorCell[])allTargets.toArray(new FactorCell[0]);
 	}
 	
+	public void updateGroupBoxCells()
+	{
+		Vector allGroupBoxes = getAllGroupBoxCells();
+		for (int i = 0; i < allGroupBoxes.size(); ++i)
+		{
+			DiagramGroupBoxCell cell = (DiagramGroupBoxCell) allGroupBoxes.get(i);
+			cell.autoSurroundChildren();
+		}
+	}
+	
+	public Vector getAllGroupBoxCells()
+	{
+		Vector allGroupBoxCells = new Vector();
+		Vector allFactors = getAllDiagramFactors();
+		for (int i = 0; i < allFactors.size(); i++)
+		{
+			FactorCell factorCell = (FactorCell)allFactors.get(i);
+			if (factorCell.isGroupBox())
+				allGroupBoxCells.add(factorCell);
+		}
+		
+		return allGroupBoxCells;	
+	}
+	
 	public DiagramObject getDiagramObject()
 	{
 		return diagramContents;
