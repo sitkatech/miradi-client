@@ -74,7 +74,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		for (int i = 0; i < taskIds.size(); i++)
 		{
 			Task task = (Task)project.findObject(ObjectType.TASK, taskIds.get(i));
-			totalTaskCost += getTotalCost(task);
+			totalTaskCost += getTotalCost(task, null);
 		}
 		return totalTaskCost;
 	}
@@ -92,13 +92,6 @@ public class PlanniningViewBudgetTotalsCalculator
 	{
 		totalCost = 0.0;
 		calculateTotalAssignment(task, dateRange);
-		return totalCost;
-	}
-	
-	private double getTotalCost(Task task) throws Exception
-	{
-		totalCost = 0.0;
-		calculateTotalAssignment(task, null);
 		return totalCost;
 	}
 	
