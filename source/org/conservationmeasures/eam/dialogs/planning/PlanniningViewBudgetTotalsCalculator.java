@@ -102,18 +102,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalCost;
 	}
 	
-	private void calculateTotalAssignment(Task task) throws Exception
-	{
-		sumTotals(task);
-		int subTaskCount = task.getSubtaskCount();
-		for (int index = 0; index < subTaskCount; index++)
-		{
-			BaseId subTaskId = task.getSubtaskId(index);
-			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			calculateTotalAssignment(subTask);
-		}
-	}
-
 	private void sumTotals(Task task) throws Exception
 	{
 		IdList idList = task.getAssignmentIdList();
@@ -182,6 +170,18 @@ public class PlanniningViewBudgetTotalsCalculator
 			BaseId subTaskId = task.getSubtaskId(index);
 			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
 			calculateTotalAssignment(subTask, dateRangeToUse);
+		}
+	}
+	
+	private void calculateTotalAssignment(Task task) throws Exception
+	{
+		sumTotals(task);
+		int subTaskCount = task.getSubtaskCount();
+		for (int index = 0; index < subTaskCount; index++)
+		{
+			BaseId subTaskId = task.getSubtaskId(index);
+			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+			calculateTotalAssignment(subTask);
 		}
 	}
 
