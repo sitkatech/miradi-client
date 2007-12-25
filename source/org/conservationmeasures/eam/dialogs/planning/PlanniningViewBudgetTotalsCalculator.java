@@ -91,6 +91,9 @@ public class PlanniningViewBudgetTotalsCalculator
 	
 	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
+		if (task.isBudgetOverrideMode())
+			return task.getBudgetCostOverrideValue();
+		
 		totalCost = 0.0;
 		calculateTotalAssignment(task, dateRange);
 		totalCost = totalCost * costAllocationPercentage;
