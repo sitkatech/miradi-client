@@ -88,14 +88,14 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalCost;
 	}
 	
-	public double getTotalCost(Task task, DateRange dateRange) throws Exception
+	private double getTotalCost(Task task, DateRange dateRange) throws Exception
 	{
 		totalCost = 0.0;
 		calculateTotalAssignment(task, dateRange);
 		return totalCost;
 	}
 	
-	public double getTotalCost(Task task) throws Exception
+	private double getTotalCost(Task task) throws Exception
 	{
 		totalCost = 0.0;
 		calculateTotalAssignment(task);
