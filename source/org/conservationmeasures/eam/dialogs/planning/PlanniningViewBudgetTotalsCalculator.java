@@ -79,20 +79,20 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	private double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange) throws Exception
+	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange) throws Exception
 	{
-		return getProportionalizedTotalTaskCost(baseObject, dateRange, 1.0);
+		return getProportionalizedTotalTaskCost(task, dateRange, 1.0);
 	}
 
-	private double getProportionalizedTotalTaskCost(BaseObject baseObject) throws Exception
+	private double getProportionalizedTotalTaskCost(Task task) throws Exception
 	{
-		return getProportionalizedTotalTaskCost(baseObject, null, 1.0);
+		return getProportionalizedTotalTaskCost(task, null, 1.0);
 	}
 	
-	private double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
+	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		totalCost = 0.0;
-		calculateTotalAssignment((Task) baseObject, dateRange);
+		calculateTotalAssignment(task, dateRange);
 		totalCost = totalCost * costAllocationPercentage;
 		
 		return totalCost;
@@ -129,7 +129,7 @@ public class PlanniningViewBudgetTotalsCalculator
 			return computeTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
 		if (baseObject.getType() == ObjectType.TASK)
-			return getProportionalizedTotalTaskCost(baseObject, dateRange, costAllocationPercentage);
+			return getProportionalizedTotalTaskCost((Task) baseObject, dateRange, costAllocationPercentage);
 		
 		return  0.0;		
 	}
