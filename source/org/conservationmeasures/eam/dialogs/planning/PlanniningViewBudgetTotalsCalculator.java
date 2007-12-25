@@ -179,7 +179,7 @@ public class PlanniningViewBudgetTotalsCalculator
 			{
 				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
 				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = (effortList.getTotalUnitQuantity() * resource.getCostPerUnit());
+				double totalCostPerAssignment = getTotaUnitQuantity(null, resource.getCostPerUnit(), effortList);
 				totalCost += totalCostPerAssignment;
 			}
 		}
@@ -196,10 +196,18 @@ public class PlanniningViewBudgetTotalsCalculator
 			{
 				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
 				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = (effortList.getTotalUnitQuantity(dateRangeToUse) * resource.getCostPerUnit());
+				double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, resource.getCostPerUnit(), effortList);
 				totalCost += totalCostPerAssignment;
 			}
 		}
+	}
+
+	private double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
+	{
+		if (dateRangeToUse != null)
+			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
+		
+		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
 	private double totalCost;
