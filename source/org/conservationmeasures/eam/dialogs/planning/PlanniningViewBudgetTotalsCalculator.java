@@ -79,7 +79,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalTaskCost;
 	}
 
-	public double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
+	private double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		totalCost = 0.0;
 		calculateTotalAssignment((Task) baseObject, dateRange);
