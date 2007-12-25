@@ -102,23 +102,6 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalCost;
 	}
 	
-	private void sumTotals(Task task) throws Exception
-	{
-		IdList idList = task.getAssignmentIdList();
-		for (int i = 0; i < idList.size(); i++)
-		{
-			Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, idList.get(i));
-			ProjectResource resource = getProjectResource(idList.get(i));
-			if (resource != null)
-			{
-				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
-				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = (effortList.getTotalUnitQuantity() * resource.getCostPerUnit());
-				totalCost += totalCostPerAssignment;
-			}
-		}
-	}
-	
 	private double computeTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
 		IdList taskIds = new IdList(Task.getObjectType(), baseObject.getData(tasksTag));
@@ -184,7 +167,24 @@ public class PlanniningViewBudgetTotalsCalculator
 			calculateTotalAssignment(subTask);
 		}
 	}
-
+	
+	private void sumTotals(Task task) throws Exception
+	{
+		IdList idList = task.getAssignmentIdList();
+		for (int i = 0; i < idList.size(); i++)
+		{
+			Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, idList.get(i));
+			ProjectResource resource = getProjectResource(idList.get(i));
+			if (resource != null)
+			{
+				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
+				double totalCostPerAssignment = (effortList.getTotalUnitQuantity() * resource.getCostPerUnit());
+				totalCost += totalCostPerAssignment;
+			}
+		}
+	}
+	
 	private void sumTotals(Task task, DateRange DateRangeToUse) throws Exception
 	{
 		IdList idList = task.getAssignmentIdList();
