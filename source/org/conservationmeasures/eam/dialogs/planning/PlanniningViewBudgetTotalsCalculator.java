@@ -185,7 +185,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		}
 	}
 	
-	private void sumTotals(Task task, DateRange DateRangeToUse) throws Exception
+	private void sumTotals(Task task, DateRange dateRangeToUse) throws Exception
 	{
 		IdList idList = task.getAssignmentIdList();
 		for (int i = 0; i < idList.size(); i++)
@@ -196,7 +196,7 @@ public class PlanniningViewBudgetTotalsCalculator
 			{
 				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
 				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = (effortList.getTotalUnitQuantity(DateRangeToUse) * resource.getCostPerUnit());
+				double totalCostPerAssignment = (effortList.getTotalUnitQuantity(dateRangeToUse) * resource.getCostPerUnit());
 				totalCost += totalCostPerAssignment;
 			}
 		}
