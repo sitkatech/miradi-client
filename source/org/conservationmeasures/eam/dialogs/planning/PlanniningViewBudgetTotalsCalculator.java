@@ -74,11 +74,21 @@ public class PlanniningViewBudgetTotalsCalculator
 		for (int i = 0; i < taskIds.size(); i++)
 		{
 			Task task = (Task)project.findObject(ObjectType.TASK, taskIds.get(i));
-			totalTaskCost += getTotalCost(task, null);
+			totalTaskCost += getProportionalizedTotalTaskCost(task);
 		}
 		return totalTaskCost;
 	}
 
+	private double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange) throws Exception
+	{
+		return getProportionalizedTotalTaskCost(baseObject, dateRange, 1.0);
+	}
+
+	private double getProportionalizedTotalTaskCost(BaseObject baseObject) throws Exception
+	{
+		return getProportionalizedTotalTaskCost(baseObject, null, 1.0);
+	}
+	
 	private double getProportionalizedTotalTaskCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		totalCost = 0.0;
@@ -87,14 +97,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		
 		return totalCost;
 	}
-	
-	private double getTotalCost(Task task, DateRange dateRange) throws Exception
-	{
-		totalCost = 0.0;
-		calculateTotalAssignment(task, dateRange);
-		return totalCost;
-	}
-	
+
 	private double computeTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
 		IdList taskIds = new IdList(Task.getObjectType(), baseObject.getData(tasksTag));
@@ -103,7 +106,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = (Task) project.findObject(taskRefs.get(i));
-			double taskTotalCost = getTotalCost(task, dateRange);
+			double taskTotalCost = getProportionalizedTotalTaskCost(task, dateRange);
 			double allocationFraction = getAllocationFraction(baseObject.getRef(), task);
 			totalParentCost += (taskTotalCost * allocationFraction);	
 		}
