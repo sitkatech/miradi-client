@@ -33,7 +33,7 @@ public class ProjectCalendar
 		return yearlyDateRanges;
 	}
 	
-	public DateRange combineAllDateRangesIntoOne() throws Exception
+	public DateRange combineStartToEndProjectRange() throws Exception
 	{
 		DateRange startDateRange = (DateRange)yearlyDateRanges.get(0);
 		DateRange endDateRange = (DateRange)yearlyDateRanges.get(yearlyDateRanges.size() - 1);
