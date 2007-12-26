@@ -12,7 +12,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -24,8 +23,8 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.BudgetCalculator;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -396,7 +395,7 @@ public class Task extends BaseObject
 			if (getSubtaskCount() > 0)
 				return getSubtaskTotalCost();
 			
-			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+			return Double.toString(calculateTotalAssignment(null));
 		}
 		catch(Exception e)
 		{
