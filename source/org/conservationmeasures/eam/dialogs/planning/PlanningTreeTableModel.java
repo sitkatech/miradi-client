@@ -23,9 +23,9 @@ import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 
-public class PlanningTreeModel extends GenericTreeTableModel
+public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
-	public PlanningTreeModel(Project projectToUse) throws Exception
+	public PlanningTreeTableModel(Project projectToUse) throws Exception
 	{
 		super(new PlanningTreeRootNode(projectToUse));
 		project = projectToUse;
