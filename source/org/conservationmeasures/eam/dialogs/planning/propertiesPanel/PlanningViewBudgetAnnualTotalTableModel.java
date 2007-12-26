@@ -80,7 +80,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 				return "";
 			
 			if (isGrandTotalColumn(column))
-				return getCost(node);
+				return getGrandTotalCost(node);
 		
 			return getYearlyTotal(node, column);
 		}
@@ -121,7 +121,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return ((PlanningTreeTaskNode) node).getCostAllocationProportion();
 	}
 
-	private Object getCost(TreeTableNode node) throws Exception
+	private Object getGrandTotalCost(TreeTableNode node) throws Exception
 	{
 		double totalCost = totalCalculator.calculateBudgetCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
 		if (totalCost == 0)
