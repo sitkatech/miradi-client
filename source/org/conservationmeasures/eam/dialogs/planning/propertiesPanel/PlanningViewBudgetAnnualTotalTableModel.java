@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 import java.text.DecimalFormat;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
