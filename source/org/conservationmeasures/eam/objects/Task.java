@@ -436,13 +436,66 @@ public class Task extends BaseObject
 			return "";
 		}
 	}
+	
+	public double calculateTotalAssignment(DateRange dateRangeToUse) throws Exception
+	{
+		if (isBudgetOverrideMode())
+			return getBudgetCostOverrideValue();
+	
+		double total = getTotalAssignmentCost(dateRangeToUse);
+		int subTaskCount = getSubtaskCount();
+		for (int index = 0; index < subTaskCount; index++)
+		{
+			BaseId subTaskId = getSubtaskId(index);
+			Task  subTask = (Task)getProject().findObject(ObjectType.TASK, subTaskId);
+			total += subTask.calculateTotalAssignment(dateRangeToUse);
+		}
+		
+		return total;
+	}
+	
+	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
+	{
+		double cost = 0;
+		IdList idList = getAssignmentIdList();
+		for (int i = 0; i < idList.size(); i++)
+		{
+			Assignment assignment = (Assignment)getProject().findObject(ObjectType.ASSIGNMENT, idList.get(i));
+			ProjectResource resource = getProjectResource(idList.get(i));
+			if (resource != null)
+			{
+				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
+				double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, resource.getCostPerUnit(), effortList);
+				cost += totalCostPerAssignment;
+			}
+		}
+		
+		return cost;
+	}
+	
+	private ProjectResource getProjectResource(BaseId assignmentId)
+	{
+		String stringId = getProject().getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
+		BaseId resourceId = new BaseId(stringId);
+		ProjectResource resource = (ProjectResource)getProject().findObject(ObjectType.PROJECT_RESOURCE, resourceId);
+		
+		return resource;
+	}
 
+	private double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
+	{
+		if (dateRangeToUse != null)
+			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
+		
+		return (effortList.getTotalUnitQuantity() * costPerUnit);
+	}
+	
 	private String formateResults(double cost)
 	{
 		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
 		return formater.format(cost);
 	}
-
 
 	private String getLabelOfTaskParent()
 	{

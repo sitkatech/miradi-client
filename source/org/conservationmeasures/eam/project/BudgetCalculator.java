@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
@@ -41,7 +40,7 @@ public class BudgetCalculator
 	
 	public double getTotalCost(Assignment assignment, DateRange dateRange) throws Exception
 	{
-		ProjectResource resource = getProjectResource(assignment.getId());
+		ProjectResource resource = ProjectResource.find(project, assignment.getResourceRef());
 		if (resource == null)
 			return 0.0;
 	
@@ -51,20 +50,11 @@ public class BudgetCalculator
 		return totalUnits * costPerUnit;
 	}
 	
-	private ProjectResource getProjectResource(BaseId assignmentId)
-	{
-		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
-		BaseId resourceId = new BaseId(stringId);
-		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
-		
-		return resource;
-	}
-	
 	public double getTaskCost(TaskId taskId) throws Exception
 	{
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		getTotalAssignmentCost(task, null);
-		return totalCost;
+		
+		return task.getTotalAssignmentCost(null);
 	}
 	
 	public double getTotalTasksCost(IdList taskIds) throws Exception
@@ -90,11 +80,7 @@ public class BudgetCalculator
 	
 	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
-		totalCost = 0.0;
-		calculateTotalAssignment(task, dateRange);
-		totalCost = totalCost * costAllocationPercentage;
-		
-		return totalCost;
+		return task.calculateTotalAssignment(dateRange) * costAllocationPercentage;
 	}
 
 	private double getProportionalizedTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
@@ -139,49 +125,5 @@ public class BudgetCalculator
 		return calculateTotalCost(foundObject, dateRange, 1.0);
 	}
 		
-	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
-	{
-		if (task.isBudgetOverrideMode())
-		{
-			totalCost += task.getBudgetCostOverrideValue();
-			return;
-		}
-	
-		getTotalAssignmentCost(task, dateRangeToUse);
-		int subTaskCount = task.getSubtaskCount();
-		for (int index = 0; index < subTaskCount; index++)
-		{
-			BaseId subTaskId = task.getSubtaskId(index);
-			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
-			calculateTotalAssignment(subTask, dateRangeToUse);
-		}
-	}
-	
-	private void getTotalAssignmentCost(Task task, DateRange dateRangeToUse) throws Exception
-	{
-		IdList idList = task.getAssignmentIdList();
-		for (int i = 0; i < idList.size(); i++)
-		{
-			Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, idList.get(i));
-			ProjectResource resource = getProjectResource(idList.get(i));
-			if (resource != null)
-			{
-				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
-				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, resource.getCostPerUnit(), effortList);
-				totalCost += totalCostPerAssignment;
-			}
-		}
-	}
-
-	private double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
-	{
-		if (dateRangeToUse != null)
-			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
-		
-		return (effortList.getTotalUnitQuantity() * costPerUnit);
-	}
-	
-	private double totalCost;
 	private Project project;
 }
