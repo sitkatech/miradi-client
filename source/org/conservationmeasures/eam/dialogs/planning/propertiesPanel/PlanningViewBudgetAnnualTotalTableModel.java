@@ -97,7 +97,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 			return "";
 		
 		DateRange dateRange = (DateRange)yearlyDateRanges.get(column);	
-		double yearlyTotal = totalCalculator.calculateTotalCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
+		double yearlyTotal = totalCalculator.calculateBudgetCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
         if (yearlyTotal == 0)
         	return "";
         
@@ -123,7 +123,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 	private Object getCost(TreeTableNode node) throws Exception
 	{
-		double totalCost = totalCalculator.calculateTotalCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
+		double totalCost = totalCalculator.calculateBudgetCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
 		if (totalCost == 0)
         	return "";
         
