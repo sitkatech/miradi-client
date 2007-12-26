@@ -12,8 +12,10 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -116,6 +118,16 @@ public class ProjectResource extends BaseObject
 		return costUnit.get();
 	}
 	
+	public static ProjectResource find(ObjectManager objectManager, ORef projectResourceRef)
+	{
+		return (ProjectResource) objectManager.findObject(projectResourceRef);
+	}
+	
+	public static ProjectResource find(Project project, ORef projectResourceRef)
+	{
+		return find(project.getObjectManager(), projectResourceRef);
+	}
+		
 	public void clear()
 	{
 		super.clear();
