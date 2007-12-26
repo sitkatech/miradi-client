@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
@@ -29,6 +30,8 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		super(new PlanningTreeRootNode(projectToUse));
 		project = projectToUse;
+		totalCalculator = new BudgetCalculator(project);
+		
 		rebuildCodeList();
 	}
 
@@ -70,38 +73,45 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public Object getValueAt(Object rawNode, int col)
 	{
-		TreeTableNode treeNode = (TreeTableNode) rawNode;
-		String columnTag = getColumnTag(col);
-		BaseObject baseObject = treeNode.getObject();
-		if(baseObject == null)
-			return null;
-		
-		if (! baseObject.doesFieldExist(columnTag))
-			return null;
-		
-		if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-			return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);
-		
-		String rawValue = "";
-		if (baseObject.isPseudoField(columnTag))
-			rawValue = baseObject.getPseudoData(columnTag);
-		else
-			rawValue = baseObject.getData(columnTag);
-		
-		
-		if(columnTag.equals(Indicator.TAG_PRIORITY))
-			return new PriorityRatingQuestion(columnTag).findChoiceByCode(rawValue);
-		if(columnTag.equals(Indicator.TAG_STATUS))
-			return new IndicatorStatusRatingQuestion(columnTag).findChoiceByCode(rawValue);
-		if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-			return new StrategyRatingSummaryQuestion(columnTag).findChoiceByCode(rawValue);
-		
-		return rawValue;
+		try
+		{
+			TreeTableNode treeNode = (TreeTableNode) rawNode;
+			String columnTag = getColumnTag(col);
+			BaseObject baseObject = treeNode.getObject();
+			if(baseObject == null)
+				return null;
+
+			if (! baseObject.doesFieldExist(columnTag))
+				return null;
+
+			if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
+				return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);
+
+			String rawValue = "";
+			if (baseObject.isPseudoField(columnTag))
+				rawValue = baseObject.getPseudoData(columnTag);
+			else
+				rawValue = baseObject.getData(columnTag);
+			
+			if(columnTag.equals(Indicator.TAG_PRIORITY))
+				return new PriorityRatingQuestion(columnTag).findChoiceByCode(rawValue);
+			if(columnTag.equals(Indicator.TAG_STATUS))
+				return new IndicatorStatusRatingQuestion(columnTag).findChoiceByCode(rawValue);
+			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
+				return new StrategyRatingSummaryQuestion(columnTag).findChoiceByCode(rawValue);
+
+			return rawValue;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "[Error]";
+		}
 	}
 
-	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode)
+	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode) throws Exception
 	{
-		return taskNode.getTask().getBudgetCostAsString();
+		return totalCalculator.calculateBudgetCost(taskNode.getTask(), null, taskNode.getCostAllocationProportion());
 	}
 	
 	public CodeList getColumnTags()
@@ -111,4 +121,5 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	private Project project;
 	private CodeList columnsToShow;
+	private BudgetCalculator totalCalculator;
 }
