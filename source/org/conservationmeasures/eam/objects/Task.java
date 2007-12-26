@@ -285,7 +285,7 @@ public class Task extends BaseObject
 			return getCombinedEffortDates();
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getCaculatedTotalCost();
+			return getBudgetCost();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -420,23 +420,6 @@ public class Task extends BaseObject
 		}
 	}
 
-	private String getCaculatedTotalCost()
-	{
-		try
-		{
-			if (getSubtaskCount() > 0)
-				return getSubtaskTotalCost();
-			
-			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for task");
-			return "";
-		}
-	}
-	
 	public String getBudgetCost()
 	{
 		try
