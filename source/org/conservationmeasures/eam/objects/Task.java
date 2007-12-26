@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
@@ -377,8 +376,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			BudgetCalculator calculator = new BudgetCalculator(objectManager.getProject());
-			double subtaskTotalCost = calculator.getTotalTasksCost(getSubtaskIdList());
+			double subtaskTotalCost = getTotalSubtasksCost();
 			return formateResults(subtaskTotalCost);
 		}
 		catch(Exception e)
@@ -421,6 +419,18 @@ public class Task extends BaseObject
 			return getTotalAssignmentCost(dateRange);
 		
 		return calculateBudgetCostRollup(dateRange);
+	}
+	
+	private double getTotalSubtasksCost() throws Exception
+	{
+		IdList taskIds = getSubtaskIdList();
+		double totalTaskCost = 0.0;
+		for (int i = 0; i < taskIds.size(); i++)
+		{
+			Task task = (Task)getProject().findObject(ObjectType.TASK, taskIds.get(i));
+			totalTaskCost += task.calculateBudgetCostRollup(null);
+		}
+		return totalTaskCost;
 	}
 	
 	public double calculateBudgetCostRollup(DateRange dateRangeToUse) throws Exception

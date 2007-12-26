@@ -49,27 +49,11 @@ public class BudgetCalculator
 		return totalUnits * costPerUnit;
 	}
 	
-	public double getTotalTasksCost(IdList taskIds) throws Exception
-	{
-		double totalTaskCost = 0.0;
-		for (int i = 0; i < taskIds.size(); i++)
-		{
-			Task task = (Task)project.findObject(ObjectType.TASK, taskIds.get(i));
-			totalTaskCost += getProportionalizedTotalTaskCost(task);
-		}
-		return totalTaskCost;
-	}
-
 	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange) throws Exception
 	{
 		return getProportionalizedTotalTaskCost(task, dateRange, 1.0);
 	}
 
-	private double getProportionalizedTotalTaskCost(Task task) throws Exception
-	{
-		return getProportionalizedTotalTaskCost(task, null, 1.0);
-	}
-	
 	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		return task.calculateBudgetCostRollup(dateRange) * costAllocationPercentage;
