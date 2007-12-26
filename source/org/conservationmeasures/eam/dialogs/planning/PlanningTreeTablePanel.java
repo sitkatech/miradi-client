@@ -66,13 +66,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
-		PlanningTreeTableModel model = new PlanningTreeTableModel(mainWindowToUse.getProject());
+		PlanningTreeModel model = new PlanningTreeModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model, new PlanningViewFontProvider());	
 		
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
 	
-	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse) throws Exception
+	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
@@ -335,9 +335,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		ORef ref;
 	}
 
-	private PlanningTreeTableModel getPlanningModel()
+	private PlanningTreeModel getPlanningModel()
 	{
-		return (PlanningTreeTableModel)getModel();
+		return (PlanningTreeModel)getModel();
 	}
 	
 	private void resizeTablesToExactlyFitAllColumns() 
