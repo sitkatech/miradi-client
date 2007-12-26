@@ -27,9 +27,8 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 		totalCalculator = new BudgetCalculator(project);
 		yearlyDateRanges = getProjectCalendar().getYearlyDateRanges();
+		combinedDataRange = getProjectCalendar().combineAllDateRangesIntoOne();
 		currencyFormatter = project.getCurrencyFormatter();
-	
-		combineAllDateRangesIntoOne();
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception
@@ -37,13 +36,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return project.getProjectCalendar();
 	}
 
-	private void combineAllDateRangesIntoOne() throws Exception
-	{
-		DateRange startDateRange = (DateRange)yearlyDateRanges.get(0);
-		DateRange endDateRange = (DateRange)yearlyDateRanges.get(yearlyDateRanges.size() - 1);
-		combinedDataRange = DateRange.combine(startDateRange, endDateRange);
-	}
-	
 	public String getColumnName(int column)
 	{
 		if(isGrandTotalColumn(column))
