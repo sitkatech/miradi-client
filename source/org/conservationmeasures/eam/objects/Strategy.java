@@ -242,7 +242,7 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
-	public String getBudgetCost()
+	public String getBudgetCostRollup()
 	{
 		try
 		{

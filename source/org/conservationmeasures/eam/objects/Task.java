@@ -281,7 +281,7 @@ public class Task extends BaseObject
 			return getCombinedEffortDates();
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getBudgetCost();
+			return getBudgetCostRollup();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -388,7 +388,7 @@ public class Task extends BaseObject
 		}
 	}
 
-	public String getBudgetCost()
+	public String getBudgetCostRollup()
 	{
 		try
 		{
