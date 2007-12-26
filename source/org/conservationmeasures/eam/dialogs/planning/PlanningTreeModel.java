@@ -101,18 +101,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode)
 	{
-		try
-		{
-			if (taskNode.getTask().isBudgetOverrideMode())
-				return taskNode.getTask().getBudgetCostOverrideAsParsedString();
-			
-			return new PlanningViewBudgetCalculator(project).getBudgetTotals(taskNode.getObject(), taskNode.getCostAllocationProportion());
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
+		return taskNode.getTask().getBudgetCost();
 	}
 	
 	public CodeList getColumnTags()
