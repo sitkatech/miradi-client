@@ -31,6 +31,7 @@ public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellR
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		annotateIfAllocated(row, renderer);
+		annotateIfOverride(row, renderer);
 		return renderer;
 	}
 
@@ -50,6 +51,22 @@ public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellR
 		
 		if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
 			labelComponent.setIcon(allocatedIcon);
+		
+	}
+	
+	private void annotateIfOverride(int row, JLabel labelComponent)
+	{
+		if(labelComponent.getText().length() == 0)
+			return;
+		
+		TreeTableNode node = getNodeForRow(row);
+		if(node.getType() != Task.getObjectType())
+			return;
+		
+		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) node;
+		
+		if(taskNode.getTask().isBudgetOverrideMode())
+			labelComponent.setText("~ " + labelComponent.getText());
 		
 	}
 	
