@@ -353,7 +353,7 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-	public String getBudgetCostRollupAsString()
+	public String getBudgetCostAsString()
 	{
 		return "";
 	}
@@ -874,7 +874,7 @@ abstract public class BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
-			return getBudgetCostRollupAsString();
+			return getBudgetCostAsString();
 		
 		return getData(fieldTag);
 	}
