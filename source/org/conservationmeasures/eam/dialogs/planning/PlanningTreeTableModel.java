@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.text.DecimalFormat;
+
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
@@ -31,6 +33,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		super(new PlanningTreeRootNode(projectToUse));
 		project = projectToUse;
 		totalCalculator = new BudgetCalculator(project);
+		currencyFormatter = project.getCurrencyFormatter();
 		
 		rebuildCodeList();
 	}
@@ -111,7 +114,8 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 
 	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode) throws Exception
 	{
-		return totalCalculator.calculateBudgetCost(taskNode.getTask(), null, taskNode.getCostAllocationProportion());
+		double budgetCost = totalCalculator.calculateBudgetCost(taskNode.getTask(), null, taskNode.getCostAllocationProportion());
+		return currencyFormatter.format(budgetCost);
 	}
 	
 	public CodeList getColumnTags()
@@ -122,4 +126,5 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	private Project project;
 	private CodeList columnsToShow;
 	private BudgetCalculator totalCalculator;
+	private DecimalFormat currencyFormatter;
 }
