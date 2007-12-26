@@ -51,7 +51,7 @@ public class BudgetCalculator
 		return totalUnits * costPerUnit;
 	}
 	
-	public ProjectResource getProjectResource(BaseId assignmentId)
+	private ProjectResource getProjectResource(BaseId assignmentId)
 	{
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
