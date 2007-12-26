@@ -405,7 +405,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return getProject().getCurrencyFormatter().format(getBudgetCostRollup(null));
+			return formateResults(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
