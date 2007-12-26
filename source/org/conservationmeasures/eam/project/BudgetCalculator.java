@@ -49,16 +49,6 @@ public class BudgetCalculator
 		return totalUnits * costPerUnit;
 	}
 	
-	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange) throws Exception
-	{
-		return getProportionalizedTotalTaskCost(task, dateRange, 1.0);
-	}
-
-	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
-	{
-		return task.getBudgetCostRollup(dateRange) * costAllocationPercentage;
-	}
-
 	private double getProportionalizedTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
 		IdList taskIds = new IdList(Task.getObjectType(), baseObject.getData(tasksTag));
@@ -67,7 +57,7 @@ public class BudgetCalculator
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = (Task) project.findObject(taskRefs.get(i));
-			double taskTotalCost = getProportionalizedTotalTaskCost(task, dateRange);
+			double taskTotalCost = task.getBudgetCost(dateRange);
 			double allocationFraction = getAllocationFraction(baseObject.getRef(), task);
 			totalParentCost += (taskTotalCost * allocationFraction);	
 		}
@@ -90,7 +80,10 @@ public class BudgetCalculator
 			return getProportionalizedTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
 		if (baseObject.getType() == ObjectType.TASK)
-			return getProportionalizedTotalTaskCost((Task) baseObject, dateRange, costAllocationPercentage);
+		{
+			Task task = (Task) baseObject;
+			return task.getBudgetCost(dateRange) * costAllocationPercentage;
+		}
 		
 		return  0.0;		
 	}
