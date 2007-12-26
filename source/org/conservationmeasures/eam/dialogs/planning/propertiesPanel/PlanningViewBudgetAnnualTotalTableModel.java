@@ -82,7 +82,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 			if (isGrandTotalColumn(column))
 				return getGrandTotalCost(node);
 		
-			return getYearlyTotal(node, column);
+			return getYearlyTotalCost(node, column);
 		}
 		catch (Exception e)
 		{
@@ -91,7 +91,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		}
 	}
 	
-	private Object getYearlyTotal(TreeTableNode node, int column) throws Exception
+	private Object getYearlyTotalCost(TreeTableNode node, int column) throws Exception
 	{	
 		if (isBudgetOverrideMode(node))
 			return "";
