@@ -275,9 +275,6 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_SUBTASK_TOTAL))
 			return getSubtaskTotalCost();
 		
-		if (fieldTag.equals(PSEUDO_TAG_TASK_COST))
-			return getTaskCost();
-		
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
 			return getAppendedResourceNames();
 		
@@ -390,21 +387,6 @@ public class Task extends BaseObject
 		return Double.parseDouble(override);
 	}
 	
-	private String getTaskCost()
-	{
-		try
-		{
-			BudgetCalculator calculator = new BudgetCalculator(objectManager.getProject());
-			double cost = calculator.getTaskCost((TaskId)getId());
-			return formateResults(cost);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "0";
-		}
-	}
-
 	private String getSubtaskTotalCost()
 	{
 		try
@@ -550,7 +532,6 @@ public class Task extends BaseObject
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		subtaskTotal = new PseudoStringData(PSEUDO_TAG_SUBTASK_TOTAL);
 		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
-		taskCost = new PseudoStringData(PSEUDO_TAG_TASK_COST);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
@@ -564,7 +545,6 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_SUBTASK_TOTAL, subtaskTotal);
 		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);
-		addField(PSEUDO_TAG_TASK_COST, taskCost);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
@@ -579,7 +559,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "SubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
-	public final static String PSEUDO_TAG_TASK_COST = "TaskCost";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
@@ -599,7 +578,6 @@ public class Task extends BaseObject
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData subtaskTotal;
 	private PseudoStringData taskTotal;
-	private PseudoStringData taskCost;
 	private PseudoStringData who;
 	private PseudoStringData when;
 	private PseudoStringData budgetCostRollup;
