@@ -27,7 +27,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider
 {
-	public PlanningTreeTable(Project projectToUse, PlanningTreeModel planningTreeModelToUse, FontForObjectTypeProvider fontProviderToUse)
+	public PlanningTreeTable(Project projectToUse, PlanningTreeTableModel planningTreeModelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
 		fontProvider = fontProviderToUse;
