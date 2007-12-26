@@ -63,7 +63,7 @@ public class BudgetCalculator
 	public double getTaskCost(TaskId taskId) throws Exception
 	{
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		sumTotals(task, null);
+		getTotalAssignmentCost(task, null);
 		return totalCost;
 	}
 	
@@ -147,7 +147,7 @@ public class BudgetCalculator
 			return;
 		}
 	
-		sumTotals(task, dateRangeToUse);
+		getTotalAssignmentCost(task, dateRangeToUse);
 		int subTaskCount = task.getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
 		{
@@ -157,7 +157,7 @@ public class BudgetCalculator
 		}
 	}
 	
-	private void sumTotals(Task task, DateRange dateRangeToUse) throws Exception
+	private void getTotalAssignmentCost(Task task, DateRange dateRangeToUse) throws Exception
 	{
 		IdList idList = task.getAssignmentIdList();
 		for (int i = 0; i < idList.size(); i++)
