@@ -101,7 +101,7 @@ public class PlanningTreeModel extends GenericTreeTableModel
 
 	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode)
 	{
-		return taskNode.getTask().getBudgetCostRollup();
+		return taskNode.getTask().getBudgetCostRollupAsString();
 	}
 	
 	public CodeList getColumnTags()
