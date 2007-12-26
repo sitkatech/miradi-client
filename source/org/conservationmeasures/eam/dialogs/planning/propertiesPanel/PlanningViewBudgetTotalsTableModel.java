@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.text.DecimalFormat;
 
-import org.conservationmeasures.eam.dialogs.planning.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.project.PlanniningViewBudgetTotalsCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 
