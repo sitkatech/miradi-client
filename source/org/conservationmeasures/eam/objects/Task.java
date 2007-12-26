@@ -377,6 +377,20 @@ public class Task extends BaseObject
 		return getBudgetCostRollup(dateRange);
 	}
 	
+	public String getBudgetCostAsString()
+	{
+		try
+		{
+			return formateResults(getBudgetCost(null));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for task");
+			return "";
+		}
+	}
+	
 	public String getBudgetCostRollupAsString()
 	{
 		try
