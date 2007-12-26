@@ -33,13 +33,13 @@ public class PlanningViewBudgetCalculator
 	
 	public String getBudgetTotals(ORef ref) throws Exception
 	{
-		double total = totalCalculator.calculateTotalCost(ref, combinedDataRange);
+		double total = totalCalculator.calculateBudgetCost(ref, combinedDataRange);
 		return format(total);
 	}
 
 	public String getBudgetTotals(BaseObject baseObject, double costAllocationProportion) throws Exception
 	{
-		double total = totalCalculator.calculateTotalCost(baseObject, combinedDataRange, costAllocationProportion);
+		double total = totalCalculator.calculateBudgetCost(baseObject, combinedDataRange, costAllocationProportion);
 		return format(total);
 	}
 	

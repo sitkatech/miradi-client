@@ -71,7 +71,7 @@ public class BudgetCalculator
 		return (1.0 / allReferrers.size());
 	}
 	
-	public double calculateTotalCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
+	public double calculateBudgetCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		if (baseObject.getType() == ObjectType.INDICATOR)
 			return getProportionalizedTotalOfChildTasks(baseObject, Indicator.TAG_TASK_IDS, dateRange);
@@ -88,10 +88,10 @@ public class BudgetCalculator
 		return  0.0;		
 	}
 	
-	public double calculateTotalCost(ORef ref, DateRange dateRange) throws Exception
+	public double calculateBudgetCost(ORef ref, DateRange dateRange) throws Exception
 	{
 		BaseObject foundObject = project.findObject(ref);
-		return calculateTotalCost(foundObject, dateRange, 1.0);
+		return calculateBudgetCost(foundObject, dateRange, 1.0);
 	}
 		
 	private Project project;
