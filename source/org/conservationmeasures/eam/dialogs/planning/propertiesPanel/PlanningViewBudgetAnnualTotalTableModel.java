@@ -46,7 +46,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	public String getColumnName(int column)
 	{
-		if(isCostColumn(column))
+		if(isGrandTotalColumn(column))
 			return COST_COLUMN_NAME;
 		
 		try
@@ -79,7 +79,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 			if (node.getObject() == null)
 				return "";
 			
-			if (isCostColumn(column))
+			if (isGrandTotalColumn(column))
 				return getCost(node);
 		
 			return getYearlyTotal(node, column);
@@ -130,7 +130,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return currencyFormatter.format(totalCost);
 	}
 	
-	private boolean isCostColumn(int column)
+	private boolean isGrandTotalColumn(int column)
 	{
 		return column == getColumnCount() - 1;
 	}
