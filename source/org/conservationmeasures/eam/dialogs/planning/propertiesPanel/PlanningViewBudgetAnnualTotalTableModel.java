@@ -123,9 +123,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 	private Object getCost(TreeTableNode node) throws Exception
 	{
-		if (isBudgetOverrideMode(node))
-			return ((Task)node.getObject()).getBudgetCostOverrideAsParsedString();
-		
 		double totalCost = totalCalculator.calculateTotalCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
 		if (totalCost == 0)
         	return "";
