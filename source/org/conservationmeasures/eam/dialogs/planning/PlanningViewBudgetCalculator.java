@@ -20,7 +20,7 @@ public class PlanningViewBudgetCalculator
 		totalCalculator = new BudgetCalculator(projectToUse);
 	
 		currencyFormatter = projectToUse.getCurrencyFormatter();
-		combinedDataRange = projectToUse.getProjectCalendar().combineAllDateRangesIntoOne();
+		combinedDataRange = projectToUse.getProjectCalendar().combineStartToEndProjectRange();
 	}
 	
 	public String getBudgetTotals(ORef ref) throws Exception
