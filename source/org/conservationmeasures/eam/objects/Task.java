@@ -395,7 +395,7 @@ public class Task extends BaseObject
 			if (getSubtaskCount() > 0)
 				return getSubtaskTotalCost();
 			
-			return Double.toString(calculateTotalAssignment(null));
+			return Double.toString(calculateBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -405,7 +405,7 @@ public class Task extends BaseObject
 		}
 	}
 	
-	public double calculateTotalAssignment(DateRange dateRangeToUse) throws Exception
+	public double calculateBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		if (isBudgetOverrideMode())
 			return getBudgetCostOverrideValue();
@@ -416,7 +416,7 @@ public class Task extends BaseObject
 		{
 			BaseId subTaskId = getSubtaskId(index);
 			Task  subTask = (Task)getProject().findObject(ObjectType.TASK, subTaskId);
-			total += subTask.calculateTotalAssignment(dateRangeToUse);
+			total += subTask.calculateBudgetCostRollup(dateRangeToUse);
 		}
 		
 		return total;
