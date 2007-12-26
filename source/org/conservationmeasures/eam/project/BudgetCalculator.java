@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -48,13 +47,6 @@ public class BudgetCalculator
 		double costPerUnit = resource.getCostPerUnit();
 	
 		return totalUnits * costPerUnit;
-	}
-	
-	public double getTaskCost(TaskId taskId) throws Exception
-	{
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		
-		return task.getTotalAssignmentCost(null);
 	}
 	
 	public double getTotalTasksCost(IdList taskIds) throws Exception
