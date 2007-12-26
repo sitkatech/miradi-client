@@ -98,8 +98,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalCost;
 	}
 
-	//TODO inlude proportionalized in name
-	private double computeTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
+	private double getProportionalizedTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
 		IdList taskIds = new IdList(Task.getObjectType(), baseObject.getData(tasksTag));
 		ORefList taskRefs = new ORefList(Task.getObjectType(), taskIds);
@@ -124,10 +123,10 @@ public class PlanniningViewBudgetTotalsCalculator
 	public double calculateTotalCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
 		if (baseObject.getType() == ObjectType.INDICATOR)
-			return computeTotalOfChildTasks(baseObject, Indicator.TAG_TASK_IDS, dateRange);
+			return getProportionalizedTotalOfChildTasks(baseObject, Indicator.TAG_TASK_IDS, dateRange);
 
 		if (baseObject.getType() == ObjectType.STRATEGY)
-			return computeTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
+			return getProportionalizedTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
 
 		if (baseObject.getType() == ObjectType.TASK)
 			return getProportionalizedTotalTaskCost((Task) baseObject, dateRange, costAllocationPercentage);
