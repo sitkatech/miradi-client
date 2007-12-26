@@ -56,7 +56,7 @@ public class BudgetCalculator
 
 	private double getProportionalizedTotalTaskCost(Task task, DateRange dateRange, double costAllocationPercentage) throws Exception
 	{
-		return task.calculateBudgetCostRollup(dateRange) * costAllocationPercentage;
+		return task.getBudgetCostRollup(dateRange) * costAllocationPercentage;
 	}
 
 	private double getProportionalizedTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception

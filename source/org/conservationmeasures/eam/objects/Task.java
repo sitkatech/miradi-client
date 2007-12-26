@@ -396,15 +396,15 @@ public class Task extends BaseObject
 		}
 	}
 
-	private double getBudgetCostRollup(DateRange dateRange) throws Exception
+	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		if (getSubtaskCount() == 0)
-			return getTotalAssignmentCost(dateRange);
-		
-		return calculateBudgetCostRollup(dateRange);
+			return getTotalAssignmentCost(dateRangeToUse);
+
+		return getTotalSubtasksCost(dateRangeToUse);
 	}
-	
-	public double calculateBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+
+	private double getTotalSubtasksCost(DateRange dateRangeToUse) throws Exception
 	{
 		double total = getTotalAssignmentCost(dateRangeToUse);
 		int subTaskCount = getSubtaskCount();
@@ -412,7 +412,7 @@ public class Task extends BaseObject
 		{
 			BaseId subTaskId = getSubtaskId(index);
 			Task  subTask = (Task)getProject().findObject(ObjectType.TASK, subTaskId);
-			total += subTask.calculateBudgetCostRollup(dateRangeToUse);
+			total += subTask.getBudgetCost(dateRangeToUse);
 		}
 		
 		return total;
