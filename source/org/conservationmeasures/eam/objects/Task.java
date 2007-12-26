@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.project.PlanniningViewBudgetTotalsCalculator;
+import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -394,7 +394,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			PlanniningViewBudgetTotalsCalculator calculator = new PlanniningViewBudgetTotalsCalculator(objectManager.getProject());
+			BudgetCalculator calculator = new BudgetCalculator(objectManager.getProject());
 			double cost = calculator.getTaskCost((TaskId)getId());
 			return formateResults(cost);
 		}
@@ -409,7 +409,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			PlanniningViewBudgetTotalsCalculator calculator = new PlanniningViewBudgetTotalsCalculator(objectManager.getProject());
+			BudgetCalculator calculator = new BudgetCalculator(objectManager.getProject());
 			double subtaskTotalCost = calculator.getTotalTasksCost(getSubtaskIdList());
 			return formateResults(subtaskTotalCost);
 		}

@@ -10,7 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.project.PlanniningViewBudgetTotalsCalculator;
+import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 
@@ -18,7 +18,7 @@ public class PlanningViewBudgetCalculator
 {
 	public PlanningViewBudgetCalculator(Project projectToUse) throws Exception
 	{
-		totalCalculator = new PlanniningViewBudgetTotalsCalculator(projectToUse);
+		totalCalculator = new BudgetCalculator(projectToUse);
 		yearlyDateRanges = projectToUse.getProjectCalendar().getYearlyDateRanges();
 		currencyFormatter = projectToUse.getCurrencyFormatter();
 		combineAllDateRangesIntoOne();
@@ -54,5 +54,5 @@ public class PlanningViewBudgetCalculator
 	private DecimalFormat currencyFormatter;
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
-	private PlanniningViewBudgetTotalsCalculator totalCalculator;
+	private BudgetCalculator totalCalculator;
 }
