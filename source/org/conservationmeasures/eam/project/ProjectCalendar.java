@@ -33,6 +33,14 @@ public class ProjectCalendar
 		return yearlyDateRanges;
 	}
 	
+	public DateRange combineAllDateRangesIntoOne() throws Exception
+	{
+		DateRange startDateRange = (DateRange)yearlyDateRanges.get(0);
+		DateRange endDateRange = (DateRange)yearlyDateRanges.get(yearlyDateRanges.size() - 1);
+		
+		return DateRange.combine(startDateRange, endDateRange);
+	}
+	
 	private void setProjectDateRanges() throws Exception
 	{
 		//TODO budget code -  move project start/end code to Project

@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.planning;
 
 import java.text.DecimalFormat;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -19,16 +18,9 @@ public class PlanningViewBudgetCalculator
 	public PlanningViewBudgetCalculator(Project projectToUse) throws Exception
 	{
 		totalCalculator = new BudgetCalculator(projectToUse);
-		yearlyDateRanges = projectToUse.getProjectCalendar().getYearlyDateRanges();
-		currencyFormatter = projectToUse.getCurrencyFormatter();
-		combineAllDateRangesIntoOne();
-	}
 	
-	private void combineAllDateRangesIntoOne() throws Exception
-	{
-		DateRange startDateRange = (DateRange)yearlyDateRanges.get(0);
-		DateRange endDateRange = (DateRange)yearlyDateRanges.get(yearlyDateRanges.size() - 1);
-		combinedDataRange = DateRange.combine(startDateRange, endDateRange);
+		currencyFormatter = projectToUse.getCurrencyFormatter();
+		combinedDataRange = projectToUse.getProjectCalendar().combineAllDateRangesIntoOne();
 	}
 	
 	public String getBudgetTotals(ORef ref) throws Exception
@@ -53,6 +45,5 @@ public class PlanningViewBudgetCalculator
 		
 	private DecimalFormat currencyFormatter;
 	private DateRange combinedDataRange;
-	private Vector yearlyDateRanges;
 	private BudgetCalculator totalCalculator;
 }
