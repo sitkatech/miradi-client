@@ -439,7 +439,19 @@ public class Task extends BaseObject
 	
 	public String getBudgetCost()
 	{
-		return getCaculatedTotalCost();
+		try
+		{
+			if (getSubtaskCount() > 0)
+				return getSubtaskTotalCost();
+			
+			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for task");
+			return "";
+		}
 	}
 
 	private String formateResults(double cost)
