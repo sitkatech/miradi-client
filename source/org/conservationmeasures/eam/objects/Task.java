@@ -281,7 +281,7 @@ public class Task extends BaseObject
 			return getCombinedEffortDates();
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getBudgetCostRollup();
+			return getBudgetCostRollupAsString();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -388,14 +388,24 @@ public class Task extends BaseObject
 		}
 	}
 
-	public String getBudgetCostRollup()
+	public double getBudgetCost(DateRange dateRange) throws Exception
+	{
+		if (isBudgetOverrideMode())
+			return getBudgetCostOverrideValue();
+	
+		return getBudgetCostRollup(dateRange);
+	}
+	
+	public double getBudgetCost() throws Exception
+	{
+		return getBudgetCost(null);
+	}
+	
+	public String getBudgetCostRollupAsString()
 	{
 		try
 		{
-			if (getSubtaskCount() > 0)
-				return getSubtaskTotalCost();
-			
-			return Double.toString(calculateBudgetCostRollup(null));
+			return getProject().getCurrencyFormatter().format(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -404,12 +414,17 @@ public class Task extends BaseObject
 			return "";
 		}
 	}
+
+	private double getBudgetCostRollup(DateRange dateRange) throws Exception
+	{
+		if (getSubtaskCount() == 0)
+			return getTotalAssignmentCost(dateRange);
+		
+		return calculateBudgetCostRollup(dateRange);
+	}
 	
 	public double calculateBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
-		if (isBudgetOverrideMode())
-			return getBudgetCostOverrideValue();
-	
 		double total = getTotalAssignmentCost(dateRangeToUse);
 		int subTaskCount = getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
