@@ -20,9 +20,9 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.DateRange;
 
-public class PlanniningViewBudgetTotalsCalculator
+public class BudgetCalculator
 {
-	public PlanniningViewBudgetTotalsCalculator(Project projectToUse)
+	public BudgetCalculator(Project projectToUse)
 	{
 		project = projectToUse;
 	}
