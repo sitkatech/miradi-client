@@ -98,6 +98,7 @@ public class PlanniningViewBudgetTotalsCalculator
 		return totalCost;
 	}
 
+	//TODO inlude proportionalized in name
 	private double computeTotalOfChildTasks(BaseObject baseObject, String tasksTag, DateRange dateRange) throws Exception
 	{
 		IdList taskIds = new IdList(Task.getObjectType(), baseObject.getData(tasksTag));
@@ -142,6 +143,12 @@ public class PlanniningViewBudgetTotalsCalculator
 		
 	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
 	{
+		if (task.isBudgetOverrideMode())
+		{
+			totalCost += task.getBudgetCostOverrideValue();
+			return;
+		}
+	
 		sumTotals(task, dateRangeToUse);
 		int subTaskCount = task.getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
