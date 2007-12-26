@@ -93,7 +93,16 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	private Object getYearlyTotalCost(TreeTableNode node, int column) throws Exception
 	{	
-		DateRange dateRange = (DateRange)yearlyDateRanges.get(column);	
+		return getBudgetCost(node, (DateRange)yearlyDateRanges.get(column));
+	}
+
+	private Object getGrandTotalCost(TreeTableNode node) throws Exception
+	{
+		return getBudgetCost(node, combinedDataRange);		
+	}
+	
+	private Object getBudgetCost(TreeTableNode node, DateRange dateRange) throws Exception
+	{
 		double yearlyTotal = totalCalculator.calculateBudgetCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
         if (yearlyTotal == 0)
         	return "";
@@ -109,15 +118,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return ((PlanningTreeTaskNode) node).getCostAllocationProportion();
 	}
 
-	private Object getGrandTotalCost(TreeTableNode node) throws Exception
-	{
-		double totalCost = totalCalculator.calculateBudgetCost(node.getObject(), combinedDataRange, getCostAllocationProportion(node));		
-		if (totalCost == 0)
-        	return "";
-        
-		return currencyFormatter.format(totalCost);
-	}
-	
 	private boolean isGrandTotalColumn(int column)
 	{
 		return column == getColumnCount() - 1;
