@@ -377,11 +377,6 @@ public class Task extends BaseObject
 		return getBudgetCostRollup(dateRange);
 	}
 	
-	public double getBudgetCost() throws Exception
-	{
-		return getBudgetCost(null);
-	}
-	
 	public String getBudgetCostRollupAsString()
 	{
 		try
