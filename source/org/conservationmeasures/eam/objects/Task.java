@@ -364,21 +364,8 @@ public class Task extends BaseObject
 		
 		return OBJECT_NAME;
 	}
-	
-	public String getBudgetCostOverrideAsParsedString()
-	{
-		try
-		{
-			return Double.toString(getBudgetCostOverrideValue());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-	
-	public double getBudgetCostOverrideValue() throws Exception
+
+	private double getBudgetCostOverrideValue() throws Exception
 	{
 		String override = budgetCostOverride.get();
 		if (override.length() == 0)
