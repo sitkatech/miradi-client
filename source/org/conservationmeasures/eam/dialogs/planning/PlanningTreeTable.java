@@ -14,7 +14,7 @@ import javax.swing.table.TableColumn;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedNumericTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -64,7 +64,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	private BasicTableCellRenderer createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new PossiblyAllocatedNumericTableCellRenderer(this, getTreeTableAdapter(), fontProvider);
+			return new PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer(this, getTreeTableAdapter(), fontProvider);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRenderer(this, fontProvider);
 		return new TableCellRendererForObjects(this, fontProvider);

@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.Task;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class PossiblyAllocatedNumericTableCellRenderer extends NumericTableCellRenderer
+public class PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer extends NumericTableCellRenderer
 {
-	public PossiblyAllocatedNumericTableCellRenderer(RowColumnBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse, FontForObjectTypeProvider fontProviderToUse)
+	public PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer(RowColumnBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
