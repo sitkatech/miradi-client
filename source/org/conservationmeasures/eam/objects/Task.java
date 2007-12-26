@@ -439,9 +439,6 @@ public class Task extends BaseObject
 	
 	public String getBudgetCost()
 	{
-		if (isBudgetOverrideMode())
-			return getBudgetCostOverrideAsParsedString();
-		
 		return getCaculatedTotalCost();
 	}
 
