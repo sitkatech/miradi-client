@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import org.conservationmeasures.eam.main.EAM;
+
 
 public class BudgetCostModeQuestion extends StaticChoiceQuestion
 {
@@ -16,8 +18,8 @@ public class BudgetCostModeQuestion extends StaticChoiceQuestion
 	public static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Rollup"),
-				new ChoiceItem(OVERRIDE_MODE_CODE, "Override"),
+				new ChoiceItem("", EAM.text("Rollup")),
+				new ChoiceItem(OVERRIDE_MODE_CODE, EAM.text("High Level Est.")),
 		};
 	}
 	
