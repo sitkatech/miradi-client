@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -84,7 +85,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
-		Vector diagramNames = getDiagramNamesEffectedByThisDelete(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells));
+		Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
+		Vector diagramNames = getDiagramNamesEffectedByThisDelete(diagramLinks, extractDiagramFactors(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
 			return true;
 
@@ -97,16 +99,12 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return EAM.confirmDeletRetainDialog(new String[]{notifyDiaglogText});
 	}
 
-	private Vector getDiagramNamesEffectedByThisDelete(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
+	private Vector getDiagramNamesEffectedByThisDelete(Vector<DiagramLink> diagramLinks, ORefList diagramFactorRefs)
 	{	
 		Vector diagramNames = new Vector(); 
-		for (int i = 0; i < selectedRelatedCells.length; ++i)
+		for (int i = 0; i < diagramLinks.size(); ++i)
 		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if (! cell.isFactorLink())
-				continue;
-			
-			DiagramLink diagramLink = cell.getDiagramLink();
+			DiagramLink diagramLink = diagramLinks.get(i);
 			FactorLink factorLink = diagramLink.getUnderlyingLink();
 			ORef fromDiagramFactorRef =  new ORef(DiagramFactor.getObjectType(), diagramLink.getFromDiagramFactorId());
 			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramLink.getToDiagramFactorId());
@@ -167,6 +165,22 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 		
 		return diagramFactorRefList;
+	}
+	
+	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
+	{
+		Vector<DiagramLink> diagramLinks = new Vector();
+		for (int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			EAMGraphCell cell = selectedRelatedCells[i];
+			if (!cell.isFactorLink())
+				continue;
+			
+			LinkCell linkCell = (LinkCell) cell;
+			diagramLinks.add(linkCell.getDiagramLink());
+		}
+		
+		return diagramLinks;
 	}
 	
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
