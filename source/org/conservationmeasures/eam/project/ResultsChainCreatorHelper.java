@@ -395,9 +395,9 @@ public class ResultsChainCreatorHelper
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 	
-		FactorLinkId factorLinkId = new LinkCreator(project).createFactorLink(fromCloned, toCloned);
+		ORef factorLinkRef = new LinkCreator(project).createFactorLink(fromCloned, toCloned);
 
-		return new CreateDiagramFactorLinkParameter(factorLinkId, fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 	}
 
 	private boolean areSharingTheSameFactor(DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned)
