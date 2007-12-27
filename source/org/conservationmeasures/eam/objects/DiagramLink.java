@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Point;
 import java.util.Set;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
@@ -18,6 +19,7 @@ import org.conservationmeasures.eam.objectdata.PointListData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
@@ -185,6 +187,56 @@ public class DiagramLink extends BaseObject
 		return getBendPoints().contains(location);
 	}
 
+	public String getToolTipString() 
+	{
+		Factor fromFactor = Factor.findFactor(getProject(), getUnderlyingLink().getFromFactorRef());
+		Factor toFactor = Factor.findFactor(getProject(), getUnderlyingLink().getToFactorRef());
+		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
+				           		   "<b>To : " + toFactor.getLabel() + "</b>";
+		
+		String[] calculatedRatings = getRelevantStressesAsHTML();
+		if (calculatedRatings.length == 0)
+			return toolTipText;
+		
+		String header = "Stresses:";
+		toolTipText += "<hr>" + header + "<ul>";
+		for (int i = 0; i < calculatedRatings.length; ++i)
+		{
+			toolTipText += calculatedRatings[i];
+		}
+
+		return toolTipText;
+	}
+	
+	private String[] getRelevantStressesAsHTML()
+	{
+		String[] stressNames = getRelevantStressNames();
+		String[] StressNamesAsHTML = new String[stressNames.length];
+		for (int i = 0; i < stressNames.length; ++i)
+		{
+			StressNamesAsHTML[i] = "<li>" + stressNames[i] + "</li>";
+		}
+		
+		return StressNamesAsHTML;
+	}
+	
+	public String[] getRelevantStressNames()
+	{
+		Vector<String> stressNames = new Vector();
+		if (getUnderlyingLink() == null)
+			return new String[0];
+		
+		ORefList threatStressRatingRefs = getUnderlyingLink().getThreatStressRatingRefs();
+		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
+			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
+			if (threatStressRating.calculateThreatRating() > 0)
+				stressNames.add(stress.toString());
+		}
+		return stressNames.toArray(new String[0]);
+	}
+	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorLinkParameter(

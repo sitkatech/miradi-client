@@ -48,7 +48,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			renderer.lineWidth = 4;
 		}
 
-		stressText = getLinkCell().getRelevantStressNames();
+		stressText = getLinkCell().getDiagramLink().getRelevantStressNames();
 
 		return renderer;
 	}
@@ -309,7 +309,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
 		LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		String[] relevantStressNames = thisCell.getRelevantStressNames();
+		String[] relevantStressNames = thisCell.getDiagramLink().getRelevantStressNames();
 		if (relevantStressNames.length == 0)
 			return graphBounds;
 		
