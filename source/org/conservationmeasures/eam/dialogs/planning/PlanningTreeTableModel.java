@@ -115,6 +115,9 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode) throws Exception
 	{
 		double budgetCost = totalCalculator.calculateBudgetCost(taskNode.getTask(), null, taskNode.getCostAllocationProportion());
+		if (budgetCost == 0)
+			return "";
+		
 		return currencyFormatter.format(budgetCost);
 	}
 	
