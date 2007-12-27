@@ -276,9 +276,6 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
 			return getCombinedEffortDates();
 		
-		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getBudgetCostRollupAsString();
-		
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -527,7 +524,6 @@ public class Task extends BaseObject
 		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -539,7 +535,6 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);
 		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
-		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 	}
 
 	
@@ -552,7 +547,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
-	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -570,5 +564,4 @@ public class Task extends BaseObject
 	private PseudoStringData taskTotal;
 	private PseudoStringData who;
 	private PseudoStringData when;
-	private PseudoStringData budgetCostRollup;
 }
