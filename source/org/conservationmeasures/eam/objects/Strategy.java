@@ -252,13 +252,13 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
-	private double getBudgetCostOverrideValue() throws Exception
+	private String getFormatedBudgetCostOverrideValue() throws Exception
 	{
 		String override = budgetCostOverride.get();
 		if (override.length() == 0)
-			return 0;
+			return "";
 		
-		return Double.parseDouble(override);
+		return formateResults(Double.parseDouble(override));
 	}
 		
 	public String getBudgetCostAsString()
@@ -266,7 +266,7 @@ public class Strategy extends Factor
 		try
 		{
 			if (isBudgetOverrideMode())
-				return formateResults(getBudgetCostOverrideValue());
+				return getFormatedBudgetCostOverrideValue();
 			
 			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
 		}
