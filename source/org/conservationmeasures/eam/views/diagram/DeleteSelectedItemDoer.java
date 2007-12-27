@@ -84,7 +84,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
-		Vector diagramNames = shouldNotifyUserOfLinksBeingDeletedInOtherPages(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells));
+		Vector diagramNames = getDiagramNamesEffectedByThisDelete(selectedRelatedCells, extractDiagramFactors(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
 			return true;
 
@@ -97,7 +97,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return EAM.confirmDeletRetainDialog(new String[]{notifyDiaglogText});
 	}
 
-	private Vector shouldNotifyUserOfLinksBeingDeletedInOtherPages(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
+	private Vector getDiagramNamesEffectedByThisDelete(EAMGraphCell[] selectedRelatedCells, ORefList diagramFactorRefs)
 	{	
 		Vector diagramNames = new Vector(); 
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
