@@ -362,7 +362,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private void drawStress(Graphics g)
 	{
-		if (!getLinkCell().getFactorLink().isTargetLink())
+		if (!getLinkCell().getDiagramLink().isTargetLink())
 			return;
 		
 		if(stressText == null || stressText.length == 0)
