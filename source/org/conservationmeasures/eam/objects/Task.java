@@ -371,13 +371,10 @@ public class Task extends BaseObject
 	
 	public double getBudgetCost(DateRange dateRange) throws Exception
 	{
-		boolean isOverrideMode = isBudgetOverrideMode();
-		boolean isNull = dateRange == null;
-		boolean isProjectRange = dateRange.contains(getProject().getProjectCalendar().combineStartToEndProjectRange());
-		if (isOverrideMode && !isNull && !isProjectRange)
+		if (isBudgetOverrideMode() && dateRange != null && !dateRange.contains(getProject().getProjectCalendar().combineStartToEndProjectRange()))
 			return 0;
 		
-		if (isOverrideMode)
+		if (isBudgetOverrideMode())
 			return getBudgetCostOverrideValue();
 	
 		return getBudgetCostRollup(dateRange);
