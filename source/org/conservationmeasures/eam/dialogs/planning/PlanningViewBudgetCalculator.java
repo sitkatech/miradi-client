@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.text.DecimalFormat;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -29,12 +28,6 @@ public class PlanningViewBudgetCalculator
 		return format(total);
 	}
 
-	public String getBudgetTotals(BaseObject baseObject, double costAllocationProportion) throws Exception
-	{
-		double total = totalCalculator.calculateBudgetCost(baseObject, combinedDataRange, costAllocationProportion);
-		return format(total);
-	}
-	
 	private String format(double total)
 	{
 		if (total == 0)
