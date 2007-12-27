@@ -147,6 +147,11 @@ public class DiagramLink extends BaseObject
 		return (DiagramFactorLinkId)getId(); 
 	}
 	
+	public ORefList getGroupedDiagramLinkRefs()
+	{
+		return groupedDiagramLinkRefs.getORefList();
+	}
+	
 	public ORef getWrappedRef()
 	{
 		return getUnderlyingLink().getRef();
@@ -159,7 +164,14 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isBidirectional()
 	{
-		return getUnderlyingLink().isBidirectional();
+		if (getUnderlyingLink() != null)
+			return getUnderlyingLink().isBidirectional();
+		
+		if (getGroupedDiagramLinkRefs().size() == 0)
+			return false;
+		
+		DiagramLink diagramLink = DiagramLink.find(getProject(), getGroupedDiagramLinkRefs().get(0));
+		return diagramLink.isBidirectional();
 	}
 	
 	public FactorLink getUnderlyingLink()
