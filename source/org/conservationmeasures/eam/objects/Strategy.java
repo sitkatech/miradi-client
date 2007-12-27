@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
@@ -127,14 +126,6 @@ public class Strategy extends Factor
 	public boolean isStatusDraft()
 	{
 		return STATUS_DRAFT.equals(status.get());
-	}
-	
-	public boolean isBudgetOverrideMode()
-	{
-		BudgetCostModeQuestion question = new BudgetCostModeQuestion(TAG_BUDGET_COST_MODE);
-		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
-		
-		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 	}
 	
 	public void addActivity(ORef activityRef)
@@ -309,8 +300,6 @@ public class Strategy extends Factor
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
 		feasibilityRating = new ChoiceData();
-		budgetCostOverride = new StringData();
-		budgetCostMode = new ChoiceData();
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		taxonomyCodeLabel = new PseudoQuestionData(new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
@@ -324,8 +313,6 @@ public class Strategy extends Factor
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
-		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
-		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
@@ -342,9 +329,6 @@ public class Strategy extends Factor
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
-	public final static String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
-	public final static String TAG_BUDGET_COST_MODE = "BudgetCostMode";
-	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
@@ -360,9 +344,6 @@ public class Strategy extends Factor
 	private StringData taxonomyCode;
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
-	private StringData budgetCostOverride;
-	private ChoiceData budgetCostMode;
-	
 	private PseudoStringData tagRatingSummary;
 	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoQuestionData impactRatingLabel;

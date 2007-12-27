@@ -15,17 +15,13 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -217,14 +213,6 @@ public class Task extends BaseObject
 		return findObjectsThatReferToUs().size() > 1;
 	}
 
-	public boolean isBudgetOverrideMode()
-	{
-		BudgetCostModeQuestion question = new BudgetCostModeQuestion(TAG_BUDGET_COST_MODE);
-		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
-		
-		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
-	}
-	
 	public void addSubtaskId(BaseId subtaskId)
 	{
 		subtaskIds.add(subtaskId);
@@ -521,8 +509,6 @@ public class Task extends BaseObject
 		super.clear();
 		subtaskIds = new IdListData(Task.getObjectType());
 		assignmentIds = new IdListData(Assignment.getObjectType());
-		budgetCostOverride = new StringData();
-		budgetCostMode = new ChoiceData();
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
@@ -532,8 +518,6 @@ public class Task extends BaseObject
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
-		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
-		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
@@ -545,8 +529,6 @@ public class Task extends BaseObject
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
-	public final static String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
-	public final static String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
@@ -561,9 +543,6 @@ public class Task extends BaseObject
 	
 	private IdListData subtaskIds;
 	private IdListData assignmentIds;
-	private StringData budgetCostOverride;
-	private ChoiceData budgetCostMode;
-	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData taskTotal;
