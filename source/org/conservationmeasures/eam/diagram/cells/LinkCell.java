@@ -59,9 +59,8 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public String getToolTipString() 
 	{
-		Project project = getFactorLink().getProject();
-		Factor fromFactor = Factor.findFactor(project, getFactorLink().getFromFactorRef());
-		Factor toFactor = Factor.findFactor(project, getFactorLink().getToFactorRef());
+		Factor fromFactor = Factor.findFactor(getProject(), getFactorLink().getFromFactorRef());
+		Factor toFactor = Factor.findFactor(getProject(), getFactorLink().getToFactorRef());
 		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
 		
@@ -79,6 +78,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return toolTipText;
 	}
 
+	private Project getProject()
+	{
+		return getDiagramLink().getProject();
+	}
+
 	private String[] getRelevantStressesAsHTML()
 	{
 		String[] stressNames = getRelevantStressNames();
@@ -93,13 +97,15 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public String[] getRelevantStressNames()
 	{
-		Project project = getFactorLink().getProject();
 		Vector<String> stressNames = new Vector();
+		if (getFactorLink() == null)
+			return new String[0];
+		
 		ORefList threatStressRatingRefs = getFactorLink().getThreatStressRatingRefs();
 		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
 		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(project, threatStressRatingRefs.get(i));
-			Stress stress = Stress.find(project, threatStressRating.getStressRef());
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
+			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
 			if (threatStressRating.calculateThreatRating() > 0)
 				stressNames.add(stress.toString());
 		}
@@ -148,7 +154,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public ORef getWrappedORef()
 	{
-		return link.getRef();
+		return getFactorLink().getRef();
 	}
 	
 	private void updateBendPoints()
@@ -166,7 +172,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		int arrowTailStyle = GraphConstants.ARROW_NONE;
 		
-		if (link.isBidirectional())
+		if (getFactorLink().isBidirectional())
 			arrowTailStyle = GraphConstants.ARROW_TECHNICAL;
 		else if(!isThisLinkBodyVisible(diagram))
 			arrowTailStyle = ArrowLineRenderer.ARROW_STUB_LINE;
