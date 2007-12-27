@@ -56,9 +56,6 @@ public class PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer extends
 	
 	private void annotateIfOverride(int row, JLabel labelComponent)
 	{
-		if(labelComponent.getText().length() == 0)
-			return;
-		
 		TreeTableNode node = getNodeForRow(row);
 		if(node.getType() != Task.getObjectType())
 			return;
@@ -67,7 +64,6 @@ public class PossiblyAllocatedPossiblyOverriddenNumericTableCellRenderer extends
 		
 		if(taskNode.getTask().isBudgetOverrideMode())
 			labelComponent.setText("~ " + labelComponent.getText());
-		
 	}
 	
 	protected TreeTableNode getNodeForRow(int row)
