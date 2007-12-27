@@ -30,7 +30,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
 		
 		addField(createChoiceField(Strategy.getObjectType(), new BudgetCostModeQuestion(Strategy.TAG_BUDGET_COST_MODE)));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_BUDGET_COST_ROLLUP));
+		addField(createReadonlyCurrencyField(Strategy.PSEUDO_TAG_BUDGET_COST_ROLLUP));
 		addField(createCurrencyField(Strategy.getObjectType(), Strategy.TAG_BUDGET_COST_OVERRIDE));
 		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
