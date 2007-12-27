@@ -397,7 +397,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private Project getProject()
 	{
-		return getLinkCell().getFactorLink().getProject();
+		return getLinkCell().getDiagramLink().getProject();
 	}
 
 	private String getSystemFontFamily()
