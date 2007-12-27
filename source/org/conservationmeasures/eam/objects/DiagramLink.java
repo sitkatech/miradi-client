@@ -207,6 +207,25 @@ public class DiagramLink extends BaseObject
 		return getBendPoints().contains(location);
 	}
 
+	public ORefList getSelfOrChildren()
+	{
+		if (isGroupBoxLink())
+			return getGroupedDiagramLinkRefs();
+		
+		return new ORefList(getRef());
+	}
+	
+	public boolean isGroupBoxLink()
+	{
+		if (DiagramFactor.find(getProject(), getFromDiagramFactorRef()).isGroupBoxFactor())
+			return true;
+		
+		if (DiagramFactor.find(getProject(), getToDiagramFactorRef()).isGroupBoxFactor())
+			return true;
+		
+		return false;
+	}
+	
 	public String getToolTipString() 
 	{
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getFromDiagramFactorRef());
