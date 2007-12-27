@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.layout.OneRowGridLayout;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.martus.swing.UiLabel;
@@ -30,9 +29,9 @@ class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 		setBorder(null);
 		
 		int type = initialRef.getObjectType();
-		ObjectDataInputField modeField = createChoiceField(type, new BudgetCostModeQuestion(Strategy.TAG_BUDGET_COST_MODE));
+		ObjectDataInputField modeField = createChoiceField(type, new BudgetCostModeQuestion(BaseObject.TAG_BUDGET_COST_MODE));
 		ObjectDataInputField rollupField = createReadonlyCurrencyField(BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP);
-		ObjectDataInputField overrideField = createCurrencyField(type, Strategy.TAG_BUDGET_COST_OVERRIDE);
+		ObjectDataInputField overrideField = createCurrencyField(type, BaseObject.TAG_BUDGET_COST_OVERRIDE);
 		
 		addField(modeField);
 		addField(rollupField);
