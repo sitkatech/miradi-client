@@ -59,11 +59,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		fields = new Vector();
 		project.addCommandExecutedListener(this);
 		setBorder(new EmptyBorder(5,5,5,5));
+		subPanels = new Vector<AbstractObjectDataInputPanel>();
 	}
 	
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.dispose();
+		}
 		super.dispose();
 	}
 
@@ -80,6 +85,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		saveModifiedFields();
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.setObjectRefs(orefsToUse);
+		}
 		orefs = orefsToUse;
 		updateFieldsFromProject();
 	}
@@ -103,6 +112,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	abstract public void addFieldComponent(Component component);
 	
+	public void addSubPanel(AbstractObjectDataInputPanel subPanel)
+	{
+		subPanels.add(subPanel);
+	}
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
 	{
@@ -322,6 +335,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.saveIfNeeded();
 		}
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.saveModifiedFields();
+		}
+
 	}
 	
 	public void updateFieldsFromProject()
@@ -332,7 +350,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.updateFromObject();
 		}
-		
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.updateFieldsFromProject();
+		}
+
 	}
 
 	public Vector getFields()
@@ -347,6 +369,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
 			field.setObjectId(getObjectIdForType(field.getObjectType()));
 		}
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.setFieldObjectIds();
+		}
+
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -400,5 +427,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	private Project project;
 	private ORef[] orefs;
 	private Vector fields;
+	private Vector<AbstractObjectDataInputPanel> subPanels;
 }
 
