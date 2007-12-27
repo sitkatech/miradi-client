@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.DateRange;
 
@@ -76,16 +75,7 @@ public class BudgetCalculator
 		if (baseObject.getType() == ObjectType.INDICATOR)
 			return getProportionalizedTotalOfChildTasks(baseObject, Indicator.TAG_TASK_IDS, dateRange);
 
-		if (baseObject.getType() == ObjectType.STRATEGY)
-			return getProportionalizedTotalOfChildTasks(baseObject, Strategy.TAG_ACTIVITY_IDS, dateRange);
-
-		if (baseObject.getType() == ObjectType.TASK)
-		{
-			Task task = (Task) baseObject;
-			return task.getBudgetCost(dateRange) * costAllocationPercentage;
-		}
-		
-		return  0.0;		
+		return baseObject.getBudgetCost(dateRange) * costAllocationPercentage;
 	}
 	
 	public double calculateBudgetCost(ORef ref, DateRange dateRange) throws Exception

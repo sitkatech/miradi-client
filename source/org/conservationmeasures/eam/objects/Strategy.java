@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.Set;
 
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -246,9 +245,17 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
-	private double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
-		return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+		double total = 0.0;
+		ORefList activityRefs = getActivityRefs();
+		for(int i = 0; i < activityRefs.size(); ++i)
+		{
+			Task activity = Task.find(getProject(), activityRefs.get(i));
+			total += activity.getBudgetCost(dateRangeToUse);
+		}
+
+		return total;
 	}
 	
 	private String getFormatedBudgetCostOverrideValue() throws Exception
