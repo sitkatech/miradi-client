@@ -214,7 +214,7 @@ public class LinkCreator
 			if (fromORef == null)
 				continue;
 			
-			createDiagramLink(diagramObject, factorLinkRef, fromORef, toORef);
+			createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromORef, toORef, factorLinkRef));
 		}
 	}
 
@@ -236,9 +236,8 @@ public class LinkCreator
 		return (Factor) project.findObject(factorRef);
 	}
 	
-	private void createDiagramLink(DiagramObject diagramObject, ORef factorlLinkRef, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws CommandFailedException, ParseException
+	private void createDiagramLink(DiagramObject diagramObject, CreateDiagramFactorLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef, factorlLinkRef);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
     	
@@ -282,7 +281,9 @@ public class LinkCreator
 			}
 		}
 		
-		
+		//FIXME create GB link disabled
+		//CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
+		//createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
 		if (needsDirectionalityFixed(allFromToFactorLinkRefs, fromFactorRefs, toFactorRefs))
 			fixBidirectionality(allFromToFactorLinkRefs);
 	}
