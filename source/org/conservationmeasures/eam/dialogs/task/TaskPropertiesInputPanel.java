@@ -49,7 +49,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
 		addField(createChoiceField(Task.getObjectType(), new BudgetCostModeQuestion(Task.TAG_BUDGET_COST_MODE)));
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_BUDGET_COST_ROLLUP));
-		addField(createNumericField(Task.getObjectType(), Task.TAG_BUDGET_COST_OVERRIDE));
+		addField(createCurrencyField(Task.getObjectType(), Task.TAG_BUDGET_COST_OVERRIDE));
 		
 		addLabel(new UiLabel(""));
 		addLabel(hasBothSubTaskAssignmentsWarningLabel);
