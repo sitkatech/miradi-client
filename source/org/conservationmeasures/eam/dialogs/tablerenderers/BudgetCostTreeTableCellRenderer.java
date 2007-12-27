@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.icons.AllocatedCostIcon;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Task;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
@@ -57,12 +58,11 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 	private void annotateIfOverride(int row, JLabel labelComponent)
 	{
 		TreeTableNode node = getNodeForRow(row);
-		if(node.getType() != Task.getObjectType())
+		BaseObject object = node.getObject();
+		if(object == null)
 			return;
 		
-		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) node;
-		
-		if(taskNode.getTask().isBudgetOverrideMode())
+		if(object.isBudgetOverrideMode())
 			labelComponent.setText("~ " + labelComponent.getText());
 	}
 	
