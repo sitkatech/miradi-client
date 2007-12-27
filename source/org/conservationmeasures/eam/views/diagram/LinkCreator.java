@@ -128,10 +128,10 @@ public class LinkCreator
 		if(link.getFromFactorRef().getObjectId().equals(fromFactorId))
 			return;
 		
-		enableBidirectionality(link.getRef());
+		enableBidirectional(link.getRef());
 	}
 
-	private void enableBidirectionality(ORef factorLinkRef) throws CommandFailedException
+	private void enableBidirectional(ORef factorLinkRef) throws CommandFailedException
 	{
 		CommandSetObjectData command = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
 		project.executeCommand(command);
@@ -292,7 +292,7 @@ public class LinkCreator
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
-			enableBidirectionality(createdDiagramLinkRefs.get(i));
+			enableBidirectional(createdDiagramLinkRefs.get(i));
 		}
 	}
 
