@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -361,6 +362,12 @@ abstract public class BaseObject
 	public String getBudgetCostRollupAsString()
 	{
 		return "";
+	}
+	
+	public String formatCurrency(double cost)
+	{
+		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
+		return formater.format(cost);
 	}
 	
 	void clear()
