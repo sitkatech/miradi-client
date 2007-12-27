@@ -43,6 +43,7 @@ import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
@@ -355,6 +356,43 @@ abstract public class BaseObject
 	{
 		id = newId;
 	}
+	
+	public double getBudgetCost(DateRange dateRange) throws Exception
+	{
+		if (isBudgetOverrideMode() && !isWholeProjectDateRange(dateRange))
+			return 0;
+		
+		if (isBudgetOverrideMode())
+			return getBudgetCostOverrideValue();
+	
+		return getBudgetCostRollup(dateRange);
+	}
+	
+	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+	{
+		return 0;
+	}
+	
+	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
+	{
+		if (dateRange == null)
+			return true;
+		
+		if (dateRange.contains(getProject().getProjectCalendar().combineStartToEndProjectRange()))
+			return true;
+		
+		return false;
+	}
+
+	private double getBudgetCostOverrideValue() throws Exception
+	{
+		String override = budgetCostOverride.get();
+		if (override.length() == 0)
+			return 0;
+		
+		return Double.parseDouble(override);
+	}
+	
 	
 	public String getBudgetCostAsString()
 	{

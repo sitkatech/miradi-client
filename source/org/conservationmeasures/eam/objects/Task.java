@@ -344,38 +344,6 @@ public class Task extends BaseObject
 		return OBJECT_NAME;
 	}
 
-	private double getBudgetCostOverrideValue() throws Exception
-	{
-		String override = budgetCostOverride.get();
-		if (override.length() == 0)
-			return 0;
-		
-		return Double.parseDouble(override);
-	}
-	
-	public double getBudgetCost(DateRange dateRange) throws Exception
-	{
-		if (isBudgetOverrideMode() && !isWholeProjectDateRange(dateRange))
-			return 0;
-		
-		if (isBudgetOverrideMode())
-			return getBudgetCostOverrideValue();
-	
-		return getBudgetCostRollup(dateRange);
-	}
-	
-	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
-	{
-		if (dateRange == null)
-			return true;
-		
-		if (dateRange.contains(getProject().getProjectCalendar().combineStartToEndProjectRange()))
-			return true;
-		
-		return false;
-	}
-
-	
 	public String getBudgetCostAsString()
 	{
 		try
@@ -504,6 +472,16 @@ public class Task extends BaseObject
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
 
+	public static Task find(ObjectManager objectManager, ORef taskRef)
+	{
+		return (Task) objectManager.findObject(taskRef);
+	}
+	
+	public static Task find(Project project, ORef taskRef)
+	{
+		return find(project.getObjectManager(), taskRef);
+	}
+	
 	public void clear()
 	{
 		super.clear();
