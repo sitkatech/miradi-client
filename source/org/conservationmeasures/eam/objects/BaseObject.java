@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -38,6 +39,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectChainObject;
+import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
@@ -375,13 +377,17 @@ abstract public class BaseObject
 		label = new StringData();
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
-		
+		budgetCostOverride = new StringData();
+		budgetCostMode = new ChoiceData();
+
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		
 		addField(PSEUDO_TAG_BUDGET_TOTAL, budgetTotal);
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
+		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
+		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 	}
 	
 	void addField(String tag, ObjectData data)
@@ -937,8 +943,12 @@ abstract public class BaseObject
 
 	public boolean isBudgetOverrideMode()
 	{
-		return false;
+		BudgetCostModeQuestion question = new BudgetCostModeQuestion(TAG_BUDGET_COST_MODE);
+		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
+		
+		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 	}
+	
 
 	//FIXME move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
@@ -1079,6 +1089,8 @@ abstract public class BaseObject
 	
 	public final static String PSEUDO_TAG_BUDGET_TOTAL = "PseudoTaskBudgetTotal";
 	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
+	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
+	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	BaseId id;
 	StringData label;
@@ -1091,4 +1103,6 @@ abstract public class BaseObject
 	protected ObjectManager objectManager;
 	private HashMap fields;
 	private Vector noneClearedFieldTags;
+	protected StringData budgetCostOverride;
+	protected ChoiceData budgetCostMode;
 }
