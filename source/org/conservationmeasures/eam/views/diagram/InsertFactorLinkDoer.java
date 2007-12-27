@@ -52,7 +52,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			if (!linkCreator.isGroupBoxFactor(fromDiagramFactor) && !linkCreator.isGroupBoxFactor(toDiagramFactor))
+			if (!fromDiagramFactor.isGroupBoxFactor() && !fromDiagramFactor.isGroupBoxFactor())
 				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
 			else
 				linkCreator.createGroupBoxChildrenDiagramLinks(model, fromDiagramFactor, toDiagramFactor);

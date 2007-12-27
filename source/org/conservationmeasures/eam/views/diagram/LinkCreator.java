@@ -28,7 +28,6 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
@@ -260,8 +259,8 @@ public class LinkCreator
 		ORefList allLinkRefs = new ORefList();
 		ORefList fromFactorRefs = new ORefList();
 		ORefList toFactorRefs = new ORefList();
-		ORefList fromDiagramFactorRefs = getSelfOrChildren(fromDiagramFactorToUse);
-		ORefList toDiagramFactorRefs = getSelfOrChildren(toDiagramFactorToUse);
+		ORefList fromDiagramFactorRefs = fromDiagramFactorToUse.getSelfOrChildren();
+		ORefList toDiagramFactorRefs = toDiagramFactorToUse.getSelfOrChildren();
 		DiagramObject diagramObject = model.getDiagramObject();
 		for (int from = 0; from < fromDiagramFactorRefs.size(); ++from)
 		{
@@ -316,22 +315,6 @@ public class LinkCreator
 		return false;
 	}
 
-	public ORefList getSelfOrChildren(DiagramFactor diagramFactor)
-	{
-		if (isGroupBoxFactor(diagramFactor))
-			return diagramFactor.getGroupBoxChildrenRefs();
-		
-		return new ORefList(diagramFactor.getRef());
-	}
-	
-	public boolean isGroupBoxFactor(DiagramFactor diagramFactor)
-	{
-		if (diagramFactor.getWrappedType() == GroupBox.getObjectType())
-			return true;
-		
-		return false;
-	}
-	
 	private Project getProject()
 	{
 		return project;

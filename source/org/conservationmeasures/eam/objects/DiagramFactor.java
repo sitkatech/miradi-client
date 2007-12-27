@@ -212,6 +212,22 @@ public class DiagramFactor extends BaseObject
 		return groupBoxDiagramFactorRef;
 	}
 	
+	public ORefList getSelfOrChildren()
+	{
+		if (isGroupBoxFactor())
+			return getGroupBoxChildrenRefs();
+		
+		return new ORefList(getRef());
+	}
+	
+	public boolean isGroupBoxFactor()
+	{
+		if (getWrappedType() == GroupBox.getObjectType())
+			return true;
+		
+		return false;
+	}
+		
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
