@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.Vector;
@@ -393,7 +392,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return formatResults(getBudgetCost(null));
+			return formatCurrency(getBudgetCost(null));
 		}
 		catch(Exception e)
 		{
@@ -407,7 +406,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return formatResults(getBudgetCostRollup(null));
+			return formatCurrency(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -476,12 +475,6 @@ public class Task extends BaseObject
 		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
-	private String formatResults(double cost)
-	{
-		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
-		return formater.format(cost);
-	}
-
 	private String getLabelOfTaskParent()
 	{
 

@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
-import java.text.DecimalFormat;
 import java.util.Set;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
@@ -267,14 +266,14 @@ public class Strategy extends Factor
 		if (override.length() == 0)
 			return "";
 		
-		return formatResults(Double.parseDouble(override));
+		return formatCurrency(Double.parseDouble(override));
 	}
 		
 	public String getBudgetCostRollupAsString()
 	{
 		try
 		{
-			return formatResults(getBudgetCostRollup(null));
+			return formatCurrency(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -301,12 +300,6 @@ public class Strategy extends Factor
 		}
 	}
 	
-	private String formatResults(double cost)
-	{
-		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
-		return formater.format(cost);
-	}
-
 	void clear()
 	{
 		super.clear();
