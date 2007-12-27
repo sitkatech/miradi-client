@@ -267,14 +267,14 @@ public class Strategy extends Factor
 		if (override.length() == 0)
 			return "";
 		
-		return formateResults(Double.parseDouble(override));
+		return formatResults(Double.parseDouble(override));
 	}
 		
 	public String getBudgetCostRollupAsString()
 	{
 		try
 		{
-			return formateResults(getBudgetCostRollup(null));
+			return formatResults(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -301,7 +301,7 @@ public class Strategy extends Factor
 		}
 	}
 	
-	private String formateResults(double cost)
+	private String formatResults(double cost)
 	{
 		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
 		return formater.format(cost);
