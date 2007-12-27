@@ -117,7 +117,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		int arrowTailStyle = GraphConstants.ARROW_NONE;
 		
-		if (getFactorLink().isBidirectional())
+		if (getDiagramLink().isBidirectional())
 			arrowTailStyle = GraphConstants.ARROW_TECHNICAL;
 		else if(!isThisLinkBodyVisible(diagram))
 			arrowTailStyle = ArrowLineRenderer.ARROW_STUB_LINE;
