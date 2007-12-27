@@ -266,8 +266,21 @@ public class DiagramModel extends DefaultGraphModel
 		
 		return areLinked(fromFactorId, toFactorId);
 	}
-	
+
 	public boolean areLinked(FactorId id1, FactorId id2)
+	{
+		return !getLink(id1, id2).isInvalid();
+	}
+
+	public ORef getLink(ORef fromFactorRef, ORef toFactorRef)
+	{
+		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
+		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
+		
+		return getLink(fromFactorId, toFactorId);
+	}
+	
+	private ORef getLink(FactorId id1, FactorId id2)
 	{
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
@@ -277,13 +290,13 @@ public class DiagramModel extends DefaultGraphModel
 			FactorId foundId1 = link.getFrom().getWrappedId();
 			FactorId foundId2 = link.getTo().getWrappedId();
 			if(foundId1.equals(id1) && foundId2.equals(id2))
-				return true;
+				return link.getWrappedORef();
 			
 			if(foundId1.equals(id2) && foundId2.equals(id1))
-				return true;
+				return link.getWrappedORef();
 		}
 		
-		return false;
+		return ORef.INVALID;
 	}
 	
 	public boolean isResultsChain()
