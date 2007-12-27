@@ -160,11 +160,6 @@ public class DiagramLink extends BaseObject
 		return getUnderlyingLink().isBidirectional();
 	}
 	
-	public boolean isTargetLink()
-	{
-		return getUnderlyingLink().isTargetLink();
-	}
-	
 	public FactorLink getUnderlyingLink()
 	{
 		return (FactorLink)getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
