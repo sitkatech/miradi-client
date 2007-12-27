@@ -9,7 +9,9 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
@@ -19,12 +21,8 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {
 	public StrategyPropertiesPanel(Project projectToUse)
 	{
-		this(projectToUse, Strategy.getObjectType(), BaseId.INVALID);
-	}
-	
-	public StrategyPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
-	{
-		super(projectToUse, objectTypeToUse, idToShow);
+		super(projectToUse, Strategy.getObjectType(), BaseId.INVALID);
+		
 		addField(createStringField(Strategy.TAG_SHORT_LABEL));
 		addField(createStringField(Strategy.TAG_LABEL));
 		addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
@@ -35,9 +33,12 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
+		addField(createChoiceField(Task.getObjectType(), new BudgetCostModeQuestion(Task.TAG_BUDGET_COST_MODE)));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_BUDGET_COST_ROLLUP));
+		
 		updateFieldsFromProject();
 	}
-
+	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Strategy Properties");
