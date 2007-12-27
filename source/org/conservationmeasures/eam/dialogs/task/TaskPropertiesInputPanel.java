@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.diagram.BudgetOverrideSubPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -17,9 +18,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.martus.swing.UiLabel;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
@@ -47,9 +48,13 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	private void addCommonFields()
 	{
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
-		addField(createChoiceField(Task.getObjectType(), new BudgetCostModeQuestion(Task.TAG_BUDGET_COST_MODE)));
-		addField(createReadonlyCurrencyField(Task.PSEUDO_TAG_BUDGET_COST_ROLLUP));
-		addField(createCurrencyField(Task.getObjectType(), Task.TAG_BUDGET_COST_OVERRIDE));
+
+		BudgetOverrideSubPanel budgetSubPanel = new BudgetOverrideSubPanel(getProject(), new ORef(Strategy.getObjectType(), BaseId.INVALID));
+		addSubPanel(budgetSubPanel);
+
+		addLabel(EAM.text("Budget"));
+		addFieldComponent(budgetSubPanel);
+		
 		
 		addLabel(new UiLabel(""));
 		addLabel(hasBothSubTaskAssignmentsWarningLabel);
