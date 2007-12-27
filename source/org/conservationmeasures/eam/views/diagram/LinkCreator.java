@@ -284,7 +284,7 @@ public class LinkCreator
 		//FIXME create GB link disabled
 		//CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		//createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
-		if (needsDirectionalityFixed(allLinkRefs, fromFactorRefs, toFactorRefs))
+		if (anyOppositeLinks(allLinkRefs, fromFactorRefs, toFactorRefs))
 			fixBidirectionality(allLinkRefs);
 	}
 	
@@ -296,7 +296,7 @@ public class LinkCreator
 		}
 	}
 
-	private boolean needsDirectionalityFixed(ORefList createdFactorLinkRefs, ORefList fromFactorRefs, ORefList toFactorRefs)
+	private boolean anyOppositeLinks(ORefList createdFactorLinkRefs, ORefList fromFactorRefs, ORefList toFactorRefs)
 	{
 		for (int i = 0; i < createdFactorLinkRefs.size(); ++i)
 		{
