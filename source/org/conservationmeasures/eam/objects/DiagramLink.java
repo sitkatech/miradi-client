@@ -167,7 +167,7 @@ public class DiagramLink extends BaseObject
 		if (getUnderlyingLink() != null)
 			return getUnderlyingLink().isTargetLink();
 		
-		return true;
+		return false;
 	}
 	
 	public boolean isBidirectional()
