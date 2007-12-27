@@ -120,6 +120,16 @@ public class DiagramLink extends BaseObject
 		return set;
 	}
 	
+	public ORef getFromDiagramFactorRef()
+	{
+		return new ORef(DiagramFactor.getObjectType(), getFromDiagramFactorId());
+	}
+	
+	public ORef getToDiagramFactorRef()
+	{
+		return new ORef(DiagramFactor.getObjectType(), getToDiagramFactorId());
+	}
+	
 	public DiagramFactorId getFromDiagramFactorId()
 	{
 		return new DiagramFactorId(fromId.getId().asInt());

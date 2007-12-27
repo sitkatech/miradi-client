@@ -128,7 +128,12 @@ public class LinkCreator
 		if(link.getFromFactorRef().getObjectId().equals(fromFactorId))
 			return;
 		
-		CommandSetObjectData command = new CommandSetObjectData(link.getRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		enableBidirectionality(link.getRef());
+	}
+
+	private void enableBidirectionality(ORef factorLinkRef) throws CommandFailedException
+	{
+		CommandSetObjectData command = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
 		project.executeCommand(command);
 	}
 
@@ -253,6 +258,9 @@ public class LinkCreator
 	
 	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
+		ORefList allFromToFactorLinkRefs = new ORefList();
+		ORefList fromFactorRefs = new ORefList();
+		ORefList toFactorRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = getSelfOrChildren(fromDiagramFactorToUse);
 		ORefList toDiagramFactorRefs = getSelfOrChildren(toDiagramFactorToUse);
 		DiagramObject diagramObject = model.getDiagramObject();
@@ -262,14 +270,47 @@ public class LinkCreator
 			{
 				DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRefs.get(from));
 				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
+				fromFactorRefs.add(fromDiagramFactor.getWrappedORef());
+				toFactorRefs.add(toDiagramFactor.getWrappedORef());
 				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
+				{
+					allFromToFactorLinkRefs.add(model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));
 					continue;
+				}
 				
-				createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
+				allFromToFactorLinkRefs.add(createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor));
 			}
-		}	
+		}
+		
+		if (needsDirectionalityFixed(allFromToFactorLinkRefs, fromFactorRefs, toFactorRefs))
+			fixBidirectionality(allFromToFactorLinkRefs);
 	}
 	
+	private void fixBidirectionality(ORefList createdDiagramLinkRefs) throws Exception
+	{
+		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
+		{
+			enableBidirectionality(createdDiagramLinkRefs.get(i));
+		}
+	}
+
+	private boolean needsDirectionalityFixed(ORefList createdFactorLinkRefs, ORefList fromFactorRefs, ORefList toFactorRefs)
+	{
+		for (int i = 0; i < createdFactorLinkRefs.size(); ++i)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), createdFactorLinkRefs.get(i));
+			ORef toFactorRef = factorLink.getToFactorRef();
+			if (fromFactorRefs.contains(toFactorRef))
+				return true;
+			
+			ORef fromFactorRef = factorLink.getFromFactorRef();
+			if (toFactorRefs.contains(fromFactorRef))
+				return true;
+		}
+		
+		return false;
+	}
+
 	public ORefList getSelfOrChildren(DiagramFactor diagramFactor)
 	{
 		if (isGroupBoxFactor(diagramFactor))
