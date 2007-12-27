@@ -17,13 +17,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Stress;
-import org.conservationmeasures.eam.objects.ThreatStressRating;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -59,59 +54,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public String getToolTipString() 
 	{
-		Factor fromFactor = Factor.findFactor(getProject(), getFactorLink().getFromFactorRef());
-		Factor toFactor = Factor.findFactor(getProject(), getFactorLink().getToFactorRef());
-		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
-				           		   "<b>To : " + toFactor.getLabel() + "</b>";
-		
-		String[] calculatedRatings = getRelevantStressesAsHTML();
-		if (calculatedRatings.length == 0)
-			return toolTipText;
-		
-		String header = "Stresses:";
-		toolTipText += "<hr>" + header + "<ul>";
-		for (int i = 0; i < calculatedRatings.length; ++i)
-		{
-			toolTipText += calculatedRatings[i];
-		}
-
-		return toolTipText;
+		return getDiagramLink().getToolTipString();
 	}
 
-	private Project getProject()
-	{
-		return getDiagramLink().getProject();
-	}
-
-	private String[] getRelevantStressesAsHTML()
-	{
-		String[] stressNames = getRelevantStressNames();
-		String[] StressNamesAsHTML = new String[stressNames.length];
-		for (int i = 0; i < stressNames.length; ++i)
-		{
-			StressNamesAsHTML[i] = "<li>" + stressNames[i] + "</li>";
-		}
-		
-		return StressNamesAsHTML;
-	}
-	
-	public String[] getRelevantStressNames()
-	{
-		Vector<String> stressNames = new Vector();
-		if (getFactorLink() == null)
-			return new String[0];
-		
-		ORefList threatStressRatingRefs = getFactorLink().getThreatStressRatingRefs();
-		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
-		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
-			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
-			if (threatStressRating.calculateThreatRating() > 0)
-				stressNames.add(stress.toString());
-		}
-		return stressNames.toArray(new String[0]);
-	}
-	
 	public int[] getSelectedBendPointIndexes()
 	{
 		return bendSelectionHelper.getSelectedIndexes();
