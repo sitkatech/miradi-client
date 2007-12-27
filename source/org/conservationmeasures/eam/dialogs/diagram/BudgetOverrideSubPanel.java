@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.martus.swing.UiLabel;
 
-class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
+public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 {
 	public BudgetOverrideSubPanel(Project projectToUse, ORef initialRef)
 	{
