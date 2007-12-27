@@ -132,7 +132,7 @@ public class Indicator extends BaseObject
 	{
 		try
 		{
-			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotalsAsFormatedString(getRef());
 		}
 		catch (Exception e)
 		{

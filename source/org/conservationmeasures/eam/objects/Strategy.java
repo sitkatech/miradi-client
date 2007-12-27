@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -167,6 +168,9 @@ public class Strategy extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
 			return getStrategyRatingSummary();
 		
+		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
+			return getBudgetCostRollupAsString();
+
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -252,6 +256,11 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
+	private double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+	{
+		return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+	}
+	
 	private String getFormatedBudgetCostOverrideValue() throws Exception
 	{
 		String override = budgetCostOverride.get();
@@ -261,6 +270,20 @@ public class Strategy extends Factor
 		return formateResults(Double.parseDouble(override));
 	}
 		
+	public String getBudgetCostRollupAsString()
+	{
+		try
+		{
+			return formateResults(getBudgetCostRollup(null));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for task");
+			return "";
+		}
+	}
+
 	public String getBudgetCostAsString()
 	{
 		try
@@ -268,7 +291,7 @@ public class Strategy extends Factor
 			if (isBudgetOverrideMode())
 				return getFormatedBudgetCostOverrideValue();
 			
-			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
+			return getBudgetCostRollupAsString();
 		}
 		catch (Exception e)
 		{
@@ -301,6 +324,7 @@ public class Strategy extends Factor
 		impactRatingLabel = new PseudoQuestionData(new StrategyImpactQuestion(TAG_IMPACT_RATING));
 		feasibilityRatingLabel = new PseudoQuestionData(new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
 		tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
+		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -316,6 +340,7 @@ public class Strategy extends Factor
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
+		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -334,6 +359,7 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
+	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
@@ -352,4 +378,5 @@ public class Strategy extends Factor
 	private PseudoQuestionData impactRatingLabel;
 	private PseudoQuestionData feasibilityRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
+	private PseudoStringData budgetCostRollup;
 }

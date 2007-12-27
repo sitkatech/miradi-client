@@ -22,12 +22,17 @@ public class PlanningViewBudgetCalculator
 		combinedDataRange = projectToUse.getProjectCalendar().combineStartToEndProjectRange();
 	}
 	
-	public String getBudgetTotals(ORef ref) throws Exception
+	public String getBudgetTotalsAsFormatedString(ORef ref) throws Exception
 	{
 		double total = totalCalculator.calculateBudgetCost(ref, combinedDataRange);
 		return format(total);
 	}
 
+	public double getBudgetTotals(ORef ref) throws Exception
+	{
+		return totalCalculator.calculateBudgetCost(ref, combinedDataRange);
+	}
+	
 	private String format(double total)
 	{
 		if (total == 0)
