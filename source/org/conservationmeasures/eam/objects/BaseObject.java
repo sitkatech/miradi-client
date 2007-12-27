@@ -917,6 +917,11 @@ abstract public class BaseObject
 		return objectiveRefs;
 	}
 
+	public boolean isBudgetOverrideMode()
+	{
+		return false;
+	}
+
 	//FIXME move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
