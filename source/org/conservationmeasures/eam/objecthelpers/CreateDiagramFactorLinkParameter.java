@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 {
 	
-	public CreateDiagramFactorLinkParameter(ORef factorLinkRef, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
+	public CreateDiagramFactorLinkParameter(ORef factorLinkRef, ORef fromRefToUse, ORef toRefToUse)
 	{
-		this((FactorLinkId) factorLinkRef.getObjectId(), fromIdToUse, toIdToUse);
+		this((FactorLinkId) factorLinkRef.getObjectId(), (DiagramFactorId)fromRefToUse.getObjectId(), (DiagramFactorId)toRefToUse.getObjectId());
 	}
 	
 	public CreateDiagramFactorLinkParameter(FactorLinkId factorLinkIdToUse, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
