@@ -126,7 +126,9 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		{
 			BaseObject objectFromRow = getObjectFromRow(rows[i]);
 			ORefList selectedObjectRefs = new ORefList();
-			selectedObjectRefs.add(objectFromRow.getRef());
+			if (objectFromRow != null)
+				selectedObjectRefs.add(objectFromRow.getRef());
+			
 			selectedHierarchies[i] = selectedObjectRefs;
 		}
 		
