@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.text.DecimalFormat;
 import java.util.Set;
 
 import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
@@ -251,10 +252,22 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
+	private double getBudgetCostOverrideValue() throws Exception
+	{
+		String override = budgetCostOverride.get();
+		if (override.length() == 0)
+			return 0;
+		
+		return Double.parseDouble(override);
+	}
+		
 	public String getBudgetCostAsString()
 	{
 		try
 		{
+			if (isBudgetOverrideMode())
+				return formateResults(getBudgetCostOverrideValue());
+			
 			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotals(getRef());
 		}
 		catch (Exception e)
@@ -265,6 +278,12 @@ public class Strategy extends Factor
 		}
 	}
 	
+	private String formateResults(double cost)
+	{
+		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
+		return formater.format(cost);
+	}
+
 	void clear()
 	{
 		super.clear();
