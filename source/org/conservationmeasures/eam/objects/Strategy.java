@@ -324,7 +324,6 @@ public class Strategy extends Factor
 		impactRatingLabel = new PseudoQuestionData(new StrategyImpactQuestion(TAG_IMPACT_RATING));
 		feasibilityRatingLabel = new PseudoQuestionData(new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
 		tagRatingSummaryLabel = new PseudoQuestionData(new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
-		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -340,7 +339,6 @@ public class Strategy extends Factor
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
-		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -359,7 +357,6 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
-	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
@@ -378,5 +375,4 @@ public class Strategy extends Factor
 	private PseudoQuestionData impactRatingLabel;
 	private PseudoQuestionData feasibilityRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
-	private PseudoStringData budgetCostRollup;
 }

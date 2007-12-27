@@ -358,15 +358,23 @@ abstract public class BaseObject
 		return "";
 	}
 	
+	public String getBudgetCostRollupAsString()
+	{
+		return "";
+	}
+	
 	void clear()
 	{
 		label = new StringData();
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
+		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
+		
 		addField(PSEUDO_TAG_BUDGET_TOTAL, budgetTotal);
+		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 	}
 	
 	void addField(String tag, ObjectData data)
@@ -876,6 +884,9 @@ abstract public class BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
 			return getBudgetCostAsString();
 		
+		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
+			return getBudgetCostRollupAsString();
+		
 		return getData(fieldTag);
 	}
 	
@@ -1060,10 +1071,14 @@ abstract public class BaseObject
 	public static final String DEFAULT_LABEL = "";
 	
 	public final static String PSEUDO_TAG_BUDGET_TOTAL = "PseudoTaskBudgetTotal";
+	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	
 	BaseId id;
 	StringData label;
+	
 	private PseudoStringData budgetTotal;
+	private PseudoStringData budgetCostRollup;
+	
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
