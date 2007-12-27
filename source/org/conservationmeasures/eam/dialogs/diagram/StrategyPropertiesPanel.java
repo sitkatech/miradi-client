@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostModeQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
@@ -33,8 +32,8 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
-		addField(createChoiceField(Task.getObjectType(), new BudgetCostModeQuestion(Task.TAG_BUDGET_COST_MODE)));
-		addField(createReadonlyTextField(Task.PSEUDO_TAG_BUDGET_COST_ROLLUP));
+		addField(createChoiceField(Strategy.getObjectType(), new BudgetCostModeQuestion(Strategy.TAG_BUDGET_COST_MODE)));
+		addField(createStringField(Strategy.getObjectType(), Strategy.TAG_BUDGET_COST_OVERRIDE));
 		
 		updateFieldsFromProject();
 	}
