@@ -95,11 +95,11 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	private Object getBudgetCost(TreeTableNode node, DateRange dateRange) throws Exception
 	{
-		double yearlyTotal = totalCalculator.calculateBudgetCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
-        if (yearlyTotal == 0)
+		double totalCost = totalCalculator.calculateBudgetCost(node.getObject(), dateRange, getCostAllocationProportion(node));        
+        if (totalCost == 0)
         	return "";
         
-		return  currencyFormatter.format(yearlyTotal);
+		return  currencyFormatter.format(totalCost);
 	}
 
 	private double getCostAllocationProportion(TreeTableNode node)
