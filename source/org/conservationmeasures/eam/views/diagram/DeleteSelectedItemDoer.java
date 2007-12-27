@@ -86,7 +86,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
 		Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
-		Vector diagramNames = getDiagramNamesEffectedByThisDelete(diagramLinks, extractDiagramFactors(selectedRelatedCells));
+		Vector<DiagramLink> diagramLinksWithGroupBoxes = getDiagramLinksAndGroupboxChildrenLinks(diagramLinks);
+		Vector diagramNames = getDiagramNamesEffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactors(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
 			return true;
 
@@ -165,6 +166,33 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 		
 		return diagramFactorRefList;
+	}
+	
+	private Vector<DiagramLink> getDiagramLinksAndGroupboxChildrenLinks(Vector<DiagramLink> diagramLinks)
+	{
+		Vector<DiagramLink> diagramLinksWithPossibleGroupBoxLinks = new Vector();
+		for (int i = 0; i < diagramLinks.size(); ++i)
+		{
+			DiagramLink diagramLink = diagramLinks.get(i);
+			ORefList selfOrChildren = diagramLink.getSelfOrChildren();
+			if (selfOrChildren.contains(diagramLink.getRef()))
+				diagramLinksWithPossibleGroupBoxLinks.add(diagramLink);
+			else 
+				diagramLinksWithPossibleGroupBoxLinks.addAll(convertToDiagramLinks(selfOrChildren));
+		}
+		
+		return diagramLinksWithPossibleGroupBoxLinks;
+	}
+	
+	private Vector<DiagramLink> convertToDiagramLinks(ORefList diagramLinkRefs)
+	{
+		Vector<DiagramLink> diagramLinks = new Vector();
+		for (int i = 0; i < diagramLinkRefs.size(); ++i)
+		{
+			diagramLinks.add(DiagramLink.find(getProject(), diagramLinkRefs.get(i)));
+		}
+		
+		return diagramLinks;
 	}
 	
 	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
