@@ -39,7 +39,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	public String getColumnName(int column)
 	{
 		if(isGrandTotalColumn(column))
-			return COST_COLUMN_NAME;
+			return GRAND_TOTAL_COLUMN_NAME;
 		
 		try
 		{
@@ -121,5 +121,5 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	private Vector yearlyDateRanges;
 	private BudgetCalculator totalCalculator;
 	
-	public static final String COST_COLUMN_NAME = EAM.text("Budget Total ($)");
+	public static final String GRAND_TOTAL_COLUMN_NAME = EAM.text("Budget Total ($)");
 }
