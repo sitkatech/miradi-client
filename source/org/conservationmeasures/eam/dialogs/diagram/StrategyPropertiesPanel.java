@@ -28,12 +28,15 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 		addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
+		
+		addField(createChoiceField(Strategy.getObjectType(), new BudgetCostModeQuestion(Strategy.TAG_BUDGET_COST_MODE)));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_BUDGET_COST_ROLLUP));
+		addField(createStringField(Strategy.getObjectType(), Strategy.TAG_BUDGET_COST_OVERRIDE));
+		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
-		addField(createChoiceField(Strategy.getObjectType(), new BudgetCostModeQuestion(Strategy.TAG_BUDGET_COST_MODE)));
-		addField(createStringField(Strategy.getObjectType(), Strategy.TAG_BUDGET_COST_OVERRIDE));
 		
 		updateFieldsFromProject();
 	}
