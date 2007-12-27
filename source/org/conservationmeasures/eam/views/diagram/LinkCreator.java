@@ -101,27 +101,27 @@ public class LinkCreator
 	public FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		DiagramObject diagramObject = model.getDiagramObject();
-		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
+		return (FactorLinkId) createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo).getObjectId();
 	}
 	
-	private FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	private ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
-		FactorId fromFactorId = diagramFactorFrom.getWrappedId();
-		FactorId toFactorId = diagramFactorTo.getWrappedId();
-		FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(fromFactorId, toFactorId);
+		Factor fromFactor = Factor.findFactor(getProject(), diagramFactorFrom.getWrappedORef());
+		Factor toFactor = Factor.findFactor(getProject(), diagramFactorTo.getWrappedORef());
+		ORef factorLinkRef = project.getFactorLinkPool().getLinkedRef(fromFactor, toFactor);
 		
-		if(factorLinkId != null)
-			ensureLinkGoesOurWay(factorLinkId, fromFactorId, factorLinkId);
+		if(!factorLinkRef.isInvalid())
+			ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
 		else
-			factorLinkId = createFactorLink(diagramFactorFrom, diagramFactorTo);
+			factorLinkRef = createFactorLink(diagramFactorFrom, diagramFactorTo);
 		
-		createDiagramLinks(factorLinkId);
-		return factorLinkId; 
+		createDiagramLinks(factorLinkRef);
+		return factorLinkRef; 
 	}
 
-	private void ensureLinkGoesOurWay(FactorLinkId factorLinkId, FactorId fromFactorId, FactorLinkId factorlLinkId) throws CommandFailedException
+	private void ensureLinkGoesOurWay(ORef factorLinkRef, FactorId fromFactorId) throws CommandFailedException
 	{
-		FactorLink link = (FactorLink)project.findObject(FactorLink.getObjectType(), factorlLinkId);
+		FactorLink link = (FactorLink)project.findObject(factorLinkRef);
 		if (link.isBidirectional())
 			return;
 		
@@ -132,10 +132,10 @@ public class LinkCreator
 		project.executeCommand(command);
 	}
 
-	public FactorLinkId createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		ORef factorLinkRef = createFactorLinkWithPossibleThreatStressRatings(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-		return (FactorLinkId) factorLinkRef.getObjectId();
+		return factorLinkRef;
 	}
 
 	public ORef createFactorLinkWithPossibleThreatStressRatings(ORef fromFactorRef, ORef toFactorRef) throws Exception
@@ -187,9 +187,9 @@ public class LinkCreator
 		return createThreatStressRating.getObjectRef();
 	}
 
-	public void createDiagramLinks(FactorLinkId factorLinkId) throws Exception
+	public void createDiagramLinks(ORef factorLinkRef) throws Exception
 	{
-		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
+		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
 		Factor toFactor = getFactor(factorLink.getToFactorRef());
 		Factor fromFactor = getFactor(factorLink.getFromFactorRef());
 		
@@ -209,7 +209,7 @@ public class LinkCreator
 			if (fromORef == null)
 				continue;
 			
-			createDiagramLink(diagramObject, factorLinkId, (DiagramFactorId)fromORef.getObjectId(), (DiagramFactorId)toORef.getObjectId());
+			createDiagramLink(diagramObject, factorLinkRef, (DiagramFactorId)fromORef.getObjectId(), (DiagramFactorId)toORef.getObjectId());
 		}
 	}
 
@@ -231,9 +231,9 @@ public class LinkCreator
 		return (Factor) project.findObject(factorRef);
 	}
 	
-	private void createDiagramLink(DiagramObject diagramObject, FactorLinkId factorlLinkId, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
+	private void createDiagramLink(DiagramObject diagramObject, ORef factorlLinkRef, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId, factorlLinkId);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId, factorlLinkRef);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
     	
@@ -244,9 +244,9 @@ public class LinkCreator
 		project.executeCommand(addDiagramLink);
 	}
 
-	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(DiagramFactorId fromId, DiagramFactorId toId, FactorLinkId factorlLinkId)
+	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(DiagramFactorId fromId, DiagramFactorId toId, ORef factorlLinkRef)
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkId, fromId, toId);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkRef, fromId, toId);
 		
 		return diagramLinkExtraInfo;
 	}
