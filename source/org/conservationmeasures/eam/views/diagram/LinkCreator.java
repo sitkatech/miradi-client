@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -293,10 +292,7 @@ public class LinkCreator
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
-			ORef diagramLinkRef = createdDiagramLinkRefs.get(i);
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-			if (!diagramLink.isBidirectional())
-				enableBidirectional(diagramLinkRef);
+			enableBidirectional(createdDiagramLinkRefs.get(i));
 		}
 	}
 
@@ -305,6 +301,9 @@ public class LinkCreator
 		for (int i = 0; i < createdFactorLinkRefs.size(); ++i)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), createdFactorLinkRefs.get(i));
+			if (factorLink.isBidirectional())
+				return true;
+			
 			ORef toFactorRef = factorLink.getToFactorRef();
 			if (fromFactorRefs.contains(toFactorRef))
 				return true;
