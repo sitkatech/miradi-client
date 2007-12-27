@@ -26,6 +26,16 @@ public abstract class ChoiceQuestion
 		return label;
 	}
 	
+	public int size()
+	{
+		return getChoices().length;
+	}
+	
+	public String getCode(int index)
+	{
+		return getChoices()[index].getCode();
+	}
+	
 	abstract public ChoiceItem[] getChoices();
 	
 	public ChoiceItem findChoiceByCode(String code)
