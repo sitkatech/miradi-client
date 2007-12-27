@@ -257,7 +257,7 @@ public class LinkCreator
 	
 	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
-		ORefList allFromToFactorLinkRefs = new ORefList();
+		ORefList allLinkRefs = new ORefList();
 		ORefList fromFactorRefs = new ORefList();
 		ORefList toFactorRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = getSelfOrChildren(fromDiagramFactorToUse);
@@ -273,19 +273,19 @@ public class LinkCreator
 				toFactorRefs.add(toDiagramFactor.getWrappedORef());
 				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
-					allFromToFactorLinkRefs.add(model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));
+					allLinkRefs.add(model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));
 					continue;
 				}
 				
-				allFromToFactorLinkRefs.add(createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor));
+				allLinkRefs.add(createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor));
 			}
 		}
 		
 		//FIXME create GB link disabled
 		//CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		//createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
-		if (needsDirectionalityFixed(allFromToFactorLinkRefs, fromFactorRefs, toFactorRefs))
-			fixBidirectionality(allFromToFactorLinkRefs);
+		if (needsDirectionalityFixed(allLinkRefs, fromFactorRefs, toFactorRefs))
+			fixBidirectionality(allLinkRefs);
 	}
 	
 	private void fixBidirectionality(ORefList createdDiagramLinkRefs) throws Exception
