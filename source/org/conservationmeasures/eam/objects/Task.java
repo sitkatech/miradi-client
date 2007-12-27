@@ -393,7 +393,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return formateResults(getBudgetCost(null));
+			return formatResults(getBudgetCost(null));
 		}
 		catch(Exception e)
 		{
@@ -407,7 +407,7 @@ public class Task extends BaseObject
 	{
 		try
 		{
-			return formateResults(getBudgetCostRollup(null));
+			return formatResults(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -476,7 +476,7 @@ public class Task extends BaseObject
 		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
-	private String formateResults(double cost)
+	private String formatResults(double cost)
 	{
 		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
 		return formater.format(cost);
