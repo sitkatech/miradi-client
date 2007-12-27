@@ -209,8 +209,10 @@ public class DiagramLink extends BaseObject
 
 	public String getToolTipString() 
 	{
-		Factor fromFactor = Factor.findFactor(getProject(), getUnderlyingLink().getFromFactorRef());
-		Factor toFactor = Factor.findFactor(getProject(), getUnderlyingLink().getToFactorRef());
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getFromDiagramFactorRef());
+		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), getToDiagramFactorRef());
+		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
+		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
 		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
 		
