@@ -285,10 +285,10 @@ public class LinkCreator
 		//CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		//createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
 		if (anyOppositeLinks(allLinkRefs, fromFactorRefs, toFactorRefs))
-			fixBidirectionality(allLinkRefs);
+			enableBidirectional(allLinkRefs);
 	}
 	
-	private void fixBidirectionality(ORefList createdDiagramLinkRefs) throws Exception
+	private void enableBidirectional(ORefList createdDiagramLinkRefs) throws Exception
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
