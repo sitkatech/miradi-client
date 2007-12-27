@@ -11,6 +11,7 @@ package org.conservationmeasures.eam.dialogs.diagram;
 import java.awt.Component;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.layout.OneRowGridLayout;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,11 +26,13 @@ public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 	public BudgetOverrideSubPanel(Project projectToUse, ORef initialRef)
 	{
 		super(projectToUse, initialRef);
-		setLayout(new OneRowGridLayout());
+		OneRowGridLayout layout = new OneRowGridLayout();
+		setLayout(layout);
 		setBorder(null);
 		
 		int type = initialRef.getObjectType();
-		ObjectDataInputField modeField = createChoiceField(type, new BudgetCostModeQuestion(BaseObject.TAG_BUDGET_COST_MODE));
+		BudgetCostModeQuestion question = new BudgetCostModeQuestion(BaseObject.TAG_BUDGET_COST_MODE);
+		RadioButtonsField modeField = createRadioButtonsField(type, question);
 		ObjectDataInputField rollupField = createReadonlyCurrencyField(BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		ObjectDataInputField overrideField = createCurrencyField(type, BaseObject.TAG_BUDGET_COST_OVERRIDE);
 		
@@ -37,11 +40,11 @@ public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 		addField(rollupField);
 		addField(overrideField);
 		
-		add(modeField.getComponent());
-		addSpacer();
+		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
 		add(new UiLabel(EAM.text("High Level Est.")));
 		add(overrideField.getComponent());
 		addSpacer();
+		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
 		add(new UiLabel(EAM.text("Rollup")));
 		add(rollupField.getComponent());
 	}
