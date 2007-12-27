@@ -397,7 +397,7 @@ public class ResultsChainCreatorHelper
 	
 		ORef factorLinkRef = new LinkCreator(project).createFactorLink(fromCloned, toCloned);
 
-		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromCloned.getRef(), toCloned.getRef());
 	}
 
 	private boolean areSharingTheSameFactor(DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned)

@@ -214,7 +214,7 @@ public class LinkCreator
 			if (fromORef == null)
 				continue;
 			
-			createDiagramLink(diagramObject, factorLinkRef, (DiagramFactorId)fromORef.getObjectId(), (DiagramFactorId)toORef.getObjectId());
+			createDiagramLink(diagramObject, factorLinkRef, fromORef, toORef);
 		}
 	}
 
@@ -236,9 +236,9 @@ public class LinkCreator
 		return (Factor) project.findObject(factorRef);
 	}
 	
-	private void createDiagramLink(DiagramObject diagramObject, ORef factorlLinkRef, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws CommandFailedException, ParseException
+	private void createDiagramLink(DiagramObject diagramObject, ORef factorlLinkRef, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws CommandFailedException, ParseException
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId, factorlLinkRef);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef, factorlLinkRef);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
     	
@@ -249,9 +249,9 @@ public class LinkCreator
 		project.executeCommand(addDiagramLink);
 	}
 
-	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(DiagramFactorId fromId, DiagramFactorId toId, ORef factorlLinkRef)
+	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkRef, fromId, toId);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		
 		return diagramLinkExtraInfo;
 	}
@@ -281,6 +281,7 @@ public class LinkCreator
 				allFromToFactorLinkRefs.add(createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor));
 			}
 		}
+		
 		
 		if (needsDirectionalityFixed(allFromToFactorLinkRefs, fromFactorRefs, toFactorRefs))
 			fixBidirectionality(allFromToFactorLinkRefs);
