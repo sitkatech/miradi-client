@@ -8,11 +8,8 @@ package org.conservationmeasures.eam.diagram;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
@@ -139,9 +136,7 @@ public class DiagramChainObject
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 			if(link.isGroupBoxLink())
 				continue;
-			FactorLinkId wrappedId = link.getWrappedId();
-			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(unprocessedFactors, getStartingFactor(), thisLink, direction);
+			processLink(unprocessedFactors, getStartingFactor(), link, direction);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -155,9 +150,7 @@ public class DiagramChainObject
 					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 					if(link.isGroupBoxLink())
 						continue;
-					FactorLinkId wrappedId = link.getWrappedId();
-					FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-					processLink(unprocessedFactors, thisFactor, thisLink, direction);
+					processLink(unprocessedFactors, thisFactor, link, direction);
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -175,9 +168,7 @@ public class DiagramChainObject
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-			FactorLinkId wrappedId = link.getWrappedId();
-			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(results, getStartingFactor(), thisLink, direction);
+			processLink(results, getStartingFactor(), link, direction);
 		}
 		return results;
 	}
@@ -195,8 +186,9 @@ public class DiagramChainObject
 		return getStartingFactor().getProject();
 	}
 	
-	private void processLink(Vector<Factor> unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
+	private void processLink(Vector<Factor> unprocessedFactors, Factor thisFactor, DiagramLink diagramLink, int direction)
 	{
+		FactorLink thisLink = diagramLink.getUnderlyingLink();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
 			attempToAdd(thisLink);
