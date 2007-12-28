@@ -5,12 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
-import java.text.DecimalFormat;
-
+import org.conservationmeasures.eam.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeRootNode;
-import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -18,7 +15,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.BudgetCalculator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
@@ -32,8 +28,6 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		super(new PlanningTreeRootNode(projectToUse));
 		project = projectToUse;
-		totalCalculator = new BudgetCalculator(project);
-		currencyFormatter = project.getCurrencyFormatter();
 		
 		rebuildCodeList();
 	}
@@ -78,7 +72,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		try
 		{
-			TreeTableNode treeNode = (TreeTableNode) rawNode;
+			AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
 			String columnTag = getColumnTag(col);
 			BaseObject baseObject = treeNode.getObject();
 			if(baseObject == null)
@@ -86,9 +80,6 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 
 			if (! baseObject.doesFieldExist(columnTag))
 				return null;
-
-			if (baseObject.getType() == Task.getObjectType() && columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-				return getTaskBudgetTotal((PlanningTreeTaskNode) treeNode);
 
 			String rawValue = "";
 			if (baseObject.isPseudoField(columnTag))
@@ -112,15 +103,6 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		}
 	}
 
-	private Object getTaskBudgetTotal(PlanningTreeTaskNode taskNode) throws Exception
-	{
-		double budgetCost = totalCalculator.calculateBudgetCost(taskNode.getTask(), null, taskNode.getCostAllocationProportion());
-		if (budgetCost == 0)
-			return "";
-		
-		return currencyFormatter.format(budgetCost);
-	}
-	
 	public CodeList getColumnTags()
 	{
 		return columnsToShow;	
@@ -128,6 +110,4 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	private Project project;
 	private CodeList columnsToShow;
-	private BudgetCalculator totalCalculator;
-	private DecimalFormat currencyFormatter;
 }

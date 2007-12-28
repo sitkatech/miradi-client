@@ -248,7 +248,7 @@ public class Strategy extends Factor
 		for(int i = 0; i < activityRefs.size(); ++i)
 		{
 			Task activity = Task.find(getProject(), activityRefs.get(i));
-			total += activity.getBudgetCost(dateRangeToUse);
+			total += activity.getProportionalBudgetCost(dateRangeToUse);
 		}
 
 		return total;

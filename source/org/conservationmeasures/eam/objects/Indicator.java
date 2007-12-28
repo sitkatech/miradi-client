@@ -267,7 +267,7 @@ public class Indicator extends BaseObject
 		for(int i = 0; i < methodRefs.size(); ++i)
 		{
 			Task method = Task.find(getProject(), methodRefs.get(i));
-			total += method.getBudgetCost(dateRangeToUse);
+			total += method.getProportionalBudgetCost(dateRangeToUse);
 		}
 
 		return total;
