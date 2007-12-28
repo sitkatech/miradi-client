@@ -557,6 +557,11 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 	
+	public DiagramLink getDiagramFactorLinkByWrappedRef(ORef factorLinkRef) throws Exception
+	{
+		return getDiagramFactorLinkbyWrappedId((FactorLinkId) factorLinkRef.getObjectId());
+	}
+	
 	public DiagramLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
 	{
 		DiagramLink linkage = cellInventory.getFactorLinkById(id);

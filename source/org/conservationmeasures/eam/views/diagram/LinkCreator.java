@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -136,6 +137,11 @@ public class LinkCreator
 		project.executeCommand(command);
 	}
 
+	private void enableBidirectional(DiagramLink diagramLink) throws CommandFailedException
+	{
+		enableBidirectional(diagramLink.getWrappedRef());
+	}
+	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		ORef factorLinkRef = createFactorLinkWithPossibleThreatStressRatings(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
@@ -235,7 +241,17 @@ public class LinkCreator
 		return (Factor) project.findObject(factorRef);
 	}
 	
-	private void createDiagramLink(DiagramObject diagramObject, CreateDiagramFactorLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
+	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
+	{
+//		FIXME create GB link disabled
+//		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+//		ORef newGroupBoxDiagramLinkRef = createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
+//		
+//		CommandSetObjectData setChildrenRefs = new CommandSetObjectData(newGroupBoxDiagramLinkRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, allLinkRefs.toString());
+//		getProject().executeCommand(setChildrenRefs);
+	}
+	
+	private ORef createDiagramLink(DiagramObject diagramObject, CreateDiagramFactorLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
 	{
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
@@ -245,6 +261,8 @@ public class LinkCreator
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
 		project.executeCommand(addDiagramLink);
+		
+		return createDiagramLinkCommand.getObjectRef();
 	}
 
 	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)
@@ -256,9 +274,7 @@ public class LinkCreator
 	
 	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
-		ORefList allLinkRefs = new ORefList();
-		ORefList fromFactorRefs = new ORefList();
-		ORefList toFactorRefs = new ORefList();
+		ORefList allDiagramLinkRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = fromDiagramFactorToUse.getSelfOrChildren();
 		ORefList toDiagramFactorRefs = toDiagramFactorToUse.getSelfOrChildren();
 		DiagramObject diagramObject = model.getDiagramObject();
@@ -268,47 +284,47 @@ public class LinkCreator
 			{
 				DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRefs.get(from));
 				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
-				fromFactorRefs.add(fromDiagramFactor.getWrappedORef());
-				toFactorRefs.add(toDiagramFactor.getWrappedORef());
 				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
-					allLinkRefs.add(model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));
+					ORef factorLinkRef = model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
+					allDiagramLinkRefs.add(model.getDiagramFactorLinkByWrappedRef(factorLinkRef).getRef());
 					continue;
 				}
 				
-				allLinkRefs.add(createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor));
+				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
+				DiagramLink diagramLink = model.getDiagramFactorLinkByWrappedRef(factorLinkRef);
+				allDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
 		
-		//FIXME create GB link disabled
-		//CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
-		//createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
-		if (anyOppositeLinks(allLinkRefs, fromFactorRefs, toFactorRefs))
-			enableBidirectional(allLinkRefs);
+		createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
+		if (anyOppositeLinks(allDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
+			enableBidirectional(allDiagramLinkRefs);
 	}
 	
 	private void enableBidirectional(ORefList createdDiagramLinkRefs) throws Exception
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
-			enableBidirectional(createdDiagramLinkRefs.get(i));
+			DiagramLink diagramLink = DiagramLink.find(getProject(), createdDiagramLinkRefs.get(i));
+			enableBidirectional(diagramLink);
 		}
 	}
 
-	private boolean anyOppositeLinks(ORefList createdFactorLinkRefs, ORefList fromFactorRefs, ORefList toFactorRefs)
+	private boolean anyOppositeLinks(ORefList createdDiagramLinkRefs, ORefList fromDiagramFactorRefs, ORefList toDiagramFactorRefs)
 	{
-		for (int i = 0; i < createdFactorLinkRefs.size(); ++i)
+		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
-			FactorLink factorLink = FactorLink.find(getProject(), createdFactorLinkRefs.get(i));
-			if (factorLink.isBidirectional())
+			DiagramLink diagramLink = DiagramLink.find(getProject(), createdDiagramLinkRefs.get(i));
+			if (diagramLink.isBidirectional())
 				return true;
 			
-			ORef toFactorRef = factorLink.getToFactorRef();
-			if (fromFactorRefs.contains(toFactorRef))
+			ORef toDiagramFactorRef = diagramLink.getToDiagramFactorRef();
+			if (fromDiagramFactorRefs.contains(toDiagramFactorRef))
 				return true;
 			
-			ORef fromFactorRef = factorLink.getFromFactorRef();
-			if (toFactorRefs.contains(fromFactorRef))
+			ORef fromDiagramFactorRef = diagramLink.getFromDiagramFactorRef();
+			if (toDiagramFactorRefs.contains(fromDiagramFactorRef))
 				return true;
 		}
 		
