@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.diagram;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -79,8 +80,8 @@ public class DiagramChainObject
 		initializeChain(diagram, diagramFactor);
 		if(getStartingFactor().isDirectThreat())
 		{
-			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
-			factorSet.attemptToAddAll(getAllUpstreamFactors());
+			addToResults(getDirectlyLinkedDownstreamFactors().toFactorArray());
+			addToResults(getAllUpstreamFactors().toFactorArray());
 		}
 	}
 
@@ -100,14 +101,14 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		factorSet.attemptToAddAll(getAllDownstreamFactors());
-		factorSet.attemptToAddAll(getAllUpstreamFactors());
+		addToResults(getAllDownstreamFactors().toFactorArray());
+		addToResults(getAllUpstreamFactors().toFactorArray());
 	}
 	
 	private void buildUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		initializeChain(diagram, diagramFactor);
-		factorSet.attemptToAddAll(getAllUpstreamFactors());
+		addToResults(getAllUpstreamFactors().toFactorArray());
 	}
 	
 	private void buildDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
@@ -115,7 +116,7 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		factorSet.attemptToAddAll(getAllDownstreamFactors());
+		addToResults(getAllDownstreamFactors().toFactorArray());
 	}
 	
 	private void buildDirectlyLinkedUpstreamChain(DiagramModel model, DiagramFactor diagramFactor)
@@ -123,7 +124,7 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
+		addToResults(getDirectlyLinkedUpstreamFactors().toFactorArray());
 	}
 	
 	protected FactorSet getAllLinkedFactors(int direction)
@@ -185,7 +186,7 @@ public class DiagramChainObject
 	{
 		diagramObject = diagram;
 		setStartingFactor(diagramFactor);
-		factorSet = new FactorSet();
+		resultingFactors = new HashSet<Factor>();
 		processedLinks = new Vector();
 	}
 	
@@ -223,6 +224,11 @@ public class DiagramChainObject
 	
 	private FactorSet getFactors()
 	{
+		FactorSet factorSet = new FactorSet();
+		for(Factor factor : resultingFactors)
+		{
+			factorSet.attemptToAdd(factor);
+		}
 		return factorSet;
 	}
 
@@ -250,6 +256,12 @@ public class DiagramChainObject
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
+	
+	private void addToResults(Factor[] factors)
+	{
+		for(int i = 0; i < factors.length; ++i)
+			resultingFactors.add(factors[i]);
+	}
 
 	private void setStartingFactor(DiagramFactor startingFactor)
 	{
@@ -262,7 +274,7 @@ public class DiagramChainObject
 	}
 
 	private DiagramObject diagramObject;
-	private FactorSet factorSet;
+	private HashSet<Factor> resultingFactors;
 	private Vector processedLinks;
 	private DiagramFactor startingFactor;
 }
