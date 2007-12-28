@@ -150,6 +150,8 @@ public class DiagramChainObject extends ChainObject
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+			if(link.isGroupBoxLink())
+				continue;
 			FactorLinkId wrappedId = link.getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 			processLink(unprocessedFactors, startingFactor, thisLink, direction);
@@ -164,6 +166,8 @@ public class DiagramChainObject extends ChainObject
 				for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 				{
 					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+					if(link.isGroupBoxLink())
+						continue;
 					FactorLinkId wrappedId = link.getWrappedId();
 					FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
 					processLink(unprocessedFactors, thisFactor, thisLink, direction);
