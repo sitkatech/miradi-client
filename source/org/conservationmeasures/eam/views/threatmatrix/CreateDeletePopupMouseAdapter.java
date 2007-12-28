@@ -27,9 +27,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
-public class TableMouseAdapter extends MouseAdapter
+public class CreateDeletePopupMouseAdapter extends MouseAdapter
 {
-	public TableMouseAdapter(Project projectToUse, ThreatMatrixTableModel modelToUse)
+	public CreateDeletePopupMouseAdapter(Project projectToUse, ThreatMatrixTableModel modelToUse)
 	{
 		project = projectToUse;
 		model = modelToUse;
