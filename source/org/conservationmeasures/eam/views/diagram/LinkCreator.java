@@ -267,7 +267,12 @@ public class LinkCreator
 		
 		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
 		ORef newGroupBoxDiagramLinkRef = createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
-		
+	
+		updateGroupBoxChildrenRefs(allLinkRefs, newGroupBoxDiagramLinkRef);
+	}
+
+	private void updateGroupBoxChildrenRefs(ORefList allLinkRefs, ORef newGroupBoxDiagramLinkRef) throws CommandFailedException
+	{
 		CommandSetObjectData setChildrenRefs = new CommandSetObjectData(newGroupBoxDiagramLinkRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, allLinkRefs.toString());
 		getProject().executeCommand(setChildrenRefs);
 	}
@@ -307,8 +312,8 @@ public class LinkCreator
 				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
 				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
-					ORef factorLinkRef = model.getLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-					allDiagramLinkRefs.add(model.getDiagramFactorLinkByWrappedRef(factorLinkRef).getRef());
+					DiagramLink diagramLink = model.getDiagramLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
+					allDiagramLinkRefs.add(diagramLink.getRef());
 					continue;
 				}
 				
@@ -317,8 +322,16 @@ public class LinkCreator
 				allDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
-		if (!model.areLinked(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef()))
+		
+		if (!model.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
+		{
 			createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
+		}
+		else
+		{
+			DiagramLink groupBoxDiagramLink = model.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
+			updateGroupBoxChildrenRefs(allDiagramLinkRefs, groupBoxDiagramLink.getRef());
+		}
 		
 		if (anyOppositeLinks(allDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
 			enableBidirectional(allDiagramLinkRefs);
