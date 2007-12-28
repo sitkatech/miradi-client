@@ -184,7 +184,7 @@ public class DiagramChainObject
 	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		diagramObject = diagram;
-		setStartingFactor(diagramFactor.getWrappedFactor());
+		setStartingFactor(diagramFactor);
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
@@ -251,18 +251,18 @@ public class DiagramChainObject
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
 
-	private void setStartingFactor(Factor startingFactor)
+	private void setStartingFactor(DiagramFactor startingFactor)
 	{
 		this.startingFactor = startingFactor;
 	}
 
 	private Factor getStartingFactor()
 	{
-		return startingFactor;
+		return startingFactor.getWrappedFactor();
 	}
 
 	private DiagramObject diagramObject;
 	private FactorSet factorSet;
 	private Vector processedLinks;
-	private Factor startingFactor;
+	private DiagramFactor startingFactor;
 }
