@@ -164,10 +164,15 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isToOrFrom(DiagramFactor diagramFactor)
 	{
-		if (getToDiagramFactorRef().equals(diagramFactor.getRef()))
+		return isToOrFrom(diagramFactor.getRef());
+	}
+	
+	public boolean isToOrFrom(ORef diagramFactorRef)
+	{
+		if (getToDiagramFactorRef().equals(diagramFactorRef))
 			return true;
 		
-		if (getFromDiagramFactorRef().equals(diagramFactor.getRef()))
+		if (getFromDiagramFactorRef().equals(diagramFactorRef))
 			return true;
 		
 		return false;
