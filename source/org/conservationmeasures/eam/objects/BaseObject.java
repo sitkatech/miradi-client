@@ -620,8 +620,22 @@ abstract public class BaseObject
 		if(owner == null)
 			return new Factor[0];
 		
+		ORefList diagramFactorRefsThatWrapOwner = owner.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorRefsOnThisPage = diagram.getAllDiagramFactorRefs();
+		ORefList theOneOnThisPage = diagramFactorRefsOnThisPage.getOverlappingRefs(diagramFactorRefsThatWrapOwner);
+		if(theOneOnThisPage.size() == 0)
+		{
+			return new Factor[0];
+		}
+		
+		if(theOneOnThisPage.size() > 1)
+		{
+			EAM.logWarning("Found multiple wrapping DF's on this page: " + theOneOnThisPage);
+			return new Factor[0];
+		}
+		DiagramFactor diagramFactor = DiagramFactor.find(objectManager, theOneOnThisPage.get(0));
 		DiagramChainObject chainObject = getDiagramChainBuilder();
-		return chainObject.buildUpstreamChainAndGetFactors(diagram, owner).toFactorArray();
+		return chainObject.buildUpstreamChainAndGetFactors(diagram, diagramFactor).toFactorArray();
 	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
