@@ -303,6 +303,12 @@ public class DiagramLink extends BaseObject
 		return bendPoints.getPointList();
 	}
 	
+	public boolean isCoveredByGroupBoxLink()
+	{
+		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLink.getObjectType());
+		return (groupBoxLinks.size() > 0);
+	}
+
 	public static DiagramLink find(ObjectManager objectManager, ORef diagramLinkRef)
 	{
 		return (DiagramLink) objectManager.findObject(diagramLinkRef);

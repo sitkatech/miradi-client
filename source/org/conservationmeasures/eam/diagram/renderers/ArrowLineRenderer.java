@@ -86,6 +86,9 @@ public class ArrowLineRenderer extends EdgeRenderer
 	
 	protected Shape createShape()
 	{
+		if(isCompletelyHidden())
+			return null;
+		
 		Shape shape = createShapeWithRoundedCorners();
 		DiagramComponent diagram = getDiagram();
 		if(diagram == null)
@@ -262,6 +265,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 	private boolean isArrowBodyVisible()
 	{
 		return getLinkCell().isThisLinkBodyVisible(getDiagram());
+	}
+	
+	private boolean isCompletelyHidden()
+	{
+		return getLinkCell().getDiagramLink().isCoveredByGroupBoxLink();
 	}
 
 	private DiagramComponent getDiagram()
