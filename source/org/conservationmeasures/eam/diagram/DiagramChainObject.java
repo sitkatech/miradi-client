@@ -26,13 +26,13 @@ public class DiagramChainObject
 {
 	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, diagramFactor.getWrappedFactor());
+		buildNormalChain(model, diagramFactor);
 		return getFactorLinksArray();
 	}
 	
 	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, diagramFactor.getWrappedFactor());
+		buildNormalChain(model, diagramFactor);
 		return getFactors();
 	}
 	
@@ -43,40 +43,40 @@ public class DiagramChainObject
 
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		buildUpstreamChain(diagram, diagramFactor.getWrappedFactor());
+		buildUpstreamChain(diagram, diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDownstreamChain(model, diagramFactor.getWrappedFactor());
+		buildDownstreamChain(model, diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildUpstreamDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildUpstreamDownstreamChain(model, diagramFactor.getWrappedFactor());
+		buildUpstreamDownstreamChain(model, diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDirectlyLinkedUpstreamChain(model, diagramFactor.getWrappedFactor());
+		buildDirectlyLinkedUpstreamChain(model, diagramFactor);
 		return getFactors();
 	}
 	
 	public FactorSet buildDirectThreatChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDirectThreatChain(model, diagramFactor.getWrappedFactor());
+		buildDirectThreatChain(model, diagramFactor);
 		return getFactors();
 	}
 	
 	
-	private void buildDirectThreatChain(DiagramModel model, Factor factor)
+	private void buildDirectThreatChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor.getWrappedFactor());
 		if(startingFactor.isDirectThreat())
 		{
 			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
@@ -84,45 +84,46 @@ public class DiagramChainObject
 		}
 	}
 
-	private void buildNormalChain(DiagramModel model, Factor factor)
+	private void buildNormalChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
+		Factor factor = diagramFactor.getWrappedFactor();
 		
 		initializeChain(diagram, factor);
 		if (startingFactor.isDirectThreat())
-			buildDirectThreatChain(model, factor);
+			buildDirectThreatChain(model, diagramFactor);
 		else
-			buildUpstreamDownstreamChain(model, factor);
+			buildUpstreamDownstreamChain(model, diagramFactor);
 	}
 	
-	private void buildUpstreamDownstreamChain(DiagramModel model, Factor factor)
+	private void buildUpstreamDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor.getWrappedFactor());
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	private void buildUpstreamChain(DiagramObject diagram, Factor factor)
+	private void buildUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor.getWrappedFactor());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	private void buildDownstreamChain(DiagramModel model, Factor factor)
+	private void buildDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor.getWrappedFactor());
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 	}
 	
-	private void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor factor)
+	private void buildDirectlyLinkedUpstreamChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor.getWrappedFactor());
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
