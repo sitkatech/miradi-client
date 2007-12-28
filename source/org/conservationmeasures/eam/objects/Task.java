@@ -344,34 +344,6 @@ public class Task extends BaseObject
 		return OBJECT_NAME;
 	}
 
-	public String getBudgetCostAsString()
-	{
-		try
-		{
-			return formatCurrency(getBudgetCost(null));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for task");
-			return "";
-		}
-	}
-	
-	public String getBudgetCostRollupAsString()
-	{
-		try
-		{
-			return formatCurrency(getBudgetCostRollup(null));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for task");
-			return "";
-		}
-	}
-
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		if (getSubtaskCount() == 0)

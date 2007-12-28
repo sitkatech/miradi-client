@@ -396,16 +396,37 @@ abstract public class BaseObject
 	
 	public String getBudgetCostAsString()
 	{
-		return "";
+		try
+		{
+			return formatCurrency(getBudgetCost(null));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total for strategy");
+			return "";
+		}
 	}
 	
 	public String getBudgetCostRollupAsString()
 	{
-		return "";
+		try
+		{
+			return formatCurrency(getBudgetCostRollup(null));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Error occurred while calculating budget total");
+			return "";
+		}
 	}
-	
+
 	public String formatCurrency(double cost)
 	{
+		if(cost == 0.0)
+			return "";
+		
 		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
 		return formater.format(cost);
 	}
