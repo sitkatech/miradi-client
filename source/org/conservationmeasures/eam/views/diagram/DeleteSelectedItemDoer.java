@@ -87,7 +87,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	{
 		Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 		Vector<DiagramLink> diagramLinksWithGroupBoxes = getDiagramLinksAndGroupboxChildrenLinks(diagramLinks);
-		Vector diagramNames = getDiagramNamesEffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactors(selectedRelatedCells));
+		Vector diagramNames = getDiagramNamesAffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactors(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
 			return true;
 
@@ -100,7 +100,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return EAM.confirmDeletRetainDialog(new String[]{notifyDiaglogText});
 	}
 
-	private Vector getDiagramNamesEffectedByThisDelete(Vector<DiagramLink> diagramLinks, ORefList diagramFactorRefs)
+	private Vector getDiagramNamesAffectedByThisDelete(Vector<DiagramLink> diagramLinks, ORefList diagramFactorRefs)
 	{	
 		Vector diagramNames = new Vector(); 
 		for (int i = 0; i < diagramLinks.size(); ++i)
