@@ -234,7 +234,7 @@ public class DiagramChainObject
 
 	private FactorLink[] getFactorLinksArray()
 	{
-		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);
+		return processedLinks.toArray(new FactorLink[0]);
 	}
 	
 	private FactorSet getDirectlyLinkedDownstreamFactors()
@@ -275,6 +275,6 @@ public class DiagramChainObject
 
 	private DiagramObject diagramObject;
 	private HashSet<Factor> resultingFactors;
-	private Vector processedLinks;
+	private Vector<FactorLink> processedLinks;
 	private DiagramFactor startingFactor;
 }
