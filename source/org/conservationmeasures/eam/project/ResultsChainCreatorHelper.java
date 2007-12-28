@@ -305,9 +305,9 @@ public class ResultsChainCreatorHelper
 		HashSet<DiagramLink> allDiagramLinks = new HashSet<DiagramLink>();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			Factor factor = selectedFactorCells[i].getUnderlyingObject();
-			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
-			Vector diagramLinks = convertToDiagramLinks(chainObject.buildNormalChainAndGetFactorLinks(model, factor));
+			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
+			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();
+			Vector diagramLinks = convertToDiagramLinks(chainObject.buildNormalChainAndGetFactorLinks(model, diagramFactor));
 			allDiagramLinks.addAll(diagramLinks);
 		}
 		
