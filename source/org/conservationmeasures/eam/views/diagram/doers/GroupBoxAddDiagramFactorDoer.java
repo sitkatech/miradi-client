@@ -40,7 +40,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		return false;
 	}
 
-	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
+	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
