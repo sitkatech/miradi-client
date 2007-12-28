@@ -357,6 +357,11 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
+	public double getProportionalBudgetCost(DateRange dateRange) throws Exception
+	{
+		return getBudgetCost(dateRange) * getBudgetCostAllocation();
+	}
+	
 	public double getBudgetCost(DateRange dateRange) throws Exception
 	{
 		if (isBudgetOverrideMode() && !isWholeProjectDateRange(dateRange))
@@ -371,6 +376,11 @@ abstract public class BaseObject
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		return 0;
+	}
+	
+	public double getBudgetCostAllocation() throws Exception
+	{
+		return 1.0;
 	}
 	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
@@ -394,11 +404,11 @@ abstract public class BaseObject
 	}
 	
 	
-	public String getBudgetCostAsString()
+	public String getProportionalBudgetCostAsString()
 	{
 		try
 		{
-			return formatCurrency(getBudgetCost(null));
+			return formatCurrency(getProportionalBudgetCost(null));
 		}
 		catch (Exception e)
 		{
@@ -954,7 +964,7 @@ abstract public class BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
-			return getBudgetCostAsString();
+			return getProportionalBudgetCostAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
 			return getBudgetCostRollupAsString();

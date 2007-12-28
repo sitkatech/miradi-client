@@ -343,6 +343,34 @@ public class Task extends BaseObject
 		
 		return OBJECT_NAME;
 	}
+	
+	public double getBudgetCostAllocation() throws Exception
+	{
+		int type = getTypeOfParent();
+		ORefList parentRefs = findObjectsThatReferToUs(type); 
+		if(isTask())
+		{
+			ORef parentRef = parentRefs.get(0);
+			Task parentTask = Task.find(getObjectManager(), parentRef);
+			return parentTask.getBudgetCostAllocation();
+		}
+		
+		return 1.0 / parentRefs.size();
+	}
+	
+	private int getTypeOfParent()
+	{
+		if(isTask())
+			return Task.getObjectType();
+		
+		if(isMethod())
+			return Indicator.getObjectType();
+		
+		if(isActivity())
+			return Strategy.getObjectType();
+		
+		throw new RuntimeException("Unknown task type: " + getRef());
+	}
 
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
