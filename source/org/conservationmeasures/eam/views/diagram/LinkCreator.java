@@ -296,8 +296,9 @@ public class LinkCreator
 				allDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
+		if (!model.areLinked(fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef()))
+			createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		
-		createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		if (anyOppositeLinks(allDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
 			enableBidirectional(allDiagramLinkRefs);
 	}

@@ -9,7 +9,9 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
 public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -49,5 +51,20 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);
 		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, diagramFactorRefsToAdd);
 		getProject().executeCommand(appendCommand);
+		
+		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
+	}
+
+	private void ensureNewlyAddedDiagramFactorIsLinked(DiagramFactor groupBoxDiagramFactor) throws Exception
+	{
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int i = 0; i < diagramLinkReferrers.size(); ++i)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrers.get(i));
+			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getFromDiagramFactorRef());
+			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getToDiagramFactorRef());
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramView().getDiagramModel(), fromDiagramFactor, toDiagramFactor);
+		}
 	}
 }
