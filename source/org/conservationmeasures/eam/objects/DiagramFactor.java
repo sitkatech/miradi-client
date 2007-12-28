@@ -158,6 +158,11 @@ public class DiagramFactor extends BaseObject
 	{
 		return underlyingObjectRef.getRawRef();
 	}
+	
+	public Factor getWrappedFactor()
+	{
+		return Factor.findFactor(objectManager, getWrappedORef());
+	}
 
 	public Dimension getSize()
 	{
