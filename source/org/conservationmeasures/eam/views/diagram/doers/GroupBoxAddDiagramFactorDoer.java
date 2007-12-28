@@ -47,7 +47,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
-		removeAnyGroupBoxToNoneGroupBoxLinks(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs);
+		removeAnyGroupBoxToNonGroupBoxLinks(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs);
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);
@@ -57,7 +57,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
 	}
 
-	private void removeAnyGroupBoxToNoneGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs) throws Exception
+	private void removeAnyGroupBoxToNonGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs) throws Exception
 	{
 		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
