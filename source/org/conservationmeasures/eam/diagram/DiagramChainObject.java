@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -23,9 +24,9 @@ import org.conservationmeasures.eam.project.ChainObject;
 //factor so that many of these methods could be moved to the super
 public class DiagramChainObject extends ChainObject
 {
-	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, Factor factor)
+	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, factor);
+		buildNormalChain(model, diagramFactor.getWrappedFactor());
 		return getFactorLinksArray();
 	}
 	
