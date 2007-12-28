@@ -77,7 +77,7 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		if(startingFactor.isDirectThreat())
+		if(getStartingFactor().isDirectThreat())
 		{
 			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
 			factorSet.attemptToAddAll(getAllUpstreamFactors());
@@ -89,7 +89,7 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		if (startingFactor.isDirectThreat())
+		if (getStartingFactor().isDirectThreat())
 			buildDirectThreatChain(model, diagramFactor);
 		else
 			buildUpstreamDownstreamChain(model, diagramFactor);
@@ -130,7 +130,7 @@ public class DiagramChainObject
 	{
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
-		linkedFactors.attemptToAdd(startingFactor);
+		linkedFactors.attemptToAdd(getStartingFactor());
 
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
@@ -140,7 +140,7 @@ public class DiagramChainObject
 				continue;
 			FactorLinkId wrappedId = link.getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(unprocessedFactors, startingFactor, thisLink, direction);
+			processLink(unprocessedFactors, getStartingFactor(), thisLink, direction);
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -168,7 +168,7 @@ public class DiagramChainObject
 	protected FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
-		results.attemptToAdd(startingFactor);
+		results.attemptToAdd(getStartingFactor());
 		
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
@@ -176,7 +176,7 @@ public class DiagramChainObject
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 			FactorLinkId wrappedId = link.getWrappedId();
 			FactorLink thisLink = (FactorLink) getProject().findObject(new ORef(ObjectType.FACTOR_LINK, wrappedId));
-			processLink(results, startingFactor, thisLink, direction);
+			processLink(results, getStartingFactor(), thisLink, direction);
 		}
 		return results;
 	}
@@ -184,14 +184,14 @@ public class DiagramChainObject
 	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		diagramObject = diagram;
-		startingFactor = diagramFactor.getWrappedFactor();
+		setStartingFactor(diagramFactor.getWrappedFactor());
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
 	
 	private Project getProject()
 	{
-		return startingFactor.getProject();
+		return getStartingFactor().getProject();
 	}
 	
 	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
@@ -249,6 +249,16 @@ public class DiagramChainObject
 	private FactorSet getAllDownstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
+	}
+
+	private void setStartingFactor(Factor startingFactor)
+	{
+		this.startingFactor = startingFactor;
+	}
+
+	private Factor getStartingFactor()
+	{
+		return startingFactor;
 	}
 
 	private DiagramObject diagramObject;
