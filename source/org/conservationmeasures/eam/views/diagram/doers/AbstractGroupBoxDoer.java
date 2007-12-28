@@ -101,15 +101,14 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		{
 			FactorCell factorCell = selected[i];
 			int type = factorCell.getWrappedType();
-			if (isAcceptableDiagramFactor(type))
+			if (isAcceptableFactor(type))
 				nonGroupBoxDiagramFactorRefs.add(factorCell.getDiagramFactorRef());		
 		}
 		
 		return nonGroupBoxDiagramFactorRefs;
 	}
 
-	//TODO rename,  isAcceptableFactor
-	public static boolean isAcceptableDiagramFactor(int type)
+	public static boolean isAcceptableFactor(int type)
 	{
 		return (type == Target.getObjectType() || 
 				type == Cause.getObjectType() || 
