@@ -78,6 +78,20 @@ public class TestDiagramModel extends EAMTestCase
 		return null;
 	}
 
+	private DiagramFactor findDiagramFactor(String label)
+	{
+		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
+			FactorId factorId = diagramFactors[i].getWrappedId();
+			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, factorId);
+			if (factor.getLabel().equals(label))
+				return diagramFactors[i];
+		}
+		
+		return null;
+	}
+
 	private int[][] getExpectedNodesInChain()
 	{
 		int[][] expectedNodesInChain = {
@@ -135,13 +149,13 @@ public class TestDiagramModel extends EAMTestCase
 			for (int i=0; i<expectedChainNodeIds.length; ++i) 
 			{
 				String label = Integer.toString(expectedChainNodeIds[i]);
-				Factor cmNode = findFactor(label);
+				DiagramFactor diagramFactor = findDiagramFactor(label);
 				
-				FactorSet gotUpChainNodes = model.getAllUpstreamNodes(cmNode);
+				FactorSet gotUpChainNodes = model.getAllUpstreamNodes(diagramFactor);
 				Set gotLabels1 = getLabelSet(gotUpChainNodes);
 				assertEquals("wrong upstream chain nodes for " + expectedChainNodeIds[i] + "?", toSet(expectedChainNodeIds), gotLabels1);
 				
-				FactorSet gotDownChainNodes = model.getAllDownstreamNodes(cmNode);
+				FactorSet gotDownChainNodes = model.getAllDownstreamNodes(diagramFactor);
 				Set gotLabels2 = getLabelSet(gotDownChainNodes);
 				assertEquals("wrong downstream chain nodes for " + expectedChainNodeIds[i] + "?", toSet(expectedChainNodeIds), gotLabels2);
 			}
