@@ -17,12 +17,12 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.project.ChainObject;
+import org.conservationmeasures.eam.project.Project;
 
 //TODO: If the methods took a diagram factor instead of a 
 //factor we shold be able to get to both the model and 
 //factor so that many of these methods could be moved to the super
-public class DiagramChainObject extends ChainObject
+public class DiagramChainObject
 {
 	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
@@ -189,5 +189,70 @@ public class DiagramChainObject extends ChainObject
 		processedLinks = new Vector();
 	}
 	
+	private Project getProject()
+	{
+		return startingFactor.getProject();
+	}
+	
+	private void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
+	{
+		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+			return;
+		}
+		
+		if (!thisLink.isBidirectional())
+			return;
+		
+		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
+		{
+			attempToAdd(thisLink);
+			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
+			unprocessedFactors.attemptToAdd(linkedNode);
+		}
+	}
+	
+	private void attempToAdd(FactorLink thisLinkage)
+	{
+		if (!processedLinks.contains(thisLinkage))
+			processedLinks.add(thisLinkage);
+	}
+	
+	private FactorSet getFactors()
+	{
+		return factorSet;
+	}
+
+	private FactorLink[] getFactorLinksArray()
+	{
+		return (FactorLink[])processedLinks.toArray(new FactorLink[0]);
+	}
+	
+	private FactorSet getDirectlyLinkedDownstreamFactors()
+	{
+		return getDirectlyLinkedFactors(FactorLink.FROM);
+	}
+	
+	private FactorSet getDirectlyLinkedUpstreamFactors()
+	{
+		return getDirectlyLinkedFactors(FactorLink.TO);
+	}
+	
+	private FactorSet getAllUpstreamFactors()
+	{
+		return getAllLinkedFactors(FactorLink.TO);
+	}
+	
+	private FactorSet getAllDownstreamFactors()
+	{
+		return getAllLinkedFactors(FactorLink.FROM);
+	}
+
 	private DiagramObject diagramObject;
+	private FactorSet factorSet;
+	private Vector processedLinks;
+	private Factor startingFactor;
 }
