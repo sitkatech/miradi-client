@@ -269,18 +269,18 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean areLinked(FactorId id1, FactorId id2)
 	{
-		return !getLink(id1, id2).isInvalid();
+		return (getDiagramLink(id1, id2) != null);
 	}
 
-	public ORef getLink(ORef fromFactorRef, ORef toFactorRef)
+	public DiagramLink getDiagramLink(ORef fromFactorRef, ORef toFactorRef)
 	{
 		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
 		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
 		
-		return getLink(fromFactorId, toFactorId);
+		return getDiagramLink(fromFactorId, toFactorId);
 	}
 	
-	private ORef getLink(FactorId id1, FactorId id2)
+	private DiagramLink getDiagramLink(FactorId id1, FactorId id2)
 	{
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
@@ -290,13 +290,13 @@ public class DiagramModel extends DefaultGraphModel
 			FactorId foundId1 = link.getFrom().getWrappedId();
 			FactorId foundId2 = link.getTo().getWrappedId();
 			if(foundId1.equals(id1) && foundId2.equals(id2))
-				return link.getWrappedORef();
+				return link.getDiagramLink();
 			
 			if(foundId1.equals(id2) && foundId2.equals(id1))
-				return link.getWrappedORef();
+				return link.getDiagramLink();
 		}
 		
-		return ORef.INVALID;
+		return null;
 	}
 	
 	public boolean isResultsChain()
