@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -24,7 +25,7 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Indicator.PSEUDO_TAG_FACTOR,
 				Indicator.TAG_PRIORITY,
 				Indicator.TAG_STATUS,
-				Task.PSEUDO_TAG_BUDGET_TOTAL,
+				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 				});
