@@ -463,8 +463,13 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		LayerManager manager = project.getLayerManager();
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
-		boolean isVisible = manager.isVisible(getDiagramObject(), factorCell);
+		boolean isVisible = shouldFactorCellBeVisible(manager, factorCell);
 		getGraphLayoutCache().setVisible(factorCell, isVisible);
+	}
+
+	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)
+	{
+		return manager.isVisible(getDiagramObject(), factorCell);
 	}
 
 	private void updateVisibilityOfLinks() throws Exception
@@ -478,8 +483,14 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void updateVisibilityOfSingleLink(LinkCell linkCell) throws Exception
 	{
-		boolean isVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
-		getGraphLayoutCache().setVisible(linkCell, isVisible);
+		LayerManager manager = project.getLayerManager();
+
+		boolean isLinkVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
+		if(!shouldFactorCellBeVisible(manager, linkCell.getFrom()))
+			isLinkVisible = false;
+		if(!shouldFactorCellBeVisible(manager, linkCell.getTo()))
+			isLinkVisible = false;
+		getGraphLayoutCache().setVisible(linkCell, isLinkVisible);
 	}
 
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
