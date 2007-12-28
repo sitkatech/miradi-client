@@ -77,14 +77,28 @@ public class LinkDeletor
 	{
 		BaseObject owner = diagramLink.getOwner();
 		DiagramObject diagramObject = (DiagramObject) owner;
+		
+		removeFromGroupBoxDiagramLinkChildren(diagramLink);
+		
 		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
 		project.executeCommand(removeDiagramFactorLink);
 
 		Command[] commandsToClearDiagramLink = diagramLink.createCommandsToClear();
 		project.executeCommandsWithoutTransaction(commandsToClearDiagramLink);
 
-		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(ObjectType.DIAGRAM_LINK, diagramLink.getDiagramLinkageId());
+		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(diagramLink.getRef());
 		project.executeCommand(removeFactorLinkCommand);
+	}
+
+	private void removeFromGroupBoxDiagramLinkChildren(DiagramLink diagramLink) throws Exception
+	{
+		ORefList diagramBoxDiagramLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int i = 0; i < diagramBoxDiagramLinkReferrerRefs.size(); ++i)
+		{
+			DiagramLink groupBoxLink = DiagramLink.find(getProject(), diagramBoxDiagramLinkReferrerRefs.get(i));
+			CommandSetObjectData removeDiagramLink = CommandSetObjectData.createRemoveORefCommand(groupBoxLink, diagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, diagramLink.getRef());
+			getProject().executeCommand(removeDiagramLink);
+		}
 	}
 	
 	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws CommandFailedException
