@@ -81,6 +81,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		DiagramLink diagramLink = cell.getDiagramLink();
+		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
+		if (found == null)
+			return;
 		if (!diagramLink.isGroupBoxLink())
 			linkDeletor.deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 		else
