@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
+import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
 public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -46,6 +47,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
+		removeAnyGroupBoxToNoneGroupBoxLinks(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs);
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);
@@ -53,6 +55,24 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		getProject().executeCommand(appendCommand);
 		
 		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
+	}
+
+	private void removeAnyGroupBoxToNoneGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs) throws Exception
+	{
+		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		for (int linkIndex = 0; linkIndex < diagramLinkReferrers.size(); ++linkIndex)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrers.get(linkIndex));
+			for (int factorIndex = 0; factorIndex < nonGroupBoxDiagramFactorRefs.size(); ++factorIndex)
+			{
+				if (diagramLink.isToOrFrom(nonGroupBoxDiagramFactorRefs.get(factorIndex)))
+				{
+					linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new ORefList(), diagramLink);
+				}
+			}
+			
+		}
 	}
 
 	private void ensureNewlyAddedDiagramFactorIsLinked(DiagramFactor groupBoxDiagramFactor) throws Exception
