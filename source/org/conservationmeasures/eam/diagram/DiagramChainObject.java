@@ -65,9 +65,9 @@ public class DiagramChainObject extends ChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildDirectThreatChainAndGetFactors(DiagramModel model, Factor factor)
+	public FactorSet buildDirectThreatChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDirectThreatChain(model, factor);
+		buildDirectThreatChain(model, diagramFactor.getWrappedFactor());
 		return getFactors();
 	}
 	
