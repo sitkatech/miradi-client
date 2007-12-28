@@ -76,7 +76,7 @@ public class DiagramChainObject
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, diagramFactor.getWrappedFactor());
+		initializeChain(diagram, diagramFactor);
 		if(startingFactor.isDirectThreat())
 		{
 			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
@@ -87,9 +87,8 @@ public class DiagramChainObject
 	private void buildNormalChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
-		Factor factor = diagramFactor.getWrappedFactor();
 		
-		initializeChain(diagram, factor);
+		initializeChain(diagram, diagramFactor);
 		if (startingFactor.isDirectThreat())
 			buildDirectThreatChain(model, diagramFactor);
 		else
@@ -100,14 +99,14 @@ public class DiagramChainObject
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, diagramFactor.getWrappedFactor());
+		initializeChain(diagram, diagramFactor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
 	private void buildUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor.getWrappedFactor());
+		initializeChain(diagram, diagramFactor);
 		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
@@ -115,7 +114,7 @@ public class DiagramChainObject
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, diagramFactor.getWrappedFactor());
+		initializeChain(diagram, diagramFactor);
 		factorSet.attemptToAddAll(getAllDownstreamFactors());
 	}
 	
@@ -123,7 +122,7 @@ public class DiagramChainObject
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		
-		initializeChain(diagram, diagramFactor.getWrappedFactor());
+		initializeChain(diagram, diagramFactor);
 		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
@@ -182,10 +181,10 @@ public class DiagramChainObject
 		return results;
 	}
 	
-	private void initializeChain(DiagramObject diagram, Factor factor)
+	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		diagramObject = diagram;
-		this.startingFactor = factor;
+		startingFactor = diagramFactor.getWrappedFactor();
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
