@@ -193,8 +193,8 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
 			String label = Integer.toString(expectedChainNodeIds[0]);
-			Factor cmNode = findFactor(label);
-			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
+			DiagramFactor diagramFactor = findDiagramFactor(label);
+			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(diagramFactor);
 			Set gotLabels = getLabelSet(gotChainNodes);
 			assertEquals("wrong chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
 		}
