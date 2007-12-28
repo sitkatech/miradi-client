@@ -191,7 +191,7 @@ public class DiagramChainObject
 		FactorLink thisLink = diagramLink.getUnderlyingLink();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			processedLinks.add(thisLink);
+			processedLinks.add(diagramLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
 			unprocessedFactors.add(linkedNode);
 			return;
@@ -202,7 +202,7 @@ public class DiagramChainObject
 		
 		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			processedLinks.add(thisLink);
+			processedLinks.add(diagramLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
 			unprocessedFactors.add(linkedNode);
 		}
@@ -220,7 +220,12 @@ public class DiagramChainObject
 
 	private FactorLink[] getFactorLinksArray()
 	{
-		return processedLinks.toArray(new FactorLink[0]);
+		HashSet<FactorLink> links = new HashSet();
+		for(DiagramLink link : processedLinks)
+		{
+			links.add(link.getUnderlyingLink());
+		}
+		return links.toArray(new FactorLink[0]);
 	}
 	
 	private Vector<Factor> getDirectlyLinkedDownstreamFactors()
@@ -255,6 +260,6 @@ public class DiagramChainObject
 
 	private DiagramObject diagramObject;
 	private HashSet<Factor> resultingFactors;
-	private HashSet<FactorLink> processedLinks;
+	private HashSet<DiagramLink> processedLinks;
 	private DiagramFactor startingFactor;
 }
