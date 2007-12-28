@@ -371,7 +371,7 @@ public class DiagramModel extends DefaultGraphModel
 		return chainObject.buildDownstreamChainAndGetFactors(this, startingFactor);
 	}
 
-	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingFactor)
+	public FactorSet getDirectlyLinkedUpstreamNodes(DiagramFactor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
 		return chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(this, startingFactor);
