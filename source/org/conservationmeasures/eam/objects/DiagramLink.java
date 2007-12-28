@@ -178,7 +178,8 @@ public class DiagramLink extends BaseObject
 		if (getGroupedDiagramLinkRefs().size() == 0)
 			return false;
 		
-		DiagramLink diagramLink = DiagramLink.find(getProject(), getGroupedDiagramLinkRefs().get(0));
+		ORef diagramLinkRef = getGroupedDiagramLinkRefs().getRefForType(DiagramLink.getObjectType());
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		return diagramLink.isBidirectional();
 	}
 	
