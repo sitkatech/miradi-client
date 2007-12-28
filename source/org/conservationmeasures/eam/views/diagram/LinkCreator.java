@@ -51,10 +51,22 @@ public class LinkCreator
 		if (model.areLinked(fromFactorRef, toFactorRef))
 			return true;
 		
+		if (isGroupThatContains(fromFactorRef, toFactorRef) || isGroupThatContains(toFactorRef, fromFactorRef))
+			return true;
+		
 		return false;
 		
 	}
 	
+	private boolean isGroupThatContains(ORef potentialGroupBoxDiagramFactorRef, ORef potentialChildDiagramFactorRef)
+	{
+		DiagramFactor from = DiagramFactor.find(project, potentialGroupBoxDiagramFactorRef);
+		if(!from.isGroupBoxFactor())
+			return false;
+		
+		return(from.getGroupBoxChildrenRefs().contains(potentialChildDiagramFactorRef));
+	}
+
 	public boolean linkWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
@@ -71,6 +83,15 @@ public class LinkCreator
 		if(fromDiagramFactor.getDiagramFactorId().equals(toDiagramFactor.getDiagramFactorId()))
 		{
 			String[] body = {EAM.text("Can't link an item to itself"), };
+			EAM.okDialog(EAM.text("Can't Create Link"), body);
+			return true;
+		}
+		
+		ORef fromRef = fromDiagramFactor.getRef();
+		ORef toRef = toDiagramFactor.getRef();
+		if (isGroupThatContains(fromRef, toRef) || isGroupThatContains(toRef, fromRef))
+		{
+			String[] body = {EAM.text("Can't link a group to an item it contains"), };
 			EAM.okDialog(EAM.text("Can't Create Link"), body);
 			return true;
 		}
