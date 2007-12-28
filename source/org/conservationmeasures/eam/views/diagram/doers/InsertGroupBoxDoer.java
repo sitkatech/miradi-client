@@ -53,7 +53,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	{
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			if (!AbstractGroupBoxDoer.isAcceptableDiagramFactor(selectedFactorCells[i].getWrappedType()))
+			if (!AbstractGroupBoxDoer.isAcceptableFactor(selectedFactorCells[i].getWrappedType()))
 					return false;
 		}
 		
