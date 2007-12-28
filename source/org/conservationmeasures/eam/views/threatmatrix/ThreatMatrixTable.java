@@ -47,7 +47,7 @@ public class ThreatMatrixTable extends PanelTable
 		columnHeader.addMouseListener(bundleColumnSortHandler);
 		columnHeader.addMouseMotionListener(bundleColumnSortHandler);
 		
-		addMouseListener(new TableMouseAdapter(getProject(), model));
+		addMouseListener(new CreateDeletePopupMouseAdapter(getProject(), model));
 	}
 
 	public void columnMoved(TableColumnModelEvent event)
