@@ -23,7 +23,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!isAtLeastOneGroupBoxSelected())
 			return false;
 		
-		if (hasOwnedSelectedDiagramFactors(getProject(), extractNonGroupBoxDiagramFactors()))
+		if (hasOwnedSelectedDiagramFactors(getProject(), getSelectedNonGroupBoxDiagramFactors()))
 			return false;
 		
 		return true;
@@ -44,7 +44,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{
-		ORefList nonGroupBoxDiagramFactorRefs = extractNonGroupBoxDiagramFactors();
+		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
