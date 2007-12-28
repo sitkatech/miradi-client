@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -56,5 +57,40 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 		ORefList newSubtractChildrenRefs = ORefList.subtract(groupBoxChildren, groupBoxChildrenToRemove);
 		CommandSetObjectData removeCommand = new CommandSetObjectData(groupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, newSubtractChildrenRefs.toString());
 		getProject().executeCommand(removeCommand);
+		
+		updateGroupBoxLinks(groupBoxDiagramFactor, groupBoxChildrenToRemove);
+	}
+
+	private void updateGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildrenToRemove) throws Exception
+	{
+		for (int i = 0; i < groupBoxChildrenToRemove.size(); ++i)
+		{
+			DiagramFactor childOfGroupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxChildrenToRemove.get(i));
+			removeGroupBoxDiagramLinkForDiagramFactor(groupBoxDiagramFactor, childOfGroupBoxDiagramFactor);
+		}
+	}
+
+	private void removeGroupBoxDiagramLinkForDiagramFactor(DiagramFactor groupBoxDiagramFactor, DiagramFactor removedChildDiagramFactor) throws Exception
+	{	
+		ORefList removedChildDiagramLinkReferrerRefs = removedChildDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int linkIndex = 0; linkIndex < removedChildDiagramLinkReferrerRefs.size(); ++linkIndex)
+		{
+			DiagramLink removedChildDiagramLink = DiagramLink.find(getProject(), removedChildDiagramLinkReferrerRefs.get(linkIndex));
+			removeChildLinkFromGroupBoxLinks(groupBoxDiagramFactor, removedChildDiagramLink);			
+		}
+	}
+
+	private void removeChildLinkFromGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, DiagramLink removedChildDiagramLink) throws Exception
+	{
+		ORefList referringGroupBoxDiagramLinkRefs = removedChildDiagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int groupBoxLinkIndex = 0; groupBoxLinkIndex < referringGroupBoxDiagramLinkRefs.size(); ++groupBoxLinkIndex)
+		{
+			DiagramLink groupBoxDiagramLink = DiagramLink.find(getProject(), referringGroupBoxDiagramLinkRefs.get(groupBoxLinkIndex));
+			if (groupBoxDiagramLink.isToOrFrom(groupBoxDiagramFactor))
+			{
+				CommandSetObjectData removeDiagramLinkCommand = CommandSetObjectData.createRemoveORefCommand(groupBoxDiagramLink, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, removedChildDiagramLink.getRef());
+				getProject().executeCommand(removeDiagramLinkCommand);
+			}	
+		}
 	}
 }
