@@ -10,7 +10,6 @@ import java.util.Set;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -157,9 +156,6 @@ public class Strategy extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))
 			return getStrategyRatingSummary();
 		
-		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getBudgetCostRollupAsString();
-
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -256,46 +252,6 @@ public class Strategy extends Factor
 		}
 
 		return total;
-	}
-	
-	private String getFormatedBudgetCostOverrideValue() throws Exception
-	{
-		String override = budgetCostOverride.get();
-		if (override.length() == 0)
-			return "";
-		
-		return formatCurrency(Double.parseDouble(override));
-	}
-		
-	public String getBudgetCostRollupAsString()
-	{
-		try
-		{
-			return formatCurrency(getBudgetCostRollup(null));
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for task");
-			return "";
-		}
-	}
-
-	public String getBudgetCostAsString()
-	{
-		try
-		{
-			if (isBudgetOverrideMode())
-				return getFormatedBudgetCostOverrideValue();
-			
-			return getBudgetCostRollupAsString();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for strategy");
-			return "";
-		}
 	}
 	
 	void clear()

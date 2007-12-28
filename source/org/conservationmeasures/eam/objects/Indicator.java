@@ -7,11 +7,9 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.Set;
 
-import org.conservationmeasures.eam.dialogs.planning.PlanningViewBudgetCalculator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -28,6 +26,7 @@ import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.StringMapData;
 
@@ -126,20 +125,6 @@ public class Indicator extends BaseObject
 		Measurement measurement = (Measurement)getProject().findObject(measurementRef);
 		String statusCode = measurement.getData(Measurement.TAG_STATUS);
 		return statusCode;
-	}
-	
-	public String getBudgetCostAsString()
-	{
-		try
-		{
-			return new PlanningViewBudgetCalculator(getProject()).getBudgetTotalsAsFormatedString(getRef());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for indicator");
-			return "";
-		}
 	}
 	
 	private String getIndicatorMethodsSingleLine()
@@ -273,6 +258,19 @@ public class Indicator extends BaseObject
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
+	}
+	
+	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+	{
+		double total = 0.0;
+		ORefList methodRefs = getTaskRefs();
+		for(int i = 0; i < methodRefs.size(); ++i)
+		{
+			Task method = Task.find(getProject(), methodRefs.get(i));
+			total += method.getBudgetCost(dateRangeToUse);
+		}
+
+		return total;
 	}
 	
 	public String toString()
