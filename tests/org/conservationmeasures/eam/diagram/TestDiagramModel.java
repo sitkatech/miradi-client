@@ -56,9 +56,9 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			String label = Integer.toString(expectedChainNodeIds[0]);
-			Factor cmNode = findFactor(label);
+			DiagramFactor diagramFactor = findDiagramFactor(label);
 			
-			FactorSet gotChainNodes = model.getNodesInChain(cmNode);
+			FactorSet gotChainNodes = model.getNodesInChain(diagramFactor);
 			FactorSet foundNodes = findNodes(expectedChainNodeIds);
 			assertEquals("wrong direct threat chain nodes for " + expectedChainNodeIds[0] + "?", foundNodes, gotChainNodes);
 		}

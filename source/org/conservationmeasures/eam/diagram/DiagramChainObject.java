@@ -30,9 +30,9 @@ public class DiagramChainObject
 		return getFactorLinksArray();
 	}
 	
-	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, Factor factor)
+	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, factor);
+		buildNormalChain(model, diagramFactor.getWrappedFactor());
 		return getFactors();
 	}
 	

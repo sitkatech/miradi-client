@@ -241,9 +241,9 @@ public class ResultsChainCreatorHelper
 		HashSet<DiagramFactor> allDiagramFactors = new HashSet<DiagramFactor>();
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
-			Factor factor = selectedFactorCells[i].getUnderlyingObject();
-			DiagramChainObject chainObject = factor.getDiagramChainBuilder();
-			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, factor).toFactorArray();
+			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
+			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();
+			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, diagramFactor).toFactorArray();
 			
 			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
