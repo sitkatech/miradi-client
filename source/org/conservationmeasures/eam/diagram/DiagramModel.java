@@ -440,8 +440,14 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getLinkCell(link);
 	}
 	
+	public void updateVisibilityOfFactorsAndLinks() throws Exception
+	{
+		updateVisibilityOfFactors();
+		updateVisibilityOfLinks();
+	}
 	
-	public void updateVisibilityOfFactors() throws Exception
+	
+	private void updateVisibilityOfFactors() throws Exception
 	{
 		Vector nodes = getAllFactorCells();
 		for(int i = 0; i < nodes.size(); ++i)
@@ -461,7 +467,7 @@ public class DiagramModel extends DefaultGraphModel
 		getGraphLayoutCache().setVisible(factorCell, isVisible);
 	}
 
-	public void updateVisibilityOfLinks() throws Exception
+	private void updateVisibilityOfLinks() throws Exception
 	{
 		LinkCell[] linkCells = getAllFactorLinkCells();
 		for(int i = 0; i < linkCells.length; ++i)

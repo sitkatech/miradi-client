@@ -36,7 +36,7 @@ public class DiagramModelUpdater
 						
 			updateFactors(setObjectDataCommand);
 			updateLinks(setObjectDataCommand);
-			model.updateVisibilityOfFactors();
+			model.updateVisibilityOfFactorsAndLinks();
 		}
 		catch (Exception e)
 		{
