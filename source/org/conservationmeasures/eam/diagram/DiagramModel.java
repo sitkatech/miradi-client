@@ -461,6 +461,21 @@ public class DiagramModel extends DefaultGraphModel
 		getGraphLayoutCache().setVisible(factorCell, isVisible);
 	}
 
+	public void updateVisibilityOfLinks() throws Exception
+	{
+		LinkCell[] linkCells = getAllFactorLinkCells();
+		for(int i = 0; i < linkCells.length; ++i)
+		{
+			updateVisibilityOfSingleLink(linkCells[i]);
+		}
+	}	
+	
+	public void updateVisibilityOfSingleLink(LinkCell linkCell) throws Exception
+	{
+		boolean isVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
+		getGraphLayoutCache().setVisible(linkCell, isVisible);
+	}
+
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
 	{
 		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
