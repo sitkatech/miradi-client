@@ -38,12 +38,12 @@ public class DiagramChainObject extends ChainObject
 	
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor.getWrappedFactor());
+		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 	}
 
-	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagram, Factor factor)
+	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		buildUpstreamChain(diagram, factor);
+		buildUpstreamChain(diagram, diagramFactor.getWrappedFactor());
 		return getFactors();
 	}
 	
