@@ -47,7 +47,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getCommandsToUpdateGroupBoxChildren();
+			updateGroupBoxChildrenUsingCommands();
 		}
 		catch (Exception e)
 		{
@@ -117,5 +117,5 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 				type == ThreatReductionResult.getObjectType());
 	}
 	
-	abstract protected void getCommandsToUpdateGroupBoxChildren() throws Exception;
+	abstract protected void updateGroupBoxChildrenUsingCommands() throws Exception;
 }

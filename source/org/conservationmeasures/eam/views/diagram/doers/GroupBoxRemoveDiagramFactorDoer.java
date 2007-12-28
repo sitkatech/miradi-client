@@ -46,7 +46,7 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 		return new ORefList(groupBoxDiagramFactorRefs);
 	}
 
-	protected void getCommandsToUpdateGroupBoxChildren() throws Exception
+	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{ 
 		ORefList groupBoxChildrenToRemove = extractNonGroupBoxDiagramFactors();
 		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactor.getObjectType());
