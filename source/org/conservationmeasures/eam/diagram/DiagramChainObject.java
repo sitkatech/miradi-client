@@ -81,7 +81,7 @@ public class DiagramChainObject
 		if(getStartingFactor().isDirectThreat())
 		{
 			resultingFactors.addAll(getDirectlyLinkedDownstreamFactors());
-			addToResults(getAllUpstreamFactors().toFactorArray());
+			resultingFactors.addAll(getAllUpstreamFactors());
 		}
 	}
 
@@ -101,14 +101,14 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		addToResults(getAllDownstreamFactors().toFactorArray());
-		addToResults(getAllUpstreamFactors().toFactorArray());
+		resultingFactors.addAll(getAllDownstreamFactors());
+		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
 	private void buildUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		initializeChain(diagram, diagramFactor);
-		addToResults(getAllUpstreamFactors().toFactorArray());
+		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
 	private void buildDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
@@ -116,7 +116,7 @@ public class DiagramChainObject
 		DiagramObject diagram = model.getDiagramObject();
 		
 		initializeChain(diagram, diagramFactor);
-		addToResults(getAllDownstreamFactors().toFactorArray());
+		resultingFactors.addAll(getAllDownstreamFactors());
 	}
 	
 	private void buildDirectlyLinkedUpstreamChain(DiagramModel model, DiagramFactor diagramFactor)
@@ -127,11 +127,11 @@ public class DiagramChainObject
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	protected FactorSet getAllLinkedFactors(int direction)
+	protected Vector<Factor> getAllLinkedFactors(int direction)
 	{
-		FactorSet linkedFactors = new FactorSet();
+		Vector<Factor> linkedFactors = new Vector();
 		Vector<Factor> unprocessedFactors = new Vector();
-		linkedFactors.attemptToAdd(getStartingFactor());
+		linkedFactors.add(getStartingFactor());
 
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
@@ -149,7 +149,7 @@ public class DiagramChainObject
 			Factor thisFactor = (Factor)unprocessedFactors.toArray()[0];
 			if (!linkedFactors.contains(thisFactor))
 			{
-				linkedFactors.attemptToAdd(thisFactor);
+				linkedFactors.add(thisFactor);
 				for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 				{
 					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
@@ -247,22 +247,16 @@ public class DiagramChainObject
 		return getDirectlyLinkedFactors(FactorLink.TO);
 	}
 	
-	private FactorSet getAllUpstreamFactors()
+	private Vector<Factor> getAllUpstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.TO);
 	}
 	
-	private FactorSet getAllDownstreamFactors()
+	private Vector<Factor> getAllDownstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
 	
-	private void addToResults(Factor[] factors)
-	{
-		for(int i = 0; i < factors.length; ++i)
-			resultingFactors.add(factors[i]);
-	}
-
 	private void setStartingFactor(DiagramFactor startingFactor)
 	{
 		this.startingFactor = startingFactor;
