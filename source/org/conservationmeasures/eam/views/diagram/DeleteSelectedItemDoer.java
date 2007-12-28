@@ -80,9 +80,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		DiagramLink diagramLink = cell.getDiagramLink();
-		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getFromDiagramFactorRef());
-		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getToDiagramFactorRef());
-		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
+		if (!diagramLink.isGroupBoxLink())
 			new LinkDeletor(getProject()).deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
 		else
 			new LinkDeletor(getProject()).deleteFactorLinksAndGroupBoxDiagramLinks(factorRefsAboutToBeDeleted, diagramLink);
