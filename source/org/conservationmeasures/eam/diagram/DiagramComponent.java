@@ -296,7 +296,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		for (int i = 0 ; i < allLinkCells.length; i++)
 		{
 			LinkCell linkCell = allLinkCells[i];
-			if (glc.isVisible(linkCell))
+			if (glc.isVisible(linkCell) && !linkCell.getDiagramLink().isCoveredByGroupBoxLink())
 			{
 				addSelectionCell(linkCell);
 			}
