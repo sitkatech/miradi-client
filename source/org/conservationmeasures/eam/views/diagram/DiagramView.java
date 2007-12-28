@@ -567,8 +567,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			DiagramModel model = getDiagramModel();
 			if(model == null)
 				return;
-			model.updateVisibilityOfFactors();
-			model.updateVisibilityOfLinks();
+			model.updateVisibilityOfFactorsAndLinks();
 		}
 		catch(Exception e)
 		{

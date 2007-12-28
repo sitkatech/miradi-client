@@ -23,7 +23,7 @@ public class DiagramImageCreator
 		try
 		{
 			DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
-			comp.getDiagramModel().updateVisibilityOfFactors();
+			comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 			//TODO: is there a better way to do this
 			JFrame frame = new JFrame();
 			frame.add(new UiScrollPane(comp));

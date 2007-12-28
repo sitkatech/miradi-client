@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -324,8 +325,23 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		if (commandSetObjectData.getObjectType()== ObjectType.VIEW_DATA)
 			handleViewDataContentsChange(commandSetObjectData);
 		
+		if (commandSetObjectData.getObjectType() == DiagramLink.getObjectType())
+			handleDiagramLinkContentsChange(commandSetObjectData);
+		
 		handleGroupBoxTypes(commandSetObjectData);
 		
+	}
+
+	private void handleDiagramLinkContentsChange(CommandSetObjectData commandSetObjectData) throws Exception
+	{
+		if(!commandSetObjectData.getFieldTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return;
+		
+		DiagramModel diagramModel = getDiagramModel();
+		if(diagramModel == null)
+			return;
+
+		diagramModel.updateVisibilityOfFactorsAndLinks();
 	}
 
 	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData)
