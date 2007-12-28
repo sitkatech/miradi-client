@@ -45,6 +45,18 @@ public class LinkDeletor
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
 
+	public void deleteFactorLinksAndGroupBoxDiagramLinks(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	{
+		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
+		deleteDiagramLink(diagramLink);
+		
+		for (int i = 0; i < groupBoxLinkChildRefs.size(); ++i)
+		{
+			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
+			deleteFactorLinkAndDiagramLink(factorsAboutToBeDeleted, childDiagramLink);
+		}
+	}
+	
 	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
 	{
 		ObjectManager objectManager = project.getObjectManager();
@@ -131,5 +143,10 @@ public class LinkDeletor
 		return false;
 	}
 
+	private Project getProject()
+	{
+		return project;
+	}
+	
 	private Project project;
 }
