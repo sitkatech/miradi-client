@@ -178,7 +178,7 @@ public class DiagramChainObject
 		diagramObject = diagram;
 		setStartingFactor(diagramFactor);
 		resultingFactors = new HashSet<Factor>();
-		processedLinks = new Vector();
+		processedLinks = new HashSet();
 	}
 	
 	private Project getProject()
@@ -191,7 +191,7 @@ public class DiagramChainObject
 		FactorLink thisLink = diagramLink.getUnderlyingLink();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			attempToAdd(thisLink);
+			processedLinks.add(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
 			unprocessedFactors.add(linkedNode);
 			return;
@@ -202,16 +202,10 @@ public class DiagramChainObject
 		
 		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
 		{
-			attempToAdd(thisLink);
+			processedLinks.add(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
 			unprocessedFactors.add(linkedNode);
 		}
-	}
-	
-	private void attempToAdd(FactorLink thisLinkage)
-	{
-		if (!processedLinks.contains(thisLinkage))
-			processedLinks.add(thisLinkage);
 	}
 	
 	private FactorSet getFactors()
@@ -261,6 +255,6 @@ public class DiagramChainObject
 
 	private DiagramObject diagramObject;
 	private HashSet<Factor> resultingFactors;
-	private Vector<FactorLink> processedLinks;
+	private HashSet<FactorLink> processedLinks;
 	private DiagramFactor startingFactor;
 }
