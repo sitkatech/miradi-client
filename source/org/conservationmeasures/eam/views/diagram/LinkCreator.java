@@ -51,9 +51,6 @@ public class LinkCreator
 		if (model.areLinked(fromFactorRef, toFactorRef))
 			return true;
 		
-		if (isGroupThatContains(fromFactorRef, toFactorRef) || isGroupThatContains(toFactorRef, fromFactorRef))
-			return true;
-		
 		return false;
 		
 	}
