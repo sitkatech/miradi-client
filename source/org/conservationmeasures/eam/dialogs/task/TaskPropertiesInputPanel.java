@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
@@ -49,7 +48,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	{
 		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
 
-		BudgetOverrideSubPanel budgetSubPanel = new BudgetOverrideSubPanel(getProject(), new ORef(Strategy.getObjectType(), BaseId.INVALID));
+		BudgetOverrideSubPanel budgetSubPanel = new BudgetOverrideSubPanel(getProject(), new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
 
 		addLabel(EAM.text("Budget"));
