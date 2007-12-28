@@ -52,7 +52,7 @@ public class LinkDeletor
 		for (int groupLinkIndex = 0; groupLinkIndex < groupBoxDiagramLinkReferrers.size(); ++groupLinkIndex)
 		{
 			DiagramLink groupDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkReferrers.get(groupLinkIndex));
-			if (groupDiagramLink.isToOrFrom(diagramLink))
+			if (groupDiagramLink.alsoLinksOurFromOrTo(diagramLink))
 				deleteDiagramLink(groupDiagramLink);
 		}
 	}
