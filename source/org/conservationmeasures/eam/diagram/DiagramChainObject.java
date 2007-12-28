@@ -36,9 +36,9 @@ public class DiagramChainObject extends ChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), factor);
+		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor.getWrappedFactor());
 	}
 
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagram, Factor factor)
@@ -47,9 +47,9 @@ public class DiagramChainObject extends ChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDownstreamChain(model, factor);
+		buildDownstreamChain(model, diagramFactor.getWrappedFactor());
 		return getFactors();
 	}
 	

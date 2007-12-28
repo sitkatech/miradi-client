@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
@@ -102,12 +103,12 @@ public class SelectChain extends ViewDoer
 			LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 			
 			DiagramChainObject upstreamChain = new DiagramChainObject();
-			Factor from = diagramModel.getProject().findNode(cell.getFrom().getWrappedId());
+			DiagramFactor from = cell.getFrom().getDiagramFactor();
 			Factor[] upstreamFactors = upstreamChain.buildUpstreamChainAndGetFactors(diagramModel, from).toFactorArray();
 			nodes.addAll(Arrays.asList(upstreamFactors));
 			
 			DiagramChainObject downstreamChain = new DiagramChainObject();
-			Factor to = diagramModel.getProject().findNode(cell.getTo().getWrappedId());
+			DiagramFactor to = cell.getTo().getDiagramFactor();
 			Factor[] downstreamFactors = downstreamChain.buildDownstreamChainAndGetFactors(diagramModel, to).toFactorArray();
 			nodes.addAll(Arrays.asList(downstreamFactors));
 		}
