@@ -90,10 +90,10 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	
 	protected boolean isAtLeastOneFactorSelected()
 	{
-		return extractNonGroupBoxDiagramFactors().size() > 0;
+		return getSelectedNonGroupBoxDiagramFactors().size() > 0;
 	}
 		
-	protected ORefList extractNonGroupBoxDiagramFactors()
+	protected ORefList getSelectedNonGroupBoxDiagramFactors()
 	{
 		FactorCell[] selected = getSelectedCells();
 		ORefList nonGroupBoxDiagramFactorRefs = new ORefList();
