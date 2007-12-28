@@ -557,7 +557,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		updateVisibilityOfFactorsAndClearSelectionModel();
 	}
 	
-	public void updateVisibilityOfFactors()
+	public void updateVisibilityOfFactorsAndLinks()
 	{
 		if (!isCurrentViewDiagramView())
 			return;
@@ -568,6 +568,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			if(model == null)
 				return;
 			model.updateVisibilityOfFactors();
+			model.updateVisibilityOfLinks();
 		}
 		catch(Exception e)
 		{
@@ -580,7 +581,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (!isCurrentViewDiagramView())
 			return;
 		
-		updateVisibilityOfFactors();
+		updateVisibilityOfFactorsAndLinks();
 		DiagramComponent diagramComponent = getDiagramComponent();
 		if (diagramComponent == null)
 			return;
