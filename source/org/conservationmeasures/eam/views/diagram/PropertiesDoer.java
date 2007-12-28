@@ -10,6 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.diagram.FactorLinkPropertiesPanel;
@@ -41,7 +42,13 @@ public class PropertiesDoer extends LocationDoer
 			return true;
 		
 		if(selected[0].isFactorLink())
+		{
+			LinkCell linkCell = (LinkCell)selected[0];
+			if(linkCell.getDiagramLink().isGroupBoxLink())
+				return false;
+			
 			return true;
+		}
 
 		return false;
 	}
