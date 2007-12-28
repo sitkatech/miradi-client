@@ -323,14 +323,14 @@ public class LinkCreator
 			}
 		}
 		
-		if (!model.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
-		{
-			createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
-		}
-		else
+		if (model.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
 		{
 			DiagramLink groupBoxDiagramLink = model.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
 			updateGroupBoxChildrenRefs(allDiagramLinkRefs, groupBoxDiagramLink.getRef());
+		}
+		else
+		{
+			createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		}
 		
 		if (anyOppositeLinks(allDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
