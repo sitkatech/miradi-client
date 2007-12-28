@@ -162,6 +162,17 @@ public class DiagramLink extends BaseObject
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
 	}
 	
+	public boolean isToOrFrom(DiagramLink otherDiagramLink)
+	{
+		if (isToOrFrom(otherDiagramLink.getFromDiagramFactorRef()))
+			return true;
+		
+		if (isToOrFrom(otherDiagramLink.getToDiagramFactorRef()))
+			return true;
+		
+		return false;
+	}
+	
 	public boolean isToOrFrom(DiagramFactor diagramFactor)
 	{
 		return isToOrFrom(diagramFactor.getRef());

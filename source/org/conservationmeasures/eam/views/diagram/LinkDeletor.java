@@ -31,8 +31,30 @@ public class LinkDeletor
 	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
-		deleteAllReferrerDiagramLinks(factorLink);
+		deleteDiagramLinkAndReferrers(factorLink);
 		deleteFactorLinkIfOrphaned(factorLink);
+	}
+	
+	private void deleteDiagramLinkAndReferrers(FactorLink factorLink) throws Exception
+	{
+		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());	
+		for (int referrerIndex = 0; referrerIndex < diagramLinkreferrers.size(); ++referrerIndex)
+		{
+			DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkreferrers.get(referrerIndex));
+			deleteOurGroupDiagramLinkParents(diagramLink);
+			deleteDiagramLink(diagramLink);
+		}
+	}
+
+	private void deleteOurGroupDiagramLinkParents(DiagramLink diagramLink) throws Exception
+	{
+		ORefList groupBoxDiagramLinkReferrers = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int groupLinkIndex = 0; groupLinkIndex < groupBoxDiagramLinkReferrers.size(); ++groupLinkIndex)
+		{
+			DiagramLink groupDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkReferrers.get(groupLinkIndex));
+			if (groupDiagramLink.isToOrFrom(diagramLink))
+				deleteDiagramLink(groupDiagramLink);
+		}
 	}
 	
 	public void deleteFactorLinkAndDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
