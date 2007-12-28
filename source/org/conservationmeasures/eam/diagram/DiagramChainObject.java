@@ -59,9 +59,9 @@ public class DiagramChainObject extends ChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, Factor factor)
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDirectlyLinkedUpstreamChain(model, factor);
+		buildDirectlyLinkedUpstreamChain(model, diagramFactor.getWrappedFactor());
 		return getFactors();
 	}
 	
