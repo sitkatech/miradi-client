@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
@@ -125,9 +125,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramModel());
 		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
-		DiagramFactorId id = (DiagramFactorId) createCommand.getCreatedId();
+		ORef newDiagramFactorRef =  createCommand.getObjectRef();
 				
-		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, id);
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(newDiagramFactorRef);
 		doExtraSetup(diagramFactor, selectedNodes);
 
 		forceVisibleInLayerManager();
