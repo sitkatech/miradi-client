@@ -10,7 +10,6 @@ import java.awt.Color;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
@@ -22,18 +21,12 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 {
 	public MainThreatTableModel(Project projectToUse)
 	{
-		project = projectToUse;
-		resetTargetAndThreats();
+		super(projectToUse);
+		
 		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 
-	private void resetTargetAndThreats()
-	{
-		threatRows =  getProject().getCausePool().getDirectThreats();
-		targetColumns = getProject().getTargetPool().getTargets();
-	}
-	
 	public Factor getDirectThreat(int row)
 	{
 		return threatRows[row];
@@ -42,11 +35,6 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	public int getRowCount()
 	{
 		return threatRows.length;
-	}
-
-	public Project getProject()
-	{
-		return project;
 	}
 
 	public ORef getLinkRef(Factor from, Factor to)
@@ -72,8 +60,5 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	}
 	
 	private ChoiceItem emptyChoiceItem;
-	private Project project;
-	protected Factor[] threatRows;
-	protected Target[] targetColumns;
 	protected StressBasedThreatRatingFramework frameWork;
 }
