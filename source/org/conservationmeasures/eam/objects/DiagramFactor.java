@@ -232,7 +232,23 @@ public class DiagramFactor extends BaseObject
 		
 		return false;
 	}
+	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
+			return GroupBox.getObjectType();
 		
+		return super.getAnnotationType(tag);
+	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
+			return true;
+		
+		return super.isRefList(tag);
+	}
+	
 	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Vector commands = new Vector();
