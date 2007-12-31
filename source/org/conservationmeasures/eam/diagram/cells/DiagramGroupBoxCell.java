@@ -12,7 +12,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import javax.swing.JTextPane;
 
@@ -107,19 +106,15 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	{
 		Rectangle2D bounds = null;
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
-		Vector<FactorCell> factorCells = model.getAllFactorCells();
-		for(int i = 0; i < factorCells.size(); ++i)
+		for (int i = 0; i < groupBoxChildren.size(); ++i)
 		{
-			FactorCell node = factorCells.get(i);
-			if(groupBoxChildren.contains(node.getDiagramFactorRef()))
-			{
-				if(bounds == null)
-					bounds = (Rectangle2D)node.getBounds().clone();
-
-				Rectangle tempRect = new Rectangle();
-				Rectangle.union(bounds, node.getBounds(), tempRect);
-				bounds = tempRect;
-			}
+			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(i));
+			if (bounds == null)
+				bounds = (Rectangle2D) groupBoxChild.getBounds().clone();
+			
+			Rectangle tempRect = new Rectangle();
+			Rectangle.union(bounds, (Rectangle2D) groupBoxChild.getBounds().clone(), tempRect);
+			bounds = tempRect;
 		}
 		
 		if(bounds == null)
