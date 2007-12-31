@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.views.threatmatrix.CreateDeletePopupMouseAdapter;
 
 public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 {
@@ -23,6 +24,7 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setColumnWidths();
+		addMouseListener(new CreateDeletePopupMouseAdapter(tableModel.getProject(), tableModel));
 	}
 	
 	private void setColumnWidths()

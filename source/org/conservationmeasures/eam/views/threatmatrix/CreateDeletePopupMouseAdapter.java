@@ -50,7 +50,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 
 	private void showPopUp(MouseEvent event)
 	{
-		ThreatMatrixTable table = (ThreatMatrixTable) event.getSource();
+		JTable table = (JTable) event.getSource();
 		int row = table.rowAtPoint(event.getPoint());
 		int tableColumn = table.columnAtPoint(event.getPoint());
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
@@ -61,7 +61,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		menu.show(table, event.getX(), event.getY());
 	}
 
-	private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int tableColumn)
+	private JPopupMenu getRightClickMenu(JTable table, int row, int tableColumn)
 	{
 		JPopupMenu menu = new JPopupMenu();
 		boolean canBeLinked = canBeLinked(table, row, tableColumn);
@@ -87,7 +87,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		return getThreatMatrixTableModel().isActiveCell(row, modelColumn);
 	}
 	
-	private boolean canBeLinked(ThreatMatrixTable table, int row, int tableColumn)
+	private boolean canBeLinked(JTable table, int row, int tableColumn)
 	{
 		if (areLinked(table, row, tableColumn))
 			return false;
