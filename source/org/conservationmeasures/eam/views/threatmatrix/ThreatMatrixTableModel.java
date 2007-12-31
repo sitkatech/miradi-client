@@ -21,11 +21,11 @@ import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 {
-	public ThreatMatrixTableModel(Project projectToShow)
+	public ThreatMatrixTableModel(Project projectToUse)
 	{
-		project = projectToShow;
+		super(projectToUse);
+		
 		framework = getProject().getSimpleThreatRatingFramework();
-		resetTargetAndThreats();
 	}
 
 	public int getColumnCount()
@@ -123,12 +123,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		return bundle;
 	}
 
-	public void resetTargetAndThreats() 
-	{
-		threatRows =  getProject().getCausePool().getDirectThreats();
-		targetColumns =  getProject().getTargetPool().getTargets();
-	}
-	
 	public void setThreatRows(Factor threatRowsToUse[] ) 
 	{
 		threatRows = threatRowsToUse;
@@ -146,13 +140,7 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 	public SimpleThreatRatingFramework getFramework() {
 		return framework;
 	}
-	
-	public Project getProject()
-	{
-		return project;
-	}
-
-	
+		
 	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
 			throws Exception
 	{
@@ -296,15 +284,8 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 	{
 		return getDirectThreats().length;
 	}
-
 	
-	private Factor threatRows[] = null;
-	private Factor targetColumns[] =  null;
-	
-	private Project project;
 	private SimpleThreatRatingFramework framework;
 	private ValueOption defaultValueOption;
 	private final static int SUMMARY_ROW_COLUMN_INCR = 1;
-
-
 }
