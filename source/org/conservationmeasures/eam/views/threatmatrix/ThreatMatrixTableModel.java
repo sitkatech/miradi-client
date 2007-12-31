@@ -219,6 +219,11 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		return new FactorId(BaseId.INVALID.asInt());
 	}
 	
+	protected boolean isPopupSupportableCell(int row, int modelColumn)
+	{
+		return !isSummaryData(row, modelColumn);
+	}
+	
 	private SimpleThreatRatingFramework framework;
 	private ValueOption defaultValueOption;
 	private final static int SUMMARY_ROW_COLUMN_INCR = 1;
