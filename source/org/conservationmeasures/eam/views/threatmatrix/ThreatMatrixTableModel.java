@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
-public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
+public class ThreatMatrixTableModel extends AbstractThreatTargetTableModel
 {
 	public ThreatMatrixTableModel(Project projectToUse)
 	{

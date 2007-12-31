@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
-import org.conservationmeasures.eam.views.threatmatrix.AbstractDirectThreatTargetTableModel;
+import org.conservationmeasures.eam.views.threatmatrix.AbstractThreatTargetTableModel;
 
-abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class MainThreatTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public MainThreatTableModel(Project projectToUse)
 	{
