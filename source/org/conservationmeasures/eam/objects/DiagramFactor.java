@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Set;
 import java.util.Vector;
 
@@ -172,6 +173,11 @@ public class DiagramFactor extends BaseObject
 	public Point getLocation()
 	{
 		return location.getPoint();
+	}
+	
+	public Rectangle getBounds()
+	{
+		return new Rectangle(getLocation().x, getLocation().y, getSize().width, getSize().height);
 	}
 	
 	public String getFontSize()
