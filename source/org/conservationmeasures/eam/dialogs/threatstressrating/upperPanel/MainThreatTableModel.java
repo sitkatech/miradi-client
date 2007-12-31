@@ -23,7 +23,7 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	public MainThreatTableModel(Project projectToUse)
 	{
 		project = projectToUse;
-		directThreatRows =  getProject().getCausePool().getDirectThreats();
+		threatRows =  getProject().getCausePool().getDirectThreats();
 		targets = getProject().getTargetPool().getTargets();
 		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
 		frameWork = new StressBasedThreatRatingFramework(getProject());
@@ -31,12 +31,12 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	
 	public Factor getDirectThreat(int row)
 	{
-		return directThreatRows[row];
+		return threatRows[row];
 	}
 	
 	public int getRowCount()
 	{
-		return directThreatRows.length;
+		return threatRows.length;
 	}
 
 	public Project getProject()
@@ -68,7 +68,7 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	
 	private ChoiceItem emptyChoiceItem;
 	private Project project;
-	protected Factor[] directThreatRows;
+	protected Factor[] threatRows;
 	protected Target[] targets;
 	protected StressBasedThreatRatingFramework frameWork;
 }
