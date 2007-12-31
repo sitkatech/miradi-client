@@ -27,6 +27,11 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 		targetColumns =  getProject().getTargetPool().getTargets();
 	}
 	
+	protected boolean isPopupSupportableCell(int row, int modelColumn)
+	{
+		return true;
+	}
+    	
 	protected Project getProject()
 	{
 		return project;

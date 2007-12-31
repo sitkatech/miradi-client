@@ -54,13 +54,13 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		int row = table.rowAtPoint(event.getPoint());
 		int tableColumn = table.columnAtPoint(event.getPoint());
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		if(getThreatMatrixTableModel().isSummaryData(row, modelColumn))
+		if (!getThreatMatrixTableModel().isPopupSupportableCell(row, modelColumn))
 			return;
 		
 		JPopupMenu menu = getRightClickMenu(table, row, tableColumn);
 		menu.show(table, event.getX(), event.getY());
 	}
-    
+
 	private JPopupMenu getRightClickMenu(ThreatMatrixTable table, int row, int tableColumn)
 	{
 		JPopupMenu menu = new JPopupMenu();
