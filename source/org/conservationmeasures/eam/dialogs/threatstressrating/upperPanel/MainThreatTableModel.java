@@ -23,10 +23,15 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 	public MainThreatTableModel(Project projectToUse)
 	{
 		project = projectToUse;
-		threatRows =  getProject().getCausePool().getDirectThreats();
-		targetColumns = getProject().getTargetPool().getTargets();
+		resetTargetAndThreats();
 		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
 		frameWork = new StressBasedThreatRatingFramework(getProject());
+	}
+
+	private void resetTargetAndThreats()
+	{
+		threatRows =  getProject().getCausePool().getDirectThreats();
+		targetColumns = getProject().getTargetPool().getTargets();
 	}
 	
 	public Factor getDirectThreat(int row)
