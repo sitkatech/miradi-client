@@ -40,7 +40,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		createThreat("one");
 		createThreat("two");
 		createThreat("three");
-		model.resetMatrix();
+		model.resetTargetAndThreats();
 		assertEquals(3, model.getThreatCount());
 	}
 	
@@ -50,7 +50,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		createTarget("one");
 		createTarget("two");
 		createTarget("three");
-		model.resetMatrix();
+		model.resetTargetAndThreats();
 		assertEquals(3, model.getTargetCount());
 	}
 	
@@ -60,7 +60,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		for(int i = 0; i < threatNames.length; ++i)
 			createThreat(threatNames[i]);
 		
-		model.resetMatrix();
+		model.resetTargetAndThreats();
 		
 		for(int i = 0; i < threatNames.length; ++i)
 		{
@@ -75,7 +75,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		for(int i = 0; i < targetNames.length; ++i)
 			createTarget(targetNames[i]);
 		
-		model.resetMatrix();
+		model.resetTargetAndThreats();
 		
 		assertEquals("wrong lenght?", targetNames.length, model.getTargetCount());
 		for(int i = 0; i < targetNames.length; ++i)
@@ -104,7 +104,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2.getWrappedORef(), target2.getWrappedORef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link2to2);
 		
-		model.resetMatrix();
+		model.resetTargetAndThreats();
 		
 		assertEquals(threat2.getWrappedId(), model.getDirectThreats()[1].getId());
 		assertEquals(target2.getWrappedId(), model.getTargets()[1].getId());

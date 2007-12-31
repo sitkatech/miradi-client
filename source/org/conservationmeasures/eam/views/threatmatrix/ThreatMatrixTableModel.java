@@ -25,7 +25,7 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 	{
 		project = projectToShow;
 		framework = getProject().getSimpleThreatRatingFramework();
-		resetMatrix();
+		resetTargetAndThreats();
 	}
 
 	public int getColumnCount()
@@ -123,7 +123,7 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		return bundle;
 	}
 
-	public void resetMatrix() 
+	public void resetTargetAndThreats() 
 	{
 		threatRows =  getProject().getCausePool().getDirectThreats();
 		targetColumns =  getProject().getTargetPool().getTargets();
