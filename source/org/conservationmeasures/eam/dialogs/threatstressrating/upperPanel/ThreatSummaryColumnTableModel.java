@@ -43,7 +43,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(directThreatRows[row]);
+			int calculatedValue = calculateThreatSummaryRatingValue(threatRows[row]);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
