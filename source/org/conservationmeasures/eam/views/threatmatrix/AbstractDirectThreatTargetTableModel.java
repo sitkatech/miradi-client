@@ -51,6 +51,16 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	{
 		return threatRows;
 	}
+	
+	public Factor getDirectThreat(int row)
+	{
+		return threatRows[row];
+	}
+	
+	public Target getTarget(int modelColumn)
+	{
+		return targetColumns[modelColumn];
+	}
 
 	public int getTargetCount()
 	{

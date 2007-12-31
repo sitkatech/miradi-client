@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
 public class TargetThreatLinkTableModel extends MainThreatTableModel
@@ -68,11 +67,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	public boolean areLinked(Factor from, Factor to)
 	{
 		return getProject().getFactorLinkPool().areLinked(from, to);
-	}
-	
-	public Target getTarget(int modelColumn)
-	{
-		return targetColumns[modelColumn];
 	}
 	
 	public String getColumnTag(int column)
