@@ -64,8 +64,7 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	
 	public FactorId getThreatId(int threatIndex)
 	{
-		Factor cmNode = getDirectThreats()[threatIndex];
-		return cmNode.getFactorId();
+		return getDirectThreats()[threatIndex].getFactorId();
 	}
 
 	public String getThreatName(int threatIndex)
