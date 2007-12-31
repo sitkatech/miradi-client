@@ -32,7 +32,7 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 		return true;
 	}
     	
-	protected Project getProject()
+	public Project getProject()
 	{
 		return project;
 	}
