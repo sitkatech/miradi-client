@@ -187,7 +187,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 
 		private void createLink(ThreatMatrixTableModel modelToUse) throws CommandFailedException
 		{
-			model.getProject().executeCommand(new CommandBeginTransaction());
+			getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
 				FactorId fromThreatId = model.getThreatId(row);
@@ -200,7 +200,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 			}
 			finally
 			{
-				model.getProject().executeCommand(new CommandEndTransaction());
+				getProject().executeCommand(new CommandEndTransaction());
 			}
 		}
 		
