@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
 public class CreateDeletePopupMouseAdapter extends MouseAdapter
 {
-	public CreateDeletePopupMouseAdapter(Project projectToUse, AbstractDirectThreatTargetTableModel modelToUse)
+	public CreateDeletePopupMouseAdapter(Project projectToUse, AbstractThreatTargetTableModel modelToUse)
 	{
 		project = projectToUse;
 		model = modelToUse;
@@ -223,7 +223,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		int modelColumn;
 	}
 	
-	private AbstractDirectThreatTargetTableModel getThreatMatrixTableModel()
+	private AbstractThreatTargetTableModel getThreatMatrixTableModel()
 	{
 		return model;
 	}
@@ -234,5 +234,5 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 	}
 	
 	private Project project;
-	private AbstractDirectThreatTargetTableModel model;
+	private AbstractThreatTargetTableModel model;
 }

@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 
-abstract public class AbstractDirectThreatTargetTableModel extends AbstractTableModel
+abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 {
-	public AbstractDirectThreatTargetTableModel(Project projectToUse)
+	public AbstractThreatTargetTableModel(Project projectToUse)
 	{
 		project = projectToUse;
 		
