@@ -177,7 +177,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		{
 			try
 			{
-				createLink(getThreatMatrixTableModel());
+				createLink();
 			}
 			catch (Exception ex)
 			{
@@ -185,7 +185,7 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 			}
 		}
 
-		private void createLink(ThreatMatrixTableModel modelToUse) throws CommandFailedException
+		private void createLink() throws CommandFailedException
 		{
 			getProject().executeCommand(new CommandBeginTransaction());
 			try
