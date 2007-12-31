@@ -54,6 +54,6 @@ public class ObjectDeepCopier
 		return jsonWithType;
 	}
 	
-	Vector allOwnedObjects;
-	Project project;
+	private Vector allOwnedObjects;
+	private Project project;
 }
