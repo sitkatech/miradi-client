@@ -30,7 +30,7 @@ public class ThreatMatrixRowHeaderTableModel extends AbstractTableModel
 	{
 		if (row==model.getRowCount()-1) 
 			return EAM.text("Summary Target Rating");
-		return model.getThreatNode(row);
+		return model.getDirectThreats()[row];
 	}
 
 	public boolean isCellEditable(int row, int column)

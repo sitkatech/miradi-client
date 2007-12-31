@@ -64,7 +64,7 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	
 	public FactorId getThreatId(int threatIndex)
 	{
-		Factor cmNode = getThreatNode(threatIndex);
+		Factor cmNode = getDirectThreats()[threatIndex];
 		return cmNode.getFactorId();
 	}
 
@@ -80,15 +80,9 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	
 	public FactorId getTargetId(int targetIndex)
 	{
-		Factor cmNode = getTargetNode(targetIndex);
-		return cmNode.getFactorId();
+		return getTargets()[targetIndex].getFactorId();
 	}
 	
-	public Factor getTargetNode(int targetIndex)
-	{
-		return getTargets()[targetIndex];
-	}
-			
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;	
