@@ -27,11 +27,6 @@ abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTab
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 
-	public Factor getDirectThreat(int row)
-	{
-		return threatRows[row];
-	}
-	
 	public int getRowCount()
 	{
 		return threatRows.length;
