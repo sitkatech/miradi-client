@@ -30,7 +30,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 
 	public int getColumnCount()
 	{
-		return targets.length;
+		return targetColumns.length;
 	}
 
 	public Object getValueAt(int row, int column)
@@ -43,7 +43,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(targets[column]);
+			int calculatedValue = calculateThreatSummaryRatingValue(targetColumns[column]);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
@@ -60,6 +60,6 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return targets[column];
+		return targetColumns[column];
 	}
 }
