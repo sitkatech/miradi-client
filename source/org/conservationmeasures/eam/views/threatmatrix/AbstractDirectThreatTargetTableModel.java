@@ -31,6 +31,36 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 		return project;
 	}
 	
+	public boolean isActiveCell(int threatIndex, int targetIndex)
+	{
+		if(threatIndex < 0 || targetIndex < 0)
+			return false;
+		
+		Factor threat = getDirectThreats()[threatIndex];
+		Factor target = getTargets()[targetIndex];
+		return getProject().areLinked(threat, target);
+	}
+	
+	protected Factor[] getTargets()
+	{
+		return targetColumns;
+	}
+	
+	protected Factor[] getDirectThreats()
+	{
+		return threatRows;
+	}
+
+	public int getTargetCount()
+	{
+		return getTargets().length;
+	}
+
+	public int getThreatCount()
+	{
+		return getDirectThreats().length;
+	}
+		
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;	

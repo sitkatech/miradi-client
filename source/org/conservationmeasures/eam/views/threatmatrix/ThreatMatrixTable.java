@@ -102,7 +102,7 @@ public class ThreatMatrixTable extends PanelTable
 
 	public Project getProject()
 	{
-		ThreatMatrixTableModel model = (ThreatMatrixTableModel)getModel();
+		AbstractDirectThreatTargetTableModel model = (AbstractDirectThreatTargetTableModel)getModel();
 		return model.getProject();
 	}
 	

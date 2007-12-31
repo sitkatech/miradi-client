@@ -162,16 +162,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 	}
 
 
-	public boolean isActiveCell(int threatIndex, int targetIndex)
-	{
-		if(threatIndex < 0 || targetIndex < 0)
-			return false;
-		
-		Factor threat = getDirectThreats()[threatIndex];
-		Factor target = getTargets()[targetIndex];
-		return getProject().areLinked(threat, target);
-	}
-	
 	public FactorId getThreatId(int threatIndex)
 	{
 		Factor cmNode = getThreatNode(threatIndex);
@@ -262,27 +252,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 				return nodes[i].getFactorId();
 
 		return new FactorId(BaseId.INVALID.asInt());
-	}
-
-	
-	Factor[] getTargets()
-	{
-		return targetColumns;
-	}
-	
-	public int getTargetCount()
-	{
-		return getTargets().length;
-	}
-
-	Factor[] getDirectThreats()
-	{
-		return threatRows;
-	}
-
-	public int getThreatCount()
-	{
-		return getDirectThreats().length;
 	}
 	
 	private SimpleThreatRatingFramework framework;
