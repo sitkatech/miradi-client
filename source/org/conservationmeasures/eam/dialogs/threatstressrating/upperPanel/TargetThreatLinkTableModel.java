@@ -21,12 +21,12 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	
 	public int getColumnCount()
 	{
-		return targets.length;
+		return targetColumns.length;
 	}
 	
 	public String getColumnName(int column)
 	{
-		return targets[column].toString();
+		return targetColumns[column].toString();
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -72,7 +72,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	
 	public Target getTarget(int modelColumn)
 	{
-		return targets[modelColumn];
+		return targetColumns[modelColumn];
 	}
 	
 	public String getColumnTag(int column)
