@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,7 +19,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
-public class ThreatMatrixTableModel extends AbstractTableModel
+public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 {
 	public ThreatMatrixTableModel(Project projectToShow)
 	{

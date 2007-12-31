@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
 import java.awt.Color;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
@@ -18,8 +16,9 @@ import org.conservationmeasures.eam.project.StressBasedThreatRatingFramework;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
+import org.conservationmeasures.eam.views.threatmatrix.AbstractDirectThreatTargetTableModel;
 
-abstract public class MainThreatTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+abstract public class MainThreatTableModel extends AbstractDirectThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
 	public MainThreatTableModel(Project projectToUse)
 	{
