@@ -249,36 +249,6 @@ public class DiagramFactor extends BaseObject
 		return super.isRefList(tag);
 	}
 	
-	public Command[] loadDataFromJson(EnhancedJsonObject json) throws Exception
-	{
-		Vector commands = new Vector();
-		String dimensionAsString = json.getString(DiagramFactor.TAG_SIZE);
-		CommandSetObjectData setSizeCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_SIZE, dimensionAsString);
-		commands.add(setSizeCommand);
-		
-		String locationAsString = json.getString(DiagramFactor.TAG_LOCATION);
-		CommandSetObjectData setLocationCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_LOCATION, locationAsString);
-		commands.add(setLocationCommand);
-
-		String fontSizeAsString = json.optString(TAG_FONT_SIZE);
-		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_SIZE, fontSizeAsString);
-		commands.add(setFontSizeCommand);
-		
-		String fontColorAsString = json.optString(TAG_FOREGROUND_COLOR);
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FOREGROUND_COLOR, fontColorAsString);
-		commands.add(setFontColorCommand);
-
-		String fontStyleAsString = json.optString(TAG_FONT_STYLE);
-		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_FONT_STYLE, fontStyleAsString);
-		commands.add(setFontStyleCommand);
-		
-		String backgrounColorAsString = json.optString(TAG_BACKGROUND_COLOR);
-		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(getRef(), DiagramFactor.TAG_BACKGROUND_COLOR, backgrounColorAsString);
-		commands.add(setBackgroundColorCommand);
-		
-		return (Command[]) commands.toArray(new Command[0]);
-	}
-	
 	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
 		Vector commands = new Vector();
