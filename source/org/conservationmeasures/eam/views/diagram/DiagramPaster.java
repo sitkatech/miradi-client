@@ -158,6 +158,12 @@ abstract public class DiagramPaster
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
+		if (DiagramFactor.getObjectType() == newObject.getType())
+		{
+			if (DiagramFactor.TAG_WRAPPED_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+		}
+		
 		return new Command[0];
 	}
 
@@ -269,14 +275,13 @@ abstract public class DiagramPaster
 			
 			ORef newDiagramFactorRef = createDiagramFactor(oldWrappedRef, newWrappedRef);
 			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
-			Command[]  commandsToLoadFromJson = newDiagramFactor.loadDataFromJson(json);
-			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
+			loadNewObjectFromOldJson(newDiagramFactor, json);
 
-			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
-			
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
 			getOldToNewFactorRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+			fixupRefs(getOldToNewFactorRefMap(), newDiagramFactor);
+			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
 	}
