@@ -66,6 +66,11 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	{
 		return getDirectThreats()[threatIndex].getLabel();
 	}
+	
+	public String getTargetName(int targetIndex)
+	{
+		return getTargets()[targetIndex].getLabel();
+	}
 
 	public FactorId getThreatId(int threatIndex)
 	{

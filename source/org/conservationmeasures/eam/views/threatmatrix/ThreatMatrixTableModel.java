@@ -184,11 +184,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		return names;
 	}
 
-	public String getTargetName(int targetIndex)
-	{
-		return getTargets()[targetIndex].getLabel();
-	}
-	
 	public int findTargetIndexById(FactorId targetId)
 	{
 		for(int i = 0; i < getTargets().length; ++i)
