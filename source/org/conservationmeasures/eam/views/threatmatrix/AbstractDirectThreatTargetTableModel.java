@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
@@ -60,7 +61,34 @@ abstract public class AbstractDirectThreatTargetTableModel extends AbstractTable
 	{
 		return getDirectThreats().length;
 	}
-		
+	
+	public FactorId getThreatId(int threatIndex)
+	{
+		Factor cmNode = getThreatNode(threatIndex);
+		return cmNode.getFactorId();
+	}
+
+	public Factor getThreatNode(int threatIndex)
+	{
+		return getDirectThreats()[threatIndex];
+	}
+
+	public String getThreatName(int threatIndex)
+	{
+		return getDirectThreats()[threatIndex].getLabel();
+	}
+	
+	public FactorId getTargetId(int targetIndex)
+	{
+		Factor cmNode = getTargetNode(targetIndex);
+		return cmNode.getFactorId();
+	}
+	
+	public Factor getTargetNode(int targetIndex)
+	{
+		return getTargets()[targetIndex];
+	}
+			
 	private Project project;
 	protected Factor[] threatRows;
 	protected Target[] targetColumns;	

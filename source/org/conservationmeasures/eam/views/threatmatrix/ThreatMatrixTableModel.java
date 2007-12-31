@@ -161,31 +161,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		return getFramework().getBundle(threatId, targetId);
 	}
 
-
-	public FactorId getThreatId(int threatIndex)
-	{
-		Factor cmNode = getThreatNode(threatIndex);
-		return cmNode.getFactorId();
-	}
-
-	public Factor getThreatNode(int threatIndex)
-	{
-		return getDirectThreats()[threatIndex];
-	}
-
-	public String getThreatName(int threatIndex)
-	{
-		return getDirectThreats()[threatIndex].getLabel();
-	}
-	
-	
-	public FactorId getTargetId(int targetIndex)
-	{
-		Factor cmNode = getTargetNode(targetIndex);
-		return cmNode.getFactorId();
-	}
-	
-	
 	public int getTargetColumn(BaseId baseId) 
 	{
 		return findThreatIndexById(new FactorId(baseId.asInt()));
@@ -207,11 +182,6 @@ public class ThreatMatrixTableModel extends AbstractDirectThreatTargetTableModel
 		for(int i = 0; i < names.length; ++i)
 			names[i] = nodes[i].toString();
 		return names;
-	}
-
-	public Factor getTargetNode(int targetIndex)
-	{
-		return getTargets()[targetIndex];
 	}
 
 	public String getTargetName(int targetIndex)
