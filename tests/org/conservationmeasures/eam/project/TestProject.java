@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.reports.ChainManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -781,6 +782,7 @@ public class TestProject extends EAMTestCase
 		{
 			assertEquals("default criterion not created?", 3, newProject.getSimpleThreatRatingFramework().getCriteria().length);
 			assertEquals("default valueoptions not created?", 5, newProject.getSimpleThreatRatingFramework().getValueOptions().length);
+			assertEquals("default currency not set?", "$", newProject.getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL));
 		}
 		finally
 		{
