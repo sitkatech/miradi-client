@@ -26,6 +26,7 @@ abstract public class CardedView extends UmbrellaView
 		super.becomeActive();
 		createCards();
 		showCurrentCard(getCurrentCardChoiceName());
+		forceLayoutSoSplittersWork();
 	}
 	
 	public void becomeInactive() throws Exception
