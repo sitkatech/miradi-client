@@ -88,13 +88,14 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public void autoSurroundTargets()
 	{
+		int gridSize = getProject().getGridSize();
 		Rectangle2D targetBounds = computeCurrentTargetBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
 		{
 			shortScopeHeight = calculateShortScopeHeight(targetBounds.getBounds().width);
-			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - shortScopeHeight);
-			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + shortScopeHeight  + BOTTOM_MARGIN);
+			Point location = new Point((int)targetBounds.getX() - 2*gridSize, (int)targetBounds.getY()  - shortScopeHeight);
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 4*gridSize, (int)targetBounds.getHeight() + shortScopeHeight  + 2*gridSize);
 			newBounds = new Rectangle(location, size);
 		}
 		
@@ -182,8 +183,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 	}
 
-	final static int SIDE_MARGIN = 5;
-	final static int BOTTOM_MARGIN = 5;
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
 	DiagramModel model;
