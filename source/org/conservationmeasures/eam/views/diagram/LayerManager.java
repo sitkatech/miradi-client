@@ -32,6 +32,7 @@ public class LayerManager
 		intermediateResultFlag = true;
 		threatReductionResultFlag = true;
 		textBoxesVisibleFlag = true;
+		groupBoxesVisibleFlag = true;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObject, FactorCell node)
@@ -168,6 +169,11 @@ public class LayerManager
 		return textBoxesVisibleFlag;
 	}
 	
+	public boolean areGroupBoxesVisible()
+	{
+		return groupBoxesVisibleFlag;
+	}
+	
 	public boolean areIndicatorsVisible()
 	{
 		return indicatorsVisibleFlag;
@@ -233,4 +239,5 @@ public class LayerManager
 	boolean intermediateResultFlag;
 	boolean threatReductionResultFlag;
 	boolean textBoxesVisibleFlag;
+	boolean groupBoxesVisibleFlag;
 }
