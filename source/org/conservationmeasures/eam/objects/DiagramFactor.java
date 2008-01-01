@@ -101,6 +101,13 @@ public class DiagramFactor extends BaseObject
 		return ObjectType.DIAGRAM_FACTOR;
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getGroupBoxChildrenRefs());
+		
+		return deepObjectRefsToCopy;
+	}
 	
 	public static boolean canOwnThisType(int type)
 	{
@@ -125,8 +132,8 @@ public class DiagramFactor extends BaseObject
 			case ObjectType.TEXT_BOX:
 				return true;
 			case ObjectType.GROUP_BOX:
-				return true;
-			
+				return true;	
+				
 			default:
 				return false;
 		}
