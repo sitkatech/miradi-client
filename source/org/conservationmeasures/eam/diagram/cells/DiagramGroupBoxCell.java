@@ -104,16 +104,16 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public Rectangle2D computeCurrentChildrenBounds()
 	{
-		Rectangle2D bounds = null;
+		Rectangle bounds = null;
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int i = 0; i < groupBoxChildren.size(); ++i)
 		{
 			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(i));
-			Rectangle2D childBounds = (Rectangle2D) groupBoxChild.getBounds().clone();
+			Rectangle childBounds = (Rectangle) groupBoxChild.getBounds().clone();
 			if (bounds == null)
 				bounds = childBounds;
 			
-			bounds.union(bounds, childBounds, bounds);
+			bounds = bounds.union(childBounds);
 		}
 		
 		if(bounds == null)
