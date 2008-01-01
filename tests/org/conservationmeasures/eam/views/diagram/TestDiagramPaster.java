@@ -77,7 +77,7 @@ public class TestDiagramPaster extends EAMTestCase
 		DiagramPaster paster = new DiagramCopyPaster(null, project.getDiagramModel(), transferableList);
 		paster.pasteFactors(new Point(0, 0));
 		
-		HashMap oldToNewFactorRefMap = paster.getOldToNewFactorRefMap();
+		HashMap oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
 		ORef newRef = (ORef) oldToNewFactorRefMap.get(factor.getRef());
 		Factor newFactor = (Factor) project.findObject(newRef);
 		IdList newAnnotationIds = new IdList(annotationType, newFactor.getData(annotationFactorTag));
