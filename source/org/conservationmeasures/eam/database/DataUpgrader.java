@@ -149,11 +149,23 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 26)
 				upgradeToVersion27();
+
+			if (readDataVersion(getTopDirectory()) == 27)
+				upgradeToVersion28();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+	
+	public void upgradeToVersion28() throws Exception
+	{
+		EAM.notifyDialog(EAM.text("<html>" +
+				"Miradi now allows you to specify what currency is being used for budgeting. " +
+				"<br>The default is United States dollars, but this can be changed in the " +
+				"<br>Summary View, on the Planning Settings tab"));
+		writeVersion(28);
 	}
 	
 	public void upgradeToVersion27() throws Exception
