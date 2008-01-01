@@ -62,9 +62,18 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
-		Object[] selectedCells = getSelectionModel().getSelectionCells();
-		Vector cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
-		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+		try
+		{
+			Object[] selectedCells = getSelectionModel().getSelectionCells();
+			Vector cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
+			
+			return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new EAMGraphCell[0];
+		}
 	}
 	
 	public void selectCells(EAMGraphCell[] cellsToSelect)
