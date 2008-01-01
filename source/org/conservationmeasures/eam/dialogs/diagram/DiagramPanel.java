@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
 import java.awt.Component;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -65,9 +66,9 @@ abstract public class DiagramPanel extends DisposablePanel
 		try
 		{
 			Object[] selectedCells = getSelectionModel().getSelectionCells();
-			Vector cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
+			HashSet<EAMGraphCell> cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 			
-			return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+			return cellVector.toArray(new EAMGraphCell[0]);
 		}
 		catch (Exception e)
 		{
