@@ -56,8 +56,9 @@ public class SummaryView extends TabbedView
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
 		crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
+		planningSettingsPanel = new SummaryPlanningSettingsPanel(getProject());
+		
 		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
-
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
 		wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
 		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
@@ -65,6 +66,7 @@ public class SummaryView extends TabbedView
 		
 		
 		addPanelAsTab(crossOrganizationSummaryPanel);
+		addPanelAsTab(planningSettingsPanel);
 		addPanelAsTab(tncSummaryPanel);
 		
 		addPanelAsTab(wwfSummaryPanel);
@@ -81,6 +83,7 @@ public class SummaryView extends TabbedView
 	public void deleteTabs() throws Exception
 	{
 		crossOrganizationSummaryPanel.dispose();
+		planningSettingsPanel.dispose();
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
 		wcssSummaryPanel.dispose();
@@ -107,6 +110,7 @@ public class SummaryView extends TabbedView
 	}
 	
 	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
+	SummaryPlanningSettingsPanel planningSettingsPanel;
 	TNCSummaryPanel tncSummaryPanel;
 
 	WWFSummaryPanel wwfSummaryPanel;
