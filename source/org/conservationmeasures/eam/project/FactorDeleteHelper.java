@@ -55,12 +55,12 @@ public class FactorDeleteHelper
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactor);
 	
-		Factor underlyingNode = diagramFactor.getWrappedFactor();
-		if (! canDeleteFactor(underlyingNode))
+		Factor underlyingFactor = diagramFactor.getWrappedFactor();
+		if (! canDeleteFactor(underlyingFactor))
 			return;
 
-		deleteAnnotations(underlyingNode);
-		deleteUnderlyingNode(underlyingNode);
+		deleteAnnotations(underlyingFactor);
+		deleteUnderlyingNode(underlyingFactor);
 	}
 
 	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
