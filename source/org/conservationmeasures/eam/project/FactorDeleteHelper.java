@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -52,8 +51,8 @@ public class FactorDeleteHelper
 		
 		removeFromGroupBox(diagramFactor);
 		removeFromThreatReductionResults(diagramFactor.getWrappedFactor());
-		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(getDiagramObject(), diagramFactor);
+		removeFromView(factorToDelete.getWrappedORef());
+		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactor);
 	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
@@ -110,17 +109,15 @@ public class FactorDeleteHelper
 		getProject().executeCommand(deleteDiagramFactorCommand);
 	}
 
-	private void removeFromView(FactorId id) throws ParseException, Exception, CommandFailedException
+	private void removeFromView(ORef factorRef) throws ParseException, Exception, CommandFailedException
 	{
-		Factor factor = getProject().findNode(id);
-		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factor.getRef());
+		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factorRef);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramObject diagramObject, DiagramFactor diagramFactor) throws CommandFailedException, ParseException
+	private void removeNodeFromDiagram(DiagramObject diagramObject, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
 	{
-		DiagramFactorId idToDelete = diagramFactor.getDiagramFactorId();
 		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);
 	}
