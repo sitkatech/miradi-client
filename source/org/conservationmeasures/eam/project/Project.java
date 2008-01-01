@@ -564,6 +564,7 @@ public class Project
 	{
 		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_CURRENCY_SYMBOL, "$");
 		getDatabase().writeProjectInfo(projectInfo);
 	}
 	
