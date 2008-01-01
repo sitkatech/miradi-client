@@ -98,11 +98,11 @@ public class TransferableMiradiList implements Transferable
 		
 		FactorCell factorCell = (FactorCell) cell;
 		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
-		createFactorDeepCopies(deepCopier, diagramFactor);
-		createFactorDeepCopies(deepCopier, diagramFactor.getGroupBoxChildrenRefs());
+		addFactorDeepCopies(deepCopier, diagramFactor.getGroupBoxChildrenRefs());
+		addFactorDeepCopies(deepCopier, diagramFactor);
 	}
 
-	private void createFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
 	{
 		Factor factor = diagramFactor.getWrappedFactor();		
 		Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
@@ -114,12 +114,12 @@ public class TransferableMiradiList implements Transferable
 		addToUpperMostLeftMostCorner(diagramFactor);
 	}
 
-	private void createFactorDeepCopies(ObjectDeepCopier deepCopier, ORefList groupBoxChildrenRefs)
+	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, ORefList groupBoxChildrenRefs)
 	{
 		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
 		{
 			DiagramFactor groupBoxChildDiagramFactor = DiagramFactor.find(project, groupBoxChildrenRefs.get(childIndex));
-			createFactorDeepCopies(deepCopier, groupBoxChildDiagramFactor);
+			addFactorDeepCopies(deepCopier, groupBoxChildDiagramFactor);
 		}
 	}
 	
