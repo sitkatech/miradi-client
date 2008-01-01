@@ -96,11 +96,16 @@ public class TransferableMiradiList implements Transferable
 			return;
 		
 		FactorCell factorCell = (FactorCell) cell;
-		Factor factor = factorCell.getUnderlyingObject();
+		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
+		createFactorDeepCopies(deepCopier, diagramFactor);
+	}
+
+	private void createFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	{
+		Factor factor = diagramFactor.getWrappedFactor();		
 		Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
 		factorDeepCopies.addAll(factorJsonStrings);
 	
-		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
 		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
