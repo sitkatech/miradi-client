@@ -55,7 +55,7 @@ public class FactorDeleteHelper
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactor);
 	
-		Factor underlyingNode = factorToDelete.getUnderlyingObject();
+		Factor underlyingNode = diagramFactor.getWrappedFactor();
 		if (! canDeleteFactor(underlyingNode))
 			return;
 
