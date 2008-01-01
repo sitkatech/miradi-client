@@ -70,13 +70,14 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
 			
+		int gridSize = getProject().getGridSize();
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!groupBoxBounds.equals(newBounds))
 		{
 			shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
-			Point location = new Point((int)groupBoxBounds.getX() - SIDE_MARGIN, (int)groupBoxBounds.getY()  - shortScopeHeight);
-			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*SIDE_MARGIN, (int)groupBoxBounds.getHeight() + shortScopeHeight  + BOTTOM_MARGIN);
+			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
+			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
 			newBounds = new Rectangle(location, size);
 		}
 		
@@ -150,9 +151,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	public void linkDeleted(DiagramModelEvent event)
 	{
 	}
-	
-	private final static int SIDE_MARGIN = 5;
-	private final static int BOTTOM_MARGIN = 5;
 	
 	private DiagramModel model;
 	private int shortScopeHeight;
