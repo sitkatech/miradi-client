@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
@@ -651,7 +652,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramLink[]) getAllDiagramFactorLinks().toArray(new DiagramLink[0]);
 	}
 	
-	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
+	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) throws Exception 
 	{
 		Vector selectedCellsWithLinkages = new Vector();
 		for(int i=0; i < selectedCells.length; ++i)
@@ -664,19 +665,41 @@ public class DiagramModel extends DefaultGraphModel
 			}
 			else if(cell.isFactor())
 			{
-				Set linkages = getFactorLinks((FactorCell)cell);
-				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
-				{
-					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(!selectedCellsWithLinkages.contains(link))
-						selectedCellsWithLinkages.add(link);
-				}
+				FactorCell factorCell = (FactorCell) cell;
+				selectedCellsWithLinkages.addAll(getFactorRelatedLinks(factorCell));
+				selectedCellsWithLinkages.addAll(getGroupBoxChildrenRelatedLinks(factorCell.getDiagramFactor().getGroupBoxChildrenRefs()));
 				selectedCellsWithLinkages.add(cell);
 			}
 		}
 		return selectedCellsWithLinkages;
 	}
+
+	private Vector getFactorRelatedLinks(FactorCell factorCell)
+	{
+		Vector<EAMGraphCell> factorRelatedLinks = new Vector();
+		Set linkages = getFactorLinks(factorCell);
+		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+		{
+			EAMGraphCell link = (EAMGraphCell) iter.next();
+			if(!factorRelatedLinks.contains(link))
+				factorRelatedLinks.add(link);
+		}
+		
+		return factorRelatedLinks;
+	}
 	
+	private Vector getGroupBoxChildrenRelatedLinks(ORefList groupBoxChilren) throws Exception
+	{
+		Vector<EAMGraphCell> groupBoxRelatedLinks = new Vector();
+		for (int childIndex = 0; childIndex < groupBoxChilren.size(); ++childIndex)
+		{
+			ORef childRef = groupBoxChilren.get(childIndex);
+			FactorCell childCell = getFactorCellById(new DiagramFactorId(childRef.getObjectId().asInt()));
+			groupBoxRelatedLinks.addAll(getFactorRelatedLinks(childCell));
+		}
+		return groupBoxRelatedLinks;
+	}
+
 	public Vector getAllDiagramFactorLinks()
 	{
 		return cellInventory.getAllFactorLinks();

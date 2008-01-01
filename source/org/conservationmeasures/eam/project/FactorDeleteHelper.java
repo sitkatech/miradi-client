@@ -40,13 +40,28 @@ public class FactorDeleteHelper
 	
 	public void deleteFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
+		deleteGroupBoxChildren(diagramFactorToDelete.getGroupBoxChildrenRefs());
+		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
+	}
+
+	private void deleteGroupBoxChildren(ORefList groupBoxChildrenRefs) throws Exception
+	{
+		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
+		{
+			DiagramFactor diagramFactorChild = DiagramFactor.find(getProject(), groupBoxChildrenRefs.get(childIndex));
+			deleteDiagramFactorAndUnderlyingFactor(diagramFactorChild);
+		}
+	}
+
+	private void deleteDiagramFactorAndUnderlyingFactor(DiagramFactor diagramFactorToDelete) throws Exception
+	{
 		Factor underlyingFactor = diagramFactorToDelete.getWrappedFactor();
 		removeFromGroupBox(diagramFactorToDelete);
 		removeFromThreatReductionResults(diagramFactorToDelete.getWrappedFactor());
 		removeFromView(diagramFactorToDelete.getWrappedORef());
 		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactorToDelete);
-	
+				
 		if (! canDeleteFactor(underlyingFactor))
 			return;
 
