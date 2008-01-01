@@ -218,6 +218,7 @@ public class ProjectMetadata extends BaseObject
 		totalBudgetForFunding = new NumberData();
 		budgetSecuredPercent = new NumberData();
 		currencyType = new ChoiceData();
+		currencySymbol = new StringData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -235,6 +236,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TOTAL_BUDGET_FOR_FUNDING, totalBudgetForFunding);
 		addField(TAG_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 		addField(TAG_CURRENCY_TYPE, currencyType);
+		addField(TAG_CURRENCY_SYMBOL, currencySymbol);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -284,6 +286,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TOTAL_BUDGET_FOR_FUNDING = "TotalBudgetForFunding";
 	public static final String TAG_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
 	public static final String TAG_CURRENCY_TYPE = "CurrencyType";
+	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -326,6 +329,7 @@ public class ProjectMetadata extends BaseObject
 	private NumberData totalBudgetForFunding;
 	private NumberData budgetSecuredPercent;
 	private ChoiceData currencyType;
+	private StringData currencySymbol;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;

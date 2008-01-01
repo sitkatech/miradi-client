@@ -19,8 +19,9 @@ public class SummaryPlanningSettingsPanel extends ObjectDataInputPanel
 		super(projectToUse, projectToUse.getMetadata().getRef());
 		
 		ObjectDataInputField currency = createRatingChoiceField(new CurrencyTypeQuestion(ProjectMetadata.TAG_CURRENCY_TYPE));
-		
+		ObjectDataInputField symbol = createShortStringField(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 		addField(currency);
+		addField(symbol);
 		
 		updateFieldsFromProject();
 	}
