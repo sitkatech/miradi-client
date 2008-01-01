@@ -89,8 +89,8 @@ abstract public class DiagramPaster
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
-			getOldToNewFactorRefMap().put(oldObjectRef, newObject.getRef());
-			fixupRefs(getOldToNewFactorRefMap(),newObject);
+			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
+			fixupRefs(getOldToNewObjectRefMap(),newObject);
 		}
 	}
 
@@ -279,8 +279,8 @@ abstract public class DiagramPaster
 
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
 			int type = json.getInt("Type");
-			getOldToNewFactorRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
-			fixupRefs(getOldToNewFactorRefMap(), newDiagramFactor);
+			getOldToNewObjectRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+			fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
 			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 			addDiagramFactorToSelection(newDiagramFactorRef);
 		}
@@ -363,10 +363,10 @@ abstract public class DiagramPaster
 				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
-				fixObjectRefs(getOldToNewFactorRefMap(), newObject, json);
+				fixObjectRefs(getOldToNewObjectRefMap(), newObject, json);
 		}
 		
-		Vector newFactorLinks = new Vector(getOldToNewFactorRefMap().values());
+		Vector newFactorLinks = new Vector(getOldToNewObjectRefMap().values());
 		ensureRatingListMatchesStressList(newFactorLinks);
 	}
 
@@ -452,8 +452,8 @@ abstract public class DiagramPaster
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
-		ORef newFromRef = getFixedupFactorRef(getOldToNewFactorRefMap(), json, FactorLink.TAG_FROM_REF);
-		ORef newToRef = getFixedupFactorRef(getOldToNewFactorRefMap(), json, FactorLink.TAG_TO_REF);	
+		ORef newFromRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
+		ORef newToRef = getFixedupFactorRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
@@ -466,7 +466,7 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-		getOldToNewFactorRefMap().put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
+		getOldToNewObjectRefMap().put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 		
 		return newFactorLink;
 	}
@@ -477,7 +477,7 @@ abstract public class DiagramPaster
 		ORef newStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		getOldToNewFactorRefMap().put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
+		getOldToNewObjectRefMap().put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
 		return newThreatStressRating;
 	}	
 
@@ -498,7 +498,7 @@ abstract public class DiagramPaster
 
 	private boolean haveBothFactorsBeenCopied(ORef oldFromRef, ORef oldToRef)
 	{
-		return (getOldToNewFactorRefMap().get(oldFromRef) == null || getOldToNewFactorRefMap().get(oldToRef) == null);
+		return (getOldToNewObjectRefMap().get(oldFromRef) == null || getOldToNewObjectRefMap().get(oldToRef) == null);
 	}
 	
 	public boolean wasAnyDataLost() throws Exception
@@ -601,7 +601,7 @@ abstract public class DiagramPaster
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
-		ORef newRef = (ORef) getOldToNewFactorRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
+		ORef newRef = (ORef) getOldToNewObjectRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
 		if (newRef == null)
 			return new DiagramFactorId(oldId.asInt()); 
 			 
@@ -707,8 +707,7 @@ abstract public class DiagramPaster
 		return project;
 	}
 
-	//TODO refactor Rename this method, have combined all maps
-	public HashMap getOldToNewFactorRefMap()
+	public HashMap getOldToNewObjectRefMap()
 	{
 		return oldToNewPastedObjectMap;
 	}
