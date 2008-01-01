@@ -32,7 +32,6 @@ public class DiagramLink extends BaseObject
 	{
 		super(objectManager, new DiagramFactorLinkId(idToUse.asInt()));
 		
-		clear();
 		setData(TAG_WRAPPED_ID, extraInfo.getFactorLinkId().toString());
 		setData(TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromFactorId().toString());
 		setData(TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToFactorId().toString());
@@ -42,7 +41,6 @@ public class DiagramLink extends BaseObject
 	{
 		super(new DiagramFactorLinkId(idToUse.asInt()));
 		
-		clear();
 		underlyingObjectId.setId(extraInfo.getFactorLinkId());
 		fromId.setId(extraInfo.getFromFactorId());
 		toId.setId(extraInfo.getToFactorId());
