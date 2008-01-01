@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
@@ -78,6 +79,19 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		box.add(new PanelTitleLabel(hint));
 		addFieldComponent(box);
 		return field;
+	}
+
+	protected void addFieldsOnOneLine(String label, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = new OneRowPanel();
+		for(int i = 0; i < fields.length; ++i)
+		{
+			super.addField(fields[i]);
+			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
+			fieldPanel.add(fields[i].getComponent());
+		}
+		addLabel(label);
+		add(fieldPanel);
 	}
 
 	public void addLabel(String translatedLabelText)
