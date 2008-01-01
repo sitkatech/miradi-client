@@ -77,6 +77,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		{
 			shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
 			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
+			location = getProject().getSnapped(location);
 			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
 			newBounds = new Rectangle(location, size);
 		}
@@ -100,7 +101,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
 		ja.setSize(width, ja.getMaximumSize().height);
 		ja.setText(getText());
-		return ja.getPreferredSize().height;
+		return ja.getPreferredSize().height + ProjectScopeBox.HEIGHT_CUSION;
 	}
 	
 	public Rectangle2D computeCurrentChildrenBounds()
