@@ -109,12 +109,11 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		for (int i = 0; i < groupBoxChildren.size(); ++i)
 		{
 			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(i));
+			Rectangle2D childBounds = (Rectangle2D) groupBoxChild.getBounds().clone();
 			if (bounds == null)
-				bounds = (Rectangle2D) groupBoxChild.getBounds().clone();
+				bounds = childBounds;
 			
-			Rectangle tempRect = new Rectangle();
-			Rectangle.union(bounds, (Rectangle2D) groupBoxChild.getBounds().clone(), tempRect);
-			bounds = tempRect;
+			bounds.union(bounds, childBounds, bounds);
 		}
 		
 		if(bounds == null)
