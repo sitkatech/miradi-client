@@ -47,15 +47,15 @@ public class FactorDeleteHelper
 
 	public void deleteFactor(FactorCell factorToDelete) throws Exception
 	{
-		DiagramFactor diagramFactor = factorToDelete.getDiagramFactor();
+		DiagramFactor diagramFactorToDelete = factorToDelete.getDiagramFactor();
 		
-		removeFromGroupBox(diagramFactor);
-		removeFromThreatReductionResults(diagramFactor.getWrappedFactor());
-		removeFromView(diagramFactor.getWrappedORef());
-		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
-		deleteDiagramFactor(diagramFactor);
+		removeFromGroupBox(diagramFactorToDelete);
+		removeFromThreatReductionResults(diagramFactorToDelete.getWrappedFactor());
+		removeFromView(diagramFactorToDelete.getWrappedORef());
+		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
+		deleteDiagramFactor(diagramFactorToDelete);
 	
-		Factor underlyingFactor = diagramFactor.getWrappedFactor();
+		Factor underlyingFactor = diagramFactorToDelete.getWrappedFactor();
 		if (! canDeleteFactor(underlyingFactor))
 			return;
 
