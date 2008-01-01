@@ -48,11 +48,13 @@ public class FactorDeleteHelper
 
 	public void deleteFactor(FactorCell factorToDelete) throws Exception
 	{
-		removeFromGroupBox(factorToDelete);
-		removeFromThreatReductionResults(factorToDelete);
+		DiagramFactor diagramFactor = factorToDelete.getDiagramFactor();
+		
+		removeFromGroupBox(diagramFactor);
+		removeFromThreatReductionResults(diagramFactor.getWrappedFactor());
 		removeFromView(factorToDelete.getWrappedId());
-		removeNodeFromDiagram(getDiagramObject(), factorToDelete.getDiagramFactor());
-		deleteDiagramFactor(factorToDelete.getDiagramFactor());
+		removeNodeFromDiagram(getDiagramObject(), diagramFactor);
+		deleteDiagramFactor(diagramFactor);
 	
 		Factor underlyingNode = factorToDelete.getUnderlyingObject();
 		if (! canDeleteFactor(underlyingNode))
@@ -62,20 +64,19 @@ public class FactorDeleteHelper
 		deleteUnderlyingNode(underlyingNode);
 	}
 
-	private void removeFromGroupBox(FactorCell factorToDelete) throws Exception
+	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
 	{
-		ORef owningGroupRef = factorToDelete.getDiagramFactor().getOwningGroupBox();
+		ORef owningGroupRef = diagramFactor.getOwningGroupBox();
 		if (owningGroupRef.isInvalid())
 			return;
 		
 		DiagramFactor owningGroup = DiagramFactor.find(getProject(), owningGroupRef);
-		CommandSetObjectData removeDiagramFactorFromGroup = CommandSetObjectData.createRemoveORefCommand(owningGroup, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, factorToDelete.getDiagramFactorRef());
+		CommandSetObjectData removeDiagramFactorFromGroup = CommandSetObjectData.createRemoveORefCommand(owningGroup, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, diagramFactor.getRef());
 		getProject().executeCommand(removeDiagramFactorFromGroup);
 	}
 
-	private void removeFromThreatReductionResults(FactorCell factorToDelete) throws CommandFailedException
+	private void removeFromThreatReductionResults(Factor factor) throws CommandFailedException
 	{
-		Factor factor = factorToDelete.getUnderlyingObject();
 		EAMObjectPool pool = getProject().getPool(ObjectType.THREAT_REDUCTION_RESULT);
 		ORefList orefList = pool.getORefList();
 		for (int i = 0; i < orefList.size(); ++i)
