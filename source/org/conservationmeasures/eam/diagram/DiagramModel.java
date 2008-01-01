@@ -828,6 +828,7 @@ public class DiagramModel extends DefaultGraphModel
 			DiagramGroupBoxCell cell = (DiagramGroupBoxCell) allGroupBoxes.get(i);
 			cell.autoSurroundChildren();
 		}
+		toBack(new Object[] {getProjectScopeBox()});
 	}
 	
 	public Vector getAllGroupBoxCells()
