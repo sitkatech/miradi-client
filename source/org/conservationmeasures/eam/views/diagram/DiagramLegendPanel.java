@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.diagram.cells.DiagramGroupBoxCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategyCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.DiagramTextBoxCell;
@@ -181,6 +182,8 @@ abstract public class DiagramLegendPanel extends LegendPanel
 			manager.setScopeBoxVisible(checkBox.isSelected());
 		else if (property.equals(TextBox.OBJECT_NAME))
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
+		else if (property.equals(GroupBox.OBJECT_NAME))
+			manager.setVisibility(DiagramGroupBoxCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
 	}
@@ -223,6 +226,9 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		
 		else if (property.equals(TextBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
+		
+		else if (property.equals(GroupBox.OBJECT_NAME))
+			checkBox.setSelected(manager.areGroupBoxesVisible());
 		
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			checkBox.setSelected(manager.areStressesVisible());
