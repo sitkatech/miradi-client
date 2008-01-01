@@ -56,7 +56,7 @@ public class TestFactorDeleteHelper extends EAMTestCase
 		assertEquals("didn't add inidicator?", 2, indicatorPool.getIdList().size());
 		assertEquals("didn't add objective?", 1, objectivePool.getIdList().size());
 		FactorDeleteHelper deleteHelper = new FactorDeleteHelper(project.getDiagramModel());
-		deleteHelper.deleteFactor(causeCell);
+		deleteHelper.deleteFactor(causeCell.getDiagramFactor());
 		
 		assertEquals("didnt delete cause?", 0, causePool.getIdList().size());
 		assertEquals("didnt delete indicators?", 0, indicatorPool.getIdList().size());

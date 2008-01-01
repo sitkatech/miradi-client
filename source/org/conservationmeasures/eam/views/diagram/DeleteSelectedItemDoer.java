@@ -71,7 +71,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		DiagramModel model = getDiagramView().getDiagramModel();
-		new FactorDeleteHelper(model).deleteFactor((FactorCell)cell);
+		FactorCell factorCell = (FactorCell)cell;
+		new FactorDeleteHelper(model).deleteFactor(factorCell.getDiagramFactor());
 	}
 
 	private void deleteLink(EAMGraphCell cell, ORefList factorRefsAboutToBeDeleted) throws Exception

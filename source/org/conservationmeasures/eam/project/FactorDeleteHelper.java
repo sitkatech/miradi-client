@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -39,23 +38,15 @@ public class FactorDeleteHelper
 		currentModel = modelToUse;
 	}
 	
-	public void deleteFactor(DiagramFactor factorToDelete) throws Exception
+	public void deleteFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
-		FactorCell factorCellToDelete = currentModel.getFactorCellById(factorToDelete.getDiagramFactorId());
-		deleteFactor(factorCellToDelete);
-	}
-
-	public void deleteFactor(FactorCell factorToDelete) throws Exception
-	{
-		DiagramFactor diagramFactorToDelete = factorToDelete.getDiagramFactor();
-		
+		Factor underlyingFactor = diagramFactorToDelete.getWrappedFactor();
 		removeFromGroupBox(diagramFactorToDelete);
 		removeFromThreatReductionResults(diagramFactorToDelete.getWrappedFactor());
 		removeFromView(diagramFactorToDelete.getWrappedORef());
 		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactorToDelete);
 	
-		Factor underlyingFactor = diagramFactorToDelete.getWrappedFactor();
 		if (! canDeleteFactor(underlyingFactor))
 			return;
 
