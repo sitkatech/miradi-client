@@ -51,7 +51,7 @@ public class FactorDeleteHelper
 		
 		removeFromGroupBox(diagramFactor);
 		removeFromThreatReductionResults(diagramFactor.getWrappedFactor());
-		removeFromView(factorToDelete.getWrappedORef());
+		removeFromView(diagramFactor.getWrappedORef());
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactor);
 	
