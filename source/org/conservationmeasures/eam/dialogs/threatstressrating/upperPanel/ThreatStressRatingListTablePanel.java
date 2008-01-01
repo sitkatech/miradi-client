@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 
+import java.awt.BorderLayout;
+
 import javax.swing.event.ListSelectionEvent;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -31,8 +33,9 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 
 		multiTablePanel = multiTablePanelToUse;
 		propertiesPanel = propertiesPanelToUse;
-		
-		add(multiTablePanelToUse);
+
+		// NOTE: Replace scroll pane that super automatically added
+		add(multiTablePanelToUse, BorderLayout.CENTER);
 	}
 	
 	public ObjectPicker getObjectPicker()
