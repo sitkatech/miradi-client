@@ -95,6 +95,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		{
 			shortScopeHeight = calculateShortScopeHeight(targetBounds.getBounds().width);
 			Point location = new Point((int)targetBounds.getX() - 2*gridSize, (int)targetBounds.getY()  - shortScopeHeight);
+			location = getProject().getSnapped(location);
 			Dimension size = new Dimension((int)targetBounds.getWidth() + 4*gridSize, (int)targetBounds.getHeight() + shortScopeHeight  + 2*gridSize);
 			newBounds = new Rectangle(location, size);
 		}
@@ -118,7 +119,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
 		ja.setSize(width, ja.getMaximumSize().height);
 		ja.setText(getText());
-		return ja.getPreferredSize().height;
+		return ja.getPreferredSize().height + HEIGHT_CUSION;
 	}
 	
 	
@@ -184,6 +185,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	}
 
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+	public final static int HEIGHT_CUSION = 6;
 	
 	DiagramModel model;
 	int shortScopeHeight;
