@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.util.Vector;
+import java.util.HashSet;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -188,7 +188,7 @@ public class TestProject extends EAMTestCase
 		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
 		EAMGraphCell[] selectedCells = {cell1};
 		DiagramModel model = project.getDiagramModel();
-		Vector selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
+		HashSet<EAMGraphCell> selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(cell1, selectedItems);
 		
@@ -241,7 +241,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), diagramFactor1.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
+		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
@@ -477,7 +477,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
+		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);

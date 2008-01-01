@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
@@ -652,16 +653,15 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramLink[]) getAllDiagramFactorLinks().toArray(new DiagramLink[0]);
 	}
 	
-	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) throws Exception 
+	public HashSet<EAMGraphCell> getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) throws Exception 
 	{
-		Vector selectedCellsWithLinkages = new Vector();
+		HashSet<EAMGraphCell> selectedCellsWithLinkages = new HashSet<EAMGraphCell>();
 		for(int i=0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
 			if(cell.isFactorLink())
 			{
-				if(!selectedCellsWithLinkages.contains(cell))
-					selectedCellsWithLinkages.add(cell);
+				selectedCellsWithLinkages.add(cell);
 			}
 			else if(cell.isFactor())
 			{
