@@ -108,5 +108,5 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
 	
-	public static final String GRAND_TOTAL_COLUMN_NAME = EAM.text("Budget Total ($)");
+	public static final String GRAND_TOTAL_COLUMN_NAME = EAM.text("Budget Total");
 }
