@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectDeepCopier;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -98,7 +97,6 @@ public class TransferableMiradiList implements Transferable
 		
 		FactorCell factorCell = (FactorCell) cell;
 		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
-		addFactorDeepCopies(deepCopier, diagramFactor.getGroupBoxChildrenRefs());
 		addFactorDeepCopies(deepCopier, diagramFactor);
 	}
 
@@ -114,15 +112,6 @@ public class TransferableMiradiList implements Transferable
 		addToUpperMostLeftMostCorner(diagramFactor);
 	}
 
-	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, ORefList groupBoxChildrenRefs)
-	{
-		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
-		{
-			DiagramFactor groupBoxChildDiagramFactor = DiagramFactor.find(project, groupBoxChildrenRefs.get(childIndex));
-			addFactorDeepCopies(deepCopier, groupBoxChildDiagramFactor);
-		}
-	}
-	
 	private void addToUpperMostLeftMostCorner(DiagramFactor diagramFactor)
 	{
 		Point location = diagramFactor.getLocation();
