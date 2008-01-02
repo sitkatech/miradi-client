@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends BaseObject
@@ -100,10 +101,25 @@ public class Assignment extends BaseObject
 		return resourceIdData.getRef();
 	}
 	
+	public void getCommandsToShiftEffort(int monthDelta)
+	{
+		throw new RuntimeException("Not implemented yet");
+	}
+
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
 		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
+	}
+	
+	public static Assignment find(ObjectManager objectManager, ORef assignmentRef)
+	{
+		return (Assignment) objectManager.findObject(assignmentRef);
+	}
+	
+	public static Assignment find(Project project, ORef assignmentRef)
+	{
+		return find(project.getObjectManager(), assignmentRef);
 	}
 	
 	public void clear()
