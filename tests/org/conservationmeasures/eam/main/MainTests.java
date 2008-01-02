@@ -135,6 +135,7 @@ import org.conservationmeasures.eam.views.planning.TestPlanningTreeMetadataGoals
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeObjectiveNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeStrategyNode;
 import org.conservationmeasures.eam.views.planning.TestPlanningTreeTargetNode;
+import org.conservationmeasures.eam.views.summary.doers.TestEditFiscalYearStartDoer;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -322,8 +323,12 @@ public class MainTests extends TestCase
 		// view.threatmatrix package
 		suite.addTest(new TestSuite(TestNonEditableThreatMatrixTableModel.class));
 		
+		// view.summary.doers package
+		suite.addTest(new TestSuite(TestEditFiscalYearStartDoer.class));
+
 		// view.umbrella package
 		suite.addTest(new TestSuite(TestUndoRedo.class));
+		
 
 		
 		// martus-utils
