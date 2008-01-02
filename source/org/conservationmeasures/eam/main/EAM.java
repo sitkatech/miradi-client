@@ -233,8 +233,13 @@ public class EAM
 
 	public static boolean confirmDialog(String title, String[] body)
 	{
-		String[] buttons = { text("Button|Overwrite"), text("Button|Cancel") };
+		String[] buttons = { text("Button|Overwrite"), getCancelButtonText() };
 		return confirmDialog(title, body, buttons);
+	}
+
+	public static String getCancelButtonText()
+	{
+		return text("Button|Cancel");
 	}
 
 	public static boolean confirmDialog(String title, String[] body, String[] buttons)
