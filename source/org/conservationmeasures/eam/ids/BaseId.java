@@ -11,7 +11,7 @@ public class BaseId implements Comparable
 	public BaseId(String idAsString)
 	{
 		if(idAsString.length() == 0)
-			id = 0;
+			id = IdAssigner.INVALID_ID;
 		else
 			id = Integer.parseInt(idAsString);
 	}
