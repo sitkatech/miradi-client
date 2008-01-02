@@ -214,12 +214,6 @@ public class ProjectMetadata extends BaseObject
 		return month;
 	}
 
-	static int getMonthDelta(int oldMonth, int newMonth)
-	{
-		int monthDelta = newMonth - oldMonth;
-		return monthDelta;
-	}
-
 	protected static int getSkewedMonthFromCode(String fiscalYearStartCode)
 	{
 		int month = getFiscalYearFirstMonth(fiscalYearStartCode);
