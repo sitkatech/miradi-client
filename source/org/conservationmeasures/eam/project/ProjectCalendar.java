@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.martus.util.MultiCalendar;
 
@@ -25,7 +26,7 @@ public class ProjectCalendar
 	
 	public String getDateRangeName(DateRange dateRange)
 	{
-		return dateRange.toString();
+		return ProjectMetadata.getFiscalYearQuarterName(dateRange, getProject().getMetadata().getFiscalYearFirstMonth());
 	}
 	
 	public Vector getYearlyDateRanges()
@@ -100,6 +101,11 @@ public class ProjectCalendar
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, startMonth, 1);
 		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(year, startMonth + 2, endDay);
 		return new DateRange(start, end);
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 
 	Project project;

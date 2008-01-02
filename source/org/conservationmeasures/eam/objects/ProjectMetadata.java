@@ -23,7 +23,9 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.MultiCalendar;
 
 public class ProjectMetadata extends BaseObject
 {
@@ -203,6 +205,19 @@ public class ProjectMetadata extends BaseObject
 		return threatRatingMode.get();
 	}
 
+	public int getFiscalYearFirstMonth()
+	{
+		return getFiscalYearFirstMonth(getData(TAG_FISCAL_YEAR_START));
+	}
+	
+	public static int getFiscalYearFirstMonth(String fiscalYearStartCode)
+	{
+		if(fiscalYearStartCode.length() == 0)
+			fiscalYearStartCode = "1";
+		int month = Integer.parseInt(fiscalYearStartCode);
+		return month;
+	}
+
 	static int getMonthDelta(int oldMonth, int newMonth)
 	{
 		int monthDelta = newMonth - oldMonth;
@@ -211,12 +226,98 @@ public class ProjectMetadata extends BaseObject
 
 	protected static int getSkewedMonthFromCode(String fiscalYearStartCode)
 	{
-		if(fiscalYearStartCode.length() == 0)
-			fiscalYearStartCode = "1";
-		int month = Integer.parseInt(fiscalYearStartCode);
-		if(month > 6)
-			month -= 12;
-		return month;
+		int month = getFiscalYearFirstMonth(fiscalYearStartCode);
+		return getSkewedMonth(month);
+	}
+	
+	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
+	{
+		switch(fiscalYearFirstMonth)
+		{
+			case 1: return 0;
+			case 4: return 3;
+			case 7: return -6;
+			case 10: return -3;
+		}
+		
+		throw new RuntimeException("Unknown fiscal year month start: " + fiscalYearFirstMonth);
+	}
+
+	public static int getSkewedMonth(int fiscalYearFirstMonth)
+	{
+		if(fiscalYearFirstMonth > 6)
+			fiscalYearFirstMonth -= 12;
+		return fiscalYearFirstMonth;
+	}
+
+	public static String getFiscalYearQuarterName(DateRange dateRange, int fiscalYearFirstMonth)
+	{
+		String fullRange = dateRange.toString();
+		
+		MultiCalendar startDate = dateRange.getStartDate();
+		MultiCalendar afterEndDate = new MultiCalendar(dateRange.getEndDate());
+		afterEndDate.addDays(1);
+		
+		if(startDate.getGregorianDay() != 1)
+			return fullRange;
+		if(afterEndDate.getGregorianDay() != 1)
+			return fullRange;
+		
+		int skew = ProjectMetadata.getFiscalYearMonthSkew(fiscalYearFirstMonth);
+		
+		int startFiscalMonth = startDate.getGregorianMonth();
+		if((startFiscalMonth % 3) != 1)
+			return fullRange;
+
+		int endFiscalMonth = afterEndDate.getGregorianMonth();
+		if((endFiscalMonth % 3) != 1)
+			return fullRange;
+
+		int startFiscalYear = startDate.getGregorianYear();
+		startFiscalMonth -= skew;
+		while(startFiscalMonth < 1)
+		{
+			startFiscalMonth += 12;
+			--startFiscalYear;
+		}
+		while(startFiscalMonth > 12)
+		{
+			startFiscalMonth -= 12;
+			++startFiscalYear;
+		}
+		
+		int endFiscalYear = afterEndDate.getGregorianYear();
+		endFiscalMonth -= skew;
+		while(endFiscalMonth < 1)
+		{
+			endFiscalMonth += 12;
+			--endFiscalYear;
+		}
+		while(endFiscalMonth > 12)
+		{
+			endFiscalMonth -= 12;
+			++endFiscalYear;
+		}
+		
+		int fiscalYear = startFiscalYear;
+		String yearString = Integer.toString(fiscalYear);
+		yearString = "FY" + yearString.substring(2);
+		
+		if(startFiscalYear+1 == endFiscalYear && startFiscalMonth == endFiscalMonth && startFiscalMonth == 1)
+			return yearString;
+		
+		int fiscalQuarter = (startFiscalMonth-1) / 3 + 1;
+		if(fiscalQuarter == 4)
+		{
+			if(startFiscalYear+1 != endFiscalYear)
+				return fullRange;
+		}
+		else if(startFiscalYear != endFiscalYear)
+		{
+			return fullRange;
+		}
+		
+		return "Q" + fiscalQuarter + " " + yearString;
 	}
 
 	// FIXME: This code needs to be moved into a doer, when that doer gets created
