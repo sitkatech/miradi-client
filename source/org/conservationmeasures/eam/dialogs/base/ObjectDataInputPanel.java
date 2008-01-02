@@ -12,6 +12,7 @@ import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.Alignment;
@@ -93,6 +95,19 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		addLabel(label);
 		add(fieldPanel);
 	}
+
+	protected void addFieldWithEditButton(String label, ObjectDataInputField field, EAMAction action)
+	{
+		super.addField(field);
+		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.add(field.getComponent());
+		UiButton button = new UiButton(action);
+		fieldPanel.add(button);
+
+		addLabel(label);
+		add(fieldPanel);
+	}
+
 
 	public void addLabel(String translatedLabelText)
 	{
