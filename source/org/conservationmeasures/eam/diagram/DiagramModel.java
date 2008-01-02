@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -653,12 +654,17 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramLink[]) getAllDiagramFactorLinks().toArray(new DiagramLink[0]);
 	}
 	
-	public HashSet<EAMGraphCell> getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) throws Exception 
+	public HashSet<EAMGraphCell> getAllSelectedCellsWithRelatedLinkages(Object[] rawSelectedCells) throws Exception 
 	{
+		EAMGraphCell[] selectedCells = castRawObjectsToEAMGraphCells(rawSelectedCells);
+		Vector<EAMGraphCell> selectedCellsWithGroupBoxChildren = new Vector<EAMGraphCell>();
+		selectedCellsWithGroupBoxChildren.addAll(Arrays.asList(selectedCells));		
+		selectedCellsWithGroupBoxChildren.addAll(getGroupBoxChildrenCells(selectedCells));
+		
 		HashSet<EAMGraphCell> selectedCellsWithLinkages = new HashSet<EAMGraphCell>();
-		for(int i=0; i < selectedCells.length; ++i)
+		for(int i = 0; i < selectedCellsWithGroupBoxChildren.size(); ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			EAMGraphCell cell = selectedCellsWithGroupBoxChildren.get(i);
 			if(cell.isFactorLink())
 			{
 				selectedCellsWithLinkages.add(cell);
@@ -667,37 +673,63 @@ public class DiagramModel extends DefaultGraphModel
 			{
 				FactorCell factorCell = (FactorCell) cell;
 				selectedCellsWithLinkages.addAll(getFactorRelatedLinks(factorCell));
-				selectedCellsWithLinkages.addAll(getGroupBoxChildrenRelatedLinks(factorCell.getDiagramFactor().getGroupBoxChildrenRefs()));
 				selectedCellsWithLinkages.add(cell);
 			}
 		}
 		return selectedCellsWithLinkages;
 	}
 
-	private Vector getFactorRelatedLinks(FactorCell factorCell)
+	private EAMGraphCell[] castRawObjectsToEAMGraphCells(Object[] rawSelectedCells)
 	{
-		Vector<EAMGraphCell> factorRelatedLinks = new Vector();
+		EAMGraphCell[] castedToEAMGraphCellObjectsArray = new EAMGraphCell[rawSelectedCells.length];
+		for (int i = 0; i < rawSelectedCells.length; ++i)
+		{
+			castedToEAMGraphCellObjectsArray[i] = (EAMGraphCell) rawSelectedCells[i];
+		}
+		return castedToEAMGraphCellObjectsArray;
+	}
+
+	private HashSet<EAMGraphCell> getGroupBoxChildrenCells(Object[] selectedCells) throws Exception
+	{
+		HashSet<EAMGraphCell> groupBoxChildrenCells = new HashSet<EAMGraphCell>();
+		for(int i = 0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isFactor())
+			{
+				FactorCell factorCell = (FactorCell) cell;
+				ORefList groupBoxChildrenRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
+				groupBoxChildrenCells.addAll(getGroupBoxChildren(groupBoxChildrenRefs));
+			}
+		}
+
+		return groupBoxChildrenCells;
+	}
+
+	private HashSet<EAMGraphCell> getFactorRelatedLinks(FactorCell factorCell)
+	{
+		HashSet<EAMGraphCell> factorRelatedLinks = new HashSet();
 		Set linkages = getFactorLinks(factorCell);
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
 			EAMGraphCell link = (EAMGraphCell) iter.next();
-			if(!factorRelatedLinks.contains(link))
-				factorRelatedLinks.add(link);
+			factorRelatedLinks.add(link);
 		}
 		
 		return factorRelatedLinks;
 	}
 	
-	private Vector getGroupBoxChildrenRelatedLinks(ORefList groupBoxChilren) throws Exception
+	private HashSet<EAMGraphCell> getGroupBoxChildren(ORefList groupBoxChildRefs) throws Exception
 	{
-		Vector<EAMGraphCell> groupBoxRelatedLinks = new Vector();
-		for (int childIndex = 0; childIndex < groupBoxChilren.size(); ++childIndex)
+		HashSet<EAMGraphCell> groupBoxChildrenCells = new HashSet();
+		for (int childIndex = 0; childIndex < groupBoxChildRefs.size(); ++childIndex)
 		{
-			ORef childRef = groupBoxChilren.get(childIndex);
-			FactorCell childCell = getFactorCellById(new DiagramFactorId(childRef.getObjectId().asInt()));
-			groupBoxRelatedLinks.addAll(getFactorRelatedLinks(childCell));
+			ORef childRef = groupBoxChildRefs.get(childIndex);
+			//FIXME dont use asInt()
+			FactorCell childCell = getFactorCellById(new DiagramFactorId(childRef.getObjectId().asInt()));		
+			groupBoxChildrenCells.add(childCell);
 		}
-		return groupBoxRelatedLinks;
+		return groupBoxChildrenCells;
 	}
 
 	public Vector getAllDiagramFactorLinks()
