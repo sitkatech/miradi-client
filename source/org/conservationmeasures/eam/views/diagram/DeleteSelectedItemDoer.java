@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -128,8 +127,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		{
 			DiagramLink diagramLink = diagramLinks.get(i);
 			FactorLink factorLink = diagramLink.getUnderlyingLink();
-			ORef fromDiagramFactorRef =  new ORef(DiagramFactor.getObjectType(), diagramLink.getFromDiagramFactorId());
-			ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramLink.getToDiagramFactorId());
+			ORef fromDiagramFactorRef =  diagramLink.getFromDiagramFactorRef();
+			ORef toDiagramFactorRef = diagramLink.getToDiagramFactorRef();
 			ORefList diagramLinkRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
 			boolean containsBothFromAndTo = !diagramFactorRefs.contains(fromDiagramFactorRef) && !diagramFactorRefs.contains(toDiagramFactorRef);
 			boolean hasMoreThanOneRefferer = diagramLinkRefs.size() > 1;
