@@ -16,7 +16,7 @@ public class ProjectCalendar
 	public ProjectCalendar(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
-		setProjectDateRanges();
+		rebuildProjectDateRanges();
 	}
 	
 	public DateRange[] getQuarterlyDateDanges()
@@ -42,7 +42,7 @@ public class ProjectCalendar
 		return DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	private void setProjectDateRanges() throws Exception
+	public void rebuildProjectDateRanges() throws Exception
 	{
 		//TODO budget code -  move project start/end code to Project
 		String startDate = project.getMetadata().getStartDate();
