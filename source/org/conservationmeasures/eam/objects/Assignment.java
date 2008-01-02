@@ -107,7 +107,7 @@ public class Assignment extends BaseObject
 	public Vector<Command> getCommandsToShiftEffort(int monthDelta)
 	{
 		Vector<Command> commands = new Vector<Command>();
-		DateRangeEffortList shifted = detailListData.getDateRangeEffortList().cloneShifted(monthDelta);
+		DateRangeEffortList shifted = detailListData.getDateRangeEffortList().cloneShiftedByMonths(monthDelta);
 		CommandSetObjectData cmd = new CommandSetObjectData(getRef(), Assignment.TAG_DATERANGE_EFFORTS, shifted.toString());
 		commands.add(cmd);
 		return commands;

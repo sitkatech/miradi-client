@@ -159,13 +159,13 @@ public class DateRangeEffortList
 		return data.size();
 	}
 	
-	public DateRangeEffortList cloneShifted(int monthDelta)
+	public DateRangeEffortList cloneShiftedByMonths(int monthDelta)
 	{
 		DateRangeEffortList clone = new DateRangeEffortList();
 		for(int i = 0; i < size(); ++i)
 		{
 			DateRangeEffort effort = get(i);
-			clone.add(effort.cloneShifted(monthDelta));
+			clone.add(effort.cloneShiftedByMonths(monthDelta));
 		}
 		return clone;
 	}	
