@@ -98,7 +98,8 @@ public class Project
 	{
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
-		
+		projectCalendar = new ProjectCalendar(this);
+
 		clear();
 	}
 
@@ -112,9 +113,10 @@ public class Project
 		layerManager = new LayerManager();
 		simpleThreatFramework = new SimpleThreatRatingFramework(this);
 		stressBasedThreatFramework = new StressBasedThreatRatingFramework(this);
-		projectCalendar = null;
 		
 		currentViewName = SummaryView.getViewName();
+		
+		projectCalendar.clearDateRanges();
 	}
 	
 	static public void validateNewProject(String newName) throws Exception
@@ -659,7 +661,6 @@ public class Project
 			createProjectMetadata();
 		
 		loadThreatRatingFramework();
-		projectCalendar = new ProjectCalendar(this);
 		
 		applyDefaultBehavior();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);

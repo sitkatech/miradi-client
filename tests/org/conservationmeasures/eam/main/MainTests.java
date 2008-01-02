@@ -94,6 +94,7 @@ import org.conservationmeasures.eam.project.TestGroupBoxPool;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestIntermediateResultPool;
 import org.conservationmeasures.eam.project.TestProject;
+import org.conservationmeasures.eam.project.TestProjectCalendar;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestProjectRepairer;
 import org.conservationmeasures.eam.project.TestProjectUnzipper;
@@ -176,6 +177,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTargetPool.class));
 		suite.addTest(new TestSuite(TestCausePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
+		suite.addTest(new TestSuite(TestProjectCalendar.class));
 		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestIdAssigner.class));
