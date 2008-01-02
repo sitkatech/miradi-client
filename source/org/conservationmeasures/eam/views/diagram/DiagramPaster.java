@@ -387,7 +387,6 @@ abstract public class DiagramPaster
 			if (newFactorLinkRef == null)
 				continue;
 			
-			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			LinkCreator linkCreator = new LinkCreator(project);
@@ -395,6 +394,7 @@ abstract public class DiagramPaster
 				continue;
 			
 			int type = json.getInt("Type");
+			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
