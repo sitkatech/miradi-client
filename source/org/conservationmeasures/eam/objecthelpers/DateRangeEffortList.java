@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objecthelpers;
 import java.util.List;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
@@ -160,11 +159,9 @@ public class DateRangeEffortList
 		return data.size();
 	}
 	
-	public Vector<Command> getCommandsToShiftEffort(int monthDelta)
+	public DateRangeEffortList cloneShifted(int monthDelta)
 	{
-		Vector<Command> commands = new Vector<Command>();
-		
-		return commands;
+		throw new RuntimeException("Not implemented yet");
 	}	
 
 	private Vector<DateRangeEffort> data;

@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.AssignmentId;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.TaskId;
@@ -105,7 +106,11 @@ public class Assignment extends BaseObject
 	
 	public Vector<Command> getCommandsToShiftEffort(int monthDelta)
 	{
-		return detailListData.getDateRangeEffortList().getCommandsToShiftEffort(monthDelta);
+		Vector<Command> commands = new Vector<Command>();
+		DateRangeEffortList shifted = detailListData.getDateRangeEffortList().cloneShifted(monthDelta);
+		CommandSetObjectData cmd = new CommandSetObjectData(getRef(), Assignment.TAG_DATERANGE_EFFORTS, shifted.toString());
+		commands.add(cmd);
+		return commands;
 	}
 
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
