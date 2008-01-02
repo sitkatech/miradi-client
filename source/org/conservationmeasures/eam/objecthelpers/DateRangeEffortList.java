@@ -161,7 +161,13 @@ public class DateRangeEffortList
 	
 	public DateRangeEffortList cloneShifted(int monthDelta)
 	{
-		throw new RuntimeException("Not implemented yet");
+		DateRangeEffortList clone = new DateRangeEffortList();
+		for(int i = 0; i < size(); ++i)
+		{
+			DateRangeEffort effort = get(i);
+			clone.add(effort.cloneShifted(monthDelta));
+		}
+		return clone;
 	}	
 
 	private Vector<DateRangeEffort> data;
