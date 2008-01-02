@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestLinkCell;
+import org.conservationmeasures.eam.ids.TestBaseId;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objecthelpers.TestDateRangeEffortList;
@@ -238,6 +239,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
 		suite.addTest(new TestSuite(TestGoal.class));
 		suite.addTest(new TestSuite(TestIdList.class));
+		suite.addTest(new TestSuite(TestBaseId.class));
 		suite.addTest(new TestSuite(TestCodeList.class));
 		suite.addTest(new TestSuite(TestStringMapData.class));
 		suite.addTest(new TestSuite(TestIndicator.class));
