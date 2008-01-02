@@ -48,7 +48,7 @@ public class DateRangeEffortList
 		DateRange combinedDateRange = null; 
 		for (int i = 0; i < data.size(); ++i)
 		{
-			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			DateRangeEffort dateRangeEffort = data.get(i);
 			DateRange dateRange = dateRangeEffort.getDateRange();
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
@@ -60,7 +60,7 @@ public class DateRangeEffortList
 	{
 		for (int i = 0; i < data.size(); i++)
 		{
-			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			DateRangeEffort dateRangeEffort = data.get(i);
 			DateRange dateRange = dateRangeEffort.getDateRange();
 			if (dateRange.equals(dateRangeToUse))
 				return dateRangeEffort;
@@ -74,7 +74,7 @@ public class DateRangeEffortList
 		double totalUnits = 0.0;
 		for (int i = 0; i < data.size(); i++)
 		{
-			DateRangeEffort effort = (DateRangeEffort)data.get(i);
+			DateRangeEffort effort = data.get(i);
 			DateRange dateRange = effort.getDateRange();
 			if (boundryDateRange.contains(dateRange))
 				totalUnits += effort.getUnitQuantity();
@@ -87,7 +87,7 @@ public class DateRangeEffortList
 		double totalUnits = 0.0;
 		for (int i = 0; i < data.size(); i++)
 		{
-			DateRangeEffort effort = (DateRangeEffort)data.get(i);
+			DateRangeEffort effort = data.get(i);
 			totalUnits += effort.getUnitQuantity();
 		}
 		return totalUnits;
@@ -97,7 +97,7 @@ public class DateRangeEffortList
 	{
 		for (int i = 0; i < data.size(); i++)
 		{
-			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			DateRangeEffort dateRangeEffort = data.get(i);
 			if (dateRangeEffort.getDateRange().equals(dateRangeEffortToUse.getDateRange()))
 			{
 				dateRangeEffort.setUnitQuantity(dateRangeEffortToUse.getUnitQuantity());
@@ -126,7 +126,7 @@ public class DateRangeEffortList
 	
 	public DateRangeEffort get(int index)
 	{
-		return (DateRangeEffort)data.get(index);
+		return data.get(index);
 	}
 		
 	public String toString()
@@ -167,6 +167,6 @@ public class DateRangeEffortList
 		return commands;
 	}	
 
-	private Vector data;
+	private Vector<DateRangeEffort> data;
 	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";
 }
