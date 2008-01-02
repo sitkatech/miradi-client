@@ -41,7 +41,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public String getDateRangeName(DateRange dateRange)
 	{
-		return ProjectMetadata.getFiscalYearQuarterName(dateRange, getProject().getMetadata().getFiscalYearFirstMonth());
+		return getFiscalYearQuarterName(dateRange, getProject().getMetadata().getFiscalYearFirstMonth());
 	}
 	
 	public DateRange combineStartToEndProjectRange() throws Exception
@@ -199,6 +199,89 @@ public class ProjectCalendar implements CommandExecutedListener
 		return yearlyDateRanges;
 	}
 	
+	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
+	{
+		switch(fiscalYearFirstMonth)
+		{
+			case 1: return 0;
+			case 4: return 3;
+			case 7: return -6;
+			case 10: return -3;
+		}
+		
+		throw new RuntimeException("Unknown fiscal year month start: " + fiscalYearFirstMonth);
+	}
+
+	public static String getFiscalYearQuarterName(DateRange dateRange, int fiscalYearFirstMonth)
+	{
+		String fullRange = dateRange.toString();
+		
+		MultiCalendar startDate = dateRange.getStartDate();
+		MultiCalendar afterEndDate = new MultiCalendar(dateRange.getEndDate());
+		afterEndDate.addDays(1);
+		
+		if(startDate.getGregorianDay() != 1)
+			return fullRange;
+		if(afterEndDate.getGregorianDay() != 1)
+			return fullRange;
+		
+		int skew = ProjectCalendar.getFiscalYearMonthSkew(fiscalYearFirstMonth);
+		
+		int startFiscalMonth = startDate.getGregorianMonth();
+		if((startFiscalMonth % 3) != 1)
+			return fullRange;
+	
+		int endFiscalMonth = afterEndDate.getGregorianMonth();
+		if((endFiscalMonth % 3) != 1)
+			return fullRange;
+	
+		int startFiscalYear = startDate.getGregorianYear();
+		startFiscalMonth -= skew;
+		while(startFiscalMonth < 1)
+		{
+			startFiscalMonth += 12;
+			--startFiscalYear;
+		}
+		while(startFiscalMonth > 12)
+		{
+			startFiscalMonth -= 12;
+			++startFiscalYear;
+		}
+		
+		int endFiscalYear = afterEndDate.getGregorianYear();
+		endFiscalMonth -= skew;
+		while(endFiscalMonth < 1)
+		{
+			endFiscalMonth += 12;
+			--endFiscalYear;
+		}
+		while(endFiscalMonth > 12)
+		{
+			endFiscalMonth -= 12;
+			++endFiscalYear;
+		}
+		
+		int fiscalYear = startFiscalYear;
+		String yearString = Integer.toString(fiscalYear);
+		yearString = "FY" + yearString.substring(2);
+		
+		if(startFiscalYear+1 == endFiscalYear && startFiscalMonth == endFiscalMonth && startFiscalMonth == 1)
+			return yearString;
+		
+		int fiscalQuarter = (startFiscalMonth-1) / 3 + 1;
+		if(fiscalQuarter == 4)
+		{
+			if(startFiscalYear+1 != endFiscalYear)
+				return fullRange;
+		}
+		else if(startFiscalYear != endFiscalYear)
+		{
+			return fullRange;
+		}
+		
+		return "Q" + fiscalQuarter + " " + yearString;
+	}
+
 	private Project project;
 	private DateRange[] dateRanges;
 	private Vector yearlyDateRanges;
