@@ -296,6 +296,12 @@ public class LinkCreator
 	
 	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
+		if (fromDiagramFactorToUse.isGroupBoxFactor() && toDiagramFactorToUse.isGroupBoxFactor())
+		{
+			deleteRelatedGroupBoxLinks(model, fromDiagramFactorToUse, toDiagramFactorToUse.getGroupBoxChildrenRefs());
+			deleteRelatedGroupBoxLinks(model, toDiagramFactorToUse, fromDiagramFactorToUse.getGroupBoxChildrenRefs());
+		}
+		
 		ORefList allDiagramLinkRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = fromDiagramFactorToUse.getSelfOrChildren();
 		ORefList toDiagramFactorRefs = toDiagramFactorToUse.getSelfOrChildren();
@@ -360,6 +366,19 @@ public class LinkCreator
 		}
 		
 		return false;
+	}
+	
+	private void deleteRelatedGroupBoxLinks(DiagramModel model, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
+	{
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		for (int i = 0; i < groupBoxChildren.size(); ++i)
+		{
+			DiagramLink diagramLink = model.getDiagramLinkFromDiagramFactors(groupBoxDiagramFactor.getRef(), groupBoxChildren.get(i));
+			if (diagramLink != null)
+			{
+				linkDeletor.deleteDiagramLink(diagramLink);
+			}
+		}
 	}
 
 	private Project getProject()
