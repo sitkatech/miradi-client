@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.swing.SwingUtilities;
 
+import org.conservationmeasures.eam.actions.jump.ActionEditFiscalYear;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
@@ -214,6 +215,8 @@ public class Actions
 		registerAction(new ActionDeleteKeyEcologicalAttributeMeasurement(mainWindow));
 		registerAction(new ActionDeleteIndicatorMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
+		
+		registerAction(new ActionEditFiscalYear(mainWindow));
 	
 		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
 		registerAction(new ActionTeamCreateMember(mainWindow));
