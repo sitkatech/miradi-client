@@ -326,10 +326,13 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
+			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+			if (oldToNewPastedObjectMap.containsKey(diagramFactorRef))
+				continue;
+			
 			ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
-			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
-
 			if (diagramAlreadyContainsAlias(newWrappedRef))
 				continue;
 			
@@ -393,8 +396,7 @@ abstract public class DiagramPaster
 			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
 			
-			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
-			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
+			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);
 			int type = json.getInt("Type");
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
@@ -405,6 +407,17 @@ abstract public class DiagramPaster
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
+	}
+
+	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId, ORef newFactorLinkRef)
+	{
+		//FIXME this is a case for GB link since they dont have underlying factorlinks
+		//uncommnet and fix
+		//if (newFactorLinkRef == null)
+		//	return new CreateDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId);
+		
+		FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
+		return new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
 	}
 
 	private void ensureRatingListMatchesStressList(Vector newFactorLinks) throws Exception
