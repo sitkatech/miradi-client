@@ -58,6 +58,11 @@ public class DateRangeEffort
 		numberOfUnits = unitQuantity;
 	}
 	
+	public DateRangeEffort cloneShifted(int monthDelta)
+	{
+		return new DateRangeEffort(costUnitCode, numberOfUnits, dateRange.cloneShifted(monthDelta));
+	}	
+
 	public String toString()
 	{
 		return toJson().toString();
@@ -69,5 +74,5 @@ public class DateRangeEffort
 	
 	private String costUnitCode;
 	private DateRange dateRange;
-	private double numberOfUnits;	
+	private double numberOfUnits;
 }

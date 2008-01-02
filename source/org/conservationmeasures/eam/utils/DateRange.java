@@ -153,6 +153,11 @@ public class DateRange
 		return date2.getGregorianYear() - date1.getGregorianYear();
 	}
 	
+	public DateRange cloneShifted(int monthDelta)
+	{
+		return null;
+	}
+
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof DateRange))
