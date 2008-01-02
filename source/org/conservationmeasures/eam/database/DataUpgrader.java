@@ -162,9 +162,20 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion28() throws Exception
 	{
 		EAM.notifyDialog(EAM.text("<html>" +
-				"Miradi now allows you to specify what currency is being used for budgeting. " +
-				"<br>The default is United States dollars, but this can be changed in the " +
-				"<br>Summary View, on the Planning Settings tab"));
+				"Miradi now allows you to specify what currency is being used for budgeting, " +
+				"<br>and to specify Fiscal Years that are different from Calendar Years." +
+				"<br>Both of these can be changed in the Summary View, on the Planning Settings tab." +
+				"<br>" +
+				"<br>The default currency is United States dollars" +
+				"<br>" +
+				"<br>If your fiscal year does not run January-December, and if you have entered " +
+				"<br>budget data into Miradi using Fiscal quarters, your data may not appear " +
+				"<br>the way you want. If you have a lot of budget data like this, please contact " +
+				"<br>the Miradi team to learn about options for realigning it to match your " +
+				"<br>fiscal year." +
+				"<br>" +
+				""
+				));
 		writeVersion(28);
 	}
 	
