@@ -22,6 +22,11 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		this((FactorLinkId) factorLinkRef.getObjectId(), (DiagramFactorId)fromRefToUse.getObjectId(), (DiagramFactorId)toRefToUse.getObjectId());
 	}
 	
+	public CreateDiagramFactorLinkParameter(DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
+	{
+		this(new FactorLinkId(FactorLinkId.INVALID.asInt()), fromIdToUse, toIdToUse);
+	}
+	
 	public CreateDiagramFactorLinkParameter(FactorLinkId factorLinkIdToUse, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
 	{
 		factorLinkId = factorLinkIdToUse;
