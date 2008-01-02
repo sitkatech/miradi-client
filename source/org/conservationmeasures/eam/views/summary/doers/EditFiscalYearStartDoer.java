@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.views.summary.doers;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -69,14 +72,15 @@ public class EditFiscalYearStartDoer extends ViewDoer
 		return month;
 	}
 
-	private void updateExistingBudgetData(int monthDelta)
+	private void updateExistingBudgetData(int monthDelta) throws CommandFailedException
 	{
 		ObjectPool pool = getProject().getPool(Assignment.getObjectType());
 		ORefList assignmentRefs = pool.getRefList();
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(i));
-			assignment.getCommandsToShiftEffort(monthDelta);
+			Vector<Command> commands = assignment.getCommandsToShiftEffort(monthDelta);
+			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
 
