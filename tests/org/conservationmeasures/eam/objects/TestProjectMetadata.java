@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.InvalidDateException;
+import org.martus.util.MultiCalendar;
 
 public class TestProjectMetadata extends EAMTestCase
 {
@@ -129,7 +131,46 @@ public class TestProjectMetadata extends EAMTestCase
 	{
 		assertEquals(expectedMonth, ProjectMetadata.getSkewedMonthFromCode(fiscalYearStartCode));
 	}
+	
+	public void testGetFiscalYearQuarterName() throws Exception
+	{
+		verifyFiscalQuarterName("FY06", "2006-01-01", "2006-12-31", 1);
+		verifyFiscalQuarterName("Q1 FY06", "2006-01-01", "2006-03-31", 1);
+		verifyFiscalQuarterName("Q2 FY06", "2006-04-01", "2006-06-30", 1);
+		verifyFiscalQuarterName("Q3 FY06", "2006-07-01", "2006-09-30", 1);
+		verifyFiscalQuarterName("Q4 FY06", "2006-10-01", "2006-12-31", 1);
+		
+		verifyFiscalQuarterName("FY06", "2006-04-01", "2007-03-31", 4);
+		verifyFiscalQuarterName("Q1 FY06", "2006-04-01", "2006-06-30", 4);
+		verifyFiscalQuarterName("Q2 FY06", "2006-07-01", "2006-09-30", 4);
+		verifyFiscalQuarterName("Q3 FY06", "2006-10-01", "2006-12-31", 4);
+		verifyFiscalQuarterName("Q4 FY06", "2007-01-01", "2007-03-31", 4);
+
+		verifyFiscalQuarterName("FY06", "2005-07-01", "2006-06-30", 7);
+		verifyFiscalQuarterName("Q1 FY06", "2005-07-01", "2005-09-30", 7);
+		verifyFiscalQuarterName("Q2 FY06", "2005-10-01", "2005-12-31", 7);
+		verifyFiscalQuarterName("Q3 FY06", "2006-01-01", "2006-03-31", 7);
+		verifyFiscalQuarterName("Q4 FY06", "2006-04-01", "2006-06-30", 7);
+
+		verifyFiscalQuarterName("FY06", "2005-10-01", "2006-09-30", 10);
+		verifyFiscalQuarterName("Q1 FY06", "2005-10-01", "2005-12-31", 10);
+		verifyFiscalQuarterName("Q2 FY06", "2006-01-01", "2006-03-31", 10);
+		verifyFiscalQuarterName("Q3 FY06", "2006-04-01", "2006-06-30", 10);
+		verifyFiscalQuarterName("Q4 FY06", "2006-07-01", "2006-09-30", 10);
+
+		verifyFiscalQuarterName("2006", "2006-01-01", "2006-12-31", 10);
+	}
 
 	
+	private void verifyFiscalQuarterName(String expectedName, String beginDate, String endDate, int fiscalYearFirstMonth) throws Exception
+	{
+		MultiCalendar begin = MultiCalendar.createFromIsoDateString(beginDate);
+		MultiCalendar end = MultiCalendar.createFromIsoDateString(endDate);
+		DateRange dateRange = new DateRange(begin, end);
+		String result = ProjectMetadata.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
+		assertEquals(expectedName, result);
+	}
+
+
 	ProjectForTesting project;
 }
