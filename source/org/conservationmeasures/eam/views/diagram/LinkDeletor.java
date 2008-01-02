@@ -95,7 +95,7 @@ public class LinkDeletor
 		}
 	}
 	
-	private void deleteDiagramLink(DiagramLink diagramLink) throws Exception
+	public void deleteDiagramLink(DiagramLink diagramLink) throws Exception
 	{
 		BaseObject owner = diagramLink.getOwner();
 		DiagramObject diagramObject = (DiagramObject) owner;

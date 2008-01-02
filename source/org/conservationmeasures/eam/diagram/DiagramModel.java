@@ -301,6 +301,28 @@ public class DiagramModel extends DefaultGraphModel
 		
 		return null;
 	}
+
+	public DiagramLink getDiagramLinkFromDiagramFactors(ORef diagramFactorRef1, ORef diagramFactorRef2)
+	{
+		if (diagramFactorRef1.getObjectType() != DiagramFactor.getObjectType() || diagramFactorRef2.getObjectType() != DiagramFactor.getObjectType() )
+			throw new RuntimeException("Trying to find link for wrong type.");
+		
+		Vector links = cellInventory.getAllFactorLinks();
+		for(int i = 0; i < links.size(); ++i)
+		{
+			DiagramLink thisLink = (DiagramLink)links.get(i);
+			ORef fromDiagramFactorRef = thisLink.getFromDiagramFactorRef();
+			ORef toDiagramFactorRef = thisLink.getToDiagramFactorRef();
+			if(fromDiagramFactorRef.equals(diagramFactorRef1) && toDiagramFactorRef.equals(diagramFactorRef2))
+				return thisLink;
+			
+			if(fromDiagramFactorRef.equals(diagramFactorRef2) && toDiagramFactorRef.equals(diagramFactorRef1))
+				return thisLink;
+		}
+		
+		return null;
+	}
+
 	
 	public boolean isResultsChain()
 	{
