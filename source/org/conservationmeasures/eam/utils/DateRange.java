@@ -94,7 +94,7 @@ public class DateRange
 		return fullDateRangeString();
 	}
 	
-	private String fullDateRangeString()
+	public String fullDateRangeString()
 	{
 		return startDate.toIsoDateString() + " - " + endDate.toIsoDateString();
 	}
