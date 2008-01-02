@@ -393,9 +393,9 @@ abstract public class DiagramPaster
 			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
 			
-			int type = json.getInt("Type");
 			FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
+			int type = json.getInt("Type");
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
