@@ -153,35 +153,6 @@ public class DateRange
 		return date2.getGregorianYear() - date1.getGregorianYear();
 	}
 	
-	public DateRange cloneShiftedByMonths(int monthDelta) throws Exception
-	{
-		MultiCalendar shiftedStart = shiftDateByMonths(startDate, monthDelta);
-		MultiCalendar afterEnd = new MultiCalendar(endDate);
-		afterEnd.addDays(1);
-		MultiCalendar shiftedEnd = shiftDateByMonths(afterEnd, monthDelta);
-		shiftedEnd.addDays(-1);
-		return new DateRange(shiftedStart, shiftedEnd);
-	}
-
-	public static MultiCalendar shiftDateByMonths(MultiCalendar dateToShift, int monthDelta)
-	{
-		int year = dateToShift.getGregorianYear();
-		int month = dateToShift.getGregorianMonth();
-		int day = dateToShift.getGregorianDay();
-		month += monthDelta;
-		while(month < 1)
-		{
-			month += 12;
-			year -= 1;
-		}
-		while(month > 12)
-		{
-			month -= 12;
-			year += 1;
-		}
-		return MultiCalendar.createFromGregorianYearMonthDay(year, month, day);
-	}
-
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof DateRange))

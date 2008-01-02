@@ -159,17 +159,6 @@ public class DateRangeEffortList
 		return data.size();
 	}
 	
-	public DateRangeEffortList cloneShiftedByMonths(int monthDelta) throws Exception
-	{
-		DateRangeEffortList clone = new DateRangeEffortList();
-		for(int i = 0; i < size(); ++i)
-		{
-			DateRangeEffort effort = get(i);
-			clone.add(effort.cloneShiftedByMonths(monthDelta));
-		}
-		return clone;
-	}	
-
 	private Vector<DateRangeEffort> data;
 	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";
 }
