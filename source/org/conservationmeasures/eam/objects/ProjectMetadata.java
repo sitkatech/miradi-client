@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
@@ -15,6 +18,7 @@ import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.ObjectPool;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
@@ -197,6 +201,35 @@ public class ProjectMetadata extends BaseObject
 	public String getThreatRatingMode()
 	{
 		return threatRatingMode.get();
+	}
+
+	static int getMonthDelta(int oldMonth, int newMonth)
+	{
+		int monthDelta = newMonth - oldMonth;
+		return monthDelta;
+	}
+
+	protected static int getSkewedMonthFromCode(String fiscalYearStartCode)
+	{
+		if(fiscalYearStartCode.length() == 0)
+			fiscalYearStartCode = "1";
+		int month = Integer.parseInt(fiscalYearStartCode);
+		if(month > 6)
+			month -= 12;
+		return month;
+	}
+
+	// FIXME: This code needs to be moved into a doer, when that doer gets created
+	private void updateExistingBudgetData(int monthDelta) throws Exception
+	{
+		ObjectPool pool = getProject().getPool(Assignment.getObjectType());
+		ORefList assignmentRefs = pool.getRefList();
+		for(int i = 0; i < assignmentRefs.size(); ++i)
+		{
+			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(i));
+			Vector<Command> commands = assignment.getCommandsToShiftEffort(monthDelta);
+			getProject().executeCommandsWithoutTransaction(commands);
+		}
 	}
 
 	void clear()
