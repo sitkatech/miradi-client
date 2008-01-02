@@ -90,19 +90,6 @@ public class TestProjectMetadata extends EAMTestCase
 		assertEquals("Didn't jsonize " + tag + "?", info.getData(tag), got.getData(tag));
 	}
 	
-	public void testGetSkewedMonthFromCode() throws Exception
-	{
-		verifySkewedMonth(1, "");
-		verifySkewedMonth(4, "4");
-		verifySkewedMonth(-5, "7");
-		verifySkewedMonth(-2, "10");
-	}
-	
-	private void verifySkewedMonth(int expectedMonth, String fiscalYearStartCode)
-	{
-		assertEquals(expectedMonth, ProjectMetadata.getSkewedMonthFromCode(fiscalYearStartCode));
-	}
-	
 	public void testGetFiscalYearQuarterName() throws Exception
 	{
 		verifyFiscalQuarterName("FY06", "2006-01-01", "2006-12-31", 1);
