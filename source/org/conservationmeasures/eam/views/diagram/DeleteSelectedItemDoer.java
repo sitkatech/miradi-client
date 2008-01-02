@@ -46,14 +46,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
-		{
-			ORefList factorRefsAboutToBeDeleted = extractFactors(selectedRelatedCells);
-			for(int i = 0; i < selectedRelatedCells.length; ++i)
-			{
-				EAMGraphCell cell = selectedRelatedCells[i];
-				deleteFactor(cell);
-				deleteLink(cell, factorRefsAboutToBeDeleted);
-			}
+		{			
+			deleteSelectedLinks(selectedRelatedCells);
+			deleteSelectedFactors(selectedRelatedCells);
 		}
 		catch (Exception e)
 		{
@@ -62,6 +57,23 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		finally
 		{
 			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+
+	private void deleteSelectedFactors(EAMGraphCell[] selectedRelatedCells) throws Exception
+	{
+		for(int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			deleteFactor(selectedRelatedCells[i]);
+		}
+	}
+
+	private void deleteSelectedLinks(EAMGraphCell[] selectedRelatedCells) throws Exception
+	{
+		ORefList factorRefsAboutToBeDeleted = extractFactors(selectedRelatedCells);
+		for(int i = 0; i < selectedRelatedCells.length; ++i)
+		{
+			deleteLink(selectedRelatedCells[i], factorRefsAboutToBeDeleted);
 		}
 	}
 
