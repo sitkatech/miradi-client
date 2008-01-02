@@ -104,7 +104,7 @@ public class Assignment extends BaseObject
 		return resourceIdData.getRef();
 	}
 	
-	public Vector<Command> getCommandsToShiftEffort(int monthDelta)
+	public Vector<Command> getCommandsToShiftEffort(int monthDelta) throws Exception
 	{
 		Vector<Command> commands = new Vector<Command>();
 		DateRangeEffortList shifted = detailListData.getDateRangeEffortList().cloneShiftedByMonths(monthDelta);

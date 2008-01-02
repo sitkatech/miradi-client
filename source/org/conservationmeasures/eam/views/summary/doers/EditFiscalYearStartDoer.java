@@ -50,6 +50,10 @@ public class EditFiscalYearStartDoer extends ViewDoer
 			int newMonth = getSkewedMonthFromCode(newCode);
 			updateExistingBudgetData(getMonthDelta(oldMonth, newMonth));
 		}
+		catch(Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 		finally
 		{
 			getProject().executeCommand(new CommandEndTransaction());
@@ -72,7 +76,7 @@ public class EditFiscalYearStartDoer extends ViewDoer
 		return month;
 	}
 
-	private void updateExistingBudgetData(int monthDelta) throws CommandFailedException
+	private void updateExistingBudgetData(int monthDelta) throws Exception
 	{
 		ObjectPool pool = getProject().getPool(Assignment.getObjectType());
 		ORefList assignmentRefs = pool.getRefList();

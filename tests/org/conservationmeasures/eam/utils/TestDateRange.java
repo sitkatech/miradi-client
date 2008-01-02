@@ -76,4 +76,54 @@ public class TestDateRange extends EAMTestCase
 		
 		assertEquals("count years in betweem?", 2, DateRange.getYearsInBetween(date1, date2));
 	}
+	
+	public void testCloneShiftedByMonths() throws Exception
+	{
+		//                expected                   initial                     delta
+		verifyMonthShift("2007-07-01", "2007-09-30", "2008-01-01", "2008-03-31", -6);
+		verifyMonthShift("2007-10-01", "2007-12-31", "2008-01-01", "2008-03-31", -3);
+		verifyMonthShift("2008-04-01", "2008-06-30", "2008-01-01", "2008-03-31", 3);
+
+		verifyMonthShift("2007-07-01", "2007-09-30", "2008-04-01", "2008-06-30", -9);
+		verifyMonthShift("2007-10-01", "2007-12-31", "2008-04-01", "2008-06-30", -6);
+		verifyMonthShift("2008-01-01", "2008-03-31", "2008-04-01", "2008-06-30", -3);
+		
+		verifyMonthShift("2008-10-01", "2008-12-31", "2008-07-01", "2008-09-30", 3);
+		verifyMonthShift("2009-01-01", "2009-03-31", "2008-07-01", "2008-09-30", 6);
+		verifyMonthShift("2009-04-01", "2009-06-30", "2008-07-01", "2008-09-30", 9);
+
+		verifyMonthShift("2008-07-01", "2008-09-30", "2008-10-01", "2008-12-31", -3);
+		verifyMonthShift("2009-01-01", "2009-03-31", "2008-10-01", "2008-12-31", 3);
+		verifyMonthShift("2009-04-01", "2009-06-30", "2008-10-01", "2008-12-31", 6);
+
+		verifyMonthShift("2007-07-01", "2008-06-30", "2008-01-01", "2008-12-31", -6);
+		verifyMonthShift("2008-04-01", "2009-03-31", "2008-01-01", "2008-12-31", 3);
+	}
+
+	private void verifyMonthShift(String expectedStart, String expectedEnd, String initialStart, String initialEnd, int monthDelta) throws Exception
+	{
+		MultiCalendar initialStartCalendar = MultiCalendar.createFromIsoDateString(initialStart);
+		MultiCalendar initialEndCalendar = MultiCalendar.createFromIsoDateString(initialEnd);
+		DateRange initialRange = new DateRange(initialStartCalendar, initialEndCalendar);
+
+		MultiCalendar expectedStartCalendar = MultiCalendar.createFromIsoDateString(expectedStart);
+		MultiCalendar expectedEndCalendar = MultiCalendar.createFromIsoDateString(expectedEnd);
+		DateRange expectedRange = new DateRange(expectedStartCalendar, expectedEndCalendar);
+		
+		assertEquals(expectedRange, initialRange.cloneShiftedByMonths(monthDelta));
+	}
+	
+	public void testShiftDateByMonths() throws Exception
+	{
+		verifyMonthShift("2008-04-01", "2008-01-01", 3);
+		verifyMonthShift("2007-10-01", "2008-01-01", -3);
+		verifyMonthShift("2008-01-01", "2007-10-01", 3);
+	}
+
+	private void verifyMonthShift(String expectedDate, String initialDate, int monthDelta)
+	{
+		MultiCalendar original = MultiCalendar.createFromIsoDateString(initialDate);
+		MultiCalendar shifted = DateRange.shiftDateByMonths(original, monthDelta);
+		assertEquals(MultiCalendar.createFromIsoDateString(expectedDate), shifted);
+	}
 }
