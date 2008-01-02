@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 
 public class ObjectPool
 {
@@ -38,6 +39,11 @@ public class ObjectPool
 	public IdList getIdList()
 	{
 		return new IdList(objectType, getIds());
+	}
+	
+	public ORefList getRefList()
+	{
+		return new ORefList(objectType, getIdList());
 	}
 
 	public void put(BaseId id, Object obj)
