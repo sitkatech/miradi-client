@@ -153,7 +153,7 @@ public class DateRange
 		return date2.getGregorianYear() - date1.getGregorianYear();
 	}
 	
-	public DateRange cloneShifted(int monthDelta)
+	public DateRange cloneShiftedByMonths(int monthDelta)
 	{
 		return null;
 	}
