@@ -59,8 +59,8 @@ public class LinkDeletor
 	
 	public void deleteFactorLinkAndDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
-		deleteDiagramLink(diagramLink);
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		deleteDiagramLink(diagramLink);
 		if (!isToOrFromFactorBeingDeleted(factorsAboutToBeDeleted, factorLink))
 			deleteAllReferrerDiagramLinks(factorLink);
 
