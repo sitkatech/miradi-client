@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
-import org.conservationmeasures.eam.actions.jump.ActionEditFiscalYear;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
@@ -23,7 +22,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.summary.doers.EditFiscalYearStartDoer;
 import org.conservationmeasures.eam.views.summary.doers.TeamCreateMemberDoer;
 import org.conservationmeasures.eam.views.summary.doers.TeamRemoveMember;
 import org.conservationmeasures.eam.views.summary.doers.ViewPossibleTeamMembers;
@@ -109,7 +107,6 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, new ModifyResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
-		addDoerToMap(ActionEditFiscalYear.class, new EditFiscalYearStartDoer());
 	}
 	
 	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;

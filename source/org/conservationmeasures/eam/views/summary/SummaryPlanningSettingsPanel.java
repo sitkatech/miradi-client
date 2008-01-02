@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.summary;
 
-import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.actions.jump.ActionEditFiscalYear;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -27,8 +25,7 @@ public class SummaryPlanningSettingsPanel extends ObjectDataInputPanel
 		ObjectDataInputField[] fields = new ObjectDataInputField[] {currency, symbol, };
 		addFieldsOnOneLine(EAM.text("Label|Currency"), fields);
 		
-		EAMAction editAction = mainWindowToUse.getActions().get(ActionEditFiscalYear.class);
-		addFieldWithEditButton(EAM.text("Label|Fiscal Year"), createReadOnlyChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)), editAction);
+		addField(createChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
 		
 		updateFieldsFromProject();
 	}
