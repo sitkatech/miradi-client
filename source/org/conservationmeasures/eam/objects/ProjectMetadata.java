@@ -227,13 +227,6 @@ public class ProjectMetadata extends BaseObject
 		throw new RuntimeException("Unknown fiscal year month start: " + fiscalYearFirstMonth);
 	}
 
-	public static int getSkewedMonth(int fiscalYearFirstMonth)
-	{
-		if(fiscalYearFirstMonth > 6)
-			fiscalYearFirstMonth -= 12;
-		return fiscalYearFirstMonth;
-	}
-
 	public static String getFiscalYearQuarterName(DateRange dateRange, int fiscalYearFirstMonth)
 	{
 		String fullRange = dateRange.toString();
