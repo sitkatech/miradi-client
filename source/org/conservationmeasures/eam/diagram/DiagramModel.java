@@ -301,25 +301,24 @@ public class DiagramModel extends DefaultGraphModel
 		return null;
 	}
 
-	public DiagramLink getDiagramLinkFromDiagramFactors(ORef diagramFactorRef1, ORef diagramFactorRef2)
+	public ORefList getDiagramLinkFromDiagramFactors(ORef diagramFactorRef1, ORef diagramFactorRef2)
 	{
-		if (diagramFactorRef1.getObjectType() != DiagramFactor.getObjectType() || diagramFactorRef2.getObjectType() != DiagramFactor.getObjectType() )
+		if (!DiagramFactor.is(diagramFactorRef1) || !DiagramFactor.is(diagramFactorRef2))
 			throw new RuntimeException("Trying to find link for wrong type.");
 		
-		Vector links = cellInventory.getAllFactorLinks();
-		for(int i = 0; i < links.size(); ++i)
-		{
-			DiagramLink thisLink = (DiagramLink)links.get(i);
-			ORef fromDiagramFactorRef = thisLink.getFromDiagramFactorRef();
-			ORef toDiagramFactorRef = thisLink.getToDiagramFactorRef();
-			if(fromDiagramFactorRef.equals(diagramFactorRef1) && toDiagramFactorRef.equals(diagramFactorRef2))
-				return thisLink;
-			
-			if(fromDiagramFactorRef.equals(diagramFactorRef2) && toDiagramFactorRef.equals(diagramFactorRef1))
-				return thisLink;
-		}
+		DiagramFactor diagramFactor1 = DiagramFactor.find(getProject(), diagramFactorRef1);
+		DiagramFactor diagramFactor2 = DiagramFactor.find(getProject(), diagramFactorRef2);
+		ORefList diagramFactor1LinkReferrers = diagramFactor1.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramFactor2LinkReferrers = diagramFactor2.findObjectsThatReferToUs(DiagramLink.getObjectType());
+
+		ORefList sharedLinks = diagramFactor1LinkReferrers.getOverlappingRefs(diagramFactor2LinkReferrers);
+		if(sharedLinks.size() == 0)
+			return new ORefList();
 		
-		return null;
+		if(sharedLinks.size() > 1)
+			EAM.logWarning("Found two factors linked more than twice");
+		
+		return sharedLinks;
 	}
 
 	

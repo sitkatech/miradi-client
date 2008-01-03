@@ -371,11 +371,12 @@ public class LinkCreator
 	private void deleteRelatedGroupBoxLinks(DiagramModel model, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
 	{
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
-		for (int i = 0; i < groupBoxChildren.size(); ++i)
+		for (int childRef = 0; childRef < groupBoxChildren.size(); ++childRef)
 		{
-			DiagramLink diagramLink = model.getDiagramLinkFromDiagramFactors(groupBoxDiagramFactor.getRef(), groupBoxChildren.get(i));
-			if (diagramLink != null)
+			ORefList diagramLinkRefs = model.getDiagramLinkFromDiagramFactors(groupBoxDiagramFactor.getRef(), groupBoxChildren.get(childRef));
+			for (int refIndex = 0; refIndex < diagramLinkRefs.size(); ++refIndex)
 			{
+				DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(refIndex));
 				linkDeletor.deleteDiagramLink(diagramLink);
 			}
 		}

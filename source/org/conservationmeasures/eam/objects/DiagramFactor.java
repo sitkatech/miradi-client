@@ -288,6 +288,16 @@ public class DiagramFactor extends BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static DiagramFactor find(ObjectManager objectManager, ORef diagramFactorRef)
 	{
 		return (DiagramFactor) objectManager.findObject(diagramFactorRef);
