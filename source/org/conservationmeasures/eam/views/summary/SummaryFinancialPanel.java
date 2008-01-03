@@ -28,6 +28,7 @@ public class SummaryFinancialPanel extends ObjectDataInputPanel
 		addField(createNumericField(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING));
 		addField(createNumericField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
 		addField(createStringField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES));
+		addField(createMultilineField(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
 		
 		updateFieldsFromProject();
 	}
