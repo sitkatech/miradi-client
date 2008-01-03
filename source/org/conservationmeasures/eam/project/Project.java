@@ -1067,6 +1067,21 @@ public class Project
 		return getFactorLinkPool().areLinked(factor1, factor2);
 	}
 	
+	public int forceNonZeroEvenSnap(int value)
+	{
+		//TODO this null check is here for test code
+		if (getObjectManager() == null)
+			return value;
+		
+		int gridSize = getGridSize();
+		int newValue = (value + gridSize) - (value + gridSize) % (gridSize * 2);
+		
+		if (newValue != 0)
+			return newValue;
+		
+		return gridSize * 2;
+	}
+		
 	public int getGridSize()
 	{
 		return DEFAULT_GRID_SIZE;
