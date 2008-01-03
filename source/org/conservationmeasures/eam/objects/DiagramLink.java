@@ -150,6 +150,11 @@ public class DiagramLink extends BaseObject
 		return DiagramFactor.find(objectManager, getDiagramFactorRef(direction));
 	}
 	
+	public DiagramFactor getOppositeDiagramFactor(int direction)
+	{
+		return DiagramFactor.find(objectManager, getOppositeDiagramFactorRef(direction));
+	}
+	
 	public ORef getFromDiagramFactorRef()
 	{
 		return new ORef(DiagramFactor.getObjectType(), getFromDiagramFactorId());

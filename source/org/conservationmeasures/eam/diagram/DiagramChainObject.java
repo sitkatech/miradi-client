@@ -189,22 +189,21 @@ public class DiagramChainObject
 	{
 		HashSet<Factor> newFactorIfAny = new HashSet<Factor>();
 		
-		FactorLink thisLink = diagramLink.getUnderlyingLink();
-		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
+		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
-			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
+			Factor linkedNode = diagramLink.getOppositeDiagramFactor(direction).getWrappedFactor();
 			newFactorIfAny.add(linkedNode);
 			return newFactorIfAny;
 		}
 		
-		if (!thisLink.isBidirectional())
+		if (!diagramLink.isBidirectional())
 			return newFactorIfAny;
 		
-		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
+		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
-			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
+			Factor linkedNode = diagramLink.getDiagramFactor(direction).getWrappedFactor();
 			newFactorIfAny.add(linkedNode);
 		}
 		
