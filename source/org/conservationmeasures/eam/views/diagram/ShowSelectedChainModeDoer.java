@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.diagram.doers.SelectChainDoer;
 
 public class ShowSelectedChainModeDoer extends ViewDoer
 {
