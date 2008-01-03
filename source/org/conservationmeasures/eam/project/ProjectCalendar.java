@@ -34,7 +34,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		yearlyDateRanges = null;
 	}
 
-	public DateRange[] getQuarterlyDateDanges() throws Exception
+	public DateRange[] getQuarterlyDateRanges() throws Exception
 	{
 		return getDateRanges();
 	}
