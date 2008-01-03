@@ -761,15 +761,15 @@ public class DiagramModel extends DefaultGraphModel
 		
 		LinkCell linkCell = (LinkCell) cell;
 		ORefList groupLinkChildRefs = linkCell.getDiagramLink().getGroupedDiagramLinkRefs();
-		HashSet<EAMGraphCell> groupChildLinkCells = new HashSet();
+		HashSet<EAMGraphCell> groupLinkChildCells = new HashSet();
 		for (int childIndex = 0; childIndex < groupLinkChildRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupLinkChildRefs.get(childIndex);
 			DiagramLink diagramLink  = DiagramLink.find(getProject(), childRef);
 			LinkCell childLinkCell = findLinkCell(diagramLink);		
-			groupChildLinkCells.add(childLinkCell);
+			groupLinkChildCells.add(childLinkCell);
 		}
-		return groupChildLinkCells;
+		return groupLinkChildCells;
 	}
 	
 	public Vector getAllDiagramFactorLinks()
