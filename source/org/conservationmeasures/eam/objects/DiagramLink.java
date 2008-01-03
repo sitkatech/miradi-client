@@ -89,6 +89,13 @@ public class DiagramLink extends BaseObject
 		return ObjectType.DIAGRAM_LINK;
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getGroupedDiagramLinkRefs());
+		
+		return deepObjectRefsToCopy;
+	}
 	
 	public static boolean canOwnThisType(int type)
 	{
@@ -158,6 +165,22 @@ public class DiagramLink extends BaseObject
 	public FactorLinkId getWrappedId()
 	{
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
+	}
+	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return getObjectType();
+		
+		return super.getAnnotationType(tag);
+	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return true;
+		
+		return super.isRefList(tag);
 	}
 	
 	public boolean alsoLinksOurFromOrTo(DiagramLink otherDiagramLink)
