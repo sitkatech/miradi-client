@@ -27,6 +27,8 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_SHORT_PROJECT_VISION));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_VISION));
 		addField(createMultilineField(ProjectMetadata.TAG_SCOPE_COMMENTS));
+		
+		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
