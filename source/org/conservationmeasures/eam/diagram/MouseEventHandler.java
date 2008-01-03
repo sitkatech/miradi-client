@@ -124,7 +124,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		moveHasHappened(deltaX, deltaY);
+		moveHasHappened();
 	}
 
 	public void mouseEntered(MouseEvent arg0)
@@ -149,7 +149,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		toolTipManager.setDismissDelay(savedToolTipDismissDelay);
 	}
 
-	private void moveHasHappened(int deltaX, int deltaY)
+	private void moveHasHappened()
 	{
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
@@ -165,7 +165,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			moveSelectedBendPoints();
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
-			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray, deltaX, deltaY);
+			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
 		}
 		catch (Exception e)
 		{
