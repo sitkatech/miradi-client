@@ -24,10 +24,8 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	
 	public boolean isCellEditable(int row, int column)
 	{
-		if ((column + 1) % 5 == 0)
-			return false;
-		
-		return true;
+		DateRange dateRange = getDateRangeForColumn(column);
+		return (getProject().getProjectCalendar().isDateRangeEditable(dateRange));
 	}
 	
 	public Object getValueAt(int row, int column)
