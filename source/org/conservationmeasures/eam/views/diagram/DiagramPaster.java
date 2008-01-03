@@ -90,10 +90,10 @@ abstract public class DiagramPaster
 	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
 		Vector commands = new Vector();
-		String[] fields = newObject.getFieldTags();
-		for (int i = 0; i < fields.length; ++i)
+		String[] fieldTags = newObject.getFieldTags();
+		for (int i = 0; i < fieldTags.length; ++i)
 		{
-			String tag = fields[i];
+			String tag = fieldTags[i];
 			commands.addAll(Arrays.asList(getCommandsToFixUpIdListRefs(pastedObjectMap, newObject, tag)));
 			commands.addAll(Arrays.asList(getCommandsToFixUpORefList(pastedObjectMap, newObject, tag)));
 			commands.addAll(Arrays.asList(getCommandToFixUpIdRefs(pastedObjectMap,newObject, tag)));
@@ -145,7 +145,7 @@ abstract public class DiagramPaster
 			if (DiagramFactor.TAG_WRAPPED_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
-		
+					
 		return new Command[0];
 	}
 
@@ -380,15 +380,17 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			
+			BaseId diagramLinkId = json.getId(DiagramLink.TAG_ID);
+			ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+			if (oldToNewPastedObjectMap.containsKey(diagramLinkRef))
+				continue;
+	
 			PointList originalBendPoints = new PointList(json.getString(DiagramLink.TAG_BEND_POINTS));
 			String movedBendPointsAsString = movePoints(originalBendPoints, offsetToAvoidOverlaying);
 			json.put(DiagramLink.TAG_BEND_POINTS, movedBendPointsAsString);
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
 			ORef newFactorLinkRef = getFactorLinkRef(oldWrappedFactorLinkRef);
-			if (newFactorLinkRef == null)
-				continue;
 			
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
@@ -404,6 +406,8 @@ abstract public class DiagramPaster
 			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	
 			ORef newDiagramLinkRef = newDiagramLink.getRef();
+			getOldToNewObjectRefMap().put(diagramLinkRef, newDiagramLinkRef);
+			fixupRefs(getOldToNewObjectRefMap(), newDiagramLink);
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
 			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
@@ -411,10 +415,8 @@ abstract public class DiagramPaster
 
 	private CreateDiagramFactorLinkParameter createFactorLinkExtraInfo(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId, ORef newFactorLinkRef)
 	{
-		//FIXME this is a case for GB link since they dont have underlying factorlinks
-		//uncommnet and fix
-		//if (newFactorLinkRef == null)
-		//	return new CreateDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId);
+		if (newFactorLinkRef == null)
+			return new CreateDiagramFactorLinkParameter(fromDiagramFactorId, toDiagramFactorId);
 		
 		FactorLinkId newFactorLinkId = new FactorLinkId(newFactorLinkRef.getObjectId().asInt());
 		return new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
