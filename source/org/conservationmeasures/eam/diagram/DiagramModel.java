@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -678,9 +677,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public HashSet<EAMGraphCell> getAllSelectedCellsWithRelatedLinkages(Object[] rawSelectedCells) throws Exception 
 	{
-		EAMGraphCell[] selectedCells = castRawObjectsToEAMGraphCells(rawSelectedCells);
+		Vector<EAMGraphCell> selectedCells = castRawObjectsToEAMGraphCells(rawSelectedCells);
 		Vector<EAMGraphCell> selectedCellsWithGroupBoxChildren = new Vector<EAMGraphCell>();
-		selectedCellsWithGroupBoxChildren.addAll(Arrays.asList(selectedCells));		
+		selectedCellsWithGroupBoxChildren.addAll(selectedCells);		
 		selectedCellsWithGroupBoxChildren.addAll(getGroupBoxChildrenFactorAndLinkCells(selectedCells));
 		
 		HashSet<EAMGraphCell> selectedCellsWithLinkages = new HashSet<EAMGraphCell>();
@@ -701,22 +700,23 @@ public class DiagramModel extends DefaultGraphModel
 		return selectedCellsWithLinkages;
 	}
 
-	private EAMGraphCell[] castRawObjectsToEAMGraphCells(Object[] rawSelectedCells)
+	private Vector<EAMGraphCell> castRawObjectsToEAMGraphCells(Object[] rawSelectedCells)
 	{
-		EAMGraphCell[] castedToEAMGraphCellObjectsArray = new EAMGraphCell[rawSelectedCells.length];
+		Vector<EAMGraphCell> castedToEAMGraphCellObjects = new Vector<EAMGraphCell>();
 		for (int i = 0; i < rawSelectedCells.length; ++i)
 		{
-			castedToEAMGraphCellObjectsArray[i] = (EAMGraphCell) rawSelectedCells[i];
+			castedToEAMGraphCellObjects.add((EAMGraphCell) rawSelectedCells[i]);
 		}
-		return castedToEAMGraphCellObjectsArray;
+		
+		return castedToEAMGraphCellObjects;
 	}
 
-	private HashSet<EAMGraphCell> getGroupBoxChildrenFactorAndLinkCells(Object[] selectedCells) throws Exception
+	private HashSet<EAMGraphCell> getGroupBoxChildrenFactorAndLinkCells(Vector<EAMGraphCell> selectedCells) throws Exception
 	{
 		HashSet<EAMGraphCell> groupBoxChildrenFactorAndLinkCells = new HashSet<EAMGraphCell>();
-		for(int i = 0; i < selectedCells.length; ++i)
+		for(int i = 0; i < selectedCells.size(); ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			EAMGraphCell cell = selectedCells.get(i);
 			groupBoxChildrenFactorAndLinkCells.addAll(getGroupBoxFactorChildren(cell));
 			groupBoxChildrenFactorAndLinkCells.addAll(getGroupBoxLinkChildren(cell));
 		}
