@@ -43,15 +43,15 @@ public class FactorMoveHandler
 			Vector commandsToExecute = new Vector();
 			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
-				FactorCell node = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
-				if(node.hasMoved())
+				FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
+				if(factorCell.hasMoved())
 				{
-					commandsToExecute.add(buildMoveCommand(node));
-					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, node));
+					commandsToExecute.add(buildMoveCommand(factorCell));
+					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, factorCell));
 				}
 
-				if(node.sizeHasChanged())
-					commandsToExecute.add(buildResizeCommand(node));
+				if(factorCell.sizeHasChanged())
+					commandsToExecute.add(buildResizeCommand(factorCell));
 			}
 
 			if(commandsToExecute.size() > 0)
@@ -88,15 +88,15 @@ public class FactorMoveHandler
 
 	}
 
-	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell node)
+	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
 	{
-		int deltaX = node.getLocation().x - node.getDiagramFactor().getLocation().x;
-		int deltaY = node.getLocation().y - node.getDiagramFactor().getLocation().y;
+		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
+		int deltaY = factorCell.getLocation().y - factorCell.getDiagramFactor().getLocation().y;
 		Vector<Command> commandsToMove = new Vector();
-		if (node.getWrappedType() != GroupBox.getObjectType())
+		if (factorCell.getWrappedType() != GroupBox.getObjectType())
 			return new Vector();
 		
-		ORefList groupChildRefs = node.getDiagramFactor().getGroupBoxChildrenRefs();
+		ORefList groupChildRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int i = 0; i < groupChildRefs.size(); ++i)
 		{
 			ORef groupChildRef = groupChildRefs.get(i);
