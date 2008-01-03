@@ -24,7 +24,7 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 	{
 		super(projectToUse);
 		
-		dateRanges = getProjectCalendar().getQuarterlyDateDanges();
+		dateRanges = getProjectCalendar().getQuarterlyDateRanges();
 		decimalFormatter = getProject().getDecimalFormatter();
 	}
 

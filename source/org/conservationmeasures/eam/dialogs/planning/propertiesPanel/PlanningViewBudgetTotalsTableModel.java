@@ -20,7 +20,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 		super(projectToUse);
 		
 		totalsCalculator = new BudgetCalculator(getProject());
-		dateRanges = getProject().getProjectCalendar().getQuarterlyDateDanges();
+		dateRanges = getProject().getProjectCalendar().getQuarterlyDateRanges();
 		currencyFormatter = getProject().getCurrencyFormatter();
 	}
 	
