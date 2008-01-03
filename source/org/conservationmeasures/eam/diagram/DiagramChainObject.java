@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.util.HashSet;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -124,10 +123,10 @@ public class DiagramChainObject
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	protected Vector<Factor> getAllLinkedFactors(int direction)
+	protected HashSet<Factor> getAllLinkedFactors(int direction)
 	{
-		Vector<Factor> linkedFactors = new Vector();
-		Vector<Factor> unprocessedFactors = new Vector();
+		HashSet<Factor> linkedFactors = new HashSet();
+		HashSet<Factor> unprocessedFactors = new HashSet();
 		linkedFactors.add(getStartingFactor());
 
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
@@ -159,9 +158,9 @@ public class DiagramChainObject
 		return linkedFactors;
 	}
 
-	protected Vector<Factor> getDirectlyLinkedFactors(int direction)
+	protected HashSet<Factor> getDirectlyLinkedFactors(int direction)
 	{
-		Vector<Factor> results = new Vector();
+		HashSet<Factor> results = new HashSet();
 		results.add(getStartingFactor());
 		
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
@@ -186,7 +185,7 @@ public class DiagramChainObject
 		return getStartingFactor().getProject();
 	}
 	
-	private void processLink(Vector<Factor> unprocessedFactors, Factor thisFactor, DiagramLink diagramLink, int direction)
+	private void processLink(HashSet<Factor> unprocessedFactors, Factor thisFactor, DiagramLink diagramLink, int direction)
 	{
 		FactorLink thisLink = diagramLink.getUnderlyingLink();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
@@ -228,22 +227,22 @@ public class DiagramChainObject
 		return links.toArray(new FactorLink[0]);
 	}
 	
-	private Vector<Factor> getDirectlyLinkedDownstreamFactors()
+	private HashSet<Factor> getDirectlyLinkedDownstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.FROM);
 	}
 	
-	private Vector<Factor> getDirectlyLinkedUpstreamFactors()
+	private HashSet<Factor> getDirectlyLinkedUpstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.TO);
 	}
 	
-	private Vector<Factor> getAllUpstreamFactors()
+	private HashSet<Factor> getAllUpstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.TO);
 	}
 	
-	private Vector<Factor> getAllDownstreamFactors()
+	private HashSet<Factor> getAllDownstreamFactors()
 	{
 		return getAllLinkedFactors(FactorLink.FROM);
 	}
