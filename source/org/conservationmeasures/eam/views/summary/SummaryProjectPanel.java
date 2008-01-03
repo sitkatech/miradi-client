@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
@@ -15,6 +16,12 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 	public SummaryProjectPanel(Project projectToUse, ORef refToUse)
 	{
 		super(projectToUse, refToUse);
+		
+		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
+		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
+		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
+		
+		//FIXME still need to add URL and Description field
 	}
 
 	public String getPanelDescription()
