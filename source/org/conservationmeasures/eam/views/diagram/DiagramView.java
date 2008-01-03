@@ -139,6 +139,7 @@ import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
+import org.conservationmeasures.eam.views.diagram.doers.SelectChainDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
