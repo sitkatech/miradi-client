@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
@@ -212,6 +213,16 @@ public class ProjectMetadata extends BaseObject
 		return month;
 	}
 
+	public boolean isBudgetTimePeriodQuarterly()
+	{
+		return getData(TAG_BUDGET_TIME_PERIOD).equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
+	}
+
+	public boolean isBudgetTimePeriodYearly()
+	{
+		return getData(TAG_BUDGET_TIME_PERIOD).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+	}
+
 	void clear()
 	{
 		super.clear();
@@ -233,6 +244,7 @@ public class ProjectMetadata extends BaseObject
 		currencyType = new ChoiceData();
 		currencySymbol = new StringData();
 		fiscalYearStart = new ChoiceData();
+		budgetTimePeriod = new ChoiceData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -252,6 +264,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_CURRENCY_TYPE, currencyType);
 		addField(TAG_CURRENCY_SYMBOL, currencySymbol);
 		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
+		addField(TAG_BUDGET_TIME_PERIOD, budgetTimePeriod);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -303,6 +316,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_TYPE = "CurrencyType";
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
+	public static final String TAG_BUDGET_TIME_PERIOD = "BudgetTimePeriod";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -347,6 +361,7 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData currencyType;
 	private StringData currencySymbol;
 	private ChoiceData fiscalYearStart;
+	private ChoiceData budgetTimePeriod;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
