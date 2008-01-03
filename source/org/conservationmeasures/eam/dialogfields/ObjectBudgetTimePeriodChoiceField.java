@@ -23,11 +23,27 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 	{
 		return new BudgetTimePeriodComboChangeHandler();
 	}
+	
+	public void setText(String code)
+	{
+		disableHandler = true;
+		try
+		{
+			super.setText(code);
+		}
+		finally
+		{
+			disableHandler = false;
+		}
+	}
 
 	class BudgetTimePeriodComboChangeHandler extends ComboChangeHandler
 	{
 		public void actionPerformed(ActionEvent event)
 		{
+			if(disableHandler)
+				return;
+			
 			String oldValue = getOldValue();
 			if(oldValue.equals(getText()))
 				return;
@@ -56,4 +72,5 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 		}
 	}
 	
+	private boolean disableHandler;
 }
