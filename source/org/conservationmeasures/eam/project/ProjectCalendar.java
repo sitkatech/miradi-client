@@ -130,8 +130,11 @@ public class ProjectCalendar implements CommandExecutedListener
 			startingDate = nextQuarter(startingDate);
 		}
 		
-		dateRanges.addAll(quarterlyRanges);
-		editableDateRanges.addAll(quarterlyRanges);
+		if(getProject().getMetadata().isBudgetTimePeriodQuarterly())
+		{
+			dateRanges.addAll(quarterlyRanges);
+			editableDateRanges.addAll(quarterlyRanges);
+		}
 		
 		DateRange firstQuarter = quarterlyRanges.get(0);
 		DateRange lastQuarter = quarterlyRanges.get(3);
@@ -139,6 +142,11 @@ public class ProjectCalendar implements CommandExecutedListener
 
 		dateRanges.add(yearRange);
 		yearlyDateRanges.add(yearRange);
+		
+		if(getProject().getMetadata().isBudgetTimePeriodYearly())
+		{
+			editableDateRanges.add(yearRange);
+		}
 	}
 	
 	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
