@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectCalendar;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 
@@ -25,7 +26,8 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 	public boolean isCellEditable(int row, int column)
 	{
 		DateRange dateRange = getDateRangeForColumn(column);
-		return (getProject().getProjectCalendar().isDateRangeEditable(dateRange));
+		ProjectCalendar projectCalendar = getProject().getProjectCalendar();
+		return projectCalendar.isDateRangeEditable(dateRange);
 	}
 	
 	public Object getValueAt(int row, int column)
