@@ -111,6 +111,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			
 			DiagramComponent diagram = (DiagramComponent)graph;
 			isAliased = shouldMarkAsShared(model);
+			isOwnedByGroup = node.getDiagramFactor().isCoveredByGroupBox();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
@@ -238,6 +239,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(stragetyInResultsChain)
 			drawChainIcon(rect, g2);
+		
+		if(isOwnedByGroup && !selected)
+		{
+			g2.setStroke(getOwnedByGroupStroke());
+			drawBorder(g2, rect, Color.BLACK);
+		}
+	}
+	
+	public Stroke getOwnedByGroupStroke()
+	{
+		float[] dash = { 5f, 5f };
+		return new BasicStroke(borderThickness + 1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
 	}
 	
 	public static Dimension getSizeWithoutAnnotations(Dimension size)
@@ -330,4 +343,5 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private String goalsText;
 	boolean stragetyInResultsChain;
 	boolean isAliased;
+	boolean isOwnedByGroup;
 }

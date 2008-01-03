@@ -288,6 +288,12 @@ public class DiagramFactor extends BaseObject
 		return (Command[]) commands.toArray(new Command[0]);
 	}
 	
+	public boolean isCoveredByGroupBox()
+	{
+		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		return (groupBoxFactors.size() > 0);
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
