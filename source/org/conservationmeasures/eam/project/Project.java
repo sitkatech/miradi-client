@@ -73,6 +73,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
+import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
@@ -567,6 +568,8 @@ public class Project
 		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_CURRENCY_SYMBOL, "$");
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_BUDGET_TIME_PERIOD, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+
 		getDatabase().writeProjectInfo(projectInfo);
 	}
 	
