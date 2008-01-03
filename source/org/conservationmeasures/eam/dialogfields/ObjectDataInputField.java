@@ -145,7 +145,7 @@ abstract public class ObjectDataInputField implements FocusListener
 			return;
 		
 		String newValue = getText();
-		String existingValue = project.getObjectData(objectType, objectId, tag);
+		String existingValue = getOldValue();
 		if(existingValue.equals(newValue))
 			return;
 
@@ -162,6 +162,12 @@ abstract public class ObjectDataInputField implements FocusListener
 			setText(existingValue);
 			getComponent().requestFocus();
 		}
+	}
+
+	String getOldValue()
+	{
+		String existingValue = project.getObjectData(objectType, objectId, tag);
+		return existingValue;
 	}
 	
 	void setDefaultFieldBorder()

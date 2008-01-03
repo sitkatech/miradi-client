@@ -25,7 +25,12 @@ public class ObjectChoiceField extends ObjectDataInputField
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		combo = new PanelComboBox(questionToUse.getChoices());
 		addFocusListener();
-		combo.addActionListener(new ComboChangeHandler());
+		combo.addActionListener(createActionHandler());
+	}
+
+	ComboChangeHandler createActionHandler()
+	{
+		return new ComboChangeHandler();
 	}
 	
 	public JComponent getComponent()
