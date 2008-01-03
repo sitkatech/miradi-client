@@ -20,8 +20,10 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
+		addBlankHorizontalLine();
 		
-		//FIXME still need to add URL and Description field
+		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
+		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
 	}
 
 	public String getPanelDescription()

@@ -55,6 +55,12 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(field2);
 	}
 	
+	public void addBlankHorizontalLine()
+	{
+		addLabel(new UiLabel(" "));
+		addFieldComponent(new UiLabel(" "));
+	}
+	
 	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
 		super.addField(field);
