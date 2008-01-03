@@ -198,7 +198,7 @@ public class DiagramLink extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
-			return getObjectType();
+			return DiagramLink.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
