@@ -135,7 +135,7 @@ public class DiagramChainObject
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 			if(link.isGroupBoxLink())
 				continue;
-			processLink(unprocessedFactors, getStartingFactor(), link, direction);
+			unprocessedFactors.addAll(processLink(getStartingFactor(), link, direction));
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -149,7 +149,7 @@ public class DiagramChainObject
 					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 					if(link.isGroupBoxLink())
 						continue;
-					processLink(unprocessedFactors, thisFactor, link, direction);
+					unprocessedFactors.addAll(processLink(thisFactor, link, direction));
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -167,7 +167,7 @@ public class DiagramChainObject
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-			processLink(results, getStartingFactor(), link, direction);
+			results.addAll(processLink(getStartingFactor(), link, direction));
 		}
 		return results;
 	}
@@ -185,26 +185,30 @@ public class DiagramChainObject
 		return getStartingFactor().getProject();
 	}
 	
-	private void processLink(HashSet<Factor> unprocessedFactors, Factor thisFactor, DiagramLink diagramLink, int direction)
+	private HashSet<Factor> processLink(Factor thisFactor, DiagramLink diagramLink, int direction)
 	{
+		HashSet<Factor> newFactorIfAny = new HashSet<Factor>();
+		
 		FactorLink thisLink = diagramLink.getUnderlyingLink();
 		if(thisLink.getFactorRef(direction).equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
-			unprocessedFactors.add(linkedNode);
-			return;
+			newFactorIfAny.add(linkedNode);
+			return newFactorIfAny;
 		}
 		
 		if (!thisLink.isBidirectional())
-			return;
+			return newFactorIfAny;
 		
 		if(thisLink.getOppositeFactorRef(direction).equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
-			unprocessedFactors.add(linkedNode);
+			newFactorIfAny.add(linkedNode);
 		}
+		
+		return newFactorIfAny;
 	}
 	
 	private FactorSet getFactors()
