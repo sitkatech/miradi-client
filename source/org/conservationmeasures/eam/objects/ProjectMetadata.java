@@ -256,6 +256,8 @@ public class ProjectMetadata extends BaseObject
 		legislativeDistricts = new StringData();
 		locationDetail = new StringData();
 		locationComments = new StringData();
+		keyFundingSources = new StringData();
+		financialComments = new StringData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -287,6 +289,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_LEGISLATIVE_DISTRICTS, legislativeDistricts);
 		addField(TAG_LOCATION_DETAIL, locationDetail);
 		addField(TAG_LOCATION_COMMENTS, locationComments);
+		addField(TAG_KEY_FUNDING_SOURCES, keyFundingSources);
+		addField(TAG_FINANCIAL_COMMENTS, financialComments);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -350,6 +354,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_LEGISLATIVE_DISTRICTS = "LegislativeDistricts";
 	public static final String TAG_LOCATION_DETAIL = "LocationDetail";
 	public static final String TAG_LOCATION_COMMENTS = "LocationComments";
+	public static final String TAG_KEY_FUNDING_SOURCES = "KeyFundingSources";
+	public static final String TAG_FINANCIAL_COMMENTS = "FinancialComments";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -406,6 +412,8 @@ public class ProjectMetadata extends BaseObject
 	private StringData legislativeDistricts;
 	private StringData locationDetail;
 	private StringData locationComments;
+	private StringData keyFundingSources;
+	private StringData financialComments;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
