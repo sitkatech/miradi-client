@@ -226,6 +226,12 @@ public class EAM
 		JOptionPane.showMessageDialog(getMainWindow(), text, EAM.text("Wintitle|Information"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	public static int confirmDialog(String title, String text, String[] buttonLabels)
+	{
+		return JOptionPane.showOptionDialog(getMainWindow(), text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttonLabels, null);
+	}
+
+	
 	public static void okDialog(String title, String[] body)
 	{
 		new UiNotifyDlg(getMainWindow(), title, body, new String[] {text("Button|OK")});
