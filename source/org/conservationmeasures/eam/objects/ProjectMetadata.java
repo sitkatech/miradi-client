@@ -247,6 +247,9 @@ public class ProjectMetadata extends BaseObject
 		budgetTimePeriod = new ChoiceData();
 		projectDescription = new StringData();
 		projectURL = new StringData();
+		projectArea = new StringData();
+		projectAreaNotes = new StringData();
+		scopeComments = new StringData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -269,6 +272,9 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_BUDGET_TIME_PERIOD, budgetTimePeriod);
 		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
 		addField(TAG_PROJECT_URL, projectURL);
+		addField(TAG_PROJECT_AREA, projectArea);
+		addField(TAG_PROJECT_AREA_NOTES, projectAreaNotes);
+		addField(TAG_SCOPE_COMMENTS, scopeComments);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -323,6 +329,9 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_BUDGET_TIME_PERIOD = "BudgetTimePeriod";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
 	public static final String TAG_PROJECT_URL = "ProjectURL";
+	public static final String TAG_PROJECT_AREA = "ProjectArea";
+	public static final String TAG_PROJECT_AREA_NOTES = "ProjectAreaNote";
+	public static final String TAG_SCOPE_COMMENTS = "ScopeComments";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -370,6 +379,9 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData budgetTimePeriod;
 	private StringData projectDescription;
 	private StringData projectURL;
+	private StringData projectArea;
+	private StringData projectAreaNotes;
+	private StringData scopeComments;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
