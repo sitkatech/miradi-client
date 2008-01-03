@@ -258,7 +258,11 @@ public class ProjectMetadata extends BaseObject
 		locationComments = new StringData();
 		keyFundingSources = new StringData();
 		financialComments = new StringData();
-		
+		workPlanStartDate = new DateData();
+		workPlanEndDate = new DateData();
+		workPlanTimeUnit = new ChoiceData();
+		planningComments = new StringData();
+
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
@@ -291,6 +295,10 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_LOCATION_COMMENTS, locationComments);
 		addField(TAG_KEY_FUNDING_SOURCES, keyFundingSources);
 		addField(TAG_FINANCIAL_COMMENTS, financialComments);
+		addField(TAG_WORKPLAN_START_DATE, workPlanStartDate);
+		addField(TAG_WORKPLAN_END_DATE, workPlanEndDate);
+		addField(TAG_WORKPLAN_TIME_UNIT, workPlanTimeUnit);
+		addField(TAG_PLANNING_COMMENTS, planningComments);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -356,6 +364,10 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_LOCATION_COMMENTS = "LocationComments";
 	public static final String TAG_KEY_FUNDING_SOURCES = "KeyFundingSources";
 	public static final String TAG_FINANCIAL_COMMENTS = "FinancialComments";
+	public static final String TAG_WORKPLAN_START_DATE = "WorkPlanStartDate";
+	public static final String TAG_WORKPLAN_END_DATE = "WorkPlanEndDate";
+	public static final String TAG_WORKPLAN_TIME_UNIT = "WorkPlanTimeUnit";
+	public static final String TAG_PLANNING_COMMENTS = "PlanningComments";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -414,6 +426,10 @@ public class ProjectMetadata extends BaseObject
 	private StringData locationComments;
 	private StringData keyFundingSources;
 	private StringData financialComments;
+	private DateData workPlanStartDate;
+	private DateData workPlanEndDate;
+	private ChoiceData workPlanTimeUnit;
+	private StringData planningComments;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;

@@ -5,15 +5,12 @@
 */ 
 package org.conservationmeasures.eam.views.summary;
 
-import org.conservationmeasures.eam.dialogfields.ObjectBudgetTimePeriodChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
 
 public class SummaryPlanningPanel extends ObjectDataInputPanel
@@ -22,11 +19,19 @@ public class SummaryPlanningPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
+		ObjectDataInputField startDate = createDateChooserField(ProjectMetadata.TAG_START_DATE);
+		ObjectDataInputField endDate = createDateChooserField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		ObjectDataInputField[] projectDateFields = new ObjectDataInputField[] {startDate, endDate, };
+		addFieldsOnOneLine(EAM.text("Label|Project Dates"), projectDateFields);
 		
-		BudgetTimePeriodQuestion budgetTimePeriodQuestion = new BudgetTimePeriodQuestion(ProjectMetadata.TAG_BUDGET_TIME_PERIOD);
-		ObjectDataInputField budgetTimePeriodChoiceField = new ObjectBudgetTimePeriodChoiceField(getProject(), ProjectMetadata.getObjectType(), BaseId.INVALID, budgetTimePeriodQuestion);
-		addField(budgetTimePeriodChoiceField);
+		ObjectDataInputField workPlanStartDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		ObjectDataInputField workPlanEndDate = createDateChooserField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
+		addFieldsOnOneLine(EAM.text("Label|Workplan Dates"), workPlanDateFields);
+		
+		addField(createStringField(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
+		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateFieldsFromProject();
 	}
