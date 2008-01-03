@@ -77,7 +77,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		dateRanges = new Vector();
 		while(planningStartDate.before(planningEndDate))
 		{
-			dateRanges.addAll(getQuartersPlustYearlyRange(planningStartDate));
+			createQuartersPlustYearlyRange(planningStartDate);
 			planningStartDate = MultiCalendar.createFromGregorianYearMonthDay(
 					planningStartDate.getGregorianYear() + 1, 
 					planningStartDate.getGregorianMonth(), 
@@ -120,23 +120,25 @@ public class ProjectCalendar implements CommandExecutedListener
 		return planningEndDate;
 	}
 
-	private Vector getQuartersPlustYearlyRange(MultiCalendar startingDate) throws Exception
+	private void createQuartersPlustYearlyRange(MultiCalendar startingDate) throws Exception
 	{
-		Vector ranges = new Vector();
-
+		Vector<DateRange> quarterlyRanges = new Vector();
 		for(int quarter = 0; quarter < 4; ++quarter)
 		{
 			DateRange quarterRange = createQuarter(startingDate);
-			ranges.add(quarterRange);
-			editableDateRanges.add(quarterRange);
+			quarterlyRanges.add(quarterRange);
 			startingDate = nextQuarter(startingDate);
 		}
 		
-		ranges.add(DateRange.combine((DateRange)ranges.get(0), (DateRange)ranges.get(3)));
+		dateRanges.addAll(quarterlyRanges);
+		editableDateRanges.addAll(quarterlyRanges);
 		
-		getYearlyDateRanges().add(DateRange.combine((DateRange)ranges.get(0), (DateRange)ranges.get(3)));
-		
-		return ranges;
+		DateRange firstQuarter = quarterlyRanges.get(0);
+		DateRange lastQuarter = quarterlyRanges.get(3);
+		DateRange yearRange = DateRange.combine(firstQuarter, lastQuarter);	
+
+		dateRanges.add(yearRange);
+		yearlyDateRanges.add(yearRange);
 	}
 	
 	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception

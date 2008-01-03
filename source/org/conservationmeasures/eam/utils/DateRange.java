@@ -21,6 +21,13 @@ public class DateRange
 		this(createDateFromJson(json, TAG_START_DATE), createDateFromJson(json, TAG_END_DATE));
 	}
 	
+	public DateRange(DateRange other) throws Exception
+	{
+		this(new MultiCalendar(other.getStartDate()), new MultiCalendar(other.getEndDate()));
+	}
+
+	
+	
 	private static MultiCalendar createDateFromJson(EnhancedJsonObject json, String tag)
 	{
 		return MultiCalendar.createFromIsoDateString(json.get(tag).toString());
