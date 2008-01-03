@@ -86,6 +86,7 @@ import org.conservationmeasures.eam.objects.TestThreatStressRating;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.objects.TestWwfProjectData;
+import org.conservationmeasures.eam.project.TestBudgetTimePeriodChanger;
 import org.conservationmeasures.eam.project.TestCausePool;
 import org.conservationmeasures.eam.project.TestChainManager;
 import org.conservationmeasures.eam.project.TestFactorDeleteHelper;
@@ -169,6 +170,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// project package
+		suite.addTest(new TestSuite(TestBudgetTimePeriodChanger.class));
 		suite.addTest(new TestSuite(TestThreatReductionResultPool.class));
 		suite.addTest(new TestSuite(TestTextBoxPool.class));
 		suite.addTest(new TestSuite(TestIntermediateResultPool.class));
