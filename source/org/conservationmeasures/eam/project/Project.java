@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -1076,6 +1077,11 @@ public class Project
 		return getSnapped(new Point(x, y));
 	}
 	
+	public Dimension getSnapped(Dimension dimension)
+	{
+		int gridSize = getGridSize();
+		return new Dimension(roundTo(dimension.width, gridSize), roundTo(dimension.height, gridSize));
+	}
 	
 	public Point getSnapped(Point point)
 	{
