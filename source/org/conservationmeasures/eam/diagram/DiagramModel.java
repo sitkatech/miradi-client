@@ -718,7 +718,7 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			EAMGraphCell cell = selectedCells.get(i);
 			groupChildrenCells.addAll(getGroupBoxFactorChildren(cell));
-			groupChildrenCells.addAll(getGroupBoxLinkChildren(cell));
+			groupChildrenCells.addAll(getGroupLinkChildren(cell));
 		}
 
 		return groupChildrenCells;
@@ -755,7 +755,7 @@ public class DiagramModel extends DefaultGraphModel
 		return groupBoxChildrenCells;
 	}
 
-	private HashSet<EAMGraphCell> getGroupBoxLinkChildren(EAMGraphCell cell) throws Exception
+	private HashSet<EAMGraphCell> getGroupLinkChildren(EAMGraphCell cell) throws Exception
 	{
 		if (!cell.isFactorLink())
 			return new HashSet<EAMGraphCell>();
