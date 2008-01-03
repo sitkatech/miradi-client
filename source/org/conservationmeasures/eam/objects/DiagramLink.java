@@ -136,6 +136,15 @@ public class DiagramLink extends BaseObject
 		throw new RuntimeException("Unknown direction: " + direction);
 	}
 	
+	public ORef getOppositeDiagramFactorRef(int direction)
+	{
+		if(direction == FactorLink.FROM)
+			return getToDiagramFactorRef();
+		if(direction == FactorLink.TO)
+			return getFromDiagramFactorRef();
+		throw new RuntimeException("Unknown direction: " + direction);
+	}
+	
 	public DiagramFactor getDiagramFactor(int direction)
 	{
 		return DiagramFactor.find(objectManager, getDiagramFactorRef(direction));
