@@ -24,9 +24,6 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!isAtLeastOneGroupBoxSelected())
 			return false;
 		
-		if (hasOwnedSelectedDiagramFactors(getProject(), getSelectedNonGroupBoxDiagramFactors()))
-			return false;
-		
 		return true;
 	}
 	
