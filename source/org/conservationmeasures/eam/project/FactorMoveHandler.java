@@ -33,13 +33,7 @@ public class FactorMoveHandler
 		model = modelToUse;
 	}
 
-	//TODO this is for tesing purposes, change testing to have deltas
 	public void factorsWereMovedOrResized(DiagramFactorId[] ids) throws CommandFailedException
-	{
-		factorsWereMovedOrResized(ids, 0, 0);
-	}
-	
-	public void factorsWereMovedOrResized(DiagramFactorId[] ids, int deltaX, int deltaY) throws CommandFailedException
 	{
 		try 
 		{
@@ -53,7 +47,7 @@ public class FactorMoveHandler
 				if(node.hasMoved())
 				{
 					commandsToExecute.add(buildMoveCommand(node));
-					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, node, deltaX, deltaY));
+					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, node));
 				}
 
 				if(node.sizeHasChanged())
@@ -94,8 +88,10 @@ public class FactorMoveHandler
 
 	}
 
-	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell node, int deltaX, int deltaY)
+	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell node)
 	{
+		int deltaX = node.getLocation().x - node.getDiagramFactor().getLocation().x;
+		int deltaY = node.getLocation().y - node.getDiagramFactor().getLocation().y;
 		Vector<Command> commandsToMove = new Vector();
 		if (node.getWrappedType() != GroupBox.getObjectType())
 			return new Vector();
