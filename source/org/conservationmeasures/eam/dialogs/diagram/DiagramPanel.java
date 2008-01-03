@@ -150,9 +150,9 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
-	public Vector<EAMGraphCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
+	public HashSet<EAMGraphCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
 	{
-		Vector<EAMGraphCell> groupBoxChildrenCells = new Vector();
+		HashSet<EAMGraphCell> groupBoxChildrenCells = new HashSet();
 		FactorCell[] selectedCells = getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{
