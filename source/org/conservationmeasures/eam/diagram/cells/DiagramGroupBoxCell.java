@@ -15,23 +15,27 @@ import java.util.Hashtable;
 
 import javax.swing.JTextPane;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
-	public DiagramGroupBoxCell(DiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactor)
+	public DiagramGroupBoxCell(DiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactorToUse)
 	{
-		super(groupBox, diagramFactor);
+		super(groupBox, diagramFactorToUse);
 		model = modelToUse;
+		diagramFactor = diagramFactorToUse;
 		
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -69,24 +73,44 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	{
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
-			
-		int gridSize = getProject().getGridSize();
+		
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!groupBoxBounds.equals(newBounds))
 		{
 			shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
+			int gridSize = getProject().getGridSize();
 			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
 			location = getProject().getSnapped(location);
 			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
+			size = getProject().getSnapped(size);
 			newBounds = new Rectangle(location, size);
+			
+			GraphConstants.setBounds(getAttributes(), newBounds);
+			Hashtable nest = new Hashtable();
+			nest.put(this, getAttributes());
+			model.edit(nest, null, null, null);
+			model.toBack(new Object[] {this});
+
+			saveLocationAndSize(location, size);
+		}		
+	}
+	
+	private void saveLocationAndSize(Point location, Dimension size)
+	{
+		try
+		{
+			CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
+			model.getProject().executeInsideListener(setLocation);
+			
+			CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
+			model.getProject().executeInsideListener(setSize);
 		}
-		
-		GraphConstants.setBounds(getAttributes(), newBounds);
-		Hashtable nest = new Hashtable();
-		nest.put(this, getAttributes());
-		model.edit(nest, null, null, null);
-		model.toBack(new Object[] {this});
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			//FIXME do something with this exception
+		}
 	}
 	
 	/*TODO: should change MultilineCellRenderer and this method to use the same component to display html 
@@ -130,7 +154,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
-		autoSurroundChildren();
+		model.toBack(new Object[] {this});
 	}
 
 	public void factorChanged(DiagramModelEvent event)
@@ -153,6 +177,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	{
 	}
 	
+	private DiagramFactor diagramFactor;
 	private DiagramModel model;
 	private int shortScopeHeight;
 }

@@ -153,7 +153,31 @@ public class TestProject extends EAMTestCase
 		
 		
 	}
-	
+
+	public void testGetSnappedSize() throws Exception
+	{		
+		Dimension zeroByZero = new Dimension(0, 0);
+		assertEquals("moved zero zero?", zeroByZero, project.getSnapped(zeroByZero));
+		
+		Dimension defaultPlus = new Dimension(Project.DEFAULT_GRID_SIZE, Project.DEFAULT_GRID_SIZE);
+		assertEquals("moved default plus?", defaultPlus, project.getSnapped(defaultPlus));
+		
+		Dimension defaultMinus = new Dimension(-Project.DEFAULT_GRID_SIZE, -Project.DEFAULT_GRID_SIZE);
+		assertEquals("moved default minus?", defaultMinus, project.getSnapped(defaultMinus));
+
+		Dimension oneThirdPlus = new Dimension(Project.DEFAULT_GRID_SIZE/3, Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap one third?", zeroByZero, project.getSnapped(oneThirdPlus));
+		
+		Dimension oneThirdMinus = new Dimension(-Project.DEFAULT_GRID_SIZE/3, -Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus one third?", zeroByZero, project.getSnapped(oneThirdMinus));
+		
+		Dimension twoThirdsPlus = new Dimension(2*Project.DEFAULT_GRID_SIZE/3, 2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(twoThirdsPlus));
+		
+		Dimension twoThirdsMinus = new Dimension(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(twoThirdsMinus));		
+	}
+
 	public void testIsValidProjectFilename() throws Exception
 	{
 		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectFilename("AZaz09.- "));
