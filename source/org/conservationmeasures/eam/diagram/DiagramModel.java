@@ -713,15 +713,15 @@ public class DiagramModel extends DefaultGraphModel
 
 	private HashSet<EAMGraphCell> getGroupBoxChildrenAndGroupLinkChildrenCells(Vector<EAMGraphCell> selectedCells) throws Exception
 	{
-		HashSet<EAMGraphCell> groupBoxChildrenFactorAndLinkCells = new HashSet<EAMGraphCell>();
+		HashSet<EAMGraphCell> groupChildrenCells = new HashSet<EAMGraphCell>();
 		for(int i = 0; i < selectedCells.size(); ++i)
 		{
 			EAMGraphCell cell = selectedCells.get(i);
-			groupBoxChildrenFactorAndLinkCells.addAll(getGroupBoxFactorChildren(cell));
-			groupBoxChildrenFactorAndLinkCells.addAll(getGroupBoxLinkChildren(cell));
+			groupChildrenCells.addAll(getGroupBoxFactorChildren(cell));
+			groupChildrenCells.addAll(getGroupBoxLinkChildren(cell));
 		}
 
-		return groupBoxChildrenFactorAndLinkCells;
+		return groupChildrenCells;
 	}
 
 	private HashSet<EAMGraphCell> getFactorRelatedLinks(FactorCell factorCell)
