@@ -47,8 +47,8 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateRange combineStartToEndProjectRange() throws Exception
 	{
-		DateRange startDateRange = (DateRange)getYearlyDateRanges().get(0);
-		DateRange endDateRange = (DateRange)getYearlyDateRanges().get(getYearlyDateRanges().size() - 1);
+		DateRange startDateRange = getYearlyDateRanges().get(0);
+		DateRange endDateRange = getYearlyDateRanges().get(getYearlyDateRanges().size() - 1);
 		
 		return DateRange.combine(startDateRange, endDateRange);
 	}
@@ -197,7 +197,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return dateRanges.toArray(new DateRange[0]);
 	}
 
-	public Vector getYearlyDateRanges() throws Exception
+	public Vector<DateRange> getYearlyDateRanges() throws Exception
 	{
 		if(yearlyDateRanges == null)
 			rebuildProjectDateRanges();
