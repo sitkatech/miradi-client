@@ -55,6 +55,11 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 	{
 		return dateRanges.length;
 	}
+	
+	public DateRange getDateRangeForColumn(int column)
+	{
+		return dateRanges[column];
+	}
 
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
 	{

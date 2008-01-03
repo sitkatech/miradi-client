@@ -32,6 +32,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		dateRanges = null;
 		yearlyDateRanges = null;
+		editableDateRanges = null;
 	}
 
 	public DateRange[] getQuarterlyDateRanges() throws Exception
@@ -72,6 +73,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		MultiCalendar planningEndDate = getPlanningEndDate(planningStartDate);
 		
 		yearlyDateRanges = new Vector();
+		editableDateRanges = new Vector();
 		Vector vector = new Vector();
 		while(planningStartDate.before(planningEndDate))
 		{
@@ -125,7 +127,9 @@ public class ProjectCalendar implements CommandExecutedListener
 
 		for(int quarter = 0; quarter < 4; ++quarter)
 		{
-			ranges.add(createQuarter(startingDate));
+			DateRange quarterRange = createQuarter(startingDate);
+			ranges.add(quarterRange);
+			editableDateRanges.add(quarterRange);
 			startingDate = nextQuarter(startingDate);
 		}
 		
@@ -199,6 +203,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		return yearlyDateRanges;
 	}
 	
+	public boolean isDateRangeEditable(DateRange dateRange)
+	{
+		return editableDateRanges.contains(dateRange);
+	}
+
 	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
 	{
 		switch(fiscalYearFirstMonth)
@@ -285,4 +294,5 @@ public class ProjectCalendar implements CommandExecutedListener
 	private Project project;
 	private DateRange[] dateRanges;
 	private Vector yearlyDateRanges;
+	private Vector<DateRange> editableDateRanges;
 }
