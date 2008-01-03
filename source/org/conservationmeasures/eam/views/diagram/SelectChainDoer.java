@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class SelectChain extends ViewDoer
+public class SelectChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
