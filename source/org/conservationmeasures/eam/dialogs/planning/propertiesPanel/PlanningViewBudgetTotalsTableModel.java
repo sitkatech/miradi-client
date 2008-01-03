@@ -20,7 +20,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 		super(projectToUse);
 		
 		totalsCalculator = new BudgetCalculator(getProject());
-		dateRanges = getProject().getProjectCalendar().getQuarterlyDateRanges();
+		dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
 		currencyFormatter = getProject().getCurrencyFormatter();
 	}
 	
@@ -45,17 +45,11 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 	public String getTotalCost(int row) throws Exception
 	{	
 		Assignment assignment = getAssignment(row);	
-		DateRange combinedDateRange = getCombinedDateRange();
-		double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
+		double totalCost = totalsCalculator.getTotalCost(assignment, dateRange);
 		return currencyFormatter.format(totalCost);
 	}
 	
-	public DateRange getCombinedDateRange() throws Exception
-	{
-		return DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
-	}
-	
 	private DecimalFormat currencyFormatter;
-	private DateRange[] dateRanges;
+	private DateRange dateRange;
 	private BudgetCalculator totalsCalculator;
 }
