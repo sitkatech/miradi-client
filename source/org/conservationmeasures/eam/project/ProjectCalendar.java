@@ -74,16 +74,15 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		yearlyDateRanges = new Vector();
 		editableDateRanges = new Vector();
-		Vector vector = new Vector();
+		dateRanges = new Vector();
 		while(planningStartDate.before(planningEndDate))
 		{
-			vector.addAll(getQuartersPlustYearlyRange(planningStartDate));
+			dateRanges.addAll(getQuartersPlustYearlyRange(planningStartDate));
 			planningStartDate = MultiCalendar.createFromGregorianYearMonthDay(
 					planningStartDate.getGregorianYear() + 1, 
 					planningStartDate.getGregorianMonth(), 
 					planningStartDate.getGregorianDay());
 		}
-		this.dateRanges = ((DateRange[])vector.toArray(new DateRange[0]));
 	}
 
 	private MultiCalendar getPlanningEndDate(MultiCalendar planningStartDate)
@@ -193,7 +192,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		if(dateRanges == null)
 			rebuildProjectDateRanges();
-		return dateRanges;
+		return dateRanges.toArray(new DateRange[0]);
 	}
 
 	public Vector getYearlyDateRanges() throws Exception
@@ -292,7 +291,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	}
 
 	private Project project;
-	private DateRange[] dateRanges;
-	private Vector yearlyDateRanges;
+	private Vector<DateRange> dateRanges;
+	private Vector<DateRange> yearlyDateRanges;
 	private Vector<DateRange> editableDateRanges;
 }
