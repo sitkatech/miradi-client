@@ -55,27 +55,26 @@ public class SummaryView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
-		crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
-		summaryFinancialPanel = new SummaryFinancialPanel(getMainWindow());
-		
 		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
 		wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
 		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
 		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		
+		summaryTeamPanel = new SummaryTeamPanel(getMainWindow(), metadata);
+		summaryFinancialPanel = new SummaryFinancialPanel(getMainWindow());
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
 		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
 		summaryPlanningPanel = new SummaryPlanningPanel(getProject(), metadata.getRef());
 		
 		addPanelAsTab(summaryProjectPanel);
+		addPanelAsTab(summaryTeamPanel);
 		addPanelAsTab(summaryScopePanel);
 		addPanelAsTab(summaryLocationPanel);
 		addPanelAsTab(summaryPlanningPanel);
-		
-		addPanelAsTab(crossOrganizationSummaryPanel);
 		addPanelAsTab(summaryFinancialPanel);
+		
 		addPanelAsTab(tncSummaryPanel);
 		
 		addPanelAsTab(wwfSummaryPanel);
@@ -96,7 +95,7 @@ public class SummaryView extends TabbedView
 		summaryLocationPanel.dispose();
 		summaryPlanningPanel.dispose();
 		
-		crossOrganizationSummaryPanel.dispose();
+		summaryTeamPanel.dispose();
 		summaryFinancialPanel.dispose();
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
@@ -123,7 +122,7 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
-	private CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
+	private SummaryTeamPanel summaryTeamPanel;
 	private SummaryFinancialPanel summaryFinancialPanel;
 	private TNCSummaryPanel tncSummaryPanel;
 
