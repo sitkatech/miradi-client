@@ -680,7 +680,7 @@ public class DiagramModel extends DefaultGraphModel
 		Vector<EAMGraphCell> selectedCells = castRawObjectsToEAMGraphCells(rawSelectedCells);
 		Vector<EAMGraphCell> selectedCellsWithGroupBoxChildren = new Vector<EAMGraphCell>();
 		selectedCellsWithGroupBoxChildren.addAll(selectedCells);		
-		selectedCellsWithGroupBoxChildren.addAll(getGroupBoxChildrenFactorAndLinkCells(selectedCells));
+		selectedCellsWithGroupBoxChildren.addAll(getGroupBoxChildrenAndGroupLinkChildrenCells(selectedCells));
 		
 		HashSet<EAMGraphCell> selectedCellsWithLinkages = new HashSet<EAMGraphCell>();
 		for(int i = 0; i < selectedCellsWithGroupBoxChildren.size(); ++i)
@@ -711,7 +711,7 @@ public class DiagramModel extends DefaultGraphModel
 		return castedToEAMGraphCellObjects;
 	}
 
-	private HashSet<EAMGraphCell> getGroupBoxChildrenFactorAndLinkCells(Vector<EAMGraphCell> selectedCells) throws Exception
+	private HashSet<EAMGraphCell> getGroupBoxChildrenAndGroupLinkChildrenCells(Vector<EAMGraphCell> selectedCells) throws Exception
 	{
 		HashSet<EAMGraphCell> groupBoxChildrenFactorAndLinkCells = new HashSet<EAMGraphCell>();
 		for(int i = 0; i < selectedCells.size(); ++i)
