@@ -245,6 +245,8 @@ public class ProjectMetadata extends BaseObject
 		currencySymbol = new StringData();
 		fiscalYearStart = new ChoiceData();
 		budgetTimePeriod = new ChoiceData();
+		projectDescription = new StringData();
+		projectURL = new StringData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -265,6 +267,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_CURRENCY_SYMBOL, currencySymbol);
 		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
 		addField(TAG_BUDGET_TIME_PERIOD, budgetTimePeriod);
+		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
+		addField(TAG_PROJECT_URL, projectURL);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -317,6 +321,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
 	public static final String TAG_BUDGET_TIME_PERIOD = "BudgetTimePeriod";
+	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
+	public static final String TAG_PROJECT_URL = "ProjectURL";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -362,6 +368,8 @@ public class ProjectMetadata extends BaseObject
 	private StringData currencySymbol;
 	private ChoiceData fiscalYearStart;
 	private ChoiceData budgetTimePeriod;
+	private StringData projectDescription;
+	private StringData projectURL;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
