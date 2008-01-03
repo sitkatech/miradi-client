@@ -168,6 +168,14 @@ public class TestDiagramLink extends ObjectTestCase
 		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_WRAPPED_ID));
 		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS));
 	}
+	
+	public void testDirection() throws Exception
+	{
+		ORef diagramLinkRef = project.createDiagramLink();
+		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
+		assertEquals(diagramLink.getFromDiagramFactorRef(), diagramLink.getDiagramFactorRef(FactorLink.FROM));
+		assertEquals(diagramLink.getToDiagramFactorRef(), diagramLink.getDiagramFactorRef(FactorLink.TO));
+	}
 
 	ProjectForTesting project;
 	DiagramModel model;
