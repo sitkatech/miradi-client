@@ -64,6 +64,15 @@ public class SummaryView extends TabbedView
 		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
 		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		
+		summaryProjecPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
+		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
+		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
+		summaryPlanningPanel = new SummaryPlanningPanel(getProject(), metadata.getRef());
+		
+		addPanelAsTab(summaryProjecPanel);
+		addPanelAsTab(summaryScopePanel);
+		addPanelAsTab(summaryLocationPanel);
+		addPanelAsTab(summaryPlanningPanel);
 		
 		addPanelAsTab(crossOrganizationSummaryPanel);
 		addPanelAsTab(planningSettingsPanel);
@@ -82,6 +91,11 @@ public class SummaryView extends TabbedView
 
 	public void deleteTabs() throws Exception
 	{
+		summaryProjecPanel.dispose();
+		summaryScopePanel.dispose();
+		summaryLocationPanel.dispose();
+		summaryPlanningPanel.dispose();
+		
 		crossOrganizationSummaryPanel.dispose();
 		planningSettingsPanel.dispose();
 		tncSummaryPanel.dispose();
@@ -117,4 +131,9 @@ public class SummaryView extends TabbedView
 	private WCSSummaryPanel wcssSummaryPanel; 
 	private RARESummaryPanel rareSummaryPanel;
 	private FOSSummaryPanel fosSummaryPanel;
+	
+	private SummaryProjectPanel summaryProjecPanel;
+	private SummaryScopePanel summaryScopePanel;
+	private SummaryLocationPanel summaryLocationPanel;
+	private SummaryPlanningPanel summaryPlanningPanel;
 }
