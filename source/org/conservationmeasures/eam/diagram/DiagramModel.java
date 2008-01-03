@@ -737,7 +737,7 @@ public class DiagramModel extends DefaultGraphModel
 		return factorRelatedLinks;
 	}
 	
-	private HashSet<EAMGraphCell> getGroupBoxFactorChildren(EAMGraphCell cell) throws Exception
+	public HashSet<EAMGraphCell> getGroupBoxFactorChildren(EAMGraphCell cell) throws Exception
 	{
 		if(!cell.isFactor())
 			return new HashSet<EAMGraphCell>();

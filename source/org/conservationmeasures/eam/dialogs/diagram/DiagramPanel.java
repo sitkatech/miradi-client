@@ -150,13 +150,32 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
+	public Vector<EAMGraphCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
+	{
+		Vector<EAMGraphCell> groupBoxChildrenCells = new Vector();
+		FactorCell[] selectedCells = getOnlySelectedFactorCells();
+		for (int i = 0; i < selectedCells.length; ++i)
+		{
+			FactorCell selectedCell = selectedCells[i];
+			groupBoxChildrenCells.add(selectedCell);
+			if (selectedCell.getDiagramFactor().isGroupBoxFactor())
+			{
+				DiagramModel diagramModel = getDiagramModel();
+				groupBoxChildrenCells.addAll(diagramModel.getGroupBoxFactorChildren(selectedCell));
+			}		
+		}
+
+		return groupBoxChildrenCells;
+	}
+	
 	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
-			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
-				nodes.add(allSelectedCells[i]);
+			EAMGraphCell cell = ((EAMGraphCell)allSelectedCells[i]);
+			if(cell.isFactor())
+				nodes.add(cell);
 		}
 		return (FactorCell[])nodes.toArray(new FactorCell[0]);
 	}
