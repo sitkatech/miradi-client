@@ -19,8 +19,8 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Unknown", Color.WHITE),
-			new ChoiceItem("1", "Completely Ineffective", COLOR_ALERT),
-			new ChoiceItem("2", "Ineffective", COLOR_CAUTION),
+			new ChoiceItem("1", "Not Effective", COLOR_ALERT),
+			new ChoiceItem("2", "Less Effective", COLOR_CAUTION),
 			new ChoiceItem("3", "Effective", COLOR_OK),
 			new ChoiceItem("4", "Very Effective", COLOR_GREAT),
 		};
