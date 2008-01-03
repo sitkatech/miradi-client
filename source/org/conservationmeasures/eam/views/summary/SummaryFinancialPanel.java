@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
 
-public class SummaryPlanningSettingsPanel extends ObjectDataInputPanel
+public class SummaryFinancialPanel extends ObjectDataInputPanel
 {
-	public SummaryPlanningSettingsPanel(MainWindow mainWindowToUse)
+	public SummaryFinancialPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
