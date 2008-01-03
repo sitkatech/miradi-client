@@ -250,6 +250,12 @@ public class ProjectMetadata extends BaseObject
 		projectArea = new StringData();
 		projectAreaNotes = new StringData();
 		scopeComments = new StringData();
+		countries = new ChoiceData();
+		statesAndProvinces = new StringData();
+		municipalities = new StringData();
+		legislativeDistricts = new StringData();
+		locationDetail = new StringData();
+		locationComments = new StringData();
 		
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -275,6 +281,12 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_PROJECT_AREA, projectArea);
 		addField(TAG_PROJECT_AREA_NOTES, projectAreaNotes);
 		addField(TAG_SCOPE_COMMENTS, scopeComments);
+		addField(TAG_COUNTRIES, countries);
+		addField(TAG_STATE_AND_PROVINCES, statesAndProvinces);
+		addField(TAG_MUNICIPALITIES, municipalities);
+		addField(TAG_LEGISLATIVE_DISTRICTS, legislativeDistricts);
+		addField(TAG_LOCATION_DETAIL, locationDetail);
+		addField(TAG_LOCATION_COMMENTS, locationComments);
 		
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -332,6 +344,12 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_PROJECT_AREA = "ProjectArea";
 	public static final String TAG_PROJECT_AREA_NOTES = "ProjectAreaNote";
 	public static final String TAG_SCOPE_COMMENTS = "ScopeComments";
+	public static final String TAG_COUNTRIES = "Countries";
+	public static final String TAG_STATE_AND_PROVINCES = "StateAndProvinces";
+	public static final String TAG_MUNICIPALITIES = "Municipalities";
+	public static final String TAG_LEGISLATIVE_DISTRICTS = "LegislativeDistricts";
+	public static final String TAG_LOCATION_DETAIL = "LocationDetail";
+	public static final String TAG_LOCATION_COMMENTS = "LocationComments";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -382,6 +400,12 @@ public class ProjectMetadata extends BaseObject
 	private StringData projectArea;
 	private StringData projectAreaNotes;
 	private StringData scopeComments;
+	private ChoiceData countries;
+	private StringData statesAndProvinces;
+	private StringData municipalities;
+	private StringData legislativeDistricts;
+	private StringData locationDetail;
+	private StringData locationComments;
 	
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
