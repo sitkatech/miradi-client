@@ -337,25 +337,16 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		Point location = getLocation();
 
-		Dimension newSize = new Dimension(forceNonZeroEvenSnap(size.width), forceNonZeroEvenSnap(size.height));
+		Dimension newSize = new Dimension(getProject().forceNonZeroEvenSnap(size.width), getProject().forceNonZeroEvenSnap(size.height));
 		Rectangle bounds = new Rectangle(location, newSize);
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 
-	private int forceNonZeroEvenSnap(int value)
+	private Project getProject()
 	{
-		//TODO this null check is here for test code
-		if (getUnderlyingObject().getObjectManager()==null)
-			return value;
-		int gridSize = getUnderlyingObject().getProject().getGridSize();
-		int newValue = (value + gridSize) - (value + gridSize) % (gridSize * 2);
-		
-		if (newValue != 0)
-			return newValue;
-		
-		return gridSize * 2;
+		return getUnderlyingObject().getProject();
 	}
-	
+
 	public Dimension getPreviousSize()
 	{
 		return previousSize;

@@ -83,8 +83,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
 			location = getProject().getSnapped(location);
 			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
-			size = getProject().getSnapped(size);
-			newBounds = new Rectangle(location, size);
+			Dimension newSize = new Dimension(getProject().forceNonZeroEvenSnap(size.width), getProject().forceNonZeroEvenSnap(size.height));
+			newBounds = new Rectangle(location, newSize);
 			
 			GraphConstants.setBounds(getAttributes(), newBounds);
 			Hashtable nest = new Hashtable();
@@ -92,7 +92,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			model.edit(nest, null, null, null);
 			model.toBack(new Object[] {this});
 
-			saveLocationAndSize(location, size);
+			
+			saveLocationAndSize(location, newSize);
 		}		
 	}
 	
@@ -125,7 +126,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
 		ja.setSize(width, ja.getMaximumSize().height);
 		ja.setText(getText());
-		return ja.getPreferredSize().height + ProjectScopeBox.HEIGHT_CUSION;
+		return ja.getPreferredSize().height + getProject().getGridSize();
 	}
 	
 	public Rectangle2D computeCurrentChildrenBounds()
