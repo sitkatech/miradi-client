@@ -148,8 +148,23 @@ public class ProjectCalendar implements CommandExecutedListener
 			editableDateRanges.add(yearRange);
 		}
 	}
-	
-	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
+
+	public DateRange createYear(String isoYearStart) throws Exception
+	{
+		return createYear(MultiCalendar.createFromIsoDateString(isoYearStart));
+	}
+
+	public DateRange createYear(MultiCalendar yearStart) throws Exception
+	{
+		int endYear = yearStart.getGregorianYear() + 1;
+		int endMonth = yearStart.getGregorianMonth();
+		int endDay = yearStart.getGregorianDay();
+		MultiCalendar yearEnd = MultiCalendar.createFromGregorianYearMonthDay(endYear, endMonth, endDay);
+		yearEnd.addDays(-1);
+		return new DateRange(yearStart, yearEnd);
+	}
+
+	public DateRange createQuarter(MultiCalendar quarterStart) throws Exception
 	{
 		MultiCalendar end = nextQuarter(quarterStart);
 		end.addDays(-1);

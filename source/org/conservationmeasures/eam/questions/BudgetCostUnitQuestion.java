@@ -18,10 +18,12 @@ public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified"),
 				new ChoiceItem("Hours", "Hours"),
-				new ChoiceItem("Days", "Days"),
+				new ChoiceItem(DAYS_CODE, DAYS_CODE),
 				new ChoiceItem("Weeks", "Weeks"),
 				new ChoiceItem("Months", "Months"),
 				new ChoiceItem("Each", "Each"),
 		};
 	}
+
+	public static final String DAYS_CODE = "Days";
 }

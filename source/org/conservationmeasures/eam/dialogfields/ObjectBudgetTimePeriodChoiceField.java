@@ -26,6 +26,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 	
 	public void setText(String code)
 	{
+		boolean oldValue = disableHandler;
 		disableHandler = true;
 		try
 		{
@@ -33,7 +34,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 		}
 		finally
 		{
-			disableHandler = false;
+			disableHandler = oldValue;
 		}
 	}
 
@@ -45,7 +46,8 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 				return;
 			
 			String oldValue = getOldValue();
-			if(oldValue.equals(getText()))
+			String newValue = getText();
+			if(oldValue.equals(newValue))
 				return;
 			
 			String discardButtonLabel = EAM.text("Discard");
@@ -59,16 +61,56 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 					"<tr><td>&lt;" + discardButtonLabel + "&gt;<td>Deletes all existing budget entries" +
 					"<tr><td>&lt;" + distributeButtonLabel + "&gt;<td>Consolidates or spreads out existing entries" +
 					"<tr><td>&lt;" + cancelButtonLabel + "&gt;<td>Revert to the existing time period with no data changes" +
+					"</table>" +
 					"<p>" +
+					"<p><em>NOTE:</em> If you don't like the changes, you can undo this operation to restore the old values," +
+					"<br>but only within this session, before you close this project." +
 					"");
 			String[] buttonLabels = {discardButtonLabel, distributeButtonLabel, cancelButtonLabel,};
 			
+			boolean worked = true;
+			
 			int result = EAM.confirmDialog(EAM.text("Change Budget Time Period"), text, buttonLabels);
-			System.out.println(result);
-			if(result != 2)
-				EAM.notifyDialog("Changing Budget Time Periods is not yet supported.");
-			setText(oldValue);
-//			super(event);
+			switch(result)
+			{
+				case 0:
+					EAM.notifyDialog("Changing Budget Time Periods is not yet supported.");
+					worked = false;
+					break;
+				case 1:
+					worked = distributeDateRangeEffortLists(oldValue, newValue);
+					break;
+				default:
+					worked = false;
+					break;
+			}
+			
+			if(worked)
+				super.actionPerformed(event);
+			else
+				setText(oldValue);
+		}
+
+		private boolean distributeDateRangeEffortLists(String oldValue, String newValue)
+		{
+			EAM.notifyDialog("Changing Budget Time Periods is not yet supported.");
+			return false;
+//			try
+//			{
+//				BudgetTimePeriodChanger.distributeAllDateRangeEffortLists(getProject(), oldValue, newValue);
+//				return true;
+//			}
+//			catch(UnknownConversionException e)
+//			{
+//				EAM.logError("Attempted to convert " + oldValue + " to " + newValue);
+//				EAM.errorDialog("Unable to convert the data in that way.");
+//				return false;
+//			}
+//			catch(Exception e)
+//			{
+//				EAM.panic(e);
+//				return false;
+//			}
 		}
 	}
 	
