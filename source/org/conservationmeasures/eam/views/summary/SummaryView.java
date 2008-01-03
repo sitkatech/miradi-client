@@ -109,12 +109,12 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
-	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
-	SummaryPlanningSettingsPanel planningSettingsPanel;
-	TNCSummaryPanel tncSummaryPanel;
+	private CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
+	private SummaryPlanningSettingsPanel planningSettingsPanel;
+	private TNCSummaryPanel tncSummaryPanel;
 
-	WWFSummaryPanel wwfSummaryPanel;
-	WCSSummaryPanel wcssSummaryPanel; 
-	RARESummaryPanel rareSummaryPanel;
-	FOSSummaryPanel fosSummaryPanel;
+	private WWFSummaryPanel wwfSummaryPanel;
+	private WCSSummaryPanel wcssSummaryPanel; 
+	private RARESummaryPanel rareSummaryPanel;
+	private FOSSummaryPanel fosSummaryPanel;
 }
