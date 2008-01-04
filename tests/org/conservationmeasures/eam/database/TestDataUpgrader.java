@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.martus.util.DirectoryUtils;
@@ -167,6 +168,42 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong bendpoints?", 2, bendPoints2.size());
 		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(585, 285)));
 		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(390, 285)));
+	}
+	
+	public void testCopyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		String projectMetaDataString = "{\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"1.0\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"2008-01-04\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"1.0\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"my project name for wwf\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"EUR\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"ScopeComments\":\"\",\"Id\":0,\"ExpectedEndDate\":\"2008-01-04\",\"CurrencySymbol\":\"E\",\"StateAndProvinces\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"SummaryOverviewStep\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"vision text 101\",\"WorkPlanStartDate\":\"\",\"TimeStampModified\":\"1199469823600\",\"ShortProjectScope\":\"\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"\"}";
+		String wwfProjectDataString = "{\"Countries\":\"{\\\"Codes\\\":[\\\"AFG\\\",\\\"ALA\\\",\\\"ALB\\\",\\\"DZA\\\"]}\",\"ProjectNumber\":\"\",\"ManagingOffices\":\"\",\"TimeStampModified\":\"1199469576877\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Regions\":\"\",\"Id\":12,\"EcoRegions\":\"\",\"RelatedProjects\":\"\"}";
+		
+		File projectMetaDataDir = DataUpgrader.createObjectsDir(jsonDir, 11);
+		int[] projectMetaDataIds = {0, };
+		File projectMetaDataManifestFile = createManifestFile(projectMetaDataDir, projectMetaDataIds);
+		assertTrue(projectMetaDataManifestFile.exists());
+		
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
+		createFile(projectMetaDataFile, projectMetaDataString);
+		
+		File wwfProjectDataDir = DataUpgrader.createObjectsDir(jsonDir, 30);
+		int[] wwfProjectDataIds = {12, };
+		File wwfProjectDataManifestFile = createManifestFile(wwfProjectDataDir, wwfProjectDataIds);
+		assertTrue(wwfProjectDataManifestFile.exists());
+		File wwfProjectDataFile = new File(wwfProjectDataDir, Integer.toString(wwfProjectDataIds[0]));
+		createFile(wwfProjectDataFile, wwfProjectDataString);
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion29();
+		
+		assertTrue("project meta data file exists?", projectMetaDataFile.exists());
+		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFile);
+		assertEquals("wrong id?", new BaseId(0), projectMetaDataJson.getId("Id"));
+		
+		CodeList countryCodes = new CodeList(projectMetaDataJson.optString("Countries"));
+		assertEquals("wrong number of countries?", 4, countryCodes.size());
+		assertTrue("counrty code not found?", countryCodes.contains("AFG"));
+		assertTrue("counrty code not found?", countryCodes.contains("ALA"));
+		assertTrue("counrty code not found?", countryCodes.contains("ALB"));
+		assertTrue("counrty code not found?", countryCodes.contains("DZA"));
 	}
 	
 	public void testCreateThreatStressRatingsForTargetThreatLinks() throws Exception
