@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -245,6 +246,22 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public boolean areIndicatorsVisible()
 	{
 		return project.getLayerManager().areIndicatorsVisible();
+	}
+	
+	public EAMGraphCell[] getSelectedAndRelatedCells()
+	{
+		try
+		{
+			Object[] selectedCells = getSelectionModel().getSelectionCells();
+			HashSet<EAMGraphCell> cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
+			
+			return cellVector.toArray(new EAMGraphCell[0]);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new EAMGraphCell[0];
+		}
 	}
 	
 	public FactorCell getSelectedFactor()
