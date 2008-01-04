@@ -156,6 +156,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 28)
 				upgradeToVersion29();
+			
+			if (readDataVersion(getTopDirectory()) == 29)
+				upgradeToVersion30();
 		}
 		finally 
 		{
@@ -163,6 +166,46 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	private void upgradeToVersion30() throws Exception
+	{
+		notifyIfNonBlankTncCountryCode();
+		writeVersion(30);	
+	}
+
+	private void notifyIfNonBlankTncCountryCode() throws Exception
+	{
+		if (isTncCountryCodeBlank())
+			return;
+			
+		EAM.notifyDialog("TNC country code field is not empty. Please use country field in the locations tab instead.");
+	}
+
+	public boolean isTncCountryCodeBlank() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
+		if (! projectMetaDataDir.exists())
+			return true;
+
+		File projectMetaDataManifestFile = new File(projectMetaDataDir, "manifest");
+		if (! projectMetaDataManifestFile.exists())
+			return true;
+		
+		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
+		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
+		if (projectMetaDataIds.length != 1)
+			return true;
+		
+		BaseId projectMetaDataId = projectMetaDataIds[0];
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
+		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
+		String tncCountryValue = projectMetaDataJson.optString("TNC.Country");
+		if (tncCountryValue.length() == 0)
+			return true;
+		
+		return false;
+	}
+
 	public void upgradeToVersion29() throws Exception
 	{
 		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
@@ -172,7 +215,6 @@ public class DataUpgrader extends FileBasedProjectServer
 	private void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
-		
 		File wwfProjectDataDir = getObjectsDir(jsonDir, 30);
 		if (! wwfProjectDataDir.exists())
 			return;
