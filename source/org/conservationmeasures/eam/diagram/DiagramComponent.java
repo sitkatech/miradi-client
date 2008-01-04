@@ -283,6 +283,29 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		}
 	}
 	
+	public HashSet<LinkCell> getOnlySelectedLinkCells()
+	{
+		if(getSelectionModel() == null)
+			return new HashSet<LinkCell>();
+	
+		Object[] rawCells = getSelectionModel().getSelectionCells();
+		return getOnlySelectedLinkCells(rawCells);
+	}
+	
+	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
+	{
+		HashSet<LinkCell> linkCells = new HashSet();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
+			{
+				LinkCell cell = (LinkCell)allSelectedCells[i];
+				linkCells.add(cell);
+			}
+		}
+		return linkCells;
+	}
+	
 	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
