@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LinkBendPointsMoveHandler;
+import org.conservationmeasures.eam.views.diagram.NudgeDoer;
 import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
@@ -42,6 +43,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
 		linksWithSelectedBendPoints = new HashSet();
+		linksInsideGroupBoxes = new HashSet();
 	}
 
 	Project getProject()
@@ -85,15 +87,13 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 //			dragStartedAt = null;
 //			return;
 //		}
-		
-//FIXME uncomment and include any links in gbes		
-//		DiagramPanel diagramPanel = getDiagramPanel();
-//		FactorCell[] factorCells = diagramPanel.getOnlySelectedFactorCells();
-//		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
-//		linksWithSelectedBendPoints.addAll(getAllLinksInGroupBoxes(diagramPanel.getDiagramModel(), selectedFactorAndChildren));
-		linksWithSelectedBendPoints.addAll(getSelectedLinksWithSelectedBendPoints());
+				
 		try
 		{
+			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
+			linksInsideGroupBoxes.addAll(NudgeDoer.getAllLinksInGroupBoxes(getDiagram().getDiagramModel(), selectedFactorAndChildren));
+			linksWithSelectedBendPoints.addAll(getSelectedLinksWithSelectedBendPoints());
+
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
@@ -130,7 +130,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		moveHasHappened();
+		moveHasHappened(deltaX, deltaY);
 	}
 
 	public void mouseEntered(MouseEvent arg0)
@@ -155,7 +155,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		toolTipManager.setDismissDelay(savedToolTipDismissDelay);
 	}
 
-	private void moveHasHappened()
+	private void moveHasHappened(int deltaX, int deltaY)
 	{
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
@@ -169,6 +169,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			}
 			
 			moveSelectedBendPoints();
+			moveLinkBendPointInGroupBoxes(deltaX, deltaY);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
@@ -194,6 +195,16 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
+	private void moveLinkBendPointInGroupBoxes(int deltaX, int deltaY) throws Exception
+	{
+		LinkCell[] linkCells = linksInsideGroupBoxes.toArray(new LinkCell[0]);
+		for (int i = 0; i < linkCells.length; ++i)
+		{
+			LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
+			moveHandler.moveBendPoints(linkCells[i], deltaX, deltaY);
+		}
+	}
+	
 	public void mouseClicked(MouseEvent event)
 	{
 		if(isPropertiesEvent(event))
@@ -311,6 +322,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	private Point dragStartedAt;
 	private Object[] selectedCells;
 	private HashSet<LinkCell> linksWithSelectedBendPoints;
+	private HashSet<LinkCell> linksInsideGroupBoxes;
 	private int savedToolTipInitialDelay;
 	private int savedToolTipReshowDelay;
 	private int savedToolTipDismissDelay;
