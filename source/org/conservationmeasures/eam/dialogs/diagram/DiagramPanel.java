@@ -78,11 +78,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells()
 	{
-		if(getSelectionModel() == null)
-			return new HashSet<LinkCell>();
-	
-		Object[] rawCells = getSelectionModel().getSelectionCells();
-		return getOnlySelectedLinkCells(rawCells);
+		return getdiagramComponent().getOnlySelectedLinkCells();
 	}
 	
 	public DiagramLink[] getOnlySelectedLinks()
@@ -110,16 +106,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
 	{
-		HashSet<LinkCell> linkCells = new HashSet();
-		for(int i = 0; i < allSelectedCells.length; ++i)
-		{
-			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
-			{
-				LinkCell cell = (LinkCell)allSelectedCells[i];
-				linkCells.add(cell);
-			}
-		}
-		return linkCells;
+		return getdiagramComponent().getOnlySelectedLinkCells(allSelectedCells);
 	}
 
 	public FactorCell[] getOnlySelectedFactorCells()
