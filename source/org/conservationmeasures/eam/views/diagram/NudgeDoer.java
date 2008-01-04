@@ -7,15 +7,19 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.HashSet;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.utils.PointList;
 
@@ -38,33 +42,40 @@ public class NudgeDoer extends LocationDoer
 	private boolean isAnythingSelectedInDiagram()
 	{
 		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
-		return diagramPanel.getOnlySelectedFactorCells().length > 0 || diagramPanel.getOnlySelectedLinkCells().length > 0;
+		return diagramPanel.getOnlySelectedFactorCells().length > 0 || diagramPanel.getOnlySelectedLinkCells().size() > 0;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
 		if (! isAvailable())
 			return;
-		
-		int deltaX = 0;
-		int deltaY = 0;
-		switch(direction)
+
+		try
 		{
-			case KeyEvent.VK_UP:
-				deltaY = -getProject().getGridSize();
-				break;
-			case KeyEvent.VK_DOWN:
-				deltaY = getProject().getGridSize();
-				break;
-			case KeyEvent.VK_LEFT:
-				deltaX = -getProject().getGridSize();
-				break;
-			case KeyEvent.VK_RIGHT:
-				deltaX = getProject().getGridSize();
-				break;
+			int deltaX = 0;
+			int deltaY = 0;
+			switch(direction)
+			{
+				case KeyEvent.VK_UP:
+					deltaY = -getProject().getGridSize();
+					break;
+				case KeyEvent.VK_DOWN:
+					deltaY = getProject().getGridSize();
+					break;
+				case KeyEvent.VK_LEFT:
+					deltaX = -getProject().getGridSize();
+					break;
+				case KeyEvent.VK_RIGHT:
+					deltaX = getProject().getGridSize();
+					break;
+			}
+			EAM.logVerbose("NudgeNodes ("+deltaX + ","+deltaY+")");
+			moveSelectedItems(deltaX, deltaY);
 		}
-		EAM.logVerbose("NudgeNodes ("+deltaX + ","+deltaY+")");
-		moveSelectedItems(deltaX, deltaY);
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 	private boolean isFutureCellLocationInsideDiagramBounds(Point currentLocation, int deltaX, int deltaY)
@@ -78,11 +89,16 @@ public class NudgeDoer extends LocationDoer
 		return true;
 	}
 	
-	private void moveSelectedItems(int deltaX, int deltaY) throws CommandFailedException
+	private void moveSelectedItems(int deltaX, int deltaY) throws Exception
 	{
 		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		FactorCell[] factorCells = diagramPanel.getOnlySelectedFactorCells();
-		LinkCell[] linkCells = diagramPanel.getOnlySelectedLinkCells();
+		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
+		
+		HashSet<LinkCell> allLinkCells = new HashSet();
+		allLinkCells.addAll(getAllLinksInGroupBoxes(selectedFactorAndChildren));
+		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
+		
 		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
 		for(int i = 0; i < factorCells.length; ++i)
 		{
@@ -91,7 +107,7 @@ public class NudgeDoer extends LocationDoer
 				return;			
 		}
 		
-		if (wouldMoveBendPointsOutOfBounds(linkCells, deltaX, deltaY))
+		if (wouldMoveBendPointsOutOfBounds(allLinkCells.toArray(new LinkCell[0]), deltaX, deltaY))
 			return;
 		
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -101,7 +117,7 @@ public class NudgeDoer extends LocationDoer
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
-			moveBendPoints(linkCells, deltaY, deltaX);
+			moveBendPoints(allLinkCells.toArray(new LinkCell[0]), deltaY, deltaX);
 		}
 		catch (Exception e)
 		{
@@ -112,8 +128,45 @@ public class NudgeDoer extends LocationDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private HashSet<LinkCell> getAllLinksInGroupBoxes(HashSet<FactorCell> selectedFactorAndChildren)
+	{
+		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
+		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
+		for (int i = 0; i < factorCells.length; ++i)
+		{
+			FactorCell factorCell = factorCells[i];
+			linksInsideGroupBoxes.addAll(getAllLinkCells(factorCell, factorCells));
+		}
+			
+		return linksInsideGroupBoxes;
+	}
+
+	private HashSet<LinkCell> getAllLinkCells(FactorCell factorCell, FactorCell[] factorCells)
+	{
+		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
+		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
+		DiagramModel model = getDiagramView().getDiagramModel();
+		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
+			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
+			{
+				FactorCell thisFactorCell = factorCells[cellIndex];
+				if (thisFactorCell.getDiagramFactorRef().equals(factorCell.getDiagramFactorRef()))
+					continue;
+				
+				if (!diagramLink.isToOrFrom(thisFactorCell.getDiagramFactorRef()))
+					continue;
+						
+				LinkCell linkCell = model.findLinkCell(diagramLink);
+				linkCell.getBendPointSelectionHelper().selectAll();
+				linksInGroupBoxes.add(linkCell);
+			}
+		}
 		
-		
+		return linksInGroupBoxes;
 	}
 
 	private void moveBendPoints(LinkCell[] links, int deltaY, int deltaX) throws Exception

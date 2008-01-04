@@ -12,7 +12,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.DiagramChainObject;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
@@ -63,7 +62,7 @@ public class SelectChainDoer extends ViewDoer
 
 	public static void selectChainsRelatedToSelectedFactorsAndLinks(DiagramPanel diagramPanel) throws Exception
 	{
-		HashSet<EAMGraphCell> onlySelectedFactorAndGroupChildCells = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
+		HashSet<FactorCell> onlySelectedFactorAndGroupChildCells = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		FactorCell[] selectedFactors = onlySelectedFactorAndGroupChildCells.toArray(new FactorCell[0]);
 		DiagramLink[] selectedLinks = diagramPanel.getOnlySelectedLinks();
 		ORefList realDiagramLinkRefs = new ORefList();

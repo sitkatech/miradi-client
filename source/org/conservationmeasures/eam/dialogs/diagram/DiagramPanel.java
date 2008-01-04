@@ -95,10 +95,10 @@ abstract public class DiagramPanel extends DisposablePanel
 		}
 	}
 	
-	public LinkCell[] getOnlySelectedLinkCells()
+	public HashSet<LinkCell> getOnlySelectedLinkCells()
 	{
 		if(getSelectionModel() == null)
-			return new LinkCell[0];
+			return new HashSet<LinkCell>();
 	
 		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedLinkCells(rawCells);
@@ -127,18 +127,18 @@ abstract public class DiagramPanel extends DisposablePanel
 		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
 	}
 	
-	public LinkCell[] getOnlySelectedLinkCells(Object [] allSelectedCells)
+	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
 	{
-		Vector linkages = new Vector();
+		HashSet<LinkCell> linkCells = new HashSet();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
 			{
 				LinkCell cell = (LinkCell)allSelectedCells[i];
-				linkages.add(cell);
+				linkCells.add(cell);
 			}
 		}
-		return (LinkCell[])linkages.toArray(new LinkCell[0]);
+		return linkCells;
 	}
 
 	public FactorCell[] getOnlySelectedFactorCells()
@@ -150,9 +150,9 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
-	public HashSet<EAMGraphCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
+	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
 	{
-		HashSet<EAMGraphCell> groupBoxChildrenCells = new HashSet();
+		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
 		FactorCell[] selectedCells = getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{
