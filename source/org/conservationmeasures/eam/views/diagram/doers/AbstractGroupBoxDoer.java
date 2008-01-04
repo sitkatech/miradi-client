@@ -60,7 +60,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	
 	}
 	
-	protected boolean isAtLeastOneGroupBoxSelected()
+	protected boolean isExactlyOneGroupBoxSelected()
 	{
 		return getSelectedGroupBoxDiagramFactors().size() == 1;		
 	}
