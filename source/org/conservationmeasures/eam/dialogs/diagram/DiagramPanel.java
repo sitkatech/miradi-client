@@ -125,14 +125,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
 	{
-		Vector nodes = new Vector();
-		for(int i = 0; i < allSelectedCells.length; ++i)
-		{
-			EAMGraphCell cell = ((EAMGraphCell)allSelectedCells[i]);
-			if(cell.isFactor())
-				nodes.add(cell);
-		}
-		return (FactorCell[])nodes.toArray(new FactorCell[0]);
+		return DiagramComponent.getOnlySelectedFactorCells(allSelectedCells);
 	}
 	
 	public Factor[] getOnlySelectedFactors()
