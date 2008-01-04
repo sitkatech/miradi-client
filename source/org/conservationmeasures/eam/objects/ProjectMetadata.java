@@ -215,12 +215,12 @@ public class ProjectMetadata extends BaseObject
 
 	public boolean isBudgetTimePeriodQuarterly()
 	{
-		return getData(TAG_BUDGET_TIME_PERIOD).equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
+		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
 	}
 
 	public boolean isBudgetTimePeriodYearly()
 	{
-		return getData(TAG_BUDGET_TIME_PERIOD).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 	}
 
 	void clear()
@@ -244,7 +244,6 @@ public class ProjectMetadata extends BaseObject
 		currencyType = new ChoiceData();
 		currencySymbol = new StringData();
 		fiscalYearStart = new ChoiceData();
-		budgetTimePeriod = new ChoiceData();
 		projectDescription = new StringData();
 		projectURL = new StringData();
 		projectArea = new StringData();
@@ -281,7 +280,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_CURRENCY_TYPE, currencyType);
 		addField(TAG_CURRENCY_SYMBOL, currencySymbol);
 		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
-		addField(TAG_BUDGET_TIME_PERIOD, budgetTimePeriod);
 		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
 		addField(TAG_PROJECT_URL, projectURL);
 		addField(TAG_PROJECT_AREA, projectArea);
@@ -350,7 +348,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_CURRENCY_TYPE = "CurrencyType";
 	public static final String TAG_CURRENCY_SYMBOL = "CurrencySymbol";
 	public static final String TAG_FISCAL_YEAR_START = "FiscalYearStart";
-	public static final String TAG_BUDGET_TIME_PERIOD = "BudgetTimePeriod";
 	public static final String TAG_PROJECT_DESCRIPTION = "ProjectDescription";
 	public static final String TAG_PROJECT_URL = "ProjectURL";
 	public static final String TAG_PROJECT_AREA = "ProjectArea";
@@ -412,7 +409,6 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData currencyType;
 	private StringData currencySymbol;
 	private ChoiceData fiscalYearStart;
-	private ChoiceData budgetTimePeriod;
 	private StringData projectDescription;
 	private StringData projectURL;
 	private StringData projectArea;

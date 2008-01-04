@@ -569,7 +569,7 @@ public class Project
 		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_CURRENCY_SYMBOL, "$");
-		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_BUDGET_TIME_PERIOD, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 
 		getDatabase().writeProjectInfo(projectInfo);
 	}

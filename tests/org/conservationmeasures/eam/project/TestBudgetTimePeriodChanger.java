@@ -24,7 +24,7 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 
 	public void testConvertQuarterlyToYearly() throws Exception
 	{
-		getProject().getMetadata().setData(ProjectMetadata.TAG_BUDGET_TIME_PERIOD, BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
+		getProject().getMetadata().setData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
 		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
 		getProjectCalendar().clearDateRanges();
 
@@ -40,28 +40,56 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 		
 		BudgetTimePeriodChanger.convertQuarterlyToYearly(getProject());
 		
-		DateRange fiscalYear2007 = getProjectCalendar().createYear("2006-07-01");
-		DateRange fiscalYear2008 = getProjectCalendar().createYear("2007-07-01");
+		{
+			DateRange fiscalYear2007 = getProjectCalendar().createYear("2006-07-01");
+			DateRange fiscalYear2008 = getProjectCalendar().createYear("2007-07-01");
+			
+			assertEquals(0, a1.getDateRangeEffortList().size());
+			
+			DateRangeEffortList list2 = a2.getDateRangeEffortList();
+			assertEquals(1, list2.size());
+			DateRangeEffort list2Effort = list2.get(0);
+			assertEquals(1.0, list2Effort.getUnitQuantity());
+			assertEquals(fiscalYear2007, list2Effort.getDateRange());
+			
+			DateRangeEffortList list3 = a3.getDateRangeEffortList();
+			assertEquals(2, list3.size());
+			
+			DateRangeEffort list3Year1 = list3.get(0);
+			assertEquals(5.0, list3Year1.getUnitQuantity());
+			assertEquals(fiscalYear2007, list3Year1.getDateRange());
+			
+			DateRangeEffort list3Year2 = list3.get(1);
+			assertEquals(4.0, list3Year2.getUnitQuantity());
+			assertEquals(fiscalYear2008, list3Year2.getDateRange());
+		}
 		
-		assertEquals(0, a1.getDateRangeEffortList().size());
-		
-		DateRangeEffortList list2 = a2.getDateRangeEffortList();
-		assertEquals(1, list2.size());
-		DateRangeEffort list2Effort = list2.get(0);
-		assertEquals(1.0, list2Effort.getUnitQuantity());
-		assertEquals(fiscalYear2007, list2Effort.getDateRange());
-		
-		DateRangeEffortList list3 = a3.getDateRangeEffortList();
-		assertEquals(2, list3.size());
-		
-		DateRangeEffort list3Year1 = list3.get(0);
-		assertEquals(5.0, list3Year1.getUnitQuantity());
-		assertEquals(fiscalYear2007, list3Year1.getDateRange());
-		
-		DateRangeEffort list3Year2 = list3.get(1);
-		assertEquals(4.0, list3Year2.getUnitQuantity());
-		assertEquals(fiscalYear2008, list3Year2.getDateRange());
-		
+		BudgetTimePeriodChanger.convertYearlyToQuarterly(getProject());
+
+		{
+			DateRange fiscalQ12007 = getProjectCalendar().createQuarter("2006-07-01");
+			DateRange fiscalQ12008 = getProjectCalendar().createQuarter("2007-07-01");
+			
+			assertEquals(0, a1.getDateRangeEffortList().size());
+			
+			DateRangeEffortList list2 = a2.getDateRangeEffortList();
+			assertEquals(1, list2.size());
+			DateRangeEffort list2Effort = list2.get(0);
+			assertEquals(1.0, list2Effort.getUnitQuantity());
+			assertEquals(fiscalQ12007, list2Effort.getDateRange());
+			
+			DateRangeEffortList list3 = a3.getDateRangeEffortList();
+			assertEquals(2, list3.size());
+			
+			DateRangeEffort list3Year1 = list3.get(0);
+			assertEquals(5.0, list3Year1.getUnitQuantity());
+			assertEquals(fiscalQ12007, list3Year1.getDateRange());
+			
+			DateRangeEffort list3Year2 = list3.get(1);
+			assertEquals(4.0, list3Year2.getUnitQuantity());
+			assertEquals(fiscalQ12008, list3Year2.getDateRange());
+
+		}
 	}
 
 	private void createAndAddDateRangeEffort(Assignment assignment, String startDate, double effort) throws Exception

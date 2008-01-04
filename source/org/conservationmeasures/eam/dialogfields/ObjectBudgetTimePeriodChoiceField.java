@@ -5,23 +5,20 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.event.ActionEvent;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.BudgetTimePeriodChanger;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
-public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
+public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupField
 {
 	public ObjectBudgetTimePeriodChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse);
-	}
-	
-	ComboChangeHandler createActionHandler()
-	{
-		return new BudgetTimePeriodComboChangeHandler();
 	}
 	
 	public void setText(String code)
@@ -38,81 +35,120 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectChoiceField
 		}
 	}
 
-	class BudgetTimePeriodComboChangeHandler extends ComboChangeHandler
+	public void buttonWasPressed(String newCode)
 	{
-		public void actionPerformed(ActionEvent event)
+		if(disableHandler)
 		{
-			if(disableHandler)
-				return;
-			
-			String oldValue = getOldValue();
-			String newValue = getText();
-			if(oldValue.equals(newValue))
-				return;
-			
-			String discardButtonLabel = EAM.text("Discard");
-			String distributeButtonLabel = EAM.text("Distribute Evenly");
-			String cancelButtonLabel = EAM.getCancelButtonText();
-			String text = EAM.text("<html><p>If you have existing budget data, it can be migrated to the new time periods.</p>" +
-					"<p>" +
-					"<p>Please select how to handle existing budget data:</p>" +
-					"<p>" +
-					"<table>" +
-					"<tr><td>&lt;" + discardButtonLabel + "&gt;<td>Deletes all existing budget entries" +
-					"<tr><td>&lt;" + distributeButtonLabel + "&gt;<td>Consolidates or spreads out existing entries" +
-					"<tr><td>&lt;" + cancelButtonLabel + "&gt;<td>Revert to the existing time period with no data changes" +
-					"</table>" +
-					"<p>" +
-					"<p><em>NOTE:</em> If you don't like the changes, you can undo this operation to restore the old values," +
-					"<br>but only within this session, before you close this project." +
-					"");
-			String[] buttonLabels = {discardButtonLabel, distributeButtonLabel, cancelButtonLabel,};
-			
-			boolean worked = true;
-			
-			int result = EAM.confirmDialog(EAM.text("Change Budget Time Period"), text, buttonLabels);
-			switch(result)
-			{
-				case 0:
-					EAM.notifyDialog("Changing Budget Time Periods is not yet supported.");
-					worked = false;
-					break;
-				case 1:
-					worked = distributeDateRangeEffortLists(oldValue, newValue);
-					break;
-				default:
-					worked = false;
-					break;
-			}
-			
-			if(worked)
-				super.actionPerformed(event);
-			else
-				setText(oldValue);
+			super.buttonWasPressed(newCode);
+			return;
 		}
-
-		private boolean distributeDateRangeEffortLists(String oldValue, String newValue)
+		
+		String previouslySelectedCode = getProject().getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT);
+		
+		if(newCode.equals(previouslySelectedCode))
 		{
-			EAM.notifyDialog("Changing Budget Time Periods is not yet supported.");
-			return false;
-//			try
-//			{
-//				BudgetTimePeriodChanger.distributeAllDateRangeEffortLists(getProject(), oldValue, newValue);
-//				return true;
-//			}
-//			catch(UnknownConversionException e)
-//			{
-//				EAM.logError("Attempted to convert " + oldValue + " to " + newValue);
-//				EAM.errorDialog("Unable to convert the data in that way.");
-//				return false;
-//			}
-//			catch(Exception e)
-//			{
-//				EAM.panic(e);
-//				return false;
-//			}
+			super.buttonWasPressed(newCode);
+			return;
+		}
+		
+		try
+		{
+			String conversionType = askUserForConversionType(previouslySelectedCode, newCode);
+			if(conversionType == null || conversionType.equals(cancelButtonLabel))
+			{
+				setText(previouslySelectedCode);
+			}
+			super.buttonWasPressed(newCode);
+			
+			if(conversionType.equals(firstQuarterButtonLabel))
+				BudgetTimePeriodChanger.convertYearlyToQuarterly(project);
+			
+			if(conversionType.equals(combineButtonLabel))
+				BudgetTimePeriodChanger.convertQuarterlyToYearly(project);
+			
+			previouslySelectedCode = newCode;
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
 		}
 	}
+
+	private String askUserForConversionType(String oldCode, String newCode) throws Exception
+	{
+		if(project.getPool(Assignment.getObjectType()).getRefList().size() == 0)
+			return null;
+		
+		boolean wasByQuarter = (oldCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE));
+		boolean wasByYear = (oldCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE));
+		boolean isNowByQuarter = (newCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE));
+		boolean isNowByYear = (newCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE));
+		
+		String conversionType = null;
+		if(wasByQuarter && isNowByYear)
+			conversionType = getQuarterlyToYearlyConversionType();
+		else if(wasByYear && isNowByQuarter)
+			conversionType = getYearlyToQuarterlyConversionType();
+		else
+			EAM.errorDialog("Unable to perform data conversion");
+		return conversionType;
+	}
+
+	private String getQuarterlyToYearlyConversionType() throws Exception
+	{
+		String text = EAM.text("<html><p>If you have existing budget data, it can be migrated to the new time periods.</p>" +
+		"<p>" +
+		"<p>Please select how to handle existing budget data:</p>" +
+		"<p>" +
+		"<table>" +
+		"<tr><td>&lt;" + combineButtonLabel + "&gt;<td>Consolidates quarterly data into years" +
+		"<tr><td>&lt;" + cancelButtonLabel + "&gt;<td>Revert to the yearly planning with no data changes" +
+		"</table>" +
+		"<p>" +
+		"<p><em>NOTE:</em> If you don't like the changes, you can undo this operation to restore the old values," +
+		"<br>but only within this session, before you close this project." +
+		"");
+		String[] buttonLabels = {combineButtonLabel, cancelButtonLabel,};
+		
+		int result = EAM.confirmDialog(EAM.text("Change Budget Time Period"), text, buttonLabels);
+		if(result < 0)
+			return null;
+		return buttonLabels[result];
+	}
+
+	private String getYearlyToQuarterlyConversionType() throws Exception
+	{
+		String text = 
+		EAM.text("<html><p>If you have existing budget data, it can be migrated to the new time periods.</p>" +
+				"<p>" +
+				"<p>Please select how to handle existing budget data:</p>" +
+				"<p>" +
+				"<table>" +
+				"<tr><td>&lt;") + firstQuarterButtonLabel + 
+		EAM.text("&gt;<td>Put each year's value into its first quarter" +
+				"<tr><td>&lt;") + 
+		cancelButtonLabel + 
+		EAM.text("&gt;<td>Revert to the yearly planning with no data changes" +
+			"</table>" +
+			"<p>" +
+			"<p><em>NOTE:</em> If you don't like the changes, you can undo this operation to restore the old values," +
+			"<br>but only within this session, before you close this project." +
+		"");
+		String[] buttonLabels = {firstQuarterButtonLabel, cancelButtonLabel,};
+		
+		int result = EAM.confirmDialog(EAM.text("Change Budget Time Period"), text, buttonLabels);
+		if(result < 0)
+			return null;
+		return buttonLabels[result];
+	}
+
+	
+	private static final String combineButtonLabel = EAM.text("Combine");
+	private static final String firstQuarterButtonLabel = EAM.text("First Quarter");
+	private static final String cancelButtonLabel = EAM.getCancelButtonText();
+
+
 	
 	private boolean disableHandler;
 }
+
