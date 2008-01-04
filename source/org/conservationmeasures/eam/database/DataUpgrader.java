@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
 import org.json.JSONObject;
@@ -152,6 +153,9 @@ public class DataUpgrader extends FileBasedProjectServer
 
 			if (readDataVersion(getTopDirectory()) == 27)
 				upgradeToVersion28();
+			
+			if (readDataVersion(getTopDirectory()) == 28)
+				upgradeToVersion29();
 		}
 		finally 
 		{
@@ -159,6 +163,72 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	public void upgradeToVersion29() throws Exception
+	{
+		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
+		writeVersion(29);
+	}
+
+	private void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		
+		File wwfProjectDataDir = getObjectsDir(jsonDir, 30);
+		if (! wwfProjectDataDir.exists())
+			return;
+
+		File wwfProjectDataManifestFile = new File(wwfProjectDataDir, "manifest");
+		if (! wwfProjectDataManifestFile.exists())
+			return;
+		
+		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
+		if (! projectMetaDataDir.exists())
+			throw new RuntimeException("Project Meta Data dir does not exist");
+
+		File projectMetaDataManifestFile = new File(projectMetaDataDir, "manifest");
+		if (! projectMetaDataManifestFile.exists())
+			throw new RuntimeException("Project Meta Data manifest file does not exist");
+		
+		ObjectManifest wwfProjectDataManifest = new ObjectManifest(JSONFile.read(wwfProjectDataManifestFile));
+		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
+		BaseId[] wwfProjectDataIds = wwfProjectDataManifest.getAllKeys();
+		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
+		if (wwfProjectDataIds.length != 1)
+			return;
+		
+		if (projectMetaDataIds.length != 1)
+			return;
+		
+		BaseId wwfProjectDataId = wwfProjectDataIds[0];
+		File wwfProjectDataFile = new File(wwfProjectDataDir, Integer.toString(wwfProjectDataId.asInt()));
+		EnhancedJsonObject wwfProjectDataJson = readFile(wwfProjectDataFile);
+		CodeList countryCodes = new CodeList(wwfProjectDataJson.optString("Countries"));
+		
+		BaseId projectMetaDataId = projectMetaDataIds[0];
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
+		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
+		
+		projectMetaDataJson.put("Countries", countryCodes.toString());
+		writeJson(projectMetaDataFile, projectMetaDataJson);
+		
+//		for (int i = 0; i < wwfProjectDataIds.length; ++i)
+//		{
+//			BaseId diagramLinkId = wwfProjectDataIds[i];
+//			File diagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
+//			EnhancedJsonObject diagramLinkJson = readFile(diagramLinkFile);
+//			PointList bendPointsWithPossibleDuplicates = new PointList(diagramLinkJson.optString("BendPoints"));
+//			PointList nonDuplicateBendPointList = omitDuplicateBendPoints(bendPointsWithPossibleDuplicates);
+//			if (nonDuplicateBendPointList.size() != bendPointsWithPossibleDuplicates.size())
+//			{ 
+//				diagramLinkJson.put("BendPoints", nonDuplicateBendPointList.toString());
+//				writeJson(diagramLinkFile, diagramLinkJson);
+//			}
+//		}
+	
+
+
+	}
+
 	public void upgradeToVersion28() throws Exception
 	{
 		EAM.notifyDialog(EAM.text("<html>" +
