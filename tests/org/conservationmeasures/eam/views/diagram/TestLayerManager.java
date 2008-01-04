@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.diagram.cells.DiagramTargetCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -18,6 +17,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -34,12 +34,14 @@ public class TestLayerManager extends EAMTestCase
 		super.setUp();
 		
 		project = new ProjectForTesting(getName());
-		idAssigner = new IdAssigner();
-		cmTarget = new Target(takeNextModelNodeId());
+		ORef targetRef = project.createObject(Target.getObjectType());
+		cmTarget = (Target) Factor.findFactor(project, targetRef);
 		cmTarget.setLabel("Target");
-		cmFactor = new Cause(project.getObjectManager(), takeNextModelNodeId());
+		ORef causeRef = project.createObject(Cause.getObjectType());
+		cmFactor = (Cause) Factor.findFactor(project, causeRef);
 		cmFactor.setLabel("Factor");
-		cmIntervention = new Strategy(takeNextModelNodeId());
+		ORef strategyRef = project.createObject(Strategy.getObjectType());
+		cmIntervention = (Strategy) Factor.findFactor(project, strategyRef);
 		cmIntervention.setLabel("Strategy");
 		
 		target = project.createFactorCell(ObjectType.TARGET);
@@ -151,19 +153,12 @@ public class TestLayerManager extends EAMTestCase
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(project.getDiagramObject(), node));
 	}
 	
-	private FactorId takeNextModelNodeId()
-	{
-		return new FactorId(idAssigner.takeNextId().asInt());
-	}
+	private Target cmTarget;
+	private Cause cmFactor;
+	private Strategy cmIntervention;
 	
-	IdAssigner idAssigner;
-
-	Target cmTarget;
-	Cause cmFactor;
-	Strategy cmIntervention;
-	
-	ProjectForTesting project;
-	FactorCell target;
-	FactorCell factor;
-	FactorCell intervention;
+	private ProjectForTesting project;
+	private FactorCell target;
+	private FactorCell factor;
+	private FactorCell intervention;
 }
