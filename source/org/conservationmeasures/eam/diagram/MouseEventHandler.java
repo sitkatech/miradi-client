@@ -8,13 +8,11 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
 import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.ToolTipManager;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
@@ -33,7 +31,6 @@ import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
-import org.jgraph.graph.EdgeView;
 
 
 public class MouseEventHandler extends MouseAdapter implements GraphSelectionListener
@@ -42,28 +39,22 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	{
 		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
-		linksWithSelectedBendPoints = new HashSet();
-		linksInsideGroupBoxes = new HashSet();
 	}
 
-	Project getProject()
+	private Project getProject()
 	{
 		return mainWindow.getProject();
 	}
 
-	DiagramComponent getDiagram()
+	private DiagramComponent getDiagram()
 	{
 		return mainWindow.getDiagramComponent();
-	}
-
-	Actions getActions()
-	{
-		return mainWindow.getActions();
 	}
 
 	//Note: customMarquee Handler will get notified first
 	public void mousePressed(MouseEvent event)
 	{
+		selectedAndGroupBoxCoveredLinkCells = new HashSet();
 		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
@@ -91,8 +82,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		try
 		{
 			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
-			linksInsideGroupBoxes.addAll(NudgeDoer.getAllLinksInGroupBoxes(getDiagram().getDiagramModel(), selectedFactorAndChildren));
-			linksWithSelectedBendPoints.addAll(getSelectedLinksWithSelectedBendPoints());
+			selectedAndGroupBoxCoveredLinkCells.addAll(NudgeDoer.getAllLinksInGroupBoxes(getDiagram().getDiagramModel(), selectedFactorAndChildren));
+			selectedAndGroupBoxCoveredLinkCells.addAll(getSelectedLinksWithSelectedBendPoints());
 
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
@@ -168,7 +159,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 			}
 			
-			moveSelectedBendPoints();
 			moveLinkBendPointInGroupBoxes(deltaX, deltaY);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
@@ -186,18 +176,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		mainWindow.getDiagramComponent().setMarquee(false);
 	}
 
-	private void moveSelectedBendPoints() throws Exception
-	{
-		LinkCell[] linkCells = linksWithSelectedBendPoints.toArray(new LinkCell[0]);
-		for (int i = 0; i < linkCells.length; ++i)
-		{
-			moveBendPoints(linkCells[i]);
-		}
-	}
-
 	private void moveLinkBendPointInGroupBoxes(int deltaX, int deltaY) throws Exception
 	{
-		LinkCell[] linkCells = linksInsideGroupBoxes.toArray(new LinkCell[0]);
+		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{
 			LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
@@ -277,26 +258,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
-	private void moveBendPoints(LinkCell linkCell) throws Exception
-	{
-		EdgeView edge = getDiagram().getEdgeView(linkCell);
-		Point2D[] bendPoints = extractBendPoints(edge);
-		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
-		moveHandler.moveBendPoints(linkCell, bendPoints);
-	}
-
-	private Point2D[] extractBendPoints(EdgeView edge)
-	{
-		Vector clonedControlPoints = new Vector(edge.getPoints());
-		final int FIRST_PORT_INDEX = 0;
-		clonedControlPoints.remove(FIRST_PORT_INDEX);
-
-		final int LAST_PORT_INDEX = clonedControlPoints.size() - 1;
-		clonedControlPoints.remove(LAST_PORT_INDEX);
-
-		return (Point2D[]) clonedControlPoints.toArray(new Point2D[0]);
-	}
-	
 	private HashSet<LinkCell> getSelectedLinksWithSelectedBendPoints()
 	{
 		HashSet<LinkCell> linksWithBendPoints = new HashSet();
@@ -321,8 +282,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	private MainWindow mainWindow;
 	private Point dragStartedAt;
 	private Object[] selectedCells;
-	private HashSet<LinkCell> linksWithSelectedBendPoints;
-	private HashSet<LinkCell> linksInsideGroupBoxes;
+	private HashSet<LinkCell> selectedAndGroupBoxCoveredLinkCells;
 	private int savedToolTipInitialDelay;
 	private int savedToolTipReshowDelay;
 	private int savedToolTipDismissDelay;
