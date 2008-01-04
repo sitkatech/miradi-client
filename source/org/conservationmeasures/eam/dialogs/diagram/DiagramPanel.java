@@ -73,15 +73,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public void selectFactor(FactorId idToUse)
 	{
-		try
-		{
-			FactorCell nodeToSelect = getDiagramModel().getFactorCellByWrappedId(idToUse);
-			getSelectionModel().setSelectionCell(nodeToSelect);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		getdiagramComponent().selectFactor(idToUse);
 	}
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells()

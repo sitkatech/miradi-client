@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
@@ -269,6 +270,18 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		getSelectionModel().addSelectionCells(cellsToSelect);
 	}
 
+	public void selectFactor(FactorId idToUse)
+	{
+		try
+		{
+			FactorCell nodeToSelect = getDiagramModel().getFactorCellByWrappedId(idToUse);
+			getSelectionModel().setSelectionCell(nodeToSelect);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
 	
 	public FactorCell getSelectedFactor()
 	{
