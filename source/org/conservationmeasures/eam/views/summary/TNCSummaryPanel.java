@@ -23,7 +23,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createMultilineField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 		addField(createNumericField(metadata.TAG_TNC_SIZE_IN_HECTARES));
 		addField(createStringField(metadata.TAG_TNC_ECOREGION));
-		addField(createStringField(metadata.TAG_TNC_COUNTRY));
+		addField(createReadonlyTextField(metadata.TAG_TNC_COUNTRY));
 		addField(createStringField(metadata.TAG_TNC_OPERATING_UNITS));
 
 		updateFieldsFromProject();
