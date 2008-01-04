@@ -99,20 +99,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
 	{
-		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
-		FactorCell[] selectedCells = getOnlySelectedFactorCells();
-		for (int i = 0; i < selectedCells.length; ++i)
-		{
-			FactorCell selectedCell = selectedCells[i];
-			groupBoxChildrenCells.add(selectedCell);
-			if (selectedCell.getDiagramFactor().isGroupBoxFactor())
-			{
-				DiagramModel diagramModel = getDiagramModel();
-				groupBoxChildrenCells.addAll(diagramModel.getGroupBoxFactorChildren(selectedCell));
-			}		
-		}
-
-		return groupBoxChildrenCells;
+		return getdiagramComponent().getOnlySelectedFactorAndGroupChildCells();
 	}
 	
 	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)

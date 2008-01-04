@@ -377,7 +377,25 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Object[] rawCells = getSelectionModel().getSelectionCells();
 		return getOnlySelectedFactorCells(rawCells);
 	}
-			
+	
+	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
+	{
+		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
+		FactorCell[] selectedCells = getOnlySelectedFactorCells();
+		for (int i = 0; i < selectedCells.length; ++i)
+		{
+			FactorCell selectedCell = selectedCells[i];
+			groupBoxChildrenCells.add(selectedCell);
+			if (selectedCell.getDiagramFactor().isGroupBoxFactor())
+			{
+				DiagramModel diagramModel = getDiagramModel();
+				groupBoxChildrenCells.addAll(diagramModel.getGroupBoxFactorChildren(selectedCell));
+			}		
+		}
+
+		return groupBoxChildrenCells;
+	}
+				
 	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
