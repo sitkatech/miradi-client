@@ -54,7 +54,9 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		{
 			JRadioButton button = buttonsByCode.get(code);
 			if(button.isSelected())
+			{
 				return code;
+			}
 		}
 		return "";
 	}

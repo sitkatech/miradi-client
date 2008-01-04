@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Assignment;
@@ -58,19 +60,35 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 			{
 				setText(previouslySelectedCode);
 			}
-			super.buttonWasPressed(newCode);
-			
-			if(conversionType.equals(firstQuarterButtonLabel))
-				BudgetTimePeriodChanger.convertYearlyToQuarterly(project);
-			
-			if(conversionType.equals(combineButtonLabel))
-				BudgetTimePeriodChanger.convertQuarterlyToYearly(project);
-			
-			previouslySelectedCode = newCode;
+			else
+			{
+				doConversion(newCode, conversionType);
+			}
 		}
 		catch(Exception e)
 		{
 			EAM.panic(e);
+		}
+	}
+
+	private void doConversion(String newCode, String conversionType) throws Exception
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			super.buttonWasPressed(newCode);
+
+			if(conversionType.equals(firstQuarterButtonLabel))
+				BudgetTimePeriodChanger.convertYearlyToQuarterly(project);
+			
+			if(conversionType.equals(combineButtonLabel))
+			{
+				BudgetTimePeriodChanger.convertQuarterlyToYearly(project);
+			}
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 
