@@ -329,6 +329,18 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
 	}
 	
+	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			EAMGraphCell cell = ((EAMGraphCell)allSelectedCells[i]);
+			if(cell.isFactor())
+				nodes.add(cell);
+		}
+		return (FactorCell[])nodes.toArray(new FactorCell[0]);
+	}
+	
 	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
