@@ -159,6 +159,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 29)
 				upgradeToVersion30();
+			
+			if (readDataVersion(getTopDirectory()) == 30)
+				upgradeToVersion31();
 		}
 		finally 
 		{
@@ -166,6 +169,36 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	private void upgradeToVersion31() throws Exception
+	{
+		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
+		writeVersion(31);	
+	}
+
+	public void copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
+		if (! projectMetaDataDir.exists())
+			return;
+
+		File projectMetaDataManifestFile = new File(projectMetaDataDir, "manifest");
+		if (! projectMetaDataManifestFile.exists())
+			return;
+		
+		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
+		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
+		if (projectMetaDataIds.length != 1)
+			return;
+		
+		BaseId projectMetaDataId = projectMetaDataIds[0];
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
+		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
+		
+		projectMetaDataJson.put("ProjectArea", projectMetaDataJson.optString("TNC.SizeInHectares"));
+		writeJson(projectMetaDataFile, projectMetaDataJson);
+	}
+
 	private void upgradeToVersion30() throws Exception
 	{
 		notifyIfNonBlankTncCountryCode();
