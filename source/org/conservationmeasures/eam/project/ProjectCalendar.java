@@ -164,6 +164,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new DateRange(yearStart, yearEnd);
 	}
 
+	public DateRange createQuarter(String isoQuarterStart) throws Exception
+	{
+		return createQuarter(MultiCalendar.createFromIsoDateString(isoQuarterStart));
+	}
+	
 	public DateRange createQuarter(MultiCalendar quarterStart) throws Exception
 	{
 		MultiCalendar end = nextQuarter(quarterStart);
@@ -197,7 +202,8 @@ public class ProjectCalendar implements CommandExecutedListener
 		{
 			if(cmd.getFieldTag().equals(ProjectMetadata.TAG_START_DATE) ||
 					cmd.getFieldTag().equals(ProjectMetadata.TAG_EXPECTED_END_DATE) ||
-					cmd.getFieldTag().equals(ProjectMetadata.TAG_FISCAL_YEAR_START))
+					cmd.getFieldTag().equals(ProjectMetadata.TAG_FISCAL_YEAR_START) ||
+					cmd.getFieldTag().equals(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT))
 			{
 				clearDateRanges();
 			}

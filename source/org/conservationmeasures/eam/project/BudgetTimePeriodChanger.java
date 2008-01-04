@@ -12,27 +12,11 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.ObjectPool;
 import org.conservationmeasures.eam.objects.Assignment;
-import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 
 public class BudgetTimePeriodChanger
 {
-	public static void distributeAllDateRangeEffortLists(Project project, String oldCode, String newCode) throws Exception
-	{
-		boolean wasByQuarter = (oldCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE));
-		boolean wasByYear = (oldCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE));
-		boolean isNowByQuarter = (newCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE));
-		boolean isNowByYear = (newCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE));
-		
-		if(wasByQuarter && isNowByYear)
-			convertQuarterlyToYearly(project);
-		if(wasByYear && isNowByQuarter)
-			convertYearlyToQuarterly(project);
-
-		throw new UnknownConversionException();
-	}
-
 	public static void convertQuarterlyToYearly(Project project) throws Exception
 	{
 		ObjectPool assignmentPool = project.getPool(Assignment.getObjectType());
@@ -67,12 +51,37 @@ public class BudgetTimePeriodChanger
 		project.executeCommand(cmd);
 	}
 
-	public static void convertYearlyToQuarterly(Project project)
+	public static void convertYearlyToQuarterly(Project project) throws Exception
 	{
+		ObjectPool assignmentPool = project.getPool(Assignment.getObjectType());
+		ORefList refs = assignmentPool.getRefList();
+		for(int i = 0; i < refs.size(); ++i)
+			convertYearlyToQuarterly(Assignment.find(project, refs.get(i)));
+	
 	}
 
-	public static class UnknownConversionException extends Exception 
+	private static void convertYearlyToQuarterly(Assignment assignment) throws Exception
 	{
+		Project project = assignment.getProject();
+		ProjectCalendar projectCalendar = project.getProjectCalendar();
 		
+		DateRangeEffortList oldEffortList = assignment.getDateRangeEffortList();
+		if(oldEffortList.size() == 0)
+			return;
+		
+		DateRangeEffortList newEffortList = new DateRangeEffortList();
+
+		for(int i = 0; i < oldEffortList.size(); ++i)
+		{
+			DateRangeEffort oldDre = oldEffortList.get(i);
+			DateRange firstQuarter = projectCalendar.createQuarter(oldDre.getDateRange().getStartDate());
+			DateRangeEffort newDre = new DateRangeEffort("", oldDre.getUnitQuantity(), firstQuarter);
+			newEffortList.add(newDre);
+		}
+		
+		CommandSetObjectData cmd = new CommandSetObjectData(assignment.getRef(), Assignment.TAG_DATERANGE_EFFORTS, newEffortList.toString());
+		project.executeCommand(cmd);
 	}
+
+
 }
