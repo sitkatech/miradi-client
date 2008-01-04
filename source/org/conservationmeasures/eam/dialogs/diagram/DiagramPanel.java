@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs.diagram;
 
 import java.awt.Component;
 import java.util.HashSet;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -20,11 +19,9 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
 
@@ -33,7 +30,6 @@ abstract public class DiagramPanel extends DisposablePanel
 	public DiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
-		project = mainWindow.getProject();
 		diagramSplitter = createDiagramSplitter();
 		add(diagramSplitter);
 	}
@@ -130,28 +126,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public Factor[] getOnlySelectedFactors()
 	{
-		if (getSelectionModel() == null)
-			return new Factor[0];
-		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
-		return getOnlySelectedFactors(rawCells);
-	}
-	
-	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
-	{
-		Vector nodes = new Vector();
-		for(int i = 0; i < allSelectedFactors.length; ++i)
-		{
-			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
-			if(graphCell.isFactor())
-			{
-				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
-				Factor factor = (Factor) project.findObject(ref);
-				nodes.add(factor);
-			}
-		}
-		return (Factor[])nodes.toArray(new Factor[0]);
-
+		return getdiagramComponent().getOnlySelectedFactors();
 	}
 	
 	public EAMGraphCell[] getOnlySelectedCells()
@@ -215,6 +190,5 @@ abstract public class DiagramPanel extends DisposablePanel
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	
 	DiagramSplitPane diagramSplitter;
-	private Project project;
 	protected MainWindow mainWindow;
 }

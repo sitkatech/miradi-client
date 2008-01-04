@@ -47,7 +47,9 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
@@ -341,6 +343,32 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (FactorCell[])nodes.toArray(new FactorCell[0]);
 	}
 	
+	public Factor[] getOnlySelectedFactors()
+	{
+		if (getSelectionModel() == null)
+			return new Factor[0];
+		
+		Object[] rawCells = getSelectionModel().getSelectionCells();
+		return getOnlySelectedFactors(rawCells);
+	}
+	
+	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
+	{
+		Vector nodes = new Vector();
+		for(int i = 0; i < allSelectedFactors.length; ++i)
+		{
+			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
+			if(graphCell.isFactor())
+			{
+				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
+				Factor factor = (Factor) project.findObject(ref);
+				nodes.add(factor);
+			}
+		}
+		return (Factor[])nodes.toArray(new Factor[0]);
+
+	}
+		
 	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
