@@ -39,9 +39,8 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 			panel.add(button);
 			buttonsByCode.put(choiceItem.getCode(), button);
 		}
-		
+		addFocusListener();
 		setText("");
-		EAM.logWarning("Need a focus listener here?");
 	}
 
 	public JComponent getComponent()
