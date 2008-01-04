@@ -83,25 +83,12 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public DiagramLink[] getOnlySelectedLinks()
 	{
-		if(getSelectionModel() == null)
-			return new DiagramLink[0];
-		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
-		return getOnlySelectedLinks(rawCells);
+		return getdiagramComponent().getOnlySelectedLinks();
 	}
 	
 	public DiagramLink[] getOnlySelectedLinks(Object [] allSelectedCells)
 	{
-		Vector linkages = new Vector();
-		for(int i = 0; i < allSelectedCells.length; ++i)
-		{
-			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
-			{
-				LinkCell cell = (LinkCell)allSelectedCells[i];
-				linkages.add(cell.getDiagramLink());
-			}
-		}
-		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
+		return getdiagramComponent().getOnlySelectedLinks(allSelectedCells);
 	}
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
