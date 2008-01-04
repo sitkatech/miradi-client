@@ -177,7 +177,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (isTncCountryCodeBlank())
 			return;
 			
-		EAM.notifyDialog("TNC country code field is not empty. Please use country field in the locations tab instead.");
+		EAM.notifyDialog("<HTML>The Country field on the TNC tab has been replaced by a Countries <BR>field on the Location tab. Please ensure that the new Countries field is correct for this project.</HTML>");
 	}
 
 	public boolean isTncCountryCodeBlank() throws Exception
