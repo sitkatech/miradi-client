@@ -25,21 +25,13 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 
-		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME));
-		addField(createDateChooserField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_START_DATE));
-		addField(createDateChooserField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_RELATED_PROJECTS));
 		addField(createStringField(WwfProjectData.getObjectType(), WwfProjectData.TAG_PROJECT_NUMBER, 20));
-		addField(createMultilineField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_VISION));
-		addField(createCurrencyField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING));
-		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
-		addField(createReadOnlyObjectList(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS));
 		
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfManagingOfficesQuestion(WwfProjectData.TAG_MANAGING_OFFICES), 1));
 		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfRegionsQuestion(WwfProjectData.TAG_REGIONS), 1));
 		addField(createReadonlyMultiCodeField(WwfProjectData.getObjectType(), new WwfCountriesQuestion(WwfProjectData.TAG_COUNTRIES), 1));
-		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfEcoRegionsQuestion(WwfProjectData.TAG_ECOREGIONS), 1));
-		
+		addField(createMultiCodeField(WwfProjectData.getObjectType(), new WwfEcoRegionsQuestion(WwfProjectData.TAG_ECOREGIONS), 1));		
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
 	}
