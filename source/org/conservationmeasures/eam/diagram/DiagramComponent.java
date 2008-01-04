@@ -368,7 +368,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (Factor[])nodes.toArray(new Factor[0]);
 
 	}
+	
+	public FactorCell[] getOnlySelectedFactorCells()
+	{
+		if(getSelectionModel() == null)
+			return new FactorCell[0];
 		
+		Object[] rawCells = getSelectionModel().getSelectionCells();
+		return getOnlySelectedFactorCells(rawCells);
+	}
+			
 	public FactorCell getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
