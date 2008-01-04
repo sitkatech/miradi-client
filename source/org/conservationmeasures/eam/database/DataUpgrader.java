@@ -210,23 +210,6 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		projectMetaDataJson.put("Countries", countryCodes.toString());
 		writeJson(projectMetaDataFile, projectMetaDataJson);
-		
-//		for (int i = 0; i < wwfProjectDataIds.length; ++i)
-//		{
-//			BaseId diagramLinkId = wwfProjectDataIds[i];
-//			File diagramLinkFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
-//			EnhancedJsonObject diagramLinkJson = readFile(diagramLinkFile);
-//			PointList bendPointsWithPossibleDuplicates = new PointList(diagramLinkJson.optString("BendPoints"));
-//			PointList nonDuplicateBendPointList = omitDuplicateBendPoints(bendPointsWithPossibleDuplicates);
-//			if (nonDuplicateBendPointList.size() != bendPointsWithPossibleDuplicates.size())
-//			{ 
-//				diagramLinkJson.put("BendPoints", nonDuplicateBendPointList.toString());
-//				writeJson(diagramLinkFile, diagramLinkJson);
-//			}
-//		}
-	
-
-
 	}
 
 	public void upgradeToVersion28() throws Exception
