@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.ToolTipManager;
@@ -281,7 +282,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	
 	private void updateLinksWithSelectedBendPoints()
 	{
-		Vector linksWithSelectedbendPoints = new Vector();
+		HashSet<LinkCell> linksWithSelectedbendPoints = new HashSet();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
@@ -293,7 +294,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				linksWithSelectedbendPoints.add(linkCell);
 		}
 		
-		linksWithSelectedBendPoints = (LinkCell[]) linksWithSelectedbendPoints.toArray(new LinkCell[0]);
+		linksWithSelectedBendPoints = linksWithSelectedbendPoints.toArray(new LinkCell[0]);
 	}
 
 	private static final int TOOLTIP_DEFAULT_MILLIS = 1000;
