@@ -24,9 +24,29 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		if (!isExactlyOneGroupBoxSelected())
 			return false;
 		
+		if (isOwnedByDifferentGroupBoxThanSelected())
+			return false;
+		
 		return true;
 	}
 	
+	private boolean isOwnedByDifferentGroupBoxThanSelected()
+	{
+		ORefList nonGroupBoxSelectedRefs = getSelectedNonGroupBoxDiagramFactors();
+		DiagramFactor selectedGroupBox = getSingleSelectedGroupBox();
+		for (int i = 0; i < nonGroupBoxSelectedRefs.size(); ++i)
+		{
+			DiagramFactor groupChildFactor = DiagramFactor.find(getProject(), nonGroupBoxSelectedRefs.get(i));
+			if (groupChildFactor.getOwningGroupBox().isInvalid())
+				continue;
+			
+			if (!groupChildFactor.getOwningGroupBox().equals(selectedGroupBox.getRef()))
+				return true;	
+		}
+		
+		return false;
+	}
+
 	public static boolean hasOwnedSelectedDiagramFactors(Project project, ORefList selectedDiagramFactorsRefs)
 	{
 		for (int i = 0; i < selectedDiagramFactorsRefs.size(); ++i)
