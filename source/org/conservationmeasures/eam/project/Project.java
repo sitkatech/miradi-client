@@ -902,6 +902,9 @@ public class Project
 
 	void fireCommandExecuted(Command command)
 	{
+		if(command.isBeginTransaction() || command.isEndTransaction())
+			return;
+		
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		firingCommandExecutedEvents = true;
 		try
