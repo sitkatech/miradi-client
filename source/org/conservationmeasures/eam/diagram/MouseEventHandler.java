@@ -86,9 +86,12 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 //			return;
 //		}
 		
+//FIXME uncomment and include any links in gbes		
+//		DiagramPanel diagramPanel = getDiagramPanel();
+//		FactorCell[] factorCells = diagramPanel.getOnlySelectedFactorCells();
+//		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
+//		linksWithSelectedBendPoints.addAll(getAllLinksInGroupBoxes(diagramPanel.getDiagramModel(), selectedFactorAndChildren));
 		linksWithSelectedBendPoints.addAll(getSelectedLinksWithSelectedBendPoints());
-		
-		
 		try
 		{
 			for(int i = 0; i < selectedCells.length; ++i)
