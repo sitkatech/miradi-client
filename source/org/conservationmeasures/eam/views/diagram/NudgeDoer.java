@@ -96,7 +96,7 @@ public class NudgeDoer extends LocationDoer
 		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		
 		HashSet<LinkCell> allLinkCells = new HashSet();
-		allLinkCells.addAll(getAllLinksInGroupBoxes(selectedFactorAndChildren));
+		allLinkCells.addAll(getAllLinksInGroupBoxes(diagramPanel.getDiagramModel(), selectedFactorAndChildren));
 		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
 		
 		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
@@ -130,27 +130,26 @@ public class NudgeDoer extends LocationDoer
 		}
 	}
 
-	private HashSet<LinkCell> getAllLinksInGroupBoxes(HashSet<FactorCell> selectedFactorAndChildren)
+	public static HashSet<LinkCell> getAllLinksInGroupBoxes(DiagramModel model, HashSet<FactorCell> selectedFactorAndChildren)
 	{
 		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
 		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
 		for (int i = 0; i < factorCells.length; ++i)
 		{
 			FactorCell factorCell = factorCells[i];
-			linksInsideGroupBoxes.addAll(getAllLinkCells(factorCell, factorCells));
+			linksInsideGroupBoxes.addAll(getAllLinkCells(model, factorCell, factorCells));
 		}
 			
 		return linksInsideGroupBoxes;
 	}
 
-	private HashSet<LinkCell> getAllLinkCells(FactorCell factorCell, FactorCell[] factorCells)
+	private static HashSet<LinkCell> getAllLinkCells(DiagramModel model, FactorCell factorCell, FactorCell[] factorCells)
 	{
 		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
 		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
-		DiagramModel model = getDiagramView().getDiagramModel();
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
+			DiagramLink diagramLink = DiagramLink.find(model.getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
 			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
 			{
 				FactorCell thisFactorCell = factorCells[cellIndex];
