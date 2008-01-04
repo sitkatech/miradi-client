@@ -76,11 +76,6 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getdiagramComponent().getOnlySelectedLinks();
 	}
 	
-	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
-	{
-		return getdiagramComponent().getOnlySelectedLinkCells(allSelectedCells);
-	}
-
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
 		return getdiagramComponent().getOnlySelectedFactorCells();
