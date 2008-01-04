@@ -314,10 +314,10 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			return new DiagramLink[0];
 		
 		Object[] rawCells = getSelectionModel().getSelectionCells();
-		return getOnlySelectedLinks(rawCells);
+		return getOnlySelectedDiagramLinks(rawCells);
 	}
 	
-	public DiagramLink[] getOnlySelectedLinks(Object [] allSelectedCells)
+	public DiagramLink[] getOnlySelectedDiagramLinks(Object [] allSelectedCells)
 	{
 		Vector linkages = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
