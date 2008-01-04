@@ -162,6 +162,6 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	
-	DiagramSplitPane diagramSplitter;
+	private DiagramSplitPane diagramSplitter;
 	protected MainWindow mainWindow;
 }
