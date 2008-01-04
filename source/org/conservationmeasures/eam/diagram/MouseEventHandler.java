@@ -41,7 +41,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	{
 		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
-		linksWithSelectedBendPoints = new LinkCell[0];
+		linksWithSelectedBendPoints = new HashSet();
 	}
 
 	Project getProject()
@@ -86,7 +86,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 //			return;
 //		}
 		
-		updateLinksWithSelectedBendPoints();
+		linksWithSelectedBendPoints.addAll(getSelectedLinksWithSelectedBendPoints());
+		
+		
 		try
 		{
 			for(int i = 0; i < selectedCells.length; ++i)
@@ -182,9 +184,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveSelectedBendPoints() throws Exception
 	{
-		for (int i = 0; i < linksWithSelectedBendPoints.length; ++i)
+		LinkCell[] linkCells = linksWithSelectedBendPoints.toArray(new LinkCell[0]);
+		for (int i = 0; i < linkCells.length; ++i)
 		{
-			moveBendPoints(linksWithSelectedBendPoints[i]);
+			moveBendPoints(linkCells[i]);
 		}
 	}
 
@@ -280,9 +283,9 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		return (Point2D[]) clonedControlPoints.toArray(new Point2D[0]);
 	}
 	
-	private void updateLinksWithSelectedBendPoints()
+	private HashSet<LinkCell> getSelectedLinksWithSelectedBendPoints()
 	{
-		HashSet<LinkCell> linksWithSelectedbendPoints = new HashSet();
+		HashSet<LinkCell> linksWithBendPoints = new HashSet();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
@@ -291,10 +294,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 			LinkCell linkCell = (LinkCell) selectedCells[i];
 			if (linkCell.getSelectedBendPointIndexes().length > 0)
-				linksWithSelectedbendPoints.add(linkCell);
+				linksWithBendPoints.add(linkCell);
 		}
 		
-		linksWithSelectedBendPoints = linksWithSelectedbendPoints.toArray(new LinkCell[0]);
+		return linksWithBendPoints;
 	}
 
 	private static final int TOOLTIP_DEFAULT_MILLIS = 1000;
@@ -304,7 +307,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	private MainWindow mainWindow;
 	private Point dragStartedAt;
 	private Object[] selectedCells;
-	private LinkCell[] linksWithSelectedBendPoints;
+	private HashSet<LinkCell> linksWithSelectedBendPoints;
 	private int savedToolTipInitialDelay;
 	private int savedToolTipReshowDelay;
 	private int savedToolTipDismissDelay;
