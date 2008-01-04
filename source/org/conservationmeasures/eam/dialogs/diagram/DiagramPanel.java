@@ -94,11 +94,7 @@ abstract public class DiagramPanel extends DisposablePanel
 
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
-		if(getSelectionModel() == null)
-			return new FactorCell[0];
-		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
-		return getOnlySelectedFactorCells(rawCells);
+		return getdiagramComponent().getOnlySelectedFactorCells();
 	}
 	
 	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
