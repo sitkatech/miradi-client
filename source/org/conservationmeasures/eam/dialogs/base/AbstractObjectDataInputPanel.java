@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputFiel
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
+import org.conservationmeasures.eam.dialogfields.ObjectCodeListDisplayField;
 import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectCurrencyInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
@@ -251,6 +252,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question, columnCount);
 	}
 
+	public ObjectDataInputField createReadonlyMultiCodeField(int objectType, ChoiceQuestion question, int columnCount)
+	{
+		return new ObjectCodeListDisplayField(project, objectType, getObjectIdForType(objectType), question, columnCount);
+	}
+	
 	public ObjectDataInputField createReadonlyTextField(String tag)
 	{
 		return new ObjectMultilineDisplayField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
