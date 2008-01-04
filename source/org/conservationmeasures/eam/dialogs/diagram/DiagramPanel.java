@@ -45,12 +45,6 @@ abstract public class DiagramPanel extends DisposablePanel
 		return getDiagramModel().getDiagramObject();
 	}
 
-	private EAMGraphSelectionModel getSelectionModel()
-	{
-		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
-		return (EAMGraphSelectionModel) diagram.getSelectionModel();
-	}
-	
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
 		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
@@ -114,11 +108,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
-		Object[] rawCells = getSelectionModel().getSelectionCells();
-		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
-		for(int i=0; i < cells.length; ++i)
-			cells[i] = (EAMGraphCell)rawCells[i];
-		return cells;
+		return getdiagramComponent().getOnlySelectedCells();
 	}
 	
 	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
