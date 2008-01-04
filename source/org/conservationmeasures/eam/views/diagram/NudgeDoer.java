@@ -81,17 +81,17 @@ public class NudgeDoer extends LocationDoer
 	private void moveSelectedItems(int deltaX, int deltaY) throws CommandFailedException
 	{
 		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
-		FactorCell[] cells = diagramPanel.getOnlySelectedFactorCells();
-		LinkCell[] links = diagramPanel.getOnlySelectedLinkCells();
-		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
-		for(int i = 0; i < cells.length; ++i)
+		FactorCell[] factorCells = diagramPanel.getOnlySelectedFactorCells();
+		LinkCell[] linkCells = diagramPanel.getOnlySelectedLinkCells();
+		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
+		for(int i = 0; i < factorCells.length; ++i)
 		{
-			ids[i] = cells[i].getDiagramFactorId();
-			if (!isFutureCellLocationInsideDiagramBounds(cells[i].getLocation(), deltaX, deltaY))
+			ids[i] = factorCells[i].getDiagramFactorId();
+			if (!isFutureCellLocationInsideDiagramBounds(factorCells[i].getLocation(), deltaX, deltaY))
 				return;			
 		}
 		
-		if (wouldMoveBendPointsOutOfBounds(links, deltaX, deltaY))
+		if (wouldMoveBendPointsOutOfBounds(linkCells, deltaX, deltaY))
 			return;
 		
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -101,7 +101,7 @@ public class NudgeDoer extends LocationDoer
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
-			moveBendPoints(links, deltaY, deltaX);
+			moveBendPoints(linkCells, deltaY, deltaX);
 		}
 		catch (Exception e)
 		{
@@ -147,5 +147,5 @@ public class NudgeDoer extends LocationDoer
 		return false;
 	}
 
-	int direction;
+	private int direction;
 }
