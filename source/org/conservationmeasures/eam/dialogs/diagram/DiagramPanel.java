@@ -68,7 +68,7 @@ abstract public class DiagramPanel extends DisposablePanel
 	
 	public void selectCells(EAMGraphCell[] cellsToSelect)
 	{
-		getSelectionModel().addSelectionCells(cellsToSelect);
+		getdiagramComponent().selectCells(cellsToSelect);
 	}
 	
 	public void selectFactor(FactorId idToUse)
