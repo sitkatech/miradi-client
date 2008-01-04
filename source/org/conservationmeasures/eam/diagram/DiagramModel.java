@@ -736,14 +736,14 @@ public class DiagramModel extends DefaultGraphModel
 		return factorRelatedLinks;
 	}
 	
-	public HashSet<EAMGraphCell> getGroupBoxFactorChildren(EAMGraphCell cell) throws Exception
+	public HashSet<FactorCell> getGroupBoxFactorChildren(EAMGraphCell cell) throws Exception
 	{
 		if(!cell.isFactor())
-			return new HashSet<EAMGraphCell>();
+			return new HashSet<FactorCell>();
 		
 		FactorCell factorCell = (FactorCell) cell;
 		ORefList groupBoxChildrenRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
-		HashSet<EAMGraphCell> groupBoxChildrenCells = new HashSet();
+		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
 		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupBoxChildrenRefs.get(childIndex);
