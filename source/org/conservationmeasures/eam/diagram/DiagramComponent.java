@@ -263,6 +263,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			return new EAMGraphCell[0];
 		}
 	}
+
+	public void selectCells(EAMGraphCell[] cellsToSelect)
+	{
+		getSelectionModel().addSelectionCells(cellsToSelect);
+	}
+
 	
 	public FactorCell getSelectedFactor()
 	{
