@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-class TableRowHeightSaver implements MouseListener, MouseMotionListener
+public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 {
 	public TableRowHeightSaver()
 	{

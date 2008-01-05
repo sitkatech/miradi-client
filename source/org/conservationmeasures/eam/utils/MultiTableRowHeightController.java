@@ -7,16 +7,14 @@ package org.conservationmeasures.eam.utils;
 
 import java.util.HashSet;
 
-import javax.swing.JTable;
-
 public class MultiTableRowHeightController implements RowHeightListener
 {
 	public MultiTableRowHeightController()
 	{
-		tables = new HashSet<JTable>();
+		tables = new HashSet<TableWithRowHeightManagement>();
 	}
 	
-	public void addTable(TableWithColumnWidthSaver tableToAdd)
+	public void addTable(TableWithRowHeightManagement tableToAdd)
 	{
 		tables.add(tableToAdd);
 		tableToAdd.addRowHeightListener(this);
@@ -25,12 +23,12 @@ public class MultiTableRowHeightController implements RowHeightListener
 	
 	public void rowHeightChanged(int newHeight)
 	{
-		for(JTable table : tables)
+		for(TableWithRowHeightManagement table : tables)
 		{
 			if(table.getRowHeight() != newHeight)
 				table.setRowHeight(newHeight);
 		}
 	}
 
-	HashSet<JTable> tables;
+	HashSet<TableWithRowHeightManagement> tables;
 }
