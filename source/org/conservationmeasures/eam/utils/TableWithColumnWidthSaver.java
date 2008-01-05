@@ -11,7 +11,7 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
-abstract public class TableWithColumnWidthSaver extends PanelTable
+abstract public class TableWithColumnWidthSaver extends PanelTable implements TableWithRowHeightManagement
 {
 	public TableWithColumnWidthSaver(TableModel model)
 	{

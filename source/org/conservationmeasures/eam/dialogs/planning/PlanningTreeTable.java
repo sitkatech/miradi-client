@@ -24,8 +24,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.TableWithRowHeightManagement;
 
-public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider
+public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider, TableWithRowHeightManagement
 {
 	public PlanningTreeTable(Project projectToUse, PlanningTreeTableModel planningTreeModelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{

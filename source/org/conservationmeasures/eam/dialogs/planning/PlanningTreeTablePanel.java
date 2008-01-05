@@ -78,6 +78,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
 		rowHeightController = new MultiTableRowHeightController();
+		rowHeightController.addTable(treeToUse);
 		
 		fontProvider = new PlanningViewFontProvider();
 		
