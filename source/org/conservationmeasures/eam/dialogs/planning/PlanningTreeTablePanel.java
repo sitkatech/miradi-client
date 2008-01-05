@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
 import org.conservationmeasures.eam.views.planning.PlanningView;
@@ -76,6 +77,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		rowHeightController = new MultiTableRowHeightController();
 		
 		fontProvider = new PlanningViewFontProvider();
 		
@@ -110,16 +112,19 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
 		listenForColumnWidthChanges(annualTotalsTable);
+		rowHeightController.addTable(annualTotalsTable);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
 		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
 		listenForColumnWidthChanges(measurementTable);
+		rowHeightController.addTable(measurementTable);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
 		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
 		listenForColumnWidthChanges(futureStatusTable);
+		rowHeightController.addTable(futureStatusTable);
 	}
 	
 	private void listenForColumnWidthChanges(JTable table)
@@ -390,6 +395,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private FastScrollPane measurementScrollPane;
 	private FastScrollPane futureStatusScrollPane;
 	private FastScrollPane mainScrollPane;
+	
+	private MultiTableRowHeightController rowHeightController;
 }
 
 class ModelUpdater implements TableModelListener
