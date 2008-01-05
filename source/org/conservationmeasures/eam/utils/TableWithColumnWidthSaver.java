@@ -5,6 +5,8 @@
 */
 package org.conservationmeasures.eam.utils;
 
+import java.util.Vector;
+
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
@@ -14,6 +16,8 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 	public TableWithColumnWidthSaver(TableModel model)
 	{
 		super(model);
+		rowHeightListeners = new Vector<RowHeightListener>();
+		
 		addColumnWidthSaver();
 		addRowHeightSaver();
 	}
@@ -31,7 +35,12 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 	private void addRowHeightSaver()
 	{
 		TableRowHeightSaver rowHeightSaver = new TableRowHeightSaver();
-		rowHeightSaver.manage(this);
+		rowHeightSaver.manage(this, getUniqueTableIdentifier());
+	}
+	
+	public void addRowHeightListener(RowHeightListener listener)
+	{
+		rowHeightListeners.add(listener);
 	}
 	
 	protected int getSavedColumnWidth(int column)
@@ -44,7 +53,20 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 		return true;
 	}
 	
+	public void setRowHeight(int rowHeight)
+	{
+		super.setRowHeight(rowHeight);
+		if(rowHeightListeners == null)
+			return;
+		
+		for(RowHeightListener listener : rowHeightListeners)
+		{
+			listener.rowHeightChanged(rowHeight);
+		}
+	}
+	
 	abstract public String getUniqueTableIdentifier();
 	
 	private ColumnWidthSaver columnWidthSaver;
+	private Vector<RowHeightListener> rowHeightListeners;
 }
