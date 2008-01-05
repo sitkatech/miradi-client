@@ -15,21 +15,50 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JTable;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
+
 class TableRowHeightSaver implements MouseListener, MouseMotionListener
 {
 	public TableRowHeightSaver()
 	{
 	}
 	
-	public void manage(JTable tableToManage)
+	public void manage(JTable tableToManage, String uniqueTableIdentifierToUse)
 	{
 		table = tableToManage;
 		table.addMouseListener(this);
 		table.addMouseMotionListener(this);
+		uniqueTableIdentifier = uniqueTableIdentifierToUse;
+		restoreRowHeight();
+	}
+	
+	private void restoreRowHeight()
+	{
+		int rowHeight = getPreferences().getTaggedInt(getKey());
+		if(rowHeight > 0)
+			table.setRowHeight(rowHeight);
+	}
+	
+	private void saveRowHeight()
+	{
+		getPreferences().setTaggedInt(getKey(), table.getRowHeight());
+	}
+
+	private AppPreferences getPreferences()
+	{
+		return EAM.getMainWindow().getAppPreferences();
+	}
+	
+	private String getKey()
+	{
+		return uniqueTableIdentifier + "._ROW_HEIGHT_";
 	}
 	
 	public void mouseClicked(MouseEvent e)
 	{
+		if(resizeInProgress)
+			e.consume();
 	}
 
 	public void mouseEntered(MouseEvent e)
@@ -115,6 +144,7 @@ class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		Rectangle resized = new Rectangle(point, new Dimension(1, newHeight));
 		table.scrollRectToVisible(resized);
 		table.getSelectionModel().setSelectionInterval(rowBeingResized, rowBeingResized);
+		saveRowHeight();
 	}
 
 	private int getNewRowHeight()
@@ -140,6 +170,8 @@ class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	}
 	
 	private JTable table;
+	private String uniqueTableIdentifier;
+	
 	private boolean resizeInProgress;
 	private int dragStartedY;
 	private int rowBeingResized;

@@ -23,8 +23,10 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
+import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatGridPanel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiScrollPane;
@@ -39,11 +41,17 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
+		rowHeightController = new MultiTableRowHeightController();
 	}
 	
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	protected void addRowHeightControlledTable(TableWithColumnWidthSaver tableToAdd)
+	{
+		rowHeightController.addTable(tableToAdd);
 	}
 	
 	protected void addVerticalAndHorizontalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
@@ -197,4 +205,5 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	protected MultipleTableSelectionController selectionController;
 	protected MultiTableVerticalScrollController verticalController;
 	protected MultiTableHorizontalScrollController horizontalController;
+	private MultiTableRowHeightController rowHeightController;
 }

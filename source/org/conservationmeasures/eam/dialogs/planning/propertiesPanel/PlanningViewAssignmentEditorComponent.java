@@ -77,15 +77,19 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		Box horizontalBox = Box.createHorizontalBox();
 		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(resourceTable);
 		addVerticalScrollableControlledTable(horizontalBox, resourceScroller);
+		addRowHeightControlledTable(resourceTable);
 
 		JScrollPane workPlanScroller = new ScrollPaneWithInvisibleVerticalScrollBar(workplanTable);
 		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, workPlanScroller);
+		addRowHeightControlledTable(workplanTable);
 		
 		JScrollPane budgetScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTable);
 		addVerticalAndHorizontalScrollableControlledTable(horizontalBox, budgetScroller);
+		addRowHeightControlledTable(budgetTable);
 		
 		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
 		addVerticalScrollableControlledTable(horizontalBox, budgetTotalsScroller);
+		addRowHeightControlledTable(budgetTotalsTable);
 		
 		add(horizontalBox, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
