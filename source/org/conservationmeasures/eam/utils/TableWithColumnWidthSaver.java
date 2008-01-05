@@ -11,15 +11,11 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
 abstract public class TableWithColumnWidthSaver extends PanelTable
 {
-	public TableWithColumnWidthSaver()
-	{
-		addColumnWidthSaver();
-	}
-	
 	public TableWithColumnWidthSaver(TableModel model)
 	{
 		super(model);
 		addColumnWidthSaver();
+		addRowHeightSaver();
 	}
 	
 	private void addColumnWidthSaver()
@@ -30,6 +26,12 @@ abstract public class TableWithColumnWidthSaver extends PanelTable
 		columnWidthSaver = new ColumnWidthSaver(this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
+	}
+	
+	private void addRowHeightSaver()
+	{
+		TableRowHeightSaver rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver.manage(this);
 	}
 	
 	protected int getSavedColumnWidth(int column)
