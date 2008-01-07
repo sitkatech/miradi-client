@@ -7,16 +7,16 @@ package org.conservationmeasures.eam.reports;
 
 import net.sf.jasperreports.engine.JRField;
 
+import org.conservationmeasures.eam.dialogs.summary.TeamPoolTableModel;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.summary.TeamModel;
 
 public class SummaryTeamDataSource extends CommonDataSource
 {
 	public SummaryTeamDataSource(Project project)
 	{
 		super(project);
-		teamModel = new TeamModel(project);
+		teamModel = new TeamPoolTableModel(project);
 		setRowCount(teamModel.getRowCount());
 	}
 	
@@ -27,5 +27,5 @@ public class SummaryTeamDataSource extends CommonDataSource
 		return "";
 	}
 	
-	TeamModel teamModel;
+	private TeamPoolTableModel teamModel;
 } 
