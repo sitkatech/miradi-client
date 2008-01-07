@@ -72,6 +72,6 @@ public class RelevancyOverride
 	private ORef ref;
 	private boolean overrideFlag;
 	
-	private static final String TAG_OVERRIDE_REF = "OverrideRef";
-	private static final String TAG_OVERRIDE_FLAG = "OverrideFlag";
+	private static final String TAG_OVERRIDE_REF = "Ref";
+	private static final String TAG_OVERRIDE_FLAG = "Flag";
 }
