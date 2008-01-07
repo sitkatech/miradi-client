@@ -61,7 +61,6 @@ public class SummaryView extends TabbedView
 		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
 		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		
-		summaryFinancialPanel = new SummaryFinancialPanel(getMainWindow());
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
 		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
@@ -76,7 +75,6 @@ public class SummaryView extends TabbedView
 		addPanelAsTab(summaryScopePanel);
 		addPanelAsTab(summaryLocationPanel);
 		addPanelAsTab(summaryPlanningPanel);
-		addPanelAsTab(summaryFinancialPanel);
 		
 		addPanelAsTab(tncSummaryPanel);
 		
@@ -99,7 +97,6 @@ public class SummaryView extends TabbedView
 		summaryLocationPanel.dispose();
 		summaryPlanningPanel.dispose();
 		
-		summaryFinancialPanel.dispose();
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
 		wcssSummaryPanel.dispose();
@@ -123,7 +120,6 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteTeamMember.class, new DeleteResource());
 	}
 	
-	private SummaryFinancialPanel summaryFinancialPanel;
 	private TNCSummaryPanel tncSummaryPanel;
 
 	private WWFSummaryPanel wwfSummaryPanel;
