@@ -9,10 +9,13 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
-import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import org.martus.util.xml.XmlUtilities;
 
 public class BasicTableCellRenderer extends DefaultTableCellRenderer
 {
@@ -28,7 +31,9 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		String html = getAsHtmlText(value);
+		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
+		renderer.setVerticalAlignment(SwingConstants.TOP);
 		
 		renderer.setBorder(getCellBorder());
 		
@@ -39,6 +44,14 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 		}
 			
 		return renderer;
+	}
+
+	private String getAsHtmlText(Object value)
+	{
+		if(value == null)
+			return null;
+		String plainText = value.toString();
+		return "<html>" + XmlUtilities.getXmlEncoded(plainText);
 	}
 	
 	public Border getCellBorder()
