@@ -39,11 +39,15 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	{
 		int rowHeight = getPreferences().getTaggedInt(getKey());
 		if(rowHeight > 0)
+		{
 			table.setRowHeight(rowHeight);
+			EAM.logVerbose("restoreRowHeight " + getKey() + ": " + table.getRowHeight());
+		}
 	}
 	
-	private void saveRowHeight()
+	public void saveRowHeight()
 	{
+		EAM.logVerbose("saveRowHeight " + getKey() + ": " + table.getRowHeight());
 		getPreferences().setTaggedInt(getKey(), table.getRowHeight());
 	}
 

@@ -34,7 +34,7 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 	
 	private void addRowHeightSaver()
 	{
-		TableRowHeightSaver rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(this, getUniqueTableIdentifier());
 	}
 	
@@ -56,17 +56,21 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 	public void setRowHeight(int rowHeight)
 	{
 		super.setRowHeight(rowHeight);
-		if(rowHeightListeners == null)
-			return;
+		if(rowHeightSaver != null)
+			rowHeightSaver.saveRowHeight();
 		
-		for(RowHeightListener listener : rowHeightListeners)
+		if(rowHeightListeners != null)
 		{
-			listener.rowHeightChanged(rowHeight);
+			for(RowHeightListener listener : rowHeightListeners)
+			{
+				listener.rowHeightChanged(rowHeight);
+			}
 		}
 	}
 	
 	abstract public String getUniqueTableIdentifier();
 	
 	private ColumnWidthSaver columnWidthSaver;
+	private TableRowHeightSaver rowHeightSaver;
 	private Vector<RowHeightListener> rowHeightListeners;
 }
