@@ -12,21 +12,25 @@ import javax.swing.BorderFactory;
 import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.layout.OneColumnGridLayout;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.project.Project;
 
 public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
 {
-	public SummaryPlanningPanel(Project projectToUse, ORef orefToUse)
+	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
-		super(projectToUse, orefToUse);
+		super(mainWindowToUse.getProject(), orefToUse);
 		setLayout(new OneColumnGridLayout());
 
-		SummaryPlanningWorkPlanSubPanel workPlanSubPanel = new SummaryPlanningWorkPlanSubPanel(projectToUse, orefToUse);
+		SummaryPlanningWorkPlanSubPanel workPlanSubPanel = new SummaryPlanningWorkPlanSubPanel(mainWindowToUse.getProject(), orefToUse);
 		workPlanSubPanel.setBorder(BorderFactory.createTitledBorder(EAM.text("Workplan")));
 		addSubPanel(workPlanSubPanel);
 		add(workPlanSubPanel);
 		
+		SummaryFinancialPanel financialSubPanel = new SummaryFinancialPanel(mainWindowToUse);
+		financialSubPanel.setBorder(BorderFactory.createTitledBorder(EAM.text("Financial")));
+		addSubPanel(financialSubPanel);
+		add(financialSubPanel);
 		
 		updateFieldsFromProject();
 	}
