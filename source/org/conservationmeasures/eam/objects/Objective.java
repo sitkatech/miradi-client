@@ -78,5 +78,10 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
+	public ORefList getRelevantIndicatorRefs(DiagramObject diagramObject)
+	{
+		return getIndicatorsOnSameFactor(diagramObject);
+	}
+	
 	public static final String OBJECT_NAME = "Objective";	
 }
