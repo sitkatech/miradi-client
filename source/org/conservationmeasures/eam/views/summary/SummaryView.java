@@ -10,8 +10,8 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
+import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
 import org.conservationmeasures.eam.dialogs.summary.TeamManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -87,7 +87,7 @@ public class SummaryView extends TabbedView
 		addPanelAsTab(summaryOtherOrgPanel);
 	}
 	
-	void addPanelAsTab(ObjectDataInputPanel panel)
+	void addPanelAsTab(AbstractObjectDataInputPanel panel)
 	{
 		addTab(panel.getPanelDescription(), new FastScrollPane(panel));
 	}
