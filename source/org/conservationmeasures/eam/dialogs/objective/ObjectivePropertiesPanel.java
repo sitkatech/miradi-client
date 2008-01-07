@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.objective;
 
 import javax.swing.JLabel;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
@@ -18,12 +19,12 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 {
-	public ObjectivePropertiesPanel(Project projectToUse) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse) throws Exception
 	{
-		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()));
+		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()), actionsToUse);
 	}
 		
-	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
 		
