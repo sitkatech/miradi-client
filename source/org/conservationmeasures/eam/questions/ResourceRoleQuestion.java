@@ -5,25 +5,37 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import java.util.Vector;
+
 
 
 public class ResourceRoleQuestion extends StaticChoiceQuestion
 {
 	public ResourceRoleQuestion(String tagToUse)
 	{
-		super(tagToUse, "Role", getRoleChoices());
+		super(tagToUse, "Role", getRoleChoices().toArray(new ChoiceItem[0]));
 	}
 
-	static ChoiceItem[] getRoleChoices()
+	private static Vector<ChoiceItem> getRoleChoices()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem(TeamMemberRoleCode, "Team Member"),
-				new ChoiceItem("Contact", "Team Contact"),
-				new ChoiceItem("Leader", "Leader/Manager"),
-				new ChoiceItem("Facilitator", "Process Facilitator"),
-				new ChoiceItem("Advisor", "Project Advisor"),
-				new ChoiceItem("Stakeholder", "Stakeholder"),
-		};
+		Vector<ChoiceItem> choiceItems = new Vector();
+		choiceItems.add(new ChoiceItem(TeamMemberRoleCode, "Team Member"));
+		choiceItems.addAll(getGenericChoiceItems());
+		
+		return choiceItems;
 	}
+
+	public static Vector<ChoiceItem> getGenericChoiceItems()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector();
+		choiceItems.add(new ChoiceItem("Contact", "Team Contact"));
+		choiceItems.add(new ChoiceItem("Leader", "Leader/Manager"));
+		choiceItems.add(new ChoiceItem("Facilitator", "Process Facilitator"));
+		choiceItems.add(new ChoiceItem("Advisor", "Project Advisor"));
+		choiceItems.add(new ChoiceItem("Stakeholder", "Stakeholder"));
+		
+		return choiceItems;
+	}
+	
 	public static final String TeamMemberRoleCode = "TeamMember";
 }
