@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
-import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -28,7 +27,6 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 	public TeamEditorComponent(Project projectToUse, Actions actionsToUse)
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, new ObjectPoolTable(new TeamModel(projectToUse)));
-		addDoubleClickAction(actionsToUse.get(ActionModifyResource.class));
 		createButtonBar(actionsToUse);
 		getTable().addKeyListener(this);
 		actions = actionsToUse;
@@ -43,7 +41,6 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 	{
 		addButton(new PanelButton(actionsToUse.get(ActionTeamCreateMember.class)));
 		addButton(actionsToUse.getObjectsAction(ActionDeleteTeamMember.class));
-		addButton(actionsToUse.getObjectsAction(ActionModifyResource.class));
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -73,7 +70,6 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 				return;
 			try
 			{
-				actions.get(ActionModifyResource.class).doAction();
 			}
 			catch (Exception e)
 			{
