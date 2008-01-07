@@ -9,7 +9,6 @@ package org.conservationmeasures.eam.views.summary;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
-import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
@@ -20,7 +19,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.summary.doers.EditIndicatorRelevancyListDoer;
 import org.conservationmeasures.eam.views.summary.doers.TeamCreateMemberDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 
@@ -123,7 +121,6 @@ public class SummaryView extends TabbedView
 	{
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
 		addDoerToMap(ActionDeleteTeamMember.class, new DeleteResource());
-		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
 	}
 	
 	private SummaryFinancialPanel summaryFinancialPanel;
