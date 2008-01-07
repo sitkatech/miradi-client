@@ -316,6 +316,15 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
 		
+		otherOrgManagingOffice = new StringData();
+		otherOrgRegionalOffice = new StringData();
+		otherOrgProjectNumber = new StringData();
+		otherOrgRelatedProjects = new StringData();
+		addField(TAG_OTHER_ORG_MANAGING_OFFICE, otherOrgManagingOffice);
+		addField(TAG_OTHER_ORG_REGIONAL_OFFICE, otherOrgRegionalOffice);
+		addField(TAG_OTHER_ORG_PROJECT_NUMBER, otherOrgProjectNumber);
+		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
+		
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
 		threatRatingMode = new ChoiceData();
@@ -378,6 +387,10 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
 
+	public static final String TAG_OTHER_ORG_MANAGING_OFFICE = "OtherOrgManagingOffice";
+	public static final String TAG_OTHER_ORG_REGIONAL_OFFICE = "OtherOrgRegionalOffice";
+	public static final String TAG_OTHER_ORG_PROJECT_NUMBER = "OtherOrgProjectNumber";
+	public static final String TAG_OTHER_ORG_RELATED_PROJECTS = "OtherOrgRelatedProjects";	
 	
 	public static final String TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamily";
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
@@ -436,6 +449,10 @@ public class ProjectMetadata extends BaseObject
 	private StringData tncCountry;
 	private StringData tncOperatingUnits;
 
+	private StringData otherOrgManagingOffice;
+	private StringData otherOrgRegionalOffice;
+	private StringData otherOrgProjectNumber;
+	private StringData otherOrgRelatedProjects;
 	
 	private StringData diagramFontFamily;
 	private IntegerData diagramFontSize;
