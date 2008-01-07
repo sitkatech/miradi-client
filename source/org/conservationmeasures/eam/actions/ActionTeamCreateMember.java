@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionTeamCreateMember extends ViewAction
+public class ActionTeamCreateMember extends ObjectsAction
 {
 		public ActionTeamCreateMember(MainWindow mainWindowToUse)
 		{
