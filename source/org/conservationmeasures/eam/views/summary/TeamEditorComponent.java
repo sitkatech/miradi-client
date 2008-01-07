@@ -8,10 +8,9 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
-import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTable;
@@ -45,7 +44,6 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 		addButton(new PanelButton(actionsToUse.get(ActionTeamCreateMember.class)));
 		addButton(actionsToUse.getObjectsAction(ActionDeleteTeamMember.class));
 		addButton(actionsToUse.getObjectsAction(ActionModifyResource.class));
-		addButton(new PanelButton(actionsToUse.get(ActionViewPossibleTeamMembers.class)));
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
