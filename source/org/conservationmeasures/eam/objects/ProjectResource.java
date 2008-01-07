@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.CodeListData;
+import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -142,7 +143,15 @@ public class ProjectResource extends BaseObject
 		organization = new StringData();
 		roleCodes = new CodeListData();
 		comments = new StringData();
-		
+		location = new StringData();
+		phoneNumberMobile = new StringData();
+		phoneNumberHome = new StringData();
+		phoneNumberOther = new StringData();
+		alternativeEmail = new StringData();
+		iMAddress = new StringData();
+		iMService = new StringData();
+		dateUpdated = new DateData();
+
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
 		addField(TAG_ORGANIZATION, organization);
@@ -153,6 +162,14 @@ public class ProjectResource extends BaseObject
 		addField(TAG_COST_PER_UNIT, costPerUnit);
 		addField(TAG_ROLE_CODES, roleCodes);
 		addField(TAG_COMMENTS, comments);
+		addField(TAG_LOCATION, location);
+		addField(TAG_PHONE_NUMBER_MOBILE, phoneNumberMobile);
+		addField(TAG_PHONE_NUMBER_HOME, phoneNumberHome);
+		addField(TAG_PHONE_NUMBER_OTHER, phoneNumberOther);
+		addField(TAG_ALTERNATIVE_EMAIL, alternativeEmail);
+		addField(TAG_IM_ADDRESS, iMAddress);
+		addField(TAG_IM_SERVICE, iMService);
+		addField(TAG_DATE_UPDATED, dateUpdated);
 		
 		customUserField1 = new StringData();
 		customUserField2 = new StringData();
@@ -172,22 +189,39 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_ROLE_CODES = "RoleCodes";
 	public static final String TAG_COMMENTS = "Comments";
 	
+	public static final String TAG_LOCATION = "Location";
+	public static final String TAG_PHONE_NUMBER_MOBILE = "PhoneNumberMobile";
+	public static final String TAG_PHONE_NUMBER_HOME = "PhoneNumberHome";
+	public static final String TAG_PHONE_NUMBER_OTHER = "PhoneNumberOther";
+	public static final String TAG_ALTERNATIVE_EMAIL = "AlternativeEmail";
+	public static final String TAG_IM_ADDRESS = "IMAddress";
+	public static final String TAG_IM_SERVICE = "IMService";
+	public static final String TAG_DATE_UPDATED = "DateUpdated";
+	
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
 
 	static final String OBJECT_NAME = "ProjectResource";
 
-	StringData initials;
+	private StringData initials;
 	StringData name;
-	StringData position;
-	StringData phoneNumber;
-	StringData email;
-	NumberData costPerUnit;
-	ChoiceData costUnit;
-	StringData organization;
-	CodeListData roleCodes;
-	StringData comments;
+	private StringData position;
+	private StringData phoneNumber;
+	private StringData email;
+	private NumberData costPerUnit;
+	private ChoiceData costUnit;
+	private StringData organization;
+	private CodeListData roleCodes;
+	private StringData comments;
+	private StringData location;
+	private StringData phoneNumberMobile;
+	private StringData phoneNumberHome;
+	private StringData phoneNumberOther;
+	private StringData alternativeEmail;
+	private StringData iMAddress;
+	private StringData iMService;
+	private DateData dateUpdated;
 	
-	StringData customUserField1;
-	StringData customUserField2;
+	private StringData customUserField1;
+	private StringData customUserField2;
 }
