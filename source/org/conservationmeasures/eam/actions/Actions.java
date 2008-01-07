@@ -215,7 +215,6 @@ public class Actions
 		registerAction(new ActionDeleteIndicatorMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
 		
-		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionDeleteTeamMember(mainWindow));
 		
