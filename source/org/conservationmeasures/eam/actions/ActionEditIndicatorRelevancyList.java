@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionEditIndicatorRelevancyList extends MainWindowAction
+public class ActionEditIndicatorRelevancyList extends ObjectsAction
 {
 	public ActionEditIndicatorRelevancyList(MainWindow mainWindow)
 	{
