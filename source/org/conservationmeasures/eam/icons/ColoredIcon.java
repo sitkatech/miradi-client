@@ -35,7 +35,7 @@ public class ColoredIcon extends AbstractMiradiIcon
 
 	public int getIconWidth()
 	{
-		return 12;
+		return super.getIconWidth() / 2;
 	}
 	
 	private static final int MARGIN = 0;
