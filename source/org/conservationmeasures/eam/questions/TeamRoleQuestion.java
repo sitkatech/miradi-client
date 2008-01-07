@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import java.util.Vector;
+
 public class TeamRoleQuestion extends StaticChoiceQuestion
 {
 	public TeamRoleQuestion(String tagToUse)
@@ -12,8 +14,8 @@ public class TeamRoleQuestion extends StaticChoiceQuestion
 		super(tagToUse, "Role", getRoleChoices());
 	}
 
-	static ChoiceItem[] getRoleChoices()
+	static Vector<ChoiceItem> getRoleChoices()
 	{
-		return ResourceRoleQuestion.getGenericChoiceItems().toArray(new ChoiceItem[0]);
+		return ResourceRoleQuestion.getGenericChoiceItems();
 	}
 }
