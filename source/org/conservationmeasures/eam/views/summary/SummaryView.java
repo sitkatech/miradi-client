@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.TeamCreateMemberDoer;
-import org.conservationmeasures.eam.views.summary.doers.TeamRemoveMember;
 import org.conservationmeasures.eam.views.summary.doers.ViewPossibleTeamMembers;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
@@ -132,7 +131,7 @@ public class SummaryView extends TabbedView
 	{
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
-		addDoerToMap(ActionTeamRemoveMember.class, new TeamRemoveMember());
+		addDoerToMap(ActionTeamRemoveMember.class, new DeleteResource());
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, new ModifyResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
