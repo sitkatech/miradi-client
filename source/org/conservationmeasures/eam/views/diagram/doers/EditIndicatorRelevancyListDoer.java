@@ -5,7 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
-import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.diagram.RelevancyIndicatorPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,8 +25,9 @@ public class EditIndicatorRelevancyListDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
+		
 		RelevancyIndicatorPanel indicatorPanel = new RelevancyIndicatorPanel(getProject(), ORef.INVALID);
-		ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), indicatorPanel, EAM.text("Choose Indicator"));
+		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), indicatorPanel, EAM.text("Choose Indicator"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
