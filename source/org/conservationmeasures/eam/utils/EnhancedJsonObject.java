@@ -199,6 +199,11 @@ public class EnhancedJsonObject extends JSONObject
 
 	}
 	
+	public void putRef(String tag, ORef ref)
+	{
+		put(tag, ref.toString());
+	}
+	
 	public void putId(String tag, BaseId id)
 	{
 		put(tag, id.asInt());
