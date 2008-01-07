@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs.summary;
 
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
+import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanelWithCreateAndDelete;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -23,6 +23,6 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 	
 	static Class[] buttons = new Class[] {
 		ActionTeamCreateMember.class,
-		ActionTeamRemoveMember.class,
+		ActionDeleteTeamMember.class,
 	};
 }

@@ -217,7 +217,7 @@ public class Actions
 		
 		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
 		registerAction(new ActionTeamCreateMember(mainWindow));
-		registerAction(new ActionTeamRemoveMember(mainWindow));
+		registerAction(new ActionDeleteTeamMember(mainWindow));
 		
 		registerAction(new ActionResourceListAdd(mainWindow));
 		registerAction(new ActionResourceListRemove(mainWindow));
