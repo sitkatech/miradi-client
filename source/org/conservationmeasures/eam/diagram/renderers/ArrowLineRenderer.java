@@ -41,7 +41,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Component getRendererComponent(JGraph graphToUse, CellView cellView, boolean sel, boolean hasFocus, boolean previewMode)
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
-		diagramFontSize = ((DiagramComponent) graphToUse).getDiagramFontSize();
+		diagramFontSize = ((DiagramComponent) graphToUse).getProject().getDiagramFontSize();
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
