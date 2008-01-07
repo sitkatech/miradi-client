@@ -148,7 +148,6 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		Rectangle resized = new Rectangle(point, new Dimension(1, newHeight));
 		table.scrollRectToVisible(resized);
 		table.getSelectionModel().setSelectionInterval(rowBeingResized, rowBeingResized);
-		saveRowHeight();
 		table.getTopLevelAncestor().repaint();
 	}
 
