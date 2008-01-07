@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.objecthelpers.TestMapList;
 import org.conservationmeasures.eam.objecthelpers.TestORef;
 import org.conservationmeasures.eam.objecthelpers.TestORefList;
 import org.conservationmeasures.eam.objecthelpers.TestObjectDeepCopier;
+import org.conservationmeasures.eam.objecthelpers.TestRelevancyOverride;
 import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestBaseObject;
@@ -233,6 +234,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestORef.class));
 		suite.addTest(new TestSuite(TestObjectDeepCopier.class));
 		suite.addTest(new TestSuite(TestDateRangeEffortList.class));
+		suite.addTest(new TestSuite(TestRelevancyOverride.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
