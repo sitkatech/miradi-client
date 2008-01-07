@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -83,5 +84,17 @@ public class Objective extends Desire
 		return getIndicatorsOnSameFactor(diagramObject);
 	}
 	
-	public static final String OBJECT_NAME = "Objective";	
+	public void clear()
+	{
+		super.clear();
+		relevantIndicators = new RelevancyOverrideSetData();
+		
+		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicators);
+	}
+	
+	public static final String OBJECT_NAME = "Objective";
+	
+	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+	
+	private RelevancyOverrideSetData relevantIndicators;
 }

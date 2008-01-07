@@ -29,6 +29,9 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
 import org.conservationmeasures.eam.project.Project;
@@ -240,6 +243,16 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if (field instanceof IntegerData)
 		{
 			return "3";
+		}
+		else if (field instanceof RelevancyOverrideSetData)
+		{
+			RelevancyOverride test = new RelevancyOverride(new ORef(Cause.getObjectType(), new BaseId(44)), true);
+			RelevancyOverrideSet overrideSet = new RelevancyOverrideSet();
+			overrideSet.add(test);
+			
+			RelevancyOverrideSetData overrideSetData = new RelevancyOverrideSetData();
+			overrideSetData.set(overrideSet.toString());
+			return overrideSetData.toString();
 		}
 		else
 		{
