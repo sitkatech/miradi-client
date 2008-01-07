@@ -51,10 +51,10 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject());
-		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject());
+		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getProject());
-		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(mainWindow, objectPicker);
+		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		
@@ -131,6 +131,11 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 			return;
 		
 		taskPropertiesInputPanel.dataWasChanged();
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 		
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
