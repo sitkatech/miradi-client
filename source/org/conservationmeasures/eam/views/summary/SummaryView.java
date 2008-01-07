@@ -65,7 +65,7 @@ public class SummaryView extends TabbedView
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
 		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
-		summaryPlanningPanel = new SummaryPlanningPanel(getProject(), metadata.getRef());
+		summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), metadata.getRef());
 		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
 				
 		addPanelAsTab(summaryProjectPanel);
