@@ -6,19 +6,18 @@
 package org.conservationmeasures.eam.views.summary.doers;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class EditIndicatorRelevancyListDoer extends MainWindowDoer
+public class EditIndicatorRelevancyListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return false;
+		return true;
 	}
 	
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
 			return;
-		
 	}
 }

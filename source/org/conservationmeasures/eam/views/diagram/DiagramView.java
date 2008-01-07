@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
+import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -141,6 +142,7 @@ import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFac
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.SelectChainDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
+import org.conservationmeasures.eam.views.summary.doers.EditIndicatorRelevancyListDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
@@ -297,6 +299,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
+		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionCloneIndicator.class, new CloneIndicatorDoer());

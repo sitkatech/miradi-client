@@ -5,10 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.objective;
 
-import javax.swing.JLabel;
-
+import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
@@ -38,7 +38,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		addField(createReadonlyTextField(Objective.TAG_RELEVANT_INDICATOR_SET));
 		//TODO replace with real button
-		add(new JLabel("EDIT"));
+		add(new PanelButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class)));
 				
 		updateFieldsFromProject();
 	}
