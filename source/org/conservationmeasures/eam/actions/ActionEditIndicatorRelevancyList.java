@@ -17,11 +17,11 @@ public class ActionEditIndicatorRelevancyList extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Edit");
+		return EAM.text("Action|Edit Indicators...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Edit objective relavant indicators");
+		return EAM.text("TT|Edit the list of indicators that are relevant to this objective");
 	}
 }
