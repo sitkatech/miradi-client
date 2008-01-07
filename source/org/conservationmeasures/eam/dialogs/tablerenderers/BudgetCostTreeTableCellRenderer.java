@@ -31,14 +31,19 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		annotateIfAllocated(row, renderer);
-		annotateIfOverride(row, renderer);
+		String text = annotateIfOverride(row, renderer, value); 
+		annotateIfAllocated(row, renderer, text);
+		
 		return renderer;
 	}
 
-	private void annotateIfAllocated(int row, JLabel labelComponent)
+	private void annotateIfAllocated(int row, JLabel labelComponent, String text)
 	{
+		if(text == null)
+			text = "";
+		
 		labelComponent.setIcon(null);
+		labelComponent.setText(text);
 		
 		if(labelComponent.getText().length() == 0)
 			return;
@@ -55,15 +60,22 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		
 	}
 	
-	private void annotateIfOverride(int row, JLabel labelComponent)
+	private String annotateIfOverride(int row, JLabel labelComponent, Object value)
 	{
+		if(value == null)
+			return null;
+		
+		String baseText = value.toString();
+		
 		TreeTableNode node = getNodeForRow(row);
 		BaseObject object = node.getObject();
 		if(object == null)
-			return;
+			return baseText;
 		
 		if(object.isBudgetOverrideMode())
-			labelComponent.setText("~ " + labelComponent.getText());
+			return "~ " + baseText;
+		
+		return baseText;
 	}
 	
 	protected TreeTableNode getNodeForRow(int row)
