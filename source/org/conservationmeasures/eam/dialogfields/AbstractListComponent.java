@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class AbstractListComponent extends JPanel implements ItemListener
+abstract public class AbstractListComponent extends JPanel implements ItemListener
 {
 	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
@@ -83,6 +83,10 @@ public class AbstractListComponent extends JPanel implements ItemListener
 	
 	}
 
+	abstract public String getText();
+	
+	abstract public void setText(String codesToUse); 
+	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
 	protected ListSelectionListener listSelectionListener;

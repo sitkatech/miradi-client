@@ -35,7 +35,6 @@ public class CodeListComponent extends AbstractListComponent
 		return codes.toString();
 	}
 	
-	
 	public void setText(String codesToUse)
 	{
 		skipNotice=true;
