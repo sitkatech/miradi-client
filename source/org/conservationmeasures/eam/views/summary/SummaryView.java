@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
+import org.conservationmeasures.eam.dialogs.summary.TeamManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
@@ -47,6 +48,13 @@ public class SummaryView extends TabbedView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		
+		teamManagementPanel.updateSplitterLocation();
+	}
+	
 	public JToolBar createToolBar()
 	{
 		return new SummaryToolBar(getMainWindow().getActions());
@@ -68,9 +76,13 @@ public class SummaryView extends TabbedView
 		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
 		summaryPlanningPanel = new SummaryPlanningPanel(getProject(), metadata.getRef());
 		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
-		
+				
 		addPanelAsTab(summaryProjectPanel);
 		addPanelAsTab(summaryTeamPanel);
+
+		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
+		addTab(teamManagementPanel.getPanelDescription(),teamManagementPanel.getIcon(), teamManagementPanel);
+		
 		addPanelAsTab(summaryScopePanel);
 		addPanelAsTab(summaryLocationPanel);
 		addPanelAsTab(summaryPlanningPanel);
@@ -105,6 +117,7 @@ public class SummaryView extends TabbedView
 		rareSummaryPanel.dispose();
 		fosSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
+		teamManagementPanel.dispose();
 	}
 
 	public void showTeamAddMembersDialog() throws Exception
@@ -139,4 +152,5 @@ public class SummaryView extends TabbedView
 	private SummaryLocationPanel summaryLocationPanel;
 	private SummaryPlanningPanel summaryPlanningPanel;
 	private SummaryOtherOrgPanel summaryOtherOrgPanel;
+	private TeamManagementPanel teamManagementPanel;
 }
