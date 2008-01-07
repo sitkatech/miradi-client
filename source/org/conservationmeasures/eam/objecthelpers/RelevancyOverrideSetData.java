@@ -24,7 +24,7 @@ public class RelevancyOverrideSetData extends ObjectData
 		}
 		catch(Exception e)
 		{
-			EAM.logDebug("RelevancyOverrideSetData ignoring invalid: " + valueToUse);
+			EAM.logDebug("ObjectReferenceListData ignoring invalid: " + valueToUse);
 		}
 	}
 	
