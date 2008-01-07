@@ -31,10 +31,13 @@ public class ColoredIcon extends AbstractMiradiIcon
 
 		g.setColor(color);
 		g.fillRect(x + MARGIN, y + MARGIN, getIconWidth() - MARGIN*2, getIconHeight() - MARGIN*2);
-		g.setColor(Color.BLACK);
-		g.drawRect(x + MARGIN, y + MARGIN, getIconWidth() - MARGIN*2, getIconHeight() - MARGIN*2);
 	}
 
-	private static final int MARGIN = 2;
+	public int getIconWidth()
+	{
+		return 12;
+	}
+	
+	private static final int MARGIN = 0;
 	private Color color;
 }
