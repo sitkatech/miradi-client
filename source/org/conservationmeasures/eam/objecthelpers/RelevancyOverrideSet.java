@@ -26,7 +26,7 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 	public RelevancyOverrideSet(EnhancedJsonObject json)
 	{
 		this();
-		EnhancedJsonArray array = json.optJsonArray(TAG_RELEVANCY_OVERRIDE_SET_REFERENCES);
+		EnhancedJsonArray array = json.optJsonArray(TAG_RELEVANCY_OVERRIDES);
 		for(int i = 0; i < array.length(); ++i)
 		{
 			add(new RelevancyOverride(array.getJson(i)));
@@ -42,7 +42,7 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 			array.put(relevancyOverrides[i].toJson());
 		}
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_RELEVANCY_OVERRIDE_SET_REFERENCES, array);
+		json.put(TAG_RELEVANCY_OVERRIDES, array);
 		
 		return json;
 	}
@@ -55,5 +55,5 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 		return toJson().toString();
 	}
 	
-	private static final String TAG_RELEVANCY_OVERRIDE_SET_REFERENCES = "RelevancyOverrideReferences"; 
+	private static final String TAG_RELEVANCY_OVERRIDES = "RelevancyOverrides"; 
 }
