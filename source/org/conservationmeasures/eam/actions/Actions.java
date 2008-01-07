@@ -342,6 +342,7 @@ public class Actions
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
 		registerAction(new ActionGroupBoxAddFactor(mainWindow));
 		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
+		registerAction(new ActionEditIndicatorRelevancyList(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
