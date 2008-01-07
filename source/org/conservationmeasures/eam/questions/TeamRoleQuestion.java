@@ -14,12 +14,6 @@ public class TeamRoleQuestion extends StaticChoiceQuestion
 
 	static ChoiceItem[] getRoleChoices()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem("Contact", "Team Contact"),
-				new ChoiceItem("Leader", "Leader/Manager"),
-				new ChoiceItem("Facilitator", "Process Facilitator"),
-				new ChoiceItem("Advisor", "Project Advisor"),
-				new ChoiceItem("Stakeholder", "Stakeholder"),
-		};
+		return ResourceRoleQuestion.getGenericChoiceItems().toArray(new ChoiceItem[0]);
 	}
 }
