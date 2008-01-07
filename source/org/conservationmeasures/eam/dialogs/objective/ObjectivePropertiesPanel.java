@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.objective;
 
+import javax.swing.JLabel;
+
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
@@ -20,12 +22,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 	{
 		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()));
 	}
-	
-	public ObjectivePropertiesPanel(Project projectToUse, Objective objective) throws Exception
-	{
-		this(projectToUse, (ObjectiveId)objective.getId());
-	}
-	
+		
 	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
@@ -38,6 +35,9 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
+		addField(createReadonlyTextField(Objective.TAG_RELEVANT_INDICATOR_SET));
+		//TODO replace with real button
+		add(new JLabel("EDIT"));
 				
 		updateFieldsFromProject();
 	}
