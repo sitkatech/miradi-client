@@ -22,7 +22,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	public TeamManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, new TeamPoolTablePanel(projectToUse, actionsToUse),
-				new TeamPropertiesPanel(projectToUse));
+				new TeamMemeberPropertiesPanel(projectToUse));
 
 		//TODO change overview text
 		add(new PanelTitleLabel(EAM.text("Team Management")), BorderLayout.BEFORE_FIRST_LINE);
