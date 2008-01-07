@@ -1156,6 +1156,16 @@ public class Project
 		
 		return formatter;
 	}
+	
+	public int getDiagramFontSize()
+	{
+		int size = getMetadata().getDiagramFontSize();
+		if(size == 0)
+			return DEFAULT_DIAGRAM_FONT_SIZE;
+		
+		return size;
+
+	}
 
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
@@ -1175,6 +1185,8 @@ public class Project
 	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
 	
 	public static final int DEFAULT_GRID_SIZE = 15;
+	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
+	
 
 	private static final int MAX_PROJECT_FILENAME_LENGTH = 32;
 	

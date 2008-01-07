@@ -222,15 +222,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramModel)getModel();
 	}
 	
-	public int getDiagramFontSize()
-	{
-		int size = getProject().getMetadata().getDiagramFontSize();
-		if(size == 0)
-			return DEFAULT_FONT_SIZE;
-		
-		return size;
-	}
-	
 	public void showContextMenu(MouseEvent e)
 	{
 		diagramContextMenuHandler.showContextMenu(e);
@@ -708,8 +699,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		return new Rectangle(-1, -1, -1, -1);
 	}
-	
-	public static final int DEFAULT_FONT_SIZE = 11;
 	
 	private MainWindow mainWindow;
 	private Color defaultBackgroundColor;

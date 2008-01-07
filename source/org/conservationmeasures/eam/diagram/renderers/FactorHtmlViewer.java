@@ -68,7 +68,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	private int getSystemFontSize()
 	{
-		return getMainWindow().getDiagramComponent().getDiagramFontSize();
+		return getMainWindow().getProject().getDiagramFontSize();
 	}
 	
 	private float getDiagramFactorFontSize()
