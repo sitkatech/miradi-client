@@ -67,6 +67,7 @@ public class SummaryView extends TabbedView
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
 		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
 		summaryPlanningPanel = new SummaryPlanningPanel(getProject(), metadata.getRef());
+		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
 		
 		addPanelAsTab(summaryProjectPanel);
 		addPanelAsTab(summaryTeamPanel);
@@ -81,6 +82,7 @@ public class SummaryView extends TabbedView
 		addPanelAsTab(wcssSummaryPanel);
 		addPanelAsTab(rareSummaryPanel);
 		addPanelAsTab(fosSummaryPanel);
+		addPanelAsTab(summaryOtherOrgPanel);
 	}
 	
 	void addPanelAsTab(ObjectDataInputPanel panel)
@@ -102,6 +104,7 @@ public class SummaryView extends TabbedView
 		wcssSummaryPanel.dispose();
 		rareSummaryPanel.dispose();
 		fosSummaryPanel.dispose();
+		summaryOtherOrgPanel.dispose();
 	}
 
 	public void showTeamAddMembersDialog() throws Exception
@@ -135,4 +138,5 @@ public class SummaryView extends TabbedView
 	private SummaryScopePanel summaryScopePanel;
 	private SummaryLocationPanel summaryLocationPanel;
 	private SummaryPlanningPanel summaryPlanningPanel;
+	private SummaryOtherOrgPanel summaryOtherOrgPanel;
 }
