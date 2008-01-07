@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
@@ -62,8 +60,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
-import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
@@ -84,9 +80,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardFocus
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningOverviewStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
-import org.conservationmeasures.eam.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpScheduleOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectChainStep;
@@ -101,6 +98,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefinePr
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
@@ -119,11 +117,9 @@ import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
-import org.conservationmeasures.eam.dialogs.resource.ResourcePropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -205,38 +201,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	
-	public void showResourcePropertiesDialog(BaseObject object) throws Exception
-	{
-		DisposablePanelWithDescription propertiesPanel = createPanelForDialog(object);
-		if(propertiesPanel == null)
-			return;
-		
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, propertiesPanel, propertiesPanel.getPanelDescription());
-		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
-		showFloatingPropertiesDialog(dlg);
-	}
-	
 	public BaseObject getSelectedObject()
 	{
 		return null;
 	}
 	
-	class ObjectPropertiesDialogWindowEventHandler extends WindowAdapter
-	{
-
-		public void windowClosed(WindowEvent e)
-		{
-			super.windowClosed(e);
-			closeActivePropertiesDialog();
-		}
-
-	}
-	
-	private DisposablePanelWithDescription createPanelForDialog(BaseObject object) throws Exception
-	{	
-		return new ResourcePropertiesPanel(getProject(), object.getId());
-	}
-
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		closeActivePropertiesDialog();
