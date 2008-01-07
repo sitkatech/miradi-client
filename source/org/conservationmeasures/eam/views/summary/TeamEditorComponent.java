@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
 
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
+import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -43,7 +43,7 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 	void createButtonBar(Actions actionsToUse)
 	{
 		addButton(new PanelButton(actionsToUse.get(ActionTeamCreateMember.class)));
-		addButton(actionsToUse.getObjectsAction(ActionTeamRemoveMember.class));
+		addButton(actionsToUse.getObjectsAction(ActionDeleteTeamMember.class));
 		addButton(actionsToUse.getObjectsAction(ActionModifyResource.class));
 		addButton(new PanelButton(actionsToUse.get(ActionViewPossibleTeamMembers.class)));
 	}

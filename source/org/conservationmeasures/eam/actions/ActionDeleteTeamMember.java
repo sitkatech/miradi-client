@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionTeamRemoveMember extends ObjectsAction
+public class ActionDeleteTeamMember extends ObjectsAction
 {
-	public ActionTeamRemoveMember(MainWindow mainWindowToUse)
+	public ActionDeleteTeamMember(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
