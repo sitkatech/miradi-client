@@ -10,9 +10,9 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
+import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
@@ -68,7 +68,6 @@ public class SummaryView extends TabbedView
 		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
 		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		
-		summaryTeamPanel = new SummaryTeamPanel(getMainWindow(), metadata);
 		summaryFinancialPanel = new SummaryFinancialPanel(getMainWindow());
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
@@ -77,8 +76,7 @@ public class SummaryView extends TabbedView
 		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
 				
 		addPanelAsTab(summaryProjectPanel);
-		addPanelAsTab(summaryTeamPanel);
-
+	
 		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		addTab(teamManagementPanel.getPanelDescription(),teamManagementPanel.getIcon(), teamManagementPanel);
 		
@@ -108,7 +106,6 @@ public class SummaryView extends TabbedView
 		summaryLocationPanel.dispose();
 		summaryPlanningPanel.dispose();
 		
-		summaryTeamPanel.dispose();
 		summaryFinancialPanel.dispose();
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
@@ -137,7 +134,6 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
-	private SummaryTeamPanel summaryTeamPanel;
 	private SummaryFinancialPanel summaryFinancialPanel;
 	private TNCSummaryPanel tncSummaryPanel;
 
