@@ -172,6 +172,6 @@ public class AbstractDialogWithClose extends EAMDialog implements WindowListener
 	}
 	
 
-	MainWindow mainWindow;
-	DisposablePanel wrappedPanel;
+	private MainWindow mainWindow;
+	private DisposablePanel wrappedPanel;
 }
