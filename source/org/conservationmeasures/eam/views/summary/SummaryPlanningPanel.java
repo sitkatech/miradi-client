@@ -27,7 +27,7 @@ public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
 		addSubPanel(workPlanSubPanel);
 		add(workPlanSubPanel);
 		
-		SummaryFinancialPanel financialSubPanel = new SummaryFinancialPanel(mainWindowToUse);
+		SummaryPlanningFinancialSubPanel financialSubPanel = new SummaryPlanningFinancialSubPanel(mainWindowToUse);
 		financialSubPanel.setBorder(BorderFactory.createTitledBorder(EAM.text("Financial")));
 		addSubPanel(financialSubPanel);
 		add(financialSubPanel);

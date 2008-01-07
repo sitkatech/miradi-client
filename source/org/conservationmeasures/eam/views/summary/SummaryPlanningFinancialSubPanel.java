@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 
-public class SummaryFinancialPanel extends ObjectDataInputPanel
+public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 {
-	public SummaryFinancialPanel(MainWindow mainWindowToUse)
+	public SummaryPlanningFinancialSubPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
