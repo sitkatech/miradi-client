@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.objective;
 
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
+import org.conservationmeasures.eam.actions.ActionEditStrategyRelevancyList;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -36,8 +37,12 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
+		
 		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS));
-		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker)); 
+		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
+		
+		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS));
+		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
 		
 		updateFieldsFromProject();
 	}
