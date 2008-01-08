@@ -84,6 +84,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		if(getFactor().isTarget())
 		{
+			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
 			ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
 			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
