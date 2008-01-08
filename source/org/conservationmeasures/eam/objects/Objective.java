@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -92,21 +91,13 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	public String getText(ORefList all)
+	public String getText(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		try
-		{
-			ORefList defaultRelevantRefList = new ORefList(getProject().getObjectData(getRef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
-			relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
-			relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
-		}
-		catch(Exception e)
-		{
-			//FIXME do something else with this exception
-			EAM.logException(e);
-		}
-		
+		ORefList defaultRelevantRefList = new ORefList(getProject().getObjectData(getRef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
+		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+	
 		return relevantOverrides.toString();
 	}
 
@@ -121,6 +112,20 @@ public class Objective extends Desire
 		}
 		
 		return relevantOverrides;
+	}
+	
+	public ORefList getRelevantRefList() throws Exception
+	{
+		ORefList relevantRefList = new ORefList(getProject().getObjectData(getRef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet(getProject().getObjectData(getRef(), Objective.TAG_RELEVANT_INDICATOR_SET));
+		for(RelevancyOverride override : relevantOverrides)
+		{
+			if (override.isOverride())
+				relevantRefList.add(override.getRef());
+			else
+				relevantRefList.remove(override.getRef());
+		}
+		return relevantRefList;
 	}
 		
 	public ORefList getRelevantIndicatorRefs()
