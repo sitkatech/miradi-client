@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram.doers;
 import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Objective;
@@ -34,10 +33,12 @@ abstract public class AbstractEditRelevancyListDoer extends ObjectsDoer
 		ORefList refList = getSelectedHierarchies()[0];
 		ORef objectiveRef = refList.getRefForType(Objective.getObjectType());
 		ObjectDataInputPanel indicatorPanel = getRelevancyPanel(objectiveRef);
-		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), indicatorPanel, EAM.text("Choose Indicator"));
+		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), indicatorPanel, getDialogTitle());
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
+
+	abstract protected String getDialogTitle();
 	
 	abstract protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef);
 }
