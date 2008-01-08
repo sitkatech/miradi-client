@@ -129,9 +129,9 @@ public class Objective extends Desire
 		return new ORefList(relevantRefList);
 	}
 		
-	public ORefList getRelevantIndicatorRefs()
+	public ORefList getRelevantIndicatorRefs() throws Exception
 	{
-		return getIndicatorsOnSameFactor();
+		return getRelevantRefList();
 	}
 	
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)
