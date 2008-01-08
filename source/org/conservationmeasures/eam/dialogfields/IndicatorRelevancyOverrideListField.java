@@ -5,13 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
-import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -44,19 +40,11 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 	{
 		try
 		{
-			ORefList relevantRefList = new ORefList(getProject().getObjectData(getORef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
-			RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet(getProject().getObjectData(getORef(), tag));
-			for(RelevancyOverride override : relevantOverrides)
-			{
-				if (override.isOverride())
-					relevantRefList.add(override.getRef());
-				else
-					relevantRefList.remove(override.getRef());
-			}
-			
+			Objective objective = Objective.find(getProject(), getORef());
+			ORefList relevantRefList = objective.getRelevantRefList();
 			refListEditor.setText(relevantRefList.toString());
 		}
-		catch(ParseException e)
+		catch(Exception e)
 		{
 			//FIXME do something else with this exception
 			EAM.logException(e);
