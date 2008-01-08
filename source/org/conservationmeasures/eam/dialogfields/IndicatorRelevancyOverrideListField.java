@@ -25,7 +25,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		{
 			Objective objective = Objective.find(getProject(), getORef());
 			ORefList all = new ORefList(refListEditor.getText());
-			return objective.getText(all).toString();
+			return objective.getCalculatedRelevantOverrides(all).toString();
 		}
 		catch(Exception e)
 		{
