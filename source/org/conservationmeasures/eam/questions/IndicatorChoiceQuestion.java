@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class IndicatorChoiceQuestion extends ObjectQuestion
 {
-	public IndicatorChoiceQuestion(Project project, String questionLabel)
+	public IndicatorChoiceQuestion(Project project)
 	{
 		super(project, Indicator.getObjectType(), EAM.text("Indicator list"));
 	}
