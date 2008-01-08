@@ -91,7 +91,7 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	public RelevancyOverrideSet getText(ORefList all) throws Exception
+	public RelevancyOverrideSet getCalculatedRelevantOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
