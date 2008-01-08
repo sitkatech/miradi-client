@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.questions;
 import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 import org.conservationmeasures.eam.objecthelpers.WwfCountriesFileLoader;
 
-public class WwfCountriesQuestion extends TwoLevelQuestion
+public class CountriesQuestion extends TwoLevelQuestion
 {
-	public WwfCountriesQuestion(String tagToUse)
+	public CountriesQuestion(String tagToUse)
 	{
-		super(tagToUse, "WwfCountries", new WwfCountriesFileLoader(TwoLevelFileLoader.WWF_COUNTRIES_FILE));
+		super(tagToUse, "Countries", new WwfCountriesFileLoader(TwoLevelFileLoader.COUNTRIES_FILE));
 	}
 }
