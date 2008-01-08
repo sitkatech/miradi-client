@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StrategyChoiceQuestion;
 
 public class RelevancyStrategyPanel extends ObjectDataInputPanel
 {
@@ -16,6 +17,7 @@ public class RelevancyStrategyPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
+		addField(createStrategyRelevancyOverrideListField(new StrategyChoiceQuestion(getProject())));
 		
 		updateFieldsFromProject();
 	}
