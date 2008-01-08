@@ -343,6 +343,7 @@ public class Actions
 		registerAction(new ActionGroupBoxAddFactor(mainWindow));
 		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
 		registerAction(new ActionEditIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditStrategyRelevancyList(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
