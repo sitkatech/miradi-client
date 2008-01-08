@@ -42,7 +42,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		}
 		catch(ParseException e)
 		{
-			//TODO do something else with this exception
+			//FIXME do something else with this exception
 			EAM.logException(e);
 		}	
 	}
