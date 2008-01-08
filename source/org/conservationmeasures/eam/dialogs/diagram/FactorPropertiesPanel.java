@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.dialogs.goal.GoalListManagementPanel;
 import org.conservationmeasures.eam.dialogs.objective.ObjectiveListManagementPanel;
+import org.conservationmeasures.eam.dialogs.objective.ObjectiveListTablePanel;
 import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
@@ -210,7 +211,8 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		
 		if(factor.canHaveObjectives())
 		{
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
