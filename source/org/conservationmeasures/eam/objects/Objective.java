@@ -162,7 +162,7 @@ public class Objective extends Desire
 	
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
-		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
 		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
 
 		return calculateRefList(relevantRefList, relevantOverrides);
@@ -171,7 +171,7 @@ public class Objective extends Desire
 	public ORefList getRelevantStrategyRefList() throws Exception
 	{
 		//FIXME use updownstream strats
-		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
 		RelevancyOverrideSet relevantOverrides = relevantStrategyOverrides.getRawRelevancyOverrideSet();
 
 		return calculateRefList(relevantRefList, relevantOverrides);

@@ -80,7 +80,7 @@ abstract public class Desire extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public ORefSet getIndicatorsOnSameFactorAsSet()
+	public ORefSet indicatorsOnSameFactorAsRefSet()
 	{
 		ORefSet indicatorsOnSameFactor = new ORefSet();
 		ORef[] indicators = getIndicatorsOnSameFactor().toArray();
