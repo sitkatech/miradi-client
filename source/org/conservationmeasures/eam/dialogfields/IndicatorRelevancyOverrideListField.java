@@ -23,6 +23,38 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
 	}
 	
+	public String getText()
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		try
+		{
+			ORefList all = new ORefList(refListEditor.getText());
+			ORefList defaultRelevantRefList = new ORefList(getProject().getObjectData(getORef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
+			relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
+			relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+		}
+		catch(Exception e)
+		{
+			//FIXME do something else with this exception
+			EAM.logException(e);
+		}
+		
+		return relevantOverrides.toString();
+	}
+
+	private RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
+		for (int i = 0; i < overrideRefs.size(); ++i)
+		{
+			RelevancyOverride thisOverride = new RelevancyOverride(overrideRefs.get(i), relevancyValue);
+			relevantOverrides.add(thisOverride);
+		}
+		
+		return relevantOverrides;
+	}
+	
 	public void setText(String codes)
 	{
 		try
