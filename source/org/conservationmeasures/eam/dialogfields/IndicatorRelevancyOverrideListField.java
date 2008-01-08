@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListField
 {
-	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
+	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Objective.TAG_RELEVANT_INDICATOR_SET);
 	}
 	
 	public String getText()

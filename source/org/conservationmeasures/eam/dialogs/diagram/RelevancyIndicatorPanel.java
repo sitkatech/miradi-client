@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.diagram;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorChoiceQuestion;
 
@@ -18,7 +17,7 @@ public class RelevancyIndicatorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject()), Objective.TAG_RELEVANT_INDICATOR_SET));
+		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject())));
 		
 		updateFieldsFromProject();
 	}

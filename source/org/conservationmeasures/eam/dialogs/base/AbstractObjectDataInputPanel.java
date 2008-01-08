@@ -242,9 +242,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 1, columns);
 	}
 	
-	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question, String tag)
+	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
-		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question, tag);
+		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, int columnCount)
