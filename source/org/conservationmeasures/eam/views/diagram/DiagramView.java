@@ -53,6 +53,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
+import org.conservationmeasures.eam.actions.ActionEditStrategyRelevancyList;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -138,6 +139,7 @@ import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditIndicatorRelevancyListDoer;
+import org.conservationmeasures.eam.views.diagram.doers.EditStrategyRelevancyListDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
@@ -300,6 +302,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
+		addDoerToMap(ActionEditStrategyRelevancyList.class, new EditStrategyRelevancyListDoer());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionCloneIndicator.class, new CloneIndicatorDoer());
