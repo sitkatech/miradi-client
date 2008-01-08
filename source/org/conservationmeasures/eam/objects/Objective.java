@@ -130,8 +130,8 @@ public class Objective extends Desire
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
-		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
 		return relevantOverrides;
 	}
@@ -141,13 +141,13 @@ public class Objective extends Desire
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		//FIXME use updownstream strats
 		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
-		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
 		return relevantOverrides;
 	}
 
-	public RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
+	public RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
