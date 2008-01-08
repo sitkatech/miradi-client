@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
@@ -23,9 +21,6 @@ abstract public class ObjectQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getObjectChoices(Project project, int type)
 	{
 		Vector choiceItems = new Vector();
-		ChoiceItem notSpecifiedChoice = new ChoiceItem(ORef.INVALID.toString(), EAM.text("Not Specified"));
-		choiceItems.add(notSpecifiedChoice);
-		
 		ORefList objectRefs = project.getPool(type).getORefList();
 		for (int i = 0; i < objectRefs.size(); ++i)
 		{
