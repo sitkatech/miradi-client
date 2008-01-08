@@ -139,8 +139,7 @@ public class Objective extends Desire
 	public RelevancyOverrideSet getCalculatedRelevantStrategyrOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		//FIXME use updownstream strats
-		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
+		ORefList defaultRelevantRefList = getUpstreamNonDraftStrategies();
 		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
 	

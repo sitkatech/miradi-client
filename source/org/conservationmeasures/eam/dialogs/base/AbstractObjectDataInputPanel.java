@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
+import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -245,6 +246,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
 		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
+	}
+	
+	public ObjectDataInputField createStrategyRelevancyOverrideListField(ChoiceQuestion question)
+	{
+		return new StrategyRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, int columnCount)
