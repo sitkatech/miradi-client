@@ -172,7 +172,7 @@ public class Objective extends Desire
 	{
 		//FIXME use updownstream strats
 		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
-		RelevancyOverrideSet relevantOverrides = relevantStrategies.getRawRelevancyOverrideSet();
+		RelevancyOverrideSet relevantOverrides = relevantStrategyOverrides.getRawRelevancyOverrideSet();
 
 		return calculateRefList(relevantRefList, relevantOverrides);
 	}
@@ -203,13 +203,13 @@ public class Objective extends Desire
 	{
 		super.clear();
 		relevantIndicatorOverrides = new RelevancyOverrideSetData();
-		relevantStrategies = new RelevancyOverrideSetData();
+		relevantStrategyOverrides = new RelevancyOverrideSetData();
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		pseudoRelevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
-		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategies);
+		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategyOverrides);
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
 		addField(PSEUDO_RELEVANT_STRATEGY_REFS, pseudoRelevantStrategyRefs);
 	}
@@ -221,7 +221,7 @@ public class Objective extends Desire
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
 	public static final String PSEUDO_RELEVANT_STRATEGY_REFS = "PseudoDefaultRelevantStrategyRefs";
 	
-	private RelevancyOverrideSetData relevantStrategies;
+	private RelevancyOverrideSetData relevantStrategyOverrides;
 	private RelevancyOverrideSetData relevantIndicatorOverrides;
 	private PseudoORefListData relevantIndicatorRefs;
 	private PseudoORefListData pseudoRelevantStrategyRefs;
