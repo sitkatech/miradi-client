@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ORefSet;
@@ -72,12 +73,27 @@ public class Objective extends Desire
 	
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS))
-			return getIndicatorsOnSameFactor().toString();
+		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
 	
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefs();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 	public ORefList getUpstreamNonDraftStrategies(DiagramObject diagram)
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();
@@ -148,16 +164,16 @@ public class Objective extends Desire
 	{
 		super.clear();
 		relevantIndicators = new RelevancyOverrideSetData();
-		defaultRelevantIndicatorRefs = new PseudoORefListData(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS);
+		defaultRelevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicators);
-		addField(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS, defaultRelevantIndicatorRefs);
+		addField(PSEUDO_RELEVANT_INDICATOR_REFS, defaultRelevantIndicatorRefs);
 	}
 	
 	public static final String OBJECT_NAME = "Objective";
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
-	public static final String PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
+	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
 	
 	private RelevancyOverrideSetData relevantIndicators;
 	private PseudoORefListData defaultRelevantIndicatorRefs;
