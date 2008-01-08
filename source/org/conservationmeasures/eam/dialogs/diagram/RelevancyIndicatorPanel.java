@@ -18,7 +18,7 @@ public class RelevancyIndicatorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject()), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS, Objective.TAG_RELEVANT_INDICATOR_SET));
+		addField(createIndicatorRelevancyOverrideListField(new IndicatorChoiceQuestion(getProject()), Objective.TAG_RELEVANT_INDICATOR_SET));
 		
 		updateFieldsFromProject();
 	}
