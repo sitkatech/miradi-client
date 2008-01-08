@@ -18,11 +18,12 @@ import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class RelevancyOverrideListField extends ObjectDataInputField implements ListSelectionListener
 {
-	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
+	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse, String defaultListTagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
 		tag = tagToUse;
+		defaultListTag = defaultListTagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);
 		refListScroller = new FastScrollPane(refListEditor);
 		Dimension preferredSize = refListScroller.getPreferredSize();
@@ -62,4 +63,5 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	private RefListComponent refListEditor;
 	private FastScrollPane refListScroller;
 	String tag;
+	String defaultListTag;
 }
