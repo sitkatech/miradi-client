@@ -18,10 +18,9 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
-	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions, ObjectiveListTablePanel objectListPanel) throws Exception
 	{
-		super(splitPositionSaverToUse, new ObjectiveListTablePanel(projectToUse, actions, nodeRef),
-				new ObjectivePropertiesPanel(projectToUse, actions));
+		super(splitPositionSaverToUse, objectListPanel, new ObjectivePropertiesPanel(projectToUse, actions, objectListPanel.getPicker()));
 	}
 	
 	public String getSplitterDescription()

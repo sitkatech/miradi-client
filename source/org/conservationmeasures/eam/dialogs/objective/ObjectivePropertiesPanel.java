@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogs.objective;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
@@ -16,15 +15,16 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 {
-	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
-		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()), actionsToUse);
+		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()), actionsToUse, picker);
 	}
 		
-	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow, Actions actionsToUse) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
 		
@@ -37,8 +37,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		addField(createReadonlyTextField(Objective.TAG_RELEVANT_INDICATOR_SET));
-		add(new PanelButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class)));
-				
+		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker)); 
+		
 		updateFieldsFromProject();
 	}
 

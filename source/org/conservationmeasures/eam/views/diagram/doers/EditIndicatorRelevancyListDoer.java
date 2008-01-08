@@ -10,6 +10,8 @@ import org.conservationmeasures.eam.dialogs.diagram.RelevancyIndicatorPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.martus.swing.Utilities;
 
@@ -17,6 +19,10 @@ public class EditIndicatorRelevancyListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if (getSelectedHierarchies().length == 0)
+			return false;
+		
+		
 		return true;
 	}
 	
@@ -25,8 +31,9 @@ public class EditIndicatorRelevancyListDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		
-		RelevancyIndicatorPanel indicatorPanel = new RelevancyIndicatorPanel(getProject(), ORef.INVALID);
+		ORefList refList = getSelectedHierarchies()[0];
+		ORef objectiveRef = refList.getRefForType(Objective.getObjectType());
+		RelevancyIndicatorPanel indicatorPanel = new RelevancyIndicatorPanel(getProject(), objectiveRef);
 		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), indicatorPanel, EAM.text("Choose Indicator"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);

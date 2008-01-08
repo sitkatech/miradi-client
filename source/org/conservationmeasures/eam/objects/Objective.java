@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
-import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
@@ -97,7 +96,7 @@ public class Objective extends Desire
 	{
 		super.clear();
 		relevantIndicators = new RelevancyOverrideSetData();
-		defaultRelevantIndicatorRefs = new ORefListData();
+		defaultRelevantIndicatorRefs = new PseudoORefListData(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicators);
 		addField(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS, defaultRelevantIndicatorRefs);
@@ -109,5 +108,5 @@ public class Objective extends Desire
 	public static final String PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
 	
 	private RelevancyOverrideSetData relevantIndicators;
-	private ORefListData defaultRelevantIndicatorRefs;
+	private PseudoORefListData defaultRelevantIndicatorRefs;
 }

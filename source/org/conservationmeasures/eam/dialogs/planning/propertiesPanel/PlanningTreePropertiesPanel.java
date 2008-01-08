@@ -51,7 +51,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject());
-		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions());
+		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getProject());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
