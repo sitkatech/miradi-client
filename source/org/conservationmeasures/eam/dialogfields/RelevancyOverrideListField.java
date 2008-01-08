@@ -6,29 +6,23 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Dimension;
-import java.text.ParseException;
 
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
-import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class RelevancyOverrideListField extends ObjectDataInputField implements ListSelectionListener
 {
-	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String defaultListTagToUse, String tagToUse)
+	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
 		tag = tagToUse;
-		defaultListTag = defaultListTagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);
 		refListScroller = new FastScrollPane(refListEditor);
 		Dimension preferredSize = refListScroller.getPreferredSize();
@@ -50,26 +44,8 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	}
 
 	public void setText(String codes)
-	{
-		try
-		{
-			ORefList relevantRefList = new ORefList(getProject().getObjectData(getORef(), defaultListTag));
-			RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet(getProject().getObjectData(getORef(), tag));
-			for(RelevancyOverride override : relevantOverrides)
-			{
-				if (override.isOverride())
-					relevantRefList.add(override.getRef());
-				else
-					relevantRefList.remove(override.getRef());
-			}
-			
-			refListEditor.setText(relevantRefList.toString());
-		}
-		catch(ParseException e)
-		{
-			//TODO do something else with this exception
-			EAM.logException(e);
-		}	
+	{	
+		refListEditor.setText(codes);
 	}
 	
 	public void updateEditableState()
@@ -83,8 +59,7 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 		saveIfNeeded();
 	}
 	
-	private RefListComponent refListEditor;
+	protected RefListComponent refListEditor;
 	private FastScrollPane refListScroller;
 	String tag;
-	String defaultListTag;
 }

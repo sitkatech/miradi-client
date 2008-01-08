@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogfields.IndicatorRelevancyOverrideListField;
 import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
@@ -31,7 +32,6 @@ import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
-import org.conservationmeasures.eam.dialogfields.RelevancyOverrideListField;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -242,9 +242,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 1, columns);
 	}
 	
-	public ObjectDataInputField createRelevancyOverrideListField(ChoiceQuestion question, String defaultListTag, String tag)
+	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question, String defaultListTag, String tag)
 	{
-		return new RelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question, defaultListTag, tag);
+		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question, defaultListTag, tag);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, int columnCount)
