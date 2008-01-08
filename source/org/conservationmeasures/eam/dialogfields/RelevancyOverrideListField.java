@@ -67,6 +67,7 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 		}
 		catch(ParseException e)
 		{
+			//TODO do something else with this exception
 			EAM.logException(e);
 		}	
 	}
