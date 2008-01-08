@@ -26,9 +26,9 @@ import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
-public class AbstractDialogWithClose extends EAMDialog implements WindowListener
+abstract public class AbstractDialogWithClose extends EAMDialog implements WindowListener
 {
-	public AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
+	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
 		super(parent);
 		
