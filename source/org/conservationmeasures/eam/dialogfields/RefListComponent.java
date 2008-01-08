@@ -48,7 +48,9 @@ public class RefListComponent extends AbstractListComponent
 			{
 				checkBoxes[choiceIndex].setSelected(false);
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
-				boolean isChecked  = refs.contains(ORef.createFromString(choiceItem.getCode()));
+				String code = choiceItem.getCode();
+				ORef ref = ORef.createFromString(code);
+				boolean isChecked  = refs.contains(ref);
 				checkBoxes[choiceIndex].setSelected(isChecked);
 			}
 		}
