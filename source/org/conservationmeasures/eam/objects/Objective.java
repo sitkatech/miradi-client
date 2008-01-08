@@ -91,14 +91,14 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	public String getText(ORefList all) throws Exception
+	public RelevancyOverrideSet getText(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
 		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
-		return relevantOverrides.toString();
+		return relevantOverrides;
 	}
 
 	private RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
