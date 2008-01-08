@@ -20,7 +20,7 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 {
 	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
 		tag = tagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);

@@ -23,7 +23,7 @@ public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 		assertEquals("wrong stratgy count?", 1, strategytORefs.size());
 		assertEquals("wrong type?", Strategy.getObjectType(), strategytORefs.get(0).getObjectType());
 		
-		ORefList indicatortORefs = getObjective().getIndicatorsOnSameFactor(project.getDiagramObject());
+		ORefList indicatortORefs = getObjective().getIndicatorsOnSameFactor();
 		assertEquals("wrong indicator count?", 1, indicatortORefs.size());
 		assertEquals("wrong type?", Indicator.getObjectType(), indicatortORefs.get(0).getObjectType());
 	}
