@@ -77,7 +77,7 @@ abstract public class Desire extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public ORefList getIndicatorsOnSameFactor(DiagramObject diagram)
+	public ORefList getIndicatorsOnSameFactor()
 	{
 		ORefList indicatorRefs = new ORefList();
 		

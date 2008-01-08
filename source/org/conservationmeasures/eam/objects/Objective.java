@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
@@ -65,6 +66,14 @@ public class Objective extends Desire
 		return false;
 	}
 	
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS))
+			return getIndicatorsOnSameFactor().toString();
+	
+		return super.getPseudoData(fieldTag);
+	}
+	
 	public ORefList getUpstreamNonDraftStrategies(DiagramObject diagram)
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();
@@ -79,22 +88,26 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	public ORefList getRelevantIndicatorRefs(DiagramObject diagramObject)
+	public ORefList getRelevantIndicatorRefs()
 	{
-		return getIndicatorsOnSameFactor(diagramObject);
+		return getIndicatorsOnSameFactor();
 	}
 	
 	public void clear()
 	{
 		super.clear();
 		relevantIndicators = new RelevancyOverrideSetData();
+		defaultRelevantIndicatorRefs = new ORefListData();
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicators);
+		addField(PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS, defaultRelevantIndicatorRefs);
 	}
 	
 	public static final String OBJECT_NAME = "Objective";
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+	public static final String PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
 	
 	private RelevancyOverrideSetData relevantIndicators;
+	private ORefListData defaultRelevantIndicatorRefs;
 }
