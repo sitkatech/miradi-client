@@ -12,23 +12,22 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListField
 {
-	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String defaultListTagToUse, String tagToUse)
+	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
-		
-		defaultListTag = defaultListTagToUse;
 	}
 	
 	public void setText(String codes)
 	{
 		try
 		{
-			ORefList relevantRefList = new ORefList(getProject().getObjectData(getORef(), defaultListTag));
+			ORefList relevantRefList = new ORefList(getProject().getObjectData(getORef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
 			RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet(getProject().getObjectData(getORef(), tag));
 			for(RelevancyOverride override : relevantOverrides)
 			{
@@ -46,6 +45,4 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 			EAM.logException(e);
 		}	
 	}
-	
-	private String defaultListTag;
 }
