@@ -76,6 +76,9 @@ public class Objective extends Desire
 		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
 			return getRelevantIndicatorRefsAsString();
 	
+		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY_REFS))
+			return getRelevantStrategyRefsAsString();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -84,7 +87,22 @@ public class Objective extends Desire
 		ORefList refList;
 		try
 		{
-			refList = getRelevantIndicatorRefs();
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	private String getRelevantStrategyRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantStrategyRefList();
 			return refList.toString();
 		}
 		catch(Exception e)
@@ -108,9 +126,20 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
-	public RelevancyOverrideSet getCalculatedRelevantOverrides(ORefList all) throws Exception
+	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
+		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+	
+		return relevantOverrides;
+	}
+	
+	public RelevancyOverrideSet getCalculatedRelevantStrategyrOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		//FIXME use updownstream strats
 		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
 		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
@@ -131,10 +160,25 @@ public class Objective extends Desire
 		return relevantOverrides;
 	}
 	
-	public ORefList getRelevantRefList() throws Exception
+	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
 		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
 		RelevancyOverrideSet relevantOverrides = relevantIndicators.getRawRelevancyOverrideSet();
+
+		return calculateRefList(relevantRefList, relevantOverrides);
+	}
+
+	public ORefList getRelevantStrategyRefList() throws Exception
+	{
+		//FIXME use updownstream strats
+		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
+		RelevancyOverrideSet relevantOverrides = relevantStrategies.getRawRelevancyOverrideSet();
+
+		return calculateRefList(relevantRefList, relevantOverrides);
+	}
+	
+	private ORefList calculateRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
+	{
 		for(RelevancyOverride override : relevantOverrides)
 		{
 			if (override.isOverride())
@@ -145,11 +189,6 @@ public class Objective extends Desire
 		return new ORefList(relevantRefList);
 	}
 		
-	public ORefList getRelevantIndicatorRefs() throws Exception
-	{
-		return getRelevantRefList();
-	}
-	
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)
 	{
 		return (Objective) objectManager.findObject(objectiveRef);
@@ -164,17 +203,26 @@ public class Objective extends Desire
 	{
 		super.clear();
 		relevantIndicators = new RelevancyOverrideSetData();
-		defaultRelevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
+		relevantStrategies = new RelevancyOverrideSetData();
+		
+		pseudoRelevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
+		pseudoRelevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicators);
-		addField(PSEUDO_RELEVANT_INDICATOR_REFS, defaultRelevantIndicatorRefs);
+		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategies);
+		addField(PSEUDO_RELEVANT_INDICATOR_REFS, pseudoRelevantIndicatorRefs);
+		addField(PSEUDO_RELEVANT_STRATEGY_REFS, pseudoRelevantStrategyRefs);
 	}
 	
 	public static final String OBJECT_NAME = "Objective";
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+	public static final String TAG_RELEVANT_STRATEGY_SET = "RelevantStrategySet";
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
+	public static final String PSEUDO_RELEVANT_STRATEGY_REFS = "PseudoDefaultRelevantStrategyRefs";
 	
+	private RelevancyOverrideSetData relevantStrategies;
 	private RelevancyOverrideSetData relevantIndicators;
-	private PseudoORefListData defaultRelevantIndicatorRefs;
+	private PseudoORefListData pseudoRelevantIndicatorRefs;
+	private PseudoORefListData pseudoRelevantStrategyRefs;
 }

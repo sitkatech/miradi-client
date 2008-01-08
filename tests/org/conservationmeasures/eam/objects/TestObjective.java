@@ -44,6 +44,6 @@ public class TestObjective extends ObjectTestCase
 		RelevancyOverrideSet relvancyOverrides = new RelevancyOverrideSet();
 		relvancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
 		objective.setData(Objective.TAG_RELEVANT_INDICATOR_SET, relvancyOverrides.toString());
-		assertEquals("wrong indicator count?", expectedValue, objective.getRelevantRefList().size());
+		assertEquals("wrong indicator count?", expectedValue, objective.getRelevantIndicatorRefList().size());
 	}
 }

@@ -27,7 +27,7 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		ORefList strategies = objective.getUpstreamNonDraftStrategies(diagram);
 		createAndAddChildren(strategies, diagram);
 		
-		ORefList indicatorRefs = objective.getRelevantIndicatorRefs();
+		ORefList indicatorRefs = objective.getRelevantIndicatorRefList();
 		createAndAddChildren(indicatorRefs, diagram);
 	}
 

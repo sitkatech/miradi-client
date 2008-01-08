@@ -12,11 +12,11 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
-public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListField
+public class StrategyRelevancyOverrideListField extends RelevancyOverrideListField
 {
-	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public StrategyRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Objective.TAG_RELEVANT_INDICATOR_SET);
+		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Objective.TAG_RELEVANT_STRATEGY_SET);
 	}
 	
 	public String getText()
@@ -25,7 +25,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		{
 			Objective objective = Objective.find(getProject(), getORef());
 			ORefList all = new ORefList(refListEditor.getText());
-			return objective.getCalculatedRelevantIndicatorOverrides(all).toString();
+			return objective.getCalculatedRelevantStrategyrOverrides(all).toString();
 		}
 		catch(Exception e)
 		{
@@ -41,7 +41,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		try
 		{
 			Objective objective = Objective.find(getProject(), getORef());
-			ORefList relevantRefList = objective.getRelevantIndicatorRefList();
+			ORefList relevantRefList = objective.getRelevantStrategyRefList();
 			refListEditor.setText(relevantRefList.toString());
 		}
 		catch(Exception e)
