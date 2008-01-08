@@ -206,12 +206,12 @@ public class Objective extends Desire
 		relevantStrategyOverrides = new RelevancyOverrideSetData();
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
-		pseudoRelevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
+		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
 		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategyOverrides);
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
-		addField(PSEUDO_RELEVANT_STRATEGY_REFS, pseudoRelevantStrategyRefs);
+		addField(PSEUDO_RELEVANT_STRATEGY_REFS, relevantStrategyRefs);
 	}
 	
 	public static final String OBJECT_NAME = "Objective";
@@ -224,5 +224,5 @@ public class Objective extends Desire
 	private RelevancyOverrideSetData relevantStrategyOverrides;
 	private RelevancyOverrideSetData relevantIndicatorOverrides;
 	private PseudoORefListData relevantIndicatorRefs;
-	private PseudoORefListData pseudoRelevantStrategyRefs;
+	private PseudoORefListData relevantStrategyRefs;
 }
