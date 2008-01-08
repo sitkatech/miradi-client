@@ -41,7 +41,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS));
 		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
 		
-		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS));
+		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS));
 		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
 		
 		updateFieldsFromProject();
