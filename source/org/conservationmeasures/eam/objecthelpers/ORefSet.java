@@ -5,9 +5,19 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class ORefSet extends HashSet<ORef>
 {
-
+	public ORefSet()
+	{
+		super();
+	}
+	
+	public ORefSet(ORefList refList)
+	{
+		this();
+		addAll(Arrays.asList(refList.toArray()));
+	}
 }

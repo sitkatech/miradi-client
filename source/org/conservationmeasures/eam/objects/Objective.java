@@ -112,10 +112,10 @@ public class Objective extends Desire
 		}
 	}
 
-	public ORefList getUpstreamNonDraftStrategies(DiagramObject diagram)
+	public ORefList getUpstreamNonDraftStrategies()
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();
-		Factor[] upstreamFactors = getUpstreamFactors(diagram);
+		Factor[] upstreamFactors = getUpstreamFactors();
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];
@@ -170,8 +170,7 @@ public class Objective extends Desire
 
 	public ORefList getRelevantStrategyRefList() throws Exception
 	{
-		//FIXME use updownstream strats
-		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		ORefSet relevantRefList = new ORefSet(getUpstreamNonDraftStrategies());
 		RelevancyOverrideSet relevantOverrides = relevantStrategyOverrides.getRawRelevancyOverrideSet();
 
 		return calculateRefList(relevantRefList, relevantOverrides);
