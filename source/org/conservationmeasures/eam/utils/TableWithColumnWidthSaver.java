@@ -5,6 +5,7 @@
 */
 package org.conservationmeasures.eam.utils;
 
+import java.awt.Rectangle;
 import java.util.Vector;
 
 import javax.swing.table.TableModel;
@@ -68,6 +69,16 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 		}
 	}
 	
+	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
+	{
+		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);
+		if(!includeSpacing)
+		{
+			cellRect.height -= TableRowHeightSaver.ROW_RESIZE_MARGIN;
+		}
+		return cellRect;
+	}
+
 	abstract public String getUniqueTableIdentifier();
 	
 	private ColumnWidthSaver columnWidthSaver;

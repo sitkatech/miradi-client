@@ -29,7 +29,6 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		table = tableToManage;
 		table.addMouseListener(this);
 		table.addMouseMotionListener(this);
-		table.setIntercellSpacing(new Dimension(3,3));
 
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 		restoreRowHeight();
@@ -120,7 +119,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		int height = table.getRowHeight();
 		int rowStartY = row * height;
 		int withinRowY = y - rowStartY;
-		int border = table.getIntercellSpacing().height / 2;
+		int border = ROW_RESIZE_MARGIN;
 		
 		boolean inBorderChangeArea = (withinRowY >= height - border);
 		return inBorderChangeArea;
@@ -173,7 +172,9 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		oldCursor = null;
 	}
 	
-	private JTable table;
+    public final static int ROW_RESIZE_MARGIN = 2;
+
+    private JTable table;
 	private String uniqueTableIdentifier;
 	
 	private boolean resizeInProgress;
