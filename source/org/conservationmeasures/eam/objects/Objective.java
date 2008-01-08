@@ -117,7 +117,7 @@ public class Objective extends Desire
 	public ORefList getRelevantRefList() throws Exception
 	{
 		ORefList relevantRefList = getIndicatorsOnSameFactor();
-		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet(getProject().getObjectData(getRef(), Objective.TAG_RELEVANT_INDICATOR_SET));
+		RelevancyOverrideSet relevantOverrides = relevantIndicators.getRawRelevancyOverrideSet();
 		for(RelevancyOverride override : relevantOverrides)
 		{
 			if (override.isOverride())

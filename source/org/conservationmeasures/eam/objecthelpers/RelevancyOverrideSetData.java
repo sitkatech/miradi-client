@@ -36,6 +36,11 @@ public class RelevancyOverrideSetData extends ObjectData
 		return rawOther.toString().equals(toString());
 	}
 
+	public RelevancyOverrideSet getRawRelevancyOverrideSet()
+	{
+		return relevancyOverrideSet;
+	}
+	
 	public String get()
 	{
 		return relevancyOverrideSet.toString();
