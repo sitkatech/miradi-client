@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.Arrays;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -12,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftStrategySet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -75,6 +78,15 @@ abstract public class Desire extends BaseObject
 			return getOwner().getLabel();
 		
 		return super.getPseudoData(fieldTag);
+	}
+	
+	public ORefSet getIndicatorsOnSameFactorAsSet()
+	{
+		ORefSet indicatorsOnSameFactor = new ORefSet();
+		ORef[] indicators = getIndicatorsOnSameFactor().toArray();
+		indicatorsOnSameFactor.addAll(Arrays.asList(indicators));
+		
+		return indicatorsOnSameFactor;
 	}
 	
 	public ORefList getIndicatorsOnSameFactor()

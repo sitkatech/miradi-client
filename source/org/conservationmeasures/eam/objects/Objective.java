@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ORefSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
@@ -101,7 +102,7 @@ public class Objective extends Desire
 		return relevantOverrides;
 	}
 
-	private RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
+	public RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
@@ -116,7 +117,7 @@ public class Objective extends Desire
 	
 	public ORefList getRelevantRefList() throws Exception
 	{
-		ORefList relevantRefList = getIndicatorsOnSameFactor();
+		ORefSet relevantRefList = getIndicatorsOnSameFactorAsSet();
 		RelevancyOverrideSet relevantOverrides = relevantIndicators.getRawRelevancyOverrideSet();
 		for(RelevancyOverride override : relevantOverrides)
 		{
@@ -125,7 +126,7 @@ public class Objective extends Desire
 			else
 				relevantRefList.remove(override.getRef());
 		}
-		return relevantRefList;
+		return new ORefList(relevantRefList);
 	}
 		
 	public ORefList getRelevantIndicatorRefs()
