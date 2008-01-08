@@ -94,7 +94,7 @@ public class Objective extends Desire
 	public String getText(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = new ORefList(getProject().getObjectData(getRef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
+		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
 		relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
