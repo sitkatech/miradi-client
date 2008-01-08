@@ -7,10 +7,15 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
+import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -87,9 +92,50 @@ public class Objective extends Desire
 		return nonDraftStrategyRefs;
 	}
 	
+	public String getText(ORefList all)
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		try
+		{
+			ORefList defaultRelevantRefList = new ORefList(getProject().getObjectData(getRef(), Objective.PSEUDO_DEFAULT_RELEVANT_INDICATOR_REFS));
+			relevantOverrides.addAll(getRelevancyOverrides(all, defaultRelevantRefList, true));
+			relevantOverrides.addAll(getRelevancyOverrides(defaultRelevantRefList, all , false));	
+		}
+		catch(Exception e)
+		{
+			//FIXME do something else with this exception
+			EAM.logException(e);
+		}
+		
+		return relevantOverrides.toString();
+	}
+
+	private RelevancyOverrideSet getRelevancyOverrides(ORefList refList1, ORefList refList2, boolean relevancyValue)
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
+		for (int i = 0; i < overrideRefs.size(); ++i)
+		{
+			RelevancyOverride thisOverride = new RelevancyOverride(overrideRefs.get(i), relevancyValue);
+			relevantOverrides.add(thisOverride);
+		}
+		
+		return relevantOverrides;
+	}
+		
 	public ORefList getRelevantIndicatorRefs()
 	{
 		return getIndicatorsOnSameFactor();
+	}
+	
+	public static Objective find(ObjectManager objectManager, ORef objectiveRef)
+	{
+		return (Objective) objectManager.findObject(objectiveRef);
+	}
+	
+	public static Objective find(Project project, ORef objectiveRef)
+	{
+		return find(project.getObjectManager(), objectiveRef);
 	}
 	
 	public void clear()
