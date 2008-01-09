@@ -37,8 +37,7 @@ public class ProjectListPanel extends JPanel
 	}
 	
 	static final String TEXT = EAM.text("<p>To <strong>continue working on an existing project</strong>, " +
-	"click on the name in the list below. To <strong>copy, rename, export " +
-	"to Miradi zip, or delete a file</strong>, right click (alt-click) on the name.</p>");
+	"double-click on the name in the list below, or select it and click the Open button.");
 	
 	TreeBasedProjectList projectList;
 	WizardHtmlViewer intro;
