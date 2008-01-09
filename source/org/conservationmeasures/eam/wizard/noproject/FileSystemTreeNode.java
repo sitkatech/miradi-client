@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.wizard.noproject;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -56,7 +57,8 @@ public class FileSystemTreeNode extends TreeTableNode
 			
 			long lastModifiedMillis = thisFile.lastModified();
 			Date date = new Date(lastModifiedMillis);
-			return date;
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			return format.format(date);
 		}
 		
 		throw new RuntimeException("Unknown column: " + column);
