@@ -1,0 +1,34 @@
+/* 
+* Copyright 2005-2007, Wildlife Conservation Society, 
+* Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.conservationmeasures.eam.wizard.noproject;
+
+import org.conservationmeasures.eam.dialogs.treetables.GenericTreeTableModel;
+import org.conservationmeasures.eam.main.EAM;
+
+public class ProjectListTreeTableModel extends GenericTreeTableModel
+{
+	public ProjectListTreeTableModel(FileSystemTreeNode root)
+	{
+		super(root);
+	}
+
+	public String getColumnTag(int column)
+	{
+		return COLUMN_NAMES[column];
+	}
+
+	public int getColumnCount()
+	{
+		return COLUMN_NAMES.length;
+	}
+
+	public String getColumnName(int column)
+	{
+		return COLUMN_NAMES[column];
+	}
+
+	String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Modified"), };
+}
