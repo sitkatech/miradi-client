@@ -386,6 +386,23 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 		return groupBoxChildrenCells;
 	}
+
+	public HashSet<FactorCell> getOnlySelectedGroupBoxCells() throws Exception
+	{
+		HashSet<FactorCell> groupBoxCells = new HashSet();
+		FactorCell[] selectedCells = getOnlySelectedFactorCells();
+		for (int i = 0; i < selectedCells.length; ++i)
+		{
+			FactorCell selectedCell = selectedCells[i];
+			if (selectedCell.getDiagramFactor().isGroupBoxFactor())
+			{
+				groupBoxCells.add(selectedCell);
+			}		
+		}
+
+		return groupBoxCells;
+	}
+
 	
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
