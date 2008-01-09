@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.GroupBoxIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +12,7 @@ public class ActionDeleteGroupBox extends LocationAction
 {
 	public ActionDeleteGroupBox(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new GroupBoxIcon());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()
