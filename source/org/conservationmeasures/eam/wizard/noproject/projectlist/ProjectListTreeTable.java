@@ -90,13 +90,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 	public JPopupMenu getRightClickMenu(File selectedFile)
 	{
 		JPopupMenu menu = new JPopupMenu();
-		menu.add(new ProjectListOpenAction(this, selectedFile));
+		menu.add(new ProjectListOpenAction(this));
 		menu.addSeparator();
-		menu.add(new ProjectListRenameAction(this, selectedFile)); 
-		menu.add(new ProjectListCopyToAction(this, selectedFile));
-		menu.add(new ProjectListExportAction(this, selectedFile));
+		menu.add(new ProjectListRenameAction(this)); 
+		menu.add(new ProjectListCopyToAction(this));
+		menu.add(new ProjectListExportAction(this));
 		menu.addSeparator();
-		menu.add(new ProjectListDeleteAction(this, selectedFile));
+		menu.add(new ProjectListDeleteAction(this));
 		return menu;
 	}
 	

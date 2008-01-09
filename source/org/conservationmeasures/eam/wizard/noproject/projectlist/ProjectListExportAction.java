@@ -7,7 +7,6 @@
 package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -15,9 +14,9 @@ import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 
 class ProjectListExportAction extends ProjectListAction
 {
-	public ProjectListExportAction(ProjectListTreeTable tableToUse, File selectedFile)
+	public ProjectListExportAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Export..."), selectedFile);
+		super(tableToUse, EAM.text("Export..."));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 

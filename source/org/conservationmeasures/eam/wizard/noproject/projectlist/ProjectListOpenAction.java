@@ -7,15 +7,14 @@
 package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import org.conservationmeasures.eam.main.EAM;
 
 class ProjectListOpenAction extends ProjectListAction
 {
-	public ProjectListOpenAction(ProjectListTreeTable tableToUse, File selectedFile)
+	public ProjectListOpenAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Open"), selectedFile);
+		super(tableToUse, EAM.text("Open"));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 

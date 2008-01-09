@@ -12,16 +12,15 @@ import javax.swing.AbstractAction;
 
 abstract class ProjectListAction extends AbstractAction
 {
-	public ProjectListAction(ProjectListTreeTable tableToUse, String string, File selectedFile)
+	public ProjectListAction(ProjectListTreeTable tableToUse, String string)
 	{
 		super(string);
 		table = tableToUse;
-		thisFile = selectedFile;
 	}
 
 	File getFile()
 	{
-		return thisFile;
+		return table.getSelectedFile();
 	}
 	
 	void refresh()
@@ -30,5 +29,4 @@ abstract class ProjectListAction extends AbstractAction
 	}
 	
 	private ProjectListTreeTable table;
-	private File thisFile;
 }
