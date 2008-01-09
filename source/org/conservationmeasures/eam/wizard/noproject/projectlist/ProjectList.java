@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.wizard.noproject;
+package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.io.File;
 import java.util.Date;
@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
+import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardStep;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.util.MultiCalendar;
 
