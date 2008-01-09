@@ -305,6 +305,7 @@ public class ProjectMetadata extends BaseObject
 		tncPlanningTeamComment = new StringData();
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
+		legacyTncOperatingUnits = new StringData();
 		tncOperatingUnits = new StringData();
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
@@ -314,6 +315,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_PLANNING_TEAM_COMMENT, tncPlanningTeamComment);
 		addField(TAG_TNC_ECOREGION, tncEcoregion);
 		addField(TAG_TNC_COUNTRY, tncCountry);
+		addField(LEGACY_TAG_TNC_OPERATING_UNITS, legacyTncOperatingUnits);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
 		
 		otherOrgManagingOffice = new StringData();
@@ -385,7 +387,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_SIZE_IN_HECTARES = "TNC.SizeInHectares";
 	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
-	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
+	public static final String LEGACY_TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
+	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitsField";
 
 	public static final String TAG_OTHER_ORG_MANAGING_OFFICE = "OtherOrgManagingOffice";
 	public static final String TAG_OTHER_ORG_REGIONAL_OFFICE = "OtherOrgRegionalOffice";
@@ -447,6 +450,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData tncPlanningTeamComment;
 	private StringData tncEcoregion;
 	private StringData tncCountry;
+	private StringData legacyTncOperatingUnits;
 	private StringData tncOperatingUnits;
 
 	private StringData otherOrgManagingOffice;

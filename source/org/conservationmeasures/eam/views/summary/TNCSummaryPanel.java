@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.TncOperatingUnitsQuestion;
 
 public class TNCSummaryPanel extends ObjectDataInputPanel
 {
@@ -23,7 +24,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createMultilineField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 		addField(createStringField(metadata.TAG_TNC_ECOREGION));
 		addField(createReadonlyTextField(metadata.TAG_TNC_COUNTRY));
-		addField(createStringField(metadata.TAG_TNC_OPERATING_UNITS));
+		addField(createReadonlyTextField(metadata.LEGACY_TAG_TNC_OPERATING_UNITS));
+		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new TncOperatingUnitsQuestion(ProjectMetadata.TAG_TNC_OPERATING_UNITS), 1));
 
 		updateFieldsFromProject();
 	}
