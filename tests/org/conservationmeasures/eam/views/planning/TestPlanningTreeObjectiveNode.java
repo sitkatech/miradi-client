@@ -5,9 +5,7 @@
 */ 
 package org.conservationmeasures.eam.views.planning;
 
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.dialogs.planning.treenodes.PlanningTreeObjectiveNode;
 
 
 public class TestPlanningTreeObjectiveNode extends TestPlanningTree
@@ -18,13 +16,10 @@ public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 	}
 	
 	public void testPlanningTreeObjectiveNode() throws Exception
-	{
-		ORefList strategytORefs = getObjective().getUpstreamNonDraftStrategies();
-		assertEquals("wrong stratgy count?", 1, strategytORefs.size());
-		assertEquals("wrong type?", Strategy.getObjectType(), strategytORefs.get(0).getObjectType());
-		
-		ORefList indicatortORefs = getObjective().getIndicatorsOnSameFactor();
-		assertEquals("wrong indicator count?", 1, indicatortORefs.size());
-		assertEquals("wrong type?", Indicator.getObjectType(), indicatortORefs.get(0).getObjectType());
+	{	
+		PlanningTreeObjectiveNode node = new PlanningTreeObjectiveNode(project, project.getDiagramObject(), getObjective().getRef());
+		assertEquals("wrong child count?", 2, node.getChildCount());
+		assertEquals("wrong child?", getStrategy().getRef(), node.getChild(0).getObjectReference());
+		assertEquals("wrong child?", getIndicator().getRef(), node.getChild(1).getObjectReference());
 	}
 }
