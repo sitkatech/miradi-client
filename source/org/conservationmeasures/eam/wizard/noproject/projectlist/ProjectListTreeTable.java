@@ -28,6 +28,8 @@ public class ProjectListTreeTable extends PanelTreeTable
 		super(treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
+		setRowSelectionAllowed(true);
+		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
 	}
