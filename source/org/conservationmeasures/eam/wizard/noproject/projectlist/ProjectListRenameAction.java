@@ -7,16 +7,15 @@
 package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
 
 class ProjectListRenameAction extends ProjectListAction
 {
-	public ProjectListRenameAction(ProjectListTreeTable tableToUse, File selectedFile)
+	public ProjectListRenameAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Rename..."), selectedFile);
+		super(tableToUse, EAM.text("Rename..."));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 

@@ -7,16 +7,15 @@
 package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 
 class ProjectListDeleteAction extends ProjectListAction
 {
-	public ProjectListDeleteAction(ProjectListTreeTable tableToUse, File selectedFile)
+	public ProjectListDeleteAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Delete"), selectedFile);
+		super(tableToUse, EAM.text("Delete"));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 
