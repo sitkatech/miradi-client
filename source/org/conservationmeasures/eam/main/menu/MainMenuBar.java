@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
+import org.conservationmeasures.eam.actions.ActionDeleteGroupBox;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
@@ -214,6 +215,7 @@ public class MainMenuBar extends JMenuBar
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxAddFactor.class), KeyEvent.VK_R));
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxRemoveFactor.class), KeyEvent.VK_P));
+		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionDeleteGroupBox.class), KeyEvent.VK_D));
 			
 		return groupBoxMenu;
 	}
