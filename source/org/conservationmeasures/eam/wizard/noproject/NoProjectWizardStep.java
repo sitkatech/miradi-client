@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
+import org.conservationmeasures.eam.wizard.noproject.projectlist.ProjectListPanel;
 import org.martus.swing.HyperlinkHandler;
 
 public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListener

@@ -3,7 +3,7 @@
 * Bronx, New York (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.conservationmeasures.eam.wizard.noproject;
+package org.conservationmeasures.eam.wizard.noproject.projectlist;
 
 import java.awt.BorderLayout;
 import java.io.File;
@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.wizard.noproject.FileSystemTreeNode;
+import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardStep;
 
 public class TreeBasedProjectList extends JPanel
 {
