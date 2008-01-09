@@ -29,7 +29,7 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		createAndAddChildren(getStrategiesInDiagram(strategies), diagram);
 		
 		ORefList indicatorRefs = objective.getRelevantIndicatorRefList();
-		createAndAddChildren(getStrategiesInDiagram(indicatorRefs), diagram);
+		createAndAddChildren(getIndicatorsInDiagram(indicatorRefs), diagram);
 	}
 
 	private ORefList getStrategiesInDiagram(ORefList strategies)
@@ -44,6 +44,20 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		}
 		
 		return strategiesInDiagram;
+	}
+
+	private ORefList getIndicatorsInDiagram(ORefList indicatorRefs)
+	{
+		ORefList indicatarRefsInDiagram = new ORefList();
+		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		for (int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			ORefList thisIndicatorRefs = diagramFactor.getWrappedFactor().getIndicatorRefs();
+			indicatarRefsInDiagram.addAll(thisIndicatorRefs.getOverlappingRefs(indicatorRefs));
+		}
+		
+		return indicatarRefsInDiagram;
 	}
 
 	public BaseObject getObject()
