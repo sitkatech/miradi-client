@@ -23,6 +23,11 @@ abstract class ProjectListAction extends AbstractAction
 		return table.getSelectedFile();
 	}
 	
+	void updateEnabledState()
+	{
+		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+	}
+	
 	void refresh()
 	{
 		table.refresh();
