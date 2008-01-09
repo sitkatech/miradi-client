@@ -38,11 +38,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
-		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS));
-		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
-		
-		addField(createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS));
-		add(createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Strategies"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
 		
 		updateFieldsFromProject();
 	}
