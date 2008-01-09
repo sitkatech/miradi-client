@@ -169,7 +169,7 @@ abstract public class TabbedView extends UmbrellaView
 			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_TAB))
 				return;
 			EAM.logVerbose("TabbedView.commandExecuted: " + cmd.toString());
-			setTab(new Integer(cmd.getDataValue()).intValue());
+			setTab(getViewData().getCurrentTab());
 		}
 		catch(Exception e)
 		{
