@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
@@ -54,20 +55,26 @@ public class ProjectListTreeTable extends PanelTreeTable
 		doProjectOpen(file);
 	}
 	
-	private void doProjectOpen(File file)
+	public static boolean isProjectDirectory(File file)
+	{
+		return ProjectServer.isExistingProject(file);
+	}
+
+	public static void doProjectOpen(File file)
 	{
 		if(!isProjectDirectory(file))
 			return;
 		
-		Cursor cursor = getMainWindow().getCursor();
-		getMainWindow().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		MainWindow mainWindow = EAM.getMainWindow();
+		Cursor cursor = mainWindow.getCursor();
+		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
 		{
-			getMainWindow().createOrOpenProject(file);
+			mainWindow.createOrOpenProject(file);
 		}
 		finally
 		{
-			getMainWindow().setCursor(cursor);
+			mainWindow.setCursor(cursor);
 		}
 	}
 	
@@ -87,13 +94,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 	public JPopupMenu getRightClickMenu(File selectedFile)
 	{
 		JPopupMenu menu = new JPopupMenu();
-		menu.add(new ProjectListOpenAction(selectedFile));
+		menu.add(new ProjectListOpenAction(this, selectedFile));
 		menu.addSeparator();
-		menu.add(new ProjectListRenameAction(selectedFile)); 
-		menu.add(new ProjectListCopyToAction(selectedFile));
-		menu.add(new ProjectListExportAction(selectedFile));
+		menu.add(new ProjectListRenameAction(this, selectedFile)); 
+		menu.add(new ProjectListCopyToAction(this, selectedFile));
+		menu.add(new ProjectListExportAction(this, selectedFile));
 		menu.addSeparator();
-		menu.add(new ProjectListDeleteAction(selectedFile));
+		menu.add(new ProjectListDeleteAction(this, selectedFile));
 		return menu;
 	}
 	
@@ -104,12 +111,6 @@ public class ProjectListTreeTable extends PanelTreeTable
 		repaint();
 	}
 	
-	private boolean isProjectDirectory(File file)
-	{
-		return ProjectServer.isExistingProject(file);
-	}
-
-
 	class MouseHandler extends MouseAdapter
 	{
 		public void mousePressed(MouseEvent e)
@@ -134,27 +135,34 @@ public class ProjectListTreeTable extends PanelTreeTable
 		}
 	}
 	
-	abstract class ProjectListAction extends AbstractAction
+	abstract static class ProjectListAction extends AbstractAction
 	{
-		public ProjectListAction(String string, File selectedFile)
+		public ProjectListAction(ProjectListTreeTable tableToUse, String string, File selectedFile)
 		{
 			super(string);
-			file = selectedFile;
+			table = tableToUse;
+			thisFile = selectedFile;
 		}
-		
+
 		File getFile()
 		{
-			return file;
+			return thisFile;
 		}
 		
-		private File file;
+		void refresh()
+		{
+			table.refresh();
+		}
+		
+		private ProjectListTreeTable table;
+		private File thisFile;
 	}
 
-	class ProjectListOpenAction extends ProjectListAction
+	static class ProjectListOpenAction extends ProjectListAction
 	{
-		public ProjectListOpenAction(File selectedFile)
+		public ProjectListOpenAction(ProjectListTreeTable tableToUse, File selectedFile)
 		{
-			super(EAM.text("Open"), selectedFile);
+			super(tableToUse, EAM.text("Open"), selectedFile);
 			setEnabled(isProjectDirectory(getFile()));
 		}
 
@@ -164,11 +172,11 @@ public class ProjectListTreeTable extends PanelTreeTable
 		}
 	}
 
-	class ProjectListRenameAction extends ProjectListAction
+	static class ProjectListRenameAction extends ProjectListAction
 	{
-		public ProjectListRenameAction(File selectedFile)
+		public ProjectListRenameAction(ProjectListTreeTable tableToUse, File selectedFile)
 		{
-			super(EAM.text("Rename..."), selectedFile);
+			super(tableToUse, EAM.text("Rename..."), selectedFile);
 			setEnabled(isProjectDirectory(getFile()));
 		}
 
@@ -176,7 +184,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		{
 			try
 			{
-				RenameProject.doIt(getMainWindow(), getFile());
+				RenameProject.doIt(EAM.getMainWindow(), getFile());
 			}
 			catch(Exception e)
 			{
@@ -187,11 +195,11 @@ public class ProjectListTreeTable extends PanelTreeTable
 		}
 	}
 
-	class ProjectListCopyToAction extends ProjectListAction
+	static class ProjectListCopyToAction extends ProjectListAction
 	{
-		public ProjectListCopyToAction(File selectedFile)
+		public ProjectListCopyToAction(ProjectListTreeTable tableToUse, File selectedFile)
 		{
-			super(EAM.text("Copy To..."), selectedFile);
+			super(tableToUse, EAM.text("Copy To..."), selectedFile);
 			setEnabled(isProjectDirectory(getFile()));
 		}
 
@@ -199,7 +207,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		{
 			try
 			{
-				CopyProject.doIt(getMainWindow(), getFile());
+				CopyProject.doIt(EAM.getMainWindow(), getFile());
 			}
 			catch(Exception e)
 			{
@@ -210,11 +218,11 @@ public class ProjectListTreeTable extends PanelTreeTable
 		}
 	}
 
-	class ProjectListExportAction extends ProjectListAction
+	static class ProjectListExportAction extends ProjectListAction
 	{
-		public ProjectListExportAction(File selectedFile)
+		public ProjectListExportAction(ProjectListTreeTable tableToUse, File selectedFile)
 		{
-			super(EAM.text("Export..."), selectedFile);
+			super(tableToUse, EAM.text("Export..."), selectedFile);
 			setEnabled(isProjectDirectory(getFile()));
 		}
 
@@ -222,7 +230,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		{
 			try
 			{
-				ExportZippedProjectFileDoer.perform(getMainWindow(), getFile());
+				ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getFile());
 			}
 			catch(CommandFailedException e)
 			{
@@ -232,11 +240,11 @@ public class ProjectListTreeTable extends PanelTreeTable
 		}
 	}
 
-	class ProjectListDeleteAction extends ProjectListAction
+	static class ProjectListDeleteAction extends ProjectListAction
 	{
-		public ProjectListDeleteAction(File selectedFile)
+		public ProjectListDeleteAction(ProjectListTreeTable tableToUse, File selectedFile)
 		{
-			super(EAM.text("Delete"), selectedFile);
+			super(tableToUse, EAM.text("Delete"), selectedFile);
 			setEnabled(isProjectDirectory(getFile()));
 		}
 
@@ -244,7 +252,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		{
 			try
 			{
-				DeleteProject.doIt(getMainWindow(), getFile());
+				DeleteProject.doIt(EAM.getMainWindow(), getFile());
 			}
 			catch(Exception e)
 			{
