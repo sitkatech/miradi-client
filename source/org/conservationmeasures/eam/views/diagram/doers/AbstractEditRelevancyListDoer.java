@@ -21,6 +21,8 @@ abstract public class AbstractEditRelevancyListDoer extends ObjectsDoer
 		if (getSelectedHierarchies().length == 0)
 			return false;
 		
+		if (isInvalidSelection())
+			return false;
 		
 		return true;
 	}
@@ -38,6 +40,14 @@ abstract public class AbstractEditRelevancyListDoer extends ObjectsDoer
 		dialog.setVisible(true);
 	}
 
+	private boolean isInvalidSelection()
+	{
+		ORefList refList = getSelectedHierarchies()[0];
+		ORef objectiveRef = refList.getRefForType(Objective.getObjectType());
+	
+		return objectiveRef.isInvalid();
+	}
+	
 	abstract protected String getDialogTitle();
 	
 	abstract protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef);
