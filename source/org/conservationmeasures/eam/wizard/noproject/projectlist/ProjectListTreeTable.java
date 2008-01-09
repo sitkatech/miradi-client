@@ -37,15 +37,15 @@ public class ProjectListTreeTable extends PanelTreeTable
 		return EAM.text("Project List");
 	}
 	
-	private void doProjectOpen(Point point)
+	public File getSelectedFile()
 	{
-		int row = rowAtPoint(point);
-		if(row < 0 || row > getRowCount())
-			return;
+		int row = getSelectedRow();
+		if(row < 0)
+			return null;
 		
 		FileSystemTreeNode node = (FileSystemTreeNode)getObjectForRow(row);
 		File file = node.getFile();
-		doProjectOpen(file);
+		return file;
 	}
 	
 	public static boolean isProjectDirectory(File file)
@@ -55,6 +55,9 @@ public class ProjectListTreeTable extends PanelTreeTable
 
 	public static void doProjectOpen(File file)
 	{
+		if(file == null)
+			return;
+		
 		if(!isProjectDirectory(file))
 			return;
 		
@@ -124,7 +127,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		{
 			super.mouseClicked(e);
 			if(e.getClickCount() == 2)
-				doProjectOpen(e.getPoint());
+				doProjectOpen(getSelectedFile());
 		}
 	}
 }
