@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -114,6 +115,15 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
+	protected void addFieldWithEditButton(String label, ObjectDataInputField field, PanelButton button)
+	{
+		super.addField(field);
+		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.add(field.getComponent());
+		fieldPanel.add(button);
+		addLabel(label);
+		add(fieldPanel);
+	}
 
 	public void addLabel(String translatedLabelText)
 	{
