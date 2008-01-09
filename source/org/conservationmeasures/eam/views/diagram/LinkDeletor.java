@@ -86,7 +86,7 @@ public class LinkDeletor
 		deleteDiagramLinks(diagramLinkreferrers);
 	}
 
-	private void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
+	public void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
 	{
 		for (int i = 0; i < diagramLinkORefs.size(); ++i)
 		{
