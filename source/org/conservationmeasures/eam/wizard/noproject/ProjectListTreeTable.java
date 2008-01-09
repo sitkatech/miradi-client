@@ -49,6 +49,11 @@ public class ProjectListTreeTable extends PanelTreeTable
 		
 		FileSystemTreeNode node = (FileSystemTreeNode)getObjectForRow(row);
 		File file = node.getFile();
+		doProjectOpen(file);
+	}
+	
+	private void doProjectOpen(File file)
+	{
 		if(!isProjectDirectory(file))
 			return;
 		
@@ -148,14 +153,12 @@ public class ProjectListTreeTable extends PanelTreeTable
 		public ProjectListOpenAction(File selectedFile)
 		{
 			super(EAM.text("Open"), selectedFile);
+			setEnabled(isProjectDirectory(getFile()));
 		}
 
 		public void actionPerformed(ActionEvent event)
 		{
-			if(!isProjectDirectory(getFile()))
-				return;
-			
-			getMainWindow().createOrOpenProject(getFile());
+			doProjectOpen(getFile());
 		}
 	}
 
@@ -164,15 +167,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 		public ProjectListRenameAction(File selectedFile)
 		{
 			super(EAM.text("Rename..."), selectedFile);
+			setEnabled(isProjectDirectory(getFile()));
 		}
 
 		public void actionPerformed(ActionEvent event)
 		{
 			try
 			{
-				if(!isProjectDirectory(getFile()))
-					return;
-				
 				RenameProject.doIt(getMainWindow(), getFile());
 			}
 			catch(Exception e)
@@ -189,15 +190,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 		public ProjectListCopyToAction(File selectedFile)
 		{
 			super(EAM.text("Copy To..."), selectedFile);
+			setEnabled(isProjectDirectory(getFile()));
 		}
 
 		public void actionPerformed(ActionEvent event)
 		{
 			try
 			{
-				if(!isProjectDirectory(getFile()))
-					return;
-				
 				CopyProject.doIt(getMainWindow(), getFile());
 			}
 			catch(Exception e)
@@ -214,15 +213,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 		public ProjectListExportAction(File selectedFile)
 		{
 			super(EAM.text("Export..."), selectedFile);
+			setEnabled(isProjectDirectory(getFile()));
 		}
 
 		public void actionPerformed(ActionEvent event)
 		{
 			try
 			{
-				if(!isProjectDirectory(getFile()))
-					return;
-				
 				ExportZippedProjectFileDoer.perform(getMainWindow(), getFile());
 			}
 			catch(CommandFailedException e)
@@ -238,15 +235,13 @@ public class ProjectListTreeTable extends PanelTreeTable
 		public ProjectListDeleteAction(File selectedFile)
 		{
 			super(EAM.text("Delete"), selectedFile);
+			setEnabled(isProjectDirectory(getFile()));
 		}
 
 		public void actionPerformed(ActionEvent event)
 		{
 			try
 			{
-				if(!isProjectDirectory(getFile()))
-					return;
-				
 				DeleteProject.doIt(getMainWindow(), getFile());
 			}
 			catch(Exception e)
