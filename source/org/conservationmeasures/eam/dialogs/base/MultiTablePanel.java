@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 
-import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
@@ -54,18 +53,6 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		rowHeightController.addTable(tableToAdd);
 	}
 	
-	protected void addVerticalAndHorizontalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
-	{
-		horizontalController.addTable(scroller);
-		addVerticalScrollableControlledTable(horizontalBox, scroller);	
-	}
-	
-	protected void addVerticalScrollableControlledTable(Box horizontalBox, JScrollPane scroller)
-	{
-		addToVerticalController(scroller);
-		horizontalBox.add(scroller);
-	}
-
 	protected void addToVerticalController(JScrollPane scroller)
 	{
 		verticalController.addTable(scroller);
