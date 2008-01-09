@@ -170,6 +170,34 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(390, 285)));
 	}
 
+	public void testCopyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
+	{
+		String projectMetaDataWithOldTncOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199918933796\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"China, Australia, home,  \"}";
+		File jsonDir = createJsonDir();
+		
+		File projectMetaDataDir = DataUpgrader.createObjectsDir(jsonDir, 11);
+		int[] projectMetaDataIds = {0, };
+		File projectMetaDataManifestFile = createManifestFile(projectMetaDataDir, projectMetaDataIds);
+		assertTrue(projectMetaDataManifestFile.exists());
+		
+		File projectMetaDataFileWithOldTncOperatingUnits = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
+		createFile(projectMetaDataFileWithOldTncOperatingUnits, projectMetaDataWithOldTncOperatingUnitsField);
+		assertTrue("project meta data file exists?", projectMetaDataFileWithOldTncOperatingUnits.exists());
+		
+		EnhancedJsonObject projectMetaDataJson1 = DataUpgrader.readFile(projectMetaDataFileWithOldTncOperatingUnits);	
+		String operatingUnitsAsString = projectMetaDataJson1.optString("TNC.OperatingUnits");
+		assertEquals("wrong number of codes?", "China, Australia, home,  ", operatingUnitsAsString);
+	
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		boolean isNonBlank = dataUpgrader.copyTncOperatingUnitsFieldDataOverToNewPickListField();
+		assertTrue("had non blank old operating units field?", isNonBlank);
+		
+		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFileWithOldTncOperatingUnits);
+		assertEquals("wrong id?", new BaseId(0), projectMetaDataJson.getId("Id"));		
+		CodeList newOperatingUnits = new CodeList(projectMetaDataJson.getString("TNC.OperatingUnitsField"));
+		assertEquals("wrong number of Operating units?", 2, newOperatingUnits.size());
+	}
+	
 	public void testCopyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
 	{
 		String projectMetaDataWithTncSizeInHectars = "{\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"1.0\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"2008-01-04\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"1.0\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"my project name for wwf\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"EUR\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"ScopeComments\":\"\",\"Id\":0,\"ExpectedEndDate\":\"2008-01-04\",\"CurrencySymbol\":\"E\",\"StateAndProvinces\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"SummaryWizardDefineTeamMembers\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"99999.0\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"vision text 101\",\"WorkPlanStartDate\":\"\",\"TimeStampModified\":\"1199481834101\",\"ShortProjectScope\":\"\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"\"}";

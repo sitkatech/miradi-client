@@ -25,6 +25,8 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.TncOperatingUnitsQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -162,6 +164,10 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 30)
 				upgradeToVersion31();
+			
+			if (readDataVersion(getTopDirectory()) == 31)
+				upgradeToVersion32();
+
 		}
 		finally 
 		{
@@ -169,6 +175,57 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	private void upgradeToVersion32() throws Exception
+	{
+		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
+		if (isNonBlankOperatingUnit)
+			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
+									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
+									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
+		writeVersion(32);
+	}
+
+	public boolean copyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
+		if (! projectMetaDataDir.exists())
+			return false;
+
+		File projectMetaDataManifestFile = new File(projectMetaDataDir, "manifest");
+		if (! projectMetaDataManifestFile.exists())
+			return false;
+		
+		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
+		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
+		if (projectMetaDataIds.length != 1)
+			return false;
+
+		BaseId projectMetaDataId = projectMetaDataIds[0];
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
+		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
+		
+		String oldOperatingUnitsAsString = projectMetaDataJson.optString("TNC.OperatingUnits");
+		String[] oldOperatingUnits = oldOperatingUnitsAsString.split(",");
+		
+		String newOperatingUnitsFieldTag = "TNC.OperatingUnitsField";
+		TncOperatingUnitsQuestion operatingUnitsQuestion = new TncOperatingUnitsQuestion(newOperatingUnitsFieldTag);
+		
+		CodeList newOperatingUnitCodes = new CodeList();
+		for (int i = 0; i < oldOperatingUnits.length; ++i)
+		{
+			String oldOperatingUnit = oldOperatingUnits[i].trim();
+			ChoiceItem foundChoice = operatingUnitsQuestion.findChoiceByLabel(oldOperatingUnit);
+			if (foundChoice != null)
+				newOperatingUnitCodes.add(foundChoice.getCode());
+		}
+		
+		projectMetaDataJson.put("TNC.OperatingUnitsField", newOperatingUnitCodes.toString());
+		writeJson(projectMetaDataFile, projectMetaDataJson);
+		
+		return (oldOperatingUnitsAsString.length() > 0);
+	}
+
 	private void upgradeToVersion31() throws Exception
 	{
 		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
