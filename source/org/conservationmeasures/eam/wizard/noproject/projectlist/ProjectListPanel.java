@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardHtmlViewer;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardStep;
 
@@ -27,7 +26,7 @@ public class ProjectListPanel extends JPanel
 		intro.setText(TEXT);
 		
 		add(intro, BorderLayout.BEFORE_FIRST_LINE);
-		add(new FastScrollPane(projectList), BorderLayout.CENTER);
+		add(projectList, BorderLayout.CENTER);
 		setBackground(Color.WHITE);
 	}
 	
