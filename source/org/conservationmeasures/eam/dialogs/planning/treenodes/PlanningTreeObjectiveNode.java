@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.planning.treenodes;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
@@ -24,11 +25,25 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 
 	public void rebuild() throws Exception
 	{
-		ORefList strategies = objective.getUpstreamNonDraftStrategies();
-		createAndAddChildren(strategies, diagram);
+		ORefList strategies = objective.getRelevantStrategyRefList();
+		createAndAddChildren(getStrategiesInDiagram(strategies), diagram);
 		
 		ORefList indicatorRefs = objective.getRelevantIndicatorRefList();
-		createAndAddChildren(indicatorRefs, diagram);
+		createAndAddChildren(getStrategiesInDiagram(indicatorRefs), diagram);
+	}
+
+	private ORefList getStrategiesInDiagram(ORefList strategies)
+	{
+		ORefList strategiesInDiagram = new ORefList();
+		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		for (int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			if (strategies.contains(diagramFactor.getWrappedORef()))
+				strategiesInDiagram.add(diagramFactor.getWrappedORef());
+		}
+		
+		return strategiesInDiagram;
 	}
 
 	public BaseObject getObject()
