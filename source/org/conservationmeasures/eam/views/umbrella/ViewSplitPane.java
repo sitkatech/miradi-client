@@ -13,7 +13,10 @@ public class ViewSplitPane extends PersistentSplitPane
 {
 	public ViewSplitPane(MainWindow mainWindow, Component topPanel, Component bottomPanel) 
 	{
-		super(mainWindow, mainWindow, MAIN_SPLITTER, topPanel, bottomPanel);
+		super(mainWindow, mainWindow, MAIN_SPLITTER);
+		setTopComponent(topPanel);
+		setBottomComponent(bottomPanel);
+
 		setOneTouchExpandable(true);
 		setDividerSize(15);
 		setResizeWeight(.5);
