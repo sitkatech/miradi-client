@@ -6,19 +6,16 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 
-import java.awt.Component;
-
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class PersistentSplitPane extends JSplitPane
+abstract public class PersistentSplitPane extends JSplitPane
 {
-	public PersistentSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
+	public PersistentSplitPane(SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		
-		mainComponentSplitted = componentSplitted;
 		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
@@ -26,8 +23,6 @@ public class PersistentSplitPane extends JSplitPane
 		setDividerSize(15);
 		setResizeWeight(.5);
 		setFocusable(false);
-	
-		restoreSavedLocation();
 	}
 	
 	public void restoreSavedLocation()
@@ -52,10 +47,7 @@ public class PersistentSplitPane extends JSplitPane
 		super.setDividerLocation(location);
 	}
 
-	private int getMainHeight()
-	{
-		return mainComponentSplitted.getHeight();
-	}
+	abstract int getMainHeight();
 	
 	public void saveCurrentLocation()
 	{
@@ -90,7 +82,6 @@ public class PersistentSplitPane extends JSplitPane
 	
 	private String splitterName;
 	private SplitterPositionSaverAndGetter splitPositionSaver;
-	private Component mainComponentSplitted;
 	
 	public final static int SPLITTER_MIDDLE_LOCATION = 0;
 }
