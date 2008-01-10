@@ -55,6 +55,12 @@ abstract public class PersistentSplitPane extends JSplitPane
 		saveLocation(getDividerLocation());
 	}
 
+	public boolean isSavedLocationDefault()
+	{
+		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(splitterName);		
+		return (splitPercentFromMiddle == 0);
+	}
+	
 	private void saveLocation(int location)
 	{
 		if (getContainerHeightOrWidth()==0)
