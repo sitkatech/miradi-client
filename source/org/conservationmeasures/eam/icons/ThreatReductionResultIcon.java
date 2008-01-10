@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -23,4 +25,18 @@ public class ThreatReductionResultIcon extends AbstractShapeIcon
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT); 
 	}
+	
+	static public Icon createDisabledIcon()
+	{
+		return new ThreatReductionResultIconDisabledIcon();
+	}
+	
+	private static final class ThreatReductionResultIconDisabledIcon extends TargetIcon
+	{
+		Color getIconColor()
+		{
+			return Color.LIGHT_GRAY;
+		}
+	}
+
 }

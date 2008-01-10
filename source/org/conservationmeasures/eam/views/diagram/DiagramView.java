@@ -66,6 +66,7 @@ import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
+import org.conservationmeasures.eam.actions.ActionInsertThreatReductionResult;
 import org.conservationmeasures.eam.actions.ActionManageStresses;
 import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
 import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
@@ -268,6 +269,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		propertiesDoer = new PropertiesDoer();
 
 		addDoerToMap(ActionInsertIntermediateResult.class, new InsertIntermediateResultDoer());
+		addDoerToMap(ActionInsertThreatReductionResult.class, new InsertThreatReductionResultDoer());
 		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
 		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
