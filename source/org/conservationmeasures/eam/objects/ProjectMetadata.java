@@ -394,7 +394,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_ECOREGION = "TNC.Ecoregion";
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String LEGACY_TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
-	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitsField";
+	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitList";
 	public static final String TAG_TNC_TERRESTRIAL_ECO_REGION = "TNC.TerrestrialEcoRegion";
 	public static final String TAG_TNC_MARINE_ECO_REGION = "TNC.MarineEcoRegion";
 	public static final String TAG_TNC_FRESHWATER_ECO_REGION = "TNC.FreshwaterEcoRegion";
