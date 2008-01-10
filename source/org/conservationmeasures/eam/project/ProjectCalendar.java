@@ -63,6 +63,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (startDate.length() > 0 )
 		{
 			MultiCalendar projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
+			firstCalendarYear = projectStartDate.getGregorianYear();
 			int quarterStartMonth = projectStartDate.getGregorianMonth();
 			quarterStartMonth -= (quarterStartMonth-1)%3;
 			if(quarterStartMonth < firstCalendarMonth)
