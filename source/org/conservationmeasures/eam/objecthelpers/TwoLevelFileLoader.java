@@ -64,4 +64,7 @@ abstract public class TwoLevelFileLoader
 	public final static String WWF_ECO_REGIONS_FILE = "EcoRegions.txt";
 	public final static String WWF_LINK_TO_GLOBAL_TARGETS = "WwfLinkToGlobalTargets.txt";
 	public final static String TNC_OPERATING_UNITS_FILE = "TncOperatingUnites.txt";
+	public final static String TNC_TERRESTRIAL_ECO_REGION_FILE = "TncTerrestrialEcoRegions.txt";
+	public final static String TNC_MARINE_ECO_REGION_FILE = "TncMarineEcoRegions.txt";
+	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.txt";
 }

@@ -1,0 +1,232 @@
+20030	Adriatic Sea Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	13633429	Adriatic Sea
+25031	Aegean Sea Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	81713330	Aegean-Levantine Seas
+20192	Agulhas Bank Marine	51	Agulhas	10	Temperate Southern Africa	Temperate	36557821	Agulhas
+25036	Alboran Sea Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	121622158	Aleutian Islands
+20053	Aleutian Islands Marine	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	55528964	Amazonia
+20072	Amazonia Marine	13	North Brazil Shelf	4	Tropical Atlantic	Tropical	39617185	Amsterdam-St Paul
+20194	Amsterdam-St Paul Marine	52	Amsterdam-St Paul	10	Temperate Southern Africa	Temperate	106688840	Amundsen/Bellingshausen Sea
+20228	Amundsen/Bellingshausen Sea Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	80644011	Andaman and Nicobar Islands
+20109	Andaman and Nicobar Islands Marine	24	Andaman	5	Western Indo-Pacific	Tropical	26316835	Andaman Sea Coral Coast
+20110	Andaman Sea Coral Coast Marine	24	Andaman	5	Western Indo-Pacific	Tropical	43609919	Angolan
+25086	Angolan Marine	17	Gulf of Guinea	4	Tropical Atlantic	Temperate	44415434	Antarctic Peninsula
+20223	Antarctic Peninsula Marine	60	Scotia Sea	12	Southern Ocean	Polar	24215161	Arabian (Persian) Gulf
+20090	Arabian (Persian) Gulf Marine	19	Somali/Arabian	5	Western Indo-Pacific	Tropical	29679535	Araucanian
+20139	Arafura Sea Marine	32	Sahul Shelf	6	Central Indo-Pacific	Tropical	57908846	Arnhem Coast to Gulf of Carpenteria
+20178	Araucanian Marine	45	Warm Temperate Southeastern Pacific	9	Temperate South America	Temperate	37808418	Arufura Sea
+20140	Arnhem Coast to Gulf of Carpenteria Marine	32	Sahul Shelf	6	Central Indo-Pacific	Tropical	16375398	Auckland Island
+20232	Auckland Island Marine	62	Subantarctic New Zealand	12	Southern Ocean	Polar	163131047	Azores Canaries Madeira
+20029	Azores Canaries Madeira Marine	3	Lusitanian	2	Temperate Northern Atlantic	Temperate	31487400	Baffin Bay - Davis Strait
+25007	Baffin Bay - Davis Strait Marine	1	Arctic	1	Arctic	Polar	94526302	Bahamian
+20063	Bahamian Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	37798373	Baltic Sea
+20024	Baltic Sea Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	94122681	Banda Sea
+20131	Banda Sea Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	44161483	Bassian
+20205	Bassian Marine	56	Southeast Australian Shelf	11	Temperate Australasia	Temperate	36430077	Beaufort Sea - continental coast and shelf
+20012	Beaufort Sea - continental coast and shelf Marine	1	Arctic	1	Arctic	Polar	47321098	Beaufort-Amundsen-Viscount Melville-Queen Maud
+20011	Beaufort-Amundsen-Viscount Melville-Queen Maud Marine	1	Arctic	1	Arctic	Polar	37997919	Bermuda
+20062	Bermuda Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	26477242	Bight of Sofala/Swamp Coast
+20101	Bight of Sofala/Swamp Coast Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	71354097	Bismark Sea
+20134	Bismarck Sea Marine	31	Eastern Coral Triangle	6	Central Indo-Pacific	Tropical	46214600	Black Sea
+20044	Black Sea Marine	7	Black Sea	2	Temperate Northern Atlantic	Temperate	29743053	Bonaparte Coast
+20141	Bonaparte Coast Marine	32	Sahul Shelf	6	Central Indo-Pacific	Tropical	27314937	Bounty and Antipodes Islands
+25230	Bounty and Antipodes Islands Marine	62	Subantarctic New Zealand	12	Southern Ocean	Polar	25665682	Bouvet Island
+20217	Bouvet Island Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	21940447	Campbell Island
+20231	Campbell Island Marine	62	Subantarctic New Zealand	12	Southern Ocean	Polar	25132975	Cape Howe
+20204	Cape Howe Marine	56	Southeast Australian Shelf	11	Temperate Australasia	Temperate	76843368	Cape Verde
+20079	Cape Verde Marine	16	West African Transition	4	Tropical Atlantic	Tropical	82709559	Cargados Carajos/Tromelin Island
+20097	Cargados Carajos/Tromelin Island Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	38799393	Carolinian
+25042	Carolinian Marine	6	Warm Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	76120249	Celtic Seas
+20026	Celtic Seas Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	21051493	Central and Southern Great Barrier Reef
+20143	Central and Southern Great Barrier Reef Marine	33	Northeast Australian Shelf	6	Central Indo-Pacific	Tropical	29995481	Central Chile
+20177	Central Chile Marine	45	Warm Temperate Southeastern Pacific	9	Temperate South America	Temperate	58294692	Central Kuroshio Current
+20051	Central Kuroshio Current Marine	9	Warm Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	69837093	Central New Zealand
+25199	Central New Zealand Marine	54	Southern New Zealand	11	Temperate Australasia	Temperate	31516175	Central Peru
+20175	Central Peru Marine	45	Warm Temperate Southeastern Pacific	9	Temperate South America	Temperate	44256463	Central Somali Coast
+20093	Central Somali Coast Marine	19	Somali/Arabian	5	Western Indo-Pacific	Tropical	63188764	Chagos
+20106	Chagos Marine	22	Central Indian Ocean Islands	5	Western Indo-Pacific	Tropical	66642371	Channels and Fjords of Southern Chile
+20187	Channels and Fjords of Southern Chile Marine	48	Magellanic	9	Temperate South America	Temperate	37164272	Chatham Island
+25198	Chatham Island Marine	54	Southern New Zealand	11	Temperate Australasia	Temperate	39136232	Chiapas-Nicaragua
+20167	Chiapas-Nicaragua Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	21751687	Chiloense
+20188	Chiloense Marine	48	Magellanic	9	Temperate South America	Temperate	63523365	Chukchi Sea
+20013	Chukchi Sea Marine	1	Arctic	1	Arctic	Polar	43621618	Clipperton
+20165	Clipperton Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	19999490	Coastal Forests and Mountains - BC
+20169	Cocos Islands Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	83276990	Cocos-Keeling/Christmas Island
+20120	Cocos-Keeling/Christmas Island Marine	27	Java Transitional	6	Central Indo-Pacific	Tropical	267409495	Cook/Austral Islands
+20150	Coral Sea Marine	35	Tropical Southwestern Pacific	6	Central Indo-Pacific	Tropical	73287763	Coral Sea
+20060	Cortezian Marine	11	Warm Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	26192928	Cortezian
+20215	Crozet Islands Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	42997918	Crozet Islands
+20102	Delagoa Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	33497130	Delagoa
+20095	East African Coral Coast Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	47207672	East African Coral Coast
+20226	East Antarctic Dronning Maud Land Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	23238271	East Antarctic Enderby Land
+20225	East Antarctic Enderby Land Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	223932225	East Antarctic Wilkes Land
+20224	East Antarctic Wilkes Land Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	72075950	East Antarctica Dronning Maud Land
+20124	East Caroline Islands Marine	29	Tropical Northwestern Pacific	6	Central Indo-Pacific	Tropical	224129127	East Caroline Islands
+20052	East China Sea Marine	9	Warm Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	70468392	East China Sea
+20003	East Greenland Shelf Marine	1	Arctic	1	Arctic	Polar	61607522	East Greenland Shelf
+20015	East Siberian Sea Marine	1	Arctic	1	Arctic	Polar	92169589	East Siberian Sea
+20163	Easter Island Marine	42	Easter Island	7	Eastern Indo-Pacific	Tropical	66475912	Easter Island
+25014	Eastern Bering Sea Marine	1	Arctic	1	Arctic	Polar	101368676	Eastern Bering Sea
+20076	Eastern Brazil Marine	14	Tropical Southwestern Atlantic	4	Tropical Atlantic	Tropical	63306708	Eastern Brazil
+20064	Eastern Caribbean Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	85207949	Eastern Caribbean
+20173	Eastern Galapagos Islands Marine	44	Galapagos	8	Tropical Eastern Pacific	Tropical	39530327	Eastern Galapagos Islands
+20107	Eastern India Marine	23	Bay of Bengal	5	Western Indo-Pacific	Tropical	43423063	Eastern India
+20127	Eastern Philippines Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	92033973	Eastern Philippines
+20144	Exmouth to Broome Marine	34	Northwest Australian Shelf	6	Central Indo-Pacific	Tropical	58462284	Exmouth to Broome
+20021	Faroe Plateau Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	20309016	Faroe Plateau
+20074	Fernando de Naronha and Atoll das Rocas Marine	14	Tropical Southwestern Atlantic	4	Tropical Atlantic	Tropical	31200697	Fernando de Naronha and Atoll das Rocas
+25147	Fiji Islands Marine	35	Tropical Southwestern Pacific	6	Central Indo-Pacific	Tropical	78546495	Fiji Islands
+20070	Floridian Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	17344520	Floridian
+25154	Gilbert/Ellis Islands Marine	38	"Marshall, Gilbert and Ellis Islands"	7	Eastern Indo-Pacific	Tropical	208421163	Gilbert/Ellis Islands
+20208	Great Australian Bight Marine	57	Southwest Australian Shelf	11	Temperate Australasia	Temperate	30431254	Great Australian Bight
+20065	Greater Antilles Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	108003966	Greater Antilles
+20171	Guayaquil Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	25713017	Guayaquil
+20071	Guianan Marine	13	North Brazil Shelf	4	Tropical Atlantic	Tropical	45032253	Guianan
+20089	Gulf of Aden Marine	18	Red Sea and Gulf of Aden	5	Western Indo-Pacific	Tropical	55210256	Gulf of Aden
+20054	Gulf of Alaska Marine	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	77907167	Gulf of Alaska
+20083	Gulf of Guinea Central Marine	17	Gulf of Guinea	4	Tropical Atlantic	Tropical	39366648	Gulf of Guinea Central
+20084	Gulf of Guinea Islands Marine	17	Gulf of Guinea	4	Tropical Atlantic	Tropical	41417588	Gulf of Guinea Islands
+25085	Gulf of Guinea South Marine	17	Gulf of Guinea	4	Tropical Atlantic	Tropical	31490328	Gulf of Guinea South
+20082	Gulf of Guinea Upwelling Marine	17	Gulf of Guinea	4	Tropical Atlantic	Tropical	35935729	Gulf of Guinea Upwelling
+25081	Gulf of Guinea West Marine	17	Gulf of Guinea	4	Tropical Atlantic	Tropical	47396911	Gulf of Guinea West
+25040	Gulf of Maine/Bay of Fundy Marine	5	Cold Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	27450869	Gulf of Oman
+20091	Gulf of Oman Marine	19	Somali/Arabian	5	Western Indo-Pacific	Tropical	7333570	Gulf of Papua
+20138	Gulf of Papua Marine	32	Sahul Shelf	6	Central Indo-Pacific	Tropical	41467763	Gulf of St. Lawrence - Eastern Scotian Shelf
+20037	Gulf of St. Lawrence - Eastern Scotian Shelf Marine	5	Cold Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	27165566	Gulf of Thailand
+20115	Gulf of Thailand Marine	26	Sunda Shelf	6	Central Indo-Pacific	Tropical	30632161	Gulf of Tonkin
+20112	Gulf of Tonkin Marine	25	South China Sea	6	Central Indo-Pacific	Tropical	26998323	Halmahera
+20129	Halmahera Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	263988679	Hawaiian Islands
+25152	Hawaii Marine	37	Hawaii	7	Eastern Indo-Pacific	Tropical	25490910	Heard and Macdonald Islands
+20213	Heard and Macdonald Islands Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	59431083	High Arctic Archipelago
+25010	High Arctic Archipelago Marine	1	Arctic	1	Arctic	Polar	18301608	Houtman
+20211	Houtman Marine	58	West Central Australian Shelf	11	Temperate Australasia	Temperate	124551743	Hudson Complex
+20008	Hudson Complex Marine	1	Arctic	1	Arctic	Polar	65852755	Humboldtian
+20176	Humboldtian Marine	45	Warm Temperate Southeastern Pacific	9	Temperate South America	Temperate	73614248	Ionian Sea
+25034	Ionian Sea Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	88978943	Juan Fern ndez and Desventuradas
+20179	Juan Fernandez and Desventuradas Marine	46	Juan Fernandez and Desventuradas	9	Temperate South America	Temperate	81381448	Kamchatka Shelf and Coast
+25046	Kamchatka Shelf and Coast Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	100989893	Kara Sea
+20017	Kara Sea Marine	1	Arctic	1	Arctic	Polar	40087455	Kerguelen Islands
+20214	Kerguelen Islands Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	41592546	Kermadec Island
+25195	Kermadec Island Marine	53	Northern New Zealand	11	Temperate Australasia	Temperate	24553671	Lancaster Sound
+25009	Lancaster Sound Marine	1	Arctic	1	Arctic	Polar	55596997	Laptev Sea
+20016	Laptev Sea Marine	1	Arctic	1	Arctic	Polar	54119261	Leeuwin
+20209	Leeuwin Marine	57	Southwest Australian Shelf	11	Temperate Australasia	Temperate	69433180	Lesser Sunda
+20132	Lesser Sunda Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical		
+25032	Levantine Sea Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	149875984	Line Islands
+20155	Line Islands Marine	39	Central Polynesia	7	Eastern Indo-Pacific	Tropical	74474742	Lord Howe and Norfolk Islands
+20151	Lord Howe and Norfolk Islands Marine	36	Lord Howe and Norfolk Islands	6	Central Indo-Pacific	Tropical	26189903	Macquarie Island
+20212	Macquarie Island Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	18082392	Magdalena Transition
+20061	Magdalena Transition Marine	11	Warm Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	16515872	Malacca Strait
+20118	Malacca Strait Marine	26	Sunda Shelf	6	Central Indo-Pacific	Tropical	130348846	Maldives
+20105	Maldives Marine	22	Central Indian Ocean Islands	5	Western Indo-Pacific	Tropical	41606554	Malvinas/Falklands
+20186	Malvinas/Falklands Marine	48	Magellanic	9	Temperate South America	Temperate	18919811	Manning-Hawkesbury
+20203	Manning-Hawkesbury Marine	55	East Central Australian Shelf	11	Temperate Australasia	Temperate	98922689	Mariana Islands
+20123	Mariana Islands Marine	29	Tropical Northwestern Pacific	6	Central Indo-Pacific	Tropical	74258463	Marquesas
+20162	Marquesas Marine	41	Marquesas	7	Eastern Indo-Pacific	Tropical	219409584	Marshall Islands
+20153	Marshall Islands Marine	38	"Marshall, Gilbert and Ellis Islands"	7	Eastern Indo-Pacific	Tropical	100943486	Mascarene Islands
+20098	Mascarene Islands Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	65744971	Mexican Tropical Pacific
+20166	Mexican Tropical Pacific Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	41731919	Namaqua
+20191	Namaqua Marine	50	Benguela	10	Temperate Southern Africa	Temperate	28611354	Namib
+25190	Namib Marine	50	Benguela	10	Temperate Southern Africa	Temperate	32540482	Natal
+20193	Natal Marine	51	Agulhas	10	Temperate Southern Africa	Temperate	116836207	New Caledonia
+20149	New Caledonia Marine	35	Tropical Southwestern Pacific	6	Central Indo-Pacific	Tropical	28744270	Nicoya
+20168	Nicoya Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	14819604	Ningaloo
+20145	Ningaloo Marine	34	Northwest Australian Shelf	6	Central Indo-Pacific	Tropical		
+25055	North American Pacific Fijordland Marine	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	179801530	North and East Barents Sea
+20018	North and East Barents Sea Marine	1	Arctic	1	Arctic	Polar	38159176	North and East Iceland
+20002	North and East Iceland Marine	1	Arctic	1	Arctic	Polar	41962091	North Greenland
+20001	North Greenland Marine	1	Arctic	1	Arctic	Polar	36580679	North Patagonian Gulfs
+25184	North Patagonian Gulfs Marine	48	Magellanic	9	Temperate South America	Temperate	69949320	North Sea
+20025	North Sea Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	7034279	Northeast Sulawesi
+20133	Northeast Sulawesi Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	66003301	Northeastern Brazil
+20075	Northeastern Brazil Marine	14	Tropical Southwestern Atlantic	4	Tropical Atlantic	Tropical	23906520	Northeastern Honshu
+20048	Northeastern Honshu Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	27390502	Northeastern New Zealand
+25196	Northeastern New Zealand Marine	53	Northern New Zealand	11	Temperate Australasia	Temperate	22956704	Northern and Central Red Sea
+20087	Northern and Central Red Sea Marine	18	Red Sea and Gulf of Aden	5	Western Indo-Pacific	Tropical	45328217	Northern Bay of Bengal
+20108	Northern Bay of Bengal Marine	23	Bay of Bengal	5	Western Indo-Pacific	Tropical	37202512	Northern California
+25058	Northern California Marine	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	21505700	Northern Galapagos Islands
+20172	Northern Galapagos Islands Marine	44	Galapagos	8	Tropical Eastern Pacific	Tropical	37300093	Northern Grand Banks - Southern Labrador
+20005	Northern Grand Banks - Southern Labrador Marine	1	Arctic	1	Arctic	Polar	60648894	Northern Gulf of Mexico
+20043	Northern Gulf of Mexico Marine	6	Warm Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	33866082	Northern Labrador
+20006	Northern Labrador Marine	1	Arctic	1	Arctic	Polar	30825163	Northern Monsoon Current Coast
+20094	Northern Monsoon Current Coast Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	29305398	Northern Norway and Finnmark
+20023	Northern Norway and Finnmark Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	40559855	Northwest Atlantic Coast
+20122	Ogasawara Islands Marine	29	Tropical Northwestern Pacific	6	Central Indo-Pacific	Tropical	112366465	Ogasawara Islands
+25057	"Oregon, Washington, Vancouver Coast and Shelf Marine"	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	91786552	Oyashio Current
+20047	Oyashio Current Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	32636409	Pacific Northwest Coast
+20126	Palawan/North Borneo Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	56467945	Palawan/North Borneo
+20170	Panama Bight Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	51406260	Panama Bight
+20130	Papua Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	61466146	Papua
+25185	Patagonian Shelf Marine	48	Magellanic	9	Temperate South America	Temperate	26891588	Patagonian Shelf
+20218	Peter the First Island Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	12244980	Peter the First Island
+20156	Phoenix/Tokelau/Northern Cook Islands Marine	39	Central Polynesia	7	Eastern Indo-Pacific	Tropical	152578674	Phoenix/Tokelau
+20216	Prince Edward Islands Marine	59	Subantarctic Islands	12	Southern Ocean	Polar	32681513	Prince Edward Islands
+25056	Puget Trough/Georgia Basin Marine	10	Cold Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	1587213	Puget Trough - Georgia Basin
+20159	Rapa-Pitcairn Marine	40	Southeast Polynesia	7	Eastern Indo-Pacific	Tropical	117891076	Rapa-Pitcairn
+20164	Revillagigedos Marine	43	Tropical East Pacific	8	Tropical Eastern Pacific	Tropical	64179322	Revillagigedos
+20182	Rio de la Plata Marine	47	Warm Temperate Southwestern Atlantic	9	Temperate South America	Temperate	3197729	Rio de la Plata
+20181	Rio Grande Marine	47	Warm Temperate Southwestern Atlantic	9	Temperate South America	Temperate	26075179	Rio Grande
+20229	Ross Sea Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	96816790	Ross Sea
+20028	Saharan Upwelling Marine	3	Lusitanian	2	Temperate Northern Atlantic	Temperate	55963754	Saharan Upwelling
+25080	Sahelian Upwelling Marine	16	West African Transition	4	Tropical Atlantic	Tropical	49994645	Sahelian Upwelling
+20157	Samoa Islands Marine	39	Central Polynesia	7	Eastern Indo-Pacific	Tropical	80624474	Samoa Islands
+20073	Sao Pedro and Sao Paulo Islands Marine	14	Tropical Southwestern Atlantic	4	Tropical Atlantic	Tropical	40708933	Sao Pedro and Sao Paulo Islands
+20039	Scotian Shelf Marine	5	Cold Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	26137431	Scotian Shelf
+20049	Sea of Japan Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	99256379	Sea of Japan
+20045	Sea of Okhotsk Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate	104021257	Sea of Okhotsk
+20096	Seychelles Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	118340000	Seychelles
+20210	Shark Bay Marine	58	West Central Australian Shelf	11	Temperate Australasia	Temperate	18846181	Shark Bay
+20201	Snares Island Marine	54	Southern New Zealand	11	Temperate Australasia	Temperate	10688593	Snares Island
+20161	Society Islands Marine	40	Southeast Polynesia	7	Eastern Indo-Pacific	Tropical	48079167	Society Islands
+20135	Solomon Archipelago Marine	31	Eastern Coral Triangle	6	Central Indo-Pacific	Tropical	167201725	Solomon Archipelago
+20136	Solomon Sea Marine	31	Eastern Coral Triangle	6	Central Indo-Pacific	Tropical	64509570	Solomon Sea
+20020	South and West Iceland Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	37647475	South and West Iceland
+20207	South Australian Gulfs Marine	57	Southwest Australian Shelf	11	Temperate Australasia	Temperate	18627667	South Australian Gulfs
+20114	South China Sea Oceanic Islands Marine	25	South China Sea	6	Central Indo-Pacific	Tropical	126803003	South China Sea Oceanic Islands
+20027	South European Atlantic Shelf Marine	3	Lusitanian	2	Temperate Northern Atlantic	Temperate	66705456	South European Atlantic Shelf
+20220	South Georgia Marine	60	Scotia Sea	12	Southern Ocean	Polar	40428639	South Georgia
+20104	South India and Sri Lanka Marine	21	West and South Indian Shelf	5	Western Indo-Pacific	Tropical	65899635	South India and Sri Lanka
+20121	South Kuroshio Marine	28	South Kuroshio	6	Central Indo-Pacific	Tropical	101243151	South Kuroshio Current
+20200	South New Zealand Marine	54	Southern New Zealand	11	Temperate Australasia	Temperate	27710258	South Orkney Islands
+20221	South Orkney Islands Marine	60	Scotia Sea	12	Southern Ocean	Polar	40576581	South Sandwich Islands
+20219	South Sandwich Islands Marine	60	Scotia Sea	12	Southern Ocean	Polar	35504652	South Shetland Islands
+20222	South Shetland Islands Marine	60	Scotia Sea	12	Southern Ocean	Polar	42970038	Southeast Madagascar
+20099	Southeast Madagascar Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	22744353	Southeast Papua New Guinea
+20137	Southeast Papua New Guinea Marine	31	Eastern Coral Triangle	6	Central Indo-Pacific	Tropical	37540209	Southeastern Brazil
+20180	Southeastern Brazil Marine	47	Warm Temperate Southwestern Atlantic	9	Temperate South America	Temperate	52949685	Southern California
+25059	Southern California Bight Marine	11	Warm Temperate Northeast Pacific	3	Temperate Northern Pacific	Temperate	58251801	Southern Caribbean
+20066	Southern Caribbean Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	28027091	Southern China
+20113	Southern China Marine	25	South China Sea	6	Central Indo-Pacific	Tropical		
+20160	Southern Cook/Austral Islands Marine	40	Southeast Polynesia	7	Eastern Indo-Pacific	Tropical	33737176	Southern Grand Banks - South Newfoundland
+20038	Southern Grand Banks - South Newfoundland Marine	5	Cold Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	74666446	Southern Gulf of Mexico
+20069	Southern Gulf of Mexico Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	60484602	Southern Java
+20119	Southern Java Marine	27	Java Transitional	6	Central Indo-Pacific	Tropical	26261158	Southern New Zealand
+20022	Southern Norway Marine	2	Northern European Seas	2	Temperate Northern Atlantic	Temperate	25300493	Southern Norway
+20088	Southern Red Sea Marine	18	Red Sea and Gulf of Aden	5	Western Indo-Pacific	Tropical	22836617	Southern Red Sea
+20116	Southern Vietnam Marine	26	Sunda Shelf	6	Central Indo-Pacific	Tropical	18557223	Southern Vietnam
+20067	Southwestern Caribbean Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	80275777	Southwestern Caribbean
+20078	St. Helena and Ascension Islands Marine	15	St. Helena and Ascension Islands	4	Tropical Atlantic	Tropical	86384865	St. Helena and Ascension Islands
+20128	Sulawesi Sea/Makassar Strait Marine	30	Western Coral Triangle	6	Central Indo-Pacific	Tropical	76956923	Sulawesi Sea/Makassar Strait
+20117	Sunda Shelf/Java Sea Marine	26	Sunda Shelf	6	Central Indo-Pacific	Tropical	135865982	Sunda Shelf
+20197	Three Kings-North Cape Marine	53	Northern New Zealand	11	Temperate Australasia	Temperate	23654643	Three Kings-North Cape
+20146	Tonga Islands Marine	35	Tropical Southwestern Pacific	6	Central Indo-Pacific	Tropical	75756623	Tonga Islands
+20142	Torres Strait Northern Great Barrier Reef Marine	33	Northeast Australian Shelf	6	Central Indo-Pacific	Tropical	18463735	Torres Strait Northern Great Barrier Reef
+20077	Trindade and Martin Vaz Islands Marine	14	Tropical Southwestern Atlantic	4	Tropical Atlantic	Tropical	43790513	Trindade and Martin Vaz Islands
+20189	Tristan Gough Marine	49	Tristan Gough	9	Temperate South America	Temperate	96403354	Tristan Gough
+20158	Tuamotus Marine	40	Southeast Polynesia	7	Eastern Indo-Pacific	Tropical	241171961	Tuamotus
+25033	Tunisian Plateau/Gulf of Sidra Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate		
+20202	Tweed-Moreton Marine	55	East Central Australian Shelf	11	Temperate Australasia	Temperate	24754970	Tweed-Moreton
+20183	Uruguay-Buenos Aires Shelf Marine	47	Warm Temperate Southwestern Atlantic	9	Temperate South America	Temperate	36631727	Uruguay-Buenos Aires Shelf
+20148	Vanuatu Marine	35	Tropical Southwestern Pacific	6	Central Indo-Pacific	Tropical	149928642	Vanuatu
+20041	Virginian Marine	5	Cold Temperate Northwest Atlantic	2	Temperate Northern Atlantic	Temperate	134698360	Weddell Sea
+20227	Weddell Sea Marine	61	Continental High Antarctic	12	Southern Ocean	Polar	99550769	West Caroline Islands
+20125	West Caroline Islands Marine	29	Tropical Northwestern Pacific	6	Central Indo-Pacific	Tropical	58728130	West Greenland Shelf
+20004	West Greenland Shelf Marine	1	Arctic	1	Arctic	Polar	116075444	Western & Northern Madagascar
+20100	Western and Northern Madagascar Marine	20	Western Indian Ocean	5	Western Indo-Pacific	Tropical	53910026	Western Arabian Sea
+20092	Western Arabian Sea Marine	19	Somali/Arabian	5	Western Indo-Pacific	Tropical	32341341	Western Bassian
+20206	Western Bassian Marine	56	Southeast Australian Shelf	11	Temperate Australasia	Temperate	24663164	Western Caribbean
+20068	Western Caribbean Marine	12	Tropical Northwestern Atlantic	4	Tropical Atlantic	Tropical	23287123	Western Galapagos Archipelago
+20174	Western Galapagos Islands Marine	44	Galapagos	8	Tropical Eastern Pacific	Tropical	63250636	Western India
+20103	Western India Marine	21	West and South Indian Shelf	5	Western Indo-Pacific	Tropical	83512223	Western Mediterranean Sea
+25035	Western Mediterranean Marine	4	Mediterranean Sea	2	Temperate Northern Atlantic	Temperate	73031376	Western Sumatra
+20111	Western Sumatra Marine	24	Andaman	5	Western Indo-Pacific	Tropical	8707214	White Sea
+20019	White Sea Marine	1	Arctic	1	Arctic	Polar	44139275	Yellow Sea
+20050	Yellow Sea Marine	8	Cold Temperate Northwest Pacific	3	Temperate Northern Pacific	Temperate		
