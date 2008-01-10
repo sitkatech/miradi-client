@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.Locale;
 
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -39,6 +40,9 @@ public class EAM
 		if(!EAM.handleEamToMiradiMigration())
 			return false;
 		
+		if(!EAM.handleMigrationToDocumentsDirectory())
+			return false;
+		
 		return true;
 	}
 
@@ -48,6 +52,12 @@ public class EAM
 	}
 	
 	public static File getHomeDirectory()
+	{
+		File home = new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "Miradi");
+		return home;
+	}
+	
+	public static File getOldMiradiHomeDirectory()
 	{
 		File home = new File(System.getProperty("user.home"), "Miradi");
 		return home;
@@ -378,6 +388,59 @@ public class EAM
 		return mainWindow;
 	}
 
+	static boolean handleMigrationToDocumentsDirectory()
+	{
+		File oldDirectory = getOldMiradiHomeDirectory();
+		File newDirectory = getHomeDirectory();
+		if(oldDirectory.equals(newDirectory))
+			return true;
+		
+		if(!oldDirectory.exists())
+			return true;
+		
+		if(!oldDirectory.isDirectory())
+			return true;
+		
+		if(newDirectory.exists())
+		{
+			if(newDirectory.isDirectory())
+				return true;
+			
+			EAM.errorDialog("<html>" +
+					"Miradi cannot run because there a file exists where " +
+					"its data directory should be:" +
+					"<br>" + newDirectory.getAbsolutePath());
+			return false;
+		}
+		
+		EAM.logWarning("Migrating " + oldDirectory.getAbsolutePath() + " to " + newDirectory.getAbsolutePath());
+		try
+		{
+			boolean worked = oldDirectory.renameTo(newDirectory);
+			if(worked)
+				worked = !(oldDirectory.exists());
+			if(worked)
+				worked = (newDirectory.exists());
+			
+			if(worked)
+				return true;
+			
+			EAM.errorDialog("<html>" +
+					"Miradi was unable to move existing projects from " +
+					"<br>" + oldDirectory.getAbsolutePath() + 
+					"<br> to " +
+					"<br>" + newDirectory.getAbsolutePath() + 
+					"<br>Please contact Miradi support for assistance in resolving this problem.");
+			return false;
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+			return false;
+		}
+		
+	}
+	
 	static boolean handleEamToMiradiMigration()
 	{
 		File miradiDirectory = getHomeDirectory();
