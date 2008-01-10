@@ -17,13 +17,10 @@ abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSi
 
 		//TODO planning table - find better solution - check the other tables two planning tables too
 		setRowHeight(getRowHeight() + 10);
-		setForcedPreferredScrollableViewportHeight(getRowHeight() * 5);
 	}
 	
 	public Dimension getPreferredScrollableViewportSize()
 	{
-		Dimension result = super.getPreferredScrollableViewportSize();
-		result.width = Math.min(result.width, getPreferredSize().width);
-		return result;
+		return getPreferredSize();
 	}
 }

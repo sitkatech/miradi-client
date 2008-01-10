@@ -32,11 +32,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 	}
 
-	int getPreferredScrollableViewportWidth()
-	{
-		return getPreferredSize().width;
-	}
-	
 	public void rebuildColumnEditorsAndRenderers()
 	{
 		for (int i = 0; i < model.getColumnCount(); ++i)
