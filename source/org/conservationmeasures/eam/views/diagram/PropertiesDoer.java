@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
@@ -106,7 +107,9 @@ public class PropertiesDoer extends LocationDoer
 	
 	private FactorLinkPropertiesPanel getFactorLinkPropertiesPanel(DiagramLink diagramLink) throws Exception
 	{
-		if (!diagramLink.isTargetLink())
+		boolean isTargetLink = diagramLink.isTargetLink();
+		boolean isStressBasedMode = getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
+		if (!isTargetLink || !isStressBasedMode)
 			return new FactorLinkPropertiesPanel(getProject(), diagramLink);
 		
 		ORef fromRef = diagramLink.getUnderlyingLink().getFromFactorRef();
