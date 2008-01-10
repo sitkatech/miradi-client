@@ -57,7 +57,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	
 	private String getKey()
 	{
-		return uniqueTableIdentifier + "._ROW_HEIGHT_";
+		return "RowHeight." + uniqueTableIdentifier;
 	}
 	
 	public void mouseClicked(MouseEvent e)
