@@ -92,7 +92,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = name.get();
+		result = givenName.get();
 		if(result.length() > 0)
 			return result;
 		
@@ -134,7 +134,7 @@ public class ProjectResource extends BaseObject
 		super.clear();
 		
 		initials = new StringData();
-		name = new StringData();
+		givenName = new StringData();
 		position = new StringData();
 		phoneNumber = new StringData();
 		email = new StringData();
@@ -153,7 +153,7 @@ public class ProjectResource extends BaseObject
 		dateUpdated = new DateData();
 
 		addField(TAG_INITIALS, initials);
-		addField(TAG_NAME, name);
+		addField(TAG_GIVEN_NAME, givenName);
 		addField(TAG_ORGANIZATION, organization);
 		addField(TAG_POSITION, position);
 		addField(TAG_PHONE_NUMBER, phoneNumber);
@@ -179,7 +179,7 @@ public class ProjectResource extends BaseObject
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
-	public static final String TAG_NAME = "Name";
+	public static final String TAG_GIVEN_NAME = "Name";
 	public static final String TAG_POSITION = "Position";
 	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
 	public static final String TAG_EMAIL = "Email";
@@ -204,7 +204,7 @@ public class ProjectResource extends BaseObject
 	static final String OBJECT_NAME = "ProjectResource";
 
 	private StringData initials;
-	StringData name;
+	StringData givenName;
 	private StringData position;
 	private StringData phoneNumber;
 	private StringData email;

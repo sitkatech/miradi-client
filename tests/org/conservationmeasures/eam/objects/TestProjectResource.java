@@ -43,13 +43,13 @@ public class TestProjectResource extends EAMTestCase
 			projectResources[i] = new ProjectResource(new BaseId(i));
 			if (i == 0 )
 			{
-				projectResources[i].name = new StringData(lessThan+i);
+				projectResources[i].givenName = new StringData(lessThan+i);
 				expected = expected + XmlUtilities.getXmlEncoded(lessThan)+i;
 			}
 			else
 			{
-				projectResources[i].name = new StringData("resource"+i);
-				expected = expected + projectResources[i].name;
+				projectResources[i].givenName = new StringData("resource"+i);
+				expected = expected + projectResources[i].givenName;
 			}
 			
 			if ((i + 1) < projectResources.length)
@@ -66,7 +66,7 @@ public class TestProjectResource extends EAMTestCase
 	{
 		verifyTagBehavior(ProjectResource.TAG_LABEL);
 		verifyTagBehavior(ProjectResource.TAG_INITIALS);
-		verifyTagBehavior(ProjectResource.TAG_NAME);
+		verifyTagBehavior(ProjectResource.TAG_GIVEN_NAME);
 		verifyTagBehavior(ProjectResource.TAG_POSITION);
 	}
 

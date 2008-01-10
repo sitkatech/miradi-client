@@ -18,7 +18,7 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 	}
 
 	private static final String[] COLUMN_TAGS = new String[] {
-		ProjectResource.TAG_NAME,
+		ProjectResource.TAG_GIVEN_NAME,
 		ProjectResource.TAG_INITIALS,
 		ProjectResource.TAG_ORGANIZATION,
 		ProjectResource.TAG_POSITION,

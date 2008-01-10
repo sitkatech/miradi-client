@@ -22,7 +22,7 @@ public class SummaryTeamDataSource extends CommonDataSource
 	
 	public Object getFieldValue(JRField field)
 	{
-		if (field.getName().equals(ProjectResource.TAG_NAME))
+		if (field.getName().equals(ProjectResource.TAG_GIVEN_NAME))
 			return teamModel.getValueAt(getCurrentRow(), 0);
 		return "";
 	}

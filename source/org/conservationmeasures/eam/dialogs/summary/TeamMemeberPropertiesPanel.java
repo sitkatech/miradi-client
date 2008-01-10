@@ -19,7 +19,7 @@ public class TeamMemeberPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ProjectResource.getObjectType(), BaseId.INVALID);
 
-		ObjectDataInputField nameField = createStringField(ProjectResource.TAG_NAME);
+		ObjectDataInputField nameField = createStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ObjectDataInputField[]{nameField, initialField});
 		
