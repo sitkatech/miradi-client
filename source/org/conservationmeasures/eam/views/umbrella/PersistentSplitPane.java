@@ -6,16 +6,17 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 
+import java.awt.Component;
+
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 abstract public class PersistentSplitPane extends JSplitPane
 {
-	public PersistentSplitPane(SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
+	public PersistentSplitPane(Component containerToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
 	{
-		super(JSplitPane.VERTICAL_SPLIT);
-		
+		container = containerToUse;
 		splitPositionSaver = splitPositionSaverToUse;
 		splitterName = splitterNameToUse;
 		
@@ -47,7 +48,7 @@ abstract public class PersistentSplitPane extends JSplitPane
 		super.setDividerLocation(location);
 	}
 
-	abstract int getMainHeight();
+	abstract int getContainerHeightOrWidth();
 	
 	public void saveCurrentLocation()
 	{
@@ -56,10 +57,10 @@ abstract public class PersistentSplitPane extends JSplitPane
 
 	private void saveLocation(int location)
 	{
-		if (getMainHeight()==0)
+		if (getContainerHeightOrWidth()==0)
 			return;
 		
-		double splitPercent = (double)location * 100 / getMainHeight();
+		double splitPercent = (double)location * 100 / getContainerHeightOrWidth();
 		double splitPercentFromMiddle = splitPercent * 2 - 100;
 		long roundedPercent = Math.round(splitPercentFromMiddle);
 		splitPositionSaver.saveSplitterLocation(splitterName, (int)roundedPercent);
@@ -69,7 +70,7 @@ abstract public class PersistentSplitPane extends JSplitPane
 	{
 		int splitPercentFromMiddle = splitPositionSaver.getSplitterLocation(name);		
 		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		int location = getMainHeight() * splitPercent / 100;
+		int location = getContainerHeightOrWidth() * splitPercent / 100;
 		
 		return location; 
 	}
@@ -80,6 +81,12 @@ abstract public class PersistentSplitPane extends JSplitPane
 		setDividerLocation(getSplitterLocation(name));
 	}
 	
+	Component getContainer()
+	{
+		return container;
+	}
+	
+	private Component container;
 	private String splitterName;
 	private SplitterPositionSaverAndGetter splitPositionSaver;
 	

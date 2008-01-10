@@ -9,12 +9,11 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ViewSplitPane extends PersistentSplitPane
+public class ViewSplitPane extends PersistentVerticalSplitPane
 {
 	public ViewSplitPane(MainWindow mainWindow, Component topPanel, Component bottomPanel) 
 	{
-		super(mainWindow, MAIN_SPLITTER);
-		mainComponentSplitted = mainWindow;
+		super(mainWindow, mainWindow, MAIN_SPLITTER);
 
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
@@ -29,13 +28,5 @@ public class ViewSplitPane extends PersistentSplitPane
 		restoreSavedLocation();
 	}
 	
-	int getMainHeight()
-	{
-		return mainComponentSplitted.getHeight();
-	}
-	
 	static final String MAIN_SPLITTER = "MainSplitter";
-	
-	private Component mainComponentSplitted;
-
 }
