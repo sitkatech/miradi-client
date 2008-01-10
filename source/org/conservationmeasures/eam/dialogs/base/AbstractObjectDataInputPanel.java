@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
@@ -84,6 +85,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void setObjectRef(ORef oref)
 	{
 		setObjectRefs(new ORef[] {oref});
+	}
+	
+	public void setObjectRefs(ORefList refsToUse)
+	{
+		setObjectRefs(refsToUse.toArray());
 	}
 	
 	public void setObjectRefs(ORef[] orefsToUse)

@@ -21,9 +21,11 @@ import org.conservationmeasures.eam.dialogs.diagram.TextBoxPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
@@ -107,8 +109,22 @@ public class PropertiesDoer extends LocationDoer
 		if (!diagramLink.isTargetLink())
 			return new FactorLinkPropertiesPanel(getProject(), diagramLink);
 		
-		ORef targetRef = diagramLink.getUnderlyingLink().getLinkTarget().getRef();
-		StaticPicker picker = new StaticPicker(targetRef);
+		ORef fromRef = diagramLink.getUnderlyingLink().getFromFactorRef();
+		ORef toRef = diagramLink.getUnderlyingLink().getToFactorRef();
+		ORefList hierarchyRefs = new ORefList();
+		hierarchyRefs.add(diagramLink.getWrappedRef());
+		if (Target.is(fromRef))
+		{
+			hierarchyRefs.add(fromRef);
+			hierarchyRefs.add(toRef);
+		}
+		else 
+		{
+			hierarchyRefs.add(toRef);
+			hierarchyRefs.add(fromRef);
+		}
+	
+		StaticPicker picker = new StaticPicker(hierarchyRefs);
 		
 		return new FactorLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
 	}

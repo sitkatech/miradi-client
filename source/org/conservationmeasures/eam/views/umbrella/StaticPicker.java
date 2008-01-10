@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.BaseObject;
 
 public class StaticPicker implements ObjectPicker
 {
-	public StaticPicker(ORef selectedRefToUse)
+	public StaticPicker(ORefList selectedRefsToUse)
 	{
-		selectedRef = selectedRefToUse;
+		selectedRefs = selectedRefsToUse;
 	}
 	
 	public void addSelectionChangeListener(ListSelectionListener listener)
@@ -34,7 +34,7 @@ public class StaticPicker implements ObjectPicker
 
 	public ORefList[] getSelectedHierarchies()
 	{
-		return new ORefList[] {new ORefList(selectedRef)};
+		return new ORefList[] {selectedRefs};
 	}
 
 	public BaseObject[] getSelectedObjects()
@@ -60,5 +60,5 @@ public class StaticPicker implements ObjectPicker
 	{
 	}
 	
-	private ORef selectedRef;
+	private ORefList selectedRefs;
 }

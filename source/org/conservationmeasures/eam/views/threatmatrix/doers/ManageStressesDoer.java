@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.martus.swing.Utilities;
 
 public class ManageStressesDoer extends ObjectsDoer
 {
@@ -33,7 +34,8 @@ public class ManageStressesDoer extends ObjectsDoer
 			StressListManagementPanel stressListManagementPanel = new StressListManagementPanel(getProject(), getMainWindow(), selectedTarget.getRef(), getMainWindow().getActions());
 			ManageStressesDialog manageStressesDialog = new ManageStressesDialog(getMainWindow(), stressListManagementPanel);
 			stressListManagementPanel.updateSplitterLocation();
-			getView().showFloatingPropertiesDialog(manageStressesDialog);
+			Utilities.centerDlg(manageStressesDialog);
+			manageStressesDialog.setVisible(true);
 		}
 		catch (Exception e)
 		{

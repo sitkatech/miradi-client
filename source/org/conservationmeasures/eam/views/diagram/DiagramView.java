@@ -66,6 +66,7 @@ import org.conservationmeasures.eam.actions.ActionInsertIntermediateResult;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertTextBox;
+import org.conservationmeasures.eam.actions.ActionManageStresses;
 import org.conservationmeasures.eam.actions.ActionMoveSlideDown;
 import org.conservationmeasures.eam.actions.ActionMoveSlideUp;
 import org.conservationmeasures.eam.actions.ActionNudgeDown;
@@ -149,6 +150,7 @@ import org.conservationmeasures.eam.views.diagram.doers.SelectChainDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
+import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.martus.swing.Utilities;
@@ -348,6 +350,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionMoveSlideUp.class, new MoveSlideUpDoer());
 		addDoerToMap(ActionToggleSlideShowPanel.class, new ToggleSlideShowPanelDoer());
 		addDoerToMap(ActionSlideShowViewer.class, new SlideShowViewerDoer());
+		
+		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
 	}
 	
 	public void tabWasSelected()
