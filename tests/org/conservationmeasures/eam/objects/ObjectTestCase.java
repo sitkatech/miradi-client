@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.DateData;
@@ -123,7 +124,16 @@ public class ObjectTestCase extends TestCaseWithProject
 		String emptyData = getEmptyData(object, tag);
 
 		assertEquals("didn't default " + tag + " empty?", emptyData, object.getData(tag));
-		object.setData(tag, sampleData);
+		try
+		{
+			object.setData(tag, sampleData);	
+		}
+		catch(Exception e)
+		{
+			System.out.println("need sample data for " + object.getField(tag).getClass().getSimpleName());
+			throw e;
+		}
+		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
 		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
 		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
@@ -239,6 +249,10 @@ public class ObjectTestCase extends TestCaseWithProject
 			codeList.add("B1");
 			return codeList.toString();
 			
+		}
+		else if (field instanceof BooleanData)
+		{
+			return "1";
 		}
 		else if (field instanceof IntegerData)
 		{

@@ -2,14 +2,13 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class TestFactorLink extends EAMTestCase
+public class TestFactorLink extends ObjectTestCase
 {
 	public TestFactorLink(String name) 
 	{
@@ -24,6 +23,12 @@ public class TestFactorLink extends EAMTestCase
 		assertEquals("To Node refs don't match", nodeB.getWrappedORef(), linkageData.getToFactorRef());
 	}
 
+	public void testFields() throws Exception
+	{
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
+		verifyFields(ObjectType.FACTOR_LINK, extraInfo);
+	}
+	
 	public void setUp() throws Exception
 	{
 		super.setUp();
