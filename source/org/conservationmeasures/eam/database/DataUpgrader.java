@@ -205,8 +205,11 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
 		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
-		if (projectMetaDataIds.length != 1)
+		if (projectMetaDataIds.length == 0)
 			return false;
+		
+		if (projectMetaDataIds.length > 1)
+			throw new RuntimeException("More than one Project Meta exists.");
 
 		BaseId projectMetaDataId = projectMetaDataIds[0];
 		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
@@ -270,8 +273,11 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
 		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
-		if (projectMetaDataIds.length != 1)
+		if (projectMetaDataIds.length == 0)
 			return false;
+		
+		if (projectMetaDataIds.length > 1)
+			throw new RuntimeException("More than one Project Meta exists.");
 
 		BaseId projectMetaDataId = projectMetaDataIds[0];
 		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
@@ -309,9 +315,12 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
 		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
-		if (projectMetaDataIds.length != 1)
+		if (projectMetaDataIds.length == 0)
 			return;
 		
+		if (projectMetaDataIds.length > 1)
+			throw new RuntimeException("More than one Project Meta exists.");
+
 		BaseId projectMetaDataId = projectMetaDataIds[0];
 		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
 		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
