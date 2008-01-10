@@ -326,6 +326,14 @@ public class Target extends Factor
 		return find(project.getObjectManager(), targetRef);
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		if (ref.getObjectType() == Target.getObjectType())
+			return true;
+		
+		return false;
+	}
+	
 	void clear()
 	{
 		super.clear();

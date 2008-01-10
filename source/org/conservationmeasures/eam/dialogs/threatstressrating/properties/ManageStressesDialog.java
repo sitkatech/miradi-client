@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
-import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ManageStressesDialog extends ModelessDialogWithClose
+public class ManageStressesDialog extends ModalDialogWithClose
 {
 	public ManageStressesDialog(MainWindow parent, StressListManagementPanel stressListManagementPanel)
 	{

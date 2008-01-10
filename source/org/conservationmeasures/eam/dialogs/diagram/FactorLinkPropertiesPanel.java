@@ -39,6 +39,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
 		
+		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
 		updateFieldsFromProject();
 	}
 
