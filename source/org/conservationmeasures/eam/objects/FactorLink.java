@@ -171,6 +171,15 @@ public class FactorLink extends BaseObject
 		return bidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
 	}
 	
+	public Factor getLinkTarget()
+	{
+		Factor to = ((Factor) objectManager.findObject(getToFactorRef()));
+		if (to.isTarget())
+			return to;
+
+		return (Factor) objectManager.findObject(getFromFactorRef());
+	}
+	
 	public boolean isTargetLink()
 	{
 		 if (((Factor) objectManager.findObject(getToFactorRef())).isTarget())
