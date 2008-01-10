@@ -29,7 +29,7 @@ public class PanelTable extends TableWithHelperMethods
 	{
 		setFont(getMainWindow().getUserDataPanelFont());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
-		setRowHeight(getFontMetrics(getFont()).getHeight());
+		setRowHeight(getFontMetrics(getFont()).getHeight() + VERTICAL_FONT_CUSHION);
 	}
 	
 	//TODO: Richard: should not use static ref here
@@ -37,4 +37,8 @@ public class PanelTable extends TableWithHelperMethods
 	{
 		return EAM.getMainWindow();
 	}
+
+	private static final int VERTICAL_FONT_CUSHION = 10;
+
+
 }
