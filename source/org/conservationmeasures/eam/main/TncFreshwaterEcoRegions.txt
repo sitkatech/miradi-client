@@ -1,0 +1,448 @@
+30736	Aceh	8	tropical and subtropical coastal rivers
+30424	Aegean Drainages	5	temperate coastal rivers
+30103	Alaska & Canada Pacific Coastal	5	temperate coastal rivers
+30101	Alaskan Coastal	11	polar freshwaters
+30420	Albania	5	temperate coastal rivers
+30541	Albertine Highlands	3	montane freshwaters
+30577	Amatolo - Winterberg Highlands	3	montane freshwaters
+30323	Amazonas Estuary & Coastal Drainages	2	large river deltas
+30315	Amazonas Guiana Shield	9	tropical and subtropical upland rivers
+30312	Amazonas High Andes	3	montane freshwaters
+30316	Amazonas Lowlands	10	tropical and subtropical floodplain rivers and wetland complexes
+30168	Ameca - Manantlan	8	tropical and subtropical coastal rivers
+30610	Anadyr	11	polar freshwaters
+30768	Andaman Islands	8	tropical and subtropical coastal rivers
+30155	Apalachicola	7	temperate floodplain rivers and wetlands
+30157	Appalachian Piedmont	5	temperate coastal rivers
+30440	Arabian Interior	4	xeric freshwaters and endorheic (closed) basins
+30805	Arafura - Carpentaria	8	tropical and subtropical coastal rivers
+30629	Aral Sea Drainages	1	large lakes
+30618	Argun	6	temperate upland rivers
+30515	Ashanti	8	tropical and subtropical coastal rivers
+30338	Atacama	4	xeric freshwaters and endorheic (closed) basins
+30501	Atlantic Northwest Africa	5	temperate coastal rivers
+30901	Azores	-1	No Data
+30212	Bahama Archipelago	8	tropical and subtropical coastal rivers
+30624	Balkash - Alakul	4	xeric freshwaters and endorheic (closed) basins
+30701	Baluchistan	4	xeric freshwaters and endorheic (closed) basins
+30544	Bangweulu - Mweru	10	tropical and subtropical floodplain rivers and wetland complexes
+30407	Barents Sea Drainages	11	polar freshwaters
+30809	Bass Strait Drainages	5	temperate coastal rivers
+30176	Bermuda	11	polar freshwaters
+30517	Bight Drainages	8	tropical and subtropical coastal rivers
+30817	Bismarck Archipelago	8	tropical and subtropical coastal rivers
+30643	Biwa Ko	1	large lakes
+30347	Bonaerensean Drainages	5	temperate coastal rivers
+30127	Bonneville	4	xeric freshwaters and endorheic (closed) basins
+30743	Borneo Highlands	3	montane freshwaters
+30112	Canadian Arctic Archipelago	11	polar freshwaters
+30115	Canadian Atlantic Islands	5	temperate coastal rivers
+30903	Canary Islands	8	tropical and subtropical coastal rivers
+30403	Cantabric Coast - Languedoc	5	temperate coastal rivers
+30578	Cape Fold	5	temperate coastal rivers
+30902	Cape Verde	8	tropical and subtropical coastal rivers
+30446	Caspian Highlands	4	xeric freshwaters and endorheic (closed) basins
+30452	Caspian Marine	1	large lakes
+30740	Central & Eastern Java	8	tropical and subtropical coastal rivers
+30404	Central & Western Europe	7	temperate floodplain rivers and wetlands
+30431	Central Anatolia	4	xeric freshwaters and endorheic (closed) basins
+30336	Central Andean Pacific Slopes	4	xeric freshwaters and endorheic (closed) basins
+30106	Central Arctic Coastal	11	polar freshwaters
+30912	Central Caroline Islands	-1	No Data
+30146	Central Prairie	6	temperate upland rivers
+30342	Chaco	10	tropical and subtropical floodplain rivers and wetland complexes
+30907	Chagos	-1	No Data
+30209	Chagres	8	tropical and subtropical coastal rivers
+30732	Chao Phraya	10	tropical and subtropical floodplain rivers and wetland complexes
+30158	Chesapeake Bay	5	temperate coastal rivers
+30201	Chiapas - Fonseca	8	tropical and subtropical coastal rivers
+30206	Chiriqui	8	tropical and subtropical coastal rivers
+30909	Christmas Island	0	 
+30604	Chuya	3	montane freshwaters
+30615	Coastal Amur	5	temperate coastal rivers
+30564	Coastal East Africa	8	tropical and subtropical coastal rivers
+30767	Coastal Fujian - Zeijang	8	tropical and subtropical coastal rivers
+30436	Coastal Levant	4	xeric freshwaters and endorheic (closed) basins
+30172	Coatzacoalcos	8	tropical and subtropical coastal rivers
+30217	Cocos Island (Costa Rica)	0	 
+30908	Cocos Islands	0	 
+30130	Colorado	4	xeric freshwaters and endorheic (closed) basins
+30120	Columbia Glaciated	6	temperate upland rivers
+30121	Columbia Unglaciated	7	temperate floodplain rivers and wetlands
+30584	Comoros - Mayotte	0	 
+30918	Cook Islands	0	 
+30426	Crimea Peninsula	5	temperate coastal rivers
+30551	Cuanza	8	tropical and subtropical coastal rivers
+30136	Cuatro Cienegas	4	xeric freshwaters and endorheic (closed) basins
+30211	Cuba - Cayman Islands	8	tropical and subtropical coastal rivers
+30151	Cumberland	6	temperate upland rivers
+30537	Cuvette Centrale	10	tropical and subtropical floodplain rivers and wetland complexes
+30340	Cuyan - Desaguadero	3	montane freshwaters
+30419	Dalmatia	5	temperate coastal rivers
+30128	Death Valley	4	xeric freshwaters and endorheic (closed) basins
+30425	Dnieper - South Bug	7	temperate floodplain rivers and wetlands
+30418	Dniester - Lower Danube	7	temperate floodplain rivers and wetlands
+30427	Don	7	temperate floodplain rivers and wetlands
+30574	Drakensberg - Maluti Highlands	3	montane freshwaters
+30504	Dry Sahel	4	xeric freshwaters and endorheic (closed) basins
+30623	Dzungaria	4	xeric freshwaters and endorheic (closed) basins
+30829	East Caroline Islands	-1	No Data
+30611	East Chukotka	11	polar freshwaters
+30140	East Texas Gulf	5	temperate coastal rivers
+30745	Eastern Borneo	8	tropical and subtropical coastal rivers
+30807	Eastern Coastal Australia	5	temperate coastal rivers
+30731	Eastern Gulf of Thailand Drainages	8	tropical and subtropical coastal rivers
+30113	Eastern Hudson Bay - Ungava	5	temperate coastal rivers
+30414	Eastern Iberia	7	temperate floodplain rivers and wetlands
+30758	Eastern Taiwan	8	tropical and subtropical coastal rivers
+30638	Eastern Yellow Sea Drainages	5	temperate coastal rivers
+30563	Eastern Zimbabwe Highlands	3	montane freshwaters
+30514	Eburneo	8	tropical and subtropical coastal rivers
+30109	English - Winnipeg Lakes	1	large lakes
+30725	Er Hai	3	montane freshwaters
+30449	Esfahan	4	xeric freshwaters and endorheic (closed) basins
+30310	Essequibo	9	tropical and subtropical upland rivers
+30204	Estero Real - Tempisque	8	tropical and subtropical coastal rivers
+30525	Ethiopian Highlands	3	montane freshwaters
+30553	Etosha	4	xeric freshwaters and endorheic (closed) basins
+30821	Fiji	8	tropical and subtropical coastal rivers
+30156	Florida Peninsula	8	tropical and subtropical coastal rivers
+30352	Fluminense	8	tropical and subtropical coastal rivers
+30510	Fouta - Djalon	3	montane freshwaters
+30350	Galapagos Islands	-1	No Data
+30920	Gambier Islands	0	 
+30709	Ganges Delta & Plain	2	large river deltas
+30710	Ganges Himalayan Foothills	3	montane freshwaters
+30131	Gila	4	xeric freshwaters and endorheic (closed) basins
+30806	Great Artesian Basin	4	xeric freshwaters and endorheic (closed) basins
+30998	Greenland	11	polar freshwaters
+30173	Grijalva - Usumacinta	8	tropical and subtropical coastal rivers
+30319	Guapore - Itenez	9	tropical and subtropical upland rivers
+30311	Guianas	9	tropical and subtropical upland rivers
+30114	Gulf of St.Lawrence Coastal Drainages	5	temperate coastal rivers
+30415	Gulf of Venice Drainages	5	temperate coastal rivers
+30161	Guzman - Samalayuca	4	xeric freshwaters and endorheic (closed) basins
+30759	Hainan	8	tropical and subtropical coastal rivers
+30640	Hamgyong - Sanmaek	5	temperate coastal rivers
+30828	Hawaiian Islands	8	tropical and subtropical coastal rivers
+30702	Helmand - Sistan	4	xeric freshwaters and endorheic (closed) basins
+30214	Hispaniola	8	tropical and subtropical coastal rivers
+30642	Honshu - Shikoku - Kyushu	5	temperate coastal rivers
+30529	Horn of Africa	4	xeric freshwaters and endorheic (closed) basins
+30635	Huang He Great Bend	7	temperate floodplain rivers and wetlands
+30401	Iceland - Jan Mayen	11	polar freshwaters
+30346	Iguassu	9	tropical and subtropical upland rivers
+30737	Indian Ocean Slope of Sumatra & Java	8	tropical and subtropical coastal rivers
+30705	Indus Himalayan Foothills	3	montane freshwaters
+30723	Inle Lake	3	montane freshwaters
+30621	Inner Mongolia Endorheic Basins	4	xeric freshwaters and endorheic (closed) basins
+30508	Inner Niger Delta	10	tropical and subtropical floodplain rivers and wetland complexes
+30421	Ionian Drainages	5	temperate coastal rivers
+30601	Irgyz -Turgai	4	xeric freshwaters and endorheic (closed) basins
+30207	Isthmus Caribbean	8	tropical and subtropical coastal rivers
+30416	Italian Peninsula & Islands	5	temperate coastal rivers
+30213	Jamaica	8	tropical and subtropical coastal rivers
+30438	Jordan River	4	xeric freshwaters and endorheic (closed) basins
+30351	Juan Fernandez Island	-1	No Data
+30557	Kafue	10	tropical and subtropical floodplain rivers and wetland complexes
+30570	Kalahari	4	xeric freshwaters and endorheic (closed) basins
+30613	Kamchatka & Northern Kurils	5	temperate coastal rivers
+30741	Kapuas	8	tropical and subtropical coastal rivers
+30573	Karoo	4	xeric freshwaters and endorheic (closed) basins
+30554	Karstveld Sink Holes	4	xeric freshwaters and endorheic (closed) basins
+30546	Kasai	10	tropical and subtropical floodplain rivers and wetland complexes
+30448	Kavir & Lut Deserts	4	xeric freshwaters and endorheic (closed) basins
+30727	Khorat Plateau (Mekong)	9	tropical and subtropical upland rivers
+30803	Kimberley	8	tropical and subtropical coastal rivers
+30609	Kolyma	11	polar freshwaters
+30612	Koryakia	5	temperate coastal rivers
+30728	Kretie - Stung Treng (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
+30428	Kuban	5	temperate coastal rivers
+30434	Kura - South Caspian Drainages	7	temperate floodplain rivers and wetlands
+30334	Laguna dos Patos	5	temperate coastal rivers
+30126	Lahontan	4	xeric freshwaters and endorheic (closed) basins
+30606	Lake Baikal	1	large lakes
+30520	Lake Chad	4	xeric freshwaters and endorheic (closed) basins
+30627	Lake Issyk Kul - Upper Chu	1	large lakes
+30753	Lake Lanao	3	montane freshwaters
+30559	Lake Malawi	1	large lakes
+30409	Lake Onega - Lake Ladoga	1	large lakes
+30751	Lake Poso	3	montane freshwaters
+30565	Lake Rukwa	1	large lakes
+30526	Lake Tana	3	montane freshwaters
+30542	Lake Tanganyika	1	large lakes
+30530	Lake Turkana	1	large lakes
+30444	Lake Van	4	xeric freshwaters and endorheic (closed) basins
+30521	Lake Victoria Basin	1	large lakes
+30116	Laurentian Great Lakes	1	large lakes
+30608	Lena	11	polar freshwaters
+30165	Lerma - Chapala	4	xeric freshwaters and endorheic (closed) basins
+30748	Lesser Sunda Islands	8	tropical and subtropical coastal rivers
+30637	Liao He	7	temperate floodplain rivers and wetlands
+30166	Llanos El Salado	4	xeric freshwaters and endorheic (closed) basins
+30915	Lord Howe Island	8	tropical and subtropical coastal rivers
+30703	Lower & Middle Indus	10	tropical and subtropical floodplain rivers and wetland complexes
+30722	Lower & Middle Salween	10	tropical and subtropical floodplain rivers and wetland complexes
+30626	Lower & Middle Syr Darya	6	temperate upland rivers
+30616	Lower Amur	7	temperate floodplain rivers and wetlands
+30719	Lower Brahmaputra - Arakan Coast	8	tropical and subtropical coastal rivers
+30550	Lower Congo	10	tropical and subtropical floodplain rivers and wetland complexes
+30549	Lower Congo Rapids	10	tropical and subtropical floodplain rivers and wetland complexes
+30636	Lower Huang He	7	temperate floodplain rivers and wetlands
+30726	Lower Lan Cang (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
+30105	Lower Mackenzie	11	polar freshwaters
+30149	Lower Mississippi	7	temperate floodplain rivers and wetlands
+30505	Lower Niger - Benue	10	tropical and subtropical floodplain rivers and wetland complexes
+30523	Lower Nile	4	xeric freshwaters and endorheic (closed) basins
+30345	Lower Parana	7	temperate floodplain rivers and wetlands
+30135	Lower Rio Grande - Bravo	7	temperate floodplain rivers and wetlands
+30441	Lower Tigris & Euphrates	7	temperate floodplain rivers and wetlands
+30332	Lower Uruguay	9	tropical and subtropical upland rivers
+30766	Lower Yangtze	7	temperate floodplain rivers and wetlands
+30561	Lower Zambezi	10	tropical and subtropical floodplain rivers and wetland complexes
+30581	Madagascar Eastern Highlands	3	montane freshwaters
+30583	Madagascar Eastern Lowlands	8	tropical and subtropical coastal rivers
+30904	Madeira Archipelago	-1	No Data
+30321	Madeira Brazilian Shield	9	tropical and subtropical upland rivers
+30733	Mae Khlong	10	tropical and subtropical floodplain rivers and wetland complexes
+30302	Magdalena - Sinu	9	tropical and subtropical upland rivers
+30547	Mai Ndombe	10	tropical and subtropical floodplain rivers and wetland complexes
+30543	Malagarasi - Moyowosi	10	tropical and subtropical floodplain rivers and wetland complexes
+30734	Malay Peninsula Eastern Slope	8	tropical and subtropical coastal rivers
+30906	Maldives - Lakshadweep	8	tropical and subtropical coastal rivers
+30548	Malebo Pool	10	tropical and subtropical floodplain rivers and wetland complexes
+30747	Malukku	8	tropical and subtropical coastal rivers
+30318	Mamore - Madre de Dios Piedmont	9	tropical and subtropical upland rivers
+30339	Mar Chiquita - Salinas Grandes	4	xeric freshwaters and endorheic (closed) basins
+30303	Maracaibo	1	large lakes
+30911	Mariana Islands	-1	No Data
+30826	Marquesas Islands	-1	No Data
+30914	Marshall Islands	0	 
+30586	Mascarenes	8	tropical and subtropical coastal rivers
+30750	Matano - Southern Malili Lakes	3	montane freshwaters
+30163	Mayran - Viesca	4	xeric freshwaters and endorheic (closed) basins
+30502	Mediterranean Northwest Africa	5	temperate coastal rivers
+30729	Mekong Delta	2	large river deltas
+30630	Middle Amu Darya	6	temperate upland rivers
+30617	Middle Amur	6	temperate upland rivers
+30712	Middle Brahmaputra	9	tropical and subtropical upland rivers
+30143	Middle Missouri	7	temperate floodplain rivers and wetlands
+30108	Middle Saskatchewan	6	temperate upland rivers
+30765	Middle Yangtze	6	temperate upland rivers
+30558	Middle Zambezi - Luangwa	10	tropical and subtropical floodplain rivers and wetland complexes
+30752	Mindanao	8	tropical and subtropical coastal rivers
+30153	Mobile Bay	7	temperate floodplain rivers and wetlands
+30203	Mosquitia	8	tropical and subtropical coastal rivers
+30513	Mount Nimba	3	montane freshwaters
+30562	Mulanje	3	montane freshwaters
+30808	Murray - Darling	7	temperate floodplain rivers and wetlands
+30447	Namak	4	xeric freshwaters and endorheic (closed) basins
+30552	Namib	4	xeric freshwaters and endorheic (closed) basins
+30708	Namuda - Tapi	10	tropical and subtropical floodplain rivers and wetland complexes
+30820	New Caledonia	8	tropical and subtropical coastal rivers
+30814	New Guinea Central Mountains	3	montane freshwaters
+30813	New Guinea North Coast	3	montane freshwaters
+30811	New Zealand	5	temperate coastal rivers
+30769	Nicobar Islands	8	tropical and subtropical coastal rivers
+30506	Niger Delta	2	large river deltas
+30524	Nile Delta	2	large river deltas
+30916	Norfolk Island	8	tropical and subtropical coastal rivers
+30301	North Andean Pacific Slopes - Rio Atrato	8	tropical and subtropical coastal rivers
+30118	Northeast US & Southeast Canada Atlantic Drainages	5	temperate coastal rivers
+30744	Northeastern Borneo	8	tropical and subtropical coastal rivers
+30326	Northeastern Caatinga & Coastal Drainages	8	tropical and subtropical coastal rivers
+30328	Northeastern Mata Atlantica	8	tropical and subtropical coastal rivers
+30430	Northern Anatolia	5	temperate coastal rivers
+30760	Northern Annam	8	tropical and subtropical coastal rivers
+30406	Northern Baltic Drainages	11	polar freshwaters
+30402	Northern British Isles	5	temperate coastal rivers
+30628	Northern Central Asian Highlands	6	temperate upland rivers
+30735	Northern Central Sumatra - Western Malaysia	8	tropical and subtropical coastal rivers
+30713	Northern Deccan Plateau	10	tropical and subtropical floodplain rivers and wetland complexes
+30528	Northern Eastern Rift	4	xeric freshwaters and endorheic (closed) basins
+30533	Northern Gulf of Guinea Drainages - Bioko	8	tropical and subtropical coastal rivers
+30451	Northern Hormuz Drainages	5	temperate coastal rivers
+30755	Northern Philippine Islands	8	tropical and subtropical coastal rivers
+30511	Northern Upper Guinea	8	tropical and subtropical coastal rivers
+30742	Northwestern Borneo	8	tropical and subtropical coastal rivers
+30580	Northwestern Madagascar	10	tropical and subtropical floodplain rivers and wetland complexes
+30405	Norwegian Sea Drainages	11	polar freshwaters
+30602	Ob	11	polar freshwaters
+30910	Ogasarawa Islands - Kazan Archipelago	-1	No Data
+30532	Ogooue - Nyanga - Kouilou - Niari	8	tropical and subtropical coastal rivers
+30569	Okavango	10	tropical and subtropical floodplain rivers and wetland complexes
+30614	Okhotsk Coast	5	temperate coastal rivers
+30443	Oman Mountains	4	xeric freshwaters and endorheic (closed) basins
+30123	Oregon & Northern California Coastal	5	temperate coastal rivers
+30124	Oregon Lakes	4	xeric freshwaters and endorheic (closed) basins
+30309	Orinoco Delta & Coastal Drainages	2	large river deltas
+30308	Orinoco Guiana Shield	9	tropical and subtropical upland rivers
+30305	Orinoco High Andes	3	montane freshwaters
+30307	Orinoco Llanos	10	tropical and subtropical floodplain rivers and wetland complexes
+30306	Orinoco Piedmont	3	montane freshwaters
+30437	Orontes	5	temperate coastal rivers
+30445	Orumiyeh	4	xeric freshwaters and endorheic (closed) basins
+30145	Ouachita Highlands	6	temperate upland rivers
+30147	Ozark Highlands	6	temperate upland rivers
+30756	Palawan - Busuanga - Mindoro	8	tropical and subtropical coastal rivers
+30804	Paleo	4	xeric freshwaters and endorheic (closed) basins
+30568	Pangani	8	tropical and subtropical coastal rivers
+30167	Panuco	8	tropical and subtropical coastal rivers
+30171	Papaloapan	8	tropical and subtropical coastal rivers
+30816	Papuan Peninsula	8	tropical and subtropical coastal rivers
+30343	Paraguay	10	tropical and subtropical floodplain rivers and wetland complexes
+30329	Paraiba do Sul	8	tropical and subtropical coastal rivers
+30325	Parnaiba	9	tropical and subtropical upland rivers
+30348	Patagonia	5	temperate coastal rivers
+30133	Pecos	4	xeric freshwaters and endorheic (closed) basins
+30802	Pilbara	4	xeric freshwaters and endorheic (closed) basins
+30921	Pitcairn Island	-1	No Data
+30215	Puerto Rico - Virgin Islands	8	tropical and subtropical coastal rivers
+30632	Qaidan	6	temperate upland rivers
+30202	Quintana Roo - Motagua	8	tropical and subtropical coastal rivers
+30827	Rapa	0	 
+30330	Ribeira de Iguape	8	tropical and subtropical coastal rivers
+30169	Rio Balsas	8	tropical and subtropical coastal rivers
+30134	Rio Conchos	4	xeric freshwaters and endorheic (closed) basins
+30314	Rio Negro	10	tropical and subtropical floodplain rivers and wetland complexes
+30137	Rio Salado	4	xeric freshwaters and endorheic (closed) basins
+30138	Rio San Juan (Mexico)	4	xeric freshwaters and endorheic (closed) basins
+30164	Rio Santiago	8	tropical and subtropical coastal rivers
+30210	Rio Tuira	8	tropical and subtropical coastal rivers
+30327	S. Francisco	9	tropical and subtropical upland rivers
+30587	S. Tome & Principe - Annobon	8	tropical and subtropical coastal rivers
+30141	Sabine - Galveston	5	temperate coastal rivers
+30125	Sacramento - San Joaquin	5	temperate coastal rivers
+30503	Sahara	4	xeric freshwaters and endorheic (closed) basins
+30641	"Sakhalin, Hokkaido, & Sikhote - Alin Coast"	5	temperate coastal rivers
+30823	Samoas	-1	No Data
+30205	San Juan (Nicaragua/Costa Rica)	8	tropical and subtropical coastal rivers
+30534	Sangha	10	tropical and subtropical floodplain rivers and wetland complexes
+30208	Santa Maria	8	tropical and subtropical coastal rivers
+30119	Scotia - Fundy	5	temperate coastal rivers
+30509	Senegal - Gambia	10	tropical and subtropical floodplain rivers and wetland complexes
+30585	Seychelles	8	tropical and subtropical coastal rivers
+30531	Shebelle - Juba	4	xeric freshwaters and endorheic (closed) basins
+30619	Shilka (Amur)	6	temperate upland rivers
+30170	Sierra Madre del Sur	8	tropical and subtropical coastal rivers
+30435	Sinai	4	xeric freshwaters and endorheic (closed) basins
+30162	Sinaloa	8	tropical and subtropical coastal rivers
+30720	Sitang - Irawaddy	10	tropical and subtropical floodplain rivers and wetland complexes
+30824	Society Islands	-1	No Data
+30905	Socotra	8	tropical and subtropical coastal rivers
+30818	Solomon Islands	8	tropical and subtropical coastal rivers
+30761	Song Hong	10	tropical and subtropical floodplain rivers and wetland complexes
+30620	Songhua Jiang	7	temperate floodplain rivers and wetlands
+30160	Sonora	4	xeric freshwaters and endorheic (closed) basins
+30304	South America Caribbean Drainages - Trinidad	8	tropical and subtropical coastal rivers
+30341	South Andean Pacific Slopes	5	temperate coastal rivers
+30746	Southeastern Borneo	8	tropical and subtropical coastal rivers
+30716	Southeastern Ghats	8	tropical and subtropical coastal rivers
+30639	Southeastern Korean Peninsula	5	temperate coastal rivers
+30331	Southeastern Mata Atlantica	8	tropical and subtropical coastal rivers
+30432	Southern Anatolia	5	temperate coastal rivers
+30730	Southern Annam	8	tropical and subtropical coastal rivers
+30408	Southern Baltic Lowlands	5	temperate coastal rivers
+30159	Southern California Coastal - Baja California	4	xeric freshwaters and endorheic (closed) basins
+30738	Southern Central Sumatra	8	tropical and subtropical coastal rivers
+30714	Southern Deccan Plateau	10	tropical and subtropical floodplain rivers and wetland complexes
+30566	Southern Eastern Rift	4	xeric freshwaters and endorheic (closed) basins
+30518	Southern Gulf of Guinia Drainages	8	tropical and subtropical coastal rivers
+30110	Southern Hudson Bay	5	temperate coastal rivers
+30413	Southern Iberia	7	temperate floodplain rivers and wetlands
+30571	Southern Kalahari	4	xeric freshwaters and endorheic (closed) basins
+30582	Southern Madagascar	4	xeric freshwaters and endorheic (closed) basins
+30739	Southern Sumatra - Western Java	8	tropical and subtropical coastal rivers
+30810	Southern Tasmania	5	temperate coastal rivers
+30575	Southern Temperate Highveld	6	temperate upland rivers
+30512	Southern Upper Guinea	8	tropical and subtropical coastal rivers
+30815	Southwest New Guinea - Trans-Fly Lowland	8	tropical and subtropical coastal rivers
+30439	Southwestern Arabian Coast	4	xeric freshwaters and endorheic (closed) basins
+30801	Southwestern Australia	5	temperate coastal rivers
+30717	Sri Lanka Dry Zone	8	tropical and subtropical coastal rivers
+30718	Sri Lanka Wet Zone	8	tropical and subtropical coastal rivers
+30117	St.Lawrence	5	temperate coastal rivers
+30535	Sudanic Congo - Oubangi	10	tropical and subtropical floodplain rivers and wetland complexes
+30749	Sulawesi	8	tropical and subtropical coastal rivers
+30607	Taimyr	11	polar freshwaters
+30567	"Tana, Athi & Coastal Drainages"	8	tropical and subtropical coastal rivers
+30320	Tapajos - Juruena	9	tropical and subtropical upland rivers
+30625	Tarim	4	xeric freshwaters and endorheic (closed) basins
+30150	Teays - Old Ohio	6	temperate upland rivers
+30152	Tennessee	6	temperate upland rivers
+30423	Thrace	5	temperate coastal rivers
+30707	Tibetan Plateau Endorheic Dranages	4	xeric freshwaters and endorheic (closed) basins
+30337	Titicaca	4	xeric freshwaters and endorheic (closed) basins
+30324	Tocantins - Araguaia	9	tropical and subtropical upland rivers
+30917	Tonga	-1	No Data
+30335	Tramandai - Mampituba	8	tropical and subtropical coastal rivers
+30919	Tuamotu Islands	0	 
+30825	Tubuai Islands	-1	No Data
+30538	Tumba	10	tropical and subtropical floodplain rivers and wetland complexes
+30450	Turan Plain	4	xeric freshwaters and endorheic (closed) basins
+30317	Ucayali - Urubamba Piedmont	3	montane freshwaters
+30536	Uele	9	tropical and subtropical upland rivers
+30631	Upper Amu Darya	4	xeric freshwaters and endorheic (closed) basins
+30711	Upper Brahmaputra	9	tropical and subtropical upland rivers
+30540	Upper Congo	9	tropical and subtropical upland rivers
+30539	Upper Congo Rapids	10	tropical and subtropical floodplain rivers and wetland complexes
+30417	Upper Danube	6	temperate upland rivers
+30633	Upper Huang He	3	montane freshwaters
+30634	Upper Huang He Corridor	3	montane freshwaters
+30706	Upper Indus	3	montane freshwaters
+30603	Upper Irtysh	6	temperate upland rivers
+30724	Upper Lan Cang (Mekong)	9	tropical and subtropical upland rivers
+30545	Upper Lualaba	10	tropical and subtropical floodplain rivers and wetland complexes
+30104	Upper Mackenzie	7	temperate floodplain rivers and wetlands
+30148	Upper Mississippi	7	temperate floodplain rivers and wetlands
+30142	Upper Missouri	6	temperate upland rivers
+30507	Upper Niger	9	tropical and subtropical upland rivers
+30522	Upper Nile	10	tropical and subtropical floodplain rivers and wetland complexes
+30344	Upper Parana	9	tropical and subtropical upland rivers
+30132	Upper Rio Grande - Bravo	6	temperate upland rivers
+30721	Upper Salween	9	tropical and subtropical upland rivers
+30107	Upper Saskatchewan	6	temperate upland rivers
+30122	Upper Snake	6	temperate upland rivers
+30442	Upper Tigris & Euphrates	7	temperate floodplain rivers and wetlands
+30333	Upper Uruguay	9	tropical and subtropical upland rivers
+30174	Upper Usumacinta	9	tropical and subtropical upland rivers
+30764	Upper Yangtze	6	temperate upland rivers
+30102	Upper Yukon	11	polar freshwaters
+30556	Upper Zambezi Floodplains	10	tropical and subtropical floodplain rivers and wetland complexes
+30144	US Southern Plains	6	temperate upland rivers
+30349	Valdivian Lakes	5	temperate coastal rivers
+30819	Vanuatu	8	tropical and subtropical coastal rivers
+30422	Vardar	5	temperate coastal rivers
+30129	Vegas - Virgin	4	xeric freshwaters and endorheic (closed) basins
+30812	Vogelkop - Bomberai	8	tropical and subtropical coastal rivers
+30410	Volga - Ural	7	temperate floodplain rivers and wetlands
+30453	Volga Delta - Northern Caspian Drainages	1	large lakes
+30516	Volta	10	tropical and subtropical floodplain rivers and wetland complexes
+30913	Wake Island	0	 
+30822	Wallis - Futuna	0	 
+30830	West Caroline Islands	-1	No Data
+30154	West Florida Gulf	5	temperate coastal rivers
+30139	West Texas Gulf	8	tropical and subtropical coastal rivers
+30313	Western Amazon Piedmont	3	montane freshwaters
+30429	Western Anatolia	5	temperate coastal rivers
+30411	Western Caspian Drainages	4	xeric freshwaters and endorheic (closed) basins
+30519	Western Equatorial Crater Lakes	3	montane freshwaters
+30715	Western Ghats	8	tropical and subtropical coastal rivers
+30111	Western Hudson Bay	11	polar freshwaters
+30412	Western Iberia	5	temperate coastal rivers
+30579	Western Madagascar	4	xeric freshwaters and endorheic (closed) basins
+30622	Western Mongolia	4	xeric freshwaters and endorheic (closed) basins
+30572	Western Orange	4	xeric freshwaters and endorheic (closed) basins
+30527	Western Red Sea Drainages	4	xeric freshwaters and endorheic (closed) basins
+30757	Western Taiwan	8	tropical and subtropical coastal rivers
+30433	Western Transcaucasia	5	temperate coastal rivers
+30216	Windward & Leeward Islands	8	tropical and subtropical coastal rivers
+30763	Xi Yiang	10	tropical and subtropical floodplain rivers and wetland complexes
+30322	Xingu	9	tropical and subtropical upland rivers
+30704	Yaghistan	3	montane freshwaters
+30605	Yenisei	11	polar freshwaters
+30175	Yucatan	8	tropical and subtropical coastal rivers
+30762	Yunnan Lakes	3	montane freshwaters
+30555	Zambezian Headwaters	9	tropical and subtropical upland rivers
+30560	Zambezian Highveld	9	tropical and subtropical upland rivers
+30576	Zambezian Lowveld	8	tropical and subtropical coastal rivers
