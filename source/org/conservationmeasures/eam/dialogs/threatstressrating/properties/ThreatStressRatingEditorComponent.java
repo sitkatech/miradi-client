@@ -65,6 +65,11 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 		return objectPicker;
 	}
 
+	public void updateModelBasedOnPickerList()
+	{
+		setObjectRefs(getObjectPicker().getSelectedHierarchies()[0].toArray());
+	}
+	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		threatStressRatingTable.stopCellEditing();
