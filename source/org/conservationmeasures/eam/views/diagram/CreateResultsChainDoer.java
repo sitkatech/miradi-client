@@ -12,8 +12,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ResultsChainCreatorHelper;
@@ -26,17 +24,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (! isDiagramView())
 			return false;
 		
-		if (getDiagramView().isResultsChainTab())
-			return false;
-		
 		if (getDiagramView().isStategyBrainstormMode())
-			return false;
-		
-		Factor[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactors();
-		if (selectedFactors.length == 0)
-			return false;
-		
-		if (! atLeastOneStrategy(selectedFactors))
 			return false;
 		
 		return true;
@@ -74,15 +62,4 @@ public class CreateResultsChainDoer extends ViewDoer
 		project.executeCommand(setTabCommand);
 	}	
 	
-	public static boolean atLeastOneStrategy(BaseObject[] selectedObjects)
-	{
-		for (int i = 0; i < selectedObjects.length; i++)
-		{
-			ORef ref = selectedObjects[i].getRef();
-			if (ref.getObjectType() == ObjectType.STRATEGY)
-				return true;
-		}
-		
-		return false;
-	}
 }
