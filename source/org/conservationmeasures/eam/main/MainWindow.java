@@ -470,7 +470,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		
 		ProjectMetadata metadata = getProject().getMetadata();
-		String startDate = metadata.getStartDate();
+		String startDate = getProject().getProjectCalendar().getPlanningStartDate();
 		String endDate = metadata.getExpectedEndDate();
 
 		if (startDate.trim().length() <= 0 || endDate.trim().length() <= 0)

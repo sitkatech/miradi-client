@@ -56,7 +56,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public void rebuildProjectDateRanges() throws Exception
 	{
 		//TODO budget code -  move project start/end code to Project
-		String startDate = project.getMetadata().getStartDate();
+		String startDate = getPlanningStartDate();
 		int firstCalendarYear = 2006;
 		int firstCalendarMonth = project.getMetadata().getFiscalYearFirstMonth();
 
@@ -83,6 +83,11 @@ public class ProjectCalendar implements CommandExecutedListener
 					planningStartDate.getGregorianMonth(), 
 					planningStartDate.getGregorianDay());
 		}
+	}
+
+	public String getPlanningStartDate()
+	{
+		return project.getMetadata().getStartDate();
 	}
 
 	private MultiCalendar getPlanningEndDate(MultiCalendar planningStartDate)
