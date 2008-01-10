@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating;
 
 import org.conservationmeasures.eam.dialogs.base.EditableObjectTableModel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -51,12 +52,23 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		}
 	}
 
+    public Class getColumnClass(int columnIndex) 
+    {
+    	if (isIsActiveColumn(columnIndex))
+    		return Boolean.class;
+    	
+    	return super.getColumnClass(columnIndex);
+    }
+	
 	public boolean isCellEditable(int row, int column)
 	{
 		if (isContributionColumn(column))
 			return true;
 		
 		if (isIrreversibilityColumn(column))
+			return true;
+		
+		if (isIsActiveColumn(column))
 			return true;
 		
 		return false;
@@ -85,6 +97,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	public boolean isThreatRatingColumn(int column)
 	{
 		return getColumnTag(column).equals(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+	}
+	
+	public boolean isIsActiveColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.TAG_IS_ACTIVE);
 	}
 		
 	public String getColumnName(int column)
@@ -139,6 +156,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 			return createThreatStressRatingQuestion(column).findChoiceByCode(code);
 		}
 		
+		if (isIsActiveColumn(column))
+		{
+			return new Boolean(getThreatStressRating(row, column).isActive());
+		}
+		
 		return null;
 	}
 
@@ -158,6 +180,13 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		{
 			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
+		}
+		
+		if (isIsActiveColumn(column))
+		{
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			Boolean valueAsBoolean = (Boolean)value;
+			setValueUsingCommand(ref, getColumnTag(column), BooleanData.toString(valueAsBoolean));
 		}
 	}
 

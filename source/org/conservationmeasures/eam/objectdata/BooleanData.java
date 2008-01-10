@@ -19,18 +19,29 @@ public class BooleanData extends IntegerData
 	
 	public boolean asBoolean()
 	{
+		if (get().length() == 0)
+			return false;
+		
 		if (get().equals(BOOLEAN_FALSE))
 			return false;
 		
 		if (get().equals(BOOLEAN_TRUE))
 			return true;
 		
-		throw new RuntimeException("Invalid boolean value :" + asInt());
+		throw new RuntimeException("Invalid boolean value :" + get());
 	}
 	
 	public Boolean asBooleanObject()
 	{
 		return new Boolean(asBoolean());
+	}
+	
+	public static String toString(boolean booleanToConvert)
+	{
+		if (booleanToConvert == true)
+			return BOOLEAN_TRUE;
+		
+		return BOOLEAN_FALSE;
 	}
 	
 	public void set(String newValue) throws Exception
