@@ -41,7 +41,7 @@ public class BooleanData extends IntegerData
 		if (booleanToConvert == true)
 			return BOOLEAN_TRUE;
 		
-		return BOOLEAN_FALSE;
+		return "";
 	}
 	
 	public void set(String newValue) throws Exception
