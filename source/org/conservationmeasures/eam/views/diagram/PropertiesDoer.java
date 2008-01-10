@@ -20,9 +20,11 @@ import org.conservationmeasures.eam.dialogs.diagram.ProjectScopePanel;
 import org.conservationmeasures.eam.dialogs.diagram.TextBoxPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
 {
@@ -59,16 +61,23 @@ public class PropertiesDoer extends LocationDoer
 		if(!isAvailable())
 			return;
 
-		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
-		
-		if(selected.isFactor())
-			doFactorProperties((FactorCell)selected, getLocation());
+		try
+		{
+			EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
 
-		else if(selected.isProjectScope())
-			doProjectScopeProperties();
-		
-		else if(selected.isFactorLink())
-			doFactorLinkProperties(selected.getDiagramLink());
+			if(selected.isFactor())
+				doFactorProperties((FactorCell)selected, getLocation());
+
+			else if(selected.isProjectScope())
+				doProjectScopeProperties();
+
+			else if(selected.isFactorLink())
+				doFactorLinkProperties(selected.getDiagramLink());
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
 	private boolean isTextBoxFactor(DiagramFactor selected)
@@ -86,11 +95,22 @@ public class PropertiesDoer extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doFactorLinkProperties(DiagramLink linkage) throws CommandFailedException
+	void doFactorLinkProperties(DiagramLink diagramLink) throws Exception
 	{
-		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage);
+		FactorLinkPropertiesPanel panel = getFactorLinkPropertiesPanel(diagramLink);
 		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
+	}
+	
+	private FactorLinkPropertiesPanel getFactorLinkPropertiesPanel(DiagramLink diagramLink) throws Exception
+	{
+		if (!diagramLink.isTargetLink())
+			return new FactorLinkPropertiesPanel(getProject(), diagramLink);
+		
+		ORef targetRef = diagramLink.getUnderlyingLink().getLinkTarget().getRef();
+		StaticPicker picker = new StaticPicker(targetRef);
+		
+		return new FactorLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
 	}
 	
 	void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
