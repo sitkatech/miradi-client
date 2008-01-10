@@ -95,7 +95,7 @@ public class ResultsChainCreatorHelper
 			}
 		}
 		
-		throw new Exception("No strategy found in results chain");
+		return EAM.text("[New Results Chain]");
 	}
 	
 	//TODO RC this test should go away once Draft Strategies are excluded from list
@@ -163,6 +163,12 @@ public class ResultsChainCreatorHelper
 			return diagramFactor.getWrappedORef();
 		
 		if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
+			return diagramFactor.getWrappedORef();
+		
+		if (diagramFactor.getWrappedType() == ObjectType.INTERMEDIATE_RESULT)
+			return diagramFactor.getWrappedORef();
+		
+		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
 			return diagramFactor.getWrappedORef();
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
