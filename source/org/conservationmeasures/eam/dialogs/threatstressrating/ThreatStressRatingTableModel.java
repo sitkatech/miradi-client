@@ -198,7 +198,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 				Stress.PSEUDO_STRESS_RATING,
 				ThreatStressRating.TAG_CONTRIBUTION,
 				ThreatStressRating.TAG_IRREVERSIBILITY,
-				ThreatStressRating.PSEUDO_TAG_THREAT_RATING,				
+				ThreatStressRating.PSEUDO_TAG_THREAT_RATING,
+				ThreatStressRating.TAG_IS_ACTIVE,
 		};
 	}
 	
