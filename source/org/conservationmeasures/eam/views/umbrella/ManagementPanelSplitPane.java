@@ -9,12 +9,11 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
-public class ManagementPanelSplitPane extends PersistentSplitPane
+public class ManagementPanelSplitPane extends PersistentVerticalSplitPane
 {
 	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
-		super(splitPositionSaverToUse, splitterNameToUse);
-		mainComponentSplitted = componentSplitted;
+		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse);
 
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
@@ -23,11 +22,6 @@ public class ManagementPanelSplitPane extends PersistentSplitPane
 		setDividerSize(DIVIDER_SIZE);
 		
 		restoreSavedLocation();
-	}
-	
-	int getMainHeight()
-	{
-		return mainComponentSplitted.getHeight();
 	}
 	
 	public void setDividerLocation(int location)
@@ -46,7 +40,5 @@ public class ManagementPanelSplitPane extends PersistentSplitPane
 	}
 
 	static final int DIVIDER_SIZE = 5;
-
-	private Component mainComponentSplitted;
 }
 
