@@ -306,7 +306,10 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
 		legacyTncOperatingUnits = new StringData();
-		tncOperatingUnits = new StringData();
+		tncOperatingUnits = new ChoiceData();
+		tncTerrestrialEcoRegion = new ChoiceData();
+		tncMarineEcoRegion = new ChoiceData();
+		tncFreshwaterEcoRegion = new ChoiceData();
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -317,6 +320,9 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_COUNTRY, tncCountry);
 		addField(LEGACY_TAG_TNC_OPERATING_UNITS, legacyTncOperatingUnits);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
+		addField(TAG_TNC_TERRESTRIAL_ECO_REGION, tncTerrestrialEcoRegion);
+		addField(TAG_TNC_MARINE_ECO_REGION, tncMarineEcoRegion);
+		addField(TAG_TNC_FRESHWATER_ECO_REGION, tncFreshwaterEcoRegion);
 		
 		otherOrgManagingOffice = new StringData();
 		otherOrgRegionalOffice = new StringData();
@@ -389,6 +395,9 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_COUNTRY = "TNC.Country";
 	public static final String LEGACY_TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnits";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitsField";
+	public static final String TAG_TNC_TERRESTRIAL_ECO_REGION = "TNC.TerrestrialEcoRegion";
+	public static final String TAG_TNC_MARINE_ECO_REGION = "TNC.MarineEcoRegion";
+	public static final String TAG_TNC_FRESHWATER_ECO_REGION = "TNC.FreshwaterEcoRegion";
 
 	public static final String TAG_OTHER_ORG_MANAGING_OFFICE = "OtherOrgManagingOffice";
 	public static final String TAG_OTHER_ORG_REGIONAL_OFFICE = "OtherOrgRegionalOffice";
@@ -451,8 +460,11 @@ public class ProjectMetadata extends BaseObject
 	private StringData tncEcoregion;
 	private StringData tncCountry;
 	private StringData legacyTncOperatingUnits;
-	private StringData tncOperatingUnits;
-
+	private ChoiceData tncOperatingUnits;
+	private ChoiceData tncTerrestrialEcoRegion;
+	private ChoiceData tncMarineEcoRegion;
+	private ChoiceData tncFreshwaterEcoRegion;
+	
 	private StringData otherOrgManagingOffice;
 	private StringData otherOrgRegionalOffice;
 	private StringData otherOrgProjectNumber;
