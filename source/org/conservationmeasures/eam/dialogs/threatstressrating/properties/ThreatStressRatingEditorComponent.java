@@ -72,11 +72,6 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 		threatStressRatingTableModel.fireTableDataChanged();
 	}
 	
-	public void dataWasChanged()
-	{		
-		threatStressRatingTable.repaint();
-	}
-	
 	public ORefList[] getSelectedHierarchies()
 	{
 		return new ORefList[0];
