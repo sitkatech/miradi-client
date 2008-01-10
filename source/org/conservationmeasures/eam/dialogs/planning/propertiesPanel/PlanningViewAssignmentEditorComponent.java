@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionAssignResource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
@@ -92,14 +92,13 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 
 		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
 		addToVerticalController(budgetTotalsScroller);
-		
-		Box horizontalBox = Box.createHorizontalBox();
-		horizontalBox.add(resourceScroller);
-		horizontalBox.add(workPlanScroller);
-		horizontalBox.add(budgetScroller);
-		horizontalBox.add(budgetTotalsScroller);
 
-		add(horizontalBox, BorderLayout.CENTER);
+		JSplitPane detailsSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, workPlanScroller, budgetScroller);
+		JSplitPane numbersSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, detailsSplitter, budgetTotalsScroller);
+		JSplitPane resourceOtherSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, resourceScroller, numbersSplitter);
+		resourceOtherSplitter.setDividerLocation(200);
+
+		add(resourceOtherSplitter, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 			
