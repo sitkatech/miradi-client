@@ -349,7 +349,7 @@ public class DiagramLink extends BaseObject
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
 			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
-			if (threatStressRating.calculateThreatRating() > 0)
+			if (threatStressRating.calculateThreatRating() > 0 && threatStressRating.isActive())
 				stressNames.add(stress.toString());
 		}
 		return stressNames.toArray(new String[0]);
