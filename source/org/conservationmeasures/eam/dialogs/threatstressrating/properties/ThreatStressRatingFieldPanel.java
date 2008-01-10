@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -21,6 +22,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Target.getObjectType(), Target.TAG_LABEL));
 		addField(createReadonlyTextField(Cause.getObjectType(), Cause.TAG_LABEL));
+		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
 		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE)));
 

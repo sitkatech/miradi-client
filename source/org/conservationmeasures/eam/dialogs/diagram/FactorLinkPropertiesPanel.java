@@ -30,7 +30,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 
 	public FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
 	{
-		this(mainWindow.getProject(), link);	
+		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
 		
 		ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		addSubPanel(threatStressRatingPropertiesPanel);
