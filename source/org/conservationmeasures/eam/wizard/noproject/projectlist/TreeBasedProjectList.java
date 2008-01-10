@@ -54,7 +54,6 @@ public class TreeBasedProjectList extends JPanel
 
 	public void refresh()
 	{
-		EAM.logWarning("TreeBasedProjectList.refresh()");
 		try
 		{
 			model.rebuildEntireTree();
