@@ -468,10 +468,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	//TODO refactor this method (nested for loops)
 	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException
 	{
-		
-		ProjectMetadata metadata = getProject().getMetadata();
 		String startDate = getProject().getProjectCalendar().getPlanningStartDate();
-		String endDate = metadata.getExpectedEndDate();
+		String endDate = getProject().getProjectCalendar().getPlanningEndDate();
 
 		if (startDate.trim().length() <= 0 || endDate.trim().length() <= 0)
 			return false;

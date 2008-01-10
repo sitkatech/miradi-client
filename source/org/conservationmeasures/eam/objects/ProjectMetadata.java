@@ -162,6 +162,11 @@ public class ProjectMetadata extends BaseObject
 		return workPlanStartDate.get();
 	}
 	
+	public String getWorkPlanEndDate()
+	{
+		return workPlanEndDate.get();
+	}
+	
 	public String getStartDate()
 	{
 		return startDate.get();

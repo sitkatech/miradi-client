@@ -71,7 +71,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 		
 		MultiCalendar planningStartDate = MultiCalendar.createFromGregorianYearMonthDay(firstCalendarYear, firstCalendarMonth, 1);
-		MultiCalendar planningEndDate = getPlanningEndDate(planningStartDate);
+		MultiCalendar planningEndDate = calculatePlanningEndDate(planningStartDate);
 		
 		yearlyDateRanges = new Vector();
 		editableDateRanges = new Vector();
@@ -93,8 +93,16 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		return project.getMetadata().getStartDate();
 	}
+	
+	public String getPlanningEndDate()
+	{
+		if (project.getMetadata().getWorkPlanEndDate().length() != 0)
+			return project.getMetadata().getWorkPlanEndDate();
+		
+		return project.getMetadata().getExpectedEndDate();
+	}
 
-	private MultiCalendar getPlanningEndDate(MultiCalendar planningStartDate)
+	private MultiCalendar calculatePlanningEndDate(MultiCalendar planningStartDate)
 	{
 		final int DEFAULT_YEAR_DIFF = 3;
 		MultiCalendar defaultEndDate = MultiCalendar.createFromGregorianYearMonthDay(
@@ -103,8 +111,7 @@ public class ProjectCalendar implements CommandExecutedListener
 				planningStartDate.getGregorianDay());
 		defaultEndDate.addDays(-1);
 		
-		String endDate = project.getMetadata().getExpectedEndDate();
-		
+		String endDate = getPlanningEndDate();
 		if (endDate.length() <= 0)
 			return defaultEndDate;
 		
