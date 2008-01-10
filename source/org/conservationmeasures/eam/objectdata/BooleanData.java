@@ -17,6 +17,22 @@ public class BooleanData extends IntegerData
 		super(valueToUse);
 	}
 	
+	public boolean asBoolean()
+	{
+		if (get().equals(BOOLEAN_FALSE))
+			return false;
+		
+		if (get().equals(BOOLEAN_TRUE))
+			return true;
+		
+		throw new RuntimeException("Invalid boolean value :" + asInt());
+	}
+	
+	public Boolean asBooleanObject()
+	{
+		return new Boolean(asBoolean());
+	}
+	
 	public void set(String newValue) throws Exception
 	{
 		super.set(newValue);
