@@ -25,7 +25,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addField(createMultilineField(metadata.TAG_TNC_LESSONS_LEARNED));
 		addField(createMultilineField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
-		addField(createStringField(metadata.TAG_TNC_ECOREGION));
+		addField(createReadonlyTextField(metadata.TAG_TNC_ECOREGION));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new TncTerrestrialEcoRegionQuestion(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION), 1));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new TncMarineEcoRegionQuestion(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION), 1));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new TncFreshwaterEcoRegionQuestion(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION), 1));
