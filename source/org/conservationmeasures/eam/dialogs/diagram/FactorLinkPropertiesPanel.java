@@ -23,9 +23,6 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 
-		//FIXME stresses disabled until stress work has been completed
-		//if (link.isTargetLink())
-		//	addField(createStringField(FactorLink.TAG_STRESS_LABEL));
 		addField(createCheckBoxField(FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		
 		updateFieldsFromProject();
