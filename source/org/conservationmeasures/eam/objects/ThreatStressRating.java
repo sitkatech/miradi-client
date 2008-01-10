@@ -42,6 +42,11 @@ public class ThreatStressRating extends BaseObject
 		return new CreateThreatStressRatingParameter(getStressRef());
 	}
 	
+	public boolean isActive()
+	{
+		return isActive.asBoolean();
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
