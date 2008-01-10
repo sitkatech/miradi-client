@@ -170,6 +170,41 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("does not contain bendpoint?", bendPoints2.contains(new Point(390, 285)));
 	}
 
+	public void testCopyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
+	{
+		String metaDataWithOldEcoRegion = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"Aceh, Amazonia Marine, where, Alaska Range\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"TNC.OperatingUnitsField\":\"{\\\"Codes\\\":[\\\"CHINA\\\",\\\"AUSTR\\\"]}\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199924536523\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"China, Australia, home,  \"}";
+		File jsonDir = createJsonDir();
+		
+		File projectMetaDataDir = DataUpgrader.createObjectsDir(jsonDir, 11);
+		int[] projectMetaDataIds = {0, };
+		File projectMetaDataManifestFile = createManifestFile(projectMetaDataDir, projectMetaDataIds);
+		assertTrue(projectMetaDataManifestFile.exists());
+		
+		File metaDataFileWithOldEcoRegion = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
+		createFile(metaDataFileWithOldEcoRegion, metaDataWithOldEcoRegion);
+		assertTrue("project meta data file exists?", metaDataFileWithOldEcoRegion.exists());
+		
+		EnhancedJsonObject projectMetaDataJson1 = DataUpgrader.readFile(metaDataFileWithOldEcoRegion);	
+		String ecoRegionString = projectMetaDataJson1.optString("TNC.Ecoregion");
+		assertEquals("wrong number of codes?", "Aceh, Amazonia Marine, where, Alaska Range", ecoRegionString);
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		boolean isNonBlankEcoRegionField = dataUpgrader.copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions();
+		assertTrue("had non blank old eco region field?", isNonBlankEcoRegionField);
+		
+		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(metaDataFileWithOldEcoRegion);
+		assertEquals("wrong id?", new BaseId(0), projectMetaDataJson.getId("Id"));
+		
+		CodeList newTerrestrialEcoRegions= new CodeList(projectMetaDataJson.getString("TNC.TerrestrialEcoRegion"));
+		assertEquals("wrong number of terrestrial eco regions?", 1, newTerrestrialEcoRegions.size());
+		
+		CodeList newMarineEcoRegions= new CodeList(projectMetaDataJson.getString("TNC.MarineEcoRegion"));
+		assertEquals("wrong number of marine eco regions?", 1, newMarineEcoRegions.size());
+		
+		CodeList newFreshwaterEcoRegions= new CodeList(projectMetaDataJson.getString("TNC.FreshwaterEcoRegion"));
+		assertEquals("wrong number of freshwater eco regions?", 1, newFreshwaterEcoRegions.size());
+	}
+	
 	public void testCopyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
 	{
 		String projectMetaDataWithOldTncOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199918933796\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"China, Australia, home,  \"}";

@@ -26,7 +26,11 @@ import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
+import org.conservationmeasures.eam.questions.TncMarineEcoRegionQuestion;
 import org.conservationmeasures.eam.questions.TncOperatingUnitsQuestion;
+import org.conservationmeasures.eam.questions.TncTerrestrialEcoRegionQuestion;
+import org.conservationmeasures.eam.questions.TwoLevelQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -168,6 +172,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			if (readDataVersion(getTopDirectory()) == 31)
 				upgradeToVersion32();
 
+			if (readDataVersion(getTopDirectory()) == 32)
+				upgradeToVersion33();
+
 		}
 		finally 
 		{
@@ -175,6 +182,71 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 	
+	private void upgradeToVersion33() throws Exception
+	{
+		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
+		if (isNonBlankEcoRegions)
+			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
+									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
+									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
+		writeVersion(33);
+	}
+
+	public boolean copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
+		if (! projectMetaDataDir.exists())
+			return false;
+
+		File projectMetaDataManifestFile = new File(projectMetaDataDir, "manifest");
+		if (! projectMetaDataManifestFile.exists())
+			return false;
+		
+		ObjectManifest projectMetaDataManifest = new ObjectManifest(JSONFile.read(projectMetaDataManifestFile));
+		BaseId[] projectMetaDataIds = projectMetaDataManifest.getAllKeys();
+		if (projectMetaDataIds.length != 1)
+			return false;
+
+		BaseId projectMetaDataId = projectMetaDataIds[0];
+		File projectMetaDataFile = new File(projectMetaDataDir, Integer.toString(projectMetaDataId.asInt()));
+		EnhancedJsonObject projectMetaDataJson = readFile(projectMetaDataFile);
+		
+		String oldEcorRegionsString = projectMetaDataJson.optString("TNC.Ecoregion");
+		String[] oldEcoRegions = oldEcorRegionsString.split(",");
+		
+		String newTerrestrialEcoRegionFieldTag = "TNC.TerrestrialEcoRegion";
+		TncTerrestrialEcoRegionQuestion terrestrialQuestion = new TncTerrestrialEcoRegionQuestion(newTerrestrialEcoRegionFieldTag);
+		CodeList newTerrestrialCodes = findEcoRegionCodes(oldEcoRegions, terrestrialQuestion);
+		projectMetaDataJson.put("TNC.TerrestrialEcoRegion", newTerrestrialCodes.toString());
+		
+		String newMarineEcoRegionFieldTag = "TNC.MarineEcoRegion";
+		TncMarineEcoRegionQuestion marineQuestion = new TncMarineEcoRegionQuestion(newMarineEcoRegionFieldTag);
+		CodeList newMarineCodes = findEcoRegionCodes(oldEcoRegions, marineQuestion);
+		projectMetaDataJson.put("TNC.MarineEcoRegion", newMarineCodes.toString());
+
+		String newFreshwaterEcoRegionFieldTag = "TNC.FreshwaterEcoRegion";
+		TncFreshwaterEcoRegionQuestion freshwaterQuestion = new TncFreshwaterEcoRegionQuestion(newFreshwaterEcoRegionFieldTag);
+		CodeList newFreshwaterCodes = findEcoRegionCodes(oldEcoRegions, freshwaterQuestion);
+		projectMetaDataJson.put("TNC.FreshwaterEcoRegion", newFreshwaterCodes.toString());
+		writeJson(projectMetaDataFile, projectMetaDataJson);
+		
+		return (oldEcorRegionsString.length() > 0);		
+	}
+
+	private CodeList findEcoRegionCodes(String[] oldEcoRegions, TwoLevelQuestion question)
+	{
+		CodeList newCodes = new CodeList();
+		for (int i = 0; i < oldEcoRegions.length; ++i)
+		{
+			String oldOperatingUnit = oldEcoRegions[i].trim();
+			ChoiceItem foundChoice = question.findChoiceByLabel(oldOperatingUnit);
+			if (foundChoice != null)
+				newCodes.add(foundChoice.getCode());
+		}
+		return newCodes;
+	}
+
 	private void upgradeToVersion32() throws Exception
 	{
 		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
@@ -211,15 +283,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		String newOperatingUnitsFieldTag = "TNC.OperatingUnitsField";
 		TncOperatingUnitsQuestion operatingUnitsQuestion = new TncOperatingUnitsQuestion(newOperatingUnitsFieldTag);
 		
-		CodeList newOperatingUnitCodes = new CodeList();
-		for (int i = 0; i < oldOperatingUnits.length; ++i)
-		{
-			String oldOperatingUnit = oldOperatingUnits[i].trim();
-			ChoiceItem foundChoice = operatingUnitsQuestion.findChoiceByLabel(oldOperatingUnit);
-			if (foundChoice != null)
-				newOperatingUnitCodes.add(foundChoice.getCode());
-		}
-		
+		CodeList newOperatingUnitCodes = findEcoRegionCodes(oldOperatingUnits, operatingUnitsQuestion);
 		projectMetaDataJson.put("TNC.OperatingUnitsField", newOperatingUnitCodes.toString());
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 		
