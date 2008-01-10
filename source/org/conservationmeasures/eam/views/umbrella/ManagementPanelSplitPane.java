@@ -13,7 +13,10 @@ public class ManagementPanelSplitPane extends PersistentSplitPane
 {
 	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
-		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse, topPanel, bottomPanel);
+		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse);
+		setTopComponent(topPanel);
+		setBottomComponent(bottomPanel);
+
 		setOneTouchExpandable(false);
 		setDividerSize(DIVIDER_SIZE);
 	}

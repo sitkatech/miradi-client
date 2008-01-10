@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class PersistentSplitPane extends JSplitPane
 {
-	public PersistentSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel) 
+	public PersistentSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		
@@ -25,8 +25,6 @@ public class PersistentSplitPane extends JSplitPane
 		setOneTouchExpandable(true);
 		setDividerSize(15);
 		setResizeWeight(.5);
-		setTopComponent(topPanel);
-		setBottomComponent(bottomPanel);
 		setFocusable(false);
 	
 		restoreSavedLocation();
