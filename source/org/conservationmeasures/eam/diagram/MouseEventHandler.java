@@ -104,6 +104,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void mouseReleased(MouseEvent event)
 	{
+		mainWindow.getDiagramComponent().setMarquee(false);
 		if(event.isPopupTrigger())
 		{
 			getDiagram().showContextMenu(event);
