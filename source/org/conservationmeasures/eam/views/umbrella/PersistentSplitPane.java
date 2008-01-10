@@ -88,7 +88,7 @@ public class PersistentSplitPane extends JSplitPane
 		setDividerLocation(getSplitterLocation(name));
 	}
 	
-	String splitterName;
+	private String splitterName;
 	private SplitterPositionSaverAndGetter splitPositionSaver;
 	private Component mainComponentSplitted;
 	
