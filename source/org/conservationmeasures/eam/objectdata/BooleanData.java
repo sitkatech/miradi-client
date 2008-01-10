@@ -21,7 +21,7 @@ public class BooleanData extends IntegerData
 	{
 		super.set(newValue);
 		if (asInt()<0 || asInt()>1)
-			throw new RuntimeException("Invalid boolean value");
+			throw new RuntimeException("Invalid boolean value :" + newValue);
 	}
 	
 	static public final String BOOLEAN_FALSE = "0";
