@@ -205,11 +205,21 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong number of freshwater eco regions?", 1, newFreshwaterEcoRegions.size());
 	}
 	
-	public void testCopyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
+	public void testWithAndWithoutOperatingUnitsFieldBeingCopiedToNewPickList() throws Exception
 	{
-		String projectMetaDataWithOldTncOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199918933796\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"China, Australia, home,  \"}";
-		File jsonDir = createJsonDir();
+		String projectMetaDataWithNoOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"TNC.MarineEcoRegion\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199980890755\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		verifyCopyTncOperatingUnitsFieldDataOverToNewPickListField(projectMetaDataWithNoOperatingUnitsField, "", false, 0);
 		
+		String projectMetaDataWithOldTncOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199918933796\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"China, Australia, home,  \"}";
+		verifyCopyTncOperatingUnitsFieldDataOverToNewPickListField(projectMetaDataWithOldTncOperatingUnitsField, "China, Australia, home,  ", true, 2);
+		
+		String projectMetaDataWithBlamkTncOperatingUnitsField = "{\"FiscalYearStart\":\"\",\"OtherOrgRegionalOffice\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"OtherOrgManagingOffice\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"CurrencyType\":\"\",\"TNC.Country\":\"\",\"TNC.Ecoregion\":\"\",\"LocationComments\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"CurrentWizardScreenName\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"DataEffectiveDate\":\"\",\"ShortProjectVision\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"ShortProjectScope\":\"\",\"TimeStampModified\":\"1199918933796\",\"ProjectAreaNote\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\",\"TNC.OperatingUnits\":\"\"}";
+		verifyCopyTncOperatingUnitsFieldDataOverToNewPickListField(projectMetaDataWithBlamkTncOperatingUnitsField, "", false, 0);
+	}
+	
+	public void verifyCopyTncOperatingUnitsFieldDataOverToNewPickListField(String projectMetaDataWithOldTncOperatingUnitsField, String expectedCodesAsString, boolean expectedNonBlank, int expectedNumberOfOperatingUnits) throws Exception
+	{
+		File jsonDir = createJsonDir();
 		File projectMetaDataDir = DataUpgrader.createObjectsDir(jsonDir, 11);
 		int[] projectMetaDataIds = {0, };
 		File projectMetaDataManifestFile = createManifestFile(projectMetaDataDir, projectMetaDataIds);
@@ -221,16 +231,16 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		EnhancedJsonObject projectMetaDataJson1 = DataUpgrader.readFile(projectMetaDataFileWithOldTncOperatingUnits);	
 		String operatingUnitsAsString = projectMetaDataJson1.optString("TNC.OperatingUnits");
-		assertEquals("wrong number of codes?", "China, Australia, home,  ", operatingUnitsAsString);
+		assertEquals("wrong number of codes?", expectedCodesAsString, operatingUnitsAsString);
 	
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
 		boolean isNonBlank = dataUpgrader.copyTncOperatingUnitsFieldDataOverToNewPickListField();
-		assertTrue("had non blank old operating units field?", isNonBlank);
+		assertEquals("had non blank old operating units field?", expectedNonBlank, isNonBlank);
 		
 		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFileWithOldTncOperatingUnits);
 		assertEquals("wrong id?", new BaseId(0), projectMetaDataJson.getId("Id"));		
 		CodeList newOperatingUnits = new CodeList(projectMetaDataJson.getString("TNC.OperatingUnitsField"));
-		assertEquals("wrong number of Operating units?", 2, newOperatingUnits.size());
+		assertEquals("wrong number of Operating units?", expectedNumberOfOperatingUnits, newOperatingUnits.size());
 	}
 	
 	public void testCopyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
