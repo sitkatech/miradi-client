@@ -9,11 +9,13 @@ import java.awt.Component;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -71,6 +73,14 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	public void addFieldComponent(Component component)
 	{
 		add(component);
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS))
+			editorComponent.updateModelBasedOnPickerList();
 	}
 	
 	private ThreatStressRatingEditorComponent editorComponent;
