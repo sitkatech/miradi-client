@@ -224,11 +224,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	{
 		return new String[] {
 				Stress.TAG_LABEL,
+				ThreatStressRating.TAG_IS_ACTIVE,
 				Stress.PSEUDO_STRESS_RATING,
 				ThreatStressRating.TAG_CONTRIBUTION,
 				ThreatStressRating.TAG_IRREVERSIBILITY,
 				ThreatStressRating.PSEUDO_TAG_THREAT_RATING,
-				ThreatStressRating.TAG_IS_ACTIVE,
 		};
 	}
 	
