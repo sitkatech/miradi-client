@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.util.Set;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -25,6 +26,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.Utility;
 import org.martus.util.UnicodeWriter;
 
 public class FactorLink extends BaseObject
@@ -233,14 +235,15 @@ public class FactorLink extends BaseObject
 	public int calculateThreatRatingBundleValue() throws Exception
 	{
 		ORefList ratingRefs = getThreatStressRatingRefs();
-		int[] ratingBundleValues = new int[ratingRefs.size()];
+		Vector<Integer> ratingBundleValues = new Vector();
 		for (int i = 0; i < ratingRefs.size(); ++i)
 		{
 			ThreatStressRating rating = ThreatStressRating.find(getObjectManager(), ratingRefs.get(i));
-			ratingBundleValues[i] = rating.calculateThreatRating();
+			if (rating.isActive())
+				ratingBundleValues.add(rating.calculateThreatRating());
 		}
 
-		return getProject().getStressBasedThreatFormula().getHighestRatingRule(ratingBundleValues);
+		return getProject().getStressBasedThreatFormula().getHighestRatingRule(Utility.convertToIntArray(ratingBundleValues));
 	}
 
 	public ORef getFactorRef(int direction)
