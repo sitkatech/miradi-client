@@ -13,12 +13,21 @@ public class ManagementPanelSplitPane extends PersistentSplitPane
 {
 	public ManagementPanelSplitPane(Component componentSplitted, SplitterPositionSaverAndGetter splitPositionSaverToUse,  String splitterNameToUse, Component topPanel, Component bottomPanel)
 	{
-		super(componentSplitted, splitPositionSaverToUse, splitterNameToUse);
+		super(splitPositionSaverToUse, splitterNameToUse);
+		mainComponentSplitted = componentSplitted;
+
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
 
 		setOneTouchExpandable(false);
 		setDividerSize(DIVIDER_SIZE);
+		
+		restoreSavedLocation();
+	}
+	
+	int getMainHeight()
+	{
+		return mainComponentSplitted.getHeight();
 	}
 	
 	public void setDividerLocation(int location)
@@ -36,8 +45,8 @@ public class ManagementPanelSplitPane extends PersistentSplitPane
 		return location;
 	}
 
-
-
 	static final int DIVIDER_SIZE = 5;
+
+	private Component mainComponentSplitted;
 }
 

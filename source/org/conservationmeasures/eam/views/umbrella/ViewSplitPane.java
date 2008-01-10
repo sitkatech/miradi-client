@@ -13,7 +13,9 @@ public class ViewSplitPane extends PersistentSplitPane
 {
 	public ViewSplitPane(MainWindow mainWindow, Component topPanel, Component bottomPanel) 
 	{
-		super(mainWindow, mainWindow, MAIN_SPLITTER);
+		super(mainWindow, MAIN_SPLITTER);
+		mainComponentSplitted = mainWindow;
+
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
 
@@ -23,7 +25,17 @@ public class ViewSplitPane extends PersistentSplitPane
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
+		
+		restoreSavedLocation();
+	}
+	
+	int getMainHeight()
+	{
+		return mainComponentSplitted.getHeight();
 	}
 	
 	static final String MAIN_SPLITTER = "MainSplitter";
+	
+	private Component mainComponentSplitted;
+
 }
