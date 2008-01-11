@@ -9,7 +9,7 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
-import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.icons.SubTargetIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
@@ -29,7 +29,7 @@ public class SubTargetManagementPanel extends ObjectListManagementPanel
 	
 	public Icon getIcon()
 	{
-		return new StressIcon();
+		return new SubTargetIcon();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Nested Targets"); 
