@@ -88,6 +88,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void mouseReleased(MouseEvent e)
 	{
 		saveColumnSequences();
+		table.repaint();
 	}
 
 	private JTable table;
