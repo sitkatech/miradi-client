@@ -104,7 +104,7 @@ public class CodeList
 	
 	public Vector toVector()
 	{
-		return data;
+		return new Vector(data);
 	}
 	
 	public String[] toArray()
