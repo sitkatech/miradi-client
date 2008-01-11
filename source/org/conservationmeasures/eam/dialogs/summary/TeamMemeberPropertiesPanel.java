@@ -45,6 +45,7 @@ public class TeamMemeberPropertiesPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine("IM Address", new ObjectDataInputField[]{iMAddressField, iMServiceField});
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
+
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_1));
 		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_2));
