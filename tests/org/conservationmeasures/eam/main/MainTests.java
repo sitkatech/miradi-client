@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.objects.TestSlide;
 import org.conservationmeasures.eam.objects.TestSlideShow;
 import org.conservationmeasures.eam.objects.TestStrategy;
 import org.conservationmeasures.eam.objects.TestStress;
+import org.conservationmeasures.eam.objects.TestSubTarget;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestTextBox;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
@@ -289,7 +290,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMeasurement.class));
 		suite.addTest(new TestSuite(TestStress.class));
 		suite.addTest(new TestSuite(TestThreatStressRating.class));
-		
+		suite.addTest(new TestSuite(TestSubTarget.class));
+			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
 		suite.addTest(new TestSuite(TestCommandCreateObject.class));
