@@ -12,7 +12,7 @@ public class ActionDeleteConceptualModel extends MainWindowAction
 {
 	public ActionDeleteConceptualModel(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), "icons/delete.gif");
 	}
 	
 	private static String getLabel()
