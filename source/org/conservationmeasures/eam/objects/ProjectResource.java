@@ -92,7 +92,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = getGivenName();
+		result = (givenName.get() + " " + surName.get()).trim();
 		if(result.length() > 0)
 			return result;
 		
