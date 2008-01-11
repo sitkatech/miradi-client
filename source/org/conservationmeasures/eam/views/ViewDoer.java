@@ -37,7 +37,6 @@ abstract public class ViewDoer extends MainWindowDoer
 		return true;
 	}
 	
-	//TODO either rename this, or change its functionality,  alot of the doers have same redundant checks
 	public boolean inInDiagram()
 	{
 		if (! getView().cardName().equals(DiagramView.getViewName()))
