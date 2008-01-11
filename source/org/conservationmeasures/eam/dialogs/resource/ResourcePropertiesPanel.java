@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.resource;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -23,16 +24,36 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
 
-		addField(createShortStringField(ProjectResource.TAG_GIVEN_NAME));
-		addField(createShortStringField(ProjectResource.TAG_SUR_NAME));
-		addFieldWithCustomLabelAndHint(createStringField(ProjectResource.TAG_INITIALS,STD_SHORT), "(for people, use their initials)");
+		ObjectDataInputField givenNameField = createShortStringField(ProjectResource.TAG_GIVEN_NAME);
+		ObjectDataInputField surNameField = createShortStringField(ProjectResource.TAG_SUR_NAME);
+		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
+		addFieldsOnOneLine(EAM.text("Label|Resource"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
+
 		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES), 3));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
-		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));
+		addField(createStringField(ProjectResource.TAG_LOCATION));
+
+		ObjectDataInputField mainPhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER);
+		ObjectDataInputField mobilePhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+		addFieldsOnOneLine(EAM.text("Label|Phone Numbers"), new ObjectDataInputField[]{mainPhoneNumberField, mobilePhoneNumberField});
+		
+		ObjectDataInputField homePhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_HOME);
+		ObjectDataInputField otherPhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
+		addFieldsOnOneLine(" ", new ObjectDataInputField[]{homePhoneNumberField, otherPhoneNumberField});
+		
 		addField(createStringField(ProjectResource.TAG_EMAIL));
+		addField(createStringField(ProjectResource.TAG_ALTERNATIVE_EMAIL));
+		
+		ObjectDataInputField iMAddressField = createShortStringField(ProjectResource.TAG_IM_ADDRESS);
+		ObjectDataInputField iMServiceField = createShortStringField(ProjectResource.TAG_IM_SERVICE);
+		addFieldsOnOneLine("IM Address", new ObjectDataInputField[]{iMAddressField, iMServiceField});
+
+		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
+
 		addField(createRatingChoiceField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
 		addField(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT));
+
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		
 		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_1));
