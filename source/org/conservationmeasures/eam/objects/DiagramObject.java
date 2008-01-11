@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -279,25 +280,33 @@ abstract public class DiagramObject extends BaseObject
 		return referrers;
 	}
 	
+	public String toString()
+	{
+		return getLabel();
+	}
+	
 	public void clear()
 	{
 		super.clear();
 		
 		allDiagramFactorIds = new IdListData(DiagramFactor.getObjectType());
 		allDiagramFactorLinkIds = new IdListData(DiagramLink.getObjectType());
-		
+		shortLabel = new StringData();
+		details = new StringData();
+			
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
-	}
-	
-	public String toString()
-	{
-		return getLabel();
+		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_DETAIL, details);
 	}
 	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
-	
-	IdListData allDiagramFactorIds;
-	IdListData allDiagramFactorLinkIds;
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	public static final String TAG_DETAIL = "Detail";
+ 	
+	private IdListData allDiagramFactorIds;
+	private IdListData allDiagramFactorLinkIds;
+	private StringData shortLabel;
+	private StringData details;
 }

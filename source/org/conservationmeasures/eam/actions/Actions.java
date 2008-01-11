@@ -348,6 +348,7 @@ public class Actions
 		registerAction(new ActionDeleteGroupBox(mainWindow));
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
+		registerAction(new ActionDiagramProperties(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

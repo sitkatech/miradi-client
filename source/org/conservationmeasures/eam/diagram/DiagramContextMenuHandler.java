@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteGroupBox;
+import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
@@ -99,6 +100,8 @@ public class DiagramContextMenuHandler
 		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
 		menu.add(getDiagamModeSwitchItem(diagramView, actions));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCreateResultsChain.class)));
+		menu.addSeparator();
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionDiagramProperties.class)));
 		return menu;
 	}
 

@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteBendPoint;
 import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDeleteGroupBox;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
+import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
@@ -208,6 +209,9 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
 		addMenuItem(actions, menu, ActionRenameConceptualModel.class);
 		addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
+		
+		menu.addSeparator();
+		addMenuItem(actions, menu, ActionDiagramProperties.class);
 		
 		return menu;
 	}
