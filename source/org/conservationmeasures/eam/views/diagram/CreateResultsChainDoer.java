@@ -21,7 +21,7 @@ public class CreateResultsChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if (! isDiagramView())
+		if (! inInDiagram())
 			return false;
 		
 		if (getDiagramView().isStategyBrainstormMode())

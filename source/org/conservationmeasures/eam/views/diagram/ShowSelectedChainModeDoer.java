@@ -34,7 +34,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{		
-		if(! isDiagramView())
+		if(! inInDiagram())
 			return false;
 
 		if (! isInDefaultMode())

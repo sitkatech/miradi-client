@@ -24,7 +24,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 {
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
+		if (!inInDiagram())
 			return false;
 		
 		if (hasSelectedGroupBoxes())

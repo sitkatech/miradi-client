@@ -11,7 +11,7 @@ public class MoveSlideDownDoer extends MoveSlideDoer
 {
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
+		if (!inInDiagram())
 			return false;
 		
 		if (getPicker()==null)

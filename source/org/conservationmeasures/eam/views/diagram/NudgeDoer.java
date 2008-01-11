@@ -33,7 +33,7 @@ public class NudgeDoer extends LocationDoer
 	
 	public boolean isAvailable()
 	{
-		if (!isDiagramView())
+		if (!inInDiagram())
 			return false;
 		
 		return isAnythingSelectedInDiagram();

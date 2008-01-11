@@ -19,7 +19,7 @@ public class CreateBendPointDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (! isDiagramView())
+		if (! inInDiagram())
 			return false;
 		
 		DiagramLink[] selectedLinks = getDiagramView().getDiagramPanel().getOnlySelectedLinks();

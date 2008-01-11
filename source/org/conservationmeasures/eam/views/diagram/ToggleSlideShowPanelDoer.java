@@ -12,7 +12,7 @@ public class ToggleSlideShowPanelDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		return isDiagramView();
+		return inInDiagram();
 	}
 
 	public void doIt()
