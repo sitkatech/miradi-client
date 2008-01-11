@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDiagramProperties;
-import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -43,7 +42,6 @@ public class ResultsChainPageList extends DiagramPageList
 	public Class[] getPopUpMenuActions()
 	{
 		return  new Class[] {
-				ActionRenameResultsChain.class,
 				ActionDeleteResultsChain.class,
 				ActionDiagramProperties.class,
 		};
