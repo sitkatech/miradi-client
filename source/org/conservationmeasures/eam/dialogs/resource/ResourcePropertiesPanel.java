@@ -30,8 +30,8 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion(ProjectResource.TAG_RESOURCE_TYPE, resourceTypeLabel);
 		addField(createRadioChoiceField(ProjectResource.getObjectType(), idToEdit, resourceTypeQuestion));
 
-		ObjectDataInputField givenNameField = createShortStringField(ProjectResource.TAG_GIVEN_NAME);
-		ObjectDataInputField surNameField = createShortStringField(ProjectResource.TAG_SUR_NAME);
+		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
+		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
 		addFieldsOnOneLine(EAM.text("Label|Resource"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
 
@@ -41,19 +41,19 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_LOCATION));
 
-		ObjectDataInputField mainPhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER);
-		ObjectDataInputField mobilePhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+		ObjectDataInputField mainPhoneNumberField = createMediumStringField(ProjectResource.TAG_PHONE_NUMBER);
+		ObjectDataInputField mobilePhoneNumberField = createMediumStringField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
 		addFieldsOnOneLine(EAM.text("Label|Phone Numbers"), new ObjectDataInputField[]{mainPhoneNumberField, mobilePhoneNumberField});
 		
-		ObjectDataInputField homePhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_HOME);
-		ObjectDataInputField otherPhoneNumberField = createShortStringField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
+		ObjectDataInputField homePhoneNumberField = createMediumStringField(ProjectResource.TAG_PHONE_NUMBER_HOME);
+		ObjectDataInputField otherPhoneNumberField = createMediumStringField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
 		addFieldsOnOneLine(" ", new ObjectDataInputField[]{homePhoneNumberField, otherPhoneNumberField});
 		
 		addField(createStringField(ProjectResource.TAG_EMAIL));
 		addField(createStringField(ProjectResource.TAG_ALTERNATIVE_EMAIL));
 		
-		ObjectDataInputField iMAddressField = createShortStringField(ProjectResource.TAG_IM_ADDRESS);
-		ObjectDataInputField iMServiceField = createShortStringField(ProjectResource.TAG_IM_SERVICE);
+		ObjectDataInputField iMAddressField = createMediumStringField(ProjectResource.TAG_IM_ADDRESS);
+		ObjectDataInputField iMServiceField = createMediumStringField(ProjectResource.TAG_IM_SERVICE);
 		addFieldsOnOneLine("IM Address", new ObjectDataInputField[]{iMAddressField, iMServiceField});
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));

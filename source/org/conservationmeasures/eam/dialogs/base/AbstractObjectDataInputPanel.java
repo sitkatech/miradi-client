@@ -14,7 +14,6 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.IndicatorRelevancyOverrideListField;
-import org.conservationmeasures.eam.dialogfields.ObjectAdjustableStringInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectCheckBoxField;
 import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectClassificationChoiceField;
@@ -30,8 +29,8 @@ import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRadioButtonGroupField;
 import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
-import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
+import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
@@ -155,20 +154,20 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return createStringField(tag, 5);
 	}
 	
-	public ObjectDataInputField createShortStringField(int objectType, String tag)
+	public ObjectDataInputField createMediumStringField(String tag)
 	{
-		return createStringField(objectType, tag, 5);
+		return createStringField(tag, 20);
 	}
 	
 	
 	public ObjectDataInputField createStringField(String tag, int column)
 	{
-		return new ObjectAdjustableStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
+		return new ObjectStringInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, column);
 	}
 	
 	public ObjectDataInputField createStringField(int objectType, String tag, int column)
 	{
-		return new ObjectAdjustableStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
+		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 	
 	
