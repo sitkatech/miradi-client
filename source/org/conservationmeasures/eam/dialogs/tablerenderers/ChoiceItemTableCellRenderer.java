@@ -33,8 +33,7 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 
 		renderer.setText(labelText);
 		Icon configuredIcon = getConfiguredIcon(value);
-		if(configuredIcon != null)
-			renderer.setIcon(configuredIcon);
+		renderer.setIcon(configuredIcon);
 		return renderer;
 	}
 
