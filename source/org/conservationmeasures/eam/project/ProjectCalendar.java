@@ -88,8 +88,8 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	public String getPlanningStartDate()
 	{
-		if (project.getMetadata().getWorkPlanStartDate().length() != 0)
-			return project.getMetadata().getWorkPlanStartDate();
+		if (project.getMetadata().getWorkPlanStartDateAsString().length() != 0)
+			return project.getMetadata().getWorkPlanStartDateAsString();
 		
 		return project.getMetadata().getStartDate();
 	}

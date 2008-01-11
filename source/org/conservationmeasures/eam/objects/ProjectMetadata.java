@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.MultiCalendar;
 
 public class ProjectMetadata extends BaseObject
 {
@@ -157,7 +158,12 @@ public class ProjectMetadata extends BaseObject
 		return shortProjectVision.get();
 	}
 	
-	public String getWorkPlanStartDate()
+	public MultiCalendar getWorkPlanStartDate()
+	{
+		return workPlanStartDate.getDate();
+	}
+	
+	public String getWorkPlanStartDateAsString()
 	{
 		return workPlanStartDate.get();
 	}
@@ -165,6 +171,11 @@ public class ProjectMetadata extends BaseObject
 	public String getWorkPlanEndDate()
 	{
 		return workPlanEndDate.get();
+	}
+	
+	public MultiCalendar getProjectStartDate()
+	{
+		return startDate.getDate();
 	}
 	
 	public String getStartDate()
