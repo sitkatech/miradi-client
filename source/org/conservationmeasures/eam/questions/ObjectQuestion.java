@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -25,9 +26,12 @@ abstract public class ObjectQuestion extends StaticChoiceQuestion
 		for (int i = 0; i < objectRefs.size(); ++i)
 		{
 			BaseObject thisObject = project.findObject(objectRefs.get(i));
-			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), thisObject.getLabel()));
+			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), thisObject.combineShortLabelAndLabel()));
 		}
 		
-		return (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
+		ChoiceItem[] sortedChoiceItems = (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
+		Arrays.sort(sortedChoiceItems);
+		
+		return sortedChoiceItems;
 	}
 }
