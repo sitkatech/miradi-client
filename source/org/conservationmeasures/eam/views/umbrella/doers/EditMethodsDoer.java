@@ -26,6 +26,19 @@ public class EditMethodsDoer extends ObjectsDoer
 	public void doIt() throws CommandFailedException
 	{
 		EAM.notifyDialog(EAM.text("Not implemented yet"));
+//		try
+//		{
+//			ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
+//			MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
+//			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Edit Methods"));
+//			Utilities.centerDlg(dialog);
+//			dialog.setVisible(true);
+//			
+//		}
+//		catch(Exception e)
+//		{
+//			throw new CommandFailedException(e);
+//		}
 	}
 
 
