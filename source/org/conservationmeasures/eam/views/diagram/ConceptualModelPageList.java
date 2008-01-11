@@ -23,7 +23,7 @@ public class ConceptualModelPageList extends DiagramPageList
 
 	private static String[] getTags()
 	{
-		return new String[] {ConceptualModelDiagram.TAG_LABEL};
+		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
 	}
 	
 	public boolean isConceptualModelPageList()

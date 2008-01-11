@@ -280,9 +280,22 @@ abstract public class DiagramObject extends BaseObject
 		return referrers;
 	}
 	
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_COMBINED_LABEL))
+			return toString();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	public String getShortLabel()
+	{
+		return shortLabel.get();
+	}
+	
 	public String toString()
 	{
-		return getLabel();
+		return combineShortLabelAndLabel();
 	}
 	
 	public void clear()
@@ -293,20 +306,24 @@ abstract public class DiagramObject extends BaseObject
 		allDiagramFactorLinkIds = new IdListData(DiagramLink.getObjectType());
 		shortLabel = new StringData();
 		details = new StringData();
-			
+		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
+		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);
+		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
 	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
+	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";
  	
 	private IdListData allDiagramFactorIds;
 	private IdListData allDiagramFactorLinkIds;
 	private StringData shortLabel;
 	private StringData details;
+	private PseudoStringData combinedLabel;
 }
