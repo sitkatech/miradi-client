@@ -18,9 +18,9 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, SubTarget.getObjectType(), BaseId.INVALID);
 			
-		ObjectDataInputField shortLabelField = createStringField(SubTarget.TAG_SHORT_LABEL,10);
+		ObjectDataInputField shortLabelField = createShortStringField(SubTarget.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createStringField(SubTarget.TAG_LABEL);
-		addFieldsOnOneLine("", new ObjectDataInputField[]{shortLabelField, labelField});
+		addFieldsOnOneLine(EAM.text("Nested Target"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(SubTarget.TAG_DETAIL));
 		
