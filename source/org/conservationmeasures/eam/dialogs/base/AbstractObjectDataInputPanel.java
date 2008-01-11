@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
+import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
@@ -178,6 +179,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createDateChooserField(int objectType, String tag)
 	{
 		return new ObjectDateChooserInputField(project, objectType, getObjectIdForType(objectType), tag);
+	}
+	
+	public ObjectDataInputField createReadonlyTimestampField(String tag)
+	{
+		return new ObjectReadonlyTimestampField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
 	
