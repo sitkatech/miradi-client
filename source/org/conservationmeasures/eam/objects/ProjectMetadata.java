@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
@@ -19,7 +18,6 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
-import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
 
@@ -89,9 +87,6 @@ public class ProjectMetadata extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
 			return getAllGoalRefs().toString();
 		
-		if (fieldTag.equals(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS))
-			return getTeamMemberRefs().toString();
-			
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -100,29 +95,6 @@ public class ProjectMetadata extends BaseObject
 		return objectManager.getGoalPool().getORefList();
 	}
 		
-	private ORefList getTeamMemberRefs()
-	{
-		ORefList teamMembers = new ORefList();
-		try
-		{
-			ProjectResource[] projectResources = getProject().getAllProjectResources();
-			for (int i = 0; i < projectResources.length; ++i)
-			{
-				if (! projectResources[i].hasRole(ResourceRoleQuestion.TeamMemberRoleCode))
-					continue;
-				
-				teamMembers.add(projectResources[i].getRef());
-			}
-			
-			return teamMembers;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new ORefList();
-		}
-	}
-	
 	public ORefList getAllDiagramObjectRefs()
 	{
 		return objectManager.getAllDiagramObjectRefs(); 
@@ -359,14 +331,12 @@ public class ProjectMetadata extends BaseObject
 		threatRatingMode = new ChoiceData();
 		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
 		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
-		projectTeamMembers = new PseudoORefListData(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
 		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
-		addField(PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS, projectTeamMembers);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -432,7 +402,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
 	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
-	public static final String PSEUDO_TAG_PROJECT_TEAM_MEMBER_REFS = "PseudoTagProjectTeamMembersRefs";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
@@ -497,5 +466,4 @@ public class ProjectMetadata extends BaseObject
 	
 	private PseudoQuestionData diagramFontFamilyValue;
 	private PseudoQuestionData diagramFontSizeValue;
-	private PseudoORefListData projectTeamMembers;
 }
