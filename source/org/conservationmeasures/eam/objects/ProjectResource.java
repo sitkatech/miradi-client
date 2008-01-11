@@ -140,6 +140,7 @@ public class ProjectResource extends BaseObject
 		
 		initials = new StringData();
 		givenName = new StringData();
+		surName = new StringData();
 		position = new StringData();
 		phoneNumber = new StringData();
 		email = new StringData();
@@ -159,6 +160,7 @@ public class ProjectResource extends BaseObject
 
 		addField(TAG_INITIALS, initials);
 		addField(TAG_GIVEN_NAME, givenName);
+		addField(TAG_SUR_NAME, surName);
 		addField(TAG_ORGANIZATION, organization);
 		addField(TAG_POSITION, position);
 		addField(TAG_PHONE_NUMBER, phoneNumber);
@@ -185,6 +187,7 @@ public class ProjectResource extends BaseObject
 	
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_GIVEN_NAME = "Name";
+	public static final String TAG_SUR_NAME = "SurName";
 	public static final String TAG_POSITION = "Position";
 	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
 	public static final String TAG_EMAIL = "Email";
@@ -210,6 +213,7 @@ public class ProjectResource extends BaseObject
 
 	private StringData initials;
 	private StringData givenName;
+	private StringData surName;
 	private StringData position;
 	private StringData phoneNumber;
 	private StringData email;
