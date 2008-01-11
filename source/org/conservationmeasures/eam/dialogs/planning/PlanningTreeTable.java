@@ -41,7 +41,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public void rebuildTableCompletely()
+	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
 		setTableColumnRenderer();

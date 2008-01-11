@@ -97,6 +97,16 @@ public class CodeList
 		}
 	}
 	
+	public void retainAll(CodeList other)
+	{
+		data.retainAll(other.toVector());
+	}
+	
+	public Vector toVector()
+	{
+		return data;
+	}
+	
 	public String[] toArray()
 	{
 		return (String[])data.toArray(new String[0]);
