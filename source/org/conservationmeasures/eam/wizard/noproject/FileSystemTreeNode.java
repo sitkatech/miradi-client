@@ -56,12 +56,17 @@ public class FileSystemTreeNode extends TreeTableNode
 				return null;
 			
 			long lastModifiedMillis = thisFile.lastModified();
-			Date date = new Date(lastModifiedMillis);
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			return format.format(date);
+			return timestampToString(lastModifiedMillis);
 		}
 		
 		throw new RuntimeException("Unknown column: " + column);
+	}
+
+	public static String timestampToString(long lastModifiedMillis)
+	{
+		Date date = new Date(lastModifiedMillis);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		return format.format(date);
 	}
 
 	public void rebuild() throws Exception
