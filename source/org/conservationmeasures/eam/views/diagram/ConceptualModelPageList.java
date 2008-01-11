@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.actions.ActionCreateConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
 import org.conservationmeasures.eam.actions.ActionDiagramProperties;
-import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.dialogs.diagram.ConceptualModelPoolTableModel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -46,7 +45,6 @@ public class ConceptualModelPageList extends DiagramPageList
 	{
 		return  new Class[] {
 				ActionCreateConceptualModel.class,
-				ActionRenameConceptualModel.class,
 				ActionDeleteConceptualModel.class,
 				ActionDiagramProperties.class,
 		};
