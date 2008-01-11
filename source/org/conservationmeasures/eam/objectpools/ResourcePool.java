@@ -7,11 +7,14 @@ package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 
 public class ResourcePool extends EAMNormalObjectPool
 {
@@ -45,5 +48,26 @@ public class ResourcePool extends EAMNormalObjectPool
 		}
 		
 		return allProjectResources;
+	}
+	
+	public ORefList getTeamMemberRefs()
+	{
+		ORefList teamMembers = new ORefList();
+		try
+		{
+			ProjectResource[] projectResources = getAllProjectResources();
+			for (int i = 0; i < projectResources.length; ++i)
+			{
+				if (projectResources[i].hasRole(ResourceRoleQuestion.TeamMemberRoleCode))
+					teamMembers.add(projectResources[i].getRef());
+			}
+			
+			return teamMembers;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new ORefList();
+		}
 	}
 }
