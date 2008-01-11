@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
+import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
 
@@ -187,6 +188,15 @@ public class ProjectMetadata extends BaseObject
 	{
 		return diagramFontFamily.get();
 	}
+	
+	public boolean isStressBasedThreatRatingMode()
+	{
+		if (getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+			return true;
+		
+		return false;
+	}
+	
 	
 	public String getThreatRatingMode()
 	{
