@@ -123,7 +123,10 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
-		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_STRESS, new StressIcon());
+		
+		if (getProject().getMetadata().isStressBasedThreatRatingMode())
+			addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_STRESS, new StressIcon());
+		
 		addButtonLineWithCheckBox(jpanel, TextBox.getObjectType(), TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBox.getObjectType(), GroupBox.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 		
