@@ -9,7 +9,7 @@ import java.awt.Color;
 
 import javax.swing.Icon;
 
-public class ChoiceItem
+public class ChoiceItem implements Comparable
 {
 	public ChoiceItem(String codeToUse, String labelToUse)
 	{
@@ -85,7 +85,10 @@ public class ChoiceItem
 		return code.hashCode();
 	}
 
-
+	public int compareTo(Object rawObject)
+	{
+		return toString().compareTo(rawObject.toString());
+	}
 
 	private boolean selectable;
 	private String code;
