@@ -6,7 +6,10 @@
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
@@ -29,6 +32,7 @@ abstract public class PanelTreeTable extends JTreeTable
 		setFont(getMainWindow().getUserDataPanelFont());
 		setRowHeight(getFontMetrics(getFont()).getHeight());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
+		getTableHeader().addMouseMotionListener(new MouseMoveTreeColumnPreventerHandler());
 		
 		// NOTE: Without this, each node's size is fixed based on the initial text,
 		// so if you later change the value to be longer, you'll get ... (ellipsis)
@@ -94,4 +98,27 @@ abstract public class PanelTreeTable extends JTreeTable
 	{
 		return (TreeTableNode)getObjectForRow(row);
 	}
+	
+	public void columnMoved(TableColumnModelEvent event)
+	{
+		if (event.getFromIndex() == event.getToIndex())
+			return;
+		
+		if(event.getToIndex() == TREE_COLUMN_INDEX)
+			moveColumn(event.getToIndex(), event.getFromIndex());
+		else
+			super.columnMoved(event);
+	}
+	
+	public static class MouseMoveTreeColumnPreventerHandler extends MouseAdapter
+	{
+		public void mouseMoved(MouseEvent e)
+		{
+			JTableHeader header = ((JTableHeader)e.getSource());
+			boolean isTreeColumn =  header.columnAtPoint(e.getPoint()) == TREE_COLUMN_INDEX;
+			header.setReorderingAllowed(!isTreeColumn);
+		}
+	}
+	
+	public static final int TREE_COLUMN_INDEX = 0;
 }
