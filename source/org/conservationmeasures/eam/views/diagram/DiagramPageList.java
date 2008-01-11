@@ -34,7 +34,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 {
 	public DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel)
 	{
-		super(objectPoolTableModel);
+		super(objectPoolTableModel, SORTABLE_COLUMN_INDEX);
 		project = mainWindowToUse.getProject();
 		actions = mainWindowToUse.getActions();
 		
@@ -210,4 +210,6 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	
 	private Project project;
 	private Actions actions;
+	
+	private static final int SORTABLE_COLUMN_INDEX = 0;
 }
