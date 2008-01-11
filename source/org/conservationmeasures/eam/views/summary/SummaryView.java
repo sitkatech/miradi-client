@@ -135,6 +135,9 @@ public class SummaryView extends TabbedView
 	{
 		MultiCalendar workPlanStartDate = getProject().getMetadata().getWorkPlanStartDate();
 		MultiCalendar projectStartDate = getProject().getMetadata().getProjectStartDate();
+		if (workPlanStartDate == null || projectStartDate == null)
+			return;
+		
 		if (workPlanStartDate.before(projectStartDate))
 			EAM.errorDialog(EAM.text("Work plan start date is before project start date"));	
 	}
