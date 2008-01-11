@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.dialogs.subTarget;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.SubTarget;
 import org.conservationmeasures.eam.project.Project;
 
@@ -15,7 +15,7 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 {
 	public SubTargetPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ORef.INVALID);
+		super(projectToUse, SubTarget.getObjectType(), BaseId.INVALID);
 		
 		addField(createStringField(SubTarget.TAG_LABEL));
 		
