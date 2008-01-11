@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.xml.XmlUtilities;
 
@@ -31,7 +30,7 @@ public class TestProjectResource extends EAMTestCase
 	}
 
 	
-	public void testGetResourcesAsHtml()
+	public void testGetResourcesAsHtml() throws Exception
 	{
 		int resourceCount = 3;
 		String expected = "<html>";
@@ -43,13 +42,13 @@ public class TestProjectResource extends EAMTestCase
 			projectResources[i] = new ProjectResource(new BaseId(i));
 			if (i == 0 )
 			{
-				projectResources[i].givenName = new StringData(lessThan+i);
+				projectResources[i].setData(ProjectResource.TAG_GIVEN_NAME, lessThan+i);
 				expected = expected + XmlUtilities.getXmlEncoded(lessThan)+i;
 			}
 			else
 			{
-				projectResources[i].givenName = new StringData("resource"+i);
-				expected = expected + projectResources[i].givenName;
+				projectResources[i].setData(ProjectResource.TAG_GIVEN_NAME, "resource"+i);
+				expected = expected + projectResources[i].getGivenName();
 			}
 			
 			if ((i + 1) < projectResources.length)
