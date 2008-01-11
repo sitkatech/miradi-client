@@ -69,20 +69,8 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	private void saveColumnSequences()
 	{		
-		String currentColumnSquenceTags = getColumnSequenceKey().toString();
+		String currentColumnSquenceTags = getCurrentSequence().toString();
 		EAM.getMainWindow().getAppPreferences().setTaggedString(uniqueTableIdentifier, currentColumnSquenceTags);
-	}
-	
-	private CodeList getColumnSequenceKey()
-	{
-		CodeList columnTags = new CodeList();
-		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
-		{		
-			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			columnTags.add(tagProvider.getColumnTag(modelColumn));
-		}
-		
-		return columnTags;
 	}
 
 	public void mouseReleased(MouseEvent e)
