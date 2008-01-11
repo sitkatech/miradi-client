@@ -342,6 +342,7 @@ public class Target extends Factor
 		currentStatusJustification = new StringData();
 		stressRefs = new ORefListData();
 		speciesLatinName = new StringData();
+		subTargetRefs = new ORefListData();
 		
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_TARGET_STATUS));
@@ -353,6 +354,7 @@ public class Target extends Factor
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
 		addField(TAG_STRESS_REFS, stressRefs);
 		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
+		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
 		
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
@@ -365,6 +367,7 @@ public class Target extends Factor
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
 	public static final String TAG_STRESS_REFS = "StressRefs";
 	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
+	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
 	
 	public static final String OBJECT_NAME = "Target";
 	
@@ -378,6 +381,8 @@ public class Target extends Factor
 	private StringData currentStatusJustification;
 	private ORefListData stressRefs;
 	private StringData speciesLatinName;
+	private ORefListData subTargetRefs;
+	
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	PseudoQuestionData viabiltyModeLabel;
