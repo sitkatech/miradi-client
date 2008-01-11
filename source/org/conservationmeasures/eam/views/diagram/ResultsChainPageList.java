@@ -21,7 +21,7 @@ public class ResultsChainPageList extends DiagramPageList
 	
 	private static String[] getTags()
 	{
-		return new String[] {ResultsChainDiagram.TAG_LABEL};
+		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};
 	}
 
 	public boolean isConceptualModelPageList()
