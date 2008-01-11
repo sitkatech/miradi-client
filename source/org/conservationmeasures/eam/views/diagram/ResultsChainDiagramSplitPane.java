@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.Project;
 
 public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 {
@@ -21,8 +20,8 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 		return new ResultsChainDiagramLegendPanel(mainWindow);
 	}
 	
-	public DiagramPageList createPageList(Project project)
+	public DiagramPageList createPageList(MainWindow mainWindowToUse)
 	{
-		return new ResultsChainPageList(project);
+		return new ResultsChainPageList(mainWindowToUse);
 	}
 }

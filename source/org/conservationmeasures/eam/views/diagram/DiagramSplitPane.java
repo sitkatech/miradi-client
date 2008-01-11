@@ -105,7 +105,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		// NOTE: This code is convoluted, but I couldn't find a simpler way to have 
 		// the table at the top be fixed-height but variable width
 		
-		selectionPanel = createPageList(mainWindow.getProject());
+		selectionPanel = createPageList(mainWindow);
 		selectionPanel.listChanged();
 		JScrollPane selectionScrollPane = new FastScrollPane(selectionPanel);
 		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -404,7 +404,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		return ORef.INVALID;
 	}
 	
-	abstract public DiagramPageList createPageList(Project projectToUse);
+	abstract public DiagramPageList createPageList(MainWindow mainWindowToUse);
 	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse);
 	

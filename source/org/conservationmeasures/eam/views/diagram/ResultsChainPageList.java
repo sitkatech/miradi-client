@@ -5,16 +5,19 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
+import org.conservationmeasures.eam.actions.ActionDiagramProperties;
+import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
-import org.conservationmeasures.eam.project.Project;
 
 public class ResultsChainPageList extends DiagramPageList
 {
-	public ResultsChainPageList(Project project)
+	public ResultsChainPageList(MainWindow mainWindowToUse)
 	{
-		super(project, new ObjectPoolTableModel(project, ObjectType.RESULTS_CHAIN_DIAGRAM, getTags()));
+		super(mainWindowToUse, new ObjectPoolTableModel(mainWindowToUse.getProject(), ObjectType.RESULTS_CHAIN_DIAGRAM, getTags()));
 	}
 	
 	private static String[] getTags()
@@ -35,5 +38,14 @@ public class ResultsChainPageList extends DiagramPageList
 	public int getManagedDiagramType()
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
+	}
+
+	public Class[] getPopUpMenuActions()
+	{
+		return  new Class[] {
+				ActionDiagramProperties.class,
+				ActionRenameResultsChain.class,
+				ActionDeleteResultsChain.class,
+		};
 	}
 }
