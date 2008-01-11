@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.TeamRoleQuestion;
 
-public class TeamMemeberPropertiesPanel extends ObjectDataInputPanel
+public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 {
-	public TeamMemeberPropertiesPanel(Project projectToUse) throws Exception
+	public TeamMemberPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ProjectResource.getObjectType(), BaseId.INVALID);
 
