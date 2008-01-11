@@ -36,7 +36,7 @@ public class PropertiesDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (! isDiagramView())
+		if (! inInDiagram())
 			return false;
 		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getOnlySelectedCells();

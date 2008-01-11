@@ -24,7 +24,7 @@ public class Paste extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (! isDiagramView())
+		if (! inInDiagram())
 			return false;
 		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
