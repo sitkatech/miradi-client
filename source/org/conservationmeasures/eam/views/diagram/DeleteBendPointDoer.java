@@ -24,7 +24,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		if(!getProject().isOpen())
 			return false;
 	
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 		
 		DiagramLink[] links = getDiagramView().getDiagramPanel().getOnlySelectedLinks();

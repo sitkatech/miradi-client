@@ -30,7 +30,7 @@ public class SelectChainDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 		
 		FactorCell[] selectedFactors = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();

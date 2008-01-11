@@ -13,7 +13,7 @@ public class SlideShowViewerDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		if (viewer==null)

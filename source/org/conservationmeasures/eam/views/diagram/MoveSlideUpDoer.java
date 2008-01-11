@@ -11,7 +11,7 @@ public class MoveSlideUpDoer extends MoveSlideDoer
 {
 	public boolean isAvailable()
 	{
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		if (getPicker()==null)

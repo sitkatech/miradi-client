@@ -18,7 +18,7 @@ public class Cut extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();

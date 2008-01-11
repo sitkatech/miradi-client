@@ -15,7 +15,7 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		return true;
