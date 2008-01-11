@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionCreateStress;
 import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
+import org.conservationmeasures.eam.actions.ActionCreateSubTarget;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
@@ -53,6 +54,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
+import org.conservationmeasures.eam.actions.ActionDeleteSubTarget;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
 import org.conservationmeasures.eam.actions.ActionEditStrategyRelevancyList;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
@@ -354,6 +356,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionSlideShowViewer.class, new SlideShowViewerDoer());
 		
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
+		
+		addDoerToMap(ActionCreateSubTarget.class, new CreateSubTargetDoer());
+		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 	}
 	
 	public void tabWasSelected()

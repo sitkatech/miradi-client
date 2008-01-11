@@ -92,7 +92,10 @@ public class Target extends Factor
 		{
 			case ObjectType.STRESS: 
 				return true;
-
+			
+			case ObjectType.SUB_TARGET:
+				return true;
+				
 			default:
 				return false;
 		}
@@ -104,6 +107,7 @@ public class Target extends Factor
 		set.add(TAG_STRESS_REFS);
 		set.add(TAG_GOAL_IDS);
 		set.add(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		set.add(TAG_SUB_TARGET_REFS);
 		return set;
 	}
 	
@@ -140,6 +144,9 @@ public class Target extends Factor
 		if (tag.equals(TAG_STRESS_REFS))
 			return true;
 		
+		if (tag.equals(TAG_SUB_TARGET_REFS))
+			return true;
+		
 		return super.isRefList(tag);
 	}
 	
@@ -147,6 +154,9 @@ public class Target extends Factor
 	{
 		if (tag.equals(TAG_STRESS_REFS))
 			return Stress.getObjectType();
+	
+		if (tag.equals(TAG_SUB_TARGET_REFS))
+			return SubTarget.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.subTarget;
 
+import org.conservationmeasures.eam.actions.ActionCreateSubTarget;
+import org.conservationmeasures.eam.actions.ActionDeleteSubTarget;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -20,5 +22,7 @@ public class SubTargetListTablePanel extends ObjectListTablePanel
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
+		ActionCreateSubTarget.class,
+		ActionDeleteSubTarget.class,
 	};
 }
