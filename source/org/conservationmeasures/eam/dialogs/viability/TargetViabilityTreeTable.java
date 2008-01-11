@@ -131,6 +131,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		{
 			super();
 			indicatorRenderer.setFont(getPlainFont());
+			goalRenderer.setFont(getPlainFont());
 		}
 	}
 	
