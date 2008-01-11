@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.actions;
 
+import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreateConceptualModel extends MainWindowAction
 {
 	public ActionCreateConceptualModel(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), new ConceptualModelIcon());
 	}
 	
 	private static String getLabel()

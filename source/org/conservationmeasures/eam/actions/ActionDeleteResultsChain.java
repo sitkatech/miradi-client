@@ -12,14 +12,9 @@ public class ActionDeleteResultsChain extends MainWindowAction
 {
 	public ActionDeleteResultsChain(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), getIconName());
+		super(mainWindow, getLabel(), "icons/delete.gif");
 	}
 	
-	private static String getIconName()
-	{
-		return "icons/deleteResultsChain.png";
-	}
-
 	private static String getLabel()
 	{
 		return EAM.text("Action|Delete Results Chain");
