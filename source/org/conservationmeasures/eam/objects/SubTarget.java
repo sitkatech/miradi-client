@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -56,6 +57,11 @@ public class SubTarget extends BaseObject
 		return new ORefList();
 	}
 	
+	public String getShortLabel()
+	{
+		return getData(TAG_SHORT_LABEL);
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		if (ref.getObjectType() == ObjectType.SUB_TARGET)
@@ -74,5 +80,22 @@ public class SubTarget extends BaseObject
 		return find(project.getObjectManager(), subTargetRef);
 	}
 	
+	void clear()
+	{
+		super.clear();
+		
+		shortLabel = new StringData();
+		details = new StringData();
+		
+		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_DETAIL, details);
+	}
+	
 	public static final String OBJECT_NAME = "SubTarget";
+	
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	public static final String TAG_DETAIL = "Detail";
+	
+	private StringData shortLabel;
+	private StringData details;
 }

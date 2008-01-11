@@ -115,6 +115,7 @@ public class Target extends Factor
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
 		deepObjectRefsToCopy.addAll(getStressRefs());
+		deepObjectRefsToCopy.addAll(getSubTargetRefs());
 		
 		return deepObjectRefsToCopy;
 	}
@@ -122,6 +123,11 @@ public class Target extends Factor
 	public ORefList getStressRefs()
 	{
 		return stressRefs.getORefList();
+	}
+	
+	public ORefList getSubTargetRefs()
+	{
+		return subTargetRefs.getORefList();
 	}
 	
 	public boolean isTarget()
