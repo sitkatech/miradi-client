@@ -60,12 +60,31 @@ public class TestProjectResource extends EAMTestCase
 		String resourcesAsHtml = BaseObject.toHtml(projectResources);
 		assertEquals("did not return resources as Html?", expected, resourcesAsHtml);
 	}
+	
+	public void testWho() throws Exception
+	{
+		ProjectResource person = new ProjectResource(new BaseId(15));
+		assertEquals("(Undefined Resource)", person.getWho());
+		String sampleInitials = "rl";
+		String sampleGivenName = "Robin";
+		String sampleSurName = "Lee";
+		String samplePosition = "Manager";
+		person.setData(ProjectResource.TAG_POSITION, samplePosition);
+		assertEquals(samplePosition, person.getWho());
+		person.setData(ProjectResource.TAG_GIVEN_NAME, sampleGivenName);
+		assertEquals(sampleGivenName, person.getWho());
+		person.setData(ProjectResource.TAG_SUR_NAME, sampleSurName);
+		assertEquals(sampleGivenName + " " + sampleSurName, person.getWho());
+		person.setData(ProjectResource.TAG_INITIALS, sampleInitials);
+		assertEquals(sampleInitials, person.getWho());
+	}
 
 	public void testFields() throws Exception
 	{
 		verifyTagBehavior(ProjectResource.TAG_LABEL);
 		verifyTagBehavior(ProjectResource.TAG_INITIALS);
 		verifyTagBehavior(ProjectResource.TAG_GIVEN_NAME);
+		verifyTagBehavior(ProjectResource.TAG_SUR_NAME);
 		verifyTagBehavior(ProjectResource.TAG_POSITION);
 	}
 

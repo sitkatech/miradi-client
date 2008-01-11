@@ -20,6 +20,7 @@ public class ResourcePoolTableModel extends ObjectPoolTableModel
 	private static final String[] COLUMN_TAGS = new String[] {
 		ProjectResource.TAG_INITIALS,
 		ProjectResource.TAG_GIVEN_NAME,
+		ProjectResource.TAG_SUR_NAME,
 		ProjectResource.TAG_ORGANIZATION,
 		ProjectResource.TAG_POSITION,
 		ProjectResource.TAG_PHONE_NUMBER,
