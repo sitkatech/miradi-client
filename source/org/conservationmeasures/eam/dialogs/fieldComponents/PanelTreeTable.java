@@ -36,7 +36,7 @@ abstract public class PanelTreeTable extends JTreeTable
 		getTree().setLargeModel(true);
 	}
 	
-	public void rebuildTableCompletely()
+	public void rebuildTableCompletely() throws Exception
 	{
 		createDefaultColumnsFromModel();
 		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));

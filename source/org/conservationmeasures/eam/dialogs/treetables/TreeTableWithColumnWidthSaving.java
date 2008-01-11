@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.treetables;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnSequenceSaver;
 import org.conservationmeasures.eam.utils.ColumnWidthSaver;
 import org.conservationmeasures.eam.utils.RowHeightListener;
 import org.conservationmeasures.eam.utils.TableRowHeightSaver;
@@ -19,17 +20,18 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateS
 		super(projectToUse, treeTableModel);
 		rowHeightListeners = new Vector<RowHeightListener>();
 		columnWidthSaver = new ColumnWidthSaver(this, treeTableModel, getUniqueTableIdentifier());
+		columnSequenceSaver = new ColumnSequenceSaver(this, treeTableModel, getUniqueTableIdentifier());
 
 		getTableHeader().addMouseListener(columnWidthSaver);
-		
+		getTableHeader().addMouseListener(columnSequenceSaver);
 		addRowHeightSaver();
-
 	}
 	
-	public void rebuildTableCompletely()
+	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
 		columnWidthSaver.restoreColumnWidths();
+		columnSequenceSaver.restoreColumnSequences();
 	}
 
 	private void addRowHeightSaver()
@@ -58,6 +60,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateS
 	abstract public String getUniqueTableIdentifier();
 	
 	private ColumnWidthSaver columnWidthSaver;
+	private ColumnSequenceSaver columnSequenceSaver;
 	private Vector<RowHeightListener> rowHeightListeners;
 
 }

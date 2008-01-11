@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider 
 {
-	public TargetViabilityTreeTable(Project projectToUse, GenericViabilityTreeModel targetViabilityModelToUse)
+	public TargetViabilityTreeTable(Project projectToUse, GenericViabilityTreeModel targetViabilityModelToUse) throws Exception
 	{
 		super(projectToUse, targetViabilityModelToUse);
 		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();

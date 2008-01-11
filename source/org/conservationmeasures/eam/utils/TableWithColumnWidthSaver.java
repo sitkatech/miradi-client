@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
+import org.conservationmeasures.eam.main.EAM;
 
 abstract public class TableWithColumnWidthSaver extends PanelTable implements TableWithRowHeightManagement
 {
@@ -20,6 +21,7 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 		rowHeightListeners = new Vector<RowHeightListener>();
 		
 		addColumnWidthSaver();
+		addColumnSequenceSaver();
 		addRowHeightSaver();
 	}
 	
@@ -31,6 +33,21 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 		columnWidthSaver = new ColumnWidthSaver(this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
+	}
+	
+	private void addColumnSequenceSaver()
+	{
+		try
+		{
+			columnSequenceSaver = new ColumnSequenceSaver(this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
+			getTableHeader().addMouseListener(columnSequenceSaver);
+			columnSequenceSaver.restoreColumnSequences();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			//TODO when storing column sequence is finished try throwing further up this exception
+		}
 	}
 	
 	private void addRowHeightSaver()
@@ -82,6 +99,7 @@ abstract public class TableWithColumnWidthSaver extends PanelTable implements Ta
 	abstract public String getUniqueTableIdentifier();
 	
 	private ColumnWidthSaver columnWidthSaver;
+	private ColumnSequenceSaver columnSequenceSaver;
 	private TableRowHeightSaver rowHeightSaver;
 	private Vector<RowHeightListener> rowHeightListeners;
 }
