@@ -23,7 +23,7 @@ public class CreateSlideDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return inInDiagram();
+		return isInDiagram();
 	}
 
 	public void doIt() throws CommandFailedException

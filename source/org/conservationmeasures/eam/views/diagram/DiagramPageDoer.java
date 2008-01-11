@@ -16,7 +16,7 @@ abstract public class DiagramPageDoer extends ObjectsDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 		
 		if (!isCorrectTab())

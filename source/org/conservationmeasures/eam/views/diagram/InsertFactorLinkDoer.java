@@ -21,7 +21,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		if (! getProject().isOpen())
 			return false;
 		
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		return (getDiagramView().getDiagramModel().getFactorCount() >= 2);

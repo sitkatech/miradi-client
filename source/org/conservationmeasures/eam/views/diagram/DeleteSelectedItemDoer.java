@@ -30,7 +30,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();

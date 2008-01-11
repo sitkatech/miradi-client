@@ -16,7 +16,7 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 		if (!super.isAvailable())
 			return false;
 				
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		return true;

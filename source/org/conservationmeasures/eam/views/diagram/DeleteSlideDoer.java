@@ -22,7 +22,7 @@ public class DeleteSlideDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		if (!inInDiagram())
+		if (!isInDiagram())
 			return false;
 		
 		return (getObjects().length == 1);

@@ -17,7 +17,7 @@ public class ShareActivityDoer extends AbstractShareDoer
 {	
 	public boolean isAvailable()
 	{
-		if (! inInDiagram())
+		if (! isInDiagram())
 			return false;
 	
 		return true;

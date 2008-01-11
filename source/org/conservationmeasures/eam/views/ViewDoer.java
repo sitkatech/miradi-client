@@ -37,7 +37,7 @@ abstract public class ViewDoer extends MainWindowDoer
 		return true;
 	}
 	
-	public boolean inInDiagram()
+	public boolean isInDiagram()
 	{
 		if (! getView().cardName().equals(DiagramView.getViewName()))
 			return false;
