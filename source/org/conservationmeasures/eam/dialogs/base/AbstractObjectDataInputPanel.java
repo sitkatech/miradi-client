@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.IndicatorRelevancyOverrideListField;
@@ -34,6 +36,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -42,6 +45,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener
 {
@@ -66,6 +70,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		project.addCommandExecutedListener(this);
 		setBorder(new EmptyBorder(5,5,5,5));
 		subPanels = new Vector<AbstractObjectDataInputPanel>();
+		picker = new Picker();
 	}
 	
 	public void dispose()
@@ -81,6 +86,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public ObjectPicker getPicker()
+	{
+		return picker;
 	}
 	
 	public void setObjectRef(ORef oref)
@@ -461,10 +471,61 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return getORef(orefs.length-1).getObjectId();
 	}
+	
+	class Picker implements ObjectPicker
+	{
+
+		public ORefList[] getSelectedHierarchies()
+		{
+			return new ORefList[] {new ORefList(orefs)};
+		}
+
+		public BaseObject[] getSelectedObjects()
+		{
+			Vector<BaseObject> objects = new Vector<BaseObject>();
+			for(int i = 0; i < orefs.length; ++i)
+				objects.add(getProject().findObject(orefs[i]));
+			
+			return objects.toArray(new BaseObject[0]);
+		}
+
+		public ORefList getSelectionHierarchy()
+		{
+			return new ORefList(orefs);
+		}
+
+		public void clearSelection()
+		{
+		}
+
+		public void ensureObjectVisible(ORef ref)
+		{
+		}
+
+		public void addSelectionChangeListener(ListSelectionListener listener)
+		{
+		}
+
+		public void removeSelectionChangeListener(ListSelectionListener listener)
+		{
+		}
+
+		public void valueChanged(ListSelectionEvent e)
+		{
+			throw new RuntimeException("Not supported");
+		}
+		
+		public TreeTableNode[] getSelectedTreeNodes()
+		{
+			throw new RuntimeException("Not supported");
+		}
+
+	}
 
 	public static int STD_SHORT = 5;
 	
 	private Project project;
+	private ObjectPicker picker;
 	private ORef[] orefs;
 	private Vector fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;

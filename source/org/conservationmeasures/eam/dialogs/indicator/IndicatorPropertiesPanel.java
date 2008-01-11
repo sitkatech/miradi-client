@@ -5,7 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.indicator;
 
+import org.conservationmeasures.eam.actions.ActionEditMethods;
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -17,6 +20,7 @@ import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
@@ -36,11 +40,13 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(Indicator.TAG_SHORT_LABEL,10));
 		addField(createStringField(Indicator.TAG_LABEL));
-		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		
-		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_METHODS));
+		ObjectsAction editMethods = EAM.getMainWindow().getActions().getObjectsAction(ActionEditMethods.class);
+		PanelButton editMethodsButton = new ObjectsActionButton(editMethods, getPicker());
+		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
+		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));
