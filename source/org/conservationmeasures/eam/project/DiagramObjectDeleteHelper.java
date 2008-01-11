@@ -5,22 +5,19 @@
 */ 
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.views.diagram.LinkDeletor;
 
 public class DiagramObjectDeleteHelper
 {
@@ -93,41 +90,39 @@ public class DiagramObjectDeleteHelper
 	{
 		DiagramModel model = diagramPanel.getDiagramModel();
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
+		LinkDeletor linkDeletor = new LinkDeletor(project);
 		
-		for (int i = 0; i < allDiagramLinks.length; i++)
+		ORefList allFactors = getAllFactorsToBeDeleted(model);
+		for (int i = 0; i < allDiagramLinks.length; i++)	
 		{ 
-			deleteDiagramLinkAndFactorLink(allDiagramLinks[i]);
+			deletDiagramLink(linkDeletor, allFactors, allDiagramLinks[i]);
 		}
 	}
-	
-	private void deleteDiagramLinkAndFactorLink(DiagramLink diagramLink) throws Exception
+
+	private void deletDiagramLink(LinkDeletor linkDeletor, ORefList allFactors, DiagramLink diagramLink) throws Exception
 	{
-		FactorLinkId factorLinkId = diagramLink.getWrappedId();
-		
-		DiagramObject diagramObject = diagramPanel.getDiagramObject();
-		CommandSetObjectData removeFactorLinkFromChain = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
-		project.executeCommand(removeFactorLinkFromChain);
-	
-		Command[] commandsToClear = diagramLink.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commandsToClear);
-		
-		CommandDeleteObject deleteDiagramLink = new CommandDeleteObject(diagramLink.getRef());
-		project.executeCommand(deleteDiagramLink);
-		
-		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
-		ObjectManager objectManager = project.getObjectManager();
-		ORefList referrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
-		
-		if (referrers.size() > 0)
+		DiagramLink found = DiagramLink.find(project, diagramLink.getRef());
+		if (found == null)
 			return;
 		
-		Command[] commandsToClearFactorLink = factorLink.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commandsToClearFactorLink);
-		
-		CommandDeleteObject deleteFactorLink = new CommandDeleteObject(factorLink.getRef());
-		project.executeCommand(deleteFactorLink);
+		if (diagramLink.isGroupBoxLink())
+			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(allFactors, diagramLink);
+		else
+			linkDeletor.deleteFactorLinkAndDiagramLink(allFactors, diagramLink);
 	}
-			
+
+	private ORefList getAllFactorsToBeDeleted(DiagramModel model)
+	{
+		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
+		ORefList factorRefs = new ORefList();
+		for (int i = 0 ; i < allDiagramFactors.length; ++i)
+		{
+			factorRefs.add(allDiagramFactors[i].getWrappedORef());
+		}
+		
+		return factorRefs;
+	}
+	
 	private Project project;
 	private DiagramPanel diagramPanel;
 }
