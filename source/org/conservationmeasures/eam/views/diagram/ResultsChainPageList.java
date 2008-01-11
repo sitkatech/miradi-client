@@ -43,9 +43,9 @@ public class ResultsChainPageList extends DiagramPageList
 	public Class[] getPopUpMenuActions()
 	{
 		return  new Class[] {
-				ActionDiagramProperties.class,
 				ActionRenameResultsChain.class,
 				ActionDeleteResultsChain.class,
+				ActionDiagramProperties.class,
 		};
 	}
 }
