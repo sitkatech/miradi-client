@@ -11,11 +11,13 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostUnitQuestion;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
+import org.conservationmeasures.eam.questions.ResourceTypeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
@@ -24,12 +26,17 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
 
+		String resourceTypeLabel = EAM.fieldLabel(ProjectResource.getObjectType(), ProjectResource.TAG_RESOURCE_TYPE);
+		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion(ProjectResource.TAG_RESOURCE_TYPE, resourceTypeLabel);
+		addField(createRadioChoiceField(ProjectResource.getObjectType(), idToEdit, resourceTypeQuestion));
+
 		ObjectDataInputField givenNameField = createShortStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createShortStringField(ProjectResource.TAG_SUR_NAME);
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
 		addFieldsOnOneLine(EAM.text("Label|Resource"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
 
-		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES), 3));
+		roleCodeField = createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES), 3);
+		addField(roleCodeField);
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_LOCATION));
@@ -66,10 +73,21 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Resource Properties");
 	}
+	
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+		updateVisibilityOfRoleCodeField();
+	}
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
+		
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_RESOURCE_TYPE))
+		{
+			updateVisibilityOfRoleCodeField();
+		}
 		
 		if(!event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_RESOURCE, ProjectResource.TAG_ROLE_CODES))
 			return;
@@ -95,5 +113,17 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		
 	}
 	
-	
+	private void updateVisibilityOfRoleCodeField()
+	{
+		BaseId idBeingEdited = getObjectIdForType(ProjectResource.getObjectType());
+		if(idBeingEdited == null)
+			return;
+		
+		ORef ref = new ORef(ProjectResource.getObjectType(), idBeingEdited);
+		ProjectResource beingEdited = ProjectResource.find(getProject(), ref);
+		boolean isPerson = beingEdited.isPerson();
+		roleCodeField.setEditable(isPerson);
+	}
+
+	private ObjectDataInputField roleCodeField;
 }

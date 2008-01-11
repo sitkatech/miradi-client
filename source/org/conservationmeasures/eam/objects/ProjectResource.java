@@ -112,6 +112,11 @@ public class ProjectResource extends BaseObject
 		return givenName.get();
 	}
 
+	public boolean isPerson()
+	{
+		return getData(TAG_RESOURCE_TYPE).length() == 0;
+	}
+
 	public double getCostPerUnit()
 	{
 		if (costPerUnit.toString().length() == 0)
@@ -138,6 +143,7 @@ public class ProjectResource extends BaseObject
 	{
 		super.clear();
 		
+		resourceType = new ChoiceData();
 		initials = new StringData();
 		givenName = new StringData();
 		surName = new StringData();
@@ -158,6 +164,7 @@ public class ProjectResource extends BaseObject
 		iMService = new StringData();
 		dateUpdated = new DateData();
 
+		addField(TAG_RESOURCE_TYPE, resourceType);
 		addField(TAG_INITIALS, initials);
 		addField(TAG_GIVEN_NAME, givenName);
 		addField(TAG_SUR_NAME, surName);
@@ -185,6 +192,7 @@ public class ProjectResource extends BaseObject
 		
 	}
 	
+	public static final String TAG_RESOURCE_TYPE = "ResourceType";
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_GIVEN_NAME = "Name";
 	public static final String TAG_SUR_NAME = "SurName";
@@ -211,6 +219,7 @@ public class ProjectResource extends BaseObject
 
 	static final String OBJECT_NAME = "ProjectResource";
 
+	private ChoiceData resourceType;
 	private StringData initials;
 	private StringData givenName;
 	private StringData surName;
