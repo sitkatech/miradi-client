@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.Project;
 
 public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 {
@@ -21,8 +20,8 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}
 	
-	public DiagramPageList createPageList(Project project)
+	public DiagramPageList createPageList(MainWindow mainWindowToUse)
 	{
-		return new ConceptualModelPageList(project);
+		return new ConceptualModelPageList(mainWindowToUse);
 	}
 }

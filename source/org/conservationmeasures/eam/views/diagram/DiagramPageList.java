@@ -5,33 +5,41 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTable;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiPopupMenu;
 
 abstract public class DiagramPageList extends ObjectPoolTable
 {
-	public DiagramPageList(Project projectToUse, ObjectPoolTableModel objectPoolTableModel)
+	public DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel)
 	{
 		super(objectPoolTableModel);
-		project = projectToUse;
+		project = mainWindowToUse.getProject();
+		actions = mainWindowToUse.getActions();
 		
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
+		addMouseListener(new MouseHandler());
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -77,12 +85,51 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		return getCurrentDiagramViewDataRef(viewData, getManagedDiagramType());
 	}
 	
+	public JPopupMenu getPopupMenu()
+	{
+		UiPopupMenu menu = new UiPopupMenu();
+		Class[] rightClickMenuActions = getPopUpMenuActions();
+		for (int i = 0; i < rightClickMenuActions.length; ++i)
+		{
+			menu.add(getActions().get(rightClickMenuActions[i]));
+		}
+
+		return menu;
+	}
+
+	private void handleRightClick(MouseEvent event)
+	{
+		JPopupMenu menu = getPopupMenu();
+		getActions().updateActionStates();
+		menu.show(this, event.getX(), event.getY());
+	}
+	
 	public static ORef getCurrentDiagramViewDataRef(ViewData viewData, int objectType) throws Exception
 	{
 		String currrentDiagramViewDataTag = getCurrentDiagramViewDataTag(objectType);
 		String orefAsJsonString = viewData.getData(currrentDiagramViewDataTag);
 		
 		return ORef.createFromString(orefAsJsonString);
+	}
+	
+	public class MouseHandler extends MouseAdapter
+	{
+		public void mousePressed(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+
+		public void mouseReleased(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+		
+		private void doRightClickMenu(MouseEvent event)
+		{
+			handleRightClick(event);
+		}
 	}
 	
 	public class DiagramObjectListSelectionListener  implements ListSelectionListener
@@ -148,11 +195,19 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		return false;
 	}
 	
+	private Actions getActions()
+	{
+		return actions;
+	}
+	
 	abstract public boolean isResultsChainPageList();
 	
 	abstract public boolean isConceptualModelPageList();
 	
 	abstract public int getManagedDiagramType();
 	
-	Project project;
+	abstract public Class[] getPopUpMenuActions();
+	
+	private Project project;
+	private Actions actions;
 }

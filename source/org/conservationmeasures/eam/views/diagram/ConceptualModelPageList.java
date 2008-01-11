@@ -5,17 +5,21 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.actions.ActionCreateConceptualModel;
+import org.conservationmeasures.eam.actions.ActionDeleteConceptualModel;
+import org.conservationmeasures.eam.actions.ActionDiagramProperties;
+import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.dialogs.diagram.ConceptualModelPoolTableModel;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
-import org.conservationmeasures.eam.project.Project;
 
 
 public class ConceptualModelPageList extends DiagramPageList
 {
-	public ConceptualModelPageList(Project project)
+	public ConceptualModelPageList(MainWindow mainWindowToUse)
 	{
-		super(project, new ConceptualModelPoolTableModel(project, ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
+		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
 	}
 
 	private static String[] getTags()
@@ -36,5 +40,15 @@ public class ConceptualModelPageList extends DiagramPageList
 	public int getManagedDiagramType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
+	}
+
+	public Class[] getPopUpMenuActions()
+	{
+		return  new Class[] {
+				ActionCreateConceptualModel.class,
+				ActionRenameConceptualModel.class,
+				ActionDeleteConceptualModel.class,
+				ActionDiagramProperties.class,
+		};
 	}
 }
