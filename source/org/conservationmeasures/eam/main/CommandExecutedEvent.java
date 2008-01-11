@@ -58,5 +58,14 @@ public class CommandExecutedEvent
 		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
 	}
 	
+	public boolean isSetDataCommandWithThisType(int objectType)
+	{
+		if(!isSetDataCommand())
+			return false;
+
+		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
+		return (cmd.getObjectType() == objectType);
+	}
+	
 	private Command command;
 }
