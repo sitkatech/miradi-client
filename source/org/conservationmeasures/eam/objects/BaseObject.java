@@ -269,6 +269,9 @@ abstract public class BaseObject
 			
 			case ObjectType.THREAT_STRESS_RATING:
 				return new ThreatStressRating(objectManager, idAsInt, json);
+			
+			case ObjectType.SUB_TARGET:
+				return new SubTarget(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

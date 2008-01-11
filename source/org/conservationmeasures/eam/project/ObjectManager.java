@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.objectpools.SlidePool;
 import org.conservationmeasures.eam.objectpools.SlideShowPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
 import org.conservationmeasures.eam.objectpools.StressPool;
+import org.conservationmeasures.eam.objectpools.SubTargetPool;
 import org.conservationmeasures.eam.objectpools.TargetPool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
@@ -68,6 +69,7 @@ import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.SubTarget;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
@@ -119,6 +121,7 @@ public class ObjectManager
 		addNormalPool(new StressPool(ida));
 		addNormalPool(new ThreatStressRatingPool(ida));
 		addNormalPool(new GroupBoxPool(ida));
+		addNormalPool(new SubTargetPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -177,6 +180,10 @@ public class ObjectManager
 		return (FundingSourcePool)getPool(ObjectType.FUNDING_SOURCE);
 	}
 
+	public SubTargetPool getSubTargetPool()
+	{
+		return (SubTargetPool) getPool(SubTarget.getObjectType());
+	}
 
 	public IndicatorPool getIndicatorPool()
 	{
@@ -403,6 +410,7 @@ public class ObjectManager
 		loadPool(ObjectType.STRESS);
 		loadPool(ObjectType.THREAT_STRESS_RATING);
 		loadPool(ObjectType.GROUP_BOX);
+		loadPool(ObjectType.SUB_TARGET);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
