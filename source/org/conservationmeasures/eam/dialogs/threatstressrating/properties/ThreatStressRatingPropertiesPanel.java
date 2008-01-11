@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -79,7 +80,8 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS))
+		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS) || 
+			event.isSetDataCommandWithThisType(Stress.getObjectType()))
 			editorComponent.updateModelBasedOnPickerList();
 	}
 	
