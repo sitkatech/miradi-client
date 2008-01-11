@@ -92,7 +92,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = givenName.get();
+		result = getGivenName();
 		if(result.length() > 0)
 			return result;
 		
@@ -107,6 +107,11 @@ public class ProjectResource extends BaseObject
 		return EAM.text("Label|(Undefined Resource)");
 	}
 	
+	String getGivenName()
+	{
+		return givenName.get();
+	}
+
 	public double getCostPerUnit()
 	{
 		if (costPerUnit.toString().length() == 0)
@@ -204,7 +209,7 @@ public class ProjectResource extends BaseObject
 	static final String OBJECT_NAME = "ProjectResource";
 
 	private StringData initials;
-	StringData givenName;
+	private StringData givenName;
 	private StringData position;
 	private StringData phoneNumber;
 	private StringData email;
