@@ -43,11 +43,6 @@ public class ConceptualModelDiagram extends DiagramObject
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
 	
-	public String toString()
-	{
-		return getLabel();
-	}
-	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
 	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
