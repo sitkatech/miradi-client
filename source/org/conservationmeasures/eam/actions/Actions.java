@@ -345,6 +345,8 @@ public class Actions
 		registerAction(new ActionEditIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyRelevancyList(mainWindow));
 		registerAction(new ActionDeleteGroupBox(mainWindow));
+		registerAction(new ActionCreateSubTarget(mainWindow));
+		registerAction(new ActionDeleteSubTarget(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -20,6 +20,11 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 		super(mainWindowToUse, label);
 	}
 	
+	public ObjectsAction(MainWindow mainWindowToUse, String label, String icon)
+	{
+		super(mainWindowToUse, label, icon);
+	}
+	
 	public ObjectsAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{
 		super(mainWindowToUse, label, icon);
