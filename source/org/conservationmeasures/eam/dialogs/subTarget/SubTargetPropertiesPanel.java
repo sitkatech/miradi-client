@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.subTarget;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -16,8 +17,12 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 	public SubTargetPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, SubTarget.getObjectType(), BaseId.INVALID);
-		
-		addField(createStringField(SubTarget.TAG_LABEL));
+			
+		ObjectDataInputField shortLabelField = createStringField(SubTarget.TAG_SHORT_LABEL,10);
+		ObjectDataInputField labelField = createStringField(SubTarget.TAG_LABEL);
+		addFieldsOnOneLine("", new ObjectDataInputField[]{shortLabelField, labelField});
+	
+		addField(createMultilineField(SubTarget.TAG_DETAIL));
 		
 		updateFieldsFromProject();
 	}
