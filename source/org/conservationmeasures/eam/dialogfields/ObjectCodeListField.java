@@ -53,7 +53,8 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	
 	public void updateEditableState()
 	{
-		codeListEditor.setEnabled(isValidObject());
+		boolean editable = allowEdits() && isValidObject();
+		codeListEditor.setEnabled(editable);
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)
