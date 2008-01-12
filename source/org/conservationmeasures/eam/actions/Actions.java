@@ -343,6 +343,7 @@ public class Actions
 		registerAction(new ActionGroupBoxAddFactor(mainWindow));
 		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
 		registerAction(new ActionEditMethods(mainWindow));
+		registerAction(new ActionDeleteMethod(mainWindow));
 		registerAction(new ActionEditIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyRelevancyList(mainWindow));
 		registerAction(new ActionDeleteGroupBox(mainWindow));
