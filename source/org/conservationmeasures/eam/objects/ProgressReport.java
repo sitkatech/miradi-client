@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectdata.CodeListData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -86,7 +86,7 @@ public class ProgressReport extends BaseObject
 	{
 		super.clear();
 		
-		progressStatus = new CodeListData();
+		progressStatus = new ChoiceData();
 		progressDate = new DateData();
 		comments = new StringData();
 		
@@ -101,7 +101,7 @@ public class ProgressReport extends BaseObject
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";
 	public static final String TAG_COMMENTS = "Comments";
 	
-	private CodeListData progressStatus;
+	private ChoiceData progressStatus;
 	private DateData progressDate;
 	private StringData comments;
 }
