@@ -23,9 +23,12 @@ import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionCreateMethod;
+import org.conservationmeasures.eam.actions.ActionCreateProgressReport;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionDeleteMethod;
+import org.conservationmeasures.eam.actions.ActionDeleteProgressReport;
 import org.conservationmeasures.eam.actions.ActionEditMethods;
+import org.conservationmeasures.eam.actions.ActionEditProgressReports;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
@@ -132,6 +135,9 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateProgressReportDoer;
+import org.conservationmeasures.eam.views.diagram.doers.DeleteProgressReportDoer;
+import org.conservationmeasures.eam.views.diagram.doers.EditProgressReportDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.CopyProjectToDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.CreateMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.DeleteMethodDoer;
@@ -267,6 +273,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionEditMethods.class, new EditMethodsDoer());
 		addDoerToMap(ActionCreateMethod.class, new CreateMethodDoer());
 		addDoerToMap(ActionDeleteMethod.class, new DeleteMethodDoer());
+		
+		addDoerToMap(ActionEditProgressReports.class, new EditProgressReportDoer());
+		addDoerToMap(ActionCreateProgressReport.class, new CreateProgressReportDoer());
+		addDoerToMap(ActionDeleteProgressReport.class, new DeleteProgressReportDoer());
 		
 		addDoerToMap(ActionViewSummary.class, new SwitchToSummaryViewDoer());
 		addDoerToMap(ActionViewDiagram.class, new SwitchToDiagramViewDoer());
