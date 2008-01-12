@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.martus.swing.Utilities;
@@ -19,12 +18,6 @@ public class EditMethodsDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		System.out.println("isAvailable");
-		for(ORefList list : getSelectedHierarchies())
-		{
-			System.out.println(list);
-		}
-		System.out.println("---");
 		if(getSelectedHierarchies().length != 1)
 			return false;
 		
