@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.views.umbrella.doers.AbstractEditDoer;
 
 public class EditProgressReportDoer extends AbstractEditDoer
 {
-	public boolean isAvailable()
+	protected int getTypeToFilterOn()
 	{
-		return false;
+		return Strategy.getObjectType();
 	}
 
 	protected String getDialogTitle()
@@ -26,7 +26,7 @@ public class EditProgressReportDoer extends AbstractEditDoer
 	
 	protected ObjectListManagementPanel getManagementPanel() throws Exception
 	{
-		ORef strategyRef = getPicker().getSelectionHierarchy().getRefForType(Strategy.getObjectType());
+		ORef strategyRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
 		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, getMainWindow().getActions());
 	}

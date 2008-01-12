@@ -8,11 +8,24 @@ package org.conservationmeasures.eam.views.umbrella.doers;
 import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.martus.swing.Utilities;
 
 abstract public class AbstractEditDoer extends ObjectsDoer
 {
+	public boolean isAvailable()
+	{
+		if(getSelectedHierarchies().length != 1)
+			return false;
+		
+		ORef ref = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
+		if(ref == null || ref.isInvalid())
+			return false;
+		
+		return true;
+	}
+
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
@@ -31,6 +44,8 @@ abstract public class AbstractEditDoer extends ObjectsDoer
 			throw new CommandFailedException(e);
 		}
 	}
+	
+	abstract protected int getTypeToFilterOn();
 
 	abstract protected String getDialogTitle();
 
