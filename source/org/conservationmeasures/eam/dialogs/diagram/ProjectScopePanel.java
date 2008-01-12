@@ -18,7 +18,6 @@ public class ProjectScopePanel extends ObjectDataInputPanel
 
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
 		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
-		addField(createStringField(metadata.TAG_SHORT_PROJECT_VISION));
 		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
 		
 		updateFieldsFromProject();
