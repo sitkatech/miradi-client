@@ -5,19 +5,31 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella.doers;
 
+import org.conservationmeasures.eam.dialogs.activity.MethodListManagementPanel;
+import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.martus.swing.Utilities;
 
 public class EditMethodsDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		System.out.println("isAvailable");
+		for(ORefList list : getSelectedHierarchies())
+		{
+			System.out.println(list);
+		}
+		System.out.println("---");
 		if(getSelectedHierarchies().length != 1)
 			return false;
 		
-		if(getSelectedHierarchies()[0].getRefForType(Indicator.getObjectType()) == null)
+		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(Indicator.getObjectType());
+		if(indicatorRef == null || indicatorRef.isInvalid())
 			return false;
 		
 		return true;
@@ -25,20 +37,23 @@ public class EditMethodsDoer extends ObjectsDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		EAM.notifyDialog(EAM.text("Not implemented yet"));
-//		try
-//		{
-//			ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
-//			MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
-//			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Edit Methods"));
-//			Utilities.centerDlg(dialog);
-//			dialog.setVisible(true);
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			throw new CommandFailedException(e);
-//		}
+		if(!isAvailable())
+			return;
+		
+		try
+		{
+			ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
+			MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
+			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Edit Methods"));
+			Utilities.centerDlg(dialog);
+			panel.updateSplitterLocation();
+			dialog.setVisible(true);
+			
+		}
+		catch(Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 
