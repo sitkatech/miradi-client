@@ -13,16 +13,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 
 public class EditMethodsDoer extends AbstractEditDoer
 {
-	public boolean isAvailable()
+	protected int getTypeToFilterOn()
 	{
-		if(getSelectedHierarchies().length != 1)
-			return false;
-		
-		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(Indicator.getObjectType());
-		if(indicatorRef == null || indicatorRef.isInvalid())
-			return false;
-		
-		return true;
+		return Indicator.getObjectType();
 	}
 
 	protected String getDialogTitle()
@@ -32,7 +25,7 @@ public class EditMethodsDoer extends AbstractEditDoer
 
 	protected ObjectListManagementPanel getManagementPanel() throws Exception
 	{
-		ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
+		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 
 		return new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
 	}
