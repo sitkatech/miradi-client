@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
@@ -280,6 +281,11 @@ public class Indicator extends BaseObject
 		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 	
+	public static Indicator find(Project project, ORef indicatorRef)
+	{
+		return (Indicator)project.findObject(indicatorRef);
+	}
+
 	void clear()
 	{
 		super.clear();
