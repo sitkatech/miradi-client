@@ -33,7 +33,6 @@ import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeIn
 import org.conservationmeasures.eam.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateOrShowResultsChain;
-import org.conservationmeasures.eam.actions.ActionCreateProgressReport;
 import org.conservationmeasures.eam.actions.ActionCreateResultsChain;
 import org.conservationmeasures.eam.actions.ActionCreateSlide;
 import org.conservationmeasures.eam.actions.ActionCreateStress;
@@ -52,14 +51,12 @@ import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttribute;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
-import org.conservationmeasures.eam.actions.ActionDeleteProgressReport;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDeleteSlide;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionDeleteSubTarget;
 import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
-import org.conservationmeasures.eam.actions.ActionEditProgressReports;
 import org.conservationmeasures.eam.actions.ActionEditStrategyRelevancyList;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
@@ -144,15 +141,12 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
-import org.conservationmeasures.eam.views.diagram.doers.CreateProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteGroupBoxDoer;
-import org.conservationmeasures.eam.views.diagram.doers.DeleteProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DiagramPropertiesShowDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditIndicatorRelevancyListDoer;
-import org.conservationmeasures.eam.views.diagram.doers.EditProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditStrategyRelevancyListDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
@@ -368,9 +362,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateSubTarget.class, new CreateSubTargetDoer());
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
-		addDoerToMap(ActionEditProgressReports.class, new EditProgressReportDoer());
-		addDoerToMap(ActionCreateProgressReport.class, new CreateProgressReportDoer());
-		addDoerToMap(ActionDeleteProgressReport.class, new DeleteProgressReportDoer());
 	}
 	
 	public void tabWasSelected()
