@@ -931,6 +931,11 @@ public class DiagramModel extends DefaultGraphModel
 			DiagramGroupBoxCell cell = (DiagramGroupBoxCell) allGroupBoxes.get(i);
 			cell.autoSurroundChildren();
 		}
+		toBackScopeBox();
+	}
+
+	public void toBackScopeBox()
+	{
 		toBack(new Object[] {getProjectScopeBox()});
 	}
 	
