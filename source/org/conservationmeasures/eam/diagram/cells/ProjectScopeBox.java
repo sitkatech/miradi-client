@@ -77,9 +77,9 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
 		if (metadata.getProjectVision().length() == 0)
-			return metadata.getShortProjectVision();
+			return "";
 		
-		return EAM.text("[Vision]") + metadata.getShortProjectVision();
+		return EAM.text("[Vision]");
 	}
 
 	private Project getProject()
