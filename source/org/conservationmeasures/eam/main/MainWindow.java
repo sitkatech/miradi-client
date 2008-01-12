@@ -155,6 +155,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			aboutDoer.doIt();
 		}
 		
+		displayExpirationNoticeIfAppropriate();
+		
 		setVisible(true);
 		if(preferences.getIsMaximized())
 		{
@@ -168,6 +170,27 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	}
 	
 	
+	private void displayExpirationNoticeIfAppropriate()
+	{
+		MultiCalendar now = new MultiCalendar();
+		MultiCalendar expiresOn = MultiCalendar.createFromIsoDateString("2008-04-01");
+		if(now.before(expiresOn))
+			return;
+		
+		EAM.notifyDialog("<html>" +
+				"<b>This is an expired beta test version of Miradi.</b> <br>" +
+				"<br>" +
+				"Although this copy of the software will continue to function indefinitely, <br>" +
+				"it wasn't designed to be a production piece of software: <br>" +
+				"you're missing out on many bug fixes and improvements. <br>" +
+				"<br>" +
+				"Please log onto www.Miradi.org and obtain a licensed version. <br>" +
+				"In addition to getting the latest functionality and features, <br>" +
+				"you will also support your fair share of Miradi's ongoing development. <br>" +
+				"Miradi is a strictly not-for-profit project. All money raised from <br>" +
+				"distribution and licensing is used to fund support for users and to improve Miradi.");
+	}
+
 	public void hideDivider()
 	{
 		getContentPane().removeAll();
