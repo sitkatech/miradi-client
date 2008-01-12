@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
@@ -119,6 +120,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		{
 			LinkCell linkCell = (LinkCell) cell;
 			return linkCell.getToolTipString();
+		}
+		if (cell instanceof ProjectScopeBox)
+		{
+			ProjectScopeBox scopeBox = (ProjectScopeBox) cell;
+			return scopeBox.getToolTipString();
 		}
 		return null;
 	}
