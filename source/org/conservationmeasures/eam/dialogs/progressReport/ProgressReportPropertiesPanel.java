@@ -18,7 +18,6 @@ public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ProgressReport.getObjectType(), BaseId.INVALID);
 			
-		addField(createStringField(ProgressReport.TAG_LABEL));
 		ProgressReportStatusQuestion progressReportStatusQuestion = new ProgressReportStatusQuestion(ProgressReport.TAG_PROGRESS_STATUS);
 		addField(createChoiceField(ProgressReport.getObjectType(), progressReportStatusQuestion));
 		addField(createDateChooserField(ProgressReport.TAG_PROGRESS_DATE));
