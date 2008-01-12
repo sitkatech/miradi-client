@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -81,6 +82,7 @@ public class Strategy extends Factor
 		Set<String> set = super.getReferencedObjectTags();
 		set.add(TAG_ACTIVITY_IDS);
 		set.add(TAG_OBJECTIVE_IDS);
+		set.add(TAG_PROGRESS_REPORT_REFS);
 		return set;
 	}
 	
@@ -159,6 +161,11 @@ public class Strategy extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
+	public ORefList getProgressReportRefs()
+	{
+		return progressReportRefs.getORefList();
+	}
+	
 	public ORefList getActivities()
 	{
 		return new ORefList(Task.getObjectType(), getActivityIds());
@@ -168,7 +175,6 @@ public class Strategy extends Factor
 	{
 		ChoiceItem rating = getStrategyRating();
 		return rating.getCode();
-
 	}
 	
 	public ChoiceItem getStrategyRating()
@@ -193,6 +199,7 @@ public class Strategy extends Factor
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
 		deepObjectRefsToCopy.addAll(getActivities());
+		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
 		return deepObjectRefsToCopy;
 	}
@@ -215,6 +222,9 @@ public class Strategy extends Factor
 		if (tag.equals(TAG_ACTIVITY_IDS))
 			return Task.getObjectType();
 		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return ProgressReport.getObjectType();
+		
 		return super.getAnnotationType(tag);
 	}
 
@@ -224,6 +234,14 @@ public class Strategy extends Factor
 			return true;
 		
 		return super.isIdListTag(tag);
+	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return true;
+		
+		return super.isRefList(tag);
 	}
 
 	public int getType()
@@ -263,6 +281,7 @@ public class Strategy extends Factor
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
 		feasibilityRating = new ChoiceData();
+		progressReportRefs = new ORefListData();
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		taxonomyCodeLabel = new PseudoQuestionData(new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
@@ -276,6 +295,7 @@ public class Strategy extends Factor
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
+		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
@@ -292,6 +312,7 @@ public class Strategy extends Factor
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
+	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
@@ -307,6 +328,7 @@ public class Strategy extends Factor
 	private StringData taxonomyCode;
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
+	private ORefListData progressReportRefs;
 	private PseudoStringData tagRatingSummary;
 	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoQuestionData impactRatingLabel;

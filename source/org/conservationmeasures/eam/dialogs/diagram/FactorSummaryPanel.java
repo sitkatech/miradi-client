@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.diagram;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
@@ -23,7 +25,9 @@ import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -31,7 +35,6 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.DiagramFactorFontColorQuestion;
 import org.conservationmeasures.eam.questions.DiagramFactorFontSizeQuestion;
 import org.conservationmeasures.eam.questions.DiagramFactorFontStyleQuestion;
@@ -41,13 +44,17 @@ import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.questions.ThreatClassificationQuestion;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
+import org.conservationmeasures.eam.views.umbrella.StaticPicker;
 import org.martus.swing.UiLabel;
 
 public class FactorSummaryPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryPanel(Project projectToUse, DiagramFactor factorToEdit) throws Exception
+	public FactorSummaryPanel(MainWindow mainWindowToUse, DiagramFactor factorToEdit) throws Exception
 	{
-		super(projectToUse, factorToEdit.getWrappedORef());
+		super(mainWindowToUse.getProject(), factorToEdit.getWrappedORef());
+		
+		mainWindow = mainWindowToUse;
 		currentDiagramFactor = factorToEdit;
 
 		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
@@ -73,6 +80,13 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			
+			//FIXME add the right button here for progress dialog
+			StaticPicker picker = new StaticPicker(new ORefList(currentDiagramFactor.getWrappedORef())); 
+			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditIndicatorRelevancyList.class), picker);
+			ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
+			addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
+			
 			detailIcon = new StrategyIcon();
 		}
 
@@ -191,6 +205,12 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		return ActionJumpDiagramOverviewStep.class;
 	}
 	
+	private Actions getActions()
+	{
+		return mainWindow.getActions();
+	}
+	
+	private MainWindow mainWindow;
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
 	private UiLabel ratingFieldLabel;
