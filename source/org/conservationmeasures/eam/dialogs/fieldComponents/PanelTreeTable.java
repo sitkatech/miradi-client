@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JTable;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
@@ -101,11 +102,17 @@ abstract public class PanelTreeTable extends JTreeTable
 	
 	public void columnMoved(TableColumnModelEvent event)
 	{
-		if (event.getFromIndex() == event.getToIndex())
+		int toTableColumn = event.getToIndex();
+		int fromTableIndex = event.getFromIndex();
+		if (fromTableIndex == toTableColumn)
 			return;
 		
-		if(event.getToIndex() == TREE_COLUMN_INDEX)
-			moveColumn(event.getToIndex(), event.getFromIndex());
+		// NOTE: Move has already happened, to event.from is now at the 
+		// to location in the table, and to+1 is the table column that was
+		// previously at the "to" table column
+		int toModelColumn = convertColumnIndexToModel(toTableColumn+1);
+		if(toTableColumn == 0 && toModelColumn == TREE_COLUMN_INDEX)
+			moveColumn(toTableColumn, fromTableIndex);
 		else
 			super.columnMoved(event);
 	}
@@ -115,7 +122,10 @@ abstract public class PanelTreeTable extends JTreeTable
 		public void mouseMoved(MouseEvent e)
 		{
 			JTableHeader header = ((JTableHeader)e.getSource());
-			boolean isTreeColumn =  header.columnAtPoint(e.getPoint()) == TREE_COLUMN_INDEX;
+			int tableColumnAtPoint = header.columnAtPoint(e.getPoint());
+			JTable table = header.getTable();
+			int modelColumn = table.convertColumnIndexToModel(tableColumnAtPoint);
+			boolean isTreeColumn =  modelColumn == TREE_COLUMN_INDEX;
 			header.setReorderingAllowed(!isTreeColumn);
 		}
 	}
