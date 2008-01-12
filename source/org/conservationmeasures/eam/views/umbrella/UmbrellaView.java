@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.actions.ActionAboutCMP;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureExport;
 import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
+import org.conservationmeasures.eam.actions.ActionCreateMethod;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
 import org.conservationmeasures.eam.actions.ActionEditMethods;
 import org.conservationmeasures.eam.actions.ActionExit;
@@ -131,6 +132,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.CopyProjectToDoer;
+import org.conservationmeasures.eam.views.umbrella.doers.CreateMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.EditMethodsDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.swing.UiLabel;
@@ -261,7 +263,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionReportsDemo.class, new HelpButtonDoer());
 		
 		addDoerToMap(ActionEditMethods.class, new EditMethodsDoer());
-		
+		addDoerToMap(ActionCreateMethod.class, new CreateMethodDoer());
 		
 		addDoerToMap(ActionViewSummary.class, new SwitchToSummaryViewDoer());
 		addDoerToMap(ActionViewDiagram.class, new SwitchToDiagramViewDoer());

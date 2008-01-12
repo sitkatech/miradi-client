@@ -5,9 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.activity;
 
+import org.conservationmeasures.eam.actions.ActionCreateMethod;
 import org.conservationmeasures.eam.actions.ActionDeleteMethod;
 import org.conservationmeasures.eam.actions.ActionShareMethod;
-import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanelWithParent;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -22,7 +22,7 @@ public class MethodListTablePanel extends ObjectListTablePanelWithParent
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
-		ActionTreeCreateMethod.class,
+		ActionCreateMethod.class,
 		ActionDeleteMethod.class,
 		ActionShareMethod.class,
 	};
