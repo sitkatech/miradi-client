@@ -49,6 +49,14 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return (String)getUserObject();
 	}
 	
+	public String getToolTipString() 
+	{
+		String toolTip = "<HTML>" + getText() +  
+						 "<BR> Vision: " + getVision();
+
+		return toolTip;
+	}
+	
 	public Color getColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
