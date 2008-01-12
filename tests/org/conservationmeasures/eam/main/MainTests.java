@@ -71,6 +71,7 @@ import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanReferToUs;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestPlanningViewConfiguration;
+import org.conservationmeasures.eam.objects.TestProgressReport;
 import org.conservationmeasures.eam.objects.TestProjectChainObject;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
@@ -291,6 +292,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestStress.class));
 		suite.addTest(new TestSuite(TestThreatStressRating.class));
 		suite.addTest(new TestSuite(TestSubTarget.class));
+		suite.addTest(new TestSuite(TestProgressReport.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

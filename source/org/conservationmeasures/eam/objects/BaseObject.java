@@ -272,6 +272,9 @@ abstract public class BaseObject
 			
 			case ObjectType.SUB_TARGET:
 				return new SubTarget(objectManager, idAsInt, json);
+			
+			case ObjectType.PROGRESS_REPORT:
+				return new ProgressReport(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
