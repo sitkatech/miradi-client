@@ -20,6 +20,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 
 	public static final String[] COLUMN_TAGS = new String[] {
 		ProgressReport.TAG_LABEL,
+		ProgressReport.TAG_PROGRESS_STATUS,
 		ProgressReport.TAG_PROGRESS_DATE,
 		ProgressReport.TAG_COMMENTS,
 	};

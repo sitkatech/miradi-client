@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProgressReport;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 
 public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 {
@@ -18,8 +19,8 @@ public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ProgressReport.getObjectType(), BaseId.INVALID);
 			
 		addField(createStringField(ProgressReport.TAG_LABEL));
-		//FIXME add prgress question
-		//addField(createChoiceField(ProgressReport.TAG_PROGRESS_STATUS, question));
+		ProgressReportStatusQuestion progressReportStatusQuestion = new ProgressReportStatusQuestion(ProgressReport.TAG_PROGRESS_STATUS);
+		addField(createChoiceField(ProgressReport.getObjectType(), progressReportStatusQuestion));
 		addField(createDateChooserField(ProgressReport.TAG_PROGRESS_DATE));
 		addField(createMultilineField(ProgressReport.TAG_COMMENTS));
 		
