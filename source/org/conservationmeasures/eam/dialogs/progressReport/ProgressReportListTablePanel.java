@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.progressReport;
 
+import org.conservationmeasures.eam.actions.ActionCreateProgressReport;
+import org.conservationmeasures.eam.actions.ActionDeleteProgressReport;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -20,6 +22,7 @@ public class ProgressReportListTablePanel extends ObjectListTablePanel
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
-		
+		ActionCreateProgressReport.class,
+		ActionDeleteProgressReport.class,
 	};
 }
