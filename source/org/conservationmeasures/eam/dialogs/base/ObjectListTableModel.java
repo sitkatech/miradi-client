@@ -76,7 +76,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			throw new RuntimeException();
+			throw new RuntimeException(e);
 		}
 	}
 	
