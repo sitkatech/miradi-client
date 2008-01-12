@@ -17,7 +17,7 @@ public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ProgressReport.getObjectType(), BaseId.INVALID);
 			
-		addField(createMultilineField(ProgressReport.TAG_LABEL));
+		addField(createStringField(ProgressReport.TAG_LABEL));
 		//FIXME add prgress question
 		//addField(createChoiceField(ProgressReport.TAG_PROGRESS_STATUS, question));
 		addField(createDateChooserField(ProgressReport.TAG_PROGRESS_DATE));
