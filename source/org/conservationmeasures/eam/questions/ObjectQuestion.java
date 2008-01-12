@@ -8,24 +8,22 @@ package org.conservationmeasures.eam.questions;
 import java.util.Arrays;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectQuestion extends StaticChoiceQuestion
 {
-	public ObjectQuestion(Project project, int type, String questionLabel)
+	public ObjectQuestion(Project project, BaseObject[] objects, String questionLabel)
 	{
-		super("", questionLabel, getObjectChoices(project, type));
+		super("", questionLabel, createChoiceItems(project, objects));
 	}
 
-	static ChoiceItem[] getObjectChoices(Project project, int type)
+	private static ChoiceItem[] createChoiceItems(Project project, BaseObject[] objects)
 	{
 		Vector choiceItems = new Vector();
-		ORefList objectRefs = project.getPool(type).getORefList();
-		for (int i = 0; i < objectRefs.size(); ++i)
+		for (int i = 0; i < objects.length; ++i)
 		{
-			BaseObject thisObject = project.findObject(objectRefs.get(i));
+			BaseObject thisObject = objects[i];
 			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), thisObject.combineShortLabelAndLabel()));
 		}
 		
