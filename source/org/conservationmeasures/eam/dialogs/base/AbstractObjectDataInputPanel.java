@@ -65,12 +65,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		project = projectToUse;
-		orefs = orefsToUse;
 		fields = new Vector();
+		picker = new Picker();
+		subPanels = new Vector<AbstractObjectDataInputPanel>();
+
+		setObjectRefsWithoutUpdatingFields(orefsToUse);
 		project.addCommandExecutedListener(this);
 		setBorder(new EmptyBorder(5,5,5,5));
-		subPanels = new Vector<AbstractObjectDataInputPanel>();
-		picker = new Picker();
 	}
 	
 	public void dispose()
@@ -106,12 +107,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		saveModifiedFields();
+		setObjectRefsWithoutUpdatingFields(orefsToUse);
+		updateFieldsFromProject();
+	}
+
+
+	private void setObjectRefsWithoutUpdatingFields(ORef[] orefsToUse)
+	{
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
 		{
 			subPanel.setObjectRefs(orefsToUse);
 		}
 		orefs = orefsToUse;
-		updateFieldsFromProject();
+		picker.setObjectRefs(orefs);
 	}
 	
 	public void setFocusOnFirstField()
@@ -474,6 +482,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	class Picker implements ObjectPicker
 	{
+		public Picker()
+		{
+			listeners = new Vector<ListSelectionListener>();
+		}
 
 		public ORefList[] getSelectedHierarchies()
 		{
@@ -501,13 +513,24 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		public void ensureObjectVisible(ORef ref)
 		{
 		}
+		
+		public void setObjectRefs(ORef[] refs)
+		{
+			ListSelectionEvent event = new ListSelectionEvent(this, -1, -1, false);
+			for(ListSelectionListener listener : listeners)
+			{
+				listener.valueChanged(event);
+			}
+		}
 
 		public void addSelectionChangeListener(ListSelectionListener listener)
 		{
+			listeners.add(listener);
 		}
 
 		public void removeSelectionChangeListener(ListSelectionListener listener)
 		{
+			listeners.remove(listener);
 		}
 
 		public void valueChanged(ListSelectionEvent e)
@@ -520,12 +543,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			throw new RuntimeException("Not supported");
 		}
 
+		private Vector<ListSelectionListener> listeners;
 	}
 
 	public static int STD_SHORT = 5;
 	
 	private Project project;
-	private ObjectPicker picker;
+	private Picker picker;
 	private ORef[] orefs;
 	private Vector fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
