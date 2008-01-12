@@ -693,6 +693,7 @@ abstract public class DiagramPaster
 				ObjectType.GROUP_BOX,
 				ObjectType.MEASUREMENT,
 				ObjectType.SUB_TARGET,
+				ObjectType.PROGRESS_REPORT,
 				};
 	}
 	
@@ -716,6 +717,7 @@ abstract public class DiagramPaster
 				ObjectType.GROUP_BOX,
 				ObjectType.MEASUREMENT,
 				ObjectType.SUB_TARGET,
+				ObjectType.PROGRESS_REPORT,
 				};
 	}
 	
