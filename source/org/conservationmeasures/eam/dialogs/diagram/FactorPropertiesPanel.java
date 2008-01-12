@@ -203,7 +203,7 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 	{
 		tabs = new PanelTabbedPane();
 		tabs.setFocusable(false);
-		detailsTab = new FactorSummaryScrollablePanel(getProject(), diagramFactor);
+		detailsTab = new FactorSummaryScrollablePanel(mainWindow, diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
