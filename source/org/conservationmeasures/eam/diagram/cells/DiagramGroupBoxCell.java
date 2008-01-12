@@ -156,6 +156,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	public void factorAdded(DiagramModelEvent event)
 	{
 		model.toBack(new Object[] {this});
+		model.toBackScopeBox();
 	}
 
 	public void factorChanged(DiagramModelEvent event)
