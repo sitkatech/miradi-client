@@ -90,7 +90,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			Hashtable nest = new Hashtable();
 			nest.put(this, getAttributes());
 			model.edit(nest, null, null, null);
-			model.toBack(new Object[] {this});
+			model.toBackGroupBox(new Object[] {this});
 
 			
 			saveLocationAndSize(location, newSize);
@@ -155,8 +155,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
-		model.toBack(new Object[] {this});
-		model.toBackScopeBox();
+		model.toBackGroupBox(new Object[] {this});
 	}
 
 	public void factorChanged(DiagramModelEvent event)
