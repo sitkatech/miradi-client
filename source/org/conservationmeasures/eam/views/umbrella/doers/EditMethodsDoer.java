@@ -6,15 +6,11 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import org.conservationmeasures.eam.dialogs.activity.MethodListManagementPanel;
-import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.martus.swing.Utilities;
 
-public class EditMethodsDoer extends ObjectsDoer
+public class EditMethodsDoer extends AbstractEditDoer
 {
 	public boolean isAvailable()
 	{
@@ -28,26 +24,15 @@ public class EditMethodsDoer extends ObjectsDoer
 		return true;
 	}
 
-	public void doIt() throws CommandFailedException
+	protected String getDialogTitle()
 	{
-		if(!isAvailable())
-			return;
-		
-		try
-		{
-			ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
-			MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Edit Methods"));
-			Utilities.centerDlg(dialog);
-			panel.updateSplitterLocation();
-			dialog.setVisible(true);
-			
-		}
-		catch(Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
+		return EAM.text("Edit Methods");
 	}
 
-
+	protected MethodListManagementPanel getManagementPanel() throws Exception
+	{
+		ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
+		MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
+		return panel;
+	}
 }
