@@ -13,6 +13,12 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 {
 	public IndicatorChoiceQuestion(Project project)
 	{
-		super(project, Indicator.getObjectType(), EAM.text("Indicator list"));
+		super(project, getAllIndicators(project), EAM.text("Indicator list"));
 	}
+	
+	private static Indicator[] getAllIndicators(Project project)
+	{
+		return project.getIndicatorPool().getAllIndicators();
+	}
+
 }
