@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.MeasurementPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
+import org.conservationmeasures.eam.objectpools.ProgressReportPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
@@ -122,6 +123,7 @@ public class ObjectManager
 		addNormalPool(new ThreatStressRatingPool(ida));
 		addNormalPool(new GroupBoxPool(ida));
 		addNormalPool(new SubTargetPool(ida));
+		addNormalPool(new ProgressReportPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -411,6 +413,7 @@ public class ObjectManager
 		loadPool(ObjectType.THREAT_STRESS_RATING);
 		loadPool(ObjectType.GROUP_BOX);
 		loadPool(ObjectType.SUB_TARGET);
+		loadPool(ObjectType.PROGRESS_REPORT);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
