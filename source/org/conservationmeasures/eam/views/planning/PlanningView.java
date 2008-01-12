@@ -42,7 +42,6 @@ import org.conservationmeasures.eam.dialogs.planning.PlanningTreeTablePanel;
 import org.conservationmeasures.eam.dialogs.planning.legend.PlanningViewControlPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.resource.ResourcePoolManagementPanel;
-import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -51,7 +50,6 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
-import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.planning.doers.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreateAccountingCodeDoer;
@@ -88,21 +86,8 @@ public class PlanningView extends TabbedView
 		resourceManagementPanel.updateSplitterLocation();
 		accountingCodePoolManagementPanel.updateSplitterLocation();
 		fundingSourcePoolManagementPanel.updateSplitterLocation();
-		
-		showFirstTimeNotificationDialog();
 	}
 
-	private void showFirstTimeNotificationDialog()
-	{
-		String tag = getMainWindow().getTaggedString(AppPreferences.TAG_PLANNING_VIEW_FIRST_TIME_USE_BOOLEAN);
-		if (! tag.equals(""))
-			return;
-		
-		Class defaultResouceClass = getMainWindow().getCurrentView().getClass();
-		new HtmlViewPanel(getMainWindow(), "First Time Using Planning View", defaultResouceClass, "firstTimeInPlanningNotification.html").showAsOkDialog();
-		getMainWindow().setTaggedString(AppPreferences.TAG_PLANNING_VIEW_FIRST_TIME_USE_BOOLEAN, "false");
-	}
-	
 	public void createTabs() throws Exception
 	{
 		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
