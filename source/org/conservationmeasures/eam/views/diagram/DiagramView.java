@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionDeleteSubTarget;
 import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
+import org.conservationmeasures.eam.actions.ActionEditProgressReports;
 import org.conservationmeasures.eam.actions.ActionEditStrategyRelevancyList;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
@@ -147,6 +148,7 @@ import org.conservationmeasures.eam.views.diagram.doers.DeleteGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DiagramPropertiesShowDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditIndicatorRelevancyListDoer;
+import org.conservationmeasures.eam.views.diagram.doers.EditProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditStrategyRelevancyListDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
@@ -362,6 +364,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateSubTarget.class, new CreateSubTargetDoer());
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
+		addDoerToMap(ActionEditProgressReports.class, new EditProgressReportDoer());
 	}
 	
 	public void tabWasSelected()

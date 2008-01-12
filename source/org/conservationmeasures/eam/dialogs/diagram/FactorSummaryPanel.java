@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs.diagram;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.actions.ActionEditIndicatorRelevancyList;
+import org.conservationmeasures.eam.actions.ActionEditProgressReports;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramOverviewStep;
@@ -81,9 +81,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 			
-			//FIXME add the right button here for progress dialog
 			StaticPicker picker = new StaticPicker(new ORefList(currentDiagramFactor.getWrappedORef())); 
-			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditIndicatorRelevancyList.class), picker);
+			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditProgressReports.class), picker);
 			ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
 			addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
 			
