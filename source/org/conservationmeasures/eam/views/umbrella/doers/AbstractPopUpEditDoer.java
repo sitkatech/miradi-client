@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.martus.swing.Utilities;
 
-abstract public class AbstractEditDoer extends ObjectsDoer
+abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{

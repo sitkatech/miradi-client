@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.dialogs.progressReport.ProgressReportManagem
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.views.umbrella.doers.AbstractEditDoer;
+import org.conservationmeasures.eam.views.umbrella.doers.AbstractPopUpEditDoer;
 
-public class EditProgressReportDoer extends AbstractEditDoer
+public class EditProgressReportDoer extends AbstractPopUpEditDoer
 {
 	protected int getTypeToFilterOn()
 	{

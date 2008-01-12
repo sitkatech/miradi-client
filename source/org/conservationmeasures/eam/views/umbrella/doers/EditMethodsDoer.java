@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
 
-public class EditMethodsDoer extends AbstractEditDoer
+public class EditMethodsDoer extends AbstractPopUpEditDoer
 {
 	protected int getTypeToFilterOn()
 	{
