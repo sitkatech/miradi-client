@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class TeamCreateMemberDoer extends ObjectsDoer
 {
@@ -37,10 +36,6 @@ public class TeamCreateMemberDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandBeginTransaction());
 			ProjectResource resource = createBlankResource();
 			addTeamMemberRole(resource);
-			
-			ObjectPicker picker = getPicker();
-			if(picker != null)
-				picker.ensureObjectVisible(resource.getRef());
 		}
 		catch (Exception e)
 		{
