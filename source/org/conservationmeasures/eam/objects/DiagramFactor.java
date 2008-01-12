@@ -230,6 +230,15 @@ public class DiagramFactor extends BaseObject
 		return groupBoxDiagramFactorRef;
 	}
 	
+	public ORefList getSelfAndChildren()
+	{
+		ORefList selfAndChildren = new ORefList(getRef());
+		if (isGroupBoxFactor())
+			selfAndChildren.addAll(getGroupBoxChildrenRefs());
+		
+		return selfAndChildren;
+	}
+	
 	public ORefList getSelfOrChildren()
 	{
 		if (isGroupBoxFactor())
