@@ -56,7 +56,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramProjectPreferencesPanel.dispose();
 		diagramProjectPreferencesPanel = null;
 		
-		threatRatingPreferencesPanel.dispose();
+		if(threatRatingPreferencesPanel != null)
+			threatRatingPreferencesPanel.dispose();
 		threatRatingPreferencesPanel = null;
 		super.dispose();
 	}
@@ -66,7 +67,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JTabbedPane tabPane = new PanelTabbedPane();
 		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram View", createDiagramTab());
-		tabPane.addTab("Threat Rating View", createThreatRatingTab());
+		if(project.isOpen())
+			tabPane.addTab("Threat Rating View", createThreatRatingTab());
 		return tabPane;
 	}
 	
