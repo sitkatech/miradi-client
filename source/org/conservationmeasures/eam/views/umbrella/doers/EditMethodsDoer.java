@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import org.conservationmeasures.eam.dialogs.activity.MethodListManagementPanel;
+import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -29,10 +30,10 @@ public class EditMethodsDoer extends AbstractEditDoer
 		return EAM.text("Edit Methods");
 	}
 
-	protected MethodListManagementPanel getManagementPanel() throws Exception
+	protected ObjectListManagementPanel getManagementPanel() throws Exception
 	{
 		ORef indicatorRef = getPicker().getSelectionHierarchy().getRefForType(Indicator.getObjectType());
-		MethodListManagementPanel panel = new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
-		return panel;
+
+		return new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
 	}
 }
