@@ -351,6 +351,7 @@ public class Actions
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
 		registerAction(new ActionDiagramProperties(mainWindow));
+		registerAction(new ActionEditProgressReports(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
