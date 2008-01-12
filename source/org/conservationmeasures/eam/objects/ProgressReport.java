@@ -59,6 +59,11 @@ public class ProgressReport extends BaseObject
 		return new ORefList();
 	}
 	
+	public String toString()
+	{
+		return getLabel();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		if (ref.getObjectType() == ObjectType.PROGRESS_REPORT)
