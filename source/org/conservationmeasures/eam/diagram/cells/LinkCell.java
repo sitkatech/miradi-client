@@ -15,8 +15,11 @@ import org.conservationmeasures.eam.diagram.BendPointSelectionHelper;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.PointList;
@@ -139,6 +142,22 @@ public class LinkCell extends EAMGraphCell implements Edge
 		if(!getTo().isTarget())
 			return true;
 		return layerManager.areTargetLinksVisible();
+	}
+	
+	public boolean isLinkedToAnySelectedFactor(DiagramComponent diagram) throws Exception
+	{
+		IdList listOfGroupBoxesAndChildren = new IdList(DiagramFactor.getObjectType());
+		listOfGroupBoxesAndChildren.addAll(from.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactor.getObjectType()));
+		listOfGroupBoxesAndChildren.addAll(to.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactor.getObjectType()));
+		for (int i = 0; i < listOfGroupBoxesAndChildren.size(); ++i)
+		{			
+			DiagramFactorId diagramFactorId = new DiagramFactorId( listOfGroupBoxesAndChildren.get(i).asInt());
+			FactorCell factorCell = diagram.getDiagramModel().getFactorCellById(diagramFactorId);
+			if (diagram.isCellSelected(factorCell))
+					return true;
+		}
+		
+		return false;
 	}
 	
 	private void setTail(int arrowStyle)

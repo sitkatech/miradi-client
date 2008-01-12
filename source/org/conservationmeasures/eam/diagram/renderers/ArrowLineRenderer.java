@@ -25,6 +25,7 @@ import java.awt.geom.Rectangle2D;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -278,10 +279,15 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(diagram == null)
 			return false;
 		
-		boolean isFromFactorSelected = diagram.isCellSelected(getLinkCell().getFrom());
-		boolean isToFactorSelected = diagram.isCellSelected(getLinkCell().getTo());
-		
-		return (isFromFactorSelected || isToFactorSelected);
+		try
+		{
+			return getLinkCell().isLinkedToAnySelectedFactor(diagram);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}		
 	}
 
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
