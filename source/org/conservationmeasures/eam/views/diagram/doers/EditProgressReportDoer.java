@@ -5,19 +5,30 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
+import org.conservationmeasures.eam.dialogs.progressReport.ProgressReportManagementPanel;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.views.umbrella.doers.AbstractEditDoer;
 
-public class EditProgressReportDoer extends ObjectsDoer
+public class EditProgressReportDoer extends AbstractEditDoer
 {
 	public boolean isAvailable()
 	{
 		return false;
 	}
-	
-	public void doIt() throws CommandFailedException
+
+	protected String getDialogTitle()
 	{
-		if (!isAvailable())
-			return;
+		return EAM.text("Edit Progress Reports");
 	}
-}
+	
+	protected ObjectListManagementPanel getManagementPanel() throws Exception
+	{
+		ORef strategyRef = getPicker().getSelectionHierarchy().getRefForType(Strategy.getObjectType());
+		
+		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, getMainWindow().getActions());
+	}
+}	
+

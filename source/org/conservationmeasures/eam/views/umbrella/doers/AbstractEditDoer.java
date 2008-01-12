@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella.doers;
 
-import org.conservationmeasures.eam.dialogs.activity.MethodListManagementPanel;
 import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -35,5 +34,5 @@ abstract public class AbstractEditDoer extends ObjectsDoer
 
 	abstract protected String getDialogTitle();
 
-	abstract protected MethodListManagementPanel getManagementPanel() throws Exception;
+	abstract protected ObjectListManagementPanel getManagementPanel() throws Exception;
 }
