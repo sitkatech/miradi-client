@@ -934,6 +934,12 @@ public class DiagramModel extends DefaultGraphModel
 		toBackScopeBox();
 	}
 
+	public void toBackGroupBox(Object[] groupBoxesToBack)
+	{
+		toBack(groupBoxesToBack);
+		toBackScopeBox();
+	}
+	
 	public void toBackScopeBox()
 	{
 		toBack(new Object[] {getProjectScopeBox()});
