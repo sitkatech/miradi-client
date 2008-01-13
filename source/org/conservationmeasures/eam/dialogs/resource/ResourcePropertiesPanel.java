@@ -116,7 +116,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	private void updateVisibilityOfRoleCodeField()
 	{
 		BaseId idBeingEdited = getObjectIdForType(ProjectResource.getObjectType());
-		if(idBeingEdited == null)
+		if(idBeingEdited == null || idBeingEdited.isInvalid())
 			return;
 		
 		ORef ref = new ORef(ProjectResource.getObjectType(), idBeingEdited);
