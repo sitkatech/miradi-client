@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -34,17 +35,25 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		try
 		{
 			ObjectListManagementPanel panel = getManagementPanel();
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
-			Utilities.centerDlg(dialog);
-			panel.updateSplitterLocation();
-			dialog.setVisible(true);			
+			if(getView().isFloatingDialogVisible())
+			{
+				ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
+				Utilities.centerDlg(dialog);
+				panel.updateSplitterLocation();
+				dialog.setVisible(true);			
+			}
+			else
+			{
+				ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), panel, getDialogTitle());
+				getView().showFloatingPropertiesDialog(dialog);
+			}
 		}
 		catch(Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
 	}
-	
+
 	abstract protected int getTypeToFilterOn();
 
 	abstract protected String getDialogTitle();

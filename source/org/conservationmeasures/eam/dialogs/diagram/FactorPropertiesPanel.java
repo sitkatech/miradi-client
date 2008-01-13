@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.activity.ActivityListManagementPanel;
-import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.base.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
@@ -55,7 +56,7 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 import org.martus.swing.UiLabel;
 
-public class FactorPropertiesPanel extends DisposablePanel implements CommandExecutedListener
+public class FactorPropertiesPanel extends ModelessDialogPanel implements CommandExecutedListener
 {
 	public FactorPropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
@@ -278,6 +279,15 @@ public class FactorPropertiesPanel extends DisposablePanel implements CommandExe
 		return diagram;
 	}
 
+	public BaseObject getObject()
+	{
+		return currentDiagramFactor;
+	}
+
+	public String getPanelDescription()
+	{
+		return EAM.text("Factor Properties");
+	}
 
 	public void updateAllSplitterLocations()
 	{
