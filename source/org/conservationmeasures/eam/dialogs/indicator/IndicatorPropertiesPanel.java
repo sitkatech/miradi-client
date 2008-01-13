@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.dialogs.indicator;
 
 import org.conservationmeasures.eam.actions.ActionEditMethods;
 import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -32,8 +34,10 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.INDICATOR, idToShow);
 
-		addField(createStringField(Indicator.TAG_SHORT_LABEL,10));
-		addField(createStringField(Indicator.TAG_LABEL));
+		ObjectDataInputField shortLabelField = createStringField(Indicator.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
+		ObjectDataInputField labelField = createStringField(Indicator.getObjectType(), Indicator.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text("Indicator"), new IndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		
