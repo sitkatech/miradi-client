@@ -185,6 +185,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		super.clear();
 		indicatorIds = new IdListData(Indicator.getObjectType());
 		description = new StringData();
+		details = new StringData();
 		keyEcologicalAttributeType = new StringData();
 		shortLabel = new StringData();
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
@@ -193,6 +194,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
+		addField(TAG_DETAILS, details);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
@@ -203,6 +205,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
+	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
 	public static final String PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE = "KeyEcologicalAttributeTypeLabel";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
@@ -212,6 +215,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	private IdListData indicatorIds;
 	private StringData description;
+	private StringData details;
 	private StringData keyEcologicalAttributeType;
 	private StringData shortLabel;
 	private PseudoStringData viabilityStatus;

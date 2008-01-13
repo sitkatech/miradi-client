@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.KeyEcologicalAttributeIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,21 +23,20 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanel
 	public TargetViabilityKeaPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
-	
-		createKeaPropertiesPanel();
+
+		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createStringField(KeyEcologicalAttribute.TAG_LABEL);		
+		addFieldsOnOneLine(EAM.text("KEA"), new KeyEcologicalAttributeIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
+		
+		addField(createMultilineField(KeyEcologicalAttribute.TAG_DETAILS));
+		addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
+		
 		updateFieldsFromProject();
 	}
 	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Key Ecological Attribute Properties");
-	}
-
-	private void createKeaPropertiesPanel()
-	{
-		addField(createStringField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_LABEL));
-		addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
-		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
-
 	}
 }
