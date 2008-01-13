@@ -60,7 +60,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{shortLabelField, labelField});
 
 		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
-		addField(createStringField(Factor.TAG_TEXT));
 		
 		if (getFactor().isDirectThreat())
 		{
@@ -89,11 +88,14 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
-		addField(createMultilineField(Factor.TAG_COMMENT));		
+		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE));
+		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR));
+		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE));
+		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
 		
+		addField(createStringField(Factor.TAG_DETAIL));
+		addField(createStringField(Factor.TAG_TEXT));
+		addField(createMultilineField(Factor.TAG_COMMENT));		
 		
 		if(getFactor().isTarget())
 		{
