@@ -75,6 +75,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 

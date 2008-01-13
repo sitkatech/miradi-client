@@ -383,6 +383,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 
@@ -423,6 +424,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 	
@@ -515,6 +517,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 

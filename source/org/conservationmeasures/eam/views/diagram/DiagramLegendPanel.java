@@ -278,6 +278,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		finally
 		{
 			mainWindow.allowActionUpdates();
+			mainWindow.updateActionsAndStatusBar();
 		}
 	}
 		
