@@ -47,6 +47,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
 		propertiesPanel = panel;
+		propertiesPanel.setObjectRefs(component.getSelectionHierarchy().toArray());
 	}
 
 	public AbstractObjectDataInputPanel getPropertiesPanel()

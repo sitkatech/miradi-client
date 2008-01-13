@@ -480,6 +480,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return getORef(orefs.length-1).getObjectId();
 	}
 	
+	protected ORefList getSelectedRefs()
+	{
+		return new ORefList(orefs);
+	}
+	
 	class Picker implements ObjectPicker
 	{
 		public Picker()
