@@ -5,7 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.MeasurementIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -20,13 +22,19 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 	public MeasurementPropertiesPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, Measurement.getObjectType(), BaseId.INVALID);
+
+		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
+		ObjectDataInputField summaryField = createStringField(Measurement.TAG_SUMMARY);
+		addFieldsOnOneLine(EAM.text("Measurement"), new MeasurementIcon(), new ObjectDataInputField[]{dateField, summaryField,});
+
+		addField(createMultilineField(Measurement.TAG_DETAIL));		
 		
-		addField(createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE));
-		addField(createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS)));  
-		addField(createIconChoiceField(ObjectType.MEASUREMENT, new TrendQuestion(Measurement.TAG_TREND)));
-		addField(createStringField(ObjectType.MEASUREMENT, Measurement.TAG_SUMMARY,STD_SHORT));
-		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_DETAIL));
+		ObjectDataInputField statusField = createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS));
+		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, new TrendQuestion(Measurement.TAG_TREND));
+		addFieldsOnOneLine(EAM.text("Current Status"), new ObjectDataInputField[]{statusField, trendField,});
+
 		addField(createChoiceField(ObjectType.MEASUREMENT,  new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
+		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
 
 		updateFieldsFromProject();
 	}
