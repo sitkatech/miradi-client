@@ -104,22 +104,26 @@ public class Stress extends BaseObject
 		super.clear();
 		
 		shortLabel = new StringData();
+		detail = new StringData();
 		scope = new ChoiceData();
 		severity = new ChoiceData();
 		pseudoStressRating = new PseudoQuestionData(new StressRatingChoiceQuestion(Stress.PSEUDO_STRESS_RATING));
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_DETAIL, detail);
 		addField(TAG_SCOPE, scope);
 		addField(TAG_SEVERITY, severity);
 		addField(PSEUDO_STRESS_RATING, pseudoStressRating);
 	}
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_SCOPE = "Scope";
 	public static final String TAG_SEVERITY = "Severity";
 	public static final String PSEUDO_STRESS_RATING = "PseudoStressRating";
 	
 	private StringData shortLabel;
+	private StringData detail;
 	private ChoiceData scope;
 	private ChoiceData severity;
 	
