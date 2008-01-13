@@ -272,6 +272,11 @@ public class Strategy extends Factor
 		return total;
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return ref.getObjectType() == getObjectType();
+	}
+	
 	void clear()
 	{
 		super.clear();
