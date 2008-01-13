@@ -48,42 +48,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		super(new BaseId(idAsInt), json);
 	}
 	
-	public static boolean is(ORef ref)
-	{
-		if (ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
-			return true;
-		
-		return false;
-	}
-	
-	public static KeyEcologicalAttribute find(ObjectManager objectManager, ORef keaRef)
-	{
-		return (KeyEcologicalAttribute) objectManager.findObject(keaRef);
-	}
-	
-	public static KeyEcologicalAttribute find(Project project, ORef keaRef)
-	{
-		return find(project.getObjectManager(), keaRef);
-	}
-	
-	void clear()
-	{
-		super.clear();
-		indicatorIds = new IdListData(Indicator.getObjectType());
-		description = new StringData();
-		keyEcologicalAttributeType = new StringData();
-		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
-		keyEcologicalAttributeTypeValue = new PseudoQuestionData(new KeyEcologicalAttributeTypeQuestion(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE));
-		viabilityStatusValue = new PseudoQuestionData(new StatusQuestion(PSEUDO_TAG_VIABILITY_STATUS));
-		
-		addField(TAG_INDICATOR_IDS, indicatorIds);
-		addField(TAG_DESCRIPTION, description);
-		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
-		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
-		addField(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, keyEcologicalAttributeTypeValue);
-		addField(PSEUDO_TAG_VIABILITY_STATUS_VALUE, viabilityStatusValue);
-	}
-	
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
@@ -198,6 +162,45 @@ public class KeyEcologicalAttribute extends BaseObject
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		if (ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return true;
+		
+		return false;
+	}
+	
+	public static KeyEcologicalAttribute find(ObjectManager objectManager, ORef keaRef)
+	{
+		return (KeyEcologicalAttribute) objectManager.findObject(keaRef);
+	}
+	
+	public static KeyEcologicalAttribute find(Project project, ORef keaRef)
+	{
+		return find(project.getObjectManager(), keaRef);
+	}
+	
+	void clear()
+	{
+		super.clear();
+		indicatorIds = new IdListData(Indicator.getObjectType());
+		description = new StringData();
+		keyEcologicalAttributeType = new StringData();
+		shortLabel = new StringData();
+		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
+		keyEcologicalAttributeTypeValue = new PseudoQuestionData(new KeyEcologicalAttributeTypeQuestion(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE));
+		viabilityStatusValue = new PseudoQuestionData(new StatusQuestion(PSEUDO_TAG_VIABILITY_STATUS));
+		
+		addField(TAG_INDICATOR_IDS, indicatorIds);
+		addField(TAG_DESCRIPTION, description);
+		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
+		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
+		addField(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, keyEcologicalAttributeTypeValue);
+		addField(PSEUDO_TAG_VIABILITY_STATUS_VALUE, viabilityStatusValue);
+	}
+		
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
@@ -207,11 +210,11 @@ public class KeyEcologicalAttribute extends BaseObject
 
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
-	IdListData indicatorIds;
-	StringData description;
-	StringData keyEcologicalAttributeType;
-	PseudoStringData viabilityStatus;
-	PseudoQuestionData keyEcologicalAttributeTypeValue;
-	PseudoQuestionData viabilityStatusValue;
-
+	private IdListData indicatorIds;
+	private StringData description;
+	private StringData keyEcologicalAttributeType;
+	private StringData shortLabel;
+	private PseudoStringData viabilityStatus;
+	private PseudoQuestionData keyEcologicalAttributeTypeValue;
+	private PseudoQuestionData viabilityStatusValue;
 }
