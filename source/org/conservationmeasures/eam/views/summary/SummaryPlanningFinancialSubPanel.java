@@ -25,8 +25,8 @@ public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Currency"), fields);
 		
 		addField(createNumericField(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES, 2));
-		addField(createNumericField(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING));
-		addField(createNumericField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
+		addField(createCurrencyField(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING));
+		addField(createCurrencyField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT));
 		addField(createStringField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES));
 		addField(createMultilineField(ProjectMetadata.TAG_FINANCIAL_COMMENTS));
 		
