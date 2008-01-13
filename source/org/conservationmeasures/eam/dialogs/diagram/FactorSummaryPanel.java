@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardDefineTa
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
@@ -57,7 +58,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createStringField(Factor.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{shortLabelField, labelField});
+		
+		//TODO extract a local factor var. instead of getFactor
+		addFieldsOnOneLine(FactorType.getFactorTypeLabel(getFactor()), FactorType.getFactorIcon(getFactor()), new ObjectDataInputField[]{shortLabelField, labelField});
 
 		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
 		
