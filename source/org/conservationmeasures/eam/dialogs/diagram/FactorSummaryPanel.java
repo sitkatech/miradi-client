@@ -91,14 +91,12 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 
+		addField(createMultilineField(Factor.TAG_DETAIL));
+		
 		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE));
 		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR));
 		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE));
 		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
-		
-		addField(createStringField(Factor.TAG_DETAIL));
-		addField(createStringField(Factor.TAG_TEXT));
-		addField(createMultilineField(Factor.TAG_COMMENT));		
 		
 		if(getFactor().isTarget())
 		{
@@ -114,6 +112,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new TargetIcon();
 			updateEditabilityOfTargetStatusField();
 		}
+				
+		addField(createStringField(Factor.TAG_TEXT));
+		addField(createMultilineField(Factor.TAG_COMMENT));		
 		
 		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
 		
