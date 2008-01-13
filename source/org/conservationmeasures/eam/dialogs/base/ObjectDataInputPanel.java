@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -89,8 +90,22 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		addFieldComponent(box);
 		return field;
 	}
-
+	
+	protected void addFieldsOnOneLine(String label, Icon icon, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fields);		
+		addLabelWithIcon(label, icon);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldsOnOneLine(String label, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fields);
+		addLabel(label);
+		add(fieldPanel);
+	}
+	
+	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = new OneRowPanel();
 		for(int i = 0; i < fields.length; ++i)
@@ -99,8 +114,8 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
 			fieldPanel.add(fields[i].getComponent());
 		}
-		addLabel(label);
-		add(fieldPanel);
+		
+		return fieldPanel;
 	}
 
 	protected void addFieldWithEditButton(String label, ObjectDataInputField field, EAMAction action)
@@ -125,6 +140,11 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
+	public void addLabelWithIcon(String translatedLabelText, Icon icon)
+	{
+		addLabel(getORef(0).getObjectType(), translatedLabelText, icon);
+	}
+	
 	public void addLabel(String translatedLabelText)
 	{
 		addLabel(getORef(0).getObjectType(), translatedLabelText);
@@ -135,7 +155,13 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		UiLabel label = new PanelFieldLabel(objectType, translatedLabelText);
 		addLabel(label);
 	}
-
+	
+	public void addLabel(int objectType, String translatedLabelText, Icon icon)
+	{
+		UiLabel label = new PanelFieldLabel(objectType, translatedLabelText);
+		label.setIcon(icon);
+		addLabel(label);
+	}
 
 	public void addLabel(UiLabel label)
 	{
