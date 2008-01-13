@@ -87,6 +87,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 

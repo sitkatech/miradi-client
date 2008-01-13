@@ -38,6 +38,7 @@ public class SelectAllDoer extends ViewDoer
 		finally
 		{
 			getMainWindow().allowActionUpdates();
+			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
 }
