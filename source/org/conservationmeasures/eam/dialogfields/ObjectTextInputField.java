@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,7 +25,6 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTextArea;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
@@ -150,11 +148,9 @@ public class ObjectTextInputField extends ObjectDataInputField
 			menu.addSeparator();
 			
 			Action undoAction = EAM.getMainWindow().getActions().get(ActionUndo.class);
-			KeyBinder.bindKey(field, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
 			menu.add(new MenuItemWithoutLocation(undoAction));
 			
 			Action redoAction = EAM.getMainWindow().getActions().get(ActionRedo.class);
-			KeyBinder.bindKey(field, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
 			menu.add(new MenuItemWithoutLocation(redoAction));
 			
 			return menu;

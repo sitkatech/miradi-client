@@ -6,12 +6,14 @@
 package org.conservationmeasures.eam.main.menu;
 
 import java.awt.HeadlessException;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionAboutBenetech;
@@ -160,8 +162,10 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));
 		menu.setMnemonic(KeyEvent.VK_E);
 		
-		addMenuItem(actions, menu, ActionUndo.class, KeyEvent.VK_U);
-		addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
+		JMenuItem undo = addMenuItem(actions, menu, ActionUndo.class, KeyEvent.VK_U);
+		undo.setAccelerator(KeyStroke.getKeyStroke('Z', InputEvent.CTRL_DOWN_MASK));
+		JMenuItem redo = addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
+		redo.setAccelerator(KeyStroke.getKeyStroke('Y', InputEvent.CTRL_DOWN_MASK));
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_T);

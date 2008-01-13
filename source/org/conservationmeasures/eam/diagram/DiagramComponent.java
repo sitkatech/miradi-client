@@ -32,9 +32,7 @@ import org.conservationmeasures.eam.actions.ActionNudgeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeRight;
 import org.conservationmeasures.eam.actions.ActionNudgeUp;
 import org.conservationmeasures.eam.actions.ActionPaste;
-import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
-import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -499,10 +497,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Action helpAction = actions.get(ActionContextualHelp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-		Action undoAction = actions.get(ActionUndo.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
-		Action redoAction = actions.get(ActionRedo.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
 		Action cutAction = actions.get(ActionCut.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
 		Action copyAction = actions.get(ActionCopy.class);
