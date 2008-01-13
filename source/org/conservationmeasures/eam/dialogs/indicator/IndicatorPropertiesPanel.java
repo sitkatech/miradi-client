@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
-import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 
@@ -50,8 +49,6 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Measurement.getObjectType(), Measurement.TAG_SUMMARY));
 		addField(createMultilineField(Measurement.getObjectType(), Measurement.TAG_DETAIL));
 		addField(createIconChoiceField(Measurement.getObjectType(), new TrendQuestion(Measurement.TAG_TREND)));
-		addField(createChoiceField(Measurement.getObjectType(), new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
-		
 				
 		updateFieldsFromProject();
 	}
