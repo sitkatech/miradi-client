@@ -13,5 +13,6 @@ public class TncOperatingUnitsQuestion extends TwoLevelQuestion
 	public TncOperatingUnitsQuestion(String tagToUse)
 	{
 		super(tagToUse, "Operating Unit(s)", new TncOperatingUnitsFileLoader(TwoLevelFileLoader.TNC_OPERATING_UNITS_FILE));
+		sortChoices();
 	}
 }
