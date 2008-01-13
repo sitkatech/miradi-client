@@ -26,7 +26,7 @@ public class ObjectAdjustableStringInputField extends ObjectStringInputField
 
 	class DocumentEventHandler implements  UndoableEditListener
 	{
-			public void undoableEditHappened(UndoableEditEvent e)
+		public void undoableEditHappened(UndoableEditEvent e)
 		{
 			Document document = (Document)e.getSource();
 			if (document.getLength()<=columns)
