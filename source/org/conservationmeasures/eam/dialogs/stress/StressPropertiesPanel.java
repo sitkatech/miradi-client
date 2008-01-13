@@ -34,7 +34,7 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), new StressRatingChoiceQuestion(Stress.PSEUDO_STRESS_RATING)));
-	
+		addField(createMultilineField(Stress.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
 
