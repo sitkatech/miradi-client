@@ -24,27 +24,19 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		super(projectToUse, getInvalidTargetRef());			
 		setLayout(new OneColumnGridLayout());
 		
-		TargetViabilityIndicatorSubPanel indicatorSubPanel = new TargetViabilityIndicatorSubPanel(projectToUse, getInvalidTargetRef());
-		indicatorSubPanel.setBorder(BorderFactory.createTitledBorder(indicatorSubPanel.getPanelDescription()));
-		addSubPanel(indicatorSubPanel);
-		add(indicatorSubPanel);
-
-		IndicatorViabilityRatingsSubPanel viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef());
-		viabilityRatingsSubPanel.setBorder(BorderFactory.createTitledBorder(viabilityRatingsSubPanel.getPanelDescription()));
-		addSubPanel(viabilityRatingsSubPanel);
-		add(viabilityRatingsSubPanel);
-
-		IndicatorFutureStatusSubPanel indicatorFutureStatusSubPanel = new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef());
-		indicatorFutureStatusSubPanel.setBorder(BorderFactory.createTitledBorder(indicatorFutureStatusSubPanel.getPanelDescription()));
-		addSubPanel(indicatorFutureStatusSubPanel);
-		add(indicatorFutureStatusSubPanel);
-
-		IndicatorMonitoringPlanSubPanel indicatorMonitoringPlanSubPanel = new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef());
-		indicatorMonitoringPlanSubPanel.setBorder(BorderFactory.createTitledBorder(indicatorMonitoringPlanSubPanel.getPanelDescription()));
-		addSubPanel(indicatorMonitoringPlanSubPanel);
-		add(indicatorMonitoringPlanSubPanel);
+		addSubIndicatorPanel(new TargetViabilityIndicatorSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubIndicatorPanel(new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubIndicatorPanel(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubIndicatorPanel(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
 		
 		updateFieldsFromProject();
+	}
+
+	private void addSubIndicatorPanel(ObjectDataInputPanel subPanel)
+	{
+		subPanel.setBorder(BorderFactory.createTitledBorder(subPanel.getPanelDescription()));
+		addSubPanel(subPanel);
+		add(subPanel);
 	}
 
 	private static ORef getInvalidTargetRef()
