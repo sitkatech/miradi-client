@@ -18,10 +18,10 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		super(tagToUse, labelToUse);
 		
 		twoLevelFileLoader = twoLevelFileLoaderToUse;
-		loadChoices();
+		choices = loadChoices();
 	}
 	
-	private void loadChoices()
+	private ChoiceItem[] loadChoices()
 	{
 		try 
 		{
@@ -35,18 +35,17 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 				chocies.add(choice);
 			}
 			
-			choices = (ChoiceItem[])chocies.toArray(new ChoiceItem[0]);
+			return (ChoiceItem[])chocies.toArray(new ChoiceItem[0]);
 		}
 		catch (Exception e)
 		{
-			choices = new ChoiceItem[0];
 			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoader.getFileName());
 		}
 	}
 	
 	public void sortChoices()
 	{
-		Arrays.sort(choices);
+		Arrays.sort(getChoices());
 	}
 	
 	public ChoiceItem[] getChoices()
