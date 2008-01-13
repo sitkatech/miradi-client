@@ -438,6 +438,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		activePropertiesPanel = null;
 		activePropertiesDlg = null;
 	}
+	
+	public boolean isFloatingDialogVisible()
+	{
+		return (activePropertiesDlg != null);
+	}
 
 	protected void forceLayoutSoSplittersWork()
 	{
