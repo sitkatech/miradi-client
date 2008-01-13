@@ -5,7 +5,27 @@
 */ 
 package org.conservationmeasures.eam.diagram.factortypes;
 
+import javax.swing.Icon;
+
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.GroupBoxIcon;
+import org.conservationmeasures.eam.icons.IntermediateResultIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
+import org.conservationmeasures.eam.icons.TextBoxIcon;
+import org.conservationmeasures.eam.icons.ThreatReductionResultIcon;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.GroupBox;
+import org.conservationmeasures.eam.objects.IntermediateResult;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.TextBox;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 
 
 
@@ -64,6 +84,68 @@ public abstract class FactorType
 	public int hashCode()
 	{
 		return getClass().getName().hashCode();
+	}
+	
+	public static String getFactorTypeLabel(Factor factor)
+	{
+		if(factor.isDirectThreat())
+			return EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT);
+		
+		if (factor.isContributingFactor())
+			return EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
+		
+		if (factor.isStrategy())
+			return EAM.fieldLabel(Strategy.getObjectType(), Strategy.OBJECT_NAME);
+		
+		if (factor.isTarget())
+			return EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME);
+		
+		if (factor.isIntermediateResult())
+			return EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME);
+
+		if (factor.isThreatReductionResult())
+			return EAM.fieldLabel(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME);
+		
+		if (factor.isTextBox())
+			return EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME);
+		
+		if (factor.isGroupBox())
+			return EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME);
+		
+		throw new RuntimeException("Unknown factor type " + factor.getRef());
+	}
+
+	
+	public static Icon getFactorIcon(Factor factor) throws Exception
+	{
+		if (factor.isDirectThreat())
+			return new DirectThreatIcon();
+		
+		if (factor.isContributingFactor())
+			return new ContributingFactorIcon();
+		
+		if (factor.isStrategy())
+			return new StrategyIcon();
+		
+		if (factor.isTarget())
+			return new TargetIcon();
+		
+		if (factor.isStress())
+			return new StressIcon();
+		
+		if (factor.isIntermediateResult())
+			return new IntermediateResultIcon();
+		
+		if (factor.isThreatReductionResult())
+			return new ThreatReductionResultIcon();
+		
+		if (factor.isTextBox())
+			return new TextBoxIcon();
+		
+		if (factor.isGroupBox())
+			return new GroupBoxIcon();
+		
+		throw new RuntimeException("Unknown factor type: " + factor.getRef());
 	}
 	
 	public static int getFactorTypeFromString(String factorType) throws Exception
