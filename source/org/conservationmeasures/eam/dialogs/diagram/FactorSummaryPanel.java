@@ -54,9 +54,12 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = factorToEdit;
+		
+		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createStringField(Factor.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{shortLabelField, labelField});
 
 		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
-		addField(createShortStringField(Factor.TAG_SHORT_LABEL));
 		addField(createStringField(Factor.TAG_TEXT));
 		
 		if (getFactor().isDirectThreat())
