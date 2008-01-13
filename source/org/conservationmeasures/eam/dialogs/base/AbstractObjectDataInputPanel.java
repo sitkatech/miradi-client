@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -144,6 +145,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void addSubPanel(AbstractObjectDataInputPanel subPanel)
 	{
 		subPanels.add(subPanel);
+	}
+	
+	public void addSubPanelWithTitledBorder(ObjectDataInputPanel subPanel)
+	{
+		subPanel.setBorder(BorderFactory.createTitledBorder(subPanel.getPanelDescription()));
+		addSubPanel(subPanel);
+		add(subPanel);
 	}
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)

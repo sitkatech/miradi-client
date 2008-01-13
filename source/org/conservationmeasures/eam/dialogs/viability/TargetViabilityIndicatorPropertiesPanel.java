@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
-import javax.swing.BorderFactory;
-
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -24,19 +22,12 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		super(projectToUse, getInvalidTargetRef());			
 		setLayout(new OneColumnGridLayout());
 		
-		addSubIndicatorPanel(new TargetViabilityIndicatorSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubIndicatorPanel(new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubIndicatorPanel(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubIndicatorPanel(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new TargetViabilityIndicatorSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
 		
 		updateFieldsFromProject();
-	}
-
-	private void addSubIndicatorPanel(ObjectDataInputPanel subPanel)
-	{
-		subPanel.setBorder(BorderFactory.createTitledBorder(subPanel.getPanelDescription()));
-		addSubPanel(subPanel);
-		add(subPanel);
 	}
 
 	private static ORef getInvalidTargetRef()
