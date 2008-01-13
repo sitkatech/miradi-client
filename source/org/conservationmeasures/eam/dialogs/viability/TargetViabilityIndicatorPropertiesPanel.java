@@ -37,10 +37,13 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		addSubPanel(viabilityRatingsSubPanel);
 		add(viabilityRatingsSubPanel);
 
+		IndicatorFutureStatusSubPanel indicatorFutureStatusSubPanel = new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef());
+		indicatorFutureStatusSubPanel.setBorder(BorderFactory.createTitledBorder(indicatorFutureStatusSubPanel.getPanelDescription()));
+		addSubPanel(indicatorFutureStatusSubPanel);
+		add(indicatorFutureStatusSubPanel);
+
 		
-		
-		
-		
+				
 		addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		
