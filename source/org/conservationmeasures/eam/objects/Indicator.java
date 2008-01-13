@@ -296,12 +296,15 @@ public class Indicator extends BaseObject
 		indicatorThreshold = new StringMapData();
 		ratingSource= new ChoiceData();
 		measurementRefs = new ORefListData();
+		detail = new StringData();
+		comment = new StringData();
+		viabilityRatingsComment = new StringData();
 		
 		futureStatusRating = new ChoiceData();
 		futureStatusDate = new DateData();;
 		futureStatusSummary = new StringData();
 		futureStatusDetail = new StringData();
-		
+		futureStatusComment = new StringData();
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
@@ -324,11 +327,15 @@ public class Indicator extends BaseObject
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
+		addField(TAG_DETAIL, detail);
+		addField(TAG_COMMENT, comment);
+		addField(TAG_VIABILITY_RATINGS_COMMENT, viabilityRatingsComment);
 		
 		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
 		addField(TAG_FUTURE_STATUS_SUMMARY, futureStatusSummary);
 		addField(TAG_FUTURE_STATUS_DETAIL, futureStatusDetail);
+		addField(TAG_FUTURE_STATUS_COMMENT, futureStatusComment);
 		
 		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
@@ -352,11 +359,15 @@ public class Indicator extends BaseObject
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
-	
+	public static final String TAG_DETAIL = "Detail";
+	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_VIABILITY_RATINGS_COMMENT = "ViabilityRatingsComment";
+
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
+	public static final String TAG_FUTURE_STATUS_COMMENT = "FutureStatusComment";
 
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
@@ -385,11 +396,15 @@ public class Indicator extends BaseObject
 	private StringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
 	private ORefListData measurementRefs;
+	private StringData detail;
+	private StringData comment;
+	private StringData viabilityRatingsComment;
 	
 	private ChoiceData futureStatusRating;
 	private DateData futureStatusDate;
 	private StringData futureStatusSummary;
 	private StringData futureStatusDetail;
+	private StringData futureStatusComment;
 	
 	private PseudoStringData multiLineTargets;
 	private PseudoStringData multiLineDirectThreats;
