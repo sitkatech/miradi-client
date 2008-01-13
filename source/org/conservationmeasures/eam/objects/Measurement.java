@@ -83,7 +83,8 @@ public class Measurement extends BaseObject
 		date= new DateData();
 		summary= new StringData();
 		detail= new StringData();
-		statusConfidence = new ChoiceData();		
+		statusConfidence = new ChoiceData();
+		comment = new StringData();
 
 		addField(TAG_TREND, trend);
 		addField(TAG_STATUS, status);
@@ -91,6 +92,7 @@ public class Measurement extends BaseObject
 		addField(TAG_SUMMARY, summary);
 		addField(TAG_DETAIL, detail);
 		addField(TAG_STATUS_CONFIDENCE, statusConfidence);
+		addField(TAG_COMMENT, comment);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
@@ -101,6 +103,7 @@ public class Measurement extends BaseObject
 	public static final String TAG_SUMMARY = "Summary";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
+	public static final String TAG_COMMENT = "Comment";
 
 	public static final String META_COLUMN_TAG = "MeasurementMetaColumnTag";
 
@@ -110,4 +113,5 @@ public class Measurement extends BaseObject
 	private StringData summary;
 	private StringData detail;
 	private ChoiceData statusConfidence;
+	private StringData comment;
 }
