@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.subTarget;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.SubTargetIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.SubTarget;
@@ -20,7 +21,7 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 			
 		ObjectDataInputField shortLabelField = createShortStringField(SubTarget.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createStringField(SubTarget.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Nested Target"), new ObjectDataInputField[]{shortLabelField, labelField});
+		addFieldsOnOneLine(EAM.text("Nested Target"), new SubTargetIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(SubTarget.TAG_DETAIL));
 		
