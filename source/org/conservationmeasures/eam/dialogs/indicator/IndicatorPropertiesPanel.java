@@ -29,11 +29,6 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		this(projectToUse, new IndicatorId(BaseId.INVALID.asInt()));
 	}
 	
-	public IndicatorPropertiesPanel(Project projectToUse, Indicator indicator) throws Exception
-	{
-		this(projectToUse, (IndicatorId)indicator.getId());
-	}
-	
 	public IndicatorPropertiesPanel(Project projectToUse, IndicatorId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.INDICATOR, idToShow);
