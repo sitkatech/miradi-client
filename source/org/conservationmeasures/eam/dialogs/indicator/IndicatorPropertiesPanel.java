@@ -38,6 +38,13 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField labelField = createStringField(Indicator.getObjectType(), Indicator.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Indicator"), new IndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
+		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL));
+		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_COMMENT));
+		
+		//FIXME finish layout
+		
+		
+		
 		addField(createRatingChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
 		
