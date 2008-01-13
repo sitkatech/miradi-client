@@ -21,7 +21,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId) throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetId));
+		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetId));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
@@ -37,7 +37,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	
-	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, ViabilityTreeModel model) throws Exception
+	private static TargetViabililtyTreePanel getTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model) throws Exception
 	{
 		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(projectToUse, model);
 		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
