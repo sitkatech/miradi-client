@@ -866,6 +866,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 				cmd.getFieldTag().equals(DiagramFactor.TAG_SIZE));
 	}
 
+	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
+	{
+		if(nodePropertiesDlg != null)
+			disposeOfNodePropertiesDialog();
+		super.showFloatingPropertiesDialog(newDialog);
+	}
+
 	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
@@ -880,7 +887,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
 		
-		showFloatingPropertiesDialog(nodePropertiesDlg);
+		Utilities.centerDlg(nodePropertiesDlg);
+		nodePropertiesDlg.setVisible(true);
 		nodePropertiesPanel.updateAllSplitterLocations();
 	}
 
