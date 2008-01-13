@@ -115,7 +115,10 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public ORefList getSelectionHierarchy()
 	{
-		return getSelectedHierarchies()[0];
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
+		if(selectedHierarchies.length == 0)
+			return new ORefList();
+		return selectedHierarchies[0];
 	}
 	
 	public ORefList[] getSelectedHierarchies()
