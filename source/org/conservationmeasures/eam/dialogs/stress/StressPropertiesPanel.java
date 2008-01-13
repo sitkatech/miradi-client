@@ -19,21 +19,14 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 {
 	public StressPropertiesPanel(Project projectToUse) throws Exception
 	{
-		this(projectToUse, BaseId.INVALID);
-		
+		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
+	
 		addField(createStringField(Stress.TAG_LABEL));
 		addField(createStringField(Stress.TAG_SHORT_LABEL, 10));
 		addField(createRatingChoiceField(Stress.getObjectType(), new StressScopeChoiceQuestion(Stress.TAG_SCOPE)));
 		addField(createRatingChoiceField(Stress.getObjectType(), new StressSeverityChoiceQuestion(Stress.TAG_SEVERITY)));
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), new StressRatingChoiceQuestion(Stress.PSEUDO_STRESS_RATING)));
-		
-		updateFieldsFromProject();
-	}
 	
-	public StressPropertiesPanel(Project projectToUse, BaseId idToShow) throws Exception
-	{
-		super(projectToUse, ObjectType.STRESS, idToShow);
-		
 		updateFieldsFromProject();
 	}
 
