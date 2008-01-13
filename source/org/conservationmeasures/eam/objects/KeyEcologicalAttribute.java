@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
@@ -45,6 +46,24 @@ public class KeyEcologicalAttribute extends BaseObject
 	public KeyEcologicalAttribute(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		if (ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
+			return true;
+		
+		return false;
+	}
+	
+	public static KeyEcologicalAttribute find(ObjectManager objectManager, ORef keaRef)
+	{
+		return (KeyEcologicalAttribute) objectManager.findObject(keaRef);
+	}
+	
+	public static KeyEcologicalAttribute find(Project project, ORef keaRef)
+	{
+		return find(project.getObjectManager(), keaRef);
 	}
 	
 	void clear()
