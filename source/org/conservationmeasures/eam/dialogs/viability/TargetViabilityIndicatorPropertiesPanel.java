@@ -15,10 +15,7 @@ import org.conservationmeasures.eam.layout.OneColumnGridLayout;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
-import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPanel
 {
@@ -42,12 +39,10 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		addSubPanel(indicatorFutureStatusSubPanel);
 		add(indicatorFutureStatusSubPanel);
 
-		
-				
-		addField(createRatingChoiceField(ObjectType.INDICATOR,  new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
-		addField(createChoiceField(ObjectType.INDICATOR,  new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));
-		
-		addField(createMultilineField(Indicator.TAG_COMMENT));
+		IndicatorMonitoringPlanSubPanel indicatorMonitoringPlanSubPanel = new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef());
+		indicatorMonitoringPlanSubPanel.setBorder(BorderFactory.createTitledBorder(indicatorMonitoringPlanSubPanel.getPanelDescription()));
+		addSubPanel(indicatorMonitoringPlanSubPanel);
+		add(indicatorMonitoringPlanSubPanel);
 		
 		updateFieldsFromProject();
 	}
