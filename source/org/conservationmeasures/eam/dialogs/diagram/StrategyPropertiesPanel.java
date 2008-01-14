@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.dialogs.diagram;
 import org.conservationmeasures.eam.actions.ActionEditProgressReports;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -26,28 +27,34 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindow.getProject(), Strategy.getObjectType(), BaseId.INVALID);
 		
-		addField(createStringField(Strategy.TAG_SHORT_LABEL));
-		addField(createStringField(Strategy.TAG_LABEL));
-		addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-		addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-		addField(createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+		ObjectDataInputField shortLabelField = createStringField(Strategy.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
+		ObjectDataInputField labelField = createStringField(Strategy.getObjectType(), Strategy.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text("Strategy"), new StrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+
+		addField(createChoiceField(Strategy.getObjectType(), new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
+		
+		ObjectDataInputField impactField = createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING));
+		ObjectDataInputField feasibilityField = createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING));
+		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY));
+
+		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
 		ObjectsActionButton editProgressReportButton = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionEditProgressReports.class), getPicker());
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
-		addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
-	
-		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
-	
+		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
+
 		BudgetOverrideSubPanel budgetSubPanel = new BudgetOverrideSubPanel(getProject(), new ORef(Strategy.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
 
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
+		// TODO: Comments
+		
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		
 		updateFieldsFromProject();
 	}
