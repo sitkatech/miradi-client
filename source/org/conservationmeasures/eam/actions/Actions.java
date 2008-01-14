@@ -353,7 +353,7 @@ public class Actions
 		registerAction(new ActionDiagramProperties(mainWindow));
 		registerAction(new ActionEditStrategyProgressReports(mainWindow));
 		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
-		registerAction(new ActionCreateProgressReport(mainWindow));
+		registerAction(new ActionCreateStrategyProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
 	}
 	
