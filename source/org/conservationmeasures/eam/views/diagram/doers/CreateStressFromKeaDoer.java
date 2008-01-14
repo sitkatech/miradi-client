@@ -23,7 +23,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		if (!isAvailable())
 			return;
 		
-		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), getSelectedFactor().getFactorId());
+		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), getSelectedParent().getFactorId());
 		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributeListTablePanelWithoutButtons(getProject(), keyEcologicalAttributeListTableModel), EAM.text("Choose Key Ecological Attribute to Clone")))
 			super.doIt();
 	}
@@ -34,7 +34,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		CommandSetObjectData setStressLabel = new CommandSetObjectData(newlyCreatedObjectRef, Stress.TAG_LABEL, labelFromKea);
 		getProject().executeCommand(setStressLabel);
 		
-		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, getSelectedFactor());
+		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, getSelectedParent());
 	}
 
 	private String getLabelForStress()
