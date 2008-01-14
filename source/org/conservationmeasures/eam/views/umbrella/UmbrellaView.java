@@ -137,7 +137,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
-import org.conservationmeasures.eam.views.diagram.doers.CreateProgressReportDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateStrategytProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStrategyProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditIndicatorProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditStrategyProgressReportDoer;
@@ -281,7 +281,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addDoerToMap(ActionEditIndicatorProgressReports.class, new EditIndicatorProgressReportDoer());
 		addDoerToMap(ActionEditStrategyProgressReports.class, new EditStrategyProgressReportDoer());
-		addDoerToMap(ActionCreateProgressReport.class, new CreateProgressReportDoer());
+		addDoerToMap(ActionCreateProgressReport.class, new CreateStrategytProgressReportDoer());
 		addDoerToMap(ActionDeleteProgressReport.class, new DeleteStrategyProgressReportDoer());
 		
 		addDoerToMap(ActionViewSummary.class, new SwitchToSummaryViewDoer());
