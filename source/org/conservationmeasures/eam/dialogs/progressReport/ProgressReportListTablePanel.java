@@ -14,10 +14,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ProgressReportListTablePanel extends ObjectListTablePanel
 {
-	public ProgressReportListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
+	public ProgressReportListTablePanel(Project projectToUse, Actions actions, ORef nodeRef, String annotationTag)
 	{
-		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef), actions, 
-				buttonActionClasses);
+		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef, annotationTag), actions, buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {

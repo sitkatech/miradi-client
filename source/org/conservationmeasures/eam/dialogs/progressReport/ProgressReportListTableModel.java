@@ -8,16 +8,15 @@ package org.conservationmeasures.eam.dialogs.progressReport;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTableModel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProgressReport;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 
 public class ProgressReportListTableModel extends ObjectListTableModel
 {
-	public ProgressReportListTableModel(Project projectToUse, ORef nodeRef)
+	public ProgressReportListTableModel(Project projectToUse, ORef nodeRef, String annotationTag)
 	{
-		super(projectToUse, nodeRef, Strategy.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, nodeRef, annotationTag, ProgressReport.getObjectType(), COLUMN_TAGS);
 		
 		progressReportQuestion = new ProgressReportStatusQuestion(ProgressReport.TAG_PROGRESS_STATUS);
 	}

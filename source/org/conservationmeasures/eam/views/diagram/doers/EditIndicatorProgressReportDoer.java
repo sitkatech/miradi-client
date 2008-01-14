@@ -26,8 +26,8 @@ public class EditIndicatorProgressReportDoer extends AbstractPopUpEditDoer
 	
 	protected ObjectListManagementPanel getManagementPanel() throws Exception
 	{
-		ORef strategyRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
+		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, getMainWindow().getActions());
+		return new ProgressReportManagementPanel(getProject(), getMainWindow(), indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions());
 	}
 }

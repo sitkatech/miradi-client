@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ProgressReportManagementPanel extends ObjectListManagementPanel
 {
-	public ProgressReportManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public ProgressReportManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, String annotationTag, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new ProgressReportListTablePanel(projectToUse, actions, nodeRef), new ProgressReportPropertiesPanel(projectToUse));
+		super(splitPositionSaverToUse, new ProgressReportListTablePanel(projectToUse, actions, nodeRef, annotationTag), new ProgressReportPropertiesPanel(projectToUse));
 	}
 
 	public String getPanelDescription()
