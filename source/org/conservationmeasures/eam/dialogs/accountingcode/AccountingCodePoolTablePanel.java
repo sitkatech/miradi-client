@@ -10,16 +10,15 @@ import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class AccountingCodePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public AccountingCodePoolTablePanel(Project project, Actions actions)
 	{
-		super(project, ObjectType.ACCOUNTING_CODE, 
-			new AccountingCodePoolTable(new AccountingCodePoolTableModel(project)),
-			actions, buttons);
+		super(project, new AccountingCodePoolTable(new AccountingCodePoolTableModel(project)), 
+			actions,
+			buttons);
 	}
 	
 	
