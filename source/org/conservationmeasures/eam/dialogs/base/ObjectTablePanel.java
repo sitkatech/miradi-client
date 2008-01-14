@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 
 public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelectionListener
 {
-	public ObjectTablePanel(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse)
+	public ObjectTablePanel(Project projectToUse, ObjectTable tableToUse)
 	{
 		super(projectToUse, tableToUse);
 		table = tableToUse;

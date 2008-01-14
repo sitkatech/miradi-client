@@ -15,7 +15,7 @@ public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
 	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
 	{
-		super(projectToUse, objectTypeToUse, tableToUse);
+		super(projectToUse, tableToUse);
 
 		for (int i=0; i<buttonActionClasses.length; ++i)
 		{
