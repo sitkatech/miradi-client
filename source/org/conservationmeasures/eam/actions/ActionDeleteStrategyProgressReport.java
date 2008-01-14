@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDeleteProgressReport extends ObjectsAction
+public class ActionDeleteStrategyProgressReport extends ObjectsAction
 {
-	public ActionDeleteProgressReport(MainWindow mainWindowToUse)
+	public ActionDeleteStrategyProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
