@@ -11,7 +11,7 @@ abstract public class ObjectPoolTablePanel extends ObjectTablePanel
 {
 	public ObjectPoolTablePanel(Project projectToUse, int objectTypeToUse, ObjectPoolTableModel model)
 	{
-		super(projectToUse, objectTypeToUse, new ObjectPoolTable(model, DEFAULT_SORT_COLUMN));
+		super(projectToUse, new ObjectPoolTable(model, DEFAULT_SORT_COLUMN));
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;

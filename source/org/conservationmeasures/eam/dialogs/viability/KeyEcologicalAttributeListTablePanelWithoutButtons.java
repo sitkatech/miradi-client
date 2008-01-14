@@ -8,13 +8,12 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTable;
 import org.conservationmeasures.eam.dialogs.base.ObjectTableModel;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanel;
-import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
 public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectTablePanel
 {
 	public KeyEcologicalAttributeListTablePanelWithoutButtons(Project projectToUse, ObjectTableModel modelToUse)
 	{
-		super(projectToUse, KeyEcologicalAttribute.getObjectType(), new ObjectListTable(modelToUse));
+		super(projectToUse, new ObjectListTable(modelToUse));
 	}
 }
