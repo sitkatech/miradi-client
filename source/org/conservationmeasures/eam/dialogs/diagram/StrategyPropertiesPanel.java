@@ -49,7 +49,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
-		// TODO: Comments
+		addField(createMultilineField(Strategy.TAG_COMMENT));
 		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
