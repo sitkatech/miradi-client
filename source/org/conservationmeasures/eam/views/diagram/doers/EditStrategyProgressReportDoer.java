@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.umbrella.doers.AbstractPopUpEditDoer;
 
-public class EditProgressReportDoer extends AbstractPopUpEditDoer
+public class EditStrategyProgressReportDoer extends AbstractPopUpEditDoer
 {
 	protected int getTypeToFilterOn()
 	{
