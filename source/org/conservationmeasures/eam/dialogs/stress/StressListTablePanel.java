@@ -12,16 +12,15 @@ import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class StressListTablePanel extends ObjectListTablePanel
 {
 	public StressListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
 	{
-		super(projectToUse, ObjectType.STRESS, 
-				new StressListTableModel(projectToUse, nodeRef), 
-				actions, buttonActionClasses);
+		super(projectToUse, new StressListTableModel(projectToUse, nodeRef), 
+				actions, 
+				buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
