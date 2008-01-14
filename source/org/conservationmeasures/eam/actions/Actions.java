@@ -96,6 +96,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.ActionCreateIndicatorProgressReport;
 
 public class Actions
 {
@@ -352,9 +353,12 @@ public class Actions
 		registerAction(new ActionDeleteSubTarget(mainWindow));
 		registerAction(new ActionDiagramProperties(mainWindow));
 		registerAction(new ActionEditStrategyProgressReports(mainWindow));
-		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
 		registerAction(new ActionCreateStrategyProgressReport(mainWindow));
 		registerAction(new ActionDeleteStrategyProgressReport(mainWindow));
+		
+		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
+		registerAction(new ActionCreateIndicatorProgressReport(mainWindow));
+		registerAction(new ActionDeleteIndicatorProgressReport(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

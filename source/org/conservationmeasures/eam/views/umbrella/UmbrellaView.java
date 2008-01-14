@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionCopyProjectTo;
 import org.conservationmeasures.eam.actions.ActionCreateMethod;
 import org.conservationmeasures.eam.actions.ActionCreateStrategyProgressReport;
 import org.conservationmeasures.eam.actions.ActionDatabasesDemo;
+import org.conservationmeasures.eam.actions.ActionDeleteIndicatorProgressReport;
 import org.conservationmeasures.eam.actions.ActionDeleteMethod;
 import org.conservationmeasures.eam.actions.ActionDeleteStrategyProgressReport;
 import org.conservationmeasures.eam.actions.ActionEditIndicatorProgressReports;
@@ -137,7 +138,9 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
+import org.conservationmeasures.eam.views.diagram.doers.CreateIndicatortProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStrategytProgressReportDoer;
+import org.conservationmeasures.eam.views.diagram.doers.DeleteIndicatorProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStrategyProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditIndicatorProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.EditStrategyProgressReportDoer;
@@ -280,6 +283,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionShareMethod.class, new ShareMethodDoer());
 		
 		addDoerToMap(ActionEditIndicatorProgressReports.class, new EditIndicatorProgressReportDoer());
+		addDoerToMap(ActionCreateIndicatorProgressReport.class, new CreateIndicatortProgressReportDoer());
+		addDoerToMap(ActionDeleteIndicatorProgressReport.class, new DeleteIndicatorProgressReportDoer());
+		
 		addDoerToMap(ActionEditStrategyProgressReports.class, new EditStrategyProgressReportDoer());
 		addDoerToMap(ActionCreateStrategyProgressReport.class, new CreateStrategytProgressReportDoer());
 		addDoerToMap(ActionDeleteStrategyProgressReport.class, new DeleteStrategyProgressReportDoer());
