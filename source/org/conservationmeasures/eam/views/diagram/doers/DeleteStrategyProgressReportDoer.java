@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objects.ProgressReport;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 
-public class DeleteProgressReportDoer extends DeleteAnnotationDoer
+public class DeleteStrategyProgressReportDoer extends DeleteAnnotationDoer
 {
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
