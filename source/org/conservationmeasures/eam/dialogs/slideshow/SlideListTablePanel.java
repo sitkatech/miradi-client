@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Slide;
 import org.conservationmeasures.eam.objects.SlideShow;
@@ -37,7 +36,7 @@ public class SlideListTablePanel extends ObjectListTablePanel
 {
 	public SlideListTablePanel(Project project, Actions actions, ORef oref)
 	{
-		super(project, ObjectType.SLIDE, new SlideListTableModel(project, oref), actions, buttons);
+		super(project, new SlideListTableModel(project, oref), actions, buttons);
 	}
 	
 	static Class[] buttons = new Class[] {

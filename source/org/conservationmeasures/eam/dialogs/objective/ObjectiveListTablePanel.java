@@ -11,16 +11,15 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectListTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectiveListTablePanel extends ObjectListTablePanel
 {
 	public ObjectiveListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
 	{
-		super(projectToUse, ObjectType.OBJECTIVE, 
-				new ObjectiveListTableModel(projectToUse, nodeRef), 
-				actions, buttonActionClasses);
+		super(projectToUse, new ObjectiveListTableModel(projectToUse, nodeRef), 
+				actions, 
+				buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
