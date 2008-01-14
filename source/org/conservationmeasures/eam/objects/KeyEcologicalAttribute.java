@@ -162,6 +162,11 @@ public class KeyEcologicalAttribute extends BaseObject
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
 	}
 	
+	public String getShortLabel()
+	{
+		return shortLabel.get();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		if (ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
