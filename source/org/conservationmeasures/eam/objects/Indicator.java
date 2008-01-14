@@ -178,6 +178,11 @@ public class Indicator extends BaseObject
 		return measurementRefs.getORefList();
 	}
 	
+	public ORefList getProgressReportRefs()
+	{
+		return progressReportRefs.getORefList();
+	}
+	
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_TASK_IDS))
@@ -185,6 +190,9 @@ public class Indicator extends BaseObject
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
 			return Measurement.getObjectType();
+		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return ProgressReport.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -200,6 +208,9 @@ public class Indicator extends BaseObject
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_MEASUREMENT_REFS))
+			return true;
+		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return true;
 		
 		return super.isRefList(tag);
@@ -234,6 +245,8 @@ public class Indicator extends BaseObject
 				return true;
 			case ObjectType.MEASUREMENT:
 				return true;
+			case ObjectType.PROGRESS_REPORT:
+				return true;
 			default:
 				return false;
 		}
@@ -244,6 +257,8 @@ public class Indicator extends BaseObject
 		Set set = super.getReferencedObjectTags();
 		set.add(TAG_TASK_IDS);
 		set.add(TAG_MEASUREMENT_REFS);
+		set.add(TAG_PROGRESS_REPORT_REFS);
+			
 		return set;
 	}
 	
@@ -252,6 +267,7 @@ public class Indicator extends BaseObject
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
 		deepObjectRefsToCopy.addAll(getMethods());
 		deepObjectRefsToCopy.addAll(getMeasurementRefs());
+		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
 		return deepObjectRefsToCopy;
 	}
@@ -296,6 +312,7 @@ public class Indicator extends BaseObject
 		indicatorThreshold = new StringMapData();
 		ratingSource= new ChoiceData();
 		measurementRefs = new ORefListData();
+		progressReportRefs = new ORefListData();
 		detail = new StringData();
 		comment = new StringData();
 		viabilityRatingsComment = new StringData();
@@ -327,6 +344,7 @@ public class Indicator extends BaseObject
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
+		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		addField(TAG_DETAIL, detail);
 		addField(TAG_COMMENT, comment);
 		addField(TAG_VIABILITY_RATINGS_COMMENT, viabilityRatingsComment);
@@ -359,6 +377,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
+	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_VIABILITY_RATINGS_COMMENT = "ViabilityRatingsComment";
@@ -396,6 +415,7 @@ public class Indicator extends BaseObject
 	private StringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
 	private ORefListData measurementRefs;
+	private ORefListData progressReportRefs;
 	private StringData detail;
 	private StringData comment;
 	private StringData viabilityRatingsComment;
