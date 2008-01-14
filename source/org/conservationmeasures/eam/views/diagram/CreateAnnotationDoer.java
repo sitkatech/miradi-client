@@ -34,13 +34,13 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		Factor factor = getSelectedParent();
+		BaseObject parent = getSelectedParent();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			ORef createRef = createObject();
-			CommandSetObjectData appendCommand = createAppendCommand(factor, createRef);
+			CommandSetObjectData appendCommand = createAppendCommand(parent, createRef);
 			getProject().executeCommand(appendCommand);
 			doExtraWork(createRef);
 			
@@ -63,12 +63,12 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	{
 	}
 
-	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
+	protected CommandSetObjectData createAppendCommand(BaseObject parent, ORef refToAppend) throws ParseException
 	{
-		if (factor.isRefList(getAnnotationListTag()))
-			return CommandSetObjectData.createAppendORefCommand(factor, getAnnotationListTag(), refToAppend);
+		if (parent.isRefList(getAnnotationListTag()))
+			return CommandSetObjectData.createAppendORefCommand(parent, getAnnotationListTag(), refToAppend);
 		
-		return CommandSetObjectData.createAppendIdCommand(factor, getAnnotationListTag(), refToAppend.getObjectId());
+		return CommandSetObjectData.createAppendIdCommand(parent, getAnnotationListTag(), refToAppend.getObjectId());
 	}
 
 	protected ORef createObject() throws CommandFailedException
@@ -100,7 +100,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return objectToClone;
 	}
 	
-	public Factor getSelectedParent()
+	public BaseObject getSelectedParent()
 	{		
 		for (int i = 0; i < getSelectedHierarchies().length; ++i)
 		{
