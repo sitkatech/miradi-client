@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionEditProgressReports extends ObjectsAction
+public class ActionEditStrategyProgressReports extends ObjectsAction
 {
-	public ActionEditProgressReports(MainWindow mainWindow)
+	public ActionEditStrategyProgressReports(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}

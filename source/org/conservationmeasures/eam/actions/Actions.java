@@ -351,7 +351,7 @@ public class Actions
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
 		registerAction(new ActionDiagramProperties(mainWindow));
-		registerAction(new ActionEditProgressReports(mainWindow));
+		registerAction(new ActionEditStrategyProgressReports(mainWindow));
 		registerAction(new ActionCreateProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
 	}

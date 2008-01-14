@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
 
-import org.conservationmeasures.eam.actions.ActionEditProgressReports;
+import org.conservationmeasures.eam.actions.ActionEditStrategyProgressReports;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.icons.StrategyIcon;
@@ -39,7 +39,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
-		ObjectsActionButton editProgressReportButton = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionEditProgressReports.class), getPicker());
+		ObjectsActionButton editProgressReportButton = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
 		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
 

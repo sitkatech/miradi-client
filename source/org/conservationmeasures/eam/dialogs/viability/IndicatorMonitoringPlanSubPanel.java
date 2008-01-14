@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.ActionEditMethods;
-import org.conservationmeasures.eam.actions.ActionEditProgressReports;
+import org.conservationmeasures.eam.actions.ActionEditStrategyProgressReports;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
@@ -33,7 +33,7 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 		addField(createRatingChoiceField(Indicator.getObjectType(), new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 	
 		
-		ObjectsActionButton editProgressReportButton = createObjectsActionButton(EAM.getMainWindow().getActions().getObjectsAction(ActionEditProgressReports.class), getPicker());
+		ObjectsActionButton editProgressReportButton = createObjectsActionButton(EAM.getMainWindow().getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Indicator.getObjectType(), Indicator.TAG_PROGRESS_REPORT_REFS);
 		addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
 		
