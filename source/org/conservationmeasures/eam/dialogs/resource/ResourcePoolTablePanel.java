@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public ResourcePoolTablePanel(Project project, Actions actions)
 	{
-		super(project, ObjectType.PROJECT_RESOURCE, 
-				new ResourcePoolTable(new ResourcePoolTableModel(project)),
-				actions, buttons);
+		super(project, new ResourcePoolTable(new ResourcePoolTableModel(project)), 
+				actions,
+				buttons);
 	}
 	
 	static Class[] buttons = new Class[] {

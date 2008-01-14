@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
-	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
+	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
 	{
 		super(projectToUse, tableToUse);
 

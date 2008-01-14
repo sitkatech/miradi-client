@@ -12,6 +12,6 @@ public class ObjectListTablePanelWithParent extends ObjectTablePanelWithCreateAn
 {
 	public ObjectListTablePanelWithParent(Project projectToUse, int objectTypeToUse, ObjectListTableModel model, Actions actions, Class[] buttonActionClasses)
 	{
-		super(projectToUse, objectTypeToUse, new ObjectTableWithParent(model), actions, buttonActionClasses);
+		super(projectToUse, new ObjectTableWithParent(model), actions, buttonActionClasses);
 	}
 }

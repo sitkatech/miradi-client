@@ -9,16 +9,15 @@ import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class FundingSourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public FundingSourcePoolTablePanel(Project project, Actions actions)
 	{
-		super(project, ObjectType.FUNDING_SOURCE, 
-				new FundingSourcePoolTable(new FundingSourcePoolTableModel(project)),
-				actions, buttons);
+		super(project, new FundingSourcePoolTable(new FundingSourcePoolTableModel(project)), 
+				actions,
+				buttons);
 	}
 	
 	static Class[] buttons = new Class[] {
