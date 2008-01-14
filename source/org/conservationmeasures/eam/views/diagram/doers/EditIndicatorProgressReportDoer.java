@@ -5,11 +5,13 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import org.conservationmeasures.eam.actions.ActionDeleteIndicatorProgressReport;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.progressReport.ProgressReportManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.views.umbrella.ActionCreateIndicatorProgressReport;
 import org.conservationmeasures.eam.views.umbrella.doers.AbstractPopUpEditDoer;
 
 public class EditIndicatorProgressReportDoer extends AbstractPopUpEditDoer
@@ -28,6 +30,12 @@ public class EditIndicatorProgressReportDoer extends AbstractPopUpEditDoer
 	{
 		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressReportManagementPanel(getProject(), getMainWindow(), indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions());
+		
+		return new ProgressReportManagementPanel(getProject(), getMainWindow(), indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions(), buttonActionClasses);
 	}
+	
+	static Class[] buttonActionClasses = new Class[] {
+		ActionCreateIndicatorProgressReport.class,
+		ActionDeleteIndicatorProgressReport.class,
+	};
 }
