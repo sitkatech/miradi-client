@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import org.conservationmeasures.eam.actions.ActionCreateStrategyProgressReport;
+import org.conservationmeasures.eam.actions.ActionDeleteStrategyProgressReport;
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.progressReport.ProgressReportManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -28,7 +30,12 @@ public class EditStrategyProgressReportDoer extends AbstractPopUpEditDoer
 	{
 		ORef strategyRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, Strategy.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions());
+		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, Strategy.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions(), buttonActionClasses);
 	}
+	
+	static Class[] buttonActionClasses = new Class[] {
+		ActionCreateStrategyProgressReport.class,
+		ActionDeleteStrategyProgressReport.class,
+	};
 }	
 
