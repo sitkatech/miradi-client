@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.icons.ProgressReportIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCreateProgressReport extends ObjectsAction
+public class ActionCreateStrategyProgressReport extends ObjectsAction
 {
-	public ActionCreateProgressReport(MainWindow mainWindowToUse)
+	public ActionCreateStrategyProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new ProgressReportIcon());
 	}
