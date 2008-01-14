@@ -354,7 +354,7 @@ public class Actions
 		registerAction(new ActionEditStrategyProgressReports(mainWindow));
 		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
 		registerAction(new ActionCreateStrategyProgressReport(mainWindow));
-		registerAction(new ActionDeleteProgressReport(mainWindow));
+		registerAction(new ActionDeleteStrategyProgressReport(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
