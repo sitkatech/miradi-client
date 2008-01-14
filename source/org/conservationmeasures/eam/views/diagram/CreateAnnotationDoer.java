@@ -26,7 +26,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 {	
 	public boolean isAvailable()
 	{
-		return (getSelectedFactor() != null);
+		return (getSelectedParent() != null);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -34,7 +34,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		Factor factor = getSelectedFactor();
+		Factor factor = getSelectedParent();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
@@ -100,7 +100,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return objectToClone;
 	}
 	
-	public Factor getSelectedFactor()
+	public Factor getSelectedParent()
 	{		
 		for (int i = 0; i < getSelectedHierarchies().length; ++i)
 		{
