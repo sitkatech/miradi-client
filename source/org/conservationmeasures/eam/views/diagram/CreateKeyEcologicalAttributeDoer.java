@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Target;
 
@@ -16,8 +17,12 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		if (!super.isAvailable())
 			return false;
 		
-		if (getSelectedParent().isTarget())
-			return ((Target)getSelectedParent()).isViabilityModeTNC();
+		BaseObject selectedParent = getSelectedParent();
+		if (!Factor.isFactor(selectedParent.getRef()))
+			return false;
+		
+		if (((Factor)selectedParent).isTarget())
+			return ((Target)selectedParent).isViabilityModeTNC();
 
 		return false;
 	}

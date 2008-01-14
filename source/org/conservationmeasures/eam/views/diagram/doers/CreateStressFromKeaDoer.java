@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.dialogs.viability.KeyEcologicalAttributeList
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
@@ -23,7 +24,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		if (!isAvailable())
 			return;
 		
-		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), getSelectedParent().getFactorId());
+		KeyEcologicalAttributeListTableModel keyEcologicalAttributeListTableModel = new KeyEcologicalAttributeListTableModel(getProject(), ((Factor)getSelectedParent()).getFactorId());
 		if (validUserChoiceForObjectToClone(new KeyEcologicalAttributeListTablePanelWithoutButtons(getProject(), keyEcologicalAttributeListTableModel), EAM.text("Choose Key Ecological Attribute to Clone")))
 			super.doIt();
 	}
@@ -34,7 +35,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		CommandSetObjectData setStressLabel = new CommandSetObjectData(newlyCreatedObjectRef, Stress.TAG_LABEL, labelFromKea);
 		getProject().executeCommand(setStressLabel);
 		
-		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, getSelectedParent());
+		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, (Factor) getSelectedParent());
 	}
 
 	private String getLabelForStress()
