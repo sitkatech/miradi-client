@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.objects.ProgressReport;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.diagram.CreateAnnotationDoer;
 
-public class CreateProgressReportDoer extends CreateAnnotationDoer
+public class CreateStrategytProgressReportDoer extends CreateAnnotationDoer
 {
 	public String getAnnotationListTag()
 	{
