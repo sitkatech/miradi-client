@@ -24,13 +24,13 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 
-		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttribute.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createStringField(KeyEcologicalAttribute.TAG_LABEL);		
+		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createStringField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_LABEL);		
 		addFieldsOnOneLine(EAM.text("KEA"), new KeyEcologicalAttributeIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 		
-		addField(createMultilineField(KeyEcologicalAttribute.TAG_DETAILS));
-		addField(createChoiceField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
-		addField(createMultilineField(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_DESCRIPTION));
+		addField(createMultilineField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_DETAILS));
+		addField(createChoiceField(KeyEcologicalAttribute.getObjectType(), new KeyEcologicalAttributeTypeQuestion(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE)));
+		addField(createMultilineField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_DESCRIPTION));
 		
 		updateFieldsFromProject();
 	}
