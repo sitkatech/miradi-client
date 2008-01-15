@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
-import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 
@@ -26,9 +25,6 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		if (getColumnTag(column).equals(Indicator.TAG_PRIORITY))
 			return new PriorityRatingQuestion(getColumnTag(column));
 		
-		if (getColumnTag(column).equals(Indicator.TAG_STATUS))
-			return new IndicatorStatusRatingQuestion(getColumnTag(column));
-		
 		return null;
 	}
 
@@ -36,7 +32,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		Indicator.TAG_SHORT_LABEL,
 		Indicator.TAG_LABEL,
 		Indicator.TAG_PRIORITY,
-		Indicator.TAG_STATUS,
+		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE,
 		Indicator.PSEUDO_TAG_FACTOR,
 		Indicator.PSEUDO_TAG_METHODS,
 		Indicator.PSEUDO_TAG_TARGETS,
