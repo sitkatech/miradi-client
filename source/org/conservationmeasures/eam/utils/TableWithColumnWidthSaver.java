@@ -9,7 +9,7 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 
-abstract public class TableWithColumnWidthSaver extends ColumnWithRowHeightSaver
+abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 {
 	public TableWithColumnWidthSaver(TableModel model)
 	{
