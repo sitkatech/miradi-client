@@ -114,6 +114,9 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_STATUS_VALUE))
 			return getCurrentStatus();
 		
+		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE))
+			return getLatestProgressReportDate();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -150,27 +153,42 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getTaskIdList());	
 	}
 	
-	public ORef getLatestMeasurementRef()
+	public static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
 	{
-		Measurement latestMeasurementToFind = null; 
-		for (int i = 0; i < getMeasurementRefs().size(); ++i)
+		BaseObject latestObjectToFind = null; 
+		for (int i = 0; i < objectRefs.size(); ++i)
 		{
-			Measurement measurement = (Measurement) objectManager.findObject(getMeasurementRefs().get(i));
+			BaseObject thisObject = objectManagerToUse.findObject(objectRefs.get(i));
 			if (i == 0)
-				latestMeasurementToFind = measurement;
+				latestObjectToFind = thisObject;
 			
-			String thisDateAsString = measurement.getData(Measurement.TAG_DATE);
-			String latestDateAsString = latestMeasurementToFind.getData(Measurement.TAG_DATE);
+			String thisDateAsString = thisObject.getData(dateTag);
+			String latestDateAsString = latestObjectToFind.getData(dateTag);
 			if (thisDateAsString.compareTo(latestDateAsString) > 0)
 			{
-				latestMeasurementToFind = measurement;
+				latestObjectToFind = thisObject;
 			}
 		}
 		
-		if (latestMeasurementToFind == null)
+		return latestObjectToFind;		
+	}
+	
+	public ORef getLatestMeasurementRef()
+	{
+		BaseObject latestObject = getLatestObject(getObjectManager(), getMeasurementRefs(), Measurement.TAG_DATE);
+		if (latestObject == null)
 			return ORef.INVALID;
 		
-		return latestMeasurementToFind.getRef();
+		return latestObject.getRef();
+	}
+	
+	private String  getLatestProgressReportDate()
+	{
+		ProgressReport progressReprot = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
+		if (progressReprot == null)
+			return "";
+		
+		return progressReprot.getDateAsString();
 	}
 	
 	public ORefList getMeasurementRefs()
@@ -333,6 +351,7 @@ public class Indicator extends BaseObject
 		statusLabel = new PseudoQuestionData(new IndicatorStatusRatingQuestion(TAG_STATUS));
 		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
 		latestMeasurement = new PseudoQuestionData(new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
+		latestProgressReport = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
 		
 		futureStatusRatingLabel = new PseudoQuestionData(new StatusQuestion(TAG_FUTURE_STATUS_RATING));
 		
@@ -368,6 +387,7 @@ public class Indicator extends BaseObject
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
 		addField(PSEUDO_TAG_LATEST_MEASUREMENT_REF, latestMeasurement);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE, latestProgressReport);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -402,6 +422,7 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE = "PseudoLatestProgressReportDate";
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
@@ -439,4 +460,5 @@ public class Indicator extends BaseObject
 	
 	private PseudoQuestionData futureStatusRatingLabel;
 	private PseudoQuestionData latestMeasurement;
+	private PseudoStringData latestProgressReport;
 }

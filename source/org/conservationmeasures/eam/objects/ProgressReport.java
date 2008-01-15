@@ -55,6 +55,11 @@ public class ProgressReport extends BaseObject
 		return false;
 	}
 
+	public String getDateAsString()
+	{
+		return progressDate.get();
+	}
+	
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
