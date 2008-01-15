@@ -185,11 +185,11 @@ public class Indicator extends BaseObject
 	
 	private String  getLatestProgressReportDate()
 	{
-		ProgressReport progressReprot = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
-		if (progressReprot == null)
+		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
+		if (progressReport == null)
 			return "";
 		
-		return progressReprot.getProgressStatusChoice().getCode();
+		return progressReport.getProgressStatusChoice().getCode();
 	}
 	
 	public ORefList getMeasurementRefs()
