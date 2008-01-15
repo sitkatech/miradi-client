@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -47,7 +48,10 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
 		propertiesPanel = panel;
-		propertiesPanel.setObjectRefs(component.getSelectionHierarchy().toArray());
+		ORefList selectionHierarchy = component.getSelectionHierarchy();
+		if(selectionHierarchy == null)
+			selectionHierarchy = new ORefList();
+		propertiesPanel.setObjectRefs(selectionHierarchy.toArray());
 	}
 
 	public AbstractObjectDataInputPanel getPropertiesPanel()
