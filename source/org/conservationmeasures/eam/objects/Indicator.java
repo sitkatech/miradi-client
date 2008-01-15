@@ -188,7 +188,7 @@ public class Indicator extends BaseObject
 		if (progressReprot == null)
 			return "";
 		
-		return progressReprot.getDateAsString();
+		return progressReprot.toString();
 	}
 	
 	public ORefList getMeasurementRefs()

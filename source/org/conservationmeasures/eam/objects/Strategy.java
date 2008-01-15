@@ -170,7 +170,7 @@ public class Strategy extends Factor
 		if (progressReprot == null)
 			return "";
 		
-		return progressReprot.getDateAsString();
+		return progressReprot.toString();
 	}
 	
 	public ORefList getProgressReportRefs()
