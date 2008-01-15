@@ -16,8 +16,8 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
@@ -89,8 +89,10 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return new PriorityRatingQuestion(columnTag).findChoiceByCode(rawValue);
-			if(columnTag.equals(Indicator.TAG_STATUS))
-				return new IndicatorStatusRatingQuestion(columnTag).findChoiceByCode(rawValue);
+			
+			if(columnTag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return new ProgressReportStatusQuestion(columnTag).findChoiceByCode(rawValue);
+			
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion(columnTag).findChoiceByCode(rawValue);
 

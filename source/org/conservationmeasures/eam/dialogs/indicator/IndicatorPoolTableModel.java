@@ -32,7 +32,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		Indicator.TAG_SHORT_LABEL,
 		Indicator.TAG_LABEL,
 		Indicator.TAG_PRIORITY,
-		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE,
+		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		Indicator.PSEUDO_TAG_FACTOR,
 		Indicator.PSEUDO_TAG_METHODS,
 		Indicator.PSEUDO_TAG_TARGETS,

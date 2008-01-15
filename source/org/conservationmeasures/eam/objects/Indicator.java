@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 import org.conservationmeasures.eam.questions.RatingSourceQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.DateRange;
@@ -114,7 +115,7 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_STATUS_VALUE))
 			return getCurrentStatus();
 		
-		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE))
+		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
 		return super.getPseudoData(fieldTag);
@@ -188,7 +189,7 @@ public class Indicator extends BaseObject
 		if (progressReprot == null)
 			return "";
 		
-		return progressReprot.toString();
+		return progressReprot.getProgressStatusChoice().getCode();
 	}
 	
 	public ORefList getMeasurementRefs()
@@ -351,7 +352,7 @@ public class Indicator extends BaseObject
 		statusLabel = new PseudoQuestionData(new IndicatorStatusRatingQuestion(TAG_STATUS));
 		ratingSourceLabel = new PseudoQuestionData(new RatingSourceQuestion(TAG_RATING_SOURCE));
 		latestMeasurement = new PseudoQuestionData(new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
-		latestProgressReport = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
+		latestProgressReport = new PseudoQuestionData(new ProgressReportStatusQuestion(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE));
 		
 		futureStatusRatingLabel = new PseudoQuestionData(new StatusQuestion(TAG_FUTURE_STATUS_RATING));
 		
@@ -387,7 +388,7 @@ public class Indicator extends BaseObject
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
 		addField(PSEUDO_TAG_LATEST_MEASUREMENT_REF, latestMeasurement);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE, latestProgressReport);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -422,7 +423,7 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE = "PseudoLatestProgressReportDate";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportDate";
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
@@ -460,5 +461,5 @@ public class Indicator extends BaseObject
 	
 	private PseudoQuestionData futureStatusRatingLabel;
 	private PseudoQuestionData latestMeasurement;
-	private PseudoStringData latestProgressReport;
+	private PseudoQuestionData latestProgressReport;
 }
