@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
+import org.conservationmeasures.eam.objectpools.RareProjectDataPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
 import org.conservationmeasures.eam.objectpools.StrategyPool;
@@ -63,6 +64,7 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objectpools.WcsProjectDataPool;
 import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
@@ -72,7 +74,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.RareProjectData;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.objects.WcsProjectData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
@@ -170,6 +174,16 @@ public class Project
 	public WwfProjectDataPool getWwfProjectDataPool()
 	{
 		return (WwfProjectDataPool) getPool(WwfProjectData.getObjectType());
+	}
+	
+	public RareProjectDataPool getRareProjectDataPool()
+	{
+		return (RareProjectDataPool) getPool(RareProjectData.getObjectType());
+	}
+	
+	public WcsProjectDataPool getWcsProjectDataPool()
+	{
+		return (WcsProjectDataPool) getPool(WcsProjectData.getObjectType());
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
