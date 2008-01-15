@@ -110,7 +110,8 @@ public class TargetViabilityNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Target.TAG_EMPTY, 
 		Target.TAG_VIABILITY_MODE, 
-		Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE, 
+		Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE,
+		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,

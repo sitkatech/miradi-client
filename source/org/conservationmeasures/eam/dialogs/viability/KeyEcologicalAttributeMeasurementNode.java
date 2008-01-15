@@ -95,7 +95,8 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY, 
-												Measurement.TAG_EMPTY, 
+												Measurement.TAG_EMPTY,
+												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
 												POOR,
 												FAIR,

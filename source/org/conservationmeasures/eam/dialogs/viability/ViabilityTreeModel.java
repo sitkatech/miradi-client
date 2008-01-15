@@ -24,7 +24,8 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Target.TAG_VIABILITY_MODE,
-										 Indicator.TAG_STATUS, 
+										 Indicator.TAG_STATUS,
+										 Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 KeyEcologicalAttributeMeasurementNode.POOR,
 										 KeyEcologicalAttributeMeasurementNode.FAIR,

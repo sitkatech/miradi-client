@@ -79,7 +79,8 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
-			columnTag == Indicator.TAG_STATUS || 
+			columnTag == Indicator.TAG_STATUS ||
+			columnTag == Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE ||
 			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE || 
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS_VALUE || 
 			columnTag == Measurement.TAG_STATUS_CONFIDENCE;

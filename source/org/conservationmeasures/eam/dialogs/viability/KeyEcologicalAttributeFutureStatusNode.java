@@ -83,7 +83,8 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY, 
+		Goal.TAG_EMPTY,
+		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
