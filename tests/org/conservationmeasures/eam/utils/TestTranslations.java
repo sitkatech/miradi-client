@@ -71,7 +71,7 @@ public class TestTranslations extends EAMTestCase
 		String badTag = "whoops";
 		assertEquals("Didn't leave unknown tag alone?", badTag, EAM.fieldLabel(1, badTag));
 		
-		assertEquals("Didn't convert Indicator Label?", "Indicator Name", EAM.fieldLabel(ObjectType.INDICATOR, Indicator.TAG_LABEL));
+		assertEquals("Didn't convert Indicator Label?", "Name", EAM.fieldLabel(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 	}
 	
 	public static String ENGLISH_STRING = "To be translated";
