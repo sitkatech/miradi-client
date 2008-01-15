@@ -167,11 +167,11 @@ public class Strategy extends Factor
 
 	private String  getLatestProgressReportDate()
 	{
-		ProgressReport progressReprot = (ProgressReport) Indicator.getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
-		if (progressReprot == null)
+		ProgressReport progressReport = (ProgressReport) Indicator.getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
+		if (progressReport == null)
 			return "";
 		
-		return progressReprot.getProgressStatusChoice().getCode();
+		return progressReport.getProgressStatusChoice().getCode();
 	}
 	
 	public ORefList getProgressReportRefs()
