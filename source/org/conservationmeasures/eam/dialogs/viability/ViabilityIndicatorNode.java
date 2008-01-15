@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class ViabilityIndicatorNode extends TreeTableNode
@@ -68,6 +69,9 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
 			return new StatusQuestion(tag).findChoiceByCode(getObject().getPseudoData(tag));
 		
+		if (tag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return new ProgressReportStatusQuestion(tag).findChoiceByCode(getObject().getPseudoData(tag));
+		
 		if(tag.equals(Indicator.TAG_EMPTY))
 			return null;
 		
@@ -109,7 +113,8 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Indicator.TAG_LABEL,
 		Indicator.TAG_EMPTY,
-		Indicator.PSEUDO_TAG_STATUS_VALUE, 
+		Indicator.PSEUDO_TAG_STATUS_VALUE,
+		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		Indicator.TAG_EMPTY,
 		
 		Indicator.TAG_INDICATOR_THRESHOLD,
