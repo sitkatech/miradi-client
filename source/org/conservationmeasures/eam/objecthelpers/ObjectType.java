@@ -47,7 +47,9 @@ public class ObjectType
 	public static final int GROUP_BOX = 35;
 	public static final int SUB_TARGET = 36;
 	public static final int PROGRESS_REPORT = 37;
+	public static final int RARE_PROJECT_DATA = 38;
+	public static final int WCS_PROJECT_DATA = 39;
 	
-	public static final int OBJECT_TYPE_COUNT = 38;
+	public static final int OBJECT_TYPE_COUNT = 40;
 }
 

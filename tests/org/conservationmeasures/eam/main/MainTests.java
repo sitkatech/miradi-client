@@ -75,6 +75,7 @@ import org.conservationmeasures.eam.objects.TestProgressReport;
 import org.conservationmeasures.eam.objects.TestProjectChainObject;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
+import org.conservationmeasures.eam.objects.TestRareProjectData;
 import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestResultsChainDiagram;
 import org.conservationmeasures.eam.objects.TestSlide;
@@ -89,6 +90,7 @@ import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestThreatStressRating;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
+import org.conservationmeasures.eam.objects.TestWcsProjectData;
 import org.conservationmeasures.eam.objects.TestWwfProjectData;
 import org.conservationmeasures.eam.project.TestBudgetTimePeriodChanger;
 import org.conservationmeasures.eam.project.TestCausePool;
@@ -293,6 +295,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatStressRating.class));
 		suite.addTest(new TestSuite(TestSubTarget.class));
 		suite.addTest(new TestSuite(TestProgressReport.class));
+		suite.addTest(new TestSuite(TestRareProjectData.class));
+		suite.addTest(new TestSuite(TestWcsProjectData.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
