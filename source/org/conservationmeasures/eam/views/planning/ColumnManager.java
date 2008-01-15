@@ -37,7 +37,7 @@ public class ColumnManager
 		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
 		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY);
 		masterColumnList.add(Indicator.TAG_PRIORITY);
-		masterColumnList.add(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
+		masterColumnList.add(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
@@ -100,7 +100,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Indicator.TAG_PRIORITY,
-				Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE,
+				Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 //				Task.PSEUDO_TAG_TASK_TOTAL, 

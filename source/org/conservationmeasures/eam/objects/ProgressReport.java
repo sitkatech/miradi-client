@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ProgressReportStatusQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -72,7 +73,12 @@ public class ProgressReport extends BaseObject
 	
 	public String getLabel()
 	{
-		return new ProgressReportStatusQuestion(TAG_PROGRESS_STATUS).findChoiceByCode(progressStatus.get()).getLabel();	
+		return getProgressStatusChoice().getLabel();	
+	}
+	
+	public ChoiceItem getProgressStatusChoice()
+	{
+		return new ProgressReportStatusQuestion(TAG_PROGRESS_STATUS).findChoiceByCode(progressStatus.get());
 	}
 	
 	public static boolean is(ORef ref)
