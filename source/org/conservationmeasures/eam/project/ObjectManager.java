@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objectpools.ProgressReportPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
+import org.conservationmeasures.eam.objectpools.RareProjectDataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.ResultsChainDiagramPool;
@@ -61,6 +62,7 @@ import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ThreatStressRatingPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objectpools.WcsProjectDataPool;
 import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Cause;
@@ -124,6 +126,8 @@ public class ObjectManager
 		addNormalPool(new GroupBoxPool(ida));
 		addNormalPool(new SubTargetPool(ida));
 		addNormalPool(new ProgressReportPool(ida));
+		addNormalPool(new RareProjectDataPool(ida));
+		addNormalPool(new WcsProjectDataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -414,6 +418,8 @@ public class ObjectManager
 		loadPool(ObjectType.GROUP_BOX);
 		loadPool(ObjectType.SUB_TARGET);
 		loadPool(ObjectType.PROGRESS_REPORT);
+		loadPool(ObjectType.RARE_PROJECT_DATA);
+		loadPool(ObjectType.WCS_PROJECT_DATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

@@ -275,6 +275,12 @@ abstract public class BaseObject
 			
 			case ObjectType.PROGRESS_REPORT:
 				return new ProgressReport(objectManager, idAsInt, json);
+			
+			case ObjectType.RARE_PROJECT_DATA:
+				return new RareProjectData(objectManager, idAsInt, json);
+				
+			case ObjectType.WCS_PROJECT_DATA:
+				return new WcsProjectData(objectManager, idAsInt, json);	
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
