@@ -21,6 +21,20 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 		return columnTags;
 	}
 	
+	public Object getValueAt(Object rawNode, int column)
+	{
+		return super.getValueAt(rawNode, getAdjustedColumn(column));
+	}
+
+	//FIXME this is to ajust for the missing column in each node.  
+	private int getAdjustedColumn(int column)
+	{
+		if (column > 1)
+			return column + 1;
+		
+		return column;
+	}
+	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Indicator.TAG_STATUS, 
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
