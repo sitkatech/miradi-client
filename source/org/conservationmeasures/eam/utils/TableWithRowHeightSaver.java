@@ -12,9 +12,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTable;
 
-abstract public class ColumnWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
+abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
 {
-	public ColumnWithRowHeightSaver(TableModel model)
+	public TableWithRowHeightSaver(TableModel model)
 	{
 		super(model);
 		rowHeightListeners = new Vector<RowHeightListener>();
