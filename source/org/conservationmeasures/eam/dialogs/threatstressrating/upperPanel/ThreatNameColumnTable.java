@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 
 
-public class ThreatNameColumnTable extends TableWithTwiceRowHeightSize
+public class ThreatNameColumnTable extends AbstractTableWithChoiceItemRenderer
 {
 	public ThreatNameColumnTable(MainThreatTableModel tableModel)
 	{

@@ -19,13 +19,13 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ColumnWithRowHeightSaver;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
 import org.conservationmeasures.eam.utils.MultiTableVerticalScrollController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
-import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatGridPanel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiScrollPane;
@@ -48,7 +48,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		return project;
 	}
 	
-	protected void addRowHeightControlledTable(TableWithColumnWidthSaver tableToAdd)
+	protected void addRowHeightControlledTable(ColumnWithRowHeightSaver tableToAdd)
 	{
 		rowHeightController.addTable(tableToAdd);
 	}
