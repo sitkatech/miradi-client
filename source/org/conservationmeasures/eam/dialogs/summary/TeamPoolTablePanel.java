@@ -9,6 +9,8 @@ import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectTablePanelWithCreateAndDelete;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 
 public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
@@ -18,6 +20,13 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 		super(project, new TeamPoolTable(new TeamPoolTableModel(project)), 
 				actions,
 				buttons);
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_ROLE_CODES))
+			getTable().getObjectTableModel().rowsWereAddedOrRemoved();
 	}
 	
 	static Class[] buttons = new Class[] {

@@ -36,6 +36,9 @@ public class TeamCreateMemberDoer extends ObjectsDoer
 			getProject().executeCommand(new CommandBeginTransaction());
 			ProjectResource resource = createBlankResource();
 			addTeamMemberRole(resource);
+			
+			if (getPicker() != null)
+				getPicker().ensureObjectVisible(resource.getRef());
 		}
 		catch (Exception e)
 		{
