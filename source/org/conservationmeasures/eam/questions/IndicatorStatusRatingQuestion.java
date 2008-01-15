@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 
-
+//FIXME remove after TAG_STATUS is removed
 public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 {
 	public IndicatorStatusRatingQuestion(String tag)
