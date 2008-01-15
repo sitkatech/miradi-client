@@ -9,8 +9,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRendererWithGrayCells;
 import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
+import org.conservationmeasures.eam.utils.ColumnWithRowHeightSaver;
 
-abstract public class AbstractTableWithChoiceItemRenderer extends TableWithTwiceRowHeightSize
+abstract public class AbstractTableWithChoiceItemRenderer extends ColumnWithRowHeightSaver
 {
 	public AbstractTableWithChoiceItemRenderer(TableModel model)
 	{
