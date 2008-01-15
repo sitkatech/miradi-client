@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -94,7 +95,11 @@ abstract public class ObjectsDoer extends ViewDoer
 	
 	public int getSelectedObjectType() 
 	{
-		return getObjects()[0].getType();
+		BaseObject[] objects = getObjects();
+		if(objects == null || objects.length == 0)
+			return ObjectType.FAKE;
+		
+		return objects[0].getType();
 	}
 	
 	public BaseId getSelectedId()
