@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.TncProjectData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
 import org.conservationmeasures.eam.questions.TncMarineEcoRegionQuestion;
@@ -34,7 +36,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(metadata.LEGACY_TAG_TNC_OPERATING_UNITS));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new TncOperatingUnitsQuestion(ProjectMetadata.TAG_TNC_OPERATING_UNITS), 1));
 
-		updateFieldsFromProject();
+		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectData.getObjectType())});
 	}
 	
 	public String getPanelDescription()

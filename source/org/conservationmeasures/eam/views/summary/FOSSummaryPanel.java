@@ -8,15 +8,15 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.FosProjectData;
 import org.conservationmeasures.eam.project.Project;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
-
-	public FOSSummaryPanel(Project projectToUse, ProjectMetadata metadata)
+	public FOSSummaryPanel(Project projectToUse)
 	{
-		super(projectToUse, metadata.getType(), metadata.getId());
+		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectData.getObjectType()));
+		
 		add(new PanelTitleLabel("Not implemented yet"));
 	}
 
@@ -24,5 +24,4 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Label|FOS");
 	}
-
 }
