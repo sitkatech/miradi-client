@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -56,7 +57,43 @@ public class RareProjectData extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
+		speciesCommonName = new StringData();
+		speciesScientificName = new StringData();
+		speciesDetail = new StringData();
+		campaignSlogan = new StringData();
+		campaignTheoryOfChange = new StringData();
+		summaryOfKeyMessages = new StringData();
+		biodiversityHotspots = new StringData();
+		relatedProjects = new StringData();
+		
+		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
+		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
+		addField(TAG_FLAGSHIP_SPECIES_DETAIL, speciesDetail);
+		addField(TAG_CAMPAIGN_SLOGAN, campaignSlogan);
+		addField(TAG_CAMPAIGN_THEORY_OF_CHANGE, campaignTheoryOfChange);
+		addField(TAG_SUMMARY_OF_KEY_MESSAGES, summaryOfKeyMessages);
+		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
+		addField(TAG_RELATED_PROJECTS, relatedProjects);
 	}
-	
+
 	public static final String OBJECT_NAME = "RareProjectData";
+	
+	public static final String TAG_FLAGSHIP_SPECIES_COMMON_NAME = "FlagshipSpeciesCommonName";
+	public static final String TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME = "FlagshipSpeciesScientificName";
+	public static final String TAG_FLAGSHIP_SPECIES_DETAIL = "FlagshipSpeciesDetail";
+	public static final String TAG_CAMPAIGN_SLOGAN = "CampaignSlogan";
+	public static final String TAG_CAMPAIGN_THEORY_OF_CHANGE = "CampaignTheoryOfChange";
+	public static final String TAG_SUMMARY_OF_KEY_MESSAGES = "SummaryOfKeyMessages";
+	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
+	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
+	
+	private StringData speciesCommonName;
+	private StringData speciesScientificName;
+	private StringData speciesDetail;
+	private StringData campaignSlogan;
+	private StringData campaignTheoryOfChange;
+	private StringData summaryOfKeyMessages;
+	private StringData biodiversityHotspots;
+	private StringData relatedProjects;
 }
