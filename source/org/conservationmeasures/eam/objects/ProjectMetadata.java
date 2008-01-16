@@ -264,6 +264,11 @@ public class ProjectMetadata extends BaseObject
 		workPlanEndDate = new DateData();
 		workPlanTimeUnit = new ChoiceData();
 		planningComments = new StringData();
+		redListSpecies = new StringData();
+		otherNotableSpecies = new StringData();
+		humanPopulation = new NumberData();
+		humanPopulationNotes = new StringData();
+		socialContext = new StringData();
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -300,7 +305,12 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_WORKPLAN_END_DATE, workPlanEndDate);
 		addField(TAG_WORKPLAN_TIME_UNIT, workPlanTimeUnit);
 		addField(TAG_PLANNING_COMMENTS, planningComments);
-		
+		addField(TAG_RED_LIST_SPECIES, redListSpecies);
+		addField(TAG_OTHER_NOTABLE_SPECIES, otherNotableSpecies);
+		addField(TAG_HUMAN_POPULATION, humanPopulation);
+		addField(TAG_HUMAN_POPULATION_NOTES, humanPopulationNotes);
+		addField(TAG_SOCIAL_CONTEXT, socialContext);
+
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
 		tncWorkbookVersionDate = new DateData();
@@ -383,6 +393,11 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_WORKPLAN_END_DATE = "WorkPlanEndDate";
 	public static final String TAG_WORKPLAN_TIME_UNIT = "WorkPlanTimeUnit";
 	public static final String TAG_PLANNING_COMMENTS = "PlanningComments";
+	public static final String TAG_RED_LIST_SPECIES = "RedListSpecies";
+	public static final String TAG_OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
+	public static final String TAG_HUMAN_POPULATION = "HumanPopulation";
+	public static final String TAG_HUMAN_POPULATION_NOTES = "HumanPopulationNotes";
+	public static final String TAG_SOCIAL_CONTEXT = "SocialContext";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -451,7 +466,12 @@ public class ProjectMetadata extends BaseObject
 	private DateData workPlanEndDate;
 	private ChoiceData workPlanTimeUnit;
 	private StringData planningComments;
-	
+	private StringData redListSpecies;
+	private StringData otherNotableSpecies;
+	private NumberData humanPopulation;
+	private StringData humanPopulationNotes;
+	private StringData socialContext;
+
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
 	private DateData tncWorkbookVersionDate;
