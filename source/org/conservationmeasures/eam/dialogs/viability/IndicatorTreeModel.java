@@ -5,6 +5,10 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 
 public class IndicatorTreeModel extends GenericViabilityTreeModel
@@ -14,6 +18,26 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 		super(root);
 	}
 
+	public Object getValueAt(Object rawNode, int column)
+	{
+		try
+		{
+			TreeTableNode node = (TreeTableNode) rawNode;
+			if (Goal.is(node.getType()) && getColumnTag(column) == Measurement.TAG_SUMMARY)
+				return node.getParentNode().getObject().getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+
+			else if (Measurement.is(node.getType()) && getColumnTag(column) == Measurement.TAG_SUMMARY)
+				return node.getObject().getData(Measurement.TAG_SUMMARY);
+
+			return super.getValueAt(rawNode, column);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("ERROR");
+		}
+	}
+	
 	public String[] getColumnTags()
 	{
 		return columnTags;
