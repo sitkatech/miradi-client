@@ -6,8 +6,10 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -58,6 +60,26 @@ public class Goal extends Desire
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static Goal find(ObjectManager objectManager, ORef goalRef)
+	{
+		return (Goal) objectManager.findObject(goalRef);
+	}
+	
+	public static Goal find(Project project, ORef goalRef)
+	{
+		return find(project.getObjectManager(), goalRef);
 	}
 	
 	public static final String OBJECT_NAME = "Goal";

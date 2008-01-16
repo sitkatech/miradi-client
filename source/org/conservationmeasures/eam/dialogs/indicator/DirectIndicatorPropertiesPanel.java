@@ -9,9 +9,11 @@ import java.awt.CardLayout;
 
 import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.planning.FutureStatusPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
@@ -31,17 +33,20 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 		indicatorPropertiesPanel.dispose();
 		measurementPropertiesPanel.dispose();
+		futureStatusPropertiesPanel.dispose();
 	}
 	
 	private void createPropertiesPanels() throws Exception
 	{
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
-		blankPropertiesPanel = new BlankPropertiesPanel();
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
+		futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
+		blankPropertiesPanel = new BlankPropertiesPanel();
 		
 		add(indicatorPropertiesPanel);
-		add(blankPropertiesPanel);
 		add(measurementPropertiesPanel);
+		add(futureStatusPropertiesPanel);
+		add(blankPropertiesPanel);
 	}
 	
 	private void add(DisposablePanelWithDescription panelToAdd)
@@ -61,6 +66,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
+		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
@@ -77,6 +83,9 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		if (Measurement.getObjectType() == objectType)
 			return measurementPropertiesPanel;
 		
+		if (Goal.is(objectType))
+			return futureStatusPropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 	
@@ -87,4 +96,5 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
+	private FutureStatusPropertiesPanel futureStatusPropertiesPanel; 
 }
