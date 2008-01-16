@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.objectpools.DiagramFactorPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
+import org.conservationmeasures.eam.objectpools.FosProjectDataPool;
 import org.conservationmeasures.eam.objectpools.FundingSourcePool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.GroupBoxPool;
@@ -60,6 +61,7 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.TextBoxPool;
 import org.conservationmeasures.eam.objectpools.ThreatReductionResultPool;
 import org.conservationmeasures.eam.objectpools.ThreatStressRatingPool;
+import org.conservationmeasures.eam.objectpools.TncProjectDataPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objectpools.WcsProjectDataPool;
@@ -128,6 +130,8 @@ public class ObjectManager
 		addNormalPool(new ProgressReportPool(ida));
 		addNormalPool(new RareProjectDataPool(ida));
 		addNormalPool(new WcsProjectDataPool(ida));
+		addNormalPool(new TncProjectDataPool(ida));
+		addNormalPool(new FosProjectDataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -420,6 +424,8 @@ public class ObjectManager
 		loadPool(ObjectType.PROGRESS_REPORT);
 		loadPool(ObjectType.RARE_PROJECT_DATA);
 		loadPool(ObjectType.WCS_PROJECT_DATA);
+		loadPool(ObjectType.TNC_PROJECT_DATA);
+		loadPool(ObjectType.FOS_PROJECT_DATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

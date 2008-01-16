@@ -49,7 +49,9 @@ public class ObjectType
 	public static final int PROGRESS_REPORT = 37;
 	public static final int RARE_PROJECT_DATA = 38;
 	public static final int WCS_PROJECT_DATA = 39;
+	public static final int TNC_PROJECT_DATA = 40;
+	public static final int FOS_PROJECT_DATA = 41;
 	
-	public static final int OBJECT_TYPE_COUNT = 40;
+	public static final int OBJECT_TYPE_COUNT = 42;
 }
 
