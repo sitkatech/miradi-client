@@ -516,7 +516,7 @@ public class Project
 		createDefaultPlanningCustomization();
 		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
-		createDefaultWwfProjectDataObject();
+		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		eliminateBlankConceptualModelPages();
 		ensureAllDiagramFactorsAreVisible();
 	}
@@ -595,12 +595,13 @@ public class Project
 			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
 	
-	private void createDefaultWwfProjectDataObject() throws Exception
+	private void createDefaultProjectDataObject(int objectType) throws Exception
 	{
-		if (getWwfProjectDataPool().getORefList().size() > 0)
+		EAMObjectPool pool = getPool(objectType);
+		if (pool.getORefList().size() > 0)
 			return;
 		
-		createObject(WwfProjectData.getObjectType());
+		createObject(objectType);
 	}
 	
 	private void eliminateBlankConceptualModelPages() throws Exception
