@@ -59,6 +59,7 @@ import org.conservationmeasures.eam.objects.TestDiagramLink;
 import org.conservationmeasures.eam.objects.TestDiagramObject;
 import org.conservationmeasures.eam.objects.TestFactor;
 import org.conservationmeasures.eam.objects.TestFactorLink;
+import org.conservationmeasures.eam.objects.TestFosProjectData;
 import org.conservationmeasures.eam.objects.TestFundingSource;
 import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
@@ -88,6 +89,7 @@ import org.conservationmeasures.eam.objects.TestTextBox;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatReductionResult;
 import org.conservationmeasures.eam.objects.TestThreatStressRating;
+import org.conservationmeasures.eam.objects.TestTncProjectData;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.objects.TestWcsProjectData;
@@ -297,6 +299,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProgressReport.class));
 		suite.addTest(new TestSuite(TestRareProjectData.class));
 		suite.addTest(new TestSuite(TestWcsProjectData.class));
+		suite.addTest(new TestSuite(TestTncProjectData.class));
+		suite.addTest(new TestSuite(TestFosProjectData.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

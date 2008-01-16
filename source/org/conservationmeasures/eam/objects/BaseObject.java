@@ -281,6 +281,12 @@ abstract public class BaseObject
 				
 			case ObjectType.WCS_PROJECT_DATA:
 				return new WcsProjectData(objectManager, idAsInt, json);	
+			
+			case ObjectType.TNC_PROJECT_DATA:
+				return new TncProjectData(objectManager, idAsInt, json);
+				
+			case ObjectType.FOS_PROJECT_DATA:
+				return new FosProjectData(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
