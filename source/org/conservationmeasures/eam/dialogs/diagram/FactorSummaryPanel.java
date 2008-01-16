@@ -91,8 +91,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 
-		addField(createMultilineField(Factor.TAG_DETAIL));
-		
 		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE));
 		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR));
 		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE));

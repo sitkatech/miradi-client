@@ -459,7 +459,6 @@ abstract public class Factor extends BaseObject
 		super.clear();
 		comment = new StringData();
 		text = new StringData();
-		detail = new StringData();
 		shortLabel = new StringData();
 	    indicators = new IdListData(Indicator.getObjectType());
 		objectives = new IdListData(Objective.getObjectType());
@@ -473,7 +472,6 @@ abstract public class Factor extends BaseObject
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_TEXT, text);
-		addField(TAG_DETAIL, detail);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
@@ -496,7 +494,6 @@ abstract public class Factor extends BaseObject
 	
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
-	public static final String TAG_DETAIL = "Details";
 	public static final String TAG_TEXT = "Text";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
@@ -511,7 +508,6 @@ abstract public class Factor extends BaseObject
 	
 	private FactorType type;
 	private StringData comment;
-	private StringData detail;
 	private StringData text;
 	private StringData shortLabel;
 
