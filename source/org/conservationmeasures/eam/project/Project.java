@@ -517,6 +517,8 @@ public class Project
 		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
+		createDefaultProjectDataObject(RareProjectData.getObjectType());
+		createDefaultProjectDataObject(WcsProjectData.getObjectType());
 		eliminateBlankConceptualModelPages();
 		ensureAllDiagramFactorsAreVisible();
 	}
