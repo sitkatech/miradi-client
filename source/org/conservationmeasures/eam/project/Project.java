@@ -71,10 +71,12 @@ import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FosProjectData;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.RareProjectData;
+import org.conservationmeasures.eam.objects.TncProjectData;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WcsProjectData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
@@ -529,6 +531,8 @@ public class Project
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
+		createDefaultProjectDataObject(TncProjectData.getObjectType());
+		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		eliminateBlankConceptualModelPages();
 		ensureAllDiagramFactorsAreVisible();
 	}
