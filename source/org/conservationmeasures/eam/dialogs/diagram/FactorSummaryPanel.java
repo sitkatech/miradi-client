@@ -111,7 +111,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			updateEditabilityOfTargetStatusField();
 		}
 				
-		addField(createStringField(Factor.TAG_TEXT));
+		addField(createMultilineField(Factor.TAG_TEXT));
 		addField(createMultilineField(Factor.TAG_COMMENT));		
 		
 		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
