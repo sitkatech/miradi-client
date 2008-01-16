@@ -9,8 +9,10 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
 
@@ -72,6 +74,26 @@ public class Measurement extends BaseObject
 	public String toString()
 	{
 		return date.toString();
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static Measurement find(ObjectManager objectManager, ORef measurementRef)
+	{
+		return (Measurement) objectManager.findObject(measurementRef);
+	}
+	
+	public static Measurement find(Project project, ORef measurementRef)
+	{
+		return find(project.getObjectManager(), measurementRef);
 	}
 	
 	public void clear()
