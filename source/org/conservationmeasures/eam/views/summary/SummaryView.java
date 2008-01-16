@@ -60,7 +60,7 @@ public class SummaryView extends TabbedView
 		ProjectMetadata metadata = getProject().getMetadata();
 		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
-		wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
+		wcssSummaryPanel =new WCSSummaryPanel(getProject()); 
 		rareSummaryPanel = new RARESummaryPanel(getProject());
 		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		

@@ -291,6 +291,16 @@ public class Project
 		return (GroupBoxPool) getPool(ObjectType.GROUP_BOX);
 	}
 	
+	public ORef getSingletonObjectRef(int objectType)
+	{
+		EAMObjectPool pool = getPool(objectType);
+		ORefList objectRefs = pool.getORefList();
+		if (objectRefs.size() == 1)
+			return objectRefs.get(0);
+		
+		throw new RuntimeException("Wrong object count (count = " + objectRefs.size() + ") in pool for type:" + objectType);
+	}
+	
 	public LayerManager getLayerManager()
 	{
 		return layerManager;
