@@ -6,11 +6,7 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.objectpools.RareProjectDataPool;
 import org.conservationmeasures.eam.objects.RareProjectData;
 import org.conservationmeasures.eam.project.Project;
 
@@ -18,7 +14,7 @@ public class RARESummaryPanel extends ObjectDataInputPanel
 {
 	public RARESummaryPanel(Project projectToUse)
 	{
-		super(projectToUse, getRareProjectDataRef(projectToUse));
+		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME));
@@ -32,16 +28,6 @@ public class RARESummaryPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public static ORef getRareProjectDataRef(Project project)
-	{
-		RareProjectDataPool pool = project.getRareProjectDataPool();
-		ORefList rareProjectDataRefs = pool.getORefList();
-		if (rareProjectDataRefs.size() == 0)
-			return new ORef(RareProjectData.getObjectType(), BaseId.INVALID);
-		
-		return rareProjectDataRefs.get(0);
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|RARE");

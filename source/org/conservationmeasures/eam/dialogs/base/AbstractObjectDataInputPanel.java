@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.objectdata.BooleanData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -152,6 +153,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		subPanel.setBorder(BorderFactory.createTitledBorder(subPanel.getPanelDescription()));
 		addSubPanel(subPanel);
 		add(subPanel);
+	}
+	
+	public ObjectDataInputField createCheckBoxField(String tag)
+	{
+		return new ObjectCheckBoxField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
 	}
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
