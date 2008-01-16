@@ -269,6 +269,7 @@ public class ProjectMetadata extends BaseObject
 		humanPopulation = new NumberData();
 		humanPopulationNotes = new StringData();
 		socialContext = new StringData();
+		siteMapReference = new StringData();
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -310,6 +311,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_HUMAN_POPULATION, humanPopulation);
 		addField(TAG_HUMAN_POPULATION_NOTES, humanPopulationNotes);
 		addField(TAG_SOCIAL_CONTEXT, socialContext);
+		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
 
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
@@ -398,6 +400,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_HUMAN_POPULATION = "HumanPopulation";
 	public static final String TAG_HUMAN_POPULATION_NOTES = "HumanPopulationNotes";
 	public static final String TAG_SOCIAL_CONTEXT = "SocialContext";
+	public static final String TAG_SITE_MAP_REFERENCE = "SiteMapReference";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -471,6 +474,7 @@ public class ProjectMetadata extends BaseObject
 	private NumberData humanPopulation;
 	private StringData humanPopulationNotes;
 	private StringData socialContext;
+	private StringData siteMapReference;
 
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;

@@ -26,6 +26,7 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_MUNICIPALITIES));
 		addField(createStringField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS));
 		addField(createMultilineField(ProjectMetadata.TAG_LOCATION_DETAIL));
+		addField(createStringField(ProjectMetadata.TAG_SITE_MAP_REFERENCE));
 		addField(createMultilineField(ProjectMetadata.TAG_LOCATION_COMMENTS));
 		
 		updateFieldsFromProject();
