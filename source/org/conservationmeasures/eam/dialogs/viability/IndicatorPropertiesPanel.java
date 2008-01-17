@@ -13,7 +13,9 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.layout.OneColumnGridLayout;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
@@ -24,11 +26,32 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 		
 		addSubPanelWithTitledBorder(new IndicatorSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
+		
+		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef());
+		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
+		
+		futureStatusSubPanel = new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef());
+		addSubPanelWithTitledBorder(futureStatusSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
 		
 		updateFieldsFromProject();
+	}
+
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+		
+		updateVisibilityOfViabilitySubPanels(new ORefList(orefsToUse));
+	}
+	
+	private void updateVisibilityOfViabilitySubPanels(ORefList list)
+	{
+		ORef foundRef = list.getRefForType(KeyEcologicalAttribute.getObjectType());
+		if (!foundRef.isInvalid())
+			return;
+		
+		viabilityRatingsSubPanel.setVisible(false);
+		futureStatusSubPanel.setVisible(false);
 	}
 
 	private static ORef getInvalidTargetRef()
@@ -40,4 +63,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Indicator Properties");
 	}
+	
+	private IndicatorViabilityRatingsSubPanel viabilityRatingsSubPanel;
+	private IndicatorFutureStatusSubPanel futureStatusSubPanel;
 }
