@@ -14,4 +14,10 @@ public abstract class ThreatRatingWizardStep extends SplitWizardStep
 		super(wizardToUse, ThreatMatrixView.getViewName());
 	}
 
+	protected boolean isProjectInStressMode()
+	{
+		boolean stressMode = getMainWindow().getProject().getMetadata().isStressBasedThreatRatingMode();
+		return stressMode;
+	}
+
 }
