@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.wizard.diagram.DiagramWizardReviewModelAndAd
 import org.conservationmeasures.eam.wizard.diagram.DiagramWizardVisionStep;
 import org.conservationmeasures.eam.wizard.diagram.RankDraftStrategiesStep;
 import org.conservationmeasures.eam.wizard.diagram.SelectChainStep;
+import org.conservationmeasures.eam.wizard.diagram.TargetStressesStep;
 import org.conservationmeasures.eam.wizard.library.LibraryOverviewStep;
 import org.conservationmeasures.eam.wizard.map.MapOverviewStep;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectOverviewStep;
@@ -246,7 +247,7 @@ public class WizardManager
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
 		//TODO rename TargetViability Classes to identif which step is which
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
-					createControl("DoneViabilityAnalysis", DiagramWizardIdentifyDirectThreatStep.class).
+					createControl("DoneViabilityAnalysis", TargetStressesStep.class).
 					createControl("DetailedViability", TargetViability3Step.class);
 		createStepEntry(new DescribeTargetStatusStep(panel)).createControl(CONTROL_NEXT, TargetViabilityOverviewStep.class);
 		createStepEntry(new TargetViability3Step(panel)).createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
@@ -256,7 +257,10 @@ public class WizardManager
 		createStepEntry(new TargetViability7Step(panel));
 		createStepEntry(new TargetViability8Step(panel));
 		
-		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel)).createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
+		createStepEntry(new TargetStressesStep(panel))
+			.createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
+		
+		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel));
 		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel));
 		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel));		
 		createStepEntry(new DiagramWizardConstructChainsStep(panel));	
@@ -367,7 +371,9 @@ public class WizardManager
 				TargetViability6Step.class,
 				TargetViability7Step.class,
 				TargetViability8Step.class,
-				TargetViabilityOverviewAfterDetailedModeStep.class,			
+				TargetViabilityOverviewAfterDetailedModeStep.class,		
+				
+				TargetStressesStep.class,
 
 				// STEP 1C
 				DiagramWizardIdentifyDirectThreatStep.class,
