@@ -10,7 +10,6 @@ import java.awt.CardLayout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanelSpecial;
-import org.conservationmeasures.eam.dialogs.planning.FutureStatusPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -37,7 +36,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
 		targetViabilityIndicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(projectToUse, actions);
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(projectToUse);
-		futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(projectToUse);
+		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(projectToUse);
 		add(blankPropertiesPanel);
 		add(targetViabilityKeaPropertiesPanel);
 		add(targetViabilityIndicatorPropertiesPanel);
@@ -102,5 +101,5 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private TargetViabilityIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
-	private FutureStatusPropertiesPanel futureStatusPropertiesPanel;
+	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel;
 }

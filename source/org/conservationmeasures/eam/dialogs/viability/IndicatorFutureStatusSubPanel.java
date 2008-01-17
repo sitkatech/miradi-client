@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.icons.GoalIcon;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -17,6 +18,11 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 {
+	public IndicatorFutureStatusSubPanel(Project project)
+	{
+		this(project, new ORef(Indicator.getObjectType(), BaseId.INVALID));
+	}
+	
 	public IndicatorFutureStatusSubPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse);
