@@ -379,6 +379,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			try
 			{
 				project.close();
+				getWizardManager().setOverViewStep(NoProjectView.getViewName());
 			}
 			catch(Exception e1)
 			{
