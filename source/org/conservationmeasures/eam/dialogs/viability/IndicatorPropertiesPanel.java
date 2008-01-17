@@ -39,8 +39,8 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
 		viabilityRatingsSubPanel.setVisible(true);
+		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
 		if (foundRef.isInvalid())
 			viabilityRatingsSubPanel.setVisible(false);
 	}
