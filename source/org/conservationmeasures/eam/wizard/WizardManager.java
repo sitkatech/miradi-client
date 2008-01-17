@@ -80,7 +80,10 @@ import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardIrreve
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatSimpleOverviewStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressCheckThreatRatingStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressOverviewStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressRateIrreversibilityAndContributionStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressRateStressAndSeverityStep;
 
 
 public class WizardManager
@@ -297,7 +300,13 @@ public class WizardManager
 			.createBackControl(ThreatStressOverviewStep.class)
 			.createControl(ThreatRatingWizardCheckTotalsStep.END_OF_THREAT_SIMPLE_BRANCH, ThreatRatingWizardChooseBundle.class); 
 
-		createStepEntry(new ThreatStressOverviewStep(panel));
+		createStepEntry(new ThreatStressOverviewStep(panel))
+			.createBackControl(ThreatMatrixOverviewStep.class)
+			.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
+		createStepEntry(new ThreatStressRateStressAndSeverityStep(panel));
+		createStepEntry(new ThreatStressRateIrreversibilityAndContributionStep(panel));
+		createStepEntry(new ThreatStressCheckThreatRatingStep(panel))
+			.createNextControl(ThreatStressOverviewStep.class);
 
 	}
 
@@ -376,9 +385,9 @@ public class WizardManager
 				
 				// NOTE: The following is a loop
 				ThreatStressOverviewStep.class,
-				// NEW: ThreatStressRateStressAndSeverityStep.class
-				// NEW: ThreatStressRateIrreversibilityAndContributionStep.class
-				// NEW: ThreatStressCheckSummaryStep.class
+				ThreatStressRateStressAndSeverityStep.class,
+				ThreatStressRateIrreversibilityAndContributionStep.class,
+				ThreatStressCheckThreatRatingStep.class,
 				
 				ThreatRatingWizardCheckTotalsStep.class,
 
