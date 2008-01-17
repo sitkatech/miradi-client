@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener
@@ -312,6 +313,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question, columnCount);
 	}
 
+	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, CodeList disabledChoices, int columnCount)
+	{
+		ObjectCodeListField objectCodeListField = (ObjectCodeListField) createMultiCodeField(question, columnCount);
+		objectCodeListField.setDisabledCodes(disabledChoices);
+		
+		return objectCodeListField;
+	}
+	
 	public ObjectDataInputField createReadonlyMultiCodeField(int objectType, ChoiceQuestion question, int columnCount)
 	{
 		return new ObjectCodeListDisplayField(project, objectType, getObjectIdForType(objectType), question, columnCount);

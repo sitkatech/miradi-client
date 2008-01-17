@@ -11,7 +11,8 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.TeamRoleQuestion;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 
 public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 {
@@ -24,7 +25,8 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
 		
-		addField(createMultiCodeField(new TeamRoleQuestion(ProjectResource.TAG_ROLE_CODES), 3));
+		CodeList disabledRoleCodes = new CodeList(new String[] {ResourceRoleQuestion.TeamMemberRoleCode});
+		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES), disabledRoleCodes, 3));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_LOCATION));
