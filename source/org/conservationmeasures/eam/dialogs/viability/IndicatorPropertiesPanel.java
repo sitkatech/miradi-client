@@ -29,9 +29,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		
 		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
-		
-		futureStatusSubPanel = new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef());
-		addSubPanelWithTitledBorder(futureStatusSubPanel);
+		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
 		
 		updateFieldsFromProject();
@@ -41,19 +39,12 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		updateVisibilityOfViabilitySubPanels(new ORefList(orefsToUse));
+		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
+		viabilityRatingsSubPanel.setVisible(true);
+		if (foundRef.isInvalid())
+			viabilityRatingsSubPanel.setVisible(false);
 	}
 	
-	private void updateVisibilityOfViabilitySubPanels(ORefList list)
-	{
-		ORef foundRef = list.getRefForType(KeyEcologicalAttribute.getObjectType());
-		if (!foundRef.isInvalid())
-			return;
-		
-		viabilityRatingsSubPanel.setVisible(false);
-		futureStatusSubPanel.setVisible(false);
-	}
-
 	private static ORef getInvalidTargetRef()
 	{
 		return new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt()));
@@ -65,5 +56,4 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	}
 	
 	private IndicatorViabilityRatingsSubPanel viabilityRatingsSubPanel;
-	private IndicatorFutureStatusSubPanel futureStatusSubPanel;
 }
