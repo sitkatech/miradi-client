@@ -50,13 +50,13 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 	
-		updateVisibility(true);
+		setVisibilityOfRatingField(true);
 		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
 		if (foundRef.isInvalid())
-			updateVisibility(false);
+			setVisibilityOfRatingField(false);
 	}
 
-	private void updateVisibility(boolean isVisible)
+	private void setVisibilityOfRatingField(boolean isVisible)
 	{
 		statusLabelField.setVisible(isVisible);
 		statusField.setVisible(isVisible);
