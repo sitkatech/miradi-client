@@ -98,6 +98,22 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
+	protected void addFieldsOnOneLine(String label, Object[] components)
+	{
+		JPanel fieldPanel = new OneRowPanel();
+		for(int i = 0; i < components.length; i+=2)
+		{
+			ObjectDataInputField objectDataInputField = (ObjectDataInputField) components[i];
+			super.addField(objectDataInputField);
+			PanelTitleLabel fieldLabel = (PanelTitleLabel) components[i + 1];
+			fieldPanel.add(fieldLabel);
+			fieldPanel.add((objectDataInputField).getComponent());
+		}
+		
+		addLabel(label);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldsOnOneLine(String label, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);
