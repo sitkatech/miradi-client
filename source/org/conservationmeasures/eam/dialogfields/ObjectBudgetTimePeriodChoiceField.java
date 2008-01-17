@@ -58,7 +58,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 			String conversionType = askUserForConversionType(previouslySelectedCode, newCode);
 			if (conversionType == null)
 			{
-				setText(newCode);
+				return;
 			}
 			else if(conversionType.equals(cancelButtonLabel))
 			{
