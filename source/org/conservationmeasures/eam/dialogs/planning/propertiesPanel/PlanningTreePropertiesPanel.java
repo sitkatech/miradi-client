@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.diagram.StrategyPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.goal.GoalPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.indicator.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.objective.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.viability.TargetViabilityIndicatorPropertiesPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -52,7 +52,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject());
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
+		indicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(getProject(), getMainWindow().getActions());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel();
@@ -146,7 +146,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
-	private IndicatorPropertiesPanel indicatorPropertiesPanel;
+	private TargetViabilityIndicatorPropertiesPanel indicatorPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;

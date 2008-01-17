@@ -7,11 +7,13 @@ package org.conservationmeasures.eam.dialogs.indicator;
 
 import java.awt.CardLayout;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.viability.IndicatorFutureStatusSubPanel;
+import org.conservationmeasures.eam.dialogs.viability.TargetViabilityIndicatorPropertiesPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -20,9 +22,11 @@ import org.conservationmeasures.eam.project.Project;
 
 public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public DirectIndicatorPropertiesPanel(Project projectToUse, ORef orefToUse) throws Exception
+	public DirectIndicatorPropertiesPanel(Project projectToUse, Actions actionsToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
+		
+		actions = actionsToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		createPropertiesPanels();
@@ -38,7 +42,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
+		indicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(getProject(), actions);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel();
@@ -91,9 +95,10 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
+	private Actions actions;
 	private CardLayout cardLayout;
 	
-	private IndicatorPropertiesPanel indicatorPropertiesPanel;
+	private TargetViabilityIndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel; 
