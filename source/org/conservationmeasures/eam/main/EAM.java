@@ -292,6 +292,8 @@ public class EAM
 	public static String loadResourceFile(Class thisClass, String resourceFileName) throws Exception
 	{
 		URL url = getResourceURL(thisClass, resourceFileName);
+		if(url == null)
+			EAM.logError("Unable to find resource: " + thisClass.getPackage().getName() + ":" + resourceFileName);
 		
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
