@@ -77,8 +77,10 @@ import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckB
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardChooseBundle;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardIrreversibilityStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatSimpleOverviewStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressOverviewStep;
 
 
 public class WizardManager
@@ -277,8 +279,10 @@ public class WizardManager
 		//TODO: View:Diagram...should be Step:StepName or support both
 		
 		createStepEntry(new ThreatMatrixOverviewStep(panel))
-			.createControl("View:Diagram", DiagramOverviewStep.class);
-
+			.createControl("View:Diagram", DiagramOverviewStep.class)
+			.createControl(ThreatMatrixOverviewStep.THREAT_OVERVIEW_STRESS_MODE, ThreatStressOverviewStep.class);
+		
+		createStepEntry(new ThreatSimpleOverviewStep(panel));
 		createStepEntry(new ThreatRatingWizardChooseBundle(panel))
 			.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
 		
@@ -290,7 +294,11 @@ public class WizardManager
 			.createNextControl(ThreatRatingWizardChooseBundle.class); 
 
 		createStepEntry(new ThreatRatingWizardCheckTotalsStep(panel))
-			.createBackControl(ThreatRatingWizardChooseBundle.class); 
+			.createBackControl(ThreatStressOverviewStep.class)
+			.createControl(ThreatRatingWizardCheckTotalsStep.END_OF_THREAT_SIMPLE_BRANCH, ThreatRatingWizardChooseBundle.class); 
+
+		createStepEntry(new ThreatStressOverviewStep(panel));
+
 	}
 
 	public void createPlanningViewStepEntries(WizardPanel panel)
@@ -357,13 +365,23 @@ public class WizardManager
 				DiagramWizardLinkDirectThreatsToTargetsStep.class,
 
 				ThreatMatrixOverviewStep.class,
+				
+				// NOTE: The following is a loop
+				ThreatSimpleOverviewStep.class,
 				ThreatRatingWizardChooseBundle.class,
 				ThreatRatingWizardScopeStep.class,
 				ThreatRatingWizardSeverityStep.class,
 				ThreatRatingWizardIrreversibilityStep.class,
 				ThreatRatingWizardCheckBundleStep.class,
-				ThreatRatingWizardCheckTotalsStep.class,
 				
+				// NOTE: The following is a loop
+				ThreatStressOverviewStep.class,
+				// NEW: ThreatStressRateStressAndSeverityStep.class
+				// NEW: ThreatStressRateIrreversibilityAndContributionStep.class
+				// NEW: ThreatStressCheckSummaryStep.class
+				
+				ThreatRatingWizardCheckTotalsStep.class,
+
 				// STEP 1D
 				DiagramWizardIdentifyIndirectThreatStep.class,	
 				// need AssessStakeholders here

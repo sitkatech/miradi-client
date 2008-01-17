@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.wizard.threatmatrix;
 
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
+import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 
@@ -27,6 +28,15 @@ public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 		return ActionViewThreatMatrix.class;
 	}
 	
+	public void buttonPressed(String buttonName)
+	{
+		if(isProjectInStressMode() && buttonName.equals(WizardManager.CONTROL_NEXT))
+			buttonName = THREAT_OVERVIEW_STRESS_MODE;
+
+		super.buttonPressed(buttonName);
+	}
+
+	public static final String THREAT_OVERVIEW_STRESS_MODE = "ThreatOverviewStressMode";
 }
 
 

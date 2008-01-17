@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewS
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
+import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 
@@ -33,5 +34,14 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 	{
 		return EAM.text("Page 6");
 	}
+	
+	public void buttonPressed(String buttonName)
+	{
+		if(!isProjectInStressMode() && buttonName.equals(WizardManager.CONTROL_BACK))
+			buttonName = END_OF_THREAT_SIMPLE_BRANCH;
+		super.buttonPressed(buttonName);
+	}
+	
+	public static final String END_OF_THREAT_SIMPLE_BRANCH = "EndOfThreatSimpleBranch";
 }
 
