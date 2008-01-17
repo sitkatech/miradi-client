@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -130,6 +131,7 @@ public class EAM
 	
 	public static void logException(Exception e)
 	{
+		Toolkit.getDefaultToolkit().beep();
 		logger.logException(e);
 	}
 	
