@@ -108,6 +108,11 @@ abstract public class ObjectDataInputField implements FocusListener
 		return (!objectId.isInvalid());
 	}
 	
+	public void setVisible(boolean isVisible)
+	{
+		getComponent().setVisible(isVisible);
+	}
+	
 	public void setEditable(boolean newState)
 	{
 		allowEdits = newState;

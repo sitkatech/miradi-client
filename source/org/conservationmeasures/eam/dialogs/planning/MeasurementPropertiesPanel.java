@@ -7,10 +7,15 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
+import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.MeasurementIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
@@ -29,9 +34,11 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		
 		
-		ObjectDataInputField statusField = createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS));
+		statusField = createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS));
+		statusLabelField = new PanelFieldLabel(statusField.getObjectType(), statusField.getTag());
 		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, new TrendQuestion(Measurement.TAG_TREND));
-		addFieldsOnOneLine(EAM.text("Current Status"), new ObjectDataInputField[]{statusField, trendField,});
+		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
+		addFieldsOnOneLine(EAM.text("Current Status"), new Object[]{statusField, statusLabelField, trendField, trendLabelField});
 
 		addField(createChoiceField(ObjectType.MEASUREMENT,  new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
@@ -39,8 +46,27 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+	
+		updateVisibility(true);
+		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
+		if (foundRef.isInvalid())
+			updateVisibility(false);
+	}
+
+	private void updateVisibility(boolean isVisible)
+	{
+		statusLabelField.setVisible(isVisible);
+		statusField.setVisible(isVisible);
+	}
+
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Measurement Properties");
 	}
+	
+	private ObjectDataInputField statusField;
+	private PanelFieldLabel statusLabelField;
 }
