@@ -34,7 +34,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
-		targetViabilityIndicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(projectToUse, actions);
+		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions);
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(projectToUse);
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(projectToUse);
 		add(blankPropertiesPanel);
@@ -99,7 +99,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 	private CardLayout cardLayout;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
-	private TargetViabilityIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
+	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
 	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel;
 }

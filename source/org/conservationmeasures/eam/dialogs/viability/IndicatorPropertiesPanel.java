@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPanel
+public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public TargetViabilityIndicatorPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public IndicatorPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, getInvalidTargetRef());			
 		setLayout(new OneColumnGridLayout());
