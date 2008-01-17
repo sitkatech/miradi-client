@@ -23,11 +23,11 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField swotCompletedField = createCheckBoxField(WcsProjectData.TAG_SWOT_COMPLETED);
 		ObjectDataInputField swotUrlField = createStringField(WcsProjectData.TAG_SWOT_URL);
-		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{swotCompletedField, swotUrlField});
+		addFieldsOnOneLine(EAM.text("SWOT"), new ObjectDataInputField[]{swotCompletedField, swotUrlField});
 		
 		ObjectDataInputField stepCompletedField = createCheckBoxField(WcsProjectData.TAG_STEP_COMPLETED);
 		ObjectDataInputField stepUrlField = createStringField(WcsProjectData.TAG_STEP_URL);
-		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{stepCompletedField, stepUrlField});
+		addFieldsOnOneLine(EAM.text("STEP"), new ObjectDataInputField[]{stepCompletedField, stepUrlField});
 		
 		updateFieldsFromProject();
 	}
