@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -66,6 +67,10 @@ public class RareProjectData extends BaseObject
 		summaryOfKeyMessages = new StringData();
 		biodiversityHotspots = new StringData();
 		relatedProjects = new StringData();
+		projectCode = new NumberData();
+		cohort = new StringData();
+		numberOfCommunitiesInCampaignArea = new StringData();
+		audience = new StringData();
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
@@ -75,6 +80,12 @@ public class RareProjectData extends BaseObject
 		addField(TAG_SUMMARY_OF_KEY_MESSAGES, summaryOfKeyMessages);
 		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
+		
+		addField(TAG_PROJECT_CODE, projectCode);
+		addField(TAG_COHORT, cohort);
+		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
+		addField(TAG_AUDIENCE, audience);
+
 	}
 
 	public static final String OBJECT_NAME = "RareProjectData";
@@ -87,6 +98,10 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_SUMMARY_OF_KEY_MESSAGES = "SummaryOfKeyMessages";
 	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
+	public static final String TAG_PROJECT_CODE = "ProjectCode";
+	public static final String TAG_COHORT = "Cohort";
+	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
+	public static final String TAG_AUDIENCE = "Audience";
 	
 	private StringData speciesCommonName;
 	private StringData speciesScientificName;
@@ -96,4 +111,8 @@ public class RareProjectData extends BaseObject
 	private StringData summaryOfKeyMessages;
 	private StringData biodiversityHotspots;
 	private StringData relatedProjects;
+	private NumberData projectCode;
+	private StringData cohort;
+	private StringData numberOfCommunitiesInCampaignArea;
+	private StringData audience;
 }
