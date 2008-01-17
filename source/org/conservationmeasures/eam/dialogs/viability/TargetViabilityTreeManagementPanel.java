@@ -42,8 +42,8 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(EAM.getMainWindow(), factorRef, mainWindowToUse.getProject()),
-				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), ORef.INVALID));
+		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
+				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions(), ORef.INVALID));
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();
 	}  
