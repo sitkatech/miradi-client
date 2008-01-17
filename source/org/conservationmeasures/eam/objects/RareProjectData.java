@@ -69,7 +69,7 @@ public class RareProjectData extends BaseObject
 		relatedProjects = new StringData();
 		projectCode = new NumberData();
 		cohort = new StringData();
-		numberOfCommunitiesInCampaignArea = new StringData();
+		numberOfCommunitiesInCampaignArea = new NumberData();
 		audience = new StringData();
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
@@ -112,6 +112,6 @@ public class RareProjectData extends BaseObject
 	private StringData relatedProjects;
 	private NumberData projectCode;
 	private StringData cohort;
-	private StringData numberOfCommunitiesInCampaignArea;
+	private NumberData numberOfCommunitiesInCampaignArea;
 	private StringData audience;
 }
