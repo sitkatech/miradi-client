@@ -9,9 +9,9 @@ import java.awt.CardLayout;
 
 import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.planning.FutureStatusPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.viability.IndicatorFutureStatusSubPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -40,7 +40,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		futureStatusPropertiesPanel = new FutureStatusPropertiesPanel(getProject());
+		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		
 		add(indicatorPropertiesPanel);
@@ -96,5 +96,5 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
-	private FutureStatusPropertiesPanel futureStatusPropertiesPanel; 
+	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel; 
 }
