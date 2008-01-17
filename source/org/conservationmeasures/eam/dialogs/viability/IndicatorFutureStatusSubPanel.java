@@ -53,10 +53,12 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(orefsToUse);
 	
-		setVisibilityOfRatingField(true);
+		boolean isVisible = true;
 		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
 		if (foundRef.isInvalid())
-			setVisibilityOfRatingField(false);
+			isVisible = false;
+			
+		setVisibilityOfRatingField(isVisible);
 	}
 
 	private void setVisibilityOfRatingField(boolean isVisible)
