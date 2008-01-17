@@ -28,9 +28,9 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_RED_LIST_SPECIES));
 		addField(createStringField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES));
 		
-		ObjectDataInputField humandPopulationField = createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
+		ObjectDataInputField humanPopulationField = createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
 		ObjectDataInputField humanPopulationNotesField = createMultilineField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{humandPopulationField, humanPopulationNotesField});
+		addFieldsOnOneLine(EAM.text(""), new ObjectDataInputField[]{humanPopulationField, humanPopulationNotesField});
 		
 		addField(createMultilineField(ProjectMetadata.TAG_SOCIAL_CONTEXT));
 		
