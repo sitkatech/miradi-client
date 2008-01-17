@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.planning.MeasurementPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.viability.IndicatorFutureStatusSubPanel;
-import org.conservationmeasures.eam.dialogs.viability.TargetViabilityIndicatorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.viability.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -42,7 +42,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		indicatorPropertiesPanel = new TargetViabilityIndicatorPropertiesPanel(getProject(), actions);
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject(), actions);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel();
@@ -98,7 +98,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	private Actions actions;
 	private CardLayout cardLayout;
 	
-	private TargetViabilityIndicatorPropertiesPanel indicatorPropertiesPanel;
+	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private IndicatorFutureStatusSubPanel futureStatusPropertiesPanel; 
