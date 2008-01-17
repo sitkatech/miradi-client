@@ -24,13 +24,9 @@ public class RARESummaryPanel extends ObjectDataInputPanel
 		addSubPanelWithTitledBorder(new RareCampaignPlanningSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareTeamInformationSummarySubPanel(projectToUse));
 		//FIXME finish adding these to the sub panels
-//		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
-//		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME));
-//		addField(createMultilineField(RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL));
 //		addField(createStringField(RareProjectData.TAG_CAMPAIGN_SLOGAN));		
 //		addField(createStringField(RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE));
 //		addField(createStringField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
-//		addField(createStringField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS));
 //		addField(createStringField(RareProjectData.TAG_RELATED_PROJECTS));
 //		
 		updateFieldsFromProject();
