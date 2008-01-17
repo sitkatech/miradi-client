@@ -80,7 +80,6 @@ public class RareProjectData extends BaseObject
 		addField(TAG_SUMMARY_OF_KEY_MESSAGES, summaryOfKeyMessages);
 		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
-		
 		addField(TAG_PROJECT_CODE, projectCode);
 		addField(TAG_COHORT, cohort);
 		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
@@ -99,8 +98,8 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
 	public static final String TAG_PROJECT_CODE = "ProjectCode";
-	public static final String TAG_COHORT = "Cohort";
-	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
+	public static final String TAG_COHORT = "COHORT";
+	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitesInCampaignArea";
 	public static final String TAG_AUDIENCE = "Audience";
 	
 	private StringData speciesCommonName;
