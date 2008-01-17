@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogs.diagram.IndicatorSubPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.layout.OneColumnGridLayout;
@@ -22,7 +23,7 @@ public class TargetViabilityIndicatorPropertiesPanel extends ObjectDataInputPane
 		super(projectToUse, getInvalidTargetRef());			
 		setLayout(new OneColumnGridLayout());
 		
-		addSubPanelWithTitledBorder(new TargetViabilityIndicatorSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorSubPanel(projectToUse, getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
