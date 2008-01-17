@@ -331,7 +331,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			
 			SwingUtilities.getWindowAncestor(detailsTab).pack();
 			viabilityTab.updateSplitterLocation();
-			stressTab.updateSplitterLocation();
+			if (stressTab != null)
+				stressTab.updateSplitterLocation();
+			
 			subTargetTab.updateSplitterLocation();
 			goalsTab.updateSplitterLocation();
 			indicatorsTab.updateSplitterLocation();
