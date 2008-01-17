@@ -98,6 +98,8 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
+	//TODO,  come up with a better solution for this.  the reason this exists is becuase
+	// the label visibilty is changed outside of here.  
 	protected void addFieldsOnOneLine(String label, Object[] components)
 	{
 		JPanel fieldPanel = new OneRowPanel();
