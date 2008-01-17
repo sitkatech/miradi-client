@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
@@ -61,6 +62,11 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	{
 		setNeedsSave();
 		saveIfNeeded();
+	}
+	
+	public void setDisabledCodes(CodeList codesToDiable)
+	{
+		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
 	CodeListComponent codeListEditor;

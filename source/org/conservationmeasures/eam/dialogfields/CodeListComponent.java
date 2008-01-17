@@ -18,6 +18,8 @@ public class CodeListComponent extends AbstractListComponent
 	public CodeListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
+		
+		codesToDisable = new CodeList();
 	}
 	
 	public String getText()
@@ -60,4 +62,27 @@ public class CodeListComponent extends AbstractListComponent
 			skipNotice=false;
 		}
 	}
+	
+	public void setEnabled(boolean isValidObject)
+	{
+		super.setEnabled(isValidObject);
+		disableCheckBoxes();
+	}
+
+	private void disableCheckBoxes()
+	{
+		for (int choiceIndex = 0; choiceIndex<checkBoxes.length; ++choiceIndex)
+		{
+			ChoiceItem choiceItem = choiceItems[choiceIndex];
+			if (codesToDisable.contains(choiceItem.getCode()))
+				checkBoxes[choiceIndex].setEnabled(false);
+		}
+	}
+
+	public void setDisabledCodes(CodeList codesToDiableToUse)
+	{
+		codesToDisable = codesToDiableToUse;
+	}
+	
+	private CodeList codesToDisable;
 }
