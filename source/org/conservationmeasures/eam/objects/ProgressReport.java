@@ -68,7 +68,7 @@ public class ProgressReport extends BaseObject
 	
 	public String toString()
 	{
-		return getLabel();
+		return getDateAsString() + " " + getLabel();
 	}
 	
 	public String getLabel()
