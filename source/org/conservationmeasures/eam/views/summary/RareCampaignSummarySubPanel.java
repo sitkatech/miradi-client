@@ -24,7 +24,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		addField(createStringField(RareProjectData.TAG_AUDIENCE));
 		
 		addLabelsOnSingleRow(EAM.text("Population Size"), EAM.text("(see Location tab)"));
-		addLabelsOnSingleRow(EAM.text("> Area Size (ha)"), EAM.text("(see Scope tab)"));
+		addLabelsOnSingleRow(EAM.text("Area Size (hectares)"), EAM.text("(see Scope tab)"));
 		addLabelsOnSingleRow(EAM.text("Habitat"), EAM.text("(not implemented yet)"));
 		addField(createStringField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
