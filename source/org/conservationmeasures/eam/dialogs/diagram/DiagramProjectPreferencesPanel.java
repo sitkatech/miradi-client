@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
@@ -47,6 +48,10 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 			if(!command.getObjectORef().equals(getProject().getMetadata().getRef()))
 				return;
+			
+			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+			getProject().executeInsideListener(changeToDefaultMode);
+
 			mainWindow.getCurrentView().refresh();
 		}
 		catch(Exception e)
