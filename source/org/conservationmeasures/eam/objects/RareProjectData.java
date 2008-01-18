@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectdata.NumberData;
+import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -67,9 +67,9 @@ public class RareProjectData extends BaseObject
 		summaryOfKeyMessages = new StringData();
 		biodiversityHotspots = new StringData();
 		relatedProjects = new StringData();
-		projectCode = new NumberData();
+		projectCode = new IntegerData();
 		cohort = new StringData();
-		numberOfCommunitiesInCampaignArea = new NumberData();
+		numberOfCommunitiesInCampaignArea = new IntegerData();
 		audience = new StringData();
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
@@ -110,8 +110,8 @@ public class RareProjectData extends BaseObject
 	private StringData summaryOfKeyMessages;
 	private StringData biodiversityHotspots;
 	private StringData relatedProjects;
-	private NumberData projectCode;
+	private IntegerData projectCode;
 	private StringData cohort;
-	private NumberData numberOfCommunitiesInCampaignArea;
+	private IntegerData numberOfCommunitiesInCampaignArea;
 	private StringData audience;
 }
