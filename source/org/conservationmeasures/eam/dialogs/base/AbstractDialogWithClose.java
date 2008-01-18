@@ -47,6 +47,14 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	{
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
+		JComponent mainScrollPane = possiblyWrapInScrollPane(mainPanel);
+		return mainScrollPane;
+	}
+
+	// TODO: Should probably have AbstractDialogWithClose and also 
+	// AbstractDialogWithScrollingAndClose as separate classes
+	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
+	{
 		FastScrollPane mainScrollPane = new FastScrollPane(mainPanel);
 		return mainScrollPane;
 	}

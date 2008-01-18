@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.dialogs.threatstressrating.properties;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -15,5 +18,10 @@ public class ManageStressesDialog extends ModalDialogWithClose
 	public ManageStressesDialog(MainWindow parent, StressListManagementPanel stressListManagementPanel)
 	{
 		super(parent, stressListManagementPanel, EAM.text("Manage Stresses"));
+	}
+	
+	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
+	{
+		return mainPanel;
 	}
 }
