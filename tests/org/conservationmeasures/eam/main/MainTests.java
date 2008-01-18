@@ -128,7 +128,6 @@ import org.conservationmeasures.eam.utils.TestCodeList;
 import org.conservationmeasures.eam.utils.TestDateRange;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
-import org.conservationmeasures.eam.utils.TestJTextile;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestPointList;
 import org.conservationmeasures.eam.utils.TestStringMapData;
@@ -354,7 +353,6 @@ public class MainTests extends TestCase
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
 		suite.addTest(new TestSuite(TestMultiCalendar.class));
-		suite.addTest(new TestSuite(TestJTextile.class));
 
 	    return suite;
 	}
