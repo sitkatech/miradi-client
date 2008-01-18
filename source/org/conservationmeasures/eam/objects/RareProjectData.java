@@ -98,7 +98,7 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
 	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
 	public static final String TAG_PROJECT_CODE = "ProjectCode";
-	public static final String TAG_COHORT = "COHORT";
+	public static final String TAG_COHORT = "Cohort";
 	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitesInCampaignArea";
 	public static final String TAG_AUDIENCE = "Audience";
 	
