@@ -20,6 +20,11 @@ public class UndoRedoState
 		redoableCommands = new Vector();
 	}
 	
+	public int size()
+	{
+		return undoableCommands.size();
+	}
+
 	public boolean canUndo()
 	{
 		return (undoableCommands.size() > 0);
