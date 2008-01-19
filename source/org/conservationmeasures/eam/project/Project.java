@@ -738,6 +738,12 @@ public class Project
 		if(!isOpen())
 			return;
 		
+		EAM.logWarning("Memory statistics:\n" + 
+				"  Undos: " + undoRedoState.size() + "\n" + 
+				"  Max:   " + Runtime.getRuntime().maxMemory() + "\n" +
+				"  Total: " + Runtime.getRuntime().totalMemory() + "\n" +
+				"  Free:  " + Runtime.getRuntime().freeMemory() + "\n" +
+				"");
 		try
 		{
 			getDatabase().close();
