@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.conservationmeasures.eam.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStresses;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementStrategicAndMonitoringPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementWorkPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
@@ -244,6 +245,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardDefineTargetsStep(mainWindow));
 		registerAction(new ActionJumpTargetViabilityMethodChoiceStep(mainWindow));
 		registerAction(new ActionJumpTargetViability3Step(mainWindow));
+		registerAction(new ActionJumpIdentifyStresses(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyDirectThreatStep(mainWindow));
 		registerAction(new ActionJumpThreatMatrixOverviewStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyIndirectThreatStep(mainWindow));

@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.wizard.diagram;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStresses;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.DiagramWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -15,4 +17,13 @@ public class TargetStressesStep extends DiagramWizardStep
 		super(wizardToUse);
 	}
 
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_1B;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpIdentifyStresses.class;
+	}
 }
