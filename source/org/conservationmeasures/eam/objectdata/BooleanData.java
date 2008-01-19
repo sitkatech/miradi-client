@@ -51,6 +51,6 @@ public class BooleanData extends IntegerData
 			throw new RuntimeException("Invalid boolean value :" + newValue);
 	}
 	
-	static public final String BOOLEAN_FALSE = "0";
+	static public final String BOOLEAN_FALSE = "";
 	static public final String BOOLEAN_TRUE = "1";
 }
