@@ -12,12 +12,15 @@ import org.conservationmeasures.eam.dialogs.base.ModalDialogWithClose;
 import org.conservationmeasures.eam.dialogs.stress.StressListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.Target;
 
 public class ManageStressesDialog extends ModalDialogWithClose
 {
-	public ManageStressesDialog(MainWindow parent, StressListManagementPanel stressListManagementPanel)
+	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
 	{
-		super(parent, stressListManagementPanel, EAM.text("Manage Stresses"));
+		super(parent, stressListManagementPanel, "");
+		setTitle(EAM.text("Manage Stresses for ") + target.combineShortLabelAndLabel());
+
 	}
 	
 	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
