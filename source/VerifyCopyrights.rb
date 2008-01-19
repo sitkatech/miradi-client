@@ -40,6 +40,10 @@ def verify_file_copyright(file)
 		puts "Second copyright: #{file}"
 	end
 	$COPYRIGHT.size.times do | line |
+		if contents.size <= first+line
+			puts "Copyright doesn't have enough lines: #{file}"
+			return
+		end
 		if !contents[first + line].index($COPYRIGHT[line])
 			puts "Incomplete copyright: #{file}"
 			return
