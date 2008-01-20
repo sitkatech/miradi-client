@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.wizard.threatmatrix;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.menu.ProcessSteps;
 import org.conservationmeasures.eam.wizard.ThreatRatingWizardStep;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
@@ -16,4 +19,18 @@ public class ThreatStressRateStressAndSeverityStep extends
 		super(wizardToUse);
 	}
 
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_1C;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpThreatMatrixOverviewStep.class;
+	}
+	
+	public String getSubHeading()
+	{
+		return EAM.text("Scope & Severity of Stresses");
+	}
 }
