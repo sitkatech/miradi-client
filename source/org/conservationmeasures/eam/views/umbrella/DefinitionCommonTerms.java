@@ -43,9 +43,11 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Stress", 
-				"Stress - A degraded attribute of a conservation target that is caused " +
-				"by human activities (e.g., low population size, reduced extent of forest " +
-				"system; reduced river flows; increased sedimentation; lowered groundwater table level).");
+				"Stress - Impaired aspects of conservation targets " +
+				"that result directly or indirectly from human activities " +
+				"(e.g., low population size, reduced extent of forest system; " +
+				"reduced river flows; increased sedimentation; lowered groundwater table level). " +
+				"Generally equivalent to degraded key ecological attributes (e.g., habitat loss).");
 		defs.put("Definition:Stress", def);
 		
 		
@@ -224,11 +226,16 @@ public class DefinitionCommonTerms
 				"severity, and irreversibility criteria. ");
 		defs.put("Definition:OverallThreatRating", def);
 		
-		def = new Definition("Irreversibility", "Irreversibility � The degree to which the effects of a threat can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.\n" + 
-		"4 = Very High: The effects of the threat cannot be undone, and it is very unlikely the target can be restored (e.g., wetlands converted to a shopping centre). \n" +
-		"3 = High: The effects of the threat can technically be undone and the target restored, but it is not practically affordable (e.g., wetland converted to agriculture).\n" + 
-		"2 = Medium: The effects of the threat can be undone and the target restored with a reasonable commitment of resources (e.g., ditching and draining of wetland). \n" +
-		"1 = Low: The effects of the threat are easily reversible and the target can be easily restored at a relatively low cost (e.g., off-road vehicles trespassing in wetland).\n"); 
+		def = new Definition("Irreversibility", "<html>Irreversibility - The degree to which the effects of a threat " +
+				"can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.<ul>" + 
+				"<li>4 = Very High: The effects of the threat cannot be undone, and it is very unlikely the target can be restored " +
+				"(e.g., wetlands converted to a shopping centre). \n" +
+				"<li>3 = High: The effects of the threat can technically be undone and the target restored, " +
+				"but it is not practically affordable (e.g., wetland converted to agriculture).\n" + 
+				"<li>2 = Medium: The effects of the threat can be undone and the target restored with a reasonable commitment of resources " +
+				"(e.g., ditching and draining of wetland). \n" +
+				"<li>1 = Low: The effects of the threat are easily reversible and the target can be easily restored at a relatively low cost " +
+				"(e.g., off-road vehicles trespassing in wetland).\n"); 
 		defs.put("Definition:Irreversibility", def);
 
 		def = new Definition("Severity", 
@@ -237,6 +244,12 @@ public class DefinitionCommonTerms
 				"reasonably be expected within ten years under current " +
 				"circumstances (i.e., given the continuation of the existing situation). ");
 		defs.put("Definition:Severity", def);
+		
+		def = new Definition("Contribution", 
+				"Contribution - A threat rating criterion defined as the expected contribution of the source, " +
+				"acting alone, to the full expression of a stress (as determined in the stress assessment) " +
+				"under current circumstances (i.e., given the continuation of the existing management/conservation situation).");
+		defs.put("Definition:Contribution", def);
 		
 		def = new Definition("Project", 
 				"Project (general) - Any set of actions undertaken by a group of people and/or " +
