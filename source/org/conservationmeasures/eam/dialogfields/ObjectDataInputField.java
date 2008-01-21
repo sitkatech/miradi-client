@@ -32,6 +32,10 @@ abstract public class ObjectDataInputField implements FocusListener
 		allowEdits = true;
 	}
 	
+	public void dispose()
+	{
+	}
+	
 	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);

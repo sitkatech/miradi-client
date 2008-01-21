@@ -84,6 +84,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.dispose();
 		}
+		
+		int fieldSize = getFields().size();
+		for(int i = 0; i < fieldSize; ++i)
+		{
+			ObjectDataInputField field = (ObjectDataInputField) getFields().get(i);
+			field.dispose();
+		}
+		
 		super.dispose();
 	}
 

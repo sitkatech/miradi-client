@@ -34,6 +34,13 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 
 		setDateChooserPreferredSizeWithPadding();
 	}
+	
+	public void dispose()
+	{
+		super.dispose();
+		if (dateChooser != null)
+			dateChooser.cleanup();
+	}
 
 	private void setDateChooserPreferredSizeWithPadding()
 	{
