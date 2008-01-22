@@ -58,6 +58,8 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		mainWindow = mainWindowToUse;
 		linkHandler = hyperLinkHandler;
+		createEditor();
+
 		setEditable(false);
 		setText(htmlSource);
 		addHyperlinkListener(this);
@@ -82,18 +84,19 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void setText(String text)
 	{
+		super.setText(text);
+		setCaretPosition(0);
+	}
 
+	private void createEditor()
+	{
 		HTMLEditorKit htmlKit = new OurHtmlEditorKit(linkHandler);
 		StyleSheet style = htmlKit.getStyleSheet();
 		customizeStyleSheet(style);
 		htmlKit.setStyleSheet(style);
-		setEditorKit(htmlKit);
-
 		Document doc = htmlKit.createDefaultDocument();
 		setDocument(doc);
-		
-		super.setText(text);
-		setCaretPosition(0);
+		setEditorKit(htmlKit);
 	}
 
 	public void setFixedWidth( Component component, int width )
