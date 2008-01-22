@@ -30,6 +30,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public ProjectScopeBox(DiagramModel modelToUse)
 	{
 		model = modelToUse;
+		textPane = new JTextPane();
 		autoSurroundTargets();
 		
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
@@ -122,15 +123,14 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	 * : see AboutBox that uses the HtmlViewer as in  About.class */
 	public int calculateShortScopeHeight(int width) 
 	{
-		JTextPane ja = new JTextPane();
 		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
 		int size = getProject().getMetadata().getDiagramFontSize();
 		if (size==0)
-			size = ja.getFont().getSize();
-		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
-		ja.setSize(width, ja.getMaximumSize().height);
-		ja.setText(getText());
-		return ja.getPreferredSize().height + HEIGHT_CUSION;
+			size = textPane.getFont().getSize();
+		textPane.setFont(new Font(fontFamily, Font.PLAIN, size));
+		textPane.setSize(width, textPane.getMaximumSize().height);
+		textPane.setText(getText());
+		return textPane.getPreferredSize().height + HEIGHT_CUSION;
 	}
 	
 	
@@ -198,6 +198,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	public final static int HEIGHT_CUSION = 6;
 	
-	DiagramModel model;
-	int shortScopeHeight;
+	private DiagramModel model;
+	private JTextPane textPane;
+	private int shortScopeHeight;
 }
