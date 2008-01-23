@@ -410,6 +410,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void closeProject() throws Exception
 	{
+		EAM.logDebug(getMemoryStatistics());
+
 		project.close();
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
@@ -471,6 +473,39 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		updateAfterCommand(event);
+		warnOnceIfLowOnMemory();
+	}
+	
+	private void warnOnceIfLowOnMemory()
+	{
+		if(hasMemoryWarningBeenShown)
+			return;
+		
+		Runtime runtime = Runtime.getRuntime();
+		if(runtime.totalMemory() < runtime.maxMemory())
+			return;
+		
+		final long REASONABLE_MEMORY_CUSHION = 5 * 1024 * 1024;
+		if(runtime.freeMemory() > REASONABLE_MEMORY_CUSHION)
+			return;
+		
+		EAM.logWarning(getMemoryStatistics());
+		
+		EAM.errorDialog("<html><strong>Miradi is running low on memory.</strong><br><br> " +
+				"Please exit and restart Miradi, and report this to the Miradi team at<br>" +
+				"<a href='mailto://support@miradi.org'>support@miradi.org</a>");
+		
+		hasMemoryWarningBeenShown = true;
+	}
+
+	private String getMemoryStatistics()
+	{
+		Runtime runtime = Runtime.getRuntime();
+		String memoryStatistics = "\nMemory Statistics:\n" +
+						"  Free: " + runtime.freeMemory() + "\n" + 
+						"  Used: " + runtime.totalMemory() + "\n" +
+						"  Max:  " + runtime.maxMemory();
+		return memoryStatistics;
 	}
 
 	public void setStatusBarIfDataExistsOutOfRange()
@@ -574,7 +609,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			Stopwatch sw = new Stopwatch();
 			actions.updateActionStates();
-			EAM.logDebug("updateActionStates took: " + sw.elapsed() + " millis");
+			EAM.logVerbose("updateActionStates took: " + sw.elapsed() + " millis");
 		}
 	}
 	
@@ -871,4 +906,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private int existingCommandListenerCount;
 	private int preventActionUpdatesCount;
+	
+	private boolean hasMemoryWarningBeenShown;
 }

@@ -91,7 +91,7 @@ public class ValueOption extends BaseObject
 			case 3: return ChoiceQuestion.COLOR_CAUTION;
 			case 4: return ChoiceQuestion.COLOR_ALERT;
 		}
-		EAM.logDebug("ValueOption.getColor for unknown numeric value: " + getNumericValue());
+		EAM.logWarning("ValueOption.getColor for unknown numeric value: " + getNumericValue());
 		return Color.BLACK;
 	}
 	

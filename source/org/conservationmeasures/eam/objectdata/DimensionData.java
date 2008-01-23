@@ -27,7 +27,7 @@ public class DimensionData extends ObjectData
 		}
 		catch (Exception e)
 		{
-			EAM.logDebug("DimensionData ignoring invalid: " + valueToUse);
+			EAM.logWarning("DimensionData ignoring invalid: " + valueToUse);
 		}
 	}
 	

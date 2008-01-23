@@ -26,7 +26,7 @@ public class PointData extends ObjectData
 		}
 		catch (Exception e)
 		{
-			EAM.logDebug("PointData ignoring invalid: " + valueToUse);
+			EAM.logWarning("PointData ignoring invalid: " + valueToUse);
 		}
 	}
 

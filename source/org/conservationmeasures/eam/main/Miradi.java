@@ -22,7 +22,7 @@ public class Miradi
 		if(!EAM.initialize())
 			System.exit(1);
 		
-		EAM.setLogLevel(EAM.LOG_NORMAL);
+		EAM.setLogLevel(EAM.LOG_DEBUG);
 		if(Arrays.asList(args).contains("--verbose"))
 			EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.setExceptionLoggingDestination();

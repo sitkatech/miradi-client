@@ -660,8 +660,8 @@ public class Project
 		{
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
-			EAM.logDebug("Highest Factor Id: " + getNodeIdAssigner().getHighestAssignedId());
-			EAM.logDebug("Highest Normal Id: " + getAnnotationIdAssigner().getHighestAssignedId());
+			EAM.logVerbose("Highest Factor Id: " + getNodeIdAssigner().getHighestAssignedId());
+			EAM.logVerbose("Highest Normal Id: " + getAnnotationIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
 		{
@@ -738,12 +738,6 @@ public class Project
 		if(!isOpen())
 			return;
 		
-		EAM.logWarning("Memory statistics:\n" + 
-				"  Undos: " + undoRedoState.size() + "\n" + 
-				"  Max:   " + Runtime.getRuntime().maxMemory() + "\n" +
-				"  Total: " + Runtime.getRuntime().totalMemory() + "\n" +
-				"  Free:  " + Runtime.getRuntime().freeMemory() + "\n" +
-				"");
 		try
 		{
 			getDatabase().close();

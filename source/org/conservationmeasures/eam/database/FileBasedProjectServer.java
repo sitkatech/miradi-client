@@ -49,7 +49,7 @@ public class FileBasedProjectServer extends ProjectServer
 		
 		if(jsonFileWriteCount == 0 || jsonFileWriteMillis == 0)
 			return;
-		EAM.logDebug("Wrote " + jsonFileWriteCount + " files in " + jsonFileWriteMillis + 
+		EAM.logVerbose("Wrote " + jsonFileWriteCount + " files in " + jsonFileWriteMillis + 
 				"ms which is " + jsonFileWriteCount*1000/jsonFileWriteMillis + " files/second");
 	}
 

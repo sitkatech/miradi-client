@@ -24,7 +24,7 @@ public class NumberData extends ObjectData
 		}
 		catch (Exception e)
 		{
-			EAM.logDebug("NumberData ignoring invalid: " + valueToUse);
+			EAM.logWarning("NumberData ignoring invalid: " + valueToUse);
 		}
 	}
 

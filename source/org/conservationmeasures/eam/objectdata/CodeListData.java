@@ -26,7 +26,7 @@ public class CodeListData extends ObjectData
 		}
 		catch (ParseException e)
 		{
-			EAM.logDebug("CodeListData ignoring invalid: " + valueToUse);
+			EAM.logWarning("CodeListData ignoring invalid: " + valueToUse);
 		}
 	}
 
