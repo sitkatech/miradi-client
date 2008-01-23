@@ -5,6 +5,9 @@
 */ 
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
@@ -186,6 +189,18 @@ public class Objective extends Desire
 		}
 		return new ORefList(relevantRefList);
 	}
+	
+	protected Set<String> getFieldTagsToIncludeInXml()
+	{
+		Set superTags = super.getFieldTagsToIncludeInXml();
+		HashSet<String> tags = new HashSet();
+		tags.addAll(superTags);
+		tags.remove(TAG_RELEVANT_INDICATOR_SET);
+		tags.remove(TAG_RELEVANT_STRATEGY_SET);
+		tags.add(PSEUDO_RELEVANT_INDICATOR_REFS);
+		tags.add(PSEUDO_RELEVANT_STRATEGY_REFS);
+		return tags;
+	}
 		
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)
 	{
@@ -216,8 +231,8 @@ public class Objective extends Desire
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 	public static final String TAG_RELEVANT_STRATEGY_SET = "RelevantStrategySet";
-	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoDefaultRelevantIndicatorRefs";
-	public static final String PSEUDO_RELEVANT_STRATEGY_REFS = "PseudoDefaultRelevantStrategyRefs";
+	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+	public static final String PSEUDO_RELEVANT_STRATEGY_REFS = "PseudoRelevantStrategyRefs";
 	
 	private RelevancyOverrideSetData relevantStrategyOverrides;
 	private RelevancyOverrideSetData relevantIndicatorOverrides;

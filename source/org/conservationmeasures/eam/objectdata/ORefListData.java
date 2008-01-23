@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import java.io.IOException;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.martus.util.UnicodeWriter;
@@ -69,7 +67,7 @@ public class ORefListData extends ObjectData
 		set(new ORefList(newValue));	
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		objectReferenceList.toXml(out);
 	}
