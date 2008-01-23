@@ -570,8 +570,9 @@ abstract public class BaseObject
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + getTypeName() + ">");
-		out.writeln("<Id>" + id.asInt() + "</Id>");
+		out.writeln("<" + getTypeName() + " ref='");
+		getRef().toXml(out);
+		out.writeln("'>");
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
 		{
