@@ -194,12 +194,14 @@ public class ORefList
 	
 	public void toXml(UnicodeWriter out) throws IOException
 	{
+		out.writeln("<RefList>");
 		for(int i = 0; i < size(); ++i)
 		{
-			if(i > 0)
-				out.write(",");
+			out.write("<Ref>");
 			get(i).toXml(out);
+			out.writeln("</Ref>");
 		}
+		out.writeln("</RefList>");
 	}
 	
 	public IdList convertToIdList(int objectType)

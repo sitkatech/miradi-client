@@ -5,9 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
+import java.io.IOException;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.martus.util.UnicodeWriter;
 
 public class BaseIdData extends ObjectData
 {
@@ -52,6 +55,11 @@ public class BaseIdData extends ObjectData
 			id = BaseId.INVALID;
 		else
 			id = new BaseId(Integer.parseInt(newValue));
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		new ORef(objectType, id).toXml(out);
 	}
 
 	public boolean equals(Object rawOther)

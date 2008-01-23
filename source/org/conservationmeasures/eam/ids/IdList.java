@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -207,12 +208,7 @@ public class IdList
 
 	public void toXml(UnicodeWriter out) throws IOException
 	{
-		for(int i = 0; i < size(); ++i)
-		{
-			if(i > 0)
-				out.write(",");
-			out.write(get(i).toString());
-		}
+		new ORefList(getObjectType(), this).toXml(out);
 	}
 
 	private static final String TAG_IDS = "Ids";
