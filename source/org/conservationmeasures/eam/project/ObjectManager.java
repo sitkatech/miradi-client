@@ -379,7 +379,7 @@ public class ObjectManager
 	{
 		BaseObject object = findObject(ref);
 		if(object == null)
-			EAM.logDebug("getObjectData no such object: " + ref + " fieldTag=" + fieldTag);
+			EAM.logWarning("getObjectData no such object: " + ref + " fieldTag=" + fieldTag);
 		return object.getData(fieldTag);
 	}
 

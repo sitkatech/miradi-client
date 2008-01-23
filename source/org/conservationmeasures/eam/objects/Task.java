@@ -437,7 +437,7 @@ public class Task extends BaseObject
 		BaseObject parent = getOwner();
 		if(parent == null)
 		{
-			EAM.logDebug("Parent of task " + getId() + " not found: " + getOwnerRef());
+			EAM.logWarning("Parent of task " + getId() + " not found: " + getOwnerRef());
 			return "(none)";
 		}
 		return parent.getData(BaseObject.TAG_LABEL);

@@ -28,7 +28,7 @@ public class RoundedRectangleFactorView extends FactorView
 
     public GraphCellEditor getEditor() 
     {
-    	EAM.logDebug("WARNING: RectangleNodeView.getEditor not implemented");
+    	EAM.logWarning("WARNING: RectangleNodeView.getEditor not implemented");
         return null;
     }
     

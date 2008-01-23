@@ -173,25 +173,25 @@ public class PropertiesDoer extends LocationDoer
 		DiagramComponent diagramComponent = getDiagramView().getDiagramComponent();
 		Point pointRelativeToCellOrigin = diagramComponent.convertScreenPointToCellRelativePoint(screenPoint, factorCell);
 
-		EAM.logDebug(screenPoint.toString() + "->" + pointRelativeToCellOrigin.toString());
+		EAM.logVerbose(screenPoint.toString() + "->" + pointRelativeToCellOrigin.toString());
 		if(factorCell.isPointInObjective(pointRelativeToCellOrigin))
 		{
-			EAM.logDebug("Objective");
+			EAM.logVerbose("Objective");
 			return FactorPropertiesPanel.TAB_OBJECTIVES;
 		}
 		if (factorCell.isPointInViability(pointRelativeToCellOrigin))
 		{
-			EAM.logDebug("ViabilityModeTNC");
+			EAM.logVerbose("ViabilityModeTNC");
 			return FactorPropertiesPanel.TAB_VIABILITY;
 		}
 		if(factorCell.isPointInIndicator(pointRelativeToCellOrigin))
 		{
-			EAM.logDebug("Indicator");
+			EAM.logVerbose("Indicator");
 			return FactorPropertiesPanel.TAB_INDICATORS;
 		}
 		if(factorCell.isPointInGoal(pointRelativeToCellOrigin))
 		{
-			EAM.logDebug("Goal");
+			EAM.logVerbose("Goal");
 			return FactorPropertiesPanel.TAB_GOALS;
 		}
 		

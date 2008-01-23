@@ -23,7 +23,7 @@ public class FloatData extends ObjectData
 		}
 		catch(Exception e)
 		{
-			EAM.logDebug("FloatData ignoring invalid: " + valueToUse);
+			EAM.logWarning("FloatData ignoring invalid: " + valueToUse);
 		}
 	}
 	

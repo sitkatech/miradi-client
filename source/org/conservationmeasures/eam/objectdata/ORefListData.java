@@ -25,7 +25,7 @@ public class ORefListData extends ObjectData
 		}
 		catch(Exception e)
 		{
-			EAM.logDebug("ObjectReferenceListData ignoring invalid: " + valueToUse);
+			EAM.logWarning("ObjectReferenceListData ignoring invalid: " + valueToUse);
 		}
 	}
 	

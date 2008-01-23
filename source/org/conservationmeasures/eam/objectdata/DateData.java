@@ -25,7 +25,7 @@ public class DateData extends ObjectData
 		}
 		catch (Exception e)
 		{
-			EAM.logDebug("DateData ignoring invalid: " + valueToUse);
+			EAM.logWarning("DateData ignoring invalid: " + valueToUse);
 		}
 	}
 

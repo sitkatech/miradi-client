@@ -24,7 +24,7 @@ public class DateRangeEffortListData extends ObjectData
 		}
 		catch(Exception e)
 		{
-			EAM.logDebug("DateRangeEffortListData ignoring invalid: " + valueToUse);
+			EAM.logWarning("DateRangeEffortListData ignoring invalid: " + valueToUse);
 		}
 	}
 	

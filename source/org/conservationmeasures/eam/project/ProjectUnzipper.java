@@ -40,12 +40,12 @@ public class ProjectUnzipper
 				String name = entry.getName();
 				if(isTopLevelFile(name))
 				{
-					EAM.logDebug("ProjectUnzipper found file at top level");
+					EAM.logWarning("ProjectUnzipper found file at top level");
 					return false;
 				}
 				if(hasLeadingSlash(name))
 				{
-					EAM.logDebug("ProjectUnzipper found leading slash");
+					EAM.logWarning("ProjectUnzipper found leading slash");
 					return false;
 				}
 				
@@ -56,7 +56,7 @@ public class ProjectUnzipper
 			
 			if(topLevelDirectories.size() != 1)
 			{
-				EAM.logDebug("ProjectUnzipper didn't find exactly one top-level directory");
+				EAM.logWarning("ProjectUnzipper didn't find exactly one top-level directory");
 				return false;
 			}
 			

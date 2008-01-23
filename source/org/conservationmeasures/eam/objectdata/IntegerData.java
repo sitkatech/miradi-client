@@ -23,7 +23,7 @@ public class IntegerData extends ObjectData
 		}
 		catch(Exception e)
 		{
-			EAM.logDebug("IntegerData ignoring invalid: " + valueToUse);
+			EAM.logWarning("IntegerData ignoring invalid: " + valueToUse);
 		}
 	}
 	
