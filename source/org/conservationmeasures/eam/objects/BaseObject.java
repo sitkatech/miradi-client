@@ -573,12 +573,11 @@ abstract public class BaseObject
 		out.writeln("<" + getTypeName() + " ref='");
 		getRef().toXml(out);
 		out.writeln("'>");
-		Iterator iter = fields.keySet().iterator();
+		Set fieldTags = getFieldTagsToIncludeInXml();
+		Iterator iter = fieldTags.iterator();
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if(isPseudoField(tag))
-				continue;
 			ObjectData data = getField(tag);
 			out.write("<" + tag + ">");
 			data.toXml(out);
@@ -586,6 +585,20 @@ abstract public class BaseObject
 		}
 		writeNonFieldXml(out);
 		out.writeln("</" + getTypeName() + ">");
+	}
+	
+	protected Set<String> getFieldTagsToIncludeInXml()
+	{
+		HashSet<String> tagsToInclude = new HashSet();
+		Set rawTags = fields.keySet();
+		Iterator iter = rawTags.iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			if(!isPseudoField(tag))
+				tagsToInclude.add(tag);
+		}
+		return tagsToInclude;
 	}
 	
 	public void writeNonFieldXml(UnicodeWriter out) throws Exception
@@ -1163,6 +1176,11 @@ abstract public class BaseObject
 		public String get()
 		{
 			return getPseudoData(psuedoTag);
+		}
+		
+		public void toXml(UnicodeWriter out) throws Exception
+		{
+			new ORefList(get()).toXml(out);
 		}
 
 		public boolean equals(Object rawOther)

@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import java.io.IOException;
-
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
@@ -24,7 +22,7 @@ abstract public class ObjectData
 		return get();
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
 		out.write(XmlUtilities.getXmlEncoded(get()));
 	}
