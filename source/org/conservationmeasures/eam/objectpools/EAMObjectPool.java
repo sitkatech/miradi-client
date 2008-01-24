@@ -31,7 +31,7 @@ public class EAMObjectPool extends ObjectPool
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<Pool type='" + getObjectType() + "'>");
+		out.writeln("<Pool objectType='" + getObjectType() + "'>");
 		IdList ids = getIdList();
 		for(int i = 0; i < ids.size(); ++i)
 		{
