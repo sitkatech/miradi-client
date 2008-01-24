@@ -35,20 +35,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="21"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="129"
-						y="0"
-						width="81"
-						height="20"
-						key="textField-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{ref}]]></textFieldExpression>
-				</textField>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -74,6 +61,19 @@
 					</textElement>
 				<text><![CDATA[ActivityList]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="368"
+						y="0"
+						width="81"
+						height="20"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{ref}]]></textFieldExpression>
+				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="129"

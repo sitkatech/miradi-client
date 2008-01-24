@@ -24,10 +24,9 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 	<parameter name="taskRef" isForPrompting="false" class="java.lang.String"/>
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Activity[@ref='$P{taskRef}']]]></queryString>
 
 	<field name="Label" class="java.lang.String">
-		<fieldDescription><![CDATA[Activity/Label]]></fieldDescription>
+		<fieldDescription><![CDATA[Label]]></fieldDescription>
 	</field>
 
 		<background>
@@ -59,7 +58,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<text><![CDATA[Task1223]]></text>
+				<text><![CDATA[Task Report]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

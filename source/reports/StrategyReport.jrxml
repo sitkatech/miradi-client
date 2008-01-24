@@ -24,7 +24,6 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 	<parameter name="ref" isForPrompting="false" class="java.lang.String"/>
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref='$P{ref}']]]></queryString>
 
 	<field name="Label" class="java.lang.String">
 		<fieldDescription><![CDATA[Label]]></fieldDescription>
@@ -47,7 +46,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<text><![CDATA[Strategy333]]></text>
+				<text><![CDATA[Strategy Report]]></text>
 				</staticText>
 			</band>
 		</title>
