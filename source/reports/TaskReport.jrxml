@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="StrategyReport"
+		 name="TaskReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -23,11 +23,11 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="ref" isForPrompting="false" class="java.lang.String"/>
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref='$P{ref}']]]></queryString>
+	<parameter name="taskRef" isForPrompting="false" class="java.lang.String"/>
+	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Activity[@ref='$P{taskRef}']]]></queryString>
 
 	<field name="Label" class="java.lang.String">
-		<fieldDescription><![CDATA[Label]]></fieldDescription>
+		<fieldDescription><![CDATA[Activity/Label]]></fieldDescription>
 	</field>
 
 		<background>
@@ -35,20 +35,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="22"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="10"
-						y="0"
-						width="144"
-						height="21"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Strategy333]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -60,48 +47,46 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="52"  isSplitAllowed="true" >
+			<band height="42"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="4"
+						width="87"
+						height="16"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Task1223]]></text>
+				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="10"
-						y="5"
-						width="291"
-						height="15"
-						key="textField-1"
-						positionType="Float"/>
+						x="98"
+						y="4"
+						width="73"
+						height="16"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{taskRef}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="23"
+						width="87"
+						height="18"
+						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="26"
-						y="20"
-						width="128"
-						height="15"
-						key="textField-2"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{ref}]]></textFieldExpression>
-				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="194"
-						y="26"
-						width="326"
-						height="23"
-						key="subreport-1"/>
-					<subreportParameter  name="ref">
-						<subreportParameterExpression><![CDATA[$P{ref}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[@ref = " + $P{ref} + "]/ActivityIds/RefList/Ref")]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["ActivityListReport.jasper"]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

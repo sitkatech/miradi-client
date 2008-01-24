@@ -51,19 +51,19 @@
 			</band>
 		</title>
 		<pageHeader>
-			<band height="10"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="8"  isSplitAllowed="true" >
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="29"  isSplitAllowed="true" >
+			<band height="21"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="7"
+						y="2"
 						width="500"
 						height="19"
 						key="subreport-1"
@@ -71,9 +71,7 @@
 					<subreportParameter  name="ref">
 						<subreportParameterExpression><![CDATA[$F{ref}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[@ref = " + $F{ref} +"]")
-
- ]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[@ref = " + $F{ref} +"]")]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA["StrategyReport.jasper"]]></subreportExpression>
 				</subreport>
 			</band>
