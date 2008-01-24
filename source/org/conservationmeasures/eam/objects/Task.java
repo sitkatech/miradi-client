@@ -201,6 +201,8 @@ public class Task extends BaseObject
 			return;
 		}
 		
+		EAM.logWarning("Task with no owner: " + getRef());
+		
 	}
 	
 	public boolean isOrphandTask()
