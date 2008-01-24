@@ -101,7 +101,7 @@ public class ORef
 	
 	public void toXml(UnicodeWriter out) throws IOException
 	{
-		out.write(getObjectType() + ":" + getObjectId());
+		out.write(getObjectType() + "." + getObjectId());
 	}
 	
 	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
