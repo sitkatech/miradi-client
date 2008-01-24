@@ -84,16 +84,23 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void setText(String text)
 	{
+		updateStyleSheet();
+
 		super.setText(text);
 		setCaretPosition(0);
+	}
+
+	private void updateStyleSheet()
+	{
+		HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
+		StyleSheet style = htmlKit.getStyleSheet();
+		customizeStyleSheet(style);
+		htmlKit.setStyleSheet(style);
 	}
 
 	private void createEditor()
 	{
 		HTMLEditorKit htmlKit = new OurHtmlEditorKit(linkHandler);
-		StyleSheet style = htmlKit.getStyleSheet();
-		customizeStyleSheet(style);
-		htmlKit.setStyleSheet(style);
 		Document doc = htmlKit.createDefaultDocument();
 		setDocument(doc);
 		setEditorKit(htmlKit);
