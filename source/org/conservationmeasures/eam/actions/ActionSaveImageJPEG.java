@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionSaveImage extends MainWindowAction 
+public class ActionSaveImageJPEG extends MainWindowAction 
 {
-	public ActionSaveImage(MainWindow mainWindowToUse)
+	public ActionSaveImageJPEG(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

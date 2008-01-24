@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
 import org.conservationmeasures.eam.actions.ActionManageStresses;
-import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
 import org.conservationmeasures.eam.actions.ActionShowCellRatings;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -75,7 +75,7 @@ public class ThreatMatrixView extends CardedView
 
 	private void addThreatMatrixiewDoersToMap()
 	{
-		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
+		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
 		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
 		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());

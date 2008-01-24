@@ -83,7 +83,7 @@ import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
-import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionShareActivity;
@@ -293,7 +293,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionSelectChain.class, new SelectChainDoer());
 		addDoerToMap(ActionProperties.class, propertiesDoer);
 		addDoerToMap(ActionPrint.class, new Print());
-		addDoerToMap(ActionSaveImage.class, new SaveImageDoer());
+		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionShowSelectedChainMode.class, new ShowSelectedChainModeDoer());
 		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());
