@@ -23,7 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref]]]></queryString>
+	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy]]></queryString>
 
 	<field name="ref" class="java.lang.String">
 		<fieldDescription><![CDATA[@ref]]></fieldDescription>
