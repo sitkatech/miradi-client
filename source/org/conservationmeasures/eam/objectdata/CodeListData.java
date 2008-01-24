@@ -9,6 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.main.EAM;
+import org.martus.util.UnicodeWriter;
 
 public class CodeListData extends ObjectData
 {
@@ -70,6 +71,11 @@ public class CodeListData extends ObjectData
 		codes.removeCode(code);
 	}
 	
+	public void toXml(UnicodeWriter out) throws Exception
+	{
+		codes.toXml(out);
+	}
+
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof CodeListData))
