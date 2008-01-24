@@ -1,0 +1,966 @@
+<MiradiProject>
+<FileName>1</FileName>
+<ExportDate>2008-01-24</ExportDate>
+<ObjectPools>
+<Pool type='1'>
+<RatingCriterion ref='
+1:1'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Scope</Label>
+</RatingCriterion>
+<RatingCriterion ref='
+1:2'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Severity</Label>
+</RatingCriterion>
+<RatingCriterion ref='
+1:3'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Irreversibility</Label>
+</RatingCriterion>
+</Pool>
+<Pool type='2'>
+<ValueOption ref='
+2:4'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>None</Label>
+</ValueOption>
+<ValueOption ref='
+2:5'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Very High</Label>
+</ValueOption>
+<ValueOption ref='
+2:6'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>High</Label>
+</ValueOption>
+<ValueOption ref='
+2:7'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Medium</Label>
+</ValueOption>
+<ValueOption ref='
+2:8'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>Low</Label>
+</ValueOption>
+</Pool>
+<Pool type='3'>
+<Activity ref='
+3:81'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 2</Label>
+</Activity>
+<Activity ref='
+3:80'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 3</Label>
+</Activity>
+<Activity ref='
+3:82'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 1</Label>
+</Activity>
+<Activity ref='
+3:76'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 2</Label>
+</Activity>
+<Activity ref='
+3:77'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 1</Label>
+</Activity>
+<Activity ref='
+3:72'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 1</Label>
+</Activity>
+<Activity ref='
+3:73'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 2</Label>
+</Activity>
+<Activity ref='
+3:74'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 3</Label>
+</Activity>
+<Activity ref='
+3:75'>
+<AssignmentIds><RefList>
+</RefList>
+</AssignmentIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<SubtaskIds><RefList>
+</RefList>
+</SubtaskIds>
+<Label>activity 3</Label>
+</Activity>
+</Pool>
+<Pool type='5'>
+<ViewData ref='
+5:17'>
+<CurrentExpansionList><RefList>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>19:9</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Summary</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:21'>
+<CurrentExpansionList><RefList>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>12:-1</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>ThreatMatrix</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:20'>
+<CurrentExpansionList><RefList>
+<Ref>8:24</Ref>
+<Ref>17:28</Ref>
+<Ref>8:29</Ref>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>19:9</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+<Ref>21:34</Ref>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Diagram</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:66'>
+<CurrentExpansionList><RefList>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>12:-1</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Library</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:67'>
+<CurrentExpansionList><RefList>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>12:-1</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Schedule</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:59'>
+<CurrentExpansionList><RefList>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>12:-1</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab></CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice></PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>12:-1</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Target Viability</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+<ViewData ref='
+5:11'>
+<CurrentExpansionList><RefList>
+<Ref>12:-1</Ref>
+</RefList>
+</CurrentExpansionList>
+<CurrentConceptualModelRef>12:-1</CurrentConceptualModelRef>
+<CurrentSortDirecton></CurrentSortDirecton>
+<BudgetCostOverride></BudgetCostOverride>
+<CurrentSortBy></CurrentSortBy>
+<CurrentTab>2</CurrentTab>
+<SingleLevelChoice></SingleLevelChoice>
+<PlanningStyleChoice>StrategicPlanRadioChoice</PlanningStyleChoice>
+<CurrentResultsChainRef>12:-1</CurrentResultsChainRef>
+<CustomPlanRef>29:10</CustomPlanRef>
+<ChainModeFactorRefs><RefList>
+</RefList>
+</ChainModeFactorRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label>Planning</Label>
+<DiagramHiddenTypes></DiagramHiddenTypes>
+<CurrentMode></CurrentMode>
+</ViewData>
+</Pool>
+<Pool type='6'>
+</Pool>
+<Pool type='7'>
+<ProjectResource ref='
+7:19'>
+<Organization>benetech</Organization>
+<IMAddress>sdfsdfk</IMAddress>
+<RoleCodes>{&quot;Codes&quot;:[&quot;TeamMember&quot;,&quot;Advisor&quot;]}</RoleCodes>
+<ResourceType></ResourceType>
+<SurName>sanri</SurName>
+<BudgetCostMode></BudgetCostMode>
+<AlternativeEmail>soemwehrw#hwere.com</AlternativeEmail>
+<Custom.Custom1></Custom.Custom1>
+<Comments></Comments>
+<PhoneNumberOther></PhoneNumberOther>
+<Custom.Custom2></Custom.Custom2>
+<BudgetCostOverride></BudgetCostOverride>
+<CostUnit></CostUnit>
+<Location>tampa</Location>
+<PhoneNumber>23234234</PhoneNumber>
+<CostPerUnit></CostPerUnit>
+<Name>nima</Name>
+<Email>nima@nima.com</Email>
+<Initials>11</Initials>
+<PhoneNumberMobile>234234234234</PhoneNumberMobile>
+<PhoneNumberHome>hiclkory</PhoneNumberHome>
+<Position>software develiper</Position>
+<DateUpdated>2008-01-17</DateUpdated>
+<Label></Label>
+<IMService></IMService>
+</ProjectResource>
+<ProjectResource ref='
+7:18'>
+<Organization></Organization>
+<IMAddress></IMAddress>
+<RoleCodes>{&quot;Codes&quot;:[&quot;Contact&quot;]}</RoleCodes>
+<ResourceType></ResourceType>
+<SurName></SurName>
+<BudgetCostMode></BudgetCostMode>
+<AlternativeEmail></AlternativeEmail>
+<Custom.Custom1></Custom.Custom1>
+<Comments></Comments>
+<PhoneNumberOther></PhoneNumberOther>
+<Custom.Custom2></Custom.Custom2>
+<BudgetCostOverride></BudgetCostOverride>
+<CostUnit></CostUnit>
+<Location></Location>
+<PhoneNumber></PhoneNumber>
+<CostPerUnit></CostPerUnit>
+<Name>nim</Name>
+<Email></Email>
+<Initials></Initials>
+<PhoneNumberMobile></PhoneNumberMobile>
+<PhoneNumberHome></PhoneNumberHome>
+<Position></Position>
+<DateUpdated></DateUpdated>
+<Label></Label>
+<IMService></IMService>
+</ProjectResource>
+</Pool>
+<Pool type='8'>
+</Pool>
+<Pool type='9'>
+</Pool>
+<Pool type='10'>
+</Pool>
+<Pool type='11'>
+<ProjectMetadata ref='
+11:0'>
+<FiscalYearStart></FiscalYearStart>
+<OtherOrgRegionalOffice></OtherOrgRegionalOffice>
+<BudgetSecuredPercent></BudgetSecuredPercent>
+<TNC.DatabaseDownloadDate></TNC.DatabaseDownloadDate>
+<SiteMapReference></SiteMapReference>
+<Countries>{&quot;Codes&quot;:[&quot;AFG&quot;,&quot;ALA&quot;,&quot;ALB&quot;,&quot;DZA&quot;,&quot;ASM&quot;,&quot;AND&quot;]}</Countries>
+<StartDate>2008-01-17</StartDate>
+<Municipalities></Municipalities>
+<BudgetCostMode></BudgetCostMode>
+<LegislativeDistricts></LegislativeDistricts>
+<DiagramFontFamily></DiagramFontFamily>
+<KeyFundingSources></KeyFundingSources>
+<TotalBudgetForFunding></TotalBudgetForFunding>
+<LocationDetail></LocationDetail>
+<TNC.LessonsLearned></TNC.LessonsLearned>
+<OtherOrgManagingOffice></OtherOrgManagingOffice>
+<ProjectName>test project</ProjectName>
+<DiagramFontSize>10</DiagramFontSize>
+<ProjectLatitude>123.0</ProjectLatitude>
+<TNC.OperatingUnitList></TNC.OperatingUnitList>
+<CurrencyType></CurrencyType>
+<TNC.Country></TNC.Country>
+<TNC.Ecoregion></TNC.Ecoregion>
+<LocationComments></LocationComments>
+<RedListSpecies>birds</RedListSpecies>
+<ProjectLongitude>123.0</ProjectLongitude>
+<ScopeComments>hungry</ScopeComments>
+<ExpectedEndDate>2009-01-17</ExpectedEndDate>
+<CurrencySymbol>$</CurrencySymbol>
+<StateAndProvinces></StateAndProvinces>
+<OtherOrgProjectNumber></OtherOrgProjectNumber>
+<CurrencyDecimalPlaces></CurrencyDecimalPlaces>
+<FinancialComments></FinancialComments>
+<SocialContext></SocialContext>
+<TNC.PlanningTeamComment></TNC.PlanningTeamComment>
+<TNC.FreshwaterEcoRegion></TNC.FreshwaterEcoRegion>
+<CurrentWizardScreenName>DiagramOverviewStep</CurrentWizardScreenName>
+<TNC.TerrestrialEcoRegion></TNC.TerrestrialEcoRegion>
+<WorkPlanEndDate>2009-01-17</WorkPlanEndDate>
+<ProjectDescription>just testing aournfo
+for what 
+ever reason
+or what ever time 
+comes to see
+what bgs re
+reports
+and hand off
+skakes
+</ProjectDescription>
+<ThreatRatingMode>StressBased</ThreatRatingMode>
+<PlanningComments></PlanningComments>
+<ProjectURL>www.miradi.org</ProjectURL>
+<WorkPlanTimeUnit>YEARLY</WorkPlanTimeUnit>
+<OtherOrgRelatedProjects></OtherOrgRelatedProjects>
+<ProjectScope>more testing</ProjectScope>
+<TNC.SizeInHectares></TNC.SizeInHectares>
+<TNC.WorkbookVersionNumber></TNC.WorkbookVersionNumber>
+<BudgetCostOverride></BudgetCostOverride>
+<HumanPopulation>1.0E9</HumanPopulation>
+<OtherNotableSpecies>humans</OtherNotableSpecies>
+<DataEffectiveDate>2008-01-17</DataEffectiveDate>
+<ShortProjectVision></ShortProjectVision>
+<ProjectVision>eat them all</ProjectVision>
+<WorkPlanStartDate>2008-01-17</WorkPlanStartDate>
+<TNC.MarineEcoRegion></TNC.MarineEcoRegion>
+<ShortProjectScope>testing testing</ShortProjectScope>
+<HumanPopulationNotes>too many</HumanPopulationNotes>
+<ProjectAreaNote>do it</ProjectAreaNote>
+<TNC.WorkbookVersionDate></TNC.WorkbookVersionDate>
+<Label></Label>
+<ProjectArea>120123,</ProjectArea>
+<TNC.OperatingUnits></TNC.OperatingUnits>
+</ProjectMetadata>
+</Pool>
+<Pool type='13'>
+</Pool>
+<Pool type='14'>
+</Pool>
+<Pool type='15'>
+</Pool>
+<Pool type='17'>
+</Pool>
+<Pool type='16'>
+</Pool>
+<Pool type='19'>
+<ConceptualModelDiagram ref='
+19:9'>
+<Detail></Detail>
+<DiagramFactorIds><RefList>
+<Ref>18:69</Ref>
+<Ref>18:79</Ref>
+<Ref>18:84</Ref>
+</RefList>
+</DiagramFactorIds>
+<DiagramFactorLinkIds><RefList>
+</RefList>
+</DiagramFactorLinkIds>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label>[Main Diagram]</Label>
+<ShortLabel></ShortLabel>
+</ConceptualModelDiagram>
+</Pool>
+<Pool type='18'>
+<DiagramFactor ref='
+18:84'>
+<WrappedFactorRef>21:83</WrappedFactorRef>
+<FontColor></FontColor>
+<BudgetCostOverride></BudgetCostOverride>
+<Location>{&quot;Y&quot;:225,&quot;X&quot;:135}</Location>
+<FontSize></FontSize>
+<BackgroundColor></BackgroundColor>
+<GroupBoxChildrenRefs><RefList>
+</RefList>
+</GroupBoxChildrenRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<FontStyle></FontStyle>
+<Size>{&quot;Height&quot;:60,&quot;Width&quot;:120}</Size>
+</DiagramFactor>
+<DiagramFactor ref='
+18:69'>
+<WrappedFactorRef>21:68</WrappedFactorRef>
+<FontColor></FontColor>
+<BudgetCostOverride></BudgetCostOverride>
+<Location>{&quot;Y&quot;:195,&quot;X&quot;:405}</Location>
+<FontSize></FontSize>
+<BackgroundColor></BackgroundColor>
+<GroupBoxChildrenRefs><RefList>
+</RefList>
+</GroupBoxChildrenRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<FontStyle></FontStyle>
+<Size>{&quot;Height&quot;:60,&quot;Width&quot;:120}</Size>
+</DiagramFactor>
+<DiagramFactor ref='
+18:79'>
+<WrappedFactorRef>21:78</WrappedFactorRef>
+<FontColor></FontColor>
+<BudgetCostOverride></BudgetCostOverride>
+<Location>{&quot;Y&quot;:225,&quot;X&quot;:270}</Location>
+<FontSize></FontSize>
+<BackgroundColor></BackgroundColor>
+<GroupBoxChildrenRefs><RefList>
+</RefList>
+</GroupBoxChildrenRefs>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<FontStyle></FontStyle>
+<Size>{&quot;Height&quot;:60,&quot;Width&quot;:120}</Size>
+</DiagramFactor>
+</Pool>
+<Pool type='21'>
+
+	<Strategy ref='2168'>
+	<ObjectiveIds><RefList>
+	</RefList>
+	</ObjectiveIds>
+	<ImpactRating></ImpactRating>
+	<GoalIds><RefList>
+	</RefList>
+	</GoalIds>
+	<ActivityIds>
+		<RefList>
+			<Ref>3:72</Ref>
+			<Ref>3:73</Ref>
+			<Ref>3:74</Ref>
+		</RefList>
+	</ActivityIds>
+	<BudgetCostMode></BudgetCostMode>
+	<FeasibilityRating></FeasibilityRating>
+	<ProgressReportRefs><RefList>
+	</RefList>
+	</ProgressReportRefs>
+	<IndicatorIds><RefList>
+	</RefList>
+	</IndicatorIds>
+	<BudgetCostOverride></BudgetCostOverride>
+	<Comment></Comment>
+	<TaxonomyCode></TaxonomyCode>
+	<ShortLabel></ShortLabel>
+	<Text></Text>
+	<Status></Status>
+	<KeyEcologicalAttributeIds><RefList>
+	</RefList>
+	</KeyEcologicalAttributeIds>
+	<Label>1.Strategy Here (with 3 activities)</Label>
+	</Strategy>
+	
+<Strategy ref='2183'>
+<ObjectiveIds><RefList>
+</RefList>
+</ObjectiveIds>
+<ImpactRating></ImpactRating>
+<GoalIds><RefList>
+</RefList>
+</GoalIds>
+<ActivityIds><RefList>
+<Ref>3:82</Ref>
+<Ref>3:81</Ref>
+<Ref>3:80</Ref>
+</RefList>
+</ActivityIds>
+<BudgetCostMode></BudgetCostMode>
+<FeasibilityRating></FeasibilityRating>
+<ProgressReportRefs><RefList>
+</RefList>
+</ProgressReportRefs>
+<IndicatorIds><RefList>
+</RefList>
+</IndicatorIds>
+<BudgetCostOverride></BudgetCostOverride>
+<Comment></Comment>
+<TaxonomyCode></TaxonomyCode>
+<ShortLabel></ShortLabel>
+<Text></Text>
+<Status></Status>
+<KeyEcologicalAttributeIds><RefList>
+</RefList>
+</KeyEcologicalAttributeIds>
+<Label>3.Strategy Here (with 3 activities)</Label>
+</Strategy>
+<Strategy ref='2178'>
+<ObjectiveIds><RefList>
+</RefList>
+</ObjectiveIds>
+<ImpactRating></ImpactRating>
+<GoalIds><RefList>
+</RefList>
+</GoalIds>
+<ActivityIds><RefList>
+<Ref>3:77</Ref>
+<Ref>3:76</Ref>
+<Ref>3:75</Ref>
+</RefList>
+</ActivityIds>
+<BudgetCostMode></BudgetCostMode>
+<FeasibilityRating></FeasibilityRating>
+<ProgressReportRefs><RefList>
+</RefList>
+</ProgressReportRefs>
+<IndicatorIds><RefList>
+</RefList>
+</IndicatorIds>
+<BudgetCostOverride></BudgetCostOverride>
+<Comment></Comment>
+<TaxonomyCode></TaxonomyCode>
+<ShortLabel></ShortLabel>
+<Text></Text>
+<Status></Status>
+<KeyEcologicalAttributeIds><RefList>
+</RefList>
+</KeyEcologicalAttributeIds>
+<Label>2.Strategy Here (with 3 activities)</Label>
+</Strategy>
+</Pool>
+<Pool type='20'>
+</Pool>
+<Pool type='23'>
+</Pool>
+<Pool type='22'>
+</Pool>
+<Pool type='25'>
+</Pool>
+<Pool type='24'>
+</Pool>
+<Pool type='27'>
+</Pool>
+<Pool type='26'>
+</Pool>
+<Pool type='29'>
+<PlanningViewConfiguration ref='
+29:10'>
+<TagRowConfiguration></TagRowConfiguration>
+<BudgetCostOverride></BudgetCostOverride>
+<TagColConfiguration></TagColConfiguration>
+<BudgetCostMode></BudgetCostMode>
+<Label>[Custom 1]</Label>
+</PlanningViewConfiguration>
+</Pool>
+<Pool type='28'>
+</Pool>
+<Pool type='31'>
+</Pool>
+<Pool type='30'>
+<WwfProjectData ref='
+30:12'>
+<Countries></Countries>
+<ProjectNumber></ProjectNumber>
+<ManagingOffices></ManagingOffices>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Regions></Regions>
+<Label></Label>
+<EcoRegions></EcoRegions>
+<RelatedProjects></RelatedProjects>
+</WwfProjectData>
+</Pool>
+<Pool type='34'>
+</Pool>
+<Pool type='35'>
+</Pool>
+<Pool type='32'>
+</Pool>
+<Pool type='33'>
+</Pool>
+<Pool type='38'>
+<RareProjectData ref='
+38:13'>
+<CampaignTheoryOfChange></CampaignTheoryOfChange>
+<BiodiversityHotspots></BiodiversityHotspots>
+<SummaryOfKeyMessages></SummaryOfKeyMessages>
+<BudgetCostOverride></BudgetCostOverride>
+<FlagshipSpeciesDetail></FlagshipSpeciesDetail>
+<ProjectCode></ProjectCode>
+<NumberOfCommunitiesInCampaignArea></NumberOfCommunitiesInCampaignArea>
+<Cohort></Cohort>
+<CampaignSlogan></CampaignSlogan>
+<Audience></Audience>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<FlagshipSpeciesCommonName></FlagshipSpeciesCommonName>
+<FlagshipSpeciesScientificName></FlagshipSpeciesScientificName>
+<RelatedProjects></RelatedProjects>
+</RareProjectData>
+</Pool>
+<Pool type='39'>
+<WcsProjectData ref='
+39:14'>
+<StepCompleted></StepCompleted>
+<SwotCompleted>1</SwotCompleted>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<OrganizationalFocus></OrganizationalFocus>
+<Label></Label>
+<SwotUrl></SwotUrl>
+<OrganizationalLevel></OrganizationalLevel>
+<StepUrl></StepUrl>
+</WcsProjectData>
+</Pool>
+<Pool type='36'>
+</Pool>
+<Pool type='37'>
+<ProgressReport ref='
+37:38'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:39'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:36'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:37'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:42'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:43'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:40'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:41'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:46'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:47'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:44'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:45'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:51'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:50'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:49'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:48'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:55'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:54'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:53'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:52'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:58'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:57'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+<ProgressReport ref='
+37:56'>
+<Comments></Comments>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+<ProgressDate></ProgressDate>
+<ProgressStatus></ProgressStatus>
+</ProgressReport>
+</Pool>
+<Pool type='40'>
+<TncProjectData ref='
+40:15'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+</TncProjectData>
+</Pool>
+<Pool type='41'>
+<FosProjectData ref='
+41:16'>
+<BudgetCostOverride></BudgetCostOverride>
+<BudgetCostMode></BudgetCostMode>
+<Label></Label>
+</FosProjectData>
+</Pool>
+</ObjectPools>
+</MiradiProject>
