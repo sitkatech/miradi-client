@@ -23,13 +23,11 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref='$F{ref}']]]></queryString>
+	<parameter name="ref" isForPrompting="false" class="java.lang.String"/>
+	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref='$P{ref}']]]></queryString>
 
 	<field name="Label" class="java.lang.String">
 		<fieldDescription><![CDATA[Label]]></fieldDescription>
-	</field>
-	<field name="ref" class="java.lang.String">
-		<fieldDescription><![CDATA[@ref]]></fieldDescription>
 	</field>
 
 		<background>
@@ -62,13 +60,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="75"  isSplitAllowed="true" >
+			<band height="40"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="10"
 						y="5"
 						width="291"
-						height="22"
+						height="15"
 						key="textField-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -79,17 +77,17 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="10"
-						y="35"
+						x="26"
+						y="20"
 						width="128"
-						height="22"
+						height="15"
 						key="textField-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ref}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{ref}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>

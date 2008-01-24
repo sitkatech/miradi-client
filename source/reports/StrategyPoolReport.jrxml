@@ -23,12 +23,11 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="constantRef" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["2168"]]></defaultValueExpression>
-	</parameter>
-	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref='2168']]]></queryString>
+	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Strategy[@ref]]]></queryString>
 
-	<field name="ref" class="java.lang.String"/>
+	<field name="ref" class="java.lang.String">
+		<fieldDescription><![CDATA[@ref]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -72,7 +71,7 @@
 					<subreportParameter  name="ref">
 						<subreportParameterExpression><![CDATA[$F{ref}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).dataSource()
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[@ref = " + $F{ref} +"]")
 
  ]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA["StrategyReport.jasper"]]></subreportExpression>
