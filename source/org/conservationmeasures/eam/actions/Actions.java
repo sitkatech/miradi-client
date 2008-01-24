@@ -139,7 +139,7 @@ public class Actions
 		registerAction(new ActionExportProjectXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
-		registerAction(new ActionSaveImage(mainWindow));
+		registerAction(new ActionSaveImageJPEG(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
 		registerAction(new ActionPasteWithoutLinks(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
