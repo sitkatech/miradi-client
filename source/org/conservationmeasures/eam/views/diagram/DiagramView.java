@@ -84,6 +84,7 @@ import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
+import org.conservationmeasures.eam.actions.ActionSaveImageSVG;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionShareActivity;
@@ -158,6 +159,7 @@ import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologi
 import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
+import org.conservationmeasures.eam.views.umbrella.SaveImageSVGDoer;
 import org.martus.swing.Utilities;
 
 
@@ -294,6 +296,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionProperties.class, propertiesDoer);
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
+		addDoerToMap(ActionSaveImageSVG.class, new SaveImageSVGDoer());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionShowSelectedChainMode.class, new ShowSelectedChainModeDoer());
 		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());
