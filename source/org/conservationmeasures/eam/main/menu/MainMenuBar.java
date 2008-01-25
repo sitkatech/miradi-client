@@ -69,6 +69,7 @@ import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
+import org.conservationmeasures.eam.actions.ActionSaveImageSVG;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionShowConceptualModel;
@@ -110,6 +111,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
 		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
+		addMenuItem(actions, menu, ActionSaveImageSVG.class, KeyEvent.VK_V);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
