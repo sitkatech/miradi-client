@@ -28,9 +28,6 @@
 	<field name="Cohort" class="java.lang.String">
 		<fieldDescription><![CDATA[ObjectPools/Pool/RareProjectData/Cohort]]></fieldDescription>
 	</field>
-	<field name="Countries" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/Countries]]></fieldDescription>
-	</field>
 	<field name="CampaignSlogan" class="java.lang.String">
 		<fieldDescription><![CDATA[ObjectPools/Pool/RareProjectData/CampaignSlogan]]></fieldDescription>
 	</field>
@@ -110,19 +107,6 @@
 		</columnHeader>
 		<detail>
 			<band height="581"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="200"
-						y="3"
-						width="115"
-						height="13"
-						key="textField-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left">
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Countries}]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement
 						x="13"
@@ -1110,6 +1094,16 @@
 					</textElement>
 				<text><![CDATA[Objective (and monitoring strategy)]]></text>
 				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="325"
+						y="3"
+						width="133"
+						height="15"
+						key="subreport-1"/>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Code")]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["CountryListReport.jasper"]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

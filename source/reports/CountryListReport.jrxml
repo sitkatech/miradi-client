@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="CountriesReport"
+		 name="CountryListReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,11 +24,8 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="Value" class="java.lang.String">
-		<fieldDescription><![CDATA[Value]]></fieldDescription>
-	</field>
-	<field name="codeField" class="java.lang.String">
-		<fieldDescription><![CDATA[@code]]></fieldDescription>
+	<field name="countryCode" class="java.lang.String">
+		<fieldDescription><![CDATA[.]]></fieldDescription>
 	</field>
 
 		<background>
@@ -48,20 +45,18 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="18"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+			<band height="24"  isSplitAllowed="true" >
+				<subreport  isUsingCache="true">
 					<reportElement
-						x="21"
-						y="2"
-						width="84"
-						height="15"
-						key="textField-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Value}]]></textFieldExpression>
-				</textField>
+						x="0"
+						y="0"
+						width="116"
+						height="19"
+						key="subreport-1"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ChoiceQuestions/Choices[@question = 'CountriesQuestion']/Choice[@code = '" + $F{countryCode}+ "']")]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["CountriesReport.jasper"]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
