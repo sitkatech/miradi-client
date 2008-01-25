@@ -7,14 +7,22 @@ package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 
+import org.apache.batik.svggen.SVGGraphics2DIOException;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.utils.ConstantButtonNames;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
+import org.conservationmeasures.eam.views.umbrella.SaveImageSVGDoer;
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
 {
@@ -70,6 +78,7 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		{
 			out.writeln("<MiradiProject>");
 			getProject().toXml(out);
+			exportDiagrams(out);
 			out.writeln("</MiradiProject>");
 		}
 		finally
@@ -77,5 +86,41 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 			out.close();
 		}
 	}
+	
+	private void exportDiagrams(UnicodeWriter out) throws Exception
+	{
+		out.writeln("<ConceptualModels>");
+		exportDiagrams(out, "ConceptualModel", getProject().getConceptualModelDiagramPool().getRefList());
+		out.writeln("</ConceptualModels>");
 
+		out.writeln("<ResultsChains>");
+		exportDiagrams(out, "ResultsChain", getProject().getResultsChainDiagramPool().getRefList());
+		out.writeln("</ResultsChains>");
+	}
+
+	private void exportDiagrams(UnicodeWriter out, String tag, ORefList diagramRefs) throws Exception
+	{
+		for(int i = 0; i < diagramRefs.size(); ++i)
+			exportDiagram(out, tag, (DiagramObject)getProject().findObject(diagramRefs.get(i)));
+	}
+
+	private void exportDiagram(UnicodeWriter out, String tag, DiagramObject diagramObject) throws Exception
+	{
+		out.write("<" + tag + " ref='");
+		diagramObject.getRef().toXml(out);
+		out.writeln("'>");
+		String svg = getSVGFragment(diagramObject);
+		out.write(XmlUtilities.getXmlEncoded(svg));
+		out.writeln("</" + tag + ">");
+	}
+
+	private String getSVGFragment(DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
+	{
+		StringWriter svgFragment = new StringWriter();
+		DiagramComponent component = DiagramImageCreator.getComponent(getMainWindow(), diagramObject);
+		component.getDiagramModel().updateVisibilityOfFactorsAndLinks();
+		SaveImageSVGDoer.saveImage(svgFragment, component);
+		svgFragment.close();
+		return svgFragment.toString();
+	}
 }
