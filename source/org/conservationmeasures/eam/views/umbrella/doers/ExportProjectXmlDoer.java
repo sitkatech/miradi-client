@@ -89,13 +89,11 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 	
 	private void exportDiagrams(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<ConceptualModels>");
+		out.writeln("<Images>");
 		exportDiagrams(out, "ConceptualModel", getProject().getConceptualModelDiagramPool().getRefList());
-		out.writeln("</ConceptualModels>");
 
-		out.writeln("<ResultsChains>");
 		exportDiagrams(out, "ResultsChain", getProject().getResultsChainDiagramPool().getRefList());
-		out.writeln("</ResultsChains>");
+		out.writeln("</Images>");
 	}
 
 	private void exportDiagrams(UnicodeWriter out, String tag, ORefList diagramRefs) throws Exception
