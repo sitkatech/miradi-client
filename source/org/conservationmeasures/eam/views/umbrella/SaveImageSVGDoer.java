@@ -76,7 +76,9 @@ public class SaveImageSVGDoer extends ViewDoer
 	public static void saveImage(Writer writer, JComponent component) throws SVGGraphics2DIOException
 	{
 		SVGGraphics2D svgGenerator = createGeneratorSVG();
+		component.setDoubleBuffered(false);
 		component.paint(svgGenerator);
+		component.setDoubleBuffered(true);
 		
 		boolean useCSS = true;
         svgGenerator.stream(writer, useCSS);
