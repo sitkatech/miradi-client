@@ -14,6 +14,7 @@ import javax.swing.JComponent;
 
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -55,17 +56,33 @@ public class SaveImageSVGDoer extends ViewDoer
 
 	private void saveImage(FileOutputStream out) throws IOException 
 	{
-		SVGGraphics2D svgGenerator = createGeneratorSVG();
+        Writer writer = new UnicodeWriter(out);
+        try
+        {
+        	saveImage(writer);
+        }
+        finally
+        {
+        	writer.close();
+        }
+	}
+
+	public void saveImage(Writer writer) throws SVGGraphics2DIOException
+	{
 		JComponent component = getView().getPrintableComponent();
+		saveImage(writer, component);
+	}
+
+	public static void saveImage(Writer writer, JComponent component) throws SVGGraphics2DIOException
+	{
+		SVGGraphics2D svgGenerator = createGeneratorSVG();
 		component.paint(svgGenerator);
 		
 		boolean useCSS = true;
-        Writer writer = new UnicodeWriter(out);
         svgGenerator.stream(writer, useCSS);
-        writer.close();
 	}
 	
-	private SVGGraphics2D createGeneratorSVG()
+	private static SVGGraphics2D createGeneratorSVG()
 	{
 	       // Get a DOMImplementation.
         DOMImplementation domImpl =

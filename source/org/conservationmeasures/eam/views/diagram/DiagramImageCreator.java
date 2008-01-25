@@ -22,12 +22,7 @@ public class DiagramImageCreator
 	{
 		try
 		{
-			DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
-			comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
-			//TODO: is there a better way to do this
-			JFrame frame = new JFrame();
-			frame.add(new UiScrollPane(comp));
-			frame.pack();
+			DiagramComponent comp = getComponent(mainWindow, diagramObject);
 			return comp.getImage();
 		}
 		catch(Exception e)
@@ -35,6 +30,17 @@ public class DiagramImageCreator
 			EAM.logException(e);
 			return null;
 		}
+	}
+
+	public static DiagramComponent getComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	{
+		DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
+		comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
+		//TODO: is there a better way to do this
+		JFrame frame = new JFrame();
+		frame.add(new UiScrollPane(comp));
+		frame.pack();
+		return comp;
 	}
 	
 	static public BufferedImage getImageWithLegendSetting(MainWindow mainWindow, DiagramObject diagramObject, CodeList list)
