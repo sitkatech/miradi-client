@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.Writer;
 
 import javax.swing.JComponent;
@@ -54,7 +53,7 @@ public class SaveImageSVGDoer extends ViewDoer
 		} 
 	}
 
-	private void saveImage(FileOutputStream out) throws IOException 
+	private void saveImage(FileOutputStream out) throws Exception 
 	{
         Writer writer = new UnicodeWriter(out);
         try
@@ -67,7 +66,7 @@ public class SaveImageSVGDoer extends ViewDoer
         }
 	}
 
-	public void saveImage(Writer writer) throws SVGGraphics2DIOException
+	public void saveImage(Writer writer) throws Exception
 	{
 		JComponent component = getView().getPrintableComponent();
 		saveImage(writer, component);
@@ -78,10 +77,10 @@ public class SaveImageSVGDoer extends ViewDoer
 		SVGGraphics2D svgGenerator = createGeneratorSVG();
 		component.setDoubleBuffered(false);
 		component.paint(svgGenerator);
-		component.setDoubleBuffered(true);
 		
 		boolean useCSS = true;
         svgGenerator.stream(writer, useCSS);
+		component.setDoubleBuffered(true);
 	}
 	
 	private static SVGGraphics2D createGeneratorSVG()

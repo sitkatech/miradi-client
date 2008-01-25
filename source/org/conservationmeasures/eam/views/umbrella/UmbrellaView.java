@@ -214,7 +214,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support getImage");
 	}
 	
-	public JComponent getPrintableComponent()
+	public JComponent getPrintableComponent() throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
