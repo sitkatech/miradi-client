@@ -81,6 +81,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WcsProjectData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
+import org.conservationmeasures.eam.questions.QuestionManager;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
@@ -107,6 +108,7 @@ public class Project
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
 		projectCalendar = new ProjectCalendar(this);
+		questionManager = new QuestionManager();
 
 		clear();
 	}
@@ -786,6 +788,7 @@ public class Project
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		objectManager.toXml(out);
+		questionManager.toXml(out);
 		out.writeln("</MiradiProject>");
 	}
 
@@ -1225,6 +1228,7 @@ public class Project
 	
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
+	private QuestionManager questionManager;
 	UndoRedoState undoRedoState;
 	boolean isExecuting;
 	boolean firingCommandExecutedEvents;
