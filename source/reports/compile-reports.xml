@@ -1,0 +1,50 @@
+<project name="antcompile" default="compile1" basedir=".">
+
+	<description>Shows how multiple JRXML files can be compiled in batch mode using ANT.</description>
+
+	<property name="rootdir" value="../../.."/>
+	<property name="miradi-classes" value="${rootdir}/miradi/bin"/>
+	<property name="thirdparty"  value="${rootdir}/miradi-thirdparty"/>
+	<property name="tempdir" value="${rootdir}/miradi/temp"/>
+	<path id="classpath">
+		<pathelement location="${miradi-classes}"/>
+		<fileset dir="${thirdparty}/Jasper">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${thirdparty}/Jasper-compile">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="runClasspath">
+		<path refid="classpath"/>
+		<pathelement location="."/>
+	</path>
+
+	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask"> 
+		<classpath refid="classpath"/>
+	</taskdef>
+
+<!--	<target name="javac" description="Compiles the Java source files used in the report designs.">
+		<mkdir dir="./build/classes"/> 
+		<javac srcdir="." destdir="." debug="true" optimize="false" deprecation="false"/>
+	</target> 
+-->
+	<target name="compile1" description="Compiles report designs specified using the &quot;srcdir&quot; in the &lt;jrc&gt; tag. Generated .jasper files keep their relative location and are placed in directory structure similar to the source files structure."> 
+		<mkdir dir="${tempdir}"/>
+		<jrc 
+				srcdir="."
+				destdir="."
+				tempdir="${tempdir}"
+				keepjava="true"
+				xmlvalidation="true">
+			<classpath refid="runClasspath"/>
+			<include name="**/*.jrxml"/>
+		</jrc>
+	</target> 
+
+	<target name="clean" description="Deletes all the generated files.">
+		<delete dir="${tempdir}" />
+	</target>
+
+</project>
