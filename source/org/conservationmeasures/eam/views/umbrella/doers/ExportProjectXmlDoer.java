@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella.doers;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
 
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -22,7 +23,6 @@ import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
 import org.conservationmeasures.eam.views.umbrella.SaveImageSVGDoer;
 import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
 {
@@ -110,15 +110,49 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		diagramObject.getRef().toXml(out);
 		out.writeln("'>");
 		String svg = getSVGFragment(diagramObject);
-		out.write(XmlUtilities.getXmlEncoded(svg));
+		encodeXmlToWriter(out, svg);
 		out.writeln("</" + tag + ">");
 	}
+	
+	public static void encodeXmlToWriter(Writer writer, String text) throws IOException
+	{
+		StringBuffer buf = new StringBuffer(text);
+		for(int i = 0; i < buf.length(); ++i)
+		{
+			char c = buf.charAt(i);
+			if(c == '&')
+			{
+				writer.write("&amp;");
+			}
+			else if(c == '<')
+			{
+				writer.write("&lt;");
+			}
+			else if(c == '>')
+			{
+				writer.write("&gt;");
+			}
+			else if(c == '"')
+			{
+				writer.write("&quot;");
+			}
+			else if(c == '\'')
+			{
+				writer.write("&#39;");
+			}
+			else
+			{
+				writer.write(c);
+			}
+		}
+	}
+
+
 
 	private String getSVGFragment(DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
 	{
 		StringWriter svgFragment = new StringWriter();
 		DiagramComponent component = DiagramImageCreator.getComponent(getMainWindow(), diagramObject);
-		component.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 		SaveImageSVGDoer.saveImage(svgFragment, component);
 		svgFragment.close();
 		return svgFragment.toString();
