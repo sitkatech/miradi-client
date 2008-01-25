@@ -784,12 +784,10 @@ public class Project
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<MiradiProject>");
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		objectManager.toXml(out);
 		questionManager.toXml(out);
-		out.writeln("</MiradiProject>");
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

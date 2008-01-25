@@ -68,7 +68,9 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
+			out.writeln("<MiradiProject>");
 			getProject().toXml(out);
+			out.writeln("</MiradiProject>");
 		}
 		finally
 		{
