@@ -133,6 +133,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
@@ -252,9 +253,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getDiagramComponent().getImage();
 	}
 	
-	public JComponent getPrintableComponent()
+	public JComponent getPrintableComponent() throws Exception
 	{
-		return getDiagramComponent().getPrintableComponent();
+		DiagramObject diagramObject = getDiagramComponent().getDiagramModel().getDiagramObject();
+		return DiagramImageCreator.getComponent(getMainWindow(), diagramObject);
 	}
 	
 	public BaseObject getSelectedObject()
