@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
@@ -252,7 +253,7 @@ public class ProjectMetadata extends BaseObject
 		projectArea = new StringData();
 		projectAreaNotes = new StringData();
 		scopeComments = new StringData();
-		countries = new ChoiceData();
+		countries = new CodeListData();
 		statesAndProvinces = new StringData();
 		municipalities = new StringData();
 		legislativeDistricts = new StringData();
@@ -457,7 +458,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData projectArea;
 	private StringData projectAreaNotes;
 	private StringData scopeComments;
-	private ChoiceData countries;
+	private CodeListData countries;
 	private StringData statesAndProvinces;
 	private StringData municipalities;
 	private StringData legislativeDistricts;
