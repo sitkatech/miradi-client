@@ -6,6 +6,9 @@
 package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
+import java.io.IOException;
+
+import org.martus.util.UnicodeWriter;
 
 
 public abstract class ChoiceQuestion
@@ -79,6 +82,17 @@ public abstract class ChoiceQuestion
 		return -1;
 	}
 	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<Choices question='" + getClass().getSimpleName() + "'>");
+		ChoiceItem[] choices = getChoices();
+		for(int i = 0; i < choices.length; ++i)
+		{
+			choices[i].toXml(out);
+		}
+		out.writeln("</Choices>");
+	}
+
 	public static final Color DARK_YELLOW = new Color(255, 230, 0);
 	public static final Color LIGHT_GREEN = new Color(128, 255, 0); 
 	public static final Color DARK_GREEN = new Color(0, 160, 0);

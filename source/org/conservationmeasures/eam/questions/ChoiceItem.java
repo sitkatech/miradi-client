@@ -6,8 +6,12 @@
 package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import javax.swing.Icon;
+
+import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 
 public class ChoiceItem implements Comparable
 {
@@ -65,6 +69,15 @@ public class ChoiceItem implements Comparable
 		selectable = selectableToUse;
 	}
 	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.write("<Choice code='" + 
+				XmlUtilities.getXmlEncoded(getCode()) + 
+				"'><Value>" + 
+				XmlUtilities.getXmlEncoded(getLabel()) + 
+				"</Value></Choice>");
+	}
+
 	public boolean equals(Object other)
 	{
 		if (! (other instanceof ChoiceItem))
