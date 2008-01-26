@@ -41,5 +41,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/xerces_2_5_0.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/xml-apis.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/xml-apis-ext.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-beanutils-1.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

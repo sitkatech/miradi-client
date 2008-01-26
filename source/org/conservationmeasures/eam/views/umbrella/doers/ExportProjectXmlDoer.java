@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ConstantButtonNames;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
@@ -65,11 +66,17 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 
 	private void exportProjectXml(File destination) throws Exception
 	{
+		Project project = getProject();
+		exportProjectToXml(project, destination);
+	}
+
+	public static void exportProjectToXml(Project project, File destination) throws IOException, Exception
+	{
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
 			out.writeln("<MiradiProject>");
-			getProject().toXml(out);
+			project.toXml(out);
 			
 			// FIXME: Need to export diagrams somehow, but disabling for now
 			// to avoid creating large XML files that cause JasperReports to run out of memory

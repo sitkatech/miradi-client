@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import net.sf.jasperreports.view.JRViewer;
 
 import org.conservationmeasures.eam.project.Project;
@@ -29,10 +31,11 @@ public class MiradiReport
 		project = projectToUse;
 	}
 
-	public void getReport(InputStream reportInput) throws Exception
+	public void getReport(InputStream reportInput, File xmlFile) throws Exception
 	{
 		HashMap parameters = new HashMap();
-		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, new MiradiDataSource(project));
+		JRXmlDataSource xmlDataSource = new JRXmlDataSource(xmlFile, "/MiradiProject");
+		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, xmlDataSource);
 		getReport(print);
 	}
 
