@@ -7,14 +7,23 @@ package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Writer;
 
+import org.apache.batik.svggen.SVGGraphics2DIOException;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ConstantButtonNames;
 import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
+import org.conservationmeasures.eam.views.umbrella.SaveImageSVGDoer;
 import org.martus.util.UnicodeWriter;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
@@ -64,16 +73,15 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		}
 	}
 
-	public static File exportProjectToXml(Project project, File destinationDirectory) throws IOException, Exception
+	public static File exportProjectToXml(Project project, File destinationDirectory) throws Exception
 	{
 		if(!destinationDirectory.isDirectory())
 			throw new RuntimeException("Can only export to a directory");
-		return exportProjectXml(project, destinationDirectory);
-
-		// FIXME: Need to export diagrams somehow, but disabling for now
-		// to avoid creating large XML files that cause JasperReports to run out of memory
-//		exportDiagrams(out);
 		
+		File mainXmlFile = exportProjectXml(project, destinationDirectory);
+		exportDiagrams(project, destinationDirectory);
+
+		return mainXmlFile;
 	}
 
 	private static File exportProjectXml(Project project, File destinationDirectory) throws IOException, Exception
@@ -98,72 +106,38 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		}
 	}
 	
-//	private void exportDiagrams(UnicodeWriter out) throws Exception
-//	{
-//		out.writeln("<Images>");
-//		exportDiagrams(out, "ConceptualModel", getProject().getConceptualModelDiagramPool().getRefList());
-//
-//		exportDiagrams(out, "ResultsChain", getProject().getResultsChainDiagramPool().getRefList());
-//		out.writeln("</Images>");
-//	}
-//
-//	private void exportDiagrams(UnicodeWriter out, String tag, ORefList diagramRefs) throws Exception
-//	{
-//		for(int i = 0; i < diagramRefs.size(); ++i)
-//			exportDiagram(out, tag, (DiagramObject)getProject().findObject(diagramRefs.get(i)));
-//	}
-//
-//	private void exportDiagram(UnicodeWriter out, String tag, DiagramObject diagramObject) throws Exception
-//	{
-//		out.write("<" + tag + " ref='");
-//		diagramObject.getRef().toXml(out);
-//		out.writeln("'>");
-//		String svg = getSVGFragment(diagramObject);
-//		encodeXmlToWriter(out, svg);
-//		out.writeln("</" + tag + ">");
-//	}
-//	
-//	public static void encodeXmlToWriter(Writer writer, String text) throws IOException
-//	{
-//		StringBuffer buf = new StringBuffer(text);
-//		for(int i = 0; i < buf.length(); ++i)
-//		{
-//			char c = buf.charAt(i);
-//			if(c == '&')
-//			{
-//				writer.write("&amp;");
-//			}
-//			else if(c == '<')
-//			{
-//				writer.write("&lt;");
-//			}
-//			else if(c == '>')
-//			{
-//				writer.write("&gt;");
-//			}
-//			else if(c == '"')
-//			{
-//				writer.write("&quot;");
-//			}
-//			else if(c == '\'')
-//			{
-//				writer.write("&#39;");
-//			}
-//			else
-//			{
-//				writer.write(c);
-//			}
-//		}
-//	}
-//
-//
-//
-//	private String getSVGFragment(DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
-//	{
-//		StringWriter svgFragment = new StringWriter();
-//		DiagramComponent component = DiagramImageCreator.getComponent(getMainWindow(), diagramObject);
-//		SaveImageSVGDoer.saveImage(svgFragment, component);
-//		svgFragment.close();
-//		return svgFragment.toString();
-//	}
+	private static void exportDiagrams(Project project, File destinationDirectory) throws Exception
+	{
+		exportDiagrams(project, destinationDirectory, "ConceptualModel", project.getConceptualModelDiagramPool().getRefList());
+		exportDiagrams(project, destinationDirectory, "ResultsChain", project.getResultsChainDiagramPool().getRefList());
+	}
+
+	private static void exportDiagrams(Project project, File destinationDirectory, String tag, ORefList diagramRefs) throws Exception
+	{
+		for(int i = 0; i < diagramRefs.size(); ++i)
+			exportDiagram(destinationDirectory, tag, (DiagramObject)project.findObject(diagramRefs.get(i)));
+	}
+
+	private static void exportDiagram(File destinationDirectory, String tag, DiagramObject diagramObject) throws Exception
+	{
+		ORef ref = diagramObject.getRef();
+		String refName = ref.toXmlString();
+		File svgFile = new File(destinationDirectory, refName + ".svg");
+		UnicodeWriter out = new UnicodeWriter(svgFile); 
+		out.write("<" + tag + " ref='");
+		ref.toXml(out);
+		out.writeln("'>");
+		writeSVG(out, diagramObject);
+		out.writeln("</" + tag + ">");
+	}
+	
+	private static void writeSVG(Writer writer, DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
+	{
+		// TODO: component needs a main window to get preferences. 
+		// Should just pass prefs into component instead of the whole main window
+		MainWindow mainWindow = EAM.getMainWindow();
+		
+		DiagramComponent component = DiagramImageCreator.getComponent(mainWindow, diagramObject);
+		SaveImageSVGDoer.saveImage(writer, component);
+	}
 }
