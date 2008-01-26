@@ -34,6 +34,7 @@ public class MiradiReport
 	public void getReport(InputStream reportInput, File xmlFile) throws Exception
 	{
 		HashMap parameters = new HashMap();
+		parameters.put("DATA_DIRECTORY", xmlFile.getParent());
 		JRXmlDataSource xmlDataSource = new JRXmlDataSource(xmlFile, "/MiradiProject");
 		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, xmlDataSource);
 		getReport(print);
