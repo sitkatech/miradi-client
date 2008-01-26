@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.Image;
 
-import org.martus.swing.ResourceImageIcon;
-import org.w3c.dom.Document;
+import javax.swing.ImageIcon;
+
 
 public class XmlToImageConverter
 {
-	public static Image convert(Document xml)
+	public static Image convert(String filePath)
 	{
-		return new ResourceImageIcon("/images/appIcon.png").getImage();
+		return new ImageIcon(filePath).getImage();
 	}
 }
