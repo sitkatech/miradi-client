@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -53,6 +54,11 @@ public class SaveImageDoer extends ViewDoer
 	private void saveImage(FileOutputStream out) throws IOException 
 	{
 		BufferedImage image = getView().getImage();
+		saveImage(out, image);
+	}
+
+	public static void saveImage(OutputStream out, BufferedImage image) throws IOException
+	{
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
 		JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
 		float quality = 1;
