@@ -6,11 +6,11 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.Writer;
+import java.io.OutputStream;
 
 import org.apache.batik.svggen.SVGGraphics2DIOException;
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMXmlFileChooser;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.diagram.DiagramImageCreator;
-import org.conservationmeasures.eam.views.umbrella.SaveImageSVGDoer;
+import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 import org.martus.util.UnicodeWriter;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
@@ -122,22 +122,18 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 	{
 		ORef ref = diagramObject.getRef();
 		String refName = ref.toXmlString();
-		File svgFile = new File(destinationDirectory, refName + ".svg");
-		UnicodeWriter out = new UnicodeWriter(svgFile); 
-		out.write("<" + tag + " ref='");
-		ref.toXml(out);
-		out.writeln("'>");
-		writeSVG(out, diagramObject);
-		out.writeln("</" + tag + ">");
+		File imageFile = new File(destinationDirectory, refName + ".jpg");
+		FileOutputStream out = new FileOutputStream(imageFile); 
+		writeJPEG(out, diagramObject);
+		out.close();
 	}
 	
-	private static void writeSVG(Writer writer, DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
+	private static void writeJPEG(OutputStream out, DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
 	{
 		// TODO: component needs a main window to get preferences. 
 		// Should just pass prefs into component instead of the whole main window
 		MainWindow mainWindow = EAM.getMainWindow();
-		
-		DiagramComponent component = DiagramImageCreator.getComponent(mainWindow, diagramObject);
-		SaveImageSVGDoer.saveImage(writer, component);
+
+		SaveImageDoer.saveImage(out, DiagramImageCreator.getImage(mainWindow, diagramObject));
 	}
 }
