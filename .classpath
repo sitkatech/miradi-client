@@ -26,7 +26,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-ext.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-extension.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-gui-util.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-gvt.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-gvt.jar" sourcepath="/miradi-thirdparty/batik/batik-src-1.7.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-parser.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-script.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/batik/lib/batik-svg-dom.jar"/>
