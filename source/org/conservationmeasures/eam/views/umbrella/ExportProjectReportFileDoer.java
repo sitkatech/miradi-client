@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.reports.MiradiReport;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
+import org.martus.util.DirectoryUtils;
 
 public class ExportProjectReportFileDoer extends MainWindowDoer
 {
@@ -43,12 +44,14 @@ public class ExportProjectReportFileDoer extends MainWindowDoer
 			MiradiReport miradiReport = new MiradiReport(project);
 			InputStream input = resourcePath.openStream();
 			
-			File xmlFile = File.createTempFile("MiradiXML", null);
-			ExportProjectXmlDoer.exportProjectToXml(project, xmlFile);
+			File directory = File.createTempFile("MiradiXML", null);
+			directory.delete();
+			directory.mkdir();
+			File xmlFile = ExportProjectXmlDoer.exportProjectToXml(project, directory);
 			
 			miradiReport.getReport(input, xmlFile);
 			input.close();
-			xmlFile.delete();
+			DirectoryUtils.deleteEntireDirectoryTree(directory);
 		} 
 		catch (Exception e) 
 		{

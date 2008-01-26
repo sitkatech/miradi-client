@@ -50,7 +50,7 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 
 		try
 		{
-			exportProjectXml(chosen);
+			exportJustProjectXml(getProject(), chosen);
 			EAM.notifyDialog(EAM.text("Export complete"));
 		}
 		catch(IOException e)
@@ -64,24 +64,32 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		}
 	}
 
-	private void exportProjectXml(File destination) throws Exception
+	public static File exportProjectToXml(Project project, File destinationDirectory) throws IOException, Exception
 	{
-		Project project = getProject();
-		exportProjectToXml(project, destination);
+		if(!destinationDirectory.isDirectory())
+			throw new RuntimeException("Can only export to a directory");
+		return exportProjectXml(project, destinationDirectory);
+
+		// FIXME: Need to export diagrams somehow, but disabling for now
+		// to avoid creating large XML files that cause JasperReports to run out of memory
+//		exportDiagrams(out);
+		
 	}
 
-	public static void exportProjectToXml(Project project, File destination) throws IOException, Exception
+	private static File exportProjectXml(Project project, File destinationDirectory) throws IOException, Exception
+	{
+		File destination = new File(destinationDirectory, project.getFilename() + ".xml");
+		exportJustProjectXml(project, destination);
+		return destination;
+	}
+
+	private static void exportJustProjectXml(Project project, File destination) throws IOException, Exception
 	{
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
 			out.writeln("<MiradiProject>");
 			project.toXml(out);
-			
-			// FIXME: Need to export diagrams somehow, but disabling for now
-			// to avoid creating large XML files that cause JasperReports to run out of memory
-//			exportDiagrams(out);
-			
 			out.writeln("</MiradiProject>");
 		}
 		finally
