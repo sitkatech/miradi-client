@@ -23,10 +23,10 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString language="xPath"><![CDATA[/MiradiProject/FileName]]></queryString>
+
 
 	<field name="name" class="java.lang.String">
-		<fieldDescription><![CDATA[.]]></fieldDescription>
+		<fieldDescription><![CDATA[FileName]]></fieldDescription>
 	</field>
 
 		<background>

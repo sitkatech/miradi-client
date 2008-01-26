@@ -23,8 +23,6 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString language="xPath"><![CDATA[/MiradiProject]]></queryString>
-
 	<field name="Cohort" class="java.lang.String">
 		<fieldDescription><![CDATA[ObjectPools/Pool/RareProjectData/Cohort]]></fieldDescription>
 	</field>
@@ -1166,7 +1164,10 @@
 						key="subreport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Code")]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["CountryListReport.jasper"]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[
+						org.conservationmeasures.eam.main.Miradi.class.getResource(
+						"/reports/CountryListReport.jasper")
+					]]></subreportExpression>
 				</subreport>
 				<staticText>
 					<reportElement

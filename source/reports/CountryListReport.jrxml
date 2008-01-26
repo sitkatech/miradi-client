@@ -55,7 +55,10 @@
 						key="subreport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ChoiceQuestions/Choices[@question = 'CountriesQuestion']/Choice[@code = '" + $F{countryCode}+ "']")]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["CountriesReport.jasper"]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[
+						org.conservationmeasures.eam.main.Miradi.class.getResource(
+						"/reports/CountriesReport.jasper")
+					]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
