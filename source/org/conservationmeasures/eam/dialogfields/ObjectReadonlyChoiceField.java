@@ -25,9 +25,9 @@ import org.martus.swing.UiLabel;
 
 public class ObjectReadonlyChoiceField extends ObjectDataInputField
 {
-	public ObjectReadonlyChoiceField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public ObjectReadonlyChoiceField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		question = questionToUse;
 		
 		component = new PanelTitleLabel("");

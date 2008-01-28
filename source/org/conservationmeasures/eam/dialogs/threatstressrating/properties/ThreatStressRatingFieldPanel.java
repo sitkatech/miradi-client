@@ -24,7 +24,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Cause.getObjectType(), Cause.TAG_LABEL));
 		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
-		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE)));
+		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE)));
 
 		updateFieldsFromProject();
 	}

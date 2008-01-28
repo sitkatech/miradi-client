@@ -35,7 +35,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField impactField = createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING));
 		ObjectDataInputField feasibilityField = createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING));
-		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY));
+		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY));
 
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
