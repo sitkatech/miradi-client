@@ -133,7 +133,7 @@ public class ThreatStressRating extends BaseObject
 		irreversibility = new ChoiceData();
 		stressRef = new ORefData();
 		isActive = new BooleanData();
-		pseudoThreatRating = new PseudoQuestionData(new ThreatStressRatingChoiceQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING));
+		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, new ThreatStressRatingChoiceQuestion(PSEUDO_TAG_THREAT_RATING));
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);

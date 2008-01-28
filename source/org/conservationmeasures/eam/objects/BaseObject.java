@@ -1069,9 +1069,15 @@ abstract public class BaseObject
 	public class PseudoQuestionData  extends ObjectData
 	{
 	
-		public PseudoQuestionData(ChoiceQuestion questionToUse)
+		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
 		{
+			tag = tagToUse;
 			question = questionToUse;
+		}
+		
+		public String getTag()
+		{
+			return tag;
 		}
 		
 		public boolean isPseudoField()
@@ -1085,7 +1091,6 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			String tag = question.getTag();
 			String pseudoData = getPseudoData(tag);
 			ChoiceItem choice = question.findChoiceByCode(pseudoData);
 			return  choice.getCode();
@@ -1093,7 +1098,7 @@ abstract public class BaseObject
 		
 		public ChoiceItem getChoiceItem()
 		{
-			return question.findChoiceByCode(getPseudoData(question.getTag()));
+			return question.findChoiceByCode(getPseudoData(getTag()));
 		}
 
 		public boolean equals(Object rawOther)
@@ -1110,7 +1115,8 @@ abstract public class BaseObject
 			return get().hashCode();
 		}
 		
-		ChoiceQuestion question;
+		private String tag;
+		private ChoiceQuestion question;
 	}
 	
 	

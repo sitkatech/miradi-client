@@ -352,8 +352,8 @@ public class ProjectMetadata extends BaseObject
 		diagramFontSize = new IntegerData();
 		diagramFontFamily = new StringData();
 		threatRatingMode = new ChoiceData();
-		diagramFontSizeValue = new PseudoQuestionData(new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
-		diagramFontFamilyValue = new PseudoQuestionData(new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
+		diagramFontSizeValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion(TAG_DIAGRAM_FONT_SIZE));
+		diagramFontFamilyValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion(TAG_DIAGRAM_FONT_FAMILY));
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
