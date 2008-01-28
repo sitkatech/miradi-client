@@ -304,8 +304,8 @@ abstract public class DiagramObject extends BaseObject
 		
 		allDiagramFactorIds = new IdListData(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
 		allDiagramFactorLinkIds = new IdListData(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
-		shortLabel = new StringData();
-		details = new StringData();
+		shortLabel = new StringData(TAG_SHORT_LABEL);
+		details = new StringData(TAG_DETAIL);
 		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
