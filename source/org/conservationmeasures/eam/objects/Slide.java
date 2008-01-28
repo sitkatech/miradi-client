@@ -99,7 +99,7 @@ public class Slide extends BaseObject
 	void clear()
 	{
 		super.clear();
-		diagramObjectRef = new ORefData();
+		diagramObjectRef = new ORefData(TAG_DIAGRAM_OBJECT_REF);
 		diagramObjectLabel = new PseudoStringData(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL);
 		legendSettings = new CodeListData(TAG_DIAGRAM_LEGEND_SETTINGS);
 		

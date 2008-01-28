@@ -136,12 +136,12 @@ public class ViewData extends BaseObject
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();
-		currentResultsChainRef = new ORefData();
-		currentConceptualModelRef = new ORefData();
+		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
+		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES);
 		planningStyleChoice = new StringData();
 		planningSingleLevelChoice = new StringData();
-		planningCustomChoiceRef = new ORefData();
+		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
 		
 		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
