@@ -12,11 +12,6 @@ public class BooleanData extends IntegerData
 		super();
 	}
 	
-	public BooleanData(String valueToUse)
-	{
-		super(valueToUse);
-	}
-	
 	public boolean asBoolean()
 	{
 		if (get().length() == 0)
