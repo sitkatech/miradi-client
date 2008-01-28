@@ -17,7 +17,7 @@
 		 whenNoDataType="AllSectionsNoDetail"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
 	<import value="net.sf.jasperreports.engine.*" />
@@ -45,20 +45,18 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="21"  isSplitAllowed="true" >
+			<band height="19"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
 						y="0"
-						width="116"
+						width="366"
 						height="19"
 						key="subreport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ChoiceQuestions/Choices[@question = 'CountriesQuestion']/Choice[@code = '" + $F{countryCode}+ "']")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[
-						org.conservationmeasures.eam.main.Miradi.class.getResource(
-						"/reports/CountriesReport.jasper")
-					]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource(
+						"/reports/CountriesReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
