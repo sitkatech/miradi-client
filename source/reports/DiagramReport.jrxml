@@ -84,7 +84,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<graphicElement stretchType="RelativeToBandHeight"/>
-					<imageExpression class="java.awt.Image"><![CDATA[org.conservationmeasures.eam.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "\\" + $F{ref} + ".jpg")]]></imageExpression>
+					<imageExpression class="java.awt.Image"><![CDATA[org.conservationmeasures.eam.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/" + $F{ref} + ".jpg")]]></imageExpression>
 				</image>
 			</band>
 		</detail>
