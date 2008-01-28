@@ -21,7 +21,7 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LATITUDE, 10), "(Latitude must be -90.0000 to +90.0000)");
 		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LONGITUDE, 10), "(Longitude must be -180.0000 to +180.0000)");
 		
-		addField(createMultiCodeField(ProjectMetadata.getObjectType(), new CountriesQuestion(ProjectMetadata.TAG_COUNTRIES), 1));
+		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_COUNTRIES, new CountriesQuestion(ProjectMetadata.TAG_COUNTRIES), 1));
 		addField(createStringField(ProjectMetadata.TAG_STATE_AND_PROVINCES));
 		addField(createStringField(ProjectMetadata.TAG_MUNICIPALITIES));
 		addField(createStringField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS));
