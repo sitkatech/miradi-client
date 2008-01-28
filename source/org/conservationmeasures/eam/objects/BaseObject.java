@@ -467,10 +467,10 @@ abstract public class BaseObject
 	
 	void clear()
 	{
-		label = new StringData();
+		label = new StringData(TAG_LABEL);
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
-		budgetCostOverride = new StringData();
+		budgetCostOverride = new StringData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE);
 
 		fields = new HashMap();

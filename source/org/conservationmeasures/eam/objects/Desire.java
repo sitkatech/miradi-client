@@ -118,9 +118,9 @@ abstract public class Desire extends BaseObject
 	void clear()
 	{
 		super.clear();
-		shortLabel = new StringData();
-		fullText = new StringData();
-		comments = new StringData();
+		shortLabel = new StringData(TAG_SHORT_LABEL);
+		fullText = new StringData(TAG_FULL_TEXT);
+		comments = new StringData(TAG_COMMENTS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);

@@ -77,8 +77,8 @@ public class AccountingCode extends BaseObject
 	{
 		super.clear();
 		
-		code = new StringData();
-		comments = new StringData();
+		code = new StringData(TAG_CODE);
+		comments = new StringData(TAG_COMMENTS);
 		
 		addField(TAG_CODE, code);
 		addField(TAG_COMMENTS, comments);

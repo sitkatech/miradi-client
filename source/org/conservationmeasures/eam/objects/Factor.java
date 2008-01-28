@@ -457,9 +457,9 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		comment = new StringData();
-		text = new StringData();
-		shortLabel = new StringData();
+		comment = new StringData(TAG_COMMENT);
+		text = new StringData(TAG_TEXT);
+		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
 		goals = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
