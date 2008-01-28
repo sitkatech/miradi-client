@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.objectdata;
 
 public class FloatData extends ObjectData
 {
-	public FloatData()
+	public FloatData(String tagToUse)
 	{
+		super(tagToUse);
 		value = 0;
 	}
 	
