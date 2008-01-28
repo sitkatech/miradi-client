@@ -7,9 +7,15 @@ package org.conservationmeasures.eam.objectdata;
 
 public class StringData extends ObjectData
 {
+	public StringData(String tagToUse)
+	{
+		super(tagToUse);
+		value = "";
+	}
+	
 	public StringData()
 	{
-		value = "";
+		this("");
 	}
 	
 	public void set(String newValue) throws Exception
