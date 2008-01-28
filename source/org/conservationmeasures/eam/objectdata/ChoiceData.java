@@ -13,10 +13,4 @@ public class ChoiceData extends StringData
 		super();
 	}
 	
-	public ChoiceData(String newValue) throws Exception
-	{
-		this();
-		set(newValue);
-	}
-
 }
