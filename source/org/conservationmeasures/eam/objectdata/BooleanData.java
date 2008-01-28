@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objectdata;
 
 public class BooleanData extends IntegerData
 {
-	public BooleanData()
+	public BooleanData(String tagToUse)
 	{
-		super();
+		super(tagToUse);
 	}
 	
 	public boolean asBoolean()

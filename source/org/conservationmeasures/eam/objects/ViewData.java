@@ -132,7 +132,7 @@ public class ViewData extends BaseObject
 		super.clear();
 		currentMode = new StringData();
 		chainModeFactorRefs = new ORefListData();
-		currentTab = new IntegerData();
+		currentTab = new IntegerData(TAG_CURRENT_TAB);
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
 		expandedNodesList = new ORefListData();

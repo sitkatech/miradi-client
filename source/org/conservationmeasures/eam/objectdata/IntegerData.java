@@ -5,12 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 
 public class IntegerData extends ObjectData
 {
-	public IntegerData()
+	public IntegerData(String tagToUse)
 	{
+		super(tagToUse);
 		value = 0;
 	}
 	

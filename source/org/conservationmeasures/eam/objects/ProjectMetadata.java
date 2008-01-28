@@ -240,7 +240,7 @@ public class ProjectMetadata extends BaseObject
 		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
 		sizeInHectares = new NumberData();
-		currencyDecimalPlaces = new IntegerData();
+		currencyDecimalPlaces = new IntegerData(TAG_CURRENCY_DECIMAL_PLACES);
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
 		totalBudgetForFunding = new NumberData();
@@ -349,7 +349,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_OTHER_ORG_PROJECT_NUMBER, otherOrgProjectNumber);
 		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
 		
-		diagramFontSize = new IntegerData();
+		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
 		diagramFontFamily = new StringData();
 		threatRatingMode = new ChoiceData();
 		diagramFontSizeValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion());
