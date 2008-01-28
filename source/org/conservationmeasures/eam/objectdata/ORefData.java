@@ -19,11 +19,6 @@ public class ORefData extends ObjectData
 		ref = ORef.INVALID;
 	}
 	
-	public ORefData(String data) throws Exception
-	{
-		set(data);
-	}
-	
 	public ORef getRawRef()
 	{
 		return ref;
