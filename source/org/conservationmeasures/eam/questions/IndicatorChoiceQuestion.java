@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 
@@ -13,7 +12,7 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 {
 	public IndicatorChoiceQuestion(Project project)
 	{
-		super(project, getAllIndicators(project), EAM.text("Indicator list"));
+		super(project, getAllIndicators(project));
 	}
 	
 	private static Indicator[] getAllIndicators(Project project)

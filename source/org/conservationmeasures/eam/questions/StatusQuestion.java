@@ -11,7 +11,7 @@ public class StatusQuestion extends StaticChoiceQuestion
 {
 	public StatusQuestion(String tagToUse)
 	{
-		super(tagToUse, "Measurement Status", getStatuses());
+		super(tagToUse, getStatuses());
 	}
 
 	static ChoiceItem[] getStatuses()

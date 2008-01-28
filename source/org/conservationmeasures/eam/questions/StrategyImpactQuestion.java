@@ -12,7 +12,7 @@ public class StrategyImpactQuestion extends StaticChoiceQuestion
 {
 	public StrategyImpactQuestion(String tag)
 	{
-		super(tag, "Impact on Key Factors", getImpactChoices());
+		super(tag, getImpactChoices());
 	}
 	
 	static ChoiceItem[] getImpactChoices()

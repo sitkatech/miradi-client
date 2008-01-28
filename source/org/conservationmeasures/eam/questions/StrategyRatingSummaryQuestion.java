@@ -12,7 +12,7 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestion
 {
 	public StrategyRatingSummaryQuestion(String tag)
 	{
-		super(tag, "Priority", getStrategyRatingChoices());
+		super(tag, getStrategyRatingChoices());
 	}
 	
 	static ChoiceItem[] getStrategyRatingChoices()

@@ -12,7 +12,7 @@ public class PriorityRatingQuestion extends StaticChoiceQuestion
 {
 	public PriorityRatingQuestion(String tag)
 	{
-		super(tag, "Priority", getPriorityChoices());
+		super(tag, getPriorityChoices());
 	}
 	
 	static ChoiceItem[] getPriorityChoices()

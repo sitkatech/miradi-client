@@ -12,6 +12,6 @@ public class StrategyTaxonomyQuestion extends TwoLevelQuestion
 {
 	public StrategyTaxonomyQuestion(String tag)
 	{
-		super(tag, "Strategy Taxonomy Translations", new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
+		super(tag, new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
 	}
 }

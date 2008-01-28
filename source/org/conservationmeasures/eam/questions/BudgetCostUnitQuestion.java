@@ -10,7 +10,7 @@ public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 {
 	public BudgetCostUnitQuestion(String tagToUse)
 	{
-		super(tagToUse, "Cost Units", getCostUnitChoices());
+		super(tagToUse, getCostUnitChoices());
 	}
 
 	static ChoiceItem[] getCostUnitChoices()

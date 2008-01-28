@@ -11,7 +11,7 @@ public class StressIrreversibilityQuestion extends StaticChoiceQuestion
 {
 	public StressIrreversibilityQuestion(String tagToUse)
 	{
-		super(tagToUse, "Irreversibility", getChoiceItems());
+		super(tagToUse, getChoiceItems());
 	}
 
 	static ChoiceItem[] getChoiceItems()

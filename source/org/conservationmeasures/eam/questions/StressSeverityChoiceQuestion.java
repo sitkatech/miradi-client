@@ -11,7 +11,7 @@ public class StressSeverityChoiceQuestion extends StaticChoiceQuestion
 {
 	public StressSeverityChoiceQuestion(String tag)
 	{
-		super(tag, "Severity", getSeverityChoices());
+		super(tag, getSeverityChoices());
 	}
 	
 	public static ChoiceItem[] getSeverityChoices()

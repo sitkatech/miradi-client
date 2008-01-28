@@ -21,7 +21,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 {
 	public DiagramLegendQuestion(String tagToUse)
 	{
-		super(tagToUse, "Legend", getLegendChoices());
+		super(tagToUse, getLegendChoices());
 	}
 
 	static ChoiceItem[] getLegendChoices()

@@ -9,7 +9,7 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 {
 	public FontFamiliyQuestion(String tag)
 	{
-		super(tag, "Font Family", getFamilyChoices());
+		super(tag, getFamilyChoices());
 	}
 	
 	static ChoiceItem[] getFamilyChoices()

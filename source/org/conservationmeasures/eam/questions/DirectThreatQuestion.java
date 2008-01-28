@@ -16,7 +16,7 @@ public class DirectThreatQuestion extends StaticChoiceQuestion
 {
 	public DirectThreatQuestion(Project project, String tagToUse)
 	{
-		super(tagToUse, "Direct Threat", getDirectThreatChoices(project));
+		super(tagToUse, getDirectThreatChoices(project));
 	}
 
 	static ChoiceItem[] getDirectThreatChoices(Project project)

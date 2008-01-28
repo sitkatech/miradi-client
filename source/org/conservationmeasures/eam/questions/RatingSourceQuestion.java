@@ -10,7 +10,7 @@ public class RatingSourceQuestion extends StaticChoiceQuestion
 {
 	public RatingSourceQuestion(String tag)
 	{
-		super(tag, "Rating Source", getStatusChoices());
+		super(tag, getStatusChoices());
 	}
 	
 	static ChoiceItem[] getStatusChoices()

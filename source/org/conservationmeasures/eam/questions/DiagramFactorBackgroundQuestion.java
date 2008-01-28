@@ -13,7 +13,7 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 {
 	public DiagramFactorBackgroundQuestion(String tag)
 	{
-		super(tag, "Diagram Factor Background Color", getColorChoices());
+		super(tag, getColorChoices());
 	}
 	
 	static ChoiceItem[] getColorChoices()

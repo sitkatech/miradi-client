@@ -11,7 +11,7 @@ public class CurrencyDecimalQuestion extends StaticChoiceQuestion
 {
 	public CurrencyDecimalQuestion(String tagToUse)
 	{
-		super(tagToUse, EAM.text("Label|Currency Decimal Question"), getStaticChoices());
+		super(tagToUse, getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

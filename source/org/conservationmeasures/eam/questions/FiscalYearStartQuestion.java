@@ -11,7 +11,7 @@ public class FiscalYearStartQuestion extends StaticChoiceQuestion
 {
 	public FiscalYearStartQuestion(String tagToUse)
 	{
-		super(tagToUse, EAM.text("Label|Fiscal Year Start"), getStaticChoices());
+		super(tagToUse, getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

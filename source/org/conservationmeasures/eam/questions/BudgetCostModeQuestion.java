@@ -13,7 +13,7 @@ public class BudgetCostModeQuestion extends StaticChoiceQuestion
 
 	public BudgetCostModeQuestion(String tagToUse)
 	{
-		super(tagToUse, "Budget Cost Mode", getChoiceItems());
+		super(tagToUse, getChoiceItems());
 	}
 
 	public static ChoiceItem[] getChoiceItems()

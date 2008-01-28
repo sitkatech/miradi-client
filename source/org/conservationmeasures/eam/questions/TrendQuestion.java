@@ -13,7 +13,7 @@ public class TrendQuestion extends StaticChoiceQuestion
 {
 	public TrendQuestion(String tagToUse)
 	{
-		super(tagToUse, "Trends", getTrends());
+		super(tagToUse, getTrends());
 	}
 
 	static ChoiceItem[] getTrends()

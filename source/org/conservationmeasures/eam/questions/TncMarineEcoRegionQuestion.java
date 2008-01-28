@@ -12,6 +12,6 @@ public class TncMarineEcoRegionQuestion extends TwoLevelQuestion
 {
 	public TncMarineEcoRegionQuestion(String tagToUse)
 	{
-		super(tagToUse, "Marine Eco Region", new TncMarineEcoRegionFileLoader(TwoLevelFileLoader.TNC_MARINE_ECO_REGION_FILE));
+		super(tagToUse, new TncMarineEcoRegionFileLoader(TwoLevelFileLoader.TNC_MARINE_ECO_REGION_FILE));
 	}
 }

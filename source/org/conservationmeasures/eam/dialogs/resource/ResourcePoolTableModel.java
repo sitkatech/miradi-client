@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs.resource;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolTableModel;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -38,8 +37,7 @@ public class ResourcePoolTableModel extends ObjectPoolTableModel
 		if(isResourceTypeColumn(column))
 		{
 			String fieldTag = COLUMN_TAGS[column];
-			String fieldLabel = EAM.fieldLabel(ProjectResource.getObjectType(), fieldTag);
-			return new ResourceTypeQuestion(fieldTag, fieldLabel);
+			return new ResourceTypeQuestion(fieldTag);
 		}
 		return super.getColumnQuestion(column);
 	}
