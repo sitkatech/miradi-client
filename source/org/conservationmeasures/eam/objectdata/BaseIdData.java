@@ -14,8 +14,9 @@ import org.martus.util.UnicodeWriter;
 
 public class BaseIdData extends ObjectData
 {
-	public BaseIdData(int objectTypeToStore)
+	public BaseIdData(String tagToUse, int objectTypeToStore)
 	{
+		super(tagToUse);
 		objectType = objectTypeToStore;
 		id = BaseId.INVALID;
 	}

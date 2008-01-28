@@ -375,6 +375,12 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
+	private ChoiceQuestion getQuestion(Class questionClass)
+	{
+		return getProject().getQuestion(questionClass);
+	}
+
+
 	public double getProportionalBudgetCost(DateRange dateRange) throws Exception
 	{
 		return getBudgetCost(dateRange) * getBudgetCostAllocation();
@@ -465,7 +471,7 @@ abstract public class BaseObject
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new StringData();
-		budgetCostMode = new ChoiceData();
+		budgetCostMode = new ChoiceData(getQuestion(BudgetCostModeQuestion.class));
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();

@@ -81,6 +81,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.objects.WcsProjectData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.QuestionManager;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -403,6 +404,12 @@ public class Project
 		return projectInfo.getMetadataId();
 	}
 	
+	public ChoiceQuestion getQuestion(Class questionClass)
+	{
+		return questionManager.getQuestion(questionClass);
+	}
+
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
