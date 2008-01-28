@@ -150,7 +150,7 @@ public class ProjectResource extends BaseObject
 		position = new StringData();
 		phoneNumber = new StringData();
 		email = new StringData();
-		costPerUnit = new NumberData();
+		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
 		costUnit = new ChoiceData();
 		organization = new StringData();
 		roleCodes = new CodeListData(TAG_ROLE_CODES);
