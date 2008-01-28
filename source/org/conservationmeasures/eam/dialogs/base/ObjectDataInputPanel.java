@@ -91,10 +91,10 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return field;
 	}
 	
-	protected void addFieldsOnOneLine(String label, Icon icon, ObjectDataInputField[] fields)
+	protected void addFieldsOnOneLine(String fieldTag, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		
-		addLabelWithIcon(label, icon);
+		addLabelWithIcon(fieldTag, icon);
 		add(fieldPanel);
 	}
 	
@@ -163,25 +163,25 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
-	public void addLabelWithIcon(String translatedLabelText, Icon icon)
+	public void addLabelWithIcon(String fieldTag, Icon icon)
 	{
-		addLabel(getORef(0).getObjectType(), translatedLabelText, icon);
+		addLabel(getORef(0).getObjectType(), fieldTag, icon);
 	}
 	
-	public void addLabel(String translatedLabelText)
+	public void addLabel(String fieldTag)
 	{
-		addLabel(getORef(0).getObjectType(), translatedLabelText);
+		addLabel(getORef(0).getObjectType(), fieldTag);
 	}
 	
-	public void addLabel(int objectType, String translatedLabelText)
+	public void addLabel(int objectType, String fieldTag)
 	{
-		UiLabel label = new PanelFieldLabel(objectType, translatedLabelText);
+		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
 		addLabel(label);
 	}
 	
-	public void addLabel(int objectType, String translatedLabelText, Icon icon)
+	public void addLabel(int objectType, String fieldTag, Icon icon)
 	{
-		UiLabel label = new PanelFieldLabel(objectType, translatedLabelText);
+		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
 		label.setIcon(icon);
 		addLabel(label);
 	}
