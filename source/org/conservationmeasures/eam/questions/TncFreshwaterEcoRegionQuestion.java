@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TncFreshwaterEcoRegionQuestion extends TwoLevelQuestion
 {
-	public TncFreshwaterEcoRegionQuestion(String tagToUse)
+	public TncFreshwaterEcoRegionQuestion()
 	{
-		super(tagToUse, new TncFreshwaterEcoRegionFileLoader(TwoLevelFileLoader.TNC_FRESHWATER_ECO_REGION_FILE));
+		super(new TncFreshwaterEcoRegionFileLoader(TwoLevelFileLoader.TNC_FRESHWATER_ECO_REGION_FILE));
 	}
 }

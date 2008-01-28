@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TncOperatingUnitsQuestion extends TwoLevelQuestion
 {
-	public TncOperatingUnitsQuestion(String tagToUse)
+	public TncOperatingUnitsQuestion()
 	{
-		super(tagToUse, new TncOperatingUnitsFileLoader(TwoLevelFileLoader.TNC_OPERATING_UNITS_FILE));
+		super(new TncOperatingUnitsFileLoader(TwoLevelFileLoader.TNC_OPERATING_UNITS_FILE));
 		sortChoices();
 	}
 }

@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TncTerrestrialEcoRegionQuestion extends TwoLevelQuestion
 {
-	public TncTerrestrialEcoRegionQuestion(String tagToUse)
+	public TncTerrestrialEcoRegionQuestion()
 	{
-		super(tagToUse, new TncTerrestrialEcoRegionFileLoader(TwoLevelFileLoader.TNC_TERRESTRIAL_ECO_REGION_FILE));
+		super(new TncTerrestrialEcoRegionFileLoader(TwoLevelFileLoader.TNC_TERRESTRIAL_ECO_REGION_FILE));
 	}
 }

@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestion
 {
-	public ThreatClassificationQuestion(String tag)
+	public ThreatClassificationQuestion()
 	{
-		super(tag, taxonomyFile);
+		super(taxonomyFile);
 	}
 
 	private static String taxonomyFile = TwoLevelFileLoader.THREAT_TAXONOMIES_FILE;

@@ -31,7 +31,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField labelField = createStringField(Strategy.getObjectType(), Strategy.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Strategy"), new StrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
-		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
+		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion()));
 		
 		ObjectDataInputField impactField = createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING));
 		ObjectDataInputField feasibilityField = createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING));

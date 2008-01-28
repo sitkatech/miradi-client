@@ -11,8 +11,8 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class WwfManagingOfficesQuestion extends TwoLevelQuestion
 {
-	public WwfManagingOfficesQuestion(String tag)
+	public WwfManagingOfficesQuestion()
 	{
-		super(tag, new ManagingOfficeFileLoader(TwoLevelFileLoader.WWF_MANAGING_OFFICES_FILE));
+		super(new ManagingOfficeFileLoader(TwoLevelFileLoader.WWF_MANAGING_OFFICES_FILE));
 	}
 }

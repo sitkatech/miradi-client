@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class StrategyTaxonomyQuestion extends TwoLevelQuestion
 {
-	public StrategyTaxonomyQuestion(String tag)
+	public StrategyTaxonomyQuestion()
 	{
-		super(tag, new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
+		super(new TaxonomyFileLoader(TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE));
 	}
 }

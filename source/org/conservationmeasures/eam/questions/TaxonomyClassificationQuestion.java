@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyFileLoader;
 
 public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
 {
-	public TaxonomyClassificationQuestion(String tag, String fileName)
+	public TaxonomyClassificationQuestion(String fileName)
 	{
-		super(tag, new TaxonomyFileLoader(fileName));
+		super(new TaxonomyFileLoader(fileName));
 	}
 }

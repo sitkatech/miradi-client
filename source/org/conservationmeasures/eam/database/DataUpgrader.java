@@ -218,18 +218,15 @@ public class DataUpgrader extends FileBasedProjectServer
 		String oldEcorRegionsString = projectMetaDataJson.optString("TNC.Ecoregion");
 		String[] oldEcoRegions = oldEcorRegionsString.split(",");
 		
-		String newTerrestrialEcoRegionFieldTag = "TNC.TerrestrialEcoRegion";
-		TncTerrestrialEcoRegionQuestion terrestrialQuestion = new TncTerrestrialEcoRegionQuestion(newTerrestrialEcoRegionFieldTag);
+		TncTerrestrialEcoRegionQuestion terrestrialQuestion = new TncTerrestrialEcoRegionQuestion();
 		CodeList newTerrestrialCodes = findEcoRegionCodes(oldEcoRegions, terrestrialQuestion);
 		projectMetaDataJson.put("TNC.TerrestrialEcoRegion", newTerrestrialCodes.toString());
 		
-		String newMarineEcoRegionFieldTag = "TNC.MarineEcoRegion";
-		TncMarineEcoRegionQuestion marineQuestion = new TncMarineEcoRegionQuestion(newMarineEcoRegionFieldTag);
+		TncMarineEcoRegionQuestion marineQuestion = new TncMarineEcoRegionQuestion();
 		CodeList newMarineCodes = findEcoRegionCodes(oldEcoRegions, marineQuestion);
 		projectMetaDataJson.put("TNC.MarineEcoRegion", newMarineCodes.toString());
 
-		String newFreshwaterEcoRegionFieldTag = "TNC.FreshwaterEcoRegion";
-		TncFreshwaterEcoRegionQuestion freshwaterQuestion = new TncFreshwaterEcoRegionQuestion(newFreshwaterEcoRegionFieldTag);
+		TncFreshwaterEcoRegionQuestion freshwaterQuestion = new TncFreshwaterEcoRegionQuestion();
 		CodeList newFreshwaterCodes = findEcoRegionCodes(oldEcoRegions, freshwaterQuestion);
 		projectMetaDataJson.put("TNC.FreshwaterEcoRegion", newFreshwaterCodes.toString());
 		writeJson(projectMetaDataFile, projectMetaDataJson);
@@ -286,8 +283,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		String oldOperatingUnitsAsString = projectMetaDataJson.optString("TNC.OperatingUnits");
 		String[] oldOperatingUnits = oldOperatingUnitsAsString.split(",");
 		
-		String newOperatingUnitsFieldTag = "TNC.OperatingUnitsField";
-		TncOperatingUnitsQuestion operatingUnitsQuestion = new TncOperatingUnitsQuestion(newOperatingUnitsFieldTag);
+		TncOperatingUnitsQuestion operatingUnitsQuestion = new TncOperatingUnitsQuestion();
 		
 		CodeList newOperatingUnitCodes = findEcoRegionCodes(oldOperatingUnits, operatingUnitsQuestion);
 		projectMetaDataJson.put("TNC.OperatingUnitsField", newOperatingUnitCodes.toString());

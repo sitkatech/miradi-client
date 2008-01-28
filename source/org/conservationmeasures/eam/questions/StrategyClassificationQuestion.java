@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class StrategyClassificationQuestion extends TaxonomyClassificationQuestion
 {
-	public StrategyClassificationQuestion(String tag)
+	public StrategyClassificationQuestion()
 	{
-		super(tag, taxonomyFile);
+		super(taxonomyFile);
 	}
 	
 	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE;
