@@ -66,7 +66,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		if (getFactor().isDirectThreat())
 		{
-			addField(createClassificationChoiceField(new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
+			addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion(Cause.TAG_TAXONOMY_CODE)));
 			detailIcon = new DirectThreatIcon();
 		}
 		
@@ -79,7 +79,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		{
 			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
-			addField(createClassificationChoiceField(new StrategyClassificationQuestion(Strategy.TAG_TAXONOMY_CODE)));
+			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion(Strategy.TAG_TAXONOMY_CODE)));
 			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
 			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
