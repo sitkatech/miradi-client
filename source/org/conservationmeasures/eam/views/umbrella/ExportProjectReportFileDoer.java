@@ -40,9 +40,9 @@ public class ExportProjectReportFileDoer extends MainWindowDoer
 		try 
 		{
 			//TODO make report name dynamic
-			//URL resourcePath = Miradi.class.getResource("/reports/RareReport.jasper");
+			URL resourcePath = Miradi.class.getResource("/reports/RareReport.jasper");
 			//URL resourcePath = Miradi.class.getResource("/reports/DiagramReport.jasper");
-			URL resourcePath = Miradi.class.getResource("/reports/AllResultsChainsReport.jasper");
+			//URL resourcePath = Miradi.class.getResource("/reports/AllConceptualModelsReport.jasper");
 			Project project = mainWindow.getProject();
 			MiradiReport miradiReport = new MiradiReport(project);
 			InputStream input = resourcePath.openStream();
