@@ -570,7 +570,7 @@ abstract public class BaseObject
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + getTypeName() + " ref='");
+		out.write("<" + getTypeName() + " ref='");
 		getRef().toXml(out);
 		out.writeln("'>");
 		Set fieldTags = getFieldTagsToIncludeInXml();
