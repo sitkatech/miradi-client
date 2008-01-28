@@ -12,6 +12,6 @@ public class WwfEcoRegionsQuestion extends TwoLevelQuestion
 {
 	public WwfEcoRegionsQuestion(String tagToUse)
 	{
-		super(tagToUse, "EcoRegions", new EcoRegionsFileLoader(TwoLevelFileLoader.WWF_ECO_REGIONS_FILE));
+		super(tagToUse, new EcoRegionsFileLoader(TwoLevelFileLoader.WWF_ECO_REGIONS_FILE));
 	}
 }

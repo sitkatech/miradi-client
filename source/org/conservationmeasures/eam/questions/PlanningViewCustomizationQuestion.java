@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
@@ -18,7 +17,7 @@ public class PlanningViewCustomizationQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewCustomizationQuestion(Project projectToUse)
 	{
-		super(getEmptyTag(), EAM.text("Customization Style"), getCustomizationChoices(projectToUse));
+		super(getEmptyTag(), getCustomizationChoices(projectToUse));
 	}
 
 	private static String getEmptyTag()

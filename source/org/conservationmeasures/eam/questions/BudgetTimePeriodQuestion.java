@@ -11,7 +11,7 @@ public class BudgetTimePeriodQuestion extends StaticChoiceQuestion
 {
 	public BudgetTimePeriodQuestion(String tagToUse)
 	{
-		super(tagToUse, EAM.text("Label|Budget Time Period"), getStaticChoices());
+		super(tagToUse, getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

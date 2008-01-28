@@ -11,7 +11,7 @@ public class TeamRoleQuestion extends StaticChoiceQuestion
 {
 	public TeamRoleQuestion(String tagToUse)
 	{
-		super(tagToUse, "Role", getRoleChoices());
+		super(tagToUse, getRoleChoices());
 	}
 
 	static Vector<ChoiceItem> getRoleChoices()

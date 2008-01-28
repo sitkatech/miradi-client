@@ -34,7 +34,7 @@ public class QuestionManager
 		addQuestion(new ProgressReportStatusQuestion(""));
 		addQuestion(new RatingSourceQuestion(""));
 		addQuestion(new ResourceRoleQuestion(""));
-		addQuestion(new ResourceTypeQuestion("", ""));
+		addQuestion(new ResourceTypeQuestion(""));
 		addQuestion(new StatusConfidenceQuestion(""));
 		addQuestion(new StatusQuestion(""));
 		addQuestion(new StrategyClassificationQuestion(""));

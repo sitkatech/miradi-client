@@ -12,6 +12,6 @@ public class TncFreshwaterEcoRegionQuestion extends TwoLevelQuestion
 {
 	public TncFreshwaterEcoRegionQuestion(String tagToUse)
 	{
-		super(tagToUse, "Freshwater Eco Region", new TncFreshwaterEcoRegionFileLoader(TwoLevelFileLoader.TNC_FRESHWATER_ECO_REGION_FILE));
+		super(tagToUse, new TncFreshwaterEcoRegionFileLoader(TwoLevelFileLoader.TNC_FRESHWATER_ECO_REGION_FILE));
 	}
 }

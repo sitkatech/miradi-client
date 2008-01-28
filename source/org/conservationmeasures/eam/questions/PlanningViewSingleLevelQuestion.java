@@ -20,7 +20,7 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewSingleLevelQuestion()
 	{
-		super(getEmptyTag(), EAM.text("Single Level Style"), getSingleLevelChoices());
+		super(getEmptyTag(), getSingleLevelChoices());
 	}
 
 	private static String getEmptyTag()

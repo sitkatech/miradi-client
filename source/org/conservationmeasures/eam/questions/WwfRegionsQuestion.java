@@ -12,6 +12,6 @@ public class WwfRegionsQuestion extends TwoLevelQuestion
 {
 	public WwfRegionsQuestion(String tagToUse)
 	{
-		super(tagToUse, "WwfRegions", new RegionsFileLoader(TwoLevelFileLoader.WWF_REGIONS_FILE));
+		super(tagToUse, new RegionsFileLoader(TwoLevelFileLoader.WWF_REGIONS_FILE));
 	}
 }

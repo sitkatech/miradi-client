@@ -12,6 +12,6 @@ public class TncTerrestrialEcoRegionQuestion extends TwoLevelQuestion
 {
 	public TncTerrestrialEcoRegionQuestion(String tagToUse)
 	{
-		super(tagToUse, "Terrestrial", new TncTerrestrialEcoRegionFileLoader(TwoLevelFileLoader.TNC_TERRESTRIAL_ECO_REGION_FILE));
+		super(tagToUse, new TncTerrestrialEcoRegionFileLoader(TwoLevelFileLoader.TNC_TERRESTRIAL_ECO_REGION_FILE));
 	}
 }

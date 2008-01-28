@@ -10,7 +10,7 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 {
 	public StatusConfidenceQuestion(String tag)
 	{
-		super(tag, "Status Confidence", getStatusConfidences());
+		super(tag, getStatusConfidences());
 	}
 	
 	static ChoiceItem[] getStatusConfidences()

@@ -10,7 +10,7 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 {
 	public DiagramFactorFontColorQuestion(String tag)
 	{
-		super(tag, "Diagram Factor Color", getColorChoices());
+		super(tag, getColorChoices());
 	}
 	
 	static ChoiceItem[] getColorChoices()

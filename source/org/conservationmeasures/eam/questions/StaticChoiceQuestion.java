@@ -9,15 +9,15 @@ import java.util.Vector;
 
 public class StaticChoiceQuestion extends ChoiceQuestion
 {
-	public StaticChoiceQuestion(String tagToUse, String labelToUse, ChoiceItem[] choicesToUse)
+	public StaticChoiceQuestion(String tagToUse, ChoiceItem[] choicesToUse)
 	{
 		super(tagToUse);
 		choices = choicesToUse;
 	}
 	
-	public StaticChoiceQuestion(String tagToUse, String labelToUse, Vector<ChoiceItem> choicesToUse)
+	public StaticChoiceQuestion(String tagToUse, Vector<ChoiceItem> choicesToUse)
 	{
-		this(tagToUse, labelToUse, choicesToUse.toArray(new ChoiceItem[0]));
+		this(tagToUse, choicesToUse.toArray(new ChoiceItem[0]));
 	}
 
 	public ChoiceItem[] getChoices()

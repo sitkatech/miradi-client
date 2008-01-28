@@ -12,6 +12,6 @@ public class CountriesQuestion extends TwoLevelQuestion
 {
 	public CountriesQuestion(String tagToUse)
 	{
-		super(tagToUse, "Countries", new WwfCountriesFileLoader(TwoLevelFileLoader.COUNTRIES_FILE));
+		super(tagToUse, new WwfCountriesFileLoader(TwoLevelFileLoader.COUNTRIES_FILE));
 	}
 }

@@ -12,6 +12,6 @@ public abstract class TaxonomyClassificationQuestion extends TwoLevelQuestion
 {
 	public TaxonomyClassificationQuestion(String tag, String fileName)
 	{
-		super(tag, "Taxonomy Classifications", new TaxonomyFileLoader(fileName));
+		super(tag, new TaxonomyFileLoader(fileName));
 	}
 }

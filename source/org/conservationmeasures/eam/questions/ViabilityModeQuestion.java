@@ -9,7 +9,7 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 {
 	public ViabilityModeQuestion(String tagToUse)
 	{
-		super(tagToUse, "Target Viability Methodology", getViabilityModeChoices());
+		super(tagToUse, getViabilityModeChoices());
 	}
 
 	static ChoiceItem[] getViabilityModeChoices()

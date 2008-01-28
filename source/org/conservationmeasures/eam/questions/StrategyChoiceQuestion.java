@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
@@ -13,7 +12,7 @@ public class StrategyChoiceQuestion extends ObjectQuestion
 {
 	public StrategyChoiceQuestion(Project project)
 	{
-		super(project, getNonDraftStrategies(project), EAM.text("Strategy list"));
+		super(project, getNonDraftStrategies(project));
 	}
 	
 	private static Factor[] getNonDraftStrategies(Project project)

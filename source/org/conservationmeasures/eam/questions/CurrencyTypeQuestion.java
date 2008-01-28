@@ -5,13 +5,12 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import org.conservationmeasures.eam.main.EAM;
 
 public class CurrencyTypeQuestion extends StaticChoiceQuestion
 {
 	public CurrencyTypeQuestion(String tagToUse)
 	{
-		super(tagToUse, EAM.text("Label|Currency Type"), getCurrencyChoices());
+		super(tagToUse, getCurrencyChoices());
 	}
 
 	static ChoiceItem[] getCurrencyChoices()

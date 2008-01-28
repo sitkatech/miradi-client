@@ -11,7 +11,7 @@ public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 {
 	public ProgressReportStatusQuestion(String tagToUse)
 	{
-		super(tagToUse, "Progress Report Status", getChoiceItems());
+		super(tagToUse, getChoiceItems());
 	}
 
 	static ChoiceItem[] getChoiceItems()

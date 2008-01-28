@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectQuestion extends StaticChoiceQuestion
 {
-	public ObjectQuestion(Project project, BaseObject[] objects, String questionLabel)
+	public ObjectQuestion(Project project, BaseObject[] objects)
 	{
-		super("", questionLabel, createChoiceItems(project, objects));
+		super("", createChoiceItems(project, objects));
 	}
 
 	private static ChoiceItem[] createChoiceItems(Project project, BaseObject[] objects)

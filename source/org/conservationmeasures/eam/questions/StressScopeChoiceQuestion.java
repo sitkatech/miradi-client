@@ -11,7 +11,7 @@ public class StressScopeChoiceQuestion extends StaticChoiceQuestion
 {
 	public StressScopeChoiceQuestion(String tag)
 	{
-		super(tag, "Scope", getScopeChoices());
+		super(tag, getScopeChoices());
 	}
 	
 	public static ChoiceItem[] getScopeChoices()

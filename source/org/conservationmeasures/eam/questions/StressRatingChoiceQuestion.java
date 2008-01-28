@@ -11,7 +11,7 @@ public class StressRatingChoiceQuestion extends StaticChoiceQuestion
 {
 	public StressRatingChoiceQuestion(String tag)
 	{
-		super(tag, "Stress Rating", getStressRatingChoices());
+		super(tag, getStressRatingChoices());
 	}
 	
 	public static ChoiceItem[] getStressRatingChoices()

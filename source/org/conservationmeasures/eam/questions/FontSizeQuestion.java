@@ -9,7 +9,7 @@ public class FontSizeQuestion extends StaticChoiceQuestion
 {
 	public FontSizeQuestion(String tag)
 	{
-		super(tag, "Font Size", getSizeChoices());
+		super(tag, getSizeChoices());
 	}
 	
 	static ChoiceItem[] getSizeChoices()

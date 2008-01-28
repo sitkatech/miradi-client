@@ -12,7 +12,7 @@ public class StrategyCostQuestion extends StaticChoiceQuestion
 {
 	public StrategyCostQuestion(String tag)
 	{
-		super(tag, "Cost", getCostChoices());
+		super(tag, getCostChoices());
 	}
 	
 	static ChoiceItem[] getCostChoices()

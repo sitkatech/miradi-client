@@ -12,7 +12,7 @@ public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 {
 	public IndicatorStatusRatingQuestion(String tag)
 	{
-		super(tag, "Status", getStatusChoices());
+		super(tag, getStatusChoices());
 	}
 	
 	static ChoiceItem[] getStatusChoices()

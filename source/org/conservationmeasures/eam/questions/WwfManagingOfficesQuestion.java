@@ -13,6 +13,6 @@ public class WwfManagingOfficesQuestion extends TwoLevelQuestion
 {
 	public WwfManagingOfficesQuestion(String tag)
 	{
-		super(tag, "WwfManagingOffices", new ManagingOfficeFileLoader(TwoLevelFileLoader.WWF_MANAGING_OFFICES_FILE));
+		super(tag, new ManagingOfficeFileLoader(TwoLevelFileLoader.WWF_MANAGING_OFFICES_FILE));
 	}
 }

@@ -11,7 +11,7 @@ public class ThreatStressRatingChoiceQuestion extends StaticChoiceQuestion
 {
 	public ThreatStressRatingChoiceQuestion(String tagToUse)
 	{
-		super(tagToUse, "Threat Stress Rating", getChoiceItems());
+		super(tagToUse, getChoiceItems());
 	}
 
 	static ChoiceItem[] getChoiceItems()

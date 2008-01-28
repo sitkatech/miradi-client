@@ -10,7 +10,7 @@ public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 {
 	public KeyEcologicalAttributeTypeQuestion(String tag)
 	{
-		super(tag, "Key Ecological Attribute Types", getKEATypeChoices());
+		super(tag, getKEATypeChoices());
 	}
 	
 	static ChoiceItem[] getKEATypeChoices()

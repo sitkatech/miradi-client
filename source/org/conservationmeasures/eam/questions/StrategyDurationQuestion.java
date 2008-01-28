@@ -12,7 +12,7 @@ public class StrategyDurationQuestion extends StaticChoiceQuestion
 {
 	public StrategyDurationQuestion(String tag)
 	{
-		super(tag, "Duration of Impact", getDurationChoices());
+		super(tag, getDurationChoices());
 	}
 	
 	static ChoiceItem[] getDurationChoices()

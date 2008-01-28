@@ -13,7 +13,7 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 {
 	public ResourceRoleQuestion(String tagToUse)
 	{
-		super(tagToUse, "Role", getRoleChoices());
+		super(tagToUse, getRoleChoices());
 	}
 
 	private static Vector<ChoiceItem> getRoleChoices()
