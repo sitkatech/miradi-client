@@ -84,8 +84,8 @@ public class SubTarget extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new StringData();
-		details = new StringData();
+		shortLabel = new StringData(TAG_SHORT_LABEL);
+		details = new StringData(TAG_DETAIL);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);

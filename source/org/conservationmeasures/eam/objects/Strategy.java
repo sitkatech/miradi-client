@@ -293,10 +293,10 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
-		status = new StringData();
+		status = new StringData(TAG_STATUS);
 		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
-		taxonomyCode = new StringData();
+		taxonomyCode = new StringData(TAG_TAXONOMY_CODE);
 		impactRating = new ChoiceData(TAG_IMPACT_RATING);
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
