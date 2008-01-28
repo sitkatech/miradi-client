@@ -241,8 +241,8 @@ public class ProjectMetadata extends BaseObject
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
 		sizeInHectares = new NumberData();
 		currencyDecimalPlaces = new IntegerData();
-		latitude = new FloatData();
-		longitude = new FloatData();
+		latitude = new FloatData(TAG_PROJECT_LATITUDE);
+		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
 		totalBudgetForFunding = new NumberData();
 		budgetSecuredPercent = new NumberData();
 		currencyType = new ChoiceData();
