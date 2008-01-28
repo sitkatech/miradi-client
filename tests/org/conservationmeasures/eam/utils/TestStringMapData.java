@@ -18,7 +18,7 @@ public class TestStringMapData  extends EAMTestCase
 
 	public void testBasics()
 	{
-		StringMapData list = new StringMapData();
+		StringMapData list = new StringMapData("tag");
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
 		String value1 = new String("RoleA");
@@ -36,7 +36,7 @@ public class TestStringMapData  extends EAMTestCase
 		StringMapData list = createSampleStringMapData();
 		EnhancedJsonObject json = list.toJson();
 		
-		StringMapData loaded = new StringMapData(json);
+		StringMapData loaded = new StringMapData("tag", json);
 		assertEquals("wrong size?", list.size(), loaded.size());
 		Iterator iterator = list.data.keySet().iterator();
 		while (iterator.hasNext())
@@ -66,12 +66,12 @@ public class TestStringMapData  extends EAMTestCase
 	public void testToString() throws Exception
 	{
 		StringMapData list = createSampleStringMapData();
-		assertEquals("Can't rount trip?", list, new StringMapData(list.toString()));
+		assertEquals("Can't rount trip?", list, new StringMapData("tag", list));
 	}
 
 	private StringMapData createSampleStringMapData()
 	{
-		StringMapData list = new StringMapData();
+		StringMapData list = new StringMapData("tag");
 		list.add("A", "RoleA");
 		list.add("B", "RoleB");
 		list.add("C", "RoleC");
@@ -85,7 +85,7 @@ public class TestStringMapData  extends EAMTestCase
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		StringMapData different = new StringMapData();
+		StringMapData different = new StringMapData("tag");
 		different.add("A", list.get("A"));
 		different.add("C", list.get("C"));
 		different.add("B", list.get("B"));
@@ -103,7 +103,7 @@ public class TestStringMapData  extends EAMTestCase
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		StringMapData list = new StringMapData();
+		StringMapData list = new StringMapData("tag");
 		for(int i = 0; i < values.length; ++i)
 			list.add(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)

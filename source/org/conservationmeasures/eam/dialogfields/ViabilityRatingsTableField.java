@@ -51,7 +51,7 @@ public class ViabilityRatingsTableField extends ObjectDataInputField
 	{
 		super(projectToUse, objectType, objectId, tagToUse);
 		question = questionToUse;
-		model = new MyTableModel(question);
+		model = new MyTableModel(tagToUse, question);
 		table = new MyTable(model);
 		
 		UiScrollPane requiredToMakeTableHeaderVisible = new UiScrollPane(table);
@@ -125,11 +125,11 @@ public class ViabilityRatingsTableField extends ObjectDataInputField
 	
 	class MyTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 	{
-		public MyTableModel(ChoiceQuestion questionToUse)
+		public MyTableModel(String tagToUse, ChoiceQuestion questionToUse)
 		{
 			question = questionToUse;
 			trendQuestion = new TrendQuestion();
-			data = new StringMapData();
+			data = new StringMapData(tagToUse);
 		}
 		
 		public int getColumnCount()

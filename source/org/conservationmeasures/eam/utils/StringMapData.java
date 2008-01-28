@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.utils;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,19 +14,19 @@ import org.conservationmeasures.eam.objectdata.ObjectData;
 public class StringMapData extends ObjectData
 {
 
-	public StringMapData()
+	public StringMapData(String tagToUse)
 	{
-		this(new HashMap());
+		this(tagToUse, new HashMap());
 	}
 
-	public StringMapData(StringMapData copyFrom)
+	public StringMapData(String tagToUse, StringMapData copyFrom)
 	{
-		this(new HashMap(copyFrom.data));
+		this(tagToUse, new HashMap(copyFrom.data));
 	}
 
-	public StringMapData(EnhancedJsonObject json)
+	public StringMapData(String tagToUse, EnhancedJsonObject json)
 	{
-		this();
+		this(tagToUse);
 		copyFromJson(json);
 	}
 
@@ -45,13 +44,9 @@ public class StringMapData extends ObjectData
 		}
 	}
 
-	public StringMapData(String listAsJsonString) throws ParseException
+	private StringMapData(String tagToUse, Map dataToUse)
 	{
-		this(new EnhancedJsonObject(listAsJsonString));
-	}
-
-	private StringMapData(Map dataToUse)
-	{
+		super(tagToUse);
 		data = new HashMap(dataToUse);
 	}
 

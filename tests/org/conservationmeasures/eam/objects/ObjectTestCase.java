@@ -186,7 +186,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof StringMapData)
 		{
-			StringMapData list = new StringMapData();
+			StringMapData list = new StringMapData("tag");
 			list.add("A","RolaA");
 			return list.toString();
 		}
