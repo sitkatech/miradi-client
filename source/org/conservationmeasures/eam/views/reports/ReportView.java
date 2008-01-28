@@ -7,14 +7,12 @@ package org.conservationmeasures.eam.views.reports;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.martus.swing.UiScrollPane;
 
 public class ReportView extends TabbedView
 {
@@ -41,9 +39,9 @@ public class ReportView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		UiScrollPane labelPanel = new UiScrollPane(new JLabel("not implemented yet"));
+		ReportSplitPane reportSplitPane = new ReportSplitPane();
 
-		addTab(EAM.text("Reports"),labelPanel);
+		addTab(EAM.text("Reports"), reportSplitPane);
 	}
 
 	public void deleteTabs() throws Exception
