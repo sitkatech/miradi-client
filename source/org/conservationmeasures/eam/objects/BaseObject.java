@@ -1125,7 +1125,7 @@ abstract public class BaseObject
 
 		public PseudoStringData(String tag)
 		{
-			psuedoTag = tag;
+			super(tag);
 		}
 
 		public boolean isPseudoField()
@@ -1141,7 +1141,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return getPseudoData(psuedoTag);
+			return getPseudoData(getTag());
 		}
 		
 		public boolean equals(Object rawOther)
@@ -1157,8 +1157,6 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
-
-		String psuedoTag;
 	}
 
 	public class PseudoORefListData extends ORefListData
