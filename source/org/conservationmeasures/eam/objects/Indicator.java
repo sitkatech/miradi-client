@@ -324,7 +324,7 @@ public class Indicator extends BaseObject
 	void clear()
 	{
 		super.clear();
-		shortLabel = new StringData();
+		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY);
 		status = new ChoiceData(TAG_STATUS);
 		taskIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
@@ -332,15 +332,15 @@ public class Indicator extends BaseObject
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE);
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
-		detail = new StringData();
-		comment = new StringData();
-		viabilityRatingsComment = new StringData();
+		detail = new StringData(TAG_DETAIL);
+		comment = new StringData(TAG_COMMENT);
+		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENT);
 		
 		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING);
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
-		futureStatusSummary = new StringData();
-		futureStatusDetail = new StringData();
-		futureStatusComment = new StringData();
+		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
+		futureStatusDetail = new StringData(TAG_FUTURE_STATUS_DETAIL);
+		futureStatusComment = new StringData(TAG_FUTURE_STATUS_COMMENT);
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);

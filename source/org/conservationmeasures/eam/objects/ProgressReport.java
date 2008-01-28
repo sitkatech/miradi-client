@@ -105,7 +105,7 @@ public class ProgressReport extends BaseObject
 		
 		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS);
 		progressDate = new DateData(TAG_PROGRESS_DATE);
-		comments = new StringData();
+		comments = new StringData(TAG_COMMENTS);
 		
 		addField(TAG_PROGRESS_STATUS, progressStatus);
 		addField(TAG_PROGRESS_DATE, progressDate);
