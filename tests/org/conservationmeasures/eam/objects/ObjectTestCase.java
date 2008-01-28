@@ -204,7 +204,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if (field instanceof PointListData)
 		{
-			PointListData pointList = new PointListData();
+			PointListData pointList = new PointListData("tag");
 			pointList.add(new Point(-1, 55));
 			
 			return pointList.toString();

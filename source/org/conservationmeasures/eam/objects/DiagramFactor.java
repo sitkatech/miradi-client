@@ -333,7 +333,7 @@ public class DiagramFactor extends BaseObject
 		super.clear();
 
 		size = new DimensionData(TAG_SIZE);
-		location = new PointData();
+		location = new PointData(TAG_LOCATION);
 		underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
 		fontSize = new ChoiceData();
 		fontColor = new ChoiceData();

@@ -12,8 +12,9 @@ import org.conservationmeasures.eam.utils.PointList;
 
 public class PointListData extends ObjectData
 {
-	public PointListData()
+	public PointListData(String tagToUse)
 	{
+		super(tagToUse);
 		points = new PointList();
 	}
 	
