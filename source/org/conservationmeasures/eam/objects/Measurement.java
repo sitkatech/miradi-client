@@ -103,10 +103,10 @@ public class Measurement extends BaseObject
 		trend= new ChoiceData(TAG_TREND);
 		status= new ChoiceData(TAG_STATUS);
 		date= new DateData(TAG_DATE);
-		summary= new StringData();
-		detail= new StringData();
+		summary= new StringData(TAG_SUMMARY);
+		detail= new StringData(TAG_DETAIL);
 		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE);
-		comment = new StringData();
+		comment = new StringData(TAG_COMMENT);
 
 		addField(TAG_TREND, trend);
 		addField(TAG_STATUS, status);

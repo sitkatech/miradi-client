@@ -189,10 +189,10 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		super.clear();
 		indicatorIds = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		description = new StringData();
-		details = new StringData();
-		keyEcologicalAttributeType = new StringData();
-		shortLabel = new StringData();
+		description = new StringData(TAG_DESCRIPTION);
+		details = new StringData(TAG_DETAILS);
+		keyEcologicalAttributeType = new StringData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		shortLabel = new StringData(TAG_SHORT_LABEL);
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
 		keyEcologicalAttributeTypeValue = new PseudoQuestionData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
 		viabilityStatusValue = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_STATUS, new StatusQuestion());
