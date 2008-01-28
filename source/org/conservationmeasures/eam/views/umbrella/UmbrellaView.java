@@ -120,6 +120,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
+import org.conservationmeasures.eam.actions.views.ActionViewReport;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewTargetViability;
@@ -150,6 +151,7 @@ import org.conservationmeasures.eam.views.umbrella.doers.CreateMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.DeleteMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.EditMethodsDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
+import org.conservationmeasures.eam.views.umbrella.doers.SwitchToReportViewDoer;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
@@ -298,6 +300,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewImages.class, new SwitchToLibraryViewDoer());
 		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
+		addDoerToMap(ActionViewReport.class, new SwitchToReportViewDoer());
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());

@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.summary.SummaryView;
 
 public class SwitchToSummaryViewDoer extends ViewSwitchDoer
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return SummaryView.getViewName();
 	}

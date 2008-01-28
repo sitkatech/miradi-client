@@ -58,6 +58,7 @@ import org.conservationmeasures.eam.views.library.LibraryView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.planning.PlanningView;
+import org.conservationmeasures.eam.views.reports.ReportView;
 import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
@@ -128,6 +129,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 //		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
+		reportView = new ReportView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -144,6 +146,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 //		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		viewHolder.add(planningView, planningView.cardName());
+		viewHolder.add(reportView, reportView.cardName());
 
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
@@ -663,6 +666,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setCurrentView(targetViabilityView);
 		else if(viewName.equals(planningView.cardName()))
 			setCurrentView(planningView);
+		else if (viewName.equals(reportView.cardName()))
+			setCurrentView(reportView);
+		
 		else
 		{
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
@@ -893,6 +899,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 //	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
+	private ReportView reportView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;

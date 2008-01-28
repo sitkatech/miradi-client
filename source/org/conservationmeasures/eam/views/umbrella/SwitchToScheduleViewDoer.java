@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.schedule.ScheduleView;
 
 public class SwitchToScheduleViewDoer extends ViewSwitchDoer 
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return ScheduleView.getViewName();
 	}

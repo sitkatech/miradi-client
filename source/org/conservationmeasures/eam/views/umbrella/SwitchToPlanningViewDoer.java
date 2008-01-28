@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.planning.PlanningView;
 
 public class SwitchToPlanningViewDoer extends ViewSwitchDoer
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return PlanningView.getViewName();
 	}
