@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 {
-	public ProgressReportStatusQuestion(String tagToUse)
+	public ProgressReportStatusQuestion()
 	{
-		super(tagToUse, getChoiceItems());
+		super(getChoiceItems());
 	}
 
 	static ChoiceItem[] getChoiceItems()

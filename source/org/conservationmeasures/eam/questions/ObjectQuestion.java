@@ -15,7 +15,7 @@ abstract public class ObjectQuestion extends StaticChoiceQuestion
 {
 	public ObjectQuestion(Project project, BaseObject[] objects)
 	{
-		super("", createChoiceItems(project, objects));
+		super(createChoiceItems(project, objects));
 	}
 
 	private static ChoiceItem[] createChoiceItems(Project project, BaseObject[] objects)

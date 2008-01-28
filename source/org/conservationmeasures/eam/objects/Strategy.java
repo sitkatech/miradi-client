@@ -192,9 +192,9 @@ public class Strategy extends Factor
 	
 	public ChoiceItem getStrategyRating()
 	{
-		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion("");
-		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
-		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");
+		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion();
+		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion();
+		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion();
 		
 		ChoiceItem impact = impactQuestion.findChoiceByCode(impactRating.get());
 		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
@@ -303,10 +303,10 @@ public class Strategy extends Factor
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new StrategyClassificationQuestion());
-		impactRatingLabel = new PseudoQuestionData(TAG_IMPACT_RATING, new StrategyImpactQuestion(TAG_IMPACT_RATING));
-		feasibilityRatingLabel = new PseudoQuestionData(TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
-		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE));
+		impactRatingLabel = new PseudoQuestionData(TAG_IMPACT_RATING, new StrategyImpactQuestion());
+		feasibilityRatingLabel = new PseudoQuestionData(TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
+		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
+		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);

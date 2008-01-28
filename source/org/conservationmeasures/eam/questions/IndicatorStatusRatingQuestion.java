@@ -10,9 +10,9 @@ import java.awt.Color;
 //FIXME remove after TAG_STATUS is removed
 public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 {
-	public IndicatorStatusRatingQuestion(String tag)
+	public IndicatorStatusRatingQuestion()
 	{
-		super(tag, getStatusChoices());
+		super(getStatusChoices());
 	}
 	
 	static ChoiceItem[] getStatusChoices()

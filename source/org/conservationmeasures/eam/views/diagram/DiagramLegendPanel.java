@@ -240,7 +240,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	public CodeList getLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
-		ChoiceItem[] choices = new DiagramLegendQuestion("").getChoices();
+		ChoiceItem[] choices = new DiagramLegendQuestion().getChoices();
 		for (int i=0; i<choices.length; ++i)
 		{
 			if (!isSelected(choices[i].getCode()))

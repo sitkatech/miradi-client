@@ -19,7 +19,7 @@ public class DiagramTextBoxCell extends FactorCell
 	{
 		super(cmFactor, diagramFactorToUse);
 		
-		diagramFactorBackgroundQuestion = new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR);
+		diagramFactorBackgroundQuestion = new DiagramFactorBackgroundQuestion();
 	}
 
 	public Color getColor()

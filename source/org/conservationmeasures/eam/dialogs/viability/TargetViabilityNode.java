@@ -60,7 +60,7 @@ public class TargetViabilityNode extends TreeTableNode
 		String rawValue = target.getData(tag);
 
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
-			return new ViabilityModeQuestion(tag).findChoiceByCode(rawValue);
+			return new ViabilityModeQuestion().findChoiceByCode(rawValue);
 		
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE))
 			return target.getPseudoTargetViabilityChoiceItem();

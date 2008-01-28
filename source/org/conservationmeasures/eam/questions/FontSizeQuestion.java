@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.questions;
 
 public class FontSizeQuestion extends StaticChoiceQuestion
 {
-	public FontSizeQuestion(String tag)
+	public FontSizeQuestion()
 	{
-		super(tag, getSizeChoices());
+		super(getSizeChoices());
 	}
 	
 	static ChoiceItem[] getSizeChoices()

@@ -26,7 +26,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
 
-		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion(ProjectResource.TAG_RESOURCE_TYPE);
+		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion();
 		addField(createRadioChoiceField(ProjectResource.getObjectType(), idToEdit, ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
 
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
@@ -57,7 +57,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
 
-		addField(createRatingChoiceField(ProjectResource.TAG_COST_UNIT, new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
+		addField(createRatingChoiceField(ProjectResource.TAG_COST_UNIT, new BudgetCostUnitQuestion()));
 		addField(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT));
 
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));

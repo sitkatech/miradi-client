@@ -28,13 +28,13 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	public static ChoiceQuestion createQuestionForTag(String columnTag)
 	{
 		if (columnTag.equals(Stress.TAG_SCOPE))
-			return new StressScopeChoiceQuestion(columnTag);
+			return new StressScopeChoiceQuestion();
 		
 		if (columnTag.equals(Stress.TAG_SEVERITY))
-			return new StressSeverityChoiceQuestion(columnTag);
+			return new StressSeverityChoiceQuestion();
 		
 		if (columnTag.equals(Stress.PSEUDO_STRESS_RATING))
-			return new StressRatingChoiceQuestion(columnTag);
+			return new StressRatingChoiceQuestion();
 		
 		return null;
 	}

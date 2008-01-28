@@ -34,13 +34,13 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		
 		
-		statusField = createRatingChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS, new StatusQuestion(Measurement.TAG_STATUS));
+		statusField = createRatingChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS, new StatusQuestion());
 		statusLabelField = new PanelFieldLabel(statusField.getObjectType(), statusField.getTag());
-		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_TREND, new TrendQuestion(Measurement.TAG_TREND));
+		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_TREND, new TrendQuestion());
 		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
 		addFieldsOnOneLine(EAM.text("Current Status"), new Object[]{statusField, statusLabelField, trendField, trendLabelField});
 
-		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
+		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
 
 		updateFieldsFromProject();

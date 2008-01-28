@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.main.EAM;
 public class BudgetCostModeQuestion extends StaticChoiceQuestion
 {
 
-	public BudgetCostModeQuestion(String tagToUse)
+	public BudgetCostModeQuestion()
 	{
-		super(tagToUse, getChoiceItems());
+		super(getChoiceItems());
 	}
 
 	public static ChoiceItem[] getChoiceItems()

@@ -80,9 +80,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
-			addField(createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-			addField(createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-			addField(createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			addField(createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion()));
+			addField(createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion()));
+			addField(createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion()));
 			 
 			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 			ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
@@ -91,15 +91,15 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 
-		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE));
-		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR));
-		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE));
+		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
 		
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			targetRatingField = createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion(Target.TAG_TARGET_STATUS));
+			targetRatingField = createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion());
 			ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
 			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
 			

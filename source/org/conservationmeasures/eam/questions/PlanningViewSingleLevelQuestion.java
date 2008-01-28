@@ -20,12 +20,7 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewSingleLevelQuestion()
 	{
-		super(getEmptyTag(), getSingleLevelChoices());
-	}
-
-	private static String getEmptyTag()
-	{
-		return "";
+		super(getSingleLevelChoices());
 	}
 
 	private static ChoiceItem[] getSingleLevelChoices()

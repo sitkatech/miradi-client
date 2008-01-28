@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class RatingSourceQuestion extends StaticChoiceQuestion
 {
-	public RatingSourceQuestion(String tag)
+	public RatingSourceQuestion()
 	{
-		super(tag, getStatusChoices());
+		super(getStatusChoices());
 	}
 	
 	static ChoiceItem[] getStatusChoices()

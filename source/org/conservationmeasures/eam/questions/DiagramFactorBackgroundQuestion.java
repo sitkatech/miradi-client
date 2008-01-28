@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.diagram.DiagramConstants;
 
 public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 {
-	public DiagramFactorBackgroundQuestion(String tag)
+	public DiagramFactorBackgroundQuestion()
 	{
-		super(tag, getColorChoices());
+		super(getColorChoices());
 	}
 	
 	static ChoiceItem[] getColorChoices()

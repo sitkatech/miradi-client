@@ -29,11 +29,11 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 		
 		addField(createMultilineField(Stress.TAG_DETAIL));
 		
-		ObjectDataInputField scopeField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SCOPE, new StressScopeChoiceQuestion(Stress.TAG_SCOPE));
-		ObjectDataInputField severityField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion(Stress.TAG_SEVERITY));		
+		ObjectDataInputField scopeField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
+		ObjectDataInputField severityField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());		
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
-		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion(Stress.PSEUDO_STRESS_RATING)));
+		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
 		addField(createMultilineField(Stress.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}

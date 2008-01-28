@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class StressIrreversibilityQuestion extends StaticChoiceQuestion
 {
-	public StressIrreversibilityQuestion(String tagToUse)
+	public StressIrreversibilityQuestion()
 	{
-		super(tagToUse, getChoiceItems());
+		super(getChoiceItems());
 	}
 
 	static ChoiceItem[] getChoiceItems()

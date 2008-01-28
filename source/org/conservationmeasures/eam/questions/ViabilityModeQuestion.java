@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.questions;
 
 public class ViabilityModeQuestion extends StaticChoiceQuestion
 {
-	public ViabilityModeQuestion(String tagToUse)
+	public ViabilityModeQuestion()
 	{
-		super(tagToUse, getViabilityModeChoices());
+		super(getViabilityModeChoices());
 	}
 
 	static ChoiceItem[] getViabilityModeChoices()

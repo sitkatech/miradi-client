@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.questions;
 
 public class FontFamiliyQuestion extends StaticChoiceQuestion
 {
-	public FontFamiliyQuestion(String tag)
+	public FontFamiliyQuestion()
 	{
-		super(tag, getFamilyChoices());
+		super(getFamilyChoices());
 	}
 	
 	static ChoiceItem[] getFamilyChoices()

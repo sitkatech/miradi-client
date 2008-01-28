@@ -10,9 +10,9 @@ import java.awt.Color;
 
 public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
 {
-	public StrategyFeasibilityQuestion(String tag)
+	public StrategyFeasibilityQuestion()
 	{
-		super(tag, getFeasibilityChoices());
+		super(getFeasibilityChoices());
 	}
 	
 	static ChoiceItem[] getFeasibilityChoices()

@@ -88,13 +88,13 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 				rawValue = baseObject.getData(columnTag);
 			
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
-				return new PriorityRatingQuestion(columnTag).findChoiceByCode(rawValue);
+				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return new ProgressReportStatusQuestion(columnTag).findChoiceByCode(rawValue);
+				return new ProgressReportStatusQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-				return new StrategyRatingSummaryQuestion(columnTag).findChoiceByCode(rawValue);
+				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 
 			return rawValue;
 		}

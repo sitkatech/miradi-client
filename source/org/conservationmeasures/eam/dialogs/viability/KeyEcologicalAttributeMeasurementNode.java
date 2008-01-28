@@ -77,7 +77,7 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 		{
 			String rawValue = getObject().getData(tag);
-			ChoiceItem choiceItem = new StatusConfidenceQuestion(tag).findChoiceByCode(rawValue);
+			ChoiceItem choiceItem = new StatusConfidenceQuestion().findChoiceByCode(rawValue);
 			return choiceItem;
 		}
 		

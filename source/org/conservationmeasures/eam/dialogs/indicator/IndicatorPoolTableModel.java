@@ -23,7 +23,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		if (getColumnTag(column).equals(Indicator.TAG_PRIORITY))
-			return new PriorityRatingQuestion(getColumnTag(column));
+			return new PriorityRatingQuestion();
 		
 		return null;
 	}

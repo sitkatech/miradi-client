@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 {
-	public BudgetCostUnitQuestion(String tagToUse)
+	public BudgetCostUnitQuestion()
 	{
-		super(tagToUse, getCostUnitChoices());
+		super(getCostUnitChoices());
 	}
 
 	static ChoiceItem[] getCostUnitChoices()

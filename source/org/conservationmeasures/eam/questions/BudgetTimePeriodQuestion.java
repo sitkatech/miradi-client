@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class BudgetTimePeriodQuestion extends StaticChoiceQuestion
 {
-	public BudgetTimePeriodQuestion(String tagToUse)
+	public BudgetTimePeriodQuestion()
 	{
-		super(tagToUse, getStaticChoices());
+		super(getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

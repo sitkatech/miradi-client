@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.questions;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.main.TestCaseWithProject;
-import org.conservationmeasures.eam.objects.DiagramFactor;
 
 public class TestChoiceQuestion extends TestCaseWithProject
 {
@@ -19,7 +18,7 @@ public class TestChoiceQuestion extends TestCaseWithProject
 	
 	public void testFindChoiceByLabel()
 	{
-		DiagramFactorFontColorQuestion fontColorQuestion = new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR);
+		DiagramFactorFontColorQuestion fontColorQuestion = new DiagramFactorFontColorQuestion();
 		assertEquals("wrong choice?", null, fontColorQuestion.findChoiceByLabel("invalidLabel"));
 		assertEquals(new ChoiceItem("#FFFFFF", "White", Color.WHITE), fontColorQuestion.findChoiceByLabel("White"));
 	}

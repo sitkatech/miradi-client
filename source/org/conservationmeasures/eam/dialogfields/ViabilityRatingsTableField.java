@@ -128,7 +128,7 @@ public class ViabilityRatingsTableField extends ObjectDataInputField
 		public MyTableModel(ChoiceQuestion questionToUse)
 		{
 			question = questionToUse;
-			trendQuestion = new TrendQuestion("");
+			trendQuestion = new TrendQuestion();
 			data = new StringMapData();
 		}
 		

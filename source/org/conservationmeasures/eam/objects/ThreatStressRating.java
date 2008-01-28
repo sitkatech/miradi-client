@@ -98,12 +98,12 @@ public class ThreatStressRating extends BaseObject
 	
 	public ChoiceItem getContribution()
 	{
-		return new StressContributionQuestion(TAG_CONTRIBUTION).findChoiceByCode(contribution.toString());
+		return new StressContributionQuestion().findChoiceByCode(contribution.toString());
 	}
 	 
 	public ChoiceItem getIrreversibility()
 	{
-		return new StressIrreversibilityQuestion(TAG_IRREVERSIBILITY).findChoiceByCode(irreversibility.toString());
+		return new StressIrreversibilityQuestion().findChoiceByCode(irreversibility.toString());
 	}
 	
 	public String getTypeName()
@@ -133,7 +133,7 @@ public class ThreatStressRating extends BaseObject
 		irreversibility = new ChoiceData();
 		stressRef = new ORefData();
 		isActive = new BooleanData();
-		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, new ThreatStressRatingChoiceQuestion(PSEUDO_TAG_THREAT_RATING));
+		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, new ThreatStressRatingChoiceQuestion());
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);

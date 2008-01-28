@@ -18,7 +18,7 @@ public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
-		ObjectDataInputField currency = createRatingChoiceField(ProjectMetadata.TAG_CURRENCY_TYPE, new CurrencyTypeQuestion(ProjectMetadata.TAG_CURRENCY_TYPE));
+		ObjectDataInputField currency = createRatingChoiceField(ProjectMetadata.TAG_CURRENCY_TYPE, new CurrencyTypeQuestion());
 		ObjectDataInputField symbol = createShortStringField(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 		
 		ObjectDataInputField[] fields = new ObjectDataInputField[] {currency, symbol, };

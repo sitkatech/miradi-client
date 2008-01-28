@@ -25,7 +25,7 @@ public class TestRatingQuestion extends EAMTestCase
 			new ChoiceItem("", "None", Color.BLACK),
 			new ChoiceItem("1", "Low", Color.GREEN),
 		};
-		ChoiceQuestion question = new StaticChoiceQuestion("Feasibility", choices);
+		ChoiceQuestion question = new StaticChoiceQuestion(choices);
 		assertEquals(2, question.getChoices().length);
 	}
 }

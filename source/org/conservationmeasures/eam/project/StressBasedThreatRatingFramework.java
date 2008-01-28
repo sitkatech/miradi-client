@@ -24,7 +24,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		super(projectToUse);
 		
 		stressBasedThreatFormula = new StressBasedThreatFormula();
-		threatRatingQuestion = new ThreatRatingQuestion(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
+		threatRatingQuestion = new ThreatRatingQuestion();
 	}
 	
 	public StressBasedThreatFormula getStressBasedThreatFormula()

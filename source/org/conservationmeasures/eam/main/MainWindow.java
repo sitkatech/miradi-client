@@ -721,7 +721,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public Font getUserDataPanelFont()
 	{
-		ChoiceItem fontFamily = new FontFamiliyQuestion("").findChoiceByCode(getDataPanelFontFamily());
+		ChoiceItem fontFamily = new FontFamiliyQuestion().findChoiceByCode(getDataPanelFontFamily());
 		return new Font(fontFamily.getLabel(),Font.PLAIN, getDataPanelFontSizeWithDefault());
 	}
 	

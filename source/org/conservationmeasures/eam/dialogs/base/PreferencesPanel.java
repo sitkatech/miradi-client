@@ -78,10 +78,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		int panelFontSize = mainWindow.getDataPanelFontSize();
 		String panelSizeAsString = Integer.toString(panelFontSize);
-		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(""), panelSizeAsString);
+		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(), panelSizeAsString);
 			
 		String panelFontFamily = mainWindow.getDataPanelFontFamily();
-		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(""), panelFontFamily);
+		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(), panelFontFamily);
 		
 		return htmlTab;
 	}

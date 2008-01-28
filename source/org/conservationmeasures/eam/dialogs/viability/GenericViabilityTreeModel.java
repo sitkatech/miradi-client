@@ -19,7 +19,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 	public GenericViabilityTreeModel(Object root)
 	{
 		super(root);
-		statusQuestion = new StatusQuestion("");
+		statusQuestion = new StatusQuestion();
 	}
 
 	public int getColumnCount()

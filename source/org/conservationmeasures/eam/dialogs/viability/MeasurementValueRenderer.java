@@ -30,7 +30,7 @@ class MeasurementValueRenderer extends TableCellRendererForObjects
 	public MeasurementValueRenderer(TargetViabilityTreeTable providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		question = new StatusQuestion(columnTag);
+		question = new StatusQuestion();
 	}
 	
 	public void setColumnTag(String columnTagToUse)
@@ -72,7 +72,7 @@ class MeasurementValueRenderer extends TableCellRendererForObjects
 	
 	public Icon getTrendIcon(String measurementTrendCode)
 	{
-		TrendQuestion trendQuestion = new TrendQuestion(Measurement.TAG_TREND);
+		TrendQuestion trendQuestion = new TrendQuestion();
 		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(measurementTrendCode);
 		
 		return findChoiceByCode.getIcon();

@@ -1058,7 +1058,7 @@ abstract public class BaseObject
 
 	public boolean isBudgetOverrideMode()
 	{
-		BudgetCostModeQuestion question = new BudgetCostModeQuestion(TAG_BUDGET_COST_MODE);
+		BudgetCostModeQuestion question = new BudgetCostModeQuestion();
 		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
 		
 		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);

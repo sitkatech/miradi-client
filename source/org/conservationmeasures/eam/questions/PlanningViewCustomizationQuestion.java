@@ -17,14 +17,9 @@ public class PlanningViewCustomizationQuestion extends StaticChoiceQuestion
 {
 	public PlanningViewCustomizationQuestion(Project projectToUse)
 	{
-		super(getEmptyTag(), getCustomizationChoices(projectToUse));
+		super(getCustomizationChoices(projectToUse));
 	}
 
-	private static String getEmptyTag()
-	{
-		return "";
-	}
-	
 	private static ChoiceItem[] getCustomizationChoices(Project project)
 	{
 		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());

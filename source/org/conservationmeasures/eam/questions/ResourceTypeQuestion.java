@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class ResourceTypeQuestion extends StaticChoiceQuestion
 {
-	public ResourceTypeQuestion(String tagToUse)
+	public ResourceTypeQuestion()
 	{
-		super(tagToUse, getStaticChoices());
+		super(getStaticChoices());
 	}
 
 	private static ChoiceItem[] getStaticChoices()

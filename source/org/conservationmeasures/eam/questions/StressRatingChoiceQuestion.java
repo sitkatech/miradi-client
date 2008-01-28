@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class StressRatingChoiceQuestion extends StaticChoiceQuestion
 {
-	public StressRatingChoiceQuestion(String tag)
+	public StressRatingChoiceQuestion()
 	{
-		super(tag, getStressRatingChoices());
+		super(getStressRatingChoices());
 	}
 	
 	public static ChoiceItem[] getStressRatingChoices()
