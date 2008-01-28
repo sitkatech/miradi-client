@@ -12,8 +12,9 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 public class DimensionData extends ObjectData
 {
 
-	public DimensionData()
+	public DimensionData(String tagToUse)
 	{
+		super(tagToUse);
 		dimension = new Dimension(0, 0);
 	}
 
