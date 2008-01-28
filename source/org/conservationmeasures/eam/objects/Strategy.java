@@ -297,8 +297,8 @@ public class Strategy extends Factor
 		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
 		taxonomyCode = new StringData();
-		impactRating = new ChoiceData();
-		feasibilityRating = new ChoiceData();
+		impactRating = new ChoiceData(TAG_IMPACT_RATING);
+		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);

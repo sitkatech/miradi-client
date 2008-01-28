@@ -471,7 +471,7 @@ abstract public class BaseObject
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new StringData();
-		budgetCostMode = new ChoiceData();
+		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE);
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();

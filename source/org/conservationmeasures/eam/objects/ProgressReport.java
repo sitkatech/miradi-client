@@ -103,7 +103,7 @@ public class ProgressReport extends BaseObject
 	{
 		super.clear();
 		
-		progressStatus = new ChoiceData();
+		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS);
 		progressDate = new DateData(TAG_PROGRESS_DATE);
 		comments = new StringData();
 		

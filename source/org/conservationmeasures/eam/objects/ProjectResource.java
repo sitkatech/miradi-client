@@ -143,7 +143,7 @@ public class ProjectResource extends BaseObject
 	{
 		super.clear();
 		
-		resourceType = new ChoiceData();
+		resourceType = new ChoiceData(TAG_RESOURCE_TYPE);
 		initials = new StringData();
 		givenName = new StringData();
 		surName = new StringData();
@@ -151,7 +151,7 @@ public class ProjectResource extends BaseObject
 		phoneNumber = new StringData();
 		email = new StringData();
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
-		costUnit = new ChoiceData();
+		costUnit = new ChoiceData(TAG_COST_UNIT);
 		organization = new StringData();
 		roleCodes = new CodeListData(TAG_ROLE_CODES);
 		comments = new StringData();

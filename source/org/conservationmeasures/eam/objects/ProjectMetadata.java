@@ -245,9 +245,9 @@ public class ProjectMetadata extends BaseObject
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
 		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
 		budgetSecuredPercent = new NumberData(TAG_BUDGET_SECURED_PERCENT);
-		currencyType = new ChoiceData();
+		currencyType = new ChoiceData(TAG_CURRENCY_TYPE);
 		currencySymbol = new StringData();
-		fiscalYearStart = new ChoiceData();
+		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START);
 		projectDescription = new StringData();
 		projectURL = new StringData();
 		projectArea = new StringData();
@@ -263,7 +263,7 @@ public class ProjectMetadata extends BaseObject
 		financialComments = new StringData();
 		workPlanStartDate = new DateData(TAG_WORKPLAN_START_DATE);
 		workPlanEndDate = new DateData(TAG_WORKPLAN_END_DATE);
-		workPlanTimeUnit = new ChoiceData();
+		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT);
 		planningComments = new StringData();
 		redListSpecies = new StringData();
 		otherNotableSpecies = new StringData();
@@ -322,10 +322,10 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();
 		legacyTncOperatingUnits = new StringData();
-		tncOperatingUnits = new ChoiceData();
-		tncTerrestrialEcoRegion = new ChoiceData();
-		tncMarineEcoRegion = new ChoiceData();
-		tncFreshwaterEcoRegion = new ChoiceData();
+		tncOperatingUnits = new ChoiceData(TAG_TNC_OPERATING_UNITS);
+		tncTerrestrialEcoRegion = new ChoiceData(TAG_TNC_TERRESTRIAL_ECO_REGION);
+		tncMarineEcoRegion = new ChoiceData(TAG_TNC_MARINE_ECO_REGION);
+		tncFreshwaterEcoRegion = new ChoiceData(TAG_TNC_FRESHWATER_ECO_REGION);
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -351,7 +351,7 @@ public class ProjectMetadata extends BaseObject
 		
 		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
 		diagramFontFamily = new StringData();
-		threatRatingMode = new ChoiceData();
+		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE);
 		diagramFontSizeValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion());
 		diagramFontFamilyValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion());
 		

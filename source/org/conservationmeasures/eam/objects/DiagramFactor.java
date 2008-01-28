@@ -335,11 +335,11 @@ public class DiagramFactor extends BaseObject
 		size = new DimensionData(TAG_SIZE);
 		location = new PointData(TAG_LOCATION);
 		underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
-		fontSize = new ChoiceData();
-		fontColor = new ChoiceData();
-		fontStyle = new ChoiceData();
+		fontSize = new ChoiceData(TAG_FONT_SIZE);
+		fontColor = new ChoiceData(TAG_FOREGROUND_COLOR);
+		fontStyle = new ChoiceData(TAG_FONT_STYLE);
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
-		backgroundColor = new ChoiceData();
+		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR);
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);

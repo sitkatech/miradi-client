@@ -325,18 +325,18 @@ public class Indicator extends BaseObject
 	{
 		super.clear();
 		shortLabel = new StringData();
-		priority = new ChoiceData();
-		status = new ChoiceData();
+		priority = new ChoiceData(TAG_PRIORITY);
+		status = new ChoiceData(TAG_STATUS);
 		taskIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
-		ratingSource= new ChoiceData();
+		ratingSource= new ChoiceData(TAG_RATING_SOURCE);
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		detail = new StringData();
 		comment = new StringData();
 		viabilityRatingsComment = new StringData();
 		
-		futureStatusRating = new ChoiceData();
+		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING);
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData();
 		futureStatusDetail = new StringData();
