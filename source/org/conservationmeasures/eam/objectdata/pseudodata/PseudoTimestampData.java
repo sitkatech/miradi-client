@@ -13,8 +13,8 @@ public class PseudoTimestampData extends ObjectData
 {
 	public PseudoTimestampData(BaseObject owningObject, String tag)
 	{
+		super(tag);
 		owner = owningObject;
-		pseudoTag = tag;
 	}
 
 	public boolean isPseudoField()
@@ -30,7 +30,7 @@ public class PseudoTimestampData extends ObjectData
 
 	public String get()
 	{
-		return owner.getPseudoData(pseudoTag);
+		return owner.getPseudoData(getTag());
 	}
 	
 	public boolean equals(Object rawOther)
@@ -48,6 +48,4 @@ public class PseudoTimestampData extends ObjectData
 	}
 
 	private BaseObject owner;
-	private String pseudoTag;
-
 }
