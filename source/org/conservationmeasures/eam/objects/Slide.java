@@ -101,7 +101,7 @@ public class Slide extends BaseObject
 		super.clear();
 		diagramObjectRef = new ORefData();
 		diagramObjectLabel = new PseudoStringData(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL);
-		legendSettings = new CodeListData();
+		legendSettings = new CodeListData(TAG_DIAGRAM_LEGEND_SETTINGS);
 		
 		addField(TAG_DIAGRAM_OBJECT_REF, diagramObjectRef);
 		addField(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL, diagramObjectLabel);

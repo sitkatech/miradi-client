@@ -138,7 +138,7 @@ public class ViewData extends BaseObject
 		expandedNodesList = new ORefListData();
 		currentResultsChainRef = new ORefData();
 		currentConceptualModelRef = new ORefData();
-		diagramHiddenTypes = new CodeListData();
+		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES);
 		planningStyleChoice = new StringData();
 		planningSingleLevelChoice = new StringData();
 		planningCustomChoiceRef = new ORefData();

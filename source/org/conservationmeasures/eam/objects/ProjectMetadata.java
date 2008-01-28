@@ -253,7 +253,7 @@ public class ProjectMetadata extends BaseObject
 		projectArea = new StringData();
 		projectAreaNotes = new StringData();
 		scopeComments = new StringData();
-		countries = new CodeListData();
+		countries = new CodeListData(TAG_COUNTRIES);
 		statesAndProvinces = new StringData();
 		municipalities = new StringData();
 		legislativeDistricts = new StringData();

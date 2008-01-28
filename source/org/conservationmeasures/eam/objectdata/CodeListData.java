@@ -12,8 +12,9 @@ import org.martus.util.UnicodeWriter;
 
 public class CodeListData extends ObjectData
 {
-	public CodeListData()
+	public CodeListData(String tagToUse)
 	{
+		super(tagToUse);
 		codes = new CodeList();
 	}
 	
