@@ -78,20 +78,20 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		int panelFontSize = mainWindow.getDataPanelFontSize();
 		String panelSizeAsString = Integer.toString(panelFontSize);
-		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab,new FontSizeQuestion(""), panelSizeAsString);
+		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), new FontSizeQuestion(""), panelSizeAsString);
 			
 		String panelFontFamily = mainWindow.getDataPanelFontFamily();
-		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab,new FontFamiliyQuestion(""), panelFontFamily);
+		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(""), panelFontFamily);
 		
 		return htmlTab;
 	}
 
-	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, ChoiceQuestion question, String sizeAsString)
+	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, String label, ChoiceQuestion question, String sizeAsString)
 	{
 		UiComboBox combo = new PanelComboBox(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
-		htmlTab.add(new PanelTitleLabel(question.getTag() + question.getLabel()));
+		htmlTab.add(new PanelTitleLabel(question.getTag() + label));
 		htmlTab.add(combo);
 		return combo;
 	}

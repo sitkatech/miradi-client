@@ -9,6 +9,6 @@ public abstract class DynamicChoiceQuestion extends ChoiceQuestion
 {
 	public DynamicChoiceQuestion(String tagToUse, String labelToUse)
 	{
-		super(tagToUse, labelToUse);
+		super(tagToUse);
 	}
 }

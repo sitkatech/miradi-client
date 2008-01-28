@@ -27,7 +27,6 @@ public class TestRatingQuestion extends EAMTestCase
 		};
 		ChoiceQuestion question = new StaticChoiceQuestion("Feasibility", "Feasibility and Cost", choices);
 		assertEquals("Feasibility", question.getTag());
-		assertEquals("Feasibility and Cost", question.getLabel());
 		assertEquals(2, question.getChoices().length);
 	}
 }
