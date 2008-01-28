@@ -80,8 +80,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion(Strategy.TAG_TAXONOMY_CODE)));
-			addField(createRatingChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-			addField(createRatingChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+			addField(createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
+			addField(createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 			 
 			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
@@ -99,7 +99,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			targetRatingField = createRatingChoiceField(new StatusQuestion(Target.TAG_TARGET_STATUS));
+			targetRatingField = createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion(Target.TAG_TARGET_STATUS));
 			ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
 			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
 			
