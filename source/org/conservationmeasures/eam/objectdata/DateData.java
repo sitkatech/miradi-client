@@ -16,19 +16,6 @@ public class DateData extends ObjectData
 		date = null;
 	}
 
-	public DateData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logWarning("DateData ignoring invalid: " + valueToUse);
-		}
-	}
-
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
