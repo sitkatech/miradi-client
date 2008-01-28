@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 {
-	public ThreatRatingModeChoiceQuestion(String tagToUse)
+	public ThreatRatingModeChoiceQuestion()
 	{
-		super(tagToUse, getChoiceItems());
+		super(getChoiceItems());
 	}
 
 	public static ChoiceItem[] getChoiceItems()

@@ -18,7 +18,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, nodeRef, annotationTag, ProgressReport.getObjectType(), COLUMN_TAGS);
 		
-		progressReportQuestion = new ProgressReportStatusQuestion(ProgressReport.TAG_PROGRESS_STATUS);
+		progressReportQuestion = new ProgressReportStatusQuestion();
 	}
 
 	public boolean isChoiceItemColumn(int column)

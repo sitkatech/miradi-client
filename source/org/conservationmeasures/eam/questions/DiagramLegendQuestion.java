@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 
 public class DiagramLegendQuestion extends StaticChoiceQuestion
 {
-	public DiagramLegendQuestion(String tagToUse)
+	public DiagramLegendQuestion()
 	{
-		super(tagToUse, getLegendChoices());
+		super(getLegendChoices());
 	}
 
 	static ChoiceItem[] getLegendChoices()

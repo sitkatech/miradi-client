@@ -10,9 +10,9 @@ import java.awt.Color;
 
 public class StrategyDurationQuestion extends StaticChoiceQuestion
 {
-	public StrategyDurationQuestion(String tag)
+	public StrategyDurationQuestion()
 	{
-		super(tag, getDurationChoices());
+		super(getDurationChoices());
 	}
 	
 	static ChoiceItem[] getDurationChoices()

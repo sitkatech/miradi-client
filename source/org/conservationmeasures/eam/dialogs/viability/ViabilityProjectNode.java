@@ -23,7 +23,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	public ViabilityProjectNode(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
-		statusQuestion = new StatusQuestion(Target.TAG_TARGET_STATUS);
+		statusQuestion = new StatusQuestion();
 		rebuild();
 	}
 	

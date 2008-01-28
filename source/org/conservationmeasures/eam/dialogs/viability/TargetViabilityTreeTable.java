@@ -102,7 +102,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		public ColumnHeaderRenderer()
 		{
-			statusQuestion = new StatusQuestion("");
+			statusQuestion = new StatusQuestion();
 		}
 
 		 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 

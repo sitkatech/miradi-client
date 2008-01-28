@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class DirectThreatQuestion extends StaticChoiceQuestion
 {
-	public DirectThreatQuestion(Project project, String tagToUse)
+	public DirectThreatQuestion(Project project)
 	{
-		super(tagToUse, getDirectThreatChoices(project));
+		super(getDirectThreatChoices(project));
 	}
 
 	static ChoiceItem[] getDirectThreatChoices(Project project)

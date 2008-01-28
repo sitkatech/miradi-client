@@ -30,12 +30,12 @@ public class TestStrategyRatingSummary extends EAMTestCase
 
 	private void verifyGetResult(String resultCode, String impactCode, String feasibilityCode)
 	{
-		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("impact");
-		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("feasibility");
+		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion();
+		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion();
 		ChoiceItem impact = impactQuestion.findChoiceByCode(impactCode);
 		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityCode);
 		
-		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion("summary");
+		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion();
 		ChoiceItem result = summary.getResult(impact, feasibility);
 		assertEquals("wrong result?", resultCode, result.getCode());
 	}

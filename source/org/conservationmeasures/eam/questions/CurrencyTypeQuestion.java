@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class CurrencyTypeQuestion extends StaticChoiceQuestion
 {
-	public CurrencyTypeQuestion(String tagToUse)
+	public CurrencyTypeQuestion()
 	{
-		super(tagToUse, getCurrencyChoices());
+		super(getCurrencyChoices());
 	}
 
 	static ChoiceItem[] getCurrencyChoices()

@@ -65,11 +65,11 @@ public class Stress extends BaseObject
 	
 	public int calculateStressRating()
 	{
-		ChoiceItem scopeChoice = new StressScopeChoiceQuestion(Stress.TAG_SCOPE).findChoiceByCode(scope.get());
+		ChoiceItem scopeChoice = new StressScopeChoiceQuestion().findChoiceByCode(scope.get());
 		if (scopeChoice.getCode().length() == 0)
 			return 0;
 
-		ChoiceItem severityChoice = new StressSeverityChoiceQuestion(TAG_SEVERITY).findChoiceByCode(severity.get());
+		ChoiceItem severityChoice = new StressSeverityChoiceQuestion().findChoiceByCode(severity.get());
 		if (severityChoice.getCode().length() == 0)
 			return 0;
 		
@@ -108,7 +108,7 @@ public class Stress extends BaseObject
 		comments = new StringData();
 		scope = new ChoiceData();
 		severity = new ChoiceData();
-		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion(PSEUDO_STRESS_RATING));
+		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, detail);

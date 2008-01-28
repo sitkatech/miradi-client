@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class StatusConfidenceQuestion extends StaticChoiceQuestion
 {
-	public StatusConfidenceQuestion(String tag)
+	public StatusConfidenceQuestion()
 	{
-		super(tag, getStatusConfidences());
+		super(getStatusConfidences());
 	}
 	
 	static ChoiceItem[] getStatusConfidences()

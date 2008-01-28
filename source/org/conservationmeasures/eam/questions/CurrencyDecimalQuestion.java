@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class CurrencyDecimalQuestion extends StaticChoiceQuestion
 {
-	public CurrencyDecimalQuestion(String tagToUse)
+	public CurrencyDecimalQuestion()
 	{
-		super(tagToUse, getStaticChoices());
+		super(getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

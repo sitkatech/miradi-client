@@ -89,7 +89,7 @@ public class Indicator extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
-			return new StatusQuestion("").findChoiceByCode(indicatorThreshold.get()).getLabel();
+			return new StatusQuestion().findChoiceByCode(indicatorThreshold.get()).getLabel();
 			
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getRelatedLabelsAsMultiLine(new TargetSet());
@@ -348,13 +348,13 @@ public class Indicator extends BaseObject
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
 		indicatorThresholdLabel = new PseudoStringData(TAG_INDICATOR_THRESHOLD);
-		priorityLabel = new PseudoQuestionData(TAG_PRIORITY, new PriorityRatingQuestion(TAG_PRIORITY));
-		statusLabel = new PseudoQuestionData(TAG_STATUS, new IndicatorStatusRatingQuestion(TAG_STATUS));
-		ratingSourceLabel = new PseudoQuestionData(TAG_RATING_SOURCE, new RatingSourceQuestion(TAG_RATING_SOURCE));
-		latestMeasurement = new PseudoQuestionData(TAG_INDICATOR_THRESHOLD, new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE));
+		priorityLabel = new PseudoQuestionData(TAG_PRIORITY, new PriorityRatingQuestion());
+		statusLabel = new PseudoQuestionData(TAG_STATUS, new IndicatorStatusRatingQuestion());
+		ratingSourceLabel = new PseudoQuestionData(TAG_RATING_SOURCE, new RatingSourceQuestion());
+		latestMeasurement = new PseudoQuestionData(TAG_INDICATOR_THRESHOLD, new StatusQuestion());
+		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		
-		futureStatusRatingLabel = new PseudoQuestionData(TAG_FUTURE_STATUS_RATING, new StatusQuestion(TAG_FUTURE_STATUS_RATING));
+		futureStatusRatingLabel = new PseudoQuestionData(TAG_FUTURE_STATUS_RATING, new StatusQuestion());
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);

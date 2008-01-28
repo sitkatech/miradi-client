@@ -153,12 +153,12 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if (factor.isTarget())
 		{
 			grid.addField(createTargetStatusField(factor));
-			grid.addField(grid.createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion(Target.TAG_VIABILITY_MODE)));
+			grid.addField(grid.createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion()));
 		}
 		
 		if (factor.isThreatReductionResult())
 		{
-			grid.addField(grid.createReadOnlyChoiceField(ObjectType.THREAT_REDUCTION_RESULT, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, new DirectThreatQuestion(mainWindow.getProject(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF)));
+			grid.addField(grid.createReadOnlyChoiceField(ObjectType.THREAT_REDUCTION_RESULT, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, new DirectThreatQuestion(mainWindow.getProject())));
 		}
 		
 		grid.setObjectRef(factorORef);
@@ -196,7 +196,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion(Target.PSEUDO_TAG_TARGET_VIABILITY));
+		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
 		return field;
 	}
 	

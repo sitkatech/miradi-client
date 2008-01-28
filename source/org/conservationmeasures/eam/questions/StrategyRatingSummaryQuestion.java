@@ -10,9 +10,9 @@ import java.awt.Color;
 
 public class StrategyRatingSummaryQuestion extends StaticChoiceQuestion
 {
-	public StrategyRatingSummaryQuestion(String tag)
+	public StrategyRatingSummaryQuestion()
 	{
-		super(tag, getStrategyRatingChoices());
+		super(getStrategyRatingChoices());
 	}
 	
 	static ChoiceItem[] getStrategyRatingChoices()

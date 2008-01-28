@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class FiscalYearStartQuestion extends StaticChoiceQuestion
 {
-	public FiscalYearStartQuestion(String tagToUse)
+	public FiscalYearStartQuestion()
 	{
-		super(tagToUse, getStaticChoices());
+		super(getStaticChoices());
 	}
 
 	static ChoiceItem[] getStaticChoices()

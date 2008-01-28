@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 {
-	public DiagramFactorFontStyleQuestion(String tag)
+	public DiagramFactorFontStyleQuestion()
 	{
-		super(tag, getStyleChoices());
+		super(getStyleChoices());
 	}
 	
 	static ChoiceItem[] getStyleChoices()

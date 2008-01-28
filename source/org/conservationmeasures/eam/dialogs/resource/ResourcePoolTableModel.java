@@ -36,8 +36,7 @@ public class ResourcePoolTableModel extends ObjectPoolTableModel
 	{
 		if(isResourceTypeColumn(column))
 		{
-			String fieldTag = COLUMN_TAGS[column];
-			return new ResourceTypeQuestion(fieldTag);
+			return new ResourceTypeQuestion();
 		}
 		return super.getColumnQuestion(column);
 	}

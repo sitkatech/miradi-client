@@ -78,7 +78,7 @@ public class ProgressReport extends BaseObject
 	
 	public ChoiceItem getProgressStatusChoice()
 	{
-		return new ProgressReportStatusQuestion(TAG_PROGRESS_STATUS).findChoiceByCode(progressStatus.get());
+		return new ProgressReportStatusQuestion().findChoiceByCode(progressStatus.get());
 	}
 	
 	public static boolean is(ORef ref)

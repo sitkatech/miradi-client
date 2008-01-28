@@ -202,22 +202,22 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public StressContributionQuestion createContributionQuestion(int column)
 	{
-		return new StressContributionQuestion(getColumnTag(column));
+		return new StressContributionQuestion();
 	}
 	
 	public StressIrreversibilityQuestion createIrreversibilityQuestion(int column)
 	{
-		return new StressIrreversibilityQuestion(getColumnTag(column));
+		return new StressIrreversibilityQuestion();
 	}
 	
 	public StressRatingChoiceQuestion createStressRatingQuestion(int column)
 	{
-		return new StressRatingChoiceQuestion(getColumnTag(column));
+		return new StressRatingChoiceQuestion();
 	}
 	
 	public ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
 	{
-		return new ThreatStressRatingChoiceQuestion(getColumnTag(column));
+		return new ThreatStressRatingChoiceQuestion();
 	}
 	
 	public static String[] getColumnTags()

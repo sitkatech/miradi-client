@@ -47,7 +47,7 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 	
 	protected ChoiceItem convertToChoiceItem(String fieldTag, String valueToConvert)
 	{
-		ChoiceItem foundChoiceItem = new ThreatRatingQuestion(fieldTag).findChoiceByCode(valueToConvert);
+		ChoiceItem foundChoiceItem = new ThreatRatingQuestion().findChoiceByCode(valueToConvert);
 		if (foundChoiceItem == null)
 			return emptyChoiceItem;
 		

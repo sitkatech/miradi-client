@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 
 public class TrendQuestion extends StaticChoiceQuestion
 {
-	public TrendQuestion(String tagToUse)
+	public TrendQuestion()
 	{
-		super(tagToUse, getTrends());
+		super(getTrends());
 	}
 
 	static ChoiceItem[] getTrends()

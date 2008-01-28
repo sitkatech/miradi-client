@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.questions;
 
 public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 {
-	public KeyEcologicalAttributeTypeQuestion(String tag)
+	public KeyEcologicalAttributeTypeQuestion()
 	{
-		super(tag, getKEATypeChoices());
+		super(getKEATypeChoices());
 	}
 	
 	static ChoiceItem[] getKEATypeChoices()

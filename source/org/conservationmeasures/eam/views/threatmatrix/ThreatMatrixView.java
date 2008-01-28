@@ -225,7 +225,7 @@ public class ThreatMatrixView extends CardedView
 		
 		CommandSetObjectData command = (CommandSetObjectData) event.getCommand();
 		String value = command.getDataValue();
-		ChoiceItem choice = new ThreatRatingModeChoiceQuestion(ProjectMetadata.TAG_THREAT_RATING_MODE).findChoiceByCode(value);
+		ChoiceItem choice = new ThreatRatingModeChoiceQuestion().findChoiceByCode(value);
 		showCurrentCard(choice.getCode());
 		getMainWindow().updateToolBar();
 	}
