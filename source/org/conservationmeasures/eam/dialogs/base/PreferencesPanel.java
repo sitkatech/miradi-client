@@ -91,7 +91,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		UiComboBox combo = new PanelComboBox(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
-		htmlTab.add(new PanelTitleLabel(question.getTag() + label));
+		htmlTab.add(new PanelTitleLabel(label));
 		htmlTab.add(combo);
 		return combo;
 	}
