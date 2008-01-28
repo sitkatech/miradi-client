@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class WwfEcoRegionsQuestion extends TwoLevelQuestion
 {
-	public WwfEcoRegionsQuestion(String tagToUse)
+	public WwfEcoRegionsQuestion()
 	{
-		super(tagToUse, new EcoRegionsFileLoader(TwoLevelFileLoader.WWF_ECO_REGIONS_FILE));
+		super(new EcoRegionsFileLoader(TwoLevelFileLoader.WWF_ECO_REGIONS_FILE));
 	}
 }

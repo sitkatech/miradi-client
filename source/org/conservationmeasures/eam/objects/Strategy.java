@@ -302,7 +302,7 @@ public class Strategy extends Factor
 		progressReportRefs = new ORefListData();
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
-		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new StrategyClassificationQuestion(TAG_TAXONOMY_CODE));
+		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new StrategyClassificationQuestion());
 		impactRatingLabel = new PseudoQuestionData(TAG_IMPACT_RATING, new StrategyImpactQuestion(TAG_IMPACT_RATING));
 		feasibilityRatingLabel = new PseudoQuestionData(TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(TAG_FEASIBILITY_RATING));
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion(PSEUDO_TAG_RATING_SUMMARY));

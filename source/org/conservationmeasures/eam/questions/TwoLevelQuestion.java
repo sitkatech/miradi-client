@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 
 public class TwoLevelQuestion extends DynamicChoiceQuestion
 {
-	public TwoLevelQuestion(String tagToUse, TwoLevelFileLoader twoLevelFileLoaderToUse)
+	public TwoLevelQuestion(TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{
-		super(tagToUse);
+		super();
 		
 		twoLevelFileLoader = twoLevelFileLoaderToUse;
 		choices = loadChoices();
