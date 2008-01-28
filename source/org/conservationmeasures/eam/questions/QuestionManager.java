@@ -33,7 +33,7 @@ public class QuestionManager
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportStatusQuestion());
 		addQuestion(new RatingSourceQuestion());
-		addQuestion(new ResourceRoleQuestion(""));
+		addQuestion(new ResourceRoleQuestion());
 		addQuestion(new ResourceTypeQuestion());
 		addQuestion(new StatusConfidenceQuestion());
 		addQuestion(new StatusQuestion());
@@ -49,7 +49,6 @@ public class QuestionManager
 		addQuestion(new StressRatingChoiceQuestion());
 		addQuestion(new StressScopeChoiceQuestion());
 		addQuestion(new StressSeverityChoiceQuestion());
-		addQuestion(new TeamRoleQuestion(""));
 		addQuestion(new ThreatClassificationQuestion());
 		addQuestion(new ThreatRatingModeChoiceQuestion());
 		addQuestion(new ThreatRatingQuestion());
