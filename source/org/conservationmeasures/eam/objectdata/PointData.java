@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objectdata;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class PointData extends ObjectData
@@ -15,19 +14,6 @@ public class PointData extends ObjectData
 	public PointData()
 	{
 		point = new Point(0, 0);
-	}
-
-	public PointData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logWarning("PointData ignoring invalid: " + valueToUse);
-		}
 	}
 
 	public Point getPoint()

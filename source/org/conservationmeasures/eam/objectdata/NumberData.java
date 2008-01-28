@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
 
 public class NumberData extends ObjectData
@@ -15,19 +14,6 @@ public class NumberData extends ObjectData
 		value = Double.NaN;
 	}
 	
-	public NumberData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logWarning("NumberData ignoring invalid: " + valueToUse);
-		}
-	}
-
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)

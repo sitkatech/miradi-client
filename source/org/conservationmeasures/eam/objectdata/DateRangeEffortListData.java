@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 
 public class DateRangeEffortListData extends ObjectData
@@ -13,19 +12,6 @@ public class DateRangeEffortListData extends ObjectData
 	public DateRangeEffortListData()
 	{
 		dateRangeEffortList = new DateRangeEffortList();
-	}
-	
-	public DateRangeEffortListData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch(Exception e)
-		{
-			EAM.logWarning("DateRangeEffortListData ignoring invalid: " + valueToUse);
-		}
 	}
 	
 	public boolean equals(Object rawOther)
