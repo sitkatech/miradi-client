@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objectdata;
 
 import java.awt.Dimension;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DimensionData extends ObjectData
@@ -18,19 +17,6 @@ public class DimensionData extends ObjectData
 		dimension = new Dimension(0, 0);
 	}
 
-	public DimensionData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logWarning("DimensionData ignoring invalid: " + valueToUse);
-		}
-	}
-	
 	public Dimension getDimension()
 	{
 		return dimension;

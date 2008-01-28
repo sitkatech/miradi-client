@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objecthelpers;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 
 public class RelevancyOverrideSetData extends ObjectData
@@ -13,19 +12,6 @@ public class RelevancyOverrideSetData extends ObjectData
 	public RelevancyOverrideSetData()
 	{
 		relevancyOverrideSet = new RelevancyOverrideSet();
-	}
-	
-	public RelevancyOverrideSetData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch(Exception e)
-		{
-			EAM.logWarning("RelevancyOverrideSetData ignoring invalid: " + valueToUse);
-		}
 	}
 	
 	public boolean equals(Object rawOther)

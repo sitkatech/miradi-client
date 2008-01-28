@@ -5,26 +5,12 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 
 public class FloatData extends ObjectData
 {
 	public FloatData()
 	{
 		value = 0;
-	}
-	
-	public FloatData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch(Exception e)
-		{
-			EAM.logWarning("FloatData ignoring invalid: " + valueToUse);
-		}
 	}
 	
 	public void set(String newValue) throws Exception

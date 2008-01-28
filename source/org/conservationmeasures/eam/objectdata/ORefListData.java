@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.martus.util.UnicodeWriter;
 
@@ -14,19 +13,6 @@ public class ORefListData extends ObjectData
 	public ORefListData()
 	{
 		objectReferenceList = new ORefList();
-	}
-	
-	public ORefListData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch(Exception e)
-		{
-			EAM.logWarning("ObjectReferenceListData ignoring invalid: " + valueToUse);
-		}
 	}
 	
 	public boolean equals(Object rawOther)

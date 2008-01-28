@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objectdata;
 import java.awt.Point;
 import java.util.List;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.PointList;
 
 public class PointListData extends ObjectData
@@ -18,19 +17,6 @@ public class PointListData extends ObjectData
 		points = new PointList();
 	}
 	
-	public PointListData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (Exception e)
-		{
-			EAM.logWarning("PointListData ignoring invalid: " + valueToUse);
-		}
-	}
-
 	public void set(String newValue) throws Exception
 	{
 		set(new PointList(newValue));
