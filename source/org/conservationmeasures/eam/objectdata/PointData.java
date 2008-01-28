@@ -11,8 +11,9 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class PointData extends ObjectData
 {
-	public PointData()
+	public PointData(String tagToUse)
 	{
+		super(tagToUse);
 		point = new Point(0, 0);
 	}
 
