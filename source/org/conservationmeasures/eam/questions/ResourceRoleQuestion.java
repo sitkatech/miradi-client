@@ -11,7 +11,7 @@ import java.util.Vector;
 
 public class ResourceRoleQuestion extends StaticChoiceQuestion
 {
-	public ResourceRoleQuestion(String tagToUse)
+	public ResourceRoleQuestion()
 	{
 		super(getRoleChoices());
 	}
