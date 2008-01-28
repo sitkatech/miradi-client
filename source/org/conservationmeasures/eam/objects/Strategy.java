@@ -299,7 +299,7 @@ public class Strategy extends Factor
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
 		feasibilityRating = new ChoiceData();
-		progressReportRefs = new ORefListData();
+		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new StrategyClassificationQuestion());

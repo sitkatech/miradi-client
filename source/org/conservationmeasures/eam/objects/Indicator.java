@@ -330,8 +330,8 @@ public class Indicator extends BaseObject
 		taskIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData();
 		ratingSource= new ChoiceData();
-		measurementRefs = new ORefListData();
-		progressReportRefs = new ORefListData();
+		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
+		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		detail = new StringData();
 		comment = new StringData();
 		viabilityRatingsComment = new StringData();

@@ -356,9 +356,9 @@ public class Target extends Factor
 		targetStatus = new ChoiceData();
 		viabiltyMode = new ChoiceData();
 		currentStatusJustification = new StringData();
-		stressRefs = new ORefListData();
+		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData();
-		subTargetRefs = new ORefListData();
+		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
 		
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(TAG_TARGET_STATUS, new StatusQuestion());

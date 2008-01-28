@@ -238,7 +238,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			ORef test = new ORef(ObjectType.TASK, new TaskId(283));
 			ORefList list = new ORefList(new ORef[] {test});
-			ORefListData listData = new ORefListData();
+			ORefListData listData = new ORefListData("tag");
 			listData.set(list.toString());
 			return listData.toString();
 		}

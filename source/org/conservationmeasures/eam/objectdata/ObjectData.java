@@ -58,5 +58,10 @@ abstract public class ObjectData
 		return new ORefList();
 	}
 	
+	public String getTag()
+	{
+		return tag;
+	}
+
 	private String tag;
 }

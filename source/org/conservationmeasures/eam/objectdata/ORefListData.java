@@ -10,8 +10,9 @@ import org.martus.util.UnicodeWriter;
 
 public class ORefListData extends ObjectData
 {
-	public ORefListData()
+	public ORefListData(String tagToUse)
 	{
+		super(tagToUse);
 		objectReferenceList = new ORefList();
 	}
 	
