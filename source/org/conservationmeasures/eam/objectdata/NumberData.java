@@ -9,8 +9,9 @@ import org.conservationmeasures.eam.utils.InvalidNumberException;
 
 public class NumberData extends ObjectData
 {
-	public NumberData()
+	public NumberData(String tagToUse)
 	{
+		super(tagToUse);
 		value = Double.NaN;
 	}
 	

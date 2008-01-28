@@ -239,12 +239,12 @@ public class ProjectMetadata extends BaseObject
 		startDate = new DateData(TAG_START_DATE);
 		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
-		sizeInHectares = new NumberData();
+		sizeInHectares = new NumberData(TAG_PROJECT_AREA);
 		currencyDecimalPlaces = new IntegerData(TAG_CURRENCY_DECIMAL_PLACES);
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
-		totalBudgetForFunding = new NumberData();
-		budgetSecuredPercent = new NumberData();
+		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
+		budgetSecuredPercent = new NumberData(TAG_BUDGET_SECURED_PERCENT);
 		currencyType = new ChoiceData();
 		currencySymbol = new StringData();
 		fiscalYearStart = new ChoiceData();
@@ -267,7 +267,7 @@ public class ProjectMetadata extends BaseObject
 		planningComments = new StringData();
 		redListSpecies = new StringData();
 		otherNotableSpecies = new StringData();
-		humanPopulation = new NumberData();
+		humanPopulation = new NumberData(TAG_HUMAN_POPULATION);
 		humanPopulationNotes = new StringData();
 		socialContext = new StringData();
 		siteMapReference = new StringData();
