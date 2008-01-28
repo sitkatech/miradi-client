@@ -19,9 +19,9 @@ import org.martus.swing.UiRadioButton;
 
 public class RadioButtonsField extends ObjectDataInputField
 {
-	public RadioButtonsField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public RadioButtonsField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		question = questionToUse;
 		group = new ButtonGroup();
 		buttons = new Vector<UiRadioButton>();

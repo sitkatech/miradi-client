@@ -32,7 +32,7 @@ public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 		
 		int type = initialRef.getObjectType();
 		BudgetCostModeQuestion question = new BudgetCostModeQuestion(BaseObject.TAG_BUDGET_COST_MODE);
-		RadioButtonsField modeField = createRadioButtonsField(type, question);
+		RadioButtonsField modeField = createRadioButtonsField(type, BaseObject.TAG_BUDGET_COST_MODE, question);
 		ObjectDataInputField rollupField = createReadonlyCurrencyField(BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		ObjectDataInputField overrideField = createCurrencyField(type, BaseObject.TAG_BUDGET_COST_OVERRIDE);
 		

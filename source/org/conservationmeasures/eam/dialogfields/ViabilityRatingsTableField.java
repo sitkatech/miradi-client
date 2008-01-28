@@ -47,9 +47,9 @@ import org.martus.swing.UiScrollPane;
 public class ViabilityRatingsTableField extends ObjectDataInputField
 {
 
-	public ViabilityRatingsTableField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ViabilityRatingsTableField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse.getTag());
+		super(projectToUse, objectType, objectId, tagToUse);
 		question = questionToUse;
 		model = new MyTableModel(question);
 		table = new MyTable(model);
