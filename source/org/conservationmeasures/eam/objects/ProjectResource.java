@@ -153,7 +153,7 @@ public class ProjectResource extends BaseObject
 		costPerUnit = new NumberData();
 		costUnit = new ChoiceData();
 		organization = new StringData();
-		roleCodes = new CodeListData();
+		roleCodes = new CodeListData(TAG_ROLE_CODES);
 		comments = new StringData();
 		location = new StringData();
 		phoneNumberMobile = new StringData();

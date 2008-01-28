@@ -61,10 +61,10 @@ public class WwfProjectData extends BaseObject
 		
 		relatedProjects = new StringData();
 		projectNumber = new StringData();
-		managingOffices = new CodeListData();
-		regions = new CodeListData();
-		countries = new CodeListData();
-		ecoRegions = new CodeListData();
+		managingOffices = new CodeListData(TAG_MANAGING_OFFICES);
+		regions = new CodeListData(TAG_REGIONS);
+		countries = new CodeListData(TAG_COUNTRIES);
+		ecoRegions = new CodeListData(TAG_ECOREGIONS);
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);

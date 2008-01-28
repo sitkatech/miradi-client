@@ -244,7 +244,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof CodeListData)
 		{
-			CodeListData codeList = new CodeListData();
+			CodeListData codeList = new CodeListData("tag");
 			codeList.add("A1");
 			codeList.add("B1");
 			return codeList.toString();
