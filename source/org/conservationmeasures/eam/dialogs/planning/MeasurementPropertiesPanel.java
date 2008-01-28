@@ -36,7 +36,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 		
 		statusField = createRatingChoiceField(ObjectType.MEASUREMENT, new StatusQuestion(Measurement.TAG_STATUS));
 		statusLabelField = new PanelFieldLabel(statusField.getObjectType(), statusField.getTag());
-		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, new TrendQuestion(Measurement.TAG_TREND));
+		ObjectDataInputField trendField = createIconChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_TREND, new TrendQuestion(Measurement.TAG_TREND));
 		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
 		addFieldsOnOneLine(EAM.text("Current Status"), new Object[]{statusField, statusLabelField, trendField, trendLabelField});
 
