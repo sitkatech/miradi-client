@@ -349,9 +349,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectMultilineDisplayField(project, objectType, getObjectIdForType(objectType), tag, columnCount);
 	} 
 	
-	public ObjectDataInputField createChoiceField(int objectType, ChoiceQuestion question)
+	public ObjectDataInputField createChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
+		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
 	

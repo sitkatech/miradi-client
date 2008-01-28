@@ -17,7 +17,7 @@ public class ThreatRatingPreferencesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getMetadata().getRef());
 
-		addField(createChoiceField(ProjectMetadata.getObjectType(), new ThreatRatingModeChoiceQuestion(ProjectMetadata.TAG_THREAT_RATING_MODE)));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(ProjectMetadata.TAG_THREAT_RATING_MODE)));
 		updateFieldsFromProject();
 	}
 
