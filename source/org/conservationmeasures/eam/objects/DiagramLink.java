@@ -388,9 +388,9 @@ public class DiagramLink extends BaseObject
 	{
 		super.clear();
 
-		underlyingObjectId = new BaseIdData(FactorLink.getObjectType());
-		fromId = new BaseIdData(DiagramFactor.getObjectType());
-		toId = new BaseIdData(DiagramFactor.getObjectType());
+		underlyingObjectId = new BaseIdData(TAG_WRAPPED_ID, FactorLink.getObjectType());
+		fromId = new BaseIdData(TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
+		toId = new BaseIdData(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
 		bendPoints = new PointListData();
 		groupedDiagramLinkRefs = new ORefListData();
 		

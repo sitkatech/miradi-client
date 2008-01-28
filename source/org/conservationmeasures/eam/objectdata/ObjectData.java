@@ -12,6 +12,17 @@ import org.martus.util.xml.XmlUtilities;
 
 abstract public class ObjectData
 {
+	public ObjectData()
+	{
+		
+	}
+	
+	public ObjectData(String tagToUse)
+	{
+		this();
+		tag = tagToUse;
+	}
+	
 	abstract public void set(String newValue) throws Exception;
 	abstract public String get();
 	abstract public boolean equals(Object rawOther);
@@ -46,4 +57,6 @@ abstract public class ObjectData
 	{
 		return new ORefList();
 	}
+	
+	private String tag;
 }
