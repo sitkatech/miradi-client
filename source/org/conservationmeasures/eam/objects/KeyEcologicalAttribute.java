@@ -188,7 +188,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	void clear()
 	{
 		super.clear();
-		indicatorIds = new IdListData(Indicator.getObjectType());
+		indicatorIds = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		description = new StringData();
 		details = new StringData();
 		keyEcologicalAttributeType = new StringData();

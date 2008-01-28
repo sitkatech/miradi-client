@@ -294,7 +294,7 @@ public class Strategy extends Factor
 	{
 		super.clear();
 		status = new StringData();
-		activityIds = new IdListData(Task.getObjectType());
+		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
 		taxonomyCode = new StringData();
 		impactRating = new ChoiceData();
