@@ -332,7 +332,7 @@ public class DiagramFactor extends BaseObject
 	{
 		super.clear();
 
-		size = new DimensionData();
+		size = new DimensionData(TAG_SIZE);
 		location = new PointData();
 		underlyingObjectRef = new ORefData();
 		fontSize = new ChoiceData();
