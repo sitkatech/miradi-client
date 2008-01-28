@@ -59,12 +59,12 @@ public class WcsProjectData extends BaseObject
 	{
 		super.clear();
 		
-		organizationalFocus = new StringData();
-		organizationalLevel = new StringData();
+		organizationalFocus = new StringData(TAG_ORGANIZATIONAL_FOCUS);
+		organizationalLevel = new StringData(TAG_ORGANIZATIONAL_LEVEL);
 		SwotCompleted = new BooleanData(TAG_SWOT_COMPLETED);
-		SwotUrl = new StringData();
+		SwotUrl = new StringData(TAG_SWOT_URL);
 		StepCompleted = new BooleanData(TAG_STEP_COMPLETED);
-		StepUrl = new StringData();
+		StepUrl = new StringData(TAG_STEP_URL);
 
 		addField(TAG_ORGANIZATIONAL_FOCUS, organizationalFocus);
 		addField(TAG_ORGANIZATIONAL_LEVEL, organizationalLevel);

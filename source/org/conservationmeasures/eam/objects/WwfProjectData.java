@@ -59,8 +59,8 @@ public class WwfProjectData extends BaseObject
 	{
 		super.clear();
 		
-		relatedProjects = new StringData();
-		projectNumber = new StringData();
+		relatedProjects = new StringData(TAG_RELATED_PROJECTS);
+		projectNumber = new StringData(TAG_PROJECT_NUMBER);
 		managingOffices = new CodeListData(TAG_MANAGING_OFFICES);
 		regions = new CodeListData(TAG_REGIONS);
 		countries = new CodeListData(TAG_COUNTRIES);

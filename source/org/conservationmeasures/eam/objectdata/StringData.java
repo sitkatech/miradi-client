@@ -13,11 +13,6 @@ public class StringData extends ObjectData
 		value = "";
 	}
 	
-	public StringData()
-	{
-		this("");
-	}
-	
 	public void set(String newValue) throws Exception
 	{
 		value = newValue;
