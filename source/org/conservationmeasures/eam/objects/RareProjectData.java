@@ -67,9 +67,9 @@ public class RareProjectData extends BaseObject
 		summaryOfKeyMessages = new StringData();
 		biodiversityHotspots = new StringData();
 		relatedProjects = new StringData();
-		projectCode = new IntegerData();
+		projectCode = new IntegerData(TAG_PROJECT_CODE);
 		cohort = new StringData();
-		numberOfCommunitiesInCampaignArea = new IntegerData();
+		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		audience = new StringData();
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);

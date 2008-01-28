@@ -170,7 +170,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			return ORef.INVALID.toString();
 		
 		if (field instanceof IntegerData)
-			return new IntegerData().toString();
+			return new IntegerData("tag").toString();
 		
 		return "";
 	}
