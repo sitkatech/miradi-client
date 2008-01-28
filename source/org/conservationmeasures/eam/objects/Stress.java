@@ -103,9 +103,9 @@ public class Stress extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new StringData();
-		detail = new StringData();
-		comments = new StringData();
+		shortLabel = new StringData(TAG_SHORT_LABEL);
+		detail = new StringData(TAG_DETAIL);
+		comments = new StringData(TAG_COMMENTS);
 		scope = new ChoiceData(TAG_SCOPE);
 		severity = new ChoiceData(TAG_SEVERITY);
 		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());

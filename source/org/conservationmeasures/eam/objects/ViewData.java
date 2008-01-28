@@ -130,17 +130,17 @@ public class ViewData extends BaseObject
 	void clear()
 	{
 		super.clear();
-		currentMode = new StringData();
+		currentMode = new StringData(TAG_CURRENT_MODE);
 		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
-		currentSortBy = new StringData();
-		currentSortDirecton = new StringData();
+		currentSortBy = new StringData(TAG_CURRENT_SORT_BY);
+		currentSortDirecton = new StringData(TAG_CURRENT_SORT_DIRECTION);
 		expandedNodesList = new ORefListData(TAG_CURRENT_EXPANSION_LIST);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES);
-		planningStyleChoice = new StringData();
-		planningSingleLevelChoice = new StringData();
+		planningStyleChoice = new StringData(TAG_PLANNING_STYLE_CHOICE);
+		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
 		
 		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);

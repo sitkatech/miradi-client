@@ -59,18 +59,18 @@ public class RareProjectData extends BaseObject
 	{
 		super.clear();
 		
-		speciesCommonName = new StringData();
-		speciesScientificName = new StringData();
-		speciesDetail = new StringData();
-		campaignSlogan = new StringData();
-		campaignTheoryOfChange = new StringData();
-		summaryOfKeyMessages = new StringData();
-		biodiversityHotspots = new StringData();
-		relatedProjects = new StringData();
+		speciesCommonName = new StringData(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		speciesScientificName = new StringData(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		speciesDetail = new StringData(TAG_FLAGSHIP_SPECIES_DETAIL);
+		campaignSlogan = new StringData(TAG_CAMPAIGN_SLOGAN);
+		campaignTheoryOfChange = new StringData(TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		summaryOfKeyMessages = new StringData(TAG_SUMMARY_OF_KEY_MESSAGES);
+		biodiversityHotspots = new StringData(TAG_BIODIVERSITY_HOTSPOTS);
+		relatedProjects = new StringData(TAG_RELATED_PROJECTS);
 		projectCode = new IntegerData(TAG_PROJECT_CODE);
-		cohort = new StringData();
+		cohort = new StringData(TAG_COHORT);
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		audience = new StringData();
+		audience = new StringData(TAG_AUDIENCE);
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
