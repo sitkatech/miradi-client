@@ -162,7 +162,7 @@ public class ProjectResource extends BaseObject
 		alternativeEmail = new StringData();
 		iMAddress = new StringData();
 		iMService = new StringData();
-		dateUpdated = new DateData();
+		dateUpdated = new DateData(TAG_DATE_UPDATED);
 
 		addField(TAG_RESOURCE_TYPE, resourceType);
 		addField(TAG_INITIALS, initials);

@@ -18,7 +18,7 @@ public class TestDateData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		DateData date = new DateData();
+		DateData date = new DateData("tag");
 		String sampleDate = "2006-01-01"; 
 		date.set(sampleDate);
 		assertEquals("Simple get/set failed?", sampleDate, date.get());
