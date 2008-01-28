@@ -25,10 +25,10 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 
 		addField(createStringField(TextBox.TAG_LABEL));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR)));
-		addField(createChoiceField(DiagramFactor.getObjectType(), new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(DiagramFactor.TAG_BACKGROUND_COLOR)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(DiagramFactor.TAG_FONT_SIZE)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(DiagramFactor.TAG_FOREGROUND_COLOR)));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(DiagramFactor.TAG_FONT_STYLE)));
 
 		updateFieldsFromProject();
 	}

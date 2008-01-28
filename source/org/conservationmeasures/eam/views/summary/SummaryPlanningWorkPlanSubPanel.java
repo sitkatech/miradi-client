@@ -34,7 +34,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		ObjectBudgetTimePeriodChoiceField objectBudgetTimePeriodChoiceField = new ObjectBudgetTimePeriodChoiceField(getProject(), ProjectMetadata.getObjectType(), BaseId.INVALID, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, new BudgetTimePeriodQuestion(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 		addField(objectBudgetTimePeriodChoiceField);
-		addField(createChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateFieldsFromProject();

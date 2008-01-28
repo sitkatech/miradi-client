@@ -40,7 +40,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
 		addFieldsOnOneLine(EAM.text("Current Status"), new Object[]{statusField, statusLabelField, trendField, trendLabelField});
 
-		addField(createChoiceField(ObjectType.MEASUREMENT,  new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
+		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion(Measurement.TAG_STATUS_CONFIDENCE)));
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
 
 		updateFieldsFromProject();
