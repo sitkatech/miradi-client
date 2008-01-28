@@ -337,7 +337,7 @@ public class Indicator extends BaseObject
 		viabilityRatingsComment = new StringData();
 		
 		futureStatusRating = new ChoiceData();
-		futureStatusDate = new DateData();;
+		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData();
 		futureStatusDetail = new StringData();
 		futureStatusComment = new StringData();

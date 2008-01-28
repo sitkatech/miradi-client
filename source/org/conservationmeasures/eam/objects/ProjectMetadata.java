@@ -236,9 +236,9 @@ public class ProjectMetadata extends BaseObject
 		shortProjectScope = new StringData();
 		projectVision = new StringData();
 		shortProjectVision = new StringData();
-		startDate = new DateData();
-		expectedEndDate = new DateData();
-		effectiveDate = new DateData();
+		startDate = new DateData(TAG_START_DATE);
+		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
+		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
 		sizeInHectares = new NumberData();
 		currencyDecimalPlaces = new IntegerData();
 		latitude = new FloatData();
@@ -261,8 +261,8 @@ public class ProjectMetadata extends BaseObject
 		locationComments = new StringData();
 		keyFundingSources = new StringData();
 		financialComments = new StringData();
-		workPlanStartDate = new DateData();
-		workPlanEndDate = new DateData();
+		workPlanStartDate = new DateData(TAG_WORKPLAN_START_DATE);
+		workPlanEndDate = new DateData(TAG_WORKPLAN_END_DATE);
 		workPlanTimeUnit = new ChoiceData();
 		planningComments = new StringData();
 		redListSpecies = new StringData();
@@ -316,8 +316,8 @@ public class ProjectMetadata extends BaseObject
 
 		tncLessonsLearned = new StringData();
 		tncWorkbookVersionNumber = new StringData();
-		tncWorkbookVersionDate = new DateData();
-		tncDatabaseDownloadDate = new DateData();
+		tncWorkbookVersionDate = new DateData(TAG_TNC_WORKBOOK_VERSION_DATE);
+		tncDatabaseDownloadDate = new DateData(TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		tncPlanningTeamComment = new StringData();
 		tncEcoregion = new StringData();
 		tncCountry = new StringData();

@@ -5,14 +5,14 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.martus.util.MultiCalendar;
 
 public class DateData extends ObjectData
 {
-	public DateData()
+	public DateData(String tagToUse)
 	{
+		super(tagToUse);
 		date = null;
 	}
 
