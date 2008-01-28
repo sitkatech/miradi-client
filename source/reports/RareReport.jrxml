@@ -23,6 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
+	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
 	<field name="Cohort" class="java.lang.String">
 		<fieldDescription><![CDATA[ObjectPools/Pool/RareProjectData/Cohort]]></fieldDescription>
@@ -424,7 +425,7 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="253"
+						y="251"
 						width="335"
 						height="13"
 						key="textField-19"
@@ -438,7 +439,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="253"
+						y="251"
 						width="163"
 						height="13"
 						key="staticText-19"
@@ -452,7 +453,7 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="269"
+						y="266"
 						width="335"
 						height="13"
 						key="textField-20"
@@ -466,7 +467,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="269"
+						y="266"
 						width="163"
 						height="13"
 						key="staticText-20"
@@ -480,7 +481,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="284"
+						y="281"
 						width="163"
 						height="13"
 						key="staticText-23"
@@ -494,7 +495,7 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="284"
+						y="281"
 						width="335"
 						height="13"
 						key="textField-21"
@@ -508,7 +509,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="298"
+						y="295"
 						width="163"
 						height="13"
 						key="staticText-24"
@@ -523,7 +524,7 @@
 					<reportElement
 						mode="Opaque"
 						x="0"
-						y="312"
+						y="309"
 						width="535"
 						height="13"
 						backcolor="#CCCCCC"
@@ -535,24 +536,10 @@
 					</textElement>
 				<text><![CDATA[THREATS]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="200"
-						y="325"
-						width="335"
-						height="13"
-						key="textField-23"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left">
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement
 						x="13"
-						y="325"
+						y="322"
 						width="163"
 						height="13"
 						key="staticText-26"
@@ -971,8 +958,7 @@
 						key="subreport-1"
 						positionType="Float"/>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Code")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource(
-						"/reports/CountryListReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CountryListReport.jasper")]]></subreportExpression>
 				</subreport>
 				<staticText>
 					<reportElement
@@ -1116,7 +1102,7 @@
 				<staticText>
 					<reportElement
 						x="200"
-						y="297"
+						y="294"
 						width="115"
 						height="15"
 						key="staticText-52"
@@ -1224,6 +1210,47 @@
 					</textElement>
 				<text><![CDATA[(not Implemented yet)]]></text>
 				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="396"
+						width="282"
+						height="13"
+						key="subreport-2"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool[@objectType = '22']/Target")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/ObjectReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="323"
+						width="282"
+						height="13"
+						key="subreport-3"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool[@objectType = '20']/DirectThreat")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/ObjectReport.jasper")]]></subreportExpression>
+				</subreport>
+				<line direction="TopDown">
+					<reportElement
+						mode="Transparent"
+						x="25"
+						y="338"
+						width="343"
+						height="0"
+						forecolor="#FFFFFF"
+						backcolor="#FFFFFF"
+						key="line-3"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
 			</band>
 		</detail>
 		<columnFooter>
