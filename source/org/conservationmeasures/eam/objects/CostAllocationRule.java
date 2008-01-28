@@ -59,8 +59,8 @@ public class CostAllocationRule extends BaseObject
 	{
 		super.clear();
 		
-		parentRef = new ORefData();
-		childRef = new ORefData();
+		parentRef = new ORefData(TAG_PARENT_REF);
+		childRef = new ORefData(TAG_CHILD_REF);
 		costPercentage = new IntegerData(TAG_COST_PERCENTAGE);
 		
 		addField(TAG_PARENT_REF, parentRef);

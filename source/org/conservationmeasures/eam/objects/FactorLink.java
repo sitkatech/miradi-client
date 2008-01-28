@@ -318,8 +318,8 @@ public class FactorLink extends BaseObject
 	void clear()
 	{
 		super.clear();
-		fromRef = new ORefData();
-		toRef = new ORefData();
+		fromRef = new ORefData(TAG_FROM_REF);
+		toRef = new ORefData(TAG_TO_REF);
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
 		threatStressRatingRefs = new ORefListData();
 		comment = new StringData();

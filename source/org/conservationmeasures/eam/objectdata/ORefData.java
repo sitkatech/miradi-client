@@ -14,8 +14,9 @@ import org.martus.util.UnicodeWriter;
 
 public class ORefData extends ObjectData
 {
-	public ORefData()
+	public ORefData(String tagToUse)
 	{
+		super(tagToUse);
 		ref = ORef.INVALID;
 	}
 	

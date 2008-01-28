@@ -131,7 +131,7 @@ public class ThreatStressRating extends BaseObject
 		super.clear();
 		contribution = new ChoiceData();
 		irreversibility = new ChoiceData();
-		stressRef = new ORefData();
+		stressRef = new ORefData(TAG_STRESS_REF);
 		isActive = new BooleanData(TAG_IS_ACTIVE);
 		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, new ThreatStressRatingChoiceQuestion());
 		
