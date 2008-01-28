@@ -264,7 +264,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			RelevancyOverrideSet overrideSet = new RelevancyOverrideSet();
 			overrideSet.add(test);
 			
-			RelevancyOverrideSetData overrideSetData = new RelevancyOverrideSetData();
+			RelevancyOverrideSetData overrideSetData = new RelevancyOverrideSetData("tag");
 			overrideSetData.set(overrideSet.toString());
 			return overrideSetData.toString();
 		}
