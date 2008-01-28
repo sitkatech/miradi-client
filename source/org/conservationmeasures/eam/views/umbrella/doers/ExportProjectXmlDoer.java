@@ -10,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -128,7 +127,7 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		out.close();
 	}
 	
-	private static void writeJPEG(OutputStream out, DiagramObject diagramObject) throws Exception, SVGGraphics2DIOException
+	private static void writeJPEG(OutputStream out, DiagramObject diagramObject) throws Exception
 	{
 		// TODO: component needs a main window to get preferences. 
 		// Should just pass prefs into component instead of the whole main window
