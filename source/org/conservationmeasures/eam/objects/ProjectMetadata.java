@@ -314,14 +314,14 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_SOCIAL_CONTEXT, socialContext);
 		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
 
-		tncLessonsLearned = new StringData();
-		tncWorkbookVersionNumber = new StringData();
+		tncLessonsLearned = new StringData(TAG_TNC_LESSONS_LEARNED);
+		tncWorkbookVersionNumber = new StringData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		tncWorkbookVersionDate = new DateData(TAG_TNC_WORKBOOK_VERSION_DATE);
 		tncDatabaseDownloadDate = new DateData(TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		tncPlanningTeamComment = new StringData();
-		tncEcoregion = new StringData();
-		tncCountry = new StringData();
-		legacyTncOperatingUnits = new StringData();
+		tncPlanningTeamComment = new StringData(TAG_TNC_PLANNING_TEAM_COMMENT);
+		tncEcoregion = new StringData(TAG_TNC_ECOREGION);
+		tncCountry = new StringData(TAG_TNC_COUNTRY);
+		legacyTncOperatingUnits = new StringData(LEGACY_TAG_TNC_OPERATING_UNITS);
 		tncOperatingUnits = new ChoiceData(TAG_TNC_OPERATING_UNITS);
 		tncTerrestrialEcoRegion = new ChoiceData(TAG_TNC_TERRESTRIAL_ECO_REGION);
 		tncMarineEcoRegion = new ChoiceData(TAG_TNC_MARINE_ECO_REGION);
@@ -340,20 +340,20 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_MARINE_ECO_REGION, tncMarineEcoRegion);
 		addField(TAG_TNC_FRESHWATER_ECO_REGION, tncFreshwaterEcoRegion);
 		
-		otherOrgManagingOffice = new StringData();
-		otherOrgRegionalOffice = new StringData();
-		otherOrgProjectNumber = new StringData();
-		otherOrgRelatedProjects = new StringData();
+		otherOrgManagingOffice = new StringData(TAG_OTHER_ORG_MANAGING_OFFICE);
+		otherOrgRegionalOffice = new StringData(TAG_OTHER_ORG_REGIONAL_OFFICE);
+		otherOrgProjectNumber = new StringData(TAG_OTHER_ORG_PROJECT_NUMBER);
+		otherOrgRelatedProjects = new StringData(TAG_OTHER_ORG_RELATED_PROJECTS);
 		addField(TAG_OTHER_ORG_MANAGING_OFFICE, otherOrgManagingOffice);
 		addField(TAG_OTHER_ORG_REGIONAL_OFFICE, otherOrgRegionalOffice);
 		addField(TAG_OTHER_ORG_PROJECT_NUMBER, otherOrgProjectNumber);
 		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
 		
 		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
-		diagramFontFamily = new StringData();
+		diagramFontFamily = new StringData(TAG_DIAGRAM_FONT_FAMILY);
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE);
-		diagramFontSizeValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion());
-		diagramFontFamilyValue = new PseudoQuestionData(TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion());
+		diagramFontSizeValue = new PseudoQuestionData(PSEUDO_TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion());
+		diagramFontFamilyValue = new PseudoQuestionData(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion());
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
