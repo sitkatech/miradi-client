@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objectdata;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.UnicodeWriter;
 
 public class CodeListData extends ObjectData
@@ -18,19 +17,6 @@ public class CodeListData extends ObjectData
 		codes = new CodeList();
 	}
 	
-	public CodeListData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch (ParseException e)
-		{
-			EAM.logWarning("CodeListData ignoring invalid: " + valueToUse);
-		}
-	}
-
 	public void set(String newValue) throws ParseException
 	{
 		set(new CodeList(newValue));
