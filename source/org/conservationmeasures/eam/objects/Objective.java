@@ -215,8 +215,8 @@ public class Objective extends Desire
 	public void clear()
 	{
 		super.clear();
-		relevantIndicatorOverrides = new RelevancyOverrideSetData();
-		relevantStrategyOverrides = new RelevancyOverrideSetData();
+		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
+		relevantStrategyOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_SET);
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);

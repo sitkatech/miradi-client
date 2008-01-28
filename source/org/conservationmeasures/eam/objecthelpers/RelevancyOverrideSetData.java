@@ -9,8 +9,9 @@ import org.conservationmeasures.eam.objectdata.ObjectData;
 
 public class RelevancyOverrideSetData extends ObjectData
 {
-	public RelevancyOverrideSetData()
+	public RelevancyOverrideSetData(String tagToUse)
 	{
+		super(tagToUse);
 		relevancyOverrideSet = new RelevancyOverrideSet();
 	}
 	
