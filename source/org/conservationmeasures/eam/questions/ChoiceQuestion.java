@@ -13,20 +13,14 @@ import org.martus.util.UnicodeWriter;
 
 public abstract class ChoiceQuestion
 {
-	public ChoiceQuestion(String tagToUse, String labelToUse)
+	public ChoiceQuestion(String tagToUse)
 	{
 		tag = tagToUse;
-		label = labelToUse;
 	}
 	
 	public String getTag()
 	{
 		return tag;
-	}
-	
-	public String getLabel()
-	{
-		return label;
 	}
 	
 	public int size()
@@ -103,5 +97,4 @@ public abstract class ChoiceQuestion
 	public static final Color COLOR_GREAT = DARK_GREEN;
 	
 	private String tag;
-	private String label;
 }
