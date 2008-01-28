@@ -109,7 +109,7 @@ public class ThreatReductionResult extends Factor
 	{
 		super.clear();
 		
-		relatedDirectThreat = new ChoiceData();
+		relatedDirectThreat = new ChoiceData(TAG_RELATED_DIRECT_THREAT_REF);
 		
 		addField(TAG_RELATED_DIRECT_THREAT_REF, relatedDirectThreat);
 	}

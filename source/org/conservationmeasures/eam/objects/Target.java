@@ -353,8 +353,8 @@ public class Target extends Factor
 	void clear()
 	{
 		super.clear();
-		targetStatus = new ChoiceData();
-		viabiltyMode = new ChoiceData();
+		targetStatus = new ChoiceData(TAG_TARGET_STATUS);
+		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE);
 		currentStatusJustification = new StringData();
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData();

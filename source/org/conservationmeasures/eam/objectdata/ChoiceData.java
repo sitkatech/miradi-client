@@ -9,15 +9,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ChoiceData extends StringData
 {
-	public ChoiceData()
+	public ChoiceData(String tagToUse)
 	{
-		super();
-	}
-	
-	public ChoiceData(ChoiceQuestion questionToUse)
-	{
-		this();
-		question = questionToUse;
+		super(tagToUse);
 	}
 	
 	private ChoiceQuestion question;

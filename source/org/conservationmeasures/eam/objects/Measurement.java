@@ -100,12 +100,12 @@ public class Measurement extends BaseObject
 	{
 		super.clear();
 		
-		trend= new ChoiceData();
-		status= new ChoiceData();
+		trend= new ChoiceData(TAG_TREND);
+		status= new ChoiceData(TAG_STATUS);
 		date= new DateData(TAG_DATE);
 		summary= new StringData();
 		detail= new StringData();
-		statusConfidence = new ChoiceData();
+		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE);
 		comment = new StringData();
 
 		addField(TAG_TREND, trend);
