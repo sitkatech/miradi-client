@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupField
 {
-	public ObjectBudgetTimePeriodChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectBudgetTimePeriodChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse);
+		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
 	}
 	
 	public void setText(String code)

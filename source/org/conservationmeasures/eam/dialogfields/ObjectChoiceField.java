@@ -20,9 +20,9 @@ import org.martus.swing.UiComboBox;
 
 public class ObjectChoiceField extends ObjectDataInputField
 {
-	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse.getTag());
+		super(projectToUse, objectType, objectId, tagToUse);
 		combo = new PanelComboBox(questionToUse.getChoices());
 		addFocusListener();
 		combo.addActionListener(createActionHandler());

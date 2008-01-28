@@ -32,7 +32,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
 		addFieldsOnOneLine(EAM.text("Label|Workplan Dates"), workPlanDateFields);
 		
-		ObjectBudgetTimePeriodChoiceField objectBudgetTimePeriodChoiceField = new ObjectBudgetTimePeriodChoiceField(getProject(), ProjectMetadata.getObjectType(), BaseId.INVALID, new BudgetTimePeriodQuestion(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
+		ObjectBudgetTimePeriodChoiceField objectBudgetTimePeriodChoiceField = new ObjectBudgetTimePeriodChoiceField(getProject(), ProjectMetadata.getObjectType(), BaseId.INVALID, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, new BudgetTimePeriodQuestion(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 		addField(objectBudgetTimePeriodChoiceField);
 		addField(createChoiceField(ProjectMetadata.getObjectType(), new FiscalYearStartQuestion(ProjectMetadata.TAG_FISCAL_YEAR_START)));
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));

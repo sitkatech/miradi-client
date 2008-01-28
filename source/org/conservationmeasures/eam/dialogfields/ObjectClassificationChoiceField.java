@@ -17,9 +17,9 @@ import org.martus.swing.UiComboBox;
 
 public class ObjectClassificationChoiceField extends ObjectChoiceField
 {
-	public ObjectClassificationChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectClassificationChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse);
+		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
 		combo.addFocusListener(new ClassificationFocusHandler());
 	}
 
