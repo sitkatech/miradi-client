@@ -27,7 +27,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		ratingThresholdTable = createViabilityRatingsTableField(ObjectType.INDICATOR, Indicator.TAG_INDICATOR_THRESHOLD, new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
 		addField(ratingThresholdTable);
 
-		addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
+		addField(createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_RATING_SOURCE, new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
 		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_VIABILITY_RATINGS_COMMENT));
 	
 		updateFieldsFromProject();
