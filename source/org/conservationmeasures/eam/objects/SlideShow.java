@@ -90,7 +90,7 @@ public class SlideShow extends BaseObject
 	void clear()
 	{
 		super.clear();
-		slideRefs = new ORefListData();
+		slideRefs = new ORefListData(TAG_SLIDE_REFS);
 		addField(TAG_SLIDE_REFS, slideRefs);
 	}
 	

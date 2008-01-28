@@ -131,11 +131,11 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 		currentMode = new StringData();
-		chainModeFactorRefs = new ORefListData();
+		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
-		expandedNodesList = new ORefListData();
+		expandedNodesList = new ORefListData(TAG_CURRENT_EXPANSION_LIST);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES);

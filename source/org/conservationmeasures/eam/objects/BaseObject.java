@@ -1171,7 +1171,7 @@ abstract public class BaseObject
 	{
 		public PseudoORefListData(String tag)
 		{
-			psuedoTag = tag;
+			super(tag);
 		}
 
 		public boolean isPseudoField()
@@ -1187,7 +1187,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			return getPseudoData(psuedoTag);
+			return getPseudoData(getTag());
 		}
 		
 		public void toXml(UnicodeWriter out) throws Exception
@@ -1208,8 +1208,6 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
-
-		String psuedoTag;
 	}
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";

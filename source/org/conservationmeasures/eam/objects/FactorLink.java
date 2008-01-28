@@ -321,7 +321,7 @@ public class FactorLink extends BaseObject
 		fromRef = new ORefData(TAG_FROM_REF);
 		toRef = new ORefData(TAG_TO_REF);
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
-		threatStressRatingRefs = new ORefListData();
+		threatStressRatingRefs = new ORefListData(TAG_THREAT_STRESS_RATING_REFS);
 		comment = new StringData();
 		pseudoThreatRatingBundleValue = new PseudoStringData(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
 		

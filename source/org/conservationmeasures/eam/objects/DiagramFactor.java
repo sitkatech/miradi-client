@@ -338,7 +338,7 @@ public class DiagramFactor extends BaseObject
 		fontSize = new ChoiceData();
 		fontColor = new ChoiceData();
 		fontStyle = new ChoiceData();
-		groupBoxChildrenRefs = new ORefListData();
+		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 		backgroundColor = new ChoiceData();
 		
 		addField(TAG_SIZE, size);
