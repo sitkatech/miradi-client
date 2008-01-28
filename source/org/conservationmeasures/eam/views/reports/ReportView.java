@@ -39,7 +39,7 @@ public class ReportView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		ReportSplitPane reportSplitPane = new ReportSplitPane(getProject());
+		ReportSplitPane reportSplitPane = new ReportSplitPane(getMainWindow());
 
 		addTab(EAM.text("Reports"), reportSplitPane);
 	}

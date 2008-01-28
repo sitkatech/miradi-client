@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.reports;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,6 +25,7 @@ import net.sf.jasperreports.view.JRViewer;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
@@ -33,9 +35,9 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class ReportSplitPane extends JSplitPane
 {
-	public ReportSplitPane(Project projectToUse) throws Exception
+	public ReportSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		project = projectToUse;
+		mainWindow = mainWindowToUse;
 		
 		createButtonHashMap();
 		setLeftComponent(createReportSelectionPanel());
@@ -98,6 +100,13 @@ public class ReportSplitPane extends JSplitPane
 	{
 		public void actionPerformed(ActionEvent event)
 		{
+			addCreatedReport(event);
+		}
+
+		private void addCreatedReport(ActionEvent event)
+		{
+			Cursor cursor = getMainWindow().getCursor();
+			mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			try
 			{
 				PanelButton source = (PanelButton) event.getSource();
@@ -109,14 +118,23 @@ public class ReportSplitPane extends JSplitPane
 				EAM.logException(e);
 				EAM.errorDialog(EAM.text("Error while generating a report"));
 			}
+			finally
+			{
+				mainWindow.setCursor(cursor);
+			}
 		}	
 	}
 	
 	private Project getProject()
 	{
-		return project;
+		return getMainWindow().getProject();
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	private HashMap buttonHashMap;
-	private Project project;
+	private MainWindow mainWindow;
 }
