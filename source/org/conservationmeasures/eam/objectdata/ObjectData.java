@@ -12,14 +12,8 @@ import org.martus.util.xml.XmlUtilities;
 
 abstract public class ObjectData
 {
-	public ObjectData()
-	{
-		
-	}
-	
 	public ObjectData(String tagToUse)
 	{
-		this();
 		tag = tagToUse;
 	}
 	
