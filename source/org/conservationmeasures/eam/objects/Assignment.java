@@ -121,7 +121,7 @@ public class Assignment extends BaseObject
 	{
 		super.clear();
 		resourceIdData = new BaseIdData(TAG_ASSIGNMENT_RESOURCE_ID, ProjectResource.getObjectType());
-		detailListData = new DateRangeEffortListData();
+		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		

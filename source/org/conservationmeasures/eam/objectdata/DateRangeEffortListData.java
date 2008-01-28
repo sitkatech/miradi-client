@@ -9,8 +9,9 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 
 public class DateRangeEffortListData extends ObjectData
 {
-	public DateRangeEffortListData()
+	public DateRangeEffortListData(String tagToUse)
 	{
+		super(tagToUse);
 		dateRangeEffortList = new DateRangeEffortList();
 	}
 	
