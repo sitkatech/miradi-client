@@ -14,19 +14,6 @@ public class IntegerData extends ObjectData
 		value = 0;
 	}
 	
-	public IntegerData(String valueToUse)
-	{
-		this();
-		try
-		{
-			set(valueToUse);
-		}
-		catch(Exception e)
-		{
-			EAM.logWarning("IntegerData ignoring invalid: " + valueToUse);
-		}
-	}
-	
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
