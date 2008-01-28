@@ -460,10 +460,10 @@ abstract public class Factor extends BaseObject
 		comment = new StringData();
 		text = new StringData();
 		shortLabel = new StringData();
-	    indicators = new IdListData(Indicator.getObjectType());
-		objectives = new IdListData(Objective.getObjectType());
-		goals = new IdListData(Goal.getObjectType());
-		keyEcologicalAttributes = new IdListData(KeyEcologicalAttribute.getObjectType());
+	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
+		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
+		goals = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
+		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
