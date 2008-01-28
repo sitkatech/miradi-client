@@ -19,6 +19,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		
 		twoLevelFileLoader = twoLevelFileLoaderToUse;
 		choices = loadChoices();
+		twoLevelFileLoader = null;
 	}
 	
 	private ChoiceItem[] loadChoices()
