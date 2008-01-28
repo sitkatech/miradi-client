@@ -144,24 +144,24 @@ public class ProjectResource extends BaseObject
 		super.clear();
 		
 		resourceType = new ChoiceData(TAG_RESOURCE_TYPE);
-		initials = new StringData();
-		givenName = new StringData();
-		surName = new StringData();
-		position = new StringData();
-		phoneNumber = new StringData();
-		email = new StringData();
+		initials = new StringData(TAG_INITIALS);
+		givenName = new StringData(TAG_GIVEN_NAME);
+		surName = new StringData(TAG_SUR_NAME);
+		position = new StringData(TAG_POSITION);
+		phoneNumber = new StringData(TAG_PHONE_NUMBER);
+		email = new StringData(TAG_EMAIL);
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
 		costUnit = new ChoiceData(TAG_COST_UNIT);
-		organization = new StringData();
+		organization = new StringData(TAG_ORGANIZATION);
 		roleCodes = new CodeListData(TAG_ROLE_CODES);
-		comments = new StringData();
-		location = new StringData();
-		phoneNumberMobile = new StringData();
-		phoneNumberHome = new StringData();
-		phoneNumberOther = new StringData();
-		alternativeEmail = new StringData();
-		iMAddress = new StringData();
-		iMService = new StringData();
+		comments = new StringData(TAG_COMMENTS);
+		location = new StringData(TAG_LOCATION);
+		phoneNumberMobile = new StringData(TAG_PHONE_NUMBER_MOBILE);
+		phoneNumberHome = new StringData(TAG_PHONE_NUMBER_HOME);
+		phoneNumberOther = new StringData(TAG_PHONE_NUMBER_OTHER);
+		alternativeEmail = new StringData(TAG_ALTERNATIVE_EMAIL);
+		iMAddress = new StringData(TAG_IM_ADDRESS);
+		iMService = new StringData(TAG_IM_SERVICE);
 		dateUpdated = new DateData(TAG_DATE_UPDATED);
 
 		addField(TAG_RESOURCE_TYPE, resourceType);
@@ -185,8 +185,8 @@ public class ProjectResource extends BaseObject
 		addField(TAG_IM_SERVICE, iMService);
 		addField(TAG_DATE_UPDATED, dateUpdated);
 		
-		customUserField1 = new StringData();
-		customUserField2 = new StringData();
+		customUserField1 = new StringData(TAG_CUSTOM_FIELD_1);
+		customUserField2 = new StringData(TAG_CUSTOM_FIELD_2);
 		addField(TAG_CUSTOM_FIELD_1, customUserField1);
 		addField(TAG_CUSTOM_FIELD_2, customUserField2);
 		
