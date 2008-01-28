@@ -311,9 +311,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new StrategyRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
-	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, int columnCount)
+	public ObjectDataInputField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question.getTag(), question, columnCount);
+		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(int objectType, ChoiceQuestion question, int columnCount)
@@ -321,9 +321,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question.getTag(), question, columnCount);
 	}
 
-	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, CodeList disabledChoices, int columnCount)
+	public ObjectDataInputField createMultiCodeField(String tagToUse, ChoiceQuestion question, CodeList disabledChoices, int columnCount)
 	{
-		ObjectCodeListField objectCodeListField = (ObjectCodeListField) createMultiCodeField(question, columnCount);
+		ObjectCodeListField objectCodeListField = (ObjectCodeListField) createMultiCodeField(tagToUse, question, columnCount);
 		objectCodeListField.setDisabledCodes(disabledChoices);
 		
 		return objectCodeListField;
@@ -370,9 +370,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectRaitingChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
 	}
 
-	public ObjectDataInputField createIconChoiceField(int objectType, ChoiceQuestion question)
+	public ObjectDataInputField createIconChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
+		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(String tagToUse, ChoiceQuestion question)
