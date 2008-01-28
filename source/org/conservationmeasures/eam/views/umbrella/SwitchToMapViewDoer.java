@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.map.MapView;
 
 public class SwitchToMapViewDoer extends ViewSwitchDoer 
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return MapView.getViewName();
 	}

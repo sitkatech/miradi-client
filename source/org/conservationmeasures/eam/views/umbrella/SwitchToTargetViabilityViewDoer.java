@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.targetviability.TargetViabilityView;
 
 public class SwitchToTargetViabilityViewDoer extends ViewSwitchDoer
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return TargetViabilityView.getViewName();
 	}

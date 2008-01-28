@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.library.LibraryView;
 
 public class SwitchToLibraryViewDoer extends ViewSwitchDoer 
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return LibraryView.getViewName();
 	}

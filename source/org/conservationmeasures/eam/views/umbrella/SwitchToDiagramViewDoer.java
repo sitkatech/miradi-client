@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class SwitchToDiagramViewDoer extends ViewSwitchDoer
 {
-	String getViewName()
+	protected String getViewName()
 	{
 		return DiagramView.getViewName();
 	}

@@ -1220,6 +1220,7 @@ public class Project
 	public static final String SUMMARY_VIEW_NAME = "Summary";
 	public static final String TARGET_VIABILITY_NAME = "Target Viability";
 	public static final String PLANNING_VIEW_NAME = "Planning";
+	public static final String REPORT_VIEW_NAME = "Report";
 	
 	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
 	

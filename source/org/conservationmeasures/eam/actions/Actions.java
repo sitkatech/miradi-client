@@ -89,6 +89,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewPlanning;
+import org.conservationmeasures.eam.actions.views.ActionViewReport;
 import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
@@ -159,6 +160,7 @@ public class Actions
 		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionViewTargetViability(mainWindow));
+		registerAction(new ActionViewReport(mainWindow));
 		
 		registerAction(new ActionCreateSlide(mainWindow));
 		registerAction(new ActionDeleteSlide(mainWindow));

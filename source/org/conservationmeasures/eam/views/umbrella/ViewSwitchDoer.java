@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.wizard.WizardManager;
 
 abstract public class ViewSwitchDoer extends MainWindowDoer
 {
-	abstract String getViewName();
+	abstract protected String getViewName();
 
 	public boolean isAvailable()
 	{

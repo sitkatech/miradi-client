@@ -58,6 +58,7 @@ import org.conservationmeasures.eam.wizard.planning.WorkPlanCreateResourcesStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
 import org.conservationmeasures.eam.wizard.planning.WorkPlanOverviewStep;
+import org.conservationmeasures.eam.wizard.reports.ReportOverviewStep;
 import org.conservationmeasures.eam.wizard.schedule.ScheduleOverviewStep;
 import org.conservationmeasures.eam.wizard.summary.SummaryOverviewStep;
 import org.conservationmeasures.eam.wizard.summary.SummaryWizardDefineProjecScope;
@@ -78,9 +79,9 @@ import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckB
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardChooseBundle;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardIrreversibilityStep;
-import org.conservationmeasures.eam.wizard.threatmatrix.ThreatSimpleOverviewStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardScopeStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
+import org.conservationmeasures.eam.wizard.threatmatrix.ThreatSimpleOverviewStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressCheckThreatRatingStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressOverviewStep;
 import org.conservationmeasures.eam.wizard.threatmatrix.ThreatStressRateIrreversibilityAndContributionStep;
@@ -112,6 +113,7 @@ public class WizardManager
 		createMapViewStepEntries(panel);
 		createImagesViewStepEntries(panel);
 		createPlanningViewStepEntries(panel);
+		createReportViewStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -326,6 +328,11 @@ public class WizardManager
 		createStepEntry(new BudgetWizardBudgetDetail(panel));
 		createStepEntry(new BudgetWizardDemo(panel));
 	}
+
+	public void createReportViewStepEntries(WizardPanel panel)
+	{
+		createStepEntry(new ReportOverviewStep(panel));
+	}
 	
 	public void createMapViewStepEntries(WizardPanel panel)
 	{		
@@ -448,6 +455,7 @@ public class WizardManager
 //				FinancialOverviewStep.class, 
 				
 				// NOT STEPS
+				ReportOverviewStep.class,
 				MapOverviewStep.class,
 				ScheduleOverviewStep.class,
 				LibraryOverviewStep.class,
