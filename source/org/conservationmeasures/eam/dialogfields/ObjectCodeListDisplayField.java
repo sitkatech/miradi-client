@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ObjectCodeListDisplayField extends ObjectCodeListField
 {
-	public ObjectCodeListDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, int columnCount)
+	public ObjectCodeListDisplayField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 	
 	public void updateEditableState()

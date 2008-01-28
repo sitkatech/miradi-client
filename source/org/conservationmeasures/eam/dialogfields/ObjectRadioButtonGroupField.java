@@ -23,9 +23,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ObjectRadioButtonGroupField extends ObjectDataInputField
 {
-	public ObjectRadioButtonGroupField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public ObjectRadioButtonGroupField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		group = new ButtonGroup();
 		panel = new OneRowPanel();
 		buttonsByCode = new HashMap();

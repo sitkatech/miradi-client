@@ -19,14 +19,14 @@ import org.conservationmeasures.eam.utils.FastScrollPane;
 
 public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
 {
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, 3);
+		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
 	}
 	
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, int columnCount)
+	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		codeListEditor = new CodeListComponent(questionToUse, columnCount, this);
 		component = new FastScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();

@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ObjectIconChoiceField extends ObjectChoiceField
 {
-	public ObjectIconChoiceField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
+	public ObjectIconChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectType, objectId, questionToUse);
+		super(projectToUse, objectType, objectId, tagToUse, questionToUse);
 		combo.setRenderer(new RatingChoiceRenderer());
 	}
 

@@ -313,12 +313,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question, columnCount);
+		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question.getTag(), question, columnCount);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(int objectType, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question, columnCount);
+		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), question.getTag(), question, columnCount);
 	}
 
 	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question, CodeList disabledChoices, int columnCount)
@@ -329,9 +329,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return objectCodeListField;
 	}
 	
-	public ObjectDataInputField createReadonlyMultiCodeField(int objectType, ChoiceQuestion question, int columnCount)
+	public ObjectDataInputField createReadonlyMultiCodeField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListDisplayField(project, objectType, getObjectIdForType(objectType), question, columnCount);
+		return new ObjectCodeListDisplayField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)
@@ -351,28 +351,28 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), question);
+		return new ObjectChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
 	}
 	
 	
 	public ObjectDataInputField createClassificationChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
+		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question.getTag(), question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), question);
+		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), question.getTag(), question);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectRaitingChoiceField(project, objectType, getObjectIdForType(objectType), question);
+		return new ObjectRaitingChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
 	}
 
 	public ObjectDataInputField createIconChoiceField(int objectType, ChoiceQuestion question)
 	{
-		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), question);
+		return new ObjectIconChoiceField(project, objectType, getObjectIdForType(objectType), question.getTag(), question);
 	}
 	
 	public ObjectDataInputField createReadOnlyChoiceField(ChoiceQuestion question)
@@ -390,9 +390,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectReadonlyObjectList(project, objectType, getObjectIdForType(objectType), tag); 
 	}
 	
-	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, ChoiceQuestion question)
+	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)
 	{
-		return new ObjectRadioButtonGroupField(project, objectType, objectId, question);
+		return new ObjectRadioButtonGroupField(project, objectType, objectId, tagToUse, question);
 	}
 	
 	public RadioButtonsField createRadioButtonsField(int objectType, ChoiceQuestion question)
