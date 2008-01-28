@@ -36,7 +36,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField futureStatusSummaryField = createStringField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		PanelTitleLabel futureStatusSummaryLabelField = new PanelFieldLabel(futureStatusSummaryField.getObjectType(), futureStatusSummaryField.getTag());
 
-		futureStatusRatingField = createRatingChoiceField(ObjectType.INDICATOR, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING));
+		futureStatusRatingField = createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion(Indicator.TAG_FUTURE_STATUS_RATING));
 		futureStatusRatingLabelField = new PanelFieldLabel(futureStatusRatingField.getObjectType(), futureStatusRatingField.getTag());
 		
 		addFieldsOnOneLine(EAM.text("Desired Status"), new Object[]{futureStatusDateField, futureStatusDateLabelField, 
