@@ -360,11 +360,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectClassificationChoiceField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
-	public ObjectDataInputField createClassificationChoiceField(int objectType, ChoiceQuestion question)
-	{
-		return new ObjectClassificationChoiceField(project, objectType, getObjectIdForType(objectType), question);
-	}
-	
 	public ObjectDataInputField createRatingChoiceField(ChoiceQuestion question)
 	{
 		return new ObjectRaitingChoiceField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), question);
