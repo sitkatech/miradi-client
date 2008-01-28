@@ -361,9 +361,9 @@ public class Target extends Factor
 		subTargetRefs = new ORefListData();
 		
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
-		targetStatusLabel = new PseudoQuestionData(new StatusQuestion(TAG_TARGET_STATUS));
-		viabiltyModeLabel = new PseudoQuestionData(new ViabilityModeQuestion(TAG_VIABILITY_MODE));
-		targetViabilityLabel = new PseudoQuestionData(new StatusQuestion(PSEUDO_TAG_TARGET_VIABILITY));
+		targetStatusLabel = new PseudoQuestionData(TAG_TARGET_STATUS, new StatusQuestion(TAG_TARGET_STATUS));
+		viabiltyModeLabel = new PseudoQuestionData(TAG_VIABILITY_MODE, new ViabilityModeQuestion(TAG_VIABILITY_MODE));
+		targetViabilityLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion(PSEUDO_TAG_TARGET_VIABILITY));
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
