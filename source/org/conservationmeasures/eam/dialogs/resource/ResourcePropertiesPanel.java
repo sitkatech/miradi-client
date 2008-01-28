@@ -57,7 +57,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
 
-		addField(createRatingChoiceField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
+		addField(createRatingChoiceField(ProjectResource.TAG_COST_UNIT, new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
 		addField(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT));
 
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
