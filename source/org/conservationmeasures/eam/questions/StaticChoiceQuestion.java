@@ -11,7 +11,7 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 {
 	public StaticChoiceQuestion(String tagToUse, ChoiceItem[] choicesToUse)
 	{
-		super(tagToUse);
+		super();
 		choices = choicesToUse;
 	}
 	
