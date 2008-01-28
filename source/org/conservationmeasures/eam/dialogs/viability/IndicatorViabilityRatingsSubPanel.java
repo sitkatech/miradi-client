@@ -24,7 +24,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		ratingThresholdTable = createViabilityRatingsTableField(ObjectType.INDICATOR,  new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
+		ratingThresholdTable = createViabilityRatingsTableField(ObjectType.INDICATOR, Indicator.TAG_INDICATOR_THRESHOLD, new StatusQuestion(Indicator.TAG_INDICATOR_THRESHOLD));
 		addField(ratingThresholdTable);
 
 		addField(createRatingChoiceField(ObjectType.INDICATOR,  new RatingSourceQuestion(Indicator.TAG_RATING_SOURCE)));
@@ -33,9 +33,9 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
-	public ViabilityRatingsTableField createViabilityRatingsTableField(int objectType, ChoiceQuestion question)
+	public ViabilityRatingsTableField createViabilityRatingsTableField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), question);
+		return new ViabilityRatingsTableField(getProject(), objectType, getObjectIdForType(objectType), tagToUse, question);
 	}	
 
 	public String getPanelDescription()
