@@ -162,6 +162,9 @@ public class Strategy extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
+		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
+			return new StrategyClassificationQuestion().findChoiceByCode(taxonomyCode.get()).getLabel();
+		
 		return super.getPseudoData(fieldTag);
 	}
 

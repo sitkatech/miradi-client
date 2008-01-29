@@ -131,7 +131,15 @@ public class Cause extends Factor
 
 		return OBJECT_NAME_CONTRIBUTING_FACTOR;
 	}
-	
+
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
+			return new ThreatClassificationQuestion().findChoiceByCode(taxonomyCode.get()).getLabel();
+		
+		return super.getPseudoData(fieldTag);
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.CAUSE;
