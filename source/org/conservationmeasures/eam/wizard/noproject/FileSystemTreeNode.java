@@ -83,14 +83,14 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(file.isDirectory() && isValidProjectDir(file))
+			if(file.isDirectory() && !isCustomReportDirectory(file))
 				children.add(new FileSystemTreeNode(file));
 		}
 	}
 
-	private boolean isValidProjectDir(File file)
+	private boolean isCustomReportDirectory(File file)
 	{
-		return !file.getName().equals(ReportSplitPane.CUSTOM_REPORTS_DIR_NAME);
+		return file.getName().equals(ReportSplitPane.CUSTOM_REPORTS_DIR_NAME);
 	}
 	
 	private boolean isProjectDirectory()
