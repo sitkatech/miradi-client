@@ -94,9 +94,9 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private void createButtonHashMap()
 	{
 		buttonHashMap = new HashMap<String, String>();
-		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
-		buttonHashMap.put("Conceptula Models Report", "/reports/AllConceptualModelsReport.jasper");
+		buttonHashMap.put("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper");
 		buttonHashMap.put("Results Chains Report", "/reports/AllResultsChainsReport.jasper");
+		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
 	}
 	
 	public  class ReportGenerator implements ActionListener
