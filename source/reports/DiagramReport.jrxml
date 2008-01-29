@@ -56,7 +56,7 @@
 						key="image-1"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
 					<graphicElement stretchType="RelativeToBandHeight"/>
 					<imageExpression class="java.awt.Image"><![CDATA[org.conservationmeasures.eam.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/" + $F{ref} + ".jpg")]]></imageExpression>
 				</image>
