@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
@@ -58,8 +59,8 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
 			return new StatusQuestion().findChoiceByCode(rawValue);
 		
-		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE))
-			return kea.getKeyEcologicalAttributeTypeChoiceItem();
+		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
 			return null;
@@ -96,7 +97,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
 		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE,
+		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.TAG_EMPTY,
