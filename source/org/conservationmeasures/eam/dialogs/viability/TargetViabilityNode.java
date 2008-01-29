@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
 
 public class TargetViabilityNode extends TreeTableNode
@@ -62,8 +63,8 @@ public class TargetViabilityNode extends TreeTableNode
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
 			return new ViabilityModeQuestion().findChoiceByCode(rawValue);
 		
-		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE))
-			return target.getPseudoTargetViabilityChoiceItem();
+		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
+			return new StatusQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(Target.TAG_EMPTY))
 			return null;
@@ -110,7 +111,7 @@ public class TargetViabilityNode extends TreeTableNode
 	public static final String[] COLUMN_TAGS = {
 		Target.TAG_EMPTY, 
 		Target.TAG_VIABILITY_MODE, 
-		Target.PSEUDO_TAG_TARGET_VIABILITY_VALUE,
+		Target.PSEUDO_TAG_TARGET_VIABILITY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
