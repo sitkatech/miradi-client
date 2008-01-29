@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.GraphConstants;
 
@@ -119,7 +120,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	public int calculateShortScopeHeight(int width) 
 	{
 		JTextPane ja = new JTextPane();
-		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamilCode = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamily = new FontFamiliyQuestion().findChoiceByCode(fontFamilCode).getLabel();
 		int size = getProject().getMetadata().getDiagramFontSize();
 		if (size==0)
 			size = ja.getFont().getSize();
