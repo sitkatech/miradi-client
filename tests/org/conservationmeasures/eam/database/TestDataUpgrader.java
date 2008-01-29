@@ -161,14 +161,13 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(taskWithOrphandeTaskParent, taskIds[3], taskDir);
 		
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
-		dataUpgrader.deleteOrphanedTasks();
+		dataUpgrader.upgradeToVersion34();
 		
 		File deletedOrphandTask = new File(taskDir, Integer.toString(taskIds[2]));
 		assertFalse("orphan task not deleted?", deletedOrphandTask.exists());
 		
-		//FIXME,  after deleting an orphaned parent,  its child is left as orpahand.
-		//File deletedTaskWithOrphandParent = new File(taskDir, Integer.toString(taskIds[3]));
-		//assertFalse("task with orphand parent not deleted?", deletedTaskWithOrphandParent.exists());
+		File deletedTaskWithOrphandParent = new File(taskDir, Integer.toString(taskIds[3]));
+		assertFalse("task with orphand parent not deleted?", deletedTaskWithOrphandParent.exists());
 		
 		File taskWithStrategyParentFile = new File(taskDir, Integer.toString(taskIds[0]));
 		assertTrue("deleted task with parent?", taskWithStrategyParentFile.exists());
