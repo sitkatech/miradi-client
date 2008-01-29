@@ -186,23 +186,26 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 
-	private void upgradeToVersion34() throws Exception
+	public void upgradeToVersion34() throws Exception
 	{
-		deleteOrphanedTasks();
+		while(deleteOrphanedTasks())
+		{
+		}
+		
 		writeVersion(34);
 	}
 	
-	public void deleteOrphanedTasks() throws Exception
+	private  boolean deleteOrphanedTasks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
 		File taskDir = getObjectsDir(jsonDir, 3);
 		if (! taskDir.exists())
-			return;
+			return false;
 
 		File taskManifestFile = new File(taskDir, "manifest");
 		if (! taskManifestFile.exists())
-			return;
+			return false;
 
 		HashSet orphandTasks = new HashSet();
 		ObjectManifest taskManifest = new ObjectManifest(JSONFile.read(taskManifestFile));
@@ -226,8 +229,7 @@ public class DataUpgrader extends FileBasedProjectServer
 
 		BaseId[] orphanBaseIds = (BaseId[])orphandTasks.toArray(new BaseId[0]);
 		IdList orphandIdList = new IdList(3, orphanBaseIds);
-		int[] orphandIdsAsInts = orphandIdList.toIntArray();
-
+		int[] orphandIdsAsInts = orphandIdList.toIntArray();		
 		for (int i = 0; i < orphandIdsAsInts.length; ++i)
 		{
 			File targetFile = new File(taskDir, Integer.toString(orphandIdsAsInts[i]));
@@ -235,7 +237,8 @@ public class DataUpgrader extends FileBasedProjectServer
 		}
 
 		createManifestFile(taskDir, newManifestTaskIds.toIntArray());
-
+		
+		return (orphandTasks.size() > 0);
 	}
 
 	private boolean hasIndicatorAsParent(File jsonDir, BaseId taskIdToFind) throws Exception
