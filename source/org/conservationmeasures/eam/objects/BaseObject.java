@@ -485,6 +485,8 @@ abstract public class BaseObject
 	
 	void addField(String tag, ObjectData data)
 	{
+		if(!data.getTag().equals(tag))
+			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
 		fields.put(tag, data);
 	}
 	
@@ -1092,9 +1094,7 @@ abstract public class BaseObject
 
 		public String get()
 		{
-			String pseudoData = getPseudoData(getTag());
-			ChoiceItem choice = question.findChoiceByCode(pseudoData);
-			return  choice.getCode();
+			return getPseudoData(getTag());
 		}
 		
 		public ChoiceItem getChoiceItem()

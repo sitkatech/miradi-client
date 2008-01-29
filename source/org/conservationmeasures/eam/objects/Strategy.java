@@ -302,10 +302,10 @@ public class Strategy extends Factor
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
-		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new StrategyClassificationQuestion());
-		impactRatingLabel = new PseudoQuestionData(TAG_IMPACT_RATING, new StrategyImpactQuestion());
-		feasibilityRatingLabel = new PseudoQuestionData(TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
-		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
+		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
+		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());
+		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, new StrategyFeasibilityQuestion());
+		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		
 		addField(TAG_STATUS, status);

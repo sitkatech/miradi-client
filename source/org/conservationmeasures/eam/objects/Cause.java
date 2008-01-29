@@ -161,7 +161,7 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new StringData(TAG_TAXONOMY_CODE);
-		taxonomyCodeLabel = new PseudoQuestionData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new ThreatClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);

@@ -17,8 +17,6 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
-import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
-import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
@@ -239,7 +237,7 @@ public class ProjectMetadata extends BaseObject
 		startDate = new DateData(TAG_START_DATE);
 		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
-		sizeInHectares = new NumberData(TAG_PROJECT_AREA);
+		sizeInHectares = new NumberData(TAG_TNC_SIZE_IN_HECTARES);
 		currencyDecimalPlaces = new IntegerData(TAG_CURRENCY_DECIMAL_PLACES);
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
@@ -352,14 +350,10 @@ public class ProjectMetadata extends BaseObject
 		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
 		diagramFontFamily = new StringData(TAG_DIAGRAM_FONT_FAMILY);
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE);
-		diagramFontSizeValue = new PseudoQuestionData(PSEUDO_TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion());
-		diagramFontFamilyValue = new PseudoQuestionData(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion());
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
-		addField(PSEUDO_TAG_DIAGRAM_FONT_FAMILY, diagramFontFamilyValue);
-		addField(PSEUDO_TAG_DIAGRAM_FONT_SIZE, diagramFontSizeValue);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -428,8 +422,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
 	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
 	
-	public static final String PSEUDO_TAG_DIAGRAM_FONT_FAMILY = "DiagramFontFamilyValue";
-	public static final String PSEUDO_TAG_DIAGRAM_FONT_SIZE = "DiagramFontSizeValue";
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
@@ -498,7 +490,4 @@ public class ProjectMetadata extends BaseObject
 	private StringData diagramFontFamily;
 	private IntegerData diagramFontSize;
 	private ChoiceData threatRatingMode;
-	
-	private PseudoQuestionData diagramFontFamilyValue;
-	private PseudoQuestionData diagramFontSizeValue;
 }
