@@ -188,25 +188,25 @@ public class DataUpgrader extends FileBasedProjectServer
 
 	public void upgradeToVersion34() throws Exception
 	{
-		while(deleteOrphanedTasks())
+		while(deleteOrphanedTasks() > 0)
 		{
 		}
 		
 		writeVersion(34);
 	}
 	
-	private  boolean deleteOrphanedTasks() throws Exception
+	private  int deleteOrphanedTasks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
 		final int TASK_TYPE = 3;
 		File taskDir = getObjectsDir(jsonDir, TASK_TYPE);
 		if (! taskDir.exists())
-			return false;
+			return 0;
 
 		File taskManifestFile = new File(taskDir, "manifest");
 		if (! taskManifestFile.exists())
-			return false;
+			return 0;
 
 		ObjectManifest taskManifest = new ObjectManifest(JSONFile.read(taskManifestFile));
 		BaseId[] taskIds = taskManifest.getAllKeys();
@@ -233,7 +233,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		tasksWithParents.subtract(orphandIdList);
 		createManifestFile(taskDir, tasksWithParents.toIntArray());
 		
-		return (orphandIdsAsInts.length > 0);
+		return orphandIdsAsInts.length;
 	}
 
 	private HashSet<BaseId> getTaskIds(File jsonDir) throws Exception
