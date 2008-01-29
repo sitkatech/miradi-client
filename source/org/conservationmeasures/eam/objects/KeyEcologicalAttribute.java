@@ -194,8 +194,8 @@ public class KeyEcologicalAttribute extends BaseObject
 		keyEcologicalAttributeType = new StringData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
-		keyEcologicalAttributeTypeValue = new PseudoQuestionData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion());
-		viabilityStatusValue = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_STATUS, new StatusQuestion());
+		keyEcologicalAttributeTypeValue = new PseudoQuestionData(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, new KeyEcologicalAttributeTypeQuestion());
+		viabilityStatusValue = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_STATUS_VALUE, new StatusQuestion());
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);

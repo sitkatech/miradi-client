@@ -100,7 +100,7 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
-		if(fieldTag.equals(PSEUDO_TAG_FACTOR) || fieldTag.equals(LEGACY_PSEUDO_TAG_FACTOR))
+		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getOwner().getLabel();
 		
 		if(fieldTag.equals(PSEUDO_TAG_METHODS))
@@ -347,14 +347,14 @@ public class Indicator extends BaseObject
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
-		indicatorThresholdLabel = new PseudoStringData(TAG_INDICATOR_THRESHOLD);
-		priorityLabel = new PseudoQuestionData(TAG_PRIORITY, new PriorityRatingQuestion());
-		statusLabel = new PseudoQuestionData(TAG_STATUS, new IndicatorStatusRatingQuestion());
-		ratingSourceLabel = new PseudoQuestionData(TAG_RATING_SOURCE, new RatingSourceQuestion());
-		latestMeasurement = new PseudoQuestionData(TAG_INDICATOR_THRESHOLD, new StatusQuestion());
+		indicatorThresholdLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, new PriorityRatingQuestion());
+		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new IndicatorStatusRatingQuestion());
+		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, new RatingSourceQuestion());
+		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, new StatusQuestion());
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		
-		futureStatusRatingLabel = new PseudoQuestionData(TAG_FUTURE_STATUS_RATING, new StatusQuestion());
+		futureStatusRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, new StatusQuestion());
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
@@ -380,7 +380,6 @@ public class Indicator extends BaseObject
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
-		addField(LEGACY_PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_TAG_METHODS, multiLineMethods);
 		addField(PSEUDO_TAG_PRIORITY_VALUE, priorityLabel);
 		addField(PSEUDO_TAG_STATUS_VALUE, statusLabel);
@@ -412,7 +411,6 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
 	// NOTE: Can't change the following tags unless we recompile the jasper reports
-	public static final String LEGACY_PSEUDO_TAG_FACTOR = "Factor";
 	public static final String PSEUDO_TAG_TARGETS = "Targets";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "Strategies";
