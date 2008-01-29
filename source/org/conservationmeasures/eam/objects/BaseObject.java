@@ -375,10 +375,6 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-	private ChoiceQuestion getQuestion(Class questionClass)
-	{
-		return getProject().getQuestion(questionClass);
-	}
 
 
 	public double getProportionalBudgetCost(DateRange dateRange) throws Exception
