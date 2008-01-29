@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
-import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -141,11 +140,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public ChoiceItem getViabilityStatusValue()
-	{
-		return viabilityStatusValue.getChoiceItem();
-	}
-	
 	public String computeTNCViability()
 	{
 		CodeList statuses = new CodeList();
@@ -195,7 +189,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
 		keyEcologicalAttributeTypeValue = new PseudoQuestionData(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, new KeyEcologicalAttributeTypeQuestion());
-		viabilityStatusValue = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_STATUS_VALUE, new StatusQuestion());
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);
@@ -204,7 +197,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
 		addField(PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE, keyEcologicalAttributeTypeValue);
-		addField(PSEUDO_TAG_VIABILITY_STATUS_VALUE, viabilityStatusValue);
 	}
 		
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -214,7 +206,6 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
 	public static final String PSEUDO_TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE_VALUE = "KeyEcologicalAttributeTypeLabel";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
-	public static final String PSEUDO_TAG_VIABILITY_STATUS_VALUE = "ViabilityStatusValue";
 
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 	
@@ -225,5 +216,4 @@ public class KeyEcologicalAttribute extends BaseObject
 	private StringData shortLabel;
 	private PseudoStringData viabilityStatus;
 	private PseudoQuestionData keyEcologicalAttributeTypeValue;
-	private PseudoQuestionData viabilityStatusValue;
 }
