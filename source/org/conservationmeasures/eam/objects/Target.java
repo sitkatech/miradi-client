@@ -210,11 +210,6 @@ public class Target extends Factor
 		return list;
 	}
 	
-	public ChoiceItem getPseudoTargetViabilityChoiceItem()
-	{
-		return targetViabilityLabel.getChoiceItem();
-	}
-	
 	public String getBasicTargetStatus()
 	{
 		return targetStatus.get();
@@ -363,7 +358,6 @@ public class Target extends Factor
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
-		targetViabilityLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_VIABILITY_VALUE, new StatusQuestion());
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
@@ -375,7 +369,6 @@ public class Target extends Factor
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, viabiltyModeLabel);
-		addField(PSEUDO_TAG_TARGET_VIABILITY_VALUE, targetViabilityLabel);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
@@ -390,7 +383,6 @@ public class Target extends Factor
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
-	public static final String PSEUDO_TAG_TARGET_VIABILITY_VALUE = "ViabilityValue";
 	
 	private ChoiceData targetStatus;
 	private ChoiceData viabiltyMode;
@@ -402,5 +394,4 @@ public class Target extends Factor
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	PseudoQuestionData viabiltyModeLabel;
-	private PseudoQuestionData targetViabilityLabel;
 }
