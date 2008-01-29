@@ -1019,6 +1019,13 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
 			return getBudgetCostRollupAsString();
 		
+		ObjectData field = getField(fieldTag);
+		if(field.isPseudoField())
+		{
+			EAM.logError("BaseObject.getPseudoData called for: " + fieldTag);
+			return "";
+		}
+		
 		return getData(fieldTag);
 	}
 	
