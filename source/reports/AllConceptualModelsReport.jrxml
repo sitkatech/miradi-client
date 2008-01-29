@@ -30,19 +30,19 @@
 			</band>
 		</background>
 		<title>
-			<band height="47"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="16"
-						y="9"
+						x="163"
+						y="5"
 						width="209"
-						height="27"
+						height="15"
 						key="staticText-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Diagrams 4]]></text>
+				<text><![CDATA[Conceptual Model(s)]]></text>
 				</staticText>
 			</band>
 		</title>
@@ -55,12 +55,12 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="28"  isSplitAllowed="true" >
+			<band height="24"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="5"
-						y="3"
-						width="193"
+						x="0"
+						y="2"
+						width="535"
 						height="22"
 						key="subreport-1"/>
 					<subreportParameter  name="DATA_DIRECTORY">
