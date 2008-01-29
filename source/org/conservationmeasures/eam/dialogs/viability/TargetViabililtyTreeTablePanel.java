@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanel
@@ -61,6 +62,10 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 			restoreTreeExpansionState();
 			repaint();
 		} 
+		else if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_EXPANSION_LIST))
+		{
+			restoreTreeExpansionState();	
+		}
 		else if(event.isSetDataCommand())
 		{
 			treeTableModel.rebuildEntireTree();

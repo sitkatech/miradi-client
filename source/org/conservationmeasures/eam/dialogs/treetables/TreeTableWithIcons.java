@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
@@ -402,9 +403,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 
 	public void ensureObjectVisible(ORef ref)
 	{
-		// TODO Auto-generated method stub
-		// we should scroll the table as needed to make this 
-		// probably-newly-created object visible
+		// NOTE: This code hasn't been proven to work...we believe it needs to be called
+		// from inside invokeLater and that it will work if we do that
+		TreePath path = getTreeTableModel().findObject(getTreeTableModel().getPathToRoot(), ref);
+		getTree().scrollPathToVisible(path);
 	}
 
 	public void addSelectionChangeListener(ListSelectionListener listener)
@@ -450,6 +452,34 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
+	}
+	
+	public void selectObject(ORef ref)
+	{
+		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
+		tree.setSelectionPath(path);
+	}
+
+	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
+	{
+		SwingUtilities.invokeLater(new Reselecter(this, selectedRef));
+	}
+	
+	static class Reselecter implements Runnable
+	{
+		public Reselecter(TreeTableWithIcons treeTableToUse, ORef refToSelect)
+		{
+			treeTable = treeTableToUse;
+			ref = refToSelect;
+		}
+		
+		public void run()
+		{
+			treeTable.selectObject(ref);
+		}
+		
+		private TreeTableWithIcons treeTable;
+		private ORef ref;
 	}
 
 	private GenericTreeTableModel treeTableModel;

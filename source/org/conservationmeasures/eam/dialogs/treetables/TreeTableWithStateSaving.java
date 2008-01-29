@@ -61,7 +61,9 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		try
 		{
 			addObjectToExpandedList(ref);
-			selectObject(ref);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref);
+			
+			// TODO: This isn't working...probably also needs to be run in a thread like select
 			super.ensureObjectVisible(ref);
 		}
 		catch (Exception e)
@@ -69,12 +71,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error has occurred making the new object visible");
 		}
-	}
-	
-	public void selectObject(ORef ref)
-	{
-		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
-		tree.setSelectionPath(path);
 	}
 	
 	void updateTreeExpansion(ORefList expandedList)
