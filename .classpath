@@ -9,7 +9,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/jexcel/jxl.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/tablelayout/TableLayout.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/itext-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/jasperreports-1.3.2.jar" sourcepath="/miradi-thirdparty/Jasper/jasperreports-1.3.2-project-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-collections-2.1.jar"/>
@@ -18,5 +17,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-beanutils-1.7.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/jasperreports-2.0.4.jar" sourcepath="/miradi-thirdparty/Jasper/jasperreports-2.0.4-project-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/xalan.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
