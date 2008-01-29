@@ -95,7 +95,8 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	{
 		buttonHashMap = new HashMap<String, String>();
 		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
-		buttonHashMap.put("Diagram Report", "/reports/AllConceptualModelsReport.jasper");
+		buttonHashMap.put("Conceptula Models Report", "/reports/AllConceptualModelsReport.jasper");
+		buttonHashMap.put("Results Chains Report", "/reports/AllResultsChainsReport.jasper");
 	}
 	
 	public  class ReportGenerator implements ActionListener
@@ -114,6 +115,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 				PanelButton source = (PanelButton) event.getSource();
 				String value = buttonHashMap.get(source.getText()).toString();
 				setRightComponent(generateReport(value));
+				restoreSavedLocation();
 			}
 			catch (Exception e)
 			{
