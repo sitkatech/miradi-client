@@ -49,13 +49,13 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		setRightComponent(new JPanel());
 	}
 	
-	private JPanel generateReport(String reportPath) throws Exception
+	private JPanel createReportPanel(String reportPath) throws Exception
 	{
 		URL resourcePath = Miradi.class.getResource(reportPath);
-		return generateReport(resourcePath);
+		return createReportPanel(resourcePath);
 	}
 	
-	private JPanel generateReport(URL reportURL) throws Exception
+	private JPanel createReportPanel(URL reportURL) throws Exception
 	{
 		InputStream input = reportURL.openStream();
 		File directory = File.createTempFile("MiradiXML", null);
@@ -63,14 +63,14 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		directory.mkdir();
 		File xmlFile = ExportProjectXmlDoer.exportProjectToXml(getProject(), directory);
 
-		JPanel reportPanel = getReport(input, xmlFile);
+		JPanel reportPanel = fillReportInsidePanel(input, xmlFile);
 		input.close();
 		DirectoryUtils.deleteEntireDirectoryTree(directory);
 
 		return reportPanel;
 	}
 	
-	public JPanel getReport(InputStream reportInput, File xmlFile) throws Exception
+	public JPanel fillReportInsidePanel(InputStream reportInput, File xmlFile) throws Exception
 	{
 		HashMap parameters = new HashMap();
 		parameters.put("DATA_DIRECTORY", xmlFile.getParent());
@@ -138,7 +138,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 					return;
 				
 				File fileToImport = customReportChooser.getSelectedFile();
-				setRightComponent(generateReport(fileToImport.toURI().toURL()));
+				setRightComponent(createReportPanel(fileToImport.toURI().toURL()));
 				restoreSavedLocation();
 			}
 			catch (Exception e)
@@ -180,7 +180,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 
 	private void resetReportPanel(String value) throws Exception
 	{
-		setRightComponent(generateReport(value));
+		setRightComponent(createReportPanel(value));
 		restoreSavedLocation();
 	}	
 	
