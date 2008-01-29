@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -28,15 +27,18 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.util.DirectoryUtils;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ReportSplitPane extends JSplitPane
+public class ReportSplitPane extends PersistentHorizontalSplitPane
 {
 	public ReportSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
+		super(mainWindowToUse, mainWindowToUse, UNIQUE_SPLITTER_NAME);
+		
 		mainWindow = mainWindowToUse;
 		
 		createButtonHashMap();
@@ -137,4 +139,6 @@ public class ReportSplitPane extends JSplitPane
 	
 	private HashMap buttonHashMap;
 	private MainWindow mainWindow;
+	
+	private static final String UNIQUE_SPLITTER_NAME = "ReportSplitPaneName";
 }
