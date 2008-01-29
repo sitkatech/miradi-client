@@ -84,7 +84,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		for(Object key : keys)
 		{
 			PanelButton reportButton = new PanelButton(key.toString());
-			reportButton.addActionListener(new ReportGenerator());
+			reportButton.addActionListener(new BuiltInReportHandler());
 			selectionPanel.add(reportButton);
 		}
 		
@@ -99,7 +99,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
 	}
 	
-	public  class ReportGenerator implements ActionListener
+	public  class BuiltInReportHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
