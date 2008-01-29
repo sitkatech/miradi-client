@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
@@ -48,7 +49,9 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public String getFontFamily()
 	{
-		return getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamilCode = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamily = new FontFamiliyQuestion().findChoiceByCode(fontFamilCode).getLabel();
+		return fontFamily;
 	}
 
 	public int getFontSize()

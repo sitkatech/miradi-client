@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.jgraph.graph.GraphConstants;
 
 public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListener
@@ -123,7 +124,8 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	 * : see AboutBox that uses the HtmlViewer as in  About.class */
 	public int calculateShortScopeHeight(int width) 
 	{
-		String fontFamily = getProject().getMetadata().getData(ProjectMetadata.PSEUDO_TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamilCode = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
+		String fontFamily = new FontFamiliyQuestion().findChoiceByCode(fontFamilCode).getLabel();
 		int size = getProject().getMetadata().getDiagramFontSize();
 		if (size==0)
 			size = textPane.getFont().getSize();
