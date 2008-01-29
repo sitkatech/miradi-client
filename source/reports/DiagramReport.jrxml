@@ -46,26 +46,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="802"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="0"
-						y="0"
-						width="143"
-						height="23"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Diagram Report	 3]]></text>
-				</staticText>
+			<band height="355"  isSplitAllowed="true" >
 				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="23"
+						y="0"
 						width="535"
-						height="779"
+						height="355"
 						key="image-1"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
