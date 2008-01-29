@@ -199,7 +199,8 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		File jsonDir = getTopJsonDir();
 		
-		File taskDir = getObjectsDir(jsonDir, 3);
+		final int TASK_TYPE = 3;
+		File taskDir = getObjectsDir(jsonDir, TASK_TYPE);
 		if (! taskDir.exists())
 			return false;
 
@@ -207,69 +208,65 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (! taskManifestFile.exists())
 			return false;
 
-		HashSet orphandTasks = new HashSet();
 		ObjectManifest taskManifest = new ObjectManifest(JSONFile.read(taskManifestFile));
 		BaseId[] taskIds = taskManifest.getAllKeys();
-		orphandTasks.addAll(Arrays.asList(taskIds));
-		IdList newManifestTaskIds = new IdList(3);
-		for (int i = 0; i < taskIds.length; ++i)
-		{
-			BaseId taskId = taskIds[i];
-			boolean hasIndicatorParent = hasIndicatorAsParent(jsonDir, taskId);
-			boolean hasStrategyParent = hasStrategyAsParent(jsonDir, taskId);
-			boolean hasTaskParent = hasParent(taskDir, taskManifestFile, "SubtaskIds", taskId);
-			boolean hasParent = (hasIndicatorParent || hasStrategyParent || hasTaskParent);  
+		HashSet<BaseId> allTasks = new HashSet<BaseId>();
+		allTasks.addAll(Arrays.asList(taskIds));
 
-			if (hasParent)
-			{
-				newManifestTaskIds.add(taskId);
-				orphandTasks.remove(taskId);
-			}
-		}
+		HashSet<BaseId> allTaskChildrenIds = new HashSet<BaseId>();
+		allTaskChildrenIds.addAll(getTaskIds(jsonDir));
+		allTaskChildrenIds.addAll(getActivityIds(jsonDir));
+		allTaskChildrenIds.addAll(getTaskChildren(taskDir, taskManifestFile, "SubtaskIds"));
 
-		BaseId[] orphanBaseIds = (BaseId[])orphandTasks.toArray(new BaseId[0]);
-		IdList orphandIdList = new IdList(3, orphanBaseIds);
+		allTasks.removeAll(allTaskChildrenIds);
+		
+		BaseId[] orphanBaseIds = allTasks.toArray(new BaseId[0]);
+		IdList orphandIdList = new IdList(TASK_TYPE, orphanBaseIds);
 		int[] orphandIdsAsInts = orphandIdList.toIntArray();		
 		for (int i = 0; i < orphandIdsAsInts.length; ++i)
 		{
 			File targetFile = new File(taskDir, Integer.toString(orphandIdsAsInts[i]));
 			targetFile.delete();
 		}
-
-		createManifestFile(taskDir, newManifestTaskIds.toIntArray());
 		
-		return (orphandTasks.size() > 0);
+		IdList tasksWithParents = new IdList(TASK_TYPE, taskIds);
+		tasksWithParents.subtract(orphandIdList);
+		createManifestFile(taskDir, tasksWithParents.toIntArray());
+		
+		return (orphandIdsAsInts.length > 0);
 	}
 
-	private boolean hasIndicatorAsParent(File jsonDir, BaseId taskIdToFind) throws Exception
+	private HashSet<BaseId> getTaskIds(File jsonDir) throws Exception
 	{
 		File indicatorDir = getObjectsDir(jsonDir, 8);
 		if (! indicatorDir.exists())
-			return false;
+			return new HashSet<BaseId>();
 
 		File indicatorManifestFile = new File(indicatorDir, "manifest");
 		if (! indicatorManifestFile.exists())
-			return false;
+			return new HashSet<BaseId>();
 		
-		return hasParent(indicatorDir, indicatorManifestFile, "TaskIds", taskIdToFind);
+		return getTaskChildren(indicatorDir, indicatorManifestFile, "TaskIds");
 	}
 
-	private boolean hasStrategyAsParent(File jsonDir, BaseId taskIdToFind) throws Exception
+	private HashSet<BaseId> getActivityIds(File jsonDir) throws Exception
 	{
 		File strategyDir = getObjectsDir(jsonDir, 4);
 		if (! strategyDir.exists())
-			return false;
+			return new HashSet<BaseId>();
 
 		File strategyManifestFile = new File(strategyDir, "manifest");
 		if (! strategyManifestFile.exists())
-			return false;
+			return new HashSet<BaseId>();
 				
-		return hasParent(strategyDir, strategyManifestFile, "ActivityIds", taskIdToFind);
+		return getTaskChildren(strategyDir, strategyManifestFile, "ActivityIds");
 	}
 
 	
-	private boolean hasParent(File parentDir, File manifestFile, String taskIdsTag, BaseId taskIdToFind) throws Exception
+	private HashSet<BaseId> getTaskChildren(File parentDir, File manifestFile, String taskIdsTag) throws Exception
 	{
+		final int TASK_TYPE = 3;
+		HashSet<BaseId> taskIds = new HashSet();
 		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFile));
 		BaseId[] ids = manifest.getAllKeys();
 		for (int i = 0; i < ids.length; ++i)
@@ -277,12 +274,11 @@ public class DataUpgrader extends FileBasedProjectServer
 			BaseId thisId = ids[i];
 			File objectFile = new File(parentDir, Integer.toString(thisId.asInt()));
 			EnhancedJsonObject json = readFile(objectFile);
-			IdList taskIds = new IdList(3, json.optString(taskIdsTag));
-			if (taskIds.contains(taskIdToFind))
-				return true;
+			IdList thisTaskIds = new IdList(TASK_TYPE, json.optString(taskIdsTag));
+			taskIds.addAll(thisTaskIds.asVector());
 		}
 		
-		return false;
+		return taskIds;
 	}
 
 	private void upgradeToVersion33() throws Exception

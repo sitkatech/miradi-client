@@ -205,6 +205,11 @@ public class IdList
 			
 		return intArray;
 	}
+	
+	public Vector<BaseId> asVector()
+	{
+		return data;
+	}
 
 	public void toXml(UnicodeWriter out) throws IOException
 	{
