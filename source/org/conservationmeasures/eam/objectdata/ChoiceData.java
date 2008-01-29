@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.questions.ChoiceQuestion;
 
 public class ChoiceData extends StringData
 {
@@ -13,6 +12,4 @@ public class ChoiceData extends StringData
 	{
 		super(tagToUse);
 	}
-	
-	private ChoiceQuestion question;
 }
