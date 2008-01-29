@@ -9,7 +9,9 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -175,13 +177,111 @@ public class DataUpgrader extends FileBasedProjectServer
 			if (readDataVersion(getTopDirectory()) == 32)
 				upgradeToVersion33();
 
+			if (readDataVersion(getTopDirectory()) == 33)
+				upgradeToVersion34();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
 	}
+
+	private void upgradeToVersion34() throws Exception
+	{
+		deleteOrphanedTasks();
+		writeVersion(34);
+	}
 	
+	public void deleteOrphanedTasks() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		
+		File taskDir = getObjectsDir(jsonDir, 3);
+		if (! taskDir.exists())
+			return;
+
+		File taskManifestFile = new File(taskDir, "manifest");
+		if (! taskManifestFile.exists())
+			return;
+
+		HashSet orphandTasks = new HashSet();
+		ObjectManifest taskManifest = new ObjectManifest(JSONFile.read(taskManifestFile));
+		BaseId[] taskIds = taskManifest.getAllKeys();
+		orphandTasks.addAll(Arrays.asList(taskIds));
+		IdList newManifestTaskIds = new IdList(3);
+		for (int i = 0; i < taskIds.length; ++i)
+		{
+			BaseId taskId = taskIds[i];
+			boolean hasIndicatorParent = hasIndicatorAsParent(jsonDir, taskId);
+			boolean hasStrategyParent = hasStrategyAsParent(jsonDir, taskId);
+			boolean hasTaskParent = hasParent(taskDir, taskManifestFile, "SubtaskIds", taskId);
+			boolean hasParent = (hasIndicatorParent || hasStrategyParent || hasTaskParent);  
+
+			if (hasParent)
+			{
+				newManifestTaskIds.add(taskId);
+				orphandTasks.remove(taskId);
+			}
+		}
+
+		BaseId[] orphanBaseIds = (BaseId[])orphandTasks.toArray(new BaseId[0]);
+		IdList orphandIdList = new IdList(3, orphanBaseIds);
+		int[] orphandIdsAsInts = orphandIdList.toIntArray();
+
+		for (int i = 0; i < orphandIdsAsInts.length; ++i)
+		{
+			File targetFile = new File(taskDir, Integer.toString(orphandIdsAsInts[i]));
+			targetFile.delete();
+		}
+
+		createManifestFile(taskDir, newManifestTaskIds.toIntArray());
+
+	}
+
+	private boolean hasIndicatorAsParent(File jsonDir, BaseId taskIdToFind) throws Exception
+	{
+		File indicatorDir = getObjectsDir(jsonDir, 8);
+		if (! indicatorDir.exists())
+			return false;
+
+		File indicatorManifestFile = new File(indicatorDir, "manifest");
+		if (! indicatorManifestFile.exists())
+			return false;
+		
+		return hasParent(indicatorDir, indicatorManifestFile, "TaskIds", taskIdToFind);
+	}
+
+	private boolean hasStrategyAsParent(File jsonDir, BaseId taskIdToFind) throws Exception
+	{
+		File strategyDir = getObjectsDir(jsonDir, 4);
+		if (! strategyDir.exists())
+			return false;
+
+		File strategyManifestFile = new File(strategyDir, "manifest");
+		if (! strategyManifestFile.exists())
+			return false;
+				
+		return hasParent(strategyDir, strategyManifestFile, "ActivityIds", taskIdToFind);
+	}
+
+	
+	private boolean hasParent(File parentDir, File manifestFile, String taskIdsTag, BaseId taskIdToFind) throws Exception
+	{
+		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFile));
+		BaseId[] ids = manifest.getAllKeys();
+		for (int i = 0; i < ids.length; ++i)
+		{
+			BaseId thisId = ids[i];
+			File objectFile = new File(parentDir, Integer.toString(thisId.asInt()));
+			EnhancedJsonObject json = readFile(objectFile);
+			IdList taskIds = new IdList(3, json.optString(taskIdsTag));
+			if (taskIds.contains(taskIdToFind))
+				return true;
+		}
+		
+		return false;
+	}
+
 	private void upgradeToVersion33() throws Exception
 	{
 		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 

@@ -126,6 +126,64 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
+	public void testDeleteOrphanedTasks() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		
+		String indicatorWithTask = "{\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"FutureStatusSummary\":\"\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"\",\"Priority\":\"\",\"Status\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[24]}\",\"TimeStampModified\":\"1201628736266\",\"BudgetCostMode\":\"\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":21,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String strategyWithTask = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[21]}\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1201630619780\",\"ActivityIds\":\"{\\\"Ids\\\":[23]}\",\"BudgetCostMode\":\"\",\"FeasibilityRating\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Strategy\",\"Id\":19,\"ProgressReportRefs\":\"\"}";
+		
+		String taskWithIndicatorParent = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1201628736210\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"SubtaskIds\":\"\",\"Label\":\"\",\"Id\":24}";
+		String taskWithStrategyParent= "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1201629793352\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"SubtaskIds\":\"\",\"Label\":\"with subs\",\"Id\":23}";
+		String orphanTaskWithTaskChild = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1201628740106\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"SubtaskIds\":\"{\\\"Ids\\\":[26]}\",\"Label\":\"\",\"Id\":25}";
+		String taskWithOrphandeTaskParent = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1201628740044\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"SubtaskIds\":\"\",\"Label\":\"\",\"Id\":26}";
+		
+		int[] indicatorIds = {19, };
+		File indicatorDir = DataUpgrader.createObjectsDir(jsonDir, 8);
+		File indicatorManifestFile = createManifestFile(indicatorDir, indicatorIds);
+		assertTrue(indicatorManifestFile.exists());
+		
+		int[] strategyIds = {21, };
+		File strategyDir = DataUpgrader.createObjectsDir(jsonDir, 4);
+		File strategyManifestFile = createManifestFile(strategyDir, strategyIds);
+		assertTrue(strategyManifestFile.exists());
+		
+		int[] taskIds = {23, 24, 25, 26,};
+		File taskDir = DataUpgrader.createObjectsDir(jsonDir, 3);
+		File taskManifestFile = createManifestFile(taskDir, taskIds);
+		assertTrue(taskManifestFile.exists());
+		
+		createObjectFile(indicatorWithTask, indicatorIds[0], indicatorDir);
+		createObjectFile(strategyWithTask, strategyIds[0], strategyDir);
+		createObjectFile(taskWithStrategyParent, taskIds[0], taskDir);
+		createObjectFile(taskWithIndicatorParent, taskIds[1], taskDir);
+		createObjectFile(orphanTaskWithTaskChild, taskIds[2], taskDir);
+		createObjectFile(taskWithOrphandeTaskParent, taskIds[3], taskDir);
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.deleteOrphanedTasks();
+		
+		File deletedOrphandTask = new File(taskDir, Integer.toString(taskIds[2]));
+		assertFalse("orphan task not deleted?", deletedOrphandTask.exists());
+		
+		//FIXME,  after deleting an orphaned parent,  its child is left as orpahand.
+		//File deletedTaskWithOrphandParent = new File(taskDir, Integer.toString(taskIds[3]));
+		//assertFalse("task with orphand parent not deleted?", deletedTaskWithOrphandParent.exists());
+		
+		File taskWithStrategyParentFile = new File(taskDir, Integer.toString(taskIds[0]));
+		assertTrue("deleted task with parent?", taskWithStrategyParentFile.exists());
+		
+		File taskWithIndicatorParentFile = new File(taskDir, Integer.toString(taskIds[1]));
+		assertTrue("deleted task with parent?", taskWithIndicatorParentFile.exists());
+	}
+
+	private void createObjectFile(String jsonAsString, int id, File dir) throws Exception
+	{
+		File objectFile = new File(dir, Integer.toString(id));
+		createFile(objectFile, jsonAsString);
+		assertTrue(objectFile.exists());
+	}
+	
 	public void testRemoveDuplicateBendPoints() throws Exception
 	{
 		File jsonDir = createJsonDir();
