@@ -37,9 +37,16 @@ public class ReportView extends TabbedView
 		return new ReportToolBar(getActions());
 	}
 
+	@Override
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		reportSplitPane.restoreSavedLocation();
+	}
+	
 	public void createTabs() throws Exception
 	{
-		ReportSplitPane reportSplitPane = new ReportSplitPane(getMainWindow());
+		reportSplitPane = new ReportSplitPane(getMainWindow());
 
 		addTab(EAM.text("Reports"), reportSplitPane);
 	}
@@ -47,5 +54,7 @@ public class ReportView extends TabbedView
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet
-	}	
+	}
+	
+	private ReportSplitPane reportSplitPane;
 }
