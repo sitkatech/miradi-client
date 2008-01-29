@@ -14,7 +14,6 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableColumnModelEvent;
@@ -42,7 +41,6 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 import org.conservationmeasures.eam.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTablePanel;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -294,7 +292,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
+		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
 	}
 	
 	private void updateRightSideTablePanels() throws Exception
@@ -317,28 +315,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		
 		validate();
 		repaint();
-	}
-
-	private void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
-	{
-		SwingUtilities.invokeLater(new Reselecter(tree, selectedRef));
-	}
-	
-	class Reselecter implements Runnable
-	{
-		public Reselecter(TreeTableWithStateSaving treeTableToUse, ORef refToSelect)
-		{
-			treeTable = treeTableToUse;
-			ref = refToSelect;
-		}
-		
-		public void run()
-		{
-			treeTable.selectObject(ref);
-		}
-		
-		TreeTableWithStateSaving treeTable;
-		ORef ref;
 	}
 
 	private PlanningTreeTableModel getPlanningModel()
