@@ -95,7 +95,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			selectionPanel.add(reportButton);
 		}
 		
-		PanelButton customReportButton = new PanelButton(EAM.text("Custom Report"));
+		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
 		customReportButton.addActionListener(new CustomReportHandler());
 		
 		selectionPanel.add(new JLabel(" "));
@@ -127,6 +127,16 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 				File reportPath = new File(home + "/CustomReports");
 				if (!reportPath.exists())
 					reportPath.mkdir();
+				
+				String[] reportFilenames = reportPath.list();
+				if(reportFilenames == null || reportFilenames.length == 0)
+				{
+					EAM.notifyDialog(EAM.text("<html>" +
+							"<strong>Custom Reports</Strong><br><br>" +
+							"Miradi is able to run custom reports created using the free iReports tool. <br>" +
+							"This requires technical knowledge, so if you are interested in creating <br>" +
+							"your own reports, please contact the Miradi team (email support@miradi.org)"));
+				}
 				
 				JFileChooser customReportChooser = new JFileChooser(reportPath);
 				customReportChooser.setDialogTitle(EAM.text("Choose Custom Report"));
