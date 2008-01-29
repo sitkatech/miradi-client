@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -27,6 +29,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.JasperReportFileFilter;
 import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.util.DirectoryUtils;
@@ -49,8 +52,12 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private JPanel generateReport(String reportPath) throws Exception
 	{
 		URL resourcePath = Miradi.class.getResource(reportPath);
-		InputStream input = resourcePath.openStream();
-
+		return generateReport(resourcePath);
+	}
+	
+	private JPanel generateReport(URL reportURL) throws Exception
+	{
+		InputStream input = reportURL.openStream();
 		File directory = File.createTempFile("MiradiXML", null);
 		directory.delete();
 		directory.mkdir();
@@ -88,6 +95,12 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			selectionPanel.add(reportButton);
 		}
 		
+		PanelButton customReportButton = new PanelButton(EAM.text("Custom Report"));
+		customReportButton.addActionListener(new CustomReportHandler());
+		
+		selectionPanel.add(new JLabel(" "));
+		selectionPanel.add(customReportButton);
+		
 		return selectionPanel;
 	}
 	
@@ -97,6 +110,43 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		buttonHashMap.put("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper");
 		buttonHashMap.put("Results Chains Report", "/reports/AllResultsChainsReport.jasper");
 		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
+	}
+	
+	public class CustomReportHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			askUserForCustomReport();
+		}	
+		
+		private void askUserForCustomReport()
+		{
+			try
+			{
+				File home = EAM.getHomeDirectory();
+				File reportPath = new File(home + "/CustomReports");
+				if (!reportPath.exists())
+					reportPath.mkdir();
+				
+				JFileChooser customReportChooser = new JFileChooser(reportPath);
+				customReportChooser.setDialogTitle(EAM.text("Choose Custom Report"));
+				customReportChooser.addChoosableFileFilter(new JasperReportFileFilter());
+				customReportChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
+				final String OPEN_BUTTON_TEXT = EAM.text("Open");
+				customReportChooser.setApproveButtonToolTipText(OPEN_BUTTON_TEXT);
+				if (customReportChooser.showDialog(getMainWindow(), OPEN_BUTTON_TEXT) != JFileChooser.APPROVE_OPTION)
+					return;
+				
+				File fileToImport = customReportChooser.getSelectedFile();
+				setRightComponent(generateReport(fileToImport.toURI().toURL()));
+				restoreSavedLocation();
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("Error ocurred while trying to load custom report");
+			}
+		}
 	}
 	
 	public  class BuiltInReportHandler implements ActionListener
@@ -114,8 +164,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			{
 				PanelButton source = (PanelButton) event.getSource();
 				String value = buttonHashMap.get(source.getText()).toString();
-				setRightComponent(generateReport(value));
-				restoreSavedLocation();
+				resetReportPanel(value);
 			}
 			catch (Exception e)
 			{
@@ -126,8 +175,14 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			{
 				mainWindow.setCursor(cursor);
 			}
-		}	
+		}
 	}
+
+	private void resetReportPanel(String value) throws Exception
+	{
+		setRightComponent(generateReport(value));
+		restoreSavedLocation();
+	}	
 	
 	private Project getProject()
 	{
