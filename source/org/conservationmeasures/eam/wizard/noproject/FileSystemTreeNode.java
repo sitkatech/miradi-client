@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.views.reports.ReportSplitPane;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
@@ -82,11 +83,16 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(file.isDirectory())
+			if(file.isDirectory() && isValidProjectDir(file))
 				children.add(new FileSystemTreeNode(file));
 		}
 	}
 
+	private boolean isValidProjectDir(File file)
+	{
+		return !file.getName().equals(ReportSplitPane.CUSTOM_REPORTS_DIR_NAME);
+	}
+	
 	private boolean isProjectDirectory()
 	{
 		return ProjectServer.isExistingProject(thisFile);

@@ -124,7 +124,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			try
 			{
 				File home = EAM.getHomeDirectory();
-				File reportPath = new File(home + CUSTOM_REPORTS_DIR);
+				File reportPath = new File(home, CUSTOM_REPORTS_DIR_NAME);
 				if (!reportPath.exists())
 					reportPath.mkdir();
 				
@@ -208,5 +208,5 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private MainWindow mainWindow;
 	
 	private static final String UNIQUE_SPLITTER_NAME = "ReportSplitPaneName";
-	public static final String CUSTOM_REPORTS_DIR = "/CustomReports";
+	public static final String CUSTOM_REPORTS_DIR_NAME = "CustomReports";
 }
