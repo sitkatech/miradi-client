@@ -17,6 +17,9 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlPanelLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
@@ -33,6 +36,9 @@ public class ThreatRatingBundlePanel extends JPanel
 		
 		add(createHeader());
 		add(createRatingPanel());
+		
+		threatMatrixCommentPanel = new ThreatMatrixCommentPanel(project);
+		add(threatMatrixCommentPanel);
 		add(Box.createVerticalGlue());
 	}
 	
@@ -70,6 +76,11 @@ public class ThreatRatingBundlePanel extends JPanel
 			targetName.setText(getNodeName(targetId));
 			threatName.setBorder(new LineBorder(Color.BLACK));
 			targetName.setBorder(new LineBorder(Color.BLACK));
+			
+			Cause threat = Cause.find(project, new ORef(Cause.getObjectType(), threatId));
+			Target target = Target.find(project, new ORef(Target.getObjectType(), targetId));
+			ORef linkRef = project.getFactorLinkPool().getLinkedRef(threat, target);
+			threatMatrixCommentPanel.setObjectRefs(new ORef[] {linkRef});
 		}
 	}
 	
@@ -113,11 +124,12 @@ public class ThreatRatingBundlePanel extends JPanel
 		return ratingPanel;
 	}
 		
-	ThreatMatrixView view;
-	Project project;
-	ThreatRatingBundle workingBundle;
-	ThreatRatingPanel ratingPanel;
+	private ThreatMatrixView view;
+	private Project project;
+	private ThreatRatingBundle workingBundle;
+	private ThreatRatingPanel ratingPanel;
 
-	HtmlFormViewer threatName;
-	HtmlFormViewer targetName;
+	private HtmlFormViewer threatName;
+	private HtmlFormViewer targetName;
+	private ThreatMatrixCommentPanel threatMatrixCommentPanel;
 }

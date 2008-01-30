@@ -333,6 +333,7 @@ public class FactorLink extends BaseObject
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
 		threatStressRatingRefs = new ORefListData(TAG_THREAT_STRESS_RATING_REFS);
 		comment = new StringData(TAG_COMMENT);
+		simpleThreatRatingComment = new StringData(TAG_SIMPLE_THREAT_RATING_COMMENT);
 		pseudoThreatRatingBundleValue = new PseudoStringData(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
@@ -340,6 +341,7 @@ public class FactorLink extends BaseObject
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 		addField(TAG_COMMENT, comment);
+		addField(TAG_SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingComment);
 		addField(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, pseudoThreatRatingBundleValue);
 	}
 	
@@ -349,6 +351,7 @@ public class FactorLink extends BaseObject
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
 	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_SIMPLE_THREAT_RATING_COMMENT = "SimpleThreatRatingComment";
 	public static final String PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE = "PseudoThreatRatingBundleValue";
 	
 	public static final String OBJECT_NAME = "Link";
@@ -364,5 +367,6 @@ public class FactorLink extends BaseObject
 	private BooleanData bidirectionalLink;
 	private ORefListData threatStressRatingRefs;
 	private StringData comment;
+	private StringData simpleThreatRatingComment;
 	private PseudoStringData pseudoThreatRatingBundleValue;
 }
