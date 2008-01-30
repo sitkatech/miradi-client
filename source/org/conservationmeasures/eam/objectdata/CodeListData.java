@@ -9,6 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.utils.CodeList;
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 
 public class CodeListData extends ObjectData
 {
@@ -61,7 +62,19 @@ public class CodeListData extends ObjectData
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
-		codes.toXml(out);
+		out.writeln("<CodeList>");
+		for(int i = 0; i < codes.size(); ++i)
+		{
+			String code = codes.get(i);
+			String value = "";
+			
+			out.writeln("<Entry>");
+			out.writeln("<Code>" + XmlUtilities.getXmlEncoded(code) + "</Code>");
+			out.writeln("<Value>" + XmlUtilities.getXmlEncoded(value) + "</Value>");
+			out.writeln("</Entry>");
+		}
+		out.writeln();
+		out.writeln("</CodeList>");
 		endTagToXml(out);
 	}
 

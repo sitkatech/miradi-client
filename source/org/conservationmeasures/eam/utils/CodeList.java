@@ -5,14 +5,10 @@
 */ 
 package org.conservationmeasures.eam.utils;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
-import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 
 public class CodeList
 {
@@ -133,17 +129,6 @@ public class CodeList
 		return toJson().toString();
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.writeln("<CodeList>");
-		for(String code : data)
-		{
-			out.writeln("<Code>" + XmlUtilities.getXmlEncoded(code) + "</Code>");
-		}
-		out.writeln();
-		out.writeln("</CodeList>");
-	}
-
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof CodeList))
