@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import java.io.IOException;
-
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -72,9 +70,11 @@ public class ORefData extends ObjectData
 			ref = new ORef(new EnhancedJsonObject(newValue));
 	}
 
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
+		startTagToXml(out);
 		ref.toXml(out);
+		endTagToXml(out);
 	}
 
 	ORef ref;

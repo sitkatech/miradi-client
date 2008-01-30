@@ -24,15 +24,15 @@ public class ChoiceData extends StringData
 	{
 		String code = get();
 		String value = getValue(code);
-		
-		out.writeln("<" + getTag() + " question = '" + question.getClass().getSimpleName() + "'>");
+
+		startTagToXml(out);
 		out.writeln("<code>");
 		out.write(XmlUtilities.getXmlEncoded(code));
 		out.writeln("</code>");
 		out.writeln("<value>");
 		out.write(XmlUtilities.getXmlEncoded(value));
 		out.writeln("</value>");
-		out.writeln("</" + getTag() + ">");
+		endTagToXml(out);
 	}
 
 	private String getValue(String code)

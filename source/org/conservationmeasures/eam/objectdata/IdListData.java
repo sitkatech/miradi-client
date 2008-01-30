@@ -5,7 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -85,9 +84,11 @@ public class IdListData extends ObjectData
 		return ids.hashCode();
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
+		startTagToXml(out);
 		ids.toXml(out);
+		endTagToXml(out);
 	}
 	
 	public boolean isIdListData()

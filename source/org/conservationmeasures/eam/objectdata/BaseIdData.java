@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import java.io.IOException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -58,9 +56,11 @@ public class BaseIdData extends ObjectData
 			id = new BaseId(Integer.parseInt(newValue));
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
+	public void toXml(UnicodeWriter out) throws Exception
 	{
+		startTagToXml(out);
 		new ORef(objectType, id).toXml(out);
+		endTagToXml(out);
 	}
 
 	public boolean equals(Object rawOther)

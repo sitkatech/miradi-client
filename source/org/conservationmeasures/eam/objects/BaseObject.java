@@ -1180,7 +1180,9 @@ abstract public class BaseObject
 		
 		public void toXml(UnicodeWriter out) throws Exception
 		{
+			startTagToXml(out);
 			new ORefList(get()).toXml(out);
+			endTagToXml(out);
 		}
 
 		public boolean equals(Object rawOther)
