@@ -65,7 +65,17 @@ abstract public class DiagramPaster
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector();
 	}
-
+	
+	protected Vector getFactorDeepCopies()
+	{
+		return factorDeepCopies;
+	}
+	
+	protected DiagramModel getDiagramModel()
+	{
+		return currentModel;
+	}
+	
 	protected void selectNewlyPastedItems()
 	{
 		//NOTE if-test only exists for tests
@@ -721,7 +731,7 @@ abstract public class DiagramPaster
 				};
 	}
 	
-	private Project getProject()
+	public Project getProject()
 	{
 		return project;
 	}
