@@ -99,7 +99,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfoForTestIds = new CreateDiagramFactorLinkParameter(
 				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
-		DiagramLink linkage = new DiagramLink(id, extraInfoForTestIds);
+		DiagramLink linkage = new DiagramLink(getObjectManager(), id, extraInfoForTestIds);
 		assertEquals(id, linkage.getDiagramLinkageId());
 		assertEquals(linkId, linkage.getWrappedId());
 		
