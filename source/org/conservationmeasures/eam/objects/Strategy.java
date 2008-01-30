@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
 import org.conservationmeasures.eam.questions.StrategyRatingSummaryQuestion;
+import org.conservationmeasures.eam.questions.StrategyTaxonomyQuestion;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -288,7 +289,7 @@ public class Strategy extends Factor
 		status = new StringData(TAG_STATUS);
 		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
-		taxonomyCode = new StringData(TAG_TAXONOMY_CODE);
+		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
@@ -338,7 +339,7 @@ public class Strategy extends Factor
 	private StringData status;
 	private IdListData activityIds;
 	
-	private StringData taxonomyCode;
+	private ChoiceData taxonomyCode;
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
 	private ORefListData progressReportRefs;
