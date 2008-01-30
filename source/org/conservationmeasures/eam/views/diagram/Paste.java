@@ -53,8 +53,9 @@ public class Paste extends LocationDoer
 			DiagramPaster diagramPaster = createDiagramPasterBaseOnUserChoice(list, usersChoice);
 			if (! diagramPaster.canPaste())
 			{
-				EAM.notifyDialog(EAM.text("Contributing Factors and Direct Threats cannot be pasted into a Results Chain; " +
-											"Intermediate Results and Threat Reduction Results cannot be pasted into a Conceptual Model."));
+				EAM.notifyDialog(EAM.text("<HTML>These factors cannot be pasted as shared into this diagram.<BR><BR>" +
+										  "Contributing Factors and Direct Threats cannot be pasted as shared into a Results Chain.<BR>" +
+										  "Intermediate Results and Threat Reduction Results cannot be pasted as shared into a Conceptual Model page.</HTML>"));
 				return;
 			}
 
