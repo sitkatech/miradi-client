@@ -158,7 +158,7 @@ public class TransferableMiradiList implements Transferable
 		return diagramFactorDeepCopies;
 	}
 
-	public Vector getFactorDeepCopies()
+	public Vector<String> getFactorDeepCopies()
 	{
 		return factorDeepCopies;
 	}
