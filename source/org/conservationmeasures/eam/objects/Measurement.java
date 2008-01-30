@@ -13,6 +13,9 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.StatusConfidenceQuestion;
+import org.conservationmeasures.eam.questions.StatusQuestion;
+import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
 
@@ -24,23 +27,12 @@ public class Measurement extends BaseObject
 		clear();
 	}
 	
-	public Measurement(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public Measurement(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 
 	
-	public Measurement(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
@@ -100,12 +92,12 @@ public class Measurement extends BaseObject
 	{
 		super.clear();
 		
-		trend= new ChoiceData(TAG_TREND);
-		status= new ChoiceData(TAG_STATUS);
+		trend= new ChoiceData(TAG_TREND, getQuestion(TrendQuestion.class));
+		status= new ChoiceData(TAG_STATUS, getQuestion(StatusQuestion.class));
 		date= new DateData(TAG_DATE);
 		summary= new StringData(TAG_SUMMARY);
 		detail= new StringData(TAG_DETAIL);
-		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE);
+		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
 		comment = new StringData(TAG_COMMENT);
 
 		addField(TAG_TREND, trend);

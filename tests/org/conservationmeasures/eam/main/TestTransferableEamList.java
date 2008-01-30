@@ -46,6 +46,7 @@ public class TestTransferableEamList extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testGetTransferDataFlavors() throws Exception

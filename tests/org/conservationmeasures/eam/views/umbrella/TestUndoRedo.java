@@ -38,6 +38,7 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testBasics() throws Exception

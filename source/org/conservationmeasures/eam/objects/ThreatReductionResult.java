@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -24,23 +24,11 @@ public class ThreatReductionResult extends Factor
 		clear();
 	}
 	
-	public ThreatReductionResult(FactorId idToUse)
-	{
-		
-		super(idToUse, new FactorTypeThreatReductionResult());
-		clear();
-	}
-	
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_THREAT_REDUCTION_RESULT, json);
 	}
 	
-	public ThreatReductionResult(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_THREAT_REDUCTION_RESULT, json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
@@ -120,7 +108,7 @@ public class ThreatReductionResult extends Factor
 	{
 		super.clear();
 		
-		relatedDirectThreat = new ChoiceData(TAG_RELATED_DIRECT_THREAT_REF);
+		relatedDirectThreat = new StringData(TAG_RELATED_DIRECT_THREAT_REF);
 		
 		addField(TAG_RELATED_DIRECT_THREAT_REF, relatedDirectThreat);
 	}
@@ -128,5 +116,5 @@ public class ThreatReductionResult extends Factor
 	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
 	public static final String OBJECT_NAME = "ThreatReductionResult";
 	
-	ChoiceData relatedDirectThreat;
+	StringData relatedDirectThreat;
 }

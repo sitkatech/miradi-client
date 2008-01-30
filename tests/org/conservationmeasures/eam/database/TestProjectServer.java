@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
@@ -22,14 +22,13 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 
-public class TestProjectServer extends EAMTestCase
+public class TestProjectServer extends TestCaseWithProject
 {
 	public TestProjectServer(String name)
 	{
@@ -38,16 +37,16 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
+		super.setUp();
 		storage = new ProjectServerForTesting();
 		storage.openMemoryDatabase(getName());
 		idAssigner = new IdAssigner();
-		project = new ProjectForTesting(getName());
 	}
 	
 	public void tearDown() throws Exception
 	{
-		project.close();
 		storage.close();
+		super.tearDown();
 	}
 	
 	public void testObjectManifest() throws Exception
@@ -55,10 +54,10 @@ public class TestProjectServer extends EAMTestCase
 		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
-			Task task = new Task(idsToWrite[i]);
+			Task task = new Task(getObjectManager(), idsToWrite[i]);
 			storage.writeObject(task);
 		}
-		RatingCriterion criterion = new RatingCriterion(new BaseId(99));
+		RatingCriterion criterion = new RatingCriterion(getObjectManager(), new BaseId(99));
 		storage.writeObject(criterion);
 
 		ObjectManifest manifest = storage.readObjectManifest(ObjectType.TASK);
@@ -74,19 +73,19 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadNode() throws Exception
 	{
 
-		Strategy intervention = new Strategy(takeNextModelNodeId());
+		Strategy intervention = new Strategy(getObjectManager(), takeNextModelNodeId());
 		storage.writeObject(intervention);
 		Strategy gotIntervention = (Strategy)readNode(intervention.getId());
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		Cause factor = new Cause(project.getObjectManager(), takeNextModelNodeId());
+		Cause factor = new Cause(getObjectManager(), takeNextModelNodeId());
 		
 		storage.writeObject(factor);
 		Cause gotContributingFactor = (Cause)readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotContributingFactor.getNodeType());
 		
-		Target target = new Target(takeNextModelNodeId());
+		Target target = new Target(getObjectManager(), takeNextModelNodeId());
 		storage.writeObject(target);
 		Target gotTarget = (Target)readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
@@ -104,16 +103,16 @@ public class TestProjectServer extends EAMTestCase
 	
 	private Factor readNode(BaseId id) throws Exception
 	{
-		return (Factor)storage.readObject(project.getObjectManager(), ObjectType.FACTOR, id);
+		return (Factor)storage.readObject(getObjectManager(), ObjectType.FACTOR, id);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
 		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
 		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
-		FactorLink original = new FactorLink(new FactorLinkId(1), fromRef, toRef);
+		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
-		FactorLink got = (FactorLink)storage.readObject(project.getObjectManager(), original.getType(), original.getId());
+		FactorLink got = (FactorLink)storage.readObject(getObjectManager(), original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
 		assertEquals("wrong from?", original.getFromFactorRef(), got.getFromFactorRef());
 		assertEquals("wrong to?", original.getToFactorRef(), got.getToFactorRef());
@@ -131,13 +130,13 @@ public class TestProjectServer extends EAMTestCase
 	{
 		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
 		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
-		FactorLink original = new FactorLink(new FactorLinkId(1), fromRef, toRef);
+		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
 		try
 		{
-			storage.readObject(project.getObjectManager(), original.getType(), original.getId());
+			storage.readObject(getObjectManager(), original.getType(), original.getId());
 		}
 		catch(IOException ignoreExpected)
 		{
@@ -160,11 +159,10 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testReadAndWriteThreatRatingFramework() throws Exception
 	{
-		ProjectServerForTesting db = project.getTestDatabase();
-		db.writeThreatRatingFramework(project.getSimpleThreatRatingFramework());
+		ProjectServerForTesting db = getProject().getTestDatabase();
+		db.writeThreatRatingFramework(getProject().getSimpleThreatRatingFramework());
 		JSONObject got = db.readRawThreatRatingFramework();
-		assertEquals(got.toString(), project.getSimpleThreatRatingFramework().toJson().toString());
-		project.close();
+		assertEquals(got.toString(), getProject().getSimpleThreatRatingFramework().toJson().toString());
 	}
 	
 	public void testCreateInNonEmptyDirectory() throws Exception
@@ -226,5 +224,4 @@ public class TestProjectServer extends EAMTestCase
 
 	IdAssigner idAssigner;
 	private ProjectServerForTesting storage;
-	private ProjectForTesting project;
 }

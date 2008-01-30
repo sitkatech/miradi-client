@@ -30,6 +30,7 @@ public class TestSimpleThreatFormula extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 	

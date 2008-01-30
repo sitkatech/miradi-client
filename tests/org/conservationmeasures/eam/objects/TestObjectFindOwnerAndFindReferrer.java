@@ -36,6 +36,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testIntermediateOwn() throws Exception

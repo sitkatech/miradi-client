@@ -33,6 +33,7 @@ public class TestObjectDeepCopier extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testDeepCopy() throws Exception

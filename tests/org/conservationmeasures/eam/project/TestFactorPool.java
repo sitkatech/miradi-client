@@ -33,6 +33,7 @@ public class TestFactorPool extends TestCaseEnhanced
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public int getObjectType() throws Exception

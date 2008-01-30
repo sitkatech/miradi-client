@@ -18,21 +18,11 @@ public class ResultsChainDiagram extends DiagramObject
 		super(objectManager, idToUse);
 	}
 
-	public ResultsChainDiagram(BaseId idToUse)
-	{
-		super(idToUse);
-	}
-
 	public ResultsChainDiagram(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
 	}
 
-	public ResultsChainDiagram(int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, json);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

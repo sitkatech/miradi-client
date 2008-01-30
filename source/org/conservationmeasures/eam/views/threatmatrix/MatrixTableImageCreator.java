@@ -17,6 +17,7 @@ import javax.swing.table.JTableHeader;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiScrollPane;
 
@@ -34,7 +35,7 @@ public class MatrixTableImageCreator
 			JFrame frame = new JFrame();
 			frame.add(new UiScrollPane(grid));
 			frame.pack();
-			return createImage(grid.getThreatMatrixTable(), grid.getRowHeaderTable());
+			return createImage(project, grid.getThreatMatrixTable(), grid.getRowHeaderTable());
 		}
 		catch(Exception e)
 		{
@@ -44,11 +45,11 @@ public class MatrixTableImageCreator
 	}
 
 	
-    public static BufferedImage createImage(JTable table, JTable rowHeaderTable) 
+    public static BufferedImage createImage(Project project, JTable table, JTable rowHeaderTable) 
     { 
 		try
 		{
-			ValueOption myValueOption = new WhiteInvalidValueOption();
+			ValueOption myValueOption = new WhiteInvalidValueOption(project.getObjectManager());
 	    	((ThreatMatrixTableModel)table.getModel()).setDefaultValueOption(myValueOption);
 	    	TableHeaderRenderer.SetOverRideColor(Color.WHITE);
 
@@ -92,9 +93,9 @@ public class MatrixTableImageCreator
 
  class WhiteInvalidValueOption extends ValueOption
 	{
-		public WhiteInvalidValueOption() throws Exception
+		public WhiteInvalidValueOption(ObjectManager objectManager) throws Exception
 		{
-			super(new BaseId(-1), "", -1, Color.WHITE);
+			super(objectManager, new BaseId(-1), "", -1, Color.WHITE);
 		}
 
 		public Color getColor()

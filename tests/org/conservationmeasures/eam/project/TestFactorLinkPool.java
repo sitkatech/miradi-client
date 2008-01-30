@@ -30,12 +30,12 @@ public class TestFactorLinkPool extends TestCaseWithProject
 	public void testHasLinkage() throws Exception
 	{
 		FactorLinkPool pool = new FactorLinkPool(idAssigner);
-		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
-		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
-		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), ObjectType.CAUSE);
+		Factor node1 = Factor.createConceptualModelObject(getObjectManager(), takeNextModelNodeId(), ObjectType.CAUSE);
+		Factor node2 = Factor.createConceptualModelObject(getObjectManager(), takeNextModelNodeId(), ObjectType.CAUSE);
+		Factor node3 = Factor.createConceptualModelObject(getObjectManager(), takeNextModelNodeId(), ObjectType.CAUSE);
 		
 		FactorLinkId linkageId = new FactorLinkId(idAssigner.takeNextId().asInt());
-		FactorLink linkage = new FactorLink(linkageId, node1.getRef(), node2.getRef());
+		FactorLink linkage = new FactorLink(getObjectManager(), linkageId, node1.getRef(), node2.getRef());
 		pool.put(linkage);
 		
 		assertTrue("Didn't find link 1->2?", pool.isLinked(linkage.getFromFactorRef(), linkage.getToFactorRef()));

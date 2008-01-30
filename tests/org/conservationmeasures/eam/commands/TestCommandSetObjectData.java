@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.commands;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TestCommandSetObjectData extends EAMTestCase
+public class TestCommandSetObjectData extends TestCaseWithProject
 {
 	public TestCommandSetObjectData(String name)
 	{
@@ -33,7 +33,7 @@ public class TestCommandSetObjectData extends EAMTestCase
 	
 	public void testListInsert() throws Exception
 	{
-		Task task = new Task(new BaseId(39));
+		Task task = new Task(getObjectManager(), new BaseId(39));
 		TaskId id1 = new TaskId(75);
 		CommandSetObjectData fromEmpty = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id1, 0);
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
@@ -52,7 +52,7 @@ public class TestCommandSetObjectData extends EAMTestCase
 	
 	public void testListRemove() throws Exception
 	{
-		Task task = new Task(new BaseId(47));
+		Task task = new Task(getObjectManager(), new BaseId(47));
 		task.addSubtaskId(new BaseId(12));
 		BaseId id2 = new BaseId(99);
 		task.addSubtaskId(id2);

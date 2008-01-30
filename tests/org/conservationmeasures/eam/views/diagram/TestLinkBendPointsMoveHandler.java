@@ -28,6 +28,7 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	//FIXME create test for moving BendPoints

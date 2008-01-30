@@ -24,11 +24,6 @@ public class ConceptualModelDiagram extends DiagramObject
 		super(objectManager, idToUse, json);
 	}
 	
-	public ConceptualModelDiagram(int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, json);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

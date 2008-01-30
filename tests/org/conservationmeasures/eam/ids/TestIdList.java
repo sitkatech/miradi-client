@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.ids;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestIdList extends EAMTestCase
@@ -133,9 +135,10 @@ public class TestIdList extends EAMTestCase
 	
 	public void testIdListWithType() throws Exception
 	{
+		Project project = new ProjectForTesting(getName());
 		IdList idListWithStrategyType = new IdList(Strategy.getObjectType());
-		Strategy strategy = new Strategy(new FactorId(1));	
-		Cause cause = new Cause(null, new FactorId(2));
+		Strategy strategy = new Strategy(project.getObjectManager(), new FactorId(1));	
+		Cause cause = new Cause(project.getObjectManager(), new FactorId(2));
 		idListWithStrategyType.addRef(strategy.getRef());
 		
 		try 
@@ -153,5 +156,7 @@ public class TestIdList extends EAMTestCase
 		
 		assertEquals("wrong size?", 1, idListWithStrategyType.size());
 		assertEquals("wrong ref?", strategy.getRef(), idListWithStrategyType.getRef(0));
+		
+		project.close();
 	}
 }

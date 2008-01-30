@@ -38,22 +38,11 @@ public class Target extends Factor
 		clear();
 	}
 	
-	public Target(FactorId idToUse)
-	{
-		super(idToUse, Factor.TYPE_TARGET);
-		clear();
-	}
-	
 	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_TARGET, json);
 	}
 	
-	public Target(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_TARGET, json);
-	}
-
 	public static boolean canOwnThisType(int type)
 	{
 		if (Factor.canOwnThisType(type))
@@ -348,8 +337,8 @@ public class Target extends Factor
 	void clear()
 	{
 		super.clear();
-		targetStatus = new ChoiceData(TAG_TARGET_STATUS);
-		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE);
+		targetStatus = new ChoiceData(TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
+		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);

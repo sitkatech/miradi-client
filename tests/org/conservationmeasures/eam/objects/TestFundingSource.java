@@ -25,6 +25,7 @@ public class TestFundingSource extends ObjectTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 	

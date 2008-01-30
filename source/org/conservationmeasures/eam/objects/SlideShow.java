@@ -27,11 +27,6 @@ public class SlideShow extends BaseObject
 		super(objectManager, new SlideShowId(idAsInt), jsonObject);
 	}
 	
-	public SlideShow(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new SlideShowId(idAsInt), jsonObject);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

@@ -25,11 +25,6 @@ public class WcsProjectData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public WcsProjectData(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new BaseId(idAsInt), jsonObject);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

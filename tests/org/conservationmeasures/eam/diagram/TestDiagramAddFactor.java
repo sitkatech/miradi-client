@@ -29,6 +29,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 	}
 	
 	public void testInsertTarget() throws Exception

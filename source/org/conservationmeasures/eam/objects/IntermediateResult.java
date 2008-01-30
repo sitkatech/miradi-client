@@ -23,22 +23,11 @@ public class IntermediateResult extends Factor
 		clear();
 	}
 	
-	public IntermediateResult(FactorId idToUse)
-	{
-		super(idToUse, new FactorTypeIntermediateResult());
-		clear();
-	}
-	
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_INTERMEDIATE_RESULT, json);
 	}
 	
-	public IntermediateResult(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_INTERMEDIATE_RESULT, json);
-	}
-
 	public boolean isIntermediateResult()
 	{
 		return true;

@@ -36,22 +36,11 @@ public class Strategy extends Factor
 		clear();
 	}
 	
-	public Strategy(FactorId idToUse)
-	{
-		super(idToUse, Factor.TYPE_STRATEGY);
-		clear();
-	}
-	
 	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_STRATEGY, json);
 	}
 
-	
-	public Strategy(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_STRATEGY, json);
-	}
 	
 	public static boolean canOwnThisType(int type)
 	{
@@ -300,8 +289,8 @@ public class Strategy extends Factor
 		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
 		taxonomyCode = new StringData(TAG_TAXONOMY_CODE);
-		impactRating = new ChoiceData(TAG_IMPACT_RATING);
-		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING);
+		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
+		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);

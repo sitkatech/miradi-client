@@ -17,7 +17,13 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
+import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
+import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
+import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
+import org.conservationmeasures.eam.questions.TncMarineEcoRegionQuestion;
+import org.conservationmeasures.eam.questions.TncOperatingUnitsQuestion;
+import org.conservationmeasures.eam.questions.TncTerrestrialEcoRegionQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.MultiCalendar;
 
@@ -29,21 +35,9 @@ public class ProjectMetadata extends BaseObject
 		clear();
 	}
 
-	public ProjectMetadata(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public ProjectMetadata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-	
-	
-	public ProjectMetadata(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()
@@ -243,9 +237,9 @@ public class ProjectMetadata extends BaseObject
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
 		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
 		budgetSecuredPercent = new NumberData(TAG_BUDGET_SECURED_PERCENT);
-		currencyType = new ChoiceData(TAG_CURRENCY_TYPE);
+		currencyType = new ChoiceData(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
 		currencySymbol = new StringData(TAG_CURRENCY_SYMBOL);
-		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START);
+		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
 		projectDescription = new StringData(TAG_PROJECT_DESCRIPTION);
 		projectURL = new StringData(TAG_PROJECT_URL);
 		projectArea = new StringData(TAG_PROJECT_AREA);
@@ -261,7 +255,7 @@ public class ProjectMetadata extends BaseObject
 		financialComments = new StringData(TAG_FINANCIAL_COMMENTS);
 		workPlanStartDate = new DateData(TAG_WORKPLAN_START_DATE);
 		workPlanEndDate = new DateData(TAG_WORKPLAN_END_DATE);
-		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT);
+		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
 		planningComments = new StringData(TAG_PLANNING_COMMENTS);
 		redListSpecies = new StringData(TAG_RED_LIST_SPECIES);
 		otherNotableSpecies = new StringData(TAG_OTHER_NOTABLE_SPECIES);
@@ -324,10 +318,10 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData(TAG_TNC_ECOREGION);
 		tncCountry = new StringData(TAG_TNC_COUNTRY);
 		legacyTncOperatingUnits = new StringData(LEGACY_TAG_TNC_OPERATING_UNITS);
-		tncOperatingUnits = new ChoiceData(TAG_TNC_OPERATING_UNITS);
-		tncTerrestrialEcoRegion = new ChoiceData(TAG_TNC_TERRESTRIAL_ECO_REGION);
-		tncMarineEcoRegion = new ChoiceData(TAG_TNC_MARINE_ECO_REGION);
-		tncFreshwaterEcoRegion = new ChoiceData(TAG_TNC_FRESHWATER_ECO_REGION);
+		tncOperatingUnits = new ChoiceData(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
+		tncTerrestrialEcoRegion = new ChoiceData(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
+		tncMarineEcoRegion = new ChoiceData(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
+		tncFreshwaterEcoRegion = new ChoiceData(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -353,7 +347,7 @@ public class ProjectMetadata extends BaseObject
 		
 		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
 		diagramFontFamily = new StringData(TAG_DIAGRAM_FONT_FAMILY);
-		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE);
+		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);

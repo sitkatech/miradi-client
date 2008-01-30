@@ -38,5 +38,5 @@ public class StringData extends ObjectData
 	}
 
 
-	String value;
+	private String value;
 }

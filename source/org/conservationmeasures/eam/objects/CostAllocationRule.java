@@ -25,11 +25,6 @@ public class CostAllocationRule extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public CostAllocationRule(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new BaseId(idAsInt), jsonObject);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

@@ -28,6 +28,7 @@ public class TestDeleteAnnotationDoer extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testBuildCommandsToDeleteAnnotation() throws Exception

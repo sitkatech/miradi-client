@@ -28,6 +28,7 @@ public class TestSlidePool extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testBasics() throws Exception

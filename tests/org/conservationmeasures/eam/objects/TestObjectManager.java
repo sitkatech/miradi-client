@@ -41,6 +41,7 @@ public class TestObjectManager extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 	}
 
 	public void testObjectLifecycles() throws Exception

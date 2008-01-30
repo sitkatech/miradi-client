@@ -30,20 +30,9 @@ public class ViewData extends BaseObject
 		clear();
 	}
 
-	public ViewData(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public ViewData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-
-	public ViewData(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException

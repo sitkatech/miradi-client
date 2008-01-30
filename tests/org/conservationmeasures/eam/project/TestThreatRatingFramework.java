@@ -44,6 +44,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 	

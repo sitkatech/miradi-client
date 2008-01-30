@@ -6,29 +6,16 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAMTestCase;
-import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.martus.util.xml.XmlUtilities;
 
-public class TestProjectResource extends EAMTestCase
+public class TestProjectResource extends TestCaseWithProject
 {
 	public TestProjectResource(String name)
 	{
 		super(name);
 	}
 	
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
-	}
-
-	public void tearDown() throws Exception
-	{
-		project.close();
-		super.tearDown();
-	}
-
 	
 	public void testGetResourcesAsHtml() throws Exception
 	{
@@ -39,7 +26,7 @@ public class TestProjectResource extends EAMTestCase
 		ProjectResource[] projectResources = new ProjectResource[resourceCount];
 		for (int i = 0; i < projectResources.length; i++)
 		{
-			projectResources[i] = new ProjectResource(new BaseId(i));
+			projectResources[i] = new ProjectResource(getObjectManager(), new BaseId(i));
 			if (i == 0 )
 			{
 				projectResources[i].setData(ProjectResource.TAG_GIVEN_NAME, lessThan+i);
@@ -63,7 +50,7 @@ public class TestProjectResource extends EAMTestCase
 	
 	public void testWho() throws Exception
 	{
-		ProjectResource person = new ProjectResource(new BaseId(15));
+		ProjectResource person = new ProjectResource(getObjectManager(), new BaseId(15));
 		assertEquals("(Undefined Resource)", person.getWho());
 		String sampleInitials = "rl";
 		String sampleGivenName = "Robin";
@@ -91,12 +78,10 @@ public class TestProjectResource extends EAMTestCase
 	private void verifyTagBehavior(String tag) throws Exception
 	{
 		String value = "ifislliefj";
-		ProjectResource resource = new ProjectResource(new BaseId(22));
+		ProjectResource resource = new ProjectResource(getObjectManager(), new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", resource.getData(tag));
 		resource.setData(tag, value);
-		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(project.getObjectManager(), resource.getType(), resource.toJson());
+		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(getObjectManager(), resource.getType(), resource.toJson());
 		assertEquals(tag + " didn't survive json?", resource.getData(tag), got.getData(tag));
 	}
-	
-	ProjectForTesting project;
 }

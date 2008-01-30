@@ -17,19 +17,9 @@ public class RatingCriterion extends BaseObject
 		super(objectManager, idToUse);
 	}
 	
-	public RatingCriterion(BaseId idToUse)
-	{
-		super(idToUse);
-	}
-	
 	public RatingCriterion(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-	
-	public RatingCriterion(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()

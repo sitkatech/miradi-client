@@ -27,6 +27,7 @@ public class TestStrategy extends ObjectTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 	
@@ -38,7 +39,7 @@ public class TestStrategy extends ObjectTestCase
 	public void testBasics()
 	{
 		FactorId interventionId = new FactorId(17);
-		Strategy intervention = new Strategy(interventionId);
+		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
 		BaseId activityId1 = new BaseId(77);
@@ -64,7 +65,7 @@ public class TestStrategy extends ObjectTestCase
 	public void testActivityIds() throws Exception
 	{
 		FactorId interventionId = new FactorId(66);
-		Strategy intervention = new Strategy(interventionId);
+		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		IdList empty = new IdList(Task.getObjectType(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
@@ -80,7 +81,7 @@ public class TestStrategy extends ObjectTestCase
 	public void testStatus() throws Exception
 	{
 		FactorId interventionId = new FactorId(91);
-		Strategy intervention = new Strategy(interventionId);
+		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
 		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
@@ -99,7 +100,7 @@ public class TestStrategy extends ObjectTestCase
 	public void testJson() throws Exception
 	{
 		FactorId interventionId = new FactorId(17);
-		Strategy intervention = new Strategy(interventionId);
+		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
