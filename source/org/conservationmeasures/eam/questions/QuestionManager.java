@@ -34,7 +34,7 @@ public class QuestionManager
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportStatusQuestion());
-		addQuestion(new ProtectedAreaStatusQuestion());
+		addQuestion(new ProtectedAreaCategoryQuestion());
 		addQuestion(new RatingSourceQuestion());
 		addQuestion(new ResourceRoleQuestion());
 		addQuestion(new ResourceTypeQuestion());

@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.CountriesQuestion;
 import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
-import org.conservationmeasures.eam.questions.ProtectedAreaStatusQuestion;
+import org.conservationmeasures.eam.questions.ProtectedAreaCategoryQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
 import org.conservationmeasures.eam.questions.TncMarineEcoRegionQuestion;
@@ -265,7 +265,7 @@ public class ProjectMetadata extends BaseObject
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
-		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaStatusQuestion.class));
+		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.ProtectedAreaStatusQuestion;
+import org.conservationmeasures.eam.questions.ProtectedAreaCategoryQuestion;
 
 public class SummaryScopePanel extends ObjectDataInputPanel
 {
@@ -27,7 +27,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Project Area(ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
 
 
-		ObjectDataInputField protectedAreaStatusField = createMultiCodeField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaStatusQuestion(), 1);
+		ObjectDataInputField protectedAreaStatusField = createMultiCodeField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion(), 1);
 		ObjectDataInputField protectedAreaStatusNotesField = createStringField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 		addFieldsOnOneLine(EAM.text("Label|Protected Area Categories"), new ObjectDataInputField[]{protectedAreaStatusField, protectedAreaStatusNotesField});
 		
