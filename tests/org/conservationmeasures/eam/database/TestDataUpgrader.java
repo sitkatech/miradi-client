@@ -24,6 +24,9 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Stress;
+import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.PointList;
@@ -41,12 +44,14 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		super.setUp();
 		tempDirectory = createTempDirectory();
+		project = new ProjectForTesting(getName());
 	}
 	
 	public void tearDown() throws Exception
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-	
+		project.close();
+		project = null;
 		super.tearDown();
 	}
 	
@@ -745,7 +750,7 @@ public class TestDataUpgrader extends EAMTestCase
 			BaseId baseId = diagramLinks[i];
 			String idAsString = Integer.toString(baseId.asInt());
 			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(new File(diagramLinkDir, idAsString));
-			DiagramLink diagramLink = new DiagramLink(baseId.asInt(), diagramLinkJson);
+			DiagramLink diagramLink = new DiagramLink(getObjectManager(), baseId.asInt(), diagramLinkJson);
 			int fromId = diagramLink.getFromDiagramFactorId().asInt();
 			int toId = diagramLink.getToDiagramFactorId().asInt();
 
@@ -970,7 +975,7 @@ public class TestDataUpgrader extends EAMTestCase
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(object14File));
 		int id = json.getInt("Id");
 		assertEquals("wrong object id?", id, 14);
-		ConceptualModelDiagram diagramContents = new ConceptualModelDiagram(id, json);
+		ConceptualModelDiagram diagramContents = new ConceptualModelDiagram(getObjectManager(), id, json);
 		IdList allDiagramFactorIds = diagramContents.getAllDiagramFactorIds();
 		assertEquals("wrong id count?", 3, allDiagramFactorIds.size());
 		
@@ -1029,7 +1034,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link file 135 exists?", file1.exists());
 		
 		EnhancedJsonObject json1 = new EnhancedJsonObject(readFile(file1));
-		DiagramLink diagramLink = new DiagramLink(135, json1);
+		DiagramLink diagramLink = new DiagramLink(getObjectManager(), 135, json1);
 		assertEquals("same wrapped id?", 57, diagramLink.getWrappedId().asInt());
 		String fromDiagramLinkId = diagramLink.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		String toDiagramLinkId = diagramLink.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
@@ -1041,7 +1046,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link file 136 exists?", file2.exists());
 		
 		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(file2));
-		DiagramLink diagramLink2 = new DiagramLink(136, json2);
+		DiagramLink diagramLink2 = new DiagramLink(getObjectManager(), 136, json2);
 		assertEquals("same wrapped id?", 56, diagramLink2.getWrappedId().asInt());
 		String fromDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		String toDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
@@ -1141,6 +1146,17 @@ public class TestDataUpgrader extends EAMTestCase
 		return jsonDir;
 	}
 	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private ObjectManager getObjectManager()
+	{
+		return getProject().getObjectManager();
+	}
+	
 	public static IdAssigner idAssigner = new IdAssigner();
 	File tempDirectory;
+	ProjectForTesting project;
 }
