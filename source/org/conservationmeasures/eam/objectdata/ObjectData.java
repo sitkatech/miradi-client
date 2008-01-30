@@ -29,7 +29,9 @@ abstract public class ObjectData
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
+		out.write("<" + getTag() + ">");
 		out.write(XmlUtilities.getXmlEncoded(get()));
+		out.writeln("</" + getTag() + ">");
 	}
 	
 	public boolean isPseudoField()

@@ -583,9 +583,7 @@ abstract public class BaseObject
 		{
 			String tag = (String)iter.next();
 			ObjectData data = getField(tag);
-			out.write("<" + tag + ">");
 			data.toXml(out);
-			out.writeln("</" + tag + ">");
 		}
 		writeNonFieldXml(out);
 		out.writeln("</" + getTypeName() + ">");
