@@ -209,18 +209,18 @@ public class DataUpgrader extends FileBasedProjectServer
 			return 0;
 
 		ObjectManifest taskManifest = new ObjectManifest(JSONFile.read(taskManifestFile));
-		BaseId[] allTaskIds = taskManifest.getAllKeys();
-		HashSet<BaseId> allTasks = new HashSet<BaseId>();
-		allTasks.addAll(Arrays.asList(allTaskIds));
-
+		HashSet<BaseId> allTaskIdSet = new HashSet<BaseId>(Arrays.asList(taskManifest.getAllKeys()));
+		IdList allTaskIdList = new IdList(TASK_TYPE, taskManifest.getAllKeys());
+		IdList orphandIdList = new IdList(TASK_TYPE, allTaskIdSet.toArray(new BaseId[0]));
+		
 		HashSet<BaseId> allOwnedTaskIds = new HashSet<BaseId>();
 		allOwnedTaskIds.addAll(getTaskIds(jsonDir));
 		allOwnedTaskIds.addAll(getActivityIds(jsonDir));
 		allOwnedTaskIds.addAll(getTaskChildren(taskDir, taskManifestFile, "SubtaskIds"));
 
-		allTasks.removeAll(allOwnedTaskIds);
 		
-		IdList orphandIdList = new IdList(TASK_TYPE, allTasks.toArray(new BaseId[0]));
+		orphandIdList.subtract(new IdList(TASK_TYPE, allOwnedTaskIds.toArray(new BaseId[0])));
+		
 		int[] orphandIdsAsInts = orphandIdList.toIntArray();		
 		for (int i = 0; i < orphandIdsAsInts.length; ++i)
 		{
@@ -228,9 +228,8 @@ public class DataUpgrader extends FileBasedProjectServer
 			targetFile.delete();
 		}
 		
-		IdList tasksWithParents = new IdList(TASK_TYPE, allTaskIds);
-		tasksWithParents.subtract(orphandIdList);
-		createManifestFile(taskDir, tasksWithParents.toIntArray());
+		allTaskIdList.subtract(orphandIdList);
+		createManifestFile(taskDir, allTaskIdList.toIntArray());
 		
 		return orphandIdsAsInts.length;
 	}
