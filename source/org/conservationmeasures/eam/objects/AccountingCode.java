@@ -21,23 +21,12 @@ public class AccountingCode extends BaseObject
 		clear();
 	}
 	
-	public AccountingCode(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public AccountingCode(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new AccountingCodeId(idAsInt), json);
 	}
 
 	
-	public AccountingCode(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new AccountingCodeId(idAsInt), json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
