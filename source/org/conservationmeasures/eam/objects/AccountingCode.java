@@ -77,6 +77,6 @@ public class AccountingCode extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String OBJECT_NAME = "AccountingCode";
 
-	StringData code;
-	StringData comments;
+	private StringData code;
+	private StringData comments;
 }
