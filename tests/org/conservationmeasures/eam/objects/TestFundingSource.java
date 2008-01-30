@@ -39,7 +39,7 @@ public class TestFundingSource extends ObjectTestCase
 	private void verifyTagBehavior(String tag) throws Exception
 	{
 		String value = "ifislliefj";
-		FundingSource fundingSource = new FundingSource(new BaseId(22));
+		FundingSource fundingSource = new FundingSource(getObjectManager(), new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", fundingSource.getData(tag));
 		fundingSource.setData(tag, value);
 		FundingSource got = (FundingSource)FundingSource.createFromJson(project.getObjectManager(), fundingSource.getType(), fundingSource.toJson());
