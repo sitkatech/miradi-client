@@ -233,7 +233,7 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	}
 	
-	private BaseObject createObject(int type) throws Exception
+	private BaseObject createFactor(int type) throws Exception
 	{
 		return createObject(type, null);
 	}
@@ -320,7 +320,7 @@ abstract public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 
-			BaseObject newObject = createObject(type);
+			BaseObject newObject = createFactor(type);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
