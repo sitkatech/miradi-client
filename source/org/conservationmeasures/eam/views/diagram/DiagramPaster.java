@@ -323,7 +323,7 @@ abstract public class DiagramPaster
 		{			
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
@@ -360,7 +360,7 @@ abstract public class DiagramPaster
 			loadNewObjectFromOldJson(newDiagramFactor, json);
 
 			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			getOldToNewObjectRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
 			fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
 			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
@@ -375,7 +375,7 @@ abstract public class DiagramPaster
 			String jsonAsString = factorLinkDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseObject newObject = null;	
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			if (type == FactorLink.getObjectType())
 				newObject = createFactorLink(json);
 			if (type == ThreatStressRating.getObjectType())
@@ -415,7 +415,7 @@ abstract public class DiagramPaster
 				continue;
 			
 			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(json);
@@ -578,7 +578,7 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			if (Assignment.getObjectType() == type)
 				return true;
 		}
@@ -705,7 +705,7 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			if (!canPastTypeInDiagram(type))
 			{
 				EAM.logDebug("Cannot paste type " + type);
@@ -714,6 +714,11 @@ abstract public class DiagramPaster
 		}
 		
 		return true;
+	}
+
+	protected int getTypeFromJson(EnhancedJsonObject json)
+	{
+		return json.getInt("Type");
 	}
 
 	protected boolean containsType(int[] types, int type)

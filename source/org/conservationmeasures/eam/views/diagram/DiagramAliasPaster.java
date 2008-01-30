@@ -65,7 +65,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		for(String jsonString : factorDeepCopies)
 		{
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonString);
-			int type = json.getInt("Type");
+			int type = getTypeFromJson(json);
 			int id = json.getInt(BaseObject.TAG_ID);
 			ORef ref = new ORef(type, new BaseId(id));
 			if(Factor.isFactor(ref))
