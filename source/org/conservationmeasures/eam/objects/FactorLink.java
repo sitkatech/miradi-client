@@ -305,6 +305,16 @@ public class FactorLink extends BaseObject
 		out.writeln();
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static FactorLink find(ObjectManager objectManager, ORef factorLinkRef)
 	{
 		return (FactorLink) objectManager.findObject(factorLinkRef);
