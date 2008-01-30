@@ -100,7 +100,7 @@ public class DiagramAliasPaster extends DiagramPaster
 				};
 	}
 	
-	protected boolean canPastTypeIndDiagram(int type)
+	protected boolean canPastTypeInDiagram(int type)
 	{
 		if (isPastingInSameDiagramType())
 			return true;
