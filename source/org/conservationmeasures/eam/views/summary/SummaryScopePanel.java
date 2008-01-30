@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.ProtectedAreaStatusQuestion;
 
 public class SummaryScopePanel extends ObjectDataInputPanel
 {
@@ -26,6 +27,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Project Area(ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
 		
 		addField(createStringField(ProjectMetadata.TAG_RED_LIST_SPECIES));
+		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_STATUS, new ProtectedAreaStatusQuestion()));
 		addField(createStringField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES));
 		
 		ObjectDataInputField humanPopulationField = createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
