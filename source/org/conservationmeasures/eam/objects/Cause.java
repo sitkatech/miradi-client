@@ -10,7 +10,7 @@ import java.util.Set;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -168,7 +168,7 @@ public class Cause extends Factor
 	void clear()
 	{
 		super.clear();
-		taxonomyCode = new StringData(TAG_TAXONOMY_CODE);
+		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new ThreatClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
@@ -180,8 +180,8 @@ public class Cause extends Factor
 	
 	public static final String OBJECT_NAME = "Cause";
 	
-	StringData taxonomyCode; 
-	PseudoQuestionData taxonomyCodeLabel;
+	private ChoiceData taxonomyCode; 
+	private PseudoQuestionData taxonomyCodeLabel;
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
 	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";
