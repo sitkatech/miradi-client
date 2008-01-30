@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class ProtectedAreaStatusQuestion extends StaticChoiceQuestion
+public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
 {
-	public ProtectedAreaStatusQuestion()
+	public ProtectedAreaCategoryQuestion()
 	{
 		super(getStatuses());
 	}
