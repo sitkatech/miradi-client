@@ -227,7 +227,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			File targetFile = new File(taskDir, Integer.toString(orphandIdsAsInts[i]));
 			targetFile.delete();
 		}
-		EAM.logVerbose(orphandIdList.toString());
+		EAM.logVerbose("deleted orphan tasks: " + orphandIdList.toString());
 		
 		allTaskIdList.subtract(orphandIdList);
 		createManifestFile(taskDir, allTaskIdList.toIntArray());
