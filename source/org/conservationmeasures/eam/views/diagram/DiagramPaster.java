@@ -378,15 +378,30 @@ abstract public class DiagramPaster
 			int type = getTypeFromJson(json);
 			if (type == FactorLink.getObjectType())
 				newObject = createFactorLink(json);
-			if (type == ThreatStressRating.getObjectType())
+			if (type == ThreatStressRating.getObjectType() && isPastingIntoConceptualModel())
 				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
+			{
 				fixObjectRefs(getOldToNewObjectRefMap(), newObject, json);
+				clearThreatStressRatingFieldForResultsChainPastes(newObject);
+			}
 		}
 		
 		Vector newFactorLinks = new Vector(getOldToNewObjectRefMap().values());
 		ensureRatingListMatchesStressList(newFactorLinks);
+	}
+
+	private void clearThreatStressRatingFieldForResultsChainPastes(BaseObject newObject) throws CommandFailedException
+	{
+		if (isPastingIntoConceptualModel())
+			return;
+		
+		if (!FactorLink.is(newObject.getType()))
+			return;
+		
+		CommandSetObjectData clearThreatStressRatingList = new CommandSetObjectData(newObject.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, "");
+		getProject().executeCommand(clearThreatStressRatingList);
 	}
 	
 	protected void createNewDiagramLinks() throws Exception
@@ -450,9 +465,17 @@ abstract public class DiagramPaster
 			if (!factorLink.isThreatTargetLink())
 				continue;
 			
+			if (!isPastingIntoConceptualModel())
+				continue;
+			
 			deleteThreatStressRefsWithoutAStress(factorLink);
 			createMissingThreatStressRatingsForStresses(factorLink);
 		}
+	}
+
+	private boolean isPastingIntoConceptualModel()
+	{
+		return ConceptualModelDiagram.is(getDiagramObject().getType());
 	}
 
 	private void createMissingThreatStressRatingsForStresses(FactorLink factorLink) throws Exception
