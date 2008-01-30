@@ -114,6 +114,11 @@ public class ORefList
 		data.remove(oRefToRemove);
 	}
 	
+	public void removeAll(ORefList refsToRemove)
+	{
+		data.removeAll(refsToRemove.data);
+	}
+
 	public ORef get(int index)
 	{
 		return data.get(index);
