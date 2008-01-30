@@ -60,7 +60,9 @@ public class CodeListData extends ObjectData
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
+		startTagToXml(out);
 		codes.toXml(out);
+		endTagToXml(out);
 	}
 
 	public boolean equals(Object rawOther)

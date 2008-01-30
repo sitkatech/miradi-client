@@ -56,7 +56,9 @@ public class ORefListData extends ObjectData
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
+		startTagToXml(out);
 		objectReferenceList.toXml(out);
+		endTagToXml(out);
 	}
 
 	private void set(ORefList objectReferenceToUse)

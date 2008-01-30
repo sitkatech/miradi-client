@@ -29,8 +29,18 @@ abstract public class ObjectData
 	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
-		out.write("<" + getTag() + ">");
+		startTagToXml(out);
 		out.write(XmlUtilities.getXmlEncoded(get()));
+		endTagToXml(out);
+	}
+	
+	protected void startTagToXml(UnicodeWriter out) throws Exception
+	{
+		out.write("<" + getTag() + ">");
+	}
+	
+	protected void endTagToXml(UnicodeWriter out) throws Exception
+	{
 		out.writeln("</" + getTag() + ">");
 	}
 	
