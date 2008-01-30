@@ -138,8 +138,8 @@ public class Assignment extends BaseObject
 	
 	public static final String OBJECT_NAME = "Assignment";
 	
-	BaseIdData resourceIdData;
-	DateRangeEffortListData detailListData;
-	BaseIdData accountingIdData;
-	BaseIdData fundingIdData;
+	private BaseIdData resourceIdData;
+	private DateRangeEffortListData detailListData;
+	private BaseIdData accountingIdData;
+	private BaseIdData fundingIdData;
 }
