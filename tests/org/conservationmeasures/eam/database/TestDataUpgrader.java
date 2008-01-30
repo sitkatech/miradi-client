@@ -174,6 +174,14 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File taskWithIndicatorParentFile = new File(taskDir, Integer.toString(taskIds[1]));
 		assertTrue("deleted task with parent?", taskWithIndicatorParentFile.exists());
+		
+		ObjectManifest taskManifestObject = new ObjectManifest(JSONFile.read(taskManifestFile));
+		assertEquals("wrong key count?", 2, taskManifestObject.getAllKeys().length);
+		
+		final int TASK_TYPE = 3;
+		IdList ownedTaskIdList = new IdList(TASK_TYPE, taskManifestObject.getAllKeys());
+		assertTrue("manifest does not contain owned task?", ownedTaskIdList.contains(new BaseId(taskIds[0])));
+		assertTrue("manifest does not contain owned task?", ownedTaskIdList.contains(new BaseId(taskIds[1])));
 	}
 
 	private void createObjectFile(String jsonAsString, int id, File dir) throws Exception
