@@ -320,10 +320,10 @@ public class ProjectMetadata extends BaseObject
 		tncEcoregion = new StringData(TAG_TNC_ECOREGION);
 		tncCountry = new StringData(TAG_TNC_COUNTRY);
 		legacyTncOperatingUnits = new StringData(LEGACY_TAG_TNC_OPERATING_UNITS);
-		tncOperatingUnits = new ChoiceData(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
-		tncTerrestrialEcoRegion = new ChoiceData(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
-		tncMarineEcoRegion = new ChoiceData(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
-		tncFreshwaterEcoRegion = new ChoiceData(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
+		tncOperatingUnits = new CodeListData(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
+		tncTerrestrialEcoRegion = new CodeListData(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
+		tncMarineEcoRegion = new CodeListData(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
+		tncFreshwaterEcoRegion = new CodeListData(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
 
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
@@ -481,10 +481,10 @@ public class ProjectMetadata extends BaseObject
 	private StringData tncEcoregion;
 	private StringData tncCountry;
 	private StringData legacyTncOperatingUnits;
-	private ChoiceData tncOperatingUnits;
-	private ChoiceData tncTerrestrialEcoRegion;
-	private ChoiceData tncMarineEcoRegion;
-	private ChoiceData tncFreshwaterEcoRegion;
+	private CodeListData tncOperatingUnits;
+	private CodeListData tncTerrestrialEcoRegion;
+	private CodeListData tncMarineEcoRegion;
+	private CodeListData tncFreshwaterEcoRegion;
 	
 	private StringData otherOrgManagingOffice;
 	private StringData otherOrgRegionalOffice;
