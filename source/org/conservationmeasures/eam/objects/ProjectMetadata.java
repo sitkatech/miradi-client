@@ -269,6 +269,7 @@ public class ProjectMetadata extends BaseObject
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
+		protectedAreaStatus = new ChoiceData(TAG_PROTECTED_AREA_STATUS);
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -311,6 +312,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_HUMAN_POPULATION_NOTES, humanPopulationNotes);
 		addField(TAG_SOCIAL_CONTEXT, socialContext);
 		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
+		addField(TAG_PROTECTED_AREA_STATUS, protectedAreaStatus);
 
 		tncLessonsLearned = new StringData(TAG_TNC_LESSONS_LEARNED);
 		tncWorkbookVersionNumber = new StringData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
@@ -396,6 +398,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_HUMAN_POPULATION_NOTES = "HumanPopulationNotes";
 	public static final String TAG_SOCIAL_CONTEXT = "SocialContext";
 	public static final String TAG_SITE_MAP_REFERENCE = "SiteMapReference";
+	public static final String TAG_PROTECTED_AREA_STATUS = "ProtectedAreaStatus";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -468,6 +471,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData humanPopulationNotes;
 	private StringData socialContext;
 	private StringData siteMapReference;
+	private ChoiceData protectedAreaStatus;
 
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
