@@ -312,7 +312,7 @@ abstract public class DiagramPaster
 		addToDiagramObject(getDiagramObject(), refToAppend, tag);
 	}
 
-	protected void createNewFactors() throws Exception
+	protected void createNewFactorsAndContents() throws Exception
 	{
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
 		{			

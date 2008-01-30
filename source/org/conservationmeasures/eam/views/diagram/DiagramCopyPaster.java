@@ -22,7 +22,7 @@ public class DiagramCopyPaster extends DiagramPaster
 	public void pasteFactors(Point startPoint) throws Exception
 	{	
 		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
-		createNewFactors();	
+		createNewFactorsAndContents();	
 		createNewDiagramFactors();
 	}
 	
