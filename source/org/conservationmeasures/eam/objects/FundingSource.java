@@ -21,23 +21,12 @@ public class FundingSource extends BaseObject
 		clear();
 	}
 	
-	public FundingSource(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public FundingSource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new FundingSourceId(idAsInt), json);
 	}
 
 	
-	public FundingSource(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new FundingSourceId(idAsInt), json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
