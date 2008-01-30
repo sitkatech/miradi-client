@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.InternalQuestionWithoutValues;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Slide extends BaseObject
@@ -96,7 +97,7 @@ public class Slide extends BaseObject
 		super.clear();
 		diagramObjectRef = new ORefData(TAG_DIAGRAM_OBJECT_REF);
 		diagramObjectLabel = new PseudoStringData(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL);
-		legendSettings = new CodeListData(TAG_DIAGRAM_LEGEND_SETTINGS);
+		legendSettings = new CodeListData(TAG_DIAGRAM_LEGEND_SETTINGS, getQuestion(InternalQuestionWithoutValues.class));
 		
 		addField(TAG_DIAGRAM_OBJECT_REF, diagramObjectRef);
 		addField(PSEUDO_TAG_DIAGRAM_OBJECT_LABEL, diagramObjectLabel);

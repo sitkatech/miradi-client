@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.BudgetCostUnitQuestion;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 import org.conservationmeasures.eam.questions.ResourceTypeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -144,7 +145,7 @@ public class ProjectResource extends BaseObject
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
 		costUnit = new ChoiceData(TAG_COST_UNIT, getQuestion(BudgetCostUnitQuestion.class));
 		organization = new StringData(TAG_ORGANIZATION);
-		roleCodes = new CodeListData(TAG_ROLE_CODES);
+		roleCodes = new CodeListData(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
 		comments = new StringData(TAG_COMMENTS);
 		location = new StringData(TAG_LOCATION);
 		phoneNumberMobile = new StringData(TAG_PHONE_NUMBER_MOBILE);

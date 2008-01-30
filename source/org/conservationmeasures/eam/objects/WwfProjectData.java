@@ -10,6 +10,10 @@ import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.CountriesQuestion;
+import org.conservationmeasures.eam.questions.WwfEcoRegionsQuestion;
+import org.conservationmeasures.eam.questions.WwfManagingOfficesQuestion;
+import org.conservationmeasures.eam.questions.WwfRegionsQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class WwfProjectData extends BaseObject
@@ -56,10 +60,10 @@ public class WwfProjectData extends BaseObject
 		
 		relatedProjects = new StringData(TAG_RELATED_PROJECTS);
 		projectNumber = new StringData(TAG_PROJECT_NUMBER);
-		managingOffices = new CodeListData(TAG_MANAGING_OFFICES);
-		regions = new CodeListData(TAG_REGIONS);
-		countries = new CodeListData(TAG_COUNTRIES);
-		ecoRegions = new CodeListData(TAG_ECOREGIONS);
+		managingOffices = new CodeListData(TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
+		regions = new CodeListData(TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
+		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
+		ecoRegions = new CodeListData(TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
 		
 		addField(TAG_RELATED_PROJECTS, relatedProjects);
 		addField(TAG_PROJECT_NUMBER, projectNumber);

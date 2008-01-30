@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.InternalQuestionWithoutValues;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ViewData extends BaseObject
@@ -127,7 +128,7 @@ public class ViewData extends BaseObject
 		expandedNodesList = new ORefListData(TAG_CURRENT_EXPANSION_LIST);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES);
+		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		planningStyleChoice = new StringData(TAG_PLANNING_STYLE_CHOICE);
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);

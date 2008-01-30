@@ -14,6 +14,8 @@ public class QuestionManager
 	private static void initialize()
 	{
 		questions = new HashMap();
+		addQuestion(new InternalQuestionWithoutValues());
+		
 		addQuestion(new BudgetCostModeQuestion());
 		addQuestion(new BudgetCostUnitQuestion());
 		addQuestion(new BudgetTimePeriodQuestion());
@@ -32,6 +34,7 @@ public class QuestionManager
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportStatusQuestion());
+		addQuestion(new ProtectedAreaStatusQuestion());
 		addQuestion(new RatingSourceQuestion());
 		addQuestion(new ResourceRoleQuestion());
 		addQuestion(new ResourceTypeQuestion());
@@ -59,6 +62,9 @@ public class QuestionManager
 		addQuestion(new TncTerrestrialEcoRegionQuestion());
 		addQuestion(new TrendQuestion());
 		addQuestion(new ViabilityModeQuestion());
+		addQuestion(new WwfEcoRegionsQuestion());
+		addQuestion(new WwfManagingOfficesQuestion());
+		addQuestion(new WwfRegionsQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
