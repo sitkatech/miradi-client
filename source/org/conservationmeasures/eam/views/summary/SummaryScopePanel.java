@@ -27,7 +27,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Project Area(ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
 
 
-		ObjectDataInputField protectedAreaStatusField = createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_STATUS, new ProtectedAreaStatusQuestion());
+		ObjectDataInputField protectedAreaStatusField = createMultiCodeField(ProjectMetadata.TAG_PROTECTED_AREA_STATUS, new ProtectedAreaStatusQuestion(), 1);
 		ObjectDataInputField protectedAreaStatusNotesField = createStringField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 		addFieldsOnOneLine(EAM.text("Label|Protected Area Status"), new ObjectDataInputField[]{protectedAreaStatusField, protectedAreaStatusNotesField});
 		

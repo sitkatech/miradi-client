@@ -269,7 +269,7 @@ public class ProjectMetadata extends BaseObject
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
-		protectedAreaStatus = new ChoiceData(TAG_PROTECTED_AREA_STATUS);
+		protectedAreaStatus = new CodeListData(TAG_PROTECTED_AREA_STATUS);
 		protectedAreaStatusNotes = new StringData(TAG_PROTECTED_AREA_STATUS_NOTES);
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
@@ -474,7 +474,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData humanPopulationNotes;
 	private StringData socialContext;
 	private StringData siteMapReference;
-	private ChoiceData protectedAreaStatus;
+	private CodeListData protectedAreaStatus;
 	private StringData protectedAreaStatusNotes;
 
 	private StringData tncLessonsLearned;

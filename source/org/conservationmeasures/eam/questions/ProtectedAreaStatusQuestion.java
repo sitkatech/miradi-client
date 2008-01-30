@@ -16,7 +16,6 @@ public class ProtectedAreaStatusQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatuses()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
 				new ChoiceItem("Ia", "Category Ia: Strict nature reserve/wilderness protection area"),
 				new ChoiceItem("Ib", "Category Ib: Wilderness area"),
 				new ChoiceItem("II", "Category II: National park"),
