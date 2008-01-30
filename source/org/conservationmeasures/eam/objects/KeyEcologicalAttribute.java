@@ -10,6 +10,7 @@ import java.util.Set;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.KeyEcologicalAttributeId;
+import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -18,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
+import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -167,7 +169,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		indicatorIds = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		description = new StringData(TAG_DESCRIPTION);
 		details = new StringData(TAG_DETAILS);
-		keyEcologicalAttributeType = new StringData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
+		keyEcologicalAttributeType = new ChoiceData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
 		
@@ -191,7 +193,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	private IdListData indicatorIds;
 	private StringData description;
 	private StringData details;
-	private StringData keyEcologicalAttributeType;
+	private ChoiceData keyEcologicalAttributeType;
 	private StringData shortLabel;
 	private PseudoStringData viabilityStatus;
 }
