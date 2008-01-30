@@ -35,15 +35,20 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.FundingSource;
+import org.conservationmeasures.eam.objects.IntermediateResult;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Stress;
 import org.conservationmeasures.eam.objects.Target;
+import org.conservationmeasures.eam.objects.ThreatReductionResult;
 import org.conservationmeasures.eam.objects.ThreatStressRating;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -320,11 +325,12 @@ abstract public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
 
-			BaseObject newObject = createObject(type);
-			loadNewObjectFromOldJson(newObject, json);
-			
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
+			int convertedType = convertType(oldObjectRef);
+			BaseObject newObject = createObject(convertedType);
+			loadNewObjectFromOldJson(newObject, json);
+			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
 			fixupRefs(getOldToNewObjectRefMap(),newObject);
 		}
@@ -633,104 +639,54 @@ abstract public class DiagramPaster
 		return new DiagramFactorId(newRef.getObjectId().asInt());
 	}
 	
-	public boolean canPaste() throws Exception
+	private int convertType(ORef oldObjectRef)
 	{
-		for (int i = 0; i < factorDeepCopies.size(); i++) 
+		if (isPastingInSameDiagramType())
+			return oldObjectRef.getObjectType();
+
+		if (!Factor.isFactor(oldObjectRef))
+			return oldObjectRef.getObjectType();
+		
+		Factor factor = Factor.findFactor(getProject(), oldObjectRef);
+		if (isFromConceptualModel())
 		{
-			String jsonAsString = factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int type = json.getInt("Type");
-			if (! canPasteTypeInCurrentTab(type))
-			{
-				EAM.logDebug("Cannot paste type " + type);
-				return false;
-			}
+			if (factor.isContributingFactor())
+				return IntermediateResult.getObjectType();
+			
+			if (factor.isDirectThreat())
+				return ThreatReductionResult.getObjectType();
 		}
 		
-		return true;
-	}
-	
-	private boolean canPasteTypeInCurrentTab(int type)
-	{
-		if (isResultsChain() && containsType(getResultsChainPastableTypes(), type))
-			return true;
-		
-		if (! isResultsChain() && containsType(getConceptualDiagramPastableTypes(), type))
-			return true;
-		
-		return false;
-	}
-
-	private boolean isResultsChain()
-	{
-		DiagramObject diagramObject = getDiagramObject();
-		if (diagramObject.getType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
-			return true;
-		
-		return false;
-	}
-
-	private boolean containsType(int[] listOfTypes, int type)
-	{
-		for (int i = 0 ; i < listOfTypes.length; ++i)
+		if (isFromResultsChain())
 		{
-			if (listOfTypes[i] == type)
+			if (factor.isIntermediateResult() || factor.isThreatReductionResult())
+				return Cause.getObjectType();
+		}
+		
+		return oldObjectRef.getObjectType();
+	}
+
+	protected boolean isPastingInSameDiagramType()
+	{
+		if (isFromConceptualModel() && ConceptualModelDiagram.is(getDiagramObject().getRef()))
 				return true;
-		}
+		
+		if (isFromResultsChain() && ResultsChainDiagram.is(getDiagramObject().getType()))
+			return true;
 		
 		return false;
 	}
 	
-	//TODO simplify the two below methods,  duplicate code
-	private int[] getResultsChainPastableTypes()
+	private boolean isFromConceptualModel()
 	{
-		return new int[] {
-				ObjectType.THREAT_REDUCTION_RESULT,
-				ObjectType.INTERMEDIATE_RESULT, 
-				ObjectType.STRATEGY, 
-				ObjectType.TARGET, 
-				ObjectType.TEXT_BOX, 
-				ObjectType.INDICATOR,
-				ObjectType.OBJECTIVE,
-				ObjectType.TASK,
-				ObjectType.GOAL,
-				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
-				ObjectType.ASSIGNMENT,
-				ObjectType.ACCOUNTING_CODE,
-				ObjectType.FUNDING_SOURCE,
-				ObjectType.STRESS,
-				ObjectType.THREAT_STRESS_RATING,
-				ObjectType.GROUP_BOX,
-				ObjectType.MEASUREMENT,
-				ObjectType.SUB_TARGET,
-				ObjectType.PROGRESS_REPORT,
-				};
+		return ConceptualModelDiagram.is(transferableList.getDiagramObjectRefCopiedFrom());
 	}
 	
-	private int[] getConceptualDiagramPastableTypes()
+	private boolean isFromResultsChain()
 	{
-		return new int[] {
-				ObjectType.CAUSE, 
-				ObjectType.STRATEGY, 
-				ObjectType.TARGET,
-				ObjectType.TEXT_BOX,
-				ObjectType.INDICATOR,
-				ObjectType.OBJECTIVE,
-				ObjectType.TASK,
-				ObjectType.GOAL,
-				ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
-				ObjectType.ASSIGNMENT,
-				ObjectType.ACCOUNTING_CODE,
-				ObjectType.FUNDING_SOURCE,
-				ObjectType.STRESS,
-				ObjectType.THREAT_STRESS_RATING,
-				ObjectType.GROUP_BOX,
-				ObjectType.MEASUREMENT,
-				ObjectType.SUB_TARGET,
-				ObjectType.PROGRESS_REPORT,
-				};
+		return ResultsChainDiagram.is(transferableList.getDiagramObjectRefCopiedFrom());
 	}
-	
+
 	public Project getProject()
 	{
 		return project;
@@ -741,9 +697,37 @@ abstract public class DiagramPaster
 		return oldToNewPastedObjectMap;
 	}
 	
-	private DiagramObject getDiagramObject()
+	protected DiagramObject getDiagramObject()
 	{
 		return currentModel.getDiagramObject();
+	}
+	
+	public boolean canPaste() throws Exception
+	{
+		for (int i = 0; i < factorDeepCopies.size(); i++) 
+		{
+			String jsonAsString = factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int type = json.getInt("Type");
+			if (!canPastTypeIndDiagram(type))
+			{
+				EAM.logDebug("Cannot paste type " + type);
+				return false;
+			}
+		}
+		
+		return true;
+	}
+
+	protected boolean containsType(int[] types, int type)
+	{
+		for (int i = 0; i < types.length; ++i)
+		{
+			if (types[i] == type)
+				return true;
+		}
+		
+		return false;
 	}
 	
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	
@@ -752,7 +736,9 @@ abstract public class DiagramPaster
 	
 	abstract public void pasteFactorsAndLinks(Point startPoint) throws Exception;
 	
-	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;	
+	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;
+	
+	abstract protected boolean canPastTypeIndDiagram(int type);
 	
 	private Project project;
 	private DiagramModel currentModel;

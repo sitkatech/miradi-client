@@ -17,8 +17,12 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.TransferableMiradiList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -86,5 +90,29 @@ public class DiagramAliasPaster extends DiagramPaster
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
 	{
 		return oldWrappedFactorLinkRef;
+	}
+	
+	protected int[] getResultsChainPastableTypes()
+	{
+		return new int[] {
+				ObjectType.THREAT_REDUCTION_RESULT,
+				ObjectType.INTERMEDIATE_RESULT, 
+				};
+	}
+	
+	protected boolean canPastTypeIndDiagram(int type)
+	{
+		if (isPastingInSameDiagramType())
+			return true;
+		
+		boolean isResultsChain = ResultsChainDiagram.is(getDiagramObject().getType());
+		if (isResultsChain && Cause.is(type))
+			return false;
+		
+		boolean isConceptualModel = ConceptualModelDiagram.is(getDiagramObject().getType());
+		if (isConceptualModel && containsType(getResultsChainPastableTypes(), type))
+			return false;
+		
+		return true;
 	}
 }
