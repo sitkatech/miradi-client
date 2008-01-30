@@ -17,7 +17,7 @@ public class TestFactorLink extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		FactorLink linkageData = new FactorLink(id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
+		FactorLink linkageData = new FactorLink(getObjectManager(), id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		assertEquals("Id not the same?", id, linkageData.getId());
 		assertEquals("From Node refs don't match", nodeA.getWrappedORef(), linkageData.getFromFactorRef());
 		assertEquals("To Node refs don't match", nodeB.getWrappedORef(), linkageData.getToFactorRef());
@@ -40,12 +40,13 @@ public class TestFactorLink extends ObjectTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 
 	public void testToJson() throws Exception
 	{
-		FactorLink original = new FactorLink(id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
+		FactorLink original = new FactorLink(getObjectManager(), id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		EnhancedJsonObject json = original.toJson();
 		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(project.getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());

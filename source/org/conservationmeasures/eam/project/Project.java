@@ -109,7 +109,6 @@ public class Project
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
 		projectCalendar = new ProjectCalendar(this);
-		questionManager = new QuestionManager();
 
 		clear();
 	}
@@ -406,7 +405,7 @@ public class Project
 	
 	public ChoiceQuestion getQuestion(Class questionClass)
 	{
-		return questionManager.getQuestion(questionClass);
+		return QuestionManager.getQuestion(questionClass);
 	}
 
 
@@ -794,7 +793,6 @@ public class Project
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		objectManager.toXml(out);
-		questionManager.toXml(out);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -1234,7 +1232,6 @@ public class Project
 	
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
-	private QuestionManager questionManager;
 	UndoRedoState undoRedoState;
 	boolean isExecuting;
 	boolean firingCommandExecutedEvents;

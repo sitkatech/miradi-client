@@ -87,7 +87,7 @@ public class ThreatMatrixTableModel extends AbstractThreatTargetTableModel
 		
 		try
 		{
-			defaultValueOption = new ValueOption(new BaseId(-1), "", -1, Color.WHITE);
+			defaultValueOption = new ValueOption(getProject().getObjectManager(), new BaseId(-1), "", -1, Color.WHITE);
 		}
 		catch(Exception e)
 		{

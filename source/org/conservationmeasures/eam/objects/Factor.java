@@ -41,21 +41,9 @@ abstract public class Factor extends BaseObject
 		type = nodeType;
 	}
 	
-	protected Factor(BaseId idToUse, FactorType nodeType)
-	{
-		super(idToUse);
-		type = nodeType;
-	}
-	
 	protected Factor(ObjectManager objectManager, FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
-		type = nodeType;
-	}
-	
-	protected Factor(FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, json);
 		type = nodeType;
 	}
 	
@@ -301,11 +289,6 @@ abstract public class Factor extends BaseObject
 		return getLabel();
 	}
 	
-	
-	public static Factor createConceptualModelObject(FactorId idToCreate, int objectType)
-	{
-		 return createConceptualModelObject(null, idToCreate, objectType);
-	}
 	
 	public static Factor createConceptualModelObject(ObjectManager objectManager, FactorId idToCreate, int objectType)
 	{

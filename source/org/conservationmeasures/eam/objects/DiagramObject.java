@@ -29,21 +29,11 @@ abstract public class DiagramObject extends BaseObject
 		super(objectManager,idToUse);
 	}
 	
-	public DiagramObject(BaseId idToUse)
-	{
-		super(idToUse);
-	}
-	
 	public DiagramObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new DiagramContentsId(idToUse), json);
 	}
 	
-	
-	public DiagramObject(int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(new DiagramContentsId(idToUse), json);
-	}
 	
 	public DiagramLink getDiagramFactorLink(FactorLinkId factorLinkId)
 	{

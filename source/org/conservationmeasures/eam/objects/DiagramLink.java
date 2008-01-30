@@ -37,27 +37,9 @@ public class DiagramLink extends BaseObject
 		setData(TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToFactorId().toString());
 	}
 	
-	public DiagramLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
-	{
-		super(new DiagramFactorLinkId(idToUse.asInt()));
-		
-		underlyingObjectId.setId(extraInfo.getFactorLinkId());
-		fromId.setId(extraInfo.getFromFactorId());
-		toId.setId(extraInfo.getToFactorId());
-	}
-	
 	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new DiagramFactorLinkId(idToUse), json);
-		
-		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
-		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
-		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
-	}
-	
-	public DiagramLink(int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(new DiagramFactorLinkId(idToUse), json);
 		
 		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
 		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));

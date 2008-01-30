@@ -31,6 +31,7 @@ public class TestFactorDataHelper extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testGetNewLocation()

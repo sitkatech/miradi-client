@@ -27,6 +27,10 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.DiagramFactorBackgroundQuestion;
+import org.conservationmeasures.eam.questions.DiagramFactorFontColorQuestion;
+import org.conservationmeasures.eam.questions.DiagramFactorFontSizeQuestion;
+import org.conservationmeasures.eam.questions.DiagramFactorFontStyleQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -40,26 +44,9 @@ public class DiagramFactor extends BaseObject
 		size.setDimension(getDefaultSize());
 	}
 	
-	public DiagramFactor(DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo)
-	{
-		super(diagramFactorIdToUse);
-		
-		clear();
-		underlyingObjectRef.set(extraInfo.getFactorRef());
-		size.setDimension(getDefaultSize());
-	}
-	
 	public DiagramFactor(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new DiagramFactorId(idToUse), json);
-		
-		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
-		underlyingObjectRef.set(wrappedRef);
-	}
-	
-	public DiagramFactor(int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(new DiagramFactorId(idToUse), json);
 		
 		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
 		underlyingObjectRef.set(wrappedRef);
@@ -335,11 +322,11 @@ public class DiagramFactor extends BaseObject
 		size = new DimensionData(TAG_SIZE);
 		location = new PointData(TAG_LOCATION);
 		underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
-		fontSize = new ChoiceData(TAG_FONT_SIZE);
-		fontColor = new ChoiceData(TAG_FOREGROUND_COLOR);
-		fontStyle = new ChoiceData(TAG_FONT_STYLE);
+		fontSize = new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
+		fontColor = new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
+		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
-		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR);
+		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);

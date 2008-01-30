@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 
-public class TestRatingCriterion extends EAMTestCase
+public class TestRatingCriterion extends TestCaseWithProject
 {
 	public TestRatingCriterion(String name)
 	{
@@ -24,7 +24,7 @@ public class TestRatingCriterion extends EAMTestCase
 	public void testGetDataBadFieldTag()
 	{
 		BaseId id = new BaseId(6);
-		RatingCriterion option = new RatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(getObjectManager(), id);
 		try
 		{
 			option.getData("not a valid tag");
@@ -38,7 +38,7 @@ public class TestRatingCriterion extends EAMTestCase
 	public void testSetDataBadFieldTag() throws Exception
 	{
 		BaseId id = new BaseId(6);
-		RatingCriterion option = new RatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(getObjectManager(), id);
 		try
 		{
 			option.setData("not a valid tag", "whatever");
@@ -52,7 +52,7 @@ public class TestRatingCriterion extends EAMTestCase
 	private void verifySetGetData(String tag, String value) throws Exception
 	{
 		BaseId id = new BaseId(6);
-		RatingCriterion option = new RatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(getObjectManager(), id);
 		option.setData(tag, value);
 		assertEquals(value, option.getData(tag));
 	}
@@ -61,11 +61,11 @@ public class TestRatingCriterion extends EAMTestCase
 	{
 		BaseId id = new BaseId(32);
 		String label = "Text";
-		RatingCriterion a = new RatingCriterion(id);
+		RatingCriterion a = new RatingCriterion(getObjectManager(), id);
 		a.setData(RatingCriterion.TAG_LABEL, label);
-		RatingCriterion b = new RatingCriterion(id);
+		RatingCriterion b = new RatingCriterion(getObjectManager(), id);
 		b.setData(RatingCriterion.TAG_LABEL, "other label");
-		RatingCriterion c = new RatingCriterion(new BaseId(id.asInt() + 1));
+		RatingCriterion c = new RatingCriterion(getObjectManager(), new BaseId(id.asInt() + 1));
 		c.setData(RatingCriterion.TAG_LABEL, label);
 		assertEquals("id same not good enough?", a, b);
 		assertNotEquals("id different still equals?", a, c);

@@ -5,11 +5,49 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.questions.ChoiceItem;
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
+
 
 public class ChoiceData extends StringData
 {
-	public ChoiceData(String tagToUse)
+	public ChoiceData(String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(tagToUse);
+		question = questionToUse;
 	}
+	
+	public void toXml(UnicodeWriter out) throws Exception
+	{
+		String code = get();
+		String value = getValue(code);
+		
+		out.writeln("<" + getTag() + " question = '" + question.getClass().getSimpleName() + "'>");
+		out.writeln("<code>");
+		out.write(XmlUtilities.getXmlEncoded(code));
+		out.writeln("</code>");
+		out.writeln("<value>");
+		out.write(XmlUtilities.getXmlEncoded(value));
+		out.writeln("</value>");
+		out.writeln("</" + getTag() + ">");
+	}
+
+	private String getValue(String code)
+	{
+		if(question == null)
+		{
+			EAM.logError("ChoiceData without question: " + getTag());
+			return "";
+		}
+		ChoiceItem choice = question.findChoiceByCode(code);
+		if(choice == null)
+			return "[Unknown code: " + code + "]";
+		String value = choice.getLabel();
+		return value;
+	}
+	
+	private ChoiceQuestion question;
 }

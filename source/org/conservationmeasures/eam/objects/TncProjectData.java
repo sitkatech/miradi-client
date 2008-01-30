@@ -23,11 +23,6 @@ public class TncProjectData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public TncProjectData(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new BaseId(idAsInt), jsonObject);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

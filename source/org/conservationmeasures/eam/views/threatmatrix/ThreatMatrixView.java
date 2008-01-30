@@ -98,7 +98,7 @@ public class ThreatMatrixView extends CardedView
 	
 	public BufferedImage getImage()
 	{
-		return MatrixTableImageCreator.createImage(grid.getThreatMatrixTable(),grid.getRowHeaderTable());
+		return MatrixTableImageCreator.createImage(getProject(), grid.getThreatMatrixTable(),grid.getRowHeaderTable());
 	}
 
 	public void createCards() throws Exception

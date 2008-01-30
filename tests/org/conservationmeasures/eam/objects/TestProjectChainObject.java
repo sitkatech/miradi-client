@@ -24,6 +24,7 @@ public class TestProjectChainObject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testCacheClearing() throws Exception

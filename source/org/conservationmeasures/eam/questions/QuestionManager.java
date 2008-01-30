@@ -5,14 +5,13 @@
 */ 
 package org.conservationmeasures.eam.questions;
 
-import java.io.IOException;
 import java.util.HashMap;
 
-import org.martus.util.UnicodeWriter;
+import org.conservationmeasures.eam.main.EAM;
 
 public class QuestionManager
 {
-	public QuestionManager()
+	private static void initialize()
 	{
 		questions = new HashMap();
 		addQuestion(new BudgetCostModeQuestion());
@@ -24,6 +23,7 @@ public class QuestionManager
 		addQuestion(new DiagramFactorBackgroundQuestion());
 		addQuestion(new DiagramFactorFontColorQuestion());
 		addQuestion(new DiagramFactorFontSizeQuestion());
+		addQuestion(new DiagramFactorFontStyleQuestion());
 		addQuestion(new DiagramLegendQuestion());
 		addQuestion(new FiscalYearStartQuestion());
 		addQuestion(new FontFamiliyQuestion());
@@ -53,36 +53,35 @@ public class QuestionManager
 		addQuestion(new ThreatRatingModeChoiceQuestion());
 		addQuestion(new ThreatRatingQuestion());
 		addQuestion(new ThreatStressRatingChoiceQuestion());
+		addQuestion(new TncFreshwaterEcoRegionQuestion());
+		addQuestion(new TncMarineEcoRegionQuestion());
+		addQuestion(new TncOperatingUnitsQuestion());
+		addQuestion(new TncTerrestrialEcoRegionQuestion());
 		addQuestion(new TrendQuestion());
 		addQuestion(new ViabilityModeQuestion());
 	}
 	
-	private void addQuestion(ChoiceQuestion question)
+	private static void addQuestion(ChoiceQuestion question)
 	{
 		questions.put(question.getClass().getSimpleName(), question);
 	}
 	
-	public ChoiceQuestion getQuestion(Class questionClass)
+	public static ChoiceQuestion getQuestion(Class questionClass)
 	{
 		return getQuestion(questionClass.getSimpleName());
 	}
 	
-	public ChoiceQuestion getQuestion(String questionName)
+	public static ChoiceQuestion getQuestion(String questionName)
 	{
-		return questions.get(questionName);
+		if(questions == null)
+			initialize();
+		
+		ChoiceQuestion question = questions.get(questionName);
+		if(question == null)
+			EAM.logWarning("Unknown question: " + questionName);
+		return question;
 	}
 	
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.writeln("<ChoiceQuestions>");
-		for(String questionName : questions.keySet())
-		{
-			ChoiceQuestion question = getQuestion(questionName);
-			question.toXml(out);
-		}
-		out.writeln("</ChoiceQuestions>");
-	}
-
-	HashMap<String, ChoiceQuestion> questions;
+	private static HashMap<String, ChoiceQuestion> questions;
 
 }

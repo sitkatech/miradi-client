@@ -25,11 +25,6 @@ public class WwfProjectData extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public WwfProjectData(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new BaseId(idAsInt), jsonObject);
-	}
-	
 	public int getType()
 	{
 		return getObjectType();

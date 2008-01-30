@@ -58,6 +58,7 @@ public class TestDiagramLink extends ObjectTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testAsObject() throws Exception

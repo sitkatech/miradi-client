@@ -30,20 +30,9 @@ public class Objective extends Desire
 		super(objectManager, new ObjectiveId(id.asInt()));
 	}
 	
-	
-	public Objective(BaseId id)
-	{
-		super(new ObjectiveId(id.asInt()));
-	}
-	
 	public Objective(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new ObjectiveId(idAsInt), json);
-	}
-	
-	public Objective(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new ObjectiveId(idAsInt), json);
 	}
 	
 	

@@ -9,40 +9,27 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestViewData extends EAMTestCase
+public class TestViewData extends TestCaseWithProject
 {
 	public TestViewData(String name)
 	{
 		super(name);
 	}
 	
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
-	}
-
-	public void tearDown() throws Exception
-	{
-		project.close();
-		super.tearDown();
-	}
-	
 	public void testCurrentTab() throws Exception
 	{
-		ViewData vd = new ViewData(new BaseId(33));
+		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
 		assertEquals("", vd.getData(ViewData.TAG_CURRENT_TAB));
 		int tab = 6;
 		vd.setData(ViewData.TAG_CURRENT_TAB, Integer.toString(tab));
 		assertEquals(6, new Integer(vd.getData(ViewData.TAG_CURRENT_TAB)).intValue());
 		
-		ViewData got = new ViewData(55, vd.toJson());
+		ViewData got = new ViewData(getObjectManager(), 55, vd.toJson());
 		assertEquals(vd.getData(ViewData.TAG_CURRENT_TAB), got.getData(ViewData.TAG_CURRENT_TAB));
 	}
 
@@ -50,11 +37,11 @@ public class TestViewData extends EAMTestCase
 	public void testCurrentSortData() throws Exception
 	{
 		
-		ViewData vd1 = new ViewData(new BaseId(33));
+		ViewData vd1 = new ViewData(getObjectManager(), new BaseId(33));
 		vd1.setData(ViewData.TAG_CURRENT_SORT_BY, "TAREGT");
 		assertEquals("TAREGT", vd1.getData(ViewData.TAG_CURRENT_SORT_BY));
 
-		ViewData vd2 = new ViewData(new BaseId(34));
+		ViewData vd2 = new ViewData(getObjectManager(), new BaseId(34));
 		vd2.setData(ViewData.TAG_CURRENT_SORT_DIRECTION, "ASCENDING");
 		assertEquals("ASCENDING", vd2.getData(ViewData.TAG_CURRENT_SORT_DIRECTION));
 		
@@ -63,27 +50,27 @@ public class TestViewData extends EAMTestCase
 	
 	public void testMode() throws Exception
 	{
-		ViewData vd = new ViewData(new BaseId(33));
+		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
 		String modeTag = ViewData.TAG_CURRENT_MODE;
 		assertEquals("Didn't start with default mode?", "", vd.getData(modeTag));
 		String sampleMode = "Brainstorm";
 		vd.setData(modeTag, sampleMode);
 		assertEquals("Set/get didn't work?", sampleMode, vd.getData(modeTag));
 		
-		ViewData got = (ViewData)BaseObject.createFromJson(project.getObjectManager(), vd.getType(), vd.toJson());
+		ViewData got = (ViewData)BaseObject.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve mode?", vd.getData(modeTag), got.getData(modeTag));
 	}
 	
 	public void testBrainstormNodeIds() throws Exception
 	{
-		ViewData vd = new ViewData(new BaseId(33));
+		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
 		String ORefsTag = ViewData.TAG_CHAIN_MODE_FACTOR_REFS;
 		assertEquals("didn't start with empty id list?", 0, new ORefList(vd.getData(ORefsTag)).size());
 		ORefList sampleORefs = createSampleORefList();
 		vd.setData(ORefsTag, sampleORefs.toString());
 		assertEquals("Set/get didn't work?", sampleORefs, new ORefList(vd.getData(ORefsTag)));
 
-		ViewData got = (ViewData)BaseObject.createFromJson(project.getObjectManager(), vd.getType(), vd.toJson());
+		ViewData got = (ViewData)BaseObject.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve ids?", vd.getData(ORefsTag), got.getData(ORefsTag));
 	}
 
@@ -98,7 +85,7 @@ public class TestViewData extends EAMTestCase
 	
 	public void testBuildCommandsToInsertNode() throws Exception
 	{
-		ViewData vd = new ViewData(new BaseId(33));
+		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
 		ORefList sampleORefs = createSampleORefList();
 		vd.setData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, sampleORefs.toString());
 		FactorId idToAdd = new FactorId(983);
@@ -119,7 +106,7 @@ public class TestViewData extends EAMTestCase
 	
 	public void testBuildCommandsToRemoveNode() throws Exception
 	{
-		ViewData vd = new ViewData(new BaseId(33));
+		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
 		ORefList sampleORefs = createSampleORefList();
 		vd.setData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, sampleORefs.toString());
 		ORef oRefToRemove = sampleORefs.get(0);
@@ -137,6 +124,4 @@ public class TestViewData extends EAMTestCase
 		assertEquals("command wrong field?", ViewData.TAG_CHAIN_MODE_FACTOR_REFS, cmd.getFieldTag());
 		assertEquals("didn't create proper command?", expected.toString(), cmd.getDataValue());
 	}
-	
-	ProjectForTesting project;
 }

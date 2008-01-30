@@ -33,22 +33,11 @@ public class Task extends BaseObject
 		clear();
 	}
 	
-	public Task(BaseId idToUse) throws Exception
-	{
-		super(new TaskId(idToUse.asInt()));
-		clear();
-	}
-	
 	public Task(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new TaskId(idAsInt), json);
 	}
 	
-	
-	public Task(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new TaskId(idAsInt), json);
-	}
 	
 	
 	public Vector getDeleteSelfAndSubtasksCommands(Project project) throws Exception

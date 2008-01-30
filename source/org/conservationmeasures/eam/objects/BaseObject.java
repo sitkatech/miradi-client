@@ -58,22 +58,12 @@ abstract public class BaseObject
 		clear();
 	}
 	
-	public BaseObject(BaseId idToUse)
-	{
-		this(null, idToUse);
-	}
-	
 	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		this(objectManagerToUse, idToUse);
 		loadFromJson(json);
 	}
 	
-	BaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		this(null, idToUse, json);
-	}
-
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Iterator iter = fields.keySet().iterator();
@@ -467,7 +457,7 @@ abstract public class BaseObject
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new StringData(TAG_BUDGET_COST_OVERRIDE);
-		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE);
+		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
@@ -479,6 +469,11 @@ abstract public class BaseObject
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 	}
 	
+	protected ChoiceQuestion getQuestion(Class questionClass)
+	{
+		return getProject().getQuestion(questionClass);
+	}
+
 	void addField(String tag, ObjectData data)
 	{
 		if(!data.getTag().equals(tag))

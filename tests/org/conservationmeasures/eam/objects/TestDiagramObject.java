@@ -26,6 +26,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testAreDiagramFactorsLinked() throws Exception

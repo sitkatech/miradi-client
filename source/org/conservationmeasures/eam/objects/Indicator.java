@@ -40,19 +40,9 @@ public class Indicator extends BaseObject
 		clear();
 	}
 
-	public Indicator(IndicatorId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
 	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-	
-	public Indicator(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getTaskCount()
@@ -325,18 +315,18 @@ public class Indicator extends BaseObject
 	{
 		super.clear();
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		priority = new ChoiceData(TAG_PRIORITY);
-		status = new ChoiceData(TAG_STATUS);
+		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
+		status = new ChoiceData(TAG_STATUS, getQuestion(IndicatorStatusRatingQuestion.class));
 		taskIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
-		ratingSource= new ChoiceData(TAG_RATING_SOURCE);
+		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		detail = new StringData(TAG_DETAIL);
 		comment = new StringData(TAG_COMMENT);
 		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENT);
 		
-		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING);
+		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
 		futureStatusDetail = new StringData(TAG_FUTURE_STATUS_DETAIL);

@@ -29,20 +29,9 @@ public class KeyEcologicalAttribute extends BaseObject
 		clear();
 	}
 
-	public KeyEcologicalAttribute(KeyEcologicalAttributeId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public KeyEcologicalAttribute(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-	
-	public KeyEcologicalAttribute(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getAnnotationType(String tag)

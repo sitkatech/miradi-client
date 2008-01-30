@@ -106,8 +106,8 @@ public class Stress extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		detail = new StringData(TAG_DETAIL);
 		comments = new StringData(TAG_COMMENTS);
-		scope = new ChoiceData(TAG_SCOPE);
-		severity = new ChoiceData(TAG_SEVERITY);
+		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
+		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());
 		
 		addField(TAG_SHORT_LABEL, shortLabel);

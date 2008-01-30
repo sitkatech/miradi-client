@@ -34,6 +34,7 @@ public class TestLinkCell extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testGetNewBendPointList() throws Exception

@@ -10,32 +10,19 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.martus.util.TestCaseEnhanced;
+import org.conservationmeasures.eam.main.TestCaseWithProject;
 
-public class TestFactor extends TestCaseEnhanced
+public class TestFactor extends TestCaseWithProject
 {
 	public TestFactor(String name)
 	{
 		super(name);
 	}
 	
-	protected void setUp() throws Exception
-	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
-	}
-
-	protected void tearDown() throws Exception
-	{
-		project.close();
-		super.tearDown();
-	}
-
 	public void testComments() throws Exception
 	{
 		FactorId id = new FactorId(35);
-		Cause factor = new Cause(project.getObjectManager(), id);
+		Cause factor = new Cause(getObjectManager(), id);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
 		factor.setComment(sampleComment);
@@ -45,7 +32,7 @@ public class TestFactor extends TestCaseEnhanced
 	public void testSetGetData() throws Exception
 	{
 		FactorId id = new FactorId(72);
-		Target target = new Target(id);
+		Target target = new Target(getObjectManager(), id);
 		String[] tags = {
 			Factor.TAG_COMMENT,
 			Factor.TAG_INDICATOR_IDS,
@@ -86,13 +73,13 @@ public class TestFactor extends TestCaseEnhanced
 		indicators.add(new BaseId(422));
 
 		FactorId factorId = new FactorId(2342);
-		Cause factor = new Cause(project.getObjectManager(), factorId);
+		Cause factor = new Cause(getObjectManager(), factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicators(indicators);
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
-		Cause got = (Cause)Factor.createFromJson(project.getObjectManager(), factor.getType(), factor.toJson());
+		Cause got = (Cause)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
@@ -104,6 +91,4 @@ public class TestFactor extends TestCaseEnhanced
 		assertEquals("wrong objectives count?", factor.getObjectives().size(), got.getObjectives().size());
 		assertEquals("wrong objectives?", factor.getObjectives(), got.getObjectives());
 	}
-			
-	ProjectForTesting project;
 }

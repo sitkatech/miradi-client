@@ -20,22 +20,11 @@ public class TextBox extends Factor
 		clear();
 	}
 	
-	public TextBox(FactorId idToUse)
-	{
-		super(idToUse, new FactorTypeTextBox());
-		clear();
-	}
-	
 	public TextBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_TEXT_BOX, json);
 	}
 	
-	public TextBox(FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, Factor.TYPE_TEXT_BOX, json);
-	}
-
 	public int getType()
 	{
 		return getObjectType();

@@ -20,19 +20,9 @@ public class Goal extends Desire
 		super(objectManager, idToUse);
 	}
 	
-	public Goal(BaseId idToUse)
-	{
-		super(idToUse);
-	}
-	
 	public Goal(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-	}
-	
-	public Goal(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()

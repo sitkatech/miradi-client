@@ -33,6 +33,7 @@ public class TestFactorDeleteHelper extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testDeleteFactor() throws Exception

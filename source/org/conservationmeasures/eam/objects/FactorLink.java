@@ -39,14 +39,6 @@ public class FactorLink extends BaseObject
 		setData(TAG_TO_REF, toFactorRef.toString());
 	}
 
-	public FactorLink(FactorLinkId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
-	{
-		super(id);
-		clear();
-		setData(TAG_FROM_REF, fromFactorRef.toString());
-		setData(TAG_TO_REF, toFactorRef.toString());
-	}
-	
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(objectManager, new FactorLinkId(idAsInt), jsonObject);

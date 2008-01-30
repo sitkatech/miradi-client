@@ -34,6 +34,7 @@ public class ImportAccountingCodesDoerTest extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	

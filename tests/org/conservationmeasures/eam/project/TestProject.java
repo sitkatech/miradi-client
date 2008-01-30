@@ -75,6 +75,7 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception

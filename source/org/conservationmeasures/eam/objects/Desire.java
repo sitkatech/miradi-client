@@ -27,21 +27,9 @@ abstract public class Desire extends BaseObject
 		clear();
 	}
 
-	public Desire(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
-	}
-
-	
-	public Desire(BaseId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(idToUse, json);
 	}
 
 	abstract public int getType();

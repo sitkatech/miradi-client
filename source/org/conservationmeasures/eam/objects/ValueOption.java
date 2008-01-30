@@ -22,16 +22,10 @@ public class ValueOption extends BaseObject
 		color = Color.BLACK;
 	}
 	
-	public ValueOption(BaseId idToUse)
-	{
-		super(idToUse);
-		color = Color.BLACK;
-	}
 	
-	
-	public ValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
+	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
-		super(idToUse);
+		this(objectManager, idToUse);
 		setData(TAG_LABEL, labelToUse);
 		numeric = numericToUse;
 		color = colorToUse;

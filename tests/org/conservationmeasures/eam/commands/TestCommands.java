@@ -62,6 +62,7 @@ public class TestCommands extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testCommandSetObjectData_RatingCriterion() throws Exception

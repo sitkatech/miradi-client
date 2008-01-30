@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.BudgetCostUnitQuestion;
+import org.conservationmeasures.eam.questions.ResourceTypeQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -28,20 +30,9 @@ public class ProjectResource extends BaseObject
 		clear();
 	}
 	
-	public ProjectResource(BaseId idToUse)
-	{
-		super(idToUse);
-		clear();
-	}
-	
 	public ProjectResource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new ProjectResourceId(idAsInt), json);
-	}
-
-	public ProjectResource(int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(new ProjectResourceId(idAsInt), json);
 	}
 
 	
@@ -143,7 +134,7 @@ public class ProjectResource extends BaseObject
 	{
 		super.clear();
 		
-		resourceType = new ChoiceData(TAG_RESOURCE_TYPE);
+		resourceType = new ChoiceData(TAG_RESOURCE_TYPE, getQuestion(ResourceTypeQuestion.class));
 		initials = new StringData(TAG_INITIALS);
 		givenName = new StringData(TAG_GIVEN_NAME);
 		surName = new StringData(TAG_SUR_NAME);
@@ -151,7 +142,7 @@ public class ProjectResource extends BaseObject
 		phoneNumber = new StringData(TAG_PHONE_NUMBER);
 		email = new StringData(TAG_EMAIL);
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
-		costUnit = new ChoiceData(TAG_COST_UNIT);
+		costUnit = new ChoiceData(TAG_COST_UNIT, getQuestion(BudgetCostUnitQuestion.class));
 		organization = new StringData(TAG_ORGANIZATION);
 		roleCodes = new CodeListData(TAG_ROLE_CODES);
 		comments = new StringData(TAG_COMMENTS);

@@ -37,6 +37,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	private void setupFactors() throws Exception

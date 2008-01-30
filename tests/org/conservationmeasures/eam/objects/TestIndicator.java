@@ -30,6 +30,7 @@ public class TestIndicator extends ObjectTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testFields() throws Exception

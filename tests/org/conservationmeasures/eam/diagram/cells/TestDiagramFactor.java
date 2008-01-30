@@ -50,6 +50,7 @@ public class TestDiagramFactor extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 
@@ -121,7 +122,7 @@ public class TestDiagramFactor extends EAMTestCase
 		diagramFactor.setLocation(new Point(100, 200));
 		diagramFactor.setSize(new Dimension(50, 75));
 		
-		DiagramFactor diagramFactor2 = new DiagramFactor(diagramFactor.getDiagramFactorId().asInt(), diagramFactor.toJson());
+		DiagramFactor diagramFactor2 = new DiagramFactor(project.getObjectManager(), diagramFactor.getDiagramFactorId().asInt(), diagramFactor.toJson());
 		
 		assertEquals("location", diagramFactor.getLocation(), diagramFactor2.getLocation());
 		assertEquals("size", diagramFactor.getSize(), diagramFactor2.getSize());

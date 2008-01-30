@@ -25,11 +25,6 @@ public class PlanningViewConfiguration extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	public PlanningViewConfiguration(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(new BaseId(idAsInt), jsonObject);
-	}
-
 	public CodeList getRowConfiguration()
 	{
 		return rowConfigurationList.getCodeList();

@@ -30,6 +30,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	protected void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 

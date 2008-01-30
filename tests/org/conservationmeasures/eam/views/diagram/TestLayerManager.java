@@ -52,6 +52,7 @@ public class TestLayerManager extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		project.close();
+		project = null;
 		super.tearDown();
 	}
 
@@ -83,13 +84,13 @@ public class TestLayerManager extends EAMTestCase
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
 	}
 
-	private DiagramFactor getDiagramFactor(int id)
+	private DiagramFactor getDiagramFactor(int id) throws Exception
 	{
 		final int SOME_RANDOM_NUMBER = 5;
 		DiagramFactorId diagramFactorId = new DiagramFactorId(id + SOME_RANDOM_NUMBER);
 		FactorId strategyFactorId = new FactorId(id);
 		CreateDiagramFactorParameter strategyExtraInfo = new CreateDiagramFactorParameter(new ORef(ObjectType.STRATEGY, strategyFactorId));
-		DiagramFactor strategyDiagramFactor = new DiagramFactor(diagramFactorId, strategyExtraInfo);
+		DiagramFactor strategyDiagramFactor = new DiagramFactor(project.getObjectManager(), diagramFactorId, strategyExtraInfo);
 		
 		return strategyDiagramFactor;
 	}

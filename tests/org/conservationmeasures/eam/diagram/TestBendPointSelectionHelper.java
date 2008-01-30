@@ -33,6 +33,7 @@ public class TestBendPointSelectionHelper extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 
 	public void testMousePressed() throws Exception

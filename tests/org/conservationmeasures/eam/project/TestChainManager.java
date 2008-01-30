@@ -25,6 +25,7 @@ public class TestChainManager extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+		project = null;
 	}
 	
 	public void testBasics()

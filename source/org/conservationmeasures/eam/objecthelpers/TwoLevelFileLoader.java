@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Hashtable;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -24,13 +23,9 @@ abstract public class TwoLevelFileLoader
 	
 	public TwoLevelEntry[] load() throws Exception
 	{
-		if (tablePreLoad.contains(fileName))
-			return (TwoLevelEntry[])tablePreLoad.get(fileName);
-		
 		InputStream is = EAM.class.getResourceAsStream(fileName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		TwoLevelEntry[] table = getTaxomonies(reader);
-		tablePreLoad.put(fileName, table);
 		reader.close();
 		return table;
 	}
@@ -55,7 +50,6 @@ abstract public class TwoLevelFileLoader
 	abstract protected Vector processVector(Vector fileVector);
 
 	private String fileName;
-	private Hashtable tablePreLoad = new Hashtable();
 	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.txt";
 	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
 	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOffices.txt";
