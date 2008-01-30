@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
@@ -34,6 +35,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 
 	public void mouseClicked(MouseEvent e) 
 	{
+		ObjectDataInputField.saveFocusedFieldPendingEdits();
 		try
 		{
 			int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
