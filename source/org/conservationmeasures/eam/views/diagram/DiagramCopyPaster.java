@@ -44,7 +44,7 @@ public class DiagramCopyPaster extends DiagramPaster
 		return (ORef) getOldToNewObjectRefMap().get(oldWrappedFactorLinkRef);
 	}
 	
-	protected boolean canPastTypeIndDiagram(int type)
+	protected boolean canPastTypeInDiagram(int type)
 	{
 		return true;
 	}

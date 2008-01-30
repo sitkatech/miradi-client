@@ -709,7 +709,7 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = json.getInt("Type");
-			if (!canPastTypeIndDiagram(type))
+			if (!canPastTypeInDiagram(type))
 			{
 				EAM.logDebug("Cannot paste type " + type);
 				return false;
@@ -738,7 +738,7 @@ abstract public class DiagramPaster
 	
 	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;
 	
-	abstract protected boolean canPastTypeIndDiagram(int type);
+	abstract protected boolean canPastTypeInDiagram(int type);
 	
 	private Project project;
 	private DiagramModel currentModel;
