@@ -668,13 +668,10 @@ abstract public class DiagramPaster
 
 	protected boolean isPastingInSameDiagramType()
 	{
-		if (isFromConceptualModel() && ConceptualModelDiagram.is(getDiagramObject().getRef()))
-				return true;
+		int fromType = transferableList.getDiagramObjectRefCopiedFrom().getObjectType();
+		int toType = getDiagramObject().getType();
 		
-		if (isFromResultsChain() && ResultsChainDiagram.is(getDiagramObject().getType()))
-			return true;
-		
-		return false;
+		return (fromType == toType);
 	}
 	
 	private boolean isFromConceptualModel()
