@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlPanelLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
@@ -25,7 +26,7 @@ import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ThreatRatingBundlePanel extends JPanel
+public class ThreatRatingBundlePanel extends DisposablePanel
 {
 	public ThreatRatingBundlePanel(ThreatMatrixView viewToUse) throws Exception
 	{
@@ -42,7 +43,12 @@ public class ThreatRatingBundlePanel extends JPanel
 		add(Box.createVerticalGlue());
 	}
 	
-	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		threatMatrixCommentPanel.dispose();
+	}
 	
 	public ThreatRatingBundle getBundle()
 	{
