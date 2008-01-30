@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.questions;
 import java.awt.Color;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.UnicodeWriter;
 
 
@@ -64,6 +65,14 @@ public abstract class ChoiceQuestion
 		}
 		
 		return -1;
+	}
+	
+	public String getValue(String code)
+	{
+		ChoiceItem choice = findChoiceByCode(code);
+		if(choice == null)
+			return "[" + EAM.text("Unknown code: ") + code + "]";
+		return choice.getLabel();
 	}
 	
 	public void toXml(UnicodeWriter out) throws IOException

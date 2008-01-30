@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
+import org.conservationmeasures.eam.questions.InternalQuestionWithoutValues;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -58,8 +59,8 @@ public class PlanningViewConfiguration extends BaseObject
 	void clear()
 	{
 		super.clear();
-		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION);
-		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION);
+		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, getQuestion(InternalQuestionWithoutValues.class));
+		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(InternalQuestionWithoutValues.class));
 		
 		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
 		addField(TAG_COL_CONFIGURATION, colConfigurationList);

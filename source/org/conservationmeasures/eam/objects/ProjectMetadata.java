@@ -17,8 +17,10 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
+import org.conservationmeasures.eam.questions.CountriesQuestion;
 import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
+import org.conservationmeasures.eam.questions.ProtectedAreaStatusQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
 import org.conservationmeasures.eam.questions.TncMarineEcoRegionQuestion;
@@ -245,7 +247,7 @@ public class ProjectMetadata extends BaseObject
 		projectArea = new StringData(TAG_PROJECT_AREA);
 		projectAreaNotes = new StringData(TAG_PROJECT_AREA_NOTES);
 		scopeComments = new StringData(TAG_SCOPE_COMMENTS);
-		countries = new CodeListData(TAG_COUNTRIES);
+		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
 		statesAndProvinces = new StringData(TAG_STATE_AND_PROVINCES);
 		municipalities = new StringData(TAG_MUNICIPALITIES);
 		legislativeDistricts = new StringData(TAG_LEGISLATIVE_DISTRICTS);
@@ -263,7 +265,7 @@ public class ProjectMetadata extends BaseObject
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
-		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES);
+		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaStatusQuestion.class));
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);

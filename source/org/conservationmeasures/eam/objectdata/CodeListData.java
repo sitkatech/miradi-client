@@ -7,15 +7,17 @@ package org.conservationmeasures.eam.objectdata;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 
 public class CodeListData extends ObjectData
 {
-	public CodeListData(String tagToUse)
+	public CodeListData(String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(tagToUse);
+		question = questionToUse;
 		codes = new CodeList();
 	}
 	
@@ -66,7 +68,7 @@ public class CodeListData extends ObjectData
 		for(int i = 0; i < codes.size(); ++i)
 		{
 			String code = codes.get(i);
-			String value = "";
+			String value = question.getValue(code);
 			
 			out.writeln("<Entry>");
 			out.writeln("<Code>" + XmlUtilities.getXmlEncoded(code) + "</Code>");
@@ -92,6 +94,6 @@ public class CodeListData extends ObjectData
 		return codes.hashCode();
 	}
 	
-	
-	CodeList codes;
+	private ChoiceQuestion question;
+	private CodeList codes;
 }

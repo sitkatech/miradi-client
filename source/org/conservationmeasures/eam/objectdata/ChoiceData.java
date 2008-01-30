@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
@@ -23,7 +21,7 @@ public class ChoiceData extends StringData
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		String code = get();
-		String value = getValue(code);
+		String value = question.getValue(code);
 
 		startTagToXml(out);
 		out.writeln("<code>");
@@ -35,19 +33,5 @@ public class ChoiceData extends StringData
 		endTagToXml(out);
 	}
 
-	private String getValue(String code)
-	{
-		if(question == null)
-		{
-			EAM.logError("ChoiceData without question: " + getTag());
-			return "";
-		}
-		ChoiceItem choice = question.findChoiceByCode(code);
-		if(choice == null)
-			return "[Unknown code: " + code + "]";
-		String value = choice.getLabel();
-		return value;
-	}
-	
 	private ChoiceQuestion question;
 }

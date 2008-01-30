@@ -37,6 +37,8 @@ import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.questions.InternalQuestionWithoutValues;
+import org.conservationmeasures.eam.questions.QuestionManager;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.StringMapData;
@@ -244,7 +246,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof CodeListData)
 		{
-			CodeListData codeList = new CodeListData("tag");
+			CodeListData codeList = new CodeListData("tag", QuestionManager.getQuestion(InternalQuestionWithoutValues.class));
 			codeList.add("A1");
 			codeList.add("B1");
 			return codeList.toString();
