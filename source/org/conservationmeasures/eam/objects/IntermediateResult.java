@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeIntermediateResult;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
@@ -98,5 +99,15 @@ public class IntermediateResult extends Factor
 		return list;
 	}
 
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static final String OBJECT_NAME = "IntermediateResult";
 }
