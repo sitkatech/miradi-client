@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
 import org.conservationmeasures.eam.questions.CountriesQuestion;
 import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
+import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.ProtectedAreaCategoryQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
@@ -348,7 +349,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
 		
 		diagramFontSize = new IntegerData(TAG_DIAGRAM_FONT_SIZE);
-		diagramFontFamily = new StringData(TAG_DIAGRAM_FONT_FAMILY);
+		diagramFontFamily = new ChoiceData(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
@@ -491,7 +492,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData otherOrgProjectNumber;
 	private StringData otherOrgRelatedProjects;
 	
-	private StringData diagramFontFamily;
+	private ChoiceData diagramFontFamily;
 	private IntegerData diagramFontSize;
 	private ChoiceData threatRatingMode;
 }
