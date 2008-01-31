@@ -5,21 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.summary.doers;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.views.umbrella.doers.DeletePoolObjectDoer;
 
-public class DeleteOranizationDoer extends MainWindowDoer
+public class DeleteOranizationDoer extends DeletePoolObjectDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected String getCustomText()
 	{
-		return false;
-	}
-
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
+		return EAM.text("Organization");
 	}
 }
