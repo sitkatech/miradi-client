@@ -87,7 +87,7 @@ public class Organization extends BaseObject
 		super.clear();
 		
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		roles = new StringData(TAG_ROLES_DESCRIPTION);
+		rolesDescription = new StringData(TAG_ROLES_DESCRIPTION);
 		contactFirstName = new StringData(TAG_CONTACT_FIRST_NAME);
 		contactLastName = new StringData(TAG_CONTACT_LAST_NAME);
 		email = new StringData(TAG_EMAIL);
@@ -95,7 +95,7 @@ public class Organization extends BaseObject
 		comments = new StringData(TAG_COMMENTS);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_ROLES_DESCRIPTION, roles);
+		addField(TAG_ROLES_DESCRIPTION, rolesDescription);
 		addField(TAG_CONTACT_FIRST_NAME, contactFirstName);
 		addField(TAG_CONTACT_LAST_NAME, contactLastName);
 		addField(TAG_EMAIL, email);
@@ -114,7 +114,7 @@ public class Organization extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 	
 	private StringData shortLabel;
-	private StringData roles;
+	private StringData rolesDescription;
 	private StringData contactFirstName;
 	private StringData contactLastName;
 	private StringData email;
