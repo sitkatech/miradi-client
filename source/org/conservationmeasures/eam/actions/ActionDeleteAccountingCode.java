@@ -12,7 +12,7 @@ public class ActionDeleteAccountingCode extends ObjectsAction
 {
 	public ActionDeleteAccountingCode(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()

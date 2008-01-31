@@ -12,7 +12,7 @@ public class ActionDeleteFundingSource extends ObjectsAction
 {
 	public ActionDeleteFundingSource(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()
