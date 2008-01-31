@@ -16,7 +16,7 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 	}
 
 //	FIXME implement funcionality
-	public int getDepth(int column)
+	public int getDepth(int row)
 	{
 		return 0;
 	}

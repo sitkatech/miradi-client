@@ -8,6 +8,6 @@ package org.conservationmeasures.eam.utils;
 public interface ExportableTableInterface
 {
 	public int getMaxDepthCount();
-	public int getDepth(int column);
+	public int getDepth(int row);
 	public String getValue(int row, int column);
 }
