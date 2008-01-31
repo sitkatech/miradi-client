@@ -61,15 +61,17 @@ public class Organization extends BaseObject
 	{
 		return getData(TAG_SHORT_LABEL);
 	}
-	
+		
 	public static boolean is(ORef ref)
 	{
-		if (ref.getObjectType() == ObjectType.ORGANIZATION)
-			return true;
-		
-		return false;
+		return is(ref.getObjectType());
 	}
 	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+
 	public static Organization find(ObjectManager objectManager, ORef organizationRef)
 	{
 		return (Organization) objectManager.findObject(organizationRef);
@@ -85,13 +87,37 @@ public class Organization extends BaseObject
 		super.clear();
 		
 		shortLabel = new StringData(TAG_SHORT_LABEL);
+		roles = new StringData(TAG_ROLES);
+		contactFirstName = new StringData(TAG_CONTACT_FIRST_NAME);
+		contactLastName = new StringData(TAG_CONTACT_LAST_NAME);
+		email = new StringData(TAG_EMAIL);
+		phoneNumber = new StringData(TAG_PHONE_NUMBER);
+		comments = new StringData(TAG_COMMENTS);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_ROLES, roles);
+		addField(TAG_CONTACT_FIRST_NAME, contactFirstName);
+		addField(TAG_CONTACT_LAST_NAME, contactLastName);
+		addField(TAG_EMAIL, email);
+		addField(TAG_PHONE_NUMBER, phoneNumber);
+		addField(TAG_COMMENTS, comments);
 	}
 	
 	public static final String OBJECT_NAME = "Organization";
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	public static final String TAG_ROLES = "Roles";
+	public static final String TAG_CONTACT_FIRST_NAME = "ContactFirstName";
+	public static final String TAG_CONTACT_LAST_NAME = "ContactLastName";
+	public static final String TAG_EMAIL = "Email";
+	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
+	public static final String TAG_COMMENTS = "Comments";
 	
 	private StringData shortLabel;
+	private StringData roles;
+	private StringData contactFirstName;
+	private StringData contactLastName;
+	private StringData email;
+	private StringData phoneNumber;
+	private StringData comments;
 }
