@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.questions.CurrencyTypeQuestion;
 import org.conservationmeasures.eam.questions.FiscalYearStartQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
+import org.conservationmeasures.eam.questions.HabitatAssociationQuestion;
 import org.conservationmeasures.eam.questions.ProtectedAreaCategoryQuestion;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.questions.TncFreshwaterEcoRegionQuestion;
@@ -269,6 +270,7 @@ public class ProjectMetadata extends BaseObject
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
 		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -313,6 +315,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
 		addField(TAG_PROTECTED_AREA_CATEGORIES, protectedAreaCategories);
 		addField(TAG_PROTECTED_AREA_CATEGORY_NOTES, protectedAreaCategoryNotes);
+		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
 
 		tncLessonsLearned = new StringData(TAG_TNC_LESSONS_LEARNED);
 		tncWorkbookVersionNumber = new StringData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
@@ -400,6 +403,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_SITE_MAP_REFERENCE = "SiteMapReference";
 	public static final String TAG_PROTECTED_AREA_CATEGORIES = "ProtectedAreaCategories";
 	public static final String TAG_PROTECTED_AREA_CATEGORY_NOTES = "ProtectedAreaCategoryNotes";
+	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -474,6 +478,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData siteMapReference;
 	private CodeListData protectedAreaCategories;
 	private StringData protectedAreaCategoryNotes;
+	private CodeListData habitatAssociation;
 
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;
