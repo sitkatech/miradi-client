@@ -9,7 +9,7 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
-import org.conservationmeasures.eam.icons.AccountCodeIcon;
+import org.conservationmeasures.eam.icons.OrganizationIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -29,10 +29,9 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return PANEL_DESCRIPTION;
 	}
 	
-	//FIXME change icon
 	public Icon getIcon()
 	{
-		return new AccountCodeIcon();
+		return new OrganizationIcon();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
