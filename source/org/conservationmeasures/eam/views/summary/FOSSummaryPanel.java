@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.FosProjectData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.TrainingTypeQuestion;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
@@ -17,7 +17,12 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectData.getObjectType()));
 		
-		add(new PanelTitleLabel("Not implemented yet"));
+		addField(createChoiceField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE, new TrainingTypeQuestion()));
+		addField(createStringField(FosProjectData.TAG_TRAINING_DATES));
+		addField(createStringField(FosProjectData.TAG_TRAINERS));
+		addField(createStringField(FosProjectData.TAG_COACHES));
+		
+		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
