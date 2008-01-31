@@ -9,5 +9,5 @@ public interface ExportableTableInterface
 {
 	public int getMaxDepthCount();
 	public int getDepth(int row);
-	public String getValue(int row, int column);
+	public String getValueFor(int row, int column);
 }
