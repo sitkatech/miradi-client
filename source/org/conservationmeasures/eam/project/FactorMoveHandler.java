@@ -118,9 +118,7 @@ public class FactorMoveHandler
 	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell) throws Exception
 	{
 		int deltaY = factorCell.getLocation().y - factorCell.getPreviousLocation().y;
-		Point bendPointToTranslate = getBendPointToTranslate(factorCell, cell);
-		
-		bendPointToTranslate.translate(0, deltaY);
+		getBendPointToTranslate(factorCell, cell).translate(0, deltaY);
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(cell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, cell.getDiagramLink().getBendPoints());
 		project.executeCommand(bendPointMoveCommand);
 	}
@@ -128,9 +126,7 @@ public class FactorMoveHandler
 	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell) throws Exception
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getPreviousLocation().x;
-		Point bendPointToTranslate = getBendPointToTranslate(factorCell, cell);
-		
-		bendPointToTranslate.translate(deltaX, 0);
+		getBendPointToTranslate(factorCell, cell).translate(deltaX, 0);
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(cell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, cell.getDiagramLink().getBendPoints());
 		project.executeCommand(bendPointMoveCommand);
 	}
