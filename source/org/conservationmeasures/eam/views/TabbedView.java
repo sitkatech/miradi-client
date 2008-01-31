@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import javax.swing.Icon;
@@ -190,6 +191,26 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getSelectedComponent();
 	}
 	
+	@Override
+	public boolean isImageAvailable()
+	{
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return false;
+		
+		return panel.isImageAvailable();
+	}
+	
+	@Override
+	public BufferedImage getImage() throws Exception
+	{
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return null;
+		
+		return panel.getImage();
+	}
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);

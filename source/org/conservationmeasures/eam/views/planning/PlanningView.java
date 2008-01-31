@@ -182,26 +182,6 @@ public class PlanningView extends TabbedView
 		return new PlanningToolBar(getActions());
 	}
 	
-	@Override
-	public boolean isImageAvailable()
-	{
-		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
-		if(panel == null)
-			return false;
-		
-		return panel.isImageAvailable();
-	}
-	
-	@Override
-	public BufferedImage getImage() throws Exception
-	{
-		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
-		if(panel == null)
-			return null;
-		
-		return panel.getImage();
-	}
-	
 	private void addPlanningViewDoersToMap()
 	{
 		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewConfigurationDoer());
