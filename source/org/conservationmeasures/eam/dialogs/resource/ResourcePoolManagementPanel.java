@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTable;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
@@ -40,16 +41,30 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 		return new ProjectResourceIcon();
 	}
 	
+	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public BufferedImage getImage()
 	{
 		ResourcePoolTable table = new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
+	}
+	
+	@Override
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	@Override
+	public ExportableTable getExportableTable()
+	{
+		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Resources"); 
