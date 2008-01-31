@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.diagram;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
 import java.util.HashSet;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -22,10 +23,13 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.diagram.DiagramLegendPanel;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
 
-abstract public class DiagramPanel extends DisposablePanel 
+abstract public class DiagramPanel extends DisposablePanel implements MiradiTabContentsPanelInterface
 {
 	public DiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
@@ -47,8 +51,14 @@ abstract public class DiagramPanel extends DisposablePanel
 
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
-		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
+		DiagramComponent diagram = getDiagramComponent();
 		diagram.setSelectionModel(selectionModelToUse);
+	}
+
+	private DiagramComponent getDiagramComponent()
+	{
+		DiagramComponent diagram = getDiagramSplitPane().getDiagramComponent();
+		return diagram;
 	}
 	
 	public EAMGraphCell[] getSelectedAndRelatedCells()
@@ -150,6 +160,32 @@ abstract public class DiagramPanel extends DisposablePanel
 		diagramSplitter.showCurrentCard();
 	}
 	
+	
+	public Component getComponent()
+	{
+		return this;
+	}
+
+	public BufferedImage getImage() throws Exception
+	{
+		return BufferedImageFactory.createImageFromComponent(getdiagramComponent());
+	}
+
+	public boolean isImageAvailable()
+	{
+		return getComponent() != null;
+	}
+
+	public ExportableTableInterface getExportableTable()
+	{
+		return null;
+	}
+
+	public boolean isExportableTableAvailable()
+	{
+		return false;
+	}
+
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	
 	private DiagramSplitPane diagramSplitter;
