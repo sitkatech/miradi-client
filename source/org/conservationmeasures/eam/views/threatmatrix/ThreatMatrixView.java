@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.actions.ActionCreateStressFromKea;
 import org.conservationmeasures.eam.actions.ActionDeleteStress;
 import org.conservationmeasures.eam.actions.ActionHideCellRatings;
 import org.conservationmeasures.eam.actions.ActionManageStresses;
-import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
 import org.conservationmeasures.eam.actions.ActionShowCellRatings;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -40,8 +39,8 @@ import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.FastScrollPane;
@@ -51,7 +50,6 @@ import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressFromKeaDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteStressDoer;
 import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
-import org.conservationmeasures.eam.views.umbrella.SaveImageDoer;
 
 
 public class ThreatMatrixView extends CardedView
@@ -75,7 +73,6 @@ public class ThreatMatrixView extends CardedView
 
 	private void addThreatMatrixiewDoersToMap()
 	{
-		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
 		addDoerToMap(ActionShowCellRatings.class, new ShowCellRatingsDoer());
 		addDoerToMap(ActionHideCellRatings.class, new HideCellRatingsDoer());
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
