@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.views.diagram.PropertiesDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.GraphLayoutCache;
 
 
 public class MouseEventHandler extends MouseAdapter implements GraphSelectionListener
@@ -84,7 +85,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
 			selectedAndGroupBoxCoveredLinkCells.addAll(NudgeDoer.getAllLinksInGroupBoxes(getDiagram().getDiagramModel(), selectedFactorAndChildren));
 			selectedAndGroupBoxCoveredLinkCells.addAll(getSelectedLinksWithSelectedBendPoints());
-
+			GraphLayoutCache graphLayoutCache = getDiagram().getGraphLayoutCache();
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
@@ -93,6 +94,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					FactorCell factor = (FactorCell)selectedCells[i];
 					factor.setPreviousLocation(factor.getLocation());
 					factor.setPreviousSize(factor.getSize());
+					factor.setPreviousPortLocation(factor.getPortLocation(graphLayoutCache));
 				}
 			}
 		}
