@@ -150,12 +150,12 @@ public class PlanningView extends TabbedView
 
 		public ExportableTable getExportableTable()
 		{
-			return null;
+			return planningManagementPanel.getExportableTable();
 		}
 
 		public boolean isExportableTableAvailable()
 		{
-			return false;
+			return planningManagementPanel.isExportableTableAvailable();
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;
