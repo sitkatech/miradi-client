@@ -731,14 +731,14 @@ public class DiagramModel extends DefaultGraphModel
 		return groupChildrenCells;
 	}
 
-	private HashSet<EAMGraphCell> getFactorRelatedLinks(FactorCell factorCell)
+	public HashSet<LinkCell> getFactorRelatedLinks(FactorCell factorCell)
 	{
-		HashSet<EAMGraphCell> factorRelatedLinks = new HashSet();
+		HashSet<LinkCell> factorRelatedLinks = new HashSet();
 		Set linkages = getFactorLinks(factorCell);
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
 			EAMGraphCell link = (EAMGraphCell) iter.next();
-			factorRelatedLinks.add(link);
+			factorRelatedLinks.add((LinkCell) link);
 		}
 		
 		return factorRelatedLinks;

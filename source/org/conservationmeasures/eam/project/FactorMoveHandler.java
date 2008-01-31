@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Point;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -13,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -22,8 +24,10 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.conservationmeasures.eam.utils.PointList;
 
 public class FactorMoveHandler
 {
@@ -52,6 +56,8 @@ public class FactorMoveHandler
 
 				if(factorCell.sizeHasChanged())
 					commandsToExecute.add(buildResizeCommand(factorCell));
+				
+				ensureLevelSegementToFirstBendPoint(factorCell);
 			}
 
 			if(commandsToExecute.size() > 0)
@@ -88,6 +94,109 @@ public class FactorMoveHandler
 
 	}
 
+	private void ensureLevelSegementToFirstBendPoint(FactorCell factorCell) throws Exception
+	{
+		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
+		for(LinkCell linkCell : factorRelatedLinks)
+		{
+			if (wasHorizontal(factorCell, linkCell) && wasVertical(factorCell, linkCell))
+				continue;
+			
+			if (wasHorizontal(factorCell, linkCell))
+				moveFirstBendHorizontally(factorCell, linkCell);
+			
+			if (wasVertical(factorCell, linkCell))
+				moveFirstBendPointVertically(factorCell, linkCell);
+				
+		}
+	}
+
+	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell) throws Exception
+	{
+		PointList bendPoints = cell.getDiagramLink().getBendPoints();
+		if (bendPoints.size() < 1)
+			return;
+		
+		int deltaY = factorCell.getLocation().y - factorCell.getPreviousLocation().y;
+		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
+		if (isSourceEnd(factorCell, cell))
+			bendPointToTranslate = bendPoints.get(0);
+		
+		bendPointToTranslate.translate(0, deltaY);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(cell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
+		project.executeCommand(bendPointMoveCommand);
+	}
+
+	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell) throws Exception
+	{
+		PointList bendPoints = cell.getDiagramLink().getBendPoints();
+		if (bendPoints.size() < 1)
+			return;
+		
+		int deltaX = factorCell.getLocation().x - factorCell.getPreviousLocation().x;
+		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
+		if (isSourceEnd(factorCell, cell))
+			bendPointToTranslate = bendPoints.get(0);
+		
+		bendPointToTranslate.translate(deltaX, 0);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(cell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
+		project.executeCommand(bendPointMoveCommand);
+	}
+
+	
+	private boolean wasHorizontal(FactorCell factorCell, LinkCell linkCell)
+	{
+		int deltaY = factorCell.getPreviousLocation().y - factorCell.getLocation().y;
+		Point portLocation = linkCell.getTargetLocation(model.getGraphLayoutCache()); 
+		if (isSourceEnd(factorCell, linkCell))
+			portLocation = linkCell.getSourceLocation(model.getGraphLayoutCache());
+		
+		int originalLocation = portLocation.y + deltaY;
+		return isFirstBendPointSameY(factorCell, linkCell, originalLocation);
+	}
+
+	private boolean wasVertical(FactorCell factorCell, LinkCell linkCell)
+	{
+		int deltaX = factorCell.getPreviousLocation().x - factorCell.getLocation().x;
+		Point portLocation = linkCell.getTargetLocation(model.getGraphLayoutCache()); 
+		if (isSourceEnd(factorCell, linkCell))
+			portLocation = linkCell.getSourceLocation(model.getGraphLayoutCache());
+		
+		int originalLocation = portLocation.x + deltaX;
+		return isFirstBendPointSameX(factorCell, linkCell, originalLocation);
+	}
+
+	private boolean isSourceEnd(FactorCell factorCell, LinkCell linkCell)
+	{
+		return linkCell.getFrom().getDiagramFactor().getRef().equals(factorCell.getDiagramFactor().getRef());
+	}
+	
+	private boolean isFirstBendPointSameX(FactorCell factorCell, LinkCell linkCell, int x)
+	{
+		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
+		if (bendPoints.size() < 1)
+			return false;
+		
+		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
+		if (isSourceEnd(factorCell, linkCell))
+			bendPointToTranslate = bendPoints.get(0);
+		
+		return bendPointToTranslate.x == x;
+	}
+	
+	private boolean isFirstBendPointSameY(FactorCell factorCell, LinkCell linkCell, int y)
+	{
+		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
+		if (bendPoints.size() < 1)
+			return false;
+		
+		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
+		if (isSourceEnd(factorCell, linkCell))
+			bendPointToTranslate = bendPoints.get(0);
+		
+		return bendPointToTranslate.y == y;
+	}
+	
 	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
