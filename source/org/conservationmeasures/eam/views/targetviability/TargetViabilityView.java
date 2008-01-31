@@ -51,7 +51,7 @@ public class TargetViabilityView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		viabilityPanel = new TargetViabilityTreeManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
-		addNonScrollableTab(viabilityPanel);
+		addNonScrollingTab(viabilityPanel);
 	}
 
 	public void becomeActive() throws Exception
