@@ -363,6 +363,8 @@ public class Actions
 		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
 		registerAction(new ActionCreateIndicatorProgressReport(mainWindow));
 		registerAction(new ActionDeleteIndicatorProgressReport(mainWindow));
+		registerAction(new ActionDeleteOrganization(mainWindow));
+		registerAction(new ActionCreateOrganization(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

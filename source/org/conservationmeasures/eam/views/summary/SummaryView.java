@@ -8,10 +8,13 @@ package org.conservationmeasures.eam.views.summary;
 
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCreateOrganization;
+import org.conservationmeasures.eam.actions.ActionDeleteOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.organization.OrganizationManagementPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
 import org.conservationmeasures.eam.dialogs.summary.TeamManagementPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -21,6 +24,8 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
+import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.TeamCreateMemberDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.martus.util.MultiCalendar;
@@ -48,6 +53,7 @@ public class SummaryView extends TabbedView
 		super.becomeActive();
 		
 		teamManagementPanel.updateSplitterLocation();
+		organizationManagementPanel.updateSplitterLocation();
 	}
 	
 	public JToolBar createToolBar()
@@ -74,6 +80,9 @@ public class SummaryView extends TabbedView
 	
 		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		addTab(teamManagementPanel.getPanelDescription(),teamManagementPanel.getIcon(), teamManagementPanel);
+		
+		organizationManagementPanel = new OrganizationManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
+		addTab(organizationManagementPanel.getPanelDescription(), organizationManagementPanel.getIcon(), organizationManagementPanel);
 		
 		addPanelAsTab(summaryScopePanel);
 		addPanelAsTab(summaryLocationPanel);
@@ -107,6 +116,7 @@ public class SummaryView extends TabbedView
 		fosSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
+		organizationManagementPanel.dispose();
 	}
 
 	public void showTeamAddMembersDialog() throws Exception
@@ -121,6 +131,9 @@ public class SummaryView extends TabbedView
 	{
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
 		addDoerToMap(ActionDeleteTeamMember.class, new DeleteResource());
+		
+		addDoerToMap(ActionCreateOrganization.class, new CreateOranizationDoer());
+		addDoerToMap(ActionDeleteOrganization.class, new DeleteOranizationDoer());
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -155,4 +168,5 @@ public class SummaryView extends TabbedView
 	private SummaryPlanningPanel summaryPlanningPanel;
 	private SummaryOtherOrgPanel summaryOtherOrgPanel;
 	private TeamManagementPanel teamManagementPanel;
+	private OrganizationManagementPanel organizationManagementPanel;
 }
