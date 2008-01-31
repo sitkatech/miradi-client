@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTre
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTable;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
@@ -41,7 +42,18 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		panel.dispose();
 		return image;
 	}
-
+	
+	@Override
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTable getExportableTable()
+	{
+		return null;
+	}
+	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
 	
 	private MainWindow mainWindow;
