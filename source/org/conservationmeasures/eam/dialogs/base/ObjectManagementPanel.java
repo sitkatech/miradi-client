@@ -13,9 +13,9 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
-import org.conservationmeasures.eam.views.MiradiTabContents;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 
-abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContents
+abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
 {
 	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
