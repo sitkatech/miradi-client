@@ -23,7 +23,7 @@ public class OrganizationPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createShortStringField(Organization.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(EAM.text("Label|Organization"), new ObjectDataInputField[]{labelField, shortLabelField});
 		
-		addField(createStringField(Organization.TAG_ROLES));
+		addField(createStringField(Organization.TAG_ROLES_DESCRIPTION));
 
 		ObjectDataInputField firstNameField = createStringField(Organization.TAG_CONTACT_FIRST_NAME);
 		ObjectDataInputField lastNameField = createStringField(Organization.TAG_CONTACT_LAST_NAME);

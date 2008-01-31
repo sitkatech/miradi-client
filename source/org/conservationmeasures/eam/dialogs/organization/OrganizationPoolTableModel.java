@@ -20,7 +20,7 @@ public class OrganizationPoolTableModel extends ObjectPoolTableModel
 	private static final String[] COLUMN_TAGS = new String[] {
 		Organization.TAG_SHORT_LABEL,
 		Organization.TAG_LABEL,
-		Organization.TAG_ROLES,
+		Organization.TAG_ROLES_DESCRIPTION,
 		Organization.TAG_CONTACT_FIRST_NAME,
 		Organization.TAG_CONTACT_LAST_NAME,
 		Organization.TAG_EMAIL,
