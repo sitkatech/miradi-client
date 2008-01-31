@@ -96,6 +96,11 @@ public class ThreatMatrixView extends CardedView
 		return Project.THREAT_MATRIX_VIEW_NAME;
 	}
 	
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+
 	public BufferedImage getImage()
 	{
 		return MatrixTableImageCreator.createImage(getProject(), grid.getThreatMatrixTable(),grid.getRowHeaderTable());
