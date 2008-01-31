@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.ChoiceData;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.FactorLinkSet;
@@ -23,6 +24,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TNCViabilityFormula;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.questions.HabitatAssociationQuestion;
 import org.conservationmeasures.eam.questions.KeyEcologicalAttributeTypeQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.ViabilityModeQuestion;
@@ -343,6 +345,8 @@ public class Target extends Factor
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
+		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
+		
 		
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
@@ -354,6 +358,7 @@ public class Target extends Factor
 		addField(TAG_STRESS_REFS, stressRefs);
 		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
+		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
 		
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
@@ -366,6 +371,7 @@ public class Target extends Factor
 	public static final String TAG_STRESS_REFS = "StressRefs";
 	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
 	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
+	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
 	
 	public static final String OBJECT_NAME = "Target";
 	
@@ -379,6 +385,7 @@ public class Target extends Factor
 	private ORefListData stressRefs;
 	private StringData speciesLatinName;
 	private ORefListData subTargetRefs;
+	private CodeListData habitatAssociation;
 	
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
