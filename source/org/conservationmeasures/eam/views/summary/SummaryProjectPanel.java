@@ -25,6 +25,9 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
 		
+		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
+		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
+		
 		updateFieldsFromProject();
 	}
 

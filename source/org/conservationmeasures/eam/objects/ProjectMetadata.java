@@ -269,6 +269,8 @@ public class ProjectMetadata extends BaseObject
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
 		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		projectStatus = new StringData(TAG_PROJECT_STATUS);
+		nextSteps = new StringData(TAG_NEXT_STEPS);
 
 		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
@@ -313,6 +315,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
 		addField(TAG_PROTECTED_AREA_CATEGORIES, protectedAreaCategories);
 		addField(TAG_PROTECTED_AREA_CATEGORY_NOTES, protectedAreaCategoryNotes);
+		addField(TAG_PROJECT_STATUS, projectStatus);
+		addField(TAG_NEXT_STEPS, nextSteps);
 
 		tncLessonsLearned = new StringData(TAG_TNC_LESSONS_LEARNED);
 		tncWorkbookVersionNumber = new StringData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
@@ -400,6 +404,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_SITE_MAP_REFERENCE = "SiteMapReference";
 	public static final String TAG_PROTECTED_AREA_CATEGORIES = "ProtectedAreaCategories";
 	public static final String TAG_PROTECTED_AREA_CATEGORY_NOTES = "ProtectedAreaCategoryNotes";
+	public static final String TAG_PROJECT_STATUS = "ProjectStatus";
+	public static final String TAG_NEXT_STEPS = "NextSteps";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	
@@ -474,6 +480,8 @@ public class ProjectMetadata extends BaseObject
 	private StringData siteMapReference;
 	private CodeListData protectedAreaCategories;
 	private StringData protectedAreaCategoryNotes;
+	private StringData projectStatus;
+	private StringData nextSteps;
 
 	private StringData tncLessonsLearned;
 	private StringData tncWorkbookVersionNumber;

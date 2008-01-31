@@ -66,6 +66,7 @@ public class QuestionManager
 		addQuestion(new WwfManagingOfficesQuestion());
 		addQuestion(new WwfRegionsQuestion());
 		addQuestion(new HabitatAssociationQuestion());
+		addQuestion(new TrainingTypeQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
