@@ -5,21 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.summary.doers;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.objects.Organization;
+import org.conservationmeasures.eam.views.planning.doers.CreatePoolObjectDoer;
 
-public class CreateOranizationDoer extends MainWindowDoer
+public class CreateOranizationDoer extends CreatePoolObjectDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected int getTypeToCreate()
 	{
-		return false;
-	}
-	
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
+		return Organization.getObjectType();
 	}
 }
