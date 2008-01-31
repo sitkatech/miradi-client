@@ -12,11 +12,18 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.BaseObject;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
 {
+	public ObjectManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
+	{
+		this(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		project = projectToUse;
+	}
+	
 	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
@@ -40,6 +47,11 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	public void addTablePanelButton(ObjectsAction action)
 	{
 		listComponent.addButton(action);
+	}
+	
+	public Project getProject()
+	{
+		return project;
 	}
 
 	public BaseObject getObject()
@@ -68,12 +80,14 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		return false;
 	}
-
-	public BufferedImage getImage()
+	
+	public BufferedImage getImage() throws Exception
 	{
 		return null;
 	}
 	
+	
+	private Project project;
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
 }

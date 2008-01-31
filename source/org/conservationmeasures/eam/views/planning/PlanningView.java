@@ -6,8 +6,10 @@
 package org.conservationmeasures.eam.views.planning;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.image.BufferedImage;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -43,14 +45,13 @@ import org.conservationmeasures.eam.dialogs.planning.legend.PlanningViewControlP
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.resource.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.planning.doers.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreateAccountingCodeDoer;
@@ -102,14 +103,51 @@ public class PlanningView extends TabbedView
 		FastScrollPane controlBarScrollPane = new FastScrollPane(controlPanel);
 		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		JPanel horizontalSplitPane = new JPanel(new BorderLayout());
-		horizontalSplitPane.add(controlBarScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
-		horizontalSplitPane.add(planningManagementPanel, BorderLayout.CENTER);
+		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
 		
-		addTab(EAM.text("Planning"), horizontalSplitPane);
-		addNonScrollableTab(resourceManagementPanel);
-		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
-		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
+		addNonScrollingTab(horizontalSplitPane);
+		addNonScrollingTab(resourceManagementPanel);
+		addNonScrollingTab(accountingCodePoolManagementPanel);
+		addNonScrollingTab(fundingSourcePoolManagementPanel);
+	}
+	
+	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
+	{
+		public MainPlanningPanel(FastScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
+		{
+			super(new BorderLayout());
+			planningManagementPanel = planningManagementPanelToUse;
+			
+			add(controlBarScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
+			add(planningManagementPanel, BorderLayout.CENTER);
+		}
+
+		public String getTabName()
+		{
+			return planningManagementPanel.getTabName();
+		}
+
+		public Icon getIcon()
+		{
+			return planningManagementPanel.getIcon();
+		}
+
+		public Component getComponent()
+		{
+			return this;
+		}
+
+		public boolean isImageAvailable()
+		{
+			return planningManagementPanel.isImageAvailable();
+		}
+
+		public BufferedImage getImage() throws Exception
+		{
+			return planningManagementPanel.getImage();
+		}
+
+		private PlanningTreeManagementPanel planningManagementPanel;
 	}
 
 	public void deleteTabs() throws Exception
@@ -147,14 +185,21 @@ public class PlanningView extends TabbedView
 	@Override
 	public boolean isImageAvailable()
 	{
-		return true;
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return false;
+		
+		return panel.isImageAvailable();
 	}
 	
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
-		return BufferedImageFactory.createImageFromComponent(planningTreeTablePanel);
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return null;
+		
+		return panel.getImage();
 	}
 	
 	private void addPlanningViewDoersToMap()

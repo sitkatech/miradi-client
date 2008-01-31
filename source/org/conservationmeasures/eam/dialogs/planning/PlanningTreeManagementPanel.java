@@ -5,23 +5,44 @@
 */ 
 package org.conservationmeasures.eam.dialogs.planning;
 
+import java.awt.image.BufferedImage;
+
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
 	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreePropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
-		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		
+		super(mainWindowToUse.getProject(), mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
+		mainWindow = mainWindowToUse;
 	}
 
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
+	
+	@Override
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	@Override
+	public BufferedImage getImage() throws Exception
+	{
+		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
+		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);
+		
+		panel.dispose();
+		return image;
+	}
 
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
+	
+	private MainWindow mainWindow;
 }
