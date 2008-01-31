@@ -26,7 +26,7 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		return 0;
 	}
 
-	public String getValue(int row, int column)
+	public String getValueFor(int row, int column)
 	{
 		return null;
 	}

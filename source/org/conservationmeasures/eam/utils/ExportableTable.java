@@ -30,9 +30,8 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 		return 1;
 	}
 
-	//FIXME implement funcionality
-	public String getValue(int row, int column)
+	public String getValueFor(int row, int column)
 	{
-		return null;
+		return super.getValueAt(row, column).toString();
 	}
 }
