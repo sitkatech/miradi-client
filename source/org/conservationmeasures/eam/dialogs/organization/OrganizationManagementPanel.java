@@ -35,5 +35,5 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return new AccountCodeIcon();
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Organization"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
 }
