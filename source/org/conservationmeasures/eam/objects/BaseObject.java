@@ -277,6 +277,9 @@ abstract public class BaseObject
 				
 			case ObjectType.FOS_PROJECT_DATA:
 				return new FosProjectData(objectManager, idAsInt, json);
+			
+			case ObjectType.ORGANIZATION:
+				return new Organization(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

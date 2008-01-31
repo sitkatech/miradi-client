@@ -71,6 +71,7 @@ import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanOwnUs;
 import org.conservationmeasures.eam.objects.TestObjectGetTypesThatCanReferToUs;
 import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjective;
+import org.conservationmeasures.eam.objects.TestOrganization;
 import org.conservationmeasures.eam.objects.TestPlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.TestProgressReport;
 import org.conservationmeasures.eam.objects.TestProjectChainObject;
@@ -300,6 +301,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestWcsProjectData.class));
 		suite.addTest(new TestSuite(TestTncProjectData.class));
 		suite.addTest(new TestSuite(TestFosProjectData.class));
+		suite.addTest(new TestSuite(TestOrganization.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

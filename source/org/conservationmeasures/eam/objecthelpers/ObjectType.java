@@ -51,7 +51,8 @@ public class ObjectType
 	public static final int WCS_PROJECT_DATA = 39;
 	public static final int TNC_PROJECT_DATA = 40;
 	public static final int FOS_PROJECT_DATA = 41;
+	public static final int ORGANIZATION = 42;
 	
-	public static final int OBJECT_TYPE_COUNT = 42;
+	public static final int OBJECT_TYPE_COUNT = 43;
 }
 
