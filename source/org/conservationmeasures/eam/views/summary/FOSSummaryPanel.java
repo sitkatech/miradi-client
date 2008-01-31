@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.FosProjectData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.questions.TrainingTypeQuestion;
+import org.conservationmeasures.eam.questions.FosTrainingTypeQuestion;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
@@ -17,7 +17,7 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectData.getObjectType()));
 		
-		addField(createChoiceField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE, new TrainingTypeQuestion()));
+		addField(createChoiceField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion()));
 		addField(createStringField(FosProjectData.TAG_TRAINING_DATES));
 		addField(createStringField(FosProjectData.TAG_TRAINERS));
 		addField(createStringField(FosProjectData.TAG_COACHES));

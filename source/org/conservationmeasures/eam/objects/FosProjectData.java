@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.objectdata.ChoiceData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
-import org.conservationmeasures.eam.questions.TrainingTypeQuestion;
+import org.conservationmeasures.eam.questions.FosTrainingTypeQuestion;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FosProjectData extends BaseObject
@@ -55,7 +55,7 @@ public class FosProjectData extends BaseObject
 	{
 		super.clear();
 		
-		trainingType = new ChoiceData(TAG_TRAINING_TYPE, getQuestion(TrainingTypeQuestion.class));
+		trainingType = new ChoiceData(TAG_TRAINING_TYPE, getQuestion(FosTrainingTypeQuestion.class));
 		trainingDates = new StringData(TAG_TRAINING_DATES);
 		trainers = new StringData(TAG_TRAINERS);
 		coaches = new StringData(TAG_COACHES);

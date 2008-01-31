@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.questions;
 
 
-public class TrainingTypeQuestion extends StaticChoiceQuestion
+public class FosTrainingTypeQuestion extends StaticChoiceQuestion
 {
-	public TrainingTypeQuestion()
+	public FosTrainingTypeQuestion()
 	{
 		super(getTrainingTypeChoices());
 	}
