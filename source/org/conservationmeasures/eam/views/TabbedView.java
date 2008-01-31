@@ -21,8 +21,6 @@ import javax.swing.event.ChangeListener;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
-import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
-import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
@@ -237,16 +235,6 @@ abstract public class TabbedView extends UmbrellaView
 		
 	}
 
-	public void addNonScrollableTab(ObjectPoolManagementPanel panel)
-	{
-		addTab(panel.getPanelDescription(), panel.getIcon(), panel);
-	}
-	
-	public void addNonScrollableTab(DisposablePanelWithDescription panel)
-	{
-		addTab(panel.getPanelDescription(), panel);
-	}
-	
 	void handleRightClick(MouseEvent event)
 	{
 		int tab = tabs.indexAtLocation(event.getX(), event.getY());
