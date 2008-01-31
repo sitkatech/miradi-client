@@ -16,5 +16,5 @@ public interface MiradiTabContentsPanelInterface
 	public Icon getIcon();
 	public Component getComponent();
 	public boolean isImageAvailable();
-	public BufferedImage getImage();
+	public BufferedImage getImage() throws Exception;
 }

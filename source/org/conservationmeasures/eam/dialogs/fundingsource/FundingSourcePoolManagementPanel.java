@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.fundingsource;
 
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -16,13 +17,14 @@ import org.conservationmeasures.eam.icons.FundingSourceIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public FundingSourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
+		super(projectToUse, splitPositionSaverToUse, new FundingSourcePoolTablePanel(projectToUse, actionsToUse),
 				new FundingSourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -36,6 +38,18 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	public Icon getIcon()
 	{
 		return new FundingSourceIcon();
+	}
+	
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage()
+	{
+		FundingSourcePoolTable table = new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
+		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
+		return image;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 

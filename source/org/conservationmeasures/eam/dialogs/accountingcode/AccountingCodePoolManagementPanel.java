@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.accountingcode;
 
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -16,13 +17,14 @@ import org.conservationmeasures.eam.icons.AccountCodeIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public AccountingCodePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
+		super(projectToUse, splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
 				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -37,5 +39,18 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	{
 		return new AccountCodeIcon();
 	}
+
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage()
+	{
+		AccountingCodePoolTable table = new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
+		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
+		return image;
+	}
+	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Accounting Codes"); 
 }

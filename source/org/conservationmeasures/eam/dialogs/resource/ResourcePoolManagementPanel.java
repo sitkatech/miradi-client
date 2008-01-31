@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.resource;
 
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -16,13 +17,14 @@ import org.conservationmeasures.eam.icons.ProjectResourceIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
-		super(splitPositionSaverToUse, new ResourcePoolTablePanel(projectToUse, actionsToUse),
+		super(projectToUse, splitPositionSaverToUse, new ResourcePoolTablePanel(projectToUse, actionsToUse),
 				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -36,6 +38,18 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	public Icon getIcon()
 	{
 		return new ProjectResourceIcon();
+	}
+	
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage()
+	{
+		ResourcePoolTable table = new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
+		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
+		return image;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Resources"); 

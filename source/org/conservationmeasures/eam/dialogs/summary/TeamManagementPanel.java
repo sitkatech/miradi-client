@@ -23,13 +23,11 @@ public class TeamManagementPanel extends ObjectManagementPanel
 {
 	public TeamManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, new TeamPoolTablePanel(projectToUse, actionsToUse),
+		super(projectToUse, splitPositionSaverToUse, new TeamPoolTablePanel(projectToUse, actionsToUse),
 				new TeamMemberPropertiesPanel(projectToUse));
 
 		//TODO change overview text
 		add(new PanelTitleLabel(EAM.text("Team Management")), BorderLayout.BEFORE_FIRST_LINE);
-		
-		project = projectToUse;
 	}
 
 	public String getPanelDescription()
@@ -42,7 +40,6 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return new TeamIcon();
 	}
 	
-	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
@@ -50,12 +47,11 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public BufferedImage getImage()
 	{
-		TeamPoolTable table = new TeamPoolTable(new TeamPoolTableModel(project));
+		TeamPoolTable table = new TeamPoolTable(new TeamPoolTableModel(getProject()));
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
 	
-	private Project project;
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
 }
