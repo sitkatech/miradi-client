@@ -139,7 +139,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateIndicatortProgressReportDoer;
@@ -225,7 +225,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return false;
 	}
 	
-	public ExportableTable getExportableTable()
+	public ExportableTableInterface getExportableTable()
 	{
 		throw new RuntimeException("This view doesn't support getExportableTable");
 	}

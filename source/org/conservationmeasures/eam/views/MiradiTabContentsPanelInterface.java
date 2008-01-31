@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 
 public interface MiradiTabContentsPanelInterface
 {
@@ -20,5 +20,5 @@ public interface MiradiTabContentsPanelInterface
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();
-	public ExportableTable getExportableTable();
+	public ExportableTableInterface getExportableTable();
 }

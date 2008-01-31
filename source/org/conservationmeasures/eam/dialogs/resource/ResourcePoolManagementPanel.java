@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
@@ -62,7 +62,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	}
 	
 	@Override
-	public ExportableTable getExportableTable()
+	public ExportableTableInterface getExportableTable()
 	{
 		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
 	}

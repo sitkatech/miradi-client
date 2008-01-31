@@ -50,7 +50,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -148,7 +148,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getImage();
 		}
 
-		public ExportableTable getExportableTable()
+		public ExportableTableInterface getExportableTable()
 		{
 			return planningManagementPanel.getExportableTable();
 		}

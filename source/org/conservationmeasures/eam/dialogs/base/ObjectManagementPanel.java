@@ -13,7 +13,7 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 
@@ -92,7 +92,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	public ExportableTable getExportableTable()
+	public ExportableTableInterface getExportableTable()
 	{
 		return null;
 	}
