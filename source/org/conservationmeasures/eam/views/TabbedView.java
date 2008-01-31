@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 import javax.swing.Icon;
 import javax.swing.JPopupMenu;
@@ -40,6 +41,8 @@ abstract public class TabbedView extends UmbrellaView
 		tabs.addChangeListener(new TabChangeListener());
 		tabs.setFocusable(false);
 		tabs.addMouseListener(new MouseHandler());
+		
+		tabPanels = new HashMap<String, MiradiTabContents>();
 	}
 
 	public abstract void createTabs() throws Exception;
@@ -111,15 +114,38 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getSelectedIndex();
 	}
 	
-	public void addScrollingTab(MiradiTabContents contents)
+	public String getSelectedTabName()
 	{
-		addTab(contents.getTabName(), contents.getIcon(), new FastScrollPane(contents.getComponent()));
+		return tabs.getTitleAt(getSelectedTabIndex());
 	}
 	
+	public MiradiTabContents getSelectedTabPanel()
+	{
+		return getTabPanel(getSelectedTabName());
+	}
+	
+	public void addScrollingTab(MiradiTabContents contents)
+	{
+		addTab(contents, new FastScrollPane(contents.getComponent()));
+	}
+
 	public void addNonScrollingTab(MiradiTabContents contents)
 	{
-		addTab(contents.getTabName(), contents.getIcon(), contents.getComponent());
+		addTab(contents, contents.getComponent());
 	}
+	
+	private void addTab(MiradiTabContents contents, Component tabComponent)
+	{
+		String tabName = contents.getTabName();
+		tabPanels.put(tabName, contents);
+		tabs.addTab(tabName, contents.getIcon(), tabComponent);
+	}
+	
+	public MiradiTabContents getTabPanel(String tabName)
+	{
+		return tabPanels.get(tabName);
+	}
+	
 	
 	public void addTab(String name, Component contents)
 	{
@@ -288,5 +314,5 @@ abstract public class TabbedView extends UmbrellaView
 	private JTabbedPane tabs;
 	private int currentTab;
 	private boolean ignoreTabChanges;
-	
+	private HashMap<String, MiradiTabContents> tabPanels;
 }

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -14,4 +15,6 @@ public interface MiradiTabContents
 	public String getTabName();
 	public Icon getIcon();
 	public Component getComponent();
+	public boolean isImageAvailable();
+	public BufferedImage getImage();
 }

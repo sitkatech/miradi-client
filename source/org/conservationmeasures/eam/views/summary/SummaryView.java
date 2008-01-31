@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.views.summary;
 
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreateOrganization;
@@ -21,6 +23,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.MiradiTabContents;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
@@ -106,6 +109,26 @@ public class SummaryView extends TabbedView
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
+	}
+	
+	@Override
+	public boolean isImageAvailable()
+	{
+		MiradiTabContents panel = getSelectedTabPanel();
+		if(panel == null)
+			return false;
+		
+		return panel.isImageAvailable();
+	}
+	
+	@Override
+	public BufferedImage getImage() throws Exception
+	{
+		MiradiTabContents panel = getSelectedTabPanel();
+		if(panel == null)
+			return null;
+		
+		return panel.getImage();
 	}
 
 	public void showTeamAddMembersDialog() throws Exception

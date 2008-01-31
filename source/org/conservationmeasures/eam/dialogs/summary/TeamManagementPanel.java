@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.summary;
 
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -15,6 +16,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.icons.TeamIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
@@ -26,6 +28,8 @@ public class TeamManagementPanel extends ObjectManagementPanel
 
 		//TODO change overview text
 		add(new PanelTitleLabel(EAM.text("Team Management")), BorderLayout.BEFORE_FIRST_LINE);
+		
+		project = projectToUse;
 	}
 
 	public String getPanelDescription()
@@ -38,5 +42,20 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return new TeamIcon();
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Team"); 
+	@Override
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage()
+	{
+		TeamPoolTable table = new TeamPoolTable(new TeamPoolTableModel(project));
+		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
+		return image;
+	}
+	
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
+	
+	private Project project;
 }
