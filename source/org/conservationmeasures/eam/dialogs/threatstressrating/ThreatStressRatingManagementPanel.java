@@ -10,11 +10,26 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.dialogs.base.ObjectManagementPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTablePanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 {
+	public static ThreatStressRatingManagementPanel create(MainWindow mainWindowToUse) throws Exception
+	{
+		Project project = mainWindowToUse.getProject();
+		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(project);
+		ThreatStressRatingPropertiesPanel propertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindowToUse, multiTablePanel);
+		
+		ThreatStressRatingListTablePanel tablePanel =  ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(
+				project, multiTablePanel, propertiesPanel);
+		
+		return new ThreatStressRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
+	}
+
 	public ThreatStressRatingManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
