@@ -139,6 +139,7 @@ public class FactorMoveHandler
 	{
 		Point bendPointToTranslate = getBendPointToTranslate(factorCell, linkCell, bendPoints);
 		bendPointToTranslate.translate(deltaX, deltaY);
+		bendPointToTranslate = getProject().getSnapped(bendPointToTranslate);
 	}
 	
 	private boolean wasHorizontal(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
