@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.dialogs.viability;
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -19,13 +21,14 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
 {
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.getMainWindow(), projectToUse, nodeId),
+		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.getMainWindow(), projectToUse, nodeId),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
@@ -33,7 +36,7 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	
 	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.getMainWindow(), projectToUse),
+		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.getMainWindow(), projectToUse),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
@@ -78,6 +81,20 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	public Icon getIcon()
 	{
 		return icon;
+	}
+	
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage() throws Exception
+	{
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getProject(), model);
+		treeTable.restoreTreeState();
+		BufferedImage image = BufferedImageFactory.createImageFromTable(treeTable);
+		return image;
 	}
 	
 	public Class getJumpActionClass()
