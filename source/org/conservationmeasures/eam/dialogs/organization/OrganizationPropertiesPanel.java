@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.dialogs.organization;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,7 +19,19 @@ public class OrganizationPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.ORGANIZATION, idToEdit);
 
-		addField(createStringField(Organization.TAG_LABEL));
+		ObjectDataInputField labelField = createStringField(Organization.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(Organization.TAG_SHORT_LABEL);
+		addFieldsOnOneLine(EAM.text("Label|Organization"), new ObjectDataInputField[]{labelField, shortLabelField});
+		
+		addField(createStringField(Organization.TAG_ROLES));
+
+		ObjectDataInputField firstNameField = createStringField(Organization.TAG_CONTACT_FIRST_NAME);
+		ObjectDataInputField lastNameField = createStringField(Organization.TAG_CONTACT_LAST_NAME);
+		addFieldsOnOneLine(EAM.text("Label|Org Contact"), new ObjectDataInputField[]{firstNameField, lastNameField});
+		
+		addField(createStringField(Organization.TAG_EMAIL));
+		addField(createStringField(Organization.TAG_PHONE_NUMBER));
+		addField(createMultilineField(Organization.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
 	}
