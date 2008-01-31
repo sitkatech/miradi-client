@@ -29,8 +29,11 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
+import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.PortView;
 
 abstract public class FactorCell extends EAMGraphCell
 {
@@ -213,6 +216,12 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.isCause();
 	}
 
+	public Point getPortLocation(GraphLayoutCache cache)
+	{
+		PortView portView = (PortView) cache.getMapping(getPort(), false);
+		return Utility.convertPoint2DToPoint(portView.getLocation());	
+	}
+	
 	public Point getLocation()
 	{
 		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
