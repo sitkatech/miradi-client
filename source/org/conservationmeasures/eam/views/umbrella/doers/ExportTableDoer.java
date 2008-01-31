@@ -5,8 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella.doers;
 
+import java.io.File;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MiradiTabDelimitedFileChooser;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ExportTableDoer extends ViewDoer
@@ -26,5 +29,12 @@ public class ExportTableDoer extends ViewDoer
 	{
 		if (!isAvailable())
 			return;
+		
+		MiradiTabDelimitedFileChooser eamFileChooser = new MiradiTabDelimitedFileChooser(getMainWindow());
+		File chosen = eamFileChooser.displayChooser();
+		if (chosen==null) 
+			return;
+		
+
 	}
 }
