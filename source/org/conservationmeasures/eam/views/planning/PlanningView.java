@@ -148,7 +148,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getImage();
 		}
 
-		public ExportableTableInterface getExportableTable()
+		public ExportableTableInterface getExportableTable() throws Exception
 		{
 			return planningManagementPanel.getExportableTable();
 		}

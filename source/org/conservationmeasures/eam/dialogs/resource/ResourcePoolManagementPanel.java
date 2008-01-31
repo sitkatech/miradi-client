@@ -62,7 +62,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	}
 	
 	@Override
-	public ExportableTableInterface getExportableTable()
+	public ExportableTableInterface getExportableTable() throws Exception
 	{
 		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
 	}

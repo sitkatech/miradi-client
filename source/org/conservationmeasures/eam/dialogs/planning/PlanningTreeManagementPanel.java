@@ -49,7 +49,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}
 	
-	public ExportableTableInterface getExportableTable()
+	public ExportableTableInterface getExportableTable() throws Exception
 	{
 		return null;
 	}

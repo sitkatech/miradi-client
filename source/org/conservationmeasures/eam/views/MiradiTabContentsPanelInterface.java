@@ -20,5 +20,5 @@ public interface MiradiTabContentsPanelInterface
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();
-	public ExportableTableInterface getExportableTable();
+	public ExportableTableInterface getExportableTable() throws Exception;
 }
