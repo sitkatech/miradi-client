@@ -9,9 +9,9 @@ import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.utils.TableWithHelperMethods;
+import org.conservationmeasures.eam.utils.ExportableTable;
 
-public class PanelTable extends TableWithHelperMethods
+public class PanelTable extends ExportableTable
 {
 	public PanelTable()
 	{
