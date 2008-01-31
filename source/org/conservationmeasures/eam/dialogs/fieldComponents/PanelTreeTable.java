@@ -20,11 +20,11 @@ import javax.swing.tree.TreePath;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.ExportableTreeTable;
 
-import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-abstract public class PanelTreeTable extends JTreeTable 
+abstract public class PanelTreeTable extends ExportableTreeTable 
 {
 
 	public PanelTreeTable(TreeTableModel treeTableModel)
