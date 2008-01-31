@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
+import org.conservationmeasures.eam.actions.ActionExportTable;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionGroupBoxAddFactor;
 import org.conservationmeasures.eam.actions.ActionGroupBoxRemoveFactor;
@@ -130,6 +131,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu, ActionExportProjectReportFile.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 	
 // This feature will have to be rewritten to work with the new Planning View
 //		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);

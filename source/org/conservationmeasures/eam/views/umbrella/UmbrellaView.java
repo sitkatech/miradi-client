@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.actions.ActionEditStrategyProgressReports;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
+import org.conservationmeasures.eam.actions.ActionExportTable;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionHelpAdaptiveManagement;
 import org.conservationmeasures.eam.actions.ActionHelpAgileSoftware;
@@ -138,6 +139,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ExportableTable;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateIndicatortProgressReportDoer;
@@ -152,6 +154,7 @@ import org.conservationmeasures.eam.views.umbrella.doers.CreateMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.DeleteMethodDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.EditMethodsDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
+import org.conservationmeasures.eam.views.umbrella.doers.ExportTableDoer;
 import org.conservationmeasures.eam.views.umbrella.doers.SwitchToReportViewDoer;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
@@ -215,6 +218,16 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	public boolean isImageAvailable()
 	{
 		return false;
+	}
+	
+	public boolean isExportableTableAvailable()
+	{
+		return false;
+	}
+	
+	public ExportableTable getExportableTable()
+	{
+		throw new RuntimeException("This view doesn't support getExportableTable");
 	}
 	
 	public BufferedImage getImage() throws Exception
@@ -281,6 +294,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionExportProjectReportFile.class, new ExportProjectReportFileDoer());
 		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
+		addDoerToMap(ActionExportTable.class, new ExportTableDoer());
 		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
 		addDoerToMap(ActionConfigureExport.class, new HelpButtonDoer());
 		addDoerToMap(ActionDatabasesDemo.class, new HelpButtonDoer());
