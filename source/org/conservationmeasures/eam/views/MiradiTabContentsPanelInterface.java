@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.utils.ExportableTable;
+
 public interface MiradiTabContentsPanelInterface
 {
 	public String getTabName();
@@ -17,4 +19,6 @@ public interface MiradiTabContentsPanelInterface
 	public Component getComponent();
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
+	public boolean isExportableTableAvailable();
+	public ExportableTable getExportableTable();
 }
