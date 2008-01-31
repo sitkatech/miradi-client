@@ -10,7 +10,7 @@ import java.io.File;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.MiradiTabDelimitedFileChooser;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.martus.util.UnicodeWriter;
@@ -54,7 +54,7 @@ public class ExportTableDoer extends ViewDoer
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
-			ExportableTable table = getView().getExportableTable();
+			ExportableTableInterface table = getView().getExportableTable();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
 			for (int row = 0; row < rowCount; ++row)

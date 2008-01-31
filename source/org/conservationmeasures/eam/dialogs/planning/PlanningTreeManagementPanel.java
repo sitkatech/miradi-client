@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTre
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
-import org.conservationmeasures.eam.utils.ExportableTable;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
@@ -49,7 +49,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}
 	
-	public ExportableTable getExportableTable()
+	public ExportableTableInterface getExportableTable()
 	{
 		return null;
 	}
