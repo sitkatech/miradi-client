@@ -245,6 +245,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		return new DiagramToolBar(getActions(), this);
 	}
+	
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
 
 	public BufferedImage getImage()
 	{

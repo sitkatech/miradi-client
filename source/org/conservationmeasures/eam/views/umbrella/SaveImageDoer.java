@@ -26,7 +26,10 @@ public class SaveImageDoer extends ViewDoer
 	public boolean isAvailable() 
 	{
 		Project project = getMainWindow().getProject();
-		return project.isOpen();
+		if(!project.isOpen())
+			return false;
+		
+		return getView().isImageAvailable();
 	}
 
 	public void doIt() throws CommandFailedException 

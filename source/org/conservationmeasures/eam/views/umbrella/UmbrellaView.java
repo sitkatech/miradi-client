@@ -211,6 +211,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	abstract public JToolBar createToolBar();
 	
+	public boolean isImageAvailable()
+	{
+		return false;
+	}
+	
 	public BufferedImage getImage()
 	{
 		throw new RuntimeException("This view doesn't support getImage");
