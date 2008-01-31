@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.objectpools.IntermediateResultPool;
 import org.conservationmeasures.eam.objectpools.KeyEcologicalAttributePool;
 import org.conservationmeasures.eam.objectpools.MeasurementPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
+import org.conservationmeasures.eam.objectpools.OrganizationPool;
 import org.conservationmeasures.eam.objectpools.PlanningViewConfigurationPool;
 import org.conservationmeasures.eam.objectpools.ProgressReportPool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
@@ -132,6 +133,7 @@ public class ObjectManager
 		addNormalPool(new WcsProjectDataPool(ida));
 		addNormalPool(new TncProjectDataPool(ida));
 		addNormalPool(new FosProjectDataPool(ida));
+		addNormalPool(new OrganizationPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -426,6 +428,7 @@ public class ObjectManager
 		loadPool(ObjectType.WCS_PROJECT_DATA);
 		loadPool(ObjectType.TNC_PROJECT_DATA);
 		loadPool(ObjectType.FOS_PROJECT_DATA);
+		loadPool(ObjectType.ORGANIZATION);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
