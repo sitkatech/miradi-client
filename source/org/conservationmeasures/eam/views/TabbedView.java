@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 abstract public class TabbedView extends UmbrellaView
@@ -110,9 +111,19 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getSelectedIndex();
 	}
 	
+	public void addScrollingTab(MiradiTabContents contents)
+	{
+		addTab(contents.getTabName(), contents.getIcon(), new FastScrollPane(contents.getComponent()));
+	}
+	
+	public void addNonScrollingTab(MiradiTabContents contents)
+	{
+		addTab(contents.getTabName(), contents.getIcon(), contents.getComponent());
+	}
+	
 	public void addTab(String name, Component contents)
 	{
-		tabs.add(name, contents);
+		addTab(name, null, contents);
 	}
 
 	public void addTab(String name, Icon icon, Component contents)

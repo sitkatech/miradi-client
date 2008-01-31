@@ -5,11 +5,16 @@
 */ 
 package org.conservationmeasures.eam.dialogs.base;
 
+import java.awt.Component;
+
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
+import org.conservationmeasures.eam.views.MiradiTabContents;
 
-abstract public class ObjectManagementPanel extends VerticalSplitPanel
+abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContents
 {
 	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
@@ -43,6 +48,21 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel
 		return listComponent.getSelectedObject();
 	}
 	
+	public Component getComponent()
+	{
+		return this;
+	}
+
+	public Icon getIcon()
+	{
+		return null;
+	}
+
+	public String getTabName()
+	{
+		return getPanelDescription();
+	}
+
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
 }
