@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -48,9 +49,10 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.views.MiradiTabContents;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener
+abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContents
 {
 	
 	public AbstractObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
@@ -133,6 +135,24 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		picker.setObjectRefs(orefs);
 	}
 	
+	public Component getComponent()
+	{
+		return this;
+	}
+
+
+	public Icon getIcon()
+	{
+		return null;
+	}
+
+
+	public String getTabName()
+	{
+		return getPanelDescription();
+	}
+
+
 	public void setFocusOnFirstField()
 	{
 		//TODO: should be first non read only field.

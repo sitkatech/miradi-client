@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.actions.ActionCreateOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.organization.OrganizationManagementPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
@@ -22,7 +21,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
@@ -76,32 +74,23 @@ public class SummaryView extends TabbedView
 		summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), metadata.getRef());
 		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
 				
-		addPanelAsTab(summaryProjectPanel);
-	
 		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
-		addTab(teamManagementPanel.getPanelDescription(),teamManagementPanel.getIcon(), teamManagementPanel);
-		
 		organizationManagementPanel = new OrganizationManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
-		addTab(organizationManagementPanel.getPanelDescription(), organizationManagementPanel.getIcon(), organizationManagementPanel);
-		
-		addPanelAsTab(summaryScopePanel);
-		addPanelAsTab(summaryLocationPanel);
-		addPanelAsTab(summaryPlanningPanel);
-		
-		addPanelAsTab(tncSummaryPanel);
-		
-		addPanelAsTab(wwfSummaryPanel);
-		addPanelAsTab(wcssSummaryPanel);
-		addPanelAsTab(rareSummaryPanel);
-		addPanelAsTab(fosSummaryPanel);
-		addPanelAsTab(summaryOtherOrgPanel);
+
+		addScrollingTab(summaryProjectPanel);
+		addNonScrollingTab(teamManagementPanel);
+		addNonScrollingTab(organizationManagementPanel);
+		addScrollingTab(summaryScopePanel);
+		addScrollingTab(summaryLocationPanel);
+		addScrollingTab(summaryPlanningPanel);
+		addScrollingTab(tncSummaryPanel);
+		addScrollingTab(wwfSummaryPanel);
+		addScrollingTab(wcssSummaryPanel);
+		addScrollingTab(rareSummaryPanel);
+		addScrollingTab(fosSummaryPanel);
+		addScrollingTab(summaryOtherOrgPanel);
 	}
 	
-	void addPanelAsTab(AbstractObjectDataInputPanel panel)
-	{
-		addTab(panel.getPanelDescription(), new FastScrollPane(panel));
-	}
-
 	public void deleteTabs() throws Exception
 	{
 		summaryProjectPanel.dispose();
