@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
@@ -112,8 +111,6 @@ import org.conservationmeasures.eam.dialogs.diagram.ResultsChainDiagramPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideListManagementPanel;
 import org.conservationmeasures.eam.dialogs.slideshow.SlideShowDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.icons.ConceptualModelIcon;
-import org.conservationmeasures.eam.icons.ResultsChainIcon;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -242,16 +239,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public JToolBar createToolBar()
 	{
 		return new DiagramToolBar(getActions(), this);
-	}
-	
-	public boolean isImageAvailable()
-	{
-		return true;
-	}
-
-	public BufferedImage getImage()
-	{
-		return getDiagramComponent().getImage();
 	}
 	
 	public JComponent getPrintableComponent() throws Exception
@@ -441,13 +428,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void createResultsChainTab() throws Exception
 	{
 		ResultsChainDiagramPanel resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
-		addTab(EAM.text("Results Chains"), new ResultsChainIcon(), resultsChainPanel);
+		addNonScrollingTab(resultsChainPanel);
 	}
 
 	private void createConceptualModelDiagramTab() throws Exception
 	{
 		ConceptualModelDiagramPanel conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
-		addTab(EAM.text("Conceptual Model"), new ConceptualModelIcon(), conceptualDiagramPanel);
+		addNonScrollingTab(conceptualDiagramPanel);
 	}
 	
 	private void ensureDiagramIsSelected(int objectType, String tag) throws Exception

@@ -7,8 +7,12 @@ package org.conservationmeasures.eam.dialogs.diagram;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Icon;
+
+import org.conservationmeasures.eam.icons.ConceptualModelIcon;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.diagram.ConceptualModelDiagramSplitPane;
 import org.conservationmeasures.eam.views.diagram.DiagramSplitPane;
@@ -39,6 +43,15 @@ public class ConceptualModelDiagramPanel extends DiagramPanel implements Command
 		brainstormModePanel.updateVisibility();
 	}
 
-	BrainstormModePanel brainstormModePanel;
+	public Icon getIcon()
+	{
+		return new ConceptualModelIcon();
+	}
 
+	public String getTabName()
+	{
+		return EAM.text("Conceptual Model");
+	}
+
+	BrainstormModePanel brainstormModePanel;
 }
