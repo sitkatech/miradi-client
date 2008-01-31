@@ -20,7 +20,7 @@ public class PointList
 	
 	public PointList(PointList copyFrom)
 	{
-		this(new Vector(copyFrom.data));
+		this(copyFrom.createClone().data);
 	}
 	
 	public PointList(EnhancedJsonObject json) throws Exception
@@ -206,6 +206,5 @@ public class PointList
 	}
 	
 	protected static final String TAG_POINTS = "Points";
-	Vector data;
-
+	private Vector data;
 }

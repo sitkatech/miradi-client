@@ -99,63 +99,65 @@ public class FactorMoveHandler
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
 		{
-			if (wasHorizontal(factorCell, linkCell) && wasVertical(factorCell, linkCell))
-				continue;
-
-			PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
+			PointList bendPoints = new PointList(linkCell.getDiagramLink().getBendPoints());
 			if (bendPoints.size() < 1)
 				continue;
 			
-			if (wasHorizontal(factorCell, linkCell))
-				moveFirstBendHorizontally(factorCell, linkCell);
+			if (wasHorizontal(factorCell, linkCell, bendPoints) && wasVertical(factorCell, linkCell, bendPoints))
+				continue;
+
+			if (wasHorizontal(factorCell, linkCell, bendPoints))
+				moveFirstBendHorizontally(factorCell, linkCell, bendPoints);
 			
-			if (wasVertical(factorCell, linkCell))
-				moveFirstBendPointVertically(factorCell, linkCell);
+			if (wasVertical(factorCell, linkCell, bendPoints))
+				moveFirstBendPointVertically(factorCell, linkCell, bendPoints);
 		}
 	}
 
-	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell) throws Exception
+	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell, PointList bendPoints) throws Exception
 	{
 		int deltaX = 0;
 		int deltaY = factorCell.getLocation().y - factorCell.getPreviousLocation().y;
-		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY);
+		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY, bendPoints);
 	}
 
-	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell) throws Exception
+	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell, PointList bendPoints) throws Exception
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getPreviousLocation().x;
 		int deltaY = 0;
-		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY);
+		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY, bendPoints);
 	}
 	
-	private void moveAndSaveClosestBendPoint(FactorCell factorCell, LinkCell linkCell, int deltaX, int deltaY) throws Exception
+	private void moveAndSaveClosestBendPoint(FactorCell factorCell, LinkCell linkCell, int deltaX, int deltaY, PointList bendPoints) throws Exception
 	{
-		moveFirstBendPointInPlace(factorCell, linkCell, deltaX, deltaY);
-		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, linkCell.getDiagramLink().getBendPoints());
+		moveFirstBendPointInPlace(factorCell, linkCell, bendPoints, deltaX, deltaY);
+		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCell.getDiagramLink(), DiagramLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(bendPointMoveCommand);
 	}
 
-	private void moveFirstBendPointInPlace(FactorCell factorCell, LinkCell linkCell, int deltaX, int deltaY)
+	private void moveFirstBendPointInPlace(FactorCell factorCell, LinkCell linkCell, PointList bendPoints, int deltaX, int deltaY)
 	{
-		getBendPointToTranslate(factorCell, linkCell).translate(deltaX, deltaY);
+		Point bendPointToTranslate = getBendPointToTranslate(factorCell, linkCell, bendPoints);
+		bendPointToTranslate.translate(deltaX, deltaY);
+		System.out.println("translated = " + bendPointToTranslate);
 	}
 	
-	private boolean wasHorizontal(FactorCell factorCell, LinkCell linkCell)
+	private boolean wasHorizontal(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
 	{
 		int deltaY = factorCell.getPreviousLocation().y - factorCell.getLocation().y;
 		Point portLocation = getPortLocation(factorCell, linkCell);
 		int originalLocation = portLocation.y + deltaY;
 		
-		return getBendPointToTranslate(factorCell, linkCell).y == originalLocation;
+		return getBendPointToTranslate(factorCell, linkCell, bendPoints).y == originalLocation;
 	}
 
-	private boolean wasVertical(FactorCell factorCell, LinkCell linkCell)
+	private boolean wasVertical(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
 	{
 		int deltaX = factorCell.getPreviousLocation().x - factorCell.getLocation().x;
 		Point portLocation = getPortLocation(factorCell, linkCell);
 		int originalLocation = portLocation.x + deltaX;
 		
-		return getBendPointToTranslate(factorCell, linkCell).x == originalLocation;
+		return getBendPointToTranslate(factorCell, linkCell, bendPoints).x == originalLocation;
 	}
 
 	private Point getPortLocation(FactorCell factorCell, LinkCell linkCell)
@@ -171,9 +173,8 @@ public class FactorMoveHandler
 		return linkCell.getFrom().getDiagramFactor().getRef().equals(factorCell.getDiagramFactor().getRef());
 	}
 	
-	private Point getBendPointToTranslate(FactorCell factorCell, LinkCell linkCell)
+	private Point getBendPointToTranslate(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
 	{
-		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
 		if (isFromThisFactorCell(factorCell, linkCell))
 			bendPointToTranslate = bendPoints.get(0);
