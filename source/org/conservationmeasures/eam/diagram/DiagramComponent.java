@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -51,6 +50,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.JImage;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.utils.Utility;
 import org.jgraph.JGraph;
@@ -193,19 +193,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	}
 	
 
-	private class JImage extends JComponent
-	{
-		public JImage(BufferedImage imageToUse)
-		{
-			image = imageToUse;
-		}
-		public void paint(Graphics g) 
-		{
-			g.drawImage(image, 0, 0, null);
-		}
-		BufferedImage image;
-	}
-	
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);

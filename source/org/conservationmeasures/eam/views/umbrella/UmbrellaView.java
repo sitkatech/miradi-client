@@ -217,7 +217,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return false;
 	}
 	
-	public BufferedImage getImage()
+	public BufferedImage getImage() throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getImage");
 	}
