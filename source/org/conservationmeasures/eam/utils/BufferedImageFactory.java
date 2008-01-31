@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 
 public  class BufferedImageFactory
@@ -42,6 +44,16 @@ public  class BufferedImageFactory
 	private static void toScreen(Rectangle2D rect) 
 	{
 		rect.setFrame(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+	}
+
+	public static BufferedImage createImageFromComponent(JComponent component)
+	{
+		JFrame frame = new JFrame();
+		frame.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+		frame.add(component);
+		frame.pack();
+		BufferedImage image = getImage(component,5);
+		return image;
 	}
 	
 }

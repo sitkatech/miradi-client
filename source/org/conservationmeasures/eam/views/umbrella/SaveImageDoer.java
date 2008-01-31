@@ -54,7 +54,7 @@ public class SaveImageDoer extends ViewDoer
 		} 
 	}
 
-	private void saveImage(FileOutputStream out) throws IOException 
+	private void saveImage(FileOutputStream out) throws Exception 
 	{
 		BufferedImage image = getView().getImage();
 		saveImage(out, image);

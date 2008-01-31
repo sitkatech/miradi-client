@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.dialogs.threatstressrating.ThreatStressRatingManagementPanel;
+import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -40,6 +41,7 @@ import org.conservationmeasures.eam.project.SimpleThreatRatingFramework;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.CardedView;
 import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
@@ -95,9 +97,22 @@ public class ThreatMatrixView extends CardedView
 		return true;
 	}
 
-	public BufferedImage getImage()
+	public BufferedImage getImage() throws Exception
 	{
+		if(isStressBasedMode())
+			return createStressBasedImage();
+
 		return MatrixTableImageCreator.createImage(getProject(), grid.getThreatMatrixTable(),grid.getRowHeaderTable());
+	}
+
+	private BufferedImage createStressBasedImage() throws Exception
+	{
+		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(getProject());
+
+		BufferedImage image = BufferedImageFactory.createImageFromComponent(multiTablePanel);
+		
+		multiTablePanel.dispose();
+		return image;
 	}
 
 	public void createCards() throws Exception
@@ -112,10 +127,20 @@ public class ThreatMatrixView extends CardedView
 	
 	protected void showCurrentCard(String code)
 	{
-		if (code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+		if (isStressBasedMode(code))
 			showCard(getThreatStressRatingCardName());
 		else
 			showCard(getThreatMatrixCardName());
+	}
+	
+	private boolean isStressBasedMode()
+	{
+		return isStressBasedMode(getCurrentCardChoiceName());
+	}
+
+	private boolean isStressBasedMode(String code)
+	{
+		return code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}
 	
 	public void deleteCards() throws Exception
