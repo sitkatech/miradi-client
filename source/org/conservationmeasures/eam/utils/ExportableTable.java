@@ -20,7 +20,7 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 	}
 
 
-	public int getDepth(int column)
+	public int getDepth(int row)
 	{
 		return 1;
 	}
