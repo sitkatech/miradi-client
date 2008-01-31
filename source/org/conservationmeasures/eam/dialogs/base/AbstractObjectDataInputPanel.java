@@ -50,10 +50,10 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.views.MiradiTabContents;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
-abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContents
+abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContentsPanelInterface
 {
 	
 	public AbstractObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)

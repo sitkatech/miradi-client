@@ -42,7 +42,7 @@ abstract public class TabbedView extends UmbrellaView
 		tabs.setFocusable(false);
 		tabs.addMouseListener(new MouseHandler());
 		
-		tabPanels = new HashMap<String, MiradiTabContents>();
+		tabPanels = new HashMap<String, MiradiTabContentsPanelInterface>();
 	}
 
 	public abstract void createTabs() throws Exception;
@@ -119,29 +119,29 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getTitleAt(getSelectedTabIndex());
 	}
 	
-	public MiradiTabContents getSelectedTabPanel()
+	public MiradiTabContentsPanelInterface getSelectedTabPanel()
 	{
 		return getTabPanel(getSelectedTabName());
 	}
 	
-	public void addScrollingTab(MiradiTabContents contents)
+	public void addScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
 		addTab(contents, new FastScrollPane(contents.getComponent()));
 	}
 
-	public void addNonScrollingTab(MiradiTabContents contents)
+	public void addNonScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
 		addTab(contents, contents.getComponent());
 	}
 	
-	private void addTab(MiradiTabContents contents, Component tabComponent)
+	private void addTab(MiradiTabContentsPanelInterface contents, Component tabComponent)
 	{
 		String tabName = contents.getTabName();
 		tabPanels.put(tabName, contents);
 		tabs.addTab(tabName, contents.getIcon(), tabComponent);
 	}
 	
-	public MiradiTabContents getTabPanel(String tabName)
+	public MiradiTabContentsPanelInterface getTabPanel(String tabName)
 	{
 		return tabPanels.get(tabName);
 	}
@@ -314,5 +314,5 @@ abstract public class TabbedView extends UmbrellaView
 	private JTabbedPane tabs;
 	private int currentTab;
 	private boolean ignoreTabChanges;
-	private HashMap<String, MiradiTabContents> tabPanels;
+	private HashMap<String, MiradiTabContentsPanelInterface> tabPanels;
 }

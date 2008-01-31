@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
-public interface MiradiTabContents
+public interface MiradiTabContentsPanelInterface
 {
 	public String getTabName();
 	public Icon getIcon();

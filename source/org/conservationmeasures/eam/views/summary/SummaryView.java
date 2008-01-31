@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.MiradiTabContents;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
@@ -114,7 +114,7 @@ public class SummaryView extends TabbedView
 	@Override
 	public boolean isImageAvailable()
 	{
-		MiradiTabContents panel = getSelectedTabPanel();
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel == null)
 			return false;
 		
@@ -124,7 +124,7 @@ public class SummaryView extends TabbedView
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		MiradiTabContents panel = getSelectedTabPanel();
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel == null)
 			return null;
 		
