@@ -32,12 +32,14 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.questions.DiagramFactorFontColorQuestion;
 import org.conservationmeasures.eam.questions.DiagramFactorFontSizeQuestion;
 import org.conservationmeasures.eam.questions.DiagramFactorFontStyleQuestion;
+import org.conservationmeasures.eam.questions.HabitatAssociationQuestion;
 import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.StrategyClassificationQuestion;
 import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
@@ -62,7 +64,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		//TODO extract a local factor var. instead of getFactor
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(getFactor()), FactorType.getFactorIcon(getFactor()), new ObjectDataInputField[]{shortLabelField, labelField});
 
-		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef()});
+		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef(), getProject().getMetadata().getRef()});
 		
 		if (getFactor().isDirectThreat())
 		{
@@ -106,6 +108,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			justificationField = createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			justificationFieldLabel = new PanelFieldLabel(justificationField.getObjectType(), justificationField.getTag());
 			addFieldWithCustomLabel(justificationField, justificationFieldLabel);
+			addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 			
 			detailIcon = new TargetIcon();
 			updateEditabilityOfTargetStatusField();
