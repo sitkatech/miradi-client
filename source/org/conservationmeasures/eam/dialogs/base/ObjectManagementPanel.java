@@ -92,7 +92,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	public ExportableTableInterface getExportableTable()
+	public ExportableTableInterface getExportableTable() throws Exception
 	{
 		return null;
 	}
