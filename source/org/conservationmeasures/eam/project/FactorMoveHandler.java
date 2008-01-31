@@ -101,6 +101,10 @@ public class FactorMoveHandler
 		{
 			if (wasHorizontal(factorCell, linkCell) && wasVertical(factorCell, linkCell))
 				continue;
+
+			PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
+			if (bendPoints.size() < 1)
+				continue;
 			
 			if (wasHorizontal(factorCell, linkCell))
 				moveFirstBendHorizontally(factorCell, linkCell);
@@ -113,11 +117,8 @@ public class FactorMoveHandler
 
 	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell) throws Exception
 	{
-		PointList bendPoints = cell.getDiagramLink().getBendPoints();
-		if (bendPoints.size() < 1)
-			return;
-		
 		int deltaY = factorCell.getLocation().y - factorCell.getPreviousLocation().y;
+		PointList bendPoints = cell.getDiagramLink().getBendPoints();
 		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
 		if (isSourceEnd(factorCell, cell))
 			bendPointToTranslate = bendPoints.get(0);
@@ -129,11 +130,8 @@ public class FactorMoveHandler
 
 	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell) throws Exception
 	{
-		PointList bendPoints = cell.getDiagramLink().getBendPoints();
-		if (bendPoints.size() < 1)
-			return;
-		
 		int deltaX = factorCell.getLocation().x - factorCell.getPreviousLocation().x;
+		PointList bendPoints = cell.getDiagramLink().getBendPoints();
 		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
 		if (isSourceEnd(factorCell, cell))
 			bendPointToTranslate = bendPoints.get(0);
@@ -174,9 +172,6 @@ public class FactorMoveHandler
 	private boolean isFirstBendPointSameX(FactorCell factorCell, LinkCell linkCell, int x)
 	{
 		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
-		if (bendPoints.size() < 1)
-			return false;
-		
 		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
 		if (isSourceEnd(factorCell, linkCell))
 			bendPointToTranslate = bendPoints.get(0);
@@ -187,9 +182,6 @@ public class FactorMoveHandler
 	private boolean isFirstBendPointSameY(FactorCell factorCell, LinkCell linkCell, int y)
 	{
 		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
-		if (bendPoints.size() < 1)
-			return false;
-		
 		Point bendPointToTranslate = bendPoints.get(bendPoints.size() - 1);
 		if (isSourceEnd(factorCell, linkCell))
 			bendPointToTranslate = bendPoints.get(0);
