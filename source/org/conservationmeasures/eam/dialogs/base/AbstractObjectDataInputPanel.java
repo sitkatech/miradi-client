@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.base;
 
 import java.awt.Component;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -140,18 +141,26 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return this;
 	}
 
-
 	public Icon getIcon()
 	{
 		return null;
 	}
 
-
 	public String getTabName()
 	{
 		return getPanelDescription();
 	}
+	
+	public boolean isImageAvailable()
+	{
+		return false;
+	}
 
+	public BufferedImage getImage()
+	{
+		return null;
+	}
+	
 
 	public void setFocusOnFirstField()
 	{

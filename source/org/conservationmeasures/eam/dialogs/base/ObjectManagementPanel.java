@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.base;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
@@ -62,7 +63,17 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		return getPanelDescription();
 	}
+	
+	public boolean isImageAvailable()
+	{
+		return false;
+	}
 
+	public BufferedImage getImage()
+	{
+		return null;
+	}
+	
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
 }

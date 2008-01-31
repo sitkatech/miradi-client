@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 
 public  class BufferedImageFactory
@@ -44,6 +46,15 @@ public  class BufferedImageFactory
 	private static void toScreen(Rectangle2D rect) 
 	{
 		rect.setFrame(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+	}
+	
+	public static BufferedImage createImageFromTable(JTable table)
+	{
+		JScrollPane scrollerToShowHeaders = new JScrollPane(table);
+		scrollerToShowHeaders.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollerToShowHeaders.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		scrollerToShowHeaders.getViewport().setPreferredSize(table.getPreferredSize());
+		return createImageFromComponent(scrollerToShowHeaders);
 	}
 
 	public static BufferedImage createImageFromComponent(JComponent component)
