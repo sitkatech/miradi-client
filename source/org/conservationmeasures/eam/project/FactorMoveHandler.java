@@ -117,13 +117,13 @@ public class FactorMoveHandler
 	private void moveFirstBendHorizontally(FactorCell factorCell, LinkCell cell, PointList bendPoints) throws Exception
 	{
 		int deltaX = 0;
-		int deltaY = factorCell.getLocation().y - factorCell.getPreviousLocation().y;
+		int deltaY = factorCell.getPortLocation(model.getGraphLayoutCache()).y - factorCell.getPreviousPortLocation().y;
 		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY, bendPoints);
 	}
 
 	private void moveFirstBendPointVertically(FactorCell factorCell, LinkCell cell, PointList bendPoints) throws Exception
 	{
-		int deltaX = factorCell.getLocation().x - factorCell.getPreviousLocation().x;
+		int deltaX = factorCell.getPortLocation(model.getGraphLayoutCache()).x - factorCell.getPreviousPortLocation().x;
 		int deltaY = 0;
 		moveAndSaveClosestBendPoint(factorCell, cell, deltaX, deltaY, bendPoints);
 	}
@@ -143,7 +143,7 @@ public class FactorMoveHandler
 	
 	private boolean wasHorizontal(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
 	{	
-		int deltaY = factorCell.getPreviousLocation().y - factorCell.getLocation().y;
+		int deltaY = factorCell.getPreviousPortLocation().y - factorCell.getPortLocation(model.getGraphLayoutCache()).y;
 		Point portLocation = getPortLocation(factorCell, linkCell);
 		int originalLocation = portLocation.y + deltaY;
 		
@@ -152,7 +152,7 @@ public class FactorMoveHandler
 
 	private boolean wasVertical(FactorCell factorCell, LinkCell linkCell, PointList bendPoints)
 	{
-		int deltaX = factorCell.getPreviousLocation().x - factorCell.getLocation().x;
+		int deltaX = factorCell.getPreviousPortLocation().x - factorCell.getPortLocation(model.getGraphLayoutCache()).x;
 		Point portLocation = getPortLocation(factorCell, linkCell);
 		int originalLocation = portLocation.x + deltaX;
 		

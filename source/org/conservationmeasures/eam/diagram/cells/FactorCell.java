@@ -55,7 +55,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		setLocation(diagramFactor.getLocation());
 		Dimension size = diagramFactor.getSize();
-		setSize(size);
+		size = setSize(size);
 		setPreviousSize(size);
 	}
 	
@@ -342,13 +342,15 @@ abstract public class FactorCell extends EAMGraphCell
 		return getBounds().getBounds().getSize();
 	}
 	
-	public void setSize(Dimension size)
+	public Dimension setSize(Dimension size)
 	{
 		Point location = getLocation();
 
 		Dimension newSize = new Dimension(getProject().forceNonZeroEvenSnap(size.width), getProject().forceNonZeroEvenSnap(size.height));
 		Rectangle bounds = new Rectangle(location, newSize);
 		GraphConstants.setBounds(getAttributes(), bounds);
+		
+		return newSize;
 	}
 
 	private Project getProject()
@@ -374,6 +376,16 @@ abstract public class FactorCell extends EAMGraphCell
 	public void setPreviousLocation(Point location)
 	{
 		previousLocation = location;
+	}
+	
+	public void setPreviousPortLocation(Point location)
+	{
+		previousPortLocation = location;
+	}
+	
+	public Point getPreviousPortLocation()
+	{
+		return previousPortLocation;
 	}
 	
 	public Rectangle2D getBounds()
@@ -485,6 +497,7 @@ abstract public class FactorCell extends EAMGraphCell
 	private DefaultPort port;
 	private Dimension previousSize;
 	private Point previousLocation;
+	private Point previousPortLocation;
 	
 	private DiagramFactorId id;
 	private Factor underlyingObject;

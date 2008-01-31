@@ -107,6 +107,7 @@ public class NudgeDoer extends LocationDoer
 				return;	
 			
 			factorCells[i].setPreviousLocation(factorCells[i].getLocation());
+			factorCells[i].setPreviousPortLocation(factorCells[i].getPortLocation(getDiagramView().getDiagramComponent().getGraphLayoutCache()));
 		}
 		
 		if (wouldMoveBendPointsOutOfBounds(allLinkCells.toArray(new LinkCell[0]), deltaX, deltaY))
