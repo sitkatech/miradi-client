@@ -5,29 +5,14 @@
 */ 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.views.planning.doers.CreatePoolObjectDoer;
 
-public class CreateResource extends ViewDoer
+public class CreateResource extends CreatePoolObjectDoer
 {
-	public boolean isAvailable()
+	@Override
+	protected int getTypeToCreate()
 	{
-		return true;
+		return ProjectResource.getObjectType();
 	}
-
-	public void doIt() throws CommandFailedException
-	{
-		try
-		{
-			CommandCreateObject cmd = new CommandCreateObject(ObjectType.PROJECT_RESOURCE);
-			getProject().executeCommand(cmd);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
-
 }
