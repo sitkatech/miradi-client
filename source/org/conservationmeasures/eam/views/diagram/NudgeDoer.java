@@ -104,7 +104,9 @@ public class NudgeDoer extends LocationDoer
 		{
 			ids[i] = factorCells[i].getDiagramFactorId();
 			if (!isFutureCellLocationInsideDiagramBounds(factorCells[i].getLocation(), deltaX, deltaY))
-				return;			
+				return;	
+			
+			factorCells[i].setPreviousLocation(factorCells[i].getLocation());
 		}
 		
 		if (wouldMoveBendPointsOutOfBounds(allLinkCells.toArray(new LinkCell[0]), deltaX, deltaY))
