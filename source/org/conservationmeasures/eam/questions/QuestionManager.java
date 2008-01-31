@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.questions;
 
 import java.util.HashMap;
 
-import org.conservationmeasures.eam.main.EAM;
-
 public class QuestionManager
 {
 	private static void initialize()
@@ -86,7 +84,7 @@ public class QuestionManager
 		
 		ChoiceQuestion question = questions.get(questionName);
 		if(question == null)
-			EAM.logWarning("Unknown question: " + questionName);
+			throw new RuntimeException("Unknown question: " + questionName);
 		return question;
 	}
 	
