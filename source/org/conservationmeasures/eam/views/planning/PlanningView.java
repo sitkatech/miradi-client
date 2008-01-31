@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.planning;
 
 import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -48,6 +49,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.planning.doers.AddAssignmentDoer;
@@ -140,6 +142,19 @@ public class PlanningView extends TabbedView
 	public JToolBar createToolBar()
 	{
 		return new PlanningToolBar(getActions());
+	}
+	
+	@Override
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	@Override
+	public BufferedImage getImage() throws Exception
+	{
+		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
+		return BufferedImageFactory.createImageFromComponent(planningTreeTablePanel);
 	}
 	
 	private void addPlanningViewDoersToMap()
