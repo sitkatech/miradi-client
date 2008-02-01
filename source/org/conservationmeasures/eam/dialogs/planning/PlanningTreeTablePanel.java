@@ -52,7 +52,9 @@ import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MultiTableCombinedAsOneExporter;
 import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
 import org.conservationmeasures.eam.views.planning.ColumnManager;
@@ -78,6 +80,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		rowHeightController = new MultiTableRowHeightController();
 		rowHeightController.addTable(treeToUse);
 		
+		multiTableExporter = new MultiTableCombinedAsOneExporter();		
 		fontProvider = new PlanningViewFontProvider();
 		
 		mainPanel = new JPanel(new BasicGridLayout(1, 4));
@@ -297,20 +300,25 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	
 	private void updateRightSideTablePanels() throws Exception
 	{
+		multiTableExporter.clear();
+		multiTableExporter.addTable(getTree());
 		mainPanel.removeAll();
 		mainPanel.add(treeTableScrollPane);
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			mainPanel.add(annualTotalsScrollPane);
+			multiTableExporter.addTable(annualTotalsTable);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			mainPanel.add(measurementScrollPane);
+			multiTableExporter.addTable(measurementTable);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			mainPanel.add(futureStatusScrollPane);
+			multiTableExporter.addTable(futureStatusTable);
 		}
 		
 		validate();
@@ -320,6 +328,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private PlanningTreeTableModel getPlanningModel()
 	{
 		return (PlanningTreeTableModel)getModel();
+	}
+	
+	public ExportableTableInterface getTableForExporting()
+	{
+		return multiTableExporter;
 	}
 	
 	private void resizeTablesToExactlyFitAllColumns() 
@@ -374,6 +387,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private FastScrollPane mainScrollPane;
 	
 	private MultiTableRowHeightController rowHeightController;
+	private MultiTableCombinedAsOneExporter multiTableExporter;
 }
 
 class ModelUpdater implements TableModelListener
