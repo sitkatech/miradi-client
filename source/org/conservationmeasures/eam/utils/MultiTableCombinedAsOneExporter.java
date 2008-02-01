@@ -67,26 +67,6 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		throw new RuntimeException("Error occurred while exporting table.");
 	}
 	
-	private String getTableForColumn(int row, int column)
-	{
-		int validIndex = column;
-		int thisColumnCount = 0;
-		for (int i = 0; i < tables.size(); ++i)
-		{
-			ExportableTableInterface thisTable = tables.get(i);
-			thisColumnCount += thisTable.getColumnCount();
-			if (thisColumnCount <= column)
-			{
-				validIndex -= thisTable.getColumnCount();
-				continue;
-			}
-						
-			return getValue(row, validIndex, thisTable);
-		}
-		
-		throw new RuntimeException("Error occurred while exporting table.");
-	}
-
 	private String getValue(int row, int validIndex, ExportableTableInterface thisTable)
 	{
 		Object value = thisTable.getValueAt(row, validIndex);
@@ -117,7 +97,22 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 
 	public Object getValueAt(int row, int column)
 	{
-		return getTableForColumn(row, column);
+		int validIndex = column;
+		int thisColumnCount = 0;
+		for (int i = 0; i < tables.size(); ++i)
+		{
+			ExportableTableInterface thisTable = tables.get(i);
+			thisColumnCount += thisTable.getColumnCount();
+			if (thisColumnCount <= column)
+			{
+				validIndex -= thisTable.getColumnCount();
+				continue;
+			}
+						
+			return getValue(row, validIndex, thisTable);
+		}
+		
+		throw new RuntimeException("Error occurred while exporting table.");
 	}
 	
 	private Vector<ExportableTableInterface> tables;
