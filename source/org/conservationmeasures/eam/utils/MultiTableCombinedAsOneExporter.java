@@ -64,15 +64,6 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		throw new RuntimeException("Error occurred while exporting table.");
 	}
 	
-	private String getValue(int row, int validIndex, ExportableTableInterface thisTable)
-	{
-		Object value = thisTable.getValueAt(row, validIndex);
-		if (value == null)
-			return "";
-				
-		return value.toString();
-	}
-
 	public int getMaxDepthCount()
 	{
 		if (tables.size() == 0)
@@ -103,7 +94,11 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 				continue;
 			}
 						
-			return getValue(row, columnWithinTable, thisTable);
+			Object value = thisTable.getValueAt(row, columnWithinTable);
+			if (value == null)
+				return "";
+					
+			return value.toString();
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
