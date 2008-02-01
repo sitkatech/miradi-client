@@ -7,7 +7,10 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.FactorCell;
+import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.dialogs.diagram.LinkCreateDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -30,18 +33,16 @@ public class InsertFactorLinkDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView diagramView = getDiagramView();
-		LinkCreateDialog dialog = new LinkCreateDialog(getMainWindow(), diagramView.getDiagramPanel());
-		dialog.setVisible(true);
-		if(!dialog.getResult())
-			return;
-			
 		DiagramModel model = diagramView.getDiagramModel();
-		DiagramFactor fromDiagramFactor = dialog.getFrom();
-		DiagramFactor toDiagramFactor = dialog.getTo();
+
+		FromToDiagramFactorsHolder fromToFactorsHolder = getFromToDiagramFactors(diagramView);
+		DiagramFactor from = fromToFactorsHolder.getFrom();
+		DiagramFactor to = fromToFactorsHolder.getTo();
+		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		try
 		{
-			if (linkCreator.linkWasRejected(model, fromDiagramFactor, toDiagramFactor))
+			if (linkCreator.linkWasRejected(model, from, to))
 				return;
 		}
 		catch (Exception e)
@@ -52,10 +53,10 @@ public class InsertFactorLinkDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
-				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, fromDiagramFactor, toDiagramFactor);
+			if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(model, from, to);
 			else
-				linkCreator.createGroupBoxChildrenDiagramLinks(model, fromDiagramFactor, toDiagramFactor);
+				linkCreator.createGroupBoxChildrenDiagramLinks(model, from, to);
 		}
 		catch (Exception e)
 		{
@@ -66,5 +67,43 @@ public class InsertFactorLinkDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());	
 		}
+	}
+
+	private FromToDiagramFactorsHolder getFromToDiagramFactors(DiagramView diagramView)
+	{
+		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
+		DiagramComponent diagram = diagramPanel.getdiagramComponent();
+		FactorCell fromCell = diagram.getSelectedFactor(0);
+		FactorCell toCell = diagram.getSelectedFactor(1);
+		if (fromCell != null && toCell != null)
+			return new FromToDiagramFactorsHolder(fromCell.getDiagramFactor(), toCell.getDiagramFactor());
+		
+		LinkCreateDialog dialog = new LinkCreateDialog(getMainWindow(), diagramPanel);
+		dialog.setVisible(true);
+		if(!dialog.getResult())
+			return null;
+		
+		return new FromToDiagramFactorsHolder(dialog.getFrom(), dialog.getTo());
+	}
+	
+	private class FromToDiagramFactorsHolder
+	{
+		public FromToDiagramFactorsHolder(DiagramFactor fromToUse, DiagramFactor toToUse)
+		{
+			from = fromToUse;
+			to = toToUse;
+		}
+
+		public DiagramFactor getFrom()
+		{
+			return from;
+		}
+		public DiagramFactor getTo()
+		{
+			return to;
+		}		
+		
+		private DiagramFactor from;
+		private DiagramFactor to;
 	}
 }
