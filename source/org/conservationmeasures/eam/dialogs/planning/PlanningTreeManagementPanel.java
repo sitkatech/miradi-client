@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
@@ -53,10 +52,10 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
 		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
-		TreeTableWithStateSaving tree = panel.getTree();
+		ExportableTableInterface table = panel.getTableForExporting();
 		panel.dispose();
 		
-		return tree;
+		return table;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
