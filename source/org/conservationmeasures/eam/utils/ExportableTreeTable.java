@@ -15,7 +15,6 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		super(treeTableModel);
 	}
 
-//	FIXME implement funcionality
 	public int getDepth(int row)
 	{
 		return 0;
@@ -26,8 +25,21 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		return 0;
 	}
 
+	@Override
+	public Object getValueAt(int row, int column)
+	{
+		if (column == 0)
+			return getTree().getPathForRow(row).getLastPathComponent().toString();
+		
+		return super.getValueAt(row, column);
+	}
+	
 	public String getValueFor(int row, int column)
 	{
-		return null;
+		Object value = getValueAt(row, column);
+		if (value == null)
+			return "";
+		
+		return value.toString();
 	}
 }
