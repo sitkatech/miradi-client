@@ -37,4 +37,9 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 		
 		return value.toString();
 	}
+	
+	public String getHeaderFor(int column)
+	{
+		return getColumnName(column);
+	}	
 }
