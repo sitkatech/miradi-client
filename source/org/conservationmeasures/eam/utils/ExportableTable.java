@@ -19,19 +19,22 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 		super(model);
 	}
 
-
 	public int getDepth(int row)
 	{
-		return 1;
+		return 0;
 	}
 
 	public int getMaxDepthCount()
 	{
-		return 1;
+		return 0;
 	}
 
 	public String getValueFor(int row, int column)
 	{
-		return super.getValueAt(row, column).toString();
+		Object value = super.getValueAt(row, column);
+		if (value == null)
+			return "";
+		
+		return value.toString();
 	}
 }

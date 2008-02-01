@@ -38,9 +38,12 @@ public class ExportTableDoer extends ViewDoer
 		if (destination == null) 
 			return;
 		
+		//FIXME for dev only
+		//File destination = new File("C:/Users/Nima/Documents/some.txt");
 		try
 		{
 			writeTabDeliminted(destination);
+			EAM.notifyDialog(EAM.text("Data was exported as tab delimited."));
 		}
 		catch(Exception e)
 		{
@@ -55,17 +58,16 @@ public class ExportTableDoer extends ViewDoer
 		try
 		{
 			ExportableTableInterface table = getView().getExportableTable();
+			int maxDepth = table.getMaxDepthCount();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
 			for (int row = 0; row < rowCount; ++row)
 			{
 				for (int column = 0; column < columnCount; ++column)
 				{
-					String value = table.getValueFor(row, column);
-					if (value != null)
-						out.write(value + "\t");
-					else
-						out.write("\t");
+					prePadWithTabs(out, column, table.getDepth(row));
+					out.write(table.getValueFor(row, column) + "\t");
+					postPadWithTabs(out, column, table.getDepth(row), maxDepth);
 				}
 				
 				out.writeln();
@@ -74,6 +76,34 @@ public class ExportTableDoer extends ViewDoer
 		finally
 		{
 			out.close();
+		}
+	}
+
+	private boolean isTreeColumn(int column)
+	{
+		return (column == 0);
+	}
+	
+	private void prePadWithTabs(UnicodeWriter out, int column, int depth) throws Exception
+	{	
+		if (!isTreeColumn(column))
+			return; 
+		
+		for (int depthCount = 0; depthCount < depth; ++depthCount)
+		{
+			out.write("\t");
+		}
+	}
+	
+	private void postPadWithTabs(UnicodeWriter out, int column, int depth, int maxDepth) throws Exception
+	{
+		if (!isTreeColumn(column))
+			return; 
+
+		int postPadCount = maxDepth - depth;
+		for (int depthCount = 0; depthCount < postPadCount; ++depthCount)
+		{
+			out.write("\t");
 		}
 	}
 }
