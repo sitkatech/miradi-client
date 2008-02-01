@@ -75,13 +75,10 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 
 	public int getMaxDepthCount()
 	{
-		int maxDepth = 0;
-		for (int i = 0;  i < tables.size(); ++i)
-		{
-			maxDepth = Math.max(maxDepth, tables.get(i).getMaxDepthCount());
-		}
+		if (tables.size() == 0)
+			return 0;
 		
-		return maxDepth;
+		return tables.get(0).getMaxDepthCount();	
 	}
 
 	public int getRowCount()
