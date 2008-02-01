@@ -68,6 +68,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		return getColumnTags().get(column);
 	}
 	
+	//TODO the nodes need to implement the content of thie metod
 	public Object getValueAt(Object rawNode, int col)
 	{
 		try
