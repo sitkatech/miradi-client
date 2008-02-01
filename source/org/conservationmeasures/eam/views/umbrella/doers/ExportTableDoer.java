@@ -69,7 +69,7 @@ public class ExportTableDoer extends ViewDoer
 				for (int column = 0; column < columnCount; ++column)
 				{
 					pad(out, table.getDepth(row), column);
-					out.write(table.getValueFor(row, column) + "\t");
+					out.write(getValue(table, row, column) + "\t");
 					
 					int postPadCount = maxDepth - table.getDepth(row);
 					pad(out, postPadCount, column);
@@ -82,6 +82,15 @@ public class ExportTableDoer extends ViewDoer
 		{
 			out.close();
 		}
+	}
+
+	private String getValue(ExportableTableInterface table, int row, int column)
+	{
+		Object value = table.getValueAt(row, column);
+		if (value == null)
+			return "";
+		
+		return value.toString();
 	}
 
 	private void putHeaders(UnicodeWriter out, ExportableTableInterface table, int maxDepeth) throws Exception

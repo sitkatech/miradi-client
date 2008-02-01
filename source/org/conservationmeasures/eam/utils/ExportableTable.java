@@ -29,15 +29,6 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 		return 0;
 	}
 
-	public String getValueFor(int row, int column)
-	{
-		Object value = super.getValueAt(row, column);
-		if (value == null)
-			return "";
-		
-		return value.toString();
-	}
-	
 	public String getHeaderFor(int column)
 	{
 		return getColumnName(column);

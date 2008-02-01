@@ -33,6 +33,9 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		return maxRowDepth;
 	}
 
+	//TODO there is a TODO in the planningTreeTableModel,  once thats taken care of
+	//move the if (column == 0) out of here (this method can be removed then), and move it to the
+	//planningTreeTaleModel
 	@Override
 	public Object getValueAt(int row, int column)
 	{
@@ -40,15 +43,6 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 			return getTree().getPathForRow(row).getLastPathComponent().toString();
 		
 		return super.getValueAt(row, column);
-	}
-	
-	public String getValueFor(int row, int column)
-	{
-		Object value = getValueAt(row, column);
-		if (value == null)
-			return "";
-		
-		return value.toString();
 	}
 	
 	public String getHeaderFor(int column)
