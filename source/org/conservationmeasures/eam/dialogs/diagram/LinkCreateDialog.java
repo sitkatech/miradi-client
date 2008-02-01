@@ -256,10 +256,10 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		return item.getDiagramFactor();
 	}
 	
-	DiagramPanel diagramPanel;
-	boolean result;
-	UiList linkFromList;
-	UiList linkToList;
-	UiButton okButton;
-	UiButton cancelButton;
+	private DiagramPanel diagramPanel;
+	private boolean result;
+	private UiList linkFromList;
+	private UiList linkToList;
+	private UiButton okButton;
+	private UiButton cancelButton;
 }
