@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.dialogs.diagram.LinkCreateDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.DiagramFactor;
+import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
@@ -36,6 +37,9 @@ public class InsertFactorLinkDoer extends ViewDoer
 		DiagramModel model = diagramView.getDiagramModel();
 
 		FromToDiagramFactorsHolder fromToFactorsHolder = getFromToDiagramFactors(diagramView);
+		if (fromToFactorsHolder == null)
+			return;
+		
 		DiagramFactor from = fromToFactorsHolder.getFrom();
 		DiagramFactor to = fromToFactorsHolder.getTo();
 		
@@ -73,10 +77,9 @@ public class InsertFactorLinkDoer extends ViewDoer
 	{
 		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
 		DiagramComponent diagram = diagramPanel.getdiagramComponent();
-		FactorCell fromCell = diagram.getSelectedFactor(0);
-		FactorCell toCell = diagram.getSelectedFactor(1);
-		if (fromCell != null && toCell != null)
-			return new FromToDiagramFactorsHolder(fromCell.getDiagramFactor(), toCell.getDiagramFactor());
+		FromToDiagramFactorsHolder fromToHolder = getFromToDiagramsForNonDiaglogCreation(diagram);
+		if (fromToHolder != null)
+			return fromToHolder;
 		
 		LinkCreateDialog dialog = new LinkCreateDialog(getMainWindow(), diagramPanel);
 		dialog.setVisible(true);
@@ -85,7 +88,31 @@ public class InsertFactorLinkDoer extends ViewDoer
 		
 		return new FromToDiagramFactorsHolder(dialog.getFrom(), dialog.getTo());
 	}
-	
+
+	private FromToDiagramFactorsHolder getFromToDiagramsForNonDiaglogCreation(DiagramComponent diagram)
+	{
+		if (diagram.getOnlySelectedFactorCells().length != 2)
+			return null;
+
+		FactorCell fromCell = diagram.getSelectedFactor(0);
+		FactorCell toCell = diagram.getSelectedFactor(1);
+		if (isInvalidType(fromCell))
+			return null;
+		
+		if (isInvalidType(toCell))
+			return null;
+		
+		return new FromToDiagramFactorsHolder(fromCell.getDiagramFactor(), toCell.getDiagramFactor());
+	}
+
+	private boolean isInvalidType(FactorCell cell)
+	{
+		if (cell == null)
+			return true;
+		
+		return cell.getWrappedType() == TextBox.getObjectType();
+	}
+
 	private class FromToDiagramFactorsHolder
 	{
 		public FromToDiagramFactorsHolder(DiagramFactor fromToUse, DiagramFactor toToUse)
