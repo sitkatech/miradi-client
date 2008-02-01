@@ -73,17 +73,27 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		int thisColumnCount = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
-			thisColumnCount += tables.get(i).getColumnCount();
+			ExportableTableInterface thisTable = tables.get(i);
+			thisColumnCount += thisTable.getColumnCount();
 			if (thisColumnCount <= column)
 			{
-				validIndex -= tables.get(i).getColumnCount();
+				validIndex -= thisTable.getColumnCount();
 				continue;
 			}
 						
-			return tables.get(i).getValueFor(row, validIndex);
+			return getValue(row, validIndex, thisTable);
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
+	}
+
+	private String getValue(int row, int validIndex, ExportableTableInterface thisTable)
+	{
+		Object value = thisTable.getValueAt(row, validIndex);
+		if (value == null)
+			return "";
+				
+		return value.toString();
 	}
 
 	public int getMaxDepthCount()
@@ -105,7 +115,7 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		return 0;
 	}
 
-	public String getValueFor(int row, int column)
+	public Object getValueAt(int row, int column)
 	{
 		return getTableForColumn(row, column);
 	}
