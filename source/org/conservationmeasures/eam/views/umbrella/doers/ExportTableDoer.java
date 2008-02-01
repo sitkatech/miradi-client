@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella.doers;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -63,14 +64,15 @@ public class ExportTableDoer extends ViewDoer
 			int rowCount = table.getRowCount();
 			
 			putHeaders(out, table, maxDepth);
-			
 			for (int row = 0; row < rowCount; ++row)
 			{
 				for (int column = 0; column < columnCount; ++column)
 				{
-					prePadWithTabs(out, column, table.getDepth(row));
+					pad(out, table.getDepth(row), column);
 					out.write(table.getValueFor(row, column) + "\t");
-					postPadWithTabs(out, column, table.getDepth(row), maxDepth);
+					
+					int postPadCount = maxDepth - table.getDepth(row);
+					pad(out, postPadCount, column);
 				}
 				
 				out.writeln();
@@ -85,11 +87,10 @@ public class ExportTableDoer extends ViewDoer
 	private void putHeaders(UnicodeWriter out, ExportableTableInterface table, int maxDepeth) throws Exception
 	{
 		int columnCount = table.getColumnCount();
-		
 		for (int column = 0; column < columnCount; ++column)
 		{
 			out.write(table.getHeaderFor(column) + "\t");
-			prePadWithTabs(out, column, maxDepeth);
+			pad(out, maxDepeth, column);
 		}
 		
 		out.writeln();
@@ -100,24 +101,12 @@ public class ExportTableDoer extends ViewDoer
 		return (column == 0);
 	}
 	
-	private void prePadWithTabs(UnicodeWriter out, int column, int depth) throws Exception
-	{	
-		if (!isTreeColumn(column))
-			return; 
-		
-		for (int depthCount = 0; depthCount < depth; ++depthCount)
-		{
-			out.write("\t");
-		}
-	}
-	
-	private void postPadWithTabs(UnicodeWriter out, int column, int depth, int maxDepth) throws Exception
+	private void pad(UnicodeWriter out, int padCount, int column) throws IOException
 	{
 		if (!isTreeColumn(column))
 			return; 
-
-		int postPadCount = maxDepth - depth;
-		for (int depthCount = 0; depthCount < postPadCount; ++depthCount)
+		
+		for (int i = 0; i < padCount; ++i)
 		{
 			out.write("\t");
 		}
