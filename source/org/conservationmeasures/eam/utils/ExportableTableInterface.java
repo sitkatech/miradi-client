@@ -12,4 +12,5 @@ public interface ExportableTableInterface
 	public int getColumnCount();
 	public int getRowCount();
 	public String getValueFor(int row, int column);
+	public String getHeaderFor(int column);
 }

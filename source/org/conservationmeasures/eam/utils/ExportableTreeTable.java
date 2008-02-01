@@ -51,5 +51,10 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		return value.toString();
 	}
 	
+	public String getHeaderFor(int column)
+	{
+		return getColumnName(column);
+	}
+	
 	private static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 2;
 }
