@@ -47,18 +47,18 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 	//need to refactor out common code
 	public String getHeaderFor(int column)
 	{
-		int validIndex = column;
+		int columnWithinTable = column;
 		int thisColumnCount = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
 			thisColumnCount += tables.get(i).getColumnCount();
 			if (thisColumnCount <= column)
 			{
-				validIndex -= tables.get(i).getColumnCount();
+				columnWithinTable -= tables.get(i).getColumnCount();
 				continue;
 			}
 						
-			return tables.get(i).getHeaderFor(validIndex);
+			return tables.get(i).getHeaderFor(columnWithinTable);
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
@@ -91,7 +91,7 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 
 	public Object getValueAt(int row, int column)
 	{
-		int validIndex = column;
+		int columnWithinTable = column;
 		int thisColumnCount = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
@@ -99,11 +99,11 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 			thisColumnCount += thisTable.getColumnCount();
 			if (thisColumnCount <= column)
 			{
-				validIndex -= thisTable.getColumnCount();
+				columnWithinTable -= thisTable.getColumnCount();
 				continue;
 			}
 						
-			return getValue(row, validIndex, thisTable);
+			return getValue(row, columnWithinTable, thisTable);
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
