@@ -43,27 +43,6 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		return tables.get(0).getDepth(row);
 	}
 
-	//FIXME the below 2 methods are almost identical.  
-	//need to refactor out common code
-	public String getHeaderFor(int column)
-	{
-		int columnWithinTable = column;
-		int thisColumnCount = 0;
-		for (int i = 0; i < tables.size(); ++i)
-		{
-			thisColumnCount += tables.get(i).getColumnCount();
-			if (thisColumnCount <= column)
-			{
-				columnWithinTable -= tables.get(i).getColumnCount();
-				continue;
-			}
-						
-			return tables.get(i).getHeaderFor(columnWithinTable);
-		}
-		
-		throw new RuntimeException("Error occurred while exporting table.");
-	}
-	
 	public int getMaxDepthCount()
 	{
 		if (tables.size() == 0)
@@ -80,7 +59,23 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		return 0;
 	}
 
+	public String getHeaderFor(int column)
+	{
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
+		return tableAndColumnHolder.getTable().getHeaderFor(tableAndColumnHolder.getColumn());
+	}
+	
 	public Object getValueAt(int row, int column)
+	{
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
+		Object value = tableAndColumnHolder.getTable().getValueAt(row, tableAndColumnHolder.getColumn());
+		if (value == null)
+			return "";
+				
+		return value.toString();
+	}
+
+	private TableAndColumnHolder getTableAndColumn(int column)
 	{
 		int columnWithinTable = column;
 		int thisColumnCount = 0;
@@ -93,16 +88,34 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 				columnWithinTable -= thisTable.getColumnCount();
 				continue;
 			}
-						
-			Object value = thisTable.getValueAt(row, columnWithinTable);
-			if (value == null)
-				return "";
-					
-			return value.toString();
+			
+			return new TableAndColumnHolder(thisTable, columnWithinTable);
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
 	}
 	
+	private class TableAndColumnHolder
+	{
+		public TableAndColumnHolder(ExportableTableInterface tableToUse, int columnToUse)
+		{
+			table = tableToUse;
+			column = columnToUse;
+		}
+		
+		public int getColumn()
+		{
+			return column;
+		}
+		
+		public ExportableTableInterface getTable()
+		{
+			return table;
+		}
+		
+		private ExportableTableInterface table;
+		private int column;
+	}
+		
 	private Vector<ExportableTableInterface> tables;
 }
