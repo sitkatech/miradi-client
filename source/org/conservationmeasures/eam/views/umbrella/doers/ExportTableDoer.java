@@ -61,6 +61,9 @@ public class ExportTableDoer extends ViewDoer
 			int maxDepth = table.getMaxDepthCount();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
+			
+			putHeaders(out, table, maxDepth);
+			
 			for (int row = 0; row < rowCount; ++row)
 			{
 				for (int column = 0; column < columnCount; ++column)
@@ -77,6 +80,19 @@ public class ExportTableDoer extends ViewDoer
 		{
 			out.close();
 		}
+	}
+
+	private void putHeaders(UnicodeWriter out, ExportableTableInterface table, int maxDepeth) throws Exception
+	{
+		int columnCount = table.getColumnCount();
+		
+		for (int column = 0; column < columnCount; ++column)
+		{
+			out.write(table.getHeaderFor(column) + "\t");
+			prePadWithTabs(out, column, maxDepeth);
+		}
+		
+		out.writeln();
 	}
 
 	private boolean isTreeColumn(int column)
