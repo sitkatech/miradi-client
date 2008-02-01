@@ -17,7 +17,7 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 
 	public int getDepth(int row)
 	{
-		return getTree().getPathForRow(row).getPath().length;
+		return getTree().getPathForRow(row).getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
 	}
 
 	public int getMaxDepthCount()
@@ -26,7 +26,7 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		int rowCount = getTree().getRowCount();
 		for (int row = 0; row < rowCount; ++row)
 		{
-			int rowDepth = getTree().getPathForRow(row).getPath().length;
+			int rowDepth = getTree().getPathForRow(row).getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
 			maxRowDepth = Math.max(maxRowDepth, rowDepth);
 		}
 		
@@ -50,4 +50,6 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		
 		return value.toString();
 	}
+	
+	private static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 2;
 }
