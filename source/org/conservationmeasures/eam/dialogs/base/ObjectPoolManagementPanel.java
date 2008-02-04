@@ -17,11 +17,5 @@ abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 		super(projectToUse, splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
-	public ObjectPoolManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
-	{
-		this(null, splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
-	}
-	
-	abstract public Icon getIcon();
-	
+	abstract public Icon getIcon();	
 }
