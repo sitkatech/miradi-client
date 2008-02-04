@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
@@ -50,6 +51,17 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 		AccountingCodePoolTable table = new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
+	}
+	
+	@Override
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Accounting Codes"); 
