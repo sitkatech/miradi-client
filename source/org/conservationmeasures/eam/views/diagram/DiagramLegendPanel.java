@@ -114,7 +114,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
 		{
-			addButtonLineWithoutCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
+			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 		}
 
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
@@ -182,7 +182,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		else if (property.equals(Indicator.OBJECT_NAME))
 			manager.setIndicatorsVisible(checkBox.isSelected());
 		else if (property.equals(SCOPE_BOX))
-			manager.setScopeBoxVisible(checkBox.isSelected());
+			manager.setScopeBoxVisible(checkBox.isSelected()); 
 		else if (property.equals(TextBox.OBJECT_NAME))
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
 		else if (property.equals(GroupBox.OBJECT_NAME))
