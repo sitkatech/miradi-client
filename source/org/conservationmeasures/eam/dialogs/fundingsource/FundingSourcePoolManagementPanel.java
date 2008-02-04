@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
@@ -50,6 +51,16 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 		FundingSourcePoolTable table = new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
+	}
+	
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 
