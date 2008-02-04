@@ -225,6 +225,13 @@ public class DiagramLink extends BaseObject
 		if (getUnderlyingLink() != null)
 			return getUnderlyingLink().isTargetLink();
 		
+		FactorLink[] factorLinkChildren = getSelfOrGroupBoxUnderlyingChildren();
+		for (int i = 0; i < factorLinkChildren.length; ++i)
+		{
+			if (factorLinkChildren[i].isTargetLink())
+				return true;
+		}
+		
 		return false;
 	}
 	
@@ -322,11 +329,37 @@ public class DiagramLink extends BaseObject
 	
 	public String[] getRelevantStressNames()
 	{
-		Vector<String> stressNames = new Vector();
-		if (getUnderlyingLink() == null)
-			return new String[0];
+		Vector<String> allStressNames = new Vector();
+		FactorLink[] factorLinks = getSelfOrGroupBoxUnderlyingChildren();
+		for (int i = 0; i < factorLinks.length; ++i)
+		{
+			allStressNames.addAll(getStressNames(factorLinks[i]));
+		}
 		
-		ORefList threatStressRatingRefs = getUnderlyingLink().getThreatStressRatingRefs();
+		return allStressNames.toArray(new String[0]);
+	}
+
+	private FactorLink[] getSelfOrGroupBoxUnderlyingChildren()
+	{
+		if (getUnderlyingLink() != null)
+			return new FactorLink[] {getUnderlyingLink()};
+		
+		Vector<FactorLink> allChildrenFactorLinks = new Vector();
+		ORefList childLinkRefs = getGroupedDiagramLinkRefs();
+		for (int i = 0; i < childLinkRefs.size(); ++i)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), childLinkRefs.get(i));
+			allChildrenFactorLinks.add(diagramLink.getUnderlyingLink());
+		}
+		
+		return allChildrenFactorLinks.toArray(new FactorLink[0]);
+	}
+
+	private Vector<String> getStressNames(FactorLink factorLink)
+	{
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+	
+		Vector<String> stressNames = new Vector();
 		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
@@ -334,7 +367,8 @@ public class DiagramLink extends BaseObject
 			if (threatStressRating.isActive())
 				stressNames.add(stress.toString());
 		}
-		return stressNames.toArray(new String[0]);
+		
+		return stressNames;
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
