@@ -42,11 +42,16 @@ public class LayerManager
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
-		if (isResultsChain(diagramObject) && isDraft)
+		if (isDraft)
+		{
+			if (isResultsChain(diagramObject))
+				return false;
+
+			if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+				return areDraftsVisible(node);
+			
 			return false;
-		
-		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
-			return false;
+		}
 		
 		if(node.isContributingFactor())
 			return areContributingFactorsVisible();
@@ -60,8 +65,6 @@ public class LayerManager
 		if (node.isThreatRedectionResult())
 			return areThreatReductionResultsVisible();
 
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM) && isDraft)
-			return areDraftStrategiesVisible();
 
 		if(isTypeVisible(node.getClass()))
 			return true;
@@ -175,6 +178,14 @@ public class LayerManager
 		return groupBoxesVisibleFlag;
 	}
 	
+	public boolean areDraftsVisible(FactorCell node)
+	{
+		if (!node.isStrategy())
+			throw new RuntimeException("Unexpected non strategy draft");
+		
+		return areDraftStrategiesVisible();
+	}
+
 	public boolean areDraftStrategiesVisible()
 	{
 		return draftStrategyVisibleFlag;
