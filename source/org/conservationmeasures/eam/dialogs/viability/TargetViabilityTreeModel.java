@@ -29,7 +29,7 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 	//FIXME this is to ajust for the missing column in each node.  
 	private int getAdjustedColumn(int column)
 	{
-		if (column > 1)
+		if (column >= 1)
 			return column + 1;
 		
 		return column;
