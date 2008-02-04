@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.icons.TeamIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
@@ -52,6 +53,15 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return image;
 	}
 	
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return new TeamPoolTable(new TeamPoolTableModel(getProject()));
+	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
 }

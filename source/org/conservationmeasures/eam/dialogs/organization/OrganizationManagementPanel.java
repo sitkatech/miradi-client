@@ -13,13 +13,14 @@ import org.conservationmeasures.eam.icons.OrganizationIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
 	public OrganizationManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
 	{
-		super(splitPositionSaverToUse, new OrganizationPoolTablePanel(projectToUse, actionsToUse),
+		super(projectToUse, splitPositionSaverToUse, new OrganizationPoolTablePanel(projectToUse, actionsToUse),
 				new OrganizationPropertiesPanel(projectToUse, BaseId.INVALID));
 
 	}
@@ -32,6 +33,16 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	public Icon getIcon()
 	{
 		return new OrganizationIcon();
+	}
+	
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return new OrganizationPoolTable(new OrganizationPoolTableModel(getProject()));
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
