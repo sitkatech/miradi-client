@@ -33,6 +33,7 @@ public class LayerManager
 		threatReductionResultFlag = true;
 		textBoxesVisibleFlag = true;
 		groupBoxesVisibleFlag = true;
+		draftStrategyVisibleFlag = true;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObject, FactorCell node)
@@ -58,11 +59,11 @@ public class LayerManager
 		
 		if (node.isThreatRedectionResult())
 			return areThreatReductionResultsVisible();
-		
-		if(isTypeVisible(node.getClass()))
-			return true;
-		
+
 		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM) && isDraft)
+			return areDraftStrategiesVisible();
+
+		if(isTypeVisible(node.getClass()))
 			return true;
 		
 		return false;
@@ -174,6 +175,16 @@ public class LayerManager
 		return groupBoxesVisibleFlag;
 	}
 	
+	public boolean areDraftStrategiesVisible()
+	{
+		return draftStrategyVisibleFlag;
+	}
+	
+	public void setDraftStrategiesVisible(boolean newSetting)
+	{
+		draftStrategyVisibleFlag = newSetting;
+	}
+
 	public boolean areIndicatorsVisible()
 	{
 		return indicatorsVisibleFlag;
@@ -240,4 +251,5 @@ public class LayerManager
 	boolean threatReductionResultFlag;
 	boolean textBoxesVisibleFlag;
 	boolean groupBoxesVisibleFlag;
+	boolean draftStrategyVisibleFlag;
 }

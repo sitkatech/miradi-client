@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -36,6 +37,9 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 		else if (property.equals(Cause.OBJECT_NAME_THREAT))
 			manager.setDirectThreatsVisible(checkBox.isSelected());
 		
+		else if (property.equals(Strategy.OBJECT_NAME_DRAFT))
+			manager.setDraftStrategiesVisible(checkBox.isSelected());
+		
 		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 	}
 	
@@ -50,5 +54,8 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	
 		else if (property.equals(Cause.OBJECT_NAME_THREAT))
 			checkBox.setSelected(manager.areDirectThreatsVisible());
+		
+		if (property.equals(Strategy.OBJECT_NAME_DRAFT))
+			checkBox.setSelected(manager.areDraftStrategiesVisible());
 	}
 }
