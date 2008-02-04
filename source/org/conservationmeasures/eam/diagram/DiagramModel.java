@@ -437,6 +437,23 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
+	public Point recursivelyGetNonOverlappingFactorPoint(Point pointToUse)
+	{
+		Point point = (Point) pointToUse.clone();
+		DiagramFactor[] allDiagramFactors = getAllDiagramFactorsAsArray();
+		for (int i = 0; i < allDiagramFactors.length; ++i)
+		{
+			Point thisLocation = allDiagramFactors[i].getLocation();
+			if (thisLocation.equals(point))
+			{
+				point.translate(getProject().getGridSize(), getProject().getGridSize());
+				return recursivelyGetNonOverlappingFactorPoint(point);
+			}
+		}
+		
+		return pointToUse;
+	}
+		
 	public int getFactorCount()
 	{
 		return getAllFactorCells().size();
