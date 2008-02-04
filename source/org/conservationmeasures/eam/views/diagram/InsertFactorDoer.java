@@ -122,9 +122,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCell[] selectedNodes = getSelectedFactorCells();
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize(factorType).width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
+		Point ensuredNonOverlappintPoint = getDiagramModel().recursivelyGetNonOverlappingFactorPoint(snappedPoint);
 		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramModel());
-		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, snappedPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
+		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, ensuredNonOverlappintPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
 		ORef newDiagramFactorRef =  createCommand.getObjectRef();
 				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(newDiagramFactorRef);

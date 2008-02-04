@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -46,6 +48,24 @@ public class TestDiagramModel extends EAMTestCase
 		project = null;
 
 		super.tearDown();
+	}
+	
+	public void testRecursivelyGetNonOverlappingFactorPoint() throws Exception
+	{
+		DiagramFactor cause1 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		Point point1 = new Point(15, 15);
+		cause1.setLocation(point1);
+		
+		DiagramFactor cause2 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		Point point2 = new Point(30, 30);
+		cause2.setLocation(point2);
+		
+		DiagramFactor cause3 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		Point point3 = new Point(60, 60);
+		cause3.setLocation(point3);
+		
+		Point nonOverlappingPoint = model.recursivelyGetNonOverlappingFactorPoint(point1);
+		assertEquals("wrong point?", new Point(45, 45), nonOverlappingPoint);
 	}
 	
 	public void testGetNodesInChain() throws Exception
