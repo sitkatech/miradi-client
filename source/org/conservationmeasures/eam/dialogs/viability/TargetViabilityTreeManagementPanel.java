@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
+import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 
 public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
@@ -95,6 +96,20 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 		treeTable.restoreTreeState();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(treeTable);
 		return image;
+	}
+	
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getProject(), model);
+		treeTable.restoreTreeState();
+		
+		return treeTable;
 	}
 	
 	public Class getJumpActionClass()
