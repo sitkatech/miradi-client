@@ -225,10 +225,10 @@ public class DiagramLink extends BaseObject
 		if (getUnderlyingLink() != null)
 			return getUnderlyingLink().isTargetLink();
 		
-		FactorLink[] factorLinkChildren = getSelfOrGroupBoxUnderlyingChildren();
+		DiagramLink[] factorLinkChildren = getSelfOrGroupBoxChildren();
 		for (int i = 0; i < factorLinkChildren.length; ++i)
 		{
-			if (factorLinkChildren[i].isTargetLink())
+			if (factorLinkChildren[i].getUnderlyingLink().isTargetLink())
 				return true;
 		}
 		
@@ -330,29 +330,29 @@ public class DiagramLink extends BaseObject
 	public String[] getRelevantStressNames()
 	{
 		Vector<String> allStressNames = new Vector();
-		FactorLink[] factorLinks = getSelfOrGroupBoxUnderlyingChildren();
-		for (int i = 0; i < factorLinks.length; ++i)
+		DiagramLink[] diagramLinks = getSelfOrGroupBoxChildren();
+		for (int i = 0; i < diagramLinks.length; ++i)
 		{
-			allStressNames.addAll(getStressNames(factorLinks[i]));
+			allStressNames.addAll(getStressNames(diagramLinks[i].getUnderlyingLink()));
 		}
 		
 		return allStressNames.toArray(new String[0]);
 	}
 
-	private FactorLink[] getSelfOrGroupBoxUnderlyingChildren()
+	private DiagramLink[] getSelfOrGroupBoxChildren()
 	{
 		if (getUnderlyingLink() != null)
-			return new FactorLink[] {getUnderlyingLink()};
+			return new DiagramLink[] {this};
 		
-		Vector<FactorLink> allChildrenFactorLinks = new Vector();
+		Vector<DiagramLink> allChildrenFactorLinks = new Vector();
 		ORefList childLinkRefs = getGroupedDiagramLinkRefs();
 		for (int i = 0; i < childLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), childLinkRefs.get(i));
-			allChildrenFactorLinks.add(diagramLink.getUnderlyingLink());
+			allChildrenFactorLinks.add(diagramLink);
 		}
 		
-		return allChildrenFactorLinks.toArray(new FactorLink[0]);
+		return allChildrenFactorLinks.toArray(new DiagramLink[0]);
 	}
 
 	private Vector<String> getStressNames(FactorLink factorLink)
