@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
@@ -48,11 +49,11 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public BufferedImage getImage()
 	{
-		AccountingCodePoolTable table = new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
+		AccountingCodePoolTable table = getTabTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
-	
+
 	@Override
 	public boolean isExportableTableAvailable()
 	{
@@ -61,7 +62,24 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
+		return getTabTable();
+	}
+	
+	private AccountingCodePoolTable getTabTable()
+	{
 		return new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
+	}
+	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTabTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Accounting Codes"); 
