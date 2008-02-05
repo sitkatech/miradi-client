@@ -51,7 +51,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public BufferedImage getImage()
 	{
-		ResourcePoolTable table = getTabTable();
+		ResourcePoolTable table = createTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
@@ -65,10 +65,10 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 
-	private ResourcePoolTable getTabTable()
+	private ResourcePoolTable createTable()
 	{
 		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
 	}
@@ -82,7 +82,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Resources"); 

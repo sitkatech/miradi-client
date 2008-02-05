@@ -49,7 +49,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public BufferedImage getImage()
 	{
-		AccountingCodePoolTable table = getTabTable();
+		AccountingCodePoolTable table = createTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
@@ -62,10 +62,10 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 	
-	private AccountingCodePoolTable getTabTable()
+	private AccountingCodePoolTable createTable()
 	{
 		return new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
 	}
@@ -79,7 +79,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Accounting Codes"); 
