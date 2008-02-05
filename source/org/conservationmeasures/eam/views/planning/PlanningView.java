@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -25,6 +26,7 @@ import org.conservationmeasures.eam.actions.ActionDeletePlanningViewConfiguratio
 import org.conservationmeasures.eam.actions.ActionDeletePlanningViewTreeNode;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
+import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionRenamePlanningViewConfiguration;
 import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
@@ -54,6 +56,7 @@ import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.diagram.Print;
 import org.conservationmeasures.eam.views.planning.doers.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreateAccountingCodeDoer;
 import org.conservationmeasures.eam.views.planning.doers.CreateFundingSourceDoer;
@@ -112,6 +115,11 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 	
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return planningManagementPanel.getTabContentsComponent();
+	}
+	
 	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
 	{
 		public MainPlanningPanel(FastScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
@@ -156,6 +164,11 @@ public class PlanningView extends TabbedView
 		public boolean isExportableTableAvailable()
 		{
 			return planningManagementPanel.isExportableTableAvailable();
+		}
+		
+		public JComponent getTabContentsComponent() throws Exception
+		{
+			return planningManagementPanel.getTabContentsComponent();
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;
@@ -218,7 +231,8 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
-		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());		
+		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
+		addDoerToMap(ActionPrint.class, new Print());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)

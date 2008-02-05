@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
@@ -78,6 +79,11 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return dataPanel.isImageAvailable();
 	}
 	
-	AbstractObjectDataInputPanel dataPanel;
+	public JComponent getTabContentsComponent() throws Exception
+	{
+		return dataPanel.getTabContentsComponent();
+	}
+	
+	private AbstractObjectDataInputPanel dataPanel;
 
 }

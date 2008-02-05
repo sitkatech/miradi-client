@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.dialogs.planning;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.dialogs.base.ObjectListManagementPanel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -36,13 +38,13 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
+		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getTabContentsComponent();
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);
 		
 		panel.dispose();
 		return image;
 	}
-	
+
 	@Override
 	public boolean isExportableTableAvailable()
 	{
@@ -51,11 +53,17 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
+		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getTabContentsComponent();
 		ExportableTableInterface table = panel.getTableForExporting();
 		panel.dispose();
 		
 		return table;
+	}
+
+	@Override
+	public JComponent getTabContentsComponent() throws Exception
+	{
+		return PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");

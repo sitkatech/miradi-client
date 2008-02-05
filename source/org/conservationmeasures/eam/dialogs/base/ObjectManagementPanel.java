@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -93,6 +94,11 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	}
 	
 	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return null;
+	}
+	
+	public JComponent getTabContentsComponent() throws Exception
 	{
 		return null;
 	}
