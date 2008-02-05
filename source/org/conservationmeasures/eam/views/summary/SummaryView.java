@@ -70,7 +70,6 @@ public class SummaryView extends TabbedView
 		ProjectMetadata metadata = getProject().getMetadata();
 		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
-		wcssSummaryPanel =new WCSSummaryPanel(getProject()); 
 		
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
@@ -89,7 +88,7 @@ public class SummaryView extends TabbedView
 		addScrollingTab(summaryPlanningPanel);
 		addScrollingTab(tncSummaryPanel);
 		addScrollingTab(wwfSummaryPanel);
-		addScrollingTab(wcssSummaryPanel);
+		addScrollingTab(createMemberOrgTabPanel("WCSPanel.html", new WCSSummaryPanel(getProject())));
 		addScrollingTab(createMemberOrgTabPanel("RAREPanel.html", new RARESummaryPanel(getProject())));
 		addScrollingTab(createMemberOrgTabPanel("FOSPanel.html", new FOSSummaryPanel(getProject())));
 		addScrollingTab(summaryOtherOrgPanel);
@@ -111,7 +110,6 @@ public class SummaryView extends TabbedView
 		
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
-		wcssSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
@@ -164,7 +162,6 @@ public class SummaryView extends TabbedView
 	private TNCSummaryPanel tncSummaryPanel;
 
 	private WWFSummaryPanel wwfSummaryPanel;
-	private WCSSummaryPanel wcssSummaryPanel; 
 	
 	private SummaryProjectPanel summaryProjectPanel;
 	private SummaryScopePanel summaryScopePanel;
