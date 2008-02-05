@@ -77,7 +77,6 @@ import org.conservationmeasures.eam.actions.ActionNudgeRight;
 import org.conservationmeasures.eam.actions.ActionNudgeUp;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
-import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
@@ -276,7 +275,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionPasteWithoutLinks.class, new PasteWithoutLinks());
 		addDoerToMap(ActionSelectChain.class, new SelectChainDoer());
 		addDoerToMap(ActionProperties.class, propertiesDoer);
-		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionShowSelectedChainMode.class, new ShowSelectedChainModeDoer());
 		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());

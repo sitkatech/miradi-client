@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectManagementPanel;
@@ -48,7 +49,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public BufferedImage getImage()
 	{
-		TeamPoolTable table = new TeamPoolTable(new TeamPoolTableModel(getProject()));
+		TeamPoolTable table = getTabTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
@@ -60,7 +61,24 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
+		return getTabTable();
+	}
+
+	private TeamPoolTable getTabTable()
+	{
 		return new TeamPoolTable(new TeamPoolTableModel(getProject()));
+	}
+	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTabTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");

@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.actions.ActionHelpCredits;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionPreferences;
+import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
@@ -142,6 +143,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ExportableTableInterface;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
+import org.conservationmeasures.eam.views.diagram.Print;
 import org.conservationmeasures.eam.views.diagram.doers.CreateIndicatortProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStrategytProgressReportDoer;
 import org.conservationmeasures.eam.views.diagram.doers.DeleteIndicatorProgressReportDoer;
@@ -327,6 +329,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		addDoerToMap(ActionViewReport.class, new SwitchToReportViewDoer());
+		
+		addDoerToMap(ActionPrint.class, new Print());
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());
