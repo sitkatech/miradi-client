@@ -47,8 +47,10 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
+import org.conservationmeasures.eam.resources.ResourcesHandler;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
+import org.conservationmeasures.eam.utils.DefaultHyperlinkHandler;
 import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
@@ -71,6 +73,7 @@ import org.conservationmeasures.eam.wizard.SkeletonWizardStep;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 import org.conservationmeasures.eam.wizard.WizardTitlePanel;
+import org.martus.swing.HyperlinkHandler;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 import org.martus.util.Stopwatch;
@@ -92,6 +95,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager(this);
 		actions = new Actions(this);
+		hyperlinkHandler = new DefaultHyperlinkHandler(this, ResourcesHandler.class);
 	}
 	
 	public void start(String[] args) throws Exception
@@ -249,6 +253,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		File appPreferencesFile = new File(EAM.getHomeDirectory(), APP_PREFERENCES_FILENAME);
 		return appPreferencesFile;
+	}
+
+	public HyperlinkHandler getHyperlinkHandler()
+	{
+		return hyperlinkHandler;
 	}
 
 	private JComponent createCenteredView(JComponent viewToCenter)
@@ -885,6 +894,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	protected Actions actions;
 	private AppPreferences preferences;
 	private Project project;
+	private HyperlinkHandler hyperlinkHandler;
 	
 	private NoProjectView noProjectView;
 	private UmbrellaView summaryView;
@@ -915,4 +925,5 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private int preventActionUpdatesCount;
 	
 	private boolean hasMemoryWarningBeenShown;
+
 }
