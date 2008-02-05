@@ -155,13 +155,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
 
-		if(!Arrays.asList(args).contains("--nosplash"))
-		{
-			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
-			aboutDoer.setMainWindow(this);
-			aboutDoer.doIt();
-		}
-		
 		displayExpirationNoticeIfAppropriate();
 		
 		setVisible(true);
@@ -173,6 +166,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
 			setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
+		}
+		
+		if(!Arrays.asList(args).contains("--nosplash"))
+		{
+			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
+			aboutDoer.setMainWindow(this);
+			aboutDoer.doIt();
 		}
 	}
 	
