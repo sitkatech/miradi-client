@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.wizard.noproject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Vector;
 
@@ -86,6 +87,8 @@ public class FileSystemTreeNode extends TreeTableNode
 			if(file.isDirectory() && !isCustomReportDirectory(file))
 				children.add(new FileSystemTreeNode(file));
 		}
+		
+		Collections.sort(children);
 	}
 
 	private boolean isCustomReportDirectory(File file)
@@ -108,6 +111,22 @@ public class FileSystemTreeNode extends TreeTableNode
 		return thisFile;
 	}
 
+	@Override
+	public int compareTo(Object rawOther)
+	{
+		if (!(rawOther instanceof FileSystemTreeNode))
+			return 0;
+		
+		FileSystemTreeNode other = (FileSystemTreeNode) rawOther;
+		if (!other.isProjectDirectory() && isProjectDirectory())
+				return 1;
+		
+		if (other.isProjectDirectory() && !isProjectDirectory())
+			return -1;
+		
+		return toString().compareToIgnoreCase(other.toString());
+	}
+	
 	private File thisFile;
 	private Vector<FileSystemTreeNode> children;
 }
