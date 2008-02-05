@@ -512,10 +512,6 @@ public class DiagramModel extends DefaultGraphModel
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
 		boolean isVisible = shouldFactorCellBeVisible(manager, factorCell);
 
-		// NOTE: if you set something visible that is already visible, jgraph selects it
-		if(isVisible == getGraphLayoutCache().isVisible(factorCell))
-			return;
-		
 		getGraphLayoutCache().setVisible(factorCell, isVisible);
 		
 	}
@@ -544,9 +540,6 @@ public class DiagramModel extends DefaultGraphModel
 		if(!shouldFactorCellBeVisible(manager, linkCell.getTo()))
 			isLinkVisible = false;
 		
-		// NOTE: if you set something visible that is already visible, jgraph selects it
-		if(isLinkVisible == getGraphLayoutCache().isVisible(linkCell))
-			return;
 		getGraphLayoutCache().setVisible(linkCell, isLinkVisible);
 	}
 

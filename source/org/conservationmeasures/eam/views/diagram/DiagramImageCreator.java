@@ -36,6 +36,14 @@ public class DiagramImageCreator
 	{
 		DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
 		comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
+		
+		// TODO: This is here because setting a factor/link to be visible also has
+		// the side effect of selecting it, so the last item added is selected but 
+		// shouldn't be. So our quick fix is to clear the selection. 
+		// Cleaner fixes ran into strange problems where Windows and Linux systems
+		// behaved differently. SEE ALSO DiagramSplitPane.showCard()
+		comp.clearSelection();
+		
 		//TODO: is there a better way to do this
 		JFrame frame = new JFrame();
 		frame.add(new UiScrollPane(comp));
