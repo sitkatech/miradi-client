@@ -34,6 +34,8 @@ public class CodeListComponent extends AbstractListComponent
 				codes.add(choiceItem.getCode());
 			}
 		}
+		setSameToolTipForAllCheckBoxes();
+		
 		return codes.toString();
 	}
 	
@@ -51,6 +53,8 @@ public class CodeListComponent extends AbstractListComponent
 				boolean isChecked  = codes.contains(choiceItem.getCode());
 				checkBoxes[choiceIndex].setSelected(isChecked);
 			}
+			
+			setSameToolTipForAllCheckBoxes();
 		}
 		catch(Exception e)
 		{
@@ -63,6 +67,26 @@ public class CodeListComponent extends AbstractListComponent
 		}
 	}
 	
+	private void setSameToolTipForAllCheckBoxes()
+	{
+		String partialToolTip = ""; 
+		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && choiceIndex < 6); ++choiceIndex)
+		{
+			ChoiceItem choiceItem = choiceItems[choiceIndex];
+			if (checkBoxes[choiceIndex].isSelected())
+				partialToolTip += choiceItem.getLabel() + "<BR>";
+		}
+		
+		if (partialToolTip.length()== 0 )
+			return;
+		
+		String toolTip = ("<HTML>" + partialToolTip + "...more</HTML>");
+		for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
+		{
+			checkBoxes[choiceIndex].setToolTipText(toolTip);
+		}
+	}
+
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
