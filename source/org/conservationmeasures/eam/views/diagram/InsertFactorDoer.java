@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.objects.GroupBox;
 import org.conservationmeasures.eam.objects.TextBox;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
@@ -224,11 +223,14 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (! containsLikableType(nodesToLinkTo))
 			return;
 		
+		LinkCreator linkCreator = new LinkCreator(getProject());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
-			DiagramFactor toDiagramFactor = nodesToLinkTo[i].getDiagramFactor();
-			LinkCreator linkCreator = new LinkCreator(getProject());
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), newlyInserted, toDiagramFactor);
+			DiagramFactor to = nodesToLinkTo[i].getDiagramFactor();
+			if (!newlyInserted.isGroupBoxFactor() && !to.isGroupBoxFactor())
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), newlyInserted, to);
+			else
+				linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), newlyInserted, to);
 		}
 	}
 
@@ -245,9 +247,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private boolean linkableType(int type)
 	{
 		if (type == TextBox.getObjectType())
-			return false;
-		
-		if (type == GroupBox.getObjectType())
 			return false;
 		
 		return true; 
