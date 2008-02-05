@@ -51,10 +51,10 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public BufferedImage getImage()
 	{
-		return BufferedImageFactory.createImageFromTable(getTabTable());
+		return BufferedImageFactory.createImageFromTable(createTable());
 	}
 
-	private FundingSourcePoolTable getTabTable()
+	private FundingSourcePoolTable createTable()
 	{
 		return new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
 	}
@@ -68,7 +68,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 	
 	@Override
@@ -80,7 +80,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 

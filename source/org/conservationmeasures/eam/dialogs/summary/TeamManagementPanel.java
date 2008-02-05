@@ -49,7 +49,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public BufferedImage getImage()
 	{
-		TeamPoolTable table = getTabTable();
+		TeamPoolTable table = createTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
@@ -61,10 +61,10 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 
-	private TeamPoolTable getTabTable()
+	private TeamPoolTable createTable()
 	{
 		return new TeamPoolTable(new TeamPoolTableModel(getProject()));
 	}
@@ -78,7 +78,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");

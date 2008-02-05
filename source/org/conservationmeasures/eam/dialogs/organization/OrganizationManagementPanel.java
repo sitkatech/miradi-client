@@ -43,10 +43,10 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 
-	private OrganizationPoolTable getTabTable()
+	private OrganizationPoolTable createTable()
 	{
 		return new OrganizationPoolTable(new OrganizationPoolTableModel(getProject()));
 	}
@@ -60,7 +60,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTabTable();
+		return createTable();
 	}
 		
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
