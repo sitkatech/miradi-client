@@ -171,6 +171,11 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getPrintableComponent();
 		}
 		
+		public boolean isPrintable()
+		{
+			return true;
+		}
+		
 		private PlanningTreeManagementPanel planningManagementPanel;
 	}
 

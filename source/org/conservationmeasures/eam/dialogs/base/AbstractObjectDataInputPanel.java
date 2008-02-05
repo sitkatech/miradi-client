@@ -177,6 +177,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return null;
 	}
+	
+	public boolean isPrintable()
+	{
+		return false;
+	}
 
 	public void setFocusOnFirstField()
 	{
