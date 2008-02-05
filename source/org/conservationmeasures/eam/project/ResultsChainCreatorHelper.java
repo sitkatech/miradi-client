@@ -224,7 +224,10 @@ public class ResultsChainCreatorHelper
 
 	private DiagramFactor[] getSelectedAndRelatedDiagramFactors()
 	{
-		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		if (diagramPanel.getdiagramComponent() == null)
+			return new DiagramFactor[0];
+		
+		FactorCell[] selectedFactorCells = getSelectedCells();
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getRelatedDiagramFactors(selectedFactorCells);
 			
@@ -271,11 +274,19 @@ public class ResultsChainCreatorHelper
 
 	private DiagramLink[] getDiagramLinksInChain() throws Exception
 	{
-		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		FactorCell[] selectedFactorCells = getSelectedCells();
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getLinksInRelatedFactors(selectedFactorCells);
 
 		return getDiagramLinksInSelection();
+	}
+
+	private FactorCell[] getSelectedCells()
+	{
+		if (diagramPanel.getdiagramComponent() == null)
+			return new FactorCell[0];
+		
+		return diagramPanel.getOnlySelectedFactorCells();
 	}
 	
 	private DiagramLink[] getDiagramLinksInSelection()
@@ -297,7 +308,7 @@ public class ResultsChainCreatorHelper
 	private HashSet extractDiagramFactorIds()
 	{
 		HashSet selectedDiagramFactorSet = new HashSet();
-		FactorCell[] selectedFactorCells = diagramPanel.getOnlySelectedFactorCells();
+		FactorCell[] selectedFactorCells = getSelectedCells();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
 			selectedDiagramFactorSet.add(selectedFactorCells[i].getDiagramFactorId());
