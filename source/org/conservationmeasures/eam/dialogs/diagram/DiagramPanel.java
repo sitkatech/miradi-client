@@ -163,7 +163,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	}
 	
 	
-	public Component getComponent()
+	public Component getTabContentsComponent()
 	{
 		return this;
 	}
@@ -175,7 +175,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 
 	public boolean isImageAvailable()
 	{
-		return getComponent() != null;
+		return getTabContentsComponent() != null;
 	}
 
 	public ExportableTableInterface getExportableTable()

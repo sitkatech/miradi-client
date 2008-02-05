@@ -17,7 +17,7 @@ public interface MiradiTabContentsPanelInterface
 {
 	public String getTabName();
 	public Icon getIcon();
-	public Component getComponent();
+	public Component getTabContentsComponent();
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();

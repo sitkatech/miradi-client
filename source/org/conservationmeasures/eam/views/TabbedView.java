@@ -127,12 +127,12 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void addScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
-		addTab(contents, new FastScrollPane(contents.getComponent()));
+		addTab(contents, new FastScrollPane(contents.getTabContentsComponent()));
 	}
 
 	public void addNonScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
-		addTab(contents, contents.getComponent());
+		addTab(contents, contents.getTabContentsComponent());
 	}
 	
 	private void addTab(MiradiTabContentsPanelInterface contents, Component tabComponent)
@@ -237,7 +237,7 @@ abstract public class TabbedView extends UmbrellaView
 		if(panel == null)
 			return null;
 		
-		return (JComponent) panel.getComponent();
+		return (JComponent) panel.getTabContentsComponent();
 	}
 
 

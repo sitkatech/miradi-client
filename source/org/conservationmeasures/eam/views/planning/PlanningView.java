@@ -141,7 +141,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getIcon();
 		}
 
-		public Component getComponent()
+		public Component getTabContentsComponent()
 		{
 			return this;
 		}

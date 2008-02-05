@@ -44,7 +44,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		dataPanel.dispose();
 	}
 	
-	public Component getComponent()
+	public Component getTabContentsComponent()
 	{
 		return this;
 	}
