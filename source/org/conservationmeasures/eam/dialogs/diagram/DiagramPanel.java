@@ -192,6 +192,11 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	{
 		return null;
 	}
+	
+	public boolean isPrintable()
+	{
+		return true;
+	}
 
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	

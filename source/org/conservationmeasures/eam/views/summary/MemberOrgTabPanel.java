@@ -84,6 +84,11 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return dataPanel.getPrintableComponent();
 	}
 	
+	public boolean isPrintable()
+	{
+		return dataPanel.isPrintable();
+	}
+	
 	private AbstractObjectDataInputPanel dataPanel;
 
 }

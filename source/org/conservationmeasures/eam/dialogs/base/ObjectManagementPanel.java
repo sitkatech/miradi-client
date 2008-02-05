@@ -103,6 +103,11 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return null;
 	}
 	
+	public boolean isPrintable()
+	{
+		return false;
+	}
+	
 	private Project project;
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
