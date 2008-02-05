@@ -21,6 +21,7 @@ import javax.swing.table.TableCellRenderer;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.conservationmeasures.eam.dialogs.tablerenderers.CodeListRenderer;
 import org.conservationmeasures.eam.dialogs.tablerenderers.DefaultFontProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.conservationmeasures.eam.dialogs.tablerenderers.TableCellRendererForObjects;
@@ -54,14 +55,23 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		DefaultFontProvider fontProvider = new DefaultFontProvider();
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
+		codeListRenderer = new CodeListRenderer(this, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
-			return statusQuestionRenderer;
+		if (getObjectTableModel().isCodeListColumn(modelColumn))
+		{
+			codeListRenderer.setQuestion(getObjectTableModel().getColumnQuestion(tableColumn));
+			return codeListRenderer;
+		}
 		
+		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
+		{
+			return statusQuestionRenderer;
+		}
+	
 		return otherRenderer;
 	}
 	
@@ -288,4 +298,5 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	private int currentSortColumn;
 	private ChoiceItemTableCellRenderer statusQuestionRenderer;
 	private BasicTableCellRenderer otherRenderer;
+	private CodeListRenderer codeListRenderer;
 }

@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 
 abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
@@ -86,6 +87,9 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		{
 			ORef rowObjectRef = getRowObjectRefs().get(row);
 			String valueToDisplay = getValueToDisplay(rowObjectRef, getColumnTag(column));
+			if (isCodeListColumn(column))
+				return new CodeList(valueToDisplay);
+
 			if (isChoiceItemColumn(column))
 				return getChoiceItem(column, valueToDisplay);
 			
@@ -177,6 +181,11 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		return null;
+	}
+	
+	public boolean isCodeListColumn(int column)
+	{
+		return false;
 	}
 	
 	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
