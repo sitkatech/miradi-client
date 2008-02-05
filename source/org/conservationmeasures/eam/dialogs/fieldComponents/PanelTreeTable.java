@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.dialogs.fieldComponents;
 
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JTable;
 import javax.swing.event.TableColumnModelEvent;
@@ -122,7 +122,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 			super.columnMoved(event);
 	}
 	
-	public static class MouseMoveTreeColumnPreventerHandler extends MouseAdapter
+	public static class MouseMoveTreeColumnPreventerHandler implements MouseMotionListener
 	{
 		public void mouseMoved(MouseEvent e)
 		{
@@ -132,6 +132,10 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 			int modelColumn = table.convertColumnIndexToModel(tableColumnAtPoint);
 			boolean isTreeColumn =  modelColumn == TREE_COLUMN_INDEX;
 			header.setReorderingAllowed(!isTreeColumn);
+		}
+
+		public void mouseDragged(MouseEvent e)
+		{
 		}
 	}
 	
