@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
@@ -50,7 +51,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public BufferedImage getImage()
 	{
-		ResourcePoolTable table = new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
+		ResourcePoolTable table = getTabTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
 		return image;
 	}
@@ -64,7 +65,24 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
+		return getTabTable();
+	}
+
+	private ResourcePoolTable getTabTable()
+	{
 		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
+	}
+	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTabTable();
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Resources"); 
