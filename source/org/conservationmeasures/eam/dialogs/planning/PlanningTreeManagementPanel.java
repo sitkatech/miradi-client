@@ -38,7 +38,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getTabContentsComponent();
+		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getPrintableComponent();
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);
 		
 		panel.dispose();
@@ -53,7 +53,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getTabContentsComponent();
+		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getPrintableComponent();
 		ExportableTableInterface table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -61,7 +61,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	}
 
 	@Override
-	public JComponent getTabContentsComponent() throws Exception
+	public JComponent getPrintableComponent() throws Exception
 	{
 		return PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
 	}

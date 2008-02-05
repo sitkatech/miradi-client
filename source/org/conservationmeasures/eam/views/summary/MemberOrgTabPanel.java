@@ -79,9 +79,9 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return dataPanel.isImageAvailable();
 	}
 	
-	public JComponent getTabContentsComponent() throws Exception
+	public JComponent getPrintableComponent() throws Exception
 	{
-		return dataPanel.getTabContentsComponent();
+		return dataPanel.getPrintableComponent();
 	}
 	
 	private AbstractObjectDataInputPanel dataPanel;
