@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.organization;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
@@ -42,8 +43,25 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
+		return getTabTable();
+	}
+
+	private OrganizationPoolTable getTabTable()
+	{
 		return new OrganizationPoolTable(new OrganizationPoolTableModel(getProject()));
 	}
 	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTabTable();
+	}
+		
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
 }
