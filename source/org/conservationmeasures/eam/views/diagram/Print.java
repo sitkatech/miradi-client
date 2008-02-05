@@ -16,6 +16,6 @@ public class Print extends PrintDoer
 		if(!project.isOpen())
 			return false;
 		//TODO maybe disable if no factors to print
-		return true;
+		return getView().isPrintable();
 	}
 }
