@@ -115,11 +115,6 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 	
-	public JComponent getPrintableComponent() throws Exception
-	{
-		return planningManagementPanel.getPrintableComponent();
-	}
-	
 	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
 	{
 		public MainPlanningPanel(FastScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
