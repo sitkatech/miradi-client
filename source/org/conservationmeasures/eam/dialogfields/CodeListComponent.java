@@ -25,6 +25,14 @@ public class CodeListComponent extends AbstractListComponent
 	
 	public String getText()
 	{
+		CodeList codes = getSelectedCodes();
+		setSameToolTipForAllCheckBoxes();
+		
+		return codes.toString();
+	}
+
+	private CodeList getSelectedCodes()
+	{
 		CodeList codes = new CodeList();
 		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
 		{
@@ -35,9 +43,8 @@ public class CodeListComponent extends AbstractListComponent
 				codes.add(choiceItem.getCode());
 			}
 		}
-		setSameToolTipForAllCheckBoxes();
 		
-		return codes.toString();
+		return codes;
 	}
 	
 	public void setText(String codesToUse)
@@ -82,7 +89,7 @@ public class CodeListComponent extends AbstractListComponent
 			return;
 
 		String moreText = "";
-		if (hasMoreSelected())
+		if (getSelectedCodes().size() >= MAX_ITEMS_COUNT_IN_TOOLTIP)
 			moreText = "...more";
 		
 		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
@@ -90,18 +97,6 @@ public class CodeListComponent extends AbstractListComponent
 		{
 			checkBoxes[choiceIndex].setToolTipText(toolTip);
 		}
-	}
-
-	private boolean hasMoreSelected()
-	{
-		int selectionCount = 0;
-		for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
-		{
-			if (checkBoxes[choiceIndex].isSelected())
-				++selectionCount;
-		}
-		
-		return  selectionCount >= MAX_ITEMS_COUNT_IN_TOOLTIP;
 	}
 
 	public void setEnabled(boolean isValidObject)
