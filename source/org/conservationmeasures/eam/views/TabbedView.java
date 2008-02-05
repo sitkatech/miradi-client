@@ -237,7 +237,7 @@ abstract public class TabbedView extends UmbrellaView
 		if(panel == null)
 			return null;
 		
-		return (JComponent) panel.getTabContentsComponent();
+		return panel.getPrintableComponent();
 	}
 	
 	@Override
