@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
@@ -69,44 +68,38 @@ public class SummaryView extends TabbedView
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
 		
-		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
-		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
-		summaryLocationPanel = new SummaryLocationPanel(getProject(), metadata.getRef());
-		summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), metadata.getRef());
-		summaryOtherOrgPanel = new SummaryOtherOrgPanel(getProject(), metadata.getRef());
-				
 		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		organizationManagementPanel = new OrganizationManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 
-		addScrollingTab(summaryProjectPanel);
+		addSummaryTab(new SummaryProjectPanel(getProject(), metadata.getRef()));
 		addNonScrollingTab(teamManagementPanel);
 		addNonScrollingTab(organizationManagementPanel);
-		addScrollingTab(summaryScopePanel);
-		addScrollingTab(summaryLocationPanel);
-		addScrollingTab(summaryPlanningPanel);
-		addScrollingTab(createMemberOrgTabPanel("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata)));
-		addScrollingTab(createMemberOrgTabPanel("WWFPanel.html", new WWFSummaryPanel(getProject(), metadata)));
-		addScrollingTab(createMemberOrgTabPanel("WCSPanel.html", new WCSSummaryPanel(getProject())));
-		addScrollingTab(createMemberOrgTabPanel("RAREPanel.html", new RARESummaryPanel(getProject())));
-		addScrollingTab(createMemberOrgTabPanel("FOSPanel.html", new FOSSummaryPanel(getProject())));
-		addScrollingTab(summaryOtherOrgPanel);
+		addSummaryTab(new SummaryScopePanel(getProject(), metadata.getRef()));
+		addSummaryTab(new SummaryLocationPanel(getProject(), metadata.getRef()));
+		addSummaryTab(new SummaryPlanningPanel(getMainWindow(), metadata.getRef()));
+		addMemberOrgTab("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata));
+		addMemberOrgTab("WWFPanel.html", new WWFSummaryPanel(getProject(), metadata));
+		addMemberOrgTab("WCSPanel.html", new WCSSummaryPanel(getProject()));
+		addMemberOrgTab("RAREPanel.html", new RARESummaryPanel(getProject()));
+		addMemberOrgTab("FOSPanel.html", new FOSSummaryPanel(getProject()));
+		addSummaryTab(new SummaryOtherOrgPanel(getProject(), metadata.getRef()));
 	}
 	
-	private MiradiTabContentsPanelInterface createMemberOrgTabPanel(String htmlResourceName, AbstractObjectDataInputPanel dataPanel) throws Exception
+	private void addSummaryTab(AbstractObjectDataInputPanel tabPanel)
+	{
+		tabPanels.add(tabPanel);
+		addScrollingTab(tabPanel);
+	}
+	
+	private void addMemberOrgTab(String htmlResourceName, AbstractObjectDataInputPanel dataPanel) throws Exception
 	{
 		MemberOrgTabPanel tabPanel = new MemberOrgTabPanel(getMainWindow(), htmlResourceName, dataPanel);
 		tabPanels.add(tabPanel);
-		return tabPanel;
+		addScrollingTab(tabPanel);
 	}
-
+	
 	public void deleteTabs() throws Exception
 	{
-		summaryProjectPanel.dispose();
-		summaryScopePanel.dispose();
-		summaryLocationPanel.dispose();
-		summaryPlanningPanel.dispose();
-		
-		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
 		
@@ -155,11 +148,6 @@ public class SummaryView extends TabbedView
 	
 	private HashSet<DisposablePanel> tabPanels;
 
-	private SummaryProjectPanel summaryProjectPanel;
-	private SummaryScopePanel summaryScopePanel;
-	private SummaryLocationPanel summaryLocationPanel;
-	private SummaryPlanningPanel summaryPlanningPanel;
-	private SummaryOtherOrgPanel summaryOtherOrgPanel;
 	private TeamManagementPanel teamManagementPanel;
 	private OrganizationManagementPanel organizationManagementPanel;
 }
