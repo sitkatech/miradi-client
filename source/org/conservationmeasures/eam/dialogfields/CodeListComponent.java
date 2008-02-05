@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
+import org.martus.util.xml.XmlUtilities;
 
 public class CodeListComponent extends AbstractListComponent
 {
@@ -74,7 +75,7 @@ public class CodeListComponent extends AbstractListComponent
 		{
 			ChoiceItem choiceItem = choiceItems[choiceIndex];
 			if (checkBoxes[choiceIndex].isSelected())
-				partialToolTip += choiceItem.getLabel() + "<BR>";
+				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
 		}
 		
 		if (partialToolTip.length() == 0 )
