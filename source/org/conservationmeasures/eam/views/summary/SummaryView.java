@@ -6,12 +6,15 @@
 package org.conservationmeasures.eam.views.summary;
 
 
+import java.util.HashSet;
+
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCreateOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
+import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.organization.OrganizationManagementPanel;
 import org.conservationmeasures.eam.dialogs.resource.PossibleTeamMembersPanel;
@@ -21,6 +24,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.summary.doers.CreateOranizationDoer;
 import org.conservationmeasures.eam.views.summary.doers.DeleteOranizationDoer;
@@ -33,6 +37,7 @@ public class SummaryView extends TabbedView
 	public SummaryView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		tabPanels = new HashSet<DisposablePanel>();
 		addSummaryDoersToMap();
 	}
 
@@ -66,7 +71,6 @@ public class SummaryView extends TabbedView
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
 		wcssSummaryPanel =new WCSSummaryPanel(getProject()); 
 		rareSummaryPanel = new RARESummaryPanel(getProject());
-		fosSummaryPanel = new FOSSummaryPanel(getProject());
 		
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
@@ -87,10 +91,17 @@ public class SummaryView extends TabbedView
 		addScrollingTab(wwfSummaryPanel);
 		addScrollingTab(wcssSummaryPanel);
 		addScrollingTab(rareSummaryPanel);
-		addScrollingTab(fosSummaryPanel);
+		addScrollingTab(createMemberOrgTabPanel("FOSPanel.html", new FOSSummaryPanel(getProject())));
 		addScrollingTab(summaryOtherOrgPanel);
 	}
 	
+	private MiradiTabContentsPanelInterface createMemberOrgTabPanel(String htmlResourceName, FOSSummaryPanel dataPanel) throws Exception
+	{
+		MemberOrgTabPanel tabPanel = new MemberOrgTabPanel(getMainWindow(), htmlResourceName, dataPanel);
+		tabPanels.add(tabPanel);
+		return tabPanel;
+	}
+
 	public void deleteTabs() throws Exception
 	{
 		summaryProjectPanel.dispose();
@@ -102,10 +113,15 @@ public class SummaryView extends TabbedView
 		wwfSummaryPanel.dispose();
 		wcssSummaryPanel.dispose();
 		rareSummaryPanel.dispose();
-		fosSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
+		
+		for(DisposablePanel panel : tabPanels)
+		{
+			panel.dispose();
+		}
+		tabPanels.clear();
 	}
 	
 	public void showTeamAddMembersDialog() throws Exception
@@ -143,13 +159,14 @@ public class SummaryView extends TabbedView
 		if (workPlanStartDate.before(projectStartDate))
 			EAM.errorDialog(EAM.text("Work plan start date is before project start date"));	
 	}
+	
+	private HashSet<DisposablePanel> tabPanels;
 
 	private TNCSummaryPanel tncSummaryPanel;
 
 	private WWFSummaryPanel wwfSummaryPanel;
 	private WCSSummaryPanel wcssSummaryPanel; 
 	private RARESummaryPanel rareSummaryPanel;
-	private FOSSummaryPanel fosSummaryPanel;
 	
 	private SummaryProjectPanel summaryProjectPanel;
 	private SummaryScopePanel summaryScopePanel;
