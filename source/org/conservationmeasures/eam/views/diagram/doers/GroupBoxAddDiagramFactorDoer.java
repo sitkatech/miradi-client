@@ -130,5 +130,5 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		}
 	}
 	
-	public static String WARNING_TEXT = "Group boxes cannot contain factors of more than one type";
+	public final static String WARNING_TEXT = "Group boxes cannot contain factors of more than one type";
 }
