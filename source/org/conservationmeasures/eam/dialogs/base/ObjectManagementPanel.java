@@ -63,7 +63,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return listComponent.getSelectedObject();
 	}
 	
-	public Component getComponent()
+	public Component getTabContentsComponent()
 	{
 		return this;
 	}

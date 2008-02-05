@@ -138,7 +138,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		picker.setObjectRefs(orefs);
 	}
 	
-	public Component getComponent()
+	public Component getTabContentsComponent()
 	{
 		return this;
 	}
