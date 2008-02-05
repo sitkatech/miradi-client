@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.dialogs.viability;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTargetViability3Step;
@@ -79,39 +80,57 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 		return panelDescription;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return icon;
 	}
 	
+	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
-		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getProject(), model);
-		treeTable.restoreTreeState();
-		BufferedImage image = BufferedImageFactory.createImageFromTable(treeTable);
+		BufferedImage image = BufferedImageFactory.createImageFromTable(getTreeTable());
 		return image;
 	}
 	
+	@Override
 	public boolean isExportableTableAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return getTreeTable();
+	}
+
+	private TargetViabilityTreeTable getTreeTable() throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
 		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getProject(), model);
 		treeTable.restoreTreeState();
-		
 		return treeTable;
 	}
 	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTreeTable();
+	}
+		
 	public Class getJumpActionClass()
 	{
 		return ActionJumpTargetViability3Step.class;
