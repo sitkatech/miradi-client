@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram.doers;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.DiagramFactor;
@@ -64,6 +65,13 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
+		
+		if (!tryingToInsertSameAsContainedType(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs))
+		{
+			EAM.notifyDialog(EAM.text(WARNING_TEXT));
+			return;
+		}
+		
 		removeAnyGroupBoxToNonGroupBoxLinks(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs);
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
@@ -72,6 +80,23 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		getProject().executeCommand(appendCommand);
 		
 		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
+	}
+
+	private boolean tryingToInsertSameAsContainedType(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs)
+	{
+		ORef  childRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactor.getObjectType());
+		if (childRef.isInvalid())
+			return true;
+		
+		DiagramFactor child = DiagramFactor.find(getProject(), childRef);
+		for (int i = 0; i < nonGroupBoxDiagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor thisDiagramFactor = DiagramFactor.find(getProject(), nonGroupBoxDiagramFactorRefs.get(i));
+			if (thisDiagramFactor.getWrappedType() != child.getWrappedType())
+				return false;
+		}
+		
+		return true;
 	}
 
 	private void removeAnyGroupBoxToNonGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs) throws Exception
@@ -104,4 +129,6 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramView().getDiagramModel(), fromDiagramFactor, toDiagramFactor);
 		}
 	}
+	
+	public static String WARNING_TEXT = "Group boxes cannot contain factors of more than one type";
 }

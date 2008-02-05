@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.diagram.doers;
 
+import java.util.HashSet;
+
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramGroupBoxCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -29,6 +31,12 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		super.doExtraSetup(groupBoxDiagramFactor, selectedFactorCells);
 		if (!containsAllAcceptableDiagramFactors(selectedFactorCells))
 			return;
+		
+		if (containsDifferentType(selectedFactorCells))
+		{
+			EAM.notifyDialog(EAM.text(GroupBoxAddDiagramFactorDoer.WARNING_TEXT));
+			return;
+		}
 		
 		ORefList selectedDiagramFactorRefs = extractDiagramFactorRefs(selectedFactorCells);
 		if (GroupBoxAddDiagramFactorDoer.hasOwnedSelectedDiagramFactors(getProject(), selectedDiagramFactorRefs))
@@ -58,6 +66,19 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		}
 		
 		return true;
+	}
+	
+	public static boolean containsDifferentType(FactorCell[] selectedFactorCells)
+	{
+		HashSet<Integer> differentTypes = new HashSet();
+		for (int i = 0; i < selectedFactorCells.length; ++i)
+		{
+			int wrappedType = selectedFactorCells[i].getWrappedType();
+			if (!GroupBox.is(wrappedType))
+				differentTypes.add(wrappedType);
+		}
+		
+		return differentTypes.size() > 1;
 	}
 	
 	public void forceVisibleInLayerManager()
