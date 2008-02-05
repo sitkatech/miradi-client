@@ -58,7 +58,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		currentDiagramFactor = factorToEdit;
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createStringField(Factor.TAG_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);
 		
 		//TODO extract a local factor var. instead of getFactor
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(getFactor()), FactorType.getFactorIcon(getFactor()), new ObjectDataInputField[]{shortLabelField, labelField});
