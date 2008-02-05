@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.ActionCreateOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteOrganization;
 import org.conservationmeasures.eam.actions.ActionDeleteTeamMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
+import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.base.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.base.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.organization.OrganizationManagementPanel;
@@ -70,7 +71,6 @@ public class SummaryView extends TabbedView
 		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
 		wcssSummaryPanel =new WCSSummaryPanel(getProject()); 
-		rareSummaryPanel = new RARESummaryPanel(getProject());
 		
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
@@ -90,12 +90,12 @@ public class SummaryView extends TabbedView
 		addScrollingTab(tncSummaryPanel);
 		addScrollingTab(wwfSummaryPanel);
 		addScrollingTab(wcssSummaryPanel);
-		addScrollingTab(rareSummaryPanel);
+		addScrollingTab(createMemberOrgTabPanel("RAREPanel.html", new RARESummaryPanel(getProject())));
 		addScrollingTab(createMemberOrgTabPanel("FOSPanel.html", new FOSSummaryPanel(getProject())));
 		addScrollingTab(summaryOtherOrgPanel);
 	}
 	
-	private MiradiTabContentsPanelInterface createMemberOrgTabPanel(String htmlResourceName, FOSSummaryPanel dataPanel) throws Exception
+	private MiradiTabContentsPanelInterface createMemberOrgTabPanel(String htmlResourceName, AbstractObjectDataInputPanel dataPanel) throws Exception
 	{
 		MemberOrgTabPanel tabPanel = new MemberOrgTabPanel(getMainWindow(), htmlResourceName, dataPanel);
 		tabPanels.add(tabPanel);
@@ -112,7 +112,6 @@ public class SummaryView extends TabbedView
 		tncSummaryPanel.dispose();
 		wwfSummaryPanel.dispose();
 		wcssSummaryPanel.dispose();
-		rareSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
@@ -166,7 +165,6 @@ public class SummaryView extends TabbedView
 
 	private WWFSummaryPanel wwfSummaryPanel;
 	private WCSSummaryPanel wcssSummaryPanel; 
-	private RARESummaryPanel rareSummaryPanel;
 	
 	private SummaryProjectPanel summaryProjectPanel;
 	private SummaryScopePanel summaryScopePanel;
