@@ -66,7 +66,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();
 		DiagramFactor groupBoxDiagramFactor = getSingleSelectedGroupBox();
 		
-		if (!tryingToInsertSameAsContainedType(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs))
+		if (!areSameTypeAsInGroup(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs))
 		{
 			EAM.notifyDialog(EAM.text(WARNING_TEXT));
 			return;
@@ -82,7 +82,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
 	}
 
-	private boolean tryingToInsertSameAsContainedType(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs)
+	private boolean areSameTypeAsInGroup(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs)
 	{
 		ORef  childRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactor.getObjectType());
 		if (childRef.isInvalid())
