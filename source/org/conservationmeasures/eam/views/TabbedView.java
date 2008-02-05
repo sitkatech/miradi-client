@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -229,6 +230,16 @@ abstract public class TabbedView extends UmbrellaView
 		
 		return panel.getExportableTable();
 	}
+	
+	public JComponent getPrintableComponent() throws Exception
+	{
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return null;
+		
+		return (JComponent) panel.getComponent();
+	}
+
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{

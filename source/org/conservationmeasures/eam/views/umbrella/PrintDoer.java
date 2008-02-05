@@ -9,12 +9,14 @@ import java.awt.print.PrinterJob;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.martus.swing.PrintPage;
 import org.martus.swing.PrintPageFormat;
+import org.martus.swing.UiScrollPane;
 
 abstract public class PrintDoer extends ViewDoer
 {
@@ -34,14 +36,23 @@ abstract public class PrintDoer extends ViewDoer
 					break;
 				//TODO: Allow user to either go back and change the setting or continue to print
 			}
-			JComponent view = getMainWindow().getCurrentView().getPrintableComponent();
-			//PrintPage.showPreview(view);
-			PrintPage.printJComponent(view, job, format, attributes);
+			JComponent componentToPrint = getMainWindow().getCurrentView().getPrintableComponent();
+			packForPrintingPurposes(componentToPrint);
+			PrintPage.printJComponent(componentToPrint, job, format, attributes);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+
+	private void packForPrintingPurposes(JComponent compnentToPrint)
+	{
+		UiScrollPane scroller = new UiScrollPane();
+		JDialog forPackingPursposeDialog = new JDialog();
+		scroller.getViewport().add(compnentToPrint);
+		forPackingPursposeDialog.getContentPane().add(scroller);
+		forPackingPursposeDialog.pack();
 	}
 }

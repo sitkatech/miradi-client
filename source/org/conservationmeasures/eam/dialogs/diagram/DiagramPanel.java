@@ -9,6 +9,8 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
@@ -184,6 +186,11 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	public boolean isExportableTableAvailable()
 	{
 		return false;
+	}
+	
+	public JComponent getTabContentsComponent() throws Exception
+	{
+		return null;
 	}
 
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;

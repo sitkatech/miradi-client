@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -168,6 +169,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	}
 	
 	public ExportableTableInterface getExportableTable() throws Exception
+	{
+		return null;
+	}
+	
+	public JComponent getTabContentsComponent() throws Exception
 	{
 		return null;
 	}
