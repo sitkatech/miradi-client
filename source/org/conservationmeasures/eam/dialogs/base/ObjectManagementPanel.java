@@ -98,7 +98,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return null;
 	}
 	
-	public JComponent getTabContentsComponent() throws Exception
+	public JComponent getPrintableComponent() throws Exception
 	{
 		return null;
 	}

@@ -188,7 +188,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		return false;
 	}
 	
-	public JComponent getTabContentsComponent() throws Exception
+	public JComponent getPrintableComponent() throws Exception
 	{
 		return null;
 	}

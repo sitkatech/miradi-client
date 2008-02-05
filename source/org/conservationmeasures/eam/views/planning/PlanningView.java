@@ -117,7 +117,7 @@ public class PlanningView extends TabbedView
 	
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return planningManagementPanel.getTabContentsComponent();
+		return planningManagementPanel.getPrintableComponent();
 	}
 	
 	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
@@ -166,9 +166,9 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.isExportableTableAvailable();
 		}
 		
-		public JComponent getTabContentsComponent() throws Exception
+		public JComponent getPrintableComponent() throws Exception
 		{
-			return planningManagementPanel.getTabContentsComponent();
+			return planningManagementPanel.getPrintableComponent();
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;

@@ -173,7 +173,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return null;
 	}
 	
-	public JComponent getTabContentsComponent() throws Exception
+	public JComponent getPrintableComponent() throws Exception
 	{
 		return null;
 	}
