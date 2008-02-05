@@ -61,6 +61,16 @@ public class GroupBox extends Factor
 		return new ORefList();
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static GroupBox find(ObjectManager objectManager, ORef groupBoxRef)
 	{
 		return (GroupBox) objectManager.findObject(groupBoxRef);
