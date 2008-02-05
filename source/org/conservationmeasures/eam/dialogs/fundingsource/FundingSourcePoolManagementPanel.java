@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.base.ObjectPoolManagementPanel;
@@ -41,27 +42,46 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 		return new FundingSourceIcon();
 	}
 	
+	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public BufferedImage getImage()
 	{
-		FundingSourcePoolTable table = new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
-		BufferedImage image = BufferedImageFactory.createImageFromTable(table);
-		return image;
+		return BufferedImageFactory.createImageFromTable(getTabTable());
+	}
+
+	private FundingSourcePoolTable getTabTable()
+	{
+		return new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
 	}
 	
+	@Override
 	public boolean isExportableTableAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
+		return getTabTable();
 	}
 	
+	@Override
+	public boolean isPrintable()
+	{
+		return true;
+	}
+	
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		return getTabTable();
+	}
+
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 
 }
