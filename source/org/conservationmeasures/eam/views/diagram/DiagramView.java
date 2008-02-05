@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
@@ -128,7 +127,6 @@ import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.ConceptualModelDiagram;
 import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.DiagramLink;
-import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
@@ -239,12 +237,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public JToolBar createToolBar()
 	{
 		return new DiagramToolBar(getActions(), this);
-	}
-	
-	public JComponent getPrintableComponent() throws Exception
-	{
-		DiagramObject diagramObject = getDiagramComponent().getDiagramModel().getDiagramObject();
-		return DiagramImageCreator.getComponent(getMainWindow(), diagramObject);
 	}
 	
 	public BaseObject getSelectedObject()
