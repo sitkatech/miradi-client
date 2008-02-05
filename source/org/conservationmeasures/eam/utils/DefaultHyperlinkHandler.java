@@ -39,8 +39,8 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 	{
 		try
 		{
-			String html = EAM.loadResourceFile(getResourceBaseClass(), buttonName);
-			EAM.notifyDialog(html);
+			String title = "Information";
+			new HtmlViewPanel(getMainWindow(), title, getResourceBaseClass(), buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
 		{
