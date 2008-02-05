@@ -68,7 +68,6 @@ public class SummaryView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
-		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 		
 		summaryProjectPanel = new SummaryProjectPanel(getProject(), metadata.getRef());
 		summaryScopePanel = new SummaryScopePanel(getProject(), metadata.getRef());
@@ -85,7 +84,7 @@ public class SummaryView extends TabbedView
 		addScrollingTab(summaryScopePanel);
 		addScrollingTab(summaryLocationPanel);
 		addScrollingTab(summaryPlanningPanel);
-		addScrollingTab(tncSummaryPanel);
+		addScrollingTab(createMemberOrgTabPanel("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata)));
 		addScrollingTab(createMemberOrgTabPanel("WWFPanel.html", new WWFSummaryPanel(getProject(), metadata)));
 		addScrollingTab(createMemberOrgTabPanel("WCSPanel.html", new WCSSummaryPanel(getProject())));
 		addScrollingTab(createMemberOrgTabPanel("RAREPanel.html", new RARESummaryPanel(getProject())));
@@ -107,7 +106,6 @@ public class SummaryView extends TabbedView
 		summaryLocationPanel.dispose();
 		summaryPlanningPanel.dispose();
 		
-		tncSummaryPanel.dispose();
 		summaryOtherOrgPanel.dispose();
 		teamManagementPanel.dispose();
 		organizationManagementPanel.dispose();
@@ -156,8 +154,6 @@ public class SummaryView extends TabbedView
 	}
 	
 	private HashSet<DisposablePanel> tabPanels;
-
-	private TNCSummaryPanel tncSummaryPanel;
 
 	private SummaryProjectPanel summaryProjectPanel;
 	private SummaryScopePanel summaryScopePanel;
