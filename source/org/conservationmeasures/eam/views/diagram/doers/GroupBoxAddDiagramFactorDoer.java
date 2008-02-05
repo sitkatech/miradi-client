@@ -84,11 +84,11 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private boolean areSameTypeAsInGroup(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs)
 	{
-		ORef  childRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactor.getObjectType());
-		if (childRef.isInvalid())
+		ORef  firstChildRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactor.getObjectType());
+		if (firstChildRef.isInvalid())
 			return true;
 		
-		DiagramFactor child = DiagramFactor.find(getProject(), childRef);
+		DiagramFactor child = DiagramFactor.find(getProject(), firstChildRef);
 		for (int i = 0; i < nonGroupBoxDiagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor thisDiagramFactor = DiagramFactor.find(getProject(), nonGroupBoxDiagramFactorRefs.get(i));
