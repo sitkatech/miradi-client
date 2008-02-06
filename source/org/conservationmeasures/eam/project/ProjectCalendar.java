@@ -129,7 +129,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		MultiCalendar planningEndDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, endMonth, 1);
 		
-		if (planningStartDate.after(planningEndDate))
+		if (!planningStartDate.before(planningEndDate))
 			return defaultEndDate;
 		
 		planningEndDate.addDays(-1);
