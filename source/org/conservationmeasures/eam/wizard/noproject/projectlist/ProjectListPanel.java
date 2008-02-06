@@ -37,7 +37,7 @@ public class ProjectListPanel extends JPanel
 	}
 	
 	static final String TEXT = EAM.text("Or, to <strong>continue work</strong> " +
-		"on an existing project, or <strong>browse an example</strong>, " +
+		"on an existing project, or to <strong>browse an example</strong>, " +
 		"double-click on the name in the list below:");
 	
 	TreeBasedProjectList projectList;
