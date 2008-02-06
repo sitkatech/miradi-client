@@ -157,7 +157,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		displayExpirationNoticeIfAppropriate();
 		
+		setExtendedState(ICONIFIED);
 		setVisible(true);
+		if(!Arrays.asList(args).contains("--nosplash"))
+		{
+			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
+			aboutDoer.setMainWindow(this);
+			aboutDoer.doIt();
+		}
+
+		
+		setExtendedState(MAXIMIZED_BOTH);
 		if(preferences.getIsMaximized())
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
@@ -168,12 +178,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
 		}
 		
-		if(!Arrays.asList(args).contains("--nosplash"))
-		{
-			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
-			aboutDoer.setMainWindow(this);
-			aboutDoer.doIt();
-		}
+		
 	}
 	
 	
