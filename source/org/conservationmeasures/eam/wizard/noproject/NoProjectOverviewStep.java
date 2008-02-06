@@ -29,7 +29,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
 		left.add(projectList, BorderLayout.CENTER);
 		
-		NewsPanel newsPanel = new NewsPanel(getMainWindow(), null);
+		NewsPanel newsPanel = new NewsPanel(getMainWindow(), this);
 		FastScrollPane newsScrollPane = new FastScrollPane(newsPanel);
 		newsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
