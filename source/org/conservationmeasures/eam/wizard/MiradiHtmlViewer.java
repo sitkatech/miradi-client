@@ -43,7 +43,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 		"  .processsection { font-size: 120%; }",
 		"  .taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
 		"  .nextsteps { font-weight: 700; font-size: 100%;}",
-		"  .navigation { background-color: #eeeeee; border-width: 1; border-color: black; font-size: 100%; }",
+		"  .navigation { background-color: " + AppPreferences.SIDEBAR_BACKGROUND_FOR_CSS + "; border-width: 1; border-color: black; font-size: 100%; }",
 		"  .hintheading { font-style: italics; font-weight: bold; font-size: 100%;}",
 		"  .task {font-weight: bold; font-size: 100%;}",
 		"  .toolbarbutton {color: #A06020; font-weight: bold; font-size: 100%;}",
