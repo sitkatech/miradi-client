@@ -158,6 +158,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		displayExpirationNoticeIfAppropriate();
 		
 		setExtendedState(ICONIFIED);
+		setSize(0,0);
+		setLocation(-100, -100);
 		setVisible(true);
 		if(!Arrays.asList(args).contains("--nosplash"))
 		{
