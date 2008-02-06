@@ -18,7 +18,6 @@ public class CodeListRenderer extends TableCellRendererForObjects
 	public CodeListRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		System.out.println("Refnderer created");
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
