@@ -12,7 +12,7 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 {
 	public ConceptualModelDiagramSplitPane(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		super(mainWindow, ObjectType.CONCEPTUAL_MODEL_DIAGRAM, "ConceptualModelDiagramSplitPane");
 	}
 
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)

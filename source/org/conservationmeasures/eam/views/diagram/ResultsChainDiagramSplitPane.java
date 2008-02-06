@@ -12,7 +12,7 @@ public class ResultsChainDiagramSplitPane extends DiagramSplitPane
 {
 	public ResultsChainDiagramSplitPane(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow, ObjectType.RESULTS_CHAIN_DIAGRAM);
+		super(mainWindow, ObjectType.RESULTS_CHAIN_DIAGRAM, "ResultsChainDiagramSplitPane");
 	}
 
 	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)

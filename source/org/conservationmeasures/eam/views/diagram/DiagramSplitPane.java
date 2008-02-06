@@ -15,8 +15,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
@@ -40,12 +38,15 @@ import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.martus.swing.UiLabel;
 
-abstract public class DiagramSplitPane extends JSplitPane implements CommandExecutedListener
+abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane implements CommandExecutedListener
 {
-	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType) throws Exception
+	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType, String splitterName) throws Exception
 	{
+		super(mainWindowToUse, mainWindowToUse, splitterName);
+			
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
 		diagramCards = new DiagramCards();
@@ -54,10 +55,7 @@ abstract public class DiagramSplitPane extends JSplitPane implements CommandExec
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new FastScrollPane(diagramCards));
 		
-		project.addCommandExecutedListener(this);
-		
-		int scrollBarWidth = ((Integer)UIManager.get("ScrollBar.width")).intValue();
-		setDividerLocation(scrollableLegendPanel.getPreferredSize().width + scrollBarWidth);
+		project.addCommandExecutedListener(this);		
 	}
 
 	public void showCurrentCard() throws Exception
