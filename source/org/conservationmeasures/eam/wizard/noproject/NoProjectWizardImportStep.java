@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.wizard.WizardManager;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -24,18 +25,24 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 		super(wizardToUse);
 		
 		String html = EAM.loadResourceFile(getClass(), "WelcomeImport.html");
-		left = new LeftSideTextPanel(getMainWindow(), html, this);
+		leftTop = new LeftSideTextPanel(getMainWindow(), html, this);
 		
-		JPanel panel = new JPanel(new GridLayout(1, 2));
-		panel.add(left);
-		panel.add(projectList);
+		JPanel left = new JPanel(new BorderLayout());
+		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
+		left.add(projectList, BorderLayout.CENTER);
 		
-		add(panel, BorderLayout.CENTER);
+		JPanel mainPanel = new JPanel(new GridLayout());
+		mainPanel.add(left);
+		JPanel rightSidePanel = new JPanel();
+		rightSidePanel.setBackground(AppPreferences.WIZARD_BACKGROUND);
+		mainPanel.add(rightSidePanel);
+		
+		add(mainPanel, BorderLayout.CENTER);
 	}
 	
 	public void refresh() throws Exception
 	{
-		left.refresh();
+		leftTop.refresh();
 		super.refresh();
 	}
 	
@@ -68,7 +75,7 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 		}
 	}
 
-	LeftSideTextPanel left;
+	LeftSideTextPanel leftTop;
 	
 
 }
