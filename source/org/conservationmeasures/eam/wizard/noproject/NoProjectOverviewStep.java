@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -32,7 +33,8 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		FastScrollPane newsScrollPane = new FastScrollPane(newsPanel);
 		newsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		JPanel mainPanel = new JPanel(new GridLayout());
+		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));
+		mainPanel.setBackground(AppPreferences.WIZARD_BACKGROUND);
 		mainPanel.add(left);
 		mainPanel.add(newsScrollPane);
 		
