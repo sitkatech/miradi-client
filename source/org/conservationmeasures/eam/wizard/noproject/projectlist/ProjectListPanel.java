@@ -36,8 +36,9 @@ public class ProjectListPanel extends JPanel
 		intro.setText(TEXT);
 	}
 	
-	static final String TEXT = EAM.text("<p>To <strong>continue working on an existing project</strong>, " +
-	"double-click on the name in the list below, or select it and click the Open button.");
+	static final String TEXT = EAM.text("Or, to <strong>continue work</strong> " +
+		"on an existing project, or <strong>browse an example</strong>, " +
+		"double-click on the name in the list below:");
 	
 	TreeBasedProjectList projectList;
 	WizardHtmlViewer intro;
