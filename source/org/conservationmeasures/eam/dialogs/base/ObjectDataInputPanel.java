@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelFieldLabel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.layout.OneRowPanel;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
@@ -84,6 +85,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		super.addField(field);
 		addLabel(field.getObjectType(), field.getTag());
 		Box box = Box.createHorizontalBox();
+		box.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		box.add(field.getComponent());
 		box.add(Box.createHorizontalStrut(20));
 		box.add(new PanelTitleLabel(hint));
@@ -94,6 +96,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	protected void addFieldsOnOneLine(String fieldTag, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		addLabelWithIcon(fieldTag, icon);
 		add(fieldPanel);
 	}
@@ -103,6 +106,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	protected void addFieldsOnOneLine(String label, Object[] components)
 	{
 		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		for(int i = 0; i < components.length; i+=2)
 		{
 			ObjectDataInputField objectDataInputField = (ObjectDataInputField) components[i];
@@ -131,6 +135,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		for(int i = 0; i < fields.length; ++i)
 		{
 			super.addField(fields[i]);
@@ -145,6 +150,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		super.addField(field);
 		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		fieldPanel.add(field.getComponent());
 		UiButton button = new UiButton(action);
 		fieldPanel.add(button);
@@ -157,6 +163,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		super.addField(field);
 		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
 		addLabel(label);
@@ -195,6 +202,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	public void addFieldComponent(Component component)
 	{
 		JPanel panel = new JPanel(new BorderLayout());
+		panel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
 	}

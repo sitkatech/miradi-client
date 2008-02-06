@@ -28,6 +28,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		super(projectToUse, tableToUse);
 		table = tableToUse;
 		table.addListSelectionListener(this);
+
 	}
 	
 	public BaseObject getSelectedObject()

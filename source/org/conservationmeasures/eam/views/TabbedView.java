@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTabbedPane;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -44,6 +45,9 @@ abstract public class TabbedView extends UmbrellaView
 		tabs.addMouseListener(new MouseHandler());
 		
 		tabPanels = new HashMap<String, MiradiTabContentsPanelInterface>();
+		
+		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+
 	}
 
 	public abstract void createTabs() throws Exception;

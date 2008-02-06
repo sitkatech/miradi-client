@@ -392,6 +392,8 @@ public class AppPreferences
 
 	public static final String SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
 	public static final Color SIDEBAR_BACKGROUND = new Color(0xEA, 0xFD, 0xC5);
+	
+	public static final Color DATA_PANEL_BACKGROUND = new Color(0xDD, 0xDD, 0xEE);
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;

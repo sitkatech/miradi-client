@@ -17,6 +17,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
@@ -30,6 +31,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		super(treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
+		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 		setRowSelectionAllowed(true);
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
