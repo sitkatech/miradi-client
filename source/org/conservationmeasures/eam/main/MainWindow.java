@@ -166,8 +166,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			aboutDoer.doIt();
 		}
 
-		
-		setExtendedState(MAXIMIZED_BOTH);
+		setExtendedState(NORMAL);
 		if(preferences.getIsMaximized())
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
