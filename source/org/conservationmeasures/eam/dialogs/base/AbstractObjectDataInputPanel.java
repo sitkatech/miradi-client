@@ -43,6 +43,7 @@ import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objectdata.BooleanData;
@@ -81,6 +82,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setObjectRefsWithoutUpdatingFields(orefsToUse);
 		project.addCommandExecutedListener(this);
 		setBorder(new EmptyBorder(5,5,5,5));
+		
+		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+
 	}
 	
 	public void dispose()

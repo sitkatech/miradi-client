@@ -6,9 +6,15 @@
 package org.conservationmeasures.eam.dialogs.planning.propertiesPanel;
 
 import org.conservationmeasures.eam.dialogs.base.DisposablePanelWithDescription;
+import org.conservationmeasures.eam.main.AppPreferences;
 
 public class BlankPropertiesPanel extends DisposablePanelWithDescription
 {
+	public BlankPropertiesPanel()
+	{
+		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+	}
+
 	public String getPanelDescription()
 	{
 		return "";

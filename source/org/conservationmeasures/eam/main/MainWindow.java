@@ -327,6 +327,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			if(toolBar == null)
 				throw new RuntimeException("View must have toolbar");
 
+			toolBar.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 			toolBarBox.setToolBar(toolBar);
 			toolBarBox.invalidate();
 			toolBarBox.validate();

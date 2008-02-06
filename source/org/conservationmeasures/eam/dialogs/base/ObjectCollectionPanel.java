@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
@@ -32,9 +33,13 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		add(new FastScrollPane((JComponent)component), BorderLayout.CENTER);
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		buttons = new JPanel(layout);
+		buttons.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 		setFocusCycleRoot(true);
 		project.addCommandExecutedListener(this);
+
+		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
 	}
 	
 	
