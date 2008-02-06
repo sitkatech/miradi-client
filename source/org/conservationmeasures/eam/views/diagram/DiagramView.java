@@ -401,6 +401,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			//TODO nima get tag using object type, diagram splitter has this info.  
 			ensureDiagramIsSelected(ConceptualModelDiagram.getObjectType(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 			ensureDiagramIsSelected(ResultsChainDiagram.getObjectType(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
+			
+			conceptualDiagramPanel.restoreSavedLocation();
+			resultsChainPanel.restoreSavedLocation();
 		}
 		finally
 		{
@@ -417,13 +420,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void createResultsChainTab() throws Exception
 	{
-		ResultsChainDiagramPanel resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
+		resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
 		addNonScrollingTab(resultsChainPanel);
 	}
 
 	private void createConceptualModelDiagramTab() throws Exception
 	{
-		ConceptualModelDiagramPanel conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
+		conceptualDiagramPanel = new ConceptualModelDiagramPanel(getMainWindow());
 		addNonScrollingTab(conceptualDiagramPanel);
 	}
 	
@@ -918,4 +921,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private SlideShowDialog slideShowDlg;
 	private ModelessDialogWithClose nodePropertiesDlg;
 	private FactorPropertiesPanel nodePropertiesPanel;
+	
+	private ConceptualModelDiagramPanel conceptualDiagramPanel;
+	private ResultsChainDiagramPanel resultsChainPanel;
 }
