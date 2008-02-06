@@ -325,7 +325,11 @@ public class Indicator extends BaseObject
 		detail = new StringData(TAG_DETAIL);
 		comment = new StringData(TAG_COMMENT);
 		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENT);
-		
+		poorThresholdDetails = new StringData(TAG_POOR_THRESHOLD_DETAILS);
+	    fairThresholdDetails = new StringData(TAG_FAIR_THRESHOLD_DETAILS);
+	    goodThresholdDetails = new StringData(TAG_GOOD_THRESHOLD_DETAILS);
+	    veryGoodThresholdDetails = new StringData(TAG_VERY_GOOD_THRESHOLD_DETAILS); 
+
 		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
@@ -358,6 +362,10 @@ public class Indicator extends BaseObject
 		addField(TAG_DETAIL, detail);
 		addField(TAG_COMMENT, comment);
 		addField(TAG_VIABILITY_RATINGS_COMMENT, viabilityRatingsComment);
+		addField(TAG_POOR_THRESHOLD_DETAILS, poorThresholdDetails);
+		addField(TAG_FAIR_THRESHOLD_DETAILS, fairThresholdDetails);
+		addField(TAG_GOOD_THRESHOLD_DETAILS, goodThresholdDetails);
+		addField(TAG_VERY_GOOD_THRESHOLD_DETAILS, veryGoodThresholdDetails); 
 		
 		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
@@ -391,6 +399,10 @@ public class Indicator extends BaseObject
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_VIABILITY_RATINGS_COMMENT = "ViabilityRatingsComment";
+	public static final String TAG_POOR_THRESHOLD_DETAILS = "PoorThresholdDetails";
+	public static final String TAG_FAIR_THRESHOLD_DETAILS = "FairThresholdDetails";
+	public static final String TAG_GOOD_THRESHOLD_DETAILS = "GoodThresholdDetails";
+	public static final String TAG_VERY_GOOD_THRESHOLD_DETAILS = "VeryGoodThresholdDetails"; 
 
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
@@ -429,7 +441,11 @@ public class Indicator extends BaseObject
 	private StringData detail;
 	private StringData comment;
 	private StringData viabilityRatingsComment;
-	
+    private StringData poorThresholdDetails;
+    private StringData fairThresholdDetails;
+    private StringData goodThresholdDetails;
+    private StringData veryGoodThresholdDetails; 
+
 	private ChoiceData futureStatusRating;
 	private DateData futureStatusDate;
 	private StringData futureStatusSummary;
