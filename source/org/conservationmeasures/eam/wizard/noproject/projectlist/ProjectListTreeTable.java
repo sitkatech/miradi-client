@@ -13,11 +13,13 @@ import java.io.File;
 
 import javax.swing.JPopupMenu;
 import javax.swing.ListSelectionModel;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTreeTable;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.wizard.noproject.FileSystemTreeNode;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardStep;
 
@@ -32,6 +34,9 @@ public class ProjectListTreeTable extends PanelTreeTable
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
+		
+		 DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer)tree.getCellRenderer();
+		 renderer.setLeafIcon(new MiradiResourceImageIcon("icons/miradi16.png"));
 	}
 
 	public String getUniqueTableIdentifier()
