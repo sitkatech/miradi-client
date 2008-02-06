@@ -127,6 +127,13 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
+	protected void addFieldsOnOneLine(PanelTitleLabel label, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fields);
+		add(label);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldsOnOneLine(ObjectDataInputField[] fields)
 	{
 		addFieldsOnOneLine("", fields);
