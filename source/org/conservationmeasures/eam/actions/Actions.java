@@ -174,6 +174,7 @@ public class Actions
 		registerAction(new ActionShowFullModelMode(mainWindow));
 		registerAction(new ActionZoomIn(mainWindow));
 		registerAction(new ActionZoomOut(mainWindow));
+		registerAction(new ActionZoomToFit(mainWindow));
 		registerAction(new ActionNudgeUp(mainWindow));
 		registerAction(new ActionNudgeDown(mainWindow));
 		registerAction(new ActionNudgeLeft(mainWindow));
