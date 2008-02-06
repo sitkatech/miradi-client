@@ -389,7 +389,10 @@ public class AppPreferences
 	public static final String WIZARD_TITLE_BACKGROUND_FOR_CSS = "#99CC33";
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
-	
+
+	public static final String SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
+	public static final Color SIDEBAR_BACKGROUND = new Color(0xEA, 0xFD, 0xC5);
+
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
