@@ -28,15 +28,16 @@ import org.conservationmeasures.eam.dialogfields.ObjectCodeListField;
 import org.conservationmeasures.eam.dialogfields.ObjectCurrencyInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateChooserInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectExpandingMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectIconChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineDisplayField;
-import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRadioButtonGroupField;
 import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
+import org.conservationmeasures.eam.dialogfields.ObjectScrollingMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
@@ -322,17 +323,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createMultilineField(String tag)
 	{
-		return new ObjectMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 50);
+		return new ObjectScrollingMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 50);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag)
 	{
-		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 50);
+		return new ObjectScrollingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 50);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns)
 	{
-		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
+		return new ObjectScrollingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
 	}
 	
 	
@@ -348,7 +349,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)
 	{
-		return new ObjectMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 1, columns);
+		return new ObjectExpandingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
 	}
 	
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
