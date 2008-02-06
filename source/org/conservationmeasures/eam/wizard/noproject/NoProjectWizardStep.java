@@ -64,6 +64,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	{
 		introHtmlViewer.setText(introHtmlViewer.getText());
 		projectList.refresh();
+		getTopLevelAncestor().validate();
 	}
 
 	public void linkClicked(String linkDescription)
