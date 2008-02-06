@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.wizard;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.utils.FastScrollPane;
 
 
@@ -18,7 +19,9 @@ public class SplitWizardStep extends SkeletonWizardStep
 		super(wizardToUse, viewNameToUse);
 
 		htmlViewerLeft = new WizardHtmlViewer(getMainWindow(),this);
-		htmlViewerRight = new WizardHtmlViewer(getMainWindow(),this);
+		htmlViewerRight = new WizardRightSideHtmlViewer(getMainWindow(),this);
+		htmlViewerRight.setBackground(AppPreferences.SIDEBAR_BACKGROUND);
+
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setLeftComponent(new FastScrollPane(htmlViewerLeft));
 		splitPane.setRightComponent(new FastScrollPane(htmlViewerRight));

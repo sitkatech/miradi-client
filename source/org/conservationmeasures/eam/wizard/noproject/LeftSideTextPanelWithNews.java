@@ -76,7 +76,7 @@ public class LeftSideTextPanelWithNews extends LeftSideTextPanel
 	{
 		viewer.setText(originalHtml + 
 				"<br></br><table border='1'><tr><td>" + 
-				newsHtml +
+				"<div class='navigation'>" + newsHtml + "</div>" + 
 				"</td></tr></table>");
 	}
 	
