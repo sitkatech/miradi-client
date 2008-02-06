@@ -21,8 +21,10 @@ import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.dialogs.base.EAMDialog;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.wizard.MiradiHtmlViewer;
 import org.martus.swing.Utilities;
 
 public class HtmlViewPanel implements HtmlFormEventHandler
@@ -75,9 +77,10 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		String body = htmlText;
 		if (body == null)
 			return;
-		HtmlFormViewer bodyComponent =  new HtmlFormViewer(mainWindow, body, this);
+		HtmlFormViewer bodyComponent =  new MiradiHtmlViewer(mainWindow, this);
+		bodyComponent.setText(body);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		dlg.setBackground(bodyComponent.getBackground());
+		dlg.getContentPane().setBackground(AppPreferences.SIDEBAR_BACKGROUND);
 
 		JComponent buttonBar = createButtonBar(dlg);
 		
