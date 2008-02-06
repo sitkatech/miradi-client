@@ -11,6 +11,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectOverviewStep extends NoProjectWizardStep
@@ -20,20 +21,28 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		super(wizardToUse);
 		
 		String html = EAM.loadResourceFile(getClass(), "WelcomeNew.html");
-		left = new LeftSideTextPanelWithNews(getMainWindow(), html, this);
+		leftTop = new LeftSideTextPanel(getMainWindow(), html, this);
 		
-		JPanel panel = new JPanel(new GridLayout(1, 2));
-		panel.add(left);
-		panel.add(projectList);
+		JPanel left = new JPanel(new BorderLayout());
+		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
+		left.add(projectList, BorderLayout.CENTER);
 		
-		add(panel, BorderLayout.CENTER);
+		NewsPanel newsPanel = new NewsPanel(getMainWindow(), null);
+		FastScrollPane newsScrollPane = new FastScrollPane(newsPanel);
+
+		JPanel mainPanel = new JPanel(new GridLayout());
+		mainPanel.add(left);
+		mainPanel.add(newsScrollPane);
+		
+		add(mainPanel, BorderLayout.CENTER);
 	}
 	
 	public void refresh() throws Exception
 	{
 		super.refresh();
-		left.refresh();
+		leftTop.refresh();
+		projectList.refresh();
 	}
 	
-	LeftSideTextPanel left;
+	LeftSideTextPanel leftTop;
 }

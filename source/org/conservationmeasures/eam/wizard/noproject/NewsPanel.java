@@ -13,19 +13,20 @@ import java.net.URL;
 
 import javax.swing.SwingUtilities;
 
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.wizard.WizardRightSideHtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
-public class LeftSideTextPanelWithNews extends LeftSideTextPanel
+public class NewsPanel extends WizardRightSideHtmlViewer
 {
-
-	public LeftSideTextPanelWithNews(MainWindow mainWindow, String htmlToUse, HyperlinkHandler wizardToUse)
+	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
-		super(mainWindow, htmlToUse, wizardToUse);
-		originalHtml = htmlToUse;
+		super(mainWindow, hyperLinkHandler);
+		setBackground(AppPreferences.SIDEBAR_BACKGROUND);
 		new NewsRetriever().start();
 	}
-	
+
 	class NewsRetriever extends Thread
 	{
 
@@ -74,15 +75,8 @@ public class LeftSideTextPanelWithNews extends LeftSideTextPanel
 	
 	private void updateText()
 	{
-		viewer.setText(originalHtml + 
-				"<br></br><table border='1'><tr><td>" + 
-				"<div class='navigation'>" + newsHtml + "</div>" + 
-				"</td></tr></table>");
+		setText("<div class='navigation'>" + newsHtml);
 	}
 	
-	private String originalHtml;
 	private String newsHtml;
 }
-	
-	
-
