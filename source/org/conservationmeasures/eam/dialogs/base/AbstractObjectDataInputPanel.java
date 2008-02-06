@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectReadonlyObjectList;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyTimestampField;
 import org.conservationmeasures.eam.dialogfields.ObjectScrollingMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectStringMapInputField;
 import org.conservationmeasures.eam.dialogfields.RadioButtonsField;
 import org.conservationmeasures.eam.dialogfields.StrategyRelevancyOverrideListField;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
@@ -270,8 +271,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
-	
-	
+
+	public ObjectDataInputField createStringMapField(int objectType, String tag, String code)
+	{
+		return new ObjectStringMapInputField(project, objectType, getObjectIdForType(objectType), tag, code, 20);
+	}
+		
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
 		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tag);
