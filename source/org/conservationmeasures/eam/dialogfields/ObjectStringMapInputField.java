@@ -5,7 +5,11 @@
 */ 
 package org.conservationmeasures.eam.dialogfields;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.StringMap;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
@@ -17,22 +21,42 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		code = codeToUse;
 	}
 	
-	//FIXME finish setText and getText
 	@Override
 	public String getText()
 	{
-		return super.getText();
+		if (getORef().isInvalid())
+			return "";
+						
+		try
+		{
+			String data = getProject().getObjectData(getORef(), getTag());
+			StringMap stringMap = new StringMap(data);
+			stringMap.add(code, super.getText());
+			
+			return stringMap.toString();
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	@Override
 	public void setText(String newValue)
 	{
-		//BaseObject object = getProject().findObject(getORef());
-		//String data = object.getData(getTag());
-		//StringMapData stringMap = new StringMapData(getTag(), data);
-		//StringMapData
-		super.setText(newValue);
+		try
+		{
+			StringMap stringMap = new StringMap(newValue);
+			String value = stringMap.get(code);
+			super.setText(value);
+		}
+		catch (Exception e)
+		{
+			//FIXME when fixing other setText fixmes, fix this as well
+			EAM.logException(e);
+		}
 	}
 	
-	String code;
+	private String code;
 }
