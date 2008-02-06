@@ -46,6 +46,11 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		diagramSplitter.dispose();
 	}
 	
+	public void restoreSavedLocation()
+	{
+		diagramSplitter.restoreSavedLocation();
+	}
+	
 	public DiagramObject getDiagramObject()
 	{
 		return getDiagramModel().getDiagramObject();
