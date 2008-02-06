@@ -78,7 +78,7 @@ public class CodeListComponent extends AbstractListComponent
 	private void setSameToolTipForAllCheckBoxes()
 	{
 		String partialToolTip = ""; 
-		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && choiceIndex < MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
+		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && choiceIndex <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
 		{
 			ChoiceItem choiceItem = choiceItems[choiceIndex];
 			if (checkBoxes[choiceIndex].isSelected())
@@ -89,7 +89,7 @@ public class CodeListComponent extends AbstractListComponent
 			return;
 
 		String moreText = "";
-		if (getSelectedCodes().size() >= MAX_ITEMS_COUNT_IN_TOOLTIP)
+		if (getSelectedCodes().size() > (MAX_ITEMS_COUNT_IN_TOOLTIP  + 1))
 			moreText = "...more";
 		
 		String toolTip = "<HTML>" + partialToolTip + moreText + "</HTML>";
@@ -121,5 +121,5 @@ public class CodeListComponent extends AbstractListComponent
 	}
 	
 	private CodeList codesToDisable;
-	private static final int MAX_ITEMS_COUNT_IN_TOOLTIP = 6;
+	private static final int MAX_ITEMS_COUNT_IN_TOOLTIP = 5;
 }
