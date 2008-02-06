@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
+import org.conservationmeasures.eam.actions.ActionZoomToFit;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -502,6 +503,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_BACK_SPACE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 		Action zoomInAction = actions.get(ActionZoomIn.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_EQUALS, KeyBinder.KEY_MODIFIER_CTRL, zoomInAction);
+		Action zoomToFitAction = actions.get(ActionZoomToFit.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_0, KeyBinder.KEY_MODIFIER_CTRL, zoomToFitAction);
 		Action zoomOutAction = actions.get(ActionZoomOut.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_MINUS, KeyBinder.KEY_MODIFIER_CTRL, zoomOutAction);
 		Action  selectAllAction = actions.get(ActionSelectAll.class);

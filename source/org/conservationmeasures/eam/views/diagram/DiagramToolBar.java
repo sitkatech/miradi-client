@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
+import org.conservationmeasures.eam.actions.ActionZoomToFit;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.main.EAMToolBar;
@@ -45,6 +46,7 @@ public class DiagramToolBar extends EAMToolBar
 			{
 				new ToolBarButton(actions, ActionZoomIn.class),
 				new ToolBarButton(actions, ActionZoomOut.class),
+				new ToolBarButton(actions, ActionZoomToFit.class),
 			},
 			{
 				getModeSwitchButton(actions, diagramView),

@@ -79,6 +79,7 @@ import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
+import org.conservationmeasures.eam.actions.ActionZoomToFit;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
@@ -249,9 +250,10 @@ public class MainMenuBar extends JMenuBar
 //		menu.addSeparator();
 		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
+		addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_O);
+		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
 		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
 		return menu;
 	}
