@@ -131,7 +131,7 @@ import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestPointList;
-import org.conservationmeasures.eam.utils.TestStringMapData;
+import org.conservationmeasures.eam.utils.TestStringMap;
 import org.conservationmeasures.eam.utils.TestTaxonomyFileLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
@@ -255,7 +255,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestIdList.class));
 		suite.addTest(new TestSuite(TestBaseId.class));
 		suite.addTest(new TestSuite(TestCodeList.class));
-		suite.addTest(new TestSuite(TestStringMapData.class));
+		suite.addTest(new TestSuite(TestStringMap.class));
 		suite.addTest(new TestSuite(TestIndicator.class));
 		suite.addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		suite.addTest(new TestSuite(TestObjective.class));

@@ -10,9 +10,9 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.StringMap;
 
-public class TestStringMapData  extends EAMTestCase
+public class TestStringMap  extends EAMTestCase
 {
-	public TestStringMapData(String name)
+	public TestStringMap(String name)
 	{
 		super(name);
 	}
