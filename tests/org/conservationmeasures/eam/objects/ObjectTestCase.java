@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverride;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSet;
 import org.conservationmeasures.eam.objecthelpers.RelevancyOverrideSetData;
+import org.conservationmeasures.eam.objecthelpers.StringMap;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoQuestionData;
 import org.conservationmeasures.eam.objects.BaseObject.PseudoStringData;
 import org.conservationmeasures.eam.project.Project;
@@ -188,7 +189,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof StringMapData)
 		{
-			StringMapData list = new StringMapData("tag");
+			StringMap list = new StringMap();
 			list.add("A","RolaA");
 			return list.toString();
 		}

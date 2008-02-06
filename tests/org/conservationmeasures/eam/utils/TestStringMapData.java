@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.utils;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.StringMap;
 
 public class TestStringMapData  extends EAMTestCase
 {
@@ -18,7 +19,7 @@ public class TestStringMapData  extends EAMTestCase
 
 	public void testBasics()
 	{
-		StringMapData list = new StringMapData("tag");
+		StringMap list = new StringMap();
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
 		String value1 = new String("RoleA");
@@ -33,12 +34,12 @@ public class TestStringMapData  extends EAMTestCase
 	
 	public void testJson()
 	{
-		StringMapData list = createSampleStringMapData();
+		StringMap list = createSampleStringMap();
 		EnhancedJsonObject json = list.toJson();
 		
-		StringMapData loaded = new StringMapData("tag", json);
+		StringMap loaded = new StringMap(json);
 		assertEquals("wrong size?", list.size(), loaded.size());
-		Iterator iterator = list.data.keySet().iterator();
+		Iterator iterator = list.toHashMap().keySet().iterator();
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
@@ -48,7 +49,7 @@ public class TestStringMapData  extends EAMTestCase
 	
 	public void testRemove()
 	{
-		StringMapData list = createSampleStringMapData();
+		StringMap list = createSampleStringMap();
 		list.removeCode("A");
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get("C"));
@@ -65,13 +66,13 @@ public class TestStringMapData  extends EAMTestCase
 	
 	public void testToString() throws Exception
 	{
-		StringMapData list = createSampleStringMapData();
-		assertEquals("Can't rount trip?", list, new StringMapData("tag", list));
+		StringMap list = createSampleStringMap();
+		assertEquals("Can't rount trip?", list, new StringMap(list));
 	}
 
-	private StringMapData createSampleStringMapData()
+	private StringMap createSampleStringMap()
 	{
-		StringMapData list = new StringMapData("tag");
+		StringMap list = new StringMap();
 		list.add("A", "RoleA");
 		list.add("B", "RoleB");
 		list.add("C", "RoleC");
@@ -80,12 +81,12 @@ public class TestStringMapData  extends EAMTestCase
 
 	public void testEquals()
 	{
-		StringMapData list = createSampleStringMapData();
-		StringMapData identical = createSampleStringMapData();
+		StringMap list = createSampleStringMap();
+		StringMap identical = createSampleStringMap();
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		StringMapData different = new StringMapData("tag");
+		StringMap different = new StringMap();
 		different.add("A", list.get("A"));
 		different.add("C", list.get("C"));
 		different.add("B", list.get("B"));
@@ -103,7 +104,7 @@ public class TestStringMapData  extends EAMTestCase
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		StringMapData list = new StringMapData("tag");
+		StringMap list = new StringMap();
 		for(int i = 0; i < values.length; ++i)
 			list.add(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
