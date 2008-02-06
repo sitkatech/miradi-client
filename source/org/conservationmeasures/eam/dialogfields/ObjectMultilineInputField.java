@@ -10,17 +10,20 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
 
-public class ObjectMultilineInputField extends ObjectTextInputField
+public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
-	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
+	protected ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 3, columnsToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(initialVisibleRows, columnsToUse));
+		UiTextArea textComponent = getTextComponent();
+		textComponent.setWrapStyleWord(true);
+		textComponent.setLineWrap(true);
 	}
-	
-	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse)
+
+	private static PanelTextArea createTextComponent(int initialVisibleRows, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new PanelTextArea(initialVisibleRows, columnsToUse));
-		((UiTextArea)getComponent()).setWrapStyleWord(true);
-		((UiTextArea)getComponent()).setLineWrap(true);
+		return new PanelTextArea(initialVisibleRows, columnsToUse);
 	}
+
+	abstract UiTextArea getTextComponent();
 }
