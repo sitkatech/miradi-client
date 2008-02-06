@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.StringMap;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
@@ -40,7 +41,6 @@ import org.conservationmeasures.eam.questions.StatusQuestion;
 import org.conservationmeasures.eam.questions.TrendQuestion;
 import org.conservationmeasures.eam.utils.ColumnTagProvider;
 import org.conservationmeasures.eam.utils.SingleClickAutoSelectCellEditor;
-import org.conservationmeasures.eam.utils.StringMapData;
 import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 import org.martus.swing.UiScrollPane;
 
@@ -129,7 +129,7 @@ public class ViabilityRatingsTableField extends ObjectDataInputField
 		{
 			question = questionToUse;
 			trendQuestion = new TrendQuestion();
-			data = new StringMapData(tagToUse);
+			data = new StringMap();
 		}
 		
 		public int getColumnCount()
@@ -264,7 +264,7 @@ public class ViabilityRatingsTableField extends ObjectDataInputField
 
 		private ChoiceQuestion question;
 		private TrendQuestion trendQuestion;
-		private StringMapData data;
+		private StringMap data;
 	}
 		
 	class MyTable extends TableWithColumnWidthSaver
