@@ -46,6 +46,13 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		resizeTable(6);
 	}
 	
+	@Override
+	protected void addRowHeightSaver()
+	{
+		//NOTE: this is called from the base class constructor
+		//By not calling super, we are disabling row hieght changing (saving)
+	}
+	
 	public void listChanged()
 	{
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();

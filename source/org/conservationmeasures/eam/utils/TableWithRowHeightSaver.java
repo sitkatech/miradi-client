@@ -22,7 +22,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		addRowHeightSaver();
 	}
 	
-	private void addRowHeightSaver()
+	protected void addRowHeightSaver()
 	{
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(this, getUniqueTableIdentifier());
