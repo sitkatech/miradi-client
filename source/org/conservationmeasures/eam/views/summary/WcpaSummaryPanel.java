@@ -16,17 +16,17 @@ public class WcpaSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(WcpaProjectData.getObjectType()));
 		
-		addField(createStringField(WcpaProjectData.TAG_LEGAL_STATUS));
-		addField(createStringField(WcpaProjectData.TAG_LEGISLATIVE));
-		addField(createStringField(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION));
-		addField(createStringField(WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION));
-		addField(createStringField(WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION));
-		addField(createStringField(WcpaProjectData.TAG_HISTORICAL_DESCRIPTION));
-		addField(createStringField(WcpaProjectData.TAG_CULTURAL_DESCRIPTION));
-		addField(createStringField(WcpaProjectData.TAG_ACCESS_INFORMATION));
-		addField(createStringField(WcpaProjectData.TAG_VISITATION_INFORMATION));
-		addField(createStringField(WcpaProjectData.TAG_CURRENT_LAND_USES));
-		addField(createStringField(WcpaProjectData.TAG_MANAGEMENT_RESOURCES));				
+		addField(createMultilineField(WcpaProjectData.TAG_LEGAL_STATUS));
+		addField(createMultilineField(WcpaProjectData.TAG_LEGISLATIVE));
+		addField(createMultilineField(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION));
+		addField(createMultilineField(WcpaProjectData.TAG_HISTORICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectData.TAG_CULTURAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectData.TAG_ACCESS_INFORMATION));
+		addField(createMultilineField(WcpaProjectData.TAG_VISITATION_INFORMATION));
+		addField(createMultilineField(WcpaProjectData.TAG_CURRENT_LAND_USES));
+		addField(createMultilineField(WcpaProjectData.TAG_MANAGEMENT_RESOURCES));				
 						
 		updateFieldsFromProject();
 	}
