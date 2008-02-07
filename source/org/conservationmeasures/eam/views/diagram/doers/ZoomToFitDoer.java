@@ -20,7 +20,10 @@ public class ZoomToFitDoer extends ViewDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		DiagramView view = (DiagramView)getView();
+		DiagramComponent diagram = view.getDiagramComponent();
+		
+		return diagram.getDiagramModel().getAllFactorCells().size() > 0;
 	}
 	
 	@Override
