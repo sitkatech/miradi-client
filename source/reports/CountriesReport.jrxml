@@ -27,9 +27,6 @@
 	<field name="Value" class="java.lang.String">
 		<fieldDescription><![CDATA[Value]]></fieldDescription>
 	</field>
-	<field name="codeField" class="java.lang.String">
-		<fieldDescription><![CDATA[@code]]></fieldDescription>
-	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -53,9 +50,10 @@
 					<reportElement
 						x="21"
 						y="1"
-						width="84"
+						width="412"
 						height="15"
-						key="textField-1"/>
+						key="textField-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>

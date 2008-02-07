@@ -826,17 +826,6 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SummaryOfKeyMessages}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="13"
-						y="16"
-						width="521"
-						height="10"
-						key="subreport-1"
-						positionType="Float"/>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Code")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CountryListReport.jasper")]]></subreportExpression>
-				</subreport>
 				<staticText>
 					<reportElement
 						x="13"
@@ -1209,6 +1198,33 @@
 						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<line direction="TopDown">
+					<reportElement
+						mode="Transparent"
+						x="45"
+						y="18"
+						width="343"
+						height="0"
+						forecolor="#FFFFFF"
+						backcolor="#FFFFFF"
+						key="line-7"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="1"
+						width="335"
+						height="6"
+						key="subreport-7"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Entry")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CountriesReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
