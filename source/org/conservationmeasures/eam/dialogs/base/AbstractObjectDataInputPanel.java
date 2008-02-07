@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.dialogfields.ObjectExpandingMultilineInputFi
 import org.conservationmeasures.eam.dialogfields.ObjectIconChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineDisplayField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectPercentageInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRadioButtonGroupField;
 import org.conservationmeasures.eam.dialogfields.ObjectRaitingChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
@@ -330,6 +331,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectNumericInputField(project, objectType, getObjectIdForType(objectType), tag);
 	}
 
+	public ObjectDataInputField createPercentageField(String tag)
+	{
+		return new ObjectPercentageInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
+	}
+	
 	public ObjectDataInputField createMultilineField(String tag)
 	{
 		return new ObjectScrollingMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 50);
