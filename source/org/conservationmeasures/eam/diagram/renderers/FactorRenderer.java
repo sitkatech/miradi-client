@@ -43,6 +43,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
@@ -333,6 +334,26 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Utility.drawStringCentered(g2, ratingText, smallRect);
 	}
 	
+	protected void drawCommentTriangle(Rectangle rect, Color color, Graphics2D g2)
+	{
+		if(node != null && node.getComment().length() > 0)
+			drawCommentTriangle(g2, rect, color);
+	}
+	private void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
+	{
+		int triangleInset = 15;
+		Polygon triangle = new Polygon();
+		triangle.addPoint(getWidth() - triangleInset, 0);
+		triangle.addPoint(getWidth(), 0);
+		triangle.addPoint(getWidth(), triangleInset);
+		triangle.addPoint(getWidth() - triangleInset, 0);
+		setPaint(g2, rect, Color.CYAN);
+		g2.fill(triangle);
+		
+		setPaint(g2, rect, Color.BLACK);
+		g2.drawPolygon(triangle);
+	}
+
 	protected static final int PRIORITY_WIDTH = 20;
 	protected static final int PRIORITY_HEIGHT = 10;
 	protected ChoiceItem priority;
