@@ -58,6 +58,7 @@ public class EllipseRenderer extends FactorRenderer
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
 		g2.fillOval(rect.x, rect.y, rect.width, rect.height);
+		drawCommentTriangle(rect, color, g2);
 		g2.setPaint(oldPaint);
 	}
 
