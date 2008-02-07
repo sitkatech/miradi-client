@@ -281,6 +281,9 @@ abstract public class BaseObject
 			case ObjectType.ORGANIZATION:
 				return new Organization(objectManager, idAsInt, json);
 				
+			case ObjectType.WCPA_PROJECT_DATA:
+				return new WcpaProjectData(objectManager, idAsInt, json);
+	
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

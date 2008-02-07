@@ -78,6 +78,7 @@ import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.RareProjectData;
 import org.conservationmeasures.eam.objects.TncProjectData;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.objects.WcpaProjectData;
 import org.conservationmeasures.eam.objects.WcsProjectData;
 import org.conservationmeasures.eam.objects.WwfProjectData;
 import org.conservationmeasures.eam.questions.BudgetTimePeriodQuestion;
@@ -541,6 +542,7 @@ public class Project
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
 		createDefaultProjectDataObject(TncProjectData.getObjectType());
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
+		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		eliminateBlankConceptualModelPages();
 		ensureAllDiagramFactorsAreVisible();
 	}
