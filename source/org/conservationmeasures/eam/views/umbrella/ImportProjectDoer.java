@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Utility;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.conservationmeasures.eam.views.noproject.RenameProjectDoer;
 import org.martus.swing.UiFileChooser;
 
 public abstract class ImportProjectDoer extends ViewDoer
@@ -48,10 +49,12 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			File fileToImport = dlg.getSelectedFile();
 			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
-			projectName = Project.makeProjectFilenameLegal(projectName);
-			Project.validateNewProject(projectName);
-
-			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
+			String newName = RenameProjectDoer.askUserForProjectName(projectName);
+			if (newName == null)
+				return;
+			
+			newName = Project.makeProjectFilenameLegal(newName);
+			createProject(fileToImport, EAM.getHomeDirectory(), newName);
 			refreshNoProjectPanel();
 			currentDirectory = fileToImport.getParent();
 			EAM.notifyDialog(EAM.text("Import Completed"));

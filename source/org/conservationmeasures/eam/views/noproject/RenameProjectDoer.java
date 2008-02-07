@@ -35,14 +35,11 @@ public class RenameProjectDoer
 
 		try
 		{
-			String newName = UiOptionPane.showInputDialog("Enter New Project Name");
+			String newName = askUserForProjectName(projectToRename.getName());
 			if (newName == null)
 				return;
 
-			Project.validateNewProject(newName);
-
-			String[] body = {EAM.text("Are you sure you want to rename project: "), 
-					projectToRename.getName(),
+			String[] body = {EAM.text("Are you sure you want to rename project: "), newName,
 			};
 			String[] buttons = {EAM.text("Rename"), EAM.text("Cancel"), };
 			if(!EAM.confirmDialog(EAM.text("Rename Project"), body, buttons))
@@ -60,5 +57,15 @@ public class RenameProjectDoer
 		{
 			directoryLock.close();
 		}
+	}
+
+	public static String askUserForProjectName(String initialValue) throws Exception
+	{
+		String newName = UiOptionPane.showInputDialog("Enter New Project Name", initialValue);
+		if (newName == null)
+			return null;
+
+		Project.validateNewProject(newName);
+		return newName;
 	}
 }
