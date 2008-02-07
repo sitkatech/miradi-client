@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
-import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RareProjectData;
 import org.conservationmeasures.eam.project.Project;
@@ -17,23 +16,17 @@ public class RareTeamInformationSummarySubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
-		addLabelsOnSingleRow(EAM.text("Course Manager"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Rare Regional Director"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Campaign Manager"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Contact at Local Partner"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Contact at BINGO Partner"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Contact at Threat Reduction Partner"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Contact at Impact Monitoring Partner"), EAM.text("(not implemented yet)"));
+		addField(createMediumStringField(RareProjectData.TAG_COURSE_MANAGER_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_LOCAL_PARTNER_CONTACT_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_BINGO_PARTNER_CONTACT_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES));
+		addField(createMediumStringField(RareProjectData.TAG_MONITORING_PARTNER_CONTACT_NOTES));
 		
 		updateFieldsFromProject();
 	}
 
-	private void addLabelsOnSingleRow(String string, String string2)
-	{
-		add(new PanelTitleLabel(string));
-		add(new PanelTitleLabel(string2));
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|Team Information");

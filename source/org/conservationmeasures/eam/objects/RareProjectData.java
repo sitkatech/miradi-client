@@ -68,6 +68,13 @@ public class RareProjectData extends BaseObject
 		mainActivitiesNotes = new StringData(TAG_MAIN_ACTIVITIES_NOTES);
 		threatReductionObjectiveNotes = new StringData(TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
 		monitoringObjectiveNotes = new StringData(TAG_MONITORING_OBJECTIVE_NOTES);
+		courseManagerNotes = new StringData(TAG_COURSE_MANAGER_NOTES);
+		regionalDirectorNotes = new StringData(TAG_REGIONAL_DIRECTOR_NOTES);
+		campaignManagerNotes = new StringData(TAG_CAMPAIGN_MANAGER_NOTES);
+		localPartnerContactNotes = new StringData(TAG_LOCAL_PARTNER_CONTACT_NOTES);
+		bingoPartnerContactNotes = new StringData(TAG_BINGO_PARTNER_CONTACT_NOTES);
+		threatReductionPartnerContactNotes = new StringData(TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES);
+		monitoringPartnerContactNotes = new StringData(TAG_MONITORING_PARTNER_CONTACT_NOTES);
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
@@ -83,6 +90,13 @@ public class RareProjectData extends BaseObject
 		addField(mainActivitiesNotes);
 		addField(threatReductionObjectiveNotes);
 		addField(monitoringObjectiveNotes);
+		addField(courseManagerNotes);
+		addField(regionalDirectorNotes);
+		addField(campaignManagerNotes);
+		addField(localPartnerContactNotes);
+		addField(bingoPartnerContactNotes);
+		addField(threatReductionPartnerContactNotes);
+		addField(monitoringPartnerContactNotes);
 
 	}
 
@@ -102,6 +116,13 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_MAIN_ACTIVITIES_NOTES = "MainActivitiesNotes";
 	public static final String TAG_THREAT_REDUCTION_OBJECTIVE_NOTES = "ThreatReductionObjectiveNotes";
 	public static final String TAG_MONITORING_OBJECTIVE_NOTES = "MonitoringObjectiveNotes";
+	public static final String TAG_COURSE_MANAGER_NOTES = "CourseManagerNotes";
+	public static final String TAG_REGIONAL_DIRECTOR_NOTES = "RegionalDirectorNotes";
+	public static final String TAG_CAMPAIGN_MANAGER_NOTES = "CampaignManagerNotes";
+	public static final String TAG_LOCAL_PARTNER_CONTACT_NOTES = "LocalPartnerContactNotes";
+	public static final String TAG_BINGO_PARTNER_CONTACT_NOTES = "BingoPartnerContactNotes";
+	public static final String TAG_THREAT_REDUCTION_PARTNER_CONTACT_NOTES = "ThreatReductionPartnerContactNotes";
+	public static final String TAG_MONITORING_PARTNER_CONTACT_NOTES = "MonitoringPartnerContactNotes";
 	
 	private StringData speciesCommonName;
 	private StringData speciesScientificName;
@@ -117,4 +138,11 @@ public class RareProjectData extends BaseObject
 	private StringData mainActivitiesNotes;
 	private StringData threatReductionObjectiveNotes;
 	private StringData monitoringObjectiveNotes;
+	private StringData courseManagerNotes;
+	private StringData regionalDirectorNotes;
+	private StringData campaignManagerNotes;
+	private StringData localPartnerContactNotes;
+	private StringData bingoPartnerContactNotes;
+	private StringData threatReductionPartnerContactNotes;
+	private StringData monitoringPartnerContactNotes;
 }
