@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs.summary;
 
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.ProjectResourceIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -23,7 +24,17 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
 		ObjectDataInputField initialField = createStringField(ProjectResource.TAG_INITIALS,STD_SHORT);
-		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ObjectDataInputField[]{givenNameField, surNameField, initialField});
+		ObjectDataInputField[] nameFields = new ObjectDataInputField[]{
+				givenNameField, 
+				surNameField, 
+				initialField
+				};
+		String[] nameLabelTexts = new String[] {
+				EAM.fieldLabel(ProjectResource.getObjectType(), ProjectResource.TAG_GIVEN_NAME),
+				EAM.fieldLabel(ProjectResource.getObjectType(), ProjectResource.TAG_SUR_NAME),
+				EAM.text("Label|Initials"),
+				};
+		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ProjectResourceIcon(), nameLabelTexts, nameFields);
 		
 		CodeList disabledRoleCodes = new CodeList(new String[] {ResourceRoleQuestion.TeamMemberRoleCode});
 		addField(createMultiCodeField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), disabledRoleCodes, 3));

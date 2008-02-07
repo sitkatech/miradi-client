@@ -101,6 +101,14 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
+	protected void addFieldsOnOneLine(String fieldTag, Icon icon, String[] fieldLabelTexts, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fieldLabelTexts, fields);		
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		addLabelWithIcon(fieldTag, icon);
+		add(fieldPanel);
+	}
+	
 	//TODO,  come up with a better solution for this.  the reason this exists is becuase
 	// the label visibilty is changed outside of here.  
 	protected void addFieldsOnOneLine(String label, Object[] components)
@@ -134,6 +142,13 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
+	protected void addFieldsOnOneLine(PanelTitleLabel label, String[] fieldLabelTexts, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fieldLabelTexts, fields);
+		add(label);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldsOnOneLine(ObjectDataInputField[] fields)
 	{
 		addFieldsOnOneLine("", fields);
@@ -147,6 +162,20 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		{
 			super.addField(fields[i]);
 			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
+			fieldPanel.add(fields[i].getComponent());
+		}
+		
+		return fieldPanel;
+	}
+
+	private JPanel createFieldPanel(String labelTexts[], ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		for(int i = 0; i < fields.length; ++i)
+		{
+			super.addField(fields[i]);
+			fieldPanel.add(new PanelTitleLabel(labelTexts[i]));
 			fieldPanel.add(fields[i].getComponent());
 		}
 		
