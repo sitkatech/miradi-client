@@ -11,10 +11,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
-import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.actions.ActionCloneGoal;
 import org.conservationmeasures.eam.actions.ActionCloneIndicator;
@@ -362,8 +360,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			{
 				getDiagramComponent().updateDiagramZoomSetting();
 			}
-
-			forceFocusToDiagramComponent();
 		}
 		catch(Exception e)
 		{
@@ -875,6 +871,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
 		
+		getDiagramComponent().requestFocusInWindow();
+		
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
 		nodePropertiesDlg = new FactorPropertiesDialog(getMainWindow(), nodePropertiesPanel, title);
@@ -924,37 +922,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
 	}
 	
-	@Override
-	public void closeActivePropertiesDialog()
-	{
-		super.closeActivePropertiesDialog();
-		forceFocusToDiagramComponent();
-	}
 
-
-	private void forceFocusToDiagramComponent()
-	{
-		JComponent wantsFocus = getDiagramComponent();
-		if(wantsFocus == null)
-			return;
-		
-		SwingUtilities.invokeLater(new DelayedFocuser(wantsFocus));
-	}
-	
-	static class DelayedFocuser implements Runnable
-	{
-		public DelayedFocuser(JComponent componentToFocus)
-		{
-			wantsFocus = componentToFocus;
-		}
-
-		public void run()
-		{
-			wantsFocus.requestFocusInWindow();
-		}
-		
-		JComponent wantsFocus;
-	}
 	
 	private PropertiesDoer propertiesDoer;
 	private String mode;
