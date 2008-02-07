@@ -429,6 +429,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		clearSelection();
 		selectAllFactors();
 		selectAllFactorLinks();
+		
+		requestFocusInWindow();
 	}
 	
 	public void selectAllFactors()
