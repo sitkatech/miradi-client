@@ -31,6 +31,13 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	{
 		return (UiTextArea)super.getComponent();
 	}
+	
+	@Override
+	void addFocusListener()
+	{
+		super.addFocusListener();
+		getTextComponent().addFocusListener(this);
+	}
 
 	private FastScrollPane scrollPane;
 
