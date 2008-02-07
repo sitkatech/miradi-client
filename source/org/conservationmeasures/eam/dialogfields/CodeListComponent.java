@@ -75,19 +75,20 @@ public class CodeListComponent extends AbstractListComponent
 		}
 	}
 	
-	private void setSameToolTipForAllCheckBoxes()
+	private String setSameToolTipForAllCheckBoxes()
 	{
 		String partialToolTip = ""; 
-		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && choiceIndex <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
+		int selectionCount = 0;
+		for (int choiceIndex = 0; (choiceIndex < choiceItems.length && selectionCount <= MAX_ITEMS_COUNT_IN_TOOLTIP); ++choiceIndex)
 		{
 			ChoiceItem choiceItem = choiceItems[choiceIndex];
-			if (checkBoxes[choiceIndex].isSelected())
+			if (checkBoxes[choiceIndex].isSelected() )
+			{
 				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
+				++selectionCount;
+			}
 		}
 		
-		if (partialToolTip.length() == 0 )
-			return;
-
 		String moreText = "";
 		if (getSelectedCodes().size() > (MAX_ITEMS_COUNT_IN_TOOLTIP  + 1))
 			moreText = "...more";
@@ -97,8 +98,10 @@ public class CodeListComponent extends AbstractListComponent
 		{
 			checkBoxes[choiceIndex].setToolTipText(toolTip);
 		}
+		
+		return toolTip;
 	}
-
+	
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
