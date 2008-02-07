@@ -17,8 +17,11 @@ public class RareTrackingSummarySubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
-		addField(createNumericField(RareProjectData.TAG_PROJECT_CODE, 6));
+		add(new PanelTitleLabel(EAM.text("Project Number")));
+		add(new PanelTitleLabel(EAM.text("(See Project tab)")));
+
 		addField(createStringField(RareProjectData.TAG_COHORT));
+		
 		add(new PanelTitleLabel(EAM.text("Country")));
 		add(new PanelTitleLabel(EAM.text("(See Location tab)")));
 		

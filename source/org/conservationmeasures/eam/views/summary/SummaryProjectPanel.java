@@ -22,6 +22,8 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
 		addBlankHorizontalLine();
 		
+		addField(createShortStringField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));
+		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
 		

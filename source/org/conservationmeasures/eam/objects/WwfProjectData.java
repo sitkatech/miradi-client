@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.CodeListData;
-import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.questions.CountriesQuestion;
@@ -58,23 +57,17 @@ public class WwfProjectData extends BaseObject
 	{
 		super.clear();
 		
-		relatedProjects = new StringData(TAG_RELATED_PROJECTS);
-		projectNumber = new StringData(TAG_PROJECT_NUMBER);
 		managingOffices = new CodeListData(TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
 		regions = new CodeListData(TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
 		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
 		ecoRegions = new CodeListData(TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
 		
-		addField(TAG_RELATED_PROJECTS, relatedProjects);
-		addField(TAG_PROJECT_NUMBER, projectNumber);
 		addField(TAG_MANAGING_OFFICES, managingOffices);
 		addField(TAG_REGIONS, regions);
 		addField(TAG_COUNTRIES, countries);
 		addField(TAG_ECOREGIONS, ecoRegions);
 	}
 
-	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
-	public static final String TAG_PROJECT_NUMBER = "ProjectNumber";
 	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
 	public static final String TAG_REGIONS = "Regions";
 	public static final String TAG_COUNTRIES = "Countries";
@@ -84,8 +77,6 @@ public class WwfProjectData extends BaseObject
 	
 	
 	
-	private StringData relatedProjects;
-	private StringData projectNumber;
 	private CodeListData managingOffices;
 	private CodeListData regions;
 	private CodeListData countries;

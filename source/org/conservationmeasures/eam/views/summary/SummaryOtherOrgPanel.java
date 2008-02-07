@@ -19,8 +19,6 @@ public class SummaryOtherOrgPanel extends ObjectDataInputPanel
 		
 		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_MANAGING_OFFICE));
 		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_REGIONAL_OFFICE));
-		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER));
-		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 
 		updateFieldsFromProject();
 	}
