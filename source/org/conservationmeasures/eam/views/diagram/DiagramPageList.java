@@ -5,13 +5,16 @@
 */ 
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.InputMap;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -44,6 +47,15 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		setBorder(BorderFactory.createEtchedBorder());
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		resizeTable(6);
+		
+		ignoreKeystrokesThatShouldGoToDiagram();
+	}
+
+	private void ignoreKeystrokesThatShouldGoToDiagram()
+	{
+		InputMap im = getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+		KeyStroke ctrlA = KeyStroke.getKeyStroke('A', KeyEvent.CTRL_DOWN_MASK);
+		im.put(ctrlA, "none");
 	}
 	
 	@Override
