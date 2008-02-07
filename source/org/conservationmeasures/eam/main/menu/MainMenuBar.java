@@ -127,7 +127,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Export");
-		menu.setMnemonic(KeyEvent.VK_E);
+		menu.setMnemonic(KeyEvent.VK_X);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
