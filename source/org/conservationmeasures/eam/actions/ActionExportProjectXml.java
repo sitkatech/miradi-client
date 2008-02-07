@@ -17,12 +17,12 @@ public class ActionExportProjectXml extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|To XML File");
+		return EAM.text("Action|Project XML File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|To XML File");
+		return EAM.text("TT|Project XML File");
 	}
 
 
