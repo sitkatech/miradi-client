@@ -34,7 +34,6 @@ import org.conservationmeasures.eam.actions.ActionDeleteGroupBox;
 import org.conservationmeasures.eam.actions.ActionDeleteResultsChain;
 import org.conservationmeasures.eam.actions.ActionDiagramProperties;
 import org.conservationmeasures.eam.actions.ActionExit;
-import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
 import org.conservationmeasures.eam.actions.ActionExportTable;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
@@ -68,7 +67,6 @@ import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionRenameConceptualModel;
 import org.conservationmeasures.eam.actions.ActionRenameResultsChain;
-import org.conservationmeasures.eam.actions.ActionReportsDemo;
 import org.conservationmeasures.eam.actions.ActionSaveImageJPEG;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
@@ -111,16 +109,18 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
 		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
-		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
+		
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
-
+		
 		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
 		menu.addSeparator();
+		
 		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_E);
+		
 		return menu;
 	}
 
@@ -130,18 +130,14 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
-		addMenuItem(actions, menu, ActionExportProjectReportFile.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
-		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
-	
-// This feature will have to be rewritten to work with the new Planning View
-//		addMenuItem(actions, menu, ActionExportBudgetTableTree.class, KeyEvent.VK_F);
 		menu.addSeparator();
 		
-		JMenuItem item = addMenuItem(actions, menu,ActionReportsDemo.class, KeyEvent.VK_D);
-		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO_AND_DATABASES, HelpButtonData.IMPORT_AND_EXPORT_HTML));
-
-		item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
+		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
+		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
+		menu.addSeparator();
+		
+		JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		
 		return menu;
