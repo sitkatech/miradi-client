@@ -17,7 +17,11 @@ public class ActionSaveImageJPEG extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Save JPEG Image");
+		return EAM.text("Action|Table JPEG Image");
 	}
-
+	
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Table JPEG Image");
+	}
 }
