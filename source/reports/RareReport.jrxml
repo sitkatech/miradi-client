@@ -231,7 +231,7 @@
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="154"
+						y="157"
 						width="115"
 						height="13"
 						key="textField-11"
@@ -245,7 +245,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="154"
+						y="159"
 						width="115"
 						height="13"
 						key="staticText-9"
@@ -259,7 +259,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="168"
+						y="172"
 						width="115"
 						height="13"
 						key="staticText-10"
@@ -287,7 +287,7 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="168"
+						y="170"
 						width="115"
 						height="13"
 						key="textField-13"
@@ -301,7 +301,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="183"
+						y="185"
 						width="115"
 						height="13"
 						key="staticText-11"
@@ -329,7 +329,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="197"
+						y="198"
 						width="115"
 						height="13"
 						key="staticText-12"
@@ -343,7 +343,7 @@
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="200"
-						y="210"
+						y="211"
 						width="115"
 						height="13"
 						key="textField-17"
@@ -357,7 +357,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="210"
+						y="211"
 						width="115"
 						height="13"
 						key="staticText-13"
@@ -914,22 +914,8 @@
 				</line>
 				<staticText>
 					<reportElement
-						x="201"
-						y="136"
-						width="115"
-						height="15"
-						key="staticText-50"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left">
-						<font/>
-					</textElement>
-				<text><![CDATA[(not Implemented yet)]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
 						x="200"
-						y="195"
+						y="196"
 						width="115"
 						height="15"
 						key="staticText-51"
@@ -1198,7 +1184,7 @@
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Entry")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CountriesReport.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
 				</subreport>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1241,6 +1227,61 @@
 						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="137"
+						width="335"
+						height="6"
+						key="subreport-9"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/TNC.TerrestrialEcoRegion/CodeList/Entry")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
+				</subreport>
+				<line direction="TopDown">
+					<reportElement
+						mode="Transparent"
+						x="66"
+						y="156"
+						width="343"
+						height="0"
+						forecolor="#FFFFFF"
+						backcolor="#FFFFFF"
+						key="line-9"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="143"
+						width="335"
+						height="6"
+						key="subreport-10"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/TNC.MarineEcoRegion/CodeList/Entry")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="149"
+						width="335"
+						height="6"
+						key="subreport-12"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/TNC.FreshwaterEcoRegion/CodeList/Entry")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
