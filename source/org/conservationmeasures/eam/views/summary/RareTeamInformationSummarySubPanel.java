@@ -17,10 +17,10 @@ public class RareTeamInformationSummarySubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
-		addLabelsOnSingleRow(EAM.text("Cours Manager"), EAM.text("(not implemented yet)"));
+		addLabelsOnSingleRow(EAM.text("Course Manager"), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Rare Regional Director"), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Campaign Manager"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Contact at Local partner"), EAM.text("(not implemented yet)"));
+		addLabelsOnSingleRow(EAM.text("Contact at Local Partner"), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Contact at BINGO Partner"), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Contact at Threat Reduction Partner"), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Contact at Impact Monitoring Partner"), EAM.text("(not implemented yet)"));
