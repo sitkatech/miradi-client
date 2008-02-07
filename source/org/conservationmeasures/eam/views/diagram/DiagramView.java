@@ -149,7 +149,7 @@ import org.conservationmeasures.eam.views.diagram.doers.GroupBoxRemoveDiagramFac
 import org.conservationmeasures.eam.views.diagram.doers.InsertGroupBoxDoer;
 import org.conservationmeasures.eam.views.diagram.doers.SelectChainDoer;
 import org.conservationmeasures.eam.views.diagram.doers.ShareActivityDoer;
-import org.conservationmeasures.eam.views.diagram.doers.ZoomInToFit;
+import org.conservationmeasures.eam.views.diagram.doers.ZoomToFitDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.conservationmeasures.eam.views.threatmatrix.doers.ManageStressesDoer;
@@ -283,7 +283,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());
 		addDoerToMap(ActionZoomIn.class, new ZoomIn());
 		addDoerToMap(ActionZoomOut.class, new ZoomOut());
-		addDoerToMap(ActionZoomToFit.class, new ZoomInToFit());
+		addDoerToMap(ActionZoomToFit.class, new ZoomToFitDoer());
 		addDoerToMap(ActionNudgeUp.class, new NudgeDoer(KeyEvent.VK_UP)); 
 		addDoerToMap(ActionNudgeDown.class, new NudgeDoer(KeyEvent.VK_DOWN));
 		addDoerToMap(ActionNudgeLeft.class, new NudgeDoer(KeyEvent.VK_LEFT));
