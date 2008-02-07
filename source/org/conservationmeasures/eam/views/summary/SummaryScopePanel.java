@@ -24,7 +24,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField projectAreaField = createNumericField(ProjectMetadata.TAG_PROJECT_AREA);
 		ObjectDataInputField projectAreaNotesField = createStringField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		addFieldsOnOneLine(EAM.text("Label|Project Area(ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
+		addFieldsOnOneLine(EAM.text("Label|Biodiversity Area (ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
 
 
 		ObjectDataInputField protectedAreaStatusField = createMultiCodeField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion(), 1);
@@ -36,7 +36,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField humanPopulationField = createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
 		ObjectDataInputField humanPopulationNotesField = createMultilineField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		addFieldsOnOneLine(EAM.text("Label|Human Population"), new ObjectDataInputField[]{humanPopulationField, humanPopulationNotesField});
+		addFieldsOnOneLine(EAM.text("Label|Human Stakeholder Pop Size"), new ObjectDataInputField[]{humanPopulationField, humanPopulationNotesField});
 		
 		addField(createMultilineField(ProjectMetadata.TAG_SOCIAL_CONTEXT));
 		
