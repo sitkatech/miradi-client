@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
@@ -357,7 +358,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			getCurrentDiagramPanel().showCurrentDiagram();
 			updateVisibilityOfFactorsAndClearSelectionModel();
 			if (getDiagramComponent()!=null)
+			{
 				getDiagramComponent().updateDiagramZoomSetting();
+			}
 		}
 		catch(Exception e)
 		{
@@ -916,6 +919,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public boolean isStategyBrainstormMode()
 	{
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
+	}
+	
+	@Override
+	public void closeActivePropertiesDialog()
+	{
+		super.closeActivePropertiesDialog();
+		forceFocusToDiagramComponent();
+	}
+
+
+	private void forceFocusToDiagramComponent()
+	{
+		JComponent wantsFocus = getDiagramComponent();
+		if(wantsFocus != null)
+			wantsFocus.requestFocusInWindow();
 	}
 	
 	private PropertiesDoer propertiesDoer;
