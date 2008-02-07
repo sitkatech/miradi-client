@@ -339,7 +339,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(node == null || node.getComment().length() <= 0)
 			return;
 		
-		int triangleInset = 15;
+		final int triangleInset = 15;
 		Polygon triangle = new Polygon();
 		triangle.addPoint(getWidth() - triangleInset, 0);
 		triangle.addPoint(getWidth(), 0);
@@ -348,8 +348,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		setPaint(g2, rect, Color.CYAN);
 		g2.fill(triangle);
 		
-		setPaint(g2, rect, Color.BLACK);
-		g2.drawPolygon(triangle);
+		//Temporarly turning off border
+		//setPaint(g2, rect, Color.BLACK);
+		//g2.drawPolygon(triangle);
 	}
 
 	protected static final int PRIORITY_WIDTH = 20;
