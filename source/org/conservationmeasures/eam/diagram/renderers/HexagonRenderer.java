@@ -38,7 +38,7 @@ public class HexagonRenderer extends FactorRenderer
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
 		g.fillPolygon(buildHexagon(rect));
-		drawCommentTriangle(rect, color, g2);
+		drawCommentTriangle(g2, rect, color);
 		g2.setPaint(oldPaint);
 	}
 

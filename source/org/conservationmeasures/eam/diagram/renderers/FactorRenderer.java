@@ -334,7 +334,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Utility.drawStringCentered(g2, ratingText, smallRect);
 	}
 	
-	protected void drawCommentTriangle(Rectangle rect, Color color, Graphics2D g2)
+	protected void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
 	{
 		if(node == null || node.getComment().length() <= 0)
 			return;
