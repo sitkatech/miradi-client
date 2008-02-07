@@ -54,13 +54,18 @@ public class TncProjectData extends BaseObject
 		super.clear();
 		
 		conProProjectNumber = new StringData(TAG_CONPRO_PROJECT_NUMBER);
+		organizationalPriority = new StringData(TAG_ORGANIZATIONAL_PRIORITY);
 		
-		addField(conProProjectNumber.getTag(), conProProjectNumber);
+		addField(conProProjectNumber);
+		addField(organizationalPriority);
 	}
 	
+	public static final String OBJECT_NAME = "TncProjectData";
+
 	public final static String TAG_CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
+	public final static String TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
 	
 	public StringData conProProjectNumber;
+	public StringData organizationalPriority;
 
-	public static final String OBJECT_NAME = "TncProjectData";
 }
