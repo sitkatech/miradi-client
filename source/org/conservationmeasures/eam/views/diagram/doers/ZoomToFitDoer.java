@@ -20,6 +20,9 @@ public class ZoomToFitDoer extends ViewDoer
 	@Override
 	public boolean isAvailable()
 	{
+		if (!isInDiagram())
+			return false;
+		
 		DiagramView view = (DiagramView)getView();
 		DiagramComponent diagram = view.getDiagramComponent();
 		
