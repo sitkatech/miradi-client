@@ -69,6 +69,10 @@ public class SlideListTablePanel extends ObjectListTablePanel
 			getDiagramView().setDiagramTab(oref);
 			updateLegendPanel();
 		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 		finally
 		{
 			inSelectionLogic = false;
