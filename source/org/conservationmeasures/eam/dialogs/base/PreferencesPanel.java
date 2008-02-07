@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.questions.FontFamiliyQuestion;
 import org.conservationmeasures.eam.questions.FontSizeQuestion;
 import org.conservationmeasures.eam.utils.HyperlinkLabel;
+import org.conservationmeasures.eam.views.summary.SummaryPlanningPanel;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -53,6 +54,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void dispose()
 	{
+		summaryPlanningPanel.dispose(); 
 		diagramProjectPreferencesPanel.dispose();
 		diagramProjectPreferencesPanel = null;
 		
@@ -67,6 +69,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JTabbedPane tabPane = new PanelTabbedPane();
 		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram View", createDiagramTab());
+		
+		summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
+		tabPane.addTab("Planning", summaryPlanningPanel);
+		
 		if(project.isOpen())
 			tabPane.addTab("Threat Rating View", createThreatRatingTab());
 		return tabPane;
@@ -321,6 +327,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private MainWindow mainWindow;
 	private DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
 	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
+	private SummaryPlanningPanel summaryPlanningPanel;
 	
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
