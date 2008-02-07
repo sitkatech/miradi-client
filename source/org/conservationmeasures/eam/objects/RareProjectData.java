@@ -61,11 +61,10 @@ public class RareProjectData extends BaseObject
 		campaignTheoryOfChange = new StringData(TAG_CAMPAIGN_THEORY_OF_CHANGE);
 		summaryOfKeyMessages = new StringData(TAG_SUMMARY_OF_KEY_MESSAGES);
 		biodiversityHotspots = new StringData(TAG_BIODIVERSITY_HOTSPOTS);
-		relatedProjects = new StringData(TAG_RELATED_PROJECTS);
-		projectCode = new IntegerData(TAG_PROJECT_CODE);
 		cohort = new StringData(TAG_COHORT);
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		audience = new StringData(TAG_AUDIENCE);
+		threatsAddressedNotes = new StringData(TAG_THREATS_ADDRESSED_NOTES);
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
@@ -74,11 +73,10 @@ public class RareProjectData extends BaseObject
 		addField(TAG_CAMPAIGN_THEORY_OF_CHANGE, campaignTheoryOfChange);
 		addField(TAG_SUMMARY_OF_KEY_MESSAGES, summaryOfKeyMessages);
 		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
-		addField(TAG_RELATED_PROJECTS, relatedProjects);
-		addField(TAG_PROJECT_CODE, projectCode);
 		addField(TAG_COHORT, cohort);
 		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
 		addField(TAG_AUDIENCE, audience);
+		addField(threatsAddressedNotes);
 
 	}
 
@@ -91,11 +89,10 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_CAMPAIGN_THEORY_OF_CHANGE = "CampaignTheoryOfChange";
 	public static final String TAG_SUMMARY_OF_KEY_MESSAGES = "SummaryOfKeyMessages";
 	public static final String TAG_BIODIVERSITY_HOTSPOTS = "BiodiversityHotspots";
-	public static final String TAG_RELATED_PROJECTS = "RelatedProjects";
-	public static final String TAG_PROJECT_CODE = "ProjectCode";
 	public static final String TAG_COHORT = "Cohort";
 	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
 	public static final String TAG_AUDIENCE = "Audience";
+	public static final String TAG_THREATS_ADDRESSED_NOTES = "ThreatsAddressedNotes";
 	
 	private StringData speciesCommonName;
 	private StringData speciesScientificName;
@@ -104,9 +101,8 @@ public class RareProjectData extends BaseObject
 	private StringData campaignTheoryOfChange;
 	private StringData summaryOfKeyMessages;
 	private StringData biodiversityHotspots;
-	private StringData relatedProjects;
-	private IntegerData projectCode;
 	private StringData cohort;
 	private IntegerData numberOfCommunitiesInCampaignArea;
 	private StringData audience;
+	private StringData threatsAddressedNotes;
 }
