@@ -27,10 +27,10 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		
 		StatusQuestion statusQuestion = (StatusQuestion) getProject().getQuestion(StatusQuestion.class);
 		
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR), Indicator.TAG_POOR_THRESHOLD_DETAILS);
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR), Indicator.TAG_FAIR_THRESHOLD_DETAILS);
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD), Indicator.TAG_GOOD_THRESHOLD_DETAILS);
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD), Indicator.TAG_VERY_GOOD_THRESHOLD_DETAILS);
+		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
+		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));
+		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
+		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
 		addField(createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_RATING_SOURCE, new RatingSourceQuestion()));
 		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_VIABILITY_RATINGS_COMMENT));
@@ -38,7 +38,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private void createThreshholdField(ChoiceItem choiceItem, String detailsTag)
+	private void createThreshholdField(ChoiceItem choiceItem)
 	{
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text(choiceItem.getLabel()));
 		Font font = label.getFont();
@@ -46,7 +46,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		label.setOpaque(true);
 		label.setBackground(choiceItem.getColor());
 		
-		ObjectDataInputField detailsField = createStringField(Indicator.getObjectType(), detailsTag);
+		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS, choiceItem.getCode());
 		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_INDICATOR_THRESHOLD, choiceItem.getCode());
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
