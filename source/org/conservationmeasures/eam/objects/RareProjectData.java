@@ -65,6 +65,9 @@ public class RareProjectData extends BaseObject
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		audience = new StringData(TAG_AUDIENCE);
 		threatsAddressedNotes = new StringData(TAG_THREATS_ADDRESSED_NOTES);
+		mainActivitiesNotes = new StringData(TAG_MAIN_ACTIVITIES_NOTES);
+		threatReductionObjectiveNotes = new StringData(TAG_THREAT_REDUCTION_OBJECTIVE_NOTES);
+		monitoringObjectiveNotes = new StringData(TAG_MONITORING_OBJECTIVE_NOTES);
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
@@ -77,6 +80,9 @@ public class RareProjectData extends BaseObject
 		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
 		addField(TAG_AUDIENCE, audience);
 		addField(threatsAddressedNotes);
+		addField(mainActivitiesNotes);
+		addField(threatReductionObjectiveNotes);
+		addField(monitoringObjectiveNotes);
 
 	}
 
@@ -93,6 +99,9 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
 	public static final String TAG_AUDIENCE = "Audience";
 	public static final String TAG_THREATS_ADDRESSED_NOTES = "ThreatsAddressedNotes";
+	public static final String TAG_MAIN_ACTIVITIES_NOTES = "MainActivitiesNotes";
+	public static final String TAG_THREAT_REDUCTION_OBJECTIVE_NOTES = "ThreatReductionObjectiveNotes";
+	public static final String TAG_MONITORING_OBJECTIVE_NOTES = "MonitoringObjectiveNotes";
 	
 	private StringData speciesCommonName;
 	private StringData speciesScientificName;
@@ -105,4 +114,7 @@ public class RareProjectData extends BaseObject
 	private IntegerData numberOfCommunitiesInCampaignArea;
 	private StringData audience;
 	private StringData threatsAddressedNotes;
+	private StringData mainActivitiesNotes;
+	private StringData threatReductionObjectiveNotes;
+	private StringData monitoringObjectiveNotes;
 }
