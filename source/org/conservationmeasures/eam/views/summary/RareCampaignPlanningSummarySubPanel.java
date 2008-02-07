@@ -18,10 +18,10 @@ public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
 		addField(createMultilineField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE, 200));
-		addField(createStringField(RareProjectData.TAG_CAMPAIGN_SLOGAN));
-		addField(createStringField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
-		addLabelsOnSingleRow(EAM.text("Main activities of the projects (no more than 200 words)"), EAM.text("(not implemented yet)"));
-		addField(createStringField(RareProjectData.TAG_RELATED_PROJECTS));
+		addField(createMultilineField(RareProjectData.TAG_CAMPAIGN_SLOGAN));
+		addField(createMultilineField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
+		addLabelsOnSingleRow(EAM.text("Main Activities of the Projects (< 200 words)"), EAM.text("(not implemented yet)"));
+		addLabelsOnSingleRow(EAM.text("Related Projects"), EAM.text("(see Project tab)"));
 		addLabelsOnSingleRow(EAM.text("Summary of Objectives for Threat Reduction Partner "), EAM.text("(not implemented yet)"));
 		addLabelsOnSingleRow(EAM.text("Summary of Objectives for Impact Monitoring Partner"), EAM.text("(not implemented yet)"));
 		
