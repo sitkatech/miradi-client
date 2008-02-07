@@ -479,6 +479,11 @@ abstract public class BaseObject
 	{
 		return getProject().getQuestion(questionClass);
 	}
+	
+	void addField(ObjectData data)
+	{
+		addField(data.getTag(), data);
+	}
 
 	void addField(String tag, ObjectData data)
 	{
