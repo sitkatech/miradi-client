@@ -166,19 +166,23 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_E);
 		
 		JMenuItem undo = addMenuItem(actions, menu, ActionUndo.class, KeyEvent.VK_U);
-		undo.setAccelerator(KeyStroke.getKeyStroke('Z', InputEvent.CTRL_DOWN_MASK));
+		setControlKeyAccelerator(undo, 'Z');
 		JMenuItem redo = addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
-		redo.setAccelerator(KeyStroke.getKeyStroke('Y', InputEvent.CTRL_DOWN_MASK));
+		setControlKeyAccelerator(redo, 'Y');
 		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_T);
-		addMenuItem(actions, menu, ActionCopy.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
+		JMenuItem cut = addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_T);
+		setControlKeyAccelerator(cut, 'X');
+		JMenuItem copy = addMenuItem(actions, menu, ActionCopy.class, KeyEvent.VK_C);
+		setControlKeyAccelerator(copy, 'C');
+		JMenuItem paste = addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
+		setControlKeyAccelerator(paste, 'V');
 		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
-		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
+		JMenuItem selectAll = addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
+		setControlKeyAccelerator(selectAll, 'A');
 		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
@@ -248,9 +252,13 @@ public class MainMenuBar extends JMenuBar
 //		addMenuItem(actions, menu, ActionToggleSlideShowPanel.class, KeyEvent.VK_E);
 //		addMenuItem(actions, menu, ActionSlideShowViewer.class, KeyEvent.VK_S);
 //		menu.addSeparator();
-		addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
-		addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
-		addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
+		JMenuItem zoomIn = addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
+		setControlKeyAccelerator(zoomIn, '=');
+		JMenuItem zoomOut = addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
+		setControlKeyAccelerator(zoomOut, '-');
+		JMenuItem zoomToFit = addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
+		setControlKeyAccelerator(zoomToFit, '0');
+
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
@@ -357,5 +365,10 @@ public class MainMenuBar extends JMenuBar
 		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
 		centeredLocationAction.setMnemonic(mnemonic);
 		return centeredLocationAction;
+	}
+	
+	private void setControlKeyAccelerator(JMenuItem menuItem, char keyLetter)
+	{
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyLetter, InputEvent.CTRL_DOWN_MASK));
 	}
 }
