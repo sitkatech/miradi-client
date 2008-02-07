@@ -17,15 +17,15 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
-		addLabelsOnSingleRow(EAM.text("Threats Addressed"), EAM.text("(not implemented yet)"));
-		addLabelsOnSingleRow(EAM.text("Threats at Site"), EAM.text("(not implemented yet)"));
+		addField(createStringField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES));
+		addLabelsOnSingleRow(EAM.text("Threats at Site"), EAM.text("(see Diagram)"));
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
 		addField(createStringField(RareProjectData.TAG_AUDIENCE));
 		
-		addLabelsOnSingleRow(EAM.text("Population Size"), EAM.text("(see Location tab)"));
-		addLabelsOnSingleRow(EAM.text("Area Size (hectares)"), EAM.text("(see Scope tab)"));
-		addLabelsOnSingleRow(EAM.text("Habitat"), EAM.text("(not implemented yet)"));
+		addLabelsOnSingleRow(EAM.text("Human Stakeholder Pop Size"), EAM.text("(see Scope tab)"));
+		addLabelsOnSingleRow(EAM.text("Biodiversity Area (ha)"), EAM.text("(see Scope tab)"));
+		addLabelsOnSingleRow(EAM.text("Habitat"), EAM.text("(see TNC tab for Ecoregions)"));
 		addField(createStringField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME));
