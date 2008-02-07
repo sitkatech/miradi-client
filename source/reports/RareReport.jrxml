@@ -1157,7 +1157,7 @@
 				</line>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="201"
+						x="200"
 						y="466"
 						width="282"
 						height="13"
@@ -1179,6 +1179,33 @@
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
 						key="line-5"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="200"
+						y="451"
+						width="282"
+						height="13"
+						key="subreport-6"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool[@objectType = '9']/Objective/PseudoRelevantIndicatorRefs/RefList/Ref")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/ObjectListReport.jasper")]]></subreportExpression>
+				</subreport>
+				<line direction="TopDown">
+					<reportElement
+						mode="Transparent"
+						x="55"
+						y="465"
+						width="343"
+						height="0"
+						forecolor="#FFFFFF"
+						backcolor="#FFFFFF"
+						key="line-6"
 						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
