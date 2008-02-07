@@ -11,8 +11,6 @@ import java.awt.event.MouseEvent;
 import java.util.HashSet;
 import java.util.Vector;
 
-import javax.swing.ToolTipManager;
-
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
@@ -125,28 +123,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		
 		moveHasHappened(deltaX, deltaY);
-	}
-
-	public void mouseEntered(MouseEvent arg0)
-	{
-		ToolTipManager toolTipManager = ToolTipManager.sharedInstance();
-		savedToolTipInitialDelay = toolTipManager.getInitialDelay();
-		savedToolTipReshowDelay = toolTipManager.getReshowDelay();
-		savedToolTipDismissDelay = toolTipManager.getDismissDelay();
-		toolTipManager.setInitialDelay(TOOLTIP_DEFAULT_MILLIS);
-		toolTipManager.setReshowDelay(TOOLTIP_ALWAYS_WAIT_BEFORE_RESHOW);
-		toolTipManager.setDismissDelay(TOOLTIP_NEVER_AUTO_DISMISS);
-
-		super.mouseEntered(arg0);
-	}
-
-	public void mouseExited(MouseEvent arg0)
-	{
-		super.mouseExited(arg0);
-		ToolTipManager toolTipManager = ToolTipManager.sharedInstance();
-		toolTipManager.setInitialDelay(savedToolTipInitialDelay);
-		toolTipManager.setReshowDelay(savedToolTipReshowDelay);
-		toolTipManager.setDismissDelay(savedToolTipDismissDelay);
 	}
 
 	private void moveHasHappened(int deltaX, int deltaY)
@@ -278,15 +254,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		return linksWithBendPoints;
 	}
 
-	private static final int TOOLTIP_DEFAULT_MILLIS = 1000;
-	private static final int TOOLTIP_ALWAYS_WAIT_BEFORE_RESHOW = 0;
-	private static final int TOOLTIP_NEVER_AUTO_DISMISS = Integer.MAX_VALUE;
-
 	private MainWindow mainWindow;
 	private Point dragStartedAt;
 	private Object[] selectedCells;
 	private HashSet<LinkCell> selectedAndGroupBoxCoveredLinkCells;
-	private int savedToolTipInitialDelay;
-	private int savedToolTipReshowDelay;
-	private int savedToolTipDismissDelay;
 }

@@ -105,6 +105,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.addCommandExecutedListener(this);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
+		ToolTipManager.sharedInstance().setReshowDelay(0);
+		
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
@@ -896,7 +898,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private static String MAIL_PROTOCOL = "mailto:";
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
-	private static final int TOOP_TIP_DELAY_MILLIS = 0;
+	private static final int TOOP_TIP_DELAY_MILLIS = 1000;
 	
 	protected Actions actions;
 	private AppPreferences preferences;
