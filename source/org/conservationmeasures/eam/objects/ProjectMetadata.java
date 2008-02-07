@@ -263,7 +263,7 @@ public class ProjectMetadata extends BaseObject
 		planningComments = new StringData(TAG_PLANNING_COMMENTS);
 		redListSpecies = new StringData(TAG_RED_LIST_SPECIES);
 		otherNotableSpecies = new StringData(TAG_OTHER_NOTABLE_SPECIES);
-		humanPopulation = new NumberData(TAG_HUMAN_POPULATION);
+		humanPopulation = new IntegerData(TAG_HUMAN_POPULATION);
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
@@ -474,7 +474,7 @@ public class ProjectMetadata extends BaseObject
 	private StringData planningComments;
 	private StringData redListSpecies;
 	private StringData otherNotableSpecies;
-	private NumberData humanPopulation;
+	private IntegerData humanPopulation;
 	private StringData humanPopulationNotes;
 	private StringData socialContext;
 	private StringData siteMapReference;
