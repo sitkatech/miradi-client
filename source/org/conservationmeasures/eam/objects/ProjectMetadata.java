@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.FloatData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.NumberData;
+import org.conservationmeasures.eam.objectdata.PercentageData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -240,7 +241,7 @@ public class ProjectMetadata extends BaseObject
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
 		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
-		budgetSecuredPercent = new NumberData(TAG_BUDGET_SECURED_PERCENT);
+		budgetSecuredPercent = new PercentageData(TAG_BUDGET_SECURED_PERCENT);
 		currencyType = new ChoiceData(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
 		currencySymbol = new StringData(TAG_CURRENCY_SYMBOL);
 		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
@@ -451,7 +452,7 @@ public class ProjectMetadata extends BaseObject
 	private FloatData latitude;
 	private FloatData longitude;
 	private NumberData totalBudgetForFunding;
-	private NumberData budgetSecuredPercent;
+	private PercentageData budgetSecuredPercent;
 	private ChoiceData currencyType;
 	private StringData currencySymbol;
 	private ChoiceData fiscalYearStart;
