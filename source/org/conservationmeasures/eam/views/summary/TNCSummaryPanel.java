@@ -22,10 +22,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
-		addField(createReadonlyTextField(metadata.TAG_TNC_WORKBOOK_VERSION_NUMBER));
-		addField(createReadonlyTextField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE));
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createMultilineField(metadata.TAG_TNC_LESSONS_LEARNED));
+		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CONPRO_PROJECT_NUMBER));
 		addField(createMultilineField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 		addField(createReadonlyTextField(metadata.TAG_TNC_ECOREGION));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion(), 1));

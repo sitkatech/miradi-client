@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ObjectManager;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -51,7 +52,15 @@ public class TncProjectData extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
+		conProProjectNumber = new StringData(TAG_CONPRO_PROJECT_NUMBER);
+		
+		addField(conProProjectNumber.getTag(), conProProjectNumber);
 	}
+	
+	public final static String TAG_CONPRO_PROJECT_NUMBER = "ConProProjectNumber";
+	
+	public StringData conProProjectNumber;
 
 	public static final String OBJECT_NAME = "TncProjectData";
 }
