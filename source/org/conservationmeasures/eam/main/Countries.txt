@@ -1,3 +1,5 @@
+[OTHER]	Other
+[FICTICIOUS]	(For Testing)
 AFG	Afghanistan
 ALA	Aland Islands
 ALB	Albania
