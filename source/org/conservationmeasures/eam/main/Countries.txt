@@ -1,5 +1,5 @@
 [OTHER]	Other
-[FICTICIOUS]	(For Testing)
+[FICTICIOUS]	Fictitious (for testing)
 AFG	Afghanistan
 ALA	Aland Islands
 ALB	Albania
