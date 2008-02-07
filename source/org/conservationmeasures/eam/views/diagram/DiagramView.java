@@ -14,6 +14,7 @@ import java.util.Vector;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
+import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.actions.ActionCloneGoal;
 import org.conservationmeasures.eam.actions.ActionCloneIndicator;
@@ -361,6 +362,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			{
 				getDiagramComponent().updateDiagramZoomSetting();
 			}
+
+			forceFocusToDiagramComponent();
 		}
 		catch(Exception e)
 		{
@@ -932,8 +935,25 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private void forceFocusToDiagramComponent()
 	{
 		JComponent wantsFocus = getDiagramComponent();
-		if(wantsFocus != null)
+		if(wantsFocus == null)
+			return;
+		
+		SwingUtilities.invokeLater(new DelayedFocuser(wantsFocus));
+	}
+	
+	static class DelayedFocuser implements Runnable
+	{
+		public DelayedFocuser(JComponent componentToFocus)
+		{
+			wantsFocus = componentToFocus;
+		}
+
+		public void run()
+		{
 			wantsFocus.requestFocusInWindow();
+		}
+		
+		JComponent wantsFocus;
 	}
 	
 	private PropertiesDoer propertiesDoer;

@@ -23,18 +23,11 @@ import javax.swing.Action;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
-import org.conservationmeasures.eam.actions.ActionCopy;
-import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionNudgeDown;
 import org.conservationmeasures.eam.actions.ActionNudgeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeRight;
 import org.conservationmeasures.eam.actions.ActionNudgeUp;
-import org.conservationmeasures.eam.actions.ActionPaste;
-import org.conservationmeasures.eam.actions.ActionSelectAll;
-import org.conservationmeasures.eam.actions.ActionZoomIn;
-import org.conservationmeasures.eam.actions.ActionZoomOut;
-import org.conservationmeasures.eam.actions.ActionZoomToFit;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
@@ -491,23 +484,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Action helpAction = actions.get(ActionContextualHelp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-		Action cutAction = actions.get(ActionCut.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
-		Action copyAction = actions.get(ActionCopy.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
-		Action pasteAction = actions.get(ActionPaste.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
 		Action deleteAction = actions.get(ActionDelete.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 		KeyBinder.bindKey(this, KeyEvent.VK_BACK_SPACE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
-		Action zoomInAction = actions.get(ActionZoomIn.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_EQUALS, KeyBinder.KEY_MODIFIER_CTRL, zoomInAction);
-		Action zoomToFitAction = actions.get(ActionZoomToFit.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_0, KeyBinder.KEY_MODIFIER_CTRL, zoomToFitAction);
-		Action zoomOutAction = actions.get(ActionZoomOut.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_MINUS, KeyBinder.KEY_MODIFIER_CTRL, zoomOutAction);
-		Action  selectAllAction = actions.get(ActionSelectAll.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyBinder.KEY_MODIFIER_CTRL, selectAllAction);
 		//JAVA ISSUE: We had to create new actions here since the key pressed which caused this action
 		//Is not sent to the action.
 		//javax.swing.SwingUtilities doesn't pass the keycode to the action. 
