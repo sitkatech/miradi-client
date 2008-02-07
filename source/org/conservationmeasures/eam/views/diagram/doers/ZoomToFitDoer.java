@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class ZoomInToFit extends ViewDoer
+public class ZoomToFitDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()
