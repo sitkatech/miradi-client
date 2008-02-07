@@ -21,6 +21,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		
 		addField(createStringField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_SCOPE));
+		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_VISION));
 		
 		ObjectDataInputField projectAreaField = createNumericField(ProjectMetadata.TAG_PROJECT_AREA);
 		ObjectDataInputField projectAreaNotesField = createStringField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
@@ -40,7 +41,6 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		
 		addField(createMultilineField(ProjectMetadata.TAG_SOCIAL_CONTEXT));
 		
-		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_VISION));
 		addField(createMultilineField(ProjectMetadata.TAG_SCOPE_COMMENTS));
 		
 		updateFieldsFromProject();
