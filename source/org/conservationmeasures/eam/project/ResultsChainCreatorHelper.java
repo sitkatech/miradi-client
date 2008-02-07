@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.FactorCell;
 import org.conservationmeasures.eam.dialogs.diagram.DiagramPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -37,7 +36,6 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.ThreatReductionResult;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.PointList;
 import org.conservationmeasures.eam.views.diagram.LinkCreator;
 
@@ -50,15 +48,15 @@ public class ResultsChainCreatorHelper
 		model = diagramPanel.getDiagramModel();
 	}
 		
-	public BaseId createResultsChain() throws Exception
+	public ORef createResultsChain() throws Exception
 	{
 			DiagramFactor[] diagramFactors = getSelectedAndRelatedDiagramFactors();
 			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			project.executeCommand(createResultsChain);
 			
-			BaseId newResultsChainId = createResultsChain.getCreatedId();
-			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId);
+			ORef newResultsChainRef = createResultsChain.getObjectRef();
+			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(newResultsChainRef);
 			
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
 			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
@@ -72,15 +70,10 @@ public class ResultsChainCreatorHelper
 			project.executeCommand(addLinksToChain);
 			
 			String label = getFirstStrategyShortLabel(diagramFactors); 
-			CommandSetObjectData setLabelCommand = new CommandSetObjectData(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId, DiagramObject.TAG_LABEL, label);
+			CommandSetObjectData setLabelCommand = new CommandSetObjectData(newResultsChainRef, DiagramObject.TAG_LABEL, label);
 			project.executeCommand(setLabelCommand);
-
-			ViewData viewData = project.getCurrentViewData();
-			CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF, resultsChain.getRef());
-			project.executeCommand(setCurrentDiagram);
 			
-			
-			return newResultsChainId;
+			return newResultsChainRef;
 	}
 	
 	private String getFirstStrategyShortLabel(DiagramFactor[] diagramFactors) throws Exception

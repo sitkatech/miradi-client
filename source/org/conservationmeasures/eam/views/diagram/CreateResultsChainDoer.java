@@ -9,9 +9,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ResultsChainCreatorHelper;
@@ -57,12 +55,19 @@ public class CreateResultsChainDoer extends ViewDoer
 	{
 		ResultsChainCreatorHelper creatorHelper = new ResultsChainCreatorHelper(project, diagramView.getDiagramPanel());
 
-		BaseId newResultsChainId = creatorHelper.createResultsChain();
-		int newTabIndex = diagramView.getTabIndex(new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, newResultsChainId));
-		
+		ORef newResultsChainRef = creatorHelper.createResultsChain();
+		selectResultsChain(project, diagramView, newResultsChainRef);
+	}
+
+	public static void selectResultsChain(Project project, DiagramView diagramView, ORef newResultsChainRef) throws Exception
+	{
+		int newTabIndex = diagramView.getTabIndex(newResultsChainRef);
 		ViewData viewData = project.getViewData(diagramView.cardName());
-		CommandSetObjectData setTabCommand = new CommandSetObjectData(ObjectType.VIEW_DATA, viewData.getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTabIndex));
+		
+		CommandSetObjectData setTabCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTabIndex));
 		project.executeCommand(setTabCommand);
+		
+		CommandSetObjectData setCurrentDiagram = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF, newResultsChainRef);
+		project.executeCommand(setCurrentDiagram);
 	}	
-	
 }

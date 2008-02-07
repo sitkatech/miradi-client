@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.ResultsChainDiagram;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -57,22 +58,26 @@ public class ShowResultsChainDoer extends ViewDoer
 			setToNormalMode();
 			showResultsChain(getDiagramView());
 		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 		finally
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 
-	public static void showResultsChain(DiagramView diagramView) throws CommandFailedException
+	public static void showResultsChain(DiagramView diagramView) throws Exception
 	{
 		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
 		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
 		
 		Strategy strategy = (Strategy) selectedFactors[0];
 		ORefList resultsChains = strategy.getResultsChains();
-		final int FIRST_IN_LIST = 0;
-		ORef firstChain = resultsChains.get(FIRST_IN_LIST);
-		diagramView.setDiagramTab(firstChain);
+		ORef firstChain = resultsChains.getRefForType(ResultsChainDiagram.getObjectType());
+		
+		CreateResultsChainDoer.selectResultsChain(diagramView.getProject(), diagramView, firstChain);
 	}
 
 	private void setToNormalMode() throws CommandFailedException
