@@ -65,6 +65,7 @@ import org.conservationmeasures.eam.objectpools.ThreatStressRatingPool;
 import org.conservationmeasures.eam.objectpools.TncProjectDataPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objectpools.WcpaProjectDataPool;
 import org.conservationmeasures.eam.objectpools.WcsProjectDataPool;
 import org.conservationmeasures.eam.objectpools.WwfProjectDataPool;
 import org.conservationmeasures.eam.objects.BaseObject;
@@ -134,6 +135,7 @@ public class ObjectManager
 		addNormalPool(new TncProjectDataPool(ida));
 		addNormalPool(new FosProjectDataPool(ida));
 		addNormalPool(new OrganizationPool(ida));
+		addNormalPool(new WcpaProjectDataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -429,6 +431,7 @@ public class ObjectManager
 		loadPool(ObjectType.TNC_PROJECT_DATA);
 		loadPool(ObjectType.FOS_PROJECT_DATA);
 		loadPool(ObjectType.ORGANIZATION);
+		loadPool(ObjectType.WCPA_PROJECT_DATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

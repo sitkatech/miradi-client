@@ -93,6 +93,7 @@ import org.conservationmeasures.eam.objects.TestThreatStressRating;
 import org.conservationmeasures.eam.objects.TestTncProjectData;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
+import org.conservationmeasures.eam.objects.TestWcpaProjectData;
 import org.conservationmeasures.eam.objects.TestWcsProjectData;
 import org.conservationmeasures.eam.objects.TestWwfProjectData;
 import org.conservationmeasures.eam.project.TestBudgetTimePeriodChanger;
@@ -302,6 +303,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTncProjectData.class));
 		suite.addTest(new TestSuite(TestFosProjectData.class));
 		suite.addTest(new TestSuite(TestOrganization.class));
+		suite.addTest(new TestSuite(TestWcpaProjectData.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

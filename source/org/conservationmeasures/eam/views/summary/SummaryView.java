@@ -82,6 +82,7 @@ public class SummaryView extends TabbedView
 		addMemberOrgTab("WCSPanel.html", new WCSSummaryPanel(getProject()));
 		addMemberOrgTab("RAREPanel.html", new RARESummaryPanel(getProject()));
 		addMemberOrgTab("FOSPanel.html", new FOSSummaryPanel(getProject()));
+		addMemberOrgTab("WCPAPanel.html", new WcpaSummaryPanel(getProject()));
 		addSummaryTab(new SummaryOtherOrgPanel(getProject(), metadata.getRef()));
 	}
 	
