@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.utils.HtmlViewPanel;
 import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.conservationmeasures.eam.views.noproject.RenameProject;
+import org.conservationmeasures.eam.views.noproject.RenameProjectDoer;
 import org.conservationmeasures.eam.views.umbrella.Definition;
 import org.conservationmeasures.eam.views.umbrella.DefinitionCommonTerms;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
@@ -188,7 +188,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	
 	private void renameProject(File projectDirectory) throws Exception
 	{
-		RenameProject.doIt(getMainWindow(), projectDirectory);
+		RenameProjectDoer.doIt(getMainWindow(), projectDirectory);
 		refresh();
 	}
 

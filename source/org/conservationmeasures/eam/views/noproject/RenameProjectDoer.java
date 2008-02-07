@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryLock;
 
-public class RenameProject
+public class RenameProjectDoer
 {
 	static public void doIt(MainWindow mainWindow, File projectToRename) throws Exception 
 	{

@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.wizard.noproject.projectlist;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.noproject.RenameProject;
+import org.conservationmeasures.eam.views.noproject.RenameProjectDoer;
 
 class ProjectListRenameAction extends ProjectListAction
 {
@@ -23,7 +23,7 @@ class ProjectListRenameAction extends ProjectListAction
 	{
 		try
 		{
-			RenameProject.doIt(EAM.getMainWindow(), getFile());
+			RenameProjectDoer.doIt(EAM.getMainWindow(), getFile());
 		}
 		catch(Exception e)
 		{
