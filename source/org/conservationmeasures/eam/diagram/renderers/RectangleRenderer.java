@@ -35,7 +35,7 @@ public class RectangleRenderer extends FactorRenderer
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
 		g.fillRect(rect.x, rect.y, rect.width, rect.height);
-		drawCommentTriangle(rect, color, g2);
+		drawCommentTriangle(g2, rect, color);
 		g2.setPaint(oldPaint);
 	}
 
