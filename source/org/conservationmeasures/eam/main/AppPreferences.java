@@ -356,16 +356,6 @@ public class AppPreferences
 		return map;
 	}
 	
-	public static Color getWizardBackgroundColor()
-	{
-		return WIZARD_BACKGROUND;
-	}
-
-	public static Color getWizardTitleBackground()
-	{
-		return WIZARD_TITLE_BACKGROUND;
-	}
-
 	public static Color getSideBarBackgroundColor()
 	{
 		return SIDEBAR_BACKGROUND;
@@ -384,6 +374,27 @@ public class AppPreferences
 	public static Color getDarkPanelBackgroundColor()
 	{
 		return DARK_PANEL_BACKGROUND;
+	}
+
+	
+	public static Color getWizardBackgroundColor()
+	{
+		return Color.decode(getWizardBackgroundColorForCss());
+	}
+
+	public static String getWizardBackgroundColorForCss()
+	{
+		return WIZARD_BACKGROUND_FOR_CSS;
+	}
+
+	public static String getWizardTitleBackgroundColorForCss()
+	{
+		return WIZARD_TITLE_BACKGROUND_FOR_CSS;
+	}
+	
+	public static Color getWizardTitleBackground()
+	{
+		return Color.decode(getWizardTitleBackgroundColorForCss());
 	}
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
@@ -413,10 +424,8 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
-	private static final Color WIZARD_BACKGROUND = new Color(0xd7, 0xfa, 0x92);
-	public static final String WIZARD_BACKGROUND_FOR_CSS = "#D7FA92";
-	private static final Color WIZARD_TITLE_BACKGROUND = new Color(153, 204, 51);
-	public static final String WIZARD_TITLE_BACKGROUND_FOR_CSS = "#99CC33";
+	private static final String WIZARD_BACKGROUND_FOR_CSS = "#D7FA92";
+	private static final String WIZARD_TITLE_BACKGROUND_FOR_CSS = "#99CC33";
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 

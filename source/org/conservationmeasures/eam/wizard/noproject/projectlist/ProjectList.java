@@ -71,7 +71,7 @@ public class ProjectList extends JPanel
 	{
 		public HtmlLabel(String text)
 		{
-			super("<html><span style='background-color: " + AppPreferences.WIZARD_BACKGROUND_FOR_CSS + ";'" + text + "</span></html>");
+			super("<html><span style='background-color: " + AppPreferences.getWizardBackgroundColorForCss() + ";'" + text + "</span></html>");
 		}
 	}
 	

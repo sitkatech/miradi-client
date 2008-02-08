@@ -34,6 +34,6 @@ public class WizardHtmlViewer extends MiradiHtmlViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {background-color: " + AppPreferences.WIZARD_BACKGROUND_FOR_CSS + ";}",
+		"body {background-color: " + AppPreferences.getWizardBackgroundColorForCss() + ";}",
 	};
 }
