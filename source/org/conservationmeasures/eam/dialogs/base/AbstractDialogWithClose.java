@@ -104,7 +104,7 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	
 	protected void createDirectionsButton(Box buttonBar)
 	{
-		UiButton  help = new PanelButton(new ActionDirections(EAM.text("Directions")));
+		UiButton  help = new PanelButton(new ActionDirections());
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 	}
@@ -119,9 +119,9 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	protected class ActionDirections extends EAMAction
 	{
 
-		public ActionDirections(String label)
+		public ActionDirections()
 		{
-			super(label, "icons/directions.png");
+			super(EAM.text("Instructions"), "icons/directions.png");
 		}
 		
 		public void doAction() throws CommandFailedException
