@@ -17,7 +17,7 @@ public class ActionCopyProjectTo extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Save Project As...");
+		return EAM.text("Action|Copy Project To...");
 	}
 
 	public String getToolTipText()
