@@ -32,7 +32,6 @@ import org.conservationmeasures.eam.actions.ActionEditIndicatorProgressReports;
 import org.conservationmeasures.eam.actions.ActionEditMethods;
 import org.conservationmeasures.eam.actions.ActionEditStrategyProgressReports;
 import org.conservationmeasures.eam.actions.ActionExit;
-import org.conservationmeasures.eam.actions.ActionExportProjectReportFile;
 import org.conservationmeasures.eam.actions.ActionExportProjectXml;
 import org.conservationmeasures.eam.actions.ActionExportTable;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
@@ -299,7 +298,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionPreferences.class, new Preferences());
 		addDoerToMap(ActionExportZippedProjectFile.class, new ExportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
-		addDoerToMap(ActionExportProjectReportFile.class, new ExportProjectReportFileDoer());
 		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
 		addDoerToMap(ActionExportTable.class, new ExportTableDoer());
 		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageDoer());
