@@ -5,6 +5,7 @@
 */ 
 package org.conservationmeasures.eam.layout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class OneRowPanel extends JPanel
@@ -12,5 +13,21 @@ public class OneRowPanel extends JPanel
 	public OneRowPanel()
 	{
 		super(new OneRowGridLayout());
+	}
+	
+	public void setMargins(int margin)
+	{
+		getGridLayout().setMargins(margin);
+	}
+	
+	public void setAlignmentRight()
+	{
+		add(new JLabel(" "), 0);
+		getGridLayout().setColWeight(0, 1);
+	}
+
+	public OneRowGridLayout getGridLayout()
+	{
+		return (OneRowGridLayout)getLayout();
 	}
 }

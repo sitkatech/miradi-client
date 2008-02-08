@@ -16,4 +16,15 @@ public class OneRowGridLayout extends GridLayoutPlus
 		setFill(Alignment.FILL_NONE);
 		setAlignment(Alignment.NORTH);
 	}
+	
+	public void setMargins(int margin)
+	{
+		hMargin = margin;
+		vMargin = margin;
+	}
+	
+	public void setAlignmentRight()
+	{
+		setAlignment(Alignment.EAST);
+	}
 }
