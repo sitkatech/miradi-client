@@ -193,9 +193,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		TwoLevelEntry[] colors = colorsLoader.load(is);
 		for (int i = 0; i < colors.length; ++i)
 		{
-			TwoLevelEntry twoLevelEntry = colors[i];
-			if (twoLevelEntry.getEntryCode().equals("wizardTitleBackgroundColor"))
-				getAppPreferences().setWizardTitleBackground(twoLevelEntry.getEntryDescription());
+			TwoLevelEntry colorEntry = colors[i];
+			if (colorEntry.getEntryCode().equals("wizardTitleBackgroundColor"))
+				getAppPreferences().setWizardTitleBackground(colorEntry.getEntryDescription());
 		}
 	}
 		
