@@ -17,7 +17,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import javax.swing.Box;
@@ -185,32 +184,40 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 
-	private void loadCustomAppColors() throws FileNotFoundException, Exception
+	private void loadCustomAppColors()
 	{
-		File home = EAM.getHomeDirectory();
-		FileInputStream is = new FileInputStream(new File(home, TwoLevelFileLoader.COLORS_FILE));
-		ColorsFileLoader colorsLoader = new ColorsFileLoader();
-		TwoLevelEntry[] colors = colorsLoader.load(is);
-		for (int i = 0; i < colors.length; ++i)
+		try
 		{
-			TwoLevelEntry colorEntry = colors[i];
-			if (colorEntry.getEntryCode().equals("WizardBorder"))
-				getAppPreferences().setWizardTitleBackground(colorEntry.getEntryDescription());
-			
-			if (colorEntry.getEntryCode().equals("WizardPanel"))
-				getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryDescription());
-			
-			if (colorEntry.getEntryCode().equals("Sidebar"))
-				getAppPreferences().setSideBarBackgroundColor(colorEntry.getEntryDescription());
-			
-			if (colorEntry.getEntryCode().equals("DataBorder"))
-				getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryDescription());
-				
-			if (colorEntry.getEntryCode().equals("DataPanel"))
-				getAppPreferences().setDataPanelBackgroundColor(colorEntry.getEntryDescription());
-			
-			if (colorEntry.getEntryCode().equals("ControlBar"))
-				getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryDescription());
+			File home = EAM.getHomeDirectory();
+			FileInputStream is = new FileInputStream(new File(home, TwoLevelFileLoader.COLORS_FILE));
+			ColorsFileLoader colorsLoader = new ColorsFileLoader();
+			TwoLevelEntry[] colors = colorsLoader.load(is);
+			for (int i = 0; i < colors.length; ++i)
+			{
+				TwoLevelEntry colorEntry = colors[i];
+				if (colorEntry.getEntryCode().equals("WizardBorder"))
+					getAppPreferences().setWizardTitleBackground(colorEntry.getEntryDescription());
+
+				if (colorEntry.getEntryCode().equals("WizardPanel"))
+					getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryDescription());
+
+				if (colorEntry.getEntryCode().equals("Sidebar"))
+					getAppPreferences().setSideBarBackgroundColor(colorEntry.getEntryDescription());
+
+				if (colorEntry.getEntryCode().equals("DataBorder"))
+					getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryDescription());
+
+				if (colorEntry.getEntryCode().equals("DataPanel"))
+					getAppPreferences().setDataPanelBackgroundColor(colorEntry.getEntryDescription());
+
+				if (colorEntry.getEntryCode().equals("ControlBar"))
+					getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryDescription());
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.logWarning("Failed to load custom colors");
 		}
 	}
 		
