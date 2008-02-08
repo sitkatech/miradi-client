@@ -14,7 +14,7 @@ public class WizardTitleHtmlViewer extends MiradiHtmlViewer
 	public WizardTitleHtmlViewer(MainWindow mainWindow)
 	{
 		super(mainWindow, null);
-		setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		setBackground(AppPreferences.getWizardTitleBackground());
 	}
 
 }

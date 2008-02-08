@@ -34,7 +34,7 @@ public class ProjectList extends JPanel
 		setLayout(layout);
 		
 		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		setBackground(AppPreferences.WIZARD_BACKGROUND);
+		setBackground(AppPreferences.getWizardBackgroundColor());
 		refresh();
 	}
 	

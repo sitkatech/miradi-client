@@ -25,7 +25,7 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 	{	
 		super();
 		project = projectToUse;
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		addActionListener(this);
 	}
 

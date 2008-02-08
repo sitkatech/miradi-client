@@ -34,10 +34,10 @@ public class NoProjectWizardProjectCreateStep extends NoProjectWizardStep
 		left.add(projectList, BorderLayout.CENTER);
 		
 		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));
-		mainPanel.setBackground(AppPreferences.WIZARD_BACKGROUND);
+		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
 		mainPanel.add(left);
 		JPanel rightSidePanel = new JPanel();
-		rightSidePanel.setBackground(AppPreferences.WIZARD_BACKGROUND);
+		rightSidePanel.setBackground(AppPreferences.getWizardBackgroundColor());
 		mainPanel.add(rightSidePanel);
 		
 		add(mainPanel, BorderLayout.CENTER);

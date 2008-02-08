@@ -98,7 +98,7 @@ public class HyperlinkLabel extends PanelTitleLabel implements MouseListener
 		}
 	}
 	
-	Color NORMAL_BACKGROUND = AppPreferences.WIZARD_BACKGROUND;
+	Color NORMAL_BACKGROUND = AppPreferences.getWizardBackgroundColor();
 	Color HOVER_BACKGROUND = Color.LIGHT_GRAY;
 	String url;
 	String text;

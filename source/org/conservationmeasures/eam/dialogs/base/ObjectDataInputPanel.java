@@ -85,7 +85,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		super.addField(field);
 		addLabel(field.getObjectType(), field.getTag());
 		Box box = Box.createHorizontalBox();
-		box.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.add(field.getComponent());
 		box.add(Box.createHorizontalStrut(20));
 		box.add(new PanelTitleLabel(hint));
@@ -96,7 +96,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	protected void addFieldsOnOneLine(String fieldTag, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		addLabelWithIcon(fieldTag, icon);
 		add(fieldPanel);
 	}
@@ -104,7 +104,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	protected void addFieldsOnOneLine(String fieldTag, Icon icon, String[] fieldLabelTexts, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fieldLabelTexts, fields);		
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		addLabelWithIcon(fieldTag, icon);
 		add(fieldPanel);
 	}
@@ -114,7 +114,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	protected void addFieldsOnOneLine(String label, Object[] components)
 	{
 		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < components.length; i+=2)
 		{
 			ObjectDataInputField objectDataInputField = (ObjectDataInputField) components[i];
@@ -157,7 +157,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
 			super.addField(fields[i]);
@@ -171,7 +171,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	private JPanel createFieldPanel(String labelTexts[], ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
 			super.addField(fields[i]);
@@ -186,7 +186,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		super.addField(field);
 		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		UiButton button = new UiButton(action);
 		fieldPanel.add(button);
@@ -199,7 +199,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		super.addField(field);
 		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
 		addLabel(label);
@@ -238,7 +238,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	public void addFieldComponent(Component component)
 	{
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
 	}

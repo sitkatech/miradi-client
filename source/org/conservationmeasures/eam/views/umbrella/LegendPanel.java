@@ -45,7 +45,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		super(new BasicGridLayout(0, 1));
 		project = projectToUse;
 		checkBoxes = new Hashtable();
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
 	
 	protected void saveSettingsToProject(String tag)

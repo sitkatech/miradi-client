@@ -27,7 +27,7 @@ public class PanelCheckBox extends UiCheckBox
 	{
 		super(fieldLabel);
 		setFont(getMainWindow().getUserDataPanelFont());
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
 	
 	//TODO: Richard: should not use static ref here

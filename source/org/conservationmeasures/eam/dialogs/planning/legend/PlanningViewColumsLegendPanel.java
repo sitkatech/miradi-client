@@ -40,7 +40,7 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
-		panel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		panel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 
 		CodeList masterList = ColumnManager.getMasterColumnList();
 		for (int i = 0; i < masterList.size(); ++i)

@@ -20,7 +20,7 @@ public class LeftSideTextPanel extends JPanel
 	{
 		super(new BorderLayout());
 		String html = htmlToUse;
-		setBackground(AppPreferences.WIZARD_BACKGROUND);
+		setBackground(AppPreferences.getWizardBackgroundColor());
 		viewer = new WizardHtmlViewer(mainWindow, wizardToUse);
 		viewer.setText(html);
 

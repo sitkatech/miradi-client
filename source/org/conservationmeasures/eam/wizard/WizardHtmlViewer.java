@@ -17,7 +17,7 @@ public class WizardHtmlViewer extends MiradiHtmlViewer
 	public WizardHtmlViewer(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
 		super(mainWindow, hyperLinkHandler);
-		setBackground(AppPreferences.WIZARD_BACKGROUND);
+		setBackground(AppPreferences.getWizardBackgroundColor());
 	}
 
 	public void customizeStyleSheet(StyleSheet style)

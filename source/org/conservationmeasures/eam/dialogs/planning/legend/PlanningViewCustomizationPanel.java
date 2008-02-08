@@ -37,7 +37,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		super(new GridLayoutPlus(3, 2));
 		project = projectToUse;
 
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		rebuildCustomizationPanel();
 		setBorder(new PanelTitledBorder(EAM.text("Planning Views")));
 		project.addCommandExecutedListener(this);

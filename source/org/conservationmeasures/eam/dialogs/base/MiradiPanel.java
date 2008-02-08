@@ -22,6 +22,6 @@ public class MiradiPanel extends JPanel
 	{
 		super(layout);
 		
-		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}	
 }
