@@ -13,11 +13,12 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Set;
 
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.FastScrollPane;
 import org.conservationmeasures.eam.utils.JasperReportFileFilter;
 import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
@@ -44,7 +46,6 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		
 		mainWindow = mainWindowToUse;
 		
-		createButtonHashMap();
 		setLeftComponent(createReportSelectionPanel());
 		setRightComponent(new JPanel());
 	}
@@ -82,18 +83,16 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		
 		return reportPanel;
 	}
-	
+
 	private JPanel createReportSelectionPanel()
 	{
 		JPanel selectionPanel = new JPanel(new BasicGridLayout(0, 1));
 		
-		Set keys = buttonHashMap.keySet();
-		for(Object key : keys)
-		{
-			PanelButton reportButton = new PanelButton(key.toString());
-			reportButton.addActionListener(new BuiltInReportHandler());
-			selectionPanel.add(reportButton);
-		}
+		reportSelectionTableModel = new ReportSelectionTableModel();
+		table = new ReportSelectionTable(reportSelectionTableModel);
+		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
+		FastScrollPane scroller = new FastScrollPane(table);
+		selectionPanel.add(scroller);
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
 		customReportButton.addActionListener(new CustomReportHandler());
@@ -102,14 +101,6 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		selectionPanel.add(customReportButton);
 		
 		return selectionPanel;
-	}
-	
-	private void createButtonHashMap()
-	{
-		buttonHashMap = new HashMap<String, String>();
-		buttonHashMap.put("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper");
-		buttonHashMap.put("Results Chains Report", "/reports/AllResultsChainsReport.jasper");
-		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
 	}
 	
 	public class CustomReportHandler implements ActionListener
@@ -159,21 +150,16 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		}
 	}
 	
-	public  class BuiltInReportHandler implements ActionListener
+	public class TableSelectionListener implements ListSelectionListener
 	{
-		public void actionPerformed(ActionEvent event)
-		{
-			addCreatedReport(event);
-		}
-
-		private void addCreatedReport(ActionEvent event)
+		public void valueChanged(ListSelectionEvent event)
 		{
 			Cursor cursor = getMainWindow().getCursor();
 			mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			try
 			{
-				PanelButton source = (PanelButton) event.getSource();
-				String value = buttonHashMap.get(source.getText()).toString();
+				int selectedRow = table.getSelectedRow();
+				String value = reportSelectionTableModel.getReportDirForRow(selectedRow);
 				resetReportPanel(value);
 			}
 			catch (Exception e)
@@ -204,8 +190,10 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		return mainWindow;
 	}
 	
-	private HashMap buttonHashMap;
 	private MainWindow mainWindow;
+	
+	private ReportSelectionTableModel reportSelectionTableModel;
+	private ReportSelectionTable table;
 	
 	private static final String UNIQUE_SPLITTER_NAME = "ReportSplitPaneName";
 	public static final String CUSTOM_REPORTS_DIR_NAME = "CustomReports";
