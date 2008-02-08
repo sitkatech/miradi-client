@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.reports;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -32,6 +33,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.JasperReportFileFilter;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.util.DirectoryUtils;
@@ -84,17 +86,18 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 
 	private JPanel createReportSelectionPanel()
 	{
-
 		OneColumnPanel selectionPanel = new OneColumnPanel();
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
 		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
+		MiradiScrollPane scroller = new MiradiScrollPane(table);
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
+		customReportButton.setMinimumSize(new Dimension(0, 0));
 		customReportButton.addActionListener(new CustomReportHandler());
 
-		selectionPanel.add(table);
+		selectionPanel.add(scroller);
 		selectionPanel.add(customReportButton);
 		
 		return selectionPanel;
