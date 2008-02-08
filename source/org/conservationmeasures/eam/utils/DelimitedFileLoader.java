@@ -35,7 +35,8 @@ public class DelimitedFileLoader
 				String token = st.nextToken().trim();
 				addElementToLine(thisLine, token);
 			}
-			lineVector.add(thisLine);
+			if(thisLine.size() > 0)
+				lineVector.add(thisLine);
 		}
 		reader.close();
 		return lineVector;
