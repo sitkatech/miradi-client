@@ -5,6 +5,8 @@
 */ 
 package org.conservationmeasures.eam.views.reports;
 
+import java.awt.Dimension;
+
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
@@ -19,8 +21,10 @@ public class ReportSelectionTable extends TableWithRowHeightSaver
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		setMinimumSize(new Dimension(0, 0));
 	}
-
+	
 	@Override
 	public String getUniqueTableIdentifier()
 	{
