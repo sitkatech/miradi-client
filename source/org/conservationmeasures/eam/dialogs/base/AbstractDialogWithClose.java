@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
@@ -55,7 +55,7 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	// AbstractDialogWithScrollingAndClose as separate classes
 	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
 	{
-		FastScrollPane mainScrollPane = new FastScrollPane(mainPanel);
+		MiradiScrollPane mainScrollPane = new MiradiScrollPane(mainPanel);
 		return mainScrollPane;
 	}
 	

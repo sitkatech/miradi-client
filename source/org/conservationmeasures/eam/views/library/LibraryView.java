@@ -10,7 +10,7 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.MiradiResourceImageIcon;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.wizard.WizardPanel;
@@ -49,7 +49,7 @@ public class LibraryView extends TabbedView
 			String mapName = demoMaps[i] + ".jpg";
 			JLabel image = new JLabel(new MiradiResourceImageIcon("images/" + mapName));
 			image.setName(demoMaps[i]);
-			addTab(image.getName(), new FastScrollPane(image));
+			addTab(image.getName(), new MiradiScrollPane(image));
 		}
 		
 	}

@@ -14,7 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 
 public class RelevancyOverrideListField extends ObjectDataInputField implements ListSelectionListener
 {
@@ -24,7 +24,7 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 		
 		tag = tagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);
-		refListScroller = new FastScrollPane(refListEditor);
+		refListScroller = new MiradiScrollPane(refListEditor);
 		Dimension preferredSize = refListScroller.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
 		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 200;
@@ -60,6 +60,6 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	}
 	
 	protected RefListComponent refListEditor;
-	private FastScrollPane refListScroller;
+	private MiradiScrollPane refListScroller;
 	String tag;
 }

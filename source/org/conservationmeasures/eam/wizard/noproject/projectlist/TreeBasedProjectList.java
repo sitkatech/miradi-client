@@ -17,7 +17,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.wizard.noproject.FileSystemTreeNode;
 import org.conservationmeasures.eam.wizard.noproject.NoProjectWizardStep;
 import org.martus.swing.UiButton;
@@ -46,7 +46,7 @@ public class TreeBasedProjectList extends JPanel
 			buttonBar.add(new UiButton(action));		
 		}
 		
-		add(new FastScrollPane(table), BorderLayout.CENTER);
+		add(new MiradiScrollPane(table), BorderLayout.CENTER);
 		add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
 		table.getSelectionModel().addListSelectionListener(new ActionUpdater());

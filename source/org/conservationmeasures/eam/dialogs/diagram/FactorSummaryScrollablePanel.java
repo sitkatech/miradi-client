@@ -11,14 +11,14 @@ import org.conservationmeasures.eam.dialogs.base.ModelessDialogPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.DiagramFactor;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 
 public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 {
 	public FactorSummaryScrollablePanel(MainWindow mainWindowToUse, DiagramFactor diagramFactorToUse) throws Exception
 	{
 		summaryPanel = new FactorSummaryPanel(mainWindowToUse, diagramFactorToUse);
-		FastScrollPane summaryScrollPane = new FastScrollPane(summaryPanel);
+		MiradiScrollPane summaryScrollPane = new MiradiScrollPane(summaryPanel);
 		add(summaryScrollPane);
 	}
 	

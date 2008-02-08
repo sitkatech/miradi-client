@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.objects.DiagramFactor;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiList;
@@ -73,8 +73,8 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		layout.setAlignment(Alignment.CENTER);
 		JPanel vbox = new JPanel(layout);
 		
-		FastScrollPane fromScroller = createScroller(linkFromList);
-		FastScrollPane toScroller = createScroller(linkToList);
+		MiradiScrollPane fromScroller = createScroller(linkFromList);
+		MiradiScrollPane toScroller = createScroller(linkToList);
 		
 		Box box = Box.createHorizontalBox();
 		Component[] components = {
@@ -107,14 +107,14 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		return vbox;
 	}
 	
-	private FastScrollPane createScroller(UiList listToWrap)
+	private MiradiScrollPane createScroller(UiList listToWrap)
 	{
 		Dimension baseDimension = listToWrap.getPreferredScrollableViewportSize();
 		final int ARBITRARY_REASONABLE_WIDTH = 300;
 		final int ARBITRARY_REASONABLE_HEIGHT = 400;
 		int width = Math.min(ARBITRARY_REASONABLE_WIDTH, baseDimension.width);
 		int height = Math.min(ARBITRARY_REASONABLE_HEIGHT, baseDimension.height);
-		FastScrollPane scroller = new FastScrollPane(listToWrap);
+		MiradiScrollPane scroller = new MiradiScrollPane(listToWrap);
 		scroller.getViewport().setPreferredSize(new Dimension(width, height));
 		return scroller;
 	}

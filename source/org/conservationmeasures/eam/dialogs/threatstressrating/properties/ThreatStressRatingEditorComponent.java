@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
@@ -41,7 +41,7 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	private void addTablesWithManageStressesButton()
 	{
-		FastScrollPane resourceScroller = new FastScrollPane(threatStressRatingTable);
+		MiradiScrollPane resourceScroller = new MiradiScrollPane(threatStressRatingTable);
 		add(createButtonPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(resourceScroller, BorderLayout.CENTER);
 	}

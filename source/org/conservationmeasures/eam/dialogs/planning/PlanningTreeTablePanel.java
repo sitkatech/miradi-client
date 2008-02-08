@@ -53,7 +53,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.utils.ExportableTableInterface;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.MultiTableCombinedAsOneExporter;
 import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
 import org.conservationmeasures.eam.utils.MultipleTableSelectionController;
@@ -86,7 +86,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		mainPanel = new JPanel(new BasicGridLayout(1, 4));
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
-		mainScrollPane = new FastScrollPane(mainPanel);
+		mainScrollPane = new MiradiScrollPane(mainPanel);
 		treeTableScrollPane.addMouseWheelListener(this);
 		listenForColumnWidthChanges(getTree());
 		add(mainScrollPane);
@@ -94,13 +94,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		selectionController = new MultipleTableSelectionController();
 		
 		createRightSideTables(treeToUse);
-		annualTotalsScrollPane = new FastScrollPane(annualTotalsTable);
+		annualTotalsScrollPane = new MiradiScrollPane(annualTotalsTable);
 		rebuildSyncedTable(treeToUse, annualTotalsScrollPane, annualTotalsTable);
 		
-		measurementScrollPane = new FastScrollPane(measurementTable);
+		measurementScrollPane = new MiradiScrollPane(measurementTable);
 		rebuildSyncedTable(treeToUse, measurementScrollPane, measurementTable);
 		
-		futureStatusScrollPane = new FastScrollPane(futureStatusTable);
+		futureStatusScrollPane = new MiradiScrollPane(futureStatusTable);
 		rebuildSyncedTable(treeToUse, futureStatusScrollPane, futureStatusTable);
 		
 		rebuildEntireTreeTable();
@@ -134,13 +134,13 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		table.getColumnModel().addColumnModelListener(this);
 	}
 	
-	private void turnOffVerticalHorizontalScrolling(FastScrollPane scrollPaneToUse)
+	private void turnOffVerticalHorizontalScrolling(MiradiScrollPane scrollPaneToUse)
 	{
 		scrollPaneToUse.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneToUse.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
 	
-	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, FastScrollPane scrollPaneToUse, JTable tableToUse)
+	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, MiradiScrollPane scrollPaneToUse, JTable tableToUse)
 	{
 		scrollPaneToUse.addMouseWheelListener(this);
 		tableToUse.setRowHeight(treeTableToUse.getRowHeight());	
@@ -382,10 +382,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTable futureStatusTable;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	private FastScrollPane annualTotalsScrollPane;
-	private FastScrollPane measurementScrollPane;
-	private FastScrollPane futureStatusScrollPane;
-	private FastScrollPane mainScrollPane;
+	private MiradiScrollPane annualTotalsScrollPane;
+	private MiradiScrollPane measurementScrollPane;
+	private MiradiScrollPane futureStatusScrollPane;
+	private MiradiScrollPane mainScrollPane;
 	
 	private MultiTableRowHeightController rowHeightController;
 	private MultiTableCombinedAsOneExporter multiTableExporter;

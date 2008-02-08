@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.questions.ChoiceQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 
 public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
 {
@@ -28,7 +28,7 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		codeListEditor = new CodeListComponent(questionToUse, columnCount, this);
-		component = new FastScrollPane(codeListEditor);
+		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
 		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 200;
@@ -70,5 +70,5 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	}
 	
 	CodeListComponent codeListEditor;
-	FastScrollPane component; 
+	MiradiScrollPane component; 
 }

@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.objects.DiagramLink;
 import org.conservationmeasures.eam.objects.DiagramObject;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.martus.swing.UiLabel;
 
@@ -53,7 +53,7 @@ abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane imp
 		reloadDiagramCards(objectType);
 		
 		setLeftComponent(createLeftPanel(objectType));
-		setRightComponent(new FastScrollPane(diagramCards));
+		setRightComponent(new MiradiScrollPane(diagramCards));
 		
 		project.addCommandExecutedListener(this);		
 	}
@@ -105,7 +105,7 @@ abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane imp
 		
 		selectionPanel = createPageList(mainWindow);
 		selectionPanel.listChanged();
-		JScrollPane selectionScrollPane = new FastScrollPane(selectionPanel);
+		JScrollPane selectionScrollPane = new MiradiScrollPane(selectionPanel);
 		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		selectionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		Border cushion = BorderFactory.createEmptyBorder(5,5,5,5);
@@ -114,7 +114,7 @@ abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane imp
 		selectionScrollPane.setMinimumSize(new Dimension(0,0));
 
 		legendPanel = createLegendPanel(mainWindow);
-		scrollableLegendPanel = new FastScrollPane(legendPanel);
+		scrollableLegendPanel = new MiradiScrollPane(legendPanel);
 		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableLegendPanel.setMinimumSize(new Dimension(0,0));

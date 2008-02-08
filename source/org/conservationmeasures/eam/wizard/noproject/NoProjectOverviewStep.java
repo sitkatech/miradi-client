@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.wizard.WizardPanel;
 
 public class NoProjectOverviewStep extends NoProjectWizardStep
@@ -30,7 +30,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		left.add(projectList, BorderLayout.CENTER);
 		
 		NewsPanel newsPanel = new NewsPanel(getMainWindow(), this);
-		FastScrollPane newsScrollPane = new FastScrollPane(newsPanel);
+		MiradiScrollPane newsScrollPane = new MiradiScrollPane(newsPanel);
 		newsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));

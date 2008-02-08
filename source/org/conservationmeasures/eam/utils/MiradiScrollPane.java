@@ -8,9 +8,8 @@ package org.conservationmeasures.eam.utils;
 import java.awt.Component;
 
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.martus.swing.UiScrollPane;
 
-public class MiradiScrollPane extends UiScrollPane
+public class MiradiScrollPane extends FastScrollPane
 {
 	public MiradiScrollPane(Component view)
 	{
