@@ -13,7 +13,6 @@ import java.awt.event.KeyListener;
 import java.io.File;
 
 import javax.swing.AbstractAction;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -57,7 +56,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		projectList = new ProjectListPanel(getMainWindow(), this);
 		
 		setBackground(AppPreferences.WIZARD_BACKGROUND);
-		setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 	}
 	
 	public void refresh() throws Exception
