@@ -19,7 +19,9 @@ import org.conservationmeasures.eam.dialogs.treetables.TreeTableWithStateSaving;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.KeyEcologicalAttribute;
+import org.conservationmeasures.eam.objects.Measurement;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -53,24 +55,35 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		
 		final boolean wereIndicatorNodesAddedOrRemoved = 
 			event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+
+		final boolean wereMeasuremetNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
 		
-		final boolean wereNodesAddedOrRemoved = wereKEANodesAddedOrRemoved || wereIndicatorNodesAddedOrRemoved;
-		
+		final boolean wereNodesAddedOrRemoved = wereKEANodesAddedOrRemoved || 
+												wereIndicatorNodesAddedOrRemoved ||
+												wereMeasuremetNodesAddedOrRemoved;
 		if( wereNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
-			repaint();
 		} 
 		else if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_EXPANSION_LIST))
 		{
 			restoreTreeExpansionState();	
 		}
-		else if(isSelectedObjectModification(event))
+		
+		validateModifiedObject(event, KeyEcologicalAttribute.getObjectType());
+		validateModifiedObject(event, Target.getObjectType());
+		validateModifiedObject(event, Indicator.getObjectType());
+		validateModifiedObject(event, Measurement.getObjectType());
+		
+		repaintAncestor();	
+	}
+	
+	private void validateModifiedObject(CommandExecutedEvent event, int type)
+	{
+		if(isSelectedObjectModification(event, type))
 		{
 			validate();
-			if (getTopLevelAncestor() != null)
-				getTopLevelAncestor().repaint();	
 		}
 	}
 

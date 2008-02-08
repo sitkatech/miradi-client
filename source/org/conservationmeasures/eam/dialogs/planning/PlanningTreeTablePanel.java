@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
@@ -164,14 +165,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeTable();
 			
-			if(isSelectedObjectModification(event))
+			if(isSelectedObjectModification(event, Assignment.getObjectType()))
 				validate();
 		
-
-			// NOTE: The following is required to resize the table when 
-			// it grows due to a node being expanded (MRD-1123)
-			if (getTopLevelAncestor() != null)
-				getTopLevelAncestor().repaint();
+			repaintAncestor();
 		}
 		catch(Exception e)
 		{
@@ -180,7 +177,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		}
 		
 	}
-	
+
 	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
 		if(PlanningView.isRowOrColumnChangingCommand(event))

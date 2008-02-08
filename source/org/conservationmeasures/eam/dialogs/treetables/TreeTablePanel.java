@@ -25,10 +25,9 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.martus.swing.UiButton;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -169,7 +168,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return true;
 	}
 
-	protected boolean isSelectedObjectModification(CommandExecutedEvent event)
+	protected boolean isSelectedObjectModification(CommandExecutedEvent event, int typeToCheck)
 	{
 		if (! event.isSetDataCommand())
 			return false;
@@ -184,7 +183,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		int setType = setCommand.getObjectType();
-		if(setType == Assignment.getObjectType())
+		if(setType == typeToCheck)
 			return true;
 		
 		String setField = setCommand.getFieldTag();
@@ -195,6 +194,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		boolean sameType = (selectedObject.getType() == setType);
 		boolean containsField = (fields.contains(setField));
 		return (sameType && containsField);
+	}
+
+	protected void repaintAncestor()
+	{
+		// NOTE: The following is required to resize the table when 
+		// it grows due to a node being expanded (MRD-1123)
+		if (getTopLevelAncestor() != null)
+			getTopLevelAncestor().repaint();
 	}
 
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
