@@ -27,7 +27,7 @@ public class ReportSelectionTableModel extends AbstractTableModel
 	@Override
 	public String getColumnName(int column)
 	{
-		return EAM.text("Reports");
+		return EAM.text("Report");
 	}
 	
 	public int getRowCount()
