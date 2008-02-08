@@ -384,17 +384,22 @@ public class AppPreferences
 
 	public static String getWizardBackgroundColorForCss()
 	{
-		return WIZARD_BACKGROUND_FOR_CSS;
+		return wizardBackgroundColor;
 	}
 
 	public static String getWizardTitleBackgroundColorForCss()
 	{
-		return WIZARD_TITLE_BACKGROUND_FOR_CSS;
+		return wizardTitleBackgroundColor;
 	}
 	
 	public static Color getWizardTitleBackground()
 	{
 		return Color.decode(getWizardTitleBackgroundColorForCss());
+	}
+	
+	public void setWizardTitleBackground(String colorToUse)
+	{
+		wizardTitleBackgroundColor = colorToUse;
 	}
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
@@ -424,8 +429,8 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
-	private static final String WIZARD_BACKGROUND_FOR_CSS = "#D7FA92";
-	private static final String WIZARD_TITLE_BACKGROUND_FOR_CSS = "#99CC33";
+	private static String wizardBackgroundColor = "#D7FA92";
+	private static String wizardTitleBackgroundColor = "#99CC33";
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 

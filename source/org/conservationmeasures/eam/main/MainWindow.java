@@ -16,6 +16,8 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import javax.swing.Box;
@@ -38,9 +40,12 @@ import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.menu.MainMenuBar;
+import org.conservationmeasures.eam.objecthelpers.ColorsFileLoader;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelEntry;
+import org.conservationmeasures.eam.objecthelpers.TwoLevelFileLoader;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
@@ -107,6 +112,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		ToolTipManager.sharedInstance().setReshowDelay(0);
 		
+		loadCustomAppColors();
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
@@ -178,8 +184,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
 	}
-	
-	
+
+	private void loadCustomAppColors() throws FileNotFoundException, Exception
+	{
+		File home = EAM.getHomeDirectory();
+		FileInputStream is = new FileInputStream(new File(home, TwoLevelFileLoader.COLORS_FILE));
+		ColorsFileLoader colorsLoader = new ColorsFileLoader();
+		TwoLevelEntry[] colors = colorsLoader.load(is);
+		for (int i = 0; i < colors.length; ++i)
+		{
+			TwoLevelEntry twoLevelEntry = colors[i];
+			if (twoLevelEntry.getEntryCode().equals("wizardTitleBackgroundColor"))
+				getAppPreferences().setWizardTitleBackground(twoLevelEntry.getEntryDescription());
+		}
+	}
+		
 	private void displayExpirationNoticeIfAppropriate()
 	{
 		MultiCalendar now = new MultiCalendar();

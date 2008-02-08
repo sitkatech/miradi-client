@@ -30,6 +30,14 @@ abstract public class TwoLevelFileLoader
 		return table;
 	}
 
+	public TwoLevelEntry[] load(InputStream is) throws Exception
+	{
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		TwoLevelEntry[] table = getTaxomonies(reader);
+		reader.close();
+		return table;
+	}
+	
 	public TwoLevelEntry[] load(BufferedReader reader) throws Exception
 	{
 		return getTaxomonies(reader);
@@ -61,4 +69,5 @@ abstract public class TwoLevelFileLoader
 	public final static String TNC_TERRESTRIAL_ECO_REGION_FILE = "TncTerrestrialEcoRegions.txt";
 	public final static String TNC_MARINE_ECO_REGION_FILE = "TncMarineEcoRegions.txt";
 	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.txt";
+	public final static String COLORS_FILE = "colors.txt";
 }
