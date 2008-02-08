@@ -135,6 +135,7 @@ public class Actions
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionCopyProjectTo(mainWindow));
+		registerAction(new ActionHowToSave(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));

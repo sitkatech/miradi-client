@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.actions.ActionHelpButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionHelpCMPStandards;
 import org.conservationmeasures.eam.actions.ActionHelpComingAttractions;
 import org.conservationmeasures.eam.actions.ActionHelpCredits;
+import org.conservationmeasures.eam.actions.ActionHowToSave;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -109,6 +110,7 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
 		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
 		
