@@ -8,8 +8,10 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 
 import org.conservationmeasures.eam.dialogs.base.AbstractObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.PlanningIcon;
 import org.conservationmeasures.eam.layout.OneColumnGridLayout;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -38,6 +40,12 @@ public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Planning");
+	}
+	
+	@Override
+	public Icon getIcon()
+	{
+		return new PlanningIcon();
 	}
 
 	public void addFieldComponent(Component component)
