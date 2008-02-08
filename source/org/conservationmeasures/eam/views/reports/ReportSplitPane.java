@@ -94,6 +94,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		table = new ReportSelectionTable(reportSelectionTableModel);
 		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
 		MiradiScrollPane scroller = new MiradiScrollPane(table);
+		scroller.setMinimumSize(new Dimension(0, 0));
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
 		customReportButton.setMinimumSize(new Dimension(0, 0));
