@@ -52,7 +52,7 @@ import org.conservationmeasures.eam.objects.PlanningViewConfiguration;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ExportableTableInterface;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.MiradiTabContentsPanelInterface;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.planning.doers.AddAssignmentDoer;
@@ -102,7 +102,7 @@ public class PlanningView extends TabbedView
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
-		FastScrollPane controlBarScrollPane = new FastScrollPane(controlPanel);
+		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);
 		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
@@ -115,7 +115,7 @@ public class PlanningView extends TabbedView
 	
 	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
 	{
-		public MainPlanningPanel(FastScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
+		public MainPlanningPanel(MiradiScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
 		{
 			super(new BorderLayout());
 			planningManagementPanel = planningManagementPanelToUse;

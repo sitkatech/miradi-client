@@ -9,7 +9,7 @@ import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
 import org.conservationmeasures.eam.main.AppPreferences;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 
 
 public class SplitWizardStep extends SkeletonWizardStep
@@ -23,8 +23,8 @@ public class SplitWizardStep extends SkeletonWizardStep
 		htmlViewerRight.setBackground(AppPreferences.SIDEBAR_BACKGROUND);
 
 		JSplitPane splitPane = new JSplitPane();
-		splitPane.setLeftComponent(new FastScrollPane(htmlViewerLeft));
-		splitPane.setRightComponent(new FastScrollPane(htmlViewerRight));
+		splitPane.setLeftComponent(new MiradiScrollPane(htmlViewerLeft));
+		splitPane.setRightComponent(new MiradiScrollPane(htmlViewerRight));
 		splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setDividerLocation(600);
 		add(splitPane);

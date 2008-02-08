@@ -86,7 +86,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		
 		Container contents = dlg.getContentPane();
 		contents.setLayout(new BorderLayout());
-		contents.add(new FastScrollPane(bodyComponent), BorderLayout.CENTER);
+		contents.add(new MiradiScrollPane(bodyComponent), BorderLayout.CENTER);
 		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
 		calculateHeight(dlg, contents, bodyComponent, buttonBar);

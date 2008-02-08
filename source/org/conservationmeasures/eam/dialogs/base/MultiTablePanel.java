@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.TableWithRowHeightSaver;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.conservationmeasures.eam.utils.MultiTableHorizontalScrollController;
 import org.conservationmeasures.eam.utils.MultiTableRowHeightController;
@@ -85,7 +85,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		}
 	}
 	
-	public class FixedWidthScrollPane extends FastScrollPane
+	public class FixedWidthScrollPane extends MiradiScrollPane
 	{
 		public FixedWidthScrollPane(JComponent contentToUse)
 		{
@@ -114,7 +114,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		private Component content;
 	}
 
-	public class FixedHeightScrollPane extends FastScrollPane
+	public class FixedHeightScrollPane extends MiradiScrollPane
 	{
 		public FixedHeightScrollPane(JComponent contentToUse)
 		{

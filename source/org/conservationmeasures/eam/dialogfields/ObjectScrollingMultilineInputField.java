@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.martus.swing.UiTextArea;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
@@ -22,7 +22,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	public JComponent getComponent()
 	{
 		if(scrollPane == null)
-			scrollPane = new FastScrollPane(getTextComponent());
+			scrollPane = new MiradiScrollPane(getTextComponent());
 		return scrollPane;
 	}
 
@@ -39,6 +39,6 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		getTextComponent().addFocusListener(this);
 	}
 
-	private FastScrollPane scrollPane;
+	private MiradiScrollPane scrollPane;
 
 }

@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiButton;
 
@@ -30,7 +30,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		super(new BorderLayout());
 		project = projectToUse;
 		component = componentToUse;
-		add(new FastScrollPane((JComponent)component), BorderLayout.CENTER);
+		add(new MiradiScrollPane((JComponent)component), BorderLayout.CENTER);
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		buttons = new JPanel(layout);
 		buttons.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);

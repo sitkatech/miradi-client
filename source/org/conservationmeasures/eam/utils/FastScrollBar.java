@@ -11,6 +11,6 @@ public class FastScrollBar extends JScrollBar
 {
 	public FastScrollBar()
 	{
-		setUnitIncrement(FastScrollPane.SCROLL_UNIT_INCREMENT);
+		setUnitIncrement(MiradiScrollPane.SCROLL_UNIT_INCREMENT);
 	}
 }

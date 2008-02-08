@@ -42,7 +42,7 @@ import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.questions.ChoiceItem;
 import org.conservationmeasures.eam.questions.ThreatRatingModeChoiceQuestion;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.CardedView;
 import org.conservationmeasures.eam.views.diagram.doers.CloneStressDoer;
 import org.conservationmeasures.eam.views.diagram.doers.CreateStressDoer;
@@ -162,7 +162,7 @@ public class ThreatMatrixView extends CardedView
 		details = new ThreatRatingBundlePanel(this);
 		
 		threatMatrixPanel = new JPanel(new BorderLayout());
-		threatMatrixPanel.add(new FastScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
+		threatMatrixPanel.add(new MiradiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		threatMatrixPanel.add(grid, BorderLayout.CENTER); 
 	}
 

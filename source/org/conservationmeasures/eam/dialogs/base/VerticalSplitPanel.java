@@ -11,7 +11,7 @@ import java.awt.LayoutManager2;
 
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.SplitterPositionSaverAndGetter;
 import org.conservationmeasures.eam.views.umbrella.ManagementPanelSplitPane;
 import org.conservationmeasures.eam.views.umbrella.PersistentSplitPane;
@@ -37,7 +37,7 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 
 	public void createVerticalSplitPane(Component top, Component bottom, String splitterName)
 	{
-		JScrollPane propertiesScroll = new FastScrollPane(bottom);
+		JScrollPane propertiesScroll = new MiradiScrollPane(bottom);
 		
 		splitter = new ManagementPanelSplitPane(this, splitPositionSaver, splitterName, top, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);

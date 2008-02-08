@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
 import org.martus.swing.UiButton;
 
@@ -139,7 +139,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return treeTableScrollPane;
 	}
 	
-	public static class ScrollPaneWithHideableScrollBar extends FastScrollPane
+	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
 	{
 		public ScrollPaneWithHideableScrollBar(JComponent component)
 		{

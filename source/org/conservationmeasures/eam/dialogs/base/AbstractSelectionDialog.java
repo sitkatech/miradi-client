@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.dialogs.fieldComponents.PanelTitleLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.BaseObject;
-import org.conservationmeasures.eam.utils.FastScrollPane;
+import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.martus.swing.Utilities;
 
 abstract public class AbstractSelectionDialog extends EAMDialog implements ListSelectionListener
@@ -40,7 +40,7 @@ abstract public class AbstractSelectionDialog extends EAMDialog implements ListS
 		JComponent buttonBar = createButtonBar();
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
-		contents.add(new FastScrollPane(box), BorderLayout.CENTER);
+		contents.add(new MiradiScrollPane(box), BorderLayout.CENTER);
 		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		setModal(true);
 		setPreferredSize(new Dimension(900,400));
