@@ -5,8 +5,6 @@
 */ 
 package org.conservationmeasures.eam.views.reports;
 
-import java.util.HashMap;
-
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -32,32 +30,28 @@ public class ReportSelectionTableModel extends AbstractTableModel
 	
 	public int getRowCount()
 	{	
-		return buttonHashMap.size();
+		return reports.length;
 	}
 	
 	public Object getValueAt(int row, int column)
 	{
-		return getReportName(row);
+		return reports[row];
 	}
 
 	public String getReportDirForRow(int row)
 	{		
-		return (buttonHashMap.values().toArray(new String[0]))[row];
-	}
-	
-	private String getReportName(int row)
-	{
-		return (buttonHashMap.keySet().toArray(new String[0]))[row];
+		return reports[row].getFileName();
 	}
 	
 	private void createReportMap()
 	{
-		buttonHashMap = new HashMap<String, String>();
-		buttonHashMap.put("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper");
-		buttonHashMap.put("Results Chains Report", "/reports/AllResultsChainsReport.jasper");
-		buttonHashMap.put("Rare Report", "/reports/RareReport.jasper");
+		reports = new Report[] {
+				new Report("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
+				new Report("Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
+				new Report("Rare Report", "/reports/RareReport.jasper"),		
+		};
 	}
 	
-	private HashMap<String, String> buttonHashMap;
+	private Report[] reports;
 	private static final int COLUMN_COUNT = 1;
 }
