@@ -11,9 +11,9 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.utils.TableWithRowHeightSaver;
+import org.conservationmeasures.eam.utils.TableWithColumnWidthSaver;
 
-public class ReportSelectionTable extends TableWithRowHeightSaver
+public class ReportSelectionTable extends TableWithColumnWidthSaver
 {
 	public ReportSelectionTable(TableModel model)
 	{

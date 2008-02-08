@@ -5,16 +5,15 @@
 */ 
 package org.conservationmeasures.eam.views.reports;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.GenericDefaultTableModel;
 
 
-public class ReportSelectionTableModel extends AbstractTableModel
+public class ReportSelectionTableModel extends GenericDefaultTableModel
 {
 	public ReportSelectionTableModel()
 	{
-		createReportMap();
+		super();
 	}
 	
 	public int getColumnCount()
@@ -30,6 +29,9 @@ public class ReportSelectionTableModel extends AbstractTableModel
 	
 	public int getRowCount()
 	{	
+		if (reports == null)
+			createReportMap();
+		
 		return reports.length;
 	}
 	
@@ -46,9 +48,10 @@ public class ReportSelectionTableModel extends AbstractTableModel
 	private void createReportMap()
 	{
 		reports = new Report[] {
+				new Report("Full Project Report", "/reports/FullProjectReport.jasper"),
+				new Report("Rare Report", "/reports/RareReport.jasper"),
 				new Report("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
 				new Report("Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
-				new Report("Rare Report", "/reports/RareReport.jasper"),		
 		};
 	}
 	
