@@ -8,9 +8,7 @@ package org.conservationmeasures.eam.utils;
 import java.awt.Component;
 import java.awt.event.MouseWheelEvent;
 
-import org.martus.swing.UiScrollPane;
-
-public class FastScrollPane extends UiScrollPane
+public class FastScrollPane extends MiradiScrollPane
 {
 	
 	public FastScrollPane(Component view)
