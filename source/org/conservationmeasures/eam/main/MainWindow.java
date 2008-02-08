@@ -194,8 +194,23 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		for (int i = 0; i < colors.length; ++i)
 		{
 			TwoLevelEntry colorEntry = colors[i];
-			if (colorEntry.getEntryCode().equals("wizardTitleBackgroundColor"))
+			if (colorEntry.getEntryCode().equals("WizardBorder"))
 				getAppPreferences().setWizardTitleBackground(colorEntry.getEntryDescription());
+			
+			if (colorEntry.getEntryCode().equals("WizardPanel"))
+				getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryDescription());
+			
+			if (colorEntry.getEntryCode().equals("Sidebar"))
+				getAppPreferences().setSideBarBackgroundColor(colorEntry.getEntryDescription());
+			
+			if (colorEntry.getEntryCode().equals("DataBorder"))
+				getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryDescription());
+				
+			if (colorEntry.getEntryCode().equals("DataPanel"))
+				getAppPreferences().setDataPanelBackgroundColor(colorEntry.getEntryDescription());
+			
+			if (colorEntry.getEntryCode().equals("ControlBar"))
+				getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryDescription());
 		}
 	}
 		
