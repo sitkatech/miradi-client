@@ -170,18 +170,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			aboutDoer.doIt();
 		}
 
+		setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
+		setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
 		setExtendedState(NORMAL);
 		if(preferences.getIsMaximized())
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
-		else
-		{
-			setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
-			setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
-		}
-		
-		
 	}
 	
 	
@@ -701,10 +696,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			isMaximized = true;
 		
 		preferences.setIsMaximized(isMaximized);
-		preferences.setMainWindowHeigth(getHeight());
-		preferences.setMainWindowWidth(getWidth());
-		preferences.setMainWindowXPosition(getLocation().x);
-		preferences.setMainWindowYPosition(getLocation().y);
+		if(!isMaximized)
+		{
+			preferences.setMainWindowHeigth(getHeight());
+			preferences.setMainWindowWidth(getWidth());
+			preferences.setMainWindowXPosition(getLocation().x);
+			preferences.setMainWindowYPosition(getLocation().y);
+		}
 		preferences.save(getPreferencesFile());
 		getCurrentView().refresh();
 	}
