@@ -66,10 +66,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		{
 			restoreTreeExpansionState();	
 		}
-		else if(event.isSetDataCommand())
+		else if(isSelectedObjectModification(event))
 		{
-			treeTableModel.rebuildEntireTree();
-			restoreTreeExpansionState();	
+			validate();
+			if (getTopLevelAncestor() != null)
+				getTopLevelAncestor().repaint();	
 		}
 	}
 

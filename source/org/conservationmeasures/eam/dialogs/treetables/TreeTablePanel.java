@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs.treetables;
 
 import java.awt.BorderLayout;
+import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -16,10 +17,15 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.base.ObjectCollectionPanel;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.utils.HideableScrollBar;
@@ -139,6 +145,58 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return treeTableScrollPane;
 	}
 	
+	protected boolean isDeleteCommand(CommandExecutedEvent event, int type)
+	{
+		if (! event.isDeleteObjectCommand())
+			return false;
+		
+		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
+		if (deleteCommand.getObjectType() != type)
+			return false;
+		
+		return true;
+	}
+
+	protected boolean isCreateCommand(CommandExecutedEvent event, int type)
+	{
+		if (! event.isCreateObjectCommand())
+			return false;
+	
+		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
+		if (createCommand.getObjectType() != type)
+			return false;
+		
+		return true;
+	}
+
+	protected boolean isSelectedObjectModification(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommand())
+			return false;
+		
+		TreeTableNode node = getSelectedTreeNode();
+		if (node == null)
+			return false;
+		
+		BaseObject selectedObject = node.getObject(); 
+		if (selectedObject == null)
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		int setType = setCommand.getObjectType();
+		if(setType == Assignment.getObjectType())
+			return true;
+		
+		String setField = setCommand.getFieldTag();
+		
+		String[] fieldTags = selectedObject.getFieldTags();
+		Vector fields = new Vector(Arrays.asList(fieldTags));
+	
+		boolean sameType = (selectedObject.getType() == setType);
+		boolean containsField = (fields.contains(setField));
+		return (sameType && containsField);
+	}
+
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
 	{
 		public ScrollPaneWithHideableScrollBar(JComponent component)

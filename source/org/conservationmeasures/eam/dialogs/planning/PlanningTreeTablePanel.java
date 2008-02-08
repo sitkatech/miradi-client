@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.dialogs.planning;
 import java.awt.BorderLayout;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.util.Arrays;
-import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -29,8 +27,6 @@ import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
 import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
@@ -39,13 +35,11 @@ import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningVie
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
 import org.conservationmeasures.eam.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
 import org.conservationmeasures.eam.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.conservationmeasures.eam.dialogs.treetables.TreeTableNode;
 import org.conservationmeasures.eam.dialogs.treetables.TreeTablePanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.BaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Measurement;
@@ -195,36 +189,12 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		if(isTaskMove(event))
 			return true;
 		
-		if(isCreate(event) || isDeleteCommand(event))
+		if(isCreateCommand(event, Task.getObjectType()) || isDeleteCommand(event, Task.getObjectType()))
 			return true;
 		
 		return false;
 	}
 	
-	private boolean isDeleteCommand(CommandExecutedEvent event)
-	{
-		if (! event.isDeleteObjectCommand())
-			return false;
-		
-		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
-		if (deleteCommand.getObjectType() != Task.getObjectType())
-			return false;
-		
-		return true;
-	}
-
-	private boolean isCreate(CommandExecutedEvent event)
-	{
-		if (! event.isCreateObjectCommand())
-			return false;
-
-		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
-		if (createCommand.getObjectType() != Task.getObjectType())
-			return false;
-		
-		return true;
-	}
-
 	//TODO this should use that getTasksTag (or something like that) method
 	//from email :Please put a todo in isTaskMove that it should use that 
 	//getTasksTag method (or whatever it's called) that I mentioned the 
@@ -246,34 +216,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		return false;
 	}
 	
-	private boolean isSelectedObjectModification(CommandExecutedEvent event)
-	{
-		if (! event.isSetDataCommand())
-			return false;
-		
-		TreeTableNode node = getSelectedTreeNode();
-		if (node == null)
-			return false;
-		
-		BaseObject selectedObject = node.getObject(); 
-		if (selectedObject == null)
-			return false;
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		int setType = setCommand.getObjectType();
-		if(setType == Assignment.getObjectType())
-			return true;
-		
-		String setField = setCommand.getFieldTag();
-		
-		String[] fieldTags = selectedObject.getFieldTags();
-		Vector fields = new Vector(Arrays.asList(fieldTags));
-
-		boolean sameType = (selectedObject.getType() == setType);
-		boolean containsField = (fields.contains(setField));
-		return (sameType && containsField);
-	}
-
 	private void rebuildEntireTreeTable() throws Exception
 	{
 		ORef selectedRef = ORef.INVALID;
