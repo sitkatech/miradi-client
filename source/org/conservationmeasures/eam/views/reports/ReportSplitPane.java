@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.reports;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,7 +17,6 @@ import java.net.URL;
 import java.util.HashMap;
 
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -27,17 +28,15 @@ import net.sf.jasperreports.view.JRViewer;
 
 import org.conservationmeasures.eam.dialogs.base.MiradiPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.JasperReportFileFilter;
-import org.conservationmeasures.eam.utils.MiradiScrollPane;
 import org.conservationmeasures.eam.views.umbrella.PersistentHorizontalSplitPane;
 import org.conservationmeasures.eam.views.umbrella.doers.ExportProjectXmlDoer;
 import org.martus.util.DirectoryUtils;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class ReportSplitPane extends PersistentHorizontalSplitPane
 {
@@ -87,21 +86,24 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 
 	private JPanel createReportSelectionPanel()
 	{
-		
-		MiradiPanel selectionPanel = new MiradiPanel(new BasicGridLayout(0, 1));
-		
+
+		MiradiPanel selectionPanel = new MiradiPanel(new GridBagLayout());
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
 		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
-		MiradiScrollPane scroller = new MiradiScrollPane(table);
-		selectionPanel.add(scroller);
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
 		customReportButton.addActionListener(new CustomReportHandler());
+
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.anchor = GridBagConstraints.CENTER;
+		ThreatStressRatingMultiTablePanel.addToPanelFixedWidth(selectionPanel, table, constraints, 0, 0, 1, 1, 100, 100);
 		
-		selectionPanel.add(new JLabel(" "));
-		selectionPanel.add(customReportButton);
+		constraints.fill = GridBagConstraints.NONE;
+		constraints.anchor = GridBagConstraints.SOUTH;
+		ThreatStressRatingMultiTablePanel.addToPanelFixedWidth(selectionPanel, customReportButton, constraints, 0, 1, 1, 1, 100, 100);
 		
 		return selectionPanel;
 	}
