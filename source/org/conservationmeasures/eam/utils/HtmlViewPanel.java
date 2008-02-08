@@ -80,7 +80,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		HtmlFormViewer bodyComponent =  new MiradiHtmlViewer(mainWindow, this);
 		bodyComponent.setText(body);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		dlg.getContentPane().setBackground(AppPreferences.SIDEBAR_BACKGROUND);
+		dlg.getContentPane().setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
 
 		JComponent buttonBar = createButtonBar(dlg);
 		
