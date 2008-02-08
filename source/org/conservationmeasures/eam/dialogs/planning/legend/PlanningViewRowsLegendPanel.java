@@ -64,7 +64,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
 		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
-		panel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		panel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		addIconLineWithCheckBox(panel, ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon());
 		addIconLineWithCheckBox(panel, ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon());

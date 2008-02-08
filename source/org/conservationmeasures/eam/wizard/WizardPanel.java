@@ -27,7 +27,7 @@ public class WizardPanel extends JPanel
 		super(new BorderLayout());
 		wizardTitlePanel = wizardTitlePanelToUse;
 		
-		setBackground(AppPreferences.WIZARD_BACKGROUND);
+		setBackground(AppPreferences.getWizardBackgroundColor());
 		mainWindow = mainWindowToUse;
 		wizardManager = mainWindow.getWizardManager();
 		setFocusCycleRoot(true);
@@ -96,7 +96,7 @@ public class WizardPanel extends JPanel
 
 		OneRowPanel buttonBar = new OneRowPanel();
 		buttonBar.setMargins(5);
-		buttonBar.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		buttonBar.setBackground(AppPreferences.getWizardTitleBackground());
 		buttonBar.add(new PanelButton(actions.get(ActionWizardPrevious.class)));
 		buttonBar.add(Box.createHorizontalStrut(20));
 		buttonBar.add(new PanelButton(actions.get(ActionWizardNext.class)));

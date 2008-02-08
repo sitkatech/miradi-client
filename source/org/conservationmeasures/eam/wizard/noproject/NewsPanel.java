@@ -23,7 +23,7 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
 	{
 		super(mainWindow, hyperLinkHandler);
-		setBackground(AppPreferences.SIDEBAR_BACKGROUND);
+		setBackground(AppPreferences.getSideBarBackgroundColor());
 		new NewsRetriever().start();
 	}
 

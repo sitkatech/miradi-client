@@ -55,7 +55,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 
 		projectList = new ProjectListPanel(getMainWindow(), this);
 		
-		setBackground(AppPreferences.WIZARD_BACKGROUND);
+		setBackground(AppPreferences.getWizardBackgroundColor());
 	}
 	
 	public void refresh() throws Exception

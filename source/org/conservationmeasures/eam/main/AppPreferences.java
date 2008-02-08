@@ -356,6 +356,36 @@ public class AppPreferences
 		return map;
 	}
 	
+	public static Color getWizardBackgroundColor()
+	{
+		return WIZARD_BACKGROUND;
+	}
+
+	public static Color getWizardTitleBackground()
+	{
+		return WIZARD_TITLE_BACKGROUND;
+	}
+
+	public static Color getSideBarBackgroundColor()
+	{
+		return SIDEBAR_BACKGROUND;
+	}
+
+	public static Color getDataPanelBackgroundColor()
+	{
+		return DATA_PANEL_BACKGROUND;
+	}
+
+	public static Color getControlPanelBackgroundColor()
+	{
+		return CONTROL_PANEL_BACKGROUND;
+	}
+
+	public static Color getDarkPanelBackgroundColor()
+	{
+		return DARK_PANEL_BACKGROUND;
+	}
+
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
@@ -383,23 +413,23 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
-	public static final Color WIZARD_BACKGROUND = new Color(0xd7, 0xfa, 0x92);
+	private static final Color WIZARD_BACKGROUND = new Color(0xd7, 0xfa, 0x92);
 	public static final String WIZARD_BACKGROUND_FOR_CSS = "#D7FA92";
-	public static final Color WIZARD_TITLE_BACKGROUND = new Color(153, 204, 51);
+	private static final Color WIZARD_TITLE_BACKGROUND = new Color(153, 204, 51);
 	public static final String WIZARD_TITLE_BACKGROUND_FOR_CSS = "#99CC33";
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
 	public static final String SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
-	public static final Color SIDEBAR_BACKGROUND = new Color(0xEA, 0xFD, 0xC5);
+	private static final Color SIDEBAR_BACKGROUND = new Color(0xEA, 0xFD, 0xC5);
 	
-	public static final Color DATA_PANEL_BACKGROUND = new Color(0xDD, 0xDD, 0xEE);
+	private static final Color DATA_PANEL_BACKGROUND = new Color(0xDD, 0xDD, 0xEE);
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
-	public static final Color CONTROL_PANEL_BACKGROUND = new Color(0xe8, 0xee, 0xf7);
-	public static final Color DARK_PANEL_BACKGROUND =  new Color(0x99, 0x99, 0xEE);
+	private static final Color CONTROL_PANEL_BACKGROUND = new Color(0xe8, 0xee, 0xf7);
+	private static final Color DARK_PANEL_BACKGROUND =  new Color(0x99, 0x99, 0xEE);
 		
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);

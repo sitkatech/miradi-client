@@ -15,6 +15,6 @@ public class MiradiScrollPane extends FastScrollPane
 	{
 		super(view);
 		
-		setBackground(AppPreferences.DARK_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 	}	
 }

@@ -34,7 +34,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		newsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));
-		mainPanel.setBackground(AppPreferences.WIZARD_BACKGROUND);
+		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
 		mainPanel.add(left);
 		mainPanel.add(newsScrollPane);
 		

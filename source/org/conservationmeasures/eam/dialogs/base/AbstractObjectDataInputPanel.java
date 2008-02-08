@@ -87,7 +87,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		final int VERTICAL_MARGIN = 5;
 		setBorder(new EmptyBorder(VERTICAL_MARGIN,HORIZONTAL_MARGIN,VERTICAL_MARGIN,HORIZONTAL_MARGIN));
 		
-		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 	}
 	

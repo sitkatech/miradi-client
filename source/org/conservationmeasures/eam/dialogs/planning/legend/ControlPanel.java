@@ -23,7 +23,7 @@ public class ControlPanel extends DisposablePanel
 	public ControlPanel()
 	{
 		super(new BasicGridLayout(2, 1));
-		setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 
 		add(createTitleBar(EAM.text("Control Bar")));
 	}

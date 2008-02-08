@@ -31,7 +31,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		super(treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
-		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setRowSelectionAllowed(true);
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

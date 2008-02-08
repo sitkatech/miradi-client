@@ -104,7 +104,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
-		jpanel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
 		

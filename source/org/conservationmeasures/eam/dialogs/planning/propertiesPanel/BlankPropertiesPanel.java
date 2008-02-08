@@ -12,7 +12,7 @@ public class BlankPropertiesPanel extends DisposablePanelWithDescription
 {
 	public BlankPropertiesPanel()
 	{
-		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 
 	public String getPanelDescription()

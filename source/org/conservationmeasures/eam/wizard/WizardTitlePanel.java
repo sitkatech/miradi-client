@@ -29,15 +29,15 @@ public class WizardTitlePanel extends JPanel
 		
 		stepTitle = new WizardTitleHtmlViewer(mainWindow);
 		stepTitle.setForeground(AppPreferences.WIZARD_TITLE_FOREGROUND);
-		stepTitle.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		stepTitle.setBackground(AppPreferences.getWizardTitleBackground());
 		screenTitle = new WizardTitleHtmlViewer(mainWindow);
 		screenTitle.setForeground(Color.BLACK);
-		screenTitle.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		screenTitle.setBackground(AppPreferences.getWizardTitleBackground());
 		
 		JPanel titlePanel = new JPanel(new BasicGridLayout(2,1));
 		titlePanel.add(stepTitle);
 		titlePanel.add(screenTitle);
-		titlePanel.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		titlePanel.setBackground(AppPreferences.getWizardTitleBackground());
 		
 		ImageIcon icon = new MiradiResourceImageIcon("images/MiradiLogo.png");
 		UiLabel iconHolder = new UiLabel();
@@ -45,7 +45,7 @@ public class WizardTitlePanel extends JPanel
 		add(iconHolder, BorderLayout.BEFORE_LINE_BEGINS);
 		add(titlePanel, BorderLayout.CENTER);
 		
-		setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		setBackground(AppPreferences.getWizardTitleBackground());
 	}
 	
 	public void setStepTitle(String text)

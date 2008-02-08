@@ -20,7 +20,7 @@ public class SplitWizardStep extends SkeletonWizardStep
 
 		htmlViewerLeft = new WizardHtmlViewer(getMainWindow(),this);
 		htmlViewerRight = new WizardRightSideHtmlViewer(getMainWindow(),this);
-		htmlViewerRight.setBackground(AppPreferences.SIDEBAR_BACKGROUND);
+		htmlViewerRight.setBackground(AppPreferences.getSideBarBackgroundColor());
 
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setLeftComponent(new MiradiScrollPane(htmlViewerLeft));

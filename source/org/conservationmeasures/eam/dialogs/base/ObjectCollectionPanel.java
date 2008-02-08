@@ -33,13 +33,13 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		add(new MiradiScrollPane((JComponent)component), BorderLayout.CENTER);
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		buttons = new JPanel(layout);
-		buttons.setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		buttons.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 		setFocusCycleRoot(true);
 		project.addCommandExecutedListener(this);
 
-		setBackground(AppPreferences.DATA_PANEL_BACKGROUND);
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
 	

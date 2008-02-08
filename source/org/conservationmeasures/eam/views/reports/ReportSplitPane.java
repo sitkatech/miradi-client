@@ -88,7 +88,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private JPanel createReportSelectionPanel()
 	{
 		OneColumnPanel selectionPanel = new OneColumnPanel();
-		selectionPanel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
+		selectionPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
