@@ -39,7 +39,7 @@ public class WizardTitlePanel extends JPanel
 		titlePanel.add(screenTitle);
 		titlePanel.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
 		
-		ImageIcon icon = new MiradiResourceImageIcon("images/miradi64.png");
+		ImageIcon icon = new MiradiResourceImageIcon("images/MiradiLogo.png");
 		UiLabel iconHolder = new UiLabel();
 		iconHolder.setIcon(icon);
 		add(iconHolder, BorderLayout.BEFORE_LINE_BEGINS);
