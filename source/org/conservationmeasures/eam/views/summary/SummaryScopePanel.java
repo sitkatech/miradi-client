@@ -5,8 +5,11 @@
 */ 
 package org.conservationmeasures.eam.views.summary;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogs.base.ObjectDataInputPanel;
+import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -49,5 +52,11 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Scope");
+	}
+	
+	@Override
+	public Icon getIcon()
+	{
+		return new ProjectScopeIcon();
 	}
 }
