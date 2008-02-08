@@ -52,13 +52,13 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 		"  .intro {font-size: 110%;}",
 		"  .introdefinition {font-style: italics; font-size: 110%;}",
 		"  .LogoHeader {" + 
-			"background-color: " + AppPreferences.WIZARD_TITLE_BACKGROUND_FOR_CSS + ";}",
+			"background-color: " + AppPreferences.getWizardTitleBackgroundColorForCss() + ";}",
 		"  .processsteptitle {" +
-			"background-color: " + AppPreferences.WIZARD_TITLE_BACKGROUND_FOR_CSS + ";" +
+			"background-color: " + AppPreferences.getWizardTitleBackgroundColorForCss() + ";" +
 			"color: " + AppPreferences.WIZARD_TITLE_FOREGROUND_FOR_CSS + ";" +
 			"font-weight: bold;}",
 		"  .wizardscreentitle {" +
-			"background-color: " + AppPreferences.WIZARD_TITLE_BACKGROUND_FOR_CSS + ";" +
+			"background-color: " + AppPreferences.getWizardTitleBackgroundColorForCss() + ";" +
 			"font-size: 110%; font-weight: bold;}",
 	};
 }
