@@ -358,45 +358,64 @@ public class AppPreferences
 	
 	public static Color getSideBarBackgroundColor()
 	{
-		return SIDEBAR_BACKGROUND;
+		return sideBarBackgroundColor;
+	}
+	public void setSideBarBackgroundColor(String colorToUse)
+	{
+		sideBarBackgroundColor = Color.decode(colorToUse);
 	}
 
 	public static Color getDataPanelBackgroundColor()
 	{
-		return DATA_PANEL_BACKGROUND;
+		return dataPanelBackgroundColor;
 	}
+	public void setDataPanelBackgroundColor(String colorToUse)
+	{
+		dataPanelBackgroundColor = Color.decode(colorToUse);
+	}
+
 
 	public static Color getControlPanelBackgroundColor()
 	{
-		return CONTROL_PANEL_BACKGROUND;
+		return controlPanelBackgroundColor;
 	}
-
+	public void setControlPanelBackgroundColor(String colorToUse)
+	{
+		controlPanelBackgroundColor = Color.decode(colorToUse);
+	}
+	
+	
 	public static Color getDarkPanelBackgroundColor()
 	{
-		return DARK_PANEL_BACKGROUND;
+		return darkControlPanelBackgroundColor;
 	}
-
+	public void setDarkControlPanelBackgroundColor(String colorToUse)
+	{
+		darkControlPanelBackgroundColor = Color.decode(colorToUse);
+	}
 	
 	public static Color getWizardBackgroundColor()
 	{
 		return Color.decode(getWizardBackgroundColorForCss());
 	}
-
 	public static String getWizardBackgroundColorForCss()
 	{
 		return wizardBackgroundColor;
 	}
+	public void setWizardBackgroundColor(String colorToUse)
+	{
+		wizardBackgroundColor = colorToUse;
+	}
+	
 
 	public static String getWizardTitleBackgroundColorForCss()
 	{
 		return wizardTitleBackgroundColor;
-	}
-	
+	}	
 	public static Color getWizardTitleBackground()
 	{
 		return Color.decode(getWizardTitleBackgroundColorForCss());
 	}
-	
 	public void setWizardTitleBackground(String colorToUse)
 	{
 		wizardTitleBackgroundColor = colorToUse;
@@ -435,15 +454,15 @@ public class AppPreferences
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
 	public static final String SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
-	private static final Color SIDEBAR_BACKGROUND = new Color(0xEA, 0xFD, 0xC5);
+	private static Color sideBarBackgroundColor = new Color(0xEA, 0xFD, 0xC5);
 	
-	private static final Color DATA_PANEL_BACKGROUND = new Color(0xDD, 0xDD, 0xEE);
+	private static Color dataPanelBackgroundColor = new Color(0xDD, 0xDD, 0xEE);
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
-	private static final Color CONTROL_PANEL_BACKGROUND = new Color(0xe8, 0xee, 0xf7);
-	private static final Color DARK_PANEL_BACKGROUND =  new Color(0x99, 0x99, 0xEE);
+	private static Color controlPanelBackgroundColor = new Color(0xe8, 0xee, 0xf7);
+	private static Color darkControlPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
 		
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);
