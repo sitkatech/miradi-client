@@ -28,6 +28,7 @@ import net.sf.jasperreports.view.JRViewer;
 import org.conservationmeasures.eam.dialogs.base.MiradiPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
 import org.conservationmeasures.eam.layout.OneColumnPanel;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
@@ -87,6 +88,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private JPanel createReportSelectionPanel()
 	{
 		OneColumnPanel selectionPanel = new OneColumnPanel();
+		selectionPanel.setBackground(AppPreferences.CONTROL_PANEL_BACKGROUND);
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
