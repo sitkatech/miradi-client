@@ -399,7 +399,8 @@ public class AppPreferences
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	public static final Color CONTROL_PANEL_BACKGROUND = new Color(0xe8, 0xee, 0xf7);
-	
+	public static final Color DARK_PANEL_BACKGROUND =  new Color(0x99, 0x99, 0xEE);
+		
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
