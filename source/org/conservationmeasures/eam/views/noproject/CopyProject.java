@@ -41,10 +41,9 @@ public class CopyProject
 				return;
 			
 			Project.validateNewProject(newName);
-
-			String[] body = {EAM.text("Are you sure you want to copy project: "), 
-					projectToCopy.getName(),
-			};
+	
+			final String THREE_BLANK_SPACES = "   ";
+			String[] body = {EAM.text("This will copy the project"), THREE_BLANK_SPACES+projectToCopy.getName(), EAM.text("to"), THREE_BLANK_SPACES+newName};
 			String[] buttons = {EAM.text("Copy"), EAM.text("Cancel"), };
 			if(!EAM.confirmDialog(EAM.text("Copy Project"), body, buttons))
 				return;
