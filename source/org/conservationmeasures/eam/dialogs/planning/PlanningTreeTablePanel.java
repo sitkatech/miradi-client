@@ -168,7 +168,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 			if(isSelectedObjectModification(event, Assignment.getObjectType()))
 				validate();
 		
-			repaintAncestor();
+			repaintToGrowIfTreeIsTaller();
 		}
 		catch(Exception e)
 		{

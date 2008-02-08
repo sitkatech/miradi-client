@@ -76,7 +76,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		validateModifiedObject(event, Indicator.getObjectType());
 		validateModifiedObject(event, Measurement.getObjectType());
 		
-		repaintAncestor();	
+		repaintToGrowIfTreeIsTaller();	
 	}
 	
 	private void validateModifiedObject(CommandExecutedEvent event, int type)

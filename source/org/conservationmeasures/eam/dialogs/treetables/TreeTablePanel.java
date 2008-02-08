@@ -196,10 +196,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return (sameType && containsField);
 	}
 
-	protected void repaintAncestor()
+	protected void repaintToGrowIfTreeIsTaller()
 	{
-		// NOTE: The following is required to resize the table when 
-		// it grows due to a node being expanded (MRD-1123)
 		if (getTopLevelAncestor() != null)
 			getTopLevelAncestor().repaint();
 	}
