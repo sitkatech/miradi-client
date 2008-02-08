@@ -56,6 +56,12 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		InputMap im = getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 		KeyStroke ctrlA = KeyStroke.getKeyStroke('A', KeyEvent.CTRL_DOWN_MASK);
 		im.put(ctrlA, "none");
+		KeyStroke ctrlX = KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK);
+		im.put(ctrlX, "none");
+		KeyStroke ctrlC = KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK);
+		im.put(ctrlC, "none");
+		KeyStroke ctrlV = KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK);
+		im.put(ctrlV, "none");
 	}
 	
 	@Override
