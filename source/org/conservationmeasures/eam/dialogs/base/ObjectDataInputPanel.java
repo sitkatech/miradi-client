@@ -243,6 +243,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(panel);
 	}
 	
-	static final int HGAP = 3;
-	static final int VGAP = 3;
+	static final int HGAP = 6;
+	static final int VGAP = 6;
 }
