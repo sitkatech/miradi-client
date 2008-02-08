@@ -6,14 +6,12 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -21,10 +19,12 @@ import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.dialogs.base.EAMDialog;
 import org.conservationmeasures.eam.dialogs.fieldComponents.HtmlFormViewer;
+import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.wizard.MiradiHtmlViewer;
+import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
 public class HtmlViewPanel implements HtmlFormEventHandler
@@ -121,13 +121,18 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 
 
-	private Box createButtonBar(EAMDialog dlg)
+	private JComponent createButtonBar(EAMDialog dlg)
 	{
 		close = new JButton(new CloseAction(dlg));
 		dlg.getRootPane().setDefaultButton(close);
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), close, Box.createHorizontalStrut(10)};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
+
+		OneRowPanel buttonBar = new OneRowPanel();
+		buttonBar.setMargins(5);
+		buttonBar.setAlignmentRight();
+		buttonBar.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		buttonBar.add(new UiLabel(" "));
+		buttonBar.add(close);
+
 		return buttonBar;
 	}
 	
