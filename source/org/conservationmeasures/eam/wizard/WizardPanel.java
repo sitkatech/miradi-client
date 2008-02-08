@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.actions.ActionWizardNext;
 import org.conservationmeasures.eam.actions.ActionWizardPrevious;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
+import org.conservationmeasures.eam.layout.OneRowPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -92,17 +93,19 @@ public class WizardPanel extends JPanel
 	Component createNavigationButtons()
 	{
 		Actions actions = mainWindow.getActions();
-		Box box = Box.createHorizontalBox();
-		box.add(Box.createHorizontalStrut(10));
-		box.add(new PanelButton(actions.get(ActionWizardPrevious.class)));
-		box.add(Box.createHorizontalStrut(20));
-		box.add(new PanelButton(actions.get(ActionWizardNext.class)));
-		box.add(Box.createHorizontalGlue());
-		return box;
+
+		OneRowPanel buttonBar = new OneRowPanel();
+		buttonBar.setMargins(5);
+		buttonBar.setBackground(AppPreferences.WIZARD_TITLE_BACKGROUND);
+		buttonBar.add(new PanelButton(actions.get(ActionWizardPrevious.class)));
+		buttonBar.add(Box.createHorizontalStrut(20));
+		buttonBar.add(new PanelButton(actions.get(ActionWizardNext.class)));
+		
+		return buttonBar;
 	}
 	
 	protected MainWindow mainWindow;
 	private WizardManager wizardManager;
 	private WizardTitlePanel wizardTitlePanel;
-	Component navigationButtons;
+	private Component navigationButtons;
 }
