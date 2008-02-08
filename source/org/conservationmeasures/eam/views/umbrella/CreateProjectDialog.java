@@ -49,16 +49,15 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 		existingProjectList = createExistingProjectList();
 
 		UiParagraphPanel panel = new UiParagraphPanel();
-		panel
-				.addOnNewLine(new PanelTitleLabel(EAM.getHomeDirectory()
-				.getAbsolutePath()));
+		panel.addOnNewLine(new PanelTitleLabel("<HTML>This command saves a copy of your project under a new filename. <BR>" +
+												  "You are still in your original file - to switch to the copy with the new filename, <BR>" +
+												  "you have to close this project and open the new one.<HTML>"));
+		
+		panel.addOnNewLine(new PanelTitleLabel(EAM.getHomeDirectory().getAbsolutePath()));
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
-		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField
-				.getPreferredSize().width, 200));
-		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")),
-				uiScrollPane);
-		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")),
-				projectFilenameField);
+		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
+		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
+		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")), projectFilenameField);
 		panel.addOnNewLine(createButtonBar());
 		getContentPane().add(panel);
 
