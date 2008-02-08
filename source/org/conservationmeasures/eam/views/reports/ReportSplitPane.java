@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.views.reports;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -28,7 +26,7 @@ import net.sf.jasperreports.view.JRViewer;
 
 import org.conservationmeasures.eam.dialogs.base.MiradiPanel;
 import org.conservationmeasures.eam.dialogs.fieldComponents.PanelButton;
-import org.conservationmeasures.eam.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.conservationmeasures.eam.layout.OneColumnPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Miradi;
@@ -87,7 +85,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private JPanel createReportSelectionPanel()
 	{
 
-		MiradiPanel selectionPanel = new MiradiPanel(new GridBagLayout());
+		OneColumnPanel selectionPanel = new OneColumnPanel();
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
@@ -96,14 +94,8 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
 		customReportButton.addActionListener(new CustomReportHandler());
 
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.BOTH;
-		constraints.anchor = GridBagConstraints.CENTER;
-		ThreatStressRatingMultiTablePanel.addToPanelFixedWidth(selectionPanel, table, constraints, 0, 0, 1, 1, 100, 100);
-		
-		constraints.fill = GridBagConstraints.NONE;
-		constraints.anchor = GridBagConstraints.SOUTH;
-		ThreatStressRatingMultiTablePanel.addToPanelFixedWidth(selectionPanel, customReportButton, constraints, 0, 1, 1, 1, 100, 100);
+		selectionPanel.add(table);
+		selectionPanel.add(customReportButton);
 		
 		return selectionPanel;
 	}
