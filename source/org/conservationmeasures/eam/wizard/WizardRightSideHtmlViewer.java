@@ -33,7 +33,7 @@ public class WizardRightSideHtmlViewer extends MiradiHtmlViewer
 	 * GRRRR!
 	 */
 	final static String[] rules = {
-		"body {margin: 10; background-color: " + AppPreferences.SIDEBAR_BACKGROUND_FOR_CSS + ";}",
+		"body {margin: 10; background-color: " + AppPreferences.WIZARD_SIDEBAR_BACKGROUND_FOR_CSS + ";}",
 	};
 
 }
