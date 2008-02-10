@@ -201,8 +201,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				if (colorEntry.getEntryCode().equals("WizardPanel"))
 					getAppPreferences().setWizardBackgroundColor(colorEntry.getEntryDescription());
 
-				if (colorEntry.getEntryCode().equals("Sidebar"))
-					getAppPreferences().setSideBarBackgroundColor(colorEntry.getEntryDescription());
+				if (colorEntry.getEntryCode().equals("WizardSidebar"))
+					getAppPreferences().setWizardSidebarBackgroundColor(colorEntry.getEntryDescription());
 
 				if (colorEntry.getEntryCode().equals("DataBorder"))
 					getAppPreferences().setDarkControlPanelBackgroundColor(colorEntry.getEntryDescription());

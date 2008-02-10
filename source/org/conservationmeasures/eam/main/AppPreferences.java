@@ -358,11 +358,11 @@ public class AppPreferences
 	
 	public static Color getSideBarBackgroundColor()
 	{
-		return sideBarBackgroundColor;
+		return wizardSidebarBackgroundColor;
 	}
-	public void setSideBarBackgroundColor(String colorToUse)
+	public void setWizardSidebarBackgroundColor(String colorToUse)
 	{
-		sideBarBackgroundColor = Color.decode(colorToUse);
+		wizardSidebarBackgroundColor = Color.decode(colorToUse);
 	}
 
 	public static Color getDataPanelBackgroundColor()
@@ -453,8 +453,8 @@ public class AppPreferences
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
-	public static final String SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
-	private static Color sideBarBackgroundColor = new Color(0xEA, 0xFD, 0xC5);
+	public static final String WIZARD_SIDEBAR_BACKGROUND_FOR_CSS = "#EAFDC5";
+	private static Color wizardSidebarBackgroundColor = new Color(0xEA, 0xFD, 0xC5);
 	
 	private static Color dataPanelBackgroundColor = new Color(0xDD, 0xDD, 0xEE);
 
