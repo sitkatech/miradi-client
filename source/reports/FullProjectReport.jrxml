@@ -50,7 +50,7 @@
 					<textElement textAlignment="Center">
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<text><![CDATA[3Strategic Plan]]></text>
+				<text><![CDATA[Strategic Plan]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -94,6 +94,19 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectEffectiveDate}]]></textFieldExpression>
 				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="207"
+						y="52"
+						width="328"
+						height="12"
+						key="subreport-2"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectResource[RoleCodes/CodeList/Entry/Code = 'Leader' or RoleCodes/CodeList/Entry/Code = 'Contact']")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/ProjectResourceHumanShortListReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</title>
 		<pageHeader>
@@ -110,8 +123,8 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="357"
-						height="10"
+						width="535"
+						height="17"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">

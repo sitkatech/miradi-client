@@ -126,7 +126,7 @@ The project team is composed of the members shown in the following table.
 					<reportElement
 						x="0"
 						y="181"
-						width="334"
+						width="535"
 						height="16"
 						key="staticText-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
