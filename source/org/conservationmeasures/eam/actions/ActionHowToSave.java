@@ -22,6 +22,6 @@ public class ActionHowToSave extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|How to save files in miradi");
+		return EAM.text("TT|How to save files in Miradi");
 	}
 }
