@@ -46,7 +46,7 @@ abstract public class TabbedView extends UmbrellaView
 		
 		tabPanels = new HashMap<String, MiradiTabContentsPanelInterface>();
 		
-		setBackground(AppPreferences.getPanelBackgroundColor());
+		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 
 	}
 
