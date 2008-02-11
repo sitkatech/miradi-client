@@ -41,10 +41,9 @@ public class CopyProject
 				return;
 			
 			Project.validateNewProject(newName);
-	
-			final String LESS_THAN = "   <";
-			String GREATER_THAN = ">";
-			String[] body = {EAM.text("This will copy the project"), LESS_THAN + projectToCopy.getName() + GREATER_THAN, EAM.text("to"), LESS_THAN + newName + GREATER_THAN};
+			
+			final String INDENT = "  ";
+			String[] body = {EAM.text("This will copy the project"), INDENT + projectToCopy.getName(), EAM.text("to"), INDENT + newName};
 			String[] buttons = {EAM.text("Copy"), EAM.text("Cancel"), };
 			if(!EAM.confirmDialog(EAM.text("Copy Project"), body, buttons))
 				return;
