@@ -15,7 +15,7 @@ class ProjectListCopyToAction extends ProjectListAction
 {
 	public ProjectListCopyToAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Save Project As..."));
+		super(tableToUse, EAM.text("Save Copy As..."));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 
