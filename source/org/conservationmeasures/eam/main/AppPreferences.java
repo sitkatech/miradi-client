@@ -385,7 +385,7 @@ public class AppPreferences
 	}
 	
 	
-	public static Color getPanelBackgroundColor()
+	public static Color getDarkPanelBackgroundColor()
 	{
 		return darkPanelBackgroundColor;
 	}
