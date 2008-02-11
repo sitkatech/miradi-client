@@ -41,7 +41,10 @@
 		<fieldDescription><![CDATA[Position/.]]></fieldDescription>
 	</field>
 	<field name="Roles" class="java.lang.String">
-		<fieldDescription><![CDATA[Roles/.]]></fieldDescription>
+		<fieldDescription><![CDATA[/MiradiProject/ObjectPools/Pool/ProjectResource/RoleCodes/CodeList/Entry/Value]]></fieldDescription>
+	</field>
+	<field name="ref" class="java.lang.String">
+		<fieldDescription><![CDATA[@ref]]></fieldDescription>
 	</field>
 
 		<background>
@@ -146,7 +149,7 @@
 					<reportElement
 						x="390"
 						y="0"
-						width="78"
+						width="145"
 						height="19"
 						key="staticText-7"
 						positionType="Float"/>
@@ -235,21 +238,21 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Position}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<subreport  isUsingCache="true">
 					<reportElement
 						x="390"
 						y="0"
-						width="78"
+						width="145"
 						height="19"
-						key="textField-5"
+						key="subreport-1"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Roles}]]></textFieldExpression>
-				</textField>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectResource[@ref = '" + $F{ref} + "']/RoleCodes/CodeList/Entry")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
