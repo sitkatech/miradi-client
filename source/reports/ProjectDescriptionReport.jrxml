@@ -64,7 +64,7 @@
 					<reportElement
 						x="0"
 						y="16"
-						width="533"
+						width="535"
 						height="43"
 						key="textField-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -105,7 +105,7 @@
 					<reportElement
 						x="0"
 						y="107"
-						width="532"
+						width="535"
 						height="75"
 						key="staticText-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -138,7 +138,7 @@ The project team is composed of the members shown in the following table.
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="203"
+						y="199"
 						width="535"
 						height="12"
 						key="subreport-1"/>

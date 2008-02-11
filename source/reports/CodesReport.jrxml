@@ -28,6 +28,9 @@
 		<fieldDescription><![CDATA[Value]]></fieldDescription>
 	</field>
 
+	<variable name="CommaSeperatedValues" class="java.lang.String" resetType="Report" calculation="Sum">
+		<variableExpression><![CDATA["sdfsdf" + $F{Value}]]></variableExpression>
+	</variable>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -48,13 +51,13 @@
 			<band height="16"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="21"
-						y="1"
-						width="412"
-						height="15"
+						x="0"
+						y="0"
+						width="535"
+						height="16"
 						key="textField-1"
 						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
