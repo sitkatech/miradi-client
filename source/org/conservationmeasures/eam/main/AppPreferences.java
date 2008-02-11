@@ -356,49 +356,24 @@ public class AppPreferences
 		return map;
 	}
 	
-	public static Color getSideBarBackgroundColor()
-	{
-		return Color.decode(wizardSidebarBackgroundColor);
-	}
-	public void setWizardSidebarBackgroundColor(String colorToUse)
-	{
-		wizardSidebarBackgroundColor = colorToUse;
-	}
-	public static String getWizardSidebarBackgroundColorForCss()
-	{
-		return wizardSidebarBackgroundColor;
-	}
 	
+	public void setWizardTitleBackground(String colorToUse)
+	{
+		wizardTitleBackgroundColor = colorToUse;
+	}
+	public static Color getWizardTitleBackground()
+	{
+		return Color.decode(getWizardTitleBackgroundColorForCss());
+	}
+	public static String getWizardTitleBackgroundColorForCss()
+	{
+		return wizardTitleBackgroundColor;
+	}	
 
-	public static Color getDataPanelBackgroundColor()
+	public void setWizardBackgroundColor(String colorToUse)
 	{
-		return dataPanelBackgroundColor;
+		wizardBackgroundColor = colorToUse;
 	}
-	public void setDataPanelBackgroundColor(String colorToUse)
-	{
-		dataPanelBackgroundColor = Color.decode(colorToUse);
-	}
-
-
-	public static Color getControlPanelBackgroundColor()
-	{
-		return controlPanelBackgroundColor;
-	}
-	public void setControlPanelBackgroundColor(String colorToUse)
-	{
-		controlPanelBackgroundColor = Color.decode(colorToUse);
-	}
-	
-	
-	public static Color getDarkPanelBackgroundColor()
-	{
-		return darkPanelBackgroundColor;
-	}
-	public void setDarkControlPanelBackgroundColor(String colorToUse)
-	{
-		darkPanelBackgroundColor = Color.decode(colorToUse);
-	}
-	
 	public static Color getWizardBackgroundColor()
 	{
 		return Color.decode(getWizardBackgroundColorForCss());
@@ -407,25 +382,47 @@ public class AppPreferences
 	{
 		return wizardBackgroundColor;
 	}
-	public void setWizardBackgroundColor(String colorToUse)
+	
+	public void setWizardSidebarBackgroundColor(String colorToUse)
 	{
-		wizardBackgroundColor = colorToUse;
+		wizardSidebarBackgroundColor = colorToUse;
+	}
+	public static Color getSideBarBackgroundColor()
+	{
+		return Color.decode(wizardSidebarBackgroundColor);
+	}
+	public static String getWizardSidebarBackgroundColorForCss()
+	{
+		return wizardSidebarBackgroundColor;
+	}
+			
+	public void setDarkControlPanelBackgroundColor(String colorToUse)
+	{
+		darkPanelBackgroundColor = Color.decode(colorToUse);
+	}
+	public static Color getDarkPanelBackgroundColor()
+	{
+		return darkPanelBackgroundColor;
 	}
 	
-
-	public static String getWizardTitleBackgroundColorForCss()
+	public void setDataPanelBackgroundColor(String colorToUse)
 	{
-		return wizardTitleBackgroundColor;
-	}	
-	public static Color getWizardTitleBackground()
-	{
-		return Color.decode(getWizardTitleBackgroundColorForCss());
+		dataPanelBackgroundColor = Color.decode(colorToUse);
 	}
-	public void setWizardTitleBackground(String colorToUse)
+	public static Color getDataPanelBackgroundColor()
 	{
-		wizardTitleBackgroundColor = colorToUse;
+		return dataPanelBackgroundColor;
 	}
 
+	public void setControlPanelBackgroundColor(String colorToUse)
+	{
+		controlPanelBackgroundColor = Color.decode(colorToUse);
+	}
+	public static Color getControlPanelBackgroundColor()
+	{
+		return controlPanelBackgroundColor;
+	}
+	
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
@@ -453,21 +450,21 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
-	private static String wizardBackgroundColor = "#D7FA92";
-	private static String wizardTitleBackgroundColor = "#99CC33";
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
+	private static String wizardTitleBackgroundColor = "#99CC33";
+	private static String wizardBackgroundColor = "#D7FA92";
 	private static String wizardSidebarBackgroundColor = "#EAFDC5";
 	
+	private static Color darkPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
 	private static Color dataPanelBackgroundColor = new Color(0xDD, 0xDD, 0xEE);
+	private static Color controlPanelBackgroundColor = new Color(0xe8, 0xee, 0xf7);
+		
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
-
-	private static Color controlPanelBackgroundColor = new Color(0xe8, 0xee, 0xf7);
-	private static Color darkPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
-		
+	
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
