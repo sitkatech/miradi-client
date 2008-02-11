@@ -385,13 +385,13 @@ public class AppPreferences
 	}
 	
 	
-	public static Color getDarkPanelBackgroundColor()
+	public static Color getPanelBackgroundColor()
 	{
-		return darkControlPanelBackgroundColor;
+		return darkPanelBackgroundColor;
 	}
 	public void setDarkControlPanelBackgroundColor(String colorToUse)
 	{
-		darkControlPanelBackgroundColor = Color.decode(colorToUse);
+		darkPanelBackgroundColor = Color.decode(colorToUse);
 	}
 	
 	public static Color getWizardBackgroundColor()
@@ -462,7 +462,7 @@ public class AppPreferences
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	private static Color controlPanelBackgroundColor = new Color(0xe8, 0xee, 0xf7);
-	private static Color darkControlPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
+	private static Color darkPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
 		
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xCC, 0x44);
