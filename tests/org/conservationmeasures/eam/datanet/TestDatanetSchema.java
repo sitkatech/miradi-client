@@ -3,8 +3,11 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.datanet;
+package org.conservationmeasures.eam.datanet;
 
+import org.conservationmeasures.eam.datanet.DatanetSchema;
+import org.conservationmeasures.eam.datanet.LinkageType;
+import org.conservationmeasures.eam.datanet.RecordType;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestDatanetSchema extends TestCaseEnhanced
