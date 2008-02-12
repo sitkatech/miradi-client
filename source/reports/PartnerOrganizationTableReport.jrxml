@@ -2,18 +2,18 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ProjectTeamMemberTableReport"
+		 name="PartnerOrganizationTableReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
 		 pageWidth="595"
 		 pageHeight="842"
-		 columnWidth="565"
+		 columnWidth="595"
 		 columnSpacing="0"
 		 leftMargin="0"
-		 rightMargin="30"
-		 topMargin="20"
-		 bottomMargin="20"
+		 rightMargin="0"
+		 topMargin="28"
+		 bottomMargin="28"
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
@@ -25,26 +25,26 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="Name" class="java.lang.String">
-		<fieldDescription><![CDATA[Name/.]]></fieldDescription>
+	<field name="ShortLabel" class="java.lang.String">
+		<fieldDescription><![CDATA[ShortLabel/.	]]></fieldDescription>
 	</field>
-	<field name="SurName" class="java.lang.String">
-		<fieldDescription><![CDATA[SurName/.]]></fieldDescription>
+	<field name="Label" class="java.lang.String">
+		<fieldDescription><![CDATA[Label/.]]></fieldDescription>
 	</field>
-	<field name="ResourceId" class="java.lang.String">
-		<fieldDescription><![CDATA[Initials/.]]></fieldDescription>
+	<field name="RolesDescription" class="java.lang.String">
+		<fieldDescription><![CDATA[RolesDescription/.]]></fieldDescription>
 	</field>
-	<field name="Organization" class="java.lang.String">
-		<fieldDescription><![CDATA[Organization/.]]></fieldDescription>
+	<field name="ContactFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[ContactFirstName/.]]></fieldDescription>
 	</field>
-	<field name="Position" class="java.lang.String">
-		<fieldDescription><![CDATA[Position/.]]></fieldDescription>
+	<field name="ContactLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[ContactLastName/.]]></fieldDescription>
 	</field>
-	<field name="Roles" class="java.lang.String">
-		<fieldDescription><![CDATA[/MiradiProject/ObjectPools/Pool/ProjectResource/RoleCodes/CodeList/Entry/Value]]></fieldDescription>
+	<field name="Email" class="java.lang.String">
+		<fieldDescription><![CDATA[Email/.]]></fieldDescription>
 	</field>
-	<field name="ref" class="java.lang.String">
-		<fieldDescription><![CDATA[@ref]]></fieldDescription>
+	<field name="PhoneNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[PhoneNumber/.]]></fieldDescription>
 	</field>
 
 		<background>
@@ -69,7 +69,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Table: Project Team Members]]></text>
+				<text><![CDATA[Table: Partner Organizations]]></text>
 				</staticText>
 			</band>
 		</pageHeader>
@@ -87,7 +87,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Given Name]]></text>
+				<text><![CDATA[ID]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -101,7 +101,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Surname]]></text>
+				<text><![CDATA[Name]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -115,7 +115,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Resource ID]]></text>
+				<text><![CDATA[Role(s)]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -129,7 +129,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Organization]]></text>
+				<text><![CDATA[Given Name]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -143,13 +143,13 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Position]]></text>
+				<text><![CDATA[Surname]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="390"
 						y="0"
-						width="145"
+						width="72"
 						height="19"
 						key="staticText-7"
 						positionType="Float"/>
@@ -157,7 +157,21 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Roles]]></text>
+				<text><![CDATA[Email]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="462"
+						y="0"
+						width="72"
+						height="19"
+						key="staticText-8"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Phone]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
@@ -176,7 +190,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Name}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -191,7 +205,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SurName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -206,7 +220,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ResourceId}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{RolesDescription}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -221,7 +235,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Organization}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ContactFirstName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -236,23 +250,38 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Position}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ContactLastName}]]></textFieldExpression>
 				</textField>
-				<subreport  isUsingCache="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="390"
 						y="0"
-						width="145"
+						width="72"
 						height="19"
-						key="subreport-1"
+						key="textField-5"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<subreportParameter  name="DATA_DIRECTORY">
-						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectResource[@ref = '" + $F{ref} + "']/RoleCodes/CodeList/Entry")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.conservationmeasures.eam.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
-				</subreport>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="462"
+						y="0"
+						width="72"
+						height="19"
+						key="textField-6"
+						stretchType="RelativeToBandHeight"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PhoneNumber}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>
