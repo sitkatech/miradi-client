@@ -1,0 +1,236 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.dialogs.threatstressrating;
+
+import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
+import org.miradi.objects.ThreatStressRating;
+import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StressContributionQuestion;
+import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.questions.ThreatStressRatingChoiceQuestion;
+import org.miradi.utils.ColumnTagProvider;
+
+public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
+{
+	public ThreatStressRatingTableModel(Project projectToUse, ORef refToUse)
+	{
+		super(projectToUse);
+		
+		ratings = new ThreatStressRating[0];
+	}
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		rebuild(new ORefList(hierarchyToSelectedRef));
+	}
+
+	private void rebuild(ORefList hierarchyToSelectedRef)
+	{
+		ratings = new ThreatStressRating[0];
+		ORef factorLinkRef = hierarchyToSelectedRef.getRefForType(FactorLink.getObjectType());
+		if (factorLinkRef.isInvalid())
+			return;
+
+		FactorLink factorLink = (FactorLink) getProject().findObject(factorLinkRef);
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		ratings = new ThreatStressRating[threatStressRatingRefs.size()];
+		for (int i = 0; i < threatStressRatingRefs.size(); ++i)
+		{
+			ratings[i] = (ThreatStressRating) getProject().findObject(threatStressRatingRefs.get(i));
+		}
+	}
+
+    public Class getColumnClass(int columnIndex) 
+    {
+    	if (isIsActiveColumn(columnIndex))
+    		return Boolean.class;
+    	
+    	return super.getColumnClass(columnIndex);
+    }
+	
+	public boolean isCellEditable(int row, int column)
+	{
+		if (isContributionColumn(column))
+			return true;
+		
+		if (isIrreversibilityColumn(column))
+			return true;
+		
+		if (isIsActiveColumn(column))
+			return true;
+		
+		return false;
+	}
+	
+	public boolean isStressLabelColumn(int column)
+	{
+		return getColumnTag(column).equals(Stress.TAG_LABEL);
+	}
+	
+	public boolean isStressRatingColumn(int column)
+	{
+		return getColumnTag(column).equals(Stress.PSEUDO_STRESS_RATING);
+	}
+	
+	public boolean isIrreversibilityColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.TAG_IRREVERSIBILITY);
+	}
+
+	public boolean isContributionColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.TAG_CONTRIBUTION);
+	}
+	
+	public boolean isThreatRatingColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+	}
+	
+	public boolean isIsActiveColumn(int column)
+	{
+		return getColumnTag(column).equals(ThreatStressRating.TAG_IS_ACTIVE);
+	}
+		
+	public String getColumnName(int column)
+	{
+		if (isStressLabelColumn(column) || isStressRatingColumn(column))
+			return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(column));
+		
+		return EAM.fieldLabel(ThreatStressRating.getObjectType(), getColumnTag(column));
+	}
+	
+	public String getColumnTag(int column)
+	{
+		return getColumnTags()[column];
+	}
+
+	public int getColumnCount()
+	{
+		return getColumnTags().length;
+	}
+
+	public int getRowCount()
+	{
+		return ratings.length;
+	}
+
+	public Object getValueAt(int row, int column)
+	{
+		if (isStressLabelColumn(column))
+		{
+			return getStress(row, column).toString();
+		}
+
+		if (isStressRatingColumn(column))
+		{
+			String code = getStress(row, column).getPseudoData(getColumnTag(column));
+			return createStressRatingQuestion(column).findChoiceByCode(code);
+		}
+		
+		if (isContributionColumn(column))
+		{
+			return getThreatStressRating(row, column).getContribution();
+		}
+		
+		if (isIrreversibilityColumn(column))
+		{
+			return getThreatStressRating(row, column).getIrreversibility();
+		}
+
+		if (isThreatRatingColumn(column))
+		{
+			String code = getThreatStressRating(row, column).getPseudoData(getColumnTag(column));
+			return createThreatStressRatingQuestion(column).findChoiceByCode(code);
+		}
+		
+		if (isIsActiveColumn(column))
+		{
+			return new Boolean(getThreatStressRating(row, column).isActive());
+		}
+		
+		return null;
+	}
+
+	private Stress getStress(int row, int column)
+	{
+		ORef stressRef = getThreatStressRating(row, column).getStressRef();
+		Stress stress = (Stress) getProject().findObject(stressRef);
+		return stress;
+	}
+		
+	public void setValueAt(Object value, int row, int column)
+	{
+		if (value == null)
+			return;
+		
+		if (isContributionColumn(column) || isIrreversibilityColumn(column))
+		{
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			setValueUsingCommand(ref, getColumnTag(column), ((ChoiceItem) value));
+		}
+		
+		if (isIsActiveColumn(column))
+		{
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			Boolean valueAsBoolean = (Boolean)value;
+			setValueUsingCommand(ref, getColumnTag(column), BooleanData.toString(valueAsBoolean));
+		}
+	}
+
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return ratings[row];
+	}
+
+	public ThreatStressRating getThreatStressRating(int row, int column)
+	{
+		return (ThreatStressRating) getBaseObjectForRowColumn(row, column);
+	}
+	
+	public StressContributionQuestion createContributionQuestion(int column)
+	{
+		return new StressContributionQuestion();
+	}
+	
+	public StressIrreversibilityQuestion createIrreversibilityQuestion(int column)
+	{
+		return new StressIrreversibilityQuestion();
+	}
+	
+	public StressRatingChoiceQuestion createStressRatingQuestion(int column)
+	{
+		return new StressRatingChoiceQuestion();
+	}
+	
+	public ThreatStressRatingChoiceQuestion createThreatStressRatingQuestion(int column)
+	{
+		return new ThreatStressRatingChoiceQuestion();
+	}
+	
+	public static String[] getColumnTags()
+	{
+		return new String[] {
+				Stress.TAG_LABEL,
+				ThreatStressRating.TAG_IS_ACTIVE,
+				Stress.PSEUDO_STRESS_RATING,
+				ThreatStressRating.TAG_CONTRIBUTION,
+				ThreatStressRating.TAG_IRREVERSIBILITY,
+				ThreatStressRating.PSEUDO_TAG_THREAT_RATING,
+		};
+	}
+	
+	private ThreatStressRating[] ratings;
+}

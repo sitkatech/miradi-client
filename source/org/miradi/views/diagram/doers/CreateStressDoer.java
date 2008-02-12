@@ -1,0 +1,65 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.views.diagram.doers;
+
+import java.text.ParseException;
+
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.FactorLinkSet;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
+import org.miradi.objects.ThreatStressRating;
+import org.miradi.project.Project;
+import org.miradi.views.diagram.CreateAnnotationDoer;
+
+public class CreateStressDoer extends CreateAnnotationDoer
+{
+	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
+	{
+		Factor selectedFactor = (Factor) getSelectedParent();
+		createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, selectedFactor);
+	}
+
+	public static void createThreatStressRatingsForAttachedLinks(Project project, ORef newlyCreatedStressRef, Factor selectedFactor) throws Exception
+	{
+		if(!selectedFactor.isTarget())
+			return;
+
+		if (newlyCreatedStressRef.getObjectType() != Stress.getObjectType())
+			return;
+		
+		Target target = (Target) selectedFactor;
+		FactorLinkSet directThreatTargetLinks = target.getThreatTargetFactorLinks();
+		for(FactorLink factorLink : directThreatTargetLinks)
+		{
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedStressRef);
+			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
+			project.executeCommand(createThreatStressRating);
+			
+			CommandSetObjectData setLinkThreatStressRatingRefs = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, createThreatStressRating.getObjectRef());
+			project.executeCommand(setLinkThreatStressRatingRefs);			
+		}
+	}
+
+	public int getAnnotationType()
+	{
+		return Stress.getObjectType();
+	}
+	public String getAnnotationListTag()
+	{
+		return Target.TAG_STRESS_REFS;
+	}
+	
+	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
+	{
+		return CommandSetObjectData.createAppendORefCommand(factor, getAnnotationListTag(), refToAppend);
+	}
+}

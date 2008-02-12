@@ -1,0 +1,78 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.views.planning.doers;
+
+import java.text.ParseException;
+import java.util.Arrays;
+import java.util.Vector;
+
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandDeleteObject;
+import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assignment;
+import org.miradi.objects.Task;
+import org.miradi.project.Project;
+import org.miradi.views.ObjectsDoer;
+
+public class RemoveAssignmentDoer extends ObjectsDoer
+{
+	public boolean isAvailable()
+	{
+		if (getObjects().length == 0 )
+			return false;
+		
+		return true;
+	}
+
+	public void doIt() throws CommandFailedException
+	{
+		if (! isAvailable())
+			return;
+	
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			Assignment selectedObject = (Assignment)getObjects()[0];
+			removeAssignment(getProject(), selectedObject);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+
+	public static void removeAssignment(Project project, Assignment assignmentToRemove) throws Exception
+	{
+		Vector commands = new Vector();
+
+		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
+		commands.add(getCommandsToRemoveAssignmenRefFromTask(project, assignmentToRemove));
+		
+		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
+		commands.add(deleteCommand);
+		
+		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
+	}
+
+	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException
+	{
+		ORef ownerRef = assignmentToRemove.findObjectWhoOwnesUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
+		Task task = (Task)project.findObject(ownerRef);	
+		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
+		
+		return removeIdCommand;
+	}
+}

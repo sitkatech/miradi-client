@@ -1,0 +1,30 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.wizard.planning;
+
+import org.miradi.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
+import org.miradi.main.menu.ProcessSteps;
+import org.miradi.wizard.WizardPanel;
+import org.miradi.wizard.WorkPlanWizardStep;
+
+public class MonitoringWizardSelectMethodsStep extends WorkPlanWizardStep
+{
+	public MonitoringWizardSelectMethodsStep(WizardPanel wizardToUse)
+	{
+		super(wizardToUse);
+	}
+	
+	public String getProcessStepTitle()
+	{
+		return ProcessSteps.PROCESS_STEP_4A;
+	}
+
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpMonitoringWizardSelectMethodsStep.class;
+	}
+
+}

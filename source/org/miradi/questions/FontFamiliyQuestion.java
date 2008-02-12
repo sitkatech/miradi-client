@@ -1,0 +1,22 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/
+package org.miradi.questions;
+
+public class FontFamiliyQuestion extends StaticChoiceQuestion
+{
+	public FontFamiliyQuestion()
+	{
+		super(getFamilyChoices());
+	}
+	
+	static ChoiceItem[] getFamilyChoices()
+	{
+		return new ChoiceItem[] {
+			new ChoiceItem("", "sans-serif"),
+			new ChoiceItem("serif", "serif"),
+		};
+	}
+}

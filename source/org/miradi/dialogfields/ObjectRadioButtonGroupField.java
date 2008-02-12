@@ -1,0 +1,116 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.dialogfields;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import org.miradi.ids.BaseId;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.EAM;
+import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+
+public class ObjectRadioButtonGroupField extends ObjectDataInputField
+{
+	public ObjectRadioButtonGroupField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	{
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		group = new ButtonGroup();
+		panel = new OneRowPanel();
+		buttonsByCode = new HashMap();
+		
+		for(int i = 0; i < questionToUse.size(); ++i)
+		{
+			ChoiceItem choiceItem = questionToUse.getChoices()[i];
+			JRadioButton button = new JRadioButton(choiceItem.getLabel());
+			button.addActionListener(new ButtonPressHandler(choiceItem.getCode()));
+			group.add(button);
+			panel.add(button);
+			buttonsByCode.put(choiceItem.getCode(), button);
+		}
+		addFocusListener();
+		setText("");
+	}
+
+	public JComponent getComponent()
+	{
+		return panel;
+	}
+
+	public String getText()
+	{
+		for(String code: buttonsByCode.keySet())
+		{
+			JRadioButton button = buttonsByCode.get(code);
+			if(button.isSelected())
+			{
+				return code;
+			}
+		}
+		return "";
+	}
+
+	public void setText(String newValue)
+	{
+		JRadioButton button = buttonsByCode.get(newValue);
+		button.setSelected(true);
+	}
+	
+	void buttonWasPressed(String newCode)
+	{
+		saveSelection();
+	}
+	
+	public void updateEditableState()
+	{
+		for(JRadioButton button : buttonsByCode.values())
+		{
+			button.setEnabled(isValidObject());
+			if(isValidObject())
+			{
+				button.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
+			}
+			else
+			{
+				button.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			}
+		}
+	}
+
+	public void saveSelection()
+	{
+		setNeedsSave();
+		saveIfNeeded();
+	}
+	
+	class ButtonPressHandler implements ActionListener
+	{
+		public ButtonPressHandler(String codeToUse)
+		{
+			code = codeToUse;
+		}
+		
+		public void actionPerformed(ActionEvent e)
+		{
+			buttonWasPressed(code);
+		}
+
+		private String code;
+
+	}
+
+	private JPanel panel;
+	private ButtonGroup group;
+	HashMap<String,JRadioButton> buttonsByCode;
+}
