@@ -1,0 +1,63 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/
+package org.miradi.views.planning.doers;
+
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.dialogs.diagram.ShareSelectionDialog;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
+
+
+abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
+{
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+		
+		appendSelectedObjectAsShared();
+	}
+	
+	private void appendSelectedObjectAsShared() throws CommandFailedException
+	{
+		ORef parentOfSharedRef = getParentRefOfShareableObjects();
+		if (parentOfSharedRef.isInvalid())
+			return;
+	
+		ObjectPoolTablePanel shareableObjectPoolTablePanel = createShareableObjectPoolTablePanel(parentOfSharedRef);
+		try
+		{
+			ShareSelectionDialog listDialog = new ShareSelectionDialog(getMainWindow(), getShareDialogTitle(), shareableObjectPoolTablePanel);
+			listDialog.setVisible(true); 
+			
+			BaseObject objectToShare = listDialog.getSelectedObject();
+			if (objectToShare == null)
+				return;
+			
+			BaseObject parentOfShared = getProject().findObject(parentOfSharedRef);
+			CommandSetObjectData appendSharedObjectCommand = CommandSetObjectData.createAppendIdCommand(parentOfShared, getParentTaskIdsTag(), objectToShare.getId());
+			getProject().executeCommand(appendSharedObjectCommand);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			shareableObjectPoolTablePanel.dispose();
+		}
+	}
+	
+	abstract protected String getShareDialogTitle();
+	
+	abstract protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
+	
+	abstract protected ORef getParentRefOfShareableObjects();
+	
+	abstract protected String getParentTaskIdsTag();
+}

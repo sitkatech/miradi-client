@@ -1,0 +1,82 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.objects;
+
+import org.miradi.ids.AccountingCodeId;
+import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
+import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.ObjectManager;
+import org.miradi.utils.EnhancedJsonObject;
+
+public class AccountingCode extends BaseObject
+{
+	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
+	{
+		super(objectManager, idToUse);
+		clear();
+	}
+	
+	public AccountingCode(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new AccountingCodeId(idAsInt), json);
+	}
+
+	
+	public int getType()
+	{
+		return getObjectType();
+	}
+	
+	public String getTypeName()
+	{
+		return OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.ACCOUNTING_CODE;
+	}
+	
+	
+	public static boolean canOwnThisType(int type)
+	{
+		return false;
+	}
+	
+	
+	public static boolean canReferToThisType(int type)
+	{
+		return false;
+	}
+	
+	public String toString()
+	{
+		String result = getLabel();
+		if(result.length() > 0)
+			return combineShortLabelAndLabel(code.get(), result);
+		return EAM.text("Label|(Undefined Accounting Code)");
+	}
+	
+	public void clear()
+	{
+		super.clear();
+		
+		code = new StringData(TAG_CODE);
+		comments = new StringData(TAG_COMMENTS);
+		
+		addField(TAG_CODE, code);
+		addField(TAG_COMMENTS, comments);
+	}
+	
+	public static final String TAG_CODE = "Code";
+	public static final String TAG_COMMENTS = "Comments";
+	public static final String OBJECT_NAME = "AccountingCode";
+
+	private StringData code;
+	private StringData comments;
+}

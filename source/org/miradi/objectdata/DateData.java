@@ -1,0 +1,64 @@
+/* 
+* Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+* (on behalf of the Conservation Measures Partnership, "CMP") and 
+* Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+*/ 
+package org.miradi.objectdata;
+
+import org.martus.util.MultiCalendar;
+import org.miradi.utils.InvalidDateException;
+
+public class DateData extends ObjectData
+{
+	public DateData(String tagToUse)
+	{
+		super(tagToUse);
+		date = null;
+	}
+
+	public void set(String newValue) throws Exception
+	{
+		if(newValue.length() == 0)
+		{
+			date = null;
+			return;
+		}
+		
+		try
+		{
+			date = MultiCalendar.createFromIsoDateString(newValue);
+		}
+		catch (Exception e)
+		{
+			throw new InvalidDateException(e);
+		}
+	}
+
+	public String get()
+	{
+		if(date == null)
+			return "";
+		return date.toIsoDateString();
+	}
+	
+	public MultiCalendar getDate()
+	{
+		return date;
+	}
+
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof DateData))
+			return false;
+		
+		DateData other = (DateData)rawOther;
+		return date.equals(other.date);
+	}
+
+	public int hashCode()
+	{
+		return date.hashCode();
+	}
+	
+	private MultiCalendar date;
+}
