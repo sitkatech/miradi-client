@@ -58,7 +58,7 @@
 						positionType="Float"/>
 					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
 					<graphicElement stretchType="RelativeToBandHeight"/>
-					<imageExpression class="java.awt.Image"><![CDATA[org.conservationmeasures.eam.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/" + $F{ref} + ".jpg")]]></imageExpression>
+					<imageExpression class="java.awt.Image"><![CDATA[org.miradi.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/" + $F{ref} + ".jpg")]]></imageExpression>
 				</image>
 			</band>
 		</detail>
