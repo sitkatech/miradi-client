@@ -19,14 +19,6 @@ public class Miradi
 {
 	public static void main(String[] args)
 	{
-		if(!EAM.initialize())
-			System.exit(1);
-		
-		EAM.setLogLevel(EAM.LOG_DEBUG);
-		if(Arrays.asList(args).contains("--verbose"))
-			EAM.setLogLevel(EAM.LOG_VERBOSE);
-		EAM.setExceptionLoggingDestination();
-		
 		try
 		{
 			addThirdPartyJarsToClasspath();
@@ -38,6 +30,14 @@ public class Miradi
 			System.exit(1);
 		}
 
+		if(!EAM.initialize())
+			System.exit(1);
+		
+		EAM.setLogLevel(EAM.LOG_DEBUG);
+		if(Arrays.asList(args).contains("--verbose"))
+			EAM.setLogLevel(EAM.LOG_VERBOSE);
+		EAM.setExceptionLoggingDestination();
+		
 		Miradi.start(args);
 	}
 
