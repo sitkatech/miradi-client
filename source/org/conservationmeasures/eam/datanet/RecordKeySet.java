@@ -3,7 +3,7 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.datanet;
+package org.conservationmeasures.eam.datanet;
 
 import java.util.HashSet;
 
