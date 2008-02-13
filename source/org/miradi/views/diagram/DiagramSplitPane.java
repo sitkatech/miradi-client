@@ -39,9 +39,9 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane implements CommandExecutedListener
+abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontalSplitPane implements CommandExecutedListener
 {
 	public DiagramSplitPane(MainWindow mainWindowToUse, int objectType, String splitterName) throws Exception
 	{
@@ -55,7 +55,7 @@ abstract public class DiagramSplitPane extends PersistentHorizontalSplitPane imp
 		setLeftComponent(createLeftPanel(objectType));
 		setRightComponent(new MiradiScrollPane(diagramCards));
 		
-		project.addCommandExecutedListener(this);		
+		project.addCommandExecutedListener(this);
 	}
 
 	public void showCurrentCard() throws Exception

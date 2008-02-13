@@ -17,7 +17,7 @@ public class PersistentHorizontalSplitPane extends PersistentSplitPane
 		setOrientation(HORIZONTAL_SPLIT);
 	}
 
-	int getContainerHeightOrWidth()
+	protected int getContainerHeightOrWidth()
 	{
 		return getContainer().getWidth();
 	}
