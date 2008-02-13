@@ -55,8 +55,6 @@ import org.miradi.actions.ActionDeleteSlide;
 import org.miradi.actions.ActionDeleteStress;
 import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.actions.ActionDiagramProperties;
-import org.miradi.actions.ActionEditIndicatorRelevancyList;
-import org.miradi.actions.ActionEditStrategyRelevancyList;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionInsertContributingFactor;
@@ -142,8 +140,6 @@ import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
 import org.miradi.views.diagram.doers.DeleteGroupBoxDoer;
 import org.miradi.views.diagram.doers.DeleteStressDoer;
 import org.miradi.views.diagram.doers.DiagramPropertiesShowDoer;
-import org.miradi.views.diagram.doers.EditIndicatorRelevancyListDoer;
-import org.miradi.views.diagram.doers.EditStrategyRelevancyListDoer;
 import org.miradi.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.miradi.views.diagram.doers.InsertGroupBoxDoer;
@@ -295,8 +291,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
-		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
-		addDoerToMap(ActionEditStrategyRelevancyList.class, new EditStrategyRelevancyListDoer());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionCloneIndicator.class, new CloneIndicatorDoer());
