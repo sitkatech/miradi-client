@@ -17,6 +17,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 
 import javax.swing.Box;
@@ -184,7 +185,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 
-	private void loadCustomAppColors()
+	private void loadCustomAppColors() throws Exception
 	{
 		try
 		{
@@ -213,11 +214,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				if (colorEntry.getEntryCode().equals("ControlBar"))
 					getAppPreferences().setControlPanelBackgroundColor(colorEntry.getEntryDescription());
 			}
+			
+			EAM.logVerbose("Loaded colors from file");
 		}
-		catch (Exception e)
+		catch (IOException e)
 		{
-			EAM.logException(e);
-			EAM.logWarning("Failed to load custom colors");
+			EAM.logVerbose("No color file found");
 		}
 	}
 		
