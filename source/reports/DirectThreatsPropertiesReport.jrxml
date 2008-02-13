@@ -2,16 +2,16 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="targetShortPropertiesReport"
+		 name="DirectThreatsPropertiesReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
 		 pageWidth="595"
 		 pageHeight="842"
-		 columnWidth="595"
+		 columnWidth="567"
 		 columnSpacing="0"
 		 leftMargin="0"
-		 rightMargin="0"
+		 rightMargin="28"
 		 topMargin="0"
 		 bottomMargin="0"
 		 whenNoDataType="NoPages"
@@ -31,8 +31,8 @@
 	<field name="Label" class="java.lang.String">
 		<fieldDescription><![CDATA[Label/.]]></fieldDescription>
 	</field>
-	<field name="SpeciesLatinName" class="java.lang.String">
-		<fieldDescription><![CDATA[SpeciesLatinName/.]]></fieldDescription>
+	<field name="TaxonomyCode" class="java.lang.String">
+		<fieldDescription><![CDATA[TaxonomyCode/value/.]]></fieldDescription>
 	</field>
 	<field name="Text" class="java.lang.String">
 		<fieldDescription><![CDATA[Text/.	]]></fieldDescription>
@@ -58,26 +58,27 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="80"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+			<band height="86"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
+						x="109"
 						y="1"
-						width="550"
+						width="454"
 						height="20"
-						key="textField"/>
+						key="textField"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Target " + $F{ShortLabel} + ":" + $F{Label}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="10"
-						y="24"
-						width="294"
-						height="13"
+						x="9"
+						y="22"
+						width="554"
+						height="20"
 						key="textField"
 						positionType="Float"
 						isRemoveLineWhenBlank="true"/>
@@ -85,13 +86,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SpeciesLatinName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TaxonomyCode}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="39"
-						width="550"
+						x="9"
+						y="43"
+						width="554"
 						height="20"
 						key="textField"
 						positionType="Float"/>
@@ -103,9 +104,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="60"
-						y="59"
-						width="490"
+						x="69"
+						y="64"
+						width="494"
 						height="20"
 						key="textField"
 						positionType="Float"/>
@@ -117,9 +118,9 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="1"
-						y="59"
-						width="60"
+						x="9"
+						y="64"
+						width="52"
 						height="20"
 						key="staticText-1"
 						positionType="Float"/>
@@ -129,6 +130,34 @@
 					</textElement>
 				<text><![CDATA[Comments:]]></text>
 				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="1"
+						width="60"
+						height="20"
+						key="staticText-2"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Direct Threat]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="74"
+						y="1"
+						width="30"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel} ]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>

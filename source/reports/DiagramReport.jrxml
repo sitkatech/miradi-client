@@ -5,15 +5,15 @@
 		 name="DiagramReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="535"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="812"
 		 columnSpacing="0"
-		 leftMargin="30"
+		 leftMargin="0"
 		 rightMargin="30"
-		 topMargin="20"
-		 bottomMargin="20"
+		 topMargin="0"
+		 bottomMargin="0"
 		 whenNoDataType="AllSectionsNoDetail"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
@@ -27,6 +27,15 @@
 
 	<field name="ref" class="java.lang.String">
 		<fieldDescription><![CDATA[@ref]]></fieldDescription>
+	</field>
+	<field name="ShortLabel" class="java.lang.String">
+		<fieldDescription><![CDATA[ShortLabel/.]]></fieldDescription>
+	</field>
+	<field name="Label" class="java.lang.String">
+		<fieldDescription><![CDATA[Label/.]]></fieldDescription>
+	</field>
+	<field name="Detail" class="java.lang.String">
+		<fieldDescription><![CDATA[Detail/.]]></fieldDescription>
 	</field>
 
 		<background>
@@ -50,16 +59,70 @@
 				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="0"
-						width="535"
-						height="355"
+						y="38"
+						width="782"
+						height="317"
 						key="image-1"
-						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
 					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
-					<graphicElement stretchType="RelativeToBandHeight"/>
+					<graphicElement stretchType="NoStretch"/>
 					<imageExpression class="java.awt.Image"><![CDATA[org.miradi.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/" + $F{ref} + ".jpg")]]></imageExpression>
 				</image>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="103"
+						y="0"
+						width="69"
+						height="18"
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="172"
+						y="0"
+						width="100"
+						height="18"
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="19"
+						width="782"
+						height="18"
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Detail}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="102"
+						height="18"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Figure.  Diagram for ]]></text>
+				</staticText>
 			</band>
 		</detail>
 		<columnFooter>
