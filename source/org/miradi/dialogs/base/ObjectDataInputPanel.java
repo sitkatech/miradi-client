@@ -10,10 +10,10 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.miradi.actions.EAMAction;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -156,13 +156,15 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	
 	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
-		JPanel fieldPanel = new OneRowPanel();
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
 			super.addField(fields[i]);
 			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
 			fieldPanel.add(fields[i].getComponent());
+			fieldPanel.add(new JLabel(" "));
 		}
 		
 		return fieldPanel;
@@ -170,13 +172,15 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 
 	private JPanel createFieldPanel(String labelTexts[], ObjectDataInputField[] fields)
 	{
-		JPanel fieldPanel = new OneRowPanel();
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
 			super.addField(fields[i]);
 			fieldPanel.add(new PanelTitleLabel(labelTexts[i]));
 			fieldPanel.add(fields[i].getComponent());
+			fieldPanel.add(new JLabel(" "));
 		}
 		
 		return fieldPanel;
@@ -184,21 +188,14 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 
 	protected void addFieldWithEditButton(String label, ObjectDataInputField field, EAMAction action)
 	{
-		super.addField(field);
-		JPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		fieldPanel.add(field.getComponent());
-		UiButton button = new UiButton(action);
-		fieldPanel.add(button);
-
-		addLabel(label);
-		add(fieldPanel);
+		addFieldWithEditButton(label, field, new PanelButton(action));
 	}
 
 	protected void addFieldWithEditButton(String label, ObjectDataInputField field, PanelButton button)
 	{
 		super.addField(field);
-		JPanel fieldPanel = new OneRowPanel();
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
