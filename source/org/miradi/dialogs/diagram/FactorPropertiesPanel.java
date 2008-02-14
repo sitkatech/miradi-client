@@ -89,6 +89,61 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		super.dispose();
 	}
 	
+	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
+	{
+		tabs = new PanelTabbedPane();
+		tabs.setFocusable(false);
+		detailsTab = new FactorSummaryScrollablePanel(mainWindow, diagramFactor);
+		
+		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
+		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
+
+		if (factor.canHaveIndicators())
+		{
+			indicatorsTab = new TargetViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
+		}
+		
+		if(factor.canHaveObjectives())
+		{
+			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
+			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
+		}
+		
+		if(factor.canHaveGoal())
+		{
+			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+		}
+		
+		if(factor.isStrategy())
+		{
+			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
+		}
+		
+		if (factor.isTarget())
+		{
+			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
+			{
+				handleViabilityTabON();
+			}
+			if (getProject().getMetadata().isStressBasedThreatRatingMode())
+			{
+				stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+				tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
+			}
+			
+			subTargetTab = new SubTargetManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
+		}
+		
+		return tabs;
+	}
+	
+
 	public void selectTab(int tabIdentifier)
 	{
 		switch(tabIdentifier)
@@ -115,6 +170,30 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 	}
 
+	public void updateAllSplitterLocations()
+	{
+		if (indicatorsTab != null)
+			indicatorsTab.updateSplitterLocation();
+		
+		if (objectivesTab != null)
+			objectivesTab.updateSplitterLocation();
+		
+		if (goalsTab != null)
+			goalsTab.updateSplitterLocation();
+		
+		if (activitiesTab != null)
+			activitiesTab.updateSplitterLocation();
+		
+		if (viabilityTab != null)
+			viabilityTab.updateSplitterLocation();
+		
+		if (stressTab != null)
+			stressTab.updateSplitterLocation();
+		
+		if (subTargetTab != null)
+			subTargetTab.updateSplitterLocation();
+	}
+	
 	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
 	{
 		setLayout(new BorderLayout());
@@ -200,61 +279,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return field;
 	}
 	
-	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
-	{
-		tabs = new PanelTabbedPane();
-		tabs.setFocusable(false);
-		detailsTab = new FactorSummaryScrollablePanel(mainWindow, diagramFactor);
-		
-		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
-		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
-
-		if (factor.canHaveIndicators())
-		{
-			indicatorsTab = new TargetViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
-		}
-		
-		if(factor.canHaveObjectives())
-		{
-			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
-			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
-		}
-		
-		if(factor.canHaveGoal())
-		{
-			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
-		}
-		
-		if(factor.isStrategy())
-		{
-			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
-		}
-		
-		if (factor.isTarget())
-		{
-			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				handleViabilityTabON();
-			}
-			if (getProject().getMetadata().isStressBasedThreatRatingMode())
-			{
-				stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-				tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
-			}
-			
-			subTargetTab = new SubTargetManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
-		}
-		
-		return tabs;
-	}
-	
-
 	class FactorInputPanel extends ObjectDataInputPanel
 	{
 
@@ -289,30 +313,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return EAM.text("Factor Properties");
 	}
 
-	public void updateAllSplitterLocations()
-	{
-		if (indicatorsTab != null)
-			indicatorsTab.updateSplitterLocation();
-		
-		if (objectivesTab != null)
-			objectivesTab.updateSplitterLocation();
-		
-		if (goalsTab != null)
-			goalsTab.updateSplitterLocation();
-		
-		if (activitiesTab != null)
-			activitiesTab.updateSplitterLocation();
-		
-		if (viabilityTab != null)
-			viabilityTab.updateSplitterLocation();
-		
-		if (stressTab != null)
-			stressTab.updateSplitterLocation();
-		
-		if (subTargetTab != null)
-			subTargetTab.updateSplitterLocation();
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		//TODO: refactor entire tab add remove mechisisim
