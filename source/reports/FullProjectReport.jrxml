@@ -206,6 +206,20 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectScopeReport.jasper")]]></subreportExpression>
 				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="64"
+						width="535"
+						height="17"
+						key="subreport-8"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectLocationReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
