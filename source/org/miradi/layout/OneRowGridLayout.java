@@ -23,6 +23,12 @@ public class OneRowGridLayout extends GridLayoutPlus
 		vMargin = margin;
 	}
 	
+	public void setGaps(int gap)
+	{
+		hGap = gap;
+		vGap = gap;
+	}
+	
 	public void setAlignmentRight()
 	{
 		setAlignment(Alignment.EAST);
