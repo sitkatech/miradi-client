@@ -50,7 +50,7 @@
 					<textElement textAlignment="Center">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Strategic Plan]]></text>
+				<text><![CDATA[Project Plan]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -68,10 +68,12 @@
 				</textField>
 				<staticText>
 					<reportElement
+						mode="Opaque"
 						x="207"
 						y="35"
 						width="168"
 						height="17"
+						backcolor="#33FF33"
 						key="staticText-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -123,7 +125,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="0"
+						y="43"
 						width="535"
 						height="17"
 						key="subreport-1"
@@ -137,7 +139,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="22"
+						y="65"
 						width="535"
 						height="17"
 						key="subreport-3"
@@ -151,7 +153,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="43"
+						y="86"
 						width="535"
 						height="17"
 						key="subreport-4"
@@ -165,7 +167,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="65"
+						y="108"
 						width="535"
 						height="17"
 						key="subreport-5"
@@ -175,6 +177,20 @@
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/SituationAnalysisReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="22"
+						width="535"
+						height="17"
+						key="subreport-6"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/GeneralProjectInformation.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>

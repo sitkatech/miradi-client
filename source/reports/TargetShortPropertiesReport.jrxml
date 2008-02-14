@@ -61,8 +61,8 @@
 			<band height="80"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="1"
+						x="35"
+						y="2"
 						width="550"
 						height="20"
 						key="textField"/>
@@ -129,6 +129,18 @@
 					</textElement>
 				<text><![CDATA[Comments:]]></text>
 				</staticText>
+				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="2"
+						width="35"
+						height="19"
+						key="image-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.awt.Image"><![CDATA[org.miradi.utils.XmlToImageConverter.convert($P{DATA_DIRECTORY} + "/.jpg")]]></imageExpression>
+				</image>
 			</band>
 		</detail>
 		<columnFooter>

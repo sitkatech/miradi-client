@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="TargetViabilityTreeTable"
+		 name="ThreatRatingTableReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -25,24 +25,26 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
+	<field name="blah" class="java.lang.String"/>
+
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="26"  isSplitAllowed="true" >
+			<band height="50"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="0"
-						y="0"
-						width="176"
-						height="26"
+						x="20"
+						y="10"
+						width="313"
+						height="28"
 						key="staticText-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font/>
 					</textElement>
-				<text><![CDATA[Table: Viability Analysis Summary]]></text>
+				<text><![CDATA[Threat Rating Table]]></text>
 				</staticText>
 			</band>
 		</title>
@@ -55,11 +57,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="35"  isSplitAllowed="true" >
+			<band height="46"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="14"
+						y="11"
 						width="535"
 						height="17"
 						key="subreport-1"
@@ -67,8 +69,8 @@
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Target")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/TargetNodeReport.jasper")]]></subreportExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Link[contains(ToRef,  '22.') and contains(FromRef, '20.')]")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ThreatRatingTableSubReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
