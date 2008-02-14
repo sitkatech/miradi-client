@@ -38,8 +38,12 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	
 	public void setPicker(ObjectPicker newPicker)
 	{
-		if(newPicker != null && picker != null)
-			EAM.logWarning("Multiple pickers for " + getClass().getSimpleName());
+		if(picker != null)
+		{
+			if(newPicker != null)
+				EAM.logWarning("Multiple pickers for " + getClass().getSimpleName());
+			picker.removeSelectionChangeListener(this);
+		}
 		picker = newPicker;
 		if(picker != null)
 			picker.addSelectionChangeListener(this);
