@@ -17,11 +17,20 @@
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<style 
+		name="TopicHeading"
+		isDefault="false"
+		isStyledText="true"
+		fontSize="12"
+		isBold="true"
+		isBlankWhenNull="true"
+	/>
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
@@ -49,6 +58,7 @@
 			<band height="305"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
+						style="TopicHeading"
 						x="0"
 						y="0"
 						width="108"
@@ -60,23 +70,24 @@
 					</textElement>
 				<text><![CDATA[Introduction]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="16"
+						y="17"
 						width="535"
-						height="43"
-						key="textField-1"/>
+						height="41"
+						key="textField-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["This document contains the current plan for the " + $F{ProjectName} + " project.  It was developed following the Conservation Measures Partnership’s Open Standards for the Practice of Conservation using Miradi Adaptive Management Software (www.miradi.org)." ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["This document contains the current plan for the " + $F{ProjectName} + " project.  It was developed following the Conservation Measures Partnership’s Open Standards for the Practice of Conservation using Miradi Adaptive Management Software (www.miradi.org).  Please note that this report only tracks the steps in the Open Standards that are currently supported by Miradi; other information will be added in the future"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
 						x="0"
-						y="75"
+						y="58"
 						width="196"
 						height="17"
 						key="staticText-2"
@@ -92,7 +103,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="91"
+						y="74"
 						width="196"
 						height="16"
 						key="staticText-3"
@@ -106,7 +117,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="107"
+						y="89"
 						width="535"
 						height="75"
 						key="staticText-4"
@@ -128,7 +139,7 @@ The project team is composed of the members shown in the following table.
 				<staticText>
 					<reportElement
 						x="0"
-						y="181"
+						y="163"
 						width="535"
 						height="16"
 						key="staticText-5"
@@ -142,7 +153,7 @@ The project team is composed of the members shown in the following table.
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="197"
+						y="179"
 						width="535"
 						height="12"
 						key="subreport-1"
@@ -156,7 +167,7 @@ The project team is composed of the members shown in the following table.
 				<staticText>
 					<reportElement
 						x="0"
-						y="222"
+						y="204"
 						width="535"
 						height="16"
 						key="staticText-6"
@@ -170,7 +181,7 @@ The project team is composed of the members shown in the following table.
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="238"
+						y="220"
 						width="535"
 						height="12"
 						key="subreport-2"
