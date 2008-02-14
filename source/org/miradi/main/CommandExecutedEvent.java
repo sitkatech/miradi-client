@@ -9,6 +9,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.objects.Factor;
 
 public class CommandExecutedEvent
 {
@@ -65,6 +66,15 @@ public class CommandExecutedEvent
 
 		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
 		return (cmd.getObjectType() == objectType);
+	}
+	
+	public boolean isFactorSetDataCommandWithThisTypeAndTag(String tag)
+	{
+		if (!isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData) getCommand();
+		return (Factor.isFactor(cmd.getObjectType()) && cmd.getFieldTag().equals(tag));
 	}
 	
 	private Command command;

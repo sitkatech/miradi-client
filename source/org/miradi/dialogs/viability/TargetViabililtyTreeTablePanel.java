@@ -19,6 +19,7 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -58,9 +59,12 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 
 		final boolean wereMeasuremetNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
 		
+		final boolean wereFactorIndicatorNodesAddedOrRemoved = event.isFactorSetDataCommandWithThisTypeAndTag(Factor.TAG_INDICATOR_IDS);
+		
 		final boolean wereNodesAddedOrRemoved = wereKEANodesAddedOrRemoved || 
 												wereIndicatorNodesAddedOrRemoved ||
-												wereMeasuremetNodesAddedOrRemoved;
+												wereMeasuremetNodesAddedOrRemoved ||
+												wereFactorIndicatorNodesAddedOrRemoved;
 		if( wereNodesAddedOrRemoved)
 		{
 			treeTableModel.rebuildEntireTree();
