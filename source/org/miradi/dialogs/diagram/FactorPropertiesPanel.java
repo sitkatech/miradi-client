@@ -130,7 +130,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
 
-		if (factor.canHaveIndicators())
+		boolean isKeaViabilityMode = (factor.isTarget() && factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
+		
+		if (factor.canHaveIndicators() && !isKeaViabilityMode)
 		{
 			indicatorsTab = new TargetViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
@@ -154,15 +156,15 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
-		
-		if (factor.isTarget())
+
+		if(isKeaViabilityMode)
 		{
 			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-				tabs.remove(tabs.indexOfComponent(indicatorsTab));
-			}
+			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+		}
+
+		if (factor.isTarget())
+		{
 			if (getProject().getMetadata().isStressBasedThreatRatingMode())
 			{
 				stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
@@ -360,13 +362,18 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			rebuildPanel();
 			
 			SwingUtilities.getWindowAncestor(detailsTab).pack();
-			viabilityTab.updateSplitterLocation();
+			if(viabilityTab != null)
+				viabilityTab.updateSplitterLocation();
+			
 			if (stressTab != null)
 				stressTab.updateSplitterLocation();
 			
 			subTargetTab.updateSplitterLocation();
 			goalsTab.updateSplitterLocation();
-			indicatorsTab.updateSplitterLocation();
+			
+			if(indicatorsTab != null)
+				indicatorsTab.updateSplitterLocation();
+			
 			validate();
 		}
 	}
