@@ -7,9 +7,9 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ViewDoer;
+import org.miradi.views.ObjectsDoer;
 
-abstract public class CreatePoolObjectDoer extends ViewDoer
+abstract public class CreatePoolObjectDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
@@ -22,6 +22,8 @@ abstract public class CreatePoolObjectDoer extends ViewDoer
 		{
 			CommandCreateObject cmd = new CommandCreateObject(getTypeToCreate());
 			getProject().executeCommand(cmd);
+			if(getPicker() != null)
+				getPicker().ensureObjectVisible(cmd.getObjectRef());
 		}
 		catch (Exception e)
 		{

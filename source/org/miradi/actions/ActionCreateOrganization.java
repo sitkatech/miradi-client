@@ -8,7 +8,7 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateOrganization extends MainWindowAction
+public class ActionCreateOrganization extends ObjectsAction
 {
 	public ActionCreateOrganization(MainWindow mainWindowToUse)
 	{

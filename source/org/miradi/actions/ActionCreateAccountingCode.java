@@ -8,7 +8,7 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateAccountingCode extends MainWindowAction
+public class ActionCreateAccountingCode extends ObjectsAction
 {
 	public ActionCreateAccountingCode(MainWindow mainWindowToUse)
 	{
