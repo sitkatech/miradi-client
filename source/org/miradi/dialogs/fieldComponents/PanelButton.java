@@ -28,6 +28,9 @@ public class PanelButton extends UiButton
 		String name = (String)action.getValue(AbstractAction.NAME);
 		if(name == null || name.length() == 0)
 			setMargin(new Insets(1,1,1,1));
+		else
+			setMargin(new Insets(3,3,3,3));
+			
 
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
