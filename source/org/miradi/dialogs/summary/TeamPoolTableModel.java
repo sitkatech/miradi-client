@@ -52,6 +52,8 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 		ProjectResource.TAG_INITIALS,
 		ProjectResource.TAG_ORGANIZATION,
 		ProjectResource.TAG_POSITION,
-		ProjectResource.TAG_ROLE_CODES
+		ProjectResource.TAG_ROLE_CODES,
+		ProjectResource.TAG_EMAIL,
+		ProjectResource.TAG_PHONE_NUMBER,
 	};
 }
