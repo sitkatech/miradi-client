@@ -5,7 +5,6 @@
 */ 
 package org.miradi.dialogs.summary;
 
-import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
@@ -14,7 +13,6 @@ import javax.swing.JComponent;
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.dialogs.base.ObjectManagementPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.TeamIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -28,9 +26,6 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	{
 		super(projectToUse, splitPositionSaverToUse, new TeamPoolTablePanel(projectToUse, actionsToUse),
 				new TeamMemberPropertiesPanel(projectToUse));
-
-		//TODO change overview text
-		add(new PanelTitleLabel(EAM.text("Team Management")), BorderLayout.BEFORE_FIRST_LINE);
 	}
 
 	public String getPanelDescription()
