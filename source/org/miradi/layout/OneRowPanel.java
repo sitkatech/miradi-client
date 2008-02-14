@@ -20,6 +20,11 @@ public class OneRowPanel extends JPanel
 		getGridLayout().setMargins(margin);
 	}
 	
+	public void setGaps(int gap)
+	{
+		getGridLayout().setGaps(gap);
+	}
+	
 	public void setAlignmentRight()
 	{
 		add(new JLabel(" "), 0);
