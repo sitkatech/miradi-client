@@ -6,7 +6,6 @@
 package org.miradi.views.summary;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
@@ -44,7 +43,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		dataPanel.dispose();
 	}
 	
-	public Component getTabContentsComponent()
+	public DisposablePanel getTabContentsComponent()
 	{
 		return this;
 	}

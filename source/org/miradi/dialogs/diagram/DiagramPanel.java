@@ -168,7 +168,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	}
 	
 	
-	public Component getTabContentsComponent()
+	public DisposablePanel getTabContentsComponent()
 	{
 		return this;
 	}

@@ -9,6 +9,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
+import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.OrganizationIcon;
 import org.miradi.ids.BaseId;
@@ -63,5 +64,11 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return createTable();
 	}
 		
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpSummaryWizardRolesAndResponsibilities.class;
+	}
+	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
 }

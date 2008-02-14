@@ -14,6 +14,7 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.dialogs.viability.TargetViabilityTreeManagementPanel;
+import org.miradi.dialogs.viability.ViabilityViewTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -50,7 +51,7 @@ public class TargetViabilityView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		viabilityPanel = new TargetViabilityTreeManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
+		viabilityPanel = new ViabilityViewTreeManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		addNonScrollingTab(viabilityPanel);
 	}
 
