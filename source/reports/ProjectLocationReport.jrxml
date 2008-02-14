@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ProjectScopeReport"
+		 name="ProjectLocationReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -25,44 +25,29 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="ShortProjectScope" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ShortProjectScope]]></fieldDescription>
+	<field name="ProjectLatitude" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectLatitude]]></fieldDescription>
 	</field>
-	<field name="ProjectScope" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectScope]]></fieldDescription>
+	<field name="ProjectLongitude" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectLongitude]]></fieldDescription>
 	</field>
-	<field name="ProjectVision" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectVision]]></fieldDescription>
+	<field name="Municipalities" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/Municipalities]]></fieldDescription>
 	</field>
-	<field name="ProjectArea" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectArea]]></fieldDescription>
+	<field name="LegislativeDistricts" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/LegislativeDistricts]]></fieldDescription>
 	</field>
-	<field name="ProtectedAreaCategories" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProtectedAreaCategories]]></fieldDescription>
+	<field name="LocationDetail" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/LocationDetail]]></fieldDescription>
 	</field>
-	<field name="RedListSpecies" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/RedListSpecies]]></fieldDescription>
+	<field name="SiteMapReference" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/SiteMapReference]]></fieldDescription>
 	</field>
-	<field name="OtherNotableSpecies" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/OtherNotableSpecies]]></fieldDescription>
+	<field name="LocationComments" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/LocationComments]]></fieldDescription>
 	</field>
-	<field name="HumanPopulation" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/HumanPopulation]]></fieldDescription>
-	</field>
-	<field name="SocialContext" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/SocialContext]]></fieldDescription>
-	</field>
-	<field name="ScopeComments" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ScopeComments]]></fieldDescription>
-	</field>
-	<field name="ProtectedAreaCategoryNotes" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProtectedAreaCategoryNotes]]></fieldDescription>
-	</field>
-	<field name="ProjectAreaNote" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectAreaNote]]></fieldDescription>
-	</field>
-	<field name="HumanPopulationNotes" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/HumanPopulationNotes]]></fieldDescription>
+	<field name="StateAndProvinces" class="java.lang.String">
+		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/StateAndProvinces]]></fieldDescription>
 	</field>
 
 		<background>
@@ -82,11 +67,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="227"  isSplitAllowed="true" >
+			<band height="202"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="0"
-						y="36"
+						y="27"
 						width="143"
 						height="16"
 						key="staticText-1"
@@ -95,12 +80,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Scope/Site Name]]></text>
+				<text><![CDATA[Project Latitude]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="53"
+						y="44"
 						width="143"
 						height="16"
 						key="staticText-2"
@@ -109,12 +94,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Scope/Site Description]]></text>
+				<text><![CDATA[Project Longitude]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="70"
+						y="61"
 						width="143"
 						height="16"
 						key="staticText-3"
@@ -123,12 +108,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Vision Statement Text]]></text>
+				<text><![CDATA[Countries]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="87"
+						y="94"
 						width="143"
 						height="16"
 						key="staticText-4"
@@ -137,12 +122,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Biodiversity Area (ha)]]></text>
+				<text><![CDATA[States/Provinces]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="110"
+						y="111"
 						width="143"
 						height="16"
 						key="staticText-5"
@@ -151,12 +136,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Protected Area Categories]]></text>
+				<text><![CDATA[Minicipalities]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="133"
+						y="128"
 						width="143"
 						height="16"
 						key="staticText-6"
@@ -165,12 +150,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[IUCN Red List Species]]></text>
+				<text><![CDATA[Legislative Districts]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="150"
+						y="145"
 						width="143"
 						height="16"
 						key="staticText-7"
@@ -179,12 +164,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Other Notable Species]]></text>
+				<text><![CDATA[Location Detail]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="167"
+						y="162"
 						width="143"
 						height="16"
 						key="staticText-8"
@@ -193,26 +178,12 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Human Stakeholder Pop Size]]></text>
+				<text><![CDATA[Site Map Reference]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="184"
-						width="143"
-						height="16"
-						key="staticText-9"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Social Context]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="201"
+						y="179"
 						width="143"
 						height="16"
 						key="staticText-10"
@@ -226,8 +197,8 @@
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="36"
-						width="392"
+						y="27"
+						width="108"
 						height="16"
 						key="textField"
 						positionType="Float"/>
@@ -235,13 +206,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortProjectScope}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectLatitude}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="53"
-						width="392"
+						y="44"
+						width="108"
 						height="16"
 						key="textField"
 						positionType="Float"/>
@@ -249,40 +220,12 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectScope}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectLongitude}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="70"
-						width="392"
-						height="16"
-						key="textField"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectVision}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="143"
-						y="87"
-						width="248"
-						height="16"
-						key="textField"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectArea}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="143"
-						y="133"
+						y="111"
 						width="392"
 						height="16"
 						key="textField-1"
@@ -291,12 +234,12 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{RedListSpecies}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Municipalities}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="201"
+						y="179"
 						width="392"
 						height="16"
 						key="textField-2"
@@ -305,12 +248,12 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ScopeComments}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LocationComments}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="184"
+						y="162"
 						width="392"
 						height="16"
 						key="textField-3"
@@ -319,13 +262,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SocialContext}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SiteMapReference}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="167"
-						width="248"
+						y="145"
+						width="392"
 						height="16"
 						key="textField-4"
 						positionType="Float"/>
@@ -333,12 +276,12 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{HumanPopulation}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LocationDetail}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="143"
-						y="150"
+						y="128"
 						width="392"
 						height="16"
 						key="textField-5"
@@ -347,12 +290,12 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{OtherNotableSpecies}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LegislativeDistricts}]]></textFieldExpression>
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="143"
-						y="110"
+						y="61"
 						width="248"
 						height="16"
 						key="subreport-1"
@@ -360,69 +303,14 @@
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/ProtectedAreaCategories/CodeList/Entry")]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectMetadata/Countries/CodeList/Entry")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
 				</subreport>
-				<line direction="TopDown">
-					<reportElement
-						mode="Transparent"
-						x="0"
-						y="129"
-						width="535"
-						height="0"
-						forecolor="#FFFFFF"
-						backcolor="#FFFFFF"
-						key="line-1"
-						positionType="Float"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<staticText>
-					<reportElement
-						x="400"
-						y="87"
-						width="32"
-						height="16"
-						key="staticText-11"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Notes]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="400"
-						y="110"
-						width="33"
-						height="16"
-						key="staticText-12"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Notes]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="400"
-						y="167"
-						width="32"
-						height="16"
-						key="staticText-13"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Notes]]></text>
-				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="432"
-						y="110"
-						width="103"
+						x="143"
+						y="94"
+						width="392"
 						height="16"
 						key="textField"
 						positionType="Float"/>
@@ -430,41 +318,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProtectedAreaCategoryNotes}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="432"
-						y="167"
-						width="103"
-						height="16"
-						key="textField"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{HumanPopulationNotes}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="432"
-						y="87"
-						width="103"
-						height="16"
-						key="textField"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectAreaNote}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{StateAndProvinces}]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement
 						mode="Transparent"
 						x="0"
-						y="106"
+						y="80"
 						width="535"
 						height="0"
 						forecolor="#FFFFFF"
@@ -475,16 +335,44 @@
 				</line>
 				<staticText>
 					<reportElement
+						x="256"
+						y="27"
+						width="229"
+						height="16"
+						key="staticText-14"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[(Latitude must be -90.0000 to +90.0000)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="256"
+						y="44"
+						width="229"
+						height="16"
+						key="staticText-15"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[(Longitude must be -180.0000 to +180.0000)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
 						x="0"
-						y="4"
+						y="0"
 						width="186"
 						height="19"
-						key="staticText-14"/>
+						key="staticText-16"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Project Scope]]></text>
+				<text><![CDATA[Project Location]]></text>
 				</staticText>
 			</band>
 		</detail>
