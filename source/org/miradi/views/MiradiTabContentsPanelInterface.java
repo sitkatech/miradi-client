@@ -5,23 +5,24 @@
 */ 
 package org.miradi.views;
 
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.utils.ExportableTableInterface;
 
 public interface MiradiTabContentsPanelInterface
 {
 	public String getTabName();
 	public Icon getIcon();
-	public Component getTabContentsComponent();
+	public DisposablePanel getTabContentsComponent();
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();
 	public ExportableTableInterface getExportableTable() throws Exception;
 	public JComponent getPrintableComponent() throws Exception;
 	public boolean isPrintable();
+	public Class getJumpActionClass();
 }

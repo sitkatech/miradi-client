@@ -46,4 +46,5 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 	{
 		return new MiradiApplicationIcon();
 	}
+	
 }

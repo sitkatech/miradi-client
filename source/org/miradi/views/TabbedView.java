@@ -7,22 +7,28 @@ package org.miradi.views;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.miradi.actions.Actions;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -30,6 +36,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.UmbrellaView;
 
@@ -131,22 +138,65 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void addScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
-		addTab(contents, new MiradiScrollPane(contents.getTabContentsComponent()));
+		addTab(contents, new MiradiScrollPane(contents.getTabContentsComponent()), contents.getJumpActionClass());
 	}
 
 	public void addNonScrollingTab(MiradiTabContentsPanelInterface contents)
 	{
-		addTab(contents, contents.getTabContentsComponent());
+		addTab(contents, contents.getTabContentsComponent(), contents.getJumpActionClass());
 	}
 	
-	private void addTab(MiradiTabContentsPanelInterface contents, Component tabComponent)
+	private void addTab(MiradiTabContentsPanelInterface contents, Component tabComponent, Class jumpClass)
 	{
 		String tabName = contents.getTabName();
 		tabPanels.put(tabName, contents);
-		tabs.addTab(tabName, contents.getIcon(), tabComponent);
+
+		if(jumpClass == null)
+		{
+			tabs.addTab(tabName, contents.getIcon(), tabComponent);
+			return;
+		}
+
+		Actions actions = getMainWindow().getActions();
+		PanelButton directionsButton = new PanelButton(new DirectionsAction(actions, jumpClass));
+
+		OneRowPanel buttonPanel = new OneRowPanel();
+		buttonPanel.add(directionsButton);
+
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(tabComponent, BorderLayout.CENTER);
+		panel.add(buttonPanel, BorderLayout.AFTER_LAST_LINE);
+		tabs.addTab(tabName, contents.getIcon(), panel);
 	}
 	
-	public MiradiTabContentsPanelInterface getTabPanel(String tabName)
+	static class DirectionsAction extends AbstractAction
+	{
+		public DirectionsAction(Actions actionsToUse, Class jumpActionClassToUse)
+		{
+			super(EAM.text("Instructions"), new MiradiResourceImageIcon("icons/directions.png"));
+			actions = actionsToUse;
+			jumpActionClass = jumpActionClassToUse;
+			setEnabled(jumpActionClass != null);
+				
+		}
+		
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				actions.get(jumpActionClass).doAction();
+			}
+			catch(Exception e)
+			{
+				EAM.panic(e);
+			}
+		}
+
+		private Actions actions;
+		private Class jumpActionClass;
+	}
+	
+		public MiradiTabContentsPanelInterface getTabPanel(String tabName)
 	{
 		return tabPanels.get(tabName);
 	}

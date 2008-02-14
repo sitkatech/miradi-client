@@ -11,12 +11,10 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
-import org.miradi.actions.jump.ActionJumpTargetViability3Step;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.miradi.icons.IndicatorIcon;
-import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -26,31 +24,24 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
+abstract public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
 {
-	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.getMainWindow(), projectToUse, nodeId),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
-		panelDescription = PANEL_DESCRIPTION_VIABILITY;
-		icon = new KeyEcologicalAttributeIcon();
 	}
 	
-	public TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.getMainWindow(), projectToUse),
 				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
-		panelDescription = PANEL_DESCRIPTION_VIABILITY;
-		icon = new KeyEcologicalAttributeIcon();
-
 	}
 	
-	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
 		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions(), ORef.INVALID));
-		panelDescription = PANEL_DESCRIPTION_INDICATORS;
-		icon = new IndicatorIcon();
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
@@ -62,19 +53,6 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 	}
 	
 	
-	public static TargetViabilityTreeManagementPanel createTargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
-	{
-		TargetViabililtyTreePanel treePanel = TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject());
-		PlanningTreePropertiesPanel propertiesPanel = new PlanningTreePropertiesPanel(mainWindowToUse, ORef.INVALID, treePanel.getTree());
-		
-		return new TargetViabilityTreeManagementPanel(mainWindowToUse, treePanel, propertiesPanel);
-	}
-	
-	public String getSplitterDescription()
-	{
-		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
-	}
-
 	public String getPanelDescription()
 	{
 		return panelDescription;
@@ -131,14 +109,8 @@ public class TargetViabilityTreeManagementPanel extends ObjectListManagementPane
 		return getTreeTable();
 	}
 		
-	public Class getJumpActionClass()
-	{
-		return ActionJumpTargetViability3Step.class;
-	}
+	protected String panelDescription;
+	protected Icon icon;
 	
-	private String panelDescription;
-	private Icon icon;
-	
-	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
 	private static String PANEL_DESCRIPTION_INDICATORS = EAM.text("Tab|Indicators"); 
 }

@@ -7,6 +7,7 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.ProjectScopeIcon;
@@ -59,4 +60,12 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 	{
 		return new ProjectScopeIcon();
 	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpSummaryWizardDefineProjecScope.class;
+	}
+	
+
 }

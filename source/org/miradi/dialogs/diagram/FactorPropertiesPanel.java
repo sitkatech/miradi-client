@@ -24,6 +24,8 @@ import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
+import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
+import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityTreeManagementPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -134,7 +136,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if (factor.canHaveIndicators() && !isKeaViabilityMode)
 		{
-			indicatorsTab = new TargetViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		}
 		
@@ -159,7 +161,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		if(isKeaViabilityMode)
 		{
-			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		}
 

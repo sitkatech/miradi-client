@@ -6,12 +6,10 @@
 package org.miradi.views.planning;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
@@ -38,6 +36,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeTable;
@@ -113,7 +112,7 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 	
-	class MainPlanningPanel extends JPanel implements MiradiTabContentsPanelInterface
+	class MainPlanningPanel extends DisposablePanel implements MiradiTabContentsPanelInterface
 	{
 		public MainPlanningPanel(MiradiScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
 		{
@@ -122,6 +121,12 @@ public class PlanningView extends TabbedView
 			
 			add(controlBarScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
 			add(planningManagementPanel, BorderLayout.CENTER);
+		}
+		
+		@Override
+		public void dispose()
+		{
+			super.dispose();
 		}
 
 		public String getTabName()
@@ -134,7 +139,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getIcon();
 		}
 
-		public Component getTabContentsComponent()
+		public DisposablePanel getTabContentsComponent()
 		{
 			return this;
 		}

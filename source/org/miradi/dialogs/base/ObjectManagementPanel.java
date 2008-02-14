@@ -5,7 +5,6 @@
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
@@ -63,7 +62,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return listComponent.getSelectedObject();
 	}
 	
-	public Component getTabContentsComponent()
+	public DisposablePanel getTabContentsComponent()
 	{
 		return this;
 	}

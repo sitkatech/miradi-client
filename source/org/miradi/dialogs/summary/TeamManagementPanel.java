@@ -12,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
+import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.TeamIcon;
@@ -79,6 +80,12 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	public JComponent getPrintableComponent() throws Exception
 	{
 		return createTable();
+	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpSummaryWizardDefineTeamMembers.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
