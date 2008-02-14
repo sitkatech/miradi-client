@@ -12,7 +12,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
 import org.martus.swing.UiLabel;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
@@ -68,25 +67,58 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	//TODO: can put a loop of disposable panels and move the code to DIsposablePanel passing in list
 	public void dispose()
 	{
-		detailsTab.dispose();
-		if(indicatorsTab != null)
-			indicatorsTab.dispose();
-		if(goalsTab != null)
-			goalsTab.dispose();
-		if(objectivesTab != null)
-			objectivesTab.dispose();
-		if(activitiesTab != null)
-			activitiesTab.dispose();
-		if(viabilityTab != null)
-			viabilityTab.dispose();
-		if (stressTab != null)
-			stressTab.dispose();
-		if (subTargetTab != null)
-			subTargetTab.dispose();
-		if(grid != null)
-			grid.dispose();
+		disposeTabs();
 		getProject().removeCommandExecutedListener(this);
 		super.dispose();
+	}
+
+	private void disposeTabs()
+	{
+		if(detailsTab != null)
+		{
+			detailsTab.dispose();
+			detailsTab = null;
+		}
+		if(indicatorsTab != null)
+		{
+			indicatorsTab.dispose();
+			indicatorsTab = null;
+		}
+		if(goalsTab != null)
+		{
+			goalsTab.dispose();
+			goalsTab = null;
+		}
+		if(objectivesTab != null)
+		{
+			objectivesTab.dispose();
+			objectivesTab = null;
+		}
+		if(activitiesTab != null)
+		{
+			activitiesTab.dispose();
+			activitiesTab = null;
+		}
+		if(viabilityTab != null)
+		{
+			viabilityTab.dispose();
+			viabilityTab = null;
+		}
+		if (stressTab != null)
+		{
+			stressTab.dispose();
+			stressTab = null;
+		}
+		if (subTargetTab != null)
+		{
+			subTargetTab.dispose();
+			subTargetTab = null;
+		}
+		if(grid != null)
+		{
+			grid.dispose();
+			grid = null;
+		}
 	}
 	
 	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
@@ -128,7 +160,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			viabilityTab = new TargetViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			if (factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE))
 			{
-				handleViabilityTabON();
+				tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+				tabs.remove(tabs.indexOfComponent(indicatorsTab));
 			}
 			if (getProject().getMetadata().isStressBasedThreatRatingMode())
 			{
@@ -196,11 +229,17 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	
 	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
 	{
-		setLayout(new BorderLayout());
+		currentDiagramFactor = diagramFactor;
+
+		rebuildPanel();
+	}
+
+	private void rebuildPanel()
+	{
+		disposeTabs();
 		removeAll();
 		try
 		{
-			currentDiagramFactor = diagramFactor;
 			add(createLabelBar(currentDiagramFactor),	BorderLayout.BEFORE_FIRST_LINE);
 			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
 		}
@@ -318,16 +357,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		//TODO: refactor entire tab add remove mechisisim
 		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			String value = cmd.getDataValue();
-			if (value.equals(ViabilityModeQuestion.TNC_STYLE_CODE))
-			{
-				handleViabilityTabON();
-			}
-			else
-			{
-				handleViabilityTabOFF();
-			}
+			rebuildPanel();
 			
 			SwingUtilities.getWindowAncestor(detailsTab).pack();
 			viabilityTab.updateSplitterLocation();
@@ -341,19 +371,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 	}
 
-	private void handleViabilityTabOFF()
-	{
-		tabs.remove(tabs.indexOfComponent(viabilityTab));
-		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab);
-	}
-
-	private void handleViabilityTabON()
-	{
-		tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-		tabs.remove(tabs.indexOfComponent(indicatorsTab));
-	}
-
-	static final int MAX_LABEL_LENGTH = 40;
 	public static final int TAB_DETAILS = 0;
 	public static final int TAB_INDICATORS = 1;
 	public static final int TAB_OBJECTIVES = 2;
