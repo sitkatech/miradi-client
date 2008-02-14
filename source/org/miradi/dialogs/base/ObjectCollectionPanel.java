@@ -7,11 +7,12 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
 import org.miradi.actions.ObjectsAction;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -21,8 +22,6 @@ import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.ObjectPicker;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
 abstract public class ObjectCollectionPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public ObjectCollectionPanel(Project projectToUse, ObjectPicker componentToUse)
@@ -31,15 +30,16 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		project = projectToUse;
 		component = componentToUse;
 		add(new MiradiScrollPane((JComponent)component), BorderLayout.CENTER);
-		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
-		buttons = new JPanel(layout);
+		buttons = new OneRowPanel();
+		buttons.setGaps(3);
 		buttons.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		add(buttons, BorderLayout.AFTER_LINE_ENDS);
+		add(buttons, BorderLayout.AFTER_LAST_LINE);
 		setFocusCycleRoot(true);
 		project.addCommandExecutedListener(this);
 
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
+		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	}
 	
 	
@@ -90,7 +90,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
 	private Project project;
-	private JPanel buttons;
+	private OneRowPanel buttons;
 	private ObjectPicker component;
 	private AbstractObjectDataInputPanel propertiesPanel;
 
