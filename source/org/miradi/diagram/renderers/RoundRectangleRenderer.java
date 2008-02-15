@@ -6,6 +6,7 @@
 package org.miradi.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -56,6 +57,12 @@ public class RoundRectangleRenderer extends RectangleRenderer
 	public int getMinimumArcSize()
 	{
 		return minimumArcSize;
+	}
+	
+	@Override
+	Dimension getInsetDimension()
+	{
+		return new Dimension(getArcWidth(getBounds()), getArcHeight(getBounds()));
 	}
 	
 	private int minimumArcSize;
