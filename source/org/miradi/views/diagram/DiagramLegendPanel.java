@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -25,11 +24,13 @@ import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.icons.StressIcon;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -50,8 +51,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
-
-import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class DiagramLegendPanel extends LegendPanel
 {
@@ -103,7 +102,8 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	protected JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
+		TwoColumnPanel jpanel = new TwoColumnPanel();
+		jpanel.disableFill();
 		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
@@ -137,8 +137,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	{
 		targetLinkCheckBox = findCheckBox(objectName);
 		jpanel.add(targetLinkCheckBox);
-		jpanel.add(new JLabel(""));
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
+		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName), new EmptyIcon()));
 	}
 	
 	private void updateCheckBoxs()

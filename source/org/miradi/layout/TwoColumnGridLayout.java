@@ -5,6 +5,7 @@
 */ 
 package org.miradi.layout;
 
+import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
 public class TwoColumnGridLayout extends GridLayoutPlus
@@ -12,5 +13,11 @@ public class TwoColumnGridLayout extends GridLayoutPlus
 	public TwoColumnGridLayout()
 	{
 		super(0, 2);
+	}
+
+	public void disableFill()
+	{
+		setFill(Alignment.FILL_NONE);
+		setColWeight(0);
 	}
 }

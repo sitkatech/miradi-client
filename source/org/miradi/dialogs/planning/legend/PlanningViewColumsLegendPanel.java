@@ -6,17 +6,15 @@
 package org.miradi.dialogs.planning.legend;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.miradi.actions.Actions;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
-
-import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPanel
 {
@@ -39,7 +37,8 @@ public class PlanningViewColumsLegendPanel extends AbstractPlanningViewLegendPan
 		
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
-		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
+		TwoColumnPanel panel = new TwoColumnPanel();
+		panel.disableFill();
 		panel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 
 		CodeList masterList = ColumnManager.getMasterColumnList();
