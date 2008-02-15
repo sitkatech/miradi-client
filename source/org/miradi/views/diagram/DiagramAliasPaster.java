@@ -119,7 +119,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	protected boolean shouldCreateObject(ORef ref)
 	{
-		//FIXME change this to be correct
-		return false;
+		BaseObject foundObject = getProject().findObject(ref);
+		return foundObject == null;
 	}
 }
