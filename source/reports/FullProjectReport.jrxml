@@ -181,7 +181,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="22"
+						y="4"
 						width="535"
 						height="17"
 						key="subreport-6"
@@ -195,7 +195,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="43"
+						y="25"
 						width="535"
 						height="17"
 						key="subreport-7"
@@ -209,7 +209,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="64"
+						y="46"
 						width="535"
 						height="17"
 						key="subreport-8"
@@ -223,7 +223,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="86"
+						y="68"
 						width="535"
 						height="20"
 						key="subreport-10"
@@ -237,7 +237,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="111"
+						y="92"
 						width="168"
 						height="17"
 						key="staticText-3"
@@ -251,7 +251,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="133"
+						y="113"
 						width="535"
 						height="20"
 						key="subreport-11"
@@ -261,6 +261,20 @@
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/TncSummaryReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="138"
+						width="535"
+						height="20"
+						key="subreport-12"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/WwfSummaryReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
