@@ -24,7 +24,7 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
 	
 		ObjectDataInputField shortLabelField = createShortStringField(Stress.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createStringField(Stress.TAG_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Stress.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Stress"), new StressIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 		
 		addField(createMultilineField(Stress.TAG_DETAIL));
