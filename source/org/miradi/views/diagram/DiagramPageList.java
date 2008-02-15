@@ -116,7 +116,10 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		Class[] rightClickMenuActions = getPopUpMenuActions();
 		for (int i = 0; i < rightClickMenuActions.length; ++i)
 		{
-			menu.add(getActions().get(rightClickMenuActions[i]));
+			if(rightClickMenuActions[i] == null)
+				menu.addSeparator();
+			else
+				menu.add(getActions().get(rightClickMenuActions[i]));
 		}
 
 		return menu;
