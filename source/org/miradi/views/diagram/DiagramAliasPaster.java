@@ -36,6 +36,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	public void pasteFactors(Point startPoint) throws Exception
 	{
 		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
+		createNewFactorsAndContents();
 		createNewDiagramFactors();
 		
 		ORefList pastedFactorRefs = getPastedFactorRefs();
