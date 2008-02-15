@@ -18,7 +18,7 @@ public class DiagramTabsLabelPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, diagramObjectRefToUse);
 		ref = diagramObjectRefToUse;
-		addField(createStringField(DiagramObject.TAG_LABEL));
+		addField(createMediumStringField(DiagramObject.TAG_LABEL));
 		updateFieldsFromProject();
 	}
 
