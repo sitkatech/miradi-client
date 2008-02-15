@@ -44,14 +44,12 @@ public class RoundRectangleRenderer extends RectangleRenderer
 
 	int getArcWidth(Rectangle rect)
 	{
-		int proposedArc = rect.width / 20;
-		return Math.max(proposedArc, getMinimumArcSize());
+		return getMinimumArcSize();
 	}
 	
 	int getArcHeight(Rectangle rect)
 	{
-		int proposedArc = rect.height / 20;
-		return Math.max(proposedArc, getMinimumArcSize());
+		return getMinimumArcSize();
 	}
 
 	public int getMinimumArcSize()
@@ -62,7 +60,9 @@ public class RoundRectangleRenderer extends RectangleRenderer
 	@Override
 	Dimension getInsetDimension()
 	{
-		return new Dimension(getArcWidth(getBounds()), getArcHeight(getBounds()));
+		Dimension insetDimension = new Dimension(minimumArcSize/2, 0);
+		System.out.println(insetDimension);
+		return insetDimension;
 	}
 	
 	private int minimumArcSize;
