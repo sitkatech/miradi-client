@@ -151,20 +151,6 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		return title;
 	}
 	
-	protected void addIconLine(JComponent panel, String text, Icon icon, JComponent component)
-	{
-		panel.add(new JLabel(icon));
-		panel.add(new PanelTitleLabel(EAM.text(text)));
-		panel.add(component);
-	}
-	
-	protected void addSeparator(JComponent panel)
-	{
-		panel.add(new JLabel(" "));
-		panel.add(new JLabel(" "));
-		panel.add(new JLabel(" "));
-	}
-
 	protected void createCheckboxes(CodeList checkBoxCodes)
 	{
 		for (int i = 0; i < checkBoxCodes.size(); ++i)
@@ -199,6 +185,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
+
 		panel.add(button);
 		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
 		panel.add(findCheckBox(objectName));
@@ -211,6 +198,20 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		panel.add(button);
 		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
 		panel.add(findCheckBox(objectName));
+	}
+
+	protected void addIconLine(JComponent panel, String text, Icon icon, JCheckBox checkbox)
+	{
+		panel.add(new JLabel(icon));
+		panel.add(new PanelTitleLabel(EAM.text(text)));
+		panel.add(checkbox);
+	}
+	
+	protected void addSeparator(JComponent panel)
+	{
+		panel.add(new JLabel(" "));
+		panel.add(new JLabel(" "));
+		panel.add(new JLabel(" "));
 	}
 
 	protected static class LocationButton extends PanelButton implements LocationHolder
