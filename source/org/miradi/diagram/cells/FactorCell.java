@@ -87,43 +87,30 @@ abstract public class FactorCell extends EAMGraphCell
 		if(bullets.size() == 0)
 			return tip;
 		
-		tip += "<TABLE width=300>";
-		tip += "<TR>" +
-					"<TD><B>" + header +"</B></TD>" +
-					"<TD></TD>" +		
-				"</TR>";
+		tip += "<BR>" + header + "<UL>";
 		for(int i = 0; i < bullets.size(); ++i)
 		{
 			BaseObject object = project.findObject(bullets.get(i));
 			tip += getObjectText(object);
 		}
 		
-		tip += "</TABLE>";
+		tip += "</UL>";
 		return tip;
 	}
 
 	private String getObjectText(BaseObject object)
 	{
-		String tableColumRows = 
-			"<TR>" +		
-				"<TD><li></li></TD>" +		
-				"<TD><B>" + object.combineShortLabelAndLabel() + "</B></TD>" +
-			"</TR>";
+		String text = "<LI>" + object.combineShortLabelAndLabel() + "";
 		
 		if (object.getType() == Objective.getObjectType() || object.getType() == Goal.getObjectType())
 		{ 
 			Desire desire = (Desire) object;
-			tableColumRows += 			
-					"<TR>" +
-						"<TD>" + 
-						"</TD>" +
-						"<TD>" + 
-							desire.getFullText() +
-						"</TD>" +
-					"</TR>";	
+			text += 			
+					"<BR><TABLE width='200'><TR><TD><I>" +	desire.getFullText() + "</I></TD></TR></TABLE>";	
 		}
 		
-		return tableColumRows;
+		text += "</LI>";
+		return text;
 	}
 
 	public Rectangle getRectangle()
