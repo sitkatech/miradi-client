@@ -6,7 +6,7 @@
 package org.miradi.dialogs.planning.legend;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Dimension;
 
 import javax.swing.border.LineBorder;
 
@@ -31,10 +31,10 @@ public class ControlPanel extends DisposablePanel
 	public UiLabel createTitleBar(String text)
 	{
 		UiLabel title = new PanelTitleLabel(text);
-		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
 		title.setBackground(getBackground());
+		title.setMinimumSize(new Dimension(0,0));
 		
 		return title;
 	}

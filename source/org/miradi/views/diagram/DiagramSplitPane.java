@@ -8,7 +8,6 @@ package org.miradi.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -25,6 +24,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -106,6 +106,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		selectionPanel = createPageList(mainWindow);
 		selectionPanel.listChanged();
 		JScrollPane selectionScrollPane = new MiradiScrollPane(selectionPanel);
+		selectionScrollPane.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		selectionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		selectionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		Border cushion = BorderFactory.createEmptyBorder(5,5,5,5);
@@ -120,6 +121,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		scrollableLegendPanel.setMinimumSize(new Dimension(0,0));
 
 		JPanel topPanel = new JPanel(new BorderLayout());
+		topPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		UiLabel title = createControlPanelTitle();
 		topPanel.add(title, BorderLayout.BEFORE_FIRST_LINE);
 		topPanel.add(selectionScrollPane, BorderLayout.AFTER_LAST_LINE);
@@ -135,9 +137,9 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	public UiLabel createControlPanelTitle()
 	{
 		UiLabel title = new PanelTitleLabel(EAM.text("Control Bar"));
-		title.setFont(title.getFont().deriveFont(Font.BOLD));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
 		title.setHorizontalAlignment(UiLabel.CENTER);
+		title.setBackground(getBackground());
 		title.setMinimumSize(new Dimension(0,0));
 		return title;
 	}
