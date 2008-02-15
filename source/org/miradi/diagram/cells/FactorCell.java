@@ -16,6 +16,7 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.ids.DiagramFactorId;
@@ -63,8 +64,9 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		Factor factor = getUnderlyingObject();
 		Project project = factor.getProject();
-		String label = factor.getLabel();
-		String tip = "<html><b>" + label + "</b>";
+		String formattedLabel =  XmlUtilities.getXmlEncoded(factor.getLabel());
+		formattedLabel = formattedLabel.replace("\n", "<br>");
+		String tip = "<html><b>" + formattedLabel + "</b>";
 		
 		String header = "";
 		ORefList bullets = new ORefList();
