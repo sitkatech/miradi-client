@@ -9,7 +9,12 @@ package org.miradi.views.diagram;
 import javax.swing.JPopupMenu;
 
 import org.martus.swing.UiPopupMenu;
+import org.miradi.actions.ActionCreateConceptualModel;
+import org.miradi.actions.ActionCreateResultsChain;
+import org.miradi.actions.ActionDeleteConceptualModel;
 import org.miradi.actions.ActionDeleteResultsChain;
+import org.miradi.actions.ActionDiagramProperties;
+import org.miradi.actions.ActionRenameConceptualModel;
 import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.actions.Actions;
 
@@ -24,6 +29,13 @@ public class DiagramTabMouseMenuHandler
 	{
 		UiPopupMenu menu = new UiPopupMenu();
 		Actions actions = view.getMainWindow().getActions();
+		menu.add(actions.get(ActionDiagramProperties.class));
+		menu.addSeparator();
+		menu.add(actions.get(ActionCreateConceptualModel.class));
+		menu.add(actions.getMainWindowAction(ActionRenameConceptualModel.class));
+		menu.add(actions.get(ActionDeleteConceptualModel.class));
+		menu.addSeparator();
+		menu.add(actions.get(ActionCreateResultsChain.class));
 		menu.add(actions.getMainWindowAction(ActionRenameResultsChain.class));
 		menu.add(actions.get(ActionDeleteResultsChain.class));
 		return menu;
