@@ -18,7 +18,7 @@ public class TargetPropertiesKeaViabilityTreeManagementPanel extends
 {
 	public TargetPropertiesKeaViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, actions);
+		super(projectToUse, splitPositionSaverToUse, nodeId, actions);
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
 	}
