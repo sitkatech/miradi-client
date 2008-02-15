@@ -247,6 +247,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			g2.setStroke(getOwnedByGroupStroke());
 			drawBorder(g2, rect, Color.BLACK);
 		}
+		
+		drawCommentTriangle(g2, new Point(rect.width, 0));
 	}
 	
 	public Stroke getOwnedByGroupStroke()
@@ -333,12 +335,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		setRatingBubbleFont(g2);
 		g2.setColor(Color.BLACK);
 		Utility.drawStringCentered(g2, ratingText, smallRect);
-	}
-	
-	protected void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
-	{
-		Point point = new Point(rect.width, 0);
-		drawCommentTriangle(g2, point);
 	}
 	
 	protected void drawCommentTriangle(Graphics2D g2, Point upperRight)
