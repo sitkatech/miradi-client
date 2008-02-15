@@ -6,7 +6,6 @@
 package org.miradi.dialogs.planning.legend;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.miradi.actions.ActionTreeCreateActivityIconOnly;
 import org.miradi.actions.ActionTreeCreateMethodIconOnly;
@@ -23,6 +22,7 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -40,8 +40,6 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.RowManager;
-
-import com.jhlabs.awt.GridLayoutPlus;
 
 public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 {
@@ -63,7 +61,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 	
 	protected JComponent createLegendButtonPanel(Actions actions)
 	{
-		JPanel panel = new JPanel(new GridLayoutPlus(0, 3));
+		TwoColumnPanel panel = new TwoColumnPanel();
+		panel.disableFill();
 		panel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		addIconLineWithCheckBox(panel, ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon());

@@ -13,4 +13,14 @@ public class TwoColumnPanel extends JPanel
 	{
 		setLayout(new TwoColumnGridLayout());
 	}
+
+	public void disableFill()
+	{
+		getGridLayout().disableFill();
+	}
+	
+	private TwoColumnGridLayout getGridLayout()
+	{
+		return (TwoColumnGridLayout)getLayout();
+	}
 }

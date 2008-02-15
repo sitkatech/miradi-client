@@ -6,6 +6,7 @@
 package org.miradi.dialogs.fieldComponents;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 
 import org.martus.swing.UiLabel;
 import org.miradi.main.AppPreferences;
@@ -22,7 +23,12 @@ public class PanelTitleLabel extends UiLabel
 	
 	public PanelTitleLabel(String text)
 	{
-		super(text);
+		this(text, null);
+	}
+	
+	public PanelTitleLabel(String text, Icon icon)
+	{
+		super(text, icon, JLabel.LEADING);
 		setFont(getMainWindow().getUserDataPanelFont());
 		initialize();
 	}
