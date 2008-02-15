@@ -26,16 +26,18 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CONPRO_PROJECT_NUMBER));
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY));
-		addField(createStringField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
+
+		addField(createReadonlyTextField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
+
+		addField(createReadonlyTextField(metadata.TAG_TNC_COUNTRY));
+		addField(createReadonlyTextField(metadata.LEGACY_TAG_TNC_OPERATING_UNITS));
+		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion(), 1));
+
 		addField(createReadonlyTextField(metadata.TAG_TNC_ECOREGION));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion(), 1));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion(), 1));
 		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion(), 1));
 		
-		addField(createReadonlyTextField(metadata.TAG_TNC_COUNTRY));
-		addField(createReadonlyTextField(metadata.LEGACY_TAG_TNC_OPERATING_UNITS));
-		addField(createMultiCodeField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion(), 1));
-
 		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectData.getObjectType())});
 	}
 	
