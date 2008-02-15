@@ -420,11 +420,15 @@ public class ArrowLineRenderer extends EdgeRenderer
 	
 	private Vector<String> expandHardLineBreaks(String[] rawStressNames)
 	{
+		String indent = "...";
 		Vector<String> result = new Vector<String>();
 		for(int i = 0; i < rawStressNames.length; ++i)
 		{
 			String thisStressName = rawStressNames[i];
-			result.add(thisStressName);
+			String[] lines = thisStressName.split("\n");
+			result.add(lines[0]);
+			for(int extraLine = 1; extraLine < lines.length; ++extraLine)
+				result.add(indent + lines[extraLine]);
 		}
 		return result;
 	}
