@@ -189,11 +189,6 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		addIconLine(panel, foundLabel, null, foundCheckBox);
 	}
 	
-	protected void addIconLineWithoutCheckBox(JComponent panel, int objectType, String objectName, Icon icon)
-	{
-		addIconLine(panel, EAM.fieldLabel(objectType, objectName), icon, new UiLabel(""));
-	}
-
 	protected void addIconLineWithCheckBox(JComponent panel, int objectType, String objectName, Icon icon)
 	{
 		JCheckBox foundCheckBox = findCheckBox(objectName);
@@ -218,14 +213,6 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 		panel.add(findCheckBox(objectName));
 	}
 
-	protected void addButtonLineWithoutCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
-	{
-		JButton button = new LocationButton(action);
-		panel.add(button);
-		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		panel.add(new UiLabel(""));
-	}
-	
 	protected static class LocationButton extends PanelButton implements LocationHolder
 	{
 		public LocationButton(EAMAction action)
