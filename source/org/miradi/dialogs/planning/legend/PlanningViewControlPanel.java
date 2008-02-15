@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogs.planning.legend;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
@@ -49,11 +50,13 @@ public class PlanningViewControlPanel extends ControlPanel implements CommandExe
 	private void addLegendComponents(PlanningTreeTable treeAsObjectPicker) throws Exception
 	{
 		planningCustomizationPanel = new PlanningViewCustomizationPanel(getProject());
+		planningCustomizationPanel.add(new JLabel(""));
+		planningCustomizationPanel.add(createCustomizationButtonPanel());		
+
 		rowsLegendPanel = new PlanningViewRowsLegendPanel(getMainWindow(), treeAsObjectPicker);
 		columnsLegendPanel = new PlanningViewColumsLegendPanel(getMainWindow());
 		
 		add(planningCustomizationPanel);
-		planningCustomizationPanel.add(createCustomizationButtonPanel());		
 		add(rowsLegendPanel);
 		add(columnsLegendPanel);
 	}

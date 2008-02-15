@@ -186,25 +186,25 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	{
 		JButton button = new LocationButton(action);
 
+		panel.add(findCheckBox(objectName));
 		panel.add(button);
 		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		panel.add(findCheckBox(objectName));
 	}
 
 	protected void addPickerButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, ObjectsAction action, ObjectPicker picker)
 	{
 		ObjectsActionButton button = new ObjectsActionButton(action, picker);
 		
+		panel.add(findCheckBox(objectName));
 		panel.add(button);
 		panel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
-		panel.add(findCheckBox(objectName));
 	}
 
 	protected void addIconLine(JComponent panel, String text, Icon icon, JCheckBox checkbox)
 	{
+		panel.add(checkbox);
 		panel.add(new JLabel(icon));
 		panel.add(new PanelTitleLabel(EAM.text(text)));
-		panel.add(checkbox);
 	}
 	
 	protected void addSeparator(JComponent panel)
