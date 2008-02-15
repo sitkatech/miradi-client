@@ -101,10 +101,10 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		radioGroup.selectAppropriateRadioButton();
 	}
 	
-	private void addRadioButtonWithLeftComponent(JRadioButton radioButton, Component leftComponent)
+	private void addRadioButtonWithLeftComponent(JRadioButton radioButton, Component otherComponent)
 	{
-		add(leftComponent);
 		add(radioButton);
+		add(otherComponent);
 	}
 	
 	private void selectAppropriateSingleLevelComboBoxItem() throws Exception

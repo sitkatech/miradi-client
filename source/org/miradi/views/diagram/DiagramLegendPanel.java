@@ -135,10 +135,10 @@ abstract public class DiagramLegendPanel extends LegendPanel
 
 	protected void addTargetLinkLine(JPanel jpanel, int objectType, String objectName)
 	{
-		jpanel.add(new JLabel(""));
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
 		targetLinkCheckBox = findCheckBox(objectName);
 		jpanel.add(targetLinkCheckBox);
+		jpanel.add(new JLabel(""));
+		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName)));
 	}
 	
 	private void updateCheckBoxs()
