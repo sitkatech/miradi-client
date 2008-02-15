@@ -48,4 +48,9 @@ public class DiagramCopyPaster extends DiagramPaster
 	{
 		return true;
 	}
+	
+	protected boolean shouldCreateObject(ORef ref)
+	{
+		return true;
+	}
 }

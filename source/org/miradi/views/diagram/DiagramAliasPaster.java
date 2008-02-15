@@ -115,4 +115,10 @@ public class DiagramAliasPaster extends DiagramPaster
 		
 		return true;
 	}
+	
+	protected boolean shouldCreateObject(ORef ref)
+	{
+		//FIXME change this to be correct
+		return false;
+	}
 }
