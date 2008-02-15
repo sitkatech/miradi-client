@@ -21,6 +21,7 @@ import java.awt.font.TextLayout;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Vector;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -49,11 +50,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 			renderer.lineWidth = 4;
 		}
 
-		stressText = getLinkCell().getDiagramLink().getRelevantStressNames();
+		String[] rawStressNames = getLinkCell().getDiagramLink().getRelevantStressNames();
+		stressText = expandHardLineBreaks(rawStressNames);
 
 		return renderer;
 	}
-
+	
 	private LinkCell getLinkCell()
 	{
 		return (LinkCell)view.getCell();
@@ -315,22 +317,22 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
 		LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		String[] relevantStressNames = thisCell.getDiagramLink().getRelevantStressNames();
-		if (relevantStressNames.length == 0)
+		String[] rawStressNames = thisCell.getDiagramLink().getRelevantStressNames();
+		if (rawStressNames.length == 0)
 			return graphBounds;
 		
-		Rectangle2D union = calculateNewBoundsForStress(graphBounds, relevantStressNames);
+		Rectangle2D union = calculateNewBoundsForStress(graphBounds, expandHardLineBreaks(rawStressNames));
 		return union;
 	}
 	
-	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, String[] text)
+	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, Vector<String> text)
 	{
 		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, text);
 		Rectangle2D union = graphBounds.createUnion(textBounds);
 		return union;
 	}
 	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, String[] text)
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, Vector<String> text)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		g2.setFont(creatFont());
@@ -344,12 +346,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 		}
 		
 		Rectangle multiLineTextBounds = new Rectangle(0, 0, 0, 0); 
-		for (int i = 0; i < text.length; ++i)
+		for (int i = 0; i < text.size(); ++i)
 		{
-			if (text[i].length() == 0)
+			if (text.get(i).length() == 0)
 				continue;
 		
-			TextLayout textLayout = new TextLayout(text[i], g2.getFont(), g2.getFontRenderContext());
+			TextLayout textLayout = new TextLayout(text.get(i), g2.getFont(), g2.getFontRenderContext());
 			Rectangle singleLineTextBounds = textLayout.getBounds().getBounds();
 			int maxWidth = Math.max(multiLineTextBounds.width, singleLineTextBounds.width);
 		
@@ -371,7 +373,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if (!getLinkCell().getDiagramLink().isTargetLink())
 			return;
 		
-		if(stressText == null || stressText.length == 0)
+		if(stressText == null || stressText.size() == 0)
 			return;
 		
 		LayerManager layerManager = getProject().getLayerManager();
@@ -390,9 +392,9 @@ public class ArrowLineRenderer extends EdgeRenderer
 		g2.setColor(Color.BLACK);
 		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
 		int textHeight = g2.getFontMetrics().getHeight();
-		for (int i = 0; i < stressText.length; ++i)
+		for (int i = 0; i < stressText.size(); ++i)
 		{
-			g2.drawString(stressText[i], rectangle.x + CUSHION, rectangle.y + (i * textHeight) + textHeight);
+			g2.drawString(stressText.get(i), rectangle.x + CUSHION, rectangle.y + (i * textHeight) + textHeight);
 		}
 	}
 
@@ -416,10 +418,21 @@ public class ArrowLineRenderer extends EdgeRenderer
 		return diagramFontSize;
 	}
 	
+	private Vector<String> expandHardLineBreaks(String[] rawStressNames)
+	{
+		Vector<String> result = new Vector<String>();
+		for(int i = 0; i < rawStressNames.length; ++i)
+		{
+			String thisStressName = rawStressNames[i];
+			result.add(thisStressName);
+		}
+		return result;
+	}
+
 	private static final int CUSHION = 5;
 	public static final int ARROW_STUB_LINE = 23253;
 
 	private boolean linkSelected;
-	private String[] stressText;
+	private Vector<String> stressText;
 	private int diagramFontSize;
 }
