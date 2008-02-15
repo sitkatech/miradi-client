@@ -116,6 +116,11 @@ abstract public class Factor extends BaseObject
 		comment.set(newComment);
 	}
 	
+	public String getDetails()
+	{
+		return text.get();
+	}
+	
 	public boolean isStatusDraft()
 	{
 		return false;

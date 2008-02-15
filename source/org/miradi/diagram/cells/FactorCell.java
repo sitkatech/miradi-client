@@ -254,6 +254,11 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return underlyingObject.getComment();
 	}
+	
+	public String getDetails()
+	{
+		return underlyingObject.getDetails();
+	}
 
 	public IdList getGoals()
 	{
