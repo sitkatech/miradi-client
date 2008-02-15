@@ -111,6 +111,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		ToolTipManager.sharedInstance().setReshowDelay(0);
+		ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
 		
 		loadCustomAppColors();
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
