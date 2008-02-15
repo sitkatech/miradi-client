@@ -407,11 +407,17 @@ public class AppPreferences
 	
 	public void setDataPanelBackgroundColor(String colorToUse)
 	{
-		dataPanelBackgroundColor = Color.decode(colorToUse);
+		dataPanelBackgroundColorForCss = colorToUse;
 	}
+
 	public static Color getDataPanelBackgroundColor()
 	{
-		return dataPanelBackgroundColor;
+		return Color.decode(dataPanelBackgroundColorForCss);
+	}
+
+	public static String getDataPanelBackgroundColorForCss()
+	{
+		return dataPanelBackgroundColorForCss;
 	}
 
 	public void setControlPanelBackgroundColor(String colorToUse)
@@ -458,7 +464,7 @@ public class AppPreferences
 	private static String wizardSidebarBackgroundColor = "#EAFDC5";
 	
 	private static Color darkPanelBackgroundColor =  new Color(0x99, 0x99, 0xEE);
-	private static Color dataPanelBackgroundColor = new Color(0xDD, 0xDD, 0xEE);
+	private static String dataPanelBackgroundColorForCss = "#DDDDEE";
 	private static Color controlPanelBackgroundColor = new Color(0xe8, 0xee, 0xf7);
 		
 
