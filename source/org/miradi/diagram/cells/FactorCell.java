@@ -108,7 +108,7 @@ abstract public class FactorCell extends EAMGraphCell
 		{ 
 			Desire desire = (Desire) object;
 			text += 			
-					"<BR><TABLE width='200'><TR><TD><I>" +	desire.getFullText() + "</I></TD></TR></TABLE>";	
+					"<BR><TABLE width='400'><TR><TD><I>" +	desire.getFullText() + "</I></TD></TR></TABLE>";	
 		}
 		
 		text += "</LI>";
