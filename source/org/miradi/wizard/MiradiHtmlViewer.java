@@ -60,5 +60,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 		"  .wizardscreentitle {" +
 			"background-color: " + AppPreferences.getWizardTitleBackgroundColorForCss() + ";" +
 			"font-size: 110%; font-weight: bold;}",
+		"  .OrgTopPanel {" + 
+			"background-color: " + AppPreferences.getDataPanelBackgroundColorForCss() + ";}",
 	};
 }
