@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -28,6 +29,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		group = new ButtonGroup();
 		panel = new OneRowPanel();
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		buttonsByCode = new HashMap();
 		
 		for(int i = 0; i < questionToUse.size(); ++i)
@@ -77,14 +79,10 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 		for(JRadioButton button : buttonsByCode.values())
 		{
 			button.setEnabled(isValidObject());
-			if(isValidObject())
-			{
-				button.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-			}
-			else
-			{
-				button.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-			}
+			
+			// NOTE: Radio buttons never use the EDITABLE color
+			button.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			button.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		}
 	}
 
