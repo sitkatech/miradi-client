@@ -61,7 +61,6 @@ public class RoundRectangleRenderer extends RectangleRenderer
 	Dimension getInsetDimension()
 	{
 		Dimension insetDimension = new Dimension(minimumArcSize/2, 0);
-		System.out.println(insetDimension);
 		return insetDimension;
 	}
 	
