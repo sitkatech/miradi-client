@@ -327,6 +327,10 @@ abstract public class DiagramPaster
 
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
+			
+			if (!shouldCreateObject(oldObjectRef))
+				continue;
+			
 			int convertedType = convertType(oldObjectRef);
 			BaseObject newObject = createObject(convertedType);
 			loadNewObjectFromOldJson(newObject, json);
@@ -764,6 +768,8 @@ abstract public class DiagramPaster
 	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;
 	
 	abstract protected boolean canPastTypeInDiagram(int type);
+	
+	abstract protected boolean shouldCreateObject(ORef ref);
 	
 	private Project project;
 	private DiagramModel currentModel;
