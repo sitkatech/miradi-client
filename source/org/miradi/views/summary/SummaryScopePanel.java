@@ -29,7 +29,7 @@ public class SummaryScopePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField projectAreaField = createNumericField(ProjectMetadata.TAG_PROJECT_AREA);
 		ObjectDataInputField projectAreaNotesField = createMultilineField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		addFieldsOnOneLine(EAM.text("Label|Biodiversity Area (ha)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
+		addFieldsOnOneLine(EAM.text("Label|Biodiversity Area (hectares)"), new ObjectDataInputField[]{projectAreaField, projectAreaNotesField});
 
 
 		ObjectDataInputField protectedAreaStatusField = createMultiCodeField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion(), 1);
