@@ -336,7 +336,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	protected void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
 	{
-		if(node == null || node.getComment().length() <= 0)
+		if(!shouldShowCommentTriangle())
 			return;
 		
 		final int triangleInset = 15;
@@ -351,6 +351,20 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		//Temporarly turning off border
 		//setPaint(g2, rect, Color.BLACK);
 		//g2.drawPolygon(triangle);
+	}
+	
+	private boolean shouldShowCommentTriangle()
+	{
+		if(node == null)
+			return false;
+		
+		if(node.getComment().length() > 0)
+			return true;
+		
+		if(node.getDetails().length() > 0)
+			return true;
+		
+		return false;
 	}
 
 	protected static final int PRIORITY_WIDTH = 20;
