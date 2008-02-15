@@ -19,7 +19,7 @@ public class DiagramPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, diagramObjectRef);
 		
 		ObjectDataInputField shortLabelField = createShortStringField(DiagramObject.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createStringField(DiagramObject.TAG_LABEL);
+		ObjectDataInputField labelField = createMediumStringField(DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(DiagramObject.TAG_DETAIL));
