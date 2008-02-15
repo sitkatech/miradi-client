@@ -24,10 +24,10 @@ public class ChoiceData extends StringData
 		String value = question.getValue(code);
 
 		startTagToXml(out);
-		out.writeln("<code>");
+		out.write("<code>");
 		out.write(XmlUtilities.getXmlEncoded(code));
 		out.writeln("</code>");
-		out.writeln("<value>");
+		out.write("<value>");
 		out.write(XmlUtilities.getXmlEncoded(value));
 		out.writeln("</value>");
 		endTagToXml(out);
