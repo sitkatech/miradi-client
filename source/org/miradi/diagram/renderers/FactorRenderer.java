@@ -43,6 +43,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
@@ -336,16 +337,22 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	protected void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
 	{
+		Point point = new Point(rect.width, 0);
+		drawCommentTriangle(g2, point);
+	}
+	
+	protected void drawCommentTriangle(Graphics2D g2, Point upperRight)
+	{
 		if(!shouldShowCommentTriangle())
 			return;
 		
 		final int triangleInset = 15;
 		Polygon triangle = new Polygon();
-		triangle.addPoint(getWidth() - triangleInset, 0);
-		triangle.addPoint(getWidth(), 0);
-		triangle.addPoint(getWidth(), triangleInset);
-		triangle.addPoint(getWidth() - triangleInset, 0);
-		setPaint(g2, rect, Color.CYAN);
+		triangle.addPoint(upperRight.x, upperRight.y);
+		triangle.addPoint(upperRight.x - triangleInset, upperRight.y);
+		triangle.addPoint(upperRight.x, upperRight.y + triangleInset);
+		triangle.addPoint(upperRight.x, upperRight.y);
+		setPaint(g2, getBounds(), Color.CYAN);
 		g2.fill(triangle);
 		
 		//Temporarly turning off border
