@@ -21,5 +21,8 @@ public class ActivityListTableModel extends ObjectListTableModel
 
 	private static String[] COLUMN_TAGS = {
 		Task.TAG_LABEL,
+// TODO: Before we can add this column, we need to set up an appropriate 
+// renderer that will right-align and indicate estimate vs. roll-up
+//		Task.PSEUDO_TAG_BUDGET_TOTAL,
 	};
 }
