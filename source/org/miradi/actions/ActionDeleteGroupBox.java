@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionDeleteGroupBox extends LocationAction
 {
 	public ActionDeleteGroupBox(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/delete.gif");
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
 	private static String getLabel()
