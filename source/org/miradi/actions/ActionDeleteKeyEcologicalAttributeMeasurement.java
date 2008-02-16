@@ -12,7 +12,7 @@ public class ActionDeleteKeyEcologicalAttributeMeasurement extends ObjectsAction
 {
 	public ActionDeleteKeyEcologicalAttributeMeasurement(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()

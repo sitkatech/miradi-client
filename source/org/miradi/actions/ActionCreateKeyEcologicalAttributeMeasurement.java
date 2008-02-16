@@ -5,6 +5,7 @@
 */
 package org.miradi.actions;
 
+import org.miradi.icons.MeasurementIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreateKeyEcologicalAttributeMeasurement extends ObjectsAction
 {
 	public ActionCreateKeyEcologicalAttributeMeasurement(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new MeasurementIcon());
 	}
 
 	private static String getLabel()
