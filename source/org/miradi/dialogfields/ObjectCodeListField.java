@@ -31,7 +31,7 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
-		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 200;
+		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 100;
 		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
 		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
 		component.getViewport().setPreferredSize(new Dimension(width, height));
