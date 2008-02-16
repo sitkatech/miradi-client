@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.ObjectiveIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreateObjective extends ObjectsAction
 {
 	public ActionCreateObjective(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new ObjectiveIcon());
 	}
 
 	private static String getLabel()
