@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionDeleteObjective extends ObjectsAction
 {
 	public ActionDeleteObjective(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
 	private static String getLabel()

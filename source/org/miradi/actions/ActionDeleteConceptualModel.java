@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionDeleteConceptualModel extends MainWindowAction
 {
 	public ActionDeleteConceptualModel(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), "icons/delete.gif");
+		super(mainWindow, getLabel(), new DeleteIcon());
 	}
 	
 	private static String getLabel()
