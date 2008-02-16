@@ -20,7 +20,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		super(projectToUse, orefToUse);
 
 		ObjectDataInputField shortLabelField = createStringField(Indicator.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
-		ObjectDataInputField labelField = createStringField(Indicator.getObjectType(), Indicator.TAG_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Indicator.getObjectType(), Indicator.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Indicator"), new IndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
 		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL));
