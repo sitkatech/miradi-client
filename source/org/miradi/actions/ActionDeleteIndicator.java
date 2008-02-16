@@ -12,7 +12,7 @@ public class ActionDeleteIndicator extends ObjectsAction
 {
 	public ActionDeleteIndicator(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(),  "icons/delete.gif");
 	}
 
 	private static String getLabel()

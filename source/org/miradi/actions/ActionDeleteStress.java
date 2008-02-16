@@ -12,7 +12,7 @@ public class ActionDeleteStress extends ObjectsAction
 {
 	public ActionDeleteStress(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()
