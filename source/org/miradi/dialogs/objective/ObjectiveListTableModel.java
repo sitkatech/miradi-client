@@ -16,6 +16,15 @@ public class ObjectiveListTableModel extends ObjectListTableModel
 {
 	public ObjectiveListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef.getObjectType(), nodeRef.getObjectId(), Factor.TAG_OBJECTIVE_IDS, ObjectType.OBJECTIVE, Objective.TAG_LABEL);
+		super(projectToUse, nodeRef, Factor.TAG_OBJECTIVE_IDS, ObjectType.OBJECTIVE, getColumnTags());
+	}
+
+	private static String[] getColumnTags()
+	{
+		return new String[] {
+			Objective.TAG_ID,
+			Objective.TAG_LABEL,
+			Objective.TAG_FULL_TEXT,
+		};
 	}
 }
