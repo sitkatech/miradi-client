@@ -5,11 +5,14 @@
 */ 
 package org.miradi.dialogs.goal;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.icons.GoalIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.GoalId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.project.Project;
 
@@ -29,10 +32,12 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.GOAL, idToShow);
 		
+		ObjectDataInputField shortLabelField = createShortStringField(Goal.getObjectType(), Goal.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Goal.getObjectType(), Goal.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text("Goal"), new GoalIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+
+		addField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
 		
-		addField(createShortStringField(Goal.TAG_SHORT_LABEL));
-		addField(createStringField(Goal.TAG_LABEL));
-		addField(createMultilineField(Goal.TAG_FULL_TEXT));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
