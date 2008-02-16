@@ -259,9 +259,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return createStringField(tag, 5);
 	}
 	
+	public ObjectDataInputField createMediumStringField(int objectType, String tag)
+	{
+		return createStringField(objectType, tag, 15);
+	}
+	
 	public ObjectDataInputField createMediumStringField(String tag)
 	{
-		return createStringField(tag, 15);
+		return createMediumStringField(getORef(0).getObjectType(), tag);
 	}
 	
 	
