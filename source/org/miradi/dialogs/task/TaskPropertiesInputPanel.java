@@ -7,12 +7,17 @@ package org.miradi.dialogs.task;
 
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.BudgetOverrideSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.ActivityIcon;
+import org.miradi.icons.MethodIcon;
+import org.miradi.icons.TaskIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -32,7 +37,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
-		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
 		
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
@@ -46,7 +50,9 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 
 	private void addCommonFields()
 	{
-		addField(createStringField(ObjectType.TASK, Task.TAG_LABEL));
+		taskNameLabel = new PanelTitleLabel("x");
+		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
+		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
 
 		BudgetOverrideSubPanel budgetSubPanel = new BudgetOverrideSubPanel(getProject(), new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
@@ -63,10 +69,41 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		updatedWarningMessageVisiblity(orefsToUse);		
+		updatedWarningMessageVisiblity(orefsToUse);
+		updateTaskNameLabel();
 	}
 
 	
+	private void updateTaskNameLabel()
+	{
+		taskNameLabel.setIcon(getTaskTypeIcon());
+		taskNameLabel.setText(getTaskTypeLabel());
+	}
+	
+	private Icon getTaskTypeIcon()
+	{
+		ORef ref = getRefForType(Task.getObjectType());
+		if(ref.isInvalid())
+			return null;
+		
+		Task task = Task.find(getProject(), ref);
+		if(task.isActivity())
+			return new ActivityIcon();
+		if(task.isMethod())
+			return new MethodIcon();
+		return new TaskIcon();
+	}
+
+	private String getTaskTypeLabel()
+	{
+		ORef ref = getRefForType(Task.getObjectType());
+		if(ref.isInvalid())
+			return "";
+		
+		Task task = Task.find(getProject(), ref);
+		return task.getTypeName();
+	}
+
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Task Properties");
@@ -108,6 +145,6 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		return true;
 	}
 	
-	Project project;
-	PanelTitleLabel hasBothSubTaskAssignmentsWarningLabel;
+	private PanelTitleLabel hasBothSubTaskAssignmentsWarningLabel;
+	private PanelTitleLabel taskNameLabel;
 }
