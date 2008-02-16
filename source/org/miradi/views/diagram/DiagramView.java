@@ -6,6 +6,8 @@
 package org.miradi.views.diagram;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -874,8 +876,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
-		
-		Utilities.centerDlg(nodePropertiesDlg);
+		Rectangle screenRect = Utilities.getViewableRectangle();
+		int width = Math.min(nodePropertiesDlg.getWidth(), screenRect.width * 9 / 10);
+		int height = Math.min(nodePropertiesDlg.getHeight(), screenRect.height * 9 / 10);
+		Dimension size = new Dimension(width, height);
+		nodePropertiesDlg.setSize(size);
+		nodePropertiesDlg.setLocation(Utilities.center(size, screenRect));
 		nodePropertiesDlg.setVisible(true);
 		nodePropertiesPanel.updateAllSplitterLocations();
 	}
