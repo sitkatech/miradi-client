@@ -56,15 +56,16 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = factorToEdit;
+		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef(),});
+		
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);
 		
 		//TODO extract a local factor var. instead of getFactor
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(getFactor()), FactorType.getFactorIcon(getFactor()), new ObjectDataInputField[]{shortLabelField, labelField});
+		addField(createMultilineField(Factor.TAG_TEXT));
 
-		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef(),});
-		
 		if (getFactor().isDirectThreat())
 		{
 			addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
@@ -113,10 +114,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			updateEditabilityOfTargetStatusField();
 		}
 				
-		addField(createMultilineField(Factor.TAG_TEXT));
-		addField(createMultilineField(Factor.TAG_COMMENT));		
-		
 		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
+		addField(createMultilineField(Factor.TAG_COMMENT));		
+	
 		
 		updateFieldsFromProject();
 
