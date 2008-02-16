@@ -14,6 +14,7 @@ import javax.swing.JComponent;
 
 import org.martus.swing.UiRadioButton;
 import org.miradi.ids.BaseId;
+import org.miradi.main.AppPreferences;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -28,6 +29,7 @@ public class RadioButtonsField extends ObjectDataInputField
 		for(int i = 0; i < question.size(); ++i)
 		{
 			UiRadioButton button = new UiRadioButton("");
+			button.setBackground(AppPreferences.getDataPanelBackgroundColor());
 			group.add(button);
 			buttons.add(button);
 			button.addActionListener(new RadioChangeHandler());
