@@ -66,6 +66,12 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(getFactor()), FactorType.getFactorIcon(getFactor()), new ObjectDataInputField[]{shortLabelField, labelField});
 		addField(createMultilineField(Factor.TAG_TEXT));
 
+		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
+		
+
 		if (getFactor().isDirectThreat())
 		{
 			addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
@@ -93,11 +99,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			detailIcon = new StrategyIcon();
 		}
 
-		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
-		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
-		
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
