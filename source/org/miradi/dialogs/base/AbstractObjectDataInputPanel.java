@@ -473,6 +473,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new RadioButtonsField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
+	public ORef getRefForType(int objectType)
+	{
+		return new ORef(objectType, getObjectIdForType(objectType));
+	}
+	
 	public BaseId getObjectIdForType(int objectType)
 	{
 		for (int i=0; i<orefs.length; ++i)
