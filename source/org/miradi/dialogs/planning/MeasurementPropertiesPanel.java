@@ -29,7 +29,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, Measurement.getObjectType(), BaseId.INVALID);
 
 		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
-		ObjectDataInputField summaryField = createStringField(Measurement.TAG_SUMMARY);
+		ObjectDataInputField summaryField = createMediumStringField(Measurement.TAG_SUMMARY);
 		addFieldsOnOneLine(EAM.text("Measurement"), new MeasurementIcon(), new ObjectDataInputField[]{dateField, summaryField,});
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		

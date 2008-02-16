@@ -33,7 +33,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField futureStatusDateField = createDateChooserField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_DATE);
 		PanelTitleLabel futureStatusDateLabelField = new PanelFieldLabel(futureStatusDateField.getObjectType(), futureStatusDateField.getTag());
 		
-		ObjectDataInputField futureStatusSummaryField = createStringField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		ObjectDataInputField futureStatusSummaryField = createMediumStringField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		PanelTitleLabel futureStatusSummaryLabelField = new PanelFieldLabel(futureStatusSummaryField.getObjectType(), futureStatusSummaryField.getTag());
 
 		futureStatusRatingField = createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
