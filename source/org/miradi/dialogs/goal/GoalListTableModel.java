@@ -16,6 +16,15 @@ public class GoalListTableModel extends ObjectListTableModel
 {
 	public GoalListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef.getObjectType(), nodeRef.getObjectId(), Factor.TAG_GOAL_IDS, ObjectType.GOAL, Goal.TAG_LABEL);
+		super(projectToUse, nodeRef.getObjectType(), nodeRef.getObjectId(), Factor.TAG_GOAL_IDS, ObjectType.GOAL, getColumnTags());
+	}
+
+	private static String[] getColumnTags()
+	{
+		return new String[] {
+			Goal.TAG_SHORT_LABEL,
+			Goal.TAG_LABEL,
+			Goal.TAG_FULL_TEXT,
+		};
 	}
 }

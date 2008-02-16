@@ -22,7 +22,7 @@ public class ObjectiveListTableModel extends ObjectListTableModel
 	private static String[] getColumnTags()
 	{
 		return new String[] {
-			Objective.TAG_ID,
+			Objective.TAG_SHORT_LABEL,
 			Objective.TAG_LABEL,
 			Objective.TAG_FULL_TEXT,
 		};
