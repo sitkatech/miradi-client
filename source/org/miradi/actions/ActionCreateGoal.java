@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.GoalIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreateGoal extends ObjectsAction
 {
 	public ActionCreateGoal(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new GoalIcon());
 	}
 
 	private static String getLabel()
