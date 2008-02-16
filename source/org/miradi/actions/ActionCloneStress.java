@@ -5,6 +5,7 @@
  */
 package org.miradi.actions;
 
+import org.miradi.icons.StressIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCloneStress extends ObjectsAction
 {
 	public ActionCloneStress(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new StressIcon());
 	}
 
 	private static String getLabel()
