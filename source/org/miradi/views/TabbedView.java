@@ -128,7 +128,10 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public String getSelectedTabName()
 	{
-		return tabs.getTitleAt(getSelectedTabIndex());
+		int selectedTabIndex = getSelectedTabIndex();
+		if(selectedTabIndex < 0)
+			return "";
+		return tabs.getTitleAt(selectedTabIndex);
 	}
 	
 	public MiradiTabContentsPanelInterface getSelectedTabPanel()
