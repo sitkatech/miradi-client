@@ -15,6 +15,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.layout.OneRowGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -27,8 +28,11 @@ public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 	{
 		super(projectToUse, initialRef);
 		OneRowGridLayout layout = new OneRowGridLayout();
+		layout.setGaps(3);
 		setLayout(layout);
 		setBorder(null);
+		
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		int type = initialRef.getObjectType();
 		BudgetCostModeQuestion question = new BudgetCostModeQuestion();
@@ -41,7 +45,7 @@ public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
 		addField(overrideField);
 		
 		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
-		add(new UiLabel(EAM.text("High Level Est.")));
+		add(new UiLabel(EAM.text("High Level Estimate")));
 		add(overrideField.getComponent());
 		addSpacer();
 		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
