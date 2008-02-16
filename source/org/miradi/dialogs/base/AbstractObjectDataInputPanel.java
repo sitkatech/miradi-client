@@ -361,7 +361,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag)
 	{
-		return createExpandableField(objectType, tag, 50);
+		return createExpandableField(objectType, tag, 25);
 	}
 	
 	public ObjectDataInputField createExpandableField(int objectType, String tag, int columns)
