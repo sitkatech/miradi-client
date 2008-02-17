@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogs.fieldComponents;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
@@ -30,12 +31,23 @@ public class ChoiceItemComboBox extends PanelComboBox
 			ChoiceItem thisOption = (ChoiceItem)value;
 			if (value!=null)
 			{
-				Icon icon = thisOption.getIcon();
-				if(icon == null)
-					icon = new RatingIcon(thisOption); 
+				Icon icon = getOrCreateIcon(thisOption); 
 				setIcon(icon);
 			}
 			return cell;
+		}
+
+		private Icon getOrCreateIcon(ChoiceItem thisOption)
+		{
+			Icon icon = thisOption.getIcon();
+			if(icon != null)
+				return icon;
+			
+			Color color = thisOption.getColor();
+			if(color != null)
+				icon = new RatingIcon(thisOption);
+			
+			return null;
 		}
 	}
 }
