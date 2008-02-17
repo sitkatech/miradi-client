@@ -59,7 +59,8 @@ abstract class HelpButton extends PanelButton
 	public HelpButton(Action action, Color color)
 	{
 		super(action);
-		setBackground(color);
+		if(color != null)
+			setBackground(color);
 		setFocusable(false);
 	}
 
@@ -73,7 +74,7 @@ class MoreInfoButton extends HelpButton
 {
 	public MoreInfoButton(Action action)
 	{
-		super(action, Color.CYAN);
+		super(action, Color.decode("#99CCFF"));
 		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 	}
 }
@@ -82,7 +83,7 @@ class ExamplesButton extends HelpButton
 {
 	public ExamplesButton(Action action)
 	{
-		super(action, Color.YELLOW);
+		super(action, Color.decode("#FFFF77"));
 		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 	}
 }
@@ -91,7 +92,7 @@ class WorkshopButton extends HelpButton
 {
 	public WorkshopButton(Action action)
 	{
-		super(action, Color.GREEN);
+		super(action, Color.decode("#77FF77"));
 		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
