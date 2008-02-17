@@ -16,7 +16,7 @@ public class ThreatMatrixCommentPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, FactorLink.getObjectType(), BaseId.INVALID);
 		
-		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, 30));
+		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, 15));
 		
 		updateFieldsFromProject();
 	}
