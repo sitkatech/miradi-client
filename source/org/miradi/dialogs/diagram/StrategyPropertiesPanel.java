@@ -14,6 +14,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
@@ -28,8 +29,9 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindow.getProject(), Strategy.getObjectType(), BaseId.INVALID);
 		
 		ObjectDataInputField shortLabelField = createStringField(Strategy.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
-		ObjectDataInputField labelField = createStringField(Strategy.getObjectType(), Strategy.TAG_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Strategy.getObjectType(), Strategy.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Strategy"), new StrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addField(createMultilineField(Strategy.getObjectType(), Factor.TAG_TEXT));
 
 		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion()));
 		
@@ -49,12 +51,12 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
-		addField(createMultilineField(Strategy.TAG_COMMENT));
-		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
+		
+		addField(createMultilineField(Strategy.TAG_COMMENT));
 		
 		updateFieldsFromProject();
 	}
