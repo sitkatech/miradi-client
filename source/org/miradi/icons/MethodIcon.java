@@ -7,18 +7,11 @@ package org.miradi.icons;
 
 import java.awt.Color;
 
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RoundRectangleRenderer;
 import org.miradi.main.AppPreferences;
 
-public class MethodIcon extends AbstractShapeIcon
+public class MethodIcon extends TaskIcon
 {
-	FactorRenderer getRenderer()
-	{
-		return new RoundRectangleRenderer();
-	}
-	
-	Color getIconColor()
+	protected Color getIconColor()
 	{
 		return AppPreferences.INDICATOR_COLOR;
 	}
