@@ -280,9 +280,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectStringInputField(project, objectType, getObjectIdForType(objectType), tag, column);
 	}
 
-	public ObjectDataInputField createStringMapField(int objectType, String tag, String code)
+	public ObjectDataInputField createStringMapField(int objectType, String tag, String code, int length)
 	{
-		return new ObjectStringMapInputField(project, objectType, getObjectIdForType(objectType), tag, code, 20);
+		return new ObjectStringMapInputField(project, objectType, getObjectIdForType(objectType), tag, code, length);
 	}
 		
 	public ObjectDataInputField createDateChooserField(String tag)
