@@ -88,9 +88,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
-			addField(createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion()));
-			addField(createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion()));
-			addField(createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion()));
+
+			ObjectDataInputField impactField = createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());
+			ObjectDataInputField feasibilityField = createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
+			ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
+			addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 			 
 			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 			ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
