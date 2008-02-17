@@ -19,9 +19,21 @@ public class TaskIcon extends AbstractMiradiIcon
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		g.setColor(TASK_COLOR);
-		g.drawOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
-		g.fillOval(x + getIconWidth()/4, y + getIconHeight()/4, getIconWidth()/2, getIconHeight()/2);
+		g.setColor(getIconColor());
+		int rectWidth = getIconWidth() * 7 / 8;
+		int rectHeight = getIconHeight() / 2;
+		int left = x + (getIconWidth() - rectWidth)/2;
+		int top = y + (getIconHeight() - rectHeight)/2;
+		int arcWidth = getIconWidth()/2;
+		int arcHeight = getIconHeight()/2;
+		g.fillRoundRect(left, top, rectWidth, rectHeight, arcWidth, arcHeight);
+		g.setColor(Color.BLACK);
+		g.drawRoundRect(left, top, rectWidth, rectHeight, arcWidth, arcHeight);
+	}
+
+	protected Color getIconColor()
+	{
+		return TASK_COLOR;
 	}
 
 	public static final Color TASK_COLOR = Color.BLACK;
