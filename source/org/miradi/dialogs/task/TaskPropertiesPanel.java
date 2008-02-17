@@ -8,7 +8,9 @@ package org.miradi.dialogs.task;
 import javax.swing.BorderFactory;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -25,10 +27,17 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 	public TaskPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
+		setLayout(new OneColumnGridLayout());
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
 		inputPanel = new TaskPropertiesInputPanel(project, idToEdit);
+		
+		String hintAboutPlanningView = EAM.text("<html><em>HINT: " +
+				"To manage the details about who will do the work and when, " +
+				"go to the Planning View and choose Work Plan</em>");
+		
 		add(inputPanel);
+		add(new PanelTitleLabel(hintAboutPlanningView));
 	}
 	
 	public void dispose()
