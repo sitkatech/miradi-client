@@ -134,18 +134,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		boolean isKeaViabilityMode = (factor.isTarget() && factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
 		
-		if (factor.canHaveIndicators() && !isKeaViabilityMode)
-		{
-			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
-		}
-		
-		if(isKeaViabilityMode)
-		{
-			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
-		}
-
 		if(factor.canHaveGoal())
 		{
 			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
@@ -163,6 +151,18 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
+		}
+
+		if (factor.canHaveIndicators() && !isKeaViabilityMode)
+		{
+			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
+		}
+		
+		if(isKeaViabilityMode)
+		{
+			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		}
 
 		if (factor.isTarget() && getProject().getMetadata().isStressBasedThreatRatingMode())
