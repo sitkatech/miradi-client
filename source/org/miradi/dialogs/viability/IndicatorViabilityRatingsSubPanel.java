@@ -41,14 +41,14 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 
 	private void createThreshholdField(ChoiceItem choiceItem)
 	{
-		PanelTitleLabel label = new PanelTitleLabel(EAM.text(choiceItem.getLabel()));
+		PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 		Font font = label.getFont();
 		label.setFont(font.deriveFont(Font.BOLD));
 		label.setOpaque(true);
 		label.setBackground(choiceItem.getColor());
 		
-		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS, choiceItem.getCode());
-		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_INDICATOR_THRESHOLD, choiceItem.getCode());
+		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_INDICATOR_THRESHOLD, choiceItem.getCode(), 10);
+		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS, choiceItem.getCode(), 30);
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
 
