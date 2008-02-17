@@ -50,6 +50,11 @@ abstract public class ObjectDataInputField implements FocusListener
 		return objectType;
 	}
 	
+	public void setObjectType(int newType)
+	{
+		objectType = newType;
+	}
+	
 	public BaseId getObjectId()
 	{
 		return objectId;
