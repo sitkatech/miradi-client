@@ -387,10 +387,12 @@ public class AppPreferences
 	{
 		wizardSidebarBackgroundColor = colorToUse;
 	}
+
 	public static Color getSideBarBackgroundColor()
 	{
 		return Color.decode(wizardSidebarBackgroundColor);
 	}
+	
 	public static String getWizardSidebarBackgroundColorForCss()
 	{
 		return wizardSidebarBackgroundColor;
