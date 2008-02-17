@@ -45,7 +45,7 @@ public class ChoiceItemComboBox extends PanelComboBox
 			
 			Color color = thisOption.getColor();
 			if(color != null)
-				icon = new RatingIcon(thisOption);
+				return new RatingIcon(thisOption);
 			
 			return null;
 		}
