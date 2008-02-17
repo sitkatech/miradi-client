@@ -12,7 +12,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Task;
+import org.miradi.objects.Target;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.PlanningView;
 
@@ -34,10 +34,10 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				ConceptualModelDiagram.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
+				Target.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 				Indicator.OBJECT_NAME, 
-				Task.METHOD_NAME,
 				Measurement.OBJECT_NAME, });
 	}
 	
