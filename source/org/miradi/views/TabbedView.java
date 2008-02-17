@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -54,7 +55,7 @@ abstract public class TabbedView extends UmbrellaView
 		tabPanels = new HashMap<String, MiradiTabContentsPanelInterface>();
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
-
+		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
 	}
 
 	public abstract void createTabs() throws Exception;
