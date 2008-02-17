@@ -21,11 +21,6 @@ public class KeyEcologicalAttributePropertiesPanel extends ObjectDataInputPanel
 		this(projectToUse, actions, new KeyEcologicalAttributeId(BaseId.INVALID.asInt()));
 	}
 	
-	public KeyEcologicalAttributePropertiesPanel(Project projectToUse, Actions actions, KeyEcologicalAttribute keyEcologicalAttribute) throws Exception
-	{
-		this(projectToUse, actions, (KeyEcologicalAttributeId)keyEcologicalAttribute.getId());
-	}
-	
 	public KeyEcologicalAttributePropertiesPanel(Project projectToUse, Actions actions, KeyEcologicalAttributeId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, idToShow);
