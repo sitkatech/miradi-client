@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,12 +13,12 @@ public class ActionDeleteKeyEcologicalAttribute extends ObjectsAction
 {
 	public ActionDeleteKeyEcologicalAttribute(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Delete Key Ecological Attribute");
+		return EAM.text("Action|Manage|Delete KEA");
 	}
 
 	public String getToolTipText()

@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,17 +13,17 @@ public class ActionCreateKeyEcologicalAttribute extends ObjectsAction
 {
 	public ActionCreateKeyEcologicalAttribute(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new KeyEcologicalAttributeIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create Key Ecological Attribute");
+		return EAM.text("Action|Manage|Create KEA");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create an Key Ecological Attribute");
+		return EAM.text("TT|Create a Key Ecological Attribute");
 	}
 
 
