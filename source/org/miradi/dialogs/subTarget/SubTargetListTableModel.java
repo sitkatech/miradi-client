@@ -19,7 +19,7 @@ public class SubTargetListTableModel extends ObjectListTableModel
 	}
 
 	public static final String[] COLUMN_TAGS = new String[] {
-		SubTarget.TAG_LABEL,
 		SubTarget.TAG_SHORT_LABEL,
+		SubTarget.TAG_LABEL,
 	};
 }
