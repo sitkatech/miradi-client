@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 
 import org.martus.swing.UiComboBox;
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -23,7 +23,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 	public ObjectChoiceField(Project projectToUse, int objectType, BaseId objectId, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, tagToUse);
-		combo = new PanelComboBox(questionToUse.getChoices());
+		combo = new ChoiceItemComboBox(questionToUse.getChoices());
 		addFocusListener();
 		combo.addActionListener(createActionHandler());
 	}
