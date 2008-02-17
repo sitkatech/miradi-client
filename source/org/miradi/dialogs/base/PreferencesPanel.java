@@ -54,10 +54,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void dispose()
 	{
-		summaryPlanningPanel.dispose(); 
 		diagramProjectPreferencesPanel.dispose();
 		diagramProjectPreferencesPanel = null;
 		
+		if(summaryPlanningPanel != null)
+			summaryPlanningPanel.dispose(); 
 		if(threatRatingPreferencesPanel != null)
 			threatRatingPreferencesPanel.dispose();
 		threatRatingPreferencesPanel = null;
@@ -70,11 +71,14 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram View", createDiagramTab());
 		
-		summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
-		tabPane.addTab("Planning", summaryPlanningPanel);
 		
 		if(project.isOpen())
+		{
+			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
+			tabPane.addTab("Planning", summaryPlanningPanel);
 			tabPane.addTab("Threat Rating View", createThreatRatingTab());
+		}
+		
 		return tabPane;
 	}
 	
