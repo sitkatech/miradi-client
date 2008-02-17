@@ -41,6 +41,8 @@ public class WizardTitlePanel extends JPanel
 		
 		ImageIcon icon = new MiradiResourceImageIcon("images/MiradiLogo.png");
 		UiLabel iconHolder = new UiLabel();
+		iconHolder.setBackground(AppPreferences.getSideBarBackgroundColor());
+		iconHolder.setOpaque(true);
 		iconHolder.setIcon(icon);
 		add(iconHolder, BorderLayout.BEFORE_LINE_BEGINS);
 		add(titlePanel, BorderLayout.CENTER);
