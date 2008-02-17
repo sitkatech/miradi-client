@@ -358,15 +358,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private boolean shouldShowCommentTriangle()
 	{
-		if(node == null)
-			return false;
-		
-		if(node.getComment().length() > 0)
-			return true;
-		
-		if(node.getDetails().length() > 0)
-			return true;
-		
+		// NOTE: We have disabled comment triangles for this release
 		return false;
 	}
 
