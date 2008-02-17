@@ -57,6 +57,13 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	{
 		return getPanelDescription();
 	}
+	
+	public void setDividerThick()
+	{
+		splitter.setDividerSize(THICK_DIVIDER_SIZE);
+	}
+	
+	private final static int THICK_DIVIDER_SIZE = 10;
 
 	public final static String SPLITTER_TAG = "Splitter";
 	private SplitterPositionSaverAndGetter splitPositionSaver;

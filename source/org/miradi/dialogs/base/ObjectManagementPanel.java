@@ -28,6 +28,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		setDividerThick();
 		listComponent = tablePanelToUse;
 		
 		propertiesPanel = propertiesPanelToUse;
