@@ -18,19 +18,25 @@ import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.dialogs.fieldComponents.HtmlPanelLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.FactorId;
+import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.ThreatRatingBundle;
 
+import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatRatingBundlePanel extends DisposablePanel
 {
 	public ThreatRatingBundlePanel(ThreatMatrixView viewToUse) throws Exception
 	{
-	    super(new BasicGridLayout(0, 1));
+	    OneColumnGridLayout layout = new OneColumnGridLayout();
+	    layout.setFill(Alignment.FILL_HORIZONTAL);
+		setLayout(layout);
+	    setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		view = viewToUse;
 		project = view.getProject();
@@ -100,13 +106,15 @@ public class ThreatRatingBundlePanel extends DisposablePanel
 		targetName = createNameArea();
 		threatName = createNameArea();
 
-		JPanel headerBox = new JPanel(new BasicGridLayout(2, 2));		
+		JPanel headerBox = new JPanel(new BasicGridLayout(2, 2));	
+		headerBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		headerBox.add(new PanelTitleLabel("Threat:"));
 		headerBox.add(threatName);
 		headerBox.add(new PanelTitleLabel("Target:"));
 		headerBox.add(targetName);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		panel.add(headerBox);
 
 		panel.setBorder(new EmptyBorder(2, 5, 2, 5));
