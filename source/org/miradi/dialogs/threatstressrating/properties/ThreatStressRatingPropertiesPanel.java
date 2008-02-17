@@ -28,7 +28,7 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new BasicGridLayout(2, 1));
 		
-		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject(), objectPickerToUse); 
+		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject()); 
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 		add(threatStressRatingFieldPanel);
 		add(editorComponent);
