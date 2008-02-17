@@ -6,7 +6,6 @@
 package org.miradi.dialogs.fieldComponents;
 
 import org.martus.swing.UiCheckBox;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +26,6 @@ public class PanelCheckBox extends UiCheckBox
 	{
 		super(fieldLabel);
 		setFont(getMainWindow().getUserDataPanelFont());
-		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
 	
 	//TODO: Richard: should not use static ref here

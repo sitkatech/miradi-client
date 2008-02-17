@@ -51,12 +51,10 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 		if(isValidObject())
 		{
 			checkBox.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-			checkBox.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		}
 		else
 		{
 			checkBox.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-			checkBox.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		}
 	}
 	

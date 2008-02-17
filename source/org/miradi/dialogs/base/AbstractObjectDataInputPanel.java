@@ -230,12 +230,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createCheckBoxField(String tag, String on, String off)
 	{
-		return new ObjectCheckBoxField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, on, off);
+		return createCheckBoxField(getORef(0).getObjectType(), tag, on, off);
 	}
 	
 	public ObjectDataInputField createCheckBoxField(int objectType, String tag, String on, String off)
 	{
-		return new ObjectCheckBoxField(project, objectType, getObjectIdForType(objectType), tag, on, off);
+		ObjectCheckBoxField objectCheckBoxField = new ObjectCheckBoxField(project, objectType, getObjectIdForType(objectType), tag, on, off);
+		objectCheckBoxField.getComponent().setBackground(AppPreferences.getDataPanelBackgroundColor());
+		return objectCheckBoxField;
 	}
 	
 	

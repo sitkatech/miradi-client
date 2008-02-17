@@ -162,6 +162,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	protected void createCheckBox(String objectName)
 	{
 		JCheckBox component = new PanelCheckBox();
+		component.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		checkBoxes.put(objectName, component);
 		
 		component.putClientProperty(LAYER, new String(objectName));
