@@ -140,17 +140,23 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		}
 		
+		if(isKeaViabilityMode)
+		{
+			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+		}
+
+		if(factor.canHaveGoal())
+		{
+			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+		}
+		
 		if(factor.canHaveObjectives())
 		{
 			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
 			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
-		}
-		
-		if(factor.canHaveGoal())
-		{
-			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
 		if(factor.isStrategy())
@@ -159,20 +165,14 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 
-		if(isKeaViabilityMode)
+		if (factor.isTarget() && getProject().getMetadata().isStressBasedThreatRatingMode())
 		{
-			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+			stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
 		}
-
+			
 		if (factor.isTarget())
 		{
-			if (getProject().getMetadata().isStressBasedThreatRatingMode())
-			{
-				stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-				tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
-			}
-			
 			subTargetTab = new SubTargetManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
 		}
