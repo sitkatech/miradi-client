@@ -151,6 +151,24 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 			setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 			getViewport().setBackground(contents.getBackground());
 		}
+		
+		@Override
+		public Dimension getPreferredSize()
+		{
+			Dimension preferred = new Dimension(super.getPreferredSize());
+			Dimension minimum = getMinimumSize();
+			preferred.height = Math.max(preferred.height, minimum.height);
+			return preferred;
+		}
+		
+		@Override
+		public Dimension getMinimumSize()
+		{
+			Dimension minimumSize = new Dimension(super.getMinimumSize());
+			final int ABOUT_3_ROWS = 100;
+			minimumSize.height = ABOUT_3_ROWS;
+			return minimumSize;
+		}
 	}
 	
 	public BaseObject[] getSelectedObjects()
