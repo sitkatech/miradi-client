@@ -10,6 +10,8 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StatusConfidenceQuestion;
 
 public class IndicatorTreeModel extends GenericViabilityTreeModel
 {
@@ -23,13 +25,32 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 		try
 		{
 			TreeTableNode node = (TreeTableNode) rawNode;
-			if (Goal.is(node.getType()) && getColumnTag(column) == Measurement.TAG_SUMMARY)
-				return node.getParentNode().getObject().getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+			
+			String columnTag = getColumnTag(column);
+			if(columnTag.equals(Measurement.TAG_SUMMARY))
+			{
+				if (Goal.is(node.getType()))
+					return node.getParentNode().getObject().getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 
-			else if (Measurement.is(node.getType()) && getColumnTag(column) == Measurement.TAG_SUMMARY)
-				return node.getObject().getData(Measurement.TAG_SUMMARY);
+				if (Measurement.is(node.getType()))
+					return node.getObject().getData(Measurement.TAG_SUMMARY);
+			}
+			
+			if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			{
+				if(Indicator.is(node.getType()))
+					return null;
 
-			return super.getValueAt(rawNode, column);
+				if (Measurement.is(node.getType()))
+				{
+					String rawValue = node.getObject().getData(columnTag);
+					ChoiceItem choiceItem = new StatusConfidenceQuestion().findChoiceByCode(rawValue);
+					return choiceItem;
+				}
+			}
+
+			Object result = super.getValueAt(rawNode, column);
+			return result;
 		}
 		catch (Exception e)
 		{
@@ -45,5 +66,6 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 		 Measurement.TAG_SUMMARY,
-		 Measurement.TAG_STATUS_CONFIDENCE,};
+		 Measurement.TAG_STATUS_CONFIDENCE,
+	};
 }
