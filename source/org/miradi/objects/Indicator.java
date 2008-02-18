@@ -317,11 +317,26 @@ public class Indicator extends BaseObject
 		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static Indicator find(ObjectManager objectManager, ORef indicatorRef)
+	{
+		return (Indicator) objectManager.findObject(indicatorRef);
+	}
+	
 	public static Indicator find(Project project, ORef indicatorRef)
 	{
-		return (Indicator)project.findObject(indicatorRef);
+		return find(project.getObjectManager(), indicatorRef);
 	}
-
+	
 	void clear()
 	{
 		super.clear();
