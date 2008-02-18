@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionDeletePlanningViewTreeNode extends ObjectsAction
 {
 	public ActionDeletePlanningViewTreeNode(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), new DeleteIcon());
 	}
 
 	private static String getLabel()
