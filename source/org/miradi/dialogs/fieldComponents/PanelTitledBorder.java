@@ -5,6 +5,10 @@
 */ 
 package org.miradi.dialogs.fieldComponents;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 
 import org.miradi.main.EAM;
@@ -14,7 +18,13 @@ public class PanelTitledBorder extends TitledBorder
 {
 	public PanelTitledBorder(String title)
 	{
-		super(null, title, LEADING, TOP, getMainWindow().getUserDataPanelFont());
+		super(BorderFactory.createLineBorder(Color.BLACK));
+		setTitle(title);
+		setTitleJustification(LEADING);
+		setTitlePosition(TOP);
+		Font font = getMainWindow().getUserDataPanelFont();
+		font = font.deriveFont(Font.ITALIC);
+		setTitleFont(font);
 	}
 	
 	//TODO: Richard: should not use static ref here

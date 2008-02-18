@@ -11,7 +11,6 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
@@ -43,6 +42,7 @@ import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.StrategyRelevancyOverrideListField;
+import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
@@ -218,7 +218,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void addSubPanelWithTitledBorder(ObjectDataInputPanel subPanel)
 	{
-		subPanel.setBorder(BorderFactory.createTitledBorder(subPanel.getPanelDescription()));
+		subPanel.setBorder(new PanelTitledBorder(subPanel.getPanelDescription()));
 		addSubPanel(subPanel);
 		add(subPanel);
 	}

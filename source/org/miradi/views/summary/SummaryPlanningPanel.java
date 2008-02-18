@@ -7,10 +7,10 @@ package org.miradi.views.summary;
 
 import java.awt.Component;
 
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
@@ -25,12 +25,12 @@ public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 
 		SummaryPlanningWorkPlanSubPanel workPlanSubPanel = new SummaryPlanningWorkPlanSubPanel(mainWindowToUse.getProject(), orefToUse);
-		workPlanSubPanel.setBorder(BorderFactory.createTitledBorder(EAM.text("Workplan")));
+		workPlanSubPanel.setBorder(new PanelTitledBorder(EAM.text("Workplan")));
 		addSubPanel(workPlanSubPanel);
 		add(workPlanSubPanel);
 		
 		SummaryPlanningFinancialSubPanel financialSubPanel = new SummaryPlanningFinancialSubPanel(mainWindowToUse);
-		financialSubPanel.setBorder(BorderFactory.createTitledBorder(EAM.text("Financial")));
+		financialSubPanel.setBorder(new PanelTitledBorder(EAM.text("Financial")));
 		addSubPanel(financialSubPanel);
 		add(financialSubPanel);
 		
