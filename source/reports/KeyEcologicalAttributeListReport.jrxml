@@ -17,7 +17,7 @@
 		 whenNoDataType="AllSectionsNoDetail"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
 	<import value="net.sf.jasperreports.engine.*" />
@@ -46,13 +46,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="11"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="3"
+						y="0"
 						width="595"
-						height="7"
+						height="20"
 						key="subreport-2"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">

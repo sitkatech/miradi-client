@@ -6,14 +6,14 @@
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
-		 pageWidth="595"
+		 pageWidth="535"
 		 pageHeight="842"
 		 columnWidth="535"
 		 columnSpacing="0"
-		 leftMargin="30"
-		 rightMargin="30"
-		 topMargin="20"
-		 bottomMargin="20"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
@@ -37,7 +37,8 @@
 						y="0"
 						width="176"
 						height="26"
-						key="staticText-1"/>
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
@@ -55,13 +56,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="35"  isSplitAllowed="true" >
+			<band height="24"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="14"
+						y="4"
 						width="535"
-						height="17"
+						height="20"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
