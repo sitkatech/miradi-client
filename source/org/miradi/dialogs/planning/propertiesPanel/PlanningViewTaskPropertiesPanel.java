@@ -8,6 +8,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.task.TaskPropertiesInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -18,6 +19,7 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 	public PlanningViewTaskPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(new OneColumnGridLayout());
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse.getProject());
 		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
