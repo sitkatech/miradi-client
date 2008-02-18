@@ -53,6 +53,7 @@ public class ReportSelectionTableModel extends GenericDefaultTableModel
 				new Report("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
 				new Report("Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
 				new Report("Threat Rating Report", "/reports/ThreatRatingTableReport.jasper"),
+				new Report("Target Viability Report", "/reports/TargetViabilityTreeTable.jasper"),
 		};
 	}
 	
