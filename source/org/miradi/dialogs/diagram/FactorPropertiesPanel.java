@@ -275,7 +275,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if (factor.isTarget())
 		{
 			grid.addField(createTargetStatusField(factor));
-			grid.addField(grid.createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion()));
+			PanelTitleLabel modeLabel = new PanelTitleLabel(EAM.text("Viability Analysis Mode"));
+			ObjectDataInputField modeField = grid.createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
+			grid.addFieldWithCustomLabel(modeField, modeLabel);
 		}
 		
 		if (factor.isThreatReductionResult())
