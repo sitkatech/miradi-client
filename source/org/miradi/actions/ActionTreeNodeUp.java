@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.UpArrowIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionTreeNodeUp extends ObjectsAction
 {
 	public ActionTreeNodeUp(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), new UpArrowIcon());
 	}
 
 	private static String getLabel()

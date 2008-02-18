@@ -5,6 +5,7 @@
 */
 package org.miradi.actions;
 
+import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionShareActivity extends ObjectsAction
 {
 	public ActionShareActivity(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new ActivityIcon());
 	}
 
 	private static String getLabel()
