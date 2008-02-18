@@ -128,7 +128,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		addToHorizontalController(budgetScroller);
 		addToVerticalController(budgetScroller);
 
-		JScrollPane budgetTotalsScroller = new AssignmentTableScrollPane(budgetTotalsTable);
+		JScrollPane budgetTotalsScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTotalsTable);
 		addToVerticalController(budgetTotalsScroller);
 
 		resourceOtherSplitter = new PersistentHorizontalSplitPane(this, mainWindow, getSplitterName("Assignment"));
