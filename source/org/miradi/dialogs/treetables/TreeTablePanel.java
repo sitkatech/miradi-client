@@ -22,6 +22,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,7 +35,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
-	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] classes)
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse.getProject(), treeToUse);
 		mainWindow = mainWindowToUse;
@@ -44,10 +45,11 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		treeTableScrollPane = new ScrollPaneWithHideableScrollBar(tree);
 		add(treeTableScrollPane, BorderLayout.CENTER);
 		
-		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
+		GridLayoutPlus layout = new GridLayoutPlus(2, 3, 3, 3);
 		JPanel buttonBox = new JPanel(layout);
+		buttonBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		add(buttonBox,BorderLayout.AFTER_LAST_LINE);
-		addButtonsToBox(classes, buttonBox, mainWindow.getActions());
+		addButtonsToBox(buttonActionClasses, buttonBox, mainWindow.getActions());
 
 		tree.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tree.getTree().addSelectionRow(0);

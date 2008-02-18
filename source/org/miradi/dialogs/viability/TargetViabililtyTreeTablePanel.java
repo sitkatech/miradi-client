@@ -93,10 +93,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 
 	static final Class[] buttonActions = new Class[] {
 			ActionCreateKeyEcologicalAttribute.class, 
-			ActionDeleteKeyEcologicalAttribute.class,
 			ActionCreateKeyEcologicalAttributeIndicator.class,
-			ActionDeleteKeyEcologicalAttributeIndicator.class,
 			ActionCreateKeyEcologicalAttributeMeasurement.class,
+			
+			ActionDeleteKeyEcologicalAttribute.class,
+			ActionDeleteKeyEcologicalAttributeIndicator.class,
 			ActionDeleteKeyEcologicalAttributeMeasurement.class, 
 			};
 }
