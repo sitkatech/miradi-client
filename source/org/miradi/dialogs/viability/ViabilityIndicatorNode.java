@@ -16,6 +16,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 
 public class ViabilityIndicatorNode extends TreeTableNode
@@ -76,12 +77,17 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			return null;
 		
 		String data = getObject().getData(tag);
-		if (!tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
-			return data;
-
-		int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
-		return indicator.getThreshold().getStringMap().get(Integer.toString(threasholdColumn));
 		
+		if(tag.equals(Indicator.TAG_RATING_SOURCE))
+			return new RatingSourceQuestion().findChoiceByCode(data);
+		
+		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
+		{
+			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
+			return indicator.getThreshold().getStringMap().get(Integer.toString(threasholdColumn));
+		}
+		
+		return data;
 	}
 	
 	private int getFirstIndexOfThreshold()
@@ -122,7 +128,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		
-		Indicator.TAG_EMPTY,
+		Indicator.TAG_RATING_SOURCE,
 	};
 	
 	private Project project;
