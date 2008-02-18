@@ -7,6 +7,7 @@ package org.miradi.objects;
 
 import java.util.Set;
 
+import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -23,6 +24,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
@@ -120,6 +122,15 @@ public class Indicator extends BaseObject
 		Measurement measurement = (Measurement)getProject().findObject(measurementRef);
 		String statusCode = measurement.getData(Measurement.TAG_STATUS);
 		return statusCode;
+	}
+
+	public void writeNonFieldXml(UnicodeWriter out) throws Exception
+	{
+		super.writeNonFieldXml(out);
+		out.writeln("<CurrentStatus>");
+		ChoiceItem choice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(getCurrentStatus());
+		choice.toXml(out);
+		out.writeln("</CurrentStatus>");
 	}
 	
 	private String getIndicatorMethodsSingleLine()

@@ -45,7 +45,35 @@
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="30"
+						y="0"
+						width="220"
+						height="20"
+						key="staticText-2"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Item]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="250"
+						y="0"
+						width="150"
+						height="20"
+						key="staticText-3"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Status]]></text>
+				</staticText>
 			</band>
 		</columnHeader>
 		<detail>
