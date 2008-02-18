@@ -26,13 +26,16 @@
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
 	<field name="Label" class="java.lang.String">
-		<fieldDescription><![CDATA[Label/.]]></fieldDescription>
+		<fieldDescription><![CDATA[Label]]></fieldDescription>
 	</field>
 	<field name="ref" class="java.lang.String">
 		<fieldDescription><![CDATA[@ref]]></fieldDescription>
 	</field>
 	<field name="FutureStatusDate" class="java.lang.String">
-		<fieldDescription><![CDATA[FutureStatusDate/.]]></fieldDescription>
+		<fieldDescription><![CDATA[FutureStatusDate]]></fieldDescription>
+	</field>
+	<field name="CurrentStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[CurrentStatus/Choice/Value]]></fieldDescription>
 	</field>
 
 		<background>
@@ -98,7 +101,7 @@
 				<staticText>
 					<reportElement
 						x="250"
-						y="0"
+						y="40"
 						width="150"
 						height="20"
 						key="staticText-1"
@@ -109,20 +112,19 @@
 					</textElement>
 				<text><![CDATA[COLUMN 1]]></text>
 				</staticText>
-				<staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="250"
-						y="40"
+						y="0"
 						width="150"
 						height="20"
-						key="staticText-2"
-						positionType="Float"/>
+						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<text><![CDATA[COLUMN 1]]></text>
-				</staticText>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{CurrentStatus}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>
