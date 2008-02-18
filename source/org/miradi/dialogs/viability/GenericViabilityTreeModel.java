@@ -52,6 +52,9 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		else if (tag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return Indicator.getObjectType();
 		
+		else if(tag.equals(Measurement.TAG_SUMMARY))
+			return Measurement.getObjectType();
+		
 		return KeyEcologicalAttribute.getObjectType();
 	}
 	
