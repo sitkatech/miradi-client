@@ -111,16 +111,16 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	
 	//TODO,  come up with a better solution for this.  the reason this exists is becuase
 	// the label visibilty is changed outside of here.  
-	protected void addFieldsOnOneLine(String label, Object[] components)
+	protected void addFieldsOnOneLine(PanelTitleLabel label, Object[] labelsAndFields)
 	{
 		OneRowPanel fieldPanel = new OneRowPanel();
 		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		for(int i = 0; i < components.length; i+=2)
+		for(int i = 0; i < labelsAndFields.length; i+=2)
 		{
-			ObjectDataInputField objectDataInputField = (ObjectDataInputField) components[i];
+			PanelTitleLabel fieldLabel = (PanelTitleLabel) labelsAndFields[i];
+			ObjectDataInputField objectDataInputField = (ObjectDataInputField) labelsAndFields[i+1];
 			super.addField(objectDataInputField);
-			PanelTitleLabel fieldLabel = (PanelTitleLabel) components[i + 1];
 			fieldPanel.add(fieldLabel);
 			fieldPanel.add((objectDataInputField).getComponent());
 		}
