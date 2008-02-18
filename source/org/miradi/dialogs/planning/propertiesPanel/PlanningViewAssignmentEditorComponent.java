@@ -15,6 +15,8 @@ import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.ids.BaseId;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -25,13 +27,12 @@ import org.miradi.views.umbrella.ObjectPicker;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentSplitPane;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
 public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject());
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
@@ -163,9 +164,9 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	
 	protected JPanel createButtonBar()
 	{
-		GridLayoutPlus layout = new GridLayoutPlus(1, 0);
-		JPanel box = new JPanel(layout);
-				
+		OneRowPanel box = new OneRowPanel();
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		box.setGaps(3);
 		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), objectPicker);
 		box.add(addButton);
 		
