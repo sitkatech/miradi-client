@@ -9,6 +9,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.GoalIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -31,17 +32,13 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		super(projectToUse, orefToUse);
 
 		ObjectDataInputField futureStatusDateField = createDateChooserField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_DATE);
-		PanelTitleLabel futureStatusDateLabelField = new PanelFieldLabel(futureStatusDateField.getObjectType(), futureStatusDateField.getTag());
-		
 		ObjectDataInputField futureStatusSummaryField = createMediumStringField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		PanelTitleLabel futureStatusSummaryLabelField = new PanelFieldLabel(futureStatusSummaryField.getObjectType(), futureStatusSummaryField.getTag());
 
+		futureStatusRatingLabelField = new PanelFieldLabel(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_RATING);
 		futureStatusRatingField = createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
-		futureStatusRatingLabelField = new PanelFieldLabel(futureStatusRatingField.getObjectType(), futureStatusRatingField.getTag());
 		
-		addFieldsOnOneLine(EAM.text("Desired Status"), new Object[]{futureStatusDateField, futureStatusDateLabelField, 
-																	futureStatusSummaryField, futureStatusSummaryLabelField, 
-																	futureStatusRatingField, futureStatusRatingLabelField});
+		PanelTitleLabel futureStatusLabel = new PanelTitleLabel(EAM.text("Desired Future Status"), new GoalIcon());
+		addFieldsOnOneLine(futureStatusLabel, new ObjectDataInputField[]{futureStatusDateField, futureStatusSummaryField, futureStatusRatingField, });
 
 		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL));
 		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENT));
@@ -69,7 +66,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Desired Future Status");
+		return EAM.text("Desired Status");
 	}
 	
 	private ObjectDataInputField futureStatusRatingField;
