@@ -29,7 +29,10 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		super(new BorderLayout());
 		project = projectToUse;
 		component = componentToUse;
-		add(new MiradiScrollPane((JComponent)component), BorderLayout.CENTER);
+		MiradiScrollPane tableScrollPane = new MiradiScrollPane((JComponent)component);
+		tableScrollPane.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		tableScrollPane.getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
+		add(tableScrollPane, BorderLayout.CENTER);
 		buttons = new OneRowPanel();
 		buttons.setGaps(3);
 		buttons.setBackground(AppPreferences.getDataPanelBackgroundColor());

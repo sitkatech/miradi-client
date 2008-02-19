@@ -8,6 +8,7 @@ package org.miradi.dialogs.diagram;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
@@ -36,6 +37,7 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.ids.FactorId;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -63,6 +65,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
+		setBackground(AppPreferences.getDarkPanelBackgroundColor());
+		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
+
 		getProject().addCommandExecutedListener(this);
 	}
 	

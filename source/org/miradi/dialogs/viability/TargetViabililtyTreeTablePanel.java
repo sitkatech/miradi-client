@@ -16,6 +16,7 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
@@ -37,6 +38,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionToUse)
 	{
 		super(mainWindowToUse, treeToUse, buttonActionToUse);
+		treeTableScrollPane.getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
 	public Dimension getPreferredSize()

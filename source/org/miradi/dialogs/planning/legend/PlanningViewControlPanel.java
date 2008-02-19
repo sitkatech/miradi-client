@@ -16,6 +16,7 @@ import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.planning.PlanningTreeTable;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.MainWindow;
@@ -71,6 +72,7 @@ public class PlanningViewControlPanel extends ControlPanel implements CommandExe
 	private JPanel createCustomizationButtonPanel()
 	{
 		JPanel customizationButtonPanel = new JPanel(new BasicGridLayout(3, 1));
+		customizationButtonPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
 		customizationButtonPanel.add(createConfigurationButton);
 		customizationButtonPanel.add(renameConfigurationButton);

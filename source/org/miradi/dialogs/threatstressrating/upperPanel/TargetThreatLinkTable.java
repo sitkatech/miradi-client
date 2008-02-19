@@ -8,6 +8,7 @@ package org.miradi.dialogs.threatstressrating.upperPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
@@ -19,7 +20,8 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	public TargetThreatLinkTable(TargetThreatLinkTableModel tableModel)
 	{
 		super(tableModel);
-		
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
+
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -35,6 +35,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -71,6 +72,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	{
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
+		
 		rowHeightController = new MultiTableRowHeightController();
 		rowHeightController.addTable(treeToUse);
 		
@@ -78,6 +80,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		fontProvider = new PlanningViewFontProvider();
 		
 		mainPanel = new JPanel(new BasicGridLayout(1, 4));
+		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
 		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		mainScrollPane = new MiradiScrollPane(mainPanel);

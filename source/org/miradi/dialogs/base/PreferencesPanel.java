@@ -50,6 +50,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow = mainWindowToUse;
 		project = mainWindow.getProject();
 		add(createTabs(), BorderLayout.CENTER);
+		
+		setBackground(AppPreferences.getDarkPanelBackgroundColor());
+		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
+		
 	}
 
 	public void dispose()
@@ -85,6 +89,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createSystemwideTab()
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
+		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		int panelFontSize = mainWindow.getDataPanelFontSize();
 		String panelSizeAsString = Integer.toString(panelFontSize);
@@ -124,8 +129,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createThreatRatingTab()
 	{
 		JPanel threatTab = new JPanel(new BasicGridLayout(0,2));
+		threatTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
 		threatTab.add(new PanelTitleLabel(EAM.text("Show Ratings in Cell")));
 		cellRatingsVisibleCheckBox = new PanelCheckBox();
+		cellRatingsVisibleCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		cellRatingsVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE));
 		cellRatingsVisibleCheckBox.addActionListener(this);
 		threatTab.add(cellRatingsVisibleCheckBox);
@@ -139,7 +147,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createDiagramTab()
 	{
 		JPanel diagramTab = new JPanel(new BasicGridLayout(1,1));
+		diagramTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
 		JPanel diagramSystemPreferencesTab = new JPanel(new BasicGridLayout(0,2));
+		diagramSystemPreferencesTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new PanelTitleLabel(EAM.text("Choose the colors that look best on your system:")));
@@ -196,8 +207,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramTab.add(new UiLabel(" "));
 		
 		JPanel bottomText = new JPanel();
+		bottomText.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		bottomText.add(new HyperlinkLabel( 
-				"<p>Why are my choices limited to one color family for each type of factor?</p>",
+				"<div class='DataPanel'><p>Why are my choices limited to one color family for each type of factor?</p>",
 				"We are trying to create a standard set of symbols that can be recognized " +
 				"globally. Just like people the world over recognize a red octagon as a " +
 				"stop sign, we hope that they will recognize a green oval as a target or " +
