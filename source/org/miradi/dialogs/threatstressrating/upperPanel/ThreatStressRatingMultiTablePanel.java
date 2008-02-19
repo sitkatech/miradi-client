@@ -23,7 +23,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	public ThreatStressRatingMultiTablePanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
-	
+		
 		createTables();
 		addTableToGridBag();
 		addTablesToSelectionController();

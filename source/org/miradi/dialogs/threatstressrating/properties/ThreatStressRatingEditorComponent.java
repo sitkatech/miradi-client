@@ -14,6 +14,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -49,6 +50,8 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	protected JPanel createButtonPanel()
 	{
 		JPanel buttonPanel = new OneRowPanel();
+		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
 		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), getObjectPicker());
 		buttonPanel.add(manageStressesButton);
 		

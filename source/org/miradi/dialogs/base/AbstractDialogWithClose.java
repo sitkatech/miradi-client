@@ -21,6 +21,7 @@ import org.martus.swing.Utilities;
 import org.miradi.actions.EAMAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
@@ -40,6 +41,7 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		getContentPane().add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		pack();
 		Utilities.fitInScreen(this);
+		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(this);
 	}
 
@@ -79,7 +81,7 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		return buttonBar;
 	}
 	
-	public void addAdditionalButtons(Box buttonBar)
+	public void addAdditionalButtons(Box buttonBarToUse)
 	{
 	}
 	
@@ -102,11 +104,11 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		super.dispose();
 	}
 	
-	protected void createDirectionsButton(Box buttonBar)
+	protected void createDirectionsButton(Box buttonBarToUse)
 	{
 		UiButton  help = new PanelButton(new ActionDirections());
 		Component[] components = new Component[] {help};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
+		Utilities.addComponentsRespectingOrientation(buttonBarToUse, components);
 	}
 	
 	protected Class getJumpAction()
