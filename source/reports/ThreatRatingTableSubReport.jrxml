@@ -5,10 +5,10 @@
 		 name="ThreatRatingTableSubReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="535"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="782"
 		 columnSpacing="0"
 		 leftMargin="30"
 		 rightMargin="30"
@@ -24,10 +24,6 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="SomeName" isForPrompting="false" class="java.lang.String">
-		<parameterDescription><![CDATA["/MiradiProject/ObjectPools/Pool/DirectThreat[@ref = " + $F{FromRef} + "]/Label"]]></parameterDescription>
-		<defaultValueExpression ><![CDATA["/MiradiProject/ObjectPools/Pool/DirectThreat[@ref = " + $F{FromRef} + "]/Label"]]></defaultValueExpression>
-	</parameter>
 	<queryString language="xPath"><![CDATA[/MiradiProject/ObjectPools/Pool/Link]]></queryString>
 
 	<field name="FromRef" class="java.lang.String">
@@ -40,7 +36,16 @@
 		<fieldDescription><![CDATA[@ref]]></fieldDescription>
 	</field>
 	<field name="ThreatName" class="java.lang.String">
-		<fieldDescription><![CDATA[self::node()[FromRef = FromRef]/ToRef]]></fieldDescription>
+		<fieldDescription><![CDATA[ThreatName]]></fieldDescription>
+	</field>
+	<field name="TargetName" class="java.lang.String">
+		<fieldDescription><![CDATA[TargetName]]></fieldDescription>
+	</field>
+	<field name="TargetThreatRating" class="java.lang.String">
+		<fieldDescription><![CDATA[TargetThreatRating/Choice/Value]]></fieldDescription>
+	</field>
+	<field name="TargetThreatRating_ThreatRef_ALL" class="java.lang.String">
+		<fieldDescription><![CDATA[@ref]]></fieldDescription>
 	</field>
 
 		<background>
@@ -84,44 +89,27 @@
 					<crosstabHeaderCell>						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>
-					</crosstabHeaderCell>					<rowGroup name="ThreatRef" width="100">
+					</crosstabHeaderCell>					<rowGroup name="ThreatRef" width="0">
 						<bucket>
 							<bucketExpression class="java.lang.String"><![CDATA[$F{FromRef}]]></bucketExpression>
 						</bucket>
-						<crosstabRowHeader>
-						<cellContents mode="Transparent">
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="0"
-						width="100"
-						height="25"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{ThreatRef}]]></textFieldExpression>
-				</textField>
-						</cellContents>
-						</crosstabRowHeader>
 					</rowGroup>
 					<rowGroup name="ThreatName" width="100">
 						<bucket>
-							<bucketExpression class="java.lang.String"><![CDATA[$P{SomeName}]]></bucketExpression>
+							<bucketExpression class="java.lang.String"><![CDATA[$F{ThreatName}]]></bucketExpression>
 						</bucket>
 						<crosstabRowHeader>
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
 						width="100"
 						height="25"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
@@ -130,32 +118,38 @@
 						</cellContents>
 						</crosstabRowHeader>
 					</rowGroup>
-					<columnGroup name="TargetRef" height="30">
-						<bucket>
+					<columnGroup name="TargetRef" height="0">
+						<bucket order="Descending">
 							<bucketExpression class="java.lang.String"><![CDATA[$F{ToRef}]]></bucketExpression>
+						</bucket>
+					</columnGroup>
+					<columnGroup name="TargetName" height="30">
+						<bucket>
+							<bucketExpression class="java.lang.String"><![CDATA[$F{TargetName}]]></bucketExpression>
 						</bucket>
 						<crosstabColumnHeader>
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="0"
 						width="93"
 						height="30"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetRef}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetName}]]></textFieldExpression>
 				</textField>
 						</cellContents>
 						</crosstabColumnHeader>
 					</columnGroup>
 
-					<measure name="ThreatRating" class="java.lang.String">
-						<measureExpression><![CDATA[$F{LinkRef}]]></measureExpression>
+					<measure name="TargetThreatRating" class="java.lang.String" calculation="DistinctCount">
+						<measureExpression><![CDATA[$F{TargetThreatRating}]]></measureExpression>
 					</measure>
 					<crosstabCell width="93" height="25">
 						<cellContents mode="Transparent">
@@ -167,11 +161,11 @@
 						width="93"
 						height="25"
 						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{ThreatRating}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetThreatRating}]]></textFieldExpression>
 				</textField>
 						</cellContents>
 					</crosstabCell>
@@ -196,6 +190,21 @@
 						</cellContents>
 					</crosstabCell>
 					<crosstabCell width="0" height="0" rowTotalGroup="ThreatName" columnTotalGroup="TargetRef">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="25" columnTotalGroup="TargetName">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="0" rowTotalGroup="ThreatName" columnTotalGroup="TargetName">
+						<cellContents mode="Transparent">
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="0" height="0" rowTotalGroup="ThreatRef" columnTotalGroup="TargetName">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 						</cellContents>

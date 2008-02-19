@@ -5,10 +5,10 @@
 		 name="TargetViabilityTreeTable"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="535"
-		 pageHeight="842"
-		 columnWidth="535"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="535"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -61,7 +61,7 @@
 					<reportElement
 						x="0"
 						y="4"
-						width="535"
+						width="842"
 						height="20"
 						key="subreport-1"
 						positionType="Float"/>
