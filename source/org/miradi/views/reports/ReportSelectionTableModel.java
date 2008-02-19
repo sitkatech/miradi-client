@@ -56,6 +56,8 @@ public class ReportSelectionTableModel extends GenericDefaultTableModel
 				new Report("Target Viability Report", "/reports/TargetViabilityTreeTable.jasper"),
 				new Report("Strategic Plan Report", "/reports/StrategicPlanReport.jasper"),
 				new Report("Monitoring Plan Report", "/reports/MonitoringPlanReport.jasper"),
+				new Report("Work Plan Report", "/reports/WorkPlanReport.jasper"),
+				
 		};
 	}
 	
