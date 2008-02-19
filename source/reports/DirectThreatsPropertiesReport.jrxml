@@ -156,7 +156,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel} ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
