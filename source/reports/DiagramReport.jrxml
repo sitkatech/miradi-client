@@ -15,7 +15,7 @@
 		 topMargin="0"
 		 bottomMargin="0"
 		 whenNoDataType="AllSectionsNoDetail"
-		 isTitleNewPage="false"
+		 isTitleNewPage="true"
 		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
@@ -43,7 +43,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -59,8 +59,8 @@
 				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="38"
-						width="782"
+						y="18"
+						width="812"
 						height="317"
 						key="image-1"
 						positionType="Float"/>

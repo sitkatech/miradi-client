@@ -97,7 +97,8 @@
 						y="122"
 						width="530"
 						height="22"
-						key="subreport-1"/>
+						key="subreport-1"
+						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>

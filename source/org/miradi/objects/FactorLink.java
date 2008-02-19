@@ -5,10 +5,12 @@
 */ 
 package org.miradi.objects;
 
+import java.io.IOException;
 import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
@@ -26,6 +28,9 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
@@ -287,8 +292,38 @@ public class FactorLink extends BaseObject
 		writeCriterionAndValue(out, severityCriterion, severity);
 		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
 		out.writeln("</ThreatRatingSimple>");
+		
+		writeOutTargetThreatRatingXML(out, simpleThreatFramework, bundle);
+		
+		Target target = Target.find(getProject(), targetRef);
+		out.write("<TargetName>");
+		out.write(XmlUtilities.getXmlEncoded(target.toString()));
+		out.writeln("</TargetName>");
+		
+		Cause cause = Cause.find(getProject(), threatRef);
+		out.write("<ThreatName>");
+		out.write(XmlUtilities.getXmlEncoded(cause.toString()));
+		out.writeln("</ThreatName>");
 	}
-	
+
+	private void writeOutTargetThreatRatingXML(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle) throws IOException, Exception
+	{
+		
+		int targetThreatRatingValue = 0;
+		if (getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+			targetThreatRatingValue = calculateThreatRatingBundleValue();
+		else
+			targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
+
+		ChoiceItem targetThreatRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(targetThreatRatingValue));
+		if (targetThreatRatingChoice == null)
+			return;
+		
+		out.write("<TargetThreatRating>");
+		targetThreatRatingChoice.toXml(out);
+		out.writeln("</TargetThreatRating>");
+	}
+
 	private void writeCriterionAndValue(UnicodeWriter out, RatingCriterion criterion, ValueOption value) throws Exception
 	{
 		out.write("<" + criterion.getLabel() + ">");
