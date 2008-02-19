@@ -105,6 +105,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void start(String[] args) throws Exception
 	{
+		if(Arrays.asList(args).contains("--demo"))
+			demoMode = true;
+		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
@@ -733,6 +736,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
+	public static boolean isDemoMode()
+	{
+		return demoMode;
+	}
+	
 	public void savePreferences() throws Exception
 	{
 		boolean isMaximized = false;
@@ -941,7 +949,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 1000;
-	
+
+	private static boolean demoMode;
+
 	protected Actions actions;
 	private AppPreferences preferences;
 	private Project project;
