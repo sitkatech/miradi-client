@@ -8,6 +8,8 @@ package org.miradi.main;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.JComboBox;
@@ -44,15 +46,16 @@ public class ViewSwitcher extends PanelComboBox
 			actions.get(ActionViewThreatMatrix.class),
 			actions.get(ActionViewPlanning.class),
 			actions.get(ActionViewReport.class),
-//			actions.get(ActionViewStrategicPlan.class),
-//			actions.get(ActionViewMonitoring.class),
-//			actions.get(ActionViewWorkPlan.class), 
-//			actions.get(ActionViewBudget.class), 
-			actions.get(ActionViewMap.class),
-			actions.get(ActionViewSchedule.class),
-			actions.get(ActionViewImages.class),
 		};
-		return views;
+		Vector<Action> viewVector = new Vector<Action>(Arrays.asList(views));
+		
+		if(MainWindow.isDemoMode())
+		{
+			viewVector.add(actions.get(ActionViewMap.class));
+			viewVector.add(actions.get(ActionViewSchedule.class));
+			viewVector.add(actions.get(ActionViewImages.class));
+		}
+		return viewVector.toArray(new Action[0]);
 	}
 	
 	private ViewSwitcher(Object[] choices)
