@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="MonitoringPlanReport"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="535"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="252"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="13"
+						y="0"
+						width="515"
+						height="20"
+						key="staticText-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[2B.	Monitoring Plan ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="20"
+						width="429"
+						height="55"
+						key="staticText-2"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Outputs for this step include:
+•	Audiences and their associated information needs clearly defined.
+•	Indicators defined.
+•	Finalized Monitoring Plan.
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="101"
+						width="494"
+						height="44"
+						key="staticText-3"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<text><![CDATA[We have developed indicators to address both the status of our conservation targets and key threats as well as the effectiveness of our actions.  These indicators and associated methods are listed in the following table:
+
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="81"
+						width="167"
+						height="20"
+						key="staticText-5"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Audiences and Indicators]]></text>
+				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="34"
+						y="151"
+						width="494"
+						height="22"
+						key="subreport-5"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Indicator")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/IndicatorPoolTableReport.jasper")]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement
+						x="34"
+						y="199"
+						width="494"
+						height="28"
+						key="staticText-6"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<text><![CDATA[We have developed a monitoring plan that has indicators and methods for targets/goals and for objective, and in some cases, other key results or factors. ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="179"
+						width="167"
+						height="20"
+						key="staticText-7"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Monitoring Plan]]></text>
+				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="34"
+						y="227"
+						width="494"
+						height="22"
+						key="subreport-6"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Indicator")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/MonitoringPlanTableReport.jasper")]]></subreportExpression>
+				</subreport>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
