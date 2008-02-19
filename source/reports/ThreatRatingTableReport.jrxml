@@ -6,16 +6,16 @@
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Landscape"
-		 pageWidth="842"
+		 pageWidth="782"
 		 pageHeight="595"
 		 columnWidth="782"
 		 columnSpacing="0"
-		 leftMargin="30"
-		 rightMargin="30"
-		 topMargin="20"
-		 bottomMargin="20"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
 		 whenNoDataType="NoPages"
-		 isTitleNewPage="false"
+		 isTitleNewPage="true"
 		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
@@ -32,17 +32,17 @@
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
+			<band height="30"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="20"
-						y="10"
-						width="313"
+						x="0"
+						y="0"
+						width="119"
 						height="28"
 						key="staticText-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Threat Rating Table]]></text>
 				</staticText>
@@ -57,13 +57,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="46"  isSplitAllowed="true" >
+			<band height="31"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="11"
-						width="535"
-						height="17"
+						y="0"
+						width="782"
+						height="31"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">

@@ -2,19 +2,19 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ProjectResourceHumanShortListReport"
+		 name="DraftStrategyListReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
-		 pageWidth="370"
+		 pageWidth="500"
 		 pageHeight="842"
-		 columnWidth="370"
+		 columnWidth="500"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
 		 topMargin="0"
 		 bottomMargin="0"
-		 whenNoDataType="NoPages"
+		 whenNoDataType="AllSectionsNoDetail"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
@@ -25,26 +25,14 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="Name" class="java.lang.String">
-		<fieldDescription><![CDATA[Name/.]]></fieldDescription>
+	<field name="ShortLabel" class="java.lang.String">
+		<fieldDescription><![CDATA[ShortLabel]]></fieldDescription>
 	</field>
-	<field name="SurName" class="java.lang.String">
-		<fieldDescription><![CDATA[SurName/.]]></fieldDescription>
+	<field name="Label" class="java.lang.String">
+		<fieldDescription><![CDATA[Label]]></fieldDescription>
 	</field>
-	<field name="ResourceId" class="java.lang.String">
-		<fieldDescription><![CDATA[Initials/.]]></fieldDescription>
-	</field>
-	<field name="Organization" class="java.lang.String">
-		<fieldDescription><![CDATA[Organization/.]]></fieldDescription>
-	</field>
-	<field name="Position" class="java.lang.String">
-		<fieldDescription><![CDATA[Position/.]]></fieldDescription>
-	</field>
-	<field name="Roles" class="java.lang.String">
-		<fieldDescription><![CDATA[/MiradiProject/ObjectPools/Pool/ProjectResource/RoleCodes/CodeList/Entry/Value]]></fieldDescription>
-	</field>
-	<field name="ref" class="java.lang.String">
-		<fieldDescription><![CDATA[@ref]]></fieldDescription>
+	<field name="TaxonomyCode" class="java.lang.String">
+		<fieldDescription><![CDATA[TaxonomyCode/code]]></fieldDescription>
 	</field>
 
 		<background>
@@ -56,7 +44,21 @@
 			</band>
 		</title>
 		<pageHeader>
-			<band height="0"  isSplitAllowed="true" >
+			<band height="17"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="237"
+						height="17"
+						key="staticText-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Table: Draft Strategies]]></text>
+				</staticText>
 			</band>
 		</pageHeader>
 		<columnHeader>
@@ -65,7 +67,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="124"
+						width="28"
 						height="19"
 						key="staticText-2"
 						positionType="Float"/>
@@ -73,13 +75,13 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Given Name]]></text>
+				<text><![CDATA[ID]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="124"
+						x="28"
 						y="0"
-						width="124"
+						width="263"
 						height="19"
 						key="staticText-3"
 						positionType="Float"/>
@@ -87,21 +89,21 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Surname]]></text>
+				<text><![CDATA[Name]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="248"
+						x="291"
 						y="0"
-						width="121"
+						width="208"
 						height="19"
-						key="staticText-5"
+						key="staticText-4"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Organization]]></text>
+				<text><![CDATA[Taxonomy Code]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
@@ -111,7 +113,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="124"
+						width="28"
 						height="19"
 						key="textField-1"
 						stretchType="RelativeToBandHeight"
@@ -120,13 +122,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Name}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ShortLabel}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="124"
+						x="28"
 						y="0"
-						width="124"
+						width="263"
 						height="19"
 						key="textField-2"
 						stretchType="RelativeToBandHeight"
@@ -135,13 +137,13 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SurName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Label}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="248"
+						x="291"
 						y="0"
-						width="121"
+						width="208"
 						height="19"
 						key="textField-3"
 						stretchType="RelativeToBandHeight"
@@ -150,7 +152,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Organization}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{TaxonomyCode}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>

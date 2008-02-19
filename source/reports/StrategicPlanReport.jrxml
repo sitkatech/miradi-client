@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ProjectDescriptionReport"
+		 name="StrategicPlanReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -23,20 +23,7 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<style 
-		name="TopicHeading"
-		isDefault="false"
-		isStyledText="true"
-		fontSize="12"
-		isBold="true"
-		isBlankWhenNull="true"
-	/>
-
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
-
-	<field name="ProjectName" class="java.lang.String">
-		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectName]]></fieldDescription>
-	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -55,115 +42,85 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="305"  isSplitAllowed="true" >
+			<band height="193"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="0"
-						y="3"
-						width="196"
-						height="17"
-						key="staticText-2"
+						x="13"
+						y="0"
+						width="515"
+						height="20"
+						key="staticText-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[1.	Project Description (Conceptualize)
-
+				<text><![CDATA[2A.	Strategic Plan: Goals, Strategies, Assumptions, and Objectives]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="20"
+						width="429"
+						height="108"
+						key="staticText-2"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Outputs for this step include:
+•	Goals for each target.
+•	Identification of “key factors” and draft strategies.
+•	Ranking of draft strategies.
+•	Results chains that specify assumptions for key strategies.
+•	Objectives for key factors.
+•	Finalized project conceptual model that incorporates goals, objectives, and strategies.
+•	Finalized Strategic Plan.
 ]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="0"
-						y="19"
-						width="196"
-						height="16"
+						x="13"
+						y="146"
+						width="510"
+						height="20"
 						key="staticText-3"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[1A.	Initial Project Team]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="34"
-						width="535"
-						height="75"
-						key="staticText-4"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
-					</textElement>
-				<text><![CDATA[Outputs for this step include:	
-	•Selection of initial project team, including project leader, core members, and advisory members. 
-	•Identification of key skills each team member brings.
-	•Designation of roles and responsibilities.
-
-
-The project team is composed of the members shown in the following table.
-
-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="108"
-						width="535"
-						height="16"
-						key="staticText-5"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[The project team is composed of the members shown in the following table.]]></text>
+				<text><![CDATA[The goals for our project are listed in the following table.]]></text>
 				</staticText>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="0"
-						y="124"
-						width="535"
-						height="12"
+						x="13"
+						y="167"
+						width="510"
+						height="22"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectResource")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectTeamMemberTableReport.jasper")]]></subreportExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Goal")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/GoalsPoolReport.jasper")]]></subreportExpression>
 				</subreport>
 				<staticText>
 					<reportElement
-						x="0"
-						y="149"
-						width="535"
-						height="16"
-						key="staticText-6"
+						x="13"
+						y="128"
+						width="167"
+						height="20"
+						key="staticText-4"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Key partner organizations included in this project are shown in the following table.]]></text>
+				<text><![CDATA[Goals]]></text>
 				</staticText>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="0"
-						y="165"
-						width="535"
-						height="12"
-						key="subreport-2"
-						positionType="Float"/>
-					<subreportParameter  name="DATA_DIRECTORY">
-						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Organization")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/PartnerOrganizationTableReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
