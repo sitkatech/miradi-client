@@ -6,12 +6,12 @@
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Landscape"
-		 pageWidth="842"
+		 pageWidth="812"
 		 pageHeight="595"
 		 columnWidth="812"
 		 columnSpacing="0"
 		 leftMargin="0"
-		 rightMargin="30"
+		 rightMargin="0"
 		 topMargin="0"
 		 bottomMargin="0"
 		 whenNoDataType="AllSectionsNoDetail"
@@ -43,7 +43,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="20"  isSplitAllowed="true" >
+			<band height="9"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -59,9 +59,9 @@
 				<image  evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="18"
+						y="45"
 						width="812"
-						height="317"
+						height="309"
 						key="image-1"
 						positionType="Float"/>
 					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
@@ -116,7 +116,8 @@
 						y="0"
 						width="102"
 						height="18"
-						key="staticText-1"/>
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>

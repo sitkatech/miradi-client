@@ -15,7 +15,7 @@
 		 topMargin="20"
 		 bottomMargin="20"
 		 whenNoDataType="NoPages"
-		 isTitleNewPage="false"
+		 isTitleNewPage="true"
 		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
@@ -98,8 +98,8 @@
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="207"
-						y="52"
+						x="127"
+						y="53"
 						width="328"
 						height="12"
 						key="subreport-2"
@@ -125,7 +125,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="300"
+						y="147"
 						width="535"
 						height="17"
 						key="subreport-1"
@@ -139,7 +139,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="322"
+						y="169"
 						width="535"
 						height="17"
 						key="subreport-3"
@@ -153,7 +153,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="343"
+						y="190"
 						width="535"
 						height="17"
 						key="subreport-4"
@@ -167,7 +167,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="365"
+						y="212"
 						width="535"
 						height="17"
 						key="subreport-5"
@@ -181,7 +181,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="4"
+						y="30"
 						width="535"
 						height="17"
 						key="subreport-6"
@@ -195,7 +195,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="25"
+						y="51"
 						width="535"
 						height="17"
 						key="subreport-7"
@@ -209,7 +209,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="46"
+						y="72"
 						width="535"
 						height="17"
 						key="subreport-8"
@@ -223,7 +223,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="68"
+						y="94"
 						width="535"
 						height="20"
 						key="subreport-10"
@@ -237,7 +237,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="94"
+						y="120"
 						width="535"
 						height="20"
 						key="subreport-11"
@@ -247,6 +247,48 @@
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/OrganizationInformationReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="8"
+						width="535"
+						height="17"
+						key="subreport-12"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectIntroductionReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="234"
+						width="535"
+						height="17"
+						key="subreport-13"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StrategicPlanReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="256"
+						width="535"
+						height="17"
+						key="subreport-14"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StrategySelectionReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
