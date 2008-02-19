@@ -6,6 +6,7 @@
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.CardLayout;
+import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -88,6 +89,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
+		
+		scrollRectToVisible(new Rectangle(0,0,0,0));
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)

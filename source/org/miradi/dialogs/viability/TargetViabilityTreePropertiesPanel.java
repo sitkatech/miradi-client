@@ -6,6 +6,7 @@
 package org.miradi.dialogs.viability;
 
 import java.awt.CardLayout;
+import java.awt.Rectangle;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
@@ -71,6 +72,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		targetViabilityIndicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityMeasurementPropertiesPanel.setObjectRefs(orefsToUse);
 		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
+		
+		scrollRectToVisible(new Rectangle(0,0,0,0));
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
