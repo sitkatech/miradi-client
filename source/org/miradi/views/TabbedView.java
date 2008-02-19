@@ -165,6 +165,7 @@ abstract public class TabbedView extends UmbrellaView
 		PanelButton directionsButton = new PanelButton(new DirectionsAction(actions, jumpClass));
 
 		OneRowPanel buttonPanel = new OneRowPanel();
+		buttonPanel.setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		buttonPanel.add(directionsButton);
 
 		JPanel panel = new JPanel(new BorderLayout());

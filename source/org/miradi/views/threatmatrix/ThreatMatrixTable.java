@@ -19,6 +19,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
+import org.miradi.main.AppPreferences;
 import org.miradi.project.Project;
 
 public class ThreatMatrixTable extends PanelTable
@@ -43,6 +44,7 @@ public class ThreatMatrixTable extends PanelTable
 		setDefaultRenderer(Object.class, customTableCellRenderer);
 		
 		JTableHeader columnHeader = getTableHeader();
+		columnHeader.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		bundleColumnSortHandler = new BundleColumnSortHandler(panel);
 		columnHeader.addMouseListener(bundleColumnSortHandler);
 		columnHeader.addMouseMotionListener(bundleColumnSortHandler);
