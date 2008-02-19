@@ -42,7 +42,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="193"  isSplitAllowed="true" >
+			<band height="317"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="13"
@@ -96,9 +96,9 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="13"
-						y="167"
+						y="219"
 						width="510"
-						height="22"
+						height="17"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
@@ -107,13 +107,41 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Goal")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/GoalsPoolReport.jasper")]]></subreportExpression>
 				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="13"
+						y="195"
+						width="510"
+						height="17"
+						key="subreport-2"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ResultsChainStrategiesObjectivesReport.jasper")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="13"
+						y="171"
+						width="510"
+						height="17"
+						key="subreport-3"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StrategySelectionReport.jasper")]]></subreportExpression>
+				</subreport>
 				<staticText>
 					<reportElement
 						x="13"
 						y="128"
 						width="167"
 						height="20"
-						key="staticText-4"
+						key="staticText-5"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -121,6 +149,48 @@
 					</textElement>
 				<text><![CDATA[Goals]]></text>
 				</staticText>
+				<staticText>
+					<reportElement
+						x="13"
+						y="241"
+						width="167"
+						height="20"
+						key="staticText-7"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Strategic Plan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="13"
+						y="260"
+						width="510"
+						height="20"
+						key="staticText-8"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[The following table shows our summary strategic plan.]]></text>
+				</staticText>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="13"
+						y="280"
+						width="510"
+						height="17"
+						key="subreport-4"
+						positionType="Float"/>
+					<subreportParameter  name="DATA_DIRECTORY">
+						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StratigicPlanSummaryTableReport.jasper")]]></subreportExpression>
+				</subreport>
 			</band>
 		</detail>
 		<columnFooter>

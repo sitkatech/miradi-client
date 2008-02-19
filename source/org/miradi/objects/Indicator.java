@@ -131,6 +131,11 @@ public class Indicator extends BaseObject
 		ChoiceItem choice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(getCurrentStatus());
 		choice.toXml(out);
 		out.writeln("</CurrentStatus>");
+		
+		out.writeln("<LatestProgressReport>");
+		ChoiceItem latestProgressChoice = getProject().getQuestion(ProgressReportStatusQuestion.class).findChoiceByCode(getLatestProgressReportDate());
+		latestProgressChoice.toXml(out);
+		out.writeln("</LatestProgressReport>");
 	}
 	
 	private String getIndicatorMethodsSingleLine()
