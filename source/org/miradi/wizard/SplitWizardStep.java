@@ -9,7 +9,7 @@ import javax.swing.JSplitPane;
 
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.AppPreferences;
-import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.MiradiWizardScrollPane;
 
 
 public class SplitWizardStep extends SkeletonWizardStep
@@ -23,8 +23,8 @@ public class SplitWizardStep extends SkeletonWizardStep
 		htmlViewerRight.setBackground(AppPreferences.getSideBarBackgroundColor());
 
 		JSplitPane splitPane = new JSplitPane();
-		splitPane.setLeftComponent(new MiradiScrollPane(htmlViewerLeft));
-		splitPane.setRightComponent(new MiradiScrollPane(htmlViewerRight));
+		splitPane.setLeftComponent(new MiradiWizardScrollPane(htmlViewerLeft));
+		splitPane.setRightComponent(new MiradiWizardScrollPane(htmlViewerRight));
 		splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
 		splitPane.setDividerLocation(600);
 		add(splitPane);

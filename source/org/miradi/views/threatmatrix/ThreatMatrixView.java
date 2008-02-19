@@ -8,6 +8,7 @@ package org.miradi.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
@@ -162,6 +163,8 @@ public class ThreatMatrixView extends CardedView
 		details = new ThreatRatingBundlePanel(this);
 		
 		threatMatrixPanel = new JPanel(new BorderLayout());
+		threatMatrixPanel.setBackground(AppPreferences.getDarkPanelBackgroundColor());
+		threatMatrixPanel.setBorder(BorderFactory.createEmptyBorder(3,3,3,3));
 		threatMatrixPanel.add(new MiradiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		threatMatrixPanel.add(grid, BorderLayout.CENTER); 
 	}
