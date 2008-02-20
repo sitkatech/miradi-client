@@ -86,7 +86,7 @@ The basic work plan for our project is shown in the following table.  This plan 
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Indicator")]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/WorkPlanTree/Row")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/WorkPlanSummaryTableReport.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
