@@ -801,6 +801,8 @@ public class Project
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		objectManager.toXml(out);
+		
+		new PlanningTreeXmlExporter(this).toXmlPlanningTreeTables(out);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

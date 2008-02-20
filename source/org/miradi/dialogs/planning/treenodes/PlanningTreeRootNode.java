@@ -13,10 +13,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 {
@@ -65,11 +63,8 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 
-		ViewData viewData = project.getCurrentViewData();
-		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
-
-		boolean isConceptualModelVisible = visibleRowCodes.contains(ConceptualModelDiagram.OBJECT_NAME);
-		boolean isResultsChainVisible = visibleRowCodes.contains(ResultsChainDiagram.OBJECT_NAME);
+		boolean isConceptualModelVisible = visibleRows.contains(ConceptualModelDiagram.OBJECT_NAME);
+		boolean isResultsChainVisible = visibleRows.contains(ResultsChainDiagram.OBJECT_NAME);
 		
 		boolean includeConceptualModelItems = isConceptualModelVisible || !isResultsChainVisible;
 		boolean includeResultsChainItems = isResultsChainVisible || !isConceptualModelVisible;
@@ -79,7 +74,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		if(includeResultsChainItems)
 			addResultsChainDiagrams();
 		
-		pruneUnwantedLayers(visibleRowCodes);
+		pruneUnwantedLayers(visibleRows);
 	}
 	
 	public boolean isAlwaysExpanded()

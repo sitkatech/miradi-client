@@ -71,17 +71,17 @@ public class RowManager
 
 	}
 
-	private static CodeList getStrategicPlanRows()
+	public static CodeList getStrategicPlanRows()
 	{
 		return new StrategicRowColumnProvider().getRowListToShow();
 	}
 
-	private static CodeList getMonitoringPlanRows()
+	public static CodeList getMonitoringPlanRows()
 	{
 		return new MonitoringRowColumnProvider().getRowListToShow();
 	}
 
-	private static CodeList getWorkPlanRows()
+	public static CodeList getWorkPlanRows()
 	{
 		return new WorkPlanRowColumnProvider().getRowListToShow();
 	}

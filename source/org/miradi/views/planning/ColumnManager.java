@@ -189,17 +189,17 @@ public class ColumnManager
 		}
 	}
 
-	private static CodeList getStrategicPlanColumns()
+	public static CodeList getStrategicPlanColumns()
 	{
 		return new StrategicRowColumnProvider().getColumnListToShow();
 	}
 
-	static CodeList getMonitoringPlanColumns()
+	public static CodeList getMonitoringPlanColumns()
 	{
 		return new MonitoringRowColumnProvider().getColumnListToShow();
 	}
 
-	private static CodeList getWorkPlanColumns()
+	public static CodeList getWorkPlanColumns()
 	{
 		return new WorkPlanRowColumnProvider().getColumnListToShow();
 	}
