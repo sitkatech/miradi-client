@@ -9,10 +9,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
@@ -29,9 +27,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		// NOTE: Speed optimization
-		ViewData viewData = project.getCurrentViewData();
-		CodeList objectTypesToShow = RowManager.getVisibleRowCodes(viewData);
-		if(!objectTypesToShow.contains(Task.OBJECT_NAME))
+		if(!visibleRows.contains(Task.OBJECT_NAME))
 			return;
 		
 		ORefList subtaskRefs = task.getSubtasks();
