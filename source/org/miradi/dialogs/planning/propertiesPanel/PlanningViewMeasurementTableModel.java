@@ -9,6 +9,9 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.TrendQuestion;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
@@ -24,9 +27,15 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return columnTags.length;
 	}
 	
+	@Override
+	public String getColumnTag(int column)
+	{
+		return columnTags[column];
+	}
+	
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(Measurement.getObjectType(), columnTags[column]);
+		return EAM.fieldLabel(Measurement.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -35,8 +44,37 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		if (node.getType() != Measurement.getObjectType())
 			return "";
 		
-		return node.getObject().getData(columnTags[column]);
+		String columnTag = getColumnTag(column);
+		String data = node.getObject().getData(columnTag);
+		
+		ChoiceQuestion question = getColumnQuestion(column);
+		if(question != null)
+			return question.findChoiceByCode(data);
+		
+		return data;
 	}
 	
-	public final static String[] columnTags = {Measurement.TAG_DATE, Measurement.TAG_SUMMARY, Measurement.TAG_TREND, Measurement.TAG_STATUS_CONFIDENCE};
+	public boolean isChoiceItemColumn(int column)
+	{
+		return (getColumnQuestion(column) != null);
+	}
+	
+	public ChoiceQuestion getColumnQuestion(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if(columnTag.equals(Measurement.TAG_TREND))
+			return new TrendQuestion();
+		
+		if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return new StatusConfidenceQuestion();
+		
+		return null;
+	}
+	
+	public final static String[] columnTags = {
+		Measurement.TAG_DATE, 
+		Measurement.TAG_SUMMARY, 
+		Measurement.TAG_TREND, 
+		Measurement.TAG_STATUS_CONFIDENCE
+		};
 }
