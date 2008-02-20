@@ -27,12 +27,12 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
 	public PlanningTreeTableModel(Project projectToUse) throws Exception
 	{
-		this(projectToUse, getVisibleColumnCodes(projectToUse));
+		this(projectToUse, getVisibleRowCodes(projectToUse), getVisibleColumnCodes(projectToUse));
 	}
 	
-	public PlanningTreeTableModel(Project projectToUse, CodeList visibleColumnCodesToUse) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
-		super(new PlanningTreeRootNode(projectToUse, getVisibleRowCodes(projectToUse)));
+		super(new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
 		
 		project = projectToUse;
 		updateColumnsToShow(visibleColumnCodesToUse);
@@ -88,6 +88,19 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	public String getColumnTag(int column)
 	{
 		return getColumnTags().get(column);
+	}
+	
+	protected void rebuildNode()
+	{
+		try
+		{
+			((AbstractPlanningTreeNode) getRootNode()).setVisibleRowCodes(getVisibleRowCodes(project));
+			super.rebuildNode();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	//TODO the nodes need to implement the content of thie metod

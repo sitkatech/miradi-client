@@ -71,6 +71,15 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
 	}
 	
+	public void setVisibleRowCodes(CodeList visibleRowsToUse)
+	{
+		visibleRows = visibleRowsToUse;
+		for (int i = 0; i < getChildCount(); ++i)
+		{
+			((AbstractPlanningTreeNode) getChild(i)).setVisibleRowCodes(visibleRowsToUse);
+		}
+	}
+	
 	public String toString()
 	{
 		return getObject().combineShortLabelAndLabel();
