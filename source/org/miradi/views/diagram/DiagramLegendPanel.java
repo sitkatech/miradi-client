@@ -24,7 +24,7 @@ import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.EmptyIcon;
+import org.miradi.icons.FactorLinkIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.ObjectiveIcon;
@@ -137,7 +137,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	{
 		targetLinkCheckBox = findCheckBox(objectName);
 		jpanel.add(targetLinkCheckBox);
-		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName), new EmptyIcon()));
+		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName), new FactorLinkIcon()));
 	}
 	
 	private void updateCheckBoxs()
