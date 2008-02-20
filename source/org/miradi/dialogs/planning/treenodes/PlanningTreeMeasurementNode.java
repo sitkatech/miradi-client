@@ -9,12 +9,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeMeasurementNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeMeasurementNode(Project projectToUse, ORef measurementRef) throws Exception
+	public PlanningTreeMeasurementNode(Project projectToUse, ORef measurementRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		measurement = (Measurement) project.findObject(measurementRef);
 	}
 

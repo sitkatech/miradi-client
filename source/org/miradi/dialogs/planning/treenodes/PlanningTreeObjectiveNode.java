@@ -12,12 +12,13 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeObjectiveNode(Project projectToUse, DiagramObject diagramToUse, ORef objectiveRef) throws Exception
+	public PlanningTreeObjectiveNode(Project projectToUse, DiagramObject diagramToUse, ORef objectiveRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		diagram = diagramToUse;
 		objective = (Objective)project.findObject(objectiveRef);
 		rebuild();

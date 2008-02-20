@@ -19,12 +19,13 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeGoalNode(Project projectToUse, DiagramObject diagramToUse, ORef goalRef) throws Exception
+	public PlanningTreeGoalNode(Project projectToUse, DiagramObject diagramToUse, ORef goalRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		diagramObject = diagramToUse;
 		goal = (Goal)project.findObject(goalRef);
 		rebuild();

@@ -6,6 +6,7 @@
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.treenodes.PlanningTreeTargetNode;
+import org.miradi.utils.CodeList;
 
 public class TestPlanningTreeTargetNode extends TestPlanningTree
 {
@@ -16,7 +17,7 @@ public class TestPlanningTreeTargetNode extends TestPlanningTree
 
 	public void testPlanningTreeTargetNode() throws Exception
 	{
-		PlanningTreeTargetNode node = new PlanningTreeTargetNode(project, project.getDiagramObject(), getTarget().getRef());
+		PlanningTreeTargetNode node = new PlanningTreeTargetNode(project, project.getDiagramObject(), getTarget().getRef(), new CodeList());
 		assertEquals(1, node.getChildCount());
 		assertEquals(getGoal().getRef(), node.getChild(0).getObjectReference());
 	}

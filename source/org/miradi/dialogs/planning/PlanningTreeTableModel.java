@@ -21,15 +21,21 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
+import org.miradi.views.planning.RowManager;
 
 public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
 	public PlanningTreeTableModel(Project projectToUse) throws Exception
 	{
-		super(new PlanningTreeRootNode(projectToUse));
+		super(new PlanningTreeRootNode(projectToUse, getVisibleRowCodes(projectToUse)));
 		project = projectToUse;
 		
 		rebuildCodeList();
+	}
+	
+	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
+	{
+		return RowManager.getVisibleRowCodes(projectToUse.getCurrentViewData());
 	}
 
 	public void rebuildCodeList() throws Exception

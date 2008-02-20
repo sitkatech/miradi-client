@@ -13,12 +13,13 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeIndicatorNode(Project projectToUse, ORef indicatorRef) throws Exception
+	public PlanningTreeIndicatorNode(Project projectToUse, ORef indicatorRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		indicator = (Indicator)project.findObject(indicatorRef);
 		rebuild();
 	}

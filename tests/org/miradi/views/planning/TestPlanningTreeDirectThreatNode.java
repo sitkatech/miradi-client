@@ -6,6 +6,7 @@
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.treenodes.PlanningTreeDirectThreatNode;
+import org.miradi.utils.CodeList;
 
 public class TestPlanningTreeDirectThreatNode extends TestPlanningTree
 {
@@ -16,7 +17,7 @@ public class TestPlanningTreeDirectThreatNode extends TestPlanningTree
 
 	public void testPlanningTreeDirectThreatNodes() throws Exception
 	{
-		PlanningTreeDirectThreatNode node = new PlanningTreeDirectThreatNode(project, project.getDiagramObject(), getThreat().getRef());
+		PlanningTreeDirectThreatNode node = new PlanningTreeDirectThreatNode(project, project.getDiagramObject(), getThreat().getRef(), new CodeList());
 		assertEquals("wrong child count?", 1, node.getChildCount());
 		assertEquals("wrong child?", getObjective().getRef(), node.getChild(0).getObjectReference());
 	}

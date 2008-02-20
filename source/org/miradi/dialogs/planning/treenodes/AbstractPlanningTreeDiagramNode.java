@@ -15,13 +15,14 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 
 public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTreeNode
 {
-	public AbstractPlanningTreeDiagramNode(Project projectToUse)
+	public AbstractPlanningTreeDiagramNode(Project projectToUse, CodeList visibleRowsToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 	}
 
 	public void rebuild() throws Exception
