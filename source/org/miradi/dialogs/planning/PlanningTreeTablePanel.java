@@ -226,7 +226,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		// only rebuild the columns or the rows rather than always doing both
 	
 		// NOTE: The following rebuild the columns but don't touch the tree
-		getPlanningModel().rebuildCodeList();
+		getPlanningModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
