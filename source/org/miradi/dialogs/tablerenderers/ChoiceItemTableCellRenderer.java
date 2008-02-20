@@ -19,8 +19,14 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 {
 	public ChoiceItemTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
+		this(providerToUse, fontProviderToUse, Color.WHITE);
+	}
+	
+	public ChoiceItemTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, Color defaultBackgroundColorToUse)
+	{
 		super(providerToUse, fontProviderToUse);
 		icon = new ColoredIcon();
+		defaultBackgroundColor = defaultBackgroundColorToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -29,10 +35,10 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		String labelText = getLabelText(value);
 
 		if(!isSelected)
-			renderer.setBackground(getBackgroundColor(value));
+			renderer.setBackground(getBackgroundColor(getChoiceItem(value)));
 
 		renderer.setText(labelText);
-		Icon configuredIcon = getConfiguredIcon(value);
+		Icon configuredIcon = getConfiguredIcon(getChoiceItem(value));
 		renderer.setIcon(configuredIcon);
 		return renderer;
 	}
@@ -45,12 +51,15 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		return choice.getLabel();
 	}
 
-	protected Icon getConfiguredIcon(Object value)
+	protected Icon getConfiguredIcon(ChoiceItem choice)
 	{
-		if(value == null)
+		if(choice == null)
 			return null;
-		Color color = getBackgroundColor(value);
-		if(color == null)
+		if(choice.getIcon() != null)
+			return choice.getIcon();
+		
+		Color color = getBackgroundColor(choice);
+		if(choice.getColor() == null)
 			return null;
 		return getConfiguredIcon(color);
 	}
@@ -61,15 +70,14 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 		return icon;
 	}
 	
-	protected Color getBackgroundColor(Object value)
+	protected Color getBackgroundColor(ChoiceItem choice)
 	{
-		ChoiceItem choice = getChoiceItem(value);
-		if(choice == null)
-			return Color.white;
+		if(choice == null || choice.getColor() == null)
+			return defaultBackgroundColor;
 		return choice.getColor();
 	}
 	
-	private ChoiceItem getChoiceItem(Object value)
+	protected ChoiceItem getChoiceItem(Object value)
 	{
 		if(! (value instanceof ChoiceItem) )
 			return null;
@@ -77,4 +85,5 @@ public class ChoiceItemTableCellRenderer extends TableCellRendererForObjects
 	}
 
 	private ColoredIcon icon;
+	private Color defaultBackgroundColor;
 }

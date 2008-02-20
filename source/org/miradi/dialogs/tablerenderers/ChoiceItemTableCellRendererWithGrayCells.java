@@ -18,7 +18,7 @@ public class ChoiceItemTableCellRendererWithGrayCells extends ChoiceItemTableCel
 	{
 		if(value == null)
 			return Color.GRAY.brighter();
-		return super.getBackgroundColor(value);
+		return super.getBackgroundColor(getChoiceItem(value));
 	}
 	
 }
