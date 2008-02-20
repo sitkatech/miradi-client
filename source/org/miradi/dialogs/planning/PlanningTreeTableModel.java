@@ -27,10 +27,20 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
 	public PlanningTreeTableModel(Project projectToUse) throws Exception
 	{
+		this(projectToUse, getVisibleColumnCodes(projectToUse));
+	}
+	
+	public PlanningTreeTableModel(Project projectToUse, CodeList visibleColumnCodesToUse) throws Exception
+	{
 		super(new PlanningTreeRootNode(projectToUse, getVisibleRowCodes(projectToUse)));
-		project = projectToUse;
 		
-		rebuildCodeList();
+		project = projectToUse;
+		rebuildCodeList(visibleColumnCodesToUse);
+	}
+
+	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
+	{
+		return ColumnManager.getVisibleColumnCodes(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
@@ -40,9 +50,15 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 
 	public void rebuildCodeList() throws Exception
 	{
+		CodeList visibleColumnCodes = getVisibleColumnCodes(project);
+		rebuildCodeList(visibleColumnCodes);
+	}
+
+	private void rebuildCodeList(CodeList visibleColumnCodes)
+	{
 		columnsToShow = new CodeList();
 		columnsToShow.add(DEFAULT_COLUMN);
-		columnsToShow.addAll(ColumnManager.getVisibleColumnCodes(project.getCurrentViewData()));
+		columnsToShow.addAll(visibleColumnCodes);
 		
 		omitColumnTagsRepresentedByColumnTables();
 	}
