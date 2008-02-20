@@ -12,7 +12,6 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -200,7 +199,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		}	
 	}
 	
-	protected class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
+	protected class ComboBoxRenderer extends PanelComboBox implements TableCellRenderer 
 	{
 	    public ComboBoxRenderer(Object[] items) 
 	    {
