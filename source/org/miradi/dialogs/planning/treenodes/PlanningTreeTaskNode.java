@@ -17,9 +17,9 @@ import org.miradi.views.planning.RowManager;
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
 
-	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, double costAllocationProportionToUse) throws Exception
+	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, double costAllocationProportionToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		task = (Task)project.findObject(taskRef);
 		costAllocationProportion = costAllocationProportionToUse;
 		
@@ -38,7 +38,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);
-			children.add(new PlanningTreeTaskNode(project, taskRef, getCostAllocationProportion()));
+			children.add(new PlanningTreeTaskNode(project, taskRef, getCostAllocationProportion(), visibleRows));
 		}
 	}
 

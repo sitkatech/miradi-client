@@ -20,9 +20,9 @@ import org.miradi.views.planning.RowManager;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeRootNode(Project projectToUse) throws Exception
+	public PlanningTreeRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		rebuild();
 	}
 	
@@ -89,7 +89,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 
 	private void addConceptualModel() throws Exception
 	{
-		children.add(new PlanningTreeConceptualModelNode(project));
+		children.add(new PlanningTreeConceptualModelNode(project, visibleRows));
 	}
 
 	private void addResultsChainDiagrams() throws Exception

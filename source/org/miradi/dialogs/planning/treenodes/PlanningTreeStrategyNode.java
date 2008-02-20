@@ -10,12 +10,13 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeStrategyNode(Project projectToUse, ORef strategyRef) throws Exception
+	public PlanningTreeStrategyNode(Project projectToUse, ORef strategyRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		strategy = (Strategy)project.findObject(strategyRef);
 		rebuild();
 	}

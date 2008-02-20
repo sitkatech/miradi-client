@@ -8,12 +8,13 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeConceptualModelPageNode extends AbstractPlanningTreeDiagramNode
 {
-	public PlanningTreeConceptualModelPageNode(Project projectToUse, ORef refToUse) throws Exception
+	public PlanningTreeConceptualModelPageNode(Project projectToUse, ORef refToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		diagramObject = (ConceptualModelDiagram)project.findObject(refToUse);
 		rebuild();
 	}

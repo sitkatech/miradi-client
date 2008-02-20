@@ -10,12 +10,13 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 {
-	PlanningTreeConceptualModelNode(Project projectToUse) throws Exception
+	PlanningTreeConceptualModelNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, visibleRowsToUse);
 		rebuild();
 	}
 	

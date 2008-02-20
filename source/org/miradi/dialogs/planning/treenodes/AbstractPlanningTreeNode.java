@@ -32,9 +32,10 @@ import org.miradi.utils.CodeList;
 
 public abstract class AbstractPlanningTreeNode extends TreeTableNode
 {
-	public AbstractPlanningTreeNode(Project projectToUse)
+	public AbstractPlanningTreeNode(Project projectToUse, CodeList visibleRowsToUse)
 	{
 		project = projectToUse;
+		visibleRows = visibleRowsToUse;
 		children = new Vector();
 	}
 	
@@ -205,7 +206,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		{
 			ORef taskRef = taskRefs.get(i);
 			Task task = (Task) project.findObject(taskRef);
-			children.add(new PlanningTreeTaskNode(project, taskRef, calculateAllocationProportion(task)));
+			children.add(new PlanningTreeTaskNode(project, taskRef, calculateAllocationProportion(task), visibleRows));
 		}
 	}
 	
@@ -224,25 +225,25 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		int type = refToAdd.getObjectType();
 		if(type == ConceptualModelDiagram.getObjectType())
-			return new PlanningTreeConceptualModelPageNode(project, refToAdd);
+			return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
 		if(type == ResultsChainDiagram.getObjectType())
-			return new PlanningTreeResultsChainNode(project, refToAdd);
+			return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
 		if(type == Target.getObjectType())
-			return new PlanningTreeTargetNode(project, diagram, refToAdd);
+			return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 		if(type == Goal.getObjectType())
-			return new PlanningTreeGoalNode(project, diagram, refToAdd);
+			return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
 		if(type == Objective.getObjectType())
-			return new PlanningTreeObjectiveNode(project, diagram, refToAdd);
+			return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
 		if(type == Cause.getObjectType())
-			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd);
+			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
 		if(type == ThreatReductionResult.getObjectType())
-			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd);
+			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
 		if(type == Strategy.getObjectType())
-			return new PlanningTreeStrategyNode(project, refToAdd);
+			return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
 		if(type == Indicator.getObjectType())
-			return new PlanningTreeIndicatorNode(project, refToAdd);
+			return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 		if (type == Measurement.getObjectType())
-			return new PlanningTreeMeasurementNode(project, refToAdd);
+			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 		
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
@@ -347,5 +348,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	}
 
 	protected Project project;
+	protected CodeList visibleRows;
 	protected Vector<AbstractPlanningTreeNode> children;
 }
