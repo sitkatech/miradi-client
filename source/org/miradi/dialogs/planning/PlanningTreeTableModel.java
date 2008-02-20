@@ -35,7 +35,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		super(new PlanningTreeRootNode(projectToUse, getVisibleRowCodes(projectToUse)));
 		
 		project = projectToUse;
-		rebuildCodeList(visibleColumnCodesToUse);
+		updateColumnsToShow(visibleColumnCodesToUse);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
@@ -48,13 +48,13 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		return RowManager.getVisibleRowCodes(projectToUse.getCurrentViewData());
 	}
 
-	public void rebuildCodeList() throws Exception
+	public void updateColumnsToShow() throws Exception
 	{
 		CodeList visibleColumnCodes = getVisibleColumnCodes(project);
-		rebuildCodeList(visibleColumnCodes);
+		updateColumnsToShow(visibleColumnCodes);
 	}
 
-	private void rebuildCodeList(CodeList visibleColumnCodes)
+	private void updateColumnsToShow(CodeList visibleColumnCodes)
 	{
 		columnsToShow = new CodeList();
 		columnsToShow.add(DEFAULT_COLUMN);
