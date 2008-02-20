@@ -67,6 +67,7 @@ import org.miradi.objectpools.TaskPool;
 import org.miradi.objectpools.TextBoxPool;
 import org.miradi.objectpools.ThreatReductionResultPool;
 import org.miradi.objectpools.ViewPool;
+import org.miradi.objectpools.WcpaProjectDataPool;
 import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objects.BaseObject;
@@ -189,6 +190,11 @@ public class Project
 	public WcsProjectDataPool getWcsProjectDataPool()
 	{
 		return (WcsProjectDataPool) getPool(WcsProjectData.getObjectType());
+	}
+	
+	public WcpaProjectDataPool getWcpaProjectDataPool()
+	{
+		return (WcpaProjectDataPool) getPool(WcpaProjectData.getObjectType());
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
