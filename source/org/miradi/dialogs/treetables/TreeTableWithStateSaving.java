@@ -190,25 +190,20 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 	public ORefList getFullyExpandedRefList() throws Exception
 	{
 		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
-		TreePath rootPath = new TreePath(root);
 		ORefList fullyExpandedRefList = new ORefList();
-		recursivelyGetFullyExpansedRefs(fullyExpandedRefList, rootPath);
+		recursivelyGetFullyExpansedRefs(fullyExpandedRefList, root);
 		treeTableModelAdapter.fireTableDataChanged();
 		
 		return fullyExpandedRefList;
 	}
 	
-	private void recursivelyGetFullyExpansedRefs(ORefList objRefListToUse, TreePath thisPath)
+	private void recursivelyGetFullyExpansedRefs(ORefList objRefListToUse, TreeTableNode node)
 	{
-		TreeTableNode topLevelObject = (TreeTableNode) thisPath.getLastPathComponent();
-		ORef topLevelObjRef = topLevelObject.getObjectReference();
-		objRefListToUse.add(topLevelObjRef);
-		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+		objRefListToUse.add(node.getObjectReference());
+		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
 		{
-			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
-			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-			
-			recursivelyGetFullyExpansedRefs(objRefListToUse, secondLevelPath);
+			TreeTableNode childNode = node.getChild(childIndex);
+			recursivelyGetFullyExpansedRefs(objRefListToUse, childNode);
 		}
 	}
 	
