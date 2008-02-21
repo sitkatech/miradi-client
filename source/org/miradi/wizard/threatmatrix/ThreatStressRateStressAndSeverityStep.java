@@ -31,6 +31,6 @@ public class ThreatStressRateStressAndSeverityStep extends
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Scope & Severity of Stresses");
+		return EAM.text("2) Rate scope and severity of stress");
 	}
 }

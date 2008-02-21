@@ -31,6 +31,6 @@ public class ThreatStressRateIrreversibilityAndContributionStep extends
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Contribution & Irreversibility of Threats");
+		return EAM.text("3) Rate contribution and irreversibility of threat");
 	}
 }
