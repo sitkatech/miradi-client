@@ -5,11 +5,8 @@
 */ 
 package org.miradi.views.threatmatrix;
 
-import java.awt.Color;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
 
 import org.miradi.main.AppPreferences;
 import org.miradi.utils.MiradiScrollPane;
@@ -25,7 +22,6 @@ public class ScrollPaneWithTableAndRowHeader extends MiradiScrollPane
 		setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeaderTableToUse.getTableHeader());
 		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		setBorder(new LineBorder(Color.RED));
 	}
 
 }
