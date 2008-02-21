@@ -292,47 +292,42 @@ public class FactorLink extends BaseObject
 		writeCriterionAndValue(out, severityCriterion, severity);
 		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
 		out.writeln("</ThreatRatingSimple>");
-
 		
 		writeOutTargetThreatRatingXML(out, simpleThreatFramework, bundle);
 		
 		Target target = Target.find(getProject(), targetRef);
-		
-		writeOutTargetRating(out, simpleThreatFramework, target);
-		
 		Cause cause = Cause.find(getProject(), threatRef);
-		writeOutThreatRating(out, simpleThreatFramework, cause);
+		writeRating(out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
+		writeRating(out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
 		
 		out.write("<TargetName>");
 		out.write(XmlUtilities.getXmlEncoded(target.toString()));
 		out.writeln("</TargetName>");
-		
-		
+				
 		out.write("<ThreatName>");
 		out.write(XmlUtilities.getXmlEncoded(cause.toString()));
 		out.writeln("</ThreatName>");
 	}
 	
-	private void writeOutThreatRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Cause cause) throws Exception
+	private int getThreatRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Cause cause) throws Exception
 	{
-		int threatRatingValue = 0;
 		if (isStressBasedMode())
-			threatRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(cause);
-		else
-			threatRatingValue = simpleThreatFramework.getThreatThreatRatingValue(cause.getId()).getNumericValue();
+			return getStressBasedRating(cause);
 		
-		writeRating(out, threatRatingValue, "ThreatRating");		
+		return simpleThreatFramework.getThreatThreatRatingValue(cause.getId()).getNumericValue();
 	}
 
-	private void writeOutTargetRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Target target) throws Exception
+	private int getTargetRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Target target) throws Exception
 	{
-		int targetRatingValue = 0;
 		if (isStressBasedMode())
-			targetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
-		else
-			targetRatingValue = simpleThreatFramework.getTargetThreatRatingValue(target.getId()).getNumericValue();
+			return getStressBasedRating(target);
 		
-		writeRating(out, targetRatingValue, "TargetRating");
+		return simpleThreatFramework.getTargetThreatRatingValue(target.getId()).getNumericValue();
+	}
+	
+	private int getStressBasedRating(Factor factor) throws Exception
+	{
+		return getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(factor);
 	}
 	
 	private void writeRating(UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
