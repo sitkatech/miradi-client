@@ -215,6 +215,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			measurementRenderer.setClosedIcon(new MeasurementIcon());
 			measurementRenderer.setOpenIcon(new MeasurementIcon());
 			measurementRenderer.setLeafIcon(new MeasurementIcon());
+			measurementRenderer.setFont(getPlainFont());
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
