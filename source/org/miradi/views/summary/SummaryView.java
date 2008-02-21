@@ -24,7 +24,14 @@ import org.miradi.dialogs.summary.TeamManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.RareProjectData;
+import org.miradi.objects.TncProjectData;
+import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WcsProjectData;
+import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
@@ -71,10 +78,20 @@ public class SummaryView extends TabbedView
 		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 		organizationManagementPanel = new OrganizationManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
 
+		ORef[] allRelatedRefs = new ORef[] {
+			metadata.getRef(),
+			getProject().getSingletonObjectRef(TncProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(WwfProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(WcsProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(RareProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(FosProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(WcpaProjectData.getObjectType()),
+		};
+		
 		addSummaryTab(new SummaryProjectPanel(getProject(), metadata.getRef()));
 		addNonScrollingTab(teamManagementPanel);
 		addNonScrollingTab(organizationManagementPanel);
-		addSummaryTab(new SummaryScopePanel(getProject(), metadata.getRef()));
+		addSummaryTab(new SummaryScopeTabPanel(getProject(), allRelatedRefs));
 		addSummaryTab(new SummaryLocationPanel(getProject(), metadata.getRef()));
 		addSummaryTab(new SummaryPlanningPanel(getMainWindow(), metadata.getRef()));
 		addMemberOrgTab("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata));
@@ -82,7 +99,6 @@ public class SummaryView extends TabbedView
 		addMemberOrgTab("WCSPanel.html", new WCSSummaryPanel(getProject()));
 		addMemberOrgTab("RAREPanel.html", new RARESummaryPanel(getProject()));
 		addMemberOrgTab("FOSPanel.html", new FOSSummaryPanel(getProject()));
-		addMemberOrgTab("WCPAPanel.html", new WcpaSummaryPanel(getProject()));
 		addSummaryTab(new SummaryOtherOrgPanel(getProject(), metadata.getRef()));
 	}
 	
