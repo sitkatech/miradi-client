@@ -7,6 +7,7 @@ package org.miradi.dialogs.threatstressrating.properties;
 
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
+import org.miradi.utils.RowHeightListener;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
@@ -18,6 +19,18 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		setRowHeight(25);
 		setForcedPreferredScrollableViewportWidth(PREFERRED_VIEWPORT_WIDTH);
 		setForcedPreferredScrollableViewportHeight(PREFERRED_VIEWPORT_HEIGHT);
+	}
+	
+	@Override
+	protected void addRowHeightSaver()
+	{
+		// NOTE: Override and do nothing to prevent user from changing row height
+	}
+	
+	@Override
+	public void addRowHeightListener(RowHeightListener listener)
+	{
+		// NOTE: Override and do nothing to prevent user from changing row height
 	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()
