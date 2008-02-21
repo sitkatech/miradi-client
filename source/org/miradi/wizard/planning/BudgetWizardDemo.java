@@ -31,6 +31,6 @@ public class BudgetWizardDemo extends FinancialWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 3");
+		return EAM.text("3) Reconcile actual expenditures");
 	}
 }

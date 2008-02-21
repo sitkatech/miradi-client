@@ -5,7 +5,6 @@
 */ 
 package org.miradi.wizard.planning;
 
-import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.WizardPanel;
@@ -23,13 +22,14 @@ public class WorkPlanDevelopMethodsAndTasksStep extends WorkPlanWizardStep
 		return ProcessSteps.PROCESS_STEP_3A;
 	}
 
-	public Class getAssociatedActionClass()
+	@Override
+	public String getWizardScreenTitle()
 	{
-		return ActionJumpWorkPlanDevelopMethodsAndTasksStep.class;
+		return EAM.text("Detail activities/methods, tasks, and responsibilities");
 	}
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 1");
+		return EAM.text("2) Methods");
 	}
 }
