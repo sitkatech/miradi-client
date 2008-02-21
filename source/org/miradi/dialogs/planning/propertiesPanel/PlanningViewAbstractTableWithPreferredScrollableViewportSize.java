@@ -16,6 +16,12 @@ abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSi
 		super(modelToUse);
 	}
 	
+	@Override
+	protected void addRowHeightSaver()
+	{
+		// NOTE: Override and do nothing to prevent user from changing row height
+	}
+	
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
