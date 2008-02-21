@@ -6,6 +6,7 @@
 package org.miradi.wizard.diagram;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
+import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
@@ -24,5 +25,11 @@ public class DiagramWizardProjectScopeStep extends DiagramWizardStep
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSummaryWizardDefineProjecScope.class;
+	}
+	
+	@Override
+	public String getSubHeading()
+	{
+		return EAM.text("Place scope on diagram");
 	}
 }
