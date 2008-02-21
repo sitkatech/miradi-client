@@ -218,7 +218,8 @@ abstract public class ObjectDataInputField implements FocusListener
 		return project;
 	}
 
-	private static final String NUMERIC_ERROR_MESSEGE = "Text|Must be numeric";
+	private static final String NUMERIC_ERROR_MESSEGE = "<html>This value must be numeric<br><br>" +
+			"Currency symbols and percent signs are not allowed";
 	Project project;
 	private int objectType;
 	private BaseId objectId;
