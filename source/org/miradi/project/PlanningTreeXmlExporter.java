@@ -37,6 +37,9 @@ public class PlanningTreeXmlExporter
 		project = projectToUse;
 	}
 	
+	//NOTE: this code was copied from PlanningTreeTablePanel, and
+	//that we believe it will go away when we change the report to use an
+	//exported tree of refs instead of a table of cell values.              
 	private void createTables(CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
 		PlanningTreeTableModel model = new PlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
