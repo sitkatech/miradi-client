@@ -15,7 +15,7 @@
 		 topMargin="0"
 		 bottomMargin="0"
 		 whenNoDataType="NoPages"
-		 isTitleNewPage="true"
+		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
