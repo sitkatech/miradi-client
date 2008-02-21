@@ -30,6 +30,6 @@ public class DescribeTargetStatusStep extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text("Simple viability");
 	}
 }

@@ -30,6 +30,6 @@ public class TargetViabilityMethodChoiceStep extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 1");
+		return EAM.text("Introduction");
 	}
 }

@@ -30,6 +30,6 @@ public class TargetViability3Step extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text("1) Determine key ecological attributes");
 	}
 }

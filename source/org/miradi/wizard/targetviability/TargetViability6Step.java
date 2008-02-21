@@ -30,6 +30,6 @@ public class TargetViability6Step extends DiagramWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 5");
+		return EAM.text("3b) Refine indicator ratings");
 	}
 }

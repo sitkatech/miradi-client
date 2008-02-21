@@ -30,6 +30,6 @@ public class TargetViability7Step extends DiagramWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 6");
+		return EAM.text("4) Record initial measurement");
 	}
 }
