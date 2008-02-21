@@ -73,7 +73,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<text><![CDATA[COLUMN 1]]></text>
+				<text><![CDATA[]]></text>
 				</staticText>
 			</band>
 		</detail>
