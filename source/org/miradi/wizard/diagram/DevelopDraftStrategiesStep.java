@@ -30,6 +30,6 @@ public class DevelopDraftStrategiesStep extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text("2) Develop draft strategies");
 	}
 }

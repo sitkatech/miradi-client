@@ -30,6 +30,6 @@ public class DiagramWizardCompleteResultsChainLinks extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 3");
+		return EAM.text("3) Complete links in the chain ");
 	}
 }

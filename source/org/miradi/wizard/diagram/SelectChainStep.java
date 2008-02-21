@@ -30,6 +30,6 @@ public class SelectChainStep extends DiagramWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 1");
+		return EAM.text("1) Select factor chain");
 	}
 }
