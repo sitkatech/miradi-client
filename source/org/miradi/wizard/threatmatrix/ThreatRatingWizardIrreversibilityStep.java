@@ -35,6 +35,6 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 4");
+		return EAM.text("4) Rate the irreversibility of the threat");
 	}
 }

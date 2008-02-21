@@ -32,7 +32,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Threat Rating Summary");
+		return EAM.text("Review threat rating summary");
 	}
 	
 	public void buttonPressed(String buttonName)
