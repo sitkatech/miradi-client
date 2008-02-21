@@ -30,6 +30,6 @@ public class DiagramWizardGoodResultsChainCriteriaReview extends DiagramWizardSt
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 4");
+		return EAM.text("4) Review the criteria for a good results chain");
 	}
 }
