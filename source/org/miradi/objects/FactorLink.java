@@ -311,8 +311,6 @@ public class FactorLink extends BaseObject
 		out.write("<ThreatName>");
 		out.write(XmlUtilities.getXmlEncoded(cause.toString()));
 		out.writeln("</ThreatName>");
-		
-		
 	}
 	
 	private void writeOutThreatRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Cause cause) throws Exception
@@ -323,15 +321,9 @@ public class FactorLink extends BaseObject
 		else
 			threatRatingValue = simpleThreatFramework.getThreatThreatRatingValue(cause.getId()).getNumericValue();
 		
-		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(threatRatingValue));
-		if (targetRatingChoice == null)
-			return;
-		
-		out.write("<ThreatRating>");
-		targetRatingChoice.toXml(out);
-		out.writeln("</ThreatRating>");		
+		writeRating(out, threatRatingValue, "ThreatRating");		
 	}
-	
+
 	private void writeOutTargetRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Target target) throws Exception
 	{
 		int targetRatingValue = 0;
@@ -340,15 +332,20 @@ public class FactorLink extends BaseObject
 		else
 			targetRatingValue = simpleThreatFramework.getTargetThreatRatingValue(target.getId()).getNumericValue();
 		
-		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(targetRatingValue));
+		writeRating(out, targetRatingValue, "TargetRating");
+	}
+	
+	private void writeRating(UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
+	{
+		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(threatRatingValue));
 		if (targetRatingChoice == null)
 			return;
 		
-		out.write("<TargetRating>");
+		out.write("<" + xmlTagName + ">");
 		targetRatingChoice.toXml(out);
-		out.writeln("</TargetRating>");		
+		out.writeln("</" + xmlTagName + ">");
 	}
-
+	
 	private void writeOutTargetThreatRatingXML(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle) throws IOException, Exception
 	{
 		
