@@ -351,6 +351,11 @@ public class Project
 		return simpleThreatFramework;
 	}
 	
+	public StressBasedThreatRatingFramework getStressBasedThreatRatingFramework()
+	{
+		return stressBasedThreatFramework;
+	}
+	
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		if (getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))

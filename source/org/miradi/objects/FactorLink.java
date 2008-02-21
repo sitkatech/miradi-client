@@ -292,25 +292,68 @@ public class FactorLink extends BaseObject
 		writeCriterionAndValue(out, severityCriterion, severity);
 		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
 		out.writeln("</ThreatRatingSimple>");
+
 		
 		writeOutTargetThreatRatingXML(out, simpleThreatFramework, bundle);
 		
 		Target target = Target.find(getProject(), targetRef);
+		
+		writeOutTargetRating(out, simpleThreatFramework, target);
+		
+		Cause cause = Cause.find(getProject(), threatRef);
+		writeOutThreatRating(out, simpleThreatFramework, cause);
+		
 		out.write("<TargetName>");
 		out.write(XmlUtilities.getXmlEncoded(target.toString()));
 		out.writeln("</TargetName>");
 		
-		Cause cause = Cause.find(getProject(), threatRef);
+		
 		out.write("<ThreatName>");
 		out.write(XmlUtilities.getXmlEncoded(cause.toString()));
 		out.writeln("</ThreatName>");
+		
+		
+	}
+	
+	private void writeOutThreatRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Cause cause) throws Exception
+	{
+		int threatRatingValue = 0;
+		if (isStressBasedMode())
+			threatRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(cause);
+		else
+			threatRatingValue = simpleThreatFramework.getThreatThreatRatingValue(cause.getId()).getNumericValue();
+		
+		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(threatRatingValue));
+		if (targetRatingChoice == null)
+			return;
+		
+		out.write("<ThreatRating>");
+		targetRatingChoice.toXml(out);
+		out.writeln("</ThreatRating>");		
+	}
+	
+	private void writeOutTargetRating(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, Target target) throws Exception
+	{
+		int targetRatingValue = 0;
+		if (isStressBasedMode())
+			targetRatingValue = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(target);
+		else
+			targetRatingValue = simpleThreatFramework.getTargetThreatRatingValue(target.getId()).getNumericValue();
+		
+		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(targetRatingValue));
+		if (targetRatingChoice == null)
+			return;
+		
+		out.write("<TargetRating>");
+		targetRatingChoice.toXml(out);
+		out.writeln("</TargetRating>");		
 	}
 
 	private void writeOutTargetThreatRatingXML(UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle) throws IOException, Exception
 	{
 		
 		int targetThreatRatingValue = 0;
-		if (getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+		if (isStressBasedMode())
 			targetThreatRatingValue = calculateThreatRatingBundleValue();
 		else
 			targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
@@ -322,6 +365,11 @@ public class FactorLink extends BaseObject
 		out.write("<TargetThreatRating>");
 		targetThreatRatingChoice.toXml(out);
 		out.writeln("</TargetThreatRating>");
+	}
+
+	private boolean isStressBasedMode()
+	{
+		return getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}
 
 	private void writeCriterionAndValue(UnicodeWriter out, RatingCriterion criterion, ValueOption value) throws Exception
