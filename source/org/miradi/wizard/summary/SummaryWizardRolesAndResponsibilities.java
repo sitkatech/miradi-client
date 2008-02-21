@@ -6,6 +6,7 @@
 package org.miradi.wizard.summary;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
+import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.SummaryWizardStep;
 import org.miradi.wizard.WizardPanel;
@@ -25,5 +26,11 @@ public class SummaryWizardRolesAndResponsibilities extends SummaryWizardStep
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSummaryWizardRolesAndResponsibilities.class;
+	}
+	
+	@Override
+	public String getSubHeading()
+	{
+		return EAM.text("Partners");
 	}
 }
