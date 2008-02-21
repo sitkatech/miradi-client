@@ -30,6 +30,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
@@ -47,6 +48,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.InvalidNumberException;
 
 abstract public class BaseObject
 {
@@ -71,7 +73,19 @@ abstract public class BaseObject
 		{
 			String tag = (String)iter.next();
 			if (!getField(tag).isPseudoField())
-				setData(tag, json.optString(tag));
+			{
+				String value = json.optString(tag);
+				try
+				{
+					setData(tag, value);
+				}
+				catch(InvalidNumberException e)
+				{
+					String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
+					EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
+					setData(tag, newValue);
+				}
+			}
 		}
 	}
 	
@@ -462,7 +476,7 @@ abstract public class BaseObject
 		label = new StringData(TAG_LABEL);
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
-		budgetCostOverride = new StringData(TAG_BUDGET_COST_OVERRIDE);
+		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 
 		fields = new HashMap();
@@ -1234,6 +1248,6 @@ abstract public class BaseObject
 	protected ObjectManager objectManager;
 	private HashMap fields;
 	private Vector noneClearedFieldTags;
-	protected StringData budgetCostOverride;
+	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
 }

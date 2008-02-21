@@ -21,6 +21,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
@@ -35,8 +36,6 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.StringMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.objects.BaseObject.PseudoStringData;
 import org.miradi.project.Project;
@@ -273,9 +272,13 @@ public class ObjectTestCase extends TestCaseWithProject
 			overrideSetData.set(overrideSet.toString());
 			return overrideSetData.toString();
 		}
+		else if (field instanceof NumberData)
+		{
+			return "27.65";
+		}
 		else
 		{
-			throw new RuntimeException("Need to add sample data for " + object.getType() + ":" + tag);
+			throw new RuntimeException("Need to add sample data for " + object.getType() + ":" + tag + " type: " + field.getClass().getSimpleName());
 		}
 	}
 }
