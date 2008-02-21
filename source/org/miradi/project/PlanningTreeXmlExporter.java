@@ -5,6 +5,8 @@
 */ 
 package org.miradi.project;
 
+import java.io.IOException;
+
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.dialogs.planning.PlanningTreeTable;
@@ -86,8 +88,11 @@ public class PlanningTreeXmlExporter
 			out.writeln("<Row>");
 			for (int column = 0; column < columnCount; ++column)
 			{
+				
 				out.write("<" + getElementName(column) + ">");
-				out.write(getSafeValue(multiTableExporter, row, column));
+				String padding = pad(multiTableExporter.getDepth(row), column);
+				String safeValue = getSafeValue(multiTableExporter, row, column);
+				out.write(padding + safeValue);
 				out.writeln("</" + getElementName(column) + ">");
 			}
 
@@ -109,6 +114,26 @@ public class PlanningTreeXmlExporter
 			return "";
 		
 		return XmlUtilities.getXmlEncoded(value.toString());
+	}
+	
+	private boolean isTreeColumn(int column)
+	{
+		return (column == 0);
+	}
+		
+	private String pad(int padCount, int column) throws IOException
+	{
+		if (!isTreeColumn(column))
+			return ""; 
+
+		final String FIVE_SPACES = "     ";
+		String padding = "";
+		for (int i = 0; i < padCount; ++i)
+		{
+			padding += FIVE_SPACES;
+		}
+		
+		return padding;
 	}
 
 	private Project getProject()

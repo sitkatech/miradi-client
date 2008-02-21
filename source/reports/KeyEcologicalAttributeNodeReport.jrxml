@@ -87,11 +87,11 @@
 						height="20"
 						key="staticText-1"
 						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font/>
 					</textElement>
-				<text><![CDATA[COLUMN 1]]></text>
+				<text><![CDATA[]]></text>
 				</staticText>
 			</band>
 		</detail>
