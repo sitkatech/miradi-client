@@ -30,6 +30,6 @@ public class ThreatStressCheckThreatRatingStep extends ThreatRatingWizardStep
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Check Summary Ratings");
+		return EAM.text("4) Check target-threat rating");
 	}
 }
