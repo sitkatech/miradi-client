@@ -7,10 +7,12 @@ package org.miradi.dialogs.planning;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
+import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
@@ -27,6 +29,12 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
+	}
+	
+	@Override
+	public Icon getIcon()
+	{
+		return new PlanningIcon();
 	}
 	
 	@Override
