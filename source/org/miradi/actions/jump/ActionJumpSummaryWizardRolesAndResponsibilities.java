@@ -18,7 +18,7 @@ public class ActionJumpSummaryWizardRolesAndResponsibilities extends MainWindowA
 	
 	private static String getLabel()
 	{
-		return EAM.text("Agree on roles and responsibilities: Partners"); 
+		return EAM.text("Agree on roles and responsibilities"); 
 	}
 }
 	
