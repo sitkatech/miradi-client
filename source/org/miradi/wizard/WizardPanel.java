@@ -55,7 +55,7 @@ public class WizardPanel extends JPanel
 		if (contents.getSubHeading() == null)
 			return "";
 		
-		return " (" + contents.getSubHeading() + ")";
+		return ": " + contents.getSubHeading();
 	}
 
 	private boolean shouldShowWizardTitles()
