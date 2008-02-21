@@ -461,13 +461,13 @@ public class AppPreferences
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
-	private static String wizardTitleBackgroundColor = "#99CC33";
-	private static String wizardBackgroundColor = "#D7FA92";
-	private static String wizardSidebarBackgroundColor = "#EAFDC5";
+	private static String wizardTitleBackgroundColor = "#A2D760";
+	private static String wizardBackgroundColor = "#D7EEBB";
+	private static String wizardSidebarBackgroundColor = "#D7EEBB";
 	
 	private static Color darkPanelBackgroundColor =  new Color(0x33, 0x99, 0xcc);
-	private static String dataPanelBackgroundColorForCss = "#DDDDFF";
-	private static Color controlPanelBackgroundColor = new Color(0xee, 0xcc, 0x77);
+	private static String dataPanelBackgroundColorForCss = "#DAEDF5";
+	private static Color controlPanelBackgroundColor = new Color(0xE8, 0xDA, 0x97);
 		
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
