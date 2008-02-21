@@ -31,7 +31,7 @@ public class DiagramWizardLinkDirectThreatsToTargetsStep extends DiagramWizardSt
 	
 	public String getSubHeading()
 	{
-		return EAM.text("Page 2");
+		return EAM.text(" 2) Connect threat to relevant targets");
 	}
 	
 }
