@@ -5,7 +5,7 @@
 */ 
 package org.miradi.wizard.threatmatrix;
 
-import org.miradi.actions.views.ActionViewThreatMatrix;
+import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.ThreatRatingWizardStep;
@@ -25,7 +25,7 @@ public class ThreatSimpleOverviewStep extends ThreatRatingWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionViewThreatMatrix.class;
+		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
 	public String getSubHeading()
