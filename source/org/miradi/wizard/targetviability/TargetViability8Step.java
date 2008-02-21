@@ -30,6 +30,6 @@ public class TargetViability8Step extends DiagramWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("Page 7");
+		return EAM.text("5) Determine desired status");
 	}
 }

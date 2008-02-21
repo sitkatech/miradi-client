@@ -18,7 +18,7 @@ public class ActionJumpIdentifyStresses extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Identify Stresses (optional)");
+		return EAM.text("Identify stresses (optional)");
 	}
 
 }
