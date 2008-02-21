@@ -11,8 +11,10 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -218,7 +220,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void addSubPanelWithTitledBorder(ObjectDataInputPanel subPanel)
 	{
-		subPanel.setBorder(new PanelTitledBorder(subPanel.getPanelDescription()));
+		PanelTitledBorder titledBorder = new PanelTitledBorder(subPanel.getPanelDescription());
+		final int TOP = 0;
+		final int LEFT = 0;
+		final int BOTTOM = 10;
+		final int RIGHT = 0;
+		Border cushion = BorderFactory.createEmptyBorder(TOP, LEFT, BOTTOM, RIGHT);
+		subPanel.setBorder(BorderFactory.createCompoundBorder(cushion, titledBorder));
 		addSubPanel(subPanel);
 		add(subPanel);
 	}
