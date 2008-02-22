@@ -5,10 +5,10 @@
 		 name="TargetNodeReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="595"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -26,10 +26,13 @@
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
 	<field name="Label" class="java.lang.String">
-		<fieldDescription><![CDATA[Label/.]]></fieldDescription>
+		<fieldDescription><![CDATA[Label]]></fieldDescription>
 	</field>
 	<field name="ref" class="java.lang.String">
 		<fieldDescription><![CDATA[@ref]]></fieldDescription>
+	</field>
+	<field name="ViabilityMode" class="java.lang.String">
+		<fieldDescription><![CDATA[ViabilityMode/value]]></fieldDescription>
 	</field>
 
 		<background>
@@ -54,7 +57,7 @@
 						height="20"
 						key="staticText-2"
 						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
@@ -62,7 +65,7 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="250"
+						x="350"
 						y="0"
 						width="150"
 						height="20"
@@ -73,6 +76,20 @@
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="250"
+						y="0"
+						width="100"
+						height="20"
+						key="staticText-4"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Viability Mode]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
@@ -86,7 +103,7 @@
 						height="20"
 						key="textField"
 						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
@@ -96,7 +113,7 @@
 					<reportElement
 						x="0"
 						y="20"
-						width="595"
+						width="842"
 						height="20"
 						key="subreport-1"
 						positionType="Float"/>
@@ -108,7 +125,7 @@
 				</subreport>
 				<staticText>
 					<reportElement
-						x="250"
+						x="350"
 						y="0"
 						width="150"
 						height="20"
@@ -120,6 +137,20 @@
 					</textElement>
 				<text><![CDATA[]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="250"
+						y="0"
+						width="100"
+						height="20"
+						key="textField-1"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ViabilityMode}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>

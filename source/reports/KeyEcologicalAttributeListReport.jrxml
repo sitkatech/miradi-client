@@ -5,10 +5,10 @@
 		 name="KeyEcologicalAttributeListReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="595"
-		 pageHeight="842"
-		 columnWidth="595"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -51,7 +51,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="595"
+						width="842"
 						height="20"
 						key="subreport-2"
 						positionType="Float"/>
