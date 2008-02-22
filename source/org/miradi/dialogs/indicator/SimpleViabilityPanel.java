@@ -35,7 +35,7 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		managementPanel.dispose();
-		simpleViabilityPropertiesPanel.dispose();
+		super.dispose();
 	}
 	
 	public String getPanelDescription()
