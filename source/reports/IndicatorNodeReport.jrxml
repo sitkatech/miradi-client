@@ -55,6 +55,18 @@
 	<field name="FutureStatusRatingVeryGood" class="java.lang.String">
 		<fieldDescription><![CDATA[FutureStatusRatingValues/Value[@code='4']]]></fieldDescription>
 	</field>
+	<field name="IndicatorThresholdPoor" class="java.lang.String">
+		<fieldDescription><![CDATA[IndicatorThresholds/StringMap/Item[@code = '1']/Value]]></fieldDescription>
+	</field>
+	<field name="IndicatorThresholdFair" class="java.lang.String">
+		<fieldDescription><![CDATA[IndicatorThresholds/StringMap/Item[@code = '2']/Value]]></fieldDescription>
+	</field>
+	<field name="IndicatorThresholdGood" class="java.lang.String">
+		<fieldDescription><![CDATA[IndicatorThresholds/StringMap/Item[@code = '3']/Value]]></fieldDescription>
+	</field>
+	<field name="IndicatorThresholdVeryGood" class="java.lang.String">
+		<fieldDescription><![CDATA[IndicatorThresholds/StringMap/Item[@code = '4']/Value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -170,7 +182,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{IndicatorThresholdPoor}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -184,7 +196,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{IndicatorThresholdFair}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -198,7 +210,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{IndicatorThresholdGood}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -212,7 +224,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{IndicatorThresholdVeryGood}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
