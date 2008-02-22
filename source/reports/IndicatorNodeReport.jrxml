@@ -37,6 +37,12 @@
 	<field name="CurrentStatus" class="java.lang.String">
 		<fieldDescription><![CDATA[CurrentStatus/Choice/Value]]></fieldDescription>
 	</field>
+	<field name="LatestProgressReport" class="java.lang.String">
+		<fieldDescription><![CDATA[LatestProgressReport/Choice/Value]]></fieldDescription>
+	</field>
+	<field name="IndicatorRatingSource" class="java.lang.String">
+		<fieldDescription><![CDATA[RatingSource/value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -127,7 +133,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LatestProgressReport}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -217,7 +223,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{IndicatorRatingSource}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
