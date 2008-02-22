@@ -5,6 +5,7 @@
 */ 
 package org.miradi.objects;
 
+import java.io.IOException;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
@@ -136,6 +137,22 @@ public class Indicator extends BaseObject
 		ChoiceItem latestProgressChoice = getProject().getQuestion(ProgressReportStatusQuestion.class).findChoiceByCode(getLatestProgressReportDate());
 		latestProgressChoice.toXml(out);
 		out.writeln("</LatestProgressReport>");
+		
+		String futureStatusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(futureStatusRating.get()).getCode();
+		out.writeln("<FutureStatusRatingValues>");
+		writeOutValue(out, futureStatusRatingCode, StatusQuestion.POOR);
+		writeOutValue(out, futureStatusRatingCode, StatusQuestion.FAIR);
+		writeOutValue(out, futureStatusRatingCode, StatusQuestion.GOOD);
+		writeOutValue(out, futureStatusRatingCode, StatusQuestion.VERY_GOOD);
+		out.write("</FutureStatusRatingValues>");
+	}
+
+	private void writeOutValue(UnicodeWriter out, String futureStatusRatingCode, String ratingCode) throws IOException
+	{
+		out.write("<Value code='" + ratingCode+ "'>");
+		if (futureStatusRatingCode.equals(ratingCode))
+			out.write(futureStatusSummary.get());
+		out.write("</Value>");
 	}
 	
 	private String getIndicatorMethodsSingleLine()

@@ -43,6 +43,18 @@
 	<field name="IndicatorRatingSource" class="java.lang.String">
 		<fieldDescription><![CDATA[RatingSource/value]]></fieldDescription>
 	</field>
+	<field name="FutureStatusRatingPoor" class="java.lang.String">
+		<fieldDescription><![CDATA[FutureStatusRatingValues/Value[@code='1']]]></fieldDescription>
+	</field>
+	<field name="FutureStatusRatingFair" class="java.lang.String">
+		<fieldDescription><![CDATA[FutureStatusRatingValues/Value[@code='2']]]></fieldDescription>
+	</field>
+	<field name="FutureStatusRatingGood" class="java.lang.String">
+		<fieldDescription><![CDATA[FutureStatusRatingValues/Value[@code='3']]]></fieldDescription>
+	</field>
+	<field name="FutureStatusRatingVeryGood" class="java.lang.String">
+		<fieldDescription><![CDATA[FutureStatusRatingValues/Value[@code='4']]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -83,7 +95,6 @@
 						width="140"
 						height="20"
 						key="textField"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -98,7 +109,6 @@
 						width="60"
 						height="20"
 						key="textField"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -127,7 +137,6 @@
 						width="60"
 						height="20"
 						key="textField-4"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -142,7 +151,6 @@
 						width="60"
 						height="20"
 						key="textField-5"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -157,7 +165,6 @@
 						width="60"
 						height="20"
 						key="textField-6"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -172,7 +179,6 @@
 						width="60"
 						height="20"
 						key="textField-7"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -187,7 +193,6 @@
 						width="60"
 						height="20"
 						key="textField-8"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -202,7 +207,6 @@
 						width="60"
 						height="20"
 						key="textField-9"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -217,7 +221,6 @@
 						width="60"
 						height="20"
 						key="textField-10"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -232,7 +235,6 @@
 						width="60"
 						height="20"
 						key="textField-11"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -247,7 +249,6 @@
 						width="60"
 						height="20"
 						key="textField-12"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -262,7 +263,6 @@
 						width="60"
 						height="20"
 						key="textField-13"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -277,7 +277,6 @@
 						width="60"
 						height="20"
 						key="textField-14"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -292,13 +291,12 @@
 						width="60"
 						height="20"
 						key="textField-15"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FutureStatusRatingPoor}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -307,13 +305,12 @@
 						width="60"
 						height="20"
 						key="textField-16"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FutureStatusRatingFair}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -322,13 +319,12 @@
 						width="60"
 						height="20"
 						key="textField-17"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FutureStatusRatingGood}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -337,13 +333,12 @@
 						width="60"
 						height="20"
 						key="textField-18"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{FutureStatusRatingVeryGood}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -352,7 +347,6 @@
 						width="60"
 						height="20"
 						key="textField-19"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
@@ -367,7 +361,6 @@
 						width="60"
 						height="20"
 						key="textField-20"
-						stretchType="RelativeToTallestObject"
 						positionType="Float"/>
 					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement>
