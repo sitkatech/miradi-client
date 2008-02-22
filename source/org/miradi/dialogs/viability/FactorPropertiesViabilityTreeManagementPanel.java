@@ -11,8 +11,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class FactorPropertiesViabilityTreeManagementPanel extends
-		TargetViabilityTreeManagementPanel
+public class FactorPropertiesViabilityTreeManagementPanel extends TargetViabilityTreeManagementPanel
 {
 	public FactorPropertiesViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{

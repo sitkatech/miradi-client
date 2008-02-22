@@ -7,7 +7,6 @@ package org.miradi.dialogs.diagram;
 
 import javax.swing.Icon;
 
-import org.martus.swing.UiLabel;
 import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpDevelopDraftStrategiesStep;
@@ -19,17 +18,14 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
@@ -40,7 +36,6 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
@@ -104,17 +99,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			targetRatingField = createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion());
-			ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
-			addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
-			
-			justificationField = createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			justificationFieldLabel = new PanelFieldLabel(justificationField.getObjectType(), justificationField.getTag());
-			addFieldWithCustomLabel(justificationField, justificationFieldLabel);
 			addField(createMultiCodeField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 			
 			detailIcon = new TargetIcon();
-			updateEditabilityOfTargetStatusField();
 		}
 				
 		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
@@ -122,9 +109,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 	
 		
 		updateFieldsFromProject();
-
-		if(getFactor().isTarget())
-			updateEditabilityOfTargetStatusField();
 	}
 
 
@@ -153,27 +137,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		return false;
 	}
 
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		super.commandExecuted(event);
-		if(getFactor().isTarget() && event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
-		{
-			updateEditabilityOfTargetStatusField();
-		}
-	}
-
-
-	private void updateEditabilityOfTargetStatusField()
-	{
-		Target target = (Target)getFactor();
-		boolean enableRatingField = true;
-		if(target.isViabilityModeTNC())
-			enableRatingField = false;
-		targetRatingField.getComponent().setVisible(enableRatingField);
-		ratingFieldLabel.setVisible(enableRatingField);
-		justificationField.getComponent().setVisible(enableRatingField);
-		justificationFieldLabel.setVisible(enableRatingField);
-	}
 
 	public Factor getFactor()
 	{
@@ -221,8 +184,4 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 	private MainWindow mainWindow;
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
-	private UiLabel ratingFieldLabel;
-	private ObjectDataInputField targetRatingField;
-	private UiLabel justificationFieldLabel;
-	private ObjectDataInputField justificationField;
 }
