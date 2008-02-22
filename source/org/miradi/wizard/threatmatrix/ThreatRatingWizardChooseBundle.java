@@ -114,35 +114,43 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	public void buttonPressed(String buttonName)
 	{
 		if (buttonName.equals("Next"))
+		{
 			try
 			{
+				if (needsTargetThreatSelection())
+				{
+					EAM.errorDialog(EAM.text("Please select a threat and target"));
+					return;
+				}
+			
 				if(getSelectedBundle() == null)
 				{
-					if ((threatBox.getSelectedIndex())==0 || (targetBox.getSelectedIndex()==0))
-						EAM.errorDialog(EAM.text("Please select a threat and target"));
-					else
-						EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  " +
-						"To create a link, click in the associated gray box in the threat table"));
+					EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  " +
+					"To create a link, click in the associated gray box in the threat table"));
 					return;
 				}
 			}
 			catch (Exception e)
 			{
+				EAM.logException(e);
 				EAM.errorDialog("Internal Error bundle not found");
 				return;
 			}
+		}
 		
 		super.buttonPressed(buttonName);
-		
 	}
 	
 	class RatingItemListener implements ItemListener
 	{
 		public void itemStateChanged(ItemEvent arg0)
 		{
+			if (needsTargetThreatSelection())
+				return;
+			
 			try
-			{
-				 ThreatRatingBundle bundle = getSelectedBundle();
+			{	
+				ThreatRatingBundle bundle = getSelectedBundle();
 				if (bundle!=null)
 					getThreatView().selectBundle(bundle);
 			}
@@ -156,6 +164,11 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		ThreatRatingWizardChooseBundle wizard;
 	}
 	
+	private boolean needsTargetThreatSelection()
+	{
+		return (threatBox.getSelectedIndex()) == 0 || (targetBox.getSelectedIndex() == 0);
+	}
+	
 	public String getSubHeading()
 	{
 		return EAM.text("1) Select target and threat to work on");
@@ -167,5 +180,4 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	JComboBox threatBox;
 	JComboBox targetBox;
-	
 }
