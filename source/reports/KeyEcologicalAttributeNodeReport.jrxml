@@ -35,6 +35,9 @@
 	<field name="Status" class="java.lang.String">
 		<fieldDescription><![CDATA[ViabilityStatus/Choice/Value]]></fieldDescription>
 	</field>
+	<field name="KeyEcologicalAttributeType" class="java.lang.String">
+		<fieldDescription><![CDATA[KeyEcologicalAttributeType/value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -122,7 +125,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{KeyEcologicalAttributeType}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

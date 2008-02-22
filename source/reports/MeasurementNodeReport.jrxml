@@ -28,6 +28,9 @@
 	<field name="Date" class="java.lang.String">
 		<fieldDescription><![CDATA[Date/.]]></fieldDescription>
 	</field>
+	<field name="StatusConfidence" class="java.lang.String">
+		<fieldDescription><![CDATA[StatusConfidence/value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -179,7 +182,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{StatusConfidence}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
