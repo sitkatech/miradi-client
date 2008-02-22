@@ -34,6 +34,9 @@
 	<field name="ViabilityMode" class="java.lang.String">
 		<fieldDescription><![CDATA[ViabilityMode/value]]></fieldDescription>
 	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[TargetStatus/value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -247,7 +250,7 @@
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Status}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
