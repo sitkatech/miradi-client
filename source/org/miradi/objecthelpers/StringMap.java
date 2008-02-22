@@ -5,11 +5,15 @@
 */ 
 package org.miradi.objecthelpers;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
+import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class StringMap
@@ -129,6 +133,24 @@ public class StringMap
 					"Attempted to remove non-existant code: " + code
 							+ " from: " + toString());
 		data.remove(code);
+	}
+	
+	public void toXml(UnicodeWriter out) throws IOException
+	{
+		out.writeln("<StringMap>");
+		Set keys = data.keySet();
+		for(Object object : keys)
+		{
+			out.write("<Item code='" + XmlUtilities.getXmlEncoded(object.toString()) + "'>");
+			out.write("<Value>");
+			
+			String rawValue = data.get(object.toString()).toString();
+			out.write(XmlUtilities.getXmlEncoded(rawValue));
+			
+			out.write("</Value>");
+			out.writeln("</Item>");
+		}
+		out.writeln("</StringMap>");
 	}
 
 	public boolean equals(Object rawOther)
