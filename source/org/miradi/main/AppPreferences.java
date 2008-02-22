@@ -465,7 +465,7 @@ public class AppPreferences
 	private static String wizardBackgroundColor = "#D7EEBB";
 	private static String wizardSidebarBackgroundColor = "#D7EEBB";
 	
-	private static Color darkPanelBackgroundColor =  new Color(0x33, 0x99, 0xcc);
+	private static Color darkPanelBackgroundColor =  new Color(0x57, 0xAC, 0xD5);
 	private static String dataPanelBackgroundColorForCss = "#DAEDF5";
 	private static Color controlPanelBackgroundColor = new Color(0xE8, 0xDA, 0x97);
 		
