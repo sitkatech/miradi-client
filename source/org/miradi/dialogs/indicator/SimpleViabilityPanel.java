@@ -22,7 +22,7 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 		
 		setLayout(new OneColumnGridLayout());
 		
-		simpleViabilityPropertiesPanel = new SimpleViabilityPropertiesPanel(mainWindowToUse.getProject(), factorRef);
+		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindowToUse.getProject(), factorRef);
 		addSubPanelWithTitledBorder(simpleViabilityPropertiesPanel);
 		
 		managementPanel = new FactorPropertiesViabilityTreeManagementPanel(mainWindowToUse, factorRef, mainWindowToUse.getActions());
@@ -51,5 +51,5 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 	}
 	
 	private FactorPropertiesViabilityTreeManagementPanel managementPanel;
-	private SimpleViabilityPropertiesPanel simpleViabilityPropertiesPanel;
+	private SimpleViabilityFieldsPanel simpleViabilityPropertiesPanel;
 }

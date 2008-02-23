@@ -12,9 +12,9 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-public class SimpleViabilityPropertiesPanel extends ObjectDataInputPanel
+public class SimpleViabilityFieldsPanel extends ObjectDataInputPanel
 {
-	public SimpleViabilityPropertiesPanel(Project projectToUse, ORef refToUse) throws Exception
+	public SimpleViabilityFieldsPanel(Project projectToUse, ORef refToUse) throws Exception
 	{
 		super(projectToUse, refToUse);			
 		
