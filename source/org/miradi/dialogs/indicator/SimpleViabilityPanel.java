@@ -10,6 +10,7 @@ import javax.swing.Icon;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
@@ -40,7 +41,7 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return managementPanel.getPanelDescription();
+		return EAM.text("Tab|Viability");
 	}
 
 	public Icon getIcon()
