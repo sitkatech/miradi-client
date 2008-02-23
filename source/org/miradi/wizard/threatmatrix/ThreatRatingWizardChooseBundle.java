@@ -117,7 +117,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		{
 			try
 			{
-				if (needsTargetThreatSelection())
+				if (!isTargetAndThreatSelected())
 				{
 					EAM.errorDialog(EAM.text("Please select a threat and target"));
 					return;
@@ -145,7 +145,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	{
 		public void itemStateChanged(ItemEvent arg0)
 		{
-			if (needsTargetThreatSelection())
+			if (!isTargetAndThreatSelected())
 				return;
 			
 			try
@@ -164,9 +164,9 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		ThreatRatingWizardChooseBundle wizard;
 	}
 	
-	private boolean needsTargetThreatSelection()
+	private boolean isTargetAndThreatSelected()
 	{
-		return (threatBox.getSelectedIndex()) == 0 || (targetBox.getSelectedIndex() == 0);
+		return (threatBox.getSelectedIndex()) > 0 && (targetBox.getSelectedIndex() > 0);
 	}
 	
 	public String getSubHeading()
