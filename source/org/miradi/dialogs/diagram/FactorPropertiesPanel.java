@@ -206,8 +206,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				tabs.setSelectedComponent(objectivesTab);
 				break;
 			case TAB_INDICATORS:
-				tabs.setSelectedComponent(indicatorsTab);
+			{
+				if (indicatorsTab!= null)
+					tabs.setSelectedComponent(indicatorsTab);
+				else
+					tabs.setSelectedComponent(simpleViabilityTab);
 				break;
+			}
 			case TAB_GOALS:
 				tabs.setSelectedComponent(goalsTab);
 				break;
