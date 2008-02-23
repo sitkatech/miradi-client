@@ -22,9 +22,10 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 		
 		setLayout(new OneColumnGridLayout());
 		
-		managementPanel = new FactorPropertiesViabilityTreeManagementPanel(mainWindowToUse, factorRef, mainWindowToUse.getActions());
 		simpleViabilityPropertiesPanel = new SimpleViabilityPropertiesPanel(mainWindowToUse.getProject(), factorRef);
 		addSubPanelWithTitledBorder(simpleViabilityPropertiesPanel);
+		
+		managementPanel = new FactorPropertiesViabilityTreeManagementPanel(mainWindowToUse, factorRef, mainWindowToUse.getActions());
 		add(managementPanel);
 	}
 
