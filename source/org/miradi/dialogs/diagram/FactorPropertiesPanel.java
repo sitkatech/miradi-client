@@ -170,7 +170,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		}
 		
-		if (factor.canHaveIndicators() && !isKeaViabilityMode && factor.isTarget())
+		if ( factor.isTarget() && !isKeaViabilityMode)
 		{
 			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
