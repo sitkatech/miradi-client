@@ -19,6 +19,17 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 {
+	public boolean isAvailable() 
+	{
+		if (!super.isAvailable())
+			return false;
+		
+		if (((Factor)getSelectedParent()).getKeyEcologicalAttributes().size() == 0)
+			return false;
+		
+		return true;
+	}
+	
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
