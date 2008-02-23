@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreateStressFromKea extends ObjectsAction
 {
 	public ActionCreateStressFromKea(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new KeyEcologicalAttributeIcon());
 	}
 
 	private static String getLabel()
