@@ -5,9 +5,7 @@
 */ 
 package org.miradi.dialogs.indicator;
 
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
@@ -20,13 +18,8 @@ public class SimpleViabilityPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, refToUse);			
 		
-		ObjectDataInputField targetRatingField = createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion());
-		PanelFieldLabel ratingFieldLabel = new PanelFieldLabel(targetRatingField.getObjectType(), targetRatingField.getTag());
-		addFieldWithCustomLabel(targetRatingField, ratingFieldLabel);
-		
-		ObjectDataInputField justificationField = createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-		PanelFieldLabel justificationFieldLabel = new PanelFieldLabel(justificationField.getObjectType(), justificationField.getTag());
-		addFieldWithCustomLabel(justificationField, justificationFieldLabel);
+		addField(createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion()));		
+		addField(createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 		
 		updateFieldsFromProject();
 	}
