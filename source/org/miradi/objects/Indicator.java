@@ -138,6 +138,7 @@ public class Indicator extends BaseObject
 		latestProgressChoice.toXml(out);
 		out.writeln("</LatestProgressReport>");
 		
+		//TODO: Don't export these values in a hard-coded way
 		String futureStatusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(futureStatusRating.get()).getCode();
 		out.writeln("<FutureStatusRatingValues>");
 		writeOutValue(out, futureStatusRatingCode, StatusQuestion.POOR);
