@@ -32,11 +32,11 @@ public class ReportsViewControlBar extends Box
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		owner = ownerToUse;
 		
-		reportSelectionTableModel = new ReportSelectionTableModel();
-		table = new ReportSelectionTable(reportSelectionTableModel);
-		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
+		standardReportTableModel = new StandardReportsTableModel();
+		standardReportTable = new ReportSelectionTable(standardReportTableModel);
+		standardReportTable.getSelectionModel().addListSelectionListener(new TableSelectionListener());
 
-		MiradiScrollPane scroller = new MiradiScrollPane(table);
+		MiradiScrollPane scroller = new MiradiScrollPane(standardReportTable);
 		scroller.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		scroller.getViewport().setBackground(AppPreferences.getControlPanelBackgroundColor());
 		scroller.setAlignmentX(0.0f);
@@ -102,8 +102,8 @@ public class ReportsViewControlBar extends Box
 	{
 		public void valueChanged(ListSelectionEvent event)
 		{
-			int selectedRow = table.getSelectedRow();
-			String reportPath = reportSelectionTableModel.getReportDirForRow(selectedRow);
+			int selectedRow = standardReportTable.getSelectedRow();
+			String reportPath = standardReportTableModel.getReportDirForRow(selectedRow);
 
 			URL reportURL = Miradi.class.getResource(reportPath);
 			owner.showReport(reportURL);
@@ -112,8 +112,8 @@ public class ReportsViewControlBar extends Box
 	}
 
 	private ReportSplitPane owner;
-	private ReportSelectionTableModel reportSelectionTableModel;
-	private ReportSelectionTable table;
+	private ReportSelectionTableModel standardReportTableModel;
+	private ReportSelectionTable standardReportTable;
 	public static final String EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";
 	
 }
