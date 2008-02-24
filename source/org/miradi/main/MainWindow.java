@@ -68,7 +68,7 @@ import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.planning.PlanningView;
-import org.miradi.views.reports.ReportView;
+import org.miradi.views.reports.ReportsView;
 import org.miradi.views.schedule.ScheduleView;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.targetviability.TargetViabilityView;
@@ -144,7 +144,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 //		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
-		reportView = new ReportView(this);
+		reportView = new ReportsView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -960,7 +960,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 //	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
-	private ReportView reportView;
+	private ReportsView reportView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;

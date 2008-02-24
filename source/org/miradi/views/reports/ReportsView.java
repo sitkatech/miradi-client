@@ -14,9 +14,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 
-public class ReportView extends TabbedView
+public class ReportsView extends TabbedView
 {
-	public ReportView(MainWindow mainWindowToUse)
+	public ReportsView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);

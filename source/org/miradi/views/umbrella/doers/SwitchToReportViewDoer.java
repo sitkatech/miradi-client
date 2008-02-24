@@ -5,7 +5,7 @@
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.views.reports.ReportView;
+import org.miradi.views.reports.ReportsView;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class SwitchToReportViewDoer extends ViewSwitchDoer
@@ -13,6 +13,6 @@ public class SwitchToReportViewDoer extends ViewSwitchDoer
 	@Override
 	protected String getViewName()
 	{
-		return ReportView.getViewName();
+		return ReportsView.getViewName();
 	}
 }

@@ -58,7 +58,7 @@ import org.miradi.wizard.planning.WorkPlanCreateResourcesStep;
 import org.miradi.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
 import org.miradi.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.wizard.planning.WorkPlanOverviewStep;
-import org.miradi.wizard.reports.ReportOverviewStep;
+import org.miradi.wizard.reports.ReportsOverviewStep;
 import org.miradi.wizard.schedule.ScheduleOverviewStep;
 import org.miradi.wizard.summary.SummaryOverviewStep;
 import org.miradi.wizard.summary.SummaryWizardDefineProjecScope;
@@ -331,7 +331,7 @@ public class WizardManager
 
 	public void createReportViewStepEntries(WizardPanel panel)
 	{
-		createStepEntry(new ReportOverviewStep(panel));
+		createStepEntry(new ReportsOverviewStep(panel));
 	}
 	
 	public void createMapViewStepEntries(WizardPanel panel)
@@ -455,7 +455,7 @@ public class WizardManager
 //				FinancialOverviewStep.class, 
 				
 				// NOT STEPS
-				ReportOverviewStep.class,
+				ReportsOverviewStep.class,
 				MapOverviewStep.class,
 				ScheduleOverviewStep.class,
 				LibraryOverviewStep.class,
