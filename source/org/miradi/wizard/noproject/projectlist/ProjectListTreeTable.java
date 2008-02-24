@@ -5,24 +5,33 @@
 */ 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
+import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.fieldComponents.PanelTreeTable;
+import org.miradi.icons.FolderIcon;
+import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
+
+import com.java.sun.jtreetable.TreeTableModel;
 
 public class ProjectListTreeTable extends PanelTreeTable
 {
@@ -31,14 +40,17 @@ public class ProjectListTreeTable extends PanelTreeTable
 		super(treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
+		Renderer renderer = new Renderer();
+		tree.setCellRenderer(renderer);
+		getTree().setEditable(false);
+		getColumnModel().getColumn(0).setPreferredWidth(200);
+		TableCellEditor ce = new NonEditableTreeTableCellEditor();
+		setDefaultEditor(TreeTableModel.class, ce);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setRowSelectionAllowed(true);
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
-		
-		 DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer)tree.getCellRenderer();
-		 renderer.setLeafIcon(new MiradiResourceImageIcon("icons/miradi16.png"));
 	}
 
 	public String getUniqueTableIdentifier()
@@ -139,4 +151,64 @@ public class ProjectListTreeTable extends PanelTreeTable
 				doProjectOpen(getSelectedFile());
 		}
 	}
+	
+	static class ProjectListItemRenderer extends DefaultTreeCellRenderer
+	{
+		public ProjectListItemRenderer()
+		{
+			setBackgroundNonSelectionColor(AppPreferences.getDataPanelBackgroundColor());
+		}
+	}
+	
+	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
+	{
+		public NonEditableTreeTableCellEditor() 
+		{
+		    super();
+		}
+		
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+		{
+			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c);
+			textField.setEditable(false);
+			
+			return textField;
+		}
+
+	}
+	
+	public static class Renderer extends DefaultTreeCellRenderer
+	{		
+		public Renderer()
+		{	
+			folderRenderer = new ProjectListItemRenderer();
+			folderRenderer.setClosedIcon(new FolderIcon());
+			folderRenderer.setOpenIcon(new FolderIcon());
+			folderRenderer.setLeafIcon(new FolderIcon());
+
+			projectRenderer = new ProjectListItemRenderer();
+			projectRenderer.setClosedIcon(new MiradiApplicationIcon());
+			projectRenderer.setOpenIcon(new MiradiApplicationIcon());
+			projectRenderer.setLeafIcon(new MiradiApplicationIcon());
+		}
+
+		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
+		{
+			DefaultTreeCellRenderer renderer = null;
+			
+			FileSystemTreeNode node = (FileSystemTreeNode) value;
+			if(node.isProjectDirectory())
+				renderer = projectRenderer;
+			else
+				renderer = folderRenderer;
+			
+			JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+			return configuredRenderer;
+		}
+		
+
+		private	DefaultTreeCellRenderer folderRenderer;
+		private DefaultTreeCellRenderer projectRenderer;
+	}
+
 }
