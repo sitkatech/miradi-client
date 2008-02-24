@@ -89,7 +89,7 @@ import org.miradi.actions.views.ActionViewImages;
 import org.miradi.actions.views.ActionViewMap;
 import org.miradi.actions.views.ActionViewMonitoring;
 import org.miradi.actions.views.ActionViewPlanning;
-import org.miradi.actions.views.ActionViewReport;
+import org.miradi.actions.views.ActionViewReports;
 import org.miradi.actions.views.ActionViewSchedule;
 import org.miradi.actions.views.ActionViewStrategicPlan;
 import org.miradi.actions.views.ActionViewSummary;
@@ -160,7 +160,7 @@ public class Actions
 		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionViewTargetViability(mainWindow));
-		registerAction(new ActionViewReport(mainWindow));
+		registerAction(new ActionViewReports(mainWindow));
 		
 		registerAction(new ActionCreateSlide(mainWindow));
 		registerAction(new ActionDeleteSlide(mainWindow));

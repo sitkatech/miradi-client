@@ -127,7 +127,7 @@ import org.miradi.actions.views.ActionViewDiagram;
 import org.miradi.actions.views.ActionViewImages;
 import org.miradi.actions.views.ActionViewMap;
 import org.miradi.actions.views.ActionViewPlanning;
-import org.miradi.actions.views.ActionViewReport;
+import org.miradi.actions.views.ActionViewReports;
 import org.miradi.actions.views.ActionViewSchedule;
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.actions.views.ActionViewTargetViability;
@@ -331,7 +331,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewImages.class, new SwitchToLibraryViewDoer());
 		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
-		addDoerToMap(ActionViewReport.class, new SwitchToReportViewDoer());
+		addDoerToMap(ActionViewReports.class, new SwitchToReportViewDoer());
 		
 		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
 		addDoerToMap(ActionEditStrategyRelevancyList.class, new EditStrategyRelevancyListDoer());

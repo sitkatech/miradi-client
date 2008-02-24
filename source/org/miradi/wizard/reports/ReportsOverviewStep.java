@@ -5,16 +5,16 @@
 */ 
 package org.miradi.wizard.reports;
 
-import org.miradi.actions.views.ActionViewReport;
-import org.miradi.views.reports.ReportView;
+import org.miradi.actions.views.ActionViewReports;
+import org.miradi.views.reports.ReportsView;
 import org.miradi.wizard.SplitWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class ReportOverviewStep extends SplitWizardStep
+public class ReportsOverviewStep extends SplitWizardStep
 {
-	public ReportOverviewStep(WizardPanel wizardToUse)
+	public ReportsOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, ReportView.getViewName());
+		super(wizardToUse, ReportsView.getViewName());
 	}
 
 	public String getProcessStepTitle()
@@ -24,6 +24,6 @@ public class ReportOverviewStep extends SplitWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionViewReport.class;
+		return ActionViewReports.class;
 	}
 }

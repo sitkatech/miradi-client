@@ -9,21 +9,21 @@ import org.miradi.actions.MainWindowAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionViewReport extends MainWindowAction
+public class ActionViewReports extends MainWindowAction
 {
-	public ActionViewReport(MainWindow mainWindowToUse)
+	public ActionViewReports(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Report");
+		return EAM.text("Action|Reports");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Report");
+		return EAM.text("TT|Switch to the Reports View");
 	}
 	
 	public String toString()
