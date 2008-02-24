@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.reports.ReportSplitPane;
@@ -84,7 +85,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(file.isDirectory() && !isCustomReportDirectory(file))
+			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
 				children.add(new FileSystemTreeNode(file));
 		}
 		
@@ -94,6 +95,11 @@ public class FileSystemTreeNode extends TreeTableNode
 	private boolean isCustomReportDirectory(File file)
 	{
 		return file.getName().equals(ReportSplitPane.EXTERNAL_REPORTS_DIR_NAME);
+	}
+	
+	private boolean isExternalResourceDirectory(File file)
+	{
+		return file.getName().equals(EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
 	}
 	
 	public boolean isProjectDirectory()
