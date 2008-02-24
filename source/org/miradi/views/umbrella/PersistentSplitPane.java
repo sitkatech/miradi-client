@@ -66,16 +66,16 @@ abstract public class PersistentSplitPane extends JSplitPane
 		if (getContainerHeightOrWidth()==0)
 			return;
 		
-		double splitPercentFromMiddle = computePercentFromLocation(location);
-		long roundedPercent = Math.round(splitPercentFromMiddle);
-		splitPositionSaver.saveSplitterLocation(splitterName, (int)roundedPercent);
+		int roundedPercent = computePercentFromLocation(location);
+		splitPositionSaver.saveSplitterLocation(splitterName, roundedPercent);
 	}
 
-	protected double computePercentFromLocation(int location)
+	protected int computePercentFromLocation(int location)
 	{
-		double splitPercent = (double)location * 100 / getContainerHeightOrWidth();
+		double splitPercent = Math.round((double)location * 100 / getContainerHeightOrWidth());
 		double splitPercentFromMiddle = splitPercent * 2 - 100;
-		return splitPercentFromMiddle;
+		int roundedPercent = (int)splitPercentFromMiddle;
+		return roundedPercent;
 	}
 	
 	public int getSplitterLocation(String name)
@@ -88,15 +88,16 @@ abstract public class PersistentSplitPane extends JSplitPane
 
 	protected int computeLocationFromPercent(int splitPercentFromMiddle)
 	{
-		int splitPercent = (splitPercentFromMiddle + 100) / 2;
-		int location = getContainerHeightOrWidth() * splitPercent / 100;
+		double splitPercent = (splitPercentFromMiddle + 100) / 2 + .5;
+		int location = (int) (getContainerHeightOrWidth() * splitPercent / 100);
 		return location;
 	}
 	
 	public void setSplitterLocationToMiddle(String name)
 	{
 		splitPositionSaver.saveSplitterLocation(name, SPLITTER_MIDDLE_LOCATION);
-		setDividerLocation(getSplitterLocation(name));
+		int location = getSplitterLocation(name);
+		setDividerLocation(location);
 	}
 	
 	Component getContainer()

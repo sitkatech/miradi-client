@@ -27,7 +27,7 @@ public class PersistentNonPercentageHorizontalSplitPane extends PersistentHorizo
 	}
 	
 	@Override
-	protected double computePercentFromLocation(int location)
+	protected int computePercentFromLocation(int location)
 	{
 		return location + 1;
 	}
