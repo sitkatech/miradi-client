@@ -21,6 +21,7 @@ import net.sf.jasperreports.view.JRViewer;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -37,6 +38,9 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		
 		setLeftComponent(new ReportsViewControlBar(this));
 		setRightComponent(new MiradiPanel());
+		
+		// Need to set background color because Control Bar is a box which is transparent
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception

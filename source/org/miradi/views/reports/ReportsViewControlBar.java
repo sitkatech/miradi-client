@@ -11,36 +11,43 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
 import org.miradi.utils.JasperReportFileFilter;
 import org.miradi.utils.MiradiScrollPane;
 
-public class ReportsViewControlBar extends OneColumnPanel
+public class ReportsViewControlBar extends Box
 {
 	ReportsViewControlBar(ReportSplitPane ownerToUse)
 	{
+		super(BoxLayout.PAGE_AXIS);
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		owner = ownerToUse;
 		
 		reportSelectionTableModel = new ReportSelectionTableModel();
 		table = new ReportSelectionTable(reportSelectionTableModel);
 		table.getSelectionModel().addListSelectionListener(new TableSelectionListener());
+
 		MiradiScrollPane scroller = new MiradiScrollPane(table);
-		scroller.setMinimumSize(new Dimension(0, 0));
+		scroller.setBackground(AppPreferences.getControlPanelBackgroundColor());
+		scroller.getViewport().setBackground(AppPreferences.getControlPanelBackgroundColor());
+		scroller.setAlignmentX(0.0f);
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run External Report..."));
 		customReportButton.setMinimumSize(new Dimension(0, 0));
 		customReportButton.addActionListener(new CustomReportHandler());
+		customReportButton.setAlignmentX(0.0f);
 
 		add(scroller);
+		add(Box.createVerticalGlue());
 		add(customReportButton);
 	}
 
