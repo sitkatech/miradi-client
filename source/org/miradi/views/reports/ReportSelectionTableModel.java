@@ -9,7 +9,7 @@ import org.miradi.main.EAM;
 import org.miradi.utils.GenericDefaultTableModel;
 
 
-public class ReportSelectionTableModel extends GenericDefaultTableModel
+public abstract class ReportSelectionTableModel extends GenericDefaultTableModel
 {
 	public ReportSelectionTableModel()
 	{
@@ -30,7 +30,7 @@ public class ReportSelectionTableModel extends GenericDefaultTableModel
 	public int getRowCount()
 	{	
 		if (reports == null)
-			createReportMap();
+			reports = getAvailableReports();
 		
 		return reports.length;
 	}
@@ -45,20 +45,7 @@ public class ReportSelectionTableModel extends GenericDefaultTableModel
 		return reports[row].getFileName();
 	}
 	
-	private void createReportMap()
-	{
-		reports = new Report[] {
-				new Report("Full Project Report", "/reports/FullProjectReport.jasper"),
-				new Report("Rare Report", "/reports/RareReport.jasper"),
-				new Report("Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
-				new Report("Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
-				new Report("Threat Rating Report", "/reports/ThreatRatingTableReport.jasper"),
-				new Report("Target Viability Report", "/reports/TargetViabilityTreeTable.jasper"),
-				new Report("Strategic Plan Report", "/reports/StrategicPlanReport.jasper"),
-				new Report("Monitoring Plan Report", "/reports/MonitoringPlanReport.jasper"),
-				new Report("Work Plan Report", "/reports/WorkPlanReport.jasper"),
-		};
-	}
+	abstract protected Report[] getAvailableReports();
 	
 	private Report[] reports;
 	private static final int COLUMN_COUNT = 1;
