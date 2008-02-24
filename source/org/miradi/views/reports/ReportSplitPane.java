@@ -96,7 +96,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		MiradiScrollPane scroller = new MiradiScrollPane(table);
 		scroller.setMinimumSize(new Dimension(0, 0));
 		
-		PanelButton customReportButton = new PanelButton(EAM.text("Run Custom Report..."));
+		PanelButton customReportButton = new PanelButton(EAM.text("Run External Report..."));
 		customReportButton.setMinimumSize(new Dimension(0, 0));
 		customReportButton.addActionListener(new CustomReportHandler());
 
@@ -118,7 +118,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 			try
 			{
 				File home = EAM.getHomeDirectory();
-				File reportPath = new File(home, CUSTOM_REPORTS_DIR_NAME);
+				File reportPath = new File(home, EXTERNAL_REPORTS_DIR_NAME);
 				if (!reportPath.exists())
 					reportPath.mkdir();
 				
@@ -199,5 +199,5 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	private ReportSelectionTable table;
 	
 	private static final String UNIQUE_SPLITTER_NAME = "ReportSplitPaneName";
-	public static final String CUSTOM_REPORTS_DIR_NAME = "CustomReports";
+	public static final String EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";
 }

@@ -93,10 +93,10 @@ public class FileSystemTreeNode extends TreeTableNode
 
 	private boolean isCustomReportDirectory(File file)
 	{
-		return file.getName().equals(ReportSplitPane.CUSTOM_REPORTS_DIR_NAME);
+		return file.getName().equals(ReportSplitPane.EXTERNAL_REPORTS_DIR_NAME);
 	}
 	
-	private boolean isProjectDirectory()
+	public boolean isProjectDirectory()
 	{
 		return ProjectServer.isExistingProject(thisFile);
 	}
