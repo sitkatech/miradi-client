@@ -16,4 +16,9 @@ public class OneColumnGridLayout extends GridLayoutPlus
 		setFill(Alignment.FILL_NONE);
 		setAlignment(Alignment.NORTHWEST);
 	}
+
+	public void setFullWidth()
+	{
+		setFill(Alignment.FILL_HORIZONTAL);
+	}
 }

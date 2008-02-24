@@ -13,4 +13,14 @@ public class OneColumnPanel extends JPanel
 	{
 		super(new OneColumnGridLayout());
 	}
+	
+	public void setFullWidth()
+	{
+		getGridLayout().setFullWidth();
+	}
+
+	public OneColumnGridLayout getGridLayout()
+	{
+		return (OneColumnGridLayout)getLayout();
+	}
 }
