@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableModel;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.utils.TableWithColumnWidthSaver;
 
 public class ReportSelectionTable extends TableWithColumnWidthSaver
@@ -21,8 +22,16 @@ public class ReportSelectionTable extends TableWithColumnWidthSaver
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
-		setMinimumSize(new Dimension(0, 0));
+		setBackground(AppPreferences.getControlPanelBackgroundColor());
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		Dimension size = super.getPreferredScrollableViewportSize();
+		size.width = getPreferredSize().width;
+		size.height = getPreferredSize().height;
+		return size;
 	}
 	
 	@Override
