@@ -134,9 +134,23 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 	}
 	
+	// NOTE: This is a hack, but not a horrible one.
+	// We are not sure why switching KEA mode would not correctly enable buttons
+	// on the Viability tab, so the fix is to make sure that whenever the user 
+	// switches tabs, the buttons on that tab will be correctly enabled
+	class FactorPropertiesTabbedPane extends PanelTabbedPane
+	{
+		@Override
+		public void setSelectedIndex(int index)
+		{
+			super.setSelectedIndex(index);
+			mainWindow.updateActionStates();
+		}
+	}
+	
 	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{
-		tabs = new PanelTabbedPane();
+		tabs = new FactorPropertiesTabbedPane();
 		tabs.setFocusable(false);
 		detailsTab = new FactorSummaryScrollablePanel(mainWindow, diagramFactor);
 		
