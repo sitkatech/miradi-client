@@ -32,7 +32,6 @@ import javax.swing.ToolTipManager;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
-import org.martus.util.Stopwatch;
 import org.miradi.actions.ActionAbout;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
@@ -663,19 +662,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		if(shouldPreventActionUpdates())
 			return;
-		new ActionUpdater().start();
+
+		actions.updateActionStates();
 	}
 
-	class ActionUpdater extends Thread
-	{
-		public void run()
-		{
-			Stopwatch sw = new Stopwatch();
-			actions.updateActionStates();
-			EAM.logVerbose("updateActionStates took: " + sw.elapsed() + " millis");
-		}
-	}
-	
 	private boolean shouldPreventActionUpdates()
 	{
 		if(preventActionUpdatesCount > 0)
