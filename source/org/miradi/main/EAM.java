@@ -489,7 +489,7 @@ public class EAM
 		return true;
 	}
 
-	private final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
+	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
 
