@@ -9,20 +9,20 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.TableModel;
 
 import org.miradi.main.AppPreferences;
 import org.miradi.utils.TableWithColumnWidthSaver;
 
 public class ReportSelectionTable extends TableWithColumnWidthSaver
 {
-	public ReportSelectionTable(TableModel model)
+	public ReportSelectionTable(ReportSelectionTableModel model)
 	{
 		super(model);
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
+		setColumnWidth(0, 250);
 	}
 	
 	@Override
@@ -33,6 +33,13 @@ public class ReportSelectionTable extends TableWithColumnWidthSaver
 		size.height = getPreferredSize().height;
 		return size;
 	}
+	
+	public String getReportDirForRow(int row)
+	{
+		ReportSelectionTableModel model = (ReportSelectionTableModel)getModel();
+		return model.getReportDirForRow(row);
+	}
+
 	
 	@Override
 	public String getUniqueTableIdentifier()

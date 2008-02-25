@@ -5,7 +5,6 @@
 */ 
 package org.miradi.views.reports;
 
-import org.miradi.main.EAM;
 import org.miradi.utils.GenericDefaultTableModel;
 
 
@@ -19,12 +18,6 @@ public abstract class ReportSelectionTableModel extends GenericDefaultTableModel
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
-	}
-	
-	@Override
-	public String getColumnName(int column)
-	{
-		return EAM.text("Report");
 	}
 	
 	public int getRowCount()

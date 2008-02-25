@@ -5,8 +5,16 @@
 */ 
 package org.miradi.views.reports;
 
+import org.miradi.main.EAM;
+
 public class StandardReportsTableModel extends ReportSelectionTableModel
 {
+	@Override
+	public String getColumnName(int column)
+	{
+		return EAM.text("Standard Reports");
+	}
+	
 	protected Report[] getAvailableReports()
 	{
 		return new Report[] {
