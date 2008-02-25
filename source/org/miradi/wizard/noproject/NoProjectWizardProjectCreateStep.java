@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.text.JTextComponent;
@@ -33,13 +34,15 @@ public class NoProjectWizardProjectCreateStep extends NoProjectWizardStep
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
 		left.add(projectList, BorderLayout.CENTER);
 		
-		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));
-		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
-		mainPanel.add(left);
 		JPanel rightSidePanel = new JPanel();
 		rightSidePanel.setBackground(AppPreferences.getWizardBackgroundColor());
-		mainPanel.add(rightSidePanel);
 		
+		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 60, 0));
+		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
+		mainPanel.add(left);
+		mainPanel.add(rightSidePanel);
+		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
 		add(mainPanel, BorderLayout.CENTER);
 	}
 	
