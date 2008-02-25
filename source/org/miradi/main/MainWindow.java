@@ -407,7 +407,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preventActionUpdates();
 		try
 		{
-			project.createOrOpen(projectDirectory);
+			int projectAction = project.createOrOpen(projectDirectory);
+			if (projectAction == Project.PROJECT_WAS_CREATED)
+				project.createDefaultHelpTextBoxDiagramFactor();
+			
 			ProjectRepairer.repairAnyProblems(project);
 			ProjectRepairer.scanForCorruptedObjects(project);
 			refreshWizard();
