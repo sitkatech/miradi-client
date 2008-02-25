@@ -69,8 +69,15 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		Dimension preferredScrollableViewportSize = new Dimension(super.getPreferredScrollableViewportSize());
-		Dimension preferredTableSize = getPreferredSize();
-		preferredScrollableViewportSize.height = Math.max(2 * getRowHeight(), preferredTableSize.height);
+		
+		int MINIMUM_VISIBLE_ROWS = 2;
+		int MAXIMUM_VISIBLE_ROWS = 6;
+
+		int height = getPreferredSize().height;
+		height = Math.max(MINIMUM_VISIBLE_ROWS * getRowHeight(), height);
+		height = Math.min(MAXIMUM_VISIBLE_ROWS * getRowHeight(), height);
+		preferredScrollableViewportSize.height = height;
+		
 		return preferredScrollableViewportSize;
 	}
 	
