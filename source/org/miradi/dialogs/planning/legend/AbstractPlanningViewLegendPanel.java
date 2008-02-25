@@ -49,8 +49,10 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		project.addCommandExecutedListener(this);
 	}
 	
+	@Override
 	public void dispose()
 	{
+		super.dispose();
 		project.removeCommandExecutedListener(this);
 	}
 	

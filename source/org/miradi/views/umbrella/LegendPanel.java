@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 import javax.swing.Icon;
@@ -17,13 +18,13 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.ObjectsAction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -38,14 +39,25 @@ import org.miradi.utils.ObjectsActionButton;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class LegendPanel extends JPanel implements ActionListener
+abstract public class LegendPanel extends DisposablePanel implements ActionListener
 {
 	public LegendPanel(Project projectToUse)
 	{
 		super(new BasicGridLayout(0, 1));
 		project = projectToUse;
 		checkBoxes = new Hashtable();
+		buttonsToDispose = new HashSet<ObjectsActionButton>();
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		for(ObjectsActionButton button : buttonsToDispose)
+		{
+			button.dispose();
+		}
 	}
 	
 	protected void saveSettingsToProject(String tag)
@@ -195,6 +207,7 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	protected void addPickerButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, ObjectsAction action, ObjectPicker picker)
 	{
 		ObjectsActionButton button = new ObjectsActionButton(action, picker);
+		buttonsToDispose.add(button);
 		button.setText(EAM.fieldLabel(objectType, objectName));
 		
 		panel.add(findCheckBox(objectName));
@@ -234,4 +247,5 @@ abstract public class LegendPanel extends JPanel implements ActionListener
 	protected static final String LAYER = "LAYER";
 	Project project;
 	protected Hashtable checkBoxes;
+	private HashSet<ObjectsActionButton> buttonsToDispose;
 }
