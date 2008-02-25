@@ -5,6 +5,7 @@
 */
 package org.miradi.views.diagram;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
@@ -23,7 +24,13 @@ public class DiagramImageCreator
 		try
 		{
 			DiagramComponent comp = getComponent(mainWindow, diagramObject);
-			return comp.getImage();
+			Rectangle bounds = comp.getCurrentUsedBounds();
+			BufferedImage image = comp.getImage();
+			
+			int imageWidth = image.getWidth() - bounds.x;
+			int imageHeight = image.getHeight() - bounds.y;
+			
+			return image.getSubimage(bounds.x, bounds.y, imageWidth, imageHeight);
 		}
 		catch(Exception e)
 		{
@@ -55,6 +62,6 @@ public class DiagramImageCreator
 	{
 		DiagramLegendPanel panel = mainWindow.getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
-		return getImage( mainWindow, diagramObject);
+		return getImage( mainWindow, diagramObject);	
 	}
 }

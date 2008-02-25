@@ -48,6 +48,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.KeyBinder;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
@@ -475,6 +476,27 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		setScale(scale);
 		getMainWindow().saveDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM, scale);
+	}
+	
+	public Rectangle getCurrentUsedBounds()
+	{
+		Rectangle bounds = null;
+		DiagramFactor[] diagramFactors = getDiagramModel().getAllDiagramFactorsAsArray();
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
+
+			Rectangle childBounds = (Rectangle) diagramFactors[i].getBounds().clone();
+			if (bounds == null)
+				bounds = childBounds;
+			
+			bounds = bounds.union(childBounds);
+		}
+		
+		if(bounds == null)
+			return new Rectangle();		
+		
+		bounds = bounds.union(getDiagramModel().getProjectScopeBox().getBounds().getBounds());
+		return bounds;
 	}
 	
 	public boolean hasLocation()
