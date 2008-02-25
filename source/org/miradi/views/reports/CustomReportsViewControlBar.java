@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 
-import javax.swing.Box;
 import javax.swing.JFileChooser;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -29,7 +28,7 @@ public class CustomReportsViewControlBar extends ReportsViewControlBar
 		customReportButton.addActionListener(new CustomReportHandler());
 		customReportButton.setAlignmentX(0.0f);
 
-		add(Box.createVerticalGlue());
+		
 		add(customReportButton);
 	}
 	
