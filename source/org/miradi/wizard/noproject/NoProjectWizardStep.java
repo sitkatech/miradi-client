@@ -45,7 +45,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		headerHtmlViewer.setText(header);
 
 		String introText = EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
-		introHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
+		WizardHtmlViewer introHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
 		introHtmlViewer.setText(introText);
 
 		JPanel headerBox = new JPanel(new BorderLayout());
@@ -60,7 +60,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	
 	public void refresh() throws Exception
 	{
-		introHtmlViewer.setText(introHtmlViewer.getText());
 		projectList.refresh();
 		getTopLevelAncestor().validate();
 	}
@@ -222,6 +221,5 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	private static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
 	private static final String DEFINITION_PREFIX = "Definition:";
 	
-	WizardHtmlViewer introHtmlViewer;
 	ProjectListPanel projectList;
 }
