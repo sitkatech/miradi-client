@@ -559,7 +559,7 @@ public class Project
 		createDefaultProjectDataObject(TncProjectData.getObjectType());
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
-		eliminateBlankConceptualModelPages();
+		ensureAllConceptualModelPagesHaveLabels();
 		ensureAllDiagramFactorsAreVisible();
 	}
 
@@ -680,7 +680,7 @@ public class Project
 		createObject(objectType);
 	}
 	
-	private void eliminateBlankConceptualModelPages() throws Exception
+	private void ensureAllConceptualModelPagesHaveLabels() throws Exception
 	{
 		ORefList diagramPageRefs = getConceptualModelDiagramPool().getORefList();
 		String defaultDiagramPageLabel = getDefaultDiagramPageName(diagramPageRefs);		
