@@ -5,6 +5,7 @@
 */ 
 package org.miradi.views.diagram;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
@@ -62,6 +63,15 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	{
 		//NOTE: this is called from the base class constructor
 		//By not calling super, we are disabling row hieght changing (saving)
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		Dimension preferredScrollableViewportSize = new Dimension(super.getPreferredScrollableViewportSize());
+		Dimension preferredTableSize = getPreferredSize();
+		preferredScrollableViewportSize.height = Math.max(2 * getRowHeight(), preferredTableSize.height);
+		return preferredScrollableViewportSize;
 	}
 	
 	public void listChanged()
