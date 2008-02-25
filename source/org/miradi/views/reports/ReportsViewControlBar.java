@@ -29,7 +29,7 @@ public abstract class ReportsViewControlBar extends Box
 	
 	private MiradiScrollPane createReportSelectionPanel(ReportSelectionTableModel standardReportTableModel)
 	{
-		ReportSelectionTable standardReportTable = new ReportSelectionTable(standardReportTableModel);
+		standardReportTable = new ReportSelectionTable(standardReportTableModel);
 		standardReportTable.getSelectionModel().addListSelectionListener(new TableSelectionListener(standardReportTable));
 
 		MiradiScrollPane scroller = new MiradiScrollPane(standardReportTable);
@@ -37,6 +37,11 @@ public abstract class ReportsViewControlBar extends Box
 		scroller.getViewport().setBackground(AppPreferences.getControlPanelBackgroundColor());
 		scroller.setAlignmentX(0.0f);
 		return scroller;
+	}
+	
+	public void clearSelection()
+	{
+		standardReportTable.clearSelection();
 	}
 	
 	protected ReportSplitPane getOwner()
@@ -68,5 +73,7 @@ public abstract class ReportsViewControlBar extends Box
 	abstract protected ReportSelectionTableModel getReportSelectionModel();
 
 	private ReportSplitPane owner;
+	private ReportSelectionTable standardReportTable;
+	
 	public static final String EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
 }
