@@ -504,18 +504,21 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpen(File projectDirectory) throws Exception
+	public int createOrOpen(File projectDirectory) throws Exception
 	{
 		clear();
-			
+		
+		int projectAction;
 		if(ProjectServer.isExistingProject(projectDirectory))
-			openProject(projectDirectory);
+			projectAction = openProject(projectDirectory);
 		else
-			createProject(projectDirectory);
+			projectAction = createProject(projectDirectory);
 		
 		writeStartingLogEntry();
-		
+	
 		finishOpening();
+		
+		return projectAction;
 	}
 
 	//TODO: need to remvoe duplicate code after test code fixed as to not need to be tested for
@@ -549,7 +552,6 @@ public class Project
 	{
 		simpleThreatFramework.createDefaultObjectsIfNeeded();
 		createDefaultConceptualModel();
-		createDefaultHelpTextBoxDiagramFactor();
 		createDefaultPlanningCustomization();
 		selectDefaultPlanningCustomization();
 		selectPlanningViewStrategicRadioButton();
@@ -620,7 +622,7 @@ public class Project
 		createObject(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 
-	private void createDefaultHelpTextBoxDiagramFactor() throws Exception
+	public void createDefaultHelpTextBoxDiagramFactor() throws Exception
 	{
 		if (getConceptualModelDiagramPool().getORefList().size() != 1)
 			return;
@@ -703,7 +705,7 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	private void openProject(File projectDirectory) throws Exception
+	private int openProject(File projectDirectory) throws Exception
 	{
 		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
@@ -728,11 +730,15 @@ public class Project
 			close();
 			throw e;
 		}
+		
+		return PROJECT_WAS_OPENED;
 	}
 	
-	private void createProject(File projectDirectory) throws Exception
+	private int createProject(File projectDirectory) throws Exception
 	{
 		getDatabase().create(projectDirectory);
+		return PROJECT_WAS_CREATED;
+		
 	}
 	
 	private void loadProjectInfo() throws IOException, ParseException
@@ -1304,6 +1310,8 @@ public class Project
 	
 	// FIXME: This should go away, but it's difficult
 	String currentViewName;
-
+	
+	public static final int PROJECT_WAS_CREATED = 100;
+	public static final int PROJECT_WAS_OPENED = 200;
 }
 
