@@ -5,10 +5,6 @@
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.actions.ActionCreateConceptualModel;
-import org.miradi.actions.ActionDeleteConceptualModel;
-import org.miradi.actions.ActionDiagramProperties;
-import org.miradi.actions.ActionRenameConceptualModel;
 import org.miradi.dialogs.diagram.ConceptualModelPoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
@@ -40,16 +36,5 @@ public class ConceptualModelPageList extends DiagramPageList
 	public int getManagedDiagramType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
-	}
-
-	public Class[] getPopUpMenuActions()
-	{
-		return  new Class[] {
-				ActionDiagramProperties.class,
-				null,
-				ActionCreateConceptualModel.class,
-				ActionRenameConceptualModel.class,
-				ActionDeleteConceptualModel.class,
-		};
 	}
 }

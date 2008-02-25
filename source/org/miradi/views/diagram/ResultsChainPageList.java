@@ -5,10 +5,6 @@
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.actions.ActionCreateResultsChain;
-import org.miradi.actions.ActionDeleteResultsChain;
-import org.miradi.actions.ActionDiagramProperties;
-import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
@@ -39,16 +35,5 @@ public class ResultsChainPageList extends DiagramPageList
 	public int getManagedDiagramType()
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
-	}
-
-	public Class[] getPopUpMenuActions()
-	{
-		return  new Class[] {
-				ActionDiagramProperties.class,
-				null,
-				ActionCreateResultsChain.class,
-				ActionRenameResultsChain.class,
-				ActionDeleteResultsChain.class,
-		};
 	}
 }

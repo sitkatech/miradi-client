@@ -8,16 +8,20 @@ package org.miradi.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
+import org.martus.swing.UiPopupMenu;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -115,6 +119,10 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		Border newBorder = BorderFactory.createCompoundBorder(cushion, selectionScrollPane.getBorder());
 		selectionScrollPane.setBorder(newBorder);
 		selectionScrollPane.setMinimumSize(new Dimension(0,0));
+		
+		MouseHandler rightClickMouseHandler = new MouseHandler();
+		selectionScrollPane.addMouseListener(rightClickMouseHandler);
+		selectionPanel.addMouseListener(rightClickMouseHandler);
 
 		legendPanel = createLegendPanel(mainWindow);
 		scrollableLegendPanel = new MiradiScrollPane(legendPanel);
@@ -437,6 +445,50 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		return mainWindow;
 	}
+	
+	public class MouseHandler extends MouseAdapter
+	{
+		public void mousePressed(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+
+		public void mouseReleased(MouseEvent event)
+		{
+			if(event.isPopupTrigger())
+				doRightClickMenu(event);
+		}
+		
+		private void doRightClickMenu(MouseEvent event)
+		{
+			handleRightClick(event);
+		}
+	}
+	
+	private void handleRightClick(MouseEvent event)
+	{
+		JPopupMenu menu = getPopupMenu();
+		getMainWindow().getActions().updateActionStates();
+		menu.show(this, event.getX(), event.getY());
+	}
+	
+	public JPopupMenu getPopupMenu()
+	{
+		UiPopupMenu menu = new UiPopupMenu();
+		Class[] rightClickMenuActions = getPopUpMenuActions();
+		for (int i = 0; i < rightClickMenuActions.length; ++i)
+		{
+			if(rightClickMenuActions[i] == null)
+				menu.addSeparator();
+			else
+				menu.add(getMainWindow().getActions().get(rightClickMenuActions[i]));
+		}
+
+		return menu;
+	}
+	
+	abstract public Class[] getPopUpMenuActions();
 	
 	abstract public DiagramPageList createPageList(MainWindow mainWindowToUse);
 	

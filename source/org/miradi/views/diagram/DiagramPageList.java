@@ -6,21 +6,16 @@
 package org.miradi.views.diagram;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.InputMap;
-import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.martus.swing.UiPopupMenu;
-import org.miradi.actions.Actions;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectPoolTable;
@@ -39,10 +34,8 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	{
 		super(objectPoolTableModel, SORTABLE_COLUMN_INDEX);
 		project = mainWindowToUse.getProject();
-		actions = mainWindowToUse.getActions();
 		
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
-		addMouseListener(new MouseHandler());
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -110,54 +103,12 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		return getCurrentDiagramViewDataRef(viewData, getManagedDiagramType());
 	}
 	
-	public JPopupMenu getPopupMenu()
-	{
-		UiPopupMenu menu = new UiPopupMenu();
-		Class[] rightClickMenuActions = getPopUpMenuActions();
-		for (int i = 0; i < rightClickMenuActions.length; ++i)
-		{
-			if(rightClickMenuActions[i] == null)
-				menu.addSeparator();
-			else
-				menu.add(getActions().get(rightClickMenuActions[i]));
-		}
-
-		return menu;
-	}
-
-	private void handleRightClick(MouseEvent event)
-	{
-		JPopupMenu menu = getPopupMenu();
-		getActions().updateActionStates();
-		menu.show(this, event.getX(), event.getY());
-	}
-	
 	public static ORef getCurrentDiagramViewDataRef(ViewData viewData, int objectType) throws Exception
 	{
 		String currrentDiagramViewDataTag = getCurrentDiagramViewDataTag(objectType);
 		String orefAsJsonString = viewData.getData(currrentDiagramViewDataTag);
 		
 		return ORef.createFromString(orefAsJsonString);
-	}
-	
-	public class MouseHandler extends MouseAdapter
-	{
-		public void mousePressed(MouseEvent event)
-		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
-		}
-
-		public void mouseReleased(MouseEvent event)
-		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
-		}
-		
-		private void doRightClickMenu(MouseEvent event)
-		{
-			handleRightClick(event);
-		}
 	}
 	
 	public class DiagramObjectListSelectionListener  implements ListSelectionListener
@@ -223,21 +174,13 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		return false;
 	}
 	
-	private Actions getActions()
-	{
-		return actions;
-	}
-	
 	abstract public boolean isResultsChainPageList();
 	
 	abstract public boolean isConceptualModelPageList();
 	
 	abstract public int getManagedDiagramType();
 	
-	abstract public Class[] getPopUpMenuActions();
-	
 	private Project project;
-	private Actions actions;
-	
+
 	private static final int SORTABLE_COLUMN_INDEX = 0;
 }
