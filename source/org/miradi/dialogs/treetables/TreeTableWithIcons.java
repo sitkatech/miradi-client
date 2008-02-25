@@ -458,6 +458,9 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 
 	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
 	{
+		if(selectedRef == null || selectedRef.isInvalid())
+			return;
+		
 		SwingUtilities.invokeLater(new Reselecter(this, selectedRef));
 	}
 	
