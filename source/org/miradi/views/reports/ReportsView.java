@@ -41,14 +41,17 @@ public class ReportsView extends TabbedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		reportSplitPane.restoreSavedLocation();
+		standardReportSplitPane.restoreSavedLocation();
+		customReportSplitPane.restoreSavedLocation();
 	}
 	
 	public void createTabs() throws Exception
 	{
-		reportSplitPane = new ReportSplitPane(getMainWindow());
+		standardReportSplitPane = new StandardReportSplitPane(getMainWindow());
+		customReportSplitPane = new CustomReportSplitPane(getMainWindow());
 
-		addTab(EAM.text("Reports"), reportSplitPane);
+		addTab(EAM.text("Standard Reports"), standardReportSplitPane);
+		addTab(EAM.text("Custom Reports"), customReportSplitPane);
 	}
 
 	public void deleteTabs() throws Exception
@@ -56,5 +59,6 @@ public class ReportsView extends TabbedView
 		// lightweight tabs...nothing to dispose yet
 	}
 	
-	private ReportSplitPane reportSplitPane;
+	private StandardReportSplitPane standardReportSplitPane;
+	private CustomReportSplitPane customReportSplitPane;
 }
