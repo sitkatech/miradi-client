@@ -371,13 +371,16 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void handleDiagramLinkContentsChange(CommandSetObjectData commandSetObjectData) throws Exception
 	{
-		if(!commandSetObjectData.getFieldTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
-			return;
-		
 		DiagramModel diagramModel = getDiagramModel();
 		if(diagramModel == null)
 			return;
 
+		if (commandSetObjectData.getFieldTag().equals(DiagramLink.TAG_BEND_POINTS))
+			getDiagramModel().updateGroupBoxCells();
+
+		if(!commandSetObjectData.getFieldTag().equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return;
+		
 		diagramModel.updateVisibilityOfFactorsAndLinks();
 	}
 

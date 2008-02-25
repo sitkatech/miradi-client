@@ -22,13 +22,16 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.DiagramModelEvent;
 import org.miradi.diagram.DiagramModelListener;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.PointList;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
@@ -135,24 +138,43 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	{
 		Rectangle bounds = null;
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
-		for (int i = 0; i < groupBoxChildren.size(); ++i)
+		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
 		{
-			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(i));
+			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(childIndex));
 			Rectangle childBounds = (Rectangle) groupBoxChild.getBounds().clone();
 			if (bounds == null)
 				bounds = childBounds;
 			
 			bounds = bounds.union(childBounds);
+			includeBendPointsInBounds(bounds, groupBoxChildren, groupBoxChild.getWrappedORef());
 		}
 		
 		if(bounds == null)
-			return new Rectangle();
+			return new Rectangle();		
 
 		double height = bounds.getHeight();
 		double y = bounds.getY();
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
+	}
+
+	private void includeBendPointsInBounds(Rectangle bounds, ORefList groupBoxChildren, ORef fromRef)
+	{
+		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
+		{	
+			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(childIndex));
+			ORef toRef = groupBoxChild.getWrappedORef();
+			if (model.areLinked(fromRef, toRef))
+			{
+				DiagramLink diagramLink = model.getDiagramLink(fromRef, toRef);
+				PointList bendPoints = diagramLink.getBendPoints();
+				for (int bendPointIndex = 0; bendPointIndex < bendPoints.size(); ++bendPointIndex)
+				{
+					bounds.add(bendPoints.get(bendPointIndex));
+				}
+			}
+		}
 	}
 	
 	public void factorAdded(DiagramModelEvent event)
