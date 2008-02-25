@@ -8,19 +8,19 @@ package org.miradi.views.reports;
 import java.net.URL;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogs.planning.legend.ControlPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.Miradi;
 import org.miradi.utils.MiradiScrollPane;
 
-public abstract class ReportsViewControlBar extends Box
+public abstract class ReportsViewControlBar extends ControlPanel
 {
 	public ReportsViewControlBar(ReportSplitPane ownerToUse)
 	{
-		super(BoxLayout.PAGE_AXIS);
+		super();
 
 		owner = ownerToUse;
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
