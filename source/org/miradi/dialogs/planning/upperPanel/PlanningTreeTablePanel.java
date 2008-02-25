@@ -3,7 +3,7 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.dialogs.planning;
+package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
 import java.awt.event.MouseWheelEvent;
@@ -27,12 +27,6 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewBudgetAnnualTotalsTable;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewFutureStatusTable;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewFutureStatusTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMeasurementTable;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.main.AppPreferences;

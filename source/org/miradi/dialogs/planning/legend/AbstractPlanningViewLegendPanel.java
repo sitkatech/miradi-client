@@ -18,7 +18,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
-import org.miradi.dialogs.planning.PlanningTreeTable;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;

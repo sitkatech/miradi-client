@@ -11,7 +11,7 @@ import org.miradi.actions.ActionTreeCreateActivityIconOnly;
 import org.miradi.actions.ActionTreeCreateMethodIconOnly;
 import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.planning.PlanningTreeTable;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;

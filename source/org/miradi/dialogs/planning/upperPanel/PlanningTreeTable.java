@@ -3,7 +3,7 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.dialogs.planning;
+package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 import java.awt.Dimension;

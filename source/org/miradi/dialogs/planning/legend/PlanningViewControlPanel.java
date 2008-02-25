@@ -15,7 +15,7 @@ import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.planning.PlanningTreeTable;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
