@@ -28,15 +28,15 @@ import org.miradi.project.Project;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 
-public class ReportSplitPane extends PersistentHorizontalSplitPane
+public abstract class ReportSplitPane extends PersistentHorizontalSplitPane
 {
-	public ReportSplitPane(MainWindow mainWindowToUse) throws Exception
+	public ReportSplitPane(MainWindow mainWindowToUse, String uniqueSpitterName) throws Exception
 	{
-		super(mainWindowToUse, mainWindowToUse, UNIQUE_SPLITTER_NAME);
+		super(mainWindowToUse, mainWindowToUse, uniqueSpitterName);
 		
 		mainWindow = mainWindowToUse;
 		
-		setLeftComponent(new ReportsViewControlBar(this));
+		setLeftComponent(getReportControlBar());
 		setRightComponent(new MiradiPanel());
 		
 		// Need to set background color because Control Bar is a box which is transparent
@@ -74,7 +74,7 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 	public void showReport(URL value)
 	{
 		Cursor cursor = getMainWindow().getCursor();
-		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		getMainWindow().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
 		{
 			setRightComponent(createReportPanel(value));
@@ -87,21 +87,21 @@ public class ReportSplitPane extends PersistentHorizontalSplitPane
 		}
 		finally
 		{
-			mainWindow.setCursor(cursor);
+			getMainWindow().setCursor(cursor);
 		}
 	}
 
-	private Project getProject()
+	protected Project getProject()
 	{
 		return getMainWindow().getProject();
 	}
 	
-	public MainWindow getMainWindow()
+	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
 	
-	private MainWindow mainWindow;
+	abstract protected ReportsViewControlBar getReportControlBar();
 	
-	private static final String UNIQUE_SPLITTER_NAME = "ReportSplitPaneName";
+	private MainWindow mainWindow;
 }
