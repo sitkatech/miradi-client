@@ -37,14 +37,6 @@ public class ReportsView extends TabbedView
 		return new ReportToolBar(getActions());
 	}
 
-	@Override
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		standardReportSplitPane.restoreSavedLocation();
-		customReportSplitPane.restoreSavedLocation();
-	}
-	
 	public void createTabs() throws Exception
 	{
 		standardReportSplitPane = new StandardReportSplitPane(getMainWindow());
@@ -66,6 +58,8 @@ public class ReportsView extends TabbedView
 		
 		standardReportSplitPane.clear();
 		customReportSplitPane.clear();
+		standardReportSplitPane.restoreSavedLocation();
+		customReportSplitPane.restoreSavedLocation();
 	}
 	
 	private StandardReportSplitPane standardReportSplitPane;
