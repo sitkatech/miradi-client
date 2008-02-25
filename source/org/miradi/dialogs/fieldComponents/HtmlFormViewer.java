@@ -65,6 +65,8 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		addHyperlinkListener(this);
 		addMouseListener(this);
 		copyAction = new EditorActionCopy(mainWindow);
+		
+		setBorder(null);
 	}
 	
 	public int getFontSize()
