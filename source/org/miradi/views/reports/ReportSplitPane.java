@@ -36,11 +36,17 @@ public abstract class ReportSplitPane extends PersistentHorizontalSplitPane
 		
 		mainWindow = mainWindowToUse;
 		
-		setLeftComponent(getReportControlBar());
-		setRightComponent(new MiradiPanel());
+		clear();
 		
 		// Need to set background color because Control Bar is a box which is transparent
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
+	}
+	
+	public void clear()
+	{
+		setLeftComponent(getReportControlBar());
+		setRightComponent(new MiradiPanel());
+		getReportControlBar().clearSelection();
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception

@@ -59,6 +59,15 @@ public class ReportsView extends TabbedView
 		// lightweight tabs...nothing to dispose yet
 	}
 	
+	@Override
+	public void prepareForTabSwitch()
+	{
+		super.prepareForTabSwitch();
+		
+		standardReportSplitPane.clear();
+		customReportSplitPane.clear();
+	}
+	
 	private StandardReportSplitPane standardReportSplitPane;
 	private CustomReportSplitPane customReportSplitPane;
 }

@@ -12,6 +12,8 @@ public class CustomReportSplitPane extends ReportSplitPane
 	public CustomReportSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse, getUniqueSplitterName());
+		
+		controlBar = new CustomReportsViewControlBar(this);
 	}
 
 	private static String getUniqueSplitterName()
@@ -21,8 +23,10 @@ public class CustomReportSplitPane extends ReportSplitPane
 	
 	protected ReportsViewControlBar getReportControlBar()
 	{
-		return new CustomReportsViewControlBar(this);
+		return controlBar;
 	}
 	
 	private static final String UNIQUE_SPLITTER_NAME = "CustomReportSplitPane";
+	
+	private CustomReportsViewControlBar controlBar; 
 }
