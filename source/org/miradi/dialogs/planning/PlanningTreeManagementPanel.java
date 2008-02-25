@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;

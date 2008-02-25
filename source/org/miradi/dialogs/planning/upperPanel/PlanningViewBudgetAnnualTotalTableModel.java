@@ -3,11 +3,12 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.dialogs.planning.propertiesPanel;
+package org.miradi.dialogs.planning.upperPanel;
 
 import java.text.DecimalFormat;
 import java.util.Vector;
 
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
