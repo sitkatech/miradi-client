@@ -25,6 +25,7 @@ public abstract class ReportsViewControlBar extends Box
 		owner = ownerToUse;
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		add(createReportSelectionPanel(getReportSelectionModel()));
+		add(Box.createVerticalGlue());
 	}
 	
 	private MiradiScrollPane createReportSelectionPanel(ReportSelectionTableModel standardReportTableModel)
