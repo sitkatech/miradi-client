@@ -51,6 +51,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 		"  .definition {font-style: italics; font-size: 100%;}",
 		"  .intro {font-size: 110%;}",
 		"  .introdefinition {font-style: italics; font-size: 110%;}",
+		"  .indented {margin: 10pt;}",
 		"  .LogoHeader {" + 
 			"background-color: " + AppPreferences.getWizardTitleBackgroundColorForCss() + ";}",
 		"  .processsteptitle {" +
