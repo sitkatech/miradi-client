@@ -43,7 +43,7 @@
 			</band>
 		</background>
 		<title>
-			<band height="86"  isSplitAllowed="true" >
+			<band height="102"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						style="TopicHeading"
@@ -51,27 +51,14 @@
 						y="27"
 						width="108"
 						height="17"
-						key="staticText-1"/>
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Introduction]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="44"
-						width="535"
-						height="41"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["This document contains the current plan for the " + $F{ProjectName} + " project.  It was developed following the Conservation Measures Partnership’s Open Standards for the Practice of Conservation using Miradi Adaptive Management Software (www.miradi.org).  Please note that this report only tracks the steps in the Open Standards that are currently supported by Miradi; other information will be added in the future"]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement
 						x="137"
@@ -86,11 +73,11 @@
 					</textElement>
 				<text><![CDATA[Project Plan for]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="237"
 						y="1"
-						width="168"
+						width="268"
 						height="20"
 						key="textField-2"
 						positionType="Float"/>
@@ -99,6 +86,20 @@
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="48"
+						width="535"
+						height="54"
+						key="textField-4"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["This document contains the plan for our project.  It was developed following the Conservation Measures Partnership’s Open Standards for the Practice of Conservation using Miradi Adaptive Management Software (www.miradi.org).  Please note that this report only tracks the steps in the Open Standards that are currently supported by Miradi; other information will be added in the future"]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
