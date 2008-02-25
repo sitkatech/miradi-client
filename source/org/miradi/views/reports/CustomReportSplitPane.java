@@ -21,7 +21,7 @@ public class CustomReportSplitPane extends ReportSplitPane
 	
 	protected ReportsViewControlBar getReportControlBar()
 	{
-		return new ReportsViewControlBar(this);
+		return new CustomReportsViewControlBar(this);
 	}
 	
 	private static final String UNIQUE_SPLITTER_NAME = "CustomReportSplitPane";
