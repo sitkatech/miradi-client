@@ -33,7 +33,7 @@ import org.miradi.wizard.SkeletonWizardStep;
 import org.miradi.wizard.WizardHtmlViewer;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
-import org.miradi.wizard.noproject.projectlist.ProjectListPanel;
+import org.miradi.wizard.noproject.projectlist.TreeBasedProjectList;
 
 public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListener
 {
@@ -52,7 +52,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		headerBox.add(introHtmlViewer, BorderLayout.CENTER);
 		add(headerBox, BorderLayout.BEFORE_FIRST_LINE);
 
-		projectList = new ProjectListPanel(getMainWindow(), this);
+		projectList = new TreeBasedProjectList(getMainWindow(), this);
 		
 		setBackground(AppPreferences.getWizardBackgroundColor());
 	}
@@ -225,5 +225,5 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	private static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
 	private static final String DEFINITION_PREFIX = "Definition:";
 	
-	ProjectListPanel projectList;
+	TreeBasedProjectList projectList;
 }

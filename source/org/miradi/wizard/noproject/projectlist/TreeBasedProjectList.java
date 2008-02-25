@@ -16,6 +16,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiButton;
 import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
@@ -36,11 +37,13 @@ public class TreeBasedProjectList extends JPanel
 
 		actions.add(new ProjectListOpenAction(table));
 		actions.add(new ProjectListRenameAction(table));
+		actions.add(new ProjectListDeleteAction(table));
 		actions.add(new ProjectListCopyToAction(table));
 		actions.add(new ProjectListExportAction(table));
-		actions.add(new ProjectListDeleteAction(table));
 		
 		OneRowPanel buttonBar = new OneRowPanel();
+		buttonBar.setBackground(AppPreferences.getWizardBackgroundColor());
+		buttonBar.setGaps(3);
 		for(Action action : actions)
 		{
 			buttonBar.add(new UiButton(action));		
