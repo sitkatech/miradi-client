@@ -23,6 +23,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.dialogs.fieldComponents.HtmlPanelLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -38,6 +39,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
@@ -205,7 +207,10 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		private void showFoundReloadedDiagram(ORef ref) throws Exception
 		{
 			if (ref.isInvalid())
+			{
+				displayResultsChainHelpText();
 				return;
+			}
 			
 			//FIXME nima,  why does loading all the cards work (shows newly created RC)
 			reloadDiagramCards(ref.getObjectType());
@@ -214,6 +219,23 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 				add(diagramComponent);
 		}
 		
+		private void displayResultsChainHelpText()
+		{
+			if (!selectionPanel.isResultsChainPageList())
+				return;
+			
+			try
+			{
+				String html = EAM.loadResourceFile(ResourcesHandler.class, "ResultsChainHelp.html");
+				add(new HtmlPanelLabel(getMainWindow(), html, null));
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}	
+
+		}
+
 		public void addDiagram(DiagramComponent diagramComponent)
 		{
 			cards.add(diagramComponent);
@@ -409,6 +431,11 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			return viewData.getCurrentResutlstChainRef();
 		
 		return ORef.INVALID;
+	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	abstract public DiagramPageList createPageList(MainWindow mainWindowToUse);
