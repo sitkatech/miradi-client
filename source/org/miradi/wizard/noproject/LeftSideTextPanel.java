@@ -24,7 +24,7 @@ public class LeftSideTextPanel extends JPanel
 		viewer = new WizardHtmlViewer(mainWindow, wizardToUse);
 		viewer.setText(html);
 
-		add(viewer, BorderLayout.BEFORE_FIRST_LINE);
+		add(viewer, BorderLayout.CENTER);
 	}
 	
 	public void refresh() throws Exception

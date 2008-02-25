@@ -8,6 +8,7 @@ package org.miradi.wizard.noproject;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.miradi.actions.ActionImportZippedProjectFile;
@@ -31,12 +32,14 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
 		left.add(projectList, BorderLayout.CENTER);
 		
-		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 20, 0));
-		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
-		mainPanel.add(left);
 		JPanel rightSidePanel = new JPanel();
 		rightSidePanel.setBackground(AppPreferences.getWizardBackgroundColor());
+
+		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 60, 0));
+		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
+		mainPanel.add(left);
 		mainPanel.add(rightSidePanel);
+		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		
 		add(mainPanel, BorderLayout.CENTER);
 	}
