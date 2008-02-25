@@ -32,23 +32,27 @@ public class ReportsViewControlBar extends Box
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 		owner = ownerToUse;
 		
-		standardReportTableModel = new StandardReportsTableModel();
-		standardReportTable = new ReportSelectionTable(standardReportTableModel);
-		standardReportTable.getSelectionModel().addListSelectionListener(new TableSelectionListener());
-
-		MiradiScrollPane scroller = new MiradiScrollPane(standardReportTable);
-		scroller.setBackground(AppPreferences.getControlPanelBackgroundColor());
-		scroller.getViewport().setBackground(AppPreferences.getControlPanelBackgroundColor());
-		scroller.setAlignmentX(0.0f);
+		MiradiScrollPane standardReportPanel = createReportSelectionPanel(new StandardReportsTableModel());
 		
 		PanelButton customReportButton = new PanelButton(EAM.text("Run External Report..."));
 		customReportButton.setMinimumSize(new Dimension(0, 0));
 		customReportButton.addActionListener(new CustomReportHandler());
 		customReportButton.setAlignmentX(0.0f);
 
-		add(scroller);
+		add(standardReportPanel);
 		add(Box.createVerticalGlue());
 		add(customReportButton);
+	}
+	private MiradiScrollPane createReportSelectionPanel(ReportSelectionTableModel standardReportTableModel)
+	{
+		ReportSelectionTable standardReportTable = new ReportSelectionTable(standardReportTableModel);
+		standardReportTable.getSelectionModel().addListSelectionListener(new TableSelectionListener(standardReportTable));
+
+		MiradiScrollPane scroller = new MiradiScrollPane(standardReportTable);
+		scroller.setBackground(AppPreferences.getControlPanelBackgroundColor());
+		scroller.getViewport().setBackground(AppPreferences.getControlPanelBackgroundColor());
+		scroller.setAlignmentX(0.0f);
+		return scroller;
 	}
 
 	public class CustomReportHandler implements ActionListener
@@ -100,20 +104,26 @@ public class ReportsViewControlBar extends Box
 	
 	public class TableSelectionListener implements ListSelectionListener
 	{
+		public TableSelectionListener(ReportSelectionTable tableToListenTo)
+		{
+			table = tableToListenTo;
+		}
+		
 		public void valueChanged(ListSelectionEvent event)
 		{
-			int selectedRow = standardReportTable.getSelectedRow();
-			String reportPath = standardReportTableModel.getReportDirForRow(selectedRow);
-
+			int selectedRow = table.getSelectedRow();
+			if(selectedRow < 0)
+				return;
+			
+			String reportPath = table.getReportDirForRow(selectedRow);
 			URL reportURL = Miradi.class.getResource(reportPath);
 			owner.showReport(reportURL);
 		}
 
+		private ReportSelectionTable table;
 	}
 
 	private ReportSplitPane owner;
-	private ReportSelectionTableModel standardReportTableModel;
-	private ReportSelectionTable standardReportTable;
 	public static final String EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";
 	
 }
