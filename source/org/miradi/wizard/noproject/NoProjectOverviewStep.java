@@ -52,11 +52,18 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		add(mainPanel, BorderLayout.CENTER);
 	}
 	
+	@Override
 	public void refresh() throws Exception
 	{
 		super.refresh();
 		leftTop.refresh();
 		projectList.refresh();
+	}
+
+	@Override
+	protected String getTextBelowLogo() throws Exception
+	{
+		return EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
 	}
 	
 	LeftSideTextPanel leftTop;
