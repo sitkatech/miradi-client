@@ -85,7 +85,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="61"  isSplitAllowed="true" >
+			<band height="60"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
@@ -102,7 +102,7 @@
 				</subreport>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="137"
+						x="135"
 						y="40"
 						width="140"
 						height="20"
