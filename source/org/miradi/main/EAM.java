@@ -496,7 +496,7 @@ public class EAM
 	public static String NEWLINE = System.getProperty("line.separator");
 	private static MainWindow mainWindow;
 	public static String PROJECT_EXTENSION = ".eam";
-	public static final Color READONLY_BACKGROUND_COLOR = Color.LIGHT_GRAY;
+	public static final Color READONLY_BACKGROUND_COLOR = new Color(217, 217, 217);
 	public static final Color READONLY_FOREGROUND_COLOR = Color.black;
 	public static final Color EDITABLE_BACKGROUND_COLOR = Color.WHITE;
 	public static final Color EDITABLE_FOREGROUND_COLOR = Color.BLUE;
