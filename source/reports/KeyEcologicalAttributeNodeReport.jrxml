@@ -59,7 +59,7 @@
 			<band height="35"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="55"
+						x="54"
 						y="0"
 						width="221"
 						height="20"
