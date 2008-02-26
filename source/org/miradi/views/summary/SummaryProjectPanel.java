@@ -7,6 +7,7 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.EAM;
@@ -47,4 +48,9 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		return new MiradiApplicationIcon();
 	}
 	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionViewSummary.class;
+	}
 }
