@@ -33,7 +33,13 @@ public class FactorPropertiesDialog extends ModelessDialogWithClose
 
 	protected Class getJumpAction()
 	{
-		return ((ModelessDialogPanel)factorPanel.tabs.getSelectedComponent()).getJumpActionClass();
+		if(factorPanel == null)
+			return null;
+		
+		ModelessDialogPanel selectedComponent = (ModelessDialogPanel)factorPanel.tabs.getSelectedComponent();
+		if(selectedComponent == null)
+			return null;
+		return selectedComponent.getJumpActionClass();
 	}
 	
 	FactorPropertiesPanel factorPanel;

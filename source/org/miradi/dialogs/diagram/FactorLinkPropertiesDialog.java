@@ -27,6 +27,9 @@ public class FactorLinkPropertiesDialog extends ModelessDialogWithClose
 
 	protected Class getJumpAction()
 	{
+		if(factorPanel == null)
+			return null;
+		
 		return factorPanel.getJumpActionClass();
 	}
 	
