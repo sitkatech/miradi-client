@@ -81,8 +81,9 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		return buttonBar;
 	}
 	
-	public void addAdditionalButtons(Box buttonBarToUse)
+	public void addAdditionalButtons(Box buttonBar)
 	{
+		createDirectionsButton(buttonBar);
 	}
 	
 	

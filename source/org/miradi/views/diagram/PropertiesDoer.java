@@ -7,6 +7,8 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 
+import javax.swing.Box;
+
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -20,6 +22,7 @@ import org.miradi.dialogs.diagram.ProjectScopePanel;
 import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -90,11 +93,25 @@ public class PropertiesDoer extends LocationDoer
 		
 		return false;
 	}
+	
+	class ScopePropertiesDialog extends ModelessDialogWithClose
+	{
+		public ScopePropertiesDialog(MainWindow parent, ProjectScopePanel panel)
+		{
+			super(parent, panel, panel.getPanelDescription());
+		}
+		
+		@Override
+		public void addAdditionalButtons(Box buttonBarToUse)
+		{
+			super.addAdditionalButtons(buttonBarToUse);
+		}
+	}
 
 	void doProjectScopeProperties() throws CommandFailedException
 	{
 		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescription()); 
+		ScopePropertiesDialog dlg = new ScopePropertiesDialog(getMainWindow(), projectScopePanel); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
