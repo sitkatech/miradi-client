@@ -904,6 +904,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public void selectionWasChanged()
 	{
+		closeActivePropertiesDialog();
 		if(nodePropertiesDlg == null)
 			return;
 		
