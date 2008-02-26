@@ -7,6 +7,7 @@ package org.miradi.dialogs.indicator;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.layout.OneColumnGridLayout;
@@ -48,6 +49,12 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 	public Icon getIcon()
 	{
 		return managementPanel.getIcon();
+	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 	
 	private FactorPropertiesViabilityTreeManagementPanel managementPanel;

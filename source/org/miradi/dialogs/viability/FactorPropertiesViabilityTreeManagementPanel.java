@@ -6,6 +6,7 @@
 package org.miradi.dialogs.viability;
 
 import org.miradi.actions.Actions;
+import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -23,6 +24,12 @@ public class FactorPropertiesViabilityTreeManagementPanel extends TargetViabilit
 	public String getSplitterDescription()
 	{
 		return PANEL_DESCRIPTION_INDICATORS + SPLITTER_TAG;
+	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpMonitoringWizardDefineIndicatorsStep.class;
 	}
 
 	private static String PANEL_DESCRIPTION_INDICATORS = EAM.text("Tab|Indicators"); 
