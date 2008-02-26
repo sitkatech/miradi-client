@@ -297,6 +297,11 @@ public class FactorLink extends BaseObject
 		
 		Target target = Target.find(getProject(), targetRef);
 		Cause cause = Cause.find(getProject(), threatRef);
+		
+		//NOTE, this test exist for corrupted projects
+		if (target == null || cause == null)
+			return;
+			
 		writeRating(out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
 		writeRating(out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
 		
