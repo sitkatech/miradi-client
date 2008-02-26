@@ -171,7 +171,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<text><![CDATA[RARE@]]></text>
+				<text><![CDATA[RARE]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
