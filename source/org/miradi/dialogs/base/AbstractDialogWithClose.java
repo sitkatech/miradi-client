@@ -129,8 +129,12 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		
 		public void doAction() throws CommandFailedException
 		{
-			if (getJumpAction()!=null)
-				mainWindow.getActions().get(getJumpAction()).doAction();
+			Class jumpAction = getJumpAction();
+			if (jumpAction != null)
+			{
+				EAMAction action = mainWindow.getActions().get(jumpAction);
+				action.doAction();
+			}
 		}
 		
 		public Doer getDoer()

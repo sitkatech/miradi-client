@@ -8,6 +8,7 @@ package org.miradi.dialogs.stress;
 import javax.swing.Icon;
 
 import org.miradi.actions.Actions;
+import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.EAM;
@@ -40,7 +41,7 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 	
 	public Class getJumpActionClass()
 	{
-		return null;
+		return ActionJumpTargetStressesStep.class;
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Stresses"); 

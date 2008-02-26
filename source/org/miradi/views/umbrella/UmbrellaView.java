@@ -91,6 +91,7 @@ import org.miradi.actions.jump.ActionJumpDocument;
 import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.actions.jump.ActionJumpFinancialOverviewStep;
 import org.miradi.actions.jump.ActionJumpGroundTruthRevise;
+import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
@@ -353,6 +354,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDiagramWizardProjectScopeStep.class);
 		addJumpDoerToMap(ActionJumpTargetViabilityMethodChoiceStep.class);
 		addJumpDoerToMap(ActionJumpTargetViability3Step.class);
+		addJumpDoerToMap(ActionJumpTargetStressesStep.class);
 		
 		addJumpDoerToMap(ActionJumpDiagramWizardIdentifyDirectThreatStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class);
