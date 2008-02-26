@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogs.diagram;
 
+import org.miradi.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
@@ -28,4 +29,9 @@ public class ProjectScopePanel extends ObjectDataInputPanel
 		return EAM.text("Title|Project Scope Properties");
 	}
 
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpDiagramWizardProjectScopeStep.class;
+	}
 }

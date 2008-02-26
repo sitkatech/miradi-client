@@ -14,4 +14,15 @@ public class ModelessDialogWithClose extends AbstractDialogWithClose
 		super(parent, panel, headingText);
 		setModal(false);
 	}
+	
+	@Override
+	protected Class getJumpAction()
+	{
+		return getMainPanel().getJumpActionClass();
+	}
+	
+	protected DisposablePanel getMainPanel()
+	{
+		return (DisposablePanel)getWrappedPanel();
+	}
 }
