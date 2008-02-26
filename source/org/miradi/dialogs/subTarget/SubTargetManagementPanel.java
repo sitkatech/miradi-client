@@ -8,6 +8,7 @@ package org.miradi.dialogs.subTarget;
 import javax.swing.Icon;
 
 import org.miradi.actions.Actions;
+import org.miradi.actions.jump.ActionJumpDiagramWizardReviewAndModifyTargetsStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.SubTargetIcon;
 import org.miradi.main.EAM;
@@ -31,6 +32,14 @@ public class SubTargetManagementPanel extends ObjectListManagementPanel
 	{
 		return new SubTargetIcon();
 	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		// TODO Auto-generated method stub
+		return ActionJumpDiagramWizardReviewAndModifyTargetsStep.class;
+	}
+
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Nested Targets"); 
 }
