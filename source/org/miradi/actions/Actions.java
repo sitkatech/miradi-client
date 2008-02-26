@@ -47,7 +47,7 @@ import org.miradi.actions.jump.ActionJumpDocument;
 import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.miradi.actions.jump.ActionJumpGroundTruthRevise;
-import org.miradi.actions.jump.ActionJumpIdentifyStresses;
+import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.actions.jump.ActionJumpImplementStrategicAndMonitoringPlans;
 import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
@@ -252,7 +252,7 @@ public class Actions
 		registerAction(new ActionJumpDiagramWizardReviewAndModifyTargetsStep(mainWindow));
 		registerAction(new ActionJumpTargetViabilityMethodChoiceStep(mainWindow));
 		registerAction(new ActionJumpTargetViability3Step(mainWindow));
-		registerAction(new ActionJumpIdentifyStresses(mainWindow));
+		registerAction(new ActionJumpTargetStressesStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyDirectThreatStep(mainWindow));
 		registerAction(new ActionJumpThreatMatrixOverviewStep(mainWindow));
 		registerAction(new ActionJumpDiagramWizardIdentifyIndirectThreatStep(mainWindow));

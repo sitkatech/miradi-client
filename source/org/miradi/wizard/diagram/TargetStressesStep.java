@@ -5,7 +5,7 @@
 */ 
 package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpIdentifyStresses;
+import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
@@ -24,6 +24,6 @@ public class TargetStressesStep extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpIdentifyStresses.class;
+		return ActionJumpTargetStressesStep.class;
 	}
 }

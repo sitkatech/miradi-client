@@ -9,9 +9,9 @@ import org.miradi.actions.MainWindowAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpIdentifyStresses extends MainWindowAction
+public class ActionJumpTargetStressesStep extends MainWindowAction
 {
-	public ActionJumpIdentifyStresses(MainWindow mainWindowToUse)
+	public ActionJumpTargetStressesStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
