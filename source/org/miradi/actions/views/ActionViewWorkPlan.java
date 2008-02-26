@@ -18,12 +18,12 @@ public class ActionViewWorkPlan extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Work Plan");
+		return EAM.text("Action|Develop Work Plan");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Work Plan View");
+		return EAM.text("TT|Develop a short-term work plan");
 	}
 	
 	public String toString()
