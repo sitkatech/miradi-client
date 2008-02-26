@@ -19,13 +19,13 @@ import javax.swing.JPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 import org.miradi.actions.EAMAction;
+import org.miradi.actions.MainWindowAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.views.Doer;
 
 abstract public class AbstractDialogWithClose extends EAMDialog implements WindowListener
 {
@@ -43,6 +43,14 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 		Utilities.fitInScreen(this);
 		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(this);
+	}
+	
+	@Override
+	public void setVisible(boolean b)
+	{
+		if(b)
+			updateDirectionsEnabledState();
+		super.setVisible(b);
 	}
 
 	protected JComponent createMainPanel()
@@ -107,11 +115,17 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	
 	protected void createDirectionsButton(Box buttonBarToUse)
 	{
-		UiButton  help = new PanelButton(new ActionDirections());
+		actionDirections = new ActionDirections(mainWindow);
+		UiButton  help = new PanelButton(actionDirections);
 		Component[] components = new Component[] {help};
 		Utilities.addComponentsRespectingOrientation(buttonBarToUse, components);
 	}
 	
+	public void updateDirectionsEnabledState()
+	{
+		actionDirections.updateEnabledState();
+	}
+
 	protected Class getJumpAction()
 	{
 		return null;
@@ -119,29 +133,23 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 	
 	
 	
-	protected class ActionDirections extends EAMAction
+	protected class ActionDirections extends MainWindowAction
 	{
 
-		public ActionDirections()
+		public ActionDirections(MainWindow mainWindowToUse)
 		{
-			super(EAM.text("Instructions"), "icons/directions.png");
+			super(mainWindowToUse, EAM.text("Instructions"), "icons/directions.png");
 		}
 		
 		public void doAction() throws CommandFailedException
 		{
-			Class jumpAction = getJumpAction();
-			if (jumpAction != null)
-			{
-				EAMAction action = mainWindow.getActions().get(jumpAction);
-				action.doAction();
-			}
+			EAMAction action = getRealJumpAction();
+			if(action == null)
+				return;
+			
+			action.doAction();
 		}
 		
-		public Doer getDoer()
-		{
-			return null;
-		}
-
 		public void actionPerformed(ActionEvent e)
 		{
 			try
@@ -152,6 +160,25 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 			{
 				EAM.logException(e1);
 			}
+		}
+		
+		@Override
+		public boolean shouldBeEnabled()
+		{
+			EAMAction action = getRealJumpAction();
+			if(action == null)
+				return false;
+			
+			return action.shouldBeEnabled();
+		}
+		
+		private EAMAction getRealJumpAction()
+		{
+			Class jumpActionClass = getJumpAction();
+			if (jumpActionClass == null)
+				return null;
+			
+			return mainWindow.getActions().get(jumpActionClass);
 		}
 	}
 
@@ -189,4 +216,5 @@ abstract public class AbstractDialogWithClose extends EAMDialog implements Windo
 
 	private MainWindow mainWindow;
 	private DisposablePanel wrappedPanel;
+	private ActionDirections actionDirections;
 }
