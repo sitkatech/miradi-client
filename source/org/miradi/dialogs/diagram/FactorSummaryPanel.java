@@ -147,6 +147,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 	{
 		return detailIcon;
 	}
+	
+	public DiagramFactor getCurrentDiagramFactor()
+	{
+		return currentDiagramFactor;
+	}
 
 	public DiagramFactorId getCurrentDiagramFactorId()
 	{
