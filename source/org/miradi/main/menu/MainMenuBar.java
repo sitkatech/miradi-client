@@ -302,10 +302,6 @@ public class MainMenuBar extends JMenuBar
 		item.putClientProperty(HelpButtonData.class, 
 				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		
-		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
-		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(UmbrellaView.class, HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
-		
 		menu.addSeparator();
 		
 		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);
@@ -342,6 +338,10 @@ public class MainMenuBar extends JMenuBar
 				new HelpButtonData(UmbrellaView.class,HelpButtonData.ABOUT_CMP, HelpButtonData.ABOUT_CMP_HTML));
 
 		menu.addSeparator();
+		
+		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
+		item.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class, HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
 		
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 		
