@@ -26,6 +26,12 @@ public class StandardReportsTableModel extends ReportSelectionTableModel
 				new Report(" Strategic Plan Report", "/reports/StrategicPlanReport.jasper"),
 				new Report(" Monitoring Plan Report", "/reports/MonitoringPlanReport.jasper"),
 				new Report(" Work Plan Report", "/reports/WorkPlanReport.jasper"),
+				new Report("  TNC Summary Report", "/reports/TncSummaryReport.jasper"),
+				new Report("  WWF Summary Report", "/reports/WwfSummaryReport.jasper"),
+				new Report("  WCS Summary Report", "/reports/WcsSummaryReport.jasper"),
+				new Report("  RARE Summary Report", "/reports/RareSummaryReport.jasper"),
+				new Report("  FOS Summary Report", "/reports/FosSummaryReport.jasper"),
+				new Report("  Other Org  Summary Report", "/reports/OtherOrgSummaryReport.jasper"),
 		};
 	}
 	
