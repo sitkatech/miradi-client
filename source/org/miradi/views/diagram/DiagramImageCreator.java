@@ -30,7 +30,21 @@ public class DiagramImageCreator
 			int imageWidth = image.getWidth() - bounds.x;
 			int imageHeight = image.getHeight() - bounds.y;
 			
-			return image.getSubimage(bounds.x, bounds.y, imageWidth, imageHeight);
+			int x = bounds.x;
+			if (x < 0)
+			{
+				imageWidth = imageWidth + x;
+				x = 0;
+			}
+			
+			int y = bounds.y;
+			if (y < 0)
+			{
+				imageHeight = imageHeight + y;
+				y = 0;
+			}
+			
+			return image.getSubimage(x, y, imageWidth, imageHeight);
 		}
 		catch(Exception e)
 		{
