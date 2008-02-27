@@ -69,7 +69,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void startDragOperation(MouseEvent event)
 	{
-		dragStartedAt = event.getPoint();
+		dragStartedAt = getDiagram().getUnscaledPoint(event.getPoint());
 //TODO commented by Nima - consult with kevin - getFirstCellForLocation does not return a bend point.
 //		Object cellBeingPressed = getDiagram().getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
 //		if(cellBeingPressed == null)
@@ -115,13 +115,12 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(dragStartedAt == null)
 			return;
 		
-		Point snappedDragEndedAt = getProject().getSnapped(event.getPoint());
+		Point rawPoint = getDiagram().getUnscaledPoint(event.getPoint());
+		Point snappedDragEndedAt = getProject().getSnapped(rawPoint);
 		Point snappedDragStartAt = getProject().getSnapped(dragStartedAt);
 		int deltaX = snappedDragEndedAt.x - snappedDragStartAt.x; 
 		int deltaY = snappedDragEndedAt.y - snappedDragStartAt.y;
-		if(deltaX == 0 && deltaY == 0)
-			return;
-		
+
 		moveHasHappened(deltaX, deltaY);
 	}
 
@@ -142,6 +141,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
+			
+			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}
 		catch (Exception e)
 		{
@@ -153,6 +154,21 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 		
 		mainWindow.getDiagramComponent().setMarquee(false);
+	}
+
+	private void synchronizeFactorAndLinkCellsWithStoredObjects() throws Exception
+	{
+		DiagramModel model = getDiagram().getDiagramModel();
+
+		for(int i = 0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isFactor())
+				model.updateCellFromDiagramFactor(cell.getDiagramFactor().getDiagramFactorId());
+			else if(cell.isFactorLink())
+				model.updateCellFromDiagramFactorLink(cell.getDiagramLink().getDiagramLinkageId());
+			model.updateCell(cell);
+		}
 	}
 
 	private void moveLinkBendPointInGroupBoxes(int deltaX, int deltaY) throws Exception

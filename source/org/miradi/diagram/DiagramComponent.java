@@ -70,7 +70,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setDisconnectOnMove(false);
 		setBendable(false);
 		setGridSize(Project.DEFAULT_GRID_SIZE);
-		setGridEnabled(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
 		setSelectionModel(new EAMGraphSelectionModel(this));
 		setMarqueeHandler(new CustomMarqueeHandler(this));
@@ -671,6 +670,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public EdgeView getEdgeView(LinkCell linkCell)
 	{
 		return (EdgeView) getGraphLayoutCache().getMapping(linkCell, false);
+	}
+	
+	public Point getUnscaledPoint(Point pointToUnscale)
+	{
+		return new Point((int)(pointToUnscale.x / scale), (int)(pointToUnscale.y / scale));
 	}
 	
 	public Point2D.Double getScaledPoint(Point pointToScale)
