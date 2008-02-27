@@ -89,7 +89,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		return width;
 	}
 
-	public Object getObjectForRow(int row)
+	public Object getRawObjectForRow(int row)
 	{
 		TreePath treePath = tree.getPathForRow(row);
 		return treePath.getLastPathComponent();         
@@ -97,7 +97,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 
 	public TreeTableNode getNodeForRow(int row)
 	{
-		return (TreeTableNode)getObjectForRow(row);
+		return (TreeTableNode)getRawObjectForRow(row);
 	}
 	
 	public void columnMoved(TableColumnModelEvent event)

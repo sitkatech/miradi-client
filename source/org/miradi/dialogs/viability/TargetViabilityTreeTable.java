@@ -65,7 +65,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		if(tableColumn == 0)
 			return super.getCellRenderer(row, tableColumn);
-		TreeTableNode node = (TreeTableNode)getObjectForRow(row);
+		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
 		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
