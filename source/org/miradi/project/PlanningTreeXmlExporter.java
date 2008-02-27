@@ -19,6 +19,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
@@ -88,7 +89,9 @@ public class PlanningTreeXmlExporter
 		out.writeln("<" + treeName + ">");
 		for (int row = 0; row < rowCount; ++row)
 		{
-			out.writeln("<Row>");
+			BaseObject objectForRow = multiTableExporter.getObjectForRow(row);
+			String objectTypeName = getSafeTypeName(objectForRow);
+			out.writeln("<Row ObjectTypeName='" + objectTypeName + "'>");
 			for (int column = 0; column < columnCount; ++column)
 			{
 				
@@ -103,6 +106,14 @@ public class PlanningTreeXmlExporter
 		}
 
 		out.writeln("</" + treeName + ">");
+	}
+
+	private String getSafeTypeName(BaseObject objectForRow)
+	{
+		if (objectForRow == null)
+			return "";
+		
+		return objectForRow.getTypeName();
 	}
 
 	private String getElementName(int column)

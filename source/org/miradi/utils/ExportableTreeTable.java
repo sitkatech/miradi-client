@@ -5,6 +5,9 @@
 */ 
 package org.miradi.utils;
 
+import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.objects.BaseObject;
+
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
@@ -43,6 +46,12 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 			return getTree().getPathForRow(row).getLastPathComponent().toString();
 		
 		return super.getValueAt(row, column);
+	}
+	
+	public BaseObject getObjectForRow(int row)
+	{
+		TreeTableNode node = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
+		return node.getObject();
 	}
 	
 	public String getHeaderFor(int column)

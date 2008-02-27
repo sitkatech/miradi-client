@@ -7,6 +7,8 @@ package org.miradi.utils;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.objects.BaseObject;
+
 public class ExportableTable extends TableWithHelperMethods implements ExportableTableInterface
 {
 	public ExportableTable()
@@ -32,5 +34,10 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 	public String getHeaderFor(int column)
 	{
 		return getColumnName(column);
+	}
+	
+	public BaseObject getObjectForRow(int row)
+	{
+		return null;
 	}	
 }

@@ -7,6 +7,8 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
+import org.miradi.objects.BaseObject;
+
 public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 {
 	public MultiTableCombinedAsOneExporter()
@@ -71,8 +73,14 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		Object value = tableAndColumnHolder.getTable().getValueAt(row, tableAndColumnHolder.getColumn());
 		if (value == null)
 			return "";
-				
+		
 		return value.toString();
+	}
+	
+	public BaseObject getObjectForRow(int row)
+	{
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(0);
+		return tableAndColumnHolder.getTable().getObjectForRow(row);
 	}
 
 	private TableAndColumnHolder getTableAndColumn(int column)

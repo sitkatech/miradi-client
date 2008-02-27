@@ -5,6 +5,8 @@
 */ 
 package org.miradi.utils;
 
+import org.miradi.objects.BaseObject;
+
 public interface ExportableTableInterface
 {
 	public int getMaxDepthCount();
@@ -12,5 +14,6 @@ public interface ExportableTableInterface
 	public int getColumnCount();
 	public int getRowCount();
 	public Object getValueAt(int row, int column);
+	public BaseObject getObjectForRow(int row);
 	public String getHeaderFor(int column);
 }
