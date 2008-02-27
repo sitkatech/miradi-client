@@ -20,6 +20,7 @@ import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
+import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
@@ -49,10 +50,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ViewData;
-import org.miradi.project.FactorCommandHelper;
-import org.miradi.project.FactorDeleteHelper;
-import org.miradi.project.FactorMoveHandler;
-import org.miradi.project.Project;
 import org.miradi.reports.ChainManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -87,6 +84,20 @@ public class TestProject extends EAMTestCase
 		IdAssigner original = project.getAnnotationIdAssigner();
 		project.getProjectInfo().fillFrom(project.getProjectInfo().toJson());
 		assertTrue("Constructed new annotation id assigner?", original == project.getAnnotationIdAssigner());
+	}
+	
+	public void testEmptyTransaction() throws Exception
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandEndTransaction());
+		try
+		{
+			project.undo();
+			fail("Empty transaction should not be undoable");
+		}
+		catch(NothingToUndoException ignoreExpected)
+		{
+		}
 	}
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
