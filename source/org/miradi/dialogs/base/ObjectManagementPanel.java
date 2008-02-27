@@ -56,6 +56,11 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return project;
 	}
 
+	public ObjectCollectionPanel getListPanel()
+	{
+		return listComponent;
+	}
+	
 	public BaseObject getObject()
 	{
 		if(listComponent == null)

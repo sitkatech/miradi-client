@@ -5,39 +5,28 @@
 */ 
 package org.miradi.dialogs.indicator;
 
-import javax.swing.Icon;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class SimpleViabilityPanel extends ObjectDataInputPanel
+public class SimpleViabilityPanel extends FactorPropertiesViabilityTreeManagementPanel
 {
 	public SimpleViabilityPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
-		super(mainWindowToUse.getProject(), factorRef);
-		
-		setLayout(new OneColumnGridLayout());
-		
+		super(mainWindowToUse, factorRef, mainWindowToUse.getActions());
 		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindowToUse.getProject(), factorRef);
-		addSubPanelWithTitledBorder(simpleViabilityPropertiesPanel);
-		
-		managementPanel = new FactorPropertiesViabilityTreeManagementPanel(mainWindowToUse, factorRef, mainWindowToUse.getActions());
-		add(managementPanel);
-	}
-
-	public void updateSplitterLocation()
-	{
-		managementPanel.updateSplitterLocation();
+		Border border = BorderFactory.createTitledBorder(simpleViabilityPropertiesPanel.getPanelDescription());
+		simpleViabilityPropertiesPanel.setBorder(border);
+		getListPanel().addAboveTable(simpleViabilityPropertiesPanel);
 	}
 
 	public void dispose()
 	{
-		managementPanel.dispose();
 		super.dispose();
 	}
 	
@@ -46,17 +35,11 @@ public class SimpleViabilityPanel extends ObjectDataInputPanel
 		return EAM.text("Tab|Viability");
 	}
 
-	public Icon getIcon()
-	{
-		return managementPanel.getIcon();
-	}
-	
 	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 	
-	private FactorPropertiesViabilityTreeManagementPanel managementPanel;
 	private SimpleViabilityFieldsPanel simpleViabilityPropertiesPanel;
 }

@@ -5,7 +5,7 @@
 */ 
 package org.miradi.dialogs.indicator;
 
-import java.awt.CardLayout;
+import java.awt.BorderLayout;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
@@ -27,8 +27,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, orefToUse);
 		
 		actions = actionsToUse;
-		cardLayout = new CardLayout();
-		setLayout(cardLayout);
+		setLayout(new BorderLayout());
 		createPropertiesPanels();
 	}
 	
@@ -47,15 +46,6 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel();
 		
-		add(indicatorPropertiesPanel);
-		add(measurementPropertiesPanel);
-		add(futureStatusPropertiesPanel);
-		add(blankPropertiesPanel);
-	}
-	
-	private void add(DisposablePanelWithDescription panelToAdd)
-	{
-		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
 	public String getPanelDescription()
@@ -66,11 +56,16 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		cardLayout.show(this, findPanel(orefsToUse).getPanelDescription());
+		DisposablePanelWithDescription panel = findPanel(orefsToUse);
+		removeAll();
+		add(panel, BorderLayout.CENTER);
 	
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
+		
+		if(getTopLevelAncestor() != null)
+			getTopLevelAncestor().validate();
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
@@ -96,7 +91,6 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private Actions actions;
-	private CardLayout cardLayout;
 	
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
