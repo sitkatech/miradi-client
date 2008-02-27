@@ -22,7 +22,10 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	{
 		if (!super.isAvailable())
 			return false;
-				
+		
+		if (containsDifferentType(getSelectedFactorCells()))
+			return false;
+		
 		return true;
 	}
 	
@@ -31,12 +34,6 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		super.doExtraSetup(groupBoxDiagramFactor, selectedFactorCells);
 		if (!containsAllAcceptableDiagramFactors(selectedFactorCells))
 			return;
-		
-		if (containsDifferentType(selectedFactorCells))
-		{
-			EAM.notifyDialog(EAM.text(GroupBoxAddDiagramFactorDoer.WARNING_TEXT));
-			return;
-		}
 		
 		ORefList selectedDiagramFactorRefs = extractDiagramFactorRefs(selectedFactorCells);
 		if (GroupBoxAddDiagramFactorDoer.hasOwnedSelectedDiagramFactors(getProject(), selectedDiagramFactorRefs))
