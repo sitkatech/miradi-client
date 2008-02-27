@@ -37,25 +37,25 @@
 			</band>
 		</background>
 		<title>
-			<band height="87"  isSplitAllowed="true" >
+			<band height="108"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="207"
 						y="1"
 						width="168"
-						height="17"
+						height="31"
 						key="staticText-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Project Plan]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="207"
-						y="18"
+						y="34"
 						width="168"
 						height="17"
 						key="textField-1"
@@ -70,7 +70,7 @@
 					<reportElement
 						mode="Opaque"
 						x="207"
-						y="35"
+						y="51"
 						width="168"
 						height="17"
 						backcolor="#FFFFFF"
@@ -85,7 +85,7 @@
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="207"
-						y="69"
+						y="85"
 						width="168"
 						height="17"
 						key="textField-2"
@@ -99,7 +99,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="127"
-						y="53"
+						y="69"
 						width="328"
 						height="12"
 						key="subreport-2"
