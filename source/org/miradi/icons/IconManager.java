@@ -103,6 +103,11 @@ public class IconManager
 	{
 		return convertToImage(new StrategyIcon());
 	}
+	
+	public static Image getDraftStrategyIcon()
+	{
+		return convertToImage(new DraftStrategyIcon());
+	}
 
 	public static Image getTaskIcon()
 	{
@@ -128,6 +133,8 @@ public class IconManager
 	{
 		return convertToImage(new ResultsChainIcon());
 	}
+	
+	
 
 	private static Image convertToImage(Icon icon)
 	{
