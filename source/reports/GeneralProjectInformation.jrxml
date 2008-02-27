@@ -84,7 +84,7 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="450"  isSplitAllowed="true" >
+			<band height="273"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						style="Heading 7"
