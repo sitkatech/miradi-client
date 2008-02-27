@@ -5,10 +5,10 @@
 		 name="IndicatorPoolTableReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="500"
-		 pageHeight="842"
-		 columnWidth="500"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="500"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -84,7 +84,7 @@
 					<reportElement
 						x="28"
 						y="0"
-						width="154"
+						width="347"
 						height="19"
 						key="staticText-3"
 						positionType="Float"/>
@@ -96,9 +96,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="182"
+						x="375"
 						y="0"
-						width="129"
+						width="168"
 						height="19"
 						key="staticText-4"
 						positionType="Float"/>
@@ -110,9 +110,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="311"
+						x="543"
 						y="0"
-						width="187"
+						width="290"
 						height="19"
 						key="staticText-5"
 						positionType="Float"/>
@@ -135,7 +135,7 @@
 						key="textField-1"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="Thin" leftBorderColor="#000000" leftPadding="2" rightBorder="Thin" rightBorderColor="#000000" rightPadding="2" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
 					<textElement>
 						<font/>
 					</textElement>
@@ -145,12 +145,12 @@
 					<reportElement
 						x="51"
 						y="0"
-						width="131"
+						width="324"
 						height="19"
 						key="textField-2"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="None" leftBorderColor="#000000" leftPadding="1" rightBorder="Thin" rightBorderColor="#000000" rightPadding="1" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
 					<textElement>
 						<font/>
 					</textElement>
@@ -158,14 +158,14 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="182"
+						x="375"
 						y="0"
-						width="129"
+						width="168"
 						height="19"
 						key="textField-3"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="Thin" leftBorderColor="#000000" leftPadding="2" rightBorder="Thin" rightBorderColor="#000000" rightPadding="2" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
 					<textElement>
 						<font/>
 					</textElement>
@@ -173,14 +173,14 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="311"
+						x="543"
 						y="0"
-						width="187"
+						width="290"
 						height="19"
 						key="textField-4"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="Thin" leftBorderColor="#000000" leftPadding="2" rightBorder="Thin" rightBorderColor="#000000" rightPadding="2" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
 					<textElement>
 						<font/>
 					</textElement>
