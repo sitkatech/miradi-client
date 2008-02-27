@@ -39,7 +39,7 @@ public class UndoRedoState
 	{
 		if(!canUndo())
 			throw new NothingToUndoException();
-		Command cmd = (Command)undoableCommands.remove(0);
+		Command cmd = undoableCommands.remove(0);
 		redoableCommands.insertElementAt(cmd, 0);
 		return cmd;
 	}
@@ -48,7 +48,7 @@ public class UndoRedoState
 	{
 		if(!canRedo())
 			throw new NothingToRedoException();
-		Command cmd = (Command)redoableCommands.remove(0);
+		Command cmd = redoableCommands.remove(0);
 		undoableCommands.insertElementAt(cmd, 0);
 		return cmd;
 	}
@@ -59,6 +59,18 @@ public class UndoRedoState
 		undoableCommands.insertElementAt(command, 0);
 	}
 
-	Vector undoableCommands;
-	Vector redoableCommands;
+	public Command getLastRecordedCommand()
+	{
+		if(!canUndo())
+			return null;
+		return undoableCommands.get(0);
+	}
+
+	public void discardLastUndoableCommand()
+	{
+		undoableCommands.remove(0);
+	}
+
+	Vector<Command> undoableCommands;
+	Vector<Command> redoableCommands;
 }

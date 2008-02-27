@@ -967,7 +967,15 @@ public class Project
 		
 		try
 		{
-			undoRedoState.pushUndoableCommand(command);
+			Command lastCommand = undoRedoState.getLastRecordedCommand();
+			if(command.isEndTransaction() && lastCommand != null && lastCommand.isBeginTransaction())
+			{
+				undoRedoState.discardLastUndoableCommand();
+			}
+			else
+			{
+				undoRedoState.pushUndoableCommand(command);
+			}
 			fireCommandExecuted(command);
 		}
 		catch (Exception e)
@@ -999,9 +1007,6 @@ public class Project
 
 	void fireCommandExecuted(Command command)
 	{
-		if(command.isBeginTransaction() || command.isEndTransaction())
-			return;
-		
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		firingCommandExecutedEvents = true;
 		try
