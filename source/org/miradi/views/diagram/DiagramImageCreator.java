@@ -27,23 +27,11 @@ public class DiagramImageCreator
 			Rectangle bounds = comp.getCurrentUsedBounds();
 			BufferedImage image = comp.getImage();
 			
-			int imageWidth = image.getWidth() - bounds.x;
-			int imageHeight = image.getHeight() - bounds.y;
-			
-			int x = bounds.x;
-			if (x < 0)
-			{
-				imageWidth = imageWidth + x;
-				x = 0;
-			}
-			
-			int y = bounds.y;
-			if (y < 0)
-			{
-				imageHeight = imageHeight + y;
-				y = 0;
-			}
-			
+			int x = Math.max(bounds.x, 0);
+			int y = Math.max(bounds.y, 0);
+			int imageWidth = image.getWidth() - x; 
+			int imageHeight = image.getHeight() - y;
+		
 			return image.getSubimage(x, y, imageWidth, imageHeight);
 		}
 		catch(Exception e)
