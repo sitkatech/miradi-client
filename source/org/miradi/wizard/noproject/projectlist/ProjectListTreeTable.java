@@ -64,7 +64,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 		if(row < 0)
 			return null;
 		
-		FileSystemTreeNode node = (FileSystemTreeNode)getObjectForRow(row);
+		FileSystemTreeNode node = (FileSystemTreeNode)getRawObjectForRow(row);
 		File file = node.getFile();
 		return file;
 	}
@@ -102,7 +102,7 @@ public class ProjectListTreeTable extends PanelTreeTable
 			return;
 		
 		getSelectionModel().setSelectionInterval(row, row);
-		FileSystemTreeNode node = (FileSystemTreeNode)getObjectForRow(row);
+		FileSystemTreeNode node = (FileSystemTreeNode)getRawObjectForRow(row);
 		JPopupMenu menu = getRightClickMenu(node.getFile());
 		menu.show(this, point.x, point.y);
 
