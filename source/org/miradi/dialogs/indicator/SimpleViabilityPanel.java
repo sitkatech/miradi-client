@@ -28,6 +28,7 @@ public class SimpleViabilityPanel extends FactorPropertiesViabilityTreeManagemen
 	public void dispose()
 	{
 		super.dispose();
+		simpleViabilityPropertiesPanel.dispose();
 	}
 	
 	public String getPanelDescription()
