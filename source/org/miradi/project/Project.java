@@ -572,7 +572,7 @@ public class Project
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(this, allDiagramFactorRefs.get(i));
 			Point location = (Point) diagramFactor.getLocation().clone();
-			if (isOffScreenLocation(location))
+			if (!diagramFactor.isGroupBoxFactor() && isOffScreenLocation(location))
 			{
 				CommandSetObjectData moveToOnScreen = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(0, 0)));
 				executeWithoutRecording(moveToOnScreen);
