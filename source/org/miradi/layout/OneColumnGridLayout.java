@@ -21,4 +21,10 @@ public class OneColumnGridLayout extends GridLayoutPlus
 	{
 		setFill(Alignment.FILL_HORIZONTAL);
 	}
+
+	public void setGaps(int gap)
+	{
+		hGap = gap;
+		vGap = gap;
+	}
 }
