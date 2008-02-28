@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,12 +13,12 @@ public class ActionDeleteTeamMember extends ObjectsAction
 {
 	public ActionDeleteTeamMember(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Remove Member");
+		return EAM.text("Action|Manage|Delete Member");
 	}
 
 	public String getToolTipText()

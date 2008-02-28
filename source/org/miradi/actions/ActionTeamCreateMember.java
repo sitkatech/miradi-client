@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionTeamCreateMember extends ObjectsAction
 {
 		public ActionTeamCreateMember(MainWindow mainWindowToUse)
 		{
-			super(mainWindowToUse, getLabel());
+			super(mainWindowToUse, getLabel(), new ProjectResourceIcon());
 		}
 
 		private static String getLabel()
