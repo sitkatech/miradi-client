@@ -38,6 +38,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/FosProjectData/Coaches]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -171,7 +183,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
+						y="6"
 						width="186"
 						height="19"
 						key="staticText-16"/>
@@ -181,6 +193,15 @@
 					</textElement>
 				<text><![CDATA[FOS]]></text>
 				</staticText>
+				<break>
+					<reportElement
+						x="-2"
+						y="99"
+						width="535"
+						height="0"
+						key="element-2"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

@@ -32,6 +32,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/TncProjectData/OrganizationalPriority]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -53,7 +65,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="22"
+						y="25"
 						width="143"
 						height="16"
 						key="staticText-3"
@@ -67,7 +79,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="143"
-						y="22"
+						y="25"
 						width="392"
 						height="16"
 						key="subreport-1"
@@ -82,7 +94,7 @@
 					<reportElement
 						mode="Transparent"
 						x="0"
-						y="42"
+						y="45"
 						width="535"
 						height="0"
 						forecolor="#FFFFFF"
@@ -94,7 +106,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
+						y="4"
 						width="186"
 						height="19"
 						key="staticText-16"/>
@@ -107,7 +119,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="45"
+						y="48"
 						width="143"
 						height="16"
 						key="staticText-17"
@@ -121,7 +133,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="143"
-						y="45"
+						y="48"
 						width="392"
 						height="16"
 						key="subreport-2"
@@ -136,7 +148,7 @@
 					<reportElement
 						mode="Transparent"
 						x="0"
-						y="64"
+						y="67"
 						width="535"
 						height="0"
 						forecolor="#FFFFFF"
@@ -148,7 +160,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="67"
+						y="70"
 						width="143"
 						height="16"
 						key="staticText-18"
@@ -162,7 +174,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="143"
-						y="67"
+						y="70"
 						width="392"
 						height="16"
 						key="subreport-3"
@@ -173,6 +185,15 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/WwfProjectData/EcoRegions/CodeList/Entry")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/CodesReport.jasper")]]></subreportExpression>
 				</subreport>
+				<break>
+					<reportElement
+						x="-2"
+						y="88"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>
