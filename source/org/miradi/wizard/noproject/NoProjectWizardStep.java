@@ -20,6 +20,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MiradiLogoPanel;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.views.noproject.CopyProject;
 import org.miradi.views.noproject.DeleteProject;
@@ -40,15 +41,12 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	public NoProjectWizardStep(WizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse, NoProjectView.getViewName());
-		String header = EAM.loadResourceFile(getClass(), "WelcomeHeader.html");
-		WizardHtmlViewer headerHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
-		headerHtmlViewer.setText(header);
-
+		
 		WizardHtmlViewer introHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
 		introHtmlViewer.setText(getTextBelowLogo());
 
 		JPanel headerBox = new JPanel(new BorderLayout());
-		headerBox.add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
+		headerBox.add(new MiradiLogoPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		headerBox.add(introHtmlViewer, BorderLayout.CENTER);
 		add(headerBox, BorderLayout.BEFORE_FIRST_LINE);
 
