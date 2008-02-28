@@ -24,6 +24,7 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.wizard.WizardPanel;
 
@@ -68,10 +69,10 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 			setGaps(10);
 			setBackground(AppPreferences.getWizardBackgroundColor());
 			
-			add(new PanelTitleLabel(EAM.text("<html><strong>Start a new project</strong> on this computer:")));
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("<div class='WizardText'><strong>Start a new project</strong> on this computer:")));
 			add(createCreateButtonRow());
 			add(createImportButtonRow());
-			add(new PanelTitleLabel(EAM.text("<html><strong>Continue work</strong> on an existing project, or <strong>browse an example</strong>:")));
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("<div class='WizardText'><strong>Continue work</strong> on an existing project, or <strong>browse an example</strong>:")));
 		}
 
 		private Component createCreateButtonRow()

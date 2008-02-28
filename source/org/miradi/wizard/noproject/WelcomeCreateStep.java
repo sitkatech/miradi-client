@@ -14,9 +14,13 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.text.JTextComponent;
 
+import org.martus.swing.HyperlinkHandler;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.wizard.MiradiHtmlViewer;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 
@@ -27,32 +31,53 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 	{
 		super(wizardToUse);
 		
-		String html = EAM.loadResourceFile(getClass(), "WelcomeProjectCreate.html");
-		leftTop = new LeftSideTextPanel(getMainWindow(), html, this);
+		JComponent leftTop = new CreatePanel(this);
 
 		JPanel left = new JPanel(new BorderLayout());
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
 		left.add(projectList, BorderLayout.CENTER);
 		
-		JPanel rightSidePanel = new JPanel();
+		rightSidePanel = new JPanel();
 		rightSidePanel.setBackground(AppPreferences.getWizardBackgroundColor());
 		
 		JPanel mainPanel = new JPanel(new GridLayout(1, 2, 60, 0));
 		mainPanel.setBackground(AppPreferences.getWizardBackgroundColor());
 		mainPanel.add(left);
 		mainPanel.add(rightSidePanel);
-		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
 		add(mainPanel, BorderLayout.CENTER);
 	}
 	
-	
-	public void refresh() throws Exception
+	class CreatePanel extends OneColumnPanel
 	{
-		leftTop.refresh();
-		super.refresh();
+		public CreatePanel(HyperlinkHandler hyperlinkHandler) throws Exception
+		{
+			setBackground(AppPreferences.getWizardBackgroundColor());
+			
+			String intro = EAM.text("<div class='WizardText'>To <strong>create a new project</strong>, " +
+			"enter the filename in the input field below, " +
+			"and press the <code class='toolbarbutton'>&lt;Next&gt;</code> button.");
+			introHtml = new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro);
+			add(introHtml);
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, 
+					EAM.text("<div class='WizardText'><table><tr>" +
+							"<td>New Project Filename: </td>" +
+							"<td><input type='text' name='NewProjectName' value=''></input></td>" +
+							"</tr></table>")));
+			
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler,
+					EAM.text("<div class='WizardText'><p class='hint'>" +
+							"NOTE: Project filenames can contain letters, numbers, spaces, periods, and dashes.</p>")));
+			
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, 
+					EAM.text("<div class='WizardText'>" +
+							"<p><input type='submit' name='Back' value='&lt; Previous'></input>" +
+							"&nbsp;&nbsp;&nbsp;&nbsp;" +
+							"<input type='submit' name='Next' value='Next &gt;'></input></p><br>")));
+		}
 	}
-	
+
 	public void setComponent(String name, JComponent component)
 	{
 		if (name.equals(NEW_PROJECT_NAME))
@@ -114,8 +139,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 
 	private static final String NEW_PROJECT_NAME = "NewProjectName";
 
-	LeftSideTextPanel leftTop;
-	JTextComponent newProjectNameField;
-	
-
+	private JPanel rightSidePanel;
+	private MiradiHtmlViewer introHtml;
+	private JTextComponent newProjectNameField;
 }
