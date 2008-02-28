@@ -35,6 +35,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/ProjectVision]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -52,26 +64,27 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="394"  isSplitAllowed="true" >
+			<band height="362"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
-						width="352"
-						height="15"
-						key="staticText-1"/>
+						y="6"
+						width="449"
+						height="22"
+						key="staticText-1"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[1B.	Project Scope, Vision, and Targets]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="14"
+						y="30"
 						width="535"
-						height="93"
+						height="81"
 						key="staticText-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -89,21 +102,21 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="106"
+						y="114"
 						width="165"
 						height="19"
 						key="staticText-3"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Project Scope]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="124"
+						y="134"
 						width="595"
 						height="19"
 						key="textField-1"
@@ -117,7 +130,7 @@
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="142"
+						y="152"
 						width="595"
 						height="19"
 						key="textField-2"
@@ -131,21 +144,21 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="171"
+						y="176"
 						width="165"
 						height="19"
 						key="staticText-4"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Vision Statement]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="189"
+						y="197"
 						width="595"
 						height="19"
 						key="textField-3"
@@ -159,21 +172,21 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="220"
+						y="225"
 						width="170"
 						height="20"
 						key="staticText-5"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica" isBold="false"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Conservation Targets]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="0"
-						y="239"
+						y="247"
 						width="595"
 						height="20"
 						key="staticText-6"
@@ -187,7 +200,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="260"
+						y="268"
 						width="590"
 						height="20"
 						key="subreport-1"
@@ -198,7 +211,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="287"
+						y="295"
 						width="590"
 						height="20"
 						key="staticText-7"
@@ -212,7 +225,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="306"
+						y="314"
 						width="590"
 						height="20"
 						key="staticText-8"
@@ -228,7 +241,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
-						y="324"
+						y="332"
 						width="590"
 						height="20"
 						key="subreport-2"
@@ -239,6 +252,15 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/TargetViabilityTreeTable.jasper")]]></subreportExpression>
 				</subreport>
+				<break>
+					<reportElement
+						x="-2"
+						y="2"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

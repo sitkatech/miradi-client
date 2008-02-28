@@ -25,6 +25,18 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -42,25 +54,25 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="252"  isSplitAllowed="true" >
+			<band height="260"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="13"
-						y="0"
+						y="4"
 						width="515"
 						height="20"
 						key="staticText-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[2B.	Monitoring Plan]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="34"
-						y="20"
+						y="24"
 						width="429"
 						height="55"
 						key="staticText-2"
@@ -78,7 +90,7 @@
 				<staticText>
 					<reportElement
 						x="34"
-						y="101"
+						y="105"
 						width="494"
 						height="44"
 						key="staticText-3"
@@ -94,21 +106,21 @@
 				<staticText>
 					<reportElement
 						x="34"
-						y="81"
+						y="85"
 						width="167"
 						height="20"
 						key="staticText-5"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Audiences and Indicators]]></text>
 				</staticText>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="34"
-						y="151"
+						y="155"
 						width="494"
 						height="22"
 						key="subreport-5"
@@ -122,7 +134,7 @@
 				<staticText>
 					<reportElement
 						x="34"
-						y="199"
+						y="203"
 						width="494"
 						height="28"
 						key="staticText-6"
@@ -136,21 +148,21 @@
 				<staticText>
 					<reportElement
 						x="34"
-						y="179"
+						y="183"
 						width="167"
 						height="20"
 						key="staticText-7"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Monitoring Plan]]></text>
 				</staticText>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="34"
-						y="227"
+						y="231"
 						width="494"
 						height="22"
 						key="subreport-6"
@@ -161,6 +173,15 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/MonitoringPlanTree/Row")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/MonitoringPlanSummaryTableReport.jasper")]]></subreportExpression>
 				</subreport>
+				<break>
+					<reportElement
+						x="-2"
+						y="1"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

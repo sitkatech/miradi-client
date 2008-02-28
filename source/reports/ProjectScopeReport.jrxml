@@ -65,6 +65,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/HumanPopulationNotes]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -533,6 +545,15 @@
 						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<break>
+					<reportElement
+						x="-2"
+						y="2"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

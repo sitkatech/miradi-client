@@ -6,14 +6,14 @@
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
-		 pageWidth="708"
+		 pageWidth="652"
 		 pageHeight="842"
 		 columnWidth="652"
 		 columnSpacing="0"
-		 leftMargin="28"
-		 rightMargin="28"
-		 topMargin="28"
-		 bottomMargin="28"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
@@ -68,6 +68,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/FinancialComments]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -96,7 +108,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[WorkPlan]]></text>
 				</staticText>
@@ -159,7 +171,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
+						y="3"
 						width="186"
 						height="19"
 						key="staticText-5"
@@ -432,7 +444,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Financial]]></text>
 				</staticText>
@@ -561,6 +573,15 @@
 						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<break>
+					<reportElement
+						x="-2"
+						y="1"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

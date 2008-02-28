@@ -55,18 +55,18 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="305"  isSplitAllowed="true" >
+			<band height="184"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="0"
 						y="3"
-						width="196"
+						width="320"
 						height="17"
 						key="staticText-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[1.	Project Description (Conceptualize)
 
@@ -76,13 +76,13 @@
 					<reportElement
 						x="0"
 						y="19"
-						width="196"
+						width="320"
 						height="16"
 						key="staticText-3"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[1A.	Initial Project Team]]></text>
 				</staticText>
