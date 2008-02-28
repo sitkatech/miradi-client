@@ -9,7 +9,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
@@ -37,8 +36,7 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Target.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
-				Indicator.OBJECT_NAME, 
-				Measurement.OBJECT_NAME, });
+				Indicator.OBJECT_NAME, });
 	}
 	
 	public String getPropertyName()
