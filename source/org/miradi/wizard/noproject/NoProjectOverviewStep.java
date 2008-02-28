@@ -11,9 +11,17 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.miradi.actions.EAMAction;
+import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
+import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
+import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnPanel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.utils.MiradiScrollPane;
@@ -25,8 +33,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 	{
 		super(wizardToUse);
 		
-		String html = EAM.loadResourceFile(getClass(), "WelcomeNew.html");
-		leftTop = new LeftSideTextPanel(getMainWindow(), html, this);
+		JComponent leftTop = new OverviewPanel();
 		
 		JPanel left = new JPanel(new BorderLayout());
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
@@ -50,13 +57,50 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		
 		add(mainPanel, BorderLayout.CENTER);
+		
+		getMainWindow().updateActionStates();
+	}
+	
+	class OverviewPanel extends OneColumnPanel
+	{
+		public OverviewPanel()
+		{
+			setGaps(10);
+			setBackground(AppPreferences.getWizardBackgroundColor());
+			
+			add(new PanelTitleLabel(EAM.text("<html><strong>Start a new project</strong> on this computer:")));
+			add(createCreateButtonRow());
+			add(createImportButtonRow());
+			add(new PanelTitleLabel(EAM.text("<html><strong>Continue work</strong> on an existing project, or <strong>browse an example</strong>:")));
+		}
+
+		private Component createCreateButtonRow()
+		{
+			return createButtonRow(ActionJumpWelcomeCreateStep.class, "a new project from scratch");
+		}
+
+		private Component createImportButtonRow()
+		{
+			return createButtonRow(ActionJumpWelcomeImportStep.class, "a Miradi Project Zipfile (.mpz)");
+		}
+
+		private Component createButtonRow(Class jumpActionClass, String description)
+		{
+			EAMAction action = getMainWindow().getActions().get(jumpActionClass);
+			OneRowPanel panel = new OneRowPanel();
+			panel.setGaps(20);
+			panel.setBackground(AppPreferences.getWizardBackgroundColor());
+			panel.add(new PanelTitleLabel(" "));
+			panel.add(new PanelButton(action));
+			panel.add(new PanelTitleLabel(description));
+			return panel;
+		}
 	}
 	
 	@Override
 	public void refresh() throws Exception
 	{
 		super.refresh();
-		leftTop.refresh();
 		projectList.refresh();
 	}
 
@@ -66,5 +110,4 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		return EAM.loadResourceFile(getClass(), "WelcomeIntroduction.html");
 	}
 	
-	LeftSideTextPanel leftTop;
 }

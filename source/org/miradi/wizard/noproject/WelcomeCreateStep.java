@@ -20,10 +20,10 @@ import org.miradi.project.Project;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 
-public class NoProjectWizardProjectCreateStep extends NoProjectWizardStep
+public class WelcomeCreateStep extends NoProjectWizardStep
 {
 
-	public NoProjectWizardProjectCreateStep(WizardPanel wizardToUse) throws Exception
+	public WelcomeCreateStep(WizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse);
 		

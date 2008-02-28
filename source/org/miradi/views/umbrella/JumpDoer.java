@@ -5,6 +5,7 @@
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
@@ -21,11 +22,15 @@ public class JumpDoer extends MainWindowDoer
 	
 	public boolean isAvailable()
 	{
-		if (!getProject().isOpen()) 
+		WizardManager wizardManager = getWizardManager();
+		if(!wizardManager.isValidStep(actionClass))
 			return false;
 		
-		WizardManager wizardManager = getWizardManager();
-		return wizardManager.isValidStep(actionClass);
+		if(getProject().isOpen())
+			return true;
+		
+		EAMAction action = getMainWindow().getActions().get(actionClass);
+		return action.isAvailableWithoutProject();
 	}
 
 	public void doIt() throws CommandFailedException

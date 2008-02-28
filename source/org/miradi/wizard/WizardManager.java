@@ -38,8 +38,8 @@ import org.miradi.wizard.diagram.TargetStressesStep;
 import org.miradi.wizard.library.LibraryOverviewStep;
 import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
-import org.miradi.wizard.noproject.NoProjectWizardImportStep;
-import org.miradi.wizard.noproject.NoProjectWizardProjectCreateStep;
+import org.miradi.wizard.noproject.WelcomeImportStep;
+import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardDemo;
@@ -188,13 +188,13 @@ public class WizardManager
 	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
 	{	
 		createStepEntry(new NoProjectOverviewStep(panel))
-			.createControl("Import",NoProjectWizardImportStep.class)
-			.createControl("NewProject",NoProjectWizardProjectCreateStep.class);
+			.createControl("Import",WelcomeImportStep.class)
+			.createControl("NewProject",WelcomeCreateStep.class);
 		
-		createStepEntry(new NoProjectWizardImportStep(panel))
+		createStepEntry(new WelcomeImportStep(panel))
 			.createBackControl(NoProjectOverviewStep.class);
 		
-		createStepEntry(new NoProjectWizardProjectCreateStep(panel))
+		createStepEntry(new WelcomeCreateStep(panel))
 			.createBackControl(NoProjectOverviewStep.class);
 	}
 	
