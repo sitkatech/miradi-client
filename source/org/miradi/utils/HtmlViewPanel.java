@@ -82,10 +82,13 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		bodyComponent.setFont(Font.getFont("Arial"));
 		dlg.getContentPane().setBackground(AppPreferences.getWizardTitleBackground());
 
+		JComponent topSection = createTopPanel();
 		JComponent buttonBar = createButtonBar(dlg);
 		
 		Container contents = dlg.getContentPane();
 		contents.setLayout(new BorderLayout());
+		if(topSection != null)
+			contents.add(topSection, BorderLayout.BEFORE_FIRST_LINE);
 		contents.add(new MiradiScrollPane(bodyComponent), BorderLayout.CENTER);
 		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
@@ -95,6 +98,11 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		dlg.setVisible(true);
 	}
 
+
+	protected JComponent createTopPanel()
+	{
+		return null;
+	}
 
 	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
 	{

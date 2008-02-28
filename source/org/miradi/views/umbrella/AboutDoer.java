@@ -10,7 +10,6 @@ import java.util.EventObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
-import org.miradi.utils.HtmlViewPanel;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -31,7 +30,6 @@ public class AboutDoer extends MainWindowDoer
 	
 	public void doIt(EventObject event) throws CommandFailedException
 	{
-		String title = EAM.text("Title|About Miradi");
 		String text =  buildMainSection();
 		
 		boolean initialSplash = (event == null);
@@ -42,7 +40,7 @@ public class AboutDoer extends MainWindowDoer
 		
 		text += loadHtmlFile("AboutEnd.html");
 		
-		HtmlViewPanel dialog = new HtmlViewPanel(getMainWindow(), title, text, 900);
+		HelpAboutPanel dialog = new HelpAboutPanel(getMainWindow(), text);
 		if(initialSplash)
 			dialog.setCloseButtonText(EAM.text("Continue"));
 		dialog.showAsOkDialog();
