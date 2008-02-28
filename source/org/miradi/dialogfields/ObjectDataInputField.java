@@ -11,6 +11,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.border.Border;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -186,7 +187,9 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	void setDefaultFieldBorder()
 	{
-		getComponent().setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
+		Border margin = BorderFactory.createEmptyBorder(2, 2, 2, 2);
+		getComponent().setBorder(BorderFactory.createCompoundBorder(lineBorder, margin));
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
