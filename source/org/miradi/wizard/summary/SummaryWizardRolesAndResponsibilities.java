@@ -31,6 +31,6 @@ public class SummaryWizardRolesAndResponsibilities extends SummaryWizardStep
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("Partners");
+		return EAM.text("Other Orgs");
 	}
 }
