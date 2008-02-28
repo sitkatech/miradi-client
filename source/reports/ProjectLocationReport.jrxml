@@ -50,6 +50,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/ProjectMetadata/StateAndProvinces]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcePageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -364,7 +376,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
+						y="3"
 						width="186"
 						height="19"
 						key="staticText-16"/>
@@ -374,6 +386,15 @@
 					</textElement>
 				<text><![CDATA[Project Location]]></text>
 				</staticText>
+				<break>
+					<reportElement
+						x="-2"
+						y="1"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

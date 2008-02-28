@@ -27,25 +27,24 @@
 
 	<field name="blah" class="java.lang.String"/>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="30"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="0"
-						y="0"
-						width="119"
-						height="28"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
-					</textElement>
-				<text><![CDATA[Threat Rating Table]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -57,11 +56,24 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="31"  isSplitAllowed="true" >
+			<band height="64"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="4"
+						width="119"
+						height="28"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Threat Rating Table]]></text>
+				</staticText>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="0"
+						y="32"
 						width="782"
 						height="31"
 						key="subreport-1"
@@ -72,6 +84,15 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Link[contains(ToRef,  '22.') and contains(FromRef, '20.')]")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ThreatRatingTableSubReport.jasper")]]></subreportExpression>
 				</subreport>
+				<break>
+					<reportElement
+						x="-2"
+						y="2"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

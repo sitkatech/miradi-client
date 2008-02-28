@@ -53,7 +53,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[2A.	Strategic Plan: Goals, Strategies, Assumptions, and Objectives]]></text>
 				</staticText>
@@ -145,7 +145,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Goals]]></text>
 				</staticText>
@@ -159,7 +159,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Strategic Plan]]></text>
 				</staticText>
