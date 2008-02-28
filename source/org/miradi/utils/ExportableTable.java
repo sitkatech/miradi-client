@@ -35,8 +35,8 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 	{
 		return getColumnName(column);
 	}
-	
-	public BaseObject getObjectForRow(int row)
+
+	public BaseObject getBaseObjectForRow(int row)
 	{
 		return null;
 	}	

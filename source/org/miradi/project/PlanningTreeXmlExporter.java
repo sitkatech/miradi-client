@@ -89,7 +89,7 @@ public class PlanningTreeXmlExporter
 		out.writeln("<" + treeName + ">");
 		for (int row = 0; row < rowCount; ++row)
 		{
-			BaseObject objectForRow = multiTableExporter.getObjectForRow(row);
+			BaseObject objectForRow = multiTableExporter.getBaseObjectForRow(row);
 			String objectTypeName = getSafeTypeName(objectForRow);
 			out.writeln("<Row ObjectTypeName='" + objectTypeName + "'>");
 			for (int column = 0; column < columnCount; ++column)

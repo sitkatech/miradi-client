@@ -14,6 +14,6 @@ public interface ExportableTableInterface
 	public int getColumnCount();
 	public int getRowCount();
 	public Object getValueAt(int row, int column);
-	public BaseObject getObjectForRow(int row);
+	public BaseObject getBaseObjectForRow(int row);
 	public String getHeaderFor(int column);
 }

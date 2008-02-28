@@ -48,7 +48,7 @@ public class ExportableTreeTable extends JTreeTable implements ExportableTableIn
 		return super.getValueAt(row, column);
 	}
 	
-	public BaseObject getObjectForRow(int row)
+	public BaseObject getBaseObjectForRow(int row)
 	{
 		TreeTableNode node = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
 		return node.getObject();
