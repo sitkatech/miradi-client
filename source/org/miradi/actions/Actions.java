@@ -82,6 +82,8 @@ import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpTeamRoles;
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.actions.jump.ActionJumpThreatRatingWizardCheckTotalsStep;
+import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
+import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
 import org.miradi.actions.jump.ActionJumpWorkPlanAssignResourcesStep;
 import org.miradi.actions.jump.ActionJumpWorkPlanDevelopActivitiesAndTasksStep;
 import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
@@ -242,6 +244,8 @@ public class Actions
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
 		
+		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
+		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
 		registerAction(new ActionJumpSummaryWizardRolesAndResponsibilities(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineTeamMembers(mainWindow));

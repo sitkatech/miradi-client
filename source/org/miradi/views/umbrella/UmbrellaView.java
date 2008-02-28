@@ -433,7 +433,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpDiagramOverviewStep.class);
 	}
 	
-	private void addJumpDoerToMap(Class actionClass)
+	public void addJumpDoerToMap(Class actionClass)
 	{
 		addDoerToMap(actionClass, new JumpDoer(actionClass));
 	}

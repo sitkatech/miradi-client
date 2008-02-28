@@ -7,6 +7,8 @@ package org.miradi.views.noproject;
 
 import javax.swing.JToolBar;
 
+import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
+import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -16,6 +18,7 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
+		addDoersToMap();
 	}
 	
 	public JToolBar createToolBar()
@@ -23,6 +26,11 @@ public class NoProjectView extends UmbrellaView
 		return new NoProjectToolBar(getActions());
 	}
 
+	private void addDoersToMap()
+	{
+		addJumpDoerToMap(ActionJumpWelcomeCreateStep.class);
+		addJumpDoerToMap(ActionJumpWelcomeImportStep.class);
+	}
 	
 	public void becomeActive() throws Exception
 	{

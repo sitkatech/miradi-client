@@ -18,10 +18,10 @@ import org.miradi.main.EAM;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 
-public class NoProjectWizardImportStep extends NoProjectWizardStep
+public class WelcomeImportStep extends NoProjectWizardStep
 {
 
-	public NoProjectWizardImportStep(WizardPanel wizardToUse) throws Exception
+	public WelcomeImportStep(WizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse);
 		

@@ -50,6 +50,11 @@ public abstract class EAMAction extends AbstractAction
 		return "";
 	}
 
+	public boolean isAvailableWithoutProject()
+	{
+		return false;
+	}
+
 	public boolean shouldBeEnabled()
 	{
 		return false;
@@ -61,4 +66,5 @@ public abstract class EAMAction extends AbstractAction
 	}
 
 	public static final String DEMO_INDICATOR = " - demo";
+
 }
