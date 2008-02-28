@@ -21,6 +21,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiLogoPanel;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.views.noproject.CopyProject;
 import org.miradi.views.noproject.DeleteProject;
@@ -64,6 +65,15 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	{
 		projectList.refresh();
 		getTopLevelAncestor().validate();
+	}
+
+	protected FlexibleWidthHtmlViewer createNextPreviousButtonPanel(HyperlinkHandler hyperlinkHandler)
+	{
+		String buttonsText = EAM.text("<div class='WizardText'>" +
+								"<p><input type='submit' name='Back' value='&lt; Previous'></input>" +
+								"&nbsp;&nbsp;&nbsp;&nbsp;" +
+								"<input type='submit' name='Next' value='Next &gt;'></input></p><br>");
+		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);
 	}
 
 	public void linkClicked(String linkDescription)

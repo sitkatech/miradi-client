@@ -9,12 +9,16 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import org.martus.swing.HyperlinkHandler;
 import org.miradi.actions.ActionImportZippedProjectFile;
 import org.miradi.actions.EAMAction;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 
@@ -25,8 +29,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 	{
 		super(wizardToUse);
 		
-		String html = EAM.loadResourceFile(getClass(), "WelcomeImport.html");
-		leftTop = new LeftSideTextPanel(getMainWindow(), html, this);
+		JComponent leftTop = new ImportPanel(this);
 		
 		JPanel left = new JPanel(new BorderLayout());
 		left.add(leftTop, BorderLayout.BEFORE_FIRST_LINE);
@@ -44,12 +47,25 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		add(mainPanel, BorderLayout.CENTER);
 	}
 	
-	public void refresh() throws Exception
+	class ImportPanel extends OneColumnPanel
 	{
-		leftTop.refresh();
-		super.refresh();
+		public ImportPanel(HyperlinkHandler hyperlinkHandler) throws Exception
+		{
+			setBackground(AppPreferences.getWizardBackgroundColor());
+			
+			String intro = EAM.text("<div class='WizardText'>" +
+					"To <strong>import</strong> a " +
+					"<a href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> " +
+					"file that was exported from Miradi, " +
+					"press the <code class='toolbarbutton'>&lt;Next&gt;</code>button below " +
+					"to choose the file.");
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));
+			
+			add(createNextPreviousButtonPanel(hyperlinkHandler));
+		}
+
 	}
-	
+
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(WizardManager.CONTROL_NEXT))
@@ -79,7 +95,5 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		}
 	}
 
-	LeftSideTextPanel leftTop;
-	
 
 }
