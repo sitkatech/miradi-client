@@ -100,20 +100,20 @@ public class WizardManager
 	
 	public void setUpSteps(WizardPanel panel) throws Exception
 	{
-		createThreatMatrixViewStepEntries(panel);
+		createNoProjectStepEntries(panel);
+		createSummaryStepEntries(panel);
 		createDigramViewStepEntries(panel);
+		createTargetViabilityStepEntries(panel);
+		createThreatMatrixViewStepEntries(panel);
+		createPlanningViewStepEntries(panel);
+		createStrategicPlanStepEntries(panel);
 		createMonitoringViewStepEntries(panel);
 		createWorkPlanStepEntries(panel);
-		createSummaryStepEntries(panel);
-		createScheduleStepEntries(panel);
-		createStrategicPlanStepEntries(panel);
 		createBudgetStepEntries(panel);
-		createNoProjectStepEntries(panel);
-		createTargetViabilityStepEntries(panel);
+		createReportViewStepEntries(panel);
+		createScheduleStepEntries(panel);
 		createMapViewStepEntries(panel);
 		createImagesViewStepEntries(panel);
-		createPlanningViewStepEntries(panel);
-		createReportViewStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -187,9 +187,7 @@ public class WizardManager
 
 	public void createNoProjectStepEntries(WizardPanel panel) throws Exception
 	{	
-		createStepEntry(new NoProjectOverviewStep(panel))
-			.createControl("Import",WelcomeImportStep.class)
-			.createControl("NewProject",WelcomeCreateStep.class);
+		createStepEntry(new NoProjectOverviewStep(panel));
 		
 		createStepEntry(new WelcomeImportStep(panel))
 			.createBackControl(NoProjectOverviewStep.class);
