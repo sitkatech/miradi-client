@@ -32,7 +32,6 @@ public class StandardReportsTableModel extends ReportSelectionTableModel
 				new Report("  WCS Summary Report", "/reports/WcsSummaryReport.jasper"),
 				new Report("  RARE Summary Report", "/reports/RareSummaryReport.jasper"),
 				new Report("  FOS Summary Report", "/reports/FosSummaryReport.jasper"),
-				new Report("  Other Org  Summary Report", "/reports/OtherOrgSummaryReport.jasper"),
 		};
 	}
 	
