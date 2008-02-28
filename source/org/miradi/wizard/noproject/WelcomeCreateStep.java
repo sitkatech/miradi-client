@@ -70,12 +70,9 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 					EAM.text("<div class='WizardText'><p class='hint'>" +
 							"NOTE: Project filenames can contain letters, numbers, spaces, periods, and dashes.</p>")));
 			
-			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, 
-					EAM.text("<div class='WizardText'>" +
-							"<p><input type='submit' name='Back' value='&lt; Previous'></input>" +
-							"&nbsp;&nbsp;&nbsp;&nbsp;" +
-							"<input type='submit' name='Next' value='Next &gt;'></input></p><br>")));
+			add(createNextPreviousButtonPanel(hyperlinkHandler));
 		}
+
 	}
 
 	@Override
