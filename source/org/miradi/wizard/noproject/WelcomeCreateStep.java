@@ -78,6 +78,13 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		}
 	}
 
+	@Override
+	public void refresh() throws Exception
+	{
+		super.refresh();
+		newProjectNameField.requestFocusInWindow();
+	}
+	
 	public void setComponent(String name, JComponent component)
 	{
 		if (name.equals(NEW_PROJECT_NAME))
