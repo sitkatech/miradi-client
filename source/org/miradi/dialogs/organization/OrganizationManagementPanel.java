@@ -70,5 +70,5 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return ActionJumpSummaryWizardRolesAndResponsibilities.class;
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Partners"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Title|Other Orgs"); 
 }
