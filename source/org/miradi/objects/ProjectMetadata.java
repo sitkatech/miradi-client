@@ -345,12 +345,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_MARINE_ECO_REGION, tncMarineEcoRegion);
 		addField(TAG_TNC_FRESHWATER_ECO_REGION, tncFreshwaterEcoRegion);
 		
-		otherOrgManagingOffice = new StringData(TAG_OTHER_ORG_MANAGING_OFFICE);
-		otherOrgRegionalOffice = new StringData(TAG_OTHER_ORG_REGIONAL_OFFICE);
 		otherOrgProjectNumber = new StringData(TAG_OTHER_ORG_PROJECT_NUMBER);
 		otherOrgRelatedProjects = new StringData(TAG_OTHER_ORG_RELATED_PROJECTS);
-		addField(TAG_OTHER_ORG_MANAGING_OFFICE, otherOrgManagingOffice);
-		addField(TAG_OTHER_ORG_REGIONAL_OFFICE, otherOrgRegionalOffice);
 		addField(TAG_OTHER_ORG_PROJECT_NUMBER, otherOrgProjectNumber);
 		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
 		
@@ -424,8 +420,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_MARINE_ECO_REGION = "TNC.MarineEcoRegion";
 	public static final String TAG_TNC_FRESHWATER_ECO_REGION = "TNC.FreshwaterEcoRegion";
 
-	public static final String TAG_OTHER_ORG_MANAGING_OFFICE = "OtherOrgManagingOffice";
-	public static final String TAG_OTHER_ORG_REGIONAL_OFFICE = "OtherOrgRegionalOffice";
 	public static final String TAG_OTHER_ORG_PROJECT_NUMBER = "OtherOrgProjectNumber";
 	public static final String TAG_OTHER_ORG_RELATED_PROJECTS = "OtherOrgRelatedProjects";	
 	
@@ -497,8 +491,6 @@ public class ProjectMetadata extends BaseObject
 	private CodeListData tncMarineEcoRegion;
 	private CodeListData tncFreshwaterEcoRegion;
 	
-	private StringData otherOrgManagingOffice;
-	private StringData otherOrgRegionalOffice;
 	private StringData otherOrgProjectNumber;
 	private StringData otherOrgRelatedProjects;
 	
