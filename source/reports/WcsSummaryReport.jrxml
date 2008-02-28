@@ -44,6 +44,18 @@
 		<fieldDescription><![CDATA[ObjectPools/Pool/WcsProjectData/StepCompleted]]></fieldDescription>
 	</field>
 
+
+		<group  name="ForcePageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -271,6 +283,15 @@
 					</textElement>
 				<text><![CDATA[Completed?]]></text>
 				</staticText>
+				<break>
+					<reportElement
+						x="-2"
+						y="101"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</detail>
 		<columnFooter>

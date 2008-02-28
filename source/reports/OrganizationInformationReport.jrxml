@@ -25,6 +25,18 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
+
+		<group  name="ForcedPageBreak" isStartNewPage="true" >
+			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -34,7 +46,7 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="0"
+						y="2"
 						width="168"
 						height="17"
 						key="staticText-1"
@@ -45,6 +57,15 @@
 					</textElement>
 				<text><![CDATA[Organizational Information]]></text>
 				</staticText>
+				<break>
+					<reportElement
+						x="-2"
+						y="1"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
 			</band>
 		</title>
 		<pageHeader>
