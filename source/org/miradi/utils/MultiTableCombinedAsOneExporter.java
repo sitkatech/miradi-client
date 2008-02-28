@@ -77,10 +77,10 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		return value.toString();
 	}
 	
-	public BaseObject getObjectForRow(int row)
+	public BaseObject getBaseObjectForRow(int row)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(0);
-		return tableAndColumnHolder.getTable().getObjectForRow(row);
+		return tableAndColumnHolder.getTable().getBaseObjectForRow(row);
 	}
 
 	private TableAndColumnHolder getTableAndColumn(int column)
