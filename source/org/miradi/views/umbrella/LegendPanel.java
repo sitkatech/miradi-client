@@ -7,7 +7,6 @@ package org.miradi.views.umbrella;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
@@ -198,7 +197,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	protected void addButtonLineWithCheckBox(JComponent panel, int objectType, String objectName, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
-		button.setText(EAM.fieldLabel(objectType, objectName));
 
 		panel.add(findCheckBox(objectName));
 		panel.add(button);
@@ -231,8 +229,6 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 		public LocationButton(EAMAction action)
 		{
 			super(action);
-			setText(null);
-			setMargin(new Insets(0, 0, 0 ,0));
 		}
 		
 		public boolean hasLocation()

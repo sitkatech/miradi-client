@@ -7,7 +7,6 @@ package org.miradi.dialogs.fieldComponents;
 
 import java.awt.Insets;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 
 import org.martus.swing.UiButton;
@@ -25,12 +24,7 @@ public class PanelButton extends UiButton
 	public PanelButton(Action action)
 	{
 		super(action);
-		String name = (String)action.getValue(AbstractAction.NAME);
-		if(name == null || name.length() == 0)
-			setMargin(new Insets(1,1,1,1));
-		else
-			setMargin(new Insets(3,3,3,3));
-			
+		setMargin(new Insets(2,2,2,2));
 
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
