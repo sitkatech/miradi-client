@@ -69,7 +69,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Table: Partner Organizations]]></text>
+				<text><![CDATA[Table: Other Orgs]]></text>
 				</staticText>
 			</band>
 		</pageHeader>
