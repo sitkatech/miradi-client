@@ -36,5 +36,5 @@ public class TaskIcon extends AbstractMiradiIcon
 		return TASK_COLOR;
 	}
 
-	public static final Color TASK_COLOR = Color.BLACK;
+	public static final Color TASK_COLOR = new Color(0xdd, 0xdd, 0xdd);
 }
