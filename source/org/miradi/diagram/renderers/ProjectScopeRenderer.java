@@ -32,6 +32,11 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		drawProjectScopeVision(g2, rect);
 
 	}
+	
+	protected Rectangle getMainTextRect()
+	{
+		return super.getMainTextRect();
+	}
 
 	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)
 	{
