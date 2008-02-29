@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MiradiLogoPanel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.HtmlViewPanel;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.noproject.CopyProject;
 import org.miradi.views.noproject.DeleteProject;
 import org.miradi.views.noproject.NoProjectView;
@@ -119,7 +120,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-				HtmlViewPanel htmlViewPanel = new HtmlViewPanel(getMainWindow(), def.term,  def.getDefintion());
+				HtmlViewPanel htmlViewPanel = new HtmlViewPanelWithMargins(getMainWindow(), def.term,  def.getDefintion());
 				htmlViewPanel.showAsOkDialog();
 			}
 			else if(linkDescription.startsWith(DOWNLOAD_PREFIX))
