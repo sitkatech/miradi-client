@@ -547,8 +547,7 @@ abstract public class BaseObject
 	}
 	
 	
-	//Note: this method works only with a subclasses that do not own referenced objects other then objects in list
-	// and in that the objects in list are not copied.
+	//Note this method does not clone referenced or owned objects
 	public CommandSetObjectData[] createCommandsToClone(BaseId baseId)
 	{
 		Vector commands = new Vector();
@@ -562,7 +561,9 @@ abstract public class BaseObject
 				continue;
 			if(isIdListField(tag))
 				continue;
-
+			if(isRefList(tag))
+				continue;
+			
 			commands.add(new CommandSetObjectData(getType(), baseId, tag, getData(tag)));
 		}
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
