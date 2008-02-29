@@ -60,7 +60,7 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		return super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 	}
 	
-	ProjectScopeBox projectScopeBox;
-	String vision;
-	int shortScopeHeight;
+	private ProjectScopeBox projectScopeBox;
+	private String vision;
+	private int shortScopeHeight;
 }
