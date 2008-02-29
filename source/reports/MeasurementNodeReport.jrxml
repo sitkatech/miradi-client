@@ -50,6 +50,20 @@
 		</columnHeader>
 		<detail>
 			<band height="20"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="135"
+						height="20"
+						key="staticText-1"
+						positionType="Float"/>
+					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="135"
@@ -192,8 +206,8 @@
 				</textField>
 				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="110"
-						y="4"
+						x="116"
+						y="3"
 						width="15"
 						height="15"
 						key="image-1"
@@ -202,20 +216,6 @@
 					<graphicElement stretchType="NoStretch"/>
 					<imageExpression class="java.awt.Image"><![CDATA[org.miradi.icons.IconManager.getMeasurementIcon()]]></imageExpression>
 				</image>
-				<staticText>
-					<reportElement
-						x="0"
-						y="0"
-						width="135"
-						height="20"
-						key="staticText-1"
-						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" leftBorder="Thin" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[]]></text>
-				</staticText>
 			</band>
 		</detail>
 		<columnFooter>
