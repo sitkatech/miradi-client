@@ -50,7 +50,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public static void attemptUpgrade(File projectDirectory) throws AlreadyLockedException
 	{
 		String[] migrationText = {
-				"This project was created with an older version of the app, " +
+				"This project was created with an older version of Miradi, " +
 				"so it needs to be migrated to the current data format before it can be opened. " +
 				"A backup will be saved first in case anything goes wrong. " +
 				"Perform the automatic migration?"
