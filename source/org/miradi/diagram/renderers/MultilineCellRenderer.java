@@ -94,7 +94,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		Rectangle textAreaRect = getMainTextRect();
 		htmlFormViewer.setSize(textAreaRect.getSize());
 		htmlFormViewer.setMaximumSize(textAreaRect.getSize());
-		htmlFormViewer.setLocation(textAreaRect.getLocation());
 		
 		g2.translate(textAreaRect.x, textAreaRect.y);
 		Shape clip = g2.getClip();
