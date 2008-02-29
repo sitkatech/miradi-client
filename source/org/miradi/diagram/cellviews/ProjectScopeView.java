@@ -20,7 +20,8 @@ public class ProjectScopeView extends RectangleCellView
 
 	public CellViewRenderer getRenderer()
 	{
-		return new ProjectScopeRenderer();
+		return projectScopeRenderer;
 	}
 
+	private static ProjectScopeRenderer projectScopeRenderer = new ProjectScopeRenderer();
 }
