@@ -90,22 +90,18 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			fillShape(g2, rect, getFillColor());
 		}
 		
-		int xInset = getInsetDimension().width;
-		int yInset = getInsetDimension().height;
-
+				
+		Rectangle textAreaRect = getMainTextRect();
+		htmlFormViewer.setSize(textAreaRect.getSize());
+		htmlFormViewer.setMaximumSize(textAreaRect.getSize());
+		htmlFormViewer.setLocation(textAreaRect.getLocation());
 		
-		Dimension dim = getNonBorderBounds().getSize();
-		dim.height = dim.height-2*yInset;
-		dim.width = dim.width-2*xInset;
-		htmlFormViewer.setSize(dim);
-		htmlFormViewer.setMaximumSize(dim);
-		
-		g2.translate(xInset, yInset);
+		g2.translate(textAreaRect.x, textAreaRect.y);
 		Shape clip = g2.getClip();
-		g2.clipRect(0, 0, dim.width, dim.height);
+		g2.clipRect(0, 0, textAreaRect.width, textAreaRect.height);
 		htmlFormViewer.paint(g2);
 		g2.setClip(clip);
-		g2.translate(-xInset, -yInset);
+		g2.translate(-textAreaRect.x, -textAreaRect.y);
 		
 		
 		if (bordercolor != null)
@@ -127,6 +123,20 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
+	}
+
+	protected Rectangle getMainTextRect()
+	{
+		Rectangle textAreaRect = getNonBorderBounds();
+		int xInset = getInsetDimension().width;
+		int yInset = getInsetDimension().height;
+	
+		textAreaRect.x += xInset;
+		textAreaRect.y += yInset;
+		textAreaRect.height -= (2 * yInset);
+		textAreaRect.width -= (2 * xInset);
+		
+		return textAreaRect;
 	}
 
 	Stroke getStroke()
