@@ -350,7 +350,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final int INDICATOR_WIDTH = 20;
 	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
-	private static final int CORNER_SIZE = 20;
+	protected static final int CORNER_SIZE = 20;
 	private static final int HANDLE_SIZE = 4;
 
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
