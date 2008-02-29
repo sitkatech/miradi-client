@@ -234,7 +234,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
 	    {
 	        if (isSelected) 
-	        	setColors(table.getSelectionBackground(), table.getSelectionForeground());
+	        	setColors(table.getSelectionBackground(), Color.BLACK);
 	        else 
 	        	setColors(table.getBackground(), table.getForeground());
 
