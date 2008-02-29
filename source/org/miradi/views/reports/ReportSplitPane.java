@@ -25,10 +25,10 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 
-public abstract class ReportSplitPane extends PersistentHorizontalSplitPane
+public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalSplitPane
 {
 	public ReportSplitPane(MainWindow mainWindowToUse, String uniqueSpitterName) throws Exception
 	{
