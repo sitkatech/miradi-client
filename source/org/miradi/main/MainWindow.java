@@ -60,6 +60,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.HtmlViewPanel;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.Doer;
@@ -901,7 +902,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (linkDescription.startsWith("Definition:"))
 		{
 			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-			HtmlViewPanel htmlViewPanel = new HtmlViewPanel(this, def.term,  def.getDefintion());
+			HtmlViewPanel htmlViewPanel = new HtmlViewPanelWithMargins(this, def.term,  def.getDefintion());
 			htmlViewPanel.showAsOkDialog();
 		} 
 		else if (isBrowserProtocol(linkDescription))

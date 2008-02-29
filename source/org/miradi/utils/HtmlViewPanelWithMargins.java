@@ -17,6 +17,12 @@ public class HtmlViewPanelWithMargins extends HtmlViewPanel
 		super(mainWindowToUse, titleToUse, classToUse, htmlFileNameToUse, new DummyHandler());
 	}
 	
+	public HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, String htmlText)
+	{
+		super(mainWindowToUse, titleToUse, htmlText, new DummyHandler());
+	}
+	
+	
 	@Override
 	protected void configureBodyComponent(HtmlFormViewer bodyComponent)
 	{
