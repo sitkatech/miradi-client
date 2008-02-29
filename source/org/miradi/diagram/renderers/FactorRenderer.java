@@ -362,8 +362,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return false;
 	}
 
-	protected static final int PRIORITY_WIDTH = 20;
-	protected static final int PRIORITY_HEIGHT = 10;
+	protected static final int PRIORITY_WIDTH = 16;
+	protected static final int PRIORITY_HEIGHT = 8;
 	protected ChoiceItem priority;
 	protected FactorCell node;
 	protected ChoiceItem rating;
