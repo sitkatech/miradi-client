@@ -55,7 +55,7 @@ abstract public class TabbedView extends UmbrellaView
 		tabPanels = new HashMap<String, MiradiTabContentsPanelInterface>();
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
-		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
+		setBorder(BorderFactory.createEmptyBorder(3,0,3,0));
 	}
 
 	public abstract void createTabs() throws Exception;
