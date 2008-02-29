@@ -57,12 +57,12 @@ public class DiagramConstants
 		new Color(240, 200, 255), 
 		new Color(240, 150, 255)};
 	
-	public static final Color DEFAULT_TARGET_COLOR = targetColorChoices[0];
+	public static final Color DEFAULT_TARGET_COLOR = targetColorChoices[1];
 	public static final Color DEFAULT_DIRECT_THREAT_COLOR = directThreatColorChoices[0];
 	public static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = contributingFactorColorChoices[0];
 	public static final Color DEFAULT_STRATEGY_COLOR = strategyColorChoices[0];
-	public static final Color DEFAULT_SCOPE_COLOR = scopeColorChoices[0];
-	public static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = intermediateResultChoices[0];
-	public static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = threatReductionResultChoices[0];
+	public static final Color DEFAULT_SCOPE_COLOR = scopeColorChoices[1];
+	public static final Color DEFAULT_INTERMEDIATE_RESULT_COLOR = intermediateResultChoices[4];
+	public static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = threatReductionResultChoices[4];
 
 }
