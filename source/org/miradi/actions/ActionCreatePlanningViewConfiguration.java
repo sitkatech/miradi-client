@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,7 +13,7 @@ public class ActionCreatePlanningViewConfiguration extends MainWindowAction
 {
 	public ActionCreatePlanningViewConfiguration(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new PlanningIcon());
 	}
 
 	private static String getLabel()
