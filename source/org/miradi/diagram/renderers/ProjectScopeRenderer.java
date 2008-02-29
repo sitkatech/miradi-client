@@ -36,7 +36,6 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 	protected Rectangle getMainTextRect()
 	{
 		Rectangle textAreaRect = super.getMainTextRect();
-		textAreaRect.y += shortScopeHeight;
 		textAreaRect.height = shortScopeHeight;
 		
 		return textAreaRect;
