@@ -38,7 +38,5 @@ public class PanelTable extends ExportableTable
 		return EAM.getMainWindow();
 	}
 
-	private static final int VERTICAL_FONT_CUSHION = 10;
-
-
+	private static final int VERTICAL_FONT_CUSHION = 5;
 }
