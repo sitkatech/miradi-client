@@ -219,8 +219,8 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	    
 	    private void setColors(Color background, Color foreground)
 	    {
+	    	setBackground(background);
 	        setForeground(foreground);
-	        setBackground(background);
 	    }
 	}
 	
