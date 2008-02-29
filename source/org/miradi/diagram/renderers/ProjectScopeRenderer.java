@@ -7,6 +7,7 @@ package org.miradi.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -31,6 +32,13 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		Rectangle rect = getNonBorderBounds();
 		drawProjectScopeVision(g2, rect);
 
+	}
+	
+	@Override
+	Dimension getInsetDimension()
+	{
+		Dimension insetDimension = new Dimension(CORNER_SIZE/2, 0);
+		return insetDimension;
 	}
 	
 	protected Rectangle getMainTextRect()
