@@ -40,7 +40,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 		try
 		{
 			String title = "Information";
-			new HtmlViewPanel(getMainWindow(), title, getResourceBaseClass(), buttonName).showAsOkDialog();
+			new HtmlViewPanelWithMargins(getMainWindow(), title, getResourceBaseClass(), buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
 		{

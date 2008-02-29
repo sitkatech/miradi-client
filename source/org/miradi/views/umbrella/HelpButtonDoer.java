@@ -10,7 +10,7 @@ import java.util.EventObject;
 import javax.swing.JComponent;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.utils.HtmlViewPanel;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.MainWindowDoer;
 
 public class HelpButtonDoer extends MainWindowDoer
@@ -33,7 +33,7 @@ public class HelpButtonDoer extends MainWindowDoer
 		if (data.resourceClass != null)
 			defaultResouceClass = data.resourceClass;
 			
-		new HtmlViewPanel(getMainWindow(), data.title, defaultResouceClass, data.htmlFile).showAsOkDialog();
+		new HtmlViewPanelWithMargins(getMainWindow(), data.title, defaultResouceClass, data.htmlFile).showAsOkDialog();
 	}
 	
 	public void doIt() throws CommandFailedException

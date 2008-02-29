@@ -40,11 +40,6 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
 	}
 	
-	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
-	{
-		this(mainWindowToUse, titleToUse,  classToUse,  htmlFileNameToUse, new DummyHandler());
-	}
-
 	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
 	{
 		this(mainWindowToUse, titleToUse, loadResourceFile(classToUse, htmlFileNameToUse), handlerToUse);
@@ -80,12 +75,13 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		HtmlFormViewer bodyComponent =  new MiradiHtmlViewer(mainWindow, this);
 		bodyComponent.setText(body);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		dlg.getContentPane().setBackground(AppPreferences.getWizardTitleBackground());
+		configureBodyComponent(bodyComponent);
 
 		JComponent topSection = createTopPanel();
 		JComponent buttonBar = createButtonBar(dlg);
 		
 		Container contents = dlg.getContentPane();
+		contents.setBackground(AppPreferences.getWizardTitleBackground());
 		contents.setLayout(new BorderLayout());
 		if(topSection != null)
 			contents.add(topSection, BorderLayout.BEFORE_FIRST_LINE);
@@ -98,6 +94,10 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		dlg.setVisible(true);
 	}
 
+
+	protected void configureBodyComponent(HtmlFormViewer bodyComponent)
+	{
+	}
 
 	protected JComponent createTopPanel()
 	{
