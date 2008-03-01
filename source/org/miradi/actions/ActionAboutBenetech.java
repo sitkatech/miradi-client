@@ -7,12 +7,13 @@ package org.miradi.actions;
 
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.MiradiResourceImageIcon;
 
 public class ActionAboutBenetech extends MainWindowAction
 {
 	public ActionAboutBenetech(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindow, getLabel(), new MiradiResourceImageIcon("icons/benetech16.png"));
 	}
 
 	private static String getLabel()
