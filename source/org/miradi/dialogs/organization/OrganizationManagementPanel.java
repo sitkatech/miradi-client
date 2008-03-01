@@ -14,16 +14,16 @@ import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.OrganizationIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
-	public OrganizationManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
+	public OrganizationManagementPanel(MainWindow mainWindowToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, new OrganizationPoolTablePanel(projectToUse, actionsToUse),
-				new OrganizationPropertiesPanel(projectToUse, BaseId.INVALID));
+		super(mainWindowToUse.getProject(), splitPositionSaverToUse, new OrganizationPoolTablePanel(mainWindowToUse, actionsToUse),
+				new OrganizationPropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 	}
 
