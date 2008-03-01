@@ -8,10 +8,10 @@ package org.miradi.wizard.diagram;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.DiagramWizardStep;
+import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class DescribeTargetStatusStep extends DiagramWizardStep
+public class DescribeTargetStatusStep extends TargetViabilityWizardStep
 {
 	public DescribeTargetStatusStep(WizardPanel panelToUse)
 	{
