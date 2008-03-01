@@ -8,10 +8,10 @@ package org.miradi.wizard.targetviability;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.DiagramWizardStep;
+import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability7Step extends DiagramWizardStep
+public class TargetViability7Step extends TargetViabilityWizardStep
 {
 	public TargetViability7Step(WizardPanel wizardToUse)
 	{

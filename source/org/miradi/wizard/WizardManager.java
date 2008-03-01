@@ -213,6 +213,16 @@ public class WizardManager
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new TargetViabilityOverviewStep(panel));
+		
+		createStepEntry(new DescribeTargetStatusStep(panel)).
+			createControl(CONTROL_NEXT, TargetStressesStep.class);
+		createStepEntry(new TargetViability3Step(panel)).
+			createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
+		createStepEntry(new TargetViability4Step(panel));
+		createStepEntry(new TargetViability5Step(panel));
+		createStepEntry(new TargetViability6Step(panel));
+		createStepEntry(new TargetViability7Step(panel));
+		createStepEntry(new TargetViability8Step(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -245,15 +255,6 @@ public class WizardManager
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
 			createControl("DetailedViability", TargetViability3Step.class);
-		createStepEntry(new DescribeTargetStatusStep(panel)).
-			createControl(CONTROL_NEXT, TargetStressesStep.class);
-		createStepEntry(new TargetViability3Step(panel)).
-			createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
-		createStepEntry(new TargetViability4Step(panel));
-		createStepEntry(new TargetViability5Step(panel));
-		createStepEntry(new TargetViability6Step(panel));
-		createStepEntry(new TargetViability7Step(panel));
-		createStepEntry(new TargetViability8Step(panel));
 		
 		createStepEntry(new TargetStressesStep(panel))
 			.createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
