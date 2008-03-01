@@ -38,8 +38,8 @@ import org.miradi.wizard.diagram.TargetStressesStep;
 import org.miradi.wizard.library.LibraryOverviewStep;
 import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
-import org.miradi.wizard.noproject.WelcomeImportStep;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
+import org.miradi.wizard.noproject.WelcomeImportStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardDemo;
@@ -72,7 +72,6 @@ import org.miradi.wizard.targetviability.TargetViability6Step;
 import org.miradi.wizard.targetviability.TargetViability7Step;
 import org.miradi.wizard.targetviability.TargetViability8Step;
 import org.miradi.wizard.targetviability.TargetViabilityMethodChoiceStep;
-import org.miradi.wizard.targetviability.TargetViabilityOverviewAfterDetailedModeStep;
 import org.miradi.wizard.targetviability.TargetViabilityOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatMatrixOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
@@ -213,10 +212,7 @@ public class WizardManager
 	
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
-		createStepEntry(new TargetViabilityOverviewStep(panel)).
-				createControl(CONTROL_NEXT, TargetViabilityMethodChoiceStep.class);
-		createStepEntry(new TargetViabilityOverviewAfterDetailedModeStep(panel)).
-				createControl(CONTROL_NEXT, TargetViabilityMethodChoiceStep.class);
+		createStepEntry(new TargetViabilityOverviewStep(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -247,10 +243,12 @@ public class WizardManager
 		createStepEntry(new DiagramWizardReviewAndModifyTargetsStep(panel));
 		//TODO rename TargetViability Classes to identif which step is which
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
-					createControl("DoneViabilityAnalysis", TargetStressesStep.class).
-					createControl("DetailedViability", TargetViability3Step.class);
-		createStepEntry(new DescribeTargetStatusStep(panel)).createControl(CONTROL_NEXT, TargetViabilityOverviewStep.class);
-		createStepEntry(new TargetViability3Step(panel)).createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
+			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
+			createControl("DetailedViability", TargetViability3Step.class);
+		createStepEntry(new DescribeTargetStatusStep(panel)).
+			createControl(CONTROL_NEXT, TargetStressesStep.class);
+		createStepEntry(new TargetViability3Step(panel)).
+			createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
 		createStepEntry(new TargetViability4Step(panel));
 		createStepEntry(new TargetViability5Step(panel));
 		createStepEntry(new TargetViability6Step(panel));
@@ -367,16 +365,15 @@ public class WizardManager
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
 				
+				TargetViabilityOverviewStep.class,
 				TargetViabilityMethodChoiceStep.class,
 				DescribeTargetStatusStep.class,
-				TargetViabilityOverviewStep.class,
 				TargetViability3Step.class,
 				TargetViability4Step.class,
 				TargetViability5Step.class,
 				TargetViability6Step.class,
 				TargetViability7Step.class,
 				TargetViability8Step.class,
-				TargetViabilityOverviewAfterDetailedModeStep.class,		
 				
 				TargetStressesStep.class,
 
