@@ -27,7 +27,6 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.dialogs.fieldComponents.HtmlPanelLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -44,6 +43,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.resources.ResourcesHandler;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
@@ -235,7 +235,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			try
 			{
 				String html = EAM.loadResourceFile(ResourcesHandler.class, "ResultsChainHelp.html");
-				add(new HtmlPanelLabel(getMainWindow(), html, null));
+				add(new FlexibleWidthHtmlViewer(getMainWindow(), html));
 			}
 			catch(Exception e)
 			{
