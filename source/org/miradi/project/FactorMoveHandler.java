@@ -56,8 +56,9 @@ public class FactorMoveHandler
 
 				if(factorCell.sizeHasChanged())
 					commandsToExecute.add(buildResizeCommand(factorCell));
-				
-				ensureLevelSegementToFirstBendPoint(factorCell);
+			
+				if(factorCell.hasMoved() || factorCell.sizeHasChanged())
+					ensureLevelSegementToFirstBendPoint(factorCell);
 			}
 
 			if(commandsToExecute.size() > 0)

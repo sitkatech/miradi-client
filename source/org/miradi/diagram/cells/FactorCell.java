@@ -389,11 +389,17 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean hasMoved()
 	{
+		if(getPreviousLocation() == null)
+			return false;
+		
 		return !getLocation().equals(getPreviousLocation());
 	}
 	
 	public boolean sizeHasChanged()
 	{
+		if(getPreviousSize() == null)
+			return false;
+		
 		return !getSize().equals(getPreviousSize());
 	}
 	
