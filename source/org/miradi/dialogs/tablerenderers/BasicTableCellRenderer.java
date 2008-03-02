@@ -56,7 +56,9 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 	
 	public Border getCellBorder()
 	{
-		return BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black);
+		Border line = BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black);
+		Border margin = BorderFactory.createEmptyBorder(CELL_MARGIN, CELL_MARGIN, CELL_MARGIN, CELL_MARGIN);
+		return BorderFactory.createCompoundBorder(line, margin);
 	}
 	
 	public Color getCellForegroundColor(JTable table, int row, int tableColumn)
@@ -71,5 +73,6 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 		return backgroundColor;
 	}
 	
+	public static final int CELL_MARGIN = 2;
 	private Color backgroundColor;
 }

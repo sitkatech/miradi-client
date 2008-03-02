@@ -7,9 +7,11 @@ package org.miradi.dialogs.fieldComponents;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTable;
+import org.miradi.utils.TableRowHeightSaver;
 
 public class PanelTable extends ExportableTable
 {
@@ -38,5 +40,7 @@ public class PanelTable extends ExportableTable
 		return EAM.getMainWindow();
 	}
 
-	private static final int VERTICAL_FONT_CUSHION = 5;
+	private static final int INTERCELL_LINE_SIZE = 3;
+	private static final int VERTICAL_FONT_CUSHION = INTERCELL_LINE_SIZE + 
+			TableRowHeightSaver.ROW_RESIZE_MARGIN + 2*BasicTableCellRenderer.CELL_MARGIN;
 }
