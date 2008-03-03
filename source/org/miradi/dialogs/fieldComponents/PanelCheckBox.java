@@ -28,7 +28,7 @@ public class PanelCheckBox extends UiCheckBox
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();

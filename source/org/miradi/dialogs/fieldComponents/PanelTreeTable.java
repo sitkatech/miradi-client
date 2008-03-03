@@ -47,7 +47,7 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();

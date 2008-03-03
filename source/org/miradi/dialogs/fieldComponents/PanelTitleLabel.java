@@ -50,7 +50,7 @@ public class PanelTitleLabel extends UiLabel
 		setBackground(AppPreferences.getControlPanelBackgroundColor());
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();
