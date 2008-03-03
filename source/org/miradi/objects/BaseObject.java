@@ -732,7 +732,7 @@ abstract public class BaseObject
 		if (Longlabel.length() <= 0)
 			return shortLabel;
 		
-		return shortLabel + "." + Longlabel;
+		return shortLabel + ". " + Longlabel;
 	}
 	
 	public String combineShortLabelAndLabel()
