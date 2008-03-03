@@ -43,8 +43,6 @@ import org.miradi.wizard.noproject.WelcomeImportStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardDemo;
-import org.miradi.wizard.planning.FinancialOverviewStep;
-import org.miradi.wizard.planning.MonitoringPlanOverviewStep;
 import org.miradi.wizard.planning.MonitoringWizardDefineIndicatorsStep;
 import org.miradi.wizard.planning.MonitoringWizardFocusStep;
 import org.miradi.wizard.planning.PlanningOverviewStep;
@@ -52,7 +50,6 @@ import org.miradi.wizard.planning.PlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.wizard.planning.PlanningWizardFinalizeStrategicPlanStep;
 import org.miradi.wizard.planning.StrategicPlanDevelopGoalStep;
 import org.miradi.wizard.planning.StrategicPlanDevelopObjectivesStep;
-import org.miradi.wizard.planning.StrategicPlanOverviewStep;
 import org.miradi.wizard.planning.WorkPlanAssignResourcesStep;
 import org.miradi.wizard.planning.WorkPlanCreateResourcesStep;
 import org.miradi.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
@@ -105,10 +102,7 @@ public class WizardManager
 		createTargetViabilityStepEntries(panel);
 		createThreatMatrixViewStepEntries(panel);
 		createPlanningViewStepEntries(panel);
-		createStrategicPlanStepEntries(panel);
-		createMonitoringViewStepEntries(panel);
 		createWorkPlanStepEntries(panel);
-		createBudgetStepEntries(panel);
 		createReportViewStepEntries(panel);
 		createScheduleStepEntries(panel);
 		createMapViewStepEntries(panel);
@@ -195,16 +189,6 @@ public class WizardManager
 			.createBackControl(NoProjectOverviewStep.class);
 	}
 	
-	public void createBudgetStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new FinancialOverviewStep(panel));
-	}
-	
-	public void createStrategicPlanStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new StrategicPlanOverviewStep(panel));
-	}
-	
 	public void createScheduleStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new ScheduleOverviewStep(panel));
@@ -237,11 +221,6 @@ public class WizardManager
 	public void createWorkPlanStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new WorkPlanOverviewStep(panel));
-	}
-	
-	public void createMonitoringViewStepEntries(WizardPanel panel)
-	{		
-		createStepEntry(new MonitoringPlanOverviewStep(panel));
 	}
 	
 	public void createDigramViewStepEntries(WizardPanel panel)
