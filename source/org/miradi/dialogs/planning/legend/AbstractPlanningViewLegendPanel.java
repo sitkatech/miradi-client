@@ -63,7 +63,7 @@ abstract public class AbstractPlanningViewLegendPanel extends LegendPanel implem
 		{
 			String visibleType = visibleTypes.get(i);
 			JCheckBox checkBox = findCheckBox(visibleType);
-			// FIXME: This avoided an exception on Kevin's machine...
+			// FIXME: This avoided an exception on machine...
 			// verify that it is legit and not just a bandaid covering 
 			// up a real bug!
 			//Verified that it wasnt a real but, but might still be effecting legacy projects.  
