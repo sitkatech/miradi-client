@@ -34,7 +34,7 @@ public class PanelTable extends ExportableTable
 		setRowHeight(getFontMetrics(getFont()).getHeight() + VERTICAL_FONT_CUSHION);
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	private MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();

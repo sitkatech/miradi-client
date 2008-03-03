@@ -21,7 +21,7 @@ public class HtmlPanelLabel extends HtmlFormViewer
 		return getMainWindow().getDataPanelFontSize();
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	public String getFontFamily()
 	{
 		return getMainWindow().getDataPanelFontFamily();

@@ -27,7 +27,7 @@ public class PanelTitledBorder extends TitledBorder
 		setTitleFont(font);
 	}
 	
-	//TODO: Richard: should not use static ref here
+	//TODO should not use static ref here
 	static private MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();
