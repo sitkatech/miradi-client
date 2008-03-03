@@ -185,7 +185,8 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
 		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
+		JMenuItem delete = addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_D);
+		delete.setAccelerator(KeyStroke.getKeyStroke('d'));	
 		JMenuItem selectAll = addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
 		setControlKeyAccelerator(selectAll, 'A');
 		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
