@@ -233,8 +233,10 @@ public class WizardManager
 		//TODO rename TargetViability Classes to identif which step is which
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
-			createControl("DetailedViability", TargetViability3Step.class);
-		
+			createControl(CONTROL_NEXT, TargetStressesStep.class).
+			createControl("DetailedViability", TargetViability3Step.class).
+			createControl("SimpleMode", DescribeTargetStatusStep.class);
+	
 		createStepEntry(new TargetStressesStep(panel))
 			.createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
 		
