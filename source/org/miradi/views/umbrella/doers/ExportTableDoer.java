@@ -39,8 +39,6 @@ public class ExportTableDoer extends ViewDoer
 		if (destination == null) 
 			return;
 		
-		//FIXME for dev only
-		//File destination = new File("C:/Users/Nima/Documents/some.txt");
 		try
 		{
 			writeTabDeliminted(destination);
