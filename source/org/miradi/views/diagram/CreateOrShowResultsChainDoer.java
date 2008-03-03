@@ -27,15 +27,6 @@ public class CreateOrShowResultsChainDoer extends ViewDoer
 		if (getDiagramView().isStategyBrainstormMode())
 			return false;
 		
-
-		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
-		Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
-		if (selectedFactors.length != 1)
-			return false;
-		
-		if (! selectedFactors[0].isStrategy())
-			return false;
-	
 		return true;
 	}
 
@@ -49,9 +40,7 @@ public class CreateOrShowResultsChainDoer extends ViewDoer
 		{
 			DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 			Factor[] selectedFactors = diagramPanel.getOnlySelectedFactors();
-			Strategy strategy = (Strategy) selectedFactors[0];
-			
-			if (strategy.getResultsChains().size() == 0)
+			if (shouldCreateResultsChain(selectedFactors))
 				CreateResultsChainDoer.createResultsChain(getProject(), getDiagramView());
 			else
 				ShowResultsChainDoer.showResultsChain(getDiagramView());
@@ -64,5 +53,17 @@ public class CreateOrShowResultsChainDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private boolean shouldCreateResultsChain(Factor[] selectedFactors)
+	{
+		if (selectedFactors.length == 0)
+			return true;
+		
+		if (!selectedFactors[0].isStrategy())
+			return true;
+		
+		Strategy strategy = (Strategy) selectedFactors[0];
+		return strategy.getResultsChains().size() == 0;
 	}
 }
