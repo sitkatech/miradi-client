@@ -58,6 +58,12 @@ public class Paste extends LocationDoer
 										  "Intermediate Results and Threat Reduction Results cannot be pasted as shared into a Conceptual Model page.</HTML>"));
 				return;
 			}
+			
+			if (pastingBetweenProjectsInDifferentDiagramType(list, diagramPaster))
+			{
+				EAM.notifyDialog(EAM.text("<HTML>When pasting between projects, can't paste from CM to RC or vice versa</HTML>"));
+				return;
+			}
 
 			clipboard.incrementPasteCount();
 			paste(diagramPaster);
@@ -123,6 +129,17 @@ public class Paste extends LocationDoer
 		
 		EAM.notifyDialog(EAM.text("Some of the data could not be moved to this project because " +
 								  "it refers to other data that only exists in the old project"));
+	}
+	
+	private boolean pastingBetweenProjectsInDifferentDiagramType(TransferableMiradiList list, DiagramPaster diagramPaster)
+	{
+		if (isPasteInSameProject(list))
+			return false;
+		
+		if (diagramPaster.isPastingInSameDiagramType())
+			return false;
+		
+		return true;
 	}
 
 	protected void paste(DiagramPaster diagramPaster) throws Exception

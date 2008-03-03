@@ -693,7 +693,7 @@ abstract public class DiagramPaster
 		return oldObjectRef.getObjectType();
 	}
 
-	protected boolean isPastingInSameDiagramType()
+	public boolean isPastingInSameDiagramType()
 	{
 		int fromType = transferableList.getDiagramObjectRefCopiedFrom().getObjectType();
 		int toType = getDiagramObject().getType();
