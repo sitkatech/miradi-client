@@ -94,7 +94,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	public String getColumnTagForNode(int nodeType, int column)
 	{
 		if (isDetailsColumn(column) && Strategy.is(nodeType))
-			return Strategy.TAG_COMMENT;
+			return Strategy.TAG_TEXT;
 		
 		return getColumnTag(column);
 	}
