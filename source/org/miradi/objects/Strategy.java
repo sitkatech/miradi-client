@@ -280,7 +280,12 @@ public class Strategy extends Factor
 	
 	public static boolean is(ORef ref)
 	{
-		return ref.getObjectType() == getObjectType();
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
 	}
 	
 	void clear()
