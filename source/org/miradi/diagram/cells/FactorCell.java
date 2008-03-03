@@ -66,7 +66,7 @@ abstract public class FactorCell extends EAMGraphCell
 		Project project = factor.getProject();
 		String formattedLabel =  XmlUtilities.getXmlEncoded(factor.getLabel());
 		formattedLabel = formattedLabel.replace("\n", "<br>");
-		String tip = "<html><b>" + formattedLabel + "</b>";
+		String tip = "<html><BR><TABLE width='400'><TR><TD><B>" + formattedLabel + "</B></TD></TR></TABLE>";
 		
 		String header = "";
 		ORefList bullets = new ORefList();
