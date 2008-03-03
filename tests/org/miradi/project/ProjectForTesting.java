@@ -90,8 +90,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 
 	protected void setDefaultDiagramPage(int objectType)
 	{
-		//TODO consult with kevin with this idea
-		//overrode to be empty, so that tests dont fail
+		//TODO overrode to be empty, so that tests dont fail
 	}
 	
 	//TODO this is fragile, should do a true close

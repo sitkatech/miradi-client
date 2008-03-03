@@ -46,7 +46,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 		return new Dimension(super.getPreferredSize().width, 100);
 	}
 
-	//FIXME: Kevin: This code needs to be analyzed
+	//FIXME This code needs to be analyzed
 	// to see if it really needs to rebuld its tree under all these conditions
 	// Also, taskTreeTablePanel and TargetViabilityTreeTablePanel should have very similar 
 	// CommandExecuted methods with very similar structures
