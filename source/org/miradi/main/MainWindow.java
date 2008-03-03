@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -105,7 +106,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void start(String[] args) throws Exception
 	{
-		if(Arrays.asList(args).contains("--demo"))
+		List<String> commandLineArguments = Arrays.asList(args);
+		if(commandLineArguments.contains("--demo"))
 			demoMode = true;
 		
 		File appPreferencesFile = getPreferencesFile();
@@ -167,19 +169,22 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
 
-		displayExpirationNoticeIfAppropriate();
-		
 		setExtendedState(ICONIFIED);
 		setSize(0,0);
 		setLocation(-100, -100);
 		setVisible(true);
-		if(!Arrays.asList(args).contains("--nosplash"))
+		if(!commandLineArguments.contains("--nosplash"))
 		{
 			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
 			aboutDoer.setMainWindow(this);
 			aboutDoer.doIt();
 		}
 
+		if(hasExpired() || commandLineArguments.contains("--expired"))
+		{
+			displayExpirationNotice();
+		}
+		
 		setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
 		setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
 		setExtendedState(NORMAL);
@@ -227,25 +232,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 		
-	private void displayExpirationNoticeIfAppropriate()
+	private void displayExpirationNotice() throws Exception
+	{
+		String html = EAM.loadResourceFile(ResourcesHandler.class, "ExpiredWarning.html");
+		HtmlViewPanelWithMargins viewer = new HtmlViewPanelWithMargins(this, EAM.text("Information"), html);
+		viewer.showAsOkDialog();
+	}
+
+	private boolean hasExpired()
 	{
 		MultiCalendar now = new MultiCalendar();
-		MultiCalendar expiresOn = MultiCalendar.createFromIsoDateString("2008-04-01");
-		if(now.before(expiresOn))
-			return;
-		
-		EAM.notifyDialog("<html>" +
-				"<b>This is an expired beta test version of Miradi.</b> <br>" +
-				"<br>" +
-				"Although this copy of the software will continue to function indefinitely, <br>" +
-				"it wasn't designed to be a production piece of software: <br>" +
-				"you're missing out on many bug fixes and improvements. <br>" +
-				"<br>" +
-				"Please log onto www.Miradi.org and obtain a licensed version. <br>" +
-				"In addition to getting the latest functionality and features, <br>" +
-				"you will also support your fair share of Miradi's ongoing development. <br>" +
-				"Miradi is a strictly not-for-profit project. All money raised from <br>" +
-				"distribution and licensing is used to fund support for users and to improve Miradi.");
+		final String isoExpiration = "2008-09-01";
+		EAM.logVerbose("Expires on: " + isoExpiration);
+		MultiCalendar expiresOn = MultiCalendar.createFromIsoDateString(isoExpiration);
+		boolean hasExpired = now.after(expiresOn);
+		return hasExpired;
 	}
 
 	public void hideDivider()
