@@ -52,14 +52,6 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 		return threat;
 	}
 	
-	public String toString()
-	{
-		if (threat.getShortLabel().length() > 0)
-			return threat.getShortLabel() + "." + getObject().getLabel();
-		
-		return super.toString();
-	}
-
 	private DiagramObject diagramObject;
 	private Cause threat;
 }
