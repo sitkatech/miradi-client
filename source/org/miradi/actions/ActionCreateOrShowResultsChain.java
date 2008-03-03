@@ -16,7 +16,6 @@ public class ActionCreateOrShowResultsChain extends ViewAction
 		super(mainWindow, getLabel(), new CreateResultsChainIcon());
 	}
 	
-	//TODO verify text for label and tooltip
 	private static String getLabel()
 	{
 		return EAM.text("Action|Show/Create Results Chain");
