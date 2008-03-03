@@ -399,7 +399,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			createConceptualModelDiagramTab();
 			createResultsChainTab();
 			
-			//TODO nima get tag using object type, diagram splitter has this info.  
+			//TODO get tag using object type, diagram splitter has this info.  
 			ensureDiagramIsSelected(ConceptualModelDiagram.getObjectType(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 			ensureDiagramIsSelected(ResultsChainDiagram.getObjectType(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
 			

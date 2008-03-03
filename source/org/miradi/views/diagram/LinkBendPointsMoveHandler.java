@@ -45,7 +45,7 @@ public class LinkBendPointsMoveHandler
 		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 	}
 
-	//TODO nima check for possible duplicate code in this class
+	//TODO check for possible duplicate code in this class
 	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] movedBendPoints) throws Exception
 	{		
 		PointList snappedMovedBendPoints = createSnappedBendPoints(movedBendPoints);
