@@ -96,6 +96,12 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		if (isDetailsColumn(column) && Strategy.is(nodeType))
 			return Strategy.TAG_TEXT;
 		
+		if (isDetailsColumn(column) && Indicator.is(nodeType))
+			return Indicator.TAG_DETAIL;
+		
+		if (isDetailsColumn(column) && Measurement.is(nodeType))
+			return Measurement.TAG_DETAIL;
+		
 		return getColumnTag(column);
 	}
 
