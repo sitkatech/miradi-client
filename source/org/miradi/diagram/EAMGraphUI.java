@@ -204,7 +204,7 @@ public class EAMGraphUI extends BasicGraphUI
 					allToTranslate.add(viewsToUse[i]);
 				}
 				
-				//TODO nima refactor this code
+				//TODO refactor this code
 				if (isFactorLinkView(viewsToUse[i]))
 				{	 
 					EdgeView edge = (EdgeView) viewsToUse[i];

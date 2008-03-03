@@ -220,7 +220,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 				return;
 			}
 			
-			//FIXME nima,  why does loading all the cards work (shows newly created RC)
+			//FIXME why does loading all the cards work (shows newly created RC)
 			reloadDiagramCards(ref.getObjectType());
 			DiagramComponent diagramComponent = findByRef(ref);
 			if (diagramComponent != null)			

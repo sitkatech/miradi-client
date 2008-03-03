@@ -241,7 +241,7 @@ public class LinkCreator
 		}
 	}
 
-	//TODO nima check to see if this method occurs else where
+	//TODO check to see if this method occurs else where
 	private ORef findDiagramFactor(DiagramObject diagramObject, ORefList diagramFactors)
 	{
 		for (int i = 0 ; i < diagramFactors.size(); ++i)

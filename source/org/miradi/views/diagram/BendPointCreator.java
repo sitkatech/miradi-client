@@ -25,7 +25,7 @@ public class BendPointCreator
 		model = diagram.getDiagramModel();
 	}
 	
-	//TODO write test for this method (nima)
+	//TODO write test for this method
 	public void createBendPoint(Point insertionLocation, DiagramLink selectedLink) throws Exception
 	{
 		LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);

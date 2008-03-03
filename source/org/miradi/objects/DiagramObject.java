@@ -192,7 +192,7 @@ abstract public class DiagramObject extends BaseObject
 		return factors;
 	}
 	
-	//TODO nima write test for this method
+	//TODO write test for this method
 	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
 		return allDiagramFactorIds.getIdList().contains(diagramFactorId);
