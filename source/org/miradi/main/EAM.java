@@ -488,6 +488,13 @@ public class EAM
 		okDialog("Import Complete", importCompleteText);
 		return true;
 	}
+	
+	public static void possiblyLogTooLowInitialMemory()
+	{
+		long maxMemory = Runtime.getRuntime().maxMemory();
+		if (maxMemory < 100000000)
+			logWarning(text("It appears that Miradi was launched without the -Xmx512m switch. As a result, certain operations like Reports may run out of memory."));    
+	}
 
 	public final static String EXTERNAL_RESOURCE_DIRECTORY_NAME = "ExternalResourceDirectory";
 	

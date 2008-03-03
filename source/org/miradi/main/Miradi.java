@@ -37,7 +37,7 @@ public class Miradi
 		if(Arrays.asList(args).contains("--verbose"))
 			EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.setExceptionLoggingDestination();
-		
+		EAM.possiblyLogTooLowInitialMemory();
 		Miradi.start(args);
 	}
 
