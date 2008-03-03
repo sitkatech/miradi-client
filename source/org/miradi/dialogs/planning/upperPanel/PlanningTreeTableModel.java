@@ -11,6 +11,7 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
@@ -90,6 +91,19 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		return getColumnTags().get(column);
 	}
 	
+	public String getColumnTagForNode(int nodeType, int column)
+	{
+		if (isDetailsColumn(column) && Strategy.is(nodeType))
+			return Strategy.TAG_COMMENT;
+		
+		return getColumnTag(column);
+	}
+
+	private boolean isDetailsColumn(int column)
+	{
+		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
+	}
+	
 	protected void rebuildNode()
 	{
 		try
@@ -109,7 +123,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		try
 		{
 			AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
-			String columnTag = getColumnTag(col);
+			String columnTag = getColumnTagForNode(treeNode.getType(), col);
 			BaseObject baseObject = treeNode.getObject();
 			if(baseObject == null)
 				return null;
