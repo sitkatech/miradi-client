@@ -66,9 +66,9 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		
 		String[] buttons = {ConstantButtonNames.CANCEL, ConstantButtonNames.CREATE};
 		String title = EAM.text("Create Task");
-		String[] body = {EAM.text("This task already has resources assigned to it. If a task has subtasks, " +
-									"those subtasks will be used for all budget calculations, " +
-									"and any resource assignments will be ignored. Are you sure you want to create a subtask?")};
+		String[] body = {EAM.text("This activity/method/task already has resources assigned to it. If it also " +
+								  "contains tasks/subtasks, those tasks will be used for all budget calculations, " +
+								  "and any resource assignments will be ignored. Are you sure you want to create a task/subtask?")};
 		
 		String userChoice = EAM.choiceDialog(title, body, buttons);
 		return userChoice.equals(ConstantButtonNames.CREATE);
