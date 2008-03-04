@@ -36,6 +36,7 @@ import org.miradi.actions.ActionNudgeDown;
 import org.miradi.actions.ActionNudgeLeft;
 import org.miradi.actions.ActionNudgeRight;
 import org.miradi.actions.ActionNudgeUp;
+import org.miradi.actions.ActionSelectAll;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -231,7 +232,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		try
 		{
-			Object[] selectedCells = getSelectionModel().getSelectionCells();
+			Object[] selectedCells = getOnlySelectedCells();
 			HashSet<EAMGraphCell> cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 			
 			return cellVector.toArray(new EAMGraphCell[0]);
@@ -266,7 +267,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if(getSelectionModel() == null)
 			return new HashSet<LinkCell>();
 	
-		Object[] rawCells = getSelectionModel().getSelectionCells();
+		Object[] rawCells = getOnlySelectedCells();
 		return getOnlySelectedLinkCells(rawCells);
 	}
 	
@@ -289,7 +290,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if(getSelectionModel() == null)
 			return new DiagramLink[0];
 		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
+		Object[] rawCells = getOnlySelectedCells();
 		return getOnlySelectedDiagramLinks(rawCells);
 	}
 	
@@ -307,12 +308,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
 	}
 	
-	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	public static FactorCell[] getOnlySelectedFactorCells(EAMGraphCell[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
-			EAMGraphCell cell = ((EAMGraphCell)allSelectedCells[i]);
+			EAMGraphCell cell = allSelectedCells[i];
 			if(cell.isFactor())
 				nodes.add(cell);
 		}
@@ -324,16 +325,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if (getSelectionModel() == null)
 			return new Factor[0];
 		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
+		EAMGraphCell[] rawCells = getOnlySelectedCells();
 		return getOnlySelectedFactors(rawCells);
 	}
 	
-	private Factor[] getOnlySelectedFactors(Object[] allSelectedFactors)
+	private Factor[] getOnlySelectedFactors(EAMGraphCell[] allSelectedFactors)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedFactors.length; ++i)
 		{
-			EAMGraphCell graphCell = ((EAMGraphCell)allSelectedFactors[i]);
+			EAMGraphCell graphCell = allSelectedFactors[i];
 			if(graphCell.isFactor())
 			{
 				ORef ref = graphCell.getDiagramFactor().getWrappedORef();
@@ -350,7 +351,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if(getSelectionModel() == null)
 			return new FactorCell[0];
 		
-		Object[] rawCells = getSelectionModel().getSelectionCells();
+		EAMGraphCell[] rawCells = getOnlySelectedCells();
 		return getOnlySelectedFactorCells(rawCells);
 	}
 	
@@ -392,13 +393,15 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
 		Object[] rawCells = getSelectionModel().getSelectionCells();
-		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
-		for(int i=0; i < cells.length; ++i)
+		Vector<EAMGraphCell> cells = new Vector<EAMGraphCell>();
+		for(int i=0; i < rawCells.length; ++i)
 		{
-			cells[i] = (EAMGraphCell)rawCells[i];
+			Object rawCell = rawCells[i];
+			if(rawCell instanceof EAMGraphCell)
+				cells.add((EAMGraphCell)rawCell);
 		}
 		
-		return cells;
+		return cells.toArray(new EAMGraphCell[0]);
 	}
 	
 	public FactorCell getSelectedFactor()
@@ -525,6 +528,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Action nudgeActionRight = actions.get(ActionNudgeRight.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
+		
+		Action selectAll = actions.get(ActionSelectAll.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK, selectAll);
 	}
 	
 	public CellView getNextSelectableViewAt(CellView current, double x, double y)
@@ -557,7 +563,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			Object[] cells = event.getCells();
 			for(int i = 0; i < cells.length; ++i)
 			{
-				EAMGraphCell cell = (EAMGraphCell)cells[i];
+				Object rawCell = cells[i];
+				if(! (rawCell instanceof EAMGraphCell))
+					continue;
+				
+				EAMGraphCell cell = (EAMGraphCell)rawCell;
 				if(cell.isFactor())
 				{
 					GraphLayoutCache glc = getGraphLayoutCache();
