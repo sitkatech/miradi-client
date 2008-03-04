@@ -467,7 +467,7 @@ abstract public class BaseObject
 		if(cost == 0.0)
 			return "";
 		
-		DecimalFormat formater = objectManager.getProject().getCurrencyFormatter();
+		DecimalFormat formater = objectManager.getProject().getCurrencyFormatterWithCommas();
 		return formater.format(cost);
 	}
 	

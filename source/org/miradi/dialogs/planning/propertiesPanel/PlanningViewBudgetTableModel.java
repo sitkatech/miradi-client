@@ -21,7 +21,7 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 	{
 		super(projectToUse);
 		
-		currencyFormatter = getProject().getCurrencyFormatter();
+		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
 	
 	public boolean isCellEditable(int rowIndex, int columnIndex)

@@ -22,7 +22,7 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends EditableO
 	{
 		super(projectToUse);
 		assignmentRefs = new ORefList();
-		currencyFormatter = getProject().getCurrencyFormatter();
+		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
 	
 	public int getRowCount()

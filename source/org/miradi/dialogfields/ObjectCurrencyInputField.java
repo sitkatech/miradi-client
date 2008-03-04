@@ -22,7 +22,7 @@ public class ObjectCurrencyInputField extends ObjectStringInputField
 		try
 		{
 			double valueToFormat = Double.parseDouble(newValue);
-			DecimalFormat currencyFormatter = project.getCurrencyFormatter();
+			DecimalFormat currencyFormatter = project.getCurrencyFormatterWithCommas();
 			currencyFormatter.setGroupingUsed(false);
 			newValue = currencyFormatter.format(valueToFormat);
 		}
