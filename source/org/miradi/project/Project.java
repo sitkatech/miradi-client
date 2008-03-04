@@ -1259,6 +1259,14 @@ public class Project
 		return formatter;
 	}
 	
+	public DecimalFormat getCurrencyFormatterWithoutCommas()
+	{
+		DecimalFormat formatter = getCurrencyFormatterWithCommas();
+		formatter.setGroupingUsed(false);
+		
+		return formatter;
+	}
+	
 	public int getDiagramFontSize()
 	{
 		int size = getMetadata().getDiagramFontSize();

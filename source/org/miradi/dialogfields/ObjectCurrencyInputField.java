@@ -5,8 +5,6 @@
 */ 
 package org.miradi.dialogfields;
 
-import java.text.DecimalFormat;
-
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 
@@ -22,9 +20,7 @@ public class ObjectCurrencyInputField extends ObjectStringInputField
 		try
 		{
 			double valueToFormat = Double.parseDouble(newValue);
-			DecimalFormat currencyFormatter = project.getCurrencyFormatterWithCommas();
-			currencyFormatter.setGroupingUsed(false);
-			newValue = currencyFormatter.format(valueToFormat);
+			newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
 		}
 		catch (Exception e) 
 		{
