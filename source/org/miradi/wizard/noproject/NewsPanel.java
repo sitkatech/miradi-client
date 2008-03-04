@@ -15,7 +15,9 @@ import javax.swing.SwingUtilities;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.wizard.WizardRightSideHtmlViewer;
 
 public class NewsPanel extends WizardRightSideHtmlViewer
@@ -45,7 +47,21 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 			}
 			catch(Exception e)
 			{
+				return getNoNewsText();
+			}
+		}
+
+		private String getNoNewsText() 
+		{
+			try
+			{
+				return EAM.loadResourceFile(ResourcesHandler.class, "NoNews.html");
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
 				return "Miradi news is not available";
+
 			}
 		}
 		
