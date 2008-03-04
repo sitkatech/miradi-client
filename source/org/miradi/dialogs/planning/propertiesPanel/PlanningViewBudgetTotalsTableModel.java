@@ -21,7 +21,7 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 		
 		totalsCalculator = new BudgetCalculator(getProject());
 		dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
-		currencyFormatter = getProject().getCurrencyFormatter();
+		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
 	
 	public String getColumnName(int column)

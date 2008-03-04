@@ -25,7 +25,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 		yearlyDateRanges = getProjectCalendar().getYearlyDateRanges();
 		combinedDataRange = getProjectCalendar().combineStartToEndProjectRange();
-		currencyFormatter = project.getCurrencyFormatter();
+		currencyFormatter = project.getCurrencyFormatterWithCommas();
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception

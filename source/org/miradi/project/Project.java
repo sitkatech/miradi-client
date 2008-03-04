@@ -1249,7 +1249,7 @@ public class Project
 		return formatter;
 	}
 	
-	public DecimalFormat getCurrencyFormatter()
+	public DecimalFormat getCurrencyFormatterWithCommas()
 	{
 		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
 		DecimalFormat formatter = new DecimalFormat();
