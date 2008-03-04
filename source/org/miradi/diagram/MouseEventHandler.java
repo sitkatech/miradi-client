@@ -244,7 +244,11 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		Object[] selectionTransitionCells = event.getCells();
 		for(int i = 0; i < selectionTransitionCells.length; ++i)
 		{
-			EAMGraphCell selectedCell = (EAMGraphCell)selectionTransitionCells[i];
+			Object rawCell = selectionTransitionCells[i];
+			if(!(rawCell instanceof EAMGraphCell))
+				continue;
+			
+			EAMGraphCell selectedCell = (EAMGraphCell)rawCell;
 			if(selectedCell.isFactorLink() && ! event.isAddedCell(selectedCell))
 			{
 				LinkCell  link = (LinkCell)selectedCell;

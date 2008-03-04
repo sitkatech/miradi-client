@@ -103,7 +103,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		return getdiagramComponent().getOnlySelectedFactorAndGroupChildCells();
 	}
 	
-	public static FactorCell[] getOnlySelectedFactorCells(Object[] allSelectedCells)
+	public static FactorCell[] getOnlySelectedFactorCells(EAMGraphCell[] allSelectedCells)
 	{
 		return DiagramComponent.getOnlySelectedFactorCells(allSelectedCells);
 	}
