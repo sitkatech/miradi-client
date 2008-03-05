@@ -95,7 +95,7 @@ public class Indicator extends BaseObject
 			return getIndicatorMethodsSingleLine();
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_METHOD_OREF_LIST))
-			return getMethods().toString();
+			return getMethodRefs().toString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_LATEST_MEASUREMENT_REF))
 			return getLatestMeasurementRef().toString();
@@ -168,7 +168,7 @@ public class Indicator extends BaseObject
 		return result.toString();
 	}
 	
-	public ORefList getMethods()
+	public ORefList getMethodRefs()
 	{
 		return new ORefList(Task.getObjectType(), getTaskIdList());
 	}
@@ -303,7 +303,7 @@ public class Indicator extends BaseObject
 	public ORefList getAllObjectsToDeepCopy()
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
-		deepObjectRefsToCopy.addAll(getMethods());
+		deepObjectRefsToCopy.addAll(getMethodRefs());
 		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
@@ -318,7 +318,7 @@ public class Indicator extends BaseObject
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		double total = 0.0;
-		ORefList methodRefs = getMethods();
+		ORefList methodRefs = getMethodRefs();
 		for(int i = 0; i < methodRefs.size(); ++i)
 		{
 			Task method = Task.find(getProject(), methodRefs.get(i));

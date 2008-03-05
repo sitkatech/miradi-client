@@ -36,7 +36,7 @@ public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 	{
 		ORefList filteredTaskRefs = new ORefList();
 		Indicator  parentIndicator = (Indicator) getProject().findObject(parentRef);
-		ORefList parentsMethodRefs = parentIndicator.getMethods();
+		ORefList parentsMethodRefs = parentIndicator.getMethodRefs();
 		ORefList taskRefs = super.getLatestRefListFromProject();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
