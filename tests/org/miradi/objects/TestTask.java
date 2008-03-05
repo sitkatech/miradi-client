@@ -5,15 +5,15 @@
  */
 package org.miradi.objects;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
+import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 
 public class TestTask extends ObjectTestCase
 {
@@ -109,4 +109,68 @@ public class TestTask extends ObjectTestCase
 		parent.addSubtaskId(child2.getId());
 		return parent;
 	}
+	
+	public void testGetCombinedEffortDates() throws Exception
+	{
+		Task taskWithNoSubtasksNoAssignment = createTask(); 
+		DateRange combinedDateRange = taskWithNoSubtasksNoAssignment.getCombinedEffortDates();
+		assertEquals("combined date range is not null?", null, combinedDateRange);
+		
+		Task taskWithNoSubTasksWithAssignment = createTask();
+		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 1000, 3000);
+		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getAssignmentIdList().size());
+		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 3000).getDateRange(), taskWithNoSubTasksWithAssignment.getCombinedEffortDates());
+		
+		Task taskWithoutUnits = createTask();
+		addAssignment(taskWithoutUnits, 0, 1000, 1001);
+		assertEquals("assignment was not added?", 1, taskWithoutUnits.getAssignmentIdList().size());
+		assertEquals("wrong combined date range?", null, taskWithoutUnits.getCombinedEffortDates());
+		
+		Task taskWithSubtasks = createTask();
+		Task subTask = createTask();
+		IdList subTaskIds = new IdList(Task.getObjectType());
+		subTaskIds.add(subTask.getId());
+		taskWithSubtasks.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
+		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getCombinedEffortDates());
+		
+		addAssignment(subTask, 1.0, 2000, 2010);
+		addAssignment(subTask, 1.0, 10, 20);
+		addAssignment(subTask, 0, 9998, 9999);
+		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 2010).getDateRange(), taskWithSubtasks.getCombinedEffortDates());
+	}
+
+	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
+	{
+		Assignment assignment = createAssignment();
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
+		dateRangeEffort.setUnitQuantity(units);
+		dateRangeEffortList.add(dateRangeEffort);
+		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		IdList currentAssignmentIdList = task.getAssignmentIdList();
+		currentAssignmentIdList.add(assignment.getId());
+		task.setData(Task.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+	}
+
+	private Task createTask() throws Exception
+	{
+		ORef taskRef = getProject().createObject(Task.getObjectType());
+		return Task.find(getProject(), taskRef);
+	}
+
+	private Assignment createAssignment() throws Exception
+	{
+		ORef assignmentRef = getProject().createObject(Assignment.getObjectType());
+		return Assignment.find(getProject(), assignmentRef);
+	}
+	
+	public static DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
+	{
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, 1, 1);
+		DateRange dateRange = new DateRange(startDate, endDate);
+		
+		return new DateRangeEffort("", 0, dateRange);
+	}
 }
+

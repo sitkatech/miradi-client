@@ -42,6 +42,6 @@ public class TestDateRangeEffortList extends EAMTestCase
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
 		DateRange dateRange = new DateRange(startDate, endDate);
 		
-		return new DateRangeEffort("", 0, dateRange);
+		return new DateRangeEffort("", 1, dateRange);
 	}
 }

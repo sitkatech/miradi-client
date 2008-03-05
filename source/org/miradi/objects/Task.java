@@ -251,32 +251,57 @@ public class Task extends BaseObject
 			return getAppendedResourceNames();
 		
 		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
-			return getCombinedEffortDates();
+			return getCombinedEffortDatesAsString();
 		
 		return super.getPseudoData(fieldTag);
 	}
 
-	private String getCombinedEffortDates()
+	public String getCombinedEffortDatesAsString()
 	{
 		try
 		{
-			DateRange combinedDateRange = combineEffortListDateRanges(); 
-			if (combinedDateRange == null || assignmentIds.size() == 0)
-				return "";
-			
-			int startYear = combinedDateRange.getStartDate().getGregorianYear();
-			int endYear = combinedDateRange.getEndDate().getGregorianYear();
-			
-			if (startYear == endYear)
-				return Integer.toString(startYear);
-			
-			return  Integer.toString(startYear) +" - "+ Integer.toString(endYear);
+			return convertToSafeString(getCombinedEffortDates());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		} 
+	}
+	
+	public DateRange getCombinedEffortDates() throws Exception
+	{
+		if (getSubtaskCount() == 0)
+			return combineEffortListDateRanges();
+		
+		return combineSubTaskEffortListDateRanges();
+	}
+
+	private String convertToSafeString(DateRange combinedDateRange)
+	{
+		if (combinedDateRange == null)
+			return "";
+		
+		return  combinedDateRange.toString();
+	}
+
+	private DateRange combineSubTaskEffortListDateRanges() throws Exception
+	{
+		DateRange combinedDateRange = null;
+		ORefList subtaskRefs = getSubtasks();
+		for (int i = 0; i < subtaskRefs.size(); ++i)
+		{
+			Task thisTask = find(getProject(), subtaskRefs.get(i));
+			DateRange thisCombineEffortListDateRanges = thisTask.combineEffortListDateRanges();
+			if (thisCombineEffortListDateRanges == null)
+				continue;
+			
+			if (combinedDateRange == null)
+				combinedDateRange = new DateRange(thisCombineEffortListDateRanges);
+			
+			combinedDateRange = DateRange.combine(combinedDateRange, new DateRange(thisCombineEffortListDateRanges));
+		}
+		return combinedDateRange;
 	}
 
 	private DateRange combineEffortListDateRanges() throws Exception
