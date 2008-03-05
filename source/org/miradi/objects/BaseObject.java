@@ -403,6 +403,18 @@ abstract public class BaseObject
 		return getBudgetCostRollup(dateRange);
 	}
 	
+	public double getTasksBudgetCostRollUp(DateRange dateRangeToUse, ORefList taskRefs) throws Exception
+	{
+		double total = 0.0;
+		for(int i = 0; i < taskRefs.size(); ++i)
+		{
+			Task task = Task.find(getProject(), taskRefs.get(i));
+			total += task.getProportionalBudgetCost(dateRangeToUse);
+		}
+
+		return total;
+	}
+	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		return 0;
