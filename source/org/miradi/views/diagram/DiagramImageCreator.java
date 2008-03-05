@@ -19,19 +19,20 @@ import org.miradi.utils.CodeList;
 
 public class DiagramImageCreator
 {
-	static public BufferedImage getImage(MainWindow mainWindow, DiagramObject diagramObject)
+	public static BufferedImage getImage(MainWindow mainWindow, DiagramObject diagramObject)
 	{
 		try
 		{
-			DiagramComponent comp = getComponent(mainWindow, diagramObject);
-			Rectangle bounds = comp.getCurrentUsedBounds();
+			DiagramComponent comp = createComponent(mainWindow, diagramObject);
+			Rectangle bounds = new Rectangle(comp.getTotalBoundsUsed().getBounds());
+			comp.toScreen(bounds);
 			BufferedImage image = comp.getImage();
 			
 			int x = Math.max(bounds.x, 0);
 			int y = Math.max(bounds.y, 0);
 			int imageWidth = image.getWidth() - x; 
 			int imageHeight = image.getHeight() - y;
-		
+			
 			return image.getSubimage(x, y, imageWidth, imageHeight);
 		}
 		catch(Exception e)
@@ -41,9 +42,10 @@ public class DiagramImageCreator
 		}
 	}
 
-	public static DiagramComponent getComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	public static DiagramComponent createComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
+		comp.setScale(1.0);
 		comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 		
 		// TODO: This is here because setting a factor/link to be visible also has
