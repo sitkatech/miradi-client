@@ -26,6 +26,7 @@ import org.jgraph.JGraph;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.CellView;
+import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
@@ -728,6 +729,26 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			return view.getBounds();
 		
 		return new Rectangle(-1, -1, -1, -1);
+	}
+	
+	public Rectangle2D getTotalBoundsUsed()
+	{
+		Rectangle2D totalBounds = null;
+		Object[] allCells = getRoots();
+		for (int i = 0 ; i < allCells.length; ++i)
+		{
+			DefaultGraphCell cell = (DefaultGraphCell)allCells[i];
+			if (!graphLayoutCache.isVisible(cell))
+				continue;
+			
+			Rectangle2D cellBounds = getCellBounds(cell);
+			if (totalBounds == null)
+				totalBounds = new Rectangle(cellBounds.getBounds());
+			
+			totalBounds.add(cellBounds);
+		}
+		
+		return totalBounds;
 	}
 	
 	private MainWindow mainWindow;
