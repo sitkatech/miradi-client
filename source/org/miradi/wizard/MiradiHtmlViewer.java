@@ -36,6 +36,8 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 	 */
 	final static String[] rules = {
 		"code {}",
+		"h3 { margin-top: 2px; margin-bottom: 0; }",
+		"p  {  }",
 		"  .sidebar {background-color: " + AppPreferences.getWizardSidebarBackgroundColorForCss() + ";}",
 		"  .viewname { font-size: 125%; font-weight: bold }",
 		"  .appname { font-size: 200%; font-weight: bold }",
