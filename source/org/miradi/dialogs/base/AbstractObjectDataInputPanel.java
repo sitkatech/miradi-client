@@ -24,7 +24,6 @@ import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectClassificationChoiceField;
-import org.miradi.dialogfields.ObjectCodeListDisplayField;
 import org.miradi.dialogfields.ObjectCodeListField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -410,11 +409,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		objectCodeListField.setDisabledCodes(disabledChoices);
 		
 		return objectCodeListField;
-	}
-	
-	public ObjectDataInputField createReadonlyMultiCodeField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
-	{
-		return new ObjectCodeListDisplayField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)
