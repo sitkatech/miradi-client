@@ -267,15 +267,7 @@ public class Strategy extends Factor
 	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
-		double total = 0.0;
-		ORefList activityRefs = getActivityRefs();
-		for(int i = 0; i < activityRefs.size(); ++i)
-		{
-			Task activity = Task.find(getProject(), activityRefs.get(i));
-			total += activity.getProportionalBudgetCost(dateRangeToUse);
-		}
-
-		return total;
+		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());
 	}
 	
 	public static boolean is(ORef ref)

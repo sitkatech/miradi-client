@@ -302,15 +302,7 @@ public class Indicator extends BaseObject
 	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
-		double total = 0.0;
-		ORefList methodRefs = getMethodRefs();
-		for(int i = 0; i < methodRefs.size(); ++i)
-		{
-			Task method = Task.find(getProject(), methodRefs.get(i));
-			total += method.getProportionalBudgetCost(dateRangeToUse);
-		}
-
-		return total;
+		return getTasksBudgetCostRollUp(dateRangeToUse, getMethodRefs());
 	}
 	
 	public String toString()
