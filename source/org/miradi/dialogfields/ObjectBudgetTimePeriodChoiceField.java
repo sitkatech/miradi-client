@@ -25,6 +25,9 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 	
 	public void setText(String code)
 	{
+		if(disableHandler)
+			return;
+		
 		boolean oldValue = disableHandler;
 		disableHandler = true;
 		try
@@ -77,6 +80,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 
 	private void doConversion(String newCode, String conversionType) throws Exception
 	{
+		disableHandler = true;
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -93,6 +97,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
+			disableHandler = false;
 		}
 	}
 
