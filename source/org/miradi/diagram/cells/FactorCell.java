@@ -26,7 +26,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
@@ -64,25 +63,32 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		Factor factor = getUnderlyingObject();
 		Project project = factor.getProject();
-		String formattedLabel =  XmlUtilities.getXmlEncoded(factor.getLabel());
-		formattedLabel = formattedLabel.replace("\n", "<br>");
-		String tip = "<html><BR><TABLE width='400'><TR><TD><B>" + formattedLabel + "</B></TD></TR></TABLE>";
+
+		String tip = "<html>";
+
+		tip += "<TABLE width='400'><TR><TD>";
+		
+		tip += "<B>" + getSafeMultilineString(factor.getLabel()) + "</B><BR>";
 		
 		String header = "";
+		String detailsTag = "";
 		ORefList bullets = new ORefList();
 		if(isPointInIndicator(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Indicators:");
+			detailsTag = Indicator.TAG_DETAIL;
 			bullets = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
 		}
 		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Goals:");
+			detailsTag = Goal.TAG_FULL_TEXT;
 			bullets = new ORefList(Goal.getObjectType(), factor.getGoals());
 		}
 		else if(isPointInObjective(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Objectives:");
+			detailsTag = Objective.TAG_FULL_TEXT;
 			bullets = new ORefList(Objective.getObjectType(), factor.getObjectives());
 		}
 		
@@ -93,23 +99,27 @@ abstract public class FactorCell extends EAMGraphCell
 		for(int i = 0; i < bullets.size(); ++i)
 		{
 			BaseObject object = project.findObject(bullets.get(i));
-			tip += getObjectText(object);
-		}
-		
+			tip += getObjectText(object, object.getData(detailsTag));
+		}	
 		tip += "</UL>";
+		
+		tip += "</TD></TR></TABLE>";
 		return tip;
 	}
 
-	private String getObjectText(BaseObject object)
+	private String getSafeMultilineString(String factorName)
 	{
-		String text = "<LI>" + object.combineShortLabelAndLabel() + "";
+		String formattedLabel =  XmlUtilities.getXmlEncoded(factorName);
+		String formattedFactorName = formattedLabel.replace("\n", "<br>");
+		return formattedFactorName;
+	}
+
+	private String getObjectText(BaseObject object, String details)
+	{
+		String text = "<LI>" + getSafeMultilineString(object.combineShortLabelAndLabel()) + "";
 		
-		if (object.getType() == Objective.getObjectType() || object.getType() == Goal.getObjectType())
-		{ 
-			Desire desire = (Desire) object;
-			text += 			
-					"<BR><TABLE width='400'><TR><TD><I>" +	desire.getFullText() + "</I></TD></TR></TABLE>";	
-		}
+		if (details.length() > 0)
+			text += "<BR><I>" +	getSafeMultilineString(details) + "</I>";	
 		
 		text += "</LI>";
 		return text;
