@@ -74,7 +74,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		BaseId nonExistantId = new BaseId(500);
 		CommandSetObjectData appendTask = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, nonExistantId);
 		getProject().executeCommand(appendTask);
-		assertEquals("task not appended?", 1, indicator.getTaskCount());		
+		assertEquals("task not appended?", 1, indicator.getMethodRefs().size());		
 		assertEquals("Didn't detect non-existant method?", 1, repairer.findAllCorruptedObjects().size());
 		
 		ORef taskRef = getProject().createObject(Task.getObjectType());
