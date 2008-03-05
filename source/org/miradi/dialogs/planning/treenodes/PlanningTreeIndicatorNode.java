@@ -26,7 +26,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 
 	public void rebuild() throws Exception
 	{
-		ORefList methodRefs = indicator.getMethods();
+		ORefList methodRefs = indicator.getMethodRefs();
 		createAndAddTaskNodes(methodRefs);
 		addSortedMeasurementChildren();
 	}
