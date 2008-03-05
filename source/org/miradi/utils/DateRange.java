@@ -25,8 +25,6 @@ public class DateRange
 	{
 		this(new MultiCalendar(other.getStartDate()), new MultiCalendar(other.getEndDate()));
 	}
-
-	
 	
 	private static MultiCalendar createDateFromJson(EnhancedJsonObject json, String tag)
 	{
