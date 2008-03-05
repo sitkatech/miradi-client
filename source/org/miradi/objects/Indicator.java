@@ -63,11 +63,6 @@ public class Indicator extends BaseObject
 		return taskIds.getIdList().createClone();
 	}
 	
-	public ORefList getTaskRefs()
-	{
-		return new ORefList(Task.getObjectType(), getTaskIdList());
-	}
-	
 	public void addTaskId(BaseId taskId)
 	{
 		taskIds.add(taskId);
@@ -175,7 +170,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMethods()
 	{
-		return new ORefList(Task.getObjectType(), getTaskIdList());	
+		return new ORefList(Task.getObjectType(), getTaskIdList());
 	}
 	
 	public static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
@@ -323,7 +318,7 @@ public class Indicator extends BaseObject
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		double total = 0.0;
-		ORefList methodRefs = getTaskRefs();
+		ORefList methodRefs = getMethods();
 		for(int i = 0; i < methodRefs.size(); ++i)
 		{
 			Task method = Task.find(getProject(), methodRefs.get(i));
