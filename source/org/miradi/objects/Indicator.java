@@ -48,24 +48,9 @@ public class Indicator extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
-	public int getTaskCount()
-	{
-		return taskIds.size();
-	}
-	
-	public BaseId getTaskId(int index)
-	{
-		return taskIds.get(index);
-	}
-	
 	public IdList getTaskIdList()
 	{
 		return taskIds.getIdList().createClone();
-	}
-	
-	public void addTaskId(BaseId taskId)
-	{
-		taskIds.add(taskId);
 	}
 	
 	public StringMapData getThreshold()
