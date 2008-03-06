@@ -18,7 +18,7 @@ public class TestPlanningTreeStrategyNode extends TestPlanningTree
 	
 	public void testPlanningTreeStrategyNode() throws Exception
 	{
-		ORefList activityRefs = getStrategy().getActivities();
+		ORefList activityRefs = getStrategy().getActivityRefs();
 		assertEquals("wrong activity count?", 1, activityRefs.size());
 		assertTrue("wrong type returned?", isActivity(activityRefs.get(0)));
 	}
