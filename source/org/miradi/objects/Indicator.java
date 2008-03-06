@@ -305,6 +305,11 @@ public class Indicator extends BaseObject
 		return getTasksBudgetCostRollUp(dateRangeToUse, getMethodRefs());
 	}
 	
+	public DateRange getCombinedEffortDates() throws Exception
+	{
+		return combineSubtaskEffortListDateRanges(getMethodRefs());
+	}
+	
 	public String toString()
 	{
 		if(getId().isInvalid())

@@ -483,6 +483,49 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
+	public String getCombinedEffortDatesAsString()
+	{
+		try
+		{
+			return convertToSafeString(getCombinedEffortDates());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		} 
+	}
+	
+	public DateRange getCombinedEffortDates() throws Exception
+	{
+		return null;
+	}
+
+	public DateRange combineSubtaskEffortListDateRanges(ORefList taskRefs) throws Exception
+	{
+		DateRange combinedDateRange = null;
+		for (int i = 0; i < taskRefs.size(); ++i)
+		{
+			Task thisTask = Task.find(getProject(), taskRefs.get(i));
+			DateRange thisCombineEffortListDateRanges = thisTask.combineAssignmentEffortListDateRanges();
+			if (thisCombineEffortListDateRanges == null)
+				continue;
+			
+			DateRange thisDateRange = new DateRange(thisCombineEffortListDateRanges);
+			combinedDateRange = DateRange.combine(combinedDateRange, thisDateRange);
+		}
+		
+		return combinedDateRange;		
+	}
+
+	public String convertToSafeString(DateRange combinedDateRange)
+	{
+		if (combinedDateRange == null)
+			return "";
+		
+		return  combinedDateRange.toString();
+	}
+	
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
@@ -490,6 +533,8 @@ abstract public class BaseObject
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
+		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
@@ -499,6 +544,7 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
+		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
 	}
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
@@ -1050,6 +1096,9 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
 			return getBudgetCostRollupAsString();
 		
+		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
+			return getCombinedEffortDatesAsString();
+		
 		ObjectData field = getField(fieldTag);
 		if(field.isPseudoField())
 		{
@@ -1249,12 +1298,15 @@ abstract public class BaseObject
 	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
+	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	
 	BaseId id;
 	StringData label;
 	
 	private PseudoStringData budgetTotal;
 	private PseudoStringData budgetCostRollup;
+	private PseudoStringData when;
+
 	
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
