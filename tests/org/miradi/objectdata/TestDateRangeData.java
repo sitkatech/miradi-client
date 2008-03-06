@@ -24,5 +24,9 @@ public class TestDateRangeData extends EAMTestCase
 		DateRangeData dateRangeData = new DateRangeData("");
 		dateRangeData.set(dateRange.toJson().toString());
 		assertEquals("not same date range?", dateRange, dateRangeData.getDateRange());
+		
+		DateRangeData dateRangeData2 = new DateRangeData("");
+		dateRangeData2.set(dateRangeData.toString());
+		assertEquals("different jsons?", dateRangeData.toString(), dateRangeData2.toString());
 	}
 }
