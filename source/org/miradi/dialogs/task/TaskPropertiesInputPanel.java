@@ -13,7 +13,7 @@ import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.diagram.ForcastOverrideSubPanel;
+import org.miradi.dialogs.diagram.ForecastOverrideSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.MethodIcon;
@@ -54,7 +54,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
 
-		ForcastOverrideSubPanel budgetSubPanel = new ForcastOverrideSubPanel(getProject(), new ORef(Task.getObjectType(), BaseId.INVALID));
+		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
 
 		addLabel(EAM.text("Budget"));
