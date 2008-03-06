@@ -274,7 +274,7 @@ public class Task extends BaseObject
 		if (getSubtaskCount() > 0)
 			return combineSubtaskEffortListDateRanges();
 		
-		return combineEffortListDateRanges();
+		return combineAssignmentEffortListDateRanges();
 	}
 
 	private String convertToSafeString(DateRange combinedDateRange)
@@ -292,19 +292,17 @@ public class Task extends BaseObject
 		for (int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			Task thisTask = find(getProject(), subtaskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = thisTask.combineEffortListDateRanges();
+			DateRange thisCombineEffortListDateRanges = thisTask.combineAssignmentEffortListDateRanges();
 			if (thisCombineEffortListDateRanges == null)
 				continue;
 			
-			if (combinedDateRange == null)
-				combinedDateRange = new DateRange(thisCombineEffortListDateRanges);
-			
-			combinedDateRange = DateRange.combine(combinedDateRange, new DateRange(thisCombineEffortListDateRanges));
+			DateRange thisDateRange = new DateRange(thisCombineEffortListDateRanges);
+			combinedDateRange = DateRange.combine(combinedDateRange, thisDateRange);
 		}
 		return combinedDateRange;
 	}
 
-	private DateRange combineEffortListDateRanges() throws Exception
+	private DateRange combineAssignmentEffortListDateRanges() throws Exception
 	{
 		DateRange combinedDateRange = null;
 		for (int i = 0; i < assignmentIds.size(); ++i)
