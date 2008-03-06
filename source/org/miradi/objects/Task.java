@@ -272,7 +272,7 @@ public class Task extends BaseObject
 	public DateRange getCombinedEffortDates() throws Exception
 	{
 		if (getSubtaskCount() > 0)
-			return combineSubTaskEffortListDateRanges();
+			return combineSubtaskEffortListDateRanges();
 		
 		return combineEffortListDateRanges();
 	}
@@ -285,7 +285,7 @@ public class Task extends BaseObject
 		return  combinedDateRange.toString();
 	}
 
-	private DateRange combineSubTaskEffortListDateRanges() throws Exception
+	private DateRange combineSubtaskEffortListDateRanges() throws Exception
 	{
 		DateRange combinedDateRange = null;
 		ORefList subtaskRefs = getSubtasks();
