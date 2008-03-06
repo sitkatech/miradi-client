@@ -18,6 +18,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
+import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
@@ -275,6 +276,17 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if (field instanceof NumberData)
 		{
 			return "27.65";
+		}
+		else if (field instanceof DateRangeData)
+		{
+			MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 7);
+			MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2008, 8, 8);
+			DateRange dateRange = new DateRange(startDate, endDate);
+			
+			DateRangeData dateRangeData = new DateRangeData("");
+			dateRangeData.set(dateRange.toJson().toString());
+			
+			return dateRangeData.toString();
 		}
 		else
 		{
