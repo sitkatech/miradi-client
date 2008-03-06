@@ -45,7 +45,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
 		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
 
-		ForcastOverrideSubPanel budgetSubPanel = new ForcastOverrideSubPanel(getProject(), new ORef(Strategy.getObjectType(), BaseId.INVALID));
+		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), new ORef(Strategy.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
 
 		addLabel(EAM.text("Budget"));
