@@ -23,7 +23,7 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	
 	public void rebuild() throws Exception
 	{
-		ORefList activityRefs = strategy.getActivities();
+		ORefList activityRefs = strategy.getActivityRefs();
 		createAndAddTaskNodes(activityRefs);
 	}
 

@@ -36,7 +36,7 @@ public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 	{
 		ORefList filteredTaskRefs = new ORefList();
 		Strategy  parentStrategy = (Strategy) getProject().findObject(parentRef);
-		ORefList parentActivityRefs = parentStrategy.getActivities();
+		ORefList parentActivityRefs = parentStrategy.getActivityRefs();
 		ORefList taskRefs = super.getLatestRefListFromProject();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{

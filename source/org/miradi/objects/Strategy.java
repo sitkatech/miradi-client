@@ -185,7 +185,7 @@ public class Strategy extends Factor
 	
 	public DateRange getCombinedEffortDates() throws Exception
 	{
-		if (getActivities().size() == 0)
+		if (getActivityRefs().size() == 0)
 			return null;
 		
 		//FIXME fix this to return activity efforts
@@ -206,11 +206,6 @@ public class Strategy extends Factor
 		return progressReportRefs.getORefList();
 	}
 	
-	public ORefList getActivities()
-	{
-		return new ORefList(Task.getObjectType(), getActivityIds());
-	}
-
 	private String getStrategyRatingSummary()
 	{
 		ChoiceItem rating = getStrategyRating();
@@ -238,7 +233,7 @@ public class Strategy extends Factor
 	public ORefList getAllObjectsToDeepCopy()
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
-		deepObjectRefsToCopy.addAll(getActivities());
+		deepObjectRefsToCopy.addAll(getActivityRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
 		return deepObjectRefsToCopy;
