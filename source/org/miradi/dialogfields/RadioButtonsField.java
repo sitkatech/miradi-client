@@ -28,7 +28,7 @@ public class RadioButtonsField extends ObjectDataInputField
 		buttons = new Vector<UiRadioButton>();
 		for(int i = 0; i < question.size(); ++i)
 		{
-			UiRadioButton button = new UiRadioButton("");
+			UiRadioButton button = new UiRadioButton(question.getChoices()[i].getLabel());
 			button.setBackground(AppPreferences.getDataPanelBackgroundColor());
 			group.add(button);
 			buttons.add(button);

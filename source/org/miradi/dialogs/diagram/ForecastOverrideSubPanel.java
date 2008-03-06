@@ -10,13 +10,9 @@ package org.miradi.dialogs.diagram;
 
 import java.awt.Component;
 
-import org.martus.swing.UiLabel;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.layout.OneRowGridLayout;
-import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
+import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -27,35 +23,23 @@ public class ForecastOverrideSubPanel extends AbstractObjectDataInputPanel
 	public ForecastOverrideSubPanel(Project projectToUse, ORef initialRef)
 	{
 		super(projectToUse, initialRef);
-		OneRowGridLayout layout = new OneRowGridLayout();
-		layout.setGaps(3);
-		setLayout(layout);
-		setBorder(null);
 		
-		setBackground(AppPreferences.getDataPanelBackgroundColor());
-		
-		int type = initialRef.getObjectType();
+		setLayout(new TwoColumnGridLayout());
+				
 		BudgetCostModeQuestion question = new BudgetCostModeQuestion();
-		RadioButtonsField modeField = createRadioButtonsField(type, BaseObject.TAG_BUDGET_COST_MODE, question);
-		ObjectDataInputField rollupField = createReadonlyCurrencyField(BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP);
-		ObjectDataInputField overrideField = createCurrencyField(type, BaseObject.TAG_BUDGET_COST_OVERRIDE);
-		
-		addField(modeField);
-		addField(rollupField);
-		addField(overrideField);
-		
-		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
-		add(new UiLabel(EAM.text("High Level Estimate")));
-		add(overrideField.getComponent());
-		addSpacer();
+		RadioButtonsField modeField = createRadioButtonsField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_MODE, question);
+		addField(modeField);		
 		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
-		add(new UiLabel(EAM.text("Rollup")));
-		add(rollupField.getComponent());
-	}
+		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
 
-	public void addSpacer()
-	{
-		add(new UiLabel("   "));
+		ForecastRollupSubPanel forecastRollupSubPanel = new ForecastRollupSubPanel(projectToUse, initialRef);
+		addSubPanel(forecastRollupSubPanel);
+		add(forecastRollupSubPanel);
+		
+		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(projectToUse, initialRef);
+		addSubPanel(forecastEstimateSubPanel);
+		add(forecastEstimateSubPanel);
+		
 	}
 	
 	public void addFieldComponent(Component component)
