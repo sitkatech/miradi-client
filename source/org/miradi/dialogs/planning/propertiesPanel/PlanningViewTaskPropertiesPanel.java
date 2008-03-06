@@ -21,7 +21,7 @@ public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescript
 		super(new OneColumnGridLayout());
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
-		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse.getProject());
+		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
 		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
 	
 		add(taskPropertiesInputPanel);

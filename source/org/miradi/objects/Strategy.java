@@ -157,7 +157,7 @@ public class Strategy extends Factor
 	@Override
 	protected ProgressReport getLatestProgressReport()
 	{
-		ProgressReport progressReport = (ProgressReport) Indicator.getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
+		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
 		return progressReport;
 	}
 	

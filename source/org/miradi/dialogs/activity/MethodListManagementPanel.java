@@ -22,7 +22,7 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 	public MethodListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
 	{
 		super(splitPositionSaverToUse, new MethodListTablePanel(projectToUse, actions, nodeRef),
-				new TaskPropertiesPanel(projectToUse));
+				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getSplitterDescription()

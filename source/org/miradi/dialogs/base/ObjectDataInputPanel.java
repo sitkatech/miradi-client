@@ -192,6 +192,18 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		addFieldWithEditButton(label, field, new PanelButton(action));
 	}
 
+	protected void addFieldWithEditButton(PanelTitleLabel label, ObjectDataInputField field, PanelButton button)
+	{
+		super.addField(field);
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		fieldPanel.add(field.getComponent());
+		fieldPanel.add(button);
+		addLabel(label);
+		add(fieldPanel);
+	}
+
 	protected void addFieldWithEditButton(String label, ObjectDataInputField field, PanelButton button)
 	{
 		super.addField(field);
