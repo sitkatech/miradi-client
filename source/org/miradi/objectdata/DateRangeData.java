@@ -32,7 +32,7 @@ public class DateRangeData extends ObjectData
 		if(dateRange == null)
 			return "";
 		
-		return dateRange.toString();
+		return dateRange.toJson().toString();
 	}
 	
 	public DateRange getDateRange()
