@@ -42,6 +42,7 @@ import org.miradi.diagram.cells.TestLinkCell;
 import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
+import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objecthelpers.TestDateRangeEffortList;
 import org.miradi.objecthelpers.TestMapList;
 import org.miradi.objecthelpers.TestORef;
@@ -236,6 +237,7 @@ public class MainTests extends TestCase
 		
 		//objectdata package
 		suite.addTest(new TestSuite(TestDateData.class));
+		suite.addTest(new TestSuite(TestDateRangeData.class));
 		
 		//objecthelpers package
 		suite.addTest(new TestSuite(TestMapList.class));

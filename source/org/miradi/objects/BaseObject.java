@@ -30,6 +30,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
@@ -534,7 +535,7 @@ abstract public class BaseObject
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		
+		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
@@ -545,6 +546,7 @@ abstract public class BaseObject
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
+		addField(TAG_WHEN_OVERRIDE, whenOverride);
 	}
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
@@ -1299,6 +1301,7 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
+	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	BaseId id;
 	StringData label;
@@ -1315,4 +1318,5 @@ abstract public class BaseObject
 	private Vector noneClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
+	protected DateRangeData whenOverride;
 }
