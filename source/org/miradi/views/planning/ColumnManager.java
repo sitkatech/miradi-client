@@ -35,7 +35,6 @@ public class ColumnManager
 		masterColumnList.add(Desire.TAG_FULL_TEXT);
 		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
 		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
-		masterColumnList.add(Strategy.PSEUDO_TAG_RATING_SUMMARY);
 		masterColumnList.add(Indicator.TAG_PRIORITY);
 		masterColumnList.add(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
@@ -75,7 +74,7 @@ public class ColumnManager
 	public static CodeList getStrategyColumns()
 	{
 		String[] list = {
-				Strategy.PSEUDO_TAG_RATING_SUMMARY,
+				Indicator.TAG_PRIORITY,
 				Strategy.TAG_TAXONOMY_CODE,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
