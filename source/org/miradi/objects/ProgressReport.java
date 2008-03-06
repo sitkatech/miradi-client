@@ -83,10 +83,12 @@ public class ProgressReport extends BaseObject
 	
 	public static boolean is(ORef ref)
 	{
-		if (ref.getObjectType() == ObjectType.PROGRESS_REPORT)
-			return true;
-		
-		return false;
+		return is(ref.getObjectType());
+	}
+
+	public static boolean is(int objectType)
+	{
+		return (objectType == getObjectType());
 	}
 	
 	public static ProgressReport find(ObjectManager objectManager, ORef progressReportRef)
@@ -105,20 +107,20 @@ public class ProgressReport extends BaseObject
 		
 		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS, getQuestion(ProgressReportStatusQuestion.class));
 		progressDate = new DateData(TAG_PROGRESS_DATE);
-		comments = new StringData(TAG_COMMENTS);
+		details = new StringData(TAG_DETAILS);
 		
 		addField(TAG_PROGRESS_STATUS, progressStatus);
 		addField(TAG_PROGRESS_DATE, progressDate);
-		addField(TAG_COMMENTS, comments);
+		addField(TAG_DETAILS, details);
 	}
 	
 	public static final String OBJECT_NAME = "ProgressReport";
 	
 	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";
-	public static final String TAG_COMMENTS = "Comments";
+	public static final String TAG_DETAILS = "Details";
 	
 	private ChoiceData progressStatus;
 	private DateData progressDate;
-	private StringData comments;
+	private StringData details;
 }
