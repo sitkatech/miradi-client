@@ -137,10 +137,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
 			}
 			
-			moveLinkBendPointInGroupBoxes(deltaX, deltaY);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
+			moveLinkBendPointInGroupBoxes(deltaX, deltaY);
 			
 			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}
