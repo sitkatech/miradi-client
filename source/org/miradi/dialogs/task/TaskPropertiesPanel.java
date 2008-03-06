@@ -7,6 +7,7 @@ package org.miradi.dialogs.task;
 
 import javax.swing.BorderFactory;
 
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -19,18 +20,18 @@ import org.miradi.project.Project;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesPanel(Project projectToUse) throws Exception
+	public TaskPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		this(projectToUse, BaseId.INVALID);
+		this(projectToUse, actions, BaseId.INVALID);
 	}
 	
-	public TaskPropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
+	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		setLayout(new OneColumnGridLayout());
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
-		inputPanel = new TaskPropertiesInputPanel(project, idToEdit);
+		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit);
 		
 		String hintAboutPlanningView = EAM.text("<html><em>HINT: " +
 				"To manage the details about who will do the work and when, " +

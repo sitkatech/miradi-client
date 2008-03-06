@@ -10,12 +10,15 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 
 import org.martus.swing.UiLabel;
+import org.miradi.actions.ActionEditStrategyProgressReports;
+import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastOverrideSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ActivityIcon;
+import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.MethodIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.ids.BaseId;
@@ -26,21 +29,22 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.utils.ObjectsActionButton;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesInputPanel(Project projectToUse) throws Exception
+	public TaskPropertiesInputPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		this(projectToUse, BaseId.INVALID);
+		this(projectToUse, actions, BaseId.INVALID);
 	}
 	
-	public TaskPropertiesInputPanel(Project projectToUse, BaseId idToEdit) throws Exception
+	public TaskPropertiesInputPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		setBorder(BorderFactory.createEtchedBorder());
 		
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
-		addCommonFields();
+		addCommonFields(actions);
 	}
 	
 	public void dispose()
@@ -48,7 +52,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	private void addCommonFields()
+	private void addCommonFields(Actions actions)
 	{
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
@@ -60,6 +64,10 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
+		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
+		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
+		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 		
 		addLabel(new UiLabel(""));
 		addLabel(hasBothSubTaskAssignmentsWarningLabel);
@@ -71,6 +79,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		super.setObjectRefs(orefsToUse);
 		updatedWarningMessageVisiblity(orefsToUse);
 		updateTaskNameLabel();
+		hideOrShowProgressSection();
 	}
 
 	
@@ -82,11 +91,10 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	
 	private Icon getTaskTypeIcon()
 	{
-		ORef ref = getRefForType(Task.getObjectType());
-		if(ref.isInvalid())
-			return null;
+		Task task = getTask();
+		if(task == null)
+			return new EmptyIcon();
 		
-		Task task = Task.find(getProject(), ref);
 		if(task.isActivity())
 			return new ActivityIcon();
 		if(task.isMethod())
@@ -96,12 +104,33 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 
 	private String getTaskTypeLabel()
 	{
+		Task task = getTask();
+		if(task == null)
+			return "";
+		return task.getTypeName();
+	}
+	
+	private Task getTask()
+	{
 		ORef ref = getRefForType(Task.getObjectType());
 		if(ref.isInvalid())
-			return "";
+			return null;
 		
 		Task task = Task.find(getProject(), ref);
-		return task.getTypeName();
+		return task;
+	}
+	
+	private void hideOrShowProgressSection()
+	{
+		boolean isActivity = false;
+// FIXME: Disabled so I can commit before fixing action/doer situation
+//		Task task = getTask();
+//		if(task != null)
+//			isActivity = task.isActivity();
+		
+		progressReportsLabel.setVisible(isActivity);
+		readOnlyProgressReportsList.setVisible(isActivity);
+		editProgressReportButton.setVisible(isActivity);
 	}
 
 	public String getPanelDescription()
@@ -145,6 +174,13 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		return true;
 	}
 	
+
+	
 	private PanelTitleLabel hasBothSubTaskAssignmentsWarningLabel;
 	private PanelTitleLabel taskNameLabel;
+	
+	PanelTitleLabel progressReportsLabel;
+	ObjectDataInputField readOnlyProgressReportsList;
+	ObjectsActionButton editProgressReportButton;
+
 }

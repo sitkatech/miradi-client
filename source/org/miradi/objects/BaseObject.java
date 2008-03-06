@@ -1145,6 +1145,26 @@ abstract public class BaseObject
 		return null;
 	}
 
+	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
+	{
+		BaseObject latestObjectToFind = null; 
+		for (int i = 0; i < objectRefs.size(); ++i)
+		{
+			BaseObject thisObject = objectManagerToUse.findObject(objectRefs.get(i));
+			if (i == 0)
+				latestObjectToFind = thisObject;
+			
+			String thisDateAsString = thisObject.getData(dateTag);
+			String latestDateAsString = latestObjectToFind.getData(dateTag);
+			if (thisDateAsString.compareTo(latestDateAsString) > 0)
+			{
+				latestObjectToFind = thisObject;
+			}
+		}
+		
+		return latestObjectToFind;		
+	}
+	
 	public Factor getDirectOrIndirectOwningFactor()
 	{
 		ORef ownerRef = getRef();
