@@ -70,7 +70,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
 			return new StatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
-		if (tag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return new ProgressReportStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if(tag.equals(Indicator.TAG_EMPTY))
@@ -120,7 +120,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.TAG_LABEL,
 		Indicator.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
-		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		Indicator.TAG_EMPTY,
 		
 		Indicator.TAG_INDICATOR_THRESHOLD,

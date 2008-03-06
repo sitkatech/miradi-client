@@ -23,7 +23,7 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Indicator.PSEUDO_TAG_METHODS, 
 				Indicator.PSEUDO_TAG_FACTOR,
 				Indicator.TAG_PRIORITY,
-				Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 				});
 	}

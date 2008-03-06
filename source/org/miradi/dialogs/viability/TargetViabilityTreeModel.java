@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogs.viability;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -37,7 +38,7 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Indicator.TAG_STATUS,
-										 Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+										 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 KeyEcologicalAttributeMeasurementNode.POOR,
 										 KeyEcologicalAttributeMeasurementNode.FAIR,

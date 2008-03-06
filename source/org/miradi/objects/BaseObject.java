@@ -46,6 +46,7 @@ import org.miradi.project.ProjectChainObject;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
@@ -536,6 +537,8 @@ abstract public class BaseObject
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
+		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
+		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
 		noneClearedFieldTags = new Vector();
@@ -547,6 +550,8 @@ abstract public class BaseObject
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
 	}
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
@@ -1101,6 +1106,12 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
 			return getCombinedEffortDatesAsString();
 		
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return getLatestProgressReportDate();
+		
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+			return getLatestProgressReportDetails();
+		
 		ObjectData field = getField(fieldTag);
 		if(field.isPseudoField())
 		{
@@ -1111,6 +1122,29 @@ abstract public class BaseObject
 		return getData(fieldTag);
 	}
 	
+	protected String  getLatestProgressReportDate()
+	{
+		ProgressReport progressReport = getLatestProgressReport();
+		if (progressReport == null)
+			return "";
+		
+		return progressReport.getProgressStatusChoice().getCode();
+	}
+
+	protected String getLatestProgressReportDetails()
+	{
+		ProgressReport progressReport = getLatestProgressReport();
+		if (progressReport == null)
+			return "";
+		
+		return progressReport.getData(ProgressReport.TAG_DETAILS);
+	}
+
+	protected ProgressReport getLatestProgressReport()
+	{
+		return null;
+	}
+
 	public Factor getDirectOrIndirectOwningFactor()
 	{
 		ORef ownerRef = getRef();
@@ -1303,6 +1337,9 @@ abstract public class BaseObject
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
+
 	BaseId id;
 	StringData label;
 	
@@ -1319,4 +1356,8 @@ abstract public class BaseObject
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
 	protected DateRangeData whenOverride;
+	
+	private PseudoQuestionData latestProgressReport;
+	private PseudoStringData latestProgressReportDetails;
+
 }

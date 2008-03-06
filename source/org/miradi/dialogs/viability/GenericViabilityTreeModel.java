@@ -7,6 +7,7 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -49,7 +50,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return Measurement.getObjectType();
 			
-		else if (tag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return Indicator.getObjectType();
 		
 		else if(tag.equals(Measurement.TAG_SUMMARY))

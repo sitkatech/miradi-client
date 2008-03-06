@@ -88,12 +88,6 @@ public class Indicator extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_STATUS_VALUE))
 			return getCurrentStatus();
 		
-		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return getLatestProgressReportDate();
-		
-		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
-			return getLatestProgressReportDetails();
-		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -190,25 +184,8 @@ public class Indicator extends BaseObject
 		return latestObject.getRef();
 	}
 	
-	private String  getLatestProgressReportDate()
-	{
-		ProgressReport progressReport = getLatestProgressReport();
-		if (progressReport == null)
-			return "";
-		
-		return progressReport.getProgressStatusChoice().getCode();
-	}
-
-	private String getLatestProgressReportDetails()
-	{
-		ProgressReport progressReport = getLatestProgressReport();
-		if (progressReport == null)
-			return "";
-		
-		return progressReport.getData(ProgressReport.TAG_DETAILS);
-	}
-
-	private ProgressReport getLatestProgressReport()
+	@Override
+	protected ProgressReport getLatestProgressReport()
 	{
 		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
 		return progressReport;
@@ -387,8 +364,6 @@ public class Indicator extends BaseObject
 		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new IndicatorStatusRatingQuestion());
 		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, new RatingSourceQuestion());
 		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, new StatusQuestion());
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
-		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 		
 		futureStatusRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, new StatusQuestion());
 		
@@ -424,8 +399,6 @@ public class Indicator extends BaseObject
 		
 		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
 		addField(PSEUDO_TAG_LATEST_MEASUREMENT_REF, latestMeasurement);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -460,8 +433,6 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
@@ -500,6 +471,4 @@ public class Indicator extends BaseObject
 	
 	private PseudoQuestionData futureStatusRatingLabel;
 	private PseudoQuestionData latestMeasurement;
-	private PseudoQuestionData latestProgressReport;
-	private PseudoStringData latestProgressReportDetails;
 }

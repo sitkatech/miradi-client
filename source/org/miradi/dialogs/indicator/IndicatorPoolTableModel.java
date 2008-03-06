@@ -7,6 +7,7 @@ package org.miradi.dialogs.indicator;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -32,7 +33,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		Indicator.TAG_SHORT_LABEL,
 		Indicator.TAG_LABEL,
 		Indicator.TAG_PRIORITY,
-		Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		Indicator.PSEUDO_TAG_FACTOR,
 		Indicator.PSEUDO_TAG_METHODS,
 		Indicator.PSEUDO_TAG_TARGETS,
