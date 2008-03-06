@@ -10,7 +10,6 @@ import java.util.Set;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
@@ -156,42 +155,9 @@ public class Strategy extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 			return new StrategyClassificationQuestion().findChoiceByCode(taxonomyCode.get()).getLabel();
 		
-		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
-			return getCombinedEffortDatesAsString();
-		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public String getCombinedEffortDatesAsString()
-	{
-		try
-		{
-			return convertToSafeString(getCombinedEffortDates());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		} 
-	}
-	
-	private String convertToSafeString(DateRange combinedDateRange)
-	{
-		if (combinedDateRange == null)
-			return "";
-		
-		return  combinedDateRange.toString();
-	}
-	
-	public DateRange getCombinedEffortDates() throws Exception
-	{
-		if (getActivityRefs().size() == 0)
-			return null;
-		
-		//FIXME fix this to return activity efforts
-		return null; 
-	}
-
 	private String  getLatestProgressReportDate()
 	{
 		ProgressReport progressReport = (ProgressReport) Indicator.getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
@@ -326,7 +292,6 @@ public class Strategy extends Factor
 		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, new StrategyFeasibilityQuestion());
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
-		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -342,7 +307,6 @@ public class Strategy extends Factor
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
-		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -360,7 +324,6 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
-	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
@@ -378,5 +341,4 @@ public class Strategy extends Factor
 	private PseudoQuestionData feasibilityRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
 	private PseudoQuestionData latestProgressReport;
-	private PseudoStringData when;
 }
