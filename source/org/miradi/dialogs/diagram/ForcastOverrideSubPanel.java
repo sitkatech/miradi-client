@@ -22,9 +22,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.BudgetCostModeQuestion;
 
-public class BudgetOverrideSubPanel extends AbstractObjectDataInputPanel
+public class ForcastOverrideSubPanel extends AbstractObjectDataInputPanel
 {
-	public BudgetOverrideSubPanel(Project projectToUse, ORef initialRef)
+	public ForcastOverrideSubPanel(Project projectToUse, ORef initialRef)
 	{
 		super(projectToUse, initialRef);
 		OneRowGridLayout layout = new OneRowGridLayout();
