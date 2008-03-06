@@ -93,14 +93,25 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public String getColumnTagForNode(int nodeType, int column)
 	{
-		if (isDetailsColumn(column) && Strategy.is(nodeType))
-			return Strategy.TAG_TEXT;
+		if(Strategy.is(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return Strategy.TAG_TEXT;
+			if(getColumnTag(column).equals(Indicator.TAG_PRIORITY))
+				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
+		}
 		
-		if (isDetailsColumn(column) && Indicator.is(nodeType))
-			return Indicator.TAG_DETAIL;
+		if(Indicator.is(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return Indicator.TAG_DETAIL;
+		}
 		
-		if (isDetailsColumn(column) && Measurement.is(nodeType))
-			return Measurement.TAG_DETAIL;
+		if(Measurement.is(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return Measurement.TAG_DETAIL;
+		}
 		
 		return getColumnTag(column);
 	}
