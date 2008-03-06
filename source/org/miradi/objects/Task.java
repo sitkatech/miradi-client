@@ -250,64 +250,24 @@ public class Task extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
 			return getAppendedResourceNames();
 		
-		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
-			return getCombinedEffortDatesAsString();
-		
 		return super.getPseudoData(fieldTag);
 	}
 
-	public String getCombinedEffortDatesAsString()
-	{
-		try
-		{
-			return convertToSafeString(getCombinedEffortDates());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		} 
-	}
-	
 	public DateRange getCombinedEffortDates() throws Exception
 	{
 		if (getSubtaskCount() > 0)
-			return combineSubtaskEffortListDateRanges();
+			return combineSubtaskEffortListDateRanges(getSubtaskRefs());
 		
 		return combineAssignmentEffortListDateRanges();
 	}
 
-	private String convertToSafeString(DateRange combinedDateRange)
+	public DateRange combineAssignmentEffortListDateRanges() throws Exception
 	{
-		if (combinedDateRange == null)
-			return "";
-		
-		return  combinedDateRange.toString();
-	}
-
-	private DateRange combineSubtaskEffortListDateRanges() throws Exception
-	{
+		ORefList assignmentRefs = getAssignmentRefs();
 		DateRange combinedDateRange = null;
-		ORefList subtaskRefs = getSubtasks();
-		for (int i = 0; i < subtaskRefs.size(); ++i)
+		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{
-			Task thisTask = find(getProject(), subtaskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = thisTask.combineAssignmentEffortListDateRanges();
-			if (thisCombineEffortListDateRanges == null)
-				continue;
-			
-			DateRange thisDateRange = new DateRange(thisCombineEffortListDateRanges);
-			combinedDateRange = DateRange.combine(combinedDateRange, thisDateRange);
-		}
-		return combinedDateRange;
-	}
-
-	private DateRange combineAssignmentEffortListDateRanges() throws Exception
-	{
-		DateRange combinedDateRange = null;
-		for (int i = 0; i < assignmentIds.size(); ++i)
-		{
- 			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(), assignmentIds.get(i));
+ 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
 			DateRangeEffortList effortList = assignment.getDetails();
 			DateRange dateRange = effortList.getCombinedDateRange();
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
@@ -335,7 +295,7 @@ public class Task extends BaseObject
 		return appendedResources;
 	}
 	
-	public ORefList getSubtasks()
+	public ORefList getSubtaskRefs()
 	{
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
 	}
@@ -505,7 +465,6 @@ public class Task extends BaseObject
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
-		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -513,8 +472,7 @@ public class Task extends BaseObject
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);
-		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
-		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
+		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);		
 	}
 
 	
@@ -523,8 +481,8 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
-	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
+
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -538,5 +496,4 @@ public class Task extends BaseObject
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData taskTotal;
 	private PseudoStringData who;
-	private PseudoStringData when;
 }

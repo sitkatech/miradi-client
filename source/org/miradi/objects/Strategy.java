@@ -265,6 +265,11 @@ public class Strategy extends Factor
 		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());
 	}
 	
+	public DateRange getCombinedEffortDates() throws Exception
+	{
+		return combineSubtaskEffortListDateRanges(getActivityRefs());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

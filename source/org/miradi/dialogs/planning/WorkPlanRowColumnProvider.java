@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
@@ -20,7 +21,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
-				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
+				BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL,
 				});
 	}
