@@ -157,7 +157,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
 			
-			if(columnTag.equals(Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportStatusQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
