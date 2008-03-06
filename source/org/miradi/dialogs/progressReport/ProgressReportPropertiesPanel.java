@@ -21,7 +21,7 @@ public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 		ProgressReportStatusQuestion progressReportStatusQuestion = new ProgressReportStatusQuestion();
 		addField(createDateChooserField(ProgressReport.TAG_PROGRESS_DATE));
 		addField(createChoiceField(ProgressReport.getObjectType(), ProgressReport.TAG_PROGRESS_STATUS, progressReportStatusQuestion));
-		addField(createMultilineField(ProgressReport.TAG_COMMENTS));
+		addField(createMultilineField(ProgressReport.TAG_DETAILS));
 		
 		updateFieldsFromProject();
 	}
