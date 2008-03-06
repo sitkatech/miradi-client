@@ -271,10 +271,10 @@ public class Task extends BaseObject
 	
 	public DateRange getCombinedEffortDates() throws Exception
 	{
-		if (getSubtaskCount() == 0)
-			return combineEffortListDateRanges();
+		if (getSubtaskCount() > 0)
+			return combineSubTaskEffortListDateRanges();
 		
-		return combineSubTaskEffortListDateRanges();
+		return combineEffortListDateRanges();
 	}
 
 	private String convertToSafeString(DateRange combinedDateRange)
