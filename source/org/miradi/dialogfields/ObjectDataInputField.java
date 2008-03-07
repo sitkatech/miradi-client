@@ -234,7 +234,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		return new DocumentEventHandler();
 	}
 
-	class DocumentEventHandler implements DocumentListener
+	public class DocumentEventHandler implements DocumentListener
 	{
 		public void changedUpdate(DocumentEvent arg0)
 		{

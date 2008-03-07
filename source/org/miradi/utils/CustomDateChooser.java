@@ -41,7 +41,16 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
 		getDateTextEditor().addFocusListener(objectDataInputFieldToUse);
-		getDateTextEditor().getDocument().addDocumentListener(objectDataInputField.createDocumentEventHandler());
+		documentListener = objectDataInputField.createDocumentEventHandler();
+		getDateTextEditor().getDocument().addDocumentListener(documentListener);
+	}
+	
+	public void dispose()
+	{
+		getDateTextEditor().getDocument().removeDocumentListener(documentListener);
+		getDateTextEditor().removeFocusListener(objectDataInputField);
+		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
+		cleanup();
 	}
 	
 	public void clear()
@@ -187,4 +196,5 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	private static final String DATE_PROPERTY_NAME = "date";
 	
 	private ObjectDataInputField objectDataInputField;
+	private ObjectDataInputField.DocumentEventHandler documentListener;
 }
