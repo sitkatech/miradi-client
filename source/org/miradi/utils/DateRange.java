@@ -26,6 +26,25 @@ public class DateRange
 		this(new MultiCalendar(other.getStartDate()), new MultiCalendar(other.getEndDate()));
 	}
 	
+	public static DateRange createFromJson(EnhancedJsonObject json) throws Exception 
+	{
+		if (json == null)
+			return null;
+		
+		if (!json.has(TAG_START_DATE) || !json.has(TAG_END_DATE))
+			return null;
+		
+		String startDateAsString = json.get(TAG_START_DATE).toString();
+		String endDateAsString = json.get(TAG_END_DATE).toString();
+		if (startDateAsString.length() == 0 || endDateAsString.length() == 0)
+			return null;
+		
+		MultiCalendar startIsoDate = MultiCalendar.createFromIsoDateString(startDateAsString);
+		MultiCalendar endIsoDate = MultiCalendar.createFromIsoDateString(endDateAsString);
+		
+		return new DateRange(startIsoDate, endIsoDate);
+	}
+	
 	private static MultiCalendar createDateFromJson(EnhancedJsonObject json, String tag)
 	{
 		return MultiCalendar.createFromIsoDateString(json.get(tag).toString());
