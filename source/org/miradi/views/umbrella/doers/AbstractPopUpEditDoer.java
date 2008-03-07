@@ -39,7 +39,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		
 		try
 		{
-			ObjectListManagementPanel panel = getManagementPanel();
+			ObjectListManagementPanel panel = createManagementPanel();
 			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
 			Utilities.centerDlg(dialog);
 			panel.updateSplitterLocation();
@@ -61,7 +61,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		return dialogTitle;
 	}
 
-	abstract protected ObjectListManagementPanel getManagementPanel() throws Exception;
+	abstract protected ObjectListManagementPanel createManagementPanel() throws Exception;
 	
 	private int objectType;
 	private String dialogTitle;
