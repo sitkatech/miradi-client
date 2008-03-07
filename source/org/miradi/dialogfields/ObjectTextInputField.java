@@ -15,8 +15,6 @@ import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
 
@@ -92,24 +90,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setSelectionEnd(field.getSize().width);
 	}
 	
-	class DocumentEventHandler implements DocumentListener
-	{
-		public void changedUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-
-		public void insertUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-
-		public void removeUpdate(DocumentEvent arg0)
-		{
-			setNeedsSave();
-		}
-	}
-
 	public class MouseHandler extends MouseAdapter
 	{
 		public void mousePressed(MouseEvent e)
