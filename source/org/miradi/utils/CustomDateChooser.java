@@ -40,7 +40,8 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
-		
+		getDateTextEditor().addFocusListener(objectDataInputFieldToUse);
+		getDateTextEditor().getDocument().addDocumentListener(objectDataInputField.createDocumentEventHandler());
 	}
 	
 	public void clear()
