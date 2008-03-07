@@ -12,6 +12,8 @@ import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -225,6 +227,29 @@ abstract public class ObjectDataInputField implements FocusListener
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public DocumentEventHandler createDocumentEventHandler()
+	{
+		return new DocumentEventHandler();
+	}
+
+	class DocumentEventHandler implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void insertUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void removeUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
 	}
 
 	private static final String NUMERIC_ERROR_MESSEGE = "<html>This value must be numeric<br><br>" +
