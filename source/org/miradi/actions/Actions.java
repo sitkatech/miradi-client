@@ -369,6 +369,8 @@ public class Actions
 		registerAction(new ActionCreateStrategyProgressReport(mainWindow));
 		registerAction(new ActionDeleteStrategyProgressReport(mainWindow));
 		
+		registerAction(new ActionEditEstimatedResource(mainWindow));
+		
 		registerAction(new ActionEditIndicatorProgressReports(mainWindow));
 		registerAction(new ActionCreateIndicatorProgressReport(mainWindow));
 		registerAction(new ActionDeleteIndicatorProgressReport(mainWindow));

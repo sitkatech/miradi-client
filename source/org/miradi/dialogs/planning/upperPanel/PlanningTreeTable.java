@@ -73,7 +73,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	
 	protected Color getBackgroundColor(String columnTag)
 	{
-		if (columnTag.equals(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
 		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))

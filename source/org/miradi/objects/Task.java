@@ -248,9 +248,6 @@ public class Task extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_LABEL))
 			return getLabelOfTaskParent();
 		
-		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
-			return getAppendedResourceNames();
-		
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -463,7 +460,6 @@ public class Task extends BaseObject
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
-		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
@@ -471,8 +467,7 @@ public class Task extends BaseObject
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
-		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);
-		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);		
+		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);		
 	}
 
 	
@@ -482,8 +477,6 @@ public class Task extends BaseObject
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
-	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
-
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -497,5 +490,4 @@ public class Task extends BaseObject
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData taskTotal;
-	private PseudoStringData who;
 }
