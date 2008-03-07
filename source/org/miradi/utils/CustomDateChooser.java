@@ -94,9 +94,15 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		{
 			if (objectDataInputField != null)
 			{
-				objectDataInputField.setNeedsSave();
+				// NOTE: If popup is showing, then we don't have focus, so we will
+				// not be notified later when we should save our data. 
+				// We can't always save here, because the date component 
+				// calls this several times with bogus data (like "today") before 
+				// settling on the real data
 				if(popup.isVisible())
-					objectDataInputField.saveIfNeeded();
+					objectDataInputField.forceSave();
+				else
+					objectDataInputField.setNeedsSave();
 			}
 		}
 	}
