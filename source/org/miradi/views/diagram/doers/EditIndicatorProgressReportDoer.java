@@ -16,16 +16,11 @@ import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
 public class EditIndicatorProgressReportDoer extends AbstractPopUpEditDoer
 {
-	protected int getTypeToFilterOn()
+	public EditIndicatorProgressReportDoer()
 	{
-		return Indicator.getObjectType();
+		super(Indicator.getObjectType(), EAM.text("Edit Progress Reports"));
 	}
 
-	protected String getDialogTitle()
-	{
-		return EAM.text("Edit Progress Reports");
-	}
-	
 	protected ObjectListManagementPanel getManagementPanel() throws Exception
 	{
 		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
