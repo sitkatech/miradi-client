@@ -84,7 +84,11 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
 		{
 			if (objectDataInputField != null)
-				objectDataInputField.forceSave();
+			{
+				objectDataInputField.setNeedsSave();
+				if(popup.isVisible())
+					objectDataInputField.saveIfNeeded();
+			}
 		}
 	}
 		
