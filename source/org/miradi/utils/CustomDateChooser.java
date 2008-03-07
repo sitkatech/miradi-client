@@ -28,7 +28,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 {
 	public CustomDateChooser(ObjectDataInputField objectDataInputFieldToUse)
 	{
-		super(new DateEditor());
+		super(new DateTextEditor());
 		
 		objectDataInputField =  objectDataInputFieldToUse;
 		setDateFormatString(CustomDateChooser.CUSTOM_DATE_FORMAT);
@@ -38,11 +38,17 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		setFont(EAM.getMainWindow().getUserDataPanelFont());
 		
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
+		
 	}
 	
 	public void clear()
 	{
-		((DateEditor) getDateEditor()).setDate(null);
+		getDateTextEditor().setDate(null);
+	}
+
+	private DateTextEditor getDateTextEditor()
+	{
+		return ((DateTextEditor) getDateEditor());
 	}
 	
 	public String getDateAsString()
@@ -106,9 +112,9 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		boolean isVisibleAndPressed;	
 	}
 	
-	static class DateEditor extends JTextFieldDateEditor
+	static class DateTextEditor extends JTextFieldDateEditor
 	{
-		public DateEditor()
+		public DateTextEditor()
 		{
 			super();
 		}
