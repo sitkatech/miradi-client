@@ -13,7 +13,7 @@ public class EditEstimatedResourceDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		return false;
 	}
 	
 	@Override
