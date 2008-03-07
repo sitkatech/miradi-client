@@ -40,7 +40,7 @@ public class ColumnManager
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
-		masterColumnList.add(Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		masterColumnList.add(BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_BUDGET_TOTAL);
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
@@ -88,7 +88,7 @@ public class ColumnManager
 	public static CodeList getActivityColumns()
 	{
 		String[] list = {
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
@@ -112,7 +112,7 @@ public class ColumnManager
 	public static CodeList getMethodColumns()
 	{
 		String[] list = {
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
@@ -123,7 +123,7 @@ public class ColumnManager
 	public static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 				BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};

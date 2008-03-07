@@ -10,6 +10,7 @@ package org.miradi.dialogs.diagram;
 
 import java.awt.Component;
 
+import org.miradi.actions.Actions;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.layout.TwoColumnGridLayout;
@@ -20,7 +21,7 @@ import org.miradi.questions.BudgetCostModeQuestion;
 
 public class ForecastOverrideSubPanel extends AbstractObjectDataInputPanel
 {
-	public ForecastOverrideSubPanel(Project projectToUse, ORef initialRef)
+	public ForecastOverrideSubPanel(Project projectToUse, Actions actions, ORef initialRef)
 	{
 		super(projectToUse, initialRef);
 		
@@ -36,7 +37,7 @@ public class ForecastOverrideSubPanel extends AbstractObjectDataInputPanel
 		addSubPanel(forecastRollupSubPanel);
 		add(forecastRollupSubPanel);
 		
-		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(projectToUse, initialRef);
+		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(projectToUse, actions, initialRef);
 		addSubPanel(forecastEstimateSubPanel);
 		add(forecastEstimateSubPanel);
 		

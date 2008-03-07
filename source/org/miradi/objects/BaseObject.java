@@ -560,7 +560,9 @@ abstract public class BaseObject
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
+		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
+		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
@@ -573,7 +575,9 @@ abstract public class BaseObject
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
+		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
+		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
 	}
@@ -1133,6 +1137,9 @@ abstract public class BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
+		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
+			return "";//getAppendedResourceNames();
+				
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
 		
@@ -1380,6 +1387,8 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
+	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
+	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
@@ -1390,8 +1399,8 @@ abstract public class BaseObject
 	private PseudoStringData budgetTotal;
 	private PseudoStringData budgetCostRollup;
 	private PseudoStringData when;
+	private PseudoStringData who;
 
-	
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
@@ -1400,8 +1409,8 @@ abstract public class BaseObject
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
 	protected DateRangeData whenOverride;
+	protected ORefListData whoOverrideRefs;
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
-
 }
