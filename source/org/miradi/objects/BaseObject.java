@@ -549,7 +549,7 @@ abstract public class BaseObject
 	
 	public DateRange getOverridenEffortListDateRange() throws Exception
 	{
-		return new DateRange(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
+		return DateRange.createFromJson(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
 	}
 	
 	void clear()
