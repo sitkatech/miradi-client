@@ -35,8 +35,6 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		setDateChooserPreferredSizeWithPadding();
 		
 		calendarButton.addMouseListener(new CustomMouseListener());
-		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
-		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		setFont(EAM.getMainWindow().getUserDataPanelFont());
 		
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
@@ -81,22 +79,6 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		}
 	}
 		
-	class MonthChangeListener implements PropertyChangeListener
-	{
-		public void propertyChange(PropertyChangeEvent evt)
-		{
-			setDate(jcalendar.getDate());
-		}
-	}
-	
-	class YearChangeListener implements PropertyChangeListener
-	{
-		public void propertyChange(PropertyChangeEvent evt)
-		{
-			setDate(jcalendar.getDate());
-		}
-	}
-	
 	class CustomMouseListener extends MouseAdapter
 	{
 		public void mouseReleased(MouseEvent e)
