@@ -13,14 +13,9 @@ import org.miradi.objects.Indicator;
 
 public class EditMethodsDoer extends AbstractPopUpEditDoer
 {
-	protected int getTypeToFilterOn()
+	public EditMethodsDoer()
 	{
-		return Indicator.getObjectType();
-	}
-
-	protected String getDialogTitle()
-	{
-		return EAM.text("Edit Methods");
+		super(Indicator.getObjectType(), EAM.text("Edit Methods"));
 	}
 
 	protected ObjectListManagementPanel getManagementPanel() throws Exception

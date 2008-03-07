@@ -14,6 +14,12 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 {
+	public AbstractPopUpEditDoer(int objectTypeToUse, String dialogTitleToUse)
+	{
+		objectType = objectTypeToUse;
+		dialogTitle = dialogTitleToUse;
+	}
+	
 	public boolean isAvailable()
 	{
 		if(getSelectedHierarchies().length != 1)
@@ -45,9 +51,18 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		}
 	}
 
-	abstract protected int getTypeToFilterOn();
+	protected int getTypeToFilterOn()
+	{
+		return objectType;
+	}
 
-	abstract protected String getDialogTitle();
+	protected String getDialogTitle()
+	{
+		return dialogTitle;
+	}
 
 	abstract protected ObjectListManagementPanel getManagementPanel() throws Exception;
+	
+	private int objectType;
+	private String dialogTitle;
 }
