@@ -9,7 +9,7 @@ import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class CreateStrategytProgressReportDoer extends CreateAnnotationDoer
+public class CreateStrategyProgressReportDoer extends CreateAnnotationDoer
 {
 	public String getAnnotationListTag()
 	{
