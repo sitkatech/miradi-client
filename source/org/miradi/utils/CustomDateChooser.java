@@ -5,28 +5,53 @@
 */ 
 package org.miradi.utils;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
+import java.util.Date;
 
+import javax.swing.event.CaretEvent;
+
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
 
-import com.toedter.calendar.IDateEditor;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 
 public class CustomDateChooser extends JDateChooser
 {
-	public CustomDateChooser(IDateEditor dateEditor)
+	public CustomDateChooser(ObjectDataInputField objectDataInputFieldToUse)
 	{
-		super(dateEditor);
+		super(new DateEditor(objectDataInputFieldToUse));
+		
+		setDateFormatString(CustomDateChooser.CUSTOM_DATE_FORMAT);
+		setDateChooserPreferredSizeWithPadding();
+		
 		calendarButton.addMouseListener(new CustomMouseListener());
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		setFont(EAM.getMainWindow().getUserDataPanelFont());
 	}
-
+	
+	public void clear()
+	{
+		((DateEditor) getDateEditor()).setDate(null);
+	}
+	
+	private void setDateChooserPreferredSizeWithPadding()
+	{
+		Dimension preferredDimension = getPreferredSize();
+		//FIXME: Why do we need EXTRA PADDING....I beleive the JDataChooser for this third party is not inlcuding the icon width in its pref
+		preferredDimension.width = preferredDimension.width + EXTRA_PADDING;
+		setMinimumSize(preferredDimension);
+		setPreferredSize(preferredDimension);
+	}
+		
 	class MonthChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
@@ -69,4 +94,49 @@ public class CustomDateChooser extends JDateChooser
 		Calendar newCalendar;
 		boolean isVisibleAndPressed;	
 	}
+	
+	static class DateEditor extends JTextFieldDateEditor
+	{
+		public DateEditor(ObjectDataInputField objectDataInputFieldToUse)
+		{
+			super();
+			
+			objectDataInputField = objectDataInputFieldToUse;
+		}
+		
+		public void setDate(Date newDate)
+		{
+			// NOTE: funky case where user clicks on the date icon, 
+			// and it invokes setDate BEFORE focus has transferred 
+			// to this field. So save the old field first
+			objectDataInputField.saveFocusedFieldPendingEdits();
+			
+			super.setDate(newDate);
+			setForeground(Color.blue);
+		}
+
+		public void focusLost(FocusEvent arg0)
+		{
+			super.focusLost(arg0);
+			setForeground(Color.BLUE);
+			objectDataInputField.forceSave();
+		}
+
+		public void caretUpdate(CaretEvent event)
+		{
+			super.caretUpdate(event);
+			setForeground(Color.BLUE);
+		}
+		
+		public void setEnabled(boolean b)
+		{
+			super.setEnabled(b);
+			setForeground(Color.blue);
+		}
+
+		private ObjectDataInputField objectDataInputField;
+	}
+		
+	public static final String CUSTOM_DATE_FORMAT = "MM/dd/yyyy";
+	private static final int EXTRA_PADDING = 20;
 }
