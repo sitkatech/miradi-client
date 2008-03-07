@@ -22,6 +22,17 @@ public class TestDateRange extends EAMTestCase
 		storeAndRestore();	
 	}
 	
+	public void testCreateFromJson() throws Exception
+	{
+		DateRange dateRange = getSampleDateRange();
+		DateRange dateRangeFromJson = DateRange.createFromJson(dateRange.toJson());
+		assertEquals("not same date range?", dateRange, dateRangeFromJson);
+			
+		assertNull("not null?", DateRange.createFromJson(null));
+		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
+		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject("{notRelevant:\"\"}")));
+	}
+	
 	private void storeAndRestore() throws Exception
 	{
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2006, 12, 1);
@@ -37,10 +48,7 @@ public class TestDateRange extends EAMTestCase
 	
 	public void testIsWithinBounds() throws Exception
 	{
-		MultiCalendar boundsStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
-		MultiCalendar boundsEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
-		
-		DateRange boundsDateRange = new DateRange(boundsStartDate, boundsEndDate);
+		DateRange boundsDateRange = getSampleDateRange();
 		
 		MultiCalendar innerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 5);
 		MultiCalendar innerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 10);
@@ -53,6 +61,15 @@ public class TestDateRange extends EAMTestCase
 		assertEquals("is within bounds?", true, boundsDateRange.contains(innerDateRange));
 		assertEquals("is within bounds?", false, boundsDateRange.contains(partialyInDateRange));
 		assertEquals("contains itself?", true, boundsDateRange.contains(boundsDateRange));
+	}
+
+	private DateRange getSampleDateRange() throws Exception
+	{
+		MultiCalendar boundsStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar boundsEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
+		
+		DateRange boundsDateRange = new DateRange(boundsStartDate, boundsEndDate);
+		return boundsDateRange;
 	}
 	
 	public void testCombine() throws Exception
