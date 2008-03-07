@@ -5,8 +5,6 @@
 */ 
 package org.miradi.dialogfields;
 
-import java.util.Date;
-
 import javax.swing.JComponent;
 
 import org.martus.util.MultiCalendar;
@@ -44,20 +42,9 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 
 	public String getText()
 	{
-		return convertFormat();
+		return dateChooser.getDateAsString();
 	}
-	
-	private String convertFormat()
-	{
-		Date date = dateChooser.getDate();
-		if (date == null)
-			return "";
-		
-		MultiCalendar calendar = new MultiCalendar();
-		calendar.setTime(date);
-		return calendar.toIsoDateString();
-	}
-	
+
 	public void setText(String newValue)
 	{
 		if (newValue.length() <= 0 )

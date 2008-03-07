@@ -17,6 +17,7 @@ import java.util.Date;
 
 import javax.swing.event.CaretEvent;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
 
@@ -43,6 +44,21 @@ public class CustomDateChooser extends JDateChooser
 		((DateEditor) getDateEditor()).setDate(null);
 	}
 	
+	public String getDateAsString()
+	{
+		return convertDateToIsoString(getDate());
+	}
+
+	private static String convertDateToIsoString(Date date)
+	{
+		if (date == null)
+			return "";
+		
+		MultiCalendar calendar = new MultiCalendar();
+		calendar.setTime(date);
+		return calendar.toIsoDateString();
+	}
+		
 	private void setDateChooserPreferredSizeWithPadding()
 	{
 		Dimension preferredDimension = getPreferredSize();
