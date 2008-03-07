@@ -259,22 +259,7 @@ public class Task extends BaseObject
 		if (getSubtaskCount() > 0)
 			return combineSubtaskEffortListDateRanges(getSubtaskRefs());
 		
-		return combineAssignmentEffortListDateRanges();
-	}
-
-	public DateRange combineAssignmentEffortListDateRanges() throws Exception
-	{
-		ORefList assignmentRefs = getAssignmentRefs();
-		DateRange combinedDateRange = null;
-		for (int i = 0; i < assignmentRefs.size(); ++i)
-		{
- 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
-			DateRangeEffortList effortList = assignment.getDetails();
-			DateRange dateRange = effortList.getCombinedDateRange();
-			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
-		}
-		
-		return combinedDateRange;
+		return combineAssignmentEffortListDateRanges(this);
 	}
 
 	public String getAppendedResourceNames()

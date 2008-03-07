@@ -36,6 +36,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -509,7 +510,7 @@ abstract public class BaseObject
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = thisTask.combineAssignmentEffortListDateRanges();
+			DateRange thisCombineEffortListDateRanges = combineAssignmentEffortListDateRanges(thisTask);
 			if (thisCombineEffortListDateRanges == null)
 				continue;
 			
@@ -520,12 +521,35 @@ abstract public class BaseObject
 		return combinedDateRange;		
 	}
 
+	public DateRange combineAssignmentEffortListDateRanges(Task task) throws Exception
+	{
+		if (task.isBudgetOverrideMode())
+			return task.getOverridenEffortListDateRange();
+
+		ORefList assignmentRefs = task.getAssignmentRefs();
+		DateRange combinedDateRange = null;
+		for (int i = 0; i < assignmentRefs.size(); ++i)
+		{
+ 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
+			DateRangeEffortList effortList = assignment.getDetails();
+			DateRange dateRange = effortList.getCombinedDateRange();
+			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
+		}
+		
+		return combinedDateRange;
+	}
+
 	public String convertToSafeString(DateRange combinedDateRange)
 	{
 		if (combinedDateRange == null)
 			return "";
 		
 		return  combinedDateRange.toString();
+	}
+	
+	public DateRange getOverridenEffortListDateRange() throws Exception
+	{
+		return new DateRange(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
 	}
 	
 	void clear()
