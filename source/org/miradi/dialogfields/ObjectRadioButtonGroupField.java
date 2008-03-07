@@ -88,8 +88,7 @@ public class ObjectRadioButtonGroupField extends ObjectDataInputField
 
 	public void saveSelection()
 	{
-		setNeedsSave();
-		saveIfNeeded();
+		forceSave();
 	}
 	
 	class ButtonPressHandler implements ActionListener

@@ -55,8 +55,7 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	
 	public void valueChanged(ListSelectionEvent arg0)
 	{
-		setNeedsSave();
-		saveIfNeeded();
+		forceSave();
 	}
 	
 	protected RefListComponent refListEditor;

@@ -85,8 +85,7 @@ public class RadioButtonsField extends ObjectDataInputField
 
 	public void saveSelection()
 	{
-		setNeedsSave();
-		saveIfNeeded();
+		forceSave();
 	}
 	
 	class RadioChangeHandler implements ActionListener

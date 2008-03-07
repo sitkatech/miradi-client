@@ -60,8 +60,7 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	
 	public void valueChanged(ListSelectionEvent arg0)
 	{
-		setNeedsSave();
-		saveIfNeeded();
+		forceSave();
 	}
 	
 	public void setDisabledCodes(CodeList codesToDiable)

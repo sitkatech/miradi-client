@@ -77,8 +77,7 @@ public class ObjectChoiceField extends ObjectDataInputField
 
 	public void saveSelection()
 	{
-		setNeedsSave();
-		saveIfNeeded();
+		forceSave();
 	}
 	
 	class ComboChangeHandler implements ActionListener
