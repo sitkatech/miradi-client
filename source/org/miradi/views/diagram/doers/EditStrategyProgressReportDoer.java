@@ -21,7 +21,7 @@ public class EditStrategyProgressReportDoer extends AbstractPopUpEditDoer
 		super(Strategy.getObjectType(), EAM.text("Edit Progress Reports"));
 	}
 
-	protected ObjectListManagementPanel getManagementPanel() throws Exception
+	protected ObjectListManagementPanel createManagementPanel() throws Exception
 	{
 		ORef strategyRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		

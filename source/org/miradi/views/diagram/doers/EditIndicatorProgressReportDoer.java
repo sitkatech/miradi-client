@@ -21,7 +21,7 @@ public class EditIndicatorProgressReportDoer extends AbstractPopUpEditDoer
 		super(Indicator.getObjectType(), EAM.text("Edit Progress Reports"));
 	}
 
-	protected ObjectListManagementPanel getManagementPanel() throws Exception
+	protected ObjectListManagementPanel createManagementPanel() throws Exception
 	{
 		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
