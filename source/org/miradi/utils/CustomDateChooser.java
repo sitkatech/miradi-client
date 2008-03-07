@@ -178,7 +178,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		}
 	}
 		
-	public static final String CUSTOM_DATE_FORMAT = "MM/dd/yyyy";
+	public static final String CUSTOM_DATE_FORMAT = "yyyy-MM-dd";
 	private static final int EXTRA_PADDING = 20;
 	private static final String DATE_PROPERTY_NAME = "date";
 	
