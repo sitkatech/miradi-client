@@ -27,7 +27,8 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	{
 		super.dispose();
 		if (dateChooser != null)
-			dateChooser.cleanup();
+			dateChooser.dispose();
+		dateChooser = null;
 	}
 
 	public String getPanelDescription()
