@@ -24,12 +24,13 @@ import org.miradi.main.EAM;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
-public class CustomDateChooser extends JDateChooser
+public class CustomDateChooser extends JDateChooser implements PropertyChangeListener
 {
 	public CustomDateChooser(ObjectDataInputField objectDataInputFieldToUse)
 	{
-		super(new DateEditor(objectDataInputFieldToUse));
+		super(new DateEditor());
 		
+		objectDataInputField =  objectDataInputFieldToUse;
 		setDateFormatString(CustomDateChooser.CUSTOM_DATE_FORMAT);
 		setDateChooserPreferredSizeWithPadding();
 		
@@ -37,6 +38,8 @@ public class CustomDateChooser extends JDateChooser
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
 		setFont(EAM.getMainWindow().getUserDataPanelFont());
+		
+		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
 	}
 	
 	public void clear()
@@ -66,6 +69,16 @@ public class CustomDateChooser extends JDateChooser
 		preferredDimension.width = preferredDimension.width + EXTRA_PADDING;
 		setMinimumSize(preferredDimension);
 		setPreferredSize(preferredDimension);
+	}
+	
+	public void propertyChange(PropertyChangeEvent evt) 
+	{
+		super.propertyChange(evt);
+		if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
+		{
+			if (objectDataInputField != null)
+				objectDataInputField.forceSave();
+		}
 	}
 		
 	class MonthChangeListener implements PropertyChangeListener
@@ -113,29 +126,36 @@ public class CustomDateChooser extends JDateChooser
 	
 	static class DateEditor extends JTextFieldDateEditor
 	{
-		public DateEditor(ObjectDataInputField objectDataInputFieldToUse)
+		public DateEditor()
 		{
 			super();
-			
-			objectDataInputField = objectDataInputFieldToUse;
 		}
 		
-		public void setDate(Date newDate)
+		public void setDate(Date newDate, boolean firePropertyChange)
 		{
-			// NOTE: funky case where user clicks on the date icon, 
-			// and it invokes setDate BEFORE focus has transferred 
-			// to this field. So save the old field first
-			objectDataInputField.saveFocusedFieldPendingEdits();
-			
-			super.setDate(newDate);
+			super.setDate(newDate, firePropertyChange);
 			setForeground(Color.blue);
 		}
 
-		public void focusLost(FocusEvent arg0)
+		public void focusLost(FocusEvent focusEvent)
 		{
-			super.focusLost(arg0);
+			checkText();
 			setForeground(Color.BLUE);
-			objectDataInputField.forceSave();
+		}
+
+		//NOTE:  focusLost does not call super, because we can not override checkText (private method)
+		// this method is a duplicate of the parent class
+		private void checkText() 
+		{
+			try 
+			{
+				Date thisDate = dateFormatter.parse(getText());
+				setDate(thisDate, true);
+			} 
+			catch (Exception e) 
+			{
+				setDate(null, true);
+			}
 		}
 
 		public void caretUpdate(CaretEvent event)
@@ -149,10 +169,11 @@ public class CustomDateChooser extends JDateChooser
 			super.setEnabled(b);
 			setForeground(Color.blue);
 		}
-
-		private ObjectDataInputField objectDataInputField;
 	}
 		
 	public static final String CUSTOM_DATE_FORMAT = "MM/dd/yyyy";
 	private static final int EXTRA_PADDING = 20;
+	private static final String DATE_PROPERTY_NAME = "date";
+	
+	private ObjectDataInputField objectDataInputField;
 }
