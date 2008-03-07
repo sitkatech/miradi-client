@@ -62,8 +62,7 @@ public class ObjectCheckBoxField extends ObjectDataInputField
 	{
 		public void itemStateChanged(ItemEvent event)
 		{
-			setNeedsSave();
-			saveIfNeeded();
+			forceSave();
 		}
 	}
 	
