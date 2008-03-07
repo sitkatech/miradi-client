@@ -33,10 +33,8 @@ public class DateRange
 	
 	private void validateDate() throws Exception
 	{
-		if (startDate.before(endDate))
-			return;
-		
-		throw new Exception("Start " + startDate + " date is after end date " + endDate);
+		if (startDate.after(endDate))
+			throw new Exception("Start " + startDate + " date is after end date " + endDate);
 	}
 
 	public MultiCalendar getStartDate()

@@ -28,6 +28,7 @@ import org.miradi.dialogfields.ObjectCodeListField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
+import org.miradi.dialogfields.ObjectDateRangeInputField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
@@ -293,7 +294,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return new ObjectStringMapInputField(project, objectType, getObjectIdForType(objectType), tag, code, length);
 	}
-		
+	
+	public ObjectDataInputField createDateRangeChooserField(int objectType, String tag)
+	{
+		return new ObjectDateRangeInputField(project, objectType, getObjectIdForType(objectType), tag);
+	}
+	
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
 		return new ObjectDateChooserInputField(project,  getORef(0).getObjectType(), getObjectIdForType( getORef(0).getObjectType()), tag);

@@ -18,6 +18,7 @@ public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 		super(projectToUse, initialRef);
 		
 		addField(createCurrencyField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_OVERRIDE));
+		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
 	}
 
 	public String getPanelDescription()

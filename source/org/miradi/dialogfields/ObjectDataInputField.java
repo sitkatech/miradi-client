@@ -37,6 +37,12 @@ abstract public class ObjectDataInputField implements FocusListener
 	{
 	}
 	
+	public void forceSave()
+	{
+		setNeedsSave();
+		saveIfNeeded();
+	}
+	
 	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);
@@ -139,7 +145,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		return needsSave;
 	}
 	
-	void setNeedsSave()
+	public void setNeedsSave()
 	{
 		needsSave = true;
 	}
