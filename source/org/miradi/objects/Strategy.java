@@ -263,6 +263,11 @@ public class Strategy extends Factor
 	{
 		return combineSubtaskEffortListDateRanges(getActivityRefs());
 	}
+	
+	public ORefList getCombinedResoures() throws Exception
+	{
+		return getAllResources(getActivityRefs());
+	}
 
 	public static boolean is(ORef ref)
 	{

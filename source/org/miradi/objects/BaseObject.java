@@ -36,7 +36,6 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -463,6 +462,63 @@ abstract public class BaseObject
 		}
 	}
 	
+	public String getCombinedAppendedResources()
+	{
+		try
+		{
+			ORefList resourceRefs = getCombinedResoures();
+			String appendedResources = "";
+			for (int i = 0; i < resourceRefs.size(); ++i)
+			{
+				ProjectResource resource = ProjectResource.find(getProject(), resourceRefs.get(i));
+				if (resource == null)
+					continue;
+				
+				if (i > 0)
+					appendedResources += ", "; 
+						
+				appendedResources += resource.getWho();
+			}
+			
+			return appendedResources;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	public ORefList getTaskResources(Task task)
+	{
+		ORefList resourceRefs = new ORefList();
+		ORefList assignmentRefs = task.getAssignmentRefs();
+		for (int i = 0; i < assignmentRefs.size(); ++i)
+		{
+			Assignment assignment = (Assignment.find(getProject(), assignmentRefs.get(i)));
+			resourceRefs.add(assignment.getResourceRef());	
+		}
+		
+		return resourceRefs;
+	}
+	
+	public ORefList getAllResources(ORefList taskRefs) throws Exception
+	{
+		ORefList resourceRefs = new ORefList();
+		for (int i = 0; i < taskRefs.size(); ++i)
+		{
+			Task thisTask = Task.find(getProject(), taskRefs.get(i));
+			resourceRefs.addAll(getTaskResources(thisTask));
+		}
+		
+		return resourceRefs;		
+	}
+	
+	public ORefList getCombinedResoures() throws Exception
+	{
+		return new ORefList();
+	}
+
 	public String getBudgetCostRollupAsString()
 	{
 		try
@@ -523,20 +579,10 @@ abstract public class BaseObject
 
 	public DateRange combineAssignmentEffortListDateRanges(Task task) throws Exception
 	{
-		if (task.isBudgetOverrideMode())
-			return task.getOverridenEffortListDateRange();
-
-		ORefList assignmentRefs = task.getAssignmentRefs();
-		DateRange combinedDateRange = null;
-		for (int i = 0; i < assignmentRefs.size(); ++i)
-		{
- 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
-			DateRangeEffortList effortList = assignment.getDetails();
-			DateRange dateRange = effortList.getCombinedDateRange();
-			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
-		}
+		if (isBudgetOverrideMode())
+			return getOverridenEffortListDateRange();
 		
-		return combinedDateRange;
+		return task.getCombinedEffortDates();
 	}
 
 	public String convertToSafeString(DateRange combinedDateRange)
@@ -1138,7 +1184,7 @@ abstract public class BaseObject
 			return getLatestProgressReportDate();
 		
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
-			return "";//getAppendedResourceNames();
+			return getCombinedAppendedResources();
 				
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
