@@ -285,6 +285,11 @@ public class Indicator extends BaseObject
 		return combineSubtaskEffortListDateRanges(getMethodRefs());
 	}
 	
+	public ORefList getCombinedResoures() throws Exception
+	{
+		return getAllResources(getMethodRefs());
+	}
+	
 	public String toString()
 	{
 		if(getId().isInvalid())

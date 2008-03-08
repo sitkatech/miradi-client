@@ -256,28 +256,35 @@ public class Task extends BaseObject
 		if (getSubtaskCount() > 0)
 			return combineSubtaskEffortListDateRanges(getSubtaskRefs());
 		
-		return combineAssignmentEffortListDateRanges(this);
-	}
-
-	public String getAppendedResourceNames()
-	{
-		String appendedResources = "";
-		for (int i = 0; i < assignmentIds.size(); ++i)
-		{
-			Assignment assignment = (Assignment) objectManager.findObject(Assignment.getObjectType(),assignmentIds.get(i));
-			ORef resourceRef = assignment.getResourceRef();
-			ProjectResource resource = (ProjectResource) objectManager.findObject(resourceRef);
-			if (resource == null)
-				continue;
-			if (i > 0)
-				appendedResources += ", "; 
-					
-			appendedResources += resource.getWho();
-		}
-		
-		return appendedResources;
+		return combineAssignmentEffortListDateRanges();
 	}
 	
+	public ORefList getCombinedResoures() throws Exception
+	{
+		if (getSubtaskCount() > 0)
+			return getAllResources(getSubtaskRefs());
+		
+		return getTaskResources(this);
+	}
+	
+	public DateRange combineAssignmentEffortListDateRanges() throws Exception
+	{
+		if (isBudgetOverrideMode())
+			return getOverridenEffortListDateRange();
+		
+		DateRange combinedDateRange = null;
+		ORefList assignmentRefs = getAssignmentRefs();
+		for (int i = 0; i < assignmentRefs.size(); ++i)
+		{
+ 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
+			DateRangeEffortList effortList = assignment.getDetails();
+			DateRange dateRange = effortList.getCombinedDateRange();
+			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
+		}
+		
+		return combinedDateRange;
+	}
+
 	public ORefList getSubtaskRefs()
 	{
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
