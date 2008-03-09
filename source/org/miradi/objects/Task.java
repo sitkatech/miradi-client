@@ -17,6 +17,7 @@ import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -455,6 +456,16 @@ public class Task extends BaseObject
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
 
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static Task find(ObjectManager objectManager, ORef taskRef)
 	{
 		return (Task) objectManager.findObject(taskRef);
@@ -471,6 +482,7 @@ public class Task extends BaseObject
 		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
 		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, Assignment.getObjectType());
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
+		details = new StringData(TAG_DETAILS);
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
@@ -479,6 +491,7 @@ public class Task extends BaseObject
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
+		addField(TAG_DETAILS, details);
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
@@ -489,6 +502,8 @@ public class Task extends BaseObject
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 	public final static String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public final static String TAG_DETAILS = "Details";
+	
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public final static String PSEUDO_TAG_TASK_BUDGET_DETAIL = "PseudoTaskBudgetDetail";
@@ -502,7 +517,10 @@ public class Task extends BaseObject
 	private IdListData subtaskIds;
 	private IdListData assignmentIds;
 	private ORefListData progressReportRefs;
+	private StringData details;
+	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
 	private PseudoStringData taskTotal;
+	
 }

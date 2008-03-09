@@ -113,6 +113,12 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 				return Measurement.TAG_DETAIL;
 		}
 		
+		if(Task.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Task.TAG_DETAILS;
+		}
+		
 		return getColumnTag(column);
 	}
 
