@@ -83,6 +83,14 @@ public class Task extends BaseObject
 		return false;
 	}
 
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return true;
+		
+		return super.isRefList(tag);
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
