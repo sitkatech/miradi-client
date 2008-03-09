@@ -57,6 +57,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
+		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
 
 		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
