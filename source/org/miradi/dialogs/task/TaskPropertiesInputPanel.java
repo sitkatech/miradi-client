@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 
 import org.martus.swing.UiLabel;
+import org.miradi.actions.ActionEditActivityProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -63,11 +64,10 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
-//		 FIXME: Disabled so I can commit before fixing action/doer situation
-//		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
-//		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-//		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
-//		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
+		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
+		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditActivityProgressReports.class), getPicker());
+		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 		
 		addLabel(new UiLabel(""));
 		addLabel(hasBothSubTaskAssignmentsWarningLabel);
@@ -122,15 +122,14 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	
 	private void hideOrShowProgressSection()
 	{
-//		 FIXME: Disabled so I can commit before fixing action/doer situation
-//		boolean isActivity = false;
-//		Task task = getTask();
-//		if(task != null)
-//			isActivity = task.isActivity();
-//		
-//		progressReportsLabel.setVisible(isActivity);
-//		readOnlyProgressReportsList.setVisible(isActivity);
-//		editProgressReportButton.setVisible(isActivity);
+		boolean isActivity = false;
+		Task task = getTask();
+		if(task != null)
+			isActivity = task.isActivity();
+		
+		progressReportsLabel.setVisible(isActivity);
+		readOnlyProgressReportsList.setVisible(isActivity);
+		editProgressReportButton.setVisible(isActivity);
 	}
 
 	public String getPanelDescription()

@@ -47,7 +47,6 @@ import org.miradi.actions.jump.ActionJumpDocument;
 import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.miradi.actions.jump.ActionJumpGroundTruthRevise;
-import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.actions.jump.ActionJumpImplementStrategicAndMonitoringPlans;
 import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
@@ -77,6 +76,7 @@ import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjectLeader;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
+import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.actions.jump.ActionJumpTeamRoles;
@@ -377,6 +377,9 @@ public class Actions
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));
 		registerAction(new ActionExportTable(mainWindow));
+		registerAction(new ActionEditActivityProgressReports(mainWindow));
+		registerAction(new ActionCreateActivityProgressReport(mainWindow));
+		registerAction(new ActionDeleteActivityProgressReport(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

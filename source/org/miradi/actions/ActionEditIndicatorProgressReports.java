@@ -22,6 +22,6 @@ public class ActionEditIndicatorProgressReports extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Edit the list of progress reports for this strategy");
+		return EAM.text("TT|Edit the list of progress reports for this indicator");
 	}
 }
