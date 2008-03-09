@@ -149,6 +149,9 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	public void setNeedsSave()
 	{
+		if(getORef().isInvalid())
+			return;
+		
 		boolean currentDataMatchesSaved = getOldValue().equals(getText());
 		needsSave = !currentDataMatchesSaved;
 	}
