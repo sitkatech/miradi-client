@@ -462,31 +462,56 @@ abstract public class BaseObject
 		}
 	}
 	
-	public String getCombinedAppendedResources()
+	public String getWhoRollup()
 	{
 		try
 		{
-			ORefList resourceRefs = getCombinedResoures();
-			String appendedResources = "";
-			for (int i = 0; i < resourceRefs.size(); ++i)
-			{
-				ProjectResource resource = ProjectResource.find(getProject(), resourceRefs.get(i));
-				if (resource == null)
-					continue;
-				
-				if (i > 0)
-					appendedResources += ", "; 
-						
-				appendedResources += resource.getWho();
-			}
-			
-			return appendedResources;
+			return getResourcesAsString(getCombinedResoures());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		}
+	}
+	
+	public String getCombinedAppendedResources()
+	{		
+		try
+		{
+			return getResourcesAsString(getWhoTotal());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	private String getResourcesAsString(ORefList resourceRefs)
+	{
+		String appendedResources = "";
+		for (int i = 0; i < resourceRefs.size(); ++i)
+		{
+			ProjectResource resource = ProjectResource.find(getProject(), resourceRefs.get(i));
+			if (resource == null)
+				continue;
+			
+			if (i > 0)
+				appendedResources += ", "; 
+					
+			appendedResources += resource.getWho();
+		}
+		
+		return appendedResources;
+	}
+	
+	public ORefList getWhoTotal() throws Exception
+	{
+		if (isBudgetOverrideMode())
+			return getOverridenWho();
+		
+		return getCombinedResoures();
 	}
 	
 	public ORefList getTaskResources(Task task)
@@ -617,6 +642,11 @@ abstract public class BaseObject
 		return DateRange.createFromJson(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
 	}
 	
+	public ORefList getOverridenWho()throws Exception
+	{
+		return whoOverrideRefs.getORefList();
+	}
+	
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
@@ -629,7 +659,7 @@ abstract public class BaseObject
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL);
-		whoRollupRefs = new PseudoORefListData(PSEUDO_TAG_WHO_ROLLUP_REFS); 
+		whoRollupRefs = new PseudoORefListData(PSEUDO_TAG_WHO_ROLLUP); 
 		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
@@ -646,7 +676,7 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
-		addField(PSEUDO_TAG_WHO_ROLLUP_REFS, whoRollupRefs);
+		addField(PSEUDO_TAG_WHO_ROLLUP, whoRollupRefs);
 		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
@@ -1210,6 +1240,9 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
 			return getCombinedAppendedResources();
 						
+		if (fieldTag.equals(PSEUDO_TAG_WHO_ROLLUP))
+			return getWhoRollup();
+		
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
@@ -1464,7 +1497,7 @@ abstract public class BaseObject
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
-	public final static String PSEUDO_TAG_WHO_ROLLUP_REFS = "WhenRollupRefs";
+	public final static String PSEUDO_TAG_WHO_ROLLUP = "WhenRollupRefs";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
