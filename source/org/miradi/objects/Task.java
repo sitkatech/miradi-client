@@ -296,8 +296,7 @@ public class Task extends BaseObject
 		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{
  			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
-			DateRangeEffortList effortList = assignment.getDetails();
-			DateRange dateRange = effortList.getCombinedDateRange();
+			DateRange dateRange = assignment.getCombinedEffortListDateRange();
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
 		

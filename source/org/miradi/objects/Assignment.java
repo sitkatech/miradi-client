@@ -17,6 +17,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Assignment extends BaseObject
@@ -79,6 +80,11 @@ public class Assignment extends BaseObject
 	public DateRangeEffortList getDetails()
 	{
 		return detailListData.getDateRangeEffortList();
+	}
+	
+	public DateRange getCombinedEffortListDateRange() throws Exception
+	{
+		return getDetails().getCombinedDateRange();
 	}
 	
 	public void setResourceId(BaseId resourceIdToUse)
