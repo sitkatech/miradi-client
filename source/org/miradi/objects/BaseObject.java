@@ -1183,8 +1183,9 @@ abstract public class BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
+		//FIXME this is temporarly disabled for build
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
-			return getCombinedAppendedResources();
+			return "";//return getCombinedAppendedResources();
 				
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
