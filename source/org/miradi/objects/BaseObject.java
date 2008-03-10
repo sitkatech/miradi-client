@@ -496,26 +496,13 @@ abstract public class BaseObject
 		return getCombinedResoures();
 	}
 	
-	public ORefList getTaskResources(Task task)
-	{
-		ORefList resourceRefs = new ORefList();
-		ORefList assignmentRefs = task.getAssignmentRefs();
-		for (int i = 0; i < assignmentRefs.size(); ++i)
-		{
-			Assignment assignment = (Assignment.find(getProject(), assignmentRefs.get(i)));
-			resourceRefs.add(assignment.getResourceRef());	
-		}
-		
-		return resourceRefs;
-	}
-	
 	public ORefList getAllResources(ORefList taskRefs) throws Exception
 	{
 		ORefList resourceRefs = new ORefList();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			resourceRefs.addAll(getTaskResources(thisTask));
+			resourceRefs.addAll(thisTask.getTaskResources());
 		}
 		
 		return resourceRefs;		
