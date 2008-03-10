@@ -278,9 +278,6 @@ public class Task extends BaseObject
 	
 	public DateRange combineAssignmentEffortListDateRanges() throws Exception
 	{
-		if (isBudgetOverrideMode())
-			return getOverridenEffortListDateRange();
-		
 		DateRange combinedDateRange = null;
 		ORefList assignmentRefs = getAssignmentRefs();
 		for (int i = 0; i < assignmentRefs.size(); ++i)

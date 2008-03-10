@@ -546,7 +546,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return convertToSafeString(getCombinedEffortDates());
+			return convertToSafeString(getWhenTotal());
 		}
 		catch (Exception e)
 		{
@@ -560,6 +560,15 @@ abstract public class BaseObject
 		return "";
 	}
 	
+	public DateRange getWhenTotal() throws Exception
+	{
+		if (isBudgetOverrideMode())
+			return getOverridenEffortListDateRange();
+		
+		return getCombinedEffortDates();
+
+	}
+	
 	public DateRange getCombinedEffortDates() throws Exception
 	{
 		return null;
@@ -571,7 +580,7 @@ abstract public class BaseObject
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = combineAssignmentEffortListDateRanges(thisTask);
+			DateRange thisCombineEffortListDateRanges = thisTask.getWhenTotal();
 			if (thisCombineEffortListDateRanges == null)
 				continue;
 			
@@ -583,10 +592,7 @@ abstract public class BaseObject
 	}
 
 	public DateRange combineAssignmentEffortListDateRanges(Task task) throws Exception
-	{
-		if (isBudgetOverrideMode())
-			return getOverridenEffortListDateRange();
-		
+	{	
 		return task.getCombinedEffortDates();
 	}
 
@@ -1186,9 +1192,7 @@ abstract public class BaseObject
 			return getBudgetCostRollupAsString();
 				
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
-		{
 			return getCombinedEffortDatesAsString();
-		}
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_ROLLUP))
 			return getWhenRollup();
