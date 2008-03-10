@@ -557,7 +557,15 @@ abstract public class BaseObject
 	
 	public String getWhenRollup()
 	{
-		return "";
+		try
+		{
+			return convertToSafeString(getCombinedEffortDates());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	public DateRange getWhenTotal() throws Exception
