@@ -555,6 +555,11 @@ abstract public class BaseObject
 		} 
 	}
 	
+	public String getWhenRollup()
+	{
+		return "";
+	}
+	
 	public DateRange getCombinedEffortDates() throws Exception
 	{
 		return null;
@@ -605,9 +610,11 @@ abstract public class BaseObject
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
-		when = new PseudoStringData(PSEUDO_TAG_COMBINED_EFFORT_DATES);
-		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
+		whenRollup = new PseudoStringData(PSEUDO_TAG_WHEN_ROLLUP);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
+		
+		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
 		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
@@ -620,9 +627,10 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
-		addField(PSEUDO_TAG_COMBINED_EFFORT_DATES, when);
-		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
+		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
+		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
+		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
 		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
@@ -1176,17 +1184,21 @@ abstract public class BaseObject
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
 			return getBudgetCostRollupAsString();
-		
-		if (fieldTag.equals(PSEUDO_TAG_COMBINED_EFFORT_DATES))
+				
+		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
+		{
 			return getCombinedEffortDatesAsString();
+		}
 		
+		if (fieldTag.equals(PSEUDO_TAG_WHEN_ROLLUP))
+			return getWhenRollup();
+		
+		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
+			return getCombinedAppendedResources();
+						
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
-		//FIXME this is temporarly disabled for build
-		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML))
-			return "";//return getCombinedAppendedResources();
-				
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
 		
@@ -1432,8 +1444,11 @@ abstract public class BaseObject
 	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
-	public final static String PSEUDO_TAG_COMBINED_EFFORT_DATES = "CombinedEffortDates";
+	
+	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
+	public final static String PSEUDO_TAG_WHEN_ROLLUP = "CombinedEffortDates";
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
+	
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
@@ -1445,7 +1460,11 @@ abstract public class BaseObject
 	
 	private PseudoStringData budgetTotal;
 	private PseudoStringData budgetCostRollup;
-	private PseudoStringData when;
+	protected PseudoStringData whenTotal;
+	private PseudoStringData whenRollup;
+	protected DateRangeData whenOverride;
+	
+	protected ORefListData whoOverrideRefs;
 	private PseudoStringData who;
 
 	private boolean isCachedOwnerValid;
@@ -1455,8 +1474,6 @@ abstract public class BaseObject
 	private Vector noneClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
-	protected DateRangeData whenOverride;
-	protected ORefListData whoOverrideRefs;
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
