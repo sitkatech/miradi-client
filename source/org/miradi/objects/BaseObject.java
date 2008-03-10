@@ -475,7 +475,7 @@ abstract public class BaseObject
 		}
 	}
 	
-	public String getCombinedAppendedResources()
+	public String getWhoTotalAsString()
 	{		
 		try
 		{
@@ -1206,7 +1206,7 @@ abstract public class BaseObject
 			return getWhenRollupAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
-			return getCombinedAppendedResources();
+			return getWhoTotalAsString();
 						
 		if (fieldTag.equals(PSEUDO_TAG_WHO_ROLLUP))
 			return getWhoRollupAsString();
