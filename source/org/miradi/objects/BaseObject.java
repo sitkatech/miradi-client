@@ -549,7 +549,7 @@ abstract public class BaseObject
 		} 
 	}
 	
-	public String getWhenRollup()
+	public String getWhenRollupAsString()
 	{
 		try
 		{
@@ -1204,7 +1204,7 @@ abstract public class BaseObject
 			return getCombinedEffortDatesAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_ROLLUP))
-			return getWhenRollup();
+			return getWhenRollupAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
 			return getCombinedAppendedResources();
