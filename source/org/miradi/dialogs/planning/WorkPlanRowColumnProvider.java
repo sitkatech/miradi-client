@@ -20,7 +20,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 	{
 		return new CodeList(new String[] {
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-				BaseObject.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
+				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL,
 				});
