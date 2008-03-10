@@ -19,9 +19,10 @@ public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 		super(projectToUse, initialRef);
 		
 		addField(createCurrencyField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_OVERRIDE));
-		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
 
 		//FIXME temporarly disabled for build
+//		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
+
 //		PanelTitleLabel estimatedResourcesLabel = new PanelTitleLabel(EAM.text("Estimated Resources"));
 //		ObjectDataInputField readOnlyEstimatedResourcesList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_WHO_OVERRIDE_REFS);
 //		ObjectsActionButton editEstimatedResourcesButton = createObjectsActionButton(actions.getObjectsAction(ActionEditEstimatedResource.class), getPicker());
