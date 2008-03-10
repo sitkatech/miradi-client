@@ -285,7 +285,7 @@ public class Indicator extends BaseObject
 		return combineSubtaskEffortListDateRanges(getMethodRefs());
 	}
 	
-	public ORefList getCombinedResoures() throws Exception
+	public ORefList getWhoRollup() throws Exception
 	{
 		return getAllResources(getMethodRefs());
 	}

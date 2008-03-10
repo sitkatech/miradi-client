@@ -462,16 +462,16 @@ abstract public class BaseObject
 		}
 	}
 	
-	public ORefList getWhoRollup()
+	public String getWhoRollupAsString()
 	{
 		try
 		{
-			return getCombinedResoures();
+			return getWhoRollup().toString();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new ORefList();
+			return "";
 		}
 	}
 	
@@ -493,7 +493,7 @@ abstract public class BaseObject
 		if (isBudgetOverrideMode())
 			return getOverridenWho();
 		
-		return getCombinedResoures();
+		return getWhoRollup();
 	}
 	
 	public ORefList getAllResources(ORefList taskRefs) throws Exception
@@ -508,7 +508,7 @@ abstract public class BaseObject
 		return resourceRefs;		
 	}
 	
-	public ORefList getCombinedResoures() throws Exception
+	public ORefList getWhoRollup() throws Exception
 	{
 		return new ORefList();
 	}
@@ -1210,7 +1210,7 @@ abstract public class BaseObject
 			return getCombinedAppendedResources();
 						
 		if (fieldTag.equals(PSEUDO_TAG_WHO_ROLLUP))
-			return getWhoRollup().toString();
+			return getWhoRollupAsString();
 		
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
