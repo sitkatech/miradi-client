@@ -260,7 +260,7 @@ public class Task extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 
-	public DateRange getCombinedEffortDates() throws Exception
+	public DateRange getWhenRollup() throws Exception
 	{
 		if (getSubtaskCount() > 0)
 			return combineSubtaskEffortListDateRanges(getSubtaskRefs());

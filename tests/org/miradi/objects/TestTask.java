@@ -113,30 +113,30 @@ public class TestTask extends ObjectTestCase
 	public void testGetCombinedEffortDates() throws Exception
 	{
 		Task taskWithNoSubtasksNoAssignment = createTask(); 
-		DateRange combinedDateRange = taskWithNoSubtasksNoAssignment.getCombinedEffortDates();
+		DateRange combinedDateRange = taskWithNoSubtasksNoAssignment.getWhenRollup();
 		assertEquals("combined date range is not null?", null, combinedDateRange);
 		
 		Task taskWithNoSubTasksWithAssignment = createTask();
 		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 1000, 3000);
 		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getAssignmentIdList().size());
-		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 3000).getDateRange(), taskWithNoSubTasksWithAssignment.getCombinedEffortDates());
+		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 3000).getDateRange(), taskWithNoSubTasksWithAssignment.getWhenRollup());
 		
 		Task taskWithoutUnits = createTask();
 		addAssignment(taskWithoutUnits, 0, 1000, 1001);
 		assertEquals("assignment was not added?", 1, taskWithoutUnits.getAssignmentIdList().size());
-		assertEquals("wrong combined date range?", null, taskWithoutUnits.getCombinedEffortDates());
+		assertEquals("wrong combined date range?", null, taskWithoutUnits.getWhenRollup());
 		
 		Task taskWithSubtasks = createTask();
 		Task subTask = createTask();
 		IdList subTaskIds = new IdList(Task.getObjectType());
 		subTaskIds.add(subTask.getId());
 		taskWithSubtasks.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
-		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getCombinedEffortDates());
+		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
 		
 		addAssignment(subTask, 1.0, 2000, 2010);
 		addAssignment(subTask, 1.0, 10, 20);
 		addAssignment(subTask, 0, 9998, 9999);
-		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 2010).getDateRange(), taskWithSubtasks.getCombinedEffortDates());
+		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 2010).getDateRange(), taskWithSubtasks.getWhenRollup());
 	}
 
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
