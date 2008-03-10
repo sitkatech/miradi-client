@@ -553,7 +553,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return convertToSafeString(getCombinedEffortDates());
+			return convertToSafeString(getWhenRollup());
 		}
 		catch (Exception e)
 		{
@@ -567,11 +567,10 @@ abstract public class BaseObject
 		if (isBudgetOverrideMode())
 			return getWhenEstimate();
 		
-		return getCombinedEffortDates();
-
+		return getWhenRollup();
 	}
 	
-	public DateRange getCombinedEffortDates() throws Exception
+	public DateRange getWhenRollup() throws Exception
 	{
 		return null;
 	}
@@ -595,7 +594,7 @@ abstract public class BaseObject
 
 	public DateRange combineAssignmentEffortListDateRanges(Task task) throws Exception
 	{	
-		return task.getCombinedEffortDates();
+		return task.getWhenRollup();
 	}
 
 	public String convertToSafeString(DateRange combinedDateRange)

@@ -259,7 +259,7 @@ public class Strategy extends Factor
 		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());
 	}
 	
-	public DateRange getCombinedEffortDates() throws Exception
+	public DateRange getWhenRollup() throws Exception
 	{
 		return combineSubtaskEffortListDateRanges(getActivityRefs());
 	}
