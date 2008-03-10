@@ -264,7 +264,7 @@ public class Strategy extends Factor
 		return combineSubtaskEffortListDateRanges(getActivityRefs());
 	}
 	
-	public ORefList getCombinedResoures() throws Exception
+	public ORefList getWhoRollup() throws Exception
 	{
 		return getAllResources(getActivityRefs());
 	}

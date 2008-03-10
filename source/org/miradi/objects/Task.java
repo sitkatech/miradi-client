@@ -268,7 +268,7 @@ public class Task extends BaseObject
 		return combineAssignmentEffortListDateRanges();
 	}
 	
-	public ORefList getCombinedResoures() throws Exception
+	public ORefList getWhoRollup() throws Exception
 	{
 		if (getSubtaskCount() > 0)
 			return getAllResources(getSubtaskRefs());
