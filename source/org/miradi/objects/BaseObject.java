@@ -536,7 +536,7 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
-	public String getCombinedEffortDatesAsString()
+	public String getWhenTotalAsString()
 	{
 		try
 		{
@@ -1200,7 +1200,7 @@ abstract public class BaseObject
 			return getBudgetCostRollupAsString();
 				
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
-			return getCombinedEffortDatesAsString();
+			return getWhenTotalAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_ROLLUP))
 			return getWhenRollupAsString();
