@@ -960,14 +960,17 @@ public class Project
 	
 	public void recordCommand(Command command)
 	{
+		Command lastCommand = undoRedoState.getLastRecordedCommand();
 		if(firingCommandExecutedEvents)
 		{
-			EAM.internalError(EAM.text("Attempt to execute command from command listener"));
+			EAM.internalError(
+					EAM.text("Attempt to execute command from command listener: " + command.getCommandName() +
+					EAM.text(" within ") + lastCommand.getCommandName())
+					);
 		}
 		
 		try
 		{
-			Command lastCommand = undoRedoState.getLastRecordedCommand();
 			if(command.isEndTransaction() && lastCommand != null && lastCommand.isBeginTransaction())
 			{
 				undoRedoState.discardLastUndoableCommand();
