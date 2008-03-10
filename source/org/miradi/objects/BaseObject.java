@@ -565,7 +565,7 @@ abstract public class BaseObject
 	public DateRange getWhenTotal() throws Exception
 	{
 		if (isBudgetOverrideMode())
-			return getOverridenEffortListDateRange();
+			return getWhenEstimate();
 		
 		return getCombinedEffortDates();
 
@@ -606,7 +606,7 @@ abstract public class BaseObject
 		return  combinedDateRange.toString();
 	}
 	
-	public DateRange getOverridenEffortListDateRange() throws Exception
+	public DateRange getWhenEstimate() throws Exception
 	{
 		return DateRange.createFromJson(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
 	}
