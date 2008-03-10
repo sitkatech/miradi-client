@@ -32,6 +32,8 @@ public class RadioButtonsField extends ObjectDataInputField
 			button.setBackground(AppPreferences.getDataPanelBackgroundColor());
 			group.add(button);
 			buttons.add(button);
+			if(question.getCode(i).equals(""))
+				button.setSelected(true);
 			button.addActionListener(new RadioChangeHandler());
 		}
 	}
