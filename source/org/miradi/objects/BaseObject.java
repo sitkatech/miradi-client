@@ -628,7 +628,8 @@ abstract public class BaseObject
 		whenRollup = new PseudoStringData(PSEUDO_TAG_WHEN_ROLLUP);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
-		who = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		whoTotal = new PseudoStringData(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML);
+		whoRollupRefs = new PseudoORefListData(PSEUDO_TAG_WHO_ROLLUP_REFS); 
 		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
@@ -644,7 +645,8 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
-		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, who);
+		addField(PSEUDO_TAG_ASSIGNED_RESOURCES_HTML, whoTotal);
+		addField(PSEUDO_TAG_WHO_ROLLUP_REFS, whoRollupRefs);
 		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
@@ -1462,6 +1464,7 @@ abstract public class BaseObject
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_ASSIGNED_RESOURCES_HTML = "Who";
+	public final static String PSEUDO_TAG_WHO_ROLLUP_REFS = "WhenRollupRefs";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
@@ -1475,9 +1478,11 @@ abstract public class BaseObject
 	protected PseudoStringData whenTotal;
 	private PseudoStringData whenRollup;
 	protected DateRangeData whenOverride;
-	
+
+	private PseudoStringData whoTotal;
+	protected PseudoORefListData whoRollupRefs;
 	protected ORefListData whoOverrideRefs;
-	private PseudoStringData who;
+	
 
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
