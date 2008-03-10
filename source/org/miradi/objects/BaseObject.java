@@ -462,16 +462,16 @@ abstract public class BaseObject
 		}
 	}
 	
-	public String getWhoRollup()
+	public ORefList getWhoRollup()
 	{
 		try
 		{
-			return getResourcesAsString(getCombinedResoures());
+			return getCombinedResoures();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "";
+			return new ORefList();
 		}
 	}
 	
@@ -1241,7 +1241,7 @@ abstract public class BaseObject
 			return getCombinedAppendedResources();
 						
 		if (fieldTag.equals(PSEUDO_TAG_WHO_ROLLUP))
-			return getWhoRollup();
+			return getWhoRollup().toString();
 		
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
