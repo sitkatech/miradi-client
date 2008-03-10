@@ -79,7 +79,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
 			return AppPreferences.INDICATOR_COLOR;
 		
-		if(columnTag.equals(BaseObject.PSEUDO_TAG_COMBINED_EFFORT_DATES))
+		if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
 			return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 		
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
