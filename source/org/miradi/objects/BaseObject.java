@@ -1471,8 +1471,8 @@ abstract public class BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 
-	BaseId id;
-	StringData label;
+	protected BaseId id;
+	protected StringData label;
 	
 	private PseudoStringData budgetTotal;
 	private PseudoStringData budgetCostRollup;
