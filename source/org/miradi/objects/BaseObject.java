@@ -479,7 +479,7 @@ abstract public class BaseObject
 	{		
 		try
 		{
-			return getResourcesAsString(getWhoTotal());
+			return ProjectResource.getResourcesAsString(getProject(), getWhoTotal());
 		}
 		catch (Exception e)
 		{
@@ -488,24 +488,6 @@ abstract public class BaseObject
 		}
 	}
 
-	private String getResourcesAsString(ORefList resourceRefs)
-	{
-		String appendedResources = "";
-		for (int i = 0; i < resourceRefs.size(); ++i)
-		{
-			ProjectResource resource = ProjectResource.find(getProject(), resourceRefs.get(i));
-			if (resource == null)
-				continue;
-			
-			if (i > 0)
-				appendedResources += ", "; 
-					
-			appendedResources += resource.getWho();
-		}
-		
-		return appendedResources;
-	}
-	
 	public ORefList getWhoTotal() throws Exception
 	{
 		if (isBudgetOverrideMode())
