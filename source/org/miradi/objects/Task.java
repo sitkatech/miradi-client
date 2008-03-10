@@ -273,7 +273,20 @@ public class Task extends BaseObject
 		if (getSubtaskCount() > 0)
 			return getAllResources(getSubtaskRefs());
 		
-		return getTaskResources(this);
+		return getTaskResources();
+	}
+	
+	public ORefList getTaskResources()
+	{
+		ORefList resourceRefs = new ORefList();
+		ORefList assignmentRefs = getAssignmentRefs();
+		for (int i = 0; i < assignmentRefs.size(); ++i)
+		{
+			Assignment assignment = (Assignment.find(getProject(), assignmentRefs.get(i)));
+			resourceRefs.add(assignment.getResourceRef());	
+		}
+		
+		return resourceRefs;
 	}
 	
 	public DateRange combineAssignmentEffortListDateRanges() throws Exception
