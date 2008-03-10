@@ -111,7 +111,8 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
-			setDate(jcalendar.getDate());
+			if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
+				setDate(jcalendar.getDate());
 		}
 	}
 	
@@ -119,7 +120,8 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
-			setDate(jcalendar.getDate());
+			if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
+				setDate(jcalendar.getDate());
 		}
 	}
 	
