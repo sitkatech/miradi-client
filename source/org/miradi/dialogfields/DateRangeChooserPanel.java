@@ -56,11 +56,7 @@ public class DateRangeChooserPanel extends MiradiPanel
 		
 		MultiCalendar startDate = new MultiCalendar(startRawDate);
 		MultiCalendar endDate = new MultiCalendar(endRawDate);
-
-		if (startDate.after(endDate))
-			return new DateRange(endDate, startDate).toJson().toString();
-		
-		return new DateRange(startDate, endDate).toJson().toString();
+		return DateRange.createFromJson(startDate, endDate).toJson().toString();
 	}
 	
 	public void setDateRange(String dateRangeAsSting) throws ParseException, Exception
