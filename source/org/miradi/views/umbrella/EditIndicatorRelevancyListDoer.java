@@ -10,7 +10,7 @@ import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 
-public class EditIndicatorRelevancyListDoer extends AbstractEditListDoer
+public class EditIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
 	protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef)
 	{

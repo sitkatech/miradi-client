@@ -10,9 +10,8 @@ import org.miradi.dialogs.diagram.RelevancyStrategyPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 
-public class EditStrategyRelevancyListDoer extends AbstractEditListDoer
+public class EditStrategyRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-
 	protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef)
 	{
 		return new RelevancyStrategyPanel(getProject(), objectiveRef);

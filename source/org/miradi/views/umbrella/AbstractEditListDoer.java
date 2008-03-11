@@ -10,8 +10,6 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Objective;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractEditListDoer extends ObjectsDoer
@@ -32,26 +30,16 @@ abstract public class AbstractEditListDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		ORefList refList = getSelectedHierarchies()[0];
-		ORef ref = refList.getRefForType(getTypeToUse());
+		ORef ref = getSelectionRef();
 		ObjectDataInputPanel panel = getRelevancyPanel(ref);
 		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
-
-	protected int getTypeToUse()
-	{
-		return Objective.getObjectType();
-	}
-
-	private boolean isInvalidSelection()
-	{
-		ORefList refList = getSelectedHierarchies()[0];
-		ORef objectiveRef = refList.getRefForType(getTypeToUse());
 	
-		return objectiveRef.isInvalid();
-	}
+	abstract protected ORef getSelectionRef();
+
+	abstract protected boolean isInvalidSelection();
 	
 	abstract protected String getDialogTitle();
 	
