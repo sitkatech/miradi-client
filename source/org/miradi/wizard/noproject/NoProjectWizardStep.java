@@ -31,7 +31,6 @@ import org.miradi.views.noproject.RenameProjectDoer;
 import org.miradi.views.umbrella.Definition;
 import org.miradi.views.umbrella.DefinitionCommonTerms;
 import org.miradi.views.umbrella.ExportZippedProjectFileDoer;
-import org.miradi.views.umbrella.UrlZippedProjectFileImporter;
 import org.miradi.wizard.SkeletonWizardStep;
 import org.miradi.wizard.WizardHtmlViewer;
 import org.miradi.wizard.WizardManager;
@@ -122,10 +121,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
 				HtmlViewPanel htmlViewPanel = new HtmlViewPanelWithMargins(getMainWindow(), def.term,  def.getDefintion());
 				htmlViewPanel.showAsOkDialog();
-			}
-			else if(linkDescription.startsWith(DOWNLOAD_PREFIX))
-			{
-				ImporFromUrlZippedProjectFile();
 			}
 			else
 			{
@@ -219,19 +214,11 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		refresh();
 	}
 	
-	private void ImporFromUrlZippedProjectFile() throws Exception
-	{
-		UrlZippedProjectFileImporter.importMarineExample(getMainWindow());
-		refresh();
-	}
-	
-	
 	public static final String OPEN_PREFIX = "OPEN:";
 	private static final String COPY_PREFIX = "COPY:";
 	private static final String RENAME_PREFIX = "RENAME:";
 	private static final String DELETE_PREFIX = "DELETE:";
 	private static final String EXPORT_PREFIX = "EXPORT:";
-	private static final String DOWNLOAD_PREFIX = "DOWNLOAD:";
 	private static final String DEFINITION_PREFIX = "Definition:";
 	
 	TreeBasedProjectList projectList;
