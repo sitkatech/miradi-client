@@ -35,9 +35,9 @@ public class DateRangeChooserPanel extends MiradiPanel
 			startDateChooser.dispose();
 		startDateChooser = null;
 		
-		if (endDateChooser != null);
+		if (endDateChooser != null)
 			endDateChooser.dispose();
-		endDateChooser.dispose();
+		endDateChooser = null;
 	}
 	
 	public String getDateRange() throws Exception
