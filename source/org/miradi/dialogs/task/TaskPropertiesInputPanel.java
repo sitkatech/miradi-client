@@ -6,22 +6,15 @@
 package org.miradi.dialogs.task;
 
 
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
+import java.awt.Component;
 
-import org.martus.swing.UiLabel;
-import org.miradi.actions.ActionEditActivityProgressReports;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastOverrideSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.EmptyIcon;
-import org.miradi.icons.MethodIcon;
-import org.miradi.icons.TaskIcon;
 import org.miradi.ids.BaseId;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -29,9 +22,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.utils.ObjectsActionButton;
 
-public class TaskPropertiesInputPanel extends ObjectDataInputPanel
+public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
 {
 	public TaskPropertiesInputPanel(Project projectToUse, Actions actions) throws Exception
 	{
@@ -41,10 +33,16 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	public TaskPropertiesInputPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
-		setBorder(BorderFactory.createEtchedBorder());
+		setLayout(new OneColumnGridLayout());
+		
+		addSubPanelWithTitledBorder(new TaskDetailsPanel(projectToUse, actions, idToEdit));
 		
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
-		addCommonFields(actions);
+		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
+		addSubPanelWithTitledBorder(budgetSubPanel);
+		
+		addFieldComponent(hasBothSubTaskAssignmentsWarningLabel);
+		updateFieldsFromProject();
 	}
 	
 	public void dispose()
@@ -52,87 +50,13 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	private void addCommonFields(Actions actions)
-	{
-		taskNameLabel = new PanelTitleLabel("x");
-		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
-		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
-		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
-
-		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
-		addSubPanel(budgetSubPanel);
-
-		addLabel(EAM.text("Budget"));
-		addFieldComponent(budgetSubPanel);
-		
-		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
-		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditActivityProgressReports.class), getPicker());
-		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
-		
-		addLabel(new UiLabel(""));
-		addLabel(hasBothSubTaskAssignmentsWarningLabel);
-		updateFieldsFromProject();
-	}
-
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
 		updatedWarningMessageVisiblity(orefsToUse);
-		updateTaskNameLabel();
-		hideOrShowProgressSection();
 	}
 
 	
-	private void updateTaskNameLabel()
-	{
-		taskNameLabel.setIcon(getTaskTypeIcon());
-		taskNameLabel.setText(getTaskTypeLabel());
-	}
-	
-	private Icon getTaskTypeIcon()
-	{
-		Task task = getTask();
-		if(task == null)
-			return new EmptyIcon();
-		
-		if(task.isActivity())
-			return new ActivityIcon();
-		if(task.isMethod())
-			return new MethodIcon();
-		return new TaskIcon();
-	}
-
-	private String getTaskTypeLabel()
-	{
-		Task task = getTask();
-		if(task == null)
-			return "";
-		return task.getTypeName();
-	}
-	
-	private Task getTask()
-	{
-		ORef ref = getRefForType(Task.getObjectType());
-		if(ref.isInvalid())
-			return null;
-		
-		Task task = Task.find(getProject(), ref);
-		return task;
-	}
-	
-	private void hideOrShowProgressSection()
-	{
-		boolean isActivity = false;
-		Task task = getTask();
-		if(task != null)
-			isActivity = task.isActivity();
-		
-		progressReportsLabel.setVisible(isActivity);
-		readOnlyProgressReportsList.setVisible(isActivity);
-		editProgressReportButton.setVisible(isActivity);
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Task Properties");
@@ -174,13 +98,12 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 		return true;
 	}
 	
+	@Override
+	public void addFieldComponent(Component component)
+	{
+		add(component);
+	}
 
 	
 	private PanelTitleLabel hasBothSubTaskAssignmentsWarningLabel;
-	private PanelTitleLabel taskNameLabel;
-	
-	PanelTitleLabel progressReportsLabel;
-	ObjectDataInputField readOnlyProgressReportsList;
-	ObjectsActionButton editProgressReportButton;
-
 }
