@@ -69,6 +69,9 @@ public class Task extends BaseObject
 		
 		if (tag.equals(TAG_ASSIGNMENT_IDS))
 			return Assignment.getObjectType();
+
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return ProgressReport.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
