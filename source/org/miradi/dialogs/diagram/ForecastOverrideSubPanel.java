@@ -14,6 +14,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -50,6 +51,6 @@ public class ForecastOverrideSubPanel extends AbstractObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return "Budget SubPanel";
+		return EAM.text("Cost/When/Who");
 	}
 }
