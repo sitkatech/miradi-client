@@ -59,6 +59,20 @@ public class TestBaseObject extends EAMTestCase
 	   	ORefList allOwnedObjects = ownerObject.getAllOwnedObjects();
 	   	assertEquals("incorrect owned object count?", 2, allOwnedObjects.size());
 	}
+	
+	public void testIsRefList() throws Exception
+	{
+		ORef taskRef = project.createObject(Task.getObjectType());
+		Task task = Task.find(project, taskRef);
+		assertTrue("is tag refList?", task.isRefList(BaseObject.TAG_WHO_OVERRIDE_REFS));	
+	}
 
+	public void testGetAnnotationType() throws Exception
+	{
+		ORef taskRef = project.createObject(Task.getObjectType());
+		Task task = Task.find(project, taskRef);
+		assertEquals("wrong annotation type?", ProjectResource.getObjectType(), task.getAnnotationType(BaseObject.TAG_WHO_OVERRIDE_REFS));	
+	}
+	
 	ProjectForTesting project;
 }
