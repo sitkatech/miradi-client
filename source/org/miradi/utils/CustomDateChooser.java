@@ -16,6 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.event.CaretEvent;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -39,6 +41,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		
 		jcalendar.getMonthChooser().addPropertyChangeListener(new MonthChangeListener());
 		jcalendar.getYearChooser().addPropertyChangeListener(new YearChangeListener());
+		popup.addPopupMenuListener(new PopupMenuHandler());
 		dateEditor.addPropertyChangeListener(DATE_PROPERTY_NAME, this);
 		getDateTextEditor().addFocusListener(objectDataInputFieldToUse);
 		documentListener = objectDataInputField.createDocumentEventHandler();
@@ -87,40 +90,18 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		setPreferredSize(preferredDimension);
 	}
 	
-	public void propertyChange(PropertyChangeEvent evt) 
+	private void updateTextFromCalendarAndSave()
 	{
-		super.propertyChange(evt);
-		String propertyName = evt.getPropertyName();
-		if (!isInterestingProperty(propertyName))
-			return;
-		
-		if (objectDataInputField == null)
-			return;
-
-		objectDataInputField.saveIfNeeded();
+		setDate(jcalendar.getDate());
+		objectDataInputField.forceSave();
 	}
 
-	private boolean isInterestingProperty(String propertyName)
-	{
-		if(propertyName.equals(YEAR_PROPERTY_NAME))
-			return true;
-		if(propertyName.equals(MONTH_PROPERTY_NAME))
-			return true;
-		if(propertyName.equals(DAY_PROPERTY_NAME))
-			return true;
-		if(propertyName.equals(DATE_PROPERTY_NAME))
-			return true;
-		
-		
-		return false;
-	}
-		
 	class MonthChangeListener implements PropertyChangeListener
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
 			if (evt.getPropertyName().equals(MONTH_PROPERTY_NAME)) 
-				setDate(jcalendar.getDate());
+				updateTextFromCalendarAndSave();
 		}
 	}
 	
@@ -129,8 +110,25 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		public void propertyChange(PropertyChangeEvent evt)
 		{
 			if (evt.getPropertyName().equals(YEAR_PROPERTY_NAME)) 
-				setDate(jcalendar.getDate());
+				updateTextFromCalendarAndSave();
 		}
+	}
+	
+	class PopupMenuHandler implements PopupMenuListener
+	{
+		public void popupMenuCanceled(PopupMenuEvent e)
+		{
+		}
+
+		public void popupMenuWillBecomeInvisible(PopupMenuEvent e)
+		{
+			updateTextFromCalendarAndSave();
+		}
+
+		public void popupMenuWillBecomeVisible(PopupMenuEvent e)
+		{
+		}
+		
 	}
 	
 	class CustomMouseListener extends MouseAdapter
@@ -212,7 +210,6 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	
 	private static final String MONTH_PROPERTY_NAME = "month";
 	private static final String YEAR_PROPERTY_NAME = "year";
-	private static final String DAY_PROPERTY_NAME = "day";
 	private static final String DATE_PROPERTY_NAME = "date";
 	
 	private ObjectDataInputField objectDataInputField;
