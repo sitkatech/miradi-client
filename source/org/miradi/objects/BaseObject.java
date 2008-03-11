@@ -1461,7 +1461,7 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
-	public final static String PSEUDO_TAG_WHEN_ROLLUP = "CombinedEffortDates";
+	public final static String PSEUDO_TAG_WHEN_ROLLUP = "PseudoWhenRollupAsString";
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
