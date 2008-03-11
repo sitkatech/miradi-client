@@ -247,6 +247,18 @@ public class ORefList
 		return newList;
 	}
 	
+	public ORef getRefForTypes(int[] objectTypes)
+	{
+		for (int i = 0;i < objectTypes.length; ++i)
+		{
+			ORef refForType = getRefForType(objectTypes[i]);
+			if (!refForType.isInvalid())
+				return refForType;
+		}
+		
+		return ORef.INVALID;
+	}
+	
 	public ORef getRefForType(int objectType)
 	{
 		for (int i = 0; i < data.size(); ++i)
