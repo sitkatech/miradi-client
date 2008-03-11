@@ -59,7 +59,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		if(!EAM.confirmDialog("Project Migration Required", migrationText, buttons))
 			return;
 		
-		File zipFile = new File(projectDirectory.getParent(), "backup-" + projectDirectory.getName() + ".zip");
+		File zipFile = new File(projectDirectory.getParent(), "backup-" + projectDirectory.getName() + ".mpz");
 		if(zipFile.exists())
 		{
 			String[] backupExistsText = {
