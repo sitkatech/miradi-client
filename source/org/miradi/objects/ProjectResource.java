@@ -74,10 +74,15 @@ public class ProjectResource extends BaseObject
 		return false;
 	}
 
+	public String getLabel()
+	{
+		return toString();
+	}
+	
 	public String toString()
 	{
 		return getWho();
-}
+	}
 	
 	public String getWho()
 	{
