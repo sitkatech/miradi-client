@@ -508,7 +508,7 @@ abstract public class BaseObject
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			resourceRefs.addAll(thisTask.getTaskResources());
+			resourceRefs.addAll(thisTask.getWhoTotal());
 		}
 		
 		return resourceRefs;		
