@@ -7,6 +7,8 @@ package org.miradi.objecthelpers;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 
@@ -195,6 +197,11 @@ public class ORefList
 	public boolean isEmpty()
 	{
 		return (size() == 0);
+	}
+	
+	public void sort(Comparator<ORef> comparator)
+	{
+		Collections.sort(data, comparator);
 	}
 	
 	public void toXml(UnicodeWriter out) throws IOException
