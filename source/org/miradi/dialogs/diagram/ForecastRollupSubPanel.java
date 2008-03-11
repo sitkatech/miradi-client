@@ -9,7 +9,6 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 
 public class ForecastRollupSubPanel extends ObjectDataInputPanel
@@ -19,9 +18,8 @@ public class ForecastRollupSubPanel extends ObjectDataInputPanel
 		super(projectToUse, initialRef);
 		
 		addField(createReadonlyCurrencyField(BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP));
-		addField(createReadonlyTextField(Task.getObjectType(), BaseObject.PSEUDO_TAG_WHEN_ROLLUP, 20));
-		//FIXME temporarly commented
-		//addField(createReadOnlyObjectList(Task.getObjectType(), BaseObject.PSEUDO_TAG_WHO_ROLLUP));
+		addField(createReadonlyTextField(initialRef.getObjectType(), BaseObject.PSEUDO_TAG_WHEN_ROLLUP, 20));
+		addField(createReadOnlyObjectList(initialRef.getObjectType(), BaseObject.PSEUDO_TAG_WHO_ROLLUP));
 		
 		updateFieldsFromProject();
 	}
