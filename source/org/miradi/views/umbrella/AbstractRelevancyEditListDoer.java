@@ -13,11 +13,8 @@ import org.miradi.objects.Objective;
 abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 {
 	protected boolean isInvalidSelection()
-	{
-		ORefList refList = getSelectedHierarchies()[0];
-		ORef objectiveRef = refList.getRefForType(getTypeToUse());
-	
-		return objectiveRef.isInvalid();
+	{	
+		return getSelectedRef().isInvalid();
 	}
 	
 	protected ORef getSelectionRef()
