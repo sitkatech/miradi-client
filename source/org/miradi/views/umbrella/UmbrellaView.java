@@ -37,6 +37,7 @@ import org.miradi.actions.ActionEditEstimatedResource;
 import org.miradi.actions.ActionEditIndicatorProgressReports;
 import org.miradi.actions.ActionEditIndicatorRelevancyList;
 import org.miradi.actions.ActionEditMethods;
+import org.miradi.actions.ActionEditOverrideWhoValues;
 import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.ActionEditStrategyRelevancyList;
 import org.miradi.actions.ActionExit;
@@ -170,6 +171,7 @@ import org.miradi.views.umbrella.doers.CopyProjectToDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteMethodDoer;
 import org.miradi.views.umbrella.doers.EditMethodsDoer;
+import org.miradi.views.umbrella.doers.EditOverridenWhoValuesDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
@@ -352,6 +354,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
 		addDoerToMap(ActionEditStrategyRelevancyList.class, new EditStrategyRelevancyListDoer());
+		addDoerToMap(ActionEditOverrideWhoValues.class, new EditOverridenWhoValuesDoer());
 		
 		addDoerToMap(ActionPrint.class, new Print());
 		

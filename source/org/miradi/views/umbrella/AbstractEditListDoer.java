@@ -14,7 +14,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Objective;
 import org.miradi.views.ObjectsDoer;
 
-abstract public class AbstractEditRelevancyListDoer extends ObjectsDoer
+abstract public class AbstractEditListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
@@ -33,17 +33,22 @@ abstract public class AbstractEditRelevancyListDoer extends ObjectsDoer
 			return;
 		
 		ORefList refList = getSelectedHierarchies()[0];
-		ORef objectiveRef = refList.getRefForType(Objective.getObjectType());
-		ObjectDataInputPanel indicatorPanel = getRelevancyPanel(objectiveRef);
-		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), indicatorPanel, getDialogTitle());
+		ORef ref = refList.getRefForType(getTypeToUse());
+		ObjectDataInputPanel panel = getRelevancyPanel(ref);
+		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
+	}
+
+	protected int getTypeToUse()
+	{
+		return Objective.getObjectType();
 	}
 
 	private boolean isInvalidSelection()
 	{
 		ORefList refList = getSelectedHierarchies()[0];
-		ORef objectiveRef = refList.getRefForType(Objective.getObjectType());
+		ORef objectiveRef = refList.getRefForType(getTypeToUse());
 	
 		return objectiveRef.isInvalid();
 	}
