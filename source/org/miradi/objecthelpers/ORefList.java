@@ -256,11 +256,14 @@ public class ORefList
 	
 	public ORef getRefForTypes(int[] objectTypes)
 	{
-		for (int i = 0;i < objectTypes.length; ++i)
+		for (int dataIndex = 0; dataIndex < data.size(); ++dataIndex)
 		{
-			ORef refForType = getRefForType(objectTypes[i]);
-			if (!refForType.isInvalid())
-				return refForType;
+			ORef oref = data.get(dataIndex);
+			for (int typeIndex = 0; typeIndex < objectTypes.length; ++typeIndex)
+			{
+				if (objectTypes[typeIndex] == oref.getObjectType())
+					return  oref;
+			}
 		}
 		
 		return ORef.INVALID;
