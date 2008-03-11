@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
-import net.sf.jasperreports.view.JRViewer;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.dialogs.base.MiradiPanel;
@@ -72,7 +71,7 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, xmlDataSource);
 
 		MiradiPanel reportPanel = new MiradiPanel(new BorderLayout());
-		reportPanel.add(new JRViewer(print));
+		reportPanel.add(new ReportPreviewPanel(print));
 		
 		return reportPanel;
 	}
