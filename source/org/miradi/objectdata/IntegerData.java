@@ -5,6 +5,8 @@
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.main.EAM;
+
 
 public class IntegerData extends ObjectData
 {
@@ -22,7 +24,18 @@ public class IntegerData extends ObjectData
 			return;
 		}
 		
-		value = Integer.parseInt(newValue);
+		try
+		{
+			value = Integer.parseInt(newValue);
+		}
+		catch(NumberFormatException e)
+		{
+			EAM.logDebug("Field " + getTag() + " expected integer but got: " + newValue);
+			double valueAsDouble = Double.parseDouble(newValue);
+			value = new Integer((int)valueAsDouble);
+			if(Math.abs(valueAsDouble-value) >= .1)
+				EAM.logWarning("TRUNCATING floating portion of: " + getTag());
+		}
 	}
 	
 	public String get()
