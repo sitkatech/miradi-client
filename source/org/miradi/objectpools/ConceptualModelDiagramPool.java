@@ -14,7 +14,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.ObjectManager;
 
-public class ConceptualModelDiagramPool extends EAMNormalObjectPool
+public class ConceptualModelDiagramPool extends DiagramObjectPool
 {
 	public ConceptualModelDiagramPool(IdAssigner idAssignerToUse)
 	{
