@@ -14,7 +14,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.ObjectManager;
 
-public class ResultsChainDiagramPool extends EAMNormalObjectPool
+public class ResultsChainDiagramPool extends DiagramObjectPool
 {
 	public ResultsChainDiagramPool(IdAssigner idAssignerToUse)
 	{
