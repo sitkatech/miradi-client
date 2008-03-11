@@ -142,7 +142,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		getComponent().setEnabled(false);
 	}
 	
-	boolean needsToBeSaved()
+	public boolean needsToBeSaved()
 	{
 		return needsSave;
 	}
