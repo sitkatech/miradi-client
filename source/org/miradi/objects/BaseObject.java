@@ -125,11 +125,17 @@ abstract public class BaseObject
 	
 	public boolean isRefList(String tag)
 	{
+		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
+			return true;
+		
 		return false;
 	}
 			
 	public int getAnnotationType(String tag)
 	{
+		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
+			return ProjectResource.getObjectType();
+		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
 	
