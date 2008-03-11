@@ -125,6 +125,10 @@ public class TestORefList extends EAMTestCase
 		int[] types4 = {Cause.getObjectType(), Cause.getObjectType(), };
 		ORef foundRef4 = sampleRefList.getRefForTypes(types4);
 		assertEquals("found wrong ref?", new ORef(Cause.getObjectType(), new BaseId(10)), foundRef4);
+		
+		int[] types5 = {Strategy.getObjectType(), Target.getObjectType(), };
+		ORef foundRef5 = sampleRefList.getRefForTypes(types5);
+		assertEquals("found wrong ref?", new ORef(Target.getObjectType(), new BaseId(20)), foundRef5);
 	}
 	
 	private ORefList getSampleRefList()
