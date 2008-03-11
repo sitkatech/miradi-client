@@ -30,8 +30,7 @@ public class EditOverridenWhoValuesDoer extends AbstractEditListDoer
 	protected ORef getSelectionRef()
 	{
 		ORefList refList = getSelectedHierarchies()[0];
-		ORef ref = refList.getRefForTypes(new int[]{Strategy.getObjectType(), Indicator.getObjectType(), Task.getObjectType()});
-		return ref;
+		return refList.getRefForTypes(new int[]{Task.getObjectType(), Strategy.getObjectType(), Indicator.getObjectType(),});
 	}
 	
 	@Override
