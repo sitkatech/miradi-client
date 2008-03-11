@@ -90,21 +90,29 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	public void propertyChange(PropertyChangeEvent evt) 
 	{
 		super.propertyChange(evt);
-		if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
-		{
-			if (objectDataInputField != null)
-			{
-				// NOTE: If popup is showing, then we don't have focus, so we will
-				// not be notified later when we should save our data. 
-				// We can't always save here, because the date component 
-				// calls this several times with bogus data (like "today") before 
-				// settling on the real data
-				if(popup.isVisible())
-					objectDataInputField.forceSave();
-				else
-					objectDataInputField.setNeedsSave();
-			}
-		}
+		String propertyName = evt.getPropertyName();
+		if (!isInterestingProperty(propertyName))
+			return;
+		
+		if (objectDataInputField == null)
+			return;
+
+		objectDataInputField.saveIfNeeded();
+	}
+
+	private boolean isInterestingProperty(String propertyName)
+	{
+		if(propertyName.equals(YEAR_PROPERTY_NAME))
+			return true;
+		if(propertyName.equals(MONTH_PROPERTY_NAME))
+			return true;
+		if(propertyName.equals(DAY_PROPERTY_NAME))
+			return true;
+		if(propertyName.equals(DATE_PROPERTY_NAME))
+			return true;
+		
+		
+		return false;
 	}
 		
 	class MonthChangeListener implements PropertyChangeListener
@@ -204,6 +212,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	
 	private static final String MONTH_PROPERTY_NAME = "month";
 	private static final String YEAR_PROPERTY_NAME = "year";
+	private static final String DAY_PROPERTY_NAME = "day";
 	private static final String DATE_PROPERTY_NAME = "date";
 	
 	private ObjectDataInputField objectDataInputField;
