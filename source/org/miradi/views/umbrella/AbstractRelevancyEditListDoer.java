@@ -14,7 +14,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 {
 	protected boolean isInvalidSelection()
 	{	
-		return getSelectedRef().isInvalid();
+		return getSelectionRef().isInvalid();
 	}
 	
 	protected ORef getSelectionRef()
