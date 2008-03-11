@@ -111,7 +111,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
-			if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
+			if (evt.getPropertyName().equals(MONTH_PROPERTY_NAME)) 
 				setDate(jcalendar.getDate());
 		}
 	}
@@ -120,7 +120,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	{
 		public void propertyChange(PropertyChangeEvent evt)
 		{
-			if (evt.getPropertyName().equals(DATE_PROPERTY_NAME)) 
+			if (evt.getPropertyName().equals(YEAR_PROPERTY_NAME)) 
 				setDate(jcalendar.getDate());
 		}
 	}
@@ -201,6 +201,9 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		
 	public static final String CUSTOM_DATE_FORMAT = "yyyy-MM-dd";
 	private static final int EXTRA_PADDING = 20;
+	
+	private static final String MONTH_PROPERTY_NAME = "month";
+	private static final String YEAR_PROPERTY_NAME = "year";
 	private static final String DATE_PROPERTY_NAME = "date";
 	
 	private ObjectDataInputField objectDataInputField;
