@@ -7,10 +7,10 @@ package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAMTestCase;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestORefList extends EAMTestCase
@@ -90,5 +90,35 @@ public class TestORefList extends EAMTestCase
 		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(4)));
 		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
 		assertEquals("has overlapping refs?", 1, orefList1.getOverlappingRefs(orefList2).size());
+	}
+	
+	public void testGetRefForType()
+	{
+		ORefList sampleRefList = getSampleRefList();
+		ORef foundCauseRef = sampleRefList.getRefForType(Cause.getObjectType());
+		assertEquals("wrong ref for type?", new ORef(Cause.getObjectType(), new BaseId(10)), foundCauseRef);
+		
+		ORef foundTargetRef = sampleRefList.getRefForType(Target.getObjectType());
+		assertEquals("wrong ref for type?", new ORef(Target.getObjectType(), new BaseId(20)), foundTargetRef);
+		
+		ORef foundStrategyRef = sampleRefList.getRefForType(Strategy.getObjectType());
+		assertEquals("wrong ref for invalid type", ORef.INVALID, foundStrategyRef);
+	}
+
+	private ORefList getSampleRefList()
+	{
+		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(10));
+		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(11));
+		ORef ref6 = new ORef(Target.getObjectType(), new BaseId(20));
+		ORef ref7 = new ORef(Target.getObjectType(), new BaseId(21));	
+		
+		ORefList refList = new ORefList();
+		refList.add(ref1);
+		refList.add(ref2);
+		refList.add(ref6);
+		refList.add(ref7);
+		refList.add(ORef.INVALID);
+		
+		return refList;
 	}
 }
