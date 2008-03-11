@@ -1465,7 +1465,7 @@ abstract public class BaseObject
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
-	public final static String PSEUDO_TAG_WHO_ROLLUP = "WhenRollupRefs";
+	public final static String PSEUDO_TAG_WHO_ROLLUP = "WhoRollupRefs";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
