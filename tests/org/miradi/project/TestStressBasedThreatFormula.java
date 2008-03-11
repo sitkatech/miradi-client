@@ -49,8 +49,8 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		{
 			/*Ir        Contribution  */	
 			/*re   	 	 4  3  2  1  0*/
-			/*ve   4 */	{4, 3, 3, 1, 0},	
-			/*rs   3 */	{4, 3, 2, 1, 0},
+			/*ve   4 */	{4, 3, 3, 2, 0},	
+			/*rs   3 */	{4, 3, 2, 2, 0},
 			/*ib   2 */	{3, 2, 2, 1, 0},
 			/*il   1 */	{3, 2, 1, 1, 0},
 			/*ity  0 */ {0, 0, 0, 0, 0},
@@ -90,7 +90,7 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 			for (int stressIndex = 0; stressIndex < stress.length; ++stressIndex)
 			{
 				int computedValue = formula.computeThreatStressRating(source[sourceIndex], stress[stressIndex]);
-				int expectedValue = threatStressRating[sourceIndex][stressIndex];
+				int expectedValue = threatStressRating[stressIndex][sourceIndex];
 				assertEquals(expectedValue, computedValue);
 			}
 		}

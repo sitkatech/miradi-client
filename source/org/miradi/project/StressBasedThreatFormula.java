@@ -37,8 +37,8 @@ public class StressBasedThreatFormula extends ThreatFormula
 				{0, 0, 0, 0, 0}, // 0 Ir	
 				{0, 1, 1, 2, 3}, // 1 re		
 				{0, 1, 2, 2, 3}, // 2 ve
-				{0, 1, 2, 3, 4}, // 3 rs
-				{0, 1, 3, 3, 4}, // 4 ib
+				{0, 2, 2, 3, 4}, // 3 rs
+				{0, 2, 3, 3, 4}, // 4 ib
 			//   0  1  2  3  4        ility	
 			//    Contribution 	
 			
@@ -66,7 +66,7 @@ public class StressBasedThreatFormula extends ThreatFormula
 			//	 	source
 		};
 		
-		return threatStressRatingTable[source][stress];
+		return threatStressRatingTable[stress][source];
 	}
 	
 	public boolean isInvalidValue(int value)
