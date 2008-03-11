@@ -76,7 +76,7 @@ public class ProjectResource extends BaseObject
 
 	public String getLabel()
 	{
-		return toString();
+		return getWho();
 	}
 	
 	public String toString()
