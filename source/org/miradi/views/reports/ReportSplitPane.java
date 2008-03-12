@@ -24,6 +24,8 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.resources.ResourcesHandler;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 
@@ -44,8 +46,25 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 	public void clear()
 	{
 		setLeftComponent(getReportControlBar());
-		setRightComponent(new MiradiPanel());
+		setRightComponent(createBlankPanelWithInstructions());
 		getReportControlBar().clearSelection();
+	}
+
+	private MiradiPanel createBlankPanelWithInstructions()
+	{
+		try
+		{
+			MiradiPanel blankPanelWithIntructions = new MiradiPanel(new BorderLayout());
+			String html = EAM.loadResourceFile(ResourcesHandler.class, "ReportHelpInstructions.html");
+			blankPanelWithIntructions.add(new FlexibleWidthHtmlViewer(getMainWindow(), html));
+			
+			return blankPanelWithIntructions;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new MiradiPanel();
+		}		
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception
