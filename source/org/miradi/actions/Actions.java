@@ -145,6 +145,7 @@ public class Actions
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));
+		registerAction(new ActionSaveImagePng(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
 		registerAction(new ActionPasteWithoutLinks(mainWindow));
 		registerAction(new ActionRedo(mainWindow));

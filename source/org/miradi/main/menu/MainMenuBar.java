@@ -70,6 +70,7 @@ import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionRenameConceptualModel;
 import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.actions.ActionSaveImageJPEG;
+import org.miradi.actions.ActionSaveImagePng;
 import org.miradi.actions.ActionSelectAll;
 import org.miradi.actions.ActionSelectChain;
 import org.miradi.actions.ActionShowConceptualModel;
@@ -137,6 +138,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
+		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		menu.addSeparator();
 		
