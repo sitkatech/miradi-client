@@ -33,17 +33,19 @@ import org.miradi.objects.Strategy;
 
 public class FactorSummaryPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryPanel(MainWindow mainWindowToUse, DiagramFactor factorToEdit) throws Exception
+	public FactorSummaryPanel(MainWindow mainWindowToUse, DiagramFactor diagramFactorToEdit) throws Exception
 	{
-		super(mainWindowToUse.getProject(), factorToEdit.getWrappedORef());
+		super(mainWindowToUse.getProject(), diagramFactorToEdit.getWrappedORef());
 		setLayout(new OneColumnGridLayout());
 		
 		mainWindow = mainWindowToUse;
-		currentDiagramFactor = factorToEdit;
-		setObjectRefs(new ORef[] {factorToEdit.getWrappedORef(), factorToEdit.getRef(),});
+		currentDiagramFactor = diagramFactorToEdit;
+		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		
-		addSubPanelWithTitledBorder(new FactorSummaryCorePanel(getProject(), getActions(), factorToEdit));
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), factorToEdit));
+		addSubPanelWithTitledBorder(new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit));
+		if(getFactor().isStrategy())
+			addSubPanelWithTitledBorder(new ForecastOverrideSubPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedORef()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit));
 		
 		detailIcon = createIcon();
 		
