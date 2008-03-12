@@ -89,6 +89,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			}
 
 			selectNewFactor(id);
+			ensureNewFactorIsVisible(diagramFactor);
 			launchPropertiesEditor(diagramFactor);
 		}
 		catch (Exception e)
@@ -96,6 +97,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
+	{
+		FactorCell newCell = getDiagramModel().getFactorCellById(diagramFactor.getDiagramFactorId());
+		getDiagramView().getDiagramComponent().scrollCellToVisible(newCell);
 	}
 	
 	protected FactorCell[] getSelectedFactorCells()
