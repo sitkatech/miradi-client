@@ -74,6 +74,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JTabbedPane tabPane = new PanelTabbedPane();
 		tabPane.addTab("Systemwide", createSystemwideTab());
 		tabPane.addTab("Diagram", createDiagramTab());
+		tabPane.addTab("Data Location", createDataLocationTab());
 		
 		
 		if(project.isOpen())
@@ -84,6 +85,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		}
 		
 		return tabPane;
+	}
+	
+	private JPanel createDataLocationTab()
+	{
+		return new DataLocationChooserPanel(mainWindow);
 	}
 	
 	private JPanel createSystemwideTab()

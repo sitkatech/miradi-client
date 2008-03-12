@@ -133,6 +133,6 @@ public class FileSystemTreeNode extends TreeTableNode
 		return toString().compareToIgnoreCase(other.toString());
 	}
 	
-	private File thisFile;
+	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
 }
