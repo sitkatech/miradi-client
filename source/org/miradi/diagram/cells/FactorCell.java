@@ -68,7 +68,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 		tip += "<TABLE width='400'><TR><TD>";
 		
-		tip += "<B>" + getSafeMultilineString(factor.getLabel()) + "</B><BR>";
+		tip += "<B>" + getSafeMultilineString(factor.getDetails()) + "</B><BR>";
 		
 		String header = "";
 		String detailsTag = "";
