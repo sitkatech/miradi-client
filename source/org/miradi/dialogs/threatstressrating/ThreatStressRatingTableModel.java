@@ -24,7 +24,7 @@ import org.miradi.utils.ColumnTagProvider;
 
 public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
 {
-	public ThreatStressRatingTableModel(Project projectToUse, ORef refToUse)
+	public ThreatStressRatingTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 		
