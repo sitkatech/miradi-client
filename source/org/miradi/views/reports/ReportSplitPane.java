@@ -53,16 +53,26 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 
 	private JComponent createInstructionsSection()
 	{
+		return createHtmlViewer("ReportHelpInstructions.html");		
+	}
+	
+	private JComponent createAboveToolbarInstructionsSection()
+	{
+		return createHtmlViewer("AboveToolbarInstructions.html");
+	}
+	
+	private JComponent createHtmlViewer(String htmlFile)
+	{
 		try
 		{
-			String html = EAM.loadResourceFile(ResourcesHandler.class, "ReportHelpInstructions.html");
+			String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFile);
 			return new FlexibleWidthHtmlViewer(getMainWindow(), html);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return new FlexibleWidthHtmlViewer(getMainWindow(), "");
-		}		
+		}
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception
@@ -88,7 +98,8 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 		JasperPrint print = JasperFillManager.fillReport(reportInput, parameters, xmlDataSource);
 
 		MiradiPanel reportPanel = new MiradiPanel(new BorderLayout());
-		reportPanel.add(new ReportPreviewPanel(print));
+		reportPanel.add(createAboveToolbarInstructionsSection(), BorderLayout.PAGE_START);
+		reportPanel.add(new ReportPreviewPanel(print), BorderLayout.CENTER);
 		
 		return reportPanel;
 	}
