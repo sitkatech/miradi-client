@@ -17,6 +17,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -80,7 +81,8 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS) || 
+		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS) ||
+			event.isSetDataCommandWithThisType(ThreatStressRating.getObjectType()) || 
 			event.isSetDataCommandWithThisType(Stress.getObjectType()))
 			editorComponent.updateModelBasedOnPickerList();
 	}
