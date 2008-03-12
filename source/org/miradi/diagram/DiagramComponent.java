@@ -164,6 +164,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		{
 			setBackground(currentColor);
 			setGridVisible(currentGridSetting);
+			repaint();
 		}
 	}
 
