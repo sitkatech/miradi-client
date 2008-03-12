@@ -92,6 +92,13 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		if (value == null)
 			return;
 		
+		if (row < 0 || row >= getRowCount())
+		{
+			EAM.errorDialog(EAM.text("An error has occured while writing assignment data."));
+			EAM.logWarning("Row out of bounds in PlanningViewResourceTableModel.setValueAt value = "+ value + " row = " + row + " column = " + column);
+			return;
+		}
+		
 		ORef assignmentRefForRow = getAssignmentForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
 		setAccountingCode(value, assignmentRefForRow, column);
