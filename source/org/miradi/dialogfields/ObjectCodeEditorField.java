@@ -17,14 +17,14 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MiradiScrollPane;
 
-public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
+public class ObjectCodeEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
 	}
 	
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		codeListEditor = new CodeListComponent(questionToUse, columnCount, this);

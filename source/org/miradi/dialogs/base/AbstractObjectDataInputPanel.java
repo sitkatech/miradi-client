@@ -24,7 +24,7 @@ import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectClassificationChoiceField;
-import org.miradi.dialogfields.ObjectCodeListField;
+import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
@@ -407,17 +407,17 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
+		return new ObjectCodeEditorField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tagToUse, question, columnCount);
 	}
 	
 	public ObjectDataInputField createMultiCodeField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
-		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
+		return new ObjectCodeEditorField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
 	}
 
 	public ObjectDataInputField createMultiCodeField(String tagToUse, ChoiceQuestion question, CodeList disabledChoices, int columnCount)
 	{
-		ObjectCodeListField objectCodeListField = (ObjectCodeListField) createMultiCodeField(tagToUse, question, columnCount);
+		ObjectCodeEditorField objectCodeListField = (ObjectCodeEditorField) createMultiCodeField(tagToUse, question, columnCount);
 		objectCodeListField.setDisabledCodes(disabledChoices);
 		
 		return objectCodeListField;
