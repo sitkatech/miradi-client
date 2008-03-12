@@ -16,7 +16,7 @@ public class CodeListEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createMultiCodeField(orefToUse.getObjectType(), tagToUse, question, columnCount));
+		addField(createMultiCodeEditorField(orefToUse.getObjectType(), tagToUse, question, columnCount));
 		
 		updateFieldsFromProject();
 	}
