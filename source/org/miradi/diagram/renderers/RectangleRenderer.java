@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -19,6 +20,11 @@ import org.jgraph.graph.VertexView;
 
 public class RectangleRenderer extends FactorRenderer
 {
+	public Shape getShape(Rectangle rect)
+	{
+		return rect;
+	}
+
 	Dimension getInsetDimension()
 	{
 		return new Dimension(0, 0);
@@ -30,19 +36,19 @@ public class RectangleRenderer extends FactorRenderer
 	}
 	
 	public void fillRawShape(Graphics g, Rectangle rect, Color color)
-		{
+	{
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
-		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		g2.fill(getShape(rect));
 		g2.setPaint(oldPaint);
 	}
-
+	
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		Color oldColor = g2.getColor();
 		g2.setColor(color);
-		g2.drawRect(rect.x, rect.y, rect.width, rect.height);
+		g2.draw(getShape(rect));
 		g2.setColor(oldColor);
 	}
 
