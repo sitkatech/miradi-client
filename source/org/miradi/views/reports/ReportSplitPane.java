@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -50,20 +51,17 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 		getReportControlBar().clearSelection();
 	}
 
-	private MiradiPanel createBlankPanelWithInstructions()
+	private JComponent createBlankPanelWithInstructions()
 	{
 		try
 		{
-			MiradiPanel blankPanelWithIntructions = new MiradiPanel(new BorderLayout());
 			String html = EAM.loadResourceFile(ResourcesHandler.class, "ReportHelpInstructions.html");
-			blankPanelWithIntructions.add(new FlexibleWidthHtmlViewer(getMainWindow(), html));
-			
-			return blankPanelWithIntructions;
+			return new FlexibleWidthHtmlViewer(getMainWindow(), html);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new MiradiPanel();
+			return new FlexibleWidthHtmlViewer(getMainWindow(), "");
 		}		
 	}
 	
