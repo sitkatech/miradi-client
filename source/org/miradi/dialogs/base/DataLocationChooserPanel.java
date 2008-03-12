@@ -6,13 +6,15 @@
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.prefs.Preferences;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.layout.OneColumnPanel;
+import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -37,12 +39,25 @@ public class DataLocationChooserPanel extends MiradiPanel
 	{
 		PanelButton dataChooserButton = new PanelButton(EAM.text("Select Location"));
 		dataChooserButton.addActionListener(new ActionHandler());
-		
 		add(FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "DataLocationInstructions.html"), BorderLayout.CENTER);
-		OneColumnPanel buttonPanel = new OneColumnPanel();
+		TwoColumnPanel buttonPanel = new TwoColumnPanel();
+		buttonPanel.add(createReadonlyDirectoryTextField());
 		buttonPanel.add(dataChooserButton);
 		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		add(buttonPanel, BorderLayout.SOUTH);
+	}
+
+	private PanelTextField createReadonlyDirectoryTextField()
+	{
+		PanelTextField directoryReadonlyTextField = new PanelTextField(EAM.getHomeDirectory().getAbsolutePath());
+		directoryReadonlyTextField.setEditable(false);
+		directoryReadonlyTextField.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+		directoryReadonlyTextField.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		Dimension preferredSize = directoryReadonlyTextField.getPreferredSize();
+		preferredSize.width += PADDING;
+		directoryReadonlyTextField.setPreferredSize(preferredSize);
+		
+		return directoryReadonlyTextField;
 	}
 	
 	public class ActionHandler implements ActionListener
@@ -75,5 +90,6 @@ public class DataLocationChooserPanel extends MiradiPanel
 		return mainWindow;
 	}
 	
-	private MainWindow mainWindow;	
+	private MainWindow mainWindow;
+	private static final int PADDING = 10;
 }
