@@ -22,6 +22,6 @@ public class PlanningViewCustomLabelPropertiesPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Planning View Configeration Label Properties");
+		return EAM.text("Planning View Configuration Label Properties");
 	}
 }
