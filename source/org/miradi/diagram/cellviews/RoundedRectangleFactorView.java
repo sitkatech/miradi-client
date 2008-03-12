@@ -42,6 +42,7 @@ public class RoundedRectangleFactorView extends FactorView
 		return ((RoundRectangleRenderer)getRenderer()).getPerimeterPoint(p, getBounds());
 	}
 	
-	protected static RoundRectangleRenderer roundedRectangleRenderer = new RoundRectangleRenderer(40);
+	private final static int DEFAULT_ARC_SIZE = 20;
+	protected static RoundRectangleRenderer roundedRectangleRenderer = new RoundRectangleRenderer(DEFAULT_ARC_SIZE);
 
 }
