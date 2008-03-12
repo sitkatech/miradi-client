@@ -21,7 +21,7 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-public class SaveImageDoer extends ViewDoer
+public class SaveImageJPEGDoer extends ViewDoer
 {
 	public boolean isAvailable() 
 	{
