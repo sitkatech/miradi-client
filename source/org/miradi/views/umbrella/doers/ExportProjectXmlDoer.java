@@ -23,7 +23,7 @@ import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.diagram.DiagramImageCreator;
-import org.miradi.views.umbrella.SaveImageDoer;
+import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
 {
@@ -133,6 +133,6 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		// Should just pass prefs into component instead of the whole main window
 		MainWindow mainWindow = EAM.getMainWindow();
 
-		SaveImageDoer.saveImage(out, DiagramImageCreator.getImage(mainWindow, diagramObject));
+		SaveImageJPEGDoer.saveImage(out, DiagramImageCreator.getImage(mainWindow, diagramObject));
 	}
 }
