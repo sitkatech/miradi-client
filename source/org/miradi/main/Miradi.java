@@ -92,11 +92,22 @@ public class Miradi
 
 	static void setBestLookAndFeel() throws Exception
 	{
-		if(System.getProperty("os.name").equals("Linux"))
+		if(isLinux())
 			return;
+		
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
 
+	public static boolean isLinux()
+	{
+		return System.getProperty("os.name").equals("Linux");
+	}
+
+	public static boolean isWindows()
+	{
+		return System.getProperty("os.name").startsWith("Windows");
+	}
+	
 	private static final class MainWindowRunner implements Runnable
 	{
 		MainWindowRunner(String[] argsToUse)

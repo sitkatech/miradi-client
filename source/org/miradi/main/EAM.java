@@ -59,16 +59,30 @@ public class EAM
 		if (preferredHomeDir != null && preferredHomeDir.exists())
 			return preferredHomeDir;
 		
-		return getDefaultHomeDirectory();
+		File defaultHomeDirectory = getDefaultHomeDirectory();
+		Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
+		showFirstTimeDirIsonNetworkDir();
+		
+		return defaultHomeDirectory;
+	}
+
+	private static void showFirstTimeDirIsonNetworkDir()
+	{
+		if (!Miradi.isWindows())
+			return;
+		
+		String homeDir = getHomeDirectory().getAbsolutePath();
+		if (!homeDir.contains("C:\\"))
+			notifyDialog(EAM.text("Miradi is going to store your projects " + homeDir + ". If that is a network drive,\n " +
+					"they will only be available when you are on the network. You might " +
+					"want to configure Miradi to use a local drive instead. " +
+					"To do that, go to edit/prefs"));
 	}
 
 	private static File getPreferredHomeDirectory()
 	{
-		String preferredHomeDirAsString = Preferences.userNodeForPackage(Miradi.class).get(MIRAID_DATA_DIRECTORY_KEY, "");
-		if (preferredHomeDirAsString == null)
-			return null;
-		
-		if (preferredHomeDirAsString.length() == 0)
+		String preferredHomeDirAsString = Preferences.userNodeForPackage(Miradi.class).get(MIRADI_DATA_DIRECTORY_KEY, "");
+		if (preferredHomeDirAsString == null || preferredHomeDirAsString.length() == 0)
 			return null;
 		
 		return new File(preferredHomeDirAsString);
@@ -532,7 +546,7 @@ public class EAM
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 	
-	public static final String MIRAID_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
+	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 }
 
 

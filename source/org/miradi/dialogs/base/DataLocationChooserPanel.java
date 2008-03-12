@@ -74,7 +74,7 @@ public class DataLocationChooserPanel extends MiradiPanel
 				if (!chosenDir.exists())
 					return;
 				
-				Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRAID_DATA_DIRECTORY_KEY, chosenDir.getAbsolutePath());
+				Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, chosenDir.getAbsolutePath());
 				mainWindow.refreshWizard();
 			}
 			catch(Exception e)
