@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.prefs.Preferences;
 
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
@@ -54,8 +55,28 @@ public class EAM
 	
 	public static File getHomeDirectory()
 	{
-		File home = new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "Miradi");
-		return home;
+		File preferredHomeDir = getPreferredHomeDirectory();
+		if (preferredHomeDir != null && preferredHomeDir.exists())
+			return preferredHomeDir;
+		
+		return getDefaultHomeDirectory();
+	}
+
+	private static File getPreferredHomeDirectory()
+	{
+		String preferredHomeDirAsString = Preferences.userNodeForPackage(Miradi.class).get(MIRAID_DATA_DIRECTORY_KEY, "");
+		if (preferredHomeDirAsString == null)
+			return null;
+		
+		if (preferredHomeDirAsString.length() == 0)
+			return null;
+		
+		return new File(preferredHomeDirAsString);
+	}
+
+	private static File getDefaultHomeDirectory()
+	{
+		return new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "Miradi");
 	}
 	
 	public static File getOldMiradiHomeDirectory()
@@ -510,6 +531,8 @@ public class EAM
 	
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
+	
+	public static final String MIRAID_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 }
 
 

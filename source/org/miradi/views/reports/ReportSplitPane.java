@@ -25,7 +25,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
@@ -53,26 +52,12 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 
 	private JComponent createInstructionsSection()
 	{
-		return createHtmlViewer("ReportHelpInstructions.html");		
+		return FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "ReportHelpInstructions.html");		
 	}
 	
 	private JComponent createAboveToolbarInstructionsSection()
 	{
-		return createHtmlViewer("AboveToolbarInstructions.html");
-	}
-	
-	private JComponent createHtmlViewer(String htmlFile)
-	{
-		try
-		{
-			String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFile);
-			return new FlexibleWidthHtmlViewer(getMainWindow(), html);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new FlexibleWidthHtmlViewer(getMainWindow(), "");
-		}
+		return FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "AboveToolbarInstructions.html");
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception

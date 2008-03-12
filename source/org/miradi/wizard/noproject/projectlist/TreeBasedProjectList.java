@@ -20,7 +20,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.wizard.noproject.FileSystemTreeNode;
+import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
 
 public class TreeBasedProjectList extends JPanel
@@ -31,7 +31,7 @@ public class TreeBasedProjectList extends JPanel
 		actions = new Vector<ProjectListAction>();
 		
 		File home = EAM.getHomeDirectory();
-		rootNode = new FileSystemTreeNode(home);
+		rootNode = new FileSystemRootNode(home);
 		model = new ProjectListTreeTableModel(rootNode);
 		ProjectListTreeTable table = new ProjectListTreeTable(model, handlerToUse);
 
@@ -59,6 +59,7 @@ public class TreeBasedProjectList extends JPanel
 	{
 		try
 		{
+			rootNode.setFile(EAM.getHomeDirectory());
 			model.rebuildEntireTree();
 		}
 		catch(Exception e)
@@ -81,6 +82,6 @@ public class TreeBasedProjectList extends JPanel
 	}
 
 	private ProjectListTreeTableModel model;
-	private FileSystemTreeNode rootNode;
+	private FileSystemRootNode rootNode;
 	private Vector<ProjectListAction> actions;
 }
