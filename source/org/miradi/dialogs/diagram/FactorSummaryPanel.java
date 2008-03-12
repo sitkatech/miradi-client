@@ -20,8 +20,11 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
+import org.miradi.icons.DraftStrategyIcon;
+import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
+import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -70,14 +73,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		if (getFactor().isDirectThreat())
 		{
 			addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
-			detailIcon = new DirectThreatIcon();
 		}
 		
-		if(getFactor().isContributingFactor())
-		{
-			detailIcon = new ContributingFactorIcon();
-		}
-
 		if(getFactor().isStrategy())
 		{
 			
@@ -92,25 +89,45 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 			ObjectsActionButton editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 			ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
 			addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
-			
-			detailIcon = new StrategyIcon();
 		}
 
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
 			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
-			
-			detailIcon = new TargetIcon();
 		}
-				
+		
+		detailIcon = createIcon();
 		addField(createReadOnlyObjectList(getFactor().getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
 		addField(createMultilineField(Factor.TAG_COMMENT));		
 	
 		
 		updateFieldsFromProject();
 	}
+	
+	private Icon createIcon()
+	{
+		Factor factor = getFactor();
+		
+		if(factor.isDirectThreat())
+			return new DirectThreatIcon();
+		if(factor.isContributingFactor())
+			return new ContributingFactorIcon();
+		if(factor.isTarget())
+			return new TargetIcon();
+		if(factor.isIntermediateResult())
+			return new IntermediateResultIcon();
+		if(factor.isThreatReductionResult())
+			return new ThreatReductionResultIcon();
+		if(factor.isStrategy())
+		{
+			if( ((Strategy)factor).isStatusDraft())
+				return new DraftStrategyIcon();
+			return new StrategyIcon();
+		}
 
+		return null;
+	}
 
 	private void addOptionalDraftStatusCheckBox(String tag)
 	{
