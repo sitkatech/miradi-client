@@ -32,19 +32,20 @@ public class HexagonRenderer extends FactorRenderer
 		return buildHexagon(rect);
 	}
 	
+	@Override
+	Stroke getStroke()
+	{
+		Stroke stroke = super.getStroke();
+		if(isDraft())
+			stroke = getDashedStroke((BasicStroke)stroke);
+
+		return stroke;
+	}
+	
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
-		Stroke originalStroke = g2.getStroke();
-		
 		setPaint(g2, rect, color);
-		if(isDraft())
-		{
-			BasicStroke dashedStroke = getDashedStroke((BasicStroke)originalStroke);
-			g2.setStroke(dashedStroke);
-		}
 		g2.draw(getShape(rect));
-		
-		g2.setStroke(originalStroke);
 	}
 
 	boolean isDraft()
