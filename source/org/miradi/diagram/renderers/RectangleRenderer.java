@@ -5,9 +5,7 @@
 */ 
 package org.miradi.diagram.renderers;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
@@ -28,14 +26,6 @@ public class RectangleRenderer extends FactorRenderer
 		return new Dimension(0, 0);
 	}
 	
-	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		Color oldColor = g2.getColor();
-		g2.setColor(color);
-		g2.draw(getShape(rect));
-		g2.setColor(oldColor);
-	}
-
 	/*
 	 * This method has a different copyright than the rest of this file,
 	 * because it was copied directly from jgraph's VertexRenderer class:
