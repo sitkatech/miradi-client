@@ -7,6 +7,7 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.ForecastOverrideSubPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -15,6 +16,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 
@@ -31,6 +33,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new ForecastOverrideSubPanel(getProject(), actions, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
 		
 		updateFieldsFromProject();
 	}
