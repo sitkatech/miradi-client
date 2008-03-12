@@ -215,6 +215,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
 			selectedRef = selected[0].getRef();
+		int selectedRow = tree.getSelectionModel().getAnchorSelectionIndex();
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
@@ -231,7 +232,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef);
+		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
 	
 	private void updateRightSideTablePanels() throws Exception
