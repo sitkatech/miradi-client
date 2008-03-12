@@ -68,7 +68,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 		tip += "<TABLE width='400'><TR><TD>";
 		
-		tip += "<B>" + getSafeMultilineString(factor.getDetails()) + "</B><BR>";
+		tip += "<B>" + getSafeMultilineString(factor.getLabel()) + "</B><BR>";
 		
 		String header = "";
 		String detailsTag = "";
@@ -90,6 +90,11 @@ abstract public class FactorCell extends EAMGraphCell
 			header = EAM.text("Objectives:");
 			detailsTag = Objective.TAG_FULL_TEXT;
 			bullets = new ORefList(Objective.getObjectType(), factor.getObjectives());
+		}
+		else if(factor.getDetails().length() > 0)
+		{
+			tip += "<BR>" + EAM.text("Details:");
+			tip += "<BR>" + factor.getDetails();
 		}
 		
 		if(bullets.size() == 0)
