@@ -298,11 +298,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
-		if(selected)
-			g2.setStroke(new BasicStroke(3));
-		else
-			g2.setStroke(new BasicStroke());
-
 		Color oldColor = g2.getColor();
 		g2.setColor(color);
 		g2.draw(getShape(rect));
