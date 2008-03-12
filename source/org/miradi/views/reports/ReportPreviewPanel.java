@@ -7,9 +7,6 @@ package org.miradi.views.reports;
 
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JRViewer;
-import net.sf.jasperreports.view.save.JRHtmlSaveContributor;
-import net.sf.jasperreports.view.save.JROdtSaveContributor;
-import net.sf.jasperreports.view.save.JRRtfSaveContributor;
 
 public class ReportPreviewPanel extends JRViewer
 {
@@ -22,9 +19,9 @@ public class ReportPreviewPanel extends JRViewer
 	protected void initSaveContributors()
 	{
 		addSaveContributor(new MiradiPdfSaveContributor());
-		addSaveContributor(JRRtfSaveContributor.getInstance());
-		addSaveContributor(JROdtSaveContributor.getInstance());
-		addSaveContributor(JRHtmlSaveContributor.getInstance());
+		addSaveContributor(new MiradiRtfSaveContributor());
+		addSaveContributor(new MiradiOdtSaveContributor());
+		addSaveContributor(new MiradiHtmlSaveContributor());
 	}
 
 	

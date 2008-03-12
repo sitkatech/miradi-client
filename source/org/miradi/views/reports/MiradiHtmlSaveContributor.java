@@ -9,15 +9,15 @@ import java.io.File;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.save.JRPdfSaveContributor;
+import net.sf.jasperreports.view.save.JRHtmlSaveContributor;
 
-public class MiradiPdfSaveContributor extends JRPdfSaveContributor
+public class MiradiHtmlSaveContributor extends JRHtmlSaveContributor
 {
 	@Override
 	public void save(JasperPrint jasperPrint, File file) throws JRException
 	{
-		if(MiradiSaveContributorHelper.askUserForConfirmation("PDF Export", "reports/ReportSavePDFInformation.txt"))
+		if(MiradiSaveContributorHelper.askUserForConfirmation("HTML Export", "reports/ReportSaveHTMLInformation.txt"))
 			super.save(jasperPrint, file);
 	}
-	
+
 }

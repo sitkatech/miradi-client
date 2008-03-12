@@ -9,15 +9,15 @@ import java.io.File;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.save.JRPdfSaveContributor;
+import net.sf.jasperreports.view.save.JROdtSaveContributor;
 
-public class MiradiPdfSaveContributor extends JRPdfSaveContributor
+public class MiradiOdtSaveContributor extends JROdtSaveContributor
 {
 	@Override
 	public void save(JasperPrint jasperPrint, File file) throws JRException
 	{
-		if(MiradiSaveContributorHelper.askUserForConfirmation("PDF Export", "reports/ReportSavePDFInformation.txt"))
+		if(MiradiSaveContributorHelper.askUserForConfirmation("ODT Export", "reports/ReportSaveODTInformation.txt"))
 			super.save(jasperPrint, file);
 	}
-	
+
 }
