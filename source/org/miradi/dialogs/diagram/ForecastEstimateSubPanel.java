@@ -26,7 +26,7 @@ public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 
 		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
 
-		PanelTitleLabel estimatedResourcesLabel = new PanelTitleLabel(EAM.text("Estimated Resources"));
+		PanelTitleLabel estimatedResourcesLabel = new PanelTitleLabel(EAM.text("Who Override"));
 		ObjectDataInputField readOnlyEstimatedResourcesList = createReadOnlyObjectList(initialRef.getObjectType(), BaseObject.TAG_WHO_OVERRIDE_REFS);
 		ObjectsActionButton editEstimatedResourcesButton = createObjectsActionButton(actions.getObjectsAction(ActionEditOverrideWhoValues.class), getPicker());
 		addFieldWithEditButton(estimatedResourcesLabel, readOnlyEstimatedResourcesList, editEstimatedResourcesButton);
