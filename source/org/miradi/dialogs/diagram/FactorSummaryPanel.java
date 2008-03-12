@@ -99,7 +99,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		if(getFactor().isTarget())
 		{
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			addField(createMultiCodeField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
+			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 			
 			detailIcon = new TargetIcon();
 		}
