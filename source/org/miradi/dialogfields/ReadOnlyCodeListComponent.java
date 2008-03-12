@@ -5,9 +5,8 @@
 */ 
 package org.miradi.dialogfields;
 
-import javax.swing.JLabel;
-
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
@@ -19,12 +18,7 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse, int columnCount)
 	{
 		setLayout(new BasicGridLayout(0, columnCount));
-		choiceItems = choiceItemsToUse;
-		for (int i = 0; i < choiceItems.length; ++i)
-		{
-			add(new JLabel(choiceItems[i].getLabel()));
-		}
-		
+		choiceItems = choiceItemsToUse;		
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
@@ -50,7 +44,7 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 			{
 				if (codeList.contains(choiceItems[choiceIndex].getCode()))
 				{
-					add(new JLabel(choiceItems[choiceIndex].getLabel()));
+					add(new PanelTitleLabel(choiceItems[choiceIndex].getLabel()));
 				}
 			}
 		}
