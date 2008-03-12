@@ -5,12 +5,10 @@
 */ 
 package org.miradi.diagram.renderers;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 
 public class RoundRectangleRenderer extends RectangleRenderer
 {
@@ -24,22 +22,10 @@ public class RoundRectangleRenderer extends RectangleRenderer
 		minimumArcSize = minumArcSizeToUse;
 	}
 	
-	public void fillShape(Graphics g, Rectangle rect, Color color)
+	@Override
+	public Shape getShape(Rectangle rect)
 	{
-		Graphics2D g2 = (Graphics2D)g;
-		Paint oldPaint = g2.getPaint();
-		setPaint(g2, rect, color);
-		g.fillRoundRect(rect.x, rect.y, rect.width, rect.height, getArcWidth(rect), getArcHeight(rect));
-	
-		g2.setPaint(oldPaint);
-	}
-
-	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		Color oldColor = g2.getColor();
-		g2.setColor(color);
-		g2.drawRoundRect(rect.x, rect.y, rect.width, rect.height, getArcWidth(rect), getArcHeight(rect));
-		g2.setColor(oldColor);
+		return new RoundRectangle2D.Double(rect.x, rect.y, rect.width, rect.height, getArcWidth(rect), getArcHeight(rect));
 	}
 
 	int getArcWidth(Rectangle rect)
