@@ -19,6 +19,7 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
@@ -281,12 +282,17 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return new Dimension(0, 0);
 	}
 	
+	public Shape getShape(Rectangle rect)
+	{
+		return new RoundRectangle2D.Double(rect.x, rect.y, rect.width, rect.height, CORNER_SIZE, CORNER_SIZE);
+	}
+	
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
-		g.fillRoundRect(rect.x, rect.y, rect.width, rect.height, CORNER_SIZE, CORNER_SIZE);
+		g2.fill(getShape(rect));
 		g2.setPaint(oldPaint);
 	}
 
@@ -299,7 +305,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 		Color oldColor = g2.getColor();
 		g2.setColor(color);
-		g2.drawRoundRect(rect.x, rect.y, rect.width, rect.height, CORNER_SIZE, CORNER_SIZE);
+		g2.draw(getShape(rect));
 		g2.setColor(oldColor);
 	}
 	

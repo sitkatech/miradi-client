@@ -7,11 +7,10 @@ package org.miradi.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Shape;
 
 import javax.swing.JLabel;
 
@@ -21,25 +20,17 @@ public class TriangleRenderer extends FactorRenderer {
 	{
 		return new Dimension(0, 0);
 	}
-
-	public void fillShape(Graphics g, Rectangle rect, Color color) 
+	
+	@Override
+	public Shape getShape(Rectangle rect)
 	{
-		fillRawShape(g, rect, color);
-	}
-
-	public void fillRawShape(Graphics g, Rectangle rect, Color color) 
-	{
-		Graphics2D g2 = (Graphics2D)g;
-		Paint oldPaint = g2.getPaint();
-		setPaint(g2, rect, color);
-		g.fillPolygon(buildTriangle(rect));
-		g2.setPaint(oldPaint);
+		return buildTriangle(rect);
 	}
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		setPaint(g2, rect, color);
-		g2.drawPolygon(buildTriangle(rect));
+		g2.draw(getShape(rect));
 	}
 
 	public static Polygon buildTriangle(Rectangle rect)
