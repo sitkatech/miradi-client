@@ -6,9 +6,7 @@
 package org.miradi.diagram.renderers;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -42,12 +40,6 @@ public class HexagonRenderer extends FactorRenderer
 		return stroke;
 	}
 	
-	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		setPaint(g2, rect, color);
-		g2.draw(getShape(rect));
-	}
-
 	boolean isDraft()
 	{
 		return node.isStatusDraft();

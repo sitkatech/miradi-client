@@ -78,8 +78,6 @@ import org.miradi.utils.Utility;
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
-	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);
-	
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
 	{
