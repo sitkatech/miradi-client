@@ -19,6 +19,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
@@ -168,6 +169,9 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
+			
+			if(columnTag.equals(Strategy.TAG_TAXONOMY_CODE))
+				return new StrategyClassificationQuestion().findChoiceByCode(rawValue);
 
 			return rawValue;
 		}
