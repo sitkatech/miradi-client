@@ -9,7 +9,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.save.JRHtmlSaveContributor;
 import net.sf.jasperreports.view.save.JROdtSaveContributor;
-import net.sf.jasperreports.view.save.JRPdfSaveContributor;
 import net.sf.jasperreports.view.save.JRRtfSaveContributor;
 
 public class ReportPreviewPanel extends JRViewer
@@ -22,7 +21,7 @@ public class ReportPreviewPanel extends JRViewer
 	@Override
 	protected void initSaveContributors()
 	{
-		addSaveContributor(JRPdfSaveContributor.getInstance());
+		addSaveContributor(new MiradiPdfSaveContributor());
 		addSaveContributor(JRRtfSaveContributor.getInstance());
 		addSaveContributor(JROdtSaveContributor.getInstance());
 		addSaveContributor(JRHtmlSaveContributor.getInstance());
