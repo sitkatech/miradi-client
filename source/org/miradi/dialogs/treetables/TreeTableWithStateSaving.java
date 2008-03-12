@@ -66,7 +66,7 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		try
 		{
 			addObjectToExpandedList(ref);
-			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, 0);
 			
 			// TODO: This isn't working...probably also needs to be run in a thread like select
 			super.ensureObjectVisible(ref);

@@ -450,35 +450,45 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		return getNodeForRow(row).getObject();
 	}
 	
-	public void selectObject(ORef ref)
+	public void selectObject(ORef ref, int fallbackRow)
 	{
 		TreePath path = getTreeTableModel().getPathOfNode(ref.getObjectType(), ref.getObjectId());
+		if(path == null)
+		{
+			getSelectionModel().setSelectionInterval(fallbackRow, fallbackRow);
+			return;
+		}
+		
 		tree.setSelectionPath(path);
 	}
 
-	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef)
+	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(ORef selectedRef, int fallbackRow)
 	{
+		clearSelection();
+		tree.clearSelection();
 		if(selectedRef == null || selectedRef.isInvalid())
 			return;
 		
-		SwingUtilities.invokeLater(new Reselecter(this, selectedRef));
+		SwingUtilities.invokeLater(new Reselecter(this, selectedRef, fallbackRow));
 	}
 	
 	static class Reselecter implements Runnable
 	{
-		public Reselecter(TreeTableWithIcons treeTableToUse, ORef refToSelect)
+		public Reselecter(TreeTableWithIcons treeTableToUse, ORef refToSelect, int rowToSelect)
 		{
 			treeTable = treeTableToUse;
 			ref = refToSelect;
+			row = rowToSelect;
 		}
 		
 		public void run()
 		{
-			treeTable.selectObject(ref);
+			treeTable.selectObject(ref, row);
 		}
 		
 		private TreeTableWithIcons treeTable;
 		private ORef ref;
+		private int row;
 	}
 
 	private GenericTreeTableModel treeTableModel;
