@@ -6,9 +6,11 @@
 package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
@@ -39,6 +41,7 @@ public class ObjectCodeListField extends ObjectDataInputField
 		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		buttonPanel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		buttonPanel.add(selectButton);
+		component.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		component.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
 	}
 	
