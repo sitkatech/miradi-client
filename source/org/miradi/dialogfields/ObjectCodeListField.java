@@ -61,7 +61,6 @@ public class ObjectCodeListField extends ObjectDataInputField
 	public void setText(String newValue)
 	{
 		codeListComponent.setText(newValue);
-		component.validate();
 	}
 	
 	public class SelectButtonHandler implements ActionListener
