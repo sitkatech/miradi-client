@@ -90,11 +90,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return (TreeTableNode)tree.getTree().getLastSelectedPathComponent();
 	}
 
-	public void selectObject(BaseObject objectToSelect)
-	{
-		tree.selectObject(objectToSelect.getRef());
-	}
-
 	public GenericTreeTableModel getModel()
 	{
 		return model;
