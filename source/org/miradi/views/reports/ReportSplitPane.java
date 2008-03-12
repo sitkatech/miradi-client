@@ -47,11 +47,11 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 	public void clear()
 	{
 		setLeftComponent(getReportControlBar());
-		setRightComponent(createBlankPanelWithInstructions());
+		setRightComponent(createInstructionsSection());
 		getReportControlBar().clearSelection();
 	}
 
-	private JComponent createBlankPanelWithInstructions()
+	private JComponent createInstructionsSection()
 	{
 		try
 		{
