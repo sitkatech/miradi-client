@@ -43,6 +43,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -77,8 +78,6 @@ import org.miradi.utils.Utility;
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
-	abstract public void fillShape(Graphics g, Rectangle rect, Color color);
-	abstract public void fillRawShape(Graphics g, Rectangle rect, Color color);
 	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);
 	
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
@@ -330,7 +329,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	protected void drawRatingBubble(Graphics2D g2, Rectangle rect, Color ratingColor, String ratingText)
 	{
 		Rectangle smallRect = getBubbleRect(rect);
-		fillRawShape(g2, smallRect, ratingColor);
+		
+		Paint oldPaint = g2.getPaint();
+		setPaint(g2, smallRect, ratingColor);
+		g2.fill(getShape(smallRect));
+		g2.setPaint(oldPaint);
+
 		drawBorder(g2, smallRect, Color.BLACK);
 		setRatingBubbleFont(g2);
 		g2.setColor(Color.BLACK);

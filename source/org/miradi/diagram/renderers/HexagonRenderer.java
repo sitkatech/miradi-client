@@ -8,11 +8,10 @@ package org.miradi.diagram.renderers;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.Stroke;
 
 public class HexagonRenderer extends FactorRenderer
@@ -27,20 +26,12 @@ public class HexagonRenderer extends FactorRenderer
 		return new Dimension(totalWidth / 5, 0);
 	}
 	
-	public void fillShape(Graphics g, Rectangle rect, Color color)
+	@Override
+	public Shape getShape(Rectangle rect)
 	{
-		fillRawShape(g, rect, color);
+		return buildHexagon(rect);
 	}
 	
-	public void fillRawShape(Graphics g, Rectangle rect, Color color)
-	{
-		Graphics2D g2 = (Graphics2D)g;
-		Paint oldPaint = g2.getPaint();
-		setPaint(g2, rect, color);
-		g.fillPolygon(buildHexagon(rect));
-		g2.setPaint(oldPaint);
-	}
-
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		Stroke originalStroke = g2.getStroke();
@@ -51,7 +42,7 @@ public class HexagonRenderer extends FactorRenderer
 			BasicStroke dashedStroke = getDashedStroke((BasicStroke)originalStroke);
 			g2.setStroke(dashedStroke);
 		}
-		g2.drawPolygon(buildHexagon(rect));
+		g2.draw(getShape(rect));
 		
 		g2.setStroke(originalStroke);
 	}

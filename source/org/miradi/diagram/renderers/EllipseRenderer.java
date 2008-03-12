@@ -36,35 +36,26 @@
 package org.miradi.diagram.renderers;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 
 public class EllipseRenderer extends FactorRenderer
 {
-	public void fillShape(Graphics g, Rectangle rect, Color color)
+	public Shape getShape(Rectangle rect)
 	{
-		fillRawShape(g, rect, color);
+		return new Ellipse2D.Double(rect.x, rect.y, rect.width, rect.height);
 	}
 	
-	public void fillRawShape(Graphics g, Rectangle rect, Color color)
-	{
-		Graphics2D g2 = (Graphics2D)g;
-		Paint oldPaint = g2.getPaint();
-		setPaint(g2, rect, color);
-		g2.fillOval(rect.x, rect.y, rect.width, rect.height);
-		g2.setPaint(oldPaint);
-	}
-
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		setPaint(g2, rect, color);
-		g2.drawOval(rect.x, rect.y, rect.width, rect.height);
+		g2.draw(getShape(rect));
 	}
 
 	public static Point getPerimeterPoint(Point2D outsidePoint, Rectangle2D enclosingRect)
