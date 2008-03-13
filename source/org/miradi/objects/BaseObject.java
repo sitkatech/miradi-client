@@ -39,6 +39,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -504,14 +505,14 @@ abstract public class BaseObject
 	
 	public ORefList getAllResources(ORefList taskRefs) throws Exception
 	{
-		ORefList resourceRefs = new ORefList();
+		ORefSet resourceRefs = new ORefSet();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			resourceRefs.addAll(thisTask.getWhoTotal());
+			resourceRefs.addAll(new ORefSet(thisTask.getWhoTotal()));
 		}
 		
-		return resourceRefs;		
+		return new ORefList(resourceRefs);		
 	}
 	
 	public ORefList getWhoRollup() throws Exception
