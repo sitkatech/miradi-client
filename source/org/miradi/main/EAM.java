@@ -82,7 +82,7 @@ public class EAM
 	private static void alertIfHomeIsNotOnC()
 	{
 		String homeDir = getHomeDirectory().getAbsolutePath();
-		if (homeDir.contains("C:\\"))
+		if (homeDir.startsWith("C:\\"))
 			return;
 		
 		displayHtmlDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
