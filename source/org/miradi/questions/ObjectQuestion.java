@@ -9,22 +9,22 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 
-abstract public class ObjectQuestion extends StaticChoiceQuestion
+abstract public class ObjectQuestion extends DynamicChoiceQuestion
 {
-	public ObjectQuestion(Project project, BaseObject[] objects)
+	public ObjectQuestion(BaseObject[] objectsToUse)
 	{
-		super(createChoiceItems(project, objects));
+		objects = objectsToUse;
 	}
-
-	private static ChoiceItem[] createChoiceItems(Project project, BaseObject[] objects)
+	
+	@Override
+	public ChoiceItem[] getChoices()
 	{
 		Vector choiceItems = new Vector();
 		for (int i = 0; i < objects.length; ++i)
 		{
 			BaseObject thisObject = objects[i];
-			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), thisObject.combineShortLabelAndLabel()));
+			choiceItems.add(new ChoiceItem(thisObject.getRef().toString(), getStringToDisplay(thisObject)));
 		}
 		
 		ChoiceItem[] sortedChoiceItems = (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
@@ -32,4 +32,11 @@ abstract public class ObjectQuestion extends StaticChoiceQuestion
 		
 		return sortedChoiceItems;
 	}
+
+	protected String getStringToDisplay(BaseObject thisObject)
+	{
+		return thisObject.combineShortLabelAndLabel();
+	}
+	
+	private BaseObject[] objects;
 }

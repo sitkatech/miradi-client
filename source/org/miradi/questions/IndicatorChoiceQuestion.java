@@ -12,7 +12,7 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 {
 	public IndicatorChoiceQuestion(Project project)
 	{
-		super(project, getAllIndicators(project));
+		super(getAllIndicators(project));
 	}
 	
 	private static Indicator[] getAllIndicators(Project project)

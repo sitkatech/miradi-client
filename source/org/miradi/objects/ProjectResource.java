@@ -90,7 +90,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = (givenName.get() + " " + surName.get()).trim();
+		result = getFullName();
 		if(result.length() > 0)
 			return result;
 		
@@ -103,6 +103,11 @@ public class ProjectResource extends BaseObject
 			return result;
 		
 		return EAM.text("Label|(Undefined Resource)");
+	}
+
+	public String getFullName()
+	{
+		return (givenName.get() + " " + surName.get()).trim();
 	}
 	
 	String getGivenName()
