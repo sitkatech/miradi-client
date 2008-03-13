@@ -334,6 +334,11 @@ abstract public class BaseObject
 		return "";
 	}
 	
+	public String getFullName()
+	{
+		return combineShortLabelAndLabel(getShortLabel(), getLabel());
+	}
+	
 	public void setLabel(String newLabel) throws Exception
 	{
 		label.set(newLabel);

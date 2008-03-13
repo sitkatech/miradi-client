@@ -86,7 +86,7 @@ public class ProjectResource extends BaseObject
 	
 	public String getWho()
 	{
-		String result = initials.get();
+		String result = getInitials();
 		if(result.length() > 0)
 			return result;
 		
@@ -105,9 +105,19 @@ public class ProjectResource extends BaseObject
 		return EAM.text("Label|(Undefined Resource)");
 	}
 
+	private String getInitials()
+	{
+		return initials.get();
+	}
+
 	public String getFullName()
 	{
-		return (givenName.get() + " " + surName.get()).trim();
+		String result = "";
+		if(getInitials().length() > 0)
+			result += getInitials() + ": ";
+		result += (givenName.get() + " " + surName.get()).trim();
+		
+		return result;
 	}
 	
 	String getGivenName()

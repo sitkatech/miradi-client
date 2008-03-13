@@ -53,7 +53,7 @@ public class ObjectReadonlyObjectList extends ObjectDataInputField
 					continue;
 				
 				BaseObject object = project.findObject(ref); 
-				names.add(object.getLabel());
+				names.add(object.getFullName());
 			}
 			Collections.sort(names, new IgnoreCaseStringComparator());
 			
