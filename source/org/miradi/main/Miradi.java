@@ -22,6 +22,7 @@ public class Miradi
 		try
 		{
 			addThirdPartyJarsToClasspath();
+			setBestLookAndFeel();
 		}
 		catch(Exception e)
 		{
@@ -29,9 +30,6 @@ public class Miradi
 			System.out.println("Error initializing Miradi");
 			System.exit(1);
 		}
-
-		if(!EAM.initialize())
-			System.exit(1);
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		if(Arrays.asList(args).contains("--verbose"))
@@ -78,7 +76,6 @@ public class Miradi
 	{
 		try
 		{
-			setBestLookAndFeel();
 			VersionConstants.setVersionString();
 			Translation.loadFieldLabels();
 			SwingUtilities.invokeAndWait(new MainWindowRunner(args));
