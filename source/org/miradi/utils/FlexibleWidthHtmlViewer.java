@@ -47,7 +47,7 @@ public class FlexibleWidthHtmlViewer extends MiradiHtmlViewer
 		return new Dimension(width, height);
 	}
 	
-	public static JComponent createHtmlViewer(MainWindow mainWindow, String htmlFile)
+	public static JComponent createFromResourceFile(MainWindow mainWindow, String htmlFile)
 	{
 		try
 		{

@@ -52,12 +52,12 @@ public abstract class ReportSplitPane extends PersistentNonPercentageHorizontalS
 
 	private JComponent createInstructionsSection()
 	{
-		return FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "ReportHelpInstructions.html");		
+		return FlexibleWidthHtmlViewer.createFromResourceFile(getMainWindow(), "ReportHelpInstructions.html");		
 	}
 	
 	private JComponent createAboveToolbarInstructionsSection()
 	{
-		return FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "AboveToolbarInstructions.html");
+		return FlexibleWidthHtmlViewer.createFromResourceFile(getMainWindow(), "AboveToolbarInstructions.html");
 	}
 	
 	private JPanel createReportPanel(URL reportURL) throws Exception
