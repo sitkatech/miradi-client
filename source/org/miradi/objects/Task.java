@@ -21,6 +21,7 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -271,7 +272,7 @@ public class Task extends BaseObject
 		return combineAssignmentEffortListDateRanges();
 	}
 	
-	public ORefList getWhoRollup() throws Exception
+	public ORefSet getWhoRollup() throws Exception
 	{
 		if (getSubtaskCount() > 0)
 			return getAllResources(getSubtaskRefs());
@@ -279,9 +280,9 @@ public class Task extends BaseObject
 		return getTaskResources();
 	}
 	
-	public ORefList getTaskResources()
+	public ORefSet getTaskResources()
 	{
-		ORefList resourceRefs = new ORefList();
+		ORefSet resourceRefs = new ORefSet();
 		ORefList assignmentRefs = getAssignmentRefs();
 		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{

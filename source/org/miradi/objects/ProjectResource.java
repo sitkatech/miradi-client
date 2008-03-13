@@ -14,7 +14,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -132,19 +132,21 @@ public class ProjectResource extends BaseObject
 		return costUnit.get();
 	}
 	
-	public static String getResourcesAsString(Project project, ORefList resourceRefs)
+	public static String getResourcesAsString(Project project, ORefSet resourceRefs)
 	{
+		boolean isFirstIteration = true; 
 		String appendedResources = "";
-		for (int i = 0; i < resourceRefs.size(); ++i)
+		for(ORef ref : resourceRefs)
 		{
-			ProjectResource resource = find(project, resourceRefs.get(i));
+			ProjectResource resource = find(project, ref);
 			if (resource == null)
 				continue;
 			
-			if (i > 0)
-				appendedResources += ", "; 
+			if (!isFirstIteration)
+				appendedResources += ", ";
 					
 			appendedResources += resource.getWho();
+			isFirstIteration = false;
 		}
 		
 		return appendedResources;
