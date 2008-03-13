@@ -49,7 +49,7 @@ public class DataLocationChooserPanel extends MiradiPanel
 
 	private PanelTextField createReadonlyDirectoryTextField()
 	{
-		PanelTextField directoryReadonlyTextField = new PanelTextField(EAM.getHomeDirectory().getAbsolutePath());
+		directoryReadonlyTextField = new PanelTextField(EAM.getHomeDirectory().getAbsolutePath());
 		directoryReadonlyTextField.setEditable(false);
 		directoryReadonlyTextField.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		directoryReadonlyTextField.setBackground(EAM.READONLY_BACKGROUND_COLOR);
@@ -75,6 +75,7 @@ public class DataLocationChooserPanel extends MiradiPanel
 					return;
 				
 				Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, chosenDir.getAbsolutePath());
+				directoryReadonlyTextField.setText(EAM.getHomeDirectory().getAbsolutePath());
 				mainWindow.refreshWizard();
 			}
 			catch(Exception e)
@@ -91,5 +92,6 @@ public class DataLocationChooserPanel extends MiradiPanel
 	}
 	
 	private MainWindow mainWindow;
+	private PanelTextField directoryReadonlyTextField;
 	private static final int PADDING = 10;
 }
