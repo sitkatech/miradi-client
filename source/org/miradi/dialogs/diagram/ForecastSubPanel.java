@@ -20,9 +20,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.BudgetCostModeQuestion;
 
-public class ForecastOverrideSubPanel extends AbstractObjectDataInputPanel
+public class ForecastSubPanel extends AbstractObjectDataInputPanel
 {
-	public ForecastOverrideSubPanel(Project projectToUse, Actions actions, ORef initialRef)
+	public ForecastSubPanel(Project projectToUse, Actions actions, ORef initialRef)
 	{
 		super(projectToUse, initialRef);
 		
