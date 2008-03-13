@@ -28,6 +28,8 @@ import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.resources.ResourcesHandler;
+import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.MiradiLogger;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.Translation;
@@ -37,8 +39,10 @@ public class EAM
 	// NOTE: This MUST be the first thing in the class so it is initialized first!
 	private static MiradiLogger logger = new MiradiLogger();
 
-	public static boolean initialize()
+	public static boolean initializeHomeDirectory()
 	{
+		showWindowsFirstTimeDirIsOnNetworkDir();
+			
 		if(!EAM.handleEamToMiradiMigration())
 			return false;
 		
@@ -61,22 +65,30 @@ public class EAM
 		
 		File defaultHomeDirectory = getDefaultHomeDirectory();
 		Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
-		showFirstTimeDirIsonNetworkDir();
 		
 		return defaultHomeDirectory;
 	}
 
-	private static void showFirstTimeDirIsonNetworkDir()
+	private static void showWindowsFirstTimeDirIsOnNetworkDir()
 	{
 		if (!Miradi.isWindows())
 			return;
 		
 		String homeDir = getHomeDirectory().getAbsolutePath();
-		if (!homeDir.contains("C:\\"))
-			notifyDialog(EAM.text("Miradi is going to store your projects " + homeDir + ". If that is a network drive,\n " +
-					"they will only be available when you are on the network. You might " +
-					"want to configure Miradi to use a local drive instead. " +
-					"To do that, go to edit/prefs"));
+		if (homeDir.contains("C:\\"))
+			return;
+		
+		try
+		{
+			String html = EAM.loadResourceFile(ResourcesHandler.class, "NoWindowsDataLocalDataLocationMessage.html");
+			html = html.replace("@DIRECTORY_NAME@", homeDir);
+			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
+			htmlViwer.showAsOkDialog();
+		}
+		catch (Exception e)
+		{
+			logException(e);
+		}
 	}
 
 	private static File getPreferredHomeDirectory()
