@@ -7,27 +7,18 @@ package org.miradi.dialogs.threatstressrating.properties;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
-
-import org.miradi.actions.ActionManageStresses;
-import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
-import org.miradi.layout.OneRowPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingEditorComponent extends MultiTablePanel
+public class ThreatStressRatingEditorComponent extends DisposablePanel
 {
 	public ThreatStressRatingEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject());
-		
 		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
 		createTables();
@@ -36,31 +27,14 @@ public class ThreatStressRatingEditorComponent extends MultiTablePanel
 	
 	private void createTables() throws Exception
 	{
-		threatStressRatingTableModel = new ThreatStressRatingTableModel(getProject());
+		threatStressRatingTableModel = new ThreatStressRatingTableModel(mainWindow.getProject());
 		threatStressRatingTable = new ThreatStressRatingTable(threatStressRatingTableModel);
 	}
 	
 	private void addTablesWithManageStressesButton()
 	{
 		MiradiScrollPane resourceScroller = new MiradiScrollPane(threatStressRatingTable);
-		add(createButtonPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(resourceScroller, BorderLayout.CENTER);
-	}
-	
-	protected JPanel createButtonPanel()
-	{
-		JPanel buttonPanel = new OneRowPanel();
-		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-
-		ObjectsActionButton manageStressesButton = createObjectsActionButton(getActions().getObjectsAction(ActionManageStresses.class), getObjectPicker());
-		buttonPanel.add(manageStressesButton);
-		
-		return buttonPanel;
-	}
-	
-	private Actions getActions()
-	{
-		return mainWindow.getActions();
 	}
 	
 	private ObjectPicker getObjectPicker()

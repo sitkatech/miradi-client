@@ -9,6 +9,7 @@ import java.awt.Component;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.ids.BaseId;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -20,16 +21,14 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.views.umbrella.ObjectPicker;
 
-import com.jhlabs.awt.BasicGridLayout;
-
 public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 {
 	public ThreatStressRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
-		setLayout(new BasicGridLayout(2, 1));
+		setLayout(new OneColumnGridLayout());
 		
-		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject()); 
+		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 		add(threatStressRatingFieldPanel);
 		add(editorComponent);
