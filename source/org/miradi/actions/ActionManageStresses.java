@@ -5,6 +5,7 @@
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.StressIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -12,12 +13,12 @@ public class ActionManageStresses extends ObjectsAction
 {
 	public ActionManageStresses(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new StressIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage Stresses");
+		return EAM.text("Action|Manage Stresses...");
 	}
 
 	public String getToolTipText()
