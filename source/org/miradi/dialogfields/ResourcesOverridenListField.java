@@ -8,6 +8,7 @@ package org.miradi.dialogfields;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -37,7 +38,8 @@ public class ResourcesOverridenListField extends RelevancyOverrideListField
 		try
 		{
 			BaseObject foundObject = getProject().findObject(getORef());
-			refListEditor.setText(foundObject.getOverridenWho().toString());
+			ORefSet overridenWho = foundObject.getOverridenWho();
+			refListEditor.setText(new ORefList(overridenWho).toString());
 		}
 		catch(Exception e)
 		{
