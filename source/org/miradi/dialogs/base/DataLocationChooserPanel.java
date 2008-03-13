@@ -40,7 +40,7 @@ public class DataLocationChooserPanel extends MiradiPanel
 	{
 		PanelButton dataChooserButton = new PanelButton(EAM.text("Select Location"));
 		dataChooserButton.addActionListener(new ActionHandler());
-		add(FlexibleWidthHtmlViewer.createHtmlViewer(getMainWindow(), "DataLocationInstructions.html"), BorderLayout.CENTER);
+		add(FlexibleWidthHtmlViewer.createFromResourceFile(getMainWindow(), "DataLocationInstructions.html"), BorderLayout.CENTER);
 		TwoColumnPanel buttonPanel = new TwoColumnPanel();
 		buttonPanel.add(createReadonlyDirectoryTextField());
 		buttonPanel.add(dataChooserButton);
