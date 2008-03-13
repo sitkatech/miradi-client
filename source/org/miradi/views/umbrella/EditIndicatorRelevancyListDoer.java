@@ -12,7 +12,7 @@ import org.miradi.objecthelpers.ORef;
 
 public class EditIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-	protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef)
+	protected ObjectDataInputPanel getPickListPanel(ORef objectiveRef)
 	{
 		return new RelevancyIndicatorPanel(getProject(), objectiveRef);
 	}
