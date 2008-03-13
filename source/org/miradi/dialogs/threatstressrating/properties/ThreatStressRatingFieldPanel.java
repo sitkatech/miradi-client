@@ -5,10 +5,16 @@
 */ 
 package org.miradi.dialogs.threatstressrating.properties;
 
+import javax.swing.JPanel;
+
+import org.miradi.actions.ActionManageStresses;
+import org.miradi.actions.Actions;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -18,10 +24,11 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.utils.ObjectsActionButton;
 
 public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 {
-	public ThreatStressRatingFieldPanel(Project projectToUse) throws Exception
+	public ThreatStressRatingFieldPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
 		
@@ -39,6 +46,11 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
 		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, new ThreatRatingQuestion()));
 
+		addLabel(EAM.text("Stresses"));
+		add(createManageStressesComponent(actions));
+		
+		addBlankHorizontalLine();
+		
 		updateFieldsFromProject();
 	}
 	
@@ -49,6 +61,18 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 		super.setObjectRefs(orefsToUse);
 	}
 
+	protected JPanel createManageStressesComponent(Actions actions)
+	{
+		OneRowPanel buttonPanel = new OneRowPanel();
+		buttonPanel.setGaps(5);
+		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
+		ObjectsActionButton manageStressesButton = createObjectsActionButton(actions.getObjectsAction(ActionManageStresses.class), getPicker());
+		buttonPanel.add(manageStressesButton);
+		buttonPanel.add(new PanelTitleLabel(EAM.text("(Create, manage, and rate the stresses for this target)")));
+		return buttonPanel;
+	}
+	
 	private void updateFieldLabels(ORef[] orefsToUse)
 	{
 		ORefList refs = new ORefList(orefsToUse);

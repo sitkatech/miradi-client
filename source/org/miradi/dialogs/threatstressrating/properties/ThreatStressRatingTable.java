@@ -63,6 +63,6 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
-	public static final int PREFERRED_VIEWPORT_WIDTH = 500;
+	public static final int PREFERRED_VIEWPORT_WIDTH = 700;
 	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;
 }

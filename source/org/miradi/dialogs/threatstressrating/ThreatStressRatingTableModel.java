@@ -11,6 +11,8 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
@@ -33,7 +35,28 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		rebuild(new ORefList(hierarchyToSelectedRef));
+		ORefList refs = new ORefList(hierarchyToSelectedRef);
+		try
+		{
+			threatBeingEdited = extractThreat(refs);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		rebuild(refs);
+	}
+
+	private Factor extractThreat(ORefList refs) throws Exception
+	{
+		ORef linkBeingEditedRef = refs.getRefForType(FactorLink.getObjectType());
+		if(linkBeingEditedRef.isInvalid())
+			return null;
+		
+		FactorLink linkBeingEdited = FactorLink.find(getProject(), linkBeingEditedRef);
+		ORef threatRef = linkBeingEdited.getUpstreamThreatRef();
+		Factor threat = Cause.findFactor(getProject(), threatRef);
+		return threat;
 	}
 
 	private void rebuild(ORefList hierarchyToSelectedRef)
@@ -74,9 +97,14 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return false;
 	}
 	
+	public boolean isThreatLabelColumn(int column)
+	{
+		return (column == 1);
+	}
+	
 	public boolean isStressLabelColumn(int column)
 	{
-		return getColumnTag(column).equals(Stress.TAG_LABEL);
+		return (column == 2);
 	}
 	
 	public boolean isStressRatingColumn(int column)
@@ -106,7 +134,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		
 	public String getColumnName(int column)
 	{
-		if (isStressLabelColumn(column) || isStressRatingColumn(column))
+		if (isThreatLabelColumn(column))
+			return EAM.text("Threat Name");
+		if (isStressLabelColumn(column))
+			return EAM.text("Stress Name");
+		if (isStressRatingColumn(column))
 			return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(column));
 		
 		return EAM.fieldLabel(ThreatStressRating.getObjectType(), getColumnTag(column));
@@ -129,6 +161,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 
 	public Object getValueAt(int row, int column)
 	{
+		if (isThreatLabelColumn(column))
+		{
+			return threatBeingEdited.toString();
+		}
+		
 		if (isStressLabelColumn(column))
 		{
 			return getStress(row, column).toString();
@@ -222,9 +259,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public static String[] getColumnTags()
 	{
+		// NOTE: Some isXxx methods rely on the sequence of these entries!
 		return new String[] {
-				Stress.TAG_LABEL,
 				ThreatStressRating.TAG_IS_ACTIVE,
+				Cause.TAG_LABEL,
+				Stress.TAG_LABEL,
 				Stress.PSEUDO_STRESS_RATING,
 				ThreatStressRating.TAG_CONTRIBUTION,
 				ThreatStressRating.TAG_IRREVERSIBILITY,
@@ -233,4 +272,5 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	}
 	
 	private ThreatStressRating[] ratings;
+	private Factor threatBeingEdited;
 }
