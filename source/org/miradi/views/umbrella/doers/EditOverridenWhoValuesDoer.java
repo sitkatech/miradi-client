@@ -17,7 +17,7 @@ import org.miradi.views.umbrella.AbstractEditListDoer;
 
 public class EditOverridenWhoValuesDoer extends AbstractEditListDoer
 {
-	protected ObjectDataInputPanel getRelevancyPanel(ORef objectiveRef)
+	protected ObjectDataInputPanel getPickListPanel(ORef objectiveRef)
 	{
 		return new OverridingResourcePanel(getProject(), objectiveRef);
 	}
