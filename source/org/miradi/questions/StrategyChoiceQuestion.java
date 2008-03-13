@@ -12,7 +12,7 @@ public class StrategyChoiceQuestion extends ObjectQuestion
 {
 	public StrategyChoiceQuestion(Project project)
 	{
-		super(project, getNonDraftStrategies(project));
+		super(getNonDraftStrategies(project));
 	}
 	
 	private static Factor[] getNonDraftStrategies(Project project)
