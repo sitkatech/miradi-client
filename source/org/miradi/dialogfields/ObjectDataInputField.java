@@ -12,6 +12,7 @@ import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -199,9 +200,15 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	void setDefaultFieldBorder()
 	{
+		getComponent().setBorder(createLineBorderWithMargin());
+	}
+
+	public static CompoundBorder createLineBorderWithMargin()
+	{
 		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
 		Border margin = BorderFactory.createEmptyBorder(2, 2, 2, 2);
-		getComponent().setBorder(BorderFactory.createCompoundBorder(lineBorder, margin));
+		CompoundBorder coumpoundBorder = BorderFactory.createCompoundBorder(lineBorder, margin);
+		return coumpoundBorder;
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.prefs.Preferences;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.layout.TwoColumnPanel;
@@ -53,9 +54,12 @@ public class DataLocationChooserPanel extends MiradiPanel
 		directoryReadonlyTextField.setEditable(false);
 		directoryReadonlyTextField.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		directoryReadonlyTextField.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		
+		//NOTE:  on vista left edge of 'c'  gets cut off without padding.  
 		Dimension preferredSize = directoryReadonlyTextField.getPreferredSize();
 		preferredSize.width += PADDING;
 		directoryReadonlyTextField.setPreferredSize(preferredSize);
+		directoryReadonlyTextField.setBorder(ObjectDataInputField.createLineBorderWithMargin());
 		
 		return directoryReadonlyTextField;
 	}
