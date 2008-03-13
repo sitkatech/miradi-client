@@ -87,7 +87,7 @@ public class ChoiceItem implements Comparable
 		if (! otherChoiceItem.getCode().equals(getCode()))
 			return false;
 		
-		if (! otherChoiceItem.getLabel().equals(getLabel()))
+		if (! otherChoiceItem.getLabel().equalsIgnoreCase(getLabel()))
 			return false;
 		
 		return true;
@@ -100,7 +100,9 @@ public class ChoiceItem implements Comparable
 
 	public int compareTo(Object rawObject)
 	{
-		return toString().compareTo(rawObject.toString());
+		String thisString = toString();
+		String otherString = rawObject.toString();
+		return thisString.compareToIgnoreCase(otherString);
 	}
 
 	private boolean selectable;
