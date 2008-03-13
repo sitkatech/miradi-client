@@ -41,7 +41,7 @@ public class EAM
 
 	public static boolean initializeHomeDirectory()
 	{
-		showWindowsFirstTimeDirIsOnNetworkDir();
+		alertIfHomeIsNotOnC();
 		
 		File preferredHomeDir = getPreferredHomeDirectory();
 		
@@ -78,7 +78,7 @@ public class EAM
 		return defaultHomeDirectory;
 	}
 
-	private static void showWindowsFirstTimeDirIsOnNetworkDir()
+	private static void alertIfHomeIsNotOnC()
 	{
 		if (!Miradi.isWindows())
 			return;
