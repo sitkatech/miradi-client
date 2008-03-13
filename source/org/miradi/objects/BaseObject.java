@@ -473,7 +473,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return getWhoRollup().toString();
+			return new ORefList(getWhoRollup()).toString();
 		}
 		catch (Exception e)
 		{
@@ -495,7 +495,7 @@ abstract public class BaseObject
 		}
 	}
 
-	public ORefList getWhoTotal() throws Exception
+	public ORefSet getWhoTotal() throws Exception
 	{
 		if (isBudgetOverrideMode())
 			return getOverridenWho();
@@ -503,21 +503,21 @@ abstract public class BaseObject
 		return getWhoRollup();
 	}
 	
-	public ORefList getAllResources(ORefList taskRefs) throws Exception
+	public ORefSet getAllResources(ORefList taskRefs) throws Exception
 	{
 		ORefSet resourceRefs = new ORefSet();
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			resourceRefs.addAll(new ORefSet(thisTask.getWhoTotal()));
+			resourceRefs.addAll(thisTask.getWhoTotal());
 		}
 		
-		return new ORefList(resourceRefs);		
+		return resourceRefs;		
 	}
 	
-	public ORefList getWhoRollup() throws Exception
+	public ORefSet getWhoRollup() throws Exception
 	{
-		return new ORefList();
+		return new ORefSet();
 	}
 
 	public String getBudgetCostRollupAsString()
@@ -617,9 +617,9 @@ abstract public class BaseObject
 		return DateRange.createFromJson(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
 	}
 	
-	public ORefList getOverridenWho()throws Exception
+	public ORefSet getOverridenWho()throws Exception
 	{
-		return whoOverrideRefs.getORefList();
+		return new ORefSet(whoOverrideRefs.getORefList());
 	}
 	
 	void clear()
