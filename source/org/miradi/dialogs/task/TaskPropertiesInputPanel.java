@@ -11,7 +11,7 @@ import java.awt.Component;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.diagram.ForecastOverrideSubPanel;
+import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
@@ -38,7 +38,7 @@ public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
 		addSubPanelWithTitledBorder(new TaskDetailsPanel(projectToUse, actions, idToEdit));
 		
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
-		ForecastOverrideSubPanel budgetSubPanel = new ForecastOverrideSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
+		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanelWithTitledBorder(budgetSubPanel);
 		
 		addFieldComponent(hasBothSubTaskAssignmentsWarningLabel);
