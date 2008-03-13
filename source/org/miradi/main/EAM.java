@@ -42,7 +42,16 @@ public class EAM
 	public static boolean initializeHomeDirectory()
 	{
 		showWindowsFirstTimeDirIsOnNetworkDir();
-			
+		
+		File preferredHomeDir = getPreferredHomeDirectory();
+		
+		preferredHomeDir.mkdirs();
+		if (!preferredHomeDir.exists() || !preferredHomeDir.isDirectory())
+		{	
+			displayHtmlDialog("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
+			return true;
+		}
+
 		if(!EAM.handleEamToMiradiMigration())
 			return false;
 		
@@ -60,7 +69,7 @@ public class EAM
 	public static File getHomeDirectory()
 	{
 		File preferredHomeDir = getPreferredHomeDirectory();
-		if (preferredHomeDir != null && preferredHomeDir.exists())
+		if (preferredHomeDir != null)
 			return preferredHomeDir;
 		
 		File defaultHomeDirectory = getDefaultHomeDirectory();
@@ -78,10 +87,15 @@ public class EAM
 		if (homeDir.contains("C:\\"))
 			return;
 		
+		displayHtmlDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
+	}
+
+	private static void displayHtmlDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
+	{
 		try
 		{
-			String html = EAM.loadResourceFile(ResourcesHandler.class, "NoWindowsDataLocalDataLocationMessage.html");
-			html = html.replace("@DIRECTORY_NAME@", homeDir);
+			String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFileName);
+			html = html.replace(findToReplace, replacementForStr1);
 			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
 			htmlViwer.showAsOkDialog();
 		}
