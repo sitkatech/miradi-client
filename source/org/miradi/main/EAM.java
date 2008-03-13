@@ -41,7 +41,8 @@ public class EAM
 
 	public static boolean initializeHomeDirectory()
 	{
-		alertIfHomeIsNotOnC();
+		if (Miradi.isWindows())
+			alertIfHomeIsNotOnC();
 		
 		File preferredHomeDir = getPreferredHomeDirectory();
 		
@@ -80,9 +81,6 @@ public class EAM
 
 	private static void alertIfHomeIsNotOnC()
 	{
-		if (!Miradi.isWindows())
-			return;
-		
 		String homeDir = getHomeDirectory().getAbsolutePath();
 		if (homeDir.contains("C:\\"))
 			return;
