@@ -30,10 +30,12 @@ import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
 import org.miradi.dialogfields.ObjectDateRangeInputField;
+import org.miradi.dialogfields.ObjectEditableObjectListField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
 import org.miradi.dialogfields.ObjectNumericInputField;
+import org.miradi.dialogfields.ObjectOverridenListField;
 import org.miradi.dialogfields.ObjectPercentageInputField;
 import org.miradi.dialogfields.ObjectRadioButtonGroupField;
 import org.miradi.dialogfields.ObjectRaitingChoiceField;
@@ -391,6 +393,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectExpandingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, columns);
 	}
 
+	public ObjectDataInputField createOverridenObjectListField(String tag, ChoiceQuestion question)
+	{
+		return new ObjectOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, question);
+	}
+	
 	public ObjectDataInputField createOverridenResourcesListField(ChoiceQuestion question)
 	{
 		return new ResourcesOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
@@ -404,6 +411,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createStrategyRelevancyOverrideListField(ChoiceQuestion question)
 	{
 		return new StrategyRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
+	}
+	
+	public ObjectDataInputField createEditableObjectListField(int objectType, String tagToUse)
+	{
+		return new ObjectEditableObjectListField(project, getRefForType(objectType), tagToUse);
 	}
 	
 	public ObjectDataInputField createCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)

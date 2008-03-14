@@ -22,6 +22,11 @@ import org.miradi.utils.SimpleTableWithInheritedFunctionality;
 
 public class ObjectReadonlyObjectList extends ObjectDataInputField
 {
+	public ObjectReadonlyObjectList(Project projectToUse, ORef refToUse, String tagToUse)
+	{
+		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
+	}
+
 	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);

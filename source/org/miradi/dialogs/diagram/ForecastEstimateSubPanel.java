@@ -5,16 +5,12 @@
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.actions.ActionEditOverrideWhoValues;
 import org.miradi.actions.Actions;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.ObjectsActionButton;
 
 public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 {
@@ -23,13 +19,8 @@ public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 		super(projectToUse, initialRef);
 		
 		addField(createCurrencyField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_OVERRIDE));
-
 		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
-
-		PanelTitleLabel estimatedResourcesLabel = new PanelTitleLabel(EAM.text("Who Override"));
-		ObjectDataInputField readOnlyEstimatedResourcesList = createReadOnlyObjectList(initialRef.getObjectType(), BaseObject.TAG_WHO_OVERRIDE_REFS);
-		ObjectsActionButton editEstimatedResourcesButton = createObjectsActionButton(actions.getObjectsAction(ActionEditOverrideWhoValues.class), getPicker());
-		addFieldWithEditButton(estimatedResourcesLabel, readOnlyEstimatedResourcesList, editEstimatedResourcesButton);
+		addField(createEditableObjectListField(initialRef.getObjectType(),  BaseObject.TAG_WHO_OVERRIDE_REFS));
 	}
 
 	public String getPanelDescription()
