@@ -5,20 +5,19 @@
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class TargetPropertiesKeaViabilityTreeManagementPanel extends
 		TargetViabilityTreeManagementPanel
 {
-	public TargetPropertiesKeaViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	public TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, nodeId, actions);
+		super(mainWindow, splitPositionSaverToUse, nodeId);
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
 	}

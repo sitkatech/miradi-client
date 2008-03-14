@@ -53,7 +53,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject());
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject(), getMainWindow().getActions());
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel();

@@ -7,22 +7,20 @@ package org.miradi.dialogs.activity;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.task.TaskPropertiesPanel;
 import org.miradi.icons.MethodIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class MethodListManagementPanel extends ObjectListManagementPanel
 {
-	public MethodListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public MethodListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
-		super(splitPositionSaverToUse, new MethodListTablePanel(projectToUse, actions, nodeRef),
-				new TaskPropertiesPanel(projectToUse, actions));
+		super(mainWindow, new MethodListTablePanel(mainWindow.getProject(), mainWindow.getActions(), nodeRef),
+				new TaskPropertiesPanel(mainWindow));
 	}
 	
 	public String getSplitterDescription()

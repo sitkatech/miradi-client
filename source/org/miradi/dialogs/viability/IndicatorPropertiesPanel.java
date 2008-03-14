@@ -5,7 +5,6 @@
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
@@ -13,27 +12,27 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.project.Project;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public IndicatorPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public IndicatorPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(projectToUse, getInvalidTargetRef());			
+		super(mainWindow.getProject(), getInvalidTargetRef());			
 		setLayout(new OneColumnGridLayout());
 		
-		addSubPanelWithTitledBorder(new IndicatorSubPanel(projectToUse, getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorSubPanel(getProject(), getInvalidTargetRef()));
 		
-		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(projectToUse, getInvalidTargetRef());
+		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(getProject(), getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
-		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(projectToUse, getInvalidTargetRef()));
-		addSubPanelWithTitledBorder(new ForecastSubPanel(getProject(), actions, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
+		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
 		
 		updateFieldsFromProject();
 	}
