@@ -70,29 +70,27 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		return model.getColumnTag(modelColumn);
 	}
 		
-	protected void createComboColumn(BaseObject[] content, int col, BaseObject invalidObject)
+	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
 	{
 		Arrays.sort(content, new SorterByToString());
 		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
 		PanelComboBox comboBox = new PanelComboBox(comboContent);
-		TableColumn tableColumn = getColumnModel().getColumn(col);
-		tableColumn.setCellEditor(new DefaultCellEditor(comboBox));
-		tableColumn.setCellRenderer(new ComboBoxRenderer(comboContent));
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		column.setCellEditor(new DefaultCellEditor(comboBox));
+		column.setCellRenderer(new ComboBoxRenderer(comboContent));
 	}
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		TableColumn column = getColumnModel().getColumn(modelColumn);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellEditor(new DefaultCellEditor(comboBox));
 		column.setCellRenderer(new ChoiceItemComboBoxRenderer(choices));
 	}
 	
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		TableColumn column = getColumnModel().getColumn(modelColumn);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellRenderer(new ChoiceItemTableCellRenderer(model, new DefaultFontProvider()));
 	}
 	
