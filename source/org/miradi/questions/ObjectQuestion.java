@@ -35,7 +35,7 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
-		return thisObject.combineShortLabelAndLabel();
+		return thisObject.getFullName();
 	}
 	
 	private BaseObject[] objects;
