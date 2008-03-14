@@ -9,9 +9,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class GenericObjectChoiceQuestion extends ObjectQuestion
+public class ObjectPoolChoiceQuestion extends ObjectQuestion
 {
-	public GenericObjectChoiceQuestion(Project project, int type)
+	public ObjectPoolChoiceQuestion(Project project, int type)
 	{
 		super(getAllObjects(project, type));
 	}
