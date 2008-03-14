@@ -10,9 +10,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.GenericObjectChoiceQuestion;
 
-public class ObjectEditorPanel extends ObjectDataInputPanel
+public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 {
-	public ObjectEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, int type)
+	public ObjectRefListEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, int type)
 	{
 		super(projectToUse, orefToUse);
 
