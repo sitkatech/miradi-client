@@ -7,13 +7,13 @@ package org.miradi.dialogfields;
 
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.wizard.MiradiHtmlViewer;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -43,7 +43,9 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 			}		
 			
 			htmlTable += "</TABLE></HTML>";
-			add(new HtmlFormViewer(getMainWindow(), htmlTable, null));
+			MiradiHtmlViewer miradiHtmlViewer = new MiradiHtmlViewer(getMainWindow(), null);
+			miradiHtmlViewer.setText(htmlTable);
+			add(miradiHtmlViewer);
 		}
 		catch(Exception e)
 		{
