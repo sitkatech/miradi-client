@@ -262,8 +262,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		// NOTE: Some isXxx methods rely on the sequence of these entries!
 		return new String[] {
 				ThreatStressRating.TAG_IS_ACTIVE,
-				Cause.TAG_LABEL,
-				Stress.TAG_LABEL,
+				"Threat Name",
+				"Stress Name",
 				Stress.PSEUDO_STRESS_RATING,
 				ThreatStressRating.TAG_CONTRIBUTION,
 				ThreatStressRating.TAG_IRREVERSIBILITY,
