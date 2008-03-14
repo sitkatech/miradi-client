@@ -5,6 +5,7 @@
 */ 
 package org.miradi.dialogfields;
 
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.AppPreferences;
@@ -38,7 +39,7 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 			for (int i = 0; i < refList.size(); ++i)
 			{
 				BaseObject object = getProject().findObject(refList.get(i)); 
-				htmlTable += "<TR><TD>" + object.getFullName()  + "</TD></TR>";
+				htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
 			}		
 			
 			htmlTable += "</TABLE></HTML>";
