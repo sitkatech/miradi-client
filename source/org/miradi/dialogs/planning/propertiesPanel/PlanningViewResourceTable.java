@@ -34,42 +34,45 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 
 	public void rebuildColumnEditorsAndRenderers()
 	{
-		for (int i = 0; i < model.getColumnCount(); ++i)
+		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			createResourceCombo(i);
-			createFundingSourceColumn(i);
-			createAccountingCodeColumn(i);
+			createResourceCombo(tableColumn);
+			createFundingSourceColumn(tableColumn);
+			createAccountingCodeColumn(tableColumn);
 		}
 	}
 	
-	private void createAccountingCodeColumn(int column)
+	private void createAccountingCodeColumn(int tableColumn)
 	{
-		if (! model.isAccountingCodeColumn(column))
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! model.isAccountingCodeColumn(modelColumn))
 			return;
 		
 		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
 		AccountingCode invalidAccountingCode = new AccountingCode(getObjectManager(), BaseId.INVALID);
-		createComboColumn(accountingCodes, column, invalidAccountingCode);
+		createComboColumn(accountingCodes, tableColumn, invalidAccountingCode);
 	}
 	
-	private void createResourceCombo(int column)
+	private void createResourceCombo(int tableColumn)
 	{
-		if (! model.isResourceColumn(column))
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! model.isResourceColumn(modelColumn))
 			return;
 		
 		ProjectResource[] resources = getAllProjectResources();
 		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
-		createComboColumn(resources, column, invalidResource);
+		createComboColumn(resources, tableColumn, invalidResource);
 	}
 	
-	private void createFundingSourceColumn(int column)
+	private void createFundingSourceColumn(int tableColumn)
 	{
-		if (! model.isFundingSourceColumn(column))
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (! model.isFundingSourceColumn(modelColumn))
 			return;
 
 		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
 		FundingSource invalidFundintSource = new FundingSource(getObjectManager(), BaseId.INVALID);
-		createComboColumn(fundingSources, column, invalidFundintSource);
+		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
 	public int getColumnAlignment()
