@@ -66,9 +66,9 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 		{
 			BaseObject foundObject = getProject().findObject(getORef());
 			int annotationType = foundObject.getAnnotationType(getTag());
-			ObjectRefListEditorPanel codeListPanel = new ObjectRefListEditorPanel(getProject(), getORef(), getTag(), annotationType);
+			ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), getORef(), getTag(), annotationType);
 			
-			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), codeListPanel, EAM.text("Edit Dialog"));
+			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editListPanel, EAM.text("Edit Dialog"));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);	
 		}
