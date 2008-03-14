@@ -8,6 +8,7 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
+//FIXME remove this action and its doer
 public class ActionEditOverrideWhoValues extends ObjectsAction
 {
 	public ActionEditOverrideWhoValues(MainWindow mainWindow)
