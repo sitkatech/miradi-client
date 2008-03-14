@@ -20,14 +20,14 @@ import org.miradi.utils.GenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.SimpleTableWithInheritedFunctionality;
 
-public class ObjectReadonlyObjectList extends ObjectDataInputField
+public class ObjectReadonlyObjectListField extends ObjectDataInputField
 {
-	public ObjectReadonlyObjectList(Project projectToUse, ORef refToUse, String tagToUse)
+	public ObjectReadonlyObjectListField(Project projectToUse, ORef refToUse, String tagToUse)
 	{
 		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
 	}
 
-	public ObjectReadonlyObjectList(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
+	public ObjectReadonlyObjectListField(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
 		model = new GenericDefaultTableModel();

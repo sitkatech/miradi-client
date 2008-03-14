@@ -29,7 +29,7 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 		super(projectToUse, refToUse, tagToUse);
 		
 		component = new MiradiPanel(new BorderLayout());
-		objectListComponent = new ObjectReadonlyObjectList(projectToUse, refToUse, tagToUse);
+		objectListComponent = new ObjectReadonlyObjectListField(projectToUse, refToUse, tagToUse);
 		component.add(objectListComponent.getComponent(), BorderLayout.CENTER);
 		
 		PanelButton selectButton = new PanelButton(EAM.text("Edit..."));
@@ -75,5 +75,5 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 	}
 	
 	private MiradiPanel component;
-	private ObjectReadonlyObjectList objectListComponent;
+	private ObjectReadonlyObjectListField objectListComponent;
 }
