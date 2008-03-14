@@ -356,7 +356,12 @@ public class AppPreferences
 		return map;
 	}
 	
-	
+	public static String convertToHex(Color color)
+	{
+		String rgb = Integer.toHexString(color.getRGB());
+		return rgb.substring(2, rgb.length());
+	}
+		
 	public void setWizardTitleBackground(String colorToUse)
 	{
 		wizardTitleBackgroundColor = colorToUse;

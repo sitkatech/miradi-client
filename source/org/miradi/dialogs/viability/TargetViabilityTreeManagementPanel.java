@@ -19,29 +19,28 @@ import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 abstract public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
 {
-	protected TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(EAM.getMainWindow(), projectToUse, nodeId),
-				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
+		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), nodeId),
+				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
-	protected TargetViabilityTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(EAM.getMainWindow(), projectToUse),
-				new TargetViabilityTreePropertiesPanel(projectToUse, actions));
+		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
+				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
 	{
 		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
-				new DirectIndicatorPropertiesPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions(), ORef.INVALID));
+				new DirectIndicatorPropertiesPanel(mainWindowToUse, ORef.INVALID));
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel

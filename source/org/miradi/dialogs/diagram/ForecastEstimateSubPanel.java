@@ -8,19 +8,19 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 
 public class ForecastEstimateSubPanel extends ObjectDataInputPanel
 {
-	public ForecastEstimateSubPanel(Project projectToUse, Actions actions, ORef initialRef)
+	public ForecastEstimateSubPanel(MainWindow mainWindow, Actions actions, ORef initialRef)
 	{
-		super(projectToUse, initialRef);
+		super(mainWindow.getProject(), initialRef);
 		
 		addField(createCurrencyField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_OVERRIDE));
 		addField(createDateRangeChooserField(initialRef.getObjectType(), BaseObject.TAG_WHEN_OVERRIDE));
-		addField(createEditableObjectListField(initialRef.getObjectType(),  BaseObject.TAG_WHO_OVERRIDE_REFS));
+		addField(createEditableObjectListField(mainWindow, initialRef.getObjectType(),  BaseObject.TAG_WHO_OVERRIDE_REFS));
 	}
 
 	public String getPanelDescription()

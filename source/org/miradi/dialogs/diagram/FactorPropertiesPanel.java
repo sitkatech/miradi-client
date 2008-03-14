@@ -194,7 +194,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(factor.isStrategy())
 		{
-			activitiesTab = new ActivityListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			activitiesTab = new ActivityListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 
@@ -212,7 +212,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(isKeaViabilityMode)
 		{
-			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
+			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(mainWindow, mainWindow, getCurrentDiagramFactor().getWrappedId());
 			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		}
 

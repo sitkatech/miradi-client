@@ -8,7 +8,6 @@ package org.miradi.dialogs.task;
 
 import java.awt.Component;
 
-import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
@@ -17,28 +16,28 @@ import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.project.Project;
 
 public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
 {
-	public TaskPropertiesInputPanel(Project projectToUse, Actions actions) throws Exception
+	public TaskPropertiesInputPanel(MainWindow mainWindow) throws Exception
 	{
-		this(projectToUse, actions, BaseId.INVALID);
+		this(mainWindow, BaseId.INVALID);
 	}
 	
-	public TaskPropertiesInputPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
+	public TaskPropertiesInputPanel(MainWindow mainWindow, BaseId idToEdit) throws Exception
 	{
-		super(projectToUse, ObjectType.TASK, idToEdit);
+		super(mainWindow.getProject(), ObjectType.TASK, idToEdit);
 		setLayout(new OneColumnGridLayout());
 		
-		addSubPanelWithTitledBorder(new TaskDetailsPanel(projectToUse, actions, idToEdit));
+		addSubPanelWithTitledBorder(new TaskDetailsPanel(mainWindow.getProject(), mainWindow.getActions(), idToEdit));
 		
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
-		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(getProject(), actions, new ORef(Task.getObjectType(), BaseId.INVALID));
+		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanelWithTitledBorder(budgetSubPanel);
 		
 		addFieldComponent(hasBothSubTaskAssignmentsWarningLabel);

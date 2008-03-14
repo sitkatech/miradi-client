@@ -7,26 +7,25 @@ package org.miradi.dialogs.indicator;
 
 import java.awt.BorderLayout;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorFutureStatusSubPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.project.Project;
 
 public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public DirectIndicatorPropertiesPanel(Project projectToUse, Actions actionsToUse, ORef orefToUse) throws Exception
+	public DirectIndicatorPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
-		super(projectToUse, orefToUse);
+		super(mainWindowToUse.getProject(), orefToUse);
 		
-		actions = actionsToUse;
+		mainWindow = mainWindowToUse;
 		setLayout(new BorderLayout());
 		createPropertiesPanels();
 	}
@@ -41,7 +40,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject(), actions);
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel();
@@ -88,9 +87,14 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		return blankPropertiesPanel;
 	}
 	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
-	private Actions actions;
+	private MainWindow mainWindow;
 	
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;

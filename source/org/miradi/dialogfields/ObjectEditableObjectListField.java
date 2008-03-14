@@ -18,19 +18,19 @@ import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 
 public class ObjectEditableObjectListField extends ObjectDataInputField
 {
-	public ObjectEditableObjectListField(Project projectToUse, ORef refToUse, String tagToUse)
+	public ObjectEditableObjectListField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(mainWindowToUse.getProject(), refToUse, tagToUse);
 		
-		component = new MiradiPanel(new BorderLayout());
-		objectListComponent = new ObjectReadonlyObjectListField(projectToUse, refToUse, tagToUse);
-		component.add(objectListComponent.getComponent(), BorderLayout.CENTER);
+		component = new MiradiPanel(new BorderLayout());	
+		readonlyHtmlComponent = new ReadOnlyRefListHtmlComponent(mainWindowToUse);
+		component.add(readonlyHtmlComponent, BorderLayout.CENTER);
 		
 		PanelButton selectButton = new PanelButton(EAM.text("Edit..."));
 		selectButton.addActionListener(new EditButtonHandler());
@@ -51,13 +51,13 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		return objectListComponent.getText();
+		return "";
 	}
 
 	@Override
 	public void setText(String newValue)
 	{
-		objectListComponent.setText(newValue);
+		readonlyHtmlComponent.setText(newValue);
 	}
 	
 	public class EditButtonHandler implements ActionListener
@@ -75,5 +75,5 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 	}
 	
 	private MiradiPanel component;
-	private ObjectReadonlyObjectListField objectListComponent;
+	private ReadOnlyRefListHtmlComponent readonlyHtmlComponent;
 }

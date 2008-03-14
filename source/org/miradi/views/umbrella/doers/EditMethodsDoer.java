@@ -22,6 +22,6 @@ public class EditMethodsDoer extends AbstractPopUpEditDoer
 	{
 		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 
-		return new MethodListManagementPanel(getProject(), getMainWindow(), indicatorRef, getMainWindow().getActions());
+		return new MethodListManagementPanel(getMainWindow(), indicatorRef);
 	}
 }

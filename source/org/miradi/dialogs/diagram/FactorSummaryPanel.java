@@ -44,7 +44,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit));
 		if(getFactor().isStrategy())
-			addSubPanelWithTitledBorder(new ForecastSubPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedORef()));
+			addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindowToUse, diagramFactorToEdit.getWrappedORef()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit));
 		
 		detailIcon = createIcon();

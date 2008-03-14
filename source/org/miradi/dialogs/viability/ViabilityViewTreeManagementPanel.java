@@ -5,18 +5,17 @@
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.actions.Actions;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ViabilityViewTreeManagementPanel extends
 		TargetViabilityTreeManagementPanel
 {
-	public ViabilityViewTreeManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actions) throws Exception
+	public ViabilityViewTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, actions);
+		super(mainWindow, splitPositionSaverToUse);
 		panelDescription = PANEL_DESCRIPTION_VIABILITY;
 		icon = new KeyEcologicalAttributeIcon();
 

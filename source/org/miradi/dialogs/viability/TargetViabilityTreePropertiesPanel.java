@@ -8,7 +8,6 @@ package org.miradi.dialogs.viability;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanelSpecial;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
@@ -16,28 +15,28 @@ import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
-import org.miradi.project.Project;
 
 public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
 {
-	public TargetViabilityTreePropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	public TargetViabilityTreePropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
+		super(mainWindow.getProject(), new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel();
-		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(projectToUse, actions);
-		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions);
-		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(projectToUse);
-		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(projectToUse);
+		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
+		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow);
+		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
+		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		add(blankPropertiesPanel);
 		add(targetViabilityKeaPropertiesPanel);
 		add(targetViabilityIndicatorPropertiesPanel);

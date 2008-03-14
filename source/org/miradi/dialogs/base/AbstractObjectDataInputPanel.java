@@ -54,6 +54,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -413,9 +414,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new StrategyRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
-	public ObjectDataInputField createEditableObjectListField(int objectType, String tagToUse)
+	public ObjectDataInputField createEditableObjectListField(MainWindow mainWindowToUse, int objectType, String tagToUse)
 	{
-		return new ObjectEditableObjectListField(project, getRefForType(objectType), tagToUse);
+		return new ObjectEditableObjectListField(mainWindowToUse, getRefForType(objectType), tagToUse);
 	}
 	
 	public ObjectDataInputField createCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)

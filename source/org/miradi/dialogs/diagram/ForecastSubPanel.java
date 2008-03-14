@@ -10,21 +10,20 @@ package org.miradi.dialogs.diagram;
 
 import java.awt.Component;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.questions.BudgetCostModeQuestion;
 
 public class ForecastSubPanel extends AbstractObjectDataInputPanel
 {
-	public ForecastSubPanel(Project projectToUse, Actions actions, ORef initialRef)
+	public ForecastSubPanel(MainWindow mainWindow, ORef initialRef)
 	{
-		super(projectToUse, initialRef);
+		super(mainWindow.getProject(), initialRef);
 		
 		setLayout(new TwoColumnGridLayout());
 				
@@ -34,11 +33,11 @@ public class ForecastSubPanel extends AbstractObjectDataInputPanel
 		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
 		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
 
-		ForecastRollupSubPanel forecastRollupSubPanel = new ForecastRollupSubPanel(projectToUse, initialRef);
+		ForecastRollupSubPanel forecastRollupSubPanel = new ForecastRollupSubPanel(getProject(), initialRef);
 		addSubPanel(forecastRollupSubPanel);
 		add(forecastRollupSubPanel);
 		
-		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(projectToUse, actions, initialRef);
+		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(mainWindow, mainWindow.getActions(), initialRef);
 		addSubPanel(forecastEstimateSubPanel);
 		add(forecastEstimateSubPanel);
 		
