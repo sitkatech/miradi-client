@@ -99,12 +99,12 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public boolean isThreatLabelColumn(int column)
 	{
-		return (column == 1);
+		return getColumnTag(column).equals(THREAT_NAME_COLUMN_TAG);
 	}
 	
 	public boolean isStressLabelColumn(int column)
 	{
-		return (column == 2);
+		return getColumnTag(column).equals(STRESS_NAME_COLUMN_TAG);
 	}
 	
 	public boolean isStressRatingColumn(int column)
@@ -259,11 +259,10 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	
 	public static String[] getColumnTags()
 	{
-		// NOTE: Some isXxx methods rely on the sequence of these entries!
 		return new String[] {
 				ThreatStressRating.TAG_IS_ACTIVE,
-				"Threat Name",
-				"Stress Name",
+				THREAT_NAME_COLUMN_TAG,
+				STRESS_NAME_COLUMN_TAG,
 				Stress.PSEUDO_STRESS_RATING,
 				ThreatStressRating.TAG_CONTRIBUTION,
 				ThreatStressRating.TAG_IRREVERSIBILITY,
@@ -271,6 +270,8 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		};
 	}
 	
+	private static final String THREAT_NAME_COLUMN_TAG = "Fake Tag: Threat Name";
+	private static final String STRESS_NAME_COLUMN_TAG = "Fake Tag: Stress Name";
 	private ThreatStressRating[] ratings;
 	private Factor threatBeingEdited;
 }
