@@ -14,7 +14,7 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.base.ObjectEditorPanel;
+import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
@@ -66,7 +66,7 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 		{
 			BaseObject foundObject = getProject().findObject(getORef());
 			int annotationType = foundObject.getAnnotationType(getTag());
-			ObjectEditorPanel codeListPanel = new ObjectEditorPanel(getProject(), getORef(), getTag(), annotationType);
+			ObjectRefListEditorPanel codeListPanel = new ObjectRefListEditorPanel(getProject(), getORef(), getTag(), annotationType);
 			
 			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), codeListPanel, EAM.text("Edit Dialog"));
 			Utilities.centerDlg(dialog);
