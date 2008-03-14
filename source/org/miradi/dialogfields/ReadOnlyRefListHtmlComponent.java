@@ -35,7 +35,7 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 		{
 			
 			ORefList refList = new ORefList(newValue);
-			String htmlTable = "<HTML><TABLE bgcolor=" + AppPreferences.convertToHex(EAM.READONLY_BACKGROUND_COLOR)+ ">";
+			String htmlTable = "<HTML><TABLE bgcolor=" + AppPreferences.convertToHexString(EAM.READONLY_BACKGROUND_COLOR)+ ">";
 			for (int i = 0; i < refList.size(); ++i)
 			{
 				BaseObject object = getProject().findObject(refList.get(i)); 
