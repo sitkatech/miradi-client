@@ -27,6 +27,11 @@ import org.miradi.utils.InvalidNumberException;
 
 abstract public class ObjectDataInputField implements FocusListener
 {
+	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
+	{
+		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
+	}
+	
 	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
 		project = projectToUse;
