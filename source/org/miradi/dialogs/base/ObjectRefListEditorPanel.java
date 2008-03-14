@@ -8,7 +8,7 @@ package org.miradi.dialogs.base;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
-import org.miradi.questions.GenericObjectChoiceQuestion;
+import org.miradi.questions.ObjectPoolChoiceQuestion;
 
 public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 {
@@ -16,7 +16,7 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 
-		addField(createOverridenObjectListField(tagToUse, new GenericObjectChoiceQuestion(projectToUse, type)));
+		addField(createOverridenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type)));
 		
 		updateFieldsFromProject();
 	}
