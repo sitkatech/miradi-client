@@ -5,7 +5,8 @@
 */ 
 package org.miradi.questions;
 
-import java.awt.Color;
+import org.miradi.icons.KeyEcologicalAttributeIcon;
+import org.miradi.utils.MiradiResourceImageIcon;
 
 public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 {
@@ -17,8 +18,8 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 	public static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Simple Threat Rating Mode", Color.WHITE),
-				new ChoiceItem(STRESS_BASED_CODE, "Stress Based Threat Rating Mode", Color.WHITE),
+				new ChoiceItem("", "Simple Threat Rating Mode", new MiradiResourceImageIcon("icons/showRatings.png")),
+				new ChoiceItem(STRESS_BASED_CODE, "Stress Based Threat Rating Mode", new KeyEcologicalAttributeIcon()),
 		};
 	}
 	
