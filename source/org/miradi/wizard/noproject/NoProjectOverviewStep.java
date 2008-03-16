@@ -69,10 +69,10 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 			setGaps(10);
 			setBackground(AppPreferences.getWizardBackgroundColor());
 			
-			add(new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("<div class='WizardText'><strong>Start a new project</strong> on this computer:")));
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("<div class='WizardText'>To <strong>start a new project</strong> on this computer, choose:")));
 			add(createCreateButtonRow());
 			add(createImportButtonRow());
-			add(new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("<div class='WizardText'><strong>Continue work</strong> on an existing project, or <strong>browse an example</strong>:")));
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), ""));
 		}
 
 		private Component createCreateButtonRow()
