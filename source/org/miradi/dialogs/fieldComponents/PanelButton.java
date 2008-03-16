@@ -10,6 +10,7 @@ import java.awt.Insets;
 import javax.swing.Action;
 
 import org.martus.swing.UiButton;
+import org.miradi.actions.EAMAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -20,13 +21,18 @@ public class PanelButton extends UiButton
 		super(text);
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
-
+	
 	public PanelButton(Action action)
 	{
 		super(action);
 		setMargin(new Insets(2,2,2,2));
-
 		setFont(getMainWindow().getUserDataPanelFont());
+	}
+
+	public PanelButton(EAMAction action)
+	{
+		this((Action)action);
+		setToolTipText(action.getToolTipText());
 	}
 	
 	//TODO should not use static ref here
