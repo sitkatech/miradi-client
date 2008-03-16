@@ -19,6 +19,7 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
@@ -49,6 +50,10 @@ public class TreeBasedProjectList extends JPanel
 			buttonBar.add(new UiButton(action));		
 		}
 		
+		String instructions = EAM.text("<div class='WizardText'>To <strong>continue work</strong> on an existing project, or <strong>browse an example</strong>, choose a project below:");
+		OneRowPanel instructionsBar = new OneRowPanel();
+		instructionsBar.add(new FlexibleWidthHtmlViewer(mainWindow, instructions));
+		add(instructionsBar, BorderLayout.BEFORE_FIRST_LINE);
 		add(new MiradiScrollPane(table), BorderLayout.CENTER);
 		add(buttonBar, BorderLayout.AFTER_LAST_LINE);
 		
