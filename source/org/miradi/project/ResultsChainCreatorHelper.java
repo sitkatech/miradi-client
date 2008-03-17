@@ -345,9 +345,11 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < diagramLinks.length; i++)
 		{
 			DiagramLink diagramLink = diagramLinks[i];
-			DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
 			if (canAddLinkToResultsChain(diagramLink))
+			{
+				DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
 				createdDiagramLinkIds.add(newlyCreatedLinkId);
+			}
 		}
 		
 		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
@@ -363,18 +365,23 @@ public class ResultsChainCreatorHelper
 		
 		if (isNonDraftStrategy(diagramFactor))
 			return true;
+
+		if (diagramFactor.getWrappedType() == ObjectType.INTERMEDIATE_RESULT)
+			return true;
+		
+		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
+			return true;
 		
 		return false;
 	}
 	
 	private boolean canAddLinkToResultsChain(DiagramLink link)
 	{
-		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getFromDiagramFactorId()));
-		DiagramFactor toDiatramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, link.getToDiagramFactorId()));
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(project, link.getFromDiagramFactorRef());
+		DiagramFactor toDiagramFactor = DiagramFactor.find(project, link.getToDiagramFactorRef());
 		
-		return (canAddTypeToResultsChain(fromDiagramFactor) && canAddTypeToResultsChain(toDiatramFactor));
+		return (canAddTypeToResultsChain(fromDiagramFactor) && canAddTypeToResultsChain(toDiagramFactor));
 	}
-
 
 	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws Exception
 	{
