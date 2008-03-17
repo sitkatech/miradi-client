@@ -17,11 +17,11 @@ public class ActionSaveImagePng extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Table PNG Image");
+		return EAM.text("Action|PNG Image");
 	}
 	
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Table PNG Image");
+		return EAM.text("TT|Save the diagram or upper table area as a PNG Image");
 	}
 }
