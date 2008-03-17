@@ -17,7 +17,7 @@ public class DefinitionCommonTerms
     	Hashtable defs = new Hashtable();
 		Definition def = new Definition("Goal", 
 			"Goal - A formal statement detailing a desired impact of a project. " +
-			"In conservation projects, it is the desired future status of a target." );
+			"In conservation projects, it is the desired future status of a target. In Miradi, a goal is represented by a small blue oval." );
 		defs.put("Definition:Goal", def);
 		
 		
@@ -38,16 +38,16 @@ public class DefinitionCommonTerms
 			"setting goals, carrying out conservation actions, and measuring " +
 			"conservation effectiveness.  In theory - and hopefully in practice " +
 			"- conservation of the focal targets will ensure the conservation of " +
-			"all native biodiversity within functional landscapes. ");
+			"all native biodiversity within functional landscapes. In Miradi, a target is represented by a large green oval.");
 		defs.put("Definition:ConservationTargets", def);
 		
 		
 		def = new Definition("Stress", 
-				"Stress - Impaired aspects of conservation targets " +
-				"that result directly or indirectly from human activities " +
+				"Stress - An impaired aspect of a conservation target " +
+				"that results directly or indirectly from human activities " +
 				"(e.g., low population size, reduced extent of forest system; " +
 				"reduced river flows; increased sedimentation; lowered groundwater table level). " +
-				"Generally equivalent to degraded key ecological attributes (e.g., habitat loss).");
+				"Generally equivalent to a degraded key ecological attribute (e.g., habitat loss).");
 		defs.put("Definition:Stress", def);
 		
 		
@@ -77,8 +77,8 @@ public class DefinitionCommonTerms
 		
 
 		def = new Definition("Direct Threat", 
-			"Direct threat - Proximate agents or factors that directly " +
-			"degrade conservation targets.");
+			"Direct threat - A proximate agent or factor that directly " +
+			"degrades one or more conservation targets. In Miradi, a dirct threat is represented by a pink rectangle.");
 		defs.put("Definition:DirectThreat", def);
 			
 
@@ -90,34 +90,37 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Contributing Factor", 
-			"Contributing factors (Indirect threats and Opportunities) " +
-			"- Human-induced actions and event that underlie or lead " +
-			"to the direct threats");
+			"Contributing factor (Indirect threats and Opportunities) " +
+			"- A human-induced action or event that underlies or leads " +
+			"to one or more direct threats. In Miradi, a contributing factor is represented by an orange rectangle.");
 		defs.put("Definition:IndirectThreat", def);
 		
 
 		def = new Definition("Conceptual Model", 
 			"Conceptual model - A diagram of a set of relationships " +
 			"between certain factors that are believed to impact or " +
-			"lead to a conservation target");
+			"lead to a conservation target.");
 		defs.put("Definition:ConceptualModel", def);
 		
 		
 		def = new Definition("Scope", 
-			"Scope - The broad geographic or thematic focus of a project");
+			"Scope - The broad geographic or thematic focus of a project. In Miradi, a project's scope is represented by a green box around the targets.");
 		defs.put("Definition:Scope", def);
 		
 		
 		def = new Definition("Scope (Threat Ratings)", 
 			"Scope (Threat Ratings) - A threat rating criterion that is most commonly defined " +
-			"spatially as the geographic scope of impact on the conservation target at the site " +
-			"that can reasonably be expected within ten years under current circumstances " +
-			"(i.e., given the continuation of the existing situation). ");
+			"spatially as the proportion of the target that can reasonably be expected to be " +
+			"affected by the threat within ten years given the continuatino of current " +
+			"circumstances and trends. For ecosystems and ecological communities, measured " +
+			"as the proportion of the target's occurence. For species, measured as the " +
+			"proportion of the target's population.");
 		defs.put("Definition:ThreatRatingScope", def);
 		
+
 		def = new Definition("Vision", 
 			"Vision - A general summary of the desired state or " +
-			"ultimate condition of the project area that a project is working to achieve");
+			"ultimate condition of the project area that a project is working to achieve.");
 		defs.put("Definition:Vision", def);
 		
 
@@ -126,18 +129,18 @@ public class DefinitionCommonTerms
 			"(for example, the status of a target, change in a threat, " +
 			"or progress towards an objective).  " +
 			"A good indicator meets the criteria of being: measurable, " +
-			"precise, consistent, and sensitive.");
+			"precise, consistent, and sensitive. In Miradi, an indicator is represented by a purple triangle.");
 		defs.put("Definition:Indicator", def);
 		
 		def = new Definition("KEA", 
 			"KEA (Key Ecological Attribute) - An aspect of a target's biology or ecology " +
 			"that if present, defines a healthy target and if missing or altered, " +
-			"would lead to the outright loss or extreme degradation of that target over time.");
+			"would lead to the outright loss or extreme degradation of that target over time. In Miradi, a KEA is represented by a green key symbol.");
 		defs.put("Definition:KEA", def);
 
 		def = new Definition("Method",
 			"Method - A specific technique used to collect data to measure an indicator.  " +
-			"A good method is accurate, reliable, cost-effective, feasible, and appropriate." );
+			"A good method is accurate, reliable, cost-effective, feasible, and appropriate. In Miradi, a method is represented by a purple flattened oval." );
 		defs.put("Definition:Method", def);
 		
 
@@ -164,7 +167,7 @@ public class DefinitionCommonTerms
 		
 		def = new Definition("Objective", 
 			"Objective - A formal statement detailing a desired " +
-			"outcome of a project, such as reducing a critical threat." );
+			"outcome of a project, such as reducing a critical threat. In Miradi, an objective is represented by a small blue rectangle." );
 		defs.put("Definition:Objective", def);
 		
 		
@@ -179,7 +182,7 @@ public class DefinitionCommonTerms
 			"Strategy - A broad course of action designed to restore natural systems, " +
 			"reduce threats, and/or develop capacity.  A strategy is typically " +
 			"used as an umbrella term to describe a set of specific " +
-			"conservation actions." );
+			"conservation actions. In Miradi, a strategy is represented by a yellow hexagon." );
 		defs.put("Definition:Strategy", def);
 		
 		
@@ -197,13 +200,13 @@ public class DefinitionCommonTerms
 		
 
 		def = new Definition("Activity",
-				"Activity - An action carried out to accomplish one or more of a project's strategies.");
+				"Activity - An action carried out to accomplish one or more of a project's strategies. In Miradi, an activity is represented by a yellow flattened oval.");
 		defs.put("Definition:Activity", def);
 		
 		
 		def = new Definition("Task",
 			"Task - A specific action required in service of an activity or method.  Tasks themselves can " +
-			"be broken into sub-tasks if necessary.");
+			"be broken into sub-tasks if necessary. In Miradi, a task is represented by a grey flattened oval.");
 		defs.put("Definition:Task", def);
 		
 		
@@ -221,28 +224,22 @@ public class DefinitionCommonTerms
 		
 		
 		def = new Definition("Overall Threat Rating", 
-				"Overall Threat Rating - The rating of the effect of a direct threat on a specific target. " +
-				"The overall threat rating is calculated using a rule-based system to combine the scope, " +
+				"Target-Threat Rating - The rating of the effect of a direct threat on a specific target. " +
+				"The target-threat rating is calculated using a rule-based system to combine the scope, " +
 				"severity, and irreversibility criteria. ");
 		defs.put("Definition:OverallThreatRating", def);
 		
-		def = new Definition("Irreversibility", "<html>Irreversibility - The degree to which the effects of a threat " +
-				"can be undone and the biodiversity targets affected by the threat restored, if the threat is stopped.<ul>" + 
-				"<li>4 = Very High: The effects of the threat cannot be undone, and it is very unlikely the target can be restored " +
-				"(e.g., wetlands converted to a shopping centre). \n" +
-				"<li>3 = High: The effects of the threat can technically be undone and the target restored, " +
-				"but it is not practically affordable (e.g., wetland converted to agriculture).\n" + 
-				"<li>2 = Medium: The effects of the threat can be undone and the target restored with a reasonable commitment of resources " +
-				"(e.g., ditching and draining of wetland). \n" +
-				"<li>1 = Low: The effects of the threat are easily reversible and the target can be easily restored at a relatively low cost " +
-				"(e.g., off-road vehicles trespassing in wetland).\n"); 
+		def = new Definition("Irreversibility", "<html>Irreversibility - The degree to which the effects of a " +
+				"threat can be revcersed and the target affected by the threat restored. ");
 		defs.put("Definition:Irreversibility", def);
 
 		def = new Definition("Severity", 
-				"Severity - A threat rating criterion that is defined as " +
-				"the level of damage to the conservation target that can " +
-				"reasonably be expected within ten years under current " +
-				"circumstances (i.e., given the continuation of the existing situation). ");
+				"Severity - Within the scope, the level of damage to the target from the threat " +
+				"that can reasonably be expected given the continuation of " +
+				"current circumstances and trends. For ecosystems and ecological communities, " +
+				"typically measured as the degree of destruction or degradation of " +
+				"the target within the scope. For species, usually measured " +
+				"as the degree of reduction of the target population within the scope.");
 		defs.put("Definition:Severity", def);
 		
 		def = new Definition("Contribution", 
@@ -252,18 +249,18 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Contribution", def);
 		
 		def = new Definition("Project", 
-				"Project (general) - Any set of actions undertaken by a group of people and/or " +
+				"<html>Project (general) - Any set of actions undertaken by a group of people and/or " +
 				"organizations to achieve defined goals and objectives. " +
 				"Projects can range in scale from efforts by local people to protect a " +
 				"small sacred grove to efforts by a donor to protect an entire ocean. " + 
 				"\n\n" +
-				"Project (in Miradi) - A project is the basic unit for a software file in Miradi. " +
+				"<p>Project (in Miradi) - A project is the basic unit for a software file in Miradi. " +
 				"As a general rule, you should have one file for each real-world project you are managing, " +
 				"although for certain large and complex projects, " +
 				"you may wish to have one file for each target or for other subdivisions. " +
 				"Miradi's default setting is to create a folder " +
 				"with the name of the project in the Miradi directory " +
-				"(in Windows, the default path is C:/Documents and Setting/User Name/Miradi).");
+				"(in Windows, the default path is C:\\Documents and Settings\\<i>YourUserName</i>\\Miradi).");
 		defs.put("Definition:Project", def);
 		
 		
@@ -320,7 +317,34 @@ public class DefinitionCommonTerms
 		
 		def = new Definition("Funding Sources", "Funding Sources - The sources of money available to your project.");
 		defs.put("Definition:FundingSources", def);
-		
+
+
+		def = new Definition("ThreatReductionResult", "Threat Reduction Result - A factor in a results chain that describes the desired change in a direct threat that results from implementing one or more conservation strategies. In Miradi, at threat reduction result is represented by a purple rectangle.");
+		defs.put("Definition:ThreatReductionResult", def);
+
+		def = new Definition("IntermediateResult", "Intermediate Result - A factor in a results chain that describes a specific outcome that results from implementing one or more conservation strategies. In Miradi, an intermediate result is represented by a blue rectangle.");
+		defs.put("Definition:IntermediateResult", def);
+
+		def = new Definition("NestedTarget", "Nested Target - Species, ecological communities, or ecological system targets whose conservation needs are subsumed in one or more focal conservation targets. Often includes ecoregional targets that a team wants to note and/or track.");
+		defs.put("Definition:IntermediateResult", def);
+
+		def = new Definition("ViabilityRatings", "Viability Ratings - A project's scale of what is very good, good, fair, or poor for a given indicator for a given target. Viability ratings are often quantitatively defined, but they can be qualitative as well.  In effect, by establishing this rating scale, the project team is specifying its assumption as to what constitutes a \"conserved\" target versus one that is in need of management intervention.");
+		defs.put("Definition:ViabilityRatings", def);
+	
+		def = new Definition("AcceptableRangeofVariation", "Acceptable Range of Variation - Key ecological attributes of focal targets naturally vary over time. The acceptable range defines the limits of this variation which constitute the minimum conditions for persistence of the target (note that persistence may still require human management interventions).  This concept of an acceptable range of variation establishes the minimum criteria for identifying a conservation target as \"conserved\" or not.  If the attribute lies outside this acceptable range, it is a \"degraded\" attribute.");
+		defs.put("Definition:ViabilityRatings", def);
+
+		def = new Definition("Measurement", "Measurement - A n assessment of an indicator at a given point in time. Measurements can be either quantitative or qualitative.");
+		defs.put("Definition:Measurement", def);	
+
+		def = new Definition("PriorityRating", "Priority Rating - An assesment of the importance or urgency or collecting measurements for a given indicator.");
+		defs.put("Definition:PriorityRating", def);	
+
+		def = new Definition("DesiredFutureStatus", "Desired Future Status - A measurement or rating value for an indicator for a key ecological attribute that the project intends to achieve at a specified time in the future. Generally equivalent to a project sub-goal..");
+		defs.put("Definition:PriorityRating", def);	
+
+
+	
 		def = new Definition("Threat Calculations", ThreatRatingWizardCheckBundleStep.class, "ThreatRatingExplanationOfCalculation.html");
 		defs.put("Definition:ShowRulesCalculations", def);
 		
