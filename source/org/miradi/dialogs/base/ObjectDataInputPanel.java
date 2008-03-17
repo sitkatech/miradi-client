@@ -31,6 +31,10 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 {
+	public ObjectDataInputPanel(Project projectToUse, int objectType)
+	{
+		this(projectToUse, objectType, BaseId.INVALID);
+	}
 	
 	public ObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
 	{
