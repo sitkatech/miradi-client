@@ -73,6 +73,13 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpec
 		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
+		
+		// NOTE: The following are an attempt to fix a reported problem 
+		// where the screen was not fully repainted when switching objects
+		// This code is duplicated in PlanningTreePropertiesPanel.java 
+		// and DirectIndicatorPropertiesPanel.java
+		validate();
+		repaint();
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)

@@ -94,6 +94,8 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		
 		// NOTE: The following are an attempt to fix a reported problem 
 		// where the screen was not fully repainted when switching objects
+		// This code is duplicated in TargetViabilityTreePropertiesPanel.java
+		// and DirectIndicatorPropertiesPanel.java
 		validate();
 		repaint();
 	}

@@ -65,6 +65,13 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		
 		if(getTopLevelAncestor() != null)
 			getTopLevelAncestor().validate();
+		
+		// NOTE: The following are an attempt to fix a reported problem 
+		// where the screen was not fully repainted when switching objects
+		// This code is duplicated in PlanningTreePropertiesPanel.java
+		// and in TargetViabilityTreePropertiesPanel.java
+		validate();
+		repaint();
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
