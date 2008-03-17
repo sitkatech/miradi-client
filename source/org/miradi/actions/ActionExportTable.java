@@ -17,7 +17,7 @@ public class ActionExportTable extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Table Delimited Data");
+		return EAM.text("Action|Tab-Delimited Table");
 	}
 
 	public String getToolTipText()

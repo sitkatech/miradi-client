@@ -133,14 +133,14 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu("Export");
 		menu.setMnemonic(KeyEvent.VK_X);
 		
-		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_E);
-		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_Z);
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		menu.addSeparator();
+		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		
 		if(MainWindow.isDemoMode())
 		{
