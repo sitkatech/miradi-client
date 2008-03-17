@@ -6,21 +6,12 @@
 package org.miradi.dialogs.diagram;
 
 
-import org.miradi.actions.ActionEditStrategyProgressReports;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.icons.StrategyIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
-import org.miradi.utils.ObjectsActionButton;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {
@@ -28,23 +19,9 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindow.getProject(), Strategy.getObjectType(), BaseId.INVALID);
 		
-		ObjectDataInputField shortLabelField = createStringField(Strategy.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
-		ObjectDataInputField labelField = createExpandableField(Strategy.getObjectType(), Strategy.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Strategy"), new StrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-		addField(createMultilineField(Strategy.getObjectType(), Factor.TAG_TEXT));
-
-		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion()));
+		addLabel("");
+		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
 		
-		ObjectDataInputField impactField = createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());
-		ObjectDataInputField feasibilityField = createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
-		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
-
-		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
-		
-		ObjectsActionButton editProgressReportButton = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
-		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
-		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
-
 		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(mainWindow, new ORef(Strategy.getObjectType(), BaseId.INVALID));
 		addSubPanel(budgetSubPanel);
 
