@@ -43,6 +43,8 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		savePendingEdits();
+		
 		if (hierarchyToSelectedRef.length == 0)
 			setTaskId(BaseId.INVALID);
 		else
@@ -61,6 +63,14 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		restoreSplitters();
 	}
 	
+	private void savePendingEdits()
+	{
+		resourceTable.stopCellEditing();
+		workplanTable.stopCellEditing();
+		budgetTable.stopCellEditing();
+		budgetTotalsTable.stopCellEditing();
+	}
+
 	public void restoreSplitters()
 	{
 		if(areAllSplittersAtDefaultLocation())
