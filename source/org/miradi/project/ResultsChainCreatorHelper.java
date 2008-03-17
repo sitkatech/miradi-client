@@ -7,6 +7,7 @@ package org.miradi.project;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -64,6 +65,8 @@ public class ResultsChainCreatorHelper
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
+			
+			updateAllGroupBoxChildren(clonedDiagramFactors);
 
 			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
 			IdList diagramLinkList = new IdList(DiagramLink.getObjectType(), clonedDiagramLinkIds);
@@ -77,6 +80,35 @@ public class ResultsChainCreatorHelper
 			return newResultsChainRef;
 	}
 	
+	private void updateAllGroupBoxChildren(HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors) throws Exception
+	{
+		Set<DiagramFactor> keys = clonedDiagramFactors.keySet();
+		for(DiagramFactor diagramFactor : keys)
+		{
+			if (diagramFactor.isGroupBoxFactor())
+			{
+				updateGroupBoxChildren(diagramFactor, clonedDiagramFactors);
+			}
+		}
+	}
+	
+	private void updateGroupBoxChildren(DiagramFactor originalDiagramFactor, HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors) throws Exception
+	{
+		ORefList newlyClonedChildren = new ORefList();
+		DiagramFactor clonedGroupBoxDiagramFactor = clonedDiagramFactors.get(originalDiagramFactor);
+		ORefList groupBoxRefs = originalDiagramFactor.getSelfOrChildren();
+		for (int childIndex = 0; childIndex < groupBoxRefs.size(); ++childIndex)
+		{
+			ORef childRef = groupBoxRefs.get(childIndex);
+			DiagramFactor child = DiagramFactor.find(project, childRef);
+			DiagramFactor clonedDiagramFactor = clonedDiagramFactors.get(child);
+			newlyClonedChildren.add(clonedDiagramFactor.getRef());
+		}
+		
+		CommandSetObjectData setGroupBoxChildren = new CommandSetObjectData(clonedGroupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, newlyClonedChildren.toString());
+		project.executeCommand(setGroupBoxChildren);
+	}
+
 	private String getFirstStrategyShortLabel(DiagramFactor[] diagramFactors) throws Exception
 	{
 		for (int i = 0; i < diagramFactors.length; ++i)
@@ -163,6 +195,8 @@ public class ResultsChainCreatorHelper
 		
 		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
 			return diagramFactor.getWrappedORef();
+		
+		
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
 			return createNewFactorAndSetLabel(diagramFactor);
