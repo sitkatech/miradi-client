@@ -8,21 +8,16 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
 public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryCommentsPanel(Project project, Actions actions, DiagramFactor diagramFactorToEdit)
+	public FactorSummaryCommentsPanel(Project project, Actions actions, int factorType)
 	{
-		super(project, diagramFactorToEdit.getRef());
-		Factor factorToEdit = diagramFactorToEdit.getWrappedFactor();
-		setObjectRefs(new ORef[] {factorToEdit.getRef(), diagramFactorToEdit.getRef(),});
+		super(project, factorType);
 
-		addField(createMultilineField(Factor.TAG_COMMENT));		
-	
+		addField(createMultilineField(factorType, Factor.TAG_COMMENT));		
 	}
 
 	@Override
