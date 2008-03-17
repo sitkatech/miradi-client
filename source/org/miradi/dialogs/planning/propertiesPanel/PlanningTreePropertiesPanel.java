@@ -91,6 +91,11 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
+		
+		// NOTE: The following are an attempt to fix a reported problem 
+		// where the screen was not fully repainted when switching objects
+		validate();
+		repaint();
 	}
 	
 	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
