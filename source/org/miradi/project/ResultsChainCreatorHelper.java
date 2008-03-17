@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -59,8 +60,8 @@ public class ResultsChainCreatorHelper
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(newResultsChainRef);
 			
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
-			DiagramFactorId[] clonedDiagramFactorIds = extractClonedDiagramFactors(clonedDiagramFactors);
-			IdList idList = new IdList(DiagramFactor.getObjectType(), clonedDiagramFactorIds);
+			ORefList clonedDiagramFactorRefs = extractClonedDiagramFactors(clonedDiagramFactors);
+			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 
@@ -113,18 +114,17 @@ public class ResultsChainCreatorHelper
 		return EAM.text("Results Chain");
 	}
 
-	private DiagramFactorId[] extractClonedDiagramFactors(HashMap clonedDiagramFactors)
+	private ORefList extractClonedDiagramFactors(HashMap clonedDiagramFactors)
 	{
-		Vector diagramFactorIds = new Vector();
+		ORefList clonedDiagramFactorRefs = new ORefList();
 		Vector diagramFactors = new Vector(clonedDiagramFactors.values());
-		
 		for (int i = 0; i < diagramFactors.size(); i ++)
 		{
 			DiagramFactor diagramFactor = ((DiagramFactor) diagramFactors.get(i));
-			diagramFactorIds.add(diagramFactor.getDiagramFactorId());
+			clonedDiagramFactorRefs.add(diagramFactor.getRef());
 		}
 		
-		return (DiagramFactorId[]) diagramFactorIds.toArray(new DiagramFactorId[0]);
+		return clonedDiagramFactorRefs;
 	}
 
 	private HashMap cloneDiagramFactors(DiagramFactor[] diagramFactors) throws Exception
@@ -211,6 +211,9 @@ public class ResultsChainCreatorHelper
 		
 		if (factor.isTextBox())
 			return new CommandCreateObject(ObjectType.TEXT_BOX);
+		
+		if (factor.isGroupBox())
+			return new CommandCreateObject(ObjectType.GROUP_BOX);
 		
 		throw new Exception("cannot create object for type " + factor.getType());
 	}
