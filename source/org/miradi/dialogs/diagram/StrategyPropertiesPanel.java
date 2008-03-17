@@ -51,11 +51,8 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("Budget"));
 		addFieldComponent(budgetSubPanel);
 		
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
-		
+		addLabel("");
+		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
 		addField(createMultilineField(Strategy.TAG_COMMENT));
 		
 		updateFieldsFromProject();
