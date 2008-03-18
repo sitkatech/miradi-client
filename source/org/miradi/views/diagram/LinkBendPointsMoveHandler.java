@@ -16,7 +16,6 @@ import org.miradi.utils.PointList;
 
 public class LinkBendPointsMoveHandler
 {
-
 	public LinkBendPointsMoveHandler(Project projectToUse)
 	{
 		project = projectToUse;
@@ -31,13 +30,13 @@ public class LinkBendPointsMoveHandler
 		}
 	}
 	
-	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
+	private void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
 	{
 		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
 	}
 
-	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
+	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
 	{
 		DiagramLink diagramLink = linkCell.getDiagramLink();
 		PointList pointsToMove = diagramLink.getBendPoints().createClone();
