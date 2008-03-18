@@ -53,12 +53,11 @@ public class FactorMoveHandler
 					commandsToExecute.add(buildMoveCommand(factorCell));
 					commandsToExecute.addAll(buildGroupBoxRelatedMoveCommands(diagramFactorRefs, factorCell));
 				}
-
+				
 				if(factorCell.sizeHasChanged())
+				{
 					commandsToExecute.add(buildResizeCommand(factorCell));
-			
-				if(factorCell.hasMoved() || factorCell.sizeHasChanged())
-					ensureLevelSegementToFirstBendPoint(factorCell);
+				}
 			}
 
 			if(commandsToExecute.size() > 0)
@@ -68,6 +67,16 @@ public class FactorMoveHandler
 					getProject().executeCommand((Command)commandsToExecute.get(i));
 				}
 			}
+			
+			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
+			{
+				FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
+				if(factorCell.hasMoved() || factorCell.sizeHasChanged())
+				{
+					ensureLevelSegementToFirstBendPoint(factorCell);
+				}
+			}
+
 
 			//TODO remove cluster related code below
 			/*
