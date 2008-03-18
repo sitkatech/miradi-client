@@ -36,6 +36,7 @@ public class ToolBarButton extends JButton implements LocationHolder
 		setToolTipText(action.getToolTipText());
 		setName(buttonName);
 		setFocusable(false);
+		setOpaque(false);
 		if (getDisabledIcon()==null)
 			setDisabledIcon(action.getDisabledIcon());
 	}
