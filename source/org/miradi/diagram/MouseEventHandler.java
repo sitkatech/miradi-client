@@ -117,16 +117,10 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		if(dragStartedAt == null)
 			return;
 		
-		Point rawPoint = getDiagram().getUnscaledPoint(event.getPoint());
-		Point snappedDragEndedAt = getProject().getSnapped(rawPoint);
-		Point snappedDragStartAt = getProject().getSnapped(dragStartedAt);
-		int deltaX = snappedDragEndedAt.x - snappedDragStartAt.x; 
-		int deltaY = snappedDragEndedAt.y - snappedDragStartAt.y;
-
-		moveHasHappened(deltaX, deltaY);
+		moveHasHappened();
 	}
 
-	private void moveHasHappened(int deltaX, int deltaY)
+	private void moveHasHappened()
 	{
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
@@ -142,7 +136,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
-			moveLinkBendPointInGroupBoxes(deltaX, deltaY);
+			moveLinkBendPointInGroupBoxes();
 			
 			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}
@@ -173,7 +167,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
-	private void moveLinkBendPointInGroupBoxes(int deltaX, int deltaY) throws Exception
+	private void moveLinkBendPointInGroupBoxes() throws Exception
 	{
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
