@@ -6,7 +6,6 @@
 package org.miradi.views.diagram;
 
 import java.awt.Point;
-import java.awt.geom.Point2D;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.LinkCell;
@@ -14,7 +13,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
-import org.miradi.utils.Utility;
 
 public class LinkBendPointsMoveHandler
 {
@@ -33,50 +31,10 @@ public class LinkBendPointsMoveHandler
 		}
 	}
 	
-	public void moveBendPoints(LinkCell linkCell, Point2D[] bendPoints) throws Exception
-	{
-		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
-		moveBendPoints(linkCell, selectionIndexes, bendPoints);
-	}
-	
 	public void moveBendPoints(LinkCell linkCell, int deltaX, int deltaY) throws Exception
 	{
 		int[] selectionIndexes = linkCell.getBendPointSelectionHelper().getSelectedIndexes();
 		moveBendPoints(linkCell, selectionIndexes, deltaX, deltaY);
-	}
-
-	//TODO check for possible duplicate code in this class
-	private void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, Point2D[] movedBendPoints) throws Exception
-	{		
-		PointList snappedMovedBendPoints = createSnappedBendPoints(movedBendPoints);
-        PointList movedBendPointWithoutDuplicates = omitDuplicateBendPoints(snappedMovedBendPoints);
-        DiagramLink diagramLink = linkCell.getDiagramLink();
-		executeBendPointMoveCommand(diagramLink, movedBendPointWithoutDuplicates);
-	}
-
-	private PointList createSnappedBendPoints(Point2D[] movedBendPoints)
-	{
-		PointList snappedPoints = new PointList();
-		for (int i = 0; i < movedBendPoints.length; ++i)
-		{
-			Point movedPoint = Utility.convertPoint2DToPoint(movedBendPoints[i]);
-        	snappedPoints.add(project.getSnapped(movedPoint));
-		}
-		
-		return snappedPoints;
-	}
-
-	private PointList omitDuplicateBendPoints(PointList movedBendPoints)
-	{
-		PointList bendPointsWithoutDuplicates = new PointList();
-		for (int i = 0; i < movedBendPoints.size(); ++i)
-		{
-			Point movedPoint = movedBendPoints.get(i);
-			if (!bendPointsWithoutDuplicates.contains(movedPoint))
-				bendPointsWithoutDuplicates.add(movedPoint);
-		}
-		
-		return bendPointsWithoutDuplicates;
 	}
 
 	public void moveBendPoints(LinkCell linkCell, int[] selectionIndexes, int deltaX, int deltaY) throws Exception
