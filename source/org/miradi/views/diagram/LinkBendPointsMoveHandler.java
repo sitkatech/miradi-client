@@ -53,7 +53,7 @@ public class LinkBendPointsMoveHandler
 		executeBendPointMoveCommand(diagramLink, pointsToMove);
 	}
 	
-	private void executeBendPointMoveCommand(DiagramLink diagramLink, PointList pointsToMove) throws CommandFailedException
+	public void executeBendPointMoveCommand(DiagramLink diagramLink, PointList pointsToMove) throws CommandFailedException
 	{
 		CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, pointsToMove);
 		project.executeCommand(bendPointMoveCommand);

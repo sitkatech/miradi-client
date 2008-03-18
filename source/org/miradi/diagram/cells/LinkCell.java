@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Vector;
 
 import org.jgraph.graph.Edge;
@@ -311,6 +312,30 @@ public class LinkCell extends EAMGraphCell implements Edge
 		int middleY = (sourceLocation.y + firstBendPoint.y) / 2;
 		
 		return new Point(middleX, middleY);
+	}
+	
+	public PointList getJGraphCurrentBendPoints(EdgeView view)
+	{
+		List points = view.getPoints();
+		if (points.size() == 2)
+			return new PointList();
+		
+		return extractGraphBendPointsOnly(points);
+	}
+
+	private PointList extractGraphBendPointsOnly(List points)
+	{
+		final int IGNORE_IN = 1;
+		final int IGNORE_OUT = points.size() - 1;
+		PointList onlyBendPoints = new PointList();
+		for (int i = IGNORE_IN; i < IGNORE_OUT; ++i)
+		{
+			Point rawPoint = Utility.convertPoint2DToPoint((Point2D.Double)(points.get(i)));
+			Point snappedPoint = getDiagramLink().getProject().getSnapped(rawPoint);
+			onlyBendPoints.add(snappedPoint);
+		}
+		
+		return onlyBendPoints;
 	}
 	
 	private BendPointSelectionHelper bendSelectionHelper;

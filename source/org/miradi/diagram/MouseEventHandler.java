@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
@@ -25,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.project.Project;
+import org.miradi.utils.PointList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.diagram.LinkBendPointsMoveHandler;
 import org.miradi.views.diagram.NudgeDoer;
@@ -173,11 +175,21 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveLinkBendPointInGroupBoxes(int deltaX, int deltaY) throws Exception
 	{
+		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{
-			LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
-			moveHandler.moveBendPoints(linkCells[i], deltaX, deltaY);
+			EdgeView view = (EdgeView) getDiagram().getGraphLayoutCache().getMapping(linkCells[i], false);
+			if (view == null)
+			{
+				if (!linkCells[i].getDiagramLink().isCoveredByGroupBoxLink())
+					EAM.logWarning("Found Link (" + linkCells[i].getDiagramLink().getRef() + ")without a view and not covered by a group box link");
+				
+				continue;
+			}
+			
+			PointList graphCurrentBendPoints = linkCells[i].getJGraphCurrentBendPoints(view);
+			moveHandler.executeBendPointMoveCommand(linkCells[i].getDiagramLink(), graphCurrentBendPoints);
 		}
 	}
 	
