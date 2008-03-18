@@ -136,7 +136,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
 			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
-			moveLinkBendPointInGroupBoxes();
+			moveSelectedAndGroupBoxLinkCovered();
 			
 			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}
@@ -167,7 +167,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		}
 	}
 
-	private void moveLinkBendPointInGroupBoxes() throws Exception
+	private void moveSelectedAndGroupBoxLinkCovered() throws Exception
 	{
 		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
