@@ -26,6 +26,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.AttributeSet;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.JTextComponent;
@@ -90,6 +91,14 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 		super.setText(text);
 		setCaretPosition(0);
+	}
+
+	public void setTextWithoutScrollingToMakeFieldVisible(String newValue)
+	{
+		DefaultCaret caret = (DefaultCaret)getCaret();
+		caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+		setText(newValue);
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 	}
 
 	private void updateStyleSheet()

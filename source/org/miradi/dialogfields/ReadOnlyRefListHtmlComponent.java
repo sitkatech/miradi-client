@@ -44,7 +44,7 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 			
 			htmlTable += "</TABLE></HTML>";
 			MiradiHtmlViewer miradiHtmlViewer = new MiradiHtmlViewer(getMainWindow(), null);
-			miradiHtmlViewer.setText(htmlTable);
+			miradiHtmlViewer.setTextWithoutScrollingToMakeFieldVisible(htmlTable);
 			add(miradiHtmlViewer);
 		}
 		catch(Exception e)
