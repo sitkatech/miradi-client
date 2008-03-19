@@ -25,16 +25,6 @@ public class MainStatusBar extends JPanel
 		setStatus(STATUS_READY);
 	}
 	
-	public void setStatusAllLayersVisible()
-	{
-		setStatusReady();
-	}
-
-	public void setStatusHiddenLayers()
-	{
-		setStatus(STATUS_READY + EAM.text("Status|: Some Factors Hidden"));
-	}
-
 	public void setStatusError(CommandFailedException e)
 	{
 		setStatus(e.getMessage());
