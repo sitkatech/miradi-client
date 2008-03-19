@@ -511,18 +511,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateStatusBar()
 	{
-		setDiagramViewStatusBar();
-	}
-
-	private void setDiagramViewStatusBar()
-	{
-		if (!diagramView.getViewName().equals(currentView.getName()))
-			return;
-		
-		if(getProject().getLayerManager().areAllNodesVisible())
-			mainStatusBar.setStatusAllLayersVisible();
-		else
-			mainStatusBar.setStatusHiddenLayers();
+		// NOTE: We don't have a real status bar right now
 	}
 
 	public void exitNormally()
