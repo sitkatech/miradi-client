@@ -68,14 +68,7 @@ public class FactorMoveHandler
 				}
 			}
 			
-			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
-			{
-				FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
-				if(factorCell.hasMoved() || factorCell.sizeHasChanged())
-				{
-					ensureLevelSegementToFirstBendPoint(factorCell);
-				}
-			}
+			ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
 
 
 			//TODO remove cluster related code below
@@ -102,6 +95,18 @@ public class FactorMoveHandler
 			throw new CommandFailedException(e);
 		}
 
+	}
+
+	public void ensureLevelSegementToFirstBendPoint(ORefList diagramFactorRefs) throws Exception
+	{
+		for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
+		{
+			FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
+			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
+			{
+				ensureLevelSegementToFirstBendPoint(factorCell);
+			}
+		}
 	}
 
 	private void ensureLevelSegementToFirstBendPoint(FactorCell factorCell) throws Exception
