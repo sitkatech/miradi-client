@@ -201,7 +201,8 @@ public class FactorMoveHandler
 	private boolean areBothFactorsLinked(DiagramFactorId[] ids, LinkCell linkCell, FactorCell factorCell)
 	{
 		HashSet<DiagramFactorId> set = new HashSet<DiagramFactorId>(Arrays.asList(ids));
-		DiagramFactorId oppositeEndId = linkCell.getDiagramLink().getOppositeEndId(factorCell.getDiagramFactorId());
+		ORef oppositeEndRef = linkCell.getDiagramLink().getOppositeEndRef(factorCell.getDiagramFactorRef());
+		DiagramFactorId oppositeEndId = new DiagramFactorId(oppositeEndRef.getObjectId().asInt());
 		if (set.contains(oppositeEndId))
 			return true;
 		

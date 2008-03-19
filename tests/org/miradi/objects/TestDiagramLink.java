@@ -26,11 +26,6 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.PointList;
@@ -185,6 +180,17 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals(diagramLink.getToDiagramFactorRef(), diagramLink.getOppositeDiagramFactorRef(FactorLink.FROM));
 		assertEquals(diagramLink.getFromDiagramFactorRef(), diagramLink.getOppositeDiagramFactorRef(FactorLink.TO));
 		
+	}
+	
+	public void testGetOppositeEndId() throws Exception
+	{
+		DiagramLink diagramLink = DiagramLink.find(getProject(), getProject().createDiagramLink());
+		ORef fromRef = diagramLink.getFromDiagramFactorRef();
+		ORef toRef = diagramLink.getToDiagramFactorRef();
+		
+		assertEquals("wrong opposite from factor id?", toRef, diagramLink.getOppositeEndRef(fromRef));
+		assertEquals("wrong opposite to factor id?", fromRef, diagramLink.getOppositeEndRef(toRef));
+		assertEquals("wrong opposite factor id?", ORef.INVALID, diagramLink.getOppositeEndRef(new ORef(3, new BaseId(4))));
 	}
 
 	ProjectForTesting project;
