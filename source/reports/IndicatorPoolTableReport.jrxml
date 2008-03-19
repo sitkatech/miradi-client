@@ -112,7 +112,7 @@
 					<reportElement
 						x="543"
 						y="0"
-						width="290"
+						width="230"
 						height="19"
 						key="staticText-5"
 						positionType="Float"/>
@@ -175,12 +175,12 @@
 					<reportElement
 						x="543"
 						y="0"
-						width="290"
+						width="230"
 						height="19"
 						key="textField-4"
 						stretchType="RelativeToBandHeight"
 						positionType="Float"/>
-					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="Thin" leftBorderColor="#000000" leftPadding="2" rightBorder="Thin" rightBorderColor="#000000" rightPadding="2" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
+					<box topBorder="Thin" topBorderColor="#000000" topPadding="1" leftBorder="Thin" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000" bottomPadding="1"/>
 					<textElement>
 						<font/>
 					</textElement>
