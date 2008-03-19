@@ -19,7 +19,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
@@ -30,6 +29,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -61,23 +61,55 @@ public class ResultsChainCreatorHelper
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) project.findObject(newResultsChainRef);
 			
 			HashMap clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
-			ORefList clonedDiagramFactorRefs = extractClonedDiagramFactors(clonedDiagramFactors);
+			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			project.executeCommand(addFactorsToChain);
 			
 			updateAllGroupBoxChildren(clonedDiagramFactors);
-
-			DiagramFactorLinkId[] clonedDiagramLinkIds = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
-			IdList diagramLinkList = new IdList(DiagramLink.getObjectType(), clonedDiagramLinkIds);
+			
+			HashMap clonedDiagramLinks = cloneDiagramLinks(diagramLinks, clonedDiagramFactors);
+			ORefList clonedDiagramLinkRefs = extractClonedObjectRefs(clonedDiagramLinks);
+			IdList diagramLinkList = clonedDiagramLinkRefs.convertToIdList(DiagramLink.getObjectType());
 			CommandSetObjectData addLinksToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkList);
 			project.executeCommand(addLinksToChain);
+			
+			updateAllGroupBoxLinkChildren(clonedDiagramLinks);
 			
 			String label = getFirstStrategyShortLabel(diagramFactors); 
 			CommandSetObjectData setLabelCommand = new CommandSetObjectData(newResultsChainRef, DiagramObject.TAG_LABEL, label);
 			project.executeCommand(setLabelCommand);
 			
 			return newResultsChainRef;
+	}
+	
+	private void updateAllGroupBoxLinkChildren(HashMap<DiagramLink, DiagramLink> clonedDiagramLinks) throws Exception
+	{
+		Set<DiagramLink> keys = clonedDiagramLinks.keySet();
+		for(DiagramLink diagramLink : keys)
+		{
+			if (diagramLink.isGroupBoxLink())
+			{
+				updateGroupBoxLinkChildren(diagramLink, clonedDiagramLinks);
+			}
+		}
+	}
+	
+	private void updateGroupBoxLinkChildren(DiagramLink originalDiagramLink, HashMap<DiagramLink, DiagramLink> clonedDiagramLinks) throws Exception
+	{
+		ORefList newlyClonedChildren = new ORefList();
+		DiagramLink clonedGroupBoxDiagramLink = clonedDiagramLinks.get(originalDiagramLink);
+		ORefList groupBoxChildrenRefs = originalDiagramLink.getSelfOrChildren();
+		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
+		{
+			ORef childRef = groupBoxChildrenRefs.get(childIndex);
+			DiagramLink child = DiagramLink.find(project, childRef);
+			DiagramLink clonedDiagramLink = clonedDiagramLinks.get(child);
+			newlyClonedChildren.add(clonedDiagramLink.getRef());
+		}
+		
+		CommandSetObjectData setGroupBoxChildren = new CommandSetObjectData(clonedGroupBoxDiagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, newlyClonedChildren.toString());
+		project.executeCommand(setGroupBoxChildren);
 	}
 	
 	private void updateAllGroupBoxChildren(HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors) throws Exception
@@ -146,17 +178,17 @@ public class ResultsChainCreatorHelper
 		return EAM.text("Results Chain");
 	}
 
-	private ORefList extractClonedDiagramFactors(HashMap clonedDiagramFactors)
+	private ORefList extractClonedObjectRefs(HashMap clonedBaseObjects)
 	{
-		ORefList clonedDiagramFactorRefs = new ORefList();
-		Vector diagramFactors = new Vector(clonedDiagramFactors.values());
-		for (int i = 0; i < diagramFactors.size(); i ++)
+		ORefList clonedBaseObjectRefs = new ORefList();
+		Vector baseObjects = new Vector(clonedBaseObjects.values());
+		for (int i = 0; i < baseObjects.size(); i ++)
 		{
-			DiagramFactor diagramFactor = ((DiagramFactor) diagramFactors.get(i));
-			clonedDiagramFactorRefs.add(diagramFactor.getRef());
+			BaseObject baseObject = ((BaseObject) baseObjects.get(i));
+			clonedBaseObjectRefs.add(baseObject.getRef());
 		}
 		
-		return clonedDiagramFactorRefs;
+		return clonedBaseObjectRefs;
 	}
 
 	private HashMap cloneDiagramFactors(DiagramFactor[] diagramFactors) throws Exception
@@ -375,21 +407,20 @@ public class ResultsChainCreatorHelper
 		 return vector;
 	}
 	
-	private DiagramFactorLinkId[] cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
+	private HashMap cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
 	{
-		Vector createdDiagramLinkIds = new Vector();
-		
+		HashMap originalAndClonedDiagramLinks = new HashMap();
 		for (int i = 0; i < diagramLinks.length; i++)
 		{
 			DiagramLink diagramLink = diagramLinks[i];
 			if (canAddLinkToResultsChain(diagramLink))
 			{
-				DiagramFactorLinkId newlyCreatedLinkId = cloneDiagramFactorLink(diagramFactors, diagramLink);
-				createdDiagramLinkIds.add(newlyCreatedLinkId);
+				DiagramLink clonedDiagramLink  = cloneDiagramFactorLink(diagramFactors, diagramLink);
+				originalAndClonedDiagramLinks.put(diagramLink, clonedDiagramLink);
 			}
 		}
 		
-		return (DiagramFactorLinkId[]) createdDiagramLinkIds.toArray(new DiagramFactorLinkId[0]);
+		return originalAndClonedDiagramLinks;
 	}
 	
 	private boolean canAddTypeToResultsChain(DiagramFactor diagramFactor)
@@ -409,6 +440,9 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
 			return true;
 		
+		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
+			return true;
+		
 		return false;
 	}
 	
@@ -420,7 +454,7 @@ public class ResultsChainCreatorHelper
 		return (canAddTypeToResultsChain(fromDiagramFactor) && canAddTypeToResultsChain(toDiagramFactor));
 	}
 
-	private DiagramFactorLinkId cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws Exception
+	private DiagramLink cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws Exception
 	{
 		DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
@@ -434,13 +468,12 @@ public class ResultsChainCreatorHelper
 		CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
 		project.executeCommand(createDiagramLink);
 
-		DiagramFactorLinkId newlyCreatedLinkId = (DiagramFactorLinkId) createDiagramLink.getCreatedId();
-		DiagramLink newlyCreated = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, newlyCreatedLinkId));
+		DiagramLink newlyCreated = (DiagramLink) project.findObject(createDiagramLink.getObjectRef());
 		PointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramLink.TAG_BEND_POINTS, bendPoints);
 		project.executeCommand(setBendPoints);
 
-		return newlyCreatedLinkId;
+		return newlyCreated;
 	}
 	
 	
