@@ -68,9 +68,6 @@ public class FactorMoveHandler
 				}
 			}
 			
-			ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
-
-
 			//TODO remove cluster related code below
 			/*
 			 * NOTE: The following chunk of code works around a weird bug deep in jgraph
@@ -97,11 +94,11 @@ public class FactorMoveHandler
 
 	}
 
-	public void ensureLevelSegementToFirstBendPoint(ORefList diagramFactorRefs) throws Exception
+	public void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] ids) throws Exception
 	{
-		for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
+		for(int i = 0 ; i < ids.length; ++i)
 		{
-			FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
+			FactorCell factorCell = model.getFactorCellById(ids[i]);
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
 				ensureLevelSegementToFirstBendPoint(factorCell);

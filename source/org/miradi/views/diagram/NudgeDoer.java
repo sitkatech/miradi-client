@@ -120,6 +120,7 @@ public class NudgeDoer extends LocationDoer
 			moveBendPoints(allLinkCells.toArray(new LinkCell[0]), deltaY, deltaX);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(ids);
+			factorMoveHandler.ensureLevelSegementToFirstBendPoint(ids);
 		}
 		catch (Exception e)
 		{
