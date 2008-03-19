@@ -22,6 +22,6 @@ public class ActionZoomOut extends ViewAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Decrease magnification");
+		return EAM.text("TT|Zoom Out");
 	}
 }

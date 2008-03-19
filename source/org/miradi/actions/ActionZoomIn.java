@@ -22,6 +22,6 @@ public class ActionZoomIn extends ViewAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Increase magnification");
+		return EAM.text("TT|Zoom In");
 	}
 }
