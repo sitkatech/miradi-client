@@ -276,20 +276,6 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StrategicPlanReport.jasper")]]></subreportExpression>
 				</subreport>
-				<staticText>
-					<reportElement
-						x="1"
-						y="252"
-						width="252"
-						height="23"
-						key="staticText-3"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
-					</textElement>
-				<text><![CDATA[2.	Action and Monitoring Plans ]]></text>
-				</staticText>
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="1"
