@@ -11,11 +11,16 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
@@ -119,7 +124,37 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			if(isDetailsColumn(column))
 				return Task.TAG_DETAILS;
 		}
-		
+
+		if(Target.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Target.TAG_TEXT;
+		}
+
+		if(Cause.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Cause.TAG_TEXT;
+		}
+
+		if(ThreatReductionResult.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ThreatReductionResult.TAG_TEXT;
+		}
+
+		if(ResultsChainDiagram.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ResultsChainDiagram.TAG_DETAIL;
+		}
+
+		if(ConceptualModelDiagram.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ConceptualModelDiagram.TAG_DETAIL;
+		}
+				
 		return getColumnTag(column);
 	}
 
