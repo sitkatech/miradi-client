@@ -97,17 +97,18 @@ public class FactorMoveHandler
 
 	public void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] idsBeingMoved) throws Exception
 	{
+		HashSet<DiagramFactorId> idsBeingMovedAsSet = new HashSet<DiagramFactorId>(Arrays.asList(idsBeingMoved));
 		for(int i = 0 ; i < idsBeingMoved.length; ++i)
 		{
 			FactorCell factorCell = model.getFactorCellById(idsBeingMoved[i]);
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
-				ensureLevelSegementToFirstBendPoint(idsBeingMoved, factorCell);
+				ensureLevelSegementToFirstBendPoint(idsBeingMovedAsSet, factorCell);
 			}
 		}
 	}
 
-	private void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] idsBeingMoved, FactorCell factorCell) throws Exception
+	private void ensureLevelSegementToFirstBendPoint(HashSet<DiagramFactorId> idsBeingMovedAsSet, FactorCell factorCell) throws Exception
 	{
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
@@ -116,7 +117,7 @@ public class FactorMoveHandler
 			if (bendPoints.size() < 1)
 				continue;
 			
-			if (areBothFactorsLinked(idsBeingMoved, linkCell, factorCell))
+			if (areBothFactorsLinked(idsBeingMovedAsSet, linkCell, factorCell))
 				continue;
 			
 			if (wasHorizontal(factorCell, linkCell, bendPoints) && wasVertical(factorCell, linkCell, bendPoints))
@@ -198,12 +199,11 @@ public class FactorMoveHandler
 		return bendPointToTranslate;
 	}
 	
-	private boolean areBothFactorsLinked(DiagramFactorId[] idsBeingMoved, LinkCell linkCell, FactorCell factorCell)
+	private boolean areBothFactorsLinked(HashSet<DiagramFactorId> idsBeingMovedAsSet, LinkCell linkCell, FactorCell factorCell)
 	{
-		HashSet<DiagramFactorId> set = new HashSet<DiagramFactorId>(Arrays.asList(idsBeingMoved));
 		ORef oppositeEndRef = linkCell.getDiagramLink().getOppositeEndRef(factorCell.getDiagramFactorRef());
 		DiagramFactorId oppositeEndId = new DiagramFactorId(oppositeEndRef.getObjectId().asInt());
-		if (set.contains(oppositeEndId))
+		if (idsBeingMovedAsSet.contains(oppositeEndId))
 			return true;
 		
 		return false;
