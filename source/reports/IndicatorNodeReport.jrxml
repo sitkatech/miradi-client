@@ -90,7 +90,7 @@
 					<reportElement
 						x="0"
 						y="20"
-						width="842"
+						width="805"
 						height="20"
 						key="subreport-1"
 						stretchType="RelativeToTallestObject"
@@ -231,7 +231,7 @@
 					<reportElement
 						x="755"
 						y="0"
-						width="60"
+						width="50"
 						height="20"
 						key="textField-10"
 						positionType="Float"/>
@@ -357,7 +357,7 @@
 					<reportElement
 						x="755"
 						y="40"
-						width="60"
+						width="50"
 						height="20"
 						key="textField-19"
 						positionType="Float"/>
