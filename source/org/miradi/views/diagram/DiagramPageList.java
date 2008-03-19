@@ -150,12 +150,12 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		private void setCurrentDiagram() throws Exception
 		{
 			Vector commandsToExecute = new Vector();
-			commandsToExecute.addAll(ensureDefaultMode());
 			commandsToExecute.addAll(buildCommandsToSetCurrentDiagramObjectRef(getSelectedRef()));
 			
 			if (commandsToExecute.size() == 0)
 				return;
 			
+			commandsToExecute.addAll(ensureDefaultMode());
 			project.executeCommandsAsTransaction((Command[]) commandsToExecute.toArray(new Command[0]));		
 		}
 
