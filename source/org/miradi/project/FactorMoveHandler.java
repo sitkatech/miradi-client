@@ -6,6 +6,7 @@
 package org.miradi.project;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -99,23 +100,23 @@ public class FactorMoveHandler
 		for(int i = 0 ; i < ids.length; ++i)
 		{
 			FactorCell factorCell = model.getFactorCellById(ids[i]);
-			if (areBothFactorsLinked(ids, factorCell))
-				continue;
-
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
-				ensureLevelSegementToFirstBendPoint(factorCell);
+				ensureLevelSegementToFirstBendPoint(ids, factorCell);
 			}
 		}
 	}
 
-	private void ensureLevelSegementToFirstBendPoint(FactorCell factorCell) throws Exception
+	private void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] ids, FactorCell factorCell) throws Exception
 	{
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
 		{
 			PointList bendPoints = new PointList(linkCell.getDiagramLink().getBendPoints());
 			if (bendPoints.size() < 1)
+				continue;
+			
+			if (areBothFactorsLinked(ids, linkCell, factorCell))
 				continue;
 			
 			if (wasHorizontal(factorCell, linkCell, bendPoints) && wasVertical(factorCell, linkCell, bendPoints))
@@ -197,19 +198,16 @@ public class FactorMoveHandler
 		return bendPointToTranslate;
 	}
 	
-	private boolean areBothFactorsLinked(DiagramFactorId[] ids, FactorCell factorCell) throws Exception
+	private boolean areBothFactorsLinked(DiagramFactorId[] ids, LinkCell linkCell, FactorCell factorCell)
 	{
-		for(int i = 0 ; i < ids.length; ++i)
-		{
-			if (model.areLinked(ids[i], factorCell.getDiagramFactorId()))
-			{
-				return true;
-			}
-		}
+		HashSet<DiagramFactorId> set = new HashSet<DiagramFactorId>(Arrays.asList(ids));
+		DiagramFactorId oppositeEndId = linkCell.getDiagramLink().getOppositeEndId(factorCell.getDiagramFactorId());
+		if (set.contains(oppositeEndId))
+			return true;
 		
 		return false;
 	}
-	
+
 	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
