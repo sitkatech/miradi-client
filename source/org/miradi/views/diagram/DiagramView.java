@@ -806,6 +806,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
 	{
+		String fieldTag = cmd.getFieldTag();
 		try
 		{
 			ViewData ourViewData = getViewData();
@@ -813,10 +814,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 				return;
 			if(cmd.getObjectId() != ourViewData.getId())
 				return;
-			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_MODE))
-				return;
-			
-			setMode(newMode);
+			boolean modeChange = fieldTag.equals(ViewData.TAG_CURRENT_MODE);
+			boolean cmChange = fieldTag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+			boolean rcChange = fieldTag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
+			if(modeChange || cmChange || rcChange)
+			{
+				setMode(newMode);
+			}
 		}
 		catch (Exception e)
 		{
