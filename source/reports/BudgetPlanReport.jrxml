@@ -59,81 +59,19 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="34"
-						y="20"
-						width="429"
-						height="68"
-						key="staticText-2"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<text><![CDATA[Outputs for this step include:
-•	Project budget.
-•	Potential funding sources identified.
-
-The basic budget for our project is shown in the summary work plan in the previous section.
-
-
-]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
 						x="13"
-						y="93"
+						y="20"
 						width="510"
-						height="20"
+						height="50"
 						key="staticText-3"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<text><![CDATA[The following table shows a budget for this project organized by accounting codes.]]></text>
+				<text><![CDATA[Miradi 2.0 currently does not support generation of a budget report. This feature will be added in the near future. For now, you can use the File/Export/Tab Delimited Data command to export summary budget data.
+]]></text>
 				</staticText>
-				<staticText>
-					<reportElement
-						x="13"
-						y="144"
-						width="510"
-						height="20"
-						key="staticText-8"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
-					</textElement>
-				<text><![CDATA[The following table shows a budget for this project organized by funding source.]]></text>
-				</staticText>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="13"
-						y="113"
-						width="510"
-						height="17"
-						key="subreport-4"
-						positionType="Float"/>
-					<subreportParameter  name="DATA_DIRECTORY">
-						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/SummaryOfBudgetByAccountingCodeReport.jasper")]]></subreportExpression>
-				</subreport>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="13"
-						y="164"
-						width="510"
-						height="17"
-						key="subreport-5"
-						positionType="Float"/>
-					<subreportParameter  name="DATA_DIRECTORY">
-						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/SummaryOfBudgetByFundingSourceReport.jasper")]]></subreportExpression>
-				</subreport>
 			</band>
 		</detail>
 		<columnFooter>
