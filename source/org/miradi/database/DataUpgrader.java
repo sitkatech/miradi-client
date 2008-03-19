@@ -1078,7 +1078,7 @@ public class DataUpgrader extends FileBasedProjectServer
 
 		File manifest13File = new File(objects13Dir, "manifest");
 		if (! manifest13File.exists())
-			throw new RuntimeException("manifest for objects-13 directory does not exist " + manifest13File.getAbsolutePath());
+			return;
 		
 		File objects19Dir = new File(jsonDir, "objects-19");
 		if (! objects19Dir.exists())
