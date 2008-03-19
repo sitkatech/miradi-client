@@ -95,19 +95,19 @@ public class FactorMoveHandler
 
 	}
 
-	public void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] ids) throws Exception
+	public void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] idsBeingMoved) throws Exception
 	{
-		for(int i = 0 ; i < ids.length; ++i)
+		for(int i = 0 ; i < idsBeingMoved.length; ++i)
 		{
-			FactorCell factorCell = model.getFactorCellById(ids[i]);
+			FactorCell factorCell = model.getFactorCellById(idsBeingMoved[i]);
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
-				ensureLevelSegementToFirstBendPoint(ids, factorCell);
+				ensureLevelSegementToFirstBendPoint(idsBeingMoved, factorCell);
 			}
 		}
 	}
 
-	private void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] ids, FactorCell factorCell) throws Exception
+	private void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] idsBeingMoved, FactorCell factorCell) throws Exception
 	{
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
@@ -116,7 +116,7 @@ public class FactorMoveHandler
 			if (bendPoints.size() < 1)
 				continue;
 			
-			if (areBothFactorsLinked(ids, linkCell, factorCell))
+			if (areBothFactorsLinked(idsBeingMoved, linkCell, factorCell))
 				continue;
 			
 			if (wasHorizontal(factorCell, linkCell, bendPoints) && wasVertical(factorCell, linkCell, bendPoints))
@@ -198,9 +198,9 @@ public class FactorMoveHandler
 		return bendPointToTranslate;
 	}
 	
-	private boolean areBothFactorsLinked(DiagramFactorId[] ids, LinkCell linkCell, FactorCell factorCell)
+	private boolean areBothFactorsLinked(DiagramFactorId[] idsBeingMoved, LinkCell linkCell, FactorCell factorCell)
 	{
-		HashSet<DiagramFactorId> set = new HashSet<DiagramFactorId>(Arrays.asList(ids));
+		HashSet<DiagramFactorId> set = new HashSet<DiagramFactorId>(Arrays.asList(idsBeingMoved));
 		ORef oppositeEndRef = linkCell.getDiagramLink().getOppositeEndRef(factorCell.getDiagramFactorRef());
 		DiagramFactorId oppositeEndId = new DiagramFactorId(oppositeEndRef.getObjectId().asInt());
 		if (set.contains(oppositeEndId))
