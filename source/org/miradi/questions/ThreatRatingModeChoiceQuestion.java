@@ -5,7 +5,7 @@
 */ 
 package org.miradi.questions;
 
-import org.miradi.icons.KeyEcologicalAttributeIcon;
+import org.miradi.icons.StressIcon;
 import org.miradi.utils.MiradiResourceImageIcon;
 
 public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
@@ -19,7 +19,7 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Simple Threat Rating Mode", new MiradiResourceImageIcon("icons/showRatings.png")),
-				new ChoiceItem(STRESS_BASED_CODE, "Stress Based Threat Rating Mode", new KeyEcologicalAttributeIcon()),
+				new ChoiceItem(STRESS_BASED_CODE, "Stress Based Threat Rating Mode", new StressIcon()),
 		};
 	}
 	
