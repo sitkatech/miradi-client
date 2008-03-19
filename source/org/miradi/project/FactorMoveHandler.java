@@ -99,6 +99,9 @@ public class FactorMoveHandler
 		for(int i = 0 ; i < ids.length; ++i)
 		{
 			FactorCell factorCell = model.getFactorCellById(ids[i]);
+			if (areBothFactorsLinked(ids, factorCell))
+				continue;
+
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
 				ensureLevelSegementToFirstBendPoint(factorCell);
@@ -192,6 +195,19 @@ public class FactorMoveHandler
 			bendPointToTranslate = bendPoints.get(0);
 
 		return bendPointToTranslate;
+	}
+	
+	private boolean areBothFactorsLinked(DiagramFactorId[] ids, FactorCell factorCell) throws Exception
+	{
+		for(int i = 0 ; i < ids.length; ++i)
+		{
+			if (model.areLinked(ids[i], factorCell.getDiagramFactorId()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	private Vector<Command> buildGroupBoxRelatedMoveCommands(ORefList diagramFactorRefs, FactorCell factorCell)
