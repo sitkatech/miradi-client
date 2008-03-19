@@ -22,6 +22,6 @@ public class ActionZoomToFit extends ViewAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Zoom in/out to fit everything on page");
+		return EAM.text("TT|Zoom To Fit");
 	}
 }
