@@ -97,7 +97,7 @@ public class PlanningTreeXmlExporter
 				
 				out.write("<" + getElementName(column) + ">");
 				String padding = pad(multiTableExporter.getDepth(row), column);
-				String safeValue = getSafeValue(multiTableExporter, row, column);
+				String safeValue = getSafeValue(multiTableExporter, row, column, objectTypeName);
 				out.write(padding + safeValue);
 				out.writeln("</" + getElementName(column) + ">");
 			}
@@ -121,13 +121,26 @@ public class PlanningTreeXmlExporter
 		return multiTableExporter.getHeaderFor(column).replaceAll(" ", "");
 	}
 	
-	private String getSafeValue(ExportableTableInterface table, int row, int column)
+	private String getSafeValue(ExportableTableInterface table, int row, int column, String objectTypeName)
 	{
 		Object value = table.getValueAt(row, column);
 		if (value == null)
 			return "";
 		
+		value = appendObjectTypeName(column, objectTypeName, value);
+		
 		return XmlUtilities.getXmlEncoded(value.toString());
+	}
+
+	private Object appendObjectTypeName(int column, String objectTypeName, Object value)
+	{
+		final int ITEM_COLUMN_INDEX = 0;
+		if (column == ITEM_COLUMN_INDEX && value.toString().length() > 0)
+		{
+			value = objectTypeName + ": " + value;
+		}
+			
+		return value;
 	}
 	
 	private boolean isTreeColumn(int column)
