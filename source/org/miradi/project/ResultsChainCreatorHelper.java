@@ -209,14 +209,14 @@ public class ResultsChainCreatorHelper
 	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(DiagramFactor groupBox) throws Exception
 	{
 		HashMap originalAndClonedDiagramFactors = new HashMap();
-		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(groupBox));
-		
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
 			DiagramFactor child = DiagramFactor.find(project, childrenRefs.get(childIndex));
 			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(child));
 		}
+		
+		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(groupBox));
 		
 		return originalAndClonedDiagramFactors;
 	}
