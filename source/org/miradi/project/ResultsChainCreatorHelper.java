@@ -197,20 +197,46 @@ public class ResultsChainCreatorHelper
 		for (int i  = 0; i < diagramFactors.length; i++)
 		{
 			DiagramFactor diagramFactorToBeCloned = diagramFactors[i];
-			ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
-			
-			CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
-			CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
-			project.executeCommand(createDiagramFactor);
-			
-			DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-			Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
-			project.executeCommandsWithoutTransaction(commandsToClone);
-			
-			DiagramFactor clonedDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
-			originalAndClonedDiagramFactors.put(diagramFactorToBeCloned, clonedDiagramFactor);
+			if (diagramFactorToBeCloned.isGroupBoxFactor())
+				originalAndClonedDiagramFactors.putAll(cloneGroupBoxDiagramFactor(diagramFactorToBeCloned));
+			else
+				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactorToBeCloned));
 		}
-		 
+		
+		return originalAndClonedDiagramFactors;
+	}
+
+	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(DiagramFactor groupBox) throws Exception
+	{
+		HashMap originalAndClonedDiagramFactors = new HashMap();
+		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(groupBox));
+		
+		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
+		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
+		{
+			DiagramFactor child = DiagramFactor.find(project, childrenRefs.get(childIndex));
+			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(child));
+		}
+		
+		return originalAndClonedDiagramFactors;
+	}
+
+	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactor(DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
+	{
+		HashMap originalAndClonedDiagramFactors = new HashMap(); 
+		ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
+		
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		project.executeCommand(createDiagramFactor);
+		
+		DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
+		Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
+		project.executeCommandsWithoutTransaction(commandsToClone);
+		
+		DiagramFactor clonedDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
+		originalAndClonedDiagramFactors.put(diagramFactorToBeCloned, clonedDiagramFactor);
+		
 		return originalAndClonedDiagramFactors;
 	}
 	
