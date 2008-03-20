@@ -5,7 +5,6 @@
 */ 
 package org.miradi.questions;
 
-import java.awt.Color;
 
 
 public class PriorityRatingQuestion extends StaticChoiceQuestion
@@ -18,11 +17,11 @@ public class PriorityRatingQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getPriorityChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Low", COLOR_GREAT),
-			new ChoiceItem("2", "Medium", COLOR_OK),
-			new ChoiceItem("3", "High", COLOR_CAUTION),
-			new ChoiceItem("4", "Very High", COLOR_ALERT),
+			new ChoiceItem("", "Not Specified"),
+			new ChoiceItem("1", "Low"),
+			new ChoiceItem("2", "Medium"),
+			new ChoiceItem("3", "High"),
+			new ChoiceItem("4", "Very High"),
 		};
 	}
 }
