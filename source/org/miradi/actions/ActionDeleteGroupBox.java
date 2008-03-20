@@ -18,7 +18,7 @@ public class ActionDeleteGroupBox extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delet Group Box(s)");
+		return EAM.text("Action|Delete Group Box(s)");
 	}
 
 	public String getToolTipText()
