@@ -44,13 +44,13 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 			for (int i = 0; i < refList.size(); ++i)
 			{
 				BaseObject object = getProject().findObject(refList.get(i));
-				if (object != null)
+				if (object == null)
 				{
-					htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
+					EAM.logError("Ignored a missing object while in ReadOnlyRefListHtmlComponent.setText(). Ref = " + refList.get(i));
 				}
 				else
 				{
-					EAM.logError("Ignored a missing object while in ReadOnlyRefListHtmlComponent.setText(). Ref = " + refList.get(i));
+					htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
 				}
 			}		
 			
