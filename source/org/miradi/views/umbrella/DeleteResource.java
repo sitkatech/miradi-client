@@ -15,9 +15,10 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
@@ -35,7 +36,6 @@ public class DeleteResource extends ObjectsDoer
 			return;
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
-		BaseId idToRemove = resource.getId();
 		Vector dialogText = new Vector();
 		ORefList allThatUseThisResource = resource.findObjectsThatReferToUs();
 
@@ -54,11 +54,9 @@ public class DeleteResource extends ObjectsDoer
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				project.executeCommandsWithoutTransaction(getClearAssignmentResourcesCommands(allThatUseThisResource));
-				int type = resource.getType();
-				BaseId id = idToRemove;
+				project.executeCommandsWithoutTransaction(getClearAssignmentResourcesCommands(allThatUseThisResource, resource.getRef()));
 				project.executeCommandsWithoutTransaction(resource.createCommandsToClear());
-				project.executeCommand(new CommandDeleteObject(type, id));
+				project.executeCommand(new CommandDeleteObject(resource.getRef()));
 			}
 			finally
 			{
@@ -76,18 +74,34 @@ public class DeleteResource extends ObjectsDoer
 		}
 	}
 
-	private Command[] getClearAssignmentResourcesCommands(ORefList allThatUseThisResource) throws CommandFailedException
+	private Command[] getClearAssignmentResourcesCommands(ORefList allThatUseThisResource, ORef resourceRef) throws Exception
 	{
-		Command[] commands = new Command[allThatUseThisResource.size()];
-		//TODO: is this assumtion correct, that all resource references are from Assignment objects
-		for (int i = 0; i < allThatUseThisResource.size(); i++)
+		Vector<Command> commands = new Vector<Command>();
+		for (int i = 0; i < allThatUseThisResource.size(); ++i)
 		{
-			Assignment assignment = (Assignment) getProject().getObjectManager().findObject(allThatUseThisResource.get(i));
-			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignment.getId(), Assignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString());
-			commands[i] = command;
+			ORef referrerRef = allThatUseThisResource.get(i);
+			commands.addAll(removeFromAssignment(referrerRef));
+			commands.addAll(removeAsWhoOverride(resourceRef, referrerRef));
 		}
+		
+		return commands.toArray(new Command[0]);
+	}
+
+	private Vector<Command> removeAsWhoOverride(ORef resourceRef, ORef referrerRef) throws Exception
+	{
+		Vector<Command> commands = new Vector<Command>();
+		BaseObject foundObject = getProject().findObject(referrerRef);
+		commands.add(CommandSetObjectData.createRemoveORefCommand(foundObject, BaseObject.TAG_WHO_OVERRIDE_REFS, resourceRef));
 		
 		return commands;
 	}
 
+	private Vector<Command> removeFromAssignment(ORef ref)
+	{
+		Vector<Command> commands = new Vector<Command>();
+		if (Assignment.is(ref))
+			commands.add(new CommandSetObjectData(ref, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString()));
+		
+		return commands;
+	}
 }
