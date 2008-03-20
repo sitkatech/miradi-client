@@ -28,8 +28,14 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
 
+	public String getText()
+	{
+		return currentValue;
+	}
+	
 	public void setText(String newValue)
 	{
+		currentValue = newValue;
 		removeAll();
 		try
 		{
@@ -68,4 +74,5 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 	}
 	
 	private MainWindow mainWindow;
+	private String currentValue;
 }

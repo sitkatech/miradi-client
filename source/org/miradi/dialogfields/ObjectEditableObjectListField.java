@@ -51,7 +51,7 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		return "";
+		return readonlyHtmlComponent.getText();
 	}
 
 	@Override
