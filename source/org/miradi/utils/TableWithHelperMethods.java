@@ -84,7 +84,7 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 			JTableHeader header = table.getTableHeader();
 			renderer = header.getDefaultRenderer();
 		}
-		Component c = renderer.getTableCellRendererComponent(table, value, true, true, -1, modelColumn);
+		Component c = renderer.getTableCellRendererComponent(table, value, true, true, -1, tableColumn);
 		int width = c.getPreferredSize().width;
 		return width;
 	}
