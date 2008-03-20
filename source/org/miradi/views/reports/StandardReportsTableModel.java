@@ -19,19 +19,14 @@ public class StandardReportsTableModel extends ReportSelectionTableModel
 	{
 		return new Report[] {
 				new Report("Full Project Report", "/reports/FullProjectReport.jasper"),
-				new Report(" Project Summary Report", "/reports/ProjectSummary.jasper"),
-				new Report(" Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
-				new Report(" Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
-				new Report(" Threat Rating Report", "/reports/ThreatRatingTableReport.jasper"),
-				new Report(" Target Viability Report", "/reports/TargetViabilityTreeTable.jasper"),
-				new Report(" Strategic Plan Report", "/reports/StrategicPlanReport.jasper"),
-				new Report(" Monitoring Plan Report", "/reports/MonitoringPlanReport.jasper"),
-				new Report(" Work Plan Report", "/reports/WorkPlanReport.jasper"),
-				new Report("  TNC Summary Report", "/reports/TncSummaryReport.jasper"),
-				new Report("  WWF Summary Report", "/reports/WwfSummaryReport.jasper"),
-				new Report("  WCS Summary Report", "/reports/WcsSummaryReport.jasper"),
-				new Report("  RARE Summary Report", "/reports/RareSummaryReport.jasper"),
-				new Report("  FOS Summary Report", "/reports/FosSummaryReport.jasper"),
+				new Report("  Project Summary Report", "/reports/ProjectSummary.jasper"),
+				new Report("  Conceptual Model Report", "/reports/AllConceptualModelsReport.jasper"),
+				new Report("  Results Chains Report", "/reports/AllResultsChainsReport.jasper"),
+				new Report("  Threat Rating Report", "/reports/ThreatRatingTableReport.jasper"),
+				new Report("  Target Viability Report", "/reports/TargetViabilityTreeTable.jasper"),
+				new Report("  Strategic Plan Report", "/reports/StrategicPlanReport.jasper"),
+				new Report("  Monitoring Plan Report", "/reports/MonitoringPlanReport.jasper"),
+				new Report("  Work Plan Report", "/reports/WorkPlanReport.jasper"),
 		};
 	}
 	
