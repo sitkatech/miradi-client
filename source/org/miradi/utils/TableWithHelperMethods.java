@@ -60,12 +60,13 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		return getColumnHeaderWidth(this, column);
 	}
 
-	public static int getColumnHeaderWidth(JTable table, int column) 
+	public static int getColumnHeaderWidth(JTable table, int tableColumn) 
 	{
-		TableColumn columnToAdjust = table.getColumnModel().getColumn(column);
+		int modelColumn = table.convertColumnIndexToModel(tableColumn);
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(modelColumn);
 		String padding = "    ";
 		String value = (String)columnToAdjust.getHeaderValue() + padding;
-		return getRenderedWidth(table, column, value);
+		return getRenderedWidth(table, modelColumn, value);
 	}
 	
 	public int getRenderedWidth(int column, String value) 
@@ -73,23 +74,26 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		return getRenderedWidth(this, column, value);
 	}
 	
-	public static int getRenderedWidth(JTable table, int column, String value)
+	public static int getRenderedWidth(JTable table, int tableColumn, String value)
 	{
-		TableColumn columnToAdjust = table.getColumnModel().getColumn(column);
+		int modelColumn = table.convertColumnIndexToModel(tableColumn);
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(modelColumn);
 		TableCellRenderer renderer = columnToAdjust.getHeaderRenderer();
 		if(renderer == null)
 		{
 			JTableHeader header = table.getTableHeader();
 			renderer = header.getDefaultRenderer();
 		}
-		Component c = renderer.getTableCellRendererComponent(table, value, true, true, -1, column);
+		Component c = renderer.getTableCellRendererComponent(table, value, true, true, -1, modelColumn);
 		int width = c.getPreferredSize().width;
 		return width;
 	}
 	
-	public void setColumnWidth(int column, int width) 
+	public void setColumnWidth(int tableColumn, int width) 
 	{
-		TableColumn columnToAdjust = getColumnModel().getColumn(column);
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		TableColumn columnToAdjust = getColumnModel().getColumn(modelColumn);
+		
 		columnToAdjust.setPreferredWidth(width);
 		columnToAdjust.setWidth(width);
 	}
