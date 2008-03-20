@@ -75,13 +75,13 @@ public class TestProjectRepairer extends TestCaseWithProject
 		CommandSetObjectData appendTask = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_TASK_IDS, nonExistantId);
 		getProject().executeCommand(appendTask);
 		assertEquals("task not appended?", 1, indicator.getMethodRefs().size());		
-		assertEquals("Didn't detect non-existant method?", 1, repairer.findAllCorruptedObjects().size());
+		assertEquals("Didn't detect non-existant method?", 1, repairer.findAllMissingObjects().size());
 		
 		ORef taskRef = getProject().createObject(Task.getObjectType());
 		Task task = (Task) getProject().findObject(taskRef);
 		CommandSetObjectData appendSubTask = CommandSetObjectData.createAppendIdCommand(task, Task.TAG_SUBTASK_IDS, nonExistantId);
 		getProject().executeCommand(appendSubTask);
 		assertEquals("subtask not appended?", 1, task.getSubtaskCount());
-		assertEquals("Didn't detect second instance?", 2, repairer.findAllCorruptedObjects().size());
+		assertEquals("Didn't detect second instance?", 2, repairer.findAllMissingObjects().size());
 	}
 }
