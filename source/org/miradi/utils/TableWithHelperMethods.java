@@ -66,7 +66,7 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		TableColumn columnToAdjust = table.getColumnModel().getColumn(modelColumn);
 		String padding = "    ";
 		String value = (String)columnToAdjust.getHeaderValue() + padding;
-		return getRenderedWidth(table, modelColumn, value);
+		return getRenderedWidth(table, tableColumn, value);
 	}
 	
 	public int getRenderedWidth(int column, String value) 
