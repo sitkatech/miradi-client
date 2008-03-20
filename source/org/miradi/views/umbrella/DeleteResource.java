@@ -54,7 +54,7 @@ public class DeleteResource extends ObjectsDoer
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				project.executeCommandsWithoutTransaction(getClearAssignmentResourcesCommands(allThatUseThisResource, resource.getRef()));
+				project.executeCommandsWithoutTransaction(createCommandsToRemoveFromReferrers(allThatUseThisResource, resource.getRef()));
 				project.executeCommandsWithoutTransaction(resource.createCommandsToClear());
 				project.executeCommand(new CommandDeleteObject(resource.getRef()));
 			}
@@ -74,7 +74,7 @@ public class DeleteResource extends ObjectsDoer
 		}
 	}
 
-	private Command[] getClearAssignmentResourcesCommands(ORefList allThatUseThisResource, ORef resourceRef) throws Exception
+	private Command[] createCommandsToRemoveFromReferrers(ORefList allThatUseThisResource, ORef resourceRef) throws Exception
 	{
 		Vector<Command> commands = new Vector<Command>();
 		for (int i = 0; i < allThatUseThisResource.size(); ++i)
