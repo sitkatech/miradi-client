@@ -28,18 +28,19 @@ public class ColumnWidthSaver extends MouseAdapter
 	{
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{	
-			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			TableColumn column = table.getColumnModel().getColumn(modelColumn);
-			column.setWidth(getColumnWidth(modelColumn));
-			column.setPreferredWidth(getColumnWidth(modelColumn));
+			TableColumn column = table.getColumnModel().getColumn(tableColumn);
+			int width = getColumnWidth(tableColumn);
+			column.setWidth(width);
+			column.setPreferredWidth(width);
 		}
 	}
 	
-	protected int getColumnWidth(int modelColumn)
+	protected int getColumnWidth(int tableColumn)
 	{
+		int modelColumn = table.convertColumnIndexToModel(tableColumn);
 		String columnTag = tagProvider.getColumnTag(modelColumn);
 		int columnWidth = EAM.getMainWindow().getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
-		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, modelColumn);
+		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, tableColumn);
 		if (columnWidth > 0)
 			return columnWidth;
 		
@@ -74,7 +75,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			TableColumn column = table.getColumnModel().getColumn(modelColumn);
+			TableColumn column = table.getColumnModel().getColumn(tableColumn);
 			EAM.getMainWindow().getAppPreferences().setTaggedInt(getColumnWidthKey(modelColumn), column.getWidth());
 		}
 	}
