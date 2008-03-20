@@ -50,34 +50,32 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		return new Dimension(preferredWidth, preferredHeight);
 	}
 	
-	public void setColumnWidthToHeaderWidth(int column)
+	public void setColumnWidthToHeaderWidth(int tableColumn)
 	{
-		setColumnWidth(column, getColumnHeaderWidth(this, column));
+		setColumnWidth(tableColumn, getColumnHeaderWidth(this, tableColumn));
 	}
 	
-	public int getColumnHeaderWidth(int column) 
+	public int getColumnHeaderWidth(int tableColumn) 
 	{
-		return getColumnHeaderWidth(this, column);
+		return getColumnHeaderWidth(this, tableColumn);
 	}
 
 	public static int getColumnHeaderWidth(JTable table, int tableColumn) 
 	{
-		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		TableColumn columnToAdjust = table.getColumnModel().getColumn(modelColumn);
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(tableColumn);
 		String padding = "    ";
 		String value = (String)columnToAdjust.getHeaderValue() + padding;
 		return getRenderedWidth(table, tableColumn, value);
 	}
 	
-	public int getRenderedWidth(int column, String value) 
+	public int getRenderedWidth(int tableColumn, String value) 
 	{
-		return getRenderedWidth(this, column, value);
+		return getRenderedWidth(this, tableColumn, value);
 	}
 	
 	public static int getRenderedWidth(JTable table, int tableColumn, String value)
 	{
-		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		TableColumn columnToAdjust = table.getColumnModel().getColumn(modelColumn);
+		TableColumn columnToAdjust = table.getColumnModel().getColumn(tableColumn);
 		TableCellRenderer renderer = columnToAdjust.getHeaderRenderer();
 		if(renderer == null)
 		{
@@ -91,11 +89,15 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 	
 	public void setColumnWidth(int tableColumn, int width) 
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		TableColumn columnToAdjust = getColumnModel().getColumn(modelColumn);
+		TableColumn columnToAdjust = getTableColumn(tableColumn);
 		
 		columnToAdjust.setPreferredWidth(width);
 		columnToAdjust.setWidth(width);
+	}
+
+	public TableColumn getTableColumn(int tableColumn)
+	{
+		return getColumnModel().getColumn(tableColumn);
 	}
 
 	public void resizeTable()
@@ -119,9 +121,9 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 	public int getHeaderWidth()
 	{
 		int width = 0;
-		for(int i = 0; i < getModel().getColumnCount(); ++i)
+		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			width += getColumnModel().getColumn(i).getWidth();
+			width += getTableColumn(tableColumn).getWidth();
 		}
 		return width;
 	}

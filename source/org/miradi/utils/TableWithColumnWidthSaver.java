@@ -46,8 +46,7 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 	
 	protected int getSavedColumnWidth(int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return columnWidthSaver.getColumnWidth(modelColumn);
+		return columnWidthSaver.getColumnWidth(tableColumn);
 	}
 	
 	public boolean shouldSaveColumnWidth()
