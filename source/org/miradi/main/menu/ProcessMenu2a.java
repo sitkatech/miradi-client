@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
-import org.miradi.actions.jump.ActionJumpFinalizeConceptualModel;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.miradi.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.miradi.actions.jump.ActionJumpSelectChainStep;
@@ -28,7 +27,11 @@ public class ProcessMenu2a extends MiradiMenu
 		addMenuItem(ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_S);
 		addMenuItem(ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
 		addMenuItem(ActionJumpStrategicPlanDevelopObjectivesStep.class, KeyEvent.VK_O);
-		addMenuItem(ActionJumpFinalizeConceptualModel.class, KeyEvent.VK_F);
+		
+		// NOTE: Finalize CM is still in the Open Standards, but we are leaving it out,
+		// because it doesn't fit well here, and we think the standards will agree at some point
+		//addMenuItem(ActionJumpFinalizeConceptualModel.class, KeyEvent.VK_F);
+		
 		addMenuItem(ActionJumpPlanningWizardFinalizeStrategicPlanStep.class, KeyEvent.VK_E);
 		//addMenuItem(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, KeyEvent.VK_A);
 	}
