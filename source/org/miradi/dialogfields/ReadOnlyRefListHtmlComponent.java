@@ -39,13 +39,19 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 		removeAll();
 		try
 		{
-			
 			ORefList refList = new ORefList(newValue);
 			String htmlTable = "<HTML><TABLE bgcolor=" + AppPreferences.convertToHexString(EAM.READONLY_BACKGROUND_COLOR)+ ">";
 			for (int i = 0; i < refList.size(); ++i)
 			{
-				BaseObject object = getProject().findObject(refList.get(i)); 
-				htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
+				BaseObject object = getProject().findObject(refList.get(i));
+				if (object != null)
+				{
+					htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
+				}
+				else
+				{
+					EAM.logError("Ignored a missing object while in ReadOnlyRefListHtmlComponent.setText(). Ref = " + refList.get(i));
+				}
 			}		
 			
 			htmlTable += "</TABLE></HTML>";
