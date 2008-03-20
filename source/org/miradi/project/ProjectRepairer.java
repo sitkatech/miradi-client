@@ -12,6 +12,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
@@ -115,7 +116,9 @@ public class ProjectRepairer
 		
 		for (int i = 0; i < missingObjectRefs.size(); ++i)
 		{
-			EAM.logError("Object referred to but missing: " + missingObjectRefs.get(i));
+			ORef missingRef = missingObjectRefs.get(i);
+			ORefSet referrers = project.getObjectManager().getReferringObjects(missingRef);
+			EAM.logError("Missing object: " + missingRef + " referred to by: " + referrers);
 		}
 
 // NOTE: This is appropriate for testing, but not for production
