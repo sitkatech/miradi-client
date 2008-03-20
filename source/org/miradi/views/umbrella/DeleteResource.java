@@ -81,17 +81,17 @@ public class DeleteResource extends ObjectsDoer
 		{
 			ORef referrerRef = allThatUseThisResource.get(i);
 			commands.addAll(removeFromAssignment(referrerRef));
-			commands.addAll(removeAsWhoOverride(resourceRef, referrerRef));
+			commands.addAll(createCommandToRemoveFromRefList(resourceRef, referrerRef, BaseObject.TAG_WHO_OVERRIDE_REFS));
 		}
 		
 		return commands.toArray(new Command[0]);
 	}
 
-	private Vector<Command> removeAsWhoOverride(ORef resourceRef, ORef referrerRef) throws Exception
+	private Vector<Command> createCommandToRemoveFromRefList(ORef resourceRef, ORef referrerRef, String tagToRemoveFrom) throws Exception
 	{
 		Vector<Command> commands = new Vector<Command>();
 		BaseObject foundObject = getProject().findObject(referrerRef);
-		commands.add(CommandSetObjectData.createRemoveORefCommand(foundObject, BaseObject.TAG_WHO_OVERRIDE_REFS, resourceRef));
+		commands.add(CommandSetObjectData.createRemoveORefCommand(foundObject, tagToRemoveFrom, resourceRef));
 		
 		return commands;
 	}
