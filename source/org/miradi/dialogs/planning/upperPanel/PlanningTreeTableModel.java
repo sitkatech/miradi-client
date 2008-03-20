@@ -14,8 +14,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -99,14 +101,74 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public String getColumnTagForNode(int nodeType, int column)
 	{
+		String columnTag = getColumnTag(column);
+
+		if(ConceptualModelDiagram.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ConceptualModelDiagram.TAG_DETAIL;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+				
+		if(ResultsChainDiagram.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ResultsChainDiagram.TAG_DETAIL;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
+		if(Target.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Target.TAG_TEXT;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
+		if(Goal.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
+		if(Cause.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Cause.TAG_TEXT;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
+		if(ThreatReductionResult.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return ThreatReductionResult.TAG_TEXT;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
+		if(Objective.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
+		}
+
 		if(Strategy.is(nodeType))
 		{
 			if (isDetailsColumn(column))
 				return Strategy.TAG_TEXT;
-			if(getColumnTag(column).equals(Indicator.TAG_PRIORITY))
+			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
 		}
 		
+		if(Task.is(nodeType))
+		{
+			if(isDetailsColumn(column))
+				return Task.TAG_DETAILS;
+		}
+
 		if(Indicator.is(nodeType))
 		{
 			if (isDetailsColumn(column))
@@ -117,45 +179,11 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		{
 			if (isDetailsColumn(column))
 				return Measurement.TAG_DETAIL;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return "";
 		}
 		
-		if(Task.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Task.TAG_DETAILS;
-		}
-
-		if(Target.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Target.TAG_TEXT;
-		}
-
-		if(Cause.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Cause.TAG_TEXT;
-		}
-
-		if(ThreatReductionResult.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ThreatReductionResult.TAG_TEXT;
-		}
-
-		if(ResultsChainDiagram.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ResultsChainDiagram.TAG_DETAIL;
-		}
-
-		if(ConceptualModelDiagram.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ConceptualModelDiagram.TAG_DETAIL;
-		}
-				
-		return getColumnTag(column);
+		return columnTag;
 	}
 
 	private boolean isDetailsColumn(int column)
