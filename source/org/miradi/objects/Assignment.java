@@ -113,6 +113,16 @@ public class Assignment extends BaseObject
 		return new DateRangeEffortList(dREffortListAsString);
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
 	public static Assignment find(ObjectManager objectManager, ORef assignmentRef)
 	{
 		return (Assignment) objectManager.findObject(assignmentRef);

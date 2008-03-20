@@ -1000,7 +1000,10 @@ abstract public class BaseObject
 	
 	public Set<String> getReferencedObjectTags()
 	{
-		return new HashSet<String>();
+		Set<String> set = new HashSet<String>();
+		set.add(TAG_WHO_OVERRIDE_REFS);
+		
+		return set;	
 	}
 	
 	public ORefList getAllReferncedObjects()
