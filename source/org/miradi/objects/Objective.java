@@ -201,6 +201,16 @@ public class Objective extends Desire
 		return find(project.getObjectManager(), objectiveRef);
 	}
 	
+	public static boolean is(int nodeType)
+	{
+		return nodeType == getObjectType();
+	}
+
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+
 	public void clear()
 	{
 		super.clear();
