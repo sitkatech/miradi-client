@@ -58,7 +58,14 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 					continue;
 				
 				BaseObject object = project.findObject(ref); 
-				names.add(object.getFullName());
+				if(object == null)
+				{
+					EAM.logError("Ignored a missing object while in ObjectReadonlyObjectListField.setText(). Ref = " + ref);
+				}
+				else
+				{
+					names.add(object.getFullName());
+				}
 			}
 			Collections.sort(names, new IgnoreCaseStringComparator());
 			
