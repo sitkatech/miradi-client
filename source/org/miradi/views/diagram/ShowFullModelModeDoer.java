@@ -8,11 +8,12 @@ package org.miradi.views.diagram;
 import java.text.ParseException;
 
 import org.jgraph.graph.GraphLayoutCache;
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
@@ -49,23 +50,19 @@ public class ShowFullModelModeDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 
-		getMainWindow().preventActionUpdates();
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			ORefList factorsToMakeSelected = getFactorsToMakeSelected();
 			ORef viewDataRef = getProject().getCurrentViewData().getRef();
-			CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
-			getProject().executeCommand(clearBrainsStormNodeList);
 						
 			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
 			getProject().executeCommand(changeToDefaultMode);
 			
+			CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
+			getProject().executeCommand(clearBrainsStormNodeList);
+
 			selectFactors(factorsToMakeSelected);
-			
-			final int CONCEPTUAL_MODEL_INDEX = 0;
-			 //TODO this should be handled more cleanly
-			((DiagramPanel) getDiagramView().getTabContents(CONCEPTUAL_MODEL_INDEX)).getdiagramComponent().setToDefaultBackgroundColor();
-			
 		}
 		catch (Exception e)
 		{
@@ -74,7 +71,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		}
 		finally
 		{
-			getMainWindow().allowActionUpdates();
+			getProject().executeCommand(new CommandEndTransaction());
 			getMainWindow().updateActionsAndStatusBar();
 		}
 	}
