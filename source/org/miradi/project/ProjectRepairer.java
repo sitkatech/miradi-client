@@ -23,7 +23,7 @@ public class ProjectRepairer
 	public static void scanForCorruptedObjects(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
-		repairer.possiblyShowCorruptedObjectsWarningDialog();
+		repairer.possiblyShowMissingObjectsWarningDialog();
 	}
 	
 	public static void repairAnyProblems(Project project) throws Exception
@@ -107,54 +107,55 @@ public class ProjectRepairer
 		EAM.logException(e);
 	}
 	
-	public void possiblyShowCorruptedObjectsWarningDialog() throws Exception
+	public void possiblyShowMissingObjectsWarningDialog() throws Exception
 	{
-		ORefList corruptedObjectRefs = findAllCorruptedObjects();
-		if (corruptedObjectRefs.size() == 0 )
+		ORefList missingObjectRefs = findAllMissingObjects();
+		if (missingObjectRefs.size() == 0 )
 			return;
 		
-		for (int i = 0; i < corruptedObjectRefs.size(); ++i)
+		for (int i = 0; i < missingObjectRefs.size(); ++i)
 		{
-			EAM.logError("found corrupted object: " + corruptedObjectRefs.get(i));
+			EAM.logError("Object referred to but missing: " + missingObjectRefs.get(i));
 		}
-		
-		EAM.notifyDialog("<html>This project has some data corruption, " +
-						 "which may cause error messages or unexpected results within Miradi. <br>" +
-						 "Please contact the Miradi team to report this problem, " +
-						 "and/or to have them repair this project.");
+
+// NOTE: This is appropriate for testing, but not for production
+//		EAM.notifyDialog("<html>This project has some data corruption, " +
+//						 "which may cause error messages or unexpected results within Miradi. <br>" +
+//						 "Please contact the Miradi team to report this problem, " +
+//						 "and/or to have them repair this project.");
 	}
 	
-	public ORefList findAllCorruptedObjects() throws Exception
+	public ORefList findAllMissingObjects() throws Exception
 	{
-		ORefList corruptedObjectRefs = new ORefList();
+		ORefList missingObjectRefs = new ORefList();
 		for (int objectType = 0; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
 			PoolWithIdAssigner pool = (PoolWithIdAssigner) project.getPool(objectType);
 			if (pool == null)
 				continue;
 			
-			corruptedObjectRefs.addAll(scanObjects(pool.getORefList()));
+			missingObjectRefs.addAll(getMissingObjectsReferredToBy(pool.getORefList()));
 		}
 		
-		return corruptedObjectRefs;
+		return missingObjectRefs;
 	}
 	
-	private ORefList scanObjects(ORefList refList) throws Exception
+	private ORefList getMissingObjectsReferredToBy(ORefList refList) throws Exception
 	{
-		ORefList corruptedObjectRefs = new ORefList();
+		ORefList missingObjectRefs = new ORefList();
 		for (int i = 0; i < refList.size(); ++i)
 		{
 			BaseObject foundObject = project.findObject(refList.get(i));
 			ORefList referredRefs = foundObject.getAllReferncedObjects();
-			corruptedObjectRefs.addAll(findCorruptedObjects(referredRefs));
+			missingObjectRefs.addAll(extractMissingObjectRefs(referredRefs));
 		}
 		
-		return corruptedObjectRefs;
+		return missingObjectRefs;
 	}
 
-	private ORefList findCorruptedObjects(ORefList ownedAndReferredRefs)
+	private ORefList extractMissingObjectRefs(ORefList ownedAndReferredRefs)
 	{
-		ORefList corruptedObjectRefs = new ORefList();
+		ORefList missingObjectRefs = new ORefList();
 		for (int i = 0; i < ownedAndReferredRefs.size(); ++i)
 		{
 			ORef ref = ownedAndReferredRefs.get(i);
@@ -165,10 +166,10 @@ public class ProjectRepairer
 			if (foundObject != null)
 				continue;
 			
-			corruptedObjectRefs.add(ref);
+			missingObjectRefs.add(ref);
 		}
 		
-		return corruptedObjectRefs;
+		return missingObjectRefs;
 	}
 
 	private Project project;
