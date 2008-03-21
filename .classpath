@@ -18,6 +18,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph.jar" sourcepath="/miradi-jgraph/source"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-beanutils-1.7.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/jasperreports-2.0.4.jar" sourcepath="/miradi-thirdparty/Jasper/jasperreports-2.0.4-project-src.zip"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/xalan.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/xalan-modified.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
