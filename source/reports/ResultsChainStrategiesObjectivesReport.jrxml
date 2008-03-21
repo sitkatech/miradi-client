@@ -85,7 +85,7 @@
 				</subreport>
 				<break>
 					<reportElement
-						x="-2"
+						x="0"
 						y="3"
 						width="535"
 						height="0"
