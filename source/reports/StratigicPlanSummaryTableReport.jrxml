@@ -5,10 +5,10 @@
 		 name="StratigicPlanSummaryTableReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="500"
-		 pageHeight="842"
-		 columnWidth="500"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="500"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -70,7 +70,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="235"
+						width="440"
 						height="20"
 						key="staticText-2"
 						positionType="Float"/>
@@ -82,9 +82,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="235"
+						x="440"
 						y="0"
-						width="172"
+						width="220"
 						height="20"
 						key="staticText-3"
 						positionType="Float"/>
@@ -96,7 +96,7 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="407"
+						x="660"
 						y="0"
 						width="93"
 						height="20"
@@ -116,7 +116,7 @@
 					<reportElement
 						x="28"
 						y="0"
-						width="207"
+						width="412"
 						height="20"
 						key="textField-1"
 						stretchType="RelativeToTallestObject"
@@ -129,9 +129,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="235"
+						x="440"
 						y="0"
-						width="172"
+						width="220"
 						height="20"
 						key="textField-2"
 						stretchType="RelativeToTallestObject"
@@ -144,7 +144,7 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="407"
+						x="660"
 						y="0"
 						width="93"
 						height="20"
