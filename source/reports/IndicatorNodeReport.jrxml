@@ -131,9 +131,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="50"
+						x="90"
 						y="0"
-						width="226"
+						width="186"
 						height="20"
 						key="textField-1"
 						positionType="Float"/>
@@ -383,7 +383,7 @@
 				</textField>
 				<image  vAlign="Middle" hAlign="Center" evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="32"
+						x="70"
 						y="3"
 						width="15"
 						height="15"
@@ -409,7 +409,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="50"
+						width="90"
 						height="20"
 						key="staticText-1"
 						positionType="Float"/>
