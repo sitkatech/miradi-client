@@ -54,7 +54,8 @@
 						width="842"
 						height="20"
 						key="subreport-2"
-						positionType="Float"/>
+						positionType="Float"
+						isRemoveLineWhenBlank="true"/>
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
