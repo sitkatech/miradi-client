@@ -42,11 +42,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="336"  isSplitAllowed="true" >
+			<band height="310"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="13"
-						y="30"
+						y="4"
 						width="515"
 						height="20"
 						key="staticText-1"
@@ -60,7 +60,7 @@
 				<staticText>
 					<reportElement
 						x="34"
-						y="50"
+						y="24"
 						width="429"
 						height="108"
 						key="staticText-2"
@@ -82,7 +82,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="176"
+						y="150"
 						width="510"
 						height="20"
 						key="staticText-3"
@@ -96,7 +96,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="13"
-						y="249"
+						y="223"
 						width="510"
 						height="17"
 						key="subreport-1"
@@ -110,7 +110,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="13"
-						y="225"
+						y="199"
 						width="510"
 						height="17"
 						key="subreport-2"
@@ -124,7 +124,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="13"
-						y="201"
+						y="175"
 						width="510"
 						height="17"
 						key="subreport-3"
@@ -138,7 +138,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="158"
+						y="132"
 						width="167"
 						height="20"
 						key="staticText-5"
@@ -152,7 +152,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="271"
+						y="245"
 						width="167"
 						height="20"
 						key="staticText-7"
@@ -166,7 +166,7 @@
 				<staticText>
 					<reportElement
 						x="13"
-						y="290"
+						y="264"
 						width="510"
 						height="20"
 						key="staticText-8"
@@ -180,7 +180,7 @@
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="13"
-						y="310"
+						y="284"
 						width="510"
 						height="17"
 						key="subreport-4"
@@ -191,20 +191,6 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/StrategicPlanTree/Row")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/StratigicPlanSummaryTableReport.jasper")]]></subreportExpression>
 				</subreport>
-				<staticText>
-					<reportElement
-						x="0"
-						y="0"
-						width="252"
-						height="23"
-						key="staticText-9"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
-					</textElement>
-				<text><![CDATA[2.	Action and Monitoring Plans ]]></text>
-				</staticText>
 			</band>
 		</detail>
 		<columnFooter>
