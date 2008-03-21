@@ -61,7 +61,6 @@ import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
-import org.miradi.actions.ActionNewProject;
 import org.miradi.actions.ActionPaste;
 import org.miradi.actions.ActionPasteWithoutLinks;
 import org.miradi.actions.ActionPreferences;
@@ -110,7 +109,6 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 		
-		addMenuItem(actions, menu, ActionNewProject.class, KeyEvent.VK_N);
 		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
