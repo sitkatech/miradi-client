@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ProjectSummaryParentReport"
+		 name="TargetViabilityTreeTableParentReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Landscape"
@@ -49,13 +49,13 @@
 						y="0"
 						width="782"
 						height="22"
-						key="subreport-17"
+						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject")]]></dataSourceExpression>
-					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectSummary.jasper")]]></subreportExpression>
+					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/TargetViabilityTreeTable.jasper")]]></subreportExpression>
 				</subreport>
 			</band>
 		</detail>
