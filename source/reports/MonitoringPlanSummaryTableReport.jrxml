@@ -5,10 +5,10 @@
 		 name="MonitoringPlanSummaryTableReport"
 		 columnCount="1"
 		 printOrder="Vertical"
-		 orientation="Portrait"
-		 pageWidth="500"
-		 pageHeight="842"
-		 columnWidth="500"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="500"
+		 columnWidth="842"
 		 columnSpacing="0"
 		 leftMargin="0"
 		 rightMargin="0"
@@ -79,7 +79,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="180"
+						width="280"
 						height="19"
 						key="staticText-2"
 						positionType="Float"/>
@@ -91,9 +91,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="237"
+						x="390"
 						y="0"
-						width="74"
+						width="121"
 						height="19"
 						key="staticText-3"
 						positionType="Float"/>
@@ -105,9 +105,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="437"
+						x="689"
 						y="0"
-						width="63"
+						width="61"
 						height="19"
 						key="staticText-4"
 						positionType="Float"/>
@@ -119,9 +119,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="180"
+						x="280"
 						y="0"
-						width="57"
+						width="110"
 						height="19"
 						key="staticText-5"
 						positionType="Float"/>
@@ -133,9 +133,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="311"
+						x="511"
 						y="0"
-						width="66"
+						width="60"
 						height="19"
 						key="staticText-6"
 						positionType="Float"/>
@@ -147,9 +147,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="377"
+						x="571"
 						y="0"
-						width="60"
+						width="118"
 						height="19"
 						key="staticText-7"
 						positionType="Float"/>
@@ -182,7 +182,7 @@
 					<reportElement
 						x="30"
 						y="0"
-						width="150"
+						width="250"
 						height="20"
 						key="textField-1"
 						stretchType="RelativeToTallestObject"
@@ -195,9 +195,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="237"
+						x="390"
 						y="0"
-						width="74"
+						width="121"
 						height="20"
 						key="textField-2"
 						stretchType="RelativeToTallestObject"
@@ -210,9 +210,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="437"
+						x="689"
 						y="0"
-						width="63"
+						width="61"
 						height="20"
 						key="textField-3"
 						stretchType="RelativeToTallestObject"
@@ -225,9 +225,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="180"
+						x="280"
 						y="0"
-						width="57"
+						width="110"
 						height="20"
 						key="textField-4"
 						stretchType="RelativeToTallestObject"
@@ -240,9 +240,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="311"
+						x="511"
 						y="0"
-						width="66"
+						width="60"
 						height="20"
 						key="textField"
 						stretchType="RelativeToTallestObject"
@@ -255,9 +255,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="377"
+						x="571"
 						y="0"
-						width="60"
+						width="118"
 						height="20"
 						key="textField-5"
 						stretchType="RelativeToTallestObject"
