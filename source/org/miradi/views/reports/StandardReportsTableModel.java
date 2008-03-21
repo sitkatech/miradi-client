@@ -26,7 +26,7 @@ public class StandardReportsTableModel extends ReportSelectionTableModel
 				new Report("  Target Viability Report", "/reports/TargetViabilityTreeTableParentReport.jasper"),
 				new Report("  Strategic Plan Report", "/reports/StrategicPlanReportParentReport.jasper"),
 				new Report("  Monitoring Plan Report", "/reports/MonitoringPlanReportParentReport.jasper"),
-				new Report("  Work Plan Report", "/reports/WorkPlanReport.jasper"),
+				new Report("  Work Plan Report", "/reports/WorkPlanParentReport.jasper"),
 		};
 	}
 	
