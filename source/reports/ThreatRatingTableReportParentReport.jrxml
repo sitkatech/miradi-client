@@ -2,18 +2,18 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="ThreatRatingTableReport"
+		 name="ThreatRatingTableReportParentReport"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Landscape"
-		 pageWidth="782"
+		 pageWidth="842"
 		 pageHeight="595"
 		 columnWidth="782"
 		 columnSpacing="0"
-		 leftMargin="0"
-		 rightMargin="0"
-		 topMargin="0"
-		 bottomMargin="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
@@ -25,20 +25,6 @@
 
 	<parameter name="DATA_DIRECTORY" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="blah" class="java.lang.String"/>
-
-
-		<group  name="ForcedPageBreak" isStartNewPage="true" >
-			<groupExpression><![CDATA[$V{REPORT_COUNT}]]></groupExpression>
-			<groupHeader>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-			</groupHeader>
-			<groupFooter>
-			<band height="0"  isSplitAllowed="true" >
-			</band>
-			</groupFooter>
-		</group>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
@@ -56,13 +42,13 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="40"  isSplitAllowed="true" >
+			<band height="22"  isSplitAllowed="true" >
 				<subreport  isUsingCache="true">
 					<reportElement
 						x="0"
-						y="5"
+						y="0"
 						width="782"
-						height="31"
+						height="22"
 						key="subreport-1"
 						positionType="Float"/>
 					<subreportParameter  name="DATA_DIRECTORY">
@@ -71,15 +57,6 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Link[contains(ToRef,  '22.') and contains(FromRef, '20.')]")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ThreatRatingTableSubReport.jasper")]]></subreportExpression>
 				</subreport>
-				<break>
-					<reportElement
-						x="0"
-						y="2"
-						width="782"
-						height="0"
-						key="element-1"
-						positionType="Float"/>
-				</break>
 			</band>
 		</detail>
 		<columnFooter>
