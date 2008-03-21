@@ -83,11 +83,11 @@
 			</band>
 		</pageFooter>
 		<summary>
-			<band height="59"  isSplitAllowed="true" >
+			<band height="89"  isSplitAllowed="true" >
 				<crosstab >
 					<reportElement
 						x="0"
-						y="0"
+						y="36"
 						width="782"
 						height="51"
 						key="crosstab-1"/>
@@ -313,6 +313,19 @@
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
 						</cellContents>
 					</whenNoDataCell>					</crosstab>
+				<staticText>
+					<reportElement
+						x="4"
+						y="5"
+						width="119"
+						height="28"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Threat Rating Table]]></text>
+				</staticText>
 			</band>
 		</summary>
 </jasperReport>
