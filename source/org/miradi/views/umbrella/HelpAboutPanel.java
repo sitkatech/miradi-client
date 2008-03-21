@@ -16,7 +16,7 @@ public class HelpAboutPanel extends HtmlViewPanel
 {
 	public HelpAboutPanel(MainWindow mainWindowToUse, String htmlBodyText)
 	{
-		super(mainWindowToUse, EAM.text("Title|About Miradi"), htmlBodyText, 900);
+		super(mainWindowToUse, EAM.text("Title|About Miradi"), htmlBodyText, 1000);
 	}
 	
 	@Override
