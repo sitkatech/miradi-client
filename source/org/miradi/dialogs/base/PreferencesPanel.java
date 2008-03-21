@@ -78,8 +78,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		if(project.isOpen())
 		{
 			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
-			tabPane.addTab("Planning", summaryPlanningPanel);
 			tabPane.addTab("Threat Ratings", createThreatRatingTab());
+			tabPane.addTab("Planning", summaryPlanningPanel);
 		}
 		
 		tabPane.addTab("Data Location", createDataLocationTab());
