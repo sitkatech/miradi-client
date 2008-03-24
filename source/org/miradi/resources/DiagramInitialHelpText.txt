@@ -1,15 +1,12 @@
 {"Height":200,"Width":300}
 {"Y":105,"X":105}
-Help Content Missing
-Help Content MissingHelp Content MissingHelp Content MissingHelp Content Missing
-Help Content MissingHelp Content Missing
-Help Content MissingHelp Content Missing
-Help Content MissingHelp Content Missing
-Help Content Missing
+Welcome to the Diagram View!
 
-Help Content Missing
+This view enables you to develop a
+Conceptual Model of your project.
 
+To get started, click the <Insert Target>
+button in the Control Bar to the left.
 
-
-
-Help Content MissingHelp Content MissingHelp Content MissingHelp Content Missing
+To delete this box, click on it and
+press <delete>.
