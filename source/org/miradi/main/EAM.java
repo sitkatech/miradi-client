@@ -419,6 +419,8 @@ public class EAM
 				url = findAlternateResource(resourceFileName, url);
 			}
 			
+			if(url == null)
+				EAM.logWarning("Missing resource: " + resourceFileName);
 			return url;
 		}
 		catch (Exception e)
