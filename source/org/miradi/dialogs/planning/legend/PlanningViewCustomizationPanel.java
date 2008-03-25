@@ -92,7 +92,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
 		radioGroup.addRadioButtonToGroup(workPlanRadioButton);
-		addRadioButtonWithLeftComponent(workPlanRadioButton, new PanelTitleLabel(EAM.text("Work Plan")));
+		addRadioButtonWithLeftComponent(workPlanRadioButton, new PanelTitleLabel(EAM.text("Work Plan (BETA)")));
 		
 		
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
