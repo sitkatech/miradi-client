@@ -40,7 +40,7 @@
 			<band height="108"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
-						x="207"
+						x="307"
 						y="1"
 						width="168"
 						height="31"
@@ -54,7 +54,7 @@
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="207"
+						x="307"
 						y="34"
 						width="168"
 						height="17"
@@ -69,7 +69,7 @@
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="207"
+						x="307"
 						y="51"
 						width="168"
 						height="17"
@@ -84,21 +84,21 @@
 				</staticText>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="207"
+						x="436"
 						y="85"
 						width="168"
 						height="17"
 						key="textField-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" isBold="true" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ProjectEffectiveDate}]]></textFieldExpression>
 				</textField>
 				<subreport  isUsingCache="true">
 					<reportElement
-						x="127"
+						x="227"
 						y="69"
 						width="328"
 						height="12"
@@ -110,6 +110,22 @@
 					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/ProjectResource[RoleCodes/CodeList/Entry/Code = 'Leader' or RoleCodes/CodeList/Entry/Code = 'Contact']")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/ProjectResourceHumanShortListReport.jasper")]]></subreportExpression>
 				</subreport>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="269"
+						y="85"
+						width="168"
+						height="17"
+						backcolor="#FFFFFF"
+						key="staticText-5"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Project Data Effective Date: ]]></text>
+				</staticText>
 			</band>
 		</title>
 		<pageHeader>
