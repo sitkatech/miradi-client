@@ -53,6 +53,9 @@
 	<field name="ThreatRating" class="java.lang.String">
 		<fieldDescription><![CDATA[ThreatRating/Choice/Value]]></fieldDescription>
 	</field>
+	<field name="OverallProjectThreatRating" class="java.lang.String">
+		<fieldDescription><![CDATA[/MiradiProject/OverallProjectThreatRating/Choice/Value]]></fieldDescription>
+	</field>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -204,6 +207,9 @@
 					<measure name="TargetColumnTotal" class="java.lang.String">
 						<measureExpression><![CDATA[$F{TargetRating}]]></measureExpression>
 					</measure>
+					<measure name="OverallProjectThreatRating" class="java.lang.String">
+						<measureExpression><![CDATA[$F{OverallProjectThreatRating}]]></measureExpression>
+					</measure>
 					<crosstabCell width="100" height="30">
 						<cellContents mode="Transparent">
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="Thin" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
@@ -280,7 +286,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetThreatRating_Nothing}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{OverallProjectThreatRating}]]></textFieldExpression>
 				</textField>
 						</cellContents>
 					</crosstabCell>
