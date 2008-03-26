@@ -69,7 +69,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica" isBold="false"/>
 					</textElement>
-				<text><![CDATA[Miradi 2.0 currently does not support generation of a budget report. This feature will be added in the near future. For now, you can use the File/Export/Tab Delimited Data command to export summary budget data.
+				<text><![CDATA[Miradi 2.0 currently does not support generation of a budget report.  For now, you can use the File/Export/Tab Delimited Data command to export summary budget data.
 ]]></text>
 				</staticText>
 			</band>
