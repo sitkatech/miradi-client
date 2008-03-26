@@ -316,8 +316,8 @@ public class FactorLink extends BaseObject
 		if (target == null || cause == null)
 			return;
 			
-		writeRating(out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
-		writeRating(out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
+		writeRating(getProject(), out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
+		writeRating(getProject(), out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
 		
 		out.write("<TargetName>");
 		out.write(XmlUtilities.getXmlEncoded(target.toString()));
@@ -349,9 +349,9 @@ public class FactorLink extends BaseObject
 		return getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(factor);
 	}
 	
-	private void writeRating(UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
+	public static void writeRating(Project project, UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
 	{
-		ChoiceItem targetRatingChoice = getProject().getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(threatRatingValue));
+		ChoiceItem targetRatingChoice = project.getQuestion(ThreatRatingQuestion.class).findChoiceByCode(Integer.toString(threatRatingValue));
 		if (targetRatingChoice == null)
 			return;
 		
@@ -378,6 +378,7 @@ public class FactorLink extends BaseObject
 		out.writeln("</TargetThreatRating>");
 	}
 
+	//FIXME, this method has a duplicate in project
 	private boolean isStressBasedMode()
 	{
 		return getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
