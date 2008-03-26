@@ -132,19 +132,25 @@ public class Indicator extends BaseObject
 		
 		//TODO: Don't export these values in a hard-coded way
 		String futureStatusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(futureStatusRating.get()).getCode();
-		out.writeln("<FutureStatusRatingValues>");
-		writeOutValue(out, futureStatusRatingCode, StatusQuestion.POOR);
-		writeOutValue(out, futureStatusRatingCode, StatusQuestion.FAIR);
-		writeOutValue(out, futureStatusRatingCode, StatusQuestion.GOOD);
-		writeOutValue(out, futureStatusRatingCode, StatusQuestion.VERY_GOOD);
-		out.write("</FutureStatusRatingValues>");
+		writeRatingCodes(out, futureStatusRatingCode, futureStatusSummary.get(), "FutureStatusRatingValues");
 	}
 
-	private void writeOutValue(UnicodeWriter out, String futureStatusRatingCode, String ratingCode) throws IOException
+	public static void writeRatingCodes(UnicodeWriter out, String statusRatingCode, String statusRatingValue, String xmlTag) throws IOException
+	{
+		out.writeln("<" + xmlTag + ">");
+		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.POOR);
+		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.FAIR);
+		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.GOOD);
+		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.VERY_GOOD);
+		out.write("</" + xmlTag + ">");
+	}
+
+	private static void writeOutValue(UnicodeWriter out, String statusRatingCode, String statusRatingValue, String ratingCode) throws IOException
 	{
 		out.write("<Value code='" + ratingCode+ "'>");
-		if (futureStatusRatingCode.equals(ratingCode))
-			out.write(futureStatusSummary.get());
+		if (statusRatingCode.equals(ratingCode))
+			out.write(statusRatingValue);
+
 		out.write("</Value>");
 	}
 	
