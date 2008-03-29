@@ -31,7 +31,7 @@ public class MiradiLogoPanel extends OneRowPanel
 	public MiradiLogoPanel()
 	{
 		setBackground(AppPreferences.getWizardTitleBackground());
-		String tagline = EAM.text("Adaptive Management for Conservation Projects");
+		String tagline = EAM.text("Adaptive Management Software for Conservation Projects");
 		MiradiResourceImageIcon logoIcon = new MiradiResourceImageIcon("images/MiradiLogoName.png");
 		JLabel headerComponent = new JLabel(tagline, logoIcon, JLabel.TRAILING);
 		Font font = new Font("sansserif", Font.BOLD, 16);
