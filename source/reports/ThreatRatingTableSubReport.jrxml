@@ -198,7 +198,7 @@
 						</crosstabColumnHeader>
 					</columnGroup>
 
-					<measure name="TargetThreatRating_Nothing" class="java.lang.String">
+					<measure name="TargetThreatRating" class="java.lang.String">
 						<measureExpression><![CDATA[$F{TargetThreatRating}]]></measureExpression>
 					</measure>
 					<measure name="ThreatRowTotal" class="java.lang.String">
@@ -226,7 +226,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetThreatRating_Nothing}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{TargetThreatRating}]]></textFieldExpression>
 				</textField>
 						</cellContents>
 					</crosstabCell>
