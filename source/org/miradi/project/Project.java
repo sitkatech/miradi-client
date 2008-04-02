@@ -725,7 +725,7 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	private int openProject(File projectDirectory) throws Exception
+	public int openProject(File projectDirectory) throws Exception
 	{
 		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
