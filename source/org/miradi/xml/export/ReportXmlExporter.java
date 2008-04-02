@@ -13,6 +13,7 @@ import java.util.Set;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORefList;
@@ -26,14 +27,13 @@ import org.miradi.project.Project;
 
 public class ReportXmlExporter
 {
-	public ReportXmlExporter() throws Exception
-	{
-	}
-
-	public void export(Project projectToUse, File destination) throws Exception
+	public ReportXmlExporter(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
+	}
 
+	public void export(File destination) throws Exception
+	{
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
@@ -102,11 +102,16 @@ public class ReportXmlExporter
 	public static void main(String[] commandLineArguments) throws Exception
 	{	
 		if (incorrectArgumentCount(commandLineArguments))
-			throw new RuntimeException("Incorrect number of arguments");
+			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
 
 		Project newProject = new Project();
-		newProject.openProject(getProjectDirectory(commandLineArguments));
-		new ReportXmlExporter().export(newProject, getXmlDestination(commandLineArguments));
+		File projectDirectory = getProjectDirectory(commandLineArguments);
+		if(!ProjectServer.isExistingProject(projectDirectory))
+			throw new RuntimeException("Project does not exist:" + projectDirectory);
+		
+		newProject.createOrOpen(projectDirectory);
+		
+		new ReportXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
 	}	
 	
 	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
