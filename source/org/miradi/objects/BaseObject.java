@@ -797,7 +797,7 @@ abstract public class BaseObject
 		out.writeln("</" + getTypeName() + ">");
 	}
 	
-	protected Set<String> getFieldTagsToIncludeInXml()
+	public Set<String> getFieldTagsToIncludeInXml()
 	{
 		HashSet<String> tagsToInclude = new HashSet();
 		Set rawTags = fields.keySet();

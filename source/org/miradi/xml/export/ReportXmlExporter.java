@@ -7,14 +7,18 @@ package org.miradi.xml.export;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.PlanningTreeXmlExporter;
 import org.miradi.project.Project;
@@ -22,7 +26,11 @@ import org.miradi.project.Project;
 
 public class ReportXmlExporter
 {
-	public ReportXmlExporter(Project projectToUse, File destination) throws Exception
+	public ReportXmlExporter() throws Exception
+	{
+	}
+
+	public void export(Project projectToUse, File destination) throws Exception
 	{
 		project = projectToUse;
 
@@ -55,7 +63,8 @@ public class ReportXmlExporter
 		for (int typeIndex = 1; typeIndex < ObjectType.OBJECT_TYPE_COUNT; ++typeIndex)
 		{
 			EAMObjectPool pool = getProject().getPool(typeIndex);
-			exportPoolObjects(out, pool);
+			if (pool != null)
+				exportPoolObjects(out, pool);
 
 		}
 		out.writeln("</ObjectPools>");
@@ -67,26 +76,37 @@ public class ReportXmlExporter
 		ORefList ids = pool.getSortedRefList();
 		for(int i = 0; i < ids.size(); ++i)
 		{
-			pool.findObject(ids.get(i)).toXml(out);
+			BaseObject foundObject = pool.findObject(ids.get(i));
+			writeBaseObjectAsXml(out, foundObject);
 		}
 		out.writeln("</Pool>");
 	}
 
-	public static void main(String[] commandLineArguments)
+	private void writeBaseObjectAsXml(UnicodeWriter out, BaseObject foundObject) throws IOException, Exception
+	{
+		out.write("<" + foundObject.getTypeName() + " ref='");
+		foundObject.getRef().toXml(out);
+		out.writeln("'>");
+		Set fieldTags = foundObject.getFieldTagsToIncludeInXml();
+		Iterator iter = fieldTags.iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			ObjectData data = foundObject.getField(tag);
+			data.toXml(out);
+		}
+		foundObject.writeNonFieldXml(out);
+		out.writeln("</" + foundObject.getTypeName() + ">");
+	}
+
+	public static void main(String[] commandLineArguments) throws Exception
 	{	
 		if (incorrectArgumentCount(commandLineArguments))
 			throw new RuntimeException("Incorrect number of arguments");
 
-		try
-		{
-			Project newProject = new Project();
-			newProject.openProject(getProjectDirectory(commandLineArguments));
-			new ReportXmlExporter(newProject, getXmlDestination(commandLineArguments));
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		Project newProject = new Project();
+		newProject.openProject(getProjectDirectory(commandLineArguments));
+		new ReportXmlExporter().export(newProject, getXmlDestination(commandLineArguments));
 	}	
 	
 	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
