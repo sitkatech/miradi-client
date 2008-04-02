@@ -125,7 +125,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	}
 	
 	//TODO rename or combine with getSharedTaskFont
-	public static Font getSharedTaskFont2(BaseObject object)
+	public static Font getSharedTaskFont(BaseObject object)
 	{
 		if (object.getType() != Task.getObjectType())
 			return Renderer.getPlainFont();

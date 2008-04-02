@@ -67,7 +67,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	{
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
 		BaseObject object = model.getBaseObjectForRowColumn(row, 0);
-		return TreeTableWithIcons.getSharedTaskFont2(object);
+		return TreeTableWithIcons.getSharedTaskFont(object);
 	}
 	
 	public int getColumnAlignment()
