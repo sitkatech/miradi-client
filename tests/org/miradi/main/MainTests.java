@@ -39,6 +39,7 @@ import org.miradi.diagram.TestSetFactorSize;
 import org.miradi.diagram.TestUndoAndRedo;
 import org.miradi.diagram.cells.TestDiagramFactor;
 import org.miradi.diagram.cells.TestLinkCell;
+import org.miradi.export.TestReportXmlExporter;
 import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
@@ -361,6 +362,9 @@ public class MainTests extends TestCase
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
 		suite.addTest(new TestSuite(TestMultiCalendar.class));
+		
+		//xml.export
+		suite.addTest(new TestSuite(TestReportXmlExporter.class));
 
 	    return suite;
 	}
