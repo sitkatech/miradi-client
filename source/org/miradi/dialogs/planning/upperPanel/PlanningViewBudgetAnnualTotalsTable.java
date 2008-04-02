@@ -39,7 +39,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(model);
-		renderer = new BudgetCostTreeTableCellRenderer(model, getSyncedModel().getTreeTableModelAdapter(), fontProvider);
+		renderer = new BudgetCostTreeTableCellRenderer(model, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)
