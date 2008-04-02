@@ -124,12 +124,13 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		return Renderer.deriveFont(style);
 	}
 	
-	public static Font getSharedTaskFont(TreeTableNode node)
+	//TODO rename or combine with getSharedTaskFont
+	public static Font getSharedTaskFont2(BaseObject object)
 	{
-		if (node.getType() != Task.getObjectType())
+		if (object.getType() != Task.getObjectType())
 			return Renderer.getPlainFont();
 			
-		return getSharedTaskFont((Task) node.getObject());	
+		return getSharedTaskFont((Task) object);	
 	}
 
 	public static class Renderer extends DefaultTreeCellRenderer

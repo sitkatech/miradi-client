@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 
@@ -46,11 +46,11 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	
 	public Object getValueAt(int row, int column)
 	{
-		TreeTableNode node = getNodeForRow(row);
-		if (node.getType() != Indicator.getObjectType())
+		BaseObject objectForRow = getNodeForRow(row);
+		if (objectForRow.getType() != Indicator.getObjectType())
 			return "";
 		
-		return node.getObject().getData(columnTags[column]);
+		return objectForRow.getData(columnTags[column]);
 	}
 	
 	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};

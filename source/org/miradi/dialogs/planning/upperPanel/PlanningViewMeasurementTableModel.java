@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -55,12 +55,12 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	
 	public Object getValueAt(int row, int column)
 	{
-		TreeTableNode node = getNodeForRow(row);
-		if (node.getType() != Measurement.getObjectType())
+		BaseObject objectForRow = getNodeForRow(row);
+		if (objectForRow.getType() != Measurement.getObjectType())
 			return "";
 		
 		String columnTag = getColumnTag(column);
-		String data = node.getObject().getData(columnTag);
+		String data = objectForRow.getData(columnTag);
 		
 		ChoiceQuestion question = getColumnQuestion(column);
 		if(question != null)
