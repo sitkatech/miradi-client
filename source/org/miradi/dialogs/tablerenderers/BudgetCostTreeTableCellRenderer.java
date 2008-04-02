@@ -39,7 +39,7 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
-		adapter = adapterToUse;
+		objectProvider = adapterToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -62,7 +62,7 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		if(labelComponent.getText().length() == 0)
 			return;
 		
-		BaseObject node = getNodeForRow(row);
+		BaseObject node = getObjectForRow(row);
 		if(node.getType() != Task.getObjectType())
 			return;
 		
@@ -83,7 +83,7 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 			return null;
 		
 		String baseText = value.toString();
-		BaseObject object = getNodeForRow(row);
+		BaseObject object = getObjectForRow(row);
 		if(object == null)
 			return baseText;
 		
@@ -93,12 +93,11 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		return baseText;
 	}
 	
-	//TODO refactor rename to reflect return type
-	protected BaseObject getNodeForRow(int row)
+	protected BaseObject getObjectForRow(int row)
 	{
-		return ((TreeTableNode)adapter.nodeForRow(row)).getObject();
+		return ((TreeTableNode)objectProvider.nodeForRow(row)).getObject();
 	}
 	
-	TreeTableModelAdapter adapter;
+	TreeTableModelAdapter objectProvider;
 	Icon allocatedIcon;
 }
