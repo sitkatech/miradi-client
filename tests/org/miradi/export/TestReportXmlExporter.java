@@ -19,18 +19,20 @@ public class TestReportXmlExporter extends TestCaseWithProject
 	
 	public void testGetProjectDirectory() throws Exception
 	{
-		String[] commandLineArguments1 = {"TestProject"};
-		File projectFile1 = ReportXmlExporter.getProjectDirectory(commandLineArguments1);
-		assertEquals("wrong project file name?", "TestProject", projectFile1.getName());
+		String[] commandLineArguments1 = {"TestProject", "someDestination"};
+		File projectFile = ReportXmlExporter.getProjectDirectory(commandLineArguments1);
+		assertEquals("wrong project file name?", "TestProject", projectFile.getName());
 		
-		try
-		{
-			String[] commandLineArguments2 = {"TestProject", "SecondArgument"};
-			ReportXmlExporter.getProjectDirectory(commandLineArguments2);
-			fail("should not accecpt anthing but one command line argument");
-		}
-		catch (Exception e)
-		{
-		}
+		File xmlDestination = ReportXmlExporter.getXmlDestination(commandLineArguments1);
+		assertEquals("wrong xml destination?", "someDestination", xmlDestination.getName());
+	}
+	
+	public void testIncorrectArgumentCount()
+	{
+		String[] commandLineArguments1 = {"TestProject", "xml destination", "thirdArgument", };
+		assertTrue(ReportXmlExporter.incorrectArgumentCount(commandLineArguments1));
+		
+		String[] commandLineArguments2 = {"TestProject", "xml destination", };
+		assertFalse(ReportXmlExporter.incorrectArgumentCount(commandLineArguments2));
 	}
 }
