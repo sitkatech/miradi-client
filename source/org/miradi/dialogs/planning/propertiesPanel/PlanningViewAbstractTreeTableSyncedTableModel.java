@@ -34,12 +34,12 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		super(projectToUse);
 		
 		project = projectToUse;
-		adapter = adapterToUse;
+		objectProvider = adapterToUse;
 	}
 	
 	public int getRowCount()
 	{
-		return adapter.getRowCount();
+		return objectProvider.getRowCount();
 	}
 	
 	public String getColumnTag(int column)
@@ -49,12 +49,12 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return ((TreeTableNode)adapter.nodeForRow(row)).getObject();
+		return ((TreeTableNode)objectProvider.nodeForRow(row)).getObject();
 	}
 	
 	public TreeTableModelAdapter getTreeTableModelAdapter()
 	{
-		return adapter;
+		return objectProvider;
 	}
 
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -62,5 +62,5 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	}
 	
 	protected Project project;
-	private TreeTableModelAdapter adapter;
+	private TreeTableModelAdapter objectProvider;
 }
