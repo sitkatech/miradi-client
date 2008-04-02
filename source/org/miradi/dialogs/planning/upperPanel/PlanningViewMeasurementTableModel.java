@@ -55,7 +55,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	
 	public Object getValueAt(int row, int column)
 	{
-		BaseObject objectForRow = getNodeForRow(row);
+		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
 		if (objectForRow.getType() != Measurement.getObjectType())
 			return "";
 		

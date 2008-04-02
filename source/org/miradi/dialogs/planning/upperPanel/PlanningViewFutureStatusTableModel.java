@@ -46,7 +46,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	
 	public Object getValueAt(int row, int column)
 	{
-		BaseObject objectForRow = getNodeForRow(row);
+		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
 		if (objectForRow.getType() != Indicator.getObjectType())
 			return "";
 		

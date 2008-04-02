@@ -66,7 +66,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public Font getRowFont(int row)
 	{
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
-		BaseObject object = model.getNodeForRow(row);
+		BaseObject object = model.getBaseObjectForRowColumn(row, 0);
 		return TreeTableWithIcons.getSharedTaskFont2(object);
 	}
 	
