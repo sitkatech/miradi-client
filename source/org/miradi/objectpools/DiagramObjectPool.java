@@ -33,7 +33,7 @@ public abstract class DiagramObjectPool extends EAMNormalObjectPool
 	}
 
 	@Override
-	protected ORefList getSortedRefList()
+	public ORefList getSortedRefList()
 	{
 		ORefList refs = super.getSortedRefList();
 		refs.sort(new DiagramObjectComparator());
