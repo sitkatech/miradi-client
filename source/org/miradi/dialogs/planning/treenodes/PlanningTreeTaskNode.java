@@ -28,12 +28,10 @@ import org.miradi.utils.CodeList;
 
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
-
-	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, double costAllocationProportionToUse, CodeList visibleRowsToUse) throws Exception
+	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		task = (Task)project.findObject(taskRef);
-		costAllocationProportion = costAllocationProportionToUse;
 		
 		rebuild();
 	}
@@ -48,7 +46,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);
-			children.add(new PlanningTreeTaskNode(project, taskRef, getCostAllocationProportion(), visibleRows));
+			children.add(new PlanningTreeTaskNode(project, taskRef, visibleRows));
 		}
 	}
 
@@ -62,16 +60,10 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return (Task) getObject();
 	}
 	
-	public double getCostAllocationProportion()
-	{
-		return costAllocationProportion;
-	}
-	
 	boolean shouldSortChildren()
 	{
 		return false;
 	}
      	
 	private Task task;
-	private double costAllocationProportion;
 }

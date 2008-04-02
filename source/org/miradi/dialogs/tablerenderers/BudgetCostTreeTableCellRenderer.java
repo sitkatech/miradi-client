@@ -25,9 +25,9 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.miradi.dialogs.planning.treenodes.PlanningTreeTaskNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.AllocatedCostIcon;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
@@ -62,16 +62,19 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		if(labelComponent.getText().length() == 0)
 			return;
 		
-		TreeTableNode node = getNodeForRow(row);
+		BaseObject node = getNodeForRow(row);
 		if(node.getType() != Task.getObjectType())
 			return;
 		
-		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) node;
-		double nodeCostAlloctionProportion = taskNode.getCostAllocationProportion();
-		
+		double nodeCostAlloctionProportion = calculateAllocationProportion((Task)node);
 		if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
 			labelComponent.setIcon(allocatedIcon);
-		
+	}
+	
+	public double calculateAllocationProportion(Task task)
+	{
+		ORefList referrers = task.findObjectsThatReferToUs();
+		return (1.0 / referrers.size());
 	}
 	
 	private String annotateIfOverride(int row, JLabel labelComponent, Object value)
@@ -80,9 +83,7 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 			return null;
 		
 		String baseText = value.toString();
-		
-		TreeTableNode node = getNodeForRow(row);
-		BaseObject object = node.getObject();
+		BaseObject object = getNodeForRow(row);
 		if(object == null)
 			return baseText;
 		
@@ -92,9 +93,10 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		return baseText;
 	}
 	
-	protected TreeTableNode getNodeForRow(int row)
+	//TODO refactor rename to reflect return type
+	protected BaseObject getNodeForRow(int row)
 	{
-		return (TreeTableNode)adapter.nodeForRow(row);
+		return ((TreeTableNode)adapter.nodeForRow(row)).getObject();
 	}
 	
 	TreeTableModelAdapter adapter;
