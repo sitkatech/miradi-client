@@ -193,7 +193,7 @@ public class Objective extends Desire
 		return new ORefList(relevantRefList);
 	}
 	
-	protected Set<String> getFieldTagsToIncludeInXml()
+	public Set<String> getFieldTagsToIncludeInXml()
 	{
 		Set superTags = super.getFieldTagsToIncludeInXml();
 		HashSet<String> tags = new HashSet();
