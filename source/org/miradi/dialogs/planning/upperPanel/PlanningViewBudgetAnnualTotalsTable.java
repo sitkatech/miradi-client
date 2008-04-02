@@ -28,9 +28,9 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithIcons;
 import org.miradi.main.AppPreferences;
+import org.miradi.objects.BaseObject;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 
@@ -66,8 +66,8 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public Font getRowFont(int row)
 	{
 		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
-		TreeTableNode node = model.getNodeForRow(row);
-		return TreeTableWithIcons.getSharedTaskFont(node);
+		BaseObject object = model.getNodeForRow(row);
+		return TreeTableWithIcons.getSharedTaskFont2(object);
 	}
 	
 	public int getColumnAlignment()

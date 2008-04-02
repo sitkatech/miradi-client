@@ -23,8 +23,8 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
@@ -74,18 +74,18 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return getValueAt(rawTreeNode, column);
 	}
 
-	public Object getValueAt(Object rawNode, int column)
+	public Object getValueAt(Object rawObject, int column)
 	{
+		if (rawObject == null)
+			return "";
+		
 		try
 		{
-			AbstractPlanningTreeNode node = (AbstractPlanningTreeNode)rawNode;
-			if (node.getObject() == null)
-				return "";
-			
+			BaseObject object = (BaseObject) rawObject;
 			if (isGrandTotalColumn(column))
-				return getGrandTotalCost(node);
+				return getGrandTotalCost(object);
 		
-			return getYearlyTotalCost(node, column);
+			return getYearlyTotalCost(object, column);
 		}
 		catch (Exception e)
 		{
@@ -94,19 +94,19 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		}
 	}
 	
-	private Object getYearlyTotalCost(AbstractPlanningTreeNode node, int column) throws Exception
+	private Object getYearlyTotalCost(BaseObject objectForRow, int column) throws Exception
 	{	
-		return getBudgetCost(node, (DateRange)yearlyDateRanges.get(column));
+		return getBudgetCost(objectForRow, (DateRange)yearlyDateRanges.get(column));
 	}
 
-	private Object getGrandTotalCost(AbstractPlanningTreeNode node) throws Exception
+	private Object getGrandTotalCost(BaseObject objectForRow) throws Exception
 	{
-		return getBudgetCost(node, combinedDataRange);		
+		return getBudgetCost(objectForRow, combinedDataRange);		
 	}
 	
-	private Object getBudgetCost(AbstractPlanningTreeNode node, DateRange dateRange) throws Exception
+	private Object getBudgetCost(BaseObject object, DateRange dateRange) throws Exception
 	{
-		double totalCost = node.getObject().getProportionalBudgetCost(dateRange);      
+		double totalCost = object.getProportionalBudgetCost(dateRange);      
         if (totalCost == 0)
         	return "";
         
