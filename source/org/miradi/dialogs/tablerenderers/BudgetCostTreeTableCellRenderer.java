@@ -25,33 +25,29 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.AllocatedCostIcon;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 {
-	public BudgetCostTreeTableCellRenderer(RowColumnBaseObjectProvider providerToUse, TreeTableModelAdapter adapterToUse, FontForObjectTypeProvider fontProviderToUse)
+	public BudgetCostTreeTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
-		objectProvider = adapterToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String text = annotateIfOverride(row, renderer, value); 
-		annotateIfAllocated(row, renderer, text);
+		String text = annotateIfOverride(row, tableColumn, renderer, value); 
+		annotateIfAllocated(row, tableColumn, renderer, text);
 		
 		return renderer;
 	}
 
-	private void annotateIfAllocated(int row, JLabel labelComponent, String text)
+	private void annotateIfAllocated(int row, int tableColumn, JLabel labelComponent, String text)
 	{
 		if(text == null)
 			text = "";
@@ -62,7 +58,7 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		if(labelComponent.getText().length() == 0)
 			return;
 		
-		BaseObject node = getObjectForRow(row);
+		BaseObject node = getBaseObjectForRow(row, tableColumn);
 		if(node.getType() != Task.getObjectType())
 			return;
 		
@@ -77,13 +73,13 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		return (1.0 / referrers.size());
 	}
 	
-	private String annotateIfOverride(int row, JLabel labelComponent, Object value)
+	private String annotateIfOverride(int row, int tableColumn, JLabel labelComponent, Object value)
 	{
 		if(value == null)
 			return null;
 		
 		String baseText = value.toString();
-		BaseObject object = getObjectForRow(row);
+		BaseObject object = getBaseObjectForRow(row, tableColumn);
 		if(object == null)
 			return baseText;
 		
@@ -93,11 +89,5 @@ public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
 		return baseText;
 	}
 	
-	protected BaseObject getObjectForRow(int row)
-	{
-		return ((TreeTableNode)objectProvider.nodeForRow(row)).getObject();
-	}
-	
-	TreeTableModelAdapter objectProvider;
 	Icon allocatedIcon;
 }

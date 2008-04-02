@@ -79,7 +79,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	private BasicTableCellRenderer createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new BudgetCostTreeTableCellRenderer(this, getTreeTableAdapter(), fontProvider);
+			return new BudgetCostTreeTableCellRenderer(this, fontProvider);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRenderer(this, fontProvider);
 		return new TableCellRendererForObjects(this, fontProvider);
