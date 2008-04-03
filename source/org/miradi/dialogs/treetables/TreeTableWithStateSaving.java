@@ -201,26 +201,6 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons implements Tree
 		return objRefList;
 	}
 	
-	public ORefList getFullyExpandedRefList() throws Exception
-	{
-		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
-		ORefList fullyExpandedRefList = new ORefList();
-		recursivelyGetFullyExpansedRefs(fullyExpandedRefList, root);
-		treeTableModelAdapter.fireTableDataChanged();
-		
-		return fullyExpandedRefList;
-	}
-	
-	private void recursivelyGetFullyExpansedRefs(ORefList objRefListToUse, TreeTableNode node)
-	{
-		objRefListToUse.add(node.getObjectReference());
-		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
-		{
-			TreeTableNode childNode = node.getChild(childIndex);
-			recursivelyGetFullyExpansedRefs(objRefListToUse, childNode);
-		}
-	}
-	
 	protected EAMTreeTableModelAdapter treeTableModelAdapter;
 
 	private boolean ignoreNotifications;
