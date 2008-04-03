@@ -221,14 +221,19 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	//TODO the nodes need to implement the content of this method
 	public Object getValueAt(Object rawNode, int col)
 	{
+		AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
+		BaseObject baseObject = treeNode.getObject();
+		return getValueAt(baseObject, col);
+	}
+
+	public Object getValueAt(BaseObject baseObject, int col)
+	{
 		try
-		{
-			AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
-			String columnTag = getColumnTagForNode(treeNode.getType(), col);
-			BaseObject baseObject = treeNode.getObject();
+		{	
 			if(baseObject == null)
 				return null;
 
+			String columnTag = getColumnTagForNode(baseObject.getType(), col);
 			if (! baseObject.doesFieldExist(columnTag))
 				return null;
 
