@@ -152,18 +152,18 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	{
 		TreeTableNode thisRoot = (TreeTableNode) getRoot();
 		ORefList fullyExpandedRefList = new ORefList();
-		recursivelyGetFullyExpansedRefs(fullyExpandedRefList, thisRoot);
+		recursivelyGetFullyExpandedRefs(fullyExpandedRefList, thisRoot);
 		
 		return fullyExpandedRefList;
 	}
 	
-	private void recursivelyGetFullyExpansedRefs(ORefList objRefListToUse, TreeTableNode node)
+	private void recursivelyGetFullyExpandedRefs(ORefList objRefListToUse, TreeTableNode node)
 	{
 		objRefListToUse.add(node.getObjectReference());
 		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
 		{
 			TreeTableNode childNode = node.getChild(childIndex);
-			recursivelyGetFullyExpansedRefs(objRefListToUse, childNode);
+			recursivelyGetFullyExpandedRefs(objRefListToUse, childNode);
 		}
 	}
 	
