@@ -115,19 +115,19 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	{
 		TreeTableModelAdapter treeTableModelAdapter = treeTableToUse.getTreeTableAdapter();
 		
-		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
+		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
 		listenForColumnWidthChanges(annualTotalsTable);
 		rowHeightController.addTable(annualTotalsTable);
 		
-		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
+		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableToUse);
 		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, measurementModel);
 		listenForColumnWidthChanges(measurementTable);
 		rowHeightController.addTable(measurementTable);
 		
-		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
+		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableToUse);
 		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
 		listenForColumnWidthChanges(futureStatusTable);

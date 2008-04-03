@@ -43,8 +43,6 @@ import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class PlanningTreeXmlExporter
 {
 	public PlanningTreeXmlExporter(Project projectToUse) throws Exception
@@ -64,24 +62,23 @@ public class PlanningTreeXmlExporter
 		treeTable.restoreTreeState(fullyExpandedNodeRefs);
 		
 		PlanningViewFontProvider fontProvider = new PlanningViewFontProvider();
-		TreeTableModelAdapter treeTableModelAdapter = treeTable.getTreeTableAdapter();
 		multiTableExporter = new MultiTableCombinedAsOneExporter();
 		multiTableExporter.addTable(treeTable);
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
-			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTableModelAdapter);
+			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTable);
 			PlanningViewBudgetAnnualTotalsTable annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 			multiTableExporter.addTable(annualTotalsTable);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
-			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTableModelAdapter);
+			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTable);
 			PlanningViewMeasurementTable measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
 			multiTableExporter.addTable(measurementTable);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
-			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTableModelAdapter);
+			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTable);
 			PlanningViewFutureStatusTable futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 			multiTableExporter.addTable(futureStatusTable);
 		}

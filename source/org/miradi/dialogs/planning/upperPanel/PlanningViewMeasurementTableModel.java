@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
@@ -28,11 +29,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TrendQuestion;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewMeasurementTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
+	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
 	}

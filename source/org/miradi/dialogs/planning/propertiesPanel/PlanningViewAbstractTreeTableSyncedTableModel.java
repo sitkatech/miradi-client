@@ -20,21 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel
 {
-	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
+	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
 		super(projectToUse);
 		
 		project = projectToUse;
-		objectProvider = adapterToUse;
+		objectProvider = providerToUse;
 	}
 	
 	public int getRowCount()
@@ -49,10 +47,10 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return ((TreeTableNode)objectProvider.nodeForRow(row)).getObject();
+		return objectProvider.getBaseObjectForRowColumn(row, column);
 	}
 	
-	public TreeTableModelAdapter getTreeTableModelAdapter()
+	public RowColumnBaseObjectProvider getTreeTableModelAdapter()
 	{
 		return objectProvider;
 	}
@@ -62,5 +60,5 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	}
 	
 	protected Project project;
-	private TreeTableModelAdapter objectProvider;
+	private RowColumnBaseObjectProvider objectProvider;
 }

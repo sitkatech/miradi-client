@@ -23,19 +23,18 @@ import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewBudgetAnnualTotalTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
+	public PlanningViewBudgetAnnualTotalTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
-		super(projectToUse, adapterToUse);
+		super(projectToUse, providerToUse);
 
 		yearlyDateRanges = getProjectCalendar().getYearlyDateRanges();
 		combinedDataRange = getProjectCalendar().combineStartToEndProjectRange();

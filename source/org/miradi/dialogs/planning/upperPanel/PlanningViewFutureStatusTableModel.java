@@ -20,16 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewFutureStatusTableModel(Project projectToUse, TreeTableModelAdapter adapterToUse) throws Exception
+	public PlanningViewFutureStatusTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
 	}
