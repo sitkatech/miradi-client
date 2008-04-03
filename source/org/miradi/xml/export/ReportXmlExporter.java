@@ -105,14 +105,13 @@ public class ReportXmlExporter
 			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
 
 		Project newProject = new Project();
+		File projectDirectory = getProjectDirectory(commandLineArguments);
+		if(!ProjectServer.isExistingProject(projectDirectory))
+			throw new RuntimeException("Project does not exist:" + projectDirectory);
+
+		newProject.createOrOpen(projectDirectory);
 		try
 		{
-			File projectDirectory = getProjectDirectory(commandLineArguments);
-			if(!ProjectServer.isExistingProject(projectDirectory))
-				throw new RuntimeException("Project does not exist:" + projectDirectory);
-
-			newProject.createOrOpen(projectDirectory);
-
 			new ReportXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
 			System.out.println("Export complete");
 		}
