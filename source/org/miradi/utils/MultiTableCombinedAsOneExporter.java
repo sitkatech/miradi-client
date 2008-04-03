@@ -35,7 +35,7 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		tables = new Vector();
 	}
 	
-	public void addTable(ExportableTableInterface table)
+	public void addExportable(ExportableTableInterface table)
 	{
 		tables.add(table);
 	}
