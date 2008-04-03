@@ -51,22 +51,22 @@ public class PlanningTreeXmlExporter
 	{
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
 		
-		multiTableExporter = new MultiTableCombinedAsOneExporter();
-		multiTableExporter.addTable(model);
+		multiModelExporter = new MultiTableCombinedAsOneExporter();
+		multiModelExporter.addTable(model);
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
-			multiTableExporter.addTable(annualTotalsModel);
+			multiModelExporter.addTable(annualTotalsModel);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), model);
-			multiTableExporter.addTable(measurementModel);
+			multiModelExporter.addTable(measurementModel);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), model);
-			multiTableExporter.addTable(futureStatusModel);
+			multiModelExporter.addTable(futureStatusModel);
 		}
 	}
 	
@@ -80,21 +80,21 @@ public class PlanningTreeXmlExporter
 	private void toXml(UnicodeWriter out, CodeList rowsToShow, CodeList columnsToShow, String treeName) throws Exception
 	{
 		createTables(rowsToShow, columnsToShow);		
-		int columnCount = multiTableExporter.getColumnCount();
-		int rowCount = multiTableExporter.getRowCount();
+		int columnCount = multiModelExporter.getColumnCount();
+		int rowCount = multiModelExporter.getRowCount();
 
 		out.writeln("<" + treeName + ">");
 		for (int row = 0; row < rowCount; ++row)
 		{
-			BaseObject objectForRow = multiTableExporter.getBaseObjectForRow(row);
+			BaseObject objectForRow = multiModelExporter.getBaseObjectForRow(row);
 			String objectTypeName = getSafeTypeName(objectForRow);
 			out.writeln("<Row ObjectTypeName='" + objectTypeName + "'>");
 			for (int column = 0; column < columnCount; ++column)
 			{
 				
 				out.write("<" + getElementName(column) + ">");
-				String padding = pad(multiTableExporter.getDepth(row), column);
-				String safeValue = getSafeValue(multiTableExporter, row, column, objectTypeName);
+				String padding = pad(multiModelExporter.getDepth(row), column);
+				String safeValue = getSafeValue(multiModelExporter, row, column, objectTypeName);
 				out.write(padding + safeValue);
 				out.writeln("</" + getElementName(column) + ">");
 			}
@@ -115,7 +115,7 @@ public class PlanningTreeXmlExporter
 
 	private String getElementName(int column)
 	{
-		return multiTableExporter.getHeaderFor(column).replaceAll(" ", "");
+		return multiModelExporter.getHeaderFor(column).replaceAll(" ", "");
 	}
 	
 	private String getSafeValue(ExportableTableInterface table, int row, int column, String objectTypeName)
@@ -166,5 +166,5 @@ public class PlanningTreeXmlExporter
 	}
 	
 	private Project project;
-	private MultiTableCombinedAsOneExporter multiTableExporter;
+	private MultiTableCombinedAsOneExporter multiModelExporter;
 }
