@@ -52,21 +52,21 @@ public class PlanningTreeXmlExporter
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
 		
 		multiModelExporter = new MultiTableCombinedAsOneExporter();
-		multiModelExporter.addTable(model);
+		multiModelExporter.addExportable(model);
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
-			multiModelExporter.addTable(annualTotalsModel);
+			multiModelExporter.addExportable(annualTotalsModel);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), model);
-			multiModelExporter.addTable(measurementModel);
+			multiModelExporter.addExportable(measurementModel);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), model);
-			multiModelExporter.addTable(futureStatusModel);
+			multiModelExporter.addExportable(futureStatusModel);
 		}
 	}
 	

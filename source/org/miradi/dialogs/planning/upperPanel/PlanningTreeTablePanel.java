@@ -252,24 +252,24 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private void updateRightSideTablePanels() throws Exception
 	{
 		multiTableExporter.clear();
-		multiTableExporter.addTable(getTree());
+		multiTableExporter.addExportable(getTree());
 		mainPanel.removeAll();
 		mainPanel.add(treeTableScrollPane);
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			mainPanel.add(annualTotalsScrollPane);
-			multiTableExporter.addTable(annualTotalsTable);
+			multiTableExporter.addExportable(annualTotalsTable);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			mainPanel.add(measurementScrollPane);
-			multiTableExporter.addTable(measurementTable);
+			multiTableExporter.addExportable(measurementTable);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			mainPanel.add(futureStatusScrollPane);
-			multiTableExporter.addTable(futureStatusTable);
+			multiTableExporter.addExportable(futureStatusTable);
 		}
 		
 		validate();
