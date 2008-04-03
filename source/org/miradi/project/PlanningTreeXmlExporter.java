@@ -32,7 +32,6 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -57,9 +56,6 @@ public class PlanningTreeXmlExporter
 	{
 		PlanningTreeTableModel model = new PlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
 		PlanningTreeTable treeTable = new PlanningTreeTable(getProject(), model, new PlanningViewFontProvider());
-		
-		ORefList fullyExpandedNodeRefs = treeTable.getFullyExpandedRefList();
-		treeTable.restoreTreeState(fullyExpandedNodeRefs);
 		
 		PlanningViewFontProvider fontProvider = new PlanningViewFontProvider();
 		multiTableExporter = new MultiTableCombinedAsOneExporter();

@@ -24,6 +24,7 @@ import javax.swing.tree.TreePath;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -145,6 +146,25 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		return node.getChildCount();
+	}
+	
+	public ORefList getFullyExpandedRefList() throws Exception
+	{
+		TreeTableNode thisRoot = (TreeTableNode) getRoot();
+		ORefList fullyExpandedRefList = new ORefList();
+		recursivelyGetFullyExpansedRefs(fullyExpandedRefList, thisRoot);
+		
+		return fullyExpandedRefList;
+	}
+	
+	private void recursivelyGetFullyExpansedRefs(ORefList objRefListToUse, TreeTableNode node)
+	{
+		objRefListToUse.add(node.getObjectReference());
+		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
+		{
+			TreeTableNode childNode = node.getChild(childIndex);
+			recursivelyGetFullyExpansedRefs(objRefListToUse, childNode);
+		}
 	}
 	
 	public static final String DEFAULT_COLUMN = "Item";
