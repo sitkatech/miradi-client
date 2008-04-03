@@ -577,6 +577,11 @@ public class ObjectManager
 		
 	}
 	
+	public HashMap getAllPools()
+	{
+		return new HashMap(pools);
+	}
+	
 	private Project project;
 	private ProjectChainObject projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;

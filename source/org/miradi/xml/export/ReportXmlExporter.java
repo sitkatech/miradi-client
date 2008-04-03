@@ -7,6 +7,7 @@ package org.miradi.xml.export;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -17,7 +18,6 @@ import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
@@ -60,12 +60,12 @@ public class ReportXmlExporter
 	private void exportPools(UnicodeWriter out) throws IOException, Exception
 	{
 		out.writeln("<ObjectPools>");
-		for (int typeIndex = 1; typeIndex < ObjectType.OBJECT_TYPE_COUNT; ++typeIndex)
+		HashMap allPools = getProject().getObjectManager().getAllPools();
+		Iterator iter = allPools.keySet().iterator();
+		while(iter.hasNext())
 		{
-			EAMObjectPool pool = getProject().getPool(typeIndex);
-			if (pool != null)
-				exportPoolObjects(out, pool);
-
+			EAMObjectPool pool = (EAMObjectPool)allPools.get(iter.next());
+			exportPoolObjects(out, pool);
 		}
 		out.writeln("</ObjectPools>");
 	}
