@@ -218,7 +218,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		}
 	}
 	
-	//TODO the nodes need to implement the content of thie metod
+	//TODO the nodes need to implement the content of this metod
 	public Object getValueAt(Object rawNode, int col)
 	{
 		try
