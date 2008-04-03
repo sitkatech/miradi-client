@@ -114,6 +114,7 @@ public class ReportXmlExporter
 			newProject.createOrOpen(projectDirectory);
 
 			new ReportXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
+			System.out.println("Export complete");
 		}
 		finally
 		{
