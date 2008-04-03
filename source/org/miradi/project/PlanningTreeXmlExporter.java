@@ -23,15 +23,10 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalsTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
-import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -54,29 +49,24 @@ public class PlanningTreeXmlExporter
 	//exported tree of refs instead of a table of cell values.              
 	private void createTables(CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
-		PlanningTreeTableModel model = new PlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
-		PlanningTreeTable treeTable = new PlanningTreeTable(getProject(), model, new PlanningViewFontProvider());
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
 		
-		PlanningViewFontProvider fontProvider = new PlanningViewFontProvider();
 		multiTableExporter = new MultiTableCombinedAsOneExporter();
-		multiTableExporter.addTable(treeTable);
+		multiTableExporter.addTable(model);
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
-			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeTable);
-			PlanningViewBudgetAnnualTotalsTable annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
-			multiTableExporter.addTable(annualTotalsTable);
+			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
+			multiTableExporter.addTable(annualTotalsModel);
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
-			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeTable);
-			PlanningViewMeasurementTable measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
-			multiTableExporter.addTable(measurementTable);
+			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), model);
+			multiTableExporter.addTable(measurementModel);
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
-			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeTable);
-			PlanningViewFutureStatusTable futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
-			multiTableExporter.addTable(futureStatusTable);
+			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), model);
+			multiTableExporter.addTable(futureStatusModel);
 		}
 	}
 	
