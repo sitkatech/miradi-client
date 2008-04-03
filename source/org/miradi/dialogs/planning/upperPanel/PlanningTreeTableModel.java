@@ -233,6 +233,9 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			if(baseObject == null)
 				return null;
 
+			if (col == 0)
+				return baseObject.toString();
+
 			String columnTag = getColumnTagForNode(baseObject.getType(), col);
 			if (! baseObject.doesFieldExist(columnTag))
 				return null;
