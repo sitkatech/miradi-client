@@ -56,7 +56,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 
 	public Object getValueAt(int row, int column)
 	{
-		return null;
+		return getValueAt(getBaseObjectForRow(row), column);
 	}
 	
 	private ORefList rowObjectRefs;
