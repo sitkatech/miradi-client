@@ -218,7 +218,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		}
 	}
 	
-	//TODO the nodes need to implement the content of this metod
+	//TODO the nodes need to implement the content of this method
 	public Object getValueAt(Object rawNode, int col)
 	{
 		try
@@ -262,6 +262,11 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	public CodeList getColumnTags()
 	{
 		return columnsToShow;	
+	}
+	
+	protected Project getProject()
+	{
+		return project;
 	}
 	
 	private Project project;
