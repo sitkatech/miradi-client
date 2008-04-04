@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
@@ -49,18 +48,6 @@ public class EAMObjectPool extends ObjectPool
 	public ORefList getORefList()
 	{
 		return new ORefList(getObjectType(), new IdList(getObjectType(), getIds()));
-	}
-
-	
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		out.writeln("<Pool objectType='" + getObjectType() + "'>");
-		ORefList ids = getSortedRefList();
-		for(int i = 0; i < ids.size(); ++i)
-		{
-			
-		}
-		out.writeln("</Pool>");
 	}
 
 	public ORefList getSortedRefList()

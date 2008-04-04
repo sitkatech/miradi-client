@@ -570,8 +570,6 @@ public class ObjectManager
 		Iterator iter = pools.keySet().iterator();
 		while(iter.hasNext())
 		{
-			EAMObjectPool pool = (EAMObjectPool)pools.get(iter.next());
-			pool.toXml(out);
 		}
 		out.writeln("</ObjectPools>");
 		
