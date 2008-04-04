@@ -24,7 +24,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -73,7 +72,7 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 
 		try
 		{
-			exportJustProjectXml(getProject(), chosen);
+			new ReportXmlExporter(getProject()).export(chosen);
 			EAM.notifyDialog(EAM.text("Export complete"));
 		}
 		catch(IOException e)
@@ -105,20 +104,6 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		return destination;
 	}
 
-	private static void exportJustProjectXml(Project project, File destination) throws IOException, Exception
-	{
-		UnicodeWriter out = new UnicodeWriter(destination);
-		try
-		{
-			out.writeln("<MiradiProject>");
-			out.writeln("</MiradiProject>");
-		}
-		finally
-		{
-			out.close();
-		}
-	}
-	
 	private static void exportDiagrams(Project project, File destinationDirectory) throws Exception
 	{
 		exportDiagrams(project, destinationDirectory, "ConceptualModel", project.getConceptualModelDiagramPool().getRefList());
