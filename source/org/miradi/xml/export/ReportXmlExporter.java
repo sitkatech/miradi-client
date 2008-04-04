@@ -71,7 +71,7 @@ public class ReportXmlExporter
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getProject().getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		
-		FactorLink.writeRating(getProject(), out, getProject().getProjectSummaryThreatRating(), "OverallProjectThreatRating");
+		writeRating(getProject(), out, getProject().getProjectSummaryThreatRating(), "OverallProjectThreatRating");
 		exportPools(out);
 		new PlanningTreeXmlExporter(getProject()).toXmlPlanningTreeTables(out);
 		out.writeln("</MiradiProject>");

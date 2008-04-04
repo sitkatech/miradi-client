@@ -91,7 +91,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
@@ -871,7 +870,6 @@ public class Project
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
 		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
 		
-		FactorLink.writeRating(this, out, getProjectSummaryThreatRating(), "OverallProjectThreatRating");
 		objectManager.toXml(out);
 		
 		new PlanningTreeXmlExporter(this).toXmlPlanningTreeTables(out);
