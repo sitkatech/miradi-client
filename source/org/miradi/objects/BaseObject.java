@@ -780,14 +780,6 @@ abstract public class BaseObject
 		return json;
 	}
 	
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		out.write("<" + getTypeName() + " ref='");
-		getRef().toXml(out);
-		out.writeln("'>");		
-		out.writeln("</" + getTypeName() + ">");
-	}
-	
 	public static String toHtml(BaseObject[] resources)
 	{
 		StringBuffer result = new StringBuffer();

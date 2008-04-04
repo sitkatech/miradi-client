@@ -58,7 +58,7 @@ public class EAMObjectPool extends ObjectPool
 		ORefList ids = getSortedRefList();
 		for(int i = 0; i < ids.size(); ++i)
 		{
-			findObject(ids.get(i)).toXml(out);
+			
 		}
 		out.writeln("</Pool>");
 	}
