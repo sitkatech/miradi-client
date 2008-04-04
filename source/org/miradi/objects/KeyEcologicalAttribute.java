@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.util.Set;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
@@ -34,9 +33,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -155,17 +152,6 @@ public class KeyEcologicalAttribute extends BaseObject
 			statuses.add(status);
 		}
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
-	}
-	
-	public void writeNonFieldXml(UnicodeWriter out) throws Exception
-	{
-		ChoiceItem statusChoice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(computeTNCViability());
-		if (statusChoice == null)
-			return;
-		
-		out.write("<" + PSEUDO_TAG_VIABILITY_STATUS + ">");
-		statusChoice.toXml(out);
-		out.writeln("</" + PSEUDO_TAG_VIABILITY_STATUS + ">");
 	}
 	
 	public String getShortLabel()
