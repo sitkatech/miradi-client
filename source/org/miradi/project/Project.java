@@ -383,7 +383,7 @@ public class Project
 		return simpleThreatFramework;
 	}
 
-	private boolean isStressBaseMode()
+	public boolean isStressBaseMode()
 	{
 		return getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}

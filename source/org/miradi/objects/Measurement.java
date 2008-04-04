@@ -78,6 +78,16 @@ public class Measurement extends BaseObject
 		return date.getDate();
 	}
 	
+	public String getStatus()
+	{
+		return status.get();
+	}
+	
+	public String getSummary()
+	{
+		return summary.get();
+	}
+	
 	public void writeNonFieldXml(UnicodeWriter out) throws Exception
 	{
 		super.writeNonFieldXml(out);
