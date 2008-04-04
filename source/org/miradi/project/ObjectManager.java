@@ -22,10 +22,8 @@ package org.miradi.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Vector;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramChainObject;
@@ -564,17 +562,6 @@ public class ObjectManager
 		referrerCache.remove(refToRemove);
 	}
 
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		out.writeln("<ObjectPools>");
-		Iterator iter = pools.keySet().iterator();
-		while(iter.hasNext())
-		{
-		}
-		out.writeln("</ObjectPools>");
-		
-	}
-	
 	public HashMap getAllPools()
 	{
 		return new HashMap(pools);
