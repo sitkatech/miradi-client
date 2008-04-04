@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<conservation_project xmlns="http://services.tnc.org/schema/conservation-project/0.1">
+
+	<document_exchange status="success">
+	</document_exchange>
+	
+	<project_summary share_outside_organization="true">
+		
+		<name>
+		</name>
+		
+		<exporter_name>
+		</exporter_name>
+		
+		<exporter_version>
+		</exporter_version>
+		
+		<data_export_date>
+		</data_export_date>
+		
+	</project_summary>
+
+</conservation_project>
