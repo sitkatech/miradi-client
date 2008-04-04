@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
@@ -86,13 +85,6 @@ public class Measurement extends BaseObject
 	public String getSummary()
 	{
 		return summary.get();
-	}
-	
-	public void writeNonFieldXml(UnicodeWriter out) throws Exception
-	{
-		super.writeNonFieldXml(out);
-		String statusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(status.get()).getCode();
-		Indicator.writeRatingCodes(out, statusRatingCode, summary.get(), "StatusRatingValues");
 	}
 	
 	public String toString()

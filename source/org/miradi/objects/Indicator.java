@@ -19,10 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.io.IOException;
 import java.util.Set;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -40,10 +38,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateRange;
@@ -117,43 +113,6 @@ public class Indicator extends BaseObject
 		return statusCode;
 	}
 
-	public void writeNonFieldXml(UnicodeWriter out) throws Exception
-	{
-		super.writeNonFieldXml(out);
-		out.writeln("<CurrentStatus>");
-		ChoiceItem choice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(getCurrentStatus());
-		choice.toXml(out);
-		out.writeln("</CurrentStatus>");
-		
-		out.writeln("<LatestProgressReport>");
-		ChoiceItem latestProgressChoice = getProject().getQuestion(ProgressReportStatusQuestion.class).findChoiceByCode(getLatestProgressReportDate());
-		latestProgressChoice.toXml(out);
-		out.writeln("</LatestProgressReport>");
-		
-		//TODO: Don't export these values in a hard-coded way
-		String futureStatusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(futureStatusRating.get()).getCode();
-		writeRatingCodes(out, futureStatusRatingCode, futureStatusSummary.get(), "FutureStatusRatingValues");
-	}
-
-	public static void writeRatingCodes(UnicodeWriter out, String statusRatingCode, String statusRatingValue, String xmlTag) throws IOException
-	{
-		out.writeln("<" + xmlTag + ">");
-		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.POOR);
-		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.FAIR);
-		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.GOOD);
-		writeOutValue(out, statusRatingCode, statusRatingValue, StatusQuestion.VERY_GOOD);
-		out.write("</" + xmlTag + ">");
-	}
-
-	private static void writeOutValue(UnicodeWriter out, String statusRatingCode, String statusRatingValue, String ratingCode) throws IOException
-	{
-		out.write("<Value code='" + ratingCode+ "'>");
-		if (statusRatingCode.equals(ratingCode))
-			out.write(statusRatingValue);
-
-		out.write("</Value>");
-	}
-	
 	private String getIndicatorMethodsSingleLine()
 	{
 		StringBuffer result = new StringBuffer();
