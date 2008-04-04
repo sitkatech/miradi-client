@@ -388,6 +388,10 @@ public class EAM
 		return url.getPath();
 	}
 
+	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
+	{
+		return getResourceURL(ResourcesHandler.class, resourceFileName);
+	}
 
 	public static URL getResourceURL(Class thisClass, String resourceFileName) throws MalformedURLException
 	{
