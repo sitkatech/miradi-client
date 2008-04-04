@@ -785,13 +785,7 @@ abstract public class BaseObject
 		out.write("<" + getTypeName() + " ref='");
 		getRef().toXml(out);
 		out.writeln("'>");		
-		writeNonFieldXml(out);
 		out.writeln("</" + getTypeName() + ">");
-	}
-	
-	public void writeNonFieldXml(UnicodeWriter out) throws Exception
-	{
-		
 	}
 	
 	public static String toHtml(BaseObject[] resources)
