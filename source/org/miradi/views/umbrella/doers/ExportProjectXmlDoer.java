@@ -38,6 +38,7 @@ import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
+import org.miradi.xml.export.ReportXmlExporter;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
 {
@@ -100,7 +101,7 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 	private static File exportProjectXml(Project project, File destinationDirectory) throws IOException, Exception
 	{
 		File destination = new File(destinationDirectory, project.getFilename() + ".xml");
-		exportJustProjectXml(project, destination);
+		new ReportXmlExporter(project).export(destination);
 		return destination;
 	}
 
