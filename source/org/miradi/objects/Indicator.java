@@ -106,7 +106,7 @@ public class Indicator extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 	
-	String getCurrentStatus()
+	public String getCurrentStatus()
 	{
 		ORef measurementRef = getLatestMeasurementRef();
 		if(measurementRef == null || measurementRef.isInvalid())
@@ -254,6 +254,16 @@ public class Indicator extends BaseObject
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
+	}
+	
+	public String getFutureStatusRating()
+	{
+		return futureStatusRating.get();
+	}
+	
+	public String getFutureStatusSummary()
+	{
+		return futureStatusSummary.get();
 	}
 		
 	public static boolean canReferToThisType(int type)

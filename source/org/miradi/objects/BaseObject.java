@@ -1256,7 +1256,7 @@ abstract public class BaseObject
 		return getData(fieldTag);
 	}
 	
-	protected String  getLatestProgressReportDate()
+	public String  getLatestProgressReportDate()
 	{
 		ProgressReport progressReport = getLatestProgressReport();
 		if (progressReport == null)

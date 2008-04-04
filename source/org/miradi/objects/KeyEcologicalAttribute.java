@@ -175,10 +175,12 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public static boolean is(ORef ref)
 	{
-		if (ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
-			return true;
-		
-		return false;
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
 	}
 	
 	public static KeyEcologicalAttribute find(ObjectManager objectManager, ORef keaRef)
