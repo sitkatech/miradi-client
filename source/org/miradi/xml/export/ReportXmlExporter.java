@@ -161,7 +161,7 @@ public class ReportXmlExporter
 		
 		Measurement measurement = (Measurement) object;
 		String statusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(measurement.getStatus()).getCode();
-		Indicator.writeRatingCodes(out, statusRatingCode, measurement.getSummary(), "StatusRatingValues");
+		writeRatingCodes(out, statusRatingCode, measurement.getSummary(), "StatusRatingValues");
 	}
 	
 	public void writeKeyEcologicalAttributeNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
