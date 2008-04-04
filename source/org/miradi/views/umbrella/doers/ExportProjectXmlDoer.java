@@ -111,7 +111,6 @@ public class ExportProjectXmlDoer extends MainWindowDoer
 		try
 		{
 			out.writeln("<MiradiProject>");
-			project.toXml(out);
 			out.writeln("</MiradiProject>");
 		}
 		finally
