@@ -30,9 +30,6 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Vector;
 
-import org.martus.util.MultiCalendar;
-import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
@@ -865,15 +862,6 @@ public class Project
 		return new String(asArray);
 	}
 	
-	public void toXml(UnicodeWriter out) throws Exception
-	{
-		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getFilename()) + "</FileName>");
-		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
-		
-		
-		new PlanningTreeXmlExporter(this).toXmlPlanningTreeTables(out);
-	}
-
 	public int getProjectSummaryThreatRating()
 	{
 		if (isStressBaseMode())
