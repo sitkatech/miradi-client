@@ -22,6 +22,7 @@ package org.miradi.xml;
 import java.io.File;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public abstract class XmlExporter
@@ -42,6 +43,21 @@ public abstract class XmlExporter
 		{
 			out.close();
 		}
+	}
+	
+	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
+	{
+		return new File(EAM.getHomeDirectory(), commandLineArguments[0]);
+	}
+	
+	public static File getXmlDestination(String[] commandLineArguments) throws Exception
+	{
+		return new File(commandLineArguments[1]);
+	}
+
+	public static boolean incorrectArgumentCount(String[] commandLineArguments)
+	{
+		return commandLineArguments.length != 2;
 	}
 	
 	protected Project getProject()
