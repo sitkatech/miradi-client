@@ -37,7 +37,7 @@ import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
-import org.miradi.xml.export.ReportXmlExporter;
+import org.miradi.xml.reports.export.ReportXmlExporter;
 
 public class ExportProjectXmlDoer extends MainWindowDoer
 {
