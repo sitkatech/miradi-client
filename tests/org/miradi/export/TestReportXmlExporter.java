@@ -8,7 +8,7 @@ package org.miradi.export;
 import java.io.File;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.xml.export.ReportXmlExporter;
+import org.miradi.xml.reports.export.ReportXmlExporter;
 
 public class TestReportXmlExporter extends TestCaseWithProject
 {
