@@ -16,15 +16,40 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/  
-package org.miradi.xml.conpro.export;
+*/ 
+package org.miradi.xml;
 
+import java.io.File;
+
+import org.martus.util.UnicodeWriter;
 import org.miradi.project.Project;
 
-public class ConproXmlExporter
+public abstract class XmlExporter
 {
-	public ConproXmlExporter(Project project)
+	public XmlExporter(Project projectToUse)
 	{
-		
+		project = projectToUse;
 	}
+	
+	public void export(File destination) throws Exception
+	{
+		UnicodeWriter out = new UnicodeWriter(destination);
+		try
+		{
+			exportProject(out);
+		}
+		finally
+		{
+			out.close();
+		}
+	}
+	
+	protected Project getProject()
+	{
+		return project;
+	}
+	
+	abstract protected void exportProject(UnicodeWriter out) throws Exception;
+	
+	private Project project;
 }
