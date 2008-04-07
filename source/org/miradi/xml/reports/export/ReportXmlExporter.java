@@ -57,29 +57,17 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.Translation;
+import org.miradi.xml.XmlExporter;
 
 
-public class ReportXmlExporter
+public class ReportXmlExporter extends XmlExporter
 {
 	public ReportXmlExporter(Project projectToUse) throws Exception
 	{
-		project = projectToUse;
+		super(projectToUse);
 	}
 
-	public void export(File destination) throws Exception
-	{
-		UnicodeWriter out = new UnicodeWriter(destination);
-		try
-		{
-			exportProject(out);
-		}
-		finally
-		{
-			out.close();
-		}
-	}
-	
-	private void exportProject(UnicodeWriter out) throws IOException, Exception
+	protected void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<MiradiProject>");
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getProject().getFilename()) + "</FileName>");
@@ -379,12 +367,5 @@ public class ReportXmlExporter
 	public static boolean incorrectArgumentCount(String[] commandLineArguments)
 	{
 		return commandLineArguments.length != 2;
-	}
-	
-	private Project getProject()
-	{
-		return project;
-	}
-	
-	private Project project; 
+	} 
 }
