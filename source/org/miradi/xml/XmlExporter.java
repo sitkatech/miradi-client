@@ -22,6 +22,7 @@ package org.miradi.xml;
 import java.io.File;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
@@ -44,6 +45,20 @@ public abstract class XmlExporter
 			out.close();
 		}
 	}
+	
+	protected static Project getOpenedProject(String[] commandLineArguments) throws Exception
+	{
+		if (incorrectArgumentCount(commandLineArguments))
+			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
+
+		Project newProject = new Project();
+		File projectDirectory = getProjectDirectory(commandLineArguments);
+		if(!ProjectServer.isExistingProject(projectDirectory))
+			throw new RuntimeException("Project does not exist:" + projectDirectory);
+
+		newProject.createOrOpen(projectDirectory);
+		return newProject;
+	}	 
 	
 	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
 	{
