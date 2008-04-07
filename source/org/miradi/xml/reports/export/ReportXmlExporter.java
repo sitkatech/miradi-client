@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.reports.export;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,7 +28,6 @@ import java.util.Set;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
-import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ObjectData;
@@ -333,15 +331,7 @@ public class ReportXmlExporter extends XmlExporter
 
 	public static void main(String[] commandLineArguments) throws Exception
 	{	
-		if (incorrectArgumentCount(commandLineArguments))
-			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
-
-		Project newProject = new Project();
-		File projectDirectory = getProjectDirectory(commandLineArguments);
-		if(!ProjectServer.isExistingProject(projectDirectory))
-			throw new RuntimeException("Project does not exist:" + projectDirectory);
-
-		newProject.createOrOpen(projectDirectory);
+		Project newProject = getOpenedProject(commandLineArguments);
 		try
 		{
 			Translation.loadFieldLabels();
@@ -352,5 +342,5 @@ public class ReportXmlExporter extends XmlExporter
 		{
 			newProject.close();
 		}
-	}	 
+	}
 }
