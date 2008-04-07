@@ -67,6 +67,7 @@ public class ReportXmlExporter extends XmlExporter
 		super(projectToUse);
 	}
 
+	@Override
 	protected void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<MiradiProject>");

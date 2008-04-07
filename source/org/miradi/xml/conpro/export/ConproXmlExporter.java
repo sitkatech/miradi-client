@@ -19,12 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */  
 package org.miradi.xml.conpro.export;
 
+import org.martus.util.UnicodeWriter;
 import org.miradi.project.Project;
+import org.miradi.xml.XmlExporter;
 
-public class ConproXmlExporter
+public class ConproXmlExporter extends XmlExporter
 {
 	public ConproXmlExporter(Project project)
 	{
-		
+		super(project);
+	}
+
+	@Override
+	protected void exportProject(UnicodeWriter out) throws Exception
+	{
+		out.writeln("<MiradiProject>");
+		out.writeln("</MiradiProject>");
 	}
 }
