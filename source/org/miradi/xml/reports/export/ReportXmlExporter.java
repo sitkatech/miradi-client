@@ -32,7 +32,6 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -353,20 +352,5 @@ public class ReportXmlExporter extends XmlExporter
 		{
 			newProject.close();
 		}
-	}	
-	
-	public static File getProjectDirectory(String[] commandLineArguments) throws Exception
-	{
-		return new File(EAM.getHomeDirectory(), commandLineArguments[0]);
-	}
-	
-	public static File getXmlDestination(String[] commandLineArguments) throws Exception
-	{
-		return new File(commandLineArguments[1]);
-	}
-
-	public static boolean incorrectArgumentCount(String[] commandLineArguments)
-	{
-		return commandLineArguments.length != 2;
-	} 
+	}	 
 }
