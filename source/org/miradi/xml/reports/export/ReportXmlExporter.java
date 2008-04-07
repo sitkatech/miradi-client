@@ -53,7 +53,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
-import org.miradi.utils.Translation;
 import org.miradi.xml.XmlExporter;
 
 
@@ -334,9 +333,8 @@ public class ReportXmlExporter extends XmlExporter
 		Project newProject = getOpenedProject(commandLineArguments);
 		try
 		{
-			Translation.loadFieldLabels();
 			new ReportXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
-			System.out.println("Export complete");
+			System.out.println("Export report xml complete");
 		}
 		finally
 		{

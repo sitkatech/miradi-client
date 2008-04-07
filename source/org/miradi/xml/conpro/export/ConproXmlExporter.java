@@ -36,4 +36,18 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("<MiradiProject>");
 		out.writeln("</MiradiProject>");
 	}
+	
+	public static void main(String[] commandLineArguments) throws Exception
+	{	
+		Project newProject = getOpenedProject(commandLineArguments);
+		try
+		{
+			new ConproXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
+			System.out.println("Export Conpro xml complete");
+		}
+		finally
+		{
+			newProject.close();
+		}
+	}
 }
