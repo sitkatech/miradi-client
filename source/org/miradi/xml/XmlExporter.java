@@ -25,6 +25,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.utils.Translation;
 
 public abstract class XmlExporter
 {
@@ -57,6 +58,8 @@ public abstract class XmlExporter
 			throw new RuntimeException("Project does not exist:" + projectDirectory);
 
 		newProject.createOrOpen(projectDirectory);
+		Translation.loadFieldLabels();
+		
 		return newProject;
 	}	 
 	
