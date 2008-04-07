@@ -7,23 +7,34 @@ package org.miradi.xml.export.conpro;
 
 import java.net.URL;
 
-import javax.xml.XMLConstants;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-
 import org.miradi.main.EAM;
+import org.xml.sax.InputSource;
+
+import com.thaiopensource.util.PropertyMapBuilder;
+import com.thaiopensource.validate.SchemaReader;
+import com.thaiopensource.validate.ValidationDriver;
+import com.thaiopensource.validate.rng.CompactSchemaReader;
 
 public class testSampleXml
 {
 	public void validate() throws Exception
 	{
-		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.RELAXNG_NS_URI);//, "http://java.sun.com/j2se/1.5.0/docs/api/javax/xml/XMLConstants.html#RELAXNG_NS_URI");
-		Schema schema = schemaFactory.newSchema(EAM.getResourceURL("xml/test.rng"));
-		
-		URL xmlUrl = EAM.getResourceURL("xml/test.xml");
-		StreamSource streamSource = new StreamSource(xmlUrl.openStream());
-		schema.newValidator().validate(streamSource);
+		PropertyMapBuilder properties = new PropertyMapBuilder();
+		//RngProperty.FEASIBLE.add(properties);
+		URL resourceURL = EAM.getResourceURL("xml/test.rnc");
+		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
+		SchemaReader schemaReader = CompactSchemaReader.getInstance();
+		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
+		if (validationDriver.loadSchema(schemaInputSource))
+		{
+			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
+			InputSource xmlInputSource = new InputSource(xmlUrl.openStream());
+			System.out.println("Is valid xml doc: " + validationDriver.validate(xmlInputSource));
+		}
+		else
+		{
+			System.out.println("Schema not loaded");
+		}
 	}
 	
 	public static void main(String[] args)
