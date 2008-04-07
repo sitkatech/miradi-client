@@ -3,7 +3,7 @@
 * (on behalf of the Conservation Measures Partnership, "CMP") and 
 * Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 */ 
-package org.miradi.xml.export.conpro;
+package org.miradi.xml.conpro.export;
 
 import java.net.URL;
 
