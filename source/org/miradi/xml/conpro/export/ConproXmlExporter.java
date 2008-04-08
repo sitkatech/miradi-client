@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.export;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objects.BaseObject;
@@ -71,8 +72,7 @@ public class ConproXmlExporter extends XmlExporter
 			
 			out.writeln("<exporter_name/>");
 			out.writeln("<exporter_version/>");
-			//FIXME write correct export date
-			out.writeln("<data_export_date>2007-05-17</data_export_date>");
+			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
 	}
