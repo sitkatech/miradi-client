@@ -14,13 +14,13 @@ import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.ValidationDriver;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
+import com.thaiopensource.validate.rng.RngProperty;
 
 public class testSampleXml
 {
 	public void validate() throws Exception
 	{
-		PropertyMapBuilder properties = new PropertyMapBuilder();
-		//RngProperty.FEASIBLE.add(properties);
+		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = EAM.getResourceURL("xml/test.rnc");
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
@@ -33,8 +33,20 @@ public class testSampleXml
 		}
 		else
 		{
-			System.out.println("Schema not loaded");
+			throw new Exception("Could not load schema");
 		}
+	}
+
+	private PropertyMapBuilder getValidatorProperties()
+	{
+		PropertyMapBuilder properties = new PropertyMapBuilder();
+		final boolean ALLOW_MISSING_ELEMENTS = false;
+		if (ALLOW_MISSING_ELEMENTS)
+		{
+			RngProperty.FEASIBLE.add(properties);
+		}
+		
+		return properties;
 	}
 	
 	public static void main(String[] args)
