@@ -251,16 +251,6 @@ public class ProjectMetadata extends BaseObject
 		return tncMarineEcoRegion.getCodeList();
 	}
 	
-	public CodeList getCountriesCodeList()
-	{
-		return countries.getCodeList();
-	}
-	
-	public CodeList getTncOperatingUnits()
-	{
-		return tncOperatingUnits.getCodeList();
-	}
-	
 	public boolean isStressBasedThreatRatingMode()
 	{
 		if (getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
