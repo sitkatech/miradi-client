@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.export;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
@@ -54,22 +55,8 @@ public class ConproXmlExporter extends XmlExporter
 			writeElement(out, "name", XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			
 			writeOptionalElement(out, "start_date", getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
-			out.write("<area_size unit='hectares'>");
-			double sizeInHectaresAsInt = getProjectMetadata().getSizeInHectaresAsDouble();
-			out.write(Integer.toString((int)sizeInHectaresAsInt));
-			out.writeln("</area_size>");
-
-			//FIXME location is not found in namespace.  
-//			out.writeln("<location>");
-//			out.writeln("<geospatial_location vocabulary_geospatial_type='point'>");
-//			out.write("<latitude>");
-//			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getLatitude()));
-//			out.writeln("</latitude>");
-//			out.write("<longitude>");
-//			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getLongitude()));
-//			out.writeln("</longitude>");
-//			out.writeln("</geospatial_location>");
-//			out.writeln("</location>");
+			writeOptionalAreaSize(out);
+			writeOptionalLocation(out);
 			
 			writeOptionalElement(out, "description_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 			writeOptionalElement(out, "goal_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
@@ -88,6 +75,30 @@ public class ConproXmlExporter extends XmlExporter
 			out.writeln("<data_export_date>2007-05-17</data_export_date>");
 			
 		out.writeln("</project_summary>");
+	}
+
+	private void writeOptionalAreaSize(UnicodeWriter out) throws IOException
+	{
+		double sizeInHectaresAsInt = getProjectMetadata().getSizeInHectaresAsDouble();
+		if (sizeInHectaresAsInt == 0)
+			return;
+		
+		out.write("<area_size unit='hectares'>");
+		out.write(Integer.toString((int)sizeInHectaresAsInt));
+		out.writeln("</area_size>");
+	}
+
+	private void writeOptionalLocation(UnicodeWriter out) throws IOException, Exception
+	{
+		float latitudeAsFloat = getProjectMetadata().getLatitudeAsFloat();
+		float longitudeAsFloat = getProjectMetadata().getLongitudeAsFloat();
+		if (latitudeAsFloat == 0 && longitudeAsFloat == 0)
+			return;
+		
+		out.writeln("<geospatial_location type='point'>");
+		writeOptionalFloatElement(out, "latitude", latitudeAsFloat);
+		writeOptionalFloatElement(out, "longitude", longitudeAsFloat);
+		out.writeln("</geospatial_location>");
 	}
 	
 //	private void writeTeamMemmers(UnicodeWriter out) throws Exception
@@ -110,6 +121,14 @@ public class ConproXmlExporter extends XmlExporter
 //			writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamLeaderCode).getLabel());
 //	}
 	
+	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
+	{
+		if (value == 0)
+			return;
+		
+		writeOptionalElement(out, elementName, Float.toString(value));
+	}
+
 	private void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		out.write("<" + elementName + ">");
