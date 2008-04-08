@@ -183,6 +183,15 @@ public class ProjectMetadata extends BaseObject
 		return sizeInHectares.get();
 	}
 	
+	public double getSizeInHectaresAsDouble()
+	{
+		String size = getSizeInHectares();
+		if (size.length() == 0)
+			return 0;
+		
+		return Double.parseDouble(size);
+	}
+	
 	public String getProjectNumber()
 	{
 		return otherOrgProjectNumber.get();
