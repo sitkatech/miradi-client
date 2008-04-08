@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.export;
 
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
@@ -47,32 +48,30 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<project_summary share_outside_organization=\"true\">");
+		out.writeln("<project_summary share_outside_organization='false'>");
 		
-			out.write("<project_id context=\"\">");
-			out.write(getProjectMetadata().getProjectNumber());
-			out.writeln("</project_id>");
+			out.write("</project_id context=''>");
 			
-			out.write("<parent_project_id context=\"\">");
+			out.write("<parent_project_id context=''>");
 			out.writeln("</parent_project_id>");
 			
 			out.write("<name>");
-			out.write(getProjectMetadata().getProjectName());
+			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			out.writeln("</name>");
 			
 			
 			writeOptionalElement(out, "start_date", getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
-			out.write("<area_size unit=\"hectares\">");
-			out.write(getProjectMetadata().getData(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES));
+			out.write("<area_size unit='hectares'>");
+			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getData(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES)));
 			out.writeln("</area_size>");
 			
 			out.writeln("<location>");
-			out.writeln("<geospatial_location vocabulary_geospatial_type=\"point\">");
+			out.writeln("<geospatial_location vocabulary_geospatial_type='point'>");
 			out.write("<latitude>");
-			out.write(getProjectMetadata().getLatitude());
+			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getLatitude()));
 			out.writeln("</latitude>");
 			out.write("<longitude>");
-			out.write(getProjectMetadata().getLongitude());
+			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getLongitude()));
 			out.writeln("</longitude>");
 			out.writeln("</geospatial_location>");
 			out.writeln("</location>");
@@ -92,7 +91,7 @@ public class ConproXmlExporter extends XmlExporter
 			return;
 		
 		out.write("<" + elementName + ">");
-		out.write(data);
+		out.write(XmlUtilities.getXmlEncoded(data));
 		out.writeln("</" + elementName + ">");
 	}
 
@@ -103,11 +102,10 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<document_exchange status=\"success\">");
+		out.writeln("<document_exchange status='success'>");
 		String errorMessages = "";
 		if (errorMessages.length() > 0)
 		{
-			out.writeln("<error_msg>");
 			out.writeln("</error_msg>");
 		}
 		out.writeln("</document_exchange>");
