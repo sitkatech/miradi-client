@@ -21,9 +21,13 @@ package org.miradi.xml.conpro.export;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.xml.XmlExporter;
 
 public class ConproXmlExporter extends XmlExporter
@@ -81,9 +85,45 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "planning_team_comment", getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, "lessons_learned", getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
+			out.writeln("</stressless_threat_rank>");
+			out.writeln("</project_threat_rank>");
+			out.writeln("</project_viability_rank>");
+			
+			writeTeamMemmers(out);
+			
 		out.writeln("</project_summary>");
 	}
 	
+	private void writeTeamMemmers(UnicodeWriter out) throws Exception
+	{
+		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
+		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
+		{
+			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
+			out.writeln("<team_member>");
+			writeMemberRoles(out, member);
+			out.writeln("</team_member>");
+		}
+	}
+
+	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
+	{
+		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
+		writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
+		if (member.isTeamLead())
+			writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamLeaderCode).getLabel());
+	}
+	
+	private void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
+	{
+		if (data.length() == 0)
+			return;
+		
+		out.write("<" + elementName + ">");
+		out.write(XmlUtilities.getXmlEncoded(data));
+		out.writeln("</" + elementName + ">");
+	}
+
 	private void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
 	{
 		String data = object.getData(fieldTag);

@@ -8,8 +8,8 @@ package org.miradi.objects;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
+import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.utils.CodeList;
 
 public class TestProjectResource extends TestCaseWithProject
 {
@@ -85,5 +85,17 @@ public class TestProjectResource extends TestCaseWithProject
 		resource.setData(tag, value);
 		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(getObjectManager(), resource.getType(), resource.toJson());
 		assertEquals(tag + " didn't survive json?", resource.getData(tag), got.getData(tag));
+	}
+	
+	public void testIsTeamLead() throws Exception
+	{
+		ProjectResource resource = new ProjectResource(getObjectManager(), new BaseId(22));
+		assertFalse("is not team lead?", resource.isTeamLead());
+		
+		CodeList roleCodes = new CodeList();
+		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
+		
+		resource.setData(ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
+		assertTrue("is team lead?", resource.isTeamLead());	
 	}
 }
