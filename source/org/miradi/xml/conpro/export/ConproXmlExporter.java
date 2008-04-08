@@ -25,9 +25,14 @@ import java.io.IOException;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 
 public class ConproXmlExporter extends XmlExporter
@@ -68,7 +73,9 @@ public class ConproXmlExporter extends XmlExporter
 			//out.writeln("<stressless_threat_rank/>");
 			//out.writeln("<project_threat_rank/>");
 			//out.writeln("<project_viability_rank/>");
-			//writeTeamMemmers(out);
+			writeTeamMembers(out);
+			writeEcoregionCodes(out);
+			writeCountryCodes(out);
 			
 			out.writeln("<exporter_name/>");
 			out.writeln("<exporter_version/>");
@@ -77,6 +84,22 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</project_summary>");
 	}
 
+	private void writeCountryCodes(UnicodeWriter out) throws Exception
+	{
+		CodeList countryCodes = getProjectMetadata().getCountriesCodeList();
+		writeCodeListElements(out, "country_code", countryCodes);
+	}
+
+	private void writeEcoregionCodes(UnicodeWriter out) throws Exception
+	{
+		CodeList allTncEcoRegionCodes = new CodeList();
+		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncFreshwaterEcoRegion());
+		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncMarineEcoRegion());
+		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncTerrestrialEcoRegion());
+		
+		writeCodeListElements(out, "ecoregion_code", allTncEcoRegionCodes);
+	}
+	
 	private void writeOptionalAreaSize(UnicodeWriter out) throws IOException
 	{
 		double sizeInHectaresAsInt = getProjectMetadata().getSizeInHectaresAsDouble();
@@ -101,25 +124,33 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</geospatial_location>");
 	}
 	
-//	private void writeTeamMemmers(UnicodeWriter out) throws Exception
-//	{
-//		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
-//		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
-//		{
-//			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
-//			out.writeln("<team_member>");
-//			writeMemberRoles(out, member);
-//			out.writeln("</team_member>");
-//		}
-//	}
-//
-//	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
-//	{
-//		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
-//		writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
-//		if (member.isTeamLead())
-//			writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamLeaderCode).getLabel());
-//	}
+	private void writeTeamMembers(UnicodeWriter out) throws Exception
+	{
+		//FIXME this is to avoid writing team member for now.  Person is giving trouble
+		if (true)
+			return;
+			
+		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
+		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
+		{
+			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
+			out.writeln("<team_member>");
+			
+			
+			writeMemberRoles(out, member);
+			out.writeln("<foaf:Person xmlns:foaf='http://xmlns.com/foaf/spec/'/>");
+			//out.writeln("</Person>");
+			out.writeln("</team_member>");
+		}
+	}
+
+	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
+	{
+		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
+		writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
+		if (member.isTeamLead())
+			writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamLeaderCode).getLabel());
+	}
 	
 	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
 	{
@@ -129,6 +160,14 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, elementName, Float.toString(value));
 	}
 
+	private void writeCodeListElements(UnicodeWriter out, String elementName, CodeList codeList) throws Exception
+	{
+		for (int codeIndex = 0; codeIndex < codeList.size(); ++codeIndex)
+		{
+			writeElement(out, elementName, codeList.get(codeIndex));
+		}
+	}
+	
 	private void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		out.write("<" + elementName + ">");
