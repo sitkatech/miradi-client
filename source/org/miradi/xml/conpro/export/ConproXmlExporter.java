@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */  
 package org.miradi.xml.conpro.export;
 
+import java.io.FileInputStream;
+
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORefList;
@@ -57,7 +59,7 @@ public class ConproXmlExporter extends XmlExporter
 			out.write("</project_id context=''>");
 			
 			out.write("<parent_project_id context=''>");
-			out.writeln("</parent_project_id>");
+			out.writeln("<parent_project_id/>");
 			
 			out.write("<name>");
 			out.write(XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
@@ -85,9 +87,9 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "planning_team_comment", getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, "lessons_learned", getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
-			out.writeln("</stressless_threat_rank>");
-			out.writeln("</project_threat_rank>");
-			out.writeln("</project_viability_rank>");
+			out.writeln("<stressless_threat_rank/>");
+			out.writeln("<project_threat_rank/>");
+			out.writeln("<project_viability_rank/>");
 			
 			writeTeamMemmers(out);
 			
@@ -157,6 +159,7 @@ public class ConproXmlExporter extends XmlExporter
 		try
 		{
 			new ConproXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
+			new testSampleXml().validate(new FileInputStream(getXmlDestination(commandLineArguments)));
 			System.out.println("Export Conpro xml complete");
 		}
 		finally

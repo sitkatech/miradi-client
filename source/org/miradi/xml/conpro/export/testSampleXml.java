@@ -5,6 +5,7 @@
 */ 
 package org.miradi.xml.conpro.export;
 
+import java.io.InputStream;
 import java.net.URL;
 
 import org.miradi.main.EAM;
@@ -16,19 +17,19 @@ import com.thaiopensource.validate.ValidationDriver;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
 import com.thaiopensource.validate.rng.RngProperty;
 
+//FIXME rename this to something meaningful or extract the validation data into own class
 public class testSampleXml
 {
-	public void validate() throws Exception
+	public void validate(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = EAM.getResourceURL("xml/ConservationProjectsSchema_compactRNG.rnc");
+		URL resourceURL = EAM.getResourceURL("xml/ConProMiradi.rnc");
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
 		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
 		if (validationDriver.loadSchema(schemaInputSource))
 		{
-			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
-			InputSource xmlInputSource = new InputSource(xmlUrl.openStream());
+			InputSource xmlInputSource = new InputSource(xmlInputStream);
 			System.out.println("Is valid xml doc: " + validationDriver.validate(xmlInputSource));
 		}
 		else
@@ -53,7 +54,8 @@ public class testSampleXml
 	{
 		try
 		{
-			new testSampleXml().validate();
+			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
+			new testSampleXml().validate(xmlUrl.openStream());
 		}
 		catch(Exception e)
 		{
