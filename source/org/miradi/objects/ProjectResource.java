@@ -151,14 +151,7 @@ public class ProjectResource extends BaseObject
 	
 	public boolean isTeamLead()
 	{
-		for (int codeIndex = 0; codeIndex < getRoleCodes().size(); ++codeIndex)
-		{
-			boolean isTeamLeadCode = getRoleCodes().get(codeIndex).equals(ResourceRoleQuestion.TeamLeaderCode);
-			if (isTeamLeadCode)
-				return true;
-		}
-		
-		return false;
+		return getRoleCodes().contains(ResourceRoleQuestion.TeamLeaderCode);
 	}
 	
 	public double getCostPerUnit()
