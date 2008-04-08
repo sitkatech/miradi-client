@@ -88,6 +88,11 @@ public class ProjectResource extends BaseObject
 		return false;
 	}
 
+	public CodeList getRoleCodes()
+	{
+		return roleCodes.getCodeList();
+	}
+	
 	public String getLabel()
 	{
 		return getWho();
@@ -143,7 +148,19 @@ public class ProjectResource extends BaseObject
 	{
 		return getData(TAG_RESOURCE_TYPE).length() == 0;
 	}
-
+	
+	public boolean isTeamLead()
+	{
+		for (int codeIndex = 0; codeIndex < getRoleCodes().size(); ++codeIndex)
+		{
+			boolean isTeamLeadCode = getRoleCodes().get(codeIndex).equals(ResourceRoleQuestion.TeamLeaderCode);
+			if (isTeamLeadCode)
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public double getCostPerUnit()
 	{
 		if (costPerUnit.toString().length() == 0)
