@@ -75,26 +75,14 @@ public class ConproXmlExporter extends XmlExporter
 			//out.writeln("<project_viability_rank/>");
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
-			writeCountryCodes(out);
-			writeOperatingUnits(out);
+			writeCodeListElements(out, "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
+			writeCodeListElements(out, "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 			
 			out.writeln("<exporter_name/>");
 			out.writeln("<exporter_version/>");
 			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
-	}
-
-	private void writeOperatingUnits(UnicodeWriter out) throws Exception
-	{
-		CodeList operatingUnits = getProjectMetadata().getTncOperatingUnits();
-		writeCodeListElements(out, "ou_code", operatingUnits);
-	}
-
-	private void writeCountryCodes(UnicodeWriter out) throws Exception
-	{
-		CodeList countryCodes = getProjectMetadata().getCountriesCodeList();
-		writeCodeListElements(out, "country_code", countryCodes);
 	}
 
 	private void writeEcoregionCodes(UnicodeWriter out) throws Exception
@@ -167,6 +155,11 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, elementName, Float.toString(value));
 	}
 
+	private void writeCodeListElements(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	{
+		writeCodeListElements(out, elementName, object.getCodeList(tag));
+	}
+	
 	private void writeCodeListElements(UnicodeWriter out, String elementName, CodeList codeList) throws Exception
 	{
 		for (int codeIndex = 0; codeIndex < codeList.size(); ++codeIndex)
