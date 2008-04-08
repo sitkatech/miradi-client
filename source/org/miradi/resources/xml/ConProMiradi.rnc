@@ -138,8 +138,8 @@ project_summary.element =
         & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
         & team_member.element*
         & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
-        & element cp:ecoregion_code { vocabulary_ecoregion_code }*
-        & element cp:country_code { vocabulary_country_code }*
+        & element cp:ecoregion_code { text }*
+        & element cp:country_code { text }*
         & element cp:ou_code { vocabulary_ou_code }*
         & element cp:exporter_name { xsd:token }
         & element cp:exporter_version { xsd:token }
