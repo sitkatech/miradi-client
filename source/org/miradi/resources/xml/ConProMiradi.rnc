@@ -167,7 +167,7 @@ location.element =
 #
 team_member.element =
     element cp:team_member {
-        element role { vocabulary_team }+
+        element cp:role { vocabulary_team }+
         & [
               documentation [
                   "FOAF Vocabulary Specification 0.91 \x{a}" ~
