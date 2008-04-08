@@ -197,6 +197,16 @@ public class ProjectMetadata extends BaseObject
 		return otherOrgProjectNumber.get();
 	}
 	
+	public float getLongitudeAsFloat()
+	{
+		return longitude.asFloat();
+	}
+	
+	public float getLatitudeAsFloat()
+	{
+		return latitude.asFloat();
+	}
+	
 	public String getLongitude()
 	{
 		return longitude.get();
