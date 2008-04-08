@@ -44,6 +44,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends BaseObject
@@ -233,6 +234,26 @@ public class ProjectMetadata extends BaseObject
 	public String getDiagramFontFamily()
 	{
 		return diagramFontFamily.get();
+	}
+	
+	public CodeList getTncTerrestrialEcoRegion()
+	{
+		return tncTerrestrialEcoRegion.getCodeList();
+	}
+	
+	public CodeList getTncFreshwaterEcoRegion()
+	{
+		return tncFreshwaterEcoRegion.getCodeList();
+	}
+
+	public CodeList getTncMarineEcoRegion()
+	{
+		return tncMarineEcoRegion.getCodeList();
+	}
+	
+	public CodeList getCountriesCodeList()
+	{
+		return countries.getCodeList();
 	}
 	
 	public boolean isStressBasedThreatRatingMode()
