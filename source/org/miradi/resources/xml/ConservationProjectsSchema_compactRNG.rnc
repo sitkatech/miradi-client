@@ -1,0 +1,389 @@
+# $LastChangedBy: ecoffman $ 
+# $LastChangedDate: 2008-04-02 10:55:24 -0400 (Wed, 02 Apr 2008) $
+# $LastChangedRevision: 2104 $ 
+
+# 
+# Datatyping reference
+# xsd:boolean -  Its value space is true and false. Its lexical space accepts true, false, 1 and 0
+# xsd:date -     Its lexical space is the ISO 8601 extended format [-]CCYY-MM-DD[Z|(+|-)hh:mm] with 
+#                an optional time zone. 
+# xsd:decimal -  The set of all decimal numbers with arbitrary lengths. Its lexical space allows any
+#                number of insignificant leading and, after the decimal point, trailing zeros. A period
+#                is the only acceptable decimal seperator. No thousands seperators allowed.
+# xsd:integer -  Integer is derived from decimal by fixing the value of fractionDigits to be 0 and disallowing 
+#                the trailing decimal point. This results in the standard mathematical concept of the integer 
+#                numbers. The value space of integer is the infinite set {...,-2,-1,0,1,2,...}. 
+# xsd:nonNegativeInteger - 
+#                nonNegativeInteger is derived from integer by setting the value of
+#                minInclusive to be 0. This results in the standard mathematical concept of the 
+#                non-negative integers. The value space of nonNegativeInteger is the infinite 
+#                set {0,1,2,...}.
+# xsd:positiveInteger - 
+#                positiveInteger is derived from nonNegativeInteger by setting the value of
+#                minInclusive to be 1. This results in the standard mathematical concept of the 
+#                positive integer numbers. The value space of positiveInteger is the infinite 
+#                set {1,2,...}. 
+# xsd:string -   The value space of string is the set of finite-length sequences of characters 
+#                (as defined in XML 1.0 (Second Edition)) that match the Char production from 
+#                XML 1.0 (Second Edition). A character is an atomic unit of communication; it is not 
+#                further specified except to note that every character has a corresponding Universal 
+#                Character Set code point, which is an integer.
+# xsd:token -    The value space of token is the set of strings that do not contain the carriage return (#xD), 
+#                line feed (#xA) nor tab (#x9) characters, that have no leading or trailing spaces (#x20) and 
+#                that have no internal sequences of two or more spaces. The lexical space of token is the set 
+#                of strings that do not contain the carriage return (#xD), line feed (#xA) nor tab (#x9) 
+#                characters, that have no leading or trailing spaces (#x20) and that have no internal sequences 
+#                of two or more spaces.
+
+# Notes:
+#    ? - Optional
+#    * - 0 or more
+#    + - 1 or more
+# 
+#    & - interleave
+#
+
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+# Current issues as raised by either Kevin (for Miradi) or Eric (for ConPro):
+
+# 1. How grandiose are our aims?
+#     For now, we will produce one data exchange that will work for both Miradi and ConPro. 
+#     It will transport only those fields that will be needed in the data exchange.
+
+# 2. Relational, or Object-oriented
+#     Eric will look closer to if he can make the structure less 'flat.'
+
+# 3. Export calculated values?
+#     No, see #1. We can revisit this when it is actually needed.
+
+# 4. Common terminology
+#     We should use the vocabulary that is used by the community. And, as such, ConPro will
+#     call "Stategic Actions" and "Actions" by the community known name of "Strategies/Strategy."
+
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
+default namespace = "http://services.tnc.org/schema/conservation-project/"
+namespace cp = "http://services.tnc.org/schema/conservation-project/0.1"
+namespace foaf = "http://xmlns.com/foaf/0.1/"
+
+# 
+# 
+#
+start = conservation_project.element
+# 
+#
+conservation_project.element =
+    [ documentation [ "XML Schema definition to represent a Conservation Project." ] ]
+    element cp:conservation_project {
+        document_exchange.element
+        & project_summary.element
+        & targets.element?
+        & key_attributes.element?
+        & viability.element?
+        & threats.element?
+        & objectives.element?
+        & strategies.element?
+        & indicators.element?
+    }
+# 
+# 
+#
+document_exchange.element =
+    [
+        documentation [
+            "The data exchange needs to provide a way to let another application \x{a}" ~
+            "know if the export was successful or not. If it wasn't, an error message \x{a}" ~
+            "should be provided. The 'status' and 'error_msg' attributes take care of this \x{a}" ~
+            "and are noted in the 'cp:conservation-project' root element. \x{a}" ~
+            " \x{a}" ~
+            "These attributes are useful to let Miradi know there was an error producing the \x{a}" ~
+            "XML in ConPro when the data was obtained by some more automatic way (Web Service). \x{a}" ~
+            "An example of some automatic way is when a user in Miradi wants to import their \x{a}" ~
+            "data from ConPro via a direct import method. Miradi might provide a function where \x{a}" ~
+            "the user could enter the ConPro ID and Miradi fetches the data without the user \x{a}" ~
+            "having to do the actual downloading from ConPro and uploading to Miradi. "
+        ]
+    ]
+    element cp:document_exchange {
+        attribute status { vocabulary_doc_exchange_status }
+        & element cp:error_msg { text }*
+    }?
+# 
+# 
+#
+project_summary.element =
+    element cp:project_summary {
+        attribute share_outside_organization { xsd:boolean }
+        & element project_id {
+              attribute context { xsd:token }
+              & xsd:token
+          }*
+        & element cp:parent_project_id {
+              attribute context { xsd:token }
+              & xsd:token
+          }*
+        & element cp:name { xsd:token }
+        & element cp:start_date { xsd:date }?
+        & area_size.element?
+        & location.element?
+        & element cp:description_comment { text }?
+        & element cp:goal_comment { text }?
+        & element cp:planning_team_comment { text }?
+        & element cp:lessons_learned { text }?
+        & element cp:stressless_threat_rank { vocabulary_ranking_vhhml }?
+        & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
+        & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
+        & team_member.element*
+        & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
+        & element cp:ecoregion_code { vocabulary_ecoregion_code }*
+        & element cp:country_code { vocabulary_country_code }*
+        & element cp:ou_code { vocabulary_ou_code }*
+        & element cp:exporter_name { xsd:token }
+        & element cp:exporter_version { xsd:token }
+        & element cp:data_export_date { xsd:date }
+    }
+# 
+# 
+#
+area_size.element =
+    element cp:area_size {
+        attribute unit { vocabulary_area_unit }
+        & xsd:nonNegativeInteger
+    }
+# 
+# 
+#
+location.element =
+    element cp:geospatial_location {
+        attribute type { vocabulary_geospatial_type }
+        & element cp:latitude { xsd:decimal }?
+        & element cp:longitude { xsd:decimal }?
+    }
+# 
+# 
+#
+team_member.element =
+    element cp:team_member {
+        element role { vocabulary_team }+
+        & [
+              documentation [
+                  "FOAF Vocabulary Specification 0.91 \x{a}" ~
+                  "http://xmlns.com/foaf/spec/"
+              ]
+          ]
+          element foaf:Person {
+              element foaf:name { xsd:token }?
+              & element foaf:givenname { xsd:token }?
+              & element foaf:surname { xsd:token }?
+              & element foaf:mbox { xsd:token }?
+              & element foaf:phone { xsd:token }?
+              & element foaf:Organization { xsd:token }?
+          }
+    }
+# 
+# 
+#
+targets.element =
+    element cp:targets {
+        element cp:target {
+            attribute sequence { xsd:positiveInteger }?
+            & attribute id { vocabulary_id }
+            & element cp:name { xsd:token }
+            & element cp:description { text }?
+            & element cp:description_comment { text }?
+            & element cp:target_viability_comment { text }?
+            & element cp:target_viability_rank { vocabulary_ranking_vhhml }?
+            & element cp:habitat_code { iucn_habitat_taxonomy }?
+            & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
+            & stresses_target.element*
+            & stresses_threat.element*
+            & nested_target.element*
+            & threat_target_association.element*
+            & strategy_threat_association.element*
+        }+
+    }
+# 
+# 
+#
+stresses_target.element =
+    element cp:stresses_target {
+        attribute sequence { xsd:nonNegativeInteger }
+        & element cp:stress_name { xsd:token }
+        & element cp:stress_severity { vocabulary_ranking_vhhml }?
+        & element cp:stress_scope { vocabulary_ranking_vhhml }?
+        & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+    }
+# 
+# 
+#
+stresses_threat.element =
+    # WHERE IS THE THREAT ID?????
+    element cp:stress_threat {
+        element cp:contrib_rank { vocabulary_ranking_vhhml }?
+        & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
+        & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
+    }
+# 
+# 
+#
+nested_target.element =
+    element cp:nested_target {
+        attribute sequence { xsd:nonNegativeInteger }
+        & element cp:name { xsd:token }
+        & element cp:comment { text }?
+    }
+# 
+# 
+#
+threat_target_association.element =
+    element cp:threat_target_association {
+        element threat_id { xsd:nonNegativeInteger }
+        & element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
+        & element cp:threat_severity { vocabulary_ranking_vhhml }?
+        & element cp:threat_scope { vocabulary_ranking_vhhml }?
+        & element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
+        & element cp:threat_target_comment { text }?
+    }
+# 
+# 
+#
+strategy_threat_association.element =
+    element cp:strategy_threat_association {
+        element strategy_id { xsd:nonNegativeInteger }
+        & element threat_id { xsd:nonNegativeInteger }
+    }
+# 
+# 
+#
+key_attributes.element =
+    element cp:key_attributes {
+        element cp:key_attribute {
+            attribute id { vocabulary_id }
+            & element cp:name { xsd:token }
+            & element cp:category { vocabulary_key_ecological_attribute_category }
+        }+
+    }
+# 
+# 
+#
+viability.element =
+    element cp:viability {
+        element cp:viability_assessment {
+            element cp:target_id { xsd:nonNegativeInteger }
+            & element cp:indicator_id { xsd:nonNegativeInteger }
+            & element cp:kea_id { xsd:nonNegativeInteger }?
+            & element cp:indicator_description_poor { text }?
+            & element cp:indicator_description_fair { text }?
+            & element cp:indicator_description_good { text }?
+            & element cp:indicator_description_very_good { text }?
+            & element cp:current_indicator_status_viability { text }?
+            & element cp:current_viability_rating { text }?
+            & element cp:desired_viability_rating { text }?
+            & element cp:current_rating_date { xsd:date }?
+            & element cp:desired_rating_date { xsd:date }?
+            & element cp:confidence_current_rating { text }?
+            & element cp:kea_and_indicator_comment { text }?
+            & element cp:indicator_rating_comment { text }?
+            & element cp:current_rating_comment { text }?
+            & element cp:desired_rating_comment { text }?
+            & element cp:viability_record_comment { text }?
+        }+
+    }
+# 
+# 
+#
+threats.element =
+    element cp:threats {
+        element cp:threat {
+            attribute id { vocabulary_id }
+            & element cp:name { xsd:token }
+            & element cp:taxonomy_code { iucn_threat_taxonomy }?
+            & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
+        }+
+    }
+# 
+# 
+#
+objectives.element =
+    element cp:objectives {
+        element cp:objective {
+            attribute id { vocabulary_id }
+            & element indicator_id { xsd:nonNegativeInteger }*
+            & element cp:name { xsd:token }
+            & element cp:comment { text }?
+        }+
+    }
+# 
+# 
+#
+strategies.element =
+    element cp:strategies {
+        element cp:strategy {
+            attribute id { vocabulary_id }
+            & element viability_id { xsd:nonNegativeInteger }*
+            & element objective_id { xsd:nonNegativeInteger }*
+            & element cp:name { xsd:token }
+            & element cp:taxonomy_code { iucn_strategy_taxonomy }?
+            & element cp:leverage { vocabulary_ranking_vhhml }?
+            & element cp:feasibility { vocabulary_ranking_vhhml }?
+            & element cp:overall_rank { vocabulary_ranking_vhhml }?
+            & element cp:selected { xsd:boolean }?
+            & element cp:comment { text }?
+            & activities.element?
+        }+
+    }
+# 
+# 
+#
+activities.element =
+    element cp:activities {
+        element cp:activity {
+            element cp:name { xsd:token }
+            & element cp:start_date { xsd:date }?
+            & element cp:end_date { xsd:date }?
+        }+
+    }
+# 
+# 
+#
+indicators.element =
+    element cp:indicators {
+        element cp:indicator {
+            attribute id { vocabulary_id }
+            & element cp:name { xsd:token }
+            & element cp:methods { xsd:token }?
+            & element cp:priority { vocabulary_priority_vhhml }?
+        }+
+    }
+# 
+# 
+#
+vocabulary_area_unit = "hectares"
+vocabulary_country_code = "[A-Z]{3}"
+vocabulary_doc_exchange_status = "success" | "warning" | "fail"
+vocabulary_ecoregion_code = "[123][\d]{4}"
+vocabulary_geospatial_type = "point"
+# vocabulary_id = "[0-9]+(\.[0-9]*)?"
+vocabulary_id = xsd:double
+vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
+vocabulary_ou_code = "\S{5}"
+vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_status = "Planned" | "Off Track" | "On Track" | "Completed"
+vocabulary_team = "Owner" | "Team Leader" | "Team Member"
+# 
+#
+[
+    documentation [
+        "International Union for Conservation of Nature (IUCN) threat, habitat and  \x{a}" ~
+        "strategy taxonomy formats. (Are there available somewhere on the web?  \x{a}" ~
+        "If so, maybe link to them here for reference.) "
+    ]
+]
+iucn_threat_taxonomy = "[T][0-9]{2,3}\.[0-9]{2,3}"
+iucn_habitat_taxonomy = "[H][0-9]{2,3}\.[0-9]{2,3}"
+iucn_strategy_taxonomy = "[A][0-9]{2,3}\.[0-9]{2,3}"
