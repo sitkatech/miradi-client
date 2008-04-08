@@ -140,7 +140,7 @@ project_summary.element =
         & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
         & element cp:ecoregion_code { text }*
         & element cp:country_code { text }*
-        & element cp:ou_code { vocabulary_ou_code }*
+        & element cp:ou_code { text }*
         & element cp:exporter_name { xsd:token }
         & element cp:exporter_version { xsd:token }
         & element cp:data_export_date { xsd:date }

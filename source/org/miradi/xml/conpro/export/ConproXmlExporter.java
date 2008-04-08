@@ -76,12 +76,19 @@ public class ConproXmlExporter extends XmlExporter
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
 			writeCountryCodes(out);
+			writeOperatingUnits(out);
 			
 			out.writeln("<exporter_name/>");
 			out.writeln("<exporter_version/>");
 			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
+	}
+
+	private void writeOperatingUnits(UnicodeWriter out) throws Exception
+	{
+		CodeList operatingUnits = getProjectMetadata().getTncOperatingUnits();
+		writeCodeListElements(out, "ou_code", operatingUnits);
 	}
 
 	private void writeCountryCodes(UnicodeWriter out) throws Exception
