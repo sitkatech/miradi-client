@@ -21,7 +21,7 @@ public class testSampleXml
 	public void validate() throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = EAM.getResourceURL("xml/test.rnc");
+		URL resourceURL = EAM.getResourceURL("xml/ConservationProjectsSchema_compactRNG.rnc");
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
 		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
