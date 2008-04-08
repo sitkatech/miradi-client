@@ -183,6 +183,21 @@ public class ProjectMetadata extends BaseObject
 		return sizeInHectares.get();
 	}
 	
+	public String getProjectNumber()
+	{
+		return otherOrgProjectNumber.get();
+	}
+	
+	public String getLongitude()
+	{
+		return longitude.get();
+	}
+	
+	public String getLatitude()
+	{
+		return latitude.get();
+	}
+	
 	public int getCurrencyDecimalPlaces()
 	{
 		return currencyDecimalPlaces.asInt();
