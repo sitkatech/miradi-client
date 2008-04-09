@@ -52,10 +52,33 @@ public class ConproXmlExporter extends XmlExporter
 		
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
+		writeOptionalTargets(out);
 		
 		out.writeln("</conservation_project>");
 	}
 
+	private void writeOptionalTargets(UnicodeWriter out) throws Exception
+	{
+		ORefList targetRefs = getProject().getTargetPool().getRefList();
+		if (targetRefs.size() == 0)
+			return;
+		
+		out.write("<targets>");
+		for (int refIndex = 0; refIndex < targetRefs.size(); ++refIndex)
+		{
+			Target target = Target.find(getProject(), targetRefs.get(refIndex));
+			out.write("<target id='" + target.getId().asInt() + "'>");
+			writeElement(out, "name", target, Target.TAG_LABEL);
+			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
+			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			writeOptionalElement(out, "target_viability_rank", translate(target.getBasicTargetStatus()));
+			//FIXME cant get this work,  need a way to export each code in list, schema question
+			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			out.writeln("</target>");
+		}
+		out.writeln("</targets>");
+
+	}
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<project_summary share_outside_organization='false'>");
@@ -207,6 +230,11 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
 	{
 		writeOptionalElement(out, elementName, object.getData(fieldTag));
+	}
+	
+	private void writeElement(UnicodeWriter out, String elementName, Target target, String tag) throws Exception
+	{
+		writeElement(out, elementName, target.getData(tag));
 	}
 
 	private ProjectMetadata getProjectMetadata()
