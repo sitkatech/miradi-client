@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -72,9 +73,7 @@ public class ConproXmlExporter extends XmlExporter
 			
 			writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
 			writeOptionalElement(out, "project_threat_rank", getStressBasedOverallProjectRating());
-			//FIXME elements not found in namespace.
-			
-			//out.writeln("<project_viability_rank/>");
+			writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
@@ -85,6 +84,12 @@ public class ConproXmlExporter extends XmlExporter
 			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
+	}
+
+	private String getComputedTncViability()
+	{
+		String code = Target.computeTNCViability(getProject());
+		return translate(code);
 	}
 
 	private String getStressBasedOverallProjectRating()
@@ -216,16 +221,21 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private String translate(int code)
 	{
-		if (code == 1)
+		return translate(Integer.toString(code));
+	}
+	
+	private String translate(String code)
+	{
+		if (code.equals("1"))
 			return EAM.text("Low");
 		
-		if (code == 2)
+		if (code.equals("2"))
 			return EAM.text("Medium");
 		
-		if (code == 3)
+		if (code.equals("3"))
 			return EAM.text("High");
 		
-		if (code == 4)
+		if (code.equals("4"))
 			return EAM.text("Very High");
 		
 		return "";
