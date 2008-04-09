@@ -25,6 +25,7 @@ import java.io.IOException;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
@@ -64,11 +65,12 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalAreaSize(out);
 			writeOptionalLocation(out);
 			
-			writeOptionalElement(out, "description_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+			writeOptionalElement(out, "description_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
 			writeOptionalElement(out, "goal_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
 			writeOptionalElement(out, "planning_team_comment", getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, "lessons_learned", getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
+			writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
 			//FIXME elements not found in namespace.
 			//out.writeln("<stressless_threat_rank/>");
 			//out.writeln("<project_threat_rank/>");
@@ -83,6 +85,12 @@ public class ConproXmlExporter extends XmlExporter
 			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
+	}
+
+	private String getSimpleOverallProjectRating()
+	{
+		int overallProjectRating = getProject().getSimpleThreatRatingFramework().getOverallProjectRating().getNumericValue();
+		return translate(overallProjectRating);
 	}
 
 	private void writeEcoregionCodes(UnicodeWriter out) throws Exception
@@ -198,6 +206,23 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<document_exchange status='success'/>");
+	}
+	
+	private String translate(int code)
+	{
+		if (code == 1)
+			return EAM.text("Low");
+		
+		if (code == 2)
+			return EAM.text("Medium");
+		
+		if (code == 3)
+			return EAM.text("High");
+		
+		if (code == 4)
+			return EAM.text("Very High");
+		
+		return "";
 	}
 	
 	public static void main(String[] commandLineArguments) throws Exception
