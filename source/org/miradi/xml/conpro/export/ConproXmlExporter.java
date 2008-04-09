@@ -71,9 +71,9 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "lessons_learned", getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
 			writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
+			writeOptionalElement(out, "project_threat_rank", getStressBasedOverallProjectRating());
 			//FIXME elements not found in namespace.
-			//out.writeln("<stressless_threat_rank/>");
-			//out.writeln("<project_threat_rank/>");
+			
 			//out.writeln("<project_viability_rank/>");
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
@@ -87,6 +87,12 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</project_summary>");
 	}
 
+	private String getStressBasedOverallProjectRating()
+	{
+		int overallProjectRating = getProject().getStressBasedThreatRatingFramework().getOverallProjectRating();
+		return translate(overallProjectRating);
+	}
+	
 	private String getSimpleOverallProjectRating()
 	{
 		int overallProjectRating = getProject().getSimpleThreatRatingFramework().getOverallProjectRating().getNumericValue();
