@@ -25,12 +25,16 @@ import java.io.FileInputStream;
 import org.martus.util.DirectoryUtils;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Cause;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class TestConproXmlExporter extends TestCaseWithProject
@@ -76,14 +80,23 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TARGET_STATUS, FAIR));
 		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributeRef.getObjectId()));
 		
+		ORef directThreatRef = getProject().createFactorAndReturnRef(Cause.getObjectType());
+		ORef factorLinkRef = getProject().createFactorLink(directThreatRef, targetRef);
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+				
 		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
-		//Stress stress = Stress.find(getProject(), stressRef);
 		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_LABEL, "SomeStressLabel"));
 		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SEVERITY, "1"));
 		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SCOPE, "1"));
 		
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(target, Target.TAG_STRESS_REFS, stressRef));
 		
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		ORef threatStressRatingRef = getProject().createObjectAndReturnRef(ThreatStressRating.getObjectType(), extraInfo);
+		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, "3"));
+		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, "4"));
+		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRef));
+	
 		ORef indicatorRef = getProject().createFactorAndReturnRef(Indicator.getObjectType());
 		KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologicalAttributeRef);
 		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRef.getObjectId()));
