@@ -32,6 +32,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -79,11 +80,26 @@ public class ConproXmlExporter extends XmlExporter
 			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
+			writeNestedTargets(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
 
 	}
+	
+	private void writeNestedTargets(UnicodeWriter out, Target target) throws Exception
+	{
+		ORefList subTargetRefs = target.getSubTargetRefs();
+		for (int refIndex = 0; refIndex < subTargetRefs.size(); ++refIndex)
+		{
+			SubTarget subTarget = SubTarget.find(getProject(), subTargetRefs.get(refIndex));
+			out.writeln("<nested_target sequence='" + refIndex + "'>");
+			writeElement(out, "name", subTarget, SubTarget.TAG_LABEL);
+			writeElement(out, "comment", subTarget, SubTarget.TAG_DETAIL);
+			out.writeln("</nested_target>");
+		}
+	}
+
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
