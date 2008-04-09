@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
@@ -67,8 +68,21 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		ORef keyEcologicalAttributeRef = getProject().createFactorAndReturnRef(KeyEcologicalAttribute.getObjectType());
 		getProject().executeCommand(new CommandSetObjectData(keyEcologicalAttributeRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.SIZE));
 		
+		String FAIR = "2";
 		Target target = Target.find(getProject(), targetRef);
+		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_LABEL, "SomeTargetLabel"));
+		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TEXT, "SomeTargetText"));
+		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_CURRENT_STATUS_JUSTIFICATION, "SomeTargetStatusJustication"));
+		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TARGET_STATUS, FAIR));
 		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributeRef.getObjectId()));
+		
+		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
+		//Stress stress = Stress.find(getProject(), stressRef);
+		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_LABEL, "SomeStressLabel"));
+		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SEVERITY, "1"));
+		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SCOPE, "1"));
+		
+		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(target, Target.TAG_STRESS_REFS, stressRef));
 		
 		ORef indicatorRef = getProject().createFactorAndReturnRef(Indicator.getObjectType());
 		KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologicalAttributeRef);
@@ -78,7 +92,6 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRef));
 		
-		String FAIR = "2";
 		getProject().executeCommand(new CommandSetObjectData(measurementRef, Measurement.TAG_STATUS, FAIR));
 		
 		assertEquals("wrong tnc viability calculation", "2", Target.computeTNCViability(getProject()));

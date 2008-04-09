@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -74,11 +75,27 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "target_viability_rank", translate(target.getBasicTargetStatus()));
 			//FIXME cant get this work,  need a way to export each code in list, schema question
 			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			writeStresses(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
 
 	}
+	private void writeStresses(UnicodeWriter out, Target target) throws Exception
+	{
+		ORefList stressRefs = target.getStressRefs();
+		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
+		{
+			out.write("<stresses_target sequence='" + refIndex + "'>");
+			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
+			writeElement(out, "stress_name", stress, Stress.TAG_LABEL);
+			writeOptionalElement(out, "stress_severity", translate(stress.getData(Stress.TAG_SEVERITY)));
+			writeOptionalElement(out, "stress_scope", translate(stress.getData(Stress.TAG_SCOPE)));
+			writeOptionalElement(out, "stress_to_target_rank", translate(stress.getCalculatedStressRating()));
+			out.writeln("</stresses_target>");
+		}
+	}
+
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<project_summary share_outside_organization='false'>");
@@ -232,9 +249,9 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, elementName, object.getData(fieldTag));
 	}
 	
-	private void writeElement(UnicodeWriter out, String elementName, Target target, String tag) throws Exception
+	private void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
-		writeElement(out, elementName, target.getData(tag));
+		writeElement(out, elementName, object.getData(tag));
 	}
 
 	private ProjectMetadata getProjectMetadata()
