@@ -20,7 +20,7 @@ import com.thaiopensource.validate.rng.RngProperty;
 //FIXME rename this to something meaningful or extract the validation data into own class
 public class testSampleXml
 {
-	public void validate(InputStream xmlInputStream) throws Exception
+	public boolean validate(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = EAM.getResourceURL("xml/ConProMiradi.rnc");
@@ -30,12 +30,10 @@ public class testSampleXml
 		if (validationDriver.loadSchema(schemaInputSource))
 		{
 			InputSource xmlInputSource = new InputSource(xmlInputStream);
-			System.out.println("Is valid xml doc: " + validationDriver.validate(xmlInputSource));
+			return validationDriver.validate(xmlInputSource);
 		}
-		else
-		{
-			throw new Exception("Could not load schema");
-		}
+		
+		throw new Exception("Could not load schema");
 	}
 
 	private PropertyMapBuilder getValidatorProperties()

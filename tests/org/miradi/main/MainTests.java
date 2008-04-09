@@ -155,6 +155,7 @@ import org.miradi.views.planning.TestPlanningTreeTargetNode;
 import org.miradi.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
+import org.miradi.xml.conpro.export.TestConproXmlExporter;
 
 public class MainTests extends TestCase
 {
@@ -365,6 +366,7 @@ public class MainTests extends TestCase
 		
 		//xml.export
 		suite.addTest(new TestSuite(TestReportXmlExporter.class));
+		suite.addTest(new TestSuite(TestConproXmlExporter.class));
 
 	    return suite;
 	}
