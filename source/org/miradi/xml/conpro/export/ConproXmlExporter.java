@@ -28,10 +28,12 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -76,11 +78,37 @@ public class ConproXmlExporter extends XmlExporter
 			//FIXME cant get this work,  need a way to export each code in list, schema question
 			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			writeStresses(out, target);
+			writeThreatStressRatings(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
 
 	}
+	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
+	{
+		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
+			if (factorLink.isThreatTargetLink())
+			{
+				writeThreatStressRatings(out, factorLink);
+			}
+		}
+	}
+
+	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink) throws Exception
+	{
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
+			out.write("<stress_threat>");
+			writeOptionalElement(out, "contrib_rank", threatStressRating.getIrreversibility().getLabel());
+			out.write("</stress_threat>");
+		}
+	}
+
 	private void writeStresses(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();

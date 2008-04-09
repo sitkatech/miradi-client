@@ -328,8 +328,7 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 	
 	public ORef createDiagramLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
-		BaseId baseId = createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
+		BaseId baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		FactorLinkId factorLinkId = new FactorLinkId(baseId.asInt());
 		
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
@@ -337,7 +336,12 @@ public class ProjectForTesting extends Project implements CommandExecutedListene
 		return createObjectAndReturnRef(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
 
-	
+	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
+	{
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
+		return createObjectAndReturnRef(ObjectType.FACTOR_LINK, parameter);
+	}
+
 	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
 	{
 		LinkCell linkCell = createLinkCell();
