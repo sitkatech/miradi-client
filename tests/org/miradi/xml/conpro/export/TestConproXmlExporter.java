@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.export;
 import java.io.File;
 import java.io.FileInputStream;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestConproXmlExporter extends TestCaseWithProject
@@ -31,11 +32,26 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		tempDir = createTempDirectory();
+	}
+	
+	@Override
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		DirectoryUtils.deleteEntireDirectoryTree(tempDir);
+	}
+	
 	public void testValidatedExport() throws Exception
 	{
-		File tempDir = createTempDirectory();
 		File tempXmlOutFile = new File(tempDir, "conpro.xml");
 		new ConproXmlExporter(getProject()).export(tempXmlOutFile);
 		assertTrue("did not validate?", new testSampleXml().validate(new FileInputStream(tempXmlOutFile)));
 	}
+	
+	private File tempDir;
 }
