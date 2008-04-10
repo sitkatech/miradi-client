@@ -125,12 +125,12 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeViability(UnicodeWriter out, ORef targetRef, Indicator indicator) throws Exception
 	{
 		out.writeln("<viability_assessment>");
-		writeElement(out, "target_id", Integer.toString(targetRef.getObjectId().asInt()));
-		writeElement(out, "indicator_id", Integer.toString(indicator.getId().asInt()));
+		writeElement(out, "target_id", targetRef.getObjectId().toString());
+		writeElement(out, "indicator_id", indicator.getId().toString());
 		
 		ORefList keyEcologicalAttributeReferrers = indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
 		ORef keyEcologicalAttributeReferrer = keyEcologicalAttributeReferrers.getRefForType(KeyEcologicalAttribute.getObjectType());
-		writeElement(out, "kea_id", Integer.toString(keyEcologicalAttributeReferrer.getObjectId().asInt()));
+		writeElement(out, "kea_id", keyEcologicalAttributeReferrer.getObjectId().toString());
 		
 		writeThreshold(out, "indicator_description_poor", indicator, StatusQuestion.POOR);
 		writeThreshold(out, "indicator_description_fair", indicator, StatusQuestion.FAIR);
@@ -188,7 +188,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("<key_attributes>");
 		for (int index = 0; index < keyEcologicalAttributes.length; ++index)
 		{
-			out.writeln("<key_attribute id='" + keyEcologicalAttributes[index].getId().asInt() + "'>");
+			out.writeln("<key_attribute id='" + keyEcologicalAttributes[index].getId().toString() + "'>");
 			writeElement(out, "name", keyEcologicalAttributes[index], KeyEcologicalAttribute.TAG_LABEL);
 			writeElement(out, "category", translateKeyEcologicalAttributeType(keyEcologicalAttributes[index].getKeyEcologicalAttributeType()));
 			out.writeln("</key_attribute>");
@@ -207,7 +207,7 @@ public class ConproXmlExporter extends XmlExporter
 		for (int refIndex = 0; refIndex < targetRefs.size(); ++refIndex)
 		{
 			Target target = Target.find(getProject(), targetRefs.get(refIndex));
-			out.write("<target id='" + target.getId().asInt() + "'>");
+			out.write("<target id='" + target.getId().toString() + "'>");
 			writeElement(out, "name", target, Target.TAG_LABEL);
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
