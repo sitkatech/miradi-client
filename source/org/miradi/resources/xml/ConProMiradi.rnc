@@ -240,7 +240,7 @@ nested_target.element =
 #
 threat_target_association.element =
     element cp:threat_target_association {
-        element threat_id { xsd:nonNegativeInteger }
+        element cp:threat_id { xsd:nonNegativeInteger }
         & element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
         & element cp:threat_severity { vocabulary_ranking_vhhml }?
         & element cp:threat_scope { vocabulary_ranking_vhhml }?
