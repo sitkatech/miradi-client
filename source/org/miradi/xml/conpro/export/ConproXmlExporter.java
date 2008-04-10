@@ -25,17 +25,25 @@ import java.io.IOException;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.FactorLinkSet;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
+import org.miradi.project.SimpleThreatRatingFramework;
+import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.utils.CodeList;
@@ -81,10 +89,84 @@ public class ConproXmlExporter extends XmlExporter
 			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
+			writeSimpleTargetThreatLinkRatings(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
 
+	}
+	
+	private FactorLinkSet getTargetThreatFactorLink(Target target) throws Exception
+	{
+		FactorLinkSet targetThreatLinks = new FactorLinkSet();
+		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
+			if (factorLink.isThreatTargetLink())
+			{
+				targetThreatLinks.add(factorLink);
+			}
+		}
+		
+		return targetThreatLinks;
+	}
+
+	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, Target target) throws Exception
+	{
+		FactorLinkSet targetThreatLinks = getTargetThreatFactorLink(target);
+		for(FactorLink factorLink : targetThreatLinks)
+		{
+			writeSimpleTargetThreatLinkRatings(out, factorLink, target.getRef());
+		}
+
+	}
+	
+	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
+	{
+		ORef threatRef = factorLink.getUpstreamThreatRef();
+		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
+		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
+				
+		int targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
+		
+		out.writeln("<threat_target_association>");
+		out.write("<threat_id>");
+		out.write(Integer.toString(threatRef.getObjectId().asInt()));
+		out.writeln("</threat_id>");
+		writeOptionalElement(out, "threat_to_target_rank", translate(targetThreatRatingValue));
+		writeOptionalElement(out, "threat_severity", translate(getSeverity(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_scope", translate(getScope(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_irreversibility", translate(getIrreversibility(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_target_comment", factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
+		out.writeln("</threat_target_association>");
+	}
+
+	private int getIrreversibility(SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle)
+	{
+		RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
+		ValueOption irreversibility = findValueOption(bundle.getValueId(irreversibilityCriterion.getId()));
+		return irreversibility.getNumericValue();
+	}
+
+	private int getScope(SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle)
+	{
+		RatingCriterion scopeCriterion = simpleThreatFramework.getScopeCriterion();
+		ValueOption scope = findValueOption(bundle.getValueId(scopeCriterion.getId()));
+		return scope.getNumericValue();
+	}
+
+	private int getSeverity(SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle)
+	{
+		RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
+		ValueOption severity = findValueOption(bundle.getValueId(severityCriterion.getId()));
+		
+		return severity.getNumericValue();
+	}
+
+	private ValueOption findValueOption(BaseId valueOptionId)
+	{
+		return (ValueOption)getProject().findObject(ValueOption.getObjectType(), valueOptionId);
 	}
 	
 	private void writeNestedTargets(UnicodeWriter out, Target target) throws Exception
@@ -102,14 +184,10 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		FactorLinkSet targetThreatLinks = getTargetThreatFactorLink(target);
+		for(FactorLink factorLink : targetThreatLinks)
 		{
-			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
-			if (factorLink.isThreatTargetLink())
-			{
-				writeThreatStressRatings(out, factorLink);
-			}
+			writeThreatStressRatings(out, factorLink);
 		}
 	}
 
