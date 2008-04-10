@@ -232,17 +232,19 @@ public class ReportXmlExporter extends XmlExporter
 		ORef threatRef = factorLink.getUpstreamThreatRef();
 		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
 		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
-
+				
 		RatingCriterion scopeCriterion = simpleThreatFramework.getScopeCriterion();
-		RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
-		RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
 		BaseId scopeId = bundle.getValueId(scopeCriterion.getId());
-		BaseId severityId = bundle.getValueId(severityCriterion.getId());
-		BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
 		ValueOption scope = (ValueOption)getProject().findObject(ValueOption.getObjectType(), scopeId);
+		
+		RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
+		BaseId severityId = bundle.getValueId(severityCriterion.getId());
 		ValueOption severity = (ValueOption)getProject().findObject(ValueOption.getObjectType(), severityId);
+		
+		RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
+		BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
 		ValueOption irreversibility = (ValueOption)getProject().findObject(ValueOption.getObjectType(), irreversibilityId);
-
+		
 		out.writeln("<ThreatRatingSimple>");
 		writeCriterionAndValue(out, scopeCriterion, scope);
 		writeCriterionAndValue(out, severityCriterion, severity);
