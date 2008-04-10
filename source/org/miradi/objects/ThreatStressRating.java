@@ -115,6 +115,11 @@ public class ThreatStressRating extends BaseObject
 		return new StressContributionQuestion().findChoiceByCode(contribution.toString());
 	}
 	 
+	public String getIrreversibilityCode()
+	{
+		return irreversibility.get();
+	}
+	
 	public ChoiceItem getIrreversibility()
 	{
 		return new StressIrreversibilityQuestion().findChoiceByCode(irreversibility.toString());

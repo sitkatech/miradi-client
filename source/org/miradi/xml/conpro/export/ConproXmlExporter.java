@@ -322,7 +322,7 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
 			out.write("<stress_threat>");
-			writeOptionalElement(out, "contrib_rank", threatStressRating.getIrreversibility().getLabel());
+			writeOptionalRatingCodeElement(out, "contrib_rank", threatStressRating.getIrreversibilityCode());
 			out.write("</stress_threat>");
 		}
 	}
