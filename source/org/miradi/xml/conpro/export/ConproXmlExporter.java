@@ -559,16 +559,16 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private String ratingCodeToXmlValue(String code)
 	{
-		if (code.equals(StatusQuestion.POOR))
+		if (code.equals("1"))
 			return "Low";
 		
-		if (code.equals(StatusQuestion.FAIR))
+		if (code.equals("2"))
 			return "Medium";
 		
-		if (code.equals(StatusQuestion.GOOD))
+		if (code.equals("3"))
 			return "High";
 		
-		if (code.equals(StatusQuestion.VERY_GOOD))
+		if (code.equals("4"))
 			return "Very High";
 		
 		return "";
