@@ -29,7 +29,6 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -547,13 +546,13 @@ public class ConproXmlExporter extends XmlExporter
 	private String translateKeyEcologicalAttributeType(String type)
 	{
 		if (type.equals("10"))
-			return EAM.text("Size");
+			return "Size";
 		
 		if (type.equals("20"))
-			return EAM.text("Condition");
+			return "Condition";
 		
 		if (type.equals("30"))
-			return EAM.text("Landscape Context");
+			return "Landscape Context";
 		
 		return "";
 	}
@@ -561,16 +560,16 @@ public class ConproXmlExporter extends XmlExporter
 	private String ratingCodeToXmlValue(String code)
 	{
 		if (code.equals(StatusQuestion.POOR))
-			return EAM.text("Low");
+			return "Low";
 		
 		if (code.equals(StatusQuestion.FAIR))
-			return EAM.text("Medium");
+			return "Medium";
 		
 		if (code.equals(StatusQuestion.GOOD))
-			return EAM.text("High");
+			return "High";
 		
 		if (code.equals(StatusQuestion.VERY_GOOD))
-			return EAM.text("Very High");
+			return "Very High";
 		
 		return "";
 	}
