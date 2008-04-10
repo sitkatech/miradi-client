@@ -39,6 +39,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.StatusQuestion;
 
 public class TestConproXmlExporter extends TestCaseWithProject
 {
@@ -85,9 +86,9 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRef));
 		
-		getProject().executeCommand(new CommandSetObjectData(measurementRef, Measurement.TAG_STATUS, "2"));
+		getProject().executeCommand(new CommandSetObjectData(measurementRef, Measurement.TAG_STATUS, StatusQuestion.FAIR));
 		
-		assertEquals("wrong tnc viability calculation", "2", Target.computeTNCViability(getProject()));
+		assertEquals("wrong tnc viability calculation", StatusQuestion.FAIR, Target.computeTNCViability(getProject()));
 	}
 
 	private ORef createKeyEcologicalAttribute() throws Exception, CommandFailedException
@@ -111,8 +112,8 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	{
 		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
 		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_LABEL, "SomeStressLabel"));
-		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SEVERITY, "1"));
-		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SCOPE, "1"));
+		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SEVERITY, StatusQuestion.POOR));
+		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SCOPE, StatusQuestion.POOR));
 		
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(target, Target.TAG_STRESS_REFS, stressRef));
 		return stressRef;
@@ -124,7 +125,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_LABEL, "SomeTargetLabel"));
 		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TEXT, "SomeTargetText"));
 		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_CURRENT_STATUS_JUSTIFICATION, "SomeTargetStatusJustication"));
-		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TARGET_STATUS, "2"));
+		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TARGET_STATUS, StatusQuestion.FAIR));
 		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributeRef.getObjectId()));
 		
 		ORef subTargetRef = getProject().createObject(SubTarget.getObjectType());
@@ -137,8 +138,8 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	{
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
 		ORef threatStressRatingRef = getProject().createObjectAndReturnRef(ThreatStressRating.getObjectType(), extraInfo);
-		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, "3"));
-		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, "4"));
+		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, StatusQuestion.GOOD));
+		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, StatusQuestion.VERY_GOOD));
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRef));
 	}
 }
