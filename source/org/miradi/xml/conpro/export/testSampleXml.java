@@ -20,7 +20,7 @@ import com.thaiopensource.validate.rng.RngProperty;
 //FIXME rename this to something meaningful or extract the validation data into own class
 public class testSampleXml
 {
-	public boolean validate(InputStream xmlInputStream) throws Exception
+	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = EAM.getResourceURL("xml/ConProMiradi.rnc");
@@ -53,7 +53,7 @@ public class testSampleXml
 		try
 		{
 			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
-			new testSampleXml().validate(xmlUrl.openStream());
+			new testSampleXml().isValid(xmlUrl.openStream());
 		}
 		catch(Exception e)
 		{
