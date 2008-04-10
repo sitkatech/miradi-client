@@ -258,9 +258,7 @@ public class ConproXmlExporter extends XmlExporter
 		int targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
 		
 		out.writeln("<threat_target_association>");
-		out.write("<threat_id>");
-		out.write(Integer.toString(threatRef.getObjectId().asInt()));
-		out.writeln("</threat_id>");
+		writeElement(out, "threat_id", threatRef.getObjectId().toString());
 		writeOptionalRatingCodeElement(out, "threat_to_target_rank", targetThreatRatingValue);
 		writeOptionalRatingCodeElement(out, "threat_severity", getSeverity(simpleThreatFramework, bundle));
 		writeOptionalRatingCodeElement(out, "threat_scope", getScope(simpleThreatFramework, bundle));
