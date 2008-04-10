@@ -224,7 +224,7 @@ public class ConproXmlExporter extends XmlExporter
 
 	}
 	
-	private FactorLinkSet getTargetThreatFactorLink(Target target) throws Exception
+	private FactorLinkSet getTargetThreatFactorLinks(Target target) throws Exception
 	{
 		FactorLinkSet targetThreatLinks = new FactorLinkSet();
 		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
@@ -242,7 +242,7 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetThreatLinks = getTargetThreatFactorLink(target);
+		FactorLinkSet targetThreatLinks = getTargetThreatFactorLinks(target);
 		for(FactorLink factorLink : targetThreatLinks)
 		{
 			writeSimpleTargetThreatLinkRatings(out, factorLink, target.getRef());
@@ -311,7 +311,7 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetThreatLinks = getTargetThreatFactorLink(target);
+		FactorLinkSet targetThreatLinks = getTargetThreatFactorLinks(target);
 		for(FactorLink factorLink : targetThreatLinks)
 		{
 			writeThreatStressRatings(out, factorLink);
