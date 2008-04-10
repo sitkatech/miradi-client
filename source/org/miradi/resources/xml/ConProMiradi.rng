@@ -515,7 +515,7 @@ http://xmlns.com/foaf/spec/</documentation>
   <define name="threat_target_association.element">
     <element name="cp:threat_target_association">
       <interleave>
-        <element name="threat_id">
+        <element name="cp:threat_id">
           <data type="nonNegativeInteger"/>
         </element>
         <optional>
