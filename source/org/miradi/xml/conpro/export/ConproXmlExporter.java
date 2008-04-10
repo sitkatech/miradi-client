@@ -138,7 +138,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeThreshold(out, "indicator_description_very_good", indicator, StatusQuestion.VERY_GOOD);
 		
 		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
-		writeOptionalElement(out, "desired_viability_rating",  ratingCodeToXmlValue(indicator.getFutureStatusRating()));
+		writeOptionalRatingCodeElement(out, "desired_viability_rating",  indicator.getFutureStatusRating());
 		writeOptionalElement(out, "desired_rating_date",  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
@@ -211,7 +211,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeElement(out, "name", target, Target.TAG_LABEL);
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeOptionalElement(out, "target_viability_rank", ratingCodeToXmlValue(target.getBasicTargetStatus()));
+			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			//FIXME cant get this work,  need a way to export each code in list, schema question
 			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			writeStresses(out, target);
@@ -261,10 +261,10 @@ public class ConproXmlExporter extends XmlExporter
 		out.write("<threat_id>");
 		out.write(Integer.toString(threatRef.getObjectId().asInt()));
 		out.writeln("</threat_id>");
-		writeOptionalElement(out, "threat_to_target_rank", ratingCodeToXmlValue(targetThreatRatingValue));
-		writeOptionalElement(out, "threat_severity", ratingCodeToXmlValue(getSeverity(simpleThreatFramework, bundle)));
-		writeOptionalElement(out, "threat_scope", ratingCodeToXmlValue(getScope(simpleThreatFramework, bundle)));
-		writeOptionalElement(out, "threat_irreversibility", ratingCodeToXmlValue(getIrreversibility(simpleThreatFramework, bundle)));
+		writeOptionalRatingCodeElement(out, "threat_to_target_rank", targetThreatRatingValue);
+		writeOptionalRatingCodeElement(out, "threat_severity", getSeverity(simpleThreatFramework, bundle));
+		writeOptionalRatingCodeElement(out, "threat_scope", getScope(simpleThreatFramework, bundle));
+		writeOptionalRatingCodeElement(out, "threat_irreversibility", getIrreversibility(simpleThreatFramework, bundle));
 		writeOptionalElement(out, "threat_target_comment", factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
 		out.writeln("</threat_target_association>");
 	}
@@ -338,9 +338,9 @@ public class ConproXmlExporter extends XmlExporter
 			out.write("<stresses_target sequence='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeElement(out, "stress_name", stress, Stress.TAG_LABEL);
-			writeOptionalElement(out, "stress_severity", ratingCodeToXmlValue(stress.getData(Stress.TAG_SEVERITY)));
-			writeOptionalElement(out, "stress_scope", ratingCodeToXmlValue(stress.getData(Stress.TAG_SCOPE)));
-			writeOptionalElement(out, "stress_to_target_rank", ratingCodeToXmlValue(stress.getCalculatedStressRating()));
+			writeOptionalRatingCodeElement(out, "stress_severity", stress.getData(Stress.TAG_SEVERITY));
+			writeOptionalRatingCodeElement(out, "stress_scope", stress.getData(Stress.TAG_SCOPE));
+			writeOptionalRatingCodeElement(out, "stress_to_target_rank", stress.getCalculatedStressRating());
 			out.writeln("</stresses_target>");
 		}
 	}
@@ -511,6 +511,16 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<document_exchange status='success'/>");
+	}
+	
+	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
+	{
+		writeOptionalElement(out, elementName, ratingCodeToXmlValue(code));
+	}
+	
+	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, int code) throws Exception
+	{
+		writeOptionalElement(out, elementName, ratingCodeToXmlValue(code));
 	}
 	
 	private String ratingCodeToXmlValue(int code)
