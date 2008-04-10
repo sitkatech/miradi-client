@@ -51,22 +51,21 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		tempDir = createTempDirectory();
 		fillProjectWithData();
-	}
-	
-	@Override
-	public void tearDown() throws Exception
-	{
-		super.tearDown();
-		DirectoryUtils.deleteEntireDirectoryTree(tempDir);
 	}
 	
 	public void testValidatedExport() throws Exception
 	{
-		File tempXmlOutFile = new File(tempDir, "conpro.xml");
-		new ConproXmlExporter(getProject()).export(tempXmlOutFile);
-		assertTrue("did not validate?", new testSampleXml().isValid(new FileInputStream(tempXmlOutFile)));
+		File tempXmlOutFile = createTempFileFromName("conpro.xml");
+		try
+		{
+			new ConproXmlExporter(getProject()).export(tempXmlOutFile);
+			assertTrue("did not validate?", new testSampleXml().isValid(new FileInputStream(tempXmlOutFile)));
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempXmlOutFile);
+		}
 	}
 	
 	private void fillProjectWithData() throws Exception
@@ -142,6 +141,4 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, "4"));
 		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRef));
 	}
-	
-	private File tempDir;
 }
