@@ -572,7 +572,7 @@ public class ConproXmlExporter extends XmlExporter
 		try
 		{
 			new ConproXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
-			new testSampleXml().validate(new FileInputStream(getXmlDestination(commandLineArguments)));
+			new testSampleXml().isValid(new FileInputStream(getXmlDestination(commandLineArguments)));
 			System.out.println("Export Conpro xml complete");
 		}
 		finally

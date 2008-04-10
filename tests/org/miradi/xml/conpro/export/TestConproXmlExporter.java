@@ -66,7 +66,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	{
 		File tempXmlOutFile = new File(tempDir, "conpro.xml");
 		new ConproXmlExporter(getProject()).export(tempXmlOutFile);
-		assertTrue("did not validate?", new testSampleXml().validate(new FileInputStream(tempXmlOutFile)));
+		assertTrue("did not validate?", new testSampleXml().isValid(new FileInputStream(tempXmlOutFile)));
 	}
 	
 	private void fillProjectWithData() throws Exception
