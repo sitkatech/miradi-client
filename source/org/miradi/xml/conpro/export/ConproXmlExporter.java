@@ -51,6 +51,7 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 
@@ -131,10 +132,10 @@ public class ConproXmlExporter extends XmlExporter
 		ORef keyEcologicalAttributeReferrer = keyEcologicalAttributeReferrers.getRefForType(KeyEcologicalAttribute.getObjectType());
 		writeElement(out, "kea_id", Integer.toString(keyEcologicalAttributeReferrer.getObjectId().asInt()));
 		
-		writeThreshold(out, "indicator_description_poor", indicator, "1");
-		writeThreshold(out, "indicator_description_fair", indicator, "2");
-		writeThreshold(out, "indicator_description_good", indicator, "3");
-		writeThreshold(out, "indicator_description_very_good", indicator, "4");
+		writeThreshold(out, "indicator_description_poor", indicator, StatusQuestion.POOR);
+		writeThreshold(out, "indicator_description_fair", indicator, StatusQuestion.FAIR);
+		writeThreshold(out, "indicator_description_good", indicator, StatusQuestion.GOOD);
+		writeThreshold(out, "indicator_description_very_good", indicator, StatusQuestion.VERY_GOOD);
 		
 		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
 		writeOptionalElement(out, "desired_viability_rating",  ratingCodeToXmlValue(indicator.getFutureStatusRating()));
@@ -551,16 +552,16 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private String ratingCodeToXmlValue(String code)
 	{
-		if (code.equals("1"))
+		if (code.equals(StatusQuestion.POOR))
 			return EAM.text("Low");
 		
-		if (code.equals("2"))
+		if (code.equals(StatusQuestion.FAIR))
 			return EAM.text("Medium");
 		
-		if (code.equals("3"))
+		if (code.equals(StatusQuestion.GOOD))
 			return EAM.text("High");
 		
-		if (code.equals("4"))
+		if (code.equals(StatusQuestion.VERY_GOOD))
 			return EAM.text("Very High");
 		
 		return "";
