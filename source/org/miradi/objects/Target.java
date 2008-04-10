@@ -200,8 +200,13 @@ public class Target extends Factor
 		
 		return findAllKeaIndicators();
 	}
-	
 
+	public ORefList findAllKeaIndicatorRefs()
+	{
+		return new ORefList(Indicator.getObjectType(), findAllKeaIndicators());
+	}
+	
+	//FIXME the idlist needs to be initialized with indicator as type
 	public IdList findAllKeaIndicators()
 	{
 		IdList list = new IdList(KeyEcologicalAttribute.getObjectType());

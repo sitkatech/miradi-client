@@ -21,6 +21,8 @@ package org.miradi.xml.conpro.export;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -33,7 +35,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
@@ -67,8 +71,111 @@ public class ConproXmlExporter extends XmlExporter
 		writeoutProjectSummaryElement(out);
 		writeOptionalTargets(out);
 		writeOptionalKeyEcologicalAttributes(out);
+		writeOptionalViability(out);
 		
 		out.writeln("</conservation_project>");
+	}
+
+	private void writeOptionalViability(UnicodeWriter out) throws Exception
+	{
+		Target[] targets = getProject().getTargetPool().getTargets();
+		if (targets.length == 0)
+			return;
+
+		if (containsNoTargetsInViabilityMode(targets))
+			return;
+		
+		out.writeln("<viability>");
+		try
+		{
+			for (int index = 0; index < targets.length; ++index)
+			{
+				if (targets[index].isViabilityModeTNC())
+					writeIndicatorViability(out, targets, index);
+			}
+		}
+		finally
+		{
+			out.writeln("</viability>");
+		}
+	}
+
+	private boolean containsNoTargetsInViabilityMode(Target[] targets)
+	{
+		for (int index = 0; index < targets.length; ++index)
+		{
+			if (targets[index].isViabilityModeTNC())
+				return false;
+		}
+		
+		return true;
+	}
+
+	private void writeIndicatorViability(UnicodeWriter out, Target[] targets, int index) throws Exception
+	{
+		ORefList indicatorRefs = targets[index].findAllKeaIndicatorRefs();
+		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
+			writeViability(out, targets[index].getRef(), indicator);
+		}
+	}
+
+	private void writeViability(UnicodeWriter out, ORef targetRef, Indicator indicator) throws Exception
+	{
+		out.writeln("<viability_assessment>");
+		writeElement(out, "target_id", Integer.toString(targetRef.getObjectId().asInt()));
+		writeElement(out, "indicator_id", Integer.toString(indicator.getId().asInt()));
+		
+		ORefList keyEcologicalAttributeReferrers = indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
+		ORef keyEcologicalAttributeReferrer = keyEcologicalAttributeReferrers.getRefForType(KeyEcologicalAttribute.getObjectType());
+		writeElement(out, "kea_id", Integer.toString(keyEcologicalAttributeReferrer.getObjectId().asInt()));
+		
+		writeThreshold(out, "indicator_description_poor", indicator, "1");
+		writeThreshold(out, "indicator_description_fair", indicator, "2");
+		writeThreshold(out, "indicator_description_good", indicator, "3");
+		writeThreshold(out, "indicator_description_very_good", indicator, "4");
+		
+		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
+		writeOptionalElement(out, "desired_viability_rating",  translate(indicator.getFutureStatusRating()));
+		writeOptionalElement(out, "desired_rating_date",  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
+		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
+		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		writeOptionalElement(out, "desired_rating_comment", indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
+		KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologicalAttributeReferrer);
+		writeOptionalElement(out, "viability_record_comment", keyEcologicalAttribute, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		writeOptionalLatestMeasurementValues(out, indicator);
+			
+		out.writeln("</viability_assessment>");
+	}
+
+	private void writeOptionalLatestMeasurementValues(UnicodeWriter out, Indicator indicator) throws Exception
+	{
+		ORef measurementRef = indicator.getLatestMeasurementRef();
+		if (measurementRef.isInvalid())
+			return;
+		
+		Measurement measurement = Measurement.find(getProject(), measurementRef);
+		
+		writeOptionalElement(out, "current_viability_rating",  measurement, Measurement.TAG_STATUS);
+		writeOptionalElement(out, "current_rating_date",  measurement, Measurement.TAG_DATE);
+		writeOptionalElement(out, "confidence_current_rating",  translateStatusConfidence(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+		writeOptionalElement(out, "current_rating_comment", measurement, Measurement.TAG_COMMENT);
+	
+	}
+
+	private void writeThreshold(UnicodeWriter out, String elementName, Indicator indicator, String threshold) throws Exception
+	{
+		HashMap<String, String> stringMap = indicator.getThreshold().getStringMap().toHashMap();
+		Set<String> keys = stringMap.keySet();
+		for(String  key : keys)
+		{
+			if (key.equals(threshold))
+			{
+				String value = stringMap.get(key);
+				writeOptionalElement(out, elementName, value);
+			}
+		}
 	}
 
 	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
@@ -408,6 +515,24 @@ public class ConproXmlExporter extends XmlExporter
 	private String translate(int code)
 	{
 		return translate(Integer.toString(code));
+	}
+	
+
+	private String translateStatusConfidence(String data)
+	{
+		if (data.equals("RoughGuess"))
+			return "Rough Guess";
+		
+		if (data.equals("ExpertKnowledge"))
+			return "Expert Knowledge";
+		
+		if (data.equals("RapidAssessment"))
+			return "Rapid Assessment";
+		
+		if (data.equals("IntensiveAssessment"))
+			return "Intensive Assessment";
+		
+		return "";
 	}
 	
 	private String translateKeyEcologicalAttributeType(String type)
