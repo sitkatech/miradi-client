@@ -137,7 +137,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeThreshold(out, "indicator_description_very_good", indicator, "4");
 		
 		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
-		writeOptionalElement(out, "desired_viability_rating",  translate(indicator.getFutureStatusRating()));
+		writeOptionalElement(out, "desired_viability_rating",  ratingCodeToXmlValue(indicator.getFutureStatusRating()));
 		writeOptionalElement(out, "desired_rating_date",  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
@@ -210,7 +210,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeElement(out, "name", target, Target.TAG_LABEL);
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeOptionalElement(out, "target_viability_rank", translate(target.getBasicTargetStatus()));
+			writeOptionalElement(out, "target_viability_rank", ratingCodeToXmlValue(target.getBasicTargetStatus()));
 			//FIXME cant get this work,  need a way to export each code in list, schema question
 			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			writeStresses(out, target);
@@ -260,10 +260,10 @@ public class ConproXmlExporter extends XmlExporter
 		out.write("<threat_id>");
 		out.write(Integer.toString(threatRef.getObjectId().asInt()));
 		out.writeln("</threat_id>");
-		writeOptionalElement(out, "threat_to_target_rank", translate(targetThreatRatingValue));
-		writeOptionalElement(out, "threat_severity", translate(getSeverity(simpleThreatFramework, bundle)));
-		writeOptionalElement(out, "threat_scope", translate(getScope(simpleThreatFramework, bundle)));
-		writeOptionalElement(out, "threat_irreversibility", translate(getIrreversibility(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_to_target_rank", ratingCodeToXmlValue(targetThreatRatingValue));
+		writeOptionalElement(out, "threat_severity", ratingCodeToXmlValue(getSeverity(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_scope", ratingCodeToXmlValue(getScope(simpleThreatFramework, bundle)));
+		writeOptionalElement(out, "threat_irreversibility", ratingCodeToXmlValue(getIrreversibility(simpleThreatFramework, bundle)));
 		writeOptionalElement(out, "threat_target_comment", factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
 		out.writeln("</threat_target_association>");
 	}
@@ -337,9 +337,9 @@ public class ConproXmlExporter extends XmlExporter
 			out.write("<stresses_target sequence='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeElement(out, "stress_name", stress, Stress.TAG_LABEL);
-			writeOptionalElement(out, "stress_severity", translate(stress.getData(Stress.TAG_SEVERITY)));
-			writeOptionalElement(out, "stress_scope", translate(stress.getData(Stress.TAG_SCOPE)));
-			writeOptionalElement(out, "stress_to_target_rank", translate(stress.getCalculatedStressRating()));
+			writeOptionalElement(out, "stress_severity", ratingCodeToXmlValue(stress.getData(Stress.TAG_SEVERITY)));
+			writeOptionalElement(out, "stress_scope", ratingCodeToXmlValue(stress.getData(Stress.TAG_SCOPE)));
+			writeOptionalElement(out, "stress_to_target_rank", ratingCodeToXmlValue(stress.getCalculatedStressRating()));
 			out.writeln("</stresses_target>");
 		}
 	}
@@ -377,19 +377,19 @@ public class ConproXmlExporter extends XmlExporter
 	private String getComputedTncViability()
 	{
 		String code = Target.computeTNCViability(getProject());
-		return translate(code);
+		return ratingCodeToXmlValue(code);
 	}
 
 	private String getStressBasedOverallProjectRating()
 	{
 		int overallProjectRating = getProject().getStressBasedThreatRatingFramework().getOverallProjectRating();
-		return translate(overallProjectRating);
+		return ratingCodeToXmlValue(overallProjectRating);
 	}
 	
 	private String getSimpleOverallProjectRating()
 	{
 		int overallProjectRating = getProject().getSimpleThreatRatingFramework().getOverallProjectRating().getNumericValue();
-		return translate(overallProjectRating);
+		return ratingCodeToXmlValue(overallProjectRating);
 	}
 
 	private void writeEcoregionCodes(UnicodeWriter out) throws Exception
@@ -512,9 +512,9 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("<document_exchange status='success'/>");
 	}
 	
-	private String translate(int code)
+	private String ratingCodeToXmlValue(int code)
 	{
-		return translate(Integer.toString(code));
+		return ratingCodeToXmlValue(Integer.toString(code));
 	}
 	
 
@@ -549,7 +549,7 @@ public class ConproXmlExporter extends XmlExporter
 		return "";
 	}
 	
-	private String translate(String code)
+	private String ratingCodeToXmlValue(String code)
 	{
 		if (code.equals("1"))
 			return EAM.text("Low");
