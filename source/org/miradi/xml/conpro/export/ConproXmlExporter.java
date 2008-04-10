@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
@@ -65,8 +66,27 @@ public class ConproXmlExporter extends XmlExporter
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
 		writeOptionalTargets(out);
+		writeOptionalKeyEcologicalAttributes(out);
 		
 		out.writeln("</conservation_project>");
+	}
+
+	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
+	{
+		KeyEcologicalAttribute keyEcologicalAttributes[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
+		if (keyEcologicalAttributes.length == 0)
+			return;
+		
+		out.writeln("<key_attributes>");
+		for (int index = 0; index < keyEcologicalAttributes.length; ++index)
+		{
+			out.writeln("<key_attribute id='" + keyEcologicalAttributes[index].getId().asInt() + "'>");
+			writeElement(out, "name", keyEcologicalAttributes[index], KeyEcologicalAttribute.TAG_LABEL);
+			writeElement(out, "category", translateKeyEcologicalAttributeType(keyEcologicalAttributes[index].getKeyEcologicalAttributeType()));
+			out.writeln("</key_attribute>");
+		}
+		
+		out.writeln("</key_attributes>");
 	}
 
 	private void writeOptionalTargets(UnicodeWriter out) throws Exception
@@ -119,7 +139,6 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			writeSimpleTargetThreatLinkRatings(out, factorLink, target.getRef());
 		}
-
 	}
 	
 	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
@@ -389,6 +408,20 @@ public class ConproXmlExporter extends XmlExporter
 	private String translate(int code)
 	{
 		return translate(Integer.toString(code));
+	}
+	
+	private String translateKeyEcologicalAttributeType(String type)
+	{
+		if (type.equals("10"))
+			return EAM.text("Size");
+		
+		if (type.equals("20"))
+			return EAM.text("Condition");
+		
+		if (type.equals("30"))
+			return EAM.text("Landscape Context");
+		
+		return "";
 	}
 	
 	private String translate(String code)
