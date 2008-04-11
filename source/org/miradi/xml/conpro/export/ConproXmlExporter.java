@@ -38,6 +38,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
@@ -74,8 +75,38 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalKeyEcologicalAttributes(out);
 		writeOptionalViability(out);
 		writeOptionalThreats(out);
+		writeOptionalObjectives(out);
 		
 		out.writeln("</conservation_project>");
+	}
+
+	private void writeOptionalObjectives(UnicodeWriter out) throws Exception
+	{
+		ORefList objectiveRefs = getProject().getObjectivePool().getRefList();
+		if (objectiveRefs.size() == 0)
+			return;
+		
+		out.writeln("<objectives>");
+		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
+		{
+			Objective objective = Objective.find(getProject(), objectiveRefs.get(refIndex));
+			out.writeln("<objective id='" + objective.getId().toString() + "'>");
+			writeRelevantIndicators(out, objective);
+			writeElement(out, "name", objective, Cause.TAG_LABEL);
+			writeOptionalElement(out, "comment", objective, Objective.TAG_COMMENTS);
+			out.writeln("</objective>");
+		}
+		
+		out.writeln("</objectives>");
+	}
+
+	private void writeRelevantIndicators(UnicodeWriter out, Objective objective) throws Exception
+	{
+		ORefList relativeIndicatorRefs = objective.getRelevantIndicatorRefList();
+		for (int refIndex = 0; refIndex < relativeIndicatorRefs.size(); ++refIndex)
+		{
+			writeElement(out, "indicator_id", relativeIndicatorRefs.get(refIndex).getObjectId().toString());
+		}
 	}
 
 	private void writeOptionalThreats(UnicodeWriter out) throws Exception

@@ -311,7 +311,7 @@ objectives.element =
     element cp:objectives {
         element cp:objective {
             attribute id { vocabulary_id }
-            & element indicator_id { xsd:nonNegativeInteger }*
+            & element cp:indicator_id { xsd:nonNegativeInteger }*
             & element cp:name { xsd:token }
             & element cp:comment { text }?
         }+
