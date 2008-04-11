@@ -42,9 +42,11 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
@@ -76,8 +78,52 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalViability(out);
 		writeOptionalThreats(out);
 		writeOptionalObjectives(out);
+		writeOptionalStrategies(out);
 		
 		out.writeln("</conservation_project>");
+	}
+
+	private void writeOptionalStrategies(UnicodeWriter out) throws Exception
+	{
+		ORefList strategyRefs = getProject().getStrategyPool().getRefList();
+		if (strategyRefs.size() == 0)
+			return;
+		
+		out.writeln("<strategies>");
+		for (int refIndex = 0; refIndex < strategyRefs.size(); ++refIndex)
+		{
+			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
+			out.writeln("<strategy id='" + strategy.getId().toString() + "'>");
+			writeIds(out, "objective_id", strategy.getObjectiveRefs());
+			writeElement(out, "name", strategy, Strategy.TAG_LABEL);
+			writeOptionalElement(out, "taxonomy_code", strategy, Strategy.TAG_TAXONOMY_CODE);
+			writeOptionalRatingCodeElement(out, "leverage", strategy, Strategy.TAG_IMPACT_RATING);
+			writeOptionalRatingCodeElement(out, "feasibility", strategy, Strategy.TAG_FEASIBILITY_RATING);
+			writeOptionalRatingCodeElement(out, "overall_rank", strategy.getStrategyRatingSummary());
+			writeOptionalElement(out, "overall_rank", strategy, Strategy.TAG_COMMENT);
+			writeOptionalActivities(out, strategy.getActivityRefs());
+						
+			out.writeln("</strategy>");
+		}
+		
+		out.writeln("</strategies>");
+	}
+
+	private void writeOptionalActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
+	{
+		if (activityRefs.size() == 0)
+			return;
+		
+		out.writeln("<activities>");
+		for (int refIndex = 0; refIndex < activityRefs.size(); ++refIndex)
+		{
+			Task activity = Task.find(getProject(), activityRefs.get(refIndex));
+			out.writeln("<activity>");
+			writeElement(out, "name", activity, Task.TAG_LABEL);
+			out.writeln("</activity>");
+		}
+		
+		out.writeln("</activities>");
 	}
 
 	private void writeOptionalObjectives(UnicodeWriter out) throws Exception
@@ -91,8 +137,8 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			Objective objective = Objective.find(getProject(), objectiveRefs.get(refIndex));
 			out.writeln("<objective id='" + objective.getId().toString() + "'>");
-			writeRelevantIndicators(out, objective);
-			writeElement(out, "name", objective, Cause.TAG_LABEL);
+			writeIds(out, "indicator_id", objective.getRelevantIndicatorRefList());
+			writeElement(out, "name", objective, Objective.TAG_LABEL);
 			writeOptionalElement(out, "comment", objective, Objective.TAG_COMMENTS);
 			out.writeln("</objective>");
 		}
@@ -100,12 +146,11 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</objectives>");
 	}
 
-	private void writeRelevantIndicators(UnicodeWriter out, Objective objective) throws Exception
+	private void writeIds(UnicodeWriter out, String elementName, ORefList refs) throws Exception
 	{
-		ORefList relativeIndicatorRefs = objective.getRelevantIndicatorRefList();
-		for (int refIndex = 0; refIndex < relativeIndicatorRefs.size(); ++refIndex)
+		for (int refIndex = 0; refIndex < refs.size(); ++refIndex)
 		{
-			writeElement(out, "indicator_id", relativeIndicatorRefs.get(refIndex).getObjectId().toString());
+			writeElement(out, elementName, refs.get(refIndex).getObjectId().toString());
 		}
 	}
 
@@ -564,6 +609,11 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<document_exchange status='success'/>");
+	}
+	
+	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	{
+		writeOptionalRatingCodeElement(out, elementName, object.getData(tag));
 	}
 	
 	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception

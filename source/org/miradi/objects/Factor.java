@@ -155,6 +155,11 @@ abstract public class Factor extends BaseObject
 		indicators.set(indicatorsToUse);
 	}
 
+	public ORefList getObjectiveRefs()
+	{
+		return new ORefList(Objective.getObjectType(), getObjectives());
+	}
+	
 	public IdList getObjectives()
 	{
 		return objectives.getIdList();
