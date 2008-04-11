@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -181,7 +182,7 @@ public class Strategy extends Factor
 		return progressReportRefs.getORefList();
 	}
 	
-	private String getStrategyRatingSummary()
+	public String getStrategyRatingSummary()
 	{
 		ChoiceItem rating = getStrategyRating();
 		return rating.getCode();
@@ -284,6 +285,16 @@ public class Strategy extends Factor
 		return getAllResources(getActivityRefs());
 	}
 
+	public static Strategy find(ObjectManager objectManager, ORef strategyRef)
+	{
+		return (Strategy) objectManager.findObject(strategyRef);
+	}
+	
+	public static Strategy find(Project project, ORef strategyRef)
+	{
+		return find(project.getObjectManager(), strategyRef);
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
