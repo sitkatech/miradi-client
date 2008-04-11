@@ -706,7 +706,7 @@ http://xmlns.com/foaf/spec/</documentation>
             </element>
             <optional>
               <element name="cp:taxonomy_code">
-                <ref name="iucn_threat_taxonomy"/>
+              	<text/>
               </element>
             </optional>
             <optional>

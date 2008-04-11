@@ -300,7 +300,7 @@ threats.element =
         element cp:threat {
             attribute id { vocabulary_id }
             & element cp:name { xsd:token }
-            & element cp:taxonomy_code { iucn_threat_taxonomy }?
+            & element cp:taxonomy_code { text }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
         }+
     }
