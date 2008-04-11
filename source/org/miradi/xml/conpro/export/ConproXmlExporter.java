@@ -439,6 +439,7 @@ public class ConproXmlExporter extends XmlExporter
 			
 			writeMemberRoles(out, member);
 			out.writeln("<foaf:Person xmlns:foaf='http://xmlns.com/foaf/spec/'/>");
+			//NOTE person is not validating.
 			//out.writeln("</Person>");
 			out.writeln("</team_member>");
 		}
