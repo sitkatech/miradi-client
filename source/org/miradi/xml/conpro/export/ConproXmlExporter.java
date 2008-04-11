@@ -79,9 +79,41 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalThreats(out);
 		writeOptionalObjectives(out);
 		writeOptionalStrategies(out);
+		writeOptionalIndicators(out);
 		
 		out.writeln("</conservation_project>");
 	}
+
+	private void writeOptionalIndicators(UnicodeWriter out) throws Exception
+	{
+		ORefList indicatorRefs = getProject().getIndicatorPool().getRefList();
+		if (indicatorRefs.size() == 0)
+			return;
+		
+		out.writeln("<indicators>");
+		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
+			out.writeln("<indicator id='" + indicator.getId().toString() + "'>");
+			writeElement(out, "name", indicator, Indicator.TAG_LABEL);
+			//FIXME this element has namespace issue
+			//writeOptionalMethods(out, indicator.getMethodRefs());
+			writeOptionalRatingCodeElement(out, "priority", indicator, Indicator.TAG_PRIORITY);
+			out.writeln("</indicator>");
+		}
+		
+		out.writeln("</indicators>");
+	}
+
+//	FIXME this element has namespace issue
+//	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
+//	{
+//		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
+//		{
+//			Task method = Task.find(getProject(), methodRefs.get(refIndex));
+//			writeOptionalElement(out, "methods", method, Task.TAG_LABEL);
+//		}
+//	}
 
 	private void writeOptionalStrategies(UnicodeWriter out) throws Exception
 	{
