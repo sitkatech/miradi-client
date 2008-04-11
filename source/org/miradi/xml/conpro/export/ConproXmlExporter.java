@@ -132,7 +132,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalRatingCodeElement(out, "leverage", strategy, Strategy.TAG_IMPACT_RATING);
 			writeOptionalRatingCodeElement(out, "feasibility", strategy, Strategy.TAG_FEASIBILITY_RATING);
 			writeOptionalRatingCodeElement(out, "overall_rank", strategy.getStrategyRatingSummary());
-			writeOptionalElement(out, "overall_rank", strategy, Strategy.TAG_COMMENT);
+			writeOptionalElement(out, "comment", strategy, Strategy.TAG_COMMENT);
 			writeOptionalActivities(out, strategy.getActivityRefs());
 						
 			out.writeln("</strategy>");
