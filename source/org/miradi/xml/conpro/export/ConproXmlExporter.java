@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -72,8 +73,31 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalTargets(out);
 		writeOptionalKeyEcologicalAttributes(out);
 		writeOptionalViability(out);
+		writeOptionalThreats(out);
 		
 		out.writeln("</conservation_project>");
+	}
+
+	private void writeOptionalThreats(UnicodeWriter out) throws Exception
+	{
+		ORefList threatRefs = getProject().getCausePool().getRefList();
+		if (threatRefs.size() == 0)
+			return;
+		
+		out.writeln("<threats>");
+		for (int refIndex = 0; refIndex < threatRefs.size(); ++refIndex)
+		{
+			Cause threat = Cause.find(getProject(), threatRefs.get(refIndex));
+			out.writeln("<threat id='" + threat.getId().toString() + "'>");
+			writeElement(out, "name", threat, Cause.TAG_LABEL);
+			writeOptionalElement(out, "taxonomy_code", threat, Cause.TAG_TAXONOMY_CODE);
+			//FIXME is this suppose to take in consideration mode
+			int threatToProjectRating = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
+			writeOptionalRatingCodeElement(out, "threat_to_project_rank", threatToProjectRating);
+			out.writeln("</threat>");
+		}
+		
+		out.writeln("</threats>");
 	}
 
 	private void writeOptionalViability(UnicodeWriter out) throws Exception
@@ -526,7 +550,6 @@ public class ConproXmlExporter extends XmlExporter
 		return ratingCodeToXmlValue(Integer.toString(code));
 	}
 	
-
 	private String translateStatusConfidence(String data)
 	{
 		if (data.equals("RoughGuess"))
