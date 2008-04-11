@@ -326,7 +326,7 @@ strategies.element =
             & element viability_id { xsd:nonNegativeInteger }*
             & element objective_id { xsd:nonNegativeInteger }*
             & element cp:name { xsd:token }
-            & element cp:taxonomy_code { iucn_strategy_taxonomy }?
+            & element cp:taxonomy_code { text }?
             & element cp:leverage { vocabulary_ranking_vhhml }?
             & element cp:feasibility { vocabulary_ranking_vhhml }?
             & element cp:overall_rank { vocabulary_ranking_vhhml }?
