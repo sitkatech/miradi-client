@@ -733,7 +733,7 @@ http://xmlns.com/foaf/spec/</documentation>
               <ref name="vocabulary_id"/>
             </attribute>
             <zeroOrMore>
-              <element name="indicator_id">
+              <element name="cp:indicator_id">
                 <data type="nonNegativeInteger"/>
               </element>
             </zeroOrMore>
