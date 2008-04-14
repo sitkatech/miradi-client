@@ -48,7 +48,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		super(server);
 	}
 	
-	public void fillProjectStartDate() throws Exception
+	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, new MultiCalendar().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
@@ -59,18 +59,52 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "TNC planning team comment");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "TNC lessons learned");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_COUNTRIES, createSampleCountriesCodeList().toString());
-
-		//FIXME remove commented code after adding them as sample data
-//		writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
-//		writeOptionalElement(out, "project_threat_rank", getStressBasedOverallProjectRating());
-//		writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
-//		writeTeamMembers(out);
-//		writeEcoregionCodes(out);
-//		writeCodeListElements(out, "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
-//		writeCodeListElements(out, "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
-
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, createSampleTncOperatingUnitsCodeList().toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, createSampleFreshwaterEcoregionsCodeList().toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
+	}
+	
+	private CodeList createSampleTerrestrialEcoregionsCodeList()
+	{
+		CodeList terrestrialEcoregions = new CodeList();
+		terrestrialEcoregions.add("10000");
+		terrestrialEcoregions.add("10649");
+		terrestrialEcoregions.add("10671");
+		
+		return terrestrialEcoregions;
 	}
 
+	private CodeList createSampleMarineEcoregionsCodeList()
+	{
+		CodeList marineEcoregions = new CodeList();
+		marineEcoregions.add("20030");
+		marineEcoregions.add("25031");
+		marineEcoregions.add("20192");
+		
+		return marineEcoregions;
+	}
+	
+	private CodeList createSampleFreshwaterEcoregionsCodeList()
+	{
+		CodeList freshwaterEcoregions = new CodeList();
+		freshwaterEcoregions.add("30736");
+		freshwaterEcoregions.add("30424");
+		freshwaterEcoregions.add("30103");
+		
+		return freshwaterEcoregions;
+	}
+	
+	private CodeList createSampleTncOperatingUnitsCodeList()
+	{
+		CodeList tncOperatingUnitCodes = new CodeList();
+		tncOperatingUnitCodes.add("IA_US");
+		tncOperatingUnitCodes.add("SC_US");
+		tncOperatingUnitCodes.add("FL_US");
+		
+		return tncOperatingUnitCodes;
+	}
+	
 	private CodeList createSampleCountriesCodeList()
 	{
 		CodeList countriesCodeList = new CodeList();
