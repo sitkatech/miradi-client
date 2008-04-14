@@ -69,12 +69,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void createAndPopulateProjectResource() throws Exception
 	{
-		populateProjectResource(createProjectResource());
+		populateProjectResource(createProjectResource().getRef());
 	}
 
-	public ORef createProjectResource() throws Exception
+	public ProjectResource createProjectResource() throws Exception
 	{
-		return createObject(ProjectResource.getObjectType());
+		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
+		return ProjectResource.find(this, projectResourceRef);
 	}
 
 	private void populateProjectResource(ORef projectResourceRef) throws Exception
