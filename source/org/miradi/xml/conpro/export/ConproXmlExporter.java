@@ -212,9 +212,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalViability(UnicodeWriter out) throws Exception
 	{
 		Target[] targets = getProject().getTargetPool().getTargets();
-		if (targets.length == 0)
-			return;
-
 		if (containsNoTargetsInViabilityMode(targets))
 			return;
 		
