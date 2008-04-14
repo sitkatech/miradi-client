@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -189,19 +190,18 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeOptionalThreats(UnicodeWriter out) throws Exception
 	{
-		ORefList threatRefs = getProject().getCausePool().getRefList();
-		if (threatRefs.size() == 0)
+		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
+		if (directThreats.length == 0)
 			return;
 		
 		out.writeln("<threats>");
-		for (int refIndex = 0; refIndex < threatRefs.size(); ++refIndex)
+		for (int index = 0; index < directThreats.length; ++index)
 		{
-			Cause threat = Cause.find(getProject(), threatRefs.get(refIndex));
-			out.writeln("<threat id='" + threat.getId().toString() + "'>");
-			writeElement(out, "name", threat, Cause.TAG_LABEL);
-			writeOptionalElement(out, "taxonomy_code", threat, Cause.TAG_TAXONOMY_CODE);
+			out.writeln("<threat id='" + directThreats[index].getId().toString() + "'>");
+			writeElement(out, "name", directThreats[index], Cause.TAG_LABEL);
+			writeOptionalElement(out, "taxonomy_code", directThreats[index], Cause.TAG_TAXONOMY_CODE);
 			//FIXME is this suppose to take in consideration mode
-			int threatToProjectRating = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(threat);
+			int threatToProjectRating = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(directThreats[index]);
 			writeOptionalRatingCodeElement(out, "threat_to_project_rank", threatToProjectRating);
 			out.writeln("</threat>");
 		}
