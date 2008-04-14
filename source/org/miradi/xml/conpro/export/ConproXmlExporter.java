@@ -221,7 +221,7 @@ public class ConproXmlExporter extends XmlExporter
 			for (int index = 0; index < targets.length; ++index)
 			{
 				if (targets[index].isViabilityModeTNC())
-					writeIndicatorViability(out, targets, index);
+					writeIndicatorViability(out, targets[index]);
 			}
 		}
 		finally
@@ -241,13 +241,13 @@ public class ConproXmlExporter extends XmlExporter
 		return false;
 	}
 
-	private void writeIndicatorViability(UnicodeWriter out, Target[] targets, int index) throws Exception
+	private void writeIndicatorViability(UnicodeWriter out, Target target) throws Exception
 	{
-		ORefList indicatorRefs = targets[index].findAllKeaIndicatorRefs();
+		ORefList indicatorRefs = target.findAllKeaIndicatorRefs();
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
-			writeViability(out, targets[index].getRef(), indicator);
+			writeViability(out, target.getRef(), indicator);
 		}
 	}
 
