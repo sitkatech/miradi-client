@@ -22,8 +22,10 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -31,8 +33,12 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 
@@ -67,17 +73,109 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
 	}
 	
-	public void createAndPopulateProjectResource() throws Exception
+	public ORef createAndPopulateProjectResource() throws Exception
 	{
-		populateProjectResource(createProjectResource().getRef());
+		ORef projectResourceRef = createProjectResource().getRef();
+		populateProjectResource(projectResourceRef);
+		
+		return projectResourceRef;
 	}
-
+	
+	public Target createAndPopulateTarget() throws Exception
+	{
+		Target target = createTarget();
+		populateTarget(target);
+		return target;
+	}
+	
+	public Stress createAndPopulateStress() throws Exception
+	{
+		Stress stress = createStress();
+		populateStress(stress);
+		return stress;
+	}
+	
+	public Cause createAndPopulateThreat() throws Exception
+	{
+		Cause cause = createCause();
+		populateCause(cause);
+		return cause;
+	}
+	
+	public FactorLink createAndPopulateDirectThreatLink() throws Exception
+	{
+		FactorLink directThreatLink = createDirectThreatLink();
+		//FIXME finish populating factorlink
+		return directThreatLink;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
 		return ProjectResource.find(this, projectResourceRef);
 	}
+	
+	public Target createTarget() throws Exception
+	{
+		ORef targetRef = createObject(Target.getObjectType());
+		return Target.find(this, targetRef);
+	}
+	
+	public Stress createStress() throws Exception
+	{
+		ORef stressRef = createObject(Stress.getObjectType());
+		return Stress.find(this, stressRef);
+	}
+	
+	public Cause createCause() throws Exception
+	{
+		ORef threatRef = createObject(Cause.getObjectType());
+		return Cause.find(this, threatRef);
+	}
+	
+	public FactorLink createDirectThreatLink() throws Exception
+	{
+		Target target = createTarget();
+		Cause threat = createCause();
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threat.getRef(), target.getRef());
+		ORef directThreatLinkRef = createObjectAndReturnRef(ObjectType.FACTOR_LINK, extraInfo);
+		
+		return FactorLink.find(this, directThreatLinkRef);
+	}
 
+	public void populateTarget(Target target) throws Exception
+	{
+		fillObjectUsingCommand(target.getRef(), Target.TAG_LABEL, "Reefs");
+		fillObjectUsingCommand(target.getRef(), Target.TAG_TEXT, "Some Description Text");
+		fillObjectUsingCommand(target.getRef(), Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
+		fillObjectUsingCommand(target.getRef(), Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
+		
+		CodeList habitatCodes = new CodeList();
+		habitatCodes.add(HabitatAssociationQuestion.ONE_CODE);
+		habitatCodes.add(HabitatAssociationQuestion.TWO_CODE);
+		fillObjectUsingCommand(target.getRef(), Target.TAG_HABITAT_ASSOCIATION, habitatCodes.toString());
+		
+		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
+		fillObjectUsingCommand(target.getRef(), Target.TAG_STRESS_REFS, stressRefs.toString());
+		
+		//FIXME,  finish targets
+	}
+	
+	public void populateCause(Cause cause) throws Exception
+	{
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
+		
+		CodeList taxonomyCodes = new CodeList("T10.10");
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, taxonomyCodes.toString());
+	}
+	
+	public void populateStress(Stress stress) throws Exception
+	{
+		fillObjectUsingCommand(stress.getRef(), Stress.TAG_LABEL, "SomeStressLabel");
+		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SEVERITY, StatusQuestion.GOOD);
+		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SCOPE, StatusQuestion.GOOD);
+	}
+	
 	private void populateProjectResource(ORef projectResourceRef) throws Exception
 	{
 		CodeList roleCodes = new CodeList();
