@@ -30,7 +30,9 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Task;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 
@@ -63,6 +65,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, createSampleFreshwaterEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
+	}
+	
+	public void createAndPopulateProjectResources() throws Exception
+	{
+		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
+		CodeList roleCodes = new CodeList();
+		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
+		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LABEL, "John Doe");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_GIVEN_NAME, "John");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_SUR_NAME, "Doe");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
