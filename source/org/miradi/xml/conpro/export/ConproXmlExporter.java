@@ -22,7 +22,6 @@ package org.miradi.xml.conpro.export;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -305,15 +304,8 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeThreshold(UnicodeWriter out, String elementName, Indicator indicator, String threshold) throws Exception
 	{
 		HashMap<String, String> stringMap = indicator.getThreshold().getStringMap().toHashMap();
-		Set<String> keys = stringMap.keySet();
-		for(String  key : keys)
-		{
-			if (key.equals(threshold))
-			{
-				String value = stringMap.get(key);
-				writeOptionalElement(out, elementName, value);
-			}
-		}
+		String value = stringMap.get(threshold);
+		writeOptionalElement(out, elementName, value);
 	}
 
 	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
@@ -350,7 +342,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			//FIXME cant get this work,  need a way to export each code in list, schema question
-			writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			//FIXME need to resolve and export target threat_taxonomy_code
 			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
