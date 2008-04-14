@@ -120,7 +120,11 @@ public class KeyEcologicalAttribute extends BaseObject
 		return list;
 	}
 	
-
+	public ORefList getIndicatorRefs()
+	{
+		return new ORefList(Indicator.getObjectType(), getIndicatorIds());
+	}
+	
 	public IdList getIndicatorIds()
 	{
 		return indicatorIds.getIdList();

@@ -180,6 +180,11 @@ abstract public class Factor extends BaseObject
 		return goals.getIdList();
 	}
 	
+	public ORefList getKeyEcologicalAttributeRefs()
+	{
+		return new ORefList(KeyEcologicalAttribute.getObjectType(), getKeyEcologicalAttributes());
+	}
+	
 	public IdList getKeyEcologicalAttributes()
 	{
 		return keyEcologicalAttributes.getIdList();

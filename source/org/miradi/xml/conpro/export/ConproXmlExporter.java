@@ -97,7 +97,7 @@ public class ConproXmlExporter extends XmlExporter
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
 			out.writeln("<indicator id='" + indicator.getId().toString() + "'>");
 			writeElement(out, "name", indicator, Indicator.TAG_LABEL);
-			//FIXME this element has namespace issue
+//			FIXME this needs to be a concat of method names,  check the cross walk
 			//writeOptionalMethods(out, indicator.getMethodRefs());
 			writeOptionalRatingCodeElement(out, "priority", indicator, Indicator.TAG_PRIORITY);
 			out.writeln("</indicator>");
@@ -106,7 +106,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</indicators>");
 	}
 
-//	FIXME this element has namespace issue
+//	FIXME this needs to be a concat of method names,  check the cross walk
 //	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
 //	{
 //		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
@@ -221,7 +221,9 @@ public class ConproXmlExporter extends XmlExporter
 			for (int index = 0; index < targets.length; ++index)
 			{
 				if (targets[index].isViabilityModeTNC())
-					writeIndicatorViability(out, targets[index]);
+				{
+					writeKeyEcologicalAttributeViability(out, targets[index]);
+				}
 			}
 		}
 		finally
@@ -241,25 +243,32 @@ public class ConproXmlExporter extends XmlExporter
 		return false;
 	}
 
-	private void writeIndicatorViability(UnicodeWriter out, Target target) throws Exception
+	private void writeKeyEcologicalAttributeViability(UnicodeWriter out, Target target) throws Exception
 	{
-		ORefList indicatorRefs = target.findAllKeaIndicatorRefs();
+		ORefList keyEcologocalAttributeRefs = target.getKeyEcologicalAttributeRefs();
+		for (int refIndex = 0; refIndex < keyEcologocalAttributeRefs.size(); ++refIndex)
+		{
+			KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologocalAttributeRefs.get(refIndex));
+			writeKeyEcologicalAttributeIndicatorViability(out, target, keyEcologicalAttribute);
+		}				
+	}
+	
+	private void writeKeyEcologicalAttributeIndicatorViability(UnicodeWriter out, Target target, KeyEcologicalAttribute keyEcologicalAttribute) throws Exception
+	{
+		ORefList indicatorRefs = keyEcologicalAttribute.getIndicatorRefs();
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
-			writeViability(out, target.getRef(), indicator);
-		}
+			writeViability(out, target.getRef(), keyEcologicalAttribute, indicator);
+		}				
 	}
 
-	private void writeViability(UnicodeWriter out, ORef targetRef, Indicator indicator) throws Exception
+	private void writeViability(UnicodeWriter out, ORef targetRef, KeyEcologicalAttribute keyEcologicalAttribute, Indicator indicator) throws Exception
 	{
 		out.writeln("<viability_assessment>");
 		writeElement(out, "target_id", targetRef.getObjectId().toString());
 		writeElement(out, "indicator_id", indicator.getId().toString());
-		
-		ORefList keyEcologicalAttributeReferrers = indicator.findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
-		ORef keyEcologicalAttributeReferrer = keyEcologicalAttributeReferrers.getRefForType(KeyEcologicalAttribute.getObjectType());
-		writeElement(out, "kea_id", keyEcologicalAttributeReferrer.getObjectId().toString());
+		writeElement(out, "kea_id", keyEcologicalAttribute.getId().toString());
 		
 		writeThreshold(out, "indicator_description_poor", indicator, StatusQuestion.POOR);
 		writeThreshold(out, "indicator_description_fair", indicator, StatusQuestion.FAIR);
@@ -272,7 +281,6 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 		writeOptionalElement(out, "desired_rating_comment", indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
-		KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologicalAttributeReferrer);
 		writeOptionalElement(out, "viability_record_comment", keyEcologicalAttribute, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		writeOptionalLatestMeasurementValues(out, indicator);
 			
@@ -342,7 +350,8 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			//FIXME cant get this work,  need a way to export each code in list, schema question
-			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			//FIXME need to resolve and export target threat_taxonomy_code
 			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
