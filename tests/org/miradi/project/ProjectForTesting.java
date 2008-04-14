@@ -67,9 +67,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
 	}
 	
-	public void createAndPopulateProjectResources() throws Exception
+	public void createAndPopulateProjectResource() throws Exception
 	{
-		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
+		populateProjectResource(createProjectResource());
+	}
+
+	public ORef createProjectResource() throws Exception
+	{
+		return createObject(ProjectResource.getObjectType());
+	}
+
+	private void populateProjectResource(ORef projectResourceRef) throws Exception
+	{
 		CodeList roleCodes = new CodeList();
 		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
 		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
