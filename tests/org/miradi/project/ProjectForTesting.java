@@ -40,14 +40,12 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
-import org.miradi.project.FactorCommandHelper;
-import org.miradi.project.Project;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.DiagramModelUpdater;
 
 
 
-public class ProjectForTesting extends Project implements CommandExecutedListener
+public class ProjectForTesting extends ProjectWithHelpers implements CommandExecutedListener
 {
 	public ProjectForTesting(String testName) throws Exception
 	{
