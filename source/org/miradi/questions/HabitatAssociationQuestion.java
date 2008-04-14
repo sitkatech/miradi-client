@@ -29,7 +29,7 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getHabitatAssociationChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("1", "Forest"),
+				new ChoiceItem(ONE_CODE, "Forest"),
 				new ChoiceItem("1.1", "Forest - Boreal"), 
 				new ChoiceItem("1.2", "Forest - Subarctic"), 
 				new ChoiceItem("1.3", "Forest - Subantarctic"), 
@@ -39,7 +39,7 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItem("1.7", "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level"), 
 				new ChoiceItem("1.8", "Forest - Subtropical/Tropical Swamp"), 
 				new ChoiceItem("1.9", "Forest - Subtropical/Tropical Moist Montane"), 
-				new ChoiceItem("2", "Savanna"),
+				new ChoiceItem(TWO_CODE, "Savanna"),
 				new ChoiceItem("2.1", "Savanna - Dry Savanna"), 
 				new ChoiceItem("2.2", "Savanna - Moist Savana"), 
 				new ChoiceItem("3", "Shrubland"),
@@ -156,4 +156,7 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItem("18", "Unknown"),
 		};
 	}
+	
+	public static final String ONE_CODE = "1";
+	public static final String TWO_CODE = "2";
 }
