@@ -5,6 +5,7 @@
  */
 package org.miradi.project;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
@@ -28,7 +29,9 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Task;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 
 
@@ -44,6 +47,46 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		super(server);
 	}
+	
+	public void fillProjectStartDate() throws Exception
+	{
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, new MultiCalendar().toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LATITUDE, "40");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_SCOPE, "Some project scope");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_VISION, "Some project vision");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "TNC planning team comment");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "TNC lessons learned");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_COUNTRIES, createSampleCountriesCodeList().toString());
+
+		//FIXME remove commented code after adding them as sample data
+//		writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
+//		writeOptionalElement(out, "project_threat_rank", getStressBasedOverallProjectRating());
+//		writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
+//		writeTeamMembers(out);
+//		writeEcoregionCodes(out);
+//		writeCodeListElements(out, "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
+//		writeCodeListElements(out, "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+
+	}
+
+	private CodeList createSampleCountriesCodeList()
+	{
+		CodeList countriesCodeList = new CodeList();
+		countriesCodeList.add("USA");
+		countriesCodeList.add("BGD");
+		countriesCodeList.add("AGO");
+		
+		return countriesCodeList;
+	}
+
+	private void fillObjectUsingCommand(ORef objectRef, String fieldTag, String data) throws Exception
+	{
+		CommandSetObjectData setData = new CommandSetObjectData(objectRef, fieldTag, data);
+		executeCommand(setData);
+	}
+
 	
 	//TODO come up with a better name or eventualy all creates should return ref
 	public ORef createFactorAndReturnRef(int objectType) throws Exception
