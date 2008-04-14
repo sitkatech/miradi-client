@@ -212,7 +212,7 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalViability(UnicodeWriter out) throws Exception
 	{
 		Target[] targets = getProject().getTargetPool().getTargets();
-		if (containsNoTargetsInViabilityMode(targets))
+		if (!containsAtLeastOneViabilityModetarget(targets))
 			return;
 		
 		out.writeln("<viability>");
@@ -230,15 +230,15 @@ public class ConproXmlExporter extends XmlExporter
 		}
 	}
 
-	private boolean containsNoTargetsInViabilityMode(Target[] targets)
+	private boolean containsAtLeastOneViabilityModetarget(Target[] targets)
 	{
 		for (int index = 0; index < targets.length; ++index)
 		{
 			if (targets[index].isViabilityModeTNC())
-				return false;
+				return true;
 		}
 		
-		return true;
+		return false;
 	}
 
 	private void writeIndicatorViability(UnicodeWriter out, Target[] targets, int index) throws Exception
