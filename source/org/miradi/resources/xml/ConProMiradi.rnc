@@ -196,7 +196,7 @@ targets.element =
             & element cp:description_comment { text }?
             & element cp:target_viability_comment { text }?
             & element cp:target_viability_rank { vocabulary_ranking_vhhml }?
-            & element cp:habitat_code { iucn_habitat_taxonomy }?
+            & element cp:habitat_code { text }?
             & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
             & stresses_target.element*
             & stresses_threat.element*
