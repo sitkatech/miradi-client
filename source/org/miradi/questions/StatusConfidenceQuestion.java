@@ -31,10 +31,15 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem("RoughGuess", "Rough Guess"),
-			new ChoiceItem("ExpertKnowledge", "Expert Knowledge"),
-			new ChoiceItem("RapidAssessment", "Rapid Assessment"),
-			new ChoiceItem("IntensiveAssessment", "Intensive Assessment")
+			new ChoiceItem(ROUGH_GUESS_CODE, "Rough Guess"),
+			new ChoiceItem(EXPERT_KNOWLEDGE_CODE, "Expert Knowledge"),
+			new ChoiceItem(RAPID_ASSESSMENT_CODE, "Rapid Assessment"),
+			new ChoiceItem(INTENSIVE_ASSESSMENT_CODE, "Intensive Assessment")
 		};
 	}
+	
+	public static final String ROUGH_GUESS_CODE = "RoughGuess";
+	public static final String EXPERT_KNOWLEDGE_CODE = "ExpertKnowledge";
+	public static final String RAPID_ASSESSMENT_CODE = "RapidAssessment";
+	public static final String INTENSIVE_ASSESSMENT_CODE = "IntensiveAssessment";
 }

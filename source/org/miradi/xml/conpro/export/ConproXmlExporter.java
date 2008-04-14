@@ -54,6 +54,7 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
@@ -664,16 +665,16 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private String translateStatusConfidence(String data)
 	{
-		if (data.equals("RoughGuess"))
+		if (data.equals(StatusConfidenceQuestion.ROUGH_GUESS_CODE))
 			return "Rough Guess";
 		
-		if (data.equals("ExpertKnowledge"))
+		if (data.equals(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE))
 			return "Expert Knowledge";
 		
-		if (data.equals("RapidAssessment"))
+		if (data.equals(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE))
 			return "Rapid Assessment";
 		
-		if (data.equals("IntensiveAssessment"))
+		if (data.equals(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE))
 			return "Intensive Assessment";
 		
 		return "";
