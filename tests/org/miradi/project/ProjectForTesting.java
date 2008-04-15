@@ -113,6 +113,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return directThreatLink;
 	}
 	
+	public FactorLink createAndPopulateDirectThreatLink(Target target) throws Exception
+	{
+		Cause threat = createAndPopulateThreat();
+		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
+		FactorLink factorLink = FactorLink.find(this, directThreatLinkRef);
+		populateFactorLink(factorLink);
+
+		return factorLink;
+	}
+	
 	public ThreatStressRating createAndPopulateThreatStressRating() throws Exception
 	{
 		ThreatStressRating threatStressRating = createThreatStressRating();
@@ -149,12 +159,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Target target = createTarget();
 		Cause threat = createCause();
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threat.getRef(), target.getRef());
-		ORef directThreatLinkRef = createObjectAndReturnRef(ObjectType.FACTOR_LINK, extraInfo);
+		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
 		
 		return FactorLink.find(this, directThreatLinkRef);
 	}
-	
+
 	public ThreatStressRating createThreatStressRating() throws Exception
 	{
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
@@ -175,6 +184,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
 		fillObjectUsingCommand(target.getRef(), Target.TAG_STRESS_REFS, stressRefs.toString());
+	
+		createAndPopulateDirectThreatLink(target);
 		
 		//FIXME,  finish targets
 	}
