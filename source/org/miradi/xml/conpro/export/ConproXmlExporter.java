@@ -245,30 +245,30 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeKeyEcologicalAttributeViability(UnicodeWriter out, Target target) throws Exception
 	{
-		ORefList keyEcologocalAttributeRefs = target.getKeyEcologicalAttributeRefs();
-		for (int refIndex = 0; refIndex < keyEcologocalAttributeRefs.size(); ++refIndex)
+		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
+		for (int refIndex = 0; refIndex < keaRefs.size(); ++refIndex)
 		{
-			KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologocalAttributeRefs.get(refIndex));
-			writeKeyEcologicalAttributeIndicatorViability(out, target, keyEcologicalAttribute);
+			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRefs.get(refIndex));
+			writeKeyEcologicalAttributeIndicatorViability(out, target, kea);
 		}				
 	}
 	
-	private void writeKeyEcologicalAttributeIndicatorViability(UnicodeWriter out, Target target, KeyEcologicalAttribute keyEcologicalAttribute) throws Exception
+	private void writeKeyEcologicalAttributeIndicatorViability(UnicodeWriter out, Target target, KeyEcologicalAttribute kea) throws Exception
 	{
-		ORefList indicatorRefs = keyEcologicalAttribute.getIndicatorRefs();
+		ORefList indicatorRefs = kea.getIndicatorRefs();
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
-			writeViability(out, target.getRef(), keyEcologicalAttribute, indicator);
+			writeViability(out, target.getRef(), kea, indicator);
 		}				
 	}
 
-	private void writeViability(UnicodeWriter out, ORef targetRef, KeyEcologicalAttribute keyEcologicalAttribute, Indicator indicator) throws Exception
+	private void writeViability(UnicodeWriter out, ORef targetRef, KeyEcologicalAttribute kea, Indicator indicator) throws Exception
 	{
 		out.writeln("<viability_assessment>");
 		writeElement(out, "target_id", targetRef.getObjectId().toString());
 		writeElement(out, "indicator_id", indicator.getId().toString());
-		writeElement(out, "kea_id", keyEcologicalAttribute.getId().toString());
+		writeElement(out, "kea_id", kea.getId().toString());
 		
 		writeThreshold(out, "indicator_description_poor", indicator, StatusQuestion.POOR);
 		writeThreshold(out, "indicator_description_fair", indicator, StatusQuestion.FAIR);
@@ -281,7 +281,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 		writeOptionalElement(out, "desired_rating_comment", indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
-		writeOptionalElement(out, "viability_record_comment", keyEcologicalAttribute, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		writeOptionalElement(out, "viability_record_comment", kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		writeOptionalLatestMeasurementValues(out, indicator);
 			
 		out.writeln("</viability_assessment>");
@@ -311,16 +311,16 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
 	{
-		KeyEcologicalAttribute keyEcologicalAttributes[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
-		if (keyEcologicalAttributes.length == 0)
+		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
+		if (keas.length == 0)
 			return;
 		
 		out.writeln("<key_attributes>");
-		for (int index = 0; index < keyEcologicalAttributes.length; ++index)
+		for (int index = 0; index < keas.length; ++index)
 		{
-			out.writeln("<key_attribute id='" + keyEcologicalAttributes[index].getId().toString() + "'>");
-			writeElement(out, "name", keyEcologicalAttributes[index], KeyEcologicalAttribute.TAG_LABEL);
-			writeElement(out, "category", translateKeyEcologicalAttributeType(keyEcologicalAttributes[index].getKeyEcologicalAttributeType()));
+			out.writeln("<key_attribute id='" + keas[index].getId().toString() + "'>");
+			writeElement(out, "name", keas[index], KeyEcologicalAttribute.TAG_LABEL);
+			writeElement(out, "category", translateKeyEcologicalAttributeType(keas[index].getKeyEcologicalAttributeType()));
 			out.writeln("</key_attribute>");
 		}
 		
