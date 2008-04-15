@@ -32,11 +32,15 @@ public class StressContributionQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified", Color.WHITE),
-				new ChoiceItem("1", "Low", COLOR_GREAT),
-				new ChoiceItem("2", "Medium", COLOR_OK),
-				new ChoiceItem("3", "High", COLOR_CAUTION),
-				new ChoiceItem("4", "Very High", COLOR_ALERT),
+				new ChoiceItem(LOW_CODE, "Low", COLOR_GREAT),
+				new ChoiceItem(MEDIUM_CODE, "Medium", COLOR_OK),
+				new ChoiceItem(HIGH_CODE, "High", COLOR_CAUTION),
+				new ChoiceItem(VERY_HIGH_CODE, "Very High", COLOR_ALERT),
 		};
 	}
 	
+	public static final String LOW_CODE = "1";
+	public static final String MEDIUM_CODE = "2";
+	public static final String HIGH_CODE = "3";
+	public static final String VERY_HIGH_CODE = "4";	
 }

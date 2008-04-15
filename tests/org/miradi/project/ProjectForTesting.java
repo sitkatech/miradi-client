@@ -36,9 +36,12 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StressContributionQuestion;
+import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 
@@ -105,8 +108,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public FactorLink createAndPopulateDirectThreatLink() throws Exception
 	{
 		FactorLink directThreatLink = createDirectThreatLink();
-		//FIXME finish populating factorlink
+		populateFactorLink(directThreatLink);
+
 		return directThreatLink;
+	}
+	
+	public ThreatStressRating createAndPopulateThreatStressRating() throws Exception
+	{
+		ThreatStressRating threatStressRating = createThreatStressRating();
+		populateThreatStressRating(threatStressRating);
+		
+		return threatStressRating;
 	}
 	
 	public ProjectResource createProjectResource() throws Exception
@@ -142,6 +154,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return FactorLink.find(this, directThreatLinkRef);
 	}
+	
+	public ThreatStressRating createThreatStressRating() throws Exception
+	{
+		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
+		return ThreatStressRating.find(this, threatStressRatingRef);
+	}
 
 	public void populateTarget(Target target) throws Exception
 	{
@@ -174,6 +192,24 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(stress.getRef(), Stress.TAG_LABEL, "SomeStressLabel");
 		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SEVERITY, StatusQuestion.GOOD);
 		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SCOPE, StatusQuestion.GOOD);
+	}
+	
+	public void populateFactorLink(FactorLink factorLink) throws Exception
+	{
+		ORef threatStressRatingRef = createAndPopulateThreatStressRating().getRef();
+		ORefList threatStressRatingRefs = new ORefList(threatStressRatingRef);
+		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
+		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, "Some simple ThreatRating comment");
+		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_COMMENT, "Some FactorLink comment");
+	}
+	
+	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception
+	{
+		Stress stress = createAndPopulateStress();
+		
+		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_STRESS_REF, stress.getRef().toString());
+		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.HIGH_CODE);
+		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
 	}
 	
 	private void populateProjectResource(ORef projectResourceRef) throws Exception
