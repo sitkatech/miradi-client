@@ -113,7 +113,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
-		BaseId taskId = project.createTask();
+		BaseId taskId = project.createTaskAndReturnId();
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
@@ -143,8 +143,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	public void testTaskOwn() throws Exception
 	{
 		BaseId factorId = project.createFactorAndReturnId(ObjectType.STRATEGY);
-		BaseId taskId = project.createTask();
-		BaseId subTaskId = project.createTask();
+		BaseId taskId = project.createTaskAndReturnId();
+		BaseId subTaskId = project.createTaskAndReturnId();
 		BaseId assignmentId = project.createAssignment(new ORef(ObjectType.TASK,taskId));
 		
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
@@ -166,7 +166,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	
 	public void testAssignmentRefer() throws Exception
 	{
-		BaseId taskId = project.createTask();
+		BaseId taskId = project.createTaskAndReturnId();
 		BaseId assignmentId = project.createAssignment(new ORef(ObjectType.TASK,taskId));
 		
 		BaseId projectResourceId = project.createObjectAndReturnId(ObjectType.PROJECT_RESOURCE);

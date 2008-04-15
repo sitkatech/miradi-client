@@ -506,7 +506,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return baseId;
 	}
 
-	public TaskId createTask() throws Exception
+	public TaskId createTaskAndReturnId() throws Exception
 	{
 		return (TaskId)createObject(ObjectType.TASK, BaseId.INVALID);
 	}
