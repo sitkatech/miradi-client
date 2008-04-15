@@ -58,6 +58,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ProjectForTesting(ProjectServer server) throws Exception
 	{
 		super(server);
+		
+		String filename = getFilename();
+		getTestDatabase().openMemoryDatabase(filename);
+		finishOpening();
 	}
 	
 	public void fillGeneralProjectData() throws Exception
