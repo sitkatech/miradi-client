@@ -38,7 +38,11 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		if (!super.isAvailable())
 			return false;
 		
-		if (((Factor)getSelectedParent()).getKeyEcologicalAttributes().size() == 0)
+		if (!Target.is(getSelectedParent().getRef()))
+			return false;
+		
+		Target target = ((Target)getSelectedParent());
+		if (target.getKeyEcologicalAttributes().size() == 0)
 			return false;
 		
 		return true;
