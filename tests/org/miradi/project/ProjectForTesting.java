@@ -34,6 +34,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
@@ -131,6 +132,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return threatStressRating;
 	}
 	
+	public SubTarget createAndPopulateSubTarget() throws Exception
+	{
+		SubTarget subTarget = createSubTarget();
+		populateSubTarget(subTarget);
+		
+		return subTarget;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -169,6 +178,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
 		return ThreatStressRating.find(this, threatStressRatingRef);
 	}
+	
+	public SubTarget createSubTarget() throws Exception
+	{
+		ORef subTargetRef = createObject(SubTarget.getObjectType());
+		return SubTarget.find(this, subTargetRef);
+	}
 
 	public void populateTarget(Target target) throws Exception
 	{
@@ -186,6 +201,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target.getRef(), Target.TAG_STRESS_REFS, stressRefs.toString());
 	
 		createAndPopulateDirectThreatLink(target);
+		
+		SubTarget subTarget = createAndPopulateSubTarget();
+		ORefList subTargetRefs = new ORefList(subTarget.getRef());
+		fillObjectUsingCommand(target.getRef(), Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
 		//FIXME,  finish targets
 	}
@@ -236,6 +255,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
+	}
+	
+	public void populateSubTarget(SubTarget subTarget) throws Exception
+	{
+		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_LABEL, "Some SubTarget Label");
+		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_SHORT_LABEL, "ShortL");
+		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_DETAIL, "Some SubTarget detail text");
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
