@@ -191,24 +191,24 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void populateTarget(Target target) throws Exception
 	{
-		fillObjectUsingCommand(target.getRef(), Target.TAG_LABEL, "Reefs");
-		fillObjectUsingCommand(target.getRef(), Target.TAG_TEXT, "Some Description Text");
-		fillObjectUsingCommand(target.getRef(), Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
-		fillObjectUsingCommand(target.getRef(), Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
+		fillObjectUsingCommand(target, Target.TAG_LABEL, "Reefs");
+		fillObjectUsingCommand(target, Target.TAG_TEXT, "Some Description Text");
+		fillObjectUsingCommand(target, Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
+		fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		
 		CodeList habitatCodes = new CodeList();
 		habitatCodes.add(HabitatAssociationQuestion.FOREST_CODE);
 		habitatCodes.add(HabitatAssociationQuestion.SAVANNA_CODE);
-		fillObjectUsingCommand(target.getRef(), Target.TAG_HABITAT_ASSOCIATION, habitatCodes.toString());
+		fillObjectUsingCommand(target, Target.TAG_HABITAT_ASSOCIATION, habitatCodes.toString());
 		
 		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
-		fillObjectUsingCommand(target.getRef(), Target.TAG_STRESS_REFS, stressRefs.toString());
+		fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());
 	
 		createAndPopulateDirectThreatLink(target);
 		
 		SubTarget subTarget = createAndPopulateSubTarget();
 		ORefList subTargetRefs = new ORefList(subTarget.getRef());
-		fillObjectUsingCommand(target.getRef(), Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
+		fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
 		//FIXME,  finish targets
 	}
@@ -223,27 +223,27 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateStress(Stress stress) throws Exception
 	{
-		fillObjectUsingCommand(stress.getRef(), Stress.TAG_LABEL, "SomeStressLabel");
-		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SEVERITY, StatusQuestion.GOOD);
-		fillObjectUsingCommand(stress.getRef(), Stress.TAG_SCOPE, StatusQuestion.GOOD);
+		fillObjectUsingCommand(stress, Stress.TAG_LABEL, "SomeStressLabel");
+		fillObjectUsingCommand(stress, Stress.TAG_SEVERITY, StatusQuestion.GOOD);
+		fillObjectUsingCommand(stress, Stress.TAG_SCOPE, StatusQuestion.GOOD);
 	}
 	
 	public void populateFactorLink(FactorLink factorLink) throws Exception
 	{
 		ORef threatStressRatingRef = createAndPopulateThreatStressRating().getRef();
 		ORefList threatStressRatingRefs = new ORefList(threatStressRatingRef);
-		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
-		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, "Some simple ThreatRating comment");
-		fillObjectUsingCommand(factorLink.getRef(), FactorLink.TAG_COMMENT, "Some FactorLink comment");
+		fillObjectUsingCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
+		fillObjectUsingCommand(factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, "Some simple ThreatRating comment");
+		fillObjectUsingCommand(factorLink, FactorLink.TAG_COMMENT, "Some FactorLink comment");
 	}
 	
 	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
 		Stress stress = createAndPopulateStress();
 		
-		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_STRESS_REF, stress.getRef().toString());
-		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.HIGH_CODE);
-		fillObjectUsingCommand(threatStressRating.getRef(), ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
+		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_STRESS_REF, stress.getRef().toString());
+		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.HIGH_CODE);
+		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
 	}
 	
 	private void populateProjectResource(ORef projectResourceRef) throws Exception
@@ -263,9 +263,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateSubTarget(SubTarget subTarget) throws Exception
 	{
-		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_LABEL, "Some SubTarget Label");
-		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_SHORT_LABEL, "ShortL");
-		fillObjectUsingCommand(subTarget.getRef(), SubTarget.TAG_DETAIL, "Some SubTarget detail text");
+		fillObjectUsingCommand(subTarget, SubTarget.TAG_LABEL, "Some SubTarget Label");
+		fillObjectUsingCommand(subTarget, SubTarget.TAG_SHORT_LABEL, "ShortL");
+		fillObjectUsingCommand(subTarget, SubTarget.TAG_DETAIL, "Some SubTarget detail text");
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
@@ -324,6 +324,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		executeCommand(setData);
 	}
 
+	private void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception
+	{
+		fillObjectUsingCommand(object.getRef(), fieldTag, data);
+	}
 	
 	//TODO come up with a better name or eventualy all creates should return ref
 	public ORef createFactorAndReturnRef(int objectType) throws Exception
