@@ -167,7 +167,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Task createAndPopulateTask() throws Exception
 	{
-		Task task  = createTaskObject();
+		Task task  = createTask();
 		populateTask(task);
 		
 		return task;
@@ -238,7 +238,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Indicator.find(this, indicatorRef);
 	}
 	
-	public Task createTaskObject() throws Exception
+	public Task createTask() throws Exception
 	{
 		ORef taskRef = createObject(Task.getObjectType());
 		return Task.find(this, taskRef);
