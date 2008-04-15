@@ -40,11 +40,6 @@ import org.miradi.views.diagram.DiagramModelUpdater;
 
 public class ProjectWithHelpers extends Project implements CommandExecutedListener
 {
-	public ProjectWithHelpers(String testName) throws Exception
-	{
-		this(new ProjectServerForTesting());
-	}
-	
 	public ProjectWithHelpers(ProjectServer server) throws Exception
 	{
 		super(server);
