@@ -31,6 +31,8 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
@@ -39,7 +41,10 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
@@ -144,6 +149,38 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return subTarget;
 	}
 	
+	public KeyEcologicalAttribute createAndPopulateKea() throws Exception
+	{
+		KeyEcologicalAttribute kea = createKea();
+		populateKea(kea);
+		
+		return kea;
+	}
+	
+	public Indicator createAndPopulateIndicator() throws Exception
+	{
+		Indicator indicator = createIndicator();
+		populateIndicator(indicator);
+		
+		return indicator;
+	}
+	
+	public Task createAndPopulateTask() throws Exception
+	{
+		Task task  = createTaskObject();
+		populateTask(task);
+		
+		return task;
+	}
+	
+	public Measurement createAndPopulateMeasurement() throws Exception
+	{
+		Measurement measurement = createMeasurement();
+		populateMeasurement(measurement);
+		
+		return measurement;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -187,6 +224,30 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef subTargetRef = createObject(SubTarget.getObjectType());
 		return SubTarget.find(this, subTargetRef);
+	}
+	
+	public KeyEcologicalAttribute createKea() throws Exception
+	{
+		ORef keaRef = createObject(KeyEcologicalAttribute.getObjectType());
+		return KeyEcologicalAttribute.find(this, keaRef);
+	}
+	
+	public Indicator createIndicator() throws Exception
+	{
+		ORef indicatorRef = createObject(Indicator.getObjectType());
+		return Indicator.find(this, indicatorRef);
+	}
+	
+	public Task createTaskObject() throws Exception
+	{
+		ORef taskRef = createObject(Task.getObjectType());
+		return Task.find(this, taskRef);
+	}
+	
+	public Measurement createMeasurement() throws Exception
+	{
+		ORef measurementRef = createObject(Measurement.getObjectType());
+		return Measurement.find(this, measurementRef);
 	}
 
 	public void populateTarget(Target target) throws Exception
@@ -266,6 +327,43 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_LABEL, "Some SubTarget Label");
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_SHORT_LABEL, "ShortL");
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_DETAIL, "Some SubTarget detail text");
+	}
+	
+	public void populateKea(KeyEcologicalAttribute kea) throws Exception
+	{
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_LABEL, "Some Kea Label");
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_SHORT_LABEL, "kea");
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.CONDITION);
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DETAILS, "Some kea details text");
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DESCRIPTION, "Some kea description text");
+	}
+	
+	public void populateIndicator(Indicator indicator) throws Exception
+	{
+		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");
+		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
+		
+		Task task = createAndPopulateTask();
+		IdList taskIds = new IdList(Task.getObjectType());
+		taskIds.addRef(task.getRef());
+		fillObjectUsingCommand(indicator, Indicator.TAG_TASK_IDS, taskIds.toString());
+		
+		Measurement measurement = createAndPopulateMeasurement();
+		ORefList measurementRefs = new ORefList(measurement.getRef());
+		fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
+	}
+	
+	public void populateTask(Task task) throws Exception
+	{
+		fillObjectUsingCommand(task, Task.TAG_LABEL, "Some Task Label");	
+	}
+	
+	public void populateMeasurement(Measurement measurement) throws Exception
+	{
+		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, StatusQuestion.GOOD);
+		fillObjectUsingCommand(measurement, Measurement.TAG_DATE, "2007-03-19");
+		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENT, "Some Measurement comment");
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()

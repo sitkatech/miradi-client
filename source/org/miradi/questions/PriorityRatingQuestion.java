@@ -32,10 +32,15 @@ public class PriorityRatingQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem("1", "Low"),
-			new ChoiceItem("2", "Medium"),
-			new ChoiceItem("3", "High"),
-			new ChoiceItem("4", "Very High"),
+			new ChoiceItem(LOW_CODE, "Low"),
+			new ChoiceItem(MEDIUM_CODE, "Medium"),
+			new ChoiceItem(HIGH_CODE, "High"),
+			new ChoiceItem(VERY_HIGH_CODE, "Very High"),
 		};
 	}
+	
+	public static final String LOW_CODE = "1";
+	public static final String MEDIUM_CODE = "2";
+	public static final String HIGH_CODE = "3";
+	public static final String VERY_HIGH_CODE = "4";
 }
