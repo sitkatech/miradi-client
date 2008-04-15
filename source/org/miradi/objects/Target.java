@@ -135,6 +135,16 @@ public class Target extends Factor
 		return subTargetRefs.getORefList();
 	}
 	
+	public ORefList getKeyEcologicalAttributeRefs()
+	{
+		return new ORefList(KeyEcologicalAttribute.getObjectType(), getKeyEcologicalAttributes());
+	}
+	
+	public IdList getKeyEcologicalAttributes()
+	{
+		return keyEcologicalAttributes.getIdList();
+	}
+	
 	public boolean isTarget()
 	{
 		return true;
@@ -281,12 +291,12 @@ public class Target extends Factor
 	
 	public KeyEcologicalAttribute[] getKeasForType(String typeCode)
 	{
-		IdList keyEcologicalAttributes = getKeyEcologicalAttributes();
-		int childCount = keyEcologicalAttributes.size();
+		IdList keyEcologicalAttributeIds = getKeyEcologicalAttributes();
+		int childCount = keyEcologicalAttributeIds.size();
 		Vector KeyEcologicalAttributes = new Vector();
 		for(int i = 0; i < childCount; ++i)
 		{
-			BaseId keaId = keyEcologicalAttributes.get(i);
+			BaseId keaId = keyEcologicalAttributeIds.get(i);
 			KeyEcologicalAttribute kea = objectManager.getKeyEcologicalAttributePool().find(keaId);
 			if (kea.getKeyEcologicalAttributeType().equals(typeCode))
 				KeyEcologicalAttributes.add(kea);
