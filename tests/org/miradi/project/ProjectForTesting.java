@@ -197,8 +197,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target.getRef(), Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		
 		CodeList habitatCodes = new CodeList();
-		habitatCodes.add(HabitatAssociationQuestion.ONE_CODE);
-		habitatCodes.add(HabitatAssociationQuestion.TWO_CODE);
+		habitatCodes.add(HabitatAssociationQuestion.FOREST_CODE);
+		habitatCodes.add(HabitatAssociationQuestion.SAVANNA_CODE);
 		fillObjectUsingCommand(target.getRef(), Target.TAG_HABITAT_ASSOCIATION, habitatCodes.toString());
 		
 		ORefList stressRefs = new ORefList(createAndPopulateStress().getRef());
