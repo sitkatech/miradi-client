@@ -210,7 +210,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList subTargetRefs = new ORefList(subTarget.getRef());
 		fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
-		//FIXME,  finish targets
+		//FIXME,  add target threat rating bundle
 	}
 	
 	public void populateCause(Cause cause) throws Exception
