@@ -43,11 +43,9 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 	public ProjectWithHelpers(ProjectServer server) throws Exception
 	{
 		super(server);
-		String filename = getFilename();
+
 		addCommandExecutedListener(this);
 		diagramModel = new DiagramModel(this);
-		getTestDatabase().openMemoryDatabase(filename);
-		finishOpening();
 		commandStack = new Vector();
 	}
 	
