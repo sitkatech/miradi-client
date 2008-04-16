@@ -209,8 +209,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FactorLink createDirectThreatLink() throws Exception
 	{
-		Target target = createTarget();
-		Cause threat = createCause();
+		Target target = createAndPopulateTarget();
+		Cause threat = createAndPopulateThreat();
+		
 		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
 		
 		return FactorLink.find(this, directThreatLinkRef);
@@ -351,6 +352,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
+		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
+		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
 		
 		Task task = createAndPopulateTask();
 		IdList taskIds = new IdList(Task.getObjectType());
@@ -367,6 +370,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		threshold.add(StatusQuestion.GOOD, "good text");
 		threshold.add(StatusQuestion.VERY_GOOD, "very good text");
 		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
+		
+		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
+		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2001-01-01");
+		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
 	}
 	
 	public void populateTask(Task task) throws Exception
