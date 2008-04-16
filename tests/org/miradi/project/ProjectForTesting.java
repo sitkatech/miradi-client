@@ -40,6 +40,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
@@ -51,6 +52,8 @@ import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyFeasibilityQuestion;
+import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.utils.CodeList;
@@ -194,6 +197,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return objective;
 	}
 	
+	public Strategy createAndPopulateStrategy() throws Exception
+	{
+		Strategy strategy = createStrategy();
+		populateStrategy(strategy);
+		
+		return strategy;
+	}
+
+	public Strategy createAndPopulateDraftStrategy() throws Exception
+	{
+		Strategy strategy = createAndPopulateStrategy();
+		fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		
+		return strategy;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -270,6 +289,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef objectiveRef = createObject(Objective.getObjectType());
 		return Objective.find(this, objectiveRef);
+	}
+	
+	public Strategy createStrategy() throws Exception
+	{
+		ORef strategyRef = createObject(Strategy.getObjectType());
+		return Strategy.find(this, strategyRef);
 	}
 
 	public void populateTarget(Target target) throws Exception
@@ -415,6 +440,20 @@ public class ProjectForTesting extends ProjectWithHelpers
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
 		relevantIndicators.add(new RelevancyOverride(relevantIndicatorRef, true));
 		fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+	}
+	
+	public void populateStrategy(Strategy strategy) throws Exception
+	{
+		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");
+		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENT, "Some Strategy comments");
+		
+		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, "A10.10");
+		fillObjectUsingCommand(strategy, Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.HIGH_CODE);
+		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
+		
+		IdList activityIds = new IdList(Task.getObjectType());
+		activityIds.addRef(createAndPopulateTask().getRef());
+		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()

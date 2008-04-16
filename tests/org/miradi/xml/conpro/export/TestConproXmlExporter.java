@@ -67,5 +67,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().createAndPopulateThreat();
 		getProject().createAndPopulateThreatStressRating();
 		getProject().createAndPopulateObjective();
+		getProject().createAndPopulateDraftStrategy();
+		getProject().createAndPopulateStrategy();
 	}
 }
