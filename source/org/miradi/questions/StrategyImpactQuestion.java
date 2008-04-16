@@ -33,11 +33,15 @@ public class StrategyImpactQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Low", COLOR_ALERT),
-			new ChoiceItem("2", "Medium", COLOR_CAUTION),
-			new ChoiceItem("3", "High", COLOR_OK),
-			new ChoiceItem("4", "Very High", COLOR_GREAT),
+			new ChoiceItem(LOW_CODE, "Low", COLOR_ALERT),
+			new ChoiceItem(MEDIUM_CODE, "Medium", COLOR_CAUTION),
+			new ChoiceItem(HIGH_CODE, "High", COLOR_OK),
+			new ChoiceItem(VERY_HIGH_CODE, "Very High", COLOR_GREAT),
 		};
 	}
-
+	
+	public static final String LOW_CODE = "1";
+	public static final String MEDIUM_CODE = "2";
+	public static final String HIGH_CODE = "3";
+	public static final String VERY_HIGH_CODE = "4";
 }
