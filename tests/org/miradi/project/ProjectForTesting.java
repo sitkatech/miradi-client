@@ -46,6 +46,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
@@ -54,8 +55,10 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 
@@ -330,7 +333,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
 		
-		CodeList taxonomyCodes = new CodeList(new String[]{"T10.10"});
+		ChoiceQuestion question = getQuestion(ThreatClassificationQuestion.class);
+		final int FIRST_CODE = 0;
+		CodeList taxonomyCodes = new CodeList(new String[]{	question.getCode(FIRST_CODE)});
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, taxonomyCodes.toString());
 	}
 	
@@ -447,7 +452,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");
 		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENT, "Some Strategy comments");
 		
-		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, "A10.10");
+		final int FIRST_CODE = 0;
+		ChoiceQuestion question = getQuestion(StrategyTaxonomyQuestion.class);
+		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 		fillObjectUsingCommand(strategy, Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.HIGH_CODE);
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
 		
