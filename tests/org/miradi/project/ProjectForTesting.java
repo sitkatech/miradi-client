@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -351,6 +352,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Measurement measurement = createAndPopulateMeasurement();
 		ORefList measurementRefs = new ORefList(measurement.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
+		
+		StringMap threshold = new StringMap();
+		threshold.add(StatusQuestion.POOR, "poor text");
+		threshold.add(StatusQuestion.FAIR, "fair text");
+		threshold.add(StatusQuestion.GOOD, "good text");
+		threshold.add(StatusQuestion.VERY_GOOD, "very good text");
+		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 	}
 	
 	public void populateTask(Task task) throws Exception
