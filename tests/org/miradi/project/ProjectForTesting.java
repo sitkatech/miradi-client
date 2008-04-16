@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -35,6 +37,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Stress;
@@ -183,6 +186,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return measurement;
 	}
 	
+	public Objective createAndPopulateObjective() throws Exception
+	{
+		Objective objective = createObjective();
+		populateObjective(objective);
+		
+		return objective;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -253,6 +264,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef measurementRef = createObject(Measurement.getObjectType());
 		return Measurement.find(this, measurementRef);
+	}
+	
+	public Objective createObjective() throws Exception
+	{
+		ORef objectiveRef = createObject(Objective.getObjectType());
+		return Objective.find(this, objectiveRef);
 	}
 
 	public void populateTarget(Target target) throws Exception
@@ -387,6 +404,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_DATE, "2007-03-19");
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENT, "Some Measurement comment");
+	}
+	
+	public void populateObjective(Objective objective) throws Exception
+	{
+		fillObjectUsingCommand(objective, Objective.TAG_LABEL, "Some Objective label");
+		fillObjectUsingCommand(objective, Objective.TAG_COMMENTS, "Some Objective comments");
+		
+		ORef relevantIndicatorRef = createAndPopulateIndicator().getRef();
+		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
+		relevantIndicators.add(new RelevancyOverride(relevantIndicatorRef, true));
+		fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
 	}
 	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
