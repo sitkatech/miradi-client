@@ -21,25 +21,9 @@ package org.miradi.xml.conpro.export;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.text.ParseException;
 
 import org.martus.util.DirectoryUtils;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Stress;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.StatusQuestion;
 
 public class TestConproXmlExporter extends TestCaseWithProject
 {
@@ -52,7 +36,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		fillProjectWithData();
+		initializeProjectSampleData();
 	}
 	
 	public void testValidatedExport() throws Exception
@@ -69,77 +53,18 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		}
 	}
 	
-	private void fillProjectWithData() throws Exception
+	private void initializeProjectSampleData() throws Exception
 	{
-		ORef keyEcologicalAttributeRef = createKeyEcologicalAttribute();
-		ORef targetRef = getProject().createFactorAndReturnRef(Target.getObjectType());
-		Target target = setupTarget(keyEcologicalAttributeRef, targetRef);	
-		FactorLink factorLink = createThreatTargetLink(targetRef);
-		ORef stressRef = setupStress(target);
-		createThreatStressRating(factorLink, stressRef);
-	
-		ORef indicatorRef = getProject().createFactorAndReturnRef(Indicator.getObjectType());
-		KeyEcologicalAttribute keyEcologicalAttribute = KeyEcologicalAttribute.find(getProject(), keyEcologicalAttributeRef);
-		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(keyEcologicalAttribute, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRef.getObjectId()));
-		
-		ORef measurementRef = getProject().createFactorAndReturnRef(Measurement.getObjectType());
-		Indicator indicator = Indicator.find(getProject(), indicatorRef);
-		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRef));
-		
-		getProject().executeCommand(new CommandSetObjectData(measurementRef, Measurement.TAG_STATUS, StatusQuestion.FAIR));
-		
-		assertEquals("wrong tnc viability calculation", StatusQuestion.FAIR, Target.computeTNCViability(getProject()));
-	}
-
-	private ORef createKeyEcologicalAttribute() throws Exception, CommandFailedException
-	{
-		ORef keyEcologicalAttributeRef = getProject().createFactorAndReturnRef(KeyEcologicalAttribute.getObjectType());
-		getProject().executeCommand(new CommandSetObjectData(keyEcologicalAttributeRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.SIZE));
-		getProject().executeCommand(new CommandSetObjectData(keyEcologicalAttributeRef, KeyEcologicalAttribute.TAG_LABEL, "someLabel"));
-		
-		return keyEcologicalAttributeRef;
-	}
-
-	private FactorLink createThreatTargetLink(ORef targetRef) throws Exception
-	{
-		ORef directThreatRef = getProject().createFactorAndReturnRef(Cause.getObjectType());
-		ORef factorLinkRef = getProject().createFactorLink(directThreatRef, targetRef);
-		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		return factorLink;
-	}
-
-	private ORef setupStress(Target target) throws Exception, CommandFailedException, ParseException
-	{
-		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
-		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_LABEL, "SomeStressLabel"));
-		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SEVERITY, StatusQuestion.POOR));
-		getProject().executeCommand(new CommandSetObjectData(stressRef, Stress.TAG_SCOPE, StatusQuestion.POOR));
-		
-		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(target, Target.TAG_STRESS_REFS, stressRef));
-		return stressRef;
-	}
-
-	private Target setupTarget(ORef keyEcologicalAttributeRef, ORef targetRef) throws Exception
-	{
-		Target target = Target.find(getProject(), targetRef);
-		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_LABEL, "SomeTargetLabel"));
-		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TEXT, "SomeTargetText"));
-		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_CURRENT_STATUS_JUSTIFICATION, "SomeTargetStatusJustication"));
-		getProject().executeCommand(new CommandSetObjectData(target.getRef(), Target.TAG_TARGET_STATUS, StatusQuestion.FAIR));
-		getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributeRef.getObjectId()));
-		
-		ORef subTargetRef = getProject().createObject(SubTarget.getObjectType());
-		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRef));
-		
-		return target;
-	}
-
-	private void createThreatStressRating(FactorLink factorLink, ORef stressRef) throws Exception
-	{
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
-		ORef threatStressRatingRef = getProject().createObjectAndReturnRef(ThreatStressRating.getObjectType(), extraInfo);
-		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, StatusQuestion.GOOD));
-		getProject().executeCommand(new CommandSetObjectData(threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, StatusQuestion.VERY_GOOD));
-		getProject().executeCommand(CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRef));
+		getProject().createAndPopulateDirectThreatLink();
+		getProject().createAndPopulateIndicator();
+		getProject().createAndPopulateKea();
+		getProject().createAndPopulateMeasurement();
+		getProject().createAndPopulateProjectResource();
+		getProject().createAndPopulateStress();
+		getProject().createAndPopulateSubTarget();
+		getProject().createAndPopulateTarget();
+		getProject().createAndPopulateTask();
+		getProject().createAndPopulateThreat();
+		getProject().createAndPopulateThreatStressRating();
 	}
 }
