@@ -21,6 +21,7 @@ import org.miradi.ids.TaskId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -217,7 +218,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ThreatStressRating createThreatStressRating() throws Exception
 	{
-		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
+		Stress stress = createAndPopulateStress();
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stress.getRef());
+		ORef threatStressRatingRef = createObjectAndReturnRef(ThreatStressRating.getObjectType(), extraInfo);
 		return ThreatStressRating.find(this, threatStressRatingRef);
 	}
 	
@@ -272,6 +275,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList subTargetRefs = new ORefList(subTarget.getRef());
 		fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
+		KeyEcologicalAttribute kea = createAndPopulateKea();
+		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		keaIds.addRef(kea.getRef());
+		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+		
 		//FIXME,  add target threat rating bundle
 	}
 	
@@ -279,7 +287,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
 		
-		CodeList taxonomyCodes = new CodeList("T10.10");
+		CodeList taxonomyCodes = new CodeList(new String[]{"T10.10"});
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, taxonomyCodes.toString());
 	}
 	
