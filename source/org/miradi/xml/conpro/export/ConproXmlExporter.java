@@ -175,7 +175,7 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			Objective objective = Objective.find(getProject(), objectiveRefs.get(refIndex));
 			out.writeln("<objective id='" + objective.getId().toString() + "'>");
-			writeoutIndicatorIds(out, objective);
+			writeIndicatorIds(out, objective);
 			writeElement(out, "name", objective, Objective.TAG_LABEL);
 			writeOptionalElement(out, "comment", objective, Objective.TAG_COMMENTS);
 			out.writeln("</objective>");
@@ -184,7 +184,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</objectives>");
 	}
 
-	private void writeoutIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
+	private void writeIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
 	{
 		out.writeln("<indicators>");
 		writeIds(out, "indicator_id", objective.getRelevantIndicatorRefList());
