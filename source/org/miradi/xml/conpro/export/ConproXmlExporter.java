@@ -97,8 +97,7 @@ public class ConproXmlExporter extends XmlExporter
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
 			out.writeln("<indicator id='" + indicator.getId().toString() + "'>");
 			writeElement(out, "name", indicator, Indicator.TAG_LABEL);
-//			FIXME this needs to be a concat of method names,  check the cross walk
-			//writeOptionalMethods(out, indicator.getMethodRefs());
+			writeOptionalMethods(out, indicator.getMethodRefs());
 			writeOptionalRatingCodeElement(out, "priority", indicator, Indicator.TAG_PRIORITY);
 			out.writeln("</indicator>");
 		}
@@ -106,15 +105,20 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</indicators>");
 	}
 
-//	FIXME this needs to be a concat of method names,  check the cross walk
-//	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
-//	{
-//		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
-//		{
-//			Task method = Task.find(getProject(), methodRefs.get(refIndex));
-//			writeOptionalElement(out, "methods", method, Task.TAG_LABEL);
-//		}
-//	}
+	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
+	{
+		String methodNames = "";
+		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
+		{
+			Task method = Task.find(getProject(), methodRefs.get(refIndex));
+			if (refIndex != 0)
+				methodNames += ";";
+			
+			methodNames += method.getData(Task.TAG_LABEL);
+		}
+		
+		writeOptionalElement(out, "methods", methodNames);
+	}
 
 	private void writeOptionalStrategies(UnicodeWriter out) throws Exception
 	{
