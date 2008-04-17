@@ -34,6 +34,10 @@
 #                of strings that do not contain the carriage return (#xD), line feed (#xA) nor tab (#x9) 
 #                characters, that have no leading or trailing spaces (#x20) and that have no internal sequences 
 #                of two or more spaces.
+# xsd:NMTOKEN -  The lexical and value spaces are the set of XML 1.0 name tokens, tokens composed of characters
+#                digits, period, colons, hyphens and the characters defined by Unicode, such as "combining"
+#                or "extender." Invalid values include 'brought classical music' (spaces are forbidden) and
+#                'bold,brash' (commas are forbidden).
 
 # Notes:
 #    ? - Optional
@@ -46,28 +50,8 @@
 # --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
 
-# Current issues as raised by either Kevin (for Miradi) or Eric (for ConPro):
-
-# 1. How grandiose are our aims?
-#     For now, we will produce one data exchange that will work for both Miradi and ConPro. 
-#     It will transport only those fields that will be needed in the data exchange.
-
-# 2. Relational, or Object-oriented
-#     Eric will look closer to if he can make the structure less 'flat.'
-
-# 3. Export calculated values?
-#     No, see #1. We can revisit this when it is actually needed.
-
-# 4. Common terminology
-#     We should use the vocabulary that is used by the community. And, as such, ConPro will
-#     call "Stategic Actions" and "Actions" by the community known name of "Strategies/Strategy."
-
-# --------------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------------
-
 default namespace = "http://services.tnc.org/schema/conservation-project/"
 namespace cp = "http://services.tnc.org/schema/conservation-project/0.1"
-namespace foaf = "http://xmlns.com/foaf/0.1/"
 
 # 
 # 
@@ -118,14 +102,17 @@ project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
         & element project_id {
+              [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
               attribute context { xsd:token }
               & xsd:token
           }*
         & element cp:parent_project_id {
+              [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
               attribute context { xsd:token }
               & xsd:token
           }*
-        & element cp:name { xsd:token }
+        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+          element cp:name { text }
         & element cp:start_date { xsd:date }?
         & area_size.element?
         & location.element?
@@ -137,10 +124,15 @@ project_summary.element =
         & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
         & team_member.element*
-        & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
-        & element cp:ecoregion_code { text }*
-        & element cp:country_code { text }*
-        & element cp:ou_code { text }*
+        & element cp:ecoregions {
+              element cp:ecoregion_code { text }*
+          }?
+        & element cp:countries {
+              element cp:country_code { text }*
+          }?
+        & element cp:ous {
+              element cp:ou_code { text }*
+          }?
         & element cp:exporter_name { xsd:token }
         & element cp:exporter_version { xsd:token }
         & element cp:data_export_date { xsd:date }
@@ -168,19 +160,14 @@ location.element =
 team_member.element =
     element cp:team_member {
         element cp:role { vocabulary_team }+
-        & [
-              documentation [
-                  "FOAF Vocabulary Specification 0.91 \x{a}" ~
-                  "http://xmlns.com/foaf/spec/"
-              ]
-          ]
-          element foaf:Person {
-              element foaf:name { xsd:token }?
-              & element foaf:givenname { xsd:token }?
-              & element foaf:surname { xsd:token }?
-              & element foaf:mbox { xsd:token }?
-              & element foaf:phone { xsd:token }?
-              & element foaf:Organization { xsd:token }?
+        & element cp:person {
+              [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:givenname { text }?
+              & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+                element cp:surname { text }?
+              & element cp:email { xsd:token }?
+              & element cp:phone { xsd:token }?
+              & element cp:organization { xsd:token }?
           }
     }
 # 
@@ -196,13 +183,16 @@ targets.element =
             & element cp:description_comment { text }?
             & element cp:target_viability_comment { text }?
             & element cp:target_viability_rank { vocabulary_ranking_vhhml }?
-            & element cp:habitat_code { text }?
-            & element cp:threat_taxonomy_code { iucn_threat_taxonomy }*
-            & stresses_target.element*
-            & stresses_threat.element*
-            & nested_target.element*
-            & threat_target_association.element*
-            & strategy_threat_association.element*
+            & element cp:habitat_taxonomy_codes {
+                  element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
+              }?
+            & element cp:stresses_targets { stresses_target.element* }?
+            & element cp:stresses_threats { stresses_threat.element* }?
+            & element cp:nested_targets { nested_target.element* }?
+            & element cp:threat_target_associations { threat_target_association.element* }?
+            & element strategy_threat_target_associations {
+                  strategy_threat_target_association.element*
+              }?
         }+
     }
 # 
@@ -220,8 +210,7 @@ stresses_target.element =
 # 
 #
 stresses_threat.element =
-    # WHERE IS THE THREAT ID?????
-    element cp:stress_threat {
+    element cp:stresses_threat {
         element cp:contrib_rank { vocabulary_ranking_vhhml }?
         & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
         & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
@@ -250,7 +239,7 @@ threat_target_association.element =
 # 
 # 
 #
-strategy_threat_association.element =
+strategy_threat_target_association.element =
     element cp:strategy_threat_association {
         element strategy_id { xsd:nonNegativeInteger }
         & element threat_id { xsd:nonNegativeInteger }
@@ -274,7 +263,7 @@ viability.element =
         element cp:viability_assessment {
             element cp:target_id { xsd:nonNegativeInteger }
             & element cp:indicator_id { xsd:nonNegativeInteger }
-            & element cp:kea_id { xsd:nonNegativeInteger }?
+            & element cp:kea_id { xsd:nonNegativeInteger }
             & element cp:indicator_description_poor { text }?
             & element cp:indicator_description_fair { text }?
             & element cp:indicator_description_good { text }?
@@ -300,7 +289,7 @@ threats.element =
         element cp:threat {
             attribute id { vocabulary_id }
             & element cp:name { xsd:token }
-            & element cp:taxonomy_code { text }?
+            & element cp:threat_taxonomy_code { text }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
         }+
     }
@@ -311,7 +300,9 @@ objectives.element =
     element cp:objectives {
         element cp:objective {
             attribute id { vocabulary_id }
-            & element cp:indicator_id { xsd:nonNegativeInteger }*
+            & element cp:indicators {
+                  element cp:indicator_id { xsd:nonNegativeInteger }*
+              }?
             & element cp:name { xsd:token }
             & element cp:comment { text }?
         }+
@@ -323,8 +314,9 @@ strategies.element =
     element cp:strategies {
         element cp:strategy {
             attribute id { vocabulary_id }
-            & element viability_id { xsd:nonNegativeInteger }*
-            & element objective_id { xsd:nonNegativeInteger }*
+            & element cp:objectives {
+                  element cp:objective_id { xsd:nonNegativeInteger }*
+              }?
             & element cp:name { xsd:token }
             & element cp:taxonomy_code { text }?
             & element cp:leverage { vocabulary_ranking_vhhml }?
@@ -362,7 +354,7 @@ indicators.element =
 # 
 #
 vocabulary_area_unit = "hectares"
-vocabulary_country_code = "[A-Z]{3}"
+vocabulary_country_code = "[A-Z]"
 vocabulary_doc_exchange_status = "success" | "warning" | "fail"
 vocabulary_ecoregion_code = "[123][\d]{4}"
 vocabulary_geospatial_type = "point"
@@ -379,9 +371,9 @@ vocabulary_team = "Owner" | "Team Leader" | "Team Member"
 #
 [
     documentation [
-        "International Union for Conservation of Nature (IUCN) threat, habitat and  \x{a}" ~
-        "strategy taxonomy formats. (Are there available somewhere on the web?  \x{a}" ~
-        "If so, maybe link to them here for reference.) "
+        "International Union for Conservation of Nature (IUCN) threat, habitat and \x{a}" ~
+        "strategy taxonomy formats: \x{a}" ~
+        "(Are they available somewhere on the web? If so, maybe link to them here for reference.) "
     ]
 ]
 iucn_threat_taxonomy = "[T][0-9]{2,3}\.[0-9]{2,3}"
