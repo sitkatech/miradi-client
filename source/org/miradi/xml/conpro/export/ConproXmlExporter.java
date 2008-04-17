@@ -366,34 +366,34 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
-			writeSimpleTargetThreatLinkRatings(out, target);
+			writeSimpleThreatTargetLinkRatings(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
 
 	}
 	
-	private FactorLinkSet getTargetThreatFactorLinks(Target target) throws Exception
+	private FactorLinkSet getThreatTargetFactorLinks(Target target) throws Exception
 	{
-		FactorLinkSet targetThreatLinks = new FactorLinkSet();
+		FactorLinkSet threatTargetLinks = new FactorLinkSet();
 		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
 		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
 			if (factorLink.isThreatTargetLink())
 			{
-				targetThreatLinks.add(factorLink);
+				threatTargetLinks.add(factorLink);
 			}
 		}
 		
-		return targetThreatLinks;
+		return threatTargetLinks;
 	}
 	
 	private FactorLinkSet getThreatLinksWithThreatStressRatings(Target target) throws Exception
 	{
 		FactorLinkSet linksWithThreatStressRatings = new FactorLinkSet();
-		FactorLinkSet targetThreatLinks = getTargetThreatFactorLinks(target);
-		for(FactorLink factorLink : targetThreatLinks)
+		FactorLinkSet threatTargetLinks = getThreatTargetFactorLinks(target);
+		for(FactorLink factorLink : threatTargetLinks)
 		{
 			if (factorLink.getThreatStressRatingRefs().size() > 0)
 				linksWithThreatStressRatings.add(factorLink);
@@ -402,31 +402,31 @@ public class ConproXmlExporter extends XmlExporter
 		return linksWithThreatStressRatings;
 	}
 
-	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, Target target) throws Exception
+	private void writeSimpleThreatTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetThreatLinks = getTargetThreatFactorLinks(target);
-		if (targetThreatLinks.size() == 0)
+		FactorLinkSet threatTargetLinks = getThreatTargetFactorLinks(target);
+		if (threatTargetLinks.size() == 0)
 			return;
 		
 		out.writeln("<threat_target_associations>");
-		for(FactorLink factorLink : targetThreatLinks)
+		for(FactorLink factorLink : threatTargetLinks)
 		{
-			writeSimpleTargetThreatLinkRatings(out, factorLink, target.getRef());
+			writeSimpleThreatTargetLinkRatings(out, factorLink, target.getRef());
 		}
 		out.writeln("</threat_target_associations>");
 	}
 	
-	private void writeSimpleTargetThreatLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
+	private void writeSimpleThreatTargetLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
 	{
 		ORef threatRef = factorLink.getUpstreamThreatRef();
 		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
 		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
 				
-		int targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
+		int threatTargetRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
 		
 		out.writeln("<threat_target_association>");
 		writeElement(out, "threat_id", threatRef.getObjectId().toString());
-		writeOptionalRatingCodeElement(out, "threat_to_target_rank", targetThreatRatingValue);
+		writeOptionalRatingCodeElement(out, "threat_to_target_rank", threatTargetRatingValue);
 		writeOptionalRatingCodeElement(out, "threat_severity", getSeverity(simpleThreatFramework, bundle));
 		writeOptionalRatingCodeElement(out, "threat_scope", getScope(simpleThreatFramework, bundle));
 		writeOptionalRatingCodeElement(out, "threat_irreversibility", getIrreversibility(simpleThreatFramework, bundle));
@@ -481,12 +481,12 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetThreatLinks = getThreatLinksWithThreatStressRatings(target);
-		if (targetThreatLinks.size() == 0)
+		FactorLinkSet threatTargetLinks = getThreatLinksWithThreatStressRatings(target);
+		if (threatTargetLinks.size() == 0)
 			return;
 		
 		out.writeln("<stresses_threats>");
-		for(FactorLink factorLink : targetThreatLinks)
+		for(FactorLink factorLink : threatTargetLinks)
 		{
 			writeThreatStressRatings(out, factorLink);
 		}
