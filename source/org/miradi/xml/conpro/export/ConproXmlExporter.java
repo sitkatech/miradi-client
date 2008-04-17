@@ -340,7 +340,7 @@ public class ConproXmlExporter extends XmlExporter
 		if (targetRefs.size() == 0)
 			return;
 		
-		out.write("<targets>");
+		out.writeln("<targets>");
 		for (int refIndex = 0; refIndex < targetRefs.size(); ++refIndex)
 		{
 			Target target = Target.find(getProject(), targetRefs.get(refIndex));
@@ -505,7 +505,7 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			out.write("<stresses_target sequence='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
-			writeElement(out, "stress_name", stress, Stress.TAG_LABEL);
+			writeElement(out, "name", stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, "stress_severity", stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, "stress_scope", stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, "stress_to_target_rank", stress.getCalculatedStressRating());
@@ -534,11 +534,11 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
-			writeCodeListElements(out, "countries", "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
-			writeCodeListElements(out, "ous", "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+			writeOptionalCodeListElements(out, "countries", "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
+			writeOptionalCodeListElements(out, "ous", "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 			
-			out.writeln("<exporter_name/>");
-			out.writeln("<exporter_version/>");
+			out.writeln("<exporter_name>Miradi</exporter_name>");
+			out.writeln("<exporter_version>Unknown</exporter_version>");
 			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
 			
 		out.writeln("</project_summary>");
@@ -571,10 +571,8 @@ public class ConproXmlExporter extends XmlExporter
 		
 		if (allTncEcoRegionCodes.size() == 0)
 			return;
-		
-		out.writeln("<ecoregions>");
-		writeCodeListElements(out, "ecoregion_code", allTncEcoRegionCodes);
-		out.writeln("</ecoregions>");
+				
+		writeCodeListElements(out, "ecoregions", "ecoregion_code", allTncEcoRegionCodes);
 	}
 	
 	private void writeOptionalAreaSize(UnicodeWriter out) throws IOException
@@ -638,16 +636,23 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, elementName, Float.toString(value));
 	}
 
-	private void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
+	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
 	{
 		out.writeln("<" + parentElementName + ">");
-		writeCodeListElements(out, elementName, object, tag);
+		writeCodeListElements(out, elementName, codeList);
 		out.writeln("</" + parentElementName + ">");
 	}
+
 	
-	private void writeCodeListElements(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	private void writeOptionalCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
-		writeCodeListElements(out, elementName, object.getCodeList(tag));
+		CodeList codeList = object.getCodeList(tag);
+		if (codeList.size() == 0)
+			return;
+		
+		out.writeln("<" + parentElementName + ">");
+		writeCodeListElements(out, elementName, codeList);
+		out.writeln("</" + parentElementName + ">");
 	}
 	
 	private void writeCodeListElements(UnicodeWriter out, String elementName, CodeList codeList) throws Exception

@@ -23,11 +23,10 @@
 #                minInclusive to be 1. This results in the standard mathematical concept of the 
 #                positive integer numbers. The value space of positiveInteger is the infinite 
 #                set {1,2,...}. 
-# xsd:string -   The value space of string is the set of finite-length sequences of characters 
-#                (as defined in XML 1.0 (Second Edition)) that match the Char production from 
-#                XML 1.0 (Second Edition). A character is an atomic unit of communication; it is not 
-#                further specified except to note that every character has a corresponding Universal 
-#                Character Set code point, which is an integer.
+# xsd:string -   The lexical and value spaces are teh set of all possible strings composed of any charachter 
+#                allowed in a XML 1.0 document without any treatment done on whitespace. That is the only 
+#                datatype that leaves all the whitespace. When whitespace isn't significant, xsd:token is
+#                preferred.
 # xsd:token -    The value space of token is the set of strings that do not contain the carriage return (#xD), 
 #                line feed (#xA) nor tab (#x9) characters, that have no leading or trailing spaces (#x20) and 
 #                that have no internal sequences of two or more spaces. The lexical space of token is the set 
@@ -103,16 +102,16 @@ project_summary.element =
         attribute share_outside_organization { xsd:boolean }
         & element project_id {
               [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
-              attribute context { xsd:token }
-              & xsd:token
+              attribute context { xsd:NMTOKEN }
+              & xsd:NMTOKEN
           }*
         & element cp:parent_project_id {
               [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
-              attribute context { xsd:token }
-              & xsd:token
+              attribute context { xsd:NMTOKEN }
+              & xsd:NMTOKEN
           }*
         & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
-          element cp:name { text }
+          element cp:name { xsd:string }
         & element cp:start_date { xsd:date }?
         & area_size.element?
         & location.element?
@@ -125,16 +124,16 @@ project_summary.element =
         & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
         & team_member.element*
         & element cp:ecoregions {
-              element cp:ecoregion_code { text }*
+              element cp:ecoregion_code { vocabulary_ecoregion_code }+
           }?
         & element cp:countries {
-              element cp:country_code { text }*
+              element cp:country_code { vocabulary_country_code }+
           }?
         & element cp:ous {
-              element cp:ou_code { text }*
+              element cp:ou_code { vocabulary_ou_code }+
           }?
-        & element cp:exporter_name { xsd:token }
-        & element cp:exporter_version { xsd:token }
+        & element cp:exporter_name { xsd:NMTOKEN }
+        & element cp:exporter_version { xsd:NMTOKEN }
         & element cp:data_export_date { xsd:date }
     }
 # 
@@ -161,37 +160,36 @@ team_member.element =
     element cp:team_member {
         element cp:role { vocabulary_team }+
         & element cp:person {
-              [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
-              element cp:givenname { text }?
-              & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
-                element cp:surname { text }?
-              & element cp:email { xsd:token }?
-              & element cp:phone { xsd:token }?
-              & element cp:organization { xsd:token }?
+              element cp:givenname { xsd:string }?
+              & element cp:surname { xsd:string }?
+              & element cp:email { xsd:NMTOKEN }?
+              & element cp:phone { xsd:string }?
+              & element cp:organization { xsd:string }?
           }
     }
 # 
 # 
-#
+#	
 targets.element =
     element cp:targets {
         element cp:target {
             attribute sequence { xsd:positiveInteger }?
             & attribute id { vocabulary_id }
-            & element cp:name { xsd:token }
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
             & element cp:description { text }?
             & element cp:description_comment { text }?
             & element cp:target_viability_comment { text }?
             & element cp:target_viability_rank { vocabulary_ranking_vhhml }?
             & element cp:habitat_taxonomy_codes {
-                  element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
+                  element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }+
               }?
-            & element cp:stresses_targets { stresses_target.element* }?
-            & element cp:stresses_threats { stresses_threat.element* }?
-            & element cp:nested_targets { nested_target.element* }?
-            & element cp:threat_target_associations { threat_target_association.element* }?
-            & element strategy_threat_target_associations {
-                  strategy_threat_target_association.element*
+            & element cp:stresses_targets { stresses_target.element+ }?
+            & element cp:stresses_threats { stresses_threat.element+ }?
+            & element cp:nested_targets { nested_target.element+ }?
+            & element cp:threat_target_associations { threat_target_association.element+ }?
+            & element cp:strategy_threat_target_associations {
+                  strategy_threat_target_association.element+
               }?
         }+
     }
@@ -201,7 +199,8 @@ targets.element =
 stresses_target.element =
     element cp:stresses_target {
         attribute sequence { xsd:nonNegativeInteger }
-        & element cp:stress_name { xsd:token }
+        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+          element cp:name { text }
         & element cp:stress_severity { vocabulary_ranking_vhhml }?
         & element cp:stress_scope { vocabulary_ranking_vhhml }?
         & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
@@ -221,7 +220,8 @@ stresses_threat.element =
 nested_target.element =
     element cp:nested_target {
         attribute sequence { xsd:nonNegativeInteger }
-        & element cp:name { xsd:token }
+        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+          element cp:name { text }
         & element cp:comment { text }?
     }
 # 
@@ -251,7 +251,8 @@ key_attributes.element =
     element cp:key_attributes {
         element cp:key_attribute {
             attribute id { vocabulary_id }
-            & element cp:name { xsd:token }
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
             & element cp:category { vocabulary_key_ecological_attribute_category }
         }+
     }
@@ -288,8 +289,9 @@ threats.element =
     element cp:threats {
         element cp:threat {
             attribute id { vocabulary_id }
-            & element cp:name { xsd:token }
-            & element cp:threat_taxonomy_code { text }?
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
+            & element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
         }+
     }
@@ -301,9 +303,10 @@ objectives.element =
         element cp:objective {
             attribute id { vocabulary_id }
             & element cp:indicators {
-                  element cp:indicator_id { xsd:nonNegativeInteger }*
+                  element cp:indicator_id { xsd:nonNegativeInteger }+
               }?
-            & element cp:name { xsd:token }
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
             & element cp:comment { text }?
         }+
     }
@@ -315,10 +318,11 @@ strategies.element =
         element cp:strategy {
             attribute id { vocabulary_id }
             & element cp:objectives {
-                  element cp:objective_id { xsd:nonNegativeInteger }*
+                  element cp:objective_id { xsd:nonNegativeInteger }+
               }?
-            & element cp:name { xsd:token }
-            & element cp:taxonomy_code { text }?
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
+            & element cp:taxonomy_code { iucn_strategy_taxonomy }?
             & element cp:leverage { vocabulary_ranking_vhhml }?
             & element cp:feasibility { vocabulary_ranking_vhhml }?
             & element cp:overall_rank { vocabulary_ranking_vhhml }?
@@ -333,7 +337,8 @@ strategies.element =
 activities.element =
     element cp:activities {
         element cp:activity {
-            element cp:name { xsd:token }
+            [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            element cp:name { text }
             & element cp:start_date { xsd:date }?
             & element cp:end_date { xsd:date }?
         }+
@@ -345,7 +350,8 @@ indicators.element =
     element cp:indicators {
         element cp:indicator {
             attribute id { vocabulary_id }
-            & element cp:name { xsd:token }
+            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+              element cp:name { text }
             & element cp:methods { xsd:token }?
             & element cp:priority { vocabulary_priority_vhhml }?
         }+
@@ -354,14 +360,14 @@ indicators.element =
 # 
 #
 vocabulary_area_unit = "hectares"
-vocabulary_country_code = "[A-Z]"
+vocabulary_country_code = xsd:string { pattern='[A-Z]{3}'}
 vocabulary_doc_exchange_status = "success" | "warning" | "fail"
-vocabulary_ecoregion_code = "[123][\d]{4}"
+vocabulary_ecoregion_code = xsd:string { pattern='[123][\d]{4}' }
 vocabulary_geospatial_type = "point"
 # vocabulary_id = "[0-9]+(\.[0-9]*)?"
 vocabulary_id = xsd:double
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
-vocabulary_ou_code = "\S{5}"
+vocabulary_ou_code = xsd:string { pattern='\S{5}'}
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
@@ -376,6 +382,6 @@ vocabulary_team = "Owner" | "Team Leader" | "Team Member"
         "(Are they available somewhere on the web? If so, maybe link to them here for reference.) "
     ]
 ]
-iucn_threat_taxonomy = "[T][0-9]{2,3}\.[0-9]{2,3}"
-iucn_habitat_taxonomy = "[H][0-9]{2,3}\.[0-9]{2,3}"
-iucn_strategy_taxonomy = "[A][0-9]{2,3}\.[0-9]{2,3}"
+iucn_threat_taxonomy = xsd:string { pattern='[T][0-9]{2,3}\.[0-9]{2,3}'}
+iucn_habitat_taxonomy = xsd:string { pattern='[H][0-9]{2,3}\.[0-9]{2,3}'}
+iucn_strategy_taxonomy = xsd:string { pattern='[A][0-9]{2,3}\.[0-9]{2,3}'}

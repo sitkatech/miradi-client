@@ -335,8 +335,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		ChoiceQuestion question = getQuestion(ThreatClassificationQuestion.class);
 		final int FIRST_CODE = 0;
-		CodeList taxonomyCodes = new CodeList(new String[]{	question.getCode(FIRST_CODE)});
-		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, taxonomyCodes.toString());
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 	}
 	
 	public void populateStress(Stress stress) throws Exception
@@ -419,7 +418,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
-		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2001-01-01");
+		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
 	}
 	
