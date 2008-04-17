@@ -1,0 +1,54 @@
+/* 
+Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.utils;
+
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Vector;
+
+import org.martus.util.UnicodeReader;
+import org.miradi.main.EAM;
+
+public class ConproMiradiHabitatCodeMap
+{
+	public HashMap<String, String> loadMap() throws Exception
+	{
+		HashMap habitatCodeMap = new HashMap();
+		URL fileToImport = EAM.getResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
+		UnicodeReader reader = new UnicodeReader(fileToImport.openStream());
+		try 
+		{
+			Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+			for (int i = 0; i < fileVector.size(); ++i)
+			{
+				Vector vector = (Vector) fileVector.get(i);
+				habitatCodeMap.put(vector.get(0), vector.get(1));
+			}
+		}
+		finally
+		{
+			reader.close();
+		}
+		
+		return habitatCodeMap;
+	}
+	
+	public static final String TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME = "TNC_Miradi_Habitat_Association_code_map.txt";
+}
