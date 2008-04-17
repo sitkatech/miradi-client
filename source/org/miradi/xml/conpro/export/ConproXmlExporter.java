@@ -553,8 +553,8 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
-			writeOptionalCodeListElements(out, "countries", "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
-			writeOptionalCodeListElements(out, "ous", "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+			writeCodeListElements(out, "countries", "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
+			writeCodeListElements(out, "ous", "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 			
 			out.writeln("<exporter_name>Miradi</exporter_name>");
 			out.writeln("<exporter_version>Unknown</exporter_version>");
@@ -657,7 +657,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</" + parentElementName + ">");
 	}
 	
-	private void writeOptionalCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
+	private void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		CodeList codeList = object.getCodeList(tag);
 		out.writeln("<" + parentElementName + ">");
