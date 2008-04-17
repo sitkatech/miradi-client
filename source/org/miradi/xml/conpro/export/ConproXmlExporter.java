@@ -131,7 +131,7 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
 			out.writeln("<strategy id='" + strategy.getId().toString() + "'>");
-			writeIds(out, "objective_id", strategy.getObjectiveRefs());
+			writeIds(out, "objectives", "objective_id", strategy.getObjectiveRefs());
 			writeElement(out, "name", strategy, Strategy.TAG_LABEL);
 			writeOptionalElement(out, "taxonomy_code", strategy, Strategy.TAG_TAXONOMY_CODE);
 			writeOptionalRatingCodeElement(out, "leverage", strategy, Strategy.TAG_IMPACT_RATING);
@@ -199,6 +199,13 @@ public class ConproXmlExporter extends XmlExporter
 		}
 	}
 
+	private void writeIds(UnicodeWriter out, String parentElementName, String elementName, ORefList refs) throws Exception
+	{
+		out.writeln("<" + parentElementName + ">");
+		writeIds(out, elementName, refs);
+		out.writeln("</" + parentElementName + ">");
+	}
+	
 	private void writeOptionalThreats(UnicodeWriter out) throws Exception
 	{
 		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
@@ -354,7 +361,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			//FIXME cant get this work,  need a way to export each code in list, schema question
-			//writeCodeListElements(out, "habitat_code", target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			writeCodeListElements(out, "habitat_taxonomy_codes", "habitat_taxonomy_code", new CodeList());//target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
 			//FIXME need to resolve and export target threat_taxonomy_code
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
@@ -504,18 +511,18 @@ public class ConproXmlExporter extends XmlExporter
 		if (stressRefs.size() == 0)
 			return;
 		
-		out.writeln("<stresses_targets>");
+		out.writeln("<stress_targets>");
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			out.write("<stresses_target sequence='" + refIndex + "'>");
+			out.write("<stress_target sequence='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeElement(out, "name", stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, "stress_severity", stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, "stress_scope", stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, "stress_to_target_rank", stress.getCalculatedStressRating());
-			out.writeln("</stresses_target>");
+			out.writeln("</stress_target>");
 		}
-		out.writeln("</stresses_targets>");
+		out.writeln("</stress_targets>");
 	}
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
@@ -605,21 +612,19 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private void writeTeamMembers(UnicodeWriter out) throws Exception
 	{
-		//FIXME this is to avoid writing team member for now.  Person is giving trouble
-		if (true)
-			return;
-			
 		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
 		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
 		{
 			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
 			out.writeln("<team_member>");
-			
-			
 			writeMemberRoles(out, member);
-			out.writeln("<foaf:Person xmlns:foaf='http://xmlns.com/foaf/spec/'/>");
-			//NOTE person is not validating.
-			//out.writeln("</Person>");
+			out.writeln("<person>");
+			writeOptionalElement(out, "givenname", member, ProjectResource.TAG_GIVEN_NAME);
+			writeOptionalElement(out, "surname", member, ProjectResource.TAG_SUR_NAME);
+			writeOptionalElement(out, "email", member, ProjectResource.TAG_EMAIL);
+			writeOptionalElement(out, "phone", member, ProjectResource.TAG_PHONE_NUMBER);
+			writeOptionalElement(out, "organization", member, ProjectResource.TAG_ORGANIZATION);
+			out.writeln("</person>");
 			out.writeln("</team_member>");
 		}
 	}
@@ -629,7 +634,7 @@ public class ConproXmlExporter extends XmlExporter
 		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
 		writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
 		if (member.isTeamLead())
-			writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamLeaderCode).getLabel());
+			writeElement(out, "role", "Team Leader");
 	}
 	
 	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
@@ -741,6 +746,7 @@ public class ConproXmlExporter extends XmlExporter
 		return "";
 	}
 	
+	//FIXME rename(this method and all translateXXX) to omit translate
 	private String translateKeyEcologicalAttributeType(String type)
 	{
 		if (type.equals("10"))
