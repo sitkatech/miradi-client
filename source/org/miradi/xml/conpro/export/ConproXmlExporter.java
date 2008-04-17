@@ -57,6 +57,7 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.ConproMiradiHabitatCodeMap;
 import org.miradi.xml.XmlExporter;
 
 public class ConproXmlExporter extends XmlExporter
@@ -360,8 +361,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
-			//FIXME cant get this work,  need a way to export each code in list, schema question
-			writeCodeListElements(out, "habitat_taxonomy_codes", "habitat_taxonomy_code", new CodeList());//target.getCodeList(Target.TAG_HABITAT_ASSOCIATION));
+			writeHabitatMappedCode(out, target);
 			//FIXME need to resolve and export target threat_taxonomy_code
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
@@ -370,7 +370,21 @@ public class ConproXmlExporter extends XmlExporter
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
+	}
 
+	private void writeHabitatMappedCode(UnicodeWriter out, Target target) throws Exception
+	{
+		CodeList conProHabitatCodeList = new CodeList();
+		HashMap<String, String> habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
+		CodeList miradiHabitatCodeList = target.getCodeList(Target.TAG_HABITAT_ASSOCIATION);
+		for (int codeIndex = 0; codeIndex < miradiHabitatCodeList.size(); ++codeIndex)
+		{
+			String miradiHabitatCode = miradiHabitatCodeList.get(codeIndex);
+			String conProHabitatCode = habitatCodeMap.get(miradiHabitatCode);
+			conProHabitatCodeList.add(conProHabitatCode);
+		}
+		
+		writeCodeListElements(out, "habitat_taxonomy_codes", "habitat_taxonomy_code", conProHabitatCodeList);
 	}
 	
 	private FactorLinkSet getThreatTargetFactorLinks(Target target) throws Exception
