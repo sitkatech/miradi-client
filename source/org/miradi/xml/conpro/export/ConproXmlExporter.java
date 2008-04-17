@@ -366,7 +366,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
-			writeSimpleThreatTargetLinkRatings(out, target);
+			writeSimpleTargetLinkRatings(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
@@ -375,25 +375,25 @@ public class ConproXmlExporter extends XmlExporter
 	
 	private FactorLinkSet getThreatTargetFactorLinks(Target target) throws Exception
 	{
-		FactorLinkSet threatTargetLinks = new FactorLinkSet();
+		FactorLinkSet targetLinks = new FactorLinkSet();
 		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
 		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
 			if (factorLink.isThreatTargetLink())
 			{
-				threatTargetLinks.add(factorLink);
+				targetLinks.add(factorLink);
 			}
 		}
 		
-		return threatTargetLinks;
+		return targetLinks;
 	}
 	
 	private FactorLinkSet getThreatLinksWithThreatStressRatings(Target target) throws Exception
 	{
 		FactorLinkSet linksWithThreatStressRatings = new FactorLinkSet();
-		FactorLinkSet threatTargetLinks = getThreatTargetFactorLinks(target);
-		for(FactorLink factorLink : threatTargetLinks)
+		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
+		for(FactorLink factorLink : targetLinks)
 		{
 			if (factorLink.getThreatStressRatingRefs().size() > 0)
 				linksWithThreatStressRatings.add(factorLink);
@@ -402,21 +402,21 @@ public class ConproXmlExporter extends XmlExporter
 		return linksWithThreatStressRatings;
 	}
 
-	private void writeSimpleThreatTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
+	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet threatTargetLinks = getThreatTargetFactorLinks(target);
-		if (threatTargetLinks.size() == 0)
+		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
+		if (targetLinks.size() == 0)
 			return;
 		
 		out.writeln("<threat_target_associations>");
-		for(FactorLink factorLink : threatTargetLinks)
+		for(FactorLink factorLink : targetLinks)
 		{
-			writeSimpleThreatTargetLinkRatings(out, factorLink, target.getRef());
+			writeSimpleTargetLinkRatings(out, factorLink, target.getRef());
 		}
 		out.writeln("</threat_target_associations>");
 	}
 	
-	private void writeSimpleThreatTargetLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
+	private void writeSimpleTargetLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
 	{
 		ORef threatRef = factorLink.getUpstreamThreatRef();
 		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
@@ -481,12 +481,12 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet threatTargetLinks = getThreatLinksWithThreatStressRatings(target);
-		if (threatTargetLinks.size() == 0)
+		FactorLinkSet targetLinks = getThreatLinksWithThreatStressRatings(target);
+		if (targetLinks.size() == 0)
 			return;
 		
 		out.writeln("<stresses_threats>");
-		for(FactorLink factorLink : threatTargetLinks)
+		for(FactorLink factorLink : targetLinks)
 		{
 			writeThreatStressRatings(out, factorLink);
 		}
