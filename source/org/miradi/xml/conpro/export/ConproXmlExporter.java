@@ -529,6 +529,14 @@ public class ConproXmlExporter extends XmlExporter
 	{
 		out.writeln("<project_summary share_outside_organization='false'>");
 	
+			out.writeln("<project_id context='ConPro'>");
+			out.writeln("noId");
+			out.writeln("</project_id>");
+			
+			out.writeln("<parent_project_id context='ConPro'>");
+			out.writeln("noId");
+			out.writeln("</parent_project_id>");
+			
 			writeElement(out, "name", XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			
 			writeOptionalElement(out, "start_date", getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
@@ -579,9 +587,6 @@ public class ConproXmlExporter extends XmlExporter
 		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncFreshwaterEcoRegion());
 		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncMarineEcoRegion());
 		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncTerrestrialEcoRegion());
-		
-		if (allTncEcoRegionCodes.size() == 0)
-			return;
 				
 		writeCodeListElements(out, "ecoregions", "ecoregion_code", allTncEcoRegionCodes);
 	}
@@ -651,14 +656,10 @@ public class ConproXmlExporter extends XmlExporter
 		writeCodeListElements(out, elementName, codeList);
 		out.writeln("</" + parentElementName + ">");
 	}
-
 	
 	private void writeOptionalCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		CodeList codeList = object.getCodeList(tag);
-		if (codeList.size() == 0)
-			return;
-		
 		out.writeln("<" + parentElementName + ">");
 		writeCodeListElements(out, elementName, codeList);
 		out.writeln("</" + parentElementName + ">");
