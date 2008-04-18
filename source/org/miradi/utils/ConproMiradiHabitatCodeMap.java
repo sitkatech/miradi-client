@@ -52,5 +52,5 @@ public class ConproMiradiHabitatCodeMap
 		return habitatCodeMap;
 	}
 	
-	public static final String TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME = "TNC_Miradi_Habitat_Association_code_map.txt";
+	public static final String TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME = "TncMiradiHabitatAssociationCodeMap.txt";
 }
