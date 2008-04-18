@@ -39,7 +39,9 @@ public class ConproMiradiHabitatCodeMap
 			for (int i = 0; i < fileVector.size(); ++i)
 			{
 				Vector vector = (Vector) fileVector.get(i);
-				habitatCodeMap.put(vector.get(0), vector.get(1));
+				Object miradiHabitatCode = vector.get(0);
+				Object conProHabitatCode = vector.get(1);
+				habitatCodeMap.put(miradiHabitatCode, conProHabitatCode);
 			}
 		}
 		finally
