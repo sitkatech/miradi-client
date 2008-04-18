@@ -24,68 +24,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
-import org.miradi.utils.ConstantButtonNames;
-import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.EAMXmlFileChooser;
-import org.miradi.views.MainWindowDoer;
 import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
+import org.miradi.views.umbrella.XmlExporter;
 import org.miradi.xml.reports.export.ReportXmlExporter;
 
-public class ExportProjectXmlDoer extends MainWindowDoer
+public class ExportProjectXmlDoer extends XmlExporter
 {
-	public boolean isAvailable()
+	@Override
+	protected void export(File chosen) throws Exception
 	{
-		return (getProject().isOpen());
+		exportProjectToXml(getProject(), chosen);
 	}
-
-	public void doIt() throws CommandFailedException
-	{
-		if(!isAvailable())
-			return;
-
-		String title = EAM.text("Export Project XML");
-		String[] body = new String[] {
-			EAM.text("This feature is not yet fully supported. " +
-			"It exports all the project data in an XML file, but the schema of that file is still in flux. " +
-			"Future versions of Miradi will export the data in different formats."),
-		};
-		String[] buttons = new String[] {
-			EAM.text("Export"),
-			ConstantButtonNames.CANCEL,
-		};
-		if(!EAM.confirmDialog(title, body, buttons))
-			return;
 		
-		
-		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(getMainWindow());
-		File chosen = eamFileChooser.displayChooser();
-		if (chosen==null) 
-			return;
-
-		try
-		{
-			new ReportXmlExporter(getProject()).export(chosen);
-			EAM.notifyDialog(EAM.text("Export complete"));
-		}
-		catch(IOException e)
-		{
-			EAM.errorDialog(EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
-					"don't have permission to write to it."));
-		}
-		catch(Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-	}
-
 	public static File exportProjectToXml(Project project, File destinationDirectory) throws Exception
 	{
 		if(!destinationDirectory.isDirectory())

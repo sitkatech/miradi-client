@@ -156,6 +156,7 @@ public class Actions
 		registerAction(new ActionHowToSave(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectXml(mainWindow));
+		registerAction(new ActionExportConProXml(mainWindow));
 		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));
