@@ -100,7 +100,7 @@ document_exchange.element =
 project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
-        & element project_id {
+        & element cp:project_id {
               [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
               attribute context { xsd:NMTOKEN }
               & xsd:NMTOKEN
@@ -124,13 +124,13 @@ project_summary.element =
         & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
         & team.element
         & element cp:ecoregions {
-              element cp:ecoregion_code { vocabulary_ecoregions }*
+              element cp:ecoregion_code { vocabulary_ecoregion }*
           }
         & element cp:countries {
-              element cp:country_code { vocabulary_countries }*
+              element cp:country_code { vocabulary_country }*
           }
         & element cp:ous {
-              element cp:ou_code { vocabulary_ous }*
+              element cp:ou_code { vocabulary_ou }*
           }
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
@@ -360,13 +360,13 @@ indicators.element =
 # 
 #
 vocabulary_area_unit = "hectares"
-vocabulary_countries = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
+vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
 vocabulary_doc_exchange_status = "success" | "warning" | "fail"
-vocabulary_ecoregions = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
+vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:double
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
-vocabulary_ous = xsd:NMTOKEN { pattern = "\S{5}" }
+vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
