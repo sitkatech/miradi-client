@@ -361,7 +361,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
-			writeHabitatMappedCode(out, target);
+			writeHabitatMappedCodes(out, target);
 			//FIXME need to resolve and export target threat_taxonomy_code
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
@@ -372,7 +372,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</targets>");
 	}
 
-	private void writeHabitatMappedCode(UnicodeWriter out, Target target) throws Exception
+	private void writeHabitatMappedCodes(UnicodeWriter out, Target target) throws Exception
 	{
 		CodeList conProHabitatCodeList = new CodeList();
 		HashMap<String, String> habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
