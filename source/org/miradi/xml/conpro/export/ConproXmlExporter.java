@@ -89,9 +89,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalIndicators(UnicodeWriter out) throws Exception
 	{
 		ORefList indicatorRefs = getProject().getIndicatorPool().getRefList();
-		if (indicatorRefs.size() == 0)
-			return;
-		
 		out.writeln("<indicators>");
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
@@ -124,9 +121,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalStrategies(UnicodeWriter out) throws Exception
 	{
 		ORefList strategyRefs = getProject().getStrategyPool().getRefList();
-		if (strategyRefs.size() == 0)
-			return;
-		
 		out.writeln("<strategies>");
 		for (int refIndex = 0; refIndex < strategyRefs.size(); ++refIndex)
 		{
@@ -150,9 +144,6 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeOptionalActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
 	{
-		if (activityRefs.size() == 0)
-			return;
-		
 		out.writeln("<activities>");
 		for (int refIndex = 0; refIndex < activityRefs.size(); ++refIndex)
 		{
@@ -168,9 +159,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalObjectives(UnicodeWriter out) throws Exception
 	{
 		ORefList objectiveRefs = getProject().getObjectivePool().getRefList();
-		if (objectiveRefs.size() == 0)
-			return;
-		
 		out.writeln("<objectives>");
 		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
 		{
@@ -210,9 +198,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalThreats(UnicodeWriter out) throws Exception
 	{
 		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
-		if (directThreats.length == 0)
-			return;
-		
 		out.writeln("<threats>");
 		for (int index = 0; index < directThreats.length; ++index)
 		{
@@ -331,9 +316,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
 	{
 		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
-		if (keas.length == 0)
-			return;
-		
 		out.writeln("<key_attributes>");
 		for (int index = 0; index < keas.length; ++index)
 		{
@@ -349,16 +331,14 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeOptionalTargets(UnicodeWriter out) throws Exception
 	{
 		ORefList targetRefs = getProject().getTargetPool().getRefList();
-		if (targetRefs.size() == 0)
-			return;
-		
 		out.writeln("<targets>");
 		for (int refIndex = 0; refIndex < targetRefs.size(); ++refIndex)
 		{
 			Target target = Target.find(getProject(), targetRefs.get(refIndex));
-			out.write("<target id='" + target.getId().toString() + "'>");
+			out.write("<target id='" + target.getId().toString() + "' sequence='" + refIndex +1 + "'>");
 			writeElement(out, "name", target, Target.TAG_LABEL);
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
+			writeOptionalElement(out, "description_comment", target, Target.TAG_COMMENT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			writeHabitatMappedCodes(out, target);
@@ -419,9 +399,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
-		if (targetLinks.size() == 0)
-			return;
-		
 		out.writeln("<threat_target_associations>");
 		for(FactorLink factorLink : targetLinks)
 		{
@@ -478,9 +455,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeNestedTargets(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList subTargetRefs = target.getSubTargetRefs();
-		if (subTargetRefs.size() == 0)
-			return;
-		
 		out.writeln("<nested_targets>");
 		for (int refIndex = 0; refIndex < subTargetRefs.size(); ++refIndex)
 		{
@@ -496,9 +470,6 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = getThreatLinksWithThreatStressRatings(target);
-		if (targetLinks.size() == 0)
-			return;
-		
 		out.writeln("<stresses_threats>");
 		for(FactorLink factorLink : targetLinks)
 		{
@@ -513,30 +484,27 @@ public class ConproXmlExporter extends XmlExporter
 		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
-			out.write("<stresses_threat>");
+			out.writeln("<stresses_threat>");
 			writeOptionalRatingCodeElement(out, "contrib_rank", threatStressRating.getIrreversibilityCode());
-			out.write("</stresses_threat>");
+			out.writeln("</stresses_threat>");
 		}
 	}
 
 	private void writeOptionalStresses(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();
-		if (stressRefs.size() == 0)
-			return;
-		
-		out.writeln("<stress_targets>");
+		out.writeln("<target_stresses>");
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			out.write("<stress_target sequence='" + refIndex + "'>");
+			out.writeln("<target_stress sequence='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeElement(out, "name", stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, "stress_severity", stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, "stress_scope", stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, "stress_to_target_rank", stress.getCalculatedStressRating());
-			out.writeln("</stress_target>");
+			out.writeln("</target_stress>");
 		}
-		out.writeln("</stress_targets>");
+		out.writeln("</target_stresses>");
 	}
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
@@ -633,20 +601,21 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeTeamMembers(UnicodeWriter out) throws Exception
 	{
 		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
+		out.writeln("<team>");
 		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
 		{
-			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
-			out.writeln("<team_member>");
-			writeMemberRoles(out, member);
 			out.writeln("<person>");
+			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
+			writeMemberRoles(out, member);
+			
 			writeOptionalElement(out, "givenname", member, ProjectResource.TAG_GIVEN_NAME);
 			writeOptionalElement(out, "surname", member, ProjectResource.TAG_SUR_NAME);
 			writeOptionalElement(out, "email", member, ProjectResource.TAG_EMAIL);
 			writeOptionalElement(out, "phone", member, ProjectResource.TAG_PHONE_NUMBER);
 			writeOptionalElement(out, "organization", member, ProjectResource.TAG_ORGANIZATION);
-			out.writeln("</person>");
-			out.writeln("</team_member>");
+			out.writeln("</person>");			
 		}
+		out.writeln("</team>");
 	}
 
 	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception

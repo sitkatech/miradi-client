@@ -63,13 +63,13 @@ conservation_project.element =
     element cp:conservation_project {
         document_exchange.element
         & project_summary.element
-        & targets.element?
-        & key_attributes.element?
+        & targets.element
+        & key_attributes.element
         & viability.element?
-        & threats.element?
-        & objectives.element?
+        & threats.element
+        & objectives.element
         & strategies.element
-        & indicators.element?
+        & indicators.element
     }
 # 
 # 
@@ -122,15 +122,15 @@ project_summary.element =
         & element cp:stressless_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
-        & team_member.element*
+        & team.element
         & element cp:ecoregions {
-              element cp:ecoregion_code { vocabulary_ecoregion }*
+              element cp:ecoregion_code { vocabulary_ecoregions }*
           }
         & element cp:countries {
-              element cp:country_code { vocabulary_country }*
+              element cp:country_code { vocabulary_countries }*
           }
         & element cp:ous {
-              element cp:ou_code { vocabulary_ou }*
+              element cp:ou_code { vocabulary_ous }*
           }
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
@@ -156,16 +156,16 @@ location.element =
 # 
 # 
 #
-team_member.element =
-    element cp:team_member {
-        element cp:role { vocabulary_team }+
-        & element cp:person {
-              element cp:givenname { xsd:string }?
-              & element cp:surname { xsd:string }?
-              & element cp:email { xsd:string }?
-              & element cp:phone { xsd:string }?
-              & element cp:organization { xsd:string }?
-          }
+team.element =
+    element cp:team {
+        element cp:person {
+            element cp:role { vocabulary_team }+
+            & element cp:givenname { xsd:string }?
+            & element cp:surname { xsd:string }?
+            & element cp:email { xsd:string }?
+            & element cp:phone { xsd:string }?
+            & element cp:organization { xsd:string }?
+        }*
     }
 # 
 # 
@@ -184,10 +184,10 @@ targets.element =
             & element cp:habitat_taxonomy_codes {
                   element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
               }
-            & element cp:stress_targets { stress_target.element* }?
-            & element cp:stresses_threats { stresses_threat.element* }?
-            & element cp:nested_targets { nested_target.element* }?
-            & element cp:threat_target_associations { threat_target_association.element* }?
+            & element cp:target_stresses { target_stress.element* }
+            & element cp:stresses_threats { stresses_threat.element* }
+            & element cp:nested_targets { nested_target.element* }
+            & element cp:threat_target_associations { threat_target_association.element* }
             & element cp:strategy_threat_target_associations {
                   strategy_threat_target_association.element*
               }?
@@ -196,8 +196,8 @@ targets.element =
 # 
 # 
 #
-stress_target.element =
-    element cp:stress_target {
+target_stress.element =
+    element cp:target_stress {
         attribute sequence { xsd:nonNegativeInteger }
         & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
           element cp:name { text }
@@ -254,7 +254,7 @@ key_attributes.element =
             & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
               element cp:name { text }
             & element cp:category { vocabulary_key_ecological_attribute_category }
-        }+
+        }*
     }
 # 
 # 
@@ -280,7 +280,7 @@ viability.element =
             & element cp:current_rating_comment { text }?
             & element cp:desired_rating_comment { text }?
             & element cp:viability_record_comment { text }?
-        }+
+        }*
     }
 # 
 # 
@@ -293,7 +293,7 @@ threats.element =
               element cp:name { text }
             & element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
-        }+
+        }*
     }
 # 
 # 
@@ -308,7 +308,7 @@ objectives.element =
             & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
               element cp:name { text }
             & element cp:comment { text }?
-        }+
+        }*
     }
 # 
 # 
@@ -341,7 +341,7 @@ activities.element =
             element cp:name { text }
             & element cp:start_date { xsd:date }?
             & element cp:end_date { xsd:date }?
-        }+
+        }*
     }
 # 
 # 
@@ -354,19 +354,19 @@ indicators.element =
               element cp:name { text }
             & element cp:methods { xsd:token }?
             & element cp:priority { vocabulary_priority_vhhml }?
-        }+
+        }*
     }
 # 
 # 
 #
 vocabulary_area_unit = "hectares"
-vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
+vocabulary_countries = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
 vocabulary_doc_exchange_status = "success" | "warning" | "fail"
-vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
+vocabulary_ecoregions = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:double
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
-vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
+vocabulary_ous = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
