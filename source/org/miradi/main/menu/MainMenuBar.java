@@ -49,6 +49,7 @@ import org.miradi.actions.ActionDeleteGroupBox;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionExit;
+import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
 import org.miradi.actions.ActionExportTable;
 import org.miradi.actions.ActionExportZippedProjectFile;
@@ -153,6 +154,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
 		
 		if(MainWindow.isDemoMode())
 		{
