@@ -543,13 +543,14 @@ public class ConproXmlExporter extends XmlExporter
 	{
 		out.writeln("<project_summary share_outside_organization='false'>");
 	
-			out.writeln("<project_id context='ConPro'>");
-			out.writeln("noId");
-			out.writeln("</project_id>");
-			
-			out.writeln("<parent_project_id context='ConPro'>");
-			out.writeln("noId");
-			out.writeln("</parent_project_id>");
+			//TODO,  need to write out read project ids
+//			out.writeln("<project_id context='ConPro'>");
+//			out.writeln("noId");
+//			out.writeln("</project_id>");
+//			
+//			out.writeln("<parent_project_id context='ConPro'>");
+//			out.writeln("noId");
+//			out.writeln("</parent_project_id>");
 			
 			writeElement(out, "name", XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			
