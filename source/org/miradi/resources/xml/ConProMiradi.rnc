@@ -65,7 +65,7 @@ conservation_project.element =
         & project_summary.element
         & targets.element
         & key_attributes.element
-        & viability.element?
+        & viability.element
         & threats.element
         & objectives.element
         & strategies.element
