@@ -38,6 +38,4 @@ public class ActionExportProjectXml extends MainWindowAction
 	{
 		return EAM.text("TT|Project XML File");
 	}
-
-
 }
