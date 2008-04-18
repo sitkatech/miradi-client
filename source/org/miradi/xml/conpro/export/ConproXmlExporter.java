@@ -333,9 +333,17 @@ public class ConproXmlExporter extends XmlExporter
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
+			writeStrategyThreatTargetAssociations(out, target);
 			out.writeln("</target>");
 		}
 		out.writeln("</targets>");
+	}
+
+	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
+	{
+		out.writeln("<strategy_threat_target_associations>");
+		//FIXME output the optional associations here
+		out.writeln("</strategy_threat_target_associations>");
 	}
 
 	private void writeHabitatMappedCodes(UnicodeWriter out, Target target) throws Exception

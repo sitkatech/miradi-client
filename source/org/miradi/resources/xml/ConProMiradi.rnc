@@ -100,7 +100,7 @@ document_exchange.element =
 project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
-        & element cp:project_id {
+        & element project_id {
               [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
               attribute context { xsd:NMTOKEN }
               & xsd:NMTOKEN
@@ -190,8 +190,8 @@ targets.element =
             & element cp:threat_target_associations { threat_target_association.element* }
             & element cp:strategy_threat_target_associations {
                   strategy_threat_target_association.element*
-              }?
-        }+
+              }
+        }*
     }
 # 
 # 
