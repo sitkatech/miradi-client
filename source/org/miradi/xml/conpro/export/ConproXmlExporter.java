@@ -136,7 +136,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalRatingCodeElement(out, "overall_rank", strategy.getStrategyRatingSummary());
 			writeElement(out, "selected", Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, "comment", strategy, Strategy.TAG_COMMENT);
-			writeOptionalActivities(out, strategy.getActivityRefs());
+			writeActivities(out, strategy.getActivityRefs());
 						
 			out.writeln("</strategy>");
 		}
@@ -144,7 +144,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</strategies>");
 	}
 
-	private void writeOptionalActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
+	private void writeActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
 	{
 		out.writeln("<activities>");
 		for (int refIndex = 0; refIndex < activityRefs.size(); ++refIndex)
