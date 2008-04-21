@@ -347,13 +347,13 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
 			if (factorLink.isThreatTargetLink())
-				writePossibleStrategyThreatTargetAssociation(out, target, factorLink.getUpstreamThreatRef());
+				writeStrategyThreatTargetAssociations(out, target, factorLink.getUpstreamThreatRef());
 		}
 		
 		out.writeln("</strategy_threat_target_associations>");
 	}
 
-	private void writePossibleStrategyThreatTargetAssociation(UnicodeWriter out, Target target, ORef threatRef) throws Exception
+	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target, ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
 		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
@@ -377,12 +377,12 @@ public class ConproXmlExporter extends XmlExporter
 		return ORef.INVALID;
 	}
 
-	private void writeStrategyThreatTargetAssociation(UnicodeWriter out, ORef threatRef, ORef possibleStrategyRef) throws IOException
+	private void writeStrategyThreatTargetAssociation(UnicodeWriter out, ORef threatRef, ORef strategyRef) throws IOException
 	{
 		out.writeln("<strategy_threat_target_association>");
 		
 		out.write("<strategy_id>");
-		out.write(possibleStrategyRef.getObjectId().toString());
+		out.write(strategyRef.getObjectId().toString());
 		out.writeln("</strategy_id>");
 		
 		out.write("<threat_id>");
