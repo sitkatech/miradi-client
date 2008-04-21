@@ -52,6 +52,7 @@ import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -204,9 +205,8 @@ public class ConproXmlExporter extends XmlExporter
 			out.writeln("<threat id='" + directThreats[index].getId().toString() + "'>");
 			writeElement(out, "name", directThreats[index], Cause.TAG_LABEL);
 			writeOptionalElement(out, "threat_taxonomy_code", directThreats[index], Cause.TAG_TAXONOMY_CODE);
-			//FIXME is this suppose to take in consideration mode
-			int threatToProjectRating = getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(directThreats[index]);
-			writeOptionalRatingCodeElement(out, "threat_to_project_rank", threatToProjectRating);
+			ChoiceItem threatRatingValue = getProject().getThreatRatingFramework().getThreatThreatRatingValue(directThreats[index].getRef());
+			writeOptionalRatingCodeElement(out, "threat_to_project_rank", threatRatingValue.getCode());
 			out.writeln("</threat>");
 		}
 		
