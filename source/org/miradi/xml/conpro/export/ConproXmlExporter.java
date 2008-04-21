@@ -73,9 +73,11 @@ public class ConproXmlExporter extends XmlExporter
 	{
 		out.writeln("<?xml version='1.0'?>");
 		out.writeln("<conservation_project xmlns='http://services.tnc.org/schema/conservation-project/0.1'>");
+		//FIXME output schema url
 		
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
+		//FIXME rename and remove optional
 		writeOptionalTargets(out);
 		writeOptionalKeyEcologicalAttributes(out);
 		writeOptionalViability(out);
