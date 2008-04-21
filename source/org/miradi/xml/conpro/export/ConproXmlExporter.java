@@ -342,8 +342,59 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
 		out.writeln("<strategy_threat_target_associations>");
-		//FIXME output the optional associations here
+		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
+			writeStrategyThreatTargetAssociation(out, target, factorLink);
+		}
+		
 		out.writeln("</strategy_threat_target_associations>");
+	}
+
+	private void writeStrategyThreatTargetAssociation(UnicodeWriter out, Target target, FactorLink factorLink) throws Exception
+	{
+		if (!factorLink.isThreatTargetLink())
+			return;
+		
+		ORef threatRef = factorLink.getUpstreamThreatRef();
+		Cause threat = Cause.find(getProject(), threatRef);
+		ORefList factorLinkReferrers = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
+		{
+			FactorLink thisFactorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
+			ORef strategyRef = getStrategyRef(thisFactorLink);
+			writePossibleStrategyThreatTargetAssociation(out, threatRef, strategyRef);
+		}	
+	}
+
+	private ORef getStrategyRef(FactorLink thisFactorLink)
+	{
+		if (Strategy.is(thisFactorLink.getFromFactorRef()))
+			return thisFactorLink.getFromFactorRef();
+		
+		if (Strategy.is(thisFactorLink.getToFactorRef()))
+			return thisFactorLink.getToFactorRef();
+		
+		return ORef.INVALID;
+	}
+
+	private void writePossibleStrategyThreatTargetAssociation(UnicodeWriter out, ORef threatRef, ORef possibleStrategyRef) throws IOException
+	{
+		if (possibleStrategyRef.isInvalid())
+			return;
+
+		out.writeln("<strategy_threat_target_association>");
+		
+		out.write("<strategy_id>");
+		out.write(possibleStrategyRef.getObjectId().toString());
+		out.writeln("</strategy_id>");
+		
+		out.write("<threat_id>");
+		out.write(threatRef.getObjectId().toString());
+		out.writeln("</threat_id>");
+		
+		out.writeln("</strategy_threat_target_association>");
 	}
 
 	private void writeHabitatMappedCodes(UnicodeWriter out, Target target) throws Exception

@@ -462,6 +462,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 	}
 	
+	public void createAndPopulateStrategtThreatTargetAssociation() throws Exception
+	{
+		FactorLink factorLink = createAndPopulateDirectThreatLink();
+		ORef threatRef = factorLink.getUpstreamThreatRef();
+		Strategy strategy = createAndPopulateStrategy();
+		createFactorLink(threatRef, strategy.getRef());
+	}
+	
 	private CodeList createSampleTerrestrialEcoregionsCodeList()
 	{
 		CodeList terrestrialEcoregions = new CodeList();
