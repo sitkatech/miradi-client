@@ -77,19 +77,18 @@ public class ConproXmlExporter extends XmlExporter
 		
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
-		//FIXME rename and remove optional
 		writeTargets(out);
-		writeOptionalKeyEcologicalAttributes(out);
-		writeOptionalViability(out);
-		writeOptionalThreats(out);
-		writeOptionalObjectives(out);
-		writeOptionalStrategies(out);
-		writeOptionalIndicators(out);
+		writeKeyEcologicalAttributes(out);
+		writeViability(out);
+		writeThreats(out);
+		writeObjectives(out);
+		writeStrategies(out);
+		writeIndicators(out);
 		
 		out.writeln("</conservation_project>");
 	}
 
-	private void writeOptionalIndicators(UnicodeWriter out) throws Exception
+	private void writeIndicators(UnicodeWriter out) throws Exception
 	{
 		ORefList indicatorRefs = getProject().getIndicatorPool().getRefList();
 		out.writeln("<indicators>");
@@ -121,7 +120,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, "methods", methodNames);
 	}
 
-	private void writeOptionalStrategies(UnicodeWriter out) throws Exception
+	private void writeStrategies(UnicodeWriter out) throws Exception
 	{
 		ORefList strategyRefs = getProject().getStrategyPool().getRefList();
 		out.writeln("<strategies>");
@@ -159,7 +158,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</activities>");
 	}
 
-	private void writeOptionalObjectives(UnicodeWriter out) throws Exception
+	private void writeObjectives(UnicodeWriter out) throws Exception
 	{
 		ORefList objectiveRefs = getProject().getObjectivePool().getRefList();
 		out.writeln("<objectives>");
@@ -198,7 +197,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</" + parentElementName + ">");
 	}
 	
-	private void writeOptionalThreats(UnicodeWriter out) throws Exception
+	private void writeThreats(UnicodeWriter out) throws Exception
 	{
 		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
 		out.writeln("<threats>");
@@ -215,7 +214,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</threats>");
 	}
 
-	private void writeOptionalViability(UnicodeWriter out) throws Exception
+	private void writeViability(UnicodeWriter out) throws Exception
 	{
 		Target[] targets = getProject().getTargetPool().getTargets();
 		out.writeln("<viability>");
@@ -301,7 +300,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeOptionalElement(out, elementName, value);
 	}
 
-	private void writeOptionalKeyEcologicalAttributes(UnicodeWriter out) throws Exception
+	private void writeKeyEcologicalAttributes(UnicodeWriter out) throws Exception
 	{
 		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
 		out.writeln("<key_attributes>");
