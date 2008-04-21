@@ -326,7 +326,7 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "description", target, Target.TAG_TEXT);
 			writeOptionalElement(out, "description_comment", target, Target.TAG_COMMENT);
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeOptionalRatingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
+			writeOptionalRankingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			writeHabitatMappedCodes(out, target);
 			//FIXME need to resolve and export target threat_taxonomy_code
 			writeOptionalStresses(out, target);
@@ -535,7 +535,7 @@ public class ConproXmlExporter extends XmlExporter
 			
 			out.writeln("<exporter_name>Miradi</exporter_name>");
 			out.writeln("<exporter_version>Unknown</exporter_version>");
-			out.writeln("<data_export_date>" + new MultiCalendar().toIsoDateString() + "</data_export_date>");
+			out.writeln("<export_date>" + new MultiCalendar().toIsoDateString() + "</export_date>");
 			
 		out.writeln("</project_summary>");
 	}
@@ -543,7 +543,7 @@ public class ConproXmlExporter extends XmlExporter
 	private String getComputedTncViability()
 	{
 		String code = Target.computeTNCViability(getProject());
-		return ratingCodeToXmlValue(code);
+		return rankingCodeToXmlValue(code);
 	}
 
 	private String getStressBasedOverallProjectRating()
@@ -688,6 +688,11 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("<document_exchange status='success'/>");
 	}
 	
+	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
+	{
+		writeOptionalElement(out, elementName, rankingCodeToXmlValue(code));
+	}
+	
 	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeOptionalRatingCodeElement(out, elementName, object.getData(tag));
@@ -753,6 +758,23 @@ public class ConproXmlExporter extends XmlExporter
 		
 		if (code.equals("4"))
 			return "Very High";
+		
+		return "";
+	}
+	
+	private String rankingCodeToXmlValue(String code)
+	{
+		if (code.equals("1"))
+			return "Poor";
+		
+		if (code.equals("2"))
+			return "Fair";
+		
+		if (code.equals("3"))
+			return "Good";
+		
+		if (code.equals("4"))
+			return "Very Good";
 		
 		return "";
 	}
