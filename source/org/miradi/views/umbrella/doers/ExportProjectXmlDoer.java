@@ -40,7 +40,7 @@ public class ExportProjectXmlDoer extends XmlExporter
 	@Override
 	protected void export(File chosen) throws Exception
 	{
-		exportProjectToXml(getProject(), chosen);
+		new ReportXmlExporter(getProject()).export(chosen);
 	}
 		
 	public static File exportProjectToXml(Project project, File destinationDirectory) throws Exception
