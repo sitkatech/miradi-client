@@ -1,7 +1,7 @@
 # $LastChangedBy: ecoffman $ 
 # $LastChangedDate: 2008-04-02 10:55:24 -0400 (Wed, 02 Apr 2008) $
 # $LastChangedRevision: 2104 $ 
-
+# --------------------------------------------------------------------------------------------
 # 
 # Datatyping reference
 # xsd:boolean -  Its value space is true and false. Its lexical space accepts true, false, 1 and 0
@@ -38,25 +38,12 @@
 #                or "extender." Invalid values include 'brought classical music' (spaces are forbidden) and
 #                'bold,brash' (commas are forbidden).
 
-# Notes:
-#    ? - Optional
-#    * - 0 or more
-#    + - 1 or more
-# 
-#    & - interleave
-#
-
-# --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
 
-default namespace = "http://services.tnc.org/schema/conservation-project/"
 namespace cp = "http://services.tnc.org/schema/conservation-project/0.1"
 
-# 
-# 
 #
 start = conservation_project.element
-# 
 #
 conservation_project.element =
     [ documentation [ "XML Schema definition to represent a Conservation Project." ] ]
@@ -71,8 +58,6 @@ conservation_project.element =
         & strategies.element
         & indicators.element
     }
-# 
-# 
 #
 document_exchange.element =
     [
@@ -80,37 +65,28 @@ document_exchange.element =
             "The data exchange needs to provide a way to let another application \x{a}" ~
             "know if the export was successful or not. If it wasn't, an error message \x{a}" ~
             "should be provided. The 'status' and 'error_msg' attributes take care of this \x{a}" ~
-            "and are noted in the 'cp:conservation-project' root element. \x{a}" ~
-            " \x{a}" ~
-            "These attributes are useful to let Miradi know there was an error producing the \x{a}" ~
-            "XML in ConPro when the data was obtained by some more automatic way (Web Service). \x{a}" ~
-            "An example of some automatic way is when a user in Miradi wants to import their \x{a}" ~
-            "data from ConPro via a direct import method. Miradi might provide a function where \x{a}" ~
-            "the user could enter the ConPro ID and Miradi fetches the data without the user \x{a}" ~
-            "having to do the actual downloading from ConPro and uploading to Miradi."
+            "and are noted in the 'cp:conservation-project' root element."
         ]
     ]
     element cp:document_exchange {
         attribute status { vocabulary_doc_exchange_status }
         & element cp:error_msg { text }*
     }?
-# 
-# 
 #
 project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
         & element cp:project_id {
-              [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
+              # Context, for now, is 'ConPro.' Revisit as required.
               attribute context { xsd:NMTOKEN }
               & xsd:NMTOKEN
           }*
         & element cp:parent_project_id {
-              [ documentation [ "Context, for now, is 'ConPro.' Revisit as required." ] ]
+              # Context, for now, is 'ConPro.' Revisit as required.
               attribute context { xsd:NMTOKEN }
               & xsd:NMTOKEN
           }*
-        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+        & # ConPro will normalize this string to fit xsd:token. See note #1.
           element cp:name { xsd:string }
         & element cp:start_date { xsd:date }?
         & area_size.element?
@@ -121,7 +97,7 @@ project_summary.element =
         & element cp:lessons_learned { text }?
         & element cp:stressless_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
-        & element cp:project_viability_rank { vocabulary_ranking_vhhml }?
+        & element cp:project_viability_rank { vocabulary_rating_vggfp }?
         & team.element
         & element cp:ecoregions {
               element cp:ecoregion_code { vocabulary_ecoregion }*
@@ -134,18 +110,14 @@ project_summary.element =
           }
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
-        & element cp:data_export_date { xsd:date }
+        & element cp:export_date { xsd:date }
     }
-# 
-# 
 #
 area_size.element =
     element cp:area_size {
         attribute unit { vocabulary_area_unit }
         & xsd:nonNegativeInteger
     }
-# 
-# 
 #
 location.element =
     element cp:geospatial_location {
@@ -153,8 +125,6 @@ location.element =
         & element cp:latitude { xsd:decimal }?
         & element cp:longitude { xsd:decimal }?
     }
-# 
-# 
 #
 team.element =
     element cp:team {
@@ -167,20 +137,18 @@ team.element =
             & element cp:organization { xsd:string }?
         }*
     }
-# 
-# 
 #
 targets.element =
     element cp:targets {
         element cp:target {
             attribute sequence { xsd:positiveInteger }?
             & attribute id { vocabulary_id }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:description { text }?
             & element cp:description_comment { text }?
             & element cp:target_viability_comment { text }?
-            & element cp:target_viability_rank { vocabulary_ranking_vhhml }?
+            & element cp:target_viability_rank { vocabulary_ranking_vggfp }?
             & element cp:habitat_taxonomy_codes {
                   element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
               }
@@ -193,20 +161,16 @@ targets.element =
               }
         }*
     }
-# 
-# 
 #
 target_stress.element =
     element cp:target_stress {
         attribute sequence { xsd:nonNegativeInteger }
-        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+        & # ConPro will normalize this string to fit xsd:token. See note #1.
           element cp:name { text }
         & element cp:stress_severity { vocabulary_ranking_vhhml }?
         & element cp:stress_scope { vocabulary_ranking_vhhml }?
         & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
     }
-# 
-# 
 #
 stresses_threat.element =
     element cp:stresses_threat {
@@ -214,18 +178,14 @@ stresses_threat.element =
         & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
         & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
     }
-# 
-# 
 #
 nested_target.element =
     element cp:nested_target {
         attribute sequence { xsd:nonNegativeInteger }
-        & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+        & # ConPro will normalize this string to fit xsd:token. See note #1.
           element cp:name { text }
         & element cp:comment { text }?
     }
-# 
-# 
 #
 threat_target_association.element =
     element cp:threat_target_association {
@@ -236,35 +196,29 @@ threat_target_association.element =
         & element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
         & element cp:threat_target_comment { text }?
     }
-# 
-# 
 #
 strategy_threat_target_association.element =
-    element cp:strategy_threat_association {
+    element cp:strategy_threat_target_association {
         element cp:strategy_id { xsd:nonNegativeInteger }
         & element cp:threat_id { xsd:nonNegativeInteger }
     }
-# 
-# 
 #
 key_attributes.element =
     element cp:key_attributes {
         element cp:key_attribute {
             attribute id { vocabulary_id }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:category { vocabulary_key_ecological_attribute_category }
         }*
     }
-# 
-# 
 #
 viability.element =
     element cp:viability {
         element cp:viability_assessment {
-            element cp:target_id { xsd:nonNegativeInteger }
-            & element cp:indicator_id { xsd:nonNegativeInteger }
-            & element cp:kea_id { xsd:nonNegativeInteger }
+            element cp:target_id { vocabulary_id }
+            & element cp:indicator_id { vocabulary_id }
+            & element cp:kea_id { vocabulary_id }
             & element cp:indicator_description_poor { text }?
             & element cp:indicator_description_fair { text }?
             & element cp:indicator_description_good { text }?
@@ -282,21 +236,17 @@ viability.element =
             & element cp:viability_record_comment { text }?
         }*
     }
-# 
-# 
 #
 threats.element =
     element cp:threats {
         element cp:threat {
             attribute id { vocabulary_id }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
         }*
     }
-# 
-# 
 #
 objectives.element =
     element cp:objectives {
@@ -305,13 +255,11 @@ objectives.element =
             & element cp:indicators {
                   element cp:indicator_id { xsd:nonNegativeInteger }*
               }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:comment { text }?
         }*
     }
-# 
-# 
 #
 strategies.element =
     element cp:strategies {
@@ -320,7 +268,7 @@ strategies.element =
             & element cp:objectives {
                   element cp:objective_id { xsd:nonNegativeInteger }*
               }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:taxonomy_code { iucn_strategy_taxonomy }?
             & element cp:leverage { vocabulary_ranking_vhhml }?
@@ -331,8 +279,6 @@ strategies.element =
             & activities.element?
         }*
     }
-# 
-# 
 #
 activities.element =
     element cp:activities {
@@ -343,21 +289,17 @@ activities.element =
             & element cp:end_date { xsd:date }?
         }*
     }
-# 
-# 
 #
 indicators.element =
     element cp:indicators {
         element cp:indicator {
             attribute id { vocabulary_id }
-            & [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
+            & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
             & element cp:methods { xsd:token }?
             & element cp:priority { vocabulary_priority_vhhml }?
         }*
     }
-# 
-# 
 #
 vocabulary_area_unit = "hectares"
 vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
@@ -369,10 +311,10 @@ vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context"
 vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_status = "Planned" | "Off Track" | "On Track" | "Completed"
 vocabulary_team = "Owner" | "Team Leader" | "Team Member"
-# 
 #
 [
     documentation [
@@ -383,3 +325,16 @@ vocabulary_team = "Owner" | "Team Leader" | "Team Member"
 iucn_threat_taxonomy = xsd:NMTOKEN { pattern = "[T][0-9]{2,3}\.[0-9]{2,3}" }
 iucn_habitat_taxonomy = xsd:NMTOKEN { pattern = "[H][0-9]{2,3}\.[0-9]{2,3}" }
 iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
+# 
+# 
+# Notes:
+#    1) Python to convert text into xsd:token is 
+#        ' '.join(str.split()) 
+#        where str is the value for that element.
+# 
+# 
+# 
+# 
+# 
+# 
+#
