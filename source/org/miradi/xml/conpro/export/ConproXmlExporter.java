@@ -328,7 +328,6 @@ public class ConproXmlExporter extends XmlExporter
 			writeOptionalElement(out, "target_viability_comment", target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRankingCodeElement(out, "target_viability_rank", target.getBasicTargetStatus());
 			writeHabitatMappedCodes(out, target);
-			//FIXME need to resolve and export target threat_taxonomy_code
 			writeOptionalStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
