@@ -78,7 +78,7 @@ public class ConproXmlExporter extends XmlExporter
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
 		//FIXME rename and remove optional
-		writeOptionalTargets(out);
+		writeTargets(out);
 		writeOptionalKeyEcologicalAttributes(out);
 		writeOptionalViability(out);
 		writeOptionalThreats(out);
@@ -316,7 +316,7 @@ public class ConproXmlExporter extends XmlExporter
 		out.writeln("</key_attributes>");
 	}
 
-	private void writeOptionalTargets(UnicodeWriter out) throws Exception
+	private void writeTargets(UnicodeWriter out) throws Exception
 	{
 		ORefList targetRefs = getProject().getTargetPool().getRefList();
 		out.writeln("<targets>");
