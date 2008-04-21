@@ -287,7 +287,7 @@ public class ConproXmlExporter extends XmlExporter
 		
 		writeOptionalElement(out, "current_viability_rating",  measurement, Measurement.TAG_STATUS);
 		writeOptionalElement(out, "current_rating_date",  measurement, Measurement.TAG_DATE);
-		writeOptionalElement(out, "confidence_current_rating",  translateStatusConfidence(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+		writeOptionalElement(out, "confidence_current_rating",  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 		writeOptionalElement(out, "current_rating_comment", measurement, Measurement.TAG_COMMENT);
 	
 	}
@@ -307,7 +307,7 @@ public class ConproXmlExporter extends XmlExporter
 		{
 			out.writeln("<key_attribute id='" + keas[index].getId().toString() + "'>");
 			writeElement(out, "name", keas[index], KeyEcologicalAttribute.TAG_LABEL);
-			writeElement(out, "category", translateKeyEcologicalAttributeType(keas[index].getKeyEcologicalAttributeType()));
+			writeElement(out, "category", keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
 			out.writeln("</key_attribute>");
 		}
 		
@@ -759,7 +759,7 @@ public class ConproXmlExporter extends XmlExporter
 		return ratingCodeToXmlValue(Integer.toString(code));
 	}
 	
-	private String translateStatusConfidence(String data)
+	private String statusConfidenceToXmlValue(String data)
 	{
 		if (data.equals(StatusConfidenceQuestion.ROUGH_GUESS_CODE))
 			return "Rough Guess";
@@ -776,8 +776,7 @@ public class ConproXmlExporter extends XmlExporter
 		return "";
 	}
 	
-	//FIXME rename(this method and all translateXXX) to omit translate
-	private String translateKeyEcologicalAttributeType(String type)
+	private String keyEcologicalAttributeTypeToXmlValue(String type)
 	{
 		if (type.equals("10"))
 			return "Size";
