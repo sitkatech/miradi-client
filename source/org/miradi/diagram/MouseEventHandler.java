@@ -31,6 +31,7 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -38,11 +39,11 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.views.diagram.LinkBendPointsMoveHandler;
 import org.miradi.views.diagram.NudgeDoer;
 import org.miradi.views.diagram.PropertiesDoer;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -184,7 +185,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void moveBendPoints() throws Exception
 	{
-		LinkBendPointsMoveHandler moveHandler = new LinkBendPointsMoveHandler(getProject());
+		Vector bendPointsMoveCommands = new Vector();
 		LinkCell[] linkCells = selectedAndGroupBoxCoveredLinkCells.toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)
 		{
@@ -197,9 +198,12 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				continue;
 			}
 			
-			PointList graphCurrentBendPoints = linkCells[i].getJGraphCurrentBendPoints(view);
-			moveHandler.executeBendPointMoveCommand(linkCells[i].getDiagramLink(), graphCurrentBendPoints);
+			PointList graphCurrentBendPoints = linkCells[i].getJGraphCurrentBendPoints(view);			
+			CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCells[i].getDiagramLink(), DiagramLink.TAG_BEND_POINTS, graphCurrentBendPoints);
+			bendPointsMoveCommands.add(bendPointMoveCommand);
 		}
+		
+		getProject().executeCommandsWithoutTransaction(bendPointsMoveCommands);
 	}
 	
 	public void mouseClicked(MouseEvent event)
