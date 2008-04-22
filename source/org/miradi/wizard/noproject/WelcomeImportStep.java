@@ -75,7 +75,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"to choose the file.");
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));
 			
-			add(createNextPreviousButtonPanel(hyperlinkHandler));
+			add(createNextPreviousButtonPanel(hyperlinkHandler, "Miradi Project"));
 		}
 
 	}
