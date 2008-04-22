@@ -31,6 +31,7 @@ public class ExportConProXmlDoer extends XmlExporter
 	protected void export(File chosen) throws Exception
 	{
 		new ConproXmlExporter(getProject()).export(chosen);
-		new ConProMiradiXmlValidator().isValid(new FileInputStream(chosen));
+		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(chosen)))
+			throw new Exception("Could not validate file for importing.");
 	}
 }
