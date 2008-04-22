@@ -157,6 +157,7 @@ import org.miradi.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.conpro.export.TestConproXmlExporter;
+import org.miradi.xml.conpro.importer.TestConProXmlImporter;
 
 public class MainTests extends TestCase
 {
@@ -368,7 +369,12 @@ public class MainTests extends TestCase
 		
 		//xml.export
 		suite.addTest(new TestSuite(TestReportXmlExporter.class));
+		
+		//xml.conpro.export
 		suite.addTest(new TestSuite(TestConproXmlExporter.class));
+		
+		//xml.conpro.importer
+		suite.addTest(new TestSuite(TestConProXmlImporter.class));
 
 	    return suite;
 	}
