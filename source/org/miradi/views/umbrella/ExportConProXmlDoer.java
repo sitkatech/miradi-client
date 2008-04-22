@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
+import java.io.FileInputStream;
 
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class ExportConProXmlDoer extends XmlExporter
@@ -29,5 +31,6 @@ public class ExportConProXmlDoer extends XmlExporter
 	protected void export(File chosen) throws Exception
 	{
 		new ConproXmlExporter(getProject()).export(chosen);
+		new ConProMiradiXmlValidator().isValid(new FileInputStream(chosen));
 	}
 }
