@@ -67,10 +67,9 @@ abstract public class XmlExporter extends MainWindowDoer
 		}
 		catch(IOException e)
 		{
+			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
 					"don't have permission to write to it."));
-					
-			EAM.logException(e);
 		}
 		catch(Exception e)
 		{
