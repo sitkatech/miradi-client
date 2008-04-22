@@ -59,6 +59,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
+import org.miradi.utils.DateRange;
 import org.miradi.xml.XmlExporter;
 
 public class ConproXmlExporter extends XmlExporter
@@ -152,6 +153,12 @@ public class ConproXmlExporter extends XmlExporter
 			Task activity = Task.find(getProject(), activityRefs.get(refIndex));
 			out.writeln("<activity>");
 			writeElement(out, "name", activity, Task.TAG_LABEL);
+			DateRange whenTotal = activity.getWhenTotal();
+			if (whenTotal != null)
+			{
+				writeElement(out, "start_date", whenTotal.getStartDate().toString());
+				writeElement(out, "end_date", whenTotal.getEndDate().toString());
+			}
 			out.writeln("</activity>");
 		}
 		
