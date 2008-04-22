@@ -19,9 +19,58 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
+import java.io.File;
+import java.io.FileInputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
+
+import org.miradi.main.EAM;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
+import org.w3c.dom.Document;
+
+
 public class ConProXmlImporter
 {
-	public void importConProProject()
+	public void importConProProject(File fileToImport) throws Exception
 	{
+		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(fileToImport)))
+			throw new Exception("Could not validate file for importing.");
+
+		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+	    documentFactory.setNamespaceAware(true);
+	    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+	    Document document =  documentBuilder.parse(fileToImport);
+	    
+	    XPathFactory xPathFactory = XPathFactory.newInstance();
+	    XPath xPath = xPathFactory.newXPath();
+	    xPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
+	    
+	    String result = xPath.evaluate("//cp:project_summary/cp:name/text()", document );
+		System.out.println("value = " + result);
+		
+//TODO, code is only reference on how to use list of nodes.  Remove when done importing.
+//	    XPathExpression expr = xpath.compile("//project_summary/name/text()");
+//		Object result = expr.evaluate(doc, XPathConstants.NODESET);
+//	    NodeList nodes = (NodeList) result;
+//	    System.out.println(nodes.getLength());
+//	    for (int i = 0; i < nodes.getLength(); i++) 
+//	    {
+//	        System.out.println(nodes.item(i).getNodeValue()); 
+//	    }
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			new ConProXmlImporter().importConProProject(new File("c:/temp/Conpro.xml"));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 }
