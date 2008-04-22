@@ -17,13 +17,12 @@ import com.thaiopensource.validate.ValidationDriver;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
 import com.thaiopensource.validate.rng.RngProperty;
 
-//FIXME rename this to something meaningful or extract the validation data into own class
-public class testSampleXml
+public class ConProMiradiXmlValidator
 {
 	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = EAM.getResourceURL("xml/ConProMiradi.rnc");
+		URL resourceURL = EAM.getResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
 		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
@@ -53,11 +52,13 @@ public class testSampleXml
 		try
 		{
 			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
-			new testSampleXml().isValid(xmlUrl.openStream());
+			new ConProMiradiXmlValidator().isValid(xmlUrl.openStream());
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
+	
+	public static final String MIRADI_CONPRO_SCHEMA_FILE_NAME = "xml/ConProMiradi.rnc";
 }
