@@ -65,6 +65,7 @@ import org.miradi.actions.ActionHelpCMPStandards;
 import org.miradi.actions.ActionHelpComingAttractions;
 import org.miradi.actions.ActionHelpCredits;
 import org.miradi.actions.ActionHowToSave;
+import org.miradi.actions.ActionImportZippedConproProject;
 import org.miradi.actions.ActionImportZippedProjectFile;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
@@ -171,6 +172,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_I);
 		
 		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionImportZippedConproProject.class, KeyEvent.VK_C);
 		
 		if(MainWindow.isDemoMode())
 		{

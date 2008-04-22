@@ -93,8 +93,13 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 								"<p><table>" + 
 								"<tr>" +
 								"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
-								"<td><input type='submit' name='Next' value='" + nextLabel + " &gt;'></input></td>" +
-								"</tr>" + 
+								"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_MIRADI + "' value='" + nextLabel + " &gt;'></input></td>" +
+								"</tr>" +
+								//TODO uncomment code when import conpro project is ready
+								//"<tr>" +
+								//"<td></td>" + 
+								//"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
+								//"</tr>" +
 								"</table></p><br>") ; 
 				
 		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);

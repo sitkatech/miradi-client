@@ -27,13 +27,13 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
+import org.miradi.actions.ActionImportZippedConproProject;
 import org.miradi.actions.ActionImportZippedProjectFile;
 import org.miradi.actions.EAMAction;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
 
 public class WelcomeImportStep extends NoProjectWizardStep
@@ -82,7 +82,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 
 	public Class getControl(String controlName)
 	{
-		if(controlName.equals(WizardManager.CONTROL_NEXT))
+		if(controlName.equals(CONTROL_IMPORT_MIRADI))
 			return getClass();
 		return super.getControl(controlName);
 	}
@@ -92,9 +92,14 @@ public class WelcomeImportStep extends NoProjectWizardStep
 	{
 		try
 		{
-			if(buttonName.equals(WizardManager.CONTROL_NEXT))
+			if(buttonName.equals(CONTROL_IMPORT_MIRADI))
 			{
 				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
+				action.doAction();
+			}
+			if (buttonName.equals(CONTROL_IMPORT_CONPRO))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportZippedConproProject.class);
 				action.doAction();
 			}
 			else 
@@ -109,5 +114,6 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		}
 	}
 
-
+	public static final String CONTROL_IMPORT_CONPRO = "Import ConPro Project";
+	public static final String CONTROL_IMPORT_MIRADI = "Import Miradi Project";
 }
