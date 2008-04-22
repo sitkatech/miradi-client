@@ -24,6 +24,8 @@ import java.io.FileInputStream;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
+import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class TestConproXmlExporter extends TestCaseWithProject
 {

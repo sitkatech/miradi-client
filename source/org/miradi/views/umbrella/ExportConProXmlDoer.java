@@ -21,7 +21,7 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 
-import org.miradi.xml.conpro.export.ConproXmlExporter;
+import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class ExportConProXmlDoer extends XmlExporter
 {
