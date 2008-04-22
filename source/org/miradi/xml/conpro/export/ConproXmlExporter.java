@@ -739,7 +739,7 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<document_exchange status='success'/>");
-		//NOTE:  need optional error message
+		//NOTE: we never write the optional error message
 	}
 	
 	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
