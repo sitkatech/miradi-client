@@ -268,12 +268,12 @@ public class ConproXmlExporter extends XmlExporter
 		
 		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
 		writeOptionalRatingCodeElement(out, "desired_viability_rating",  indicator.getFutureStatusRating());
+		writeOptionalLatestMeasurementValues(out, indicator);
 		writeOptionalElement(out, "desired_rating_date",  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 		writeOptionalElement(out, "desired_rating_comment", indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
 		writeOptionalElement(out, "viability_record_comment", kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
-		writeOptionalLatestMeasurementValues(out, indicator);
 			
 		out.writeln("</viability_assessment>");
 	}
@@ -732,6 +732,7 @@ public class ConproXmlExporter extends XmlExporter
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<document_exchange status='success'/>");
+		//NOTE:  need optional error message
 	}
 	
 	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
