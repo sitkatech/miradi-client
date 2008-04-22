@@ -89,10 +89,14 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	protected FlexibleWidthHtmlViewer createNextPreviousButtonPanel(HyperlinkHandler hyperlinkHandler, String nextLabel)
 	{
 		
-		String buttonsText = EAM.text("<div class='WizardText'>" +
-								"<p><input type='submit' name='Back' value='&lt; Previous'></input>" +
-								"&nbsp;&nbsp;&nbsp;&nbsp;" +
-								"<input type='submit' name='Next' value='" + nextLabel + " &gt;'></input></p><br>");
+		String buttonsText = EAM.text("<div class='WizardText'>" +	
+								"<p><table>" + 
+								"<tr>" +
+								"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
+								"<td><input type='submit' name='Next' value='" + nextLabel + " &gt;'></input></td>" +
+								"</tr>" + 
+								"</table></p><br>") ; 
+				
 		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);
 	}
 
