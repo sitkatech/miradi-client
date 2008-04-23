@@ -74,7 +74,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	protected void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<?xml version='1.0'?>");
-		out.writeln("<conservation_project xmlns='http://services.tnc.org/schema/conservation-project/0.1'>");
+		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE +"'>");
 		//FIXME output schema url
 		
 		writeoutDocumentExchangeElement(out);
@@ -87,7 +87,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeStrategies(out);
 		writeIndicators(out);
 		
-		out.writeln("</conservation_project>");
+		writeEndElement(out, CONSERVATION_PROJECT);
 	}
 
 	private void writeIndicators(UnicodeWriter out) throws Exception
