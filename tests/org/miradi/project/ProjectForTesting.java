@@ -82,7 +82,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void fillGeneralProjectData() throws Exception
 	{
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, new MultiCalendar().toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "10000");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LATITUDE, "40");
@@ -464,6 +466,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateEverything() throws Exception
 	{
+		fillGeneralProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateIndicator();
 		createAndPopulateKea();
@@ -479,6 +482,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateDraftStrategy();
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
+	}
+	
+	public void fillProjectPartially() throws Exception
+	{
+		fillGeneralProjectData();
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
