@@ -128,24 +128,19 @@ public interface ConProMiradiXml
 	public static final String OBJECTIVES = "objectives";
 	public static final String OBJECTIVE = "objective";
 	public static final String INDICATORS = "indicators";
-	public static final String INDICATOR_IDS = "indicator_id";
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
+	public static final String INDICATOR = "indicator";
+	public static final String STRATEGIES = "strategies";
+	public static final String STRATEGY = "strategy";
+	public static final String OBJECTIVE_ID = "objective_id";
+	public static final String TAXONOMY_CODE = "taxonomy_code";
+	public static final String LEVERAGE = "leverage";
+	public static final String FEASABILITY = "feasibility";
+	public static final String OVERALL_RANK = "overall_rank";
+	public static final String SELECTED = "selected";
+	public static final String ACTIVITIES = "activities";
+	public static final String ACTIVITY = "activity";
+	public static final String ACTIVITY_START_DATE = "start_date";
+	public static final String ACTIVITY_END_DATE = "end_date";
+	public static final String PRIORITY = "priority";
+	public static final String METHODS = "methods";
 }

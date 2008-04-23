@@ -93,18 +93,18 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeIndicators(UnicodeWriter out) throws Exception
 	{
 		ORefList indicatorRefs = getProject().getIndicatorPool().getRefList();
-		out.writeln("<indicators>");
+		writeStartElement(out, INDICATORS);
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
-			out.writeln("<indicator id='" + indicator.getId().toString() + "'>");
-			writeElement(out, "name", indicator, Indicator.TAG_LABEL);
+			out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
+			writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
 			writeOptionalMethods(out, indicator.getMethodRefs());
-			writeOptionalRatingCodeElement(out, "priority", indicator, Indicator.TAG_PRIORITY);
-			out.writeln("</indicator>");
+			writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
+			writeEndElement(out, INDICATOR);
 		}
 		
-		out.writeln("</indicators>");
+		writeEndElement(out, INDICATORS);
 	}
 
 	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
@@ -119,51 +119,51 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			methodNames += method.getData(Task.TAG_LABEL);
 		}
 		
-		writeOptionalElement(out, "methods", methodNames);
+		writeOptionalElement(out, METHODS, methodNames);
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
 	{
 		ORefList strategyRefs = getProject().getStrategyPool().getRefList();
-		out.writeln("<strategies>");
+		writeStartElement(out, STRATEGIES);
 		for (int refIndex = 0; refIndex < strategyRefs.size(); ++refIndex)
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
-			out.writeln("<strategy id='" + strategy.getId().toString() + "'>");
-			writeIds(out, "objectives", "objective_id", strategy.getObjectiveRefs());
-			writeElement(out, "name", strategy, Strategy.TAG_LABEL);
-			writeOptionalElement(out, "taxonomy_code", strategy, Strategy.TAG_TAXONOMY_CODE);
-			writeOptionalRatingCodeElement(out, "leverage", strategy, Strategy.TAG_IMPACT_RATING);
-			writeOptionalRatingCodeElement(out, "feasibility", strategy, Strategy.TAG_FEASIBILITY_RATING);
-			writeOptionalRatingCodeElement(out, "overall_rank", strategy.getStrategyRatingSummary());
-			writeElement(out, "selected", Boolean.toString(!strategy.isStatusDraft()));
-			writeOptionalElement(out, "comment", strategy, Strategy.TAG_COMMENT);
+			out.writeln("<" + STRATEGY + " " + ID + "='" + strategy.getId().toString() + "'>");
+			writeIds(out, OBJECTIVES, OBJECTIVE_ID, strategy.getObjectiveRefs());
+			writeElement(out, NAME, strategy, Strategy.TAG_LABEL);
+			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
+			writeOptionalRatingCodeElement(out, LEVERAGE, strategy, Strategy.TAG_IMPACT_RATING);
+			writeOptionalRatingCodeElement(out, FEASABILITY, strategy, Strategy.TAG_FEASIBILITY_RATING);
+			writeOptionalRatingCodeElement(out, OVERALL_RANK, strategy.getStrategyRatingSummary());
+			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
+			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
 			writeActivities(out, strategy.getActivityRefs());
 						
-			out.writeln("</strategy>");
+			writeEndElement(out, STRATEGY);
 		}
 		
-		out.writeln("</strategies>");
+		writeEndElement(out, STRATEGIES);
 	}
 
 	private void writeActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
 	{
-		out.writeln("<activities>");
+		writeStartElement(out, ACTIVITIES);
 		for (int refIndex = 0; refIndex < activityRefs.size(); ++refIndex)
 		{
 			Task activity = Task.find(getProject(), activityRefs.get(refIndex));
-			out.writeln("<activity>");
-			writeElement(out, "name", activity, Task.TAG_LABEL);
+			writeStartElement(out, ACTIVITY);
+			writeElement(out, NAME, activity, Task.TAG_LABEL);
 			DateRange whenTotal = activity.getWhenTotal();
 			if (whenTotal != null)
 			{
-				writeElement(out, "start_date", whenTotal.getStartDate().toString());
-				writeElement(out, "end_date", whenTotal.getEndDate().toString());
+				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());
+				writeElement(out, ACTIVITY_END_DATE, whenTotal.getEndDate().toString());
 			}
-			out.writeln("</activity>");
+			writeEndElement(out, ACTIVITY);
 		}
 		
-		out.writeln("</activities>");
+		writeEndElement(out, ACTIVITIES);
 	}
 
 	private void writeObjectives(UnicodeWriter out) throws Exception
@@ -186,7 +186,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
 	{
 		writeStartElement(out, INDICATORS);
-		writeIds(out, INDICATOR_IDS, objective.getRelevantIndicatorRefList());
+		writeIds(out, INDICATOR_ID, objective.getRelevantIndicatorRefList());
 		writeEndElement(out, INDICATORS);
 	}
 
