@@ -557,7 +557,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<project_summary share_outside_organization='false'>");
+		out.writeln("<" + PROJECT_SUMMARY_NAME + " share_outside_organization='false'>");
 	
 			//TODO,  need to write out read project ids
 //			out.writeln("<project_id context='ConPro'>");
@@ -568,9 +568,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 //			out.writeln("noId");
 //			out.writeln("</parent_project_id>");
 			
-			writeElement(out, "name", XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
+			writeElement(out, PROJECT_SUMMARY_NAME_NAME, XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			
-			writeOptionalElement(out, "start_date", getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
+			writeOptionalElement(out, START_DATE_NAME, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
 			writeOptionalAreaSize(out);
 			writeOptionalLocation(out);
 			
@@ -591,7 +591,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			out.writeln("<exporter_version>Unknown</exporter_version>");
 			out.writeln("<export_date>" + new MultiCalendar().toIsoDateString() + "</export_date>");
 			
-		out.writeln("</project_summary>");
+		writeEndElement(out, PROJECT_SUMMARY_NAME);
 	}
 
 	private String getComputedTncViability()
@@ -628,9 +628,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (sizeInHectaresAsInt == 0)
 			return;
 		
-		out.write("<area_size unit='hectares'>");
+		out.write("<" + AREA_SIZE_NAME + " " + UNIT_ATTRIBUTE + "='hectares'>");
 		out.write(Integer.toString((int)sizeInHectaresAsInt));
-		out.writeln("</area_size>");
+		writeEndElement(out, AREA_SIZE_NAME);
 	}
 
 	private void writeOptionalLocation(UnicodeWriter out) throws IOException, Exception
@@ -739,7 +739,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + DOCUMENT_EXCHANGE_NAME + " status='success'/>");
+		out.writeln("<" + DOCUMENT_EXCHANGE_NAME + " " + DOCIMENT_EXCHANGE_STATUS_ATTRIBUTE + "='success'/>");
 		//NOTE: we never write the optional error message
 	}
 	
@@ -761,6 +761,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, int code) throws Exception
 	{
 		writeOptionalElement(out, elementName, ratingCodeToXmlValue(code));
+	}
+	
+	private void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
+	{
+		out.writeln("</" + endElementName + ">");
 	}
 	
 	private String ratingCodeToXmlValue(int code)
