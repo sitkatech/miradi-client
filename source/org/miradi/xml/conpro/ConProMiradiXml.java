@@ -21,6 +21,10 @@ package org.miradi.xml.conpro;
 
 public interface ConProMiradiXml
 {
+	
+	public static final String CONSERVATION_PROJECT = "conservation_project";
+	public static final String XMLNS = "xmlns";
+	public static final String NAME_SPACE = "http://services.tnc.org/schema/conservation-project/0.1";
 	public static final String DOCUMENT_EXCHANGE = "document_exchange";
 	public static final String DOCIMENT_EXCHANGE_STATUS = "status";
 	public static final String PROJECT_SUMMARY = "project_summary";
