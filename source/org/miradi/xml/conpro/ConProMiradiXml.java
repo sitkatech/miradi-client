@@ -22,4 +22,10 @@ package org.miradi.xml.conpro;
 public interface ConProMiradiXml
 {
 	public static final String DOCUMENT_EXCHANGE_NAME = "document_exchange";
+	public static final String DOCIMENT_EXCHANGE_STATUS_ATTRIBUTE = "status";
+	public static final String PROJECT_SUMMARY_NAME = "project_summary";
+	public static final String PROJECT_SUMMARY_NAME_NAME = "name";
+	public static final String START_DATE_NAME = "start_date";
+	public static final String AREA_SIZE_NAME = "area_size";
+	public static final String UNIT_ATTRIBUTE = "unit";
 }
