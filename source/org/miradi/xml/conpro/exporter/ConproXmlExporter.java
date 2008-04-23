@@ -61,8 +61,9 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 import org.miradi.utils.DateRange;
 import org.miradi.xml.XmlExporter;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
-public class ConproXmlExporter extends XmlExporter
+public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 {
 	public ConproXmlExporter(Project project)
 	{
@@ -738,7 +739,7 @@ public class ConproXmlExporter extends XmlExporter
 
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<document_exchange status='success'/>");
+		out.writeln("<" + DOCUMENT_EXCHANGE_NAME + " status='success'/>");
 		//NOTE: we never write the optional error message
 	}
 	
