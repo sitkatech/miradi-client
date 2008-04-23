@@ -21,11 +21,54 @@ package org.miradi.xml.conpro;
 
 public interface ConProMiradiXml
 {
-	public static final String DOCUMENT_EXCHANGE_NAME = "document_exchange";
-	public static final String DOCIMENT_EXCHANGE_STATUS_ATTRIBUTE = "status";
-	public static final String PROJECT_SUMMARY_NAME = "project_summary";
-	public static final String PROJECT_SUMMARY_NAME_NAME = "name";
-	public static final String START_DATE_NAME = "start_date";
-	public static final String AREA_SIZE_NAME = "area_size";
-	public static final String UNIT_ATTRIBUTE = "unit";
+	public static final String DOCUMENT_EXCHANGE = "document_exchange";
+	public static final String DOCIMENT_EXCHANGE_STATUS = "status";
+	public static final String PROJECT_SUMMARY = "project_summary";
+	public static final String SHARE_OUTSIDE_ORGANIZATION = "share_outside_organization";
+	public static final String PROJECT_SUMMARY_NAME = "name";
+	public static final String START_DATE = "start_date";
+	public static final String AREA_SIZE = "area_size";
+	public static final String AREA_SIZE_UNIT = "unit";
+	public static final String GEOSPATIAL_LOCATION = "geospatial_location";
+	public static final String GEOSPATIAL_LOCATION_TYPE = "type";
+	public static final String LATITUDE = "latitude";
+	public static final String LONGITUDE = "longitude";
+	public static final String DESCRIPTION_COMMENT = "description_comment";
+	public static final String GOAL_COMMENT = "goal_comment";
+	public static final String PLANNING_TEAM_COMMENT = "planning_team_comment";
+	public static final String LESSONS_LEARNED = "lessons_learned";
+	public static final String STRESSLESS_THREAT_RANK = "stressless_threat_rank";
+	public static final String PROJECT_THREAT_RANK = "project_threat_rank";
+	public static final String PROJECT_VIABILITY_RANK = "project_viability_rank";
+	public static final String TEAM = "team";
+	public static final String ROLE = "role";
+	public static final String TEAM_LEADER_VALUE = "Team Leader";
+	public static final String PERSON = "person";
+	public static final String GIVEN_NAME = "givenname";
+	public static final String SUR_NAME = "surname";
+	public static final String EMAIL = "email";
+	public static final String PHONE = "phone";
+	public static final String ORGANIZATION = "organization";
+	public static final String ECOREGIONS = "ecoregions";
+	public static final String ECOREGION_CODE = "ecoregion_code";
+	public static final String COUNTRIES = "countries";
+	public static final String COUNTRY_CODE = "country_code";
+	public static final String OUS = "ous";
+	public static final String OU_CODE = "ou_code";
+	public static final String EXPORTER_NAME = "exporter_name";
+	public static final String MIRADI = "Miradi";
+	public static final String EXPORTER_VERSION = "exporter_version";
+	public static final String EXPORT_VERSION = "Unknown";
+	public static final String EXPORT_DATE = "export_date";
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
+//	public static final String
 }

@@ -557,7 +557,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + PROJECT_SUMMARY_NAME + " share_outside_organization='false'>");
+		out.writeln("<" + PROJECT_SUMMARY + " " + SHARE_OUTSIDE_ORGANIZATION + "='false'>");
 	
 			//TODO,  need to write out read project ids
 //			out.writeln("<project_id context='ConPro'>");
@@ -568,30 +568,30 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 //			out.writeln("noId");
 //			out.writeln("</parent_project_id>");
 			
-			writeElement(out, PROJECT_SUMMARY_NAME_NAME, XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
+			writeElement(out, PROJECT_SUMMARY_NAME, XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
 			
-			writeOptionalElement(out, START_DATE_NAME, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
+			writeOptionalElement(out, START_DATE, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
 			writeOptionalAreaSize(out);
 			writeOptionalLocation(out);
 			
-			writeOptionalElement(out, "description_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
-			writeOptionalElement(out, "goal_comment", getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
-			writeOptionalElement(out, "planning_team_comment", getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
-			writeOptionalElement(out, "lessons_learned", getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+			writeOptionalElement(out, DESCRIPTION_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
+			writeOptionalElement(out, GOAL_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
+			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+			writeOptionalElement(out, LESSONS_LEARNED, getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
-			writeOptionalElement(out, "stressless_threat_rank", getSimpleOverallProjectRating());
-			writeOptionalElement(out, "project_threat_rank", getStressBasedOverallProjectRating());
-			writeOptionalElement(out, "project_viability_rank", getComputedTncViability());
+			writeOptionalElement(out, STRESSLESS_THREAT_RANK, getSimpleOverallProjectRating());
+			writeOptionalElement(out, PROJECT_THREAT_RANK, getStressBasedOverallProjectRating());
+			writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
-			writeCodeListElements(out, "countries", "country_code", getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
-			writeCodeListElements(out, "ous", "ou_code", getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
+			writeCodeListElements(out, OUS, OU_CODE, getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 			
-			out.writeln("<exporter_name>Miradi</exporter_name>");
-			out.writeln("<exporter_version>Unknown</exporter_version>");
-			out.writeln("<export_date>" + new MultiCalendar().toIsoDateString() + "</export_date>");
+			out.writeln("<" + EXPORTER_NAME + ">" + MIRADI + "</" + EXPORTER_NAME + ">");
+			out.writeln("<" + EXPORTER_VERSION + ">" + EXPORT_VERSION + "</" + EXPORTER_VERSION + ">");
+			out.writeln("<" + EXPORT_DATE + ">" + new MultiCalendar().toIsoDateString() + "</" + EXPORT_DATE+ ">");
 			
-		writeEndElement(out, PROJECT_SUMMARY_NAME);
+		writeEndElement(out, PROJECT_SUMMARY);
 	}
 
 	private String getComputedTncViability()
@@ -619,7 +619,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncMarineEcoRegion());
 		allTncEcoRegionCodes.addAll(getProjectMetadata().getTncTerrestrialEcoRegion());
 				
-		writeCodeListElements(out, "ecoregions", "ecoregion_code", allTncEcoRegionCodes);
+		writeCodeListElements(out, ECOREGIONS, ECOREGION_CODE, allTncEcoRegionCodes);
 	}
 	
 	private void writeOptionalAreaSize(UnicodeWriter out) throws IOException
@@ -628,9 +628,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (sizeInHectaresAsInt == 0)
 			return;
 		
-		out.write("<" + AREA_SIZE_NAME + " " + UNIT_ATTRIBUTE + "='hectares'>");
+		out.write("<" + AREA_SIZE + " " + AREA_SIZE_UNIT + "='hectares'>");
 		out.write(Integer.toString((int)sizeInHectaresAsInt));
-		writeEndElement(out, AREA_SIZE_NAME);
+		writeEndElement(out, AREA_SIZE);
 	}
 
 	private void writeOptionalLocation(UnicodeWriter out) throws IOException, Exception
@@ -640,38 +640,38 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (latitudeAsFloat == 0 && longitudeAsFloat == 0)
 			return;
 		
-		out.writeln("<geospatial_location type='point'>");
-		writeOptionalFloatElement(out, "latitude", latitudeAsFloat);
-		writeOptionalFloatElement(out, "longitude", longitudeAsFloat);
-		out.writeln("</geospatial_location>");
+		out.writeln("<" + GEOSPATIAL_LOCATION + " " + GEOSPATIAL_LOCATION_TYPE + "='point'>");
+		writeOptionalFloatElement(out, LATITUDE, latitudeAsFloat);
+		writeOptionalFloatElement(out, LONGITUDE, longitudeAsFloat);
+		writeEndElement(out, GEOSPATIAL_LOCATION);
 	}
 	
 	private void writeTeamMembers(UnicodeWriter out) throws Exception
 	{
 		ORefList teamMemberRefs = getProject().getResourcePool().getTeamMemberRefs();
-		out.writeln("<team>");
+		writeStartElement(out, TEAM);
 		for (int memberIndex = 0; memberIndex < teamMemberRefs.size(); ++memberIndex)
 		{
-			out.writeln("<person>");
+			writeStartElement(out, PERSON);
 			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
 			writeMemberRoles(out, member);
 			
-			writeOptionalElement(out, "givenname", member, ProjectResource.TAG_GIVEN_NAME);
-			writeOptionalElement(out, "surname", member, ProjectResource.TAG_SUR_NAME);
-			writeOptionalElement(out, "email", member, ProjectResource.TAG_EMAIL);
-			writeOptionalElement(out, "phone", member, ProjectResource.TAG_PHONE_NUMBER);
-			writeOptionalElement(out, "organization", member, ProjectResource.TAG_ORGANIZATION);
-			out.writeln("</person>");			
+			writeOptionalElement(out, GIVEN_NAME, member, ProjectResource.TAG_GIVEN_NAME);
+			writeOptionalElement(out, SUR_NAME, member, ProjectResource.TAG_SUR_NAME);
+			writeOptionalElement(out, EMAIL, member, ProjectResource.TAG_EMAIL);
+			writeOptionalElement(out, PHONE, member, ProjectResource.TAG_PHONE_NUMBER);
+			writeOptionalElement(out, ORGANIZATION, member, ProjectResource.TAG_ORGANIZATION);
+			writeEndElement(out, PERSON);	
 		}
-		out.writeln("</team>");
+		writeEndElement(out, TEAM);
 	}
 
 	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
 	{
 		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
-		writeElement(out, "role", question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
+		writeElement(out, ROLE, question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
 		if (member.isTeamLead())
-			writeElement(out, "role", "Team Leader");
+			writeElement(out, ROLE, TEAM_LEADER_VALUE);
 	}
 	
 	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
@@ -739,7 +739,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + DOCUMENT_EXCHANGE_NAME + " " + DOCIMENT_EXCHANGE_STATUS_ATTRIBUTE + "='success'/>");
+		out.writeln("<" + DOCUMENT_EXCHANGE + " " + DOCIMENT_EXCHANGE_STATUS + "='success'/>");
 		//NOTE: we never write the optional error message
 	}
 	
@@ -766,6 +766,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeEndElement(UnicodeWriter out, String endElementName) throws IOException
 	{
 		out.writeln("</" + endElementName + ">");
+	}
+	
+	private void writeStartElement(UnicodeWriter out, String startElementName) throws IOException
+	{
+		out.writeln("<" + startElementName + ">");
 	}
 	
 	private String ratingCodeToXmlValue(int code)
