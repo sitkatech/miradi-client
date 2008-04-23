@@ -35,18 +35,9 @@ import org.w3c.dom.Document;
 
 public class ConProXmlImporter
 {
-	public Project populateProjectFromFile(File fileToImport) throws Exception
+	public void populateProjectFromFile(File fileToImport, Project projectToFill) throws Exception
 	{
-		projectToFill = createEmptyProject();
 		importConProProject(fileToImport);
-
-		return projectToFill;
-	}
-
-	private Project createEmptyProject() throws Exception
-	{
-		//TODO ask for project name
-		return new Project();
 	}
 
 	public void importConProProject(File fileToImport) throws Exception
@@ -98,6 +89,4 @@ public class ConProXmlImporter
 			EAM.logException(e);
 		}
 	}
-
-	private Project projectToFill;
 }
