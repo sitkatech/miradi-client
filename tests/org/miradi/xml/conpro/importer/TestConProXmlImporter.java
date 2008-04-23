@@ -30,6 +30,37 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testImportConProProject() throws Exception
 	{
-		//TODO  already verified fail, just add implementation
+//		getProject().populateEverything();
+//		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
+//		
+//		new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
+//		String beforeImportAsString = convertFileContentToString(beforeXmlOutFile);
+//		Project projectCreatedFromImport = new ConProXmlImporter().populateProjectFromFile(beforeXmlOutFile);
+//		
+//		File afterXmlOutFile = createTempFileFromName("conproAfterImport.xml");
+//		new ConproXmlExporter(projectCreatedFromImport).export(afterXmlOutFile);
+//		String afterImportAsString = convertFileContentToString(afterXmlOutFile);
+//		
+//		assertEquals("incorrect project values after import?", beforeImportAsString, afterImportAsString);
 	}
+	
+//	private String convertFileContentToString(File fileToConvert) throws Exception
+//	{
+//	    StringBuffer stringBuffer = new StringBuffer();
+//	    BufferedReader in = new BufferedReader(new FileReader(fileToConvert));
+//		try 
+//		{
+//	        String str;
+//	        while ((str = in.readLine()) != null) 
+//	        {
+//	        	stringBuffer.append(str);
+//	        }
+//	    } 
+//		finally
+//		{
+//			in.close();
+//		}
+//		
+//		return stringBuffer.toString();
+//	}
 }
