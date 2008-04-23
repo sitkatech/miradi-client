@@ -338,7 +338,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRankingCodeElement(out, TARGET_VIABILITY_RANK, target.getBasicTargetStatus());
 			writeHabitatMappedCodes(out, target);
-			writeOptionalStresses(out, target);
+			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
@@ -535,8 +535,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 	}
 
-	//TODO remove optional from method
-	private void writeOptionalStresses(UnicodeWriter out, Target target) throws Exception
+	private void writeStresses(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();
 		writeStartElement(out, TARGET_STRESSES);
