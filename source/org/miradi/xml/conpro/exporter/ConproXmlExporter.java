@@ -565,7 +565,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 //			out.writeln("noId");
 //			out.writeln("</parent_project_id>");
 			
-			writeElement(out, PROJECT_SUMMARY_NAME, XmlUtilities.getXmlEncoded(getProjectMetadata().getProjectName()));
+			writeElement(out, PROJECT_SUMMARY_NAME, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
 			
 			writeOptionalElement(out, START_DATE, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
 			writeOptionalAreaSize(out);
