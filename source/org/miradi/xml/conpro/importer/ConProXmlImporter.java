@@ -28,40 +28,65 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.w3c.dom.Document;
 
 
 public class ConProXmlImporter
 {
+	public Project populateProjectFromFile(File fileToImport) throws Exception
+	{
+		projectToFill = createEmptyProject();
+		importConProProject(fileToImport);
+
+		return projectToFill;
+	}
+
+	private Project createEmptyProject() throws Exception
+	{
+		//TODO ask for project name
+		return new Project();
+	}
+
 	public void importConProProject(File fileToImport) throws Exception
 	{
-		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(fileToImport)))
-			throw new Exception("Could not validate file for importing.");
+		FileInputStream fileInputStream = new FileInputStream(fileToImport);
+		try
+		{
 
-		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-	    documentFactory.setNamespaceAware(true);
-	    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-	    Document document =  documentBuilder.parse(fileToImport);
-	    
-	    XPathFactory xPathFactory = XPathFactory.newInstance();
-	    XPath xPath = xPathFactory.newXPath();
-	    xPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
-	    
-	    String result = xPath.evaluate("//cp:project_summary/cp:name/text()", document );
-		System.out.println("value = " + result);
-		
-//TODO, code is only reference on how to use list of nodes.  Remove when done importing.
-//	    XPathExpression expr = xpath.compile("//project_summary/name/text()");
-//		Object result = expr.evaluate(doc, XPathConstants.NODESET);
-//	    NodeList nodes = (NodeList) result;
-//	    System.out.println(nodes.getLength());
-//	    for (int i = 0; i < nodes.getLength(); i++) 
-//	    {
-//	        System.out.println(nodes.item(i).getNodeValue()); 
-//	    }
+			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
+				throw new Exception("Could not validate file for importing.");
+
+			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+			documentFactory.setNamespaceAware(true);
+			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+			Document document =  documentBuilder.parse(fileToImport);
+
+			XPathFactory xPathFactory = XPathFactory.newInstance();
+			XPath xPath = xPathFactory.newXPath();
+			xPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
+
+			String result = xPath.evaluate("//cp:project_summary/cp:name/text()", document );
+			System.out.println("value = " + result);
+
+//			TODO, code is only reference on how to use list of nodes.  Remove when done importing.
+//			XPathExpression expr = xpath.compile("//project_summary/name/text()");
+//			Object result = expr.evaluate(doc, XPathConstants.NODESET);
+//			NodeList nodes = (NodeList) result;
+//			System.out.println(nodes.getLength());
+//			for (int i = 0; i < nodes.getLength(); i++) 
+//			{
+//			System.out.println(nodes.item(i).getNodeValue()); 
+//			}
+
+		}
+		finally
+		{
+			fileInputStream.close();
+		}
 	}
-	
+
 	public static void main(String[] args)
 	{
 		try
@@ -73,4 +98,6 @@ public class ConProXmlImporter
 			EAM.logException(e);
 		}
 	}
+
+	private Project projectToFill;
 }
