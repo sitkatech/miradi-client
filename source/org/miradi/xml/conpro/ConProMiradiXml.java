@@ -64,15 +64,88 @@ public interface ConProMiradiXml
 	public static final String EXPORTER_VERSION = "exporter_version";
 	public static final String EXPORT_VERSION = "Unknown";
 	public static final String EXPORT_DATE = "export_date";
+	public static final String TARGETS = "targets";
+	public static final String TARGET = "target";
+	public static final String ID = "id";
+	public static final String SEQUENCE = "sequence";
+	public static final String TARGET_NAME = "name";
+	public static final String TARGET_DESCRIPTION = "description";
+	public static final String TARGET_DESCRIPTION_COMMENT = "description_comment";
+	public static final String TARGET_VIABILITY_COMMENT = "target_viability_comment";
+	public static final String TARGET_VIABILITY_RANK = "target_viability_rank";
+	public static final String HABITAT_TAXONOMY_CODES = "habitat_taxonomy_codes";
+	public static final String HABITAT_TAXONOMY_CODE = "habitat_taxonomy_code";
+	public static final String TARGET_STRESSES = "target_stresses";
+	public static final String TARGET_STRESS = "target_stress";
+	public static final String NAME = "name";
+	public static final String STRESS_SEVERITY = "stress_severity"; 
+	public static final String STRESS_SCOPE = "stress_scope";
+	public static final String STRESS_TO_TARGET_RANK = "stress_to_target_rank";
+	public static final String STRESSES_THREATS = "stresses_threats";
+	public static final String STRESSES_THREAT = "stresses_threat";
+	public static final String CONTRIBUTING_RANK = "contrib_rank";
+	public static final String NESTED_TARGETS = "nested_targets";
+	public static final String NESTED_TARGET = "nested_target";
+	public static final String COMMENT = "comment";
+	public static final String THREAT_TARGET_ASSOCIATIONS = "threat_target_associations";
+	public static final String THREAT_TARGET_ASSOCIATION  = "threat_target_association";
+	public static final String THREAT_ID = "threat_id";
+	public static final String THREAT_TO_TARGET_RANK = "threat_to_target_rank";
+	public static final String THREAT_SEVERITY = "threat_severity";
+	public static final String THREAT_SCOPE = "threat_scope";
+	public static final String THREAT_IRREVERSIBILITY = "threat_irreversibility";
+	public static final String THREAT_TARGET_COMMENT = "threat_target_comment";
+	public static final String STRATEGY_THREAT_TARGET_ASSOCIATIONS = "strategy_threat_target_associations";
+	public static final String STRATEGY_THREAT_TARGET_ASSOCIATION = "strategy_threat_target_association";
+	public static final String STRATEGY_ID = "strategy_id";
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
-//	public static final String
+//	public static final String 
+//	public static final String 
+//	public static final String 
+//	public static final String 
 //	public static final String
 }
