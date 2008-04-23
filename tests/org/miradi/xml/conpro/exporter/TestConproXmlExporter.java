@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -38,7 +39,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		initializeProjectSampleData();
+		initializeProjectSampleData(getProject());
 	}
 	
 	public void testValidatedExport() throws Exception
@@ -55,22 +56,22 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		}
 	}
 	
-	private void initializeProjectSampleData() throws Exception
+	public static void initializeProjectSampleData(ProjectForTesting project) throws Exception
 	{
-		getProject().createAndPopulateDirectThreatLink();
-		getProject().createAndPopulateIndicator();
-		getProject().createAndPopulateKea();
-		getProject().createAndPopulateMeasurement();
-		getProject().createAndPopulateProjectResource();
-		getProject().createAndPopulateStress();
-		getProject().createAndPopulateSubTarget();
-		getProject().createAndPopulateTarget();
-		getProject().createAndPopulateTask();
-		getProject().createAndPopulateThreat();
-		getProject().createAndPopulateThreatStressRating();
-		getProject().createAndPopulateObjective();
-		getProject().createAndPopulateDraftStrategy();
-		getProject().createAndPopulateStrategy();
-		getProject().createAndPopulateStrategyThreatTargetAssociation();
+		project.createAndPopulateDirectThreatLink();
+		project.createAndPopulateIndicator();
+		project.createAndPopulateKea();
+		project.createAndPopulateMeasurement();
+		project.createAndPopulateProjectResource();
+		project.createAndPopulateStress();
+		project.createAndPopulateSubTarget();
+		project.createAndPopulateTarget();
+		project.createAndPopulateTask();
+		project.createAndPopulateThreat();
+		project.createAndPopulateThreatStressRating();
+		project.createAndPopulateObjective();
+		project.createAndPopulateDraftStrategy();
+		project.createAndPopulateStrategy();
+		project.createAndPopulateStrategyThreatTargetAssociation();
 	}
 }
