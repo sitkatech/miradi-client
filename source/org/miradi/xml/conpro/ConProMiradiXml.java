@@ -98,37 +98,37 @@ public interface ConProMiradiXml
 	public static final String STRATEGY_THREAT_TARGET_ASSOCIATIONS = "strategy_threat_target_associations";
 	public static final String STRATEGY_THREAT_TARGET_ASSOCIATION = "strategy_threat_target_association";
 	public static final String STRATEGY_ID = "strategy_id";
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String 
-//	public static final String
-//	public static final String 
+	public static final String KEY_ATTRIBUTES = "key_attributes";
+	public static final String KEY_ATTRIBUTE = "key_attribute";
+	public static final String CATEGORY = "category";
+	public static final String VIABILITY = "viability";
+	public static final String VIABILITY_ASSESSMENT = "viability_assessment";
+	public static final String TARGET_ID = "target_id";
+	public static final String INDICATOR_ID = "indicator_id";
+	public static final String KEA_ID = "kea_id";
+	public static final String INDICATOR_DESCRIPTION_POOR = "indicator_description_poor";
+	public static final String INDICATOR_DESCRIPTION_FAIR = "indicator_description_fair";
+	public static final String INDICATOR_DESCRIPTION_GOOD = "indicator_description_good";
+	public static final String INDICATOR_DESCRIPTION_VERY_GOOD = "indicator_description_very_good";
+	public static final String CURRENT_INDICATOR_STATUS_VIABILITY = "current_indicator_status_viability";
+	public static final String DESIRED_VIABILITY_RATING = "desired_viability_rating";
+	public static final String CURRENT_VIABILITY_RATING = "current_viability_rating";
+	public static final String CURRENT_RATING_DATE = "current_rating_date";
+	public static final String CONFIDENE_CURRENT_RATING = "confidence_current_rating";
+	public static final String CURRENT_RATING_COMMENT = "current_rating_comment";
+	public static final String DESIRED_RATING_DATE = "desired_rating_date";
+	public static final String KEA_AND_INDICATOR_COMMENT = "kea_and_indicator_comment";
+	public static final String INDICATOR_RATING_COMMENT = "indicator_rating_comment";
+	public static final String DESIRED_RATING_COMMENT = "desired_rating_comment";
+	public static final String VIABILITY_RECORD_COMMENT = "viability_record_comment";
+	public static final String THREATS = "threats";
+	public static final String THREAT = "threat";
+	public static final String THREAT_TAXONOMY_CODE = "threat_taxonomy_code";
+	public static final String THREAT_TO_PROJECT_RANK = "threat_to_project_rank";
+	public static final String OBJECTIVES = "objectives";
+	public static final String OBJECTIVE = "objective";
+	public static final String INDICATORS = "indicators";
+	public static final String INDICATOR_IDS = "indicator_id";
 //	public static final String 
 //	public static final String 
 //	public static final String 

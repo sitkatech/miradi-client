@@ -169,25 +169,25 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeObjectives(UnicodeWriter out) throws Exception
 	{
 		ORefList objectiveRefs = getProject().getObjectivePool().getRefList();
-		out.writeln("<objectives>");
+		writeStartElement(out, OBJECTIVES);
 		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
 		{
 			Objective objective = Objective.find(getProject(), objectiveRefs.get(refIndex));
-			out.writeln("<objective id='" + objective.getId().toString() + "'>");
+			out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
 			writeIndicatorIds(out, objective);
-			writeElement(out, "name", objective, Objective.TAG_LABEL);
-			writeOptionalElement(out, "comment", objective, Objective.TAG_COMMENTS);
-			out.writeln("</objective>");
+			writeElement(out, NAME, objective, Objective.TAG_LABEL);
+			writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
+			writeEndElement(out, OBJECTIVE);
 		}
 		
-		out.writeln("</objectives>");
+		writeEndElement(out, OBJECTIVES);
 	}
 
 	private void writeIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
 	{
-		out.writeln("<indicators>");
-		writeIds(out, "indicator_id", objective.getRelevantIndicatorRefList());
-		out.writeln("</indicators>");
+		writeStartElement(out, INDICATORS);
+		writeIds(out, INDICATOR_IDS, objective.getRelevantIndicatorRefList());
+		writeEndElement(out, INDICATORS);
 	}
 
 	private void writeIds(UnicodeWriter out, String elementName, ORefList refs) throws Exception
@@ -208,24 +208,24 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeThreats(UnicodeWriter out) throws Exception
 	{
 		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
-		out.writeln("<threats>");
+		writeStartElement(out, THREATS);
 		for (int index = 0; index < directThreats.length; ++index)
 		{
-			out.writeln("<threat id='" + directThreats[index].getId().toString() + "'>");
-			writeElement(out, "name", directThreats[index], Cause.TAG_LABEL);
-			writeOptionalElement(out, "threat_taxonomy_code", directThreats[index], Cause.TAG_TAXONOMY_CODE);
+			out.writeln("<" + THREAT + " " + ID + "='" + directThreats[index].getId().toString() + "'>");
+			writeElement(out, NAME, directThreats[index], Cause.TAG_LABEL);
+			writeOptionalElement(out, THREAT_TAXONOMY_CODE, directThreats[index], Cause.TAG_TAXONOMY_CODE);
 			ChoiceItem threatRatingValue = getProject().getThreatRatingFramework().getThreatThreatRatingValue(directThreats[index].getRef());
-			writeOptionalRatingCodeElement(out, "threat_to_project_rank", threatRatingValue.getCode());
-			out.writeln("</threat>");
+			writeOptionalRatingCodeElement(out, THREAT_TO_PROJECT_RANK, threatRatingValue.getCode());
+			writeEndElement(out, THREAT);
 		}
 		
-		out.writeln("</threats>");
+		writeEndElement(out, THREATS);
 	}
 
 	private void writeViability(UnicodeWriter out) throws Exception
 	{
 		Target[] targets = getProject().getTargetPool().getTargets();
-		out.writeln("<viability>");
+		writeStartElement(out, VIABILITY);
 		try
 		{
 			for (int index = 0; index < targets.length; ++index)
@@ -238,7 +238,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 		finally
 		{
-			out.writeln("</viability>");
+			writeEndElement(out, VIABILITY);
 		}
 	}
 
@@ -264,26 +264,26 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeViability(UnicodeWriter out, ORef targetRef, KeyEcologicalAttribute kea, Indicator indicator) throws Exception
 	{
-		out.writeln("<viability_assessment>");
-		writeElement(out, "target_id", targetRef.getObjectId().toString());
-		writeElement(out, "indicator_id", indicator.getId().toString());
-		writeElement(out, "kea_id", kea.getId().toString());
+		writeStartElement(out, VIABILITY_ASSESSMENT);
+		writeElement(out, TARGET_ID, targetRef.getObjectId().toString());
+		writeElement(out, INDICATOR_ID, indicator.getId().toString());
+		writeElement(out, KEA_ID, kea.getId().toString());
 		
-		writeThreshold(out, "indicator_description_poor", indicator, StatusQuestion.POOR);
-		writeThreshold(out, "indicator_description_fair", indicator, StatusQuestion.FAIR);
-		writeThreshold(out, "indicator_description_good", indicator, StatusQuestion.GOOD);
-		writeThreshold(out, "indicator_description_very_good", indicator, StatusQuestion.VERY_GOOD);
+		writeThreshold(out, INDICATOR_DESCRIPTION_POOR, indicator, StatusQuestion.POOR);
+		writeThreshold(out, INDICATOR_DESCRIPTION_FAIR, indicator, StatusQuestion.FAIR);
+		writeThreshold(out, INDICATOR_DESCRIPTION_GOOD, indicator, StatusQuestion.GOOD);
+		writeThreshold(out, INDICATOR_DESCRIPTION_VERY_GOOD, indicator, StatusQuestion.VERY_GOOD);
 		
-		writeOptionalElement(out, "current_indicator_status_viability", indicator.getCurrentStatus());
-		writeOptionalRatingCodeElement(out, "desired_viability_rating",  indicator.getFutureStatusRating());
+		writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, indicator.getCurrentStatus());
+		writeOptionalRatingCodeElement(out, DESIRED_VIABILITY_RATING,  indicator.getFutureStatusRating());
 		writeOptionalLatestMeasurementValues(out, indicator);
-		writeOptionalElement(out, "desired_rating_date",  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
-		writeOptionalElement(out, "kea_and_indicator_comment", indicator, Indicator.TAG_DETAIL);
-		writeOptionalElement(out, "indicator_rating_comment", indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
-		writeOptionalElement(out, "desired_rating_comment", indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
-		writeOptionalElement(out, "viability_record_comment", kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
+		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
+		writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		writeOptionalElement(out, DESIRED_RATING_COMMENT, indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
+		writeOptionalElement(out, VIABILITY_RECORD_COMMENT, kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
 			
-		out.writeln("</viability_assessment>");
+		writeEndElement(out, VIABILITY_ASSESSMENT);
 	}
 
 	private void writeOptionalLatestMeasurementValues(UnicodeWriter out, Indicator indicator) throws Exception
@@ -294,10 +294,10 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		Measurement measurement = Measurement.find(getProject(), measurementRef);
 		
-		writeOptionalElement(out, "current_viability_rating",  measurement, Measurement.TAG_STATUS);
-		writeOptionalElement(out, "current_rating_date",  measurement, Measurement.TAG_DATE);
-		writeOptionalElement(out, "confidence_current_rating",  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
-		writeOptionalElement(out, "current_rating_comment", measurement, Measurement.TAG_COMMENT);
+		writeOptionalElement(out, CURRENT_VIABILITY_RATING,  measurement, Measurement.TAG_STATUS);
+		writeOptionalElement(out, CURRENT_RATING_DATE,  measurement, Measurement.TAG_DATE);
+		writeOptionalElement(out, CONFIDENE_CURRENT_RATING,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+		writeOptionalElement(out, CURRENT_RATING_COMMENT, measurement, Measurement.TAG_COMMENT);
 	
 	}
 
@@ -311,16 +311,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeKeyEcologicalAttributes(UnicodeWriter out) throws Exception
 	{
 		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
-		out.writeln("<key_attributes>");
+		writeStartElement(out, KEY_ATTRIBUTES);
 		for (int index = 0; index < keas.length; ++index)
 		{
-			out.writeln("<key_attribute id='" + keas[index].getId().toString() + "'>");
-			writeElement(out, "name", keas[index], KeyEcologicalAttribute.TAG_LABEL);
-			writeElement(out, "category", keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
-			out.writeln("</key_attribute>");
+			out.writeln("<" + KEY_ATTRIBUTE + " " + ID + "='" + keas[index].getId().toString() + "'>");
+			writeElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
+			writeElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
+			writeEndElement(out, KEY_ATTRIBUTE);
 		}
 		
-		out.writeln("</key_attributes>");
+		writeEndElement(out, KEY_ATTRIBUTES);
 	}
 
 	private void writeTargets(UnicodeWriter out) throws Exception
