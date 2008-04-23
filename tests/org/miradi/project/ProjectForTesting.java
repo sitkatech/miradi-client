@@ -462,6 +462,25 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 	}
 	
+	public void populateEverything() throws Exception
+	{
+		createAndPopulateDirectThreatLink();
+		createAndPopulateIndicator();
+		createAndPopulateKea();
+		createAndPopulateMeasurement();
+		createAndPopulateProjectResource();
+		createAndPopulateStress();
+		createAndPopulateSubTarget();
+		createAndPopulateTarget();
+		createAndPopulateTask();
+		createAndPopulateThreat();
+		createAndPopulateThreatStressRating();
+		createAndPopulateObjective();
+		createAndPopulateDraftStrategy();
+		createAndPopulateStrategy();
+		createAndPopulateStrategyThreatTargetAssociation();
+	}
+	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
 	{
 		FactorLink factorLink = createAndPopulateDirectThreatLink();
