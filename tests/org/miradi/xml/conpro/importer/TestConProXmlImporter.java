@@ -36,7 +36,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testImportConProProject() throws Exception
 	{
-		getProject().populateEverything();
+		getProject().fillProjectPartially();
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
 		
 		new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
@@ -50,7 +50,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		String afterImportAsString = convertFileContentToString(afterXmlOutFile);
 		
 		//FIXME temporarly made into NotEquals so test passes for commit
-		assertNotEquals("incorrect project values after import?", beforeImportAsString, afterImportAsString);
+		assertEquals("incorrect project values after import?", beforeImportAsString, afterImportAsString);
 	}
 	
 	private String convertFileContentToString(File fileToConvert) throws Exception
@@ -63,8 +63,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	        while ((str = in.readLine()) != null) 
 	        {
 	        	stringBuffer.append(str);
-	        	stringBuffer.append("\n");
-	        	
+	        	stringBuffer.append("\n");        	
 	        }
 	    } 
 		finally
@@ -73,5 +72,14 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		}
 		
 		return stringBuffer.toString();
+	}
+	
+	public void testGenereratXPath()
+	{
+		String expectedPath = "//cp:SomeElement/cp:SomeOtherElement/text()";
+		
+		String[] pathElements = new String[]{"SomeElement", "SomeOtherElement"}; 
+		String generatedPath = new ConProXmlImporter().generateXPath(pathElements);
+		assertEquals("xpaths are not same?", expectedPath, generatedPath);
 	}
 }
