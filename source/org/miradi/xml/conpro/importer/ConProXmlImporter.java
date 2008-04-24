@@ -97,9 +97,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 		loadData(PROJECT_SUMMARY, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		String[] allEcoregionCodes = extractNodesAsList(ECOREGIONS, ECOREGION_CODE);
-		loadData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_TERRESTRIAL_PREFIX).toString());
-		loadData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_MARINE_PREFIX).toString());
-		loadData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_FRESHWATER_PREFIX).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_TERRESTRIAL_PREFIX).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_MARINE_PREFIX).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_FRESHWATER_PREFIX).toString());
 		
 		loadCodeListData(COUNTRIES, COUNTRY_CODE, metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		loadCodeListData(OUS, OU_CODE, metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
@@ -120,7 +120,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void loadCodeListData(String parentElement, String childElement, ORef objectRef, String tag) throws Exception
 	{
 		CodeList codes = new CodeList(extractNodesAsList(parentElement, childElement));
-		loadData(objectRef, tag, codes.toString());
+		setData(objectRef, tag, codes.toString());
 	}
 	
 	private void loadData(String parentElement, String childElement, ORef objectRef, String tag) throws Exception
@@ -128,10 +128,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 		String path = generateXPath(new String[] {parentElement, childElement});
 		XPathExpression expression = getXPath().compile(path);
 		String data = expression.evaluate(getDocument());
-		loadData(objectRef, tag, data);
+		setData(objectRef, tag, data);
 	}
 	
-	private void loadData(ORef ref, String tag, String data) throws Exception
+	private void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, data);
 	}
