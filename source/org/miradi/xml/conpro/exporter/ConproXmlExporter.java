@@ -21,6 +21,7 @@ package org.miradi.xml.conpro.exporter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.martus.util.MultiCalendar;
@@ -325,12 +326,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeTargets(UnicodeWriter out) throws Exception
 	{
-		ORefList targetRefs = getProject().getTargetPool().getRefList();
+		Target[] targets = getProject().getTargetPool().getTargets();
+		Arrays.sort(targets);
 		writeStartElement(out, TARGETS);
-		for (int refIndex = 0; refIndex < targetRefs.size(); ++refIndex)
+		for (int index = 0; index < targets.length; ++index)
 		{
-			Target target = Target.find(getProject(), targetRefs.get(refIndex));
-			out.write("<" + TARGET + " " + ID + "='" + target.getId().toString() + "' " + SEQUENCE + "='" + refIndex + 1 + "'>");
+			Target target = targets[index];
+			out.write("<" + TARGET + " " + ID + "='" + target.getId().toString() + "' " + SEQUENCE + "='" + index + 1 + "'>");
 			
 			writeElement(out, TARGET_NAME, target, Target.TAG_LABEL);
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
@@ -349,6 +351,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, TARGETS);
 	}
 
+	
+	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
 		writeStartElement(out, STRATEGY_THREAT_TARGET_ASSOCIATIONS);

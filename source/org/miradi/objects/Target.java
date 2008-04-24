@@ -46,7 +46,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 
-public class Target extends Factor
+public class Target extends Factor implements Comparable
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
@@ -330,6 +330,10 @@ public class Target extends Factor
 		return allCodes;
 	}
 	
+	public int compareTo(Object o)
+	{
+		return toString().compareTo(o.toString());
+	}
 	
 	public int getType()
 	{
