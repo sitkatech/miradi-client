@@ -59,10 +59,10 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testGenereratXPath()
 	{
-		String expectedPath = "//cp:SomeElement/cp:SomeOtherElement/text()";
+		String expectedPath = "/cp:SomeElement/cp:SomeOtherElement/text()";
 		
 		String[] pathElements = new String[]{"SomeElement", "SomeOtherElement"}; 
-		String generatedPath = new ConProXmlImporter().generateXPath(pathElements);
+		String generatedPath = new ConProXmlImporter().generateDataPath(pathElements);
 		assertEquals("xpaths are not same?", expectedPath, generatedPath);
 	}
 }
