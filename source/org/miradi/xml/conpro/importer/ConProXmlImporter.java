@@ -33,11 +33,13 @@ import javax.xml.xpath.XPathFactory;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
@@ -67,11 +69,18 @@ public class ConProXmlImporter implements ConProMiradiXml
 			xPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
 
 			importProjectSummaryElement(xPath, document);
+			importTargetElements(xPath, document);
 		}
 		finally
 		{
 			fileInputStream.close();
 		}
+	}
+
+	private void importTargetElements(XPath xPath, Document document) throws Exception 
+	{
+		//TODO still under development
+		extractNodesAsNewBaseObjects(xPath, document, TARGETS, TARGET);
 	}
 
 	private void importProjectSummaryElement(XPath xPath, Document document) throws Exception
@@ -132,7 +141,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		String path = "//";
 		for (int index = 0; index < pathElements.length; ++index)
 		{
-			path += PREFIX + pathElements[index];
+			path += getPrefixedElement(pathElements[index]);
 			if (index < pathElements.length);
 				path += "/";
 		}
@@ -143,7 +152,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	public String[] extractNodesAsList(XPath xPath, Document document, String parentElement, String childElement) throws Exception
 	{
-		XPathExpression expression = xPath.compile("//" + PREFIX + parentElement+ "/"+ PREFIX + childElement);
+		XPathExpression expression = xPath.compile("//" + getPrefixedElement(parentElement) + "/"+ getPrefixedElement(childElement));
 		NodeList nodeList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
 		Vector<String> nodes = new Vector();
 		for (int i = 0; i < nodeList.getLength(); i++) 
@@ -152,6 +161,28 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		return nodes.toArray(new String[0]);
+	}
+	
+	public void extractNodesAsNewBaseObjects(XPath xPath, Document document, String parentElement, String childElement) throws Exception
+	{
+		XPathExpression expression = xPath.compile("//" + getPrefixedElement(parentElement) + "/"+ getPrefixedElement(childElement));
+		NodeList nodeList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
+		for (int i = 0; i < nodeList.getLength(); i++) 
+		{
+			ORef targetRef = getProject().createObject(Target.getObjectType());
+			
+			Node node = nodeList.item(i);
+			String name = xPath.evaluate(getPrefixedElement(TARGET_NAME), node);
+			getProject().setObjectData(targetRef, Target.TAG_LABEL, name);
+			
+			String description = xPath.evaluate(getPrefixedElement(TARGET_DESCRIPTION), node);
+			getProject().setObjectData(targetRef, Target.TAG_TEXT, description);
+		}
+	}
+	
+	private String getPrefixedElement(String elementName)
+	{
+		return PREFIX + elementName;
 	}
 	
 	private Project getProject()
