@@ -19,10 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 
+import org.martus.util.UnicodeReader;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -55,23 +54,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	private String convertFileContentToString(File fileToConvert) throws Exception
 	{
-	    StringBuffer stringBuffer = new StringBuffer();
-	    BufferedReader in = new BufferedReader(new FileReader(fileToConvert));
-		try 
-		{
-	        String str;
-	        while ((str = in.readLine()) != null) 
-	        {
-	        	stringBuffer.append(str);
-	        	stringBuffer.append("\n");        	
-	        }
-	    } 
-		finally
-		{
-			in.close();
-		}
-		
-		return stringBuffer.toString();
+	    return new UnicodeReader(fileToConvert).readAll();
 	}
 	
 	public void testGenereratXPath()
