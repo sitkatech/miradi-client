@@ -35,6 +35,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
@@ -98,20 +103,22 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		String[] ecoRegionElementHierarchy = new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, ECOREGIONS, ECOREGION_CODE}; 
 		String[] allEcoregionCodes = extractNodesAsList(generatePath(ecoRegionElementHierarchy));
-		setData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_TERRESTRIAL_PREFIX).toString());
-		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_MARINE_PREFIX).toString());
-		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TNC_ECOREGION_FRESHWATER_PREFIX).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TncTerrestrialEcoRegionQuestion.class).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
+		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
 		
 		loadCodeListData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		loadCodeListData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
-	private CodeList extractEcoregions(String[] allEcoregionCodes, String ecoregionType)
+	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
 	{
+		ChoiceQuestion question = getProject().getQuestion(questionClass);
 		CodeList ecoregionCodes = new CodeList();
 		for (int i= 0; i < allEcoregionCodes.length; ++i)
 		{
-			if (allEcoregionCodes[i].startsWith(ecoregionType))
+			ChoiceItem choiceItem = question.findChoiceByCode(allEcoregionCodes[i]);
+			if (choiceItem != null)
 				ecoregionCodes.add(allEcoregionCodes[i]);
 		}
 		
@@ -223,7 +230,4 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private Document document;
 	
 	public static final String PREFIX = "cp:";
-	public static final String TNC_ECOREGION_TERRESTRIAL_PREFIX = "1";
-	public static final String TNC_ECOREGION_MARINE_PREFIX = "2";
-	public static final String TNC_ECOREGION_FRESHWATER_PREFIX = "3";
 }
