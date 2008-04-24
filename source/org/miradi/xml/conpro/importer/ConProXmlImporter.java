@@ -21,10 +21,12 @@ package org.miradi.xml.conpro.importer;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -46,6 +48,7 @@ import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 
 public class ConProXmlImporter implements ConProMiradiXml
@@ -64,14 +67,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
 				throw new Exception("Could not validate file for importing.");
 
-			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-			documentFactory.setNamespaceAware(true);
-			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-			document =  documentBuilder.parse(fileToImport);
-
-			XPathFactory xPathFactory = XPathFactory.newInstance();
-			xPath = xPathFactory.newXPath();
-			xPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
+			document = createDocument(fileToImport);
+			xPath = createXPath();
 
 			importProjectSummaryElement();
 			importTargetElements();
@@ -82,10 +79,28 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 
+	private Document createDocument(File fileToImport) throws ParserConfigurationException, SAXException, IOException
+	{
+		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+		documentFactory.setNamespaceAware(true);
+		DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+		
+		return documentBuilder.parse(fileToImport);
+	}
+
+	private XPath createXPath()
+	{
+		XPathFactory xPathFactory = XPathFactory.newInstance();
+		XPath  thisXPath = xPathFactory.newXPath();
+		thisXPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
+		
+		return thisXPath;
+	}
+
 	private void importTargetElements() throws Exception 
 	{
 		//TODO still under development
-		extractNodesAsNewBaseObjects(generateDataPath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET}));
+		extractTargets(generateDataPath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET}));
 	}
 
 	private void importProjectSummaryElement() throws Exception
@@ -183,7 +198,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return nodes.toArray(new String[0]);
 	}
 	
-	public void extractNodesAsNewBaseObjects(String path) throws Exception
+	public void extractTargets(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
