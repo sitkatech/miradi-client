@@ -91,15 +91,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importProjectSummaryElement() throws Exception
 	{
 		ORef metadataRef = getProject().getMetadata().getRef();
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, NAME}), metadataRef, ProjectMetadata.TAG_PROJECT_NAME);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, START_DATE}), metadataRef, ProjectMetadata.TAG_START_DATE);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, AREA_SIZE}), metadataRef, ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, GEOSPATIAL_LOCATION, LATITUDE}), metadataRef, ProjectMetadata.TAG_PROJECT_LATITUDE);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, GEOSPATIAL_LOCATION, LONGITUDE}), metadataRef, ProjectMetadata.TAG_PROJECT_LONGITUDE);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, DESCRIPTION_COMMENT}), metadataRef, ProjectMetadata.TAG_PROJECT_SCOPE);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, GOAL_COMMENT}), metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, PLANNING_TEAM_COMMENT}), metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
-		loadData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, LESSONS_LEARNED}), metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		Node projectSumaryNode = getNode(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY,}));
+		
+		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
+		importField(projectSumaryNode, START_DATE, metadataRef, ProjectMetadata.TAG_START_DATE);
+		importField(projectSumaryNode, AREA_SIZE, metadataRef, ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);	
+		importField(projectSumaryNode, new String[]{GEOSPATIAL_LOCATION, LATITUDE}, metadataRef, ProjectMetadata.TAG_PROJECT_LATITUDE);
+		importField(projectSumaryNode, new String[]{GEOSPATIAL_LOCATION, LONGITUDE}, metadataRef, ProjectMetadata.TAG_PROJECT_LONGITUDE);
+		importField(projectSumaryNode, DESCRIPTION_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_SCOPE);
+		importField(projectSumaryNode, GOAL_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
+		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		String[] ecoRegionElementHierarchy = new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, ECOREGIONS, ECOREGION_CODE}; 
 		String[] allEcoregionCodes = extractNodesAsList(generatePath(ecoRegionElementHierarchy));
@@ -107,8 +109,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
 		
-		loadCodeListData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
-		loadCodeListData(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		importCodeListField(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
+		importCodeListField(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
@@ -125,17 +127,22 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return ecoregionCodes;
 	}
 
-	private void loadCodeListData(String path, ORef objectRef, String tag) throws Exception
+	private void importCodeListField(String path, ORef objectRef, String tag) throws Exception
 	{
 		CodeList codes = new CodeList(extractNodesAsList(path));
 		setData(objectRef, tag, codes.toString());
 	}
-	
-	private void loadData(String path, ORef objectRef, String tag) throws Exception
+
+	private void importField(Node node, String path, ORef ref, String tag) throws Exception
 	{
-		XPathExpression expression = getXPath().compile(path);
-		String data = expression.evaluate(getDocument());
-		setData(objectRef, tag, data);
+		importField(node, new String[]{path,}, ref, tag);
+	}
+	
+	private void importField(Node node, String[] elements, ORef ref, String tag) throws Exception 
+	{
+		String generatedPath = generatePath(elements);
+		String data = getXPath().evaluate(generatedPath, node);
+		setData(ref, tag, data);
 	}
 	
 	private void setData(ORef ref, String tag, String data) throws Exception
@@ -153,7 +160,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private String generatePath(String[] pathElements)
 	{
-		String path = "/";
+		String path = "";
 		for (int index = 0; index < pathElements.length; ++index)
 		{
 			path += getPrefixedElement(pathElements[index]);
@@ -191,6 +198,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 			String description = getXPath().evaluate(getPrefixedElement(TARGET_DESCRIPTION), node);
 			getProject().setObjectData(targetRef, Target.TAG_TEXT, description);
 		}
+	}
+		
+	private Node getNode(String path) throws Exception
+	{
+		XPathExpression expression = getXPath().compile(path);
+		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
 	}
 	
 	private String getPrefixedElement(String elementName)
