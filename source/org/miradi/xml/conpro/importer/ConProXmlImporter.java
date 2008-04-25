@@ -219,7 +219,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node targetNode = targetNodeList.item(i);
 			String targetId = getAttributeValue(targetNode, ID);
-			ORef targetRef = getProject().createObject(Target.getObjectType(), getHighestId(targetId));
+			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
 			
 			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
@@ -234,15 +234,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		NamedNodeMap attributes = elementNode.getAttributes();
 		Node attributeNode = attributes.getNamedItem(attributeName);
 		return attributeNode.getNodeValue();
-	}
-	
-	public BaseId getHighestId(String currentIdAsString)
-	{
-		int currentId = Integer.parseInt(currentIdAsString);
-		int nextHighestProjectId = getProject().getNodeIdAssigner().getHighestAssignedId() + 1;
-		int highestId = Math.max(currentId, nextHighestProjectId);
-		
-		return new BaseId(highestId);
 	}
 		
 	private Node getNode(String path) throws Exception
