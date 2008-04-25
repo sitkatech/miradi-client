@@ -865,15 +865,15 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String rankingCodeToXmlValue(String code)
 	{
-		return getXmlCode(rankingMap, code);
+		return getSafeXmlCode(rankingMap, code);
 	}
 	
 	private String statusCodeToXmlValue(String code)
 	{
-		return getXmlCode(progressStatusMap, code);
+		return getSafeXmlCode(progressStatusMap, code);
 	}
 	
-	private String getXmlCode(HashMap<String, String> map, String code)
+	public static String getSafeXmlCode(HashMap<String, String> map, String code)
 	{
 		String value = map.get(code);
 		if (value == null)

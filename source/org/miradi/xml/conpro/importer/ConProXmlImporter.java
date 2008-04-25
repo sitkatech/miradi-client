@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.importer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -46,6 +47,7 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
+import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -166,6 +168,19 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(ref, tag, data);
 	}
 	
+	private void importCodeField(Node node, String element, ORef ref, String tag, HashMap<String, String> map) throws Exception
+	{
+		importCodeField(node, new String[]{element}, ref, tag, map);
+	}
+	
+	private void importCodeField(Node node, String[] elements, ORef ref, String tag, HashMap<String, String> map) throws Exception
+	{
+		String generatedPath = generatePath(elements);
+		String rawCode = getXPath().evaluate(generatedPath, node);
+		String safeCode = ConproXmlExporter.getSafeXmlCode(map, rawCode);
+		setData(ref, tag, safeCode);
+	}
+	
 	private void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, data);
@@ -208,8 +223,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
 			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
-			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			importField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS);
+			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, ConproXmlExporter.getReversedRankingMap());
 		}
 	}
 	
