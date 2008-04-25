@@ -21,6 +21,7 @@ package org.miradi.xml.conpro.exporter;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.HashMap;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
@@ -51,5 +52,21 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(tempXmlOutFile);
 		}
+	}
+	
+	public void testReverseMap()
+	{
+		String VALUE_1 = "value1";
+		String KEY_1 = "key1";		
+		String VALUE_2 = "value2";
+		String KEY_2 = "key2";
+		
+		HashMap map = new HashMap<String, String>();
+		map.put(KEY_1, VALUE_1);
+		map.put(KEY_2, VALUE_2);
+		
+		HashMap<String, String> reversedMap = ConproXmlExporter.reverseMap(map);
+		assertEquals("wrong value?", KEY_1, reversedMap.get(VALUE_1));
+		assertEquals("wrong value?", KEY_2, reversedMap.get(VALUE_2));
 	}
 }
