@@ -23,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -59,7 +58,6 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -67,6 +65,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 import org.miradi.utils.DateRange;
 import org.miradi.xml.XmlExporter;
+import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
@@ -75,7 +74,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		super(project);
 		
-		createMiradiToConproCodeMaps();
+		codeMapHelper = new ConProMiradiCodeMapHelper();
 	}
 
 	@Override
@@ -865,52 +864,19 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String rankingCodeToXmlValue(String code)
 	{
-		return getSafeXmlCode(rankingMap, code);
+		HashMap<String, String> rankingMap = getCodeMapHelper().getRankingMap();
+		return getCodeMapHelper().getSafeXmlCode(rankingMap, code);
 	}
 	
 	private String statusCodeToXmlValue(String code)
 	{
-		return getSafeXmlCode(progressStatusMap, code);
+		HashMap<String, String> progressStatuMap = getCodeMapHelper().getProgressStatuMap();
+		return getCodeMapHelper().getSafeXmlCode(progressStatuMap, code);
 	}
 	
-	public static String getSafeXmlCode(HashMap<String, String> map, String code)
+	private ConProMiradiCodeMapHelper getCodeMapHelper()
 	{
-		String value = map.get(code);
-		if (value == null)
-			return "";
-		
-		return value.toString();
-	}
-	
-	public static HashMap<String, String> getReversedRankingMap()
-	{
-		return reverseMap(rankingMap);
-	}
-	
-	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
-	{
-		HashMap reversedMap = new HashMap<String, String>();
-		Set<String> keys = map.keySet();
-		for(String key : keys)
-		{
-			String value = map.get(key);
-			reversedMap.put(value, key);
-		}
-		
-		return reversedMap;
-	}
-	
-	private void createMiradiToConproCodeMaps()
-	{
-		progressStatusMap = new HashMap<String, String>();
-		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
-		
-		rankingMap = new HashMap<String, String>();
-		rankingMap.put("1", "Poor");
-		rankingMap.put("2", "Fair"); 
-		rankingMap.put("3", "Good");
-		rankingMap.put("4", "Very Good"); 
+		return codeMapHelper;
 	}
 	
 	public static void main(String[] commandLineArguments) throws Exception
@@ -926,10 +892,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			newProject.close();
 		}
-	}
+	}	
 	
-	private static HashMap<String, String> progressStatusMap;
-	private static HashMap<String, String> rankingMap;
-	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
-	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
+	private ConProMiradiCodeMapHelper codeMapHelper;
 }
