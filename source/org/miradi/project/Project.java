@@ -473,7 +473,7 @@ public class Project
 	
 	public BaseId createObjectAndReturnId(int objectType) throws Exception
 	{
-		return createObjectAndReturnId(objectType, BaseId.INVALID);
+		return createObject(objectType, BaseId.INVALID).getObjectId();
 	}
 	
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
