@@ -59,7 +59,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importConProProject(fileToImport);
 	}
 
-	public void importConProProject(File fileToImport) throws Exception
+	private void importConProProject(File fileToImport) throws Exception
 	{
 		FileInputStream fileInputStream = new FileInputStream(fileToImport);
 		try
@@ -245,7 +245,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		try
 		{
-			new ConProXmlImporter().importConProProject(new File("c:/temp/Conpro.xml"));
+			Project project = new Project();
+			project.createOrOpen(new File("c:/temp/devMiradiProject/"));
+			new ConProXmlImporter().populateProjectFromFile(new File("c:/temp/Conpro.xml"), project);
+			System.out.println("finished importing");
 		}
 		catch(Exception e)
 		{
