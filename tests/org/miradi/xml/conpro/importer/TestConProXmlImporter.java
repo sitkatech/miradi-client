@@ -71,15 +71,15 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testHighestId() throws Exception
 	{
-		int highestIdBeforeCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
-		ORef newTargetRef = getProject().createObject(Target.getObjectType(), new BaseId(3));
-		assertEquals("wrong id?", "3", newTargetRef.getObjectId().toString());
-		
-		int highestIdAfterCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
-		assertEquals("wrong highest id?", highestIdBeforeCreate, highestIdAfterCreate);
-		
 		getProject().createObject(Target.getObjectType(), new BaseId(400));
 		int highestIdAfterCreate2 = getProject().getNodeIdAssigner().getHighestAssignedId();
-		assertEquals("wrong highest id?", 400, highestIdAfterCreate2);
+		assertEquals("wrong highest greater than current highest id?", 400, highestIdAfterCreate2);
+		
+		int highestIdBeforeCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
+		ORef newTargetRef = getProject().createObject(Target.getObjectType(), new BaseId(20));
+		assertEquals("wrong id?", "20", newTargetRef.getObjectId().toString());
+
+		int highestIdAfterCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
+		assertEquals("wrong id less than current highest id?", highestIdBeforeCreate, highestIdAfterCreate);
 	}
 }
