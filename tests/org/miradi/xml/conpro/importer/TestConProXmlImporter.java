@@ -24,6 +24,7 @@ import java.io.File;
 import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -67,9 +68,11 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		assertEquals("xpaths are not same?", expectedPath, generatedPath);
 	}
 	
-	public void testGetHighestId()
+	public void testHighestId() throws Exception
 	{
-		BaseId highestId = new ConProXmlImporter(getProject()).getHighestId(Integer.toString(Integer.MAX_VALUE));
-		assertEquals("wrong highest id?", new BaseId(Integer.MAX_VALUE), highestId);
+		int highestIdBeforeCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
+		getProject().createObject(Target.getObjectType(), new BaseId(3));
+		int highestIdAfterCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
+		assertEquals("wrong highest id?", highestIdBeforeCreate, highestIdAfterCreate);
 	}
 }
