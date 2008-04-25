@@ -53,9 +53,13 @@ import org.xml.sax.SAXException;
 
 public class ConProXmlImporter implements ConProMiradiXml
 {
-	public void populateProjectFromFile(File fileToImport, Project projectToFill) throws Exception
+	public ConProXmlImporter(Project projectToFill)
 	{
-		project = projectToFill;
+		project = projectToFill;	
+	}
+	
+	public void populateProjectFromFile(File fileToImport) throws Exception
+	{
 		importConProProject(fileToImport);
 	}
 
@@ -214,6 +218,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 			getProject().setObjectData(targetRef, Target.TAG_TEXT, description);
 		}
 	}
+	
+	public int getHighestId(int currentId)
+	{
+		int projectHighestId = getProject().getNodeIdAssigner().getHighestAssignedId();
+		return Math.max(currentId, projectHighestId);
+	}
 		
 	private Node getNode(String path) throws Exception
 	{
@@ -247,7 +257,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Project project = new Project();
 			project.createOrOpen(new File("c:/temp/devMiradiProject/"));
-			new ConProXmlImporter().populateProjectFromFile(new File("c:/temp/Conpro.xml"), project);
+			new ConProXmlImporter(project).populateProjectFromFile(new File("c:/temp/Conpro.xml"));
 			System.out.println("finished importing");
 		}
 		catch(Exception e)

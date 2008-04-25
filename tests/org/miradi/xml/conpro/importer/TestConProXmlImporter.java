@@ -42,7 +42,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		String beforeImportAsString = convertFileContentToString(beforeXmlOutFile);
 		
 		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
-		new ConProXmlImporter().populateProjectFromFile(beforeXmlOutFile, projectToFill);
+		new ConProXmlImporter(projectToFill).populateProjectFromFile(beforeXmlOutFile);
 		
 		File afterXmlOutFile = createTempFileFromName("conproAfterImport.xml");
 		new ConproXmlExporter(projectToFill).export(afterXmlOutFile);
@@ -62,7 +62,13 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		String expectedPath = "cp:SomeElement/cp:SomeOtherElement/text()";
 		
 		String[] pathElements = new String[]{"SomeElement", "SomeOtherElement"}; 
-		String generatedPath = new ConProXmlImporter().generateDataPath(pathElements);
+		String generatedPath = new ConProXmlImporter(getProject()).generateDataPath(pathElements);
 		assertEquals("xpaths are not same?", expectedPath, generatedPath);
+	}
+	
+	public void testGetHighestId()
+	{
+		int highestId = new ConProXmlImporter(getProject()).getHighestId(Integer.MAX_VALUE);
+		assertEquals("wrong highest id?", Integer.MAX_VALUE, highestId);
 	}
 }
