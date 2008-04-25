@@ -882,7 +882,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return value.toString();
 	}
 	
-	public static HashMap<String, String> getRankingMap()
+	public static HashMap<String, String> getReversedRankingMap()
 	{
 		return reverseMap(rankingMap);
 	}
