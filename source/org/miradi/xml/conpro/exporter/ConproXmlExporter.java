@@ -42,6 +42,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
@@ -57,6 +58,7 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -71,6 +73,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	public ConproXmlExporter(Project project)
 	{
 		super(project);
+		
+		createMiradiToConproCodeMaps();
 	}
 
 	@Override
@@ -104,9 +108,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
 			writeOptionalMethods(out, indicator.getMethodRefs());
 			writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-			//FIXME from what question to pull values from
-			//writeElement(out, STATUS, indicator, Indicator.TAG_STATUS);
-
+			writeOptionalProgressReportStatus(out, indicator);
 			writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
 			writeOptionalElement(out, ANNUAL_COST, Double.toString(indicator.getProportionalBudgetCost())); 
 			writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
@@ -115,6 +117,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 		
 		writeEndElement(out, INDICATORS);
+	}
+
+	private void writeOptionalProgressReportStatus(UnicodeWriter out, Indicator indicator) throws Exception
+	{
+		ProgressReport latestProgressReport = indicator.getLatestProgressReport();
+		if (latestProgressReport == null)
+			return;
+		
+		String progressStatusCode = latestProgressReport.getData(ProgressReport.TAG_PROGRESS_STATUS);
+		writeOptionalElement(out, STATUS, statusCodeToXmlValue(progressStatusCode));
 	}
 
 	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
@@ -866,6 +878,22 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return "";
 	}
 	
+	private String statusCodeToXmlValue(String code)
+	{
+		String value = progressStatusMap.get(code);
+		if (value == null)
+			return "";
+		
+		return value.toString();
+	}
+	
+	private void createMiradiToConproCodeMaps()
+	{
+		progressStatusMap = new HashMap<String, String>();
+		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
+		progressStatusMap.put(ProgressReportStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
+	}
+	
 	public static void main(String[] commandLineArguments) throws Exception
 	{	
 		Project newProject = getOpenedProject(commandLineArguments);
@@ -880,4 +908,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			newProject.close();
 		}
 	}
+	
+	private HashMap<String, String> progressStatusMap;
+	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
+	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
 }
