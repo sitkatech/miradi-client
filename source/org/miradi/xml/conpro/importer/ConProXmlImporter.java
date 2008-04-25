@@ -32,6 +32,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
@@ -46,6 +47,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -104,7 +106,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importTargetElements() throws Exception 
 	{
 		//TODO still under development
-		extractTargets(generateDataPath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET}));
+		importTargets(generatePath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET}));
 	}
 
 	private void importProjectSummaryElement() throws Exception
@@ -128,8 +130,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
 		
-		importCodeListField(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
-		importCodeListField(generateDataPath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
+		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
@@ -168,16 +170,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		getProject().setObjectData(ref, tag, data);
 	}
-	
-	public String generateDataPath(String[] pathElements)
-	{
-		String path = generatePath(pathElements);
-		path += "/text()";
-		
-		return path;
-	}
 
-	private String generatePath(String[] pathElements)
+	public String generatePath(String[] pathElements)
 	{
 		String path = "";
 		for (int index = 0; index < pathElements.length; ++index)
@@ -202,21 +196,28 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return nodes.toArray(new String[0]);
 	}
 	
-	public void extractTargets(String path) throws Exception
+	public void importTargets(String path) throws Exception
 	{
-		XPathExpression expression = getXPath().compile(path);
-		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
-		for (int i = 0; i < nodeList.getLength(); i++) 
+		NodeList targetNodeList = getNodes(path);
+		for (int i = 0; i < targetNodeList.getLength(); i++) 
 		{
-			ORef targetRef = getProject().createObject(Target.getObjectType());
+			Node targetNode = targetNodeList.item(i);
+			String targetId = getAttributeValue(targetNode, ID);
+			ORef targetRef = getProject().createObjectAndReturnRef(Target.getObjectType(), new BaseId(targetId));
 			
-			Node node = nodeList.item(i);
-			String name = getXPath().evaluate(getPrefixedElement(TARGET_NAME), node);
+			String name = getXPath().evaluate(getPrefixedElement(TARGET_NAME), targetNode);
 			getProject().setObjectData(targetRef, Target.TAG_LABEL, name);
 			
-			String description = getXPath().evaluate(getPrefixedElement(TARGET_DESCRIPTION), node);
+			String description = getXPath().evaluate(getPrefixedElement(TARGET_DESCRIPTION), targetNode);
 			getProject().setObjectData(targetRef, Target.TAG_TEXT, description);
 		}
+	}
+
+	private String getAttributeValue(Node elementNode, String attributeName)
+	{
+		NamedNodeMap attributes = elementNode.getAttributes();
+		Node attributeNode = attributes.getNamedItem(attributeName);
+		return attributeNode.getNodeValue();
 	}
 	
 	public int getHighestId(int currentId)
@@ -229,6 +230,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
+	}
+	
+	private NodeList getNodes(String path) throws Exception
+	{
+		XPathExpression expression = getXPath().compile(path);
+		return (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
 	}
 	
 	private String getPrefixedElement(String elementName)
