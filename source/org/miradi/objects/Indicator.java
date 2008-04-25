@@ -145,7 +145,7 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	protected ProgressReport getLatestProgressReport()
+	public ProgressReport getLatestProgressReport()
 	{
 		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
 		return progressReport;
