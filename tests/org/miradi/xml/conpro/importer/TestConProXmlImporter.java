@@ -24,6 +24,7 @@ import java.io.File;
 import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -71,8 +72,14 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	public void testHighestId() throws Exception
 	{
 		int highestIdBeforeCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
-		getProject().createObject(Target.getObjectType(), new BaseId(3));
+		ORef newTargetRef = getProject().createObject(Target.getObjectType(), new BaseId(3));
+		assertEquals("wrong id?", "3", newTargetRef.getObjectId().toString());
+		
 		int highestIdAfterCreate = getProject().getNodeIdAssigner().getHighestAssignedId();
 		assertEquals("wrong highest id?", highestIdBeforeCreate, highestIdAfterCreate);
+		
+		getProject().createObject(Target.getObjectType(), new BaseId(400));
+		int highestIdAfterCreate2 = getProject().getNodeIdAssigner().getHighestAssignedId();
+		assertEquals("wrong highest id?", 400, highestIdAfterCreate2);
 	}
 }
