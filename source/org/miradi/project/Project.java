@@ -476,7 +476,6 @@ public class Project
 		return createObjectAndReturnId(objectType, BaseId.INVALID);
 	}
 	
-	//TODO rename to createObjectAndReturnId and rename above method to createObject instead of createObjectAndReturnRef
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
 	{
 		return createObject(objectType, objectId, null);
