@@ -32,6 +32,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -103,10 +104,30 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
 			writeOptionalMethods(out, indicator.getMethodRefs());
 			writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
+			//FIXME from what question to pull values from
+			//writeElement(out, STATUS, indicator, Indicator.TAG_STATUS);
+
+			writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
+			writeOptionalElement(out, ANNUAL_COST, Double.toString(indicator.getProportionalBudgetCost())); 
+			writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
+	
 			writeEndElement(out, INDICATOR);
 		}
 		
 		writeEndElement(out, INDICATORS);
+	}
+
+	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
+	{
+		String allResourceNames = "";
+		ORefSet resourceRefs = indicator.getAllResources(indicator.getMethodRefs());
+		for(ORef resourceRef : resourceRefs)
+		{
+			ProjectResource resource = ProjectResource.find(getProject(), resourceRef);
+			allResourceNames += resource.getFullName() + "; ";
+		}
+		
+		return allResourceNames;
 	}
 
 	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception

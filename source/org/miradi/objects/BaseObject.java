@@ -413,7 +413,11 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-
+	
+	public double getProportionalBudgetCost() throws Exception
+	{
+		return getProportionalBudgetCost(null);
+	}
 
 	public double getProportionalBudgetCost(DateRange dateRange) throws Exception
 	{
@@ -478,7 +482,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return formatCurrency(getProportionalBudgetCost(null));
+			return formatCurrency(getProportionalBudgetCost());
 		}
 		catch (Exception e)
 		{

@@ -143,4 +143,7 @@ public interface ConProMiradiXml
 	public static final String ACTIVITY_END_DATE = "end_date";
 	public static final String PRIORITY = "priority";
 	public static final String METHODS = "methods";
+	public static final String STATUS = "status";
+	public static final String WHO_MONITORS = "who_monitors";
+	public static final String ANNUAL_COST = "annual_cost";  
 }
