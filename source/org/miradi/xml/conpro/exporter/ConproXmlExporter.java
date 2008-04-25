@@ -864,24 +864,17 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String rankingCodeToXmlValue(String code)
 	{
-		if (code.equals("1"))
-			return "Poor";
-		
-		if (code.equals("2"))
-			return "Fair";
-		
-		if (code.equals("3"))
-			return "Good";
-		
-		if (code.equals("4"))
-			return "Very Good";
-		
-		return "";
+		return getXmlCode(rankingMap, code);
 	}
 	
 	private String statusCodeToXmlValue(String code)
 	{
-		String value = progressStatusMap.get(code);
+		return getXmlCode(progressStatusMap, code);
+	}
+	
+	private String getXmlCode(HashMap<String, String> map, String code)
+	{
+		String value = map.get(code);
 		if (value == null)
 			return "";
 		
@@ -893,6 +886,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		progressStatusMap = new HashMap<String, String>();
 		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
+		
+		rankingMap = new HashMap<String, String>();
+		rankingMap.put("1", "Poor");
+		rankingMap.put("2", "Fair"); 
+		rankingMap.put("3", "Good");
+		rankingMap.put("4", "Very Good"); 
 	}
 	
 	public static void main(String[] commandLineArguments) throws Exception
@@ -911,6 +910,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	}
 	
 	private HashMap<String, String> progressStatusMap;
+	private HashMap<String, String> rankingMap;
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
 }
