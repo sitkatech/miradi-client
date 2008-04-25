@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -881,6 +882,24 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return value.toString();
 	}
 	
+	public static HashMap<String, String> getRankingMap()
+	{
+		return reverseMap(rankingMap);
+	}
+	
+	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
+	{
+		HashMap reversedMap = new HashMap<String, String>();
+		Set<String> keys = map.keySet();
+		for(String key : keys)
+		{
+			String value = map.get(key);
+			reversedMap.put(value, key);
+		}
+		
+		return reversedMap;
+	}
+	
 	private void createMiradiToConproCodeMaps()
 	{
 		progressStatusMap = new HashMap<String, String>();
@@ -909,8 +928,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 	}
 	
-	private HashMap<String, String> progressStatusMap;
-	private HashMap<String, String> rankingMap;
+	private static HashMap<String, String> progressStatusMap;
+	private static HashMap<String, String> rankingMap;
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
 }
