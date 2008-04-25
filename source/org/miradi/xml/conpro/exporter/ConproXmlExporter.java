@@ -372,7 +372,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
 			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENT);
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeOptionalRankingCodeElement(out, TARGET_VIABILITY_RANK, target.getBasicTargetStatus());
+			writeOptionalRankingCodeElement(out, TARGET_VIABILITY_RANK, target, Target.TAG_TARGET_STATUS);
 			writeHabitatMappedCodes(out, target);
 			writeStresses(out, target);
 			writeThreatStressRatings(out, target);
@@ -778,8 +778,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		//NOTE: we never write the optional error message
 	}
 	
-	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
+	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
+		String code = object.getData(tag);
 		writeOptionalElement(out, elementName, rankingCodeToXmlValue(code));
 	}
 	
