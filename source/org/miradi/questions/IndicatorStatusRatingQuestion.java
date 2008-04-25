@@ -33,11 +33,15 @@ public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem("1", "Not Started", COLOR_ALERT),
-			new ChoiceItem("2", "Problems Implementing", COLOR_CAUTION),
-			new ChoiceItem("3", "Going Well", COLOR_OK),
-			new ChoiceItem("4", "Fully on Schedule", COLOR_GREAT),
+			new ChoiceItem(NOT_STARTED_CODE, "Not Started", COLOR_ALERT),
+			new ChoiceItem(PROBLEMS_IMPLEMENTING_CODE, "Problems Implementing", COLOR_CAUTION),
+			new ChoiceItem(GOING_WELL_CODE, "Going Well", COLOR_OK),
+			new ChoiceItem(FULLY_ON_SCHEDULE_CODE, "Fully on Schedule", COLOR_GREAT),
 		};
 	}
-
+	
+	public static final String NOT_STARTED_CODE = "1";
+	public static final String PROBLEMS_IMPLEMENTING_CODE = "2";
+	public static final String GOING_WELL_CODE = "3";
+	public static final String FULLY_ON_SCHEDULE_CODE = "4";
 }
