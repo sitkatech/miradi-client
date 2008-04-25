@@ -203,16 +203,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node targetNode = targetNodeList.item(i);
 			String targetId = getAttributeValue(targetNode, ID);
-			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
+			ORef targetRef = getProject().createObject(Target.getObjectType(), getHighestId(targetId));
 			
-			String name = getXPath().evaluate(getPrefixedElement(TARGET_NAME), targetNode);
-			getProject().setObjectData(targetRef, Target.TAG_LABEL, name);
-			
-			String description = getXPath().evaluate(getPrefixedElement(TARGET_DESCRIPTION), targetNode);
-			getProject().setObjectData(targetRef, Target.TAG_TEXT, description);
+			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
+			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
+			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
+			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			importField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS);
 		}
 	}
-
+	
 	private String getAttributeValue(Node elementNode, String attributeName)
 	{
 		NamedNodeMap attributes = elementNode.getAttributes();
@@ -220,10 +220,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return attributeNode.getNodeValue();
 	}
 	
-	public int getHighestId(int currentId)
+	public BaseId getHighestId(String currentIdAsString)
 	{
-		int projectHighestId = getProject().getNodeIdAssigner().getHighestAssignedId();
-		return Math.max(currentId, projectHighestId);
+		int currentId = Integer.parseInt(currentIdAsString);
+		int nextHighestProjectId = getProject().getNodeIdAssigner().getHighestAssignedId() + 1;
+		int highestId = Math.max(currentId, nextHighestProjectId);
+		
+		return new BaseId(highestId);
 	}
 		
 	private Node getNode(String path) throws Exception

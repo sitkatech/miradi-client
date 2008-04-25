@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.importer;
 import java.io.File;
 
 import org.martus.util.UnicodeReader;
+import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -68,7 +69,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testGetHighestId()
 	{
-		int highestId = new ConProXmlImporter(getProject()).getHighestId(Integer.MAX_VALUE);
-		assertEquals("wrong highest id?", Integer.MAX_VALUE, highestId);
+		BaseId highestId = new ConProXmlImporter(getProject()).getHighestId(Integer.toString(Integer.MAX_VALUE));
+		assertEquals("wrong highest id?", new BaseId(Integer.MAX_VALUE), highestId);
 	}
 }
