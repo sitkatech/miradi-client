@@ -465,11 +465,18 @@ public class Project
 		return new ORef(objectType, createdId);
 	}
 	
+	public ORef createObjectAndReturnRef(int objectType, BaseId objectId) throws Exception
+	{
+		BaseId createdId = createObject(objectType, objectId);
+		return new ORef(objectType, createdId);
+	}
+	
 	public BaseId createObjectAndReturnId(int objectType) throws Exception
 	{
 		return createObject(objectType, BaseId.INVALID);
 	}
 	
+	//TODO rename to createObjectAndReturnId and rename above method to createObject instead of createObjectAndReturnRef
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		return createObject(objectType, objectId, null);
