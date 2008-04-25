@@ -203,7 +203,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node targetNode = targetNodeList.item(i);
 			String targetId = getAttributeValue(targetNode, ID);
-			ORef targetRef = getProject().createObjectAndReturnRef(Target.getObjectType(), new BaseId(targetId));
+			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
 			
 			String name = getXPath().evaluate(getPrefixedElement(TARGET_NAME), targetNode);
 			getProject().setObjectData(targetRef, Target.TAG_LABEL, name);

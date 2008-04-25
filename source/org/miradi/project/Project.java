@@ -465,7 +465,7 @@ public class Project
 		return new ORef(objectType, createdId);
 	}
 	
-	public ORef createObjectAndReturnRef(int objectType, BaseId objectId) throws Exception
+	public ORef createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = createObjectAndReturnId(objectType, objectId);
 		return new ORef(objectType, createdId);
