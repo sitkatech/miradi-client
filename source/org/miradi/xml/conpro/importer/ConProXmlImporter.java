@@ -45,9 +45,9 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
-import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -59,7 +59,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 {
 	public ConProXmlImporter(Project projectToFill)
 	{
-		project = projectToFill;	
+		project = projectToFill;
+		codeMapHelper = new ConProMiradiCodeMapHelper();
 	}
 	
 	public void populateProjectFromFile(File fileToImport) throws Exception
@@ -177,7 +178,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		String generatedPath = generatePath(elements);
 		String rawCode = getXPath().evaluate(generatedPath, node);
-		String safeCode = ConproXmlExporter.getSafeXmlCode(map, rawCode);
+		String safeCode = getCodeMapHelper().getSafeXmlCode(map, rawCode);
 		setData(ref, tag, safeCode);
 	}
 	
@@ -224,7 +225,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
 			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, ConproXmlExporter.getReversedRankingMap());
+			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getReversedRankingMap());
 		}
 	}
 	
@@ -276,6 +277,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return xPath;
 	}
 	
+	private ConProMiradiCodeMapHelper getCodeMapHelper()
+	{
+		return codeMapHelper;
+	}
+		
 	public static void main(String[] args)
 	{
 		try
@@ -294,6 +300,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private Project project;
 	private XPath xPath;
 	private Document document;
+	private ConProMiradiCodeMapHelper codeMapHelper;
 	
 	public static final String PREFIX = "cp:";
 }
