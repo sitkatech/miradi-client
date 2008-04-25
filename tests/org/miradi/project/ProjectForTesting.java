@@ -48,6 +48,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -402,6 +403,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
+		fillObjectUsingCommand(indicator, Indicator.TAG_STATUS, IndicatorStatusRatingQuestion.GOING_WELL_CODE);
 		
 		Task task = createAndPopulateTask();
 		IdList taskIds = new IdList(Task.getObjectType());
