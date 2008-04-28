@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ConceptualModelDiagram extends DiagramObject
@@ -61,6 +62,16 @@ public class ConceptualModelDiagram extends DiagramObject
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
+	}
+	
+	public static ConceptualModelDiagram find(ObjectManager objectManager, ORef conceptualModelRef)
+	{
+		return (ConceptualModelDiagram) objectManager.findObject(conceptualModelRef);
+	}
+	
+	public static ConceptualModelDiagram find(Project project, ORef conceptualModelRef)
+	{
+		return find(project.getObjectManager(), conceptualModelRef);
 	}
 	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
