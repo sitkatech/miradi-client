@@ -182,6 +182,23 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(ref, tag, safeCode);
 	}
 	
+	private void importCodeListField(Node node, String parentElement, String childElement, ORef ref, String tag, HashMap<String, String> conProToMiradiCodeMap) throws Exception
+	{
+		CodeList codes = new CodeList();
+		String generatedPath = generatePath(new String[]{parentElement, childElement});
+		NodeList nodes = (NodeList) getXPath().evaluate(generatedPath, node, XPathConstants.NODESET);
+		for (int nodeIndex = 0; nodeIndex < nodes.getLength(); ++nodeIndex)
+		{
+			Node thisNode = nodes.item(nodeIndex);
+			String conProCode = thisNode.getTextContent();
+			String miradiCode = conProToMiradiCodeMap.get(conProCode);
+			if (miradiCode != null)
+				codes.add(miradiCode);
+		}
+		
+		setData(ref, tag, codes.toString());
+	}
+	
 	private void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, data);
@@ -226,6 +243,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
+			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 		}
 	}
 	
