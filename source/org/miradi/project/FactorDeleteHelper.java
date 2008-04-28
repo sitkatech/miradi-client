@@ -49,9 +49,14 @@ public class FactorDeleteHelper
 {
 	public FactorDeleteHelper(DiagramModel modelToUse)
 	{
-		currentModel = modelToUse;
+		diagramObject = modelToUse.getDiagramObject();
 	}
-	
+
+	public FactorDeleteHelper(DiagramObject diagramObjectToUse)
+	{
+		diagramObject = diagramObjectToUse;
+	}
+
 	public void deleteFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
@@ -126,9 +131,9 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramObject diagramObject, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
+	private void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
 	{
-		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);
 	}
 
@@ -194,13 +199,13 @@ public class FactorDeleteHelper
 	
 	private DiagramObject getDiagramObject()
 	{
-		return currentModel.getDiagramObject();
+		return diagramObject;
 	}
 	
 	private Project getProject()
 	{
-		return currentModel.getProject();
+		return diagramObject.getProject();
 	}
 	
-	DiagramModel currentModel;
+	private DiagramObject diagramObject;
 }

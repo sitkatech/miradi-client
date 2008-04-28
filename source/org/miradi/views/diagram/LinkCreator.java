@@ -130,13 +130,13 @@ public class LinkCreator
 		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramModel model, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	public FactorLinkId createFactorLinkAndAddToDiagramUsingCommands(DiagramModel diagramModel, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
-		DiagramObject diagramObject = model.getDiagramObject();
+		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		return (FactorLinkId) createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo).getObjectId();
 	}
 	
-	private ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		Factor fromFactor = Factor.findFactor(getProject(), diagramFactorFrom.getWrappedORef());
 		Factor toFactor = Factor.findFactor(getProject(), diagramFactorTo.getWrappedORef());

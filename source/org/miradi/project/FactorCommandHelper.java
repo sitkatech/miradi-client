@@ -42,7 +42,13 @@ public class FactorCommandHelper
 	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
-		currentModel = modelToUse;
+		diagramObject = modelToUse.getDiagramObject();
+	}
+	
+	public FactorCommandHelper(Project projectToUse, DiagramObject diagramObjectToUse)
+	{
+		project = projectToUse;
+		diagramObject = diagramObjectToUse;
 	}
 	
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType, Point insertionLocation, Dimension size, String label) throws Exception
@@ -58,17 +64,17 @@ public class FactorCommandHelper
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
 		FactorId factorId = createFactor(objectType);
-		return createDiagramFactor(currentModel.getDiagramObject(), objectType, factorId);
+		return createDiagramFactor(diagramObject, objectType, factorId);
 	}
 	
-	public CommandCreateObject createDiagramFactor(DiagramObject diagramObject, int objectType, FactorId factorId) throws Exception
+	public CommandCreateObject createDiagramFactor(DiagramObject diagramObjectToUse, int objectType, FactorId factorId) throws Exception
 	{
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(objectType, factorId));
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactor);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
+		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
 		
 		Factor factor = project.findNode(factorId);
@@ -129,6 +135,6 @@ public class FactorCommandHelper
 		getProject().executeCommand(cmd);
 	}
 			
-	Project project;
-	DiagramModel currentModel;
+	private Project project;
+	private DiagramObject diagramObject;	
 }
