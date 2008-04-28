@@ -23,15 +23,16 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
 public class ConProMiradiCodeMapHelper
 {
-	public ConProMiradiCodeMapHelper()
+	public ConProMiradiCodeMapHelper() throws Exception
 	{
 		createMiradiToConproCodeMaps();
 	}
 	
-	private void createMiradiToConproCodeMaps()
+	private void createMiradiToConproCodeMaps() throws Exception
 	{
 		progressStatusMap = new HashMap<String, String>();
 		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
@@ -42,6 +43,8 @@ public class ConProMiradiCodeMapHelper
 		rankingMap.put("2", "Fair"); 
 		rankingMap.put("3", "Good");
 		rankingMap.put("4", "Very Good"); 
+	
+		habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -56,6 +59,11 @@ public class ConProMiradiCodeMapHelper
 	public HashMap<String, String> getConProToMiradiRankingMap()
 	{
 		return reverseMap(rankingMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiHabitiatCodeMap()
+	{
+		return reverseMap(habitatCodeMap);
 	}
 	
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
@@ -81,8 +89,15 @@ public class ConProMiradiCodeMapHelper
 		return rankingMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProHabitatCodeMap()
+	{
+		return habitatCodeMap;
+	}
+	
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
+	private HashMap<String, String> habitatCodeMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";

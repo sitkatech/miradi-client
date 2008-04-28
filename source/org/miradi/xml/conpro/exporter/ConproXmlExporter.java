@@ -62,7 +62,6 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ConproMiradiHabitatCodeMap;
 import org.miradi.utils.DateRange;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
@@ -70,7 +69,7 @@ import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 {
-	public ConproXmlExporter(Project project)
+	public ConproXmlExporter(Project project) throws Exception
 	{
 		super(project);
 		
@@ -438,7 +437,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeHabitatMappedCodes(UnicodeWriter out, Target target) throws Exception
 	{
 		CodeList conProHabitatCodeList = new CodeList();
-		HashMap<String, String> habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
+		HashMap<String, String> habitatCodeMap = getCodeMapHelper().getMiradiToConProHabitatCodeMap();
 		CodeList miradiHabitatCodeList = target.getCodeList(Target.TAG_HABITAT_ASSOCIATION);
 		for (int codeIndex = 0; codeIndex < miradiHabitatCodeList.size(); ++codeIndex)
 		{
