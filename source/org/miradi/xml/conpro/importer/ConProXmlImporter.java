@@ -57,7 +57,7 @@ import org.xml.sax.SAXException;
 
 public class ConProXmlImporter implements ConProMiradiXml
 {
-	public ConProXmlImporter(Project projectToFill)
+	public ConProXmlImporter(Project projectToFill) throws Exception
 	{
 		project = projectToFill;
 		codeMapHelper = new ConProMiradiCodeMapHelper();

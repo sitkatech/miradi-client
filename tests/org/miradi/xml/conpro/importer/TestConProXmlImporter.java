@@ -60,7 +60,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	    return new UnicodeReader(fileToConvert).readAll();
 	}
 	
-	public void testGenereratXPath()
+	public void testGenereratXPath() throws Exception
 	{
 		String expectedPath = "cp:SomeElement/cp:SomeOtherElement";
 		
