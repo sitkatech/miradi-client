@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="source"/>
 	<classpathentry kind="src" path="tests"/>
-	<classpathentry exported="true" kind="var" path="JUNIT_HOME/junit.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2.jar" sourcepath="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2-src.zip"/>
