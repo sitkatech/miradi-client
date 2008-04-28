@@ -864,13 +864,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String rankingCodeToXmlValue(String code)
 	{
-		HashMap<String, String> rankingMap = getCodeMapHelper().getRankingMap();
+		HashMap<String, String> rankingMap = getCodeMapHelper().getMiradiToConProRankingMap();
 		return getCodeMapHelper().getSafeXmlCode(rankingMap, code);
 	}
 	
 	private String statusCodeToXmlValue(String code)
 	{
-		HashMap<String, String> progressStatuMap = getCodeMapHelper().getProgressStatusMap();
+		HashMap<String, String> progressStatuMap = getCodeMapHelper().getMiradiToConProProgressStatusMap();
 		return getCodeMapHelper().getSafeXmlCode(progressStatuMap, code);
 	}
 	
