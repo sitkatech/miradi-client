@@ -98,6 +98,11 @@ public class ConProMiradiCodeMapHelper
 	{
 		return reverseMap(statusConfidenceMap);
 	}
+	
+	public HashMap<String, String> getConProToMiradiProgressStatusMap()
+	{
+		return reverseMap(progressStatusMap);
+	}
 
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
 	{

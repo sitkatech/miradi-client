@@ -38,6 +38,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
@@ -51,6 +52,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -219,6 +221,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return strategy;
 	}
 	
+	public ProgressReport createAndPopulateProgressReport() throws Exception
+	{
+		ProgressReport progressReport = createProgressReport();
+		populateProgressReport(progressReport);
+		
+		return progressReport;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -301,6 +311,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef strategyRef = createObject(Strategy.getObjectType());
 		return Strategy.find(this, strategyRef);
+	}
+	
+	public ProgressReport createProgressReport() throws Exception
+	{
+		ORef progressReportRef = createObject(ProgressReport.getObjectType());
+		return ProgressReport.find(this, progressReportRef);
 	}
 
 	public void populateTarget(Target target) throws Exception
@@ -415,6 +431,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList measurementRefs = new ORefList(measurement.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
 		
+		ProgressReport progressReport = createAndPopulateProgressReport();
+		ORefList progressReportRefs = new ORefList(progressReport.getRef());
+		fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+		
 		StringMap threshold = new StringMap();
 		threshold.add(StatusQuestion.POOR, "poor text");
 		threshold.add(StatusQuestion.FAIR, "fair text");
@@ -467,6 +487,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 	}
 	
+	public void populateProgressReport(ProgressReport progressReport) throws Exception
+	{
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, "2008-01-23");
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportStatusQuestion.PLANNED_CODE);
+	}
+	
 	public void populateEverything() throws Exception
 	{
 		fillGeneralProjectData();
@@ -494,6 +520,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		//createAndPopulateTarget();
 		//createAndPopulateTarget();
 		//createAndPopulateTarget();
+		
+		//createAndPopulateKea();
+		//createAndPopulateIndicator();
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
