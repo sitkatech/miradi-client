@@ -870,7 +870,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String statusCodeToXmlValue(String code)
 	{
-		HashMap<String, String> progressStatuMap = getCodeMapHelper().getProgressStatuMap();
+		HashMap<String, String> progressStatuMap = getCodeMapHelper().getProgressStatusMap();
 		return getCodeMapHelper().getSafeXmlCode(progressStatuMap, code);
 	}
 	

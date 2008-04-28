@@ -71,7 +71,7 @@ public class ConProMiradiCodeMapHelper
 		return reversedMap;
 	}
 	
-	public HashMap<String, String> getProgressStatuMap()
+	public HashMap<String, String> getProgressStatusMap()
 	{
 		return progressStatusMap;
 	}
