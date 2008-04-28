@@ -225,7 +225,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
 			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getReversedRankingMap());
+			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 		}
 	}
 	
