@@ -38,11 +38,14 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -114,14 +117,47 @@ public class ConProXmlImporter implements ConProMiradiXml
 		NodeList indicatorNodeList = getNodes(path);
 		for (int i = 0; i < indicatorNodeList.getLength(); i++) 
 		{
-			//FIXME uncomment and finish
-			//Node indicatorNode = indicatorNodeList.item(i);
-			//String indicatorId = getAttributeValue(indicatorNode, ID);
-			//ORef indicatorRef = getProject().createObject(Indicator.getObjectType(), new BaseId(indicatorId));
+			Node indicatorNode = indicatorNodeList.item(i);
+			String indicatorId = getAttributeValue(indicatorNode, ID);
+			ORef indicatorRef = getProject().createObject(Indicator.getObjectType(), new BaseId(indicatorId));
 			
-			//importField(indicatorNode, NAME, indicatorRef, Indicator.TAG_LABEL);
-			//importField(indicatorNode, THREAT_TAXONOMY_CODE, indicatorRef, Cause.TAG_TAXONOMY_CODE);			
+			importField(indicatorNode, NAME, indicatorRef, Indicator.TAG_LABEL);
+			importMethods(indicatorNode, indicatorRef);
+			importCodeField(indicatorNode, PRIORITY, indicatorRef, Indicator.TAG_PRIORITY, getCodeMapHelper().getConProToMiradiRatingMap());
+			importProgressReport(indicatorNode, indicatorRef);
+			//FIXME finish indicator
 		}
+	}
+	
+	private void importProgressReport(Node indicatorNode, ORef indicatorRef) throws Exception
+	{
+		Node progressStatusNode = getNode(indicatorNode, STATUS);
+		if (progressStatusNode == null)
+			return;
+		
+		ORef progressReportRef = getProject().createObject(ProgressReport.getObjectType());
+		ORefList progressReportRefs = new ORefList(progressReportRef);
+		importCodeField(indicatorNode, STATUS, progressReportRef, ProgressReport.TAG_PROGRESS_STATUS, getCodeMapHelper().getConProToMiradiProgressStatusMap());
+		setData(indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+	}
+
+	private void importMethods(Node indicatorNode, ORef indicatorRef) throws Exception
+	{
+		ORefList methodRefs = new ORefList();
+		Node methodNode = getNode(indicatorNode, METHODS);
+		if (methodNode == null)
+			return;
+		
+		String semiColonSeperatedMethods = methodNode.getTextContent();
+		String[] methods = semiColonSeperatedMethods.split(";");
+		for (int index = 0; index < methods.length; ++index)
+		{
+			ORef methodRef = getProject().createObject(Task.getObjectType());
+			setData(methodRef, Task.TAG_LABEL, methods[index]);
+			methodRefs.add(methodRef);
+		}
+		
+		setData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs.convertToIdList(Task.getObjectType()).toString());
 	}
 
 	private void importThreats() throws Exception
@@ -362,6 +398,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return attributeNode.getNodeValue();
 	}
 		
+	private Node getNode(Node node, String element) throws Exception
+	{
+		String path = generatePath(new String[]{element});
+		XPathExpression expression = getXPath().compile(path);
+		return (Node) expression.evaluate(node, XPathConstants.NODE);
+	}
+	
 	private Node getNode(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
