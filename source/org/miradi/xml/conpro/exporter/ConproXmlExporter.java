@@ -551,6 +551,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
+		//FIXME this is not correct due to the need of a threat and stress
 		FactorLinkSet targetLinks = getThreatLinksWithThreatStressRatings(target);
 		writeStartElement(out, STRESSES_THREATS);
 		for(FactorLink factorLink : targetLinks)
