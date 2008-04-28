@@ -137,6 +137,24 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
+	public void importTargets(String path) throws Exception
+	{
+		NodeList targetNodeList = getNodes(path);
+		for (int i = 0; i < targetNodeList.getLength(); i++) 
+		{
+			Node targetNode = targetNodeList.item(i);
+			String targetId = getAttributeValue(targetNode, ID);
+			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
+			
+			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
+			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
+			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
+			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
+			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
+			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
+		}
+	}
+		
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
 	{
 		ChoiceQuestion question = getProject().getQuestion(questionClass);
@@ -227,24 +245,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		return nodes.toArray(new String[0]);
-	}
-	
-	public void importTargets(String path) throws Exception
-	{
-		NodeList targetNodeList = getNodes(path);
-		for (int i = 0; i < targetNodeList.getLength(); i++) 
-		{
-			Node targetNode = targetNodeList.item(i);
-			String targetId = getAttributeValue(targetNode, ID);
-			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
-			
-			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
-			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
-			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
-			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
-			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
-		}
 	}
 	
 	private String getAttributeValue(Node elementNode, String attributeName)
