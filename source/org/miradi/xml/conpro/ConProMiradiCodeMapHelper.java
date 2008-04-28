@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
 public class ConProMiradiCodeMapHelper
@@ -51,6 +52,17 @@ public class ConProMiradiCodeMapHelper
 		ratingMap.put("4", "Very High"); 
 	
 		habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
+		
+		keaTypeMap = new HashMap<String, String>();
+		keaTypeMap.put("10", "Size");
+		keaTypeMap.put("20", "Condition"); 
+		keaTypeMap.put("30", "Landscape Context");
+		
+		statusConfidenceMap = new HashMap<String, String>();
+		statusConfidenceMap.put(StatusConfidenceQuestion.ROUGH_GUESS_CODE, "Rough Guess");
+		statusConfidenceMap.put(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE, "Expert Knowledge"); 
+		statusConfidenceMap.put(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE, "Rapid Assessment");
+		statusConfidenceMap.put(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE, "Intensive Assessment");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -77,6 +89,16 @@ public class ConProMiradiCodeMapHelper
 		return reverseMap(ratingMap);
 	}
 	
+	public HashMap<String, String> getConProToMiradiKeaTypeMap()
+	{
+		return reverseMap(keaTypeMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiStatusConfidenceMap()
+	{
+		return reverseMap(statusConfidenceMap);
+	}
+
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
 	{
 		HashMap reversedMap = new HashMap<String, String>();
@@ -110,10 +132,22 @@ public class ConProMiradiCodeMapHelper
 		return ratingMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProKeaTypeMap()
+	{
+		return keaTypeMap;
+	}
+	
+	public HashMap<String, String> getMiradiToConProStatusConfidenceMap()
+	{
+		return statusConfidenceMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
 	private HashMap<String, String> ratingMap;
+	private HashMap<String, String> keaTypeMap;
+	private HashMap<String, String> statusConfidenceMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";

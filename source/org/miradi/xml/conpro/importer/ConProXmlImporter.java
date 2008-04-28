@@ -37,8 +37,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -81,12 +84,77 @@ public class ConProXmlImporter implements ConProMiradiXml
 			document = createDocument(fileToImport);
 			xPath = createXPath();
 
+			//FIXME finish method implementations
 			importProjectSummaryElement();
 			importTargets();
+			importKeyEcologicalAttributes();
+			importViability();
+			importThreats();
+			importIndicators();
+			importObjectives();
+			importStrategies();
 		}
 		finally
 		{
 			fileInputStream.close();
+		}
+	}
+
+	private void importStrategies()
+	{
+	}
+
+	private void importObjectives()
+	{
+	}
+
+	private void importIndicators() throws Exception
+	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, INDICATORS, INDICATOR});
+		NodeList indicatorNodeList = getNodes(path);
+		for (int i = 0; i < indicatorNodeList.getLength(); i++) 
+		{
+			//FIXME uncomment and finish
+			//Node indicatorNode = indicatorNodeList.item(i);
+			//String indicatorId = getAttributeValue(indicatorNode, ID);
+			//ORef indicatorRef = getProject().createObject(Indicator.getObjectType(), new BaseId(indicatorId));
+			
+			//importField(indicatorNode, NAME, indicatorRef, Indicator.TAG_LABEL);
+			//importField(indicatorNode, THREAT_TAXONOMY_CODE, indicatorRef, Cause.TAG_TAXONOMY_CODE);			
+		}
+	}
+
+	private void importThreats() throws Exception
+	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, THREATS, THREAT});
+		NodeList threatNodeList = getNodes(path);
+		for (int i = 0; i < threatNodeList.getLength(); i++) 
+		{
+			Node threatNode = threatNodeList.item(i);
+			String threatId = getAttributeValue(threatNode, ID);
+			ORef threatRef = getProject().createObject(Cause.getObjectType(), new BaseId(threatId));
+			
+			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
+			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);			
+		}
+	}
+
+	private void importViability()
+	{
+	}
+
+	private void importKeyEcologicalAttributes() throws Exception
+	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, KEY_ATTRIBUTES, KEY_ATTRIBUTE});
+		NodeList keaNodeList = getNodes(path);
+		for (int i = 0; i < keaNodeList.getLength(); i++) 
+		{
+			Node keaNode = keaNodeList.item(i);
+			String keaId = getAttributeValue(keaNode, ID);
+			ORef keaRef = getProject().createObject(KeyEcologicalAttribute.getObjectType(), new BaseId(keaId));
+			
+			importField(keaNode, NAME, keaRef, KeyEcologicalAttribute.TAG_LABEL);
+			importCodeField(keaNode, CATEGORY, keaRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getCodeMapHelper().getConProToMiradiKeaTypeMap());			
 		}
 	}
 
@@ -150,9 +218,34 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 			importStresses(targetNode, targetRef);
+			//FIXME import stresses threats
+			
+			importSubTargets(targetNode, targetRef);
+			
+			//FIXME
+			//import SimpleTargetLinkRatings(out, target);
+			//import StrategyThreatTargetAssociations(out, target);
 		}
 	}
 		
+	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
+	{
+		ORefList subTargetRefs = new ORefList();
+		NodeList subTargetNodes = getNodes(targetNode, new String[]{NESTED_TARGETS, NESTED_TARGET});
+		for (int nodeIndex = 0; nodeIndex < subTargetNodes.getLength(); ++nodeIndex)
+		{
+			ORef subTargetRef = getProject().createObject(SubTarget.getObjectType());
+			Node subTargetNode = subTargetNodes.item(nodeIndex);
+			
+			importField(subTargetNode, NAME, subTargetRef, SubTarget.TAG_LABEL);
+			importField(subTargetNode, COMMENT, subTargetRef, SubTarget.TAG_DETAIL);
+			
+			subTargetRefs.add(subTargetRef);
+		}
+		
+		setData(targetRef, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
+	}
+
 	private void importStresses(Node targetNode, ORef targetRef) throws Exception
 	{
 		ORefList stressRefs = new ORefList();

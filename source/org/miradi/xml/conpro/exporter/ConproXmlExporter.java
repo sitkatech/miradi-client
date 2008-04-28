@@ -59,7 +59,6 @@ import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -814,35 +813,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return ratingCodeToXmlValue(Integer.toString(code));
 	}
 	
-	private String statusConfidenceToXmlValue(String data)
+	private String statusConfidenceToXmlValue(String code)
 	{
-		if (data.equals(StatusConfidenceQuestion.ROUGH_GUESS_CODE))
-			return "Rough Guess";
-		
-		if (data.equals(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE))
-			return "Expert Knowledge";
-		
-		if (data.equals(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE))
-			return "Rapid Assessment";
-		
-		if (data.equals(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE))
-			return "Intensive Assessment";
-		
-		return "";
+		HashMap<String, String> statusConfidenceMap = getCodeMapHelper().getMiradiToConProStatusConfidenceMap();
+		return getCodeMapHelper().getSafeXmlCode(statusConfidenceMap, code);
 	}
 	
 	private String keyEcologicalAttributeTypeToXmlValue(String type)
 	{
-		if (type.equals("10"))
-			return "Size";
-		
-		if (type.equals("20"))
-			return "Condition";
-		
-		if (type.equals("30"))
-			return "Landscape Context";
-		
-		return "";
+		HashMap<String, String> keaTypeMap = getCodeMapHelper().getMiradiToConProKeaTypeMap();
+		return getCodeMapHelper().getSafeXmlCode(keaTypeMap, type);
 	}
 	
 	private String ratingCodeToXmlValue(String code)
