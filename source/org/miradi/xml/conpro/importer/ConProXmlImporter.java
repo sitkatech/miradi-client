@@ -82,7 +82,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			xPath = createXPath();
 
 			importProjectSummaryElement();
-			importTargetElements();
+			importTargets();
 		}
 		finally
 		{
@@ -106,12 +106,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		thisXPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
 		
 		return thisXPath;
-	}
-
-	private void importTargetElements() throws Exception 
-	{
-		//TODO still under development
-		importTargets(generatePath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET}));
 	}
 
 	private void importProjectSummaryElement() throws Exception
@@ -139,8 +133,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
-	public void importTargets(String path) throws Exception
+	public void importTargets() throws Exception
 	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET});
 		NodeList targetNodeList = getNodes(path);
 		for (int i = 0; i < targetNodeList.getLength(); i++) 
 		{
