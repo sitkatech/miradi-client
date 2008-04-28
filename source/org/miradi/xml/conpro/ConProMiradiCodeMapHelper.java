@@ -53,7 +53,7 @@ public class ConProMiradiCodeMapHelper
 		return value.toString();
 	}
 	
-	public HashMap<String, String> getReversedRankingMap()
+	public HashMap<String, String> getConProToMiradiRankingMap()
 	{
 		return reverseMap(rankingMap);
 	}
@@ -71,12 +71,12 @@ public class ConProMiradiCodeMapHelper
 		return reversedMap;
 	}
 	
-	public HashMap<String, String> getProgressStatusMap()
+	public HashMap<String, String> getMiradiToConProProgressStatusMap()
 	{
 		return progressStatusMap;
 	}
 	
-	public HashMap<String, String> getRankingMap()
+	public HashMap<String, String> getMiradiToConProRankingMap()
 	{
 		return rankingMap;
 	}
