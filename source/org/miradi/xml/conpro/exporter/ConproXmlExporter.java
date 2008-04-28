@@ -846,19 +846,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private String ratingCodeToXmlValue(String code)
 	{
-		if (code.equals("1"))
-			return "Low";
-		
-		if (code.equals("2"))
-			return "Medium";
-		
-		if (code.equals("3"))
-			return "High";
-		
-		if (code.equals("4"))
-			return "Very High";
-		
-		return "";
+		HashMap<String, String> rankingMap = getCodeMapHelper().getMiradiToConProRatingMap();
+		return getCodeMapHelper().getSafeXmlCode(rankingMap, code);
 	}
 	
 	private String rankingCodeToXmlValue(String code)

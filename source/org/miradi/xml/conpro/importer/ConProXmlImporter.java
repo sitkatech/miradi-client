@@ -36,7 +36,9 @@ import javax.xml.xpath.XPathFactory;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -158,11 +160,20 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 	private void importStresses(Node targetNode, ORef targetRef) throws Exception
 	{
-		NodeList nodeList = getNodes(targetNode, new String[]{TARGET_STRESSES, TARGET_STRESS});	
-		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex)
+		ORefList stressRefs = new ORefList();
+		NodeList stressNodes = getNodes(targetNode, new String[]{TARGET_STRESSES, TARGET_STRESS});
+		for (int nodeIndex = 0; nodeIndex < stressNodes.getLength(); ++nodeIndex)
 		{
-			//FIXME import stress
+			ORef stressRef = getProject().createObject(Stress.getObjectType());
+			Node stressNode = stressNodes.item(nodeIndex);
+			
+			importField(stressNode, NAME, stressRef, Stress.TAG_LABEL); 
+			importCodeField(stressNode, STRESS_SEVERITY, stressRef, Stress.TAG_SEVERITY, getCodeMapHelper().getConProToMiradiRatingMap());
+			importCodeField(stressNode, STRESS_SCOPE, stressRef, Stress.TAG_SCOPE, getCodeMapHelper().getConProToMiradiRatingMap());
+			stressRefs.add(stressRef);
 		}
+		
+		setData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());
 	}
 
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
