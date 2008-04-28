@@ -152,9 +152,19 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
+			importStresses(targetNode, targetRef);
 		}
 	}
 		
+	private void importStresses(Node targetNode, ORef targetRef) throws Exception
+	{
+		NodeList nodeList = getNodes(targetNode, new String[]{TARGET_STRESSES, TARGET_STRESS});	
+		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex)
+		{
+			//FIXME import stress
+		}
+	}
+
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
 	{
 		ChoiceQuestion question = getProject().getQuestion(questionClass);
@@ -203,8 +213,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importCodeListField(Node node, String parentElement, String childElement, ORef ref, String tag, HashMap<String, String> conProToMiradiCodeMap) throws Exception
 	{
 		CodeList codes = new CodeList();
-		String generatedPath = generatePath(new String[]{parentElement, childElement});
-		NodeList nodes = (NodeList) getXPath().evaluate(generatedPath, node, XPathConstants.NODESET);
+		NodeList nodes = getNodes(node, new String[]{parentElement, childElement});
 		for (int nodeIndex = 0; nodeIndex < nodes.getLength(); ++nodeIndex)
 		{
 			Node thisNode = nodes.item(nodeIndex);
@@ -264,6 +273,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		XPathExpression expression = getXPath().compile(path);
 		return (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
+	}
+	
+	private NodeList getNodes(Node node, String[] pathElements) throws Exception
+	{
+		String path = generatePath(pathElements);
+		XPathExpression expression = getXPath().compile(path);
+		
+		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);
 	}
 	
 	private String getPrefixedElement(String elementName)
