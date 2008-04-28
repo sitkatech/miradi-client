@@ -42,7 +42,13 @@ public class ConProMiradiCodeMapHelper
 		rankingMap.put("1", "Poor");
 		rankingMap.put("2", "Fair"); 
 		rankingMap.put("3", "Good");
-		rankingMap.put("4", "Very Good"); 
+		rankingMap.put("4", "Very Good");
+		
+		ratingMap = new HashMap<String, String>();
+		ratingMap.put("1", "Low");
+		ratingMap.put("2", "Medium"); 
+		ratingMap.put("3", "High");
+		ratingMap.put("4", "Very High"); 
 	
 		habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
 	}
@@ -64,6 +70,11 @@ public class ConProMiradiCodeMapHelper
 	public HashMap<String, String> getConProToMiradiHabitiatCodeMap()
 	{
 		return reverseMap(habitatCodeMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiRatingMap()
+	{
+		return reverseMap(ratingMap);
 	}
 	
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
@@ -94,10 +105,15 @@ public class ConProMiradiCodeMapHelper
 		return habitatCodeMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProRatingMap()
+	{
+		return ratingMap;
+	}
 	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
+	private HashMap<String, String> ratingMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
