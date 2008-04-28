@@ -51,7 +51,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		new ConproXmlExporter(projectToFill).export(afterXmlOutFile);
 		String afterImportAsString = convertFileContentToString(afterXmlOutFile);
 		
-		//FIXME temporarly made into NotEquals so test passes for commit
 		assertEquals("incorrect project values after import?", beforeImportAsString, afterImportAsString);
 	}
 	
