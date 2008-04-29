@@ -47,6 +47,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
@@ -445,6 +446,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
+		fillObjectUsingCommand(indicator, Indicator.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
+		fillObjectUsingCommand(indicator, Indicator.TAG_BUDGET_COST_OVERRIDE, Double.toString(444.44));
+		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENT, "Some indicator Comment");
 	}
 	
 	public void populateTask(Task task) throws Exception
