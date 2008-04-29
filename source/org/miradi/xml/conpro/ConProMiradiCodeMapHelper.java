@@ -22,6 +22,7 @@ package org.miradi.xml.conpro;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
@@ -54,9 +55,9 @@ public class ConProMiradiCodeMapHelper
 		habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
 		
 		keaTypeMap = new HashMap<String, String>();
-		keaTypeMap.put("10", "Size");
-		keaTypeMap.put("20", "Condition"); 
-		keaTypeMap.put("30", "Landscape Context");
+		keaTypeMap.put(KeyEcologicalAttributeTypeQuestion.SIZE, "Size");
+		keaTypeMap.put(KeyEcologicalAttributeTypeQuestion.CONDITION, "Condition"); 
+		keaTypeMap.put(KeyEcologicalAttributeTypeQuestion.LANDSCAPE, "Landscape Context");
 		
 		statusConfidenceMap = new HashMap<String, String>();
 		statusConfidenceMap.put(StatusConfidenceQuestion.ROUGH_GUESS_CODE, "Rough Guess");
