@@ -254,6 +254,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		ORef progressReportRef = getProject().createObject(ProgressReport.getObjectType());
 		ORefList progressReportRefs = new ORefList(progressReportRef);
 		importCodeField(indicatorNode, STATUS, progressReportRef, ProgressReport.TAG_PROGRESS_STATUS, getCodeMapHelper().getConProToMiradiProgressStatusMap());
+		setData(progressReportRef, ProgressReport.TAG_PROGRESS_DATE, getProject().getMetadata().getEffectiveDate());
 		setData(indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
 	}
 
