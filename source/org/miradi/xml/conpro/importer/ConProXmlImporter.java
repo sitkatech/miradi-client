@@ -157,7 +157,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importWhenOverride(activityNode, activityRef);
 		}
 		
-		setData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs.convertToIdList(Task.getObjectType()).toString());
+		setData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, Task.getObjectType());
 	}
 
 	private void importWhenOverride(Node activityNode, ORef activityRef) throws Exception
@@ -173,9 +173,20 @@ public class ConProXmlImporter implements ConProMiradiXml
 			setData(activityRef, Task.TAG_WHEN_OVERRIDE, dateRange.toJson().toString());
 		}
 	}
-		private void importObjectives(Node strategyNode, ORef strategyRef)
+		private void importObjectives(Node strategyNode, ORef strategyRef) throws Exception
 	{
-	
+		ORefList objectiveRefs = new ORefList();
+		NodeList objectiveNodeList = getNodes(strategyNode, new String[] {OBJECTIVES, OBJECTIVE_ID});
+		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
+		{
+			Node objectiveNode = objectiveNodeList.item(nodeIndex);
+			String objectiveId = objectiveNode.getTextContent();
+			ORef objectiveRef = new ORef(Objective.getObjectType(), new BaseId(objectiveId));
+			
+			objectiveRefs.add(objectiveRef);
+		}
+		
+		setData(strategyRef, Strategy.TAG_OBJECTIVE_IDS, objectiveRefs, Objective.getObjectType());
 	}
 
 	private void importObjectives() throws Exception
@@ -262,7 +273,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			methodRefs.add(methodRef);
 		}
 		
-		setData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs.convertToIdList(Task.getObjectType()).toString());
+		setData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
 	}
 
 	private void importThreats() throws Exception
@@ -464,6 +475,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		setData(ref, tag, codes.toString());
+	}
+	
+	private void setData(ORef ref, String tag, ORefList refList, int type) throws Exception
+	{
+		setData(ref, tag, refList.convertToIdList(type).toString());
 	}
 	
 	private void setData(ORef ref, String tag, String data) throws Exception
