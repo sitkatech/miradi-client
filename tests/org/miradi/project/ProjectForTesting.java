@@ -527,6 +527,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		//createAndPopulateKea();
 		//createAndPopulateIndicator();
+		//createAndPopulateObjective();
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
