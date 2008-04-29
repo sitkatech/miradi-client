@@ -291,17 +291,24 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 
-	private void importViability()
+	private void importViability() throws Exception
 	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, VIABILITY, VIABILITY_ASSESSMENT});
+		NodeList keaNodeList = getNodes(path);
+		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
+		{
+			//Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
+			//FIXME finish viability
+		}
 	}
 
 	private void importKeyEcologicalAttributes() throws Exception
 	{
 		String path = generatePath(new String[] {CONSERVATION_PROJECT, KEY_ATTRIBUTES, KEY_ATTRIBUTE});
 		NodeList keaNodeList = getNodes(path);
-		for (int i = 0; i < keaNodeList.getLength(); i++) 
+		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
-			Node keaNode = keaNodeList.item(i);
+			Node keaNode = keaNodeList.item(nodeIndex);
 			String keaId = getAttributeValue(keaNode, ID);
 			ORef keaRef = getProject().createObject(KeyEcologicalAttribute.getObjectType(), new BaseId(keaId));
 			
