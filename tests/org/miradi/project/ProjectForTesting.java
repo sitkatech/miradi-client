@@ -63,6 +63,7 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
@@ -328,7 +329,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, Target.TAG_COMMENT, "Some comment Text");
 		fillObjectUsingCommand(target, Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
 		fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
-		
+		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+				
 		CodeList habitatCodes = new CodeList();
 		habitatCodes.add(HabitatAssociationQuestion.FOREST_CODE);
 		habitatCodes.add(HabitatAssociationQuestion.SAVANNA_CODE);
@@ -414,6 +416,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.CONDITION);
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DETAILS, "Some kea details text");
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DESCRIPTION, "Some kea description text");
+		
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(createAndPopulateIndicator().getId());
+		indicatorIds.add(createAndPopulateIndicator().getId());
+		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 	
 	public void populateIndicator(Indicator indicator) throws Exception
