@@ -47,6 +47,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -125,10 +126,18 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importMethods(indicatorNode, indicatorRef);
 			importCodeField(indicatorNode, PRIORITY, indicatorRef, Indicator.TAG_PRIORITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importProgressReport(indicatorNode, indicatorRef);
-			//FIXME finish indicator
+			//FIXME finish indicator by importing WHO_MONITORS and checking import methods method			
+			importBudgetData(indicatorNode, indicatorRef);
+			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENT);
 		}
 	}
 	
+	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
+	{
+		importField(indicatorNode, ANNUAL_COST, indicatorRef, Indicator.TAG_BUDGET_COST_OVERRIDE);
+		setData(indicatorRef, Indicator.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);	
+	}
+
 	private void importProgressReport(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
 		Node progressStatusNode = getNode(indicatorNode, STATUS);
