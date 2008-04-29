@@ -40,27 +40,49 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	{
 		getProject().fillProjectPartially();
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		
+		File afterXmlOutFile = createTempFileFromName("conproAfterFirstImport.xml");
+		File afterXmlOutFile2 = createTempFileFromName("conproAfterSecondImport.xml");
+		
+		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
+		ProjectForTesting projectToFill2 = new ProjectForTesting("ProjectToFill2");
 		try
 		{
-			new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
-			String beforeImportAsString = convertFileContentToString(beforeXmlOutFile);
-
-			new ConProXmlImporter(projectToFill).populateProjectFromFile(beforeXmlOutFile);
-
-			File afterXmlOutFile = createTempFileFromName("conproAfterImport.xml");
-			new ConproXmlExporter(projectToFill).export(afterXmlOutFile);
-			String afterImportAsString = convertFileContentToString(afterXmlOutFile);
-
-			assertEquals("incorrect project values after import?", beforeImportAsString, afterImportAsString);
+			exportProject(beforeXmlOutFile, getProject());
+			
+			importProject(beforeXmlOutFile, projectToFill1);
+			
+			exportProject(afterXmlOutFile, projectToFill1);
+			String secondExport = convertFileContentToString(afterXmlOutFile);
+						
+			importProject(afterXmlOutFile, projectToFill2);
+			
+			exportProject(afterXmlOutFile2, projectToFill2);
+			String thirdExport = convertFileContentToString(afterXmlOutFile2);
+		
+			assertEquals("incorrect project values after import?", secondExport, thirdExport);
 		}
 		finally
 		{
 			beforeXmlOutFile.delete();
-			projectToFill.close();
+			afterXmlOutFile.delete();
+			afterXmlOutFile2.delete();
+			
+			projectToFill1.close();
+			projectToFill2.close();
 		}
 	}
-	
+
+	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
+	{
+		new ConProXmlImporter(projectToFill1).populateProjectFromFile(beforeXmlOutFile);
+	}
+
+	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
+	{
+		new ConproXmlExporter(projectToFill1).export(afterXmlOutFile);
+	}
+
 	private String convertFileContentToString(File fileToConvert) throws Exception
 	{
 	    return new UnicodeReader(fileToConvert).readAll();
