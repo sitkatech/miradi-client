@@ -37,9 +37,12 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
@@ -108,17 +111,43 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 	}
 
-	private void importObjectives()
+	private void importObjectives() throws Exception
 	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, OBJECTIVES, OBJECTIVE});
+		NodeList objectiveNodeList = getNodes(path);
+		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
+		{
+			Node objectiveNode = objectiveNodeList.item(nodeIndex);
+			String objectiveId = getAttributeValue(objectiveNode, ID);
+			ORef objectiveRef = getProject().createObject(Objective.getObjectType(), new BaseId(objectiveId));
+			importRelevantIndicators(objectiveNode, objectiveRef);
+			importField(objectiveNode, NAME, objectiveRef, Objective.TAG_LABEL);
+			importField(objectiveNode, COMMENT, objectiveRef, Objective.TAG_COMMENTS);
+		}
+	}
+
+	private void importRelevantIndicators(Node objectiveNode, ORef objectiveRef) throws Exception
+	{
+		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
+		NodeList indicatorIdNodes = getNodes(objectiveNode, new String[]{INDICATORS, INDICATOR_ID});
+		for (int nodeIndex = 0; nodeIndex < indicatorIdNodes.getLength(); ++nodeIndex) 
+		{
+			Node indicatorNode = indicatorIdNodes.item(nodeIndex);
+			BaseId indicatorId = new BaseId(indicatorNode.getTextContent());
+			ORef indicatorRef = new ORef(Indicator.getObjectType(), indicatorId);
+			relevantIndicators.add(new RelevancyOverride(indicatorRef, true));
+		}
+		
+		setData(objectiveRef, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
 	}
 
 	private void importIndicators() throws Exception
 	{
 		String path = generatePath(new String[] {CONSERVATION_PROJECT, INDICATORS, INDICATOR});
 		NodeList indicatorNodeList = getNodes(path);
-		for (int i = 0; i < indicatorNodeList.getLength(); i++) 
+		for (int nodeIndex = 0; nodeIndex < indicatorNodeList.getLength(); ++nodeIndex) 
 		{
-			Node indicatorNode = indicatorNodeList.item(i);
+			Node indicatorNode = indicatorNodeList.item(nodeIndex);
 			String indicatorId = getAttributeValue(indicatorNode, ID);
 			ORef indicatorRef = getProject().createObject(Indicator.getObjectType(), new BaseId(indicatorId));
 			
