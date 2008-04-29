@@ -64,6 +64,7 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
 
 
@@ -453,7 +454,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateTask(Task task) throws Exception
 	{
-		fillObjectUsingCommand(task, Task.TAG_LABEL, "Some Task Label");	
+		fillObjectUsingCommand(task, Task.TAG_LABEL, "Some Task Label");
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 03, 19);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 3, 19);
+		fillObjectUsingCommand(task, Task.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
+		fillObjectUsingCommand(task, Task.TAG_WHEN_OVERRIDE, new DateRange(startDate, endDate).toJson().toString());
 	}
 	
 	public void populateMeasurement(Measurement measurement) throws Exception
@@ -489,6 +494,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList activityIds = new IdList(Task.getObjectType());
 		activityIds.addRef(createAndPopulateTask().getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
+		
+		IdList objectiveIds = new IdList(Objective.getObjectType());
+		objectiveIds.addRef(createAndPopulateObjective().getRef());
+		objectiveIds.addRef(createAndPopulateObjective().getRef());
+		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
@@ -528,6 +538,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		//createAndPopulateKea();
 		//createAndPopulateIndicator();
 		//createAndPopulateObjective();
+		//createAndPopulateStrategy();
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception

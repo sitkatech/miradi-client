@@ -33,6 +33,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -45,6 +46,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
@@ -57,6 +59,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateRange;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
@@ -107,8 +110,72 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 
-	private void importStrategies()
+	private void importStrategies() throws Exception
 	{
+		String path = generatePath(new String[] {CONSERVATION_PROJECT, STRATEGIES, STRATEGY});
+		NodeList strategyNodeList = getNodes(path);
+		for (int nodeIndex = 0; nodeIndex < strategyNodeList.getLength(); ++nodeIndex) 
+		{
+			Node strategyNode = strategyNodeList.item(nodeIndex);
+			String strategyId = getAttributeValue(strategyNode, ID);
+			ORef strategyRef = getProject().createObject(Strategy.getObjectType(), new BaseId(strategyId));
+			importObjectives(strategyNode, strategyRef);
+			importField(strategyNode, NAME, strategyRef, Strategy.TAG_LABEL);
+			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
+			importCodeField(strategyNode, LEVERAGE, strategyRef, Strategy.TAG_IMPACT_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
+			importCodeField(strategyNode, FEASABILITY, strategyRef, Strategy.TAG_FEASIBILITY_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
+			
+			writeStrategyStatus(strategyNode, strategyRef);
+			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
+			importActivities(strategyNode, strategyRef);
+		}
+	}
+
+	private void writeStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
+	{
+		String generatedPath = generatePath(new String[]{SELECTED});
+		String data = getXPath().evaluate(generatedPath, strategyNode);
+		boolean status = Boolean.parseBoolean(data);
+		String statusValue = Strategy.STATUS_DRAFT;
+		if (status)
+			statusValue = Strategy.STATUS_REAL;
+		
+		setData(strategyRef, Strategy.TAG_STATUS, statusValue);
+	}
+
+	private void importActivities(Node strategyNode, ORef strategyRef) throws Exception
+	{
+		ORefList activityRefs = new ORefList();
+		NodeList activityNodeList = getNodes(strategyNode, new String[] {ACTIVITIES, ACTIVITY});
+		for (int nodeIndex = 0; nodeIndex < activityNodeList.getLength(); ++nodeIndex) 
+		{
+			Node activityNode = activityNodeList.item(nodeIndex);
+			ORef activityRef = getProject().createObject(Task.getObjectType());
+			activityRefs.add(activityRef);
+					
+			importField(activityNode, NAME, activityRef, Task.TAG_LABEL);
+			importWhenOverride(activityNode, activityRef);
+		}
+		
+		setData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs.convertToIdList(Task.getObjectType()).toString());
+	}
+
+	private void importWhenOverride(Node activityNode, ORef activityRef) throws Exception
+	{
+		String startDateAsString = getNode(activityNode, ACTIVITY_START_DATE).getTextContent();
+		String endDateAsString = getNode(activityNode, ACTIVITY_END_DATE).getTextContent();
+		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
+		{
+			MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
+			MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
+			DateRange dateRange = new DateRange(startDate, endDate);
+			setData(activityRef, Task.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
+			setData(activityRef, Task.TAG_WHEN_OVERRIDE, dateRange.toJson().toString());
+		}
+	}
+		private void importObjectives(Node strategyNode, ORef strategyRef)
+	{
+	
 	}
 
 	private void importObjectives() throws Exception
