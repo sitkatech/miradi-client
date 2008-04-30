@@ -116,8 +116,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importStrategies() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, STRATEGIES, STRATEGY});
-		NodeList strategyNodeList = getNodes(path);
+		NodeList strategyNodeList = getNodes(getRootNode(), STRATEGIES, STRATEGY);
 		for (int nodeIndex = 0; nodeIndex < strategyNodeList.getLength(); ++nodeIndex) 
 		{
 			Node strategyNode = strategyNodeList.item(nodeIndex);
@@ -194,8 +193,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importObjectives() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, OBJECTIVES, OBJECTIVE});
-		NodeList objectiveNodeList = getNodes(path);
+		NodeList objectiveNodeList = getNodes(getRootNode(), OBJECTIVES, OBJECTIVE);
 		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
 		{
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
@@ -224,8 +222,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importIndicators() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, INDICATORS, INDICATOR});
-		NodeList indicatorNodeList = getNodes(path);
+		NodeList indicatorNodeList = getNodes(getRootNode(), INDICATORS, INDICATOR);
 		for (int nodeIndex = 0; nodeIndex < indicatorNodeList.getLength(); ++nodeIndex) 
 		{
 			Node indicatorNode = indicatorNodeList.item(nodeIndex);
@@ -282,8 +279,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importThreats() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, THREATS, THREAT});
-		NodeList threatNodeList = getNodes(path);
+		NodeList threatNodeList = getNodes(getRootNode(), THREATS, THREAT);
 		for (int i = 0; i < threatNodeList.getLength(); i++) 
 		{
 			Node threatNode = threatNodeList.item(i);
@@ -297,8 +293,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importViability() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, VIABILITY, VIABILITY_ASSESSMENT});
-		NodeList keaNodeList = getNodes(path);
+		NodeList keaNodeList = getNodes(getRootNode(), VIABILITY, VIABILITY_ASSESSMENT);
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
@@ -351,8 +346,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importKeyEcologicalAttributes() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT, KEY_ATTRIBUTES, KEY_ATTRIBUTE});
-		NodeList keaNodeList = getNodes(path);
+		NodeList keaNodeList = getNodes(getRootNode(), KEY_ATTRIBUTES, KEY_ATTRIBUTE);
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node keaNode = keaNodeList.item(nodeIndex);
@@ -385,7 +379,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importProjectSummaryElement() throws Exception
 	{
 		ORef metadataRef = getProject().getMetadata().getRef();
-		Node projectSumaryNode = getNode(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY,}));
+		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
 		importField(projectSumaryNode, START_DATE, metadataRef, ProjectMetadata.TAG_START_DATE);
@@ -409,8 +403,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	public void importTargets() throws Exception
 	{
-		String path = generatePath(new String[] {CONSERVATION_PROJECT,TARGETS, TARGET});
-		NodeList targetNodeList = getNodes(path);
+		NodeList targetNodeList = getNodes(getRootNode(), TARGETS, TARGET);
 		for (int i = 0; i < targetNodeList.getLength(); i++) 
 		{
 			Node targetNode = targetNodeList.item(i);
@@ -580,6 +573,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return (Node) expression.evaluate(node, XPathConstants.NODE);
 	}
 	
+	private Node getRootNode() throws Exception
+	{
+		return getNode(generatePath(new String[]{CONSERVATION_PROJECT}));
+	}
+	
 	private Node getNode(String path) throws Exception
 	{
 		XPathExpression expression = getXPath().compile(path);
@@ -589,12 +587,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private String getNodeContent(Node node, String element) throws Exception
 	{
 		return getNode(node, element).getTextContent();
-	}
-	
-	private NodeList getNodes(String path) throws Exception
-	{
-		XPathExpression expression = getXPath().compile(path);
-		return (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
 	}
 	
 	private NodeList getNodes(Node node, String[] pathElements) throws Exception
