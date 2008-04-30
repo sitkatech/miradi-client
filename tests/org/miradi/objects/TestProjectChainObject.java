@@ -41,7 +41,7 @@ public class TestProjectChainObject extends EAMTestCase
 		ORef threatRef = project.createObject(Cause.getObjectType());
 		Cause threat = (Cause)project.findObject(threatRef);
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
-		ORef linkRef = project.createObjectAndReturnRef(FactorLink.getObjectType(), extraInfo);
+		ORef linkRef = project.createObject(FactorLink.getObjectType(), extraInfo);
 		FactorLink link = (FactorLink)project.findObject(linkRef);
 		
 		FactorSet upstreamOfTarget = builder.buildUpstreamChainAndGetFactors(target);
