@@ -302,17 +302,15 @@ public class ConProXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
-			BaseId targetId = new BaseId(getNode(viabilityAssessmentNode, TARGET_ID).getTextContent());
-			ORef targetRef = new ORef(Target.getObjectType(), targetId);
+			
+			ORef targetRef = getNodeAsRef(viabilityAssessmentNode, TARGET_ID, Target.getObjectType());
 			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 			
-			BaseId keaId = new BaseId(getNode(viabilityAssessmentNode, KEA_ID).getTextContent());
-			ORef keaRef = new ORef(KeyEcologicalAttribute.getObjectType(), keaId);
+			ORef keaRef = getNodeAsRef(viabilityAssessmentNode, KEA_ID, KeyEcologicalAttribute.getObjectType());
 			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), new BaseId[]{keaRef.getObjectId()});
 			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 			
-			BaseId indicatorId = new BaseId(getNode(viabilityAssessmentNode, INDICATOR_ID).getTextContent());
-			ORef indicatorRef = new ORef(Indicator.getObjectType(), indicatorId);
+			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
 			
 			IdList allKeaIndicatorIds = new IdList(Indicator.getObjectType(), new BaseId[]{indicatorRef.getObjectId()});
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
@@ -461,6 +459,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
 		{
 			//Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
+			//ORef threatId = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
 		}
 	}
 
@@ -607,7 +606,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		Node attributeNode = attributes.getNamedItem(attributeName);
 		return attributeNode.getNodeValue();
 	}
-		
+	
+	private ORef getNodeAsRef(Node node, String element, int type) throws Exception
+	{
+		String idAsString = getNodeContent(node, element);
+		return new ORef(type, new BaseId(idAsString));
+	}
+	
 	private Node getNode(Node node, String element) throws Exception
 	{
 		String path = generatePath(new String[]{element});
