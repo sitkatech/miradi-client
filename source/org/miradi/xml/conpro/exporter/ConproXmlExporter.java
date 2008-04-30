@@ -373,10 +373,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRankingCodeElement(out, TARGET_VIABILITY_RANK, target, Target.TAG_TARGET_STATUS);
 			writeHabitatMappedCodes(out, target);
-			writeStresses(out, target);
-			writeThreatStressRatings(out, target);
+			
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
+			writeStresses(out, target);
+			writeThreatStressRatings(out, target);
 			writeStrategyThreatTargetAssociations(out, target);
 		
 			writeEndElement(out, TARGET);
