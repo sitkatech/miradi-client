@@ -270,7 +270,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Stress stress = createAndPopulateStress();
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stress.getRef());
-		ORef threatStressRatingRef = createObjectAndReturnRef(ThreatStressRating.getObjectType(), extraInfo);
+		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
 		return ThreatStressRating.find(this, threatStressRatingRef);
 	}
 	
@@ -791,13 +791,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
 
-		return createObjectAndReturnRef(ObjectType.DIAGRAM_LINK, extraInfo);
+		return createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
-		return createObjectAndReturnRef(ObjectType.FACTOR_LINK, parameter);
+		return createObject(ObjectType.FACTOR_LINK, parameter);
 	}
 
 	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
@@ -824,7 +824,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
-		return createObjectAndReturnRef(ObjectType.FACTOR_LINK, parameter);
+		return createObject(ObjectType.FACTOR_LINK, parameter);
 	}
 	
 	public ORef creatThreatTargetBidirectionalLink() throws Exception

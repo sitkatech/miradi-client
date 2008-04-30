@@ -481,7 +481,7 @@ public class Project
 		return createObject(objectType, objectId, null);
 	}
 	
-	public ORef createObjectAndReturnRef(int objectType, CreateObjectParameter extraInfo) throws Exception
+	public ORef createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new ORef(objectType, createObjectAndReturnId(objectType, extraInfo));
 	}
@@ -667,7 +667,7 @@ public class Project
 			
 		ORef textBoxRef = createObject(TextBox.getObjectType());
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(textBoxRef);
-		ORef diagramFactorRef = createObjectAndReturnRef(DiagramFactor.getObjectType(), extraInfo);
+		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType(), extraInfo);
 		
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_SIZE, size);
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_LOCATION, location);
