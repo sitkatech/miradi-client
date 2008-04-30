@@ -149,7 +149,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importActivities(Node strategyNode, ORef strategyRef) throws Exception
 	{
 		ORefList activityRefs = new ORefList();
-		NodeList activityNodeList = getNodes(strategyNode, new String[] {ACTIVITIES, ACTIVITY});
+		NodeList activityNodeList = getNodes(strategyNode, ACTIVITIES, ACTIVITY);
 		for (int nodeIndex = 0; nodeIndex < activityNodeList.getLength(); ++nodeIndex) 
 		{
 			Node activityNode = activityNodeList.item(nodeIndex);
@@ -179,7 +179,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		private void importObjectives(Node strategyNode, ORef strategyRef) throws Exception
 	{
 		ORefList objectiveRefs = new ORefList();
-		NodeList objectiveNodeList = getNodes(strategyNode, new String[] {OBJECTIVES, OBJECTIVE_ID});
+		NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
 		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
 		{
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
@@ -210,7 +210,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importRelevantIndicators(Node objectiveNode, ORef objectiveRef) throws Exception
 	{
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		NodeList indicatorIdNodes = getNodes(objectiveNode, new String[]{INDICATORS, INDICATOR_ID});
+		NodeList indicatorIdNodes = getNodes(objectiveNode, INDICATORS, INDICATOR_ID);
 		for (int nodeIndex = 0; nodeIndex < indicatorIdNodes.getLength(); ++nodeIndex) 
 		{
 			Node indicatorNode = indicatorIdNodes.item(nodeIndex);
@@ -437,7 +437,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
 	{
 		ORefList subTargetRefs = new ORefList();
-		NodeList subTargetNodes = getNodes(targetNode, new String[]{NESTED_TARGETS, NESTED_TARGET});
+		NodeList subTargetNodes = getNodes(targetNode, NESTED_TARGETS, NESTED_TARGET);
 		for (int nodeIndex = 0; nodeIndex < subTargetNodes.getLength(); ++nodeIndex)
 		{
 			ORef subTargetRef = getProject().createObject(SubTarget.getObjectType());
@@ -455,7 +455,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importStresses(Node targetNode, ORef targetRef) throws Exception
 	{
 		ORefList stressRefs = new ORefList();
-		NodeList stressNodes = getNodes(targetNode, new String[]{TARGET_STRESSES, TARGET_STRESS});
+		NodeList stressNodes = getNodes(targetNode, TARGET_STRESSES, TARGET_STRESS);
 		for (int nodeIndex = 0; nodeIndex < stressNodes.getLength(); ++nodeIndex)
 		{
 			ORef stressRef = getProject().createObject(Stress.getObjectType());
@@ -603,6 +603,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		XPathExpression expression = getXPath().compile(path);
 		
 		return (NodeList) expression.evaluate(node, XPathConstants.NODESET);
+	}
+	
+	private NodeList getNodes(Node node, String containerName, String contentName) throws Exception
+	{
+		return getNodes(node, new String[]{containerName, contentName});
 	}
 	
 	private String getPrefixedElement(String elementName)
