@@ -458,9 +458,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 		NodeList threatTargetAssociations = getNodes(targetNode, THREAT_TARGET_ASSOCIATIONS, THREAT_TARGET_ASSOCIATION);
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
 		{
-			//Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
-			//ORef threatId = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
+			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
+			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
+			createFactorLinkAndAddToDiagram(targetRef, threatRef);
 		}
+	}
+
+	private void createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
+	{
+		//FIXME create and add factor link
+		//CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
+		//ORef factorLinkRef = getProject().createObjectAndReturnRef(FactorLink.getObjectType(), extraInfo);
 	}
 
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
