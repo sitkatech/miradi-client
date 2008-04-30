@@ -125,10 +125,7 @@ public class ORef implements Comparable<ORef>
 	
 	public int compareTo(ORef otherRef)
 	{
-		String thisString = getObjectType() + getObjectId().toString();
-		String otherString = otherRef.getObjectType() + otherRef.getObjectId().toString();
-
-		return thisString.compareTo(otherString);
+		return toString().compareTo(otherRef.toString());
 	}
 	
 	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
