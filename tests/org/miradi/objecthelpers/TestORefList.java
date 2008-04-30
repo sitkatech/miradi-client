@@ -147,4 +147,22 @@ public class TestORefList extends EAMTestCase
 		
 		return refList;
 	}
+	
+	public void testSort() 
+	{
+		ORef index11Small = new ORef(1, new BaseId(1));
+		ORef index12Medium = new ORef(1, new BaseId(2));
+		ORef index21Large = new ORef(2, new BaseId(1));
+		
+		ORefList sortableList = new ORefList(new ORef[]{index21Large, index11Small, index12Medium, });
+		assertEquals("wrong first ref before sort?", index21Large, sortableList.get(0));
+		assertEquals("wrong second ref before sort?", index11Small, sortableList.get(1));
+		assertEquals("wrong third ref before sort?", index12Medium, sortableList.get(2));
+		
+		sortableList.sort();
+		
+		assertEquals("wrong first ref after sort?", index11Small, sortableList.get(0));
+		assertEquals("wrong second ref after sort?", index12Medium, sortableList.get(1));
+		assertEquals("wrong third ref after sort?", index21Large, sortableList.get(2));
+	}
 }

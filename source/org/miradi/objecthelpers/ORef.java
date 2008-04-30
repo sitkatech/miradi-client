@@ -26,7 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ORef
+public class ORef implements Comparable<ORef>
 {
 	public ORef(int objectTypeToUse, BaseId objectIdToUse)
 	{
@@ -121,6 +121,16 @@ public class ORef
 	public String toXmlString()
 	{
 		return getObjectType() + "." + getObjectId();
+	}
+	
+	public int compareTo(ORef ref)
+	{
+		if (getObjectType() < ref.getObjectType())
+			return -1;
+		else if (getObjectType() > ref.getObjectType())
+			return 1;
+		
+		return getObjectId().toString().compareTo(ref.getObjectId().toString());
 	}
 	
 	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
