@@ -101,12 +101,15 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 			//FIXME finish method implementations
 			importProjectSummaryElement();
+			
 			importTargets();
-			importKeyEcologicalAttributes();
 			importThreats();
+			importStrategies();
+			
+			importKeyEcologicalAttributes();
 			importIndicators();
 			importObjectives();
-			importStrategies();
+			
 			importViability();
 		}
 		finally
@@ -332,7 +335,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importMeasurementData(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
-		
 		boolean currentViabilityRatingHasNoData = hasNoData(viabilityAssessmentNode, CURRENT_VIABILITY_RATING);
 		boolean currentViabilityRateDateHasNoData = hasNoData(viabilityAssessmentNode, CURRENT_RATING_DATE);
 		boolean currentConfidenceRatingHasNoData = hasNoData(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
