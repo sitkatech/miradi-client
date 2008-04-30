@@ -191,6 +191,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(strategyRef, Strategy.TAG_OBJECTIVE_IDS, objectiveRefs, Objective.getObjectType());
 	}
 
+	//FIXME is there any duplicate code in the loop for the nodes? and other importXXX
 	private void importObjectives() throws Exception
 	{
 		NodeList objectiveNodeList = getNodes(getRootNode(), OBJECTIVES, OBJECTIVE);
