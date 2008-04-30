@@ -129,13 +129,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(strategyNode, LEVERAGE, strategyRef, Strategy.TAG_IMPACT_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(strategyNode, FEASABILITY, strategyRef, Strategy.TAG_FEASIBILITY_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
 			
-			writeStrategyStatus(strategyNode, strategyRef);
+			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
 			importActivities(strategyNode, strategyRef);
 		}
 	}
 
-	private void writeStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
+	private void importStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
 	{
 		String generatedPath = generatePath(new String[]{SELECTED});
 		String data = getXPath().evaluate(generatedPath, strategyNode);
