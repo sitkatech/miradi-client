@@ -37,12 +37,20 @@ import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramFactorParameter;
+import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -81,6 +89,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		project = projectToFill;
 		codeMapHelper = new ConProMiradiCodeMapHelper();
+		//TODO need a better name,  this map includes factors and links
+		factorRefToDiagramFactorRefMap = new HashMap<ORef, ORef>();
 	}
 	
 	public void populateProjectFromFile(File fileToImport) throws Exception
@@ -135,6 +145,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
 			importActivities(strategyNode, strategyRef);
+			
+			createDiagramFactorAndAddToDiagram(strategyRef);
 		}
 	}
 
@@ -292,7 +304,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef threatRef = getProject().createObject(Cause.getObjectType(), new BaseId(threatId));
 			
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
-			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);			
+			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);
+			
+			createDiagramFactorAndAddToDiagram(threatRef);
 		}
 	}
 
@@ -445,6 +459,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importSubTargets(targetNode, targetRef);
 			
+			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
 			//FIXME
 			//import SimpleTargetLinkRatings(out, target);
@@ -462,13 +477,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
 			createFactorLinkAndAddToDiagram(targetRef, threatRef);
 		}
-	}
-
-	private void createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
-	{
-		//FIXME create and add factor link
-		//CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
-		//ORef factorLinkRef = getProject().createObjectAndReturnRef(FactorLink.getObjectType(), extraInfo);
 	}
 
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
@@ -681,7 +689,41 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		return codeMapHelper;
 	}
+	
+	private void createDiagramFactorAndAddToDiagram(ORef factorRef) throws Exception
+	{
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
+		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		factorRefToDiagramFactorRefMap.put(factorRef, diagramFactorRef);
+		appendRefToDiagramObject(diagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
+	}
+	
+	private void createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
+	{
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
+		ORef factorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
 		
+		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(threatRef);
+		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(targetRef);
+			
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		factorRefToDiagramFactorRefMap.put(factorLinkRef, diagramLinkRef);
+		appendRefToDiagramObject(diagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+	}
+	
+	private void appendRefToDiagramObject(ORef refToAdd, String tag) throws Exception
+	{
+		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
+		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
+		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(getProject(), conceptualModelRef);
+		
+		IdList idList = new IdList(refToAdd.getObjectType(), conceptualModelDiagram.getData(tag));
+		idList.add(refToAdd.getObjectId());
+		
+		setData(conceptualModelRef, tag, idList.toString());
+	}
+			
 	public static void main(String[] args)
 	{
 		try
@@ -701,6 +743,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private XPath xPath;
 	private Document document;
 	private ConProMiradiCodeMapHelper codeMapHelper;
+	private HashMap<ORef, ORef> factorRefToDiagramFactorRefMap;
 	
 	public static final String PREFIX = "cp:";
 }
