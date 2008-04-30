@@ -335,11 +335,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importMeasurementData(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
-		boolean currentViabilityRatingHasNoData = hasNoData(viabilityAssessmentNode, CURRENT_VIABILITY_RATING);
-		boolean currentViabilityRateDateHasNoData = hasNoData(viabilityAssessmentNode, CURRENT_RATING_DATE);
-		boolean currentConfidenceRatingHasNoData = hasNoData(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
-		boolean currentRatingCommentHasNoData = hasNoData(viabilityAssessmentNode, CURRENT_RATING_COMMENT);
-		if (currentViabilityRatingHasNoData && currentViabilityRateDateHasNoData && currentConfidenceRatingHasNoData && currentRatingCommentHasNoData)
+		boolean currentViabilityRatingIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_VIABILITY_RATING);
+		boolean currentViabilityRateDateIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_DATE);
+		boolean currentConfidenceRatingIsEmpty = isEmpty(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
+		boolean currentRatingCommentIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_COMMENT);
+		if (currentViabilityRatingIsEmpty && currentViabilityRateDateIsEmpty && currentConfidenceRatingIsEmpty && currentRatingCommentIsEmpty)
 			return;
 		
 		ORef measurementRef = getProject().createObject(Measurement.getObjectType());
@@ -351,7 +351,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importField(viabilityAssessmentNode, CURRENT_RATING_COMMENT, measurementRef, Measurement.TAG_COMMENT);		
 	}
 
-	private boolean hasNoData(Node node, String element) throws Exception
+	private boolean isEmpty(Node node, String element) throws Exception
 	{
 		return getNodeContent(node, element).length() == 0;
 	}
