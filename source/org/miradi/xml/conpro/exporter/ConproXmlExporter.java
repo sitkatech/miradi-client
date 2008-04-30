@@ -288,6 +288,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeKeyEcologicalAttributeIndicatorViability(UnicodeWriter out, Target target, KeyEcologicalAttribute kea) throws Exception
 	{
 		ORefList indicatorRefs = kea.getIndicatorRefs();
+		indicatorRefs.sort();
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
@@ -299,8 +300,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		writeStartElement(out, VIABILITY_ASSESSMENT);
 		writeElement(out, TARGET_ID, targetRef.getObjectId().toString());
-		writeElement(out, INDICATOR_ID, indicator.getId().toString());
 		writeElement(out, KEA_ID, kea.getId().toString());
+		writeElement(out, INDICATOR_ID, indicator.getId().toString());
 		
 		writeThreshold(out, INDICATOR_DESCRIPTION_POOR, indicator, StatusQuestion.POOR);
 		writeThreshold(out, INDICATOR_DESCRIPTION_FAIR, indicator, StatusQuestion.FAIR);

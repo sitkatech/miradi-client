@@ -37,6 +37,19 @@ public class TestORef extends TestCaseEnhanced
 			EAM.setExceptionLoggingDestination(oldErr);
 			EAM.setLogToConsole();
 		}
+	}
+	
+	public void testCompareTo()
+	{
+		ORef smaller = new ORef(4, new BaseId(10));
+		ORef biggerByType = new ORef(5, new BaseId(10));
+		ORef biggerById = new ORef(4, new BaseId(11));
+		ORef same = new ORef(4, new BaseId(10));
 		
+		assertEquals("not bigger by type?", -1, smaller.compareTo(biggerByType));
+		assertEquals("not bigger by id?", -1, smaller.compareTo(biggerById));
+		assertEquals("not same?", 0, same.compareTo(same));
+		assertEquals("not smaller by type?", 1, biggerByType.compareTo(smaller));
+		assertEquals("not smaller by id?", 1, biggerById.compareTo(smaller));
 	}
 }

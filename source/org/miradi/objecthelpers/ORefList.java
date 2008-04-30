@@ -218,6 +218,11 @@ public class ORefList
 		Collections.sort(data, comparator);
 	}
 	
+	public void sort()
+	{
+		Collections.sort(data);
+	}
+	
 	public void toXml(UnicodeWriter out) throws IOException
 	{
 		out.writeln("<RefList>");

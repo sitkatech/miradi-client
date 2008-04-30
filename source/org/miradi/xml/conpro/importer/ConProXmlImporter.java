@@ -35,11 +35,13 @@ import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -55,9 +57,11 @@ import org.miradi.project.Project;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
@@ -98,11 +102,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importProjectSummaryElement();
 			importTargets();
 			importKeyEcologicalAttributes();
-			importViability();
 			importThreats();
 			importIndicators();
 			importObjectives();
 			importStrategies();
+			importViability();
 		}
 		finally
 		{
@@ -298,9 +302,52 @@ public class ConProXmlImporter implements ConProMiradiXml
 		NodeList keaNodeList = getNodes(path);
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
-			//Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
-			//FIXME finish viability
+			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
+			BaseId targetId = new BaseId(getNode(viabilityAssessmentNode, TARGET_ID).getTextContent());
+			ORef targetRef = new ORef(Target.getObjectType(), targetId);
+			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+			
+			BaseId keaId = new BaseId(getNode(viabilityAssessmentNode, KEA_ID).getTextContent());
+			ORef keaRef = new ORef(KeyEcologicalAttribute.getObjectType(), keaId);
+			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), new BaseId[]{keaRef.getObjectId()});
+			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+			
+			BaseId indicatorId = new BaseId(getNode(viabilityAssessmentNode, INDICATOR_ID).getTextContent());
+			ORef indicatorRef = new ORef(Indicator.getObjectType(), indicatorId);
+			
+			IdList allKeaIndicatorIds = new IdList(Indicator.getObjectType(), new BaseId[]{indicatorRef.getObjectId()});
+			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
+			IdList currentKeaIndicators = kea.getIndicatorIds();
+			allKeaIndicatorIds.addAll(currentKeaIndicators);
+			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, allKeaIndicatorIds.toString());
+			
+			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
+			importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING);
+			
+			//FIXME finish importing the rest of the fields
+			//writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, indicator.getCurrentStatus());
+//			writeOptionalRatingCodeElement(out, DESIRED_VIABILITY_RATING,  indicator.getFutureStatusRating());
+//			writeOptionalLatestMeasurementValues(out, indicator);
+//			writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
+//			writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
+//			writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+//			writeOptionalElement(out, DESIRED_RATING_COMMENT, indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
+//			writeOptionalElement(out, VIABILITY_RECORD_COMMENT, kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		}
+	}
+
+	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
+	{
+		StringMap thresholds = new StringMap();
+		String poorThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR).getTextContent();
+		String fairThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR).getTextContent();
+		String goodThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD).getTextContent();
+		String veryGoodThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD).getTextContent();
+		thresholds.add(StatusQuestion.POOR, poorThreshold);
+		thresholds.add(StatusQuestion.FAIR, fairThreshold);
+		thresholds.add(StatusQuestion.GOOD, goodThreshold);
+		thresholds.add(StatusQuestion.VERY_GOOD, veryGoodThreshold);
+		setData(indicatorRef, Indicator.TAG_INDICATOR_THRESHOLD, thresholds.toString());
 	}
 
 	private void importKeyEcologicalAttributes() throws Exception
