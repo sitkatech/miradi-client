@@ -212,7 +212,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
 	
-	void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
+	private static void createLinkageAndBundle(Project projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
@@ -316,21 +316,21 @@ public class TestThreatRatingFramework extends EAMTestCase
 		}
 	}
 
-	private DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
+	private static DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
 		return projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		//FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
 		//return targetId;
 	}
 
-	private DiagramFactor createThreat(ProjectForTesting projectToUse) throws Exception
+	private static DiagramFactor createThreat(ProjectForTesting projectToUse) throws Exception
 	{
 		return projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 //		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
 //		return threatId;
 	}
 	
-	void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
+	private static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
 		RatingCriterion criteria[] = frameworkToUse.getCriteria();
@@ -341,17 +341,22 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private SimpleThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
 	{
 		ProjectForTesting tempProject = new ProjectForTesting(getName());
-		SimpleThreatRatingFramework trf = tempProject.getSimpleThreatRatingFramework();
 		
+		return fillFrameWork(tempProject, bundleValues);
+	}
+
+	public static SimpleThreatRatingFramework fillFrameWork(ProjectForTesting projectToUse, int[][] bundleValues) throws Exception
+	{
+		SimpleThreatRatingFramework trf = projectToUse.getSimpleThreatRatingFramework();
 		int threatCount = bundleValues.length;
 		DiagramFactor[] threats = new DiagramFactor[threatCount];
 		for(int i = 0; i < threatCount; ++i)
-			threats[i] = createThreat(tempProject);
+			threats[i] = createThreat(projectToUse);
 		
 		int targetCount = bundleValues[0].length;
 		DiagramFactor[] targets = new DiagramFactor[targetCount];
 		for(int i = 0; i < targetCount; ++i)
-			targets[i] = createTarget(tempProject);
+			targets[i] = createTarget(projectToUse);
 
 		for(int threatIndex = 0; threatIndex < threatCount; ++threatIndex)
 		{
@@ -362,12 +367,12 @@ public class TestThreatRatingFramework extends EAMTestCase
 				if(numericValue < 0)
 					continue;
 				ValueOption valueOption = trf.findValueOptionByNumericValue(numericValue);
-				createLinkageAndBundle(tempProject, threats[threatIndex], targets[targetIndex], valueOption);				
+				createLinkageAndBundle(projectToUse, threats[threatIndex], targets[targetIndex], valueOption);				
 			}
 		}
 		return trf;
 	}
 	
-	SimpleThreatRatingFramework framework;
+	private SimpleThreatRatingFramework framework;
 	private ProjectForTesting project;
 }

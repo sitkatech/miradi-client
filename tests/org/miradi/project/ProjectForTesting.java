@@ -350,7 +350,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		keaIds.addRef(kea.getRef());
 		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		
-		//FIXME,  add target threat rating bundle
+		int[][] bundleValues = { {3,}, {4,}, {1,}, };
+		TestThreatRatingFramework.fillFrameWork(this, bundleValues);
 	}
 	
 	public void populateCause(Cause cause) throws Exception
