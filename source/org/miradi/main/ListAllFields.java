@@ -79,7 +79,7 @@ public class ListAllFields
 	private static BaseObject createObject(Project project, int type) throws Exception
 	{
 		CreateObjectParameter extraInfo = createExtraInfo(type);
-		ORef ref = new ORef(type, project.createObject(type, extraInfo));
+		ORef ref = new ORef(type, project.createObjectAndReturnId(type, extraInfo));
 		BaseObject object = project.findObject(ref);
 		return object;
 	}

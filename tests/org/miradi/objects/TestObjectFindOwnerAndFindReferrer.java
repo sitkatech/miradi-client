@@ -304,16 +304,16 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	{
 		ORef factorRef = project.createObject(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
-		DiagramFactorId diagramFactorId = (DiagramFactorId)project.createObject(DiagramFactor.getObjectType(), extraInfo);
+		DiagramFactorId diagramFactorId = (DiagramFactorId)project.createObjectAndReturnId(DiagramFactor.getObjectType(), extraInfo);
 		return (DiagramFactor)project.findObject(DiagramFactor.getObjectType(), diagramFactorId);
 	}
 	
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
-		FactorLinkId linkId = (FactorLinkId)project.createObject(FactorLink.getObjectType(), linkExtraInfo);
+		FactorLinkId linkId = (FactorLinkId)project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
-		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObjectAndReturnId(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramLinkId);
 	}
 	
