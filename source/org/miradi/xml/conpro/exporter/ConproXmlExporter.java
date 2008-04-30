@@ -98,6 +98,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeIndicators(UnicodeWriter out) throws Exception
 	{
 		ORefList indicatorRefs = getProject().getIndicatorPool().getRefList();
+		indicatorRefs.sort();
 		writeStartElement(out, INDICATORS);
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
