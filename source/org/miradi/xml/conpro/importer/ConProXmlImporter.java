@@ -285,9 +285,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importThreats() throws Exception
 	{
 		NodeList threatNodeList = getNodes(getRootNode(), THREATS, THREAT);
-		for (int i = 0; i < threatNodeList.getLength(); i++) 
+		for (int nodeIndex = 0; nodeIndex < threatNodeList.getLength(); ++nodeIndex) 
 		{
-			Node threatNode = threatNodeList.item(i);
+			Node threatNode = threatNodeList.item(nodeIndex);
 			String threatId = getAttributeValue(threatNode, ID);
 			ORef threatRef = getProject().createObject(Cause.getObjectType(), new BaseId(threatId));
 			
@@ -430,9 +430,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 	public void importTargets() throws Exception
 	{
 		NodeList targetNodeList = getNodes(getRootNode(), TARGETS, TARGET);
-		for (int i = 0; i < targetNodeList.getLength(); i++) 
+		for (int nodeIndex = 0; nodeIndex < targetNodeList.getLength(); ++nodeIndex) 
 		{
-			Node targetNode = targetNodeList.item(i);
+			Node targetNode = targetNodeList.item(nodeIndex);
 			String targetId = getAttributeValue(targetNode, ID);
 			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
 			
@@ -447,12 +447,23 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importSubTargets(targetNode, targetRef);
 			
+			importThreatToTargetAssociations(targetNode, targetRef);
 			//FIXME
 			//import SimpleTargetLinkRatings(out, target);
 			//import StrategyThreatTargetAssociations(out, target);
 		}
 	}
 		
+	private void importThreatToTargetAssociations(Node targetNode, ORef targetRef) throws Exception
+	{
+		//FIXME finish importing threat target links
+		NodeList threatTargetAssociations = getNodes(targetNode, THREAT_TARGET_ASSOCIATIONS, THREAT_TARGET_ASSOCIATION);
+		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
+		{
+			//Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
+		}
+	}
+
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
 	{
 		ORefList subTargetRefs = new ORefList();
@@ -582,9 +593,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 		XPathExpression expression = getXPath().compile(path);
 		NodeList nodeList = (NodeList) expression.evaluate(getDocument(), XPathConstants.NODESET);
 		Vector<String> nodes = new Vector();
-		for (int i = 0; i < nodeList.getLength(); i++) 
+		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); ++nodeIndex) 
 		{
-			nodes.add(nodeList.item(i).getTextContent());
+			nodes.add(nodeList.item(nodeIndex).getTextContent());
 		}
 		
 		return nodes.toArray(new String[0]);
