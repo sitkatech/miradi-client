@@ -45,6 +45,7 @@ import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
@@ -159,7 +160,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importWhenOverride(activityNode, activityRef);
 		}
 		
-		setData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, Task.getObjectType());
+		setIdListFromRefListData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, Task.getObjectType());
 	}
 
 	private void importWhenOverride(Node activityNode, ORef activityRef) throws Exception
@@ -188,7 +189,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			objectiveRefs.add(objectiveRef);
 		}
 		
-		setData(strategyRef, Strategy.TAG_OBJECTIVE_IDS, objectiveRefs, Objective.getObjectType());
+		setIdListFromRefListData(strategyRef, Strategy.TAG_OBJECTIVE_IDS, objectiveRefs, Objective.getObjectType());
 	}
 
 	//FIXME is there any duplicate code in the loop for the nodes? and other importXXX
@@ -275,7 +276,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			methodRefs.add(methodRef);
 		}
 		
-		setData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
+		setIdListFromRefListData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
 	}
 
 	private void importThreats() throws Exception
@@ -319,9 +320,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
 			importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING);
 			
+			importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
+			importMeasurementData(viabilityAssessmentNode, indicatorRef);
 			//FIXME finish importing the rest of the fields
 			//writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, indicator.getCurrentStatus());
-//			writeOptionalRatingCodeElement(out, DESIRED_VIABILITY_RATING,  indicator.getFutureStatusRating());
+
 //			writeOptionalLatestMeasurementValues(out, indicator);
 //			writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 //			writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
@@ -329,6 +332,30 @@ public class ConProXmlImporter implements ConProMiradiXml
 //			writeOptionalElement(out, DESIRED_RATING_COMMENT, indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
 //			writeOptionalElement(out, VIABILITY_RECORD_COMMENT, kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		}
+	}
+
+	private void importMeasurementData(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
+	{
+		String currentViabilityRatingValue = getNodeContent(viabilityAssessmentNode, CURRENT_VIABILITY_RATING);
+		String currentRatingDateValue =  getNodeContent(viabilityAssessmentNode, CURRENT_RATING_DATE);
+		String currentConfidenceRatingValue = getNodeContent(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
+		String currentRatingCommentValue = getNodeContent(viabilityAssessmentNode, CURRENT_RATING_COMMENT);
+		if (hasData(currentViabilityRatingValue) && hasData(currentRatingDateValue) &&
+			hasData(currentConfidenceRatingValue) && hasData(currentRatingCommentValue))
+			return;
+		
+		ORef measurementRef = getProject().createObject(Measurement.getObjectType());
+		setRefListData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurementRef));
+		
+		importField(viabilityAssessmentNode, CURRENT_VIABILITY_RATING, measurementRef, Measurement.TAG_STATUS);
+		importField(viabilityAssessmentNode, CURRENT_RATING_DATE, measurementRef, Measurement.TAG_DATE);
+		importCodeField(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
+		importField(viabilityAssessmentNode, CURRENT_RATING_COMMENT, measurementRef, Measurement.TAG_COMMENT);		
+	}
+
+	private boolean hasData(String value)
+	{
+		return value.length() == 0;
 	}
 
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
@@ -525,7 +552,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(ref, tag, codes.toString());
 	}
 	
-	private void setData(ORef ref, String tag, ORefList refList, int type) throws Exception
+	private void setRefListData(ORef ref, String tag, ORefList refList) throws Exception
+	{
+		setData(ref, tag, refList.toString());
+	}
+	
+	private void setIdListFromRefListData(ORef ref, String tag, ORefList refList, int type) throws Exception
 	{
 		setData(ref, tag, refList.convertToIdList(type).toString());
 	}
