@@ -102,9 +102,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 			//FIXME finish method implementations
 			importProjectSummaryElement();
 			
-			importTargets();
-			importThreats();
 			importStrategies();
+			importThreats();
+			importTargets();
 			
 			importKeyEcologicalAttributes();
 			importIndicators();
