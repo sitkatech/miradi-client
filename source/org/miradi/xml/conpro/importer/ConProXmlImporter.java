@@ -137,14 +137,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
 	{
-		String generatedPath = generatePath(new String[]{SELECTED});
-		String data = getXPath().evaluate(generatedPath, strategyNode);
-		boolean status = Boolean.parseBoolean(data);
-		String statusValue = Strategy.STATUS_DRAFT;
-		if (status)
-			statusValue = Strategy.STATUS_REAL;
+		String data = getNodeContent(strategyNode, SELECTED);
+		boolean isNonDraft = Boolean.parseBoolean(data);
+		String draftStatusValue = Strategy.STATUS_DRAFT;
+		if (isNonDraft)
+			draftStatusValue = Strategy.STATUS_REAL;
 		
-		setData(strategyRef, Strategy.TAG_STATUS, statusValue);
+		setData(strategyRef, Strategy.TAG_STATUS, draftStatusValue);
 	}
 
 	private void importActivities(Node strategyNode, ORef strategyRef) throws Exception
@@ -585,6 +584,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		XPathExpression expression = getXPath().compile(path);
 		return (Node) expression.evaluate(getDocument(), XPathConstants.NODE);
+	}
+	
+	private String getNodeContent(Node node, String element) throws Exception
+	{
+		return getNode(node, element).getTextContent();
 	}
 	
 	private NodeList getNodes(String path) throws Exception
