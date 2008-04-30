@@ -57,12 +57,16 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
+import org.miradi.project.SimpleThreatRatingFramework;
+import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -475,7 +479,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
-			createFactorLinkAndAddToDiagram(targetRef, threatRef);
+			ORef factorLinkRef = createFactorLinkAndAddToDiagram(targetRef, threatRef);
+			//FIXME finish importing serverity, scope, irr but first add sample data (has FIXME)
+			SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
+			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
+			
+			ORef valueOptionRef = getProject().createObject(ValueOption.getObjectType());
+			ORef ratingCriterionRef = getProject().createObject(RatingCriterion.getObjectType());
+			bundle.setValueId(ratingCriterionRef.getObjectId(), valueOptionRef.getObjectId());
+			framework.saveBundle(bundle);
+			
+			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
 		}
 	}
 
@@ -698,7 +712,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		appendRefToDiagramObject(diagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 	}
 	
-	private void createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
+	private ORef createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
 	{
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
 		ORef factorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
@@ -710,6 +724,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		factorRefToDiagramFactorRefMap.put(factorLinkRef, diagramLinkRef);
 		appendRefToDiagramObject(diagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+		
+		return factorLinkRef;
 	}
 	
 	private void appendRefToDiagramObject(ORef refToAdd, String tag) throws Exception
