@@ -57,12 +57,12 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
@@ -473,6 +473,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 	private void importThreatToTargetAssociations(Node targetNode, ORef targetRef) throws Exception
 	{
+		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
 		//FIXME finish importing threat target links
 		NodeList threatTargetAssociations = getNodes(targetNode, THREAT_TARGET_ASSOCIATIONS, THREAT_TARGET_ASSOCIATION);
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
@@ -480,17 +481,28 @@ public class ConProXmlImporter implements ConProMiradiXml
 			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
 			ORef factorLinkRef = createFactorLinkAndAddToDiagram(targetRef, threatRef);
-			//FIXME finish importing serverity, scope, irr but first add sample data (has FIXME)
-			SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
-			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
 			
-			ORef valueOptionRef = getProject().createObject(ValueOption.getObjectType());
-			ORef ratingCriterionRef = getProject().createObject(RatingCriterion.getObjectType());
-			bundle.setValueId(ratingCriterionRef.getObjectId(), valueOptionRef.getObjectId());
+			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
+			importBundle(threatTargetAssociationNode, THREAT_SCOPE, framework, bundle, Stress.TAG_SCOPE);
+			importBundle(threatTargetAssociationNode, THREAT_SEVERITY, framework, bundle, Stress.TAG_SEVERITY);
+			importBundle(threatTargetAssociationNode, THREAT_IRREVERSIBILITY, framework, bundle, ThreatStressRating.TAG_IRREVERSIBILITY);			
 			framework.saveBundle(bundle);
 			
 			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
 		}
+	}
+
+	private void importBundle(Node threatTargetAssociationNode, String element, SimpleThreatRatingFramework framework, ThreatRatingBundle bundle, String criterionLabel) throws Exception
+	{
+		String rawCode = getNodeContent(threatTargetAssociationNode, element);
+		if (rawCode.length() == 0)
+			return;
+		
+		ORef valueOptionRef = getProject().createObject(ValueOption.getObjectType());
+		String convertedCode = getCodeMapHelper().getConProToMiradiRatingMap().get(rawCode);
+		setData(valueOptionRef, ValueOption.TAG_NUMERIC, convertedCode);
+		BaseId criterionId = framework.findCriterionByLabel(criterionLabel).getId();
+		bundle.setValueId(criterionId, valueOptionRef.getObjectId());
 	}
 
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
@@ -663,7 +675,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private String getNodeContent(Node node, String element) throws Exception
 	{
-		return getNode(node, element).getTextContent();
+		Node foundNode = getNode(node, element);
+		if (foundNode == null)
+			return "";
+		
+		return foundNode.getTextContent();
 	}
 	
 	private NodeList getNodes(Node node, String[] pathElements) throws Exception
