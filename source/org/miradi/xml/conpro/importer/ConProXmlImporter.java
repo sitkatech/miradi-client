@@ -613,7 +613,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void setData(ORef ref, String tag, String data) throws Exception
 	{
-		getProject().setObjectData(ref, tag, data);
+		getProject().setObjectData(ref, tag, data.trim());
 	}
 
 	public String generatePath(String[] pathElements)
