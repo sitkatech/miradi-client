@@ -497,11 +497,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		if (rawCode.length() == 0)
 			return;
 		
-		ORef valueOptionRef = getProject().createObject(ValueOption.getObjectType());
 		String convertedCode = getCodeMapHelper().getConProToMiradiRatingMap().get(rawCode);
-		setData(valueOptionRef, ValueOption.TAG_NUMERIC, convertedCode);
+		ValueOption valueOption = framework.findValueOptionByNumericValue(Integer.parseInt(convertedCode));
+		setData(valueOption.getRef(), ValueOption.TAG_NUMERIC, convertedCode);
 		BaseId criterionId = framework.findCriterionByLabel(criterionLabel).getId();
-		bundle.setValueId(criterionId, valueOptionRef.getObjectId());
+		bundle.setValueId(criterionId, valueOption.getId());
 	}
 
 	private void importSubTargets(Node targetNode, ORef targetRef) throws Exception
