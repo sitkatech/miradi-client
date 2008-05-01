@@ -46,7 +46,6 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -748,9 +747,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
 		ORef conceptualModelRef = conceptualModelRefs.get(0);
-		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(getProject(), conceptualModelRef);
-		
-		IdList idList = new IdList(refToAdd.getObjectType(), conceptualModelDiagram.getData(tag));
+
+		IdList idList = new IdList(refToAdd.getObjectType(), getProject().getObjectData(conceptualModelRef, tag));
 		idList.add(refToAdd.getObjectId());
 		
 		setData(conceptualModelRef, tag, idList.toString());
