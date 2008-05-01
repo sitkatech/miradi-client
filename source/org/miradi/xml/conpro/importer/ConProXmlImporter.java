@@ -480,7 +480,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
-			ORef factorLinkRef = createFactorLinkAndAddToDiagram(targetRef, threatRef);
+			ORef factorLinkRef = createFactorLinkAndAddToDiagram(threatRef, targetRef);
 			
 			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
 			importBundle(threatTargetAssociationNode, THREAT_SCOPE, framework, bundle, Stress.TAG_SCOPE);
@@ -728,13 +728,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		appendRefToDiagramObject(diagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 	}
 	
-	private ORef createFactorLinkAndAddToDiagram(ORef targetRef, ORef threatRef) throws Exception
+	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef refRef) throws Exception
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, refRef);
 		ORef factorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
 		
-		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(threatRef);
-		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(targetRef);
+		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(fromRef);
+		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(refRef);
 			
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
