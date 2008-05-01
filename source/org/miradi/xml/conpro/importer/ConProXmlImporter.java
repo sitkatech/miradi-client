@@ -727,13 +727,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
 	}
 	
-	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef refRef) throws Exception
+	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef toRef) throws Exception
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, refRef);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, toRef);
 		ORef factorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
 		
 		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(fromRef);
-		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(refRef);
+		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(toRef);
 			
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
