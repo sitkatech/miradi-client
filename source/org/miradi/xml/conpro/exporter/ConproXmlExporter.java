@@ -22,7 +22,9 @@ package org.miradi.xml.conpro.exporter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
@@ -483,12 +485,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
-		FactorLink[] sortedTargetLinks = targetLinks.toArray(new FactorLink[0]);
-		Arrays.sort(sortedTargetLinks, new BaseObjectByRefSorter());
+		Vector<FactorLink> sortedTargetLinks = new Vector(targetLinks);
+		Collections.sort(sortedTargetLinks, new BaseObjectByRefSorter());
+
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
-		for (int index = 0; index < sortedTargetLinks.length; ++index)
+		for (int index = 0; index < sortedTargetLinks.size(); ++index)
 		{
-			writeSimpleTargetLinkRatings(out, sortedTargetLinks[index], target.getRef());
+			writeSimpleTargetLinkRatings(out, sortedTargetLinks.get(index), target.getRef());
 		}
 		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATIONS);
