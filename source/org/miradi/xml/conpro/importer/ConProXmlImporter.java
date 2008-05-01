@@ -482,16 +482,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef factorLinkRef = createFactorLinkAndAddToDiagram(threatRef, targetRef);
 			
 			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
-			importBundle(threatTargetAssociationNode, THREAT_SCOPE, framework, bundle, Stress.TAG_SCOPE);
-			importBundle(threatTargetAssociationNode, THREAT_SEVERITY, framework, bundle, Stress.TAG_SEVERITY);
-			importBundle(threatTargetAssociationNode, THREAT_IRREVERSIBILITY, framework, bundle, ThreatStressRating.TAG_IRREVERSIBILITY);			
+			importThreatRatingField(threatTargetAssociationNode, THREAT_SCOPE, framework, bundle, Stress.TAG_SCOPE);
+			importThreatRatingField(threatTargetAssociationNode, THREAT_SEVERITY, framework, bundle, Stress.TAG_SEVERITY);
+			importThreatRatingField(threatTargetAssociationNode, THREAT_IRREVERSIBILITY, framework, bundle, ThreatStressRating.TAG_IRREVERSIBILITY);			
 			framework.saveBundle(bundle);
 			
 			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
 		}
 	}
 
-	private void importBundle(Node threatTargetAssociationNode, String element, SimpleThreatRatingFramework framework, ThreatRatingBundle bundle, String criterionLabel) throws Exception
+	private void importThreatRatingField(Node threatTargetAssociationNode, String element, SimpleThreatRatingFramework framework, ThreatRatingBundle bundle, String criterionLabel) throws Exception
 	{
 		String rawCode = getNodeContent(threatTargetAssociationNode, element);
 		if (rawCode.length() == 0)
