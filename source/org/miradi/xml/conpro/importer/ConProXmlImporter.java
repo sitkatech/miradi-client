@@ -747,7 +747,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void appendRefToDiagramObject(String tag, ORef refToAdd) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
-		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
+		ORef conceptualModelRef = conceptualModelRefs.get(0);
 		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(getProject(), conceptualModelRef);
 		
 		IdList idList = new IdList(refToAdd.getObjectType(), conceptualModelDiagram.getData(tag));
