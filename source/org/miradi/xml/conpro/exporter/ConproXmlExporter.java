@@ -29,6 +29,7 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -482,11 +483,14 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
+		FactorLink[] factorLinks = targetLinks.toArray(new FactorLink[0]);
+		Arrays.sort(factorLinks, new BaseObjectByRefSorter());
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
-		for(FactorLink factorLink : targetLinks)
+		for (int index = 0; index < factorLinks.length; ++index)
 		{
-			writeSimpleTargetLinkRatings(out, factorLink, target.getRef());
+			writeSimpleTargetLinkRatings(out, factorLinks[index], target.getRef());
 		}
+		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATIONS);
 	}
 	
