@@ -725,7 +725,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
 		factorRefToDiagramFactorRefMap.put(factorRef, diagramFactorRef);
-		appendRefToDiagramObject(diagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
+		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
 	}
 	
 	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef refRef) throws Exception
@@ -739,12 +739,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		factorRefToDiagramFactorRefMap.put(factorLinkRef, diagramLinkRef);
-		appendRefToDiagramObject(diagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef);
 		
 		return factorLinkRef;
 	}
 	
-	private void appendRefToDiagramObject(ORef refToAdd, String tag) throws Exception
+	private void appendRefToDiagramObject(String tag, ORef refToAdd) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
 		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
