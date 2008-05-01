@@ -483,12 +483,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
-		FactorLink[] factorLinks = targetLinks.toArray(new FactorLink[0]);
-		Arrays.sort(factorLinks, new BaseObjectByRefSorter());
+		FactorLink[] sortedTargetLinks = targetLinks.toArray(new FactorLink[0]);
+		Arrays.sort(sortedTargetLinks, new BaseObjectByRefSorter());
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
-		for (int index = 0; index < factorLinks.length; ++index)
+		for (int index = 0; index < sortedTargetLinks.length; ++index)
 		{
-			writeSimpleTargetLinkRatings(out, factorLinks[index], target.getRef());
+			writeSimpleTargetLinkRatings(out, sortedTargetLinks[index], target.getRef());
 		}
 		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATIONS);
