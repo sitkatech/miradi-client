@@ -473,7 +473,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importThreatToTargetAssociations(Node targetNode, ORef targetRef) throws Exception
 	{
 		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
-		//FIXME finish importing threat target links
 		NodeList threatTargetAssociations = getNodes(targetNode, THREAT_TARGET_ASSOCIATIONS, THREAT_TARGET_ASSOCIATION);
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
 		{
