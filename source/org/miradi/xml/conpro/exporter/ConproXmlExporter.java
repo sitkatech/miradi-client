@@ -576,7 +576,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
 			writeStartElement(out, STRESSES_THREAT);
-			writeOptionalRatingCodeElement(out, CONTRIBUTING_RANK, threatStressRating.getIrreversibilityCode());
+			
+			writeOptionalRatingCodeElement(out, CONTRIBUTING_RANK, threatStressRating, ThreatStressRating.TAG_CONTRIBUTION);
+			writeOptionalRatingCodeElement(out, IRREVERSIBILITY_RANK, threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY);
+			writeOptionalRatingCodeElement(out, STRESS_THREAT_TO_TARGET_RANK, threatStressRating.calculateThreatRating());
+			
 			writeEndElement(out, STRESSES_THREAT);
 		}
 	}

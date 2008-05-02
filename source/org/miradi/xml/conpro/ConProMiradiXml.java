@@ -84,6 +84,8 @@ public interface ConProMiradiXml
 	public static final String STRESSES_THREATS = "stresses_threats";
 	public static final String STRESSES_THREAT = "stresses_threat";
 	public static final String CONTRIBUTING_RANK = "contrib_rank";
+	public static final String IRREVERSIBILITY_RANK = "irreversible_rank";
+	public static final String STRESS_THREAT_TO_TARGET_RANK = "stress_threat_to_target_rank";
 	public static final String NESTED_TARGETS = "nested_targets";
 	public static final String NESTED_TARGET = "nested_target";
 	public static final String COMMENT = "comment";
