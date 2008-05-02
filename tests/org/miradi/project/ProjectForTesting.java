@@ -549,6 +549,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		//createAndPopulateIndicator();
 		//createAndPopulateObjective();
 		//createAndPopulateStrategy();
+		//createAndPopulateStrategyThreatTargetAssociation();
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception

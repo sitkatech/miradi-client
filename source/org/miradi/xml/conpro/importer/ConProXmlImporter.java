@@ -453,18 +453,30 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 			importStresses(targetNode, targetRef);
-
 			importSubTargets(targetNode, targetRef);
 			
 			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
 			importStressesThreats(targetNode, targetRef);
 			//FIXME
-			//import SimpleTargetLinkRatings(out, target);
 			//import StrategyThreatTargetAssociations(out, target);
+			importStrategyThreatTargetAssociations(targetNode, targetRef);
 		}
 	}
 		
+	private void importStrategyThreatTargetAssociations(Node targetNode, ORef targetRef) throws Exception
+	{
+		NodeList strategyThreatTargetAssociations = getNodes(targetNode, STRATEGY_THREAT_TARGET_ASSOCIATIONS, STRATEGY_THREAT_TARGET_ASSOCIATION);
+		for (int nodeIndex = 0; nodeIndex < strategyThreatTargetAssociations.getLength(); ++nodeIndex)
+		{
+			Node strategyThreatTargetAssociationNode = strategyThreatTargetAssociations.item(nodeIndex);
+			ORef threatRef = getNodeAsRef(strategyThreatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
+			ORef strategyRef = getNodeAsRef(strategyThreatTargetAssociationNode, STRATEGY_ID, Strategy.getObjectType());
+			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
+			createFactorLinkAndAddToDiagram(threatRef, targetRef);
+		}
+	}
+
 	private void importStressesThreats(Node targetNode, ORef targetRef) throws Exception
 	{
 		//FIXME finish importing tsrs
