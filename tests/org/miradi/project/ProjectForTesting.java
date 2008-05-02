@@ -67,6 +67,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
+import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 
 
@@ -184,10 +185,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return indicator;
 	}
 	
-	public Task createAndPopulateTask() throws Exception
+	public Task createAndPopulateTask(String customTaskLabel) throws Exception
 	{
 		Task task  = createTask();
-		populateTask(task);
+		populateTask(task, customTaskLabel);
 		
 		return task;
 	}
@@ -432,7 +433,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_STATUS, IndicatorStatusRatingQuestion.GOING_WELL_CODE);
 		
-		Task task = createAndPopulateTask();
+		Task task = createAndPopulateTask(ConProXmlImporter.SEE_DETAILS_FIELD_METHOD_NAME);
 		IdList taskIds = new IdList(Task.getObjectType());
 		taskIds.addRef(task.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_TASK_IDS, taskIds.toString());
@@ -460,9 +461,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENT, "Some indicator Comment");
 	}
 	
-	public void populateTask(Task task) throws Exception
+	public void populateTask(Task task, String customLabel) throws Exception
 	{
-		fillObjectUsingCommand(task, Task.TAG_LABEL, "Some Task Label");
+		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 03, 19);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 3, 19);
 		fillObjectUsingCommand(task, Task.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
@@ -500,7 +501,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
 		
 		IdList activityIds = new IdList(Task.getObjectType());
-		activityIds.addRef(createAndPopulateTask().getRef());
+		activityIds.addRef(createAndPopulateTask("Some activity Label").getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
 		IdList objectiveIds = new IdList(Objective.getObjectType());
@@ -526,7 +527,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStress();
 		createAndPopulateSubTarget();
 		createAndPopulateTarget();
-		createAndPopulateTask();
+		createAndPopulateTask("Some Task Label");
 		createAndPopulateThreat();
 		createAndPopulateThreatStressRating();
 		createAndPopulateObjective();

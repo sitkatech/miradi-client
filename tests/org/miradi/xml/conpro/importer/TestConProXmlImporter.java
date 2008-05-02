@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -36,16 +37,47 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void verifyImportingMethods() throws Exception
+	{
+		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
+		ProjectForTesting projectWithMethodData = new ProjectForTesting("ProjectWithMethodData");
+		projectWithMethodData.createAndPopulateIndicator();
+		
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, projectWithMethodData);
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			Task[] allTasks = getProject().getTaskPool().getAllTasks();
+			System.out.println(allTasks.length);
+			assertTrue("has no tasks?", allTasks.length > 0);
+			for (int index = 0; index < allTasks.length; ++index)
+			{
+				if (allTasks[index].isMethod())
+				{
+					assertEquals("not same task name?", ConProXmlImporter.SEE_DETAILS_FIELD_METHOD_NAME, allTasks[index].getData(Task.TAG_LABEL));
+					return;
+				}
+			}
+			
+			fail("no methods found?");
+		}
+		finally 
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+		
+	}
+	
 	public void testImportConProProject() throws Exception
 	{
 		getProject().fillProjectPartially();
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproAfterFirstImport.xml");
-		File afterXmlOutFile2 = createTempFileFromName("conproAfterSecondImport.xml");
-		
 		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
-		ProjectForTesting projectToFill2 = new ProjectForTesting("ProjectToFill2");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
@@ -56,15 +88,15 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
 			assertEquals("incorrect project values after first import?", firstExport, secondExport);
+			
+			verifyImportingMethods();
 		}
 		finally
 		{
 			beforeXmlOutFile.delete();
 			afterXmlOutFile.delete();
-			afterXmlOutFile2.delete();
 			
 			projectToFill1.close();
-			projectToFill2.close();
 		}
 	}
 

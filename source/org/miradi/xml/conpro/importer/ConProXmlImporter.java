@@ -280,20 +280,15 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importMethods(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
-		ORefList methodRefs = new ORefList();
-		Node methodNode = getNode(indicatorNode, METHODS);
-		if (methodNode == null)
-			return;
+		String methodString = getNodeContent(indicatorNode, METHODS);
+		if (methodString == null)
+			return;	
 		
-		String semiColonSeperatedMethods = methodNode.getTextContent();
-		String[] methods = semiColonSeperatedMethods.split(";");
-		for (int index = 0; index < methods.length; ++index)
-		{
-			ORef methodRef = getProject().createObject(Task.getObjectType());
-			setData(methodRef, Task.TAG_LABEL, methods[index]);
-			methodRefs.add(methodRef);
-		}
+		ORef methodRef = getProject().createObject(Task.getObjectType());
+		setData(methodRef, Task.TAG_LABEL, SEE_DETAILS_FIELD_METHOD_NAME);
+		setData(methodRef, Task.TAG_DETAILS, methodString);
 		
+		ORefList methodRefs = new ORefList(methodRef);
 		setIdListFromRefListData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
 	}
 
@@ -783,5 +778,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private ConProMiradiCodeMapHelper codeMapHelper;
 	private HashMap<ORef, ORef> factorRefToDiagramFactorRefMap;
 	
+	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "XX See Details field";
 	public static final String PREFIX = "cp:";
 }

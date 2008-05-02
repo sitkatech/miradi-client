@@ -49,7 +49,7 @@ public class TaskPool extends EAMNormalObjectPool
 		return new Task(objectManager, actualId);
 	}
 
-	public BaseObject[] getAllTasks()
+	public Task[] getAllTasks()
 	{
 		BaseId[] allIds = getIds();
 		Task[] allTasks = new Task[allIds.length];
