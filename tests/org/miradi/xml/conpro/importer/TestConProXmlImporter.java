@@ -50,7 +50,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			importProject(beforeXmlOutFile, projectToFill);
 			
 			Task[] allTasks = getProject().getTaskPool().getAllTasks();
-			System.out.println(allTasks.length);
 			assertTrue("has no tasks?", allTasks.length > 0);
 			for (int index = 0; index < allTasks.length; ++index)
 			{
