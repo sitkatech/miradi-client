@@ -56,13 +56,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
 			assertEquals("incorrect project values after first import?", firstExport, secondExport);
-			
-			importProject(afterXmlOutFile, projectToFill2);
-			
-			exportProject(afterXmlOutFile2, projectToFill2);
-			String thirdExport = convertFileContentToString(afterXmlOutFile2);
-		
-			assertEquals("incorrect project values after second import?", secondExport, thirdExport);
 		}
 		finally
 		{
