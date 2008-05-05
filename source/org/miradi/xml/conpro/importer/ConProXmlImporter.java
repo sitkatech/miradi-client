@@ -799,6 +799,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private ConProMiradiCodeMapHelper codeMapHelper;
 	private HashMap<ORef, ORef> factorRefToDiagramFactorRefMap;
 	
-	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "XX See Details field";
+	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String PREFIX = "cp:";
 }
