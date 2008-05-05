@@ -37,6 +37,23 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
+		//FIXME this is not working properly with hard coded names.  make it work
+//		if(!Project.isValidProjectFilename(newProjectFilename))
+//			throw new Exception("Illegal project name: " + newProjectFilename);
+//		
+//		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(importFile));
+//		ZipEntry entry = zipIn.getNextEntry();
+//		if (entry == null)
+//			return;
+//		
+//		ProjectUnzipper.extractOneFile(zipIn, new File("c:/temp/project.xml"), entry);
+//		zipIn.closeEntry();
+//		zipIn.close();
+//		
+//		
+//		Project projectToFill = new Project();
+//		projectToFill.createOrOpen(new File(EAM.getHomeDirectory(),"herer"));
+//		new ConProXmlImporter(projectToFill).populateProjectFromFile(new File(CpmzExporter.PROJECT_XML_FILE_NAME));
 	}
 
 	@Override
