@@ -254,7 +254,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importMethods(indicatorNode, indicatorRef);
 			importCodeField(indicatorNode, PRIORITY, indicatorRef, Indicator.TAG_PRIORITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importProgressReport(indicatorNode, indicatorRef);
-			//FIXME finish indicator by importing WHO_MONITORS and checking import methods method			
+			importField(indicatorNode, WHO_MONITORS, indicatorRef, Indicator.TAG_DETAIL);
 			importBudgetData(indicatorNode, indicatorRef);
 			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENT);
 		}

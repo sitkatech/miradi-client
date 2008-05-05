@@ -25,6 +25,8 @@ import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
@@ -89,6 +91,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			assertEquals("incorrect project values after first import?", firstExport, secondExport);
 			
 			verifyImportingMethods();
+			verifyImportingWhos();
 		}
 		finally
 		{
@@ -96,6 +99,36 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			afterXmlOutFile.delete();
 			
 			projectToFill1.close();
+		}
+	}
+
+	private void verifyImportingWhos() throws Exception
+	{
+		File beforeXmlOutFile = createTempFileFromName("conproBeforeImportTestingWho.xml");
+		ProjectForTesting projectWithWhoData = new ProjectForTesting("ProjectWithWhoData");
+		Indicator indicator = projectWithWhoData.createAndPopulateIndicator();
+		Task task = projectWithWhoData.createTaskWithWho();
+		ORefList taskRefs = new ORefList(task.getRef());
+		indicator.setData(Indicator.TAG_TASK_IDS, taskRefs.convertToIdList(Task.getObjectType()).toString());
+
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFillWithWho");
+		try
+		{
+			exportProject(beforeXmlOutFile, projectWithWhoData);
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			Indicator[] allIndicators = projectToFill.getIndicatorPool().getAllIndicators();
+			
+			assertTrue("has no indicator?", allIndicators.length == 1);
+			String indicatorDetailsText = allIndicators[0].getData(Indicator.TAG_DETAIL);
+			assertTrue("indicator has no detail?", indicatorDetailsText.length() > 0);
+			String detailsTextWitoutSemiColonSeperator = indicatorDetailsText.replace(";", "");
+			assertEquals("wrong project resource name?", ProjectForTesting.PROJECT_RESOURCE_LABEL_TEXT, detailsTextWitoutSemiColonSeperator);
+		}
+		finally 
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
 		}
 	}
 

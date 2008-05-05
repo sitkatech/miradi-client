@@ -293,6 +293,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Indicator.find(this, indicatorRef);
 	}
 	
+	public Task createTaskWithWho() throws Exception
+	{
+		Task task = createAndPopulateTask("some label");
+		ORef projectResourceRef = createAndPopulateProjectResource();
+		ORefList projectResourceRefs = new ORefList(projectResourceRef);
+		fillObjectUsingCommand(task, Task.TAG_WHO_OVERRIDE_REFS, projectResourceRefs.toString());
+		
+		return task;
+	}
+	
 	public Task createTask() throws Exception
 	{
 		ORef taskRef = createObject(Task.getObjectType());
@@ -396,7 +406,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
 		
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LABEL, "John Doe");
+		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_GIVEN_NAME, "John");
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_SUR_NAME, "Doe");
 		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
@@ -839,4 +849,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return factorLinkRef;
 	}
+	
+	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 }
