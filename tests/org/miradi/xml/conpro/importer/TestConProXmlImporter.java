@@ -39,6 +39,36 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testImportConProProject() throws Exception
+	{
+		getProject().fillProjectPartially();
+		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
+		
+		File afterXmlOutFile = createTempFileFromName("conproAfterFirstImport.xml");
+		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			String firstExport = convertFileContentToString(beforeXmlOutFile);
+			
+			importProject(beforeXmlOutFile, projectToFill1);
+			
+			exportProject(afterXmlOutFile, projectToFill1);
+			String secondExport = convertFileContentToString(afterXmlOutFile);
+			assertEquals("incorrect project values after first import?", firstExport, secondExport);
+			
+			verifyImportingMethods();
+			verifyImportingWhos();
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			afterXmlOutFile.delete();
+			
+			projectToFill1.close();
+		}
+	}
+	
 	public void verifyImportingMethods() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
@@ -72,36 +102,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		
 	}
 	
-	public void testImportConProProject() throws Exception
-	{
-		getProject().fillProjectPartially();
-		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
-		
-		File afterXmlOutFile = createTempFileFromName("conproAfterFirstImport.xml");
-		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
-		try
-		{
-			exportProject(beforeXmlOutFile, getProject());
-			String firstExport = convertFileContentToString(beforeXmlOutFile);
-			
-			importProject(beforeXmlOutFile, projectToFill1);
-			
-			exportProject(afterXmlOutFile, projectToFill1);
-			String secondExport = convertFileContentToString(afterXmlOutFile);
-			assertEquals("incorrect project values after first import?", firstExport, secondExport);
-			
-			verifyImportingMethods();
-			verifyImportingWhos();
-		}
-		finally
-		{
-			beforeXmlOutFile.delete();
-			afterXmlOutFile.delete();
-			
-			projectToFill1.close();
-		}
-	}
-
 	private void verifyImportingWhos() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImportTestingWho.xml");
