@@ -1,6 +1,6 @@
-# $LastChangedBy$ 
-# $LastChangedDate$
-# $LastChangedRevision$ 
+# $LastChangedBy: nimbooce $ 
+# $LastChangedDate: 2008-05-05 12:31:59 -0400 (Mon, 05 May 2008) $
+# $LastChangedRevision: 17 $ 
 # --------------------------------------------------------------------------------------------
 #
 
@@ -278,7 +278,7 @@ indicators.element =
             attribute id { vocabulary_id }
             & # ConPro will normalize this string to fit xsd:token. See note #1.
               element cp:name { text }
-            & element cp:methods { xsd:token }?
+            & element cp:methods { text }?
             & element cp:priority { vocabulary_priority_vhhml }?
             & element cp:status { vocabulary_indicator_status }?
             & element cp:who_monitors { text }?
