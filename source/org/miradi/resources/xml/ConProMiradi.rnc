@@ -1,6 +1,6 @@
-# $LastChangedBy: ecoffman $ 
-# $LastChangedDate: 2008-04-02 10:55:24 -0400 (Wed, 02 Apr 2008) $
-# $LastChangedRevision: 2104 $ 
+# $LastChangedBy$ 
+# $LastChangedDate$
+# $LastChangedRevision$ 
 # --------------------------------------------------------------------------------------------
 #
 
@@ -292,7 +292,7 @@ vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
 vocabulary_doc_exchange_status = "success" | "warning" | "fail"
 vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
-vocabulary_id = xsd:double
+vocabulary_id = xsd:nonNegativeInteger
 vocabulary_indicator_status = "Planned" | "On Track"
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
 vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
