@@ -66,7 +66,8 @@ public class CpmzExporter extends MainWindowDoer
 	private void createCpmzFile(File chosen) throws Exception
 	{
 		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(chosen));
-		File projectXmlFile = new File("project.xml");
+		
+		File projectXmlFile = new File(PROJECT_XML_FILE_NAME);
 		try
 		{
 			new ConproXmlExporter(getProject()).export(projectXmlFile);
@@ -89,4 +90,6 @@ public class CpmzExporter extends MainWindowDoer
 			out.close();
 		}
 	}
+	
+	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 }
