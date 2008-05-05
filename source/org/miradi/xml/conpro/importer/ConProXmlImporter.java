@@ -49,6 +49,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -744,20 +745,31 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef toRef) throws Exception
 	{
+		ORef foundFactorLinkRef = getExistingLink(fromRef, toRef);
+		if (!foundFactorLinkRef.isInvalid())
+			return foundFactorLinkRef;
+		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, toRef);
-		ORef factorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
+		ORef createdFactorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
 		
 		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(fromRef);
 		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(toRef);
 			
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(createdFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
-		factorRefToDiagramFactorRefMap.put(factorLinkRef, diagramLinkRef);
+		factorRefToDiagramFactorRefMap.put(createdFactorLinkRef, diagramLinkRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef);
 		
-		return factorLinkRef;
+		return createdFactorLinkRef;
 	}
 	
+	private ORef getExistingLink(ORef fromRef, ORef toRef)
+	{
+		Factor fromFactor = Factor.findFactor(getProject(), fromRef);
+		Factor toFactor = Factor.findFactor(getProject(), toRef);
+		return getProject().getFactorLinkPool().getLinkedRef(fromFactor, toFactor);
+	}
+
 	private void appendRefToDiagramObject(String tag, ORef refToAdd) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
