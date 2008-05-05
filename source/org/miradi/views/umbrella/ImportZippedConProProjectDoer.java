@@ -23,6 +23,8 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.miradi.utils.CpmzFileFilter;
+
 public class ImportZippedConProProjectDoer extends ImportProjectDoer
 {
 	@Override
@@ -40,6 +42,6 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 	@Override
 	public FileFilter[] getFileFilter()
 	{
-		return null;
+		return new FileFilter[] {new CpmzFileFilter()};
 	}
 }
