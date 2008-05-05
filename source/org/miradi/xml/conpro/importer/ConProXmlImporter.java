@@ -456,8 +456,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
 			importStressesThreats(targetNode, targetRef);
-			//FIXME
-			//import StrategyThreatTargetAssociations(out, target);
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
 		}
 	}
