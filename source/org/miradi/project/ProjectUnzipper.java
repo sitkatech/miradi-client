@@ -153,7 +153,7 @@ public class ProjectUnzipper
 		}
 	}
 
-	private static void extractOneFile(ZipInputStream zipInput, File destinationFile, ZipEntry entry) throws FileNotFoundException, IOException
+	public static void extractOneFile(ZipInputStream zipInput, File destinationFile, ZipEntry entry) throws FileNotFoundException, IOException
 	{
 		//TODO: This code skips the higher level (first level) directory(ies) ; there should be a better way to express this
 		if(entry.isDirectory())
