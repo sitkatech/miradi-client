@@ -19,22 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
-import java.io.File;
-
-import javax.swing.filechooser.FileFilter;
-
 import org.miradi.main.EAM;
 
-public class MPZFileFilter extends FileFilter implements MiradiFileFilter
+public class MPZFileFilter extends GenericMiradiFileFilter
 {
-
-	public boolean accept(File pathname)
-	{
-		if (pathname.isDirectory())
-			return true;
-		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
-	}
-
 	public String getDescription()
 	{
 		return EAM.text("FileFilter|Miradi Project Zip (*.mpz)");
