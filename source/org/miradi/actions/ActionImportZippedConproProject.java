@@ -36,7 +36,6 @@ public class ActionImportZippedConproProject extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		//TODO change .mpz to new file format
-		return EAM.text("TT|Import a .mpz file that was exported from ConPro");
+		return EAM.text("TT|Import a .cpmz file that was exported from ConPro");
 	}
 }
