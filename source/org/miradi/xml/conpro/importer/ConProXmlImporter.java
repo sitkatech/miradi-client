@@ -282,9 +282,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importMethods(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
 		String methodString = getNodeContent(indicatorNode, METHODS);
-		if (methodString == null)
-			return;	
-		
 		ORef methodRef = getProject().createObject(Task.getObjectType());
 		setData(methodRef, Task.TAG_LABEL, SEE_DETAILS_FIELD_METHOD_NAME);
 		setData(methodRef, Task.TAG_DETAILS, methodString);
