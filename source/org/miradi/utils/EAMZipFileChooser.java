@@ -26,39 +26,22 @@ import org.miradi.main.MainWindow;
 
 public class EAMZipFileChooser extends EAMFileSaveChooser
 {
-
 	public EAMZipFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
 
-	public String getDialogApproveTitleText()
-	{
-		return "Title|Save Zip File";
-	}
-
-	public String getApproveButtonToolTipText()
-	{
-		return "TT|Save Zip File";
-	}
-
-	public String getDialogApprovelButtonText()
-	{
-		return "Save Zip";
-	}
-
-	public String getDialogOverwriteTitleText()
-	{
-		return "Title|Overwrite existing file?";
-	}
-
-	public String getDialogOverwriteBodyText()
-	{
-		return "This will replace the existing file.";
-	}
-
+	@Override
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
 	}
+	
+	@Override
+	public String getUiExtensionTag()
+	{
+		return ZIP_UI_EXTENSION_TAG;
+	}
+	
+	public static final String ZIP_UI_EXTENSION_TAG = "Zip";
 }

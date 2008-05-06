@@ -72,17 +72,34 @@ public abstract class EAMFileSaveChooser
 
 	}
 
-	public abstract String getDialogApproveTitleText();
+	public String getDialogApproveTitleText()
+	{
+		return EAM.text("Title|Save " + getUiExtensionTag() + " File");
+	}
 
-	public abstract String getApproveButtonToolTipText();
+	public String getApproveButtonToolTipText()
+	{
+		return EAM.text("TT|Save " + getUiExtensionTag() + " File");
+	}
 
-	public abstract String getDialogApprovelButtonText();
+	public String getDialogApprovelButtonText()
+	{
+		return EAM.text("Save " + getUiExtensionTag());
+	}
 
-	public abstract String getDialogOverwriteTitleText();
+	public String getDialogOverwriteTitleText()
+	{
+		return EAM.text("Title|Overwrite existing file?");
+	}
 
-	public abstract String getDialogOverwriteBodyText();
-
+	public String getDialogOverwriteBodyText()
+	{
+		return EAM.text("This will replace the existing file.");
+	}
+	
 	public abstract FileFilter[] getFileFilter();
+	
+	public abstract String getUiExtensionTag();
 	
 	private static String currentDirectory;
 

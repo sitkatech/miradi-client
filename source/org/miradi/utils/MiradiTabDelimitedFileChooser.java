@@ -30,33 +30,17 @@ public class MiradiTabDelimitedFileChooser extends EAMFileSaveChooser
 		super(mainWindow);
 	}
 
-	public String getDialogApproveTitleText()
-	{
-		return "Title|Save Tab Delimited File";
-	}
-
-	public String getApproveButtonToolTipText()
-	{
-		return "TT|Save Tab Delimited File";
-	}
-
-	public String getDialogApprovelButtonText()
-	{
-		return "Save Tab Delimited";
-	}
-
-	public String getDialogOverwriteTitleText()
-	{
-		return "Title|Overwrite existing file?";
-	}
-
-	public String getDialogOverwriteBodyText()
-	{
-		return "This will replace the existing file.";
-	}
-
+	@Override
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new TabDelimitedFileFilter(),};
 	}
+	
+	@Override
+	public String getUiExtensionTag()
+	{
+		return TAB_DELIMITED_UI_EXTENSION_TAG;
+	}
+	
+	public static final String TAB_DELIMITED_UI_EXTENSION_TAG = "Tab Delimited";
 }

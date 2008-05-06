@@ -25,39 +25,22 @@ import org.miradi.main.MainWindow;
 
 public class EAMSVGFileChooser extends EAMFileSaveChooser
 {
-
 	public EAMSVGFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
 
-	public String getDialogApproveTitleText()
-	{
-		return "Title|Save SVG Image File";
-	}
-
-	public String getApproveButtonToolTipText()
-	{
-		return "TT|Save SVG File";
-	}
-
-	public String getDialogApprovelButtonText()
-	{
-		return "Save SVG";
-	}
-
-	public String getDialogOverwriteTitleText()
-	{
-		return "Title|Overwrite existing file?";
-	}
-
-	public String getDialogOverwriteBodyText()
-	{
-		return "This will replace the existing file.";
-	}
-
+	@Override
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new SVGFileFilter()};
 	}
+	
+	@Override
+	public String getUiExtensionTag()
+	{
+		return SVG_UI_EXTENSION_TAG;
+	}
+	
+	public static final String SVG_UI_EXTENSION_TAG = "SVG";
 }
