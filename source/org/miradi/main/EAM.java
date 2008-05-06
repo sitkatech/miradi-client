@@ -281,6 +281,11 @@ public class EAM
 	{
 		return Translation.text(key);
 	}
+	
+	public static String substitute(String text, String stringToSubstitude, String replacement)
+	{
+		return text.replaceAll(stringToSubstitude, replacement);
+	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
 	{
