@@ -19,18 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
+import org.xml.sax.InputSource;
 
 public class ImportZippedConProProjectDoer extends ImportProjectDoer
 {
@@ -47,49 +49,55 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
-		File xmlProjectFile = CpmzExporter.createProjectXmlFileInSystemTemp();
-		try
-		{
-			importProject(importFile, newProjectFilename, xmlProjectFile);
-		}
-		finally
-		{
-			xmlProjectFile.delete();
-		}
+		importProject(importFile, newProjectFilename);
 	}
 
-	private void importProject(File importFile, String newProjectFilename, File xmlProjectFile) throws Exception
+	private void importProject(File zipFileToImport, String newProjectFilename) throws Exception
 	{
-		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(importFile));
+		Project projectToFill = new Project();
+		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFileToImport));
+		ByteArrayInputStream projectAsInputStream = extractEntry(zipIn);
 		try 
 		{
-			ZipEntry entry = zipIn.getNextEntry();
-			if (entry == null)
-			{
-				zipIn.close();
-				return;
-			}
-			
-			ProjectUnzipper.extractOneFile(zipIn, xmlProjectFile, entry);
-		}
-		finally
-		{
-			zipIn.close();
-		}
-		
-		
-		Project projectToFill = new Project();
-		try
-		{
 			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
-			new ConProXmlImporter(projectToFill).populateProjectFromFile(xmlProjectFile);
+			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
 		}
 		finally
 		{
-			projectToFill.close();			
+			projectToFill.close();
+			zipIn.close();
+			projectAsInputStream.close();
 		}
 	}
 
+	//FIXME this method needs to be updated to extract all the contents of the zip
+	public static ByteArrayInputStream extractEntry(ZipInputStream  in) throws Exception
+	{
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		BufferedOutputStream bufferOut = new BufferedOutputStream(byteOut);
+		try
+		{
+			//FIXME get rid of this 1000
+			final int ARRAY_LENGHT = 1000;
+			while((in.getNextEntry()) != null)
+			{
+				int count;
+				byte data[] = new byte[ARRAY_LENGHT];
+				while ((count = in.read(data, 0, ARRAY_LENGHT)) != -1)
+				{
+					bufferOut.write(data, 0, count);
+				}
+			}
+		}
+		finally
+		{
+			bufferOut.flush();
+			bufferOut.close();
+		}
+
+		return new ByteArrayInputStream(byteOut.toByteArray()); 
+	}
+	
 	@Override
 	public FileFilter[] getFileFilter()
 	{

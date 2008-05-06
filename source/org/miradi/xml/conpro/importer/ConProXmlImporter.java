@@ -84,6 +84,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 
@@ -110,26 +111,31 @@ public class ConProXmlImporter implements ConProMiradiXml
 			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
 				throw new Exception("Could not validate file for importing.");
 
-			document = createDocument(fileToImport);
-			xPath = createXPath();
-
-			//FIXME finish method implementations
-			importProjectSummaryElement();
-			
-			importStrategies();
-			importThreats();
-			importTargets();
-			
-			importKeyEcologicalAttributes();
-			importIndicators();
-			importObjectives();
-			
-			importViability();
+			importConProProject(new InputSource(fileToImport.toURI().toASCIIString()));
 		}
 		finally
 		{
 			fileInputStream.close();
 		}
+	}
+
+	public void importConProProject(InputSource inputSource) throws Exception
+	{
+		document = createDocument(inputSource);
+		xPath = createXPath();
+
+		//FIXME finish method implementations
+		importProjectSummaryElement();
+		
+		importStrategies();
+		importThreats();
+		importTargets();
+		
+		importKeyEcologicalAttributes();
+		importIndicators();
+		importObjectives();
+		
+		importViability();
 	}
 
 	private void importStrategies() throws Exception
@@ -392,13 +398,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 
-	private Document createDocument(File fileToImport) throws ParserConfigurationException, SAXException, IOException
+	private Document createDocument(InputSource inputSource) throws ParserConfigurationException, SAXException, IOException
 	{
 		DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 		documentFactory.setNamespaceAware(true);
 		DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
 		
-		return documentBuilder.parse(fileToImport);
+		return documentBuilder.parse(inputSource);
 	}
 
 	private XPath createXPath()
