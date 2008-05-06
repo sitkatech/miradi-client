@@ -65,7 +65,7 @@ public class CpmzExporter extends MainWindowDoer
 
 	private void createCpmzFile(File chosen) throws Exception
 	{
-		File projectXmlFile = File.createTempFile("Project", ".xml");
+		File projectXmlFile = createProjectXmlFileInSystemTemp();
 		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
@@ -76,19 +76,26 @@ public class CpmzExporter extends MainWindowDoer
 			ZipEntry entry = new ZipEntry(projectXmlFile.getName());
 			int size = (int) projectXmlFile.length();
 			entry.setSize(size);
-			out.putNextEntry(entry);
+			
 			byte[] contents = new byte[size];
 			FileInputStream in = new FileInputStream(projectXmlFile);
 			in.read(contents);
 			in.close();
+			out.putNextEntry(entry);
 			out.write(contents);
 		}
 		finally
 		{
+			projectXmlFile.delete();
 			out.closeEntry();
 			out.close();
 		}
 	}
 	
+	public static File createProjectXmlFileInSystemTemp()
+	{
+		return new File(System.getProperty("java.io.tmpdir"), PROJECT_XML_FILE_NAME);
+	}
+
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 }

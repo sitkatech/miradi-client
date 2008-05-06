@@ -55,16 +55,18 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 			return;
 		}
 		
+		File xmlProjectFile = CpmzExporter.createProjectXmlFileInSystemTemp();
 		Project projectToFill = new Project();
 		try
 		{
-			ProjectUnzipper.extractOneFile(zipIn, new File(homeDirectory, "project.xml"), entry);	
+			ProjectUnzipper.extractOneFile(zipIn, xmlProjectFile, entry);	
 			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
-			new ConProXmlImporter(projectToFill).populateProjectFromFile(new File(CpmzExporter.PROJECT_XML_FILE_NAME));
+			new ConProXmlImporter(projectToFill).populateProjectFromFile(xmlProjectFile);
 		}
 		finally
 		{
 			zipIn.close();
+			xmlProjectFile.delete();
 			projectToFill.close();			
 		}
 	}
