@@ -71,7 +71,7 @@ public class CpmzExporter extends MainWindowDoer
 		{
 			new ConproXmlExporter(getProject()).export(projectXmlFile);
 			if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(projectXmlFile)))
-				throw new Exception("Could not validate file for exporting.");
+				throw new Exception("Exported file does not validate.");
 			
 			ZipEntry entry = new ZipEntry(projectXmlFile.getName());
 			int size = (int) projectXmlFile.length();
