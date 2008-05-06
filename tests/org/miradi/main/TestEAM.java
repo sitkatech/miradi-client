@@ -28,9 +28,9 @@ public class TestEAM extends EAMTestCase
 
 	public void testSubstitude()
 	{
-		String beforeSubstitute = "some text with &3";
+		String beforeSubstitute = "some text with %s";
 		String substituteString = "some more text";
-		String substitudedText = EAM.substitute(beforeSubstitute, "&3", substituteString);
+		String substitudedText = EAM.substitute(beforeSubstitute, substituteString);
 		String expectedText = "some text with some more text";
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
 	}
