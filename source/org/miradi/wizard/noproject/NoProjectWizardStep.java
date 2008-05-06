@@ -96,11 +96,10 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 								"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_MIRADI + "' value='" + nextLabel + " &gt;'></input></td>" +
 								"</tr>" +
 								
-								//FIXME temporarly import button disabled 
-								//"<tr>" +
-								//"<td></td>" + 
-								//"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
-								//"</tr>" +
+								"<tr>" +
+								"<td></td>" + 
+								"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
+								"</tr>" +
 								"</table></p><br>") ; 
 				
 		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);

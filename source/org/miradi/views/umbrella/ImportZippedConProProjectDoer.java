@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.miradi.main.EAM;
+import org.miradi.project.Project;
+import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CpmzFileFilter;
+import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ImportZippedConProProjectDoer extends ImportProjectDoer
 {
@@ -37,23 +44,29 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		//FIXME this is not working properly with hard coded names.  make it work
-//		if(!Project.isValidProjectFilename(newProjectFilename))
-//			throw new Exception("Illegal project name: " + newProjectFilename);
-//		
-//		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(importFile));
-//		ZipEntry entry = zipIn.getNextEntry();
-//		if (entry == null)
-//			return;
-//		
-//		ProjectUnzipper.extractOneFile(zipIn, new File("c:/temp/project.xml"), entry);
-//		zipIn.closeEntry();
-//		zipIn.close();
-//		
-//		
-//		Project projectToFill = new Project();
-//		projectToFill.createOrOpen(new File(EAM.getHomeDirectory(),"herer"));
-//		new ConProXmlImporter(projectToFill).populateProjectFromFile(new File(CpmzExporter.PROJECT_XML_FILE_NAME));
+		if(!Project.isValidProjectFilename(newProjectFilename))
+			throw new Exception("Illegal project name: " + newProjectFilename);
+		
+		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(importFile));
+		ZipEntry entry = zipIn.getNextEntry();
+		if (entry == null)
+		{
+			zipIn.close();
+			return;
+		}
+		
+		Project projectToFill = new Project();
+		try
+		{
+			ProjectUnzipper.extractOneFile(zipIn, new File(homeDirectory, "project.xml"), entry);	
+			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
+			new ConProXmlImporter(projectToFill).populateProjectFromFile(new File(CpmzExporter.PROJECT_XML_FILE_NAME));
+		}
+		finally
+		{
+			zipIn.close();
+			projectToFill.close();			
+		}
 	}
 
 	@Override
