@@ -78,7 +78,7 @@ public class CpmzExporter extends MainWindowDoer
 				throw new Exception("Exported file does not validate.");
 			}
 		
-			writeContent("project.xml", zipOut, projectXmlInBytes);
+			writeContent(zipOut, "project.xml", projectXmlInBytes);
 		}
 		finally
 		{
@@ -102,7 +102,7 @@ public class CpmzExporter extends MainWindowDoer
 		return writer.toString().getBytes("UTF-8");
 	}
 
-	private void writeContent(String projectXmlName, ZipOutputStream out, byte[] bytes) throws FileNotFoundException, IOException
+	private void writeContent(ZipOutputStream out, String projectXmlName, byte[] bytes) throws FileNotFoundException, IOException
 	{
 		ZipEntry entry = new ZipEntry(projectXmlName);
 		entry.setSize(bytes.length);
