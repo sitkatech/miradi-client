@@ -65,7 +65,7 @@ public class CpmzExporter extends MainWindowDoer
 
 	private void createCpmzFile(File chosen) throws Exception
 	{
-		File projectXmlFile = new File(PROJECT_XML_FILE_NAME);
+		File projectXmlFile = File.createTempFile("Project", ".xml");
 		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
