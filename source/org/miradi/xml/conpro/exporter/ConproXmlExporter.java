@@ -79,7 +79,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	}
 
 	@Override
-	protected void exportProject(UnicodeWriter out) throws Exception
+	public void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<?xml version='1.0'?>");
 		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE +"'>");
