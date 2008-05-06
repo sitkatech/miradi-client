@@ -47,26 +47,45 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
+		File xmlProjectFile = CpmzExporter.createProjectXmlFileInSystemTemp();
+		try
+		{
+			importProject(importFile, newProjectFilename, xmlProjectFile);
+		}
+		finally
+		{
+			xmlProjectFile.delete();
+		}
+	}
+
+	private void importProject(File importFile, String newProjectFilename, File xmlProjectFile) throws Exception
+	{
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(importFile));
-		ZipEntry entry = zipIn.getNextEntry();
-		if (entry == null)
+		try 
+		{
+			ZipEntry entry = zipIn.getNextEntry();
+			if (entry == null)
+			{
+				zipIn.close();
+				return;
+			}
+			
+			ProjectUnzipper.extractOneFile(zipIn, xmlProjectFile, entry);
+		}
+		finally
 		{
 			zipIn.close();
-			return;
 		}
 		
-		File xmlProjectFile = CpmzExporter.createProjectXmlFileInSystemTemp();
+		
 		Project projectToFill = new Project();
 		try
 		{
-			ProjectUnzipper.extractOneFile(zipIn, xmlProjectFile, entry);	
 			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
 			new ConProXmlImporter(projectToFill).populateProjectFromFile(xmlProjectFile);
 		}
 		finally
 		{
-			zipIn.close();
-			xmlProjectFile.delete();
 			projectToFill.close();			
 		}
 	}
