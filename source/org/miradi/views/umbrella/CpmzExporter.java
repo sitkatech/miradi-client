@@ -80,10 +80,6 @@ public class CpmzExporter extends MainWindowDoer
 		
 			writeContent("project.xml", zipOut, projectXmlInBytes);
 		}
-		catch(Exception e)
-		{	
-			throw e;
-		}
 		finally
 		{
 			zipOut.close();
