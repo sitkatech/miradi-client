@@ -282,9 +282,9 @@ public class EAM
 		return Translation.text(key);
 	}
 	
-	public static String substitute(String text, String stringToSubstitude, String replacement)
+	public static String substitute(String text, String replacement)
 	{
-		return text.replaceAll(stringToSubstitude, replacement);
+		return text.replaceAll(STRING_TO_SUBSTITUTE, replacement);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
@@ -596,6 +596,7 @@ public class EAM
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 	
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
+	public static final String STRING_TO_SUBSTITUTE = "%s";
 }
 
 
