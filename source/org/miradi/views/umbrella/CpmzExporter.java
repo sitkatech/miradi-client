@@ -21,7 +21,9 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -72,23 +74,39 @@ public class CpmzExporter extends MainWindowDoer
 			new ConproXmlExporter(getProject()).export(projectXmlFile);
 			if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(projectXmlFile)))
 				throw new Exception("Exported file does not validate.");
-			
-			ZipEntry entry = new ZipEntry(projectXmlFile.getName());
-			int size = (int) projectXmlFile.length();
-			entry.setSize(size);
-			
-			byte[] contents = new byte[size];
-			FileInputStream in = new FileInputStream(projectXmlFile);
-			in.read(contents);
-			in.close();
-			out.putNextEntry(entry);
-			out.write(contents);
+					
+			byte[] contents = readContent(projectXmlFile);
+			writeContent(projectXmlFile.getName(), out, contents);
 		}
 		finally
 		{
 			projectXmlFile.delete();
 			out.closeEntry();
 			out.close();
+		}
+	}
+
+	private void writeContent(String projectXmlName, ZipOutputStream out, byte[] contents) throws FileNotFoundException, IOException
+	{
+		ZipEntry entry = new ZipEntry(projectXmlName);
+		entry.setSize(contents.length);
+		out.putNextEntry(entry);
+		out.write(contents);
+	}
+
+	private byte[] readContent(File projectXmlFile) throws FileNotFoundException, IOException
+	{
+		int size = (int) projectXmlFile.length();
+		FileInputStream in = new FileInputStream(projectXmlFile);
+		try
+		{
+			byte[] contents = new byte[size];
+			in.read(contents);
+			return contents;
+		}
+		finally
+		{
+			in.close();
 		}
 	}
 	
