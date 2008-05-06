@@ -30,33 +30,17 @@ public class EAMPNGFileChooser extends EAMFileSaveChooser
 		super(mainWindow);
 	}
 
-	public String getDialogApproveTitleText()
-	{
-		return "Title|Save PNG File";
-	}
-
-	public String getApproveButtonToolTipText()
-	{
-		return "TT|Save PNG File";
-	}
-
-	public String getDialogApprovelButtonText()
-	{
-		return "Save PNG";
-	}
-
-	public String getDialogOverwriteTitleText()
-	{
-		return "Title|Overwrite existing file?";
-	}
-
-	public String getDialogOverwriteBodyText()
-	{
-		return "This will replace the existing file.";
-	}
-
+	@Override
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new PNGFileFilter()};
 	}
+	
+	@Override
+	public String getUiExtensionTag()
+	{
+		return PNG_UI_EXTENSION_TAG;
+	}
+	
+	public static final String PNG_UI_EXTENSION_TAG = "PNG";
 }

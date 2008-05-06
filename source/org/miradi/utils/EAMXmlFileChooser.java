@@ -25,39 +25,22 @@ import org.miradi.main.MainWindow;
 
 public class EAMXmlFileChooser extends EAMFileSaveChooser
 {
-
 	public EAMXmlFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
 
-	public String getDialogApproveTitleText()
-	{
-		return "Title|Save Xml File";
-	}
-
-	public String getApproveButtonToolTipText()
-	{
-		return "TT|Save Xml File";
-	}
-
-	public String getDialogApprovelButtonText()
-	{
-		return "Save Xml";
-	}
-
-	public String getDialogOverwriteTitleText()
-	{
-		return "Title|Overwrite existing file?";
-	}
-
-	public String getDialogOverwriteBodyText()
-	{
-		return "This will replace the existing file.";
-	}
-
+	@Override
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new XMLFileFilter()};
 	}
+	
+	@Override
+	public String getUiExtensionTag()
+	{
+		return Xml_UI_EXTENSION_TAG;
+	}
+	
+	public static final String Xml_UI_EXTENSION_TAG = "Xml";
 }
