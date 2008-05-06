@@ -184,8 +184,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importWhenOverride(Node activityNode, ORef activityRef) throws Exception
 	{
-		String startDateAsString = getNode(activityNode, ACTIVITY_START_DATE).getTextContent();
-		String endDateAsString = getNode(activityNode, ACTIVITY_END_DATE).getTextContent();
+		String startDateAsString = getNodeContent(activityNode, ACTIVITY_START_DATE);
+		String endDateAsString = getNodeContent(activityNode, ACTIVITY_END_DATE);
 		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
 		{
 			MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
@@ -367,10 +367,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
 		StringMap thresholds = new StringMap();
-		String poorThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR).getTextContent();
-		String fairThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR).getTextContent();
-		String goodThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD).getTextContent();
-		String veryGoodThreshold = getNode(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD).getTextContent();
+		String poorThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR);
+		String fairThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR);
+		String goodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD);
+		String veryGoodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD);
 		thresholds.add(StatusQuestion.POOR, poorThreshold);
 		thresholds.add(StatusQuestion.FAIR, fairThreshold);
 		thresholds.add(StatusQuestion.GOOD, goodThreshold);
