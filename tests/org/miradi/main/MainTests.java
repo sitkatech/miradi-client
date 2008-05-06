@@ -184,6 +184,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
+		suite.addTest(new TestSuite(TestEAM.class));
 		
 		// project package
 		suite.addTest(new TestSuite(TestBudgetTimePeriodChanger.class));

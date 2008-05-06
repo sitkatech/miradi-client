@@ -74,17 +74,17 @@ public abstract class EAMFileSaveChooser
 
 	public String getDialogApproveTitleText()
 	{
-		return EAM.text("Title|Save " + getUiExtensionTag() + " File");
+		return EAM.substitute(EAM.text("Title|Save %1 File"), SUBSTITUTE_STRING, getUiExtensionTag());
 	}
 
 	public String getApproveButtonToolTipText()
 	{
-		return EAM.text("TT|Save " + getUiExtensionTag() + " File");
+		return EAM.substitute(EAM.text("TT|Save %1 File"), SUBSTITUTE_STRING, getUiExtensionTag());
 	}
 
 	public String getDialogApprovelButtonText()
 	{
-		return EAM.text("Save " + getUiExtensionTag());
+		return EAM.substitute(EAM.text("Save %1"), SUBSTITUTE_STRING, getUiExtensionTag());
 	}
 
 	public String getDialogOverwriteTitleText()
@@ -102,5 +102,7 @@ public abstract class EAMFileSaveChooser
 	public abstract String getUiExtensionTag();
 	
 	private static String currentDirectory;
+	
+	public static final String SUBSTITUTE_STRING = "%1";
 
 }
