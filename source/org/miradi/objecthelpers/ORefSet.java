@@ -34,4 +34,9 @@ public class ORefSet extends HashSet<ORef>
 		this();
 		addAll(Arrays.asList(refList.toArray()));
 	}
+	
+	public void addAllRefs(ORefList refs)
+	{
+		addAll(Arrays.asList(refs.toArray()));
+	}
 }
