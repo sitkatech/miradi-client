@@ -42,7 +42,7 @@ public class ProjectZipper
 		createProjectZipFile(destination, projectName, projectDirectory);
 	}
 
-	static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception
+	public static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception
 	{
 		if(prefix.length() > 0)
 			prefix = prefix + "/";
