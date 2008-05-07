@@ -86,7 +86,8 @@ public class CpmzExporter extends MainWindowDoer
 	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception
 	{
 		File projectDir = getProject().getDatabase().getTopDirectory();
-		ZipOutputStream out = new ZipOutputStream(new ByteArrayOutputStream());
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		ZipOutputStream out = new ZipOutputStream(byteOut);
 		try
 		{
 			ProjectZipper.addTreeToZip(out, projectDir.getName(), projectDir);
@@ -97,7 +98,7 @@ public class CpmzExporter extends MainWindowDoer
 		}
 		
 		String projectZipFileName = "project" + MPZFileFilter.EXTENSION;
-		writeContent(zipOut, projectZipFileName, new ByteArrayOutputStream().toByteArray());
+		writeContent(zipOut, projectZipFileName, byteOut.toByteArray());
 	}
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
