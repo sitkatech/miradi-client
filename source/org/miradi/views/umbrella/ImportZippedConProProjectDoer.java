@@ -22,8 +22,10 @@ package org.miradi.views.umbrella;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
@@ -49,24 +51,40 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
-		importProject(importFile, newProjectFilename);
-	}
-
-	private void importProject(File zipFileToImport, String newProjectFilename) throws Exception
-	{
 		Project projectToFill = new Project();
-		ZipFile zipFile = new ZipFile(zipFileToImport);
-		ByteArrayInputStream projectAsInputStream = extractEntry(zipFile);
+		projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));
 		try 
 		{
-			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
+			importProject(importFile, projectToFill);
+		}
+		finally
+		{
+			projectToFill.close();
+		}
+	}
+
+	private void importProject(File zipFileToImport, Project projectToFill) throws ZipException, IOException, Exception
+	{
+		ZipFile zipFile = new ZipFile(zipFileToImport);
+		try
+		{
+			importProject(projectToFill, zipFile);
+		}
+		finally
+		{
+			zipFile.close();
+		}
+	}
+
+	private void importProject(Project projectToFill, ZipFile zipFile) throws Exception, IOException
+	{
+		ByteArrayInputStream projectAsInputStream = extractEntry(zipFile);
+		try
+		{
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
 		}
 		finally
 		{
-			//FIXME extract into nesterd try finallys
-			projectToFill.close();
-			zipFile.close();
 			projectAsInputStream.close();
 		}
 	}
