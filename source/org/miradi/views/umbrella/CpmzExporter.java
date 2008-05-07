@@ -32,10 +32,15 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MPZFileFilter;
+import org.miradi.utils.PNGFileFilter;
 import org.miradi.views.MainWindowDoer;
+import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -76,10 +81,38 @@ public class CpmzExporter extends MainWindowDoer
 		{
 			addProjectAsXmlToZip(zipOut);			
 			addProjectAsMpzToZip(zipOut);
+			addDiagramImagesToZip(zipOut);
 		}
 		finally
 		{
 			zipOut.close();
+		}
+	}
+
+	private void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
+	{		
+		MainWindow mainWindow = EAM.getMainWindow();
+		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
+		{
+			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
+			String CM_IMAGE_PREFIX = "CM";
+			String imageName = CM_IMAGE_PREFIX + refIndex + PNGFileFilter.EXTENSION;
+			writeDiagramImage(zipOut, mainWindow, diagramObject, imageName);
+		}
+	}
+
+	private void writeDiagramImage(ZipOutputStream zipOut, MainWindow mainWindow, DiagramObject diagramObject, String imageName) throws Exception
+	{
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		try
+		{
+			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.getImage(mainWindow, diagramObject));
+			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
+		}
+		finally
+		{
+			byteOut.close();
 		}
 	}
 
@@ -150,4 +183,5 @@ public class CpmzExporter extends MainWindowDoer
 	}
 
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
+	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 }
