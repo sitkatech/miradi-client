@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.zip.ZipInputStream;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
@@ -55,8 +55,8 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 	private void importProject(File zipFileToImport, String newProjectFilename) throws Exception
 	{
 		Project projectToFill = new Project();
-		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFileToImport));
-		ByteArrayInputStream projectAsInputStream = extractEntry(zipIn);
+		ZipFile zipFile = new ZipFile(zipFileToImport);
+		ByteArrayInputStream projectAsInputStream = extractEntry(zipFile);
 		try 
 		{
 			projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));	
@@ -64,35 +64,31 @@ public class ImportZippedConProProjectDoer extends ImportProjectDoer
 		}
 		finally
 		{
+			//FIXME extract into nesterd try finallys
 			projectToFill.close();
-			zipIn.close();
+			zipFile.close();
 			projectAsInputStream.close();
 		}
 	}
 
 	//FIXME this method needs to be updated to extract all the contents of the zip
-	public static ByteArrayInputStream extractEntry(ZipInputStream  in) throws Exception
+	public static ByteArrayInputStream extractEntry(ZipFile  zipFile) throws Exception
 	{
+		ZipEntry zipEntry = zipFile.getEntry(CpmzExporter.PROJECT_XML_FILE_NAME);
+		if (zipEntry == null)
+			return new ByteArrayInputStream(new byte[0]);
+		
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		BufferedOutputStream bufferOut = new BufferedOutputStream(byteOut);
 		try
 		{
-			//FIXME get rid of this 1000
-			final int ARRAY_LENGHT = 1000;
-			while((in.getNextEntry()) != null)
-			{
-				int count;
-				byte data[] = new byte[ARRAY_LENGHT];
-				while ((count = in.read(data, 0, ARRAY_LENGHT)) != -1)
-				{
-					bufferOut.write(data, 0, count);
-				}
-			}
+			byte[] data = new byte[(int) zipEntry.getSize()];
+			InputStream inputStream = zipFile.getInputStream(zipEntry);
+			inputStream.read(data, 0, data.length);
+			byteOut.write(data);
 		}
 		finally
 		{
-			bufferOut.flush();
-			bufferOut.close();
+			byteOut.close();
 		}
 
 		return new ByteArrayInputStream(byteOut.toByteArray()); 
