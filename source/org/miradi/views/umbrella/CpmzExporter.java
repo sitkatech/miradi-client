@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,7 +32,9 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.project.ProjectZipper;
 import org.miradi.utils.CpmzFileChooser;
+import org.miradi.utils.MPZFileFilter;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -71,18 +74,48 @@ public class CpmzExporter extends MainWindowDoer
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
-			byte[] projectXmlInBytes = exportProjectXmlToBytes();
-			ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
-			if (!new ConProMiradiXmlValidator().isValid(inputStream))
-			{
-				throw new Exception("Exported file does not validate.");
-			}
-		
-			writeContent(zipOut, "project.xml", projectXmlInBytes);
+			addProjectAsXmlToZip(zipOut);			
+			addProjectAsMpzToZip(zipOut);
 		}
 		finally
 		{
 			zipOut.close();
+		}
+	}
+
+	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception
+	{
+		File projectDir = getProject().getDatabase().getTopDirectory();
+		ZipOutputStream out = new ZipOutputStream(new ByteArrayOutputStream());
+		try
+		{
+			ProjectZipper.addTreeToZip(out, projectDir.getName(), projectDir);
+		}
+		finally
+		{
+			out.close();
+		}
+		
+		String projectZipFileName = "project" + MPZFileFilter.EXTENSION;
+		writeContent(zipOut, projectZipFileName, new ByteArrayOutputStream().toByteArray());
+	}
+
+	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
+	{
+		byte[] projectXmlInBytes = exportProjectXmlToBytes();
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
+		try
+		{
+			if (!new ConProMiradiXmlValidator().isValid(inputStream))
+			{
+				throw new Exception("Exported file does not validate.");
+			}
+
+			writeContent(zipOut, "project.xml", projectXmlInBytes);
+		}
+		finally
+		{
+			inputStream.close();
 		}
 	}
 
