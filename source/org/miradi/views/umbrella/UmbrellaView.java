@@ -333,7 +333,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedConproProject.class, new ImportCpmzDoer());
 		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
-		addDoerToMap(ActionExportConProXml.class, new CpmzExporter());
+		addDoerToMap(ActionExportConProXml.class, new ExportCpmzDoer());
 		addDoerToMap(ActionExportTable.class, new ExportTableDoer());
 		addDoerToMap(ActionSaveImageJPEG.class, new SaveImageJPEGDoer());
 		addDoerToMap(ActionSaveImagePng.class, new SaveImagePngDoer());
