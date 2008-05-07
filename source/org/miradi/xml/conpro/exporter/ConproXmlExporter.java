@@ -76,6 +76,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		super(project);
 		
 		codeMapHelper = new ConProMiradiCodeMapHelper();
+		referredToOuterLevelObjects = new ORefSet();
 	}
 
 	@Override
@@ -91,8 +92,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeKeyEcologicalAttributes(out);
 		writeViability(out);
 		writeThreats(out);
-		writeObjectives(out);
 		writeStrategies(out);
+		writeObjectives(out);
 		writeIndicators(out);
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
@@ -105,7 +106,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeStartElement(out, INDICATORS);
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
-			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
+			ORef indicatorRef = indicatorRefs.get(refIndex);
+			if (isReferredByExportableObjects(indicatorRef))
+				continue;
+			
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
 			out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
 			writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
 			writeOptionalMethods(out, indicator.getMethodRefs());
@@ -168,6 +173,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
 			out.writeln("<" + STRATEGY + " " + ID + "='" + strategy.getId().toString() + "'>");
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, strategy.getObjectiveRefs());
+			referredToOuterLevelObjects.addAllRefs(strategy.getObjectiveRefs());
+			
 			writeElement(out, NAME, strategy, Strategy.TAG_LABEL);
 			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
 			writeOptionalRatingCodeElement(out, LEVERAGE, strategy, Strategy.TAG_IMPACT_RATING);
@@ -206,11 +213,17 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeObjectives(UnicodeWriter out) throws Exception
 	{
 		ORefList objectiveRefs = getProject().getObjectivePool().getRefList();
+		objectiveRefs.sort();
 		writeStartElement(out, OBJECTIVES);
 		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
 		{
-			Objective objective = Objective.find(getProject(), objectiveRefs.get(refIndex));
+			ORef objectiveRef = objectiveRefs.get(refIndex);
+			if (isReferredByExportableObjects(objectiveRef))
+				continue;
+			
+			Objective objective = Objective.find(getProject(), objectiveRef);
 			out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
+			
 			writeIndicatorIds(out, objective);
 			writeElement(out, NAME, objective, Objective.TAG_LABEL);
 			writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
@@ -224,6 +237,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		writeStartElement(out, INDICATORS);
 		writeIds(out, INDICATOR_ID, objective.getRelevantIndicatorRefList());
+		referredToOuterLevelObjects.addAllRefs(objective.getRelevantIndicatorRefList());
+		
 		writeEndElement(out, INDICATORS);
 	}
 
@@ -306,6 +321,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeElement(out, TARGET_ID, targetRef.getObjectId().toString());
 		writeElement(out, KEA_ID, kea.getId().toString());
 		writeElement(out, INDICATOR_ID, indicator.getId().toString());
+		referredToOuterLevelObjects.add(indicator.getRef());
+		referredToOuterLevelObjects.add(kea.getRef());
 		
 		writeThreshold(out, INDICATOR_DESCRIPTION_POOR, indicator, StatusQuestion.POOR);
 		writeThreshold(out, INDICATOR_DESCRIPTION_FAIR, indicator, StatusQuestion.FAIR);
@@ -348,10 +365,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeKeyEcologicalAttributes(UnicodeWriter out) throws Exception
 	{
 		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
+		Arrays.sort(keas, new BaseObjectByRefSorter());
 		writeStartElement(out, KEY_ATTRIBUTES);
 		for (int index = 0; index < keas.length; ++index)
 		{
 			out.writeln("<" + KEY_ATTRIBUTE + " " + ID + "='" + keas[index].getId().toString() + "'>");
+			referredToOuterLevelObjects.add(keas[index].getRef());
+			
 			writeElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
 			writeElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
 			writeEndElement(out, KEY_ATTRIBUTE);
@@ -861,6 +881,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return codeMapHelper;
 	}
 	
+	private boolean isReferredByExportableObjects(ORef indicatorRef)
+	{
+		return !referredToOuterLevelObjects.contains(indicatorRef);
+	}
+	
 	public static void main(String[] commandLineArguments) throws Exception
 	{	
 		Project newProject = getOpenedProject(commandLineArguments);
@@ -876,5 +901,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 	}	
 	
+	private ORefSet referredToOuterLevelObjects;
 	private ConProMiradiCodeMapHelper codeMapHelper;
 }
