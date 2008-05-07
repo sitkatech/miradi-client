@@ -32,6 +32,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 import org.xml.sax.InputSource;
@@ -68,7 +69,10 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			importProject(projectToFill, zipFile);
+			if (zipContainsMpzProject(zipFile))
+				importProjectFromMpzEntry(projectToFill, zipFile);
+			else
+				importProjectFromXmlEntry(projectToFill, zipFile);
 		}
 		finally
 		{
@@ -76,7 +80,25 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	private void importProject(Project projectToFill, ZipFile zipFile) throws Exception, IOException
+	private void importProjectFromMpzEntry(Project projectToFill, ZipFile zipFile) throws Exception
+	{
+		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+		//TODO this is a reduntant test.  maybe it should throw
+		if (mpzEntry == null)
+			return;
+		
+		InputStream inputStream = zipFile.getInputStream(mpzEntry);
+		try
+		{
+			ProjectUnzipper.unzipToProjectDirectory(EAM.getHomeDirectory(), projectToFill.getFilename(), inputStream);
+		}
+		finally
+		{
+			inputStream.close();
+		}
+	}
+
+	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
 	{
 		ByteArrayInputStream projectAsInputStream = extractEntry(zipFile);
 		try
@@ -110,6 +132,15 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 
 		return new ByteArrayInputStream(byteOut.toByteArray()); 
+	}
+	
+	private boolean zipContainsMpzProject(ZipFile zipFile)
+	{
+		ZipEntry zipEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+		if (zipEntry == null)
+			return false;
+
+		return zipEntry.getSize() > 0;
 	}
 	
 	@Override

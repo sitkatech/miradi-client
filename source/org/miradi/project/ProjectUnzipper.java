@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -88,7 +89,13 @@ public class ProjectUnzipper
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
-		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
+		FileInputStream fileInputStream = new FileInputStream(zipFile);
+		unzipToProjectDirectory(homeDirectory, newProjectFilename, fileInputStream);
+	}
+
+	public static void unzipToProjectDirectory(File homeDirectory, String newProjectFilename, InputStream inputStream) throws Exception
+	{
+		ZipInputStream zipIn = new ZipInputStream(inputStream);
 		
 		File tempHomeDir = createTempDirectory("$$$"+newProjectFilename);
 
@@ -105,7 +112,6 @@ public class ProjectUnzipper
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(tempHomeDir);
 		}
-
 	}
 
 	private static void validateAndCopyProject(File homeDirectory, String newProjectFilename, File tempProjectDirectory) throws Exception

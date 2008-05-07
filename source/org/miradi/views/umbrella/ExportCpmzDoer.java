@@ -130,8 +130,7 @@ public class ExportCpmzDoer extends MainWindowDoer
 			out.close();
 		}
 		
-		String projectZipFileName = "project" + MPZFileFilter.EXTENSION;
-		writeContent(zipOut, projectZipFileName, byteOut.toByteArray());
+		writeContent(zipOut, PROJECT_ZIP_FILE_NAME, byteOut.toByteArray());
 	}
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
@@ -184,4 +183,5 @@ public class ExportCpmzDoer extends MainWindowDoer
 
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
+	public static final String PROJECT_ZIP_FILE_NAME = "project" + MPZFileFilter.EXTENSION;
 }
