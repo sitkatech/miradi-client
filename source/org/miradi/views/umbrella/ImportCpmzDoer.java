@@ -36,7 +36,7 @@ import org.miradi.utils.CpmzFileFilter;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 import org.xml.sax.InputSource;
 
-public class ImportZippedConProProjectDoer extends ImportProjectDoer
+public class ImportCpmzDoer extends ImportProjectDoer
 {
 	@Override
 	public boolean isAvailable()
