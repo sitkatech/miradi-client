@@ -57,6 +57,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -70,6 +71,7 @@ import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -431,7 +433,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importField(projectSumaryNode, GOAL_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
 		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
-		//FIXME import team members
+		importTeamMembers(projectSumaryNode, metadataRef);
 		
 		String[] ecoRegionElementHierarchy = new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, ECOREGIONS, ECOREGION_CODE}; 
 		String[] allEcoregionCodes = extractNodesAsList(generatePath(ecoRegionElementHierarchy));
@@ -443,6 +445,39 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
+	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception
+	{
+		NodeList teamMemberNodeList = getNodes(projectSumaryNode, TEAM, PERSON);
+		for (int nodeIndex = 0; nodeIndex < teamMemberNodeList.getLength(); ++nodeIndex) 
+		{
+			Node teamMemberNode = teamMemberNodeList.item(nodeIndex);
+			ORef projectResourceRef = getProject().createObject(ProjectResource.getObjectType());
+			
+			importProjectResourceRoles(teamMemberNode, projectResourceRef);		
+			importField(teamMemberNode, GIVEN_NAME, projectResourceRef, ProjectResource.TAG_GIVEN_NAME);
+			importField(teamMemberNode, SUR_NAME, projectResourceRef, ProjectResource.TAG_SUR_NAME);
+			importField(teamMemberNode, EMAIL, projectResourceRef, ProjectResource.TAG_EMAIL);
+			importField(teamMemberNode, PHONE, projectResourceRef, ProjectResource.TAG_PHONE_NUMBER);
+			importField(teamMemberNode, ORGANIZATION, projectResourceRef, ProjectResource.TAG_ORGANIZATION);
+		}
+	}
+
+	private void importProjectResourceRoles(Node teamMemberNode, ORef projectResourceRef) throws Exception
+	{
+		CodeList roleCodes = new CodeList();
+		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		
+		NodeList roleNodeList = getNodes(teamMemberNode, new String[]{ROLE});
+		for (int nodeIndex = 0; nodeIndex < roleNodeList.getLength(); ++nodeIndex)
+		{
+			Node roleNode = roleNodeList.item(nodeIndex);
+			if (roleNode.getTextContent().equals(TEAM_LEADER_VALUE))
+				roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);		
+		}
+	
+		setData(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
+	}
+
 	public void importTargets() throws Exception
 	{
 		NodeList targetNodeList = getNodes(getRootNode(), TARGETS, TARGET);
