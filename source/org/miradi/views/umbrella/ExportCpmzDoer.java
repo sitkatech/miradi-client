@@ -44,7 +44,7 @@ import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
-public class CpmzExporter extends MainWindowDoer
+public class ExportCpmzDoer extends MainWindowDoer
 {
 	@Override
 	public boolean isAvailable()

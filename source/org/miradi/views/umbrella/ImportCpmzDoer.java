@@ -92,7 +92,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	//FIXME this method needs to be updated to extract all the contents of the zip
 	public static ByteArrayInputStream extractEntry(ZipFile  zipFile) throws Exception
 	{
-		ZipEntry zipEntry = zipFile.getEntry(CpmzExporter.PROJECT_XML_FILE_NAME);
+		ZipEntry zipEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		if (zipEntry == null)
 			return new ByteArrayInputStream(new byte[0]);
 		
