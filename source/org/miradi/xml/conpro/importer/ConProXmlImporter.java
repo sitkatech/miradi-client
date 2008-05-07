@@ -111,7 +111,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
 				throw new Exception("Could not validate file for importing.");
 
-			importConProProject(new InputSource(fileToImport.toURI().toASCIIString()));
+			InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
+			importConProProject(inputSource);
 		}
 		finally
 		{
