@@ -39,9 +39,6 @@ import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.UnicodeReader;
-import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.MiradiLogger;
@@ -591,9 +588,6 @@ public class EAM
 	public static final Color READONLY_FOREGROUND_COLOR = Color.black;
 	public static final Color EDITABLE_BACKGROUND_COLOR = Color.WHITE;
 	public static final Color EDITABLE_FOREGROUND_COLOR = Color.BLUE;
-	
-	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
-	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 	
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 	public static final String STRING_TO_SUBSTITUTE = "%s";
