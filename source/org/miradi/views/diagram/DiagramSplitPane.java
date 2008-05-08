@@ -454,7 +454,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			return viewData.getCurrentConceptualModelRef();
 		
 		if (getContentType() == ObjectType.RESULTS_CHAIN_DIAGRAM)
-			return viewData.getCurrentResutlstChainRef();
+			return viewData.getCurrentResultsChainRef();
 		
 		return ORef.INVALID;
 	}
