@@ -88,5 +88,12 @@ public class TestBaseObject extends EAMTestCase
 		assertEquals("wrong annotation type?", ProjectResource.getObjectType(), task.getAnnotationType(BaseObject.TAG_WHO_OVERRIDE_REFS));	
 	}
 	
+	public void testGetReferredObjects() throws Exception
+	{
+		ORef taskRef = project.createObject(Task.getObjectType());
+		Task task = Task.find(project, taskRef);
+		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
+	}
+	
 	ProjectForTesting project;
 }
