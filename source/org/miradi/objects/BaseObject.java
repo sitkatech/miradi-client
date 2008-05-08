@@ -111,7 +111,7 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (getField(tag).isPseudoField() || noneClearedFieldTags.contains(tag))
+			if (getField(tag).isPseudoField() || nonClearedFieldTags.contains(tag))
 				continue;
 			
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(getRef(), tag, json.optString(tag));
@@ -664,7 +664,7 @@ abstract public class BaseObject
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
-		noneClearedFieldTags = new Vector();
+		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		
 		addField(PSEUDO_TAG_BUDGET_TOTAL, budgetTotal);
@@ -701,7 +701,7 @@ abstract public class BaseObject
 	
 	void addNoClearField(String tag, ObjectData data)
 	{
-		noneClearedFieldTags.add(tag);
+		nonClearedFieldTags.add(tag);
 		fields.put(tag, data);
 	}
 	
@@ -728,7 +728,7 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (noneClearedFieldTags.contains(tag))
+			if (nonClearedFieldTags.contains(tag))
 				continue;
 			if(isPseudoField(tag))
 				continue;
@@ -747,7 +747,7 @@ abstract public class BaseObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (noneClearedFieldTags.contains(tag))
+			if (nonClearedFieldTags.contains(tag))
 				continue;
 			if(isPseudoField(tag))
 				continue;
@@ -802,7 +802,7 @@ abstract public class BaseObject
 
 	public Vector getNoneClearedFieldTags()
 	{
-		return noneClearedFieldTags;
+		return nonClearedFieldTags;
 	}
 
 	public Factor[] getUpstreamDownstreamFactors()
@@ -1398,7 +1398,7 @@ abstract public class BaseObject
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
-	private Vector noneClearedFieldTags;
+	private Vector nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
 	
