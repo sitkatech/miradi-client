@@ -178,6 +178,12 @@ public class ProjectRepairer
 			if (ref.isInvalid())
 				continue;
 			
+			if(ref.getObjectType() == ObjectType.FAKE)
+			{
+				EAM.logDebug("Ref with fake type but non-invalid id: " + ref.getObjectId());
+				continue;
+			}
+			
 			BaseObject foundObject = project.findObject(ref);
 			if (foundObject != null)
 				continue;
