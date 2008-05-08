@@ -107,20 +107,20 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			ORef indicatorRef = indicatorRefs.get(refIndex);
-			if (isNotReferredByExportableObjects(indicatorRef))
-				continue;
-			
-			Indicator indicator = Indicator.find(getProject(), indicatorRef);
-			out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
-			writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
-			writeOptionalMethods(out, indicator.getMethodRefs());
-			writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-			writeOptionalProgressReportStatus(out, indicator);
-			writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
-			writeOptionalElement(out, ANNUAL_COST, Double.toString(indicator.getProportionalBudgetCost())); 
-			writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
-	
-			writeEndElement(out, INDICATOR);
+			if (isReferredByExportableObjects(indicatorRef))
+			{
+				Indicator indicator = Indicator.find(getProject(), indicatorRef);
+				out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
+				writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
+				writeOptionalMethods(out, indicator.getMethodRefs());
+				writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
+				writeOptionalProgressReportStatus(out, indicator);
+				writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
+				writeOptionalElement(out, ANNUAL_COST, Double.toString(indicator.getProportionalBudgetCost())); 
+				writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
+
+				writeEndElement(out, INDICATOR);
+			}
 		}
 		
 		writeEndElement(out, INDICATORS);
@@ -218,16 +218,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
 		{
 			ORef objectiveRef = objectiveRefs.get(refIndex);
-			if (isNotReferredByExportableObjects(objectiveRef))
-				continue;
-			
-			Objective objective = Objective.find(getProject(), objectiveRef);
-			out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
-			
-			writeIndicatorIds(out, objective);
-			writeElement(out, NAME, objective, Objective.TAG_LABEL);
-			writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
-			writeEndElement(out, OBJECTIVE);
+			if (isReferredByExportableObjects(objectiveRef))
+			{
+				Objective objective = Objective.find(getProject(), objectiveRef);
+				out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
+
+				writeIndicatorIds(out, objective);
+				writeElement(out, NAME, objective, Objective.TAG_LABEL);
+				writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
+				writeEndElement(out, OBJECTIVE);
+			}
 		}
 		
 		writeEndElement(out, OBJECTIVES);
@@ -881,9 +881,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return codeMapHelper;
 	}
 	
-	private boolean isNotReferredByExportableObjects(ORef indicatorRef)
+	private boolean isReferredByExportableObjects(ORef indicatorRef)
 	{
-		return !referredToOuterLevelObjects.contains(indicatorRef);
+		return referredToOuterLevelObjects.contains(indicatorRef);
 	}
 	
 	public static void main(String[] commandLineArguments) throws Exception
