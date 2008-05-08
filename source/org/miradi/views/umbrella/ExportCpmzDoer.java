@@ -32,7 +32,6 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
@@ -91,22 +90,21 @@ public class ExportCpmzDoer extends MainWindowDoer
 
 	private void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
 	{		
-		MainWindow mainWindow = EAM.getMainWindow();
 		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
 			String imageName = CM_IMAGE_PREFIX + refIndex + PNGFileFilter.EXTENSION;
-			writeDiagramImage(zipOut, mainWindow, diagramObject, imageName);
+			writeDiagramImage(zipOut, diagramObject, imageName);
 		}
 	}
 
-	private void writeDiagramImage(ZipOutputStream zipOut, MainWindow mainWindow, DiagramObject diagramObject, String imageName) throws Exception
+	private void writeDiagramImage(ZipOutputStream zipOut, DiagramObject diagramObject, String imageName) throws Exception
 	{
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
-			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.getImage(mainWindow, diagramObject));
+			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.getImage(getMainWindow(), diagramObject));
 			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
 		}
 		finally
