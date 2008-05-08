@@ -100,7 +100,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 
 	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
 	{
-		ByteArrayInputStream projectAsInputStream = extractEntry(zipFile);
+		ByteArrayInputStream projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		try
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
@@ -111,9 +111,9 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	public static ByteArrayInputStream extractEntry(ZipFile  zipFile) throws Exception
+	public static ByteArrayInputStream extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
 	{
-		ZipEntry zipEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		ZipEntry zipEntry = zipFile.getEntry(entryName);
 		if (zipEntry == null)
 			return new ByteArrayInputStream(new byte[0]);
 		
