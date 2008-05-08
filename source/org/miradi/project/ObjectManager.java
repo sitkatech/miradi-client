@@ -556,7 +556,7 @@ public class ObjectManager
 	private void removeFromReferrerCache(ORef refToRemove)
 	{
 		BaseObject object = findObject(refToRemove);
-		ORefList referencedObjectRefs = object.getAllReferncedObjects();
+		ORefList referencedObjectRefs = object.getAllReferencedObjects();
 		for(int i = 0; i < referencedObjectRefs.size(); ++i)
 		{
 			ORef referencedRef = referencedObjectRefs.get(i);
