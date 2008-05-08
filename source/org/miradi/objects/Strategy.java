@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -70,15 +68,6 @@ public class Strategy extends Factor
 			default:
 				return false;
 		}
-	}
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_ACTIVITY_IDS);
-		set.add(TAG_OBJECTIVE_IDS);
-		set.add(TAG_PROGRESS_REPORT_REFS);
-		return set;
 	}
 	
 	public ORefList getResultsChains()

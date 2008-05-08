@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.util.Arrays;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.commands.CommandDeleteObject;
@@ -139,14 +138,6 @@ public class Task extends BaseObject
 		}
 	}
 	
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_SUBTASK_IDS);
-		set.add(TAG_ASSIGNMENT_IDS);
-		return set;
-	}
 	
 
 	public ORefList getOwnedObjects(int objectType)

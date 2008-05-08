@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -91,16 +90,6 @@ public class Target extends Factor
 		return list;
 	}
 
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_STRESS_REFS);
-		set.add(TAG_GOAL_IDS);
-		set.add(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-		set.add(TAG_SUB_TARGET_REFS);
-		return set;
-	}
-	
 	public ORefList getAllObjectsToDeepCopy()
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();

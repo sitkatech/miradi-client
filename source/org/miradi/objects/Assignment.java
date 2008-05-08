@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.TaskId;
@@ -65,15 +63,6 @@ public class Assignment extends BaseObject
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
-	}
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set set = super.getReferencedObjectTags();
-		set.add(TAG_ASSIGNMENT_RESOURCE_ID);
-		set.add(TAG_ACCOUNTING_CODE);
-		set.add(TAG_FUNDING_SOURCE);
-		return set;
 	}
 	
 	public DateRangeEffortList getDetails()

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.awt.Point;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -98,17 +97,6 @@ public class DiagramLink extends BaseObject
 		return false;
 	}
 	
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_FROM_DIAGRAM_FACTOR_ID);
-		set.add(TAG_TO_DIAGRAM_FACTOR_ID);
-		set.add(TAG_WRAPPED_ID);
-		set.add(TAG_GROUPED_DIAGRAM_LINK_REFS);
-		
-		return set;
-	}
 	
 	public ORef getDiagramFactorRef(int direction)
 	{

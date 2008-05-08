@@ -6,7 +6,6 @@
 package org.miradi.objects;
 
 import java.awt.Point;
-import java.util.Set;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -157,17 +156,6 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("bend points not added?", 3, diagramLink.getBendPoints().size());
 		assertEquals("bend point doestn exist?", true, diagramLink.bendPointAlreadyExists(new Point(1, 1)));
 		assertEquals("bend point doestn exist?", false, diagramLink.bendPointAlreadyExists(new Point(4, 4)));
-	}
-	
-	public void testGetReferencedObjectTags() throws Exception
-	{
-		ORef diagramLinkRef = project.createDiagramLink();
-		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
-		Set<String> refererTags = diagramLink.getReferencedObjectTags();
-		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID));
-		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID));
-		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_WRAPPED_ID));
-		assertTrue("does not contain tag?", refererTags.contains(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS));
 	}
 	
 	public void testDirection() throws Exception

@@ -22,7 +22,6 @@ package org.miradi.objects;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -116,14 +115,6 @@ public class DiagramFactor extends BaseObject
 	}
 	
 	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set set = super.getReferencedObjectTags();
-		set.add(TAG_WRAPPED_REF);
-		set.add(TAG_GROUP_BOX_CHILDREN_REFS);
-		return set;
-	}
-		
 	public DiagramFactorId getDiagramFactorId()
 	{
 		return (DiagramFactorId)getId(); 

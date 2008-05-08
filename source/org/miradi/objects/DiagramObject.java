@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
@@ -222,14 +220,6 @@ abstract public class DiagramObject extends BaseObject
 		}
 		
 		return false;
-	}
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_DIAGRAM_FACTOR_IDS);
-		set.add(TAG_DIAGRAM_FACTOR_LINK_IDS);
-		return set;
 	}
 	
 

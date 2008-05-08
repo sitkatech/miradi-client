@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.SlideShowId;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objecthelpers.ORefList;
@@ -68,14 +66,6 @@ public class SlideShow extends BaseObject
 		}
 	}
 	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_SLIDE_REFS);
-		return set;
-	}
-	
-
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
