@@ -39,4 +39,16 @@ public class ORefSet extends HashSet<ORef>
 	{
 		addAll(Arrays.asList(refs.toArray()));
 	}
+
+	public static ORefSet subtract(ORefSet newReferrals, ORefSet oldReferrals)
+	{
+		ORefSet result = new ORefSet();
+		for(ORef ref : newReferrals)
+		{
+			if(!oldReferrals.contains(ref))
+				result.add(ref);
+		}
+		
+		return result;
+	}
 }
