@@ -321,6 +321,9 @@ abstract public class BaseObject
 			case ObjectType.WCPA_PROJECT_DATA:
 				return new WcpaProjectData(objectManager, idAsInt, json);
 	
+			case ObjectType.XENODATA:
+				return new Xenodata(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
