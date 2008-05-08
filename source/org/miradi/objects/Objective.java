@@ -69,11 +69,6 @@ public class Objective extends Desire
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))

@@ -101,11 +101,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		return set;
 	}
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public ORefList getOwnedObjects(int objectType)
 	{

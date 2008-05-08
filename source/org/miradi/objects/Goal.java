@@ -61,11 +61,6 @@ public class Goal extends Desire
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

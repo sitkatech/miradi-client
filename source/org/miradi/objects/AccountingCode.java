@@ -63,11 +63,6 @@ public class AccountingCode extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public String toString()
 	{
 		String result = getLabel();

@@ -74,11 +74,6 @@ public class ProjectResource extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public boolean hasRole(String code) throws Exception
 	{
 		CodeList codeRoles = getCodeList(ProjectResource.TAG_ROLE_CODES);

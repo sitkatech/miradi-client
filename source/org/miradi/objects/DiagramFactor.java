@@ -116,30 +116,6 @@ public class DiagramFactor extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.CAUSE: 
-				return true;
-			case ObjectType.STRATEGY: 
-				return true;
-			case ObjectType.TARGET: 
-				return true;
-			case ObjectType.INTERMEDIATE_RESULT:
-				return true;
-			case ObjectType.THREAT_REDUCTION_RESULT:
-				return true;
-			case ObjectType.TEXT_BOX:
-				return true;
-			case ObjectType.GROUP_BOX:
-				return true;	
-				
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set set = super.getReferencedObjectTags();

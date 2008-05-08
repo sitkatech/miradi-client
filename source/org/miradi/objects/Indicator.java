@@ -230,21 +230,6 @@ public class Indicator extends BaseObject
 		return futureStatusSummary.get();
 	}
 		
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.TASK: 
-				return true;
-			case ObjectType.MEASUREMENT:
-				return true;
-			case ObjectType.PROGRESS_REPORT:
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set set = super.getReferencedObjectTags();

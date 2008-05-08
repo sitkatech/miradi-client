@@ -67,21 +67,6 @@ public class Assignment extends BaseObject
 		return false;
 	}
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.PROJECT_RESOURCE: 
-				return true;
-			case ObjectType.ACCOUNTING_CODE: 
-				return true;
-			case ObjectType.FUNDING_SOURCE: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set set = super.getReferencedObjectTags();

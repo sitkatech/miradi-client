@@ -99,19 +99,6 @@ public class DiagramLink extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.FACTOR_LINK: 
-				return true;
-			case ObjectType.DIAGRAM_FACTOR: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

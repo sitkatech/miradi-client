@@ -76,11 +76,6 @@ public class SlideShow extends BaseObject
 	}
 	
 
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
