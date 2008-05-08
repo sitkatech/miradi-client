@@ -81,6 +81,7 @@ import org.miradi.objectpools.ViewPool;
 import org.miradi.objectpools.WcpaProjectDataPool;
 import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
+import org.miradi.objectpools.XenodataPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -148,6 +149,7 @@ public class ObjectManager
 		addNormalPool(new FosProjectDataPool(ida));
 		addNormalPool(new OrganizationPool(ida));
 		addNormalPool(new WcpaProjectDataPool(ida));
+		addNormalPool(new XenodataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -444,6 +446,7 @@ public class ObjectManager
 		loadPool(ObjectType.FOS_PROJECT_DATA);
 		loadPool(ObjectType.ORGANIZATION);
 		loadPool(ObjectType.WCPA_PROJECT_DATA);
+		loadPool(ObjectType.XENODATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

@@ -101,6 +101,7 @@ import org.miradi.objects.TestViewData;
 import org.miradi.objects.TestWcpaProjectData;
 import org.miradi.objects.TestWcsProjectData;
 import org.miradi.objects.TestWwfProjectData;
+import org.miradi.objects.TestXenodata;
 import org.miradi.project.TestBudgetTimePeriodChanger;
 import org.miradi.project.TestCausePool;
 import org.miradi.project.TestChainManager;
@@ -315,6 +316,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFosProjectData.class));
 		suite.addTest(new TestSuite(TestOrganization.class));
 		suite.addTest(new TestSuite(TestWcpaProjectData.class));
+		suite.addTest(new TestSuite(TestXenodata.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
