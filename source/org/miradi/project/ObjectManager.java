@@ -520,19 +520,17 @@ public class ObjectManager
 
 	}
 
-	public void updateReferrerCache(ORef referrerRef, ORefList oldReferrals, ORefList newReferrals)
+	public void updateReferrerCache(ORef referrerRef, ORefSet oldReferrals, ORefSet newReferrals)
 	{
-		ORefList removedReferrals = ORefList.subtract(oldReferrals, newReferrals);
-		for(int i = 0; i < removedReferrals.size(); ++i)
+		ORefSet removedReferrals = ORefSet.subtract(oldReferrals, newReferrals);
+		for(ORef referredRef : removedReferrals)
 		{
-			ORef referredRef = removedReferrals.get(i);
 			getReferrerRefsSet(referredRef).remove(referrerRef);
 		}
 
-		ORefList addedReferrals = ORefList.subtract(newReferrals, oldReferrals);
-		for(int i = 0; i < addedReferrals.size(); ++i)
+		ORefSet addedReferrals = ORefSet.subtract(newReferrals, oldReferrals);
+		for(ORef referredRef: addedReferrals)
 		{
-			ORef referredRef = addedReferrals.get(i);
 			getReferrerRefsSet(referredRef).add(referrerRef);
 		}
 	}
@@ -556,10 +554,9 @@ public class ObjectManager
 	private void removeFromReferrerCache(ORef refToRemove)
 	{
 		BaseObject object = findObject(refToRemove);
-		ORefList referencedObjectRefs = object.getAllReferencedObjects();
-		for(int i = 0; i < referencedObjectRefs.size(); ++i)
+		ORefSet referencedObjectRefs = object.getAllReferencedObjects();
+		for(ORef referencedRef : referencedObjectRefs)
 		{
-			ORef referencedRef = referencedObjectRefs.get(i);
 			getReferrerRefsSet(referencedRef).remove(refToRemove);
 		}
 		referrerCache.remove(refToRemove);
