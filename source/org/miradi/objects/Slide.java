@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.SlideId;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ORefData;
@@ -64,13 +62,6 @@ public class Slide extends BaseObject
 		return false;
 	}
 	
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_DIAGRAM_OBJECT_REF);
-		return set;
-	}
 	
 	
 	public String getPseudoData(String fieldTag)

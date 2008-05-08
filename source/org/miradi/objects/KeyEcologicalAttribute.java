@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
@@ -91,14 +89,6 @@ public class KeyEcologicalAttribute extends BaseObject
 			default:
 				return false;
 		}
-	}
-	
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_INDICATOR_IDS);
-		return set;
 	}
 	
 	

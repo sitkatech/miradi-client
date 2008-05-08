@@ -22,9 +22,7 @@ package org.miradi.objects;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -709,12 +707,12 @@ abstract public class BaseObject
 	
 	public String[] getFieldTags()
 	{
-		return (String[])fields.keySet().toArray(new String[0]);
+		return fields.keySet().toArray(new String[0]);
 	}
 
 	public ObjectData getField(String fieldTag)
 	{
-		ObjectData data = (ObjectData)fields.get(fieldTag);
+		ObjectData data = fields.get(fieldTag);
 		return data;
 	}
 	
@@ -983,21 +981,12 @@ abstract public class BaseObject
 		return referenced;
 	}
 	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = new HashSet<String>();
-		set.add(TAG_WHO_OVERRIDE_REFS);
-		
-		return set;	
-	}
-	
 	public ORefList getAllReferncedObjects()
 	{
 		ORefList list = new ORefList();
-		Set<String> referencedTags = getReferencedObjectTags();
-		for(String tag : referencedTags)
+		for(ObjectData field : fields.values())
 		{
-			ORefList refList = getField(tag).getRefList();
+			ORefList refList = field.getRefList();
 			list.addAll(refList);
 		}
 		return list;
@@ -1408,7 +1397,7 @@ abstract public class BaseObject
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
-	private HashMap fields;
+	private HashMap<String, ObjectData> fields;
 	private Vector noneClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;

@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -74,13 +72,6 @@ public class Cause extends Factor
 		return list;
 	}
 
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_OBJECTIVE_IDS);
-		return set;
-	}
-	
 	public boolean isCause()
 	{
 		return true;

@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
@@ -75,13 +73,6 @@ public class IntermediateResult extends Factor
 			default:
 				return false;
 		}
-	}
-	
-	public Set<String> getReferencedObjectTags()
-	{
-		Set<String> set = super.getReferencedObjectTags();
-		set.add(TAG_OBJECTIVE_IDS);
-		return set;
 	}
 	
 	public boolean canHaveObjectives()
