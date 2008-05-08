@@ -96,7 +96,6 @@ public class ExportCpmzDoer extends MainWindowDoer
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
-			String CM_IMAGE_PREFIX = "CM";
 			String imageName = CM_IMAGE_PREFIX + refIndex + PNGFileFilter.EXTENSION;
 			writeDiagramImage(zipOut, mainWindow, diagramObject, imageName);
 		}
@@ -184,4 +183,5 @@ public class ExportCpmzDoer extends MainWindowDoer
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MPZFileFilter.EXTENSION;
+	public static final String CM_IMAGE_PREFIX = "CM";
 }
