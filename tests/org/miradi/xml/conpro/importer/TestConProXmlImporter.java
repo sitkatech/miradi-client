@@ -23,10 +23,12 @@ import java.io.File;
 
 import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
@@ -73,7 +75,9 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
 		ProjectForTesting projectWithMethodData = new ProjectForTesting("ProjectWithMethodData");
-		projectWithMethodData.createAndPopulateIndicator();
+		
+		Indicator indicator = projectWithMethodData.createAndPopulateIndicator();		
+		createStrategyWithIndicator(projectWithMethodData, indicator);
 		
 		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
 		try
@@ -107,6 +111,9 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImportTestingWho.xml");
 		ProjectForTesting projectWithWhoData = new ProjectForTesting("ProjectWithWhoData");
 		Indicator indicator = projectWithWhoData.createAndPopulateIndicator();
+		
+		createStrategyWithIndicator(projectWithWhoData, indicator);
+		
 		Task task = projectWithWhoData.createTaskWithWho();
 		ORefList taskRefs = new ORefList(task.getRef());
 		indicator.setData(Indicator.TAG_TASK_IDS, taskRefs.convertToIdList(Task.getObjectType()).toString());
@@ -117,11 +124,15 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			exportProject(beforeXmlOutFile, projectWithWhoData);
 			importProject(beforeXmlOutFile, projectToFill);
 			
-			Indicator[] allIndicators = projectToFill.getIndicatorPool().getAllIndicators();
+			ORefList indicatorRefs = projectToFill.getIndicatorPool().getORefList();
 			
-			assertTrue("has no indicator?", allIndicators.length == 1);
-			String indicatorDetailsText = allIndicators[0].getData(Indicator.TAG_DETAIL);
+			assertTrue("has no indicator?", indicatorRefs.size() > 1);
+			assertTrue("ref list does not contain indicator ref?", indicatorRefs.contains(indicator.getRef()));
+
+			Indicator importedIndicator = Indicator.find(projectToFill, indicator.getRef());
+			String indicatorDetailsText = importedIndicator.getData(Indicator.TAG_DETAIL);
 			assertTrue("indicator has no detail?", indicatorDetailsText.length() > 0);
+
 			String detailsTextWitoutSemiColonSeperator = indicatorDetailsText.replace(";", "");
 			assertEquals("wrong project resource name?", ProjectForTesting.PROJECT_RESOURCE_LABEL_TEXT, detailsTextWitoutSemiColonSeperator);
 		}
@@ -130,6 +141,14 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			beforeXmlOutFile.delete();
 			projectToFill.close();
 		}
+	}
+
+	private void createStrategyWithIndicator(ProjectForTesting project, Indicator indicator)	throws Exception
+	{
+		Strategy strategy = project.createAndPopulateStrategy();
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicator.getId());
+		strategy.setData(Strategy.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
