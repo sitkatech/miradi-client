@@ -76,7 +76,7 @@ public class ViewData extends BaseObject
 		return currentConceptualModelRef.getRawRef();
 	}
 	
-	public ORef getCurrentResutlstChainRef()
+	public ORef getCurrentResultsChainRef()
 	{
 		return currentResultsChainRef.getRawRef();
 	}
