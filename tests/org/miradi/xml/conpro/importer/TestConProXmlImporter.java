@@ -102,6 +102,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			projectToFill.close();
+			projectWithMethodData.close();
 		}
 		
 	}
@@ -140,6 +141,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			projectToFill.close();
+			projectWithWhoData.close();
 		}
 	}
 
