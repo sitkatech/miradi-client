@@ -103,6 +103,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayInputStream projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		try
 		{
+			//FIXME need to validate before using xml 
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
 		}
 		finally
