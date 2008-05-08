@@ -348,7 +348,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 	private void verifyOwner(ORef owner, ORef ref)
 	{
-		ORef oref = BaseObject.findObjectWhoOwnesUs(project.getObjectManager(), owner.getObjectType(), ref);
+		ORef oref = BaseObject.findObjectWhoOwnsUs(project.getObjectManager(), owner.getObjectType(), ref);
 		assertEquals(owner, oref);
 		
 		BaseObject baseObject =  project.getObjectManager().findObject(ref);
