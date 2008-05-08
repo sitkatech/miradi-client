@@ -84,10 +84,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	private void importProjectFromMpzEntry(Project projectToFill, ZipFile zipFile) throws Exception
 	{
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
-		//TODO this is a reduntant test.  maybe it should throw
-		if (mpzEntry == null)
-			return;
-		
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
