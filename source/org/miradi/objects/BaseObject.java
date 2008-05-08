@@ -370,9 +370,9 @@ abstract public class BaseObject
 		if(!doesFieldExist(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 
-		ORefList oldReferrals = getAllReferencedObjects();
+		ORefSet oldReferrals = getAllReferencedObjects();
 		getField(fieldTag).set(dataValue);
-		ORefList newReferrals = getAllReferencedObjects();
+		ORefSet newReferrals = getAllReferencedObjects();
 		if(getObjectManager() != null)
 		{
 			getObjectManager().updateReferrerCache(getRef(), oldReferrals, newReferrals);
@@ -971,23 +971,22 @@ abstract public class BaseObject
 	public ORefList getReferencedObjects(int objectType)
 	{
 		ORefList referenced = new ORefList();
-		ORefList all = getAllReferencedObjects();
-		for(int i = 0; i < all.size(); ++i)
+		ORefSet all = getAllReferencedObjects();
+		for(ORef ref : all)
 		{
-			ORef ref = all.get(i);
 			if(ref.getObjectType() == objectType)
 				referenced.add(ref);
 		}
 		return referenced;
 	}
 	
-	public ORefList getAllReferencedObjects()
+	public ORefSet getAllReferencedObjects()
 	{
-		ORefList list = new ORefList();
+		ORefSet list = new ORefSet();
 		for(ObjectData field : fields.values())
 		{
 			ORefList refList = field.getRefList();
-			list.addAll(refList);
+			list.addAllRefs(refList);
 		}
 		return list;
 	}
