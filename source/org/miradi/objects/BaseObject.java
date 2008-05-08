@@ -913,7 +913,7 @@ abstract public class BaseObject
 		int[] objectTypes = getTypesThatCanOwnUs(getType());
 		for (int i=0; i<objectTypes.length; ++i)
 		{
-			ORef oref = findObjectWhoOwnesUs(objectManager, objectTypes[i], getRef());
+			ORef oref = findObjectWhoOwnsUs(objectManager, objectTypes[i], getRef());
 			if (oref != null)
 			{
 				cachedOwnerRef = oref;
@@ -926,7 +926,7 @@ abstract public class BaseObject
 	}
 
 	
-	static public ORef findObjectWhoOwnesUs(ObjectManager objectManager, int objectType, ORef oref)
+	static public ORef findObjectWhoOwnsUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
 		ORefList orefsInPool = objectManager.getPool(objectType).getORefList();
 		for (int i=0; i<orefsInPool.size(); ++i)

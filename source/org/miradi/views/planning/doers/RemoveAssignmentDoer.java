@@ -83,7 +83,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 
 	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException
 	{
-		ORef ownerRef = assignmentToRemove.findObjectWhoOwnesUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
+		ORef ownerRef = assignmentToRemove.findObjectWhoOwnsUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
 		Task task = (Task)project.findObject(ownerRef);	
 		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
 		
