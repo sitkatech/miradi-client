@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CpmzFileFilter;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 import org.xml.sax.InputSource;
 
@@ -103,7 +104,12 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayInputStream projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		try
 		{
-			//FIXME need to validate before using xml 
+			if (!new ConProMiradiXmlValidator().isValid(projectAsInputStream))
+			{
+				throw new Exception("Exported file does not validate.");
+			}
+			
+			projectAsInputStream.reset();
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
 		}
 		finally
