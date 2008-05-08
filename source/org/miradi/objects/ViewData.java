@@ -119,11 +119,6 @@ public class ViewData extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return Factor.isFactor(type);
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

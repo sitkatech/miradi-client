@@ -82,11 +82,6 @@ public class ProjectMetadata extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	
 	public String getData(String fieldTag)
 	{

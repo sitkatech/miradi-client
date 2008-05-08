@@ -76,22 +76,6 @@ public class FactorLink extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.THREAT_REDUCTION_RESULT:
-			case ObjectType.INTERMEDIATE_RESULT:
-			case ObjectType.CAUSE:
-			case ObjectType.STRATEGY:
-			case ObjectType.TARGET:
-			case ObjectType.THREAT_STRESS_RATING:
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

@@ -73,7 +73,6 @@ import org.miradi.objects.TestKeyEcologicalAttribute;
 import org.miradi.objects.TestMeasurement;
 import org.miradi.objects.TestObjectFindOwnerAndFindReferrer;
 import org.miradi.objects.TestObjectGetTypesThatCanOwnUs;
-import org.miradi.objects.TestObjectGetTypesThatCanReferToUs;
 import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
 import org.miradi.objects.TestOrganization;
@@ -289,7 +288,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPointList.class));
 		suite.addTest(new TestSuite(TestBendPointList.class));
 		suite.addTest(new TestSuite(TestDiagramContentsObject.class));
-		suite.addTest(new TestSuite(TestObjectGetTypesThatCanReferToUs.class));
 		suite.addTest(new TestSuite(TestObjectGetTypesThatCanOwnUs.class));
 		suite.addTest(new TestSuite(TestObjectFindOwnerAndFindReferrer.class));
 		suite.addTest(new TestSuite(TestBaseObject.class));

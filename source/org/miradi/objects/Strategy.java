@@ -72,17 +72,6 @@ public class Strategy extends Factor
 		}
 	}
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.TASK: 
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

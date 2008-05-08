@@ -65,18 +65,6 @@ public class Slide extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM:
-			case ObjectType.RESULTS_CHAIN_DIAGRAM:
-				return true;
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

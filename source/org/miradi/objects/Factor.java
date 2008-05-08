@@ -66,11 +66,6 @@ abstract public class Factor extends BaseObject
 		return new FactorId(getId().asInt());
 	}
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public static boolean canOwnThisType(int type)
 	{
 		switch(type)

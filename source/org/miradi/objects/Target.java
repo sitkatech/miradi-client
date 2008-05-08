@@ -91,21 +91,6 @@ public class Target extends Factor
 		return list;
 	}
 
-	public static boolean canReferToThisType(int type)
-	{
-		switch(type)
-		{
-			case ObjectType.STRESS: 
-				return true;
-			
-			case ObjectType.SUB_TARGET:
-				return true;
-				
-			default:
-				return false;
-		}
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

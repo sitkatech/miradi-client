@@ -140,14 +140,6 @@ public class Task extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		if(type == Task.getObjectType())
-			return true;
-		
-		return false;
-	}
-	
 	public Set<String> getReferencedObjectTags()
 	{
 		Set<String> set = super.getReferencedObjectTags();

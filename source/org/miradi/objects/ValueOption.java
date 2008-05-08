@@ -75,11 +75,6 @@ public class ValueOption extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public int getNumericValue()
 	{
 		return numeric;

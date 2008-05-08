@@ -58,11 +58,6 @@ public class RatingCriterion extends BaseObject
 	}
 	
 	
-	public static boolean canReferToThisType(int type)
-	{
-		return false;
-	}
-	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
