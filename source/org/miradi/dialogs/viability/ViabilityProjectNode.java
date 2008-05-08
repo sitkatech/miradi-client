@@ -56,6 +56,7 @@ public class ViabilityProjectNode extends TreeTableNode
 		return children.size();
 	}
 
+	 //FIXME this is not corrent.  replace with  ProjectMetadata ref, since it represents "the project" as a whole
 	public ORef getObjectReference()
 	{
 		return new ORef(ObjectType.FAKE, new BaseId(Target.getObjectType()));
