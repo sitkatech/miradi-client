@@ -163,7 +163,7 @@ public class ProjectRepairer
 		for (int i = 0; i < refList.size(); ++i)
 		{
 			BaseObject foundObject = project.findObject(refList.get(i));
-			ORefList referredRefs = foundObject.getAllReferncedObjects();
+			ORefList referredRefs = foundObject.getAllReferencedObjects();
 			missingObjectRefs.addAll(extractMissingObjectRefs(referredRefs));
 		}
 		
