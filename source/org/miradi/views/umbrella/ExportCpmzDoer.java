@@ -32,7 +32,9 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.CpmzFileChooser;
@@ -94,9 +96,17 @@ public class ExportCpmzDoer extends MainWindowDoer
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
-			String imageName = CM_IMAGE_PREFIX + refIndex + PNGFileFilter.EXTENSION;
+			String imageName = getDiagramPrefix(diagramObject.getRef()) + refIndex + PNGFileFilter.EXTENSION;
 			writeDiagramImage(zipOut, diagramObject, imageName);
 		}
+	}
+
+	private String getDiagramPrefix(ORef diagramObjectRef)
+	{
+		if (ConceptualModelDiagram.is(diagramObjectRef))
+			return CM_IMAGE_PREFIX;
+		
+		return RC_IMAGE_PREFIX;
 	}
 
 	private void writeDiagramImage(ZipOutputStream zipOut, DiagramObject diagramObject, String imageName) throws Exception
@@ -182,4 +192,5 @@ public class ExportCpmzDoer extends MainWindowDoer
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MPZFileFilter.EXTENSION;
 	public static final String CM_IMAGE_PREFIX = "CM";
+	public static final String RC_IMAGE_PREFIX = "RC";
 }
