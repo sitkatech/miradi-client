@@ -107,7 +107,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			ORef indicatorRef = indicatorRefs.get(refIndex);
-			if (isReferredByExportableObjects(indicatorRef))
+			if (isNotReferredByExportableObjects(indicatorRef))
 				continue;
 			
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
@@ -218,7 +218,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < objectiveRefs.size(); ++refIndex)
 		{
 			ORef objectiveRef = objectiveRefs.get(refIndex);
-			if (isReferredByExportableObjects(objectiveRef))
+			if (isNotReferredByExportableObjects(objectiveRef))
 				continue;
 			
 			Objective objective = Objective.find(getProject(), objectiveRef);
@@ -881,7 +881,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return codeMapHelper;
 	}
 	
-	private boolean isReferredByExportableObjects(ORef indicatorRef)
+	private boolean isNotReferredByExportableObjects(ORef indicatorRef)
 	{
 		return !referredToOuterLevelObjects.contains(indicatorRef);
 	}
