@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -56,6 +57,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
@@ -636,11 +638,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		out.writeln("<" + PROJECT_SUMMARY + " " + SHARE_OUTSIDE_ORGANIZATION + "='false'>");
 	
-			//TODO,  need to write out read project ids
-//			out.writeln("<project_id context='ConPro'>");
-//			out.writeln("noId");
-//			out.writeln("</project_id>");
-//			
+			writeProjectId(out);
+			
+			//TODO,  need to write out read project ids			
 //			out.writeln("<parent_project_id context='ConPro'>");
 //			out.writeln("noId");
 //			out.writeln("</parent_project_id>");
@@ -669,6 +669,22 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			out.writeln("<" + EXPORT_DATE + ">" + new MultiCalendar().toIsoDateString() + "</" + EXPORT_DATE+ ">");
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private void writeProjectId(UnicodeWriter out) throws Exception
+	{
+		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+		if (xenodataRef.isInvalid())
+			return;
+		
+		Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+		String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+		
+		out.write("<" + PROJECT_ID + " context='ConPro'>");
+		out.write(projectId);
+		out.writeln("</" + PROJECT_ID + ">");
 	}
 
 	private String getComputedTncViability()

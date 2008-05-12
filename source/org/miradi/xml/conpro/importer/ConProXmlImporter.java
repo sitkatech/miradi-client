@@ -45,6 +45,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -65,6 +66,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
@@ -425,6 +427,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
+		importProjectId(projectSumaryNode, metadataRef);
 		importField(projectSumaryNode, START_DATE, metadataRef, ProjectMetadata.TAG_START_DATE);
 		importField(projectSumaryNode, AREA_SIZE, metadataRef, ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);	
 		importField(projectSumaryNode, new String[]{GEOSPATIAL_LOCATION, LATITUDE}, metadataRef, ProjectMetadata.TAG_PROJECT_LATITUDE);
@@ -445,6 +448,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 	
+	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
+	{
+		String projectId = getNodeContent(projectSumaryNode, PROJECT_ID);
+		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+		getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+		StringRefMap stringRefMap = new StringRefMap();
+		stringRefMap.add(ProjectMetadata.XENODATA_CONTEXT_CONPRO, xenodataRef);
+		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());	
+	}
+
 	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception
 	{
 		NodeList teamMemberNodeList = getNodes(projectSumaryNode, TEAM, PERSON);

@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -47,6 +48,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
@@ -104,8 +106,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, createSampleFreshwaterEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
+		
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 	}
 	
+	private String createConproXenodata() throws Exception
+	{
+		ORef xenodataRef = createAndPopulateXenodata().getRef();
+		StringRefMap refMap = new StringRefMap();
+		refMap.add(ProjectMetadata.XENODATA_CONTEXT_CONPRO, xenodataRef);
+		
+		return refMap.toString();
+	}
+
 	public ORef createAndPopulateProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createProjectResource().getRef();
@@ -233,6 +246,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 	
+	public Xenodata createAndPopulateXenodata() throws Exception
+	{
+		Xenodata xenodata = createXenodata();
+		populateXenodata(xenodata);
+		
+		return xenodata;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -331,6 +352,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef progressReportRef = createObject(ProgressReport.getObjectType());
 		return ProgressReport.find(this, progressReportRef);
+	}
+	
+	private Xenodata createXenodata() throws Exception
+	{
+		ORef xenodataRef = createObject(Xenodata.getObjectType());
+		return Xenodata.find(this, xenodataRef);
 	}
 
 	public void populateTarget(Target target) throws Exception
@@ -524,6 +551,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, "2008-01-23");
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportStatusQuestion.PLANNED_CODE);
+	}
+	
+	public void populateXenodata(Xenodata xenodata) throws Exception
+	{
+		setObjectData(xenodata.getRef(), Xenodata.TAG_PROJECT_ID, "1");
 	}
 	
 	public void populateEverything() throws Exception
