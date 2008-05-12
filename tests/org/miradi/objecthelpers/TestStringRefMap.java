@@ -37,8 +37,8 @@ public class TestStringRefMap extends EAMTestCase
 		StringRefMap stringRefMap = createSampleStringRefMap();
 		
 		assertEquals("wrong string ref map size?", 1, stringRefMap.size());
-		assertEquals("wrong string value for key?", stringRefMap.get(getSampleRef()), STRING_VALUE_SAMPLE_DATA);
-		assertTrue("value not contained in string ref map?", stringRefMap.containsValue(STRING_VALUE_SAMPLE_DATA));
+		assertEquals("wrong string value for key?", getSampleRef(), stringRefMap.getValue(STRING_VALUE_SAMPLE_DATA));
+		assertTrue("value not contained in string ref map?", stringRefMap.containsValue(getSampleRef()));
 	}
 	
 	public void testEquals()
@@ -48,7 +48,7 @@ public class TestStringRefMap extends EAMTestCase
 		StringRefMap stringRefMap2 = new StringRefMap();
 		ORef ref2 = new ORef(3, new BaseId(5));
 		String stringValue2 = "second time";
-		stringRefMap.add(ref2, stringValue2);
+		stringRefMap.add(stringValue2, ref2);
 		
 		assertFalse("should not be equal?", stringRefMap.equals(stringRefMap2));
 		assertTrue("should be equal?", stringRefMap2.equals(stringRefMap2));
@@ -70,23 +70,23 @@ public class TestStringRefMap extends EAMTestCase
 		Iterator iterator = stringRefMap.toHashMap().keySet().iterator();
 		while (iterator.hasNext())
 		{
-			ORef key = (ORef)iterator.next();
-			assertEquals("wrong member?", stringRefMap.get(key), loaded.get(key));
+			String key = (String)iterator.next();
+			assertEquals("wrong member?", stringRefMap.getValue(key), loaded.getValue(key));
 		}
 	}
 	
 	public void testFindKey()
 	{
 		StringRefMap stringRefMap = createSampleStringRefMap();
-		assertEquals("wrong key", getSampleRef(), stringRefMap.findKey(STRING_VALUE_SAMPLE_DATA));
-		assertEquals("wrong key", ORef.INVALID, stringRefMap.findKey("wrong non existing value"));
+		assertEquals("wrong key", STRING_VALUE_SAMPLE_DATA, stringRefMap.findKey(getSampleRef()));
+		assertEquals("wrong key", "", stringRefMap.findKey(new ORef(53, new BaseId(342))));
 	}
 	
 	private StringRefMap createSampleStringRefMap()
 	{
 		StringRefMap stringRefMap = new StringRefMap();
 		ORef ref = getSampleRef();
-		stringRefMap.add(ref, STRING_VALUE_SAMPLE_DATA);
+		stringRefMap.add(STRING_VALUE_SAMPLE_DATA, ref);
 		
 		return stringRefMap;
 	}
