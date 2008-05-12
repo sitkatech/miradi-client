@@ -492,6 +492,8 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_XENODATA_REFS = "XenodataRefs";
 	
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
+	
+	public static final String XENODATA_CONTEXT_CONPRO = "ContextConpro";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
 
