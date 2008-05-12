@@ -66,6 +66,16 @@ public class ConproProjectIdField extends ObjectStringInputField
 	@Override
 	public void setText(String newValue)
 	{
-		//FIXME finish implementation
+		try
+		{
+			StringRefMap stringRefMap = new StringRefMap(newValue);
+			ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			field.setText(xenodata.getData(Xenodata.TAG_PROJECT_ID));
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+		}
 	}
 }
