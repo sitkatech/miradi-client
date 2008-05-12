@@ -29,12 +29,12 @@ public class StringRefMap
 {
 	public StringRefMap()
 	{
-		this(new HashMap<ORef, String>());
+		this(new HashMap<String, ORef>());
 	}
 
 	public StringRefMap(StringRefMap copyFrom)
 	{
-		this(new HashMap<ORef, String>(copyFrom.data));
+		this(new HashMap<String, ORef>(copyFrom.data));
 	}
 
 	public StringRefMap(EnhancedJsonObject json)
@@ -48,39 +48,41 @@ public class StringRefMap
 		this(new EnhancedJsonObject(mapAsJsonString));
 	}
 	
-	private StringRefMap(HashMap<ORef, String> dataToUse)
+	private StringRefMap(HashMap<String, ORef> dataToUse)
 	{
-		data = new HashMap<ORef, String>(dataToUse);
+		data = new HashMap<String, ORef>(dataToUse);
 	}
 
 	private void copyFromJson(EnhancedJsonObject json)
 	{
 		data.clear();
-		EnhancedJsonObject array = json.optJson(TAG_STRING_REF_MAP);
-		if(array == null)
-			array = new EnhancedJsonObject();
+		EnhancedJsonObject jsonArray = json.optJson(TAG_STRING_REF_MAP);
+		if(jsonArray == null)
+			jsonArray = new EnhancedJsonObject();
 		
-		Iterator iterator = array.keys();
+		Iterator iterator = jsonArray.keys();
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			add(ORef.createFromString(key), (String)array.get(key));
+			ORef refValue = jsonArray.getRef(key);
+			add(key, refValue);
 		}
 	}
 	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		EnhancedJsonObject array = new EnhancedJsonObject();
+		EnhancedJsonObject jsonArray = new EnhancedJsonObject();
 		
 		Iterator iterator = data.keySet().iterator();
 		while (iterator.hasNext())
 		{
-			ORef key = (ORef)iterator.next();
-			array.put(key.toString(), get(key));
+			String key = (String) iterator.next();
+			ORef refValue = getValue(key);
+			jsonArray.put(key, refValue.toString());
 		}
 		
-		json.put(TAG_STRING_REF_MAP, array);
+		json.put(TAG_STRING_REF_MAP, jsonArray);
 		return json;
 	}
 
@@ -89,9 +91,9 @@ public class StringRefMap
 		return data.size();
 	}
 
-	public void add(ORef refAsKey, String object)
+	public void add(String key, ORef value)
 	{
-		data.put(refAsKey, object);
+		data.put(key, value);
 	}
 
 	public HashMap toHashMap()
@@ -99,11 +101,11 @@ public class StringRefMap
 		return data;
 	}
 	
-	public String get(ORef refAsKey)
+	public ORef getValue(String key)
 	{
-		String value = (String) data.get(refAsKey);
+		ORef value = (ORef) data.get(key);
 		if (value == null)
-			return "";
+			return ORef.INVALID;
 		
 		return value;
 	}
@@ -121,21 +123,21 @@ public class StringRefMap
 		copyFromJson(new EnhancedJsonObject(newValue));
 	}
 
-	public ORef findKey(String object)
+	public String findKey(ORef value)
 	{
 		Iterator iterator = data.keySet().iterator();
 		while (iterator.hasNext())
 		{
-			ORef key = (ORef) iterator.next();
-			if (object.equals(data.get(key)))
+			String key = (String) iterator.next();
+			if (value.equals(data.get(key)))
 				return key;
 		}
 		
-		return ORef.INVALID;
+		return "";
 	}
 
 	
-	public boolean containsValue(String value)
+	public boolean containsValue(ORef value)
 	{
 		return data.containsValue(value);
 	}
