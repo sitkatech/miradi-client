@@ -123,6 +123,10 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
+			//FIXME Is this really really correct? It might be, but must know there are two 
+			//lengths for an entry (the compressed size and the uncompressed size), and not sure 
+			//which one read wants, nor which one should be used to set the size of the byte array.
+			//research and make sure it is correct.
 			byte[] data = new byte[(int) zipEntry.getSize()];
 			InputStream inputStream = zipFile.getInputStream(zipEntry);
 			inputStream.read(data, 0, data.length);
