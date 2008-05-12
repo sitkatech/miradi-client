@@ -413,12 +413,12 @@ public class ProjectMetadata extends BaseObject
 		diagramFontSize = new ChoiceData(TAG_DIAGRAM_FONT_SIZE, getQuestion(FontSizeQuestion.class));
 		diagramFontFamily = new ChoiceData(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
-		xenodataRefs = new StringRefMapData(TAG_XENODATA_REFS);
+		xenodataRefs = new StringRefMapData(TAG_XENODATA_STRING_REF_MAP);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
-		addField(TAG_XENODATA_REFS, xenodataRefs);
+		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -489,7 +489,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_DIAGRAM_FONT_SIZE = "DiagramFontSize";
 	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
 	
-	public static final String TAG_XENODATA_REFS = "XenodataRefs";
+	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
 	
