@@ -21,8 +21,6 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import javax.swing.JComponent;
-
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -31,11 +29,13 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 
-public class ConproProjectIdField extends ObjectDataInputField
+public class ConproProjectIdField extends ObjectStringInputField
 {
 	public ConproProjectIdField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 50);
+		
+		setEditable(false);
 	}
 	
 	@Override
@@ -49,6 +49,9 @@ public class ConproProjectIdField extends ObjectDataInputField
 			String data = getProject().getObjectData(getORef(), getTag());
 			StringRefMap stringRefMap = new StringRefMap(data);
 			ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+			if (xenodataRef.isInvalid())
+				return "";
+			
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			
 			return xenodata.getData(Xenodata.TAG_PROJECT_ID);
@@ -65,12 +68,4 @@ public class ConproProjectIdField extends ObjectDataInputField
 	{
 		//FIXME finish implementation
 	}
-	
-	@Override
-	public JComponent getComponent()
-	{
-		return null;
-	}
-	
-	public static final String SPLITTER = ";";
 }
