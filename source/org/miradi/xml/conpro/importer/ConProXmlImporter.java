@@ -40,6 +40,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
@@ -84,6 +86,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
+import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -287,7 +290,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		ORefList progressReportRefs = new ORefList(progressReportRef);
 		importCodeField(indicatorNode, STATUS, progressReportRef, ProgressReport.TAG_PROGRESS_STATUS, getCodeMapHelper().getConProToMiradiProgressStatusMap());
 		setData(progressReportRef, ProgressReport.TAG_PROGRESS_DATE, getProject().getMetadata().getEffectiveDate());
-		setData(indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+		setData(indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 	}
 
 	private void importMethods(Node indicatorNode, ORef indicatorRef) throws Exception
@@ -506,13 +509,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
-			importStresses(targetNode, targetRef);
-			importSubTargets(targetNode, targetRef);
 			
+			importSubTargets(targetNode, targetRef);
 			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
-			importStressesThreats(targetNode, targetRef);
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
+			importStresses(targetNode, targetRef);
 		}
 	}
 		
@@ -526,16 +528,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef strategyRef = getNodeAsRef(strategyThreatTargetAssociationNode, STRATEGY_ID, Strategy.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
 			createFactorLinkAndAddToDiagram(threatRef, targetRef);
-		}
-	}
-
-	private void importStressesThreats(Node targetNode, ORef targetRef) throws Exception
-	{
-		//FIXME finish importing tsrs
-		NodeList stressesThreatNodes = getNodes(targetNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
-		for (int nodeIndex = 0; nodeIndex < stressesThreatNodes.getLength(); ++nodeIndex)
-		{
-			//Node stressesThreatNode = stressesThreatNodes.item(nodeIndex);
 		}
 	}
 
@@ -586,7 +578,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			subTargetRefs.add(subTargetRef);
 		}
 		
-		setData(targetRef, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
+		setData(targetRef, Target.TAG_SUB_TARGET_REFS, subTargetRefs);
 	}
 
 	private void importStresses(Node targetNode, ORef targetRef) throws Exception
@@ -602,9 +594,47 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(stressNode, STRESS_SEVERITY, stressRef, Stress.TAG_SEVERITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(stressNode, STRESS_SCOPE, stressRef, Stress.TAG_SCOPE, getCodeMapHelper().getConProToMiradiRatingMap());
 			stressRefs.add(stressRef);
+			
+			importStressesThreats(stressNode, targetRef, stressRef);
 		}
 		
-		setData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());
+		setData(targetRef, Target.TAG_STRESS_REFS, stressRefs);
+	}
+	
+
+	private void importStressesThreats(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
+	{
+		//FIXME finish importing tsrs, not sorted
+		ORefList threatStressRatingRefs = new ORefList();
+		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
+		
+		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
+		{
+			Node threatStressRatingNode = threatStressRatingNodes.item(nodeIndex);
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
+			
+			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, Cause.getObjectType());
+			updateThreatStressRatingRefs(targetRef, threatRef, threatStressRatingRef);	
+			
+			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
+			importCodeField(threatStressRatingNode, IRREVERSIBILITY_RANK, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, getCodeMapHelper().getConProToMiradiRatingMap());
+			threatStressRatingRefs.add(threatStressRatingRef);
+		}		
+	}
+
+	private void updateThreatStressRatingRefs(ORef targetRef, ORef threatRef, ORef threatStressRatingRef) throws Exception
+	{
+		FactorLinkSet targetLinks = ConproXmlExporter.getThreatTargetFactorLinks(getProject(), Target.find(getProject(), targetRef));
+		for(FactorLink factorLink : targetLinks)
+		{
+			if (factorLink.getUpstreamThreatRef().equals(threatRef))
+			{
+				ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+				threatStressRatingRefs.add(threatStressRatingRef);
+				setData(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
+			}
+		}
 	}
 
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
@@ -681,6 +711,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void setData(ORef ref, String tag, String data) throws Exception
 	{
 		getProject().setObjectData(ref, tag, data.trim());
+	}
+	
+	private void setData(ORef ref, String tag, ORefList refList) throws Exception
+	{
+		getProject().setObjectData(ref, tag, refList.toString());
 	}
 
 	public String generatePath(String[] pathElements)
