@@ -32,12 +32,14 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 
 public class TNCSummaryPanel extends ObjectDataInputPanel
 {
-	public TNCSummaryPanel(Project projectToUse, ProjectMetadata metadata)
+	public TNCSummaryPanel(Project projectToUse, ProjectMetadata metadata) throws Exception
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CONPRO_PROJECT_NUMBER));
+		addField(createConproProjectIdField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_XENODATA_REFS));
+		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY));
 

@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.text.ParseException;
-import java.util.Set;
 
 import javax.swing.JComponent;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 
@@ -47,15 +48,10 @@ public class ConproProjectIdField extends ObjectDataInputField
 		{
 			String data = getProject().getObjectData(getORef(), getTag());
 			StringRefMap stringRefMap = new StringRefMap(data);
-			Set keys = stringRefMap.getKeys();
-			String appendedValues = "";
-			for(Object key: keys)
-			{
-				Xenodata xenodata = Xenodata.find(getProject(), stringRefMap.getValue(key.toString()));
-				String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-				appendedValues += projectId + SPLITTER;
-			}
-			return appendedValues;
+			ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			
+			return xenodata.getData(Xenodata.TAG_PROJECT_ID);
 		}
 		catch(ParseException e)
 		{
