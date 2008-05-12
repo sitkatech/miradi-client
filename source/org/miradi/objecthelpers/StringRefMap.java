@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -135,8 +136,12 @@ public class StringRefMap
 		
 		return "";
 	}
-
 	
+	public Set getKeys()
+	{
+		return data.keySet();
+	}
+
 	public boolean containsValue(ORef value)
 	{
 		return data.containsValue(value);

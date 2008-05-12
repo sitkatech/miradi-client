@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringRefMapData;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -73,6 +74,20 @@ public class Xenodata extends BaseObject
 	{
 		return find(project.getObjectManager(), xenodataRef);
 	}
+	
+	@Override
+	void clear()
+	{
+		super.clear();
 		
+		projectId = new StringRefMapData(TAG_PROJECT_ID);
+		
+		addField(TAG_PROJECT_ID, projectId);
+	}
+	
+	public static final String TAG_PROJECT_ID = "ProjectId";
+	
+	private StringRefMapData projectId;
+	
 	public static final String OBJECT_NAME = "Xenodata";	
 }
