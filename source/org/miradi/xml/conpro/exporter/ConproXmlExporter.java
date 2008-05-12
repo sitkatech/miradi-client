@@ -485,13 +485,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeCodeListElements(out, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, conProHabitatCodeList);
 	}
 	
-	private FactorLinkSet getThreatTargetFactorLinks(Target target) throws Exception
+	public static FactorLinkSet getThreatTargetFactorLinks(Project project, Target target) throws Exception
 	{
 		FactorLinkSet targetLinks = new FactorLinkSet();
 		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
 		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
 		{
-			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(refIndex));
+			FactorLink factorLink = FactorLink.find(project, factorLinkReferrers.get(refIndex));
 			if (factorLink.isThreatTargetLink())
 			{
 				targetLinks.add(factorLink);
@@ -504,7 +504,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private FactorLinkSet getThreatLinksWithThreatStressRatings(Target target) throws Exception
 	{
 		FactorLinkSet linksWithThreatStressRatings = new FactorLinkSet();
-		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
+		FactorLinkSet targetLinks = getThreatTargetFactorLinks(getProject(), target);
 		for(FactorLink factorLink : targetLinks)
 		{
 			if (factorLink.getThreatStressRatingRefs().size() > 0)
@@ -516,7 +516,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetLinks = getThreatTargetFactorLinks(target);
+		FactorLinkSet targetLinks = getThreatTargetFactorLinks(getProject(), target);
 		Vector<FactorLink> sortedTargetLinks = new Vector(targetLinks);
 		Collections.sort(sortedTargetLinks, new BaseObjectByRefSorter());
 
@@ -603,6 +603,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink) throws Exception
 	{
 		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		threatStressRatingRefs.sort();
 		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
@@ -620,6 +621,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeStresses(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();
+		stressRefs.sort();
 		writeStartElement(out, STRESSES);
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
