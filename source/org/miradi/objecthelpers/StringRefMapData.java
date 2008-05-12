@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.Set;
+
 import org.miradi.objectdata.ObjectData;
 
 public class StringRefMapData extends ObjectData
@@ -39,9 +41,17 @@ public class StringRefMapData extends ObjectData
 		return data;
 	}
 
-	//FIXME this needs to be set correctly so that referrers works properly
 	public ORefList getRefList()
 	{
+		ORefList allValues = new ORefList();
+		Set keys = data.getKeys();
+		for(Object key : keys)
+		{
+			ORef ref = data.getValue((String) key);
+			allValues.add(ref);
+		}
+		
+		//FIXME this should fail a test first 
 		return new ORefList();
 	}
 
