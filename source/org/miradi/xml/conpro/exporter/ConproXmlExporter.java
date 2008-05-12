@@ -174,6 +174,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeStrategies(UnicodeWriter out) throws Exception
 	{
 		ORefList strategyRefs = getProject().getStrategyPool().getRefList();
+		strategyRefs.sort();
 		writeStartElement(out, STRATEGIES);
 		for (int refIndex = 0; refIndex < strategyRefs.size(); ++refIndex)
 		{
@@ -412,7 +413,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
 			writeStresses(out, target);
-			writeThreatStressRatings(out, target);
 			writeStrategyThreatTargetAssociations(out, target);
 		
 			writeEndElement(out, TARGET);
@@ -591,14 +591,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		//FIXME this is not correct due to the need of a threat and stress
 		FactorLinkSet targetLinks = getThreatLinksWithThreatStressRatings(target);
-		writeStartElement(out, STRESSES_THREATS);
+		writeStartElement(out, THREAT_STRESS_RATINGS);
 		for(FactorLink factorLink : targetLinks)
 		{
 			writeThreatStressRatings(out, factorLink);
 		}
-		writeEndElement(out, STRESSES_THREATS);
+		writeEndElement(out, THREAT_STRESS_RATINGS);
 	}
 
 	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink) throws Exception
@@ -607,31 +606,34 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
-			writeStartElement(out, STRESSES_THREAT);
+			writeStartElement(out, THREAT_STRESS_RATING);
 			
+			writeElement(out, THREAT_ID, factorLink.getUpstreamThreatRef().getObjectId().toString());
 			writeOptionalRatingCodeElement(out, CONTRIBUTING_RANK, threatStressRating, ThreatStressRating.TAG_CONTRIBUTION);
 			writeOptionalRatingCodeElement(out, IRREVERSIBILITY_RANK, threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY);
 			writeOptionalRatingCodeElement(out, STRESS_THREAT_TO_TARGET_RANK, threatStressRating.calculateThreatRating());
 			
-			writeEndElement(out, STRESSES_THREAT);
+			writeEndElement(out, THREAT_STRESS_RATING);
 		}
 	}
 
 	private void writeStresses(UnicodeWriter out, Target target) throws Exception
 	{
 		ORefList stressRefs = target.getStressRefs();
-		writeStartElement(out, TARGET_STRESSES);
+		writeStartElement(out, STRESSES);
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			out.writeln("<" + TARGET_STRESS + " "+ SEQUENCE+ "='" + refIndex + "'>");
+			out.writeln("<" + STRESS + " "+ SEQUENCE+ "='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeElement(out, NAME, stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
-			writeEndElement(out, TARGET_STRESS);
+			writeThreatStressRatings(out, target);
+			
+			writeEndElement(out, STRESS);
 		}
-		writeEndElement(out, TARGET_STRESSES);
+		writeEndElement(out, STRESSES);
 	}
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
