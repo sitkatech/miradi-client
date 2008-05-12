@@ -104,7 +104,7 @@ public class StringRefMap
 	
 	public ORef getValue(String key)
 	{
-		ORef value = (ORef) data.get(key);
+		ORef value = data.get(key);
 		if (value == null)
 			return ORef.INVALID;
 		
@@ -172,5 +172,5 @@ public class StringRefMap
 
 	private static final String TAG_STRING_REF_MAP = "StringRefMap";
 
-	private HashMap data;
+	private HashMap<String, ORef> data;
 }
