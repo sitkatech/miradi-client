@@ -532,7 +532,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importStressesThreats(Node targetNode, ORef targetRef) throws Exception
 	{
 		//FIXME finish importing tsrs
-		NodeList stressesThreatNodes = getNodes(targetNode, STRESSES_THREATS, STRESSES_THREAT);
+		NodeList stressesThreatNodes = getNodes(targetNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
 		for (int nodeIndex = 0; nodeIndex < stressesThreatNodes.getLength(); ++nodeIndex)
 		{
 			//Node stressesThreatNode = stressesThreatNodes.item(nodeIndex);
@@ -592,7 +592,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importStresses(Node targetNode, ORef targetRef) throws Exception
 	{
 		ORefList stressRefs = new ORefList();
-		NodeList stressNodes = getNodes(targetNode, TARGET_STRESSES, TARGET_STRESS);
+		NodeList stressNodes = getNodes(targetNode, STRESSES, STRESS);
 		for (int nodeIndex = 0; nodeIndex < stressNodes.getLength(); ++nodeIndex)
 		{
 			ORef stressRef = getProject().createObject(Stress.getObjectType());
