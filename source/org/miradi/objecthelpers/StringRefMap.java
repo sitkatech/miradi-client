@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -140,6 +141,11 @@ public class StringRefMap
 	public Set getKeys()
 	{
 		return data.keySet();
+	}
+	
+	public Collection<ORef> getValues()
+	{
+		return data.values();
 	}
 
 	public boolean containsValue(ORef value)
