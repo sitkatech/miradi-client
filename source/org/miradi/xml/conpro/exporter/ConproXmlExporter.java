@@ -32,6 +32,7 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
@@ -688,7 +689,10 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			ORef xenodataRef = stringRefMap.getValue((String) key);
 			if (xenodataRef.isInvalid())
+			{
+				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
 				continue;
+			}
 
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
