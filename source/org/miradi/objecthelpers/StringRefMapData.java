@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.util.Set;
-
 import org.miradi.objectdata.ObjectData;
 
 public class StringRefMapData extends ObjectData
@@ -43,16 +41,11 @@ public class StringRefMapData extends ObjectData
 
 	public ORefList getRefList()
 	{
-		ORefList allValues = new ORefList();
-		Set keys = data.getKeys();
-		for(Object key : keys)
-		{
-			ORef ref = data.getValue((String) key);
-			allValues.add(ref);
-		}
+		ORef[] allRefs = data.getValues().toArray(new ORef[0]);
+		ORefList allValues = new ORefList(allRefs);
 		
-		//FIXME this should fail a test first 
-		return new ORefList();
+		//FIXME this should fail a test first with returning a new ORefList() 
+		return allValues;
 	}
 
 	public void set(String newValue) throws Exception
