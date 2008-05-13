@@ -885,7 +885,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private boolean isSameNameSpace() throws Exception
 	{
-		return getNameSpaceUrl().contains(PARTIAL_NAME_SPACE);
+		return getNameSpaceUrl().startsWith(PARTIAL_NAME_SPACE);
 	}
 	
 	private double getSchemaVersionToImport() throws Exception
