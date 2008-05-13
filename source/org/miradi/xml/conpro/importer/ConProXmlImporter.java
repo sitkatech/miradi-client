@@ -604,7 +604,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importStressesThreats(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
-		//FIXME finish importing tsrs, not sorted
 		ORefList threatStressRatingRefs = new ORefList();
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
 		
