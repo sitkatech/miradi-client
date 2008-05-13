@@ -591,11 +591,14 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
 	{
-		FactorLinkSet targetLinks = getThreatLinksWithThreatStressRatings(target);
+		FactorLinkSet targetLinkSet = getThreatLinksWithThreatStressRatings(target);
+		FactorLink[] targetLinks = targetLinkSet.toArray(new FactorLink[0]);
+		Arrays.sort(targetLinks, new BaseObjectByRefSorter());
+		
 		writeStartElement(out, THREAT_STRESS_RATINGS);
-		for(FactorLink factorLink : targetLinks)
+		for (int index = 0; index < targetLinks.length; ++index)
 		{
-			writeThreatStressRatings(out, factorLink);
+			writeThreatStressRatings(out, targetLinks[index]);
 		}
 		writeEndElement(out, THREAT_STRESS_RATINGS);
 	}
