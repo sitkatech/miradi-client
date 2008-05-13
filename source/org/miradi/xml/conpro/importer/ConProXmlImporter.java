@@ -112,7 +112,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			return;
 		}
 				
-		if (isVersionToImportNewer())
+		if (isUnsupportedNewVersion())
 		{
 			EAM.notifyDialog("This file cannot be imported because it is a newer format than this version of Miradi supports. " +
 							"Please make sure you are running the latest version of Miradi. If you are already " +
@@ -878,7 +878,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(conceptualModelRef, tag, idList.toString());
 	}
 	
-	private boolean isVersionToImportNewer() throws Exception
+	private boolean isUnsupportedNewVersion() throws Exception
 	{
 		return getSchemaVersionToImport() > NAME_SPACE_VERSION;
 	}
