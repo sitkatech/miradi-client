@@ -791,16 +791,14 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, elementName, Float.toString(value));
 	}
 
-	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
-	{
-		out.writeln("<" + parentElementName + ">");
-		writeCodeListElements(out, elementName, codeList);
-		out.writeln("</" + parentElementName + ">");
-	}
-	
 	private void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		CodeList codeList = object.getCodeList(tag);
+		writeCodeListElements(out, parentElementName, elementName, codeList);
+	}
+
+	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
+	{
 		out.writeln("<" + parentElementName + ">");
 		writeCodeListElements(out, elementName, codeList);
 		out.writeln("</" + parentElementName + ">");
@@ -826,9 +824,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (data.length() == 0)
 			return;
 		
-		out.write("<" + elementName + ">");
-		writeXmlEncodedData(out, data);
-		out.writeln("</" + elementName + ">");
+		writeElement(out, elementName, data);
 	}
 	
 	private void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
