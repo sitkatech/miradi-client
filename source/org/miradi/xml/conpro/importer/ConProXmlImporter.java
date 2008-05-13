@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.importer;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
@@ -85,7 +84,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -105,12 +103,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		factorRefToDiagramFactorRefMap = new HashMap<ORef, ORef>();
 	}
 	
-	public void importConProProject(File fileToImport) throws Exception
-	{
-		InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
-		importConProProject(inputSource);
-	}
-
 	public void importConProProjectForTesting(File fileToImport) throws Exception
 	{
 		InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
@@ -916,25 +908,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return nameSpace;
 	}
 			
-	public static void main(String[] args)
-	{
-		try
-		{
-			Project project = new Project();
-			project.createOrOpen(new File("c:/temp/devMiradiProject/"));
-			File fileToImport = new File("c:/temp/Conpro.xml");
-			if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(fileToImport)))
-				throw new Exception("Could not validate file for importing.");
-
-			new ConProXmlImporter(project).importConProProject(fileToImport);
-			System.out.println("finished importing");
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
 	private Project project;
 	private XPath xPath;
 	private Document document;
