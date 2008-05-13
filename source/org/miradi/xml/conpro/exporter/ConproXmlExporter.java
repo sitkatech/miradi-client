@@ -689,7 +689,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
 		
 		out.write("<" + PROJECT_ID + " context='ConPro'>");
-		out.write(projectId);
+		writeXmlEncodedData(out, projectId);
 		out.writeln("</" + PROJECT_ID + ">");
 	}
 
@@ -728,7 +728,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			return;
 		
 		out.write("<" + AREA_SIZE + " " + AREA_SIZE_UNIT + "='hectares'>");
-		out.write(Integer.toString((int)sizeInHectaresAsInt));
+		writeXmlEncodedData(out, Integer.toString((int)sizeInHectaresAsInt));
 		writeEndElement(out, AREA_SIZE);
 	}
 
@@ -807,7 +807,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		out.write("<" + elementName + ">");
-		out.write(XmlUtilities.getXmlEncoded(data));
+		writeXmlEncodedData(out, data);
 		out.writeln("</" + elementName + ">");
 	}
 
@@ -817,8 +817,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			return;
 		
 		out.write("<" + elementName + ">");
-		out.write(XmlUtilities.getXmlEncoded(data));
+		writeXmlEncodedData(out, data);
 		out.writeln("</" + elementName + ">");
+	}
+	
+	private void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
+	{
+		out.write(XmlUtilities.getXmlEncoded(data));
 	}
 	
 	private void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
