@@ -163,8 +163,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 
 		ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill1);
 		InputSource inputSource = new InputSource(new FileInputStream(beforeXmlOutFile));
-		conProXmlImporter.setup(inputSource);
-		conProXmlImporter.importXml(inputSource);
+		conProXmlImporter.importConProProject(inputSource);
 	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception

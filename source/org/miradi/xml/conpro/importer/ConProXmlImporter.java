@@ -32,9 +32,9 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.exceptions.UnsupportedNewVersionSchema;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -104,33 +104,26 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	public void importConProProject(InputSource inputSource) throws Exception
 	{
-		setup(inputSource);
+		document = createDocument(inputSource);
+		xPath = createXPath();
 				
 		if (!isSameNameSpace())
 		{
-			EAM.notifyDialog("Name space mismatch should be: \n " + PARTIAL_NAME_SPACE + " however it is: \n " + getNameSpaceUrl());
-			return;
+			throw new Exception("Name space mismatch should be: " + PARTIAL_NAME_SPACE + " <br> however it is: " + getNameSpaceUrl()); 
 		}
 				
 		if (isUnsupportedNewVersion())
 		{
-			EAM.notifyDialog("This file cannot be imported because it is a newer format than this version of Miradi supports. " +
-							"Please make sure you are running the latest version of Miradi. If you are already " +
-							"running the latest Miradi, either wait for a newer version that supports this format, " +
-							"or re-export the project to an older (supported) format.");
-			return;
+			throw new UnsupportedNewVersionSchema("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
+												  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
+												  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
+												  "or re-export the project to an older (supported) format.");
 		}
 		
 		importXml(inputSource);
 	}
 
-	public void setup(InputSource inputSource) throws Exception
-	{
-		document = createDocument(inputSource);
-		xPath = createXPath();
-	}
-
-	public void importXml(InputSource inputSource) throws Exception
+	private void importXml(InputSource inputSource) throws Exception
 	{
 		importProjectSummaryElement();
 		
