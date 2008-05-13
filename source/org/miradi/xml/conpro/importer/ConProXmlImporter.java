@@ -106,7 +106,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		setup(inputSource);
 				
-		if (isSameNameSpace())
+		if (!isSameNameSpace())
 		{
 			EAM.notifyDialog("Name space mismatch should be: \n " + PARTIAL_NAME_SPACE + " however it is: \n " + getNameSpaceUrl());
 			return;
@@ -885,7 +885,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private boolean isSameNameSpace() throws Exception
 	{
-		return !getNameSpaceUrl().contains(PARTIAL_NAME_SPACE);
+		return getNameSpaceUrl().contains(PARTIAL_NAME_SPACE);
 	}
 	
 	private double getSchemaVersionToImport() throws Exception
