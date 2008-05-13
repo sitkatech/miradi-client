@@ -31,6 +31,8 @@ public interface ConProMiradiXml
 	public static final String DOCIMENT_EXCHANGE_STATUS = "status";
 	public static final String PROJECT_SUMMARY = "project_summary";
 	public static final String PROJECT_ID = "project_id";
+	public static final String CONTEXT_ATTRIBUTE = "context";
+	public static final String CONPRO_CONTEXT = "ConPro";
 	public static final String SHARE_OUTSIDE_ORGANIZATION = "share_outside_organization";
 	public static final String PROJECT_SUMMARY_NAME = "name";
 	public static final String START_DATE = "start_date";

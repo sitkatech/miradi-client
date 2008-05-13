@@ -69,6 +69,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
+import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 
@@ -112,9 +113,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private String createConproXenodata() throws Exception
 	{
-		ORef xenodataRef = createAndPopulateXenodata().getRef();
+		ORef xenodataRef1 = createAndPopulateXenodata("1").getRef();
+		ORef xenodataRef2 = createAndPopulateXenodata("2").getRef();
 		StringRefMap refMap = new StringRefMap();
-		refMap.add(ProjectMetadata.XENODATA_CONTEXT_CONPRO, xenodataRef);
+		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
+		refMap.add("randomContext", xenodataRef2);
 		
 		return refMap.toString();
 	}
@@ -246,10 +249,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 	
-	public Xenodata createAndPopulateXenodata() throws Exception
+	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
-		populateXenodata(xenodata);
+		populateXenodata(xenodata, xenoDataProjectId);
 		
 		return xenodata;
 	}
@@ -553,9 +556,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportStatusQuestion.PLANNED_CODE);
 	}
 	
-	public void populateXenodata(Xenodata xenodata) throws Exception
+	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
 	{
-		setObjectData(xenodata.getRef(), Xenodata.TAG_PROJECT_ID, "1");
+		setObjectData(xenodata.getRef(), Xenodata.TAG_PROJECT_ID, xenoDataProjectId);
 	}
 	
 	public void populateEverything() throws Exception
