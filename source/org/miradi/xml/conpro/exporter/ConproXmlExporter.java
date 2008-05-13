@@ -85,8 +85,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	public void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<?xml version='1.0' encoding='UTF-8' ?>");
-		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE + NAME_SPACE_VERSION+"'>");
-		//FIXME output schema url
+		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE + "'>");
 		
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
