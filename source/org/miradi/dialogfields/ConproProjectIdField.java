@@ -25,9 +25,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ConproProjectIdField extends ObjectStringInputField
 {
@@ -48,7 +48,7 @@ public class ConproProjectIdField extends ObjectStringInputField
 		{
 			String data = getProject().getObjectData(getORef(), getTag());
 			StringRefMap stringRefMap = new StringRefMap(data);
-			ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+			ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
 			if (xenodataRef.isInvalid())
 				return "";
 			
@@ -69,7 +69,7 @@ public class ConproProjectIdField extends ObjectStringInputField
 		try
 		{
 			StringRefMap stringRefMap = new StringRefMap(newValue);
-			ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
+			ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			field.setText(xenodata.getData(Xenodata.TAG_PROJECT_ID));
 		}

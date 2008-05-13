@@ -463,12 +463,21 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
 	{
-		String projectId = getNodeContent(projectSumaryNode, PROJECT_ID);
-		ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
-		getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+		NodeList projectIdNodes = getNodes(projectSumaryNode, new String[]{PROJECT_ID});
 		StringRefMap stringRefMap = new StringRefMap();
-		stringRefMap.add(ProjectMetadata.XENODATA_CONTEXT_CONPRO, xenodataRef);
-		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());	
+		for (int nodeIndex = 0; nodeIndex < projectIdNodes.getLength(); ++nodeIndex) 
+		{
+			Node projectIdNode = projectIdNodes.item(nodeIndex);
+			
+			String projectId = getSafeNodeContent(projectIdNode);
+			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+			getProject().setObjectData(xenodataRef, Xenodata.TAG_PROJECT_ID, projectId);
+
+			String contextAttributeValue = getAttributeValue(projectIdNode, CONTEXT_ATTRIBUTE);
+			stringRefMap.add(contextAttributeValue, xenodataRef);
+		}
+		
+		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
 	}
 
 	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception
@@ -786,6 +795,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private String getNodeContent(Node node, String element) throws Exception
 	{
 		Node foundNode = getNode(node, element);
+		return getSafeNodeContent(foundNode);
+	}
+
+	private String getSafeNodeContent(Node foundNode)
+	{
 		if (foundNode == null)
 			return "";
 		

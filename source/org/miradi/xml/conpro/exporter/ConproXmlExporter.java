@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -681,16 +682,20 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-		ORef xenodataRef = stringRefMap.getValue(ProjectMetadata.XENODATA_CONTEXT_CONPRO);
-		if (xenodataRef.isInvalid())
-			return;
-		
-		Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
-		String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-		
-		out.write("<" + PROJECT_ID + " context='ConPro'>");
-		writeXmlEncodedData(out, projectId);
-		out.writeln("</" + PROJECT_ID + ">");
+		Set keys = stringRefMap.getKeys();
+		for(Object key: keys)
+		{
+			ORef xenodataRef = stringRefMap.getValue((String) key);
+			if (xenodataRef.isInvalid())
+				continue;
+
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+
+			out.write("<" + PROJECT_ID + " " + CONTEXT_ATTRIBUTE + "='" + key + "'>");
+			writeXmlEncodedData(out, projectId);
+			out.writeln("</" + PROJECT_ID + ">");
+		}
 	}
 
 	private String getComputedTncViability()
