@@ -105,33 +105,45 @@ public class ConProXmlImporter implements ConProMiradiXml
 		factorRefToDiagramFactorRefMap = new HashMap<ORef, ORef>();
 	}
 	
-	public void populateProjectFromFile(File fileToImport) throws Exception
+	public void importConProProject(File fileToImport) throws Exception
 	{
-		importConProProject(fileToImport);
+		InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
+		importConProProject(inputSource);
 	}
 
-	private void importConProProject(File fileToImport) throws Exception
+	public void importConProProjectForTesting(File fileToImport) throws Exception
 	{
-		FileInputStream fileInputStream = new FileInputStream(fileToImport);
-		try
-		{
-			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
-				throw new Exception("Could not validate file for importing.");
-
-			InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
-			importConProProject(inputSource);
-		}
-		finally
-		{
-			fileInputStream.close();
-		}
+		InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
+		document = createDocument(inputSource);
+		xPath = createXPath();
+		
+		importXml(inputSource);
 	}
-
+	
 	public void importConProProject(InputSource inputSource) throws Exception
 	{
 		document = createDocument(inputSource);
 		xPath = createXPath();
+				
+		if (isSameNameSpace())
+		{
+			EAM.notifyDialog("Name space mismatch should be: \n " + PARTIAL_NAME_SPACE + " however it is: \n " + getNameSpaceUrl());
+			return;
+		}
 		
+		
+		if (isVersionToImportNewer())
+		{
+			EAM.notifyDialog("This file cannot be imported because it is a newer format than this version of Miradi supports. " +
+							"Please make sure you are running the latest version of Miradi. If you are already " +
+							"running the latest Miradi, either wait for a newer version that supports this format, " +
+							"or re-export the project to an older (supported) format.");
+			return;
+		}
+	}
+
+	private void importXml(InputSource inputSource) throws Exception
+	{
 		importProjectSummaryElement();
 		
 		importStrategies();
@@ -863,6 +875,32 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		setData(conceptualModelRef, tag, idList.toString());
 	}
+	
+	private boolean isVersionToImportNewer() throws Exception
+	{
+		return getSchemaVersionToImport() > NAME_SPACE_VERSION;
+	}
+
+	private boolean isSameNameSpace() throws Exception
+	{
+		return !getNameSpaceUrl().contains(PARTIAL_NAME_SPACE);
+	}
+	
+	private double getSchemaVersionToImport() throws Exception
+	{
+		String nameSpace = getNameSpaceUrl();
+		int lastSlashIndexBeforeVersion = nameSpace.lastIndexOf("/");
+		String versionAsString = nameSpace.substring(lastSlashIndexBeforeVersion + 1, nameSpace.length());
+		double versionToImport = Double.parseDouble(versionAsString);
+		return versionToImport;
+	}
+
+	private String getNameSpaceUrl() throws Exception
+	{
+		Node rootNode = getRootNode();
+		String nameSpace = getAttributeValue(rootNode, XMLNS);
+		return nameSpace;
+	}
 			
 	public static void main(String[] args)
 	{
@@ -870,7 +908,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Project project = new Project();
 			project.createOrOpen(new File("c:/temp/devMiradiProject/"));
-			new ConProXmlImporter(project).populateProjectFromFile(new File("c:/temp/Conpro.xml"));
+			File fileToImport = new File("c:/temp/Conpro.xml");
+			if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(fileToImport)))
+				throw new Exception("Could not validate file for importing.");
+
+			new ConProXmlImporter(project).importConProProject(fileToImport);
 			System.out.println("finished importing");
 		}
 		catch(Exception e)

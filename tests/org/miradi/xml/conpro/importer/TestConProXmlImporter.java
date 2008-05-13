@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.importer;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 import org.martus.util.UnicodeReader;
 import org.miradi.ids.BaseId;
@@ -32,6 +33,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class TestConProXmlImporter extends TestCaseWithProject
@@ -155,7 +157,10 @@ public class TestConProXmlImporter extends TestCaseWithProject
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{
-		new ConProXmlImporter(projectToFill1).populateProjectFromFile(beforeXmlOutFile);
+		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(beforeXmlOutFile)))
+			throw new Exception("Could not validate file for importing.");
+
+		new ConProXmlImporter(projectToFill1).importConProProjectForTesting(beforeXmlOutFile);
 	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
