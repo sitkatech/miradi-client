@@ -155,13 +155,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		threatMatrixView = new ThreatMatrixView(this);
-//		budgetView = new BudgetView(this);
-//		workPlanView = new WorkPlanView(this);
 		mapView = new MapView(this);
 		calendarView = new ScheduleView(this);
 		libraryView = new LibraryView(this);
-//		strategicPlanView = new StrategicPlanView(this);
-//		monitoringView = new MonitoringView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
 		reportView = new ReportsView(this);
@@ -172,13 +168,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(summaryView, summaryView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
-//		viewHolder.add(budgetView, budgetView.cardName());
-//		viewHolder.add(workPlanView, workPlanView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
 		viewHolder.add(libraryView, libraryView.cardName());
-//		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
-//		viewHolder.add(monitoringView, monitoringView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		viewHolder.add(planningView, planningView.cardName());
 		viewHolder.add(reportView, reportView.cardName());
