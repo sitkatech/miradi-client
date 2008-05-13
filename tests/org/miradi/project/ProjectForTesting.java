@@ -578,22 +578,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStrategyThreatTargetAssociation();
 	}
 	
-	public void fillProjectPartially() throws Exception
-	{
-		fillGeneralProjectData();
-		//TODO commented so test pass for incremental commit. 
-		//createAndPopulateTarget();
-		//createAndPopulateTarget();
-		//createAndPopulateTarget();
-		//createAndPopulateDirectThreatLink();
-		
-		//createAndPopulateKea();
-		//createAndPopulateIndicator();
-		//createAndPopulateObjective();
-		//createAndPopulateStrategy();
-		//createAndPopulateStrategyThreatTargetAssociation();
-	}
-	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
 	{
 		FactorLink factorLink = createAndPopulateDirectThreatLink();

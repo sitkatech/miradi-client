@@ -43,7 +43,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	
 	public void testImportConProProject() throws Exception
 	{
-		getProject().fillProjectPartially();
+		getProject().populateEverything();
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproAfterFirstImport.xml");
