@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
@@ -103,27 +102,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 		factorRefToDiagramFactorRefMap = new HashMap<ORef, ORef>();
 	}
 	
-	public void importConProProjectForTesting(File fileToImport) throws Exception
-	{
-		InputSource inputSource = new InputSource(fileToImport.toURI().toURL().openStream());
-		document = createDocument(inputSource);
-		xPath = createXPath();
-		
-		importXml(inputSource);
-	}
-	
 	public void importConProProject(InputSource inputSource) throws Exception
 	{
-		document = createDocument(inputSource);
-		xPath = createXPath();
+		setup(inputSource);
 				
 		if (isSameNameSpace())
 		{
 			EAM.notifyDialog("Name space mismatch should be: \n " + PARTIAL_NAME_SPACE + " however it is: \n " + getNameSpaceUrl());
 			return;
 		}
-		
-		
+				
 		if (isVersionToImportNewer())
 		{
 			EAM.notifyDialog("This file cannot be imported because it is a newer format than this version of Miradi supports. " +
@@ -132,9 +120,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 							"or re-export the project to an older (supported) format.");
 			return;
 		}
+		
+		importXml(inputSource);
 	}
 
-	private void importXml(InputSource inputSource) throws Exception
+	public void setup(InputSource inputSource) throws Exception
+	{
+		document = createDocument(inputSource);
+		xPath = createXPath();
+	}
+
+	public void importXml(InputSource inputSource) throws Exception
 	{
 		importProjectSummaryElement();
 		
