@@ -35,6 +35,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
+import org.xml.sax.InputSource;
 
 public class TestConProXmlImporter extends TestCaseWithProject
 {
@@ -160,7 +161,10 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(beforeXmlOutFile)))
 			throw new Exception("Could not validate file for importing.");
 
-		new ConProXmlImporter(projectToFill1).importConProProjectForTesting(beforeXmlOutFile);
+		ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill1);
+		InputSource inputSource = new InputSource(new FileInputStream(beforeXmlOutFile));
+		conProXmlImporter.setup(inputSource);
+		conProXmlImporter.importXml(inputSource);
 	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
