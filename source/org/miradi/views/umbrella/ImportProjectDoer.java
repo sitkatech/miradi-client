@@ -76,7 +76,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("Import failed: " + e.getMessage());
+			EAM.errorDialog("<html>Import failed: <br><p>" + e.getMessage() + "</p></html>");
 		}
 	}
 
