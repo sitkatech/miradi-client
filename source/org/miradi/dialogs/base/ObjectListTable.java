@@ -39,6 +39,12 @@ public class ObjectListTable extends ObjectTable
 		resizeTable(4);
 	}
 	
+	public ObjectListTable(ObjectTableModel modelToUse, int sortColumn)
+	{
+		this(modelToUse);
+		sort(sortColumn);
+	}
+	
 	public String getUniqueTableIdentifier()
 	{
 		return UNIQUE_IDENTIFIER + getObjectTableModel().getRowObjectType();

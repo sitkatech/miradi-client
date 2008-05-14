@@ -32,8 +32,7 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 	public ObjectiveListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
 	{
 		super(projectToUse, new ObjectiveListTableModel(projectToUse, nodeRef), 
-				actions, 
-				buttonActionClasses);
+				actions, buttonActionClasses, DEFAULT_SORT_COLUMN);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
@@ -42,4 +41,5 @@ public class ObjectiveListTablePanel extends ObjectListTablePanel
 		ActionCloneObjective.class
 	};
 
+	private static final int DEFAULT_SORT_COLUMN = 0;
 }
