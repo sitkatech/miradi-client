@@ -1203,7 +1203,7 @@ abstract public class BaseObject
 		Factor[] upstreamFactors = getUpstreamFactors(diagram);
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
-			IdList objectiveIds = upstreamFactors[i].getObjectives();
+			IdList objectiveIds = upstreamFactors[i].getObjectiveIds();
 			for(int idIndex = 0; idIndex < objectiveIds.size(); ++idIndex)
 			{
 				BaseId objectiveId = objectiveIds.get(idIndex);
