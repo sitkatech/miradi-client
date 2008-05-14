@@ -39,7 +39,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.BaseObjectByShortLabelSorter;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -139,7 +139,7 @@ abstract public class FactorCell extends EAMGraphCell
 			sortedObjects.add(baseObject);
 		}
 		
-		Collections.sort(sortedObjects, new BaseObjectByShortLabelSorter());
+		Collections.sort(sortedObjects, new BaseObjectByFullNameSorter());
 		
 		return sortedObjects;
 	}

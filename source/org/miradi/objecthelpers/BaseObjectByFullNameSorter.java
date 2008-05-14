@@ -23,10 +23,10 @@ import java.util.Comparator;
 
 import org.miradi.objects.BaseObject;
 
-public class BaseObjectByShortLabelSorter implements Comparator<BaseObject>
+public class BaseObjectByFullNameSorter implements Comparator<BaseObject>
 {
 	public int compare(BaseObject o1, BaseObject o2)
 	{
-		return o1.getShortLabel().compareTo(o2.getShortLabel());
+		return o1.getFullName().compareTo(o2.getFullName());
 	}	
 }
