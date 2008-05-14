@@ -84,10 +84,11 @@ public class SelectChainDoer extends ViewDoer
 		{
 			realDiagramLinkRefs.addAll(selectedLinks[i].getSelfOrChildren());
 		}
-		getChainsBasedOnFactorsAndLinks(diagramPanel.getdiagramComponent(), diagramPanel.getDiagramModel(), selectedFactors, realDiagramLinkRefs);
+		
+		selectChainsBasedOnFactorsAndLinks(diagramPanel.getdiagramComponent(), diagramPanel.getDiagramModel(), selectedFactors, realDiagramLinkRefs);
 	}
 	
-	public static void getChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, ORefList diagramLinkRefs) throws Exception
+	private static void selectChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, ORefList diagramLinkRefs) throws Exception
 	{
 		Factor[] factorReleatedFactors = getChainsBasedOnFactors(model, factorCells);
 		Factor[] linkRelatedFactors = getChainsBasedOnLinks(model, diagramLinkRefs);
