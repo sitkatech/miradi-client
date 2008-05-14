@@ -28,4 +28,9 @@ abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAnd
 	{
 		super(projectToUse, new ObjectListTable(model), actions,buttonActionClasses);
 	}
+	
+	public ObjectListTablePanel(Project projectToUse, ObjectTableModel model, Actions actions, Class[] buttonActionClasses, int sortColumn)
+	{
+		super(projectToUse, new ObjectListTable(model, sortColumn), actions,buttonActionClasses);
+	}
 }
