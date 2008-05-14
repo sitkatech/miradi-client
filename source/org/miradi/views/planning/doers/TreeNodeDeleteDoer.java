@@ -19,10 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import java.util.Arrays;
+import java.util.Vector;
+
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
+import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivity;
 
 public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
@@ -32,10 +40,16 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		BaseObject selected = getSingleSelectedObject();
 		if(selected == null)
 			return false;
-		if(selected.getType() != Task.getObjectType())
-			return false;
 		
-		return true;
+		return canDelete(selected);
+	}
+
+	private boolean canDelete(BaseObject selected)
+	{
+		if (Indicator.is(selected.getType()))
+			return true;
+		
+		return selected.getType() == Task.getObjectType();
 	}
 
 	public void doIt() throws CommandFailedException
@@ -44,10 +58,50 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 			return;
 		
 		BaseObject selected = getSingleSelectedObject();
-		if(selected.getType() != Task.getObjectType())
+		
+		//TODO this might be a redundant test since isAvailable is testing same thing.  why is it here
+		if(!canDelete(selected))
 			return;
 		
-		Task selectedTaskToDelete = (Task) getSingleSelectedObject();
+		try
+		{
+			deleteTask(selected);
+			deleteIndicator(selected);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+	}
+
+	private void deleteIndicator(BaseObject selected) throws Exception
+	{
+		if (!Indicator.is(selected.getType()))
+			return;
+		
+		Vector commands = new Vector();
+		ORefList ownerRefs = selected.findObjectsThatReferToUs();
+		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
+		{
+			ORef ownerRef = ownerRefs.get(refIndex);
+			BaseObject owner = getProject().findObject(ownerRef);
+			if (Factor.isFactor(ownerRef))
+				commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, Factor.TAG_INDICATOR_IDS, selected.getRef()));
+			
+			commands.addAll(DeleteAnnotationDoer.buildCommandsToDeleteKEAIndicators(getProject(), ownerRef));
+		}
+		
+		commands.addAll(Arrays.asList(selected.createCommandsToClear()));
+		commands.add(new CommandDeleteObject(selected.getRef()));
+		getProject().executeCommandsAsTransaction(commands);
+	}
+
+	private void deleteTask(BaseObject selected) throws CommandFailedException
+	{
+		if (!Task.is(selected.getType()))
+			return;
+		
+		Task selectedTaskToDelete = (Task) selected;
 		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
 			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
 		else
