@@ -332,7 +332,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];
-			ORefList objectiveRefs = new ORefList(Objective.getObjectType(), factor.getObjectives());
+			ORefList objectiveRefs = new ORefList(Objective.getObjectType(), factor.getObjectiveIds());
 			potentialChildObjectiveRefs.addAll(objectiveRefs);
 		}
 		return potentialChildObjectiveRefs;

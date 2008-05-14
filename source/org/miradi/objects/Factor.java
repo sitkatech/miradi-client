@@ -144,11 +144,10 @@ abstract public class Factor extends BaseObject
 
 	public ORefList getObjectiveRefs()
 	{
-		return new ORefList(Objective.getObjectType(), getObjectives());
+		return new ORefList(Objective.getObjectType(), getObjectiveIds());
 	}
 	
-	//TODO rename to getObjectiveIds
-	public IdList getObjectives()
+	public IdList getObjectiveIds()
 	{
 		return objectives.getIdList();
 	}

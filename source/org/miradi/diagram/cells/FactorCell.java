@@ -105,7 +105,7 @@ abstract public class FactorCell extends EAMGraphCell
 		{
 			header = EAM.text("Objectives:");
 			detailsTag = Objective.TAG_FULL_TEXT;
-			bullets = new ORefList(Objective.getObjectType(), factor.getObjectives());
+			bullets = new ORefList(Objective.getObjectType(), factor.getObjectiveIds());
 		}
 		else if(factor.getDetails().length() > 0)
 		{
@@ -305,7 +305,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public IdList getObjectives()
 	{
-		return underlyingObject.getObjectives();
+		return underlyingObject.getObjectiveIds();
 	}
 
 	abstract public Color getColor();

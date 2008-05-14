@@ -88,7 +88,7 @@ public class ThreatReductionResult extends Factor
 		switch(objectType)
 		{
 			case ObjectType.OBJECTIVE: 
-				list.addAll(new ORefList(objectType, getObjectives()));
+				list.addAll(new ORefList(objectType, getObjectiveIds()));
 				break;
 		}
 		return list;
