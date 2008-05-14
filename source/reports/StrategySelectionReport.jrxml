@@ -102,7 +102,7 @@ We rolled up the ratings to get an overall summary rating for the strategy.
 					<subreportParameter  name="DATA_DIRECTORY">
 						<subreportParameterExpression><![CDATA[$P{DATA_DIRECTORY}]]></subreportParameterExpression>
 					</subreportParameter>
-					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[Status = 'Real']")]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).dataSource("/MiradiProject/ObjectPools/Pool/Strategy[Status = '']")]]></dataSourceExpression>
 					<subreportExpression  class="java.net.URL"><![CDATA[org.miradi.main.Miradi.class.getResource("/reports/NonDraftStrategyListReport.jasper")]]></subreportExpression>
 				</subreport>
 				<subreport  isUsingCache="true">
