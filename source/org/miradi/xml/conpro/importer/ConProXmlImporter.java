@@ -114,10 +114,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 				
 		if (isUnsupportedNewVersion())
 		{
-			throw new UnsupportedNewVersionSchemaException("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
-												  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
-												  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
-												  "or re-export the project to an older (supported) format.");
+			throw new UnsupportedNewVersionSchemaException();
 		}
 		
 		importXml(inputSource);

@@ -21,8 +21,4 @@ package org.miradi.exceptions;
 
 public class UnsupportedNewVersionSchemaException extends Exception
 {
-	public UnsupportedNewVersionSchemaException(String message)
-	{
-		super(message);
-	}
 }

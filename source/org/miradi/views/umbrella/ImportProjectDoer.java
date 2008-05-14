@@ -26,6 +26,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.Utility;
@@ -73,11 +74,27 @@ public abstract class ImportProjectDoer extends ViewDoer
 			currentDirectory = fileToImport.getParent();
 			EAM.notifyDialog(EAM.text("Import Completed"));
 		}
+		catch (UnsupportedNewVersionSchemaException e)
+		{
+			String message = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
+			  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
+			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
+			  "or re-export the project to an older (supported) format.");
+			
+			EAM.logException(e);
+			showImportFailedErrorDialog(message);
+		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("<html>Import failed: <br><p>" + e.getMessage() + "</p></html>");
+			showImportFailedErrorDialog(e.getMessage());
 		}
+		
+	}
+
+	private void showImportFailedErrorDialog(String message)
+	{
+		EAM.errorDialog("<html>Import failed: <br><p>" + message + "</p></html>");
 	}
 
 	private String getApproveButtonToolTipText()
