@@ -25,6 +25,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Collections;
+import java.util.Vector;
 
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -37,6 +39,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.BaseObjectByShortLabelSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -76,7 +79,6 @@ abstract public class FactorCell extends EAMGraphCell
 	public String getToolTipString(Point pointRelativeToCellOrigin) 
 	{
 		Factor factor = getUnderlyingObject();
-		Project project = factor.getProject();
 
 		String tip = "<html>";
 
@@ -115,15 +117,31 @@ abstract public class FactorCell extends EAMGraphCell
 			return tip;
 		
 		tip += "<BR>" + header + "<UL>";
-		for(int i = 0; i < bullets.size(); ++i)
+		
+		Vector<BaseObject> sortedObjectsAsBullets = sortBullets(bullets);
+		for(int i = 0; i < sortedObjectsAsBullets.size(); ++i)
 		{
-			BaseObject object = project.findObject(bullets.get(i));
-			tip += getObjectText(object, object.getData(detailsTag));
+			BaseObject baseObject = sortedObjectsAsBullets.get(i);
+			tip += getObjectText(baseObject, baseObject.getData(detailsTag));
 		}	
 		tip += "</UL>";
 		
 		tip += "</TD></TR></TABLE>";
 		return tip;
+	}
+
+	private Vector<BaseObject> sortBullets(ORefList refsAsbullets)
+	{
+		Vector<BaseObject> sortedObjects = new Vector<BaseObject>();
+		for(int index = 0; index < refsAsbullets.size(); ++index)
+		{
+			BaseObject baseObject = getProject().findObject(refsAsbullets.get(index));
+			sortedObjects.add(baseObject);
+		}
+		
+		Collections.sort(sortedObjects, new BaseObjectByShortLabelSorter());
+		
+		return sortedObjects;
 	}
 
 	private String getSafeMultilineString(String factorName)
