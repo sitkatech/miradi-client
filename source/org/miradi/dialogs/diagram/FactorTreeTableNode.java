@@ -91,6 +91,8 @@ public class FactorTreeTableNode extends TreeTableNode
 			Indicator thisIndicator = (Indicator) project.findObject(indicatorRefs.get(i));
 			indicators[i] = new ViabilityIndicatorNode(project, this, thisIndicator);
 		}
+		
+		sortChildren(indicators);
 	}
 	
 	private ViabilityIndicatorNode[] indicators;
