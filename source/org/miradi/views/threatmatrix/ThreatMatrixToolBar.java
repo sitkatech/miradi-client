@@ -69,32 +69,20 @@ public class ThreatMatrixToolBar extends EAMToolBar
 	{
 		ChoiceItem[] choices = ThreatRatingModeChoiceQuestion.getChoiceItems();
 		ChoiceItemComboBox threatRatingModeCombo = new ChoiceItemComboBox(choices);	
-		setSelectedChoice(project, threatRatingModeCombo);
+		ChoiceQuestion question = project.getQuestion(ThreatRatingModeChoiceQuestion.class);
+		
+		String code = "";
+		if (project.isStressBaseMode())
+			code = ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
+			
+		ChoiceItem choiceItem = question.findChoiceByCode(code);
+		threatRatingModeCombo.setSelectedItem(choiceItem);
 		
 		threatRatingModeCombo.addActionListener(new ThreatRatingModeComboBoxHandler(project));
 		
 		return threatRatingModeCombo;
 	}
 
-	private static void setSelectedChoice(Project project, ChoiceItemComboBox threatRatingModeCombo)
-	{
-		ChoiceQuestion question = project.getQuestion(ThreatRatingModeChoiceQuestion.class);
-		if (project.isStressBaseMode())
-		{
-			setSelectedChoice(threatRatingModeCombo, question, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
-		}
-		else
-		{
-			setSelectedChoice(threatRatingModeCombo, question, "");
-		}
-	}
-
-	private static void setSelectedChoice(	ChoiceItemComboBox threatRatingModeCombo, ChoiceQuestion question, String code)
-	{
-		ChoiceItem choiceItem = question.findChoiceByCode(code);
-		threatRatingModeCombo.setSelectedItem(choiceItem);
-	}
-	
 	static class ThreatRatingModeComboBoxHandler implements ActionListener
 	{
 		public ThreatRatingModeComboBoxHandler(Project projectToUse)
