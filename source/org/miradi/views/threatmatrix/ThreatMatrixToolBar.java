@@ -103,10 +103,10 @@ public class ThreatMatrixToolBar extends EAMToolBar
 			ChoiceItemComboBox combo = (ChoiceItemComboBox) event.getSource();
 			ChoiceItem choiceItem = (ChoiceItem) combo.getSelectedItem();
 			
-			setThreatRatingMode(choiceItem);
+			modeWasChanged(choiceItem);
 		}
 
-		private void setThreatRatingMode(ChoiceItem choiceItem)
+		private void modeWasChanged(ChoiceItem choiceItem)
 		{
 			try
 			{	
