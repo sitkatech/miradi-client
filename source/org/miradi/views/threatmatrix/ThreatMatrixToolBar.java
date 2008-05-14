@@ -81,14 +81,18 @@ public class ThreatMatrixToolBar extends EAMToolBar
 		ChoiceQuestion question = project.getQuestion(ThreatRatingModeChoiceQuestion.class);
 		if (project.isStressBaseMode())
 		{
-			ChoiceItem stressBaseModeChoice = question.findChoiceByCode(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
-			threatRatingModeCombo.setSelectedItem(stressBaseModeChoice);
+			setSelectedChoice(threatRatingModeCombo, question, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		}
 		else
 		{
-			ChoiceItem simpleModeChoice = question.findChoiceByCode("");
-			threatRatingModeCombo.setSelectedItem(simpleModeChoice);
+			setSelectedChoice(threatRatingModeCombo, question, "");
 		}
+	}
+
+	private static void setSelectedChoice(	ChoiceItemComboBox threatRatingModeCombo, ChoiceQuestion question, String code)
+	{
+		ChoiceItem choiceItem = question.findChoiceByCode(code);
+		threatRatingModeCombo.setSelectedItem(choiceItem);
 	}
 	
 	static class ThreatRatingModeComboBoxHandler implements ActionListener
