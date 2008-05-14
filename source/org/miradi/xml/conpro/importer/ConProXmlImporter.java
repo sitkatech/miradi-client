@@ -98,8 +98,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		project = projectToFill;
 		codeMapHelper = new ConProMiradiCodeMapHelper();
-		//TODO need a better name,  this map includes factors and links
-		factorRefToDiagramFactorRefMap = new HashMap<ORef, ORef>();
+
+		wrappedToDiagramMap = new HashMap<ORef, ORef>();
 	}
 	
 	public void importConProProject(InputSource inputSource) throws Exception
@@ -829,7 +829,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
-		factorRefToDiagramFactorRefMap.put(factorRef, diagramFactorRef);
+		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
 	}
 	
@@ -842,12 +842,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, toRef);
 		ORef createdFactorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
 		
-		ORef fromDiagramFactorRef = factorRefToDiagramFactorRefMap.get(fromRef);
-		ORef toDiagramFactorRef = factorRefToDiagramFactorRefMap.get(toRef);
+		ORef fromDiagramFactorRef = wrappedToDiagramMap.get(fromRef);
+		ORef toDiagramFactorRef = wrappedToDiagramMap.get(toRef);
 			
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(createdFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
-		factorRefToDiagramFactorRefMap.put(createdFactorLinkRef, diagramLinkRef);
+		wrappedToDiagramMap.put(createdFactorLinkRef, diagramLinkRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef);
 		
 		return createdFactorLinkRef;
@@ -901,7 +901,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private XPath xPath;
 	private Document document;
 	private ConProMiradiCodeMapHelper codeMapHelper;
-	private HashMap<ORef, ORef> factorRefToDiagramFactorRefMap;
+	private HashMap<ORef, ORef> wrappedToDiagramMap;
 	
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String PREFIX = "cp:";
