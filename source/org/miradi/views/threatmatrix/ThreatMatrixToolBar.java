@@ -50,7 +50,7 @@ public class ThreatMatrixToolBar extends EAMToolBar
 	static JComponent[][] createButtons(MainWindow mainWindow, boolean isCellRatingVisible)
 	{
 		JComponent threatRatingModeCombo = getThreatRatingModeCombo(mainWindow.getProject(), mainWindow.getActions());
-		if (mainWindow.getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
+		if (mainWindow.getProject().isStressBaseMode())
 				return new JComponent[][]  {{threatRatingModeCombo}, };
 		
 		ToolBarButton cellRatingButton = getCellRatingsButton(mainWindow.getActions(), isCellRatingVisible);
