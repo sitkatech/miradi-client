@@ -137,7 +137,7 @@ public class DiagramChainObject
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	protected HashSet<Factor> getAllLinkedFactors(int direction)
+	private HashSet<Factor> getAllLinkedFactors(int direction)
 	{
 		HashSet<Factor> linkedFactors = new HashSet();
 		HashSet<Factor> unprocessedFactors = new HashSet();
