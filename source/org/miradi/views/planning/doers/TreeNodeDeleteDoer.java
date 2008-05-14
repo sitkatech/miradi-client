@@ -65,8 +65,11 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			deleteTask(selected);
-			deleteIndicator(selected);
+			if (Task.is(selected.getType()))
+				deleteTask(selected);
+			
+			if (Indicator.is(selected.getType()))
+				deleteIndicator(selected);
 		}
 		catch (Exception e)
 		{
@@ -76,9 +79,6 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 
 	private void deleteIndicator(BaseObject selected) throws Exception
 	{
-		if (!Indicator.is(selected.getType()))
-			return;
-		
 		Vector commands = new Vector();
 		ORefList ownerRefs = selected.findObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
@@ -97,10 +97,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 	}
 
 	private void deleteTask(BaseObject selected) throws CommandFailedException
-	{
-		if (!Task.is(selected.getType()))
-			return;
-		
+	{		
 		Task selectedTaskToDelete = (Task) selected;
 		if (shouldDeleteFromParentOnly(selectedTaskToDelete))
 			DeleteActivity.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTaskToDelete);
