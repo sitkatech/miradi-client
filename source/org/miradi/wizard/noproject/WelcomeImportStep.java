@@ -79,12 +79,12 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"<p><table>" + 
 					"<tr>" +
 					"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
-					"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_MIRADI + "' value='Miradi Project &gt;'></input></td>" +
+					"<td><input type='submit' name='Import Miradi Project' value='Miradi Project &gt;'></input></td>" +
 					"</tr>" +
 					
 					"<tr>" +
 					"<td></td>" + 
-					"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
+					"<td><input type='submit' name='Import ConPro Project' value='Import ConPro Project &gt;'></input></td>" +
 					"</tr>" +
 					"</table></p><br>") ; 
 
