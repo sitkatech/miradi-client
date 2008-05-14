@@ -158,12 +158,29 @@ public class TestConProXmlImporter extends TestCaseWithProject
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{
-		if (!new ConProMiradiXmlValidator().isValid(new FileInputStream(beforeXmlOutFile)))
-			throw new Exception("Could not validate file for importing.");
-
+		FileInputStream fileInputStream = new FileInputStream(beforeXmlOutFile);
+		try
+		{
+			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
+				throw new Exception("Could not validate file for importing.");
+		}
+		finally
+		{
+			fileInputStream.close();
+		}
+		
+		
 		ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill1);
-		InputSource inputSource = new InputSource(new FileInputStream(beforeXmlOutFile));
-		conProXmlImporter.importConProProject(inputSource);
+		FileInputStream fileInputStream2 = new FileInputStream(beforeXmlOutFile);
+		try
+		{
+			InputSource inputSource = new InputSource(fileInputStream2);
+			conProXmlImporter.importConProProject(inputSource);
+		}
+		finally
+		{
+			fileInputStream2.close();
+		}
 	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
