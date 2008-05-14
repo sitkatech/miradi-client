@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.exceptions;
 
-public class UnsupportedNewVersionSchema extends Exception
+public class UnsupportedNewVersionSchemaException extends Exception
 {
-	public UnsupportedNewVersionSchema(String message)
+	public UnsupportedNewVersionSchemaException(String message)
 	{
 		super(message);
 	}
