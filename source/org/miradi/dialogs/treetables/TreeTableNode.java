@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.util.Arrays;
+
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 
@@ -54,6 +56,11 @@ public abstract class TreeTableNode implements Comparable
 	public boolean isAlwaysExpanded()
 	{
 		return false;
+	}
+	
+	public void sortChildren(TreeTableNode[] nodes)
+	{
+		Arrays.sort(nodes);
 	}
 	
 	public int compareTo(Object otherObject)
