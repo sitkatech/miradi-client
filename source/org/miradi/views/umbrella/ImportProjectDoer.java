@@ -94,7 +94,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 	private void showImportFailedErrorDialog(String message)
 	{
-		String safeMessage = EAM.substitute("<html>Import failed: <br><p> %s </p></html>", message);
+		String safeMessage = EAM.substitute(EAM.text("<html>Import failed: <br><p> %s </p></html>"), message);
 		EAM.errorDialog(safeMessage);
 	}
 
