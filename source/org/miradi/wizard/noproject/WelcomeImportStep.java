@@ -74,19 +74,32 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"press the <code class='toolbarbutton'>&lt;Next&gt;</code>button below " +
 					"to choose the file.");
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));
-			
-			add(createNextPreviousButtonPanel(hyperlinkHandler, "Miradi Project"));
+
+			String buttonsText = EAM.text("<div class='WizardText'>" +	
+					"<p><table>" + 
+					"<tr>" +
+					"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
+					"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_MIRADI + "' value='Miradi Project &gt;'></input></td>" +
+					"</tr>" +
+					
+					"<tr>" +
+					"<td></td>" + 
+					"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
+					"</tr>" +
+					"</table></p><br>") ; 
+
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText));
 		}
 
 	}
-
+	
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(CONTROL_IMPORT_MIRADI))
 			return getClass();
+		
 		return super.getControl(controlName);
 	}
-
 
 	public void buttonPressed(String buttonName)
 	{

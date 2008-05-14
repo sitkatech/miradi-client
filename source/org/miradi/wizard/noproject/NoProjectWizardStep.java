@@ -83,28 +83,17 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 
 	protected FlexibleWidthHtmlViewer createNextPreviousButtonPanel(HyperlinkHandler hyperlinkHandler)
 	{
-		return createNextPreviousButtonPanel(hyperlinkHandler, "Next");
+		String buttonsText = EAM.text("<div class='WizardText'>" +	
+				"<p><table>" + 
+				"<tr>" +
+				"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
+				"<td><input type='submit' name='Next' value='Next &gt;'></input></td>" +
+				"</tr>") ; 
+
+		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);
+
 	}
 	
-	protected FlexibleWidthHtmlViewer createNextPreviousButtonPanel(HyperlinkHandler hyperlinkHandler, String nextLabel)
-	{
-		
-		String buttonsText = EAM.text("<div class='WizardText'>" +	
-								"<p><table>" + 
-								"<tr>" +
-								"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
-								"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_MIRADI + "' value='" + nextLabel + " &gt;'></input></td>" +
-								"</tr>" +
-								
-								"<tr>" +
-								"<td></td>" + 
-								"<td><input type='submit' name='" + WelcomeImportStep.CONTROL_IMPORT_CONPRO + "' value='Import ConPro Project &gt;'></input></td>" +
-								"</tr>" +
-								"</table></p><br>") ; 
-				
-		return new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, buttonsText);
-	}
-
 	public void linkClicked(String linkDescription)
 	{
 		if(getMainWindow().mainLinkFunction(linkDescription))
