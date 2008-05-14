@@ -118,7 +118,7 @@ abstract public class FactorCell extends EAMGraphCell
 		
 		tip += "<BR>" + header + "<UL>";
 		
-		Vector<BaseObject> sortedObjectsAsBullets = sortBullets(bullets);
+		Vector<BaseObject> sortedObjectsAsBullets = getSortedBullets(bullets);
 		for(int i = 0; i < sortedObjectsAsBullets.size(); ++i)
 		{
 			BaseObject baseObject = sortedObjectsAsBullets.get(i);
@@ -130,7 +130,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return tip;
 	}
 
-	private Vector<BaseObject> sortBullets(ORefList refsAsbullets)
+	private Vector<BaseObject> getSortedBullets(ORefList refsAsbullets)
 	{
 		Vector<BaseObject> sortedObjects = new Vector<BaseObject>();
 		for(int index = 0; index < refsAsbullets.size(); ++index)
