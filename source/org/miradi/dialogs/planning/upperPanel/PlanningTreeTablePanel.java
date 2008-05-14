@@ -50,7 +50,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -195,10 +197,30 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		
 		if(didAffectTaskInTree(event))
 			return true;
-				
+		
+		if (didAffectIndicatorInTree(event))
+			return true;
+		
 		return false;
 	}
 	
+	private boolean didAffectIndicatorInTree(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		int type = setCommand.getObjectType();
+		String tag = setCommand.getFieldTag();
+		if(Factor.isFactor(type) && tag.equals(Factor.TAG_INDICATOR_IDS))
+			return true;
+		
+		if(type == KeyEcologicalAttribute.getObjectType() && tag.equals(KeyEcologicalAttribute.TAG_INDICATOR_IDS))
+			return true;
+				
+		return false;
+	}
+
 	//TODO this should use that getTasksTag (or something like that) method
 	//from email :Please put a todo in isTaskMove that it should use that 
 	//getTasksTag method (or whatever it's called) that I mentioned the 

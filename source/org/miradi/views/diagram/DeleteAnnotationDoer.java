@@ -113,7 +113,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return (Command[])commands.toArray(new Command[0]);
 	}
 
-	private static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
+	public static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
 	{
 		ObjectData objectData = owner.getField(annotationIdListTag);
 		if (objectData.isIdListData())
@@ -135,7 +135,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	private static Vector buildCommandsToDeleteKEAIndicators(Project project, ORef ref) throws Exception
+	public static Vector buildCommandsToDeleteKEAIndicators(Project project, ORef ref) throws Exception
 	{
 		Vector commands = new Vector();
 		if (!(ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))

@@ -904,9 +904,14 @@ public class Project
 		}
 	}
 
-	public void executeCommandsWithoutTransaction(Vector commands) throws CommandFailedException
+	public void executeCommandsWithoutTransaction(Vector<Command> commands) throws CommandFailedException
 	{
-		executeCommandsWithoutTransaction((Command[]) commands.toArray(new Command[0]));
+		executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
+	}
+	
+	public void executeCommandsAsTransaction(Vector<Command> commands) throws CommandFailedException
+	{
+		executeCommandsAsTransaction(commands.toArray(new Command[0]));
 	}
 	
 	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
