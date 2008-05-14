@@ -32,7 +32,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.exceptions.UnsupportedNewVersionSchema;
+import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -114,7 +114,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 				
 		if (isUnsupportedNewVersion())
 		{
-			throw new UnsupportedNewVersionSchema("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
+			throw new UnsupportedNewVersionSchemaException("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
 												  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
 												  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
 												  "or re-export the project to an older (supported) format.");
