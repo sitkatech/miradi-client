@@ -193,12 +193,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
-		if(isTaskMove(event))
+		if(didAffectTaskInTree(event))
 			return true;
-		
-		if(isCreateCommand(event, Task.getObjectType()) || isDeleteCommand(event, Task.getObjectType()))
-			return true;
-		
+				
 		return false;
 	}
 	
@@ -206,7 +203,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	//from email :Please put a todo in isTaskMove that it should use that 
 	//getTasksTag method (or whatever it's called) that I mentioned the 
 	//other day. I know that one is my code not yours.
-	private boolean isTaskMove(CommandExecutedEvent event)
+	private boolean didAffectTaskInTree(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommand())
 			return false;
