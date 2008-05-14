@@ -49,7 +49,7 @@ public class ThreatMatrixToolBar extends EAMToolBar
 	
 	static JComponent[][] createButtons(MainWindow mainWindow, boolean isCellRatingVisible)
 	{
-		JComponent threatRatingModeCombo = getThreatRatingModeCombo(mainWindow.getProject(), mainWindow.getActions());
+		JComponent threatRatingModeCombo = createThreatRatingModeCombo(mainWindow.getProject(), mainWindow.getActions());
 		if (mainWindow.getProject().isStressBaseMode())
 				return new JComponent[][]  {{threatRatingModeCombo}, };
 		
@@ -65,7 +65,7 @@ public class ThreatMatrixToolBar extends EAMToolBar
 		return new ToolBarButton(actions, ActionShowCellRatings.class);
 	}
 	
-	private static ChoiceItemComboBox getThreatRatingModeCombo(Project project, Actions actions)
+	private static ChoiceItemComboBox createThreatRatingModeCombo(Project project, Actions actions)
 	{
 		ChoiceItem[] choices = ThreatRatingModeChoiceQuestion.getChoiceItems();
 		ChoiceItemComboBox threatRatingModeCombo = new ChoiceItemComboBox(choices);	
