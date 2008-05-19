@@ -163,6 +163,7 @@ public class Actions
 		registerAction(new ActionSaveImageJPEG(mainWindow));
 		registerAction(new ActionSaveImagePng(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
+		registerAction(new ActionPasteFactorContent(mainWindow));
 		registerAction(new ActionPasteWithoutLinks(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));
