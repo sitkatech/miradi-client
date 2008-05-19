@@ -50,12 +50,12 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
-		return (ORef) getOldToNewObjectRefMap().get(oldWrappedRef);
+		return getOldToNewObjectRefMap().get(oldWrappedRef);
 	}
 	
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
 	{
-		return (ORef) getOldToNewObjectRefMap().get(oldWrappedFactorLinkRef);
+		return getOldToNewObjectRefMap().get(oldWrappedFactorLinkRef);
 	}
 	
 	protected boolean canPastTypeInDiagram(int type)

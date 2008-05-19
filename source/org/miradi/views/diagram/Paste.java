@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.Transferable;
 import java.text.ParseException;
 
 import org.miradi.commands.CommandBeginTransaction;
@@ -30,36 +27,19 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
-public class Paste extends LocationDoer
+public class Paste extends AbstractPasteDoer
 {
-	public boolean isAvailable()
-	{
-		if(!getProject().isOpen())
-			return false;
-		
-		if (! isInDiagram())
-			return false;
-		
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		Transferable contents = clipboard.getContents(null);
-		if(contents == null)
-			return false;
-
-		return contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor);
-	}
-
 	public void doIt() throws CommandFailedException
 	{
-		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		getProject().executeCommand(new CommandBeginTransaction());
 		try 
 		{	
-			Transferable contents = clipboard.getContents(null);
-			if(!contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor))
+			TransferableMiradiList list = getTransferableMiradiList();
+			if (list == null)
 				return;
-
-			TransferableMiradiList list = (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
+			
 			final String usersChoice = getUsersChoice(list);
 			if (usersChoice.equals(CANCEL_BUTTON))
 				return;
@@ -79,7 +59,7 @@ public class Paste extends LocationDoer
 				return;
 			}
 
-			clipboard.incrementPasteCount();
+			getProject().getDiagramClipboard().incrementPasteCount();
 			paste(diagramPaster);
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
 		} 
@@ -117,7 +97,7 @@ public class Paste extends LocationDoer
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
 	{
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
-		ORef diagramObjectRefBeingPastedInto = getDiagramView().getDiagramPanel().getDiagramObject().getRef();
+		ORef diagramObjectRefBeingPastedInto = getDiagramPanel().getDiagramObject().getRef();
 		
 		boolean pasteInSameDiagram = diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
 		return pasteInSameDiagram && isPasteInSameProject(list);
@@ -131,9 +111,9 @@ public class Paste extends LocationDoer
 	private DiagramPaster createDiagramPasterBaseOnUserChoice(TransferableMiradiList list, String usersChoice) throws Exception
 	{		
 		if (usersChoice.equals(AS_ALIAS_BUTTON))
-			return new DiagramAliasPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
+			return new DiagramAliasPaster(getDiagramPanel(), getDiagramModel(), list);
 		
-		return new DiagramCopyPaster(getDiagramView().getDiagramPanel(), getDiagramView().getDiagramModel(), list);
+		return new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), list);
 	}
 
 	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
