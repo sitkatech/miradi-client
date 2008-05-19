@@ -52,6 +52,7 @@ import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.ActionPaste;
+import org.miradi.actions.ActionPasteFactorContent;
 import org.miradi.actions.ActionPasteWithoutLinks;
 import org.miradi.actions.ActionProperties;
 import org.miradi.actions.ActionRedo;
@@ -105,6 +106,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCut.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionCopy.class)));
 		menu.add(createMenuItem(ActionPaste.class, menuInvokedAt));
+		menu.add(createMenuItem(ActionPasteFactorContent.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionPasteWithoutLinks.class, menuInvokedAt));
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));

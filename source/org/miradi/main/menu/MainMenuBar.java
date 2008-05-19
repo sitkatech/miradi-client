@@ -78,6 +78,7 @@ import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.ActionPaste;
+import org.miradi.actions.ActionPasteFactorContent;
 import org.miradi.actions.ActionPasteWithoutLinks;
 import org.miradi.actions.ActionPreferences;
 import org.miradi.actions.ActionPrint;
@@ -200,6 +201,8 @@ public class MainMenuBar extends JMenuBar
 		setControlKeyAccelerator(copy, 'C');
 		JMenuItem paste = addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
 		setControlKeyAccelerator(paste, 'V');
+		
+		addMenuItem(actions, menu, ActionPasteFactorContent.class, KeyEvent.VK_F);
 		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
 		menu.addSeparator();
 		
