@@ -138,6 +138,7 @@ import org.miradi.utils.TestDateRange;
 import org.miradi.utils.TestDelimitedFileLoader;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestLogging;
+import org.miradi.utils.TestMiradiMap;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestStringMap;
 import org.miradi.utils.TestTaxonomyFileLoader;
@@ -224,6 +225,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTaxonomyFileLoader.class));
 		suite.addTest(new TestSuite(TestDateRange.class));
 		suite.addTest(new TestSuite(TestConproMiradiHabitatCodeMap.class));
+		suite.addTest(new TestSuite(TestMiradiMap.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
