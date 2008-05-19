@@ -76,7 +76,7 @@ abstract public class DiagramPaster
 		currentModel = modelToUse;
 		project = currentModel.getProject();
 		transferableList = transferableListToUse;
-		oldToNewPastedObjectMap = new HashMap();
+		oldToNewPastedObjectMap = new HashMap<ORef, ORef>();
 		
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
@@ -673,7 +673,7 @@ abstract public class DiagramPaster
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
 		BaseId oldId = json.getId(tag);
-		ORef newRef = (ORef) getOldToNewObjectRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
+		ORef newRef = getOldToNewObjectRefMap().get(new ORef(ObjectType.DIAGRAM_FACTOR, oldId));
 		if (newRef == null)
 			return new DiagramFactorId(oldId.asInt()); 
 			 
@@ -730,7 +730,7 @@ abstract public class DiagramPaster
 		return project;
 	}
 
-	public HashMap getOldToNewObjectRefMap()
+	public HashMap<ORef, ORef> getOldToNewObjectRefMap()
 	{
 		return oldToNewPastedObjectMap;
 	}
@@ -794,7 +794,7 @@ abstract public class DiagramPaster
 	private Vector<String> factorLinkDeepCopies;
 	private Vector<String> diagramLinkDeepCopies;
 	
-	protected HashMap oldToNewPastedObjectMap;	
+	protected HashMap<ORef, ORef> oldToNewPastedObjectMap;	
 	protected PointManipulater dataHelper;
 	protected TransferableMiradiList transferableList;
 	private Vector pastedCellsToSelect;

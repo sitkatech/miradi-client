@@ -30,6 +30,11 @@ import org.miradi.project.Project;
 
 public class CommandDeleteObject extends Command
 {
+	public CommandDeleteObject(BaseObject baseObjectToDelete)
+	{
+		this(baseObjectToDelete.getRef());
+	}
+	
 	public CommandDeleteObject(ORef ref)
 	{
 		this(ref.getObjectType(), ref.getObjectId());
