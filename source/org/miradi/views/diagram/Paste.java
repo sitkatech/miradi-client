@@ -144,5 +144,4 @@ public class Paste extends AbstractPasteDoer
 	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
 	private final String AS_ALIAS_BUTTON = EAM.text("Button|Shared");
-	private final String CANCEL_BUTTON = EAM.text("Button|Cancel");
 }
