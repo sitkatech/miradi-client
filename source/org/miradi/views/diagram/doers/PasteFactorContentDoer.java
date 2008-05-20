@@ -57,6 +57,35 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return pastingIntoDifferntType(); 
 	}
 
+	@Override
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			ORef selectedFactorRef = getSelectedFactor().getWrappedORef();
+			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
+			paster.pasteFactors(getLocation());
+			
+			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
+			Vector<Command> commands = buildCommandsToFill(selectedFactorRef, newlyPastedDiagramFactor.getWrappedFactor());
+			getProject().executeCommandsWithoutTransaction(commands);
+			
+			deleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+	
 	private boolean pastingIntoDifferntType()
 	{
 		try
@@ -96,35 +125,6 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 	private FactorCell getSelectedFactor()
 	{
 		return getDiagramView().getDiagramComponent().getSelectedFactor();
-	}
-
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
-
-		getProject().executeCommand(new CommandBeginTransaction());
-		try
-		{
-			ORef selectedFactorRef = getSelectedFactor().getWrappedORef();
-			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
-			paster.pasteFactors(getLocation());
-			
-			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
-			Vector<Command> commands = buildCommandsToFill(selectedFactorRef, newlyPastedDiagramFactor.getWrappedFactor());
-			getProject().executeCommandsWithoutTransaction(commands);
-			
-			deleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			getProject().executeCommand(new CommandEndTransaction());
-		}
 	}
 
 	private void deleteDiagramFactorAndUnderlyingFactor(DiagramFactor newlyPastedDiagramFactor) throws Exception
