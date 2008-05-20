@@ -137,11 +137,11 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		Vector<Command> commands = new Vector();
 		String[] allTags = newlyPastedFactor.getFieldTags();
 		for (int tagIndex = 0; tagIndex < allTags.length; ++tagIndex)
-		{
-			String dataToTransfer = newlyPastedFactor.getData(allTags[tagIndex]);
+		{			
 			if (newlyPastedFactor.isPseudoField(allTags[tagIndex]))
 				continue;
 			
+			String dataToTransfer = newlyPastedFactor.getData(allTags[tagIndex]);
 			commands.add(new CommandSetObjectData(selectedFactorRef, allTags[tagIndex], dataToTransfer));
 		}
 		
