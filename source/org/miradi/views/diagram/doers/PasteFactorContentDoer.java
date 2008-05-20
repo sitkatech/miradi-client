@@ -77,7 +77,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			Vector<Command> commands = buildCommandsToFill(selectedFactorRef, newlyPastedDiagramFactor.getWrappedFactor());
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			deleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
+			shallowDeleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
 		}
 		catch (Exception e)
 		{
@@ -141,7 +141,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return getDiagramView().getDiagramComponent().getSelectedFactor();
 	}
 
-	private void deleteDiagramFactorAndUnderlyingFactor(DiagramFactor newlyPastedDiagramFactor) throws Exception
+	private void shallowDeleteDiagramFactorAndUnderlyingFactor(DiagramFactor newlyPastedDiagramFactor) throws Exception
 	{
 		Factor factorToDelete = newlyPastedDiagramFactor.getWrappedFactor();
 		CommandSetObjectData removeFromDiagram = CommandSetObjectData.createRemoveIdCommand(getDiagramModel().getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newlyPastedDiagramFactor.getId());
