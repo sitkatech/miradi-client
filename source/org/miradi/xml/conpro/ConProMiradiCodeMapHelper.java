@@ -25,6 +25,7 @@ import java.util.Set;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
 public class ConProMiradiCodeMapHelper
@@ -64,6 +65,10 @@ public class ConProMiradiCodeMapHelper
 		statusConfidenceMap.put(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE, "Expert Knowledge"); 
 		statusConfidenceMap.put(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE, "Rapid Assessment");
 		statusConfidenceMap.put(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE, "Intensive Assessment");
+		
+		viabilityModeMap = new HashMap<String, String>();
+		viabilityModeMap.put(ViabilityModeQuestion.SIMPLE_MODE_CODE, "simple");
+		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -105,6 +110,11 @@ public class ConProMiradiCodeMapHelper
 		return reverseMap(progressStatusMap);
 	}
 
+	public HashMap<String, String> getConProToMiradiViabilityModeMap()
+	{
+		return reverseMap(viabilityModeMap);
+	}
+	
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
 	{
 		HashMap reversedMap = new HashMap<String, String>();
@@ -148,12 +158,18 @@ public class ConProMiradiCodeMapHelper
 		return statusConfidenceMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProViabilityModeMap()
+	{
+		return viabilityModeMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
 	private HashMap<String, String> ratingMap;
 	private HashMap<String, String> keaTypeMap;
 	private HashMap<String, String> statusConfidenceMap;
+	private HashMap<String, String> viabilityModeMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";

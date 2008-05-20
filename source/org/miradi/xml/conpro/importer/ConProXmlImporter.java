@@ -505,6 +505,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
+			importOptionalTargetViabilityRankElement(targetNode, targetRef);
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 			
 			importSubTargets(targetNode, targetRef);
@@ -513,6 +514,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
 			importStresses(targetNode, targetRef);
 		}
+	}
+
+	private void importOptionalTargetViabilityRankElement(Node targetNode, ORef targetRef) throws Exception
+	{
+		Node node = getNode(targetNode, TARGET_VIABILITY_RANK);
+		if (node == null)
+			return;
+		
+		String targetViabilityMode = getAttributeValue(node, TARGET_VIABILITY_MODE);
+		importCodeField(targetRef, Target.TAG_VIABILITY_MODE, getCodeMapHelper().getConProToMiradiViabilityModeMap(), targetViabilityMode);
 	}
 		
 	private void importStrategyThreatTargetAssociations(Node targetNode, ORef targetRef) throws Exception
@@ -674,6 +685,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		String generatedPath = generatePath(elements);
 		String rawCode = getXPath().evaluate(generatedPath, node);
+		importCodeField(ref, tag, map, rawCode);
+	}
+
+	private void importCodeField(ORef ref, String tag, HashMap<String, String> map, String rawCode) throws Exception
+	{
 		String safeCode = getCodeMapHelper().getSafeXmlCode(map, rawCode);
 		setData(ref, tag, safeCode);
 	}

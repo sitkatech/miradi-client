@@ -33,8 +33,10 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Simple", new IndicatorIcon()),
-				new ChoiceItem("TNC", "Key Attribute", new KeyEcologicalAttributeIcon()),
+				new ChoiceItem(TNC_STYLE_CODE, "Key Attribute", new KeyEcologicalAttributeIcon()),
 		};
 	}
+	
 	public static String TNC_STYLE_CODE = "TNC";
+	public static String SIMPLE_MODE_CODE = "";
 }

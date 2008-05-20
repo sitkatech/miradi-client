@@ -123,13 +123,16 @@ targets.element =
             & element cp:name { text }
             & element cp:description { text }?
             & element cp:description_comment { text }?
+            & element cp:target_viability_rank {
+                  attribute target_viability_mode { vocabulary_viability_mode }
+                  & vocabulary_ranking_vggfp
+              }?
             & element cp:target_viability_comment { text }?
-            & element cp:target_viability_rank { vocabulary_ranking_vggfp }?
             & habitat_taxonomy_codes.element
-            & element cp:nested_targets { nested_target.element* }
+            & nested_targets.element
+            & strategy_threat_target_associations.element
             & stresses.element
             & threat_target_associations.element
-            & strategy_threat_target_associations.element
         }*
     }
 #
@@ -173,11 +176,13 @@ threat_stress_ratings.element =
         }*
     }
 #
-nested_target.element =
-    element cp:nested_target {
-        attribute sequence { vocabulary_sequence }
-        & element cp:name { text }
-        & element cp:comment { text }?
+nested_targets.element =
+    element cp:nested_targets {
+        element cp:nested_target {
+            attribute sequence { vocabulary_sequence }
+            & element cp:name { text }
+            & element cp:comment { text }?
+        }*
     }
 #
 strategy_threat_target_associations.element =
@@ -264,7 +269,6 @@ strategies.element =
 activities.element =
     element cp:activities {
         element cp:activity {
-            [ documentation [ "ConPro will normalize this string to fit xsd:token " ] ]
             element cp:name { text }
             & element cp:start_date { vocabulary_date }?
             & element cp:end_date { vocabulary_date }?
@@ -302,6 +306,7 @@ vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_sequence = xsd:nonNegativeInteger
 vocabulary_status = "Planned" | "Off Track" | "On Track" | "Completed"
 vocabulary_team = "Owner" | "Team Leader" | "Team Member"
+vocabulary_viability_mode = "kea" | "simple"
 #
 [
     documentation [
@@ -322,7 +327,8 @@ iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
 # 
 # Datatyping reference
 # xsd:boolean -  Its value space is true and false. Its lexical space accepts true, false, 1 and 0
-# vocabulary_date -     Its lexical space is the ISO 8601 extended format [-]CCYY-MM-DD[Z|(+|-)hh:mm] with 
+# vocabulary_date -     
+#                Its lexical space is the ISO 8601 extended format [-]CCYY-MM-DD[Z|(+|-)hh:mm] with 
 #                an optional time zone. 
 # xsd:decimal -  The set of all decimal numbers with arbitrary lengths. Its lexical space allows any
 #                number of insignificant leading and, after the decimal point, trailing zeros. A period
