@@ -78,6 +78,7 @@ public interface ConProMiradiXml
 	public static final String TARGET_DESCRIPTION_COMMENT = "description_comment";
 	public static final String TARGET_VIABILITY_COMMENT = "target_viability_comment";
 	public static final String TARGET_VIABILITY_RANK = "target_viability_rank";
+	public static final String TARGET_VIABILITY_MODE = "target_viability_mode";
 	public static final String HABITAT_TAXONOMY_CODES = "habitat_taxonomy_codes";
 	public static final String HABITAT_TAXONOMY_CODE = "habitat_taxonomy_code";
 	public static final String STRESSES = "stresses";

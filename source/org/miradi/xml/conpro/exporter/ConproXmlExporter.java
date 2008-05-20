@@ -408,9 +408,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
 			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENT);
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
-			writeOptionalRankingCodeElement(out, TARGET_VIABILITY_RANK, target, Target.TAG_TARGET_STATUS);
+			writeOptionalRank(out, target);
 			writeHabitatMappedCodes(out, target);
-			
 			writeNestedTargets(out, target);
 			writeSimpleTargetLinkRatings(out, target);
 			writeStresses(out, target);
@@ -421,7 +420,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, TARGETS);
 	}
 
-	
+	private void writeOptionalRank(UnicodeWriter out, Target target) throws Exception
+	{
+		String code = target.getData(Target.TAG_TARGET_STATUS);
+		if (code.length() == 0)
+			return;
+		
+		out.write("<" + TARGET_VIABILITY_RANK + " " + TARGET_VIABILITY_MODE + "='" + getConproCode(target.getViabilityMode(), codeMapHelper.getMiradiToConProViabilityModeMap())+ "'>");
+		writeCodeElement(out, code, codeMapHelper.getMiradiToConProRankingMap());
+		writeEndElement(out, TARGET_VIABILITY_RANK);
+	}
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
@@ -821,7 +829,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeOptionalElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
-		if (data.length() == 0)
+		if (data == null || data.length() == 0)
 			return;
 		
 		writeElement(out, elementName, data);
@@ -853,12 +861,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		//NOTE: we never write the optional error message
 	}
 	
-	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
 	{
-		String code = object.getData(tag);
-		writeOptionalElement(out, elementName, rankingCodeToXmlValue(code));
+		out.write(getConproCode(code, map));
 	}
-	
+
 	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeOptionalRatingCodeElement(out, elementName, object.getData(tag));
@@ -917,6 +924,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		HashMap<String, String> progressStatuMap = getCodeMapHelper().getMiradiToConProProgressStatusMap();
 		return getCodeMapHelper().getSafeXmlCode(progressStatuMap, code);
+	}
+	
+	private String getConproCode(String code, HashMap<String, String> map)
+	{
+		return getCodeMapHelper().getSafeXmlCode(map, code);
 	}
 	
 	private ConProMiradiCodeMapHelper getCodeMapHelper()

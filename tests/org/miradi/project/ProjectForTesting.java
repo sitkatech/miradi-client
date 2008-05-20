@@ -462,6 +462,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList indicatorIds = new IdList(Indicator.getObjectType());
 		indicatorIds.add(createAndPopulateIndicator().getId());
 		indicatorIds.add(createAndPopulateIndicator().getId());
+		Indicator indicatorWithoutThreshold = createAndPopulateIndicator();
+		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLD, "");
+		indicatorIds.add(indicatorWithoutThreshold.getId());
+		
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 	
