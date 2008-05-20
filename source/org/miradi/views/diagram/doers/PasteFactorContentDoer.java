@@ -48,7 +48,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		if (!isSuperAvailable)
 			return false;
 
-		if (hasIncorrectFactorSelection())
+		if (invalidFactorSelectionCount())
 			return false;
 
 		if (hasMoreThanOneFactorInClipboard())
@@ -131,7 +131,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		}
 	}
 
-	private boolean hasIncorrectFactorSelection()
+	private boolean invalidFactorSelectionCount()
 	{
 		return getSelectedFactor() == null;
 	}
