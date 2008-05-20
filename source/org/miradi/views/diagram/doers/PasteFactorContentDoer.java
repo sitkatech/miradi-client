@@ -63,7 +63,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		if (!isAvailable())
 			return;
 
-		if (userWantsToContinue())
+		if (!userWantsToContinue())
 			return;
 		
 		getProject().executeCommand(new CommandBeginTransaction());
