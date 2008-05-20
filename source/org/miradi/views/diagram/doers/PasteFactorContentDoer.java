@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
 
 public class PasteFactorContentDoer extends AbstractPasteDoer
@@ -50,14 +51,35 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		if (hasIncorrectFactorSelection())
 			return false;
 
-		return hasOnlySingleFactorInClipboard();
+		if (hasMoreThanOneFactorInClipboard())
+			return false;
+		
+		return pastingIntoDifferntType(); 
 	}
 
-	private boolean hasOnlySingleFactorInClipboard()
+	private boolean pastingIntoDifferntType()
 	{
 		try
 		{
-			return getClipboardDiagramFactors().size() == 1;
+			Vector diagramFactorJsons = getClipboardDiagramFactorJsons();
+			String diagramFactorAsString = (String) diagramFactorJsons.get(0);
+			EnhancedJsonObject json = new EnhancedJsonObject(diagramFactorAsString);
+			ORef ref = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
+			
+			return getSelectedFactor().getWrappedType() == ref.getObjectType(); 
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	private boolean hasMoreThanOneFactorInClipboard()
+	{
+		try
+		{
+			return getClipboardDiagramFactorJsons().size() != 1;
 		}
 		catch (Exception e)
 		{
@@ -89,11 +111,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
 			paster.pasteFactors(getLocation());
 			
-			//FIXME  can this diagram factor be null,  needs if condition?			
 			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
-			if (newlyPastedDiagramFactor.getWrappedType() != selectedFactorRef.getObjectType())
-				return;
-			
 			Vector<Command> commands = buildCommandsToFill(selectedFactorRef, newlyPastedDiagramFactor.getWrappedFactor());
 			getProject().executeCommandsWithoutTransaction(commands);
 			
@@ -148,7 +166,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return commands;
 	}
 
-	private Vector getClipboardDiagramFactors() throws Exception
+	private Vector getClipboardDiagramFactorJsons() throws Exception
 	{
 		TransferableMiradiList list = getTransferableMiradiList();
 		if (list == null)
