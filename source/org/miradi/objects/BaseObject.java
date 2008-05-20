@@ -321,6 +321,9 @@ abstract public class BaseObject
 	
 			case ObjectType.XENODATA:
 				return new Xenodata(objectManager, idAsInt, json);
+			
+			case ObjectType.PROGRESS_PERCENT:
+				return new ProgressPercent(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

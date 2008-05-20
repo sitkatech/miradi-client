@@ -78,6 +78,7 @@ import org.miradi.objects.TestObjectManager;
 import org.miradi.objects.TestObjective;
 import org.miradi.objects.TestOrganization;
 import org.miradi.objects.TestPlanningViewConfiguration;
+import org.miradi.objects.TestProgressPercent;
 import org.miradi.objects.TestProgressReport;
 import org.miradi.objects.TestProjectChainObject;
 import org.miradi.objects.TestProjectMetadata;
@@ -319,6 +320,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestOrganization.class));
 		suite.addTest(new TestSuite(TestWcpaProjectData.class));
 		suite.addTest(new TestSuite(TestXenodata.class));
+		suite.addTest(new TestSuite(TestProgressPercent.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

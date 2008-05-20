@@ -68,7 +68,8 @@ public class ObjectType
 	public static final int ORGANIZATION = 42;
 	public static final int WCPA_PROJECT_DATA = 43;
 	public static final int XENODATA = 44;
+	public static final int PROGRESS_PERCENT = 45;
 	
-	public static final int OBJECT_TYPE_COUNT = 45;
+	public static final int OBJECT_TYPE_COUNT = 46;
 }
 
