@@ -59,6 +59,7 @@ import org.miradi.objectpools.MeasurementPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.OrganizationPool;
 import org.miradi.objectpools.PlanningViewConfigurationPool;
+import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
 import org.miradi.objectpools.ProjectMetadataPool;
 import org.miradi.objectpools.RareProjectDataPool;
@@ -150,6 +151,7 @@ public class ObjectManager
 		addNormalPool(new OrganizationPool(ida));
 		addNormalPool(new WcpaProjectDataPool(ida));
 		addNormalPool(new XenodataPool(ida));
+		addNormalPool(new ProgressPercentPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -447,6 +449,7 @@ public class ObjectManager
 		loadPool(ObjectType.ORGANIZATION);
 		loadPool(ObjectType.WCPA_PROJECT_DATA);
 		loadPool(ObjectType.XENODATA);
+		loadPool(ObjectType.PROGRESS_PERCENT);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
