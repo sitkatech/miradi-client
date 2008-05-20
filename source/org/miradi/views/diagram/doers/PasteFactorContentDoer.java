@@ -63,7 +63,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		if (!isAvailable())
 			return;
 
-		if (userCanceled())
+		if (userWantsToContinue())
 			return;
 		
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -89,7 +89,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		}
 	}
 
-	private boolean userCanceled()
+	private boolean userWantsToContinue()
 	{
 		String[] buttons = {PASTE_CONTENTS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste Content...");
@@ -97,7 +97,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 								  "of the factor that was cut/copied earlier. Are you sure you want to do this?")};
 	
 		String userChoice = EAM.choiceDialog(title, body, buttons);
-		return userChoice.equals(CANCEL_BUTTON);
+		return userChoice.equals(PASTE_CONTENTS_BUTTON);
 	}
 	
 	private boolean pastingIntoDifferntType()
