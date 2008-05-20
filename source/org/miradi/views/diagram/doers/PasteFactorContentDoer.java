@@ -54,7 +54,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		if (hasMoreThanOneFactorInClipboard())
 			return false;
 		
-		return pastingIntoDifferntType(); 
+		return pastingIntoSameType(); 
 	}
 
 	@Override
@@ -100,16 +100,16 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return userChoice.equals(PASTE_CONTENTS_BUTTON);
 	}
 	
-	private boolean pastingIntoDifferntType()
+	private boolean pastingIntoSameType()
 	{
 		try
 		{
 			Vector diagramFactorJsons = getClipboardDiagramFactorJsons();
 			String diagramFactorAsString = (String) diagramFactorJsons.get(0);
 			EnhancedJsonObject json = new EnhancedJsonObject(diagramFactorAsString);
-			ORef ref = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
+			ORef wrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			
-			return getSingleSelectedFactor().getWrappedType() == ref.getObjectType(); 
+			return getSingleSelectedFactor().getWrappedType() == wrappedRef.getObjectType(); 
 		}
 		catch (Exception e)
 		{
