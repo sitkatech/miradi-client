@@ -256,7 +256,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public BaseObject getSelectedObject()
 	{
-		FactorCell node = getDiagramComponent().getSelectedFactor();
+		FactorCell node = getDiagramComponent().getSingleSelectedFactor();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -929,7 +929,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(nodePropertiesDlg == null)
 			return;
 		
-		FactorCell selectedNode = getDiagramComponent().getSelectedFactor();
+		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentDiagramFactor()))
 			disposeOfNodePropertiesDialog();
 	}

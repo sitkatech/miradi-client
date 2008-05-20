@@ -419,7 +419,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return cells.toArray(new EAMGraphCell[0]);
 	}
 	
-	public FactorCell getSelectedFactor()
+	public FactorCell getSingleSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
 			return null;
