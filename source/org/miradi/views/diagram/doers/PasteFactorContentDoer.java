@@ -69,7 +69,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORef selectedFactorRef = getSelectedFactor().getWrappedORef();
+			ORef selectedFactorRef = getSingleSelectedFactor().getWrappedORef();
 			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
 			paster.pasteFactors(getLocation());
 			
@@ -109,7 +109,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			EnhancedJsonObject json = new EnhancedJsonObject(diagramFactorAsString);
 			ORef ref = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 			
-			return getSelectedFactor().getWrappedType() == ref.getObjectType(); 
+			return getSingleSelectedFactor().getWrappedType() == ref.getObjectType(); 
 		}
 		catch (Exception e)
 		{
@@ -133,12 +133,12 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 
 	private boolean invalidFactorSelectionCount()
 	{
-		return getSelectedFactor() == null;
+		return getSingleSelectedFactor() == null;
 	}
 
-	private FactorCell getSelectedFactor()
+	private FactorCell getSingleSelectedFactor()
 	{
-		return getDiagramView().getDiagramComponent().getSelectedFactor();
+		return getDiagramView().getDiagramComponent().getSingleSelectedFactor();
 	}
 
 	private void shallowDeleteDiagramFactorAndUnderlyingFactor(DiagramFactor newlyPastedDiagramFactor) throws Exception
