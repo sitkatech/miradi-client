@@ -398,6 +398,9 @@ public class Actions
 		registerAction(new ActionEditActivityProgressReports(mainWindow));
 		registerAction(new ActionCreateActivityProgressReport(mainWindow));
 		registerAction(new ActionDeleteActivityProgressReport(mainWindow));
+				registerAction(new ActionEditProgressPercent(mainWindow));
+		registerAction(new ActionCreateObjectiveProgressPercent(mainWindow));
+		registerAction(new ActionDeleteObjectiveProgressPercent(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

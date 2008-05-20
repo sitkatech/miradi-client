@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ObjectiveId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ORefListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -68,7 +69,22 @@ public class Objective extends Desire
 		return false;
 	}
 	
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
+			return ProgressPercent.getObjectType();
+				
+		return super.getAnnotationType(tag);
+	}
 	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
+			return true;
+				
+		return super.isRefList(tag);
+	}
+
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
@@ -210,12 +226,15 @@ public class Objective extends Desire
 		super.clear();
 		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
 		relevantStrategyOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_SET);
+		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
 		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategyOverrides);
+		addField(TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
+		
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
 		addField(PSEUDO_RELEVANT_STRATEGY_REFS, relevantStrategyRefs);
 	}
@@ -224,11 +243,15 @@ public class Objective extends Desire
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 	public static final String TAG_RELEVANT_STRATEGY_SET = "RelevantStrategySet";
+	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
+	
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
 	public static final String PSEUDO_RELEVANT_STRATEGY_REFS = "PseudoRelevantStrategyRefs";
 	
 	private RelevancyOverrideSetData relevantStrategyOverrides;
 	private RelevancyOverrideSetData relevantIndicatorOverrides;
+	private ORefListData progressPercentRefs;
+	
 	private PseudoORefListData relevantIndicatorRefs;
 	private PseudoORefListData relevantStrategyRefs;
 }

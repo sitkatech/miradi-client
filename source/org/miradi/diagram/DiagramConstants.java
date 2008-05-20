@@ -27,6 +27,7 @@ public class DiagramConstants
 	public static final Color GROUP_BOX_COLOR = new Color(175, 175, 175);
 	public static final Color TEXT_BOX_COLOR = new Color(230, 230, 230);
 	public static final Color COLOR_STRESS = new Color(150, 150, 255);
+	public static final Color COLOR_PROGRESS_PERCENT = new Color(150, 150, 150);
 	public static final Color COLOR_DRAFT_STRATEGY = new Color(255, 255, 190);
 	public static final Color COLOR_FACTOR_CLUSTER = Color.LIGHT_GRAY;
 	public static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);

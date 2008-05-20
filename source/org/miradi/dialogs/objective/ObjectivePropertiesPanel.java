@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.objective;
 
 import org.miradi.actions.ActionEditIndicatorRelevancyList;
+import org.miradi.actions.ActionEditProgressPercent;
 import org.miradi.actions.ActionEditStrategyRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ObjectiveId;
@@ -33,6 +35,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
+import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanel
@@ -60,6 +63,11 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
 		
+		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
+		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectList(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS);
+		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditProgressPercent.class), getPicker());
+		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
+		
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 
 		updateFieldsFromProject();
@@ -69,5 +77,4 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Objective Properties");
 	}
-
 }
