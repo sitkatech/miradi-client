@@ -25,6 +25,7 @@ import java.awt.datatransfer.Transferable;
 
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
+import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.LocationDoer;
@@ -66,4 +67,6 @@ abstract public class AbstractPasteDoer extends LocationDoer
 	{
 		return getDiagramView().getDiagramPanel();
 	}
+	
+	protected final String CANCEL_BUTTON = EAM.text("Button|Cancel");
 }
