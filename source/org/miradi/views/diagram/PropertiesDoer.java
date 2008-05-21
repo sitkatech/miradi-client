@@ -26,7 +26,7 @@ import javax.swing.Box;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.diagram.cells.LinkCell;
+import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesDialog;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesPanel;
@@ -34,6 +34,9 @@ import org.miradi.dialogs.diagram.FactorPropertiesPanel;
 import org.miradi.dialogs.diagram.GroupBoxPropertiesPanel;
 import org.miradi.dialogs.diagram.ProjectScopePanel;
 import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
+import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
+import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
+import org.miradi.dialogs.groupboxLink.GroupBoxLinkPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -64,14 +67,8 @@ public class PropertiesDoer extends LocationDoer
 			return true;
 		
 		if(selected[0].isFactorLink())
-		{
-			LinkCell linkCell = (LinkCell)selected[0];
-			if(linkCell.getDiagramLink().isGroupBoxLink())
-				return false;
-			
 			return true;
-		}
-
+		
 		return false;
 	}
 	
@@ -131,9 +128,34 @@ public class PropertiesDoer extends LocationDoer
 	
 	void doFactorLinkProperties(DiagramLink diagramLink) throws Exception
 	{
-		FactorLinkPropertiesPanel panel = getFactorLinkPropertiesPanel(diagramLink);
-		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), panel, panel.getPanelDescription()); 
+		if (diagramLink.isGroupBoxLink())
+		{
+			GroupBoxLinkManagementPanel dialogPanel = createDialogPanel(diagramLink);
+			showPropertiesPanel(dialogPanel);
+			dialogPanel.updateSplitterLocation();
+		}
+		else
+		{
+			showPropertiesPanel(getFactorLinkPropertiesPanel(diagramLink));
+		}
+	}
+
+	private void showPropertiesPanel(ModelessDialogPanel dialogPanel)
+	{
+		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), dialogPanel, dialogPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
+	}
+
+	private GroupBoxLinkManagementPanel createDialogPanel(DiagramLink diagramLink) throws Exception
+	{
+		ORefList children = diagramLink.getSelfOrChildren();
+		ORef firstChildRef = children.get(0);
+		DiagramLink diagramLinkChild = DiagramLink.find(getProject(), firstChildRef);
+		
+		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), getMainWindow().getActions(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
+		GroupBoxLinkPropertiesPanel panel = new GroupBoxLinkPropertiesPanel(getMainWindow(), diagramLinkChild, tablePanel.getPicker());
+		
+		return new GroupBoxLinkManagementPanel(getProject(), getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, panel);
 	}
 	
 	private FactorLinkPropertiesPanel getFactorLinkPropertiesPanel(DiagramLink diagramLink) throws Exception
