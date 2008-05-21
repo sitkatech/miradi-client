@@ -6,6 +6,7 @@
 package org.miradi.objects;
 
 import java.awt.Point;
+import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandSetObjectData;
@@ -73,14 +74,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
 			BaseObject object = project.findObject(objectType, id);
-			String[] tags = object.getFieldTags();
-			for(int i = 0; i < tags.length; ++i)
+			Vector<String> fieldTags = object.getStoredFieldTags();
+			for(int i = 0; i < fieldTags.size(); ++i)
 			{
-				if(object.isPseudoField(tags[i]))
-					continue;
-				
-				verifyShortLabelField(object, tags[i]);
-				verifyFieldLifecycle(project, object, tags[i]);
+				verifyShortLabelField(object, fieldTags.get(i));
+				verifyFieldLifecycle(project, object, fieldTags.get(i));
 			}
 		}
 		finally
