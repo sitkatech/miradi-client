@@ -712,6 +712,19 @@ abstract public class BaseObject
 	{
 		return fields.keySet().toArray(new String[0]);
 	}
+	
+	public Vector<String> getStoredFieldTags()
+	{
+		Vector<String> storedFieldTags = new Vector<String>();
+		String[] fieldTags = getFieldTags();
+		for (int index = 0; index < fieldTags.length; ++index)
+		{
+			if (!isPseudoField(fieldTags[index]))
+				storedFieldTags.add(fieldTags[index]);
+		}
+		
+		return storedFieldTags;
+	}
 
 	public ObjectData getField(String fieldTag)
 	{
