@@ -174,7 +174,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		return project;
 	}
 
-	void setRowObjectRefs(ORefList rowObjectRefsToUse)
+	public void setRowObjectRefs(ORefList rowObjectRefsToUse)
 	{
 		rowObjectRefs = rowObjectRefsToUse;
 	}

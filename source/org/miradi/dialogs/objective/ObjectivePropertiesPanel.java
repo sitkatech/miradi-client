@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -42,12 +43,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 {
 	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
-		this(projectToUse, new ObjectiveId(BaseId.INVALID.asInt()), actionsToUse, picker);
-	}
-		
-	public ObjectivePropertiesPanel(Project projectToUse, ObjectiveId idToShow, Actions actionsToUse, ObjectPicker picker) throws Exception
-	{
-		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
+		super(projectToUse, ObjectType.OBJECTIVE, new ObjectiveId(BaseId.INVALID.asInt()));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Objective.getObjectType(), Objective.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Objective.getObjectType(), Objective.TAG_LABEL);
@@ -63,8 +59,9 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
 		
+		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
 		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
-		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectList(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS);
+		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectListTableField(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), columnTags);
 		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditProgressPercent.class), getPicker());
 		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
 		

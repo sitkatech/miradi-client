@@ -56,6 +56,7 @@ import org.miradi.dialogfields.ObjectRadioButtonGroupField;
 import org.miradi.dialogfields.ObjectRaitingChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyChoiceField;
 import org.miradi.dialogfields.ObjectReadonlyObjectListField;
+import org.miradi.dialogfields.ObjectReadonlyObjectListTableField;
 import org.miradi.dialogfields.ObjectReadonlyTimestampField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
@@ -516,6 +517,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createReadOnlyObjectList(int objectType, String tag)
 	{
 		return new ObjectReadonlyObjectListField(project, objectType, getObjectIdForType(objectType), tag); 
+	}
+
+	public ObjectDataInputField createReadOnlyObjectListTableField(int objectType, String listFieldTag, int listedType, String[] columnTags)
+	{
+		return new ObjectReadonlyObjectListTableField(project, getRefForType(objectType), listFieldTag, listedType, columnTags); 
 	}
 	
 	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)
