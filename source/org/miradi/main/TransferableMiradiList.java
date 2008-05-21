@@ -62,7 +62,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	public DataFlavor[] getTransferDataFlavors()
 	{
-		DataFlavor[] flavorArray = {miradiListDataFlavor, DataFlavor.stringFlavor };
+		DataFlavor[] flavorArray = {miradiListDataFlavor };
 		return flavorArray;
 	}
 
