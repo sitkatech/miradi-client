@@ -30,13 +30,20 @@ import org.miradi.project.Project;
 
 public class ObjectListTableModel extends ObjectTableModel
 {
-	public ObjectListTableModel(Project projectToUse, ORef containingRefToUse, String idListFieldTag, int listedItemType, String[] columnTags)
+	public ObjectListTableModel(Project projectToUse, ORef containingRefToUse, String listFieldTag, int listedItemType, String[] columnTags)
 	{
-		super(projectToUse, listedItemType, columnTags);
+		this(projectToUse, listFieldTag, listedItemType, columnTags);
+		
 		containingRef = containingRefToUse;
-		tagOfList = idListFieldTag;
 
 		setRowObjectRefs(getLatestRefListFromProject());
+	}
+
+	public ObjectListTableModel(Project projectToUse, String idListFieldTag, int listedItemType, String[] columnTags)
+	{
+		super(projectToUse, listedItemType, columnTags);
+		
+		tagOfList = idListFieldTag;
 	}
 	
 	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
