@@ -167,14 +167,11 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 	private Vector<Command> buildCommandsToFill(ORef selectedFactorRef, Factor newlyPastedFactor)
 	{
 		Vector<Command> commands = new Vector();
-		String[] allTags = newlyPastedFactor.getFieldTags();
-		for (int tagIndex = 0; tagIndex < allTags.length; ++tagIndex)
+		Vector<String> allTags = newlyPastedFactor.getStoredFieldTags();
+		for (int tagIndex = 0; tagIndex < allTags.size(); ++tagIndex)
 		{			
-			if (newlyPastedFactor.isPseudoField(allTags[tagIndex]))
-				continue;
-			
-			String dataToTransfer = newlyPastedFactor.getData(allTags[tagIndex]);
-			commands.add(new CommandSetObjectData(selectedFactorRef, allTags[tagIndex], dataToTransfer));
+			String dataToTransfer = newlyPastedFactor.getData(allTags.get(tagIndex));
+			commands.add(new CommandSetObjectData(selectedFactorRef, allTags.get(tagIndex), dataToTransfer));
 		}
 		
 		return commands;
