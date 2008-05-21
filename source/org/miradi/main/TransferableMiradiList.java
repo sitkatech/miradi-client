@@ -25,6 +25,9 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Vector;
 
@@ -42,7 +45,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TransferableMiradiList implements Transferable
+public class TransferableMiradiList implements Transferable, Serializable
 {
 	public TransferableMiradiList(Project projectToUse, ORef diagramObjectRefCopiedFromToUse)
 	{
@@ -59,7 +62,7 @@ public class TransferableMiradiList implements Transferable
 
 	public DataFlavor[] getTransferDataFlavors()
 	{
-		DataFlavor[] flavorArray = {miradiListDataFlavor };
+		DataFlavor[] flavorArray = {miradiListDataFlavor, DataFlavor.stringFlavor };
 		return flavorArray;
 	}
 
@@ -152,6 +155,9 @@ public class TransferableMiradiList implements Transferable
 	
 	public boolean atleastOneFactorExists() throws ParseException
 	{
+		if (project == null)
+			return false;
+		
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
 			String jsonAsString = (String) factorDeepCopies.get(i);
@@ -200,15 +206,48 @@ public class TransferableMiradiList implements Transferable
 		return diagramObjectRefCopiedFrom;
 	}
 
+	private void writeObject(java.io.ObjectOutputStream out)  throws IOException
+	{
+		ObjectOutputStream objectOut = new ObjectOutputStream(out);
+		
+		objectOut.writeInt(diagramObjectRefCopiedFrom.getObjectType());
+		objectOut.writeObject(projectName);
+		objectOut.writeObject(factorDeepCopies);
+		objectOut.writeObject(diagramFactorDeepCopies);
+		objectOut.writeObject(factorLinkDeepCopies);
+		objectOut.writeObject(diagramLinkDeepCopies);
+		objectOut.writeObject(rectWithUpperMostLeftMostCorner);
+	}
+	
+	private void readObject(java.io.ObjectInputStream in)      throws IOException, ClassNotFoundException
+	{
+		
+		diagramObjectRefCopiedFrom = ORef.INVALID;
+		project = null;
+		ObjectInputStream objectIn = new ObjectInputStream(in);
+				
+		int diagramType = objectIn.readInt();
+		diagramObjectRefCopiedFrom =  new ORef(diagramType, BaseId.INVALID);
+		
+		projectName = (String) objectIn.readObject();
+		factorDeepCopies = (Vector) objectIn.readObject();
+		diagramFactorDeepCopies = (Vector) objectIn.readObject();
+		factorLinkDeepCopies = (Vector) objectIn.readObject();
+		diagramLinkDeepCopies = (Vector) objectIn.readObject();
+		rectWithUpperMostLeftMostCorner = (Rectangle) objectIn.readObject();
+	}
+		
 	public static DataFlavor miradiListDataFlavor = new DataFlavor(TransferableMiradiList.class, "Miradi Objects");
 
-	String projectName;
-	Project project;
-	ORef diagramObjectRefCopiedFrom;
-
-	Vector factorDeepCopies;
-	Vector diagramFactorDeepCopies;
-	Vector factorLinkDeepCopies;
-	Vector diagramLinkDeepCopies;
-	Rectangle rectWithUpperMostLeftMostCorner;
+	private Project project;
+	
+	private ORef diagramObjectRefCopiedFrom;
+	private String projectName;
+	private Vector factorDeepCopies;
+	private Vector diagramFactorDeepCopies;
+	private Vector factorLinkDeepCopies;
+	private Vector diagramLinkDeepCopies;
+	private Rectangle rectWithUpperMostLeftMostCorner;
+	
+	static final long serialVersionUID = 1; 
 }
