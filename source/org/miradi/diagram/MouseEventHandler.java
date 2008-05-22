@@ -178,7 +178,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			if(cell.isFactor())
 				model.updateCellFromDiagramFactor(cell.getDiagramFactor().getDiagramFactorId());
 			else if(cell.isFactorLink())
-				model.updateCellFromDiagramFactorLink(cell.getDiagramLink().getDiagramLinkageId());
+				model.updateCellFromDiagramFactorLink(cell.getDiagramLink().getRef());
 			model.updateCell(cell);
 		}
 	}

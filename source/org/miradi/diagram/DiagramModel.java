@@ -888,12 +888,16 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public LinkCell updateCellFromDiagramFactorLink(DiagramFactorLinkId diagramFactorLinkId) throws Exception
+	public LinkCell updateCellFromDiagramFactorLink(ORef diagramLinkRef) throws Exception
 	{
-		if (! doesDiagramFactorLinkExist(diagramFactorLinkId))
+		if (!DiagramLink.is(diagramLinkRef))
+			throw new Exception("ORef is not of type DiagramLink : ref = " + diagramLinkRef);
+		
+		DiagramFactorLinkId diagramLinkId = new DiagramFactorLinkId(diagramLinkRef.getObjectId().asInt());
+		if (! doesDiagramFactorLinkExist(diagramLinkId))
 			return null;
 		
-		DiagramLink diagramFactorLink  = getDiagramFactorLinkById(diagramFactorLinkId);
+		DiagramLink diagramFactorLink  = getDiagramFactorLinkById(diagramLinkId);
 		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);
