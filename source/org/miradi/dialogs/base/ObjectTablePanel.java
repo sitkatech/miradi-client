@@ -22,7 +22,6 @@ package org.miradi.dialogs.base;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -32,7 +31,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.MouseAdapterDoubleClickDelegator;
 
 public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelectionListener
 {
@@ -106,11 +104,6 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		}
 	}
 
-	public void addDoubleClickAction(EAMAction action ) 
-	{
-		table.addMouseListener(new MouseAdapterDoubleClickDelegator(action)); 
-	}
-	
 	public ObjectTable getTable()
 	{
 		return table;
