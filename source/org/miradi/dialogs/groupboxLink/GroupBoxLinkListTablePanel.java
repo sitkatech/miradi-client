@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.groupboxLink;
 
 import org.miradi.actions.Actions;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
 public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
@@ -29,4 +32,17 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, new GroupBoxLinkListTable(model), actions, new Class[0]);
 	}
+		
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.BIDIRECTIONAL_LINK))
+			updateSiblings((CommandSetObjectData) event.getCommand());
+	}
+
+	private void updateSiblings(CommandSetObjectData command)
+	{
+	}
+
 }
