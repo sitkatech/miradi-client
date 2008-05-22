@@ -41,7 +41,7 @@ public class GroupBoxLinkListTable extends ObjectListTable
 		if (diagramLink == null)
 			return new ORefList[] {selectedHierarchy};
 			
-		ORefList newSelectedHierarchyRefList = new ORefList(diagramLink.getRef());
+		ORefList newSelectedHierarchyRefList = new ORefList();
 		ORef fromRef = diagramLink.getFromDiagramFactorRef();
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromRef);
 		
@@ -51,7 +51,7 @@ public class GroupBoxLinkListTable extends ObjectListTable
 		newSelectedHierarchyRefList.add(toDiagramFactor.getWrappedORef());
 		newSelectedHierarchyRefList.add(fromDiagramFactor.getWrappedORef());
 		newSelectedHierarchyRefList.add(diagramLink.getWrappedRef());
-		newSelectedHierarchyRefList.add(diagramLink.getRef());
+		newSelectedHierarchyRefList.addAll(selectedHierarchy);
 	
 		return new ORefList[] {newSelectedHierarchyRefList};
 	}
