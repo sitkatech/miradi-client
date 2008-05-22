@@ -54,7 +54,7 @@ public class Translation
 
 	private static ResourceBundle getResourceBundle(Locale locale)
 	{
-		return ResourceBundle.getBundle("EAM", locale);
+		return ResourceBundle.getBundle("translations.EAM", locale);
 	}
 
 	public static String text(String key)

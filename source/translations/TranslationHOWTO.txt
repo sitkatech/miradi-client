@@ -20,7 +20,7 @@ Periodically, refresh each .po file to include new entries from the .pot:
 
 Per-build, per-language command to convert a .po file to a .properties bundle:
   cd translations
-  msgcat --properties-output -o eam_xx_YY.properties eam_xx_YY.po
+  msgcat --properties-output -o EAM_xx_YY.properties xx_YY.po
   
 If you want to create an English PO file for some reason:
   cd translations

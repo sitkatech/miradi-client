@@ -50,6 +50,9 @@ public class Miradi
 			EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.setExceptionLoggingDestination();
 		EAM.possiblyLogTooLowInitialMemory();
+		
+		// NOTE: This is how we can set the language, when we are ready to do so
+		// EAM.setTranslationLocale(new Locale("es"));
 		Miradi.start(args);
 	}
 

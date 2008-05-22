@@ -1,0 +1,4132 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2008 Benetech
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2008.
+#
+#: ../source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:41
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-22 14:07-0400\n"
+"PO-Revision-Date: 2008-05-22 14:07-0400\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:51
+#: ../source/org/miradi/diagram/renderers/FactorRenderer.java:164
+msgid "Goal"
+msgstr "Goal"
+
+#: ../source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:65
+msgid "Title|Goal Properties"
+msgstr "Title|Goal Properties"
+
+#: ../source/org/miradi/dialogs/goal/GoalListManagementPanel.java:61
+msgid "Tab|Goals"
+msgstr "Tab|Goals"
+
+#: ../source/org/miradi/dialogs/stress/StressPropertiesPanel.java:42
+msgid "Stress"
+msgstr "Stress"
+
+#: ../source/org/miradi/dialogs/stress/StressPropertiesPanel.java:48
+msgid "Ratings"
+msgstr "Ratings"
+
+#: ../source/org/miradi/dialogs/stress/StressPropertiesPanel.java:57
+msgid "Title|Stress Properties"
+msgstr "Title|Stress Properties"
+
+#: ../source/org/miradi/dialogs/stress/StressListManagementPanel.java:61
+msgid "Tab|Stresses"
+msgstr "Tab|Stresses"
+
+#: ../source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
+msgid "Title|Accounting Code Properties"
+msgstr "Title|Accounting Code Properties"
+
+#: ../source/org/miradi/dialogs/accountingcode/AccountingCodePoolManagementPanel.java:99
+msgid "Title|Accounting Codes"
+msgstr "Title|Accounting Codes"
+
+#: ../source/org/miradi/dialogs/resource/PossibleTeamMembersPanel.java:38
+msgid ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"team, or you can create new resources.</p></html"
+msgstr ""
+"<html><p>This table lists all the Resources that have been created within "
+"this project. </p><p>You can select existing resources and add them to the "
+"team, or you can create new resources.</p></html"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:50
+msgid "Label|Resource"
+msgstr "Label|Resource"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:53
+msgid "Label|Roles (people only)"
+msgstr "Label|Roles (people only)"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:60
+#: ../source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
+msgid "Label|Phone Numbers"
+msgstr "Label|Phone Numbers"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:88
+msgid "Title|Resource Properties"
+msgstr "Title|Resource Properties"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:118
+msgid "Remove Team Member"
+msgstr "Remove Team Member"
+
+#: ../source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:119
+msgid ""
+"You are removing this resource from the project team, so he/she will no "
+"longer appear in the list of Team Members in the Summary View. "
+msgstr ""
+"You are removing this resource from the project team, so he/she will no "
+"longer appear in the list of Team Members in the Summary View. "
+
+#: ../source/org/miradi/dialogs/resource/ResourcePoolManagementPanel.java:102
+msgid "Title|Resources"
+msgstr "Title|Resources"
+
+#: ../source/org/miradi/dialogs/treetables/TreeTablePanel.java:87
+msgid "Error restoring tree state"
+msgstr "Error restoring tree state"
+
+#: ../source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:60
+msgid "Tab|Activities"
+msgstr "Tab|Activities"
+
+#: ../source/org/miradi/dialogs/activity/MethodListManagementPanel.java:60
+msgid "Tab|Methods"
+msgstr "Tab|Methods"
+
+#: ../source/org/miradi/dialogs/viability/TargetViabilityTreeManagementPanel.java:128
+#: ../source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:49
+msgid "Tab|Indicators"
+msgstr "Tab|Indicators"
+
+#: ../source/org/miradi/dialogs/viability/KeyEcologicalAttributeListManagementPanel.java:50
+msgid "Tab|KEA"
+msgstr "Tab|KEA"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:71
+msgid "Title|Indicator Properties"
+msgstr "Title|Indicator Properties"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+msgid "ERROR"
+msgstr "ERROR"
+
+#: ../source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
+#: ../source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
+#: ../source/org/miradi/dialogs/indicator/SimpleViabilityPanel.java:50
+msgid "Tab|Viability"
+msgstr "Tab|Viability"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:79
+msgid "Desired Future Status"
+msgstr "Desired Future Status"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:86
+msgid "Desired Future Value"
+msgstr "Desired Future Value"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:111
+msgid "Desired Value/Status"
+msgstr "Desired Value/Status"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
+msgid "Viability Ratings"
+msgstr "Viability Ratings"
+
+#: ../source/org/miradi/dialogs/viability/TargetViabilityTreePropertiesPanel.java:75
+msgid "Title|Target Viability Properties"
+msgstr "Title|Target Viability Properties"
+
+#: ../source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:43
+msgid "Key Ecological Attribute (KEA)"
+msgstr "Key Ecological Attribute (KEA)"
+
+#: ../source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:54
+msgid "Title|Key Ecological Attribute Properties"
+msgstr "Title|Key Ecological Attribute Properties"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:44
+msgid "Label|Methods"
+msgstr "Label|Methods"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
+#: ../source/org/miradi/dialogs/task/TaskDetailsPanel.java:52
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+msgid "Progress Reports"
+msgstr "Progress Reports"
+
+#: ../source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:67
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:91
+msgid "Monitoring Plan"
+msgstr "Monitoring Plan"
+
+#: ../source/org/miradi/dialogs/viability/KeyEcologicalAttributePropertiesPanel.java:48
+msgid "Title|KeyEcologicalAttribute Properties"
+msgstr "Title|KeyEcologicalAttribute Properties"
+
+#: ../source/org/miradi/dialogs/summary/TeamManagementPanel.java:100
+msgid "Title|Team"
+msgstr "Title|Team"
+
+#: ../source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:49
+msgid "Label|Initials"
+msgstr "Label|Initials"
+
+#: ../source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
+msgid "Label|Team Member"
+msgstr "Label|Team Member"
+
+#: ../source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:85
+msgid "Title|Team Properties"
+msgstr "Title|Team Properties"
+
+#: ../source/org/miradi/dialogs/progressReport/ProgressReportManagementPanel.java:49
+msgid "Tab|Progress Reports"
+msgstr "Tab|Progress Reports"
+
+#: ../source/org/miradi/dialogs/progressReport/ProgressReportPropertiesPanel.java:45
+msgid "Title|Progress Report Properties"
+msgstr "Title|Progress Report Properties"
+
+#: ../source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:58
+msgid "Tab|Nested Targets"
+msgstr "Tab|Nested Targets"
+
+#: ../source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
+msgid "Nested Target"
+msgstr "Nested Target"
+
+#: ../source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:47
+msgid "Title|Nested Target Properties"
+msgstr "Title|Nested Target Properties"
+
+#: ../source/org/miradi/dialogs/threatstressrating/upperPanel/ThreatNameColumnTableModel.java:40
+msgid "Threats"
+msgstr "Threats"
+
+#: ../source/org/miradi/dialogs/threatstressrating/upperPanel/ThreatSummaryColumnTableModel.java:37
+#: ../source/org/miradi/views/threatmatrix/ThreatMatrixTableModel.java:122
+msgid "Summary Threat Rating"
+msgstr "Summary Threat Rating"
+
+#: ../source/org/miradi/dialogs/threatstressrating/properties/ManageStressesDialog.java:36
+msgid "Manage Stresses for "
+msgstr "Manage Stresses for "
+
+#: ../source/org/miradi/dialogs/threatstressrating/properties/ThreatStressRatingFieldPanel.java:63
+msgid "Stresses"
+msgstr "Stresses"
+
+#: ../source/org/miradi/dialogs/threatstressrating/properties/ThreatStressRatingFieldPanel.java:86
+msgid "(Create, manage, and rate the stresses for this target)"
+msgstr "(Create, manage, and rate the stresses for this target)"
+
+#: ../source/org/miradi/dialogs/threatstressrating/properties/ThreatStressRatingPropertiesPanel.java:85
+msgid "Title|Stress-Based Threat Rating"
+msgstr "Title|Stress-Based Threat Rating"
+
+#: ../source/org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:152
+msgid "Threat Name"
+msgstr "Threat Name"
+
+#: ../source/org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:154
+msgid "Stress Name"
+msgstr "Stress Name"
+
+#: ../source/org/miradi/dialogs/threatstressrating/ThreatRatingPreferencesPanel.java:40
+msgid "Threat Rating Preferences Panel"
+msgstr "Threat Rating Preferences Panel"
+
+#: ../source/org/miradi/dialogs/slideshow/SlideListManagementPanel.java:51
+msgid "Title|Slide Show"
+msgstr "Title|Slide Show"
+
+#: ../source/org/miradi/dialogs/slideshow/SlidePropertiesPanel.java:41
+msgid "Title|Slide Properties"
+msgstr "Title|Slide Properties"
+
+#: ../source/org/miradi/dialogs/task/TaskPropertiesInputPanel.java:53
+msgid ""
+"NOTE: The budget total for this task is the sum of the budget totals of its "
+"subtasks. The resource assignments below are not included in this value."
+msgstr ""
+"NOTE: The budget total for this task is the sum of the budget totals of its "
+"subtasks. The resource assignments below are not included in this value."
+
+#: ../source/org/miradi/dialogs/task/TaskPropertiesInputPanel.java:75
+#: ../source/org/miradi/dialogs/task/TaskPropertiesPanel.java:76
+msgid "Title|Task Properties"
+msgstr "Title|Task Properties"
+
+#: ../source/org/miradi/dialogs/task/TaskPropertiesPanel.java:48
+msgid ""
+"<html><em>HINT: To manage the details about who will do the work and when, "
+"go to the Planning View and choose Work Plan</em>"
+msgstr ""
+"<html><em>HINT: To manage the details about who will do the work and when, "
+"go to the Planning View and choose Work Plan</em>"
+
+#: ../source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
+msgid "Task Details Panel Title|"
+msgstr "Task Details Panel Title|"
+
+#: ../source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:87
+msgid "Title|Other Orgs"
+msgstr "Title|Other Orgs"
+
+#: ../source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
+msgid "Label|Organization"
+msgstr "Label|Organization"
+
+#: ../source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
+msgid "Label|Org Contact"
+msgstr "Label|Org Contact"
+
+#: ../source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
+msgid "Title|Organization Properties"
+msgstr "Title|Organization Properties"
+
+#: ../source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:52
+msgid "Title|Strategy Properties"
+msgstr "Title|Strategy Properties"
+
+#: ../source/org/miradi/dialogs/diagram/ForecastSubPanel.java:64
+msgid "Cost/When/Who"
+msgstr "Cost/When/Who"
+
+#: ../source/org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:37
+msgid "Page:"
+msgstr "Page:"
+
+#: ../source/org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:46
+msgid "Title|Diagram Properties"
+msgstr "Title|Diagram Properties"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:63
+msgid "Title|Link Create Dialog"
+msgstr "Title|Link Create Dialog"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
+msgid "Label|--- affects -->"
+msgstr "Label|--- affects -->"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
+msgid ""
+"<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
+"both factors in the diagram before hitting the Create Link button. <br>On "
+"most systems, to select the second factor, hold down Ctrl while clicking the "
+"second factor in the diagram.<br>"
+msgstr ""
+"<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
+"both factors in the diagram before hitting the Create Link button. <br>On "
+"most systems, to select the second factor, hold down Ctrl while clicking the "
+"second factor in the diagram.<br>"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
+msgid "Button|OK"
+msgstr "Button|OK"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:189
+#: ../source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
+#: ../source/org/miradi/database/DataUpgrader.java:72
+#: ../source/org/miradi/database/DataUpgrader.java:84
+msgid "Button|Cancel"
+msgstr "Button|Cancel"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:245
+msgid "Incomplete Link"
+msgstr "Incomplete Link"
+
+#: ../source/org/miradi/dialogs/diagram/LinkCreateDialog.java:246
+msgid "You must select one item in each of the two lists"
+msgstr "You must select one item in each of the two lists"
+
+#: ../source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:41
+msgid "Group Box Properties"
+msgstr "Group Box Properties"
+
+#: ../source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+
+#: ../source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:41
+msgid "Indicator Relevancy Panel"
+msgstr "Indicator Relevancy Panel"
+
+#: ../source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
+msgid "Strategy"
+msgstr "Strategy"
+
+#: ../source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
+msgid "Priority"
+msgstr "Priority"
+
+#: ../source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
+msgid "Progress"
+msgstr "Progress"
+
+#: ../source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
+#: ../source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:48
+msgid "Indicator"
+msgstr "Indicator"
+
+#: ../source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
+msgid "Results Chains"
+msgstr "Results Chains"
+
+#: ../source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:353
+msgid "Viability Analysis Mode"
+msgstr "Viability Analysis Mode"
+
+#: ../source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:433
+msgid "Factor Properties"
+msgstr "Factor Properties"
+
+#: ../source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:42
+msgid "Results Chain Properties"
+msgstr "Results Chain Properties"
+
+#: ../source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
+msgid "Conceptual Model Page Properties"
+msgstr "Conceptual Model Page Properties"
+
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:117
+#: ../tests/org/miradi/database/TestDataUpgrader.java:609
+msgid "Summary"
+msgstr "Summary"
+
+#: ../source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
+msgid "Related Items"
+msgstr "Related Items"
+
+#: ../source/org/miradi/dialogs/diagram/ProjectScopePanel.java:43
+msgid "Title|Project Scope Properties"
+msgstr "Title|Project Scope Properties"
+
+#: ../source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
+#: ../source/org/miradi/dialogs/planning/treenodes/PlanningTreeConceptualModelNode.java:60
+msgid "Conceptual Model"
+msgstr "Conceptual Model"
+
+#: ../source/org/miradi/dialogs/diagram/DiagramPanel.java:161
+msgid "Title|Diagram Panel"
+msgstr "Title|Diagram Panel"
+
+#: ../source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:67
+msgid "Font"
+msgstr "Font"
+
+#: ../source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
+msgid "Share"
+msgstr "Share"
+
+#: ../source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:41
+msgid ""
+"Please select which item should be shared to this factor, then press the "
+"Share button"
+msgstr ""
+"Please select which item should be shared to this factor, then press the "
+"Share button"
+
+#: ../source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:59
+msgid "Link Properties"
+msgstr "Link Properties"
+
+#: ../source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:52
+msgid "Text Box Properties"
+msgstr "Text Box Properties"
+
+#: ../source/org/miradi/dialogs/diagram/RelevancyStrategyPanel.java:41
+msgid "Strategy Relevancy Panel"
+msgstr "Strategy Relevancy Panel"
+
+#: ../source/org/miradi/dialogs/diagram/ForecastEstimateSubPanel.java:42
+msgid "Estimate Panel"
+msgstr "Estimate Panel"
+
+#: ../source/org/miradi/dialogs/diagram/ForecastRollupSubPanel.java:43
+msgid "Rollup Panel"
+msgstr "Rollup Panel"
+
+#: ../source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:61
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:64
+msgid "(Error)"
+msgstr "(Error)"
+
+#: ../source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:92
+msgid "[ERROR]"
+msgstr "[ERROR]"
+
+#: ../source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:125
+msgid "Budget Total"
+msgstr "Budget Total"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:54
+msgid "Resource (Who)"
+msgstr "Resource (Who)"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:57
+msgid "Cost/Unit"
+msgstr "Cost/Unit"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:60
+msgid "Unit"
+msgstr "Unit"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:63
+msgid "Acct Code"
+msgstr "Acct Code"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:66
+#: ../source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:30
+msgid "Funding Source"
+msgstr "Funding Source"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:111
+msgid "An error has occured while writing assignment data."
+msgstr "An error has occured while writing assignment data."
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:43
+msgid "Total"
+msgstr "Total"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:62
+msgid "Task Properties"
+msgstr "Task Properties"
+
+#: ../source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
+msgid "Planning View Configuration Label Properties"
+msgstr "Planning View Configuration Label Properties"
+
+#: ../source/org/miradi/dialogs/planning/legend/ControlPanel.java:42
+#: ../source/org/miradi/views/diagram/DiagramSplitPane.java:163
+msgid "Control Bar"
+msgstr "Control Bar"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:56
+msgid "Planning Views"
+msgstr "Planning Views"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:75
+msgid "Error Occurred While in Planning View Leged Panel"
+msgstr "Error Occurred While in Planning View Leged Panel"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:87
+msgid "Strategic Plan"
+msgstr "Strategic Plan"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:95
+msgid "Work Plan (BETA)"
+msgstr "Work Plan (BETA)"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:170
+msgid "Unexpected Error Occurred"
+msgstr "Unexpected Error Occurred"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewRowsLegendPanel.java:68
+msgid "Rows"
+msgstr "Rows"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewRadioButton.java:55
+msgid "Error Occurred While Trying to Save Settings"
+msgstr "Error Occurred While Trying to Save Settings"
+
+#: ../source/org/miradi/dialogs/planning/legend/PlanningViewColumsLegendPanel.java:44
+msgid "Columns"
+msgstr "Columns"
+
+#: ../source/org/miradi/dialogs/planning/legend/AbstractPlanningViewLegendPanel.java:136
+msgid "Error Occured While Saving Setting"
+msgstr "Error Occured While Saving Setting"
+
+#: ../source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:47
+msgid "Measurement"
+msgstr "Measurement"
+
+#: ../source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
+msgid "Current Status"
+msgstr "Current Status"
+
+#: ../source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:84
+msgid "Title|Measurement Properties"
+msgstr "Title|Measurement Properties"
+
+#: ../source/org/miradi/dialogs/planning/PlanningTreeManagementPanel.java:92
+msgid "Tab|Planning"
+msgstr "Tab|Planning"
+
+#: ../source/org/miradi/dialogs/objective/ObjectiveListManagementPanel.java:62
+msgid "Tab|Objectives"
+msgstr "Tab|Objectives"
+
+#: ../source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:50
+msgid "Objective"
+msgstr "Objective"
+
+#: ../source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:59
+msgid "Indicators"
+msgstr "Indicators"
+
+#: ../source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:60
+msgid "Strategies"
+msgstr "Strategies"
+
+#: ../source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:63
+msgid "Progress Percents"
+msgstr "Progress Percents"
+
+#: ../source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:75
+msgid "Title|Objective Properties"
+msgstr "Title|Objective Properties"
+
+#: ../source/org/miradi/dialogs/base/AbstractDialogWithClose.java:93
+msgid "Button|Close"
+msgstr "Button|Close"
+
+#: ../source/org/miradi/dialogs/base/AbstractDialogWithClose.java:155
+#: ../source/org/miradi/views/TabbedView.java:195
+msgid "Instructions"
+msgstr "Instructions"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:116
+msgid "Font Size"
+msgstr "Font Size"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:119
+msgid "Font Family"
+msgstr "Font Family"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:154
+msgid "Show Ratings in Cell"
+msgstr "Show Ratings in Cell"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:176
+msgid "Choose the colors that look best on your system:"
+msgstr "Choose the colors that look best on your system:"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:178
+msgid "Strategy (Yellow)"
+msgstr "Strategy (Yellow)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:184
+msgid "Direct Threat (Pink)"
+msgstr "Direct Threat (Pink)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:190
+msgid "Contributing Factor (Orange)"
+msgstr "Contributing Factor (Orange)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:196
+msgid "Target (Light Green)"
+msgstr "Target (Light Green)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:202
+msgid "Project Scope (Dark Green)"
+msgstr "Project Scope (Dark Green)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:208
+msgid "Intermediate Result (Light Blue)"
+msgstr "Intermediate Result (Light Blue)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:214
+msgid "Threat Reduction Result (Light Purple)"
+msgstr "Threat Reduction Result (Light Purple)"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:220
+msgid "Show Diagram Grid"
+msgstr "Show Diagram Grid"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:295
+msgid "Unable to save preferences"
+msgstr "Unable to save preferences"
+
+#: ../source/org/miradi/dialogs/base/PreferencesPanel.java:354
+msgid "Preferences"
+msgstr "Preferences"
+
+#: ../source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
+#: ../source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
+msgid "Editor"
+msgstr "Editor"
+
+#: ../source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
+msgid "Select Location..."
+msgstr "Select Location..."
+
+#: ../source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
+msgid "Error occured while saving data location"
+msgstr "Error occured while saving data location"
+
+#: ../source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:44
+msgid "Choose Data Directory"
+msgstr "Choose Data Directory"
+
+#: ../source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:45
+msgid "Choose Directory"
+msgstr "Choose Directory"
+
+#: ../source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:52
+msgid "Directory Chooser"
+msgstr "Directory Chooser"
+
+#: ../source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
+#: ../source/org/miradi/views/reports/MiradiSaveContributorHelper.java:37
+#: ../source/org/miradi/views/noproject/CopyProject.java:61
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
+#: ../source/org/miradi/utils/ConstantButtonNames.java:28
+msgid "Cancel"
+msgstr "Cancel"
+
+#: ../source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:100
+msgid "Title|Funding Sources"
+msgstr "Title|Funding Sources"
+
+#: ../source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
+msgid "Title|Funding Source Properties"
+msgstr "Title|Funding Source Properties"
+
+#: ../source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
+msgid "Title|Simple Viability"
+msgstr "Title|Simple Viability"
+
+#: ../source/org/miradi/dialogs/AnnotationSelectionDlg.java:36
+msgid "Clone"
+msgstr "Clone"
+
+#: ../source/org/miradi/dialogs/AnnotationSelectionDlg.java:41
+msgid ""
+"Please select which item should be cloned into this factor, then press the "
+"Clone button"
+msgstr ""
+"Please select which item should be cloned into this factor, then press the "
+"Clone button"
+
+#: ../source/org/miradi/dialogs/progressPercent/ProgressPercentManagementPanel.java:49
+msgid "Tab|Progress Percents"
+msgstr "Tab|Progress Percents"
+
+#: ../source/org/miradi/dialogs/progressPercent/ProgressPercentPropertiesPanel.java:43
+msgid "Title|Progress Percent Properties"
+msgstr "Title|Progress Percent Properties"
+
+#: ../source/org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:50
+msgid "Tab|Group Box Link"
+msgstr "Tab|Group Box Link"
+
+#: ../source/org/miradi/main/menu/ProcessMenu1.java:31
+msgid "1. Conceptualize Project"
+msgstr "1. Conceptualize Project"
+
+#: ../source/org/miradi/main/menu/ProcessMenu2.java:31
+msgid "2. Plan Actions and Monitoring"
+msgstr "2. Plan Actions and Monitoring"
+
+#: ../source/org/miradi/main/menu/ProcessMenu3.java:31
+msgid "3. Implement Actions &  Monitoring"
+msgstr "3. Implement Actions &  Monitoring"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4.java:31
+msgid "4. Analyze, Use, Adapt"
+msgstr "4. Analyze, Use, Adapt"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4a.java:34
+msgid ""
+"Develop systems for recording, storing, processing and backing up project "
+"data"
+msgstr ""
+"Develop systems for recording, storing, processing and backing up project "
+"data"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5.java:31
+msgid "5. Capture and Share Learning"
+msgstr "5. Capture and Share Learning"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4b.java:31
+msgid "Analyze project results and assumptions"
+msgstr "Analyze project results and assumptions"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4b.java:32
+msgid "Analyze operational and financial data"
+msgstr "Analyze operational and financial data"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4b.java:33
+msgid "Document discussions and decisions"
+msgstr "Document discussions and decisions"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5a.java:31
+msgid "Document key results and lessons"
+msgstr "Document key results and lessons"
+
+#: ../source/org/miradi/main/menu/ProcessMenu4c.java:32
+msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgstr ""
+"Revise project plan: strategic, monitoring, operational, and work plans"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5b.java:31
+msgid "Identify key audiences"
+msgstr "Identify key audiences"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5b.java:32
+msgid "Develop communications strategy"
+msgstr "Develop communications strategy"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5b.java:33
+msgid "Report to project team and stakeholders"
+msgstr "Report to project team and stakeholders"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5b.java:34
+msgid "Develop and share communication products"
+msgstr "Develop and share communication products"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5b.java:35
+msgid "Use other’s communication products"
+msgstr "Use other’s communication products"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5c.java:31
+msgid "Share feedback formally or informally"
+msgstr "Share feedback formally or informally"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5c.java:32
+msgid ""
+"Conduct evaluations and/or audits at appropriate times during the project "
+"cycle"
+msgstr ""
+"Conduct evaluations and/or audits at appropriate times during the project "
+"cycle"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5c.java:33
+msgid "Demonstrate commitment from leaders to learning and innovation"
+msgstr "Demonstrate commitment from leaders to learning and innovation"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5c.java:34
+msgid "Provide a safe environment for encouraging experimentation"
+msgstr "Provide a safe environment for encouraging experimentation"
+
+#: ../source/org/miradi/main/menu/ProcessMenu5c.java:35
+msgid "Share success & failures with practitioners around the world"
+msgstr "Share success & failures with practitioners around the world"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:126
+msgid "MenuBar|File"
+msgstr "MenuBar|File"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:189
+msgid "MenuBar|Edit"
+msgstr "MenuBar|Edit"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:221
+msgid "MenuBar|Actions"
+msgstr "MenuBar|Actions"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:259
+#: ../source/org/miradi/diagram/DiagramContextMenuHandler.java:126
+msgid "Menu|Group Box"
+msgstr "Menu|Group Box"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:271
+msgid "MenuBar|View"
+msgstr "MenuBar|View"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:298
+msgid "MenuBar|Step-by-Step"
+msgstr "MenuBar|Step-by-Step"
+
+#: ../source/org/miradi/main/menu/MainMenuBar.java:312
+msgid "MenuBar|Help"
+msgstr "MenuBar|Help"
+
+#: ../source/org/miradi/main/MainStatusBar.java:52
+msgid "Status|Ready"
+msgstr "Status|Ready"
+
+#: ../source/org/miradi/main/ViewSwitcher.java:78
+msgid "TT|Switch to a different view"
+msgstr "TT|Switch to a different view"
+
+#: ../source/org/miradi/main/EAM.java:108
+msgid "Warning"
+msgstr "Warning"
+
+#: ../source/org/miradi/main/EAM.java:298
+msgid "An unexpected error occurred: "
+msgstr "An unexpected error occurred: "
+
+#: ../source/org/miradi/main/EAM.java:308
+msgid "Wintitle|Error"
+msgstr "Wintitle|Error"
+
+#: ../source/org/miradi/main/EAM.java:313
+msgid "Wintitle|Information"
+msgstr "Wintitle|Information"
+
+#: ../source/org/miradi/main/EAM.java:349
+#: ../source/org/miradi/main/EAM.java:350
+#: ../source/org/miradi/views/noproject/DeleteProject.java:54
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:32
+msgid "Delete"
+msgstr "Delete"
+
+#: ../source/org/miradi/main/EAM.java:349
+msgid "Retain"
+msgstr "Retain"
+
+#: ../source/org/miradi/main/MiradiLogoPanel.java:34
+msgid "Adaptive Management Software for Conservation Projects"
+msgstr "Adaptive Management Software for Conservation Projects"
+
+#: ../source/org/miradi/main/MainWindow.java:247
+msgid "Information"
+msgstr "Information"
+
+#: ../source/org/miradi/main/MainWindow.java:436
+msgid ""
+"Unknown Command\n"
+"You are probably trying to load an old project that contains obsolete "
+"commands that are no longer supported"
+msgstr ""
+"Unknown Command\n"
+"You are probably trying to load an old project that contains obsolete "
+"commands that are no longer supported"
+
+#: ../source/org/miradi/main/MainWindow.java:441
+msgid "That project is in use by another copy of this application"
+msgstr "That project is in use by another copy of this application"
+
+#: ../source/org/miradi/main/MainWindow.java:445
+msgid ""
+"That project cannot be opened because it was created by a newer version of "
+"this application"
+msgstr ""
+"That project cannot be opened because it was created by a newer version of "
+"this application"
+
+#: ../source/org/miradi/main/MainWindow.java:449
+msgid ""
+"That project cannot be opened until it is migrated to the current data format"
+msgstr ""
+"That project cannot be opened until it is migrated to the current data format"
+
+#: ../source/org/miradi/main/MainWindow.java:454
+msgid "Unknown error prevented opening that project"
+msgstr "Unknown error prevented opening that project"
+
+#: ../source/org/miradi/main/MainWindow.java:580
+msgid ""
+"WorkPlan/Financial data outside project begin/end dates will not be shown"
+msgstr ""
+"WorkPlan/Financial data outside project begin/end dates will not be shown"
+
+#: ../source/org/miradi/main/MainWindow.java:606
+msgid "WARNING: Project end date before start date."
+msgstr "WARNING: Project end date before start date."
+
+#: ../source/org/miradi/dialogfields/ObjectTextInputField.java:131
+#: ../source/org/miradi/views/noproject/CopyProject.java:61
+msgid "Copy"
+msgstr "Copy"
+
+#: ../source/org/miradi/dialogfields/ObjectTextInputField.java:135
+msgid "Cut"
+msgstr "Cut"
+
+#: ../source/org/miradi/dialogfields/ObjectTextInputField.java:139
+msgid "Paste"
+msgstr "Paste"
+
+#: ../source/org/miradi/dialogfields/ObjectCodeListField.java:50
+msgid "Select..."
+msgstr "Select..."
+
+#: ../source/org/miradi/dialogfields/ObjectCodeListField.java:83
+msgid "Selection Dialog"
+msgstr "Selection Dialog"
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:140
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:163
+msgid ""
+"<html><p>If you have existing budget data, it can be migrated to the new "
+"time periods.</p><p><p>Please select how to handle existing budget data:</"
+"p><p><table><tr><td>&lt;"
+msgstr ""
+"<html><p>If you have existing budget data, it can be migrated to the new "
+"time periods.</p><p><p>Please select how to handle existing budget data:</"
+"p><p><table><tr><td>&lt;"
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:154
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:180
+msgid "Change Budget Time Period"
+msgstr "Change Budget Time Period"
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:169
+msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
+msgstr "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:172
+msgid ""
+"&gt;<td>Revert to the yearly planning with no data changes</"
+"table><p><p><em>NOTE:</em> If you don't like the changes, you can undo this "
+"operation to restore the old values,<br>but only within this session, before "
+"you close this project."
+msgstr ""
+"&gt;<td>Revert to the yearly planning with no data changes</"
+"table><p><p><em>NOTE:</em> If you don't like the changes, you can undo this "
+"operation to restore the old values,<br>but only within this session, before "
+"you close this project."
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:187
+msgid "Combine"
+msgstr "Combine"
+
+#: ../source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:188
+msgid "First Quarter"
+msgstr "First Quarter"
+
+#: ../source/org/miradi/dialogfields/ObjectDateChooserInputField.java:50
+msgid "Date Chooser"
+msgstr "Date Chooser"
+
+#: ../source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
+#: ../source/org/miradi/dialogfields/CodeListComponent.java:83
+#: ../source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:67
+#: ../source/org/miradi/dialogfields/RefListComponent.java:73
+msgid "Internal Error"
+msgstr "Internal Error"
+
+#: ../source/org/miradi/dialogfields/ObjectReadonlyTimestampField.java:54
+msgid "(Unknown)"
+msgstr "(Unknown)"
+
+#: ../source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:60
+msgid ""
+")\n"
+" Please choose a specific classification not a category"
+msgstr ""
+")\n"
+" Please choose a specific classification not a category"
+
+#: ../source/org/miradi/dialogfields/ObjectDateRangeInputField.java:46
+msgid "Date Range Chooser"
+msgstr "Date Range Chooser"
+
+#: ../source/org/miradi/dialogfields/ObjectDataInputField.java:241
+msgid "Text|Dates must be in YYYY-MM-DD format"
+msgstr "Text|Dates must be in YYYY-MM-DD format"
+
+#: ../source/org/miradi/dialogfields/ObjectDataInputField.java:253
+msgid "Text|Unknown error prevented saving this data"
+msgstr "Text|Unknown error prevented saving this data"
+
+#: ../source/org/miradi/dialogfields/ObjectEditableObjectListField.java:49
+msgid "Edit..."
+msgstr "Edit..."
+
+#: ../source/org/miradi/dialogfields/ObjectEditableObjectListField.java:85
+msgid "Edit Dialog"
+msgstr "Edit Dialog"
+
+#: ../source/org/miradi/objects/FundingSource.java:71
+#: ../source/org/miradi/objects/AccountingCode.java:71
+msgid "Label|(Undefined Accounting Code)"
+msgstr "Label|(Undefined Accounting Code)"
+
+#: ../source/org/miradi/objects/ProjectResource.java:119
+msgid "Label|(Undefined Resource)"
+msgstr "Label|(Undefined Resource)"
+
+#: ../source/org/miradi/objects/ConceptualModelDiagram.java:78
+msgid "[Main Diagram]"
+msgstr "[Main Diagram]"
+
+#: ../source/org/miradi/objects/ConceptualModelDiagram.java:79
+msgid "[Not Named]"
+msgstr "[Not Named]"
+
+#: ../source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
+msgid "--Select a classification--"
+msgstr "--Select a classification--"
+
+#: ../source/org/miradi/questions/ChoiceQuestion.java:87
+msgid "Unknown code: "
+msgstr "Unknown code: "
+
+#: ../source/org/miradi/questions/BudgetTimePeriodQuestion.java:34
+msgid "By Quarter"
+msgstr "By Quarter"
+
+#: ../source/org/miradi/questions/BudgetTimePeriodQuestion.java:35
+msgid "By Year"
+msgstr "By Year"
+
+#: ../source/org/miradi/questions/DirectThreatQuestion.java:39
+msgid "Not Specified"
+msgstr "Not Specified"
+
+#: ../source/org/miradi/questions/FiscalYearStartQuestion.java:34
+msgid "January to December"
+msgstr "January to December"
+
+#: ../source/org/miradi/questions/FiscalYearStartQuestion.java:35
+msgid "October to September"
+msgstr "October to September"
+
+#: ../source/org/miradi/questions/FiscalYearStartQuestion.java:36
+msgid "July to June"
+msgstr "July to June"
+
+#: ../source/org/miradi/questions/FiscalYearStartQuestion.java:37
+msgid "April to March"
+msgstr "April to March"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:40
+msgid "Goals Only"
+msgstr "Goals Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:41
+msgid "Objectives Only"
+msgstr "Objectives Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:42
+msgid "Strategies Only"
+msgstr "Strategies Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:43
+msgid "Activities Only"
+msgstr "Activities Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
+msgid "Indicators Only"
+msgstr "Indicators Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
+msgid "Methods Only"
+msgstr "Methods Only"
+
+#: ../source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
+msgid "Measurements Only"
+msgstr "Measurements Only"
+
+#: ../source/org/miradi/questions/BudgetCostModeQuestion.java:36
+msgid "Rollup"
+msgstr "Rollup"
+
+#: ../source/org/miradi/questions/BudgetCostModeQuestion.java:37
+msgid "High Level Est."
+msgstr "High Level Est."
+
+#: ../source/org/miradi/questions/CurrencyDecimalQuestion.java:34
+msgid "0"
+msgstr "0"
+
+#: ../source/org/miradi/questions/CurrencyDecimalQuestion.java:35
+msgid "1"
+msgstr "1"
+
+#: ../source/org/miradi/questions/CurrencyDecimalQuestion.java:36
+msgid "2"
+msgstr "2"
+
+#: ../source/org/miradi/questions/CurrencyDecimalQuestion.java:37
+msgid "3"
+msgstr "3"
+
+#: ../source/org/miradi/views/schedule/ScheduleView.java:62
+msgid "Calendar"
+msgstr "Calendar"
+
+#: ../source/org/miradi/views/schedule/ScheduleView.java:63
+msgid "Tasks"
+msgstr "Tasks"
+
+#: ../source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:30
+msgid "Organization"
+msgstr "Organization"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:35
+msgid "Threats at Site"
+msgstr "Threats at Site"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:35
+msgid "(see Diagram)"
+msgstr "(see Diagram)"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:40
+msgid "Human Stakeholder Pop Size"
+msgstr "Human Stakeholder Pop Size"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:40
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:41
+msgid "(see Scope tab)"
+msgstr "(see Scope tab)"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:41
+msgid "Biodiversity Area (ha)"
+msgstr "Biodiversity Area (ha)"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:42
+msgid "Habitat"
+msgstr "Habitat"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:42
+msgid "(see TNC tab for Ecoregions)"
+msgstr "(see TNC tab for Ecoregions)"
+
+#: ../source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:59
+msgid "Label|Campaign"
+msgstr "Label|Campaign"
+
+#: ../source/org/miradi/views/summary/WWFSummaryPanel.java:60
+msgid "Label|WWF"
+msgstr "Label|WWF"
+
+#: ../source/org/miradi/views/summary/ProtectedAreaPanel.java:39
+msgid "Label|Protected Area Categories"
+msgstr "Label|Protected Area Categories"
+
+#: ../source/org/miradi/views/summary/ProtectedAreaPanel.java:59
+msgid "Protected Area Information (If Relevant)"
+msgstr "Protected Area Information (If Relevant)"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningPanel.java:42
+msgid "Workplan"
+msgstr "Workplan"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningPanel.java:47
+#: ../source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:52
+msgid "Financial"
+msgstr "Financial"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningPanel.java:56
+msgid "Planning"
+msgstr "Planning"
+
+#: ../source/org/miradi/views/summary/ScopeAndVisionPanel.java:44
+msgid "Scope and Vision"
+msgstr "Scope and Vision"
+
+#: ../source/org/miradi/views/summary/SummaryProjectPanel.java:56
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+msgid "Project"
+msgstr "Project"
+
+#: ../source/org/miradi/views/summary/SummaryLocationPanel.java:54
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1096
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1105
+msgid "Location"
+msgstr "Location"
+
+#: ../source/org/miradi/views/summary/RareTeamInformationSummarySubPanel.java:46
+msgid "Label|Team Information"
+msgstr "Label|Team Information"
+
+#: ../source/org/miradi/views/summary/HumanStakeholderPanel.java:37
+msgid "Label|Human Stakeholder Pop Size"
+msgstr "Label|Human Stakeholder Pop Size"
+
+#: ../source/org/miradi/views/summary/HumanStakeholderPanel.java:46
+msgid "Human Stakeholders"
+msgstr "Human Stakeholders"
+
+#: ../source/org/miradi/views/summary/TNCSummaryPanel.java:62
+msgid "TNC"
+msgstr "TNC"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:39
+msgid "Label|Currency"
+msgstr "Label|Currency"
+
+#: ../source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:34
+msgid "Project Number"
+msgstr "Project Number"
+
+#: ../source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:35
+msgid "(See Project tab)"
+msgstr "(See Project tab)"
+
+#: ../source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:39
+msgid "Country"
+msgstr "Country"
+
+#: ../source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:40
+msgid "(See Location tab)"
+msgstr "(See Location tab)"
+
+#: ../source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:47
+msgid "Label|Rare Tracking"
+msgstr "Label|Rare Tracking"
+
+#: ../source/org/miradi/views/summary/FOSSummaryPanel.java:44
+msgid "Label|FOS"
+msgstr "Label|FOS"
+
+#: ../source/org/miradi/views/summary/RARESummaryPanel.java:46
+msgid "Label|RARE"
+msgstr "Label|RARE"
+
+#: ../source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:38
+msgid "Related Projects"
+msgstr "Related Projects"
+
+#: ../source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:38
+msgid "(see Project tab)"
+msgstr "(see Project tab)"
+
+#: ../source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:53
+msgid "Label|Campaign Planning"
+msgstr "Label|Campaign Planning"
+
+#: ../source/org/miradi/views/summary/SummaryView.java:176
+msgid "Work plan start date is before project start date"
+msgstr "Work plan start date is before project start date"
+
+#: ../source/org/miradi/views/summary/WCSSummaryPanel.java:40
+msgid "SWOT"
+msgstr "SWOT"
+
+#: ../source/org/miradi/views/summary/WCSSummaryPanel.java:44
+msgid "STEP"
+msgstr "STEP"
+
+#: ../source/org/miradi/views/summary/WCSSummaryPanel.java:51
+msgid "Label|WCS"
+msgstr "Label|WCS"
+
+#: ../source/org/miradi/views/summary/BiodiversityPanel.java:37
+msgid "Label|Biodiversity Area (hectares)"
+msgstr "Label|Biodiversity Area (hectares)"
+
+#: ../source/org/miradi/views/summary/BiodiversityPanel.java:47
+msgid "Biodiversity Features"
+msgstr "Biodiversity Features"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:42
+msgid "Label|Project Dates"
+msgstr "Label|Project Dates"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:47
+msgid "Label|Workplan Dates"
+msgstr "Label|Workplan Dates"
+
+#: ../source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
+msgid "Planning: Work Plan"
+msgstr "Planning: Work Plan"
+
+#: ../source/org/miradi/views/summary/SummaryScopeTabPanel.java:57
+msgid "Scope"
+msgstr "Scope"
+
+#: ../source/org/miradi/views/reports/StandardReportsTableModel.java:29
+#: ../source/org/miradi/views/reports/ReportsView.java:59
+msgid "Standard Reports"
+msgstr "Standard Reports"
+
+#: ../source/org/miradi/views/reports/CustomReportsViewControlBar.java:40
+msgid "Run External Report..."
+msgstr "Run External Report..."
+
+#: ../source/org/miradi/views/reports/CustomReportsViewControlBar.java:73
+msgid ""
+"<html><strong>Custom Reports</Strong><br><br>Miradi is able to run custom "
+"reports created using the free iReports tool. <br>This requires technical "
+"knowledge, so if you are interested in creating <br>your own reports, please "
+"contact the Miradi team (email support@miradi.org)"
+msgstr ""
+"<html><strong>Custom Reports</Strong><br><br>Miradi is able to run custom "
+"reports created using the free iReports tool. <br>This requires technical "
+"knowledge, so if you are interested in creating <br>your own reports, please "
+"contact the Miradi team (email support@miradi.org)"
+
+#: ../source/org/miradi/views/reports/CustomReportsViewControlBar.java:81
+msgid "Choose Custom Report"
+msgstr "Choose Custom Report"
+
+#: ../source/org/miradi/views/reports/CustomReportsViewControlBar.java:84
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:31
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:163
+msgid "Open"
+msgstr "Open"
+
+#: ../source/org/miradi/views/reports/MiradiSaveContributorHelper.java:34
+msgid "Save"
+msgstr "Save"
+
+#: ../source/org/miradi/views/reports/CustomReportsTableModel.java:29
+#: ../source/org/miradi/views/reports/ReportsView.java:60
+msgid "Custom Reports"
+msgstr "Custom Reports"
+
+#: ../source/org/miradi/views/reports/ReportSplitPane.java:118
+msgid "Error while generating a report"
+msgstr "Error while generating a report"
+
+#: ../source/org/miradi/views/noproject/CopyProject.java:39
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:38
+#: ../source/org/miradi/views/noproject/DeleteProject.java:37
+msgid "Project does not exist: "
+msgstr "Project does not exist: "
+
+#: ../source/org/miradi/views/noproject/CopyProject.java:47
+msgid ""
+"Unable to copy this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to copy this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/miradi/views/noproject/CopyProject.java:60
+msgid "This will copy the project"
+msgstr "This will copy the project"
+
+#: ../source/org/miradi/views/noproject/CopyProject.java:60
+msgid "to"
+msgstr "to"
+
+#: ../source/org/miradi/views/noproject/CopyProject.java:62
+msgid "Copy Project"
+msgstr "Copy Project"
+
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:46
+msgid ""
+"Unable to rename this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to rename this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:56
+msgid "Are you sure you want to rename project: "
+msgstr "Are you sure you want to rename project: "
+
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:58
+msgid "Rename"
+msgstr "Rename"
+
+#: ../source/org/miradi/views/noproject/RenameProjectDoer.java:59
+msgid "Rename Project"
+msgstr "Rename Project"
+
+#: ../source/org/miradi/views/noproject/DeleteProject.java:45
+msgid ""
+"Unable to delete this project because it is in use by another copy of this "
+"application:\n"
+msgstr ""
+"Unable to delete this project because it is in use by another copy of this "
+"application:\n"
+
+#: ../source/org/miradi/views/noproject/DeleteProject.java:51
+msgid "Are you sure you want to delete this project? "
+msgstr "Are you sure you want to delete this project? "
+
+#: ../source/org/miradi/views/noproject/DeleteProject.java:54
+msgid "Keep"
+msgstr "Keep"
+
+#: ../source/org/miradi/views/noproject/DeleteProject.java:55
+msgid "Delete Project"
+msgstr "Delete Project"
+
+#: ../source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:32
+msgid "Edit Methods"
+msgstr "Edit Methods"
+
+#: ../source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr "Data was exported as tab delimited."
+
+#: ../source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr "Error occurred while trying to export to a tab delimited file."
+
+#: ../source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
+msgid "Help"
+msgstr "Help"
+
+#: ../source/org/miradi/views/umbrella/doers/CopyProjectToDoer.java:46
+msgid "Copy Project To"
+msgstr "Copy Project To"
+
+#: ../source/org/miradi/views/umbrella/doers/CopyProjectToDoer.java:46
+msgid "Button|Copy To"
+msgstr "Button|Copy To"
+
+#: ../source/org/miradi/views/umbrella/HelpAboutPanel.java:33
+msgid "Title|About Miradi"
+msgstr "Title|About Miradi"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:73
+msgid "Label|Existing Projects:"
+msgstr "Label|Existing Projects:"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:74
+msgid "New Project Filename: "
+msgstr "New Project Filename: "
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:83
+msgid "Title|Create New Project"
+msgstr "Title|Create New Project"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:217
+msgid ""
+"Project filenames cannot contain punctuation other than dots, dashes, and "
+"spaces; and they cannot be longer than 32 characters. "
+msgstr ""
+"Project filenames cannot contain punctuation other than dots, dashes, and "
+"spaces; and they cannot be longer than 32 characters. "
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:228
+msgid "Cannot overwrite an open project"
+msgstr "Cannot overwrite an open project"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:235
+msgid "File exists: Cannot overwrite a non project directory"
+msgstr "File exists: Cannot overwrite a non project directory"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:240
+#: ../source/org/miradi/utils/EAMFileSaveChooser.java:92
+msgid "Title|Overwrite existing file?"
+msgstr "Title|Overwrite existing file?"
+
+#: ../source/org/miradi/views/umbrella/CreateProjectDialog.java:241
+#: ../source/org/miradi/utils/EAMFileSaveChooser.java:97
+msgid "This will replace the existing file."
+msgstr "This will replace the existing file."
+
+#: ../source/org/miradi/views/umbrella/DeleteActivity.java:69
+msgid "This item is shared, so will be deleted from multiple places."
+msgstr "This item is shared, so will be deleted from multiple places."
+
+#: ../source/org/miradi/views/umbrella/DeleteActivity.java:71
+msgid "All subtasks within this item will be removed as well."
+msgstr "All subtasks within this item will be removed as well."
+
+#: ../source/org/miradi/views/umbrella/DeleteActivity.java:72
+msgid "Button|Delete"
+msgstr "Button|Delete"
+
+#: ../source/org/miradi/views/umbrella/DeleteActivity.java:72
+msgid "Button|Retain"
+msgstr "Button|Retain"
+
+#: ../source/org/miradi/views/umbrella/DeleteActivity.java:73
+msgid "Title|Delete"
+msgstr "Title|Delete"
+
+#: ../source/org/miradi/views/umbrella/EditStrategyRelevancyListDoer.java:36
+msgid "Choose Relevant Strategy(s)"
+msgstr "Choose Relevant Strategy(s)"
+
+#: ../source/org/miradi/views/umbrella/ExportCpmzDoer.java:74
+#: ../source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:64
+msgid "Error Export To Miradi Zip: Possible Write Protected: "
+msgstr "Error Export To Miradi Zip: Possible Write Protected: "
+
+#: ../source/org/miradi/views/umbrella/ImportProjectDoer.java:53
+msgid "Import Project"
+msgstr "Import Project"
+
+#: ../source/org/miradi/views/umbrella/ImportProjectDoer.java:75
+#: ../source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
+msgid "Import Completed"
+msgstr "Import Completed"
+
+#: ../source/org/miradi/views/umbrella/ImportProjectDoer.java:79
+msgid ""
+"This file cannot be imported because it is a newer format than this version "
+"of Miradi supports. <br>Please make sure you are running the latest version "
+"of Miradi. If you are already <br>running the latest Miradi, either wait for "
+"a newer version that supports this format, <br>or re-export the project to "
+"an older (supported) format."
+msgstr ""
+"This file cannot be imported because it is a newer format than this version "
+"of Miradi supports. <br>Please make sure you are running the latest version "
+"of Miradi. If you are already <br>running the latest Miradi, either wait for "
+"a newer version that supports this format, <br>or re-export the project to "
+"an older (supported) format."
+
+#: ../source/org/miradi/views/umbrella/ImportProjectDoer.java:97
+msgid "<html>Import failed: <br><p> %s </p></html>"
+msgstr "<html>Import failed: <br><p> %s </p></html>"
+
+#: ../source/org/miradi/views/umbrella/NewProject.java:35
+msgid "Button|Create"
+msgstr "Button|Create"
+
+#: ../source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "Continue"
+msgstr "Continue"
+
+#: ../source/org/miradi/views/umbrella/XmlExporter.java:44
+msgid "Export XML"
+msgstr "Export XML"
+
+#: ../source/org/miradi/views/umbrella/XmlExporter.java:46
+msgid ""
+"This feature is not yet fully supported. It exports all the project data in "
+"an XML file, but the schema of that file is still in flux. Future versions "
+"of Miradi will export the data in different formats."
+msgstr ""
+"This feature is not yet fully supported. It exports all the project data in "
+"an XML file, but the schema of that file is still in flux. Future versions "
+"of Miradi will export the data in different formats."
+
+#: ../source/org/miradi/views/umbrella/XmlExporter.java:51
+msgid "Export"
+msgstr "Export"
+
+#: ../source/org/miradi/views/umbrella/XmlExporter.java:66
+msgid "Export complete"
+msgstr "Export complete"
+
+#: ../source/org/miradi/views/umbrella/XmlExporter.java:71
+msgid ""
+"Unable to write XML. Perhaps the disk was full, or you don't have permission "
+"to write to it."
+msgstr ""
+"Unable to write XML. Perhaps the disk was full, or you don't have permission "
+"to write to it."
+
+#: ../source/org/miradi/views/umbrella/EditIndicatorRelevancyListDoer.java:36
+msgid "Choose Relevant Indicator(s)"
+msgstr "Choose Relevant Indicator(s)"
+
+#: ../source/org/miradi/views/umbrella/Undo.java:63
+msgid "Error during undo"
+msgstr "Error during undo"
+
+#: ../source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
+#: ../source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
+#: ../source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
+msgid "Action|Manage|Create Progress Report"
+msgstr "Action|Manage|Create Progress Report"
+
+#: ../source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:41
+#: ../source/org/miradi/actions/ActionCreateActivityProgressReport.java:40
+#: ../source/org/miradi/actions/ActionCreateStrategyProgressReport.java:40
+msgid "TT|Create a new Progress Report"
+msgstr "TT|Create a new Progress Report"
+
+#: ../source/org/miradi/views/umbrella/Redo.java:60
+msgid "Error during redo"
+msgstr "Error during redo"
+
+#: ../source/org/miradi/views/umbrella/EamProjectFileFilter.java:45
+msgid "FileFilter|Project Files (*.eam)"
+msgstr "FileFilter|Project Files (*.eam)"
+
+#: ../source/org/miradi/views/diagram/doers/EditStrategyProgressReportDoer.java:35
+#: ../source/org/miradi/views/diagram/doers/EditIndicatorProgressReportDoer.java:35
+#: ../source/org/miradi/views/diagram/doers/EditActivityProgressReportDoer.java:35
+msgid "Edit Progress Reports"
+msgstr "Edit Progress Reports"
+
+#: ../source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
+msgid "Label|New Group Box"
+msgstr "Label|New Group Box"
+
+#: ../source/org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
+#: ../source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
+#: ../source/org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
+msgid "Are you sure you want to delete this Progress Report?"
+msgstr "Are you sure you want to delete this Progress Report?"
+
+#: ../source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
+msgid "Choose Stress to Clone"
+msgstr "Choose Stress to Clone"
+
+#: ../source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:57
+msgid "Choose Key Ecological Attribute to Clone"
+msgstr "Choose Key Ecological Attribute to Clone"
+
+#: ../source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:73
+msgid "[NOT SPECIFIED]"
+msgstr "[NOT SPECIFIED]"
+
+#: ../source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:75
+msgid "["
+msgstr "["
+
+#: ../source/org/miradi/views/diagram/doers/ShareActivityDoer.java:47
+msgid "Share Activity"
+msgstr "Share Activity"
+
+#: ../source/org/miradi/views/diagram/doers/EditProgressPercentDoer.java:35
+msgid "Edit Progress Percents"
+msgstr "Edit Progress Percents"
+
+#: ../source/org/miradi/views/diagram/doers/DeleteObjectiveProgressPercentDoer.java:47
+msgid "Are you sure you want to delete this Progress Percent?"
+msgstr "Are you sure you want to delete this Progress Percent?"
+
+#: ../source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:95
+msgid "Paste Content..."
+msgstr "Paste Content..."
+
+#: ../source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:96
+msgid ""
+"This will replace all the selected factor's contents with the contents of "
+"the factor that was cut/copied earlier. Are you sure you want to do this?"
+msgstr ""
+"This will replace all the selected factor's contents with the contents of "
+"the factor that was cut/copied earlier. Are you sure you want to do this?"
+
+#: ../source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:189
+msgid "Button|Paste Contents"
+msgstr "Button|Paste Contents"
+
+#: ../source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:248
+msgid ""
+"The link(s) will be deleted from all Conceptual Model pages and Results "
+"Chains, not just this one. "
+msgstr ""
+"The link(s) will be deleted from all Conceptual Model pages and Results "
+"Chains, not just this one. "
+
+#: ../source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:106
+msgid "[Page "
+msgstr "[Page "
+
+#: ../source/org/miradi/views/diagram/DiagramSplitPane.java:317
+#: ../source/org/miradi/diagram/DiagramModel.java:856
+msgid ""
+"An error is preventing this diagram from displaying correctly. Most likely, "
+"the project has gotten corrupted. Please contact the Miradi team for help "
+"and advice. We recommend that you not make any changes to this project until "
+"this problem has been resolved."
+msgstr ""
+"An error is preventing this diagram from displaying correctly. Most likely, "
+"the project has gotten corrupted. Please contact the Miradi team for help "
+"and advice. We recommend that you not make any changes to this project until "
+"this problem has been resolved."
+
+#: ../source/org/miradi/views/diagram/InsertContributingFactorDoer.java:45
+#: ../source/org/miradi/views/diagram/InsertDirectThreatDoer.java:46
+msgid "Label|New Factor"
+msgstr "Label|New Factor"
+
+#: ../source/org/miradi/views/diagram/InsertContributingFactorDoer.java:58
+msgid "Text|This is a Direct Threat because it is linked to a Target"
+msgstr "Text|This is a Direct Threat because it is linked to a Target"
+
+#: ../source/org/miradi/views/diagram/CloneGoalDoer.java:33
+msgid "Choose Goal to Clone"
+msgstr "Choose Goal to Clone"
+
+#: ../source/org/miradi/views/diagram/LinkCreator.java:96
+msgid "Can't link an item to itself"
+msgstr "Can't link an item to itself"
+
+#: ../source/org/miradi/views/diagram/LinkCreator.java:97
+#: ../source/org/miradi/views/diagram/LinkCreator.java:106
+msgid "Can't Create Link"
+msgstr "Can't Create Link"
+
+#: ../source/org/miradi/views/diagram/LinkCreator.java:105
+msgid "Can't link a group to an item it contains"
+msgstr "Can't link a group to an item it contains"
+
+#: ../source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:61
+msgid "Label|New Draft Strategy"
+msgstr "Label|New Draft Strategy"
+
+#: ../source/org/miradi/views/diagram/InsertTargetDoer.java:35
+msgid "Label|New Target"
+msgstr "Label|New Target"
+
+#: ../source/org/miradi/views/diagram/DeleteSubTargetDoer.java:46
+msgid "Are you sure you want to delete this Nested Target?"
+msgstr "Are you sure you want to delete this Nested Target?"
+
+#: ../source/org/miradi/views/diagram/InsertStrategyDoer.java:43
+msgid "Label|New Strategy"
+msgstr "Label|New Strategy"
+
+#: ../source/org/miradi/views/diagram/ConfigureLayers.java:45
+msgid "Title|View Layers"
+msgstr "Title|View Layers"
+
+#: ../source/org/miradi/views/diagram/CloneObjectiveDoer.java:33
+msgid "Choose Objective to Clone"
+msgstr "Choose Objective to Clone"
+
+#: ../source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
+msgid "Choose Indicator to Clone"
+msgstr "Choose Indicator to Clone"
+
+#: ../source/org/miradi/views/diagram/Paste.java:50
+msgid ""
+"<HTML>These factors cannot be pasted as shared into this diagram."
+"<BR><BR>Contributing Factors and Direct Threats cannot be pasted as shared "
+"into a Results Chain.<BR>Intermediate Results and Threat Reduction Results "
+"cannot be pasted as shared into a Conceptual Model page.</HTML>"
+msgstr ""
+"<HTML>These factors cannot be pasted as shared into this diagram."
+"<BR><BR>Contributing Factors and Direct Threats cannot be pasted as shared "
+"into a Results Chain.<BR>Intermediate Results and Threat Reduction Results "
+"cannot be pasted as shared into a Conceptual Model page.</HTML>"
+
+#: ../source/org/miradi/views/diagram/Paste.java:58
+msgid ""
+"<HTML>When pasting between projects, can't paste from CM to RC or vice "
+"versa</HTML>"
+msgstr ""
+"<HTML>When pasting between projects, can't paste from CM to RC or vice "
+"versa</HTML>"
+
+#: ../source/org/miradi/views/diagram/Paste.java:89
+msgid "Paste As..."
+msgstr "Paste As..."
+
+#: ../source/org/miradi/views/diagram/Paste.java:90
+msgid ""
+"Do you want to paste full new copies of the factors, or share the existing "
+"factors? If you paste new copies, any changes will not affect the originals. "
+"If you share, any changes will automatically affect all the diagrams."
+msgstr ""
+"Do you want to paste full new copies of the factors, or share the existing "
+"factors? If you paste new copies, any changes will not affect the originals. "
+"If you share, any changes will automatically affect all the diagrams."
+
+#: ../source/org/miradi/views/diagram/Paste.java:124
+msgid ""
+"Some of the data could not be moved to this project because it refers to "
+"other data that only exists in the old project"
+msgstr ""
+"Some of the data could not be moved to this project because it refers to "
+"other data that only exists in the old project"
+
+#: ../source/org/miradi/views/diagram/Paste.java:145
+msgid "Button|As Copy"
+msgstr "Button|As Copy"
+
+#: ../source/org/miradi/views/diagram/Paste.java:146
+msgid "Button|Shared"
+msgstr "Button|Shared"
+
+#: ../source/org/miradi/views/diagram/DiagramView.java:380
+msgid "Unknown error displaying diagram"
+msgstr "Unknown error displaying diagram"
+
+#: ../source/org/miradi/views/diagram/DiagramView.java:894
+msgid "Title|Factor Properties"
+msgstr "Title|Factor Properties"
+
+#: ../source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
+msgid "Label|New Threat Reduction Result"
+msgstr "Label|New Threat Reduction Result"
+
+#: ../source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:44
+msgid "Label|New Intermediate Result"
+msgstr "Label|New Intermediate Result"
+
+#: ../source/org/miradi/views/diagram/InsertDirectThreatDoer.java:65
+msgid "Text|This will not be a Direct Threat until it is linked to a Target"
+msgstr "Text|This will not be a Direct Threat until it is linked to a Target"
+
+#: ../source/org/miradi/views/diagram/InsertTextBoxDoer.java:46
+msgid "Label|New Text Box"
+msgstr "Label|New Text Box"
+
+#: ../source/org/miradi/views/diagram/LayerPanel.java:50
+msgid "Layers"
+msgstr "Layers"
+
+#: ../source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
+msgid "Import Accounting Codes"
+msgstr "Import Accounting Codes"
+
+#: ../source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:75
+msgid "Unable to process file: verify file format"
+msgstr "Unable to process file: verify file format"
+
+#: ../source/org/miradi/views/planning/doers/ShareMethodDoer.java:51
+msgid "Share Method"
+msgstr "Share Method"
+
+#: ../source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:30
+msgid "Accounting Code"
+msgstr "Accounting Code"
+
+#: ../source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
+msgid "Create Task"
+msgstr "Create Task"
+
+#: ../source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:83
+msgid ""
+"This activity/method/task already has resources assigned to it. If it also "
+"contains tasks/subtasks, those tasks will be used for all budget "
+"calculations, and any resource assignments will be ignored. Are you sure you "
+"want to create a task/subtask?"
+msgstr ""
+"This activity/method/task already has resources assigned to it. If it also "
+"contains tasks/subtasks, those tasks will be used for all budget "
+"calculations, and any resource assignments will be ignored. Are you sure you "
+"want to create a task/subtask?"
+
+#: ../source/org/miradi/views/planning/doers/AddAssignmentDoer.java:56
+msgid "Resources cannot be added to this task because it already has subtasks."
+msgstr ""
+"Resources cannot be added to this task because it already has subtasks."
+
+#: ../source/org/miradi/views/threatmatrix/ThreatMatrixToolBar.java:111
+msgid "Error occurred while switching threat rating mode."
+msgstr "Error occurred while switching threat rating mode."
+
+#: ../source/org/miradi/views/threatmatrix/ThreatMatrixRowHeaderTableModel.java:46
+msgid "Summary Target Rating"
+msgstr "Summary Target Rating"
+
+#: ../source/org/miradi/views/threatmatrix/ThreatMatrixRowHeaderTableModel.java:57
+msgid "THREATS"
+msgstr "THREATS"
+
+#: ../source/org/miradi/views/threatmatrix/ThreatRatingPanel.java:204
+msgid "Error setting value"
+msgstr "Error setting value"
+
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:86
+msgid "Create Link"
+msgstr "Create Link"
+
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:91
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
+msgid "Delete Link"
+msgstr "Delete Link"
+
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:170
+msgid ""
+"This link will be deleted from any Conceptual Model pages and Results Chains "
+"that it appears on: "
+msgstr ""
+"This link will be deleted from any Conceptual Model pages and Results Chains "
+"that it appears on: "
+
+#: ../source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
+msgid "Delete a link?"
+msgstr "Delete a link?"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardResultsChainStep.java:35
+msgid "Create results chains showing assumptions"
+msgstr "Create results chains showing assumptions"
+
+#: ../source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
+msgid "Develop Project Budgets"
+msgstr "Develop Project Budgets"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAnalyzeProjectCapacity.java:35
+msgid "Analyze Project Capacity"
+msgstr "Analyze Project Capacity"
+
+#: ../source/org/miradi/actions/jump/ActionJumpStrategicPlanViewAllGoals.java:35
+msgid "View all goals"
+msgstr "View all goals"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDefineAudiences.java:35
+msgid "Clearly Define Audiences"
+msgstr "Clearly Define Audiences"
+
+#: ../source/org/miradi/actions/jump/ActionJumpTargetViabilityMethodChoiceStep.java:35
+msgid "Describe status of targets"
+msgstr "Describe status of targets"
+
+#: ../source/org/miradi/actions/jump/ActionJumpScheduleOverviewStep.java:35
+msgid "Develop Project Schedule"
+msgstr "Develop Project Schedule"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardIdentifyDirectThreatStep.java:35
+msgid "Identify direct threats"
+msgstr "Identify direct threats"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardDefineTargetsStep.java:35
+msgid "Select conservation targets"
+msgstr "Select conservation targets"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramOverviewStep.java:35
+msgid "Diagram overview"
+msgstr "Diagram overview"
+
+#: ../source/org/miradi/actions/jump/ActionJumpPlanningOverviewStep.java:35
+msgid "Develop Project Plans"
+msgstr "Develop Project Plans"
+
+#: ../source/org/miradi/actions/jump/ActionJumpObtainFinancing.java:35
+msgid "Obtain financial resources"
+msgstr "Obtain financial resources"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDevelopMap.java:35
+msgid "Develop map of project area"
+msgstr "Develop map of project area"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAnalyzeStrategies.java:35
+msgid "5B. Analyze Strategies"
+msgstr "5B. Analyze Strategies"
+
+#: ../source/org/miradi/actions/jump/ActionJumpThreatRatingWizardCheckTotalsStep.java:35
+msgid "Threat rating summary"
+msgstr "Threat rating summary"
+
+#: ../source/org/miradi/actions/jump/ActionJumpFinalizeConceptualModel.java:35
+msgid "Finalize project conceptual model"
+msgstr "Finalize project conceptual model"
+
+#: ../source/org/miradi/actions/jump/ActionJumpMonitoringWizardFocusStep.java:35
+msgid "Define audiences and information needs"
+msgstr "Define audiences and information needs"
+
+#: ../source/org/miradi/actions/jump/ActionJumpPlanProjectLifespan.java:35
+msgid "Plan project lifespan and exit strategy"
+msgstr "Plan project lifespan and exit strategy"
+
+#: ../source/org/miradi/actions/jump/ActionJumpBudgetWizardAccountingAndFunding.java:36
+msgid "Estimate costs for activities and monitoring"
+msgstr "Estimate costs for activities and monitoring"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDevelopDraftStrategiesStep.java:35
+msgid "Develop draft strategies"
+msgstr "Develop draft strategies"
+
+#: ../source/org/miradi/actions/jump/ActionJumpArticulateCoreAssumptions.java:35
+msgid "Articulate Your Core Assumptions"
+msgstr "Articulate Your Core Assumptions"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDevelopFundingProposals.java:35
+msgid "Develop and submit funding proposals"
+msgstr "Develop and submit funding proposals"
+
+#: ../source/org/miradi/actions/jump/ActionJumpStrategicPlanDevelopGoalStep.java:35
+msgid "Develop goals for each target"
+msgstr "Develop goals for each target"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSummaryWizardRolesAndResponsibilities.java:35
+msgid "Agree on roles and responsibilities"
+msgstr "Agree on roles and responsibilities"
+
+#: ../source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
+msgid "Identify stresses (optional)"
+msgstr "Identify stresses (optional)"
+
+#: ../source/org/miradi/actions/jump/ActionJumpStrategicPlanHowToConstructStep.java:35
+msgid "View Strategic Plan welcome wizard"
+msgstr "View Strategic Plan welcome wizard"
+
+#: ../source/org/miradi/actions/jump/ActionJumpShorttermPlans.java:35
+msgid "Develop short-term work plans"
+msgstr "Develop short-term work plans"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjecScope.java:35
+msgid "Define project scope"
+msgstr "Define project scope"
+
+#: ../source/org/miradi/actions/jump/ActionJumpCommunicateResults.java:35
+msgid "5C. Communicate Results Within Project Team"
+msgstr "5C. Communicate Results Within Project Team"
+
+#: ../source/org/miradi/actions/jump/ActionJumpImplementStrategicAndMonitoringPlans.java:36
+msgid "Implement strategic and monitoring plans"
+msgstr "Implement strategic and monitoring plans"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjectLeader.java:35
+msgid "Identify key skills"
+msgstr "Identify key skills"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAnalyzeData.java:35
+msgid "5A. Analyze Your Data"
+msgstr "5A. Analyze Your Data"
+
+#: ../source/org/miradi/actions/jump/ActionJumpShare.java:35
+msgid "7B. Share What You Learn"
+msgstr "7B. Share What You Learn"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
+#: ../source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:47
+msgid "Place scope on diagram"
+msgstr "Place scope on diagram"
+
+#: ../source/org/miradi/actions/jump/ActionJumpRefinePlans.java:35
+msgid "4C. Refine Work Plans on Ongoing Basis"
+msgstr "4C. Refine Work Plans on Ongoing Basis"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjectVision.java:35
+msgid "Agree on project vision"
+msgstr "Agree on project vision"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAssessStakeholders.java:35
+msgid "Assess Stakeholders"
+msgstr "Assess Stakeholders"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWelcomeCreateStep.java:36
+msgid "Create a new Miradi project"
+msgstr "Create a new Miradi project"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWelcomeCreateStep.java:47
+msgid "Create..."
+msgstr "Create..."
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardConstructChainsStep.java:36
+msgid "Create initial conceptual model"
+msgstr "Create initial conceptual model"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAssessRisks.java:35
+msgid "Assess risks"
+msgstr "Assess risks"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSelectChainStep.java:35
+msgid "Identify \"key factors\" and draft strategies"
+msgstr "Identify \"key factors\" and draft strategies"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDocument.java:35
+msgid "7A. Document What You Learn"
+msgstr "7A. Document What You Learn"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWorkPlanOverviewStep.java:35
+msgid "Work plan overview"
+msgstr "Work plan overview"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAdaptAndMonitorPlans.java:35
+msgid "6A. Adapt Your Action and Monitoring Plans"
+msgstr "6A. Adapt Your Action and Monitoring Plans"
+
+#: ../source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
+msgid "Develop target viability"
+msgstr "Develop target viability"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWorkPlanDevelopActivitiesAndTasksStep.java:35
+msgid "Detail activities, tasks, and responsibilities"
+msgstr "Detail activities, tasks, and responsibilities"
+
+#: ../source/org/miradi/actions/jump/ActionJumpMonitoringWizardEditIndicatorsStep.java:35
+msgid "Edit Indicators"
+msgstr "Edit Indicators"
+
+#: ../source/org/miradi/actions/jump/ActionJumpStrategicPlanDevelopObjectivesStep.java:35
+msgid "Develop objectives"
+msgstr "Develop objectives"
+
+#: ../source/org/miradi/actions/jump/ActionJumpActivitiesAndActionPlan.java:35
+msgid "Develop activities and action plan"
+msgstr "Develop activities and action plan"
+
+#: ../source/org/miradi/actions/jump/ActionJumpStrategicPlanViewAllObjectives.java:35
+msgid "View all objectives"
+msgstr "View all objectives"
+
+#: ../source/org/miradi/actions/jump/ActionJumpGroundTruthRevise.java:35
+msgid "Ground Truth and Revise Model"
+msgstr "Ground Truth and Revise Model"
+
+#: ../source/org/miradi/actions/jump/ActionJumpEditAllStrategiesStep.java:35
+msgid "Edit All Strategies"
+msgstr "Edit All Strategies"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardIdentifyIndirectThreatStep.java:35
+msgid "Identify indirect threats and opportunities"
+msgstr "Identify indirect threats and opportunities"
+
+#: ../source/org/miradi/actions/jump/ActionJumpImplementWorkPlan.java:35
+msgid "Implement work plan"
+msgstr "Implement work plan"
+
+#: ../source/org/miradi/actions/jump/ActionJumpPlanDataStorage.java:35
+msgid "Plan for Data Storage"
+msgstr "Plan for Data Storage"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
+msgid "Select appropriate methods"
+msgstr "Select appropriate methods"
+
+#: ../source/org/miradi/actions/jump/ActionJumpBudgetFutureDemo.java:35
+msgid "Financial Future Features Demo"
+msgstr "Financial Future Features Demo"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDevelopSchedule.java:35
+msgid "Develop project timeline or calendar"
+msgstr "Develop project timeline or calendar"
+
+#: ../source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineTeamMembers.java:35
+msgid "Select initial team members"
+msgstr "Select initial team members"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.java:35
+msgid "Link Direct Threats to Targets"
+msgstr "Link Direct Threats to Targets"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewModelAndAdjustStep.java:35
+msgid "Ground-truth and revise model"
+msgstr "Ground-truth and revise model"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
+msgid "Import a Miradi Project Zipfile (.mpz)"
+msgstr "Import a Miradi Project Zipfile (.mpz)"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
+msgid "Import..."
+msgstr "Import..."
+
+#: ../source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
+msgid "Monitoring Overview"
+msgstr "Monitoring Overview"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWorkPlanDevelopMethodsAndTasksStep.java:35
+msgid "Detail methods, tasks, and responsibilities"
+msgstr "Detail methods, tasks, and responsibilities"
+
+#: ../source/org/miradi/actions/jump/ActionJumpPlanningWizardFinalizeStrategicPlanStep.java:35
+msgid "Finalize strategic plan"
+msgstr "Finalize strategic plan"
+
+#: ../source/org/miradi/actions/jump/ActionJumpPlanningWizardFinalizeMonitoringPlanStep.java:35
+msgid "Finalize monitoring plan"
+msgstr "Finalize monitoring plan"
+
+#: ../source/org/miradi/actions/jump/ActionJumpMonitoringWizardSelectMethodsStep.java:35
+msgid "Method selection"
+msgstr "Method selection"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewAndModifyTargetsStep.java:36
+msgid "Review and modify targets"
+msgstr "Review and modify targets"
+
+#: ../source/org/miradi/actions/jump/ActionJumpWorkPlanAssignResourcesStep.java:35
+msgid "Assign Resources"
+msgstr "Assign Resources"
+
+#: ../source/org/miradi/actions/jump/ActionJumpTeamRoles.java:35
+msgid "Agree upon team roles"
+msgstr "Agree upon team roles"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAssessResources.java:35
+msgid "Assess human, financial and other resources"
+msgstr "Assess human, financial and other resources"
+
+#: ../source/org/miradi/actions/jump/ActionJumpMonitoringWizardDefineIndicatorsStep.java:35
+msgid "Define indicators"
+msgstr "Define indicators"
+
+#: ../source/org/miradi/actions/jump/ActionJumpAnalyzeResourcesFeasibilityAndRisk.java:35
+msgid "Analyze Resources, Feasibility, and Risk"
+msgstr "Analyze Resources, Feasibility, and Risk"
+
+#: ../source/org/miradi/actions/jump/ActionJumpThreatMatrixOverviewStep.java:35
+msgid "Rank direct threats"
+msgstr "Rank direct threats"
+
+#: ../source/org/miradi/actions/jump/ActionJumpCloseTheLoop.java:35
+msgid "Close the Loop"
+msgstr "Close the Loop"
+
+#: ../source/org/miradi/actions/jump/ActionJumpDefineTasks.java:35
+msgid "Clearly define monitoring tasks"
+msgstr "Clearly define monitoring tasks"
+
+#: ../source/org/miradi/actions/jump/ActionJumpRankDraftStrategiesStep.java:35
+msgid "Rank draft strategies"
+msgstr "Rank draft strategies"
+
+#: ../source/org/miradi/actions/jump/ActionJumpCreate.java:35
+msgid "7C. Create a Learning Environment"
+msgstr "7C. Create a Learning Environment"
+
+#: ../source/org/miradi/actions/views/ActionViewPlanning.java:35
+msgid "Action|Planning"
+msgstr "Action|Planning"
+
+#: ../source/org/miradi/actions/views/ActionViewPlanning.java:40
+msgid "TT|Switch to the Planning View"
+msgstr "TT|Switch to the Planning View"
+
+#: ../source/org/miradi/actions/views/ActionViewBudget.java:35
+msgid "Action|Financial"
+msgstr "Action|Financial"
+
+#: ../source/org/miradi/actions/views/ActionViewBudget.java:40
+msgid "TT|Switch to the Financial View"
+msgstr "TT|Switch to the Financial View"
+
+#: ../source/org/miradi/actions/views/ActionViewSchedule.java:35
+msgid "Action|Schedule"
+msgstr "Action|Schedule"
+
+#: ../source/org/miradi/actions/views/ActionViewSchedule.java:40
+msgid "TT|Switch to the Schedule"
+msgstr "TT|Switch to the Schedule"
+
+#: ../source/org/miradi/actions/views/ActionViewThreatMatrix.java:35
+msgid "Action|Threat Ratings"
+msgstr "Action|Threat Ratings"
+
+#: ../source/org/miradi/actions/views/ActionViewThreatMatrix.java:40
+msgid "TT|Switch to the Threat Rating View"
+msgstr "TT|Switch to the Threat Rating View"
+
+#: ../source/org/miradi/actions/views/ActionViewMap.java:35
+msgid "Action|Maps"
+msgstr "Action|Maps"
+
+#: ../source/org/miradi/actions/views/ActionViewMap.java:40
+msgid "TT|Switch to the Map View"
+msgstr "TT|Switch to the Map View"
+
+#: ../source/org/miradi/actions/views/ActionViewSummary.java:35
+msgid "Action|Summary"
+msgstr "Action|Summary"
+
+#: ../source/org/miradi/actions/views/ActionViewSummary.java:40
+msgid "TT|Switch to the Summary View"
+msgstr "TT|Switch to the Summary View"
+
+#: ../source/org/miradi/actions/views/ActionViewWorkPlan.java:35
+msgid "Action|Develop Work Plan"
+msgstr "Action|Develop Work Plan"
+
+#: ../source/org/miradi/actions/views/ActionViewWorkPlan.java:40
+msgid "TT|Develop a short-term work plan"
+msgstr "TT|Develop a short-term work plan"
+
+#: ../source/org/miradi/actions/views/ActionViewReports.java:35
+msgid "Action|Reports"
+msgstr "Action|Reports"
+
+#: ../source/org/miradi/actions/views/ActionViewReports.java:40
+msgid "TT|Switch to the Reports View"
+msgstr "TT|Switch to the Reports View"
+
+#: ../source/org/miradi/actions/views/ActionViewStrategicPlan.java:35
+msgid "Action|Strategic Plan"
+msgstr "Action|Strategic Plan"
+
+#: ../source/org/miradi/actions/views/ActionViewStrategicPlan.java:40
+msgid "TT|Switch to the Strategic Plan View"
+msgstr "TT|Switch to the Strategic Plan View"
+
+#: ../source/org/miradi/actions/views/ActionViewTargetViability.java:35
+msgid "Action|Target Viability"
+msgstr "Action|Target Viability"
+
+#: ../source/org/miradi/actions/views/ActionViewTargetViability.java:40
+msgid "TT|Switch to the Target Viability View"
+msgstr "TT|Switch to the Target Viability View"
+
+#: ../source/org/miradi/actions/views/ActionViewDiagram.java:35
+msgid "Action|Diagram"
+msgstr "Action|Diagram"
+
+#: ../source/org/miradi/actions/views/ActionViewDiagram.java:40
+msgid "TT|Switch to the Conceptual Model Diagram"
+msgstr "TT|Switch to the Conceptual Model Diagram"
+
+#: ../source/org/miradi/actions/views/ActionViewImages.java:35
+msgid "Action|Library"
+msgstr "Action|Library"
+
+#: ../source/org/miradi/actions/views/ActionViewImages.java:40
+msgid "TT|Switch to the Library View"
+msgstr "TT|Switch to the Library View"
+
+#: ../source/org/miradi/actions/views/ActionViewMonitoring.java:35
+msgid "Action|Monitoring Plan"
+msgstr "Action|Monitoring Plan"
+
+#: ../source/org/miradi/actions/views/ActionViewMonitoring.java:40
+msgid "TT|Switch to the Monitoring Plan View"
+msgstr "TT|Switch to the Monitoring Plan View"
+
+#: ../source/org/miradi/actions/ActionPreferences.java:35
+msgid "Action|Preferences"
+msgstr "Action|Preferences"
+
+#: ../source/org/miradi/actions/ActionHideCellRatings.java:34
+msgid "Action|Hide Ratings in Cell"
+msgstr "Action|Hide Ratings in Cell"
+
+#: ../source/org/miradi/actions/ActionDeleteConceptualModel.java:35
+msgid "Action|Delete Conceptual Model Page"
+msgstr "Action|Delete Conceptual Model Page"
+
+#: ../source/org/miradi/actions/ActionTeamCreateMember.java:35
+msgid "Action|Manage|Create Member"
+msgstr "Action|Manage|Create Member"
+
+#: ../source/org/miradi/actions/ActionTeamCreateMember.java:40
+msgid "TT|Add member to the team"
+msgstr "TT|Add member to the team"
+
+#: ../source/org/miradi/actions/ActionHelpAdaptiveManagement.java:34
+msgid "Action|Adaptive Management"
+msgstr "Action|Adaptive Management"
+
+#: ../source/org/miradi/actions/ActionClose.java:35
+msgid "Action|Close Project"
+msgstr "Action|Close Project"
+
+#: ../source/org/miradi/actions/ActionTreeCreateTask.java:40
+msgid "Action|Manage|Create Task"
+msgstr "Action|Manage|Create Task"
+
+#: ../source/org/miradi/actions/ActionTreeCreateTask.java:45
+msgid "TT|Create a Task or Subtask for the selected Item"
+msgstr "TT|Create a Task or Subtask for the selected Item"
+
+#: ../source/org/miradi/actions/ActionCreateStress.java:35
+msgid "Action|Create Stress"
+msgstr "Action|Create Stress"
+
+#: ../source/org/miradi/actions/ActionCreateStress.java:40
+msgid "TT|Create a Stress"
+msgstr "TT|Create a Stress"
+
+#: ../source/org/miradi/actions/ActionEditStrategyRelevancyList.java:34
+#: ../source/org/miradi/actions/ActionEditIndicatorRelevancyList.java:34
+msgid "Action|Choose..."
+msgstr "Action|Choose..."
+
+#: ../source/org/miradi/actions/ActionEditStrategyRelevancyList.java:39
+msgid "TT|Choose which strategies are relevant to this objective"
+msgstr "TT|Choose which strategies are relevant to this objective"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:35
+#: ../source/org/miradi/actions/ActionCreateIndicator.java:35
+msgid "Action|Manage|Create Indicator"
+msgstr "Action|Manage|Create Indicator"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
+msgid "TT|Create a new Indicator"
+msgstr "TT|Create a new Indicator"
+
+#: ../source/org/miradi/actions/ActionDeleteIndicatorProgressReport.java:35
+#: ../source/org/miradi/actions/ActionDeleteActivityProgressReport.java:35
+#: ../source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:35
+msgid "Action|Manage|Delete Progress Report"
+msgstr "Action|Manage|Delete Progress Report"
+
+#: ../source/org/miradi/actions/ActionDeleteIndicatorProgressReport.java:40
+#: ../source/org/miradi/actions/ActionDeleteActivityProgressReport.java:40
+#: ../source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
+msgid "TT|Delete Progress Report"
+msgstr "TT|Delete Progress Report"
+
+#: ../source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:35
+msgid "Action|Remove|Remove Factor(s) from Group Box"
+msgstr "Action|Remove|Remove Factor(s) from Group Box"
+
+#: ../source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:40
+msgid "TT|Remove Factor(s) from Group Box"
+msgstr "TT|Remove Factor(s) from Group Box"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
+msgid "Action|Manage|Delete Measurement"
+msgstr "Action|Manage|Delete Measurement"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:40
+msgid "TT|Delete a Measurement"
+msgstr "TT|Delete a Measurement"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:35
+msgid "Action|Manage|Create Measurement"
+msgstr "Action|Manage|Create Measurement"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttributeMeasurement.java:40
+msgid "TT|Create a new Measurement"
+msgstr "TT|Create a new Measurement"
+
+#: ../source/org/miradi/actions/ActionExportTable.java:34
+msgid "Action|Tab-Delimited Table"
+msgstr "Action|Tab-Delimited Table"
+
+#: ../source/org/miradi/actions/ActionExportTable.java:39
+msgid "TT|Export this view's table to a tab delimited file"
+msgstr "TT|Export this view's table to a tab delimited file"
+
+#: ../source/org/miradi/actions/ActionPrint.java:34
+msgid "Action|Print"
+msgstr "Action|Print"
+
+#: ../source/org/miradi/actions/ActionPrint.java:39
+msgid "TT|Print the current view to a printer"
+msgstr "TT|Print the current view to a printer"
+
+#: ../source/org/miradi/actions/ActionTreeNodeDown.java:35
+msgid "Action|Tree|Move Item Down"
+msgstr "Action|Tree|Move Item Down"
+
+#: ../source/org/miradi/actions/ActionTreeNodeDown.java:40
+msgid "TT|Move the selected item down"
+msgstr "TT|Move the selected item down"
+
+#: ../source/org/miradi/actions/ActionInsertIntermediateResult.java:35
+msgid "Action|Insert|Insert Intermediate Result"
+msgstr "Action|Insert|Insert Intermediate Result"
+
+#: ../source/org/miradi/actions/ActionInsertIntermediateResult.java:40
+msgid "TT|Insert a Intermediate Result"
+msgstr "TT|Insert a Intermediate Result"
+
+#: ../source/org/miradi/actions/ActionWizardNext.java:36
+msgid "Action|Next >"
+msgstr "Action|Next >"
+
+#: ../source/org/miradi/actions/ActionWizardNext.java:41
+msgid "TT|Go to the Next wizard step"
+msgstr "TT|Go to the Next wizard step"
+
+#: ../source/org/miradi/actions/ActionImportAccountingCodes.java:34
+msgid "Action|Import Accounting Codes"
+msgstr "Action|Import Accounting Codes"
+
+#: ../source/org/miradi/actions/ActionImportAccountingCodes.java:39
+msgid "TT|Import accounting codes"
+msgstr "TT|Import accounting codes"
+
+#: ../source/org/miradi/actions/ActionDeleteMethod.java:35
+msgid "Action|Manage|Delete Method"
+msgstr "Action|Manage|Delete Method"
+
+#: ../source/org/miradi/actions/ActionDeleteMethod.java:40
+msgid "TT|Delete the selected Method"
+msgstr "TT|Delete the selected Method"
+
+#: ../source/org/miradi/actions/ActionCopyProjectTo.java:34
+msgid "Action|Save Copy As..."
+msgstr "Action|Save Copy As..."
+
+#: ../source/org/miradi/actions/ActionCopyProjectTo.java:39
+msgid "TT|Create a copy of this project under a different name"
+msgstr "TT|Create a copy of this project under a different name"
+
+#: ../source/org/miradi/actions/ActionRenameConceptualModel.java:34
+msgid "Action|Rename Conceptual Model Page"
+msgstr "Action|Rename Conceptual Model Page"
+
+#: ../source/org/miradi/actions/ActionRenameConceptualModel.java:39
+msgid "TT|Rename this Conceptual Model Page"
+msgstr "TT|Rename this Conceptual Model Page"
+
+#: ../source/org/miradi/actions/ActionCreateGoal.java:35
+msgid "Action|Manage|Create Goal"
+msgstr "Action|Manage|Create Goal"
+
+#: ../source/org/miradi/actions/ActionCreateGoal.java:40
+msgid "TT|Create a Goal"
+msgstr "TT|Create a Goal"
+
+#: ../source/org/miradi/actions/ActionInsertDirectThreat.java:37
+msgid "Action|Insert|Insert Direct Threat"
+msgstr "Action|Insert|Insert Direct Threat"
+
+#: ../source/org/miradi/actions/ActionInsertDirectThreat.java:42
+msgid "TT|Insert a Direct Threat"
+msgstr "TT|Insert a Direct Threat"
+
+#: ../source/org/miradi/actions/ActionSaveImageJPEG.java:34
+msgid "Action|JPEG Image"
+msgstr "Action|JPEG Image"
+
+#: ../source/org/miradi/actions/ActionSaveImageJPEG.java:39
+msgid "TT|Save the diagram or upper table area as a JPEG Image"
+msgstr "TT|Save the diagram or upper table area as a JPEG Image"
+
+#: ../source/org/miradi/actions/ActionInsertDraftStrategy.java:35
+msgid "Action|Insert|Insert Draft Strategy"
+msgstr "Action|Insert|Insert Draft Strategy"
+
+#: ../source/org/miradi/actions/ActionInsertDraftStrategy.java:40
+msgid "TT|Insert a draft Strategy"
+msgstr "TT|Insert a draft Strategy"
+
+#: ../source/org/miradi/actions/ActionCreateResource.java:35
+msgid "Action|Manage|Create Resource"
+msgstr "Action|Manage|Create Resource"
+
+#: ../source/org/miradi/actions/ActionCreateResource.java:40
+msgid "TT|Create a Resource (person, team, etc)"
+msgstr "TT|Create a Resource (person, team, etc)"
+
+#: ../source/org/miradi/actions/ActionEditStrategyProgressReports.java:34
+#: ../source/org/miradi/actions/ActionEditActivityProgressReports.java:34
+#: ../source/org/miradi/actions/ActionEditIndicatorProgressReports.java:34
+msgid "Action|Edit Progress Reports..."
+msgstr "Action|Edit Progress Reports..."
+
+#: ../source/org/miradi/actions/ActionEditStrategyProgressReports.java:39
+msgid "TT|Edit the list of progress reports for this strategy"
+msgstr "TT|Edit the list of progress reports for this strategy"
+
+#: ../source/org/miradi/actions/ActionNudgeLeft.java:34
+msgid "Action|Nudge Item Left"
+msgstr "Action|Nudge Item Left"
+
+#: ../source/org/miradi/actions/ActionHowToSave.java:34
+msgid "Action|How To Save"
+msgstr "Action|How To Save"
+
+#: ../source/org/miradi/actions/ActionHowToSave.java:39
+msgid "TT|How to save files in Miradi"
+msgstr "TT|How to save files in Miradi"
+
+#: ../source/org/miradi/actions/ActionSelectChain.java:34
+msgid "Action|Select Factor Chain"
+msgstr "Action|Select Factor Chain"
+
+#: ../source/org/miradi/actions/ActionSelectChain.java:39
+msgid "TT|Select the entire chain related to this Direct Threat"
+msgstr "TT|Select the entire chain related to this Direct Threat"
+
+#: ../source/org/miradi/actions/ActionHelpButtonMoreInfo.java:34
+msgid "Action|More Info"
+msgstr "Action|More Info"
+
+#: ../source/org/miradi/actions/ActionToggleSlideShowPanel.java:35
+msgid "Action|Edit Slide Show"
+msgstr "Action|Edit Slide Show"
+
+#: ../source/org/miradi/actions/ActionToggleSlideShowPanel.java:40
+msgid "TT|Hides or shows the Slide Show editor"
+msgstr "TT|Hides or shows the Slide Show editor"
+
+#: ../source/org/miradi/actions/ActionCreateThreatReductionResult.java:37
+#: ../source/org/miradi/actions/ActionInsertThreatReductionResult.java:35
+msgid "Action|Insert|Insert Threat Reduction Result"
+msgstr "Action|Insert|Insert Threat Reduction Result"
+
+#: ../source/org/miradi/actions/ActionCreateThreatReductionResult.java:42
+#: ../source/org/miradi/actions/ActionInsertThreatReductionResult.java:40
+msgid "TT|Insert a Threat Reduction Result"
+msgstr "TT|Insert a Threat Reduction Result"
+
+#: ../source/org/miradi/actions/ActionDeleteGroupBox.java:35
+msgid "Action|Delete Group Box(s)"
+msgstr "Action|Delete Group Box(s)"
+
+#: ../source/org/miradi/actions/ActionDeleteGroupBox.java:40
+msgid "TT|Delete Group Box(s) but not children"
+msgstr "TT|Delete Group Box(s) but not children"
+
+#: ../source/org/miradi/actions/ActionExportProjectXml.java:34
+msgid "Action|Project XML File"
+msgstr "Action|Project XML File"
+
+#: ../source/org/miradi/actions/ActionExportProjectXml.java:39
+msgid "TT|Project XML File"
+msgstr "TT|Project XML File"
+
+#: ../source/org/miradi/actions/ActionMoveSlideUp.java:34
+msgid "Action|Move Up"
+msgstr "Action|Move Up"
+
+#: ../source/org/miradi/actions/ActionMoveSlideUp.java:39
+msgid "TT|Move Up"
+msgstr "TT|Move Up"
+
+#: ../source/org/miradi/actions/ActionDeleteFundingSource.java:35
+msgid "Action|Manage|Delete Funding Source"
+msgstr "Action|Manage|Delete Funding Source"
+
+#: ../source/org/miradi/actions/ActionDeleteFundingSource.java:40
+msgid "TT|Delete the selected Funding Source"
+msgstr "TT|Delete the selected Funding Source"
+
+#: ../source/org/miradi/actions/ActionNudgeRight.java:34
+msgid "Action|Nudge Item Right"
+msgstr "Action|Nudge Item Right"
+
+#: ../source/org/miradi/actions/ActionHelpCredits.java:34
+msgid "Action|Credits"
+msgstr "Action|Credits"
+
+#: ../source/org/miradi/actions/ActionEditActivityProgressReports.java:39
+msgid "TT|Edit the list of progress reports for this activity"
+msgstr "TT|Edit the list of progress reports for this activity"
+
+#: ../source/org/miradi/actions/ActionExit.java:34
+msgid "Action|Exit"
+msgstr "Action|Exit"
+
+#: ../source/org/miradi/actions/ActionAboutCMP.java:34
+msgid "Action|About the CMP"
+msgstr "Action|About the CMP"
+
+#: ../source/org/miradi/actions/ActionDeleteResource.java:35
+msgid "Action|Manage|Delete Resource"
+msgstr "Action|Manage|Delete Resource"
+
+#: ../source/org/miradi/actions/ActionDeleteResource.java:40
+msgid "TT|Delete the selected Resource (person, team, etc)"
+msgstr "TT|Delete the selected Resource (person, team, etc)"
+
+#: ../source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
+msgid "Action|Delete Custom"
+msgstr "Action|Delete Custom"
+
+#: ../source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:40
+msgid "TT|Delete the selected Custom Planning View"
+msgstr "TT|Delete the selected Custom Planning View"
+
+#: ../source/org/miradi/actions/ActionZoomOut.java:34
+msgid "Action|Zoom Out"
+msgstr "Action|Zoom Out"
+
+#: ../source/org/miradi/actions/ActionZoomOut.java:39
+msgid "TT|Zoom Out"
+msgstr "TT|Zoom Out"
+
+#: ../source/org/miradi/actions/MainWindowAction.java:75
+msgid "An internal error prevented this operation"
+msgstr "An internal error prevented this operation"
+
+#: ../source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
+msgid "Action|Create Custom"
+msgstr "Action|Create Custom"
+
+#: ../source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
+msgid "TT|Create a new Custom Planning View"
+msgstr "TT|Create a new Custom Planning View"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:35
+#: ../source/org/miradi/actions/ActionDeleteIndicator.java:35
+msgid "Action|Manage|Delete Indicator"
+msgstr "Action|Manage|Delete Indicator"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttributeIndicator.java:40
+msgid "TT|Delete Indicator"
+msgstr "TT|Delete Indicator"
+
+#: ../source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
+msgid "Action|Workshop"
+msgstr "Action|Workshop"
+
+#: ../source/org/miradi/actions/ActionDeleteSlide.java:34
+msgid "Action|Delete Slide"
+msgstr "Action|Delete Slide"
+
+#: ../source/org/miradi/actions/ActionDeleteSlide.java:39
+msgid "TT|Delete slide"
+msgstr "TT|Delete slide"
+
+#: ../source/org/miradi/actions/ActionDeleteOrganization.java:35
+msgid "Action|Delete Organization"
+msgstr "Action|Delete Organization"
+
+#: ../source/org/miradi/actions/ActionDeleteOrganization.java:40
+msgid "TT|Delete Organization"
+msgstr "TT|Delete Organization"
+
+#: ../source/org/miradi/actions/ActionCreateOrShowResultsChain.java:35
+#: ../source/org/miradi/actions/ActionCreateOrShowResultsChain.java:40
+msgid "Action|Show/Create Results Chain"
+msgstr "Action|Show/Create Results Chain"
+
+#: ../source/org/miradi/actions/ActionZoomToFit.java:34
+msgid "Action|Zoom To Fit"
+msgstr "Action|Zoom To Fit"
+
+#: ../source/org/miradi/actions/ActionZoomToFit.java:39
+msgid "TT|Zoom To Fit"
+msgstr "TT|Zoom To Fit"
+
+#: ../source/org/miradi/actions/ActionDeleteObjective.java:35
+msgid "Action|Manage|Delete Objective"
+msgstr "Action|Manage|Delete Objective"
+
+#: ../source/org/miradi/actions/ActionDeleteObjective.java:40
+msgid "TT|Delete the selected Objective"
+msgstr "TT|Delete the selected Objective"
+
+#: ../source/org/miradi/actions/ActionCreateObjective.java:35
+msgid "Action|Manage|Create Objective"
+msgstr "Action|Manage|Create Objective"
+
+#: ../source/org/miradi/actions/ActionCreateObjective.java:40
+msgid "TT|Create an Objective"
+msgstr "TT|Create an Objective"
+
+#: ../source/org/miradi/actions/ActionConfigureLayers.java:34
+msgid "Action|View|Layer..."
+msgstr "Action|View|Layer..."
+
+#: ../source/org/miradi/actions/ActionConfigureLayers.java:39
+msgid "TT|Hide or show portions of the diagram"
+msgstr "TT|Hide or show portions of the diagram"
+
+#: ../source/org/miradi/actions/ActionResourceListRemove.java:34
+msgid "Action|Manage|Remove Resource"
+msgstr "Action|Manage|Remove Resource"
+
+#: ../source/org/miradi/actions/ActionResourceListRemove.java:39
+#: ../source/org/miradi/actions/ActionRemoveAssignment.java:39
+msgid "TT|Remove resource from list"
+msgstr "TT|Remove resource from list"
+
+#: ../source/org/miradi/actions/ActionDelete.java:35
+msgid "Action|Delete"
+msgstr "Action|Delete"
+
+#: ../source/org/miradi/actions/ActionDelete.java:40
+msgid "TT|Delete the selection"
+msgstr "TT|Delete the selection"
+
+#: ../source/org/miradi/actions/ActionDeleteStress.java:35
+msgid "Action|Delete Stress"
+msgstr "Action|Delete Stress"
+
+#: ../source/org/miradi/actions/ActionDeleteStress.java:40
+msgid "TT|Delete the selected Stress"
+msgstr "TT|Delete the selected Stress"
+
+#: ../source/org/miradi/actions/ActionViewPossibleResources.java:34
+msgid "Action|Manage|Add Resources..."
+msgstr "Action|Manage|Add Resources..."
+
+#: ../source/org/miradi/actions/ActionViewPossibleResources.java:39
+msgid "TT|Add resources to activity"
+msgstr "TT|Add resources to activity"
+
+#: ../source/org/miradi/actions/ActionAboutBenetech.java:35
+msgid "Action|About Benetech"
+msgstr "Action|About Benetech"
+
+#: ../source/org/miradi/actions/ActionShowCellRatings.java:34
+msgid "Action|Show Ratings in Cell"
+msgstr "Action|Show Ratings in Cell"
+
+#: ../source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:35
+msgid "Action|Tree|Delete Item"
+msgstr "Action|Tree|Delete Item"
+
+#: ../source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:40
+#: ../source/org/miradi/actions/ActionDeleteWorkPlanNode.java:39
+msgid "TT|Delete the selected item"
+msgstr "TT|Delete the selected item"
+
+#: ../source/org/miradi/actions/ActionHelpButtonExamples.java:34
+msgid "Action|Examples"
+msgstr "Action|Examples"
+
+#: ../source/org/miradi/actions/ActionExportConProXml.java:34
+msgid "Action|Export ConPro XML File"
+msgstr "Action|Export ConPro XML File"
+
+#: ../source/org/miradi/actions/ActionExportConProXml.java:39
+msgid "TT|Export ConPro XML File"
+msgstr "TT|Export ConPro XML File"
+
+#: ../source/org/miradi/actions/ActionSlideShowViewer.java:34
+msgid "Action|Show Slide Show"
+msgstr "Action|Show Slide Show"
+
+#: ../source/org/miradi/actions/ActionDeleteResultsChain.java:35
+msgid "Action|Delete Results Chain"
+msgstr "Action|Delete Results Chain"
+
+#: ../source/org/miradi/actions/ActionShowFullModelMode.java:39
+msgid "Action|Show Full Diagram"
+msgstr "Action|Show Full Diagram"
+
+#: ../source/org/miradi/actions/ActionShowFullModelMode.java:44
+msgid "TT|Show the full conceptual model page"
+msgstr "TT|Show the full conceptual model page"
+
+#: ../source/org/miradi/actions/ActionEditEstimatedResource.java:34
+msgid "Action|Edit Estimated Resources..."
+msgstr "Action|Edit Estimated Resources..."
+
+#: ../source/org/miradi/actions/ActionEditEstimatedResource.java:39
+msgid "TT|Edit the list of estimated resources."
+msgstr "TT|Edit the list of estimated resources."
+
+#: ../source/org/miradi/actions/ActionCloneIndicator.java:35
+msgid "Action|Manage|Clone Indicator..."
+msgstr "Action|Manage|Clone Indicator..."
+
+#: ../source/org/miradi/actions/ActionCloneIndicator.java:40
+msgid "TT|Clone a Indicator"
+msgstr "TT|Clone a Indicator"
+
+#: ../source/org/miradi/actions/ActionContextualHelp.java:37
+msgid "Action|ContextSensitive|Help"
+msgstr "Action|ContextSensitive|Help"
+
+#: ../source/org/miradi/actions/ActionPasteWithoutLinks.java:42
+msgid "Action|Paste Without Links"
+msgstr "Action|Paste Without Links"
+
+#: ../source/org/miradi/actions/ActionPasteWithoutLinks.java:47
+msgid "TT|Paste the clipboard without links"
+msgstr "TT|Paste the clipboard without links"
+
+#: ../source/org/miradi/actions/ActionShowSelectedChainMode.java:39
+msgid "Action|Brainstorm Mode"
+msgstr "Action|Brainstorm Mode"
+
+#: ../source/org/miradi/actions/ActionShowSelectedChainMode.java:44
+msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
+msgstr "TT|Isolate the selected factor chain in Brainstorm Mode"
+
+#: ../source/org/miradi/actions/ActionExportBudgetTableTree.java:34
+msgid "Action|Export finance tree"
+msgstr "Action|Export finance tree"
+
+#: ../source/org/miradi/actions/ActionExportBudgetTableTree.java:39
+msgid "TT|Export finance tree"
+msgstr "TT|Export finance tree"
+
+#: ../source/org/miradi/actions/ActionNudgeUp.java:34
+msgid "Action|Nudge Item Up"
+msgstr "Action|Nudge Item Up"
+
+#: ../source/org/miradi/actions/ActionSelectAll.java:34
+msgid "Action|Select All"
+msgstr "Action|Select All"
+
+#: ../source/org/miradi/actions/ActionCreateAccountingCode.java:35
+msgid "Action|Manage|Create Accounting Code"
+msgstr "Action|Manage|Create Accounting Code"
+
+#: ../source/org/miradi/actions/ActionCreateAccountingCode.java:40
+msgid "TT|Create an Accounting Code"
+msgstr "TT|Create an Accounting Code"
+
+#: ../source/org/miradi/actions/ActionZoomIn.java:34
+msgid "Action|Zoom In"
+msgstr "Action|Zoom In"
+
+#: ../source/org/miradi/actions/ActionZoomIn.java:39
+msgid "TT|Zoom In"
+msgstr "TT|Zoom In"
+
+#: ../source/org/miradi/actions/ActionCreateStressFromKea.java:35
+msgid "Action|Create Stress from KEA"
+msgstr "Action|Create Stress from KEA"
+
+#: ../source/org/miradi/actions/ActionCreateStressFromKea.java:40
+msgid "TT|Create a Stress from a Key Ecological Attribute"
+msgstr "TT|Create a Stress from a Key Ecological Attribute"
+
+#: ../source/org/miradi/actions/ActionShareActivity.java:35
+msgid "Action|Share Activity"
+msgstr "Action|Share Activity"
+
+#: ../source/org/miradi/actions/ActionShareActivity.java:40
+msgid "TT|Share an existing Activity into this Strategy"
+msgstr "TT|Share an existing Activity into this Strategy"
+
+#: ../source/org/miradi/actions/ActionShowConceptualModel.java:35
+#: ../source/org/miradi/actions/ActionShowConceptualModel.java:40
+msgid "Action|Show Conceptual Model"
+msgstr "Action|Show Conceptual Model"
+
+#: ../source/org/miradi/actions/ActionNewProject.java:34
+msgid "Action|New Project"
+msgstr "Action|New Project"
+
+#: ../source/org/miradi/actions/ActionNewProject.java:39
+msgid "TT|Create a new project"
+msgstr "TT|Create a new project"
+
+#: ../source/org/miradi/actions/ActionDiagramProperties.java:34
+msgid "Action|Diagram Properties..."
+msgstr "Action|Diagram Properties..."
+
+#: ../source/org/miradi/actions/ActionDiagramProperties.java:39
+msgid "TT|Show the diagram properties"
+msgstr "TT|Show the diagram properties"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:35
+msgid "Action|Manage|Create KEA"
+msgstr "Action|Manage|Create KEA"
+
+#: ../source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
+msgid "TT|Create a Key Ecological Attribute"
+msgstr "TT|Create a Key Ecological Attribute"
+
+#: ../source/org/miradi/actions/ActionManageStresses.java:35
+msgid "Action|Manage Stresses..."
+msgstr "Action|Manage Stresses..."
+
+#: ../source/org/miradi/actions/ActionManageStresses.java:40
+msgid "TT|Create, Delete, or Edit Stresses"
+msgstr "TT|Create, Delete, or Edit Stresses"
+
+#: ../source/org/miradi/actions/ActionEditIndicatorProgressReports.java:39
+msgid "TT|Edit the list of progress reports for this indicator"
+msgstr "TT|Edit the list of progress reports for this indicator"
+
+#: ../source/org/miradi/actions/ActionInsertGroupBox.java:35
+msgid "Action|Insert|Create Group Box"
+msgstr "Action|Insert|Create Group Box"
+
+#: ../source/org/miradi/actions/ActionInsertGroupBox.java:40
+msgid "TT|Create a Group Box"
+msgstr "TT|Create a Group Box"
+
+#: ../source/org/miradi/actions/ActionResourceListModify.java:34
+msgid "Action|Manage|Modify Resource"
+msgstr "Action|Manage|Modify Resource"
+
+#: ../source/org/miradi/actions/ActionResourceListModify.java:39
+msgid "TT|Modify resource from list"
+msgstr "TT|Modify resource from list"
+
+#: ../source/org/miradi/actions/ActionHelpCMPStandards.java:34
+msgid "Action|CMP Open Standards"
+msgstr "Action|CMP Open Standards"
+
+#: ../source/org/miradi/actions/ActionDeleteTeamMember.java:35
+msgid "Action|Manage|Delete Member"
+msgstr "Action|Manage|Delete Member"
+
+#: ../source/org/miradi/actions/ActionDeleteTeamMember.java:40
+msgid "TT|Remove a member from the team"
+msgstr "TT|Remove a member from the team"
+
+#: ../source/org/miradi/actions/ActionCloneGoal.java:35
+msgid "Action|Manage|Clone Goal..."
+msgstr "Action|Manage|Clone Goal..."
+
+#: ../source/org/miradi/actions/ActionCloneGoal.java:40
+msgid "TT|Clone a Goal"
+msgstr "TT|Clone a Goal"
+
+#: ../source/org/miradi/actions/ActionHelpAgileSoftware.java:34
+msgid "Action|Agile Software"
+msgstr "Action|Agile Software"
+
+#: ../source/org/miradi/actions/ActionUndo.java:34
+msgid "Action|Undo"
+msgstr "Action|Undo"
+
+#: ../source/org/miradi/actions/ActionUndo.java:39
+msgid "TT|Undo last action"
+msgstr "TT|Undo last action"
+
+#: ../source/org/miradi/actions/ActionEditMethods.java:34
+msgid "Action|Edit Methods..."
+msgstr "Action|Edit Methods..."
+
+#: ../source/org/miradi/actions/ActionEditMethods.java:39
+msgid "TT|Edit the methods for this indicator"
+msgstr "TT|Edit the methods for this indicator"
+
+#: ../source/org/miradi/actions/ActionAbout.java:34
+msgid "Action|About Miradi"
+msgstr "Action|About Miradi"
+
+#: ../source/org/miradi/actions/ActionImportZippedProjectFile.java:34
+#: ../source/org/miradi/actions/ActionExportZippedProjectFile.java:34
+msgid "Action|Miradi Project Zipfile"
+msgstr "Action|Miradi Project Zipfile"
+
+#: ../source/org/miradi/actions/ActionImportZippedProjectFile.java:39
+msgid "TT|Import a .mpz file that was exported from Miradi"
+msgstr "TT|Import a .mpz file that was exported from Miradi"
+
+#: ../source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
+msgid "Action|Rename Custom"
+msgstr "Action|Rename Custom"
+
+#: ../source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:39
+msgid "TT|Rename the selected Custom Planning View"
+msgstr "TT|Rename the selected Custom Planning View"
+
+#: ../source/org/miradi/actions/ActionDeleteSubTarget.java:35
+msgid "Action|Delete Nested Target"
+msgstr "Action|Delete Nested Target"
+
+#: ../source/org/miradi/actions/ActionDeleteSubTarget.java:40
+msgid "TT|Delete Nested Target"
+msgstr "TT|Delete Nested Target"
+
+#: ../source/org/miradi/actions/ActionCreateSubTarget.java:35
+msgid "Action|Create Nested Target"
+msgstr "Action|Create Nested Target"
+
+#: ../source/org/miradi/actions/ActionCreateSubTarget.java:40
+msgid "TT|Create a Nested Target"
+msgstr "TT|Create a Nested Target"
+
+#: ../source/org/miradi/actions/ActionRemoveAssignment.java:34
+msgid "Action|Remove Resource"
+msgstr "Action|Remove Resource"
+
+#: ../source/org/miradi/actions/ActionCreateOrganization.java:35
+msgid "Action|Manage|Create Organization"
+msgstr "Action|Manage|Create Organization"
+
+#: ../source/org/miradi/actions/ActionCreateOrganization.java:40
+msgid "TT|Create an Organization"
+msgstr "TT|Create an Organization"
+
+#: ../source/org/miradi/actions/ActionRedo.java:34
+msgid "Action|Redo"
+msgstr "Action|Redo"
+
+#: ../source/org/miradi/actions/ActionRedo.java:39
+msgid "TT|Redo last undone action"
+msgstr "TT|Redo last undone action"
+
+#: ../source/org/miradi/actions/ActionCut.java:34
+msgid "Action|Cut"
+msgstr "Action|Cut"
+
+#: ../source/org/miradi/actions/ActionCut.java:39
+msgid "TT|Cut the selection to the clipboard"
+msgstr "TT|Cut the selection to the clipboard"
+
+#: ../source/org/miradi/actions/ActionRenameResultsChain.java:34
+msgid "Action|Rename Results Chain"
+msgstr "Action|Rename Results Chain"
+
+#: ../source/org/miradi/actions/ActionRenameResultsChain.java:39
+msgid "TT|Rename this Results Chain"
+msgstr "TT|Rename this Results Chain"
+
+#: ../source/org/miradi/actions/ActionAssignResource.java:34
+msgid "Action|Assign Resource"
+msgstr "Action|Assign Resource"
+
+#: ../source/org/miradi/actions/ActionAssignResource.java:39
+msgid "TT|Assign a resource to this task"
+msgstr "TT|Assign a resource to this task"
+
+#: ../source/org/miradi/actions/ActionResourceListAdd.java:34
+msgid "Action|Manage|Add Resource"
+msgstr "Action|Manage|Add Resource"
+
+#: ../source/org/miradi/actions/ActionResourceListAdd.java:39
+msgid "TT|Add"
+msgstr "TT|Add"
+
+#: ../source/org/miradi/actions/ActionImportZippedConproProject.java:34
+msgid "Action|ConPro Project Zipfile"
+msgstr "Action|ConPro Project Zipfile"
+
+#: ../source/org/miradi/actions/ActionImportZippedConproProject.java:39
+msgid "TT|Import a .cpmz file that was exported from ConPro"
+msgstr "TT|Import a .cpmz file that was exported from ConPro"
+
+#: ../source/org/miradi/actions/ActionCreateFundingSource.java:35
+msgid "Action|Manage|Create Funding Source"
+msgstr "Action|Manage|Create Funding Source"
+
+#: ../source/org/miradi/actions/ActionCreateFundingSource.java:40
+msgid "TT|Create a Funding Source"
+msgstr "TT|Create a Funding Source"
+
+#: ../source/org/miradi/actions/ActionCreateConceptualModel.java:35
+msgid "Action|Create Conceptual Model Page"
+msgstr "Action|Create Conceptual Model Page"
+
+#: ../source/org/miradi/actions/ActionReportsDemo.java:34
+msgid "Action|Reports - demo"
+msgstr "Action|Reports - demo"
+
+#: ../source/org/miradi/actions/ActionShareMethod.java:35
+msgid "Action|Share Method"
+msgstr "Action|Share Method"
+
+#: ../source/org/miradi/actions/ActionShareMethod.java:40
+msgid "TT|Share an existing Method into this Indicator"
+msgstr "TT|Share an existing Method into this Indicator"
+
+#: ../source/org/miradi/actions/ActionCreateMethod.java:35
+#: ../source/org/miradi/actions/ActionTreeCreateMethod.java:40
+msgid "Action|Manage|Create Method"
+msgstr "Action|Manage|Create Method"
+
+#: ../source/org/miradi/actions/ActionCreateMethod.java:40
+msgid "TT|Create a new Method"
+msgstr "TT|Create a new Method"
+
+#: ../source/org/miradi/actions/ActionCloneStress.java:35
+msgid "Action|Manage|Clone Stress..."
+msgstr "Action|Manage|Clone Stress..."
+
+#: ../source/org/miradi/actions/ActionCloneStress.java:40
+msgid "TT|Clone a Stress"
+msgstr "TT|Clone a Stress"
+
+#: ../source/org/miradi/actions/ActionDeleteGoal.java:35
+msgid "Action|Manage|Delete Goal"
+msgstr "Action|Manage|Delete Goal"
+
+#: ../source/org/miradi/actions/ActionDeleteGoal.java:40
+msgid "TT|Delete the selected Goal"
+msgstr "TT|Delete the selected Goal"
+
+#: ../source/org/miradi/actions/ActionShowResultsChain.java:36
+#: ../source/org/miradi/actions/ActionShowResultsChain.java:41
+msgid "Action|Show Results Chain"
+msgstr "Action|Show Results Chain"
+
+#: ../source/org/miradi/actions/ActionCopy.java:34
+msgid "Action|Copy"
+msgstr "Action|Copy"
+
+#: ../source/org/miradi/actions/ActionCopy.java:39
+msgid "TT|Copy the selection to the clipboard"
+msgstr "TT|Copy the selection to the clipboard"
+
+#: ../source/org/miradi/actions/ActionCreateActivity.java:35
+#: ../source/org/miradi/actions/ActionTreeCreateActivity.java:40
+msgid "Action|Manage|Create Activity"
+msgstr "Action|Manage|Create Activity"
+
+#: ../source/org/miradi/actions/ActionCreateActivity.java:40
+msgid "TT|Create a new Activity"
+msgstr "TT|Create a new Activity"
+
+#: ../source/org/miradi/actions/ActionInsertFactorLink.java:35
+msgid "Action|Insert|Insert Link..."
+msgstr "Action|Insert|Insert Link..."
+
+#: ../source/org/miradi/actions/ActionInsertFactorLink.java:40
+msgid "TT|Add a link between two factors"
+msgstr "TT|Add a link between two factors"
+
+#: ../source/org/miradi/actions/ActionHelpButtonSupport.java:34
+msgid "Action|Support"
+msgstr "Action|Support"
+
+#: ../source/org/miradi/actions/ActionCreateSlide.java:34
+msgid "Action|Create Slide"
+msgstr "Action|Create Slide"
+
+#: ../source/org/miradi/actions/ActionCreateSlide.java:39
+msgid "TT|Create slide"
+msgstr "TT|Create slide"
+
+#: ../source/org/miradi/actions/ActionDeleteWorkPlanNode.java:34
+msgid "Action|Delete Item"
+msgstr "Action|Delete Item"
+
+#: ../source/org/miradi/actions/ActionCreateResultsChain.java:35
+msgid "Action|Create Results Chain"
+msgstr "Action|Create Results Chain"
+
+#: ../source/org/miradi/actions/ActionInsertContributingFactor.java:37
+msgid "Action|Insert|Insert Contributing Factor"
+msgstr "Action|Insert|Insert Contributing Factor"
+
+#: ../source/org/miradi/actions/ActionInsertContributingFactor.java:42
+msgid "TT|Insert a Contributing Factor"
+msgstr "TT|Insert a Contributing Factor"
+
+#: ../source/org/miradi/actions/ActionProperties.java:34
+msgid "Action|Open..."
+msgstr "Action|Open..."
+
+#: ../source/org/miradi/actions/ActionDeleteIndicator.java:40
+msgid "TT|Delete the selected Indicator"
+msgstr "TT|Delete the selected Indicator"
+
+#: ../source/org/miradi/actions/ActionCreateIndicator.java:40
+msgid "TT|Create an Indicator"
+msgstr "TT|Create an Indicator"
+
+#: ../source/org/miradi/actions/ActionHelpComingAttractions.java:34
+msgid "Action|Coming Attractions"
+msgstr "Action|Coming Attractions"
+
+#: ../source/org/miradi/actions/ActionDeleteBendPoint.java:34
+msgid "Action|Delete Bend Point"
+msgstr "Action|Delete Bend Point"
+
+#: ../source/org/miradi/actions/ActionDeleteBendPoint.java:39
+msgid "TT|Delete a Bend Point"
+msgstr "TT|Delete a Bend Point"
+
+#: ../source/org/miradi/actions/ActionCreateBendPoint.java:34
+msgid "Action|Create Bend Point"
+msgstr "Action|Create Bend Point"
+
+#: ../source/org/miradi/actions/ActionCreateBendPoint.java:39
+msgid "TT|Create a Bend Point"
+msgstr "TT|Create a Bend Point"
+
+#: ../source/org/miradi/actions/ActionSaveImagePng.java:34
+msgid "Action|PNG Image"
+msgstr "Action|PNG Image"
+
+#: ../source/org/miradi/actions/ActionSaveImagePng.java:39
+msgid "TT|Save the diagram or upper table area as a PNG Image"
+msgstr "TT|Save the diagram or upper table area as a PNG Image"
+
+#: ../source/org/miradi/actions/ActionDeleteAccountingCode.java:35
+msgid "Action|Manage|Delete Accounting Code"
+msgstr "Action|Manage|Delete Accounting Code"
+
+#: ../source/org/miradi/actions/ActionDeleteAccountingCode.java:40
+msgid "TT|Delete the selected Accounting Code"
+msgstr "TT|Delete the selected Accounting Code"
+
+#: ../source/org/miradi/actions/ActionTreeNodeUp.java:35
+msgid "Action|Tree|Move Item Up"
+msgstr "Action|Tree|Move Item Up"
+
+#: ../source/org/miradi/actions/ActionTreeNodeUp.java:40
+msgid "TT|Move the selected item up"
+msgstr "TT|Move the selected item up"
+
+#: ../source/org/miradi/actions/ActionInsertTarget.java:37
+msgid "Action|Insert|Insert Target"
+msgstr "Action|Insert|Insert Target"
+
+#: ../source/org/miradi/actions/ActionInsertTarget.java:42
+msgid "TT|Insert a Target"
+msgstr "TT|Insert a Target"
+
+#: ../source/org/miradi/actions/ActionPaste.java:42
+msgid "Action|Paste"
+msgstr "Action|Paste"
+
+#: ../source/org/miradi/actions/ActionPaste.java:47
+msgid "TT|Paste the clipboard"
+msgstr "TT|Paste the clipboard"
+
+#: ../source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
+msgid "Action|Insert|Add Factor(s) to Group Box"
+msgstr "Action|Insert|Add Factor(s) to Group Box"
+
+#: ../source/org/miradi/actions/ActionGroupBoxAddFactor.java:40
+msgid "TT|Add Factor(s) to Group Box"
+msgstr "TT|Add Factor(s) to Group Box"
+
+#: ../source/org/miradi/actions/ActionMoveSlideDown.java:34
+msgid "Action|Move Down"
+msgstr "Action|Move Down"
+
+#: ../source/org/miradi/actions/ActionMoveSlideDown.java:39
+msgid "TT|Move Down"
+msgstr "TT|Move Down"
+
+#: ../source/org/miradi/actions/ActionDeleteActivity.java:35
+msgid "Action|Manage|Delete Activity"
+msgstr "Action|Manage|Delete Activity"
+
+#: ../source/org/miradi/actions/ActionDeleteActivity.java:40
+msgid "TT|Delete the selected Activity"
+msgstr "TT|Delete the selected Activity"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:35
+msgid "Action|Manage|Delete KEA"
+msgstr "Action|Manage|Delete KEA"
+
+#: ../source/org/miradi/actions/ActionDeleteKeyEcologicalAttribute.java:40
+msgid "TT|Delete the selected Key Ecological Attribute"
+msgstr "TT|Delete the selected Key Ecological Attribute"
+
+#: ../source/org/miradi/actions/ActionInsertTextBox.java:35
+msgid "Action|Insert|Insert Text Box"
+msgstr "Action|Insert|Insert Text Box"
+
+#: ../source/org/miradi/actions/ActionInsertTextBox.java:40
+msgid "TT|Insert a Text Box"
+msgstr "TT|Insert a Text Box"
+
+#: ../source/org/miradi/actions/ActionConfigureExport.java:34
+msgid "Action|Configure Export"
+msgstr "Action|Configure Export"
+
+#: ../source/org/miradi/actions/ActionExportZippedProjectFile.java:39
+msgid "TT|Miradi Zip project Zipfile"
+msgstr "TT|Miradi Zip project Zipfile"
+
+#: ../source/org/miradi/actions/ActionTreeCreateMethod.java:45
+msgid "TT|Create a Method for the selected Indicator"
+msgstr "TT|Create a Method for the selected Indicator"
+
+#: ../source/org/miradi/actions/ActionInsertStrategy.java:37
+msgid "Action|Insert|Insert Strategy"
+msgstr "Action|Insert|Insert Strategy"
+
+#: ../source/org/miradi/actions/ActionInsertStrategy.java:42
+msgid "TT|Insert a Strategy"
+msgstr "TT|Insert a Strategy"
+
+#: ../source/org/miradi/actions/ActionEditIndicatorRelevancyList.java:39
+msgid "TT|Choose which indicators are relevant to this objective"
+msgstr "TT|Choose which indicators are relevant to this objective"
+
+#: ../source/org/miradi/actions/ActionNudgeDown.java:34
+msgid "Action|Nudge Item Down"
+msgstr "Action|Nudge Item Down"
+
+#: ../source/org/miradi/actions/ActionCloneObjective.java:35
+msgid "Action|Manage|Clone Objective..."
+msgstr "Action|Manage|Clone Objective..."
+
+#: ../source/org/miradi/actions/ActionCloneObjective.java:40
+msgid "TT|Clone a Objective"
+msgstr "TT|Clone a Objective"
+
+#: ../source/org/miradi/actions/ActionDatabasesDemo.java:34
+msgid "Action|Databases - demo"
+msgstr "Action|Databases - demo"
+
+#: ../source/org/miradi/actions/ActionWizardPrevious.java:36
+msgid "Action|< Previous"
+msgstr "Action|< Previous"
+
+#: ../source/org/miradi/actions/ActionWizardPrevious.java:41
+msgid "TT|Go to the Previous wizard step"
+msgstr "TT|Go to the Previous wizard step"
+
+#: ../source/org/miradi/actions/ActionTreeCreateActivity.java:45
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "TT|Create an Activity for the selected Strategy"
+
+#: ../source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
+msgid "Action|Manage|Create Progress Percent"
+msgstr "Action|Manage|Create Progress Percent"
+
+#: ../source/org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
+msgid "TT|Create a new Progress Percent"
+msgstr "TT|Create a new Progress Percent"
+
+#: ../source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
+msgid "Action|Manage|Delete Progress Percent"
+msgstr "Action|Manage|Delete Progress Percent"
+
+#: ../source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
+msgid "TT|Delete Progress Percent"
+msgstr "TT|Delete Progress Percent"
+
+#: ../source/org/miradi/actions/ActionEditProgressPercent.java:34
+msgid "Action|Edit Progress Percents..."
+msgstr "Action|Edit Progress Percents..."
+
+#: ../source/org/miradi/actions/ActionEditProgressPercent.java:39
+msgid "TT|Edit the list of progress percents for this objective."
+msgstr "TT|Edit the list of progress percents for this objective."
+
+#: ../source/org/miradi/actions/ActionPasteFactorContent.java:42
+msgid "Action|Paste Content"
+msgstr "Action|Paste Content"
+
+#: ../source/org/miradi/actions/ActionPasteFactorContent.java:47
+msgid "TT|Paste the Single Factor's content from the clipboard"
+msgstr "TT|Paste the Single Factor's content from the clipboard"
+
+#: ../source/org/miradi/utils/SVGFileFilter.java:44
+msgid "FileFilter|SVG (*.svg)"
+msgstr "FileFilter|SVG (*.svg)"
+
+#: ../source/org/miradi/utils/XMLFileFilter.java:40
+msgid "FileFilter|XML (*.xml)"
+msgstr "FileFilter|XML (*.xml)"
+
+#: ../source/org/miradi/utils/PNGFileFilter.java:33
+msgid "FileFilter|PNG (*.png)"
+msgstr "FileFilter|PNG (*.png)"
+
+#: ../source/org/miradi/utils/HyperlinkLabel.java:75
+msgid "Hyperlink Label"
+msgstr "Hyperlink Label"
+
+#: ../source/org/miradi/utils/TreeExportFileFilter.java:39
+msgid "FileFilter|MTE (*.mte)"
+msgstr "FileFilter|MTE (*.mte)"
+
+#: ../source/org/miradi/utils/XLSFileFilter.java:40
+msgid "FileFilter|XLS (*.xls)"
+msgstr "FileFilter|XLS (*.xls)"
+
+#: ../source/org/miradi/utils/TabDelimitedFileFilter.java:40
+msgid "FileFilter|Tab Delimited (*.txt)"
+msgstr "FileFilter|Tab Delimited (*.txt)"
+
+#: ../source/org/miradi/utils/ZIPFileFilter.java:40
+msgid "FileFilter|ZIP (*.zip)"
+msgstr "FileFilter|ZIP (*.zip)"
+
+#: ../source/org/miradi/utils/ConstantButtonNames.java:29
+msgid "Create"
+msgstr "Create"
+
+#: ../source/org/miradi/utils/JasperReportFileFilter.java:41
+msgid "FileFilter|JASPER (*.jasper)"
+msgstr "FileFilter|JASPER (*.jasper)"
+
+#: ../source/org/miradi/utils/JPEGFileFilter.java:44
+msgid "FileFilter|JPEG (*.jpg)"
+msgstr "FileFilter|JPEG (*.jpg)"
+
+#: ../source/org/miradi/utils/EAMFileSaveChooser.java:77
+msgid "Title|Save %s File"
+msgstr "Title|Save %s File"
+
+#: ../source/org/miradi/utils/EAMFileSaveChooser.java:82
+msgid "TT|Save %s File"
+msgstr "TT|Save %s File"
+
+#: ../source/org/miradi/utils/EAMFileSaveChooser.java:87
+msgid "Save %s"
+msgstr "Save %s"
+
+#: ../source/org/miradi/utils/MPZFileFilter.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr "FileFilter|Miradi Project Zip (*.mpz)"
+
+#: ../source/org/miradi/utils/HtmlViewPanel.java:76
+msgid "Close"
+msgstr "Close"
+
+#: ../source/org/miradi/utils/HtmlViewPanel.java:82
+msgid "Title|"
+msgstr "Title|"
+
+#: ../source/org/miradi/utils/CpmzFileFilter.java:28
+msgid "FileFilter|Conpro Miradi Zip (*"
+msgstr "FileFilter|Conpro Miradi Zip (*"
+
+#: ../source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
+msgid "Other Orgs"
+msgstr "Other Orgs"
+
+#: ../source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:67
+msgid ""
+"<div class='WizardText'>To <strong>continue work</strong> on an existing "
+"project, or <strong>browse an example</strong>, choose a project below:"
+msgstr ""
+"<div class='WizardText'>To <strong>continue work</strong> on an existing "
+"project, or <strong>browse an example</strong>, choose a project below:"
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:33
+msgid "Export..."
+msgstr "Export..."
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:46
+msgid "Error exporting project: "
+msgstr "Error exporting project: "
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:45
+msgid "Error deleting project: "
+msgstr "Error deleting project: "
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:32
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:165
+msgid "Rename..."
+msgstr "Rename..."
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:45
+msgid "Error renaming project: "
+msgstr "Error renaming project: "
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:72
+msgid "Project List"
+msgstr "Project List"
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+msgid "Last Opened"
+msgstr "Last Opened"
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListCopyToAction.java:32
+msgid "Save Copy As..."
+msgstr "Save Copy As..."
+
+#: ../source/org/miradi/wizard/noproject/projectlist/ProjectListCopyToAction.java:45
+msgid "Error copying project: "
+msgstr "Error copying project: "
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:86
+msgid ""
+"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
+"value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
+"value='Next &gt;'></input></td></tr>"
+msgstr ""
+"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
+"value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
+"value='Next &gt;'></input></td></tr>"
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:145
+msgid "Not implemented yet"
+msgstr "Not implemented yet"
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:151
+#: ../source/org/miradi/wizard/noproject/WelcomeImportStep.java:126
+#: ../source/org/miradi/wizard/noproject/WelcomeCreateStep.java:132
+msgid "Unable to process request: "
+msgstr "Unable to process request: "
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:166
+msgid "Copy to..."
+msgstr "Copy to..."
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:167
+msgid "Export to Miradi Zip..."
+msgstr "Export to Miradi Zip..."
+
+#: ../source/org/miradi/wizard/noproject/NoProjectWizardStep.java:169
+msgid "Delete..."
+msgstr "Delete..."
+
+#: ../source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+msgid ""
+"<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
+"ImportZip' class='definition'>Miradi Project Zip</a> file that was exported "
+"from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</code>button "
+"below to choose the file."
+msgstr ""
+"<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
+"ImportZip' class='definition'>Miradi Project Zip</a> file that was exported "
+"from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</code>button "
+"below to choose the file."
+
+#: ../source/org/miradi/wizard/noproject/WelcomeImportStep.java:78
+msgid ""
+"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
+"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
+"Miradi Project' value='Miradi Project &gt;'></input></td></tr><tr><td></"
+"td><td><input type='submit' name='Import ConPro Project' value='Import "
+"ConPro Project &gt;'></input></td></tr></table></p><br>"
+msgstr ""
+"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
+"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
+"Miradi Project' value='Miradi Project &gt;'></input></td></tr><tr><td></"
+"td><td><input type='submit' name='Import ConPro Project' value='Import "
+"ConPro Project &gt;'></input></td></tr></table></p><br>"
+
+#: ../source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
+msgid "Import ConPro Project"
+msgstr "Import ConPro Project"
+
+#: ../source/org/miradi/wizard/noproject/WelcomeImportStep.java:131
+msgid "Import Miradi Project"
+msgstr "Import Miradi Project"
+
+#: ../source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:86
+msgid ""
+"<div class='WizardText'>To <strong>start a new project</strong> on this "
+"computer, choose:"
+msgstr ""
+"<div class='WizardText'>To <strong>start a new project</strong> on this "
+"computer, choose:"
+
+#: ../source/org/miradi/wizard/noproject/WelcomeCreateStep.java:72
+msgid ""
+"<div class='WizardText'>To <strong>create a new project</strong>, enter the "
+"filename in the input field below, and press the <code "
+"class='toolbarbutton'>&lt;Next&gt;</code> button."
+msgstr ""
+"<div class='WizardText'>To <strong>create a new project</strong>, enter the "
+"filename in the input field below, and press the <code "
+"class='toolbarbutton'>&lt;Next&gt;</code> button."
+
+#: ../source/org/miradi/wizard/noproject/WelcomeCreateStep.java:78
+msgid ""
+"<div class='WizardText'><table><tr><td>New Project Filename: </td><td><input "
+"type='text' name='NewProjectName' value=''></input></td></tr></table>"
+msgstr ""
+"<div class='WizardText'><table><tr><td>New Project Filename: </td><td><input "
+"type='text' name='NewProjectName' value=''></input></td></tr></table>"
+
+#: ../source/org/miradi/wizard/noproject/WelcomeCreateStep.java:84
+msgid ""
+"<div class='WizardText'><p class='hint'>NOTE: Project filenames can contain "
+"letters, numbers, spaces, periods, and dashes.</p>"
+msgstr ""
+"<div class='WizardText'><p class='hint'>NOTE: Project filenames can contain "
+"letters, numbers, spaces, periods, and dashes.</p>"
+
+#: ../source/org/miradi/wizard/noproject/WelcomeCreateStep.java:149
+msgid "Create Failed:"
+msgstr "Create Failed:"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViabilityMethodChoiceStep.java:47
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability3Step.java:47
+msgid "1) Determine key ecological attributes"
+msgstr "1) Determine key ecological attributes"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability4Step.java:47
+msgid "2) Identify indicators"
+msgstr "2) Identify indicators"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability5Step.java:47
+msgid "3a) Develop draft indicator ratings"
+msgstr "3a) Develop draft indicator ratings"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability6Step.java:47
+msgid "3b) Refine indicator ratings"
+msgstr "3b) Refine indicator ratings"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability7Step.java:47
+msgid "4) Record initial measurement"
+msgstr "4) Record initial measurement"
+
+#: ../source/org/miradi/wizard/targetviability/TargetViability8Step.java:47
+msgid "5) Determine desired status"
+msgstr "5) Determine desired status"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:47
+msgid "3) Complete links in the chain "
+msgstr "3) Complete links in the chain "
+
+#: ../source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:47
+msgid "2) Develop draft strategies"
+msgstr "2) Develop draft strategies"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardVisionStep.java:47
+msgid "Refine vision statement"
+msgstr "Refine vision statement"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
+msgid " 2) Connect threat to relevant targets"
+msgstr " 2) Connect threat to relevant targets"
+
+#: ../source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
+msgid "Simple viability"
+msgstr "Simple viability"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
+msgid "4) Review the criteria for a good results chain"
+msgstr "4) Review the criteria for a good results chain"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
+msgid "2) Review and modify targets"
+msgstr "2) Review and modify targets"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
+msgid "2) Construct initial results chain "
+msgstr "2) Construct initial results chain "
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardResultsChainStep.java:47
+msgid "1) Select strategy to focus on "
+msgstr "1) Select strategy to focus on "
+
+#: ../source/org/miradi/wizard/diagram/SelectChainStep.java:47
+msgid "1) Select factor chain"
+msgstr "1) Select factor chain"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:48
+msgid "1) Insert direct threat"
+msgstr "1) Insert direct threat"
+
+#: ../source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:48
+msgid "1) Identify initial list of targets"
+msgstr "1) Identify initial list of targets"
+
+#: ../source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:47
+msgid "1) List accounting codes and funding sources"
+msgstr "1) List accounting codes and funding sources"
+
+#: ../source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
+msgid "2) Add budget detail to workplan "
+msgstr "2) Add budget detail to workplan "
+
+#: ../source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
+#: ../source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:42
+#: ../source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
+#: ../source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
+msgid "Detail activities/methods, tasks, and responsibilities"
+msgstr "Detail activities/methods, tasks, and responsibilities"
+
+#: ../source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:47
+msgid "2) Methods"
+msgstr "2) Methods"
+
+#: ../source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:47
+msgid "4) Assign resources"
+msgstr "4) Assign resources"
+
+#: ../source/org/miradi/wizard/planning/BudgetWizardDemo.java:48
+msgid "3) Reconcile actual expenditures"
+msgstr "3) Reconcile actual expenditures"
+
+#: ../source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:47
+msgid "3) Edit resources"
+msgstr "3) Edit resources"
+
+#: ../source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
+msgid "1) Activities"
+msgstr "1) Activities"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:48
+msgid "5) Check target-threat rating"
+msgstr "5) Check target-threat rating"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:47
+msgid "4) Check target-threat rating"
+msgstr "4) Check target-threat rating"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:52
+msgid "2) Rate the scope of the threat "
+msgstr "2) Rate the scope of the threat "
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:52
+msgid "3) Rate the severity of the threat"
+msgstr "3) Rate the severity of the threat"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:136
+msgid "Please select a threat and target"
+msgstr "Please select a threat and target"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:142
+msgid ""
+"This threat is not currently linked to the selected target.  To create a "
+"link, click in the associated gray box in the threat table"
+msgstr ""
+"This threat is not currently linked to the selected target.  To create a "
+"link, click in the associated gray box in the threat table"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:188
+#: ../source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:47
+msgid "1) Select target and threat to work on"
+msgstr "1) Select target and threat to work on"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
+msgid "4) Rate the irreversibility of the threat"
+msgstr "4) Rate the irreversibility of the threat"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatStressRateStressAndSeverityStep.java:48
+msgid "2) Rate scope and severity of stress"
+msgstr "2) Rate scope and severity of stress"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatStressRateIrreversibilityAndContributionStep.java:48
+msgid "3) Rate contribution and irreversibility of threat"
+msgstr "3) Rate contribution and irreversibility of threat"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
+msgid "Simple Threat Rating"
+msgstr "Simple Threat Rating"
+
+#: ../source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
+msgid "Review threat rating summary"
+msgstr "Review threat rating summary"
+
+#: ../source/org/miradi/wizard/SkeletonWizardStep.java:165
+msgid "Wizard load of control failed:"
+msgstr "Wizard load of control failed:"
+
+#: ../source/org/miradi/wizard/WizardTitlePanel.java:69
+msgid "Intro to View"
+msgstr "Intro to View"
+
+#: ../source/org/miradi/diagram/renderers/FactorRenderer.java:151
+msgid "Obj"
+msgstr "Obj"
+
+#: ../source/org/miradi/diagram/renderers/FactorRenderer.java:153
+msgid "Objs"
+msgstr "Objs"
+
+#: ../source/org/miradi/diagram/renderers/FactorRenderer.java:166
+msgid "Goals"
+msgstr "Goals"
+
+#: ../source/org/miradi/diagram/cells/ProjectScopeBox.java:98
+msgid "Vision"
+msgstr "Vision"
+
+#: ../source/org/miradi/diagram/cells/FactorCell.java:94
+msgid "Indicators:"
+msgstr "Indicators:"
+
+#: ../source/org/miradi/diagram/cells/FactorCell.java:100
+msgid "Goals:"
+msgstr "Goals:"
+
+#: ../source/org/miradi/diagram/cells/FactorCell.java:106
+msgid "Objectives:"
+msgstr "Objectives:"
+
+#: ../source/org/miradi/diagram/cells/FactorCell.java:112
+msgid "Details:"
+msgstr "Details:"
+
+#: ../source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:35
+msgid "Type|Direct Threat"
+msgstr "Type|Direct Threat"
+
+#: ../source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:36
+msgid "Type|Contributing Factor"
+msgstr "Type|Contributing Factor"
+
+#: ../source/org/miradi/diagram/DiagramModel.java:916
+msgid "Project Scope: "
+msgstr "Project Scope: "
+
+#: ../source/org/miradi/diagram/DiagramContextMenuHandler.java:137
+msgid "Menu|Insert"
+msgstr "Menu|Insert"
+
+#: ../source/org/miradi/database/DataUpgrader.java:72
+msgid "Button|Migrate"
+msgstr "Button|Migrate"
+
+#: ../source/org/miradi/database/DataUpgrader.java:80
+msgid ""
+"A backup archive for this project already exists.Continuing with this "
+"migration will replace the existing backup with a new copy.It is probably "
+"safe to do this, unless an earlier migration attempt failed."
+msgstr ""
+"A backup archive for this project already exists.Continuing with this "
+"migration will replace the existing backup with a new copy.It is probably "
+"safe to do this, unless an earlier migration attempt failed."
+
+#: ../source/org/miradi/database/DataUpgrader.java:84
+msgid "Button|Replace Backup"
+msgstr "Button|Replace Backup"
+
+#: ../source/org/miradi/database/DataUpgrader.java:100
+msgid ""
+"That project is too old to be migrated by this version of Miradi. You can "
+"use Miradi 1.0 to migrate it to a modern data format, and after that it can "
+"be opened and migrated by this version."
+msgstr ""
+"That project is too old to be migrated by this version of Miradi. You can "
+"use Miradi 1.0 to migrate it to a modern data format, and after that it can "
+"be opened and migrated by this version."
+
+#: ../source/org/miradi/database/DataUpgrader.java:116
+msgid "Project was migrated to the current data format"
+msgstr "Project was migrated to the current data format"
+
+#: ../source/org/miradi/database/DataUpgrader.java:118
+msgid ""
+"Attempt to migrate project to the current data format FAILED\n"
+"The pre-migration project was archived in: "
+msgstr ""
+"Attempt to migrate project to the current data format FAILED\n"
+"The pre-migration project was archived in: "
+
+#: ../source/org/miradi/database/DataUpgrader.java:301
+msgid ""
+"<HTML>The TNC ecoregion field has been changed from a single text field to "
+"three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
+"may not have been successful. <BR>Please go to the Summary View, TNC tab, "
+"and verify that the ecoregion(s) are correct for this project.</HTML>"
+msgstr ""
+"<HTML>The TNC ecoregion field has been changed from a single text field to "
+"three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
+"may not have been successful. <BR>Please go to the Summary View, TNC tab, "
+"and verify that the ecoregion(s) are correct for this project.</HTML>"
+
+#: ../source/org/miradi/database/DataUpgrader.java:366
+msgid ""
+"<HTML>The TNC Operating Unit field has been changed from a text field to a "
+"picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
+"have been successful. <BR>Please go to the Summary View, TNC tab and confirm "
+"that the Operating Unit is set correctly for this project.</HTML>"
+msgstr ""
+"<HTML>The TNC Operating Unit field has been changed from a text field to a "
+"picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
+"have been successful. <BR>Please go to the Summary View, TNC tab and confirm "
+"that the Operating Unit is set correctly for this project.</HTML>"
+
+#: ../source/org/miradi/database/DataUpgrader.java:530
+msgid ""
+"<html>Miradi now allows you to specify what currency is being used for "
+"budgeting, <br>and to specify Fiscal Years that are different from Calendar "
+"Years.<br>Both of these options can be changed in the Summary View, on the "
+"Planning Settings tab.<br><br>The default currency is United States dollars; "
+"the default calendar is <br>to have fiscal years equal to calendar "
+"years<br><br>If your fiscal year does not run January-December, and if you "
+"have entered <br>budget data into Miradi treating calendar years as fiscal "
+"years, your data may appear <br>off by one or more quarters. If you have a "
+"lot of budget data like this, please contact <br>the Miradi team to learn "
+"about options for realigning it to match your <br>fiscal year."
+msgstr ""
+"<html>Miradi now allows you to specify what currency is being used for "
+"budgeting, <br>and to specify Fiscal Years that are different from Calendar "
+"Years.<br>Both of these options can be changed in the Summary View, on the "
+"Planning Settings tab.<br><br>The default currency is United States dollars; "
+"the default calendar is <br>to have fiscal years equal to calendar "
+"years<br><br>If your fiscal year does not run January-December, and if you "
+"have entered <br>budget data into Miradi treating calendar years as fiscal "
+"years, your data may appear <br>off by one or more quarters. If you have a "
+"lot of budget data like this, please contact <br>the Miradi team to learn "
+"about options for realigning it to match your <br>fiscal year."
+
+#: ../source/org/miradi/database/DataUpgrader.java:604
+msgid ""
+"<html>This version of Miradi has changed the Strategy rating options.<br>The "
+"Duration and Cost fields have been removed, and the <br>Impact and "
+"Feasibility fields now encompass those attribues.<br><br>Please review your "
+"Strategy ratings to ensure they are appropriate."
+msgstr ""
+"<html>This version of Miradi has changed the Strategy rating options.<br>The "
+"Duration and Cost fields have been removed, and the <br>Impact and "
+"Feasibility fields now encompass those attribues.<br><br>Please review your "
+"Strategy ratings to ensure they are appropriate."
+
+#: ../source/org/miradi/database/DataUpgrader.java:874
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1093
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1102
+msgid "WrappedFactorId"
+msgstr "WrappedFactorId"
+
+#: ../source/org/miradi/database/DataUpgrader.java:995
+msgid "Type"
+msgstr "Type"
+
+#: ../source/org/miradi/database/DataUpgrader.java:1011
+msgid ""
+"One or more Goals that were associated with KEA Indicators have been "
+"deleted. Please create new Goals as needed, or use the new Future Status "
+"section of the Target Viability to store the same data."
+msgstr ""
+"One or more Goals that were associated with KEA Indicators have been "
+"deleted. Please create new Goals as needed, or use the new Future Status "
+"section of the Target Viability to store the same data."
+
+#: ../source/org/miradi/database/DataUpgrader.java:1245
+msgid "WrappedId"
+msgstr "WrappedId"
+
+#: ../source/org/miradi/database/DataUpgraderDiagramObjectLinkAdder.java:117
+#: ../tests/org/miradi/database/TestDataUpgrader.java:933
+msgid "DiagramFactorIds"
+msgstr "DiagramFactorIds"
+
+#: ../source/org/miradi/database/DataUpgraderDiagramObjectLinkAdder.java:163
+#: ../tests/org/miradi/database/TestDataUpgrader.java:544
+#: ../tests/org/miradi/database/TestDataUpgrader.java:603
+msgid "Id"
+msgstr "Id"
+
+#: ../source/org/miradi/database/DataUpgraderDiagramObjectLinkAdder.java:164
+#: ../tests/org/miradi/database/TestDataUpgrader.java:769
+#: ../tests/org/miradi/database/TestDataUpgrader.java:775
+#: ../tests/org/miradi/database/TestDataUpgrader.java:940
+msgid "DiagramFactorLinkIds"
+msgstr "DiagramFactorLinkIds"
+
+#: ../source/org/miradi/database/DataUpgraderDiagramObjectLinkAdder.java:194
+msgid "FromDiagramFactorId"
+msgstr "FromDiagramFactorId"
+
+#: ../source/org/miradi/database/DataUpgraderDiagramObjectLinkAdder.java:195
+msgid "ToDiagramFactorId"
+msgstr "ToDiagramFactorId"
+
+#: ../source/org/miradi/project/Project.java:153
+msgid " A project by this name already exists: "
+msgstr " A project by this name already exists: "
+
+#: ../source/org/miradi/project/Project.java:156
+msgid "Invalid project name:"
+msgstr "Invalid project name:"
+
+#: ../source/org/miradi/project/Project.java:159
+msgid "A file or directory exist by the same name:"
+msgstr "A file or directory exist by the same name:"
+
+#: ../source/org/miradi/project/Project.java:816
+msgid "[No Project]"
+msgstr "[No Project]"
+
+#: ../source/org/miradi/project/Project.java:981
+msgid "Attempt to execute command from outside command listener"
+msgstr "Attempt to execute command from outside command listener"
+
+#: ../source/org/miradi/project/Project.java:994
+msgid " within "
+msgstr " within "
+
+#: ../source/org/miradi/project/Project.java:993
+msgid "Attempt to execute command from command listener: "
+msgstr "Attempt to execute command from command listener: "
+
+#: ../source/org/miradi/project/ResultsChainCreatorHelper.java:170
+msgid "[New Results Chain]"
+msgstr "[New Results Chain]"
+
+#: ../source/org/miradi/project/ResultsChainCreatorHelper.java:192
+msgid "Results Chain"
+msgstr "Results Chain"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:232
+#: ../tests/org/miradi/database/TestDataUpgrader.java:240
+msgid "BendPoints"
+msgstr "BendPoints"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:271
+msgid "TNC.TerrestrialEcoRegion"
+msgstr "TNC.TerrestrialEcoRegion"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:274
+msgid "TNC.MarineEcoRegion"
+msgstr "TNC.MarineEcoRegion"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:277
+msgid "TNC.FreshwaterEcoRegion"
+msgstr "TNC.FreshwaterEcoRegion"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:315
+msgid "TNC.OperatingUnitsField"
+msgstr "TNC.OperatingUnitsField"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:475
+#: ../tests/org/miradi/database/TestDataUpgrader.java:482
+#: ../tests/org/miradi/database/TestDataUpgrader.java:487
+msgid "ThreatStressRatingRefs"
+msgstr "ThreatStressRatingRefs"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:545
+#: ../tests/org/miradi/database/TestDataUpgrader.java:604
+msgid "Label"
+msgstr "Label"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:548
+msgid "StressRefs"
+msgstr "StressRefs"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:606
+msgid "Trend"
+msgstr "Trend"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:607
+msgid "Status"
+msgstr "Status"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:608
+msgid "Date"
+msgstr "Date"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:610
+msgid "Detail"
+msgstr "Detail"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:611
+msgid "StatusConfidence"
+msgstr "StatusConfidence"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:614
+msgid "MeasurementRefs"
+msgstr "MeasurementRefs"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:652
+msgid "WrappedFactorRef"
+msgstr "WrappedFactorRef"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:894
+msgid "GoalIds"
+msgstr "GoalIds"
+
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1095
+#: ../tests/org/miradi/database/TestDataUpgrader.java:1104
+msgid "Size"
+msgstr "Size"
