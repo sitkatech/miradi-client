@@ -37,6 +37,7 @@ import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkPropertiesPanel;
+import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -152,7 +153,8 @@ public class PropertiesDoer extends LocationDoer
 		ORef firstChildRef = children.get(0);
 		DiagramLink diagramLinkChild = DiagramLink.find(getProject(), firstChildRef);
 		
-		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), getMainWindow().getActions(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
+		GroupBoxLinkTableModel model = new GroupBoxLinkTableModel(getProject(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
+		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), model, getMainWindow().getActions());
 		GroupBoxLinkPropertiesPanel panel = new GroupBoxLinkPropertiesPanel(getMainWindow(), diagramLinkChild, tablePanel.getPicker());
 		
 		return new GroupBoxLinkManagementPanel(getProject(), getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, panel);
