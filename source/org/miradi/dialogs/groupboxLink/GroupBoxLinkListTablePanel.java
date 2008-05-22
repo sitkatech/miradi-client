@@ -30,7 +30,7 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 {
 	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model, Actions actions)
 	{
-		super(projectToUse, new GroupBoxLinkListTable(model), actions, new Class[0]);
+		super(projectToUse, new GroupBoxLinkListTable(model), actions);
 	}
 		
 	@Override
