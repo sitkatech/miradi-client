@@ -26,11 +26,10 @@ import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.MouseAdapterDoubleClickDelegator;
@@ -64,17 +63,13 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 			return;
 		try
 		{
-			ORef oref = new ORef(ObjectType.FAKE,BaseId.INVALID);
-			int[] row = table.getSelectedRows();
-			if (row.length == 1 )
-			{
-				BaseObject selectedObject = table.getObjectTableModel().getObjectFromRow(row[0]);
-				oref = selectedObject.getRef();
-				
-			}
-			getPropertiesPanel().setObjectRef(oref);
-			getPropertiesPanel().setFocusOnFirstField();
+			ORefList selectedRefs = new ORefList();
+			ORefList[] selectedHierarchies = table.getSelectedHierarchies();
+			if (selectedHierarchies.length == 1)
+				selectedRefs = selectedHierarchies[0];
 
+			getPropertiesPanel().setObjectRefs(selectedRefs);
+			getPropertiesPanel().setFocusOnFirstField();
 		}
 		catch (Exception e)
 		{

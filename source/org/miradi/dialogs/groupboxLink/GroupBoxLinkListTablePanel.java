@@ -21,13 +21,12 @@ package org.miradi.dialogs.groupboxLink;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 {
-	public GroupBoxLinkListTablePanel(Project projectToUse, Actions actions, ORef parentRef, String annotationTag)
+	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model, Actions actions)
 	{
-		super(projectToUse, new GroupBoxLinkTableModel(projectToUse, parentRef, annotationTag), actions, new Class[0]);
+		super(projectToUse, new GroupBoxLinkListTable(model), actions, new Class[0]);
 	}
 }
