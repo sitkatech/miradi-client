@@ -25,6 +25,8 @@ import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingProper
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -40,13 +42,28 @@ public class GroupBoxLinkPropertiesPanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 	}
-
+	
 	@Override
-	public void setObjectRef(ORef oref)
+	public void setObjectRef(ORef ref)
 	{
-		DiagramLink diagramLink = DiagramLink.find(getProject(), oref);
+		if (ref.isInvalid())
+			return;
 		
-		super.setObjectRef(diagramLink.getWrappedRef());
+		ORefList newList = new ORefList(ref);
+		DiagramLink diagramLink = DiagramLink.find(getProject(), ref);
+		
+		ORef fromRef = diagramLink.getFromDiagramFactorRef();
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromRef);
+		
+		ORef toRef = diagramLink.getToDiagramFactorRef();
+		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toRef);
+		
+		newList.add(toDiagramFactor.getWrappedORef());
+		newList.add(fromDiagramFactor.getWrappedORef());
+		newList.add(diagramLink.getWrappedRef());
+		newList.add(diagramLink.getRef());
+		
+		super.setObjectRefs(newList);
 	}
 	
 	public String getPanelDescription()
