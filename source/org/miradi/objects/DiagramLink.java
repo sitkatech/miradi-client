@@ -390,6 +390,16 @@ public class DiagramLink extends BaseObject
 		return (groupBoxLinks.size() > 0);
 	}
 
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+
 	public static DiagramLink find(ObjectManager objectManager, ORef diagramLinkRef)
 	{
 		return (DiagramLink) objectManager.findObject(diagramLinkRef);

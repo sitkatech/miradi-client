@@ -20,11 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
@@ -62,5 +67,58 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	public Class getJumpActionClass()
 	{
 		return ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep.class;
+	}
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK))
+			ensureSiblingsHaveEqualBidirectionality((CommandSetObjectData) event.getCommand());
+	}
+
+	private void ensureSiblingsHaveEqualBidirectionality(CommandSetObjectData command)
+	{
+		try
+		{
+			ORef factorLinkRef = command.getObjectORef();
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+			ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			for (int index = 0; index < diagramLinkReferrerRefs.size(); ++index)
+			{
+				DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(index));
+				ensureSiblingsHaveEqualBidirectionality(diagramLink);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private void ensureSiblingsHaveEqualBidirectionality(DiagramLink diagramLink) throws CommandFailedException
+	{
+		ORefList groupBoxReferrers = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int index = 0; index < groupBoxReferrers.size(); ++index)
+		{
+			DiagramLink groupBoxLink = DiagramLink.find(getProject(), groupBoxReferrers.get(index));
+			ensureChildrenBidirectionality(groupBoxLink, diagramLink);
+		}
+	}
+
+	private void ensureChildrenBidirectionality(DiagramLink groupBoxLink, DiagramLink diagramLink) throws CommandFailedException
+	{
+		ORefList diagramLinkChildRefs = groupBoxLink.getGroupedDiagramLinkRefs();
+		for (int index = 0; index < diagramLinkChildRefs.size(); ++index)
+		{
+			DiagramLink childLink = DiagramLink.find(getProject(), diagramLinkChildRefs.get(index));
+			String childLinkBidirectionalMode = childLink.getUnderlyingLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
+			String bidirectionalMode = diagramLink.getUnderlyingLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
+			if (!bidirectionalMode.equals(childLinkBidirectionalMode))
+			{
+				CommandSetObjectData setBidirectionality = new CommandSetObjectData(childLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalMode);
+				getProject().executeInsideListener(setBidirectionality);
+			}
+		}
 	}
 }

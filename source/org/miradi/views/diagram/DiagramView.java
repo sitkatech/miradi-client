@@ -127,7 +127,6 @@ import org.miradi.dialogs.slideshow.SlideListManagementPanel;
 import org.miradi.dialogs.slideshow.SlideShowDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.CommandExecutedEvent;
@@ -762,21 +761,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
-		DiagramFactorLinkId diagramFactorLinkId = null;
-		
+		ORef diagramLinkRef = ORef.INVALID;
 		if(cmd.getObjectType() == ObjectType.DIAGRAM_LINK)
 		{
-			diagramFactorLinkId = (DiagramFactorLinkId) cmd.getObjectId();
+			diagramLinkRef = cmd.getObjectORef();
 		}
 		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
 		{
-			diagramFactorLinkId = getDiagramFactorLinkIdFromFactorLinkId((FactorLinkId)cmd.getObjectId());
+			diagramLinkRef = getDiagramFactorLinkIdFromFactorLinkId((FactorLinkId)cmd.getObjectId());
 		}
 		
-		if(diagramFactorLinkId == null)
+		if(diagramLinkRef.isInvalid())
 			return;
 		
-		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramFactorLinkId);
+		ORef diagramLinkIdToUpdate = diagragetParentOrSelf(diagramLinkRef);
+		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramLinkIdToUpdate);
 		if(cell == null)
 			return;
 
@@ -786,6 +785,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		model.updateCell(cell);
 	}
 	
+	private ORef diagragetParentOrSelf(ORef diagramLinkRef)
+	{
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);		
+		ORefList groupBoxLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int index = 0; index < groupBoxLinkReferrerRefs.size(); ++index)
+		{
+			return groupBoxLinkReferrerRefs.get(index);
+		}
+		
+		return diagramLinkRef;
+	}
+
+
 	private void clearBendPointSelectionList(LinkCell cell, CommandSetObjectData cmd) throws Exception
 	{
 		if (! cmd.getFieldTag().equals(DiagramLink.TAG_BEND_POINTS))
@@ -800,7 +812,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		cell.getBendPointSelectionHelper().clearSelection();
 	}
 
-	private DiagramFactorLinkId getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
+	private ORef getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
 	{
 		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkId))
 			return null;
@@ -809,7 +821,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(link == null)
 			return null;
 		
-		return link.getDiagramLinkageId();
+		return link.getRef();
 	}
 
 	private void updateFactorBoundsIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
