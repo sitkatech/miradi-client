@@ -44,8 +44,8 @@ public class Translation
 	public static void setTranslationLocale(Locale locale)
 	{
 		currentTranslationLocale = locale;
-		currentResourceBundle = getResourceBundle(locale);
-		Locale actualLocaleUsed = currentResourceBundle.getLocale();
+		textTranslations = getResourceBundle(locale);
+		Locale actualLocaleUsed = textTranslations.getLocale();
 		if(!locale.equals(actualLocaleUsed))
 		{
 			EAM.logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
@@ -82,7 +82,7 @@ public class Translation
 			throw new IOException("Missing file: " + fileName + " in " + Translation.class.getName());
 		try
 		{
-			fieldLabels.load(in);
+			fieldLabelTranslations.load(in);
 		}
 		finally
 		{
@@ -94,7 +94,7 @@ public class Translation
 	public static String fieldLabel(int objectType, String fieldTag)
 	{
 		String fullTag = Integer.toString(objectType) + "." + fieldTag;
-		String label = fieldLabels.getProperty(fullTag);
+		String label = fieldLabelTranslations.getProperty(fullTag);
 		if(label == null)
 			label = fieldTag;
 		return label;
@@ -109,7 +109,7 @@ public class Translation
 		return result;
 	}
 
-	private static Properties fieldLabels = new Properties();
+	private static Properties fieldLabelTranslations = new Properties();
 	private static Locale currentTranslationLocale = Locale.US;
-	private static ResourceBundle currentResourceBundle;
+	private static ResourceBundle textTranslations;
 }
