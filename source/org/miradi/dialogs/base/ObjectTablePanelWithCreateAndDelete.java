@@ -27,6 +27,11 @@ import org.miradi.project.Project;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
+	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, ObjectTable tableToUse, Actions actions)
+	{
+		this(projectToUse, tableToUse, actions, new Class[0]);
+	}
+	
 	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
 	{
 		super(projectToUse, tableToUse);
