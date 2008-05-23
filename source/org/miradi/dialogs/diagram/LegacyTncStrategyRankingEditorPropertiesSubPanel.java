@@ -22,29 +22,62 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.ActionDeleteLegacyTncStrategyRanking;
 import org.miradi.actions.ActionViewLegacyTncStrategtyRanking;
 import org.miradi.actions.Actions;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 
 public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectDataInputPanel
 {
-	public LegacyTncStrategyRankingEditorPropertiesSubPanel(Project project, ORef strategyRef, Actions actions)
+	public LegacyTncStrategyRankingEditorPropertiesSubPanel(Project project, ORef strategyRef, Actions actionsToUse)
 	{
 		super(project, strategyRef);
 		
-		if (hasLegacyTncRankings(strategyRef))
-			addLegacyTncRankings(actions);
+		actions = actionsToUse;
+		buttonsPanel = new MiradiPanel();
+		buttonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		rebuildButtonsPanel(strategyRef);
 		
 		updateFieldsFromProject();
+	}
+
+	@Override
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+	
+		ORefList refList = new ORefList(orefsToUse);
+		ORef strategyRef = refList.getRefForType(Strategy.getObjectType());
+		rebuildButtonsPanel(strategyRef);
+	}
+	
+	private void rebuildButtonsPanel(ORef strategyRef)
+	{
+		buttonsPanel.removeAll();
+		if (hasLegacyTncRankings(strategyRef))
+		{
+			ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
+			ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
+
+			buttonsPanel.add(new PanelTitleLabel(EAM.text("Legacy TNC Ratings")));
+			buttonsPanel.add(viewButton);
+			buttonsPanel.add(deleteButton);
+			add(buttonsPanel);
+		}			
 	}
 
 	private boolean hasLegacyTncRankings(ORef strategyRef)
 	{
 		if (strategyRef.isInvalid())
+			return false;
+		
+		if (!Strategy.is(strategyRef))
 			return false;
 		
 		Strategy strategy = Strategy.find(getProject(), strategyRef);
@@ -53,16 +86,11 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		return legacyTncRanking.length() > 0;
 	}
 
-	private void addLegacyTncRankings(Actions actions)
-	{
-		ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
-		ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
-		
-		addButtons(EAM.text("Legacy TNC Ratings"), new  PanelButton[]{viewButton, deleteButton} );
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Legacy TNC Strategy Editor Ranking Properties");
 	}
+	
+	private MiradiPanel buttonsPanel;
+	private Actions actions;
 }
