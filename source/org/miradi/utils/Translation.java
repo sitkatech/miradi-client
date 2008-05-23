@@ -38,7 +38,7 @@ public class Translation
 	
 	public static void restoreDefaultLocale()
 	{
-		currentTranslationLocale = new Locale("en", "US");
+		currentTranslationLocale = Locale.US;
 	}
 
 	public static void setTranslationLocale(Locale locale)
@@ -82,7 +82,7 @@ public class Translation
 			throw new IOException("Missing file: " + fileName + " in " + Translation.class.getName());
 		try
 		{
-			properties.load(in);
+			fieldLabels.load(in);
 		}
 		finally
 		{
@@ -94,7 +94,7 @@ public class Translation
 	public static String fieldLabel(int objectType, String fieldTag)
 	{
 		String fullTag = Integer.toString(objectType) + "." + fieldTag;
-		String label = properties.getProperty(fullTag);
+		String label = fieldLabels.getProperty(fullTag);
 		if(label == null)
 			label = fieldTag;
 		return label;
@@ -109,7 +109,7 @@ public class Translation
 		return result;
 	}
 
-	private static Properties properties = new Properties();
-	private static Locale currentTranslationLocale = new Locale("en", "US");
+	private static Properties fieldLabels = new Properties();
+	private static Locale currentTranslationLocale = Locale.US;
 	private static ResourceBundle currentResourceBundle;
 }
