@@ -32,7 +32,7 @@ public class ProcessMenu5b extends MiradiMenu
 		addDisabledMenuItem(EAM.text("Develop communications strategy"));
 		addDisabledMenuItem(EAM.text("Report to project team and stakeholders"));
 		addDisabledMenuItem(EAM.text("Develop and share communication products"));
-		addDisabledMenuItem(EAM.text("Use other’s communication products"));
+		addDisabledMenuItem(EAM.text("Use other's communication products"));
 
 	}
 }
