@@ -401,6 +401,8 @@ public class Actions
 				registerAction(new ActionEditProgressPercent(mainWindow));
 		registerAction(new ActionCreateObjectiveProgressPercent(mainWindow));
 		registerAction(new ActionDeleteObjectiveProgressPercent(mainWindow));
+		registerAction(new ActionViewLegacyTncStrategtyRanking(mainWindow));
+		registerAction(new ActionDeleteLegacyTncStrategyRanking(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -54,6 +54,8 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
+		addSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(Strategy.getObjectType()), actions));
+		
 		ObjectsActionButton editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyProgressReports.class), getPicker());
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.TAG_PROGRESS_REPORT_REFS);
 		addFieldWithEditButton(EAM.text("Progress"), readOnlyProgressReportsList, editProgressReportButton);
