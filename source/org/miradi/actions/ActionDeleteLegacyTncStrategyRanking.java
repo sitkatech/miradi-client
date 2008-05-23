@@ -32,7 +32,7 @@ public class ActionDeleteLegacyTncStrategyRanking extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Delete...");
+		return EAM.text("Action|Delete");
 	}
 
 	public String getToolTipText()
