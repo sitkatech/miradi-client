@@ -109,7 +109,7 @@ public class Translation
 		return result;
 	}
 
+	private static ResourceBundle textTranslations;
 	private static Properties fieldLabelTranslations = new Properties();
 	private static Locale currentTranslationLocale = Locale.US;
-	private static ResourceBundle textTranslations;
 }
