@@ -40,9 +40,17 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		super(project, strategyRef);
 		
 		actions = actionsToUse;
+	
 		buttonsPanel = new MiradiPanel();
 		buttonsPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		rebuildButtonsPanel(strategyRef);
+		ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
+		ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
+
+		buttonsPanel.add(new PanelTitleLabel(EAM.text("Legacy TNC Ratings")));
+		buttonsPanel.add(viewButton);
+		buttonsPanel.add(deleteButton);
+
+		rebuildThisPropertiesPanel(strategyRef);
 		
 		updateFieldsFromProject();
 	}
@@ -54,20 +62,14 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 	
 		ORefList refList = new ORefList(orefsToUse);
 		ORef strategyRef = refList.getRefForType(Strategy.getObjectType());
-		rebuildButtonsPanel(strategyRef);
+		rebuildThisPropertiesPanel(strategyRef);
 	}
 	
-	private void rebuildButtonsPanel(ORef strategyRef)
+	private void rebuildThisPropertiesPanel(ORef strategyRef)
 	{
-		buttonsPanel.removeAll();
+		removeAll();
 		if (hasLegacyTncRankings(strategyRef))
 		{
-			ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
-			ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
-
-			buttonsPanel.add(new PanelTitleLabel(EAM.text("Legacy TNC Ratings")));
-			buttonsPanel.add(viewButton);
-			buttonsPanel.add(deleteButton);
 			add(buttonsPanel);
 		}			
 	}
