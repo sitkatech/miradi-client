@@ -161,18 +161,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
-	protected void addFieldsOnOneLine(PanelTitleLabel label, String[] fieldLabelTexts, ObjectDataInputField[] fields)
-	{
-		JPanel fieldPanel = createFieldPanel(fieldLabelTexts, fields);
-		add(label);
-		add(fieldPanel);
-	}
-	
-	protected void addFieldsOnOneLine(ObjectDataInputField[] fields)
-	{
-		addFieldsOnOneLine("", fields);
-	}
-	
 	private JPanel createFieldPanel(ObjectDataInputField[] fields)
 	{
 		OneRowPanel fieldPanel = new OneRowPanel();
@@ -222,6 +210,21 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
+	protected void addButtons(String label, PanelButton[] buttons)
+	{
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		
+		for (int i = 0; i < buttons.length; ++i)
+		{
+			fieldPanel.add(buttons[i]);
+		}
+		
+		addLabel(label);
+		add(fieldPanel);
+	}
+	
 	protected void addFieldWithEditButton(String label, ObjectDataInputField field, PanelButton button)
 	{
 		super.addField(field);

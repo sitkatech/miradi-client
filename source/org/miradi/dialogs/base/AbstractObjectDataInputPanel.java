@@ -28,6 +28,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -239,6 +240,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		subPanels.add(subPanel);
 	}
 	
+	public void addSubPanelWithoutBorder(AbstractObjectDataInputPanel subPanel)
+	{
+		add(new JLabel(""));	
+		subPanels.add(subPanel);
+		add(subPanel);
+	}
+
 	public void addSubPanelWithTitledBorder(AbstractObjectDataInputPanel subPanel)
 	{
 		PanelTitledBorder titledBorder = new PanelTitledBorder(subPanel.getPanelDescription());
