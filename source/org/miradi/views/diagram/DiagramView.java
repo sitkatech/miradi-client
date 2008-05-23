@@ -774,8 +774,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(diagramLinkRef.isInvalid())
 			return;
 		
-		ORef diagramLinkIdToUpdate = diagragetParentOrSelf(diagramLinkRef);
-		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramLinkIdToUpdate);
+		ORef diagramLinkRefToUpdate = diagragetParentOrSelf(diagramLinkRef);
+		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramLinkRefToUpdate);
 		if(cell == null)
 			return;
 
