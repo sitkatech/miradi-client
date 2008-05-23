@@ -761,20 +761,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
-		ORef diagramLinkRef = ORef.INVALID;
-		if(cmd.getObjectType() == ObjectType.DIAGRAM_LINK)
-		{
-			diagramLinkRef = cmd.getObjectORef();
-		}
-		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
-		{
-			diagramLinkRef = getDiagramFactorLinkIdFromFactorLinkId((FactorLinkId)cmd.getObjectId());
-		}
-		
+		ORef diagramLinkRef = extractDiagramLinkRef(cmd);
 		if(diagramLinkRef.isInvalid())
 			return;
 		
-		ORef diagramLinkRefToUpdate = diagragetParentOrSelf(diagramLinkRef);
+		ORef diagramLinkRefToUpdate = getParentOrSelf(diagramLinkRef);
 		LinkCell cell = model.updateCellFromDiagramFactorLink(diagramLinkRefToUpdate);
 		if(cell == null)
 			return;
@@ -785,7 +776,21 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		model.updateCell(cell);
 	}
 	
-	private ORef diagragetParentOrSelf(ORef diagramLinkRef)
+	private ORef extractDiagramLinkRef(CommandSetObjectData cmd) throws Exception
+	{
+		if(cmd.getObjectType() == ObjectType.DIAGRAM_LINK)
+		{
+			return cmd.getObjectORef();
+		}
+		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
+		{
+			return getDiagramLinkRefFromFactorLinkId((FactorLinkId)cmd.getObjectId());
+		}
+		
+		return ORef.INVALID;
+	}
+	
+	private ORef getParentOrSelf(ORef diagramLinkRef)
 	{
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);		
 		ORefList groupBoxLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
@@ -796,7 +801,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		return diagramLinkRef;
 	}
-
 
 	private void clearBendPointSelectionList(LinkCell cell, CommandSetObjectData cmd) throws Exception
 	{
@@ -812,14 +816,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		cell.getBendPointSelectionHelper().clearSelection();
 	}
 
-	private ORef getDiagramFactorLinkIdFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
+	private ORef getDiagramLinkRefFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
 	{
 		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkId))
-			return null;
+			return ORef.INVALID;
 		
 		DiagramLink link = getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
 		if(link == null)
-			return null;
+			return ORef.INVALID;
 		
 		return link.getRef();
 	}
