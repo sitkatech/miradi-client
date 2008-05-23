@@ -19,14 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
+import java.io.IOException;
 import java.util.Locale;
-import java.util.MissingResourceException;
 
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
-import org.miradi.utils.Translation;
 
 public class TestTranslations extends EAMTestCase
 {
@@ -54,7 +53,7 @@ public class TestTranslations extends EAMTestCase
 		assertEquals("this", EAM.text(sampleWithBar));
 	}
 	
-	public void testBadLocale()
+	public void testBadLocale() throws Exception
 	{
 		Locale badLocale = new Locale("xx", "YY");
 		try
@@ -62,14 +61,14 @@ public class TestTranslations extends EAMTestCase
 			EAM.setTranslationLocale(badLocale);
 			fail("Should have thrown setting bad locale");
 		}
-		catch(MissingResourceException ignoreExpected)
+		catch(IOException ignoreExpected)
 		{
 		}
 	}
 
-	public void testOtherLocale()
+	public void testOtherLocale() throws Exception
 	{
-		Locale testingLocale = new Locale("test", "LOCALE");
+		Locale testingLocale = new Locale("test");
 		EAM.setTranslationLocale(testingLocale);
 		assertEquals(testingLocale, Translation.getTranslationLocale());
 		
