@@ -151,6 +151,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
+			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importActivities(strategyNode, strategyRef);
 			
 			createDiagramFactorAndAddToDiagram(strategyRef);

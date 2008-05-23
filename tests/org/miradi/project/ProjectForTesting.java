@@ -566,6 +566,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		objectiveIds.addRef(createAndPopulateObjective().getRef());
 		objectiveIds.addRef(createAndPopulateObjective().getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+		
+		fillObjectUsingCommand(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "good, tnc legacy strategy rating");
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception

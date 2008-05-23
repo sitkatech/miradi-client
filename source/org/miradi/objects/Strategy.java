@@ -293,6 +293,7 @@ public class Strategy extends Factor
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
+		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
@@ -307,6 +308,7 @@ public class Strategy extends Factor
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
+		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
@@ -324,6 +326,8 @@ public class Strategy extends Factor
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
+	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
@@ -340,6 +344,8 @@ public class Strategy extends Factor
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
 	private ORefListData progressReportRefs;
+	private StringData legacyTncStrategyRanking;
+	
 	private PseudoStringData tagRatingSummary;
 	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoQuestionData impactRatingLabel;

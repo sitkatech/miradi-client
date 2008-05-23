@@ -136,44 +136,9 @@ targets.element =
         }*
     }
 #
-threat_target_associations.element =
-    element cp:threat_target_associations {
-        element cp:threat_target_association {
-            element cp:threat_id { vocabulary_id }
-            & element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
-            & element cp:threat_severity { vocabulary_ranking_vhhml }?
-            & element cp:threat_scope { vocabulary_ranking_vhhml }?
-            & element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
-            & element cp:threat_target_comment { text }?
-        }*
-    }
-#
-stresses.element =
-    element cp:stresses {
-        element cp:stress {
-            attribute sequence { vocabulary_sequence }
-            & element cp:name { text }
-            & element cp:stress_severity { vocabulary_ranking_vhhml }?
-            & element cp:stress_scope { vocabulary_ranking_vhhml }?
-            & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
-            & #  Conpro calls this stresses_threats
-              threat_stress_ratings.element
-        }*
-    }
-#
 habitat_taxonomy_codes.element =
     element cp:habitat_taxonomy_codes {
         element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
-    }
-#
-threat_stress_ratings.element =
-    element cp:threat_stress_ratings {
-        element cp:threat_stress_rating {
-            element cp:threat_id { vocabulary_id }
-            & element cp:contrib_rank { vocabulary_ranking_vhhml }?
-            & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
-            & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
-        }*
     }
 #
 nested_targets.element =
@@ -190,6 +155,40 @@ strategy_threat_target_associations.element =
         element cp:strategy_threat_target_association {
             element cp:strategy_id { vocabulary_id }
             & element cp:threat_id { vocabulary_id }
+        }*
+    }
+#
+stresses.element =
+    element cp:stresses {
+        element cp:stress {
+            attribute sequence { vocabulary_sequence }
+            & element cp:name { text }
+            & element cp:stress_severity { vocabulary_ranking_vhhml }?
+            & element cp:stress_scope { vocabulary_ranking_vhhml }?
+            & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+            & threat_stress_ratings.element
+        }*
+    }
+#
+threat_stress_ratings.element =
+    element cp:threat_stress_ratings {
+        element cp:threat_stress_rating {
+            element cp:threat_id { vocabulary_id }
+            & element cp:contrib_rank { vocabulary_ranking_vhhml }?
+            & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
+            & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
+        }*
+    }
+#
+threat_target_associations.element =
+    element cp:threat_target_associations {
+        element cp:threat_target_association {
+            element cp:threat_id { vocabulary_id }
+            & element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
+            & element cp:threat_severity { vocabulary_ranking_vhhml }?
+            & element cp:threat_scope { vocabulary_ranking_vhhml }?
+            & element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
+            & element cp:threat_target_comment { text }?
         }*
     }
 #
@@ -262,6 +261,7 @@ strategies.element =
             & element cp:overall_rank { vocabulary_ranking_vhhml }?
             & element cp:selected { xsd:boolean }?
             & element cp:comment { text }?
+            & element cp:legacy_strategy_ranking { text }?
             & activities.element?
         }*
     }
