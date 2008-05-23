@@ -269,7 +269,7 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	// Translations
-	public static void setTranslationLocale(Locale locale)
+	public static void setTranslationLocale(Locale locale) throws Exception
 	{
 		Translation.setTranslationLocale(locale);
 	}
