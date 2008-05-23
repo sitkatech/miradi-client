@@ -191,6 +191,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalRatingCodeElement(out, OVERALL_RANK, strategy.getStrategyRatingSummary());
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
+			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			writeActivities(out, strategy.getActivityRefs());
 						
 			writeEndElement(out, STRATEGY);
