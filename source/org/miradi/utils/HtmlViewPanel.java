@@ -79,10 +79,28 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	
 	public void showAsOkDialog()
 	{
-		String title = EAM.text("Title|" + viewTitle);
-		EAMDialog dlg = new EAMDialog(mainWindow, title);
+		EAMDialog dlg = createDialog();
 		dlg.setModal(true);
 
+		showDialog(dlg);
+	}
+	
+	public void showAsModelessOkDialog()
+	{
+		EAMDialog dlg = createDialog();
+		dlg.setModal(false);
+
+		showDialog(dlg);
+	}
+
+	private EAMDialog createDialog()
+	{
+		String title = EAM.substitute("Title|%s", viewTitle);
+		return new EAMDialog(mainWindow, title);
+	}
+
+	private void showDialog(EAMDialog dlg)
+	{
 		String body = htmlText;
 		if (body == null)
 			return;

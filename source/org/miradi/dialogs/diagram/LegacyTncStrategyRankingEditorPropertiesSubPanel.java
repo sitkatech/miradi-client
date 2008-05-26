@@ -24,7 +24,6 @@ import org.miradi.actions.ActionViewLegacyTncStrategtyRanking;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -46,7 +45,6 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		ObjectsActionButton viewButton = createObjectsActionButton(actions.getObjectsAction(ActionViewLegacyTncStrategtyRanking.class), getPicker());
 		ObjectsActionButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteLegacyTncStrategyRanking.class), getPicker());
 
-		buttonsPanel.add(new PanelTitleLabel(EAM.text("Legacy TNC Ratings")));
 		buttonsPanel.add(viewButton);
 		buttonsPanel.add(deleteButton);
 
