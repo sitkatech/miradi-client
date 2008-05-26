@@ -35,6 +35,6 @@ public class ViewLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDo
 		BaseObject strategy = getSingleSelected(Strategy.getObjectType());
 		String legacyRankingData = strategy.getData(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), "View...", legacyRankingData, null);
-		htmlViwer.showAsOkDialog();
+		htmlViwer.showAsModelessOkDialog();
 	}
 }

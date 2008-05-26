@@ -33,20 +33,20 @@ public class DeleteLegacyTncStrategyRankingDoer extends AbstractLegacyTncRanking
 		if (!isAvailable())
 			return;
 		
-		if (getUserChoice().equals(CANCEL_BUTTON))
+		if (!didUserConfirm())
 			return;
 
 		BaseObject strategy = getSingleSelected(Strategy.getObjectType());
 		CommandSetObjectData clearLegacyRanking = new CommandSetObjectData(strategy.getRef(), Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "");
 		getProject().executeCommand(clearLegacyRanking);
 	}
-	private String getUserChoice()
+	private boolean didUserConfirm()
 	{
 		String[] buttons = {OK_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Delete...");
 		String[] body = {EAM.text("Are you sure?")};
-	
-		return EAM.choiceDialog(title, body, buttons);
+
+		return EAM.confirmDialog(title, body, buttons);
 	}
 	
 	private final String OK_BUTTON = EAM.text("Button|Ok");
