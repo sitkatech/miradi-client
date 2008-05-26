@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
+import org.miradi.ActionTreeShareActivity;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
@@ -83,6 +84,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.planning.doers.TreeNodeDownDoer;
+import org.miradi.views.planning.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
@@ -239,6 +241,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
+		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
 				
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
