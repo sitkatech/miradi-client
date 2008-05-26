@@ -782,7 +782,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			return cmd.getObjectORef();
 		}
-		else if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
+		if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
 		{
 			return getDiagramLinkRefFromFactorLinkId((FactorLinkId)cmd.getObjectId());
 		}
