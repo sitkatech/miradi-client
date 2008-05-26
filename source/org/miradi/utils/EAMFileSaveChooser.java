@@ -54,6 +54,12 @@ public abstract class EAMFileSaveChooser
 			return null;
 
 		File chosen = dlg.getSelectedFile();
+		if (EAM.isIllegalFileName(chosen.getName().replace(CpmzFileFilter.EXTENSION, "")))
+		{
+			EAM.errorDialog(INVALID_PROJECT_FILE_NAME_MESSAGE);
+			return null;
+		}
+		
 		String ext = ((MiradiFileFilter)dlg.getFileFilter()).getFileExtension();
 		if (!chosen.getName().toLowerCase().endsWith(ext))
 			chosen = new File(chosen.getAbsolutePath() + ext);
@@ -102,4 +108,6 @@ public abstract class EAMFileSaveChooser
 	public abstract String getUiExtensionTag();
 	
 	private static String currentDirectory;
+	
+	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
 }

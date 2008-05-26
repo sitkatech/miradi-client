@@ -29,6 +29,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.Utility;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.noproject.NoProjectView;
@@ -64,6 +65,12 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			File fileToImport = dlg.getSelectedFile();
 			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
+			if (EAM.isIllegalFileName(projectName))
+			{
+				EAM.errorDialog(EAMFileSaveChooser.INVALID_PROJECT_FILE_NAME_MESSAGE);
+				return;
+			}
+			
 			String newName = RenameProjectDoer.askUserForProjectName(projectName);
 			if (newName == null)
 				return;
