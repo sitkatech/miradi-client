@@ -98,6 +98,27 @@ public class EAM
 		
 		displayHtmlDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
 	}
+	
+	static public boolean isIllegalFileName(String candidate)
+	{
+		char[] asArray = candidate.toCharArray();
+		for(int i = 0; i < asArray.length; ++i)
+		{
+			char c = asArray[i];
+			if(!isValidCharacter(c))
+				return true;
+		}
+
+		return false;
+	}
+
+	private static boolean isValidCharacter(char c)
+	{
+		if (c == '_')
+			return true;
+		
+		return Character.isLetterOrDigit(c);
+	}
 
 	private static void displayHtmlDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
 	{
