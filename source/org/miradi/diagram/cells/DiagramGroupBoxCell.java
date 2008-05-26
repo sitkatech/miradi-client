@@ -101,7 +101,9 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
 			location = getProject().getSnapped(location);
 			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
-			Dimension newSize = new Dimension(getProject().forceNonZeroEvenSnap(size.width), getProject().forceNonZeroEvenSnap(size.height));
+			int forcedEvenSnappedWidth = forceEvenSnappedLargerSize(gridSize, size.width);
+			int forcedEvenSnappedHeight = forceEvenSnappedLargerSize(gridSize, size.height);
+			Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
 			newBounds = new Rectangle(location, newSize);
 			
 			GraphConstants.setBounds(getAttributes(), newBounds);
@@ -113,6 +115,15 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			
 			saveLocationAndSize(location, newSize);
 		}		
+	}
+
+	private int forceEvenSnappedLargerSize(int gridSize, int size)
+	{
+		int forceNonZeroEvenSnap = getProject().forceNonZeroEvenSnap(size);
+		if (forceNonZeroEvenSnap < size)
+			forceNonZeroEvenSnap += gridSize;
+		
+		return forceNonZeroEvenSnap;
 	}
 	
 	private void saveLocationAndSize(Point location, Dimension size)
