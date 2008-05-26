@@ -153,7 +153,7 @@ public class PropertiesDoer extends LocationDoer
 		DiagramLink diagramLinkChild = DiagramLink.find(getProject(), firstChildRef);
 		
 		GroupBoxLinkTableModel model = new GroupBoxLinkTableModel(getProject(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
-		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), model, getMainWindow().getActions());
+		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), model);
 		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getMainWindow(), diagramLinkChild, tablePanel.getPicker());
 		
 		return new GroupBoxLinkManagementPanel(getProject(), getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, panel);

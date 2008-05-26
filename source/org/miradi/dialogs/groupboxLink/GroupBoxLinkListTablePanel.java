@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.groupboxLink;
 
-import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.CommandExecutedEvent;
@@ -28,9 +27,9 @@ import org.miradi.project.Project;
 
 public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 {
-	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model, Actions actions)
+	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model)
 	{
-		super(projectToUse, new GroupBoxLinkListTable(model), actions);
+		super(projectToUse, new GroupBoxLinkListTable(model));
 	}
 		
 	@Override
