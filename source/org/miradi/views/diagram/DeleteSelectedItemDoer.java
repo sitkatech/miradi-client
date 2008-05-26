@@ -141,6 +141,12 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		{
 			DiagramLink diagramLink = diagramLinks.get(i);
 			FactorLink factorLink = diagramLink.getUnderlyingLink();
+			if(factorLink == null)
+			{
+				EAM.logWarning("DiagramLink without FactorLink: " + diagramLink.getRef());
+				continue;
+			}
+			
 			ORef fromDiagramFactorRef =  diagramLink.getFromDiagramFactorRef();
 			ORef toDiagramFactorRef = diagramLink.getToDiagramFactorRef();
 			ORefList diagramLinkRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());

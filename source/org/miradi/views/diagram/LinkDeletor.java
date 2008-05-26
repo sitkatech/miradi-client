@@ -24,6 +24,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.FactorLinkId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -75,6 +76,12 @@ public class LinkDeletor
 	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		deleteDiagramLink(diagramLink);
+		if(factorLink == null)
+		{
+			EAM.logWarning("DiagramLink has no wrapped link to delete");
+			return;
+		}
+		
 		if (!isToOrFromFactorBeingDeleted(factorsAboutToBeDeleted, factorLink))
 			deleteAllReferrerDiagramLinks(factorLink);
 
