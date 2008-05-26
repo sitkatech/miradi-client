@@ -68,9 +68,11 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 			return null;
 		
 		FactorLink linkBeingEdited = FactorLink.find(getProject(), linkBeingEditedRef);
+		if (!linkBeingEdited.isThreatTargetLink())
+			return null;
+		
 		ORef threatRef = linkBeingEdited.getUpstreamThreatRef();
-		Factor threat = Cause.findFactor(getProject(), threatRef);
-		return threat;
+		return Cause.findFactor(getProject(), threatRef);
 	}
 
 	private void rebuild(ORefList hierarchyToSelectedRef)
