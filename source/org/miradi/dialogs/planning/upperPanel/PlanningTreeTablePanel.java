@@ -34,6 +34,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
+import org.miradi.ActionTreeShareActivity;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateMethod;
@@ -165,8 +166,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 			ActionTreeNodeUp.class,
 			
 			ActionTreeCreateMethod.class,
-			ActionDeletePlanningViewTreeNode.class,
+			ActionTreeShareActivity.class,
 			ActionTreeNodeDown.class,
+			ActionDeletePlanningViewTreeNode.class,
 		};
 	}
 	
