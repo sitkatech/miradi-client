@@ -81,7 +81,7 @@ public class TestTranslations extends EAMTestCase
 	
 	public void testFieldLabel() throws Exception
 	{
-		Translation.loadFieldLabels();
+		Translation.initialize();
 		String badTag = "whoops";
 		assertEquals("Didn't leave unknown tag alone?", badTag, EAM.fieldLabel(1, badTag));
 		

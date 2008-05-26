@@ -28,6 +28,11 @@ import java.util.Properties;
 
 public class Translation
 {
+	public static void initialize() throws Exception
+	{
+		setTranslationLocale(DEFAULT_LOCALE);
+	}
+	
 	public static Locale getTranslationLocale()
 	{
 		return currentTranslationLocale;
@@ -41,7 +46,12 @@ public class Translation
 	public static void setTranslationLocale(Locale locale) throws IOException
 	{
 		currentTranslationLocale = locale;
-		textTranslations = loadTextTranslations(locale);
+
+		textTranslations = null;
+		if(!isDefaultLocale())
+			textTranslations = loadTranslationsPropertiesFile(locale, "miradi.properties");
+
+		fieldLabelTranslations = loadTranslationsPropertiesFile(locale, "FieldLabels.properties");
 	}
 
 	public static String text(String key)
@@ -52,30 +62,9 @@ public class Translation
 		return textTranslations.getProperty(key, "<" + key + ">");
 	}
 
-	public static void loadFieldLabels() throws IOException
+	private static Properties loadTranslationsPropertiesFile(Locale locale, String filename) throws IOException
 	{
-		String fileName = "FieldLabels.properties";
-		InputStream in = Translation.class.getResourceAsStream(fileName);
-		if(in == null)
-			throw new IOException("Missing file: " + fileName + " in " + Translation.class.getName());
-		try
-		{
-			Properties properties = fieldLabelTranslations;
-			properties.load(in);
-		}
-		finally
-		{
-			in.close();
-		}
-		
-	}
-	
-	private static Properties loadTextTranslations(Locale locale) throws IOException
-	{
-		if(isDefaultLocale())
-			return null;
-		
-		String resourceName = "/translations/" + locale.getLanguage() + "/miradi.properties";
+		String resourceName = "/translations/" + locale.getLanguage() + "/" + filename;
 		URL url = Translation.class.getResource(resourceName);
 		if(url == null)
 			throw new IOException("Translations not found: " + resourceName);
@@ -118,10 +107,12 @@ public class Translation
 
 	private static boolean isDefaultLocale()
 	{
-		return currentTranslationLocale.equals(Locale.US);
+		return currentTranslationLocale.equals(DEFAULT_LOCALE);
 	}
 	
+	private static Locale DEFAULT_LOCALE = Locale.US;
+
 	private static Properties textTranslations;
-	private static Properties fieldLabelTranslations = new Properties();
-	private static Locale currentTranslationLocale = Locale.US;
+	private static Properties fieldLabelTranslations;
+	private static Locale currentTranslationLocale;
 }

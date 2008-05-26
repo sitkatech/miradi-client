@@ -47,6 +47,8 @@ public class ListAllFields
 {
 	public static void main(String[] args) throws Exception
 	{
+		Translation.initialize();
+		
 		File tempDirectory = File.createTempFile("$$$Miradi-ListAllFields", null);
 		tempDirectory.delete();
 		tempDirectory.mkdirs();
@@ -59,7 +61,6 @@ public class ListAllFields
 
 	private static void listFieldsToConsole(Project project) throws IOException, Exception
 	{
-		Translation.loadFieldLabels();
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
 			if(project.getPool(type) == null)

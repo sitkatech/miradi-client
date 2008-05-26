@@ -58,7 +58,7 @@ public abstract class XmlExporter
 			throw new RuntimeException("Project does not exist:" + projectDirectory);
 
 		newProject.createOrOpen(projectDirectory);
-		Translation.loadFieldLabels();
+		Translation.initialize();
 		
 		return newProject;
 	}	 
