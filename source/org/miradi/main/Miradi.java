@@ -31,7 +31,7 @@ import org.miradi.utils.Translation;
 
 public class Miradi
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
 		try
 		{
@@ -44,6 +44,8 @@ public class Miradi
 			System.out.println("Error initializing Miradi");
 			System.exit(1);
 		}
+		
+		Translation.initialize();
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		if(Arrays.asList(args).contains("--verbose"))
@@ -94,7 +96,6 @@ public class Miradi
 		try
 		{
 			VersionConstants.setVersionString();
-			Translation.loadFieldLabels();
 			SwingUtilities.invokeAndWait(new MainWindowRunner(args));
 		}
 		catch(Exception e)

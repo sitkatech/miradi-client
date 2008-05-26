@@ -83,6 +83,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
+import org.miradi.utils.Translation;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
@@ -99,6 +100,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		super(server);
 		
+		Translation.initialize();
 		String filename = getFilename();
 		getTestDatabase().openMemoryDatabase(filename);
 		finishOpening();
