@@ -140,6 +140,17 @@ public class SelectChainDoer extends ViewDoer
 			// convert CMNode to DiagramNode
 			FactorCell nodeToSelect = model.getFactorCellByWrappedId((FactorId)chainNodes[i].getId());
 			diagramComponent.addSelectionCell(nodeToSelect);
+			selectParentGroupBoxIfAny(model, diagramComponent, nodeToSelect.getDiagramFactor());
+		}
+	}
+
+	private static void selectParentGroupBoxIfAny(DiagramModel model, DiagramComponent diagramComponent, DiagramFactor diagramFactor) throws Exception
+	{
+		ORefList groupBoxReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for (int refIndex = 0; refIndex < groupBoxReferrerRefs.size(); ++refIndex)
+		{
+			FactorCell groupBoxCell = model.getFactorCellByRef(groupBoxReferrerRefs.get(refIndex));
+			diagramComponent.addSelectionCell(groupBoxCell);
 		}
 	}
 }

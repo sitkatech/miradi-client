@@ -581,6 +581,11 @@ public class DiagramModel extends DefaultGraphModel
 		return (rawGetFactorByWrappedId(id) != null);
 	}
 	
+	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
+	{
+		return getFactorCellById(new DiagramFactorId(diagramFactorRef.getObjectId().asInt()));
+	}
+	
 	public FactorCell getFactorCellById(DiagramFactorId id) throws Exception
 	{
 		FactorCell node = rawGetFactorById(id);
