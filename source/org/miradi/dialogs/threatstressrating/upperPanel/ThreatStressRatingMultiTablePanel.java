@@ -46,7 +46,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private void addTablesToSelectionController()
 	{
-		selectionController.addTable(threatTable);
+		selectionController.addTable(threatNameTable);
 		selectionController.addTable(targetThreatLinkTable);
 		selectionController.addTable(threatSummaryColumnTable);
 	}
@@ -54,7 +54,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	private void createTables() throws Exception
 	{
 		threatTableModel = new ThreatNameColumnTableModel(getProject());
-		threatTable = new ThreatNameColumnTable(threatTableModel);
+		threatNameTable = new ThreatNameColumnTable(threatTableModel);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
@@ -76,10 +76,10 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	{		
 		JPanel mainPanel = new JPanel(new GridBagLayout());
 		
-		JScrollPane threatTableScroller = new FixedWidthScrollPaneWithInvisibleVerticalScrollBar(threatTable);
+		JScrollPane threatTableScroller = new FixedWidthScrollPaneWithInvisibleVerticalScrollBar(threatNameTable);
 		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(threatTableScroller);
-		addRowHeightControlledTable(threatTable);
+		addRowHeightControlledTable(threatNameTable);
 		
 		JScrollPane targetThreatLinkTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetThreatLinkTable);
 		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -162,7 +162,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	}
 	
 	private ThreatNameColumnTableModel threatTableModel;
-	private ThreatNameColumnTable threatTable;
+	private ThreatNameColumnTable threatNameTable;
 	private TargetThreatLinkTableModel targetThreatLinkTableModel;
 	private TargetThreatLinkTable targetThreatLinkTable;
 	
