@@ -52,9 +52,11 @@ public class ActivityListTablePanel extends ObjectListTablePanelWithParent
 	{
 		super.commandExecuted(event);
 		
+		ORef selectedObjectRef = getSelectedObject().getRef();
 		if (event.isSetDataCommandWithThisTypeAndTag(Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
 		{
 			getTable().getObjectTableModel().resetRows();
 		}
+		getTable().setSelectedRow(selectedObjectRef);
 	}
 }
