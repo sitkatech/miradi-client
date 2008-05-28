@@ -77,7 +77,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (getObjectTableModel().isCodeListColumn(modelColumn))
 		{
-			codeListRenderer.setQuestion(getObjectTableModel().getColumnQuestion(tableColumn));
+			codeListRenderer.setQuestion(getObjectTableModel().getColumnQuestion(modelColumn));
 			return codeListRenderer;
 		}
 		
