@@ -53,8 +53,8 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private void createTables() throws Exception
 	{
-		threatTableModel = new ThreatNameColumnTableModel(getProject());
-		threatNameTable = new ThreatNameColumnTable(threatTableModel);
+		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
+		threatNameTable = new ThreatNameColumnTable(threatNameTableModel);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
@@ -161,7 +161,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
 	}
 	
-	private ThreatNameColumnTableModel threatTableModel;
+	private ThreatNameColumnTableModel threatNameTableModel;
 	private ThreatNameColumnTable threatNameTable;
 	private TargetThreatLinkTableModel targetThreatLinkTableModel;
 	private TargetThreatLinkTable targetThreatLinkTable;
