@@ -133,13 +133,13 @@ public class SelectChainDoer extends ViewDoer
 		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 
-	private static void selectFactors(DiagramComponent diagaramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
+	private static void selectFactors(DiagramComponent diagramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
 	{
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
 			FactorCell nodeToSelect = model.getFactorCellByWrappedId((FactorId)chainNodes[i].getId());
-			diagaramComponent.addSelectionCell(nodeToSelect);
+			diagramComponent.addSelectionCell(nodeToSelect);
 		}
 	}
 }
