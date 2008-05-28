@@ -19,13 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.activity;
 
+import org.miradi.actions.ActionActivityMoveDown;
+import org.miradi.actions.ActionActivityMoveUp;
 import org.miradi.actions.ActionCreateActivity;
 import org.miradi.actions.ActionDeleteActivity;
 import org.miradi.actions.ActionShareActivity;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanelWithParent;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 
 public class ActivityListTablePanel extends ObjectListTablePanelWithParent
@@ -39,5 +43,18 @@ public class ActivityListTablePanel extends ObjectListTablePanelWithParent
 		ActionCreateActivity.class,
 		ActionDeleteActivity.class,
 		ActionShareActivity.class,
+		ActionActivityMoveUp.class,
+		ActionActivityMoveDown.class,
 	};
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
+		{
+			getTable().getObjectTableModel().resetRows();
+		}
+	}
 }

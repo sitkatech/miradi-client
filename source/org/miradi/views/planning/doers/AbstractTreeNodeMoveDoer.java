@@ -39,7 +39,7 @@ import org.miradi.views.planning.RowManager;
 
 abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 {
-	abstract int getDelta();
+	protected abstract int getDelta();
 	
 	public boolean isAvailable()
 	{
@@ -101,7 +101,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		
 	}
 
-	Task getSingleSelectedTask()
+	protected Task getSingleSelectedTask()
 	{
 		BaseObject selected = getSingleSelectedObject();
 		if(selected == null)
@@ -162,4 +162,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
 		return (visibleRowCodes.contains(task.getParentTypeCode()));
 	}
+	
+	protected static final int DELTA_UP_VALUE = -1;
+	protected static final int DELTA_DOWN_VALUE = 1;	
 }
