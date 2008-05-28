@@ -271,12 +271,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		
 		public void mouseClicked(MouseEvent e) 
 		{
-			int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
-			if (clickedColumn < 0)
+			int clickedTableColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
+			if (clickedTableColumn < 0)
 				return;
 			
-			int sortColumn = ((JTableHeader)e.getSource()).getTable().convertColumnIndexToModel(clickedColumn);
-			sortByTableColumn(sortColumn);
+			sortByTableColumn(clickedTableColumn);
 		}
 
 		private void sortByTableColumn(int sortColumn)
