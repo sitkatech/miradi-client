@@ -31,6 +31,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
 import org.martus.swing.Utilities;
+import org.miradi.actions.ActionActivityMoveDown;
+import org.miradi.actions.ActionActivityMoveUp;
 import org.miradi.actions.ActionCloneGoal;
 import org.miradi.actions.ActionCloneIndicator;
 import org.miradi.actions.ActionCloneObjective;
@@ -150,6 +152,8 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
+import org.miradi.views.diagram.doers.ActivityMoveDownDoer;
+import org.miradi.views.diagram.doers.ActivityMoveUpDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
@@ -358,6 +362,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateSubTarget.class, new CreateSubTargetDoer());
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
+		
+		addDoerToMap(ActionActivityMoveUp.class, new ActivityMoveUpDoer());
+		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
 	}
 	
 	public void tabWasSelected()

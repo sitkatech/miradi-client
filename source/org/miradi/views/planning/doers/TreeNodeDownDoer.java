@@ -22,9 +22,8 @@ package org.miradi.views.planning.doers;
 
 public class TreeNodeDownDoer extends AbstractTreeNodeMoveDoer
 {
-	int getDelta()
+	protected int getDelta()
 	{
-		return 1;
+		return DELTA_DOWN_VALUE;
 	}
-
 }
