@@ -25,14 +25,19 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener
+public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener, TableColumnModelListener 
 {
 	public ThreatStressRatingMultiTablePanel(Project projectToUse) throws Exception
 	{
@@ -55,6 +60,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	{
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(threatNameTableModel);
+		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(targetThreatLinkTableModel);
@@ -71,12 +77,16 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		overallProjectSummaryCellTable.resizeTable(1);
 	}
 
+	private void listenForColumnWidthChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(this);
+	}
 	
 	private void addTableToGridBag()
 	{		
 		JPanel mainPanel = new JPanel(new GridBagLayout());
 		
-		JScrollPane threatTableScroller = new FixedWidthScrollPaneWithInvisibleVerticalScrollBar(threatNameTable);
+		JScrollPane threatTableScroller = new AdjustableScrollPaneWithInvisibleVerticalScrollBar(threatNameTable);
 		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(threatTableScroller);
 		addRowHeightControlledTable(threatNameTable);
@@ -159,6 +169,38 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
+	}
+	
+	//FIXME this is duplicate code from planning tree table multiple panel
+	// Begin TableColumnModelListener
+	public void columnAdded(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnMarginChanged(ChangeEvent e)
+	{
+		resizeTablesToExactlyFitAllColumns();
+	}
+
+	public void columnMoved(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnRemoved(TableColumnModelEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+
+	public void columnSelectionChanged(ListSelectionEvent e)
+	{
+		// NOTE: We only care about margin changed (column resize) events
+	}
+	
+	private void resizeTablesToExactlyFitAllColumns() 
+	{
+		validate();
 	}
 	
 	private ThreatNameColumnTableModel threatNameTableModel;

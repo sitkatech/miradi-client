@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatstressrating.upperPanel;
 
+import javax.swing.JTable;
+
 import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 
 
@@ -28,6 +30,7 @@ public class ThreatNameColumnTable extends AbstractTableWithChoiceItemRenderer
 	{
 		super(tableModel);
 		getColumnModel().getColumn(0).setCellRenderer(new BasicTableCellRenderer());
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 		
 	public String getUniqueTableIdentifier()
