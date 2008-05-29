@@ -26,18 +26,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
 
+import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener, TableColumnModelListener 
+public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
 {
 	public ThreatStressRatingMultiTablePanel(Project projectToUse) throws Exception
 	{
@@ -79,7 +76,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 
 	private void listenForColumnWidthChanges(JTable table)
 	{
-		table.getColumnModel().addColumnModelListener(this);
+		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
 	private void addTableToGridBag()
@@ -169,38 +166,6 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		targetThreatLinkTable.getSelectionModel().removeListSelectionListener(listener);
-	}
-	
-	//FIXME this is duplicate code from planning tree table multiple panel
-	// Begin TableColumnModelListener
-	public void columnAdded(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnMarginChanged(ChangeEvent e)
-	{
-		resizeTablesToExactlyFitAllColumns();
-	}
-
-	public void columnMoved(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnRemoved(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnSelectionChanged(ListSelectionEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-	
-	private void resizeTablesToExactlyFitAllColumns() 
-	{
-		validate();
 	}
 	
 	private ThreatNameColumnTableModel threatNameTableModel;

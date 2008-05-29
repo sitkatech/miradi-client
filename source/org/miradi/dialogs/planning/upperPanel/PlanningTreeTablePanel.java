@@ -26,10 +26,6 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -42,6 +38,7 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.main.AppPreferences;
@@ -69,7 +66,7 @@ import org.miradi.views.planning.PlanningView;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 import com.jhlabs.awt.BasicGridLayout;
 
-public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener, TableColumnModelListener
+public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
@@ -139,7 +136,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	
 	private void listenForColumnWidthChanges(JTable table)
 	{
-		table.getColumnModel().addColumnModelListener(this);
+		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
 	private void turnOffVerticalHorizontalScrolling(MiradiScrollPane scrollPaneToUse)
@@ -307,43 +304,11 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		return multiTableExporter;
 	}
 	
-	private void resizeTablesToExactlyFitAllColumns() 
-	{
-		validate();
-	}
-	
-	
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
 		mainScrollPane.processMouseWheelEvent(e);
 	}
 	
-	// Begin TableColumnModelListener
-	public void columnAdded(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnMarginChanged(ChangeEvent e)
-	{
-		resizeTablesToExactlyFitAllColumns();
-	}
-
-	public void columnMoved(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnRemoved(TableColumnModelEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
-	public void columnSelectionChanged(ListSelectionEvent e)
-	{
-		// NOTE: We only care about margin changed (column resize) events
-	}
-
 	private PlanningViewFontProvider fontProvider;
 	private JPanel mainPanel;
 	private MultipleTableSelectionController selectionController;
