@@ -23,9 +23,9 @@ import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererWithGrayCells;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.utils.TableWithRowHeightSaver;
+import org.miradi.utils.TableWithColumnWidthSaver;
 
-abstract public class AbstractTableWithChoiceItemRenderer extends TableWithRowHeightSaver
+abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
 {
 	public AbstractTableWithChoiceItemRenderer(TableModel model)
 	{

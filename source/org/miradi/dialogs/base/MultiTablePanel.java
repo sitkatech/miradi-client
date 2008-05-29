@@ -88,14 +88,19 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		}
 	}
 	
-	public class FixedWidthScrollPaneWithInvisibleVerticalScrollBar extends FixedWidthScrollPane
+	public class AdjustableScrollPaneWithInvisibleVerticalScrollBar extends FixedWidthScrollPane
 	{
-		public FixedWidthScrollPaneWithInvisibleVerticalScrollBar(JComponent contentToUse)
+		public AdjustableScrollPaneWithInvisibleVerticalScrollBar(JComponent contentToUse)
 		{
 			super(contentToUse);
 			HideableScrollBar hideableScrollBar = new HideableScrollBar();
 			hideableScrollBar.visible = false;
 			setVerticalScrollBar(hideableScrollBar);
+		}
+		
+		public Dimension getPreferredSize()
+		{
+			return content.getPreferredSize();
 		}
 	}
 	
@@ -125,7 +130,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 			return new Dimension(120, preferredSize.height);
 		}
 			
-		private Component content;
+		protected Component content;
 	}
 
 	public class FixedHeightScrollPane extends MiradiScrollPane
