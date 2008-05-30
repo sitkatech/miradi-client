@@ -109,11 +109,6 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return diagramLinks;
 	}
 	
-	protected int getVerticalCenter(Rectangle bounds)
-	{
-		return (int) bounds.getCenterY();
-	}
-
 	private boolean isAtleastOneSelectedFactor()
 	{
 		return getSelectedDiagramFactors().size() > 0;
@@ -142,7 +137,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	private Point getJunctionPoint(Rectangle diagramFactorBounds)
 	{
-		int verticalCenteredY = getVerticalCenter(diagramFactorBounds);
+		int verticalCenteredY = (int) diagramFactorBounds.getCenterY();
 		Point junctionPoint = new Point(calculateJunctionX(diagramFactorBounds), verticalCenteredY);
 		
 		return getProject().getSnapped(junctionPoint);
