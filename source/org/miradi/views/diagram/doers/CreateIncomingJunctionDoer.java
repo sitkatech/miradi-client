@@ -44,7 +44,7 @@ public class CreateIncomingJunctionDoer extends AbstractCreateJunctionDoer
 		Dimension size = diagramFactor.getSize();
 		
 		int junctionX = location.x - JUNCTION_DISTANCE_FROM_FACTOR;
-		int junctionY = getYOfMiddleOfHeight(location, size);
+		int junctionY = getVerticalCenter(location, size);
 		
 		return new Point(junctionX, junctionY);
 	}

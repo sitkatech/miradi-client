@@ -109,7 +109,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return diagramLinks;
 	}
 	
-	protected int getYOfMiddleOfHeight(Point location, Dimension size)
+	protected int getVerticalCenter(Point location, Dimension size)
 	{
 		int middleOfHeight = size.height / 2;
 		return location.y + middleOfHeight;
