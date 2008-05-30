@@ -38,6 +38,6 @@ public class CreateOutgoingJunctionDoer extends AbstractCreateJunctionDoer
 	
 	protected int calculateJunctionX(Rectangle bounds)
 	{
-		return bounds.x + bounds.width + JUNCTION_DISTANCE_FROM_FACTOR;
+		return (int) bounds.getMaxX() + JUNCTION_DISTANCE_FROM_FACTOR;
 	}
 }
