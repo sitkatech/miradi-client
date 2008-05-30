@@ -95,8 +95,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	private EAMDialog createDialog()
 	{
-		String title = EAM.substitute("Title|%s", viewTitle);
-		return new EAMDialog(mainWindow, title);
+		return new EAMDialog(mainWindow, viewTitle);
 	}
 
 	private void showDialog(EAMDialog dlg)
