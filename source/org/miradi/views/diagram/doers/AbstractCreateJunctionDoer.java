@@ -145,7 +145,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	abstract protected void setBendPoint(PointList bendPoints, Point junctionPointToInsert);
 	
-	protected abstract Point getJunctionPoint(DiagramFactor diagramFactor);
+	abstract protected Point getJunctionPoint(DiagramFactor diagramFactor);
 		
 	protected static final int JUNCTION_DISTANCE_FROM_FACTOR = Project.DEFAULT_GRID_SIZE * 4;
 }
