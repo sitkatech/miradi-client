@@ -53,7 +53,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 	{
 		try
 		{
-			String title = "Information";
+			String title = EAM.text("Title|Information");
 			new HtmlViewPanelWithMargins(getMainWindow(), title, getResourceBaseClass(), buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
