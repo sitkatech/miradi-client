@@ -583,7 +583,10 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
-		return getFactorCellById(new DiagramFactorId(diagramFactorRef.getObjectId().asInt()));
+		int idAsInt = diagramFactorRef.getObjectId().asInt();
+		DiagramFactorId diagramFactorId = new DiagramFactorId(idAsInt);
+		
+		return getFactorCellById(diagramFactorId);
 	}
 	
 	public FactorCell getFactorCellById(DiagramFactorId id) throws Exception
