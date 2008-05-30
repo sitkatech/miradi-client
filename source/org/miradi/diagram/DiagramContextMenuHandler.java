@@ -33,6 +33,8 @@ import org.martus.swing.UiPopupMenu;
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionCreateBendPoint;
+import org.miradi.actions.ActionCreateIncomingJunction;
+import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionCreateResultsChain;
 import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDelete;
@@ -98,6 +100,9 @@ public class DiagramContextMenuHandler
 		MainWindowAction objectsAction = actions.getMainWindowAction(ActionDeleteBendPoint.class);
 		if (objectsAction.isEnabled())
 			menu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
+		
+		menu.add(createMenuItem(ActionCreateIncomingJunction.class, menuInvokedAt));
+		menu.add(createMenuItem(ActionCreateOutgoingJunction.class, menuInvokedAt));
 		
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));

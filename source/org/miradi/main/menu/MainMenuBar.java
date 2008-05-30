@@ -39,6 +39,8 @@ import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionCopyProjectTo;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateConceptualModel;
+import org.miradi.actions.ActionCreateIncomingJunction;
+import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionCreateResultsChain;
 import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDatabasesDemo;
@@ -235,6 +237,9 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
 		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
+		
+		addMenuItem(actions, menu, ActionCreateIncomingJunction.class, KeyEvent.VK_J);
+		addMenuItem(actions, menu, ActionCreateOutgoingJunction.class, KeyEvent.VK_O);
 		
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
