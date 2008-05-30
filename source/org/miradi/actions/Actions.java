@@ -264,6 +264,9 @@ public class Actions
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
 		
+		registerAction(new ActionCreateIncomingJunction(mainWindow));
+		registerAction(new ActionCreateOutgoingJunction(mainWindow));
+		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));

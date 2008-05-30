@@ -75,6 +75,7 @@ import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
+import org.miradi.actions.ActionCreateIncomingJunction;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
@@ -92,6 +93,7 @@ import org.miradi.actions.ActionNudgeDown;
 import org.miradi.actions.ActionNudgeLeft;
 import org.miradi.actions.ActionNudgeRight;
 import org.miradi.actions.ActionNudgeUp;
+import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionPaste;
 import org.miradi.actions.ActionPasteFactorContent;
 import org.miradi.actions.ActionPasteWithoutLinks;
@@ -155,6 +157,8 @@ import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.ActivityMoveDownDoer;
 import org.miradi.views.diagram.doers.ActivityMoveUpDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
+import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
+import org.miradi.views.diagram.doers.CreateOutGoingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
 import org.miradi.views.diagram.doers.DeleteGroupBoxDoer;
@@ -365,6 +369,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionActivityMoveUp.class, new ActivityMoveUpDoer());
 		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
+		
+		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
+		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutGoingJunctionDoer());
 	}
 	
 	public void tabWasSelected()
