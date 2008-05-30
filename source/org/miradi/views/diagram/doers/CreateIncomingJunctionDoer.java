@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.miradi.objects.FactorLink;
@@ -32,9 +31,9 @@ public class CreateIncomingJunctionDoer extends AbstractCreateJunctionDoer
 		return FactorLink.TO;
 	}
 	
-	protected void setBendPoint(PointList bendPoints, Point junctionPointToInsert)
+	protected int getClosestBendPointIndex(PointList bendPoints)
 	{
-		bendPoints.set(bendPoints.size() - 1, junctionPointToInsert);
+		return bendPoints.size() - 1;
 	}
 	
 	protected int calculateJunctionX(Rectangle bounds)
