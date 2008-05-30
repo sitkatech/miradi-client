@@ -80,8 +80,7 @@ public class PropertiesDoer extends LocationDoer
 
 		try
 		{
-			EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
-
+			EAMGraphCell selected = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
 			if(selected.isFactor())
 				doFactorProperties((FactorCell)selected, getLocation());
 
