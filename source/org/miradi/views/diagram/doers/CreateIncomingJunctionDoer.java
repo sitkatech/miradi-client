@@ -19,20 +19,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.exceptions.CommandFailedException;
+import java.awt.Dimension;
+import java.awt.Point;
+
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.FactorLink;
 
 public class CreateIncomingJunctionDoer extends AbstractCreateJunctionDoer
 {
-
-	@Override
-	public void doIt() throws CommandFailedException
+	protected int getDirection()
 	{
+		return FactorLink.TO;
 	}
-
-	@Override
-	public boolean isAvailable()
+	
+	protected Point getJunctionPoint(DiagramFactor diagramFactor)
 	{
-		return false;
+		Point location = diagramFactor.getLocation();
+		Dimension size = diagramFactor.getSize();
+		
+		int junctionX = location.x - JUNCTION_DISTANCE_FROM_FACTOR;
+		int junctionY = getYOfMiddleOfHeight(location, size);
+		
+		return new Point(junctionX, junctionY);
 	}
-
 }

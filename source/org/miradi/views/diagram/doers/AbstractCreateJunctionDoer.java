@@ -19,14 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Vector;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.project.Project;
+import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LocationDoer;
 
 abstract public class AbstractCreateJunctionDoer extends LocationDoer
@@ -40,6 +48,52 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return isAtleastOneSelectedFactor();
 	}
 
+	@Override
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+		
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			Vector<DiagramFactor> diagramFactors = getSelectedDiagramFactors();
+			for (int index = 0; index < diagramFactors.size(); ++index)
+			{
+				createJunction(diagramFactors.get(index));
+			}		
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+
+	private void createJunction(DiagramFactor diagramFactor) throws CommandFailedException
+	{
+		Vector<DiagramLink> outgoingDiagramLinks = getDiagramLinks(diagramFactor, getDirection());
+		for (int index = 0; index < outgoingDiagramLinks.size(); ++index)
+		{
+			createJunction(diagramFactor, outgoingDiagramLinks.get(index));
+		}
+	}
+	
+	private void createJunction(DiagramFactor diagramFactor, DiagramLink diagramLink) throws CommandFailedException
+	{
+		Point junctionPoint = getJunctionPoint(diagramFactor);
+		PointList bendPoints = new PointList(diagramLink.getBendPoints());
+		if (bendPoints.contains(junctionPoint))
+			return; 
+		
+		if (bendPoints.size() > 0)
+			bendPoints.set(0, junctionPoint);
+		else
+			bendPoints.add(junctionPoint);
+		
+		CommandSetObjectData setBendPoints = new CommandSetObjectData(diagramLink, DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
+		getProject().executeCommand(setBendPoints);
+	}
+	
 	protected Vector<DiagramLink> getDiagramLinks(DiagramFactor diagramFactor, int direction)
 	{
 		Vector<DiagramLink> diagramLinks = new Vector<DiagramLink>();
@@ -53,6 +107,12 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		}
 		
 		return diagramLinks;
+	}
+	
+	protected int getYOfMiddleOfHeight(Point location, Dimension size)
+	{
+		int middleOfHeigth = size.height / 2;
+		return location.y + middleOfHeigth;
 	}
 
 	private boolean isAtleastOneSelectedFactor()
@@ -80,4 +140,10 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	{
 		return getDiagramView().getDiagramComponent().getSelectedAndRelatedCells();
 	}
+	
+	protected abstract Point getJunctionPoint(DiagramFactor diagramFactor);
+	
+	abstract protected int getDirection();
+	
+	protected static final int JUNCTION_DISTANCE_FROM_FACTOR = Project.DEFAULT_GRID_SIZE * 4;
 }
