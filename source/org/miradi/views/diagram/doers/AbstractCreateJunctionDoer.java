@@ -86,7 +86,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 			return; 
 		
 		if (bendPoints.size() > 0)
-			setBendPoint(bendPoints, junctionPoint);
+			bendPoints.set(getClosestBendPointIndex(bendPoints), junctionPoint);
 		else
 			bendPoints.add(junctionPoint);
 		
@@ -151,7 +151,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	abstract protected int getDirection();
 	
-	abstract protected void setBendPoint(PointList bendPoints, Point junctionPointToInsert);
+	abstract protected int getClosestBendPointIndex(PointList bendPoints);
 	
 	abstract protected int calculateJunctionX(Rectangle bounds);
 		
