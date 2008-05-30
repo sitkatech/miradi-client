@@ -583,6 +583,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
+		if (diagramFactorRef.getObjectType() != DiagramFactor.getObjectType())
+			throw new RuntimeException("Trying to create a DiagramFactorId from a non diagramFactor type id");
+		
 		int idAsInt = diagramFactorRef.getObjectId().asInt();
 		DiagramFactorId diagramFactorId = new DiagramFactorId(idAsInt);
 		
