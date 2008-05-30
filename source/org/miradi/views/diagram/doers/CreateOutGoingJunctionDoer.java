@@ -26,8 +26,6 @@ import java.util.Vector;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -46,13 +44,11 @@ public class CreateOutGoingJunctionDoer extends AbstractCreateJunctionDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			EAMGraphCell[] selectedCells = getSelectedCells();
-			for (int cellIndex = 0; cellIndex < selectedCells.length; ++cellIndex)
+			Vector<DiagramFactor> diagramFactors = getSelectedDiagramFactors();
+			for (int index = 0; index < diagramFactors.size(); ++index)
 			{
-				EAMGraphCell graphCell = selectedCells[cellIndex];
-				if (graphCell.isFactor())
-					createOutgoingJunction((FactorCell) graphCell);
-			}
+				createOutgoingJunction(diagramFactors.get(index));
+			}		
 		}
 		finally
 		{
@@ -60,9 +56,8 @@ public class CreateOutGoingJunctionDoer extends AbstractCreateJunctionDoer
 		}
 	}
 
-	private void createOutgoingJunction(FactorCell factorCell) throws CommandFailedException
+	private void createOutgoingJunction(DiagramFactor diagramFactor) throws CommandFailedException
 	{
-		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
 		Vector<DiagramLink> outgoingDiagramLinks = getDiagramLinks(diagramFactor, FactorLink.FROM);
 		for (int index = 0; index < outgoingDiagramLinks.size(); ++index)
 		{
@@ -77,7 +72,7 @@ public class CreateOutGoingJunctionDoer extends AbstractCreateJunctionDoer
 		if (bendPoints.contains(junctionPoint))
 			return; 
 		
-		if (bendPoints.size() > 1)
+		if (bendPoints.size() > 0)
 			bendPoints.set(0, junctionPoint);
 		else
 			bendPoints.add(junctionPoint);

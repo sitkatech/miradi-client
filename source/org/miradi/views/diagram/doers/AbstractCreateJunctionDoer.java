@@ -22,6 +22,7 @@ package org.miradi.views.diagram.doers;
 import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -56,14 +57,23 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 
 	private boolean isAtleastOneSelectedFactor()
 	{
+		return getSelectedDiagramFactors().size() > 0;
+	}
+
+	protected Vector<DiagramFactor> getSelectedDiagramFactors()
+	{
+		Vector<DiagramFactor> diagramFactors = new Vector();
 		EAMGraphCell[] cells = getSelectedCells();
 		for (int index = 0; index < cells.length; ++index)
 		{
 			if (cells[index].isFactor())
-				return true;
+			{
+				FactorCell factorCell = ((FactorCell)cells[index]);
+				diagramFactors.add(factorCell.getDiagramFactor());
+			}
 		}
 		
-		return false;
+		return diagramFactors;
 	}
 	
 	protected EAMGraphCell[] getSelectedCells()
