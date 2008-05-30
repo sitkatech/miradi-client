@@ -144,7 +144,9 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	private Point getJunctionPoint(Rectangle diagramFactorBounds)
 	{
 		int verticalCentenerdY = getVerticalCenter(diagramFactorBounds);
-		return new Point(calculateJunctionX(diagramFactorBounds), verticalCentenerdY);
+		Point junctionPoint = new Point(calculateJunctionX(diagramFactorBounds), verticalCentenerdY);
+		
+		return getProject().getSnapped(junctionPoint);
 	}
 	
 	abstract protected int getDirection();
