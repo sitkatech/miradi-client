@@ -158,7 +158,7 @@ import org.miradi.views.diagram.doers.ActivityMoveDownDoer;
 import org.miradi.views.diagram.doers.ActivityMoveUpDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
-import org.miradi.views.diagram.doers.CreateOutGoingJunctionDoer;
+import org.miradi.views.diagram.doers.CreateOutgoingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
 import org.miradi.views.diagram.doers.DeleteGroupBoxDoer;
@@ -371,7 +371,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
 		
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
-		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutGoingJunctionDoer());
+		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
 	}
 	
 	public void tabWasSelected()
