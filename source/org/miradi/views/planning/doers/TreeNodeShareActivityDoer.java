@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
@@ -30,20 +29,15 @@ public class TreeNodeShareActivityDoer extends ShareActivityDoer
 	@Override
 	public boolean isAvailable()
 	{
-		BaseObject selectedObject = getSingleSelected(Strategy.getObjectType());
-		if (selectedObject == null )
-			return false;
-		
-		return Strategy.is(selectedObject.getRef());
+		return getSingleSelected(Strategy.getObjectType()) != null;
 	}
 	
 	protected ORef getParentRefOfShareableObjects()
 	{
-		ORefList[] selectedHierarchies = getSelectedHierarchies();
-		if (selectedHierarchies.length != 1)
+		BaseObject foundObject = getSingleSelected(Strategy.getObjectType());
+		if (foundObject == null)
 			return ORef.INVALID;
 		
-		ORefList selectedHierarchy = selectedHierarchies[0];
-		return selectedHierarchy.getRefForType(Strategy.getObjectType());
+		return foundObject.getRef();
 	}
 }
