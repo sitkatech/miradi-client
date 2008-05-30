@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.utils.HtmlViewPanel;
@@ -34,7 +35,7 @@ public class ViewLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDo
 		
 		BaseObject strategy = getSingleSelected(Strategy.getObjectType());
 		String legacyRankingData = strategy.getData(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), "View...", legacyRankingData, null);
+		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Title|View..."), legacyRankingData, null);
 		htmlViwer.showAsModelessOkDialog();
 	}
 }
