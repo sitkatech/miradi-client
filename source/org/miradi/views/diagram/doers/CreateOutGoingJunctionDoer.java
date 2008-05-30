@@ -24,12 +24,18 @@ import java.awt.Point;
 
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.FactorLink;
+import org.miradi.utils.PointList;
 
 public class CreateOutGoingJunctionDoer extends AbstractCreateJunctionDoer
 {
 	protected int getDirection()
 	{
 		return FactorLink.FROM;
+	}
+	
+	protected void setBendPoint(PointList bendPoints, Point junctionPointToInsert)
+	{
+		bendPoints.set(0, junctionPointToInsert);
 	}
 	
 	protected Point getJunctionPoint(DiagramFactor diagramFactor)
