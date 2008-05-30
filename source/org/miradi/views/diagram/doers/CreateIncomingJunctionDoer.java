@@ -19,10 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.FactorLink;
 import org.miradi.utils.PointList;
 
@@ -38,14 +37,8 @@ public class CreateIncomingJunctionDoer extends AbstractCreateJunctionDoer
 		bendPoints.set(bendPoints.size() - 1, junctionPointToInsert);
 	}
 	
-	protected Point getJunctionPoint(DiagramFactor diagramFactor)
-	{
-		Point location = diagramFactor.getLocation();
-		Dimension size = diagramFactor.getSize();
-		
-		int junctionX = location.x - JUNCTION_DISTANCE_FROM_FACTOR;
-		int junctionY = getVerticalCenter(location, size);
-		
-		return new Point(junctionX, junctionY);
+	protected int calculateJunctionX(Rectangle bounds)
+	{		
+		return bounds.x - JUNCTION_DISTANCE_FROM_FACTOR;
 	}
 }
