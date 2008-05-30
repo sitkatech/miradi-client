@@ -80,15 +80,15 @@ public class PropertiesDoer extends LocationDoer
 
 		try
 		{
-			EAMGraphCell firstClickedCell = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
-			if(firstClickedCell.isFactor())
-				doFactorProperties((FactorCell)firstClickedCell, getLocation());
+			EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+			if(topCellAtClickPoint.isFactor())
+				doFactorProperties((FactorCell)topCellAtClickPoint, getLocation());
 
-			else if(firstClickedCell.isProjectScope())
+			else if(topCellAtClickPoint.isProjectScope())
 				doProjectScopeProperties();
 
-			else if(firstClickedCell.isFactorLink())
-				doFactorLinkProperties(firstClickedCell.getDiagramLink());
+			else if(topCellAtClickPoint.isFactorLink())
+				doFactorLinkProperties(topCellAtClickPoint.getDiagramLink());
 		}
 		catch (Exception e)
 		{
