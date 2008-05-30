@@ -111,8 +111,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	protected int getVerticalCenter(Rectangle bounds)
 	{
-		int middleOfHeight = bounds.height / 2;
-		return bounds.y + middleOfHeight;
+		return (int) bounds.getCenterY();
 	}
 
 	private boolean isAtleastOneSelectedFactor()
