@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
@@ -80,7 +80,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	private void createJunction(DiagramFactor diagramFactor, DiagramLink diagramLink) throws CommandFailedException
 	{
-		Point junctionPoint = getJunctionPoint(diagramFactor);
+		Point junctionPoint = getJunctionPoint(diagramFactor.getBounds());
 		PointList bendPoints = new PointList(diagramLink.getBendPoints());
 		if (bendPoints.contains(junctionPoint))
 			return; 
@@ -109,10 +109,10 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return diagramLinks;
 	}
 	
-	protected int getVerticalCenter(Point location, Dimension size)
+	protected int getVerticalCenter(Rectangle bounds)
 	{
-		int middleOfHeight = size.height / 2;
-		return location.y + middleOfHeight;
+		int middleOfHeight = bounds.height / 2;
+		return bounds.y + middleOfHeight;
 	}
 
 	private boolean isAtleastOneSelectedFactor()
@@ -141,11 +141,17 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 		return getDiagramView().getDiagramComponent().getSelectedAndRelatedCells();
 	}
 	
+	private Point getJunctionPoint(Rectangle diagramFactorBounds)
+	{
+		int verticalCentenerdY = getVerticalCenter(diagramFactorBounds);
+		return new Point(calculateJunctionX(diagramFactorBounds), verticalCentenerdY);
+	}
+	
 	abstract protected int getDirection();
 	
 	abstract protected void setBendPoint(PointList bendPoints, Point junctionPointToInsert);
 	
-	abstract protected Point getJunctionPoint(DiagramFactor diagramFactor);
+	abstract protected int calculateJunctionX(Rectangle bounds);
 		
 	protected static final int JUNCTION_DISTANCE_FROM_FACTOR = Project.DEFAULT_GRID_SIZE * 4;
 }
