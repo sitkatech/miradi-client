@@ -111,8 +111,8 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	protected int getYOfMiddleOfHeight(Point location, Dimension size)
 	{
-		int middleOfHeigth = size.height / 2;
-		return location.y + middleOfHeigth;
+		int middleOfHeight = size.height / 2;
+		return location.y + middleOfHeight;
 	}
 
 	private boolean isAtleastOneSelectedFactor()
