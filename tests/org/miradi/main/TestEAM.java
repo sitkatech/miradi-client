@@ -40,7 +40,7 @@ public class TestEAM extends EAMTestCase
 		String goodFileName = "GoodFile_name";
 		assertFalse("should be valid file name?" , EAM.isIllegalFileName(goodFileName));
 		
-		String badFileName = "!@#$%^&*()<>,.?/:;''[]{}+=|\"`~";
+		String badFileName = "!@#$%^&*()<>,?/:;''[]{}+=|\"`~";
 		for (int i = 0; i < badFileName.length(); ++i)
 		{
 			String characterAsString = Character.toString(badFileName.charAt(i));
