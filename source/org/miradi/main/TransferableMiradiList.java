@@ -153,7 +153,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}
 	
-	public boolean atleastOneFactorExists() throws ParseException
+	public boolean atLeastOneClipboardMethodExistsInTargetProject() throws ParseException
 	{
 		if (project == null)
 			return false;
