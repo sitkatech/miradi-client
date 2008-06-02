@@ -29,7 +29,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
-public class Paste extends AbstractPasteDoer
+public class PasteDoer extends AbstractPasteDoer
 {
 	public void doIt() throws CommandFailedException
 	{
