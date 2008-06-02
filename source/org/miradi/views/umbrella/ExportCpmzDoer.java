@@ -86,6 +86,9 @@ public class ExportCpmzDoer extends MainWindowDoer
 		}
 		catch(Exception e)
 		{
+			// NOTE: If we created no zip entries, the finally will throw
+			// a generic exception instead of this one, so log this one
+			// while we have a chance
 			EAM.logException(e);
 			throw(e);
 		}
