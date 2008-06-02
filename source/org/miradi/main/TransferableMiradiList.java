@@ -35,12 +35,15 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectDeepCopier;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TransferableMiradiList implements Transferable, Serializable
 {
@@ -158,6 +161,21 @@ public class TransferableMiradiList implements Transferable, Serializable
 	public Vector<String> getFactorDeepCopies()
 	{
 		return factorDeepCopies;
+	}
+	
+	public ORefList getFactorRefs() throws Exception
+	{
+		ORefList factorRefs = new ORefList();
+		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		{
+			String jsonAsString = (String) factorDeepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int objectToBeFoundType = json.getInt("Type");
+			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
+			factorRefs.add(new ORef(objectToBeFoundType, objectToBeFoundId));
+		}
+		
+		return factorRefs;
 	}
 
 	public Vector getDiagramLinkDeepCopies()
