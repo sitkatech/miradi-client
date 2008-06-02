@@ -135,7 +135,7 @@ public class ReportXmlExporter extends XmlExporter
 	public Set<String> getFieldTagsToIncludeInXml(BaseObject foundObject)
 	{
 		HashSet<String> tagsToInclude = new HashSet();
-		foundObject.getStoredFieldTags().addAll(foundObject.getStoredFieldTags());
+		tagsToInclude.addAll(foundObject.getStoredFieldTags());
 		
 		return tagsToInclude;
 	}
