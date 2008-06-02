@@ -39,7 +39,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 		optionPane = new JOptionPane(new Object[]{new JLabel(message), textField}, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
 		
 		optionPane.addPropertyChangeListener(this);
-        setContentPane(optionPane);
+        getContentPane().add(optionPane);
         pack();
         Utilities.centerDlg(this);
         setVisible(true);
