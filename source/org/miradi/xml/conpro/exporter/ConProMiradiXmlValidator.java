@@ -37,6 +37,9 @@ public class ConProMiradiXmlValidator
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = EAM.getResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
+		if(resourceURL == null)
+			throw new Exception("Schema not found: " + MIRADI_CONPRO_SCHEMA_FILE_NAME);
+		
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
 		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);

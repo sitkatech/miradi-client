@@ -84,6 +84,11 @@ public class ExportCpmzDoer extends MainWindowDoer
 			addProjectAsMpzToZip(zipOut);
 			addDiagramImagesToZip(zipOut);
 		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw(e);
+		}
 		finally
 		{
 			zipOut.close();
