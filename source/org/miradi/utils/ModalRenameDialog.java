@@ -47,7 +47,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
  	}
 	
-	public String getUserValue()
+	public String getProjectName()
 	{
 		return userValue;
 	}
