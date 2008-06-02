@@ -71,7 +71,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			}
 			
-			String newName = RenameProjectDoer.askUserForProjectName(projectName);
+			String newName = RenameProjectDoer.askUserForProjectName(getMainWindow(), projectName);
 			if (newName == null)
 				return;
 			
