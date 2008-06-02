@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 
-public class PasteWithoutLinks extends Paste 
+public class PasteWithoutLinks extends PasteDoer 
 {
 	public void paste(DiagramPaster diagramPaster) throws Exception 
 	{
