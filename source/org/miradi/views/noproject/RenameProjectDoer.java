@@ -76,7 +76,7 @@ public class RenameProjectDoer
 	public static String askUserForProjectName(MainWindow mainWindow, String initialValue) throws Exception
 	{
 		ModalRenameDialog renameDialog = new ModalRenameDialog(mainWindow, "Enter New Project Name", initialValue);
-		String newName = renameDialog.getUserValue();
+		String newName = renameDialog.getProjectName();
 		if (newName == null)
 			return null;
 
