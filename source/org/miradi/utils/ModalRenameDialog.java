@@ -69,10 +69,10 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
     	else
     		userValue = textField.getText();	
     
-    	clearAndHide();      
+    	clearAndDispose();      
     }
 
-    public void clearAndHide() 
+    public void clearAndDispose() 
     {
         textField.setText(null);
         dispose();
