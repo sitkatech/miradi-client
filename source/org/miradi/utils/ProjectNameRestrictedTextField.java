@@ -30,24 +30,34 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 {
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super(initialValue);
+		super();
 		
 		setDocument(new RestrictedDocument());
+		setText(initialValue);
+		selectAll();
 	}
 
 	public class RestrictedDocument extends PlainDocument
 	{
 		public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 		{
+			String newValue = removeIllegalCharacters(offset, value, as);
+			super.insertString(offset, newValue, as);
+		}
+
+		private String removeIllegalCharacters(int offset, String value, AttributeSet as) throws BadLocationException
+		{
 			char[] asChars = value.toCharArray();
+			String newValue = "";
 			for (int index = 0; index < asChars.length; ++index)
 			{
 				if (EAM.isValidCharacter(asChars[index]))
 				{
-					super.insertString(offset, value, as);
+					newValue += asChars[index];
 				}
 			}
 			
+			return newValue;	
 		}
 	}
 }
