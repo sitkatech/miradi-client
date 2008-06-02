@@ -41,7 +41,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 		optionPane.addPropertyChangeListener(this);
         setContentPane(optionPane);
         pack();
-        Utilities.fitInScreen(this);
+        Utilities.centerDlg(this);
         setVisible(true);
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
