@@ -99,7 +99,7 @@ public class EAM
 		displayHtmlDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
 	}
 	
-	static public boolean isIllegalFileName(String candidate)
+	public static boolean isIllegalFileName(String candidate)
 	{
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < asArray.length; ++i)
@@ -111,8 +111,8 @@ public class EAM
 
 		return false;
 	}
-
-	private static boolean isValidCharacter(char c)
+	
+	public static boolean isValidCharacter(char c)
 	{
 		if (c == '_')
 			return true;
@@ -126,6 +126,7 @@ public class EAM
 		
 		if (c == ' ')
 			return true;
+		
 		return Character.isLetterOrDigit(c);
 	}
 

@@ -21,12 +21,12 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
-import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryLock;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.ModalRenameDialog;
 
 public class RenameProjectDoer
 {
@@ -49,7 +49,7 @@ public class RenameProjectDoer
 
 		try
 		{
-			String newName = askUserForProjectName(projectToRename.getName());
+			String newName = askUserForProjectName(mainWindow, projectToRename.getName());
 			if (newName == null)
 				return;
 
@@ -73,9 +73,10 @@ public class RenameProjectDoer
 		}
 	}
 
-	public static String askUserForProjectName(String initialValue) throws Exception
+	public static String askUserForProjectName(MainWindow mainWindow, String initialValue) throws Exception
 	{
-		String newName = UiOptionPane.showInputDialog("Enter New Project Name", initialValue);
+		ModalRenameDialog renameDialog = new ModalRenameDialog(mainWindow, "Enter New Project Name", initialValue);
+		String newName = renameDialog.getUserValue();
 		if (newName == null)
 			return null;
 
