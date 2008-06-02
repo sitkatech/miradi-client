@@ -41,7 +41,7 @@ public class Cut extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		Copy copyDoer = (Copy)getView().getDoer(ActionCopy.class);
+		CopyDoer copyDoer = (CopyDoer)getView().getDoer(ActionCopy.class);
 		DeleteSelectedItemDoer deleteDoer = (DeleteSelectedItemDoer)getView().getDoer(ActionDelete.class);
 		copyDoer.doIt();
 		deleteDoer.doIt();

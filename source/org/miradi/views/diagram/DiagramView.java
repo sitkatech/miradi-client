@@ -290,7 +290,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
 		addDoerToMap(ActionRenameResultsChain.class, new RenameResultsChainDoer());
 		addDoerToMap(ActionRenameConceptualModel.class, new RenameConceptualModelDoer());
-		addDoerToMap(ActionCopy.class, new Copy());
+		addDoerToMap(ActionCopy.class, new CopyDoer());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());
 		addDoerToMap(ActionDelete.class, new DeleteSelectedItemDoer());
