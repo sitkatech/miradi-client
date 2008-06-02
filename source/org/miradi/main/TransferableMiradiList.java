@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
@@ -37,13 +36,11 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectDeepCopier;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TransferableMiradiList implements Transferable, Serializable
 {
@@ -152,26 +149,6 @@ public class TransferableMiradiList implements Transferable, Serializable
 		Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}
-	
-	public boolean atLeastOneClipboardMethodExistsInTargetProject() throws ParseException
-	{
-		if (project == null)
-			return false;
-		
-		for (int i = 0; i < factorDeepCopies.size(); ++i)
-		{
-			String jsonAsString = (String) factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int objectToBeFoundType = json.getInt("Type");
-			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
-			BaseObject foundObject = project.findObject(new ORef(objectToBeFoundType, objectToBeFoundId));
-			if (foundObject != null)
-				return true;
-		}
-		
-		return false;
-	}
-
 	
 	public Vector getDiagramFactorDeepCopies()
 	{
