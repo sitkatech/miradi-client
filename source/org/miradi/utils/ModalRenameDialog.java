@@ -35,7 +35,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 	{
 		super(mainWindow, true);
 		
-		textField = new InputRestrictedTextField(initialValue);
+		textField = new ProjectNameRestrictedTextField(initialValue);
 		optionPane = new JOptionPane(new Object[]{new JLabel(message), textField}, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
 		
 		optionPane.addPropertyChangeListener(this);
@@ -74,6 +74,6 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
     }
     
     private JOptionPane optionPane;
-    private InputRestrictedTextField textField;
+    private ProjectNameRestrictedTextField textField;
     private String userValue;
 }

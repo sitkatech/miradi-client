@@ -26,9 +26,9 @@ import javax.swing.text.PlainDocument;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.main.EAM;
 
-public class InputRestrictedTextField extends PanelTextField
+public class ProjectNameRestrictedTextField extends PanelTextField
 {
-	public InputRestrictedTextField(String initialValue)
+	public ProjectNameRestrictedTextField(String initialValue)
 	{
 		super(initialValue);
 		
