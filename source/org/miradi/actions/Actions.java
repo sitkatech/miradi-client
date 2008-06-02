@@ -152,7 +152,6 @@ public class Actions
 		registerAction(new ActionInsertStrategy(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
-		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionCopyProjectTo(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 		registerAction(new ActionExportZippedProjectFile(mainWindow));
