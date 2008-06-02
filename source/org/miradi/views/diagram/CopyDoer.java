@@ -25,7 +25,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.views.ViewDoer;
 
-public class Copy extends ViewDoer
+public class CopyDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
