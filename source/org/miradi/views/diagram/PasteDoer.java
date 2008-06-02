@@ -19,18 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.text.ParseException;
-import java.util.Vector;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
 public class PasteDoer extends AbstractPasteDoer
@@ -78,7 +74,7 @@ public class PasteDoer extends AbstractPasteDoer
 		}
 	}
 
-	private String getUsersChoice(TransferableMiradiList list) throws ParseException
+	private String getUsersChoice(TransferableMiradiList list) throws Exception
 	{
 		if (! atLeastOneClipboardMethodExistsInTargetProject(list))
 			return AS_COPY_BUTTON;
@@ -146,16 +142,12 @@ public class PasteDoer extends AbstractPasteDoer
 		diagramPaster.wrapExistingLinksForDiagramFactorsInAllDiagramObjects();
 	}
 	
-	public boolean atLeastOneClipboardMethodExistsInTargetProject(TransferableMiradiList list) throws ParseException
+	public boolean atLeastOneClipboardMethodExistsInTargetProject(TransferableMiradiList list) throws Exception
 	{
-		Vector<String> factorDeepCopies = list.getFactorDeepCopies();
-		for (int i = 0; i < factorDeepCopies.size(); ++i)
+		ORefList factorRefs = list.getFactorRefs();
+		for (int i = 0; i < factorRefs.size(); ++i)
 		{
-			String jsonAsString = factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int objectToBeFoundType = json.getInt("Type");
-			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
-			BaseObject foundObject = getProject().findObject(new ORef(objectToBeFoundType, objectToBeFoundId));
+			BaseObject foundObject = getProject().findObject(factorRefs.get(i));
 			if (foundObject != null)
 				return true;
 		}
