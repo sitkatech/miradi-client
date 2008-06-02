@@ -31,7 +31,7 @@ import org.miradi.main.MainWindow;
 
 public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 {
-	public ModalRenameDialog(MainWindow mainWindow, String message, String initialValue)
+	private ModalRenameDialog(MainWindow mainWindow, String message, String initialValue)
 	{
 		super(mainWindow, true);
 		
@@ -46,6 +46,11 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
  	}
+	
+	public static String showDialog(MainWindow mainWindow, String message, String initialValue)
+	{
+		return new ModalRenameDialog(mainWindow, message, initialValue).getProjectName();
+	}
 	
 	public String getProjectName()
 	{
