@@ -19,49 +19,51 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.project.Project;
+import org.miradi.main.EAM;
+import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.views.ViewDoer;
 
-abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
+abstract public class AbstractFileSaverDoer extends ViewDoer
 {
-	public boolean isAvailable()
+	@Override
+	public void doIt() throws CommandFailedException
 	{
-		Project project = getMainWindow().getProject();
-		if(!project.isOpen())
-			return false;
-		
-		return getView().isImageAvailable();
-	}
+		if (!isAvailable())
+			return;
 
-	protected void doWork(File chosen) throws Exception
-	{
-		FileOutputStream out = new FileOutputStream(chosen);
-		try
-		{
-			saveImage(out);
-		}
-		finally
-		{
-			out.close();	
-		}
-	}
+		EAMFileSaveChooser eamFileChooser = getFileChooser();
+		File chosen = eamFileChooser.displayChooser();
+		if (chosen==null) 
+			return;
 
+		try 
+		{
+			doWork(chosen);
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(BAD_FILE_NAME_ERROR_MESSAGE);
+			loopBack();
+		}
+		catch (Exception e) 
+		{
+			throw new CommandFailedException(e);
+		} 
+	}
+	
 	protected void loopBack() throws CommandFailedException
 	{
 		doIt();
 	}
 	
-	private void saveImage(FileOutputStream out) throws Exception
-	{
-		BufferedImage image = getView().getImage();
-		saveImage(out, image);
-	}
-
-	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
+	abstract protected EAMFileSaveChooser getFileChooser();
+	
+	abstract protected void doWork(File chosen) throws Exception;
+	
+	public static final String BAD_FILE_NAME_ERROR_MESSAGE = EAM.text("Error Occurred please try saving under different name.");
 }
