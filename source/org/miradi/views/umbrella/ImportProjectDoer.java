@@ -52,18 +52,18 @@ public abstract class ImportProjectDoer extends ViewDoer
 		try
 		{
 			String windowTitle = EAM.text("Import Project");
-			JFileChooser dlg = new JFileChooser(currentDirectory);
+			JFileChooser fileChooser = new JFileChooser(currentDirectory);
 
-			dlg.setDialogTitle(windowTitle);
+			fileChooser.setDialogTitle(windowTitle);
 			FileFilter[] filters = getFileFilter();
 			for (int i=0; i<filters.length; ++i)
-				dlg.addChoosableFileFilter(filters[i]);
-			dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
-			dlg.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
-			if (dlg.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
+				fileChooser.addChoosableFileFilter(filters[i]);
+			fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
+			fileChooser.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
+			if (fileChooser.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
 				return;
 			
-			File fileToImport = dlg.getSelectedFile();
+			File fileToImport = fileChooser.getSelectedFile();
 			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
 			if (EAM.isIllegalFileName(projectName))
 			{
