@@ -42,7 +42,7 @@ public class EAMTestCase extends TestCaseEnhanced
 		--setUpTearDownCount;
 		EAM.setLogToConsole();
 		verifySetUpAndTearDownCalledEqually(getCurrentTestName());
-		Translation.restoreDefaultLocale();
+		Translation.restoreDefaultLocalization();
 	}
 	
 	private String getCurrentTestName()

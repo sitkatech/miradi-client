@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.io.IOException;
-import java.util.Locale;
+import java.net.URL;
 
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
@@ -40,12 +40,8 @@ public class TestTranslations extends EAMTestCase
 		assertEquals("part", Translation.extractPartToDisplay("only|return|last|part"));
 	}
 	
-	public void testDefaultLocale()
+	public void testText()
 	{
-		Locale defaultTranslationLocale = Translation.getTranslationLocale();
-		assertEquals("en", defaultTranslationLocale.getLanguage());
-		assertEquals("US", defaultTranslationLocale.getCountry());
-		
 		String sampleText = "should return unchanged";
 		assertEquals(sampleText, EAM.text(sampleText));
 		
@@ -55,10 +51,9 @@ public class TestTranslations extends EAMTestCase
 	
 	public void testBadLocale() throws Exception
 	{
-		Locale badLocale = new Locale("xx", "YY");
 		try
 		{
-			EAM.setTranslationLocale(badLocale);
+			EAM.setLocalization(new URL("xyz"));
 			fail("Should have thrown setting bad locale");
 		}
 		catch(IOException ignoreExpected)
@@ -68,15 +63,16 @@ public class TestTranslations extends EAMTestCase
 
 	public void testOtherLocale() throws Exception
 	{
-		Locale testingLocale = new Locale("test");
-		EAM.setTranslationLocale(testingLocale);
-		assertEquals(testingLocale, Translation.getTranslationLocale());
+		URL localizationForTesting = Translation.class.getResource("/translations/test/Miradi-test.zip");
+		assertNotNull("Can't find localization for testing", localizationForTesting);
+		EAM.setLocalization(localizationForTesting);
 		
 		EAM.setLogToString();
 		String sampleText = "should indicate non-translated";
 		assertEquals("<" + sampleText + ">", EAM.text(sampleText));
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
+		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(1, FAKE_FIELD_TAG));
 	}
 	
 	public void testFieldLabel() throws Exception
@@ -90,4 +86,7 @@ public class TestTranslations extends EAMTestCase
 	
 	public static String ENGLISH_STRING = "To be translated";
 	public static String FAKE_TRANSLATION = "Aha! It worked!";
+	
+	public static String FAKE_FIELD_TAG = "tag";
+	public static String FAKE_FIELD_LABEL = "Great Label";
 }
