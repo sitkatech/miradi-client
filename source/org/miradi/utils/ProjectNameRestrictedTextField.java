@@ -28,14 +28,9 @@ import org.miradi.main.EAM;
 
 public class ProjectNameRestrictedTextField extends PanelTextField
 {
-	public ProjectNameRestrictedTextField()
-	{
-		super();
-	}
-	
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		this();
+		super();
 		
 		setDocument(new RestrictedDocument());
 		setText(initialValue);
