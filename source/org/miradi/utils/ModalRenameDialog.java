@@ -46,6 +46,11 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
  	}
 	
+	public static String showDialog(MainWindow mainWindow, String message)
+	{
+		return showDialog(mainWindow, message, "");
+	}
+	
 	public static String showDialog(MainWindow mainWindow, String message, String initialValue)
 	{
 		ModalRenameDialog modalRenameDialog = new ModalRenameDialog(mainWindow, message, initialValue);

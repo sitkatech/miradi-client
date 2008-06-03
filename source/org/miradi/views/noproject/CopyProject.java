@@ -21,13 +21,13 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
-import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.ModalRenameDialog;
 
 public class CopyProject
 {
@@ -50,7 +50,7 @@ public class CopyProject
 
 		try
 		{
-			String newName = UiOptionPane.showInputDialog("Enter New Project Name");
+			String newName = ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT);
 			if (newName == null)
 				return;
 			
