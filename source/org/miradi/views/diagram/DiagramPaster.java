@@ -440,6 +440,11 @@ abstract public class DiagramPaster
 			
 			ORef oldWrappedFactorLinkRef = new ORef(FactorLink.getObjectType(), json.getId(DiagramLink.TAG_WRAPPED_ID));
 			ORef newFactorLinkRef = getFactorLinkRef(oldWrappedFactorLinkRef);
+			if(newFactorLinkRef.isInvalid())
+			{
+				EAM.logError("Skipping link because Factor Link " + oldWrappedFactorLinkRef + " for Diagram Link " + diagramLinkRef + " is missing");
+				continue;
+			}
 			
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
