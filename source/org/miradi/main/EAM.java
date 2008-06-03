@@ -113,16 +113,16 @@ public class EAM
 	
 	public static boolean isValidCharacter(char c)
 	{
-		if (c == LEGAL_NON_ALPHANUMERIC_UNDERSCORE)
+		if (c == UNDERSCORE)
 			return true;
 		
-		if (c == LEGAL_NON_ALPHANUMERIC_DASH)
+		if (c == DASH)
 			return true;
 		
-		if (c == LEGAL_NON_ALPHANUMERIC_POINT)
+		if (c == POINT)
 			return true;
 		
-		if (c == LEGAL_NON_ALPHANUMERIC_SPACE)
+		if (c == SPACE)
 			return true;
 	
 		if(c >= 128)
@@ -623,10 +623,10 @@ public class EAM
 	
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 	public static final String STRING_TO_SUBSTITUTE = "%s";
-	public static final char LEGAL_NON_ALPHANUMERIC_UNDERSCORE = '_';	
-	public static final char LEGAL_NON_ALPHANUMERIC_DASH = '-';
-	public static final char LEGAL_NON_ALPHANUMERIC_POINT = '.';
-	public static final char LEGAL_NON_ALPHANUMERIC_SPACE = ' ';
+	public static final char UNDERSCORE = '_';	
+	public static final char DASH = '-';
+	public static final char POINT = '.';
+	public static final char SPACE = ' ';
 }
 
 
