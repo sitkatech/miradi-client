@@ -859,10 +859,10 @@ public class Project
 				continue;
 			if(Character.isLetterOrDigit(c))
 				continue;
-			if(c == ' ' || c == '.' || c == '-')
+			if(c == '_')
 				continue;
 			
-			asArray[i] = '-';
+			asArray[i] = '_';
 		}
 
 		return new String(asArray);

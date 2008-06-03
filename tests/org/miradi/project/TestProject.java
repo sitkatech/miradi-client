@@ -211,7 +211,7 @@ public class TestProject extends EAMTestCase
 
 	public void testIsValidProjectFilename() throws Exception
 	{
-		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectFilename("AZaz09.- "));
+		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectFilename("AZaz09_"));
 		assertFalse("allowed really long name?", Project.isValidProjectFilename("1234567890123456789012345678901234567890"));
 		assertFalse("Other Punct", Project.isValidProjectFilename("$"));
 		final char ACCENT_A_LOWER = 0xE1;
@@ -224,10 +224,10 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't fix empty?", "-", Project.makeProjectFilenameLegal(""));
 		String longest = "12345678901234567890123456789012";
 		assertEquals("didn't fix long?", longest, Project.makeProjectFilenameLegal(longest + longest));
-		String allGood = "abc 123 .-";
+		String allGood = "abc_123";
 		assertEquals("Ruined a good name?", allGood, Project.makeProjectFilenameLegal(allGood));
-		String bad = "`~!@#$%^&*()_=+[]\\{}|;':\',<>/?";
-		assertEquals("Didn't fix bad?", "------------------------------", Project.makeProjectFilenameLegal(bad));
+		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?";
+		assertEquals("Didn't fix bad?", "_____________________________", Project.makeProjectFilenameLegal(bad));
 	}
 	
 	public void testGetAllSelectedCellsWithLinkages() throws Exception

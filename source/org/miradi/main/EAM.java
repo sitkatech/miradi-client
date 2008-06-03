@@ -115,17 +115,7 @@ public class EAM
 	{
 		if (c == '_')
 			return true;
-		
-		//FIXME this is temporarly until there is a central location for restrictions
-		if (c == '-')
-			return true;
-		
-		if (c == '.')
-			return true;
-		
-		if (c == ' ')
-			return true;
-		
+			
 		return Character.isLetterOrDigit(c);
 	}
 
