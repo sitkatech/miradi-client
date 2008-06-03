@@ -75,11 +75,13 @@ public class RenameProjectDoer
 
 	public static String askUserForProjectName(MainWindow mainWindow, String initialValue) throws Exception
 	{
-		String newName = ModalRenameDialog.showDialog(mainWindow, "Enter New Project Name", initialValue);
+		String newName = ModalRenameDialog.showDialog(mainWindow, RENAME_TEXT, initialValue);
 		if (newName == null)
 			return null;
 
 		Project.validateNewProject(newName);
 		return newName;
 	}
+	
+	public static final String RENAME_TEXT = EAM.text("Enter New Project Name");
 }
