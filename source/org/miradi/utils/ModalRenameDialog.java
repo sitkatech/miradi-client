@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -43,7 +45,8 @@ public class ModalRenameDialog
 		JDialog optionDialog = optionPane.createDialog(mainWindow, message);
 		optionDialog.pack();
         Utilities.centerDlg(optionDialog);
-        optionDialog.addWindowListener(new TextBoxSelectAllHandler(textField));
+        optionDialog.addWindowListener(new WindowListenerHandler(textField));
+        textField.addFocusListener(new TextFieldFocusHandler(textField));
         optionDialog.setVisible(true);
 		Object selectedValue = optionPane.getValue();
 		if (wasCanceled(selectedValue))
@@ -61,9 +64,28 @@ public class ModalRenameDialog
 		return userOption.intValue() == JOptionPane.CANCEL_OPTION;
 	}	
 	
-	public static class TextBoxSelectAllHandler extends WindowAdapter
+	public static class TextFieldFocusHandler implements FocusListener
 	{
-		public TextBoxSelectAllHandler(ProjectNameRestrictedTextField textFieldToUse)
+		public TextFieldFocusHandler(ProjectNameRestrictedTextField textFieldToUse)
+		{
+			textField = textFieldToUse;	
+		}
+		
+		public void focusGained(FocusEvent e)
+		{
+			textField.selectAll();
+		}
+
+		public void focusLost(FocusEvent e)
+		{
+		}
+		
+		private ProjectNameRestrictedTextField textField;
+	}
+	
+	public static class WindowListenerHandler extends WindowAdapter
+	{
+		public WindowListenerHandler(ProjectNameRestrictedTextField textFieldToUse)
 		{
 			textField = textFieldToUse;	
 		}
@@ -73,8 +95,7 @@ public class ModalRenameDialog
 		{
 			super.windowOpened(e);
 			
-			textField.requestFocus();
-			textField.selectAll();
+			textField.requestFocusInWindow();
 		}
 		
 		private ProjectNameRestrictedTextField textField;
