@@ -124,6 +124,9 @@ public class EAM
 		
 		if (c == LEGAL_NON_ALPHANUMERIC_SPACE)
 			return true;
+	
+		if(c >= 128)
+			return true;
 		
 		return Character.isLetterOrDigit(c);
 	}
