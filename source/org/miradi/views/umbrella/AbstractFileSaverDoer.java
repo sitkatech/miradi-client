@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.FileCreationException;
 import org.miradi.main.EAM;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.views.ViewDoer;
@@ -44,7 +44,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		{
 			doWork(chosen);
 		}
-		catch (FileCreationException e)
+		catch (IOException e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(BAD_FILE_NAME_ERROR_MESSAGE);
