@@ -93,15 +93,6 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		newProjectNameField.requestFocusInWindow();
 	}
 	
-	public void setComponent(String name, JComponent component)
-	{
-		if (name.equals(NEW_PROJECT_NAME))
-		{
-			newProjectNameField = (ProjectNameRestrictedTextField)component;
-			newProjectNameField.addKeyListener(this);
-		}
-	}
-	
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(WizardManager.CONTROL_NEXT))
@@ -132,7 +123,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 
 	private void createProject()
 	{
-		String newName = getValue(NEW_PROJECT_NAME);
+		String newName = getValue();
 		if (newName.length()<=0)
 			return;
 		try 
@@ -147,12 +138,10 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		}
 	}
 
-	public String getValue(String name)
+	public String getValue()
 	{
 		return newProjectNameField.getText();
 	}
-
-	private static final String NEW_PROJECT_NAME = "NewProjectName";
 
 	private JPanel rightSidePanel;
 	private MiradiHtmlViewer introHtml;
