@@ -49,7 +49,7 @@ public class Translation
 
 		textTranslations = null;
 		if(!isDefaultLocale())
-			textTranslations = loadTranslationsPropertiesFile(locale, "miradi.properties");
+			textTranslations = loadTranslationsPropertiesFile(locale, "LocalizedText.properties");
 
 		fieldLabelTranslations = loadTranslationsPropertiesFile(locale, "FieldLabels.properties");
 	}

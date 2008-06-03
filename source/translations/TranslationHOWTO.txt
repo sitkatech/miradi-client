@@ -18,7 +18,7 @@ Periodically, refresh each .po file to include new entries from the .pot:
 
 Per-build, per-language command to convert a .po file to a .properties bundle:
   cd translations
-  msgcat --properties-output --output-file xx/miradi.properties xx/miradi_xx.po
+  msgcat --properties-output --output-file xx/LocalizedText.properties xx/miradi_xx.po
   
 
   
