@@ -26,7 +26,6 @@ import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.text.JTextComponent;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.layout.OneColumnPanel;
@@ -34,6 +33,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.ProjectNameRestrictedTextField;
 import org.miradi.wizard.MiradiHtmlViewer;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
@@ -74,11 +74,8 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			"and press the <code class='toolbarbutton'>&lt;Next&gt;</code> button.");
 			introHtml = new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro);
 			add(introHtml);
-			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, 
-					EAM.text("<div class='WizardText'><table><tr>" +
-							"<td>New Project Filename: </td>" +
-							"<td><input type='text' name='NewProjectName' value=''></input></td>" +
-							"</tr></table>")));
+			newProjectNameField = new ProjectNameRestrictedTextField("");
+			add(newProjectNameField);
 			
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler,
 					EAM.text("<div class='WizardText'><p class='hint'>" +
@@ -100,7 +97,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 	{
 		if (name.equals(NEW_PROJECT_NAME))
 		{
-			newProjectNameField = (JTextComponent)component;
+			newProjectNameField = (ProjectNameRestrictedTextField)component;
 			newProjectNameField.addKeyListener(this);
 		}
 	}
@@ -159,5 +156,5 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 
 	private JPanel rightSidePanel;
 	private MiradiHtmlViewer introHtml;
-	private JTextComponent newProjectNameField;
+	private ProjectNameRestrictedTextField newProjectNameField;
 }
