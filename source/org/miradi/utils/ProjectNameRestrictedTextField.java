@@ -33,6 +33,7 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 		super();
 		
 		setDocument(new RestrictedDocument());
+		setColumns(30);
 		setText(initialValue);
 		selectAll();
 	}
