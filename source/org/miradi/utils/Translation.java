@@ -19,74 +19,50 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Locale;
 import java.util.Properties;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 
 public class Translation
 {
 	public static void initialize() throws Exception
 	{
-		setTranslationLocale(DEFAULT_LOCALE);
+		restoreDefaultLocalization();
 	}
 	
-	public static Locale getTranslationLocale()
+	public static void restoreDefaultLocalization() throws IOException
 	{
-		return currentTranslationLocale;
-	}
-	
-	public static void restoreDefaultLocale()
-	{
-		currentTranslationLocale = Locale.US;
-	}
-
-	public static void setTranslationLocale(Locale locale) throws IOException
-	{
-		currentTranslationLocale = locale;
-
 		textTranslations = null;
-		if(!isDefaultLocale())
-			textTranslations = loadTranslationsPropertiesFile(locale, "LocalizedText.properties");
+		fieldLabelTranslations = loadProperties(getTranslationFileURL("FieldLabels.properties"));
+	}
 
-		fieldLabelTranslations = loadTranslationsPropertiesFile(locale, "FieldLabels.properties");
+	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
+	{
+		ZipFile zip = new ZipFile(new File(urlOfLocalizationZip.toURI()));
+		try
+		{
+			textTranslations = loadPropertiesFile(zip, "LocalizedText.properties");
+			fieldLabelTranslations = loadPropertiesFile(zip, "FieldLabels.properties");
+		}
+		finally
+		{
+			zip.close();
+		}
 	}
 
 	public static String text(String key)
 	{
-		if(isDefaultLocale())
+		if(textTranslations == null)
 			return extractPartToDisplay(key);
 	
 		return textTranslations.getProperty(key, "<" + key + ">");
 	}
 
-	private static Properties loadTranslationsPropertiesFile(Locale locale, String filename) throws IOException
-	{
-		String resourceName = "/translations/" + locale.getLanguage() + "/" + filename;
-		URL url = Translation.class.getResource(resourceName);
-		if(url == null)
-			throw new IOException("Translations not found: " + resourceName);
-		
-		return loadProperties(url);
-	}
-
-	public static Properties loadProperties(URL url) throws IOException
-	{
-		InputStream in = url.openStream();
-		try
-		{
-			Properties properties = new Properties();
-			properties.load(in);
-			return properties;
-		}
-		finally
-		{
-			in.close();
-		}
-		
-	}
 	public static String fieldLabel(int objectType, String fieldTag)
 	{
 		String fullTag = Integer.toString(objectType) + "." + fieldTag;
@@ -96,6 +72,50 @@ public class Translation
 		return label;
 	}
 
+	private static Properties loadPropertiesFile(ZipFile zip, String entryName) throws IOException
+	{
+		ZipEntry text = zip.getEntry(entryName);
+		InputStream in = zip.getInputStream(text);
+		try
+		{
+			return loadProperties(in);
+		}
+		finally
+		{
+			in.close();
+		}
+	}
+
+	private static URL getTranslationFileURL(String filename) throws IOException
+	{
+		String resourceName = "/translations/en/" + filename;
+		URL url = Translation.class.getResource(resourceName);
+		if(url == null)
+			throw new IOException("Translations not found: " + resourceName);
+		
+		return url;
+	}
+
+	public static Properties loadProperties(URL url) throws IOException
+	{
+		InputStream in = url.openStream();
+		try
+		{
+			return loadProperties(in);
+		}
+		finally
+		{
+			in.close();
+		}
+	}
+
+	private static Properties loadProperties(InputStream in) throws IOException
+	{
+		Properties properties = new Properties();
+		properties.load(in);
+		return properties;
+	}
+	
 	public static String extractPartToDisplay(String result)
 	{
 		int lastBar = result.lastIndexOf('|');
@@ -105,14 +125,6 @@ public class Translation
 		return result;
 	}
 
-	private static boolean isDefaultLocale()
-	{
-		return currentTranslationLocale.equals(DEFAULT_LOCALE);
-	}
-	
-	private static Locale DEFAULT_LOCALE = Locale.US;
-
 	private static Properties textTranslations;
 	private static Properties fieldLabelTranslations;
-	private static Locale currentTranslationLocale;
 }

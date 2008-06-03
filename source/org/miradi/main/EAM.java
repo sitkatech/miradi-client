@@ -31,7 +31,6 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Locale;
 import java.util.prefs.Preferences;
 
 import javax.swing.JOptionPane;
@@ -300,9 +299,9 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	// Translations
-	public static void setTranslationLocale(Locale locale) throws Exception
+	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
 	{
-		Translation.setTranslationLocale(locale);
+		Translation.setLocalization(urlOfLocalizationZip);
 	}
 
 	public static String text(String key)
