@@ -24,6 +24,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -85,9 +86,9 @@ public class ModalRenameDialog
 	
 	public static class WindowListenerHandler extends WindowAdapter
 	{
-		public WindowListenerHandler(ProjectNameRestrictedTextField textFieldToUse)
+		public WindowListenerHandler(JComponent componentToFocusToUse)
 		{
-			textField = textFieldToUse;	
+			componentToFocus = componentToFocusToUse;	
 		}
 		
 		@Override
@@ -95,9 +96,9 @@ public class ModalRenameDialog
 		{
 			super.windowOpened(e);
 			
-			textField.requestFocusInWindow();
+			componentToFocus.requestFocusInWindow();
 		}
 		
-		private ProjectNameRestrictedTextField textField;
+		private JComponent componentToFocus;
 	}
 }
