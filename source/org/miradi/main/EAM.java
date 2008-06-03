@@ -113,16 +113,7 @@ public class EAM
 	
 	public static boolean isValidCharacter(char c)
 	{
-		if (c == UNDERSCORE)
-			return true;
-		
-		if (c == DASH)
-			return true;
-		
-		if (c == POINT)
-			return true;
-		
-		if (c == SPACE)
+		if(LEGAL_NON_ALPHA_NUMERIC_CHARACTERS.indexOf(c) >= 0)
 			return true;
 	
 		if(c >= 128)
@@ -623,10 +614,8 @@ public class EAM
 	
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 	public static final String STRING_TO_SUBSTITUTE = "%s";
-	public static final char UNDERSCORE = '_';	
 	public static final char DASH = '-';
-	public static final char POINT = '.';
-	public static final char SPACE = ' ';
+	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
 }
 
 
