@@ -54,7 +54,7 @@ public abstract class EAMFileSaveChooser
 			return null;
 
 		File chosen = dlg.getSelectedFile();
-		if (!chosen.exists())
+		if (chosen.getName().length() == 0)
 		{
 			EAM.errorDialog(PROJECT_FILE_NOT_FOUND);
 			return null;
