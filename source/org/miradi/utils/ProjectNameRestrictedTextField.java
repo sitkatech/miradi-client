@@ -47,17 +47,17 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 
 		private String removeIllegalCharacters(String value) throws BadLocationException
 		{
-			String newValue = "";
+			StringBuffer newValue = new StringBuffer();
 			for (int index = 0; index < value.length(); ++index)
 			{
 				char character = value.charAt(index);
 				if (EAM.isValidCharacter(character))
 				{
-					newValue += character;
+					newValue.append(character);
 				}
 			}
 			
-			return newValue;	
+			return newValue.toString();	
 		}
 	}
 }
