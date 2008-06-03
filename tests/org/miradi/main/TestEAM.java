@@ -38,13 +38,13 @@ public class TestEAM extends EAMTestCase
 	public void testIsLegalFileName()
 	{
 		String goodFileName = "GoodFile_name";
-		assertFalse("should be valid file name?" , EAM.isIllegalFileName(goodFileName));
+		assertTrue("should be valid file name?" , EAM.isLegalFileName(goodFileName));
 		
 		String badFileName = "!@#$%^&*()<>,?/:;''[]{}+=|\"`~";
 		for (int i = 0; i < badFileName.length(); ++i)
 		{
 			String characterAsString = Character.toString(badFileName.charAt(i));
-			assertTrue("should be invalid character?", EAM.isIllegalFileName(characterAsString));	
+			assertFalse("should be invalid character?", EAM.isLegalFileName(characterAsString));	
 		}
 	}
 }
