@@ -28,15 +28,26 @@ public class PanelTextField extends UiTextField
 	public PanelTextField()
 	{
 		super();
-		setFont(getMainWindow().getUserDataPanelFont());
+		initialize();
+	}
+
+	public PanelTextField(int columns)
+	{
+		super(columns);
+		initialize();
 	}
 	
 	public PanelTextField(String text)
 	{
 		super(text);
-		setFont(getMainWindow().getUserDataPanelFont());
+		initialize();
 	}
 	
+	private void initialize()
+	{
+		setFont(getMainWindow().getUserDataPanelFont());
+	}
+		
 	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{

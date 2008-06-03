@@ -49,6 +49,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.ProjectNameRestrictedTextField;
 
 public class CreateProjectDialog extends EAMDialog implements ActionListener,
 		ListSelectionListener
@@ -149,7 +150,7 @@ public class CreateProjectDialog extends EAMDialog implements ActionListener,
 
 	private UiTextField createTextArea()
 	{
-		UiTextField textField = new UiTextField(40);
+		ProjectNameRestrictedTextField textField = new ProjectNameRestrictedTextField(40);
 		textField.requestFocus(true);
 		textField.selectAll();
 		textField.getDocument().addDocumentListener(new TextFieldListener());
