@@ -857,9 +857,7 @@ public class Project
 			char c = asArray[i];
 			if(c >= 128)
 				continue;
-			if(Character.isLetterOrDigit(c))
-				continue;
-			if(c == '_')
+			if (EAM.isValidCharacter(c))
 				continue;
 			
 			asArray[i] = '_';
