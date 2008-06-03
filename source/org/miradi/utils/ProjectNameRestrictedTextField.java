@@ -37,7 +37,7 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 	
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super(initialValue);
+		super();
 		
 		initialize(initialValue);
 	}
