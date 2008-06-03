@@ -54,9 +54,9 @@ public abstract class EAMFileSaveChooser
 			return null;
 
 		File chosen = dlg.getSelectedFile();
-		if (EAM.isIllegalFileName(chosen.getName().replace(CpmzFileFilter.EXTENSION, "")))
+		if (!chosen.exists())
 		{
-			EAM.errorDialog(INVALID_PROJECT_FILE_NAME_MESSAGE);
+			EAM.errorDialog(PROJECT_FILE_NOT_FOUND);
 			return null;
 		}
 		
@@ -110,4 +110,5 @@ public abstract class EAMFileSaveChooser
 	private static String currentDirectory;
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
+	public static final String PROJECT_FILE_NOT_FOUND = EAM.text("File could not be created, this can be due to bad characters in file name.");
 }
