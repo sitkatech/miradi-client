@@ -60,8 +60,11 @@ public class RenameProjectDoer
 				return;
 		
 			directoryLock.close();
+			
 			File newFile = new File(projectToRename.getParentFile(),newName);
-			projectToRename.renameTo(newFile);
+			boolean wasRenamed = projectToRename.renameTo(newFile);
+			if (!wasRenamed)
+				throw new Exception("Project was not renamed.");
 		}
 		catch (Exception e)
 		{
