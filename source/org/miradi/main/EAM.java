@@ -113,7 +113,7 @@ public class EAM
 	
 	public static boolean isValidCharacter(char c)
 	{
-		if (c == '_')
+		if (c == LEGAL_NON_ALPHANUMERIC_UNDERSCORE)
 			return true;
 			
 		return Character.isLetterOrDigit(c);
@@ -611,6 +611,7 @@ public class EAM
 	
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 	public static final String STRING_TO_SUBSTITUTE = "%s";
+	public static final char LEGAL_NON_ALPHANUMERIC_UNDERSCORE = '_';	
 }
 
 
