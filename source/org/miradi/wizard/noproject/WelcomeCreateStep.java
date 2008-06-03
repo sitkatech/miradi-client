@@ -28,7 +28,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnPanel;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -74,9 +76,9 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			"and press the <code class='toolbarbutton'>&lt;Next&gt;</code> button.");
 			introHtml = new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro);
 			add(introHtml);
-			newProjectNameField = new ProjectNameRestrictedTextField("");
-			add(newProjectNameField);
-			
+				
+			addTextFieldPanel();
+				
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler,
 					EAM.text("<div class='WizardText'><p class='hint'>" +
 							"NOTE: Project filenames can contain letters, numbers, spaces, periods, and dashes.</p>")));
@@ -84,6 +86,15 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			add(createNextPreviousButtonPanel(hyperlinkHandler));
 		}
 
+		private void addTextFieldPanel()
+		{
+			newProjectNameField = new ProjectNameRestrictedTextField(30);
+			TwoColumnPanel textFieldPanel = new TwoColumnPanel();
+			textFieldPanel.setBackground(AppPreferences.getWizardBackgroundColor());
+			textFieldPanel.add(new PanelTitleLabel(EAM.text("New Project Filename:")));
+			textFieldPanel.add(newProjectNameField);
+			add(textFieldPanel);
+		}
 	}
 
 	@Override
