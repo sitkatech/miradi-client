@@ -53,13 +53,7 @@ public abstract class EAMFileSaveChooser
 		if (dlg.showDialog(mainWindow, EAM.text(getDialogApprovelButtonText())) != JFileChooser.APPROVE_OPTION)
 			return null;
 
-		File chosen = dlg.getSelectedFile();
-		if (chosen.getName().length() == 0)
-		{
-			EAM.errorDialog(PROJECT_FILE_NOT_FOUND);
-			return null;
-		}
-		
+		File chosen = dlg.getSelectedFile();		
 		String ext = ((MiradiFileFilter)dlg.getFileFilter()).getFileExtension();
 		if (!chosen.getName().toLowerCase().endsWith(ext))
 			chosen = new File(chosen.getAbsolutePath() + ext);
