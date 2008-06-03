@@ -51,10 +51,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 	{
 		try
 		{
-			String windowTitle = EAM.text("Import Project");
 			JFileChooser fileChooser = new JFileChooser(currentDirectory);
 
-			fileChooser.setDialogTitle(windowTitle);
+			fileChooser.setDialogTitle(EAM.text("Import Project"));
 			FileFilter[] filters = getFileFilter();
 			for (int i=0; i<filters.length; ++i)
 				fileChooser.addChoosableFileFilter(filters[i]);
