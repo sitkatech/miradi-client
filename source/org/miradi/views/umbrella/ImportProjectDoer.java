@@ -29,7 +29,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.Utility;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.noproject.NoProjectView;
@@ -61,19 +60,12 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			
 			File fileToImport = fileChooser.getSelectedFile();
-			String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
-			if (EAM.isIllegalFileName(projectName))
-			{
-				EAM.errorDialog(EAMFileSaveChooser.INVALID_PROJECT_FILE_NAME_MESSAGE);
+			String projectName = getLegalProjectName(fileToImport);
+			if (projectName == null)
 				return;
-			}
+
+			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			
-			String newName = RenameProjectDoer.askUserForProjectName(getMainWindow(), projectName);
-			if (newName == null)
-				return;
-			
-			newName = Project.makeProjectFilenameLegal(newName);
-			createProject(fileToImport, EAM.getHomeDirectory(), newName);
 			refreshNoProjectPanel();
 			currentDirectory = fileToImport.getParent();
 			EAM.notifyDialog(EAM.text("Import Completed"));
@@ -88,6 +80,18 @@ public abstract class ImportProjectDoer extends ViewDoer
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
 		}
+	}
+
+	private String getLegalProjectName(File fileToImport) throws Exception
+	{
+		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
+		if (EAM.isIllegalFileName(projectName))
+		{
+			String legalProjectName = Project.makeProjectFilenameLegal(projectName);
+			return RenameProjectDoer.askUserForProjectName(getMainWindow(), legalProjectName);
+		}
+		
+		return projectName;
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
