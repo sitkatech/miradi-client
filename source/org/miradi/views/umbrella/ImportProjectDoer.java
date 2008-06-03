@@ -85,13 +85,11 @@ public abstract class ImportProjectDoer extends ViewDoer
 	private String getLegalProjectName(File fileToImport) throws Exception
 	{
 		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
-		if (EAM.isIllegalFileName(projectName))
-		{
-			String legalProjectName = Project.makeProjectFilenameLegal(projectName);
-			return RenameProjectDoer.askUserForProjectName(getMainWindow(), legalProjectName);
-		}
+		if (EAM.isLegalFileName(projectName))
+			return projectName;
 		
-		return projectName;
+		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
+		return RenameProjectDoer.askUserForProjectName(getMainWindow(), legalProjectName);		
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
