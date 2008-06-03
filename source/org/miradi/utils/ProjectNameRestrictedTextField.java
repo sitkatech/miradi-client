@@ -41,11 +41,11 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 	{
 		public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 		{
-			String newValue = removeIllegalCharacters(offset, value, as);
+			String newValue = removeIllegalCharacters(value);
 			super.insertString(offset, newValue, as);
 		}
 
-		private String removeIllegalCharacters(int offset, String value, AttributeSet as) throws BadLocationException
+		private String removeIllegalCharacters(String value) throws BadLocationException
 		{
 			char[] asChars = value.toCharArray();
 			String newValue = "";
