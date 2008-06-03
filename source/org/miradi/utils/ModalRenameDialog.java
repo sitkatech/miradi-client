@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,23 +26,8 @@ import javax.swing.JOptionPane;
 import org.martus.swing.Utilities;
 import org.miradi.main.MainWindow;
 
-public class ModalRenameDialog extends JDialog implements PropertyChangeListener
+public class ModalRenameDialog
 {
-	private ModalRenameDialog(MainWindow mainWindow, String message, String initialValue)
-	{
-		super(mainWindow, true);
-		
-		textField = new ProjectNameRestrictedTextField(initialValue);
-		optionPane = new JOptionPane(new Object[]{new JLabel(message), textField}, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
-		
-		optionPane.addPropertyChangeListener(this);
-        getContentPane().add(optionPane);
-        pack();
-        Utilities.centerDlg(this);
-        
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
- 	}
-	
 	public static String showDialog(MainWindow mainWindow, String message)
 	{
 		return showDialog(mainWindow, message, "");
@@ -53,50 +35,25 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 	
 	public static String showDialog(MainWindow mainWindow, String message, String initialValue)
 	{
-		ModalRenameDialog modalRenameDialog = new ModalRenameDialog(mainWindow, message, initialValue);
-		modalRenameDialog.setVisible(true);
-		
-		return modalRenameDialog.getProjectName();
-	}
-	
-	public String getProjectName()
-	{
-		return userValue;
-	}
-	
-	public void propertyChange(PropertyChangeEvent e) 
-    {
-    	Object value = optionPane.getValue();
-    	if (isUninitialized(value)) 
-    		return;
-    
-    	resetValueToEnsureNextPropertyChangeFires();
-    	
-    	if (Integer.toString(JOptionPane.CANCEL_OPTION).equals(value.toString()))
-    		userValue = null;
-    	else
-    		userValue = textField.getText();	
-    
-    	clearAndDispose();      
-    }
-
-	private void resetValueToEnsureNextPropertyChangeFires()
-	{
-		optionPane.setValue(JOptionPane.UNINITIALIZED_VALUE);
+		ProjectNameRestrictedTextField textField = new ProjectNameRestrictedTextField(initialValue);
+		JOptionPane optionPane = new JOptionPane(new Object[]{new JLabel(message), textField}, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+		JDialog optionDialog = optionPane.createDialog(mainWindow, message);
+		optionDialog.pack();
+        Utilities.centerDlg(optionDialog);
+        optionDialog.setVisible(true);
+		Object selectedValue = optionPane.getValue();
+		if (wasCanceled(selectedValue))
+			return null;
+        
+		return textField.getText();
 	}
 
-	private boolean isUninitialized(Object value)
+	private static boolean wasCanceled(Object selectedValue)
 	{
-		return value == JOptionPane.UNINITIALIZED_VALUE;
-	}
+		if (!(selectedValue instanceof Integer))
+			return false;
 
-    public void clearAndDispose() 
-    {
-        textField.setText(null);
-        dispose();
-    }
-    
-    private JOptionPane optionPane;
-    private ProjectNameRestrictedTextField textField;
-    private String userValue;
+		Integer userOption = (Integer) selectedValue;
+		return userOption.intValue() == JOptionPane.CANCEL_OPTION;
+	}	
 }
