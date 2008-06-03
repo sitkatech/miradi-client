@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,6 +43,7 @@ public class ModalRenameDialog
 		JDialog optionDialog = optionPane.createDialog(mainWindow, message);
 		optionDialog.pack();
         Utilities.centerDlg(optionDialog);
+        optionDialog.addWindowListener(new TextBoxSelectAllHandler(textField));
         optionDialog.setVisible(true);
 		Object selectedValue = optionPane.getValue();
 		if (wasCanceled(selectedValue))
@@ -56,4 +60,23 @@ public class ModalRenameDialog
 		Integer userOption = (Integer) selectedValue;
 		return userOption.intValue() == JOptionPane.CANCEL_OPTION;
 	}	
+	
+	public static class TextBoxSelectAllHandler extends WindowAdapter
+	{
+		public TextBoxSelectAllHandler(ProjectNameRestrictedTextField textFieldToUse)
+		{
+			textField = textFieldToUse;	
+		}
+		
+		@Override
+		public void windowOpened(WindowEvent e)
+		{
+			super.windowLostFocus(e);
+			
+			textField.requestFocus();
+			textField.selectAll();
+		}
+		
+		private ProjectNameRestrictedTextField textField;
+	}
 }
