@@ -71,7 +71,7 @@ public class ModalRenameDialog
 		@Override
 		public void windowOpened(WindowEvent e)
 		{
-			super.windowLostFocus(e);
+			super.windowOpened(e);
 			
 			textField.requestFocus();
 			textField.selectAll();
