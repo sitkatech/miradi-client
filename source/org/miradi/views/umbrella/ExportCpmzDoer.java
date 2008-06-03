@@ -68,11 +68,22 @@ public class ExportCpmzDoer extends MainWindowDoer
 		{
 			createCpmzFile(chosen);
 		} 
+		catch (IOException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(AbstractImageSaverDoer.BAD_FILE_NAME_ERROR_MESSAGE);
+			loopBack();
+		}
 		catch (Exception e) 
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: ") + e);
 		}
+	}
+
+	private void loopBack() throws CommandFailedException
+	{
+		doIt();
 	}
 
 	private void createCpmzFile(File chosen) throws Exception
