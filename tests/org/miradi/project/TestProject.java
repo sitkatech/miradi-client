@@ -224,10 +224,10 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't fix empty?", "_", Project.makeProjectFilenameLegal(""));
 		String longest = "12345678901234567890123456789012";
 		assertEquals("didn't fix long?", longest, Project.makeProjectFilenameLegal(longest + longest));
-		String allGood = "abc_123";
+		String allGood = "abc_123. -";
 		assertEquals("Ruined a good name?", allGood, Project.makeProjectFilenameLegal(allGood));
-		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?";
-		assertEquals("Didn't fix bad?", "_____________________________", Project.makeProjectFilenameLegal(bad));
+		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?. -";
+		assertEquals("Didn't fix bad?", "_____________________________. -", Project.makeProjectFilenameLegal(bad));
 	}
 	
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
