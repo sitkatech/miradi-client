@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -47,7 +45,6 @@ public class ModalRenameDialog
 		optionDialog.pack();
         Utilities.centerDlg(optionDialog);
         optionDialog.addWindowListener(new WindowListenerHandler(textField));
-        textField.addFocusListener(new TextFieldFocusHandler(textField));
         optionDialog.setVisible(true);
 		Object selectedValue = optionPane.getValue();
 		if (wasCanceled(selectedValue))
@@ -64,25 +61,6 @@ public class ModalRenameDialog
 		Integer userOption = (Integer) selectedValue;
 		return userOption.intValue() == JOptionPane.CANCEL_OPTION;
 	}	
-	
-	public static class TextFieldFocusHandler implements FocusListener
-	{
-		public TextFieldFocusHandler(ProjectNameRestrictedTextField textFieldToUse)
-		{
-			textField = textFieldToUse;	
-		}
-		
-		public void focusGained(FocusEvent e)
-		{
-			textField.selectAll();
-		}
-
-		public void focusLost(FocusEvent e)
-		{
-		}
-		
-		private ProjectNameRestrictedTextField textField;
-	}
 	
 	public static class WindowListenerHandler extends WindowAdapter
 	{
