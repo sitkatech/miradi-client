@@ -134,7 +134,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 
 	private void createProject()
 	{
-		String newName = getValue();
+		String newName = getProjectName();
 		if (newName.length()<=0)
 			return;
 		try 
@@ -149,7 +149,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		}
 	}
 
-	public String getValue()
+	public String getProjectName()
 	{
 		return newProjectNameField.getText();
 	}
