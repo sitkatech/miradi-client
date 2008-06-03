@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.noproject;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.martus.util.DirectoryLock;
 import org.miradi.database.ProjectServer;
@@ -64,7 +65,7 @@ public class RenameProjectDoer
 			File newFile = new File(projectToRename.getParentFile(),newName);
 			boolean wasRenamed = projectToRename.renameTo(newFile);
 			if (!wasRenamed)
-				throw new Exception("Project was not renamed.");
+				throw new IOException("Project was not renamed.");
 		}
 		catch (Exception e)
 		{
