@@ -47,6 +47,7 @@ abstract public class XmlExporter extends MainWindowDoer
 			"It exports all the project data in an XML file, but the schema of that file is still in flux. " +
 			"Future versions of Miradi will export the data in different formats."),
 		};
+
 		String[] buttons = new String[] {
 			EAM.text("Export"),
 			ConstantButtonNames.CANCEL,
@@ -54,7 +55,11 @@ abstract public class XmlExporter extends MainWindowDoer
 		if(!EAM.confirmDialog(title, body, buttons))
 			return;
 		
-		
+		export();
+	}
+
+	private void export() throws CommandFailedException
+	{
 		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(getMainWindow());
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) 
@@ -69,12 +74,19 @@ abstract public class XmlExporter extends MainWindowDoer
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to write XML. Perhaps the disk was full, or you " +
-					"don't have permission to write to it."));
+					"don't have permission to write to it, or you are using invalid characters in the file name."));
+			
+			loopBack();
 		}
 		catch(Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	private void loopBack() throws CommandFailedException
+	{
+		export();
 	}
 
 	abstract protected void export(File chosen) throws Exception;
