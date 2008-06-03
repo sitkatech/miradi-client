@@ -846,7 +846,7 @@ public class Project
 	static public String makeProjectFilenameLegal(String candidate)
 	{
 		if(candidate.length() < 1)
-			return Character.toString(EAM.LEGAL_NON_ALPHANUMERIC_UNDERSCORE);
+			return Character.toString(EAM.UNDERSCORE);
 		
 		if(candidate.length() > MAX_PROJECT_FILENAME_LENGTH)
 			candidate = candidate.substring(0, MAX_PROJECT_FILENAME_LENGTH);
@@ -858,7 +858,7 @@ public class Project
 			if (EAM.isValidCharacter(c))
 				continue;
 			
-			asArray[i] = EAM.LEGAL_NON_ALPHANUMERIC_UNDERSCORE;
+			asArray[i] = EAM.UNDERSCORE;
 		}
 
 		return new String(asArray);
