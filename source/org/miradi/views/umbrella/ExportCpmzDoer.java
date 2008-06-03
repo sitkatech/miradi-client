@@ -30,7 +30,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -40,12 +39,11 @@ import org.miradi.project.ProjectZipper;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MPZFileFilter;
 import org.miradi.utils.PNGFileFilter;
-import org.miradi.views.MainWindowDoer;
 import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
-public class ExportCpmzDoer extends MainWindowDoer
+public class ExportCpmzDoer extends AbstractFileSaverDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -53,37 +51,14 @@ public class ExportCpmzDoer extends MainWindowDoer
 		return (getProject().isOpen());
 	}
 
-	@Override
-	public void doIt() throws CommandFailedException
+	protected void doWork(File chosen) throws Exception
 	{
-		if (!isAvailable())
-			return;
-		
-		CpmzFileChooser fileChooser = new CpmzFileChooser(getMainWindow());
-		File chosen = fileChooser.displayChooser();
-		if (chosen == null) 
-			return;
-		
-		try 
-		{
-			createCpmzFile(chosen);
-		} 
-		catch (IOException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(AbstractImageSaverDoer.BAD_FILE_NAME_ERROR_MESSAGE);
-			loopBack();
-		}
-		catch (Exception e) 
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: ") + e);
-		}
+		createCpmzFile(chosen);
 	}
 
-	private void loopBack() throws CommandFailedException
+	protected CpmzFileChooser getFileChooser()
 	{
-		doIt();
+		return new CpmzFileChooser(getMainWindow());
 	}
 
 	private void createCpmzFile(File chosen) throws Exception
