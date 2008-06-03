@@ -67,7 +67,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 	public void propertyChange(PropertyChangeEvent e) 
     {
     	Object value = optionPane.getValue();
-    	if (ignoreResetEvents(value)) 
+    	if (isUninitialized(value)) 
     		return;
     
     	resetValueToEnsureNextPropertyChangeFires();
@@ -85,7 +85,7 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
 		optionPane.setValue(JOptionPane.UNINITIALIZED_VALUE);
 	}
 
-	private boolean ignoreResetEvents(Object value)
+	private boolean isUninitialized(Object value)
 	{
 		return value == JOptionPane.UNINITIALIZED_VALUE;
 	}
