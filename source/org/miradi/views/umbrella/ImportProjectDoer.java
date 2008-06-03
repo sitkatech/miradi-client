@@ -52,11 +52,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 		try
 		{
 			JFileChooser fileChooser = new JFileChooser(currentDirectory);
-
 			fileChooser.setDialogTitle(EAM.text("Import Project"));
-			FileFilter[] filters = getFileFilter();
-			for (int i=0; i<filters.length; ++i)
-				fileChooser.addChoosableFileFilter(filters[i]);
+			addFileFilters(fileChooser);
+			
 			fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
 			fileChooser.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
 			if (fileChooser.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
@@ -82,20 +80,23 @@ public abstract class ImportProjectDoer extends ViewDoer
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
-			String message = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
-			  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
-			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
-			  "or re-export the project to an older (supported) format.");
-			
 			EAM.logException(e);
-			showImportFailedErrorDialog(message);
+			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
 		}
-		
+	}
+
+	private void addFileFilters(JFileChooser fileChooser)
+	{
+		FileFilter[] filters = getFileFilter();
+		for (int i = 0; i < filters.length; ++i)
+		{
+			fileChooser.addChoosableFileFilter(filters[i]);
+		}
 	}
 
 	private void showImportFailedErrorDialog(String message)
@@ -121,5 +122,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 	}
 	
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
-
+	private static final String IMPORT_FAILED_MESSAGE = EAM.text("This file cannot be imported because it is a newer format than this version of Miradi supports. <br>" +
+			  "Please make sure you are running the latest version of Miradi. If you are already <br>" +
+			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
+			  "or re-export the project to an older (supported) format.");
+			
 }
