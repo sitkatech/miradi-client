@@ -28,14 +28,24 @@ import org.miradi.main.EAM;
 
 public class ProjectNameRestrictedTextField extends PanelTextField
 {
+	public ProjectNameRestrictedTextField(int columns)
+	{
+		super(columns);
+		
+		initialize("");
+	}
+	
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super();
+		super(initialValue);
 		
+		initialize(initialValue);
+	}
+
+	private void initialize(String initialValue)
+	{
 		setDocument(new RestrictedDocument());
-		setColumns(30);
 		setText(initialValue);
-		selectAll();
 	}
 
 	public class RestrictedDocument extends PlainDocument
