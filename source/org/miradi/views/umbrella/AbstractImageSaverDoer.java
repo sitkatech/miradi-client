@@ -54,13 +54,19 @@ abstract public class AbstractImageSaverDoer extends ViewDoer
 		
 		try 
 		{
+			if (!chosen.exists())
+			{
+				EAM.errorDialog(EAM.text("Could not find file, check file for bad characters."));
+				return;
+			}
+			
 			FileOutputStream out = new FileOutputStream(chosen);
 			saveImage(out); 
 			out.close();
 		} 
 		catch (Exception e) 
 		{
-			EAM.logException(e);
+			throw new CommandFailedException(e);
 		} 
 	}
 	
