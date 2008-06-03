@@ -42,14 +42,16 @@ public class ModalRenameDialog extends JDialog implements PropertyChangeListener
         getContentPane().add(optionPane);
         pack();
         Utilities.centerDlg(this);
-        setVisible(true);
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
  	}
 	
 	public static String showDialog(MainWindow mainWindow, String message, String initialValue)
 	{
-		return new ModalRenameDialog(mainWindow, message, initialValue).getProjectName();
+		ModalRenameDialog modalRenameDialog = new ModalRenameDialog(mainWindow, message, initialValue);
+		modalRenameDialog.setVisible(true);
+		
+		return modalRenameDialog.getProjectName();
 	}
 	
 	public String getProjectName()
