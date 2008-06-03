@@ -855,6 +855,7 @@ public class Project
 		for(int i = 0; i < candidate.length(); ++i)
 		{
 			char c = asArray[i];
+			//FIXME is this 128 test valid
 			if(c >= 128)
 				continue;
 			if (EAM.isValidCharacter(c))
