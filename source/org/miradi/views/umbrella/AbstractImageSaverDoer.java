@@ -61,7 +61,7 @@ abstract public class AbstractImageSaverDoer extends ViewDoer
 		catch (IOException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error Occurred please try saving under different name."));
+			EAM.errorDialog(BAD_FILE_NAME_ERROR_MESSAGE);
 			loopBack();
 		}
 		catch (Exception e) 
@@ -84,4 +84,6 @@ abstract public class AbstractImageSaverDoer extends ViewDoer
 	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
 
 	abstract protected EAMFileSaveChooser getFileChooser();
+	
+	public static final String BAD_FILE_NAME_ERROR_MESSAGE = EAM.text("Error Occurred please try saving under different name.");
 }
