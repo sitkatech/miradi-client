@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -397,7 +398,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeTargets(UnicodeWriter out) throws Exception
 	{
 		Target[] targets = getProject().getTargetPool().getTargets();
-		Arrays.sort(targets, new BaseObjectByRefSorter());
+		Arrays.sort(targets, new ObjectToStringSorter());
 		writeStartElement(out, TARGETS);
 		for (int index = 0; index < targets.length; ++index)
 		{
