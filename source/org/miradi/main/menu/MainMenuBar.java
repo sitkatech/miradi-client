@@ -151,6 +151,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_X);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_Z);
+		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
 		menu.addSeparator();
 		
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
@@ -158,7 +159,6 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
-		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
 		
 		if(MainWindow.isDemoMode())
 		{

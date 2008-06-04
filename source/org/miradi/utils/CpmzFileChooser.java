@@ -42,5 +42,5 @@ public class CpmzFileChooser extends EAMFileSaveChooser
 		return CPMZ_UI_EXTENSION_TAG;
 	}
 	
-	public static final String CPMZ_UI_EXTENSION_TAG = "CPMZ";
+	public static final String CPMZ_UI_EXTENSION_TAG = "ConPro (CPMZ)";
 }
