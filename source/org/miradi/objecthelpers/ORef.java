@@ -128,6 +128,12 @@ public class ORef implements Comparable<ORef>
 		return toString().compareTo(otherRef.toString());
 	}
 	
+	public void ensureType(int type)
+	{
+		if (getObjectType() != type)
+			throw new RuntimeException("wrong type: " + type + " for ref type: " + getObjectType());
+	}
+	
 	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
 	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";
