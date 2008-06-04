@@ -25,7 +25,8 @@ import java.io.PrintStream;
 import org.martus.util.TestCaseEnhanced;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 
 public class TestORef extends TestCaseEnhanced
 {
@@ -70,5 +71,27 @@ public class TestORef extends TestCaseEnhanced
 		assertEquals("not same?", 0, same.compareTo(same));
 		assertEquals("not smaller by type?", 1, biggerByType.compareTo(smaller));
 		assertEquals("not smaller by id?", 1, biggerById.compareTo(smaller));
+	}
+	
+	public void testEnsureType()
+	{
+		ORef ref = new ORef(Cause.getObjectType(), new BaseId(4));
+		try
+		{
+			ref.ensureType(Cause.getObjectType());
+		}
+		catch (Exception e)
+		{
+			fail("wrong type for ref?");
+		}
+		
+		try
+		{
+			ref.ensureType(Target.getObjectType());
+			fail("was suppose to fail due to wrong type?");
+		}
+		catch (Exception e)
+		{		
+		}
 	}
 }
