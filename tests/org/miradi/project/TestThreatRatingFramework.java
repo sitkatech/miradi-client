@@ -38,6 +38,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
@@ -332,7 +333,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private static DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
-		return projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		DiagramFactor targetDiagramFactor = projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		projectToUse.setObjectData(targetDiagramFactor.getWrappedORef(), Target.TAG_LABEL, targetDiagramFactor.getWrappedId().toString());
+		
+		return targetDiagramFactor;
 		//FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.TARGET);
 		//return targetId;
 	}
