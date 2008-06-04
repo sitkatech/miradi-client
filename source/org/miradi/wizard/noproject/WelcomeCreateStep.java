@@ -102,6 +102,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 	{
 		super.refresh();
 		newProjectNameField.requestFocusInWindow();
+		newProjectNameField.addKeyListener(this);
 	}
 	
 	public Class getControl(String controlName)
