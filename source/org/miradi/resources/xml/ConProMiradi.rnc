@@ -197,7 +197,7 @@ key_attributes.element =
         element cp:key_attribute {
             attribute id { vocabulary_id }
             & element cp:name { text }
-            & element cp:category { vocabulary_key_ecological_attribute_category }
+            & element cp:category { vocabulary_key_ecological_attribute_category }?
         }*
     }
 #
