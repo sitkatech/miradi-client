@@ -387,7 +387,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			referredToOuterLevelObjects.add(keas[index].getRef());
 			
 			writeElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
-			writeElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
+			writeOptionalElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
 			writeEndElement(out, KEY_ATTRIBUTE);
 		}
 		
