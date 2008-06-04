@@ -177,11 +177,6 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		out.write(bytes);
 	}
 
-	public static File createProjectXmlFileInSystemTemp()
-	{
-		return new File(System.getProperty("java.io.tmpdir"), PROJECT_XML_FILE_NAME);
-	}
-
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MPZFileFilter.EXTENSION;
