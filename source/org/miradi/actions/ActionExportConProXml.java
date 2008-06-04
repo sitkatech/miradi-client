@@ -31,11 +31,11 @@ public class ActionExportConProXml extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Export ConPro XML File");
+		return EAM.text("Action|Export|ConPro (CPMZ) File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Export ConPro XML File");
+		return EAM.text("TT|Export a file that can be imported by ConPro");
 	}
 }
