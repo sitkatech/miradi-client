@@ -87,6 +87,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
 		fontProvider = new PlanningViewFontProvider();
 		
+		selectionController = new MultipleTableSelectionController();
+		
 		mainPanel = new OneRowPanel();
 		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
@@ -95,8 +97,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		treeTableScrollPane.addMouseWheelListener(this);
 		listenForColumnWidthChanges(getTree());
 		add(mainScrollPane);
-		
-		selectionController = new MultipleTableSelectionController();
 		
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
@@ -115,12 +115,18 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 
 	private MiradiScrollPane integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
 	{
-		new ModelUpdater(treeToUse.getTreeTableAdapter(), (AbstractTableModel)table.getModel());
-		listenForColumnWidthChanges(table);
+		table.setRowHeight(treeToUse.getRowHeight());	
+
+		selectionController.addTable(table);
+		selectionController.addTable(treeToUse);
 		rowHeightController.addTable(table);
+		listenForColumnWidthChanges(table);
+
+		new ModelUpdater(treeToUse.getTreeTableAdapter(), (AbstractTableModel)table.getModel());
 		
 		MiradiScrollPane scrollPane = new MiradiScrollPane(table);
-		rebuildSyncedTable(treeToUse, scrollPane, table);
+		scrollPane.addMouseWheelListener(this);
+		turnOffVerticalHorizontalScrolling(scrollPane);
 		return scrollPane;
 	}
 
@@ -135,16 +141,6 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		scrollPaneToUse.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
 	
-	private void rebuildSyncedTable(PlanningTreeTable treeTableToUse, MiradiScrollPane scrollPaneToUse, JTable tableToUse)
-	{
-		scrollPaneToUse.addMouseWheelListener(this);
-		tableToUse.setRowHeight(treeTableToUse.getRowHeight());	
-		turnOffVerticalHorizontalScrolling(scrollPaneToUse);
-		
-		selectionController.addTable(tableToUse);
-		selectionController.addTable(treeTableToUse);
-	}
-
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
