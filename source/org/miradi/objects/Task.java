@@ -466,6 +466,13 @@ public class Task extends BaseObject
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
 
+	public static boolean is(BaseObject object)
+	{
+		if(object == null)
+			return false;
+		return is(object.getRef());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

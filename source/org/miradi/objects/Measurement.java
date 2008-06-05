@@ -92,6 +92,13 @@ public class Measurement extends BaseObject
 		return date.toString();
 	}
 	
+	public static boolean is(BaseObject object)
+	{
+		if(object == null)
+			return false;
+		return is(object.getRef());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
