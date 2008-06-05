@@ -69,7 +69,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
 		PlanningTreeTableModel model = new PlanningTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model, new PlanningViewFontProvider());	
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
 		
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
@@ -92,6 +92,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		fontProvider = new PlanningViewFontProvider();
 		
 		listenForColumnWidthChanges(getTree());
+		
+		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
+		mainTable = new PlanningViewMainTable(mainModel, fontProvider);
+		mainTableScrollPane = integrateTable(treeToUse, mainTable);
 
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
@@ -241,6 +245,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		// NOTE: The following rebuild the columns but don't touch the tree
 		getPlanningModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
+
+		mainModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
@@ -255,10 +261,15 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	
 	private void updateRightSideTablePanels() throws Exception
 	{
-		multiTableExporter.clear();
-		multiTableExporter.addExportable(getTree());
 		mainPanel.removeAll();
+		multiTableExporter.clear();
+
 		mainPanel.add(treeTableScrollPane);
+		multiTableExporter.addExportable(getTree());
+
+		mainPanel.add(mainTableScrollPane);
+		multiTableExporter.addExportable(mainTable);
+
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
@@ -298,12 +309,15 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private PlanningViewFontProvider fontProvider;
 	private JPanel mainPanel;
 	private MultipleTableSelectionController selectionController;
+	private PlanningViewMainTableModel mainModel;
+	private PlanningViewMainTable mainTable;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTable measurementTable;
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTable futureStatusTable;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
+	private MiradiScrollPane mainTableScrollPane;
 	private MiradiScrollPane annualTotalsScrollPane;
 	private MiradiScrollPane measurementScrollPane;
 	private MiradiScrollPane futureStatusScrollPane;
