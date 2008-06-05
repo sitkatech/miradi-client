@@ -58,6 +58,14 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 		}
 	}
 	
+	protected void restoreWidthsAndSequence() throws Exception
+	{
+		if(columnWidthSaver != null)
+			columnWidthSaver.restoreColumnWidths();
+		if(columnSequenceSaver != null)
+			columnSequenceSaver.restoreColumnSequences();
+	}
+	
 	protected int getSavedColumnWidth(int tableColumn)
 	{
 		return columnWidthSaver.getColumnWidth(tableColumn);

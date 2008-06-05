@@ -25,23 +25,7 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Desire;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
-import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportStatusQuestion;
-import org.miradi.questions.StrategyClassificationQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
@@ -81,21 +65,6 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		columnsToShow = new CodeList();
 		columnsToShow.add(DEFAULT_COLUMN);
-		columnsToShow.addAll(visibleColumnCodes);
-		
-		omitColumnTagsRepresentedByColumnTables();
-	}
-
-	private void omitColumnTagsRepresentedByColumnTables()
-	{
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-			columnsToShow.removeCode(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
-		
-		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-			columnsToShow.removeCode(Measurement.META_COLUMN_TAG);
-		
-		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-			columnsToShow.removeCode(Indicator.META_COLUMN_TAG);
 	}
 
 	public int getColumnCount()
@@ -116,95 +85,9 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	public String getColumnTagForNode(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
-
-		if(ConceptualModelDiagram.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ConceptualModelDiagram.TAG_DETAIL;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-				
-		if(ResultsChainDiagram.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ResultsChainDiagram.TAG_DETAIL;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(Target.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Target.TAG_TEXT;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(Goal.is(nodeType))
-		{
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(Cause.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Cause.TAG_TEXT;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(ThreatReductionResult.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return ThreatReductionResult.TAG_TEXT;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(Objective.is(nodeType))
-		{
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-
-		if(Strategy.is(nodeType))
-		{
-			if (isDetailsColumn(column))
-				return Strategy.TAG_TEXT;
-			if(columnTag.equals(Indicator.TAG_PRIORITY))
-				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
-		}
-		
-		if(Task.is(nodeType))
-		{
-			if(isDetailsColumn(column))
-				return Task.TAG_DETAILS;
-		}
-
-		if(Indicator.is(nodeType))
-		{
-			if (isDetailsColumn(column))
-				return Indicator.TAG_DETAIL;
-		}
-		
-		if(Measurement.is(nodeType))
-		{
-			if (isDetailsColumn(column))
-				return Measurement.TAG_DETAIL;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
-		}
-		
 		return columnTag;
 	}
 
-	private boolean isDetailsColumn(int column)
-	{
-		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
-	}
-	
 	protected void rebuildNode()
 	{
 		try
@@ -233,32 +116,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 			if(baseObject == null)
 				return null;
 
-			if (col == 0)
-				return baseObject.toString();
-
-			String columnTag = getColumnTagForNode(baseObject.getType(), col);
-			if (! baseObject.doesFieldExist(columnTag))
-				return null;
-
-			String rawValue = "";
-			if (baseObject.isPseudoField(columnTag))
-				rawValue = baseObject.getPseudoData(columnTag);
-			else
-				rawValue = baseObject.getData(columnTag);
-			
-			if(columnTag.equals(Indicator.TAG_PRIORITY))
-				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
-			
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return new ProgressReportStatusQuestion().findChoiceByCode(rawValue);
-			
-			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
-			
-			if(columnTag.equals(Strategy.TAG_TAXONOMY_CODE))
-				return new StrategyClassificationQuestion().findChoiceByCode(rawValue);
-
-			return rawValue;
+			return baseObject.toString();
 		}
 		catch (Exception e)
 		{
