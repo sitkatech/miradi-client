@@ -69,8 +69,8 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	public Object getValueAt(int row, int column)
 	{
-		Object rawTreeNode = getBaseObjectForRowColumn(row, column);
-		return getValueAt(rawTreeNode, column);
+		BaseObject object = getBaseObjectForRowColumn(row, column);
+		return getValueAt(object, column);
 	}
 
 	public Object getValueAt(Object rawObject, int column)
