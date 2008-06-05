@@ -60,6 +60,7 @@ import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
@@ -97,35 +98,30 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		
 		selectionController = new MultipleTableSelectionController();
 		
-		TreeTableModelAdapter treeTableModelAdapter = treeToUse.getTreeTableAdapter();
-		
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
-		new ModelUpdater(treeTableModelAdapter, annualTotalsModel);
-		listenForColumnWidthChanges(annualTotalsTable);
-		rowHeightController.addTable(annualTotalsTable);
-		annualTotalsScrollPane = new MiradiScrollPane(annualTotalsTable);
-		rebuildSyncedTable(treeToUse, annualTotalsScrollPane, annualTotalsTable);
-		
+		annualTotalsScrollPane = integrateTable(treeToUse, annualTotalsTable);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
-		new ModelUpdater(treeTableModelAdapter, measurementModel);
-		listenForColumnWidthChanges(measurementTable);
-		rowHeightController.addTable(measurementTable);
-		measurementScrollPane = new MiradiScrollPane(measurementTable);
-		rebuildSyncedTable(treeToUse, measurementScrollPane, measurementTable);
-		
+		measurementScrollPane = integrateTable(treeToUse, measurementTable);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
-		new ModelUpdater(treeTableModelAdapter, futureStatusModel);
-		listenForColumnWidthChanges(futureStatusTable);
-		rowHeightController.addTable(futureStatusTable);
-		futureStatusScrollPane = new MiradiScrollPane(futureStatusTable);
-		rebuildSyncedTable(treeToUse, futureStatusScrollPane, futureStatusTable);
+		futureStatusScrollPane = integrateTable(treeToUse, futureStatusTable);
 		
 		rebuildEntireTreeTable();
+	}
+
+	private MiradiScrollPane integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
+	{
+		new ModelUpdater(treeToUse.getTreeTableAdapter(), (AbstractTableModel)table.getModel());
+		listenForColumnWidthChanges(table);
+		rowHeightController.addTable(table);
+		
+		MiradiScrollPane scrollPane = new MiradiScrollPane(table);
+		rebuildSyncedTable(treeToUse, scrollPane, table);
+		return scrollPane;
 	}
 
 	private void listenForColumnWidthChanges(JTable table)
