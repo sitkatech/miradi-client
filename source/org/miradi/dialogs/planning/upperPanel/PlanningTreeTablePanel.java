@@ -64,8 +64,6 @@ import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
-import com.java.sun.jtreetable.TreeTableModelAdapter;
-
 public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -88,6 +86,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		fontProvider = new PlanningViewFontProvider();
 		
 		selectionController = new MultipleTableSelectionController();
+		selectionController.addTable(treeToUse);
 		
 		mainPanel = new OneRowPanel();
 		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -115,15 +114,15 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 
 	private MiradiScrollPane integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
 	{
+		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
+		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
+		
 		table.setRowHeight(treeToUse.getRowHeight());	
 
 		selectionController.addTable(table);
-		selectionController.addTable(treeToUse);
 		rowHeightController.addTable(table);
 		listenForColumnWidthChanges(table);
 
-		new ModelUpdater(treeToUse.getTreeTableAdapter(), (AbstractTableModel)table.getModel());
-		
 		MiradiScrollPane scrollPane = new MiradiScrollPane(table);
 		scrollPane.addMouseWheelListener(this);
 		turnOffVerticalHorizontalScrolling(scrollPane);
@@ -315,10 +314,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 
 class ModelUpdater implements TableModelListener
 {
-	public ModelUpdater(TreeTableModelAdapter adapter, AbstractTableModel modelToUpdateToUse)
+	public ModelUpdater(AbstractTableModel modelToUpdateToUse)
 	{
 		modelToUpdate = modelToUpdateToUse;
-		adapter.addTableModelListener(this);
 	}
 	
 	public void tableChanged(TableModelEvent e)
