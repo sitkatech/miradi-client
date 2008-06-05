@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treetables;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.util.Arrays;
 import java.util.Vector;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TreeSelectionEvent;
@@ -42,6 +42,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 
@@ -59,15 +60,21 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		treeTableScrollPane = new ScrollPaneWithHideableScrollBar(tree);
 		add(treeTableScrollPane, BorderLayout.CENTER);
 		
-		GridLayoutPlus layout = new GridLayoutPlus(2, 3, 3, 3);
-		JPanel buttonBox = new JPanel(layout);
-		buttonBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		buttonBox = createButtonBox(buttonActionClasses);
 		add(buttonBox,BorderLayout.AFTER_LAST_LINE);
-		addButtonsToBox(buttonActionClasses, buttonBox, mainWindow.getActions());
 
 		tree.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tree.getTree().addSelectionRow(0);
 		tree.getTree().addTreeSelectionListener(this);
+	}
+
+	private JPanel createButtonBox(Class[] buttonActionClasses)
+	{
+		GridLayoutPlus layout = new GridLayoutPlus(2, 3, 3, 3);
+		JPanel box = new JPanel(layout);
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		addButtonsToBox(buttonActionClasses, box, mainWindow.getActions());
+		return box;
 	}
 	
 	public TreeTableWithStateSaving getTree()
@@ -109,16 +116,16 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return model;
 	}
 	
-	public void addButtonsToBox(Class[] classes, JPanel buttonBox, Actions actions)
+	public void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
 	{
 		for (int i=0; i<classes.length; ++i)
-		addCreateButtonAndAddToBox(classes[i], buttonBox, actions);
+		addCreateButtonAndAddToBox(classes[i], box, actions);
 	}
 	
-	private void addCreateButtonAndAddToBox(Class actionClass, JPanel buttonBox, Actions actions)
+	private void addCreateButtonAndAddToBox(Class actionClass, JPanel box, Actions actions)
 	{
 		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
-		buttonBox.add(button);
+		box.add(button);
 	}
 	
 
@@ -148,11 +155,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	//TODO:Is this needed? Is it the right place/mechanism? 
 	public void setSelectedObject(ORef ref)
 	{
-	}
-	
-	protected ScrollPaneWithHideableScrollBar getTreeTableScrollPane()
-	{
-		return treeTableScrollPane;
 	}
 	
 	protected boolean isDeleteCommand(CommandExecutedEvent event, int type)
@@ -215,7 +217,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
 	{
-		public ScrollPaneWithHideableScrollBar(JComponent component)
+		public ScrollPaneWithHideableScrollBar(Component component)
 		{
 			super(component);
 			hideableScrollBar = new HideableScrollBar();
@@ -237,6 +239,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	private MainWindow mainWindow;
 	protected TreeTableWithStateSaving tree;
+	protected JPanel buttonBox;
 	protected GenericTreeTableModel model;
-	protected ScrollPaneWithHideableScrollBar treeTableScrollPane;
+	protected FastScrollPane treeTableScrollPane;
 }
