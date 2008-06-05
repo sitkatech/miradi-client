@@ -79,6 +79,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		super(mainWindowToUse, treeToUse, getButtonActions());
 		model = modelToUse;
 		
+		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
+		treeTableScrollPane.addMouseWheelListener(this);
+
 		rowHeightController = new MultiTableRowHeightController();
 		rowHeightController.addTable(treeToUse);
 		
@@ -88,10 +91,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
 		fontProvider = new PlanningViewFontProvider();
 		
-		mainPanel = new OneRowPanel();
-		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
-		
+		listenForColumnWidthChanges(getTree());
+
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
 		annualTotalsScrollPane = integrateTable(treeToUse, annualTotalsTable);
@@ -104,9 +105,9 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
 		futureStatusScrollPane = integrateTable(treeToUse, futureStatusTable);
 		
+		mainPanel = new OneRowPanel();
+		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		mainScrollPane = new MiradiScrollPane(mainPanel);
-		treeTableScrollPane.addMouseWheelListener(this);
-		listenForColumnWidthChanges(getTree());
 		add(mainScrollPane);
 		
 		rebuildEntireTreeTable();
