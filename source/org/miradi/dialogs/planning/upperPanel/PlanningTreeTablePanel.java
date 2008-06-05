@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.awt.BorderLayout;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
@@ -41,6 +40,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -64,7 +64,6 @@ import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
-import com.jhlabs.awt.BasicGridLayout;
 
 public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
@@ -87,10 +86,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
 		fontProvider = new PlanningViewFontProvider();
 		
-		mainPanel = new JPanel(new BasicGridLayout(1, 4));
+		mainPanel = new OneRowPanel();
 		mainPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		turnOffVerticalHorizontalScrolling(treeTableScrollPane);
-		mainPanel.add(treeTableScrollPane, BorderLayout.CENTER);
+		
 		mainScrollPane = new MiradiScrollPane(mainPanel);
 		treeTableScrollPane.addMouseWheelListener(this);
 		listenForColumnWidthChanges(getTree());
