@@ -58,7 +58,7 @@ public class StressBasedThreatFormula extends ThreatFormula
 			
 		};
 
-		return contributionIrreversibilityTable[contribution][irreversibility];
+		return contributionIrreversibilityTable[irreversibility][contribution];
 	}
 	
 	public int computeThreatStressRating(int source, int stress)
