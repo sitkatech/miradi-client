@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 import javax.swing.BoundedRangeModel;
-import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -47,7 +49,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -70,6 +71,8 @@ import org.miradi.utils.MultipleTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
+import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
@@ -124,29 +127,30 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		futureStatusScrollPane = integrateTable(treeToUse, futureStatusTable);
 		
 		
-		treesPanel = Box.createHorizontalBox();
+		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
 		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
+		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		treesScrollPane.hideVerticalScrollBar();
 		
-		tablesPanel = Box.createHorizontalBox();
+		tablesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		ScrollPaneWithHideableScrollBar tablesScrollPane = new ScrollPaneWithHideableScrollBar(tablesPanel);
+		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		JScrollBar masterScrollBar = new MasterVerticalScrollBar(treesScrollPane);
+		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		scrollController.addScrollBar(masterScrollBar);
-		scrollController.addScrollPane(treesScrollPane);
-		scrollController.addScrollPane(tablesScrollPane);
 		
-		treePlusTablesPanel = Box.createHorizontalBox();
-		treePlusTablesPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		treePlusTablesPanel.add(treesScrollPane);
-		treePlusTablesPanel.add(tablesScrollPane);
-		treePlusTablesPanel.add(masterScrollBar);
-		treePlusTablesPanel.add(Box.createHorizontalGlue());
+		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "PlanningViewTreesPlusTables");
+		treePlusTablesPanel.setDividerSize(5);
+		// FIXME: Remove this when persistence actually works!
+		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
+		treePlusTablesPanel.setTopComponent(treesScrollPane);
+		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
 		add(treePlusTablesPanel, BorderLayout.CENTER);
+		add(masterScrollBar, BorderLayout.AFTER_LINE_ENDS);
 		
 		rebuildEntireTreeTable();
 	}
@@ -175,6 +179,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.hideVerticalScrollBar();
 		scrollPane.addMouseWheelListener(this);
+
+		scrollController.addScrollPane(scrollPane);
 		
 		return scrollPane;
 	}
@@ -339,13 +345,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
-		treesScrollPane.processMouseWheelEvent(e);
+		if(e.getScrollType() != e.WHEEL_UNIT_SCROLL)
+			return;
+		
+		masterScrollBar.setValue(masterScrollBar.getValue() + e.getUnitsToScroll());
 	}
 
 	private PlanningViewFontProvider fontProvider;
-	private Box treePlusTablesPanel;
-	private Box treesPanel;
-	private Box tablesPanel;
+	private PersistentHorizontalSplitPane treePlusTablesPanel;
+	private JPanel treesPanel;
+	private JPanel tablesPanel;
 	
 	private PlanningViewMainTableModel mainModel;
 	private PlanningViewMainTable mainTable;
@@ -356,6 +365,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	private PlanningViewFutureStatusTable futureStatusTable;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 
+	private JScrollBar masterScrollBar;
 	private ScrollPaneWithHideableScrollBar treesScrollPane;
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ScrollPaneWithHideableScrollBar annualTotalsScrollPane;
@@ -408,3 +418,39 @@ class MasterVerticalScrollBar extends JScrollBar implements ChangeListener
 
 	private JScrollBar otherScrollBar;
 }
+
+class ShrinkToFitVerticallyHorizontalBox extends JPanel
+{
+	ShrinkToFitVerticallyHorizontalBox()
+	{
+		BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
+		setLayout(layout);
+	}
+	
+	@Override
+	public void setPreferredSize(Dimension preferredSize)
+	{
+		overriddenPreferredSize = preferredSize;
+	}
+	
+	@Override
+	public Dimension getPreferredSize()
+	{
+		if(overriddenPreferredSize != null)
+			return overriddenPreferredSize;
+		
+		Dimension size = new Dimension(super.getPreferredSize());
+		Container parent = getParent();
+		if(parent == null)
+			return size;
+		
+		setPreferredSize(new Dimension(0,0));
+		Dimension max = parent.getPreferredSize();
+		setPreferredSize(null);
+		size.height = Math.min(size.height, max.height);
+		return size;
+	}
+	
+	private Dimension overriddenPreferredSize;
+}
+
