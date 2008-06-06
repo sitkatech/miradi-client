@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
-import org.miradi.ActionTreeShareActivity;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
@@ -49,6 +48,7 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
+import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.base.DisposablePanel;

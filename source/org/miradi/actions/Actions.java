@@ -26,7 +26,6 @@ import java.util.Map;
 
 import javax.swing.SwingUtilities;
 
-import org.miradi.ActionTreeShareActivity;
 import org.miradi.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.miradi.actions.jump.ActionJumpAdaptAndMonitorPlans;
 import org.miradi.actions.jump.ActionJumpAnalyzeData;
