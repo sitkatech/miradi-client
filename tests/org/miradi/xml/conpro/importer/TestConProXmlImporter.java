@@ -32,6 +32,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -57,6 +58,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			String firstExport = convertFileContentToString(beforeXmlOutFile);
 			
 			importProject(beforeXmlOutFile, projectToFill1);
+			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
@@ -69,11 +71,17 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			afterXmlOutFile.delete();
-			
 			projectToFill1.close();
 		}
 	}
 	
+	private void verifyThreatStressRatingPoolContents(ProjectForTesting project, ProjectForTesting filledProject)
+	{
+		int originalProjectObjectCount =  getProject().getPool(ThreatStressRating.getObjectType()).getRefList().size();	
+		int filledProjectObjectCount =  filledProject.getPool(ThreatStressRating.getObjectType()).getRefList().size();
+		assertEquals("not same Threat stress rating object count?", originalProjectObjectCount, filledProjectObjectCount);
+	}
+
 	public void verifyImportingMethods() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproBeforeImport.xml");

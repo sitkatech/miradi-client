@@ -599,7 +599,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, NESTED_TARGETS);
 	}
 
-	private void writeThreatStressRatings(UnicodeWriter out, Target target) throws Exception
+	private void writeThreatStressRatings(UnicodeWriter out, Target target, Stress stress) throws Exception
 	{
 		FactorLinkSet targetLinkSet = getThreatLinksWithThreatStressRatings(target);
 		Vector<FactorLink> targetLinks = new Vector<FactorLink>();
@@ -609,18 +609,23 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeStartElement(out, THREAT_STRESS_RATINGS);
 		for (int index = 0; index < targetLinks.size(); ++index)
 		{
-			writeThreatStressRatings(out, targetLinks.get(index));
+			writeThreatStressRatings(out, targetLinks.get(index), stress);
 		}
 		writeEndElement(out, THREAT_STRESS_RATINGS);
 	}
 
-	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink) throws Exception
+	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink, Stress stress) throws Exception
 	{
 		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
 		threatStressRatingRefs.sort();
 		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
 		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(refIndex));
+			
+			ORef threatStressRatingRef = threatStressRatingRefs.get(refIndex);
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
+			if (!threatStressRating.getStressRef().equals(stress.getRef()))
+				continue;
+			
 			writeStartElement(out, THREAT_STRESS_RATING);
 			
 			writeElement(out, THREAT_ID, factorLink.getUpstreamThreatRef().getObjectId().toString());
@@ -645,7 +650,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
-			writeThreatStressRatings(out, target);
+			writeThreatStressRatings(out, target, stress);
 			
 			writeEndElement(out, STRESS);
 		}

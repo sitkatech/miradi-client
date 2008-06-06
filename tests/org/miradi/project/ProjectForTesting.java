@@ -170,7 +170,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public FactorLink createAndPopulateDirectThreatLink() throws Exception
 	{
 		FactorLink directThreatLink = createDirectThreatLink();
-		populateFactorLink(directThreatLink);
+		ORef targetRef = directThreatLink.getDownstreamTargetRef();
+		Target target = Target.find(this, targetRef);
+	
+		populateDirectThreatLink(directThreatLink, target.getStressRefs());
 
 		return directThreatLink;
 	}
@@ -180,7 +183,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Cause threat = createAndPopulateThreat();
 		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
 		FactorLink factorLink = FactorLink.find(this, directThreatLinkRef);
-		populateFactorLink(factorLink);
+		populateDirectThreatLink(factorLink, target.getStressRefs());
 
 		return factorLink;
 	}
@@ -188,6 +191,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ThreatStressRating createAndPopulateThreatStressRating() throws Exception
 	{
 		ThreatStressRating threatStressRating = createThreatStressRating();
+		populateThreatStressRating(threatStressRating);
+		
+		return threatStressRating;
+	}
+	
+	public ThreatStressRating createAndPopulateThreatStressRating(ORef stressRef) throws Exception
+	{
+		ThreatStressRating threatStressRating = createThreatStressRating(stressRef);
 		populateThreatStressRating(threatStressRating);
 		
 		return threatStressRating;
@@ -310,7 +321,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ThreatStressRating createThreatStressRating() throws Exception
 	{
 		Stress stress = createAndPopulateStress();
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stress.getRef());
+		return createThreatStressRating(stress.getRef());
+	}
+
+	private ThreatStressRating createThreatStressRating(ORef stressRef) throws Exception
+	{
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
 		return ThreatStressRating.find(this, threatStressRatingRef);
 	}
@@ -436,11 +452,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(factorLink, FactorLink.TAG_COMMENT, "Some FactorLink comment");
 	}
 	
+	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
+	{
+		ORefList threatStressRatingRefs = new ORefList();
+		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
+		{
+			ORef threatStressRatingRef = createAndPopulateThreatStressRating(stressRefs.get(refIndex)).getRef();
+			threatStressRatingRefs.add(threatStressRatingRef);	
+		}
+		
+		fillObjectUsingCommand(directThreatLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
+		fillObjectUsingCommand(directThreatLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, "Some simple ThreatRating comment");
+		fillObjectUsingCommand(directThreatLink, FactorLink.TAG_COMMENT, "Some FactorLink comment");
+	}
+	
 	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
-		Stress stress = createAndPopulateStress();
-		
-		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_STRESS_REF, stress.getRef().toString());
 		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.HIGH_CODE);
 		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
 	}
@@ -596,7 +623,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateTarget();
 		createAndPopulateTask("Some Task Label");
 		createAndPopulateThreat();
-		createAndPopulateThreatStressRating();
 		createAndPopulateObjective();
 		createAndPopulateDraftStrategy();
 		createAndPopulateStrategy();
