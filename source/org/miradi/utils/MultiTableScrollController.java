@@ -35,7 +35,7 @@ abstract public class MultiTableScrollController implements AdjustmentListener
 		scrollBars = new Vector();
 	}
 
-	public void addTable(JScrollPane scrollPaneToAdd)
+	public void addScrollPane(JScrollPane scrollPaneToAdd)
 	{
 		addScrollBar(getScrollBar(scrollPaneToAdd));
 	}

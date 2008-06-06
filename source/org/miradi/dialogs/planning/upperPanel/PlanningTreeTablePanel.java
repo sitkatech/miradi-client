@@ -100,7 +100,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 		selectionController.addTable(treeToUse);
 		
 		scrollController = new MultiTableVerticalScrollController();
-		scrollController.addTable(treeTableScrollPane);
+		scrollController.addScrollPane(treeTableScrollPane);
 		
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
 		fontProvider = new PlanningViewFontProvider();
@@ -135,8 +135,8 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 
 		JScrollBar masterScrollBar = new MasterVerticalScrollBar(treesScrollPane);
 		scrollController.addScrollBar(masterScrollBar);
-		scrollController.addTable(treesScrollPane);
-		scrollController.addTable(tablesScrollPane);
+		scrollController.addScrollPane(treesScrollPane);
+		scrollController.addScrollPane(tablesScrollPane);
 		
 		treePlusTablesPanel = Box.createHorizontalBox();
 		treePlusTablesPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
