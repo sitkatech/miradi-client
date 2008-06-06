@@ -613,7 +613,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importStressesThreats(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
-		ORefList threatStressRatingRefs = new ORefList();
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
 		
 		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
@@ -627,7 +626,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(threatStressRatingNode, IRREVERSIBILITY_RANK, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, getCodeMapHelper().getConProToMiradiRatingMap());
-			threatStressRatingRefs.add(threatStressRatingRef);
 		}		
 	}
 
