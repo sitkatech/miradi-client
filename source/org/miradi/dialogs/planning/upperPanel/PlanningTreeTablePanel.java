@@ -21,13 +21,17 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
+import javax.swing.BoundedRangeModel;
 import javax.swing.Box;
-import javax.swing.JComponent;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JViewport;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -43,7 +47,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanel;
-import org.miradi.dialogs.treetables.TreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -68,7 +71,7 @@ import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
-public class PlanningTreeTablePanel extends TreeTablePanel
+public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{ 
@@ -84,9 +87,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		model = modelToUse;
 		
 		// NOTE: Replace tree scroll pane created by super constructor
-		NeverBiggerThanPreferredSizeScrollPane newTreeScrollPane = new NeverBiggerThanPreferredSizeScrollPane(getTree());
+		ScrollPaneWithHideableScrollBar newTreeScrollPane = new ScrollPaneWithHideableScrollBar(getTree());
 		newTreeScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		newTreeScrollPane.hideVerticalScrollBar();
+		newTreeScrollPane.addMouseWheelListener(this);
 		treeTableScrollPane = newTreeScrollPane;
 
 		rowHeightController = new MultiTableRowHeightController();
@@ -122,17 +126,23 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		
 		treesPanel = Box.createHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
-		NeverBiggerThanPreferredSizeScrollPane treesScrollPane = new NeverBiggerThanPreferredSizeScrollPane(treesPanel);
-		treesScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
+		treesScrollPane.hideVerticalScrollBar();
 		
 		tablesPanel = Box.createHorizontalBox();
-		NeverBiggerThanPreferredSizeScrollPane tablesScrollPane = new NeverBiggerThanPreferredSizeScrollPane(tablesPanel);
-		tablesScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		ScrollPaneWithHideableScrollBar tablesScrollPane = new ScrollPaneWithHideableScrollBar(tablesPanel);
+		tablesScrollPane.hideVerticalScrollBar();
 
+		JScrollBar masterScrollBar = new MasterVerticalScrollBar(treesScrollPane);
+		scrollController.addScrollBar(masterScrollBar);
+		scrollController.addTable(treesScrollPane);
+		scrollController.addTable(tablesScrollPane);
+		
 		treePlusTablesPanel = Box.createHorizontalBox();
 		treePlusTablesPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		treePlusTablesPanel.add(treesScrollPane);
 		treePlusTablesPanel.add(tablesScrollPane);
+		treePlusTablesPanel.add(masterScrollBar);
 		treePlusTablesPanel.add(Box.createHorizontalGlue());
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
@@ -150,7 +160,7 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return parent.getViewport().getPreferredSize();
 	}
 
-	private NeverBiggerThanPreferredSizeScrollPane integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
+	private ScrollPaneWithHideableScrollBar integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
 	{
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
 		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
@@ -161,11 +171,10 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		rowHeightController.addTable(table);
 		listenForColumnWidthChanges(table);
 
-		NeverBiggerThanPreferredSizeScrollPane scrollPane = new NeverBiggerThanPreferredSizeScrollPane(table);
+		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneWithHideableScrollBar(table);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.hideVerticalScrollBar();
-		
-		scrollController.addTable(scrollPane);
+		scrollPane.addMouseWheelListener(this);
 		
 		return scrollPane;
 	}
@@ -328,11 +337,16 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 		return multiTableExporter;
 	}
 	
+	public void mouseWheelMoved(MouseWheelEvent e)
+	{
+		treesScrollPane.processMouseWheelEvent(e);
+	}
+
 	private PlanningViewFontProvider fontProvider;
 	private Box treePlusTablesPanel;
 	private Box treesPanel;
 	private Box tablesPanel;
-	private MultipleTableSelectionController selectionController;
+	
 	private PlanningViewMainTableModel mainModel;
 	private PlanningViewMainTable mainTable;
 	private PlanningViewBudgetAnnualTotalsTable annualTotalsTable;
@@ -341,53 +355,17 @@ public class PlanningTreeTablePanel extends TreeTablePanel
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTable futureStatusTable;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	private NeverBiggerThanPreferredSizeScrollPane mainTableScrollPane;
-	private NeverBiggerThanPreferredSizeScrollPane annualTotalsScrollPane;
-	private NeverBiggerThanPreferredSizeScrollPane measurementScrollPane;
-	private NeverBiggerThanPreferredSizeScrollPane futureStatusScrollPane;
+
+	private ScrollPaneWithHideableScrollBar treesScrollPane;
+	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
+	private ScrollPaneWithHideableScrollBar annualTotalsScrollPane;
+	private ScrollPaneWithHideableScrollBar measurementScrollPane;
+	private ScrollPaneWithHideableScrollBar futureStatusScrollPane;
 	
+	private MultipleTableSelectionController selectionController;
 	private MultiTableRowHeightController rowHeightController;
 	private MultiTableCombinedAsOneExporter multiTableExporter;
 	private MultiTableVerticalScrollController scrollController;
-}
-
-class NeverBiggerThanPreferredSizeScrollPane extends ScrollPaneWithHideableScrollBar
-{
-	public NeverBiggerThanPreferredSizeScrollPane(JComponent view)
-	{
-		super(view);
-		setViewport(new SmallerViewport());
-		setViewportView(view);
-	}
-	
-	@Override
-	public Dimension getMaximumSize()
-	{
-		return super.getViewport().getPreferredSize();
-	}
-	
-	class SmallerViewport extends JViewport
-	{
-		@Override
-		public Dimension getMaximumSize()
-		{
-			System.out.println("getMax");
-			return new Dimension(100,300);
-		}
-		
-		@Override
-		public Dimension getPreferredSize()
-		{
-			Dimension size = super.getPreferredSize();
-			
-			// FIXME: Not sure why we need this...tried to base it on border insets,
-			// but that was not enough
-			size.width += 5;
-			return size;
-		}
-		
-	}
-	
 }
 
 class ModelUpdater implements TableModelListener
@@ -403,4 +381,30 @@ class ModelUpdater implements TableModelListener
 	}
 	
 	private AbstractTableModel modelToUpdate;
+}
+
+class MasterVerticalScrollBar extends JScrollBar implements ChangeListener
+{
+	MasterVerticalScrollBar(JScrollPane baseRangeOn)
+	{
+		super(VERTICAL);
+		baseRangeOn.getVerticalScrollBar().getModel().addChangeListener(this);
+		otherScrollBar = baseRangeOn.getVerticalScrollBar();
+	}
+
+	public void stateChanged(ChangeEvent e)
+	{
+		updateRange();
+	}
+
+	private void updateRange()
+	{
+		BoundedRangeModel ourModel = getModel();
+		BoundedRangeModel otherModel = otherScrollBar.getModel();
+		ourModel.setMinimum(otherModel.getMinimum());
+		ourModel.setMaximum(otherModel.getMaximum());
+		ourModel.setExtent(otherModel.getExtent());
+	}
+
+	private JScrollBar otherScrollBar;
 }
