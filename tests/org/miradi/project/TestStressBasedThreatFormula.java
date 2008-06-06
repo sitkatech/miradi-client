@@ -76,7 +76,7 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 			for (int irreversibilityIndex = 0; irreversibilityIndex < irreversibility.length; ++irreversibilityIndex)
 			{
 				int computedValue = formula.computeContributionByIrreversibility(contribution[contributionIndex], irreversibility[irreversibilityIndex]);
-				int expectedValue = contributionIrreversibility[contributionIndex][irreversibilityIndex]; 
+				int expectedValue = contributionIrreversibility[irreversibilityIndex][contributionIndex]; 
 				assertEquals(expectedValue, computedValue);
 			}
 		}
