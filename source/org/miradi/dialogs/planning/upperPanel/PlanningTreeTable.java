@@ -21,8 +21,6 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Dimension;
 
-import javax.swing.JTable;
-
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.objects.BaseObject;
@@ -34,7 +32,6 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 	public PlanningTreeTable(Project projectToUse, PlanningTreeTableModel planningTreeModelToUse)
 	{
 		super(projectToUse, planningTreeModelToUse);
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	public String getUniqueTableIdentifier()
