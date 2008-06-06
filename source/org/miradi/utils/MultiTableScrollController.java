@@ -32,13 +32,23 @@ abstract public class MultiTableScrollController implements AdjustmentListener
 	public MultiTableScrollController(int orientationToUse)
 	{
 		orientation = orientationToUse;
+		scrollBars = new Vector();
 	}
 
 	public void addTable(JScrollPane scrollPaneToAdd)
 	{
-		getScrollBar(scrollPaneToAdd).addAdjustmentListener(this);
-		scrollPanes.add(scrollPaneToAdd);
+		addScrollBar(getScrollBar(scrollPaneToAdd));
 	}
+	
+	public void addScrollBar(JScrollBar scrollBar)
+	{
+		if(scrollBar.getOrientation() != orientation)
+			throw new RuntimeException("Cannot mix horizontal and vertical scroll bars");
+		
+		scrollBar.addAdjustmentListener(this);
+		scrollBars.add(scrollBar);
+	}
+
 
 	public void adjustmentValueChanged(AdjustmentEvent event)
 	{
@@ -58,10 +68,8 @@ abstract public class MultiTableScrollController implements AdjustmentListener
         try
         {
 	        double percentToSetTo = ((double)event.getValue()) / (source.getMaximum() - source.getMinimum());
-	        for (int i = 0; i < scrollPanes.size(); ++i)
-	        {
-	        	JScrollPane currentPane = scrollPanes.get(i);
-	        	JScrollBar scrollBar = getScrollBar(currentPane);
+	        for(JScrollBar scrollBar : scrollBars)
+			{
 	            int valueToSetTo = (int) (percentToSetTo * (scrollBar.getMaximum() - scrollBar.getMinimum()));
 	            scrollBar.setValue(valueToSetTo);
 	        }
@@ -74,7 +82,7 @@ abstract public class MultiTableScrollController implements AdjustmentListener
 	
 	abstract protected JScrollBar getScrollBar(JScrollPane scrollPaneToAdd);	
 
-	private Vector<JScrollPane> scrollPanes = new Vector();
+	private Vector<JScrollBar> scrollBars;
 	private int orientation;
 	
 	private boolean disableListening;
