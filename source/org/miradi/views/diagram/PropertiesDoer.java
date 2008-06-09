@@ -168,6 +168,7 @@ public class PropertiesDoer extends LocationDoer
 		ORef fromRef = diagramLink.getUnderlyingLink().getFromFactorRef();
 		ORef toRef = diagramLink.getUnderlyingLink().getToFactorRef();
 		ORefList hierarchyRefs = new ORefList();
+		hierarchyRefs.add(diagramLink.getRef());
 		hierarchyRefs.add(diagramLink.getWrappedRef());
 		if (Target.is(fromRef))
 		{

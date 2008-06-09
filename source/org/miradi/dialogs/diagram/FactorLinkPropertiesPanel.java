@@ -60,9 +60,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
 		
-		ORefList selectedHierarchiesList = objectPicker.getSelectedHierarchies()[0];
-		selectedHierarchiesList.add(link.getRef());
-		setObjectRefs(selectedHierarchiesList);
+		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
 		
 		updateFieldsFromProject();
 	}
