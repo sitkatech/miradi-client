@@ -49,6 +49,7 @@ import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
+import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.base.DisposablePanel;
@@ -85,6 +86,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.planning.doers.TreeNodeDownDoer;
 import org.miradi.views.planning.doers.TreeNodeShareActivityDoer;
+import org.miradi.views.planning.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
@@ -242,6 +244,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
 		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
+		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
 				
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
