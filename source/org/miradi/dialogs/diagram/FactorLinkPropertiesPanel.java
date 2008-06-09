@@ -50,19 +50,32 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	public FactorLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
+	{
+		super(mainWindow.getProject(), factorLinkRef);
+				
+		addThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
+		
+		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
+		updateFieldsFromProject();
+	}
+	
 	public FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
 		
 		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		addThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		
+		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
+		updateFieldsFromProject();
+	}
+
+	private void addThreatStressRatingPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPicker) throws Exception
+	{
 		ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
-		
-		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
-		
-		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
