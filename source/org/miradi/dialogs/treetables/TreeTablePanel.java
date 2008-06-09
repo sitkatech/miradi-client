@@ -70,12 +70,14 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	private JPanel createButtonBox(Class[] buttonActionClasses)
 	{
-		GridLayoutPlus layout = new GridLayoutPlus(2, 3, 3, 3);
+		GridLayoutPlus layout = createButtonLayout();
 		JPanel box = new JPanel(layout);
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		addButtonsToBox(buttonActionClasses, box, mainWindow.getActions());
 		return box;
 	}
+
+	abstract protected GridLayoutPlus createButtonLayout();
 	
 	public TreeTableWithStateSaving getTree()
 	{

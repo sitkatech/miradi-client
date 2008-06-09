@@ -28,7 +28,7 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTablePanel;
+import org.miradi.dialogs.treetables.TreeTablePanelWithThreeButtonColumns;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -42,7 +42,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 
-public class TargetViabililtyTreeTablePanel extends TreeTablePanel
+public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithThreeButtonColumns
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
