@@ -213,6 +213,7 @@ public class Actions
 		registerAction(new ActionShareActivity(mainWindow));
 		registerAction(new ActionShareMethod(mainWindow));
 		registerAction(new ActionTreeShareActivity(mainWindow));
+		registerAction(new ActionTreeShareMethod(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));

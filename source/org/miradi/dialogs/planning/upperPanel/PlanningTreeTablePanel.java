@@ -45,6 +45,7 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
+import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -194,13 +195,14 @@ public class PlanningTreeTablePanel extends TreeTablePanel implements MouseWheel
 	{
 		return new Class[] {
 			ActionTreeCreateActivity.class,
-			ActionTreeCreateTask.class,
+			ActionTreeCreateMethod.class,
+			ActionTreeCreateTask.class,			
 			ActionTreeNodeUp.class,
 			
-			ActionTreeCreateMethod.class,
 			ActionTreeShareActivity.class,
-			ActionTreeNodeDown.class,
+			ActionTreeShareMethod.class,
 			ActionDeletePlanningViewTreeNode.class,
+			ActionTreeNodeDown.class,
 		};
 	}
 	
