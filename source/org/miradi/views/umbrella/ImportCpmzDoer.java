@@ -30,6 +30,7 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
@@ -65,7 +66,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	private void importProject(File zipFileToImport, Project projectToFill) throws ZipException, IOException, Exception
+	private void importProject(File zipFileToImport, Project projectToFill) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
@@ -102,7 +103,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		{
 			if (!new ConProMiradiXmlValidator().isValid(projectAsInputStream))
 			{
-				throw new Exception("Exported file does not validate.");
+				throw new ValidationException(EAM.text("File to import does not validate."));
 			}
 			
 			projectAsInputStream.reset();

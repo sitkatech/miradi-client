@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 import org.martus.swing.UiFileChooser;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
+import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.Utility;
@@ -74,6 +75,11 @@ public abstract class ImportProjectDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
+		}
+		catch (ValidationException e)
+		{
+			EAM.logException(e);
+			showImportFailedErrorDialog(e.getMessage());
 		}
 		catch(Exception e)
 		{
