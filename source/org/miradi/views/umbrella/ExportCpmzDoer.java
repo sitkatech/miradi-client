@@ -30,6 +30,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
+import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -69,6 +70,11 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 			addProjectAsXmlToZip(zipOut);			
 			addProjectAsMpzToZip(zipOut);
 			addDiagramImagesToZip(zipOut);
+		}
+		catch(ValidationException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(e.getMessage());
 		}
 		catch(Exception e)
 		{
@@ -142,7 +148,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		{
 			if (!new ConProMiradiXmlValidator().isValid(inputStream))
 			{
-				throw new Exception("Exported file does not validate.");
+				throw new ValidationException(EAM.text("Exported file does not validate."));
 			}
 
 			writeContent(zipOut, "project.xml", projectXmlInBytes);

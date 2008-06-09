@@ -21,6 +21,7 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.zip.ZipException;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -43,6 +44,10 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		try 
 		{
 			doWork(chosen);
+		}
+		catch (ZipException e)
+		{
+			throw new CommandFailedException(e);
 		}
 		catch (IOException e)
 		{
