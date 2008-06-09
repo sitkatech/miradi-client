@@ -127,7 +127,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	void doFactorLinkProperties(DiagramLink diagramLink) throws Exception
 	{
-		if (diagramLink.isGroupBoxLink())
+		if (diagramLink.isTargetLink() && diagramLink.isGroupBoxLink())
 		{
 			GroupBoxLinkManagementPanel dialogPanel = createDialogPanel(diagramLink);
 			showPropertiesPanel(dialogPanel);
