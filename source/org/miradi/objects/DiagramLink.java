@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.Vector;
 
@@ -27,6 +28,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -36,6 +38,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -384,6 +389,14 @@ public class DiagramLink extends BaseObject
 		return bendPoints.getPointList();
 	}
 	
+	public Color getColor()
+	{
+		ChoiceQuestion question = getProject().getQuestion(DiagramLinkColorQuestion.class);
+		ChoiceItem colorChoice = question.findChoiceByCode(color.get());
+		
+		return colorChoice.getColor();
+	}
+	
 	public boolean isCoveredByGroupBoxLink()
 	{
 		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLink.getObjectType());
@@ -419,12 +432,14 @@ public class DiagramLink extends BaseObject
 		toId = new BaseIdData(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
 		bendPoints = new PointListData(TAG_BEND_POINTS);
 		groupedDiagramLinkRefs = new ORefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
+		color = new ChoiceData(TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
 		
 		addNoClearField(TAG_WRAPPED_ID, underlyingObjectId);
 		addNoClearField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
 		addNoClearField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 		addField(TAG_BEND_POINTS, bendPoints);
 		addField(TAG_GROUPED_DIAGRAM_LINK_REFS, groupedDiagramLinkRefs);
+		addField(TAG_COLOR, color);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
@@ -432,6 +447,7 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	public static final String TAG_BEND_POINTS = "BendPoints";
 	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
+	public static final String TAG_COLOR = "Color";
 	
 	static final String OBJECT_NAME = "DiagramLink";
 	
@@ -440,4 +456,5 @@ public class DiagramLink extends BaseObject
 	private BaseIdData toId;
 	private PointListData bendPoints;
 	private ORefListData groupedDiagramLinkRefs;
+	private ChoiceData color;
 }

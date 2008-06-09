@@ -58,6 +58,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		diagramFontSize = ((DiagramComponent) graphToUse).getProject().getDiagramFontSize();
+		diagramLinkColor = getLinkCell().getDiagramLink().getColor();
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
@@ -85,7 +86,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		
 		if (linkSelected)
 		{
-			g2.setColor(Color.BLACK);
+			g2.setColor(diagramLinkColor);
 			Stroke stroke = getSelectionStroke();
 			g2.setStroke(stroke);
 			if (view.lineShape != null)
@@ -453,4 +454,5 @@ public class ArrowLineRenderer extends EdgeRenderer
 	private boolean linkSelected;
 	private Vector<String> stressText;
 	private int diagramFontSize;
+	private Color diagramLinkColor;
 }

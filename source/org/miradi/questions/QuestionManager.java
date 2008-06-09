@@ -79,6 +79,7 @@ public class QuestionManager
 		addQuestion(new WwfRegionsQuestion());
 		addQuestion(new HabitatAssociationQuestion());
 		addQuestion(new FosTrainingTypeQuestion());
+		addQuestion(new DiagramLinkColorQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

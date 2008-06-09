@@ -19,9 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.groupboxLink;
 
+import java.awt.BorderLayout;
+
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
@@ -30,8 +35,20 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model)
 	{
 		super(projectToUse, new GroupBoxLinkListTable(model));
+		
+		propertiesPanel = new GroupBoxLinkPropertiesPanel(projectToUse);
+		add(propertiesPanel,BorderLayout.AFTER_LAST_LINE);
 	}
 		
+	@Override
+	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
+	{
+		super.setPropertiesPanel(panel);
+		
+		ORef diagramLinkRef = panel.getRefForType(DiagramLink.getObjectType());
+		propertiesPanel.setObjectRef(diagramLinkRef);
+	}
+	
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -44,4 +61,5 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 	{
 	}
 
+	private GroupBoxLinkPropertiesPanel propertiesPanel;
 }
