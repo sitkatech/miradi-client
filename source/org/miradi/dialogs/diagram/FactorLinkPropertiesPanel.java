@@ -43,10 +43,10 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 
-		addField(createCheckBoxField(FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
-		setObjectRefs(new ORef[]{link.getRef(), link.getWrappedRef()});
+		setObjectRefsWithGroupBoxLinkAndChildrenRefs(link);
 		updateFieldsFromProject();
 	}
 
@@ -76,6 +76,20 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
+	}
+	
+	private void setObjectRefsWithGroupBoxLinkAndChildrenRefs(DiagramLink groupBoxLink)
+	{
+		ORefList selfOrChildrenRefs = groupBoxLink.getSelfOrChildren();
+		ORefList groupBoxAndChildrenWrappedRefs = new ORefList();
+		for (int refIndex = 0; refIndex < selfOrChildrenRefs.size(); ++refIndex)
+		{
+			DiagramLink childLink = DiagramLink.find(getProject(), selfOrChildrenRefs.get(refIndex));
+			groupBoxAndChildrenWrappedRefs.add(childLink.getWrappedRef());
+		}
+		
+		groupBoxAndChildrenWrappedRefs.add(groupBoxLink.getRef());
+		setObjectRefs(groupBoxAndChildrenWrappedRefs);
 	}
 
 	public String getPanelDescription()
