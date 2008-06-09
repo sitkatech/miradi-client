@@ -282,7 +282,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, NAME, directThreats[index], Cause.TAG_LABEL);
 			writeOptionalElement(out, THREAT_TAXONOMY_CODE, directThreats[index], Cause.TAG_TAXONOMY_CODE);
 			ChoiceItem threatRatingValue = getProject().getThreatRatingFramework().getThreatThreatRatingValue(directThreats[index].getRef());
-			writeOptionalRatingCodeElement(out, THREAT_TO_PROJECT_RANK, threatRatingValue.getCode());
+			if (threatRatingValue != null)
+				writeOptionalRatingCodeElement(out, THREAT_TO_PROJECT_RANK, threatRatingValue.getCode());
+			
 			writeEndElement(out, THREAT);
 		}
 		
