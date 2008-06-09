@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
@@ -43,7 +44,9 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 
 		addField(createCheckBoxField(FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
+		setObjectRefs(new ORef[]{link.getRef(), link.getWrappedRef()});
 		updateFieldsFromProject();
 	}
 
@@ -51,11 +54,16 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
 		
+		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		
 		ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
 		
-		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
+		ORefList selectedHierarchiesList = objectPicker.getSelectedHierarchies()[0];
+		selectedHierarchiesList.add(link.getRef());
+		setObjectRefs(selectedHierarchiesList);
+		
 		updateFieldsFromProject();
 	}
 
