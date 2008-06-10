@@ -50,6 +50,11 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 			setColumnWidth(i, 100);
 		}
 	}
+	
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
 
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
 	{

@@ -45,6 +45,9 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 	
 	private void addColumnSequenceSaver()
 	{
+		if (! shouldSaveColumnSequence())
+			return;
+		
 		try
 		{
 			columnSequenceSaver = new ColumnSequenceSaver(this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
@@ -72,6 +75,11 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 	}
 	
 	public boolean shouldSaveColumnWidth()
+	{
+		return true;
+	}
+	
+	public boolean shouldSaveColumnSequence()
 	{
 		return true;
 	}
