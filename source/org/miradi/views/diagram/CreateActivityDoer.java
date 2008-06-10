@@ -63,7 +63,7 @@ public class CreateActivityDoer extends ViewDoer
 		}
 	}
 
-	public static void insertActivity(Project project, Strategy strategy, int childIndex) throws CommandFailedException, ParseException, Exception
+	private void insertActivity(Project project, Strategy strategy, int childIndex) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
