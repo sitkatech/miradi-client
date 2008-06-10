@@ -36,8 +36,16 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 	{
 		super(projectToUse, new GroupBoxLinkListTable(model));
 		
-		propertiesPanel = new GroupBoxLinkPropertiesPanel(projectToUse);
-		add(propertiesPanel,BorderLayout.AFTER_LAST_LINE);
+		groupBoxLinkpropertiesPanel = new GroupBoxLinkPropertiesPanel(projectToUse);
+		add(groupBoxLinkpropertiesPanel,BorderLayout.BEFORE_FIRST_LINE);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		groupBoxLinkpropertiesPanel.dispose();
 	}
 		
 	@Override
@@ -46,7 +54,7 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 		super.setPropertiesPanel(panel);
 		
 		ORef diagramLinkRef = panel.getRefForType(DiagramLink.getObjectType());
-		propertiesPanel.setObjectRef(diagramLinkRef);
+		groupBoxLinkpropertiesPanel.setObjectRef(diagramLinkRef);
 	}
 	
 	@Override
@@ -61,5 +69,5 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 	{
 	}
 
-	private GroupBoxLinkPropertiesPanel propertiesPanel;
+	private GroupBoxLinkPropertiesPanel groupBoxLinkpropertiesPanel;
 }
