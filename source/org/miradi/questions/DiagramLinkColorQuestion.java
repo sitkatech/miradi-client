@@ -31,15 +31,19 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getColorChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Black (Default)", Color.BLACK),
-			new ChoiceItem("red", "Red", Color.RED),
-			new ChoiceItem("green", "Green", Color.GREEN),
-			new ChoiceItem("yellow", "Yellow", Color.YELLOW),
-			new ChoiceItem("blue", "Blue", Color.BLUE),
-			new ChoiceItem("cyan", "Cyan", Color.CYAN),
-			new ChoiceItem("darkGray", "Dark Gray", Color.darkGray),
-			new ChoiceItem("pink", "Pink", Color.PINK),
-			new ChoiceItem("orange", "Orange", Color.ORANGE),
+				new ChoiceItem("", "Black (Default)", Color.BLACK),
+				new ChoiceItem("darkGray", "Dark Gray", DiagramFactorFontColorQuestion.DARK_GRAY_FROM_HEX),
+				new ChoiceItem("lightGray", "Light Gray", DiagramFactorFontColorQuestion.LIGHT_GRAY_FROM_HEX),
+				new ChoiceItem("brown", "Brown", DiagramFactorFontColorQuestion.BROWN_FROM_HEX),
+				new ChoiceItem("tan", "Tan", DiagramFactorFontColorQuestion.TAN_FROM_HEX),
+				new ChoiceItem("red", "Red", DiagramFactorFontColorQuestion.RED_FROM_HEX),
+				new ChoiceItem("pink", "Pink", DiagramFactorFontColorQuestion.PINK_FROM_HEX),
+				new ChoiceItem("orange", "Orange", DiagramFactorFontColorQuestion.ORANGE_FROM_HEX),
+				new ChoiceItem("yellow", "Yellow", DiagramFactorFontColorQuestion.YELLOW_FROM_HEX),
+				new ChoiceItem("darkGreen", "Dark Green", DiagramFactorFontColorQuestion.DARK_GREEN_FROM_HEX),
+				new ChoiceItem("lightGreen", "Light Green", DiagramFactorFontColorQuestion.LIGHT_GREEN_FROM_HEX),
+				new ChoiceItem("darkBlue", "Dark Blue", DiagramFactorFontColorQuestion.DARK_BLUE_FROM_HEX),
+				new ChoiceItem("lightBlue", "Light Blue", DiagramFactorFontColorQuestion.LIGHT_BLUE_FROM_HEX),
 		};
 	}
 }

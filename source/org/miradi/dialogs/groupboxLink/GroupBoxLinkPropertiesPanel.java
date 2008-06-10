@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.groupboxLink;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.DiagramLinkColorSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
-import org.miradi.questions.DiagramLinkColorQuestion;
 
 public class GroupBoxLinkPropertiesPanel extends ObjectDataInputPanel
 {
@@ -33,7 +33,9 @@ public class GroupBoxLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, DiagramLink.getObjectType());
 		
-		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		DiagramLinkColorSubPanel diagramLinkColorSubPanel = new DiagramLinkColorSubPanel(getProject(), DiagramLink.getObjectType());
+		addSubPanel(diagramLinkColorSubPanel);
+		add(diagramLinkColorSubPanel);
 		
 		updateFieldsFromProject();
 	}

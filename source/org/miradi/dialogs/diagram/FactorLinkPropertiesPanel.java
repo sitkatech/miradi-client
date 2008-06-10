@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
+import javax.swing.JLabel;
+
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -63,8 +65,11 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	public FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
+		DiagramLinkColorSubPanel diagramLinkColorSubPanel = new DiagramLinkColorSubPanel(getProject(), DiagramLink.getObjectType());
+		addSubPanel(diagramLinkColorSubPanel);
+		add(diagramLinkColorSubPanel);
+		add(new JLabel(""));
 		
-		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		addThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
 		
 		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
