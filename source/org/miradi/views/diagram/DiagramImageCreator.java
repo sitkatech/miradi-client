@@ -29,6 +29,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.CodeList;
 
 public class DiagramImageCreator
@@ -39,14 +40,17 @@ public class DiagramImageCreator
 		{
 			DiagramComponent diagram = createComponent(mainWindow, diagramObject);
 			
+			Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
+			diagram.toScreen(bounds);
+			diagram.setToDefaultBackgroundColor();
+			diagram.setGridVisible(false);
+			
 			//TODO: is there a better way to do this
 			JFrame frame = new JFrame();
 			frame.add(new UiScrollPane(diagram));
 			frame.pack();
 
-			Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
-			diagram.toScreen(bounds);
-			BufferedImage image = diagram.getImage();
+			BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
 			
 			int x = Math.max(bounds.x, 0);
 			int y = Math.max(bounds.y, 0);
