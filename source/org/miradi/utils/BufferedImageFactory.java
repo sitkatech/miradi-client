@@ -41,10 +41,7 @@ public  class BufferedImageFactory
 {
 	public static BufferedImage getImage(JComponent swingComponent,  int inset) 
 	{
-		//TODO: is there a better way to do this
-		JFrame frame = new JFrame();
-		frame.add(new UiScrollPane(swingComponent));
-		frame.pack();
+		realizeComponent(swingComponent);
 
 		Rectangle2D bounds = new Rectangle(swingComponent.getPreferredSize());
 		if (bounds == null) 
@@ -63,6 +60,14 @@ public  class BufferedImageFactory
 		graphics.dispose();
 		return image;
 
+	}
+
+	public static void realizeComponent(JComponent swingComponent)
+	{
+		//TODO: is there a better way to do this
+		JFrame frame = new JFrame();
+		frame.add(new UiScrollPane(swingComponent));
+		frame.pack();
 	}
 	
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception

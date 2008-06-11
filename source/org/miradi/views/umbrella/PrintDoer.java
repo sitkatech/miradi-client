@@ -23,13 +23,12 @@ import java.awt.print.PrinterJob;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 
 import org.martus.swing.PrintPage;
 import org.martus.swing.PrintPageFormat;
-import org.martus.swing.UiScrollPane;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.ViewDoer;
 
 abstract public class PrintDoer extends ViewDoer
@@ -51,7 +50,7 @@ abstract public class PrintDoer extends ViewDoer
 				//TODO: Allow user to either go back and change the setting or continue to print
 			}
 			JComponent componentToPrint = getMainWindow().getCurrentView().getPrintableComponent();
-			packForPrintingPurposes(componentToPrint);
+			BufferedImageFactory.realizeComponent(componentToPrint);
 			PrintPage.printJComponent(componentToPrint, job, format, attributes);
 		}
 		catch(Exception e)
@@ -59,14 +58,5 @@ abstract public class PrintDoer extends ViewDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-	}
-
-	private void packForPrintingPurposes(JComponent compnentToPrint)
-	{
-		UiScrollPane scroller = new UiScrollPane();
-		JDialog forPackingPursposeDialog = new JDialog();
-		scroller.getViewport().add(compnentToPrint);
-		forPackingPursposeDialog.getContentPane().add(scroller);
-		forPackingPursposeDialog.pack();
 	}
 }
