@@ -41,7 +41,22 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
+	public static FactorLinkPropertiesPanel createWithOnlyBidirectionalAndColorPropertiesPanel(Project projectToUse, DiagramLink link)
+	{
+		return new FactorLinkPropertiesPanel(projectToUse, link);
+	}
+	
+	public static FactorLinkPropertiesPanel createGroupBoxedTargetLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
+	{
+		return new FactorLinkPropertiesPanel(mainWindow, factorLinkRef, objectPicker);
+	}
+	
+	public static FactorLinkPropertiesPanel createTargetLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
+	{
+		return new FactorLinkPropertiesPanel(mainWindow, link, objectPicker);
+	}
+	
+	private FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
 	{
 		super(projectToUse, ObjectType.FACTOR_LINK, link.getWrappedId());
 
@@ -52,7 +67,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public FactorLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
+	private FactorLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
 	{
 		super(mainWindow.getProject(), factorLinkRef);
 				
@@ -62,7 +77,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
-	public FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
+	private FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
 		DiagramLinkColorSubPanel diagramLinkColorSubPanel = new DiagramLinkColorSubPanel(getProject(), DiagramLink.getObjectType());

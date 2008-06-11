@@ -153,9 +153,9 @@ public class PropertiesDoer extends LocationDoer
 		
 		GroupBoxLinkTableModel model = new GroupBoxLinkTableModel(getProject(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
 		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getProject(), model);
-		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getMainWindow(), diagramLinkChild.getWrappedRef(), tablePanel.getPicker());
+		FactorLinkPropertiesPanel factorLinkPropertiesPanel = FactorLinkPropertiesPanel.createGroupBoxedTargetLinkPropertiesPanel(getMainWindow(), diagramLinkChild.getWrappedRef(), tablePanel.getPicker());
 		
-		return new GroupBoxLinkManagementPanel(getProject(), getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, panel);
+		return new GroupBoxLinkManagementPanel(getProject(), getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, factorLinkPropertiesPanel);
 	}
 	
 	private FactorLinkPropertiesPanel getFactorLinkPropertiesPanel(DiagramLink diagramLink) throws Exception
@@ -163,7 +163,7 @@ public class PropertiesDoer extends LocationDoer
 		boolean isTargetLink = diagramLink.isTargetLink();
 		boolean isStressBasedMode = getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		if (!isTargetLink || !isStressBasedMode)
-			return new FactorLinkPropertiesPanel(getProject(), diagramLink);
+			return FactorLinkPropertiesPanel.createWithOnlyBidirectionalAndColorPropertiesPanel(getProject(), diagramLink);
 		
 		ORef fromRef = diagramLink.getUnderlyingLink().getFromFactorRef();
 		ORef toRef = diagramLink.getUnderlyingLink().getToFactorRef();
@@ -183,7 +183,7 @@ public class PropertiesDoer extends LocationDoer
 	
 		StaticPicker picker = new StaticPicker(hierarchyRefs);
 		
-		return new FactorLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
+		return FactorLinkPropertiesPanel.createTargetLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
 	}
 	
 	void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
