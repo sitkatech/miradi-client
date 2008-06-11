@@ -46,8 +46,15 @@ public class SlideShowViewerDoer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
-		viewer = new SlideShowViewer(getMainWindow());
-		viewer.setVisible(true);
+		try
+		{
+			viewer = new SlideShowViewer(getMainWindow());
+			viewer.setVisible(true);
+		}
+		catch(Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
 	SlideShowViewer viewer;

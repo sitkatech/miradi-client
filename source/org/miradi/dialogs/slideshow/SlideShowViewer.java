@@ -44,7 +44,7 @@ import org.miradi.views.diagram.DiagramView;
 
 public class SlideShowViewer extends JDialog implements WindowListener
 {
-	public SlideShowViewer(MainWindow mainWindowToUse)
+	public SlideShowViewer(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		mainWindow = mainWindowToUse;
@@ -71,7 +71,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
 		}
 	}
 
-	private void showSlides()
+	private void showSlides() throws Exception
 	{
 		if (slides.length==0)
 		{
@@ -144,7 +144,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
 
 
 	
-	public BufferedImage createImage(DiagramObject diagramObject, Slide slide)
+	public BufferedImage createImage(DiagramObject diagramObject, Slide slide) throws Exception
 	{
 		return  DiagramImageCreator.getImageWithLegendSetting(mainWindow, diagramObject, getDiagarmLegendSettingsForSlide(slide));
 	}

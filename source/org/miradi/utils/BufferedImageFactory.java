@@ -32,7 +32,6 @@ import javax.swing.JTable;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -66,31 +65,23 @@ public  class BufferedImageFactory
 
 	}
 	
-	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject)
+	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		try
-		{
-			DiagramComponent diagram = BufferedImageFactory.createComponent(mainWindow, diagramObject);
-			
-			Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
-			diagram.toScreen(bounds);
-			diagram.setToDefaultBackgroundColor();
-			diagram.setGridVisible(false);
-			
-			BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
-			
-			int x = Math.max(bounds.x, 0);
-			int y = Math.max(bounds.y, 0);
-			int imageWidth = image.getWidth() - x; 
-			int imageHeight = image.getHeight() - y;
-			
-			return image.getSubimage(x, y, imageWidth, imageHeight);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
+		DiagramComponent diagram = BufferedImageFactory.createComponent(mainWindow, diagramObject);
+
+		Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
+		diagram.toScreen(bounds);
+		diagram.setToDefaultBackgroundColor();
+		diagram.setGridVisible(false);
+
+		BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
+
+		int x = Math.max(bounds.x, 0);
+		int y = Math.max(bounds.y, 0);
+		int imageWidth = image.getWidth() - x; 
+		int imageHeight = image.getHeight() - y;
+
+		return image.getSubimage(x, y, imageWidth, imageHeight);
 	}
 	
 	private static void toScreen(Rectangle2D rect) 
