@@ -38,6 +38,12 @@ public class DiagramImageCreator
 		try
 		{
 			DiagramComponent comp = createComponent(mainWindow, diagramObject);
+			
+			//TODO: is there a better way to do this
+			JFrame frame = new JFrame();
+			frame.add(new UiScrollPane(comp));
+			frame.pack();
+
 			Rectangle bounds = new Rectangle(comp.getTotalBoundsUsed().getBounds());
 			comp.toScreen(bounds);
 			BufferedImage image = comp.getImage();
@@ -69,10 +75,6 @@ public class DiagramImageCreator
 		// behaved differently. SEE ALSO DiagramSplitPane.showCard()
 		comp.clearSelection();
 		
-		//TODO: is there a better way to do this
-		JFrame frame = new JFrame();
-		frame.add(new UiScrollPane(comp));
-		frame.pack();
 		return comp;
 	}
 	
