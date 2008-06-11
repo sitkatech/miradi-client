@@ -37,16 +37,16 @@ public class DiagramImageCreator
 	{
 		try
 		{
-			DiagramComponent comp = createComponent(mainWindow, diagramObject);
+			DiagramComponent diagram = createComponent(mainWindow, diagramObject);
 			
 			//TODO: is there a better way to do this
 			JFrame frame = new JFrame();
-			frame.add(new UiScrollPane(comp));
+			frame.add(new UiScrollPane(diagram));
 			frame.pack();
 
-			Rectangle bounds = new Rectangle(comp.getTotalBoundsUsed().getBounds());
-			comp.toScreen(bounds);
-			BufferedImage image = comp.getImage();
+			Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
+			diagram.toScreen(bounds);
+			BufferedImage image = diagram.getImage();
 			
 			int x = Math.max(bounds.x, 0);
 			int y = Math.max(bounds.y, 0);
