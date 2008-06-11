@@ -19,14 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JFrame;
-
-import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.utils.BufferedImageFactory;
@@ -34,38 +29,6 @@ import org.miradi.utils.CodeList;
 
 public class DiagramImageCreator
 {
-	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject)
-	{
-		try
-		{
-			DiagramComponent diagram = createComponent(mainWindow, diagramObject);
-			
-			Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
-			diagram.toScreen(bounds);
-			diagram.setToDefaultBackgroundColor();
-			diagram.setGridVisible(false);
-			
-			//TODO: is there a better way to do this
-			JFrame frame = new JFrame();
-			frame.add(new UiScrollPane(diagram));
-			frame.pack();
-
-			BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
-			
-			int x = Math.max(bounds.x, 0);
-			int y = Math.max(bounds.y, 0);
-			int imageWidth = image.getWidth() - x; 
-			int imageHeight = image.getHeight() - y;
-			
-			return image.getSubimage(x, y, imageWidth, imageHeight);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-
 	public static DiagramComponent createComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
@@ -86,6 +49,6 @@ public class DiagramImageCreator
 	{
 		DiagramLegendPanel panel = mainWindow.getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
-		return createImageFromDiagram( mainWindow, diagramObject);	
+		return BufferedImageFactory.createImageFromDiagram( mainWindow, diagramObject);	
 	}
 }

@@ -37,10 +37,10 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MPZFileFilter;
 import org.miradi.utils.PNGFileFilter;
-import org.miradi.views.diagram.DiagramImageCreator;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -114,7 +114,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
-			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.createImageFromDiagram(getMainWindow(), diagramObject));
+			new SaveImagePngDoer().saveImage(byteOut, BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
 			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
 		}
 		finally
