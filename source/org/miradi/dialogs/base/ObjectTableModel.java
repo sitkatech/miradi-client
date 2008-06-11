@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import java.util.Comparator;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.ids.BaseId;
@@ -31,6 +33,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.IgnoreCaseStringComparator;
 
 abstract public class ObjectTableModel extends AbstractTableModel implements ColumnTagProvider
 {
@@ -205,6 +208,32 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	public ChoiceItem getChoiceItem(int column, String dataToDisplay)
 	{
 		return getColumnQuestion(column).findChoiceByCode(dataToDisplay);
+	}
+		
+	protected Comparator getComparator(int sortColumn)
+	{
+		return new ModelColumnComparator(this, sortColumn);
+	}
+	
+	static class ModelColumnComparator extends IgnoreCaseStringComparator
+	{
+		public ModelColumnComparator(ObjectTableModel modelToUse, int columnToSort)
+		{
+			model = modelToUse;
+			column = columnToSort;
+		}
+		
+		public int compare(Object object1, Object object2)
+		{
+			Integer row1 = (Integer)object1;
+			Integer row2 = (Integer)object2;
+			String value1 = model.getValueAt(row1.intValue(), column).toString();
+			String value2 = model.getValueAt(row2.intValue(), column).toString();
+			return super.compare(value1, value2);
+		}
+
+		ObjectTableModel model;
+		int column;
 	}
 
 	abstract public ORefList getLatestRefListFromProject();
