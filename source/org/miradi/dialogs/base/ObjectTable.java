@@ -215,7 +215,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 
 	protected Comparator getComparator(int sortColumn)
 	{
-		return getObjectTableModel().getComparator(sortColumn);
+		return getObjectTableModel().createComparator(sortColumn);
 	}
 	
 	public void addListSelectionListener(ListSelectionListener listener)

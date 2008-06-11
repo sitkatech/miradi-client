@@ -58,12 +58,12 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 	}
 	
 	@Override
-	protected Comparator getComparator(int sortColumn)
+	protected Comparator createComparator(int sortColumn)
 	{
 		if (sortColumn == ProgressReportListTablePanel.DEFAULT_SORT_COLUMN)
 			return new ProgressReportDateComparator(this);
 		
-		return super.getComparator(sortColumn);
+		return super.createComparator(sortColumn);
 	}
 	
 	public static class ProgressReportDateComparator extends IgnoreCaseStringComparator

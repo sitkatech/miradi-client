@@ -210,7 +210,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		return getColumnQuestion(column).findChoiceByCode(dataToDisplay);
 	}
 		
-	protected Comparator getComparator(int sortColumn)
+	protected Comparator createComparator(int sortColumn)
 	{
 		return new ModelColumnComparator(this, sortColumn);
 	}
