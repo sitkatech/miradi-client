@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 
 public class DateComparator
 {
-	public int compare(BaseObject rawObject1, BaseObject rawObject2, String dateTag)
+	public static int compare(BaseObject rawObject1, BaseObject rawObject2, String dateTag)
 	{
 		String safeDate1 = rawObject1.getData(dateTag);
 		String safeDate2 = rawObject2.getData(dateTag);
