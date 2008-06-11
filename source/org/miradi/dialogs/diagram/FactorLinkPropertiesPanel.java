@@ -105,10 +105,12 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		for (int refIndex = 0; refIndex < selfOrChildrenRefs.size(); ++refIndex)
 		{
 			DiagramLink childLink = DiagramLink.find(getProject(), selfOrChildrenRefs.get(refIndex));
-			groupBoxAndChildrenWrappedRefs.add(childLink.getWrappedRef());
+			ORef factorLinkRef = childLink.getWrappedRef();
+			groupBoxAndChildrenWrappedRefs.add(factorLinkRef);
 		}
 		
-		groupBoxAndChildrenWrappedRefs.add(groupBoxLink.getRef());
+		ORef diagramLinkRef = groupBoxLink.getRef();
+		groupBoxAndChildrenWrappedRefs.add(diagramLinkRef);
 		setObjectRefs(groupBoxAndChildrenWrappedRefs);
 	}
 
