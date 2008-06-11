@@ -42,8 +42,7 @@ public  class BufferedImageFactory
 		int width = (int) bounds.getWidth() + 2 * inset;
 		int height = (int) bounds.getHeight() + 2 * inset;
 		
-		BufferedImage image = new BufferedImage(width, height,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		
 		Graphics2D graphics = image.createGraphics();
 		graphics.setColor(Color.WHITE);
