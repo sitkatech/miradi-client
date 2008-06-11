@@ -19,12 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.progressReport;
 
+import java.util.Comparator;
+
 import org.miradi.dialogs.base.ObjectListTableModel;
+import org.miradi.dialogs.base.ObjectTableModel;
+import org.miradi.dialogs.viability.DateComparator;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.utils.IgnoreCaseStringComparator;
 
 public class ProgressReportListTableModel extends ObjectListTableModel
 {
@@ -49,6 +55,35 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 			return progressReportQuestion;
 		
 		return super.getColumnQuestion(column);
+	}
+	
+	@Override
+	protected Comparator getComparator(int sortColumn)
+	{
+		if (sortColumn == ProgressReportListTablePanel.DEFAULT_SORT_COLUMN)
+			return new ProgressReportDateComparator(this);
+		
+		return super.getComparator(sortColumn);
+	}
+	
+	public static class ProgressReportDateComparator extends IgnoreCaseStringComparator
+	{
+		public ProgressReportDateComparator(ObjectTableModel modelToUse)
+		{
+			model = modelToUse;
+		}
+		
+		public int compare(Object object1, Object object2)
+		{
+			Integer row1 = (Integer)object1;
+			Integer row2 = (Integer)object2;
+			BaseObject baseObject1 = model.getObjectFromRow(row1.intValue());
+			BaseObject baseObject2 = model.getObjectFromRow(row2.intValue());
+			
+			return DateComparator.compare(baseObject1, baseObject2, ProgressReport.TAG_PROGRESS_DATE);
+		}
+
+		private ObjectTableModel model;
 	}
 	
 	private ProgressReportStatusQuestion progressReportQuestion; 

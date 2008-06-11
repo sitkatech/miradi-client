@@ -28,6 +28,8 @@ public class ProgressReportListTablePanel extends ObjectListTablePanel
 {
 	public ProgressReportListTablePanel(Project projectToUse, Actions actions, ORef nodeRef, String annotationTag, Class[] editButtonClasses)
 	{
-		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef, annotationTag), actions, editButtonClasses);
+		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef, annotationTag), actions, editButtonClasses, DEFAULT_SORT_COLUMN);
 	}
+	
+	public static final int DEFAULT_SORT_COLUMN = 0;
 }
