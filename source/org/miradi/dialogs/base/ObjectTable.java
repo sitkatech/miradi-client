@@ -45,7 +45,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.UiTableWithAlternatingRows;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -194,7 +193,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public void sort(int sortColumn) 
 	{
-		Comparator comparator = new TableColumnComparator(this, sortColumn);
+		Comparator comparator = getComparator(sortColumn);
 		Vector rows = new Vector();
 		for(int i = 0; i < getRowCount(); ++i)
 			rows.add(new Integer(i));
@@ -212,6 +211,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		
 		revalidate();
 		repaint();
+	}
+
+	protected Comparator getComparator(int sortColumn)
+	{
+		return getObjectTableModel().getComparator(sortColumn);
 	}
 	
 	public void addListSelectionListener(ListSelectionListener listener)
@@ -284,27 +288,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		}
 
 		private ObjectTable table;
-	}
-	
-	static class TableColumnComparator extends IgnoreCaseStringComparator
-	{
-		public TableColumnComparator(ObjectTable tableToUse, int columnToSort)
-		{
-			table = tableToUse;
-			column = columnToSort;
-		}
-		
-		public int compare(Object object1, Object object2)
-		{
-			Integer row1 = (Integer)object1;
-			Integer row2 = (Integer)object2;
-			String value1 = table.getValueAt(row1.intValue(), column).toString();
-			String value2 = table.getValueAt(row2.intValue(), column).toString();
-			return super.compare(value1, value2);
-		}
-
-		ObjectTable table;
-		int column;
 	}
 
 	private Vector selectionListeners;
