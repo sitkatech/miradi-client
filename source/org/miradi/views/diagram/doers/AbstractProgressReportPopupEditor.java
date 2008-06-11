@@ -19,32 +19,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.actions.ActionDeleteIndicatorProgressReport;
-import org.miradi.main.EAM;
-import org.miradi.objects.Indicator;
-import org.miradi.views.umbrella.ActionCreateIndicatorProgressReport;
+import org.miradi.dialogs.base.ObjectListManagementPanel;
+import org.miradi.dialogs.progressReport.ProgressReportManagementPanel;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
-public class EditIndicatorProgressReportDoer extends AbstractProgressReportPopupEditor
+abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEditDoer
 {
-	public EditIndicatorProgressReportDoer()
+	public AbstractProgressReportPopupEditor(int objectTypeToUse, String dialogTitleToUse)
 	{
-		super(Indicator.getObjectType(), EAM.text("Edit Progress Reports"));
-	}
-	
-	@Override
-	protected Class[] getButtonClasses()
-	{
-		return buttonActionClasses;
+		super(objectTypeToUse, dialogTitleToUse);
 	}
 
 	@Override
-	protected String getListTag()
+	protected ObjectListManagementPanel createManagementPanel()	throws Exception
 	{
-		return Indicator.TAG_PROGRESS_REPORT_REFS;
+		ORef parentRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
+		
+		return new ProgressReportManagementPanel(getProject(), getMainWindow(), parentRef, getListTag(), getMainWindow().getActions(), getButtonClasses());
 	}
 	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateIndicatorProgressReport.class,
-		ActionDeleteIndicatorProgressReport.class,
-	};
+	abstract protected Class[] getButtonClasses();
+	
+	abstract protected String getListTag();
 }
