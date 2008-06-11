@@ -147,6 +147,7 @@ import org.miradi.questions.TestChoiceQuestion;
 import org.miradi.ratings.TestRatingChoice;
 import org.miradi.ratings.TestRatingQuestion;
 import org.miradi.ratings.TestStrategyRatingSummary;
+import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
@@ -242,6 +243,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDateRange.class));
 		suite.addTest(new TestSuite(TestConproMiradiHabitatCodeMap.class));
 		suite.addTest(new TestSuite(TestMiradiMap.class));
+		suite.addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
