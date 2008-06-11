@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
-import org.miradi.views.diagram.DiagramImageCreator;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 import org.miradi.views.umbrella.XmlExporter;
 import org.miradi.xml.reports.export.ReportXmlExporter;
@@ -89,6 +89,6 @@ public class ExportProjectXmlDoer extends XmlExporter
 		// Should just pass prefs into component instead of the whole main window
 		MainWindow mainWindow = EAM.getMainWindow();
 
-		new SaveImageJPEGDoer().saveImage(out, DiagramImageCreator.createImageFromDiagram(mainWindow, diagramObject));
+		new SaveImageJPEGDoer().saveImage(out, BufferedImageFactory.createImageFromDiagram(mainWindow, diagramObject));
 	}
 }
