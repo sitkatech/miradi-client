@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.swing.Action;
-import javax.swing.JComponent;
 
 import org.jgraph.JGraph;
 import org.jgraph.event.GraphSelectionEvent;
@@ -68,7 +67,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.JImage;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
 
@@ -182,15 +180,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		}
 	}
 
-	public JComponent getPrintableComponent()
-	{
-		BufferedImage image = getImage();
-		JImage view = new JImage(image);
-		view.setSize(getPreferredSize());
-		view.setPreferredSize(getPreferredSize());
-		return view;
-	}
-	
 	//toScreen does not take into account Physical Window location.
 	public Point toWindowCoordinates(Point scaledLocation)
 	{
