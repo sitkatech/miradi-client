@@ -65,7 +65,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ViewData;
-import org.miradi.reports.ChainManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
 import org.miradi.views.diagram.DiagramPaster;
