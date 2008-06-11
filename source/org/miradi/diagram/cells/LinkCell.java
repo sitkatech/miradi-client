@@ -74,6 +74,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		return getDiagramLink().getToolTipString();
 	}
+	
+	public Color getColor()
+	{
+		return getDiagramLink().getColor();
+	}
 
 	public int[] getSelectedBendPointIndexes()
 	{
@@ -218,10 +223,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 	    GraphConstants.setValue(getAttributes(), label);
 	    GraphConstants.setOpaque(getAttributes(), true);
-	    Color linkColor = getDiagramLink().getColor();
-		GraphConstants.setBackground(getAttributes(), linkColor);
-	    GraphConstants.setForeground(getAttributes(), linkColor);
-	    GraphConstants.setGradientColor(getAttributes(), linkColor); //Windows 2000 quirk required to see line.
+		GraphConstants.setBackground(getAttributes(), getColor());
+	    GraphConstants.setForeground(getAttributes(), getColor());
+	    GraphConstants.setGradientColor(getAttributes(), getColor()); //Windows 2000 quirk required to see line.
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
 	}

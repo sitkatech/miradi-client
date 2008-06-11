@@ -58,7 +58,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		diagramFontSize = ((DiagramComponent) graphToUse).getProject().getDiagramFontSize();
-		diagramLinkColor = getLinkCell().getDiagramLink().getColor();
+		diagramLinkColor = getLinkCell().getColor();
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
