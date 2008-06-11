@@ -33,7 +33,7 @@ import org.miradi.utils.CodeList;
 
 public class DiagramImageCreator
 {
-	public static BufferedImage getImage(MainWindow mainWindow, DiagramObject diagramObject)
+	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject)
 	{
 		try
 		{
@@ -82,6 +82,6 @@ public class DiagramImageCreator
 	{
 		DiagramLegendPanel panel = mainWindow.getDiagramView().getDiagramPanel().getDiagramLegendPanel();
 		panel.updateLegendPanel(list);
-		return getImage( mainWindow, diagramObject);	
+		return createImageFromDiagram( mainWindow, diagramObject);	
 	}
 }

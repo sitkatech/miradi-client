@@ -89,6 +89,6 @@ public class ExportProjectXmlDoer extends XmlExporter
 		// Should just pass prefs into component instead of the whole main window
 		MainWindow mainWindow = EAM.getMainWindow();
 
-		new SaveImageJPEGDoer().saveImage(out, DiagramImageCreator.getImage(mainWindow, diagramObject));
+		new SaveImageJPEGDoer().saveImage(out, DiagramImageCreator.createImageFromDiagram(mainWindow, diagramObject));
 	}
 }
