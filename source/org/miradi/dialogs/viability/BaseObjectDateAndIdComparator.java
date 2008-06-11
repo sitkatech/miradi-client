@@ -24,7 +24,7 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.objects.BaseObject;
 
-public class DateComparator
+public class BaseObjectDateAndIdComparator
 {
 	public static int compare(BaseObject rawObject1, BaseObject rawObject2, String dateTag)
 	{

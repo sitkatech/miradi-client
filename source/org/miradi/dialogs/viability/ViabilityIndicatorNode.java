@@ -135,7 +135,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	{
 		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
 		{
-			return DateComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
+			return BaseObjectDateAndIdComparator.compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
 		}	
 	}
 	
