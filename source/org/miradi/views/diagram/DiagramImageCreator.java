@@ -64,18 +64,18 @@ public class DiagramImageCreator
 
 	public static DiagramComponent createComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramComponent comp =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
-		comp.setScale(1.0);
-		comp.getDiagramModel().updateVisibilityOfFactorsAndLinks();
+		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
+		diagram.setScale(1.0);
+		diagram.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 		
 		// TODO: This is here because setting a factor/link to be visible also has
 		// the side effect of selecting it, so the last item added is selected but 
 		// shouldn't be. So our quick fix is to clear the selection. 
 		// Cleaner fixes ran into strange problems where Windows and Linux systems
 		// behaved differently. SEE ALSO DiagramSplitPane.showCard()
-		comp.clearSelection();
+		diagram.clearSelection();
 		
-		return comp;
+		return diagram;
 	}
 	
 	static public BufferedImage getImageWithLegendSetting(MainWindow mainWindow, DiagramObject diagramObject, CodeList list)
