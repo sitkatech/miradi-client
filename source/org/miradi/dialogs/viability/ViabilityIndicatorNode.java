@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -125,9 +126,17 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			measurementAndFutureStatusObjects.add(new KeyEcologicalAttributeMeasurementNode(this, measurement));
 		}
 
-		Collections.sort(measurementAndFutureStatusObjects);		
+		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());		
 		measurementAndFutureStatusObjects.add(new KeyEcologicalAttributeFutureStatusNode(this));
 		measurements = (TreeTableNode[]) measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
+	}
+	
+	public static class MeasurementNodeDateComparator implements Comparator<TreeTableNode>
+	{
+		public int compare(TreeTableNode rawNode1, TreeTableNode rawNode2)
+		{
+			return new DateComparator().compare(rawNode1.getObject(), rawNode2.getObject(), Measurement.TAG_DATE);
+		}	
 	}
 	
 	public static final String[] COLUMN_TAGS = {

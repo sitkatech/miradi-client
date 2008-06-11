@@ -39,6 +39,11 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 	{
 		return measurement;
 	}
+	
+	public Measurement getMeasurement()
+	{
+		return (Measurement) getObject();
+	}
 
 	public ORef getObjectReference()
 	{
