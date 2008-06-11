@@ -150,6 +150,12 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		textAreaRect.height -= (2 * yInset);
 		textAreaRect.width -= (2 * xInset);
 		
+		//NOTE: To make sure that text does not overflow horizontally, the below padding has been 
+		//added.  the amount is arbitrary and was derived from trial and error. The padding amount is
+		//still not perfect, you can see this with different text and zoom scales.
+		int FACTOR_TEXT_HORIZONTAL_PADDING = -5;
+		textAreaRect.grow(FACTOR_TEXT_HORIZONTAL_PADDING, 0);
+		
 		return textAreaRect;
 	}
 
