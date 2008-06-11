@@ -67,7 +67,7 @@ public  class BufferedImageFactory
 	
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramComponent diagram = BufferedImageFactory.createComponent(mainWindow, diagramObject);
+		DiagramComponent diagram = BufferedImageFactory.createDiagramComponent(mainWindow, diagramObject);
 
 		Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
 		diagram.toScreen(bounds);
@@ -103,7 +103,7 @@ public  class BufferedImageFactory
 		return getImage(component,5);
 	}
 	
-	public static DiagramComponent createComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	public static DiagramComponent createDiagramComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
 		diagram.setScale(1.0);
