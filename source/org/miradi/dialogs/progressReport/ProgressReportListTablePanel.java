@@ -31,5 +31,5 @@ public class ProgressReportListTablePanel extends ObjectListTablePanel
 		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef, annotationTag), actions, editButtonClasses, DEFAULT_SORT_COLUMN);
 	}
 	
-	public static final int DEFAULT_SORT_COLUMN = 0;
+	private static final int DEFAULT_SORT_COLUMN = 0;
 }

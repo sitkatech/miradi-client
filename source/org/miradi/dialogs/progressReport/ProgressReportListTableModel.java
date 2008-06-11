@@ -60,7 +60,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 	@Override
 	protected Comparator createComparator(int sortColumn)
 	{
-		if (sortColumn == ProgressReportListTablePanel.DEFAULT_SORT_COLUMN)
+		if (getColumnTag(sortColumn).equals(ProgressReport.TAG_PROGRESS_DATE))
 			return new ProgressReportDateComparator(this);
 		
 		return super.createComparator(sortColumn);
