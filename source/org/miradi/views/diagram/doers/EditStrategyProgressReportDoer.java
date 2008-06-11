@@ -21,25 +21,26 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.actions.ActionCreateStrategyProgressReport;
 import org.miradi.actions.ActionDeleteStrategyProgressReport;
-import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.progressReport.ProgressReportManagementPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
-import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
-public class EditStrategyProgressReportDoer extends AbstractPopUpEditDoer
+public class EditStrategyProgressReportDoer extends AbstractProgressReportPopupEditor
 {
 	public EditStrategyProgressReportDoer()
 	{
 		super(Strategy.getObjectType(), EAM.text("Edit Progress Reports"));
 	}
 
-	protected ObjectListManagementPanel createManagementPanel() throws Exception
+	@Override
+	protected Class[] getButtonClasses()
 	{
-		ORef strategyRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
-		
-		return new ProgressReportManagementPanel(getProject(), getMainWindow(), strategyRef, Strategy.TAG_PROGRESS_REPORT_REFS, getMainWindow().getActions(), buttonActionClasses);
+		return buttonActionClasses;
+	}
+
+	@Override
+	protected String getListTag()
+	{
+		return Strategy.TAG_PROGRESS_REPORT_REFS;
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {
