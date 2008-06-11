@@ -114,7 +114,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
-			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.getImage(getMainWindow(), diagramObject));
+			new SaveImagePngDoer().saveImage(byteOut, DiagramImageCreator.createImageFromDiagram(getMainWindow(), diagramObject));
 			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
 		}
 		finally
