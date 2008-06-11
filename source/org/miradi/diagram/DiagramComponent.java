@@ -27,7 +27,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -66,7 +65,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
 
@@ -162,24 +160,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (EAMGraphSelectionModel)getSelectionModel();
 	}
 	
-	public BufferedImage getImage()
-	{
-		Color currentColor = getBackground();
-		boolean currentGridSetting = isGridVisible();
-		try
-		{
-			setToDefaultBackgroundColor();
-			setGridVisible(false);
-			return BufferedImageFactory.getImage(this,5);
-		}
-		finally
-		{
-			setBackground(currentColor);
-			setGridVisible(currentGridSetting);
-			repaint();
-		}
-	}
-
 	//toScreen does not take into account Physical Window location.
 	public Point toWindowCoordinates(Point scaledLocation)
 	{
