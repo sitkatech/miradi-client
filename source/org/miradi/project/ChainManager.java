@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.reports;
+package org.miradi.project;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.FactorSet;
@@ -25,8 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
-import org.miradi.project.Project;
-import org.miradi.project.ProjectChainObject;
 
 
 public class ChainManager

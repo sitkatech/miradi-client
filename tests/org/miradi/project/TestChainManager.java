@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.main.EAMTestCase;
-import org.miradi.reports.ChainManager;
 
 public class TestChainManager extends EAMTestCase
 {
