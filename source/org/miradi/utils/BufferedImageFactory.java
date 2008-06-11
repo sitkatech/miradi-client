@@ -42,6 +42,11 @@ public  class BufferedImageFactory
 {
 	public static BufferedImage getImage(JComponent swingComponent,  int inset) 
 	{
+		//TODO: is there a better way to do this
+		JFrame frame = new JFrame();
+		frame.add(new UiScrollPane(swingComponent));
+		frame.pack();
+
 		Rectangle2D bounds = new Rectangle(swingComponent.getPreferredSize());
 		if (bounds == null) 
 			return null;
@@ -72,11 +77,6 @@ public  class BufferedImageFactory
 			diagram.setToDefaultBackgroundColor();
 			diagram.setGridVisible(false);
 			
-			//TODO: is there a better way to do this
-			JFrame frame = new JFrame();
-			frame.add(new UiScrollPane(diagram));
-			frame.pack();
-
 			BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
 			
 			int x = Math.max(bounds.x, 0);
