@@ -23,13 +23,13 @@ import java.util.Comparator;
 
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.dialogs.base.ObjectTableModel;
-import org.miradi.dialogs.viability.BaseObjectDateAndIdComparator;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.utils.BaseObjectDateAndIdComparator;
 import org.miradi.utils.IgnoreCaseStringComparator;
 
 public class ProgressReportListTableModel extends ObjectListTableModel

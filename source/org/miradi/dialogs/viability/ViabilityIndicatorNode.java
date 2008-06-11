@@ -33,6 +33,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.BaseObjectDateAndIdComparator;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 /**
  * 
  */
-package org.miradi.dialogs.viability;
+package org.miradi.utils;
 
 import org.miradi.objects.BaseObject;
 
