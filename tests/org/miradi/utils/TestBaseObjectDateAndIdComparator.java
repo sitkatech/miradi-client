@@ -34,21 +34,21 @@ public class TestBaseObjectDateAndIdComparator extends TestCaseWithProject
 	
 	public void testCompare() throws Exception
 	{
-		Measurement measurement1 = getProject().createMeasurement();
-		measurement1.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1).toString());
+		Measurement measurement1979 = getProject().createMeasurement();
+		measurement1979.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(1979, 1, 1).toString());
 		
-		Measurement measurement2 = getProject().createMeasurement();
+		Measurement measurementWithNoDate = getProject().createMeasurement();
 		
-		ORef measurementRef3 = getProject().createObject(Measurement.getObjectType(), new BaseId(9000));
-		Measurement measurement3 = Measurement.find(getProject(), measurementRef3);
+		ORef measurementRef3 = getProject().createObject(Measurement.getObjectType(), new BaseId(9999));
+		Measurement measurementWithNoDateAndId9999 = Measurement.find(getProject(), measurementRef3);
+	
+		assertEquals("identical without date?", 0, BaseObjectDateAndIdComparator.compare(measurementWithNoDate, measurementWithNoDate, Measurement.TAG_DATE));
+		assertEquals("blank date after 1979?", -1, BaseObjectDateAndIdComparator.compare(measurement1979, measurementWithNoDate, Measurement.TAG_DATE));
+		assertEquals("blank date before 1979?", 1, BaseObjectDateAndIdComparator.compare(measurementWithNoDate, measurement1979, Measurement.TAG_DATE));
+		assertEquals("identical with same dates?", 0, BaseObjectDateAndIdComparator.compare(measurement1979, measurement1979, Measurement.TAG_DATE));
+		assertEquals("blank date after id 9999?", -1, BaseObjectDateAndIdComparator.compare(measurementWithNoDateAndId9999, measurementWithNoDate, Measurement.TAG_DATE));
 		
-		assertEquals("wrong compare value for comparing date to blank?", -1, BaseObjectDateAndIdComparator.compare(measurement1, measurement2, Measurement.TAG_DATE));
-		assertEquals("wrong compare value for comparing date to blank?", 1, BaseObjectDateAndIdComparator.compare(measurement2, measurement1, Measurement.TAG_DATE));
-		assertEquals("wrong compare value for same object?", 0, BaseObjectDateAndIdComparator.compare(measurement1, measurement1, Measurement.TAG_DATE));
-		assertEquals("wrong compare id value?", -1, BaseObjectDateAndIdComparator.compare(measurement3, measurement2, Measurement.TAG_DATE));
-		
-		measurement2.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(9999, 9, 9).toString());
-		assertTrue("wrong compare value for comparing dates?", BaseObjectDateAndIdComparator.compare(measurement1, measurement2, Measurement.TAG_DATE) > 0);
+		measurementWithNoDate.setData(Measurement.TAG_DATE, MultiCalendar.createFromGregorianYearMonthDay(2008, 9, 9).toString());
+		assertTrue("2008 not after 1079?", BaseObjectDateAndIdComparator.compare(measurement1979, measurementWithNoDate, Measurement.TAG_DATE) > 0);
 	}
-
 }
