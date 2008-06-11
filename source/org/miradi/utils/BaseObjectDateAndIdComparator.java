@@ -36,10 +36,10 @@ public class BaseObjectDateAndIdComparator
 		if (safeDate2.equals(safeDate1))
 			return rawObject2.getId().compareTo(rawObject1.getId());
 		
-		if (safeDate1.length() == 0 && safeDate2.length() > 0)
+		if (safeDate1.length() == 0)
 			return 1;
 		
-		if (safeDate2.length() == 0 && safeDate1.length() > 0)
+		if (safeDate2.length() == 0)
 			return -1;
 		
 		return safeDate2.compareTo(safeDate1);
