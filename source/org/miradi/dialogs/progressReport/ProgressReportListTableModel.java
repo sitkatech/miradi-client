@@ -23,7 +23,7 @@ import java.util.Comparator;
 
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.dialogs.base.ObjectTableModel;
-import org.miradi.dialogs.viability.DateComparator;
+import org.miradi.dialogs.viability.BaseObjectDateAndIdComparator;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
@@ -80,7 +80,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 			BaseObject baseObject1 = model.getObjectFromRow(row1.intValue());
 			BaseObject baseObject2 = model.getObjectFromRow(row2.intValue());
 			
-			return DateComparator.compare(baseObject1, baseObject2, ProgressReport.TAG_PROGRESS_DATE);
+			return BaseObjectDateAndIdComparator.compare(baseObject1, baseObject2, ProgressReport.TAG_PROGRESS_DATE);
 		}
 
 		private ObjectTableModel model;
