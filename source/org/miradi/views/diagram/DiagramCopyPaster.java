@@ -25,6 +25,8 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Stress;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
@@ -60,6 +62,10 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	protected boolean canPastTypeInDiagram(int type)
 	{
+		boolean isResultsChain = ResultsChainDiagram.is(getDiagramObject().getType());
+		if (isResultsChain && Stress.is(type))
+			return false;
+		
 		return true;
 	}
 	
