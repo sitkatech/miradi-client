@@ -126,7 +126,17 @@ public class Stress extends Factor
 	{
 		return find(project.getObjectManager(), stressRef);
 	}
-		
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+			
 	public String toString()
 	{
 		return getLabel();
