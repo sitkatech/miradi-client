@@ -26,16 +26,15 @@ import org.miradi.actions.jump.ActionJumpTargetStressesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class StressListManagementPanel extends ObjectListManagementPanel
 {
-	public StressListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new StressListTablePanel(projectToUse, actions, nodeRef),
-				new StressPropertiesPanel(projectToUse));
+		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+				new StressPropertiesPanel(mainWindowToUse));
 	}
 
 	public String getSplitterDescription()

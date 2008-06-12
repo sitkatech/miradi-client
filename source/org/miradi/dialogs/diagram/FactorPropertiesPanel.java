@@ -232,7 +232,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		if (factor.isTarget() && getProject().getMetadata().isStressBasedThreatRatingMode())
 		{
-			stressTab = new StressListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			stressTab = new StressListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
 		}
 			
