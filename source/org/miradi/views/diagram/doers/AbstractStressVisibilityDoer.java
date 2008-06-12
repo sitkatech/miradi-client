@@ -22,6 +22,7 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Stress;
 import org.miradi.views.ObjectsDoer;
 
@@ -39,7 +40,11 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	
 	protected boolean isShowing(ORef stressRef)
 	{
-		return getDiagramFactorReferrerRefs(stressRef).size() > 0;
+		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+		ORefList diagramFactorRefsFromDiagram = diagramObject.getAllDiagramFactorRefs();
+		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(stressRef);
+		
+		return diagramFactorRefsFromDiagram.containsAnyOf(diagramFactorReferrerRefs);
 	}
 
 	protected ORefList getDiagramFactorReferrerRefs(ORef stressRef)
