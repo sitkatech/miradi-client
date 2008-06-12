@@ -61,13 +61,27 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		if(!isAvailable())
 			return;
+	
+		try
+		{
+			String tag = getAnnotationIdListTag();
+			String[] dialogText = getDialogText();
+			BaseObject annotationToDelete = getObjects()[0];
+			BaseObject selectedFactor = getParent(annotationToDelete);
+
+			doWork(annotationToDelete);
+			deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
 		
-		String tag = getAnnotationIdListTag();
-		String[] dialogText = getDialogText();
-		BaseObject annotationToDelete = getObjects()[0];
-		BaseObject selectedFactor = getParent(annotationToDelete);
-		
-		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
+	}
+
+	protected void doWork(BaseObject annotationToDelete) throws Exception
+	{
 	}
 
 	protected BaseObject getParent(BaseObject annotationToDelete)
@@ -155,7 +169,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 
-	protected static Collection buildCommandsToDeleteThreatStressRatings(Project project, BaseObject owner, ORef stressRef) throws Exception
+	private static Collection buildCommandsToDeleteThreatStressRatings(Project project, BaseObject owner, ORef stressRef) throws Exception
 	{
 		Vector commands = new Vector();
 		if (stressRef.getObjectType() != Stress.getObjectType())
