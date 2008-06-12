@@ -38,6 +38,7 @@ import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramIntermediateResultCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
+import org.miradi.diagram.cells.DiagramStressCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.diagram.cells.DiagramThreatReductionResultCell;
@@ -73,6 +74,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
@@ -155,6 +157,9 @@ public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.GROUP_BOX)
 			return new DiagramGroupBoxCell(this, (GroupBox)factor, diagramFactor);
+		
+		if (factorType == ObjectType.STRESS)
+			return new DiagramStressCell((Stress)factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

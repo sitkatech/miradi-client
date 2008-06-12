@@ -91,6 +91,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.TextBox;
@@ -370,6 +371,10 @@ public class ObjectManager
 			BaseObject groupBox = getPool(GroupBox.getObjectType()).findObject(objectId);
 			if (groupBox != null)
 				return groupBox;
+			
+			BaseObject stress = getPool(Stress.getObjectType()).findObject(objectId);
+			if (stress != null)
+				return stress;
 			
 			return null;
 		}

@@ -34,6 +34,7 @@ import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
+import org.miradi.diagram.factortypes.FactorTypeStress;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
@@ -197,6 +198,7 @@ abstract public class BaseObject
 			case ObjectType.TASK:
 				return new Task(objectManager, idAsInt, json);
 			
+			case ObjectType.STRESS:
 			case ObjectType.GROUP_BOX:
 			case ObjectType.TEXT_BOX:
 			case ObjectType.THREAT_REDUCTION_RESULT:
@@ -228,6 +230,9 @@ abstract public class BaseObject
 				
 				if (typeString.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
 					return new GroupBox(objectManager, new FactorId(idAsInt), json);
+				
+				if (typeString.equals(FactorTypeStress.STRESS_TYPE))
+					return new Stress(objectManager, new FactorId(idAsInt), json);
 				
 				throw new RuntimeException("Read unknown node type: " + typeString);
 			}
@@ -288,9 +293,6 @@ abstract public class BaseObject
 				
 			case ObjectType.MEASUREMENT:
 				return new Measurement(objectManager, idAsInt, json);
-			
-			case ObjectType.STRESS:
-				return new Stress(objectManager, idAsInt, json);
 			
 			case ObjectType.THREAT_STRESS_RATING:
 				return new ThreatStressRating(objectManager, idAsInt, json);

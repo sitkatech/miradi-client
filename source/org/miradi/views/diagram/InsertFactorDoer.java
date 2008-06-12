@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Stress;
 import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
@@ -267,6 +268,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private boolean linkableType(int type)
 	{
 		if (type == TextBox.getObjectType())
+			return false;
+		
+		if (type == Stress.getObjectType())
 			return false;
 		
 		return true; 

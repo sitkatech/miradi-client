@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -33,18 +33,19 @@ import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class Stress extends BaseObject
+public class Stress extends Factor
 {
-	public Stress(ObjectManager objectManager, BaseId idToUse)
+	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, Factor.TYPE_STRESS);
+		clear();
 	}
 	
-	public Stress(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public Stress(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, idToUse, Factor.TYPE_STRESS, json);
 	}
-
+	
 	public int getType()
 	{
 		return getObjectType();
@@ -53,6 +54,11 @@ public class Stress extends BaseObject
 	public static int getObjectType()
 	{
 		return ObjectType.STRESS;
+	}
+	
+	public boolean isStress()
+	{
+		return true;
 	}
 	
 	public String getTypeName()
