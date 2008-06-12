@@ -52,7 +52,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		}
 		if(diagramFactor.isStress())
 		{
-			return new RectangleFactorView(diagramFactor);
+			return new RoundedRectangleFactorView(diagramFactor);
 		}
 		if(diagramFactor.isContributingFactor())
 		{
