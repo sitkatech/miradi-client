@@ -23,19 +23,19 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
 public class StressPropertiesPanel extends ObjectDataInputPanel
 {
-	public StressPropertiesPanel(Project projectToUse) throws Exception
+	public StressPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
+		super(mainWindow.getProject(), ObjectType.STRESS, BaseId.INVALID);
 	
 		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(projectToUse));
+		addSubPanelWithTitledBorder(new StressDetailsSubPanel(getProject()));
 
-		addSubPanelWithTitledBorder(new StressCommentsSubPanel(projectToUse));
+		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));
 		
 		updateFieldsFromProject();
 	}

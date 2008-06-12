@@ -45,7 +45,7 @@ public class ManageStressesDoer extends ObjectsDoer
 		try
 		{
 			BaseObject selectedTarget = getSingleSelected(Target.getObjectType());
-			StressListManagementPanel stressListManagementPanel = new StressListManagementPanel(getProject(), getMainWindow(), selectedTarget.getRef(), getMainWindow().getActions());
+			StressListManagementPanel stressListManagementPanel = new StressListManagementPanel(getMainWindow(), selectedTarget.getRef(), getMainWindow().getActions());
 			ManageStressesDialog manageStressesDialog = new ManageStressesDialog(getMainWindow(), (Target)selectedTarget, stressListManagementPanel);
 			stressListManagementPanel.updateSplitterLocation();
 			Utilities.centerDlg(manageStressesDialog);
