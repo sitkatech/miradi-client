@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.diagram.DiagramModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -42,9 +42,17 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 	
 	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
 	{
-		DiagramModel diagramModel = getDiagramView().getDiagramModel();
-		ORefList diagramFactoRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		hideStressBubbleDoer.hideDiagramFactors(diagramModel, diagramFactoRefs);
+		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(index));
+			ORefList conceptualModelRefs = diagramFactor.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
+			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
+			{
+				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRefs.get(diagramRefIndex));
+				hideStressBubbleDoer.hideDiagramFactor(conceptualModel, diagramFactor);
+			}
+		}
 	}
 	
 	protected BaseObject getParent(BaseObject annotationToDelete)

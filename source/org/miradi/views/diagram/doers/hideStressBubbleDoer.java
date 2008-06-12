@@ -38,22 +38,29 @@ public class hideStressBubbleDoer extends AbstractStressVisibilityDoer
 		ORef selectedStressRef = getSelectedStress();
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedStressRef);
-		hideDiagramFactors(diagramModel, diagramFactorReferrerRefs);
+		ORefList diagramFactorRefsFromCurrentDiagram = diagramModel.getDiagramObject().getAllDiagramFactorRefs();		
+		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
+		
+		hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
 	}
 
-	public static void hideDiagramFactors(DiagramModel diagramModel, ORefList diagramFactorReferrerRefs) throws Exception
+	public static void hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorReferrerRefs) throws Exception
 	{
-		FactorDeleteHelper helper = new FactorDeleteHelper(diagramModel);
-		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		for (int refIndex = 0; refIndex < diagramFactorReferrerRefs.size(); ++refIndex)
 		{
 			ORef diagramFactorRef = diagramFactorReferrerRefs.get(refIndex);
 			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
 			{
 				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
-				helper.removeNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId());
-				helper.deleteDiagramFactor(diagramFactorToDelete);
+				hideDiagramFactor(diagramObject, diagramFactorToDelete);
 			}
 		}
+	}
+
+	public static void hideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	{
+		FactorDeleteHelper helper = new FactorDeleteHelper(diagramObject);
+		helper.removeNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId());
+		helper.deleteDiagramFactor(diagramFactorToDelete);
 	}
 }
