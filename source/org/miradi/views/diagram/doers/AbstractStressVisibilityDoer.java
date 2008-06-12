@@ -35,6 +35,9 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
+		if (!isInDiagram())
+			return false;
+		
 		ORef selectedStressRef = getSelectedStress();
 		if (selectedStressRef.isInvalid())
 			return false;
