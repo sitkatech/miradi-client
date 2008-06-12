@@ -35,12 +35,6 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (!isInDiagram())
-		{
-			EAM.logWarning("doer is hooked up to something other than diagram view");
-			return false;
-		}
-		
 		ORef selectedStressRef = getSelectedStress();
 		if (selectedStressRef.isInvalid())
 			return false;
@@ -53,6 +47,9 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	{
 		if (!isAvailable())
 			return;
+
+		if (!isInDiagram())
+			throw new RuntimeException("Added doer to wrong view");
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
