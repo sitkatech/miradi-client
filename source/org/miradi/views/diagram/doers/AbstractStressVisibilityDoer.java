@@ -19,28 +19,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Stress;
+import org.miradi.views.ObjectsDoer;
 
-public class showStressBubbleDoer extends AbstractStressVisibilityDoer
+public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 {
-	@Override
-	public boolean isAvailable()
+	protected ORef getSelectedStress()
 	{
-		ORef selectedStressRef = getSelectedStress();
-		if (selectedStressRef.isInvalid())
-			return false;
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
+		if (selectedHierarchies.length != 1)
+			return ORef.INVALID;
 		
-		if (isShowing(selectedStressRef))
-			return false;
-		
-		return true;
+		ORefList selectedHierarchy = selectedHierarchies[0];
+		return selectedHierarchy.getRefForType(Stress.getObjectType());
+	}
+	
+	protected boolean isShowing(ORef stressRef)
+	{
+		return getDiagramFactorReferrerRefs(stressRef).size() > 0;
 	}
 
-	@Override
-	public void doIt() throws CommandFailedException
+	protected ORefList getDiagramFactorReferrerRefs(ORef stressRef)
 	{
-		if (!isAvailable())
-			return;
+		Stress stress = Stress.find(getProject(), stressRef);
+		ORefList diagramFactorReferrers = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		return diagramFactorReferrers;
 	}
 }
