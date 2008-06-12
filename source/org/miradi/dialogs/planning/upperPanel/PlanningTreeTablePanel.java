@@ -27,6 +27,7 @@ import java.awt.event.MouseWheelListener;
 
 import javax.swing.BoundedRangeModel;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -77,17 +78,28 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns implements MouseWheelListener
 {
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
+	{
+		Class[] noButtons = new Class[0];
+		return createPlanningTreeTablePanel(mainWindowToUse, noButtons);
+	}
+	
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
-	{ 
+	{
+		return createPlanningTreeTablePanel(mainWindowToUse, getButtonActions());
+	}
+	
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, Class[] buttonActions) throws Exception
+	{
 		PlanningTreeTableModel model = new PlanningTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
 		
-		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model);
+		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
 	}
 	
-	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse) throws Exception
+	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, getButtonActions());
+		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;
 		
 		// NOTE: Replace tree scroll pane created by super constructor
@@ -156,15 +168,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		rebuildEntireTreeTable();
 	}
 	
-	@Override
-	public Dimension getPreferredSize()
-	{
-		JScrollPane parent = (JScrollPane)getParent();
-		if(parent == null)
-			return super.getPreferredSize();
-		return parent.getViewport().getPreferredSize();
-	}
-
 	private ScrollPaneWithHideableScrollBar integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
 	{
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
@@ -345,6 +348,18 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		return multiTableExporter;
 	}
 	
+	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow) throws Exception
+	{
+		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow);
+
+		JPanel reformatted = new JPanel(new BorderLayout());
+		reformatted.add(wholePanel.tree, BorderLayout.BEFORE_LINE_BEGINS);
+		reformatted.add(wholePanel.tablesPanel, BorderLayout.CENTER);
+		
+		wholePanel.dispose();
+		return reformatted;
+	}
+
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
 		if(e.getScrollType() != e.WHEEL_UNIT_SCROLL)
