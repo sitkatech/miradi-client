@@ -116,15 +116,17 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	
 	public BaseObject getSelectedParent()
 	{		
-		for (int i = 0; i < getSelectedHierarchies().length; ++i)
+		for (int refListIndex = 0; refListIndex < getSelectedHierarchies().length; ++refListIndex)
 		{
-			ORefList selectedHierarchyRefs =  getSelectedHierarchies()[i];
-			for (int j = 0; j <  selectedHierarchyRefs.size(); ++j)
+			ORefList selectedHierarchyRefs =  getSelectedHierarchies()[refListIndex];
+			for (int refIndex = 0; refIndex <  selectedHierarchyRefs.size(); ++refIndex)
 			{
-				if (selectedHierarchyRefs.get(j) != null && Factor.isFactor(selectedHierarchyRefs.get(j)))
+				if (selectedHierarchyRefs.get(refIndex) != null && Factor.isFactor(selectedHierarchyRefs.get(refIndex)))
 				{
-					Factor factor = (Factor) getProject().findObject(selectedHierarchyRefs.get(j));
-					return factor;
+					Factor factor = (Factor) getProject().findObject(selectedHierarchyRefs.get(refIndex));
+					//FIXME this is a hack,  we need to exclude factors that are not parents
+					if (!factor.isStress())
+						return factor;
 				}
 			}
 		}

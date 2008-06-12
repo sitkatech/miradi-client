@@ -26,6 +26,7 @@ import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
+import org.miradi.diagram.factortypes.FactorTypeStress;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
@@ -203,6 +204,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.GROUP_BOX)
 			return true;
 		
+		if (typeToUse == ObjectType.STRESS)
+			return true;
+		
 		return false;
 	}
 
@@ -322,6 +326,9 @@ abstract public class Factor extends BaseObject
 	
 		else if (objectType == ObjectType.GROUP_BOX)
 			return new GroupBox(objectManager, idToCreate);
+		
+		else if (objectType == ObjectType.STRESS)
+			return new Stress(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
@@ -472,6 +479,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
 	}
 
+	public static final FactorType TYPE_STRESS = new FactorTypeStress();
 	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
 	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();

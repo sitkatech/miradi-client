@@ -37,6 +37,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
@@ -85,11 +86,11 @@ public abstract class FactorType
 		return false;
 	}
 	
-	public boolean isFactorCluster()
+	public boolean isStress()
 	{
 		return false;
 	}
-
+	
 	public boolean equals(Object other)
 	{
 		return getClass().getName().equals(other.getClass().getName());
@@ -125,6 +126,9 @@ public abstract class FactorType
 		
 		if (factor.isGroupBox())
 			return EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME);
+		
+		if (factor.isStress())
+			return EAM.fieldLabel(Stress.getObjectType(), Stress.OBJECT_NAME);
 		
 		throw new RuntimeException("Unknown factor type " + factor.getRef());
 	}
@@ -185,6 +189,9 @@ public abstract class FactorType
 		
 		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
 			return ObjectType.GROUP_BOX;
+		
+		else if (factorType.equals(FactorTypeStress.STRESS_TYPE))
+			return ObjectType.STRESS;
 		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}

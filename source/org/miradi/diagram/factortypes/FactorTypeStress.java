@@ -17,31 +17,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.objectpools;
+package org.miradi.diagram.factortypes;
 
-import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
-import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Stress;
-import org.miradi.project.ObjectManager;
-
-public class StressPool extends EAMNormalObjectPool
+public class FactorTypeStress extends FactorType
 {
-	public StressPool(IdAssigner idAssignerToUse)
+	public boolean isStress()
 	{
-		super(idAssignerToUse, ObjectType.STRESS);
+		return true;
 	}
 	
-	public Stress find(BaseId id)
+	public String toString()
 	{
-		return (Stress)findObject(id);
+		return STRESS_TYPE;
 	}
 
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
-	{
-		return new Stress(objectManager, new FactorId(actualId.asInt()));
-	}
+	public static final String STRESS_TYPE = "Stress";
 }
