@@ -47,9 +47,13 @@ public class hideStressBubbleDoer extends AbstractStressVisibilityDoer
 		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		for (int refIndex = 0; refIndex < diagramFactorReferrerRefs.size(); ++refIndex)
 		{
-			DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorReferrerRefs.get(refIndex));
-			helper.removeNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId());
-			helper.deleteDiagramFactor(diagramFactorToDelete);
+			ORef diagramFactorRef = diagramFactorReferrerRefs.get(refIndex);
+			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
+			{
+				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
+				helper.removeNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId());
+				helper.deleteDiagramFactor(diagramFactorToDelete);
+			}
 		}
 	}
 }
