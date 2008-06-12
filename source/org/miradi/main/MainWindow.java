@@ -928,6 +928,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		catch (Exception e) 
 		{
 			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unable to launch external web browser"));
 		}
 	}
 
