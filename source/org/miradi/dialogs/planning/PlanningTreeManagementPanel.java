@@ -61,10 +61,8 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getPrintableComponent();
+		JComponent panel = getPrintableComponent();
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);
-		
-		panel.dispose();
 		return image;
 	}
 
@@ -76,7 +74,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		PlanningTreeTablePanel panel = (PlanningTreeTablePanel) getPrintableComponent();
+		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
 		ExportableTableInterface table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -86,7 +84,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
+		return PlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
