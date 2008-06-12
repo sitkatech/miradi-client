@@ -36,7 +36,10 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
-			throw new RuntimeException("Added doer to wrong view");
+		{
+			EAM.logWarning("doer is hooked up to something other than diagram view");
+			return false;
+		}
 		
 		ORef selectedStressRef = getSelectedStress();
 		if (selectedStressRef.isInvalid())
