@@ -115,7 +115,7 @@ public class FactorDeleteHelper
 		return true;
 	}
 
-	private void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException
+	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException
 	{
 		Command[] commandsToClear = diagramFactor.createCommandsToClear();
 		getProject().executeCommandsWithoutTransaction(commandsToClear);
@@ -131,7 +131,7 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
+	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
 	{
 		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);

@@ -19,20 +19,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.exceptions.CommandFailedException;
+import org.miradi.diagram.DiagramModel;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.project.FactorDeleteHelper;
 
 public class hideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
-	@Override
-	public boolean isAvailable()
+	protected boolean isAvailable(ORef selectedStressRef)
 	{
-		return false;
+		return isShowing(selectedStressRef);
 	}
 	
-	@Override
-	public void doIt() throws CommandFailedException
+	protected void doWork() throws Exception
 	{
-		if (!isAvailable())
-			return;
+		ORef selectedStressRef = getSelectedStress();
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
+		FactorDeleteHelper helper = new FactorDeleteHelper(diagramModel);
+		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedStressRef);
+		for (int refIndex = 0; refIndex < diagramFactorReferrerRefs.size(); ++refIndex)
+		{
+			DiagramFactor diagramFactorToDelete = DiagramFactor.find(getProject(), diagramFactorReferrerRefs.get(refIndex));
+			helper.removeNodeFromDiagram(diagramModel.getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
+			helper.deleteDiagramFactor(diagramFactorToDelete);
+		}
 	}
 }
