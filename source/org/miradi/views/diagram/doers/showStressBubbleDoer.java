@@ -33,7 +33,7 @@ public class showStressBubbleDoer extends AbstractStressVisibilityDoer
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
-			return false;
+			throw new RuntimeException("Added doer to wrong view");
 		
 		ORef selectedStressRef = getSelectedStress();
 		if (selectedStressRef.isInvalid())
