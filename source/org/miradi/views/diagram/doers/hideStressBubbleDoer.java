@@ -20,9 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
 
-public class hideStressBubbleDoer extends ObjectsDoer
+public class hideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
 	@Override
 	public boolean isAvailable()
