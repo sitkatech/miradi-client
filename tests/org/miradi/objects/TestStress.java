@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Stress;
 
 public class TestStress extends ObjectTestCase
 {
@@ -47,5 +47,20 @@ public class TestStress extends ObjectTestCase
 		stress.setData(Stress.TAG_SEVERITY, "4");
 		assertEquals("has value?", 1, stress.calculateStressRating());
 		assertEquals("is not min value", 1, stress.calculateStressRating());
+	}
+	
+	public void testIsShared() throws Exception
+	{
+		Stress stress = getProject().createStress();
+		assertFalse("Stress is shared?", stress.isShared());
+		
+		Target target = getProject().createTarget();
+		ORefList stressRefs = new ORefList(stress.getRef());
+		target.setData(Target.TAG_STRESS_REFS, stressRefs.toString());
+		
+		assertTrue("Stress is not shared?", stress.isShared());
+		
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Stress.getObjectType());
+		assertTrue("Stress is not shared?", diagramFactor.getWrappedFactor().isShared());
 	}
 }

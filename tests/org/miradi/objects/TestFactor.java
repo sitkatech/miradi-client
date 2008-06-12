@@ -25,12 +25,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Target;
 
 public class TestFactor extends TestCaseWithProject
 {
@@ -110,5 +104,14 @@ public class TestFactor extends TestCaseWithProject
 		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());
 		assertEquals("wrong objectives count?", factor.getObjectiveIds().size(), got.getObjectiveIds().size());
 		assertEquals("wrong objectives?", factor.getObjectiveIds(), got.getObjectiveIds());
+	}
+	
+	public void testIsShared() throws Exception
+	{
+		Target target = getProject().createTarget();
+		assertFalse("Target is shared?", target.isShared());
+		
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		assertTrue("Target is not shared?", diagramFactor.getWrappedFactor().isShared());
 	}
 }
