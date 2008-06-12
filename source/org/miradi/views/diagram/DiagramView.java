@@ -76,6 +76,7 @@ import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionCreateIncomingJunction;
+import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
@@ -107,6 +108,7 @@ import org.miradi.actions.ActionShowConceptualModel;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
+import org.miradi.actions.ActionShowStressBubble;
 import org.miradi.actions.ActionSlideShowViewer;
 import org.miradi.actions.ActionToggleSlideShowPanel;
 import org.miradi.actions.ActionZoomIn;
@@ -171,6 +173,8 @@ import org.miradi.views.diagram.doers.PasteFactorContentDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
+import org.miradi.views.diagram.doers.hideStressBubbleDoer;
+import org.miradi.views.diagram.doers.showStressBubbleDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
@@ -372,6 +376,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
+		
+		addDoerToMap(ActionShowStressBubble.class, new showStressBubbleDoer());
+		addDoerToMap(ActionHideStressBubble.class, new hideStressBubbleDoer());
 	}
 	
 	public void tabWasSelected()
