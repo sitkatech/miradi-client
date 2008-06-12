@@ -40,7 +40,7 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 		return true;
 	}
 	
-	protected void doWork(BaseObject annotationToDelete) throws Exception
+	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
 	{
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		ORefList diagramFactoRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());

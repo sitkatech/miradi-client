@@ -69,7 +69,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			BaseObject annotationToDelete = getObjects()[0];
 			BaseObject selectedFactor = getParent(annotationToDelete);
 
-			doWork(annotationToDelete);
+			doWorkBeforeDelete(annotationToDelete);
 			deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 		}
 		catch (Exception e)
@@ -80,7 +80,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 	}
 
-	protected void doWork(BaseObject annotationToDelete) throws Exception
+	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
 	{
 	}
 
