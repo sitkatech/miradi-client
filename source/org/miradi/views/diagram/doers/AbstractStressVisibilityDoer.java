@@ -19,6 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -28,6 +32,41 @@ import org.miradi.views.ObjectsDoer;
 
 public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if (!isInDiagram())
+			throw new RuntimeException("Added doer to wrong view");
+		
+		ORef selectedStressRef = getSelectedStress();
+		if (selectedStressRef.isInvalid())
+			return false;
+		
+		return isAvailable(selectedStressRef);
+	}
+	
+	@Override
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+		
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			doWork();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+	
 	protected ORef getSelectedStress()
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
@@ -53,4 +92,8 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 		ORefList diagramFactorReferrers = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		return diagramFactorReferrers;
 	}
+	
+	abstract protected boolean isAvailable(ORef selectedStressRef);
+	
+	abstract protected void doWork() throws Exception;
 }
