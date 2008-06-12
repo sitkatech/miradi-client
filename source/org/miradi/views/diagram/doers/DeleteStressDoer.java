@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.diagram.DiagramModel;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
@@ -35,6 +38,13 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 			return false;
 		
 		return true;
+	}
+	
+	protected void doWork(BaseObject annotationToDelete) throws Exception
+	{
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
+		ORefList diagramFactoRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		hideStressBubbleDoer.hideDiagramFactors(diagramModel, diagramFactoRefs);
 	}
 	
 	protected BaseObject getParent(BaseObject annotationToDelete)
