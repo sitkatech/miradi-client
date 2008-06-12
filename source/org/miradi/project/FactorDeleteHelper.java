@@ -71,7 +71,7 @@ public class FactorDeleteHelper
 		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactorToDelete);
 				
-		if (! canDeleteFactor(underlyingFactor))
+		if (underlyingFactor.isShared())
 			return;
 
 		deleteAnnotations(underlyingFactor);
@@ -103,16 +103,6 @@ public class FactorDeleteHelper
 			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
 			getProject().executeCommand(setDirectThreat);
 		}
-	}
-
-	private boolean canDeleteFactor(Factor factorToDelete)
-	{
-		ObjectManager objectManager = getProject().getObjectManager();
-		ORefList referrers = factorToDelete.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_FACTOR, factorToDelete.getRef());
-		if (referrers.size() > 0)
-			return false;
-		
-		return true;
 	}
 
 	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException

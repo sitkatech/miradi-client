@@ -23,6 +23,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -59,6 +60,18 @@ public class Stress extends Factor
 	public boolean isStress()
 	{
 		return true;
+	}
+	
+	@Override
+	public boolean isShared()
+	{
+		boolean isSuperShared = super.isShared();
+		if (isSuperShared)
+			return true;
+		
+		ORefList referrers = findObjectsThatReferToUs(getObjectManager(), Target.getObjectType(), getRef());
+		
+		return referrers.size() > 0;
 	}
 	
 	public String getTypeName()

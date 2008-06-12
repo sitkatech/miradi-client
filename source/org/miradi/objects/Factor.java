@@ -285,6 +285,13 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
+	public boolean isShared()
+	{
+		ORefList referrers = findObjectsThatReferToUs(getObjectManager(), ObjectType.DIAGRAM_FACTOR, getRef());
+		
+		return referrers.size() > 0;
+	}
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject superJson = super.toJson();
