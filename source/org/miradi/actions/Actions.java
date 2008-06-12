@@ -409,6 +409,8 @@ public class Actions
 		registerAction(new ActionDeleteLegacyTncStrategyRanking(mainWindow));
 		registerAction(new ActionActivityMoveUp(mainWindow));
 		registerAction(new ActionActivityMoveDown(mainWindow));
+		registerAction(new ActionShowStressBubble(mainWindow));
+		registerAction(new ActionHideStressBubble(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
