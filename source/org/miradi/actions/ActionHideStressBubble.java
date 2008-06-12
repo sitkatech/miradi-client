@@ -31,11 +31,11 @@ public class ActionHideStressBubble extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Hide Stress Bubble");
+		return EAM.text("Action|Hide Stress on this page");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Hide Stress Bubble");
+		return EAM.text("TT|Hide this Stress so it no longer appears on this Conceptual Model page");
 	}
 }
