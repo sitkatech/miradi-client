@@ -21,27 +21,23 @@ package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.ids.BaseId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 
-public class StressPropertiesPanel extends ObjectDataInputPanel
+public class StressCommentsSubPanel extends ObjectDataInputPanel
 {
-	public StressPropertiesPanel(Project projectToUse) throws Exception
+	public StressCommentsSubPanel(Project projectToUse) throws Exception
 	{
 		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
-	
-		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(projectToUse));
-
-		addSubPanelWithTitledBorder(new StressCommentsSubPanel(projectToUse));
 		
+		addField(createMultilineField(Stress.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Stress Properties");
+		return EAM.text("Title|Stress Comments");
 	}
 }

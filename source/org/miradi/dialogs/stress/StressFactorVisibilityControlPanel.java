@@ -19,29 +19,32 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.stress;
 
+import org.miradi.actions.ActionHideStressBubble;
+import org.miradi.actions.ActionShowStressBubble;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.ids.BaseId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
+import org.miradi.utils.ObjectsActionButton;
 
-public class StressPropertiesPanel extends ObjectDataInputPanel
+public class StressFactorVisibilityControlPanel extends ObjectDataInputPanel
 {
-	public StressPropertiesPanel(Project projectToUse) throws Exception
+	public StressFactorVisibilityControlPanel(MainWindow mainWindow) throws Exception
 	{
-		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
-	
-		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(projectToUse));
-
-		addSubPanelWithTitledBorder(new StressCommentsSubPanel(projectToUse));
+		super(mainWindow.getProject(), ObjectType.STRESS, BaseId.INVALID);
+		
+		ObjectsActionButton showStressBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionShowStressBubble.class), getPicker());
+		add(showStressBubble);
+		
+		ObjectsActionButton hideStressBubble = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionHideStressBubble.class), getPicker());
+		add(hideStressBubble);
 		
 		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Stress Properties");
+		return EAM.text("Title|Stress Visibility");
 	}
 }
