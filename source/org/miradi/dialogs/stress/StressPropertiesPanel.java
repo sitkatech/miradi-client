@@ -34,7 +34,7 @@ public class StressPropertiesPanel extends ObjectDataInputPanel
 	
 		setLayout(new OneColumnGridLayout());
 		addSubPanelWithTitledBorder(new StressDetailsSubPanel(getProject()));
-
+		addSubPanelWithTitledBorder(new StressFactorVisibilityControlPanel(mainWindow));
 		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));
 		
 		updateFieldsFromProject();
