@@ -31,11 +31,11 @@ public class ActionShowStressBubble extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Show Stress Bubble");
+		return EAM.text("Action|Show Stress on this page");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show Stress Bubble");
+		return EAM.text("TT|Show this Stress so it appears on this Conceptual Model page");
 	}
 }
