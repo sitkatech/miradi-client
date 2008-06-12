@@ -69,7 +69,13 @@ public class FactorCommandHelper
 	
 	public CommandCreateObject createDiagramFactor(DiagramObject diagramObjectToUse, int objectType, FactorId factorId) throws Exception
 	{
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(new ORef(objectType, factorId));
+		ORef factorRef = new ORef(objectType, factorId);
+		return createDiagramFactor(diagramObjectToUse, factorRef);
+	}
+
+	public CommandCreateObject createDiagramFactor(DiagramObject diagramObjectToUse, ORef factorRef) throws Exception
+	{
+		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactor);
 		
@@ -77,7 +83,7 @@ public class FactorCommandHelper
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
 		
-		Factor factor = project.findNode(factorId);
+		Factor factor = Factor.findFactor(getProject(), factorRef);
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
