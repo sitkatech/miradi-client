@@ -42,10 +42,11 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Target;
+import org.miradi.objects.TextBox;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.views.umbrella.StaticPicker;
 
@@ -94,14 +95,6 @@ public class PropertiesDoer extends LocationDoer
 		{
 			throw new CommandFailedException(e);
 		}
-	}
-	
-	private boolean isTextBoxFactor(DiagramFactor selected)
-	{
-		if (selected.getWrappedType() == ObjectType.TEXT_BOX)
-			return true;
-		
-		return false;
 	}
 	
 	class ScopePropertiesDialog extends ModelessDialogWithClose
@@ -195,13 +188,20 @@ public class PropertiesDoer extends LocationDoer
 
 	public void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
 	{
-		DiagramView view = (DiagramView)getView();
-		if (isTextBoxFactor(diagramFactor))
+		int wrappedType = diagramFactor.getWrappedType();
+		
+		if (TextBox.is(wrappedType))
 			doTextBoxProperties(diagramFactor);
-		else if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
+		else if (GroupBox.is(wrappedType))
 			doGroupBoxProperties(diagramFactor);
 		else
-			view.showNodeProperties(diagramFactor, tabToStartOn);
+			doNormalFactorProperties(diagramFactor, tabToStartOn);
+	}
+
+	private void doNormalFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
+	{
+		DiagramView view = (DiagramView)getView();
+		view.showNodeProperties(diagramFactor, tabToStartOn);
 	}
 	
 	private void doTextBoxProperties(DiagramFactor diagramFactor)
