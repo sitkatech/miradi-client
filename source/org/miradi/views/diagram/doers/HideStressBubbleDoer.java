@@ -48,12 +48,12 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 		getProject().executeCommandsWithoutTransaction(commandsToHideStressBubble);
 	}
 
-	private Vector<Command> hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorReferrerRefs) throws Exception
+	private Vector<Command> hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorRefs) throws Exception
 	{
 		Vector<Command> commandsToHide = new Vector();
-		for (int refIndex = 0; refIndex < diagramFactorReferrerRefs.size(); ++refIndex)
+		for (int refIndex = 0; refIndex < diagramFactorRefs.size(); ++refIndex)
 		{
-			ORef diagramFactorRef = diagramFactorReferrerRefs.get(refIndex);
+			ORef diagramFactorRef = diagramFactorRefs.get(refIndex);
 			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
 			{
 				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
