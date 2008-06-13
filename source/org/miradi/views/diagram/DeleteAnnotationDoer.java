@@ -60,15 +60,19 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 	
+		String[] buttons = {"Delete", "Retain", };
+		String[] dialogText = getDialogText();
+		if(!EAM.confirmDialog("Delete", dialogText, buttons))
+			return;
+	
 		try
 		{
 			String tag = getAnnotationIdListTag();
-			String[] dialogText = getDialogText();
 			BaseObject annotationToDelete = getObjects()[0];
 			BaseObject selectedFactor = getParent(annotationToDelete);
 
 			doWorkBeforeDelete(annotationToDelete);
-			deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
+			deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag);
 		}
 		catch (Exception e)
 		{
@@ -87,12 +91,8 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return annotationToDelete.getOwner();
 	}
 
-	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws CommandFailedException
 	{
-		String[] buttons = {"Delete", "Retain", };
-		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
-			return;
-	
 		try
 		{
 			Command[] commands = buildCommandsToAnnotation(project, owner, annotationIdListTag, annotationToDelete);
