@@ -21,9 +21,11 @@ package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.ids.FactorId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TextBox extends Factor
@@ -72,6 +74,26 @@ public class TextBox extends Factor
 	public ORefList getOwnedObjects(int objectType)
 	{
 		return new ORefList();
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static GroupBox find(ObjectManager objectManager, ORef groupBoxRef)
+	{
+		return (GroupBox) objectManager.findObject(groupBoxRef);
+	}
+	
+	public static GroupBox find(Project project, ORef groupBoxRef)
+	{
+		return find(project.getObjectManager(), groupBoxRef);
 	}
 	
 	public static final String OBJECT_NAME = "TextBox";
