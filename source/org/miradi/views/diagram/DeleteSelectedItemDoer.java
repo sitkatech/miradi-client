@@ -134,7 +134,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	{
 		Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 		Vector<DiagramLink> diagramLinksWithGroupBoxes = getDiagramLinksAndGroupboxChildrenLinks(diagramLinks);
-		Vector diagramNames = getDiagramNamesAffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactors(selectedRelatedCells));
+		Vector diagramNames = getDiagramNamesAffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactorsRefs(selectedRelatedCells));
 		if (diagramNames.size() <= 1)
 			return true;
 
@@ -218,7 +218,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return diagramFactors;
 	}
 	
-	private ORefList extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
+	private ORefList extractDiagramFactorsRefs(EAMGraphCell[] selectedRelatedCells)
 	{
 		ORefList diagramFactorRefList = new ORefList();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
