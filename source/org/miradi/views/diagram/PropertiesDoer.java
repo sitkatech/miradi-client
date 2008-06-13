@@ -186,14 +186,14 @@ public class PropertiesDoer extends LocationDoer
 		return FactorLinkPropertiesPanel.createTargetLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
 	}
 	
-	void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
+	private void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
 	{
 		int tabToStartOn = getTabToStartOn(selectedFactorCell, at);
 		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
 		doFactorProperties(diagramFactor, tabToStartOn);
 	}
 
-	void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
+	public void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
 	{
 		DiagramView view = (DiagramView)getView();
 		if (isTextBoxFactor(diagramFactor))
