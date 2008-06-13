@@ -26,7 +26,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.FactorDeleteHelper;
 
-public class hideStressBubbleDoer extends AbstractStressVisibilityDoer
+public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
 	protected boolean isAvailable(ORef selectedStressRef)
 	{

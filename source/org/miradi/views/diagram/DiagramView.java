@@ -173,7 +173,7 @@ import org.miradi.views.diagram.doers.PasteFactorContentDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
-import org.miradi.views.diagram.doers.hideStressBubbleDoer;
+import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 import org.miradi.views.diagram.doers.showStressBubbleDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
@@ -378,7 +378,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
 		
 		addDoerToMap(ActionShowStressBubble.class, new showStressBubbleDoer());
-		addDoerToMap(ActionHideStressBubble.class, new hideStressBubbleDoer());
+		addDoerToMap(ActionHideStressBubble.class, new HideStressBubbleDoer());
 	}
 	
 	public void tabWasSelected()
