@@ -79,10 +79,12 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
@@ -100,7 +102,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		try
 		{
 			node = (FactorCell)view.getCell();
-			DiagramModel model = (DiagramModel)graphToUse.getModel();
+			DiagramComponent diagram = (DiagramComponent)graphToUse;
+			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
 			if(node.isDirectThreat())
@@ -122,7 +125,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 			
-			DiagramComponent diagram = (DiagramComponent)graph;
 			isAliased = shouldMarkAsShared(model);
 			isOwnedByGroup = node.getDiagramFactor().isCoveredByGroupBox();
 			
@@ -166,6 +168,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 						goalsText = "" + goalIds.size() + " " + EAM.text("Goals");
 				}
 			}
+			
+			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, node);
 		}
 		catch (Exception e)
 		{
@@ -175,6 +179,42 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 	
+	private boolean checkIfRelatedToSelectedFactor(DiagramComponent diagram, FactorCell thisCell)
+	{
+		Factor underlyingFactor = thisCell.getUnderlyingObject();
+		
+		if(thisCell.isStress())
+			return checkIfOwningTargetIsSelected(diagram, (Stress)underlyingFactor);
+		
+		if(thisCell.isTarget())
+			return checkIfOwnedStressIsSelected(diagram, (Target)underlyingFactor);
+		return false;
+	}
+
+	private boolean checkIfOwningTargetIsSelected(DiagramComponent diagram, Stress stress)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, stress.findObjectsThatReferToUs(Target.getObjectType()));
+	}
+
+	private boolean checkIfOwnedStressIsSelected(DiagramComponent diagram, Target target)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, target.getStressRefs());
+	}
+
+	private boolean areAnyOfTheseFactorsSelected(DiagramComponent diagram, ORefList relatedRefs)
+	{
+		EAMGraphCell[] selectedCells = diagram.getSelectedAndRelatedCells();
+		for(int i = 0; i < selectedCells.length; i++)
+		{
+			if(!selectedCells[i].isFactor())
+				continue;
+			FactorCell cell = (FactorCell)selectedCells[i];
+			if(relatedRefs.contains(cell.getWrappedORef()))
+				return true;
+		}
+		return false;
+	}
+
 	private boolean shouldMarkAsShared(DiagramModel model)
 	{
 		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(node.getDiagramFactor());
@@ -308,11 +348,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		if(!selected)
 		{
+			if(isRelatedToSelectedFactor)
+				return getRelatedIsSelectedStroke();
 			if(isOwnedByGroup)
 				return getGroupMemberStroke();
 		}
 
 		return super.getStroke();
+	}
+
+	private Stroke getRelatedIsSelectedStroke()
+	{
+		return new BasicStroke(getSelectedStrokeWidth(), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
 	}
 
 	private Stroke getGroupMemberStroke()
@@ -385,4 +432,5 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	boolean stragetyInResultsChain;
 	boolean isAliased;
 	boolean isOwnedByGroup;
+	private boolean isRelatedToSelectedFactor;
 }
