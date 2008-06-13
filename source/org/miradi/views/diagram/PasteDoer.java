@@ -42,7 +42,7 @@ public class PasteDoer extends AbstractPasteDoer
 			if (list == null)
 				return;
 		
-			if (isPastingInSameDiagramAsCopiedFrom(list) && hasStresses(list))
+			if (isPastingInSameDiagramAsCopiedFrom(list) && hasOnlyDiagramWrappedStresses(list))
 			{
 				EAM.notifyDialog(EAM.text("<HTML>Stresses cannot be pasted in same diagram copied from<BR><BR></HTML>"));
 				return;
@@ -102,16 +102,23 @@ public class PasteDoer extends AbstractPasteDoer
 		return EAM.choiceDialog(title, body, buttons);
 	}
 
-	private boolean hasStresses(TransferableMiradiList list) throws Exception
-	{
+	private boolean hasOnlyDiagramWrappedStresses(TransferableMiradiList list) throws Exception
+	{	
 		ORefList factorRefs = list.getFactorRefs();
+		ORefList diagramFactorWrappedStressRefs = extractDiagramFactorWrappedStress(factorRefs);
+		return factorRefs.size() == diagramFactorWrappedStressRefs.size();
+	}
+	
+	private ORefList extractDiagramFactorWrappedStress(ORefList factorRefs) throws Exception
+	{
+		ORefList diagramFactorWrappedStress = new ORefList();
 		for (int index = 0; index < factorRefs.size(); ++index)
 		{
 			if (isDiagramFactorWrappedStress(factorRefs.get(index)))
-				return true;
+				diagramFactorWrappedStress.add(factorRefs.get(index));
 		}
 		
-		return false;
+		return diagramFactorWrappedStress;
 	}
 
 	private boolean isDiagramFactorWrappedStress(ORef stressRef)
@@ -123,7 +130,7 @@ public class PasteDoer extends AbstractPasteDoer
 		ORefList diagramFactorReferrers = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		return diagramFactorReferrers.size() > 0;
 	}
-
+	
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
 	{
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
