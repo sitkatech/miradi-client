@@ -23,7 +23,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.FactorCommandHelper;
 
-public class showStressBubbleDoer extends AbstractStressVisibilityDoer
+public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 {
 	protected boolean isAvailable(ORef selectedStressRef)
 	{
