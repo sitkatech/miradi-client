@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.util.Vector;
+
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
@@ -106,35 +108,23 @@ public class DiagramObjectDeleteHelper
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		LinkDeletor linkDeletor = new LinkDeletor(project);
 		
-		ORefList allFactors = getAllFactorsToBeDeleted(model);
+		Vector<DiagramFactor> allDiagramFactors = model.getAllDiagramFactors();
 		for (int i = 0; i < allDiagramLinks.length; i++)	
 		{ 
-			deletDiagramLink(linkDeletor, allFactors, allDiagramLinks[i]);
+			deletDiagramLink(linkDeletor, allDiagramFactors, allDiagramLinks[i]);
 		}
 	}
 
-	private void deletDiagramLink(LinkDeletor linkDeletor, ORefList allFactors, DiagramLink diagramLink) throws Exception
+	private void deletDiagramLink(LinkDeletor linkDeletor, Vector<DiagramFactor> allDiagramFactors, DiagramLink diagramLink) throws Exception
 	{
 		DiagramLink found = DiagramLink.find(project, diagramLink.getRef());
 		if (found == null)
 			return;
 		
 		if (diagramLink.isGroupBoxLink())
-			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(allFactors, diagramLink);
+			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(allDiagramFactors, diagramLink);
 		else
-			linkDeletor.deleteFactorLinkAndDiagramLink(allFactors, diagramLink);
-	}
-
-	private ORefList getAllFactorsToBeDeleted(DiagramModel model)
-	{
-		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
-		ORefList factorRefs = new ORefList();
-		for (int i = 0 ; i < allDiagramFactors.length; ++i)
-		{
-			factorRefs.add(allDiagramFactors[i].getWrappedORef());
-		}
-		
-		return factorRefs;
+			linkDeletor.deleteFactorLinkAndDiagramLink(allDiagramFactors, diagramLink);
 	}
 	
 	private Project project;

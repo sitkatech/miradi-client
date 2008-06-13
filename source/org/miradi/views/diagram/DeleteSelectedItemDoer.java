@@ -65,10 +65,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		try
 		{			
 			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
-			ORefList factorRefsAboutToBeDeleted = extractWrappedFactors(diagramFactors);
 			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
 			
-			deleteSelectedLinks(diagramLinks, factorRefsAboutToBeDeleted);
+			deleteSelectedLinks(diagramLinks, diagramFactors);
 			deleteSelectedFactors(selectedRelatedCells);
 		}
 		catch (Exception e)
@@ -81,18 +80,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	//FIXME this method will go away as soon as the deleteLink method takes a diagramFactor list instead of wrappedFactorList
-	private ORefList extractWrappedFactors(Vector<DiagramFactor> diagramFactors)
-	{
-		ORefList factorRefs = new ORefList();
-		for (int i = 0; i < diagramFactors.size(); ++i)
-		{
-			factorRefs.add(diagramFactors.get(i).getWrappedORef());
-		}
-		
-		return factorRefs;
-	}
-
 	private void deleteSelectedFactors(EAMGraphCell[] selectedRelatedCells) throws Exception
 	{
 		for(int i = 0; i < selectedRelatedCells.length; ++i)
@@ -101,11 +88,11 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private void deleteSelectedLinks(Vector<DiagramLink> diagramLinks, ORefList factorRefsAboutToBeDeleted) throws Exception
+	private void deleteSelectedLinks(Vector<DiagramLink> diagramLinks, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
 	{
 		for(int i = 0; i < diagramLinks.size(); ++i)
 		{
-			deleteLink(diagramLinks.get(i), factorRefsAboutToBeDeleted);
+			deleteLink(diagramLinks.get(i), diagramFactorsAboutToBeDeleted);
 		}
 	}
 
@@ -119,7 +106,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		new FactorDeleteHelper(model).deleteFactor(factorCell.getDiagramFactor());
 	}
 
-	private void deleteLink(DiagramLink diagramLink, ORefList factorRefsAboutToBeDeleted) throws Exception
+	private void deleteLink(DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
 	{
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
@@ -128,9 +115,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		if (diagramLink.isGroupBoxLink())
-			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(factorRefsAboutToBeDeleted, diagramLink);
+			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(diagramFactorsAboutToBeDeleted, diagramLink);
 		else
-			linkDeletor.deleteFactorLinkAndDiagramLink(factorRefsAboutToBeDeleted, diagramLink);
+			linkDeletor.deleteFactorLinkAndDiagramLink(diagramFactorsAboutToBeDeleted, diagramLink);
 	}	
 
 	private boolean confirmIfReferringLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)

@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import java.util.Vector;
+
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -29,6 +31,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
@@ -72,7 +75,7 @@ public class LinkDeletor
 		}
 	}
 	
-	public void deleteFactorLinkAndDiagramLink(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	public void deleteFactorLinkAndDiagramLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		deleteDiagramLink(diagramLink);
@@ -82,13 +85,13 @@ public class LinkDeletor
 			return;
 		}
 		
-		if (!isToOrFromFactorBeingDeleted(factorsAboutToBeDeleted, factorLink))
+		if (!isToOrFromFactorBeingDeleted(diagramFactorsAboutToBeDeleted, factorLink))
 			deleteAllReferrerDiagramLinks(factorLink);
 
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
 
-	public void deleteFactorLinksAndGroupBoxDiagramLinks(ORefList factorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	public void deleteFactorLinksAndGroupBoxDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
 		deleteDiagramLink(diagramLink);
@@ -96,7 +99,7 @@ public class LinkDeletor
 		for (int i = 0; i < groupBoxLinkChildRefs.size(); ++i)
 		{
 			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
-			deleteFactorLinkAndDiagramLink(factorsAboutToBeDeleted, childDiagramLink);
+			deleteFactorLinkAndDiagramLink(diagramFactorsAboutToBeDeleted, childDiagramLink);
 		}
 	}
 	
@@ -186,11 +189,11 @@ public class LinkDeletor
 		project.executeCommand(deleteThreatStressRating);
 	}
 
-	private boolean isToOrFromFactorBeingDeleted(ORefList factorsAboutToBeDeleted, FactorLink factorLink)
+	private boolean isToOrFromFactorBeingDeleted(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, FactorLink factorLink)
 	{
-		for (int i = 0; i < factorsAboutToBeDeleted.size(); ++i)
+		for (int i = 0; i < diagramFactorsAboutToBeDeleted.size(); ++i)
 		{
-			ORef factorRefToBeDeleted = factorsAboutToBeDeleted.get(i);
+			ORef factorRefToBeDeleted = diagramFactorsAboutToBeDeleted.get(i).getWrappedORef();
 			ORef toRef = factorLink.getToFactorRef();
 			ORef fromRef = factorLink.getFromFactorRef();
 			if (toRef.equals(factorRefToBeDeleted) || fromRef.equals(factorRefToBeDeleted))
