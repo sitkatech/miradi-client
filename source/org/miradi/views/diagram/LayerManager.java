@@ -79,6 +79,8 @@ public class LayerManager
 		if (node.isThreatRedectionResult())
 			return areThreatReductionResultsVisible();
 
+		if (node.isStress())
+			return areStressesVisible();
 
 		if(isTypeVisible(node.getClass()))
 			return true;
