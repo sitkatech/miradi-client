@@ -31,6 +31,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
@@ -60,7 +61,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{			
-			ORefList factorRefsAboutToBeDeleted = extractFactors(selectedRelatedCells);
+			Vector<DiagramFactor> diagramFactors = extractFactors(selectedRelatedCells);
+			ORefList factorRefsAboutToBeDeleted = extractWrappedFactors(diagramFactors);
 			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
 			
 			deleteSelectedLinks(diagramLinks, factorRefsAboutToBeDeleted);
@@ -74,6 +76,18 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	//FIXME this method will go away as soon as the deleteLink method takes a diagramFactor list instead of wrappedFactorList
+	private ORefList extractWrappedFactors(Vector<DiagramFactor> diagramFactors)
+	{
+		ORefList factorRefs = new ORefList();
+		for (int i = 0; i < diagramFactors.size(); ++i)
+		{
+			factorRefs.add(diagramFactors.get(i).getWrappedORef());
+		}
+		
+		return factorRefs;
 	}
 
 	private void deleteSelectedFactors(EAMGraphCell[] selectedRelatedCells) throws Exception
@@ -189,20 +203,19 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return diagramLinks;
 	}
 
-	private ORefList extractFactors(EAMGraphCell[] selectedRelatedCells)
+	private Vector<DiagramFactor> extractFactors(EAMGraphCell[] selectedRelatedCells)
 	{
-		ORefList factorRefList = new ORefList();
+		Vector<DiagramFactor> diagramFactors = new Vector();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
-			if (!cell.isFactor())
-				continue;
-			
-			FactorCell factorCell = (FactorCell) cell;
-			factorRefList.add(factorCell.getWrappedORef());
+			if (cell.isFactor())
+			{
+				diagramFactors.add(cell.getDiagramFactor());
+			}
 		}
 		
-		return factorRefList;
+		return diagramFactors;
 	}
 	
 	private ORefList extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
