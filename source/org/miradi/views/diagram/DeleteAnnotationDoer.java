@@ -90,11 +90,11 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 
 	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws Exception
 	{
-		Command[] commands = buildCommandsToAnnotation(project, owner, annotationIdListTag, annotationToDelete);
+		Command[] commands = buildCommandsToDeleteAnnotation(project, owner, annotationIdListTag, annotationToDelete);
 		getProject().executeCommandsAsTransaction(commands);
 	}
 	
-	public static Command[] buildCommandsToAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();	
 		commands.addAll(buildCommandsToDeleteReferrerObjects(project, owner, annotationIdListTag, annotationToDelete));
@@ -181,7 +181,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
 			BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR,  indicatorList.get(i));
-			Command[] deleteCommands = DeleteIndicator.buildCommandsToAnnotation(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
+			Command[] deleteCommands = DeleteIndicator.buildCommandsToDeleteAnnotation(project, kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 			commands.addAll(Arrays.asList(deleteCommands));
 		}
 
