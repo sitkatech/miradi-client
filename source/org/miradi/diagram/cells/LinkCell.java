@@ -120,7 +120,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return link;
 	}
 	
-	public ORef getWrappedORef()
+	public ORef getWrappedFactorLinkRef()
 	{
 		return getFactorLink().getRef();
 	}
