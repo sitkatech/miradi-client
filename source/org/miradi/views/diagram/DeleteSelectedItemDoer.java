@@ -220,16 +220,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	
 	private ORefList extractDiagramFactorsRefs(EAMGraphCell[] selectedRelatedCells)
 	{
-		ORefList diagramFactorRefList = new ORefList();
-		for (int i = 0; i < selectedRelatedCells.length; ++i)
-		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if (!cell.isFactor())
-				continue;
-			
-			FactorCell factorCell = (FactorCell) cell;
-			diagramFactorRefList.add(factorCell.getDiagramFactorRef());
-		}
+		Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
+		ORefList diagramFactorRefList = new ORefList(diagramFactors.toArray(new DiagramFactor[0]));
 		
 		return diagramFactorRefList;
 	}
