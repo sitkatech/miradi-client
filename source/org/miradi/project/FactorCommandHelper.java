@@ -106,9 +106,9 @@ public class FactorCommandHelper
 		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
 	}
 	
-	private void setDiagramFactorSize(DiagramFactorId diagramFactorId, Dimension originalSize) throws CommandFailedException
+	public void setDiagramFactorSize(DiagramFactorId diagramFactorId, Dimension newSize) throws CommandFailedException
 	{
-		String currentSize = EnhancedJsonObject.convertFromDimension(originalSize);
+		String currentSize = EnhancedJsonObject.convertFromDimension(newSize);
 		CommandSetObjectData setSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_SIZE, currentSize);
 		executeCommand(setSizeCommand);
 	}
