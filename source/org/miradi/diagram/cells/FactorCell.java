@@ -191,6 +191,11 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return diagramFactor;
 	}
+	
+	public ORef getWrappedFactorRef()
+	{
+		return ORef.INVALID;
+	}
 
 	public ORef getWrappedORef()
 	{
