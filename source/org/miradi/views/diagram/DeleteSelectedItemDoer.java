@@ -25,7 +25,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -64,7 +63,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{	
-			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
+			Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
 			Vector<DiagramFactor> stressDiagramFactors = extractStressDiagramFactors(diagramFactors);
 			diagramFactors.removeAll(stressDiagramFactors);
@@ -196,33 +195,33 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return diagramNames;
 	}
 
-	private Vector<DiagramLink> extractLinks(EAMGraphCell[] selectedRelatedCells)
+	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
 	{
-		Vector<DiagramLink> diagramLinks = new Vector();
-		for (int index = 0; index < selectedRelatedCells.length; ++index)
-		{
-			if (selectedRelatedCells[index].isFactorLink())
-			{
-				diagramLinks.add(selectedRelatedCells[index].getDiagramLink());
-			}
-		}
-		
-		return diagramLinks;
+		return extractType(selectedRelatedCells, DiagramLink.getObjectType());	
 	}
 
 	private Vector<DiagramFactor> extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
+	{		
+		return extractType(selectedRelatedCells, DiagramFactor.getObjectType());
+	}
+	
+	private Vector extractType(EAMGraphCell[] selectedRelatedCells, int typeToExtract)
 	{
-		Vector<DiagramFactor> diagramFactors = new Vector();
+		Vector filteredList = new Vector();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
-			if (cell.isFactor())
+			if (cell.getDiagramFactorRef().getObjectType() == typeToExtract)
 			{
-				diagramFactors.add(cell.getDiagramFactor());
+				filteredList.add(cell.getDiagramFactor());
+			}
+			if (cell.getDiagramLinkRef().getObjectType() == typeToExtract)
+			{
+				filteredList.add(cell.getDiagramLink());
 			}
 		}
 		
-		return diagramFactors;
+		return filteredList;
 	}
 	
 	private ORefList extractDiagramFactorsRefs(EAMGraphCell[] selectedRelatedCells)
@@ -255,22 +254,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		for (int i = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			diagramLinks.add(DiagramLink.find(getProject(), diagramLinkRefs.get(i)));
-		}
-		
-		return diagramLinks;
-	}
-	
-	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
-	{
-		Vector<DiagramLink> diagramLinks = new Vector();
-		for (int i = 0; i < selectedRelatedCells.length; ++i)
-		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if (!cell.isFactorLink())
-				continue;
-			
-			LinkCell linkCell = (LinkCell) cell;
-			diagramLinks.add(linkCell.getDiagramLink());
 		}
 		
 		return diagramLinks;
