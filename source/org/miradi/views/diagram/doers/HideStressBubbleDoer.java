@@ -69,7 +69,7 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 		Vector<Command> commandsToHide = new Vector();
 		FactorDeleteHelper helper = new FactorDeleteHelper(diagramObject);
 		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
-		commandsToHide.addAll(helper.buildCommandsToDelteDiagramFactor(diagramFactorToDelete));
+		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
 		
 		return commandsToHide;
 	}

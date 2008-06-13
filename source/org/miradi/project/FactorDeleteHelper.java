@@ -108,11 +108,11 @@ public class FactorDeleteHelper
 
 	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
-		Vector<Command> commandsToDeleteDiagramFactor = buildCommandsToDelteDiagramFactor(diagramFactor);
+		Vector<Command> commandsToDeleteDiagramFactor = buildCommandsToDeleteDiagramFactor(diagramFactor);
 		getProject().executeCommandsWithoutTransaction(commandsToDeleteDiagramFactor);
 	}
 	
-	public Vector<Command> buildCommandsToDelteDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		Vector<Command> deleteDiagramFactorCommands = new Vector();
 		deleteDiagramFactorCommands.addAll(diagramFactor.createCommandsToClearAsList());
