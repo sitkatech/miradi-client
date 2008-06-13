@@ -122,9 +122,15 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
+		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
+	}
+	
+	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
+	{
+		return new Vector<Command>();
 	}
 
 	public static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
