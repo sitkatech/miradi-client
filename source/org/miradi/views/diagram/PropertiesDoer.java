@@ -37,6 +37,7 @@ import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
+import org.miradi.dialogs.stress.StressPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -45,6 +46,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.TextBox;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -179,14 +181,14 @@ public class PropertiesDoer extends LocationDoer
 		return FactorLinkPropertiesPanel.createTargetLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
 	}
 	
-	private void doFactorProperties(FactorCell selectedFactorCell, Point at) throws CommandFailedException
+	private void doFactorProperties(FactorCell selectedFactorCell, Point at) throws Exception
 	{
 		int tabToStartOn = getTabToStartOn(selectedFactorCell, at);
 		DiagramFactor diagramFactor = selectedFactorCell.getDiagramFactor();
 		doFactorProperties(diagramFactor, tabToStartOn);
 	}
 
-	public void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn)
+	public void doFactorProperties(DiagramFactor diagramFactor, int tabToStartOn) throws Exception
 	{
 		int wrappedType = diagramFactor.getWrappedType();
 		
@@ -194,6 +196,8 @@ public class PropertiesDoer extends LocationDoer
 			doTextBoxProperties(diagramFactor);
 		else if (GroupBox.is(wrappedType))
 			doGroupBoxProperties(diagramFactor);
+		else if (Stress.is(wrappedType))
+			doStressProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}
@@ -218,6 +222,18 @@ public class PropertiesDoer extends LocationDoer
 		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 	
+	private void doStressProperties(DiagramFactor diagramFactor) throws Exception
+	{
+		StressPropertiesPanel panel = StressPropertiesPanel.createWithoutVisibilityPanel(getMainWindow());
+
+		ORefList selectedHierarchy = new ORefList(diagramFactor.getRef());
+		selectedHierarchy.add(diagramFactor.getWrappedORef());
+		panel.setObjectRefs(selectedHierarchy);
+
+		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		getView().showFloatingPropertiesDialog(propertiesDialog);
+	}
+
 	// TODO: The tab should probably be computed elsewhere?
 	private int getTabToStartOn(FactorCell factorCell, Point screenPoint)
 	{

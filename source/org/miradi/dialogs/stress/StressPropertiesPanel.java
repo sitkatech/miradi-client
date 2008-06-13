@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.stress;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
@@ -28,13 +29,25 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class StressPropertiesPanel extends ObjectDataInputPanel
 {
-	public StressPropertiesPanel(MainWindow mainWindow) throws Exception
+	public static StressPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
+	{
+		StressFactorVisibilityControlPanel visibilityPanel = new StressFactorVisibilityControlPanel(mainWindow);
+		return new StressPropertiesPanel(mainWindow, visibilityPanel);
+	}
+
+	public static StressPropertiesPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
+	{
+		return new StressPropertiesPanel(mainWindow, null);
+	}
+
+	private StressPropertiesPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.STRESS, BaseId.INVALID);
 	
 		setLayout(new OneColumnGridLayout());
 		addSubPanelWithTitledBorder(new StressDetailsSubPanel(getProject()));
-		addSubPanelWithTitledBorder(new StressFactorVisibilityControlPanel(mainWindow));
+		if(visibilityPanel != null)
+			addSubPanelWithTitledBorder(visibilityPanel);
 		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));
 		
 		updateFieldsFromProject();
