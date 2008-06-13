@@ -27,6 +27,8 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Stress;
 import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
 public class PasteDoer extends AbstractPasteDoer
@@ -39,6 +41,12 @@ public class PasteDoer extends AbstractPasteDoer
 			TransferableMiradiList list = getTransferableMiradiList();
 			if (list == null)
 				return;
+		
+			if (isPastingInSameDiagramAsCopiedFrom(list) && hasStresses(list))
+			{
+				EAM.notifyDialog(EAM.text("<HTML>Stresses cannot be pasted in same diagram copied from<BR><BR></HTML>"));
+				return;
+			}
 			
 			final String usersChoice = getUsersChoice(list);
 			if (usersChoice.equals(CANCEL_BUTTON))
@@ -92,6 +100,28 @@ public class PasteDoer extends AbstractPasteDoer
 								"If you share, any changes will automatically affect all the diagrams.")};
 	
 		return EAM.choiceDialog(title, body, buttons);
+	}
+
+	private boolean hasStresses(TransferableMiradiList list) throws Exception
+	{
+		ORefList factorRefs = list.getFactorRefs();
+		for (int index = 0; index < factorRefs.size(); ++index)
+		{
+			if (isDiagramFactorWrappedStress(factorRefs.get(index)))
+				return true;
+		}
+		
+		return false;
+	}
+
+	private boolean isDiagramFactorWrappedStress(ORef stressRef)
+	{
+		if (!Stress.is(stressRef))
+			return false;
+		
+		Stress stress = Stress.find(getProject(), stressRef);
+		ORefList diagramFactorReferrers = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		return diagramFactorReferrers.size() > 0;
 	}
 
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
