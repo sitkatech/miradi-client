@@ -81,8 +81,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}	
 	}
 
-	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
+	protected Vector<Command> doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
 	{
+		return new Vector();
 	}
 
 	protected BaseObject getParent(BaseObject annotationToDelete)

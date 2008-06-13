@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -41,26 +44,33 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 		ORefList diagramFactorRefsFromCurrentDiagram = diagramModel.getDiagramObject().getAllDiagramFactorRefs();		
 		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
 		
-		hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
+		Vector commandsToHideStressBubble = hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
+		getProject().executeCommandsWithoutTransaction(commandsToHideStressBubble);
 	}
 
-	public static void hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorReferrerRefs) throws Exception
+	private Vector<Command> hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorReferrerRefs) throws Exception
 	{
+		Vector<Command> commandsToHide = new Vector();
 		for (int refIndex = 0; refIndex < diagramFactorReferrerRefs.size(); ++refIndex)
 		{
 			ORef diagramFactorRef = diagramFactorReferrerRefs.get(refIndex);
 			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
 			{
 				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
-				hideDiagramFactor(diagramObject, diagramFactorToDelete);
+				commandsToHide.addAll(createCommandsToHideStressDiagramFactor(diagramObject, diagramFactorToDelete));
 			}
 		}
+		
+		return commandsToHide;
 	}
 
-	public static void hideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	public static Vector<Command> createCommandsToHideStressDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
+		Vector<Command> commandsToHide = new Vector();
 		FactorDeleteHelper helper = new FactorDeleteHelper(diagramObject);
-		helper.removeNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId());
-		helper.deleteDiagramFactor(diagramFactorToDelete);
+		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
+		commandsToHide.addAll(helper.buildCommandsToDelteDiagramFactor(diagramFactorToDelete));
+		
+		return commandsToHide;
 	}
 }

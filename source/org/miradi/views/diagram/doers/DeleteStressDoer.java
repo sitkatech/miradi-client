@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -40,8 +43,9 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 		return true;
 	}
 	
-	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
+	protected Vector<Command> doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
 	{
+		Vector<Command> commandsToHide = new Vector();
 		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
 		{
@@ -50,9 +54,14 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
 			{
 				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRefs.get(diagramRefIndex));
-				HideStressBubbleDoer.hideDiagramFactor(conceptualModel, diagramFactor);
+				commandsToHide.addAll(HideStressBubbleDoer.createCommandsToHideStressDiagramFactor(conceptualModel, diagramFactor));
 			}
 		}
+		
+		//FIXME this is temporarly here,  until the caller to this method is changed in the next commit
+		getProject().executeCommandsWithoutTransaction(commandsToHide);
+		
+		return commandsToHide;
 	}
 	
 	protected BaseObject getParent(BaseObject annotationToDelete)
