@@ -116,16 +116,24 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	public static Command[] buildCommandsToDeleteReferencedObject(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();	
+		commands.addAll(buildCommandsToDeleteReferrerObjects(project, owner, annotationIdListTag, annotationToDelete));
+		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
+		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
+		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
+		
+		return (Command[])commands.toArray(new Command[0]);
+	}
+
+	private static Vector buildCommandsToDeleteReferrerObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
+	{
+		Vector commands = new Vector<Command>();
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
-		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
-		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
-		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
-		return (Command[])commands.toArray(new Command[0]);
+		return commands;
 	}
 	
 	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
