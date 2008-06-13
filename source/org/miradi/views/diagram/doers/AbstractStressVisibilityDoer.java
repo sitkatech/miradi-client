@@ -21,6 +21,8 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -78,6 +80,13 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 		
 		ORefList selectedHierarchy = selectedHierarchies[0];
 		return selectedHierarchy.getRefForType(Stress.getObjectType());
+	}
+
+	protected ORef getSelectedTargetDiagramFactorRef()
+	{
+		DiagramComponent diagram = getDiagramView().getCurrentDiagramPanel().getdiagramComponent();
+		FactorCell cell = diagram.getSingleSelectedFactor();
+		return cell.getDiagramFactorRef();
 	}
 	
 	protected boolean isShowing(ORef stressRef)
