@@ -21,6 +21,7 @@ package org.miradi.diagram;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -704,6 +705,11 @@ public class DiagramModel extends DefaultGraphModel
 	public Vector getAllFactorCells()
 	{
 		return cellInventory.getAllFactors();
+	}
+	
+	public Vector<DiagramFactor> getAllDiagramFactors()
+	{
+		return new Vector(Arrays.asList(getAllDiagramFactorsAsArray()));
 	}
 	
 	public DiagramFactor[] getAllDiagramFactorsAsArray()

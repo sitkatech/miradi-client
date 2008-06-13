@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.util.Vector;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -124,7 +126,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 			{
 				if (diagramLink.isToOrFrom(nonGroupBoxDiagramFactorRefs.get(factorIndex)))
 				{
-					linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new ORefList(), diagramLink);
+					linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new Vector<DiagramFactor>(), diagramLink);
 				}
 			}
 			
