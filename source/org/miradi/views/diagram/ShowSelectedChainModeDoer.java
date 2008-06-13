@@ -126,7 +126,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	{
 		for(int i = 0; i < orphanedDaftStrats.length; ++i)
 		{
-			selectedNodeORefs.add(orphanedDaftStrats[i].getWrappedORef());
+			selectedNodeORefs.add(orphanedDaftStrats[i].getWrappedFactorRef());
 		}
 	}
 
@@ -162,7 +162,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{
 			LinkCell thisLinkCell = linkCells[i];
 			FactorCell otherEnd = getOppositeLinkEnd(thisLinkCell, draftStrategyCell);	
-			if (!isDraft(otherEnd.getWrappedORef()))
+			if (!isDraft(otherEnd.getWrappedFactorRef()))
 				return true;
 		}
 		

@@ -108,7 +108,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			priority = null;
 			if(node.isDirectThreat())
 			{
-				priority = framework.getThreatThreatRatingValue(node.getWrappedORef());
+				priority = framework.getThreatThreatRatingValue(node.getWrappedFactorRef());
 			}
 			if(node.isTarget())
 			{
@@ -209,7 +209,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(!selectedCells[i].isFactor())
 				continue;
 			FactorCell cell = (FactorCell)selectedCells[i];
-			if(relatedRefs.contains(cell.getWrappedORef()))
+			if(relatedRefs.contains(cell.getWrappedFactorRef()))
 				return true;
 		}
 		return false;

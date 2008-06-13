@@ -69,7 +69,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORef selectedFactorRef = getSingleSelectedFactor().getWrappedORef();
+			ORef selectedFactorRef = getSingleSelectedFactor().getWrappedFactorRef();
 			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
 			paster.pasteFactors(getLocation());
 			

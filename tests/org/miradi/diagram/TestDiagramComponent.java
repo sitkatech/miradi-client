@@ -65,10 +65,10 @@ public class TestDiagramComponent extends TestCaseWithProject
 		diagramComponent.setGraphLayoutCache(getProject().getDiagramModel().getGraphLayoutCache());
 		
 		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
-		ORef hiddenRef = hiddenNode.getWrappedORef();
+		ORef hiddenRef = hiddenNode.getWrappedFactorRef();
 
 		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
-		ORef visibleRef = visibleNode.getWrappedORef();
+		ORef visibleRef = visibleNode.getWrappedFactorRef();
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(hiddenRef, visibleRef);
 		BaseId id = getObjectManager().createObject(FactorLink.getObjectType(), new FactorLinkId(100), extraInfo);
