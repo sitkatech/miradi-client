@@ -25,7 +25,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -35,6 +34,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ViewDoer;
 
@@ -63,12 +63,18 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
-		{			
-			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
+		{	
 			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
-			
+			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
+			Vector<DiagramFactor> stressDiagramFactors = extractStressDiagramFactors(diagramFactors);
+			diagramFactors.removeAll(stressDiagramFactors);
+		
 			deleteSelectedLinks(diagramLinks, diagramFactors);
-			deleteSelectedFactors(selectedRelatedCells);
+			deleteSelectedFactors(stressDiagramFactors);
+			
+			Vector<DiagramFactor> diagramFactorsWithoutStresses = new Vector(diagramFactors);
+			diagramFactorsWithoutStresses.removeAll(stressDiagramFactors);
+			deleteSelectedFactors(diagramFactorsWithoutStresses);
 		}
 		catch (Exception e)
 		{
@@ -80,11 +86,26 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private void deleteSelectedFactors(EAMGraphCell[] selectedRelatedCells) throws Exception
+	private Vector<DiagramFactor> extractStressDiagramFactors(Vector<DiagramFactor> diagramFactors)
 	{
-		for(int i = 0; i < selectedRelatedCells.length; ++i)
+		Vector<DiagramFactor> stressDiagramFactors = new Vector();
+		for (int index = 0; index < diagramFactors.size(); ++index)
 		{
-			deleteFactor(selectedRelatedCells[i]);
+			DiagramFactor diagramFactor = diagramFactors.get(index);
+			if (Stress.is(diagramFactor.getWrappedType()))
+			{
+				stressDiagramFactors.add(diagramFactor);
+			}
+		}
+		
+		return stressDiagramFactors;
+	}
+
+	private void deleteSelectedFactors(Vector<DiagramFactor> diagramFactors) throws Exception
+	{
+		for(int i = 0; i < diagramFactors.size(); ++i)
+		{
+			deleteFactor(diagramFactors.get(i));
 		}
 	}
 
@@ -96,14 +117,10 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private void deleteFactor(EAMGraphCell cell) throws Exception
+	private void deleteFactor(DiagramFactor diagramFactor) throws Exception
 	{
-		if(!cell.isFactor())
-			return;
-		
 		DiagramModel model = getDiagramView().getDiagramModel();
-		FactorCell factorCell = (FactorCell)cell;
-		new FactorDeleteHelper(model).deleteFactor(factorCell.getDiagramFactor());
+		new FactorDeleteHelper(model).deleteFactor(diagramFactor);
 	}
 
 	private void deleteLink(DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
