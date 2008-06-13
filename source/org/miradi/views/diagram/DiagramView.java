@@ -174,7 +174,7 @@ import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
-import org.miradi.views.diagram.doers.showStressBubbleDoer;
+import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
@@ -377,7 +377,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
 		
-		addDoerToMap(ActionShowStressBubble.class, new showStressBubbleDoer());
+		addDoerToMap(ActionShowStressBubble.class, new ShowStressBubbleDoer());
 		addDoerToMap(ActionHideStressBubble.class, new HideStressBubbleDoer());
 	}
 	
