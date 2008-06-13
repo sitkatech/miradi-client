@@ -87,10 +87,10 @@ public class PasteDoer extends AbstractPasteDoer
 		if (! atLeastOneClipboardMethodExistsInTargetProject(list))
 			return AS_COPY_BUTTON;
 
-		if (isPastingInSameDiagramAsCopiedFrom(list))
+		if (!isPasteInSameProject(list))
 			return AS_COPY_BUTTON;
 		
-		if (!isPasteInSameProject(list))
+		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
