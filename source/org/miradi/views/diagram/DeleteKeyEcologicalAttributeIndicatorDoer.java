@@ -72,6 +72,6 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcolog
 	{
 		KeyEcologicalAttributeNode  keaNode = (KeyEcologicalAttributeNode)selectedIndicatorNode.getParentNode();
 		BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());
-		return DeleteIndicator.buildCommandsToAnnotation(project, keaNode.getObject(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
+		return DeleteIndicator.buildCommandsToDeleteAnnotation(project, keaNode.getObject(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
 	}
 }

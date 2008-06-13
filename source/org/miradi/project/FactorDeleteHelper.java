@@ -182,7 +182,7 @@ public class FactorDeleteHelper
 		for (int i = 0; i < annotationRefs.size(); ++i)
 		{
 			BaseObject thisAnnotation = getProject().findObject(annotationRefs.get(i));
-			Command[] commands = DeleteAnnotationDoer.buildCommandsToAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
+			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			getProject().executeCommandsWithoutTransaction(commands);
 		}
 	}
