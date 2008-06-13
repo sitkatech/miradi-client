@@ -86,14 +86,14 @@ public class TextBox extends Factor
 		return objectType == getObjectType();
 	}
 	
-	public static GroupBox find(ObjectManager objectManager, ORef groupBoxRef)
+	public static TextBox find(ObjectManager objectManager, ORef objectRef)
 	{
-		return (GroupBox) objectManager.findObject(groupBoxRef);
+		return (TextBox) objectManager.findObject(objectRef);
 	}
 	
-	public static GroupBox find(Project project, ORef groupBoxRef)
+	public static TextBox find(Project project, ORef objectRef)
 	{
-		return find(project.getObjectManager(), groupBoxRef);
+		return find(project.getObjectManager(), objectRef);
 	}
 	
 	public static final String OBJECT_NAME = "TextBox";
