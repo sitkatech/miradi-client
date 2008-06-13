@@ -256,28 +256,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		drawCommentTriangle(g2, new Point(rect.width, 0));
 	}
 	
-	@Override
-	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
-	{
-		Stroke oldStroke = g2.getStroke();
-		try
-		{
-			if(isOwnedByGroup && !selected)
-				g2.setStroke(getOwnedByGroupStroke());
-			super.drawBorder(g2, rect, color);
-		}
-		finally
-		{
-			g2.setStroke(oldStroke);
-		}
-	}
-	
-	public Stroke getOwnedByGroupStroke()
-	{
-		float[] dash = { 5f, 5f };
-		return new BasicStroke(borderThickness + 1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
-	}
-	
 	public static Dimension getSizeWithoutAnnotations(Dimension size)
 	{
 		return new Dimension(size.width, size.height);
@@ -328,10 +306,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	Stroke getStroke()
 	{
-		if(node.getParent() == null)
-			return super.getStroke();
-		
-		float[] dashes = {8.0f, 2.0f};
+		if(!selected)
+		{
+			if(isOwnedByGroup)
+				return getGroupMemberStroke();
+		}
+
+		return super.getStroke();
+	}
+
+	private Stroke getGroupMemberStroke()
+	{
+		float[] dashes = {5.0f, 5.0f};
 		return new BasicStroke(borderThickness, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
 	}
 
