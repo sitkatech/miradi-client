@@ -34,7 +34,7 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 	public StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
 		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
-				new StressPropertiesPanel(mainWindowToUse));
+				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
 	}
 
 	public String getSplitterDescription()
