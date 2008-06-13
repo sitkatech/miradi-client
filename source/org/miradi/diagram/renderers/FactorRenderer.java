@@ -253,13 +253,23 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(stragetyInResultsChain)
 			drawChainIcon(rect, g2);
 		
-		if(isOwnedByGroup && !selected)
-		{
-			g2.setStroke(getOwnedByGroupStroke());
-			drawBorder(g2, rect, Color.BLACK);
-		}
-		
 		drawCommentTriangle(g2, new Point(rect.width, 0));
+	}
+	
+	@Override
+	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
+	{
+		Stroke oldStroke = g2.getStroke();
+		try
+		{
+			if(isOwnedByGroup && !selected)
+				g2.setStroke(getOwnedByGroupStroke());
+			super.drawBorder(g2, rect, color);
+		}
+		finally
+		{
+			g2.setStroke(oldStroke);
+		}
 	}
 	
 	public Stroke getOwnedByGroupStroke()
