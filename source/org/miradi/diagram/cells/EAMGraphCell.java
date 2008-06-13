@@ -22,6 +22,7 @@ package org.miradi.diagram.cells;
 import java.awt.Color;
 
 import org.jgraph.graph.DefaultGraphCell;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 
@@ -54,6 +55,26 @@ public class EAMGraphCell extends DefaultGraphCell
 	public DiagramFactor getDiagramFactor()
 	{
 		return null;
+	}
+	
+	public ORef getDiagramFactorRef()
+	{
+		return ORef.INVALID;
+	}
+	
+	public ORef getWrappedFactorRef()
+	{
+		return ORef.INVALID;
+	}
+	
+	public ORef getDiagramLinkRef()
+	{
+		return ORef.INVALID;
+	}
+	
+	public ORef getWrappedFactorLinkRef()
+	{
+		return ORef.INVALID;
 	}
 	
 	public Color getColor()
