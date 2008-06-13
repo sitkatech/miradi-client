@@ -194,11 +194,6 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public ORef getWrappedFactorRef()
 	{
-		return ORef.INVALID;
-	}
-
-	public ORef getWrappedORef()
-	{
 		return underlyingObject.getRef();
 	}
 

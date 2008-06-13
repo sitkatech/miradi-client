@@ -52,7 +52,7 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramObject diagramObject, FactorCell node)
 	{
-		if(hiddenORefs.contains(node.getWrappedORef()))
+		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();

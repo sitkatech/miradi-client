@@ -672,9 +672,9 @@ public class TestProject extends EAMTestCase
 	{
 		FactorCell nodeA = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
-		ORef refA = nodeA.getWrappedORef();
-		ORef refB = nodeB.getWrappedORef();
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
+		ORef refA = nodeA.getWrappedFactorRef();
+		ORef refB = nodeB.getWrappedFactorRef();
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedFactorRef(), nodeB.getWrappedFactorRef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
@@ -682,11 +682,11 @@ public class TestProject extends EAMTestCase
 		FactorLink cmLinkage = linkagePool.find(linkageId);
 		assertEquals("wrong from?", refA, cmLinkage.getFromFactorRef());
 		assertEquals("wrong to?", refB, cmLinkage.getToFactorRef());
-		assertTrue("not linked?", project.areLinked(nodeA.getWrappedORef(), nodeB.getWrappedORef()));
+		assertTrue("not linked?", project.areLinked(nodeA.getWrappedFactorRef(), nodeB.getWrappedFactorRef()));
 		
 		project.deleteObject(cmLinkage);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
-		assertFalse("still linked?", project.areLinked(nodeA.getWrappedORef(), nodeB.getWrappedORef()));
+		assertFalse("still linked?", project.areLinked(nodeA.getWrappedFactorRef(), nodeB.getWrappedFactorRef()));
 	}
 
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
@@ -739,11 +739,11 @@ public class TestProject extends EAMTestCase
 		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);	
 		
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedORef(), target.getWrappedORef());
+		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedFactorRef(), target.getWrappedFactorRef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter1);
 		
 		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
-		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedORef(), target.getWrappedORef());
+		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedFactorRef(), target.getWrappedFactorRef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
 		
 		FactorSet allNodes = new FactorSet();

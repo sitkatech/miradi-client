@@ -115,8 +115,8 @@ public class TestLayerManager extends EAMTestCase
 		LayerManager manager = new LayerManager();
 		assertTrue("all nodes not visible to start?", manager.areAllNodesVisible());
 		ORefList ORefsToHide = new ORefList();
-		ORefsToHide.add(target.getWrappedORef());
-		ORefsToHide.add(factor.getWrappedORef());
+		ORefsToHide.add(target.getWrappedFactorRef());
+		ORefsToHide.add(factor.getWrappedFactorRef());
 		manager.setHiddenORefs(ORefsToHide);
 		assertFalse("thinks all nodes are visible?", manager.areAllNodesVisible());
 		for(int i = 0; i < ORefsToHide.size(); ++i)
