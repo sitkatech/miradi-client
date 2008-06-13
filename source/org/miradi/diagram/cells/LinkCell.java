@@ -104,6 +104,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		return diagramLink;
 	}
+	
+	public ORef getDiagramLinkRef()
+	{
+		return getDiagramLink().getRef();
+	}
 
 	public FactorCell getFrom()
 	{
