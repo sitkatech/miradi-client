@@ -61,7 +61,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{			
-			Vector<DiagramFactor> diagramFactors = extractFactors(selectedRelatedCells);
+			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
 			ORefList factorRefsAboutToBeDeleted = extractWrappedFactors(diagramFactors);
 			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
 			
@@ -203,7 +203,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return diagramLinks;
 	}
 
-	private Vector<DiagramFactor> extractFactors(EAMGraphCell[] selectedRelatedCells)
+	private Vector<DiagramFactor> extractDiagramFactors(EAMGraphCell[] selectedRelatedCells)
 	{
 		Vector<DiagramFactor> diagramFactors = new Vector();
 		for (int i = 0; i < selectedRelatedCells.length; ++i)
