@@ -78,8 +78,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
-		}
-		
+		}	
 	}
 
 	protected void doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
@@ -91,18 +90,10 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return annotationToDelete.getOwner();
 	}
 
-	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws CommandFailedException
+	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws Exception
 	{
-		try
-		{
-			Command[] commands = buildCommandsToAnnotation(project, owner, annotationIdListTag, annotationToDelete);
-			getProject().executeCommandsAsTransaction(commands);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
+		Command[] commands = buildCommandsToAnnotation(project, owner, annotationIdListTag, annotationToDelete);
+		getProject().executeCommandsAsTransaction(commands);
 	}
 	
 	public static Command[] buildCommandsToAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
