@@ -50,7 +50,7 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
 			{
 				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRefs.get(diagramRefIndex));
-				hideStressBubbleDoer.hideDiagramFactor(conceptualModel, diagramFactor);
+				HideStressBubbleDoer.hideDiagramFactor(conceptualModel, diagramFactor);
 			}
 		}
 	}
