@@ -206,6 +206,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		ObjectOutputStream objectOut = new ObjectOutputStream(out);
 		
 		objectOut.writeInt(diagramObjectRefCopiedFrom.getObjectType());
+		objectOut.writeInt(diagramObjectRefCopiedFrom.getObjectId().asInt());
 		objectOut.writeObject(projectName);
 		objectOut.writeObject(factorDeepCopies);
 		objectOut.writeObject(diagramFactorDeepCopies);
@@ -216,13 +217,13 @@ public class TransferableMiradiList implements Transferable, Serializable
 	
 	private void readObject(java.io.ObjectInputStream in)      throws IOException, ClassNotFoundException
 	{
-		
 		diagramObjectRefCopiedFrom = ORef.INVALID;
 		project = null;
 		ObjectInputStream objectIn = new ObjectInputStream(in);
 				
 		int diagramType = objectIn.readInt();
-		diagramObjectRefCopiedFrom =  new ORef(diagramType, BaseId.INVALID);
+		int diagramId = objectIn.readInt();
+		diagramObjectRefCopiedFrom =  new ORef(diagramType, new BaseId(diagramId)); 
 		
 		projectName = (String) objectIn.readObject();
 		factorDeepCopies = (Vector) objectIn.readObject();
