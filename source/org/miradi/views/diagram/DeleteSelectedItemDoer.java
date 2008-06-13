@@ -54,6 +54,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		if (!isAvailable())
+			return;
+		
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		if (! confirmIfReferringLinksBeingDeleted(selectedRelatedCells))
 			return;
