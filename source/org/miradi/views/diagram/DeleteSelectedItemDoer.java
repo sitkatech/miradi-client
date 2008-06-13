@@ -60,7 +60,10 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{			
-			deleteSelectedLinks(selectedRelatedCells);
+			ORefList factorRefsAboutToBeDeleted = extractFactors(selectedRelatedCells);
+			Vector<DiagramLink> diagramLinks = extractLinks(selectedRelatedCells);
+			
+			deleteSelectedLinks(diagramLinks, factorRefsAboutToBeDeleted);
 			deleteSelectedFactors(selectedRelatedCells);
 		}
 		catch (Exception e)
@@ -81,12 +84,11 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private void deleteSelectedLinks(EAMGraphCell[] selectedRelatedCells) throws Exception
+	private void deleteSelectedLinks(Vector<DiagramLink> diagramLinks, ORefList factorRefsAboutToBeDeleted) throws Exception
 	{
-		ORefList factorRefsAboutToBeDeleted = extractFactors(selectedRelatedCells);
-		for(int i = 0; i < selectedRelatedCells.length; ++i)
+		for(int i = 0; i < diagramLinks.size(); ++i)
 		{
-			deleteLink(selectedRelatedCells[i], factorRefsAboutToBeDeleted);
+			deleteLink(diagramLinks.get(i), factorRefsAboutToBeDeleted);
 		}
 	}
 
@@ -100,15 +102,12 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		new FactorDeleteHelper(model).deleteFactor(factorCell.getDiagramFactor());
 	}
 
-	private void deleteLink(EAMGraphCell cell, ORefList factorRefsAboutToBeDeleted) throws Exception
+	private void deleteLink(DiagramLink diagramLink, ORefList factorRefsAboutToBeDeleted) throws Exception
 	{
-		if(!cell.isFactorLink())
-			return;
-		
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
-		DiagramLink diagramLink = cell.getDiagramLink();
 		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
-		if (found == null)
+		boolean wasAlreadyDeletedAsResultOfGroupBoxLinkDelete = (found == null);
+		if (wasAlreadyDeletedAsResultOfGroupBoxLinkDelete)
 			return;
 		
 		if (diagramLink.isGroupBoxLink())
@@ -174,6 +173,20 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 		
 		return diagramNames;
+	}
+
+	private Vector<DiagramLink> extractLinks(EAMGraphCell[] selectedRelatedCells)
+	{
+		Vector<DiagramLink> diagramLinks = new Vector();
+		for (int index = 0; index < selectedRelatedCells.length; ++index)
+		{
+			if (selectedRelatedCells[index].isFactorLink())
+			{
+				diagramLinks.add(selectedRelatedCells[index].getDiagramLink());
+			}
+		}
+		
+		return diagramLinks;
 	}
 
 	private ORefList extractFactors(EAMGraphCell[] selectedRelatedCells)
