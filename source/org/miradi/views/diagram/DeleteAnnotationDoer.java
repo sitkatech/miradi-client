@@ -36,6 +36,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -47,6 +49,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 
 public abstract class DeleteAnnotationDoer extends ObjectsDoer
 {
@@ -71,7 +74,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			BaseObject annotationToDelete = getObjects()[0];
 			BaseObject selectedFactor = getParent(annotationToDelete);
 
-			doWorkBeforeDelete(annotationToDelete);
 			deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag);
 		}
 		catch (Exception e)
@@ -79,11 +81,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}	
-	}
-
-	protected Vector<Command> doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
-	{
-		return new Vector();
 	}
 
 	protected BaseObject getParent(BaseObject annotationToDelete)
@@ -122,9 +119,33 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
 	{
-		return new Vector<Command>();
+		Vector<Command> vector = new Vector<Command>();
+		vector.addAll(createCommandsToDeleteStressDiagramFactorReferrers(project, annotationToDelete));
+		
+		return vector;
 	}
 
+	private static Vector<Command> createCommandsToDeleteStressDiagramFactorReferrers(Project project, BaseObject annotationToDelete) throws Exception
+	{
+		if (!Stress.is(annotationToDelete.getType()))
+			return new Vector();
+		
+		Vector<Command> commandsToHide = new Vector();
+		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
+			ORefList conceptualModelRefs = diagramFactor.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
+			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
+			{
+				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(project, conceptualModelRefs.get(diagramRefIndex));
+				commandsToHide.addAll(HideStressBubbleDoer.createCommandsToHideStressDiagramFactor(conceptualModel, diagramFactor));
+			}
+		}
+		
+		return commandsToHide;
+	}
+		
 	public static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
 	{
 		ObjectData objectData = owner.getField(annotationIdListTag);

@@ -19,13 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.util.Vector;
-
-import org.miradi.commands.Command;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
@@ -41,27 +35,6 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 			return false;
 		
 		return true;
-	}
-	
-	protected Vector<Command> doWorkBeforeDelete(BaseObject annotationToDelete) throws Exception
-	{
-		Vector<Command> commandsToHide = new Vector();
-		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		for (int index = 0; index < diagramFactorRefs.size(); ++index)
-		{
-			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(index));
-			ORefList conceptualModelRefs = diagramFactor.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
-			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
-			{
-				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRefs.get(diagramRefIndex));
-				commandsToHide.addAll(HideStressBubbleDoer.createCommandsToHideStressDiagramFactor(conceptualModel, diagramFactor));
-			}
-		}
-		
-		//FIXME this is temporarly here,  until the caller to this method is changed in the next commit
-		getProject().executeCommandsWithoutTransaction(commandsToHide);
-		
-		return commandsToHide;
 	}
 	
 	protected BaseObject getParent(BaseObject annotationToDelete)
