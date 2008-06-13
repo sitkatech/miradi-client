@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
@@ -105,13 +106,19 @@ public class FactorDeleteHelper
 		}
 	}
 
-	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws CommandFailedException
+	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
-		Command[] commandsToClear = diagramFactor.createCommandsToClear();
-		getProject().executeCommandsWithoutTransaction(commandsToClear);
+		Vector<Command> commandsToDeleteDiagramFactor = buildCommandsToDelteDiagramFactor(diagramFactor);
+		getProject().executeCommandsWithoutTransaction(commandsToDeleteDiagramFactor);
+	}
+	
+	public Vector<Command> buildCommandsToDelteDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	{
+		Vector<Command> deleteDiagramFactorCommands = new Vector();
+		deleteDiagramFactorCommands.addAll(diagramFactor.createCommandsToClearAsList());
+		deleteDiagramFactorCommands.add(new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId()));
 		
-		CommandDeleteObject deleteDiagramFactorCommand = new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId());
-		getProject().executeCommand(deleteDiagramFactorCommand);
+		return deleteDiagramFactorCommands;
 	}
 
 	private void removeFromView(ORef factorRef) throws ParseException, Exception, CommandFailedException
@@ -123,10 +130,15 @@ public class FactorDeleteHelper
 
 	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
 	{
-		CommandSetObjectData removeDiagramFactor = CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+		CommandSetObjectData removeDiagramFactor = buildCommandToRemoveNodeFromDiagram(diagramObjectToUse, idToDelete);
 		getProject().executeCommand(removeDiagramFactor);
 	}
 
+	private CommandSetObjectData buildCommandToRemoveNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws ParseException
+	{
+		return CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+	}
+	
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
 	{
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();

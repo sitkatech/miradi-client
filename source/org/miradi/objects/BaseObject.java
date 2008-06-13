@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -737,6 +739,11 @@ abstract public class BaseObject
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return null;
+	}
+	
+	public Collection<CommandSetObjectData> createCommandsToClearAsList()
+	{
+		return Arrays.asList(createCommandsToClear());
 	}
 	
 	public CommandSetObjectData[] createCommandsToClear()
