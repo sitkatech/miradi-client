@@ -105,11 +105,11 @@ public class PasteDoer extends AbstractPasteDoer
 	private boolean hasOnlyDiagramWrappedStresses(TransferableMiradiList list) throws Exception
 	{	
 		ORefList factorRefs = list.getFactorRefs();
-		ORefList diagramFactorWrappedStressRefs = extractDiagramFactorWrappedStress(factorRefs);
+		ORefList diagramFactorWrappedStressRefs = extractDiagramFactorWrappedStresses(factorRefs);
 		return factorRefs.size() == diagramFactorWrappedStressRefs.size();
 	}
 	
-	private ORefList extractDiagramFactorWrappedStress(ORefList factorRefs) throws Exception
+	private ORefList extractDiagramFactorWrappedStresses(ORefList factorRefs) throws Exception
 	{
 		ORefList diagramFactorWrappedStress = new ORefList();
 		for (int index = 0; index < factorRefs.size(); ++index)
