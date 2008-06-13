@@ -25,9 +25,7 @@ import java.util.Collection;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandDeleteObject;
-import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
@@ -95,21 +93,15 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
 			return;
 	
-		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			Command[] commands = buildCommandsToAnnotation(project, owner, annotationIdListTag, annotationToDelete);
-			for(int i = 0; i < commands.length; ++i)
-				project.executeCommand(commands[i]);
+			getProject().executeCommandsAsTransaction(commands);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 	
