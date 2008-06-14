@@ -72,7 +72,7 @@ public class FactorDeleteHelper
 		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
 		deleteDiagramFactor(diagramFactorToDelete);
 				
-		if (underlyingFactor.isShared())
+		if (underlyingFactor.shouldBeDeleted())
 			return;
 
 		deleteAnnotations(underlyingFactor);
