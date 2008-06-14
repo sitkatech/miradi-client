@@ -66,7 +66,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
 			Vector<DiagramFactor> stressDiagramFactors = extractStressDiagramFactors(diagramFactors);
-			diagramFactors.removeAll(stressDiagramFactors);
 		
 			deleteSelectedLinks(diagramLinks, diagramFactors);
 			deleteSelectedFactors(stressDiagramFactors);
