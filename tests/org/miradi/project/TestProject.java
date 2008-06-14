@@ -825,7 +825,7 @@ public class TestProject extends EAMTestCase
 	private void deleteNodeAndRemoveFromDiagram(DiagramObject diagramObject, DiagramFactor diagramFactor) throws Exception
 	{
 		FactorDeleteHelper factorHelper = new FactorDeleteHelper(diagramObject);
-		factorHelper.deleteFactor(diagramFactor);
+		factorHelper.deleteDiagramFactor(diagramFactor);
 	}
 	
 	public void atestCreateNewProject() throws Exception
