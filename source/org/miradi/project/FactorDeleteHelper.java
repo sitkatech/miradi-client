@@ -70,7 +70,7 @@ public class FactorDeleteHelper
 		removeFromThreatReductionResults(diagramFactorToDelete.getWrappedFactor());
 		removeFromView(diagramFactorToDelete.getWrappedORef());
 		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
-		deleteDiagramFactor(diagramFactorToDelete);
+		getProject().executeCommandsWithoutTransaction(buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
 				
 		if (underlyingFactor.shouldBeDeleted())
 			return;
@@ -106,12 +106,6 @@ public class FactorDeleteHelper
 		}
 	}
 
-	public void deleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
-	{
-		Vector<Command> commandsToDeleteDiagramFactor = buildCommandsToDeleteDiagramFactor(diagramFactor);
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteDiagramFactor);
-	}
-	
 	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		Vector<Command> deleteDiagramFactorCommands = new Vector();
