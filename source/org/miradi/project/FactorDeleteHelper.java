@@ -60,7 +60,36 @@ public class FactorDeleteHelper
 
 	public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
+		deleteRelatedStressDiagramFactors(diagramFactorToDelete);
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
+	}
+
+	private void deleteRelatedStressDiagramFactors(DiagramFactor diagramFactorToDelete) throws Exception
+	{
+		if (!Target.is(diagramFactorToDelete.getWrappedType()))
+			return;
+		
+		Target target = (Target) diagramFactorToDelete.getWrappedFactor();
+		ORefList stressRefs = target.getStressRefs();
+		for (int index = 0; index < stressRefs.size(); ++index)
+		{
+			Stress stress = Stress.find(getProject(), stressRefs.get(index));
+			deleteStressDiagramFactorsInCurrentDiagram(stress);
+		}
+	}
+
+	private void deleteStressDiagramFactorsInCurrentDiagram(Stress stress) throws Exception
+	{
+		ORefList diagramFactorReferrerRefs = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList currenContainedtDiagramFactors = getDiagramObject().getAllDiagramFactorRefs();
+		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
+		{
+			if (currenContainedtDiagramFactors.contains(diagramFactorReferrerRefs.get(index)))
+			{
+				DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorReferrerRefs.get(index));		
+				removeFromDiagramAndDelete(diagramFactor);
+			}
+		}
 	}
 
 	private void deleteDiagramFactorAndUnderlyingFactor(DiagramFactor diagramFactorToDelete) throws Exception
@@ -69,14 +98,19 @@ public class FactorDeleteHelper
 		removeFromGroupBox(diagramFactorToDelete);
 		removeFromThreatReductionResults(diagramFactorToDelete.getWrappedFactor());
 		removeFromView(diagramFactorToDelete.getWrappedORef());
-		removeNodeFromDiagram(getDiagramObject(), diagramFactorToDelete.getDiagramFactorId());
-		getProject().executeCommandsWithoutTransaction(buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
+		removeFromDiagramAndDelete(diagramFactorToDelete);
 				
 		if (underlyingFactor.shouldBeDeleted())
 			return;
 
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
+	}
+	
+	private void removeFromDiagramAndDelete(DiagramFactor diagramFactor) throws Exception
+	{
+		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
+		getProject().executeCommandsWithoutTransaction(buildCommandsToDeleteDiagramFactor(diagramFactor));
 	}
 
 	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
