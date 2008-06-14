@@ -285,7 +285,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean isShared()
+	public boolean shouldBeDeleted()
 	{
 		ORefList referrers = findObjectsThatReferToUs(getObjectManager(), ObjectType.DIAGRAM_FACTOR, getRef());
 		
