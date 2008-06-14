@@ -63,7 +63,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 				removeAllChildrenFromGroupBox(groupBoxCell);
 				ORefList referringGroupBoxDiagramLinks = groupBoxCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
 				linkDeletor.deleteDiagramLinks(referringGroupBoxDiagramLinks);
-				deleteHelper.deleteFactor(groupBoxCell.getDiagramFactor());	
+				deleteHelper.deleteDiagramFactor(groupBoxCell.getDiagramFactor());	
 			}
 		}
 		catch (Exception e)

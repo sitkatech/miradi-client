@@ -58,7 +58,7 @@ public class FactorDeleteHelper
 		diagramObject = diagramObjectToUse;
 	}
 
-	public void deleteFactor(DiagramFactor diagramFactorToDelete) throws Exception
+	public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
 	}
