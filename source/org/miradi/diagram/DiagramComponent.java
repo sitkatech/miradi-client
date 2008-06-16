@@ -64,6 +64,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
@@ -219,13 +220,33 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			Object[] selectedCells = getOnlySelectedCells();
 			HashSet<EAMGraphCell> cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 			
-			return cellVector.toArray(new EAMGraphCell[0]);
+			Vector<EAMGraphCell> stressCells = extractType(cellVector, Stress.getObjectType());
+			Vector<EAMGraphCell> allCells = new Vector(cellVector);
+			
+			allCells.removeAll(stressCells);
+			Vector<EAMGraphCell> sortedCells = new Vector();
+			sortedCells.addAll(stressCells);
+			sortedCells.addAll(allCells);
+			
+			return sortedCells.toArray(new EAMGraphCell[0]);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return new EAMGraphCell[0];
 		}
+	}
+
+	private Vector<EAMGraphCell> extractType(HashSet<EAMGraphCell> cellVector, int type)
+	{
+		Vector<EAMGraphCell> extractedList = new Vector();
+		for(EAMGraphCell graphCell : cellVector)
+		{
+			if (graphCell.getWrappedFactorRef().getObjectType() == type)
+				extractedList.add(graphCell);
+		}
+		
+		return extractedList;
 	}
 
 	public void selectCells(EAMGraphCell[] cellsToSelect)
