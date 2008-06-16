@@ -33,7 +33,7 @@ public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", "Not Specified"),
 			new ChoiceItem(SIZE, "Size"),
 			new ChoiceItem(CONDITION, "Condition"),
-			new ChoiceItem(LANDSCAPE, "LandScape"),
+			new ChoiceItem(LANDSCAPE, "LandScape Context"),
 		};
 	}
 
