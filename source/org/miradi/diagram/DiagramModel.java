@@ -521,7 +521,9 @@ public class DiagramModel extends DefaultGraphModel
 				textBoxCells.add(node);
 		}
 		LayerManager manager = project.getLayerManager();
-		getGraphLayoutCache().setVisible(getProjectScopeBox(), manager.isScopeBoxVisible());
+		boolean shouldScopeBoxBeVisible = manager.isScopeBoxVisible();
+		if(shouldScopeBoxBeVisible != getGraphLayoutCache().isVisible(getProjectScopeBox()))
+			getGraphLayoutCache().setVisible(getProjectScopeBox(), shouldScopeBoxBeVisible);
 		
 		toFront(textBoxCells.toArray());
 	}	
@@ -530,10 +532,10 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		LayerManager manager = project.getLayerManager();
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
-		boolean isVisible = shouldFactorCellBeVisible(manager, factorCell);
+		boolean shouldBeVisible = shouldFactorCellBeVisible(manager, factorCell);
 
-		getGraphLayoutCache().setVisible(factorCell, isVisible);
-		
+		if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
+			getGraphLayoutCache().setVisible(factorCell, shouldBeVisible);
 	}
 
 	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)
