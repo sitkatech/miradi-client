@@ -30,13 +30,18 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.resources.ResourcesHandler;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 import org.xml.sax.InputSource;
@@ -111,11 +116,22 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			projectAsInputStream.reset();
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
 			showDialogWithCoachText();
+			hideLinkLayer(projectToFill);
 		}
 		finally
 		{
 			projectAsInputStream.close();
 		}
+	}
+
+	private void hideLinkLayer(Project projectToFill) throws Exception
+	{
+		CodeList codeListWithHiddenLinkLayer = new CodeList();
+		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
+		ViewData viewData = projectToFill.getViewData(DiagramView.getViewName());
+		
+		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_DIAGRAM_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
+		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
 
 	public static ByteArrayInputStream extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
