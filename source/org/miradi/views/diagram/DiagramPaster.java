@@ -792,6 +792,9 @@ abstract public class DiagramPaster
 			return true;
 		
 		Stress stress = Stress.find(getProject(), newWrappedRef);
+		if (stress == null)
+			return false;
+		
 		ORefList targetReferrerRefs = stress.findObjectsThatReferToUs(Target.getObjectType());
 		DiagramObject diagramObject = getDiagramObject();
 		for (int index = 0; index < targetReferrerRefs.size(); ++index)
