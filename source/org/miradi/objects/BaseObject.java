@@ -209,35 +209,7 @@ abstract public class BaseObject
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:
 			case ObjectType.FACTOR:
-			{
-				String typeString = json.getString(Factor.TAG_NODE_TYPE);
-			
-				if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
-					return new Strategy(objectManager, new FactorId(idAsInt), json);
-				
-				if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
-					return new Cause(objectManager, new FactorId(idAsInt), json);
-				
-				if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
-					return new Target(objectManager, new FactorId(idAsInt), json);
-				
-				if (typeString.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
-					return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
-				
-				if (typeString.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
-					return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
-				
-				if (typeString.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
-					return new TextBox(objectManager, new FactorId(idAsInt), json);
-				
-				if (typeString.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
-					return new GroupBox(objectManager, new FactorId(idAsInt), json);
-				
-				if (typeString.equals(FactorTypeStress.STRESS_TYPE))
-					return new Stress(objectManager, new FactorId(idAsInt), json);
-				
-				throw new RuntimeException("Read unknown node type: " + typeString);
-			}
+				return createFactorFromJson(objectManager, type, json, idAsInt);
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(objectManager, idAsInt, json);
@@ -332,6 +304,37 @@ abstract public class BaseObject
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
+	}
+
+	private static Factor createFactorFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json, int idAsInt) throws Exception
+	{
+		String typeString = json.getString(Factor.TAG_NODE_TYPE);
+
+		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
+			return new Strategy(objectManager, new FactorId(idAsInt), json);
+		
+		if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
+			return new Cause(objectManager, new FactorId(idAsInt), json);
+		
+		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
+			return new Target(objectManager, new FactorId(idAsInt), json);
+		
+		if (typeString.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
+			return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
+		
+		if (typeString.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
+			return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
+		
+		if (typeString.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
+			return new TextBox(objectManager, new FactorId(idAsInt), json);
+		
+		if (typeString.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
+			return new GroupBox(objectManager, new FactorId(idAsInt), json);
+		
+		if (typeString.equals(FactorTypeStress.STRESS_TYPE))
+			return new Stress(objectManager, new FactorId(idAsInt), json);
+		
+		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
 	
 	abstract public int getType();
