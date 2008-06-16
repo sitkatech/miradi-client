@@ -42,6 +42,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -119,14 +120,25 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
 	{
-		Factor factor = diagramFactor.getWrappedFactor();		
-		Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
-		factorDeepCopies.addAll(factorJsonStrings);
+		if (shouldDeepCopyFactor(diagramFactor.getWrappedType()))
+		{
+			Factor factor = diagramFactor.getWrappedFactor();		
+			Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
+			factorDeepCopies.addAll(factorJsonStrings);
+		}
 	
 		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
 		addToUpperMostLeftMostCorner(diagramFactor);
+	}
+
+	private boolean shouldDeepCopyFactor(int type)
+	{
+		if (Stress.is(type))
+			return false;
+		
+		return true;
 	}
 
 	private void addToUpperMostLeftMostCorner(DiagramFactor diagramFactor)

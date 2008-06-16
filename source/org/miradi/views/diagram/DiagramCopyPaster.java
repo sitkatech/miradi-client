@@ -52,6 +52,9 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
+		if (Stress.is(oldWrappedRef))
+			return oldWrappedRef;
+		
 		return getOldToNewObjectRefMap().get(oldWrappedRef);
 	}
 	
