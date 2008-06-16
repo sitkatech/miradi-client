@@ -60,16 +60,17 @@ public class FactorDeleteHelper
 
 	public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
-		deleteRelatedStressDiagramFactors(diagramFactorToDelete);
+		if (Target.is(diagramFactorToDelete.getWrappedType()))
+		{	
+			Target target = (Target) diagramFactorToDelete.getWrappedFactor();
+			deleteRelatedStressDiagramFactors(target);
+		}
+		
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
 	}
 
-	private void deleteRelatedStressDiagramFactors(DiagramFactor diagramFactorToDelete) throws Exception
+	private void deleteRelatedStressDiagramFactors(Target target) throws Exception
 	{
-		if (!Target.is(diagramFactorToDelete.getWrappedType()))
-			return;
-		
-		Target target = (Target) diagramFactorToDelete.getWrappedFactor();
 		ORefList stressRefs = target.getStressRefs();
 		for (int index = 0; index < stressRefs.size(); ++index)
 		{
