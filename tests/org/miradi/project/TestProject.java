@@ -64,6 +64,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -784,6 +785,8 @@ public class TestProject extends EAMTestCase
 	
 			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.CAUSE);
 			deleteNodeAndRemoveFromDiagram(diagramObject, diagramFactor);
+			
+			createNodeAndAddToDiagram(diskProject, diagramObject, TextBox.getObjectType());
 		}
 		finally
 		{
@@ -798,11 +801,12 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
 			assertEquals("didn't read strategy pool?", 0, loadedProject.getStrategyPool().size());
 			assertEquals("didn't read target pool?", 1, loadedProject.getTargetPool().size());
+			assertEquals("didn't read text box pool?", 1, loadedProject.getTextBoxPool().size());
 			
 			ORef conceptualModelRef = loadedProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
 			ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(loadedProject, conceptualModelRef);
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
-			assertEquals("didn't populate diagram?", 2, conceptualModel.getAllDiagramFactorRefs().size());
+			assertEquals("didn't populate diagram?", 3, conceptualModel.getAllDiagramFactorRefs().size());
 			assertEquals("didn't preserve next node id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
 			assertEquals("didn't preserve next annotation id?", memorizedHighestId, loadedProject.getAnnotationIdAssigner().getHighestAssignedId());
 			Cause factor = (Cause)loadedProject.findNode(factorId);

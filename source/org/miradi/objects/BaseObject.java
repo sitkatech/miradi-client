@@ -33,13 +33,8 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.factortypes.FactorTypeCause;
-import org.miradi.diagram.factortypes.FactorTypeGroupBox;
-import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
-import org.miradi.diagram.factortypes.FactorTypeStress;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
-import org.miradi.diagram.factortypes.FactorTypeTextBox;
-import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -201,15 +196,25 @@ abstract public class BaseObject
 				return new Task(objectManager, idAsInt, json);
 			
 			case ObjectType.STRESS:
+				return new Stress(objectManager, new FactorId(idAsInt), json);
+
 			case ObjectType.GROUP_BOX:
+				return new GroupBox(objectManager, new FactorId(idAsInt), json);
+
 			case ObjectType.TEXT_BOX:
+				return new TextBox(objectManager, new FactorId(idAsInt), json);
+
 			case ObjectType.THREAT_REDUCTION_RESULT:
+				return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
+
 			case ObjectType.INTERMEDIATE_RESULT:	
+				return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
+
 			case ObjectType.CAUSE:
 			case ObjectType.STRATEGY:
 			case ObjectType.TARGET:
 			case ObjectType.FACTOR:
-				return createFactorFromJson(objectManager, type, json, idAsInt);
+				return createFactorFromJson(objectManager, json, idAsInt);
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(objectManager, idAsInt, json);
@@ -306,9 +311,9 @@ abstract public class BaseObject
 		}
 	}
 
-	private static Factor createFactorFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json, int idAsInt) throws Exception
+	private static Factor createFactorFromJson(ObjectManager objectManager, EnhancedJsonObject json, int idAsInt) throws Exception
 	{
-		String typeString = json.getString(Factor.TAG_NODE_TYPE);
+		String typeString = json.optString(Factor.TAG_NODE_TYPE);
 
 		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
 			return new Strategy(objectManager, new FactorId(idAsInt), json);
@@ -318,21 +323,7 @@ abstract public class BaseObject
 		
 		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
 			return new Target(objectManager, new FactorId(idAsInt), json);
-		
-		if (typeString.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
-			return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
-		
-		if (typeString.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
-			return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
-		
-		if (typeString.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
-			return new TextBox(objectManager, new FactorId(idAsInt), json);
-		
-		if (typeString.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
-			return new GroupBox(objectManager, new FactorId(idAsInt), json);
-		
-		if (typeString.equals(FactorTypeStress.STRESS_TYPE))
-			return new Stress(objectManager, new FactorId(idAsInt), json);
+
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
