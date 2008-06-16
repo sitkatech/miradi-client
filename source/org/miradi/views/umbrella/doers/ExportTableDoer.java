@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.CommandFailedException;
@@ -81,7 +80,7 @@ public class ExportTableDoer extends ViewDoer
 				for (int column = 0; column < columnCount; ++column)
 				{
 					pad(out, table.getDepth(row), column);
-					out.write(getSafeValue(table, row, column) + "\t");
+					writeWithoutNewLines(out, getSafeValue(table, row, column) + "\t");
 					
 					int postPadCount = maxDepth - table.getDepth(row);
 					pad(out, postPadCount, column);
@@ -110,7 +109,7 @@ public class ExportTableDoer extends ViewDoer
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			out.write(table.getHeaderFor(column) + "\t");
+			writeWithoutNewLines(out, table.getHeaderFor(column) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		
@@ -122,14 +121,24 @@ public class ExportTableDoer extends ViewDoer
 		return (column == 0);
 	}
 	
-	private void pad(UnicodeWriter out, int padCount, int column) throws IOException
+	private void pad(UnicodeWriter out, int padCount, int column) throws Exception
 	{
 		if (!isTreeColumn(column))
 			return; 
 		
 		for (int i = 0; i < padCount; ++i)
 		{
-			out.write("\t");
+			writeWithoutNewLines(out, "\t");
 		}
 	}
+	
+	private void writeWithoutNewLines(UnicodeWriter out, String stringToWrite) throws Exception
+	{
+		String stringWithoutNewLines = stringToWrite.replaceAll(NEW_LINE, BLANK_SPACE);
+
+		out.write(stringWithoutNewLines);
+	}
+	
+	private static final String BLANK_SPACE = " ";
+	public static final String NEW_LINE = "\n";
 }
