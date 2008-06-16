@@ -22,34 +22,23 @@ package org.miradi.diagram.renderers;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Polygon;
-import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.Stroke;
-import java.awt.font.TextLayout;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Vector;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
-import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.PointList;
-import org.miradi.views.diagram.LayerManager;
 
 public class ArrowLineRenderer extends EdgeRenderer
 {
@@ -57,16 +46,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Component getRendererComponent(JGraph graphToUse, CellView cellView, boolean sel, boolean hasFocus, boolean previewMode)
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
-		diagramFontSize = ((DiagramComponent) graphToUse).getProject().getDiagramFontSize();
 		diagramLinkColor = getLinkCell().getColor();
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
 			renderer.lineWidth = 4;
 		}
-
-		String[] rawStressNames = getLinkCell().getDiagramLink().getRelevantStressNames();
-		stressText = expandHardLineBreaks(rawStressNames);
 
 		return renderer;
 	}
@@ -81,8 +66,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 		super.paint(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		if(isArrowBodyVisible())
-			drawStress(g);
 		
 		if (linkSelected)
 		{
@@ -328,131 +311,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 		return poly;
 	}
 
-	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
-	{
-		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
-		LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		String[] rawStressNames = thisCell.getDiagramLink().getRelevantStressNames();
-		if (rawStressNames.length == 0)
-			return graphBounds;
-		
-		Rectangle2D union = calculateNewBoundsForStress(graphBounds, expandHardLineBreaks(rawStressNames));
-		return union;
-	}
-	
-	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, Vector<String> text)
-	{
-		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, text);
-		Rectangle2D union = graphBounds.createUnion(textBounds);
-		return union;
-	}
-	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D linkBounds, Vector<String> text)
-	{
-		Graphics2D g2 = (Graphics2D)fontGraphics;
-		g2.setFont(creatFont());
-		Rectangle2D centerStressWithin = linkBounds;
-		PointList points = getLinkCell().getDiagramLink().getBendPoints();
-		if(points.size() > 0)
-		{
-			int centerPointIndex = points.size() / 2;
-			Point point = points.get(centerPointIndex);
-			centerStressWithin = new Rectangle(point, new Dimension(1,1));
-		}
-		
-		Rectangle multiLineTextBounds = new Rectangle(0, 0, 0, 0); 
-		for (int i = 0; i < text.size(); ++i)
-		{
-			if (text.get(i).length() == 0)
-				continue;
-		
-			TextLayout textLayout = new TextLayout(text.get(i), g2.getFont(), g2.getFontRenderContext());
-			Rectangle singleLineTextBounds = textLayout.getBounds().getBounds();
-			int maxWidth = Math.max(multiLineTextBounds.width, singleLineTextBounds.width);
-		
-			int textHeight = g2.getFontMetrics().getHeight();  
-			int growingHeight = multiLineTextBounds.height + textHeight;
-			multiLineTextBounds.setSize(maxWidth, growingHeight);	
-		}
-		
-		multiLineTextBounds.width = multiLineTextBounds.width + 2*CUSHION;
-		multiLineTextBounds.height = multiLineTextBounds.height +2*CUSHION;
-		
-		Point upperLeftToDrawText = Utilities.center(multiLineTextBounds.getSize(), centerStressWithin.getBounds().getBounds());
-		multiLineTextBounds.setLocation(upperLeftToDrawText);
-		return multiLineTextBounds;
-	}
-
-	private void drawStress(Graphics g)
-	{
-		if (!getLinkCell().getDiagramLink().isTargetLink())
-			return;
-		
-		if(stressText == null || stressText.size() == 0)
-			return;
-		
-		LayerManager layerManager = getProject().getLayerManager();
-		if (!layerManager.areStressesVisible())
-			return;
-		
-		Rectangle rectangle = calcalateCenteredAndCushioned(getPaintBounds(view), stressText);
-		if (rectangle == null)
-			return;
-	
-		int arc = 5;
-		Graphics2D g2 = (Graphics2D)g;
-		g2.setFont(creatFont());
-		g2.setColor(DiagramConstants.COLOR_STRESS);
-		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-		g2.setColor(Color.BLACK);
-		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-		int textHeight = g2.getFontMetrics().getHeight();
-		for (int i = 0; i < stressText.size(); ++i)
-		{
-			g2.drawString(stressText.get(i), rectangle.x + CUSHION, rectangle.y + (i * textHeight) + textHeight);
-		}
-	}
-
-	private Font creatFont()
-	{
-		return new Font(getSystemFontFamily(), Font.PLAIN, getSystemFontSize());
-	}
-
-	private Project getProject()
-	{
-		return getLinkCell().getDiagramLink().getProject();
-	}
-
-	private String getSystemFontFamily()
-	{
-		return getProject().getMetadata().getDiagramFontFamily();
-	}
-
-	private int getSystemFontSize()
-	{
-		return diagramFontSize;
-	}
-	
-	private Vector<String> expandHardLineBreaks(String[] rawStressNames)
-	{
-		String indent = "...";
-		Vector<String> result = new Vector<String>();
-		for(int i = 0; i < rawStressNames.length; ++i)
-		{
-			String thisStressName = rawStressNames[i];
-			String[] lines = thisStressName.split("\n");
-			result.add(lines[0]);
-			for(int extraLine = 1; extraLine < lines.length; ++extraLine)
-				result.add(indent + lines[extraLine]);
-		}
-		return result;
-	}
-
-	private static final int CUSHION = 5;
 	public static final int ARROW_STUB_LINE = 23253;
 
 	private boolean linkSelected;
-	private Vector<String> stressText;
-	private int diagramFontSize;
 	private Color diagramLinkColor;
 }
