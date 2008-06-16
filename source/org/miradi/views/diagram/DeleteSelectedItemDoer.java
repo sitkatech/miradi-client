@@ -33,7 +33,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Stress;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ViewDoer;
 
@@ -65,14 +64,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		{	
 			Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
-			Vector<DiagramFactor> stressDiagramFactors = extractStressDiagramFactors(diagramFactors);
 		
 			deleteSelectedLinks(diagramLinks, diagramFactors);
-			deleteSelectedFactors(stressDiagramFactors);
-			
-			Vector<DiagramFactor> diagramFactorsWithoutStresses = new Vector(diagramFactors);
-			diagramFactorsWithoutStresses.removeAll(stressDiagramFactors);
-			deleteSelectedFactors(diagramFactorsWithoutStresses);
+			deleteSelectedFactors(diagramFactors);
 		}
 		catch (Exception e)
 		{
@@ -82,21 +76,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
-	}
-
-	private Vector<DiagramFactor> extractStressDiagramFactors(Vector<DiagramFactor> diagramFactors)
-	{
-		Vector<DiagramFactor> stressDiagramFactors = new Vector();
-		for (int index = 0; index < diagramFactors.size(); ++index)
-		{
-			DiagramFactor diagramFactor = diagramFactors.get(index);
-			if (Stress.is(diagramFactor.getWrappedType()))
-			{
-				stressDiagramFactors.add(diagramFactor);
-			}
-		}
-		
-		return stressDiagramFactors;
 	}
 
 	private void deleteSelectedFactors(Vector<DiagramFactor> diagramFactors) throws Exception
