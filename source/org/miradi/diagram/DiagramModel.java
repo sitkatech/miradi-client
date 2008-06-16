@@ -556,13 +556,14 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		LayerManager manager = project.getLayerManager();
 
-		boolean isLinkVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
+		boolean shouldLinkBeVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
 		if(!shouldFactorCellBeVisible(manager, linkCell.getFrom()))
-			isLinkVisible = false;
+			shouldLinkBeVisible = false;
 		if(!shouldFactorCellBeVisible(manager, linkCell.getTo()))
-			isLinkVisible = false;
+			shouldLinkBeVisible = false;
 		
-		getGraphLayoutCache().setVisible(linkCell, isLinkVisible);
+		if(shouldLinkBeVisible != getGraphLayoutCache().isVisible(linkCell))
+			getGraphLayoutCache().setVisible(linkCell, shouldLinkBeVisible);
 	}
 
 	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
