@@ -103,6 +103,9 @@ public class TargetViabilityNode extends TreeTableNode
 
 	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target) throws Exception
 	{
+		if (!target.isViabilityModeTNC())
+			return new KeyEcologicalAttributeNode[0];
+		
 		Project project = target.getProject();
 		IdList keas = target.getKeyEcologicalAttributes();
 		Vector keyEcologicalAttributesVector = new Vector();
