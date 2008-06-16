@@ -34,7 +34,9 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.CpmzFileFilter;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 import org.xml.sax.InputSource;
@@ -108,6 +110,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			
 			projectAsInputStream.reset();
 			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
+			showDialogWithCoachText();
 		}
 		finally
 		{
@@ -154,5 +157,11 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	public FileFilter[] getFileFilter()
 	{
 		return new FileFilter[] {new CpmzFileFilter()};
+	}
+	
+	private void showDialogWithCoachText() throws Exception
+	{
+		String html = EAM.loadResourceFile(ResourcesHandler.class, "NextStepAfterCpmzImport.html");
+		new HtmlViewPanelWithMargins(getMainWindow(), EAM.text("Import"), html).showAsOkDialog();
 	}
 }
