@@ -268,10 +268,10 @@ abstract public class DiagramPaster
 		return newObject;
 	}
 
-	private boolean diagramAlreadyContainsAlias(ORef newWrappedRef)
+	private boolean diagramAlreadyContainsAlias(ORef wrappedRef)
 	{
 		DiagramObject diagramObject = getDiagramObject();
-		return diagramObject.containsWrappedFactorRef(newWrappedRef);
+		return diagramObject.containsWrappedFactorRef(wrappedRef);
 	}
 
 	private String offsetLocation(EnhancedJsonObject json, DiagramFactorId diagramFactorId) throws Exception
