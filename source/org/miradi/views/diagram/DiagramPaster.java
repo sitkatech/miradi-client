@@ -790,17 +790,13 @@ abstract public class DiagramPaster
 	{
 		if (!Stress.is(newWrappedRef))
 			return true;
-			
-		ORefList diagramFactorRefs = getDiagramObject().getAllDiagramFactorRefs();
-		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		
+		Stress stress = Stress.find(getProject(), newWrappedRef);
+		ORefList targetReferrerRefs = stress.findObjectsThatReferToUs(Target.getObjectType());
+		DiagramObject diagramObject = getDiagramObject();
+		for (int index = 0; index < targetReferrerRefs.size(); ++index)
 		{
-			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(index));
-			if (!Target.is(diagramFactor.getWrappedType()))
-				continue;
-			
-			Target target = (Target) diagramFactor.getWrappedFactor();
-			ORefList stressRefs = target.getStressRefs();
-			if (stressRefs.contains(newWrappedRef))
+			if (diagramObject.containsWrappedFactorRef(targetReferrerRefs.get(index)))
 				return true;
 		}
 		
