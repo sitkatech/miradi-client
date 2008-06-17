@@ -42,13 +42,19 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Stress"), new StressIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 		
 		addField(createMultilineField(Stress.TAG_DETAIL));
+		if (projectToUse.isStressBaseMode())
+			addRatingsFields();
 		
+		updateFieldsFromProject();
+	}
+
+	private void addRatingsFields()
+	{
 		ObjectDataInputField scopeField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SCOPE, new StressScopeChoiceQuestion());
 		ObjectDataInputField severityField = createRatingChoiceField(Stress.getObjectType(), Stress.TAG_SEVERITY, new StressSeverityChoiceQuestion());		
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
-		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
