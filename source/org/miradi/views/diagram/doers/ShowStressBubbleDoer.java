@@ -44,7 +44,7 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		setLocation(diagramModel, helper, targetDiagramFactor, stressDiagramFactorId, stressTargetParent.getStressRefs(), selectedStressRef);
 		setSize(helper, stressDiagramFactorId, DiagramFactor.DEFAULT_STRESS_SIZE);
 		
-		getDiagramView().getDiagramComponent().selectFactor(stressTargetParent.getFactorId());
+		selectDiagramFactor(stressTargetParent.getFactorId());
 	}
 
 	protected boolean isAvailable(ORef selectedStressRef)

@@ -29,6 +29,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
+import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -160,6 +161,11 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	protected void setSize(FactorCommandHelper helper, DiagramFactorId diagramFactorId, Dimension size) throws CommandFailedException
 	{
 		helper.setDiagramFactorSize(diagramFactorId, size);
+	}
+	
+	protected void selectDiagramFactor(FactorId factorId)
+	{
+		getDiagramView().getDiagramComponent().selectFactor(factorId);
 	}
 
 	abstract protected Factor getFactor(ORef factorRef);
