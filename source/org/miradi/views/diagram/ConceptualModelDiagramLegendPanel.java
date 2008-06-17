@@ -25,11 +25,8 @@ import javax.swing.JPanel;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.Actions;
-import org.miradi.icons.StressIcon;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Strategy;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
@@ -43,13 +40,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	{
 		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
 		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
-	}
-	
-	@Override
-	protected void possiblyAddStressLine(TwoColumnPanel jpanel)
-	{
-		if (getProject().getMetadata().isStressBasedThreatRatingMode())
-			addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_STRESS, new StressIcon());
 	}
 	
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
