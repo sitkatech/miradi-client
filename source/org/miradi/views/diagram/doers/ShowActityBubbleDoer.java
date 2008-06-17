@@ -35,7 +35,7 @@ public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 	{
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();		
 		DiagramObject diagramObject = diagramModel.getDiagramObject();
-		ORef selectedActivityRef = getSelectedActivityRef();
+		ORef selectedActivityRef = getSelectedAnnotationRef();
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagramModel);
 		DiagramFactorId activityDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedActivityRef).getCreatedId();
 
@@ -56,5 +56,11 @@ public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Task.find(getProject(), factorRef);
+	}
+
+	@Override
+	protected ORef getSelectedAnnotationRef()
+	{
+		return getSelectedActivityRef();
 	}
 }

@@ -35,7 +35,7 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 	{
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();		
 		DiagramObject diagramObject = diagramModel.getDiagramObject();
-		ORef selectedStressRef = getSelectedStressRef();
+		ORef selectedStressRef = getSelectedAnnotationRef();
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagramModel);
 		DiagramFactorId stressDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedStressRef).getCreatedId();
 
@@ -55,5 +55,11 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Stress.find(getProject(), factorRef);
+	}
+	
+	@Override
+	protected ORef getSelectedAnnotationRef()
+	{
+		return getSelectedStressRef();
 	}
 }

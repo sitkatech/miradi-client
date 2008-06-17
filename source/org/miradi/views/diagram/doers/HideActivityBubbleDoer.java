@@ -41,4 +41,10 @@ public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
 	{
 		return Task.find(getProject(), factorRef);
 	}
+	
+	@Override
+	protected ORef getSelectedAnnotationRef()
+	{
+		return getSelectedActivityRef();
+	}
 }

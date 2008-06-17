@@ -50,4 +50,10 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 	{
 		return Stress.find(getProject(), factorRef);
 	}
+	
+	@Override
+	protected ORef getSelectedAnnotationRef()
+	{
+		return getSelectedStressRef();
+	}
 }

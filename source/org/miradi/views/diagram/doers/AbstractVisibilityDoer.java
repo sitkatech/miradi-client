@@ -173,4 +173,6 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	abstract protected void doWork() throws Exception;
 	
 	abstract protected boolean isAvailable(ORef selectedFactorRef);
+	
+	abstract protected ORef getSelectedAnnotationRef();
 }
