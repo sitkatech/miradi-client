@@ -22,6 +22,7 @@ package org.miradi.objects;
 import java.text.ParseException;
 
 import org.miradi.diagram.factortypes.FactorType;
+import org.miradi.diagram.factortypes.FactorTypeActivity;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
@@ -207,6 +208,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.STRESS)
 			return true;
 		
+		if (typeToUse == ObjectType.TASK)
+			return true;
+
 		return false;
 	}
 
@@ -256,6 +260,11 @@ abstract public class Factor extends BaseObject
 	}
 	
 	public boolean isStress()
+	{
+		return false;
+	}
+	
+	public boolean isActivityFactor()
 	{
 		return false;
 	}
@@ -336,6 +345,9 @@ abstract public class Factor extends BaseObject
 		
 		else if (objectType == ObjectType.STRESS)
 			return new Stress(objectManager, idToCreate);
+		
+		else if (objectType == ObjectType.TASK)
+			return new Task(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
@@ -486,6 +498,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
 	}
 
+	public static final FactorType TYPE_ACTIVITY = new FactorTypeActivity();
 	public static final FactorType TYPE_STRESS = new FactorTypeStress();
 	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();

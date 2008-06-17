@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateRangeEffortList;
@@ -41,16 +42,16 @@ public class TestTask extends ObjectTestCase
 		verifyFields(ObjectType.TASK);
 		BaseId id = new BaseId(5);
 		
-		Task task = new Task(getObjectManager(), id);
+		Task task = new Task(getObjectManager(), new FactorId(id.asInt()));
 		assertEquals("bad id?", id, task.getId());
 		
 		String label = "Name of task";
 		task.setData(Task.TAG_LABEL, label);
 		assertEquals("bad label?", label, task.getData(Task.TAG_LABEL));
 		
-		Task sameTask = new Task(getObjectManager(), id);
+		Task sameTask = new Task(getObjectManager(), new FactorId(id.asInt()));
 		assertEquals("same ids not equal?", task, sameTask);
-		Task otherTask = new Task(getObjectManager(), new BaseId(id.asInt()+1));
+		Task otherTask = new Task(getObjectManager(), new FactorId(id.asInt()+1));
 		otherTask.setData(Task.TAG_LABEL, label);
 		assertNotEquals("different ids are equal?", task, otherTask);
 	}
@@ -61,7 +62,7 @@ public class TestTask extends ObjectTestCase
 		sampleIds.add(1);
 		sampleIds.add(1527);
 		String sampleIdData = sampleIds.toString(); 
-		Task task = new Task(getObjectManager(), new BaseId(0));
+		Task task = new Task(getObjectManager(), new FactorId(0));
 		task.setData(Task.TAG_SUBTASK_IDS, sampleIdData);
 		assertEquals("bad data?", sampleIdData, task.getData(Task.TAG_SUBTASK_IDS));
 	}
@@ -69,10 +70,10 @@ public class TestTask extends ObjectTestCase
 	public void testNesting() throws Exception
 	{
 		IdAssigner idAssigner = new IdAssigner();
-		Task top = new Task(getObjectManager(), idAssigner.takeNextId());
-		Task child1 = new Task(getObjectManager(), idAssigner.takeNextId());
-		Task child2 = new Task(getObjectManager(), idAssigner.takeNextId());
-		Task grandchild21 = new Task(getObjectManager(), idAssigner.takeNextId());
+		Task top = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
+		Task child1 = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
+		Task child2 = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
+		Task grandchild21 = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
 		
 		top.addSubtaskId(child1.getId());
 		top.addSubtaskId(child2.getId());
@@ -116,9 +117,9 @@ public class TestTask extends ObjectTestCase
 
 	private Task createBasicTree() throws Exception
 	{
-		Task parent = new Task(getObjectManager(), new BaseId(1));
-		Task child1 = new Task(getObjectManager(), new BaseId(2));
-		Task child2 = new Task(getObjectManager(), new BaseId(3));
+		Task parent = new Task(getObjectManager(), new FactorId(1));
+		Task child1 = new Task(getObjectManager(), new FactorId(2));
+		Task child2 = new Task(getObjectManager(), new FactorId(3));
 		parent.addSubtaskId(child1.getId());
 		parent.addSubtaskId(child2.getId());
 		return parent;

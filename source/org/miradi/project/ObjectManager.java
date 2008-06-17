@@ -94,6 +94,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 
@@ -375,6 +376,10 @@ public class ObjectManager
 			BaseObject stress = getPool(Stress.getObjectType()).findObject(objectId);
 			if (stress != null)
 				return stress;
+			
+			BaseObject task = getPool(Task.getObjectType()).findObject(objectId);
+			if (task != null)
+				return task;
 			
 			return null;
 		}

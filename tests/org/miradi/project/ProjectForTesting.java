@@ -31,7 +31,6 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
-import org.miradi.ids.TaskId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -777,9 +776,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return baseId;
 	}
 
-	public TaskId createTaskAndReturnId() throws Exception
+	public FactorId createTaskAndReturnId() throws Exception
 	{
-		return (TaskId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
+		return (FactorId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
 	}
 
 	public AssignmentId createAssignment(ORef oref) throws Exception

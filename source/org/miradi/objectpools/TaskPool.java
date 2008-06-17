@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
@@ -46,7 +47,7 @@ public class TaskPool extends EAMNormalObjectPool
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new Task(objectManager, actualId);
+		return new Task(objectManager, new FactorId(actualId.asInt()));
 	}
 
 	public Task[] getAllTasks()
