@@ -37,7 +37,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Stress;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -123,9 +122,6 @@ public class DiagramAliasPaster extends DiagramPaster
 		
 		boolean isResultsChain = ResultsChainDiagram.is(getDiagramObject().getType());
 		if (isResultsChain && Cause.is(type))
-			return false;
-		
-		if (isResultsChain && Stress.is(type))
 			return false;
 		
 		boolean isConceptualModel = ConceptualModelDiagram.is(getDiagramObject().getType());
