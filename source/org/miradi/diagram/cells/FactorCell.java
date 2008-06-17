@@ -360,11 +360,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.isStrategy();
 	}
 	
-	public boolean isFactorCluster()
-	{
-		return underlyingObject.isFactorCluster();
-	}
-	
 	public DefaultPort getPort()
 	{
 		return port;
