@@ -46,7 +46,7 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		DiagramFactorId stressDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedStressRef).getCreatedId();
 
 		Target stressTargetParent = Target.find(getProject(), getSelectedTargetRef());
-		setStressLocation(selectedStressRef, stressTargetParent, diagramModel, helper, stressDiagramFactorId);
+		setStressLocation(diagramModel, helper, stressDiagramFactorId, stressTargetParent, selectedStressRef);
 		setStressSize(helper, stressDiagramFactorId);
 		
 		getDiagramView().getDiagramComponent().selectFactor(stressTargetParent.getFactorId());
@@ -57,7 +57,7 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		helper.setDiagramFactorSize(stressDiagramFactorId, DiagramFactor.DEFAULT_STRESS_SIZE);
 	}
 
-	private void setStressLocation(ORef selectedStressRef, Target stressTargetParent, DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactorId stressDiagramFactorId)	throws Exception
+	private void setStressLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactorId stressDiagramFactorId, Target stressTargetParent, ORef selectedStressRef)	throws Exception
 	{
 		DiagramFactor targetDiagramFactor = diagramModel.getDiagramFactor(stressTargetParent.getFactorId());
 		int offset = stressTargetParent.getStressRefs().find(selectedStressRef);
