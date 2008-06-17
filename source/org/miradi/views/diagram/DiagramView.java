@@ -931,6 +931,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
+		getDiagramComponent().selectFactor(node.getWrappedId());
 		nodePropertiesDlg = new FactorPropertiesDialog(getMainWindow(), nodePropertiesPanel, title);
 		
 		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
