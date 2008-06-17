@@ -107,8 +107,9 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return selectedHierarchy.getRefForType(selectedType);
 	}
 	
-	protected Vector<Command> hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorRefs) throws Exception
+	private Vector<Command> hideDiagramFactors(ORefList diagramFactorRefs) throws Exception
 	{
+		DiagramObject diagramObject = getDiagramObject();
 		Vector<Command> commandsToHide = new Vector();
 		for (int refIndex = 0; refIndex < diagramFactorRefs.size(); ++refIndex)
 		{
@@ -135,8 +136,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	
 	protected boolean isShowing(ORef factorRef)
 	{
-		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
-		ORefList diagramFactorRefsFromDiagram = diagramObject.getAllDiagramFactorRefs();
+		ORefList diagramFactorRefsFromDiagram = getDiagramObject().getAllDiagramFactorRefs();
 		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(factorRef);
 		
 		return diagramFactorRefsFromDiagram.containsAnyOf(diagramFactorReferrerRefs);
@@ -151,7 +151,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	
 	protected void setLocation(FactorCommandHelper helper, DiagramFactorId ownedDiagramFactorId)	throws Exception
 	{
-		DiagramFactor parentDiagramFactor = getDiagramView().getDiagramModel().getDiagramFactor(getParent().getRef());
+		DiagramFactor parentDiagramFactor = getDiagramModel().getDiagramFactor(getParent().getRef());
 		ORef annotationRef = getSelectedAnnotationRef();
 		int offset = getAnnotationList().find(annotationRef);
 		Point location = new Point(parentDiagramFactor.getLocation());
@@ -177,29 +177,36 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	
 	protected void showBubble(Dimension defaultSize) throws Exception, CommandFailedException
 	{
-		DiagramModel diagramModel = getDiagramView().getDiagramModel();		
-		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		ORef selectedAnnotationRef = getSelectedAnnotationRef();
-		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagramModel);
-		DiagramFactorId annotationDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedAnnotationRef).getCreatedId();
+		FactorCommandHelper helper = new FactorCommandHelper(getProject(), getDiagramModel());
+		DiagramFactorId annotationDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(getDiagramObject(), selectedAnnotationRef).getCreatedId();
 
 		setLocation(helper, annotationDiagramFactorId);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 		selectParentDiagramFactor();
 	}
-	
+
 	protected void hideBubble() throws Exception, CommandFailedException
 	{
 		ORef selectedAnnotationRef = getSelectedAnnotationRef();
-		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedAnnotationRef);
-		ORefList diagramFactorRefsFromCurrentDiagram = diagramModel.getDiagramObject().getAllDiagramFactorRefs();		
+		ORefList diagramFactorRefsFromCurrentDiagram = getDiagramObject().getAllDiagramFactorRefs();		
 		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
 		
-		Vector commandsToHideBubble = hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
+		Vector commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
 		getProject().executeCommandsWithoutTransaction(commandsToHideBubble);
 	}
+	
+	private DiagramObject getDiagramObject()
+	{
+		return getDiagramModel().getDiagramObject();
+	}
 
+	private DiagramModel getDiagramModel()
+	{
+		return getDiagramView().getDiagramModel();
+	}
+	
 	abstract protected Factor getFactor(ORef factorRef);
 	
 	abstract protected void doWork() throws Exception;
