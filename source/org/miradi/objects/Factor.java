@@ -269,11 +269,6 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean isFactorCluster()
-	{
-		return false;
-	}
-	
 	public boolean canHaveIndicators()
 	{
 		return true;
