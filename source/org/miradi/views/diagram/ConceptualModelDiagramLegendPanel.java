@@ -25,8 +25,11 @@ import javax.swing.JPanel;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.Actions;
+import org.miradi.icons.StressIcon;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Strategy;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
@@ -71,5 +74,10 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 		
 		if (property.equals(Strategy.OBJECT_NAME_DRAFT))
 			checkBox.setSelected(manager.areDraftStrategiesVisible());
+	}
+	
+	protected void addStressLine(TwoColumnPanel jpanel)
+	{
+		addIconLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_STRESS, new StressIcon());
 	}
 }
