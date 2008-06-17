@@ -81,7 +81,7 @@ public class ExportTableDoer extends ViewDoer
 				{
 					pad(out, table.getDepth(row), column);
 					String safeValue = getSafeValue(table, row, column);
-					out.write(removeTabsAndNewLines(safeValue) + "\t");
+					out.write(withoutTabsAndNewlines(safeValue) + "\t");
 					
 					int postPadCount = maxDepth - table.getDepth(row);
 					pad(out, postPadCount, column);
@@ -110,7 +110,7 @@ public class ExportTableDoer extends ViewDoer
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			out.write(removeTabsAndNewLines(table.getHeaderFor(column)) + "\t");
+			out.write(withoutTabsAndNewlines(table.getHeaderFor(column)) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		
@@ -133,7 +133,7 @@ public class ExportTableDoer extends ViewDoer
 		}
 	}
 	
-	private String removeTabsAndNewLines(String string)
+	private String withoutTabsAndNewlines(String string)
 	{
 		final String BLANK_SPACE = " ";
 		final String TAB = "\t";
