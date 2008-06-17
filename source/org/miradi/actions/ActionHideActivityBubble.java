@@ -36,6 +36,6 @@ public class ActionHideActivityBubble extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Hide this Activity so it no longer appears on this Results Chain page");
+		return EAM.text("TT|Hide this Activity so it no longer appears on this Results Chain");
 	}
 }
