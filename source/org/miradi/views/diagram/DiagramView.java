@@ -931,9 +931,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
-		getDiagramComponent().selectFactor(node.getWrappedId());
 		nodePropertiesDlg = new FactorPropertiesDialog(getMainWindow(), nodePropertiesPanel, title);
-		
 		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
@@ -943,6 +941,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		Dimension size = new Dimension(width, height);
 		nodePropertiesDlg.setSize(size);
 		nodePropertiesDlg.setLocation(Utilities.center(size, screenRect));
+		
+		getDiagramComponent().selectFactor(node.getWrappedId());
 		nodePropertiesDlg.setVisible(true);
 		nodePropertiesPanel.updateAllSplitterLocations();
 	}
