@@ -73,15 +73,15 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	
 	protected ORef getSelectedStressRef()
 	{
-		return getSelectedType(Stress.getObjectType());
+		return getSelectedRefOfType(Stress.getObjectType());
 	}
 
 	protected ORef getSelectedTargetRef()
 	{
-		return getSelectedType(Target.getObjectType());
+		return getSelectedRefOfType(Target.getObjectType());
 	}
 	
-	private ORef getSelectedType(int selectedType)
+	private ORef getSelectedRefOfType(int selectedType)
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
 		if (selectedHierarchies.length != 1)
