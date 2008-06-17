@@ -19,14 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.util.Vector;
+
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractVisibilityDoer extends ObjectsDoer
@@ -80,6 +86,32 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		
 		ORefList selectedHierarchy = selectedHierarchies[0];
 		return selectedHierarchy.getRefForType(selectedType);
+	}
+	
+	protected Vector<Command> hideDiagramFactors(DiagramObject diagramObject, ORefList diagramFactorRefs) throws Exception
+	{
+		Vector<Command> commandsToHide = new Vector();
+		for (int refIndex = 0; refIndex < diagramFactorRefs.size(); ++refIndex)
+		{
+			ORef diagramFactorRef = diagramFactorRefs.get(refIndex);
+			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
+			{
+				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
+				commandsToHide.addAll(createCommandsToHideStressDiagramFactor(diagramObject, diagramFactorToDelete));
+			}
+		}
+		
+		return commandsToHide;
+	}
+
+	public static Vector<Command> createCommandsToHideStressDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	{
+		Vector<Command> commandsToHide = new Vector();
+		FactorDeleteHelper helper = new FactorDeleteHelper(diagramObject);
+		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
+		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
+		
+		return commandsToHide;
 	}
 	
 	abstract protected void doWork() throws Exception;

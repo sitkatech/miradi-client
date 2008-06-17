@@ -25,6 +25,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Target;
@@ -47,7 +48,7 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 
 		Target stressTargetParent = Target.find(getProject(), getSelectedTargetRef());
 		DiagramFactor targetDiagramFactor = diagramModel.getDiagramFactor(stressTargetParent.getFactorId());
-		setStressLocation(diagramModel, helper, targetDiagramFactor, stressDiagramFactorId, selectedStressRef);
+		setStressLocation(diagramModel, helper, targetDiagramFactor, stressDiagramFactorId, stressTargetParent.getStressRefs(), selectedStressRef);
 		setStressSize(helper, stressDiagramFactorId);
 		
 		getDiagramView().getDiagramComponent().selectFactor(stressTargetParent.getFactorId());
@@ -58,13 +59,12 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		helper.setDiagramFactorSize(stressDiagramFactorId, DiagramFactor.DEFAULT_STRESS_SIZE);
 	}
 
-	private void setStressLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactor targetDiagramFactor, DiagramFactorId stressDiagramFactorId, ORef selectedStressRef)	throws Exception
+	protected void setStressLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList stressRefList, ORef stressRef)	throws Exception
 	{
-		Target target = (Target) targetDiagramFactor.getWrappedFactor();
-		int offset = target.getStressRefs().find(selectedStressRef);
-		Point stressLocation = new Point(targetDiagramFactor.getLocation());
+		int offset = stressRefList.find(stressRef);
+		Point stressLocation = new Point(parentDiagramFactor.getLocation());
 		stressLocation.x += (offset * getProject().getGridSize()); 
-		stressLocation.y += targetDiagramFactor.getSize().height;
-		helper.setDiagramFactorLocation(stressDiagramFactorId, stressLocation);
+		stressLocation.y += parentDiagramFactor.getSize().height;
+		helper.setDiagramFactorLocation(ownedDiagramFactorId, stressLocation);
 	}
 }
