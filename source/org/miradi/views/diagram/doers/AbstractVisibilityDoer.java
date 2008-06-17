@@ -149,7 +149,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return diagramFactorReferrers;
 	}
 	
-	protected void setLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList annotationRefList, ORef annotationRef)	throws Exception
+	protected void setLocation(FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList annotationRefList, ORef annotationRef)	throws Exception
 	{
 		int offset = annotationRefList.find(annotationRef);
 		Point location = new Point(parentDiagramFactor.getLocation());
@@ -184,7 +184,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		BaseObject annotationParent = getParent();
 		DiagramFactor parentDiagramFactor = diagramModel.getDiagramFactor(annotationParent.getRef());
 		
-		setLocation(diagramModel, helper, parentDiagramFactor, annotationDiagramFactorId, getAnnotationList(), selectedAnnotationRef);
+		setLocation(helper, parentDiagramFactor, annotationDiagramFactorId, getAnnotationList(), selectedAnnotationRef);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 		selectDiagramFactor(annotationParent.getRef());
 	}
