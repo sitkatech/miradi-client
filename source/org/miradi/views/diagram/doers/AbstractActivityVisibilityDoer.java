@@ -22,6 +22,8 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 
 
 abstract public class AbstractActivityVisibilityDoer extends AbstractVisibilityDoer
@@ -42,5 +44,15 @@ abstract public class AbstractActivityVisibilityDoer extends AbstractVisibilityD
 			return false;
 		
 		return isAvailable(selectedActivityRef);
+	}
+	
+	protected ORef getSelectedActivityRef()
+	{
+		return getSelectedRefOfType(Task.getObjectType());
+	}
+	
+	protected ORef getSelectedStrategyRef()
+	{
+		return getSelectedRefOfType(Strategy.getObjectType());
 	}
 }

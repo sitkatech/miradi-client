@@ -36,10 +36,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ObjectsDoer;
@@ -77,27 +73,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		}
 	}
 	
-	protected ORef getSelectedActivityRef()
-	{
-		return getSelectedRefOfType(Task.getObjectType());
-	}
-	
-	protected ORef getSelectedStrategyRef()
-	{
-		return getSelectedRefOfType(Strategy.getObjectType());
-	}
-	
-	protected ORef getSelectedStressRef()
-	{
-		return getSelectedRefOfType(Stress.getObjectType());
-	}
-
-	protected ORef getSelectedTargetRef()
-	{
-		return getSelectedRefOfType(Target.getObjectType());
-	}
-	
-	private ORef getSelectedRefOfType(int selectedType)
+	protected ORef getSelectedRefOfType(int selectedType)
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
 		if (selectedHierarchies.length != 1)

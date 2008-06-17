@@ -22,6 +22,8 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 
 public abstract class AbstractStressVisibilityDoer extends AbstractVisibilityDoer
 {
@@ -41,5 +43,15 @@ public abstract class AbstractStressVisibilityDoer extends AbstractVisibilityDoe
 			return false;
 		
 		return isAvailable(selectedStressRef);
+	}
+	
+	protected ORef getSelectedStressRef()
+	{
+		return getSelectedRefOfType(Stress.getObjectType());
+	}
+
+	protected ORef getSelectedTargetRef()
+	{
+		return getSelectedRefOfType(Target.getObjectType());
 	}
 }
