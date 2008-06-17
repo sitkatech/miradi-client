@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Task;
 
@@ -46,5 +47,16 @@ public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
 	protected ORef getSelectedAnnotationRef()
 	{
 		return getSelectedActivityRef();
+	}
+	
+	@Override
+	protected ORef getParentRef()
+	{
+		return getSelectedStrategyRef();
+	}
+	
+	protected ORefList getAnnotationList()
+	{
+		return new ORefList();
 	}
 }
