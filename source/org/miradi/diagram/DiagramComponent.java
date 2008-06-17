@@ -254,6 +254,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		getSelectionModel().addSelectionCells(cellsToSelect);
 	}
 
+	public void selectFactor(ORef factorRef)
+	{
+		if (!Factor.isFactor(factorRef.getObjectType()))
+			throw new RuntimeException("Trying to get FactorId from non factor ref.");
+		
+		selectFactor(new FactorId(factorRef.getObjectId().asInt()));
+	}
+	
 	public void selectFactor(FactorId idToUse)
 	{
 		try

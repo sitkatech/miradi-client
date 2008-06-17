@@ -29,10 +29,10 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -163,9 +163,30 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		helper.setDiagramFactorSize(diagramFactorId, size);
 	}
 	
-	protected void selectDiagramFactor(FactorId factorId)
+	protected void selectDiagramFactor(ORef factorRef)
 	{
-		getDiagramView().getDiagramComponent().selectFactor(factorId);
+		getDiagramView().getDiagramComponent().selectFactor(factorRef);
+	}
+	
+	protected BaseObject getParent()
+	{
+		return getProject().findObject(getParentRef());
+	}
+	
+	protected void showBubble(Dimension defaultSize) throws Exception, CommandFailedException
+	{
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();		
+		DiagramObject diagramObject = diagramModel.getDiagramObject();
+		ORef selectedAnnotationRef = getSelectedAnnotationRef();
+		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagramModel);
+		DiagramFactorId annotationDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedAnnotationRef).getCreatedId();
+
+		BaseObject annotationParent = getParent();
+		DiagramFactor parentDiagramFactor = diagramModel.getDiagramFactor(annotationParent.getRef());
+		
+		setLocation(diagramModel, helper, parentDiagramFactor, annotationDiagramFactorId, getAnnotationList(), selectedAnnotationRef);
+		setSize(helper, annotationDiagramFactorId, defaultSize);
+		selectDiagramFactor(annotationParent.getRef());
 	}
 
 	abstract protected Factor getFactor(ORef factorRef);
@@ -175,4 +196,8 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	abstract protected boolean isAvailable(ORef selectedFactorRef);
 	
 	abstract protected ORef getSelectedAnnotationRef();
+	
+	abstract protected ORef getParentRef();
+	
+	abstract protected ORefList getAnnotationList();
 }

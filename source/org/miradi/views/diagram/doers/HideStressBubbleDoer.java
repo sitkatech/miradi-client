@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 
 public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
@@ -55,5 +56,16 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 	protected ORef getSelectedAnnotationRef()
 	{
 		return getSelectedStressRef();
+	}
+	
+	@Override
+	protected ORef getParentRef()
+	{
+		return getSelectedTargetRef();
+	}
+	
+	protected ORefList getAnnotationList()
+	{
+		return ((Target) getParent()).getStressRefs();
 	}
 }
