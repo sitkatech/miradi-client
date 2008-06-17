@@ -30,8 +30,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ObjectsDoer;
 
@@ -66,6 +68,11 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	protected ORef getSelectedActivityRef()
+	{
+		return getSelectedRefOfType(Task.getObjectType());
 	}
 	
 	protected ORef getSelectedStressRef()
@@ -114,7 +121,25 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return commandsToHide;
 	}
 	
+	protected boolean isShowing(ORef factorRef)
+	{
+		DiagramObject diagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+		ORefList diagramFactorRefsFromDiagram = diagramObject.getAllDiagramFactorRefs();
+		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(factorRef);
+		
+		return diagramFactorRefsFromDiagram.containsAnyOf(diagramFactorReferrerRefs);
+	}
+
+	protected ORefList getDiagramFactorReferrerRefs(ORef factorRef)
+	{
+		Factor factor = getFactor(factorRef);
+		ORefList diagramFactorReferrers = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		return diagramFactorReferrers;
+	}
+
+	abstract protected Factor getFactor(ORef stressRef);
+	
 	abstract protected void doWork() throws Exception;
 	
-	abstract protected boolean isAvailable(ORef selectedStressRef);
+	abstract protected boolean isAvailable(ORef selectedFactorRef);
 }

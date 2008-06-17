@@ -20,25 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Task;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
 
-public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
+
+abstract public class AbstractActivityVisibilityDoer extends AbstractVisibilityDoer
 {
-
 	@Override
-	protected void doWork() throws Exception
+	public boolean isAvailable()
 	{
-	}
-
-	@Override
-	protected boolean isAvailable(ORef selectedFactorRef)
-	{
-		return !isShowing(selectedFactorRef);
-	}
-
-	protected Factor getFactor(ORef factorRef)
-	{
-		return Task.find(getProject(), factorRef);
+		boolean superIsAvailable = super.isAvailable();
+		if (!superIsAvailable)
+			return false;
+		
+		DiagramObject currentDiagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+		if (ConceptualModelDiagram.is(currentDiagramObject.getType()))
+			return false;
+		
+		ORef selectedActivityRef = getSelectedActivityRef();
+		if (selectedActivityRef.isInvalid())
+			return false;
+		
+		return isAvailable(selectedActivityRef);
 	}
 }

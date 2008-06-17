@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Task;
 
-public class ShowActityBubbleDoer extends AbstractVisibilityDoer
+public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 {
 
 	@Override
@@ -30,8 +32,13 @@ public class ShowActityBubbleDoer extends AbstractVisibilityDoer
 	}
 
 	@Override
-	protected boolean isAvailable(ORef selectedStressRef)
+	protected boolean isAvailable(ORef selectedFactorRef)
 	{
-		return false;
+		return !isShowing(selectedFactorRef);
+	}
+	
+	protected Factor getFactor(ORef factorRef)
+	{
+		return Task.find(getProject(), factorRef);
 	}
 }

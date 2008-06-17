@@ -28,6 +28,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 
@@ -66,5 +68,10 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		stressLocation.x += (offset * getProject().getGridSize()); 
 		stressLocation.y += parentDiagramFactor.getSize().height;
 		helper.setDiagramFactorLocation(ownedDiagramFactorId, stressLocation);
+	}
+	
+	protected Factor getFactor(ORef factorRef)
+	{
+		return Stress.find(getProject(), factorRef);
 	}
 }
