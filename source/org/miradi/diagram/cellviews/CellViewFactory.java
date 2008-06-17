@@ -54,6 +54,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new RoundedRectangleFactorView(diagramFactor);
 		}
+		if(diagramFactor.isActivity())
+		{
+			return new RoundedRectangleFactorView(diagramFactor);
+		}
 		if(diagramFactor.isContributingFactor())
 		{
 			return new RectangleFactorView(diagramFactor);

@@ -35,15 +35,10 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
 	public TaskPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		this(mainWindow, BaseId.INVALID);
-	}
-	
-	public TaskPropertiesPanel(MainWindow mainWindow, BaseId idToEdit) throws Exception
-	{
-		super(mainWindow.getProject(), ObjectType.TASK, idToEdit);
+		super(mainWindow.getProject(), ObjectType.TASK, BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		setBorder(BorderFactory.createEtchedBorder());
-		inputPanel = new TaskPropertiesInputPanel(mainWindow, idToEdit);
+		inputPanel = TaskPropertiesInputPanel.createWithVisibilityPanel(mainWindow);
 		
 		String hintAboutPlanningView = EAM.text("<html><em>HINT: " +
 				"To manage the details about who will do the work and when, " +
@@ -64,12 +59,8 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		if (orefsToUse.length==0)
-			inputPanel.setObjectRef(new ORef(ObjectType.FAKE,BaseId.INVALID));
-		else
-			inputPanel.setObjectRef(orefsToUse[0]);
-	}
-	
+		inputPanel.setObjectRefs(orefsToUse);
+	}	
 	
 	public String getPanelDescription()
 	{

@@ -331,6 +331,7 @@ public class DiagramFactor extends BaseObject
 	static final String OBJECT_NAME = "DiagramFactor";
 	
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
+	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
 
 	private DimensionData size;
 	private PointData location;
