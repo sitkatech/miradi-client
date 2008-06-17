@@ -188,6 +188,18 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 		selectDiagramFactor(annotationParent.getRef());
 	}
+	
+	protected void hideBubble() throws Exception, CommandFailedException
+	{
+		ORef selectedAnnotationRef = getSelectedAnnotationRef();
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
+		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedAnnotationRef);
+		ORefList diagramFactorRefsFromCurrentDiagram = diagramModel.getDiagramObject().getAllDiagramFactorRefs();		
+		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
+		
+		Vector commandsToHideBubble = hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
+		getProject().executeCommandsWithoutTransaction(commandsToHideBubble);
+	}
 
 	abstract protected Factor getFactor(ORef factorRef);
 	
