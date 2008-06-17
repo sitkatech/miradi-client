@@ -134,11 +134,10 @@ public class ExportTableDoer extends ViewDoer
 	
 	private void writeWithoutNewLines(UnicodeWriter out, String stringToWrite) throws Exception
 	{
+		final String BLANK_SPACE = " ";
+		final String NEW_LINE = "\n";
 		String stringWithoutNewLines = stringToWrite.replaceAll(NEW_LINE, BLANK_SPACE);
 
 		out.write(stringWithoutNewLines);
 	}
-	
-	private static final String BLANK_SPACE = " ";
-	public static final String NEW_LINE = "\n";
 }
