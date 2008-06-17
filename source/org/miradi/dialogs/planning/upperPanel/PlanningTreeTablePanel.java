@@ -172,9 +172,8 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 	{
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
 		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
+		table.restoreSavedRowHeight();
 		
-		table.setRowHeight(treeToUse.getRowHeight());	
-
 		selectionController.addTable(table);
 		rowHeightController.addTable(table);
 		listenForColumnWidthChanges(table);

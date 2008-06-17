@@ -48,7 +48,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		restoreRowHeight();
 	}
 	
-	private void restoreRowHeight()
+	public void restoreRowHeight()
 	{
 		int rowHeight = getPreferences().getTaggedInt(getKey());
 		if(rowHeight > 0)
