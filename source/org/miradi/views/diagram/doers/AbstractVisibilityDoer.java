@@ -24,6 +24,9 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractVisibilityDoer extends ObjectsDoer
@@ -57,6 +60,26 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	protected ORef getSelectedStressRef()
+	{
+		return getSelectedRefOfType(Stress.getObjectType());
+	}
+
+	protected ORef getSelectedTargetRef()
+	{
+		return getSelectedRefOfType(Target.getObjectType());
+	}
+	
+	private ORef getSelectedRefOfType(int selectedType)
+	{
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
+		if (selectedHierarchies.length != 1)
+			return ORef.INVALID;
+		
+		ORefList selectedHierarchy = selectedHierarchies[0];
+		return selectedHierarchy.getRefForType(selectedType);
 	}
 	
 	abstract protected void doWork() throws Exception;

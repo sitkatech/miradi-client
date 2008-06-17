@@ -25,7 +25,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
 
 public abstract class AbstractStressVisibilityDoer extends AbstractVisibilityDoer
 {
@@ -45,26 +44,6 @@ public abstract class AbstractStressVisibilityDoer extends AbstractVisibilityDoe
 			return false;
 		
 		return isAvailable(selectedStressRef);
-	}
-
-	protected ORef getSelectedStressRef()
-	{
-		return getSelectedRefOfType(Stress.getObjectType());
-	}
-
-	protected ORef getSelectedTargetRef()
-	{
-		return getSelectedRefOfType(Target.getObjectType());
-	}
-	
-	private ORef getSelectedRefOfType(int selectedType)
-	{
-		ORefList[] selectedHierarchies = getSelectedHierarchies();
-		if (selectedHierarchies.length != 1)
-			return ORef.INVALID;
-		
-		ORefList selectedHierarchy = selectedHierarchies[0];
-		return selectedHierarchy.getRefForType(selectedType);
 	}
 
 	protected boolean isShowing(ORef stressRef)
