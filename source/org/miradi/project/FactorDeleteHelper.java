@@ -82,10 +82,10 @@ public class FactorDeleteHelper
 	private void deleteStressDiagramFactorInCurrentDiagram(Stress stress) throws Exception
 	{
 		ORefList diagramFactorReferrerRefs = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		ORefList currenContainedDiagramFactors = getDiagramObject().getAllDiagramFactorRefs();
+		ORefList currentContainedDiagramFactors = getDiagramObject().getAllDiagramFactorRefs();
 		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
 		{
-			if (currenContainedDiagramFactors.contains(diagramFactorReferrerRefs.get(index)))
+			if (currentContainedDiagramFactors.contains(diagramFactorReferrerRefs.get(index)))
 			{
 				DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorReferrerRefs.get(index));		
 				removeFromDiagramAndDelete(diagramFactor);
