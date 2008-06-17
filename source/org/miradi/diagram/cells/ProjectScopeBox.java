@@ -26,6 +26,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.swing.JTextPane;
 
@@ -36,6 +37,8 @@ import org.miradi.diagram.DiagramModelListener;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.FontFamiliyQuestion;
@@ -153,11 +156,13 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public Rectangle2D computeCurrentTargetBounds()
 	{
 		Rectangle2D bounds = null;
-		FactorCell[] factorCells = model.getAllDiagramTargets();
-		for(int i=0; i < factorCells.length; ++i)
+		Vector<FactorCell> targetCells = model.getAllDiagramTargets();
+		targetCells.addAll(getGroupBoxesCovertingTargets(targetCells));
+		
+		for(int i=0; i < targetCells.size(); ++i)
 		{
-			FactorCell node = factorCells[i];
-			if(node.isTarget())
+			FactorCell node = targetCells.get(i);
+			if(node.isTarget() || node.isGroupBox())
 			{
 				if(bounds == null)
 					bounds = (Rectangle2D)node.getBounds().clone();
@@ -182,6 +187,30 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
+	}
+
+	private Vector<FactorCell> getGroupBoxesCovertingTargets(Vector<FactorCell> factorCells)
+	{
+		try
+		{
+			Vector<FactorCell> groupBoxCells = new Vector();
+			for (int index = 0; index < factorCells.size(); ++index)
+			{
+				DiagramFactor diagramFactor = factorCells.get(index).getDiagramFactor();
+				ORef groupBoxRef = diagramFactor.getOwningGroupBox();
+				if (diagramFactor.isCoveredByGroupBox() &&  model.containsDiagramFactor(groupBoxRef))
+				{
+					groupBoxCells.add(model.getFactorCellByRef(groupBoxRef));
+				}
+			}
+
+			return groupBoxCells;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new Vector<FactorCell>();
+		}
 	}
 
 	public void factorAdded(DiagramModelEvent event)
