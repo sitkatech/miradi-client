@@ -36,6 +36,6 @@ public class ActionShowActivityBubble extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show this Activity so it appears on this Results Chain page");
+		return EAM.text("TT|Show this Activity so it appears on this Results Chain");
 	}
 }
