@@ -44,7 +44,7 @@ public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 		setLocation(diagramModel, helper, strategyDiagramFactor, activityDiagramFactorId, activityStrategyParent.getActivityRefs(), selectedActivityRef);
 		setSize(helper, activityDiagramFactorId, DiagramFactor.DEFAULT_ACTIVITY_SIZE);
 		
-		getDiagramView().getDiagramComponent().selectFactor(activityStrategyParent.getFactorId());
+		selectDiagramFactor(activityStrategyParent.getFactorId());
 	}
 
 	@Override
