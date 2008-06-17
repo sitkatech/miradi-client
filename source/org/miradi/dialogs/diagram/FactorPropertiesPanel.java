@@ -230,7 +230,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
 		}
 
-		if (factor.isTarget() && getProject().getMetadata().isStressBasedThreatRatingMode())
+		if (factor.isTarget())
 		{
 			stressTab = new StressListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
