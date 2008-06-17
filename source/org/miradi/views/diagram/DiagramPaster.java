@@ -504,6 +504,11 @@ abstract public class DiagramPaster
 		}
 	}
 
+	private boolean isPastingIntoResultsChain()
+	{
+		return ResultsChainDiagram.is(getDiagramObject().getType());
+	}
+	
 	private boolean isPastingIntoConceptualModel()
 	{
 		return ConceptualModelDiagram.is(getDiagramObject().getType());
@@ -793,6 +798,9 @@ abstract public class DiagramPaster
 		
 		Stress stress = Stress.find(getProject(), newWrappedRef);
 		if (stress == null)
+			return false;
+		
+		if (isPastingIntoResultsChain())
 			return false;
 		
 		ORefList targetReferrerRefs = stress.findObjectsThatReferToUs(Target.getObjectType());
