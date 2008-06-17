@@ -24,6 +24,8 @@ import java.util.Vector;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Stress;
 
 public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
@@ -42,5 +44,10 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 		
 		Vector commandsToHideStressBubble = hideDiagramFactors(diagramModel.getDiagramObject(), diagramFactorRefsToBeRemoved);
 		getProject().executeCommandsWithoutTransaction(commandsToHideStressBubble);
+	}
+	
+	protected Factor getFactor(ORef factorRef)
+	{
+		return Stress.find(getProject(), factorRef);
 	}
 }
