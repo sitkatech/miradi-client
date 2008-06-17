@@ -63,25 +63,30 @@ public class FactorDeleteHelper
 		if (Target.is(diagramFactorToDelete.getWrappedType()))
 		{	
 			Target target = (Target) diagramFactorToDelete.getWrappedFactor();
-			deleteRelatedStressDiagramFactors(target);
+			deleteRelatedFactorDiagramFactors(target.getStressRefs());
+		}
+		
+		if (Strategy.is(diagramFactorToDelete.getWrappedType()))
+		{
+			Strategy strategy = (Strategy) diagramFactorToDelete.getWrappedFactor();
+			deleteRelatedFactorDiagramFactors(strategy.getActivityRefs());
 		}
 		
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
 	}
 
-	private void deleteRelatedStressDiagramFactors(Target target) throws Exception
+	private void deleteRelatedFactorDiagramFactors(ORefList factorRefs) throws Exception
 	{
-		ORefList stressRefs = target.getStressRefs();
-		for (int index = 0; index < stressRefs.size(); ++index)
+		for (int index = 0; index < factorRefs.size(); ++index)
 		{
-			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			deleteStressDiagramFactorInCurrentDiagram(stress);
+			Factor factor = (Factor) getProject().findObject(factorRefs.get(index));
+			deleteFactorDiagramFactorInCurrentDiagram(factor);
 		}
 	}
 
-	private void deleteStressDiagramFactorInCurrentDiagram(Stress stress) throws Exception
+	private void deleteFactorDiagramFactorInCurrentDiagram(Factor factor) throws Exception
 	{
-		ORefList diagramFactorReferrerRefs = stress.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		ORefList currentContainedDiagramFactors = getDiagramObject().getAllDiagramFactorRefs();
 		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
 		{
