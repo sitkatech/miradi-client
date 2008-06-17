@@ -19,13 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Point;
-
 import org.miradi.diagram.DiagramModel;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -50,26 +46,12 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 
 		Target stressTargetParent = Target.find(getProject(), getSelectedTargetRef());
 		DiagramFactor targetDiagramFactor = diagramModel.getDiagramFactor(stressTargetParent.getFactorId());
-		setStressLocation(diagramModel, helper, targetDiagramFactor, stressDiagramFactorId, stressTargetParent.getStressRefs(), selectedStressRef);
-		setStressSize(helper, stressDiagramFactorId);
+		setLocation(diagramModel, helper, targetDiagramFactor, stressDiagramFactorId, stressTargetParent.getStressRefs(), selectedStressRef);
+		setSize(helper, stressDiagramFactorId, DiagramFactor.DEFAULT_STRESS_SIZE);
 		
 		getDiagramView().getDiagramComponent().selectFactor(stressTargetParent.getFactorId());
 	}
 
-	private void setStressSize(FactorCommandHelper helper, DiagramFactorId stressDiagramFactorId) throws CommandFailedException
-	{
-		helper.setDiagramFactorSize(stressDiagramFactorId, DiagramFactor.DEFAULT_STRESS_SIZE);
-	}
-
-	protected void setStressLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList stressRefList, ORef stressRef)	throws Exception
-	{
-		int offset = stressRefList.find(stressRef);
-		Point stressLocation = new Point(parentDiagramFactor.getLocation());
-		stressLocation.x += (offset * getProject().getGridSize()); 
-		stressLocation.y += parentDiagramFactor.getSize().height;
-		helper.setDiagramFactorLocation(ownedDiagramFactorId, stressLocation);
-	}
-	
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Stress.find(getProject(), factorRef);

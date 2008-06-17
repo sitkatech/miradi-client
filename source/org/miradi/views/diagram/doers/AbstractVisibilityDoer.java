@@ -19,12 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -35,6 +39,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ObjectsDoer;
 
@@ -110,14 +115,14 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
 			{
 				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
-				commandsToHide.addAll(createCommandsToHideStressDiagramFactor(diagramObject, diagramFactorToDelete));
+				commandsToHide.addAll(createCommandsToHideDiagramFactor(diagramObject, diagramFactorToDelete));
 			}
 		}
 		
 		return commandsToHide;
 	}
 
-	public static Vector<Command> createCommandsToHideStressDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	public static Vector<Command> createCommandsToHideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		Vector<Command> commandsToHide = new Vector();
 		FactorDeleteHelper helper = new FactorDeleteHelper(diagramObject);
@@ -142,8 +147,22 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		ORefList diagramFactorReferrers = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		return diagramFactorReferrers;
 	}
+	
+	protected void setLocation(DiagramModel diagramModel, FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList annotationRefList, ORef annotationRef)	throws Exception
+	{
+		int offset = annotationRefList.find(annotationRef);
+		Point location = new Point(parentDiagramFactor.getLocation());
+		location.x += (offset * getProject().getGridSize()); 
+		location.y += parentDiagramFactor.getSize().height;
+		helper.setDiagramFactorLocation(ownedDiagramFactorId, location);
+	}
+		
+	protected void setSize(FactorCommandHelper helper, DiagramFactorId diagramFactorId, Dimension size) throws CommandFailedException
+	{
+		helper.setDiagramFactorSize(diagramFactorId, size);
+	}
 
-	abstract protected Factor getFactor(ORef stressRef);
+	abstract protected Factor getFactor(ORef factorRef);
 	
 	abstract protected void doWork() throws Exception;
 	
