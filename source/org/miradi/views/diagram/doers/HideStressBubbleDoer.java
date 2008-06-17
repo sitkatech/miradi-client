@@ -38,7 +38,7 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 	
 	protected void doWork() throws Exception
 	{
-		ORef selectedStressRef = getSelectedStress();
+		ORef selectedStressRef = getSelectedStressRef();
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedStressRef);
 		ORefList diagramFactorRefsFromCurrentDiagram = diagramModel.getDiagramObject().getAllDiagramFactorRefs();		
