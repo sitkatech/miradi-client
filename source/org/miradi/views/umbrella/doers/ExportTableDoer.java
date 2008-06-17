@@ -80,7 +80,8 @@ public class ExportTableDoer extends ViewDoer
 				for (int column = 0; column < columnCount; ++column)
 				{
 					pad(out, table.getDepth(row), column);
-					writeWithoutNewLines(out, getSafeValue(table, row, column) + "\t");
+					String safeValue = getSafeValue(table, row, column);
+					out.write(removeTabsAndNewLines(safeValue) + "\t");
 					
 					int postPadCount = maxDepth - table.getDepth(row);
 					pad(out, postPadCount, column);
@@ -109,7 +110,7 @@ public class ExportTableDoer extends ViewDoer
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			writeWithoutNewLines(out, table.getHeaderFor(column) + "\t");
+			out.write(removeTabsAndNewLines(table.getHeaderFor(column)) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		
@@ -128,16 +129,17 @@ public class ExportTableDoer extends ViewDoer
 		
 		for (int i = 0; i < padCount; ++i)
 		{
-			writeWithoutNewLines(out, "\t");
+			out.write("\t");
 		}
 	}
 	
-	private void writeWithoutNewLines(UnicodeWriter out, String stringToWrite) throws Exception
+	private String removeTabsAndNewLines(String string)
 	{
 		final String BLANK_SPACE = " ";
+		final String TAB = "\t";
 		final String NEW_LINE = "\n";
-		String stringWithoutNewLines = stringToWrite.replaceAll(NEW_LINE, BLANK_SPACE);
-
-		out.write(stringWithoutNewLines);
+		
+		String tabLessString = string.replaceAll(TAB, BLANK_SPACE);
+		return tabLessString.replaceAll(NEW_LINE, BLANK_SPACE);
 	}
 }
