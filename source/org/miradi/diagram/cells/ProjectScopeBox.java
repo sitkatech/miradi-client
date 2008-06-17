@@ -25,7 +25,6 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -38,8 +37,6 @@ import org.miradi.diagram.DiagramModelListener;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.FontFamiliyQuestion;
@@ -158,7 +155,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		Rectangle2D bounds = null;
 		Vector<FactorCell> targetCells = model.getAllDiagramTargets();
-		targetCells.addAll(getGroupBoxesCovered(targetCells));
 		
 		for(int i=0; i < targetCells.size(); ++i)
 		{
@@ -188,33 +184,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
-	}
-
-	private HashSet<FactorCell> getGroupBoxesCovered(Vector<FactorCell> factorCells)
-	{
-		try
-		{
-			HashSet<FactorCell> groupBoxCells = new HashSet<FactorCell>();
-			for (int index = 0; index < factorCells.size(); ++index)
-			{
-				DiagramFactor diagramFactor = factorCells.get(index).getDiagramFactor();
-				if (!diagramFactor.isCoveredByGroupBox())
-					continue;
-				
-				ORef groupBoxRef = diagramFactor.getOwningGroupBox();
-				if (model.containsDiagramFactor(groupBoxRef))
-				{
-					groupBoxCells.add(model.getFactorCellByRef(groupBoxRef));
-				}
-			}
-
-			return groupBoxCells;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new HashSet<FactorCell>();
-		}
 	}
 
 	public void factorAdded(DiagramModelEvent event)
