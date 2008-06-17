@@ -628,6 +628,15 @@ public class DiagramModel extends DefaultGraphModel
 		
 		return true;
 	}
+
+	public boolean containsDiagramFactor(ORef diagramFactorRef)
+	{
+		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		int idAsInt = diagramFactorRef.getObjectId().asInt();
+		DiagramFactorId diagramFactorId = new DiagramFactorId(idAsInt);
+		return containsDiagramFactor(diagramFactorId);
+	}
+
 	
 	public FactorLink getRawFactorLink(DiagramLink diagramFactorLink)
 	{
@@ -969,7 +978,12 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getGoalPool();
 	}
 	
-	public FactorCell[] getAllDiagramTargets()
+	public FactorCell[] getAllDiagramTargetsAsArray()
+	{
+		return getAllDiagramTargets().toArray(new FactorCell[0]);
+	}
+	
+	public Vector<FactorCell> getAllDiagramTargets()
 	{
 		Vector allTargets = new Vector();
 		Vector allFactors = getAllFactorCells();
@@ -980,7 +994,7 @@ public class DiagramModel extends DefaultGraphModel
 				allTargets.add(diagramFactor);
 		}
 		
-		return (FactorCell[])allTargets.toArray(new FactorCell[0]);
+		return allTargets;
 	}
 	
 	public void updateGroupBoxCells()

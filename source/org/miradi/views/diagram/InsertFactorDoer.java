@@ -198,7 +198,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	public Point getTargetLocation(DiagramModel diagramModel, Rectangle visibleRectangle, int factorWidth) throws Exception
 	{
 		Point deltaPoint = new Point();
-		FactorCell[] allTargets = diagramModel.getAllDiagramTargets();
+		FactorCell[] allTargets = diagramModel.getAllDiagramTargetsAsArray();
 
 		if (allTargets.length == 0)
 		{
