@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.views.ObjectsDoer;
@@ -37,6 +38,10 @@ public abstract class AbstractStressVisibilityDoer extends ObjectsDoer
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
+			return false;
+		
+		DiagramObject currentDiagramObject = getDiagramView().getDiagramModel().getDiagramObject();
+		if (ResultsChainDiagram.is(currentDiagramObject.getType()))
 			return false;
 		
 		ORef selectedStressRef = getSelectedStressRef();
