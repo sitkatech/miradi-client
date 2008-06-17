@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -73,6 +74,11 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	protected ORef getSelectedActivityRef()
 	{
 		return getSelectedRefOfType(Task.getObjectType());
+	}
+	
+	protected ORef getSelectedStrategyRef()
+	{
+		return getSelectedRefOfType(Strategy.getObjectType());
 	}
 	
 	protected ORef getSelectedStressRef()

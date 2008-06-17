@@ -23,6 +23,7 @@ package org.miradi.dialogs.task;
 import java.awt.Component;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -38,18 +39,26 @@ import org.miradi.objects.Task;
 
 public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
 {
-	public TaskPropertiesInputPanel(MainWindow mainWindow) throws Exception
+	public static TaskPropertiesInputPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
 	{
-		this(mainWindow, BaseId.INVALID);
+		ActivityFactorVisibilityControlPanel visibilityPanel = new ActivityFactorVisibilityControlPanel(mainWindow);
+		return new TaskPropertiesInputPanel(mainWindow, visibilityPanel, BaseId.INVALID);
 	}
 	
-	public TaskPropertiesInputPanel(MainWindow mainWindow, BaseId idToEdit) throws Exception
+	public static TaskPropertiesInputPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
+	{
+		return new TaskPropertiesInputPanel(mainWindow, null, BaseId.INVALID);
+	}
+
+	private TaskPropertiesInputPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel, BaseId idToEdit) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.TASK, idToEdit);
 		setLayout(new OneColumnGridLayout());
 		
 		addSubPanelWithTitledBorder(new TaskDetailsPanel(mainWindow.getProject(), mainWindow.getActions(), idToEdit));
-		
+		if(visibilityPanel != null)
+			addSubPanelWithTitledBorder(visibilityPanel);
+
 		hasBothSubTaskAssignmentsWarningLabel = new PanelTitleLabel(EAM.text("NOTE: The budget total for this task is the sum of the budget totals of its subtasks. The resource assignments below are not included in this value."));
 		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID));
 		addSubPanelWithTitledBorder(budgetSubPanel);
