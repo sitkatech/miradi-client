@@ -26,16 +26,16 @@ import org.miradi.objects.Task;
 
 public class HideActivityBubbleDoer extends AbstractActivityVisibilityDoer
 {
-
 	@Override
 	protected void doWork() throws Exception
 	{
+		hideBubble();
 	}
 
 	@Override
 	protected boolean isAvailable(ORef selectedFactorRef)
 	{
-		return !isShowing(selectedFactorRef);
+		return isShowing(selectedFactorRef);
 	}
 
 	protected Factor getFactor(ORef factorRef)
