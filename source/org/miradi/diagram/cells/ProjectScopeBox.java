@@ -25,6 +25,7 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -157,7 +158,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		Rectangle2D bounds = null;
 		Vector<FactorCell> targetCells = model.getAllDiagramTargets();
-		targetCells.addAll(getGroupBoxesCovertingTargets(targetCells));
+		targetCells.addAll(getGroupBoxesCovered(targetCells));
 		
 		for(int i=0; i < targetCells.size(); ++i)
 		{
@@ -189,16 +190,19 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return result;
 	}
 
-	private Vector<FactorCell> getGroupBoxesCovertingTargets(Vector<FactorCell> factorCells)
+	private HashSet<FactorCell> getGroupBoxesCovered(Vector<FactorCell> factorCells)
 	{
 		try
 		{
-			Vector<FactorCell> groupBoxCells = new Vector();
+			HashSet<FactorCell> groupBoxCells = new HashSet<FactorCell>();
 			for (int index = 0; index < factorCells.size(); ++index)
 			{
 				DiagramFactor diagramFactor = factorCells.get(index).getDiagramFactor();
+				if (!diagramFactor.isCoveredByGroupBox())
+					continue;
+				
 				ORef groupBoxRef = diagramFactor.getOwningGroupBox();
-				if (diagramFactor.isCoveredByGroupBox() &&  model.containsDiagramFactor(groupBoxRef))
+				if (model.containsDiagramFactor(groupBoxRef))
 				{
 					groupBoxCells.add(model.getFactorCellByRef(groupBoxRef));
 				}
@@ -209,7 +213,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new Vector<FactorCell>();
+			return new HashSet<FactorCell>();
 		}
 	}
 
