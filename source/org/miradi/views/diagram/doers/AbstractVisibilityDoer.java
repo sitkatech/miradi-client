@@ -55,7 +55,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 			return;
 
 		if (!isInDiagram())
-			throw new RuntimeException("Added doer to wrong view");
+			throw new RuntimeException("Doer executed from wrong view");
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
