@@ -26,7 +26,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import javax.swing.JTextPane;
 
@@ -37,7 +36,12 @@ import org.miradi.diagram.DiagramModelListener;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.FontFamiliyQuestion;
 
@@ -153,21 +157,21 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public Rectangle2D computeCurrentTargetBounds()
 	{
-		Rectangle2D bounds = null;
-		Vector<FactorCell> targetCells = model.getAllDiagramTargets();
-		
-		for(int i=0; i < targetCells.size(); ++i)
-		{
-			FactorCell node = targetCells.get(i);
-			if(node.isTarget() || node.isGroupBox())
-			{
-				if(bounds == null)
-					bounds = (Rectangle2D)node.getBounds().clone();
+		DiagramObject diagramObject = model.getDiagramObject();
+		if(diagramObject == null)
+			return new Rectangle();
 
-				Rectangle tempRect = new Rectangle();
-				Rectangle.union(bounds, node.getBounds(), tempRect);
-				bounds = tempRect;
-			}
+		Rectangle2D bounds = null;
+		
+		ORefList allDiagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
+		for(int i=0; i < allDiagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(i));
+			if(!Target.is(diagramFactor.getWrappedType()))
+				continue;
+			
+			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactor);
+			bounds = getSafeUnion(bounds, targetBounds);
 		}
 		
 		if(bounds == null)
@@ -184,6 +188,25 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
+	}
+
+	private Rectangle2D getSafeUnion(Rectangle2D bounds, Rectangle targetBounds)
+	{
+		if(bounds == null)
+			return new Rectangle(targetBounds);
+
+		Rectangle unionResult = new Rectangle();
+		Rectangle.union(bounds, targetBounds, unionResult);
+		return unionResult;
+	}
+
+	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(DiagramFactor diagramFactor)
+	{
+		ORef groupBoxRef = diagramFactor.getOwningGroupBox();
+		if(!groupBoxRef.isInvalid())
+			diagramFactor = DiagramFactor.find(getProject(), groupBoxRef);
+		
+		return diagramFactor.getBounds();
 	}
 
 	public void factorAdded(DiagramModelEvent event)
