@@ -36,6 +36,11 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		addRowHeightSaver();
 	}
 	
+	public void restoreSavedRowHeight()
+	{
+		rowHeightSaver.restoreRowHeight();
+	}
+	
 	protected void addRowHeightSaver()
 	{
 		rowHeightSaver = new TableRowHeightSaver();
