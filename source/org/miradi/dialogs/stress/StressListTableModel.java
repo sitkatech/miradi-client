@@ -30,7 +30,7 @@ public class StressListTableModel extends ObjectListTableModel
 {
 	public StressListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags());
+		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags(projectToUse));
 	}
 
 	public ChoiceQuestion getColumnQuestion(int column)
@@ -38,8 +38,8 @@ public class StressListTableModel extends ObjectListTableModel
 		return StressPoolTableModel.createQuestionForTag(getColumnTag(column));
 	}
 	
-	private static String[] getColumnTags()
+	private static String[] getColumnTags(Project projectToUse)
 	{
-		return StressPoolTableModel.COLUMN_TAGS;
+		return StressPoolTableModel.getStressColumnTags(projectToUse);
 	}
 }

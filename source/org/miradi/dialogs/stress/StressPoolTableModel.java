@@ -31,9 +31,9 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 {
 	public StressPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, Stress.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, Stress.getObjectType(), getStressColumnTags(projectToUse));
 	}
-	
+
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		return createQuestionForTag(getColumnTag(column));
@@ -53,7 +53,15 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 		return null;
 	}
 	
-	public static final String[] COLUMN_TAGS = new String[] {
+	public static String[] getStressColumnTags(Project projectToUse)
+	{
+		if (projectToUse.isStressBaseMode())
+			return STRESS_BASED_COLUMN_TAGS;
+		
+		return SIMPLE_MODE_COLUMN_TAGS;
+	}
+	
+	private static final String[] STRESS_BASED_COLUMN_TAGS = new String[] {
 		Stress.TAG_SHORT_LABEL, 
 		Stress.TAG_LABEL,
 		Stress.TAG_SCOPE, 
@@ -61,4 +69,10 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 		Stress.PSEUDO_STRESS_RATING,
 		Stress.TAG_DETAIL,
 	};
+	
+	private static final String[] SIMPLE_MODE_COLUMN_TAGS = new String[] {
+			Stress.TAG_SHORT_LABEL, 
+			Stress.TAG_LABEL,
+			Stress.TAG_DETAIL,
+		};
 }
