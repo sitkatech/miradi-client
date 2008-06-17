@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
@@ -271,6 +272,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return false;
 		
 		if (type == Stress.getObjectType())
+			return false;
+		
+		if (type == Task.getObjectType())
 			return false;
 		
 		return true; 

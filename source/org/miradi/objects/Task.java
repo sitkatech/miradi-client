@@ -25,8 +25,8 @@ import java.util.Vector;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
-import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
@@ -41,21 +41,19 @@ import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class Task extends BaseObject
+public class Task extends Factor
 {
-	public Task(ObjectManager objectManager, BaseId idToUse) throws Exception
+	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, new TaskId(idToUse.asInt()));
+		super(objectManager, idToUse, Factor.TYPE_ACTIVITY);
 		clear();
 	}
 	
-	public Task(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public Task(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new TaskId(idAsInt), json);
+		super(objectManager, idToUse, Factor.TYPE_ACTIVITY, json);
 	}
-	
-	
-	
+		
 	public Vector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
 		Vector deleteIds = new Vector();
@@ -154,6 +152,11 @@ public class Task extends BaseObject
 				break;
 		}
 		return list;
+	}
+	
+	public boolean isActivityFactor()
+	{
+		return true;
 	}
 	
 	//NOTE: this is not testing if this is a Task object...

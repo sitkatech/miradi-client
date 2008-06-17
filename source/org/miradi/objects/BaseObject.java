@@ -193,7 +193,7 @@ abstract public class BaseObject
 				return new ValueOption(objectManager, idAsInt, json);
 				
 			case ObjectType.TASK:
-				return new Task(objectManager, idAsInt, json);
+				return new Task(objectManager, new FactorId(idAsInt), json);
 			
 			case ObjectType.STRESS:
 				return new Stress(objectManager, new FactorId(idAsInt), json);

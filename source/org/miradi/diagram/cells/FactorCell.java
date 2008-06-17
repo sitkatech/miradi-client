@@ -350,6 +350,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return underlyingObject.isStress();
 	}
 	
+	public boolean isActivity()
+	{
+		return underlyingObject.isActivityFactor();
+	}
+	
 	public boolean isStrategy()
 	{
 		return underlyingObject.isStrategy();

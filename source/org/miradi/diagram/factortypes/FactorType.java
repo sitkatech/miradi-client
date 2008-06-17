@@ -21,6 +21,7 @@ package org.miradi.diagram.factortypes;
 
 import javax.swing.Icon;
 
+import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
@@ -39,6 +40,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 
@@ -91,6 +93,11 @@ public abstract class FactorType
 		return false;
 	}
 	
+	public boolean isActivity()
+	{
+		return false;
+	}
+	
 	public boolean equals(Object other)
 	{
 		return getClass().getName().equals(other.getClass().getName());
@@ -130,6 +137,9 @@ public abstract class FactorType
 		if (factor.isStress())
 			return EAM.fieldLabel(Stress.getObjectType(), Stress.OBJECT_NAME);
 		
+		if (factor.isActivityFactor())
+			return EAM.fieldLabel(Task.getObjectType(), Task.ACTIVITY_NAME);
+		
 		throw new RuntimeException("Unknown factor type " + factor.getRef());
 	}
 
@@ -150,6 +160,9 @@ public abstract class FactorType
 		
 		if (factor.isStress())
 			return new StressIcon();
+		
+		if (factor.isActivityFactor())
+			return new ActivityIcon();
 		
 		if (factor.isIntermediateResult())
 			return new IntermediateResultIcon();
@@ -192,6 +205,9 @@ public abstract class FactorType
 		
 		else if (factorType.equals(FactorTypeStress.STRESS_TYPE))
 			return ObjectType.STRESS;
+		
+		else if (factorType.equals(FactorTypeActivity.ACTIVITY_TYPE))
+			return ObjectType.TASK;
 		
 		throw new RuntimeException("Unknown factor type: " + factorType);
 	}

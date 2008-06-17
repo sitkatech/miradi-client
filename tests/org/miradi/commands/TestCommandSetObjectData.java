@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.commands;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
 import org.miradi.main.TestCaseWithProject;
@@ -48,7 +48,7 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 	
 	public void testListInsert() throws Exception
 	{
-		Task task = new Task(getObjectManager(), new BaseId(39));
+		Task task = new Task(getObjectManager(), new FactorId(39));
 		TaskId id1 = new TaskId(75);
 		CommandSetObjectData fromEmpty = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id1, 0);
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
@@ -67,7 +67,7 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 	
 	public void testListRemove() throws Exception
 	{
-		Task task = new Task(getObjectManager(), new BaseId(47));
+		Task task = new Task(getObjectManager(), new FactorId(47));
 		task.addSubtaskId(new BaseId(12));
 		BaseId id2 = new BaseId(99);
 		task.addSubtaskId(id2);

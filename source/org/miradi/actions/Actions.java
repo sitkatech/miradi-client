@@ -411,6 +411,8 @@ public class Actions
 		registerAction(new ActionActivityMoveDown(mainWindow));
 		registerAction(new ActionShowStressBubble(mainWindow));
 		registerAction(new ActionHideStressBubble(mainWindow));
+		registerAction(new ActionShowActivityBubble(mainWindow));
+		registerAction(new ActionHideActivityBubble(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

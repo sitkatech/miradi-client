@@ -35,6 +35,7 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
+import org.miradi.diagram.cells.DiagramActivityCell;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramIntermediateResultCell;
@@ -77,6 +78,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -161,6 +163,9 @@ public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.STRESS)
 			return new DiagramStressCell((Stress)factor, diagramFactor);
+		
+		if (factorType == ObjectType.TASK)
+			return new DiagramActivityCell((Task)factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

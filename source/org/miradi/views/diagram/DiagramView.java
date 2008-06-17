@@ -76,6 +76,7 @@ import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
 import org.miradi.actions.ActionCreateIncomingJunction;
+import org.miradi.actions.ActionHideActivityBubble;
 import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
@@ -104,6 +105,7 @@ import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.actions.ActionSelectAll;
 import org.miradi.actions.ActionSelectChain;
 import org.miradi.actions.ActionShareActivity;
+import org.miradi.actions.ActionShowActivityBubble;
 import org.miradi.actions.ActionShowConceptualModel;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
@@ -170,10 +172,12 @@ import org.miradi.views.diagram.doers.DeleteStressDoer;
 import org.miradi.views.diagram.doers.DiagramPropertiesShowDoer;
 import org.miradi.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
+import org.miradi.views.diagram.doers.HideActivityBubbleDoer;
 import org.miradi.views.diagram.doers.InsertGroupBoxDoer;
 import org.miradi.views.diagram.doers.PasteFactorContentDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
+import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
@@ -381,6 +385,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionShowStressBubble.class, new ShowStressBubbleDoer());
 		addDoerToMap(ActionHideStressBubble.class, new HideStressBubbleDoer());
+		
+		addDoerToMap(ActionShowActivityBubble.class, new ShowActityBubbleDoer());
+		addDoerToMap(ActionHideActivityBubble.class, new HideActivityBubbleDoer());
 	}
 	
 	public void tabWasSelected()

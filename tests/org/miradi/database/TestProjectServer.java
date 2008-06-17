@@ -72,7 +72,7 @@ public class TestProjectServer extends TestCaseWithProject
 		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
-			Task task = new Task(getObjectManager(), idsToWrite[i]);
+			Task task = new Task(getObjectManager(), new FactorId(idsToWrite[i].asInt()));
 			storage.writeObject(task);
 		}
 		RatingCriterion criterion = new RatingCriterion(getObjectManager(), new BaseId(99));
