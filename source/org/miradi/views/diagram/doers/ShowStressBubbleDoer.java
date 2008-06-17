@@ -31,11 +31,6 @@ import org.miradi.project.FactorCommandHelper;
 
 public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 {
-	protected boolean isAvailable(ORef selectedStressRef)
-	{
-		return !isShowing(selectedStressRef);
-	}
-	
 	protected void doWork() throws Exception
 	{
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();		
@@ -52,6 +47,11 @@ public class ShowStressBubbleDoer extends AbstractStressVisibilityDoer
 		getDiagramView().getDiagramComponent().selectFactor(stressTargetParent.getFactorId());
 	}
 
+	protected boolean isAvailable(ORef selectedStressRef)
+	{
+		return !isShowing(selectedStressRef);
+	}
+	
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Stress.find(getProject(), factorRef);
