@@ -149,24 +149,25 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return diagramFactorReferrers;
 	}
 	
-	protected void setLocation(FactorCommandHelper helper, DiagramFactor parentDiagramFactor, DiagramFactorId ownedDiagramFactorId, ORefList annotationRefList)	throws Exception
+	protected void setLocation(FactorCommandHelper helper, DiagramFactorId ownedDiagramFactorId)	throws Exception
 	{
+		DiagramFactor parentDiagramFactor = getDiagramView().getDiagramModel().getDiagramFactor(getParent().getRef());
 		ORef annotationRef = getSelectedAnnotationRef();
-		int offset = annotationRefList.find(annotationRef);
+		int offset = getAnnotationList().find(annotationRef);
 		Point location = new Point(parentDiagramFactor.getLocation());
 		location.x += (offset * getProject().getGridSize()); 
 		location.y += parentDiagramFactor.getSize().height;
 		helper.setDiagramFactorLocation(ownedDiagramFactorId, location);
 	}
 		
-	protected void setSize(FactorCommandHelper helper, DiagramFactorId diagramFactorId, Dimension size) throws CommandFailedException
+	private void setSize(FactorCommandHelper helper, DiagramFactorId diagramFactorId, Dimension size) throws CommandFailedException
 	{
 		helper.setDiagramFactorSize(diagramFactorId, size);
 	}
 	
-	protected void selectDiagramFactor(ORef factorRef)
+	private void selectParentDiagramFactor()
 	{
-		getDiagramView().getDiagramComponent().selectFactor(factorRef);
+		getDiagramView().getDiagramComponent().selectFactor(getParentRef());
 	}
 	
 	protected BaseObject getParent()
@@ -182,12 +183,9 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagramModel);
 		DiagramFactorId annotationDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(diagramObject, selectedAnnotationRef).getCreatedId();
 
-		BaseObject annotationParent = getParent();
-		DiagramFactor parentDiagramFactor = diagramModel.getDiagramFactor(annotationParent.getRef());
-		
-		setLocation(helper, parentDiagramFactor, annotationDiagramFactorId, getAnnotationList());
+		setLocation(helper, annotationDiagramFactorId);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
-		selectDiagramFactor(annotationParent.getRef());
+		selectParentDiagramFactor();
 	}
 	
 	protected void hideBubble() throws Exception, CommandFailedException
