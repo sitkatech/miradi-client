@@ -86,6 +86,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.project.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
@@ -188,12 +189,29 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(thisCell.isTarget())
 			return checkIfOwnedStressIsSelected(diagram, (Target)underlyingFactor);
+		
+		if(thisCell.isActivity())
+			return checkIfOwningStrategyIsSelected(diagram, (Task)underlyingFactor);
+		
+		if(thisCell.isStrategy())
+			return checkIfOwnedActivityIsSelected(diagram, (Strategy)underlyingFactor);
+		
 		return false;
 	}
 
+	private boolean checkIfOwningStrategyIsSelected(DiagramComponent diagram, Task activity)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, activity.findObjectsThatReferToUs(Strategy.getObjectType()));
+	}
+	
 	private boolean checkIfOwningTargetIsSelected(DiagramComponent diagram, Stress stress)
 	{
 		return areAnyOfTheseFactorsSelected(diagram, stress.findObjectsThatReferToUs(Target.getObjectType()));
+	}
+
+	private boolean checkIfOwnedActivityIsSelected(DiagramComponent diagram, Strategy strategy)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, strategy.getActivityRefs());
 	}
 
 	private boolean checkIfOwnedStressIsSelected(DiagramComponent diagram, Target target)
