@@ -515,22 +515,22 @@ public class DiagramModel extends DefaultGraphModel
 	private void updateVisibilityOfFactors() throws Exception
 	{
 		// TODO: Probably can handle GroupBox and ScopeBox toBack here also
-		HashSet<FactorCell> textBoxCells = new HashSet<FactorCell>();
+		HashSet<FactorCell> topLayerCells = new HashSet<FactorCell>();
 		
 		Vector nodes = getAllFactorCells();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			FactorCell node = (FactorCell)nodes.get(i);
 			updateVisibilityOfSingleFactor(node.getDiagramFactorId());
-			if(node.isTextBox())
-				textBoxCells.add(node);
+			if(node.isTextBox() || node.isActivity() || node.isStress())
+				topLayerCells.add(node);
 		}
 		LayerManager manager = project.getLayerManager();
 		boolean shouldScopeBoxBeVisible = manager.isScopeBoxVisible();
 		if(shouldScopeBoxBeVisible != getGraphLayoutCache().isVisible(getProjectScopeBox()))
 			getGraphLayoutCache().setVisible(getProjectScopeBox(), shouldScopeBoxBeVisible);
 		
-		toFront(textBoxCells.toArray());
+		toFront(topLayerCells.toArray());
 	}	
 	
 	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
