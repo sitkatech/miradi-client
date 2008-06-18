@@ -43,6 +43,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -136,6 +137,9 @@ public class TransferableMiradiList implements Transferable, Serializable
 	private boolean shouldDeepCopyFactor(int type)
 	{
 		if (Stress.is(type))
+			return false;
+		
+		if (Task.is(type))
 			return false;
 		
 		return true;

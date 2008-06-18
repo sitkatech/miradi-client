@@ -26,6 +26,7 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
@@ -52,7 +53,10 @@ public class DiagramCopyPaster extends DiagramPaster
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
 	{
 		ORef foundRef = getOldToNewObjectRefMap().get(oldWrappedRef);
-		if (foundRef == null && Stress.is(oldWrappedRef))
+		boolean isNull = foundRef == null;
+		boolean isStress = Stress.is(oldWrappedRef);
+		boolean isActivity = Task.is(oldWrappedRef);
+		if (isNull && (isStress || isActivity))
 			return oldWrappedRef;
 		
 		return foundRef;
