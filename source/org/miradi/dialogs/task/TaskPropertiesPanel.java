@@ -28,7 +28,6 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
@@ -56,12 +55,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super.dispose();
 	}
 
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		super.setObjectRefs(orefsToUse);
-		inputPanel.setObjectRefs(orefsToUse);
-	}	
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Task Properties");
