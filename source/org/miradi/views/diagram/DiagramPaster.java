@@ -712,25 +712,21 @@ abstract public class DiagramPaster
 		if (isPastingInSameDiagramType())
 			return oldObjectRef.getObjectType();
 
-		if (!Factor.isFactor(oldObjectRef))
-			return oldObjectRef.getObjectType();
+		if (IntermediateResult.is(oldObjectRef))
+			return Cause.getObjectType();
 		
-		Factor factor = Factor.findFactor(getProject(), oldObjectRef);
-		if (isFromConceptualModel())
+		if (ThreatReductionResult.is(oldObjectRef))
+			return Cause.getObjectType();
+		
+		if (Cause.is(oldObjectRef))
 		{
-			if (factor.isContributingFactor())
-				return IntermediateResult.getObjectType();
-			
-			if (factor.isDirectThreat())
+			Factor factor = Factor.findFactor(getProject(), oldObjectRef);
+			if(factor != null && factor.isDirectThreat())
 				return ThreatReductionResult.getObjectType();
+
+			return IntermediateResult.getObjectType();
 		}
-		
-		if (isFromResultsChain())
-		{
-			if (factor.isIntermediateResult() || factor.isThreatReductionResult())
-				return Cause.getObjectType();
-		}
-		
+
 		return oldObjectRef.getObjectType();
 	}
 
@@ -742,16 +738,6 @@ abstract public class DiagramPaster
 		return (fromType == toType);
 	}
 	
-	private boolean isFromConceptualModel()
-	{
-		return ConceptualModelDiagram.is(transferableList.getDiagramObjectRefCopiedFrom());
-	}
-	
-	private boolean isFromResultsChain()
-	{
-		return ResultsChainDiagram.is(transferableList.getDiagramObjectRefCopiedFrom());
-	}
-
 	public Project getProject()
 	{
 		return project;
