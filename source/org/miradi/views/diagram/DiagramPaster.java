@@ -362,35 +362,40 @@ abstract public class DiagramPaster
 		{
 			String jsonAsString = diagramFactorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
-			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
-			if (oldToNewPastedObjectMap.containsKey(diagramFactorRef))
-				continue;
-			
-			ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
-			ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
-			if (diagramAlreadyContainsAlias(newWrappedRef))
-				continue;
-			
-			if (ignorePastingDiagramFactorForFactor(newWrappedRef))
-					continue;
-			
-			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
-			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
-			
-			ORef newDiagramFactorRef = createDiagramFactor(newWrappedRef);
-			DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
-			loadNewObjectFromOldJson(newDiagramFactor, json);
-
-			BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
-			int type = getTypeFromJson(json);
-			getOldToNewObjectRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
-			fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
-			addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
-			addDiagramFactorToSelection(newDiagramFactorRef);
+			createNewDiagramFactor(json);
 		}
 	}
 	
+	private void createNewDiagramFactor(EnhancedJsonObject json) throws Exception
+	{
+		DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
+		ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+		if (oldToNewPastedObjectMap.containsKey(diagramFactorRef))
+			return;
+		
+		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
+		ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
+		if (diagramAlreadyContainsAlias(newWrappedRef))
+			return;
+		
+		if (ignorePastingDiagramFactorForFactor(newWrappedRef))
+			return;
+		
+		String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
+		json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
+		
+		ORef newDiagramFactorRef = createDiagramFactor(newWrappedRef);
+		DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
+		loadNewObjectFromOldJson(newDiagramFactor, json);
+
+		BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
+		int type = getTypeFromJson(json);
+		getOldToNewObjectRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
+		fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
+		addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
+		addDiagramFactorToSelection(newDiagramFactorRef);
+	}
+
 	protected void createNewFactorLinks() throws Exception
 	{
 		for (int i = factorLinkDeepCopies.size() - 1; i >= 0; --i)
