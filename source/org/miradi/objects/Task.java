@@ -175,9 +175,9 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public boolean shouldBeDeleted()
+	public boolean mustBeDeletedBecauseParentIsGone()
 	{
-		boolean isSuperShared = super.shouldBeDeleted();
+		boolean isSuperShared = super.mustBeDeletedBecauseParentIsGone();
 		if (isSuperShared)
 			return true;
 		
