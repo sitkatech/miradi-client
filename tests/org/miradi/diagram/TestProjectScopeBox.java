@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.ProjectScopeBox;
 import org.miradi.ids.DiagramFactorId;
@@ -72,16 +72,19 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
 
-		model.moveFactors(100, 100, new DiagramFactorId[] {target1.getDiagramFactorId()});
+		target1.getDiagramFactor().setLocation(new Point(100, 200));
+		target1.updateFromDiagramFactor();
+		model.factorsWereMoved(new DiagramFactorId[] {target1.getDiagramFactorId()});
 		Rectangle2D movedTarget = scope.getBounds();
-		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
+		assertTrue("didn't follow move? " + movedTarget + " doesn't contain " + target1.getBounds(), movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
 		FactorCell target2 = project.createFactorCell(ObjectType.TARGET);
-		model.moveFactors(200, 200, new DiagramFactorId[] {target2.getDiagramFactorId()});
-		model.updateCell(target2);
+		target2.getDiagramFactor().setLocation(new Point(200, 300));
+		target2.updateFromDiagramFactor();
+		model.factorsWereMoved(new DiagramFactorId[] {target2.getDiagramFactorId()});
 		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));
