@@ -54,13 +54,10 @@ public class DiagramCopyPaster extends DiagramPaster
 	{
 		ORef foundRef = getOldToNewObjectRefMap().get(oldWrappedRef);
 		if (foundRef == null)
-			return oldWrappedRef;
-		
-		if (Stress.is(oldWrappedRef))
-			return oldWrappedRef;
-		
-		if (Task.is(oldWrappedRef))
-			return oldWrappedRef;
+		{
+			if (Stress.is(oldWrappedRef) || Task.is(oldWrappedRef))
+				return oldWrappedRef;
+		}
 		
 		return foundRef;
 	}
