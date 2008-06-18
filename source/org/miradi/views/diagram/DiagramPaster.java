@@ -790,41 +790,29 @@ abstract public class DiagramPaster
 	{
 		if (Task.is(factorRef))
 		{
-			if (!canPasteActivity(factorRef))
+			if (!doesObjectExist(factorRef))
 				return true;
+			
+			if (isPastingIntoConceptualModel())
+				return false;
+			
+			return !hasReferrersInDiagram(factorRef, Strategy.getObjectType());
 		}
 		
 		if (Stress.is(factorRef))
 		{
-			if (!canPasteStress(factorRef))
+			if (!doesObjectExist(factorRef))
 				return true;
+			
+			if (isPastingIntoResultsChain())
+				return false;
+			
+			return !hasReferrersInDiagram(factorRef, Target.getObjectType());
 		}
 		
 		return false;
 	}
-	
-	private boolean canPasteStress(ORef newWrappedRef)
-	{
-		if (!doesObjectExist(newWrappedRef))
-			return true;
-		
-		if (isPastingIntoResultsChain())
-			return false;
-		
-		return hasReferrersInDiagram(newWrappedRef, Target.getObjectType());
-	}
-	
-	private boolean canPasteActivity(ORef newWrappedRef)
-	{
-		if (!doesObjectExist(newWrappedRef))
-			return true;
-		
-		if (isPastingIntoConceptualModel())
-			return false;
-		
-		return hasReferrersInDiagram(newWrappedRef, Strategy.getObjectType());
-	}
-	
+
 	private boolean doesObjectExist(ORef factorRef)
 	{
 		BaseObject found = getProject().findObject(factorRef);
