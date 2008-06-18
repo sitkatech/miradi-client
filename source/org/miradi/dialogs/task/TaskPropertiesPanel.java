@@ -43,8 +43,7 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 				"To manage the details about who will do the work and when, " +
 				"go to the Planning View and choose Work Plan</em>");
 		
-		addSubPanel(inputPanel);
-		add(inputPanel);
+		addSubPanelWithTitledBorder(inputPanel);
 		add(new PanelTitleLabel(hintAboutPlanningView));
 	}
 	
