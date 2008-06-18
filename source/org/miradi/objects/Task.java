@@ -174,6 +174,18 @@ public class Task extends Factor
 		return (METHOD_NAME.equals(cachedObjectTypeName));
 	}
 	
+	@Override
+	public boolean shouldBeDeleted()
+	{
+		boolean isSuperShared = super.shouldBeDeleted();
+		if (isSuperShared)
+			return true;
+		
+		ORefList referrers = findObjectsThatReferToUs(Strategy.getObjectType());
+		
+		return referrers.size() > 0;
+	}
+	
 	private void ensureCachedTypeStringIsValid()
 	{
 		ORefList strategyReferrers = findObjectsThatReferToUs(Strategy.getObjectType());
