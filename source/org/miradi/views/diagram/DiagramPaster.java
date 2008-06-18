@@ -798,40 +798,42 @@ abstract public class DiagramPaster
 	
 	private boolean canPaste(ORef newWrappedRef)
 	{
-		if (!Stress.is(newWrappedRef))
+		if (isPastableType(newWrappedRef, Stress.getObjectType()))
 			return true;
-		
-		Stress stress = Stress.find(getProject(), newWrappedRef);
-		if (stress == null)
-			return false;
 		
 		if (isPastingIntoResultsChain())
 			return false;
 		
-		ORefList targetReferrerRefs = stress.findObjectsThatReferToUs(Target.getObjectType());
-		DiagramObject diagramObject = getDiagramObject();
-		for (int index = 0; index < targetReferrerRefs.size(); ++index)
-		{
-			if (diagramObject.containsWrappedFactorRef(targetReferrerRefs.get(index)))
-				return true;
-		}
-		
-		return false;
+		return hasReferrersInDiagram(newWrappedRef, Target.getObjectType());
 	}
 	
 	private boolean canPasteActivity(ORef newWrappedRef)
 	{
-		if (!Task.is(newWrappedRef))
+		if (isPastableType(newWrappedRef, Task.getObjectType()))
 			return true;
-		
-		Task activity = Task.find(getProject(), newWrappedRef);
-		if (activity == null)
-			return false;
 		
 		if (isPastingIntoConceptualModel())
 			return false;
 		
-		ORefList targetReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
+		return hasReferrersInDiagram(newWrappedRef, Strategy.getObjectType());
+	}
+	
+	private boolean isPastableType(ORef factorRef, int type)
+	{
+		if (factorRef.getObjectType() == type)
+			return false;
+		
+		BaseObject found = getProject().findObject(factorRef);
+		if (found == null)
+			return false;
+		
+		return true;
+	}
+	
+	private boolean hasReferrersInDiagram(ORef referredObjectRef, int referrerType)
+	{
+		BaseObject referredObject = getProject().findObject(referredObjectRef);
+		ORefList targetReferrerRefs = referredObject.findObjectsThatReferToUs(referrerType);
 		DiagramObject diagramObject = getDiagramObject();
 		for (int index = 0; index < targetReferrerRefs.size(); ++index)
 		{
