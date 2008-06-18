@@ -806,7 +806,10 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteStress(ORef newWrappedRef)
 	{
-		if (isPastableType(newWrappedRef, Stress.getObjectType()))
+		if (!Stress.is(newWrappedRef))
+			return true;
+		
+		if (doesObjectExist(newWrappedRef))
 			return true;
 		
 		if (isPastingIntoResultsChain())
@@ -817,7 +820,10 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteActivity(ORef newWrappedRef)
 	{
-		if (isPastableType(newWrappedRef, Task.getObjectType()))
+		if (!Task.is(newWrappedRef))
+			return true;
+		
+		if (doesObjectExist(newWrappedRef))
 			return true;
 		
 		if (isPastingIntoConceptualModel())
@@ -826,11 +832,8 @@ abstract public class DiagramPaster
 		return hasReferrersInDiagram(newWrappedRef, Strategy.getObjectType());
 	}
 	
-	private boolean isPastableType(ORef factorRef, int type)
+	private boolean doesObjectExist(ORef factorRef)
 	{
-		if (factorRef.getObjectType() == type)
-			return false;
-		
 		BaseObject found = getProject().findObject(factorRef);
 		if (found == null)
 			return false;
