@@ -372,11 +372,8 @@ abstract public class DiagramPaster
 			if (diagramAlreadyContainsAlias(newWrappedRef))
 				continue;
 			
-			if (!canPaste(newWrappedRef))
-				continue;
-			
-			if (!canPasteActivity(newWrappedRef))
-				continue;
+			if (ignorePastingDiagramFactorForFactor(newWrappedRef))
+					continue;
 			
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
 			json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
@@ -796,7 +793,18 @@ abstract public class DiagramPaster
 		return false;
 	}
 	
-	private boolean canPaste(ORef newWrappedRef)
+	private boolean ignorePastingDiagramFactorForFactor(ORef factorRef)
+	{
+		if (!canPasteStress(factorRef))
+			return true;
+		
+		if (!canPasteActivity(factorRef))
+			return true;
+
+		return false;
+	}
+	
+	private boolean canPasteStress(ORef newWrappedRef)
 	{
 		if (isPastableType(newWrappedRef, Stress.getObjectType()))
 			return true;
