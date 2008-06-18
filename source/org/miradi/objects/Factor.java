@@ -264,7 +264,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean isActivityFactor()
+	public boolean isActivity()
 	{
 		return false;
 	}

@@ -154,11 +154,6 @@ public class Task extends Factor
 		return list;
 	}
 	
-	public boolean isActivityFactor()
-	{
-		return true;
-	}
-	
 	//NOTE: this is not testing if this is a Task object...
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()

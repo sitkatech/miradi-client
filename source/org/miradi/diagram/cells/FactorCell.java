@@ -352,7 +352,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isActivity()
 	{
-		return underlyingObject.isActivityFactor();
+		return underlyingObject.isActivity();
 	}
 	
 	public boolean isStrategy()
