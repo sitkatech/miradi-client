@@ -269,6 +269,20 @@ abstract public class DiagramObject extends BaseObject
 		return referrers;
 	}
 	
+	public ORefList findReferrersOnSameDiagram(ORef referredObjectRef, int referrerType)
+	{
+		ORefList referrerRefs = new ORefList();
+		BaseObject referredObject = getProject().findObject(referredObjectRef);
+		ORefList targetReferrerRefs = referredObject.findObjectsThatReferToUs(referrerType);
+		for (int index = 0; index < targetReferrerRefs.size(); ++index)
+		{
+			if (containsWrappedFactorRef(targetReferrerRefs.get(index)))
+				referrerRefs.add(targetReferrerRefs.get(index));
+		}
+		
+		return referrerRefs;	
+	}
+	
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_COMBINED_LABEL))
