@@ -300,6 +300,8 @@ abstract public class DiagramPaster
 
 	private void addDiagramFactorToSelection(ORef diagramFactorRefToSelect) throws Exception
 	{
+		diagramFactorRefToSelect.ensureType(DiagramFactor.getObjectType());
+		
 		DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
 		FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
 		pastedCellsToSelect.add(cell);
@@ -817,7 +819,7 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteStress(ORef newWrappedRef)
 	{
-		if (doesObjectExist(newWrappedRef))
+		if (!doesObjectExist(newWrappedRef))
 			return true;
 		
 		if (isPastingIntoResultsChain())
@@ -828,7 +830,7 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteActivity(ORef newWrappedRef)
 	{
-		if (doesObjectExist(newWrappedRef))
+		if (!doesObjectExist(newWrappedRef))
 			return true;
 		
 		if (isPastingIntoConceptualModel())
