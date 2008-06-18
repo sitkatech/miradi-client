@@ -806,6 +806,9 @@ abstract public class DiagramPaster
 		if (!Stress.is(factorRef))
 			return true;
 		
+		if (doesObjectExist(factorRef))
+			return true;
+				
 		if (!canPasteStress(factorRef))
 			return true;
 		
@@ -817,9 +820,6 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteStress(ORef newWrappedRef)
 	{
-		if (doesObjectExist(newWrappedRef))
-			return true;
-		
 		if (isPastingIntoResultsChain())
 			return false;
 		
@@ -828,9 +828,6 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteActivity(ORef newWrappedRef)
 	{
-		if (doesObjectExist(newWrappedRef))
-			return true;
-		
 		if (isPastingIntoConceptualModel())
 			return false;
 		
