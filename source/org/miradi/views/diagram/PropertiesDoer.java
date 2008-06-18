@@ -26,6 +26,7 @@ import javax.swing.Box;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesDialog;
@@ -38,6 +39,7 @@ import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
+import org.miradi.dialogs.task.TaskPropertiesInputPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -48,6 +50,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.views.umbrella.StaticPicker;
@@ -198,6 +201,8 @@ public class PropertiesDoer extends LocationDoer
 			doGroupBoxProperties(diagramFactor);
 		else if (Stress.is(wrappedType))
 			doStressProperties(diagramFactor);
+		else if (Task.is(wrappedType))
+			doActivityProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}
@@ -225,12 +230,23 @@ public class PropertiesDoer extends LocationDoer
 	private void doStressProperties(DiagramFactor diagramFactor) throws Exception
 	{
 		StressPropertiesPanel panel = StressPropertiesPanel.createWithoutVisibilityPanel(getMainWindow());
+		
+		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
+	}
+	
+	private void doActivityProperties(DiagramFactor diagramFactor) throws Exception
+	{
+		TaskPropertiesInputPanel panel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(getMainWindow());
 
+		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
+	}
+
+	private void addDiagramWrappedRefToHierarchyAndShowPanel(DiagramFactor diagramFactor, AbstractObjectDataInputPanel propertiesPanel)
+	{
 		ORefList selectedHierarchy = new ORefList(diagramFactor.getRef());
 		selectedHierarchy.add(diagramFactor.getWrappedORef());
-		panel.setObjectRefs(selectedHierarchy);
-
-		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		propertiesPanel.setObjectRefs(selectedHierarchy);
+		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), propertiesPanel, propertiesPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(propertiesDialog);
 	}
 
