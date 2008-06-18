@@ -840,16 +840,8 @@ abstract public class DiagramPaster
 	
 	private boolean hasReferrersInDiagram(ORef referredObjectRef, int referrerType)
 	{
-		BaseObject referredObject = getProject().findObject(referredObjectRef);
-		ORefList targetReferrerRefs = referredObject.findObjectsThatReferToUs(referrerType);
-		DiagramObject diagramObject = getDiagramObject();
-		for (int index = 0; index < targetReferrerRefs.size(); ++index)
-		{
-			if (diagramObject.containsWrappedFactorRef(targetReferrerRefs.get(index)))
-				return true;
-		}
-		
-		return false;
+		ORefList referrerRefs = getDiagramObject().findReferrersOnSameDiagram(referredObjectRef, referrerType);
+		return referrerRefs.size() > 0;
 	}
 	
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	

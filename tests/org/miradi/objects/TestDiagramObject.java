@@ -20,10 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Target;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ProjectForTesting;
 
 public class TestDiagramObject extends ObjectTestCase
@@ -62,6 +60,22 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramFactor nonLinkedCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(nonLinkedCause.getDiagramFactorId(), target.getDiagramFactorId()));
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), nonLinkedCause.getDiagramFactorId()));
+	}
+	
+	public void testFindReferrersOnSameDiagram() throws Exception
+	{
+		DiagramObject diagramObject = project.getDiagramObject();
+		ORef stressRef = project.createFactorAndReturnRef(Stress.getObjectType());
+		DiagramFactor targetDiagramFactor = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
+		assertEquals("has referrers?", 0, foundTargetReferrerRefs1.size());
+		
+		ORefList stressRefs = new ORefList(stressRef);
+		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+		target.setData(Target.TAG_STRESS_REFS, stressRefs.toString());
+		ORefList foundTargetReferrerRefs2 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
+		assertEquals("has no referrers?", 1, foundTargetReferrerRefs2.size());
 	}
 	
 	ProjectForTesting project;
