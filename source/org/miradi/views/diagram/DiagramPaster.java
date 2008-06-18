@@ -60,8 +60,10 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -371,6 +373,9 @@ abstract public class DiagramPaster
 				continue;
 			
 			if (!canPaste(newWrappedRef))
+				continue;
+			
+			if (!canPasteActivity(newWrappedRef))
 				continue;
 			
 			String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
@@ -804,6 +809,29 @@ abstract public class DiagramPaster
 			return false;
 		
 		ORefList targetReferrerRefs = stress.findObjectsThatReferToUs(Target.getObjectType());
+		DiagramObject diagramObject = getDiagramObject();
+		for (int index = 0; index < targetReferrerRefs.size(); ++index)
+		{
+			if (diagramObject.containsWrappedFactorRef(targetReferrerRefs.get(index)))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean canPasteActivity(ORef newWrappedRef)
+	{
+		if (!Task.is(newWrappedRef))
+			return true;
+		
+		Task activity = Task.find(getProject(), newWrappedRef);
+		if (activity == null)
+			return false;
+		
+		if (isPastingIntoConceptualModel())
+			return false;
+		
+		ORefList targetReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
 		DiagramObject diagramObject = getDiagramObject();
 		for (int index = 0; index < targetReferrerRefs.size(); ++index)
 		{
