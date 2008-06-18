@@ -154,8 +154,10 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.SlideShow;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
@@ -979,6 +981,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(isRelatedStressSelected())
 			return;
 
+		if(isRelatedActivitySelected())
+			return;
+		
 		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
 		if(selectedNode == null || !selectedNode.getDiagramFactorRef().equals(nodePropertiesPanel.getCurrentDiagramFactor().getRef()))
 			disposeOfNodePropertiesDialog();
@@ -999,6 +1004,23 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		ORef stressRef = selectedNode.getWrappedFactorRef();
 		Target target = Target.find(getProject(),nodePropertiesPanel.getCurrentDiagramFactor().getWrappedORef());
 		return(target.getStressRefs().contains(stressRef));
+	}
+	
+	public boolean isRelatedActivitySelected()
+	{
+		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
+		if(selectedNode == null)
+			return false;
+		
+		if(!Task.is(selectedNode.getWrappedType()))
+			return false;
+		
+		if(!Strategy.is(nodePropertiesPanel.getCurrentDiagramFactor().getWrappedType()))
+			return false;
+		
+		ORef activityRef = selectedNode.getWrappedFactorRef();
+		Strategy strategy = Strategy.find(getProject(),nodePropertiesPanel.getCurrentDiagramFactor().getWrappedORef());
+		return(strategy.getActivityRefs().contains(activityRef));
 	}
 	
 	public String getCurrentMode()
