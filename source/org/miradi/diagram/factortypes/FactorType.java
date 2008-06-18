@@ -137,7 +137,7 @@ public abstract class FactorType
 		if (factor.isStress())
 			return EAM.fieldLabel(Stress.getObjectType(), Stress.OBJECT_NAME);
 		
-		if (factor.isActivityFactor())
+		if (factor.isActivity())
 			return EAM.fieldLabel(Task.getObjectType(), Task.ACTIVITY_NAME);
 		
 		throw new RuntimeException("Unknown factor type " + factor.getRef());
@@ -161,7 +161,7 @@ public abstract class FactorType
 		if (factor.isStress())
 			return new StressIcon();
 		
-		if (factor.isActivityFactor())
+		if (factor.isActivity())
 			return new ActivityIcon();
 		
 		if (factor.isIntermediateResult())
