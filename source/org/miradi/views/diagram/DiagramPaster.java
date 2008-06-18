@@ -800,26 +800,26 @@ abstract public class DiagramPaster
 	
 	private boolean ignorePastingDiagramFactorForFactor(ORef factorRef)
 	{
-		if (!Task.is(factorRef))
-			return true;
+		if (Task.is(factorRef))
+		{
+			if (!canPasteActivity(factorRef))
+				return true;
+		}
 		
-		if (!Stress.is(factorRef))
-			return true;
+		if (Stress.is(factorRef))
+		{
+			if (!canPasteStress(factorRef))
+				return true;
+		}
 		
-		if (doesObjectExist(factorRef))
-			return true;
-				
-		if (!canPasteStress(factorRef))
-			return true;
-		
-		if (!canPasteActivity(factorRef))
-			return true;
-
 		return false;
 	}
 	
 	private boolean canPasteStress(ORef newWrappedRef)
 	{
+		if (doesObjectExist(newWrappedRef))
+			return true;
+		
 		if (isPastingIntoResultsChain())
 			return false;
 		
@@ -828,6 +828,9 @@ abstract public class DiagramPaster
 	
 	private boolean canPasteActivity(ORef newWrappedRef)
 	{
+		if (doesObjectExist(newWrappedRef))
+			return true;
+		
 		if (isPastingIntoConceptualModel())
 			return false;
 		
