@@ -47,14 +47,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		add(new PanelTitleLabel(hintAboutPlanningView));
 	}
 	
-	public void dispose()
-	{
-		if(inputPanel != null)
-			inputPanel.dispose();
-		
-		super.dispose();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Task Properties");
@@ -66,5 +58,5 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		inputPanel.commandExecuted(event);
 	}
 
-	TaskPropertiesInputPanel inputPanel;	
+	private TaskPropertiesInputPanel inputPanel;	
 }
