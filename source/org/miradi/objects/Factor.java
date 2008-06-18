@@ -289,7 +289,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean shouldBeDeleted()
+	public boolean mustBeDeletedBecauseParentIsGone()
 	{
 		ORefList referrers = findObjectsThatReferToUs(getObjectManager(), ObjectType.DIAGRAM_FACTOR, getRef());
 		

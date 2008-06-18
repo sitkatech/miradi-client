@@ -106,7 +106,7 @@ public class FactorDeleteHelper
 		removeFromView(diagramFactorToDelete.getWrappedORef());
 		removeFromDiagramAndDelete(diagramFactorToDelete);
 				
-		if (underlyingFactor.shouldBeDeleted())
+		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
 		deleteAnnotations(underlyingFactor);
