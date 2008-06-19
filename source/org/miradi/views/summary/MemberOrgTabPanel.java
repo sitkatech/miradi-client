@@ -30,7 +30,6 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -44,7 +43,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		HyperlinkHandler handler = mainWindowToUse.getHyperlinkHandler();
 		MiradiHtmlViewer logoPanel = new MiradiHtmlViewer(mainWindowToUse, handler);
 
-		String html = EAM.loadResourceFile(ResourcesHandler.class, htmlResourceName);
+		String html = EAM.loadResourceFile(htmlResourceName);
 		logoPanel.setText(html);
 		
 		add(logoPanel, BorderLayout.BEFORE_FIRST_LINE);

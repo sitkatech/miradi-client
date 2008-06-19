@@ -103,7 +103,6 @@ import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.QuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
@@ -655,7 +654,7 @@ public class Project
 		if (diagramFactorRefs.size() != 0)
 			return;
 		
-		String text = EAM.loadResourceFile(ResourcesHandler.class, "DiagramInitialHelpText.txt");
+		String text = EAM.loadResourceFile("DiagramInitialHelpText.txt");
 		int indexOfNewLineForSize = text.indexOf("\n");
 		String size = text.substring(0, indexOfNewLineForSize);
 			

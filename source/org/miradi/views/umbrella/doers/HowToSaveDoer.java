@@ -21,7 +21,6 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.MainWindowDoer;
 
@@ -41,7 +40,7 @@ public class HowToSaveDoer extends MainWindowDoer
 		
 		try
 		{
-			String html = EAM.loadResourceFile(ResourcesHandler.class, "HowToSave.html");
+			String html = EAM.loadResourceFile("HowToSave.html");
 			HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), EAM.text("Help"), html).showAsOkDialog();
 		}
 		catch(Exception e)

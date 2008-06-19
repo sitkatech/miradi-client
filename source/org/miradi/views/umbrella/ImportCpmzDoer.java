@@ -37,7 +37,6 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
@@ -177,7 +176,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	
 	private void showDialogWithCoachText() throws Exception
 	{
-		String html = EAM.loadResourceFile(ResourcesHandler.class, "NextStepAfterCpmzImport.html");
+		String html = EAM.loadResourceFile("NextStepAfterCpmzImport.html");
 		HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), EAM.text("Import"), html).showAsOkDialog();
 	}
 }

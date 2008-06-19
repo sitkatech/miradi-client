@@ -56,7 +56,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
@@ -248,7 +247,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			
 			try
 			{
-				String html = EAM.loadResourceFile(ResourcesHandler.class, "ResultsChainHelp.html");
+				String html = EAM.loadResourceFile("ResultsChainHelp.html");
 				add(new FlexibleWidthHtmlViewer(getMainWindow(), html));
 			}
 			catch(Exception e)

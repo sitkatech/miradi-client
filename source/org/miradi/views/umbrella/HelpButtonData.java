@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.miradi.main.EAM;
-import org.miradi.resources.ResourcesHandler;
 
 public class HelpButtonData
 {
@@ -33,7 +32,7 @@ public class HelpButtonData
 
 	public String getHelpContents() throws Exception
 	{
-		return EAM.loadResourceFile(ResourcesHandler.class, htmlFile);
+		return EAM.loadResourceFile(htmlFile);
 	}
 	
 	public String toString()

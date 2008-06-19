@@ -105,7 +105,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		String resourceFileName = getResourceFileName(sideLabel);
 		if(resourceFileName == null)
 			return "Missing text";
-		return EAM.loadResourceFile(ResourcesHandler.class, resourceFileName);
+		return EAM.loadResourceFile(resourceFileName);
 	}
 	
 	private boolean doesExist(String ext) throws Exception
