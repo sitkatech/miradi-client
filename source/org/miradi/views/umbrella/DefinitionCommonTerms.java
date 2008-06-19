@@ -358,10 +358,10 @@ public class DefinitionCommonTerms
 
 
 	
-		def = new Definition("Threat Calculations", ResourcesHandler.class, "ThreatRatingExplanationOfCalculation.html");
+		def = Definition.createDefinitionFromHtmlFile("Threat Calculations", ResourcesHandler.class, "ThreatRatingExplanationOfCalculation.html");
 		defs.put("Definition:ShowRulesCalculations", def);
 		
-		def = new Definition("Bundle Rules", ResourcesHandler.class, "ThreatRatingBundleRules.html");
+		def = Definition.createDefinitionFromHtmlFile("Bundle Rules", ResourcesHandler.class, "ThreatRatingBundleRules.html");
 		defs.put("Definition:ShowRulesBundles", def);
 		
 		

@@ -19,33 +19,42 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.utils.HtmlViewPanel;
+import org.miradi.main.EAM;
+import org.miradi.resources.ResourcesHandler;
 
 public class Definition
 {
+	public static Definition createDefinitionFromHtmlFile(String termToUse, Class resourceClassToUse, String htmlFileNameToUse)
+	{
+		String definition = loadHtmlDefinition(htmlFileNameToUse);
+		return new Definition(termToUse, definition);
+	}
+
 	public Definition(String termToUse, String defintionToUse)
 	{
 		definition = defintionToUse;
 		term = termToUse;
 	}
 	
-	public Definition(String termToUse, Class resourceClassToUse, String htmlFileNameToUse)
-	{
-		htmlFileName = htmlFileNameToUse;
-		resourceClass = resourceClassToUse;
-		term = termToUse;
-	}
-	
 	public String getDefintion()
 	{
-		if (resourceClass==null)
-			return definition;
-		return HtmlViewPanel.loadResourceFile(resourceClass, htmlFileName);
+		return definition;
+	}
+	
+	private static String loadHtmlDefinition(String htmlFileName)
+	{
+		try
+		{
+			return EAM.loadResourceFile(ResourcesHandler.class, htmlFileName);
+		}
+		catch(Exception e)
+		{
+			EAM.logStackTrace();
+			return EAM.text("(Definition Not Available)");
+		}
 	}
 	
 	
 	public String term;
 	private String definition;
-	public Class resourceClass;
-	public String htmlFileName;
 }
