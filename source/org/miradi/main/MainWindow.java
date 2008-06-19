@@ -139,7 +139,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
-		mainMenuBar = new MainMenuBar(actions);
+		mainMenuBar = new MainMenuBar(this);
 		toolBarBox = new ToolBarContainer();
 		mainStatusBar = new MainStatusBar();
 		updateTitle();
