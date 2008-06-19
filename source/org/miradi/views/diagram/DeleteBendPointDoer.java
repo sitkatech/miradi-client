@@ -58,6 +58,9 @@ public class DeleteBendPointDoer extends LocationDoer
 		for (int i = 0; i < links.length; ++i)
 		{
 			LinkCell linkCell = diagramModel.getDiagramFactorLink(links[i]);
+			if (linkCell == null)
+				continue;
+			
 			int bendPointSelectionCount = linkCell.getSelectedBendPointIndexes().length;
 			if (bendPointSelectionCount > 0)
 				return true;
