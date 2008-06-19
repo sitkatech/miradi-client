@@ -24,6 +24,7 @@ import java.util.EventObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -49,7 +50,7 @@ public class AboutDoer extends MainWindowDoer
 		boolean initialSplash = (event == null);
 		if(!initialSplash)
 		{
-			text += loadHtmlFile("HelpAboutExtra.html");
+			text += loadHtmlFile("AboutExtra.html");
 		}
 		
 		text += loadHtmlFile("AboutEnd.html");
@@ -74,7 +75,8 @@ public class AboutDoer extends MainWindowDoer
 	{
 		try
 		{
-			return EAM.loadResourceFile(getClass(), htmlFile);
+			htmlFile = "help/" + htmlFile;
+			return EAM.loadResourceFile(ResourcesHandler.class, htmlFile);
 		}
 		catch(Exception e)
 		{
