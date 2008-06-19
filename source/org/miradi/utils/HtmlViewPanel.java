@@ -54,11 +54,6 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		this(mainWindowToUse, titleToUse, htmlTextToUse, new DummyHandler());
 	}
 	
-	public HtmlViewPanel(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse, HtmlFormEventHandler handlerToUse)
-	{
-		this(mainWindowToUse, titleToUse, loadResourceFile(classToUse, htmlFileNameToUse), handlerToUse);
-	}
-	
 	public HtmlViewPanel(MainWindow mainWindowToUse, String title, String text, int width)
 	{
 		this(mainWindowToUse, title, text);
