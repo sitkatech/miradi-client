@@ -353,10 +353,15 @@ public class ResultsChainCreatorHelper
 				diagramFactors.add(diagramFactor);
 		}
 		
-		HashSet<DiagramFactor> activitiesWithoutParents = extractActivitiesWithoutSelectedParents(diagramFactors);
-		diagramFactors.removeAll(activitiesWithoutParents);
+		removeActivitiesWithoutSelectedParents(diagramFactors);
 		
 		return diagramFactors.toArray(new DiagramFactor[0]);
+	}
+
+	private void removeActivitiesWithoutSelectedParents(HashSet<DiagramFactor> diagramFactors)
+	{
+		HashSet<DiagramFactor> activitiesWithoutParents = extractActivitiesWithoutSelectedParents(diagramFactors);
+		diagramFactors.removeAll(activitiesWithoutParents);
 	}
 
 	private HashSet<DiagramFactor> extractActivitiesWithoutSelectedParents(HashSet<DiagramFactor> diagramFactors)
