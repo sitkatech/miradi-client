@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.main.EAM;
+import org.miradi.resources.ResourcesHandler;
+
 public class HelpButtonData
 {
 	
@@ -26,7 +29,11 @@ public class HelpButtonData
 	{
 		title = titleToUse;
 		htmlFile = htmlFileToUse;
-		resourceClass = resourceClassToUse;
+	}
+
+	public String getHelpContents() throws Exception
+	{
+		return EAM.loadResourceFile(ResourcesHandler.class, htmlFile);
 	}
 	
 	public String toString()
@@ -64,6 +71,5 @@ public class HelpButtonData
 	public static final String DEMO_AND_DATABASES = "Demo and Databases";
 	
 	public String title;
-	public String htmlFile;
-	public Class resourceClass;
+	protected String htmlFile;
 }

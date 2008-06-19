@@ -24,8 +24,6 @@ import java.util.EventObject;
 import javax.swing.JComponent;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.MainWindowDoer;
 
@@ -47,17 +45,7 @@ public class HelpButtonDoer extends MainWindowDoer
 			JComponent sourceComponent = (JComponent)event.getSource();
 			HelpButtonData data = (HelpButtonData)sourceComponent.getClientProperty(HelpButtonData.class);
 			
-			if (data.resourceClass == null)
-			{
-				String prefix = "views/" + getMainWindow().getCurrentView().getClass().getSimpleName();
-				String resourceFileName = prefix + "/" + data.htmlFile;
-				String html = EAM.loadResourceFile(ResourcesHandler.class, resourceFileName);
-				new HtmlViewPanelWithMargins(getMainWindow(), data.title, html).showAsOkDialog();
-			}
-			else
-			{
-				new HtmlViewPanelWithMargins(getMainWindow(), data.title, data.resourceClass, data.htmlFile).showAsOkDialog();
-			}
+			new HtmlViewPanelWithMargins(getMainWindow(), data.title, data.getHelpContents()).showAsOkDialog();
 		}
 		catch(Exception e)
 		{
