@@ -29,7 +29,7 @@ public class Definition
 		return new Definition(termToUse, defintionToUse);
 	}
 
-	public static Definition createDefinitionFromHtmlFile(String termToUse, Class resourceClassToUse, String htmlFileNameToUse)
+	public static Definition createDefinitionFromHtmlFilename(String termToUse, String htmlFileNameToUse)
 	{
 		String definition = loadHtmlDefinition(htmlFileNameToUse);
 		return createDefinitionFromTextString(termToUse, definition);
