@@ -171,21 +171,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 	
 
-	public static String loadResourceFile(Class resourceClass, String htmlFileName)
-	{
-		try
-		{
-			return EAM.loadResourceFile(resourceClass, htmlFileName);
-		}
-		catch (Exception e)
-		{
-			EAM.errorDialog("ERROR: Feature file not found: " + resourceClass + "/" + htmlFileName );
-			return null;
-		}
-	}
 
-
-	
 	class CloseAction extends AbstractAction
 	{
 		public CloseAction(JDialog dialogToClose)
