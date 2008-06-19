@@ -397,10 +397,9 @@ public class EAM
 
 	public static String loadResourceFile(String resourceFileName) throws Exception
 	{
-		Class thisClass = ResourcesHandler.class;
-		URL url = getResourceURL(thisClass, resourceFileName);
+		URL url = getResourceURL(resourceFileName);
 		if(url == null)
-			EAM.logError("Unable to find resource: " + thisClass.getPackage().getName() + ":" + resourceFileName);
+			EAM.logError("Unable to find resource: " + ResourcesHandler.class.getPackage().getName() + ":" + resourceFileName);
 		
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
@@ -416,11 +415,7 @@ public class EAM
 
 	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
 	{
-		return getResourceURL(ResourcesHandler.class, resourceFileName);
-	}
-
-	public static URL getResourceURL(Class thisClass, String resourceFileName) throws MalformedURLException
-	{
+		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
 
 		if (doesTestDirectoryExist())
