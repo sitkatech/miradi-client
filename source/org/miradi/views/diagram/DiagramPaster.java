@@ -794,7 +794,7 @@ abstract public class DiagramPaster
 				return true;
 			
 			if (isPastingIntoConceptualModel())
-				return false;
+				return true;
 			
 			return !hasReferrersInDiagram(factorRef, Strategy.getObjectType());
 		}
@@ -805,7 +805,7 @@ abstract public class DiagramPaster
 				return true;
 			
 			if (isPastingIntoResultsChain())
-				return false;
+				return true;
 			
 			return !hasReferrersInDiagram(factorRef, Target.getObjectType());
 		}
