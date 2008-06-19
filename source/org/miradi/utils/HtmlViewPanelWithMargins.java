@@ -22,7 +22,9 @@ package org.miradi.utils;
 import javax.swing.BorderFactory;
 
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.resources.ResourcesHandler;
 
 public class HtmlViewPanelWithMargins extends HtmlViewPanel
 {
@@ -31,16 +33,12 @@ public class HtmlViewPanelWithMargins extends HtmlViewPanel
 		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, htmlText);
 	}
 
-	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
+	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse) throws Exception
 	{
-		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, classToUse, htmlFileNameToUse);
+		String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFileNameToUse);
+		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, html);
 	}
 
-	private HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
-	{
-		super(mainWindowToUse, titleToUse, classToUse, htmlFileNameToUse, new DummyHandler());
-	}
-	
 	private HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, String htmlText)
 	{
 		super(mainWindowToUse, titleToUse, htmlText, new DummyHandler());
