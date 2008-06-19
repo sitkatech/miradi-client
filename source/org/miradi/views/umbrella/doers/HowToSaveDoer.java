@@ -42,7 +42,7 @@ public class HowToSaveDoer extends MainWindowDoer
 		try
 		{
 			String html = EAM.loadResourceFile(ResourcesHandler.class, "HowToSave.html");
-			new HtmlViewPanelWithMargins(getMainWindow(), EAM.text("Help"), html).showAsOkDialog();
+			HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), EAM.text("Help"), html).showAsOkDialog();
 		}
 		catch(Exception e)
 		{

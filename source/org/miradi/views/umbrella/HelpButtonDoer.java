@@ -45,7 +45,7 @@ public class HelpButtonDoer extends MainWindowDoer
 			JComponent sourceComponent = (JComponent)event.getSource();
 			HelpButtonData data = (HelpButtonData)sourceComponent.getClientProperty(HelpButtonData.class);
 			
-			new HtmlViewPanelWithMargins(getMainWindow(), data.title, data.getHelpContents()).showAsOkDialog();
+			HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), data.title, data.getHelpContents()).showAsOkDialog();
 		}
 		catch(Exception e)
 		{

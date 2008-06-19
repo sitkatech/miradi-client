@@ -26,12 +26,22 @@ import org.miradi.main.MainWindow;
 
 public class HtmlViewPanelWithMargins extends HtmlViewPanel
 {
-	public HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
+	public static HtmlViewPanelWithMargins createFromTextString(MainWindow mainWindowToUse, String titleToUse, String htmlText)
+	{
+		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, htmlText);
+	}
+
+	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
+	{
+		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, classToUse, htmlFileNameToUse);
+	}
+
+	private HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse)
 	{
 		super(mainWindowToUse, titleToUse, classToUse, htmlFileNameToUse, new DummyHandler());
 	}
 	
-	public HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, String htmlText)
+	private HtmlViewPanelWithMargins(MainWindow mainWindowToUse, String titleToUse, String htmlText)
 	{
 		super(mainWindowToUse, titleToUse, htmlText, new DummyHandler());
 	}

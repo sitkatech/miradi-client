@@ -49,7 +49,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 		try
 		{
 			String title = EAM.text("Title|Information");
-			new HtmlViewPanelWithMargins(getMainWindow(), title, ResourcesHandler.class, buttonName).showAsOkDialog();
+			HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), title, ResourcesHandler.class, buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
 		{
