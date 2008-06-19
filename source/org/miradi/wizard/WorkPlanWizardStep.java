@@ -27,7 +27,7 @@ public class WorkPlanWizardStep extends SplitWizardStep
 
 	public WorkPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.getViewName());
+		super(wizardToUse, PlanningView.class.getSimpleName());
 	}
 
 }

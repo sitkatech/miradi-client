@@ -27,7 +27,7 @@ public class TargetViabilityWizardStep extends SplitWizardStep
 
 	public TargetViabilityWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, TargetViabilityView.getViewName());
+		super(wizardToUse, TargetViabilityView.class.getSimpleName());
 	}
 
 }

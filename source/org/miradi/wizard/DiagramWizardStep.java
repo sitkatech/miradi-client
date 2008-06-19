@@ -27,7 +27,7 @@ public class DiagramWizardStep extends SplitWizardStep
 
 	public DiagramWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, DiagramView.getViewName());
+		super(wizardToUse, DiagramView.class.getSimpleName());
 	}
 
 }

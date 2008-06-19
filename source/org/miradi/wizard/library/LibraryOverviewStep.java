@@ -29,7 +29,7 @@ public class LibraryOverviewStep extends SplitWizardStep
 {
 	public LibraryOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, LibraryView.getViewName());
+		super(wizardToUse, LibraryView.class.getSimpleName());
 	}
 
 

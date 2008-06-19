@@ -140,7 +140,7 @@ public class EAM
 	
 	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
 	{
-		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), messageFileName).showAsOkDialog();
+		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), ResourcesHandler.class, messageFileName).showAsOkDialog();
 	}
 
 	private static File getPreferredHomeDirectory()
