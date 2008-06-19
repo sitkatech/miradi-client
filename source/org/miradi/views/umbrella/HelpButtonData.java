@@ -29,11 +29,6 @@ public class HelpButtonData
 		resourceClass = resourceClassToUse;
 	}
 	
-	public HelpButtonData(String titleToUse, String htmlFileToUse)
-	{
-		this(null, titleToUse, htmlFileToUse);
-	}
-	
 	public String toString()
 	{
 		return "Title:" + title + " File:" + htmlFile ;

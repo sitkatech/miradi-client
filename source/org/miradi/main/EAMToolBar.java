@@ -36,6 +36,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.utils.ToolBarButton;
 import org.miradi.views.umbrella.HelpButtonData;
+import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
 public class EAMToolBar extends JToolBar
 {
@@ -89,7 +90,7 @@ class MoreInfoButton extends HelpButton
 	public MoreInfoButton(Action action)
 	{
 		super(action, Color.decode("#99CCFF"));
-		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
+		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 	}
 }
 
@@ -98,7 +99,7 @@ class ExamplesButton extends HelpButton
 	public ExamplesButton(Action action)
 	{
 		super(action, Color.decode("#FFFF77"));
-		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
+		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 	}
 }
 
@@ -107,7 +108,7 @@ class WorkshopButton extends HelpButton
 	public WorkshopButton(Action action)
 	{
 		super(action, Color.decode("#77FF77"));
-		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
+		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
 

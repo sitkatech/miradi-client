@@ -109,11 +109,23 @@ import org.miradi.main.ViewSwitcher;
 import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.umbrella.HelpButtonData;
+import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
 public class MainMenuBar extends JMenuBar
 {
+	
+	public MainMenuBar(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
+		createMenus(mainWindow.getActions());
+	}
 
 	public MainMenuBar(Actions actions) throws HeadlessException
+	{
+		createMenus(actions);
+	}
+	
+	private void createMenus(Actions actions)
 	{
 		add(createFileMenu(actions));
 		add(createEditMenu(actions));
@@ -319,15 +331,15 @@ public class MainMenuBar extends JMenuBar
 		
 		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_I);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
+				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 		
 		item = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
+				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 		
 		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
+				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		
 		menu.addSeparator();
 		
@@ -403,4 +415,11 @@ public class MainMenuBar extends JMenuBar
 	{
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyLetter, InputEvent.CTRL_DOWN_MASK));
 	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	private MainWindow mainWindow;
 }
