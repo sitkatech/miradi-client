@@ -693,33 +693,25 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private void setCurrentView(String viewName) throws Exception
 	{
-		if(viewName.equals(summaryView.cardName()))
+		if(viewName.equals(summaryView.getClass().getSimpleName()))
 			setCurrentView(summaryView);
-		else if(viewName.equals(diagramView.cardName()))
+		else if(viewName.equals(diagramView.getClass().getSimpleName()))
 			setCurrentView(diagramView);
-		else if(viewName.equals(noProjectView.cardName()))
+		else if(viewName.equals(noProjectView.getClass().getSimpleName()))
 			setCurrentView(noProjectView);
-		else if(viewName.equals(threatMatrixView.cardName()))
+		else if(viewName.equals(threatMatrixView.getClass().getSimpleName()))
 			setCurrentView(threatMatrixView);
-//		else if(viewName.equals(budgetView.cardName()))
-//			setCurrentView(budgetView);
-//		else if(viewName.equals(workPlanView.cardName()))
-//			setCurrentView(workPlanView);
-		else if(viewName.equals(mapView.cardName()))
+		else if(viewName.equals(mapView.getClass().getSimpleName()))
 			setCurrentView(mapView);
-		else if(viewName.equals(calendarView.cardName()))
+		else if(viewName.equals(calendarView.getClass().getSimpleName()))
 			setCurrentView(calendarView);
-		else if(viewName.equals(libraryView.cardName()))
+		else if(viewName.equals(libraryView.getClass().getSimpleName()))
 			setCurrentView(libraryView);
-//		else if(viewName.equals(strategicPlanView.cardName()))
-//			setCurrentView(strategicPlanView);
-//		else if(viewName.equals(monitoringView.cardName()))
-//			setCurrentView(monitoringView);
-		else if (viewName.equals(targetViabilityView.cardName()))
+		else if (viewName.equals(targetViabilityView.getClass().getSimpleName()))
 			setCurrentView(targetViabilityView);
-		else if(viewName.equals(planningView.cardName()))
+		else if(viewName.equals(planningView.getClass().getSimpleName()))
 			setCurrentView(planningView);
-		else if (viewName.equals(reportView.cardName()))
+		else if (viewName.equals(reportView.getClass().getSimpleName()))
 			setCurrentView(reportView);
 		
 		else

@@ -28,7 +28,7 @@ public class ScheduleOverviewStep extends SplitWizardStep
 {
 	public ScheduleOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, ScheduleView.getViewName());
+		super(wizardToUse, ScheduleView.class.getSimpleName());
 	}
 
 	public String getProcessStepTitle()

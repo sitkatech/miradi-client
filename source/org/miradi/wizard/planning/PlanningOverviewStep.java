@@ -29,7 +29,7 @@ public class PlanningOverviewStep extends SplitWizardStep
 {
 	public PlanningOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.getViewName());
+		super(wizardToUse, PlanningView.class.getSimpleName());
 	}
 
 	public String getProcessStepTitle()
