@@ -27,6 +27,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.diagram.DiagramLegendPanel;
@@ -54,6 +55,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(DiagramLegendPanel.SCOPE_BOX, DiagramLegendPanel.SCOPE_BOX),
 				new ChoiceItem(FactorLink.OBJECT_NAME_TARGETLINK, FactorLink.OBJECT_NAME_TARGETLINK),
 				new ChoiceItem(FactorLink.OBJECT_NAME_STRESS, FactorLink.OBJECT_NAME_STRESS),
+				new ChoiceItem(Task.ACTIVITY_NAME, Task.ACTIVITY_NAME),
 				new ChoiceItem(IntermediateResult.OBJECT_NAME, IntermediateResult.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, ThreatReductionResult.OBJECT_NAME),
 		};
