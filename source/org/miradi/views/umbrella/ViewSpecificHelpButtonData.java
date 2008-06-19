@@ -19,14 +19,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.resources.ResourcesHandler;
 
 public class ViewSpecificHelpButtonData extends HelpButtonData
 {
 	public ViewSpecificHelpButtonData(MainWindow mainWindowToUse, String titleToUse, String htmlFileToUse)
 	{
 		super(null, titleToUse, htmlFileToUse);
+		mainWindow = mainWindowToUse;
 	}
 	
-
+	@Override
+	public String getHelpContents() throws Exception
+	{
+		String prefix = "views/" + getMainWindow().getCurrentView().getClass().getSimpleName();
+		String resourceFileName = prefix + "/" + htmlFile;
+		String html = EAM.loadResourceFile(ResourcesHandler.class, resourceFileName);
+		return html;
+	}
+	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	private MainWindow mainWindow;
 }
