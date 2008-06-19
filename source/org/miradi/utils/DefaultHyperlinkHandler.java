@@ -24,7 +24,6 @@ import javax.swing.JPopupMenu;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.resources.ResourcesHandler;
 
 public class DefaultHyperlinkHandler implements HyperlinkHandler
 {
@@ -49,7 +48,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 		try
 		{
 			String title = EAM.text("Title|Information");
-			HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), title, ResourcesHandler.class, buttonName).showAsOkDialog();
+			HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), title, buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
 		{
