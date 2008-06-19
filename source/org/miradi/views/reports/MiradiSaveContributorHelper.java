@@ -22,7 +22,6 @@ package org.miradi.views.reports;
 import net.sf.jasperreports.engine.JRException;
 
 import org.miradi.main.EAM;
-import org.miradi.resources.ResourcesHandler;
 
 public class MiradiSaveContributorHelper
 {
@@ -30,7 +29,7 @@ public class MiradiSaveContributorHelper
 	{
 		try
 		{
-			String bodyText = EAM.loadResourceFile(ResourcesHandler.class, resourceFilename);
+			String bodyText = EAM.loadResourceFile(resourceFilename);
 			String SAVE_LABEL = EAM.text("Save");
 			String[] buttonLabels = new String[] {
 				SAVE_LABEL, 

@@ -21,7 +21,6 @@ package org.miradi.views.umbrella;
 
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.resources.ResourcesHandler;
 
 public class ViewSpecificHelpButtonData extends HelpButtonData
 {
@@ -36,7 +35,7 @@ public class ViewSpecificHelpButtonData extends HelpButtonData
 	{
 		String prefix = "views/" + getMainWindow().getCurrentView().getClass().getSimpleName();
 		String resourceFileName = prefix + "/" + htmlFile;
-		String html = EAM.loadResourceFile(ResourcesHandler.class, resourceFileName);
+		String html = EAM.loadResourceFile(resourceFileName);
 		return html;
 	}
 	

@@ -127,7 +127,7 @@ public class EAM
 	{
 		try
 		{
-			String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFileName);
+			String html = EAM.loadResourceFile(htmlFileName);
 			html = html.replace(findToReplace, replacementForStr1);
 			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
 			htmlViwer.showAsOkDialog();
@@ -395,8 +395,9 @@ public class EAM
 
 
 
-	public static String loadResourceFile(Class thisClass, String resourceFileName) throws Exception
+	public static String loadResourceFile(String resourceFileName) throws Exception
 	{
+		Class thisClass = ResourcesHandler.class;
 		URL url = getResourceURL(thisClass, resourceFileName);
 		if(url == null)
 			EAM.logError("Unable to find resource: " + thisClass.getPackage().getName() + ":" + resourceFileName);
