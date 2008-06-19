@@ -137,7 +137,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
 				Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-				HtmlViewPanel htmlViewPanel = new HtmlViewPanelWithMargins(getMainWindow(), def.term,  def.getDefintion());
+				HtmlViewPanel htmlViewPanel = HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), def.term, def.getDefintion());
 				htmlViewPanel.showAsOkDialog();
 			}
 			else

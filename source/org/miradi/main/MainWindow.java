@@ -244,7 +244,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private void displayExpirationNotice() throws Exception
 	{
 		String html = EAM.loadResourceFile(ResourcesHandler.class, "ExpiredWarning.html");
-		HtmlViewPanelWithMargins viewer = new HtmlViewPanelWithMargins(this, EAM.text("Information"), html);
+		HtmlViewPanelWithMargins viewer = HtmlViewPanelWithMargins.createFromTextString(this, EAM.text("Information"), html);
 		viewer.showAsOkDialog();
 	}
 
@@ -901,7 +901,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if (linkDescription.startsWith("Definition:"))
 		{
 			Definition def = DefinitionCommonTerms.getDefintion(linkDescription);
-			HtmlViewPanel htmlViewPanel = new HtmlViewPanelWithMargins(this, def.term,  def.getDefintion());
+			HtmlViewPanel htmlViewPanel = HtmlViewPanelWithMargins.createFromTextString(this, def.term, def.getDefintion());
 			htmlViewPanel.showAsOkDialog();
 		} 
 		else if (isBrowserProtocol(linkDescription))

@@ -178,6 +178,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	private void showDialogWithCoachText() throws Exception
 	{
 		String html = EAM.loadResourceFile(ResourcesHandler.class, "NextStepAfterCpmzImport.html");
-		new HtmlViewPanelWithMargins(getMainWindow(), EAM.text("Import"), html).showAsOkDialog();
+		HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), EAM.text("Import"), html).showAsOkDialog();
 	}
 }
