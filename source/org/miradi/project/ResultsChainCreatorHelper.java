@@ -52,6 +52,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
@@ -268,6 +269,9 @@ public class ResultsChainCreatorHelper
 		
 		if (diagramFactor.getWrappedType() == ObjectType.THREAT_REDUCTION_RESULT)
 			return diagramFactor.getWrappedORef();
+
+		if (diagramFactor.getWrappedType() == ObjectType.TASK)
+			return diagramFactor.getWrappedORef();
 		
 		
 		
@@ -334,10 +338,12 @@ public class ResultsChainCreatorHelper
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getRelatedDiagramFactors(selectedFactorCells);
 			
-		return extractNonStressDiagramFactors(selectedFactorCells);
+		return extractNonStressAndParentlessActivityDiagramFactors(selectedFactorCells);
 	}
 	
-	private DiagramFactor[] extractNonStressDiagramFactors(FactorCell[] selectedFactorCells)
+	//TODO come up with a better name to say that this method returns a filtered list of diagram factors that exludes stresses and activities that
+	// are not in the selection list.
+	private DiagramFactor[] extractNonStressAndParentlessActivityDiagramFactors(FactorCell[] selectedFactorCells)
 	{
 		HashSet<DiagramFactor> diagramFactors = new HashSet();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
@@ -347,7 +353,40 @@ public class ResultsChainCreatorHelper
 				diagramFactors.add(diagramFactor);
 		}
 		
+		HashSet<DiagramFactor> activitiesWithoutParents = extractActivitiesWithoutSelectedParents(diagramFactors);
+		diagramFactors.removeAll(activitiesWithoutParents);
+		
 		return diagramFactors.toArray(new DiagramFactor[0]);
+	}
+
+	private HashSet<DiagramFactor> extractActivitiesWithoutSelectedParents(HashSet<DiagramFactor> diagramFactors)
+	{
+		HashSet<DiagramFactor> activityWithParentInList = new HashSet();
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{
+			if (!Task.is(diagramFactor.getWrappedType()))
+				continue;
+			
+			if (!isActivtyWithParentInList(diagramFactors, diagramFactor))
+				activityWithParentInList.add(diagramFactor);
+		}
+		
+		return activityWithParentInList;
+	}
+
+	private boolean isActivtyWithParentInList(HashSet<DiagramFactor> diagramFactors, DiagramFactor activityDiagramFactor)
+	{
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{
+			if (!Strategy.is(diagramFactor.getWrappedType()))
+				continue;
+			
+			Strategy strategy = (Strategy) diagramFactor.getWrappedFactor();			
+			if (strategy.getActivityRefs().contains(activityDiagramFactor.getWrappedORef()))
+				return true;			
+		}
+
+		return false;
 	}
 
 	private DiagramFactor[] getRelatedDiagramFactors(FactorCell[] selectedFactorCells)
