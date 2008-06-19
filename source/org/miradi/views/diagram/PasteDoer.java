@@ -27,6 +27,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.doers.AbstractPasteDoer;
 
 public class PasteDoer extends AbstractPasteDoer
@@ -40,6 +41,10 @@ public class PasteDoer extends AbstractPasteDoer
 			if (list == null)
 				return;
 		
+			DiagramObject diagramObjectRefBeingPastedInto = getDiagramObject();
+			ORefList beforePasteDiagramFactors = diagramObjectRefBeingPastedInto.getAllDiagramFactorRefs();
+			ORefList beforePasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
+			
 			final String usersChoice = getUsersChoice(list);
 			if (usersChoice.equals(CANCEL_BUTTON))
 				return;
@@ -62,6 +67,7 @@ public class PasteDoer extends AbstractPasteDoer
 			getProject().getDiagramClipboard().incrementPasteCount();
 			paste(diagramPaster);
 			possiblyNotitfyUserIfDataWasLost(diagramPaster);
+			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
 		} 
 		catch (Exception e) 
 		{
@@ -72,6 +78,11 @@ public class PasteDoer extends AbstractPasteDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private DiagramObject getDiagramObject()
+	{
+		return getDiagramPanel().getDiagramObject();
 	}
 
 	private String getUsersChoice(TransferableMiradiList list) throws Exception
@@ -97,7 +108,7 @@ public class PasteDoer extends AbstractPasteDoer
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
 	{
 		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
-		ORef diagramObjectRefBeingPastedInto = getDiagramPanel().getDiagramObject().getRef();
+		ORef diagramObjectRefBeingPastedInto = getDiagramObject().getRef();
 		
 		boolean pasteInSameDiagram = diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
 		return pasteInSameDiagram && isPasteInSameProject(list);
@@ -155,6 +166,24 @@ public class PasteDoer extends AbstractPasteDoer
 		return false;
 	}
 	
+	private void notifiyIfNothingWasPasted(ORefList beforePasteDiagramFactors, ORefList beforePasteDiagramLinks) throws Exception
+	{
+		DiagramObject diagramObjectRefBeingPastedInto = getDiagramObject();
+		ORefList afterPasteDiagramFactors = diagramObjectRefBeingPastedInto.getAllDiagramFactorRefs();
+		ORefList afterPasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
+		
+		boolean sameDiagramFactors = sameRefList(beforePasteDiagramFactors, afterPasteDiagramFactors);
+		boolean sameDiagramLinks = sameRefList(beforePasteDiagramLinks, afterPasteDiagramLinks);
+		if (sameDiagramFactors && sameDiagramLinks)
+			EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
+	}
+
+	private boolean sameRefList(ORefList refList1, ORefList refList2)
+	{
+		return refList1.hashCode() == refList2.hashCode();
+	}
+	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
 	private final String AS_ALIAS_BUTTON = EAM.text("Button|Shared");
+	private final static String messageFileName = "NothingPastedMessage.html";
 }

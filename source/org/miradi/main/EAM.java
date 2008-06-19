@@ -40,6 +40,7 @@ import org.martus.swing.UiNotifyDlg;
 import org.martus.util.UnicodeReader;
 import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanel;
+import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.Translation;
@@ -135,6 +136,12 @@ public class EAM
 		{
 			logException(e);
 		}
+	}
+	
+	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
+	{
+		String html = EAM.loadResourceFile(ResourcesHandler.class, messageFileName);
+		new HtmlViewPanelWithMargins(getMainWindow(), EAM.text(title), html).showAsOkDialog();
 	}
 
 	private static File getPreferredHomeDirectory()
