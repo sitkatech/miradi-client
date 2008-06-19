@@ -25,7 +25,7 @@ import org.miradi.resources.ResourcesHandler;
 public class HelpButtonData
 {
 	
-	public HelpButtonData(Class resourceClassToUse, String titleToUse, String htmlFileToUse)
+	public HelpButtonData(String titleToUse, String htmlFileToUse)
 	{
 		title = titleToUse;
 		htmlFile = htmlFileToUse;
