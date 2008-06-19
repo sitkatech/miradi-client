@@ -45,26 +45,28 @@ public class HelpButtonData
 	public static final String EXAMPLES = "Examples";
 	public static final String WORKSHOP_HTML = "Workshop.html";
 	public static final String WORKSHOP = "Workshop";
+	
 	public static final String COMING_ATTACTIONS = "Coming Attactions";
-	public static final String COMING_ATTRACTIONS_HTML = "ComingAttractions.html";
+	public static final String COMING_ATTRACTIONS_HTML = "help/ComingAttractions.html";
 	public static final String CREDITS = "Credits";
-	public static final String CREDITS_HTML = "Credits.html";
+	public static final String CREDITS_HTML = "help/Credits.html";
 	public static final String ABOUT_BENETECH = "About Benetech";
-	public static final String ABOUT_BENETECH_HTML = "AboutBenetech.html";
+	public static final String ABOUT_BENETECH_HTML = "help/AboutBenetech.html";
 	public static final String ABOUT_CMP = "About the CMP";
-	public static final String ABOUT_CMP_HTML = "AboutCMP.html";
+	public static final String ABOUT_CMP_HTML = "help/AboutCMP.html";
 	public static final String AGILE_SOFTWARE = "Agile Software";
-	public static final String AGILE_SOFTWARE_HTML = "AgileSoftware.html";
+	public static final String AGILE_SOFTWARE_HTML = "help/AgileSoftware.html";
 	public static final String CMP_STANDARDS = "CMP Standards";
-	public static final String CMP_STANDARDS_HTML = "CMPStandards.html";
+	public static final String CMP_STANDARDS_HTML = "help/CMPStandards.html";
 	public static final String ADAPTIVE_MANAGEMENT = "Adaptive Management";
-	public static final String ADAPTIVE_MANAGEMENT_HTML = "AdaptiveManagement.html";
-	public static final String IMPORT_AND_EXPORT_HTML = "DemoExportAndImport.html";
+	public static final String ADAPTIVE_MANAGEMENT_HTML = "help/AdaptiveManagement.html";
+	public static final String SUPPORT = "Support";
+	public static final String SUPPORT_HTML = "help/Support.html";
+	
+	public static final String IMPORT_AND_EXPORT_HTML = "help/DemoExportAndImport.html";
 	public static final String CONFIGURE_EXPORT = "Configure Export";
 	public static final String DEMO = "Demo";
 	public static final String DEMO_AND_DATABASES = "Demo and Databases";
-	public static final String SUPPORT = "Support";
-	public static final String SUPPORT_HTML = "Support.html";
 	
 	public String title;
 	public String htmlFile;
