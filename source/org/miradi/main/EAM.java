@@ -141,7 +141,7 @@ public class EAM
 	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
 	{
 		String html = EAM.loadResourceFile(ResourcesHandler.class, messageFileName);
-		new HtmlViewPanelWithMargins(getMainWindow(), EAM.text(title), html).showAsOkDialog();
+		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), html).showAsOkDialog();
 	}
 
 	private static File getPreferredHomeDirectory()
