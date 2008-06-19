@@ -24,13 +24,18 @@ import org.miradi.resources.ResourcesHandler;
 
 public class Definition
 {
+	public static Definition createDefinitionFromTextString(String termToUse, String defintionToUse)
+	{
+		return new Definition(termToUse, defintionToUse);
+	}
+
 	public static Definition createDefinitionFromHtmlFile(String termToUse, Class resourceClassToUse, String htmlFileNameToUse)
 	{
 		String definition = loadHtmlDefinition(htmlFileNameToUse);
-		return new Definition(termToUse, definition);
+		return createDefinitionFromTextString(termToUse, definition);
 	}
 
-	public Definition(String termToUse, String defintionToUse)
+	private Definition(String termToUse, String defintionToUse)
 	{
 		definition = defintionToUse;
 		term = termToUse;
