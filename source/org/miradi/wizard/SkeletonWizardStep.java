@@ -34,7 +34,6 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlFormEventHandler;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
@@ -110,7 +109,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	private boolean doesExist(String ext) throws Exception
 	{
-		URL url = EAM.getResourceURL(ResourcesHandler.class, getResourceFileName(ext));
+		URL url = EAM.getResourceURL(getResourceFileName(ext));
 		return (url!=null);
 	}
 	
