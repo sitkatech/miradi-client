@@ -21,8 +21,7 @@ package org.miradi.views.umbrella;
 
 import java.util.Hashtable;
 
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
+import org.miradi.resources.ResourcesHandler;
 
 public class DefinitionCommonTerms
 {
@@ -359,10 +358,10 @@ public class DefinitionCommonTerms
 
 
 	
-		def = new Definition("Threat Calculations", ThreatRatingWizardCheckBundleStep.class, "ThreatRatingExplanationOfCalculation.html");
+		def = new Definition("Threat Calculations", ResourcesHandler.class, "ThreatRatingExplanationOfCalculation.html");
 		defs.put("Definition:ShowRulesCalculations", def);
 		
-		def = new Definition("Bundle Rules", ThreatRatingWizardCheckTotalsStep.class, "ThreatRatingBundleRules.html");
+		def = new Definition("Bundle Rules", ResourcesHandler.class, "ThreatRatingBundleRules.html");
 		defs.put("Definition:ShowRulesBundles", def);
 		
 		
