@@ -414,12 +414,6 @@ public class EAM
 		}
 	}
 
-	public static String getResourcePath(Class thisClass, String resourceFileName) throws Exception
-	{
-		URL url = getResourceURL(thisClass, resourceFileName);
-		return url.getPath();
-	}
-
 	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
 	{
 		return getResourceURL(ResourcesHandler.class, resourceFileName);
