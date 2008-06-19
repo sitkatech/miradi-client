@@ -70,7 +70,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="28"
+						width="50"
 						height="19"
 						key="staticText-2"
 						positionType="Float"/>
@@ -82,9 +82,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="28"
+						x="50"
 						y="0"
-						width="347"
+						width="325"
 						height="19"
 						key="staticText-3"
 						positionType="Float"/>
@@ -130,7 +130,7 @@
 					<reportElement
 						x="0"
 						y="0"
-						width="28"
+						width="50"
 						height="19"
 						key="textField-1"
 						stretchType="RelativeToBandHeight"
@@ -143,9 +143,9 @@
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="51"
+						x="70"
 						y="0"
-						width="324"
+						width="305"
 						height="19"
 						key="textField-2"
 						stretchType="RelativeToBandHeight"
@@ -188,7 +188,7 @@
 				</textField>
 				<image  scaleImage="RetainShape" onErrorType="Blank" evaluationTime="Band" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="28"
+						x="50"
 						y="0"
 						width="23"
 						height="19"
