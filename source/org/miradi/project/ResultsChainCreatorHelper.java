@@ -51,6 +51,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
@@ -333,15 +334,17 @@ public class ResultsChainCreatorHelper
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getRelatedDiagramFactors(selectedFactorCells);
 			
-		return extractDiagramFactors(selectedFactorCells);
+		return extractNonStressDiagramFactors(selectedFactorCells);
 	}
 	
-	private DiagramFactor[] extractDiagramFactors(FactorCell[] selectedFactorCells)
+	private DiagramFactor[] extractNonStressDiagramFactors(FactorCell[] selectedFactorCells)
 	{
 		HashSet<DiagramFactor> diagramFactors = new HashSet();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			diagramFactors.add(selectedFactorCells[i].getDiagramFactor());
+			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
+			if (!Stress.is(diagramFactor.getWrappedType()))
+				diagramFactors.add(diagramFactor);
 		}
 		
 		return diagramFactors.toArray(new DiagramFactor[0]);
