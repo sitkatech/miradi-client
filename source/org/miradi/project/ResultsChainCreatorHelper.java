@@ -212,32 +212,36 @@ public class ResultsChainCreatorHelper
 		for(DiagramFactor diagramFactorToBeCloned : diagramFactors)
 		{	
 			if (diagramFactorToBeCloned.isGroupBoxFactor())
-				originalAndClonedDiagramFactors.putAll(cloneGroupBoxDiagramFactor(diagramFactorToBeCloned));
+				originalAndClonedDiagramFactors.putAll(cloneGroupBoxDiagramFactor(diagramFactors, diagramFactorToBeCloned));
 			else
-				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactorToBeCloned));
+				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, diagramFactorToBeCloned));
 		}
 		
 		return originalAndClonedDiagramFactors;
 	}
 
-	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(DiagramFactor groupBox) throws Exception
+	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor groupBox) throws Exception
 	{
 		HashMap originalAndClonedDiagramFactors = new HashMap();
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
 			DiagramFactor child = DiagramFactor.find(project, childrenRefs.get(childIndex));
-			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(child));
+			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, child));
 		}
 		
-		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(groupBox));
+		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, groupBox));
 		
 		return originalAndClonedDiagramFactors;
 	}
 
-	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactor(DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
+	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
 	{
-		HashMap originalAndClonedDiagramFactors = new HashMap(); 
+		
+		HashMap originalAndClonedDiagramFactors = new HashMap();
+		if (ignoreCloning(diagramFactors, diagramFactorToBeCloned))
+			return originalAndClonedDiagramFactors;
+		
 		ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
@@ -254,6 +258,32 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 	
+	private boolean ignoreCloning(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactor)
+	{
+		if (Stress.is(diagramFactor.getWrappedType()))
+			return true;
+		
+		if (!Task.is(diagramFactor.getWrappedType()))
+			return false;
+		
+		return !hasSelectedStrategyParent(diagramFactors, diagramFactor);
+	}
+
+	private boolean hasSelectedStrategyParent(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactor)
+	{
+		Factor activity = diagramFactor.getWrappedFactor();
+		ORefList strategyReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
+		for (int index = 0; index < strategyReferrerRefs.size(); ++index)
+		{
+			ORef strategyRef = strategyReferrerRefs.get(index);
+			DiagramFactor strategyDiagramFactor = model.getDiagramFactor(strategyRef);
+			if (diagramFactors.contains(strategyDiagramFactor))
+				return true;
+		}
+		
+		return false;
+	}
+
 	private ORef createOrReuseWrappedObject(DiagramFactor diagramFactor) throws Exception
 	{
 		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
@@ -336,60 +366,18 @@ public class ResultsChainCreatorHelper
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getRelatedDiagramFactors(selectedFactorCells);
 			
-		return extractNonStressAndParentlessActivityDiagramFactors(selectedFactorCells);
+		return extractDiagramFactors(selectedFactorCells);
 	}
 	
-	//TODO come up with a better name to say that this method returns a filtered list of diagram factors that exludes stresses and activities that
-	// are not in the selection list.
-	private HashSet<DiagramFactor> extractNonStressAndParentlessActivityDiagramFactors(FactorCell[] selectedFactorCells)
+	private HashSet<DiagramFactor> extractDiagramFactors(FactorCell[] selectedFactorCells)
 	{
 		HashSet<DiagramFactor> diagramFactors = new HashSet();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			if (!Stress.is(diagramFactor.getWrappedType()))
-				diagramFactors.add(diagramFactor);
+			diagramFactors.add(selectedFactorCells[i].getDiagramFactor());
 		}
-		
-		removeActivitiesWithoutSelectedParents(diagramFactors);
 		
 		return diagramFactors;
-	}
-
-	private void removeActivitiesWithoutSelectedParents(HashSet<DiagramFactor> diagramFactors)
-	{
-		HashSet<DiagramFactor> activitiesWithoutParents = extractActivitiesWithoutSelectedParents(diagramFactors);
-		diagramFactors.removeAll(activitiesWithoutParents);
-	}
-
-	private HashSet<DiagramFactor> extractActivitiesWithoutSelectedParents(HashSet<DiagramFactor> diagramFactors)
-	{
-		HashSet<DiagramFactor> activityWithParentInList = new HashSet();
-		for(DiagramFactor diagramFactor : diagramFactors)
-		{
-			if (!Task.is(diagramFactor.getWrappedType()))
-				continue;
-			
-			if (!isActivtyWithParentInList(diagramFactors, diagramFactor))
-				activityWithParentInList.add(diagramFactor);
-		}
-		
-		return activityWithParentInList;
-	}
-
-	private boolean isActivtyWithParentInList(HashSet<DiagramFactor> diagramFactors, DiagramFactor activityDiagramFactor)
-	{
-		for(DiagramFactor diagramFactor : diagramFactors)
-		{
-			if (!Strategy.is(diagramFactor.getWrappedType()))
-				continue;
-			
-			Strategy strategy = (Strategy) diagramFactor.getWrappedFactor();			
-			if (strategy.getActivityRefs().contains(activityDiagramFactor.getWrappedORef()))
-				return true;			
-		}
-
-		return false;
 	}
 
 	private HashSet<DiagramFactor> getRelatedDiagramFactors(FactorCell[] selectedFactorCells)
