@@ -25,8 +25,11 @@ import javax.swing.JPanel;
 import org.miradi.actions.ActionInsertIntermediateResult;
 import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.Actions;
+import org.miradi.icons.ActivityIcon;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
@@ -42,14 +45,24 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 		addButtonLineWithCheckBox(jpanel, IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}
 	
+	protected void addActivityLine(TwoColumnPanel jpanel)
+	{
+		addIconLineWithCheckBox(jpanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
+	}
+	
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{		
 		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
 		
 		if (property.equals(IntermediateResult.OBJECT_NAME))
 			manager.setIntermediateResultVisible(checkBox.isSelected());
+			
 		else if (property.equals(ThreatReductionResult.OBJECT_NAME))
 			manager.setThreatReductionResultVisible(checkBox.isSelected());
+			
+		else if (property.equals(Task.ACTIVITY_NAME))
+			manager.setActivitiesVisible(checkBox.isSelected());
+	
 		
 		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 	}
@@ -65,6 +78,9 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	
 		else if (property.equals(ThreatReductionResult.OBJECT_NAME))
 			checkBox.setSelected(manager.areThreatReductionResultsVisible());
+		
+		else if (property.equals(Task.ACTIVITY_NAME))
+			checkBox.setSelected(manager.areActivitiesVisible());
 	}
 
 }

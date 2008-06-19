@@ -57,6 +57,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
@@ -106,6 +107,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		createCheckBox(FactorLink.OBJECT_NAME);
 		createCheckBox(FactorLink.OBJECT_NAME_TARGETLINK);
 		createCheckBox(FactorLink.OBJECT_NAME_STRESS);
+		createCheckBox(Task.ACTIVITY_NAME);
 		
 		createCheckBox(Goal.OBJECT_NAME);
 		createCheckBox(Objective.OBJECT_NAME);
@@ -138,11 +140,16 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
 		
 		addStressLine(jpanel);
+		addActivityLine(jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, TextBox.getObjectType(), TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBox.getObjectType(), GroupBox.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 		
 		return jpanel;
+	}
+
+	protected void addActivityLine(TwoColumnPanel jpanel)
+	{
 	}
 
 	protected void addStressLine(TwoColumnPanel jpanel)

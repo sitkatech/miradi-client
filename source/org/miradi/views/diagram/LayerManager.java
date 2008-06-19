@@ -43,6 +43,7 @@ public class LayerManager
 		indicatorsVisibleFlag = true;
 		scopeBoxVisibleFlag = true;
 		stressesVisibleFlag = true;
+		activitiesVisibleFlag = true;
 		intermediateResultFlag = true;
 		threatReductionResultFlag = true;
 		textBoxesVisibleFlag = true;
@@ -81,6 +82,9 @@ public class LayerManager
 
 		if (node.isStress())
 			return areStressesVisible();
+		
+		if (node.isActivity())
+			return areActivitiesVisible();
 
 		if(isTypeVisible(node.getClass()))
 			return true;
@@ -242,6 +246,16 @@ public class LayerManager
 		stressesVisibleFlag = newSetting;
 	}
 	
+	public boolean areActivitiesVisible()
+	{
+		return activitiesVisibleFlag;
+	}
+	
+	public void setActivitiesVisible(boolean newSetting)
+	{
+		activitiesVisibleFlag = newSetting;
+	}
+	
 	public boolean areIntermediateResultsVisible()
 	{
 		return intermediateResultFlag;
@@ -274,6 +288,7 @@ public class LayerManager
 	boolean indicatorsVisibleFlag;
 	boolean scopeBoxVisibleFlag;
 	boolean stressesVisibleFlag;
+	boolean activitiesVisibleFlag;
 	boolean intermediateResultFlag;
 	boolean threatReductionResultFlag;
 	boolean textBoxesVisibleFlag;
