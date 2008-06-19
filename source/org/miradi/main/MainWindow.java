@@ -115,7 +115,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager(this);
 		actions = new Actions(this);
-		hyperlinkHandler = new DefaultHyperlinkHandler(this, ResourcesHandler.class);
+		hyperlinkHandler = new DefaultHyperlinkHandler(this);
 	}
 	
 	public void start(String[] args) throws Exception

@@ -24,13 +24,14 @@ import javax.swing.JPopupMenu;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.resources.ResourcesHandler;
 
 public class DefaultHyperlinkHandler implements HyperlinkHandler
 {
-	public DefaultHyperlinkHandler(MainWindow mainWindowToUse, Class resourceBaseClassToUse)
+	public DefaultHyperlinkHandler(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
-		resourceBaseClass = resourceBaseClassToUse;
+		resourceBaseClass = ResourcesHandler.class;
 	}
 	
 	public MainWindow getMainWindow()
@@ -38,7 +39,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 		return mainWindow;
 	}
 	
-	public Class getResourceBaseClass()
+	private Class getResourceBaseClass()
 	{
 		return resourceBaseClass;
 	}
