@@ -27,7 +27,7 @@ public class ViewSpecificHelpButtonData extends HelpButtonData
 {
 	public ViewSpecificHelpButtonData(MainWindow mainWindowToUse, String titleToUse, String htmlFileToUse)
 	{
-		super(null, titleToUse, htmlFileToUse);
+		super(titleToUse, htmlFileToUse);
 		mainWindow = mainWindowToUse;
 	}
 	

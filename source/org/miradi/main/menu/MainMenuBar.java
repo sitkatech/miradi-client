@@ -106,7 +106,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.main.ViewSwitcher;
-import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
@@ -175,7 +174,7 @@ public class MainMenuBar extends JMenuBar
 		if(MainWindow.isDemoMode())
 		{
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
-			item.putClientProperty(HelpButtonData.class, new HelpButtonData(ResourcesHandler.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
+			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		}
 		
 		return menu;
@@ -192,7 +191,7 @@ public class MainMenuBar extends JMenuBar
 		if(MainWindow.isDemoMode())
 		{
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
-			item.putClientProperty(HelpButtonData.class, new HelpButtonData(ResourcesHandler.class, HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
+			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		}
 
 		return menu;
@@ -345,42 +344,42 @@ public class MainMenuBar extends JMenuBar
 		
 		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.CMP_STANDARDS, HelpButtonData.CMP_STANDARDS_HTML));
+				new HelpButtonData(HelpButtonData.CMP_STANDARDS,HelpButtonData.CMP_STANDARDS_HTML));
 
 
 		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_M);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.ADAPTIVE_MANAGEMENT, HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
+				new HelpButtonData(HelpButtonData.ADAPTIVE_MANAGEMENT,HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
 
 		
 		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.AGILE_SOFTWARE, HelpButtonData.AGILE_SOFTWARE_HTML));
+				new HelpButtonData(HelpButtonData.AGILE_SOFTWARE,HelpButtonData.AGILE_SOFTWARE_HTML));
 
 		menu.addSeparator();
 		
 		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_T);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
+				new HelpButtonData(HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
 
 		
 		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_R);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.CREDITS, HelpButtonData.CREDITS_HTML));
+				new HelpButtonData(HelpButtonData.CREDITS,HelpButtonData.CREDITS_HTML));
 		
 		item  = addMenuItem(actions, menu, ActionAboutBenetech.class, KeyEvent.VK_B);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.ABOUT_BENETECH, HelpButtonData.ABOUT_BENETECH_HTML));
+				new HelpButtonData(HelpButtonData.ABOUT_BENETECH,HelpButtonData.ABOUT_BENETECH_HTML));
 
 		item  = addMenuItem(actions, menu, ActionAboutCMP.class, KeyEvent.VK_C);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class,HelpButtonData.ABOUT_CMP, HelpButtonData.ABOUT_CMP_HTML));
+				new HelpButtonData(HelpButtonData.ABOUT_CMP,HelpButtonData.ABOUT_CMP_HTML));
 
 		menu.addSeparator();
 		
 		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
 		item.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(ResourcesHandler.class, HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
+				new HelpButtonData(HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
 		
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 		
