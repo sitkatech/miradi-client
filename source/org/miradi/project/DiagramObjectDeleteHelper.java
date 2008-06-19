@@ -124,7 +124,7 @@ public class DiagramObjectDeleteHelper
 		if (diagramLink.isGroupBoxLink())
 			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(allDiagramFactors, diagramLink);
 		else
-			linkDeletor.deleteFactorLinkAndDiagramLink(allDiagramFactors, diagramLink);
+			linkDeletor.deleteDiagramLinkAndFactorLink(allDiagramFactors, diagramLink);
 	}
 	
 	private Project project;
