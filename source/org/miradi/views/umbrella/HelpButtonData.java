@@ -63,7 +63,7 @@ public class HelpButtonData
 	public static final String SUPPORT = "Support";
 	public static final String SUPPORT_HTML = "help/Support.html";
 	
-	public static final String IMPORT_AND_EXPORT_HTML = "help/DemoExportAndImport.html";
+	public static final String IMPORT_AND_EXPORT_HTML = "demo/DemoExportAndImport.html";
 	public static final String CONFIGURE_EXPORT = "Configure Export";
 	public static final String DEMO = "Demo";
 	public static final String DEMO_AND_DATABASES = "Demo and Databases";
