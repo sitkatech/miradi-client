@@ -338,13 +338,13 @@ public class ResultsChainCreatorHelper
 	
 	private DiagramFactor[] extractDiagramFactors(FactorCell[] selectedFactorCells)
 	{
-		DiagramFactor diagramFactors[] = new DiagramFactor[selectedFactorCells.length];
+		HashSet<DiagramFactor> diagramFactors = new HashSet();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			diagramFactors[i] = selectedFactorCells[i].getDiagramFactor();
+			diagramFactors.add(selectedFactorCells[i].getDiagramFactor());
 		}
 		
-		return diagramFactors;
+		return diagramFactors.toArray(new DiagramFactor[0]);
 	}
 
 	private DiagramFactor[] getRelatedDiagramFactors(FactorCell[] selectedFactorCells)
