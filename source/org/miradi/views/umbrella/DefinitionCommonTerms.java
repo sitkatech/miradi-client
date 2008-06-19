@@ -21,8 +21,6 @@ package org.miradi.views.umbrella;
 
 import java.util.Hashtable;
 
-import org.miradi.resources.ResourcesHandler;
-
 public class DefinitionCommonTerms
 {
     static
@@ -322,10 +320,10 @@ public class DefinitionCommonTerms
 
 
 	
-		def = Definition.createDefinitionFromHtmlFile("Threat Calculations", ResourcesHandler.class, "ThreatRatingExplanationOfCalculation.html");
+		def = Definition.createDefinitionFromHtmlFilename("Threat Calculations", "ThreatRatingExplanationOfCalculation.html");
 		defs.put("Definition:ShowRulesCalculations", def);
 		
-		def = Definition.createDefinitionFromHtmlFile("Bundle Rules", ResourcesHandler.class, "ThreatRatingBundleRules.html");
+		def = Definition.createDefinitionFromHtmlFilename("Bundle Rules", "ThreatRatingBundleRules.html");
 		defs.put("Definition:ShowRulesBundles", def);
 		
 		
