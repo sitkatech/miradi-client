@@ -31,17 +31,11 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 	public DefaultHyperlinkHandler(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
-		resourceBaseClass = ResourcesHandler.class;
 	}
 	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
-	}
-	
-	private Class getResourceBaseClass()
-	{
-		return resourceBaseClass;
 	}
 	
 	public void linkClicked(String linkDescription)
@@ -55,7 +49,7 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 		try
 		{
 			String title = EAM.text("Title|Information");
-			new HtmlViewPanelWithMargins(getMainWindow(), title, getResourceBaseClass(), buttonName).showAsOkDialog();
+			new HtmlViewPanelWithMargins(getMainWindow(), title, ResourcesHandler.class, buttonName).showAsOkDialog();
 		}
 		catch(Exception e)
 		{
@@ -75,5 +69,4 @@ public class DefaultHyperlinkHandler implements HyperlinkHandler
 	}
 	
 	private MainWindow mainWindow;
-	private Class resourceBaseClass;
 }
