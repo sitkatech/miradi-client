@@ -33,7 +33,7 @@ public class HtmlViewPanelWithMargins extends HtmlViewPanel
 		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, htmlText);
 	}
 
-	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, Class classToUse, String htmlFileNameToUse) throws Exception
+	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, String htmlFileNameToUse) throws Exception
 	{
 		String html = EAM.loadResourceFile(ResourcesHandler.class, htmlFileNameToUse);
 		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, html);
