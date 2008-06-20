@@ -26,6 +26,7 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
+import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
@@ -49,10 +50,13 @@ public class PlanningTreeXmlExporter
 	//exported tree of refs instead of a table of cell values.              
 	private void createTables(CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
-		
 		multiModelExporter = new MultiTableCombinedAsOneExporter();
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
 		multiModelExporter.addExportable(model);
+		
+		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(getProject(), model, columnsToShow);
+		multiModelExporter.addExportable(mainModel);
+			
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
@@ -92,11 +96,12 @@ public class PlanningTreeXmlExporter
 			for (int column = 0; column < columnCount; ++column)
 			{
 				
-				out.write("<" + getElementName(column) + ">");
+				String elementName = getElementName(column);
+				out.write("<" + elementName + ">");
 				String padding = pad(multiModelExporter.getDepth(row), column);
 				String safeValue = getSafeValue(multiModelExporter, row, column, objectTypeName);
 				out.write(padding + safeValue);
-				out.writeln("</" + getElementName(column) + ">");
+				out.writeln("</" + elementName + ">");
 			}
 
 			out.writeln("</Row>");
