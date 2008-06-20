@@ -263,10 +263,10 @@ public class ResultsChainCreatorHelper
 		if (Stress.is(diagramFactor.getWrappedType()))
 			return true;
 		
-		if (!Task.is(diagramFactor.getWrappedType()))
-			return false;
+		if (Task.is(diagramFactor.getWrappedType()))
+			return !hasSelectedStrategyParent(diagramFactors, diagramFactor);
 		
-		return !hasSelectedStrategyParent(diagramFactors, diagramFactor);
+		return false;
 	}
 
 	private boolean hasSelectedStrategyParent(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactor)
