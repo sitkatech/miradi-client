@@ -45,13 +45,13 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.views.diagram.LinkCreator;
 
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -160,7 +160,7 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			int wrappedType = allDiagramFactors[i].getWrappedType();
-			if (wrappedType != ObjectType.TEXT_BOX)
+			if (LinkCreator.isValidLinakableType(wrappedType))
 				filterdDiagramFactors.add(allDiagramFactors[i]);
 		}
 			
