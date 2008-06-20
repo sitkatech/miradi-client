@@ -29,7 +29,6 @@ import org.miradi.dialogs.diagram.LinkCreateDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.TextBox;
 import org.miradi.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
@@ -124,7 +123,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		if (cell == null)
 			return true;
 		
-		return cell.getWrappedType() == TextBox.getObjectType();
+		return !LinkCreator.isValidLinakableType(cell.getWrappedType());
 	}
 
 	private class FromToDiagramFactorsHolder

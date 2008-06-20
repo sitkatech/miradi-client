@@ -43,7 +43,10 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 
@@ -394,6 +397,20 @@ public class LinkCreator
 				linkDeletor.deleteDiagramLink(diagramLink);
 			}
 		}
+	}
+	
+	public static boolean isValidLinakableType(int wrappedType)
+	{
+		if (TextBox.is(wrappedType))
+			return false;
+			
+		if (Task.is(wrappedType))
+			return false;
+		
+		if (Stress.is(wrappedType))
+			return false;
+		
+		return  true;
 	}
 
 	private Project getProject()

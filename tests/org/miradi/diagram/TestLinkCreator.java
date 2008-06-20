@@ -23,12 +23,15 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
 import org.miradi.views.diagram.LinkCreator;
 
 
@@ -38,7 +41,18 @@ public class TestLinkCreator extends TestCaseWithProject
 	{
 		super(name);
 	}
-
+	
+	public void testSsValidLinakableType()
+	{
+		for (int i = ObjectType.FIRST_OBJECT_TYPE; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
+		{
+			if (TextBox.is(i) || Stress.is(i) || Task.is(i))
+				assertFalse("valid linkable type?" , LinkCreator.isValidLinakableType(i));
+			else
+				assertTrue("not a linkable type?", LinkCreator.isValidLinakableType(i));
+		}
+	}
+	
 	public void testCreateThreatStressRatingsFromTarget() throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(getProject());
