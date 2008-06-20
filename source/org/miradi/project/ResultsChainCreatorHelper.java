@@ -264,14 +264,13 @@ public class ResultsChainCreatorHelper
 			return true;
 		
 		if (Task.is(diagramFactor.getWrappedType()))
-			return !hasSelectedStrategyParent(diagramFactors, diagramFactor);
+			return !containsRelatedStrategy(diagramFactors, diagramFactor.getWrappedFactor());
 		
 		return false;
 	}
 
-	private boolean hasSelectedStrategyParent(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactor)
+	private boolean containsRelatedStrategy(HashSet<DiagramFactor> diagramFactors, Factor activity)
 	{
-		Factor activity = diagramFactor.getWrappedFactor();
 		ORefList strategyReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
 		for (int index = 0; index < strategyReferrerRefs.size(); ++index)
 		{
