@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Vector;
 
 import javax.swing.Box;
 
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -86,7 +89,7 @@ public class PropertiesDoer extends LocationDoer
 
 		try
 		{
-			EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+			EAMGraphCell topCellAtClickPoint = getCorrectCellToShowPropertiesFor();
 			if(topCellAtClickPoint.isFactor())
 				doFactorProperties((FactorCell)topCellAtClickPoint, getLocation());
 
@@ -100,6 +103,39 @@ public class PropertiesDoer extends LocationDoer
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	private EAMGraphCell getCorrectCellToShowPropertiesFor() throws Exception
+	{
+		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
+		if (selected.isFactor())
+		{
+			return getCellForPropertiesDialog(selected);
+		}
+		
+		return selected;
+	}
+
+
+	private EAMGraphCell getCellForPropertiesDialog(EAMGraphCell selected) throws Exception
+	{
+		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
+		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+		if (selected.isProjectScope())
+		{				
+			Vector<FactorCell> allTargets = model.getAllDiagramTargets();
+			if (allTargets.contains(topCellAtClickPoint))
+				return topCellAtClickPoint;
+		}
+		
+		if (selected.getDiagramFactor().isGroupBoxFactor())
+		{
+			HashSet<FactorCell> groupBoxChildren = model.getGroupBoxFactorChildren(selected);
+			if (groupBoxChildren.contains(topCellAtClickPoint))
+				return topCellAtClickPoint;
+		}
+		
+		return selected;
 	}
 	
 	class ScopePropertiesDialog extends ModelessDialogWithClose
