@@ -77,7 +77,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public String getHeaderFor(int column)
 	{
-		return getColumnTag(column);
+		return getColumnName(column);
 	}
 	
 	protected Project project;
