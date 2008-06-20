@@ -170,19 +170,16 @@ public class PasteDoer extends AbstractPasteDoer
 	{
 		DiagramObject diagramObjectRefBeingPastedInto = getDiagramObject();
 		ORefList afterPasteDiagramFactors = diagramObjectRefBeingPastedInto.getAllDiagramFactorRefs();
-		ORefList afterPasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
+		if (!beforePasteDiagramFactors.equals(afterPasteDiagramFactors))
+			return;
 		
-		boolean sameDiagramFactors = sameRefList(beforePasteDiagramFactors, afterPasteDiagramFactors);
-		boolean sameDiagramLinks = sameRefList(beforePasteDiagramLinks, afterPasteDiagramLinks);
-		if (sameDiagramFactors && sameDiagramLinks)
-			EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
+		ORefList afterPasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
+		if (!beforePasteDiagramLinks.equals(afterPasteDiagramLinks))
+			return;
+		
+		EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
 	}
 
-	private boolean sameRefList(ORefList refList1, ORefList refList2)
-	{
-		return refList1.hashCode() == refList2.hashCode();
-	}
-	
 	private final String AS_COPY_BUTTON = EAM.text("Button|As Copy");
 	private final String AS_ALIAS_BUTTON = EAM.text("Button|Shared");
 	private final static String messageFileName = "NothingPastedMessage.html";
