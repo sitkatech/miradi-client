@@ -35,14 +35,15 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	{
 		if (!isAvailable())
 			return;
-
-		EAMFileSaveChooser eamFileChooser = getFileChooser();
-		File chosen = eamFileChooser.displayChooser();
-		if (chosen==null) 
-			return;
-
+		
 		try 
 		{
+			preNotifyUser();
+			EAMFileSaveChooser eamFileChooser = getFileChooser();
+			File chosen = eamFileChooser.displayChooser();
+			if (chosen==null) 
+				return;
+
 			doWork(chosen);
 		}
 		catch (ZipException e)
@@ -61,6 +62,10 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		} 
 	}
 	
+	protected void preNotifyUser() throws Exception
+	{
+	}
+
 	protected void loopBack() throws CommandFailedException
 	{
 		doIt();

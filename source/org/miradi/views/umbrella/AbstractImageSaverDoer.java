@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
@@ -57,6 +58,11 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		doIt();
 	}
 	
+	protected void preNotifyUser() throws Exception
+	{
+		EAM.showHtmlMessageOkDialog(MESSAGE_FILE_NAME, "Paste");
+	}
+	
 	private void saveImage(FileOutputStream out) throws Exception
 	{
 		BufferedImage image = getView().getImage();
@@ -64,4 +70,6 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
+	
+	private final static String MESSAGE_FILE_NAME = "ImageResolutionMessage.html";
 }
