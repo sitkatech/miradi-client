@@ -23,11 +23,11 @@ import java.io.InputStream;
 import java.net.URL;
 
 import org.miradi.main.EAM;
+import org.miradi.xml.conpro.MiradiValidationDriver;
 import org.xml.sax.InputSource;
 
 import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.SchemaReader;
-import com.thaiopensource.validate.ValidationDriver;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
 import com.thaiopensource.validate.rng.RngProperty;
 
@@ -42,7 +42,7 @@ public class ConProMiradiXmlValidator
 		
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
-		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
+		MiradiValidationDriver validationDriver = new MiradiValidationDriver(properties.toPropertyMap(), schemaReader);
 		if (validationDriver.loadSchema(schemaInputSource))
 		{
 			InputSource xmlInputSource = new InputSource(xmlInputStream);
