@@ -322,13 +322,13 @@ public class AppPreferences
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
-		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, DEFAULT_GRID_VISIBILITY);
-		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
-		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, 600);
-		mainWindowWidth = json.optInt(TAG_MAIN_WINDOW_WIDTH, 800);
-		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, 100);
-		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, 100);
-		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, false);
+		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, DEFAULT_GRID_VISIBILITY_VALUE);
+		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, DEFAULT_IS_MAXIMIZED_VALUE);
+		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, DEFAULT_MAIN_WINDOW_HEIGHT);
+		mainWindowWidth = json.optInt(TAG_MAIN_WINDOW_WIDTH, DEFAULT_MAIN_WINDOW_WIDTH);
+		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, DEFAULT_MAIN_WINDOW_X_POSITION);
+		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, DEFAULT_MAIN_WINDOW_Y_POSITION);
+		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, DEFAULT_IS_CELL_RATING_VISIBLE);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -498,8 +498,15 @@ public class AppPreferences
 	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x99, 0xee, 0x99);
 	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
 	
-	private static final boolean DEFAULT_GRID_VISIBILITY = false;
-	
+	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
+	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
+	private static final boolean DEFAULT_IS_CELL_RATING_VISIBLE = false;
+	private static final int DEFAULT_MAIN_WINDOW_HEIGHT = 600;
+	private static final int DEFAULT_MAIN_WINDOW_WIDTH = 800;
+
+	private static final int DEFAULT_MAIN_WINDOW_X_POSITION = 100;
+	private static final int DEFAULT_MAIN_WINDOW_Y_POSITION = 100;
+
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color contributingFactorColor;
