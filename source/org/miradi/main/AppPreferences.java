@@ -322,7 +322,7 @@ public class AppPreferences
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
-		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
+		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, DEFAULT_GRID_VISIBILITY);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, 600);
 		mainWindowWidth = json.optInt(TAG_MAIN_WINDOW_WIDTH, 800);
@@ -497,6 +497,8 @@ public class AppPreferences
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
 	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x99, 0xee, 0x99);
 	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
+	
+	private static final boolean DEFAULT_GRID_VISIBILITY = false;
 	
 	public Color strategyColor;
 	public Color activitiesColor;
