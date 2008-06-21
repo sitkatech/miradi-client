@@ -154,7 +154,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importActivities(strategyNode, strategyRef);
 			
-			createDiagramFactorAndAddToDiagram(strategyRef);
+			createDiagramFactorAndAddToDiagram(strategyRef, nodeIndex);
 		}
 	}
 
@@ -305,7 +305,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
 			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);
 			
-			createDiagramFactorAndAddToDiagram(threatRef);
+			createDiagramFactorAndAddToDiagram(threatRef, nodeIndex);
 		}
 	}
 
@@ -510,7 +510,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 			
 			importSubTargets(targetNode, targetRef);
-			createDiagramFactorAndAddToDiagram(targetRef);
+			createDiagramFactorAndAddToDiagram(targetRef, nodeIndex);
 			importThreatToTargetAssociations(targetNode, targetRef);
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
 			importStresses(targetNode, targetRef);
@@ -837,14 +837,21 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return codeMapHelper;
 	}
 	
-	private void createDiagramFactorAndAddToDiagram(ORef factorRef) throws Exception
+	private void createDiagramFactorAndAddToDiagram(ORef factorRef, int positionIndex) throws Exception
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
 		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
+		
+		setPosition(diagramFactorRef, positionIndex);
 	}
 	
+	private void setPosition(ORef diagramFactorRef, int positionIndex)
+	{
+		//FIXME set the poistion of this diagram factor
+	}
+
 	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef toRef) throws Exception
 	{
 		ORef foundFactorLinkRef = getExistingLink(fromRef, toRef);
