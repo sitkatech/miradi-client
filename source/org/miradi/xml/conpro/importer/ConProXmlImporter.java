@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
@@ -32,6 +33,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -47,6 +49,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -81,6 +84,7 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -133,6 +137,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importObjectives();
 		
 		importViability();
+		
+		setDiagramFactorDefaultLocations();
 	}
 
 	private void importStrategies() throws Exception
@@ -154,7 +160,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importActivities(strategyNode, strategyRef);
 			
-			createDiagramFactorAndAddToDiagram(strategyRef, nodeIndex);
+			createDiagramFactorAndAddToDiagram(strategyRef);
 		}
 	}
 
@@ -305,7 +311,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
 			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);
 			
-			createDiagramFactorAndAddToDiagram(threatRef, nodeIndex);
+			createDiagramFactorAndAddToDiagram(threatRef);
 		}
 	}
 
@@ -510,7 +516,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeListField(targetNode, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, targetRef, Target.TAG_HABITAT_ASSOCIATION, getCodeMapHelper().getConProToMiradiHabitiatCodeMap());
 			
 			importSubTargets(targetNode, targetRef);
-			createDiagramFactorAndAddToDiagram(targetRef, nodeIndex);
+			createDiagramFactorAndAddToDiagram(targetRef);
 			importThreatToTargetAssociations(targetNode, targetRef);
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
 			importStresses(targetNode, targetRef);
@@ -837,21 +843,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return codeMapHelper;
 	}
 	
-	private void createDiagramFactorAndAddToDiagram(ORef factorRef, int positionIndex) throws Exception
+	private void createDiagramFactorAndAddToDiagram(ORef factorRef) throws Exception
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
 		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
-		
-		setPosition(diagramFactorRef, positionIndex);
 	}
 	
-	private void setPosition(ORef diagramFactorRef, int positionIndex)
-	{
-		//FIXME set the poistion of this diagram factor
-	}
-
 	private ORef createFactorLinkAndAddToDiagram(ORef fromRef, ORef toRef) throws Exception
 	{
 		ORef foundFactorLinkRef = getExistingLink(fromRef, toRef);
@@ -881,13 +880,19 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void appendRefToDiagramObject(String tag, ORef refToAdd) throws Exception
 	{
-		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
-		ORef conceptualModelRef = conceptualModelRefs.get(0);
+		ORef conceptualModelRef = getFirstAndOnlyDiagramObjectRef();
 
 		IdList idList = new IdList(refToAdd.getObjectType(), getProject().getObjectData(conceptualModelRef, tag));
 		idList.add(refToAdd.getObjectId());
 		
 		setData(conceptualModelRef, tag, idList.toString());
+	}
+
+	private ORef getFirstAndOnlyDiagramObjectRef()
+	{
+		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefList();
+		ORef conceptualModelRef = conceptualModelRefs.get(0);
+		return conceptualModelRef;
 	}
 	
 	private boolean isUnsupportedNewVersion() throws Exception
@@ -915,7 +920,35 @@ public class ConProXmlImporter implements ConProMiradiXml
 		String nameSpace = getAttributeValue(rootNode, XMLNS);
 		return nameSpace;
 	}
+	
+	private void setDiagramFactorDefaultLocations() throws Exception
+	{
+		ORefList nonDraftStrategyRefs = new ORefList(getProject().getStrategyPool().getNonDraftStrategies());
+		setDiagramFactorLocation(nonDraftStrategyRefs, 30);
+		
+		ORefList draftStrategyRefs = new ORefList(getProject().getStrategyPool().getDraftAndNonDraftStrategies());
+		setDiagramFactorLocation(draftStrategyRefs, 270);
+		
+		setDiagramFactorLocation(getProject().getPool(Cause.getObjectType()).getORefList(), 510);
+		setDiagramFactorLocation(getProject().getPool(Target.getObjectType()).getORefList(), 750);
+	}
 			
+	private void setDiagramFactorLocation(ORefList factorRefs, int xPosition) throws Exception
+	{
+		DiagramObject diagramObject = ConceptualModelDiagram.find(getProject(), getFirstAndOnlyDiagramObjectRef());
+		int VERTICAL_SPACE_INBETWEEN = 90;
+		for (int index = 0; index < factorRefs.size(); ++index)
+		{
+			int rowIndex = (index + 1);
+			int y = rowIndex * VERTICAL_SPACE_INBETWEEN;
+			Point location = new Point(xPosition, y);
+			
+			DiagramFactor diagramFactor = diagramObject.getDiagramFactor(factorRefs.get(index));
+			CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
+			getProject().executeCommand(setLocation);
+		}
+	}
+
 	private Project project;
 	private XPath xPath;
 	private Document document;
