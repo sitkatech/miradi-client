@@ -338,7 +338,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeThreshold(out, INDICATOR_DESCRIPTION_VERY_GOOD, indicator, StatusQuestion.VERY_GOOD);
 		
 		writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, indicator.getCurrentStatus());
-		writeOptionalRatingCodeElement(out, DESIRED_VIABILITY_RATING,  indicator.getFutureStatusRating());
+		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
 		writeOptionalLatestMeasurementValues(out, indicator);
 		writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
@@ -357,7 +357,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		Measurement measurement = Measurement.find(getProject(), measurementRef);
 		
-		writeOptionalElement(out, CURRENT_VIABILITY_RATING,  measurement, Measurement.TAG_STATUS);
+		writeOptionalRankingCodeElement(out, CURRENT_VIABILITY_RATING,  measurement, (Measurement.TAG_STATUS));
 		writeOptionalElement(out, CURRENT_RATING_DATE,  measurement, Measurement.TAG_DATE);
 		writeOptionalElement(out, CONFIDENE_CURRENT_RATING,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 		writeOptionalElement(out, CURRENT_RATING_COMMENT, measurement, Measurement.TAG_COMMENT);
@@ -864,6 +864,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		out.write(getConproCode(code, map));
 	}
 
+	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	{
+		writeOptionalRankingCodeElement(out, elementName, object.getData(tag));
+	}
+
+	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
+	{
+		writeOptionalElement(out, elementName, rankingCodeToXmlValue(code));
+	}
+	
 	private void writeOptionalRatingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeOptionalRatingCodeElement(out, elementName, object.getData(tag));

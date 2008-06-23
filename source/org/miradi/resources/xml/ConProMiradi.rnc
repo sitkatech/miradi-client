@@ -212,8 +212,8 @@ viability.element =
             & element cp:indicator_description_good { text }?
             & element cp:indicator_description_very_good { text }?
             & element cp:current_indicator_status_viability { text }?
-            & element cp:current_viability_rating { text }?
-            & element cp:desired_viability_rating { text }?
+            & element cp:current_viability_rating { vocabulary_rating_vggfp }?
+            & element cp:desired_viability_rating { vocabulary_rating_vggfp }?
             & element cp:current_rating_date { vocabulary_date }?
             & element cp:desired_rating_date { vocabulary_date }?
             & element cp:confidence_current_rating { text }?
