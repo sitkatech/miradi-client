@@ -27,7 +27,7 @@ public class FinancialWizardStep extends SplitWizardStep
 
 	public FinancialWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.class.getSimpleName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }

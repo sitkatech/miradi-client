@@ -26,7 +26,7 @@ public class SummaryWizardStep extends SplitWizardStep
 {
 	public SummaryWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, SummaryView.class.getSimpleName());
+		super(wizardToUse, SummaryView.getViewName());
 	}
 
 }

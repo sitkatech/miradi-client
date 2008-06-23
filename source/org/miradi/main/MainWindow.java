@@ -692,31 +692,45 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private void setCurrentView(String viewName) throws Exception
 	{
-		if(viewName.equals(summaryView.getClass().getSimpleName()))
-			setCurrentView(summaryView);
-		else if(viewName.equals(diagramView.getClass().getSimpleName()))
-			setCurrentView(diagramView);
-		else if(viewName.equals(noProjectView.getClass().getSimpleName()))
-			setCurrentView(noProjectView);
-		else if(viewName.equals(threatMatrixView.getClass().getSimpleName()))
-			setCurrentView(threatMatrixView);
-		else if(viewName.equals(mapView.getClass().getSimpleName()))
-			setCurrentView(mapView);
-		else if(viewName.equals(calendarView.getClass().getSimpleName()))
-			setCurrentView(calendarView);
-		else if(viewName.equals(libraryView.getClass().getSimpleName()))
-			setCurrentView(libraryView);
-		else if (viewName.equals(targetViabilityView.getClass().getSimpleName()))
-			setCurrentView(targetViabilityView);
-		else if(viewName.equals(planningView.getClass().getSimpleName()))
-			setCurrentView(planningView);
-		else if (viewName.equals(reportView.getClass().getSimpleName()))
-			setCurrentView(reportView);
+		setCurrentView(getView(viewName));
+	}
+	
+	public UmbrellaView getView(String viewName)
+	{
+		if(viewName.equals(summaryView.cardName()))
+			return summaryView;
 		
+		else if(viewName.equals(diagramView.cardName()))
+			return diagramView;
+		
+		else if(viewName.equals(noProjectView.cardName()))
+			return noProjectView;
+		
+		else if(viewName.equals(threatMatrixView.cardName()))
+			return threatMatrixView;
+		
+		else if(viewName.equals(mapView.cardName()))
+			return mapView;
+		
+		else if(viewName.equals(calendarView.cardName()))
+			return calendarView;
+		
+		else if(viewName.equals(libraryView.cardName()))
+			return libraryView;
+		
+		else if (viewName.equals(targetViabilityView.cardName()))
+			return targetViabilityView;
+		
+		else if(viewName.equals(planningView.cardName()))
+			return planningView;
+		
+		else if (viewName.equals(reportView.cardName()))
+			return reportView;
+
 		else
 		{
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
-			setCurrentView(summaryView);
+			return summaryView;
 		}
 	}
 	
