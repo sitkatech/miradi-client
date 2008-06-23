@@ -117,7 +117,7 @@ public class TestORefList extends EAMTestCase
 		assertEquals("wrong ref for type?", new ORef(Target.getObjectType(), new BaseId(20)), foundTargetRef);
 		
 		ORef foundStrategyRef = sampleRefList.getRefForType(Strategy.getObjectType());
-		assertEquals("wrong ref for invalid type", ORef.INVALID, foundStrategyRef);
+		assertEquals("wrong ref for invalid type", ORef.createInvalidWithType(Strategy.getObjectType()), foundStrategyRef);
 	}
 
 	public void testGetRefForTypes()
