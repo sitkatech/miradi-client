@@ -17,27 +17,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.planning;
+package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
+import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class StrategicPlanDevelopObjectivesStep extends DiagramWizardStep
+public class MonitoringWizardDefineIndicatorsStep extends DiagramWizardStep
 {
-	public StrategicPlanDevelopObjectivesStep(WizardPanel wizardToUse)
+	public MonitoringWizardDefineIndicatorsStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
+
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_2A;
+		return ProcessSteps.PROCESS_STEP_2B;
 	}
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpStrategicPlanDevelopObjectivesStep.class;
+		return ActionJumpMonitoringWizardDefineIndicatorsStep.class;
 	}
+
 }
+
