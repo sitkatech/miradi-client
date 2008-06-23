@@ -17,29 +17,33 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.planning;
+package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpMonitoringWizardFocusStep;
+import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
+import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class MonitoringWizardFocusStep extends DiagramWizardStep
+public class TargetViabilityMethodChoiceStep extends DiagramWizardStep
 {
-	public MonitoringWizardFocusStep(WizardPanel wizardToUse)
+	public TargetViabilityMethodChoiceStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
 	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_2B;
+		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpMonitoringWizardFocusStep.class;
+		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-
+	
+	public String getSubHeading()
+	{
+		return EAM.text("Introduction");
+	}
 }
-
