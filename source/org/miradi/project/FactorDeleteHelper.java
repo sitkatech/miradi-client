@@ -22,10 +22,11 @@ package org.miradi.project;
 import java.text.ParseException;
 import java.util.Vector;
 
+import org.jgraph.graph.GraphSelectionModel;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.DiagramComponent;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
@@ -48,9 +49,10 @@ import org.miradi.views.umbrella.DeleteActivity;
 
 public class FactorDeleteHelper
 {
-	public FactorDeleteHelper(DiagramModel modelToUse)
+	public FactorDeleteHelper(DiagramComponent diagramToUse)
 	{
-		this(modelToUse.getDiagramObject());
+		this(diagramToUse.getDiagramModel().getDiagramObject());
+		selectionModel = diagramToUse.getSelectionModel();
 	}
 
 	protected FactorDeleteHelper(DiagramObject diagramObjectToUse)
@@ -60,6 +62,8 @@ public class FactorDeleteHelper
 
 	public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
+		clearSelection();
+		
 		if (Target.is(diagramFactorToDelete.getWrappedType()))
 		{	
 			Target target = (Target) diagramFactorToDelete.getWrappedFactor();
@@ -73,6 +77,42 @@ public class FactorDeleteHelper
 		}
 		
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
+	}
+
+	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	{
+		clearSelection();
+		
+		Vector<Command> deleteDiagramFactorCommands = new Vector();
+		deleteDiagramFactorCommands.addAll(diagramFactor.createCommandsToClearAsList());
+		deleteDiagramFactorCommands.add(new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId()));
+		
+		return deleteDiagramFactorCommands;
+	}
+
+	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
+	{
+		clearSelection();
+		
+		CommandSetObjectData removeDiagramFactor = buildCommandToRemoveNodeFromDiagram(diagramObjectToUse, idToDelete);
+		getProject().executeCommand(removeDiagramFactor);
+	}
+
+	public CommandSetObjectData buildCommandToRemoveNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws ParseException
+	{
+		clearSelection();
+		
+		return CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
+	}
+	
+	
+	
+	private void clearSelection()
+	{
+		if(selectionModel == null)
+			return;
+		
+		selectionModel.clearSelection();
 	}
 
 	private void deleteRelatedFactorDiagramFactors(ORefList factorRefs) throws Exception
@@ -146,15 +186,6 @@ public class FactorDeleteHelper
 		}
 	}
 
-	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
-	{
-		Vector<Command> deleteDiagramFactorCommands = new Vector();
-		deleteDiagramFactorCommands.addAll(diagramFactor.createCommandsToClearAsList());
-		deleteDiagramFactorCommands.add(new CommandDeleteObject(ObjectType.DIAGRAM_FACTOR, diagramFactor.getDiagramFactorId()));
-		
-		return deleteDiagramFactorCommands;
-	}
-
 	private void removeFromView(ORef factorRef) throws ParseException, Exception, CommandFailedException
 	{
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factorRef);
@@ -162,17 +193,6 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
-	{
-		CommandSetObjectData removeDiagramFactor = buildCommandToRemoveNodeFromDiagram(diagramObjectToUse, idToDelete);
-		getProject().executeCommand(removeDiagramFactor);
-	}
-
-	public CommandSetObjectData buildCommandToRemoveNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws ParseException
-	{
-		return CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
-	}
-	
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
 	{
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();
@@ -244,4 +264,5 @@ public class FactorDeleteHelper
 	}
 	
 	private DiagramObject diagramObject;
+	private GraphSelectionModel selectionModel;
 }

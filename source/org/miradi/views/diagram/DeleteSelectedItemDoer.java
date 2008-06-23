@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -96,8 +96,8 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private void deleteFactor(DiagramFactor diagramFactor) throws Exception
 	{
-		DiagramModel model = getDiagramView().getDiagramModel();
-		new FactorDeleteHelper(model).deleteDiagramFactor(diagramFactor);
+		DiagramComponent diagram = getDiagramView().getDiagramComponent();
+		new FactorDeleteHelper(diagram).deleteDiagramFactor(diagramFactor);
 	}
 
 	private void deleteLink(DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
