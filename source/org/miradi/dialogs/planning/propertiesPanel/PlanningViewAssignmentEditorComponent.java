@@ -28,13 +28,11 @@ import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MultiTablePanel;
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -61,13 +59,13 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		
 		if (hierarchyToSelectedRef.length == 0)
 		{
-			setTaskId(BaseId.INVALID);
+			setTaskId(ORef.createInvalidWithType(Task.getObjectType()));
 		}
 		else
 		{
 			ORefList selectionHierarchyRefs = new ORefList(hierarchyToSelectedRef[0]);
 			ORef taskRef = selectionHierarchyRefs.getRefForType(Task.getObjectType());
-			setTaskId(taskRef.getObjectId());
+			setTaskId(taskRef);
 		}
 
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
@@ -225,9 +223,9 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		budgetTotalsTable.repaint();
 	}
 	
-	private void setTaskId(BaseId taskId)
+	private void setTaskId(ORef taskRef)
 	{ 
-		Task task = (Task)getProject().findObject(ObjectType.TASK, taskId);
+		Task task = Task.find(getProject(), taskRef);
 		
 		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container

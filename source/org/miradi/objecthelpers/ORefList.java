@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import org.json.JSONArray;
 import org.martus.util.UnicodeWriter;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonArray;
@@ -296,7 +297,7 @@ public class ORefList
 			if (objectType == oref.getObjectType())
 				return  oref;
 		}
-		return ORef.INVALID;
+		return new ORef(objectType, BaseId.INVALID);
 	}
 	
 	private Vector<ORef> data;
