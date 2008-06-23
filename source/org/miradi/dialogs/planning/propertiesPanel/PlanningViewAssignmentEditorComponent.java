@@ -60,9 +60,15 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		savePendingEdits();
 		
 		if (hierarchyToSelectedRef.length == 0)
+		{
 			setTaskId(BaseId.INVALID);
+		}
 		else
-			setTaskId(hierarchyToSelectedRef[0].getObjectId());
+		{
+			ORefList selectionHierarchyRefs = new ORefList(hierarchyToSelectedRef[0]);
+			ORef taskRef = selectionHierarchyRefs.getRefForType(Task.getObjectType());
+			setTaskId(taskRef.getObjectId());
+		}
 
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
