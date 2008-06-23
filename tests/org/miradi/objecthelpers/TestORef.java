@@ -94,4 +94,10 @@ public class TestORef extends TestCaseEnhanced
 		{		
 		}
 	}
+	
+	public void testCreateInvalidWithType()
+	{
+		ORef invalidRef = ORef.createInvalidWithType(Cause.getObjectType());
+		assertEquals("wrong invalid type?", Cause.getObjectType(), invalidRef.getObjectType());
+	}
 }
