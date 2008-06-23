@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -97,8 +98,8 @@ public class DiagramObjectDeleteHelper
 
 	private void deleteDiagramFactorAndFactor(DiagramFactor diagramFactor) throws Exception
 	{		
-		DiagramModel diagramModel = diagramPanel.getDiagramModel();
-		FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(diagramModel);
+		DiagramComponent diagram = diagramPanel.getdiagramComponent();
+		FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(diagram);
 		factorDeleteHelper.deleteDiagramFactor(diagramFactor);
 	}
 
