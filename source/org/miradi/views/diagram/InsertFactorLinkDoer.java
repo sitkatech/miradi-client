@@ -89,7 +89,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 	private FromToDiagramFactorsHolder getFromToDiagramFactors(DiagramView diagramView)
 	{
 		DiagramPanel diagramPanel = diagramView.getDiagramPanel();
-		DiagramComponent diagram = diagramPanel.getdiagramComponent();
+		DiagramComponent diagram = diagramPanel.getDiagramComponent();
 		FromToDiagramFactorsHolder fromToHolder = getFromToDiagramsForNonDiaglogCreation(diagram);
 		if (fromToHolder != null)
 			return fromToHolder;
