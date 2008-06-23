@@ -50,10 +50,10 @@ public class FactorDeleteHelper
 {
 	public FactorDeleteHelper(DiagramModel modelToUse)
 	{
-		diagramObject = modelToUse.getDiagramObject();
+		this(modelToUse.getDiagramObject());
 	}
 
-	public FactorDeleteHelper(DiagramObject diagramObjectToUse)
+	protected FactorDeleteHelper(DiagramObject diagramObjectToUse)
 	{
 		diagramObject = diagramObjectToUse;
 	}
