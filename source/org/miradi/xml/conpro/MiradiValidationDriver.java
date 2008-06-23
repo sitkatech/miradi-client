@@ -30,7 +30,6 @@ import org.xml.sax.XMLReader;
 import com.thaiopensource.util.PropertyId;
 import com.thaiopensource.util.PropertyMap;
 import com.thaiopensource.util.PropertyMapBuilder;
-import com.thaiopensource.validate.IncorrectSchemaException;
 import com.thaiopensource.validate.Schema;
 import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.ValidateProperty;
@@ -45,12 +44,12 @@ import com.thaiopensource.xml.sax.XMLReaderCreator;
 //have better error handling
 public class MiradiValidationDriver
 {
-	public MiradiValidationDriver(PropertyMap properties, SchemaReader sr) 
+	public MiradiValidationDriver(PropertyMap properties, SchemaReader sr) throws InstantiationException, IllegalAccessException 
 	{
 		this(properties, properties, sr);
 	}
 
-	public MiradiValidationDriver(PropertyMap schemaProperties, PropertyMap instanceProperties, SchemaReader schemaReader) 
+	public MiradiValidationDriver(PropertyMap schemaProperties, PropertyMap instanceProperties, SchemaReader schemaReader) throws InstantiationException, IllegalAccessException 
 	{
 		PropertyMapBuilder builder = new PropertyMapBuilder(schemaProperties);
 		for (int i = 0; i < requiredProperties.length; i++) 
@@ -59,14 +58,15 @@ public class MiradiValidationDriver
 			{
 				try 
 				{
-					builder.put(requiredProperties[i],
-							defaultClasses[i].newInstance());
+					builder.put(requiredProperties[i], defaultClasses[i].newInstance());
 				}
 				catch (InstantiationException e) 
 				{
+					throw e;
 				}
 				catch (IllegalAccessException e) 
 				{
+					throw e;
 				}
 			}
 		}
@@ -85,7 +85,7 @@ public class MiradiValidationDriver
 		this.sr = schemaReader == null ? new AutoSchemaReader() : schemaReader;
 	}
 
-	public boolean loadSchema(InputSource in) throws SAXException, IOException 
+	public boolean loadSchema(InputSource in) throws Exception 
 	{
 		try 
 		{
@@ -93,9 +93,9 @@ public class MiradiValidationDriver
 			validator = null;
 			return true;
 		}
-		catch (IncorrectSchemaException e) 
+		catch(Exception e)
 		{
-			return false;
+			throw e;
 		}
 	}
 
