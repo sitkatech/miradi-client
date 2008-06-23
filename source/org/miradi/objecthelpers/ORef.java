@@ -134,7 +134,12 @@ public class ORef implements Comparable<ORef>
 			throw new RuntimeException("wrong type: " + type + " for ref type: " + getObjectType());
 	}
 	
-	public static ORef INVALID = new ORef(ObjectType.FAKE, BaseId.INVALID);
+	public static ORef createInvalidWithType(int type)
+	{
+		return new ORef(type, BaseId.INVALID);
+	}
+	
+	public static ORef INVALID = createInvalidWithType(ObjectType.FAKE);
 	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";
 	private static final String TAG_OBJECT_ID = "ObjectId";
