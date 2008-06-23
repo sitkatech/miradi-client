@@ -660,7 +660,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 //			out.writeln("noId");
 //			out.writeln("</parent_project_id>");
 			
-			writeElement(out, PROJECT_SUMMARY_NAME, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
+			writeElement(out, PROJECT_SUMMARY_NAME, getProjectName());
 			
 			writeOptionalElement(out, START_DATE, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
 			writeOptionalAreaSize(out);
@@ -684,6 +684,15 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			out.writeln("<" + EXPORT_DATE + ">" + new MultiCalendar().toIsoDateString() + "</" + EXPORT_DATE+ ">");
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private String getProjectName()
+	{
+		String projectName = getProjectMetadata().getProjectName();
+		if (projectName.length() > 0)
+			return projectName;
+		
+		return getProject().getFilename();
 	}
 
 	private void writeProjectId(UnicodeWriter out) throws Exception
