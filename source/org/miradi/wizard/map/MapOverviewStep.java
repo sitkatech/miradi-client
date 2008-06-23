@@ -29,7 +29,7 @@ public class MapOverviewStep extends SplitWizardStep
 {
 	public MapOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, MapView.class.getSimpleName());
+		super(wizardToUse, MapView.getViewName());
 	}
 
 	public String getProcessStepTitle()

@@ -55,7 +55,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 {
 	public NoProjectWizardStep(WizardPanel wizardToUse) throws Exception
 	{
-		super(wizardToUse, NoProjectView.class.getSimpleName());
+		super(wizardToUse, NoProjectView.getViewName());
 		
 		WizardHtmlViewer introHtmlViewer = new WizardHtmlViewer(getMainWindow(), this);
 		introHtmlViewer.setText(getTextBelowLogo());

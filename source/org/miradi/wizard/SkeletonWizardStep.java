@@ -35,6 +35,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.HtmlFormEventHandler;
+import org.miradi.views.umbrella.UmbrellaView;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
@@ -67,7 +68,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 			if(action != null)
 				return (String)action.getValue(Action.NAME);
 		}
-		return getHtmlBaseName();
+		return getViewName();
 	}
 
 	public WizardPanel getWizard()
@@ -115,9 +116,15 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	private String getResourceFileName(String sideLabel)
 	{
-		return "wizard/" + getViewName() + "/" + getHtmlBaseName() + sideLabel + ".html";
+		return "wizard/" + getViewClassSimpleName() + "/" + getHtmlBaseName() + sideLabel + ".html";
 	}
 
+	private String getViewClassSimpleName()
+	{
+		UmbrellaView view = getMainWindow().getView(getViewName());
+		return view.getClass().getSimpleName();
+	}
+	
 	public String getHtmlBaseName()
 	{
 		return getClass().getSimpleName();

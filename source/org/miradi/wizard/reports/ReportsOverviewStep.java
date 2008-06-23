@@ -28,7 +28,7 @@ public class ReportsOverviewStep extends SplitWizardStep
 {
 	public ReportsOverviewStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, ReportsView.class.getSimpleName());
+		super(wizardToUse, ReportsView.getViewName());
 	}
 
 	public String getProcessStepTitle()

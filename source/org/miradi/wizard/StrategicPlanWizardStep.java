@@ -27,7 +27,7 @@ public class StrategicPlanWizardStep extends SplitWizardStep
 
 	public StrategicPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.class.getSimpleName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }

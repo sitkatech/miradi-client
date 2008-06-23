@@ -29,7 +29,7 @@ public class PlanningWizardFinalizeStrategicPlanStep extends SplitWizardStep
 {
 	public PlanningWizardFinalizeStrategicPlanStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.class.getSimpleName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 	public String getProcessStepTitle()

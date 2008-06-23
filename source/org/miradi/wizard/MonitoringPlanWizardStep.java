@@ -27,7 +27,7 @@ public class MonitoringPlanWizardStep extends SplitWizardStep
 
 	public MonitoringPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.class.getSimpleName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 }
