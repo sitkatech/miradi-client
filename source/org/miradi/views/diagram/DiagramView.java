@@ -255,7 +255,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(getCurrentDiagramPanel() == null)
 			return null;
 		
-		return getCurrentDiagramPanel().getdiagramComponent();
+		return getCurrentDiagramPanel().getDiagramComponent();
 	}
 
 	public String cardName()
