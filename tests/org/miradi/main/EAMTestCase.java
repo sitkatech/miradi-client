@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import org.martus.util.TestCaseEnhanced;
-import org.miradi.main.EAM;
-import org.miradi.utils.Translation;
 
 public class EAMTestCase extends TestCaseEnhanced
 {
@@ -42,7 +40,7 @@ public class EAMTestCase extends TestCaseEnhanced
 		--setUpTearDownCount;
 		EAM.setLogToConsole();
 		verifySetUpAndTearDownCalledEqually(getCurrentTestName());
-		Translation.restoreDefaultLocalization();
+		EAM.restoreDefaultLocalization();
 	}
 	
 	private String getCurrentTestName()
