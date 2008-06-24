@@ -65,6 +65,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -409,7 +410,7 @@ class ModelUpdater implements TableModelListener
 	private AbstractTableModel modelToUpdate;
 }
 
-class MasterVerticalScrollBar extends JScrollBar implements ChangeListener
+class MasterVerticalScrollBar extends FastScrollBar implements ChangeListener
 {
 	MasterVerticalScrollBar(JScrollPane baseRangeOn)
 	{
