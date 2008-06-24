@@ -25,9 +25,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
 import org.miradi.wizard.WizardPanel;
@@ -66,7 +66,7 @@ public class MapView extends TabbedView
 		
 		for(int i = 0; i < demoMaps.length; ++i)
 		{
-			URL imageURL = EAM.getResourceURL("demo/map-" + demoMaps[i] + ".jpg");
+			URL imageURL = ResourcesHandler.getResourceURL("demo/map-" + demoMaps[i] + ".jpg");
 			JLabel image = new JLabel(new ImageIcon(imageURL));
 			image.setName(demoMaps[i]);
 			addTab(image.getName(), new MiradiScrollPane(image));

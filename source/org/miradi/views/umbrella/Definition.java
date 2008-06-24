@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.miradi.main.EAM;
+import org.miradi.resources.ResourcesHandler;
 
 public class Definition
 {
@@ -49,7 +50,7 @@ public class Definition
 	{
 		try
 		{
-			return EAM.loadResourceFile(htmlFileName);
+			return ResourcesHandler.loadResourceFile(htmlFileName);
 		}
 		catch(Exception e)
 		{

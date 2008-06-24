@@ -70,6 +70,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DefaultHyperlinkHandler;
@@ -242,7 +243,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	private void displayExpirationNotice() throws Exception
 	{
-		String html = EAM.loadResourceFile("ExpiredWarning.html");
+		String html = ResourcesHandler.loadResourceFile("ExpiredWarning.html");
 		HtmlViewPanelWithMargins viewer = HtmlViewPanelWithMargins.createFromTextString(this, EAM.text("Information"), html);
 		viewer.showAsOkDialog();
 	}

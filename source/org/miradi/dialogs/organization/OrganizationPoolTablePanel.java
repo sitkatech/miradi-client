@@ -26,8 +26,8 @@ import org.miradi.actions.ActionDeleteOrganization;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
@@ -36,7 +36,7 @@ public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDel
 	{
 		super(mainWindowToUse.getProject(), new OrganizationPoolTable(new OrganizationPoolTableModel(mainWindowToUse.getProject())), actions, buttons);
 		
-		String html = EAM.loadResourceFile("OtherOrgOverview.html");
+		String html = ResourcesHandler.loadResourceFile("OtherOrgOverview.html");
 		FlexibleWidthHtmlViewer htmlViewer = new FlexibleWidthHtmlViewer(mainWindowToUse, html);
 		
 		// NOTE: For some reason, without a border, the htmlViewer is not visible

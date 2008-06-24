@@ -24,14 +24,14 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.main.EAM;
+import org.miradi.resources.ResourcesHandler;
 
 public class ConproMiradiHabitatCodeMap
 {
 	public HashMap<String, String> loadMap() throws Exception
 	{
 		HashMap habitatCodeMap = new HashMap();
-		URL fileToImport = EAM.getResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
+		URL fileToImport = ResourcesHandler.getResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
 		UnicodeReader reader = new UnicodeReader(fileToImport.openStream());
 		try 
 		{

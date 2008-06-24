@@ -21,10 +21,12 @@ package org.miradi.main;
 
 import javax.swing.ImageIcon;
 
+import org.miradi.resources.ResourcesHandler;
+
 public class EAMResourceImageIcon extends ImageIcon
 {
 	public EAMResourceImageIcon(String fileName)
 	{
-		super(EAM.loadResourceImageFile(fileName));
+		super(ResourcesHandler.loadResourceImageFile(fileName));
 	}
 }
