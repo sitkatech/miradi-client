@@ -23,8 +23,15 @@ import javax.swing.JScrollBar;
 
 public class FastScrollBar extends JScrollBar
 {
+	public FastScrollBar(int orientation)
+	{
+		this();
+		setOrientation(orientation);
+	}
+
 	public FastScrollBar()
 	{
 		setUnitIncrement(MiradiScrollPane.SCROLL_UNIT_INCREMENT);
 	}
+
 }
