@@ -35,6 +35,7 @@ import javax.xml.xpath.XPathFactory;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -107,8 +108,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		codeMapHelper = new ConProMiradiCodeMapHelper();
 
 		wrappedToDiagramMap = new HashMap<ORef, ORef>();
-		
-		createDefaultObjects();
 	}
 	
 	public void importConProProject(InputSource inputSource) throws Exception
@@ -144,6 +143,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importViability();
 		
 		setDiagramFactorDefaultLocations();
+		
+		createDefaultObjects();
+		attachObjectivesToHolder();
+		attachIndicatorsToHolder();
+		updateObjectiveRelevantStrategyList();
 	}
 
 	private void importStrategies() throws Exception
@@ -154,7 +158,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			Node strategyNode = strategyNodeList.item(nodeIndex);
 			String strategyId = getAttributeValue(strategyNode, ID);
 			ORef strategyRef = getProject().createObject(Strategy.getObjectType(), new BaseId(strategyId));
-			importObjectives(strategyNode, strategyRef);
 			importField(strategyNode, NAME, strategyRef, Strategy.TAG_LABEL);
 			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
 			importCodeField(strategyNode, LEVERAGE, strategyRef, Strategy.TAG_IMPACT_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
@@ -210,23 +213,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			setData(activityRef, Task.TAG_WHEN_OVERRIDE, dateRange.toJson().toString());
 		}
 	}
-		private void importObjectives(Node strategyNode, ORef strategyRef) throws Exception
-	{
-		ORefList objectiveRefs = new ORefList();
-		NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
-		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
-		{
-			Node objectiveNode = objectiveNodeList.item(nodeIndex);
-			String objectiveId = objectiveNode.getTextContent();
-			ORef objectiveRef = new ORef(Objective.getObjectType(), new BaseId(objectiveId));
-			
-			objectiveRefs.add(objectiveRef);
-		}
-		
-		setIdListFromRefListData(strategyRef, Strategy.TAG_OBJECTIVE_IDS, objectiveRefs, Objective.getObjectType());
-	}
-
-	private void importObjectives() throws Exception
+		private void importObjectives() throws Exception
 	{
 		NodeList objectiveNodeList = getNodes(getRootNode(), OBJECTIVES, OBJECTIVE);
 		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
@@ -234,6 +221,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
 			String objectiveId = getAttributeValue(objectiveNode, ID);
 			ORef objectiveRef = getProject().createObject(Objective.getObjectType(), new BaseId(objectiveId));
+			
 			importRelevantIndicators(objectiveNode, objectiveRef);
 			importField(objectiveNode, NAME, objectiveRef, Objective.TAG_LABEL);
 			importField(objectiveNode, COMMENT, objectiveRef, Objective.TAG_COMMENTS);
@@ -959,21 +947,112 @@ public class ConProXmlImporter implements ConProMiradiXml
 		CommandCreateObject createResultsChain = new CommandCreateObject(ResultsChainDiagram.getObjectType());
 		getProject().executeCommand(createResultsChain);
 		
+		final String OBJECTIVE_CONTAINER_LABEL = "Objective Holder";
+		final Point OBJECTIVE_CONTAINER_LOCATION = new Point(30, 30);
+		ORef objectiveHolderDiagramFactoRef = createIntermediateResultAsContainer(OBJECTIVE_CONTAINER_LABEL, OBJECTIVE_CONTAINER_LOCATION);
+		DiagramFactor objectiveHolderDiagramFactor = DiagramFactor.find(getProject(), objectiveHolderDiagramFactoRef);
+		objectiveHolderRef = objectiveHolderDiagramFactor.getWrappedORef();
+		
+		final String INDICATOR_CONTAINER_LABEL = "Indicator Holder";
+		final Point INDICATOR_CONTAINER_LOCATION = new Point(30, 100);
+		ORef indicatorHolderDiagramFactorRef = createIntermediateResultAsContainer(INDICATOR_CONTAINER_LABEL, INDICATOR_CONTAINER_LOCATION);
+		DiagramFactor indicatorHolderDiagramFactor = DiagramFactor.find(getProject(), indicatorHolderDiagramFactorRef);
+		indicatorHolderRef = indicatorHolderDiagramFactor.getWrappedORef();
+		
+		IdList idList = new IdList(DiagramFactor.getObjectType());
+		idList.addRef(objectiveHolderDiagramFactoRef);
+		idList.addRef(indicatorHolderDiagramFactorRef);
+		CommandSetObjectData addDiagramFactor = new CommandSetObjectData(createResultsChain.getObjectRef(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList.toString());
+		getProject().executeCommand(addDiagramFactor);
+	}
+
+	private ORef createIntermediateResultAsContainer(String label, Point location)	throws CommandFailedException
+	{
 		CommandCreateObject createIntermediateResults = new CommandCreateObject(IntermediateResult.getObjectType());
 		getProject().executeCommand(createIntermediateResults);
 		
-		final String INTERMEDIATE_RESULTS_LABEL = "Objective and Indicator Holder";
-		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, INTERMEDIATE_RESULTS_LABEL);
+		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, label);
 		getProject().executeCommand(setName);
-	
+			
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(createIntermediateResults.getObjectRef());
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
 		getProject().executeCommand(createDiagramFactor);
 		
-		IdList idList = new IdList(DiagramFactor.getObjectType());
-		idList.addRef(createDiagramFactor.getObjectRef());
-		CommandSetObjectData addDiagramFactor = new CommandSetObjectData(createResultsChain.getObjectRef(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList.toString());
-		getProject().executeCommand(addDiagramFactor);
+		CommandSetObjectData setLocation = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
+		getProject().executeCommand(setLocation);
+		
+		return createDiagramFactor.getObjectRef();
+	}
+	
+	private void attachObjectivesToHolder() throws Exception
+	{
+		IdList objectiveIds = new IdList(Objective.getObjectType());
+		NodeList objectiveNodeList = getNodes(getRootNode(), OBJECTIVES, OBJECTIVE);
+		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
+		{
+			Node objectiveNode = objectiveNodeList.item(nodeIndex);
+			String objectiveId = getAttributeValue(objectiveNode, ID);
+			objectiveIds.add(new BaseId(objectiveId));
+		}
+		
+		CommandSetObjectData setIndicatorIds = new CommandSetObjectData(getObjectiveHolderRef(), IntermediateResult.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+		getProject().executeCommand(setIndicatorIds);	
+	}
+	
+	private void attachIndicatorsToHolder() throws Exception
+	{
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		NodeList indicatorNodeList = getNodes(getRootNode(), INDICATORS, INDICATOR);
+		for (int nodeIndex = 0; nodeIndex < indicatorNodeList.getLength(); ++nodeIndex) 
+		{
+			Node indicatorNode = indicatorNodeList.item(nodeIndex);
+			String indicatorId = getAttributeValue(indicatorNode, ID);
+			indicatorIds.add(new BaseId(indicatorId));
+		}
+		
+		CommandSetObjectData setIndicatorIds = new CommandSetObjectData(getIndicatorHolderRef(), IntermediateResult.TAG_INDICATOR_IDS, indicatorIds.toString());
+		getProject().executeCommand(setIndicatorIds);
+	}
+	
+	private void updateObjectiveRelevantStrategyList() throws Exception
+	{
+		NodeList strategyNodeList = getNodes(getRootNode(), STRATEGIES, STRATEGY);
+		for (int nodeIndex = 0; nodeIndex < strategyNodeList.getLength(); ++nodeIndex) 
+		{
+			Node strategyNode = strategyNodeList.item(nodeIndex);
+			String strategyIdAsString = getAttributeValue(strategyNode, ID);
+			BaseId strategyId = new BaseId(strategyIdAsString);
+			
+			updateObjectiveRelevancyList(strategyNode, new ORef(Strategy.getObjectType(), strategyId));
+		}
+	}
+	
+	private void updateObjectiveRelevancyList(Node strategyNode, ORef strategyRef) throws Exception
+	{
+		NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
+		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
+		{
+			Node objectiveNode = objectiveNodeList.item(nodeIndex);
+			String objectiveId = objectiveNode.getTextContent();
+			ORef objectiveRef = new ORef(Objective.getObjectType(), new BaseId(objectiveId));
+			
+			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet();
+			Objective objective = Objective.find(getProject(), objectiveRef);
+			relevancyOverrideSet.addAll(objective.getStrategyRelevancyOverrideSet());
+			relevancyOverrideSet.add(new RelevancyOverride(strategyRef, true));
+			CommandSetObjectData addStrategy = new CommandSetObjectData(objectiveRef, Objective.TAG_RELEVANT_STRATEGY_SET, relevancyOverrideSet.toString());
+			getProject().executeCommand(addStrategy);
+		}
+	}
+	
+	private ORef getObjectiveHolderRef()
+	{
+		return objectiveHolderRef;
+	}
+	
+	private ORef getIndicatorHolderRef()
+	{
+		return indicatorHolderRef;
 	}
 
 	private Project project;
@@ -981,6 +1060,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private Document document;
 	private ConProMiradiCodeMapHelper codeMapHelper;
 	private HashMap<ORef, ORef> wrappedToDiagramMap;
+	private ORef objectiveHolderRef;
+	private ORef indicatorHolderRef;
 	
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String PREFIX = "cp:";
