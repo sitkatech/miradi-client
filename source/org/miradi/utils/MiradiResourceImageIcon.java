@@ -22,10 +22,12 @@ package org.miradi.utils;
 
 import javax.swing.ImageIcon;
 
+import org.miradi.main.ResourcesHandler;
+
 public class MiradiResourceImageIcon extends ImageIcon
 {
 	public MiradiResourceImageIcon(String fileName)
 	{
-		super(MiradiResourceImageIcon.class.getClassLoader().getResource(fileName));
+		super(ResourcesHandler.getResourceURL(fileName));
 	}
 }

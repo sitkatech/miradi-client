@@ -25,12 +25,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.utils.MiradiResourceImageIcon;
 
 public class ResourcesHandler
 {
 
-	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
+	public static URL getResourceURL(String resourceFileName) throws RuntimeException
 	{
 		if(!resourceFileName.startsWith("/"))
 			resourceFileName = "/resources/" + resourceFileName;
@@ -38,13 +37,20 @@ public class ResourcesHandler
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
 	
-		if (doesTestDirectoryExist())
+		if (!doesTestDirectoryExist())
+			return url;
+
+		try
 		{
 			final String relativePackagePath = EAM.convertToPath(thisClass.getPackage().getName());
 			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
 			url = findAlternateResource(relativePath, url);
+			return url;
 		}
-		return url;
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static String loadResourceFile(String resourceFileName) throws Exception
@@ -69,13 +75,7 @@ public class ResourcesHandler
 	{
 		try
 		{
-			// TODO: There should be a cleaner way to do this:
-			URL url = MiradiResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
-	
-			if (doesTestDirectoryExist())
-			{
-				url = findAlternateResource(resourceFileName, url);
-			}
+			URL url = getResourceURL(resourceFileName);
 			
 			if(url == null)
 				EAM.logWarning("Missing resource: " + resourceFileName);
