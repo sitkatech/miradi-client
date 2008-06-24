@@ -635,6 +635,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			if (!threatStressRating.getStressRef().equals(stress.getRef()))
 				continue;
 			
+			if (!threatStressRating.isActive())
+				continue;
+			
 			writeStartElement(out, THREAT_STRESS_RATING);
 			
 			writeElement(out, THREAT_ID, factorLink.getUpstreamThreatRef().getObjectId().toString());
