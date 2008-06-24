@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.resources2;
+package org.miradi.main;
 
 import java.io.File;
 import java.io.InputStream;
@@ -25,7 +25,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.main.EAM;
 import org.miradi.utils.MiradiResourceImageIcon;
 
 public class ResourcesHandler

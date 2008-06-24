@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.miradi.main.MainWindow;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 
 public class ViewSpecificHelpButtonData extends HelpButtonData
 {

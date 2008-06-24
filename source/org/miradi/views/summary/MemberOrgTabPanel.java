@@ -29,7 +29,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;

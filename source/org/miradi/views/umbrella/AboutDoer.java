@@ -23,8 +23,8 @@ import java.util.EventObject;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
-import org.miradi.resources2.ResourcesHandler;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 

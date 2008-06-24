@@ -27,7 +27,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
