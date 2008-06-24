@@ -74,7 +74,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindow);
+		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
 		ExportableTableInterface table = panel.getTableForExporting();
 		panel.dispose();
 		
