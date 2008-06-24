@@ -327,6 +327,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
+		
+		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);
 		return ThreatStressRating.find(this, threatStressRatingRef);
 	}
 	
