@@ -924,13 +924,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void setDiagramFactorDefaultLocations() throws Exception
 	{
 		ORefList nonDraftStrategyRefs = new ORefList(getProject().getStrategyPool().getNonDraftStrategies());
-		setDiagramFactorLocation(nonDraftStrategyRefs, 30);
+		setDiagramFactorLocation(nonDraftStrategyRefs, NON_DRAFT_STRATEGY_X_COLUMN);
 		
 		ORefList draftStrategyRefs = new ORefList(getProject().getStrategyPool().getDraftAndNonDraftStrategies());
-		setDiagramFactorLocation(draftStrategyRefs, 270);
+		setDiagramFactorLocation(draftStrategyRefs, DRAFT_STRATEGY_X_COLUMN);
 		
-		setDiagramFactorLocation(getProject().getPool(Cause.getObjectType()).getORefList(), 510);
-		setDiagramFactorLocation(getProject().getPool(Target.getObjectType()).getORefList(), 750);
+		setDiagramFactorLocation(getProject().getPool(Cause.getObjectType()).getORefList(), CAUSE_X_COLUMN);
+		setDiagramFactorLocation(getProject().getPool(Target.getObjectType()).getORefList(), TARGET_X_COLUMN);
 	}
 			
 	private void setDiagramFactorLocation(ORefList factorRefs, int xPosition) throws Exception
@@ -957,4 +957,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String PREFIX = "cp:";
+	
+	private static final int NON_DRAFT_STRATEGY_X_COLUMN = 30;
+	private static final int DRAFT_STRATEGY_X_COLUMN = 270;
+	private static final int CAUSE_X_COLUMN = 510;
+	private static final int TARGET_X_COLUMN = 750;
 }
