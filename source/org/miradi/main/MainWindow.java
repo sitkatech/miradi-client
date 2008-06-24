@@ -250,7 +250,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private boolean hasExpired()
 	{
 		MultiCalendar now = new MultiCalendar();
-		final String isoExpiration = "2008-02-01";
+		final String isoExpiration = "2009-02-01";
 		EAM.logVerbose("Expires on: " + isoExpiration);
 		MultiCalendar expiresOn = MultiCalendar.createFromIsoDateString(isoExpiration);
 		boolean hasExpired = now.after(expiresOn);
