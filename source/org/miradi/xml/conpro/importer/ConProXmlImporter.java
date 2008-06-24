@@ -1007,7 +1007,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			Node indicatorNode = indicatorNodeList.item(nodeIndex);
 			String indicatorId = getAttributeValue(indicatorNode, ID);
-			indicatorIds.add(new BaseId(indicatorId));
+			ORef indicatorRef = new ORef(Indicator.getObjectType(), new BaseId(indicatorId));
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+			if (!indicator.isViabilityIndicator())
+				indicatorIds.addRef(indicatorRef);
 		}
 		
 		CommandSetObjectData setIndicatorIds = new CommandSetObjectData(getIndicatorHolderRef(), IntermediateResult.TAG_INDICATOR_IDS, indicatorIds.toString());

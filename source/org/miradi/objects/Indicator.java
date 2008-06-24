@@ -265,6 +265,12 @@ public class Indicator extends BaseObject
 		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
 	}
 	
+	public boolean isViabilityIndicator()
+	{
+		ORefList keaReferrerRefs = findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
+		return keaReferrerRefs.size() > 0;
+	}
+	
 	public static boolean is(BaseObject object)
 	{
 		if(object == null)
