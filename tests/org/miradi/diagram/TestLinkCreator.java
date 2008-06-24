@@ -28,10 +28,12 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.diagram.LinkCreator;
 
 
@@ -42,14 +44,14 @@ public class TestLinkCreator extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testSsValidLinakableType()
+	public void testIsValidLinakableType()
 	{
-		for (int i = ObjectType.FIRST_OBJECT_TYPE; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
+		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			if (TextBox.is(i) || Stress.is(i) || Task.is(i))
-				assertFalse("valid linkable type?" , LinkCreator.isValidLinkableType(i));
+			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || GroupBox.is(type))
+				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(type));
 			else
-				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(i));
+				assertFalse("is a linkable type?", LinkCreator.isValidLinkableType(type));
 		}
 	}
 	
