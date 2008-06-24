@@ -22,6 +22,7 @@ package org.miradi.questions;
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
@@ -54,6 +55,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoader.getFileName());
 		}
 	}
