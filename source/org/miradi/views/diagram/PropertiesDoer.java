@@ -21,7 +21,6 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.util.HashSet;
-import java.util.Vector;
 
 import javax.swing.Box;
 
@@ -108,34 +107,27 @@ public class PropertiesDoer extends LocationDoer
 	private EAMGraphCell getCorrectCellToShowPropertiesFor() throws Exception
 	{
 		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
-		if (selected.isFactor())
-		{
-			return getCellForPropertiesDialog(selected);
-		}
+		if (!selected.isFactor())
+			return selected;
+		
+		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+		HashSet<FactorCell> children = getChildrenIfAny(selected);
+		if (children.contains(topCellAtClickPoint))
+			return topCellAtClickPoint;
 		
 		return selected;
 	}
 
-
-	private EAMGraphCell getCellForPropertiesDialog(EAMGraphCell selected) throws Exception
+	private HashSet<FactorCell> getChildrenIfAny(EAMGraphCell selected) throws Exception
 	{
 		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
-		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
 		if (selected.isProjectScope())
-		{				
-			Vector<FactorCell> allTargets = model.getAllDiagramTargets();
-			if (allTargets.contains(topCellAtClickPoint))
-				return topCellAtClickPoint;
-		}
+			return new HashSet(model.getAllDiagramTargets());
 		
 		if (selected.getDiagramFactor().isGroupBoxFactor())
-		{
-			HashSet<FactorCell> groupBoxChildren = model.getGroupBoxFactorChildren(selected);
-			if (groupBoxChildren.contains(topCellAtClickPoint))
-				return topCellAtClickPoint;
-		}
+			return  model.getGroupBoxFactorChildren(selected);			
 		
-		return selected;
+		return new HashSet();
 	}
 	
 	class ScopePropertiesDialog extends ModelessDialogWithClose
