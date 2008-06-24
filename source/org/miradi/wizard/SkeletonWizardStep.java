@@ -34,7 +34,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.HtmlFormEventHandler;
 import org.miradi.views.umbrella.UmbrellaView;
 

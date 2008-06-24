@@ -31,7 +31,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.wizard.WizardRightSideHtmlViewer;
 
 public class NewsPanel extends WizardRightSideHtmlViewer

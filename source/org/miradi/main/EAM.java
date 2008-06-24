@@ -35,7 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;

@@ -21,7 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.MainWindowDoer;
 

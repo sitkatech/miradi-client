@@ -103,7 +103,7 @@ import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.QuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;

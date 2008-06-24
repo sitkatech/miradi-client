@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.resources;
+package org.miradi.resources2;
 
 import java.io.File;
 import java.io.InputStream;
@@ -33,6 +33,9 @@ public class ResourcesHandler
 
 	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
 	{
+		if(!resourceFileName.startsWith("/"))
+			resourceFileName = "/resources/" + resourceFileName;
+		
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
 	

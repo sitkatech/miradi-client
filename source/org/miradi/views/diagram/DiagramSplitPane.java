@@ -56,7 +56,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
