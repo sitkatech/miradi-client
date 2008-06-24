@@ -1028,14 +1028,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 			Node strategyNode = strategyNodeList.item(nodeIndex);
 			String strategyIdAsString = getAttributeValue(strategyNode, ID);
 			BaseId strategyId = new BaseId(strategyIdAsString);
-			
-			updateObjectiveRelevancyList(strategyNode, new ORef(Strategy.getObjectType(), strategyId));
+		
+			NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
+			updateObjectiveRelevancyList(new ORef(Strategy.getObjectType(), strategyId), objectiveNodeList);
 		}
 	}
 	
-	private void updateObjectiveRelevancyList(Node strategyNode, ORef strategyRef) throws Exception
+	private void updateObjectiveRelevancyList(ORef strategyRef, NodeList objectiveNodeList) throws Exception
 	{
-		NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
 		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
 		{
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
