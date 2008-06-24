@@ -25,11 +25,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.prefs.Preferences;
 
@@ -37,12 +35,10 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
-import org.martus.util.UnicodeReader;
 import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
-import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.Translation;
 
 public class EAM
@@ -127,7 +123,7 @@ public class EAM
 	{
 		try
 		{
-			String html = EAM.loadResourceFile(htmlFileName);
+			String html = ResourcesHandler.loadResourceFile(htmlFileName);
 			html = html.replace(findToReplace, replacementForStr1);
 			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
 			htmlViwer.showAsOkDialog();
@@ -395,91 +391,10 @@ public class EAM
 
 
 
-	public static String loadResourceFile(String resourceFileName) throws Exception
-	{
-		URL url = getResourceURL(resourceFileName);
-		if(url == null)
-			EAM.logError("Unable to find resource: " + ResourcesHandler.class.getPackage().getName() + ":" + resourceFileName);
-		
-		InputStream inputStream = url.openStream();
-		UnicodeReader reader = new UnicodeReader(inputStream);
-		try
-		{
-			return reader.readAll();
-		}
-		finally
-		{
-			reader.close();
-		}
-	}
-
-	public static URL getResourceURL(String resourceFileName) throws MalformedURLException
-	{
-		Class thisClass = ResourcesHandler.class;
-		URL url = thisClass.getResource(resourceFileName);
-
-		if (doesTestDirectoryExist())
-		{
-			final String relativePackagePath = convertToPath(thisClass.getPackage().getName());
-			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
-			url = findAlternateResource(relativePath, url);
-		}
-		return url;
-	}
-
 	public static String convertToPath(String path)
 	{
 		return path.replace('.', File.separatorChar);
 	}
-	
-	public static URL loadResourceImageFile(String resourceFileName) 
-	{
-		try
-		{
-			// TODO: There should be a cleaner way to do this:
-			URL url = MiradiResourceImageIcon.class.getClassLoader().getResource(resourceFileName);
-
-			if (doesTestDirectoryExist())
-			{
-				url = findAlternateResource(resourceFileName, url);
-			}
-			
-			if(url == null)
-				EAM.logWarning("Missing resource: " + resourceFileName);
-			return url;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-	
-
-	private static URL findAlternateResource(String relativePath, URL url) throws MalformedURLException
-	{
-		File newLoadPath = getAlternateDirectory(relativePath);
-		if (newLoadPath.exists())
-		{
-			return newLoadPath.toURI().toURL();
-		}
-		return url;
-	}
-
-	private static File getAlternateDirectory(String relativePath)
-	{
-		File home = EAM.getHomeDirectory();
-		File testDirectory = new File(home,EXTERNAL_RESOURCE_DIRECTORY_NAME);
-		return new File(testDirectory,relativePath);
-	}
-	
-	
-	private static boolean doesTestDirectoryExist()
-	{
-		return new File(EAM.getHomeDirectory(),EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
-	}
-
-	///////////////////////////////////////////////////////////////////
 	
 	public static void setMainWindow(MainWindow mainWindow)
 	{

@@ -22,7 +22,7 @@ package org.miradi.xml.conpro.exporter;
 import java.io.InputStream;
 import java.net.URL;
 
-import org.miradi.main.EAM;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.xml.conpro.MiradiValidationDriver;
 import org.xml.sax.InputSource;
 
@@ -36,7 +36,7 @@ public class ConProMiradiXmlValidator
 	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = EAM.getResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
+		URL resourceURL = ResourcesHandler.getResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
 		if(resourceURL == null)
 			throw new Exception("Schema not found: " + MIRADI_CONPRO_SCHEMA_FILE_NAME);
 		
@@ -68,7 +68,7 @@ public class ConProMiradiXmlValidator
 	{
 		try
 		{
-			URL xmlUrl = EAM.getResourceURL("xml/test.xml");
+			URL xmlUrl = ResourcesHandler.getResourceURL("xml/test.xml");
 			new ConProMiradiXmlValidator().isValid(xmlUrl.openStream());
 		}
 		catch(Exception e)

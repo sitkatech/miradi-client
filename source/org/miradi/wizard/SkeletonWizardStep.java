@@ -34,6 +34,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.utils.HtmlFormEventHandler;
 import org.miradi.views.umbrella.UmbrellaView;
 
@@ -105,12 +106,12 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		String resourceFileName = getResourceFileName(sideLabel);
 		if(resourceFileName == null)
 			return "Missing text";
-		return EAM.loadResourceFile(resourceFileName);
+		return ResourcesHandler.loadResourceFile(resourceFileName);
 	}
 	
 	private boolean doesExist(String ext) throws Exception
 	{
-		URL url = EAM.getResourceURL(getResourceFileName(ext));
+		URL url = ResourcesHandler.getResourceURL(getResourceFileName(ext));
 		return (url!=null);
 	}
 	

@@ -24,6 +24,7 @@ import java.util.EventObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
+import org.miradi.resources.ResourcesHandler;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -75,7 +76,7 @@ public class AboutDoer extends MainWindowDoer
 		try
 		{
 			htmlFile = "help/" + htmlFile;
-			return EAM.loadResourceFile(htmlFile);
+			return ResourcesHandler.loadResourceFile(htmlFile);
 		}
 		catch(Exception e)
 		{
