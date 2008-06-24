@@ -209,7 +209,7 @@ public class ReportXmlExporter extends XmlExporter
 	{
 		out.write("<Value code='" + ratingCode+ "'>");
 		if (statusRatingCode.equals(ratingCode))
-			out.write(statusRatingValue);
+			out.write(XmlUtilities.getXmlEncoded(statusRatingValue));
 
 		out.write("</Value>");
 	}
