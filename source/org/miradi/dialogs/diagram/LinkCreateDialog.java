@@ -160,7 +160,7 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			int wrappedType = allDiagramFactors[i].getWrappedType();
-			if (LinkCreator.isValidLinakableType(wrappedType))
+			if (LinkCreator.isValidLinkableType(wrappedType))
 				filterdDiagramFactors.add(allDiagramFactors[i]);
 		}
 			

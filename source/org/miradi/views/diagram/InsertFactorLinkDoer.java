@@ -123,7 +123,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		if (cell == null)
 			return true;
 		
-		return !LinkCreator.isValidLinakableType(cell.getWrappedType());
+		return !LinkCreator.isValidLinkableType(cell.getWrappedType());
 	}
 
 	private class FromToDiagramFactorsHolder

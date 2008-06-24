@@ -399,7 +399,7 @@ public class LinkCreator
 		}
 	}
 	
-	public static boolean isValidLinakableType(int wrappedType)
+	public static boolean isValidLinkableType(int wrappedType)
 	{
 		if (TextBox.is(wrappedType))
 			return false;
