@@ -19,9 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.io.File;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
@@ -33,6 +31,11 @@ public class ResourcesHandler
 		urlOfResourcesZip = urlOfLocalizationZip;
 	}
 	
+	public static void restoreDefaultLocalization()
+	{
+		urlOfResourcesZip = null;
+	}
+
 	public static URL getResourceURL(String resourceFileName) throws RuntimeException
 	{
 		if(!resourceFileName.startsWith("/"))
@@ -48,12 +51,6 @@ public class ResourcesHandler
 				return new URL(urlOfResourcesZip, resourceFileName);
 			}
 			
-			if (!doesTestDirectoryExist())
-				return url;
-
-			final String relativePackagePath = EAM.convertToPath(thisClass.getPackage().getName());
-			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
-			url = findAlternateResource(relativePath, url);
 			return url;
 		}
 		catch(Exception e)
@@ -95,28 +92,6 @@ public class ResourcesHandler
 			EAM.logException(e);
 			return null;
 		}
-	}
-
-	private static URL findAlternateResource(String relativePath, URL url) throws MalformedURLException
-	{
-		File newLoadPath = getAlternateDirectory(relativePath);
-		if (newLoadPath.exists())
-		{
-			return newLoadPath.toURI().toURL();
-		}
-		return url;
-	}
-
-	private static File getAlternateDirectory(String relativePath)
-	{
-		File home = EAM.getHomeDirectory();
-		File testDirectory = new File(home,EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
-		return new File(testDirectory,relativePath);
-	}
-
-	private static boolean doesTestDirectoryExist()
-	{
-		return new File(EAM.getHomeDirectory(),EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
 	}
 
 	private static URL urlOfResourcesZip;

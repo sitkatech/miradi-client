@@ -296,6 +296,13 @@ public class EAM
 	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
 	{
 		Translation.setLocalization(urlOfLocalizationZip);
+		ResourcesHandler.setLocalization(urlOfLocalizationZip);
+	}
+
+	public static void restoreDefaultLocalization() throws Exception
+	{
+		Translation.restoreDefaultLocalization();
+		ResourcesHandler.restoreDefaultLocalization();
 	}
 
 	public static String text(String key)
@@ -526,6 +533,7 @@ public class EAM
 	public static final String STRING_TO_SUBSTITUTE = "%s";
 	public static final char DASH = '-';
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
+
 }
 
 
