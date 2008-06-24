@@ -27,7 +27,7 @@ import javax.swing.JToolBar;
 
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
 import org.miradi.wizard.WizardPanel;

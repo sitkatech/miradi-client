@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 
 public class ConproMiradiHabitatCodeMap
 {

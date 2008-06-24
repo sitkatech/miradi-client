@@ -37,7 +37,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;

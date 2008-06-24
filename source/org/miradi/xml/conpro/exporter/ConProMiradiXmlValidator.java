@@ -22,7 +22,7 @@ package org.miradi.xml.conpro.exporter;
 import java.io.InputStream;
 import java.net.URL;
 
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.xml.conpro.MiradiValidationDriver;
 import org.xml.sax.InputSource;
 

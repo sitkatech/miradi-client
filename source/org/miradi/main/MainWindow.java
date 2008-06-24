@@ -70,7 +70,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
-import org.miradi.resources.ResourcesHandler;
+import org.miradi.resources2.ResourcesHandler;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DefaultHyperlinkHandler;
