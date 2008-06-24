@@ -41,7 +41,9 @@ project_summary.element =
         attribute share_outside_organization { xsd:boolean }
         & project_id.element
         & parent_project_id.element
-        & element cp:name { xsd:string }
+        & element cp:name {
+              xsd:string { minLength = "1" }
+          }
         & element cp:start_date { vocabulary_date }?
         & area_size.element?
         & geospatial_location.element?
