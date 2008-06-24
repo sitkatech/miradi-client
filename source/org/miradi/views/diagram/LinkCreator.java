@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.text.ParseException;
+import java.util.HashSet;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -38,15 +39,17 @@ import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Stress;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 
@@ -401,16 +404,25 @@ public class LinkCreator
 	
 	public static boolean isValidLinkableType(int wrappedType)
 	{
-		if (TextBox.is(wrappedType))
-			return false;
-			
-		if (Task.is(wrappedType))
-			return false;
+		return getLinkableTypes().contains(wrappedType);
+	}
+
+	private static HashSet getLinkableTypes()
+	{
+		int[] linkableTypesArray = {Strategy.getObjectType(), 
+							   Cause.getObjectType(), 
+							   IntermediateResult.getObjectType(), 
+							   ThreatReductionResult.getObjectType(), 
+							   Target.getObjectType(),
+							   GroupBox.getObjectType(), };  
 		
-		if (Stress.is(wrappedType))
-			return false;
+		HashSet linkableTypes = new HashSet();
+		for (int i = 0; i < linkableTypesArray.length; ++i)
+		{
+			linkableTypes.add(linkableTypesArray[i]);
+		}
 		
-		return  true;
+		return linkableTypes;
 	}
 
 	private Project getProject()
