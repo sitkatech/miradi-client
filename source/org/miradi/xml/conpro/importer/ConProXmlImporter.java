@@ -39,6 +39,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -625,6 +626,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(threatStressRatingNode, IRREVERSIBILITY_RANK, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, getCodeMapHelper().getConProToMiradiRatingMap());
+			
+			setData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);
 		}		
 	}
 
