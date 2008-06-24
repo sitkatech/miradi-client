@@ -137,23 +137,6 @@ public class Strategy extends Factor
 		return new ORefList(Task.getObjectType(), getActivityIds());
 	}
 	
-	//NOTE this approach is slow.  Another approach would be to 
-	//create an inverse map of strategy objevive list based on objective relavancy list
-	public ORefSet getRelevantObjectiveRefs() throws Exception
-	{
-		ORefSet objectiveRefs = new ORefSet();
-		ORefList allObjectives = getProject().getObjectivePool().getORefList();
-		for (int index = 0; index < allObjectives.size(); ++index)
-		{
-			Objective objective = Objective.find(getProject(), allObjectives.get(index));
-			ORefList relevantStrategyRefs = objective.getRelevantStrategyRefList();
-			if (relevantStrategyRefs.contains(getRef()))
-				objectiveRefs.add(allObjectives.get(index));
-		}
-		
-		return objectiveRefs;
-	}
-	
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_RATING_SUMMARY))

@@ -178,7 +178,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
 			out.writeln("<" + STRATEGY + " " + ID + "='" + strategy.getId().toString() + "'>");
 			
-			ORefSet objectiveRefs = strategy.getRelevantObjectiveRefs();
+			ORefSet objectiveRefs = getRelevantObjectiveRefs(strategy);
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, new ORefList(objectiveRefs));
 			
 			writeElement(out, NAME, strategy, Strategy.TAG_LABEL);
@@ -197,6 +197,23 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, STRATEGIES);
 	}
 
+	//NOTE this approach is slow.  Another approach would be to 
+	//create an inverse map of strategy objevive list based on objective relavancy list
+	public ORefSet getRelevantObjectiveRefs(Strategy strategy) throws Exception
+	{
+		ORefSet objectiveRefs = new ORefSet();
+		ORefList allObjectives = getProject().getObjectivePool().getORefList();
+		for (int index = 0; index < allObjectives.size(); ++index)
+		{
+			Objective objective = Objective.find(getProject(), allObjectives.get(index));
+			ORefList relevantStrategyRefs = objective.getRelevantStrategyRefList();
+			if (relevantStrategyRefs.contains(strategy.getRef()))
+				objectiveRefs.add(allObjectives.get(index));
+		}
+		
+		return objectiveRefs;
+	}
+		
 	private void writeActivities(UnicodeWriter out, ORefList activityRefs) throws Exception
 	{
 		writeStartElement(out, ACTIVITIES);
