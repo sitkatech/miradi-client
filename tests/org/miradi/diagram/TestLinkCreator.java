@@ -47,9 +47,9 @@ public class TestLinkCreator extends TestCaseWithProject
 		for (int i = ObjectType.FIRST_OBJECT_TYPE; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
 		{
 			if (TextBox.is(i) || Stress.is(i) || Task.is(i))
-				assertFalse("valid linkable type?" , LinkCreator.isValidLinakableType(i));
+				assertFalse("valid linkable type?" , LinkCreator.isValidLinkableType(i));
 			else
-				assertTrue("not a linkable type?", LinkCreator.isValidLinakableType(i));
+				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(i));
 		}
 	}
 	
