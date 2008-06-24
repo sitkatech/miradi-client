@@ -23,9 +23,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.Vector;
 
-import org.miradi.main.EAM;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.DelimitedFileLoader;
 
 abstract public class TwoLevelFileLoader
@@ -37,8 +39,8 @@ abstract public class TwoLevelFileLoader
 	
 	public TwoLevelEntry[] load() throws Exception
 	{
-		InputStream is = EAM.class.getResourceAsStream(fileName);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		String contents = ResourcesHandler.loadResourceFile("fieldoptions/" + fileName);
+		Reader reader = new StringReader(contents);
 		TwoLevelEntry[] table = getTaxomonies(reader);
 		reader.close();
 		return table;
@@ -57,7 +59,7 @@ abstract public class TwoLevelFileLoader
 		return getTaxomonies(reader);
 	}
 	
-	private TwoLevelEntry[] getTaxomonies(BufferedReader reader) throws IOException
+	private TwoLevelEntry[] getTaxomonies(Reader reader) throws IOException
 	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
 		Vector taxonomyItems = processVector(fileVector);

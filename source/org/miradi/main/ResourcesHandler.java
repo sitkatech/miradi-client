@@ -28,20 +28,29 @@ import org.martus.util.UnicodeReader;
 
 public class ResourcesHandler
 {
-
+	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
+	{
+		urlOfResourcesZip = urlOfLocalizationZip;
+	}
+	
 	public static URL getResourceURL(String resourceFileName) throws RuntimeException
 	{
 		if(!resourceFileName.startsWith("/"))
 			resourceFileName = "/resources/" + resourceFileName;
-		
+
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
-	
-		if (!doesTestDirectoryExist())
-			return url;
 
 		try
 		{
+			if(urlOfResourcesZip != null)
+			{
+				return new URL(urlOfResourcesZip, resourceFileName);
+			}
+			
+			if (!doesTestDirectoryExist())
+				return url;
+
 			final String relativePackagePath = EAM.convertToPath(thisClass.getPackage().getName());
 			String relativePath = new File(relativePackagePath, resourceFileName).getPath();
 			url = findAlternateResource(relativePath, url);
@@ -109,5 +118,7 @@ public class ResourcesHandler
 	{
 		return new File(EAM.getHomeDirectory(),EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME).exists();
 	}
+
+	private static URL urlOfResourcesZip;
 
 }
