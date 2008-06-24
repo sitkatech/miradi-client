@@ -33,6 +33,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.ids.BaseId;
@@ -56,12 +57,14 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -104,6 +107,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		codeMapHelper = new ConProMiradiCodeMapHelper();
 
 		wrappedToDiagramMap = new HashMap<ORef, ORef>();
+		
+		createDefaultObjects();
 	}
 	
 	public void importConProProject(InputSource inputSource) throws Exception
@@ -947,6 +952,28 @@ public class ConProXmlImporter implements ConProMiradiXml
 			CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
 			getProject().executeCommand(setLocation);
 		}
+	}
+	
+	private void createDefaultObjects() throws Exception
+	{
+		CommandCreateObject createResultsChain = new CommandCreateObject(ResultsChainDiagram.getObjectType());
+		getProject().executeCommand(createResultsChain);
+		
+		CommandCreateObject createIntermediateResults = new CommandCreateObject(IntermediateResult.getObjectType());
+		getProject().executeCommand(createIntermediateResults);
+		
+		final String INTERMEDIATE_RESULTS_LABEL = "Objective and Indicator Holder";
+		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, INTERMEDIATE_RESULTS_LABEL);
+		getProject().executeCommand(setName);
+	
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(createIntermediateResults.getObjectRef());
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+		getProject().executeCommand(createDiagramFactor);
+		
+		IdList idList = new IdList(DiagramFactor.getObjectType());
+		idList.addRef(createDiagramFactor.getObjectRef());
+		CommandSetObjectData addDiagramFactor = new CommandSetObjectData(createResultsChain.getObjectRef(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList.toString());
+		getProject().executeCommand(addDiagramFactor);
 	}
 
 	private Project project;
