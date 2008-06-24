@@ -70,7 +70,7 @@ public class Miradi
 	
 	private static File getAppCodeDirectory() throws URISyntaxException
 	{
-		String imagesURIString = Miradi.class.getResource("/images").toURI().toString();
+		String imagesURIString = Miradi.class.getResource("/resources/images").toURI().toString();
 		String imagesPathString = stripPrefix(imagesURIString);
 	
 		int bangAt = imagesPathString.indexOf('!');
