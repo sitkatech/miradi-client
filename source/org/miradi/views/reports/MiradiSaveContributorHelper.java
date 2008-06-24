@@ -22,7 +22,7 @@ package org.miradi.views.reports;
 import net.sf.jasperreports.engine.JRException;
 
 import org.miradi.main.EAM;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 
 public class MiradiSaveContributorHelper
 {

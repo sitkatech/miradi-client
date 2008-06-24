@@ -23,7 +23,7 @@ import javax.swing.BorderFactory;
 
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 
 public class HtmlViewPanelWithMargins extends HtmlViewPanel
 {

@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.resources2.ResourcesHandler;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.wizard.MiradiHtmlViewer;
 
 public class FlexibleWidthHtmlViewer extends MiradiHtmlViewer
