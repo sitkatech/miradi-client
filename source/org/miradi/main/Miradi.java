@@ -22,6 +22,7 @@ package org.miradi.main;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -47,15 +48,48 @@ public class Miradi
 		
 		Translation.initialize();
 		
+		List<String> argsAsList = Arrays.asList(args);
+
 		EAM.setLogLevel(EAM.LOG_DEBUG);
-		if(Arrays.asList(args).contains("--verbose"))
-			EAM.setLogLevel(EAM.LOG_VERBOSE);
+		for(String arg : argsAsList)
+		{
+			if(arg.startsWith("--language="))
+			{
+				String[] parts = arg.split("=");
+				switchToLanguage(parts[1]);
+			}
+			if(arg.equals("--verbose"))
+			{
+				EAM.setLogLevel(EAM.LOG_VERBOSE);
+			}
+		}
+
 		EAM.setExceptionLoggingDestination();
 		EAM.possiblyLogTooLowInitialMemory();
-		
-		// NOTE: This is how we can set the language, when we are ready to do so
-		// EAM.setTranslationLocale(new Locale("es"));
+
 		Miradi.start(args);
+	}
+
+	private static void switchToLanguage(String languageCode) throws Exception
+	{
+		String jarName = "MiradiContent-2.1-" + languageCode + ".jar";
+		File jarFile = findLanguageJar(jarName);
+		EAM.setLocalization(jarFile.toURL());
+	}
+
+	private static File findLanguageJar(String jarName) throws URISyntaxException
+	{
+		File jarFile = new File(EAM.getHomeDirectory(), jarName);
+		if(jarFile.exists())
+			return jarFile;
+
+		jarFile = new File(getAppCodeDirectory(), jarName);
+		if(jarFile.exists())
+			return jarFile;
+
+		EAM.logError("Unable to find content file: " + jarFile.getAbsolutePath());
+		System.exit(2);
+		return null;
 	}
 
 	private static void addThirdPartyJarsToClasspath() throws Exception

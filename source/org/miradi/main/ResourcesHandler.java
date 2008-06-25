@@ -48,7 +48,7 @@ public class ResourcesHandler
 		{
 			if(urlOfResourcesZip != null)
 			{
-				return new URL(urlOfResourcesZip, resourceFileName);
+				return new URL("jar:" + urlOfResourcesZip.toExternalForm() + "!" + resourceFileName);
 			}
 			
 			return url;
