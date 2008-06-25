@@ -26,8 +26,7 @@ import org.martus.util.DirectoryLock;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
-import org.miradi.utils.ModalRenameDialog;
+import org.miradi.views.umbrella.ImportProjectDoer;
 
 public class RenameProjectDoer
 {
@@ -50,7 +49,7 @@ public class RenameProjectDoer
 
 		try
 		{
-			String newName = askUserForProjectName(mainWindow, projectToRename.getName());
+			String newName = ImportProjectDoer.getValidatedUserProjectName(mainWindow, projectToRename.getName());
 			if (newName == null)
 				return;
 
@@ -77,15 +76,5 @@ public class RenameProjectDoer
 		}
 	}
 
-	public static String askUserForProjectName(MainWindow mainWindow, String initialValue) throws Exception
-	{
-		String newName = ModalRenameDialog.showDialog(mainWindow, RENAME_TEXT, initialValue);
-		if (newName == null)
-			return null;
-
-		Project.validateNewProject(newName);
-		return newName;
-	}
-	
 	public static final String RENAME_TEXT = EAM.text("Enter New Project Name");
 }
