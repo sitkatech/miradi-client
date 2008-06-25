@@ -64,7 +64,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 			String projectName = getLegalProjectName(fileToImport);
 			if (projectName == null)
 				return;
-
+			
+			getProject().validateNewProject(projectName);
+			
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			
 			refreshNoProjectPanel();
