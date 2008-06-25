@@ -25,6 +25,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
+import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
@@ -65,8 +66,6 @@ public abstract class ImportProjectDoer extends ViewDoer
 			if (projectName == null)
 				return;
 			
-			getProject().validateNewProject(projectName);
-			
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			
 			refreshNoProjectPanel();
@@ -93,11 +92,21 @@ public abstract class ImportProjectDoer extends ViewDoer
 	private String getLegalProjectName(File fileToImport) throws Exception
 	{
 		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
+		File newFile = new File(EAM.getHomeDirectory(), projectName);
+		if(ProjectServer.isExistingProject(newFile))
+			return askUserForProjectName(projectName);
+		
+		getProject().validateNewProject(projectName);
 		if (EAM.isLegalFileName(projectName))
 			return projectName;
 		
+		return askUserForProjectName(projectName);		
+	}
+
+	private String askUserForProjectName(String projectName) throws Exception
+	{
 		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
-		return RenameProjectDoer.askUserForProjectName(getMainWindow(), legalProjectName);		
+		return RenameProjectDoer.askUserForProjectName(getMainWindow(), legalProjectName);
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
