@@ -138,10 +138,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		xPath = createXPath();
-		importXml(inputSource);
+		importXml();
 	}
 
-	private void importXml(InputSource inputSource) throws Exception
+	private void importXml() throws Exception
 	{
 		importProjectSummaryElement();
 		
