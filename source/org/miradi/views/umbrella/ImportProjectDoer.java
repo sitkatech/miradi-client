@@ -63,7 +63,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			
 			File fileToImport = fileChooser.getSelectedFile();
-			String projectName = getValidatedProjectName(fileToImport);
+			String projectName = getValidatedUserProjectName(fileToImport);
 			if (projectName == null)
 				return;
 			
@@ -90,7 +90,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 		}
 	}
 
-	private String getValidatedProjectName(File fileToImport) throws Exception
+	private String getValidatedUserProjectName(File fileToImport) throws Exception
 	{
 		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
 		projectName = askUserForProjectName(projectName);
