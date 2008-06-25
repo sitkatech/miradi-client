@@ -30,6 +30,7 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewThreatMatrix;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBoxWithMaxAsPreferredSize;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMToolBar;
 import org.miradi.main.MainWindow;
@@ -68,7 +69,7 @@ public class ThreatMatrixToolBar extends EAMToolBar
 	private static ChoiceItemComboBox createThreatRatingModeCombo(Project project, Actions actions)
 	{
 		ChoiceItem[] choices = ThreatRatingModeChoiceQuestion.getChoiceItems();
-		ChoiceItemComboBox threatRatingModeCombo = new ChoiceItemComboBox(choices);	
+		ChoiceItemComboBoxWithMaxAsPreferredSize threatRatingModeCombo = new ChoiceItemComboBoxWithMaxAsPreferredSize(choices);	
 		ChoiceQuestion question = project.getQuestion(ThreatRatingModeChoiceQuestion.class);
 		
 		String code = "";
