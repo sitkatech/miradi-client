@@ -161,6 +161,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
 		treePlusTablesPanel.setTopComponent(treesScrollPane);
 		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
+		treePlusTablesPanel.setOneTouchExpandable(false);
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
 		add(treePlusTablesPanel, BorderLayout.CENTER);
