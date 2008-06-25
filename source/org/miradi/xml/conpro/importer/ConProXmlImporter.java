@@ -33,12 +33,15 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
+import org.miradi.exceptions.ValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -92,6 +95,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -110,22 +114,30 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 		wrappedToDiagramMap = new HashMap<ORef, ORef>();
 	}
-	
-	public void importConProProject(InputSource inputSource) throws Exception
+		
+	public void importConProProject(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
+		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
-		xPath = createXPath();
 				
-		if (!isSameNameSpace())
+		String nameSpaceUri = document.getDocumentElement().getNamespaceURI();
+		if (!isSameNameSpace(nameSpaceUri))
 		{
-			throw new Exception("Name space mismatch should be: " + PARTIAL_NAME_SPACE + " <br> however it is: " + getNameSpaceUrl()); 
+			throw new Exception("Name space mismatch should be: " + PARTIAL_NAME_SPACE + " <br> however it is: " + nameSpaceUri); 
 		}
 				
-		if (isUnsupportedNewVersion())
+		if (isUnsupportedNewVersion(nameSpaceUri))
 		{
 			throw new UnsupportedNewVersionSchemaException();
 		}
 		
+		projectAsInputStream.seek(0);			
+		if (!new ConProMiradiXmlValidator().isValid(projectAsInputStream))
+		{
+			throw new ValidationException(EAM.text("File to import does not validate."));
+		}
+		
+		xPath = createXPath();
 		importXml(inputSource);
 	}
 
@@ -891,30 +903,22 @@ public class ConProXmlImporter implements ConProMiradiXml
 		return conceptualModelRef;
 	}
 	
-	private boolean isUnsupportedNewVersion() throws Exception
+	private boolean isUnsupportedNewVersion(String nameSpaceUri) throws Exception
 	{
-		return getSchemaVersionToImport() > NAME_SPACE_VERSION;
+		return getSchemaVersionToImport(nameSpaceUri) > NAME_SPACE_VERSION;
 	}
 
-	private boolean isSameNameSpace() throws Exception
+	private boolean isSameNameSpace(String nameSpaceUri) throws Exception
 	{
-		return getNameSpaceUrl().startsWith(PARTIAL_NAME_SPACE);
+		return nameSpaceUri.startsWith(PARTIAL_NAME_SPACE);
 	}
 	
-	private double getSchemaVersionToImport() throws Exception
+	private double getSchemaVersionToImport(String nameSpaceUri) throws Exception
 	{
-		String nameSpace = getNameSpaceUrl();
-		int lastSlashIndexBeforeVersion = nameSpace.lastIndexOf("/");
-		String versionAsString = nameSpace.substring(lastSlashIndexBeforeVersion + 1, nameSpace.length());
+		int lastSlashIndexBeforeVersion = nameSpaceUri.lastIndexOf("/");
+		String versionAsString = nameSpaceUri.substring(lastSlashIndexBeforeVersion + 1, nameSpaceUri.length());
 		double versionToImport = Double.parseDouble(versionAsString);
 		return versionToImport;
-	}
-
-	private String getNameSpaceUrl() throws Exception
-	{
-		Node rootNode = getRootNode();
-		String nameSpace = getAttributeValue(rootNode, XMLNS);
-		return nameSpace;
 	}
 	
 	private void setDiagramFactorDefaultLocations() throws Exception

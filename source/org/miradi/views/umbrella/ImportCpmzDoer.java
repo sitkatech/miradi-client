@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +29,7 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -42,9 +42,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
-import org.xml.sax.InputSource;
 
 public class ImportCpmzDoer extends ImportProjectDoer
 {
@@ -105,16 +103,10 @@ public class ImportCpmzDoer extends ImportProjectDoer
 
 	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
 	{
-		ByteArrayInputStream projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		ByteArrayInputStreamWithSeek projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		try
 		{
-			if (!new ConProMiradiXmlValidator().isValid(projectAsInputStream))
-			{
-				throw new ValidationException(EAM.text("File to import does not validate."));
-			}
-			
-			projectAsInputStream.reset();
-			new ConProXmlImporter(projectToFill).importConProProject(new InputSource(projectAsInputStream));
+			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
 			showDialogWithCoachText();
 			hideLinkLayer(projectToFill);
 		}
@@ -134,11 +126,11 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
 
-	public static ByteArrayInputStream extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
+	public static ByteArrayInputStreamWithSeek extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
 	{
 		ZipEntry zipEntry = zipFile.getEntry(entryName);
 		if (zipEntry == null)
-			return new ByteArrayInputStream(new byte[0]);
+			return new ByteArrayInputStreamWithSeek(new byte[0]);
 		
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
@@ -157,7 +149,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			byteOut.close();
 		}
 
-		return new ByteArrayInputStream(byteOut.toByteArray()); 
+		return new ByteArrayInputStreamWithSeek(byteOut.toByteArray()); 
 	}
 	
 	private boolean zipContainsMpzProject(ZipFile zipFile)
