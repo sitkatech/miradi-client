@@ -25,6 +25,7 @@ import org.xml.sax.DTDHandler;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 
 import com.thaiopensource.util.PropertyId;
@@ -79,6 +80,7 @@ public class MiradiValidationDriver
 						this.schemaProperties.get(requiredProperties[i]));
 		}
 		eh = new CountingErrorHandler((ErrorHandler)builder.get(ValidateProperty.ERROR_HANDLER));
+		eh.setErrorHandler(new CustomErrorHandler());
 		ValidateProperty.ERROR_HANDLER.put(builder, eh);
 		this.instanceProperties = builder.toPropertyMap();
 		this.xrc = ValidateProperty.XML_READER_CREATOR.get(this.instanceProperties);
@@ -127,6 +129,24 @@ public class MiradiValidationDriver
 		}
 	}
 
+	public class CustomErrorHandler implements ErrorHandler
+	{
+		public void error(SAXParseException e) throws SAXException
+		{
+			throw e;
+		}
+
+		public void fatalError(SAXParseException e) throws SAXException
+		{
+			throw e;
+		}
+
+		public void warning(SAXParseException e) throws SAXException
+		{
+			throw e;
+		}
+	}
+	
 	private static final PropertyId[] requiredProperties = {ValidateProperty.XML_READER_CREATOR, ValidateProperty.ERROR_HANDLER};
 
 	private static final Class[] defaultClasses = {Jaxp11XMLReaderCreator.class, ErrorHandlerImpl.class	};

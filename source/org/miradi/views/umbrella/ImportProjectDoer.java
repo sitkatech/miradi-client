@@ -74,7 +74,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 		catch (UnsupportedNewVersionSchemaException e)
 		{
 			EAM.logException(e);
-			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE + " :<BR>" + e.getMessage());
+			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
 		}
 		catch (ValidationException e)
 		{

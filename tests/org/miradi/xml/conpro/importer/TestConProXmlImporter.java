@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.importer;
 
 import java.io.File;
-import java.io.FileInputStream;
 
 import org.martus.util.UnicodeReader;
+import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
@@ -34,9 +34,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
-import org.xml.sax.InputSource;
 
 public class TestConProXmlImporter extends TestCaseWithProject
 {
@@ -165,29 +163,16 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	}
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
-	{
-		FileInputStream fileInputStream = new FileInputStream(beforeXmlOutFile);
+	{		
+		ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill1);
+		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
-			if (!new ConProMiradiXmlValidator().isValid(fileInputStream))
-				throw new Exception("Could not validate file for importing.");
+			conProXmlImporter.importConProProject(fileInputStream);
 		}
 		finally
 		{
 			fileInputStream.close();
-		}
-		
-		
-		ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill1);
-		FileInputStream fileInputStream2 = new FileInputStream(beforeXmlOutFile);
-		try
-		{
-			InputSource inputSource = new InputSource(fileInputStream2);
-			conProXmlImporter.importConProProject(inputSource);
-		}
-		finally
-		{
-			fileInputStream2.close();
 		}
 	}
 
