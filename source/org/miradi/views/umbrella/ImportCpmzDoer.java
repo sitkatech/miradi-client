@@ -103,7 +103,8 @@ public class ImportCpmzDoer extends ImportProjectDoer
 
 	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
 	{
-		ByteArrayInputStreamWithSeek projectAsInputStream = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		ByteArrayInputStreamWithSeek projectAsInputStream = new ByteArrayInputStreamWithSeek(extractXmlBytes);
 		try
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
@@ -126,11 +127,11 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
 
-	public static ByteArrayInputStreamWithSeek extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
+	public static byte[] extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
 	{
 		ZipEntry zipEntry = zipFile.getEntry(entryName);
 		if (zipEntry == null)
-			return new ByteArrayInputStreamWithSeek(new byte[0]);
+			return new byte[0];
 		
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
@@ -149,7 +150,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			byteOut.close();
 		}
 
-		return new ByteArrayInputStreamWithSeek(byteOut.toByteArray()); 
+		return byteOut.toByteArray(); 
 	}
 	
 	private boolean zipContainsMpzProject(ZipFile zipFile)
