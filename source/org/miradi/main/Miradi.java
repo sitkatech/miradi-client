@@ -70,8 +70,14 @@ public class Miradi
 		Miradi.start(args);
 	}
 
-	private static void switchToLanguage(String languageCode) throws Exception
+	public static void switchToLanguage(String languageCode) throws Exception
 	{
+		if(languageCode == null)
+		{
+			EAM.restoreDefaultLocalization();
+			return;
+		}
+		
 		String jarName = "MiradiContent-2.1-" + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		EAM.setLocalization(jarFile.toURL());
