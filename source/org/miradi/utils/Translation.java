@@ -57,10 +57,12 @@ public class Translation
 
 	public static String text(String key)
 	{
-		if(textTranslations == null)
-			return extractPartToDisplay(key);
+		String result = extractPartToDisplay(key);
 	
-		return textTranslations.getProperty(key, "<" + key + ">");
+		if(textTranslations != null)
+			result = textTranslations.getProperty(key, "~" + key + "~");
+		
+		return extractPartToDisplay(result);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
