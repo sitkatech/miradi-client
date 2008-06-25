@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.util.EventObject;
-
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
@@ -40,29 +38,20 @@ public class AboutDoer extends MainWindowDoer
 	
 	public void doIt() throws CommandFailedException
 	{
-		doIt(null);
-	}
-	
-	public void doIt(EventObject event) throws CommandFailedException
-	{
 		String text =  buildMainSection();
-		
-		boolean initialSplash = (event == null);
-		if(!initialSplash)
-		{
-			text += loadHtmlFile("AboutExtra.html");
-		}
-		
-		text += loadHtmlFile("AboutEnd.html");
+		text += loadHtmlFile("AboutExtra.html");
+		text += buildEndSection();
 		
 		HelpAboutPanel dialog = new HelpAboutPanel(getMainWindow(), text);
-		if(initialSplash)
-			dialog.setCloseButtonText(EAM.text("Continue"));
 		dialog.showAsOkDialog();
 	}
 
+	public static String buildEndSection()
+	{
+		return loadHtmlFile("AboutEnd.html");
+	}
 	
-	private String buildMainSection()
+	public static String buildMainSection()
 	{
 		String text = loadHtmlFile("AboutPart1.html");
 		text +=  VersionConstants.VERSION_STRING;
@@ -71,7 +60,7 @@ public class AboutDoer extends MainWindowDoer
 	}
 	
 	
-	private String loadHtmlFile(String htmlFile)
+	private static String loadHtmlFile(String htmlFile)
 	{
 		try
 		{

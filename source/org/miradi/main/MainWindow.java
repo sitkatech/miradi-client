@@ -47,7 +47,6 @@ import javax.swing.ToolTipManager;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
-import org.miradi.actions.ActionAbout;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
@@ -77,7 +76,6 @@ import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
-import org.miradi.views.Doer;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -113,8 +111,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project = projectToUse;
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager(this);
-		actions = new Actions(this);
 		hyperlinkHandler = new DefaultHyperlinkHandler(this);
+		setLanguage(null);
 	}
 	
 	public void start(String[] args) throws Exception
@@ -135,18 +133,32 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
 		
 		loadCustomAppColors();
-		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
+		addWindowListener(new WindowEventHandler());
+		setSize(new Dimension(900, 700));
+
+		setExtendedState(ICONIFIED);
+		setSize(0,0);
+		setLocation(-100, -100);
+		setVisible(true);
+		if(!commandLineArguments.contains("--nosplash"))
+		{
+			new InitialSplashPanel(this).showAsOkDialog();
+		}
+
+		if(hasExpired() || commandLineArguments.contains("--expired"))
+		{
+			displayExpirationNotice();
+		}
 		
+		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
+
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
 		mainMenuBar = new MainMenuBar(this);
 		toolBarBox = new ToolBarContainer();
 		mainStatusBar = new MainStatusBar();
 		updateTitle();
-		setSize(new Dimension(900, 700));
 		setJMenuBar(mainMenuBar);
 		getContentPane().setLayout(new BorderLayout());
-
-		addWindowListener(new WindowEventHandler());
 
 		wizardPanel = createWizardPanel(wizardTitlePanel);
 		
@@ -177,22 +189,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 		updateActionStates();
 
-		setExtendedState(ICONIFIED);
-		setSize(0,0);
-		setLocation(-100, -100);
-		setVisible(true);
-		if(!commandLineArguments.contains("--nosplash"))
-		{
-			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
-			aboutDoer.setMainWindow(this);
-			aboutDoer.doIt();
-		}
-
-		if(hasExpired() || commandLineArguments.contains("--expired"))
-		{
-			displayExpirationNotice();
-		}
-		
 		setSize(preferences.getMainWindowWidth(), preferences.getMainWindowHeight());
 		setLocation(preferences.getMainWindowXPosition(), preferences.getMainWindowYPosition());
 		setExtendedState(NORMAL);
@@ -200,6 +196,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
+	}
+	
+	private void setLanguage(String languageCode) throws Exception
+	{
+		Miradi.switchToLanguage(languageCode);
+		actions = new Actions(this);
 	}
 
 	private void loadCustomAppColors() throws Exception

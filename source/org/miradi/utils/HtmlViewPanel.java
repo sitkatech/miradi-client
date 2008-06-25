@@ -68,7 +68,6 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		viewTitle = titleToUse;
 		delegateFormHandler = handlerToUse;
 		mainWindow = mainWindowToUse;
-		closeButtonText = EAM.text("Close");
 	}
 
 	
@@ -117,6 +116,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		calculateHeight(dlg, contents, bodyComponent, buttonBar);
 		Utilities.centerDlg(dlg);
 		close.requestFocus(true);
+		dlg.getRootPane().setDefaultButton(close);
 		dlg.setVisible(true);
 	}
 
@@ -155,7 +155,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 
 
-	private JComponent createButtonBar(EAMDialog dlg)
+	protected JComponent createButtonBar(EAMDialog dlg)
 	{
 		close = new JButton(new CloseAction(dlg));
 		dlg.getRootPane().setDefaultButton(close);
@@ -172,11 +172,16 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	
 
 
-	class CloseAction extends AbstractAction
+	protected class CloseAction extends AbstractAction
 	{
 		public CloseAction(JDialog dialogToClose)
 		{
-			super(getCloseButtonText());
+			this(dialogToClose, EAM.text("Button|Close"));
+		}
+		
+		public CloseAction(JDialog dialogToClose, String buttonText)
+		{
+			super(buttonText);
 			dlg = dialogToClose;
 		}
 
@@ -187,17 +192,12 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		
 		JDialog dlg;
 	}
+	
+	public void setCloseButton(JButton newCloseButton)
+	{
+		close = newCloseButton;
+	}
 
-	String getCloseButtonText()
-	{
-		return closeButtonText;
-	}
-	
-	public void setCloseButtonText(String text)
-	{
-		closeButtonText = text;
-	}
-	
 	public void buttonPressed(String buttonName)
 	{
 		delegateFormHandler.buttonPressed(buttonName);
@@ -259,6 +259,4 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private HtmlFormEventHandler delegateFormHandler;
 	private JButton close;
 	private MainWindow mainWindow;
-	private String closeButtonText;
-
 }
