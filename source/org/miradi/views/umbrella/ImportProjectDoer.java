@@ -90,12 +90,16 @@ public abstract class ImportProjectDoer extends ViewDoer
 			showImportFailedErrorDialog(e.getMessage());
 		}
 	}
-
+	
 	public static String getValidatedUserProjectName(MainWindow mainWindow, File fileToImport) throws Exception
 	{
 		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
-		projectName = askUserForProjectName(mainWindow, projectName);
-		
+		return getValidatedUserProjectName(mainWindow, projectName);
+	}
+
+	public static String getValidatedUserProjectName(MainWindow mainWindow, String projectName) throws Exception
+	{
+		projectName = askUserForProjectName(mainWindow, projectName);	
 		while (true)
 		{
 			if (projectName == null)
