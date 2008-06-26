@@ -26,7 +26,9 @@ import org.martus.util.DirectoryLock;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ImportProjectDoer;
+import org.miradi.project.Project;
+import org.miradi.utils.ModalRenameDialog;
+import org.miradi.utils.Utility;
 
 public class RenameProjectDoer
 {
@@ -49,7 +51,7 @@ public class RenameProjectDoer
 
 		try
 		{
-			String newName = ImportProjectDoer.getLegalProjectNameFromUser(mainWindow, projectToRename.getName());
+			String newName = getLegalProjectNameFromUser(mainWindow, projectToRename.getName());
 			if (newName == null)
 				return;
 
@@ -74,6 +76,67 @@ public class RenameProjectDoer
 		{
 			directoryLock.close();
 		}
+	}
+	
+	public static String getValidatedUserProjectName(MainWindow mainWindow, File fileToImport) throws Exception
+	{
+		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
+		return getLegalProjectNameFromUser(mainWindow, projectName);
+	}
+
+	public static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
+	{
+		while (true)
+		{
+			projectName = askUserForProjectName(mainWindow, projectName);
+			if (projectName == null)
+			{
+				return null;
+			}
+			
+			if (projectExists(projectName))
+			{
+				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
+				continue;
+			}
+			
+			if (!isLegalValidProjectName(mainWindow.getProject(), projectName))
+			{
+				EAM.errorDialog(EAM.text("Invalid project name:") + projectName);
+				continue;
+			}
+			
+			return projectName;
+		}
+	}
+	
+	private static boolean projectExists(String projectName)
+	{
+		File newFile = new File(EAM.getHomeDirectory(), projectName);
+		if(ProjectServer.isExistingProject(newFile))
+			return true;
+		
+		if(newFile.exists())
+			return true;
+		
+		return false;
+	}
+	
+	private static boolean isLegalValidProjectName(Project project, String projectName)
+	{
+		if (project.isValidProjectFilename(projectName))
+			return true;
+			
+		if (EAM.isLegalFileName(projectName))
+			return true;
+		
+		return false;
+	}
+	
+	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
+	{
+		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
+		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
 	public static final String RENAME_TEXT = EAM.text("Enter New Project Name");
