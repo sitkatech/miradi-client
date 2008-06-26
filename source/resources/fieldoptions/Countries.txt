@@ -54,7 +54,6 @@ COG	Congo
 COK	Cook Islands
 CRI	Costa Rica
 CIV	Cote d'Ivoire
-ISO3V10	Country_Standard
 HRV	Croatia
 CUB	Cuba
 CYP	Cyprus
