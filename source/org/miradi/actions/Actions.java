@@ -413,6 +413,7 @@ public class Actions
 		registerAction(new ActionHideStressBubble(mainWindow));
 		registerAction(new ActionShowActivityBubble(mainWindow));
 		registerAction(new ActionHideActivityBubble(mainWindow));
+		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

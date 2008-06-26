@@ -124,6 +124,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(commandLineArguments.contains("--demo"))
 			demoMode = true;
 		
+		if(commandLineArguments.contains("--developer"))
+			developerMode = true;
+		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
@@ -741,6 +744,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return demoMode;
 	}
 	
+	public static boolean isDeveloperMode()
+	{
+		return developerMode;
+	}
+	
 	public void savePreferences() throws Exception
 	{
 		boolean isMaximized = false;
@@ -952,6 +960,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private static final int TOOP_TIP_DELAY_MILLIS = 1000;
 
 	private static boolean demoMode;
+	private static boolean developerMode;
 
 	protected Actions actions;
 	private AppPreferences preferences;

@@ -81,6 +81,7 @@ import org.miradi.actions.ActionReportsDemo;
 import org.miradi.actions.ActionSaveImageJPEG;
 import org.miradi.actions.ActionSaveImagePng;
 import org.miradi.actions.ActionShareMethod;
+import org.miradi.actions.ActionShowCurrentWizardFileName;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.ActionViewLegacyTncStrategtyRanking;
 import org.miradi.actions.ActionWizardNext;
@@ -198,6 +199,7 @@ import org.miradi.views.umbrella.doers.EditMethodsDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
+import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
 import org.miradi.views.umbrella.doers.SwitchToReportViewDoer;
 import org.miradi.views.umbrella.doers.ViewLegacyTncStrategyRankingDoer;
 
@@ -389,6 +391,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());
 		
 		addDoerToMap(ActionPrint.class, new Print());
+		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());

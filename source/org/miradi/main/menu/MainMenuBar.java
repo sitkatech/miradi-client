@@ -92,6 +92,7 @@ import org.miradi.actions.ActionSaveImagePng;
 import org.miradi.actions.ActionSelectAll;
 import org.miradi.actions.ActionSelectChain;
 import org.miradi.actions.ActionShowConceptualModel;
+import org.miradi.actions.ActionShowCurrentWizardFileName;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
@@ -320,6 +321,10 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new ProcessMenu4(actions));
 		menu.add(new ProcessMenu5(actions));
 		menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
+		
+		if (getMainWindow().isDeveloperMode())
+			addMenuItem(actions, menu, ActionShowCurrentWizardFileName.class, KeyEvent.VK_S);
+		
 		return menu;
 	}
 
