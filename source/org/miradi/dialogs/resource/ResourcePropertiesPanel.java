@@ -68,7 +68,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField iMAddressField = createMediumStringField(ProjectResource.TAG_IM_ADDRESS);
 		ObjectDataInputField iMServiceField = createMediumStringField(ProjectResource.TAG_IM_SERVICE);
-		addFieldsOnOneLine("IM Address", new ObjectDataInputField[]{iMAddressField, iMServiceField});
+		addFieldsOnOneLine(EAM.text("Label|IM Address"), new ObjectDataInputField[]{iMAddressField, iMServiceField});
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
 
