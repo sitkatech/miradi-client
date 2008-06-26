@@ -99,9 +99,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 	public static String getValidatedUserProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
-		projectName = askUserForProjectName(mainWindow, projectName);	
 		while (true)
 		{
+			projectName = askUserForProjectName(mainWindow, projectName);
 			if (projectName == null)
 			{
 				return null;
@@ -110,14 +110,12 @@ public abstract class ImportProjectDoer extends ViewDoer
 			if (projectExists(projectName))
 			{
 				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
-				projectName = askUserForProjectName(mainWindow, projectName);
 				continue;
 			}
 			
 			if (!isLegalValidProjectName(mainWindow.getProject(), projectName))
 			{
 				EAM.errorDialog(EAM.text("Invalid project name:") + projectName);
-				projectName = askUserForProjectName(mainWindow, projectName);
 				continue;
 			}
 			
