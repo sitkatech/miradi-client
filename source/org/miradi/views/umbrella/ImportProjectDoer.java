@@ -149,11 +149,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
-		String newName = ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
-		if (newName == null)
-			return null;
-
-		return newName;
+		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
