@@ -94,10 +94,10 @@ public abstract class ImportProjectDoer extends ViewDoer
 	public static String getValidatedUserProjectName(MainWindow mainWindow, File fileToImport) throws Exception
 	{
 		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
-		return getValidatedUserProjectName(mainWindow, projectName);
+		return getLegalProjectNameFromUser(mainWindow, projectName);
 	}
 
-	public static String getValidatedUserProjectName(MainWindow mainWindow, String projectName) throws Exception
+	public static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
 	{
 		while (true)
 		{

@@ -49,7 +49,7 @@ public class RenameProjectDoer
 
 		try
 		{
-			String newName = ImportProjectDoer.getValidatedUserProjectName(mainWindow, projectToRename.getName());
+			String newName = ImportProjectDoer.getLegalProjectNameFromUser(mainWindow, projectToRename.getName());
 			if (newName == null)
 				return;
 
