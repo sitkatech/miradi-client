@@ -80,7 +80,7 @@ public class Miradi
 		
 		String jarName = "MiradiContent-2.1-" + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
-		EAM.setLocalization(jarFile.toURL());
+		EAM.setLocalization(jarFile.toURI().toURL());
 	}
 
 	private static File findLanguageJar(String jarName) throws URISyntaxException
