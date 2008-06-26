@@ -27,6 +27,7 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.miradi.main.EAM;
 
 public class Translation
 {
@@ -70,7 +71,10 @@ public class Translation
 		String fullTag = Integer.toString(objectType) + "." + fieldTag;
 		String label = fieldLabelTranslations.getProperty(fullTag);
 		if(label == null)
+		{
+			EAM.logError("Could not find tag in fieldLabels file: type=" + objectType + "  tag=" + fieldTag);
 			label = fieldTag;
+		}
 		return label;
 	}
 
