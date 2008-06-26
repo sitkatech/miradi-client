@@ -119,7 +119,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
-		writeElement(out, NAME, indicator, Indicator.TAG_LABEL);
+		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeOptionalMethods(out, indicator.getMethodRefs());
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
 		writeOptionalProgressReportStatus(out, indicator);
@@ -181,7 +181,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			ORefSet objectiveRefs = getRelevantObjectiveRefs(strategy);
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, new ORefList(objectiveRefs));
 			
-			writeElement(out, NAME, strategy, Strategy.TAG_LABEL);
+			writeLabelElement(out, NAME, strategy, Strategy.TAG_LABEL);
 			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
 			writeOptionalRatingCodeElement(out, LEVERAGE, strategy, Strategy.TAG_IMPACT_RATING);
 			writeOptionalRatingCodeElement(out, FEASABILITY, strategy, Strategy.TAG_FEASIBILITY_RATING);
@@ -221,7 +221,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			Task activity = Task.find(getProject(), activityRefs.get(refIndex));
 			writeStartElement(out, ACTIVITY);
-			writeElement(out, NAME, activity, Task.TAG_LABEL);
+			writeLabelElement(out, NAME, activity, Task.TAG_LABEL);
 			DateRange whenTotal = activity.getWhenTotal();
 			if (whenTotal != null)
 			{
@@ -254,7 +254,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
 
 		writeIndicatorIds(out, objective);
-		writeElement(out, NAME, objective, Objective.TAG_LABEL);
+		writeLabelElement(out, NAME, objective, Objective.TAG_LABEL);
 		writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
 	}
@@ -289,7 +289,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int index = 0; index < directThreats.length; ++index)
 		{
 			out.writeln("<" + THREAT + " " + ID + "='" + directThreats[index].getId().toString() + "'>");
-			writeElement(out, NAME, directThreats[index], Cause.TAG_LABEL);
+			writeLabelElement(out, NAME, directThreats[index], Cause.TAG_LABEL);
 			writeOptionalElement(out, THREAT_TAXONOMY_CODE, directThreats[index], Cause.TAG_TAXONOMY_CODE);
 			ChoiceItem threatRatingValue = getProject().getThreatRatingFramework().getThreatThreatRatingValue(directThreats[index].getRef());
 			if (threatRatingValue != null)
@@ -396,7 +396,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			out.writeln("<" + KEY_ATTRIBUTE + " " + ID + "='" + keas[index].getId().toString() + "'>");
 			
-			writeElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
+			writeLabelElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
 			writeOptionalElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
 			writeEndElement(out, KEY_ATTRIBUTE);
 		}
@@ -414,7 +414,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			Target target = targets[index];
 			out.write("<" + TARGET + " " + ID + "='" + target.getId().toString() + "' " + SEQUENCE + "='" + index + 1 + "'>");
 			
-			writeElement(out, TARGET_NAME, target, Target.TAG_LABEL);
+			writeLabelElement(out, TARGET_NAME, target, Target.TAG_LABEL);
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
 			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENT);
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
@@ -601,7 +601,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			SubTarget subTarget = SubTarget.find(getProject(), subTargetRefs.get(refIndex));
 			out.writeln("<" + NESTED_TARGET+ " " + SEQUENCE + "='" + refIndex + "'>");
-			writeElement(out, NAME, subTarget, SubTarget.TAG_LABEL);
+			writeLabelElement(out, NAME, subTarget, SubTarget.TAG_LABEL);
 			writeElement(out, COMMENT, subTarget, SubTarget.TAG_DETAIL);
 			writeEndElement(out, NESTED_TARGET);
 		}
@@ -658,7 +658,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			out.writeln("<" + STRESS + " "+ SEQUENCE+ "='" + refIndex + "'>");
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
-			writeElement(out, NAME, stress, Stress.TAG_LABEL);
+			writeLabelElement(out, NAME, stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
@@ -872,6 +872,15 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, elementName, object.getData(fieldTag));
 	}
 	
+	private void writeLabelElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	{
+		String label = object.getData(tag);
+		if (label.length() == 0)
+			label = UNSPECIFIED_LABEL; 
+				
+		writeElement(out, elementName, label);
+	}
+	
 	private void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(out, elementName, object.getData(tag));
@@ -989,4 +998,5 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	}	
 	
 	private ConProMiradiCodeMapHelper codeMapHelper;
+	private static final String UNSPECIFIED_LABEL = "[Unspecified]";
 }
