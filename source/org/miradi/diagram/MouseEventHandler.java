@@ -98,7 +98,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		try
 		{
 			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
-			selectedAndGroupBoxCoveredLinkCells.addAll(NudgeDoer.getAllLinksInGroupBoxes(getDiagram(), selectedFactorAndChildren));
+			selectedAndGroupBoxCoveredLinkCells.addAll(NudgeDoer.selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram(), selectedFactorAndChildren));
 			selectedAndGroupBoxCoveredLinkCells.addAll(getSelectedLinksWithSelectedBendPoints());
 			GraphLayoutCache graphLayoutCache = getDiagram().getGraphLayoutCache();
 			for(int i = 0; i < selectedCells.length; ++i)
