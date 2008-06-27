@@ -26,6 +26,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,10 +42,12 @@ import org.miradi.objectpools.ValueOptionPool;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.Utility;
 
 
 public class SimpleThreatRatingFramework extends ThreatRatingFramework
@@ -208,11 +211,16 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public ValueOption getProjectMajorityRating()
 	{
 		Factor[] targets = getProject().getTargetPool().getTargets();
-		int[] highestValues = new int[targets.length];
+		Vector<Integer> highestValues = new Vector();
 		for(int i = 0; i < targets.length; ++i)
-			highestValues[i] = getHighestValueForTarget(targets[i].getId()).getNumericValue();
+		{
+			Target target = (Target) targets[i];
+			int targetRating = getTargetThreatRatingValue(target.getFactorId()).getNumericValue();
+			if (targetRating > 0)
+				highestValues.add(getHighestValueForTarget(targets[i].getId()).getNumericValue());
+		}
 		
-		return getMajorityOfNumericValues(highestValues);
+		return getMajorityOfNumericValues(Utility.convertToIntArray(highestValues));
 	}
 	
 	public ValueOption getOverallProjectRating()

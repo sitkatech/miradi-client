@@ -290,6 +290,9 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 			{4, 1, 4, },
 		};
 		verifyPureMajority("TwoRows", 4, bundlesTwoRows);
+		
+		int[][] bundles = { {3, 0},	};
+		verifyPureMajority("wrong target majority", 3, bundles);
 	}
 	
 	public void testGetProjectRating() throws Exception
