@@ -32,12 +32,25 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesPanel(MainWindow mainWindow) throws Exception
+	public static TaskPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
+	{
+		TaskPropertiesInputPanel inputPanelWithVisibilityPanel = TaskPropertiesInputPanel.createWithVisibilityPanel(mainWindow);
+		return new TaskPropertiesPanel(mainWindow, inputPanelWithVisibilityPanel);
+	}
+	
+	public static TaskPropertiesPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
+	{
+		TaskPropertiesInputPanel inputPanelWithoutVisibilityPanel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(mainWindow);
+		return new TaskPropertiesPanel(mainWindow, inputPanelWithoutVisibilityPanel);
+	}
+	
+	private TaskPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelToUse) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.TASK, BaseId.INVALID);
+		
 		setLayout(new OneColumnGridLayout());
 		setBorder(BorderFactory.createEtchedBorder());
-		inputPanel = TaskPropertiesInputPanel.createWithVisibilityPanel(mainWindow);
+		inputPanel = inputPanelToUse;
 		
 		String hintAboutPlanningView = EAM.text("<html><em>HINT: " +
 				"To manage the details about who will do the work and when, " +

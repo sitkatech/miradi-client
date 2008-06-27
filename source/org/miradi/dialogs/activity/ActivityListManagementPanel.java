@@ -34,7 +34,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public ActivityListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
 		super(mainWindow, new ActivityListTablePanel(mainWindow.getProject(), mainWindow.getActions(), nodeRef),
-				new TaskPropertiesPanel(mainWindow));
+				TaskPropertiesPanel.createWithVisibilityPanel(mainWindow));
 	}
 	
 	public String getSplitterDescription()
