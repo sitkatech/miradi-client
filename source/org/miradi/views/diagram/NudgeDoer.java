@@ -110,7 +110,7 @@ public class NudgeDoer extends LocationDoer
 		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		
 		HashSet<LinkCell> allLinkCells = new HashSet();
-		allLinkCells.addAll(getAllLinksInGroupBoxes(diagramPanel.getDiagramComponent(), selectedFactorAndChildren));
+		allLinkCells.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(diagramPanel.getDiagramComponent(), selectedFactorAndChildren));
 		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
 		
 		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
@@ -147,20 +147,21 @@ public class NudgeDoer extends LocationDoer
 		}
 	}
 
-	public static HashSet<LinkCell> getAllLinksInGroupBoxes(DiagramComponent diagramComponent, HashSet<FactorCell> selectedFactorAndChildren)
+	//FIXME should no longer return anything
+	public static HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(DiagramComponent diagramComponent, HashSet<FactorCell> selectedFactorAndChildren)
 	{
 		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
 		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
 		for (int i = 0; i < factorCells.length; ++i)
 		{
 			FactorCell factorCell = factorCells[i];
-			linksInsideGroupBoxes.addAll(getAllLinkCells(diagramComponent, factorCell, factorCells));
+			linksInsideGroupBoxes.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(diagramComponent, factorCell, factorCells));
 		}
 			
 		return linksInsideGroupBoxes;
 	}
 
-	private static HashSet<LinkCell> getAllLinkCells(DiagramComponent diagramComponent, FactorCell factorCell, FactorCell[] factorCells)
+	private static HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(DiagramComponent diagramComponent, FactorCell factorCell, FactorCell[] factorCells)
 	{
 		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
 		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
