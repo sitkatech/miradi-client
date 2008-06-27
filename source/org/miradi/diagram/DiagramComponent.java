@@ -487,28 +487,24 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		LinkCell linkCell = getDiagramModel().getDiagramFactorLink(diagramLink);
 		linkCell.clearBendPointSelectionList();
 	}
-	
 
 	public void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
-		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
-		for (int i = 0; i < factorCells.length; ++i)
+		for(FactorCell factorCell : selectedFactorAndChildren)
 		{
-			FactorCell factorCell = factorCells[i];
-			selectAllLinksAndThierBendPointsInsideGroupBox(factorCells, factorCell.getDiagramFactor());
+			selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren, factorCell.getDiagramFactor());	
 		}
 	}
 
-	private void selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell[] factorCells, DiagramFactor diagramFactor)
+	private void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren, DiagramFactor diagramFactor)
 	{
 		DiagramModel diagramModel = getDiagramModel();
 		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
-			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
+			for(FactorCell thisFactorCell : selectedFactorAndChildren)
 			{
-				FactorCell thisFactorCell = factorCells[cellIndex];
 				if (thisFactorCell.getDiagramFactorRef().equals(diagramFactor.getRef()))
 					continue;
 				
