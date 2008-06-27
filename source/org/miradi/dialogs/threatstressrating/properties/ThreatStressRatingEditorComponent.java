@@ -56,7 +56,7 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 		return objectPicker;
 	}
 
-	public void updateModelBasedOnPickerList()
+	public void refreshModel()
 	{
 		ORefList[] selectedHierarchies = getObjectPicker().getSelectedHierarchies();
 		if (selectedHierarchies.length > 0)
