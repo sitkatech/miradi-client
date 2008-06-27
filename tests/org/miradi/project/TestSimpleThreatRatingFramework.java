@@ -45,9 +45,9 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 
-public class TestThreatRatingFramework extends EAMTestCase
+public class TestSimpleThreatRatingFramework extends EAMTestCase
 {
-	public TestThreatRatingFramework(String name)
+	public TestSimpleThreatRatingFramework(String name)
 	{
 		super(name);
 	}

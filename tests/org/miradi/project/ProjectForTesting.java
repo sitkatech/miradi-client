@@ -425,7 +425,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		
 		int[][] bundleValues = { {3,}, {4,}, {1,}, };
-		TestThreatRatingFramework.fillFrameWork(this, bundleValues);
+		TestSimpleThreatRatingFramework.fillFrameWork(this, bundleValues);
 	}
 	
 	public void populateCause(Cause cause) throws Exception
