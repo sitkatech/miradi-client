@@ -96,8 +96,6 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				
 		try
 		{
-			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
-			selectedAndGroupBoxCoveredLinkCells.addAll(getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren));
 			selectedAndGroupBoxCoveredLinkCells.addAll(getSelectedLinksWithSelectedBendPoints());
 			GraphLayoutCache graphLayoutCache = getDiagram().getGraphLayoutCache();
 			for(int i = 0; i < selectedCells.length; ++i)
@@ -245,10 +243,17 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 	// Don't put any code in this method. Put it in selectionChanged.
 	public void valueChanged(GraphSelectionEvent event)
 	{
-		selectionChanged(event);
+		try
+		{
+			selectionChanged(event);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
-	public void selectionChanged(GraphSelectionEvent event)
+	public void selectionChanged(GraphSelectionEvent event) throws Exception
 	{
 		mainWindow.updateActionStates();
 		UmbrellaView currentView = mainWindow.getCurrentView();
@@ -256,6 +261,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		if(currentView.cardName().equals(DiagramView.getViewName()))
 		{
+			getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram().getOnlySelectedFactorAndGroupChildCells());
 			selectedCells = getDiagram().getSelectionCells();
 			DiagramView view = (DiagramView)mainWindow.getCurrentView();
 			view.selectionWasChanged();

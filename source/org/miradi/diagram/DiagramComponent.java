@@ -487,23 +487,20 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		linkCell.clearBendPointSelectionList();
 	}
 	
-	//FIXME should no longer return anything
-	public HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
+
+	public void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
-		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
 		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
 		for (int i = 0; i < factorCells.length; ++i)
 		{
 			FactorCell factorCell = factorCells[i];
-			linksInsideGroupBoxes.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(factorCell, factorCells));
+			selectAllLinksAndThierBendPointsInsideGroupBox(factorCells, factorCell);
 		}
-			
-		return linksInsideGroupBoxes;
 	}
 
-	private HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell factorCell, FactorCell[] factorCells)
+	private void selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell[] factorCells, FactorCell factorCell)
 	{
-		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
+		DiagramModel diagramModel = getDiagramModel();
 		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{
@@ -517,14 +514,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				if (!diagramLink.isToOrFrom(thisFactorCell.getDiagramFactorRef()))
 					continue;
 						
-				LinkCell linkCell = getDiagramModel().findLinkCell(diagramLink);
+				LinkCell linkCell = diagramModel.findLinkCell(diagramLink);
 				linkCell.getBendPointSelectionHelper().selectAll();
-				linksInGroupBoxes.add(linkCell);
 				addSelectionCell(linkCell);
 			}
 		}
-		
-		return linksInGroupBoxes;
 	}
 	
 	public void zoom(double proportion)
