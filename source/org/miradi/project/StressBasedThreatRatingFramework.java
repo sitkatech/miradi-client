@@ -69,8 +69,8 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		for (int i = 0; i < targets.length; ++i)
 		{
 			Target target = (Target) targets[i];
-			int summartRatingValue = get2PrimeSummaryRatingValue(target);
-			if (summartRatingValue > 0)
+			int summaryRatingValue = get2PrimeSummaryRatingValue(target);
+			if (summaryRatingValue > 0)
 				highestTargetRatingValues.add(getHighestFactorSummaryRatingValue(target));
 		}
 		
