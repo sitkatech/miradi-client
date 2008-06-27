@@ -146,6 +146,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(!commandLineArguments.contains("--nosplash"))
 		{
 			new InitialSplashPanel(this).showAsOkDialog();
+//			setLanguage("es");
 		}
 
 		if(hasExpired() || commandLineArguments.contains("--expired"))
