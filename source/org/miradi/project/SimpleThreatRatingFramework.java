@@ -42,7 +42,6 @@ import org.miradi.objectpools.ValueOptionPool;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.EnhancedJsonArray;
@@ -214,10 +213,9 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		Vector<Integer> highestValues = new Vector();
 		for(int i = 0; i < targets.length; ++i)
 		{
-			Target target = (Target) targets[i];
-			int targetRating = getTargetThreatRatingValue(target.getFactorId()).getNumericValue();
+			int targetRating = getHighestValueForTarget(targets[i].getId()).getNumericValue();
 			if (targetRating > 0)
-				highestValues.add(getHighestValueForTarget(targets[i].getId()).getNumericValue());
+				highestValues.add(targetRating);
 		}
 		
 		return getMajorityOfNumericValues(Utility.convertToIntArray(highestValues));
