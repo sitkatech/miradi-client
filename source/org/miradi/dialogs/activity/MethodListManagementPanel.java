@@ -34,7 +34,7 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 	public MethodListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
 		super(mainWindow, new MethodListTablePanel(mainWindow.getProject(), mainWindow.getActions(), nodeRef),
-				new TaskPropertiesPanel(mainWindow));
+				TaskPropertiesPanel.createWithoutVisibilityPanel(mainWindow));
 	}
 	
 	public String getSplitterDescription()
