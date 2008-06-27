@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
 #: ../org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:41
-#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
+#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:130
+#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-23 09:41-0400\n"
+"POT-Creation-Date: 2008-06-27 15:45-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../org/miradi/dialogs/goal/GoalPropertiesPanel.java:51
-#: ../org/miradi/diagram/renderers/FactorRenderer.java:164
+#: ../org/miradi/diagram/renderers/FactorRenderer.java:167
 msgid "Goal"
 msgstr ""
 
@@ -32,20 +32,48 @@ msgstr ""
 msgid "Tab|Goals"
 msgstr ""
 
-#: ../org/miradi/dialogs/stress/StressPropertiesPanel.java:42
-msgid "Stress"
+#: ../org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:50
+msgid "Tab|Group Box Link"
 msgstr ""
 
-#: ../org/miradi/dialogs/stress/StressPropertiesPanel.java:48
-msgid "Ratings"
+#: ../org/miradi/dialogs/groupboxLink/GroupBoxLinkPropertiesPanel.java:62
+msgid "Group Box Link Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/stress/StressPropertiesPanel.java:57
+#: ../org/miradi/dialogs/stress/StressPropertiesPanel.java:58
 msgid "Title|Stress Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/stress/StressListManagementPanel.java:61
+#: ../org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
+msgid "Title|Stress Comments"
+msgstr ""
+
+#: ../org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
+msgid "Stress"
+msgstr ""
+
+#: ../org/miradi/dialogs/stress/StressDetailsSubPanel.java:55
+msgid "Ratings"
+msgstr ""
+
+#: ../org/miradi/dialogs/stress/StressDetailsSubPanel.java:62
+msgid "Title|Stress Details"
+msgstr ""
+
+#: ../org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:48
+msgid "Title|Stress Visibility"
+msgstr ""
+
+#: ../org/miradi/dialogs/stress/StressListManagementPanel.java:60
 msgid "Tab|Stresses"
+msgstr ""
+
+#: ../org/miradi/dialogs/progressPercent/ProgressPercentManagementPanel.java:49
+msgid "Tab|Progress Percents"
+msgstr ""
+
+#: ../org/miradi/dialogs/progressPercent/ProgressPercentPropertiesPanel.java:43
+msgid "Title|Progress Percent Properties"
 msgstr ""
 
 #: ../org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
@@ -76,6 +104,11 @@ msgstr ""
 msgid "Label|Phone Numbers"
 msgstr ""
 
+#: ../org/miradi/dialogs/resource/ResourcePropertiesPanel.java:71
+#: ../org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
+msgid "Label|IM Address"
+msgstr ""
+
 #: ../org/miradi/dialogs/resource/ResourcePropertiesPanel.java:88
 msgid "Title|Resource Properties"
 msgstr ""
@@ -94,8 +127,12 @@ msgstr ""
 msgid "Title|Resources"
 msgstr ""
 
-#: ../org/miradi/dialogs/treetables/TreeTablePanel.java:87
+#: ../org/miradi/dialogs/treetables/TreeTablePanel.java:96
 msgid "Error restoring tree state"
+msgstr ""
+
+#: ../org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:48
+msgid "Title|Activity Visibility"
 msgstr ""
 
 #: ../org/miradi/dialogs/activity/ActivityListManagementPanel.java:60
@@ -163,7 +200,7 @@ msgstr ""
 
 #: ../org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
 #: ../org/miradi/dialogs/task/TaskDetailsPanel.java:52
-#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Progress Reports"
 msgstr ""
 
@@ -237,11 +274,11 @@ msgstr ""
 msgid "Title|Stress-Based Threat Rating"
 msgstr ""
 
-#: ../org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:152
+#: ../org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:154
 msgid "Threat Name"
 msgstr ""
 
-#: ../org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:154
+#: ../org/miradi/dialogs/threatstressrating/ThreatStressRatingTableModel.java:156
 msgid "Stress Name"
 msgstr ""
 
@@ -257,18 +294,18 @@ msgstr ""
 msgid "Title|Slide Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/task/TaskPropertiesInputPanel.java:53
+#: ../org/miradi/dialogs/task/TaskPropertiesInputPanel.java:62
 msgid ""
 "NOTE: The budget total for this task is the sum of the budget totals of its "
 "subtasks. The resource assignments below are not included in this value."
 msgstr ""
 
-#: ../org/miradi/dialogs/task/TaskPropertiesInputPanel.java:75
-#: ../org/miradi/dialogs/task/TaskPropertiesPanel.java:76
+#: ../org/miradi/dialogs/task/TaskPropertiesInputPanel.java:84
+#: ../org/miradi/dialogs/task/TaskPropertiesPanel.java:52
 msgid "Title|Task Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/task/TaskPropertiesPanel.java:48
+#: ../org/miradi/dialogs/task/TaskPropertiesPanel.java:42
 msgid ""
 "<html><em>HINT: To manage the details about who will do the work and when, "
 "go to the Planning View and choose Work Plan</em>"
@@ -294,22 +331,6 @@ msgstr ""
 msgid "Title|Organization Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:52
-msgid "Title|Strategy Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/ForecastSubPanel.java:64
-msgid "Cost/When/Who"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:37
-msgid "Page:"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:46
-msgid "Title|Diagram Properties"
-msgstr ""
-
 #: ../org/miradi/dialogs/diagram/LinkCreateDialog.java:63
 msgid "Title|Link Create Dialog"
 msgstr ""
@@ -331,7 +352,8 @@ msgid "Button|OK"
 msgstr ""
 
 #: ../org/miradi/dialogs/diagram/LinkCreateDialog.java:230
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:189
+#: ../org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:190
 #: ../org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
 #: ../org/miradi/database/DataUpgrader.java:72
 #: ../org/miradi/database/DataUpgrader.java:84
@@ -346,68 +368,12 @@ msgstr ""
 msgid "You must select one item in each of the two lists"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:41
-msgid "Group Box Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
-msgstr ""
-
 #: ../org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:41
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
-msgid "Strategy"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
-msgid "Priority"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-msgid "Progress"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: ../org/miradi/dialogs/diagram/IndicatorSubPanel.java:48
-msgid "Indicator"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
-msgid "Results Chains"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/FactorPropertiesPanel.java:353
-msgid "Viability Analysis Mode"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/FactorPropertiesPanel.java:433
-msgid "Factor Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:42
-msgid "Results Chain Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
-msgid "Conceptual Model Page Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/FactorSummaryPanel.java:117
-msgid "Summary"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
-msgid "Related Items"
-msgstr ""
-
-#: ../org/miradi/dialogs/diagram/ProjectScopePanel.java:43
-msgid "Title|Project Scope Properties"
+#: ../org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:43
+msgid "Diagram Link Color Panel"
 msgstr ""
 
 #: ../org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
@@ -415,12 +381,26 @@ msgstr ""
 msgid "Conceptual Model"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/DiagramPanel.java:161
+#: ../org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
+msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/DiagramPanel.java:155
 msgid "Title|Diagram Panel"
 msgstr ""
 
 #: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:67
 msgid "Font"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
+#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
+msgid "Priority"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:86
+#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
+msgid "Legacy TNC Ratings"
 msgstr ""
 
 #: ../org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
@@ -433,20 +413,91 @@ msgid ""
 "Share button"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:64
-msgid "Link Properties"
-msgstr ""
-
 #: ../org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:52
 msgid "Text Box Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/diagram/RelevancyStrategyPanel.java:41
-msgid "Strategy Relevancy Panel"
-msgstr ""
-
 #: ../org/miradi/dialogs/diagram/ForecastEstimateSubPanel.java:42
 msgid "Estimate Panel"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:52
+msgid "Title|Strategy Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/ForecastSubPanel.java:64
+msgid "Cost/When/Who"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:37
+msgid "Page:"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/DiagramPropertiesPanel.java:46
+msgid "Title|Diagram Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:41
+msgid "Group Box Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
+msgid "Strategy"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
+msgid "Progress"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
+#: ../org/miradi/dialogs/diagram/IndicatorSubPanel.java:48
+msgid "Indicator"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
+msgid "Results Chains"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:42
+msgid "Results Chain Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
+msgid "Conceptual Model Page Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorPropertiesPanel.java:353
+msgid "Viability Analysis Mode"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorPropertiesPanel.java:433
+msgid "Factor Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
+msgid "Related Items"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorSummaryPanel.java:117
+msgid "Summary"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/ProjectScopePanel.java:43
+msgid "Title|Project Scope Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:119
+msgid "Link Properties"
+msgstr ""
+
+#: ../org/miradi/dialogs/diagram/RelevancyStrategyPanel.java:41
+msgid "Strategy Relevancy Panel"
 msgstr ""
 
 #: ../org/miradi/dialogs/diagram/ForecastRollupSubPanel.java:43
@@ -556,7 +607,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr ""
 
-#: ../org/miradi/dialogs/planning/PlanningTreeManagementPanel.java:92
+#: ../org/miradi/dialogs/planning/PlanningTreeManagementPanel.java:90
 msgid "Tab|Planning"
 msgstr ""
 
@@ -585,6 +636,7 @@ msgid "Title|Objective Properties"
 msgstr ""
 
 #: ../org/miradi/dialogs/base/AbstractDialogWithClose.java:93
+#: ../org/miradi/utils/HtmlViewPanel.java:179
 msgid "Button|Close"
 msgstr ""
 
@@ -677,7 +729,7 @@ msgstr ""
 #: ../org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 #: ../org/miradi/views/reports/MiradiSaveContributorHelper.java:37
 #: ../org/miradi/views/noproject/CopyProject.java:61
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:58
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:60
 #: ../org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
 #: ../org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
@@ -703,18 +755,6 @@ msgstr ""
 msgid ""
 "Please select which item should be cloned into this factor, then press the "
 "Clone button"
-msgstr ""
-
-#: ../org/miradi/dialogs/progressPercent/ProgressPercentManagementPanel.java:49
-msgid "Tab|Progress Percents"
-msgstr ""
-
-#: ../org/miradi/dialogs/progressPercent/ProgressPercentPropertiesPanel.java:43
-msgid "Title|Progress Percent Properties"
-msgstr ""
-
-#: ../org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:50
-msgid "Tab|Group Box Link"
 msgstr ""
 
 #: ../org/miradi/main/menu/ProcessMenu1.java:31
@@ -805,33 +845,37 @@ msgstr ""
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:126
+#: ../org/miradi/main/menu/MainMenuBar.java:140
 msgid "MenuBar|File"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:189
+#: ../org/miradi/main/menu/MainMenuBar.java:203
 msgid "MenuBar|Edit"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:221
+#: ../org/miradi/main/menu/MainMenuBar.java:235
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:259
-#: ../org/miradi/diagram/DiagramContextMenuHandler.java:126
+#: ../org/miradi/main/menu/MainMenuBar.java:276
+#: ../org/miradi/diagram/DiagramContextMenuHandler.java:131
 msgid "Menu|Group Box"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:271
+#: ../org/miradi/main/menu/MainMenuBar.java:288
 msgid "MenuBar|View"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:298
+#: ../org/miradi/main/menu/MainMenuBar.java:315
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: ../org/miradi/main/menu/MainMenuBar.java:312
+#: ../org/miradi/main/menu/MainMenuBar.java:333
 msgid "MenuBar|Help"
+msgstr ""
+
+#: ../org/miradi/main/InitialSplashPanel.java:42
+msgid "Button|Continue"
 msgstr ""
 
 #: ../org/miradi/main/MainStatusBar.java:52
@@ -842,29 +886,29 @@ msgstr ""
 msgid "TT|Switch to a different view"
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:108
+#: ../org/miradi/main/EAM.java:127
 msgid "Warning"
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:298
+#: ../org/miradi/main/EAM.java:329
 msgid "An unexpected error occurred: "
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:308
+#: ../org/miradi/main/EAM.java:339
 msgid "Wintitle|Error"
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:313
+#: ../org/miradi/main/EAM.java:344
 msgid "Wintitle|Information"
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:349 ../org/miradi/main/EAM.java:350
+#: ../org/miradi/main/EAM.java:380 ../org/miradi/main/EAM.java:381
 #: ../org/miradi/views/noproject/DeleteProject.java:54
 #: ../org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:32
 msgid "Delete"
 msgstr ""
 
-#: ../org/miradi/main/EAM.java:349
+#: ../org/miradi/main/EAM.java:380
 msgid "Retain"
 msgstr ""
 
@@ -872,43 +916,47 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:247
+#: ../org/miradi/main/MainWindow.java:252
 msgid "Information"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:436
+#: ../org/miradi/main/MainWindow.java:441
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:441
+#: ../org/miradi/main/MainWindow.java:446
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:445
+#: ../org/miradi/main/MainWindow.java:450
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:449
+#: ../org/miradi/main/MainWindow.java:454
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:454
+#: ../org/miradi/main/MainWindow.java:459
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:580
+#: ../org/miradi/main/MainWindow.java:585
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 
-#: ../org/miradi/main/MainWindow.java:606
+#: ../org/miradi/main/MainWindow.java:611
 msgid "WARNING: Project end date before start date."
+msgstr ""
+
+#: ../org/miradi/main/MainWindow.java:947
+msgid "Unable to launch external web browser"
 msgstr ""
 
 #: ../org/miradi/dialogfields/ObjectTextInputField.java:131
@@ -1168,6 +1216,11 @@ msgstr ""
 msgid "Protected Area Information (If Relevant)"
 msgstr ""
 
+#: ../org/miradi/views/summary/SummaryProjectPanel.java:56
+#: ../org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+msgid "Project"
+msgstr ""
+
 #: ../org/miradi/views/summary/SummaryPlanningPanel.java:42
 msgid "Workplan"
 msgstr ""
@@ -1183,11 +1236,6 @@ msgstr ""
 
 #: ../org/miradi/views/summary/ScopeAndVisionPanel.java:44
 msgid "Scope and Vision"
-msgstr ""
-
-#: ../org/miradi/views/summary/SummaryProjectPanel.java:56
-#: ../org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
-msgid "Project"
 msgstr ""
 
 #: ../org/miradi/views/summary/SummaryLocationPanel.java:54
@@ -1270,14 +1318,6 @@ msgstr ""
 msgid "Label|WCS"
 msgstr ""
 
-#: ../org/miradi/views/summary/BiodiversityPanel.java:37
-msgid "Label|Biodiversity Area (hectares)"
-msgstr ""
-
-#: ../org/miradi/views/summary/BiodiversityPanel.java:47
-msgid "Biodiversity Features"
-msgstr ""
-
 #: ../org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:42
 msgid "Label|Project Dates"
 msgstr ""
@@ -1288,6 +1328,14 @@ msgstr ""
 
 #: ../org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
 msgid "Planning: Work Plan"
+msgstr ""
+
+#: ../org/miradi/views/summary/BiodiversityPanel.java:37
+msgid "Label|Biodiversity Area (hectares)"
+msgstr ""
+
+#: ../org/miradi/views/summary/BiodiversityPanel.java:47
+msgid "Biodiversity Features"
 msgstr ""
 
 #: ../org/miradi/views/summary/SummaryScopeTabPanel.java:57
@@ -1335,7 +1383,7 @@ msgid "Error while generating a report"
 msgstr ""
 
 #: ../org/miradi/views/noproject/CopyProject.java:39
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:38
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:40
 #: ../org/miradi/views/noproject/DeleteProject.java:37
 msgid "Project does not exist: "
 msgstr ""
@@ -1358,22 +1406,35 @@ msgstr ""
 msgid "Copy Project"
 msgstr ""
 
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:46
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:48
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
 msgstr ""
 
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:56
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:58
 msgid "Are you sure you want to rename project: "
 msgstr ""
 
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:58
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:60
 msgid "Rename"
 msgstr ""
 
-#: ../org/miradi/views/noproject/RenameProjectDoer.java:59
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:61
 msgid "Rename Project"
+msgstr ""
+
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:99
+msgid "A project or file by this name already exists: "
+msgstr ""
+
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:105
+#: ../org/miradi/project/Project.java:156
+msgid "Invalid project name:"
+msgstr ""
+
+#: ../org/miradi/views/noproject/RenameProjectDoer.java:142
+msgid "Enter New Project Name"
 msgstr ""
 
 #: ../org/miradi/views/noproject/DeleteProject.java:45
@@ -1394,20 +1455,37 @@ msgstr ""
 msgid "Delete Project"
 msgstr ""
 
+#: ../org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
+#: ../org/miradi/wizard/noproject/NoProjectWizardStep.java:169
+msgid "Delete..."
+msgstr ""
+
+#: ../org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:47
+msgid "Are you sure?"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
+msgid "Button|Ok"
+msgstr ""
+
 #: ../org/miradi/views/umbrella/doers/EditMethodsDoer.java:32
 msgid "Edit Methods"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/doers/ExportTableDoer.java:59
+#: ../org/miradi/views/umbrella/doers/ExportTableDoer.java:58
 msgid "Data was exported as tab delimited."
 msgstr ""
 
-#: ../org/miradi/views/umbrella/doers/ExportTableDoer.java:64
+#: ../org/miradi/views/umbrella/doers/ExportTableDoer.java:63
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
 #: ../org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
+msgid "Title|View..."
 msgstr ""
 
 #: ../org/miradi/views/umbrella/doers/CopyProjectToDoer.java:46
@@ -1418,44 +1496,68 @@ msgstr ""
 msgid "Button|Copy To"
 msgstr ""
 
+#: ../org/miradi/views/umbrella/EditIndicatorRelevancyListDoer.java:36
+msgid "Choose Relevant Indicator(s)"
+msgstr ""
+
 #: ../org/miradi/views/umbrella/HelpAboutPanel.java:33
 msgid "Title|About Miradi"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:73
-msgid "Label|Existing Projects:"
+#: ../org/miradi/views/umbrella/Undo.java:63
+msgid "Error during undo"
 msgstr ""
 
 #: ../org/miradi/views/umbrella/CreateProjectDialog.java:74
+msgid "Label|Existing Projects:"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:75
 msgid "New Project Filename: "
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:83
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:84
 msgid "Title|Create New Project"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:217
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:218
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:228
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:229
 msgid "Cannot overwrite an open project"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:235
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:236
 msgid "File exists: Cannot overwrite a non project directory"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:240
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:241
 #: ../org/miradi/utils/EAMFileSaveChooser.java:92
 msgid "Title|Overwrite existing file?"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/CreateProjectDialog.java:241
+#: ../org/miradi/views/umbrella/CreateProjectDialog.java:242
 #: ../org/miradi/utils/EAMFileSaveChooser.java:97
 msgid "This will replace the existing file."
+msgstr ""
+
+#: ../org/miradi/views/umbrella/ImportCpmzDoer.java:174
+msgid "Import"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
+#: ../org/miradi/actions/ActionCreateActivityProgressReport.java:35
+#: ../org/miradi/actions/ActionCreateStrategyProgressReport.java:35
+msgid "Action|Manage|Create Progress Report"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:41
+#: ../org/miradi/actions/ActionCreateActivityProgressReport.java:40
+#: ../org/miradi/actions/ActionCreateStrategyProgressReport.java:40
+msgid "TT|Create a new Progress Report"
 msgstr ""
 
 #: ../org/miradi/views/umbrella/DeleteActivity.java:69
@@ -1482,21 +1584,32 @@ msgstr ""
 msgid "Choose Relevant Strategy(s)"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ExportCpmzDoer.java:74
-#: ../org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:64
-msgid "Error Export To Miradi Zip: Possible Write Protected: "
+#: ../org/miradi/views/umbrella/Definition.java:58
+msgid "(Definition Not Available)"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ImportProjectDoer.java:53
+#: ../org/miradi/views/umbrella/Redo.java:60
+msgid "Error during redo"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/EamProjectFileFilter.java:45
+msgid "FileFilter|Project Files (*.eam)"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/ImportProjectDoer.java:54
 msgid "Import Project"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ImportProjectDoer.java:75
+#: ../org/miradi/views/umbrella/ImportProjectDoer.java:71
 #: ../org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
 msgid "Import Completed"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ImportProjectDoer.java:79
+#: ../org/miradi/views/umbrella/ImportProjectDoer.java:101
+msgid "<html>Import failed: <br><p> %s </p></html>"
+msgstr ""
+
+#: ../org/miradi/views/umbrella/ImportProjectDoer.java:122
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -1505,16 +1618,12 @@ msgid ""
 "an older (supported) format."
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ImportProjectDoer.java:97
-msgid "<html>Import failed: <br><p> %s </p></html>"
+#: ../org/miradi/views/umbrella/AbstractFileSaverDoer.java:78
+msgid "Error Occurred please try saving under different name."
 msgstr ""
 
-#: ../org/miradi/views/umbrella/NewProject.java:35
-msgid "Button|Create"
-msgstr ""
-
-#: ../org/miradi/views/umbrella/AboutDoer.java:59
-msgid "Continue"
+#: ../org/miradi/views/umbrella/ExportCpmzDoer.java:151
+msgid "Exported file does not validate."
 msgstr ""
 
 #: ../org/miradi/views/umbrella/XmlExporter.java:44
@@ -1528,66 +1637,56 @@ msgid ""
 "of Miradi will export the data in different formats."
 msgstr ""
 
-#: ../org/miradi/views/umbrella/XmlExporter.java:51
+#: ../org/miradi/views/umbrella/XmlExporter.java:52
 msgid "Export"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/XmlExporter.java:66
+#: ../org/miradi/views/umbrella/XmlExporter.java:71
 msgid "Export complete"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/XmlExporter.java:71
+#: ../org/miradi/views/umbrella/XmlExporter.java:76
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
-"to write to it."
+"to write to it, or you are using invalid characters in the file name."
 msgstr ""
 
-#: ../org/miradi/views/umbrella/EditIndicatorRelevancyListDoer.java:36
-msgid "Choose Relevant Indicator(s)"
+#: ../org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:64
+msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 
-#: ../org/miradi/views/umbrella/Undo.java:63
-msgid "Error during undo"
+#: ../org/miradi/views/diagram/doers/EditProgressPercentDoer.java:35
+msgid "Edit Progress Percents"
 msgstr ""
 
-#: ../org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
-#: ../org/miradi/actions/ActionCreateActivityProgressReport.java:35
-#: ../org/miradi/actions/ActionCreateStrategyProgressReport.java:35
-msgid "Action|Manage|Create Progress Report"
-msgstr ""
-
-#: ../org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:41
-#: ../org/miradi/actions/ActionCreateActivityProgressReport.java:40
-#: ../org/miradi/actions/ActionCreateStrategyProgressReport.java:40
-msgid "TT|Create a new Progress Report"
-msgstr ""
-
-#: ../org/miradi/views/umbrella/Redo.java:60
-msgid "Error during redo"
-msgstr ""
-
-#: ../org/miradi/views/umbrella/EamProjectFileFilter.java:45
-msgid "FileFilter|Project Files (*.eam)"
-msgstr ""
-
-#: ../org/miradi/views/diagram/doers/EditStrategyProgressReportDoer.java:35
-#: ../org/miradi/views/diagram/doers/EditIndicatorProgressReportDoer.java:35
-#: ../org/miradi/views/diagram/doers/EditActivityProgressReportDoer.java:35
+#: ../org/miradi/views/diagram/doers/EditIndicatorProgressReportDoer.java:31
+#: ../org/miradi/views/diagram/doers/EditStrategyProgressReportDoer.java:31
+#: ../org/miradi/views/diagram/doers/EditActivityProgressReportDoer.java:31
 msgid "Edit Progress Reports"
-msgstr ""
-
-#: ../org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
-msgid "Label|New Group Box"
-msgstr ""
-
-#: ../org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
-#: ../org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
-#: ../org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
-msgid "Are you sure you want to delete this Progress Report?"
 msgstr ""
 
 #: ../org/miradi/views/diagram/doers/CloneStressDoer.java:33
 msgid "Choose Stress to Clone"
+msgstr ""
+
+#: ../org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
+#: ../org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
+#: ../org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
+msgid "Are you sure you want to delete this Progress Report?"
+msgstr ""
+
+#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:95
+msgid "Paste Content..."
+msgstr ""
+
+#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:96
+msgid ""
+"This will replace all the selected factor's contents with the contents of "
+"the factor that was cut/copied earlier. Are you sure you want to do this?"
+msgstr ""
+
+#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:189
+msgid "Button|Paste Contents"
 msgstr ""
 
 #: ../org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:57
@@ -1606,29 +1705,15 @@ msgstr ""
 msgid "Share Activity"
 msgstr ""
 
-#: ../org/miradi/views/diagram/doers/EditProgressPercentDoer.java:35
-msgid "Edit Progress Percents"
+#: ../org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
+msgid "Label|New Group Box"
 msgstr ""
 
 #: ../org/miradi/views/diagram/doers/DeleteObjectiveProgressPercentDoer.java:47
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
-#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:95
-msgid "Paste Content..."
-msgstr ""
-
-#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:96
-msgid ""
-"This will replace all the selected factor's contents with the contents of "
-"the factor that was cut/copied earlier. Are you sure you want to do this?"
-msgstr ""
-
-#: ../org/miradi/views/diagram/doers/PasteFactorContentDoer.java:189
-msgid "Button|Paste Contents"
-msgstr ""
-
-#: ../org/miradi/views/diagram/DeleteSelectedItemDoer.java:248
+#: ../org/miradi/views/diagram/DeleteSelectedItemDoer.java:240
 msgid ""
 "The link(s) will be deleted from all Conceptual Model pages and Results "
 "Chains, not just this one. "
@@ -1639,7 +1724,7 @@ msgid "[Page "
 msgstr ""
 
 #: ../org/miradi/views/diagram/DiagramSplitPane.java:317
-#: ../org/miradi/diagram/DiagramModel.java:856
+#: ../org/miradi/diagram/DiagramModel.java:901
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -1660,16 +1745,16 @@ msgstr ""
 msgid "Choose Goal to Clone"
 msgstr ""
 
-#: ../org/miradi/views/diagram/LinkCreator.java:96
+#: ../org/miradi/views/diagram/LinkCreator.java:102
 msgid "Can't link an item to itself"
 msgstr ""
 
-#: ../org/miradi/views/diagram/LinkCreator.java:97
-#: ../org/miradi/views/diagram/LinkCreator.java:106
+#: ../org/miradi/views/diagram/LinkCreator.java:103
+#: ../org/miradi/views/diagram/LinkCreator.java:112
 msgid "Can't Create Link"
 msgstr ""
 
-#: ../org/miradi/views/diagram/LinkCreator.java:105
+#: ../org/miradi/views/diagram/LinkCreator.java:111
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
@@ -1701,50 +1786,11 @@ msgstr ""
 msgid "Choose Indicator to Clone"
 msgstr ""
 
-#: ../org/miradi/views/diagram/Paste.java:50
-msgid ""
-"<HTML>These factors cannot be pasted as shared into this diagram."
-"<BR><BR>Contributing Factors and Direct Threats cannot be pasted as shared "
-"into a Results Chain.<BR>Intermediate Results and Threat Reduction Results "
-"cannot be pasted as shared into a Conceptual Model page.</HTML>"
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:58
-msgid ""
-"<HTML>When pasting between projects, can't paste from CM to RC or vice "
-"versa</HTML>"
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:89
-msgid "Paste As..."
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:90
-msgid ""
-"Do you want to paste full new copies of the factors, or share the existing "
-"factors? If you paste new copies, any changes will not affect the originals. "
-"If you share, any changes will automatically affect all the diagrams."
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:124
-msgid ""
-"Some of the data could not be moved to this project because it refers to "
-"other data that only exists in the old project"
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:145
-msgid "Button|As Copy"
-msgstr ""
-
-#: ../org/miradi/views/diagram/Paste.java:146
-msgid "Button|Shared"
-msgstr ""
-
-#: ../org/miradi/views/diagram/DiagramView.java:379
+#: ../org/miradi/views/diagram/DiagramView.java:411
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: ../org/miradi/views/diagram/DiagramView.java:906
+#: ../org/miradi/views/diagram/DiagramView.java:942
 msgid "Title|Factor Properties"
 msgstr ""
 
@@ -1760,12 +1806,51 @@ msgstr ""
 msgid "Text|This will not be a Direct Threat until it is linked to a Target"
 msgstr ""
 
-#: ../org/miradi/views/diagram/InsertTextBoxDoer.java:46
-msgid "Label|New Text Box"
+#: ../org/miradi/views/diagram/PasteDoer.java:55
+msgid ""
+"<HTML>These factors cannot be pasted as shared into this diagram."
+"<BR><BR>Contributing Factors and Direct Threats cannot be pasted as shared "
+"into a Results Chain.<BR>Intermediate Results and Threat Reduction Results "
+"cannot be pasted as shared into a Conceptual Model page.</HTML>"
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:63
+msgid ""
+"<HTML>When pasting between projects, can't paste from CM to RC or vice "
+"versa</HTML>"
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:100
+msgid "Paste As..."
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:101
+msgid ""
+"Do you want to paste full new copies of the factors, or share the existing "
+"factors? If you paste new copies, any changes will not affect the originals. "
+"If you share, any changes will automatically affect all the diagrams."
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:135
+msgid ""
+"Some of the data could not be moved to this project because it refers to "
+"other data that only exists in the old project"
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:183
+msgid "Button|As Copy"
+msgstr ""
+
+#: ../org/miradi/views/diagram/PasteDoer.java:184
+msgid "Button|Shared"
 msgstr ""
 
 #: ../org/miradi/views/diagram/LayerPanel.java:50
 msgid "Layers"
+msgstr ""
+
+#: ../org/miradi/views/diagram/InsertTextBoxDoer.java:46
+msgid "Label|New Text Box"
 msgstr ""
 
 #: ../org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
@@ -1800,7 +1885,7 @@ msgstr ""
 msgid "Resources cannot be added to this task because it already has subtasks."
 msgstr ""
 
-#: ../org/miradi/views/threatmatrix/ThreatMatrixToolBar.java:111
+#: ../org/miradi/views/threatmatrix/ThreatMatrixToolBar.java:112
 msgid "Error occurred while switching threat rating mode."
 msgstr ""
 
@@ -2260,16 +2345,16 @@ msgstr ""
 msgid "TT|Switch to the Monitoring Plan View"
 msgstr ""
 
-#: ../org/miradi/actions/ActionPreferences.java:35
-msgid "Action|Preferences"
-msgstr ""
-
 #: ../org/miradi/actions/ActionHideCellRatings.java:34
 msgid "Action|Hide Ratings in Cell"
 msgstr ""
 
 #: ../org/miradi/actions/ActionDeleteConceptualModel.java:35
 msgid "Action|Delete Conceptual Model Page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionPreferences.java:35
+msgid "Action|Preferences"
 msgstr ""
 
 #: ../org/miradi/actions/ActionTeamCreateMember.java:35
@@ -2282,6 +2367,14 @@ msgstr ""
 
 #: ../org/miradi/actions/ActionHelpAdaptiveManagement.java:34
 msgid "Action|Adaptive Management"
+msgstr ""
+
+#: ../org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
+msgid "Action|Manage|Create Progress Percent"
+msgstr ""
+
+#: ../org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
+msgid "TT|Create a new Progress Percent"
 msgstr ""
 
 #: ../org/miradi/actions/ActionClose.java:35
@@ -2340,6 +2433,14 @@ msgstr ""
 
 #: ../org/miradi/actions/ActionGroupBoxRemoveFactor.java:40
 msgid "TT|Remove Factor(s) from Group Box"
+msgstr ""
+
+#: ../org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:34
+msgid "Action|View..."
+msgstr ""
+
+#: ../org/miradi/actions/ActionViewLegacyTncStrategtyRanking.java:39
+msgid "TT|View Legacy TNC Strategy Ranking."
 msgstr ""
 
 #: ../org/miradi/actions/ActionDeleteKeyEcologicalAttributeMeasurement.java:35
@@ -2406,6 +2507,14 @@ msgstr ""
 msgid "TT|Import accounting codes"
 msgstr ""
 
+#: ../org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
+msgid "Action|Manage|Delete Progress Percent"
+msgstr ""
+
+#: ../org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
+msgid "TT|Delete Progress Percent"
+msgstr ""
+
 #: ../org/miradi/actions/ActionDeleteMethod.java:35
 msgid "Action|Manage|Delete Method"
 msgstr ""
@@ -2422,20 +2531,20 @@ msgstr ""
 msgid "TT|Create a copy of this project under a different name"
 msgstr ""
 
-#: ../org/miradi/actions/ActionRenameConceptualModel.java:34
-msgid "Action|Rename Conceptual Model Page"
-msgstr ""
-
-#: ../org/miradi/actions/ActionRenameConceptualModel.java:39
-msgid "TT|Rename this Conceptual Model Page"
-msgstr ""
-
 #: ../org/miradi/actions/ActionCreateGoal.java:35
 msgid "Action|Manage|Create Goal"
 msgstr ""
 
 #: ../org/miradi/actions/ActionCreateGoal.java:40
 msgid "TT|Create a Goal"
+msgstr ""
+
+#: ../org/miradi/actions/ActionRenameConceptualModel.java:34
+msgid "Action|Rename Conceptual Model Page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionRenameConceptualModel.java:39
+msgid "TT|Rename this Conceptual Model Page"
 msgstr ""
 
 #: ../org/miradi/actions/ActionInsertDirectThreat.java:37
@@ -2570,16 +2679,16 @@ msgstr ""
 msgid "Action|Exit"
 msgstr ""
 
-#: ../org/miradi/actions/ActionAboutCMP.java:34
-msgid "Action|About the CMP"
-msgstr ""
-
 #: ../org/miradi/actions/ActionDeleteResource.java:35
 msgid "Action|Manage|Delete Resource"
 msgstr ""
 
 #: ../org/miradi/actions/ActionDeleteResource.java:40
 msgid "TT|Delete the selected Resource (person, team, etc)"
+msgstr ""
+
+#: ../org/miradi/actions/ActionAboutCMP.java:34
+msgid "Action|About the CMP"
 msgstr ""
 
 #: ../org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
@@ -2686,6 +2795,7 @@ msgid "TT|Remove resource from list"
 msgstr ""
 
 #: ../org/miradi/actions/ActionDelete.java:35
+#: ../org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:35
 msgid "Action|Delete"
 msgstr ""
 
@@ -2731,11 +2841,11 @@ msgid "Action|Examples"
 msgstr ""
 
 #: ../org/miradi/actions/ActionExportConProXml.java:34
-msgid "Action|Export ConPro XML File"
+msgid "Action|Export|ConPro (CPMZ) File"
 msgstr ""
 
 #: ../org/miradi/actions/ActionExportConProXml.java:39
-msgid "TT|Export ConPro XML File"
+msgid "TT|Export a file that can be imported by ConPro"
 msgstr ""
 
 #: ../org/miradi/actions/ActionSlideShowViewer.java:34
@@ -2746,12 +2856,37 @@ msgstr ""
 msgid "Action|Delete Results Chain"
 msgstr ""
 
+#: ../org/miradi/actions/ActionHideStressBubble.java:34
+msgid "Action|Hide Stress on this page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionHideStressBubble.java:39
+msgid ""
+"TT|Hide this Stress so it no longer appears on this Conceptual Model page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionCreateOutgoingJunction.java:34
+msgid "Action|Create Outgoing Junction"
+msgstr ""
+
+#: ../org/miradi/actions/ActionCreateOutgoingJunction.java:39
+msgid "TT|Create an Outgoing Junction Bend Point"
+msgstr ""
+
 #: ../org/miradi/actions/ActionShowFullModelMode.java:39
 msgid "Action|Show Full Diagram"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShowFullModelMode.java:44
 msgid "TT|Show the full conceptual model page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionEditProgressPercent.java:34
+msgid "Action|Edit Progress Percents..."
+msgstr ""
+
+#: ../org/miradi/actions/ActionEditProgressPercent.java:39
+msgid "TT|Edit the list of progress percents for this objective."
 msgstr ""
 
 #: ../org/miradi/actions/ActionEditEstimatedResource.java:34
@@ -2774,6 +2909,14 @@ msgstr ""
 msgid "Action|ContextSensitive|Help"
 msgstr ""
 
+#: ../org/miradi/actions/ActionCreateIncomingJunction.java:34
+msgid "Action|Create Incoming Junction"
+msgstr ""
+
+#: ../org/miradi/actions/ActionCreateIncomingJunction.java:39
+msgid "TT|Create an Incoming Junction Bend Point"
+msgstr ""
+
 #: ../org/miradi/actions/ActionPasteWithoutLinks.java:42
 msgid "Action|Paste Without Links"
 msgstr ""
@@ -2788,6 +2931,14 @@ msgstr ""
 
 #: ../org/miradi/actions/ActionShowSelectedChainMode.java:44
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
+msgstr ""
+
+#: ../org/miradi/actions/ActionHideActivityBubble.java:34
+msgid "Action|Hide Activity on this page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionHideActivityBubble.java:39
+msgid "TT|Hide this Activity so it no longer appears on this Results Chain"
 msgstr ""
 
 #: ../org/miradi/actions/ActionExportBudgetTableTree.java:34
@@ -2814,6 +2965,22 @@ msgstr ""
 msgid "TT|Create an Accounting Code"
 msgstr ""
 
+#: ../org/miradi/actions/ActionShowActivityBubble.java:34
+msgid "Action|Show Activity on this page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionShowActivityBubble.java:39
+msgid "TT|Show this Activity so it appears on this Results Chain"
+msgstr ""
+
+#: ../org/miradi/actions/ActionActivityMoveDown.java:35
+msgid "Action|Table|Move Activity Down"
+msgstr ""
+
+#: ../org/miradi/actions/ActionActivityMoveDown.java:40
+msgid "TT|Move the selected Activity down"
+msgstr ""
+
 #: ../org/miradi/actions/ActionZoomIn.java:34
 msgid "Action|Zoom In"
 msgstr ""
@@ -2831,24 +2998,18 @@ msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShareActivity.java:35
+#: ../org/miradi/actions/ActionTreeShareActivity.java:35
 msgid "Action|Share Activity"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShareActivity.java:40
+#: ../org/miradi/actions/ActionTreeShareActivity.java:40
 msgid "TT|Share an existing Activity into this Strategy"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShowConceptualModel.java:35
 #: ../org/miradi/actions/ActionShowConceptualModel.java:40
 msgid "Action|Show Conceptual Model"
-msgstr ""
-
-#: ../org/miradi/actions/ActionNewProject.java:34
-msgid "Action|New Project"
-msgstr ""
-
-#: ../org/miradi/actions/ActionNewProject.java:39
-msgid "TT|Create a new project"
 msgstr ""
 
 #: ../org/miradi/actions/ActionDiagramProperties.java:34
@@ -3000,20 +3161,20 @@ msgstr ""
 msgid "TT|Cut the selection to the clipboard"
 msgstr ""
 
-#: ../org/miradi/actions/ActionRenameResultsChain.java:34
-msgid "Action|Rename Results Chain"
-msgstr ""
-
-#: ../org/miradi/actions/ActionRenameResultsChain.java:39
-msgid "TT|Rename this Results Chain"
-msgstr ""
-
 #: ../org/miradi/actions/ActionAssignResource.java:34
 msgid "Action|Assign Resource"
 msgstr ""
 
 #: ../org/miradi/actions/ActionAssignResource.java:39
 msgid "TT|Assign a resource to this task"
+msgstr ""
+
+#: ../org/miradi/actions/ActionRenameResultsChain.java:34
+msgid "Action|Rename Results Chain"
+msgstr ""
+
+#: ../org/miradi/actions/ActionRenameResultsChain.java:39
+msgid "TT|Rename this Results Chain"
 msgstr ""
 
 #: ../org/miradi/actions/ActionResourceListAdd.java:34
@@ -3040,6 +3201,14 @@ msgstr ""
 msgid "TT|Create a Funding Source"
 msgstr ""
 
+#: ../org/miradi/actions/ActionShowStressBubble.java:34
+msgid "Action|Show Stress on this page"
+msgstr ""
+
+#: ../org/miradi/actions/ActionShowStressBubble.java:39
+msgid "TT|Show this Stress so it appears on this Conceptual Model page"
+msgstr ""
+
 #: ../org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
 msgstr ""
@@ -3049,10 +3218,12 @@ msgid "Action|Reports - demo"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShareMethod.java:35
+#: ../org/miradi/actions/ActionTreeShareMethod.java:35
 msgid "Action|Share Method"
 msgstr ""
 
 #: ../org/miradi/actions/ActionShareMethod.java:40
+#: ../org/miradi/actions/ActionTreeShareMethod.java:40
 msgid "TT|Share an existing Method into this Indicator"
 msgstr ""
 
@@ -3084,6 +3255,14 @@ msgstr ""
 #: ../org/miradi/actions/ActionShowResultsChain.java:36
 #: ../org/miradi/actions/ActionShowResultsChain.java:41
 msgid "Action|Show Results Chain"
+msgstr ""
+
+#: ../org/miradi/actions/ActionPasteFactorContent.java:42
+msgid "Action|Paste Content"
+msgstr ""
+
+#: ../org/miradi/actions/ActionPasteFactorContent.java:47
+msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr ""
 
 #: ../org/miradi/actions/ActionCopy.java:34
@@ -3127,8 +3306,20 @@ msgstr ""
 msgid "Action|Delete Item"
 msgstr ""
 
+#: ../org/miradi/actions/ActionActivityMoveUp.java:35
+msgid "Action|Table|Move Activity Up"
+msgstr ""
+
+#: ../org/miradi/actions/ActionActivityMoveUp.java:40
+msgid "TT|Move the selected Activity up"
+msgstr ""
+
 #: ../org/miradi/actions/ActionCreateResultsChain.java:35
 msgid "Action|Create Results Chain"
+msgstr ""
+
+#: ../org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:40
+msgid "TT|Delete Legacy TNC Strategy Ranking."
 msgstr ""
 
 #: ../org/miradi/actions/ActionInsertContributingFactor.java:37
@@ -3303,36 +3494,8 @@ msgstr ""
 msgid "TT|Create an Activity for the selected Strategy"
 msgstr ""
 
-#: ../org/miradi/actions/ActionCreateObjectiveProgressPercent.java:35
-msgid "Action|Manage|Create Progress Percent"
-msgstr ""
-
-#: ../org/miradi/actions/ActionCreateObjectiveProgressPercent.java:40
-msgid "TT|Create a new Progress Percent"
-msgstr ""
-
-#: ../org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
-msgid "Action|Manage|Delete Progress Percent"
-msgstr ""
-
-#: ../org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:40
-msgid "TT|Delete Progress Percent"
-msgstr ""
-
-#: ../org/miradi/actions/ActionEditProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr ""
-
-#: ../org/miradi/actions/ActionEditProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr ""
-
-#: ../org/miradi/actions/ActionPasteFactorContent.java:42
-msgid "Action|Paste Content"
-msgstr ""
-
-#: ../org/miradi/actions/ActionPasteFactorContent.java:47
-msgid "TT|Paste the Single Factor's content from the clipboard"
+#: ../org/miradi/actions/ActionShowCurrentWizardFileName.java:34
+msgid "Action|Show Current Wizard Name"
 msgstr ""
 
 #: ../org/miradi/utils/SVGFileFilter.java:44
@@ -3355,8 +3518,16 @@ msgstr ""
 msgid "FileFilter|MTE (*.mte)"
 msgstr ""
 
+#: ../org/miradi/utils/DefaultHyperlinkHandler.java:50
+msgid "Title|Information"
+msgstr ""
+
 #: ../org/miradi/utils/XLSFileFilter.java:40
 msgid "FileFilter|XLS (*.xls)"
+msgstr ""
+
+#: ../org/miradi/utils/CpmzFileFilter.java:28
+msgid "FileFilter|Conpro Miradi Zip (*"
 msgstr ""
 
 #: ../org/miradi/utils/TabDelimitedFileFilter.java:40
@@ -3391,20 +3562,17 @@ msgstr ""
 msgid "Save %s"
 msgstr ""
 
+#: ../org/miradi/utils/EAMFileSaveChooser.java:106
+msgid "File name must contain only alpha numeric and/or '_' characters."
+msgstr ""
+
+#: ../org/miradi/utils/EAMFileSaveChooser.java:107
+msgid ""
+"File could not be created, this can be due to bad characters in file name."
+msgstr ""
+
 #: ../org/miradi/utils/MPZFileFilter.java:28
 msgid "FileFilter|Miradi Project Zip (*.mpz)"
-msgstr ""
-
-#: ../org/miradi/utils/HtmlViewPanel.java:76
-msgid "Close"
-msgstr ""
-
-#: ../org/miradi/utils/HtmlViewPanel.java:82
-msgid "Title|"
-msgstr ""
-
-#: ../org/miradi/utils/CpmzFileFilter.java:28
-msgid "FileFilter|Conpro Miradi Zip (*"
 msgstr ""
 
 #: ../org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
@@ -3479,10 +3647,6 @@ msgstr ""
 msgid "Export to Miradi Zip..."
 msgstr ""
 
-#: ../org/miradi/wizard/noproject/NoProjectWizardStep.java:169
-msgid "Delete..."
-msgstr ""
-
 #: ../org/miradi/wizard/noproject/WelcomeImportStep.java:70
 msgid ""
 "<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
@@ -3508,37 +3672,31 @@ msgstr ""
 msgid "Import Miradi Project"
 msgstr ""
 
-#: ../org/miradi/wizard/noproject/NoProjectOverviewStep.java:86
+#: ../org/miradi/wizard/noproject/NoProjectOverviewStep.java:87
 msgid ""
 "<div class='WizardText'>To <strong>start a new project</strong> on this "
 "computer, choose:"
 msgstr ""
 
-#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:72
+#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:74
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
 "class='toolbarbutton'>&lt;Next&gt;</code> button."
 msgstr ""
 
-#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:78
-msgid ""
-"<div class='WizardText'><table><tr><td>New Project Filename: </td><td><input "
-"type='text' name='NewProjectName' value=''></input></td></tr></table>"
-msgstr ""
-
-#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:84
+#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:83
 msgid ""
 "<div class='WizardText'><p class='hint'>NOTE: Project filenames can contain "
 "letters, numbers, spaces, periods, and dashes.</p>"
 msgstr ""
 
-#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:149
-msgid "Create Failed:"
+#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:94
+msgid "New Project Filename:"
 msgstr ""
 
-#: ../org/miradi/wizard/targetviability/TargetViabilityMethodChoiceStep.java:47
-msgid "Introduction"
+#: ../org/miradi/wizard/noproject/WelcomeCreateStep.java:149
+msgid "Create Failed:"
 msgstr ""
 
 #: ../org/miradi/wizard/targetviability/TargetViability3Step.java:47
@@ -3569,6 +3727,10 @@ msgstr ""
 msgid "3) Complete links in the chain "
 msgstr ""
 
+#: ../org/miradi/wizard/diagram/DiagramWizardResultsChainStep.java:47
+msgid "1) Select strategy to focus on "
+msgstr ""
+
 #: ../org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:47
 msgid "2) Develop draft strategies"
 msgstr ""
@@ -3577,28 +3739,8 @@ msgstr ""
 msgid "Refine vision statement"
 msgstr ""
 
-#: ../org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
-msgid " 2) Connect threat to relevant targets"
-msgstr ""
-
-#: ../org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
-msgid "Simple viability"
-msgstr ""
-
-#: ../org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
-msgid "4) Review the criteria for a good results chain"
-msgstr ""
-
-#: ../org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
-msgid "2) Review and modify targets"
-msgstr ""
-
-#: ../org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
-msgid "2) Construct initial results chain "
-msgstr ""
-
-#: ../org/miradi/wizard/diagram/DiagramWizardResultsChainStep.java:47
-msgid "1) Select strategy to focus on "
+#: ../org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:47
+msgid "Introduction"
 msgstr ""
 
 #: ../org/miradi/wizard/diagram/SelectChainStep.java:47
@@ -3609,22 +3751,42 @@ msgstr ""
 msgid "1) Insert direct threat"
 msgstr ""
 
+#: ../org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
+msgid " 2) Connect threat to relevant targets"
+msgstr ""
+
 #: ../org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:48
 msgid "1) Identify initial list of targets"
+msgstr ""
+
+#: ../org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
+msgid "Simple viability"
+msgstr ""
+
+#: ../org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
+msgid "2) Review and modify targets"
+msgstr ""
+
+#: ../org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
+msgid "4) Review the criteria for a good results chain"
+msgstr ""
+
+#: ../org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
+msgid "2) Construct initial results chain "
+msgstr ""
+
+#: ../org/miradi/wizard/planning/BudgetWizardDemo.java:48
+msgid "3) Reconcile actual expenditures"
 msgstr ""
 
 #: ../org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:47
 msgid "1) List accounting codes and funding sources"
 msgstr ""
 
-#: ../org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
-msgid "2) Add budget detail to workplan "
-msgstr ""
-
 #: ../org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
-#: ../org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:42
-#: ../org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
 #: ../org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
+#: ../org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
+#: ../org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:42
 msgid "Detail activities/methods, tasks, and responsibilities"
 msgstr ""
 
@@ -3632,24 +3794,28 @@ msgstr ""
 msgid "2) Methods"
 msgstr ""
 
-#: ../org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:47
-msgid "4) Assign resources"
-msgstr ""
-
-#: ../org/miradi/wizard/planning/BudgetWizardDemo.java:48
-msgid "3) Reconcile actual expenditures"
+#: ../org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
+msgid "1) Activities"
 msgstr ""
 
 #: ../org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:47
 msgid "3) Edit resources"
 msgstr ""
 
-#: ../org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
-msgid "1) Activities"
+#: ../org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
+msgid "2) Add budget detail to workplan "
+msgstr ""
+
+#: ../org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:47
+msgid "4) Assign resources"
 msgstr ""
 
 #: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:48
 msgid "5) Check target-threat rating"
+msgstr ""
+
+#: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
+msgid "4) Rate the irreversibility of the threat"
 msgstr ""
 
 #: ../org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:47
@@ -3662,6 +3828,14 @@ msgstr ""
 
 #: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:52
 msgid "3) Rate the severity of the threat"
+msgstr ""
+
+#: ../org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
+msgid "Simple Threat Rating"
+msgstr ""
+
+#: ../org/miradi/wizard/threatmatrix/ThreatStressRateStressAndSeverityStep.java:48
+msgid "2) Rate scope and severity of stress"
 msgstr ""
 
 #: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:136
@@ -3679,27 +3853,15 @@ msgstr ""
 msgid "1) Select target and threat to work on"
 msgstr ""
 
-#: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
-msgid "4) Rate the irreversibility of the threat"
-msgstr ""
-
-#: ../org/miradi/wizard/threatmatrix/ThreatStressRateStressAndSeverityStep.java:48
-msgid "2) Rate scope and severity of stress"
+#: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
+msgid "Review threat rating summary"
 msgstr ""
 
 #: ../org/miradi/wizard/threatmatrix/ThreatStressRateIrreversibilityAndContributionStep.java:48
 msgid "3) Rate contribution and irreversibility of threat"
 msgstr ""
 
-#: ../org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
-msgid "Simple Threat Rating"
-msgstr ""
-
-#: ../org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
-msgid "Review threat rating summary"
-msgstr ""
-
-#: ../org/miradi/wizard/SkeletonWizardStep.java:165
+#: ../org/miradi/wizard/SkeletonWizardStep.java:173
 msgid "Wizard load of control failed:"
 msgstr ""
 
@@ -3707,19 +3869,23 @@ msgstr ""
 msgid "Intro to View"
 msgstr ""
 
-#: ../org/miradi/diagram/renderers/FactorRenderer.java:151
+#: ../org/miradi/xml/conpro/importer/ConProXmlImporter.java:137
+msgid "File to import does not validate."
+msgstr ""
+
+#: ../org/miradi/diagram/renderers/FactorRenderer.java:154
 msgid "Obj"
 msgstr ""
 
-#: ../org/miradi/diagram/renderers/FactorRenderer.java:153
+#: ../org/miradi/diagram/renderers/FactorRenderer.java:156
 msgid "Objs"
 msgstr ""
 
-#: ../org/miradi/diagram/renderers/FactorRenderer.java:166
+#: ../org/miradi/diagram/renderers/FactorRenderer.java:169
 msgid "Goals"
 msgstr ""
 
-#: ../org/miradi/diagram/cells/ProjectScopeBox.java:98
+#: ../org/miradi/diagram/cells/ProjectScopeBox.java:103
 msgid "Vision"
 msgstr ""
 
@@ -3747,11 +3913,11 @@ msgstr ""
 msgid "Type|Contributing Factor"
 msgstr ""
 
-#: ../org/miradi/diagram/DiagramModel.java:920
+#: ../org/miradi/diagram/DiagramModel.java:965
 msgid "Project Scope: "
 msgstr ""
 
-#: ../org/miradi/diagram/DiagramContextMenuHandler.java:137
+#: ../org/miradi/diagram/DiagramContextMenuHandler.java:142
 msgid "Menu|Insert"
 msgstr ""
 
@@ -3868,10 +4034,6 @@ msgstr ""
 msgid " A project by this name already exists: "
 msgstr ""
 
-#: ../org/miradi/project/Project.java:156
-msgid "Invalid project name:"
-msgstr ""
-
 #: ../org/miradi/project/Project.java:159
 msgid "A file or directory exist by the same name:"
 msgstr ""
@@ -3880,22 +4042,1093 @@ msgstr ""
 msgid "[No Project]"
 msgstr ""
 
-#: ../org/miradi/project/Project.java:981
+#: ../org/miradi/project/Project.java:977
 msgid "Attempt to execute command from outside command listener"
 msgstr ""
 
-#: ../org/miradi/project/Project.java:994
+#: ../org/miradi/project/Project.java:990
 msgid " within "
 msgstr ""
 
-#: ../org/miradi/project/Project.java:993
+#: ../org/miradi/project/Project.java:989
 msgid "Attempt to execute command from command listener: "
 msgstr ""
 
-#: ../org/miradi/project/ResultsChainCreatorHelper.java:170
+#: ../org/miradi/project/ResultsChainCreatorHelper.java:171
 msgid "[New Results Chain]"
 msgstr ""
 
-#: ../org/miradi/project/ResultsChainCreatorHelper.java:192
+#: ../org/miradi/project/ResultsChainCreatorHelper.java:193
 msgid "Results Chain"
+msgstr ""
+
+msgid "FieldLabel|3.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|3.StrategyLabel|Strategy"
+msgstr ""
+
+msgid "FieldLabel|3.IndicatorLabel|Indicator"
+msgstr ""
+
+msgid "FieldLabel|3.SubtaskTotal|Subtask Total"
+msgstr ""
+
+msgid "FieldLabel|3.TaskTotal|Total Cost"
+msgstr ""
+
+msgid "FieldLabel|3.TaskCost|Task Cost"
+msgstr ""
+
+msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
+msgstr ""
+
+msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
+msgstr ""
+
+msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
+msgstr ""
+
+msgid "FieldLabel|3.EffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|3.PseudoWhenRollupAsString|When Rollup"
+msgstr ""
+
+msgid "FieldLabel|3.WhenOverride|When Override"
+msgstr ""
+
+msgid "FieldLabel|3.WhoOverrideRefs|Who Override(s)"
+msgstr ""
+
+msgid "FieldLabel|3.WhoRollupRefs|Who Rollup"
+msgstr ""
+
+msgid "FieldLabel|3.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|6.StressLabel|Stress"
+msgstr ""
+
+msgid "FieldLabel|6.Targetlink|Target Link"
+msgstr ""
+
+msgid "FieldLabel|6.BidirectionalLink|Bidirectional Link"
+msgstr ""
+
+msgid "FieldLabel|6.PseudoThreatRatingBundleValue|Target-Threat Rating"
+msgstr ""
+
+msgid "FieldLabel|6.SimpleThreatRatingComment|Comments"
+msgstr ""
+
+msgid "FieldLabel|6.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|7.Label|Resource"
+msgstr ""
+
+msgid "FieldLabel|7.ResourceType|Resource Type"
+msgstr ""
+
+msgid "FieldLabel|7.Initials|Resource ID"
+msgstr ""
+
+msgid "FieldLabel|7.Name|Given Name"
+msgstr ""
+
+msgid "FieldLabel|7.SurName|Surname"
+msgstr ""
+
+msgid "FieldLabel|7.PhoneNumber|Office"
+msgstr ""
+
+msgid "FieldLabel|7.CostPerUnit|Cost Per Unit"
+msgstr ""
+
+msgid "FieldLabel|7.CostUnit|Unit(s)"
+msgstr ""
+
+msgid "FieldLabel|7.RoleCodes|Roles"
+msgstr ""
+
+msgid "FieldLabel|7.Custom.Custom1|Custom1"
+msgstr ""
+
+msgid "FieldLabel|7.Custom.Custom2|Custom2"
+msgstr ""
+
+msgid "FieldLabel|7.PhoneNumberMobile|Mobile"
+msgstr ""
+
+msgid "FieldLabel|7.PhoneNumberHome|Home"
+msgstr ""
+
+msgid "FieldLabel|7.PhoneNumberOther|Other"
+msgstr ""
+
+msgid "FieldLabel|7.AlternativeEmail|Alt Email"
+msgstr ""
+
+msgid "FieldLabel|7.IMAddress|Address"
+msgstr ""
+
+msgid "FieldLabel|7.IMService|Service"
+msgstr ""
+
+msgid "FieldLabel|7.DateUpdated|Date Updated"
+msgstr ""
+
+msgid "FieldLabel|7.Organization|Organization"
+msgstr ""
+
+msgid "FieldLabel|7.Position|Position"
+msgstr ""
+
+msgid "FieldLabel|7.Email|Email"
+msgstr ""
+
+msgid "FieldLabel|7.Location|Location"
+msgstr ""
+
+msgid "FieldLabel|7.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|8.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|8.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|8.Status|Progress"
+msgstr ""
+
+msgid "FieldLabel|8.PseudoTagFactor|Associated Factor"
+msgstr ""
+
+msgid "FieldLabel|8.Targets|Related Targets"
+msgstr ""
+
+msgid "FieldLabel|8.DirectThreats|Related Direct Threats"
+msgstr ""
+
+msgid "FieldLabel|8.Strategies|Related Strategies"
+msgstr ""
+
+msgid "FieldLabel|8.Methods|Methods"
+msgstr ""
+
+msgid "FieldLabel|8.IndicatorThresholds|Value Range"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementStatus|CS Rating"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementTrend|Trend"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementDate|CS Date"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementSummary|CS Label"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementDetail|CS Text"
+msgstr ""
+
+msgid "FieldLabel|8.MeasurementStatusConfidence|Confidence"
+msgstr ""
+
+msgid "FieldLabel|8.RatingSource|Rating Source"
+msgstr ""
+
+msgid "FieldLabel|8.FutureStatusDetail|Details"
+msgstr ""
+
+msgid "FieldLabel|8.FutureStatusSummary|Value"
+msgstr ""
+
+msgid "FieldLabel|8.FutureStatusDate|Date"
+msgstr ""
+
+msgid "FieldLabel|8.FutureStatusRating|Rating"
+msgstr ""
+
+msgid "FieldLabel|8.EMPTY|"
+msgstr ""
+
+msgid "FieldLabel|8.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|8.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
+msgstr ""
+
+msgid "FieldLabel|8.FutureStatusComment|Comments"
+msgstr ""
+
+msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
+msgstr ""
+
+msgid "FieldLabel|8.ThresholdDetails|Details"
+msgstr ""
+
+msgid "FieldLabel|8.EffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|8.PseudoWhenRollupAsString|When Rollup"
+msgstr ""
+
+msgid "FieldLabel|8.WhenOverride|When Override"
+msgstr ""
+
+msgid "FieldLabel|8.WhoOverrideRefs|Who Override(s)"
+msgstr ""
+
+msgid "FieldLabel|8.WhoRollupRefs|Who Rollup"
+msgstr ""
+
+msgid "FieldLabel|8.PseudoBudgetRollupCost|Budget Rollup"
+msgstr ""
+
+msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
+msgstr ""
+
+msgid "FieldLabel|8.Priority|Priority"
+msgstr ""
+
+msgid "FieldLabel|9.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|9.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|9.FullText|Text"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoTagFactor|Associated Factor"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoTagTargets|Related Targets"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoTagDirectThreats|Related Direct Threats"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoTagStrategies|Related Strategies"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoDefaultRelevantIndicatorRefs|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|9.PseudoDefaultRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
+
+msgid "FieldLabel|9.RelevantIndicatorSet|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|9.RelevantStrategySet|Relevant Strategies"
+msgstr ""
+
+msgid "FieldLabel|9.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|10.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|10.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|10.FullText|Text"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoTagFactor|Associated Target"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoTagStrategies|Related Strategies"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoTagDirectThreats|Related Direct Threats"
+msgstr ""
+
+msgid "FieldLabel|10.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectName|Project Name"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectStatus|Project Status"
+msgstr ""
+
+msgid "FieldLabel|11.NextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectScope|Scope/Site Description"
+msgstr ""
+
+msgid "FieldLabel|11.ShortProjectScope|Scope/Site Name"
+msgstr ""
+
+msgid "FieldLabel|11.ShortProjectVision|Vision Label"
+msgstr ""
+
+msgid "FieldLabel|11.StartDate|Start"
+msgstr ""
+
+msgid "FieldLabel|11.ExpectedEndDate|End"
+msgstr ""
+
+msgid "FieldLabel|11.DataEffectiveDate|Project Data Effective Date"
+msgstr ""
+
+msgid "FieldLabel|11.TeamResourceIds|Project Team"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.SizeInHectares|Project Size (Hectares)"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.PlanningTeamComment|Planning Team (legacy)"
+msgstr ""
+
+msgid "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
+msgstr ""
+
+msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.Ecoregion|Ecoregion (legacy)"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.Country|Country (legacy)"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.OperatingUnits|Operating Units (legacy)"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.OperatingUnitList|Operating Units (Field Programs)"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.TerrestrialEcoRegion|Terrestrial Ecoregion"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.MarineEcoRegion|Marine Ecoregion"
+msgstr ""
+
+msgid "FieldLabel|11.TNC.FreshwaterEcoRegion|Freshwater Ecoregion"
+msgstr ""
+
+msgid "FieldLabel|11.DiagramFontFamily|Font Family"
+msgstr ""
+
+msgid "FieldLabel|11.DiagramFontSize|Font Size"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectLatitude|Project Latitude"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectLongitude|Project Longitude"
+msgstr ""
+
+msgid "FieldLabel|11.TotalBudgetForFunding|Total Budget for Funding"
+msgstr ""
+
+msgid "FieldLabel|11.CurrencyType|Type"
+msgstr ""
+
+msgid "FieldLabel|11.CurrencySymbol|Symbol"
+msgstr ""
+
+msgid "FieldLabel|11.BudgetSecuredPercent|% Budget Secured"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoTagProjectTeamMembersRefs|Team Members"
+msgstr ""
+
+msgid "FieldLabel|11.ThreatRatingMode|Threat Rating Mode"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectDescription|Project Description"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectURL|Project Website"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectArea|"
+msgstr ""
+
+msgid "FieldLabel|11.ProjectAreaNote|Notes"
+msgstr ""
+
+msgid "FieldLabel|11.ScopeComments|Comments"
+msgstr ""
+
+msgid "FieldLabel|11.StateAndProvinces|States/Provinces"
+msgstr ""
+
+msgid "FieldLabel|11.LegislativeDistricts|Legislative Districts"
+msgstr ""
+
+msgid "FieldLabel|11.LocationDetail|Location Details"
+msgstr ""
+
+msgid "FieldLabel|11.LocationComments|Comments"
+msgstr ""
+
+msgid "FieldLabel|11.KeyFundingSources|Key Funding Sources"
+msgstr ""
+
+msgid "FieldLabel|11.FinancialComments|Comments"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanStartDate|Start"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanEndDate|End"
+msgstr ""
+
+msgid "FieldLabel|11.WorkPlanTimeUnit|Workplan Time Unit"
+msgstr ""
+
+msgid "FieldLabel|11.PlanningComments|Comments"
+msgstr ""
+
+msgid "FieldLabel|11.OtherOrgManagingOffice|Managing Office"
+msgstr ""
+
+msgid "FieldLabel|11.OtherOrgRegionalOffice|Regional Office"
+msgstr ""
+
+msgid "FieldLabel|11.OtherOrgProjectNumber|Project Number"
+msgstr ""
+
+msgid "FieldLabel|11.OtherOrgRelatedProjects|Related Projects"
+msgstr ""
+
+msgid "FieldLabel|11.RedListSpecies|IUCN Red List Species"
+msgstr ""
+
+msgid "FieldLabel|11.OtherNotableSpecies|Other Notable Species"
+msgstr ""
+
+msgid "FieldLabel|11.HumanPopulation|"
+msgstr ""
+
+msgid "FieldLabel|11.HumanPopulationNotes|Notes"
+msgstr ""
+
+msgid "FieldLabel|11.SocialContext|Social Context"
+msgstr ""
+
+msgid "FieldLabel|11.SiteMapReference|Site Map Reference"
+msgstr ""
+
+msgid "FieldLabel|11.ProtectedAreaCategories|"
+msgstr ""
+
+msgid "FieldLabel|11.ProtectedAreaCategoryNotes|Notes"
+msgstr ""
+
+msgid "FieldLabel|11.Countries|Countries"
+msgstr ""
+
+msgid "FieldLabel|11.Municipalities|Municipalities"
+msgstr ""
+
+msgid "FieldLabel|12.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|12.FullText|Details"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagMethods|Methods"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagFactor|Associated Factor"
+msgstr ""
+
+msgid "FieldLabel|12.RatingSummary|Strategy Priority"
+msgstr ""
+
+msgid "FieldLabel|12.RatingSummaryValue|Strategy Priority"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagPriorityValue|Indicator Priority"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
+msgstr ""
+
+msgid "FieldLabel|12.Who|Who"
+msgstr ""
+
+msgid "FieldLabel|12.EffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
+msgstr ""
+
+msgid "FieldLabel|12.TaskBudgetDetail|Budget Details"
+msgstr ""
+
+msgid "FieldLabel|12.StatusValue|Status"
+msgstr ""
+
+msgid "FieldLabel|12.PriorityValue|Priority"
+msgstr ""
+
+msgid "FieldLabel|12.TaxonomyCodeValue|Standard Classification"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoMeasurementFields|Measurement"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
+msgstr ""
+
+msgid "FieldLabel|12.IndicatorMetaColumnTag|Future Status"
+msgstr ""
+
+msgid "FieldLabel|12.MeasurementMetaColumnTag|Current Status"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoLatestProgressReportCode|Progress"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoLatestProgressReportDetails|Progress Details"
+msgstr ""
+
+msgid "FieldLabel|12.TaxonomyCode|Standard Classification"
+msgstr ""
+
+msgid "FieldLabel|13.FromDiagramFactorId|From"
+msgstr ""
+
+msgid "FieldLabel|13.ToDiagramFactorId|To"
+msgstr ""
+
+msgid "FieldLabel|13.Color|Color"
+msgstr ""
+
+msgid "FieldLabel|15.Label|Category Name"
+msgstr ""
+
+msgid "FieldLabel|15.Code|Category Code"
+msgstr ""
+
+msgid "FieldLabel|16.Label|Source Name"
+msgstr ""
+
+msgid "FieldLabel|16.Code|Source Code"
+msgstr ""
+
+msgid "FieldLabel|17.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|17.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|17.Description|Comments"
+msgstr ""
+
+msgid "FieldLabel|17.KeyEcologicalAttributeType|Type"
+msgstr ""
+
+msgid "FieldLabel|17.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|18.FontSize|Size"
+msgstr ""
+
+msgid "FieldLabel|18.FontColor|Color"
+msgstr ""
+
+msgid "FieldLabel|18.FontStyle|Style"
+msgstr ""
+
+msgid "FieldLabel|18.BackgroundColor|Background Color"
+msgstr ""
+
+msgid "FieldLabel|19.ScopeBox|Scope Box"
+msgstr ""
+
+msgid "FieldLabel|19.Label|Conceptual Model"
+msgstr ""
+
+msgid "FieldLabel|19.ConceptualModelDiagram|Conceptual Model"
+msgstr ""
+
+msgid "FieldLabel|19.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoCombinedLabel|Conceptual Models"
+msgstr ""
+
+msgid "FieldLabel|20.Label|Threat"
+msgstr ""
+
+msgid "FieldLabel|20.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|20.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|20.TaxonomyCode|Standard Classification"
+msgstr ""
+
+msgid "FieldLabel|20.PseudoTagObjectives|Related Objectives"
+msgstr ""
+
+msgid "FieldLabel|20.DirectThreat|Direct Threat"
+msgstr ""
+
+msgid "FieldLabel|20.ContributingFactor|Contributing Factor"
+msgstr ""
+
+msgid "FieldLabel|20.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|20.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|21.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|21.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|21.Status|Draft"
+msgstr ""
+
+msgid "FieldLabel|21.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|21.TaxonomyCode|Standard Classification"
+msgstr ""
+
+msgid "FieldLabel|21.ImpactRating|Potential Impact"
+msgstr ""
+
+msgid "FieldLabel|21.FeasibilityRating|Feasibility"
+msgstr ""
+
+msgid "FieldLabel|21.RatingSummary|Roll-up"
+msgstr ""
+
+msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
+msgstr ""
+
+msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoTagGoals|Related Goals"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoTagObjectives|Related Objectives"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoTagDirectThreats|Related Direct Threats"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoTagTargets|Related Targets"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoBudgetRollupCost|Budget Rollup"
+msgstr ""
+
+msgid "FieldLabel|21.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoLatestProgressReportCode|Progress"
+msgstr ""
+
+msgid "FieldLabel|21.EffortDatesTotal|When"
+msgstr ""
+
+msgid "FieldLabel|21.PseudoWhenRollupAsString|When Rollup"
+msgstr ""
+
+msgid "FieldLabel|21.WhenOverride|When Override"
+msgstr ""
+
+msgid "FieldLabel|21.WhoOverrideRefs|Who Override(s)"
+msgstr ""
+
+msgid "FieldLabel|21.WhoRollupRefs|Who Rollup"
+msgstr ""
+
+msgid "FieldLabel|22.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|22.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|22.ViabilityMode|Viability Mode"
+msgstr ""
+
+msgid "FieldLabel|22.TargetStatus|Target Viability Status"
+msgstr ""
+
+msgid "FieldLabel|22.TargetViability|Target Viability Status"
+msgstr ""
+
+msgid "FieldLabel|22.Goals|Related Goals"
+msgstr ""
+
+msgid "FieldLabel|22.DirectThreats|Related Direct Threats"
+msgstr ""
+
+msgid "FieldLabel|22.CurrentStatusJustification|Current Status Justification"
+msgstr ""
+
+msgid "FieldLabel|22.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
+msgstr ""
+
+msgid "FieldLabel|22.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|22.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|22.HabitatAssociation|<html>Habitat Association<br>(IUCN v3.0)"
+msgstr ""
+
+msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
+msgstr ""
+
+msgid "FieldLabel|23.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|23.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|23.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|23.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|24.Label|Results Chain Name"
+msgstr ""
+
+msgid "FieldLabel|24.ResultsChainDiagram|Results Chain"
+msgstr ""
+
+msgid "FieldLabel|24.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoCombinedLabel|Results Chains"
+msgstr ""
+
+msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
+msgstr ""
+
+msgid "FieldLabel|25.RelatedDirectThreatRef|Direct Threat"
+msgstr ""
+
+msgid "FieldLabel|25.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|25.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|25.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|25.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|26.Label|Text"
+msgstr ""
+
+msgid "FieldLabel|26.TextBox|Text Box"
+msgstr ""
+
+msgid "FieldLabel|26.PseudoTagDiagramRefs|Appears on"
+msgstr ""
+
+msgid "FieldLabel|26.Text|Details"
+msgstr ""
+
+msgid "FieldLabel|27.DiagramObjectLabel|Diagram Name"
+msgstr ""
+
+msgid "FieldLabel|30.RelatedProjects|Related Projects"
+msgstr ""
+
+msgid "FieldLabel|30.ProjectNumber|Project Number"
+msgstr ""
+
+msgid "FieldLabel|30.ManagingOffices|Managing Offices"
+msgstr ""
+
+msgid "FieldLabel|30.LinkToGlobalTargets|Link To Global Targets"
+msgstr ""
+
+msgid "FieldLabel|30.EcoRegions|Ecoregions"
+msgstr ""
+
+msgid "FieldLabel|30.Regions|Regions"
+msgstr ""
+
+msgid "FieldLabel|32.StatusConfidence|Source"
+msgstr ""
+
+msgid "FieldLabel|32.Comment|Comments"
+msgstr ""
+
+msgid "FieldLabel|32.Summary|Value"
+msgstr ""
+
+msgid "FieldLabel|32.Status|Rating"
+msgstr ""
+
+msgid "FieldLabel|32.Date|Date"
+msgstr ""
+
+msgid "FieldLabel|32.Detail|Detail"
+msgstr ""
+
+msgid "FieldLabel|32.Trend|Trend"
+msgstr ""
+
+msgid "FieldLabel|33.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|33.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|33.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|33.PseudoStressRating|Magnitude"
+msgstr ""
+
+msgid "FieldLabel|33.Scope|Scope"
+msgstr ""
+
+msgid "FieldLabel|33.Severity|Severity"
+msgstr ""
+
+msgid "FieldLabel|33.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
+msgstr ""
+
+msgid "FieldLabel|34.IsActive|Active?"
+msgstr ""
+
+msgid "FieldLabel|34.Contribution|Contribution"
+msgstr ""
+
+msgid "FieldLabel|34.Irreversibility|Irreversibility"
+msgstr ""
+
+msgid "FieldLabel|36.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|36.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|36.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|37.ProgressStatus|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|37.ProgressDate|Progress Date"
+msgstr ""
+
+msgid "FieldLabel|37.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|38.FlagshipSpeciesCommonName|Flagship Species Common Name"
+msgstr ""
+
+msgid "FieldLabel|38.FlagshipSpeciesScientificName|Flagship Species Scientific Name"
+msgstr ""
+
+msgid "FieldLabel|38.FlagshipSpeciesDetail|Flagship Species Details (< 200 words)"
+msgstr ""
+
+msgid "FieldLabel|38.CampaignSlogan|Campaign Slogan"
+msgstr ""
+
+msgid "FieldLabel|38.CampaignTheoryOfChange|Campaign Theory of Change (< 200 words)"
+msgstr ""
+
+msgid "FieldLabel|38.SummaryOfKeyMessages|Summary of Key Messages"
+msgstr ""
+
+msgid "FieldLabel|38.MainActivitiesNotes|Main Activities of the Projects (< 200 words)"
+msgstr ""
+
+msgid "FieldLabel|38.ThreatReductionObjectiveNotes|Summary of Objectives for Threat Reduction Partner"
+msgstr ""
+
+msgid "FieldLabel|38.MonitoringObjectiveNotes|Summary of Objectives for Impact Monitoring Partner"
+msgstr ""
+
+msgid "FieldLabel|38.ThreatsAddressedNotes|Threats Addressed"
+msgstr ""
+
+msgid "FieldLabel|38.BiodiversityHotspots|Biodiversity Hotspot(s)"
+msgstr ""
+
+msgid "FieldLabel|38.RelatedProjects|Related Projects"
+msgstr ""
+
+msgid "FieldLabel|38.ProjectCode|Project Code (6 digits)"
+msgstr ""
+
+msgid "FieldLabel|38.NumberOfCommunitiesInCampaignArea|Number of Communities in Campaign Area"
+msgstr ""
+
+msgid "FieldLabel|38.CourseManagerNotes|Course Manager"
+msgstr ""
+
+msgid "FieldLabel|38.RegionalDirectorNotes|Regional Director"
+msgstr ""
+
+msgid "FieldLabel|38.CampaignManagerNotes|Campaign Manager"
+msgstr ""
+
+msgid "FieldLabel|38.LocalPartnerContactNotes|Local Partner Contact"
+msgstr ""
+
+msgid "FieldLabel|38.BingoPartnerContactNotes|BINGO Partner Contact"
+msgstr ""
+
+msgid "FieldLabel|38.ThreatReductionPartnerContactNotes|Threat Reduction Partner Contact"
+msgstr ""
+
+msgid "FieldLabel|38.MonitoringPartnerContactNotes|Monitoring Partner Contact"
+msgstr ""
+
+msgid "FieldLabel|38.Cohort|Cohort"
+msgstr ""
+
+msgid "FieldLabel|38.Audience|Audience"
+msgstr ""
+
+msgid "FieldLabel|39.OrganizationalFocus|Organizational Focus"
+msgstr ""
+
+msgid "FieldLabel|39.OrganizationalLevel|Organizational Level"
+msgstr ""
+
+msgid "FieldLabel|39.SwotCompleted|Completed?"
+msgstr ""
+
+msgid "FieldLabel|39.SwotUrl|URL"
+msgstr ""
+
+msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
+msgstr ""
+
+msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
+msgstr ""
+
+msgid "FieldLabel|41.TrainingType|Training Type"
+msgstr ""
+
+msgid "FieldLabel|41.TrainingDates|Training Dates"
+msgstr ""
+
+msgid "FieldLabel|41.Trainers|Trainer(s)"
+msgstr ""
+
+msgid "FieldLabel|41.Coaches|Coach(es)"
+msgstr ""
+
+msgid "FieldLabel|42.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|42.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|42.RolesDescription|Role(s)"
+msgstr ""
+
+msgid "FieldLabel|42.ContactFirstName|Given Name"
+msgstr ""
+
+msgid "FieldLabel|42.ContactLastName|Surname"
+msgstr ""
+
+msgid "FieldLabel|42.Email|Email"
+msgstr ""
+
+msgid "FieldLabel|42.PhoneNumber|Phone"
+msgstr ""
+
+msgid "FieldLabel|42.Organization|Organization"
+msgstr ""
+
+msgid "FieldLabel|42.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|43.LegalStatus|Legal Status"
+msgstr ""
+
+msgid "FieldLabel|43.LegislativeContext|Legislative Context"
+msgstr ""
+
+msgid "FieldLabel|43.PhysicalDescription|Physical Description"
+msgstr ""
+
+msgid "FieldLabel|43.BiologicalDescription|Biological Description"
+msgstr ""
+
+msgid "FieldLabel|43.SocioEconomicInformation|Socio-Economic Information"
+msgstr ""
+
+msgid "FieldLabel|43.HistoricalDescription|Historical Description"
+msgstr ""
+
+msgid "FieldLabel|43.CulturalDescription|Cultural Description"
+msgstr ""
+
+msgid "FieldLabel|43.AccessInformation|Access Information"
+msgstr ""
+
+msgid "FieldLabel|43.VisitationInformation|Visitation Information"
+msgstr ""
+
+msgid "FieldLabel|43.CurrentLandUses|Current Land Uses"
+msgstr ""
+
+msgid "FieldLabel|43.ManagementResources|Management Resources"
+msgstr ""
+
+msgid "FieldLabel|45.PercentDate|Date"
+msgstr ""
+
+msgid "FieldLabel|45.PercentComplete|Percent Complete"
+msgstr ""
+
+msgid "FieldLabel|45.PercentCompleteNotes|Notes"
 msgstr ""

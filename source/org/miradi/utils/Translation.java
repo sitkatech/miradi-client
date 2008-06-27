@@ -40,7 +40,7 @@ public class Translation
 	public static void restoreDefaultLocalization() throws IOException
 	{
 		textTranslations = null;
-		fieldLabelTranslations = loadProperties(getTranslationFileURL("FieldLabels.properties"));
+		fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
 	}
 
 	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
@@ -49,7 +49,6 @@ public class Translation
 		try
 		{
 			textTranslations = loadPOFile(zip, "miradi_" + languageCode + ".po");
-			fieldLabelTranslations = loadPropertiesFile(zip, "FieldLabels.properties");
 		}
 		catch(IOException e)
 		{
@@ -81,7 +80,10 @@ public class Translation
 			EAM.logError("Could not find tag in fieldLabels file: type=" + objectType + "  tag=" + fieldTag);
 			label = fieldTag;
 		}
-		return label;
+		if(textTranslations == null)
+			return label;
+
+		return text("FieldLabel|" + fullTag + "|" + label);
 	}
 
 	private static Properties loadPOFile(ZipFile zip, String entryName) throws IOException
@@ -101,21 +103,7 @@ public class Translation
 		}
 	}
 
-	private static Properties loadPropertiesFile(ZipFile zip, String entryName) throws IOException
-	{
-		ZipEntry text = zip.getEntry(entryName);
-		InputStream in = zip.getInputStream(text);
-		try
-		{
-			return loadProperties(in);
-		}
-		finally
-		{
-			in.close();
-		}
-	}
-
-	private static URL getTranslationFileURL(String filename) throws IOException
+	private static URL getEnglishTranslationFileURL(String filename) throws IOException
 	{
 		String resourceName = "/translations/en/" + filename;
 		URL url = Translation.class.getResource(resourceName);
