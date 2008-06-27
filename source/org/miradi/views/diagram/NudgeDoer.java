@@ -32,8 +32,6 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.utils.PointList;
 
@@ -110,7 +108,8 @@ public class NudgeDoer extends LocationDoer
 		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		
 		HashSet<LinkCell> allLinkCells = new HashSet();
-		allLinkCells.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(diagramPanel.getDiagramComponent(), selectedFactorAndChildren));
+		DiagramComponent diagramComponent = diagramPanel.getDiagramComponent();
+		allLinkCells.addAll(diagramComponent.selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren));
 		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
 		
 		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
@@ -121,7 +120,7 @@ public class NudgeDoer extends LocationDoer
 				return;	
 			
 			factorCells[i].setPreviousLocation(factorCells[i].getLocation());
-			factorCells[i].setPreviousPortLocation(factorCells[i].getPortLocation(getDiagramView().getDiagramComponent().getGraphLayoutCache()));
+			factorCells[i].setPreviousPortLocation(factorCells[i].getPortLocation(diagramComponent.getGraphLayoutCache()));
 		}
 		
 		if (wouldMoveBendPointsOutOfBounds(allLinkCells.toArray(new LinkCell[0]), deltaX, deltaY))
@@ -145,46 +144,6 @@ public class NudgeDoer extends LocationDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
-	}
-
-	//FIXME should no longer return anything
-	public static HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(DiagramComponent diagramComponent, HashSet<FactorCell> selectedFactorAndChildren)
-	{
-		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
-		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
-		for (int i = 0; i < factorCells.length; ++i)
-		{
-			FactorCell factorCell = factorCells[i];
-			linksInsideGroupBoxes.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(diagramComponent, factorCell, factorCells));
-		}
-			
-		return linksInsideGroupBoxes;
-	}
-
-	private static HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(DiagramComponent diagramComponent, FactorCell factorCell, FactorCell[] factorCells)
-	{
-		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
-		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
-		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
-		{
-			DiagramLink diagramLink = DiagramLink.find(diagramComponent.getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
-			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
-			{
-				FactorCell thisFactorCell = factorCells[cellIndex];
-				if (thisFactorCell.getDiagramFactorRef().equals(factorCell.getDiagramFactorRef()))
-					continue;
-				
-				if (!diagramLink.isToOrFrom(thisFactorCell.getDiagramFactorRef()))
-					continue;
-						
-				LinkCell linkCell = diagramComponent.getDiagramModel().findLinkCell(diagramLink);
-				linkCell.getBendPointSelectionHelper().selectAll();
-				linksInGroupBoxes.add(linkCell);
-				diagramComponent.addSelectionCell(linkCell);
-			}
-		}
-		
-		return linksInGroupBoxes;
 	}
 
 	private void moveBendPoints(LinkCell[] links, int deltaY, int deltaX) throws Exception

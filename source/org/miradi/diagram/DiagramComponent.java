@@ -62,6 +62,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.KeyBinder;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
@@ -484,6 +485,46 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		LinkCell linkCell = getDiagramModel().getDiagramFactorLink(diagramLink);
 		linkCell.clearBendPointSelectionList();
+	}
+	
+	//FIXME should no longer return anything
+	public HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
+	{
+		HashSet<LinkCell> linksInsideGroupBoxes = new HashSet();
+		FactorCell[] factorCells = selectedFactorAndChildren.toArray(new FactorCell[0]);
+		for (int i = 0; i < factorCells.length; ++i)
+		{
+			FactorCell factorCell = factorCells[i];
+			linksInsideGroupBoxes.addAll(selectAllLinksAndThierBendPointsInsideGroupBox(factorCell, factorCells));
+		}
+			
+		return linksInsideGroupBoxes;
+	}
+
+	private HashSet<LinkCell> selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell factorCell, FactorCell[] factorCells)
+	{
+		HashSet<LinkCell> linksInGroupBoxes = new HashSet();
+		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
+		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
+			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
+			{
+				FactorCell thisFactorCell = factorCells[cellIndex];
+				if (thisFactorCell.getDiagramFactorRef().equals(factorCell.getDiagramFactorRef()))
+					continue;
+				
+				if (!diagramLink.isToOrFrom(thisFactorCell.getDiagramFactorRef()))
+					continue;
+						
+				LinkCell linkCell = getDiagramModel().findLinkCell(diagramLink);
+				linkCell.getBendPointSelectionHelper().selectAll();
+				linksInGroupBoxes.add(linkCell);
+				addSelectionCell(linkCell);
+			}
+		}
+		
+		return linksInGroupBoxes;
 	}
 	
 	public void zoom(double proportion)
