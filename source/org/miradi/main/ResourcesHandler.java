@@ -77,7 +77,7 @@ public class ResourcesHandler
 		}
 	}
 
-	public static URL loadResourceImageFile(String resourceFileName) 
+	public static URL getResourceURLWithoutExceptions(String resourceFileName) 
 	{
 		try
 		{

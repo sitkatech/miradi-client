@@ -26,6 +26,6 @@ public class EAMResourceImageIcon extends ImageIcon
 {
 	public EAMResourceImageIcon(String fileName)
 	{
-		super(ResourcesHandler.loadResourceImageFile(fileName));
+		super(ResourcesHandler.getResourceURLWithoutExceptions(fileName));
 	}
 }
