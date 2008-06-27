@@ -97,7 +97,7 @@ public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
 		if (event.isSetDataCommandWithThisTypeAndTag(FactorLink.getObjectType(), FactorLink.TAG_THREAT_STRESS_RATING_REFS) ||
 			event.isSetDataCommandWithThisType(ThreatStressRating.getObjectType()) || 
 			event.isSetDataCommandWithThisType(Stress.getObjectType()))
-			editorComponent.updateModelBasedOnPickerList();
+			editorComponent.refreshModel();
 	}
 	
 	private ThreatStressRatingEditorComponent editorComponent;
