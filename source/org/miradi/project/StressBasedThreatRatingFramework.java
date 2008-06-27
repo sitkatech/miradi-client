@@ -61,7 +61,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		}	
 	}
 	
-	private int getTargetMajorityRating() throws Exception
+	public int getTargetMajorityRating() throws Exception
 	{
 		Factor[] targets = getProject().getTargetPool().getTargets();
 		int[] highestTargetRatingValues = new int[targets.length];
