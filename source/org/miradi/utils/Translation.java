@@ -27,6 +27,7 @@ import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 
 public class Translation
@@ -42,13 +43,18 @@ public class Translation
 		fieldLabelTranslations = loadProperties(getTranslationFileURL("FieldLabels.properties"));
 	}
 
-	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
+	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
 	{
 		ZipFile zip = new ZipFile(new File(urlOfLocalizationZip.toURI()));
 		try
 		{
-			textTranslations = loadPropertiesFile(zip, "LocalizedText.properties");
+			textTranslations = loadPOFile(zip, "miradi_" + languageCode + ".po");
 			fieldLabelTranslations = loadPropertiesFile(zip, "FieldLabels.properties");
+		}
+		catch(IOException e)
+		{
+			EAM.logException(e);
+			throw (e);
 		}
 		finally
 		{
@@ -61,7 +67,7 @@ public class Translation
 		String result = extractPartToDisplay(key);
 	
 		if(textTranslations != null)
-			result = textTranslations.getProperty(key, "~" + key + "~");
+			result = textTranslations.getProperty(key, "~(" + result + ")");
 		
 		return extractPartToDisplay(result);
 	}
@@ -76,6 +82,23 @@ public class Translation
 			label = fieldTag;
 		}
 		return label;
+	}
+
+	private static Properties loadPOFile(ZipFile zip, String entryName) throws IOException
+	{
+		ZipEntry name = zip.getEntry(entryName);
+		if(name == null)
+			throw new IOException("Can't find " + entryName + " in " + zip.getName());
+		
+		UnicodeReader reader = new UnicodeReader(zip.getInputStream(name));
+		try
+		{
+			return loadPO(reader);
+		}
+		finally
+		{
+			reader.close();
+		}
 	}
 
 	private static Properties loadPropertiesFile(ZipFile zip, String entryName) throws IOException
@@ -115,6 +138,47 @@ public class Translation
 		}
 	}
 
+	private static Properties loadPO(UnicodeReader reader) throws IOException
+	{
+		Properties properties = new Properties();
+		StringBuffer id = new StringBuffer();
+		StringBuffer str = new StringBuffer();
+		StringBuffer filling = null;
+		while(true)
+		{
+			String line = reader.readLine();
+			if(line == null)
+				break;
+			
+			if(line.startsWith("msgid"))
+			{
+				if(id.length() > 0 && str.length() > 0)
+					properties.put(id.toString(), str.toString());
+				
+				id.setLength(0);
+				str.setLength(0);
+				filling = id;
+			}
+			else if(line.startsWith("msgstr"))
+			{
+				filling = str;
+			}
+
+			int start = line.indexOf('"');
+			int end = line.lastIndexOf('"');
+			if(start >= 0 && end >= 0)
+			{
+				String text = line.substring(start+1, end);
+				filling.append(text);
+			}
+		}
+		
+		if(id.length() > 0 && str.length() > 0)
+			properties.put(id.toString(), str.toString());
+
+		return properties;
+	}
+	
 	private static Properties loadProperties(InputStream in) throws IOException
 	{
 		Properties properties = new Properties();

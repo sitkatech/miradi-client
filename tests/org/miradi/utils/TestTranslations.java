@@ -53,7 +53,7 @@ public class TestTranslations extends EAMTestCase
 	{
 		try
 		{
-			EAM.setLocalization(new URL("xyz"));
+			EAM.setLocalization(new URL("xyz"), "es");
 			fail("Should have thrown setting bad locale");
 		}
 		catch(IOException ignoreExpected)
@@ -65,11 +65,11 @@ public class TestTranslations extends EAMTestCase
 	{
 		URL localizationForTesting = Translation.class.getResource("/translations/test/Miradi-test.zip");
 		assertNotNull("Can't find localization for testing", localizationForTesting);
-		EAM.setLocalization(localizationForTesting);
+		EAM.setLocalization(localizationForTesting, "test");
 		
 		EAM.setLogToString();
 		String sampleText = "should indicate non-translated";
-		assertEquals("~" + sampleText + "~", EAM.text(sampleText));
+		assertEquals("~(" + sampleText + ")", EAM.text(sampleText));
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
 		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(1, FAKE_FIELD_TAG));

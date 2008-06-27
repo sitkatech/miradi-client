@@ -293,9 +293,9 @@ public class EAM
 
 	///////////////////////////////////////////////////////////////////
 	// Translations
-	public static void setLocalization(URL urlOfLocalizationZip) throws Exception
+	public static void setLocalization(URL urlOfLocalizationZip, String languageCode) throws Exception
 	{
-		Translation.setLocalization(urlOfLocalizationZip);
+		Translation.setLocalization(urlOfLocalizationZip, languageCode);
 		ResourcesHandler.setLocalization(urlOfLocalizationZip);
 	}
 

@@ -53,11 +53,6 @@ public class Miradi
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
 		{
-			if(arg.startsWith("--language="))
-			{
-				String[] parts = arg.split("=");
-				switchToLanguage(parts[1]);
-			}
 			if(arg.equals("--verbose"))
 			{
 				EAM.setLogLevel(EAM.LOG_VERBOSE);
@@ -80,7 +75,7 @@ public class Miradi
 		
 		String jarName = "MiradiContent-2.1-" + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
-		EAM.setLocalization(jarFile.toURI().toURL());
+		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
 
 	private static File findLanguageJar(String jarName) throws URISyntaxException
