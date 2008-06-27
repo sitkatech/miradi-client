@@ -33,6 +33,11 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
 	}
 	
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+	
 	public String getUniqueTableIdentifier()
 	{
 		return UNIQUE_IDENTIFIER;
