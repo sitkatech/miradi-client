@@ -63,6 +63,7 @@ import org.miradi.main.KeyBinder;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
@@ -494,21 +495,21 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		for (int i = 0; i < factorCells.length; ++i)
 		{
 			FactorCell factorCell = factorCells[i];
-			selectAllLinksAndThierBendPointsInsideGroupBox(factorCells, factorCell);
+			selectAllLinksAndThierBendPointsInsideGroupBox(factorCells, factorCell.getDiagramFactor());
 		}
 	}
 
-	private void selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell[] factorCells, FactorCell factorCell)
+	private void selectAllLinksAndThierBendPointsInsideGroupBox(FactorCell[] factorCells, DiagramFactor diagramFactor)
 	{
 		DiagramModel diagramModel = getDiagramModel();
-		ORefList diagramLinkReferrerRefs = factorCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));
 			for (int cellIndex = 0; cellIndex < factorCells.length; ++cellIndex)
 			{
 				FactorCell thisFactorCell = factorCells[cellIndex];
-				if (thisFactorCell.getDiagramFactorRef().equals(factorCell.getDiagramFactorRef()))
+				if (thisFactorCell.getDiagramFactorRef().equals(diagramFactor.getRef()))
 					continue;
 				
 				if (!diagramLink.isToOrFrom(thisFactorCell.getDiagramFactorRef()))
