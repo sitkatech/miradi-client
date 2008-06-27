@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.Utility;
@@ -68,10 +67,9 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		Vector<Integer> highestTargetRatingValues = new Vector<Integer>();
 		for (int i = 0; i < targets.length; ++i)
 		{
-			Target target = (Target) targets[i];
-			int summaryRatingValue = get2PrimeSummaryRatingValue(target);
+			int summaryRatingValue = getHighestFactorSummaryRatingValue(targets[i]);
 			if (summaryRatingValue > 0)
-				highestTargetRatingValues.add(getHighestFactorSummaryRatingValue(target));
+				highestTargetRatingValues.add(summaryRatingValue);
 		}
 		
 		return getStressBasedThreatFormula().getMajority(Utility.convertToIntArray(highestTargetRatingValues));
