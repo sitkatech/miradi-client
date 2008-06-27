@@ -469,6 +469,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
+		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);
 		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY, StressIrreversibilityQuestion.HIGH_CODE);
 		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
 	}
