@@ -136,6 +136,7 @@ import org.miradi.project.TestRealProject;
 import org.miradi.project.TestSimpleThreatFormula;
 import org.miradi.project.TestSlidePool;
 import org.miradi.project.TestStrategyPool;
+import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatFormula;
 import org.miradi.project.TestTNCViabilityFormula;
 import org.miradi.project.TestTargetPool;
@@ -228,6 +229,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSlidePool.class));
 		suite.addTest(new TestSuite(TestFactorDeleteHelper.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
+		suite.addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestGroupBoxPool.class));
 		
 		//questions package

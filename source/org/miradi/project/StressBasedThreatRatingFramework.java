@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.Utility;
@@ -64,13 +65,16 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	public int getTargetMajorityRating() throws Exception
 	{
 		Factor[] targets = getProject().getTargetPool().getTargets();
-		int[] highestTargetRatingValues = new int[targets.length];
+		Vector<Integer> highestTargetRatingValues = new Vector<Integer>();
 		for (int i = 0; i < targets.length; ++i)
 		{
-			highestTargetRatingValues[i] = getHighestFactorSummaryRatingValue(targets[i]);
+			Target target = (Target) targets[i];
+			int summartRatingValue = get2PrimeSummaryRatingValue(target);
+			if (summartRatingValue > 0)
+				highestTargetRatingValues.add(getHighestFactorSummaryRatingValue(target));
 		}
 		
-		return getStressBasedThreatFormula().getMajority(highestTargetRatingValues);
+		return getStressBasedThreatFormula().getMajority(Utility.convertToIntArray(highestTargetRatingValues));
 	}
 	
 	private int getRollupRatingOfThreats() throws Exception
