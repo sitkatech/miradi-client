@@ -162,7 +162,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			if (refIndex != 0)
 				methodNames += ";";
 			
-			methodNames += getLabel(method, Task.TAG_LABEL);
+			methodNames += method.getData(Task.TAG_LABEL);
 		}
 		
 		writeOptionalElement(out, METHODS, methodNames);
@@ -874,18 +874,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private void writeLabelElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
-		writeElement(out, elementName, getLabel(object, tag));
-	}
-
-	private String getLabel(BaseObject object, String tag)
-	{
 		String label = object.getData(tag);
 		if (label.length() == 0)
 			label = UNSPECIFIED_LABEL;
 		
-		return label;
+		writeElement(out, elementName, label);
 	}
-	
+
 	private void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(out, elementName, object.getData(tag));
