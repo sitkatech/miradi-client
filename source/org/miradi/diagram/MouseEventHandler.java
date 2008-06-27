@@ -44,7 +44,6 @@ import org.miradi.project.FactorMoveHandler;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.views.diagram.NudgeDoer;
 import org.miradi.views.diagram.PropertiesDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 
@@ -98,7 +97,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		try
 		{
 			HashSet<FactorCell> selectedFactorAndChildren = getDiagram().getOnlySelectedFactorAndGroupChildCells();
-			selectedAndGroupBoxCoveredLinkCells.addAll(NudgeDoer.selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram(), selectedFactorAndChildren));
+			selectedAndGroupBoxCoveredLinkCells.addAll(getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren));
 			selectedAndGroupBoxCoveredLinkCells.addAll(getSelectedLinksWithSelectedBendPoints());
 			GraphLayoutCache graphLayoutCache = getDiagram().getGraphLayoutCache();
 			for(int i = 0; i < selectedCells.length; ++i)
