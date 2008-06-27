@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Task;
 
 public class TestTranslations extends EAMTestCase
 {
@@ -72,21 +73,28 @@ public class TestTranslations extends EAMTestCase
 		assertEquals("~(" + sampleText + ")", EAM.text(sampleText));
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
-		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(1, FAKE_FIELD_TAG));
+		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(3, Task.TAG_LABEL));
 	}
 	
 	public void testFieldLabel() throws Exception
 	{
 		Translation.initialize();
 		String badTag = "whoops";
-		assertEquals("Didn't leave unknown tag alone?", badTag, EAM.fieldLabel(1, badTag));
+		EAM.setLogToString();
+		try
+		{
+			assertEquals("Didn't leave unknown tag alone?", badTag, EAM.fieldLabel(1, badTag));
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
 		
 		assertEquals("Didn't convert Indicator Label?", "Name", EAM.fieldLabel(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 	}
 	
-	public static String ENGLISH_STRING = "To be translated";
-	public static String FAKE_TRANSLATION = "Aha! It worked!";
+	private static String ENGLISH_STRING = "To be translated";
+	private static String FAKE_TRANSLATION = "Aha! It worked!";
 	
-	public static String FAKE_FIELD_TAG = "tag";
-	public static String FAKE_FIELD_LABEL = "Great Label";
+	private static String FAKE_FIELD_LABEL = "Translated Name";
 }

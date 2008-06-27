@@ -3,6 +3,7 @@ It should be used after any string is added, removed, or modified:
   cd translations
   xgettext --language=java --keyword=EAM.text \
           --copyright-holder=Benetech --output=miradi.pot `find .. -name "*.java"`
+  ruby ../../../binaries-miradi/build/fieldlabels2pot.rb en/FieldLabels.properties miradi.pot
 
 Once-per-language command to create an initial .po file from the .pot template:
   cd translations
@@ -16,10 +17,6 @@ Periodically, refresh each .po file to include new entries from the .pot:
   cd translations
   msgmerge --update --backup=simple xx/miradi_xx.po miradi.pot
 
-Per-build, per-language command to convert a .po file to a .properties bundle:
-  cd translations
-  msgcat --properties-output --output-file xx/LocalizedText.properties xx/miradi_xx.po
-  
 
   
 RULES FOR TRANSLATORS TO LIVE BY:
