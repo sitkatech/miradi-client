@@ -69,7 +69,7 @@ public class TestTranslations extends EAMTestCase
 		
 		EAM.setLogToString();
 		String sampleText = "should indicate non-translated";
-		assertEquals("<" + sampleText + ">", EAM.text(sampleText));
+		assertEquals("~" + sampleText + "~", EAM.text(sampleText));
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
 		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(1, FAKE_FIELD_TAG));
