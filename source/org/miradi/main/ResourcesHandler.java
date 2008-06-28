@@ -45,7 +45,7 @@ public class ResourcesHandler
 		return getTranslatedResourceURL(resourceFileName);
 	}
 	
-	private static URL getEnglishResourceURL(String resourceFileName) throws RuntimeException
+	public static URL getEnglishResourceURL(String resourceFileName) throws RuntimeException
 	{
 		if(!resourceFileName.startsWith("/"))
 			resourceFileName = "/resources/" + resourceFileName;
@@ -78,7 +78,7 @@ public class ResourcesHandler
 		return loadFile(url);
 	}
 
-	private static String loadFile(URL url) throws IOException
+	public static String loadFile(URL url) throws IOException
 	{
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
