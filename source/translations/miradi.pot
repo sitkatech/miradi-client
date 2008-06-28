@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-27 22:03-0400\n"
+"POT-Creation-Date: 2008-06-27 23:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -917,46 +917,46 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:252
+#: miradi/source/org/miradi/main/MainWindow.java:253
 msgid "Information"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:441
+#: miradi/source/org/miradi/main/MainWindow.java:442
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:446
+#: miradi/source/org/miradi/main/MainWindow.java:447
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:450
+#: miradi/source/org/miradi/main/MainWindow.java:451
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:454
+#: miradi/source/org/miradi/main/MainWindow.java:455
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:459
+#: miradi/source/org/miradi/main/MainWindow.java:460
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:585
+#: miradi/source/org/miradi/main/MainWindow.java:586
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:611
+#: miradi/source/org/miradi/main/MainWindow.java:612
 msgid "WARNING: Project end date before start date."
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:947
+#: miradi/source/org/miradi/main/MainWindow.java:948
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -3862,7 +3862,7 @@ msgstr ""
 msgid "3) Rate contribution and irreversibility of threat"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/SkeletonWizardStep.java:173
+#: miradi/source/org/miradi/wizard/SkeletonWizardStep.java:174
 msgid "Wizard load of control failed:"
 msgstr ""
 
