@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.utils.Translation;
 
 public class ResourcesHandler
 {
@@ -71,19 +70,12 @@ public class ResourcesHandler
 		try
 		{
 			String result = reader.readAll();
-			if(resourceFileName.endsWith(".html"))
-				result = getHtmlContents(resourceFileName, result);
 			return result;
 		}
 		finally
 		{
 			reader.close();
 		}
-	}
-
-	private static String getHtmlContents(String resourceFileName, String result)
-	{
-		return Translation.internalLoadHtmlFile(resourceFileName, result);
 	}
 
 	public static URL getResourceURLWithoutExceptions(String resourceFileName) 

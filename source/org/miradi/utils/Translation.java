@@ -95,15 +95,11 @@ public class Translation
 	
 	public static String getHtmlContent(String resourceFileName) throws Exception
 	{
-		return ResourcesHandler.loadResourceFile(resourceFileName);
-	}
-
-	public static String internalLoadHtmlFile(String resourceFileName, String englishValue)
-	{
+		String englishHtml = ResourcesHandler.loadResourceFile(resourceFileName);
 		if(textTranslations == null)
-			return englishValue;
+			return englishHtml;
 		
-		String allOnOneLine = englishValue.replaceAll("\\n", "");
+		String allOnOneLine = englishHtml.replaceAll("\\n", "");
 		String withoutComments = allOnOneLine.replaceAll("<!--.*-->", "");
 		
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
