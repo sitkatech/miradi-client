@@ -92,7 +92,7 @@ public class Translation
 		return text("FieldLabel|" + fullTag + "|" + label);
 	}
 
-	public static String htmlFile(String resourceFileName, String englishValue)
+	public static String internalLoadHtmlFile(String resourceFileName, String englishValue)
 	{
 		if(textTranslations == null)
 			return englishValue;
