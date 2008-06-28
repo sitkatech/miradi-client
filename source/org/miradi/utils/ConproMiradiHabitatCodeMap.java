@@ -31,7 +31,7 @@ public class ConproMiradiHabitatCodeMap
 	public HashMap<String, String> loadMap() throws Exception
 	{
 		HashMap habitatCodeMap = new HashMap();
-		URL fileToImport = ResourcesHandler.getResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
+		URL fileToImport = ResourcesHandler.getEnglishResourceURL(TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME);
 		UnicodeReader reader = new UnicodeReader(fileToImport.openStream());
 		try 
 		{
@@ -52,5 +52,5 @@ public class ConproMiradiHabitatCodeMap
 		return habitatCodeMap;
 	}
 	
-	public static final String TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME = "TncMiradiHabitatAssociationCodeMap.txt";
+	public static final String TNC_MIRADI_HABITAT_CODE_MAP_FILE_NAME = "/org/miradi/xml/conpro/TncMiradiHabitatAssociationCodeMap.txt";
 }
