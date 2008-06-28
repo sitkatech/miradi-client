@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -66,7 +67,12 @@ public class Translation
 		String result = extractPartToDisplay(key);
 	
 		if(textTranslations != null)
-			result = textTranslations.getProperty(key, "~(" + result + ")");
+		{
+			String defaultValue = "~(" + result + ")";
+			result = textTranslations.get(key);
+			if(result == null)
+				result = defaultValue;
+		}
 		
 		return extractPartToDisplay(result);
 	}
@@ -86,7 +92,19 @@ public class Translation
 		return text("FieldLabel|" + fullTag + "|" + label);
 	}
 
-	private static Properties loadPOFile(ZipFile zip, String entryName) throws IOException
+	public static String htmlFile(String resourceFileName, String englishValue)
+	{
+		if(textTranslations == null)
+			return englishValue;
+		
+		String allOnOneLine = englishValue.replaceAll("\\n", "");
+		String withoutComments = allOnOneLine.replaceAll("<!--.*-->", "");
+		
+		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
+		return text(key);
+	}
+
+	private static HashMap<String, String> loadPOFile(ZipFile zip, String entryName) throws IOException
 	{
 		ZipEntry name = zip.getEntry(entryName);
 		if(name == null)
@@ -126,9 +144,9 @@ public class Translation
 		}
 	}
 
-	private static Properties loadPO(UnicodeReader reader) throws IOException
+	private static HashMap<String, String> loadPO(UnicodeReader reader) throws IOException
 	{
-		Properties properties = new Properties();
+		HashMap<String, String> properties = new HashMap<String, String>();
 		StringBuffer id = new StringBuffer();
 		StringBuffer str = new StringBuffer();
 		StringBuffer filling = null;
@@ -183,6 +201,6 @@ public class Translation
 		return result;
 	}
 
-	private static Properties textTranslations;
+	private static HashMap<String, String> textTranslations;
 	private static Properties fieldLabelTranslations;
 }
