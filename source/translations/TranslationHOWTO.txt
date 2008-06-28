@@ -1,10 +1,3 @@
-This unix command will extract a .pot file from java source code.
-It should be used after any string is added, removed, or modified:
-  cd translations
-  xgettext --language=java --keyword=EAM.text \
-          --copyright-holder=Benetech --output=miradi.pot `find .. -name "*.java"`
-  ruby ../../../binaries-miradi/build/fieldlabels2pot.rb en/FieldLabels.properties miradi.pot
-
 Once-per-language command to create an initial .po file from the .pot template:
   cd translations
   msginit --input=miradi.pot --output-file=xx/miradi_xx.po --locale=xx
@@ -13,9 +6,10 @@ Once-per-language command to create an initial .po file from the .pot template:
 underline, then a locale country/region code such as US or CA.)
 Then, update the header comments at the top of the generated .po file as appropriate.
 
-Periodically, refresh each .po file to include new entries from the .pot:
-  cd translations
-  msgmerge --update --backup=simple xx/miradi_xx.po miradi.pot
+
+The Miradi build script automatically re-creates the .pot file, and 
+then updates the English and Spanish .po files and MiradiContent zip files.
+
 
 
   
