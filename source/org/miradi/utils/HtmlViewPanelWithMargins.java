@@ -23,7 +23,6 @@ import javax.swing.BorderFactory;
 
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
-import org.miradi.main.ResourcesHandler;
 
 public class HtmlViewPanelWithMargins extends HtmlViewPanel
 {
@@ -34,7 +33,7 @@ public class HtmlViewPanelWithMargins extends HtmlViewPanel
 
 	public static HtmlViewPanelWithMargins createFromHtmlFileName(MainWindow mainWindowToUse, String titleToUse, String htmlFileNameToUse) throws Exception
 	{
-		String html = ResourcesHandler.loadResourceFile(htmlFileNameToUse);
+		String html = Translation.getHtmlContent(htmlFileNameToUse);
 		return new HtmlViewPanelWithMargins(mainWindowToUse, titleToUse, html);
 	}
 

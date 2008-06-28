@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.miradi.main.MainWindow;
-import org.miradi.main.ResourcesHandler;
+import org.miradi.utils.Translation;
 
 public class ViewSpecificHelpButtonData extends HelpButtonData
 {
@@ -35,7 +35,7 @@ public class ViewSpecificHelpButtonData extends HelpButtonData
 	{
 		String prefix = "views/" + getMainWindow().getCurrentView().getClass().getSimpleName();
 		String resourceFileName = prefix + "/" + htmlFile;
-		String html = ResourcesHandler.loadResourceFile(resourceFileName);
+		String html = Translation.getHtmlContent(resourceFileName);
 		return html;
 	}
 	

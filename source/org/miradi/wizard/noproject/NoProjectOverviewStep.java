@@ -38,9 +38,9 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
-import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.Translation;
 import org.miradi.wizard.WizardPanel;
 
 public class NoProjectOverviewStep extends NoProjectWizardStep
@@ -123,7 +123,7 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 	@Override
 	protected String getTextBelowLogo() throws Exception
 	{
-		return ResourcesHandler.loadResourceFile("wizard/NoProjectView/WelcomeIntroduction.html");
+		return Translation.getHtmlContent("wizard/NoProjectView/WelcomeIntroduction.html");
 	}
 	
 }

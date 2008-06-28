@@ -30,6 +30,7 @@ import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
+import org.miradi.main.ResourcesHandler;
 
 public class Translation
 {
@@ -90,6 +91,11 @@ public class Translation
 			return label;
 
 		return text("FieldLabel|" + fullTag + "|" + label);
+	}
+	
+	public static String getHtmlContent(String resourceFileName) throws Exception
+	{
+		return ResourcesHandler.loadResourceFile(resourceFileName);
 	}
 
 	public static String internalLoadHtmlFile(String resourceFileName, String englishValue)

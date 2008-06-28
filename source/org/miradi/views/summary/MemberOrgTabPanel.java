@@ -29,8 +29,8 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
 
@@ -43,7 +43,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		HyperlinkHandler handler = mainWindowToUse.getHyperlinkHandler();
 		MiradiHtmlViewer logoPanel = new MiradiHtmlViewer(mainWindowToUse, handler);
 
-		String html = ResourcesHandler.loadResourceFile(htmlResourceName);
+		String html = Translation.getHtmlContent(htmlResourceName);
 		logoPanel.setText(html);
 		
 		add(logoPanel, BorderLayout.BEFORE_FIRST_LINE);
