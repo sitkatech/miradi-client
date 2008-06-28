@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -38,20 +39,29 @@ public class ResourcesHandler
 
 	public static URL getResourceURL(String resourceFileName) throws RuntimeException
 	{
+		if(urlOfResourcesZip == null)
+			return getEnglishResourceURL(resourceFileName);
+		
+		return getTranslatedResourceURL(resourceFileName);
+	}
+	
+	private static URL getEnglishResourceURL(String resourceFileName) throws RuntimeException
+	{
 		if(!resourceFileName.startsWith("/"))
 			resourceFileName = "/resources/" + resourceFileName;
 
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
-
+		return url;
+	}
+	
+	private static URL getTranslatedResourceURL(String resourceFileName) throws RuntimeException
+	{
 		try
 		{
-			if(urlOfResourcesZip != null)
-			{
-				return new URL("jar:" + urlOfResourcesZip.toExternalForm() + "!" + resourceFileName);
-			}
-			
-			return url;
+			if(!resourceFileName.startsWith("/"))
+				resourceFileName = "/resources/" + resourceFileName;
+			return new URL("jar:" + urlOfResourcesZip.toExternalForm() + "!" + resourceFileName);
 		}
 		catch(Exception e)
 		{
@@ -65,6 +75,11 @@ public class ResourcesHandler
 		if(url == null)
 			EAM.logError("Unable to find resource: " + ResourcesHandler.class.getPackage().getName() + ":" + resourceFileName);
 		
+		return loadFile(url);
+	}
+
+	private static String loadFile(URL url) throws IOException
+	{
 		InputStream inputStream = url.openStream();
 		UnicodeReader reader = new UnicodeReader(inputStream);
 		try
