@@ -122,7 +122,7 @@ public class EAM
 	{
 		try
 		{
-			String html = ResourcesHandler.loadResourceFile(htmlFileName);
+			String html = Translation.getHtmlContent(htmlFileName);
 			html = html.replace(findToReplace, replacementForStr1);
 			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
 			htmlViwer.showAsOkDialog();

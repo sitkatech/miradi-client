@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.main.ResourcesHandler;
+import org.miradi.utils.Translation;
 
 public class HelpButtonData
 {
@@ -32,7 +32,7 @@ public class HelpButtonData
 
 	public String getHelpContents() throws Exception
 	{
-		return ResourcesHandler.loadResourceFile(htmlFile);
+		return Translation.getHtmlContent(htmlFile);
 	}
 	
 	public String toString()

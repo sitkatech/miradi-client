@@ -76,6 +76,7 @@ import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -248,7 +249,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 	private void displayExpirationNotice() throws Exception
 	{
-		String html = ResourcesHandler.loadResourceFile("ExpiredWarning.html");
+		String html = Translation.getHtmlContent("ExpiredWarning.html");
 		HtmlViewPanelWithMargins viewer = HtmlViewPanelWithMargins.createFromTextString(this, EAM.text("Information"), html);
 		viewer.showAsOkDialog();
 	}

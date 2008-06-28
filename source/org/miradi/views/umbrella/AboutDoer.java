@@ -21,8 +21,8 @@ package org.miradi.views.umbrella;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
+import org.miradi.utils.Translation;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -65,7 +65,7 @@ public class AboutDoer extends MainWindowDoer
 		try
 		{
 			htmlFile = "help/" + htmlFile;
-			return ResourcesHandler.loadResourceFile(htmlFile);
+			return Translation.getHtmlContent(htmlFile);
 		}
 		catch(Exception e)
 		{

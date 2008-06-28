@@ -27,7 +27,6 @@ import javax.swing.JComponent;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.main.ResourcesHandler;
 import org.miradi.wizard.MiradiHtmlViewer;
 
 public class FlexibleWidthHtmlViewer extends MiradiHtmlViewer
@@ -65,7 +64,7 @@ public class FlexibleWidthHtmlViewer extends MiradiHtmlViewer
 	{
 		try
 		{
-			String html = ResourcesHandler.loadResourceFile(htmlFile);
+			String html = Translation.getHtmlContent(htmlFile);
 			return new FlexibleWidthHtmlViewer(mainWindow, html);
 		}
 		catch (Exception e)
