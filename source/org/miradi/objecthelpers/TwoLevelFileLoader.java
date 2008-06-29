@@ -74,16 +74,17 @@ abstract public class TwoLevelFileLoader
 	abstract protected Vector processVector(Vector fileVector);
 
 	private String fileName;
-	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.txt";
-	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
-	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOffices.txt";
-	public final static String WWF_REGIONS_FILE = "WwfRegions.txt";
-	public final static String COUNTRIES_FILE = "Countries.txt";
-	public final static String WWF_ECO_REGIONS_FILE = "EcoRegions.txt";
-	public final static String WWF_LINK_TO_GLOBAL_TARGETS = "WwfLinkToGlobalTargets.txt";
-	public final static String TNC_OPERATING_UNITS_FILE = "TncOperatingUnits.txt";
-	public final static String TNC_TERRESTRIAL_ECO_REGION_FILE = "TncTerrestrialEcoRegions.txt";
-	public final static String TNC_MARINE_ECO_REGION_FILE = "TncMarineEcoRegions.txt";
-	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.txt";
-	public final static String COLORS_FILE = "colors.txt";
+	public final static String COUNTRIES_FILE = "Countries.tsv";
+	public final static String WWF_ECO_REGIONS_FILE = "EcoRegions.tsv";
+	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.tsv";
+	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.tsv";
+	
+	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.tsv";
+	public final static String TNC_MARINE_ECO_REGION_FILE = "TncMarineEcoRegions.tsv";
+	public final static String TNC_OPERATING_UNITS_FILE = "TncOperatingUnits.tsv";
+	public final static String TNC_TERRESTRIAL_ECO_REGION_FILE = "TncTerrestrialEcoRegions.tsv";
+
+	public final static String WWF_LINK_TO_GLOBAL_TARGETS = "WwfLinkToGlobalTargets.tsv";
+	public final static String WWF_MANAGING_OFFICES_FILE = "WwfManagingOffices.tsv";
+	public final static String WWF_REGIONS_FILE = "WwfRegions.tsv";
 }
