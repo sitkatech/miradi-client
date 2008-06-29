@@ -14,7 +14,7 @@
 10613	Altai Alpine Meadow And Tundra	PA	Palearctic	10	Montane Grasslands and Shrublands	PA1001
 10556	Altai Montane Forest And Forest Steppe	PA	Palearctic	5	Temperate Conifer Forests	PA0502
 10588	Altai Steppe And Semi-Desert	PA	Palearctic	8	"Temperate Grasslands, Savannas and Shrublands"	PA0802
-10312	Alto Paran· Atlantic Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0150
+10312	Alto Paran√° Atlantic Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0150
 10480	Amazon-Orinoco-Southern Caribbean Mangroves	NT	Neotropic	14	Mangroves	NT1401
 10145	Amsterdam And Saint-Paul Islands Temperate Grasslands	AT	Afrotropic	8	"Temperate Grasslands, Savannas and Shrublands"	AT0802
 10605	Amur Meadow Steppe	PA	Palearctic	9	Flooded Grasslands and Savannas	PA0901
@@ -53,7 +53,7 @@
 10315	Bahia Coastal Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0103
 10316	Bahia Interior Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0104
 17089	Baja California Desert	NA	Nearctic	13	Deserts and Xeric Shrublands	NA1302
-10306	BajÌo Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0204
+10306	Baj√≠o Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0204
 10512	Balkan Mixed Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0404
 10395	Balsas Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0205
 10513	Baltic Mixed Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0405
@@ -107,7 +107,7 @@
 10397	Cauca Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0207
 10321	Cauca Valley Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0109
 10516	Caucasus Mixed Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0408
-10322	Cayos Miskitos-San AndrÈs & Providencia Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0110
+10322	Cayos Miskitos-San Andr√©s & Providencia Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0110
 10517	Celtic Broadleaf Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0409
 10679	Central Afghan Mountains Xeric Woodlands	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1309
 10193	Central African Mangroves	AT	Afrotropic	14	Mangroves	AT1401
@@ -158,7 +158,7 @@
 10326	Chimalapas Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0114
 10206	Chin Hills-Arakan Yoma Montane Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0109
 10400	Chiquitano Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0212
-10327	ChocÛ-DariÈn Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0115
+10327	Choc√≥-Dari√©n Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0115
 10207	Christmas And Cocos Islands Tropical Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0110
 10638	Chukchi Peninsula Tundra	PA	Palearctic	11	Tundra	PA1104
 17099	Clipperton Island Scrub And Grassland	NT	Neotropic	7	"Tropical and Subtropical Grasslands, Savannas and Shrublands"	NT0705
@@ -169,8 +169,8 @@
 17056	Cook Inlet Basin	NA	Nearctic	6	Boreal Forests/Taiga	NA0611
 10489	Cook Islands Tropical Moist Forests	OC	Oceania	1	Tropical and Subtropical Moist Broadleaf Forests	OC0103
 10061	Coolgardie Woodlands	AA	Australasia	12	"Mediterranean Forests, Woodlands and Scrub"	AA1201
-10458	Cordillera Central P·ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1004
-10459	Cordillera De Merida P·ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1005
+10458	Cordillera Central P√°ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1004
+10459	Cordillera De Merida P√°ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1005
 10329	Cordillera La Costa Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0117
 10330	Cordillera Oriental Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0118
 10652	Corsican Montane Broadleaf And Mixed Forests	PA	Palearctic	12	"Mediterranean Forests, Woodlands and Scrub"	PA1204
@@ -253,7 +253,7 @@
 10491	Fiji Tropical Moist Forests	OC	Oceania	1	Tropical and Subtropical Moist Broadleaf Forests	OC0105
 10033	Fiordland Temperate Forests	AA	Australasia	4	Temperate Broadleaf and Mixed Forests	AA0403
 17033	Florida Peninsula	NA	Nearctic	5	Temperate Conifer Forests	NA0508
-10470	Gal·pagos Islands Scrubland Mosaic	NT	Neotropic	13	Deserts and Xeric Shrublands	NT1307
+10470	Gal√°pagos Islands Scrubland Mosaic	NT	Neotropic	13	Deserts and Xeric Shrublands	NT1307
 10616	Ghorat-Hazarajat Alpine Meadow	PA	Palearctic	10	Montane Grasslands and Shrublands	PA1004
 10072	Gibson Desert	AA	Australasia	13	Deserts and Xeric Shrublands	AA1303
 10594	Gissaro-Alai Open Woodlands	PA	Palearctic	8	"Temperate Grasslands, Savannas and Shrublands"	PA0808
@@ -282,7 +282,7 @@
 17034	Gulf Of Alaska Mountains And Fjordlands	NA	Nearctic	5	Temperate Conifer Forests	NA0509
 10310	Gulf Of California Xeric Scrub	NA	Nearctic	13	Deserts and Xeric Shrublands	NA1309
 10178	Gulf Of Oman Desert And Semi-Desert	AT	Afrotropic	13	Deserts and Xeric Shrublands	AT1306
-10340	Gurupa Varze·	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0126
+10340	Gurupa Varze√°	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0126
 10212	Hainan Island Monsoon Rain Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0169
 10005	Halmahera Rain Forests	AA	Australasia	1	Tropical and Subtropical Moist Broadleaf Forests	AA0106
 17105	Hawaiian High Islands: Hawaii Tropical Dry Forests	OC	Oceania	2	Tropical and Subtropical Dry Broadleaf Forests	OC0202
@@ -319,7 +319,7 @@
 10149	Inner Niger Delta Flooded Savanna	AT	Afrotropic	9	Flooded Grasslands and Savannas	AT0903
 17059	Interior Alaska Taiga	NA	Nearctic	6	Boreal Forests/Taiga	NA0607
 17011	Interior Low Plateau	NA	Nearctic	4	Temperate Broadleaf and Mixed Forests	NA0406
-10342	Iquitos Varze·	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0128
+10342	Iquitos Varze√°	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0128
 10274	Irrawaddy Dry Forests	IM	Indo-Malay	2	Tropical and Subtropical Dry Broadleaf Forests	IM0205
 10214	Irrawaddy Freshwater Swamp Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0116
 10215	Irrawaddy Moist Deciduous Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0117
@@ -332,13 +332,13 @@
 10406	Jamaican Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0218
 10345	Jamaican Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0131
 17000	Japen Rain Forests	AA	Australasia	1	Tropical and Subtropical Moist Broadleaf Forests	AA0108
-10346	Japur·-Solimoes-Negro Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0132
+10346	Japur√°-Solimoes-Negro Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0132
 10064	Jarrah-Karri Forest And Shrublands	AA	Australasia	12	"Mediterranean Forests, Woodlands and Scrub"	AA1204
 10216	Jian Nan Subtropical Evergreen Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0118
 10164	Jos Plateau Forest-Grassland Mosaic	AT	Afrotropic	10	Montane Grasslands and Shrublands	AT1010
-10432	Juan Fern·ndez Islands Temperate Forests	NT	Neotropic	4	Temperate Broadleaf and Mixed Forests	NT0401
+10432	Juan Fern√°ndez Islands Temperate Forests	NT	Neotropic	4	Temperate Broadleaf and Mixed Forests	NT0401
 10687	Junggar Basin Semi-Desert	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1317
-10347	Juru·-Purus Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0133
+10347	Juru√°-Purus Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0133
 10307	Kalaallit Nunaat High Arctic Tundra	NA	Nearctic	11	Tundra	NA1112
 10308	Kalaallit Nunaat Low Arctic Tundra	NA	Nearctic	11	Tundra	NA1113
 10126	Kalahari Acacia-Baikiaea Woodlands	AT	Afrotropic	7	"Tropical and Subtropical Grasslands, Savannas and Shrublands"	AT0709
@@ -371,7 +371,7 @@
 17003	Lake: Afrotropic	AT	Afrotropic	98	Inland Water	AT9898
 17102	Lake: Neotropic	NT	Neotropic	98	Inland Water	NT9898
 17108	Lake: Palearctic	PA	Palearctic	98	Inland Water	PA9898
-10407	Lara-FalcÛn Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0219
+10407	Lara-Falc√≥n Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0219
 10348	Leeward Islands Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0134
 10408	Lesser Antillean Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0220
 10027	Lesser Sundas Deciduous Forests	AA	Australasia	2	Tropical and Subtropical Dry Broadleaf Forests	AA0201
@@ -394,10 +394,10 @@
 10102	Madagascar Subhumid Forests	AT	Afrotropic	1	Tropical and Subtropical Moist Broadleaf Forests	AT0118
 10183	Madagascar Succulent Woodlands	AT	Afrotropic	13	Deserts and Xeric Shrublands	AT1312
 10533	Madeira Evergreen Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0425
-10349	Madeira-TapajÛs Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0135
+10349	Madeira-Tapaj√≥s Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0135
 10409	Magdalena Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0221
 10350	Magdalena Valley Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0136
-10351	Magdalena-Urab· Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0137
+10351	Magdalena-Urab√° Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0137
 10433	Magellanic Subpolar Forests	NT	Neotropic	4	Temperate Broadleaf and Mixed Forests	NT0402
 10222	Malabar Coast Moist Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0124
 10223	Maldives-Lakshadweep-Chagos Archipelago Tropical Moist Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0125
@@ -407,9 +407,9 @@
 10103	Maputaland Coastal Forest Mosaic	AT	Afrotropic	1	Tropical and Subtropical Moist Broadleaf Forests	AT0119
 10166	Maputaland-Pondoland Bushland And Thickets	AT	Afrotropic	10	Montane Grasslands and Shrublands	AT1012
 10410	Maracaibo Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0222
-10352	MarajÛ Varze·	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0138
-10353	Maranhao BabaÁu Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0139
-10411	MaraÒÛn Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0223
+10352	Maraj√≥ Varze√°	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0138
+10353	Maranhao Baba√ßu Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0139
+10411	Mara√±√≥n Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0223
 10504	Marianas Tropical Dry Forests	OC	Oceania	2	Tropical and Subtropical Dry Broadleaf Forests	OC0203
 10081	Marielandia Antarctic Tundra	AN	Antarctic	11	Tundra	AN1101
 10493	Marquesas Tropical Moist Forests	OC	Oceania	1	Tropical and Subtropical Moist Broadleaf Forests	OC0108
@@ -441,7 +441,7 @@
 10599	Mongolian-Manchurian Grassland	PA	Palearctic	8	"Temperate Grasslands, Savannas and Shrublands"	PA0813
 17038	Montane Cordillera	NA	Nearctic	5	Temperate Conifer Forests	NA0513
 10172	Montane Fynbos And Renosterveld	AT	Afrotropic	12	"Mediterranean Forests, Woodlands and Scrub"	AT1203
-10355	Monte Alegre Varze·	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0141
+10355	Monte Alegre Varze√°	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0141
 10474	Motagua Valley Thornscrub	NT	Neotropic	13	Deserts and Xeric Shrublands	NT1312
 10105	Mount Cameroon And Bioko Montane Forests	AT	Afrotropic	1	Tropical and Subtropical Moist Broadleaf Forests	AT0121
 10065	Mount Lofty Woodlands	AA	Australasia	12	"Mediterranean Forests, Woodlands and Scrub"	AA1206
@@ -489,7 +489,7 @@
 10663	Northeastern Spain And Southern France Mediterranean Forests	PA	Palearctic	12	"Mediterranean Forests, Woodlands and Scrub"	PA1215
 10128	Northern Acacia-Commiphora Bushlands And Thickets	AT	Afrotropic	7	"Tropical and Subtropical Grasslands, Savannas and Shrublands"	AT0711
 10569	Northern Anatolian Conifer And Deciduous Forests	PA	Palearctic	5	Temperate Conifer Forests	PA0515
-10461	Northern Andean P·ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1006
+10461	Northern Andean P√°ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1006
 10235	Northern Annamites Rain Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0136
 17016	Northern Appalachian / Acadian	NA	Nearctic	4	Temperate Broadleaf and Mixed Forests	NA0411
 17082	Northern Arctic	NA	Nearctic	11	Tundra	NA1107
@@ -539,10 +539,10 @@
 10362	Pantanos De Centla	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0148
 10363	Pantepui	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0169
 10475	Paraguana Xeric Scrub	NT	Neotropic	13	Deserts and Xeric Shrublands	NT1313
-10453	Paran· Flooded Savanna	NT	Neotropic	9	Flooded Grasslands and Savannas	NT0908
+10453	Paran√° Flooded Savanna	NT	Neotropic	9	Flooded Grasslands and Savannas	NT0908
 10692	Paropamisus Xeric Woodlands	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1322
 10447	Patagonian Steppe	NT	Neotropic	8	"Temperate Grasslands, Savannas and Shrublands"	NT0805
-10413	PatÌa Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0225
+10413	Pat√≠a Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0225
 10243	Peninsular Malaysian Montane Rain Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0144
 10244	Peninsular Malaysian Peat Swamp Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0145
 10245	Peninsular Malaysian Rain Forests	IM	Indo-Malay	1	Tropical and Subtropical Moist Broadleaf Forests	IM0146
@@ -550,7 +550,7 @@
 10365	Pernambuco Interior Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0152
 10693	Persian Gulf Desert And Semi-Desert	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1323
 10366	Peruvian Yungas	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0153
-10367	PetÈn-Veracruz Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0154
+10367	Pet√©n-Veracruz Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0154
 17019	Piedmont	NA	Nearctic	4	Temperate Broadleaf and Mixed Forests	NA0414
 10076	Pilbara Shrublands	AA	Australasia	13	Deserts and Xeric Shrublands	AA1307
 10665	Pindus Mountains Mixed Forests	PA	Palearctic	12	"Mediterranean Forests, Woodlands and Scrub"	PA1217
@@ -559,7 +559,7 @@
 17020	Prairie-Forest Border	NA	Nearctic	4	Temperate Broadleaf and Mixed Forests	NA0415
 10414	Puerto Rican Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0226
 10368	Puerto Rican Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0155
-10369	Purus Varze·	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0156
+10369	Purus Varze√°	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0156
 10370	Purus-Madeira Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0157
 10541	Pyrenees Conifer And Mixed Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0433
 10694	Qaidam Basin Semi-Desert	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1324
@@ -590,10 +590,10 @@
 10130	Sahelian Acacia Savanna	AT	Afrotropic	7	"Tropical and Subtropical Grasslands, Savannas and Shrublands"	AT0713
 10582	Sakhalin Island Taiga	PA	Palearctic	6	Boreal Forests/Taiga	PA0607
 10497	Samoan Tropical Moist Forests	OC	Oceania	1	Tropical and Subtropical Moist Broadleaf Forests	OC0112
-10434	San FÈlix-San Ambrosio Islands Temperate Forests	NT	Neotropic	4	Temperate Broadleaf and Mixed Forests	NT0403
+10434	San F√©lix-San Ambrosio Islands Temperate Forests	NT	Neotropic	4	Temperate Broadleaf and Mixed Forests	NT0403
 10476	San Lucan Xeric Scrub	NT	Neotropic	13	Deserts and Xeric Shrublands	NT1314
 10372	Santa Marta Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0159
-10462	Santa Marta P·ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1007
+10462	Santa Marta P√°ramo	NT	Neotropic	10	Montane Grasslands and Shrublands	NT1007
 10111	Sao Tome And Principe Moist Lowland Forests	AT	Afrotropic	1	Tropical and Subtropical Moist Broadleaf Forests	AT0127
 10544	Sarmatic Mixed Forests	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0436
 10628	Sayan Alpine Meadows And Tundra	PA	Palearctic	10	Montane Grasslands and Shrublands	PA1016
@@ -620,10 +620,10 @@
 17043	Sierra Nevada	NA	Nearctic	5	Temperate Conifer Forests	NA0512
 10077	Simpson Desert	AA	Australasia	13	Deserts and Xeric Shrublands	AA1308
 10416	Sinaloan Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0228
-10417	Sin˙ Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0229
+10417	Sin√∫ Valley Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0229
 10498	Society Islands Tropical Moist Forests	OC	Oceania	1	Tropical and Subtropical Moist Broadleaf Forests	OC0113
 10188	Socotra Island Xeric Shrublands	AT	Afrotropic	13	Deserts and Xeric Shrublands	AT1318
-10376	Solimoes-Japur· Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0163
+10376	Solimoes-Japur√° Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0163
 10017	Solomon Islands Rain Forests	AA	Australasia	1	Tropical and Subtropical Moist Broadleaf Forests	AA0119
 10132	Somali Acacia-Commiphora Bushlands And Thickets	AT	Afrotropic	7	"Tropical and Subtropical Grasslands, Savannas and Shrublands"	AT0715
 10189	Somali Montane Xeric Woodlands	AT	Afrotropic	13	Deserts and Xeric Shrublands	AT1319
@@ -715,7 +715,7 @@
 10701	Taklimakan Desert	PA	Palearctic	13	Deserts and Xeric Shrublands	PA1330
 10379	Talamancan Montane Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0167
 17096	Tamaulipan Thorn Scrub	NA	Nearctic	13	Deserts and Xeric Shrublands	NA1312
-10380	TapajÛs-Xingu Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0168
+10380	Tapaj√≥s-Xingu Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0168
 10550	Tarim Basin Deciduous Forests And Steppe	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0442
 10041	Tasmanian Central Highland Forests	AA	Australasia	4	Temperate Broadleaf and Mixed Forests	AA0411
 10042	Tasmanian Temperate Forests	AA	Australasia	4	Temperate Broadleaf and Mixed Forests	AA0412
@@ -801,8 +801,8 @@
 10505	Yap Tropical Dry Forests	OC	Oceania	2	Tropical and Subtropical Dry Broadleaf Forests	OC0204
 10634	Yarlung Tsangpo Arid Steppe	PA	Palearctic	10	Montane Grasslands and Shrublands	PA1022
 10612	Yellow Sea Saline Meadow	PA	Palearctic	9	Flooded Grasslands and Savannas	PA0908
-10421	Yucat·n Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0235
-10392	Yucat·n Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0181
+10421	Yucat√°n Dry Forests	NT	Neotropic	2	Tropical and Subtropical Dry Broadleaf Forests	NT0235
+10392	Yucat√°n Moist Forests	NT	Neotropic	1	Tropical and Subtropical Moist Broadleaf Forests	NT0181
 17062	Yukon Plateau And Flats	NA	Nearctic	6	Boreal Forests/Taiga	NA0610
 10508	Yunnan Plateau Subtropical Evergreen Forests	PA	Palearctic	1	Tropical and Subtropical Moist Broadleaf Forests	PA0102
 10554	Zagros Mountains Forest Steppe	PA	Palearctic	4	Temperate Broadleaf and Mixed Forests	PA0446
