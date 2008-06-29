@@ -29,8 +29,9 @@ import java.util.Vector;
 
 import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.DelimitedFileLoader;
+import org.miradi.utils.Translation;
 
-abstract public class TwoLevelFileLoader
+abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 {
 	public TwoLevelFileLoader(String fileNameToUse)
 	{
@@ -61,9 +62,15 @@ abstract public class TwoLevelFileLoader
 	
 	private TwoLevelEntry[] getTaxomonies(Reader reader) throws IOException
 	{
-		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector fileVector = getDelimitedContents(reader);
 		Vector taxonomyItems = processVector(fileVector);
 		return (TwoLevelEntry[]) taxonomyItems.toArray(new TwoLevelEntry[0]);
+	}
+	
+	@Override
+	protected String translateLine(String line)
+	{
+		return Translation.translateTabDelimited("choice|" + getFileName() + "|", line);
 	}
 	
 	public String getFileName()

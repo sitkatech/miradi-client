@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import org.miradi.utils.DelimitedFileLoader;
 
-public class AccountingCodeLoader
+public class AccountingCodeLoader extends DelimitedFileLoader
 {
 	public static AccountingCodeData[] load(String data) throws Exception
 	{
@@ -34,7 +34,7 @@ public class AccountingCodeLoader
 
 	public static AccountingCodeData[] load(Reader reader) throws Exception
 	{
-		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector fileVector = new DelimitedFileLoader().getDelimitedContents(reader);
 		return processVector(fileVector);
 	}
 	

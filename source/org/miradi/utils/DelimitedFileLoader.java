@@ -31,7 +31,7 @@ public class DelimitedFileLoader
 
 	static String TAB = "\t";
 
-	public static Vector getDelimitedContents(Reader rawReader)
+	public Vector getDelimitedContents(Reader rawReader)
 			throws IOException
 	{
 		BufferedReader reader = new BufferedReader(rawReader);
@@ -42,6 +42,7 @@ public class DelimitedFileLoader
 			String line = reader.readLine();
 			if(line == null)
 				break;
+			line = translateLine(line);
 			StringTokenizer st = new StringTokenizer(line, TAB);
 			Vector thisLine = new Vector();
 			while(st.hasMoreTokens())
@@ -54,6 +55,12 @@ public class DelimitedFileLoader
 		}
 		reader.close();
 		return lineVector;
+	}
+
+
+	protected String translateLine(String line)
+	{
+		return line;
 	}
 
 
