@@ -35,7 +35,7 @@ public class ConproMiradiHabitatCodeMap
 		UnicodeReader reader = new UnicodeReader(fileToImport.openStream());
 		try 
 		{
-			Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+			Vector fileVector = new DelimitedFileLoader().getDelimitedContents(reader);
 			for (int i = 0; i < fileVector.size(); ++i)
 			{
 				Vector vector = (Vector) fileVector.get(i);

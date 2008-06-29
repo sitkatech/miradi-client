@@ -91,7 +91,7 @@ public class TestDelimitedFileLoader extends EAMTestCase
 	private Vector loadDelimitedData(StringReader data) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( data );
-		Vector rowVector = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector rowVector = new DelimitedFileLoader().getDelimitedContents(reader);
 		return rowVector;
 	}
 	

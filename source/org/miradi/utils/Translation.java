@@ -31,7 +31,6 @@ import java.util.zip.ZipFile;
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
-import org.miradi.questions.ChoiceItem;
 
 public class Translation
 {
@@ -108,12 +107,28 @@ public class Translation
 		return text(key);
 	}
 
-	public static ChoiceItem createChoiceItem(String code, String englishValue)
+	public static String translateTabDelimited(String prefix, String thisLine)
 	{
-// FIXME: In progress
-//		String translatedValue = text("choice|" + code + "|" + englishValue);
-		String translatedValue = englishValue;
-		return new ChoiceItem(code, translatedValue);
+		final String tabSubstitute = "___";
+		if(thisLine.indexOf(tabSubstitute) >= 0)
+			throw new RuntimeException("Unexpected " + tabSubstitute + " in: " + thisLine);
+		
+		if(textTranslations == null)
+			return thisLine;
+		
+		// strip code element
+		int firstTabAt = thisLine.indexOf('\t');
+		String code = thisLine.substring(0, firstTabAt);
+		thisLine = thisLine.substring(firstTabAt + 1);
+		
+		thisLine = thisLine.replaceAll("\\t", tabSubstitute);
+		String translated = textTranslations.get(prefix + thisLine);
+		if(translated == null)
+			thisLine = thisLine.replaceAll(tabSubstitute, tabSubstitute + "~");
+
+		thisLine = code + tabSubstitute + thisLine;
+		thisLine = thisLine.replaceAll(tabSubstitute, "\\\t");
+		return thisLine;
 	}
 
 	private static HashMap<String, String> loadPOFile(ZipFile zip, String entryName) throws IOException
