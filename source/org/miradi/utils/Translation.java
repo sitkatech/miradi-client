@@ -31,6 +31,7 @@ import java.util.zip.ZipFile;
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
+import org.miradi.questions.ChoiceItem;
 
 public class Translation
 {
@@ -105,6 +106,14 @@ public class Translation
 		
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
 		return text(key);
+	}
+
+	public static ChoiceItem createChoiceItem(String code, String englishValue)
+	{
+// FIXME: In progress
+//		String translatedValue = text("choice|" + code + "|" + englishValue);
+		String translatedValue = englishValue;
+		return new ChoiceItem(code, translatedValue);
 	}
 
 	private static HashMap<String, String> loadPOFile(ZipFile zip, String entryName) throws IOException
