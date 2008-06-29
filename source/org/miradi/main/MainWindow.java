@@ -62,7 +62,6 @@ import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
-import org.miradi.objecthelpers.TwoLevelFileLoader;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
@@ -214,7 +213,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		try
 		{
 			File home = EAM.getHomeDirectory();
-			FileInputStream is = new FileInputStream(new File(home, TwoLevelFileLoader.COLORS_FILE));
+			FileInputStream is = new FileInputStream(new File(home, "colors.txt"));
 			ColorsFileLoader colorsLoader = new ColorsFileLoader();
 			TwoLevelEntry[] colors = colorsLoader.load(is);
 			for (int i = 0; i < colors.length; ++i)
