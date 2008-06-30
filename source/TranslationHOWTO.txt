@@ -1,6 +1,6 @@
 Once-per-language command to create an initial .po file from the .pot template:
   cd translations
-  msginit --input=miradi.pot --output-file=xx/miradi_xx.po --locale=xx
+  msginit --input=miradi.pot --output-file=<binaries>/dist/miradi_xx.po --locale=xx
   
 (where xx is the language such as 'fr' or 'es', possibly followed by an 
 underline, then a locale country/region code such as US or CA.)
@@ -13,23 +13,14 @@ then updates the English and Spanish .po files and MiradiContent zip files.
 
 
   
-RULES FOR TRANSLATORS TO LIVE BY:
+IMPORTANT NOTES:
 
 1. Never edit the .pot file, because your changes will be erased next time
 xgettext is run.
 
 2. Use \n to insert hard newlines.
 
-3. Delete "obsolete" entries which appear at the bottom of a .po file, commented-out.
+3. "Obsolete" entries appear at the bottom of a .po file, commented-out.
 
-4. Search the .po file for fuzzy entries, indicated with: 
-      #, fuzzy
-   For each of them, review the translation, fix if necessary, and delete the 
-   fuzzy indicator comment line.
-   
-5. Always use UTF-8.
-
-6. Entries that have a msgid containing vertical bars (|) typically have a 
-category, followed by the bar, followed by the text that will actually be shown.
-Only translate the portion of the text after the final vertical bar.
+4. .pot and .po files are assumed to be in UTF-8
 
