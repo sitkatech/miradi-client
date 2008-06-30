@@ -102,7 +102,7 @@ abstract public class Desire extends BaseObject
 			if(!Factor.isFactor(thisRef))
 				continue;
 			
-			Factor factor = getObjectManager().findFactor(thisRef);
+			Factor factor = Factor.findFactor(getObjectManager(), thisRef);
 			IdList indicatorIds = factor.getDirectOrIndirectIndicators();
 			for(int idIndex = 0; idIndex < indicatorIds.size(); ++idIndex)
 			{

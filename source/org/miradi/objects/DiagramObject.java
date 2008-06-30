@@ -122,7 +122,7 @@ abstract public class DiagramObject extends BaseObject
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) objectManager.findObject(diagramFactorRefs.get(dfr));
 			ORef factorRef = diagramFactor.getWrappedORef();
-			Factor factor = objectManager.findFactor(factorRef);
+			Factor factor = Factor.findFactor(objectManager, factorRef);
 			if(factor.getAllOwnedObjects().contains(annotationRef))
 				return true;
 		}
@@ -198,7 +198,7 @@ abstract public class DiagramObject extends BaseObject
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));
-			factors[i] = getProject().findFactor(diagramFactor.getWrappedORef());
+			factors[i] = Factor.findFactor(getProject(), diagramFactor.getWrappedORef());
 		}
 		
 		return factors;
