@@ -19,6 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Vector;
+
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
@@ -33,17 +38,25 @@ import org.miradi.views.umbrella.HelpAboutPanel;
 
 public class InitialSplashPanel extends HelpAboutPanel
 {
-
 	public InitialSplashPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, AboutDoer.buildMainSection() + AboutDoer.buildEndSection());
+		selectedLanguageCode = mainWindowToUse.getAppPreferences().getCurrentLanguageCode();
+	}
+	
+	public String getSelectedLanguageCode()
+	{
+		return selectedLanguageCode;
 	}
 
 	@Override
 	protected JComponent createButtonBar(EAMDialog dlg)
 	{
 		UiButton close = new UiButton(new CloseAction(dlg, EAM.text("Button|Continue")));
-		ChoiceItemComboBoxWithMaxAsPreferredSize languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(getAvailableLanguageChoices());
+
+		languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(getAvailableLanguageChoices());
+		languageDropdown.setSelectedCode(selectedLanguageCode);
+		languageDropdown.addActionListener(new LanguageSelectionListener());
 
 		Box buttonBar = Box.createHorizontalBox();
 		buttonBar.setBorder(new EmptyBorder(5,5,5,5));
@@ -61,7 +74,9 @@ public class InitialSplashPanel extends HelpAboutPanel
 	{
 		try
 		{
-			return Miradi.getAvailableLanguageCodes().toArray(new ChoiceItem[0]);
+			Vector<ChoiceItem> availableLanguageChoices = new Vector(Miradi.getAvailableLanguageChoices());
+			Collections.sort(availableLanguageChoices);
+			return availableLanguageChoices.toArray(new ChoiceItem[0]);
 		}
 		catch(Exception e)
 		{
@@ -69,4 +84,18 @@ public class InitialSplashPanel extends HelpAboutPanel
 			return new ChoiceItem[0];
 		}
 	}
+	
+	class LanguageSelectionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			int selected = languageDropdown.getSelectedIndex();
+			if(selected >= 0)
+				selectedLanguageCode = languageDropdown.getChoiceItemAt(selected).getCode();
+		}
+		
+	}
+	
+	private ChoiceItemComboBoxWithMaxAsPreferredSize languageDropdown;
+	private String selectedLanguageCode;
 }
