@@ -145,8 +145,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setVisible(true);
 		if(!commandLineArguments.contains("--nosplash"))
 		{
-			new InitialSplashPanel(this).showAsOkDialog();
-//			setLanguage("es");
+			InitialSplashPanel splash = new InitialSplashPanel(this);
+			splash.showAsOkDialog();
+			String languageCode = splash.getSelectedLanguageCode();
+			if(languageCode != null && !languageCode.equals("en"))
+				setLanguage(languageCode);
 		}
 
 		if(hasExpired() || commandLineArguments.contains("--expired"))

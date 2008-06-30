@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,6 +31,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.QuestionManager;
 import org.miradi.utils.Translation;
 
 
@@ -80,18 +85,38 @@ public class Miradi
 		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
 	
-	public static Vector<ChoiceItem> getAvailableLanguageCodes() throws Exception
+	public static HashSet<ChoiceItem> getAvailableLanguageChoices() throws Exception
 	{
-		Vector results = new Vector();
-		results.add(new ChoiceItem("", "English"));
-		results.addAll(getAvailableLanguageCodes(EAM.getHomeDirectory()));
-		results.addAll(getAvailableLanguageCodes(getAppCodeDirectory()));
+		HashSet<ChoiceItem> results = new HashSet();
+		results.addAll(getAvailableLanguageChoices(EAM.getHomeDirectory()));
+		results.addAll(getAvailableLanguageChoices(getAppCodeDirectory()));
 		return results;
 	}
 	
-	private static Vector<ChoiceItem> getAvailableLanguageCodes(File directory) throws Exception
+	private static Vector<ChoiceItem> getAvailableLanguageChoices(File directory) throws Exception
 	{
-		return new Vector();
+		class LanguageJarFilter implements FilenameFilter
+		{
+			public boolean accept(File dir, String name)
+			{
+				if(name.matches("MiradiContent-2\\.1-..\\.jar"))
+					return true;
+				
+				return false;
+			}
+		}
+		
+		ChoiceQuestion languages = QuestionManager.getQuestion(LanguageQuestion.class);
+		Vector<ChoiceItem> results = new Vector();
+		String[] jarNames = directory.list(new LanguageJarFilter());
+		for(int i = 0; i < jarNames.length; ++i)
+		{
+			String[] parts = jarNames[i].split("-");
+			String languageCode = parts[2].split("\\.")[0];
+			String languageName = languages.getValue(languageCode);
+			results.add(new ChoiceItem(languageCode, languageName));
+		}
+		return results;
 	}
 
 	private static File findLanguageJar(String jarName) throws URISyntaxException
@@ -108,7 +133,7 @@ public class Miradi
 		System.exit(2);
 		return null;
 	}
-
+	
 	private static void addThirdPartyJarsToClasspath() throws Exception
 	{
 		String jarSubdirectoryName = "ThirdParty";

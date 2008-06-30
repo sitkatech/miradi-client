@@ -238,6 +238,11 @@ public class AppPreferences
 		wizardFontFamily = fontFamily;
 	}
 	
+	public String getCurrentLanguageCode()
+	{
+		return "en";
+	}
+
 	//TODO: once we are able to save the zoom setting in app pref.
 	public void setTaggedDouble(String tag, double value)
 	{
