@@ -35,4 +35,23 @@ public class ChoiceItemComboBoxWithMaxAsPreferredSize extends ChoiceItemComboBox
 	{
 		return super.getPreferredSize();
 	}
+
+	public void setSelectedCode(String codeToSelect)
+	{
+		for(int row = 0; row < getItemCount(); ++row)
+		{
+			ChoiceItem choiceItem = getChoiceItemAt(row);
+			if(choiceItem.getCode().equals(codeToSelect))
+			{
+				setSelectedIndex(row);
+				return;
+			}
+		}
+		setSelectedIndex(-1);
+	}
+
+	public ChoiceItem getChoiceItemAt(int row)
+	{
+		return (ChoiceItem)getItemAt(row);
+	}
 }
