@@ -1173,12 +1173,6 @@ public class Project
 		return diagramFactors;
 	}
 
-	protected void writeFactor(FactorId factorId) throws IOException, ParseException
-	{
-		Factor cmNode = findNode(factorId);
-		database.writeObject(cmNode);
-	}
-
 	public boolean areLinked(ORef factorRef1, ORef factorRef2)
 	{
 		Factor factor1 = (Factor)findObject(factorRef1);
