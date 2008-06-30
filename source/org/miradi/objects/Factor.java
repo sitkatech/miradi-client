@@ -104,11 +104,6 @@ abstract public class Factor extends BaseObject
 		return type;
 	}
 	
-	public void setNodeType(FactorType typeToUse)
-	{
-		type = typeToUse;
-	}
-	
 	public String getComment()
 	{
 		return comment.get();
