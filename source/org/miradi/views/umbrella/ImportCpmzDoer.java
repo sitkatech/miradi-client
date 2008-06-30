@@ -163,7 +163,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	}
 	
 	@Override
-	public FileFilter[] getFileFilter()
+	public FileFilter[] getFileFilters()
 	{
 		return new FileFilter[] {new CpmzFileFilter()};
 	}
