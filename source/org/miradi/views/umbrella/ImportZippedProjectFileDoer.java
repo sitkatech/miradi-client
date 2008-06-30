@@ -34,7 +34,7 @@ public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 	}
 
-	public FileFilter[] getFileFilter()
+	public FileFilter[] getFileFilters()
 	{
 		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
 	}

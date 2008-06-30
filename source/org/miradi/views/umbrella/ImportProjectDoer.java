@@ -40,8 +40,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 {
 	public abstract void createProject(File importFile, File homeDirectory, String newProjectFilename)  throws Exception;
 	
-	//TODO rename to getFileFilters
-	public abstract FileFilter[] getFileFilter();
+	public abstract FileFilter[] getFileFilters();
 
 	public boolean isAvailable() 
 	{
@@ -68,7 +67,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			
 			FileFilter rawFileFilter = fileChooser.getFileFilter();
-			if (EAMFileSaveChooser.isMiradiFileFilter(getFileFilter(), rawFileFilter))
+			if (EAMFileSaveChooser.isMiradiFileFilter(getFileFilters(), rawFileFilter))
 			{
 				MiradiFileFilter fileFilter  = (MiradiFileFilter) fileChooser.getFileFilter();
 				fileToImport = EAMFileSaveChooser.getFileNameWithExtension(fileToImport, fileFilter.getFileExtension());	
@@ -99,7 +98,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 	
 	private void addFileFilters(JFileChooser fileChooser)
 	{
-		FileFilter[] filters = getFileFilter();
+		FileFilter[] filters = getFileFilters();
 		for (int i = 0; i < filters.length; ++i)
 		{
 			fileChooser.addChoosableFileFilter(filters[i]);
