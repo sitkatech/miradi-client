@@ -25,16 +25,15 @@ import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
 import org.jgraph.graph.GraphConstants;
-import org.miradi.diagram.cells.FactorCell;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
@@ -51,9 +50,8 @@ public class TestDiagramFactor extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 
-		BaseId rawTargetId = project.createObjectAndReturnId(ObjectType.TARGET);
-		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
-		cmTarget = (Target)project.findNode(cmTargetId);
+		ORef rawTargetRef = project.createObject(ObjectType.TARGET);
+		cmTarget = (Target) Factor.findFactor(project, rawTargetRef);
 		
 		intervention = project.createFactorCell(ObjectType.STRATEGY);
 		indirectFactor = project.createFactorCell(ObjectType.CAUSE);
