@@ -48,7 +48,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
 	{
 		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
-		Factor insertedNode = getProject().findNode(newlyInserted.getWrappedId());
+		Factor insertedNode = Factor.findFactor(getProject(), newlyInserted.getWrappedORef());
 		if(!insertedNode.isContributingFactor())
 			warnNotContributingFactor();
 	}

@@ -26,7 +26,6 @@ import java.text.ParseException;
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.main.EAMTestCase;
@@ -36,13 +35,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.Target;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -102,8 +94,8 @@ public class TestObjectManager extends EAMTestCase
 		String FAIR = "2";
 		String sampleStatusCode = FAIR;
 
-		FactorId targetId = project.createFactorAndReturnId(ObjectType.TARGET);
-		Target target = (Target)project.findNode(targetId);
+		ORef targetRef = project.createObject(ObjectType.TARGET);
+		Target target = Target.find(project, targetRef);
 		target.setData(Target.TAG_TARGET_STATUS, sampleStatusCode);
 		
 		String simple = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);

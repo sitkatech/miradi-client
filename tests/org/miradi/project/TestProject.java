@@ -148,7 +148,7 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramFactor threat = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
-		Cause factor = (Cause)project.findNode(threat.getWrappedId());
+		Cause factor = Cause.find(project, threat.getWrappedORef());
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
@@ -763,7 +763,7 @@ public class TestProject extends EAMTestCase
 	{
 		int memorizedHighestId = -1;
 		
-		FactorId factorId;
+		ORef factorRef;
 		File tempDir = createTempDirectory();
 		Project diskProject = new Project();
 		diskProject.createOrOpen(tempDir);
@@ -773,7 +773,7 @@ public class TestProject extends EAMTestCase
 		try
 		{
 			DiagramFactor cause = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.CAUSE);
-			factorId = cause.getWrappedId();
+			factorRef = cause.getWrappedORef();
 			DiagramFactor target = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.TARGET);
 			
 			LinkCreator linkCreator = new LinkCreator(diskProject);
@@ -809,7 +809,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't populate diagram?", 3, conceptualModel.getAllDiagramFactorRefs().size());
 			assertEquals("didn't preserve next node id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
 			assertEquals("didn't preserve next annotation id?", memorizedHighestId, loadedProject.getAnnotationIdAssigner().getHighestAssignedId());
-			Cause factor = (Cause)loadedProject.findNode(factorId);
+			Cause factor = Cause.find(loadedProject, factorRef);
 			assertTrue("didn't update factor target count?", factor.isDirectThreat());
 		}
 		finally

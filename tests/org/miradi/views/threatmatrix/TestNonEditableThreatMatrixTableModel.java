@@ -162,7 +162,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	private DiagramFactor createNode(int type, String name) throws Exception
 	{
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(type);
-		Factor targetNode = project.findNode(target.getWrappedId());
+		Factor targetNode = Factor.findFactor(project, target.getWrappedORef());
 		targetNode.setLabel(name);
 		return target;
 	}
