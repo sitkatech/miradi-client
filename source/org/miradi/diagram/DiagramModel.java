@@ -131,7 +131,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
-		Factor factor = project.findNode(diagramFactor.getWrappedId());
+		Factor factor = Factor.findFactor(project, diagramFactor.getWrappedORef());
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
 		factorsToDiagramFactors.put(diagramFactor.getWrappedId(), diagramFactor.getDiagramFactorId());

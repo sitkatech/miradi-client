@@ -24,7 +24,6 @@ import java.text.ParseException;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -78,8 +77,7 @@ public class SampleDiagramBuilder
 		for (int i = 0; i < diagramFactorIds.size(); ++i)
 		{
 			DiagramFactor diagramFactor = diagramFactorPool.find(diagramFactorIds.get(i));
-			FactorId factorId = diagramFactor.getWrappedId();
-			Factor factor = project.findNode(factorId);
+			Factor factor = Factor.findFactor(project, diagramFactor.getWrappedORef());
 			if (factor.getLabel().equals(label))
 				return diagramFactor;
 		}
