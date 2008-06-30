@@ -150,7 +150,7 @@ public class Translation
 
 	private static URL getEnglishTranslationFileURL(String filename) throws IOException
 	{
-		String resourceName = "/translations/en/" + filename;
+		String resourceName = "/resources/" + filename;
 		URL url = Translation.class.getResource(resourceName);
 		if(url == null)
 			throw new IOException("Translations not found: " + resourceName);
