@@ -44,6 +44,7 @@ public class QuestionManager
 		addQuestion(new FontSizeQuestion());
 		addQuestion(new IndicatorStatusRatingQuestion());
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
+		addQuestion(new LanguageQuestion());
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportStatusQuestion());
 		addQuestion(new ProtectedAreaCategoryQuestion());
