@@ -29,7 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import org.martus.swing.UiLabel;
-import org.miradi.actions.EAMAction;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -111,19 +110,19 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return field;
 	}
 	
-	protected void addFieldsOnOneLine(String fieldTag, Icon icon, ObjectDataInputField[] fields)
+	protected void addFieldsOnOneLine(String translatedString, Icon icon, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);		
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		addLabelWithIcon(fieldTag, icon);
+		addLabelWithIcon(translatedString, icon);
 		add(fieldPanel);
 	}
 	
-	protected void addFieldsOnOneLine(String fieldTag, Icon icon, String[] fieldLabelTexts, ObjectDataInputField[] fields)
+	protected void addFieldsOnOneLine(String translatedString, Icon icon, String[] fieldLabelTexts, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fieldLabelTexts, fields);		
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		addLabelWithIcon(fieldTag, icon);
+		addLabelWithIcon(translatedString, icon);
 		add(fieldPanel);
 	}
 	
@@ -147,10 +146,10 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 	
-	protected void addFieldsOnOneLine(String label, ObjectDataInputField[] fields)
+	protected void addFieldsOnOneLine(String translatedLabel, ObjectDataInputField[] fields)
 	{
 		JPanel fieldPanel = createFieldPanel(fields);
-		addLabel(label);
+		addLabel(translatedLabel);
 		add(fieldPanel);
 	}
 	
@@ -193,11 +192,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return fieldPanel;
 	}
 
-	protected void addFieldWithEditButton(String label, ObjectDataInputField field, EAMAction action)
-	{
-		addFieldWithEditButton(label, field, new PanelButton(action));
-	}
-
 	protected void addFieldWithEditButton(PanelTitleLabel label, ObjectDataInputField field, PanelButton button)
 	{
 		super.addField(field);
@@ -210,22 +204,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
-	protected void addButtons(String label, PanelButton[] buttons)
-	{
-		OneRowPanel fieldPanel = new OneRowPanel();
-		fieldPanel.setGaps(3);
-		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		
-		for (int i = 0; i < buttons.length; ++i)
-		{
-			fieldPanel.add(buttons[i]);
-		}
-		
-		addLabel(label);
-		add(fieldPanel);
-	}
-	
-	protected void addFieldWithEditButton(String label, ObjectDataInputField field, PanelButton button)
+	protected void addFieldWithEditButton(String translatedLabel, ObjectDataInputField field, PanelButton button)
 	{
 		super.addField(field);
 		OneRowPanel fieldPanel = new OneRowPanel();
@@ -233,18 +212,20 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
-		addLabel(label);
+		addLabel(translatedLabel);
 		add(fieldPanel);
 	}
 
-	public void addLabelWithIcon(String fieldTag, Icon icon)
+	public void addLabelWithIcon(String translatedString, Icon icon)
 	{
-		addLabel(getORef(0).getObjectType(), fieldTag, icon);
+		UiLabel label = new PanelTitleLabel(translatedString, icon);
+		addLabel(label);
 	}
 	
-	public void addLabel(String fieldTag)
+	public void addLabel(String translatedText)
 	{
-		addLabel(getORef(0).getObjectType(), fieldTag);
+		UiLabel label = new PanelTitleLabel(translatedText);
+		addLabel(label);
 	}
 	
 	public void addLabel(int objectType, String fieldTag)
