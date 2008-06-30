@@ -25,7 +25,6 @@ import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -37,10 +36,10 @@ import org.miradi.questions.ViabilityModeQuestion;
 
 public class TargetViabilityNode extends TreeTableNode
 {
-	public TargetViabilityNode(Project projectToUse, FactorId targetId) throws Exception
+	public TargetViabilityNode(Project projectToUse, ORef targetRef) throws Exception
 	{
 		project = projectToUse;
-		target = (Target)project.findNode(targetId);
+		target =  Target.find(project, targetRef);
 		rebuild();
 	}
 	
