@@ -36,6 +36,7 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.ThreatRatingBundle;
@@ -98,8 +99,8 @@ public class ThreatRatingBundlePanel extends DisposablePanel
 		{
 			FactorId threatId = workingBundle.getThreatId();
 			FactorId targetId = workingBundle.getTargetId();
-			threatName.setText(getNodeName(threatId));
-			targetName.setText(getNodeName(targetId));
+			threatName.setText(getNodeName(new ORef(Cause.getObjectType(), threatId)));
+			targetName.setText(getNodeName(new ORef(Target.getObjectType(), targetId)));
 			threatName.setBorder(new LineBorder(Color.BLACK));
 			targetName.setBorder(new LineBorder(Color.BLACK));
 			
@@ -110,9 +111,9 @@ public class ThreatRatingBundlePanel extends DisposablePanel
 		}
 	}
 	
-	private String getNodeName(FactorId nodeId) throws Exception
+	private String getNodeName(ORef factorRef) throws Exception
 	{
-		return project.findNode(nodeId).getLabel();
+		return Factor.findFactor(project, factorRef).getLabel();
 	}
 	
 	private JPanel createHeader() throws Exception

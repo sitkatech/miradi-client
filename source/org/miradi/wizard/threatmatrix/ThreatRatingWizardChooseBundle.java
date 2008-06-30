@@ -30,6 +30,10 @@ import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Target;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.views.threatmatrix.ThreatMatrixTableModel;
 import org.miradi.views.threatmatrix.ThreatMatrixView;
@@ -69,9 +73,9 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	}
 	
 
-	private String getName(FactorId nodeId)
+	private String getName(ORef factorRef)
 	{
-		return getMainWindow().getProject().findNode(nodeId).getLabel();
+		return Factor.findFactor(getMainWindow().getProject(), factorRef).getLabel();
 	}
 	
 	
@@ -86,7 +90,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 				DefaultComboBoxModel cbm = new DefaultComboBoxModel(getThreatNames());
 				threatBox.setModel(cbm);
 				if (bundle!=null) 
-					threatBox.setSelectedItem(getName(bundle.getThreatId()));
+					threatBox.setSelectedItem(getName(new ORef(Cause.getObjectType(), bundle.getThreatId())));
 			}
 
 			if (name.equals("Target")) 
@@ -95,7 +99,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 				DefaultComboBoxModel cbm = new DefaultComboBoxModel(getTargetNames());
 				targetBox.setModel(cbm);
 				if (bundle!=null) 
-					targetBox.setSelectedItem(getName(bundle.getTargetId()));
+					targetBox.setSelectedItem(getName(new ORef(Target.getObjectType(), bundle.getTargetId())));
 			}
 		}
 		catch (Exception e)

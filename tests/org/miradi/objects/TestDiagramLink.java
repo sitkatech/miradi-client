@@ -58,13 +58,11 @@ public class TestDiagramLink extends ObjectTestCase
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
 
-		BaseId rawInterventionId = project.createObjectAndReturnId(ObjectType.STRATEGY);
-		FactorId interventionId = new FactorId(rawInterventionId.asInt());
-		cmIntervention = project.findNode(interventionId);
+		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
+		cmIntervention = Factor.findFactor(project, strategyRef);
 		
-		BaseId rawTargetId = project.createObjectAndReturnId(ObjectType.TARGET);
-		FactorId targetId = new FactorId(rawTargetId.asInt());
-		cmTarget = project.findNode(targetId);
+		ORef targetRef = project.createObject(ObjectType.TARGET);
+		cmTarget = Factor.findFactor(project, targetRef);
 	}
 	
 	public void tearDown() throws Exception

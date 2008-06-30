@@ -30,11 +30,10 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
-import org.miradi.project.Project;
-import org.miradi.project.ProjectUnzipper;
-import org.miradi.project.ProjectZipper;
+import org.miradi.objects.Target;
 
 public class TestProjectUnzipper extends EAMTestCase
 {
@@ -123,7 +122,7 @@ public class TestProjectUnzipper extends EAMTestCase
 					{
 						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
 						unzippedProject.createOrOpen(unzippedDirectory);
-						Factor target = unzippedProject.findNode(targetId);
+						Factor target = Target.find(unzippedProject, new ORef(Target.getObjectType(), targetId));
 						assertNotNull("didn't find the target we wrote?", target);
 					}
 					finally

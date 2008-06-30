@@ -39,6 +39,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ValueOptionPool;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
@@ -294,7 +295,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		FactorId threatId = bundle.getThreatId();
 		FactorId targetId = bundle.getTargetId();
-		Factor threat = project.findNode(threatId);
+		Factor threat = Cause.find(project, new ORef(Cause.getObjectType(), threatId));
 		if(threat == null)
 			return false;
 		
