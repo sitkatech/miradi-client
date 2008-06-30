@@ -23,10 +23,12 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.Translation;
 
 
@@ -76,6 +78,20 @@ public class Miradi
 		String jarName = "MiradiContent-2.1-" + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
+	}
+	
+	public static Vector<ChoiceItem> getAvailableLanguageCodes() throws Exception
+	{
+		Vector results = new Vector();
+		results.add(new ChoiceItem("", "English"));
+		results.addAll(getAvailableLanguageCodes(EAM.getHomeDirectory()));
+		results.addAll(getAvailableLanguageCodes(getAppCodeDirectory()));
+		return results;
+	}
+	
+	private static Vector<ChoiceItem> getAvailableLanguageCodes(File directory) throws Exception
+	{
+		return new Vector();
 	}
 
 	private static File findLanguageJar(String jarName) throws URISyntaxException
