@@ -409,11 +409,6 @@ public class Project
 		return objectManager.findObject(new ORef(objectType, objectId));
 	}
 	
-	public Factor findNode(FactorId nodeId)
-	{
-		return objectManager.findNode(nodeId);
-	}
-	
 	public ProjectInfo getProjectInfo()
 	{
 		return projectInfo;
