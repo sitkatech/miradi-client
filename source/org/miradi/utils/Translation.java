@@ -84,7 +84,8 @@ public class Translation
 		String label = fieldLabelTranslations.getProperty(fullTag);
 		if(label == null)
 		{
-			EAM.logError("Could not find tag in fieldLabels file: type=" + objectType + "  tag=" + fieldTag);
+			EAM.logError("Could not find tag in fieldLabels file: " + objectType + "." + fieldTag + " = " + fieldTag);
+			EAM.logStackTrace();
 			label = fieldTag;
 		}
 		if(textTranslations == null)
