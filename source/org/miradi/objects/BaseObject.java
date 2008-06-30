@@ -369,7 +369,7 @@ abstract public class BaseObject
 		} 
 		
 		if(!doesFieldExist(fieldTag))
-			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
+			throw new RuntimeException("Object Ref = " + getRef() + ". Attempted to set data for bad field: " + fieldTag);
 
 		ORefSet oldReferrals = getAllReferencedObjects();
 		getField(fieldTag).set(dataValue);
