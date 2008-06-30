@@ -29,7 +29,6 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.miradi.icons.IndicatorIcon;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -39,9 +38,9 @@ import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 abstract public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
 {
-	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId) throws Exception
+	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{
-		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), nodeId),
+		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	

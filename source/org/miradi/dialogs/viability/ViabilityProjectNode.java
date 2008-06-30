@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -94,7 +93,7 @@ public class ViabilityProjectNode extends TreeTableNode
 		Target[] factors  = project.getTargetPool().getTargets();
 		for (int i=0; i< factors.length; ++i)
 		{
-			vector.add(new TargetViabilityNode(project, (FactorId) factors[i].getId()));
+			vector.add(new TargetViabilityNode(project, factors[i].getRef()));
 		}
 		children = vector;
 	}

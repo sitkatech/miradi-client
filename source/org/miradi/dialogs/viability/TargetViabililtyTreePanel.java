@@ -26,16 +26,15 @@ import org.miradi.actions.ActionDeleteIndicator;
 import org.miradi.actions.ActionDeleteIndicatorMeasurement;
 import org.miradi.dialogs.diagram.FactorTreeTableNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.ids.FactorId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
-	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, FactorId targetId) throws Exception
+	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, ORef targetRef) throws Exception
 	{
-		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetId));
+		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetRef));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
