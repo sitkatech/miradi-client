@@ -19,12 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import javax.swing.JButton;
+import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.border.EmptyBorder;
 
+import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.miradi.dialogs.base.EAMDialog;
-import org.miradi.layout.OneRowPanel;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBoxWithMaxAsPreferredSize;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.views.umbrella.AboutDoer;
 import org.miradi.views.umbrella.HelpAboutPanel;
 
@@ -39,16 +42,31 @@ public class InitialSplashPanel extends HelpAboutPanel
 	@Override
 	protected JComponent createButtonBar(EAMDialog dlg)
 	{
-		JButton close = new JButton(new CloseAction(dlg, EAM.text("Button|Continue")));
+		UiButton close = new UiButton(new CloseAction(dlg, EAM.text("Button|Continue")));
+		ChoiceItemComboBoxWithMaxAsPreferredSize languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(getAvailableLanguageChoices());
 
-		OneRowPanel buttonBar = new OneRowPanel();
-		buttonBar.setMargins(5);
-		buttonBar.setAlignmentRight();
+		Box buttonBar = Box.createHorizontalBox();
+		buttonBar.setBorder(new EmptyBorder(5,5,5,5));
 		buttonBar.setBackground(AppPreferences.getWizardTitleBackground());
-		buttonBar.add(new UiLabel(" "));
+		buttonBar.add(new UiLabel(EAM.text("Language: ")));
+		buttonBar.add(languageDropdown);
+		buttonBar.add(Box.createHorizontalGlue());
 		buttonBar.add(close);
 
 		setCloseButton(close);
 		return buttonBar;
+	}
+
+	private ChoiceItem[] getAvailableLanguageChoices()
+	{
+		try
+		{
+			return Miradi.getAvailableLanguageCodes().toArray(new ChoiceItem[0]);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new ChoiceItem[0];
+		}
 	}
 }
