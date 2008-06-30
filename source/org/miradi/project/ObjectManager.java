@@ -28,7 +28,6 @@ import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAM;
@@ -390,16 +389,6 @@ public class ObjectManager
 		return pool.findObject(objectId);
 	}
 	
-	public Factor findNode(FactorId id)
-	{
-		return (Factor)findObject(new ORef(ObjectType.FACTOR, id));
-	}
-	
-	public Factor findFactor(ORef ref)
-	{
-		return (Factor) findObject(ref);
-	}
-
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		return getObjectData(new ORef(objectType, objectId), fieldTag);
