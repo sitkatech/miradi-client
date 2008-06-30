@@ -30,6 +30,8 @@ import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileFilter;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -38,6 +40,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 {
 	public abstract void createProject(File importFile, File homeDirectory, String newProjectFilename)  throws Exception;
 	
+	//TODO rename to getFileFilters
 	public abstract FileFilter[] getFileFilter();
 
 	public boolean isAvailable() 
@@ -63,6 +66,13 @@ public abstract class ImportProjectDoer extends ViewDoer
 			String projectName = RenameProjectDoer.getValidatedUserProjectName(getMainWindow(), fileToImport);
 			if (projectName == null)
 				return;
+			
+			FileFilter rawFileFilter = fileChooser.getFileFilter();
+			if (EAMFileSaveChooser.isMiradiFileFilter(getFileFilter(), rawFileFilter))
+			{
+				MiradiFileFilter fileFilter  = (MiradiFileFilter) fileChooser.getFileFilter();
+				fileToImport = EAMFileSaveChooser.getFileNameWithExtension(fileToImport, fileFilter.getFileExtension());	
+			}
 			
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			

@@ -53,10 +53,13 @@ public abstract class EAMFileSaveChooser
 		if (dlg.showDialog(mainWindow, EAM.text(getDialogApprovelButtonText())) != JFileChooser.APPROVE_OPTION)
 			return null;
 
-		File chosen = dlg.getSelectedFile();		
-		String ext = ((MiradiFileFilter)dlg.getFileFilter()).getFileExtension();
-		if (!chosen.getName().toLowerCase().endsWith(ext))
-			chosen = new File(chosen.getAbsolutePath() + ext);
+		File chosen = dlg.getSelectedFile();
+		FileFilter rawFileFilter = dlg.getFileFilter();
+		if (EAMFileSaveChooser.isMiradiFileFilter(getFileFilter(), rawFileFilter))
+		{
+			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
+			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
+		}
 
 		if (chosen.exists())
 		{
@@ -72,6 +75,25 @@ public abstract class EAMFileSaveChooser
 
 	}
 
+	public static File getFileNameWithExtension(File chosen, String fileExtension)
+	{
+		if (!chosen.getName().toLowerCase().endsWith(fileExtension))
+			chosen = new File(chosen.getAbsolutePath() + fileExtension);
+		
+		return chosen;
+	}
+	
+	public static boolean isMiradiFileFilter(FileFilter[] fileFilters, FileFilter fileFilter)
+	{
+		for (int i = 0; i < fileFilters.length; ++i)
+		{
+			if (fileFilters[i].getClass() == fileFilter.getClass())
+				return true;
+		}
+		
+		return false;
+	}
+	
 	public String getDialogApproveTitleText()
 	{
 		return EAM.substitute(EAM.text("Title|Save %s File"), getUiExtensionTag());
