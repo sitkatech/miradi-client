@@ -38,6 +38,6 @@ public class ShowCurrentWizardFileNameDoer extends MainWindowDoer
 			return;
 		
 		String currentStepName = getMainWindow().getWizardManager().getCurrentStepName();
-		EAM.notifyDialog(EAM.text(EAM.substitute("Current Wizard Step Name:\n %s", currentStepName)));
+		EAM.notifyDialog(EAM.substitute(EAM.text("Current Wizard Step Name:\n %s"), currentStepName));
 	}
 }
