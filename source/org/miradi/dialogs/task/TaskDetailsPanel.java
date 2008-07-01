@@ -117,7 +117,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Task Details Panel Title|");
+		return EAM.text("Task Details Panel Title");
 	}
 
 	private PanelTitleLabel taskNameLabel;
