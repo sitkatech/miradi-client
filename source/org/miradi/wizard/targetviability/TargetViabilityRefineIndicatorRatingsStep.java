@@ -25,9 +25,9 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability4Step extends TargetViabilityWizardStep
+public class TargetViabilityRefineIndicatorRatingsStep extends TargetViabilityWizardStep
 {
-	public TargetViability4Step(WizardPanel wizardToUse)
+	public TargetViabilityRefineIndicatorRatingsStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -41,9 +41,9 @@ public class TargetViability4Step extends TargetViabilityWizardStep
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-	
+
 	public String getSubHeading()
 	{
-		return EAM.text("2) Identify indicators");
+		return EAM.text("3b) Refine indicator ratings");
 	}
 }

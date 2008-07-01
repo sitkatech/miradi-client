@@ -77,12 +77,12 @@ import org.miradi.wizard.summary.SummaryWizardDefineProjecScope;
 import org.miradi.wizard.summary.SummaryWizardDefineProjectVision;
 import org.miradi.wizard.summary.SummaryWizardDefineTeamMembers;
 import org.miradi.wizard.summary.SummaryWizardRolesAndResponsibilities;
-import org.miradi.wizard.targetviability.TargetViability3Step;
-import org.miradi.wizard.targetviability.TargetViability4Step;
-import org.miradi.wizard.targetviability.TargetViability5Step;
-import org.miradi.wizard.targetviability.TargetViability6Step;
-import org.miradi.wizard.targetviability.TargetViability7Step;
-import org.miradi.wizard.targetviability.TargetViability8Step;
+import org.miradi.wizard.targetviability.TargetViabilityDetermineKeyAttributesStep;
+import org.miradi.wizard.targetviability.TargetViabilityIdentifyIndicatorsStep;
+import org.miradi.wizard.targetviability.TargetViabilityDevelopDraftIndicatorsStep;
+import org.miradi.wizard.targetviability.TargetViabilityRefineIndicatorRatingsStep;
+import org.miradi.wizard.targetviability.TargetViabilityRecordInitialMeasurementStep;
+import org.miradi.wizard.targetviability.TargetViabilityDetermineDesiredStatusStep;
 import org.miradi.wizard.targetviability.TargetViabilityOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatMatrixOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
@@ -217,13 +217,13 @@ public class WizardManager
 		
 		createStepEntry(new DescribeTargetStatusStep(panel)).
 			createControl(CONTROL_NEXT, TargetStressesStep.class);
-		createStepEntry(new TargetViability3Step(panel)).
+		createStepEntry(new TargetViabilityDetermineKeyAttributesStep(panel)).
 			createControl(CONTROL_BACK, TargetViabilityMethodChoiceStep.class);
-		createStepEntry(new TargetViability4Step(panel));
-		createStepEntry(new TargetViability5Step(panel));
-		createStepEntry(new TargetViability6Step(panel));
-		createStepEntry(new TargetViability7Step(panel));
-		createStepEntry(new TargetViability8Step(panel));
+		createStepEntry(new TargetViabilityIdentifyIndicatorsStep(panel));
+		createStepEntry(new TargetViabilityDevelopDraftIndicatorsStep(panel));
+		createStepEntry(new TargetViabilityRefineIndicatorRatingsStep(panel));
+		createStepEntry(new TargetViabilityRecordInitialMeasurementStep(panel));
+		createStepEntry(new TargetViabilityDetermineDesiredStatusStep(panel));
 	}
 	
 	public void createSummaryStepEntries(WizardPanel panel)
@@ -251,7 +251,7 @@ public class WizardManager
 		createStepEntry(new TargetViabilityMethodChoiceStep(panel)).
 			createControl("DoneViabilityAnalysis", TargetStressesStep.class).
 			createControl(CONTROL_NEXT, TargetStressesStep.class).
-			createControl("DetailedViability", TargetViability3Step.class).
+			createControl("DetailedViability", TargetViabilityDetermineKeyAttributesStep.class).
 			createControl("SimpleMode", DescribeTargetStatusStep.class);
 	
 		createStepEntry(new TargetStressesStep(panel))
@@ -367,12 +367,12 @@ public class WizardManager
 				TargetViabilityOverviewStep.class,
 				TargetViabilityMethodChoiceStep.class,
 				DescribeTargetStatusStep.class,
-				TargetViability3Step.class,
-				TargetViability4Step.class,
-				TargetViability5Step.class,
-				TargetViability6Step.class,
-				TargetViability7Step.class,
-				TargetViability8Step.class,
+				TargetViabilityDetermineKeyAttributesStep.class,
+				TargetViabilityIdentifyIndicatorsStep.class,
+				TargetViabilityDevelopDraftIndicatorsStep.class,
+				TargetViabilityRefineIndicatorRatingsStep.class,
+				TargetViabilityRecordInitialMeasurementStep.class,
+				TargetViabilityDetermineDesiredStatusStep.class,
 				
 				TargetStressesStep.class,
 

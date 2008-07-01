@@ -25,9 +25,9 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability7Step extends TargetViabilityWizardStep
+public class TargetViabilityDevelopDraftIndicatorsStep extends TargetViabilityWizardStep
 {
-	public TargetViability7Step(WizardPanel wizardToUse)
+	public TargetViabilityDevelopDraftIndicatorsStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -44,6 +44,6 @@ public class TargetViability7Step extends TargetViabilityWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("4) Record initial measurement");
+		return EAM.text("3a) Develop draft indicator ratings");
 	}
 }
