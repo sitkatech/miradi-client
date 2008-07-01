@@ -28,7 +28,7 @@ public class ProcessMenu5 extends MiradiMenu
 {
 	public ProcessMenu5(Actions actions)
 	{
-		super(EAM.text("5. Capture and Share Learning"), actions);
+		super(EAM.text("Menu|5. Capture and Share Learning"), actions);
 		setMnemonic(KeyEvent.VK_C);
 		
 		add(new ProcessMenu5a(actions));

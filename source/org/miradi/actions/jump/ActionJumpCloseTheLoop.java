@@ -32,7 +32,7 @@ public class ActionJumpCloseTheLoop extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Close the Loop");
+		return EAM.text("Action|Close the Loop");
 	}
 
 }

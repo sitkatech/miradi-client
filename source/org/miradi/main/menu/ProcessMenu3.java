@@ -28,7 +28,7 @@ public class ProcessMenu3 extends MiradiMenu
 {
 	public ProcessMenu3(Actions actionsToUse)
 	{
-		super(EAM.text("3. Implement Actions &  Monitoring"), actionsToUse);
+		super(EAM.text("Menu|3. Implement Actions &  Monitoring"), actionsToUse);
 		setMnemonic(KeyEvent.VK_M);
 		
 		add(new ProcessMenu3a(actions));

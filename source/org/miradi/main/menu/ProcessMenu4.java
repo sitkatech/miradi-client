@@ -28,7 +28,7 @@ public class ProcessMenu4 extends MiradiMenu
 {
 	public ProcessMenu4(Actions actions)
 	{
-		super(EAM.text("4. Analyze, Use, Adapt"), actions);
+		super(EAM.text("Menu|4. Analyze, Use, Adapt"), actions);
 		setMnemonic(KeyEvent.VK_I);
 		
 		add(new ProcessMenu4a(actions));
