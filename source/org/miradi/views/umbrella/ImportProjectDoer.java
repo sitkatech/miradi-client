@@ -31,7 +31,6 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
-import org.miradi.utils.MiradiFileFilter;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -66,12 +65,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			if (projectName == null)
 				return;
 			
-			FileFilter rawFileFilter = fileChooser.getFileFilter();
-			if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
-			{
-				MiradiFileFilter fileFilter  = (MiradiFileFilter) fileChooser.getFileFilter();
-				fileToImport = EAMFileSaveChooser.getFileNameWithExtension(fileToImport, fileFilter.getFileExtension());	
-			}
+			fileToImport = EAMFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
 			
@@ -95,7 +89,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			showImportFailedErrorDialog(e.getMessage());
 		}
 	}
-	
+
 	private void addFileFilters(JFileChooser fileChooser)
 	{
 		FileFilter[] filters = getFileFilters();

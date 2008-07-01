@@ -57,12 +57,7 @@ public abstract class EAMFileSaveChooser
 			return null;
 
 		File chosen = dlg.getSelectedFile();
-		FileFilter rawFileFilter = dlg.getFileFilter();
-		if (!dlg.getAcceptAllFileFilter().equals(rawFileFilter))
-		{
-			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
-			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
-		}
+		chosen = getFileWithExtension(dlg, chosen);
 
 		if (chosen.exists())
 		{
@@ -76,6 +71,18 @@ public abstract class EAMFileSaveChooser
 		currentDirectory = chosen.getParent();
 		return chosen;
 
+	}
+
+	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
+	{
+		FileFilter rawFileFilter = fileChooser.getFileFilter();
+		if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
+		{
+			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
+			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
+		}
+		
+		return chosen;
 	}
 
 	public static File getFileNameWithExtension(File chosen, String fileExtension)
