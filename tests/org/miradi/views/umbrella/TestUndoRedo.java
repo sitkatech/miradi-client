@@ -93,7 +93,7 @@ public class TestUndoRedo extends EAMTestCase
 		DiagramFactor node = diagramFactors[0];
 		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node.getDiagramFactorId()));
 		
-		Factor factor = (Factor) project.findObject(new ORef(ObjectType.FACTOR, node.getWrappedId()));
+		Factor factor = (Factor) project.findObject(node.getWrappedORef());
 		assertEquals("Incorrect label?", target1Text, factor.getLabel());
 		
 		undo.doIt();
