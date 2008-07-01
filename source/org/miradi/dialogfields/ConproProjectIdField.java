@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.text.ParseException;
-
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -35,32 +33,14 @@ public class ConproProjectIdField extends ObjectStringInputField
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 50);
 		
+		stringRefMap = new StringRefMap();
 		setEditable(false);
 	}
 	
 	@Override
 	public String getText()
 	{
-		if (getORef().isInvalid())
-			return "";
-						
-		try
-		{
-			String data = getProject().getObjectData(getORef(), getTag());
-			StringRefMap stringRefMap = new StringRefMap(data);
-			ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
-			if (xenodataRef.isInvalid())
-				return "";
-			
-			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
-			
-			return xenodata.getData(Xenodata.TAG_PROJECT_ID);
-		}
-		catch(ParseException e)
-		{
-			EAM.logException(e);
-			return "";
-		}
+		return stringRefMap.toString();
 	}
 	
 	@Override
@@ -68,14 +48,17 @@ public class ConproProjectIdField extends ObjectStringInputField
 	{
 		try
 		{
-			StringRefMap stringRefMap = new StringRefMap(newValue);
+			stringRefMap.set(newValue);
 			ORef xenodataRef = stringRefMap.getValue(ConProMiradiXml.CONPRO_CONTEXT);
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
-			field.setText(xenodata.getData(Xenodata.TAG_PROJECT_ID));
+			String data = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+			field.setText(data);
 		}
-		catch(ParseException e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
 	}
+	
+	private StringRefMap stringRefMap;
 }
