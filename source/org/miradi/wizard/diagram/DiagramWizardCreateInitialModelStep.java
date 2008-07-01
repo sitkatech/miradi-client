@@ -19,15 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class DiagramWizardConstructChainsStep extends DiagramWizardStep
+public class DiagramWizardCreateInitialModelStep extends DiagramWizardStep
 {
 
-	public DiagramWizardConstructChainsStep(WizardPanel panelToUse)
+	public DiagramWizardCreateInitialModelStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
 	}
@@ -39,7 +39,7 @@ public class DiagramWizardConstructChainsStep extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardConstructChainsStep.class;
+		return ActionJumpDiagramWizardCreateInitialModelStep.class;
 	}
 	
 }

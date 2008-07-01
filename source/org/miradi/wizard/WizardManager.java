@@ -34,7 +34,7 @@ import org.miradi.wizard.diagram.DescribeTargetStatusStep;
 import org.miradi.wizard.diagram.DevelopDraftStrategiesStep;
 import org.miradi.wizard.diagram.DiagramOverviewStep;
 import org.miradi.wizard.diagram.DiagramWizardCompleteResultsChainLinks;
-import org.miradi.wizard.diagram.DiagramWizardConstructChainsStep;
+import org.miradi.wizard.diagram.DiagramWizardCreateInitialModelStep;
 import org.miradi.wizard.diagram.DiagramWizardConstructInitialResultsChain;
 import org.miradi.wizard.diagram.DiagramWizardDefineTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardGoodResultsChainCriteriaReview;
@@ -42,12 +42,12 @@ import org.miradi.wizard.diagram.DiagramWizardIdentifyDirectThreatStep;
 import org.miradi.wizard.diagram.DiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.wizard.diagram.DiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardProjectScopeStep;
-import org.miradi.wizard.diagram.DiagramWizardResultsChainStep;
+import org.miradi.wizard.diagram.DiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.wizard.diagram.DiagramWizardReviewAndModifyTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardReviewModelAndAdjustStep;
 import org.miradi.wizard.diagram.DiagramWizardVisionStep;
 import org.miradi.wizard.diagram.MonitoringWizardDefineIndicatorsStep;
-import org.miradi.wizard.diagram.MonitoringWizardFocusStep;
+import org.miradi.wizard.diagram.DiagramWizardDefineAudienceStep;
 import org.miradi.wizard.diagram.RankDraftStrategiesStep;
 import org.miradi.wizard.diagram.SelectChainStep;
 import org.miradi.wizard.diagram.StrategicPlanDevelopGoalStep;
@@ -61,7 +61,7 @@ import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.noproject.WelcomeImportStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
-import org.miradi.wizard.planning.BudgetWizardDemo;
+import org.miradi.wizard.planning.BudgetWizardReconcileActualExpendituresStep;
 import org.miradi.wizard.planning.PlanningOverviewStep;
 import org.miradi.wizard.planning.PlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.wizard.planning.PlanningWizardFinalizeStrategicPlanStep;
@@ -94,8 +94,8 @@ import org.miradi.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
 import org.miradi.wizard.threatmatrix.ThreatSimpleOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatStressCheckThreatRatingStep;
 import org.miradi.wizard.threatmatrix.ThreatStressOverviewStep;
-import org.miradi.wizard.threatmatrix.ThreatStressRateIrreversibilityAndContributionStep;
-import org.miradi.wizard.threatmatrix.ThreatStressRateStressAndSeverityStep;
+import org.miradi.wizard.threatmatrix.ThreatStressRateContributionAndIrreversibilityStep;
+import org.miradi.wizard.threatmatrix.ThreatStressRateScopeAndSeverityStep;
 
 
 public class WizardManager
@@ -260,18 +260,18 @@ public class WizardManager
 		createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel));
 		createStepEntry(new DiagramWizardLinkDirectThreatsToTargetsStep(panel));
 		createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel));		
-		createStepEntry(new DiagramWizardConstructChainsStep(panel));	
+		createStepEntry(new DiagramWizardCreateInitialModelStep(panel));	
 		createStepEntry(new DiagramWizardReviewModelAndAdjustStep(panel));		
 		createStepEntry(new SelectChainStep(panel));		
 		createStepEntry(new DevelopDraftStrategiesStep(panel));
 		createStepEntry(new RankDraftStrategiesStep(panel));
 		createStepEntry(new StrategicPlanDevelopGoalStep(panel));
 		createStepEntry(new StrategicPlanDevelopObjectivesStep(panel));		
-		createStepEntry(new MonitoringWizardFocusStep(panel));		
+		createStepEntry(new DiagramWizardDefineAudienceStep(panel));		
 		createStepEntry(new MonitoringWizardDefineIndicatorsStep(panel));
 		createStepEntry(new PlanningWizardFinalizeMonitoringPlanStep(panel));
 	
-		createStepEntry(new DiagramWizardResultsChainStep(panel));
+		createStepEntry(new DiagramWizardResultsChainSelectStrategyStep(panel));
 		createStepEntry(new DiagramWizardConstructInitialResultsChain(panel));
 		createStepEntry(new DiagramWizardCompleteResultsChainLinks(panel));
 		createStepEntry(new DiagramWizardGoodResultsChainCriteriaReview(panel));
@@ -304,8 +304,8 @@ public class WizardManager
 		createStepEntry(new ThreatStressOverviewStep(panel))
 			.createBackControl(ThreatMatrixOverviewStep.class)
 			.createControl("Done", ThreatRatingWizardCheckTotalsStep.class);
-		createStepEntry(new ThreatStressRateStressAndSeverityStep(panel));
-		createStepEntry(new ThreatStressRateIrreversibilityAndContributionStep(panel));
+		createStepEntry(new ThreatStressRateScopeAndSeverityStep(panel));
+		createStepEntry(new ThreatStressRateContributionAndIrreversibilityStep(panel));
 		createStepEntry(new ThreatStressCheckThreatRatingStep(panel))
 			.createNextControl(ThreatStressOverviewStep.class);
 
@@ -321,7 +321,7 @@ public class WizardManager
 		createStepEntry(new WorkPlanAssignResourcesStep(panel));
 		createStepEntry(new BudgetWizardAccountingAndFunding(panel));
 		createStepEntry(new BudgetWizardBudgetDetail(panel));
-		createStepEntry(new BudgetWizardDemo(panel));
+		createStepEntry(new BudgetWizardReconcileActualExpendituresStep(panel));
 	}
 
 	public void createReportViewStepEntries(WizardPanel panel)
@@ -392,8 +392,8 @@ public class WizardManager
 				
 				// NOTE: The following is a loop
 				ThreatStressOverviewStep.class,
-				ThreatStressRateStressAndSeverityStep.class,
-				ThreatStressRateIrreversibilityAndContributionStep.class,
+				ThreatStressRateScopeAndSeverityStep.class,
+				ThreatStressRateContributionAndIrreversibilityStep.class,
 				ThreatStressCheckThreatRatingStep.class,
 				
 				ThreatRatingWizardCheckTotalsStep.class,
@@ -401,7 +401,7 @@ public class WizardManager
 				// STEP 1D
 				DiagramWizardIdentifyIndirectThreatStep.class,	
 				// need AssessStakeholders here
-				DiagramWizardConstructChainsStep.class,	
+				DiagramWizardCreateInitialModelStep.class,	
 				DiagramWizardReviewModelAndAdjustStep.class,		
 				
 				// STEP 2A
@@ -413,7 +413,7 @@ public class WizardManager
 				
 				RankDraftStrategiesStep.class,
 
-				DiagramWizardResultsChainStep.class,
+				DiagramWizardResultsChainSelectStrategyStep.class,
 				DiagramWizardConstructInitialResultsChain.class,
 				DiagramWizardCompleteResultsChainLinks.class,
 				DiagramWizardGoodResultsChainCriteriaReview.class,
@@ -425,7 +425,7 @@ public class WizardManager
 
 				// STEP 2B
 //				MonitoringPlanOverviewStep.class,
-				MonitoringWizardFocusStep.class,
+				DiagramWizardDefineAudienceStep.class,
 				MonitoringWizardDefineIndicatorsStep.class,
 				PlanningWizardFinalizeMonitoringPlanStep.class,
 
@@ -443,7 +443,7 @@ public class WizardManager
 				// STEP 3B
 				BudgetWizardAccountingAndFunding.class,
 				BudgetWizardBudgetDetail.class,
-				BudgetWizardDemo.class, 
+				BudgetWizardReconcileActualExpendituresStep.class, 
 				
 				// STEP 4A
 //				FinancialOverviewStep.class, 

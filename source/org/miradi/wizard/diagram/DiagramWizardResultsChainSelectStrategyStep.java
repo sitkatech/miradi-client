@@ -17,22 +17,33 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions.jump;
+package org.miradi.wizard.diagram;
 
-import org.miradi.actions.MainWindowAction;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.main.menu.ProcessSteps;
+import org.miradi.wizard.DiagramWizardStep;
+import org.miradi.wizard.WizardPanel;
 
-public class ActionJumpDiagramWizardResultsChainStep extends MainWindowAction
+public class DiagramWizardResultsChainSelectStrategyStep extends DiagramWizardStep
 {
-	public ActionJumpDiagramWizardResultsChainStep(MainWindow mainWindowToUse)
+	public DiagramWizardResultsChainSelectStrategyStep(WizardPanel panelToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(panelToUse);
 	}
 	
-	private static String getLabel()
+	public String getProcessStepTitle()
 	{
-		return EAM.text("Create results chains showing assumptions"); 
+		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	public Class getAssociatedActionClass()
+	{
+		return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
+	}
+	
+	public String getSubHeading()
+	{
+		return EAM.text("1) Select strategy to focus on ");
+	}
 }

@@ -25,10 +25,10 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.ThreatRatingWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class ThreatStressRateIrreversibilityAndContributionStep extends
+public class ThreatStressRateScopeAndSeverityStep extends
 		ThreatRatingWizardStep
 {
-	public ThreatStressRateIrreversibilityAndContributionStep(WizardPanel wizardToUse)
+	public ThreatStressRateScopeAndSeverityStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -45,6 +45,6 @@ public class ThreatStressRateIrreversibilityAndContributionStep extends
 	
 	public String getSubHeading()
 	{
-		return EAM.text("3) Rate contribution and irreversibility of threat");
+		return EAM.text("2) Rate scope and severity of stress");
 	}
 }

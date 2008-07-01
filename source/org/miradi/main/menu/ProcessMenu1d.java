@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpAssessStakeholders;
-import org.miradi.actions.jump.ActionJumpDiagramWizardConstructChainsStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 
@@ -37,7 +37,7 @@ public class ProcessMenu1d extends MiradiMenu
 		
 		addMenuItem(ActionJumpDiagramWizardIdentifyIndirectThreatStep.class, KeyEvent.VK_I);
 		addMenuItem(ActionJumpAssessStakeholders.class, KeyEvent.VK_S);
-		addMenuItem(ActionJumpDiagramWizardConstructChainsStep.class, KeyEvent.VK_C); 
+		addMenuItem(ActionJumpDiagramWizardCreateInitialModelStep.class, KeyEvent.VK_C); 
 //		addMenuItem(ActionJumpAnalyzeProjectCapacity.class, KeyEvent.VK_C);
 		
 //		addMenuItem(ActionJumpArticulateCoreAssumptions.class, KeyEvent.VK_A);

@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.diagram;
 
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
@@ -39,7 +39,7 @@ public class DiagramWizardCompleteResultsChainLinks extends DiagramWizardStep
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardResultsChainStep.class;
+		return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 	}
 	
 	public String getSubHeading()

@@ -17,34 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.planning;
+package org.miradi.actions.jump;
 
-import org.miradi.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
+import org.miradi.actions.MainWindowAction;
 import org.miradi.main.EAM;
-import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.FinancialWizardStep;
-import org.miradi.wizard.WizardPanel;
+import org.miradi.main.MainWindow;
 
-
-public class BudgetWizardDemo extends FinancialWizardStep
+public class ActionJumpDiagramWizardDefineAudienceStep extends MainWindowAction
 {
-	public BudgetWizardDemo(WizardPanel wizardToUse)
+	public ActionJumpDiagramWizardDefineAudienceStep(MainWindow mainWindowToUse)
 	{
-		super(wizardToUse);
+		super(mainWindowToUse, getLabel());
 	}
 	
-	public String getProcessStepTitle()
+	static String getLabel()
 	{
-		return ProcessSteps.PROCESS_STEP_3B;
+		return EAM.text("Define audiences and information needs");
 	}
-
-	public Class getAssociatedActionClass()
-	{
-		return ActionJumpBudgetWizardAccountingAndFunding.class;
-	}
-
-	public String getSubHeading()
-	{
-		return EAM.text("3) Reconcile actual expenditures");
-	}
+	
 }
