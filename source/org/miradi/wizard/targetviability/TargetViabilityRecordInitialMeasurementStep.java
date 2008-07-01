@@ -25,9 +25,9 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability6Step extends TargetViabilityWizardStep
+public class TargetViabilityRecordInitialMeasurementStep extends TargetViabilityWizardStep
 {
-	public TargetViability6Step(WizardPanel wizardToUse)
+	public TargetViabilityRecordInitialMeasurementStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -44,6 +44,6 @@ public class TargetViability6Step extends TargetViabilityWizardStep
 
 	public String getSubHeading()
 	{
-		return EAM.text("3b) Refine indicator ratings");
+		return EAM.text("4) Record initial measurement");
 	}
 }

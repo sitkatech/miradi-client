@@ -25,9 +25,9 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability5Step extends TargetViabilityWizardStep
+public class TargetViabilityDetermineKeyAttributesStep extends TargetViabilityWizardStep
 {
-	public TargetViability5Step(WizardPanel wizardToUse)
+	public TargetViabilityDetermineKeyAttributesStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -41,9 +41,9 @@ public class TargetViability5Step extends TargetViabilityWizardStep
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-
+	
 	public String getSubHeading()
 	{
-		return EAM.text("3a) Develop draft indicator ratings");
+		return EAM.text("1) Determine key ecological attributes");
 	}
 }

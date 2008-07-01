@@ -25,9 +25,9 @@ import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.TargetViabilityWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class TargetViability3Step extends TargetViabilityWizardStep
+public class TargetViabilityDetermineDesiredStatusStep extends TargetViabilityWizardStep
 {
-	public TargetViability3Step(WizardPanel wizardToUse)
+	public TargetViabilityDetermineDesiredStatusStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -41,9 +41,9 @@ public class TargetViability3Step extends TargetViabilityWizardStep
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-	
+
 	public String getSubHeading()
 	{
-		return EAM.text("1) Determine key ecological attributes");
+		return EAM.text("5) Determine desired status");
 	}
 }
