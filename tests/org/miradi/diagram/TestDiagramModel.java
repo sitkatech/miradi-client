@@ -24,13 +24,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
-import org.miradi.diagram.DiagramModel;
-import org.miradi.diagram.DiagramModelEvent;
-import org.miradi.diagram.DiagramModelListener;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAMTestCase;
@@ -108,8 +104,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		for (int i = 0; i < diagramFactors.length; ++i)
 		{
-			FactorId factorId = diagramFactors[i].getWrappedId();
-			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, factorId);
+			ORef factorRef = diagramFactors[i].getWrappedORef();
+			Factor factor = (Factor) project.findObject(factorRef);
 			if (factor.getLabel().equals(label))
 				return factor;
 		}
@@ -122,8 +118,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		for (int i = 0; i < diagramFactors.length; ++i)
 		{
-			FactorId factorId = diagramFactors[i].getWrappedId();
-			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, factorId);
+			ORef factorRef = diagramFactors[i].getWrappedORef();
+			Factor factor = (Factor) project.findObject(factorRef);
 			if (factor.getLabel().equals(label))
 				return diagramFactors[i];
 		}

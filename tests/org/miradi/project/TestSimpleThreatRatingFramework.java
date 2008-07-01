@@ -158,7 +158,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	public void testBundlesForDeletedNodes() throws Exception
 	{
 		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
-		BaseObject object1 = project.findObject(new ORef(ObjectType.FACTOR, bundle1.getThreatId()));
+		BaseObject object1 = project.findObject(new ORef(ObjectType.CAUSE, bundle1.getThreatId()));
 		project.deleteObject(object1);
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
