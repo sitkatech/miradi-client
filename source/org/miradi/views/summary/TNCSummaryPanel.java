@@ -37,7 +37,6 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, metadata.getType(), metadata.getId());
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CONPRO_PROJECT_NUMBER));
 		addField(createConproProjectIdField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
