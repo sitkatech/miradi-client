@@ -24,9 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.StringReader;
+import java.net.URL;
 import java.util.Vector;
 
+import org.martus.util.UnicodeReader;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.Translation;
@@ -40,11 +41,17 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	
 	public TwoLevelEntry[] load() throws Exception
 	{
-		String contents = ResourcesHandler.loadResourceFile("fieldoptions/" + fileName);
-		Reader reader = new StringReader(contents);
-		TwoLevelEntry[] table = getTaxomonies(reader);
-		reader.close();
-		return table;
+		URL english = ResourcesHandler.getEnglishResourceURL("fieldoptions/" + fileName);
+		Reader reader = new UnicodeReader(english.openStream());
+		try
+		{
+			TwoLevelEntry[] table = getTaxomonies(reader);
+			return table;
+		}
+		finally
+		{
+			reader.close();
+		}
 	}
 
 	public TwoLevelEntry[] load(InputStream is) throws Exception
