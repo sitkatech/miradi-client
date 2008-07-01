@@ -80,7 +80,7 @@ public abstract class EAMFileSaveChooser
 
 	public static File getFileNameWithExtension(File chosen, String fileExtension)
 	{
-		if (!chosen.getName().toLowerCase().endsWith(fileExtension))
+		if (!chosen.getName().toLowerCase().endsWith(fileExtension.toLowerCase()))
 			chosen = new File(chosen.getAbsolutePath() + fileExtension);
 		
 		return chosen;
