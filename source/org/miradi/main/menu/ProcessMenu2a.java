@@ -22,7 +22,7 @@ package org.miradi.main.menu;
 import java.awt.event.KeyEvent;
 
 import org.miradi.actions.Actions;
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.miradi.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.miradi.actions.jump.ActionJumpSelectChainStep;
@@ -39,7 +39,7 @@ public class ProcessMenu2a extends MiradiMenu
 		addMenuItem(ActionJumpStrategicPlanDevelopGoalStep.class, KeyEvent.VK_G);
 		addMenuItem(ActionJumpSelectChainStep.class, KeyEvent.VK_I);
 		addMenuItem(ActionJumpRankDraftStrategiesStep.class, KeyEvent.VK_S);
-		addMenuItem(ActionJumpDiagramWizardResultsChainStep.class, KeyEvent.VK_R);
+		addMenuItem(ActionJumpDiagramWizardResultsChainSelectStrategyStep.class, KeyEvent.VK_R);
 		addMenuItem(ActionJumpStrategicPlanDevelopObjectivesStep.class, KeyEvent.VK_O);
 		
 		// NOTE: Finalize CM is still in the Open Standards, but we are leaving it out,

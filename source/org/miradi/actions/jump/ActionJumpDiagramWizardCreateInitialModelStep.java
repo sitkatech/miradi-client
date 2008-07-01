@@ -23,10 +23,10 @@ import org.miradi.actions.MainWindowAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionJumpDiagramWizardConstructChainsStep extends
+public class ActionJumpDiagramWizardCreateInitialModelStep extends
 		MainWindowAction
 {
-	public ActionJumpDiagramWizardConstructChainsStep(MainWindow mainWindowToUse)
+	public ActionJumpDiagramWizardCreateInitialModelStep(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

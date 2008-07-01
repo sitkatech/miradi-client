@@ -24,7 +24,7 @@ import javax.swing.Icon;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.actions.jump.ActionJumpSelectChainStep;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.main.MainWindow;
@@ -88,7 +88,7 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 			return ActionJumpSelectChainStep.class;
 		
 		if(IntermediateResult.is(currentFactorRef) || ThreatReductionResult.is(currentFactorRef))
-			return ActionJumpDiagramWizardResultsChainStep.class;
+			return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 		
 		return super.getJumpActionClass();
 	}

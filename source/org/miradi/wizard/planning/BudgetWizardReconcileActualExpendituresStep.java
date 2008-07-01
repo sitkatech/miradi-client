@@ -17,34 +17,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.threatmatrix;
+package org.miradi.wizard.planning;
 
-import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
+import org.miradi.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.ThreatRatingWizardStep;
+import org.miradi.wizard.FinancialWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class ThreatStressRateStressAndSeverityStep extends
-		ThreatRatingWizardStep
+
+public class BudgetWizardReconcileActualExpendituresStep extends FinancialWizardStep
 {
-	public ThreatStressRateStressAndSeverityStep(WizardPanel wizardToUse)
+	public BudgetWizardReconcileActualExpendituresStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
-
+	
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_1C;
+		return ProcessSteps.PROCESS_STEP_3B;
 	}
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpThreatMatrixOverviewStep.class;
+		return ActionJumpBudgetWizardAccountingAndFunding.class;
 	}
-	
+
 	public String getSubHeading()
 	{
-		return EAM.text("2) Rate scope and severity of stress");
+		return EAM.text("3) Reconcile actual expenditures");
 	}
 }

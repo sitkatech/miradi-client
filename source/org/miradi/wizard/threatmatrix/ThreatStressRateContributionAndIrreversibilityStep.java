@@ -17,33 +17,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.diagram;
+package org.miradi.wizard.threatmatrix;
 
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.DiagramWizardStep;
+import org.miradi.wizard.ThreatRatingWizardStep;
 import org.miradi.wizard.WizardPanel;
 
-public class DiagramWizardResultsChainStep extends DiagramWizardStep
+public class ThreatStressRateContributionAndIrreversibilityStep extends
+		ThreatRatingWizardStep
 {
-	public DiagramWizardResultsChainStep(WizardPanel panelToUse)
+	public ThreatStressRateContributionAndIrreversibilityStep(WizardPanel wizardToUse)
 	{
-		super(panelToUse);
+		super(wizardToUse);
 	}
-	
+
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_2A;
+		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpDiagramWizardResultsChainStep.class;
+		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
 	public String getSubHeading()
 	{
-		return EAM.text("1) Select strategy to focus on ");
+		return EAM.text("3) Rate contribution and irreversibility of threat");
 	}
 }

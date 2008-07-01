@@ -27,7 +27,7 @@ import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -129,9 +129,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		else if (factor.isTarget())
 			return ActionJumpDiagramWizardDefineTargetsStep.class;
 		else if (factor.isIntermediateResult())
-			return ActionJumpDiagramWizardResultsChainStep.class;
+			return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 		else if (factor.isThreatReductionResult())
-			return ActionJumpDiagramWizardResultsChainStep.class;
+			return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 		return ActionJumpDiagramOverviewStep.class;
 	}
 	
