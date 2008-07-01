@@ -83,19 +83,9 @@ import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.PlanningViewConfiguration;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
 
 public class ObjectManager
 {
@@ -341,48 +331,7 @@ public class ObjectManager
 	}
 	
 	public BaseObject findObject(int objectType, BaseId objectId)
-	{
-		if (Factor.isFactor(objectType))
-		{
-			BaseObject cause = getPool(Cause.getObjectType()).findObject(objectId);
-			if (cause != null)
-				return cause;
-			
-			BaseObject strategy = getPool(Strategy.getObjectType()).findObject(objectId);
-			if (strategy != null)
-				return strategy;
-
-			BaseObject target = getPool(Target.getObjectType()).findObject(objectId);
-			if (target != null)
-				return target;
-			
-			BaseObject threatReduction = getPool(ThreatReductionResult.getObjectType()).findObject(objectId);
-			if (threatReduction != null)
-				return threatReduction;
-			
-			BaseObject intermediateResult = getPool(IntermediateResult.getObjectType()).findObject(objectId);
-			if (intermediateResult != null)
-				return intermediateResult;
-			
-			BaseObject textBox = getPool(TextBox.getObjectType()).findObject(objectId);
-			if (textBox != null)
-				return textBox;
-
-			BaseObject groupBox = getPool(GroupBox.getObjectType()).findObject(objectId);
-			if (groupBox != null)
-				return groupBox;
-			
-			BaseObject stress = getPool(Stress.getObjectType()).findObject(objectId);
-			if (stress != null)
-				return stress;
-			
-			BaseObject task = getPool(Task.getObjectType()).findObject(objectId);
-			if (task != null)
-				return task;
-			
-			return null;
-		}
-		
+	{		
 		EAMObjectPool pool = getPool(objectType);
 		if(pool == null)
 			throw new RuntimeException("Attempted to find object of unknown type: " + objectType);
