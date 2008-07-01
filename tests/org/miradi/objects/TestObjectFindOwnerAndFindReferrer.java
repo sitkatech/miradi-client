@@ -70,74 +70,69 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 
 	public void testIntermediateOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.INTERMEDIATE_RESULT);
-		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef intermediateResultRef = project.createObject(ObjectType.INTERMEDIATE_RESULT);
+		BaseId indicatorId = project.addItemToFactorList(intermediateResultRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(intermediateResultRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.INTERMEDIATE_RESULT, factorId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1,intermediateResultRef, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1,intermediateResultRef, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testThreatReductionResultOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.THREAT_REDUCTION_RESULT);
-		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef threatReductionResultRef = project.createObject(ObjectType.THREAT_REDUCTION_RESULT);
+		BaseId indicatorId = project.addItemToFactorList(threatReductionResultRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(threatReductionResultRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.THREAT_REDUCTION_RESULT, factorId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1, threatReductionResultRef, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1, threatReductionResultRef, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 
 	public void testCauseOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.CAUSE);
-		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef causeRef = project.createObject(ObjectType.CAUSE);
+		BaseId indicatorId = project.addItemToFactorList(causeRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.CAUSE, factorId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyOwnershipFunctions(1, causeRef, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1, causeRef, new ORef(ObjectType.OBJECTIVE, objectiveId));
 	}
 	
 	public void testStrategyOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.STRATEGY);
-		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId objectiveId = project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
+		BaseId indicatorId = project.addItemToFactorList(strategyRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId objectiveId = project.addItemToFactorList(strategyRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		BaseId taskId = project.createTaskAndReturnId();
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
-		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
+		project.setObjectData(strategyRef, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.STRATEGY, factorId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.OBJECTIVE, objectiveId));
-		verifyRefer(owner, new ORef(ObjectType.TASK, taskId));
+		verifyOwnershipFunctions(1, strategyRef, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1, strategyRef, new ORef(ObjectType.OBJECTIVE, objectiveId));
+		verifyRefer(strategyRef, new ORef(ObjectType.TASK, taskId));
 	}
 
 	public void testTargetOwn() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.TARGET);
-		BaseId indicatorId = project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId goalId = project.addItemToFactorList(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
-		BaseId keaId = project.addItemToFactorList(factorId, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		ORef targetRef = project.createObject(ObjectType.TARGET);
+		BaseId indicatorId = project.addItemToFactorList(targetRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		BaseId goalId = project.addItemToFactorList(targetRef, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
+		BaseId keaId = project.addItemToFactorList(targetRef, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.TARGET, factorId);
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.INDICATOR, indicatorId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.GOAL, goalId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
+		verifyOwnershipFunctions(1, targetRef, new ORef(ObjectType.INDICATOR, indicatorId));
+		verifyOwnershipFunctions(1, targetRef, new ORef(ObjectType.GOAL, goalId));
+		verifyOwnershipFunctions(1, targetRef, new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId));
 	}
 	
 	public void testTaskOwn() throws Exception

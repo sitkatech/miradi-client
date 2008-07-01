@@ -57,9 +57,9 @@ public class TestFactorDeleteHelper extends EAMTestCase
 		
 		assertEquals("wrong indicator count?", 0, causeCell.getIndicators().size());
 		assertEquals("wrong objective count?", 0, causeCell.getIndicators().size());
-		project.addItemToFactorList(causeCell.getWrappedId(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
-		project.addItemToFactorList(causeCell.getWrappedId(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
-		project.addItemToFactorList(causeCell.getWrappedId(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
+		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
 		
 		assertEquals("didn't add indicators?", 2, causeCell.getIndicators().size());
 		assertEquals("didn't add objective?", 1, causeCell.getObjectives().size());

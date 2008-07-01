@@ -714,67 +714,67 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public BaseId addItemToViewDataList(BaseId id, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.VIEW_DATA, id,  type,  tag);
+		return addItemToList(new ORef(ObjectType.VIEW_DATA, id),  type,  tag);
 	}
 	
 	public BaseId addItemToProjectMetaDataList(BaseId id, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.PROJECT_METADATA, id,  type,  tag);
+		return addItemToList(new ORef(ObjectType.PROJECT_METADATA, id),  type,  tag);
 	}
 	
 	public BaseId addItemToKeyEcologicalAttributeList(BaseId id, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, id,  type,  tag);
+		return addItemToList(new ORef(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, id),  type,  tag);
 	}
 	
 	public BaseId addItemToGoalList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref.getObjectType(), ref.getObjectId(), ObjectType.GOAL,  tag);
+		return addItemToList(ref, ObjectType.GOAL,  tag);
 	}
 	
 	public BaseId addItemToObjectiveList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref.getObjectType(), ref.getObjectId(), ObjectType.OBJECTIVE,  tag);
+		return addItemToList(ref, ObjectType.OBJECTIVE,  tag);
 	}
 	
 	public BaseId addItemToIndicatorList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref.getObjectType(), ref.getObjectId(), Indicator.getObjectType(), tag);
+		return addItemToList(ref, Indicator.getObjectType(), tag);
 	}
 	
 	public BaseId addSubtaskToActivity(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref.getObjectType(), ref.getObjectId(), Task.getObjectType(), tag);
+		return addItemToList(ref, Task.getObjectType(), tag);
 	}
 	
 	public BaseId addActivityToStrateyList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref.getObjectType(), ref.getObjectId(), Task.getObjectType(), tag);
+		return addItemToList(ref, Task.getObjectType(), tag);
 	}
 	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.INDICATOR, id,  type,  tag);
+		return addItemToList(new ORef(ObjectType.INDICATOR, id),  type,  tag);
 	}
 	
 	public BaseId addItemToTaskList(BaseId id, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.TASK, id,  type,  tag);
+		return addItemToList(new ORef(ObjectType.TASK, id),  type,  tag);
 	}
 	
-	public BaseId addItemToFactorList(BaseId id, int type, String tag) throws Exception
+	public BaseId addItemToFactorList(ORef factorRef, int type, String tag) throws Exception
 	{
-		return addItemToList(ObjectType.FACTOR, id,  type,  tag);
+		return addItemToList(factorRef,  type,  tag);
 	}
 	
-	public BaseId addItemToList(int parentType, BaseId parentId, int typeToCreate, String tag) throws Exception
+	public BaseId addItemToList(ORef parentRef, int typeToCreate, String tag) throws Exception
 	{
-		BaseObject foundObject = findObject(new ORef(parentType, parentId));
+		BaseObject foundObject = findObject(parentRef);
 		IdList currentIdList = new IdList(typeToCreate, foundObject.getData(tag));
 		
 		BaseId baseId = createObjectAndReturnId(typeToCreate);
 		currentIdList.add(baseId);
-		setObjectData(parentType, parentId, tag, currentIdList.toString());
+		setObjectData(parentRef, tag, currentIdList.toString());
 
 		return baseId;
 	}

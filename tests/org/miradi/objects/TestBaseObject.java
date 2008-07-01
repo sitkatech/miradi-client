@@ -64,12 +64,11 @@ public class TestBaseObject extends EAMTestCase
 
 	public void testGetAllOwnedObjects() throws Exception
 	{
-		BaseId factorId = project.createFactorAndReturnId(ObjectType.CAUSE);
-		project.addItemToFactorList(factorId, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		project.addItemToFactorList(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef causeRef = project.createObject(ObjectType.CAUSE);
+		project.addItemToFactorList(causeRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		project.addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
-	   	ORef ownerRef = new ORef(ObjectType.THREAT_REDUCTION_RESULT, factorId);
-	   	BaseObject ownerObject = project.findObject(ownerRef);	
+	   	BaseObject ownerObject = project.findObject(causeRef);	
 	   	ORefList allOwnedObjects = ownerObject.getAllOwnedObjects();
 	   	assertEquals("incorrect owned object count?", 2, allOwnedObjects.size());
 	}
