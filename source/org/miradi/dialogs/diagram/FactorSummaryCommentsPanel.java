@@ -37,8 +37,7 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		// TODO Auto-generated method stub
-		return EAM.text("");
+		return EAM.text("FactorSummaryCommentsPanel");
 	}
 
 }
