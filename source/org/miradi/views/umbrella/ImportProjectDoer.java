@@ -67,7 +67,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 				return;
 			
 			FileFilter rawFileFilter = fileChooser.getFileFilter();
-			if (EAMFileSaveChooser.isMiradiFileFilter(getFileFilters(), rawFileFilter))
+			if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
 			{
 				MiradiFileFilter fileFilter  = (MiradiFileFilter) fileChooser.getFileFilter();
 				fileToImport = EAMFileSaveChooser.getFileNameWithExtension(fileToImport, fileFilter.getFileExtension());	
