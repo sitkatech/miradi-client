@@ -28,7 +28,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -63,16 +62,10 @@ public class FactorCommandHelper
 
 	public CommandCreateObject createFactorAndDiagramFactor(int objectType) throws Exception
 	{
-		FactorId factorId = createFactor(objectType);
-		return createDiagramFactor(diagramObject, objectType, factorId);
+		ORef factorRef = createFactor(objectType);
+		return createDiagramFactor(diagramObject, factorRef);
 	}
 	
-	public CommandCreateObject createDiagramFactor(DiagramObject diagramObjectToUse, int objectType, FactorId factorId) throws Exception
-	{
-		ORef factorRef = new ORef(objectType, factorId);
-		return createDiagramFactor(diagramObjectToUse, factorRef);
-	}
-
 	public CommandCreateObject createDiagramFactor(DiagramObject diagramObjectToUse, ORef factorRef) throws Exception
 	{
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
@@ -91,19 +84,19 @@ public class FactorCommandHelper
 		return createDiagramFactor;
 	}
 
-	private FactorId createFactor(int objectType) throws CommandFailedException
+	private ORef createFactor(int objectType) throws CommandFailedException
 	{
 		CommandCreateObject createFactorCommand = new CommandCreateObject(objectType);
 		executeCommand(createFactorCommand);
 		
-		return (FactorId) createFactorCommand.getCreatedId();
+		return createFactorCommand.getObjectRef();
 	}
 
 	private void setLocationSizeLabel(DiagramFactor diagramFactor, Point insertionLocation, Dimension size, String label) throws CommandFailedException, Exception
 	{
 		setDiagramFactorSize(diagramFactor.getDiagramFactorId(), size);
 		setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), insertionLocation);
-		setDiagramFactorLabel(diagramFactor.getWrappedId(), label);
+		setDiagramFactorLabel(diagramFactor.getWrappedORef(), label);
 	}
 	
 	public void setDiagramFactorSize(DiagramFactorId diagramFactorId, Dimension newSize) throws CommandFailedException
@@ -113,9 +106,9 @@ public class FactorCommandHelper
 		executeCommand(setSizeCommand);
 	}
 
-	private void setDiagramFactorLabel(FactorId factorId, String label) throws CommandFailedException
+	private void setDiagramFactorLabel(ORef factorRef, String label) throws CommandFailedException
 	{
-		CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.FACTOR, factorId, Factor.TAG_LABEL, label); 
+		CommandSetObjectData setLabel = new CommandSetObjectData(factorRef, Factor.TAG_LABEL, label); 
 		executeCommand(setLabel);
 	}
 	
