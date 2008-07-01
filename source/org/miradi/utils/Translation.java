@@ -97,6 +97,9 @@ public class Translation
 	public static String getHtmlContent(String resourceFileName) throws Exception
 	{
 		URL englishHtmlURL = ResourcesHandler.getEnglishResourceURL(resourceFileName);
+		if(englishHtmlURL == null)
+			throw new RuntimeException("Missing HTML content: " + resourceFileName);
+		
 		String englishHtml = ResourcesHandler.loadFile(englishHtmlURL);
 		if(textTranslations == null)
 			return englishHtml;
