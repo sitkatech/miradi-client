@@ -144,6 +144,9 @@ public class WizardManager
 		
 		ORef projectMetadataRef = metadata.getRef();
 		getProject().executeCommand(new CommandSetObjectData(projectMetadataRef, ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME, newStepName));
+		
+		if(mainWindow.isDeveloperMode())
+			EAM.logDebug(newStepName);
 	}
 
 	public void setStep(Class stepClass) throws Exception
