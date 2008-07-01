@@ -28,9 +28,6 @@ import java.util.NoSuchElementException;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
-import org.miradi.database.DataUpgrader;
-import org.miradi.database.JSONFile;
-import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
@@ -38,11 +35,14 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -146,6 +146,81 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testMoveFactorsToSpecificDirs() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		
+		String targetJson = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1210772330500\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"All\",\"Id\":23,\"CurrentStatusJustification\":\"\"}";
+		String causeJson = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"T80.10\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1212520266515\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Domestic animals\",\"Id\":24}";
+		String strategyJson = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"ImpactRating\":\"\",\"Text\":\"Action steps: \\n1) Provide biological watersheds\\n2) Develop bylaws LUPs.\\n3) Update LUPs.\",\"Status\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1210772453015\",\"ActivityIds\":\"\",\"FeasibilityRating\":\"\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Facilitate LUPs\",\"Id\":25,\"ProgressReportRefs\":\"\"}";
+		
+		final int TARGET_ID = 23;
+		final int CAUSE_ID = 24;
+		final int STRATEGY_ID = 25;
+		int[] factorIds = {TARGET_ID, CAUSE_ID, STRATEGY_ID};
+		final int FACTOR_TYPE = 4;
+		File factorDir = DataUpgrader.createObjectsDir(jsonDir, FACTOR_TYPE);
+		File factorManifestFile = createManifestFile(factorDir, factorIds);
+		assertTrue(factorManifestFile.exists());
+		
+		createObjectFile(targetJson, factorIds[0], factorDir);
+		createObjectFile(causeJson, factorIds[1], factorDir);
+		createObjectFile(strategyJson, factorIds[2], factorDir);
+		
+		final String TARGET_FILE_NAME = Integer.toString(TARGET_ID);
+		File factorDirTargetFile = new File(factorDir, TARGET_FILE_NAME);
+		assertTrue("target in factor dir does not exist?", factorDirTargetFile.exists());
+		
+		final String CAUSE_FILE_NAME = Integer.toString(CAUSE_ID);
+		File factorDirCauseFile = new File(factorDir, CAUSE_FILE_NAME);
+		assertTrue("cause in factor dir does not exist?", factorDirCauseFile.exists());
+		
+		final String STRATEGY_FILE_NAME = Integer.toString(STRATEGY_ID);
+		File factorDirStrategyFile = new File(factorDir, STRATEGY_FILE_NAME);
+		assertTrue("strategy in factor dir does not exist?", factorDirStrategyFile.exists());
+		
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion35();
+	
+		verifyTypeDir(jsonDir, TARGET_FILE_NAME, Target.getObjectType(), targetJson);
+		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, Cause.getObjectType(), causeJson);
+		verifyTypeDir(jsonDir, STRATEGY_FILE_NAME, Strategy.getObjectType(), strategyJson);
+		
+		assertFalse("factor dir was not deleted?", factorDir.exists());
+		assertFalse("target in factor dir was not deleted?", factorDirTargetFile.exists());
+		assertFalse("cause in factor dir was not deleted?", factorDirCauseFile.exists());
+		assertFalse("strategy in factor was not deleted?", factorDirStrategyFile.exists());
+	}
+	
+	private void verifyTypeDir(File jsonDir, String fileName, int type, String expectedContent) throws Exception
+	{
+		File typeDir = DataUpgrader.getObjectsDir(jsonDir, type);
+		assertTrue("type dir was not created?", typeDir.exists());
+		
+		final String MANIFEST_FILE_NAME = "manifest";
+		File typeDirManifestFile = new File(typeDir, MANIFEST_FILE_NAME);
+		assertTrue("type dir manifest created?", typeDirManifestFile.exists());
+		
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(typeDirManifestFile));
+		assertEquals("wrong key count?", 1, manifestObject.getAllKeys().length);
+		
+		File objectFile = new File(typeDir, fileName);
+		assertTrue("object file was not created in type dir?", objectFile.exists());
+
+		
+		EnhancedJsonObject expectedJson = new EnhancedJsonObject(expectedContent);
+		int expectedId = expectedJson.getInt("Id");
+		
+		EnhancedJsonObject actualJson = new EnhancedJsonObject(readFile(objectFile));
+		int actualId = actualJson.getInt("Id");
+		assertEquals("not same object id?", expectedId, actualId);
+	
+		String expectedLabel = expectedJson.getString("Label");
+		String actualLabel = actualJson.getString("Label");
+		assertEquals("not same object label?", expectedLabel, actualLabel);
 	}
 	
 	public void testDeleteOrphanedTasks() throws Exception

@@ -31,6 +31,7 @@ import java.util.Vector;
 
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
+import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.diagram.DiagramModel;
@@ -193,11 +194,88 @@ public class DataUpgrader extends FileBasedProjectServer
 
 			if (readDataVersion(getTopDirectory()) == 33)
 				upgradeToVersion34();
+			
+			if (readDataVersion(getTopDirectory()) == 34)
+				upgradeToVersion35();
+			
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+
+	
+	public void upgradeToVersion35() throws Exception
+	{
+		moveFactorsToSpecificDirs();
+		writeVersion(35);
+	}
+	
+	private void moveFactorsToSpecificDirs() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		final int FACTOR_TYPE = 4;
+		File factorDir = getObjectsDir(jsonDir, FACTOR_TYPE);
+		if (! factorDir.exists())
+			return;
+		
+		File factorManifestFile = new File(factorDir, "manifest");
+		if (! factorManifestFile.exists())
+			return;
+
+		final int TARGET_TYPE = 22;
+		final int CAUSE_TYPE = 20;
+		final int STRATEGY_TYPE = 21;
+		File targetDir = createObjectsDir(jsonDir, TARGET_TYPE);
+		File causeDir = createObjectsDir(jsonDir, CAUSE_TYPE);
+		File strategyDir = createObjectsDir(jsonDir, STRATEGY_TYPE);
+		
+		final String TARGET_TYPE_NAME = "Target";
+		final String CAUSE_TYPE_NAME = "Factor";
+		final String STRATEGY_TYPE_NAME = "Intervention";
+		copyFactorToDir(factorDir, factorManifestFile, targetDir, TARGET_TYPE_NAME); 
+		copyFactorToDir(factorDir, factorManifestFile, causeDir, CAUSE_TYPE_NAME);
+		copyFactorToDir(factorDir, factorManifestFile, strategyDir, STRATEGY_TYPE_NAME);
+		
+		try
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(factorDir);
+		}
+		catch (Exception e)
+		{
+			EAM.logError("Error occurred during cleanup after migration");
+		}
+	}
+	
+	private void copyFactorToDir(File factorDir, File factorManifestFile, File objectDir, String typeName) throws Exception
+	{
+		EnhancedJsonObject manifestJson = new EnhancedJsonObject();
+		manifestJson.put("Type", "ObjectManifest");
+		
+		ObjectManifest factorManifest = new ObjectManifest(JSONFile.read(factorManifestFile));
+		BaseId[] allFactorIds = factorManifest.getAllKeys();
+		for (int i = 0; i < allFactorIds.length; ++i)
+		{
+			String idFileName = allFactorIds[i].toString();
+			File factorFile = new File(factorDir, idFileName);
+			EnhancedJsonObject factorJson = readFile(factorFile);
+			String typeFromJson = factorJson.getString("Type");
+			if (typeFromJson.equals(typeName))
+			{
+				File targetFile = new File(objectDir, idFileName);
+				createFile(targetFile, factorJson.toString());
+				manifestJson.put(idFileName, "true");
+			}
+		}
+		
+		writeManifest(objectDir, manifestJson);
+	}
+	
+	private void writeManifest(File objectDir, EnhancedJsonObject manifestJson) throws Exception
+	{
+		File targetManifestFile = new File(objectDir, "manifest");
+		writeJson(targetManifestFile, manifestJson);
 	}
 
 	public void upgradeToVersion34() throws Exception
