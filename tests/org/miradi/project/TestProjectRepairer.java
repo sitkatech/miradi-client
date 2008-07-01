@@ -21,7 +21,6 @@ package org.miradi.project;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
@@ -30,7 +29,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
-import org.miradi.project.ProjectRepairer;
 
 public class TestProjectRepairer extends TestCaseWithProject
 {
@@ -70,10 +68,10 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		//BaseId orphan = project.createObject(annotationType);
 		BaseId nonOrphan = getProject().createObjectAndReturnId(annotationType);
-		FactorId nodeId = (FactorId)getProject().createObjectAndReturnId(nodeType, BaseId.INVALID);
+		ORef nodeRef = getProject().createObject(nodeType);
 		IdList annotationIds = new IdList(annotationType);
 		annotationIds.add(nonOrphan);
-		getProject().setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
+		getProject().setObjectData(nodeRef, nodeTagForAnnotationList, annotationIds.toString());
 
 		EAM.setLogToString();
 
