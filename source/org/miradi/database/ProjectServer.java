@@ -27,7 +27,6 @@ import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectInfo;
@@ -212,23 +211,9 @@ abstract public class ProjectServer
 	
 	private File getObjectDirectory(int type)
 	{	
-		return new File(getJsonDirectory(), "objects-" + possiblyConvertToGenericFactorType(type));
+		return new File(getJsonDirectory(), "objects-" + type);
 	}
-	
-	private int possiblyConvertToGenericFactorType(int specificFactorType)
-	{
-		if (specificFactorType == ObjectType.STRATEGY)
-			return ObjectType.FACTOR;
 		
-		if (specificFactorType == ObjectType.CAUSE)
-			return ObjectType.FACTOR;
-		
-		if (specificFactorType == ObjectType.TARGET)
-			return ObjectType.FACTOR;
-		
-		return specificFactorType;
-	}
-	
 	private File getThreatRatingsDirectory()
 	{
 		return new File(getJsonDirectory(), THREATRATINGS_DIRECTORY);
