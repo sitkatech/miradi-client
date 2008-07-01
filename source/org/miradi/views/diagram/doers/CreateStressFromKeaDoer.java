@@ -72,7 +72,7 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		if (getAnnotationToClone().getLabel().length() == 0)
 			return EAM.text("[NOT SPECIFIED]");
 		
-		return EAM.text("["+getAnnotationToClone().getLabel()+"]");
+		return "[" + getAnnotationToClone().getLabel() + "]";
 	}
 	
 	protected ORef createObject() throws CommandFailedException
