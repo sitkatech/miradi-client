@@ -134,8 +134,8 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
-		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
+		ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId(2));
+		ORef toRef = new ORef(ObjectType.CAUSE, new FactorId(3));
 		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
 		FactorLink got = (FactorLink)storage.readObject(getObjectManager(), original.getType(), original.getId());
@@ -154,8 +154,8 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ORef fromRef = new ORef(ObjectType.FACTOR, new FactorId(2));
-		ORef toRef = new ORef(ObjectType.FACTOR, new FactorId(3));
+		ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId(2));
+		ORef toRef = new ORef(ObjectType.CAUSE, new FactorId(3));
 		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
