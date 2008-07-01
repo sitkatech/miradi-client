@@ -533,7 +533,7 @@ public class DiagramModel extends DefaultGraphModel
 		toFront(topLayerCells.toArray());
 	}	
 	
-	public void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
+	private void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
 	{
 		LayerManager manager = project.getLayerManager();
 		FactorCell factorCell = getFactorCellById(diagramFactorId);
