@@ -93,25 +93,33 @@ public class TestProjectServer extends TestCaseWithProject
 
 		Strategy intervention = new Strategy(getObjectManager(), takeNextModelNodeId());
 		storage.writeObject(intervention);
-		Strategy gotIntervention = (Strategy)readNode(intervention.getId());
+		Strategy gotIntervention = (Strategy)readNode(intervention.getRef());
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
 		Cause factor = new Cause(getObjectManager(), takeNextModelNodeId());
 		
 		storage.writeObject(factor);
-		Cause gotContributingFactor = (Cause)readNode(factor.getId());
+		Cause gotContributingFactor = (Cause)readNode(factor.getRef());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotContributingFactor.getNodeType());
 		
 		Target target = new Target(getObjectManager(), takeNextModelNodeId());
 		storage.writeObject(target);
-		Target gotTarget = (Target)readNode(target.getId());
+		Target gotTarget = (Target)readNode(target.getRef());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		
 		
-		ObjectManifest nodeIds = storage.readObjectManifest(ObjectType.FACTOR);
-		assertEquals("not three nodes?", 3, nodeIds.size());
-		assertTrue("missing a node?", nodeIds.has(target.getId()));
+		ObjectManifest strategyNodeIds = storage.readObjectManifest(ObjectType.STRATEGY);
+		assertEquals("not one node?", 1, strategyNodeIds.size());
+		assertTrue("missing the strategy node?", strategyNodeIds.has(intervention.getId()));
+		
+		ObjectManifest causeNodeIds = storage.readObjectManifest(ObjectType.CAUSE);
+		assertEquals("not one node?", 1, causeNodeIds.size());
+		assertTrue("missing the cause node?", causeNodeIds.has(gotContributingFactor.getId()));
+		
+		ObjectManifest targetNodeIds = storage.readObjectManifest(ObjectType.TARGET);
+		assertEquals("not one node?", 1, targetNodeIds.size());
+		assertTrue("missing the target node?", targetNodeIds.has(target.getId()));
 	}
 	
 	private FactorId takeNextModelNodeId()
@@ -119,9 +127,9 @@ public class TestProjectServer extends TestCaseWithProject
 		return new FactorId(idAssigner.takeNextId().asInt());
 	}
 	
-	private Factor readNode(BaseId id) throws Exception
+	private Factor readNode(ORef factorRef) throws Exception
 	{
-		return (Factor)storage.readObject(getObjectManager(), ObjectType.FACTOR, id);
+		return (Factor)storage.readObject(getObjectManager(), factorRef.getObjectType(), factorRef.getObjectId());
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
