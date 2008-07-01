@@ -184,6 +184,12 @@ public class ProjectRepairer
 				continue;
 			}
 			
+			if (ref.getObjectType() == ObjectType.FACTOR)
+			{
+				EAM.logDebug("Ref with factor type with id:" + ref.getObjectId());
+				continue;
+			}
+			
 			BaseObject foundObject = project.findObject(ref);
 			if (foundObject != null)
 				continue;
