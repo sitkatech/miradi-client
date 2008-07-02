@@ -40,7 +40,6 @@ import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
-import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
@@ -108,7 +107,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		try
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
-			showDialogWithCoachText();
 			hideLinkLayer(projectToFill);
 		}
 		finally
@@ -171,10 +169,9 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	{
 		return new FileFilter[] {new CpmzFileFilter()};
 	}
-	
-	private void showDialogWithCoachText() throws Exception
+
+	protected void showImportCompletedDialog() throws Exception
 	{
-		String html = Translation.getHtmlContent("NextStepAfterCpmzImport.html");
-		HtmlViewPanelWithMargins.createFromTextString(getMainWindow(), EAM.text("Import"), html).showAsOkDialog();
+		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text("Import"), "NextStepAfterCpmzImport.html").showAsOkDialog();
 	}
 }

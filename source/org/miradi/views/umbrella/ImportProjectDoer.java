@@ -71,7 +71,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 			
 			refreshNoProjectPanel();
 			currentDirectory = fileToImport.getParent();
-			EAM.notifyDialog(EAM.text("Import Completed"));
+			showImportCompletedDialog();
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
@@ -88,6 +88,11 @@ public abstract class ImportProjectDoer extends ViewDoer
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
 		}
+	}
+
+	protected void showImportCompletedDialog() throws Exception
+	{
+		EAM.notifyDialog(EAM.text("Import Completed"));
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)
