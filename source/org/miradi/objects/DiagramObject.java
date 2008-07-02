@@ -301,6 +301,16 @@ abstract public class DiagramObject extends BaseObject
 		return combineShortLabelAndLabel();
 	}
 	
+	public static DiagramObject findDiagramObject(ObjectManager objectManager, ORef diagramObjectRef)
+	{
+		return (DiagramObject) objectManager.findObject(diagramObjectRef);
+	}
+	
+	public static DiagramObject findDiagramObject(Project project, ORef diagramObjectRef)
+	{
+		return findDiagramObject(project.getObjectManager(), diagramObjectRef);
+	}
+	
 	public void clear()
 	{
 		super.clear();
