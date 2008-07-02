@@ -156,17 +156,29 @@ public class LinkCell extends EAMGraphCell implements Edge
 
 	public boolean isThisLinkBodyVisible(DiagramComponent diagram)
 	{
-		if(diagram.isCellSelected(this))
-			return true;
-		if(diagram.isCellSelected(getFrom()) || diagram.isCellSelected(getTo()))
+		if(isSelectedOrRelated(diagram))
 			return true;
 		
-		LayerManager layerManager = diagram.getProject().getLayerManager();
+		LayerManager layerManager = getDiagramLink().getProject().getLayerManager();
 		if(!layerManager.areFactorLinksVisible())
 			return false;
 		if(!getTo().isTarget())
 			return true;
 		return layerManager.areTargetLinksVisible();
+	}
+	
+	public boolean isSelectedOrRelated(DiagramComponent diagram)
+	{
+		if(diagram == null)
+			return false;
+		
+		if(diagram.isCellSelected(this))
+			return true;
+
+		if(diagram.isCellSelected(getFrom()) || diagram.isCellSelected(getTo()))
+			return true;
+		
+		return false;
 	}
 	
 	public boolean isLinkedToAnySelectedFactor(DiagramComponent diagram) throws Exception
