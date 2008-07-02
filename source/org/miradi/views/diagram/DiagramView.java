@@ -938,20 +938,23 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		getDiagramComponent().requestFocusInWindow();
 		
-		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
+		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
-		nodePropertiesDlg = new FactorPropertiesDialog(getMainWindow(), nodePropertiesPanel, title);
-		nodePropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
-		nodePropertiesPanel.selectTab(startingTabIdentifier);
-		nodePropertiesDlg.pack();
+		FactorPropertiesDialog newDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
+		newPropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
+		newPropertiesPanel.selectTab(startingTabIdentifier);
+		newDialog.pack();
 		Rectangle screenRect = Utilities.getViewableRectangle();
-		int width = Math.min(nodePropertiesDlg.getWidth(), screenRect.width * 9 / 10);
-		int height = Math.min(nodePropertiesDlg.getHeight(), screenRect.height * 9 / 10);
+		int width = Math.min(newDialog.getWidth(), screenRect.width * 9 / 10);
+		int height = Math.min(newDialog.getHeight(), screenRect.height * 9 / 10);
 		Dimension size = new Dimension(width, height);
-		nodePropertiesDlg.setSize(size);
-		nodePropertiesDlg.setLocation(Utilities.center(size, screenRect));
+		newDialog.setSize(size);
+		newDialog.setLocation(Utilities.center(size, screenRect));
 		
 		getDiagramComponent().selectFactor(node.getWrappedId());
+		nodePropertiesPanel = newPropertiesPanel;
+		nodePropertiesDlg = newDialog;
+
 		nodePropertiesDlg.setVisible(true);
 		nodePropertiesPanel.updateAllSplitterLocations();
 	}
