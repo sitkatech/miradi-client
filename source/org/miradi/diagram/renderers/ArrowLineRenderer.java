@@ -88,10 +88,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 	protected Shape createShape()
 	{
 		Shape shape = createShapeWithRoundedCorners();
-		DiagramComponent diagram = getDiagram();
-		if(diagram == null)
-			return shape;
-		
 		if(isArrowBodyVisible())
 			return shape;
 		
