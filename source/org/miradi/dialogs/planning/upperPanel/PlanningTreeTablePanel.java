@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
@@ -51,6 +52,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
+import org.miradi.dialogs.treetables.TreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -180,7 +182,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		rowHeightController.addTable(table);
 		listenForColumnWidthChanges(table);
 
-		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneWithHideableScrollBar(table);
+		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.hideVerticalScrollBar();
 		scrollPane.addMouseWheelListener(this);
@@ -472,3 +474,19 @@ class ShrinkToFitVerticallyHorizontalBox extends JPanel
 	private Dimension overriddenPreferredSize;
 }
 
+class ScrollPaneNoExtraWidth extends ScrollPaneWithHideableScrollBar
+{
+	public ScrollPaneNoExtraWidth(Component component)
+	{
+		super(component);
+	}
+
+	@Override
+	public Dimension getMaximumSize()
+	{
+		Dimension max = super.getMaximumSize();
+		max.width = getPreferredSize().width;
+		return max;
+	}
+	
+}
