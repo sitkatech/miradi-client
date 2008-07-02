@@ -87,6 +87,9 @@ public class ObjectListTableModel extends ObjectTableModel
 	{
 		try
 		{
+			if(containingRef.isInvalid())
+				return new ORefList();
+				
 			ObjectData objectData = getContainingObject().getField(tagOfList);
 			String containedDataAsString = getContainingObject().getData(tagOfList);
 			if (objectData.isIdListData()) 
