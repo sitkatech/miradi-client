@@ -22,6 +22,7 @@ package org.miradi.views.umbrella;
 import java.text.ParseException;
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -61,10 +62,10 @@ public class DeleteActivity extends ObjectsDoer
 		deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), selectedTask);
 	}
 
-	public static void deleteTaskWithUserConfirmation(Project project, ORefList possibleParents, Task selectedTask) throws CommandFailedException
+	public static void deleteTaskWithUserConfirmation(Project project, ORefList selectionHierachy, Task selectedTask) throws CommandFailedException
 	{
 		Vector dialogText = new Vector();
-		boolean containsMoreThanOneParent = possibleParents.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
+		boolean containsMoreThanOneParent = selectionHierachy.getOverlappingRefs(selectedTask.findObjectsThatReferToUs()).size() > 1;
 		if (containsMoreThanOneParent)
 			dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
 		
@@ -73,15 +74,15 @@ public class DeleteActivity extends ObjectsDoer
 		if(!EAM.confirmDialog(EAM.text("Title|Delete"), (String[]) dialogText.toArray(new String[0]), buttons))
 			return;
 		
-		deleteTask(project, possibleParents, selectedTask);
+		deleteTask(project, selectionHierachy, selectedTask);
 	}
 	
-	private static void deleteTask(Project project, ORefList possibleParents, Task selectedTask) throws CommandFailedException
+	private static void deleteTask(Project project, ORefList selectionHierachy, Task selectedTask) throws CommandFailedException
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			deleteTaskTree(project, possibleParents, selectedTask);
+			deleteTaskTree(project, selectionHierachy, selectedTask);
 		}
 		catch(Exception e)
 		{
@@ -94,9 +95,9 @@ public class DeleteActivity extends ObjectsDoer
 		}
 	}
 
-	public static void deleteTaskTree(Project project, ORefList possibleParents, Task selectedTask) throws Exception
+	public static void deleteTaskTree(Project project, ORefList selectionHierachy, Task selectedTask) throws Exception
 	{
-		Vector commandToDeleteTasks = createDeleteCommands(project, possibleParents, selectedTask); 
+		Vector commandToDeleteTasks = createDeleteCommands(project, selectionHierachy, selectedTask); 
 		executeDeleteCommands(project, commandToDeleteTasks);
 		
 		if (! selectedTask.isOrphandTask())
@@ -111,24 +112,25 @@ public class DeleteActivity extends ObjectsDoer
 		project.executeCommandsWithoutTransaction(commands);
 	}
 
-	private static Vector createDeleteCommands(Project project, ORefList possibleParents, Task task) throws Exception
+	private static Vector createDeleteCommands(Project project, ORefList selectionHierachy, Task task) throws Exception
 	{
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
-		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, possibleParents, task));
-		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, possibleParents, task));
+		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
+		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
 		
 		return commandsToDeleteTasks;
 	}
 	
-	private static Vector buildRemoveCommandsForActivityIds(Project project, ORefList possibleParents, Task task) throws Exception
+	private static Vector buildRemoveCommandsForActivityIds(Project project, ORefList selectionHierachy, Task task) throws Exception
 	{
 		if (! task.isActivity())
 			return new Vector();
 		
-		return buildRemoveCommands(project, Strategy.getObjectType(), possibleParents, Strategy.TAG_ACTIVITY_IDS, task);
+		return buildRemoveCommands(project, Strategy.getObjectType(), selectionHierachy, Strategy.TAG_ACTIVITY_IDS, task);
 	}
 	
 	private static Vector buildRemoveCommandsForMethodIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
@@ -151,14 +153,34 @@ public class DeleteActivity extends ObjectsDoer
 		return removeCommands;
 	}
 	
-	private static Vector buildRemoveCommands(Project project, int parentType, ORefList possibleParents, String tag, Task task) throws Exception
+	private static Vector<Command> buildDeleteDiagramFactors(Project project, ORefList selectionHierachy, Task task)
+	{
+		Vector<Command> commands = new Vector();
+		if (!task.isActivity())
+			return commands;
+		
+		
+		for (int index = 0; index < selectionHierachy.size(); ++index)
+		{
+
+			//FIXME finish this
+			//ORefList diagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+ 
+			
+		}
+		
+		
+		return commands;
+	}
+	
+	private static Vector buildRemoveCommands(Project project, int parentType, ORefList selectionHierachy, String tag, Task task) throws Exception
 	{
 		Vector removeCommands = new Vector();
 		ORefList referrerRefs = task.findObjectsThatReferToUs(parentType);
 		for (int i = 0; i < referrerRefs.size(); ++i)
 		{
 			BaseObject referrer = project.findObject(referrerRefs.get(i));
-			if (possibleParents.contains(referrer.getRef()))
+			if (selectionHierachy.contains(referrer.getRef()))
 				removeCommands.add(CommandSetObjectData.createRemoveIdCommand(referrer, tag, task.getId()));
 		}
 		
