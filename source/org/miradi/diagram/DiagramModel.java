@@ -535,12 +535,19 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
 	{
-		LayerManager manager = project.getLayerManager();
-		FactorCell factorCell = getFactorCellById(diagramFactorId);
-		boolean shouldBeVisible = shouldFactorCellBeVisible(manager, factorCell);
+		try
+		{
+			LayerManager manager = project.getLayerManager();
+			FactorCell factorCell = getFactorCellById(diagramFactorId);
+			boolean shouldBeVisible = shouldFactorCellBeVisible(manager, factorCell);
 
-		if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
-			getGraphLayoutCache().setVisible(factorCell, shouldBeVisible);
+			if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
+				getGraphLayoutCache().setVisible(factorCell, shouldBeVisible);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
 	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)

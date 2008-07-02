@@ -773,7 +773,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			if (totalBounds == null)
 				totalBounds = new Rectangle(cellBounds.getBounds());
 			
-			totalBounds.add(cellBounds);
+			if (cellBounds != null)
+				totalBounds.add(cellBounds);
 		}
 		
 		return totalBounds;
