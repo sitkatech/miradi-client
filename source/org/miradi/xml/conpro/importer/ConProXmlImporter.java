@@ -332,7 +332,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 			
 			ORef keaRef = getNodeAsRef(viabilityAssessmentNode, KEA_ID, KeyEcologicalAttribute.getObjectType());
-			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), new BaseId[]{keaRef.getObjectId()});
+			String existingKeaIdsAsString = getProject().getObjectData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), existingKeaIdsAsString);
+			if(!keaIds.contains(keaRef))
+				keaIds.add(keaRef.getObjectId());
 			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 			
 			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
