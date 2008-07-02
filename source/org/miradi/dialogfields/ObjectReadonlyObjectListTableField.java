@@ -34,7 +34,7 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 	{
 		super(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), listFieldTag);
 		
-		model = new ObjectListTableModel(projectToUse, listFieldTag, listedType, columnTags);
+		model = new ObjectListTableModel(projectToUse, refToUse, listFieldTag, listedType, columnTags);
 	    table = new ObjectListTable(model);
 	    
 		setDefaultFieldBorder();
