@@ -154,6 +154,7 @@ import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
 import org.miradi.utils.TestDelimitedFileLoader;
+import org.miradi.utils.TestDiagramCorruptionDetector;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestMiradiMap;
@@ -246,6 +247,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestConproMiradiHabitatCodeMap.class));
 		suite.addTest(new TestSuite(TestMiradiMap.class));
 		suite.addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
+		suite.addTest(new TestSuite(TestDiagramCorruptionDetector.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));

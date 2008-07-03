@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -152,7 +153,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.SlideShow;
@@ -162,6 +162,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.ActivityMoveDownDoer;
@@ -468,78 +469,25 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeActive();
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 		
-		final String corruptedDiagramNames = shouldWarnUserAboutDataCorruption();
-		if (corruptedDiagramNames.length() > 0)
-			EAM.errorDialog("Found Corrupted Data in Diagrams:" + corruptedDiagramNames);
+		HashSet<DiagramObject> corruptedDiagrams = DiagramCorruptionDetector.getCorruptedDiagrams(getProject());
+		if (corruptedDiagrams.size() > 0)
+		{
+			//FIXME use html and substitude
+			EAM.errorDialog(EAM.text("Found Corrupted Data in Diagrams:" + getNames(corruptedDiagrams)));
+		}
 	}
 
-	private String shouldWarnUserAboutDataCorruption()
+	private String getNames(HashSet<DiagramObject> corruptedDiagrams)
 	{
-		String appendedCorruptedDiagramNames = "";
-		ORefList diagramObjectRefs = getProject().getAllDiagramObjectRefs();
-		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		String corruptedDiagramNames = "";
+		for(DiagramObject diagramObject : corruptedDiagrams)
 		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
-			if (shouldWarnUserAboutDataCorruption(getProject(), diagramObject))
-				appendedCorruptedDiagramNames += "\n " + diagramObject.toString();
+			corruptedDiagramNames += "<BR>" +  diagramObject.toString();
 		}
 		
-		return appendedCorruptedDiagramNames;
+		return corruptedDiagramNames;
 	}
-
-
-	private static boolean shouldWarnUserAboutDataCorruption(Project project, DiagramObject diagramObject)
-	{
-		if (hasCorruptedDiagramFactors(project, diagramObject))
-			return true;		
-		
-		if (hasCorruptedDiagramLinks(project, diagramObject))
-			return true;
-		
-		return false;
-	}
-
-
-	public static boolean hasCorruptedDiagramLinks(Project project, DiagramObject diagramObject)
-	{
-		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
-		for (int index = 0; index < diagramLinkRefs.size(); ++index)
-		{
-			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
-			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
-			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
-			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
-			if (factorLink == null)
-				return true;
-			
-			if (fromDiagramFactor == null || toDiagramFactor == null)
-				return true;
-			
-			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
-				return true;	
-		}
-		
-		return false;
-	}
-
-
-	public static boolean hasCorruptedDiagramFactors(Project project, DiagramObject diagramObject)
-	{
-		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
-		for (int index = 0; index < diagramFactorRefs.size(); ++index)
-		{
-			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
-			final Factor factor = diagramFactor.getWrappedFactor();
-			if (factor == null)
-				return true;
-			
-			if (Task.is(factor) && !factor.isActivity())
-				return true;
-		}
-		
-		return false;
-	}
-
+	
 	private void createResultsChainTab() throws Exception
 	{
 		resultsChainPanel = new ResultsChainDiagramPanel(getMainWindow());
