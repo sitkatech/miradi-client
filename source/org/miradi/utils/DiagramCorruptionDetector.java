@@ -58,23 +58,24 @@ public class DiagramCorruptionDetector
 		return false;
 	}
 
-
-	//FIXME this is a faulty method.  will be fixed.  needs GB L in ifs
 	public static boolean hasCorruptedDiagramLinks(Project project, DiagramObject diagramObject)
 	{
 		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
+			if (diagramLink ==null)
+				return true;
+
 			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
 			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
 			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
-			if (factorLink == null)
-				return true;
-			
 			if (fromDiagramFactor == null || toDiagramFactor == null)
 				return true;
 			
+			if (factorLink == null && !diagramLink.isGroupBoxLink())
+				return true;
+		
 			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
 				return true;	
 		}
