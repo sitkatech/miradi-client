@@ -63,7 +63,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		assertTrue("didn't detect diagram factor that does not exist?", DiagramCorruptionDetector.hasCorruptedDiagramFactors(getProject(), diagramObject));
 	}
 	
-	public void testhasCorruptedDiagramLinks() throws Exception
+	public void testHasCorruptedDiagramLinks() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getDiagramObject();
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
