@@ -24,14 +24,19 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -153,24 +158,48 @@ public class DeleteActivity extends ObjectsDoer
 		return removeCommands;
 	}
 	
-	private static Vector<Command> buildDeleteDiagramFactors(Project project, ORefList selectionHierachy, Task task)
+	private static Vector<Command> buildDeleteDiagramFactors(Project project, ORefList selectionHierachy, Task task) throws Exception
 	{
 		Vector<Command> commands = new Vector();
 		if (!task.isActivity())
 			return commands;
 		
-		
-		for (int index = 0; index < selectionHierachy.size(); ++index)
+		ORef strategyRef = selectionHierachy.getRefForType(Strategy.getObjectType());
+		ORefList activityDiagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+				
+		for (int index = 0; index < activityDiagramFactorReferrerRefs.size(); ++index)
 		{
-
-			//FIXME finish this
-			//ORefList diagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactor.getObjectType());
- 
+			ORef activityDiagramFactorRef = activityDiagramFactorReferrerRefs.get(index);
+			DiagramFactor activityDiagramFactor = DiagramFactor.find(project, activityDiagramFactorRef);
+			ORefList diagramObjectsWithAcitivities = activityDiagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
+			for (int diagramObjectIndex = 0; diagramObjectIndex < diagramObjectsWithAcitivities.size(); ++diagramObjectIndex)
+			{
+				DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectsWithAcitivities.get(diagramObjectIndex));
+				ORefList strategyRefs = getDiagramObjectStrategies(project, diagramObject);
+				if (strategyRefs.contains(strategyRef))
+				{
+					commands.add(CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, activityDiagramFactorRef.getObjectId()));
+					commands.addAll(activityDiagramFactor.createCommandsToClearAsList());
+					commands.add(new CommandDeleteObject(activityDiagramFactor));
+				}
+			}
+		}
 			
+		return commands;
+	}
+	
+	private static ORefList getDiagramObjectStrategies(Project project, DiagramObject diagramObject)
+	{
+		ORefList strategyRefs = new ORefList();
+		ORefList diagramFactorRefs =  diagramObject.getAllDiagramFactorRefs();
+		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
+			if (Strategy.is(diagramFactor.getWrappedType()))
+				strategyRefs.add(diagramFactor.getWrappedORef());
 		}
 		
-		
-		return commands;
+		return strategyRefs;
 	}
 	
 	private static Vector buildRemoveCommands(Project project, int parentType, ORefList selectionHierachy, String tag, Task task) throws Exception
