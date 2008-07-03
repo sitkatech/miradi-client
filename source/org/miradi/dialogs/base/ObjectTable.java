@@ -95,7 +95,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	
 	public void scrollToAndSelectRow(int row)
 	{
-		if (getRowCount() <= row || row < 0)
+		if(row < 0 || row >= getRowCount())
 			return;
 		
 		Rectangle rect = getCellRect(row, 0, true);
