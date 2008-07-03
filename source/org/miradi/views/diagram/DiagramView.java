@@ -472,20 +472,22 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		HashSet<DiagramObject> corruptedDiagrams = DiagramCorruptionDetector.getCorruptedDiagrams(getProject());
 		if (corruptedDiagrams.size() > 0)
 		{
-			//FIXME use html and substitude
-			EAM.errorDialog(EAM.text("Found Corrupted Data in Diagrams:" + getNames(corruptedDiagrams)));
+			EAM.errorDialog(EAM.text(getDiagramCorruptionMessage(corruptedDiagrams)));
 		}
 	}
 
-	private String getNames(HashSet<DiagramObject> corruptedDiagrams)
+	private String getDiagramCorruptionMessage(HashSet<DiagramObject> corruptedDiagrams)
 	{
-		String corruptedDiagramNames = "";
+		StringBuffer corruptedDiagramNames = new StringBuffer();
+		corruptedDiagramNames.append("<HTML>Found Corrupted Data in Diagram(s):");
 		for(DiagramObject diagramObject : corruptedDiagrams)
 		{
-			corruptedDiagramNames += "<BR>" +  diagramObject.toString();
+			corruptedDiagramNames.append("<BR>" +  diagramObject.toString());
 		}
 		
-		return corruptedDiagramNames;
+		corruptedDiagramNames.append("</HTML>");
+		
+		return corruptedDiagramNames.toString();
 	}
 	
 	private void createResultsChainTab() throws Exception
