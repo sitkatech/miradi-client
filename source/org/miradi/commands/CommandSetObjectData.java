@@ -44,6 +44,8 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendIdsCommand(BaseObject object, String idListTag, IdList idsToAppend) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		IdList newList = new IdList(idsToAppend.getObjectType(), object.getData(idListTag));
 		newList.addAll(idsToAppend);
 		
@@ -52,6 +54,8 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendIdCommand(BaseObject object, String idListTag, BaseId idToAppend) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.add(idToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
@@ -59,6 +63,8 @@ public class CommandSetObjectData extends Command
 
 	static public CommandSetObjectData createInsertIdCommand(BaseObject object, String idListTag, BaseId idToInsert, int position) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.insertAt(idToInsert, position);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
@@ -66,6 +72,8 @@ public class CommandSetObjectData extends Command
 
 	static public CommandSetObjectData createRemoveIdCommand(BaseObject object, String idListTag, BaseId idToRemove) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		TemporaryIdList newList = new TemporaryIdList(object.getData(idListTag));
 		newList.removeId(idToRemove);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
@@ -73,14 +81,18 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createRemoveORefCommand(BaseObject object, String oRefListTag, ORef oRefToRemove) throws ParseException
 	{
+		ensureRefList(object, oRefListTag);
+		
 		ORefList newList = new ORefList(object.getData(oRefListTag));
 		newList.remove(oRefToRemove);
 		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
 	}
-	
+
 	//TODO find a better method name
 	static public CommandSetObjectData createAppendListCommand(BaseObject object, String idListTag, IdList listToAppend) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		IdList newList = new IdList(listToAppend.getObjectType(), object.getData(idListTag));
 		newList.addAll(listToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
@@ -88,6 +100,8 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendORefCommand(BaseObject object, String oRefListTag, ORef oRefToAppend) throws ParseException
 	{
+		ensureRefList(object, oRefListTag);
+		
 		ORefList newList = new ORefList(object.getData(oRefListTag));
 		newList.add(oRefToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
@@ -95,6 +109,8 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendORefListCommand(BaseObject object, String idListTag, ORefList refListToAppend) throws ParseException
 	{
+		ensureIdList(object, idListTag);
+		
 		ORefList newList = new ORefList(object.getData(idListTag));
 		newList.addAll(refListToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
@@ -219,6 +235,18 @@ public class CommandSetObjectData extends Command
 		dataPairs.put("PREVIOUS_VALUE", oldValue);
 		
 		return dataPairs;
+	}
+	
+	private static void ensureIdList(BaseObject object, String idListTag)
+	{
+		if (!object.isIdListTag(idListTag))
+			throw new RuntimeException("Tag is not a idList tag:" + idListTag + " for object type:" + object.getType());
+	}
+	
+	private static void ensureRefList(BaseObject object, String refListTag)
+	{
+		if (!object.isRefList(refListTag))
+			throw new RuntimeException("Tag is not a refList tag:" + refListTag + " for object type:" + object.getType());
 	}
 	
 	public static final String COMMAND_NAME = "SetObjectData";
