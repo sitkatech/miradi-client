@@ -150,7 +150,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.SlideShow;
@@ -465,6 +467,77 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		super.becomeActive();
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+		
+		final String corruptedDiagramNames = shouldWarnUserAboutDataCorruption();
+		if (corruptedDiagramNames.length() > 0)
+			EAM.errorDialog("Found Corrupted Data in Diagrams:" + corruptedDiagramNames);
+	}
+
+	private String shouldWarnUserAboutDataCorruption()
+	{
+		String appendedCorruptedDiagramNames = "";
+		ORefList diagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			if (shouldWarnUserAboutDataCorruption(getProject(), diagramObject))
+				appendedCorruptedDiagramNames += "\n " + diagramObject.toString();
+		}
+		
+		return appendedCorruptedDiagramNames;
+	}
+
+
+	private static boolean shouldWarnUserAboutDataCorruption(Project project, DiagramObject diagramObject)
+	{
+		if (hasCorruptedDiagramFactors(project, diagramObject))
+			return true;		
+		
+		if (hasCorruptedDiagramLinks(project, diagramObject))
+			return true;
+		
+		return false;
+	}
+
+
+	public static boolean hasCorruptedDiagramLinks(Project project, DiagramObject diagramObject)
+	{
+		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
+			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
+			if (factorLink == null)
+				return true;
+			
+			if (fromDiagramFactor == null || toDiagramFactor == null)
+				return true;
+			
+			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
+				return true;	
+		}
+		
+		return false;
+	}
+
+
+	public static boolean hasCorruptedDiagramFactors(Project project, DiagramObject diagramObject)
+	{
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
+		for (int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
+			final Factor factor = diagramFactor.getWrappedFactor();
+			if (factor == null)
+				return true;
+			
+			if (Task.is(factor) && !factor.isActivity())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private void createResultsChainTab() throws Exception
