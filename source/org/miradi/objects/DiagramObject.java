@@ -149,6 +149,18 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 	
+	@Override
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_DIAGRAM_FACTOR_IDS))
+			return true;
+		
+		if (tag.equals(TAG_DIAGRAM_FACTOR_LINK_IDS))
+			return true;
+
+		return super.isIdListTag(tag);
+	}
+	
 	public boolean isResultsChain()
 	{
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
