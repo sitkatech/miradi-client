@@ -22,13 +22,17 @@ package org.miradi.utils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 
 public class TestDiagramCorruptionDetector extends TestCaseWithProject
@@ -67,6 +71,12 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	{
 		DiagramObject diagramObject = getProject().getDiagramObject();
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+
+		BaseId bogusDiagramLinkId = new BaseId(9999);
+		IdList diagramLinkIdsWithBogusId = new IdList(DiagramLink.getObjectType());
+		diagramLinkIdsWithBogusId.add(bogusDiagramLinkId);
+		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIdsWithBogusId.toString());
+		assertTrue("did not detect corrupted diagram with missing link?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
 		
 		ORef diagramLinkRef = getProject().createDiagramLink();
 		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
@@ -79,12 +89,59 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		FactorLink factorLink = FactorLink.find(getProject(), diagramLink.getWrappedRef());
 		getProject().deleteObject(factorLink);
-		assertTrue("did not find corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
 		
 		getProject().deleteObject(fromFactor);
-		assertTrue("did not find corrupted link with missing from wrapped factor?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with  corrupted link with missing from wrapped factor?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
 		
 		getProject().deleteObject(fromDiagramFactor);
-		assertTrue("did not find corrupted link with missing diagram factor end?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with  corrupted link with missing diagram factor end?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+	}
+	
+	public void testGroupBoxLinksShouldBeIgnored() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramObject();
+		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		
+		ORef groupBoxDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, GroupBox.getObjectType());
+		ORef targetDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, Target.getObjectType());
+		
+		ORef causeDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, Target.getObjectType());
+		ORefList groupBoxChildRefs = new ORefList(causeDiagramFactorRef);
+		getProject().setObjectData(groupBoxDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildRefs.toString());
+		
+		DiagramLink diagramLink = createDiagramLink(diagramObject, groupBoxDiagramFactorRef, targetDiagramFactorRef);
+		assertTrue("is not group box link?", diagramLink.isGroupBoxLink());
+		
+		assertFalse("group box link is included in corrupted project test?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+	}
+
+
+	private DiagramLink createDiagramLink(DiagramObject diagramObject,
+			ORef groupBoxDiagramFactorRef, ORef targetDiagramFactorRef)
+			throws Exception
+	{
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(targetDiagramFactorRef, groupBoxDiagramFactorRef);
+		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		
+		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
+		diagramLinkIds.addRef(diagramLinkRef);
+		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		return diagramLink;
+	}
+
+
+	private ORef createDiagramFactorAndAddToDiagram(DiagramObject diagramObject, int type) throws Exception
+	{
+		ORef ref = getProject().createObject(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(ref);
+		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		
+		IdList diagramFactorIds = diagramObject.getAllDiagramFactorRefs().convertToIdList(DiagramFactor.getObjectType());
+		diagramFactorIds.addRef(diagramFactorRef);
+		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
+		
+		return diagramFactorRef;
 	}
 }
