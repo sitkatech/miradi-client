@@ -188,12 +188,19 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
 	{
 		String data = getNodeContent(strategyNode, SELECTED);
-		boolean isNonDraft = Boolean.parseBoolean(data);
-		String draftStatusValue = Strategy.STATUS_DRAFT;
-		if (isNonDraft)
-			draftStatusValue = Strategy.STATUS_REAL;
+		String draftStatusValue = Strategy.STATUS_REAL;
+		if (isDraft(data))
+			draftStatusValue = Strategy.STATUS_DRAFT;
 		
 		setData(strategyRef, Strategy.TAG_STATUS, draftStatusValue);
+	}
+
+	private boolean isDraft(String data)
+	{
+		if (data.length() == 0)
+			return false;
+			
+		return !Boolean.parseBoolean(data);
 	}
 
 	private void importActivities(Node strategyNode, ORef strategyRef) throws Exception
