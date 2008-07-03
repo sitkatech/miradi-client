@@ -200,7 +200,18 @@ public class ConProXmlImporter implements ConProMiradiXml
 		if (data.length() == 0)
 			return false;
 			
-		return !Boolean.parseBoolean(data);
+		return !isTrue(data);
+	}
+	
+	private boolean isTrue(String value)
+	{
+		if (value.equals(BooleanData.BOOLEAN_TRUE))
+			return true;
+		
+		if (value.equals(BooleanData.BOOLEAN_FALSE))
+			return false;
+		
+		return Boolean.parseBoolean(value);
 	}
 
 	private void importActivities(Node strategyNode, ORef strategyRef) throws Exception
