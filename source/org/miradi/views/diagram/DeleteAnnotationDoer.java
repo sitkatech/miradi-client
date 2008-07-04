@@ -96,10 +96,10 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
-		Vector commands = new Vector();	
+		Vector commands = new Vector();
+		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
-		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
