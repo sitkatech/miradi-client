@@ -50,6 +50,7 @@ import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
@@ -358,11 +359,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
 			
-			IdList allKeaIndicatorIds = new IdList(Indicator.getObjectType(), new BaseId[]{indicatorRef.getObjectId()});
+			ORefSet allKeaIndicatorRefSet = new ORefSet(indicatorRef);
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
-			IdList currentKeaIndicators = kea.getIndicatorIds();
-			allKeaIndicatorIds.addAll(currentKeaIndicators);
-			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, allKeaIndicatorIds.toString());
+			ORefList currentKeaIndicators = kea.getIndicatorRefs();
+			allKeaIndicatorRefSet.addAllRefs(currentKeaIndicators);
+			ORefList indicatorRefList = new ORefList(allKeaIndicatorRefSet);
+			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRefList.convertToIdList(Indicator.getObjectType()).toString());
 			
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
 			importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING);
