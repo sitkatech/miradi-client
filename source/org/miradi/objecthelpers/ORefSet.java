@@ -28,13 +28,19 @@ public class ORefSet extends HashSet<ORef>
 	{
 		super();
 	}
-	
+
+	public ORefSet(ORef ref)
+	{
+		this();
+		add(ref);
+	}
+
 	public ORefSet(ORefList refList)
 	{
 		this();
 		addAll(Arrays.asList(refList.toArray()));
 	}
-	
+
 	public void addAllRefs(ORefList refs)
 	{
 		addAll(Arrays.asList(refs.toArray()));
@@ -48,7 +54,7 @@ public class ORefSet extends HashSet<ORef>
 			if(!oldReferrals.contains(ref))
 				result.add(ref);
 		}
-		
+
 		return result;
 	}
 }
