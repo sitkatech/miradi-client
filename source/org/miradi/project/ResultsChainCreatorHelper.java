@@ -528,12 +528,10 @@ public class ResultsChainCreatorHelper
 
 	private DiagramLink cloneDiagramFactorLink(HashMap diagramFactors, DiagramLink diagramLink) throws Exception
 	{
-		DiagramFactorId fromDiagramFactorId = diagramLink.getFromDiagramFactorId();
-		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
+		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
 		DiagramFactor fromClonedDiagramFactor = (DiagramFactor) diagramFactors.get(fromDiagramFactor);
 		 
-		DiagramFactorId toDiagramFactorId = diagramLink.getToDiagramFactorId();
-		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
 		DiagramFactor toClonedDiagramFactor = (DiagramFactor) diagramFactors.get(toDiagramFactor);
 		
 		CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
