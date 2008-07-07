@@ -46,13 +46,6 @@ import org.miradi.xml.conpro.importer.ConProXmlImporter;
 public class ImportCpmzDoer extends ImportProjectDoer
 {
 	@Override
-	public boolean isAvailable()
-	{
-		//FIXME temporarly disabled, since class does nothing
-		return false;
-	}
-	
-	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
