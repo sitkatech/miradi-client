@@ -67,7 +67,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		Vector<Integer> highestTargetRatingValues = new Vector<Integer>();
 		for (int i = 0; i < targets.length; ++i)
 		{
-			int summaryRatingValue = getSummaryRating(targets[i]);
+			int summaryRatingValue = get2PrimeSummaryRatingValue(targets[i]);
 			if (summaryRatingValue > 0)
 				highestTargetRatingValues.add(summaryRatingValue);
 		}
@@ -90,18 +90,13 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
-		int highestSummaryRating = getSummaryRating(threat);
+		int highestSummaryRating = get2PrimeSummaryRatingValue(threat);
 		return  threatRatingQuestion.findChoiceByCode(Integer.toString(highestSummaryRating));
 	}
 	
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
 	{
 		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
-	}
-	
-	public int getSummaryRating(Factor factor) throws Exception
-	{
-		return getStressBasedThreatFormula().getHighestRatingRule(calculateSummaryRatingValues(factor));
 	}
 	
 	public int[] calculateSummaryRatingValues(Factor factor) throws Exception
