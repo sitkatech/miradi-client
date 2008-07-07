@@ -38,10 +38,10 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public void testGetSummaryRating() throws Exception
 	{
 		Target target = getProject().createTarget();
-		createThreatFactorLink(target);
-		createThreatFactorLink(target);
-		createThreatFactorLink(target);
-		createThreatFactorLink(target);
+		createThreatFactorLink(getProject().createCause(), target);
+		createThreatFactorLink(getProject().createCause(), target);
+		createThreatFactorLink(getProject().createCause(), target);
+		createThreatFactorLink(getProject().createCause(), target);
 	
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target));
@@ -58,9 +58,8 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
 	
-	private void createThreatFactorLink(Target target) throws Exception
+	private void createThreatFactorLink(Cause cause, Target target) throws Exception
 	{
-		Cause cause = getProject().createCause();
 		ORef threatLinkRef = getProject().createFactorLink(cause.getRef(), target.getRef());
 		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
 		populateWithThreatStressRating(factorLink);
@@ -112,5 +111,15 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		getProject().createFactorLink(emptyThreat.getRef(), emptyTarget.getRef());
 		int targetMajorityRatingWithTwoTargets = framework.getTargetMajorityRating();
 		assertEquals("wrong target majority rating?", 2, targetMajorityRatingWithTwoTargets);
+	}
+	
+	public void testGetThreatThreatRatingValue() throws Exception
+	{
+		Target target = getProject().createTarget();
+		Cause cause = getProject().createCause();
+		createThreatFactorLink(cause, target);
+		
+		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
+		assertEquals("wrong threat threatRating value?", "2", framework.getThreatThreatRatingValue(cause.getRef()).getCode());
 	}
 }
