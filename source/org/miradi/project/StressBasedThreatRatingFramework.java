@@ -90,8 +90,8 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		Cause threat = Cause.find(getProject(), threatRef);
-		int highestSummaryRating = get2PrimeSummaryRatingValue(threat);
-		return  threatRatingQuestion.findChoiceByCode(Integer.toString(highestSummaryRating));
+		int summaryRatingOfThreat = get2PrimeSummaryRatingValue(threat);
+		return  threatRatingQuestion.findChoiceByCode(Integer.toString(summaryRatingOfThreat));
 	}
 	
 	public int get2PrimeSummaryRatingValue(Factor factor) throws Exception
