@@ -137,7 +137,6 @@ import org.miradi.dialogs.slideshow.SlideShowDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -839,7 +838,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 		if(cmd.getObjectType() == ObjectType.FACTOR_LINK)
 		{
-			return getDiagramLinkRefFromFactorLinkId((FactorLinkId)cmd.getObjectId());
+			return getDiagramLinkRefFromFactorLinkRef(cmd.getObjectORef());
 		}
 		
 		return ORef.INVALID;
@@ -871,12 +870,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		cell.getBendPointSelectionHelper().clearSelection();
 	}
 
-	private ORef getDiagramLinkRefFromFactorLinkId(FactorLinkId factorLinkId) throws Exception
+	private ORef getDiagramLinkRefFromFactorLinkRef(ORef factorLinkRef) throws Exception
 	{
-		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkId))
+		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkRef))
 			return ORef.INVALID;
 		
-		DiagramLink link = getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
+		DiagramLink link = getDiagramModel().getDiagramFactorLinkByWrappedRef(factorLinkRef);
 		if(link == null)
 			return ORef.INVALID;
 		
