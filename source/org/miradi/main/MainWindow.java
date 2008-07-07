@@ -963,7 +963,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 1000;
 	
-	public static final boolean IS_CONPRO_DISABLED = false;
+	public static final boolean ALLOW_CONPRO_IMPORT_EXPORT = true;
 
 	private static boolean demoMode;
 	private static boolean developerMode;
