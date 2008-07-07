@@ -34,7 +34,19 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	{
 		super(name);
 	}
+
+	public void testGetSummaryRating() throws Exception
+	{
+		Target target = getProject().createTarget();
+		createThreatFactorLink(target);
+		createThreatFactorLink(target);
+		createThreatFactorLink(target);
+		createThreatFactorLink(target);
 	
+		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
+		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target));
+	}
+
 	public void testGetRollupRatingOfThreats() throws Exception
 	{
 		createFactorLinkWithThreatStressRating();
@@ -45,7 +57,15 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
-
+	
+	private void createThreatFactorLink(Target target) throws Exception
+	{
+		Cause cause = getProject().createCause();
+		ORef threatLinkRef = getProject().createFactorLink(cause.getRef(), target.getRef());
+		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
+		populateWithThreatStressRating(factorLink);
+	}
+	
 	private void createFactorLinkWithThreatStressRating() throws Exception
 	{
 		ORef threatLinkRef = getProject().createThreatTargetLink();
@@ -85,12 +105,12 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
 		int targetMajorityRating = framework.getTargetMajorityRating();
-		assertEquals("wrong target majority rating?", 3, targetMajorityRating);
+		assertEquals("wrong target majority rating?", 2, targetMajorityRating);
 		
 		Target emptyTarget = getProject().createTarget();
 		Cause emptyThreat = getProject().createCause();
 		getProject().createFactorLink(emptyThreat.getRef(), emptyTarget.getRef());
 		int targetMajorityRatingWithTwoTargets = framework.getTargetMajorityRating();
-		assertEquals("wrong target majority rating?", 3, targetMajorityRatingWithTwoTargets);
+		assertEquals("wrong target majority rating?", 2, targetMajorityRatingWithTwoTargets);
 	}
 }
