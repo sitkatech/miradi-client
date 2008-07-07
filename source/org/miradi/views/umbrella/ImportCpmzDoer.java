@@ -49,7 +49,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (MainWindow.IS_CONPRO_DISABLED)
+		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
 			return false;
 		
 		//FIXME temporarly disabled, since class does nothing

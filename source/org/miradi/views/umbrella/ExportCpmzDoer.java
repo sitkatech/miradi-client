@@ -50,7 +50,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (MainWindow.IS_CONPRO_DISABLED)
+		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
 			return false;
 			
 		return (getProject().isOpen());
