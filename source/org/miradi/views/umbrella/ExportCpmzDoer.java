@@ -32,6 +32,7 @@ import java.util.zip.ZipOutputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -49,6 +50,9 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 	@Override
 	public boolean isAvailable()
 	{
+		if (MainWindow.IS_CONPRO_DISABLED)
+			return false;
+			
 		return (getProject().isOpen());
 	}
 
