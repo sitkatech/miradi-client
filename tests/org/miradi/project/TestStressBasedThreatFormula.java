@@ -138,4 +138,11 @@ public class TestStressBasedThreatFormula extends TestCaseWithProject
 		assertEquals(1, formula.getHighestWithValue(1, 0, 0, 0));
 		assertEquals(0, formula.getHighestWithValue(0, 0, 0, 0));
 	}
+	
+	public void testGetHighestRatingRule()
+	{
+		StressBasedThreatFormula formula = new StressBasedThreatFormula();
+		int[] bundleValues = {3, 3, 3, 3, };
+		assertEquals(4, formula.getHighestRatingRule(bundleValues));
+	}
 }
