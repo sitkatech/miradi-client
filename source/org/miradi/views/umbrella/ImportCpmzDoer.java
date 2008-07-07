@@ -33,6 +33,7 @@ import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -45,6 +46,16 @@ import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ImportCpmzDoer extends ImportProjectDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if (MainWindow.IS_CONPRO_DISABLED)
+			return false;
+		
+		//FIXME temporarly disabled, since class does nothing
+		return false;
+	}
+	
 	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
