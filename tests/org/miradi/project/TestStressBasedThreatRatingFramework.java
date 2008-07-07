@@ -35,18 +35,36 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testGetHighestFactorSummaryRatingValue()
+	public void testGetRollupRatingOfThreats() throws Exception
 	{
-		//FIXME
-		//test for fail and make pass with 2 prime rule
-		//fail();
+		createFactorLinkWithThreatStressRating();
+		createFactorLinkWithThreatStressRating();
+		createFactorLinkWithThreatStressRating();
+		createFactorLinkWithThreatStressRating();
+		
+		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
+		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
-	
-	public void testGetRollupRatingOfThreats()
+
+	private void createFactorLinkWithThreatStressRating() throws Exception
 	{
-		//FIXME
-		//test for fail and make pass with 2 prime rule
-		//fail();
+		ORef threatLinkRef = getProject().createThreatTargetLink();
+		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
+		
+		populateWithThreatStressRating(factorLink);
+		populateWithThreatStressRating(factorLink);
+		populateWithThreatStressRating(factorLink);
+		populateWithThreatStressRating(factorLink);
+		
+		assertEquals(4, factorLink.calculateThreatRatingBundleValue());
+	}
+
+	private void populateWithThreatStressRating(FactorLink factorLink) throws Exception
+	{
+		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating();
+		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		threatStressRatingRefs.add(threatStressRating.getRef());
+		getProject().setObjectData(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
 	}
 	
 	public void testGetTargetMajorityRating() throws Exception

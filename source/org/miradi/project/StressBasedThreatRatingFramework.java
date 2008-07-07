@@ -75,7 +75,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return getStressBasedThreatFormula().getMajority(Utility.convertToIntArray(highestTargetRatingValues));
 	}
 	
-	private int getRollupRatingOfThreats() throws Exception
+	public int getRollupRatingOfThreats() throws Exception
 	{ 
 		Factor[] factors = getProject().getCausePool().getDirectThreats();
 		int[] summaryValues = new int[factors.length];
@@ -84,7 +84,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 			summaryValues[i] = get2PrimeSummaryRatingValue(factors[i]);
 		}
 		
-		return getStressBasedThreatFormula().getHighestRatingRule(summaryValues);
+		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(summaryValues);
 	}
 	
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
