@@ -35,6 +35,20 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testGetHighestFactorSummaryRatingValue()
+	{
+		//FIXME
+		//test for fail and make pass with 2 prime rule
+		//fail();
+	}
+	
+	public void testGetRollupRatingOfThreats()
+	{
+		//FIXME
+		//test for fail and make pass with 2 prime rule
+		//fail();
+	}
+	
 	public void testGetTargetMajorityRating() throws Exception
 	{
 		Stress stress = getProject().createAndPopulateStress();
