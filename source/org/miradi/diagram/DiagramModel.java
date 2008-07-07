@@ -702,7 +702,8 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramLink getDiagramFactorLinkByWrappedRef(ORef factorLinkRef) throws Exception
 	{
-		return getDiagramFactorLinkbyWrappedId((FactorLinkId) factorLinkRef.getObjectId());
+		factorLinkRef.ensureType(FactorLink.getObjectType());
+		return getDiagramFactorLinkbyWrappedId(new FactorLinkId(factorLinkRef.getObjectId().asInt()));
 	}
 	
 	public DiagramLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
@@ -713,6 +714,14 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 
+	public boolean doesDiagramFactorLinkExist(ORef factorLinkRef)
+	{
+		factorLinkRef.ensureType(FactorLink.getObjectType());
+		
+		FactorLinkId factorLinkId = new FactorLinkId(factorLinkRef.getObjectId().asInt());
+		return doesDiagramFactorLinkExist(factorLinkId);
+	}
+	
 	public boolean doesDiagramFactorLinkExist(FactorLinkId id)
 	{
 		DiagramLink linkage = cellInventory.getFactorLinkById(id);
