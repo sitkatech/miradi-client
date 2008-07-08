@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram.doers;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
@@ -54,10 +54,10 @@ public class ShareActivityDoer extends AbstractShareDoer
 
 	protected ORef getParentRefOfShareableObjects()
 	{
-		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
-		if (! selected.isFactor())
+		BaseObject foundObject = getSingleSelected(Strategy.getObjectType());
+		if (foundObject == null)
 			return ORef.INVALID;
 		
-		return selected.getDiagramFactor().getWrappedORef();
+		return foundObject.getRef();
 	}
 }
