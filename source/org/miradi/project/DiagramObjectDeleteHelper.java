@@ -92,8 +92,16 @@ public class DiagramObjectDeleteHelper
 		
 		for (int i = 0; i < allDiagramFactors.length; i++)
 		{
-			deleteFactorAndDiagramFactor(allDiagramFactors[i]);
+			DiagramFactor diagramFactorToDelete = allDiagramFactors[i];
+			if (doesStillExist(model, diagramFactorToDelete))
+				deleteFactorAndDiagramFactor(diagramFactorToDelete);
 		}
+	}
+	
+	private boolean doesStillExist(DiagramModel model, DiagramFactor diagramFactor)
+	{
+		Vector<DiagramFactor> currentDiagramFactors = model.getAllDiagramFactors();
+		return currentDiagramFactors.contains(diagramFactor);
 	}
 
 	private void deleteFactorAndDiagramFactor(DiagramFactor diagramFactor) throws Exception
