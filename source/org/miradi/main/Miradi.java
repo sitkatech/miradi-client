@@ -105,6 +105,7 @@ public class Miradi
 				return false;
 			}
 		}
+		EAM.logWarning("Looking for content jars in: " + directory.getAbsolutePath());
 		
 		ChoiceQuestion languages = QuestionManager.getQuestion(LanguageQuestion.class);
 		Vector<ChoiceItem> results = new Vector();
