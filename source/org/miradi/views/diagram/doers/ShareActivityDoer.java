@@ -23,7 +23,6 @@ import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
@@ -52,12 +51,8 @@ public class ShareActivityDoer extends AbstractShareDoer
 		return new ShareableActivityPoolTablePanel(getProject(), parentOfSharedObjectRefs);
 	}
 
-	protected ORef getParentRefOfShareableObjects()
+	protected int getParentType()
 	{
-		BaseObject foundObject = getSingleSelected(Strategy.getObjectType());
-		if (foundObject == null)
-			return ORef.INVALID;
-		
-		return foundObject.getRef();
+		return Strategy.getObjectType();
 	}
 }

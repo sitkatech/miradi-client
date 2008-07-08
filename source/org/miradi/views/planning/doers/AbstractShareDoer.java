@@ -67,11 +67,20 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		}
 	}
 	
+	protected ORef getParentRefOfShareableObjects()
+	{
+		BaseObject foundObject = getSingleSelected(getParentType());
+		if (foundObject == null)
+			return ORef.INVALID;
+		
+		return foundObject.getRef();
+	}
+
 	abstract protected String getShareDialogTitle();
 	
 	abstract protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs);
 	
-	abstract protected ORef getParentRefOfShareableObjects();
+	abstract protected int getParentType();
 	
 	abstract protected String getParentTaskIdsTag();
 }

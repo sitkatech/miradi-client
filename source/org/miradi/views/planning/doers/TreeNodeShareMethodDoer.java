@@ -19,24 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-
 public class TreeNodeShareMethodDoer extends ShareMethodDoer
 {
-	@Override
-	public boolean isAvailable()
-	{
-		return getSingleSelected(Indicator.getObjectType()) != null;
-	}
-	
-	protected ORef getParentRefOfShareableObjects()
-	{
-		BaseObject foundObject = getSingleSelected(Indicator.getObjectType());
-		if (foundObject == null)
-			return ORef.INVALID;
-		
-		return foundObject.getRef();
-	}
 }
