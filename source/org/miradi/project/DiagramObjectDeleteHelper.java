@@ -92,11 +92,11 @@ public class DiagramObjectDeleteHelper
 		
 		for (int i = 0; i < allDiagramFactors.length; i++)
 		{
-			deleteDiagramFactorAndFactor(allDiagramFactors[i]);
+			deleteFactorAndDiagramFactor(allDiagramFactors[i]);
 		}
 	}
 
-	private void deleteDiagramFactorAndFactor(DiagramFactor diagramFactor) throws Exception
+	private void deleteFactorAndDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{		
 		DiagramComponent diagram = diagramPanel.getDiagramComponent();
 		FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(diagram);
