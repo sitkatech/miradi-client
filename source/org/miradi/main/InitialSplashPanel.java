@@ -76,6 +76,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 		{
 			Vector<ChoiceItem> availableLanguageChoices = new Vector(Miradi.getAvailableLanguageChoices());
 			Collections.sort(availableLanguageChoices);
+			availableLanguageChoices.insertElementAt(new ChoiceItem("en", "English"), 0);
 			return availableLanguageChoices.toArray(new ChoiceItem[0]);
 		}
 		catch(Exception e)
