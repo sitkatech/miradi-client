@@ -60,7 +60,7 @@ public class FactorDeleteHelper
 		diagramObject = diagramObjectToUse;
 	}
 
-	public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
+	public void deleteFactorAndDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		clearSelection();
 		
