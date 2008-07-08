@@ -28,6 +28,12 @@ import org.miradi.objects.Indicator;
 
 public class ShareMethodDoer extends AbstractShareDoer
 {	
+	@Override
+	public boolean isAvailable()
+	{
+		return getSingleSelected(getParentType()) != null;
+	}
+	
 	protected boolean canOwnTask(BaseObject object)
 	{
 		if(object.getType() == Indicator.getObjectType())
@@ -41,9 +47,9 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return Indicator.TAG_TASK_IDS;
 	}
 
-	protected ORef getParentRefOfShareableObjects()
+	protected int getParentType()
 	{
-		return getSelectedRef();
+		return Indicator.getObjectType();
 	}
 	
 	protected String getShareDialogTitle()
