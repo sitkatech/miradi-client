@@ -109,6 +109,9 @@ public class Miradi
 		ChoiceQuestion languages = QuestionManager.getQuestion(LanguageQuestion.class);
 		Vector<ChoiceItem> results = new Vector();
 		String[] jarNames = directory.list(new LanguageJarFilter());
+		if(jarNames == null)
+			return results;
+		
 		for(int i = 0; i < jarNames.length; ++i)
 		{
 			String[] parts = jarNames[i].split("-");
