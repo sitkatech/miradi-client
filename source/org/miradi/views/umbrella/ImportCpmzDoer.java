@@ -49,16 +49,12 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	@Override
 	public boolean isAvailable()
 	{
-		//FIXME temporarly disabled, since class does nothing
-		return false;
+		return MainWindow.ALLOW_CONPRO_IMPORT_EXPORT;
 	}
 	
 	@Override
 	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
-			return;
-				
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
