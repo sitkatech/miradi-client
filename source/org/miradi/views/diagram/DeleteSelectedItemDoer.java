@@ -97,7 +97,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 	private void deleteFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		DiagramComponent diagram = getDiagramView().getDiagramComponent();
-		new FactorDeleteHelper(diagram).deleteDiagramFactor(diagramFactor);
+		new FactorDeleteHelper(diagram).deleteFactorAndDiagramFactor(diagramFactor);
 	}
 
 	private void deleteLink(DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
