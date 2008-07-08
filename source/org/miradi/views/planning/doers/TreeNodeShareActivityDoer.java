@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 
@@ -30,14 +28,5 @@ public class TreeNodeShareActivityDoer extends ShareActivityDoer
 	public boolean isAvailable()
 	{
 		return getSingleSelected(Strategy.getObjectType()) != null;
-	}
-	
-	protected ORef getParentRefOfShareableObjects()
-	{
-		BaseObject foundObject = getSingleSelected(Strategy.getObjectType());
-		if (foundObject == null)
-			return ORef.INVALID;
-		
-		return foundObject.getRef();
 	}
 }
