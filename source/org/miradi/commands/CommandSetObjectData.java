@@ -109,7 +109,7 @@ public class CommandSetObjectData extends Command
 	
 	static public CommandSetObjectData createAppendORefListCommand(BaseObject object, String idListTag, ORefList refListToAppend) throws ParseException
 	{
-		ensureIdList(object, idListTag);
+		ensureRefList(object, idListTag);
 		
 		ORefList newList = new ORefList(object.getData(idListTag));
 		newList.addAll(refListToAppend);
