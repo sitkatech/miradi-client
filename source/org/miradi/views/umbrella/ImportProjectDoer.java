@@ -49,6 +49,9 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 	public void doIt() throws CommandFailedException 
 	{
+		if (!isAvailable())
+			return;
+		
 		try
 		{
 			JFileChooser fileChooser = new JFileChooser(currentDirectory);
