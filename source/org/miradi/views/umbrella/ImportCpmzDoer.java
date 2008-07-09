@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -47,9 +48,18 @@ import org.miradi.xml.conpro.importer.ConProXmlImporter;
 public class ImportCpmzDoer extends ImportProjectDoer
 {
 	@Override
-	public boolean isAvailable()
+	public void doIt() throws CommandFailedException
 	{
-		return MainWindow.ALLOW_CONPRO_IMPORT_EXPORT;
+		if (!isAvailable())
+			return;
+		
+		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
+		{
+			EAM.notifyDialog(MainWindow.DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE);
+			return;
+		}
+		
+		super.doIt();
 	}
 	
 	@Override
