@@ -30,6 +30,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -50,12 +51,21 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
-			return false;
-			
 		return (getProject().isOpen());
 	}
 
+	@Override
+	public void doIt() throws CommandFailedException
+	{
+		if (!MainWindow.ALLOW_CONPRO_IMPORT_EXPORT)
+		{
+			EAM.notifyDialog(MainWindow.DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE);
+			return;
+		}
+		
+		super.doIt();
+	}
+	
 	protected void doWork(File chosen) throws Exception
 	{
 		createCpmzFile(chosen);
