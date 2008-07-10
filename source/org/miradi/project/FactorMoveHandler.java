@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -260,7 +261,11 @@ public class FactorMoveHandler
 
 	private Command buildResizeCommand(FactorCell node)
 	{
-		String currentSize = EnhancedJsonObject.convertFromDimension(node.getSize());
+		Dimension size = node.getSize();
+		int snappedEvenWidth = getProject().forceNonZeroEvenSnap(size.width);
+		int snappedEvenHeight = getProject().forceNonZeroEvenSnap(size.height);
+		Dimension snappedEvenSize = new Dimension(snappedEvenWidth, snappedEvenHeight);
+		String currentSize = EnhancedJsonObject.convertFromDimension(snappedEvenSize);
 		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);
 	}
 
