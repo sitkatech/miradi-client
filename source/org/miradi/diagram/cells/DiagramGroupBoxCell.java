@@ -21,12 +21,9 @@ package org.miradi.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
-
-import javax.swing.JTextPane;
 
 import org.jgraph.graph.GraphConstants;
 import org.miradi.commands.CommandSetObjectData;
@@ -40,9 +37,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -91,14 +86,17 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
 		
-		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
-		shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
 		int gridSize = getProject().getGridSize();
+		shortScopeHeight = 2 * gridSize;
+		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
 		location = getProject().getSnapped(location);
-		Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
-		int forcedEvenSnappedWidth = forceEvenSnappedLargerSize(gridSize, size.width);
-		int forcedEvenSnappedHeight = forceEvenSnappedLargerSize(gridSize, size.height);
+		int widthWithCushion = (int)groupBoxBounds.getWidth() + 2*gridSize;
+		int heightWithCushion = (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize;
+		
+		Dimension size = new Dimension(widthWithCushion, heightWithCushion);
+		int forcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(size.width);
+		int forcedEvenSnappedHeight = getProject().forceNonZeroEvenSnap(size.height);
 		Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
 		Rectangle newBounds = new Rectangle(location, newSize);
 		if(newBounds.equals(getBounds()))
@@ -109,15 +107,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		model.toBackGroupBox(new Object[] {this});
 	}
 
-	private int forceEvenSnappedLargerSize(int gridSize, int size)
-	{
-		int forceNonZeroEvenSnap = getProject().forceNonZeroEvenSnap(size);
-		if (forceNonZeroEvenSnap < size)
-			forceNonZeroEvenSnap += gridSize;
-		
-		return forceNonZeroEvenSnap;
-	}
-	
 	private void saveLocationAndSize(Point location, Dimension size)
 	{
 		try
@@ -133,22 +122,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			EAM.logException(e);
 			//FIXME do something with this exception
 		}
-	}
-	
-	/*TODO: should change MultilineCellRenderer and this method to use the same component to display html 
-	 * : see AboutBox that uses the HtmlViewer as in  About.class */
-	public int calculateShortScopeHeight(int width) 
-	{
-		JTextPane ja = new JTextPane();
-		String fontFamilCode = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
-		String fontFamily = new FontFamiliyQuestion().findChoiceByCode(fontFamilCode).getLabel();
-		int size = getProject().getMetadata().getDiagramFontSize();
-		if (size==0)
-			size = ja.getFont().getSize();
-		ja.setFont(new Font(fontFamily, Font.PLAIN, size));
-		ja.setSize(width, ja.getMaximumSize().height);
-		ja.setText(getText());
-		return ja.getPreferredSize().height + getProject().getGridSize();
 	}
 	
 	public Rectangle2D computeCurrentChildrenBounds()
