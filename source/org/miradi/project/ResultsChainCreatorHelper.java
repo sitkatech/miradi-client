@@ -42,6 +42,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
@@ -412,7 +413,7 @@ public class ResultsChainCreatorHelper
 		if (containsOnlyStrategies(selectedFactorCells))
 			return getLinksInRelatedFactors(selectedFactorCells);
 
-		return getDiagramLinksInSelection();
+		return getDiagramLinksAndChildrenInSelection();
 	}
 
 	private FactorCell[] getSelectedCells()
@@ -423,32 +424,32 @@ public class ResultsChainCreatorHelper
 		return diagramPanel.getOnlySelectedFactorCells();
 	}
 	
-	private DiagramLink[] getDiagramLinksInSelection()
+	private DiagramLink[] getDiagramLinksAndChildrenInSelection()
 	{
-		HashSet diagramFactorIdSet = extractDiagramFactorIds();
+		ORefSet diagramFactorAndChildrenRefSet = extractDiagramFactorRefs();
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		Vector containedDiagramLinks = new Vector();
 		for (int i = 0; i < allDiagramLinks.length; ++i)
 		{
-			DiagramFactorId fromId = allDiagramLinks[i].getFromDiagramFactorId();
-			DiagramFactorId toId = allDiagramLinks[i].getToDiagramFactorId();
-			if (diagramFactorIdSet.contains(fromId) && diagramFactorIdSet.contains(toId))
+			ORef fromRef = allDiagramLinks[i].getFromDiagramFactorRef();
+			ORef toRef = allDiagramLinks[i].getToDiagramFactorRef();
+			if (diagramFactorAndChildrenRefSet.contains(fromRef) && diagramFactorAndChildrenRefSet.contains(toRef))
 				containedDiagramLinks.add(allDiagramLinks[i]);
 		}
 		
 		return (DiagramLink[]) containedDiagramLinks.toArray(new DiagramLink[0]);
 	}
 	
-	private HashSet extractDiagramFactorIds()
+	private ORefSet extractDiagramFactorRefs()
 	{
-		HashSet selectedDiagramFactorSet = new HashSet();
+		ORefSet diagramFactorAndChildrenRefSet = new ORefSet();
 		FactorCell[] selectedFactorCells = getSelectedCells();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			selectedDiagramFactorSet.add(selectedFactorCells[i].getDiagramFactorId());
+			diagramFactorAndChildrenRefSet.add(selectedFactorCells[i].getDiagramFactorRef());
 		}
 		
-		return selectedDiagramFactorSet;
+		return diagramFactorAndChildrenRefSet;
 	}
 
 	private DiagramLink[] getLinksInRelatedFactors(FactorCell[] selectedFactorCells) throws Exception
