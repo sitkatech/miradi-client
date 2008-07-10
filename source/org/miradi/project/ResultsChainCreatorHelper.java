@@ -446,14 +446,8 @@ public class ResultsChainCreatorHelper
 		FactorCell[] selectedFactorCells = getSelectedCells();
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
-			FactorCell selectedFactorCell = selectedFactorCells[i];
-			if (selectedFactorCell.isGroupBox())
-			{
-				ORefList groupBoxChildrenRefs = selectedFactorCell.getDiagramFactor().getGroupBoxChildrenRefs();
-				diagramFactorAndChildrenRefSet.addAllRefs(groupBoxChildrenRefs);
-			}
-			
-			diagramFactorAndChildrenRefSet.add(selectedFactorCell.getDiagramFactorRef());
+			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
+			diagramFactorAndChildrenRefSet.addAllRefs(diagramFactor.getSelfAndChildren());
 		}
 		
 		return diagramFactorAndChildrenRefSet;
