@@ -25,7 +25,6 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
-import java.util.Hashtable;
 
 import javax.swing.JTextPane;
 
@@ -105,14 +104,9 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		if(newBounds.equals(getBounds()))
 			return;
 		
-		GraphConstants.setBounds(getAttributes(), newBounds);
-		Hashtable nest = new Hashtable();
-		nest.put(this, getAttributes());
-		model.edit(nest, null, null, null);
-		model.toBackGroupBox(new Object[] {this});
-
-		
 		saveLocationAndSize(location, newSize);
+		updateFromDiagramFactor();
+		model.toBackGroupBox(new Object[] {this});
 	}
 
 	private int forceEvenSnappedLargerSize(int gridSize, int size)
