@@ -93,28 +93,24 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			return;
 		
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
-		Rectangle newBounds = new Rectangle(0,0,0,0);
-		if(!groupBoxBounds.equals(newBounds))
-		{
-			shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
-			int gridSize = getProject().getGridSize();
-			Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
-			location = getProject().getSnapped(location);
-			Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
-			int forcedEvenSnappedWidth = forceEvenSnappedLargerSize(gridSize, size.width);
-			int forcedEvenSnappedHeight = forceEvenSnappedLargerSize(gridSize, size.height);
-			Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
-			newBounds = new Rectangle(location, newSize);
-			
-			GraphConstants.setBounds(getAttributes(), newBounds);
-			Hashtable nest = new Hashtable();
-			nest.put(this, getAttributes());
-			model.edit(nest, null, null, null);
-			model.toBackGroupBox(new Object[] {this});
+		shortScopeHeight = calculateShortScopeHeight(groupBoxBounds.getBounds().width);
+		int gridSize = getProject().getGridSize();
+		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
+		location = getProject().getSnapped(location);
+		Dimension size = new Dimension((int)groupBoxBounds.getWidth() + 2*gridSize, (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize);
+		int forcedEvenSnappedWidth = forceEvenSnappedLargerSize(gridSize, size.width);
+		int forcedEvenSnappedHeight = forceEvenSnappedLargerSize(gridSize, size.height);
+		Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
+		Rectangle newBounds = new Rectangle(location, newSize);
+		
+		GraphConstants.setBounds(getAttributes(), newBounds);
+		Hashtable nest = new Hashtable();
+		nest.put(this, getAttributes());
+		model.edit(nest, null, null, null);
+		model.toBackGroupBox(new Object[] {this});
 
-			
-			saveLocationAndSize(location, newSize);
-		}		
+		
+		saveLocationAndSize(location, newSize);
 	}
 
 	private int forceEvenSnappedLargerSize(int gridSize, int size)
