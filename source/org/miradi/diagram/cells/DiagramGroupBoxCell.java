@@ -102,6 +102,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		int forcedEvenSnappedHeight = forceEvenSnappedLargerSize(gridSize, size.height);
 		Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
 		Rectangle newBounds = new Rectangle(location, newSize);
+		if(newBounds.equals(getBounds()))
+			return;
 		
 		GraphConstants.setBounds(getAttributes(), newBounds);
 		Hashtable nest = new Hashtable();
