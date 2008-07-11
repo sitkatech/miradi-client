@@ -476,7 +476,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private String getDiagramCorruptionMessage(Vector<String> errorMessages)
 	{
 		StringBuffer corruptedDiagramNames = new StringBuffer();
-		corruptedDiagramNames.append("<HTML>Found Corrupted Data:");
+		corruptedDiagramNames.append("<HTML>" + EAM.text("Found Corrupted Data:"));
 		for (int index = 0; index < errorMessages.size(); ++index)
 		{
 			corruptedDiagramNames.append("<HR>");
