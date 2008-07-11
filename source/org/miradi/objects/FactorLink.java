@@ -83,10 +83,20 @@ public class FactorLink extends BaseObject
 		return deepObjectRefsToCopy;
 	}
 			
+	public Factor getFromFactor()
+	{
+		return Factor.findFactor(getProject(), getFromFactorRef());
+	}
+	
 	public ORef getFromFactorRef()
 	{
 		ORef rawRef = fromRef.getRawRef();
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
+	}
+	
+	public Factor getToFactor()
+	{
+		return Factor.findFactor(getProject(), getToFactorRef());
 	}
 	
 	public ORef getToFactorRef()
