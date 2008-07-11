@@ -93,7 +93,7 @@ public class DiagramCorruptionDetector
 				String fromLabel = fromDiagramFactor.getWrappedFactor().toString();
 				String toLabel = toDiagramFactor.getWrappedFactor().toString();
 				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
-				errorMessages.add("Found null non group box factor link from = " + fromLabel + "to = " + toLabel + ".  Diagram = " + diagramName);
+				errorMessages.add("Found null non group box factor link. From = " + fromLabel + " To = " + toLabel + ".  Diagram = " + diagramName);
 				continue;
 			}
 		}
