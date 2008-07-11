@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
+import java.awt.Dimension;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -26,9 +28,12 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectRepairer extends TestCaseWithProject
 {
@@ -100,5 +105,36 @@ public class TestProjectRepairer extends TestCaseWithProject
 		getProject().executeCommand(appendSubTask);
 		assertEquals("subtask not appended?", 1, task.getSubtaskCount());
 		assertEquals("Didn't detect second instance?", 2, repairer.findAllMissingObjects().size());
+	}
+	
+	public void testRepairUnsnappedFactorSizes() throws Exception
+	{
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		cause1.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(15, 15)));
+		
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		cause2.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(30, 30)));
+		
+		DiagramFactor cause3 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		cause3.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(31, 31)));
+		
+		DiagramFactor cause4 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		cause4.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
+		
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		repairer.repair();
+		
+		DiagramFactor repairedCause1 = DiagramFactor.find(getProject(), cause1.getRef());
+		Dimension expectedSnappedSize = new Dimension(30, 30);
+		assertEquals("wrong cause1 size?", expectedSnappedSize, repairedCause1.getSize());
+		
+		DiagramFactor repairedCause2 = DiagramFactor.find(getProject(), cause2.getRef());
+		assertEquals("wrong cause2 size?", expectedSnappedSize, repairedCause2.getSize());
+		
+		DiagramFactor repairedCause3 = DiagramFactor.find(getProject(), cause3.getRef());
+		assertEquals("wrong cause3 size?", expectedSnappedSize, repairedCause3.getSize());
+		
+		DiagramFactor repairedCause4 = DiagramFactor.find(getProject(), cause4.getRef());
+		assertEquals("wrong cause4 size?", new Dimension(60, 60), repairedCause4.getSize());
 	}
 }

@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import org.miradi.ids.BaseId;
@@ -63,8 +64,32 @@ public class ProjectRepairer
 	private void repairUnsnappedNodes()
 	{
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
-		for (int i = 0; i < diagramFactors.length; ++i) 
+		for (int i = 0; i < diagramFactors.length; ++i)
+		{
 			fixLocation(diagramFactors[i]);
+			fixSize(diagramFactors[i]);
+		}
+	}
+
+	private void fixSize(DiagramFactor diagramFactor)
+	{
+		Dimension currentSize = diagramFactor.getSize();
+		int snappedEvenWidth = project.forceNonZeroEvenSnap(currentSize.width);
+		int snappedEvenHeight = project.forceNonZeroEvenSnap(currentSize.height);
+		Dimension snappedEvenSize = new Dimension(snappedEvenWidth, snappedEvenHeight);
+		
+		if (currentSize.equals(snappedEvenSize))
+			return;
+		
+		try
+		{
+			String newSizeAsString = EnhancedJsonObject.convertFromDimension(snappedEvenSize);
+			project.setObjectData(diagramFactor.getType(), diagramFactor.getId(), DiagramFactor.TAG_SIZE, newSizeAsString);
+		}
+		catch(Exception e)
+		{
+			logAndContinue(e);
+		}
 	}
 
 	private void fixLocation(DiagramFactor diagramFactor)
