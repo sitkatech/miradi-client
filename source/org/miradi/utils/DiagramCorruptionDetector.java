@@ -67,7 +67,7 @@ public class DiagramCorruptionDetector
 			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
 			if (diagramLink ==null)
 			{	
-				EAM.logError("Found null diagramLink ref = " + diagramLink.getRef());
+				EAM.logError("Found null diagramLink ref = " + diagramLinkRefs.get(index));
 				return true;
 			}
 
