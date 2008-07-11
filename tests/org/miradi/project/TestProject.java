@@ -208,6 +208,15 @@ public class TestProject extends EAMTestCase
 		Dimension twoThirdsMinus = new Dimension(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
 		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(twoThirdsMinus));		
 	}
+	
+	public void testForceNonZeroEvenSnap()
+	{
+		assertEquals("0 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(0));
+		assertEquals("15 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(15));
+		assertEquals("29 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(29));
+		assertEquals("40 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(40));
+		assertEquals("40 was not snapped to even size?", 60, getProject().forceNonZeroEvenSnap(45));
+	}
 
 	public void testIsValidProjectFilename() throws Exception
 	{
