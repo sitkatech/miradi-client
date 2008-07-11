@@ -46,7 +46,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	public void testHasCorruptedDiagramFactors() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getDiagramObject();
-		assertFalse("detected corrupted diagram factors?", DiagramCorruptionDetector.hasCorruptedDiagramFactors(getProject(), diagramObject));
+		assertFalse("detected corrupted diagram factors?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		Task task = getProject().createTask();
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(task.getRef());
@@ -55,28 +55,28 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		diagramFactorIds.addRef(diagramFactorRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
 		
-		assertTrue("did't detect task diagram factor that is not activity?", DiagramCorruptionDetector.hasCorruptedDiagramFactors(getProject(), diagramObject));
+		assertTrue("did't detect task diagram factor that is not activity?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		getProject().deleteObject(task);
 		
-		assertTrue("didn't detect diagram factor that has no wrapped ref?", DiagramCorruptionDetector.hasCorruptedDiagramFactors(getProject(), diagramObject));
+		assertTrue("didn't detect diagram factor that has no wrapped ref?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		IdList idsWithNonExistingObjectId = new IdList(DiagramFactor.getObjectType());
 		idsWithNonExistingObjectId.add(new BaseId(9999));
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idsWithNonExistingObjectId.toString());
-		assertTrue("didn't detect diagram factor that does not exist?", DiagramCorruptionDetector.hasCorruptedDiagramFactors(getProject(), diagramObject));
+		assertTrue("didn't detect diagram factor that does not exist?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 	}
 	
 	public void testHasCorruptedDiagramLinks() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getDiagramObject();
-		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 
 		BaseId bogusDiagramLinkId = new BaseId(9999);
 		IdList diagramLinkIdsWithBogusId = new IdList(DiagramLink.getObjectType());
 		diagramLinkIdsWithBogusId.add(bogusDiagramLinkId);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIdsWithBogusId.toString());
-		assertTrue("did not detect corrupted diagram with missing link?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with missing link?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		ORef diagramLinkRef = getProject().createDiagramLink();
 		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
@@ -89,19 +89,19 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		FactorLink factorLink = FactorLink.find(getProject(), diagramLink.getWrappedRef());
 		getProject().deleteObject(factorLink);
-		assertTrue("did not detect corrupted diagram with corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		getProject().deleteObject(fromFactor);
-		assertTrue("did not detect corrupted diagram with  corrupted link with missing from wrapped factor?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with  corrupted link with missing from wrapped factor?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		getProject().deleteObject(fromDiagramFactor);
-		assertTrue("did not detect corrupted diagram with  corrupted link with missing diagram factor end?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertTrue("did not detect corrupted diagram with  corrupted link with missing diagram factor end?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 	}
 	
 	public void testGroupBoxLinksShouldBeIgnored() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getDiagramObject();
-		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		ORef groupBoxDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, GroupBox.getObjectType());
 		ORef targetDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, Target.getObjectType());
@@ -113,7 +113,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		DiagramLink diagramLink = createDiagramLink(diagramObject, groupBoxDiagramFactorRef, targetDiagramFactorRef);
 		assertTrue("is not group box link?", diagramLink.isGroupBoxLink());
 		
-		assertFalse("group box link is included in corrupted project test?", DiagramCorruptionDetector.hasCorruptedDiagramLinks(getProject(), diagramObject));
+		assertFalse("group box link is included in corrupted project test?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 	}
 
 
