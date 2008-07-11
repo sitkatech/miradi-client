@@ -211,11 +211,16 @@ public class TestProject extends EAMTestCase
 	
 	public void testForceNonZeroEvenSnap()
 	{
-		assertEquals("0 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(0));
-		assertEquals("15 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(15));
-		assertEquals("29 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(29));
-		assertEquals("40 was not snapped to even size?", 30, getProject().forceNonZeroEvenSnap(40));
-		assertEquals("40 was not snapped to even size?", 60, getProject().forceNonZeroEvenSnap(45));
+		verifyEvenSnap(30, 0);
+		verifyEvenSnap(30, 15);
+		verifyEvenSnap(30, 29);
+		verifyEvenSnap(30, 40);
+		verifyEvenSnap(60, 45);
+	}
+	
+	private void verifyEvenSnap(int expectedValue, int valueToEvenSnap)
+	{
+		assertEquals("value was not snapped to even size?", expectedValue, getProject().forceNonZeroEvenSnap(valueToEvenSnap));
 	}
 
 	public void testIsValidProjectFilename() throws Exception
