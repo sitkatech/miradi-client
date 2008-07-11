@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.HashSet;
+import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -33,42 +33,42 @@ import org.miradi.project.Project;
 
 public class DiagramCorruptionDetector
 {
-	public static HashSet<DiagramObject> getCorruptedDiagrams(Project project)
+	public static Vector<String> getCorruptedDiagrams(Project project)
 	{
-		HashSet<DiagramObject> corruptedDiagramObjects = new HashSet();
+		Vector<String> errorMessages = new Vector();
 		ORefList diagramObjectRefs = project.getAllDiagramObjectRefs();
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectRefs.get(index));
-			if (isDiagramCorrupted(project, diagramObject))
-				corruptedDiagramObjects.add(diagramObject);
+			errorMessages.addAll(getDiagramCorruptedErrorMessages(project, diagramObject));
 		}
 		
-		return corruptedDiagramObjects;
+		return errorMessages;
 	}
 
 
-	private static boolean isDiagramCorrupted(Project project, DiagramObject diagramObject)
+	private static Vector<String> getDiagramCorruptedErrorMessages(Project project, DiagramObject diagramObject)
 	{
-		if (hasCorruptedDiagramFactors(project, diagramObject))
-			return true;		
+		Vector<String> errorMessages = new Vector();
+		errorMessages.addAll(getCorruptedDiagramFactorErrorMessages(project, diagramObject));
+		errorMessages.addAll(getCorruptedDiagramLinksErrorMessages(project, diagramObject));
 		
-		if (hasCorruptedDiagramLinks(project, diagramObject))
-			return true;
-		
-		return false;
+		return errorMessages;
 	}
 
-	public static boolean hasCorruptedDiagramLinks(Project project, DiagramObject diagramObject)
+	public static Vector<String> getCorruptedDiagramLinksErrorMessages(Project project, DiagramObject diagramObject)
 	{
+		String diagramName = diagramObject.toString();
+		Vector<String> errorMessages = new Vector();
 		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
 			if (diagramLink ==null)
 			{	
-				EAM.logError("Found null diagramLink ref = " + diagramLinkRefs.get(index));
-				return true;
+				EAM.logVerbose("Found null diagramLink ref = " + diagramLinkRefs.get(index));
+				errorMessages.add("Found null diagramLink.  Diagram = " + diagramName);
+				continue;
 			}
 
 			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
@@ -76,53 +76,64 @@ public class DiagramCorruptionDetector
 			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
 			if (fromDiagramFactor == null || toDiagramFactor == null)
 			{
-				EAM.logError("Found null from or to for diagram link ref = " + diagramLink.getRef() + " .  from = " + fromDiagramFactor + " to = " + toDiagramFactor);
-				return true;
+				EAM.logVerbose("Found null from or to for diagram link ref = " + diagramLink.getRef() + " .  from = " + fromDiagramFactor + " to = " + toDiagramFactor);
+				errorMessages.add("Found null from or to for diagram link.  Diagram = " + diagramName);
+				continue;
+			}
+			
+			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
+			{
+				EAM.logVerbose("Found null from wrapped factor or to wrapped factor from diagram link ref = " + diagramLink.getRef() + " from wrapped ref = " +fromDiagramFactor.getWrappedORef() +  " to wrapped ref = " + toDiagramFactor.getWrappedORef() );
+				errorMessages.add("Found null from wrapped factor or to wrapped factor from diagram link.  Diagram = " + diagramName);
+				continue;
 			}
 			
 			if (factorLink == null && !diagramLink.isGroupBoxLink())
 			{
-				EAM.logError("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
-				return true;
-			}
-		
-			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
-			{
-				EAM.logError("Found null from wrapped factor or to wrapped factor from diagram link ref = " + diagramLink.getRef() + " from wrapped ref = " +fromDiagramFactor.getWrappedORef() +  " to wrapped ref = " + toDiagramFactor.getWrappedORef() );
-				return true;
+				String fromLabel = fromDiagramFactor.getWrappedFactor().toString();
+				String toLabel = toDiagramFactor.getWrappedFactor().toString();
+				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
+				errorMessages.add("Found null non group box factor link from = " + fromLabel + "to = " + toLabel + ".  Diagram = " + diagramName);
+				continue;
 			}
 		}
 		
-		return false;
+		return errorMessages;
 	}
 
 
-	public static boolean hasCorruptedDiagramFactors(Project project, DiagramObject diagramObject)
+	public static Vector<String> getCorruptedDiagramFactorErrorMessages(Project project, DiagramObject diagramObject)
 	{
+		Vector<String> errorMessages = new Vector();
+		String diagramName = diagramObject.toString();
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
 			if (diagramFactor == null)
 			{
-				EAM.logError("Found null diagram factor. Ref = " + diagramFactorRefs.get(index));
-				return true;
+				String errorMesssage = "Found null diagram factor. Ref = " + diagramFactorRefs.get(index);
+				EAM.logVerbose(errorMesssage);
+				errorMessages.add("Found null diagram factor.  Diagram = " + diagramName);
+				continue;
 			}
 			
 			final Factor factor = diagramFactor.getWrappedFactor();
 			if (factor == null)
 			{
-				EAM.logError("Found null wrapped factor.  Ref = " + diagramFactor.getWrappedORef());
-				return true;
+				EAM.logVerbose("Found null wrapped factor.  Ref = " + diagramFactor.getWrappedORef());
+				errorMessages.add("Found null underlying factor  .Diagram = " + diagramName);
+				continue;
 			}
 			
 			if (Task.is(factor) && !factor.isActivity())
 			{
-				EAM.logError("Found non activity factor that is a task.  Diagram factor ref = " + diagramFactor.getRef());
-				return true;
+				EAM.logVerbose("Found non activity factor that is a task.  Diagram factor ref = " + diagramFactor.getRef());
+				errorMessages.add("Found non activity factor that is a task. label = " + factor.getLabel() + ".  Diagram = " + diagramName);
+				continue;
 			}
 		}
 		
-		return false;
+		return errorMessages;
 	}
 }
