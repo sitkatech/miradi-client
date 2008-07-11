@@ -24,7 +24,6 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -150,7 +149,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
@@ -468,20 +466,22 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		super.becomeActive();
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 		
-		HashSet<DiagramObject> corruptedDiagrams = DiagramCorruptionDetector.getCorruptedDiagrams(getProject());
-		if (corruptedDiagrams.size() > 0)
+		Vector<String> errorMessages = DiagramCorruptionDetector.getCorruptedDiagrams(getProject());
+		if (errorMessages.size() > 0)
 		{
-			EAM.errorDialog(EAM.text(getDiagramCorruptionMessage(corruptedDiagrams)));
+			EAM.errorDialog(EAM.text(getDiagramCorruptionMessage(errorMessages)));
 		}
 	}
 
-	private String getDiagramCorruptionMessage(HashSet<DiagramObject> corruptedDiagrams)
+	private String getDiagramCorruptionMessage(Vector<String> errorMessages)
 	{
 		StringBuffer corruptedDiagramNames = new StringBuffer();
-		corruptedDiagramNames.append("<HTML>Found Corrupted Data in Diagram(s):");
-		for(DiagramObject diagramObject : corruptedDiagrams)
+		corruptedDiagramNames.append("<HTML>Found Corrupted Data:");
+		for (int index = 0; index < errorMessages.size(); ++index)
 		{
-			corruptedDiagramNames.append("<BR>" +  diagramObject.toString());
+			corruptedDiagramNames.append("<HR>");
+			corruptedDiagramNames.append(errorMessages.get(index));
+			corruptedDiagramNames.append("</HR>");
 		}
 		
 		corruptedDiagramNames.append("</HTML>");
