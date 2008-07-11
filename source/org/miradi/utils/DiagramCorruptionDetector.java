@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import java.util.HashSet;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -65,19 +66,31 @@ public class DiagramCorruptionDetector
 		{
 			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
 			if (diagramLink ==null)
+			{	
+				EAM.logError("Found null diagramLink ref = " + diagramLink.getRef());
 				return true;
+			}
 
 			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
 			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
 			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
 			if (fromDiagramFactor == null || toDiagramFactor == null)
+			{
+				EAM.logError("Found null from or to for diagram link ref = " + diagramLink.getRef() + " .  from = " + fromDiagramFactor + " to = " + toDiagramFactor);
 				return true;
+			}
 			
 			if (factorLink == null && !diagramLink.isGroupBoxLink())
+			{
+				EAM.logError("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
 				return true;
+			}
 		
 			if (fromDiagramFactor.getWrappedFactor() == null || toDiagramFactor.getWrappedFactor() == null)
-				return true;	
+			{
+				EAM.logError("Found null from wrapped factor or to wrapped factor from diagram link ref = " + diagramLink.getRef() + " from wrapped ref = " +fromDiagramFactor.getWrappedORef() +  " to wrapped ref = " + toDiagramFactor.getWrappedORef() );
+				return true;
+			}
 		}
 		
 		return false;
@@ -91,14 +104,23 @@ public class DiagramCorruptionDetector
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
 			if (diagramFactor == null)
+			{
+				EAM.logError("Found null diagram factor. Ref = " + diagramFactorRefs.get(index));
 				return true;
+			}
 			
 			final Factor factor = diagramFactor.getWrappedFactor();
 			if (factor == null)
+			{
+				EAM.logError("Found null wrapped factor.  Ref = " + diagramFactor.getWrappedORef());
 				return true;
+			}
 			
 			if (Task.is(factor) && !factor.isActivity())
+			{
+				EAM.logError("Found non activity factor that is a task.  Diagram factor ref = " + diagramFactor.getRef());
 				return true;
+			}
 		}
 		
 		return false;
