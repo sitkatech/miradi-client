@@ -24,4 +24,5 @@ public interface TableWithRowHeightManagement
 	public abstract void addRowHeightListener(RowHeightListener listener);
 	public void setRowHeight(int newHeight);
 	public int getRowHeight();
+	public void ensureSelectedRowVisible(); 
 }

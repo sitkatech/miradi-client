@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -54,5 +55,11 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 		return getNodeForRow(row).getObject();
 	}
 
+	public void ensureSelectedRowVisible()
+	{
+		Rectangle rect = getCellRect(getSelectedRow(), 0, true);
+		scrollRectToVisible(rect);
+	}
+	
 	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 }
