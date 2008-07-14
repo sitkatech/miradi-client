@@ -93,7 +93,13 @@ public class DiagramCorruptionDetector
 				String fromLabel = fromDiagramFactor.getWrappedFactor().toString();
 				String toLabel = toDiagramFactor.getWrappedFactor().toString();
 				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
-				errorMessages.add("Found null non group box factor link. From = " + fromLabel + " To = " + toLabel + ".  Diagram = " + diagramName);
+				
+				String message = EAM.text("Found null non group box factor link. From = %FromName To = %ToLabel.  Diagram = %DiagramName");
+				message = EAM.substitute(message, "%FromName", fromLabel);
+				message = EAM.substitute(message, "%ToLabel", toLabel);
+				message = EAM.substitute(message, "%DiagramName", diagramName);
+				
+				errorMessages.add(message);
 				continue;
 			}
 		}
@@ -129,7 +135,12 @@ public class DiagramCorruptionDetector
 			if (Task.is(factor) && !factor.isActivity())
 			{
 				EAM.logVerbose("Found non activity factor that is a task.  Diagram factor ref = " + diagramFactor.getRef());
-				errorMessages.add("Found non activity factor that is a task. label = " + factor.getLabel() + ".  Diagram = " + diagramName);
+				
+				String message = EAM.text("Found non activity factor that is a task. label = %FactorName.  Diagram = %DiagramName");
+				message = EAM.substitute(message, "%FactorName", factor.getLabel());
+				message = EAM.substitute(message, "%DiagramName", diagramName);
+				
+				errorMessages.add(message);
 				continue;
 			}
 		}

@@ -312,7 +312,12 @@ public class EAM
 	
 	public static String substitute(String text, String replacement)
 	{
-		return text.replaceAll(STRING_TO_SUBSTITUTE, replacement);
+		return substitute(text, STRING_TO_SUBSTITUTE, replacement);
+	}
+	
+	public static String substitute(String text, String token, String replacement)
+	{
+		return text.replaceAll(token, replacement);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
