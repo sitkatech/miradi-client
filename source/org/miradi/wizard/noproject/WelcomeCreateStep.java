@@ -79,9 +79,8 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 				
 			addTextFieldPanel();
 				
-			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler,
-					EAM.text("<div class='WizardText'><p class='hint'>" +
-							"NOTE: Project filenames can contain letters, numbers, spaces, periods, and dashes.</p>")));
+			String hintText = "<div class='WizardText'><p class='hint'>" + getLegalProjectNameNote();
+			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, hintText));
 			
 			add(createNextPreviousButtonPanel(hyperlinkHandler));
 		}
@@ -105,6 +104,11 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		newProjectNameField.addKeyListener(this);
 	}
 	
+	public static String getLegalProjectNameNote()
+	{
+		return EAM.text("NOTE: Project filenames can contain letters, numbers, spaces, periods, dashes, and underlines.");
+	}
+
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(WizardManager.CONTROL_NEXT))

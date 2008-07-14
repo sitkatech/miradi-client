@@ -1307,7 +1307,7 @@ public class Project
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 	
 
-	private static final int MAX_PROJECT_FILENAME_LENGTH = 32;
+	public static final int MAX_PROJECT_FILENAME_LENGTH = 32;
 	
 	private static final String COMMAND_LOG_FILE_NAME = "command.log";
 	
