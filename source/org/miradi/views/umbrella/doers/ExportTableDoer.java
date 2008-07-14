@@ -74,6 +74,7 @@ public class ExportTableDoer extends ViewDoer
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
 			
+			out.writeBOM();
 			putHeaders(out, table, maxDepth);
 			for (int row = 0; row < rowCount; ++row)
 			{
