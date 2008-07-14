@@ -90,13 +90,13 @@ public class DiagramCorruptionDetector
 			
 			if (factorLink == null && !diagramLink.isGroupBoxLink())
 			{
-				String fromLabel = fromDiagramFactor.getWrappedFactor().toString();
-				String toLabel = toDiagramFactor.getWrappedFactor().toString();
+				String fromName = fromDiagramFactor.getWrappedFactor().toString();
+				String toName = toDiagramFactor.getWrappedFactor().toString();
 				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
 				
 				String message = EAM.text("Found null non group box factor link. From = %FromName To = %ToLabel.  Diagram = %DiagramName");
-				message = EAM.substitute(message, "%FromName", fromLabel);
-				message = EAM.substitute(message, "%ToLabel", toLabel);
+				message = EAM.substitute(message, "%FromName", fromName);
+				message = EAM.substitute(message, "%ToLabel", toName);
 				message = EAM.substitute(message, "%DiagramName", diagramName);
 				
 				errorMessages.add(message);
