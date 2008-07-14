@@ -29,6 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ModalRenameDialog;
 import org.miradi.utils.Utility;
+import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
 {
@@ -139,5 +140,6 @@ public class RenameProjectDoer
 		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
-	public static final String RENAME_TEXT = EAM.text("Enter New Project Name");
+	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Project Filename") + 
+			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 }

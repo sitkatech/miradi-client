@@ -25,6 +25,7 @@ import javax.swing.text.PlainDocument;
 
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 
 public class ProjectNameRestrictedTextField extends PanelTextField
 {
@@ -37,7 +38,7 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 	
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		super();
+		this(Project.MAX_PROJECT_FILENAME_LENGTH);
 		
 		initialize(initialValue);
 	}
