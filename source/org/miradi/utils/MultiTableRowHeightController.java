@@ -44,6 +44,10 @@ public class MultiTableRowHeightController implements RowHeightListener
 		{
 			if(table.getRowHeight() != newHeight)
 				table.setRowHeight(newHeight);
+			
+			//TODO why does this work (table is scolled to begenning even toug last row was selected) when placed 
+			//outside of if.  an it fails to do the right thing when placed as part of the if above.  
+			table.ensureSelectedRowVisible();
 		}
 		EAM.logVerbose("rowHeightChanged done");
 	}
