@@ -79,4 +79,27 @@ public class TestLinkCreator extends TestCaseWithProject
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		assertEquals("wrong threat stress rating count?", 2, factorLink.getThreatStressRatingRefs().size());
 	}
+	
+	public void testAreGroupBoxOwnedFactorsLinked() throws Exception
+	{
+		DiagramFactor fromDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor toDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		assertFalse("diagram factors are not linked?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
+		
+		DiagramFactor groupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		ORefList groupBoxChildrenRefs = new ORefList(fromDiagramFactor.getRef());
+		getProject().setObjectData(groupBoxDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs.toString());
+		assertTrue("diagramFactor is not groupBox?", groupBoxDiagramFactor.isGroupBoxFactor());
+		
+		getProject().createDiagramLinkAndAddToDiagram(groupBoxDiagramFactor, toDiagramFactor);
+		getDiagramModel().fillFrom(getProject().getDiagramObject());
+		assertEquals("model has wrong link count?", 1, getDiagramModel().getAllDiagramFactorLinks().size());
+		
+		assertTrue("factors are not linked?", getDiagramModel().areLinked(groupBoxDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));
+		
+		assertTrue("child of groupBox covered cause is not linked to target diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), toDiagramFactor, groupBoxDiagramFactor));
+		assertTrue("from is not linked to to diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
+	}
 }

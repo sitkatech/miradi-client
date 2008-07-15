@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.main;
 
+import org.miradi.diagram.DiagramModel;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectForTesting;
 
@@ -45,6 +46,11 @@ public class TestCaseWithProject extends EAMTestCase
 	public ProjectForTesting getProject()
 	{
 		return project;
+	}
+	
+	public DiagramModel getDiagramModel()
+	{
+		return getProject().getDiagramModel();
 	}
 	
 	public ObjectManager getObjectManager()
