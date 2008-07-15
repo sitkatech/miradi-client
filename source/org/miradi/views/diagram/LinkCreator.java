@@ -125,7 +125,39 @@ public class LinkCreator
 		if (model.areDiagramFactorsLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
 			return true;
 		
+		if (areGroupBoxOwnedFactorsLinked(model, fromDiagramFactor, toDiagramFactor))
+			return true;
+		
 		return false;
+	}
+
+	public boolean areGroupBoxOwnedFactorsLinked(DiagramModel diagramModel, DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		ORefList fromOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(from);
+		ORefList toOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(to);		
+		for (int fromIndex = 0; fromIndex < fromOwningGroupBoxAndChildren.size(); ++fromIndex)
+		{
+			for (int toIndex = 0; toIndex < toOwningGroupBoxAndChildren.size(); ++toIndex)
+			{
+				DiagramFactor thisFrom = DiagramFactor.find(getProject(), fromOwningGroupBoxAndChildren.get(fromIndex));
+				DiagramFactor thisTo = DiagramFactor.find(getProject(), toOwningGroupBoxAndChildren.get(toIndex));
+				if (diagramModel.areLinked(thisFrom.getWrappedORef(), thisTo.getWrappedORef()))
+					return true;
+			}
+		}
+		
+		return false;
+	}
+
+	private ORefList getOwningGroupBoxAndChildren(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.isCoveredByGroupBox())
+		{
+			DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), diagramFactor.getOwningGroupBox());
+			return owningGroupBox.getSelfAndChildren();
+		}
+
+		return diagramFactor.getSelfAndChildren();
 	}
 
 	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws Exception
