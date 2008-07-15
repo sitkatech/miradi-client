@@ -246,9 +246,15 @@ public class EAM
 	
 	public static void logStackTrace()
 	{
+		final String NO_MESSAGE = "";
+		logStackTrace(NO_MESSAGE);
+	}
+	
+	public static void logStackTrace(String errorMessage)
+	{
 		try
 		{
-			throw new Exception();
+			throw new Exception(errorMessage);
 		}
 		catch(Exception e)
 		{
