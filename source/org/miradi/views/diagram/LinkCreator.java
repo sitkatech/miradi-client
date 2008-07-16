@@ -122,6 +122,9 @@ public class LinkCreator
 		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
 			return true;
 
+		
+		//FIXME the two below should turn into one, and after the below if goes away also remove
+		//the method.
 		if (model.areDiagramFactorsLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
 			return true;
 		
@@ -131,6 +134,12 @@ public class LinkCreator
 		return false;
 	}
 
+	
+	public boolean canBeLinked(DiagramFactor from, DiagramFactor to)
+	{
+		return false;
+	}
+	
 	public boolean areGroupBoxOwnedFactorsLinked(DiagramModel diagramModel, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORefList fromOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(from);

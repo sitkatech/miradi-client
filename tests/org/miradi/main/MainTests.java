@@ -134,14 +134,14 @@ import org.miradi.project.TestProjectUnzipper;
 import org.miradi.project.TestProjectZipper;
 import org.miradi.project.TestRealProject;
 import org.miradi.project.TestSimpleThreatFormula;
+import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestSlidePool;
 import org.miradi.project.TestStrategyPool;
-import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatFormula;
+import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.project.TestTNCViabilityFormula;
 import org.miradi.project.TestTargetPool;
 import org.miradi.project.TestTextBoxPool;
-import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestThreatReductionResultPool;
 import org.miradi.questions.TestChoiceItem;
 import org.miradi.questions.TestChoiceQuestion;
@@ -257,6 +257,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestBendPointSelectionHelper.class));
 		suite.addTest(new TestSuite(TestLinkBendPointsMoveHandler.class));
 		suite.addTest(new TestSuite(TestLinkCreator.class));
+		
+		//FIXME this Test is for groupBox link
+		//suite.addTest(new TestSuite(TestGroupBoxLinking.class));
 
 		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
