@@ -54,6 +54,36 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		ORefList targetGroupBoxChildrenRefs = new ORefList(target.getRef());
 		getProject().setObjectData(targetGroupBox.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, targetGroupBoxChildrenRefs.toString());		
 	}
+
+	//NOTE:
+	//All possible asserts need to be done for each startin point
+	//c1  -> t
+	//c2  -> t
+	//c1  -> tgb
+	//c2  -> tgb
+	//cgb -> t
+	//cgb -> tgb
+
+	//c1  <- t
+	//c2  <- t
+	//c1  <- tgb
+	//c2  <- tgb
+	//cgb <- t
+	//cgb <- tgb
+
+	//STARTING POINT no links
+
+	//STARTING POINT c1 -> t
+
+	//STARTING POINT cgb -> t
+
+	//STARTING POINT c1 -> t + c2 -> t
+
+	//STARTING POINT c1 -> t + c2 -> tgb
+
+	//STARTING POINT c1 -> tgb + c2 -> tbg
+
+	//STARTING POINT cgb -> tgb		
 	
 	public void testInitialValues()
 	{
@@ -200,36 +230,6 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		assertFalse(message, linkCreator.canBeLinked(from, to));
 	}
 	
-	//NOTE:
-	//All possible asserts need to be done for each startin point
-	//c1  -> t
-	//c2  -> t
-	//c1  -> tgb
-	//c2  -> tgb
-	//cgb -> t
-	//cgb -> tgb
-
-	//c1  <- t
-	//c2  <- t
-	//c1  <- tgb
-	//c2  <- tgb
-	//cgb <- t
-	//cgb <- tgb
-
-	//STARTING POINT no links
-
-	//STARTING POINT c1 -> t
-
-	//STARTING POINT cgb -> t
-
-	//STARTING POINT c1 -> t + c2 -> t
-
-	//STARTING POINT c1 -> t + c2 -> tgb
-
-	//STARTING POINT c1 -> tgb + c2 -> tbg
-
-	//STARTING POINT cgb -> tgb		
-
 	private DiagramFactor cause1;
 	private DiagramFactor cause2;
 	private DiagramFactor target;
