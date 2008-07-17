@@ -1168,6 +1168,12 @@ public class Project
 		return diagramFactors;
 	}
 
+	public boolean areDiagramFactorsLinked(ORef fromRef, ORef toRef) throws Exception
+	{
+		DiagramLink diagramLink = getDiagramFactorLinkPool().getDiagramLink(fromRef, toRef);
+		return diagramLink != null;
+	}
+	
 	public boolean areLinked(ORef factorRef1, ORef factorRef2)
 	{
 		Factor factor1 = (Factor)findObject(factorRef1);

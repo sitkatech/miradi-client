@@ -93,7 +93,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		assertTrue("targetGroupBox is not groupBox?", targetGroupBox.isGroupBoxFactor());
 	}
 	
-	public void testNoLinks()
+	public void testNoLinks() throws Exception
 	{
 		verifyIfLinkCanBeCreated("cannot create link (c1 -> t)?", cause1, target);
 		verifyIfLinkCanBeCreated("cannot create link (c2 -> t)?", cause2, target);
@@ -160,15 +160,15 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		verifyIfLinkCanBeCreated("cannot create link (cgb -> tgb)?", causeGroupBox, targetGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> t)?", cause2, target);
-		verifyIfLinkCannotBeCreated("can create link (c1 -> tgb)?", cause1, targetGroupBox);
-		verifyIfLinkCannotBeCreated("can create link (c2 -> tgb)?", cause2, targetGroupBox);
+		verifyIfLinkCanBeCreated("cannot create link (c1 -> tgb)?", cause1, targetGroupBox);
+		verifyIfLinkCanBeCreated("cannot create link (c2 -> tgb)?", cause2, targetGroupBox);
 		
 		verifyIfLinkCanBeCreated("cannot create link (cgb <- t)?", target, causeGroupBox);
 		verifyIfLinkCanBeCreated("cannot create link (cgb <- tgb)?", targetGroupBox, causeGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c1 <- t)?", target, cause1);
 		verifyIfLinkCannotBeCreated("can create link (c2 <- t)?", target, cause2);
-		verifyIfLinkCannotBeCreated("can create link (c1 <- tgb)?", targetGroupBox, cause1);
-		verifyIfLinkCannotBeCreated("can create link (c2 <- tgb)?", targetGroupBox, cause2);		
+		verifyIfLinkCanBeCreated("cannot create link (c1 <- tgb)?", targetGroupBox, cause1);
+		verifyIfLinkCanBeCreated("cannot create link (c2 <- tgb)?", targetGroupBox, cause2);		
 	}
 	
 	public void testCause1ToTargetPlusCause2ToTargetGroupBox() throws Exception
@@ -183,14 +183,14 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		verifyIfLinkCannotBeCreated("can create link (c2 -> tgb)?", cause2, targetGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> t)?", cause2, target);
 		verifyIfLinkCanBeCreated("cannot create link (c1 -> tgb)?", cause1, targetGroupBox);
-		verifyIfLinkCanBeCreated("cannot create link (cgb -> t)?", causeGroupBox, target);
+		verifyIfLinkCannotBeCreated("can create link (cgb -> t)?", causeGroupBox, target);
 		verifyIfLinkCanBeCreated("cannot create link (cgb -> tgb)?", causeGroupBox, targetGroupBox);
 		
 		verifyIfLinkCannotBeCreated("can create link (c1 <- t)?", target, cause1);
 		verifyIfLinkCannotBeCreated("can create link (c2 <- tgb)?", targetGroupBox, cause2);
 		verifyIfLinkCannotBeCreated("can create link (c2 <- t)?", target, cause2);
 		verifyIfLinkCanBeCreated("cannot create link (c1 <- tgb)?", targetGroupBox, cause1);
-		verifyIfLinkCanBeCreated("cannot create link (cgb <- t)?", target, causeGroupBox);
+		verifyIfLinkCannotBeCreated("can create link (cgb <- t)?", target, causeGroupBox);
 		verifyIfLinkCanBeCreated("cannot create link (cgb <- tgb)?", targetGroupBox, causeGroupBox);	
 	}
 	
@@ -243,12 +243,12 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		verifyIfLinkCannotBeCreated("can create link (cgb <- tgb)?", targetGroupBox, causeGroupBox);
 	}
 	
-	public void verifyIfLinkCanBeCreated(String message, DiagramFactor from, DiagramFactor to)
+	public void verifyIfLinkCanBeCreated(String message, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		assertTrue(message, linkCreator.canBeLinked(from, to));
 	}
 	
-	public void verifyIfLinkCannotBeCreated(String message, DiagramFactor from, DiagramFactor to)
+	public void verifyIfLinkCannotBeCreated(String message, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		assertFalse(message, linkCreator.canBeLinked(from, to));
 	}

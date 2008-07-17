@@ -20,11 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
@@ -59,25 +60,20 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		return allDiagramFactorLinkIds; 
 	}
 	
-	
-	public DiagramFactorLinkId getLinkedId(DiagramFactorId nodeId1, DiagramFactorId nodeId2)
+	public DiagramLink getDiagramLink(ORef fromRef, ORef toRef)
 	{
-		for(int i = 0; i < getIds().length; ++i)
+		ORefList diagramLinkRefs = getORefList();
+		for(int i = 0; i < diagramLinkRefs.size(); ++i)
 		{
-			DiagramLink thisLinkage = getLinkage(i);
-			DiagramFactorId fromId = thisLinkage.getFromDiagramFactorId();
-			DiagramFactorId toId = thisLinkage.getToDiagramFactorId();
-			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
-				return (DiagramFactorLinkId) thisLinkage.getId();
-			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
-				return (DiagramFactorLinkId) thisLinkage.getId();
+			DiagramLink diagramLink = (DiagramLink) findObject(diagramLinkRefs.get(i));
+			ORef thisFromRef = diagramLink.getFromDiagramFactorRef();
+			ORef thisToRef = diagramLink.getToDiagramFactorRef();
+			if(thisFromRef.equals(fromRef) && thisToRef.equals(toRef))
+				return diagramLink;
+			
+			if(thisFromRef.equals(toRef) && thisToRef.equals(fromRef))
+				return diagramLink;
 		}
 		return null;
-	}
-	
-	private DiagramLink getLinkage(int index)
-	{
-		return find(getIds()[index]);
-	}
-	
+	}	
 }

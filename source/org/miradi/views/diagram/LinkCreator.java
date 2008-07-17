@@ -122,21 +122,76 @@ public class LinkCreator
 		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
 			return true;
 
-		
-		//FIXME the two below should turn into one, and after the below if goes away also remove
-		//the method.
-		if (model.areDiagramFactorsLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
-			return true;
-		
-		if (areGroupBoxOwnedFactorsLinked(model, fromDiagramFactor, toDiagramFactor))
+		if (!canBeLinked(fromDiagramFactor, toDiagramFactor))
 			return true;
 		
 		return false;
 	}
 
-	
-	public boolean canBeLinked(DiagramFactor from, DiagramFactor to)
+	public boolean canBeLinked(DiagramFactor from, DiagramFactor to) throws Exception
 	{
+		if (getProject().areLinked(from.getWrappedFactor(), to.getWrappedFactor()))
+		{
+			return false;
+		}
+		
+		if (getProject().areDiagramFactorsLinked(from.getRef(), to.getRef()))
+		{
+			return false;
+		}
+	
+		if (from.isGroupBoxFactor() && to.isGroupBoxFactor())
+		{
+			if (getProject().areDiagramFactorsLinked(from.getRef(), to.getRef()))
+			{
+				return false;
+			}
+			
+			return true;
+		}
+		
+		if (from.isGroupBoxFactor())
+		{
+			ORef toOwningGroupBoxRef = to.getOwningGroupBox();
+			DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
+			if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, from))
+			{
+				return false;
+			}
+			
+			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, from.getRef());
+			if (isOwningAlreadyLinkedToGroupBox)
+				return false;
+		}
+		
+		if (from.isCoveredByGroupBox())
+		{
+			if (to.isGroupBoxFactor())
+			{
+				ORef fromOwningGroupBoxRef = from.getOwningGroupBox();
+				DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
+				if (isLinkedToAnyGroupBoxChildren(fromOwningGroupBox, to))
+				{
+					return false;
+				}
+				
+				boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(fromOwningGroupBoxRef, to.getRef());
+				if (isOwningAlreadyLinkedToGroupBox)
+					return false;
+			}
+		}
+		return true;
+	}
+
+	private boolean isLinkedToAnyGroupBoxChildren(DiagramFactor from, DiagramFactor groupBox) throws Exception
+	{
+		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
+		for (int index = 0; index < childrenRefs.size(); ++index)
+		{
+			if (getProject().areDiagramFactorsLinked(from.getRef(), childrenRefs.get(index)))
+				return true;
+		}
+		
 		return false;
 	}
 	
