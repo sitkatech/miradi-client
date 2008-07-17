@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -128,7 +130,14 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	
 	public void testCause1GroupBoxToTarget() throws Exception
 	{
-		getProject().createDiagramLinkAndAddToDiagram(causeGroupBox, target);
+		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
+		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
+			
+		ORefList coveredLinkRefs = new ORefList();
+		coveredLinkRefs.add(cause1ToTargetRef);
+		coveredLinkRefs.add(cause2ToTargetRef);
+		createGroupBoxLink(causeGroupBox.getRef(), target.getRef(), coveredLinkRefs);
+		
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> t)?", cause2, target);
 		verifyIfLinkCannotBeCreated("can create link (c1 -> tgb)?", cause1, targetGroupBox);
@@ -146,6 +155,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	{
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target);
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target);
+		
 		verifyIfLinkCanBeCreated("cannot create link (cgb -> t)?", causeGroupBox, target);
 		verifyIfLinkCanBeCreated("cannot create link (cgb -> tgb)?", causeGroupBox, targetGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
@@ -164,7 +174,10 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	public void testCause1ToTargetPlusCause2ToTargetGroupBox() throws Exception
 	{
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target);
-		getProject().createDiagramLinkAndAddToDiagram(cause2, targetGroupBox);
+		
+		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
+		ORefList cause2ToTargetCoveredLinkRefs = new ORefList(cause2ToTargetRef);
+		createGroupBoxLink(cause2.getRef(), targetGroupBox.getRef(), cause2ToTargetCoveredLinkRefs);
 		
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> tgb)?", cause2, targetGroupBox);
@@ -183,9 +196,14 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	
 	public void testCause1ToTargetGroupBoxPlusCause2ToTargetGroupBox() throws Exception
 	{
-		getProject().createDiagramLinkAndAddToDiagram(cause1, targetGroupBox);
-		getProject().createDiagramLinkAndAddToDiagram(cause2, targetGroupBox);
+		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
+		ORefList cause1ToTargetCoveredLinkRefs = new ORefList(cause1ToTargetRef);
+		createGroupBoxLink(cause1.getRef(), targetGroupBox.getRef(), cause1ToTargetCoveredLinkRefs);
 		
+		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
+		ORefList cause2ToTargetCoveredLinkRefs = new ORefList(cause2ToTargetRef);
+		createGroupBoxLink(cause2.getRef(), targetGroupBox.getRef(), cause2ToTargetCoveredLinkRefs);
+	
 		verifyIfLinkCannotBeCreated("can create link (c1 -> tgb)?", cause1, targetGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> tgb)?", cause2, targetGroupBox);
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
@@ -203,7 +221,12 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	
 	public void testCauseGroupBoxToTargetGroupBox() throws Exception
 	{
-		getProject().createDiagramLinkAndAddToDiagram(causeGroupBox, targetGroupBox);
+		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
+		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
+		ORefList coveredLinkRefs = new ORefList();
+		coveredLinkRefs.add(cause1ToTargetRef);
+		coveredLinkRefs.add(cause2ToTargetRef);
+		createGroupBoxLink(causeGroupBox.getRef(), targetGroupBox.getRef(), coveredLinkRefs);
 		
 		verifyIfLinkCannotBeCreated("can create link (c1 -> t)?", cause1, target);
 		verifyIfLinkCannotBeCreated("can create link (c2 -> t)?", cause2, target);
@@ -228,6 +251,14 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	public void verifyIfLinkCannotBeCreated(String message, DiagramFactor from, DiagramFactor to)
 	{
 		assertFalse(message, linkCreator.canBeLinked(from, to));
+	}
+	
+	private void createGroupBoxLink(ORef fromRef, ORef toRef, ORefList coveredLinkRefs) throws Exception
+	{
+		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromRef, toRef);
+		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getDiagramObject(), extraInfoWithNoFactorLink);
+	
+		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);
 	}
 	
 	private DiagramFactor cause1;
