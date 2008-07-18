@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.ObjectManager;
 
@@ -60,18 +61,22 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		return allDiagramFactorLinkIds; 
 	}
 	
-	public DiagramLink getDiagramLink(ORef fromRef, ORef toRef)
+	//TODO this method needs to be more efficient.  Use link referrers and do an intersection
+	public DiagramLink getDiagramLink(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
+		fromDiagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		toDiagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		
 		ORefList diagramLinkRefs = getORefList();
 		for(int i = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = (DiagramLink) findObject(diagramLinkRefs.get(i));
 			ORef thisFromRef = diagramLink.getFromDiagramFactorRef();
 			ORef thisToRef = diagramLink.getToDiagramFactorRef();
-			if(thisFromRef.equals(fromRef) && thisToRef.equals(toRef))
+			if(thisFromRef.equals(fromDiagramFactorRef) && thisToRef.equals(toDiagramFactorRef))
 				return diagramLink;
 			
-			if(thisFromRef.equals(toRef) && thisToRef.equals(fromRef))
+			if(thisFromRef.equals(toDiagramFactorRef) && thisToRef.equals(fromDiagramFactorRef))
 				return diagramLink;
 		}
 		return null;
