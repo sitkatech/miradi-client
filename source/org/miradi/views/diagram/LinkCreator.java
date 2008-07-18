@@ -152,44 +152,38 @@ public class LinkCreator
 		}
 		
 		boolean isFromGroupBox = fromDiagramFactor.isGroupBoxFactor();
-		if (isFromGroupBox)
+		boolean isToGroupBoxChild = toDiagramFactor.isCoveredByGroupBox();
+		if (isFromGroupBox && isToGroupBoxChild)
 		{
-			boolean isToGroupBoxChild = toDiagramFactor.isCoveredByGroupBox();
-			if (isToGroupBoxChild)
+			ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
+			DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
+			if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, fromDiagramFactor))
 			{
-				ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
-				DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
-				if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, fromDiagramFactor))
-				{
-					return false;
-				}
+				return false;
+			}
 
-				boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, fromDiagramFactor.getRef());
-				if (isOwningAlreadyLinkedToGroupBox)
-				{
-					return false;
-				}
+			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, fromDiagramFactor.getRef());
+			if (isOwningAlreadyLinkedToGroupBox)
+			{
+				return false;
 			}
 		}
 		
 		boolean isFromGroupBoxChild = fromDiagramFactor.isCoveredByGroupBox();
-		if (isFromGroupBoxChild)
+		boolean isToGroupBox = toDiagramFactor.isGroupBoxFactor();
+		if (isFromGroupBoxChild && isToGroupBox)
 		{
-			boolean isToGroupBox = toDiagramFactor.isGroupBoxFactor();
-			if (isToGroupBox)
+			ORef fromOwningGroupBoxRef = fromDiagramFactor.getOwningGroupBoxRef();
+			DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
+			if (isLinkedToAnyGroupBoxChildren(fromOwningGroupBox, toDiagramFactor))
 			{
-				ORef fromOwningGroupBoxRef = fromDiagramFactor.getOwningGroupBoxRef();
-				DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
-				if (isLinkedToAnyGroupBoxChildren(fromOwningGroupBox, toDiagramFactor))
-				{
-					return false;
-				}
-				
-				boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(fromOwningGroupBoxRef, toDiagramFactor.getRef());
-				if (isOwningAlreadyLinkedToGroupBox)
-				{
-					return false;
-				}
+				return false;
+			}
+
+			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(fromOwningGroupBoxRef, toDiagramFactor.getRef());
+			if (isOwningAlreadyLinkedToGroupBox)
+			{
+				return false;
 			}			
 		}
 		return true;
