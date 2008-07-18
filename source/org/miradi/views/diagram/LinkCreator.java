@@ -133,7 +133,7 @@ public class LinkCreator
 
 		//TODO this method is called twice when inserting a link (that is linking a GB).  Since we are in frozen
 		//state we dont want to change this.  This class in general needs cleaning up after frozen.
-		if (getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
+		if (areDiagramFactorsLinked(fromDiagramFactor, toDiagramFactor))
 			return true;
 			
 		return false;		
@@ -141,12 +141,12 @@ public class LinkCreator
 	
 	public boolean canBeLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		if (getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
+		if (areDiagramFactorsLinked(fromDiagramFactor, toDiagramFactor))
 		{
 			return false;
 		}
 	
-		if (getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor()))
+		if (areFactorsLinked(fromDiagramFactor, toDiagramFactor))
 		{
 			return false;
 		}
@@ -191,6 +191,16 @@ public class LinkCreator
 		return true;
 	}
 
+	private boolean areDiagramFactorsLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	{
+		return getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef());
+	}
+
+	private boolean areFactorsLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor)
+	{
+		return getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor());
+	}
+	
 	private boolean isLinkedToAnyGroupBoxChildren(DiagramFactor from, DiagramFactor toGroupBox) throws Exception
 	{
 		ORefList childrenRefs = toGroupBox.getGroupBoxChildrenRefs();
