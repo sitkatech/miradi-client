@@ -155,37 +155,34 @@ public class LinkCreator
 		boolean isToGroupBoxChild = toDiagramFactor.isCoveredByGroupBox();
 		if (isFromGroupBox && isToGroupBoxChild)
 		{
-			ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
-			DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
-			if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, fromDiagramFactor))
-			{
-				return false;
-			}
-
-			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, fromDiagramFactor.getRef());
-			if (isOwningAlreadyLinkedToGroupBox)
-			{
-				return false;
-			}
+			return canLinkBetweenGroupAndChild(fromDiagramFactor, toDiagramFactor);
 		}
 		
 		boolean isFromGroupBoxChild = fromDiagramFactor.isCoveredByGroupBox();
 		boolean isToGroupBox = toDiagramFactor.isGroupBoxFactor();
 		if (isFromGroupBoxChild && isToGroupBox)
 		{
-			ORef fromOwningGroupBoxRef = fromDiagramFactor.getOwningGroupBoxRef();
-			DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
-			if (isLinkedToAnyGroupBoxChildren(fromOwningGroupBox, toDiagramFactor))
-			{
-				return false;
-			}
-
-			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(fromOwningGroupBoxRef, toDiagramFactor.getRef());
-			if (isOwningAlreadyLinkedToGroupBox)
-			{
-				return false;
-			}			
+			return canLinkBetweenGroupAndChild(toDiagramFactor, fromDiagramFactor);
 		}
+
+		return true;
+	}
+
+	private boolean canLinkBetweenGroupAndChild(DiagramFactor groupBox, DiagramFactor childDiagramFactor) throws Exception
+	{
+		ORef owningGroupBoxRef = childDiagramFactor.getOwningGroupBoxRef();
+		DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), owningGroupBoxRef);
+		if (isLinkedToAnyGroupBoxChildren(owningGroupBox, groupBox))
+		{
+			return false;
+		}
+
+		boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(owningGroupBoxRef, groupBox.getRef());
+		if (isOwningAlreadyLinkedToGroupBox)
+		{
+			return false;
+		}
+		
 		return true;
 	}
 
