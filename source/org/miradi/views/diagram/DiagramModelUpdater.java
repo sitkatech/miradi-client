@@ -24,6 +24,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -95,6 +96,8 @@ public class DiagramModelUpdater
 
 	private void removeDiagramLinks(IdList removedFactorLinkIds) throws Exception
 	{
+		clearDiagramSelection();
+		
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
 			DiagramLink diagramFactorLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
@@ -113,12 +116,26 @@ public class DiagramModelUpdater
 
 	private void removeDiagramFactors(IdList factorIdsToRemove) throws Exception
 	{
+		clearDiagramSelection();
+		
 		for (int i = 0; i < factorIdsToRemove.size(); i++)
 		{
 			model.removeDiagramFactor(new DiagramFactorId(factorIdsToRemove.get(i).asInt()));
 		}
 	}
 	
+	//FIXME This is a hack and needs to have a better solution. 
+	// after undoing a create link,  isAvailable was getting selected cells,
+	// the delted link was included in the selected cells.  
+	private void clearDiagramSelection()
+	{
+		MainWindow mainWindow = EAM.getMainWindow();
+		if (mainWindow == null)
+			return;
+		
+		mainWindow.getDiagramComponent().clearSelection();
+	}
+
 	private void addDiagramFactors(IdList addedFactorIds) throws Exception
 	{
 		for (int i = 0; i < addedFactorIds.size(); i++)
