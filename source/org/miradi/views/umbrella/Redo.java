@@ -24,9 +24,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToRedoException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.views.MainWindowDoer;
+import org.miradi.views.ProjectDoer;
 
-public class Redo extends MainWindowDoer
+public class Redo extends ProjectDoer
 {
 	public boolean isAvailable()
 	{
@@ -35,15 +35,7 @@ public class Redo extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		getMainWindow().preventActionUpdates();
-		try
-		{
-			redo(getProject());
-		}
-		finally 
-		{
-			getMainWindow().allowActionUpdates();
-		}
+		redo(getProject());
 	}
 
 	public static void redo(Project project) throws CommandFailedException
