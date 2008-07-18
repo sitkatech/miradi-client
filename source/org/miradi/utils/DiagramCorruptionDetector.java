@@ -22,7 +22,10 @@ package org.miradi.utils;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objectpools.ConceptualModelDiagramPool;
+import org.miradi.objectpools.ResultsChainDiagramPool;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -46,19 +49,6 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-	public static Vector<DiagramLink> getCorruptedGroupBoxDiagramLinks(Project project)
-	{
-		Vector<DiagramLink> errorMessages = new Vector();
-		ORefList diagramObjectRefs = project.getAllDiagramObjectRefs();
-		for (int index = 0; index < diagramObjectRefs.size(); ++index)
-		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectRefs.get(index));
-			errorMessages.addAll(getCorruptedGroupBoxDiagramLinks(project, diagramObject));
-		}
-		
-		return errorMessages;
-	}
-	
 	private static Vector<String> getDiagramCorruptedErrorMessages(Project project, DiagramObject diagramObject)
 	{
 		Vector<String> errorMessages = new Vector();
@@ -160,5 +150,78 @@ public class DiagramCorruptionDetector
 		}
 		
 		return errorMessages;
+	}
+
+	public static void warnUserAboutGroupBoxLinkCorruption(MainWindow mainWindow)
+	{
+		StringBuffer body = new StringBuffer();
+		
+		Project project = mainWindow.getProject();
+		ConceptualModelDiagramPool cmPool = project.getConceptualModelDiagramPool();
+		String cmErrors = getGroupBoxLinkCorruptedErrorText(project, "Conceptual Model page", cmPool.getSortedRefList());
+		if(cmErrors.length() > 0)
+			body.append(cmErrors);
+		
+		ResultsChainDiagramPool rcPool = project.getResultsChainDiagramPool();
+		String rcErrors = getGroupBoxLinkCorruptedErrorText(project, "Results Chain", rcPool.getSortedRefList());
+		if(rcErrors.length() > 0)
+			body.append(rcErrors);
+		
+		if(body.length() > 0)
+		{
+			String title = EAM.text("Title|Found Corrupted Links");
+			new HtmlViewPanel(mainWindow, title, body.toString()).showAsOkDialog();
+		}
+		
+	}
+
+	private static String getGroupBoxLinkCorruptedErrorText(Project project, String diagramType, ORefList diagramRefs)
+	{
+		StringBuffer body = new StringBuffer();
+		for(int i = 0; i < diagramRefs.size(); ++i)
+		{
+			StringBuffer pageErrors = new StringBuffer();
+			DiagramObject cmPage = DiagramObject.findDiagramObject(project, diagramRefs.get(i));
+			Vector<DiagramLink> corruptedDiagramLinks = getCorruptedGroupBoxDiagramLinks(project, cmPage);
+			for(DiagramLink link : corruptedDiagramLinks)
+			{
+				pageErrors.append("<li>");
+				pageErrors.append(buildGroupBoxLinkErrorMessage(link));
+				pageErrors.append("</li>");
+			}
+			
+			if(pageErrors.length() > 0)
+			{
+				String header = buildGroupBoxLinkErrorHeader(diagramType, cmPage);
+				body.append(header);
+				body.append("<ul>");
+				body.append(pageErrors);
+				body.append("</ul>");
+			}
+		}
+		
+		if(body.length() > 0)
+			body.append("\n<hr></hr>\n");
+	
+		return body.toString();
+	}
+
+	private static String buildGroupBoxLinkErrorHeader(String diagramType, DiagramObject cmPage)
+	{
+		String header = EAM.text("Corrupted link(s) have been found on %DiagramType: '%DiagramName'.<br>" +
+				"For each of the following, please delete the link and re-create it:<br>");
+		header = EAM.substitute(header, "%DiagramType", diagramType);
+		header = EAM.substitute(header, "%DiagramName", cmPage.getLabel());
+		return header;
+	}
+
+	private static String buildGroupBoxLinkErrorMessage(DiagramLink diagramLink)
+	{
+		String fromName = diagramLink.getFromDiagramFactor().getWrappedFactor().toString();
+		String toName = diagramLink.getToDiagramFactor().getWrappedFactor().toString();
+		String message = EAM.text("'%FromName' -> '%ToName'<br>");
+		message = EAM.substitute(message, "%FromName", fromName);
+		message = EAM.substitute(message, "%ToName", toName);
+		return message.toString();
 	}
 }
