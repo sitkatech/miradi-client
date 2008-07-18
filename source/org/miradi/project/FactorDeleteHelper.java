@@ -161,7 +161,7 @@ public class FactorDeleteHelper
 
 	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
 	{
-		ORef owningGroupRef = diagramFactor.getOwningGroupBox();
+		ORef owningGroupRef = diagramFactor.getOwningGroupBoxRef();
 		if (owningGroupRef.isInvalid())
 			return;
 		

@@ -202,7 +202,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 
 	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(DiagramFactor diagramFactor)
 	{
-		ORef groupBoxRef = diagramFactor.getOwningGroupBox();
+		ORef groupBoxRef = diagramFactor.getOwningGroupBoxRef();
 		if(!groupBoxRef.isInvalid())
 			diagramFactor = DiagramFactor.find(getProject(), groupBoxRef);
 		

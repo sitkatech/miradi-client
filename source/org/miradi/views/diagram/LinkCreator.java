@@ -158,7 +158,7 @@ public class LinkCreator
 		
 		if (from.isGroupBoxFactor())
 		{
-			ORef toOwningGroupBoxRef = to.getOwningGroupBox();
+			ORef toOwningGroupBoxRef = to.getOwningGroupBoxRef();
 			DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
 			if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, from))
 			{
@@ -174,7 +174,7 @@ public class LinkCreator
 		{
 			if (to.isGroupBoxFactor())
 			{
-				ORef fromOwningGroupBoxRef = from.getOwningGroupBox();
+				ORef fromOwningGroupBoxRef = from.getOwningGroupBoxRef();
 				DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
 				if (isLinkedToAnyGroupBoxChildren(fromOwningGroupBox, to))
 				{
@@ -223,7 +223,7 @@ public class LinkCreator
 	{
 		if (diagramFactor.isCoveredByGroupBox())
 		{
-			DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), diagramFactor.getOwningGroupBox());
+			DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), diagramFactor.getOwningGroupBoxRef());
 			return owningGroupBox.getSelfAndChildren();
 		}
 
