@@ -68,7 +68,7 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-	public static Vector<String> getCorruptedDiagramLinksErrorMessages(Project project, DiagramObject diagramObject)
+	protected static Vector<String> getCorruptedDiagramLinksErrorMessages(Project project, DiagramObject diagramObject)
 	{
 		String diagramName = diagramObject.toString();
 		Vector<String> errorMessages = new Vector();
@@ -103,7 +103,7 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-	public static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project, DiagramObject diagramObject)
+	protected static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project, DiagramObject diagramObject)
 	{
 		String diagramName = diagramObject.toString();
 		Vector<String> errorMessages = new Vector();
@@ -134,7 +134,7 @@ public class DiagramCorruptionDetector
 	}
 
 
-	public static Vector<String> getCorruptedDiagramFactorErrorMessages(Project project, DiagramObject diagramObject)
+	protected static Vector<String> getCorruptedDiagramFactorErrorMessages(Project project, DiagramObject diagramObject)
 	{
 		Vector<String> errorMessages = new Vector();
 		String diagramName = diagramObject.toString();
