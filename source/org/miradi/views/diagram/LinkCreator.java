@@ -151,16 +151,6 @@ public class LinkCreator
 			return false;
 		}
 	
-		if (fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
-		{
-			if (getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
-			{
-				return false;
-			}
-			
-			return true;
-		}
-		
 		if (fromDiagramFactor.isGroupBoxFactor())
 		{
 			if (toDiagramFactor.isCoveredByGroupBox())
@@ -196,8 +186,7 @@ public class LinkCreator
 				{
 					return false;
 				}
-			}
-			
+			}			
 		}
 		return true;
 	}
