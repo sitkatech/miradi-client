@@ -92,7 +92,16 @@ public class LinkCreator
 		return linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public boolean linkBetweenGroupBoxWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	{
+		boolean linkWasRejected = linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
+		if (linkWasRejected)
+			return true;
+		
+		return !canBeLinked(fromDiagramFactor, toDiagramFactor);  
+	}
+	
+	private boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		if (fromDiagramFactor == null || toDiagramFactor == null)
 			return true;
@@ -122,12 +131,9 @@ public class LinkCreator
 		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
 			return true;
 
-		if (!canBeLinked(fromDiagramFactor, toDiagramFactor))
-			return true;
-		
-		return false;
+		return false;		
 	}
-
+	
 	public boolean canBeLinked(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		if (getProject().areLinked(from.getWrappedFactor(), to.getWrappedFactor()))
