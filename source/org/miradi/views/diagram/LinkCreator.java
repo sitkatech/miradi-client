@@ -151,9 +151,11 @@ public class LinkCreator
 			return false;
 		}
 		
-		if (fromDiagramFactor.isGroupBoxFactor())
+		boolean isFromGroupBox = fromDiagramFactor.isGroupBoxFactor();
+		if (isFromGroupBox)
 		{
-			if (toDiagramFactor.isCoveredByGroupBox())
+			boolean isToGroupBoxChild = toDiagramFactor.isCoveredByGroupBox();
+			if (isToGroupBoxChild)
 			{
 				ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
 				DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
@@ -170,9 +172,11 @@ public class LinkCreator
 			}
 		}
 		
-		if (fromDiagramFactor.isCoveredByGroupBox())
+		boolean isFromGroupBoxChild = fromDiagramFactor.isCoveredByGroupBox();
+		if (isFromGroupBoxChild)
 		{
-			if (toDiagramFactor.isGroupBoxFactor())
+			boolean isToGroupBox = toDiagramFactor.isGroupBoxFactor();
+			if (isToGroupBox)
 			{
 				ORef fromOwningGroupBoxRef = fromDiagramFactor.getOwningGroupBoxRef();
 				DiagramFactor fromOwningGroupBox = DiagramFactor.find(getProject(), fromOwningGroupBoxRef);
