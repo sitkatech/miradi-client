@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -129,11 +129,14 @@ public class DiagramModelUpdater
 	// the delted link was included in the selected cells.  
 	private void clearDiagramSelection()
 	{
-		MainWindow mainWindow = EAM.getMainWindow();
-		if (mainWindow == null)
+		if (EAM.getMainWindow() == null)
 			return;
 		
-		mainWindow.getDiagramComponent().clearSelection();
+		DiagramComponent diagram = EAM.getMainWindow().getDiagramComponent();		
+		if (diagram == null)
+			return;
+		
+		diagram.clearSelection();
 	}
 
 	private void addDiagramFactors(IdList addedFactorIds) throws Exception
