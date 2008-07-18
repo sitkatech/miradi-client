@@ -89,7 +89,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		FactorLink factorLink = FactorLink.find(getProject(), diagramLink.getWrappedRef());
 		getProject().deleteObject(factorLink);
-		assertTrue("did not detect corrupted diagram with corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.getCorruptedGroupBoxDiagramLinkMessages(getProject(), diagramObject).size() > 0);
+		assertTrue("did not detect corrupted diagram with corrupted link with missing from wrapped factor link?", DiagramCorruptionDetector.getCorruptedGroupBoxDiagramLinks(getProject(), diagramObject).size() > 0);
 		
 		getProject().deleteObject(fromFactor);
 		assertTrue("did not detect corrupted diagram with  corrupted link with missing from wrapped factor?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);

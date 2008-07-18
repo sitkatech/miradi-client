@@ -192,6 +192,19 @@ public class DiagramLink extends BaseObject
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
 	}
 	
+	public DiagramObject getDiagramObject()
+	{
+		ORefList cmPageRefs = findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
+		if(cmPageRefs.size() > 0)
+			return ConceptualModelDiagram.find(objectManager, cmPageRefs.get(0));
+
+		ORefList rcRefs = findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
+		if(rcRefs.size() > 0)
+			return ResultsChainDiagram.find(objectManager, rcRefs.get(0));
+		
+		return null;
+	}
+	
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
