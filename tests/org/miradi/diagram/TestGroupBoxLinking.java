@@ -125,11 +125,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	{
 		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
 		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
-			
-		ORefList coveredLinkRefs = new ORefList();
-		coveredLinkRefs.add(cause1ToTargetRef);
-		coveredLinkRefs.add(cause2ToTargetRef);
-		createGroupBoxLink(causeGroupBox.getRef(), target.getRef(), coveredLinkRefs);
+		createGroupBoxLinkWithChildren(causeGroupBox, target, new ORef[]{ cause1ToTargetRef, cause2ToTargetRef});
 		
 		verifyCannotCreateLink("can create link (c1 -> t)?", cause1, target);
 		verifyCannotCreateLink("can create link (c2 -> t)?", cause2, target);
@@ -167,10 +163,8 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	public void testCause1ToTargetPlusCause2ToTargetGroupBox() throws Exception
 	{
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target);
-		
 		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
-		ORefList cause2ToTargetCoveredLinkRefs = new ORefList(cause2ToTargetRef);
-		createGroupBoxLink(cause2.getRef(), targetGroupBox.getRef(), cause2ToTargetCoveredLinkRefs);
+		createGroupBoxLinkWithChildren(cause2, targetGroupBox, new ORef[]{cause2ToTargetRef});
 		
 		verifyCannotCreateLink("can create link (c1 -> t)?", cause1, target);
 		verifyCannotCreateLink("can create link (c2 -> tgb)?", cause2, targetGroupBox);
@@ -190,12 +184,10 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	public void testCause1ToTargetGroupBoxPlusCause2ToTargetGroupBox() throws Exception
 	{
 		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
-		ORefList cause1ToTargetCoveredLinkRefs = new ORefList(cause1ToTargetRef);
-		createGroupBoxLink(cause1.getRef(), targetGroupBox.getRef(), cause1ToTargetCoveredLinkRefs);
+		createGroupBoxLinkWithChildren(cause1, targetGroupBox, new ORef[]{ cause1ToTargetRef});
 		
 		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
-		ORefList cause2ToTargetCoveredLinkRefs = new ORefList(cause2ToTargetRef);
-		createGroupBoxLink(cause2.getRef(), targetGroupBox.getRef(), cause2ToTargetCoveredLinkRefs);
+		createGroupBoxLinkWithChildren(cause2, targetGroupBox, new ORef[]{ cause2ToTargetRef});
 	
 		verifyCannotCreateLink("can create link (c1 -> tgb)?", cause1, targetGroupBox);
 		verifyCannotCreateLink("can create link (c2 -> tgb)?", cause2, targetGroupBox);
@@ -216,10 +208,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	{
 		ORef cause1ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target);
 		ORef cause2ToTargetRef = getProject().createDiagramLinkAndAddToDiagram(cause2, target);
-		ORefList coveredLinkRefs = new ORefList();
-		coveredLinkRefs.add(cause1ToTargetRef);
-		coveredLinkRefs.add(cause2ToTargetRef);
-		createGroupBoxLink(causeGroupBox.getRef(), targetGroupBox.getRef(), coveredLinkRefs);
+		createGroupBoxLinkWithChildren(causeGroupBox, targetGroupBox, new ORef[]{ cause1ToTargetRef, cause2ToTargetRef});		
 		
 		verifyCannotCreateLink("can create link (c1 -> t)?", cause1, target);
 		verifyCannotCreateLink("can create link (c2 -> t)?", cause2, target);
@@ -244,6 +233,12 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	public void verifyCannotCreateLink(String message, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		assertFalse(message, linkCreator.canBeLinked(from, to));
+	}
+	
+	private void createGroupBoxLinkWithChildren(DiagramFactor from, DiagramFactor to, ORef[] diagramLinkRefs) throws Exception
+	{
+		ORefList coveredLinkRefs = new ORefList(diagramLinkRefs);
+		createGroupBoxLink(from.getRef(), to.getRef(), coveredLinkRefs);		
 	}
 	
 	private void createGroupBoxLink(ORef fromRef, ORef toRef, ORefList coveredLinkRefs) throws Exception
