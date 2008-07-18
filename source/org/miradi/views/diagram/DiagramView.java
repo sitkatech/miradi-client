@@ -476,35 +476,37 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		Vector<DiagramLink> corrupedGroupBoxLinkMessages = DiagramCorruptionDetector.getCorruptedGroupBoxDiagramLinks(getProject());
 		if (corrupedGroupBoxLinkMessages.size() > 0)
+			warnUserAboutGroupBoxLinkCorruption(corrupedGroupBoxLinkMessages);
+	}
+
+	private void warnUserAboutGroupBoxLinkCorruption(Vector<DiagramLink> corrupedGroupBoxLinkMessages)
+	{
+		StringBuffer body = new StringBuffer();
+		for(DiagramLink diagramLink : corrupedGroupBoxLinkMessages)
 		{
-			StringBuffer body = new StringBuffer();
-			for(DiagramLink diagramLink : corrupedGroupBoxLinkMessages)
-			{
-				String diagramName = EAM.text("(Unknown)");
-				DiagramObject diagram = diagramLink.getDiagramObject();
-				if(diagram != null)
-					diagramName = diagram.getLabel();
-				
-				String fromName = diagramLink.getFromDiagramFactor().getWrappedFactor().toString();
-				String toName = diagramLink.getToDiagramFactor().getWrappedFactor().toString();
-				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
-				
-				String message = EAM.text("The '%DiagramName' diagram has a corrupted link between: <br>" +
-						"&nbsp;&nbsp;'%FromName' <br> " +
-						"and <br>" +
-						"&nbsp;&nbsp;'%ToName'.<br>" +
-						"Please delete that link and re-create it.");
-				message = EAM.substitute(message, "%FromName", fromName);
-				message = EAM.substitute(message, "%ToName", toName);
-				message = EAM.substitute(message, "%DiagramName", diagramName);
+			String diagramName = EAM.text("(Unknown)");
+			DiagramObject diagram = diagramLink.getDiagramObject();
+			if(diagram != null)
+				diagramName = diagram.getLabel();
+			
+			String fromName = diagramLink.getFromDiagramFactor().getWrappedFactor().toString();
+			String toName = diagramLink.getToDiagramFactor().getWrappedFactor().toString();
+			EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
+			
+			String message = EAM.text("The '%DiagramName' diagram has a corrupted link between: <br>" +
+					"&nbsp;&nbsp;'%FromName' <br> " +
+					"and <br>" +
+					"&nbsp;&nbsp;'%ToName'.<br>" +
+					"Please delete that link and re-create it.");
+			message = EAM.substitute(message, "%FromName", fromName);
+			message = EAM.substitute(message, "%ToName", toName);
+			message = EAM.substitute(message, "%DiagramName", diagramName);
 
-				body.append(message);
-				body.append("\n<hr></hr>\n");
-			}
-			String title = EAM.text("Title|Found Corrupted Links");
-			new HtmlViewPanel(getMainWindow(), title, body.toString()).showAsOkDialog();
+			body.append(message);
+			body.append("\n<hr></hr>\n");
 		}
-
+		String title = EAM.text("Title|Found Corrupted Links");
+		new HtmlViewPanel(getMainWindow(), title, body.toString()).showAsOkDialog();
 	}
 
 	private String getDiagramCorruptionMessage(Vector<String> errorMessages)
