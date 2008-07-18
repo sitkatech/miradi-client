@@ -73,7 +73,6 @@ public class DiagramCorruptionDetector
 
 			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
 			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
-			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
 			if (fromDiagramFactor == null || toDiagramFactor == null)
 			{
 				EAM.logVerbose("Found null from or to for diagram link ref = " + diagramLink.getRef() + " .  from = " + fromDiagramFactor + " to = " + toDiagramFactor);
@@ -87,7 +86,22 @@ public class DiagramCorruptionDetector
 				errorMessages.add(EAM.substitute(EAM.text("Found null from wrapped factor or to wrapped factor from diagram link.  Diagram = %s"), diagramName));
 				continue;
 			}
-			
+		}
+		
+		return errorMessages;
+	}
+
+	public static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project, DiagramObject diagramObject)
+	{
+		String diagramName = diagramObject.toString();
+		Vector<String> errorMessages = new Vector();
+		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
+			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
 			if (factorLink == null && !diagramLink.isGroupBoxLink())
 			{
 				String fromName = fromDiagramFactor.getWrappedFactor().toString();
