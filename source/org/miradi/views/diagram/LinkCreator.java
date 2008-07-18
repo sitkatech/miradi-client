@@ -142,28 +142,20 @@ public class LinkCreator
 	public boolean canBeLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		if (areDiagramFactorsLinked(fromDiagramFactor, toDiagramFactor))
-		{
 			return false;
-		}
 	
 		if (areWrappedFactorsLinked(fromDiagramFactor, toDiagramFactor))
-		{
 			return false;
-		}
 		
 		boolean isFromGroupBox = fromDiagramFactor.isGroupBoxFactor();
 		boolean isToGroupBoxChild = toDiagramFactor.isCoveredByGroupBox();
 		if (isFromGroupBox && isToGroupBoxChild)
-		{
 			return canLinkBetweenGroupAndChild(fromDiagramFactor, toDiagramFactor);
-		}
 		
 		boolean isFromGroupBoxChild = fromDiagramFactor.isCoveredByGroupBox();
 		boolean isToGroupBox = toDiagramFactor.isGroupBoxFactor();
 		if (isFromGroupBoxChild && isToGroupBox)
-		{
 			return canLinkBetweenGroupAndChild(toDiagramFactor, fromDiagramFactor);
-		}
 
 		return true;
 	}
@@ -173,15 +165,11 @@ public class LinkCreator
 		ORef owningGroupBoxRef = childDiagramFactor.getOwningGroupBoxRef();
 		DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), owningGroupBoxRef);
 		if (isLinkedToAnyGroupBoxChildren(owningGroupBox, groupBox))
-		{
 			return false;
-		}
 
 		boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(owningGroupBoxRef, groupBox.getRef());
 		if (isOwningAlreadyLinkedToGroupBox)
-		{
 			return false;
-		}
 		
 		return true;
 	}
