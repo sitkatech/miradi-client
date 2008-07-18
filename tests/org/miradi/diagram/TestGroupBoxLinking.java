@@ -46,17 +46,10 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		
-		causeGroupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
-		ORefList causeGroupBoxChildrenRefs = new ORefList();
-		causeGroupBoxChildrenRefs.add(cause1.getRef());
-		causeGroupBoxChildrenRefs.add(cause2.getRef());
-		getProject().setObjectData(causeGroupBox.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, causeGroupBoxChildrenRefs.toString());
-		
-		targetGroupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
-		ORefList targetGroupBoxChildrenRefs = new ORefList(target.getRef());
-		getProject().setObjectData(targetGroupBox.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, targetGroupBoxChildrenRefs.toString());		
+		causeGroupBox = createGroupBox(new DiagramFactor[]{cause1, cause2});
+		targetGroupBox = createGroupBox(new DiagramFactor[]{target});		
 	}
-
+	
 	//NOTE:
 	//All possible asserts need to be done for each startin point
 	//c1  -> t
@@ -259,6 +252,20 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getDiagramObject(), extraInfoWithNoFactorLink);
 	
 		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);
+	}
+	
+	private DiagramFactor createGroupBox(DiagramFactor[] groupBoxChildren) throws Exception
+	{
+		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		ORefList groupBoxChildrenRefs = new ORefList();
+		for (int index = 0; index < groupBoxChildren.length; ++index)
+		{
+			groupBoxChildrenRefs.add(groupBoxChildren[index].getRef());
+		}
+		
+		getProject().setObjectData(groupBox.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs.toString());
+		
+		return groupBox;
 	}
 	
 	private DiagramFactor cause1;
