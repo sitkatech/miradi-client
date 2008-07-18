@@ -141,16 +141,16 @@ public class LinkCreator
 	
 	public boolean canBeLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		if (getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor()))
-		{
-			return false;
-		}
-		
 		if (getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef()))
 		{
 			return false;
 		}
 	
+		if (getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor()))
+		{
+			return false;
+		}
+		
 		if (fromDiagramFactor.isGroupBoxFactor())
 		{
 			if (toDiagramFactor.isCoveredByGroupBox())
