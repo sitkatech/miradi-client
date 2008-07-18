@@ -146,7 +146,7 @@ public class LinkCreator
 			return false;
 		}
 	
-		if (areFactorsLinked(fromDiagramFactor, toDiagramFactor))
+		if (areWrappedFactorsLinked(fromDiagramFactor, toDiagramFactor))
 		{
 			return false;
 		}
@@ -200,7 +200,7 @@ public class LinkCreator
 		return getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef());
 	}
 
-	private boolean areFactorsLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor)
+	private boolean areWrappedFactorsLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor)
 	{
 		return getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor());
 	}
