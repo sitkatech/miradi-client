@@ -466,7 +466,7 @@ abstract public class DiagramPaster
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 			LinkCreator linkCreator = new LinkCreator(project);
-			if (linkCreator.linkWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
+			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
 			
 			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);

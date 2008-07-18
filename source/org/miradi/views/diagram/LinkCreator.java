@@ -84,7 +84,7 @@ public class LinkCreator
 		return(from.getGroupBoxChildrenRefs().contains(potentialChildDiagramFactorRef));
 	}
 
-	public boolean linkWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	public boolean linkToBePastedWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
 		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
@@ -92,7 +92,7 @@ public class LinkCreator
 		return linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public boolean linkBetweenGroupBoxWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public boolean linkToBeCreatedWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		boolean linkWasRejected = linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 		if (linkWasRejected)
