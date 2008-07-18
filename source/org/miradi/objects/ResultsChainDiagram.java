@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ResultsChainDiagram extends DiagramObject
@@ -60,6 +61,16 @@ public class ResultsChainDiagram extends DiagramObject
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
+	}
+	
+	public static ResultsChainDiagram find(ObjectManager objectManager, ORef refToFind)
+	{
+		return (ResultsChainDiagram) objectManager.findObject(refToFind);
+	}
+	
+	public static ResultsChainDiagram find(Project project, ORef refToFind)
+	{
+		return find(project.getObjectManager(), refToFind);
 	}
 	
 	public static final String OBJECT_NAME = "ResultsChainDiagram";
