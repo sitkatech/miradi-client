@@ -163,16 +163,21 @@ public class LinkCreator
 		
 		if (fromDiagramFactor.isGroupBoxFactor())
 		{
-			ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
-			DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
-			if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, fromDiagramFactor))
+			if (toDiagramFactor.isCoveredByGroupBox())
 			{
-				return false;
+				ORef toOwningGroupBoxRef = toDiagramFactor.getOwningGroupBoxRef();
+				DiagramFactor toOwningGroupBox = DiagramFactor.find(getProject(), toOwningGroupBoxRef);
+				if (isLinkedToAnyGroupBoxChildren(toOwningGroupBox, fromDiagramFactor))
+				{
+					return false;
+				}
+
+				boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, fromDiagramFactor.getRef());
+				if (isOwningAlreadyLinkedToGroupBox)
+				{
+					return false;
+				}
 			}
-			
-			boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(toOwningGroupBoxRef, fromDiagramFactor.getRef());
-			if (isOwningAlreadyLinkedToGroupBox)
-				return false;
 		}
 		
 		if (fromDiagramFactor.isCoveredByGroupBox())
@@ -188,15 +193,18 @@ public class LinkCreator
 				
 				boolean isOwningAlreadyLinkedToGroupBox = getProject().areDiagramFactorsLinked(fromOwningGroupBoxRef, toDiagramFactor.getRef());
 				if (isOwningAlreadyLinkedToGroupBox)
+				{
 					return false;
+				}
 			}
+			
 		}
 		return true;
 	}
 
-	private boolean isLinkedToAnyGroupBoxChildren(DiagramFactor from, DiagramFactor groupBox) throws Exception
+	private boolean isLinkedToAnyGroupBoxChildren(DiagramFactor from, DiagramFactor toGroupBox) throws Exception
 	{
-		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
+		ORefList childrenRefs = toGroupBox.getGroupBoxChildrenRefs();
 		for (int index = 0; index < childrenRefs.size(); ++index)
 		{
 			if (getProject().areDiagramFactorsLinked(from.getRef(), childrenRefs.get(index)))
