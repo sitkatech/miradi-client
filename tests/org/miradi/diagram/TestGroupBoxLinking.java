@@ -238,15 +238,10 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	private void createGroupBoxLinkWithChildren(DiagramFactor from, DiagramFactor to, ORef[] diagramLinkRefs) throws Exception
 	{
 		ORefList coveredLinkRefs = new ORefList(diagramLinkRefs);
-		createGroupBoxLink(from.getRef(), to.getRef(), coveredLinkRefs);		
-	}
-	
-	private void createGroupBoxLink(ORef fromRef, ORef toRef, ORefList coveredLinkRefs) throws Exception
-	{
-		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromRef, toRef);
+		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(from.getRef(), to.getRef());
 		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getDiagramObject(), extraInfoWithNoFactorLink);
-	
-		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);
+		
+		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);		
 	}
 	
 	private DiagramFactor createGroupBox(DiagramFactor[] groupBoxChildren) throws Exception
