@@ -24,9 +24,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.views.ProjectDoer;
+import org.miradi.views.MainWindowDoer;
 
-public class Undo extends ProjectDoer
+public class Undo extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
@@ -38,7 +38,15 @@ public class Undo extends ProjectDoer
 		if(!isAvailable())
 			return;
 
-		undo(getProject());
+		getMainWindow().preventActionUpdates();
+		try
+		{
+			undo(getProject());
+		}
+		finally 
+		{
+			getMainWindow().allowActionUpdates();
+		}
 	}
 
 	public static void undo(Project project) throws CommandFailedException
