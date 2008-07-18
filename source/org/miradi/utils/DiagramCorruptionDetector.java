@@ -46,14 +46,14 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-	public static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project)
+	public static Vector<DiagramLink> getCorruptedGroupBoxDiagramLinks(Project project)
 	{
-		Vector<String> errorMessages = new Vector();
+		Vector<DiagramLink> errorMessages = new Vector();
 		ORefList diagramObjectRefs = project.getAllDiagramObjectRefs();
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectRefs.get(index));
-			errorMessages.addAll(getCorruptedGroupBoxDiagramLinkMessages(project, diagramObject));
+			errorMessages.addAll(getCorruptedGroupBoxDiagramLinks(project, diagramObject));
 		}
 		
 		return errorMessages;
@@ -103,29 +103,17 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-	protected static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project, DiagramObject diagramObject)
+	protected static Vector<DiagramLink> getCorruptedGroupBoxDiagramLinks(Project project, DiagramObject diagramObject)
 	{
-		String diagramName = diagramObject.toString();
-		Vector<String> errorMessages = new Vector();
+		Vector<DiagramLink> errorMessages = new Vector();
 		ORefList diagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(index));
-			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
-			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
 			FactorLink factorLink = FactorLink.find(project, diagramLink.getWrappedRef());
 			if (factorLink == null && !diagramLink.isGroupBoxLink())
 			{
-				String fromName = fromDiagramFactor.getWrappedFactor().toString();
-				String toName = toDiagramFactor.getWrappedFactor().toString();
-				EAM.logVerbose("Found null non group box factor link  diagramLink ref = " + diagramLink.getRef() + " wrappedRef = " + diagramLink.getWrappedRef());
-				
-				String message = EAM.text("Found null non group box factor link. From = %FromName To = %ToName.  Diagram = %DiagramName");
-				message = EAM.substitute(message, "%FromName", fromName);
-				message = EAM.substitute(message, "%ToName", toName);
-				message = EAM.substitute(message, "%DiagramName", diagramName);
-				
-				errorMessages.add(message);
+				errorMessages.add(diagramLink);
 				continue;
 			}
 		}
