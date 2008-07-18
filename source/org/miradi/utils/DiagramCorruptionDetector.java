@@ -46,7 +46,19 @@ public class DiagramCorruptionDetector
 		return errorMessages;
 	}
 
-
+	public static Vector<String> getCorruptedGroupBoxDiagramLinkMessages(Project project)
+	{
+		Vector<String> errorMessages = new Vector();
+		ORefList diagramObjectRefs = project.getAllDiagramObjectRefs();
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectRefs.get(index));
+			errorMessages.addAll(getCorruptedGroupBoxDiagramLinkMessages(project, diagramObject));
+		}
+		
+		return errorMessages;
+	}
+	
 	private static Vector<String> getDiagramCorruptedErrorMessages(Project project, DiagramObject diagramObject)
 	{
 		Vector<String> errorMessages = new Vector();
