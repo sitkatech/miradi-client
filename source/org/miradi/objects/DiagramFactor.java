@@ -190,8 +190,7 @@ public class DiagramFactor extends BaseObject
 		return groupBoxChildrenRefs.getORefList();
 	}
 	
-	//TODO change method name to  getOwningGroupBoxRef
-	public ORef getOwningGroupBox()
+	public ORef getOwningGroupBoxRef()
 	{
 		ORefList diagramFactorReferers = findObjectsThatReferToUs();
 		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactor.getObjectType());

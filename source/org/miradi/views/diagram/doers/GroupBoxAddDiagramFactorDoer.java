@@ -54,10 +54,10 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		for (int i = 0; i < nonGroupBoxSelectedRefs.size(); ++i)
 		{
 			DiagramFactor groupChildFactor = DiagramFactor.find(getProject(), nonGroupBoxSelectedRefs.get(i));
-			if (groupChildFactor.getOwningGroupBox().isInvalid())
+			if (groupChildFactor.getOwningGroupBoxRef().isInvalid())
 				continue;
 			
-			if (!groupChildFactor.getOwningGroupBox().equals(selectedGroupBox.getRef()))
+			if (!groupChildFactor.getOwningGroupBoxRef().equals(selectedGroupBox.getRef()))
 				return true;	
 		}
 		
@@ -69,7 +69,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		for (int i = 0; i < selectedDiagramFactorsRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, selectedDiagramFactorsRefs.get(i));
-			ORef owningGroupBox = diagramFactor.getOwningGroupBox();
+			ORef owningGroupBox = diagramFactor.getOwningGroupBoxRef();
 			if (!owningGroupBox.isInvalid())
 				return true;
 		}
