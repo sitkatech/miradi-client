@@ -59,7 +59,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		try
 		{
-			if (linkCreator.linkWasRejected(model, from, to))
+			if (linkCreator.linkBetweenGroupBoxWasRejected(model, from, to))
 				return;
 		}
 		catch (Exception e)
