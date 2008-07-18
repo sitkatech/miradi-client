@@ -472,7 +472,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			EAM.errorDialog(getDiagramCorruptionMessage(errorMessages));
 		}
 		
-		Vector<String> corrupedGroupBoxLinkMessages = DiagramCorruptionDetector.getCorruptedGroupBoxDiagramLinkMessages(getProject(), getDiagramModel().getDiagramObject());
+		Vector<String> corrupedGroupBoxLinkMessages = DiagramCorruptionDetector.getCorruptedGroupBoxDiagramLinkMessages(getProject());
 		if (corrupedGroupBoxLinkMessages.size() > 0)
 		{
 			EAM.notifyDialog(getDiagramCorruptionMessage(corrupedGroupBoxLinkMessages));
