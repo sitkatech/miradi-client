@@ -31,6 +31,11 @@ public class ObjectsActionButton extends PanelButton
 		action.setPicker(picker);
 	}
 	
+	public void setPicker(ObjectPicker picker)
+	{
+		((ObjectsAction)getAction()).setPicker(picker);
+	}
+	
 	public void dispose()
 	{
 		((ObjectsAction)getAction()).setPicker(null);
