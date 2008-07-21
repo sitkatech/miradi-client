@@ -301,7 +301,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:IntermediateResult", def);
 
 		def = Definition.createDefinitionFromTextString("NestedTarget", "Nested Target - Species, ecological communities, or ecological system targets whose conservation needs are subsumed in one or more focal conservation targets. Often includes ecoregional targets that a team wants to note and/or track.");
-		defs.put("Definition:IntermediateResult", def);
+		defs.put("Definition:NestedTargets", def);
 
 		def = Definition.createDefinitionFromTextString("ViabilityRatings", "Viability Ratings - A project's scale of what is very good, good, fair, or poor for a given indicator for a given target. Viability ratings are often quantitatively defined, but they can be qualitative as well.  In effect, by establishing this rating scale, the project team is specifying its assumption as to what constitutes a \"conserved\" target versus one that is in need of management intervention.");
 		defs.put("Definition:ViabilityRatings", def);
