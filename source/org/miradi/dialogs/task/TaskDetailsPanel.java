@@ -51,6 +51,11 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
+
+		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
+		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditActivityProgressReports.class), null);
+		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 	}
 
 	private void hideOrShowProgressSection()
@@ -61,13 +66,10 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 			isActivity = task.isActivity();
 		
 		ObjectPicker picker = null;
-		if (editProgressReportButton == null && isActivity)
+		if (isActivity)
 			picker = super.getPicker();
-
-		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
-		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditActivityProgressReports.class), picker);
-		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
+				
+		getActions().getObjectsAction(ActionEditActivityProgressReports.class).setPicker(picker);
 		
 		progressReportsLabel.setVisible(isActivity);
 		readOnlyProgressReportsList.setVisible(isActivity);
