@@ -28,6 +28,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -124,6 +125,16 @@ public class ViewData extends BaseObject
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
+	}
+	
+	@Override
+	protected ORefList getRefListForField(ObjectData field)
+	{
+		// NOTE: Expansion list is not considered a true reference to those objects
+		if(field.getTag().equals(TAG_CURRENT_EXPANSION_LIST))
+			return new ORefList();
+		
+		return super.getRefListForField(field);
 	}
 	
 	

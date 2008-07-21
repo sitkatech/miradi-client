@@ -1004,10 +1004,16 @@ abstract public class BaseObject
 		ORefSet list = new ORefSet();
 		for(ObjectData field : fields.values())
 		{
-			ORefList refList = field.getRefList();
+			ORefList refList = getRefListForField(field);
 			list.addAllRefs(refList);
 		}
 		return list;
+	}
+
+	protected ORefList getRefListForField(ObjectData field)
+	{
+		ORefList refList = field.getRefList();
+		return refList;
 	}
 	
 	public ORefList getOwnedObjects(int objectType)
