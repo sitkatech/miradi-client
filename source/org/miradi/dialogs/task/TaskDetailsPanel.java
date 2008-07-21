@@ -45,8 +45,6 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, Task.getObjectType(), idToEdit);
 		
-		actions = actionsToUse;
-		
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
@@ -54,7 +52,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 
 		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
 		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditActivityProgressReports.class), null);
+		editProgressReportButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditActivityProgressReports.class), null);
 		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 	}
 
@@ -69,7 +67,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		if (isActivity)
 			picker = super.getPicker();
 				
-		getActions().getObjectsAction(ActionEditActivityProgressReports.class).setPicker(picker);
+		editProgressReportButton.setPicker(picker);
 		
 		progressReportsLabel.setVisible(isActivity);
 		readOnlyProgressReportsList.setVisible(isActivity);
@@ -127,15 +125,9 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		return EAM.text("Task Details Panel Title");
 	}
 	
-	private Actions getActions()
-	{
-		return actions;
-	}
-
 	private PanelTitleLabel taskNameLabel;
 	
 	private PanelTitleLabel progressReportsLabel;
 	private ObjectDataInputField readOnlyProgressReportsList;
 	private ObjectsActionButton editProgressReportButton;
-	private Actions actions;
 }
