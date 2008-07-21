@@ -22,6 +22,9 @@ package org.miradi.views.diagram;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.cells.EAMGraphCell;
+import org.miradi.diagram.cells.FactorCell;
+import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -96,11 +99,11 @@ public class DiagramModelUpdater
 
 	private void removeDiagramLinks(IdList removedFactorLinkIds) throws Exception
 	{
-		clearDiagramSelection();
-		
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
 			DiagramLink diagramFactorLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
+			LinkCell linkCell = model.getDiagramFactorLink(diagramFactorLink);			
+			clearDiagramSelection(linkCell);
 			model.deleteDiagramFactorLink(diagramFactorLink);
 		}
 	}
@@ -116,18 +119,19 @@ public class DiagramModelUpdater
 
 	private void removeDiagramFactors(IdList factorIdsToRemove) throws Exception
 	{
-		clearDiagramSelection();
-		
 		for (int i = 0; i < factorIdsToRemove.size(); i++)
 		{
-			model.removeDiagramFactor(new DiagramFactorId(factorIdsToRemove.get(i).asInt()));
+			DiagramFactorId diagramFactorId = new DiagramFactorId(factorIdsToRemove.get(i).asInt());
+			FactorCell factorCell = model.getFactorCellById(diagramFactorId);
+			clearDiagramSelection(factorCell);
+			model.removeDiagramFactor(diagramFactorId);
 		}
 	}
 	
 	//FIXME This is a hack and needs to have a better solution. 
 	// after undoing a create link,  isAvailable was getting selected cells,
 	// the delted link was included in the selected cells.  
-	private void clearDiagramSelection()
+	private void clearDiagramSelection(EAMGraphCell cell)
 	{
 		if (EAM.getMainWindow() == null)
 			return;
@@ -136,7 +140,7 @@ public class DiagramModelUpdater
 		if (diagram == null)
 			return;
 		
-		diagram.clearSelection();
+		diagram.removeSelectionCell(cell);
 	}
 
 	private void addDiagramFactors(IdList addedFactorIds) throws Exception
