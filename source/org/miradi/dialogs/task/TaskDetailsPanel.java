@@ -37,24 +37,20 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actions, BaseId idToEdit)
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, BaseId idToEdit)
 	{
 		super(projectToUse, Task.getObjectType(), idToEdit);
+		
+		actions = actionsToUse;
 		
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createStringField(ObjectType.TASK, Task.TAG_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskNameField,} );
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
-
-		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
-		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
-		editProgressReportButton = createObjectsActionButton(actions.getObjectsAction(ActionEditActivityProgressReports.class), getPicker());
-		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
-		
-		
 	}
 
 	private void hideOrShowProgressSection()
@@ -63,6 +59,15 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		Task task = getTask();
 		if(task != null)
 			isActivity = task.isActivity();
+		
+		ObjectPicker picker = null;
+		if (editProgressReportButton == null && isActivity)
+			picker = super.getPicker();
+
+		progressReportsLabel = new PanelTitleLabel(EAM.text("Progress Reports"));
+		readOnlyProgressReportsList = createReadOnlyObjectList(Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		editProgressReportButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditActivityProgressReports.class), picker);
+		addFieldWithEditButton(progressReportsLabel, readOnlyProgressReportsList, editProgressReportButton);
 		
 		progressReportsLabel.setVisible(isActivity);
 		readOnlyProgressReportsList.setVisible(isActivity);
@@ -119,11 +124,16 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Task Details Panel Title");
 	}
+	
+	private Actions getActions()
+	{
+		return actions;
+	}
 
 	private PanelTitleLabel taskNameLabel;
 	
-	PanelTitleLabel progressReportsLabel;
-	ObjectDataInputField readOnlyProgressReportsList;
-	ObjectsActionButton editProgressReportButton;
-
+	private PanelTitleLabel progressReportsLabel;
+	private ObjectDataInputField readOnlyProgressReportsList;
+	private ObjectsActionButton editProgressReportButton;
+	private Actions actions;
 }
