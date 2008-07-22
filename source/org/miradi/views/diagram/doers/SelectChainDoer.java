@@ -30,7 +30,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -138,7 +137,7 @@ public class SelectChainDoer extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			FactorCell nodeToSelect = model.getFactorCellByWrappedId((FactorId)chainNodes[i].getId());
+			FactorCell nodeToSelect = model.getFactorCellByWrappedRef(chainNodes[i].getRef());
 			diagramComponent.addSelectionCell(nodeToSelect);
 			selectParentGroupBoxIfAny(model, diagramComponent, nodeToSelect.getDiagramFactor());
 		}

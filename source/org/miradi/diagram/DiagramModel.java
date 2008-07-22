@@ -632,6 +632,16 @@ public class DiagramModel extends DefaultGraphModel
 		return rawGetFactorByWrappedId(id).getDiagramFactor();	
 	}
 	
+	public FactorCell getFactorCellByWrappedRef(ORef factorRef)
+	{
+		FactorCell factorCell = rawGetFactorByWrappedRef(factorRef);
+		if(factorCell == null)
+			EAM.logDebug("getDiagramFactorByWrappedId about to return null for: " + factorRef);
+		
+		return factorCell;
+	}
+	
+	// NOTE: This method is deprecated! use getFactorCellByWrappedRef instead
 	public FactorCell getFactorCellByWrappedId(FactorId id)
 	{
 		FactorCell node = rawGetFactorByWrappedId(id);
@@ -674,6 +684,11 @@ public class DiagramModel extends DefaultGraphModel
 	private FactorCell rawGetFactorByWrappedId(FactorId id)
 	{
 		return cellInventory.getFactorById(id);
+	}
+	
+	private FactorCell rawGetFactorByWrappedRef(ORef factorRef)
+	{
+		return cellInventory.getFactorByRef(factorRef);
 	}
 
 	public LinkCell getDiagramFactorLink(DiagramLink diagramFactorLink)

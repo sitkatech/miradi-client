@@ -30,6 +30,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
 
 class CellInventory
@@ -73,6 +74,21 @@ class CellInventory
 		{
 			FactorCell cell = (FactorCell) iter.next();
 			if(cell.getWrappedId().equals(id))
+				return cell;
+		}
+		
+		return null;
+	}
+	
+	//NOTE this is a duplicate of the getFactorById, but its using ref.  The other method
+	//will go away.
+	public FactorCell getFactorByRef(ORef factorRef)
+	{
+		Collection list = factorCellIds.values();
+		for (Iterator iter = list.iterator(); iter.hasNext();)
+		{
+			FactorCell cell = (FactorCell) iter.next();
+			if(cell.getWrappedFactorRef().equals(factorRef))
 				return cell;
 		}
 		
