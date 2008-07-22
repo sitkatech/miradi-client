@@ -198,7 +198,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		FactorLinkSet directThreatLinkSet = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatLinkSet)
 		{
-			ORef threatStressRatingStressReferrer = findThreatStressRatingReferringToStress(project, factorLink, stressRef);
+			ORef threatStressRatingStressReferrer = factorLink.findThreatStressRatingReferringToStress(stressRef);
 			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingStressReferrer);
 			commands.add(CommandSetObjectData.createRemoveORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingStressReferrer));
 			commands.addAll(Arrays.asList(threatStressRating.createCommandsToClear()));
@@ -206,20 +206,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 		
 		return commands;
-	}
-	
-	private static ORef findThreatStressRatingReferringToStress(Project project, FactorLink factorLink, ORef stressRef) throws Exception
-	{
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
-		{
-			ORef threatStressRatingRef = threatStressRatingRefs.get(i);
-			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingRef);
-			if (stressRef.equals(threatStressRating.getStressRef()))
-				return threatStressRatingRef;
-		}
-		
-		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
 	}
 	
 	private static Collection buildCommandsToDeleteMeasurements(Project project, ORef ref) throws Exception

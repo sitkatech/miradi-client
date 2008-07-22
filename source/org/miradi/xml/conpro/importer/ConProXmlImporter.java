@@ -639,45 +639,47 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(stressNode, STRESS_SCOPE, stressRef, Stress.TAG_SCOPE, getCodeMapHelper().getConProToMiradiRatingMap());
 			stressRefs.add(stressRef);
 			
-			importStressesThreats(stressNode, targetRef, stressRef);
+			createThreatStressRatings(targetRef, stressRef);
+			populateThreatStressRatings(stressNode, targetRef, stressRef);
 		}
 		
 		setData(targetRef, Target.TAG_STRESS_REFS, stressRefs);
 	}
 	
 
-	private void importStressesThreats(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
+	private void createThreatStressRatings(ORef targetRef, ORef stressRef) throws Exception
+	{
+		FactorLinkSet targetLinks = ConproXmlExporter.getThreatTargetFactorLinks(getProject(), Target.find(getProject(), targetRef));
+		for(FactorLink factorLink : targetLinks)
+		{			
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
+			ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+			threatStressRatingRefs.add(threatStressRatingRef);
+			setData(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
+		}
+	}
+
+	private void populateThreatStressRatings(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
 		
 		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
 		{
 			Node threatStressRatingNode = threatStressRatingNodes.item(nodeIndex);
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
-			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
 			
 			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, Cause.getObjectType());
-			updateThreatStressRatingRefs(targetRef, threatRef, threatStressRatingRef);	
+			Cause threat = Cause.find(getProject(), threatRef);
+			Target target = Target.find(getProject(), targetRef);
+			ORef threatLinkRef  = getProject().getFactorLinkPool().getLinkedRef(threat, target);
+			FactorLink threatLink = FactorLink.find(getProject(), threatLinkRef);
+			ORef threatStressRatingRef = threatLink.findThreatStressRatingReferringToStress(stressRef);
 			
 			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(threatStressRatingNode, IRREVERSIBILITY_RANK, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			
 			setData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);
 		}		
-	}
-
-	private void updateThreatStressRatingRefs(ORef targetRef, ORef threatRef, ORef threatStressRatingRef) throws Exception
-	{
-		FactorLinkSet targetLinks = ConproXmlExporter.getThreatTargetFactorLinks(getProject(), Target.find(getProject(), targetRef));
-		for(FactorLink factorLink : targetLinks)
-		{
-			if (factorLink.getUpstreamThreatRef().equals(threatRef))
-			{
-				ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-				threatStressRatingRefs.add(threatStressRatingRef);
-				setData(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
-			}
-		}
 	}
 
 	private CodeList extractEcoregions(String[] allEcoregionCodes, Class questionClass)
