@@ -367,7 +367,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRefList.convertToIdList(Indicator.getObjectType()).toString());
 			
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
-			importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING);
 			
 			importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRankingMap());
 			importMeasurementData(viabilityAssessmentNode, indicatorRef);
@@ -385,12 +384,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 		boolean currentViabilityRateDateIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_DATE);
 		boolean currentConfidenceRatingIsEmpty = isEmpty(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
 		boolean currentRatingCommentIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_COMMENT);
-		if (currentViabilityRatingIsEmpty && currentViabilityRateDateIsEmpty && currentConfidenceRatingIsEmpty && currentRatingCommentIsEmpty)
+		boolean currentIndicatorStatusViabilityIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY);
+		if (currentViabilityRatingIsEmpty && currentViabilityRateDateIsEmpty && currentConfidenceRatingIsEmpty && currentRatingCommentIsEmpty && currentIndicatorStatusViabilityIsEmpty)
 			return;
 		
 		ORef measurementRef = getProject().createObject(Measurement.getObjectType());
 		setRefListData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurementRef));
 		
+		importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, measurementRef, Measurement.TAG_SUMMARY);
 		importCodeField(viabilityAssessmentNode, CURRENT_VIABILITY_RATING, measurementRef, Measurement.TAG_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 		importField(viabilityAssessmentNode, CURRENT_RATING_DATE, measurementRef, Measurement.TAG_DATE);
 		importCodeField(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
