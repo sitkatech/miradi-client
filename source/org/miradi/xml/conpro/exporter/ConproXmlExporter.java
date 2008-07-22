@@ -354,7 +354,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeThreshold(out, INDICATOR_DESCRIPTION_GOOD, indicator, StatusQuestion.GOOD);
 		writeThreshold(out, INDICATOR_DESCRIPTION_VERY_GOOD, indicator, StatusQuestion.VERY_GOOD);
 		
-		writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, indicator.getCurrentStatus());
 		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
 		writeOptionalLatestMeasurementValues(out, indicator);
 		writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
@@ -374,6 +373,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		Measurement measurement = Measurement.find(getProject(), measurementRef);
 		
+		writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, measurement, Measurement.TAG_SUMMARY);
 		writeOptionalRankingCodeElement(out, CURRENT_VIABILITY_RATING,  measurement, (Measurement.TAG_STATUS));
 		writeOptionalElement(out, CURRENT_RATING_DATE,  measurement, Measurement.TAG_DATE);
 		writeOptionalElement(out, CONFIDENE_CURRENT_RATING,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
