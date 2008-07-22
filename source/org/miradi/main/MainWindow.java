@@ -978,13 +978,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private UmbrellaView summaryView;
 	private DiagramView diagramView;
 	private ThreatMatrixView threatMatrixView;
-//	private BudgetView budgetView;
-//	private WorkPlanView workPlanView;
 	private MapView mapView;
 	private ScheduleView calendarView;
 	private LibraryView libraryView;
-//	private StrategicPlanView strategicPlanView;
-//	private TabbedView monitoringView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
 	private ReportsView reportView;
