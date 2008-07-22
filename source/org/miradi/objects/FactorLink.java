@@ -231,7 +231,21 @@ public class FactorLink extends BaseObject
 
 		return getProject().getStressBasedThreatFormula().getHighestRatingRule(Utility.convertToIntArray(ratingBundleValues));
 	}
-
+	
+	public ORef findThreatStressRatingReferringToStress(ORef stressRef) throws Exception
+	{
+		ORefList threatStressRatingRefsToUse = getThreatStressRatingRefs();
+		for(int index = 0; index < threatStressRatingRefsToUse.size(); ++index)
+		{
+			ORef threatStressRatingRef = threatStressRatingRefsToUse.get(index);
+			ThreatStressRating threatStressRating = (ThreatStressRating) getProject().findObject(threatStressRatingRef);
+			if (stressRef.equals(threatStressRating.getStressRef()))
+				return threatStressRatingRef;
+		}
+		
+		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
+	}
+	
 	public ORef getFactorRef(int direction)
 	{
 		if(direction == FROM)
