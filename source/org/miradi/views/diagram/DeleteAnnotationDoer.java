@@ -219,7 +219,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 				return threatStressRatingRef;
 		}
 		
-		throw new Exception(); 
+		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
 	}
 	
 	private static Collection buildCommandsToDeleteMeasurements(Project project, ORef ref) throws Exception
