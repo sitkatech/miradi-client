@@ -58,7 +58,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			
 			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
-			verifyObjectiveNames(projectToFill1);
+			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
@@ -76,15 +76,21 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		}
 	}
 	
-	private void verifyObjectiveNames(ProjectForTesting projectToFill1) throws Exception
+	private void verifyObjectiveLabelsAndUnsplitLabel(ProjectForTesting projectToFill1) throws Exception
 	{
 		ORefList objectiveRefs = projectToFill1.getObjectivePool().getORefList();
 		for (int index = 0; index < objectiveRefs.size(); ++index)
 		{
 			Objective objective = Objective.find(projectToFill1, objectiveRefs.get(index));
 			String rawLabel = objective.getLabel();
-			assertTrue("does not start with |", rawLabel.startsWith("|"));
-			assertTrue("does not end with |", rawLabel.endsWith("|"));
+			String expectedLabel = "123|Some Objective label|Some objective full text data";
+			assertEquals("wrong objective label?", expectedLabel, rawLabel);
+			
+			
+			String[] splittedFields = rawLabel.split("\\|");
+			objective.setData(Objective.TAG_SHORT_LABEL, splittedFields[0]);
+			objective.setData(Objective.TAG_LABEL, splittedFields[1]);
+			objective.setData(Objective.TAG_FULL_TEXT, splittedFields[2]);
 		}
 	}
 	
