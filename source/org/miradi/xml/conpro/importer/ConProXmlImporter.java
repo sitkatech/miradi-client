@@ -34,7 +34,6 @@ import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -725,8 +724,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	public static String preFormatToHtml(String text)
 	{
-		String formattedLabel =  XmlUtilities.getXmlEncoded(text);
-		return "<HTML><PRE>" + formattedLabel + "</PRE></HTML>";
+		return "<HTML><PRE>" + text + "</PRE></HTML>";
 	}
 	
 	private void importField(ORef ref, String tag, String data)	throws Exception
