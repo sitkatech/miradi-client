@@ -404,6 +404,22 @@ abstract public class BaseObject
 		return fields.containsKey(fieldTag);
 	}
 	
+	public boolean isEmpty()
+	{
+		Vector<String> fieldTags = getStoredFieldTags();
+		for (int index = 0; index < fieldTags.size(); ++index)
+		{
+			String tag = fieldTags.get(index);
+			if (nonClearedFieldTags.contains(tag))
+				continue;
+			
+			if (!getField(tag).isEmpty())
+				return false;
+		}
+		
+		return true;
+	}
+	
 
 	public BaseId getId()
 	{
@@ -819,7 +835,7 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public Vector getNoneClearedFieldTags()
+	public Vector<String> getNoneClearedFieldTags()
 	{
 		return nonClearedFieldTags;
 	}
@@ -1422,7 +1438,7 @@ abstract public class BaseObject
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
-	private Vector nonClearedFieldTags;
+	private Vector<String> nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
 	
