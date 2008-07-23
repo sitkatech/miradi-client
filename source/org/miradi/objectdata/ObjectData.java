@@ -41,6 +41,11 @@ abstract public class ObjectData
 		return get();
 	}
 	
+	final public boolean isEmpty()
+	{
+		return toString().length() == 0;
+	}
+	
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
