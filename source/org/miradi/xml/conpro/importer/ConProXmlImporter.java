@@ -34,6 +34,7 @@ import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -179,7 +180,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
-			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			importFieldDataAsPreFormattedHtml(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importActivities(strategyNode, strategyRef);
 			
 			createDiagramFactorAndAddToDiagram(strategyRef);
@@ -712,9 +713,27 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		String generatedPath = generatePath(elements);
 		String data = getXPath().evaluate(generatedPath, node);
-		setData(ref, tag, data);
+		importField(ref, tag, data);
+	}
+
+	private void importFieldDataAsPreFormattedHtml(Node node, String path, ORef ref, String tag) throws Exception
+	{
+		String generatedPath = generatePath(new String[]{path, });
+		String data = getXPath().evaluate(generatedPath, node);
+		importField(ref, tag, preFormatToHtml(data));
 	}
 	
+	public static String preFormatToHtml(String text)
+	{
+		String formattedLabel =  XmlUtilities.getXmlEncoded(text);
+		return "<HTML><PRE>" + formattedLabel + "</PRE></HTML>";
+	}
+	
+	private void importField(ORef ref, String tag, String data)	throws Exception
+	{
+		setData(ref, tag, data);
+	}
+		
 	private void importCodeField(Node node, String element, ORef ref, String tag, HashMap<String, String> map) throws Exception
 	{
 		importCodeField(node, new String[]{element}, ref, tag, map);
@@ -730,7 +749,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void importCodeField(ORef ref, String tag, HashMap<String, String> map, String rawCode) throws Exception
 	{
 		String safeCode = getCodeMapHelper().getSafeXmlCode(map, rawCode);
-		setData(ref, tag, safeCode);
+		importField(ref, tag, safeCode);
 	}
 	
 	private void importCodeListField(Node node, String parentElement, String childElement, ORef ref, String tag, HashMap<String, String> conProToMiradiCodeMap) throws Exception
