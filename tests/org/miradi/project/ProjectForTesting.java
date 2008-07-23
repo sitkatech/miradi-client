@@ -447,7 +447,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
 	{
-		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		ORefList threatStressRatingRefs = new ORefList();
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
@@ -607,6 +606,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateEverything() throws Exception
 	{
+		switchToStressBaseMode();
 		fillGeneralProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateIndicator();
@@ -622,6 +622,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateDraftStrategy();
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
+	}
+
+	private void switchToStressBaseMode() throws Exception
+	{
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}
 	
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
