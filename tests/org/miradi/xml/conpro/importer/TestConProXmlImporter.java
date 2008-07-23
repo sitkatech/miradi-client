@@ -29,6 +29,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -57,6 +58,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			
 			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
+			stripDelimiterTagFromObjectiveNames(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
@@ -73,6 +75,18 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		}
 	}
 	
+	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception
+	{
+		ORefList objectiveRefs = projectToFill1.getObjectivePool().getORefList();
+		for (int index = 0; index < objectiveRefs.size(); ++index)
+		{
+			Objective objective = Objective.find(projectToFill1, objectiveRefs.get(index));
+			String rawLabel = objective.getLabel();
+			String strippedLabel = rawLabel.replaceAll("\\|", "");
+			projectToFill1.setObjectData(objectiveRefs.get(index), Objective.TAG_LABEL, strippedLabel);
+		}
+	}
+
 	private void verifyThreatStressRatingPoolContents(ProjectForTesting project, ProjectForTesting filledProject)
 	{
 		int originalProjectObjectCount =  getProject().getPool(ThreatStressRating.getObjectType()).getRefList().size();	
