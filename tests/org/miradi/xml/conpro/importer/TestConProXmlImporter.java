@@ -58,6 +58,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			
 			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
+			verifyObjectiveNames(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 			stripTncLegacyRatingFieldOfHtmlTags(projectToFill1);
 			
@@ -73,6 +74,18 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			beforeXmlOutFile.delete();
 			afterXmlOutFile.delete();
 			projectToFill1.close();
+		}
+	}
+	
+	private void verifyObjectiveNames(ProjectForTesting projectToFill1) throws Exception
+	{
+		ORefList objectiveRefs = projectToFill1.getObjectivePool().getORefList();
+		for (int index = 0; index < objectiveRefs.size(); ++index)
+		{
+			Objective objective = Objective.find(projectToFill1, objectiveRefs.get(index));
+			String rawLabel = objective.getLabel();
+			assertTrue("does not start with |", rawLabel.startsWith("|"));
+			assertTrue("does not end with |", rawLabel.endsWith("|"));
 		}
 	}
 	
