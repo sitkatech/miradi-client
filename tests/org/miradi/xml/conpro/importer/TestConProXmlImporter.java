@@ -59,6 +59,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
+			stripTncLegacyRatingFieldOfHtmlTags(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
@@ -75,6 +76,21 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		}
 	}
 	
+	private void stripTncLegacyRatingFieldOfHtmlTags(ProjectForTesting projectToFill1) throws Exception
+	{
+		ORefList strategyRefs = projectToFill1.getStrategyPool().getRefList();
+		for (int index = 0; index < strategyRefs.size(); ++index)
+		{
+			Strategy strategy = Strategy.find(projectToFill1, strategyRefs.get(index));
+			String rawLabel = strategy.getData(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			String strippedLabel = rawLabel.replaceAll("<HTML>", "");
+			strippedLabel = strippedLabel.replaceAll("<PRE>", "");
+			strippedLabel = strippedLabel.replaceAll("</PRE>", "");
+			strippedLabel = strippedLabel.replaceAll("</HTML>", "");
+			projectToFill1.setObjectData(strategyRefs.get(index), Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, strippedLabel);
+		}	
+	}
+
 	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception
 	{
 		ORefList objectiveRefs = projectToFill1.getObjectivePool().getORefList();
