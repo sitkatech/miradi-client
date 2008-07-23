@@ -91,6 +91,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			Vector<String> fieldTags = object.getStoredFieldTags();
 			for(int i = 0; i < fieldTags.size(); ++i)
 			{
+				object.clear();
 				verifyShortLabelField(object, fieldTags.get(i));
 				verifyFieldLifecycle(project, object, fieldTags.get(i));
 			}
@@ -141,6 +142,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		String emptyData = getEmptyData(object, tag);
 
 		assertTrue("field is empty?", object.getField(tag).isEmpty());
+		assertTrue("object is empty?", object.isEmpty());
 		assertEquals("didn't default " + tag + " empty?", emptyData, object.getData(tag));
 		try
 		{
@@ -152,6 +154,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			throw e;
 		}
 		assertFalse("is not empty?", object.getField(tag).isEmpty());
+		assertFalse("object is not empty?", object.isEmpty());
 		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
 		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
