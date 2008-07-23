@@ -180,7 +180,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
-			importFieldDataAsPreFormattedHtml(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importActivities(strategyNode, strategyRef);
 			
 			createDiagramFactorAndAddToDiagram(strategyRef);
@@ -718,18 +718,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importField(ref, tag, data);
 	}
 
-	private void importFieldDataAsPreFormattedHtml(Node node, String path, ORef ref, String tag) throws Exception
-	{
-		String generatedPath = generatePath(new String[]{path, });
-		String data = getXPath().evaluate(generatedPath, node);
-		importField(ref, tag, preFormatToHtml(data));
-	}
-	
-	public static String preFormatToHtml(String text)
-	{
-		return "<HTML><PRE>" + text + "</PRE></HTML>";
-	}
-	
 	private void importField(ORef ref, String tag, String data)	throws Exception
 	{
 		setData(ref, tag, data);
