@@ -254,9 +254,19 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
 
 		writeIndicatorIds(out, objective);
-		writeLabelElement(out, NAME, objective, Objective.TAG_LABEL);
+		writeElement(out, NAME, getObjectiveName(objective));
 		writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
+	}
+
+	private String getObjectiveName(Objective objective)
+	{
+		String shortLabel = objective.getShortLabel();
+		String label = objective.getLabel();
+		String fullText = objective.getData(Objective.TAG_FULL_TEXT);		
+		
+		final String DELIMITER_TAG = "|";
+		return shortLabel + DELIMITER_TAG + label + DELIMITER_TAG + fullText;
 	}
 
 	private void writeIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
