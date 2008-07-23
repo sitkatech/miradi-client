@@ -254,12 +254,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
 
 		writeIndicatorIds(out, objective);
-		writeElement(out, NAME, getObjectiveName(objective));
+		writeElement(out, NAME, buildObjectiveExportableName(objective));
 		writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
 	}
 
-	private String getObjectiveName(Objective objective)
+	private String buildObjectiveExportableName(Objective objective)
 	{
 		String shortLabel = objective.getShortLabel();
 		String label = objective.getLabel();
