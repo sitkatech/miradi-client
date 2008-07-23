@@ -444,15 +444,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(stress, Stress.TAG_SCOPE, StatusQuestion.GOOD);
 	}
 	
-	public void populateFactorLink(FactorLink factorLink) throws Exception
-	{
-		ORef threatStressRatingRef = createAndPopulateThreatStressRating().getRef();
-		ORefList threatStressRatingRefs = new ORefList(threatStressRatingRef);
-		fillObjectUsingCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
-		fillObjectUsingCommand(factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT, "Some simple ThreatRating comment");
-		fillObjectUsingCommand(factorLink, FactorLink.TAG_COMMENT, "Some FactorLink comment");
-	}
-	
 	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
 	{
 		ORefList threatStressRatingRefs = new ORefList();
