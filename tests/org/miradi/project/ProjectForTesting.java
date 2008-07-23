@@ -561,7 +561,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateObjective(Objective objective) throws Exception
 	{
+		fillObjectUsingCommand(objective, Objective.TAG_SHORT_LABEL, "123");
 		fillObjectUsingCommand(objective, Objective.TAG_LABEL, "Some Objective label");
+		fillObjectUsingCommand(objective, Objective.TAG_FULL_TEXT, "Some objective full text data");
 		fillObjectUsingCommand(objective, Objective.TAG_COMMENTS, "Some Objective comments");
 		
 		ORef relevantIndicatorRef = createAndPopulateIndicator().getRef();
