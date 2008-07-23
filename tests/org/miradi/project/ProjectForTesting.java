@@ -78,6 +78,7 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -446,6 +447,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
 	{
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		ORefList threatStressRatingRefs = new ORefList();
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
