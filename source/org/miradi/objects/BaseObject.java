@@ -410,7 +410,7 @@ abstract public class BaseObject
 		for (int index = 0; index < fieldTags.size(); ++index)
 		{
 			String tag = fieldTags.get(index);
-			if (nonClearedFieldTags.contains(tag))
+			if (getNonClearedFieldTags().contains(tag))
 				continue;
 			
 			if (!getField(tag).isEmpty())
@@ -835,7 +835,7 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public Vector<String> getNoneClearedFieldTags()
+	public Vector<String> getNonClearedFieldTags()
 	{
 		return nonClearedFieldTags;
 	}

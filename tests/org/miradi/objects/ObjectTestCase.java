@@ -132,7 +132,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		if(tag.equals(BaseObject.TAG_ID))
 			return;
 		
-		if (object.getNoneClearedFieldTags().contains(tag))
+		if (object.getNonClearedFieldTags().contains(tag))
 			return;
 				
 		if (object.isPseudoField(tag))
