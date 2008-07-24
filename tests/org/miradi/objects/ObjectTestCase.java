@@ -95,10 +95,10 @@ public class ObjectTestCase extends TestCaseWithProject
 				verifyFieldLifecycle(project, object, fieldTags.get(i));
 
 				if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
-					assertFalse("object is not empty?", object.isEmpty());
+					assertFalse("object is empty?", object.isEmpty());
 				
 				object.clear();
-				assertTrue("object is empty?", object.isEmpty());
+				assertTrue("object is not empty?", object.isEmpty());
 			}
 		}
 		finally
