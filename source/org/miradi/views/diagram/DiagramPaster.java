@@ -378,7 +378,11 @@ abstract public class DiagramPaster
 		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 		ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
 		if (diagramAlreadyContainsAlias(newWrappedRef))
+		{
+			DiagramFactor existingDiagramFactor = getDiagramObject().getDiagramFactor(newWrappedRef);
+			getOldToNewObjectRefMap().put(diagramFactorRef, existingDiagramFactor.getRef());
 			return;
+		}
 		
 		if (ignorePastingDiagramFactorForFactor(newWrappedRef))
 			return;
