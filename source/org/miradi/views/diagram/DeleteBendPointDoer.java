@@ -28,6 +28,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.utils.PointList;
@@ -58,6 +59,11 @@ public class DeleteBendPointDoer extends LocationDoer
 		for (int i = 0; i < links.length; ++i)
 		{
 			LinkCell linkCell = diagramModel.getDiagramFactorLink(links[i]);
+			if (linkCell == null)
+			{
+				EAM.logError("LinkCell is null due to link not being removed from selection list.");
+				continue;
+			}
 			
 			int bendPointSelectionCount = linkCell.getSelectedBendPointIndexes().length;
 			if (bendPointSelectionCount > 0)
