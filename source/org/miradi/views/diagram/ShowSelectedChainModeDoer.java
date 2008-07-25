@@ -137,7 +137,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		Factor[] draftStrategies = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<draftStrategies.length; ++i)
 		{
-			FactorCell draftStrategyCell = model.getFactorCellByWrappedId(draftStrategies[i].getFactorId());
+			FactorCell draftStrategyCell = model.getFactorCellByWrappedRef(draftStrategies[i].getRef());
 			if (isOrphan(model, draftStrategyCell))
 				orphanedDraftStrategies.add(draftStrategyCell);
 		}
