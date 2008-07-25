@@ -653,7 +653,7 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
 		project.executeCommand(addDiagramFactor2);
 		assertEquals(4 + existingCalls, database.callsToWriteObject);
-		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedId(new FactorId(factorRef.getObjectId().asInt()));
+		FactorCell factor = project.getDiagramModel().getFactorCellByWrappedRef(factorRef);
 		
 		// undo the AddNode
 		project.undo();
