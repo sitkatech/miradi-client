@@ -619,12 +619,7 @@ public class DiagramModel extends DefaultGraphModel
 		if (!Factor.isFactor(factorRef.getObjectType()))
 			throw new RuntimeException("Trying to get FactorId from non factor ref.");
 		
-		return getDiagramFactor(new FactorId(factorRef.getObjectId().asInt()));
-	}
-	
-	public DiagramFactor getDiagramFactor(FactorId id)
-	{
-		return rawGetFactorByWrappedId(id).getDiagramFactor();	
+		return rawGetFactorByWrappedRef(factorRef).getDiagramFactor();
 	}
 	
 	public FactorCell getFactorCellByWrappedRef(ORef factorRef)
