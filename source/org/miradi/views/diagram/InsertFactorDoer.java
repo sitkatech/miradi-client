@@ -29,7 +29,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -85,7 +84,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 		try
 		{
-			FactorId id = diagramFactor.getWrappedId();
+			ORef factorRef = diagramFactor.getWrappedORef();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
 			{
 				// NOTE: Set up a second transaction, so the link creation is independently undoable
@@ -104,7 +103,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 				notLinkingToAnyFactors();
 			}
 
-			selectNewFactor(id);
+			selectNewFactor(factorRef);
 			ensureNewFactorIsVisible(diagramFactor);
 			launchPropertiesEditor(diagramFactor);
 		}
@@ -125,9 +124,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 	}
 	
-	protected void selectNewFactor(FactorId idToUse)
+	protected void selectNewFactor(ORef factorRef)
 	{
-		getDiagramView().getDiagramPanel().selectFactor(idToUse);
+		getDiagramView().getDiagramPanel().selectFactor(factorRef);
 	}
 	
 	void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception, CommandFailedException

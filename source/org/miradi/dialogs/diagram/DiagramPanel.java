@@ -33,9 +33,9 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -86,9 +86,9 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		getDiagramComponent().selectCells(cellsToSelect);
 	}
 	
-	public void selectFactor(FactorId idToUse)
+	public void selectFactor(ORef factorRef)
 	{
-		getDiagramComponent().selectFactor(idToUse);
+		getDiagramComponent().selectFactor(factorRef);
 	}
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells()

@@ -974,7 +974,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		newDialog.setSize(size);
 		newDialog.setLocation(Utilities.center(size, screenRect));
 		
-		getDiagramComponent().selectFactor(node.getWrappedId());
+		getDiagramComponent().selectFactor(node.getWrappedORef());
 		nodePropertiesPanel = newPropertiesPanel;
 		nodePropertiesDlg = newDialog;
 
