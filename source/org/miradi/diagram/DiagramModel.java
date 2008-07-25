@@ -711,7 +711,7 @@ public class DiagramModel extends DefaultGraphModel
 		return getDiagramLinkByWrappedRef(new ORef(FactorLink.getObjectType(), id));
 	}
 
-	public boolean doesDiagramFactorLinkExist(ORef factorLinkRef)
+	public boolean doesDiagramLinkExist(ORef factorLinkRef)
 	{
 		factorLinkRef.ensureType(FactorLink.getObjectType());
 		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);

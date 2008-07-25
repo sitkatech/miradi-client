@@ -870,7 +870,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private ORef getDiagramLinkRefFromFactorLinkRef(ORef factorLinkRef) throws Exception
 	{
-		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkRef))
+		if(!getDiagramModel().doesDiagramLinkExist(factorLinkRef))
 			return ORef.INVALID;
 		
 		DiagramLink link = getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
