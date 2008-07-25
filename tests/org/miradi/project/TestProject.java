@@ -250,8 +250,8 @@ public class TestProject extends EAMTestCase
 		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
 		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
-		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
-		DiagramLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node2.getWrappedFactorRef());
+		DiagramLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
@@ -280,7 +280,7 @@ public class TestProject extends EAMTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node2 =  project.createFactorCell(ObjectType.STRATEGY);
 		
-		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node2.getWrappedFactorRef());
 		
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 
@@ -307,8 +307,8 @@ public class TestProject extends EAMTestCase
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId1));
 		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), diagramFactor1.getWrappedId());
-		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), diagramFactor1.getWrappedORef());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -543,8 +543,8 @@ public class TestProject extends EAMTestCase
 		FactorCell node2 = project.createFactorCell(ObjectType.STRATEGY);
 		FactorCell node3 = project.createFactorCell(ObjectType.CAUSE);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
-		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node2.getWrappedFactorRef());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -716,7 +716,7 @@ public class TestProject extends EAMTestCase
 
 		nodeContributingFactor.getUnderlyingObject().setObjectives(objectiveId);
 		
-		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
+		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObjective(objectiveId1);
 		
@@ -737,7 +737,7 @@ public class TestProject extends EAMTestCase
 		indicators1.add(indicatorId1);
 		nodeContributingFactor.getUnderlyingObject().setIndicators(indicators1);
 		
-		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
+		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisIndicator(indicatorId1);
 		
@@ -865,10 +865,10 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
-	private DiagramLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
+	private DiagramLink createLinkage(BaseId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		DiagramFactor fromDiagramFactor = project.getDiagramModel().getFactorCellByWrappedId(fromId).getDiagramFactor();
-		DiagramFactor toDiagramFactor = project.getDiagramModel().getFactorCellByWrappedId(toId).getDiagramFactor();
+		DiagramFactor fromDiagramFactor = project.getDiagramModel().getFactorCellByWrappedRef(fromFactorRef).getDiagramFactor();
+		DiagramFactor toDiagramFactor = project.getDiagramModel().getFactorCellByWrappedRef(toFactorRef).getDiagramFactor();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
