@@ -669,11 +669,6 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getLinkCell(diagramFactorLink);
 	}
 	
-	public DiagramFactorId getDiagramFactorIdFromWrappedId(FactorId factorId)
-	{
-		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
-	}
-	
 	public DiagramFactorId getDiagramFactorIdFromWrappedRef(ORef factorRef)
 	{
 		if (!Factor.isFactor(factorRef))
