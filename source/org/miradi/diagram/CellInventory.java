@@ -63,7 +63,7 @@ class CellInventory
 		return new Vector(factorCellIds.values());
 	}
 	
-	public FactorCell getFactorById(DiagramFactorId id)
+	private FactorCell getFactorById(DiagramFactorId id)
 	{
 		return (FactorCell) factorCellIds.get(id);
 	}
