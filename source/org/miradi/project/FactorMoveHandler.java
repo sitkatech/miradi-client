@@ -21,7 +21,6 @@ package org.miradi.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -33,11 +32,11 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -53,13 +52,12 @@ public class FactorMoveHandler
 		model = modelToUse;
 	}
 
-	public void factorsWereMovedOrResized(DiagramFactorId[] ids) throws CommandFailedException
+	public void factorsWereMovedOrResized(ORefList diagramFactorRefs) throws CommandFailedException
 	{
 		try 
 		{
-			model.factorsWereMoved(ids);
+			model.factorsWereMoved(diagramFactorRefs);
 			
-			ORefList diagramFactorRefs = new ORefList(DiagramFactor.getObjectType(), new IdList(DiagramFactor.getObjectType(), ids));
 			Vector commandsToExecute = new Vector();
 			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
@@ -110,13 +108,12 @@ public class FactorMoveHandler
 
 	}
 
-	public void ensureLevelSegementToFirstBendPoint(DiagramFactorId[] idsBeingMoved) throws Exception
+	public void ensureLevelSegementToFirstBendPoint(ORefList diagramFactorRefs) throws Exception
 	{
-		HashSet<DiagramFactorId> idsBeingMovedAsSet = new HashSet<DiagramFactorId>(Arrays.asList(idsBeingMoved));
-		for(int i = 0 ; i < idsBeingMoved.length; ++i)
+		ORefSet idsBeingMovedAsSet = new ORefSet(diagramFactorRefs);
+		for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 		{
-			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), idsBeingMoved[i]);
-			FactorCell factorCell = model.getFactorCellByRef(diagramFactorRef);
+			FactorCell factorCell = model.getFactorCellByRef(diagramFactorRefs.get(i));
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
 				ensureLevelSegementToFirstBendPoint(idsBeingMovedAsSet, factorCell);
@@ -124,7 +121,7 @@ public class FactorMoveHandler
 		}
 	}
 
-	private void ensureLevelSegementToFirstBendPoint(HashSet<DiagramFactorId> idsBeingMovedAsSet, FactorCell factorCell) throws Exception
+	private void ensureLevelSegementToFirstBendPoint(ORefSet idsBeingMovedAsSet, FactorCell factorCell) throws Exception
 	{
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
@@ -215,11 +212,10 @@ public class FactorMoveHandler
 		return bendPointToTranslate;
 	}
 	
-	private boolean areBothFactorsLinked(HashSet<DiagramFactorId> idsBeingMovedAsSet, LinkCell linkCell, FactorCell factorCell)
+	private boolean areBothFactorsLinked(ORefSet idsBeingMovedAsSet, LinkCell linkCell, FactorCell factorCell)
 	{
 		ORef oppositeEndRef = linkCell.getDiagramLink().getOppositeEndRef(factorCell.getDiagramFactorRef());
-		DiagramFactorId oppositeEndId = new DiagramFactorId(oppositeEndRef.getObjectId().asInt());
-		if (idsBeingMovedAsSet.contains(oppositeEndId))
+		if (idsBeingMovedAsSet.contains(oppositeEndRef))
 			return true;
 		
 		return false;
