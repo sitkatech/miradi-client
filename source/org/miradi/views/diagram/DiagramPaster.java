@@ -300,10 +300,7 @@ abstract public class DiagramPaster
 
 	private void addDiagramFactorToSelection(ORef diagramFactorRefToSelect) throws Exception
 	{
-		diagramFactorRefToSelect.ensureType(DiagramFactor.getObjectType());
-		
-		DiagramFactorId diagramFactorId = new DiagramFactorId(diagramFactorRefToSelect.getObjectId().asInt());
-		FactorCell cell = currentModel.getFactorCellById(diagramFactorId);
+		FactorCell cell = currentModel.getFactorCellByRef(diagramFactorRefToSelect);
 		pastedCellsToSelect.add(cell);
 	}
 	

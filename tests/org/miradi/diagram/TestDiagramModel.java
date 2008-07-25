@@ -371,8 +371,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.getDiagramObject());
 		
-		assertNotNull("missing node1?", copy.getFactorCellById(node1.getDiagramFactorId()));
-		assertNotNull("missing node2?", copy.getFactorCellById(node2.getDiagramFactorId()));
+		assertNotNull("missing node1?", copy.getFactorCellByRef(node1.getDiagramFactorRef()));
+		assertNotNull("missing node2?", copy.getFactorCellByRef(node2.getDiagramFactorRef()));
 		assertNotNull("missing link?", copy.getDiagramFactorLinkById(link1.getDiagramLinkageId()));
 	}
 	

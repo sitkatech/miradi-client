@@ -25,7 +25,6 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -121,10 +120,10 @@ public class DiagramModelUpdater
 	{
 		for (int i = 0; i < factorIdsToRemove.size(); i++)
 		{
-			DiagramFactorId diagramFactorId = new DiagramFactorId(factorIdsToRemove.get(i).asInt());
-			FactorCell factorCell = model.getFactorCellById(diagramFactorId);
+			ORef diagramFactorRef = factorIdsToRemove.getRef(i);
+			FactorCell factorCell = model.getFactorCellByRef(diagramFactorRef);
 			clearDiagramSelection(factorCell);
-			model.removeDiagramFactor(diagramFactorId);
+			model.removeDiagramFactor(diagramFactorRef);
 		}
 	}
 	

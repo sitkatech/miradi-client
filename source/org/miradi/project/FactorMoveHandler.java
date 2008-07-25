@@ -63,7 +63,7 @@ public class FactorMoveHandler
 			Vector commandsToExecute = new Vector();
 			for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
 			{
-				FactorCell factorCell = model.getFactorCellById((DiagramFactorId) diagramFactorRefs.get(i).getObjectId());
+				FactorCell factorCell = model.getFactorCellByRef(diagramFactorRefs.get(i));
 				if(factorCell.hasMoved())
 				{
 					commandsToExecute.add(buildMoveCommand(factorCell));
@@ -115,7 +115,8 @@ public class FactorMoveHandler
 		HashSet<DiagramFactorId> idsBeingMovedAsSet = new HashSet<DiagramFactorId>(Arrays.asList(idsBeingMoved));
 		for(int i = 0 ; i < idsBeingMoved.length; ++i)
 		{
-			FactorCell factorCell = model.getFactorCellById(idsBeingMoved[i]);
+			ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), idsBeingMoved[i]);
+			FactorCell factorCell = model.getFactorCellByRef(diagramFactorRef);
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
 				ensureLevelSegementToFirstBendPoint(idsBeingMovedAsSet, factorCell);

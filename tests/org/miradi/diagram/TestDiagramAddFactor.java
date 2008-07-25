@@ -22,10 +22,9 @@ package org.miradi.diagram;
 import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.GraphConstants;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 
@@ -56,8 +55,8 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getFactorCellById(id);
+		ORef diagramFactorRef = insertedNode.getDiagramFactorRef();
+		FactorCell foundNode = model.getFactorCellByRef(diagramFactorRef);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
 		assertEquals(ObjectType.TARGET, foundNode.getUnderlyingFactorType());
@@ -72,8 +71,8 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getFactorCellById(id);
+		ORef diagramFactorRef = insertedNode.getDiagramFactorRef();
+		FactorCell foundNode = model.getFactorCellByRef(diagramFactorRef);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isContributingFactor());
 		assertEquals(ObjectType.CAUSE, foundNode.getWrappedType());
@@ -88,8 +87,8 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramFactorId();
-		FactorCell foundNode = model.getFactorCellById(id);
+		ORef diagramFactorRef = insertedNode.getDiagramFactorRef();
+		FactorCell foundNode = model.getFactorCellByRef(diagramFactorRef);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
 		assertEquals(ObjectType.STRATEGY, foundNode.getUnderlyingFactorType());

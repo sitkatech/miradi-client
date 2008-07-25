@@ -21,12 +21,9 @@ package org.miradi.diagram;
 
 import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -51,8 +48,8 @@ public class TestDiagramComponent extends TestCaseWithProject
 		DiagramModel model = getProject().getDiagramModel();
 		FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), getProject().getDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createCommand.getCreatedId();
-		FactorCell factorCell = model.getFactorCellById(diagramFactorId);
+		ORef diagramFactorRef = createCommand.getObjectRef();
+		FactorCell factorCell = model.getFactorCellByRef(diagramFactorRef);
 		
 		return factorCell;
 	}
