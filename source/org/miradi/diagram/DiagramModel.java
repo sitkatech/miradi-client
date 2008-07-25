@@ -691,6 +691,15 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
+	public DiagramFactorId getDiagramFactorIdFromWrappedRef(ORef factorRef)
+	{
+		if (!Factor.isFactor(factorRef))
+			throw new RuntimeException("Trying to convert non factor ref to factor:"+factorRef);
+		
+		FactorId factorId = new FactorId(factorRef.getObjectId().asInt());
+		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
+	}
+	
 	public DiagramLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
 	{
 		DiagramLink linkage = cellInventory.getFactorLinkById(id);
