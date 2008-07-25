@@ -303,8 +303,7 @@ public class TestProject extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
-		DiagramFactorId diagramFactorId1 = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
-		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId1));
+		DiagramFactor diagramFactor1 = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
 		FactorCell node3 =  project.createFactorCell(ObjectType.CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), diagramFactor1.getWrappedORef());
@@ -317,7 +316,7 @@ public class TestProject extends EAMTestCase
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
-		assertEquals(1, model.getFactorLinksSize(diagramFactorId1));
+		assertEquals(1, model.getFactorLinksSize(diagramFactor1.getDiagramFactorId()));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
 		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
@@ -330,7 +329,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
-		model.removeDiagramFactor(diagramFactorId1);
+		model.removeDiagramFactor(diagramFactor1.getRef());
 		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());

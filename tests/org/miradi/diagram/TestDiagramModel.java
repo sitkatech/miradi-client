@@ -289,8 +289,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
-		model.removeDiagramFactor(diagramFactorId);
+		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		model.removeDiagramFactor(diagramFactor.getRef());
 		DiagramFactorId newFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
 		DiagramFactorId targetId = project.createAndAddFactorToDiagram(ObjectType.TARGET);
 		assertFalse("already linked?", model.areLinked(newFactorId, targetId));
@@ -325,10 +325,10 @@ public class TestDiagramModel extends EAMTestCase
 	public void testCreateNode() throws Exception
 	{
 		project.createFactorCell(ObjectType.TARGET);		
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
+		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		project.createFactorCell(ObjectType.TARGET);
 		FactorCell lastCreated = project.createFactorCell(ObjectType.TARGET);		
-		model.removeDiagramFactor(diagramFactorId);
+		model.removeDiagramFactor(diagramFactor.getRef());
 		FactorCell nodeAfterUndo = project.createFactorCell(ObjectType.TARGET);
 		
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramFactorId().asInt() > lastCreated.getDiagramFactorId().asInt());
