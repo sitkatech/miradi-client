@@ -56,7 +56,7 @@ public class TestDelete extends EAMTestCase
 		assertTrue("link not found?", model.areLinked(interventionId, causeId));
 
 		DiagramObject diagramObject1 = project.getDiagramObject();
-		CommandSetObjectData removeLink = CommandSetObjectData.createRemoveIdCommand(diagramObject1, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
+		CommandSetObjectData removeLink = CommandSetObjectData.createRemoveIdCommand(diagramObject1, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeLink);
 		
 	

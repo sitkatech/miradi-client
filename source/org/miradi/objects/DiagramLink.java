@@ -172,7 +172,7 @@ public class DiagramLink extends BaseObject
 		return new DiagramFactorId(toId.getId().asInt());
 	}
 
-	public DiagramLinkId getDiagramLinkageId()
+	public DiagramLinkId getDiagramLinkId()
 	{
 		return (DiagramLinkId)getId(); 
 	}
