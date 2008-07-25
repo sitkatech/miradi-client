@@ -143,15 +143,16 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		ORef diagramFactorRef = createDiagramFactorCommand.getObjectRef();
 		
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
-		verifyNodePresent(diagramFactorId);
+		verifyFactorCellPresent(diagramFactorRef);
 		project.undo();
 		project.undo();
 		
-		verifyNodeNotPresent(diagramFactorId);
+		verifyFactorCellNotPresent(diagramFactorRef);
 		project.undo();
 		
 		verifyLinkageNotPresent(linkId);
@@ -197,21 +198,21 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
-	private void verifyNodePresent(DiagramFactorId cellId) throws Exception
+	private void verifyFactorCellPresent(ORef diagramFactorRef) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertNotNull("Node not present?", model.getFactorCellById(cellId));
+		assertNotNull("Node not present?", model.getFactorCellByRef(diagramFactorRef));
 	}
 	
-	private void verifyNodeNotPresent(DiagramFactorId cellId)
+	private void verifyFactorCellNotPresent(ORef diagramFactorRef)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		try
 		{
-			model.getFactorCellById(cellId);
-			fail("Cell should be gone: " + cellId);
+			model.getFactorCellByRef(diagramFactorRef);
+			fail("Cell should be gone: " + diagramFactorRef);
 		}
 		catch(Exception ignoreExpected)
 		{
