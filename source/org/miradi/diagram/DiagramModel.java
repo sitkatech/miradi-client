@@ -221,7 +221,7 @@ public class DiagramModel extends DefaultGraphModel
     	FactorCell diagramFactorToDelete = getFactorCellById(diagramFactorId);	
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
-		cellInventory.removeFactor(diagramFactorId);
+		cellInventory.removeFactor(diagramFactorRef);
 		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
     }
 
