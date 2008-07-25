@@ -718,11 +718,6 @@ public class DiagramModel extends DefaultGraphModel
 		return (diagramLink != null);
 	}
 	
-	public boolean doesDiagramFactorExist(DiagramFactorId id)
-	{
-		return doesDiagramFactorExist(new ORef(DiagramFactor.getObjectType(), id));
-	}
-
 	public boolean doesDiagramFactorExist(ORef diagramFactorRef)
 	{
 		return (rawGetFactorCellByRef(diagramFactorRef) != null);
