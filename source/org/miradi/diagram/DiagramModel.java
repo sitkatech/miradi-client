@@ -705,32 +705,25 @@ public class DiagramModel extends DefaultGraphModel
 
 	public DiagramLink getDiagramFactorLinkByWrappedRef(ORef factorLinkRef) throws Exception
 	{
-		factorLinkRef.ensureType(FactorLink.getObjectType());
-		return getDiagramFactorLinkbyWrappedId(new FactorLinkId(factorLinkRef.getObjectId().asInt()));
+		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);
+		if(diagramLink == null)
+			throw new Exception("Factor Link doesn't exist, ref: " + factorLinkRef);
+		
+		return diagramLink;
 	}
 	
 	public DiagramLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
 	{
-		DiagramLink linkage = cellInventory.getFactorLinkById(id);
-		if(linkage == null)
-			throw new Exception("Link doesn't exist, id: " + id);
-		return linkage;
+		return getDiagramFactorLinkByRef(new ORef(FactorLink.getObjectType(), id));
 	}
 
 	public boolean doesDiagramFactorLinkExist(ORef factorLinkRef)
 	{
 		factorLinkRef.ensureType(FactorLink.getObjectType());
-		
-		FactorLinkId factorLinkId = new FactorLinkId(factorLinkRef.getObjectId().asInt());
-		return doesDiagramFactorLinkExist(factorLinkId);
+		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);
+		return (diagramLink != null);
 	}
 	
-	public boolean doesDiagramFactorLinkExist(FactorLinkId id)
-	{
-		DiagramLink linkage = cellInventory.getFactorLinkById(id);
-		return (linkage != null);
-	}
-
 	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
 		return (rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id)) != null);
