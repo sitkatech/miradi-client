@@ -594,8 +594,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesFactorExist(ORef factorRef)
 	{
-		FactorId factorId = new FactorId(factorRef.getObjectId().asInt());
-		return (rawGetFactorByWrappedId(factorId) != null);
+		return (rawGetFactorByWrappedRef(factorRef) != null);
 	}
 	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
