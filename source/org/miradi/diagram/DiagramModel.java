@@ -590,9 +590,9 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
-	public void updateDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
+	public void updateDiagramFactor(ORef diagramFactorRef) throws Exception
 	{
-		FactorCell cellToUpdate = getFactorCellById(diagramFactorId);
+		FactorCell cellToUpdate = getFactorCellByRef(diagramFactorRef);
 		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
 		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
