@@ -380,7 +380,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		DiagramFactorId diagramFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
+		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals("node changed already called?", 0, testModel.nodeChanged);
@@ -389,7 +389,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("added already called?", 0, testModel.linkAdded);
 		assertEquals("linkage deleted already called?", 0, testModel.linkDeleted);
 		
-		model.updateDiagramFactor(diagramFactorId);
+		model.updateDiagramFactor(diagramFactor.getRef());
 		assertEquals("update did a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("update didn't do a node changed notify?", 1, testModel.nodeChanged);
 		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
@@ -397,7 +397,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("update did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("update did a linkdeleted notify?", 0, testModel.linkDeleted);
 		
-		model.removeDiagramFactor(diagramFactorId);
+		model.removeDiagramFactor(diagramFactor.getRef());
 		assertEquals("delete node didn't notify?", 1, testModel.nodeDeleted);
 		assertEquals("delete node triggered a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);
