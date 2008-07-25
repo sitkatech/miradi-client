@@ -31,6 +31,7 @@ import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 
 class CellInventory
@@ -51,7 +52,7 @@ class CellInventory
 	{
 		DiagramFactorId realId = node.getDiagramFactorId();
 		
-		if(getFactorById(realId) != null)
+		if(getFactorCellByDiagramFactorRef(node.getDiagramFactorRef()) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
 		factorCellIds.put(realId, node);
@@ -65,6 +66,12 @@ class CellInventory
 	public FactorCell getFactorById(DiagramFactorId id)
 	{
 		return (FactorCell) factorCellIds.get(id);
+	}
+	
+	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
+	{
+		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
+		return getFactorById(new DiagramFactorId(diagramFactorRef.getObjectId().asInt()));
 	}
 	
 	public FactorCell getFactorById(FactorId id)
