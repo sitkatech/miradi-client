@@ -68,7 +68,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);
 
-		DiagramLink linkage = model.getDiagramFactorLinkById(diagramFactorLinkId);
+		DiagramLink linkage = model.getDiagramLinkById(diagramFactorLinkId);
 		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
 
 		assertEquals("not from intervention?", intervention, cell.getFrom());

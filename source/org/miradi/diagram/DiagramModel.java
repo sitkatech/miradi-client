@@ -683,12 +683,12 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
-	public DiagramLink getDiagramFactorLinkById(DiagramLinkId id) throws Exception
+	public DiagramLink getDiagramLinkById(DiagramLinkId id) throws Exception
 	{
-		return getDiagramFactorLinkByRef(new ORef(DiagramLink.getObjectType(), id));
+		return getDiagramLinkByRef(new ORef(DiagramLink.getObjectType(), id));
 	}
 	
-	public DiagramLink getDiagramFactorLinkByRef(ORef diagramLinkRef) throws Exception
+	public DiagramLink getDiagramLinkByRef(ORef diagramLinkRef) throws Exception
 	{
 		DiagramLink diagramLink = cellInventory.getDiagramLink(diagramLinkRef);
 		if(diagramLink == null)
@@ -947,7 +947,7 @@ public class DiagramModel extends DefaultGraphModel
 		if (! doesDiagramFactorLinkExist(diagramLinkId))
 			return null;
 		
-		DiagramLink diagramFactorLink  = getDiagramFactorLinkById(diagramLinkId);
+		DiagramLink diagramFactorLink  = getDiagramLinkById(diagramLinkId);
 		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);

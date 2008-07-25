@@ -134,10 +134,10 @@ public class TestDiagramLink extends ObjectTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
 		project.executeCommand(addLink);
 		
-		assertNotNull("link not in model?", model.getDiagramFactorLinkById(createdDiagramFactorLinkId));
+		assertNotNull("link not in model?", model.getDiagramLinkById(createdDiagramFactorLinkId));
 		
 		ProjectServer server = project.getTestDatabase();
-		DiagramLink dfl = project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
+		DiagramLink dfl = project.getDiagramModel().getDiagramLinkById(createdDiagramFactorLinkId);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());

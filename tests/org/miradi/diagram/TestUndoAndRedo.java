@@ -236,7 +236,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getDiagramFactorLinkById(cellId);
+			model.getDiagramLinkById(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)

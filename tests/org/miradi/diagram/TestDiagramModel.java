@@ -373,7 +373,7 @@ public class TestDiagramModel extends EAMTestCase
 		
 		assertNotNull("missing node1?", copy.getFactorCellByRef(node1.getDiagramFactorRef()));
 		assertNotNull("missing node2?", copy.getFactorCellByRef(node2.getDiagramFactorRef()));
-		assertNotNull("missing link?", copy.getDiagramFactorLinkById(link1.getDiagramLinkId()));
+		assertNotNull("missing link?", copy.getDiagramLinkById(link1.getDiagramLinkId()));
 	}
 	
 	public void testActionsFiring() throws Exception
