@@ -472,7 +472,7 @@ public class ResultsChainCreatorHelper
 		 for (int i  = 0; i < links.length; i++)
 		 {
 			 FactorLinkId id = links[i].getFactorLinkId();
-			 DiagramLink link = model.getDiagramFactorLinkbyWrappedId(id);
+			 DiagramLink link = model.getDiagramLinkbyWrappedId(id);
 			 if (canAddLinkToResultsChain((link)))
 				 vector.add(link);
 		 }

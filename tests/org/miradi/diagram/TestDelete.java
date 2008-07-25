@@ -50,7 +50,7 @@ public class TestDelete extends EAMTestCase
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		LinkCreator linkCreator = new LinkCreator(project);
 		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
-		DiagramLink diagramLink = model.getDiagramFactorLinkbyWrappedId(factorLinkId);
+		DiagramLink diagramLink = model.getDiagramLinkbyWrappedId(factorLinkId);
 		
 		assertTrue("link not found?", model.areLinked(interventionId, cause.getDiagramFactorId()));
 

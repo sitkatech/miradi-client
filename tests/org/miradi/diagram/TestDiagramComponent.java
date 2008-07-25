@@ -74,7 +74,7 @@ public class TestDiagramComponent extends TestCaseWithProject
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getDiagramModel(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
-		DiagramLink diagramLink = getProject().getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
+		DiagramLink diagramLink = getProject().getDiagramModel().getDiagramLinkbyWrappedId(factorLinkId);
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);
