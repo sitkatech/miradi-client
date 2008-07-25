@@ -26,9 +26,9 @@ import java.awt.geom.Rectangle2D;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.ProjectScopeBox;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.ProjectForTesting;
@@ -74,7 +74,8 @@ public class TestProjectScopeBox extends EAMTestCase
 
 		target1.getDiagramFactor().setLocation(new Point(100, 200));
 		target1.updateFromDiagramFactor();
-		model.factorsWereMoved(new DiagramFactorId[] {target1.getDiagramFactorId()});
+		
+		model.factorsWereMoved(new ORefList(target1.getDiagramFactorRef()));
 		Rectangle2D movedTarget = scope.getBounds();
 		assertTrue("didn't follow move? " + movedTarget + " doesn't contain " + target1.getBounds(), movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
@@ -84,7 +85,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		FactorCell target2 = project.createFactorCell(ObjectType.TARGET);
 		target2.getDiagramFactor().setLocation(new Point(200, 300));
 		target2.updateFromDiagramFactor();
-		model.factorsWereMoved(new DiagramFactorId[] {target2.getDiagramFactorId()});
+		model.factorsWereMoved(new ORefList(target2.getDiagramFactorRef()));
 		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));

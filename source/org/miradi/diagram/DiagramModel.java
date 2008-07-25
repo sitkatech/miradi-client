@@ -445,23 +445,6 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	//FIXME this method needs to be removed
-	public void factorsWereMoved(DiagramFactorId[] ids)
-	{
-		for(int i=0; i < ids.length; ++i)
-		{
-			try
-			{
-				FactorCell factor = getFactorCellById(ids[i]);
-				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-	}
-	
 	public void factorsWereMoved(ORefList diagramFactorRefs)
 	{
 		for(int index = 0; index < diagramFactorRefs.size(); ++index)
