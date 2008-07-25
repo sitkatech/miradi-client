@@ -33,7 +33,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -569,8 +568,8 @@ public class ResultsChainCreatorHelper
 		Vector vector = new Vector();
 		for (int i = 0; i < factors.length; i++)
 		{
-			FactorId id = factors[i].getFactorId();
-			DiagramFactor diagramFactor = model.getDiagramFactor(id);
+			ORef factorRef = factors[i].getRef();
+			DiagramFactor diagramFactor = model.getDiagramFactor(factorRef);
 			if (canAddTypeToResultsChain(diagramFactor))
 				vector.add(diagramFactor);
 		}
