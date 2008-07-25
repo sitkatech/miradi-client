@@ -598,11 +598,6 @@ public class DiagramModel extends DefaultGraphModel
 		return (rawGetFactorByWrappedId(factorId) != null);
 	}
 	
-	public boolean doesFactorExist(FactorId id)
-	{
-		return (rawGetFactorByWrappedId(id) != null);
-	}
-	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
 		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
