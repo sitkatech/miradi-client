@@ -173,7 +173,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		{
 			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
 			if(cell.isFactor())
-				model.updateCellFromDiagramFactor(cell.getDiagramFactor().getDiagramFactorId());
+				model.updateCellFromDiagramFactor(cell.getDiagramFactor().getRef());
 			else if(cell.isFactorLink())
 				model.updateCellFromDiagramFactorLink(cell.getDiagramLink().getRef());
 			model.updateCell(cell);

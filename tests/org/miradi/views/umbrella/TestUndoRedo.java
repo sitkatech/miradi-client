@@ -87,7 +87,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getFactorCount());
 		assertEquals("wrong number of nodes after redo?", 1, diagramFactors.length);
 		DiagramFactor node = diagramFactors[0];
-		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node.getDiagramFactorId()));
+		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node.getRef()));
 		
 		Factor factor = Factor.findFactor(project, node.getWrappedORef());
 		assertEquals("Incorrect label?", target1Text, factor.getLabel());

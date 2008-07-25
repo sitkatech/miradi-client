@@ -134,7 +134,6 @@ import org.miradi.dialogs.diagram.ResultsChainDiagramPanel;
 import org.miradi.dialogs.slideshow.SlideListManagementPanel;
 import org.miradi.dialogs.slideshow.SlideShowDialog;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -886,8 +885,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
 			return;
 		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) cmd.getObjectId();
-		model.updateCellFromDiagramFactor(diagramFactorId);
+		ORef diagramFactorRef = cmd.getObjectORef();
+		model.updateCellFromDiagramFactor(diagramFactorRef);
 	}
 
 	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)

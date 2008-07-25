@@ -720,9 +720,14 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
-		return (rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id)) != null);
+		return doesDiagramFactorExist(new ORef(DiagramFactor.getObjectType(), id));
 	}
 
+	public boolean doesDiagramFactorExist(ORef diagramFactorRef)
+	{
+		return (rawGetFactorCellByRef(diagramFactorRef) != null);
+	}
+	
 	public boolean doesDiagramFactorLinkExist(DiagramLinkId linkId)
 	{
 		return (cellInventory.getDiagramLink(new ORef(DiagramLink.getObjectType(), linkId)) != null);	
@@ -954,12 +959,12 @@ public class DiagramModel extends DefaultGraphModel
 		return linkCell;
 	}
 
-	public void updateCellFromDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
+	public void updateCellFromDiagramFactor(ORef diagramFactorRef) throws Exception
 	{
-		if (! doesDiagramFactorExist(diagramFactorId))
+		if (! doesDiagramFactorExist(diagramFactorRef))
 			return;
 			
-		FactorCell factorCell = getFactorCellById(diagramFactorId);
+		FactorCell factorCell = getFactorCellByRef(diagramFactorRef);
 		factorCell.updateFromDiagramFactor();
 		updateCell(factorCell);
 	}
