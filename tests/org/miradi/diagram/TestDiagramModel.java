@@ -437,7 +437,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		LinkCreator linkCreator = new LinkCreator(project);
 		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
+		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkbyWrappedId(factorLinkId);
 		
 		return diagramLink;
 	}
