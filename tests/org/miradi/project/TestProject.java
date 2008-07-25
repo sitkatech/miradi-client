@@ -879,7 +879,7 @@ public class TestProject extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
 		project.executeCommand(addLink);
 
-		return project.getDiagramModel().getDiagramFactorLinkById(createdDiagramFactorLinkId);
+		return project.getDiagramModel().getDiagramLinkById(createdDiagramFactorLinkId);
 	}
 
 	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, DiagramObject diagramObject, int nodeType) throws Exception
