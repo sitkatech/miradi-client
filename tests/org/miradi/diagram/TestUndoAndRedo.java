@@ -25,7 +25,7 @@ import org.miradi.commands.CommandJump;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
@@ -229,7 +229,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyLinkageNotPresent(DiagramFactorLinkId cellId)
+	private void verifyLinkageNotPresent(DiagramLinkId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
@@ -268,5 +268,5 @@ public class TestUndoAndRedo extends EAMTestCase
 	ProjectForTesting project;
 	ORef fromFactorRef;
 	ORef toFactorRef;
-	DiagramFactorLinkId linkId;
+	DiagramLinkId linkId;
 }

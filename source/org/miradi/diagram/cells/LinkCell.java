@@ -35,7 +35,7 @@ import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.renderers.ArrowLineRenderer;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
@@ -94,7 +94,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return true;
 	}
 	
-	public DiagramFactorLinkId getDiagramFactorLinkId()
+	public DiagramLinkId getDiagramFactorLinkId()
 	{
 		return diagramLink.getDiagramLinkageId();
 	}

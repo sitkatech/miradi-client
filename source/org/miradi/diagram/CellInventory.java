@@ -27,7 +27,7 @@ import java.util.Vector;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
@@ -88,7 +88,7 @@ class CellInventory
 	
 	public void addFactorLink(DiagramLink link, LinkCell cell)
 	{
-		DiagramFactorLinkId realId = link.getDiagramLinkageId();
+		DiagramLinkId realId = link.getDiagramLinkageId();
 		
 		if(getFactorLinkById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -106,7 +106,7 @@ class CellInventory
 		return new Vector(factorLinks.keySet());
 	}
 	
-	public DiagramLink getFactorLinkById(DiagramFactorLinkId id)
+	public DiagramLink getFactorLinkById(DiagramLinkId id)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext()) 

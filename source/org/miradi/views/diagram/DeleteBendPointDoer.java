@@ -27,7 +27,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
@@ -99,7 +99,7 @@ public class DeleteBendPointDoer extends LocationDoer
 			PointList newBendPoints = getBendPointListMinusDeletedPoint(diagramFactorLink);
 			
 			String newBendPointList = newBendPoints.toJson().toString();
-			DiagramFactorLinkId linkId = diagramFactorLink.getDiagramLinkageId();
+			DiagramLinkId linkId = diagramFactorLink.getDiagramLinkageId();
 			CommandSetObjectData removeBendPointCommand = new CommandSetObjectData(ObjectType.DIAGRAM_LINK, linkId, DiagramLink.TAG_BEND_POINTS, newBendPointList);
 			getProject().executeCommand(removeBendPointCommand);
 		}

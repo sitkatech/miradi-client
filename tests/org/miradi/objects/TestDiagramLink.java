@@ -32,7 +32,7 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -107,7 +107,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramTargetCell diagramTarget = (DiagramTargetCell) project.createFactorCell(ObjectType.TARGET);
 		
 		FactorLinkId linkId = new FactorLinkId(5);
-		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
+		DiagramLinkId id = new DiagramLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfoForTestIds = new CreateDiagramFactorLinkParameter(
 				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
 		DiagramLink linkage = new DiagramLink(getObjectManager(), id, extraInfoForTestIds);
@@ -129,7 +129,7 @@ public class TestDiagramLink extends ObjectTestCase
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
-		DiagramFactorLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);		
+		DiagramLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);		
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
 		project.executeCommand(addLink);
@@ -143,7 +143,7 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
 	}
 
-	private static DiagramFactorLinkId createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
+	private static DiagramLinkId createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
 		DiagramModel diagramModel = projectForTesting.getDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
@@ -154,7 +154,7 @@ public class TestDiagramLink extends ObjectTestCase
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		projectForTesting.executeCommand(createDiagramLinkCommand);
     	
-    	DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createDiagramLinkCommand.getCreatedId().asInt());
+    	DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createDiagramLinkCommand.getCreatedId().asInt());
     	return diagramFactorLinkId;
 	}
 	

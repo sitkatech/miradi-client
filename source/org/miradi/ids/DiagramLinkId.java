@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.ids;
 
-public class DiagramFactorLinkId extends BaseId
+public class DiagramLinkId extends BaseId
 {
 
-	public DiagramFactorLinkId(int idToUse)
+	public DiagramLinkId(int idToUse)
 	{
 		super(idToUse);
 	}

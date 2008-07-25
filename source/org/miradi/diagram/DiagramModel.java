@@ -50,7 +50,7 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.diagram.cells.ProjectScopeBox;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
@@ -689,7 +689,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
-	public DiagramLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
+	public DiagramLink getDiagramFactorLinkById(DiagramLinkId id) throws Exception
 	{
 		DiagramLink linkage = cellInventory.getFactorLinkById(id);
 		if(linkage == null)
@@ -730,7 +730,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id)) != null);
 	}
 
-	public boolean doesDiagramFactorLinkExist(DiagramFactorLinkId linkId)
+	public boolean doesDiagramFactorLinkExist(DiagramLinkId linkId)
 	{
 		return (cellInventory.getFactorLinkById(linkId) != null);	
 	}
@@ -950,7 +950,7 @@ public class DiagramModel extends DefaultGraphModel
 		if (!DiagramLink.is(diagramLinkRef))
 			throw new Exception("ORef is not of type DiagramLink : ref = " + diagramLinkRef);
 		
-		DiagramFactorLinkId diagramLinkId = new DiagramFactorLinkId(diagramLinkRef.getObjectId().asInt());
+		DiagramLinkId diagramLinkId = new DiagramLinkId(diagramLinkRef.getObjectId().asInt());
 		if (! doesDiagramFactorLinkExist(diagramLinkId))
 			return null;
 		
