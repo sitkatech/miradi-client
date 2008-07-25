@@ -21,13 +21,11 @@ package org.miradi.diagram;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -49,18 +47,16 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		FactorId interventionId = project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
-		FactorCell intervention = model.getFactorCellByWrappedId(interventionId);
-		FactorId factorId = project.createNodeAndAddToDiagram(ObjectType.CAUSE);
-		FactorCell factor = model.getFactorCellByWrappedId(factorId);
+		FactorCell intervention = project.createFactorCell(ObjectType.STRATEGY);
+		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
 
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(intervention.getWrappedFactorRef(), factor.getWrappedFactorRef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 
-		DiagramFactorId fromDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(interventionId).getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = project.getDiagramModel().getFactorCellByWrappedId(factorId).getDiagramFactorId();
+		DiagramFactorId fromDiagramFactorId = intervention.getDiagramFactorId();
+		DiagramFactorId toDiagramFactorId = factor.getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
