@@ -36,13 +36,13 @@ class CellInventory
 	public CellInventory()
 	{
 		diagramLinkToCellMap = new HashMap<DiagramLink, LinkCell>();
-		diagramFactorRefRefToCellMap = new HashMap<ORef, FactorCell>();
+		diagramFactorRefToCellMap = new HashMap<ORef, FactorCell>();
 	}
 	
 	public void clear()
 	{
 		diagramLinkToCellMap.clear();
-		diagramFactorRefRefToCellMap.clear();
+		diagramFactorRefToCellMap.clear();
 	}
 
 	public void addFactor(FactorCell factorCell)
@@ -52,23 +52,23 @@ class CellInventory
 		if(getFactorCellByDiagramFactorRef(factorCell.getDiagramFactorRef()) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		diagramFactorRefRefToCellMap.put(factorCell.getDiagramFactorRef(), factorCell);
+		diagramFactorRefToCellMap.put(factorCell.getDiagramFactorRef(), factorCell);
 	}
 	
 	public Vector getAllFactors()
 	{
-		return new Vector(diagramFactorRefRefToCellMap.values());
+		return new Vector(diagramFactorRefToCellMap.values());
 	}
 	
 	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
 	{
 		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
-		return diagramFactorRefRefToCellMap.get(diagramFactorRef);
+		return diagramFactorRefToCellMap.get(diagramFactorRef);
 	}
 	
 	public FactorCell getFactorByRef(ORef factorRef)
 	{
-		Collection list = diagramFactorRefRefToCellMap.values();
+		Collection list = diagramFactorRefToCellMap.values();
 		for (Iterator iter = list.iterator(); iter.hasNext();)
 		{
 			FactorCell cell = (FactorCell) iter.next();
@@ -81,7 +81,7 @@ class CellInventory
 	
 	public void removeFactor(ORef diagramFactorRef)
 	{
-		diagramFactorRefRefToCellMap.remove(diagramFactorRef);
+		diagramFactorRefToCellMap.remove(diagramFactorRef);
 	}
 	
 	public void addFactorLink(DiagramLink link, LinkCell cell)
@@ -139,5 +139,5 @@ class CellInventory
 	}
 	
 	private HashMap<DiagramLink, LinkCell> diagramLinkToCellMap;
-	private HashMap<ORef, FactorCell> diagramFactorRefRefToCellMap;
+	private HashMap<ORef, FactorCell> diagramFactorRefToCellMap;
 }
