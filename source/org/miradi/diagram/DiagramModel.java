@@ -217,8 +217,13 @@ public class DiagramModel extends DefaultGraphModel
     public void removeDiagramFactor(DiagramFactorId diagramFactorId) throws Exception
     {
     	ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+    	removeDiagramFactor(diagramFactorRef);
+    }
+
+    public void removeDiagramFactor(ORef diagramFactorRef) throws Exception
+    {
 		factorsToDiagramFactors.remove(cellInventory.getFactorCellByDiagramFactorRef(diagramFactorRef));
-    	FactorCell diagramFactorToDelete = getFactorCellById(diagramFactorId);	
+    	FactorCell diagramFactorToDelete = getFactorCellByRef(diagramFactorRef);	
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
 		cellInventory.removeFactor(diagramFactorRef);

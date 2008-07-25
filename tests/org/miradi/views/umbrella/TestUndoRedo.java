@@ -64,8 +64,8 @@ public class TestUndoRedo extends EAMTestCase
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
 		
-		DiagramFactorId diagramFactorId = insertFactor(project);
-		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+		ORef diagramFactorRef = insertFactor(project);
+		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(diagramFactorRef);
 		ORef insertedRef = diagramFactor.getWrappedORef();
 		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedRef, target1Text));
 		
@@ -98,60 +98,59 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoNodeSize() throws Exception
 	{
-		DiagramFactorId insertedId = insertFactor(project);
-		FactorCell node = project.getDiagramModel().getFactorCellById(insertedId);
+		ORef insertedRef = insertFactor(project);
+		FactorCell node = project.getDiagramModel().getFactorCellByRef(insertedRef);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 
 		String newSize1 = EnhancedJsonObject.convertFromDimension(new Dimension(5,10));
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize1));
+		project.executeCommand(new CommandSetObjectData(insertedRef, DiagramFactor.TAG_SIZE, newSize1));
 		project.executeCommand(new CommandEndTransaction());
 
-		String foundSizeAsString = getSizeAsString(insertedId);
+		String foundSizeAsString = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString);
 
 		String newSize2 = EnhancedJsonObject.convertFromDimension(new Dimension(20,30));
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, insertedId, DiagramFactor.TAG_SIZE, newSize2));
+		project.executeCommand(new CommandSetObjectData(insertedRef, DiagramFactor.TAG_SIZE, newSize2));
 		project.executeCommand(new CommandEndTransaction());
 		
-		String foundSizeAsString2 = getSizeAsString(insertedId);
+		String foundSizeAsString2 = getSizeAsString(insertedRef);
 		assertEquals(newSize2, foundSizeAsString2);
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		String foundSizeAsString3 = getSizeAsString(insertedId);
+		String foundSizeAsString3 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString3);
 
 		undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		String foundSizeAsString4 = getSizeAsString(insertedId);
+		String foundSizeAsString4 = getSizeAsString(insertedRef);
 		assertEquals(originalSize, foundSizeAsString4);
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		String foundSizeAsString5 = getSizeAsString(insertedId);
+		String foundSizeAsString5 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString5);
 
 		redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		String foundSizeAsString6 = getSizeAsString(insertedId);
+		String foundSizeAsString6 = getSizeAsString(insertedRef);
 		assertEquals(newSize2, foundSizeAsString6);
 	}
 
-	private String getSizeAsString(DiagramFactorId insertedId)
+	private String getSizeAsString(ORef insertedRef)
 	{
-		ORef oRef3 = new ORef(ObjectType.DIAGRAM_FACTOR, insertedId);
-		DiagramFactor diagramFactor3 = (DiagramFactor) project.findObject(oRef3);
+		DiagramFactor diagramFactor3 = (DiagramFactor) project.findObject(insertedRef);
 		String foundSizeAsString3 = EnhancedJsonObject.convertFromDimension(diagramFactor3.getSize());
 		return foundSizeAsString3;
 	}
 	
-	private DiagramFactorId insertFactor(Project p) throws Exception 
+	private ORef insertFactor(Project p) throws Exception 
 	{
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.CAUSE);
 		p.executeCommand(createModelNodeCommand);
@@ -166,7 +165,7 @@ public class TestUndoRedo extends EAMTestCase
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
 		
-		return diagramFactorId;
+		return createDiagramFactorCommand.getObjectRef();
 	}
 
 	ProjectForTesting project;

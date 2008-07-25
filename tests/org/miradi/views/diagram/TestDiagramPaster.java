@@ -84,7 +84,7 @@ public class TestDiagramPaster extends EAMTestCase
 		project.executeCommand(setFactorAnnotationIds);
 		
 		DiagramModel model = project.getDiagramModel();
-		FactorCell factorCell = model.getFactorCellById(diagramFactor.getDiagramFactorId());
+		FactorCell factorCell = model.getFactorCellByRef(diagramFactor.getRef());
 		EAMGraphCell dataCells[] = {factorCell};
 		
 		ORef diagramObjectRef = model.getDiagramObject().getRef();

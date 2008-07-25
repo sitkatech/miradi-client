@@ -29,9 +29,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
-import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -100,22 +98,22 @@ public class TestTransferableEamList extends EAMTestCase
 		Point node1Location = new Point(1,2);
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project, model);
 		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
-		DiagramFactorId diagramFactorId1 = (DiagramFactorId) createCommand1.getCreatedId();
-		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId1);
+		ORef diagramFactorRef1 = createCommand1.getObjectRef();
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(diagramFactorRef1);
 		diagramFactor1.setLocation(node1Location);
 		
 		Point node2Location = new Point(2,3);
 		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(ObjectType.STRATEGY);
-		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createCommand2.getCreatedId();
-		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, diagramFactorId2);
+		ORef diagramFactorRef2 = createCommand2.getObjectRef();
+		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(diagramFactorRef2);
 		diagramFactor2.setLocation(node2Location);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		DiagramLink diagramLink = project.getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
 		
-		FactorCell factorCell1 = model.getFactorCellById(diagramFactorId1);
-		FactorCell factorCell2 = model.getFactorCellById(diagramFactorId2);
+		FactorCell factorCell1 = model.getFactorCellByRef(diagramFactorRef1);
+		FactorCell factorCell2 = model.getFactorCellByRef(diagramFactorRef2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
 		
 		ORef diagramObjectRef = project.getDiagramObject().getRef();
