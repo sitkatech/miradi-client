@@ -701,12 +701,6 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
-	public FactorId getWrappedId(DiagramFactorId diagramFactorId)
-	{
-		FactorCell wrappedId = cellInventory.getFactorById(diagramFactorId);
-		return (FactorId) factorsToDiagramFactors.get(wrappedId);
-	}
-	
 	public DiagramLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
 	{
 		DiagramLink linkage = cellInventory.getFactorLinkById(id);
