@@ -37,8 +37,8 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		factorLinks = new HashMap();
-		factorCellIds = new HashMap();
+		factorLinks = new HashMap<DiagramLink, LinkCell>();
+		factorCellIds = new HashMap<ORef, FactorCell>();
 	}
 	
 	public void clear()
@@ -54,7 +54,7 @@ class CellInventory
 		if(getFactorCellByDiagramFactorRef(node.getDiagramFactorRef()) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		factorCellIds.put(realId, node);
+		factorCellIds.put(node.getDiagramFactorRef(), node);
 	}
 	
 	public Vector getAllFactors()
@@ -62,15 +62,10 @@ class CellInventory
 		return new Vector(factorCellIds.values());
 	}
 	
-	private FactorCell getFactorById(DiagramFactorId id)
-	{
-		return (FactorCell) factorCellIds.get(id);
-	}
-	
 	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
 	{
 		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
-		return getFactorById(new DiagramFactorId(diagramFactorRef.getObjectId().asInt()));
+		return factorCellIds.get(diagramFactorRef);
 	}
 	
 	public FactorCell getFactorByRef(ORef factorRef)
@@ -86,9 +81,9 @@ class CellInventory
 		return null;
 	}
 	
-	public void removeFactor(DiagramFactorId diagramFactorId)
+	public void removeFactor(ORef diagramFactorRef)
 	{
-		factorCellIds.remove(diagramFactorId);
+		factorCellIds.remove(diagramFactorRef);
 	}
 	
 	public void addFactorLink(DiagramLink link, LinkCell cell)
@@ -137,7 +132,7 @@ class CellInventory
 	
 	public LinkCell getLinkCell(DiagramLink link)
 	{
-		return (LinkCell)factorLinks.get(link);
+		return factorLinks.get(link);
 	}
 	
 	public void removeFactorLink(DiagramLink linkage)
@@ -145,6 +140,6 @@ class CellInventory
 		factorLinks.remove(linkage);
 	}
 	
-	private HashMap factorLinks;
-	private HashMap factorCellIds;
+	private HashMap<DiagramLink, LinkCell> factorLinks;
+	private HashMap<ORef, FactorCell> factorCellIds;
 }
