@@ -88,7 +88,7 @@ class CellInventory
 	
 	public void addFactorLink(DiagramLink link, LinkCell cell)
 	{
-		DiagramLinkId realId = link.getDiagramLinkageId();
+		DiagramLinkId realId = link.getDiagramLinkId();
 		
 		if(getFactorLinkById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -112,7 +112,7 @@ class CellInventory
 		while(iter.hasNext()) 
 		{
 			DiagramLink diagramLink = (DiagramLink) iter.next();
-			if(diagramLink.getDiagramLinkageId().equals(id))
+			if(diagramLink.getDiagramLinkId().equals(id))
 				return diagramLink;
 		}
 		return null;

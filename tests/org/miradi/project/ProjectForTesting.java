@@ -831,7 +831,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void addDiagramLinkToModel(DiagramLink diagramLink) throws Exception 
 	{
-		 addDiagramLinkToModel(diagramLink.getDiagramLinkageId());
+		 addDiagramLinkToModel(diagramLink.getDiagramLinkId());
 	}
 	
 	public void addDiagramLinkToModel(BaseId diagramLinkId) throws Exception

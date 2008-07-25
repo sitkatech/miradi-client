@@ -126,7 +126,7 @@ public class LinkDeletor
 		
 		removeFromGroupBoxDiagramLinkChildren(diagramLink);
 		
-		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkageId());
+		CommandSetObjectData removeDiagramFactorLink = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeDiagramFactorLink);
 
 		Command[] commandsToClearDiagramLink = diagramLink.createCommandsToClear();

@@ -737,7 +737,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramFactorLinkExist(DiagramLink link)
 	{
-		return (cellInventory.getFactorLinkById(link.getDiagramLinkageId()) != null);
+		return (cellInventory.getFactorLinkById(link.getDiagramLinkId()) != null);
 	}
 
 	public Vector getAllFactorCells()

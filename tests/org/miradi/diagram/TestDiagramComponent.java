@@ -81,7 +81,7 @@ public class TestDiagramComponent extends TestCaseWithProject
 		graphLayoutCache.setVisible(visibleNode, true);
 		graphLayoutCache.setVisible(hiddenNode, false);
 		
-		assertFalse("Link still visible?", graphLayoutCache.isVisible(diagramLink.getDiagramLinkageId()));
+		assertFalse("Link still visible?", graphLayoutCache.isVisible(diagramLink.getDiagramLinkId()));
 		assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
 		assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
 		
