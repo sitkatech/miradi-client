@@ -27,7 +27,6 @@ import java.util.Vector;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
@@ -88,10 +87,9 @@ class CellInventory
 	
 	public void addFactorLink(DiagramLink link, LinkCell cell)
 	{
-		DiagramLinkId realId = link.getDiagramLinkId();
-		
-		if(getFactorLinkById(realId) != null)
-			throw new RuntimeException("Can't add over existing id " + realId);
+		ORef diagramLinkRef = link.getRef();	
+		if(getFactorLinkByRef(diagramLinkRef) != null)
+			throw new RuntimeException("Can't add over existing ref " + diagramLinkRef);
 		
 		factorLinks.put(link, cell);
 	}
@@ -106,20 +104,7 @@ class CellInventory
 		return new Vector(factorLinks.keySet());
 	}
 	
-	//FIXME this method will go away. It will be replaced by getFactorLinkByRef
 	//TODO Also rename it to getDiagramLinkByRef() or getDiagramLink()
-	public DiagramLink getFactorLinkById(DiagramLinkId id)
-	{
-		Iterator iter = factorLinks.keySet().iterator();
-		while(iter.hasNext()) 
-		{
-			DiagramLink diagramLink = (DiagramLink) iter.next();
-			if(diagramLink.getDiagramLinkId().equals(id))
-				return diagramLink;
-		}
-		return null;
-	}
-	
 	public DiagramLink getFactorLinkByRef(ORef diagramLinkRef)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
