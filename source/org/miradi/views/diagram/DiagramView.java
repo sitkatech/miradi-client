@@ -873,7 +873,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(!getDiagramModel().doesDiagramFactorLinkExist(factorLinkRef))
 			return ORef.INVALID;
 		
-		DiagramLink link = getDiagramModel().getDiagramFactorLinkByWrappedRef(factorLinkRef);
+		DiagramLink link = getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		if(link == null)
 			return ORef.INVALID;
 		

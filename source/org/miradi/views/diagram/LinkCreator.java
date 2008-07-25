@@ -437,7 +437,7 @@ public class LinkCreator
 				}
 				
 				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-				DiagramLink diagramLink = model.getDiagramFactorLinkByWrappedRef(factorLinkRef);
+				DiagramLink diagramLink = model.getDiagramLinkByWrappedRef(factorLinkRef);
 				allDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
