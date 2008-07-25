@@ -36,13 +36,13 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		factorLinks = new HashMap<DiagramLink, LinkCell>();
+		diagramLinkToCellMap = new HashMap<DiagramLink, LinkCell>();
 		factorCellIds = new HashMap<ORef, FactorCell>();
 	}
 	
 	public void clear()
 	{
-		factorLinks.clear();
+		diagramLinkToCellMap.clear();
 		factorCellIds.clear();
 	}
 
@@ -91,22 +91,22 @@ class CellInventory
 		if(getDiagramLink(diagramLinkRef) != null)
 			throw new RuntimeException("Can't add over existing ref " + diagramLinkRef);
 		
-		factorLinks.put(link, cell);
+		diagramLinkToCellMap.put(link, cell);
 	}
 
 	public Vector getAllFactorLinkCells()
 	{
-		return new Vector(factorLinks.values());
+		return new Vector(diagramLinkToCellMap.values());
 	}
 	
 	public Vector getAllFactorLinks()
 	{
-		return new Vector(factorLinks.keySet());
+		return new Vector(diagramLinkToCellMap.keySet());
 	}
 	
 	public DiagramLink getDiagramLink(ORef diagramLinkRef)
 	{
-		Iterator iter = factorLinks.keySet().iterator();
+		Iterator iter = diagramLinkToCellMap.keySet().iterator();
 		while(iter.hasNext()) 
 		{
 			DiagramLink diagramLink = (DiagramLink) iter.next();
@@ -119,7 +119,7 @@ class CellInventory
 	
 	public DiagramLink getFactorLinkById(FactorLinkId id)
 	{
-		Iterator iter = factorLinks.keySet().iterator();
+		Iterator iter = diagramLinkToCellMap.keySet().iterator();
 		while(iter.hasNext())
 		{
 			DiagramLink diagramLink = (DiagramLink) iter.next();
@@ -131,14 +131,14 @@ class CellInventory
 	
 	public LinkCell getLinkCell(DiagramLink diagramLink)
 	{
-		return factorLinks.get(diagramLink);
+		return diagramLinkToCellMap.get(diagramLink);
 	}
 	
 	public void removeFactorLink(DiagramLink diagramLink)
 	{
-		factorLinks.remove(diagramLink);
+		diagramLinkToCellMap.remove(diagramLink);
 	}
 	
-	private HashMap<DiagramLink, LinkCell> factorLinks;
+	private HashMap<DiagramLink, LinkCell> diagramLinkToCellMap;
 	private HashMap<ORef, FactorCell> factorCellIds;
 }
