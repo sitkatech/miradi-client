@@ -227,10 +227,10 @@ public class DiagramModel extends DefaultGraphModel
     public DiagramLink addLinkToDiagram(DiagramLink diagramFactorLink) throws Exception
     {
     	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
-		FactorCell from = rawGetFactorById(extraInfo.getFromFactorId());
+		FactorCell from = rawGetFactorCellByRef(extraInfo.getFromDiagramFactorRef());
 		if(from == null)
 			EAM.logError("Missing from, DFL=" + diagramFactorLink.getId() + ", From=" + extraInfo.getFromFactorId());
-		FactorCell to = rawGetFactorById(extraInfo.getToFactorId());
+		FactorCell to = rawGetFactorCellByRef(extraInfo.getToDiagramFactorRef());
 		if(to == null)
 			EAM.logError("Missing to, DFL=" + diagramFactorLink.getId() + ", To=" + extraInfo.getToFactorId());
 		FactorLink factorLink = getRawFactorLink(diagramFactorLink); 
@@ -613,7 +613,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public FactorCell getFactorCellById(DiagramFactorId id) throws Exception
 	{
-		FactorCell node = rawGetFactorById(id);
+		FactorCell node = rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id));
 		if(node == null)
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
@@ -652,7 +652,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
-		FactorCell node = rawGetFactorById(diagramFactorId);
+		FactorCell node = rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), diagramFactorId));
 		if(node == null)
 			return false;
 		
@@ -676,11 +676,11 @@ public class DiagramModel extends DefaultGraphModel
 		return factorLink;
 	}
 	
-	private FactorCell rawGetFactorById(DiagramFactorId id)
+	private FactorCell rawGetFactorCellByRef(ORef diagramFactorRef)
 	{
-		return cellInventory.getFactorById(id);
+		return cellInventory.getFactorCellByDiagramFactorRef(diagramFactorRef);
 	}
-
+	
 	private FactorCell rawGetFactorByWrappedId(FactorId id)
 	{
 		return cellInventory.getFactorById(id);
@@ -739,7 +739,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
-		return (rawGetFactorById(id) != null);
+		return (rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id)) != null);
 	}
 
 	public boolean doesDiagramFactorLinkExist(DiagramFactorLinkId linkId)
