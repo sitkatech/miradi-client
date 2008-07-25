@@ -691,7 +691,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramLink getDiagramFactorLinkById(DiagramLinkId id) throws Exception
 	{
-		DiagramLink linkage = cellInventory.getFactorLinkById(id);
+		DiagramLink linkage = cellInventory.getFactorLinkByRef(new ORef(DiagramLink.getObjectType(), id));
 		if(linkage == null)
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
@@ -732,12 +732,12 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean doesDiagramFactorLinkExist(DiagramLinkId linkId)
 	{
-		return (cellInventory.getFactorLinkById(linkId) != null);	
+		return (cellInventory.getFactorLinkByRef(new ORef(DiagramLink.getObjectType(), linkId)) != null);	
 	}
 	
-	public boolean doesDiagramFactorLinkExist(DiagramLink link)
+	public boolean doesDiagramFactorLinkExist(DiagramLink diagramLink)
 	{
-		return (cellInventory.getFactorLinkById(link.getDiagramLinkId()) != null);
+		return (cellInventory.getFactorLinkByRef(diagramLink.getRef()) != null);
 	}
 
 	public Vector getAllFactorCells()
