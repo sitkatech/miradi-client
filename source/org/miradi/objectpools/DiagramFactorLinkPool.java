@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -49,13 +49,13 @@ public class DiagramFactorLinkPool extends EAMNormalObjectPool
 		return new DiagramLink(objectManager, actualId, (CreateDiagramFactorLinkParameter)extraInfo);
 	}
 	
-	public DiagramFactorLinkId[] getallDiagramFactorLinkIds()
+	public DiagramLinkId[] getallDiagramFactorLinkIds()
 	{
 		BaseId[] allBaseIds = getIds();
-		DiagramFactorLinkId[] allDiagramFactorLinkIds = new DiagramFactorLinkId[allBaseIds.length];
+		DiagramLinkId[] allDiagramFactorLinkIds = new DiagramLinkId[allBaseIds.length];
 		for (int i = 0; i < allBaseIds.length; i++)
 		{
-			allDiagramFactorLinkIds[i] = new DiagramFactorLinkId(allBaseIds[i].asInt());
+			allDiagramFactorLinkIds[i] = new DiagramLinkId(allBaseIds[i].asInt());
 		}
 		
 		return allDiagramFactorLinkIds; 

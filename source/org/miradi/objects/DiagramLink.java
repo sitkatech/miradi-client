@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
@@ -48,7 +48,7 @@ public class DiagramLink extends BaseObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
-		super(objectManager, new DiagramFactorLinkId(idToUse.asInt()));
+		super(objectManager, new DiagramLinkId(idToUse.asInt()));
 		
 		setData(TAG_WRAPPED_ID, extraInfo.getFactorLinkId().toString());
 		setData(TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromFactorId().toString());
@@ -57,7 +57,7 @@ public class DiagramLink extends BaseObject
 	
 	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new DiagramFactorLinkId(idToUse), json);
+		super(objectManager, new DiagramLinkId(idToUse), json);
 		
 		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
 		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
@@ -172,9 +172,9 @@ public class DiagramLink extends BaseObject
 		return new DiagramFactorId(toId.getId().asInt());
 	}
 
-	public DiagramFactorLinkId getDiagramLinkageId()
+	public DiagramLinkId getDiagramLinkageId()
 	{
-		return (DiagramFactorLinkId)getId(); 
+		return (DiagramLinkId)getId(); 
 	}
 	
 	public ORefList getGroupedDiagramLinkRefs()

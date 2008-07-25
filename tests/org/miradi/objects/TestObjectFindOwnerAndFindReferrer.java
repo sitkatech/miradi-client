@@ -21,7 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
@@ -308,7 +308,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
 		FactorLinkId linkId = (FactorLinkId)project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
-		DiagramFactorLinkId diagramLinkId = (DiagramFactorLinkId)project.createObjectAndReturnId(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		DiagramLinkId diagramLinkId = (DiagramLinkId)project.createObjectAndReturnId(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramLinkId);
 	}
 	

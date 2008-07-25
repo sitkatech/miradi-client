@@ -25,7 +25,7 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -63,7 +63,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
     	project.executeCommand(createDiagramLinkCommand);
 		
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
-		DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createdId.asInt());
+		DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createdId.asInt());
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);

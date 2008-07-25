@@ -37,7 +37,7 @@ import org.miradi.exceptions.NothingToRedoException;
 import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.CommandExecutedEvent;
@@ -306,7 +306,7 @@ public class TestCommands extends EAMTestCase
     	project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
-		DiagramFactorLinkId diagramFactorLinkId = new DiagramFactorLinkId(createdId.asInt()); 
+		DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createdId.asInt()); 
 		DiagramObject diagramObject = project.getDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);

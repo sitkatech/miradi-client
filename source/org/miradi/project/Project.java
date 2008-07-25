@@ -42,7 +42,7 @@ import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramFactorLinkId;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
@@ -1138,7 +1138,7 @@ public class Project
 	
 	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{
-		DiagramFactorLinkId[] allLinkIds = getDiagramFactorLinkPool().getallDiagramFactorLinkIds();
+		DiagramLinkId[] allLinkIds = getDiagramFactorLinkPool().getallDiagramFactorLinkIds();
 		Vector fromAndToLinksForFactor = new Vector();
 		for (int i = 0; i < allLinkIds.length; i++)
 		{
