@@ -88,7 +88,7 @@ class CellInventory
 	public void addFactorLink(DiagramLink link, LinkCell cell)
 	{
 		ORef diagramLinkRef = link.getRef();	
-		if(getFactorLinkByRef(diagramLinkRef) != null)
+		if(getDiagramLink(diagramLinkRef) != null)
 			throw new RuntimeException("Can't add over existing ref " + diagramLinkRef);
 		
 		factorLinks.put(link, cell);
@@ -104,8 +104,7 @@ class CellInventory
 		return new Vector(factorLinks.keySet());
 	}
 	
-	//TODO Also rename it to getDiagramLinkByRef() or getDiagramLink()
-	public DiagramLink getFactorLinkByRef(ORef diagramLinkRef)
+	public DiagramLink getDiagramLink(ORef diagramLinkRef)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext()) 
