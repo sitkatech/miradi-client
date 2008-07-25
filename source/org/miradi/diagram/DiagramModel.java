@@ -714,7 +714,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
 	{
-		return getDiagramFactorLinkByRef(new ORef(FactorLink.getObjectType(), id));
+		return getDiagramFactorLinkByWrappedRef(new ORef(FactorLink.getObjectType(), id));
 	}
 
 	public boolean doesDiagramFactorLinkExist(ORef factorLinkRef)
