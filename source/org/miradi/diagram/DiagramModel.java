@@ -605,18 +605,16 @@ public class DiagramModel extends DefaultGraphModel
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
 		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
-		int idAsInt = diagramFactorRef.getObjectId().asInt();
-		DiagramFactorId diagramFactorId = new DiagramFactorId(idAsInt);
+		FactorCell factorCell = rawGetFactorCellByRef(diagramFactorRef);
+		if(factorCell == null)
+			throw new Exception("FactorCell doesn't exist, ref: " + diagramFactorRef);
 		
-		return getFactorCellById(diagramFactorId);
+		return factorCell;
 	}
 	
 	private FactorCell getFactorCellById(DiagramFactorId id) throws Exception
-	{
-		FactorCell node = rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id));
-		if(node == null)
-			throw new Exception("Node doesn't exist, id: " + id);
-		return node;
+	{	
+		return getFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id));
 	}
 	
 	public DiagramFactor getDiagramFactor(ORef factorRef)
