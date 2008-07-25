@@ -128,7 +128,7 @@ public class LinkCreator
 			return true;
 		}
 
-		if (! model.containsDiagramFactor(fromDiagramFactor.getDiagramFactorId()) || ! model.containsDiagramFactor(toDiagramFactor.getDiagramFactorId()))
+		if (! model.containsDiagramFactor(fromDiagramFactor.getRef()) || ! model.containsDiagramFactor(toDiagramFactor.getRef()))
 			return true;
 
 		//TODO this method is called twice when inserting a link (that is linking a GB).  Since we are in frozen

@@ -628,24 +628,14 @@ public class DiagramModel extends DefaultGraphModel
 		return factorCell;
 	}
 	
-	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
-	{
-		FactorCell node = rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), diagramFactorId));
-		if(node == null)
-			return false;
-		
-		return true;
-	}
-
 	public boolean containsDiagramFactor(ORef diagramFactorRef)
 	{
 		diagramFactorRef.ensureType(DiagramFactor.getObjectType());
-		int idAsInt = diagramFactorRef.getObjectId().asInt();
-		DiagramFactorId diagramFactorId = new DiagramFactorId(idAsInt);
-		return containsDiagramFactor(diagramFactorId);
+		FactorCell node = rawGetFactorCellByRef(diagramFactorRef);
+
+		return node != null;
 	}
 
-	
 	public FactorLink getRawFactorLink(DiagramLink diagramFactorLink)
 	{
 		FactorLinkId wrappedId = diagramFactorLink.getWrappedId();
