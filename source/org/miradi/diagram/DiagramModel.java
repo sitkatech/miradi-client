@@ -843,8 +843,7 @@ public class DiagramModel extends DefaultGraphModel
 		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupBoxChildrenRefs.get(childIndex);
-			//FIXME dont use asInt()
-			FactorCell childCell = getFactorCellById(new DiagramFactorId(childRef.getObjectId().asInt()));		
+			FactorCell childCell = getFactorCellByRef(childRef);		
 			groupBoxChildrenCells.add(childCell);
 		}
 		return groupBoxChildrenCells;

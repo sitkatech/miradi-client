@@ -35,7 +35,6 @@ import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.renderers.ArrowLineRenderer;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
@@ -188,8 +187,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		listOfGroupBoxesAndChildren.addAll(to.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactor.getObjectType()));
 		for (int i = 0; i < listOfGroupBoxesAndChildren.size(); ++i)
 		{			
-			DiagramFactorId diagramFactorId = new DiagramFactorId( listOfGroupBoxesAndChildren.get(i).asInt());
-			FactorCell factorCell = diagram.getDiagramModel().getFactorCellById(diagramFactorId);
+			FactorCell factorCell = diagram.getDiagramModel().getFactorCellByRef(listOfGroupBoxesAndChildren.getRef(i));
 			if (diagram.isCellSelected(factorCell))
 					return true;
 		}
