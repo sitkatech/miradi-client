@@ -424,19 +424,18 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramChainObject chainObject = getChainBuilder();
 		return chainObject.buildDirectlyLinkedUpstreamChainAndGetFactors(this, startingFactor);
 	}
-	
-	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
+		
+	public void moveFactors(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception
 	{
-		moveFactorsWithoutNotification(deltaX, deltaY, ids);
-		factorsWereMoved(ids);
+		moveFactorsWithoutNotification(deltaX, deltaY, diagramFactorRefs);
+		factorsWereMoved(diagramFactorRefs);
 	}
 
-	public void moveFactorsWithoutNotification(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
+	public void moveFactorsWithoutNotification(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception
 	{
-		for(int i = 0; i < ids.length; ++i)
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactorId id = ids[i];
-			FactorCell factorToMove = getFactorCellById(id);
+			FactorCell factorToMove = getFactorCellByRef(diagramFactorRefs.get(i));
 			Point oldLocation = factorToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
 			Point newSnappedLocation = getProject().getSnapped(newLocation);
@@ -446,6 +445,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
+	//FIXME this method needs to be removed
 	public void factorsWereMoved(DiagramFactorId[] ids)
 	{
 		for(int i=0; i < ids.length; ++i)
@@ -453,6 +453,22 @@ public class DiagramModel extends DefaultGraphModel
 			try
 			{
 				FactorCell factor = getFactorCellById(ids[i]);
+				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+	
+	public void factorsWereMoved(ORefList diagramFactorRefs)
+	{
+		for(int index = 0; index < diagramFactorRefs.size(); ++index)
+		{
+			try
+			{
+				FactorCell factor = getFactorCellByRef(diagramFactorRefs.get(index));
 				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)

@@ -36,9 +36,9 @@ import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.project.Project;
@@ -137,19 +137,21 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		getProject().recordCommand(new CommandBeginTransaction());
 		try
 		{
-			Vector selectedFactorIds = new Vector();
+			ORefList diagramFactorRefs = new ORefList();
 			for(int i = 0; i < selectedCells.length; ++i)
 			{
 				EAMGraphCell selectedCell = (EAMGraphCell)selectedCells[i];
 				if(selectedCell.isFactor())
-					selectedFactorIds.add(((FactorCell)selectedCells[i]).getDiagramFactorId());
+				{
+					FactorCell factorCell = (FactorCell)selectedCells[i];
+					diagramFactorRefs.add(factorCell.getDiagramFactorRef());
+				}
 			}
 			
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
-			DiagramFactorId[] selectedFactorIdsArray = (DiagramFactorId[]) selectedFactorIds.toArray(new DiagramFactorId[0]);
-			factorMoveHandler.factorsWereMovedOrResized(selectedFactorIdsArray);
+			factorMoveHandler.factorsWereMovedOrResized(diagramFactorRefs);
 			moveBendPoints();
-			factorMoveHandler.ensureLevelSegementToFirstBendPoint(selectedFactorIdsArray);
+			factorMoveHandler.ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
 			
 			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}

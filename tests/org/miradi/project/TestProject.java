@@ -51,6 +51,7 @@ import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objects.BaseObject;
@@ -348,8 +349,8 @@ public class TestProject extends EAMTestCase
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
 
-		DiagramFactorId[] noNodesMoved = new DiagramFactorId[1];
-		noNodesMoved[0] = node1.getDiagramFactorId();
+		ORefList noNodesMoved = new ORefList();
+		noNodesMoved.add(node1.getDiagramFactorRef());
 	
 		project.recordCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
@@ -379,13 +380,12 @@ public class TestProject extends EAMTestCase
 		Point node2Location = new Point(20,30);
 		node2.setLocation(node2Location);
 		
-		DiagramFactorId[] ids = new DiagramFactorId[2];
-		ids[0] = node1.getDiagramFactorId();
-		ids[1] = node2.getDiagramFactorId();
-		
+		ORefList diagramFactorRefs = new ORefList();
+		diagramFactorRefs.add(node1.getDiagramFactorRef());
+		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -424,12 +424,12 @@ public class TestProject extends EAMTestCase
 		diagramFactor2.setLocation(node2.getPreviousLocation());
 
 		
-		DiagramFactorId[] ids = new DiagramFactorId[2];
-		ids[0] = node1.getDiagramFactorId();
-		ids[1] = node2.getDiagramFactorId();
+		ORefList diagramFactorRefs = new ORefList();
+		diagramFactorRefs.add(node1.getDiagramFactorRef());
+		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
@@ -499,14 +499,14 @@ public class TestProject extends EAMTestCase
 		diagramFactorNotMovedOrResized.setLocation(nodeNotMovedOrResized.getPreviousLocation());
 		diagramFactorNotMovedOrResized.setSize(nodeNotMovedOrResized.getPreviousSize());
 		
-		DiagramFactorId[] ids = new DiagramFactorId[4];
-		ids[0] = nodeResizedAndMoved.getDiagramFactorId();
-		ids[1] = nodeMovedOnly.getDiagramFactorId();
-		ids[2] = nodeResizedOnly.getDiagramFactorId();
-		ids[3] = nodeNotMovedOrResized.getDiagramFactorId();
+		ORefList diagramFactorRefs = new ORefList();
+		diagramFactorRefs.add(nodeResizedAndMoved.getDiagramFactorRef());
+		diagramFactorRefs.add(nodeMovedOnly.getDiagramFactorRef());
+		diagramFactorRefs.add(nodeResizedOnly.getDiagramFactorRef());
+		diagramFactorRefs.add(nodeNotMovedOrResized.getDiagramFactorRef());
 
 		project.recordCommand(new CommandBeginTransaction());
-		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(ids);
+		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.recordCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction

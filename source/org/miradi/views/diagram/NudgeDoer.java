@@ -30,8 +30,8 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.FactorMoveHandler;
 import org.miradi.utils.PointList;
 
@@ -112,10 +112,10 @@ public class NudgeDoer extends LocationDoer
 		diagramComponent.selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren);
 		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
 		
-		DiagramFactorId[] ids = new DiagramFactorId[factorCells.length];
+		ORefList diagramFactorRefs = new ORefList();
 		for(int i = 0; i < factorCells.length; ++i)
 		{
-			ids[i] = factorCells[i].getDiagramFactorId();
+			diagramFactorRefs.add(factorCells[i].getDiagramFactorRef());
 			if (!isFutureCellLocationInsideDiagramBounds(factorCells[i].getLocation(), deltaX, deltaY))
 				return;	
 			
@@ -129,11 +129,11 @@ public class NudgeDoer extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			diagramPanel.moveFactors(deltaX, deltaY, ids);
+			diagramPanel.moveFactors(deltaX, deltaY, diagramFactorRefs);
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
-			factorMoveHandler.factorsWereMovedOrResized(ids);
+			factorMoveHandler.factorsWereMovedOrResized(diagramFactorRefs);
 			moveBendPoints(allLinkCells.toArray(new LinkCell[0]), deltaY, deltaX);
-			factorMoveHandler.ensureLevelSegementToFirstBendPoint(ids);
+			factorMoveHandler.ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
 		}
 		catch (Exception e)
 		{

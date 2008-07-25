@@ -32,10 +32,10 @@ import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -125,10 +125,10 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	{
 		return getDiagramComponent().getOnlySelectedCells();
 	}
-	
-	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
+		
+	public void moveFactors(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception 
 	{
-		getDiagramModel().moveFactors(deltaX, deltaY, ids);
+		getDiagramModel().moveFactors(deltaX, deltaY, diagramFactorRefs);
 	}
 
 	public DiagramModel getDiagramModel()
