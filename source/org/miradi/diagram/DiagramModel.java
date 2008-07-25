@@ -728,11 +728,6 @@ public class DiagramModel extends DefaultGraphModel
 		return (cellInventory.getDiagramLink(new ORef(DiagramLink.getObjectType(), linkId)) != null);	
 	}
 	
-	public boolean doesDiagramFactorLinkExist(DiagramLink diagramLink)
-	{
-		return (cellInventory.getDiagramLink(diagramLink.getRef()) != null);
-	}
-
 	public Vector getAllFactorCells()
 	{
 		return cellInventory.getAllFactors();
