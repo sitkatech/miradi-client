@@ -47,14 +47,14 @@ class CellInventory
 		factorCellIds.clear();
 	}
 
-	public void addFactor(FactorCell node)
+	public void addFactor(FactorCell factorCell)
 	{
-		DiagramFactorId realId = node.getDiagramFactorId();
+		DiagramFactorId realId = factorCell.getDiagramFactorId();
 		
-		if(getFactorCellByDiagramFactorRef(node.getDiagramFactorRef()) != null)
+		if(getFactorCellByDiagramFactorRef(factorCell.getDiagramFactorRef()) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		factorCellIds.put(node.getDiagramFactorRef(), node);
+		factorCellIds.put(factorCell.getDiagramFactorRef(), factorCell);
 	}
 	
 	public Vector getAllFactors()
