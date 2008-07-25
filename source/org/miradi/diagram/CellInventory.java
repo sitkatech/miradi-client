@@ -27,7 +27,6 @@ import java.util.Vector;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -117,13 +116,13 @@ class CellInventory
 		return null;
 	}
 	
-	public DiagramLink getFactorLinkById(FactorLinkId id)
+	public DiagramLink getFactorLinkByRef(ORef factorLinkRef)
 	{
 		Iterator iter = diagramLinkToCellMap.keySet().iterator();
 		while(iter.hasNext())
 		{
 			DiagramLink diagramLink = (DiagramLink) iter.next();
-			if(diagramLink.getWrappedId().equals(id))
+			if(diagramLink.getWrappedRef().equals(factorLinkRef))
 				return diagramLink;
 		}
 		return null;
