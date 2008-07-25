@@ -611,7 +611,7 @@ public class DiagramModel extends DefaultGraphModel
 		return getFactorCellById(diagramFactorId);
 	}
 	
-	public FactorCell getFactorCellById(DiagramFactorId id) throws Exception
+	private FactorCell getFactorCellById(DiagramFactorId id) throws Exception
 	{
 		FactorCell node = rawGetFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id));
 		if(node == null)
