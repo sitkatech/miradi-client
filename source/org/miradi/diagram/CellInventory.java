@@ -111,9 +111,9 @@ class CellInventory
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext()) 
 		{
-			DiagramLink link = (DiagramLink) iter.next();
-			if(link.getDiagramLinkageId().equals(id))
-				return link;
+			DiagramLink diagramLink = (DiagramLink) iter.next();
+			if(diagramLink.getDiagramLinkageId().equals(id))
+				return diagramLink;
 		}
 		return null;
 	}
@@ -123,21 +123,21 @@ class CellInventory
 		Iterator iter = factorLinks.keySet().iterator();
 		while(iter.hasNext())
 		{
-			DiagramLink link = (DiagramLink) iter.next();
-			if(link.getWrappedId().equals(id))
-				return link;
+			DiagramLink diagramLink = (DiagramLink) iter.next();
+			if(diagramLink.getWrappedId().equals(id))
+				return diagramLink;
 		}
 		return null;
 	}
 	
-	public LinkCell getLinkCell(DiagramLink link)
+	public LinkCell getLinkCell(DiagramLink diagramLink)
 	{
-		return factorLinks.get(link);
+		return factorLinks.get(diagramLink);
 	}
 	
-	public void removeFactorLink(DiagramLink linkage)
+	public void removeFactorLink(DiagramLink diagramLink)
 	{
-		factorLinks.remove(linkage);
+		factorLinks.remove(diagramLink);
 	}
 	
 	private HashMap<DiagramLink, LinkCell> factorLinks;
