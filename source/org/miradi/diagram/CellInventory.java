@@ -106,6 +106,8 @@ class CellInventory
 		return new Vector(factorLinks.keySet());
 	}
 	
+	//FIXME this method will go away. It will be replaced by getFactorLinkByRef
+	//TODO Also rename it to getDiagramLinkByRef() or getDiagramLink()
 	public DiagramLink getFactorLinkById(DiagramLinkId id)
 	{
 		Iterator iter = factorLinks.keySet().iterator();
@@ -115,6 +117,19 @@ class CellInventory
 			if(diagramLink.getDiagramLinkId().equals(id))
 				return diagramLink;
 		}
+		return null;
+	}
+	
+	public DiagramLink getFactorLinkByRef(ORef diagramLinkRef)
+	{
+		Iterator iter = factorLinks.keySet().iterator();
+		while(iter.hasNext()) 
+		{
+			DiagramLink diagramLink = (DiagramLink) iter.next();
+			if(diagramLink.getRef().equals(diagramLinkRef))
+				return diagramLink;
+		}
+		
 		return null;
 	}
 	
