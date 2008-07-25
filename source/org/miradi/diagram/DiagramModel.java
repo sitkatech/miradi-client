@@ -697,7 +697,7 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramLink;
 	}
 
-	public DiagramLink getDiagramFactorLinkByWrappedRef(ORef factorLinkRef) throws Exception
+	public DiagramLink getDiagramLinkByWrappedRef(ORef factorLinkRef) throws Exception
 	{
 		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);
 		if(diagramLink == null)
@@ -708,7 +708,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
 	{
-		return getDiagramFactorLinkByWrappedRef(new ORef(FactorLink.getObjectType(), id));
+		return getDiagramLinkByWrappedRef(new ORef(FactorLink.getObjectType(), id));
 	}
 
 	public boolean doesDiagramFactorLinkExist(ORef factorLinkRef)
