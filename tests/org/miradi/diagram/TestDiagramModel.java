@@ -32,6 +32,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -423,7 +424,10 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.factorsWereMoved(new DiagramFactorId[] {node2.getDiagramFactorId(), node3.getDiagramFactorId()});
+		ORefList diagramFactorRefs = new ORefList();
+		diagramFactorRefs.add(node2.getDiagramFactorRef());
+		diagramFactorRefs.add(node3.getDiagramFactorRef());
+		model.factorsWereMoved(diagramFactorRefs);
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);
