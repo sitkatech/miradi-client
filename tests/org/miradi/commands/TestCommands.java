@@ -201,17 +201,17 @@ public class TestCommands extends EAMTestCase
 		Point moveTo = new Point(25, -68);
 		Point zeroZero = new Point(0, 0);
 
-		DiagramFactorId targetId = insertTarget();
-		DiagramFactor target = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		ORef diagramFactorRef = insertTarget();
+		DiagramFactor target = (DiagramFactor) project.findObject(diagramFactorRef);
 		String newLocation = EnhancedJsonObject.convertFromPoint(moveTo);
 		CommandSetObjectData moveDiagramFactor1 = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, target.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation);
 		project.executeCommand(moveDiagramFactor1);
 		
-		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(diagramFactorRef);
 		assertEquals("didn't set location?", moveTo, diagramFactor1.getLocation());
 		//undo move
 		project.undo();
-		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(ObjectType.DIAGRAM_FACTOR, targetId);
+		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(diagramFactorRef);
 		assertEquals("didn't restore original location?", zeroZero, diagramFactor2.getLocation());
 
 		
@@ -263,10 +263,10 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandNodeResized() throws Exception
 	{
-		DiagramFactorId id = insertTarget();
+		ORef diagramFactorRef = insertTarget();
 		String defaultSize = EnhancedJsonObject.convertFromDimension(new Dimension(120, 60));
 		DiagramModel diagramModel = project.getDiagramModel();
-		FactorCell node = diagramModel.getFactorCellById(id);
+		FactorCell node = diagramModel.getFactorCellByRef(diagramFactorRef);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 		assertEquals(defaultSize, originalSize);
 		
@@ -281,7 +281,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't change to new size?", newSize, EnhancedJsonObject.convertFromDimension(diagramFactor.getSize()));
 
 		project.undo();
-		Dimension size = diagramModel.getFactorCellById(id).getSize();
+		Dimension size = diagramModel.getFactorCellByRef(diagramFactorRef).getSize();
 		String sizeAsString = EnhancedJsonObject.convertFromDimension(size);
 		assertEquals("didn't undo?", originalSize, sizeAsString);
 	}
@@ -366,11 +366,11 @@ public class TestCommands extends EAMTestCase
 
 	public void testRedo() throws Exception
 	{
-		DiagramFactorId insertedId = insertTarget();
+		ORef targetRef = insertTarget();
 		project.undo();
 		project.redo();
 		
-		FactorCell inserted = project.getDiagramModel().getFactorCellById(insertedId);
+		FactorCell inserted = project.getDiagramModel().getFactorCellByRef(targetRef);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}
@@ -419,9 +419,9 @@ public class TestCommands extends EAMTestCase
 		project.removeCommandExecutedListener(undoListener);
 	}
 	
-	private DiagramFactorId insertTarget() throws Exception
+	private ORef insertTarget() throws Exception
 	{
-		return insertNode(ObjectType.TARGET).getDiagramFactorId();
+		return insertNode(ObjectType.TARGET).getRef();
 	}
 	
 	private DiagramFactor insertContributingFactor() throws Exception
