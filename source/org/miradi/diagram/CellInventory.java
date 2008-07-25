@@ -73,8 +73,6 @@ class CellInventory
 		return getFactorById(new DiagramFactorId(diagramFactorRef.getObjectId().asInt()));
 	}
 	
-	//NOTE this is a duplicate of the getFactorById, but its using ref.  The other method
-	//will go away.
 	public FactorCell getFactorByRef(ORef factorRef)
 	{
 		Collection list = factorCellIds.values();
