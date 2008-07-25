@@ -26,7 +26,6 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
@@ -38,8 +37,6 @@ import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.views.umbrella.Redo;
-import org.miradi.views.umbrella.Undo;
 
 public class TestUndoRedo extends EAMTestCase 
 {
@@ -75,8 +72,7 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getFactorCount());
 		
-		FactorId factorId = new FactorId(insertedRef.getObjectId().asInt());
-		project.getDiagramModel().getFactorCellByWrappedId(factorId);
+		project.getDiagramModel().getFactorCellByWrappedRef(insertedRef);
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();

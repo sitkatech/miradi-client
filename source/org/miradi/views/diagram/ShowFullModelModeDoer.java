@@ -29,7 +29,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -106,8 +105,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
-			FactorId nodeId = new FactorId(factorORefs.get(i).getObjectId().asInt());
-			FactorCell diagramFactor = diagramModel.getFactorCellByWrappedId(nodeId);
+			FactorCell diagramFactor = diagramModel.getFactorCellByWrappedRef(factorORefs.get(i));
 			if (glc.isVisible(diagramFactor))
 				diagramComponent.addSelectionCell(diagramFactor);
 		}

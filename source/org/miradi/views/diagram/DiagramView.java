@@ -135,7 +135,6 @@ import org.miradi.dialogs.slideshow.SlideListManagementPanel;
 import org.miradi.dialogs.slideshow.SlideShowDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -712,8 +711,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		DiagramModel diagramModel = getDiagramModel();
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
-			FactorId nodeId = new FactorId(factorORefs.get(i).getObjectId().asInt());
-			DiagramFactor diagramFactor = diagramModel.getFactorCellByWrappedId(nodeId).getDiagramFactor();
+			DiagramFactor diagramFactor = diagramModel.getFactorCellByWrappedRef(factorORefs.get(i)).getDiagramFactor();
 			FactorSet possibleDraftStrategies = diagramModel.getDirectlyLinkedUpstreamNodes(diagramFactor);
 			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())

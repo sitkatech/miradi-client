@@ -813,11 +813,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 		return diagramFactor.getWrappedId();
 	}
-
+	
 	public FactorCell createFactorCell(int objectType) throws Exception
 	{
-		FactorId insertedId = createNodeAndAddToDiagram(objectType);
-		return getDiagramModel().getFactorCellByWrappedId(insertedId);
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(objectType);
+		return getDiagramModel().getFactorCellByWrappedRef(diagramFactor.getWrappedORef());
 	}
 	
 	public LinkCell createLinkCell() throws Exception
