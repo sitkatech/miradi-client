@@ -47,13 +47,12 @@ public class TestDelete extends EAMTestCase
 		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		DiagramFactor intervention = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, interventionId));
 		
-		DiagramFactorId causeId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
-		DiagramFactor cause = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, causeId));
+		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		LinkCreator linkCreator = new LinkCreator(project);
 		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), intervention, cause);
 		DiagramLink diagramLink = model.getDiagramFactorLinkbyWrappedId(factorLinkId);
 		
-		assertTrue("link not found?", model.areLinked(interventionId, causeId));
+		assertTrue("link not found?", model.areLinked(interventionId, cause.getDiagramFactorId()));
 
 		DiagramObject diagramObject1 = project.getDiagramObject();
 		CommandSetObjectData removeLink = CommandSetObjectData.createRemoveIdCommand(diagramObject1, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
@@ -61,9 +60,9 @@ public class TestDelete extends EAMTestCase
 		
 	
 		DiagramObject diagramObject2 = project.getDiagramObject();
-		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject2, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, causeId);
+		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject2, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, cause.getDiagramFactorId());
 		project.executeCommand(removeFactor);
-		assertFalse("node not deleted?", model.doesDiagramFactorExist(causeId));
+		assertFalse("node not deleted?", model.doesDiagramFactorExist(cause.getRef()));
 		
 		project.close();
 	}
