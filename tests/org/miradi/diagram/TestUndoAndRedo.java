@@ -23,11 +23,9 @@ package org.miradi.diagram;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandJump;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramFactorLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
@@ -54,10 +52,10 @@ public class TestUndoAndRedo extends EAMTestCase
 		project = new ProjectForTesting(getName());
 
 		DiagramFactor fromDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.CAUSE); 
-		fromId = fromDiagramFactor.getWrappedId();
+		fromFactorRef = fromDiagramFactor.getWrappedORef();
 		
 		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
-		toId = toDiagramFactor.getWrappedId();
+		toFactorRef = toDiagramFactor.getWrappedORef();
 		LinkCreator linkCreator = new LinkCreator(project);
 		FactorLinkId factorLinkId= linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
 		DiagramLink diagramLink = project.getDiagramModel().getDiagramFactorLinkbyWrappedId(factorLinkId);
@@ -74,7 +72,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testSingleUndo() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertTrue("no link?", model.areLinked(model.getDiagramFactorIdFromWrappedId(fromId), model.getDiagramFactorIdFromWrappedId(toId)));
+		assertTrue("no link?", model.areLinked(model.getDiagramFactorIdFromWrappedRef(fromFactorRef), model.getDiagramFactorIdFromWrappedRef(toFactorRef)));
 		
 		// undo add linkage to diagram
 		project.undo();
@@ -82,7 +80,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo create model linkage
 		project.undo();
 		
-		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorIdFromWrappedId(fromId), model.getDiagramFactorIdFromWrappedId(toId)));
+		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorIdFromWrappedRef(fromFactorRef), model.getDiagramFactorIdFromWrappedRef(toFactorRef)));
 	}
 	
 	public void testMultipleUndo() throws Exception
@@ -98,7 +96,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo create model linkage
 		project.undo();
 		
-		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorIdFromWrappedId(fromId), model.getDiagramFactorIdFromWrappedId(toId)));
+		assertFalse("didn't undo?", model.areDiagramFactorsLinked(model.getDiagramFactorIdFromWrappedRef(fromFactorRef), model.getDiagramFactorIdFromWrappedRef(toFactorRef)));
 		verifyLinkageNotPresent(linkId);
 
 		// undo diagram node add
@@ -110,7 +108,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo model node create
 		project.undo();
 		
-		verifyNodeNotPresent(toId);
+		verifyNodeNotPresent(toFactorRef);
 
 		// undo diagram node add
 		project.undo();
@@ -121,7 +119,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		// undo model node create
 		project.undo();
 		
-		verifyNodeNotPresent(fromId);
+		verifyNodeNotPresent(fromFactorRef);
 
 		try
 		{
@@ -221,12 +219,12 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyNodeNotPresent(FactorId cellId)
+	private void verifyNodeNotPresent(ORef factorRef)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
-		assertNull("Found the deleted factor?", model.getFactorCellByWrappedId(cellId));
+		assertNull("Found the deleted factor?", model.getFactorCellByWrappedRef(factorRef));
 		EAM.setLogToConsole();
 	}
 	
@@ -267,7 +265,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	}
 	
 	ProjectForTesting project;
-	FactorId fromId;
-	FactorId toId;
+	ORef fromFactorRef;
+	ORef toFactorRef;
 	DiagramFactorLinkId linkId;
 }
