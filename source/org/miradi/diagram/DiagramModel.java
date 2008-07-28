@@ -667,11 +667,6 @@ public class DiagramModel extends DefaultGraphModel
 		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
-	public DiagramLink getDiagramLinkById(DiagramLinkId id) throws Exception
-	{
-		return getDiagramLinkByRef(new ORef(DiagramLink.getObjectType(), id));
-	}
-	
 	public DiagramLink getDiagramLinkByRef(ORef diagramLinkRef) throws Exception
 	{
 		DiagramLink diagramLink = cellInventory.getDiagramLink(diagramLinkRef);
