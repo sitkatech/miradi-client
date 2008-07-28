@@ -175,8 +175,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef strategyRef = getProject().createObject(Strategy.getObjectType(), new BaseId(strategyId));
 			importField(strategyNode, NAME, strategyRef, Strategy.TAG_LABEL);
 			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
-			importCodeField(strategyNode, LEVERAGE, strategyRef, Strategy.TAG_IMPACT_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
-			importCodeField(strategyNode, FEASABILITY, strategyRef, Strategy.TAG_FEASIBILITY_RATING, getCodeMapHelper().getConProToMiradiRatingMap());
 			
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
