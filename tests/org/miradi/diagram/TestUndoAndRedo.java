@@ -96,7 +96,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.undo();
 		
 		assertFalse("didn't undo?", model.areDiagramFactorsLinked(model.getDiagramFactorIdFromWrappedRef(fromFactorRef), model.getDiagramFactorIdFromWrappedRef(toFactorRef)));
-		verifyLinkageNotPresent(linkId);
+		verifyLinkageNotPresent(getDiagramLinkId());
 
 		// undo diagram node add
 		project.undo();
@@ -154,7 +154,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		verifyFactorCellNotPresent(diagramFactorRef);
 		project.undo();
 		
-		verifyLinkageNotPresent(linkId);
+		verifyLinkageNotPresent(getDiagramLinkId());
 	
 	}
 	
@@ -262,6 +262,11 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.executeCommand(addDiagramFactor);
 		
 		return diagramFactor;
+	}
+
+	private DiagramLinkId getDiagramLinkId()
+	{
+		return linkId;
 	}
 	
 	ProjectForTesting project;
