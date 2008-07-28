@@ -203,7 +203,7 @@ public class Target extends Factor
 		return list;
 	}
 	
-	public String getBasicTargetStatus()
+	private String getBasicTargetStatus()
 	{
 		return targetStatus.get();
 	}
