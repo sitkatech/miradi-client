@@ -37,7 +37,6 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
@@ -872,14 +871,13 @@ public class TestProject extends EAMTestCase
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
-		BaseId	createdRawDiagramFactorLinkId = project.createObjectAndReturnId(ObjectType.DIAGRAM_LINK, extraInfo);
-		DiagramLinkId createdDiagramFactorLinkId = new DiagramLinkId(createdRawDiagramFactorLinkId.asInt());
+		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), extraInfo);
 		
 		DiagramObject diagramObject = project.getDiagramObject();
-		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 
-		return project.getDiagramModel().getDiagramLinkById(createdDiagramFactorLinkId);
+		return project.getDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 	}
 
 	public DiagramFactor createNodeAndAddToDiagram(Project projectToUse, DiagramObject diagramObject, int nodeType) throws Exception

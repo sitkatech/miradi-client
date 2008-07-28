@@ -129,21 +129,21 @@ public class TestDiagramLink extends ObjectTestCase
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		
-		DiagramLinkId createdDiagramFactorLinkId = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);		
+		ORef diagramLinkRef = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);
 		DiagramObject diagramObject = project.getDiagramObject();
-		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramFactorLinkId);
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 		
-		assertNotNull("link not in model?", model.getDiagramLinkById(createdDiagramFactorLinkId));
+		assertNotNull("link not in model?", model.getDiagramLinkByRef(diagramLinkRef));
 		
 		ProjectServer server = project.getTestDatabase();
-		DiagramLink dfl = project.getDiagramModel().getDiagramLinkById(createdDiagramFactorLinkId);
+		DiagramLink dfl = project.getDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
 	}
 
-	private static DiagramLinkId createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
+	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
 		DiagramModel diagramModel = projectForTesting.getDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
@@ -154,8 +154,7 @@ public class TestDiagramLink extends ObjectTestCase
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		projectForTesting.executeCommand(createDiagramLinkCommand);
     	
-    	DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createDiagramLinkCommand.getCreatedId().asInt());
-    	return diagramFactorLinkId;
+    	return createDiagramLinkCommand.getObjectRef();
 	}
 	
 	public void testBendPointAlreadyExists() throws Exception
