@@ -44,6 +44,7 @@ import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.icons.MeasurementIcon;
 import org.miradi.icons.MethodIcon;
@@ -154,6 +155,12 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			threatReductionResultRenderer.setOpenIcon(new ThreatReductionResultIcon());
 			threatReductionResultRenderer.setLeafIcon(new ThreatReductionResultIcon());
 			threatReductionResultRenderer.setFont(getPlainFont());
+			
+			intermediateResultsRenderer = new DefaultTreeCellRenderer();
+			intermediateResultsRenderer.setClosedIcon(new IntermediateResultIcon());
+			intermediateResultsRenderer.setOpenIcon(new IntermediateResultIcon());
+			intermediateResultsRenderer.setLeafIcon(new IntermediateResultIcon());
+			intermediateResultsRenderer.setFont(getPlainFont());
 
 			strategyRenderer = new DefaultTreeCellRenderer();
 			strategyRenderer.setClosedIcon(new StrategyIcon());
@@ -249,6 +256,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 				renderer = directThreatRenderer;
 			else if(node.getType() == ObjectType.THREAT_REDUCTION_RESULT)
 				renderer = threatReductionResultRenderer;
+			else if(node.getType() == ObjectType.INTERMEDIATE_RESULT)
+				renderer = intermediateResultsRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.STRATEGY)
@@ -319,6 +328,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		private DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
 		private DefaultTreeCellRenderer directThreatRenderer;
 		private DefaultTreeCellRenderer threatReductionResultRenderer;
+		private DefaultTreeCellRenderer intermediateResultsRenderer;
 		private	DefaultTreeCellRenderer measurementRenderer;
 	}
 

@@ -51,6 +51,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 
 		addMissingUpstreamDirectThreats(diagram);
 		addMissingUpstreamThreatReductionResults(diagram);
+		addMissingUpstreamIntermediateResults(diagram);
 		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);
 		addMissingUpstreamIndicators(diagram);

@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class IntermediateResult extends Factor
@@ -101,6 +102,16 @@ public class IntermediateResult extends Factor
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
+	}
+	
+	public static IntermediateResult find(ObjectManager objectManager, ORef intermediateResultRef)
+	{
+		return (IntermediateResult) objectManager.findObject(intermediateResultRef);
+	}
+	
+	public static IntermediateResult find(Project project, ORef intermediateResultRef)
+	{
+		return find(project.getObjectManager(), intermediateResultRef);
 	}
 	
 	public static final String OBJECT_NAME = "IntermediateResult";
