@@ -22,7 +22,6 @@ package org.miradi.diagram;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -103,8 +102,6 @@ public class DiagramModel extends DefaultGraphModel
 		projectScopeBox = new ProjectScopeBox(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
 		insertCellIntoGraph(projectScopeBox);
-		
-		factorsToDiagramFactors = new HashMap();
 	}
 
 	public ProjectScopeBox getProjectScopeBox()
@@ -132,7 +129,6 @@ public class DiagramModel extends DefaultGraphModel
 		Factor factor = Factor.findFactor(project, diagramFactor.getWrappedORef());
 		FactorCell factorCell = createFactorCell(diagramFactor, factor);
 		addFactorCellToModel(factorCell);
-		factorsToDiagramFactors.put(diagramFactor.getWrappedId(), diagramFactor.getDiagramFactorId());
 	}
 
 	private FactorCell createFactorCell(DiagramFactor diagramFactor, Factor factor)
@@ -214,7 +210,6 @@ public class DiagramModel extends DefaultGraphModel
 
     public void removeDiagramFactor(ORef diagramFactorRef) throws Exception
     {
-		factorsToDiagramFactors.remove(cellInventory.getFactorCellByDiagramFactorRef(diagramFactorRef));
     	FactorCell diagramFactorToDelete = getFactorCellByRef(diagramFactorRef);	
     	Object[] cells = new Object[]{diagramFactorToDelete};
 		remove(cells);
@@ -1004,7 +999,6 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private DiagramObject diagramContents;
 	
-	private HashMap factorsToDiagramFactors;
 	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
 }
