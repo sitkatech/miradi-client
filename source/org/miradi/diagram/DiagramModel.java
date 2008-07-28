@@ -451,8 +451,8 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			try
 			{
-				FactorCell factor = getFactorCellByRef(diagramFactorRefs.get(index));
-				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
+				FactorCell factorCell = getFactorCellByRef(diagramFactorRefs.get(index));
+				notifyListeners(createDiagramModelEvent(factorCell), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)
 			{
