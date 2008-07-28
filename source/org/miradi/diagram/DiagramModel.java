@@ -49,9 +49,7 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.diagram.cells.ProjectScopeBox;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -616,15 +614,6 @@ public class DiagramModel extends DefaultGraphModel
 	public LinkCell getDiagramFactorLink(DiagramLink diagramFactorLink)
 	{
 		return cellInventory.getLinkCell(diagramFactorLink);
-	}
-	
-	public DiagramFactorId getDiagramFactorIdFromWrappedRef(ORef factorRef)
-	{
-		if (!Factor.isFactor(factorRef))
-			throw new RuntimeException("Trying to convert non factor ref to factor:"+factorRef);
-		
-		FactorId factorId = new FactorId(factorRef.getObjectId().asInt());
-		return (DiagramFactorId) factorsToDiagramFactors.get(factorId);
 	}
 	
 	public DiagramLink getDiagramLinkByRef(ORef diagramLinkRef) throws Exception
