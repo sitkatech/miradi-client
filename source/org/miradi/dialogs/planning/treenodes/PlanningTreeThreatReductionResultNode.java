@@ -44,7 +44,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(threatReductionResult.getUpstreamObjectives(diagram), diagram);
+		createAndAddChildren(threatReductionResult.getObjectiveRefs(), diagram);
 		
 		addMissingUpstreamNonDraftStrategies(diagram);
 		addMissingUpstreamIndicators(diagram);
