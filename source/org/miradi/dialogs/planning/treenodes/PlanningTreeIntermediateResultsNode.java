@@ -24,7 +24,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -50,8 +53,11 @@ public class PlanningTreeIntermediateResultsNode extends AbstractPlanningTreeNod
 	int[] getNodeSortOrder()
 	{
 		return new int[] {
+				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
+				Task.getObjectType(),
+				Measurement.getObjectType(),
 			};
 	}
 
