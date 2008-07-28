@@ -258,9 +258,6 @@ strategies.element =
               }
             & element cp:name { text }
             & element cp:taxonomy_code { iucn_strategy_taxonomy }?
-            & element cp:leverage { vocabulary_ranking_vhhml }?
-            & element cp:feasibility { vocabulary_ranking_vhhml }?
-            & element cp:overall_rank { vocabulary_ranking_vhhml }?
             & element cp:selected { xsd:boolean }?
             & element cp:comment { text }?
             & element cp:legacy_strategy_ranking { text }?
