@@ -709,7 +709,12 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramFactorLinkExist(DiagramLinkId linkId)
 	{
-		return (cellInventory.getDiagramLink(new ORef(DiagramLink.getObjectType(), linkId)) != null);	
+		return doesDiagramFactorLinkExist(new ORef(DiagramLink.getObjectType(), linkId));	
+	}
+	
+	public boolean doesDiagramFactorLinkExist(ORef diagramLinkRef)
+	{
+		return (cellInventory.getDiagramLink(diagramLinkRef) != null);	
 	}
 	
 	public Vector getAllFactorCells()
@@ -922,11 +927,10 @@ public class DiagramModel extends DefaultGraphModel
 		if (!DiagramLink.is(diagramLinkRef))
 			throw new Exception("ORef is not of type DiagramLink : ref = " + diagramLinkRef);
 		
-		DiagramLinkId diagramLinkId = new DiagramLinkId(diagramLinkRef.getObjectId().asInt());
-		if (! doesDiagramFactorLinkExist(diagramLinkId))
+		if (! doesDiagramFactorLinkExist(diagramLinkRef))
 			return null;
 		
-		DiagramLink diagramFactorLink  = getDiagramLinkById(diagramLinkId);
+		DiagramLink diagramFactorLink  = getDiagramLinkByRef(diagramLinkRef);
 		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);

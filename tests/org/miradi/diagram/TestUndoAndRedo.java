@@ -26,7 +26,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -57,8 +56,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		DiagramFactor toDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.STRATEGY);
 		toFactorRef = toDiagramFactor.getWrappedORef();
 		LinkCreator linkCreator = new LinkCreator(project);
-		FactorLinkId factorLinkId= linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkbyWrappedId(factorLinkId);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
+		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		linkId = diagramLink.getDiagramLinkId();
 	}
 	

@@ -298,6 +298,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		ORef factorLinkRef = createModelLinkage.getObjectRef();
 		DiagramFactorId fromDiagramFactorId = from.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = to.getDiagramFactorId();
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
@@ -311,7 +312,7 @@ public class TestCommands extends EAMTestCase
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);
 		
-		DiagramLink inserted = model.getDiagramLinkbyWrappedId(modelLinkageId);
+		DiagramLink inserted = model.getDiagramLinkByWrappedRef(factorLinkRef);
 		LinkCell cell = model.findLinkCell(inserted);
 		DiagramFactorId fromNodeId = cell.getFrom().getDiagramFactorId();
 		assertEquals("wrong source?", from.getDiagramFactorId(), fromNodeId);

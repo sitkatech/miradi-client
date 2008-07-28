@@ -29,7 +29,6 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -109,8 +108,8 @@ public class TestTransferableEamList extends EAMTestCase
 		diagramFactor2.setLocation(node2Location);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
-		FactorLinkId factorLinkId = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
-		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkbyWrappedId(factorLinkId);
+		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
+		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
 		FactorCell factorCell1 = model.getFactorCellByRef(diagramFactorRef1);
 		FactorCell factorCell2 = model.getFactorCellByRef(diagramFactorRef2);
@@ -157,7 +156,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(1, factorLinkDeepCopies.size());
 		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(factorLinkDeepCopies.get(0));
 		BaseId factorLinkIdFromJson = factorLinkJson.getId(FactorLink.TAG_ID);
-		assertEquals("wrong factor link id?", factorLinkId, factorLinkIdFromJson);
+		assertEquals("wrong factor link id?", factorLinkRef.getObjectId(), factorLinkIdFromJson);
 		ORef fromRef = factorLinkJson.getRef(FactorLink.TAG_FROM_REF);
 		assertEquals("wrong factor link from ref?", diagramFactor1.getWrappedORef(), fromRef);
 		ORef toRef = factorLinkJson.getRef(FactorLink.TAG_TO_REF);
