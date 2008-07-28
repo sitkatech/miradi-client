@@ -488,9 +488,9 @@ public class DiagramModel extends DefaultGraphModel
 		return getAllDiagramFactorLinks().size();
 	}
 
-	public int getFactorLinksSize(DiagramFactorId diagramFactorId) throws Exception
+	public int getFactorLinksSize(ORef diagramFactorRef) throws Exception
 	{
-		FactorCell factorCell = getFactorCellById(diagramFactorId);
+		FactorCell factorCell = getFactorCellByRef(diagramFactorRef);
 		return getFactorLinks(factorCell).size();
 	}
 	

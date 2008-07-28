@@ -316,7 +316,7 @@ public class TestProject extends EAMTestCase
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
 		assertEquals(2, model.getFactorLinks(node1).size());
-		assertEquals(1, model.getFactorLinksSize(diagramFactor1.getDiagramFactorId()));
+		assertEquals(1, model.getFactorLinksSize(diagramFactor1.getRef()));
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
 		new DiagramCopyPaster(null, project.getDiagramModel(), transferableList).pasteFactorsAndLinks(new Point(5,5));
