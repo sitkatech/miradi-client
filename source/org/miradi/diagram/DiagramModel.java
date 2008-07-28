@@ -519,10 +519,10 @@ public class DiagramModel extends DefaultGraphModel
 		Vector nodes = getAllFactorCells();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
-			FactorCell node = (FactorCell)nodes.get(i);
-			updateVisibilityOfSingleFactor(node.getDiagramFactorRef());
-			if(node.isTextBox() || node.isActivity() || node.isStress())
-				topLayerCells.add(node);
+			FactorCell factorCell = (FactorCell)nodes.get(i);
+			updateVisibilityOfSingleFactor(factorCell.getDiagramFactorRef());
+			if(factorCell.isTextBox() || factorCell.isActivity() || factorCell.isStress())
+				topLayerCells.add(factorCell);
 		}
 		LayerManager manager = project.getLayerManager();
 		boolean shouldScopeBoxBeVisible = manager.isScopeBoxVisible();
