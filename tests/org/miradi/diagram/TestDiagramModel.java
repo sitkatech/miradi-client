@@ -293,7 +293,7 @@ public class TestDiagramModel extends EAMTestCase
 		model.removeDiagramFactor(diagramFactor.getRef());
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
-		assertFalse("already linked?", model.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
+		assertFalse("already linked?", model.areDiagramFactorsLinked(cause.getRef(), target.getRef()));
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), cause, target);
 		
 		assertTrue("not linked?", model.areDiagramFactorsLinked(cause.getRef(), target.getRef()));
