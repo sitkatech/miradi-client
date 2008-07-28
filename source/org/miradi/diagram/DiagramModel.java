@@ -275,10 +275,10 @@ public class DiagramModel extends DefaultGraphModel
 		return false;
 	}
 	
-	public boolean areLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	public boolean areDiagramFactorsLinked(ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
-		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
+		DiagramFactor fromDiagramFactor = DiagramFactor.find(project, fromDiagramFactorRef);
+		DiagramFactor toDiagramFactor = DiagramFactor.find(project, toDiagramFactorRef);
 		
 		return areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 	}
@@ -288,7 +288,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
 	}
 
-	private DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
+	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
 	{
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)

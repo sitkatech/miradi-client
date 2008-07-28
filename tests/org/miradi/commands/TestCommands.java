@@ -314,16 +314,16 @@ public class TestCommands extends EAMTestCase
 		
 		DiagramLink inserted = model.getDiagramLinkByWrappedRef(factorLinkRef);
 		LinkCell cell = model.findLinkCell(inserted);
-		DiagramFactorId fromNodeId = cell.getFrom().getDiagramFactorId();
-		assertEquals("wrong source?", from.getDiagramFactorId(), fromNodeId);
-		DiagramFactorId toNodeId = cell.getTo().getDiagramFactorId();
-		assertEquals("wrong dest?", to.getDiagramFactorId(), toNodeId);
+		ORef fromDiagramFactorRef = cell.getFrom().getDiagramFactorRef();
+		assertEquals("wrong source?", from.getRef(), fromDiagramFactorRef);
+		ORef toDiagramFactorRef = cell.getTo().getDiagramFactorRef();
+		assertEquals("wrong dest?", to.getRef(), toDiagramFactorRef);
 
-		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNodeId, toNodeId));
+		assertTrue("linkage not created?", project.getDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
 		project.undo();
 		
 		project.undo();
-		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNodeId, toNodeId));
+		assertFalse("didn't remove linkage?", project.getDiagramModel().areDiagramFactorsLinked(fromDiagramFactorRef, toDiagramFactorRef));
 		
 		project.undo();
 		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));

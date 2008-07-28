@@ -26,7 +26,6 @@ import java.util.Vector;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAMTestCase;
@@ -292,16 +291,13 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		model.removeDiagramFactor(diagramFactor.getRef());
-		DiagramFactorId newFactorId = project.createAndAddFactorToDiagram(ObjectType.CAUSE);
-		DiagramFactorId targetId = project.createAndAddFactorToDiagram(ObjectType.TARGET);
-		assertFalse("already linked?", model.areLinked(newFactorId, targetId));
+		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		assertFalse("already linked?", model.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
+		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), cause, target);
 		
-		DiagramFactor newDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newFactorId));
-		DiagramFactor target = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, targetId));
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newDiagramFactor, target);
-		
-		assertTrue("not linked?", model.areLinked(newFactorId, targetId));
-		assertTrue("reverse link not detected?", model.areLinked(targetId, newFactorId));
+		assertTrue("not linked?", model.areDiagramFactorsLinked(cause.getRef(), target.getRef()));
+		assertTrue("reverse link not detected?", model.areDiagramFactorsLinked(target.getRef(), cause.getRef()));
 	}
 	
 	public void testGetLinkages() throws Exception
