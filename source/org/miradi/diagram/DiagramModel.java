@@ -254,6 +254,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean areDiagramFactorsLinked(ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
+		DiagramFactor.ensureType(fromDiagramFactorRef);
+		DiagramFactor.ensureType(toDiagramFactorRef);
+		
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(project, fromDiagramFactorRef);
 		DiagramFactor toDiagramFactor = DiagramFactor.find(project, toDiagramFactorRef);
 		

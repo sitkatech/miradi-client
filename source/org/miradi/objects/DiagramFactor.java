@@ -271,6 +271,12 @@ public class DiagramFactor extends BaseObject
 		return (groupBoxFactors.size() > 0);
 	}
 	
+	public static void ensureType(ORef diagramFactorRef)
+	{
+		if (!is(diagramFactorRef))
+			throw new RuntimeException(diagramFactorRef + " is not of type DiagramFactor");
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
