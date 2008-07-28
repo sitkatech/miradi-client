@@ -50,9 +50,14 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		DiagramObject diagram = diagramObject;
 		Factor[] upstreamFactors = goal.getUpstreamFactors(diagram);
 		if(diagram.isResultsChain())
+		{
 			createAndAddChildren(extractThreatReductionResultRefs(upstreamFactors), diagram);
+			createAndAddChildren(extractIntermediateResultsRefs(upstreamFactors).toRefList(), diagram);
+		}
 		else
+		{
 			createAndAddChildren(extractDirectThreatRefs(upstreamFactors), diagram);
+		}
 		
 		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);

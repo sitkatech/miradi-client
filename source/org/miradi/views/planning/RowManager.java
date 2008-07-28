@@ -28,6 +28,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningViewConfiguration;
@@ -52,6 +53,7 @@ public class RowManager
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Cause.OBJECT_NAME_THREAT);
 		masterRowList.add(ThreatReductionResult.OBJECT_NAME);
+		masterRowList.add(IntermediateResult.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);
 		masterRowList.add(Task.ACTIVITY_NAME);
 		masterRowList.add(Indicator.OBJECT_NAME);

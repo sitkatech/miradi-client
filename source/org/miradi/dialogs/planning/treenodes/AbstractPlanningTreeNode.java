@@ -34,6 +34,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
@@ -191,6 +192,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Goal.getObjectType(),
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),
+			IntermediateResult.getObjectType(),
 			Objective.getObjectType(),
 			Strategy.getObjectType(),
 			Indicator.getObjectType(),
@@ -254,6 +256,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
 		if(type == ThreatReductionResult.getObjectType())
 			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
+		if(type == IntermediateResult.getObjectType())
+			return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
 		if(type == Strategy.getObjectType())
 			return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
 		if(type == Indicator.getObjectType())
@@ -294,6 +298,23 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return upstreamThreatReductionResultRefs;
 	}
 
+	protected ORefSet extractIntermediateResultsRefs(Factor[] factors)
+	{
+		return extractType(factors, IntermediateResult.getObjectType());
+	}
+	
+	private ORefSet extractType(Factor[] factors, int typeToExtract)
+	{
+		ORefSet extractedRefs = new ORefSet();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			if(factor.getType() == typeToExtract)
+				extractedRefs.add(factor.getRef());
+		}
+		return extractedRefs;
+	}
+	
 	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
 	{
 		// FIXME: Probably should use a HashSet to avoid dupes
@@ -351,6 +372,12 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected void addMissingUpstreamThreatReductionResults(DiagramObject diagram) throws Exception
 	{
 		addMissingChildren(extractThreatReductionResultRefs(getObject().getUpstreamFactors(diagram)), diagram);
+	}
+	
+	protected void addMissingUpstreamIntermediateResults(DiagramObject diagram) throws Exception
+	{
+		ORefSet intermediateResultsRefSet = extractIntermediateResultsRefs(getObject().getUpstreamFactors(diagram));
+		addMissingChildren(intermediateResultsRefSet.toRefList(), diagram);
 	}
 
 	protected void addMissingUpstreamNonDraftStrategies(DiagramObject diagram) throws Exception
