@@ -58,7 +58,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		LinkCreator linkCreator = new LinkCreator(project);
 		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), fromDiagramFactor, toDiagramFactor);
 		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
-		linkId = diagramLink.getDiagramLinkId();
+		diagramLinkRef = diagramLink.getRef();
 	}
 	
 	public void tearDown() throws Exception
@@ -266,11 +266,16 @@ public class TestUndoAndRedo extends EAMTestCase
 
 	private DiagramLinkId getDiagramLinkId()
 	{
-		return linkId;
+		return (DiagramLinkId) getDiagramLinkRef().getObjectId();
 	}
 	
-	ProjectForTesting project;
-	ORef fromFactorRef;
-	ORef toFactorRef;
-	DiagramLinkId linkId;
+	private ORef getDiagramLinkRef()
+	{
+		return diagramLinkRef;
+	}
+	
+	private ProjectForTesting project;
+	private ORef fromFactorRef;
+	private ORef toFactorRef;
+	private ORef diagramLinkRef;
 }
