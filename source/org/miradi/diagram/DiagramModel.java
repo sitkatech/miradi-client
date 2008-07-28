@@ -690,11 +690,6 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramLink;
 	}
 	
-	public DiagramLink getDiagramLinkbyWrappedId(FactorLinkId id) throws Exception
-	{
-		return getDiagramLinkByWrappedRef(new ORef(FactorLink.getObjectType(), id));
-	}
-
 	public boolean doesDiagramLinkExist(ORef factorLinkRef)
 	{
 		factorLinkRef.ensureType(FactorLink.getObjectType());
