@@ -516,10 +516,10 @@ public class DiagramModel extends DefaultGraphModel
 		// TODO: Probably can handle GroupBox and ScopeBox toBack here also
 		HashSet<FactorCell> topLayerCells = new HashSet<FactorCell>();
 		
-		Vector nodes = getAllFactorCells();
-		for(int i = 0; i < nodes.size(); ++i)
+		Vector factorCells = getAllFactorCells();
+		for(int i = 0; i < factorCells.size(); ++i)
 		{
-			FactorCell factorCell = (FactorCell)nodes.get(i);
+			FactorCell factorCell = (FactorCell)factorCells.get(i);
 			updateVisibilityOfSingleFactor(factorCell.getDiagramFactorRef());
 			if(factorCell.isTextBox() || factorCell.isActivity() || factorCell.isStress())
 				topLayerCells.add(factorCell);
