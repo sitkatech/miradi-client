@@ -265,6 +265,8 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
 	{
+		Factor.ensureFactor(fromFactorRef);
+		Factor.ensureFactor(toFactorRef);
 		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
 	}
 
