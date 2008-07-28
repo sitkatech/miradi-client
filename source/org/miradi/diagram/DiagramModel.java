@@ -280,10 +280,7 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
 		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
 		
-		FactorId id1 = fromDiagramFactor.getWrappedId();
-		FactorId id2 = toDiagramFactor.getWrappedId();
-		
-		return areLinked(id1, id2);
+		return areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 	}
 
 	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
@@ -291,12 +288,7 @@ public class DiagramModel extends DefaultGraphModel
 		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
 		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
 		
-		return areLinked(fromFactorId, toFactorId);
-	}
-
-	public boolean areLinked(FactorId id1, FactorId id2)
-	{
-		return (getDiagramLink(id1, id2) != null);
+		return (getDiagramLink(fromFactorId, toFactorId) != null);
 	}
 
 	public DiagramLink getDiagramLink(ORef fromFactorRef, ORef toFactorRef)
