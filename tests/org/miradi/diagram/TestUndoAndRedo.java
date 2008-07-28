@@ -25,7 +25,6 @@ import org.miradi.commands.CommandJump;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -96,7 +95,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.undo();
 		
 		assertFalse("didn't undo?", model.areDiagramFactorsLinked(model.getDiagramFactorIdFromWrappedRef(fromFactorRef), model.getDiagramFactorIdFromWrappedRef(toFactorRef)));
-		verifyLinkageNotPresent(getDiagramLinkId());
+		verifyLinkageNotPresent(getDiagramLinkRef());
 
 		// undo diagram node add
 		project.undo();
@@ -154,7 +153,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		verifyFactorCellNotPresent(diagramFactorRef);
 		project.undo();
 		
-		verifyLinkageNotPresent(getDiagramLinkId());
+		verifyLinkageNotPresent(getDiagramLinkRef());
 	
 	}
 	
@@ -228,15 +227,15 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyLinkageNotPresent(DiagramLinkId cellId)
+	private void verifyLinkageNotPresent(ORef diagramLinkRefToUse)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		try
 		{
-			model.getDiagramLinkById(cellId);
-			fail("Cell should be gone: " + cellId);
+			model.getDiagramLinkByRef(diagramLinkRefToUse);
+			fail("Cell should be gone: " + diagramLinkRefToUse);
 		}
 		catch(Exception ignoreExpected)
 		{
@@ -264,11 +263,6 @@ public class TestUndoAndRedo extends EAMTestCase
 		return diagramFactor;
 	}
 
-	private DiagramLinkId getDiagramLinkId()
-	{
-		return (DiagramLinkId) getDiagramLinkRef().getObjectId();
-	}
-	
 	private ORef getDiagramLinkRef()
 	{
 		return diagramLinkRef;
