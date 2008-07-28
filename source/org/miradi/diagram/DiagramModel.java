@@ -285,33 +285,22 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
 	{
-		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
-		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
-		
-		return (getDiagramLink(fromFactorId, toFactorId) != null);
+		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
 	}
 
-	public DiagramLink getDiagramLink(ORef fromFactorRef, ORef toFactorRef)
-	{
-		FactorId fromFactorId = FactorId.createFromBaseId(fromFactorRef.getObjectId());
-		FactorId toFactorId = FactorId.createFromBaseId(toFactorRef.getObjectId());
-		
-		return getDiagramLink(fromFactorId, toFactorId);
-	}
-	
-	private DiagramLink getDiagramLink(FactorId id1, FactorId id2)
+	private DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
 	{
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
 		{
 			DiagramLink thisLink = (DiagramLink)links.get(i);
 			LinkCell link = findLinkCell(thisLink);
-			FactorId foundId1 = link.getFrom().getWrappedId();
-			FactorId foundId2 = link.getTo().getWrappedId();
-			if(foundId1.equals(id1) && foundId2.equals(id2))
+			ORef foundRef1 = link.getFrom().getWrappedFactorRef();
+			ORef foundRef2 = link.getTo().getWrappedFactorRef();
+			if(foundRef1.equals(factorRef1) && foundRef2.equals(factorRef2))
 				return link.getDiagramLink();
 			
-			if(foundId1.equals(id2) && foundId2.equals(id1))
+			if(foundRef1.equals(factorRef2) && foundRef2.equals(factorRef1))
 				return link.getDiagramLink();
 		}
 		
