@@ -23,13 +23,12 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -62,13 +61,12 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	project.executeCommand(createDiagramLinkCommand);
 		
-    	BaseId createdId = createDiagramLinkCommand.getCreatedId();
-		DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createdId.asInt());
+		ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();
 		DiagramObject diagramObject = project.getDiagramObject();
-		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 
-		DiagramLink linkage = model.getDiagramLinkById(diagramFactorLinkId);
+		DiagramLink linkage = model.getDiagramLinkByRef(diagramLinkRef);
 		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
 
 		assertEquals("not from intervention?", intervention, cell.getFrom());
