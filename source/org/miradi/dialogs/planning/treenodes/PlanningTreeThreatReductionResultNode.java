@@ -66,6 +66,6 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 		return threatReductionResult;
 	}
 
-	DiagramObject diagramObject;
-	ThreatReductionResult threatReductionResult;
+	private DiagramObject diagramObject;
+	private ThreatReductionResult threatReductionResult;
 }
