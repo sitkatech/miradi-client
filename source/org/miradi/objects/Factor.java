@@ -169,6 +169,12 @@ abstract public class Factor extends BaseObject
 		goals.set(goalsToUse);
 	}
 	
+	public static void ensureFactor(ORef factorRef)
+	{
+		if (!isFactor(factorRef))
+			throw new RuntimeException(factorRef + " is not a factor ref");
+	}
+	
 	public static boolean isFactor(ORef refToUse)
 	{
 		return isFactor(refToUse.getObjectType());

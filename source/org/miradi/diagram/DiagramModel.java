@@ -267,6 +267,9 @@ public class DiagramModel extends DefaultGraphModel
 
 	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
 	{
+		Factor.ensureFactor(factorRef1);
+		Factor.ensureFactor(factorRef2);
+		
 		Vector links = cellInventory.getAllFactorLinks();
 		for(int i = 0; i < links.size(); ++i)
 		{
