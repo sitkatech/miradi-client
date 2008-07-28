@@ -142,9 +142,6 @@ public interface ConProMiradiXml
 	public static final String LEGACY_TNC_STRATEGY_RATING = "legacy_strategy_ranking";
 	public static final String OBJECTIVE_ID = "objective_id";
 	public static final String TAXONOMY_CODE = "taxonomy_code";
-	public static final String LEVERAGE = "leverage";
-	public static final String FEASABILITY = "feasibility";
-	public static final String OVERALL_RANK = "overall_rank";
 	public static final String SELECTED = "selected";
 	public static final String ACTIVITIES = "activities";
 	public static final String ACTIVITY = "activity";
