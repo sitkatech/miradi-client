@@ -520,7 +520,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			FactorCell node = (FactorCell)nodes.get(i);
-			updateVisibilityOfSingleFactor(node.getDiagramFactorId());
+			updateVisibilityOfSingleFactor(node.getDiagramFactorRef());
 			if(node.isTextBox() || node.isActivity() || node.isStress())
 				topLayerCells.add(node);
 		}
@@ -532,12 +532,12 @@ public class DiagramModel extends DefaultGraphModel
 		toFront(topLayerCells.toArray());
 	}	
 	
-	private void updateVisibilityOfSingleFactor(DiagramFactorId diagramFactorId) throws Exception
+	private void updateVisibilityOfSingleFactor(ORef diagramFactorRef) throws Exception
 	{
 		try
 		{
 			LayerManager manager = project.getLayerManager();
-			FactorCell factorCell = getFactorCellById(diagramFactorId);
+			FactorCell factorCell = getFactorCellByRef(diagramFactorRef);
 			boolean shouldBeVisible = shouldFactorCellBeVisible(manager, factorCell);
 
 			if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
@@ -603,11 +603,6 @@ public class DiagramModel extends DefaultGraphModel
 			throw new Exception("FactorCell doesn't exist, ref: " + diagramFactorRef);
 		
 		return factorCell;
-	}
-	
-	private FactorCell getFactorCellById(DiagramFactorId id) throws Exception
-	{	
-		return getFactorCellByRef(new ORef(DiagramFactor.getObjectType(), id));
 	}
 	
 	public DiagramFactor getDiagramFactor(ORef factorRef)
