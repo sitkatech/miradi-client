@@ -30,19 +30,16 @@ public class StrategyActivityTreeTableModel extends GenericTreeTableModel
 		super(root);
 	}
 
-	@Override
 	public String getColumnTag(int column)
 	{
 		return null;
 	}
 
-	@Override
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
 	}
 
-	@Override
 	public String getColumnName(int column)
 	{
 		return COLUMN_NAME;
