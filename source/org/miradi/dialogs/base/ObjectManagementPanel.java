@@ -36,7 +36,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
-		project = mainWindowToUse.getProject();
+		mainWindow = mainWindowToUse;
 		setDividerThick();
 		listComponent = tablePanelToUse;
 		
@@ -60,9 +60,14 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		listComponent.addButton(action);
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 	public Project getProject()
 	{
-		return project;
+		return getMainWindow().getProject();
 	}
 
 	public ObjectCollectionPanel getListPanel()
@@ -122,7 +127,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	private Project project;
+	private MainWindow mainWindow;
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
 }
