@@ -22,22 +22,16 @@ package org.miradi.dialogs.fieldComponents;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTable;
 import org.miradi.utils.TableRowHeightSaver;
 
 public class PanelTable extends ExportableTable
 {
-	public PanelTable()
-	{
-		super();
-		setFontData();
-	}
-
-	public PanelTable(TableModel model)
+	public PanelTable(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(model);
+		mainWindow = mainWindowToUse;
 		setFontData();
 	}
 
@@ -48,13 +42,14 @@ public class PanelTable extends ExportableTable
 		setRowHeight(getFontMetrics(getFont()).getHeight() + VERTICAL_FONT_CUSHION);
 	}
 	
-	//TODO should not use static ref here
 	private MainWindow getMainWindow()
 	{
-		return EAM.getMainWindow();
+		return mainWindow;
 	}
 
 	private static final int INTERCELL_LINE_SIZE = 3;
 	private static final int VERTICAL_FONT_CUSHION = INTERCELL_LINE_SIZE + 
 			TableRowHeightSaver.ROW_RESIZE_MARGIN + 2*BasicTableCellRenderer.CELL_MARGIN;
+	
+	private MainWindow mainWindow;
 }

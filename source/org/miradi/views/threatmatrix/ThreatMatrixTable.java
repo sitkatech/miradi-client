@@ -41,7 +41,7 @@ public class ThreatMatrixTable extends PanelTable
 {
 	public ThreatMatrixTable(MainWindow mainWindowToUse, ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		setIntercellSpacing(new Dimension(0, 0));
 		setRowHeight(ThreatGridPanel.ROW_HEIGHT);
 		setRowSelectionAllowed(false);

@@ -25,12 +25,13 @@ import java.util.Vector;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
+import org.miradi.main.MainWindow;
 
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
 {
-	public TableWithRowHeightSaver(TableModel model)
+	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		rowHeightListeners = new Vector<RowHeightListener>();
 		
 		addRowHeightSaver();

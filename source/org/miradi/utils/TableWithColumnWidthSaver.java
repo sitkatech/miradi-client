@@ -28,7 +28,7 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 {
 	public TableWithColumnWidthSaver(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 	
 		addColumnWidthSaver();
 		addColumnSequenceSaver();
