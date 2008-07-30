@@ -30,7 +30,7 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 {
 	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		
 		setColumnRenderers();
 	}

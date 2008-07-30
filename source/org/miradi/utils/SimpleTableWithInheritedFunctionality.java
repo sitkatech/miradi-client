@@ -27,7 +27,7 @@ public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthS
 {
 	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model)
 	{	
-		super(model);
+		super(mainWindowToUse, model);
 	}
 	
 	public String getUniqueTableIdentifier()

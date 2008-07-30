@@ -32,7 +32,7 @@ public class ReportSelectionTable extends TableWithColumnWidthSaver
 {
 	public ReportSelectionTable(MainWindow mainWindowToUse, ReportSelectionTableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
