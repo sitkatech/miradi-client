@@ -51,6 +51,7 @@ import org.miradi.actions.ActionDeleteGroupBox;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionExit;
+import org.miradi.actions.ActionExportAsRtf;
 import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
 import org.miradi.actions.ActionExportTable;
@@ -149,6 +150,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		
 		menu.add(createExportMenu(actions));
+		menu.add(createExportCurrentPageMenu(actions));
 		menu.add(createImportMenu(actions));
 		menu.addSeparator();
 		
@@ -159,17 +161,13 @@ public class MainMenuBar extends JMenuBar
 
 	private JMenu createExportMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("Menu|Export"));
+		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_X);
 		
 		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_Z);
 		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
 		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
-		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
-		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
-		menu.addSeparator();
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		
 		if(MainWindow.isDemoMode())
@@ -177,6 +175,19 @@ public class MainMenuBar extends JMenuBar
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		}
+		
+		return menu;
+	}
+	
+	private JMenu createExportCurrentPageMenu(Actions actions)
+	{
+		JMenu menu = new JMenu(EAM.text("Menu|Export Current Page as..."));
+		menu.setMnemonic(KeyEvent.VK_X);
+		
+		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
+		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
+		addMenuItem(actions, menu, ActionExportAsRtf.class, KeyEvent.VK_R);
 		
 		return menu;
 	}
