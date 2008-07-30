@@ -21,16 +21,15 @@ package org.miradi.dialogs.resource;
 
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteResource;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ResourcePoolTablePanel(Project project, Actions actions)
+	public ResourcePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(project, new ResourcePoolTable(new ResourcePoolTableModel(project)), 
-				actions,
+		super(mainWindowToUse.getProject(), new ResourcePoolTable(mainWindowToUse, new ResourcePoolTableModel(mainWindowToUse.getProject())), 
+				mainWindowToUse.getActions(),
 				buttons);
 	}
 	
