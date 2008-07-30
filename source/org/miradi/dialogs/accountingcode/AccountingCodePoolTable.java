@@ -21,10 +21,11 @@ package org.miradi.dialogs.accountingcode;
 
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.main.MainWindow;
 
 public class AccountingCodePoolTable extends ObjectPoolTable
 {
-	public AccountingCodePoolTable(ObjectPoolTableModel modelToUse)
+	public AccountingCodePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse);
 	}
