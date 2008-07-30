@@ -19,13 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatstressrating.upperPanel;
 
+import org.miradi.main.MainWindow;
+
 
 
 public class ThreatSummaryColumnTable extends AbstractTableWithChoiceItemRenderer
 {
-	public ThreatSummaryColumnTable(ThreatSummaryColumnTableModel model)
+	public ThreatSummaryColumnTable(MainWindow mainWindowToUse, ThreatSummaryColumnTableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 	}
 	
 	public String getUniqueTableIdentifier()
