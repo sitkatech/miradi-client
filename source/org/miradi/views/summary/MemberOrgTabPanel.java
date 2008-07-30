@@ -30,6 +30,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.RtfWriter;
 import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -100,7 +101,16 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 	{
 		return dataPanel.isPrintable();
 	}
+
+	public boolean isRtfExportable()
+	{
+		return false;
+	}
 	
+	public void exportRtf(RtfWriter writer)
+	{
+	}
+
 	private AbstractObjectDataInputPanel dataPanel;
 
 }

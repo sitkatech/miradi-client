@@ -80,6 +80,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -214,6 +215,15 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public boolean isPrintable()
 	{
 		return false;
+	}
+
+	public boolean isRtfExportable()
+	{
+		return false;
+	}
+	
+	public void exportRtf(RtfWriter writer)
+	{
 	}
 
 	public void setFocusOnFirstField()

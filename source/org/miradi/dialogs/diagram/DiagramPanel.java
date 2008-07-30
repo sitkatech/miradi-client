@@ -41,6 +41,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.diagram.DiagramLegendPanel;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -209,6 +210,15 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	public boolean isPrintable()
 	{
 		return true;
+	}
+	
+	public boolean isRtfExportable()
+	{
+		return false;
+	}
+	
+	public void exportRtf(RtfWriter writer)
+	{
 	}
 
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
