@@ -34,11 +34,12 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 
 public class ThreatMatrixTable extends PanelTable
 {
-	public ThreatMatrixTable(ThreatMatrixTableModel model, ThreatGridPanel panel)
+	public ThreatMatrixTable(MainWindow mainWindowToUse, ThreatMatrixTableModel model, ThreatGridPanel panel)
 	{
 		super(model);
 		setIntercellSpacing(new Dimension(0, 0));

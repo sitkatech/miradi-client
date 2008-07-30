@@ -28,10 +28,11 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
+import org.miradi.main.MainWindow;
 
 public class ThreatMatrixRowHeaderTable extends PanelTable
 {
-	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData, ThreatGridPanel panel)
+	public ThreatMatrixRowHeaderTable(MainWindow mainWindowToUse, TableModel rowHeaderData, ThreatGridPanel panel)
 	{
 		super(rowHeaderData);
 		getTableHeader().setResizingAllowed(true);
