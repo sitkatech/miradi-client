@@ -21,13 +21,13 @@ package org.miradi.dialogs.treeRelevancy;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class StrategyActivityRelevancyTreeTable extends TreeTableWithColumnWidthSaving
 {
-	public StrategyActivityRelevancyTreeTable(Project projectToUse,	GenericTreeTableModel treeTableModel)
+	public StrategyActivityRelevancyTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
-		super(projectToUse, treeTableModel);
+		super(mainWindowToUse.getProject(), treeTableModel);
 	}
 
 	@Override
