@@ -195,11 +195,12 @@ public class PlanningView extends TabbedView
 
 		public boolean isRtfExportable()
 		{
-			return false;
+			return planningManagementPanel.isRtfExportable();
 		}		
 		
 		public void exportRtf(RtfWriter writer)
 		{
+			planningManagementPanel.exportRtf(writer);
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;
