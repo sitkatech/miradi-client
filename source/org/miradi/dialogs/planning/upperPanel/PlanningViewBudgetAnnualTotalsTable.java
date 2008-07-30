@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
@@ -28,10 +27,8 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.treetables.TreeTableWithIcons;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 
@@ -62,13 +59,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 		
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;
-	}
-	
-	public Font getRowFont(int row)
-	{
-		PlanningViewBudgetAnnualTotalTableModel model = (PlanningViewBudgetAnnualTotalTableModel) getModel();
-		BaseObject object = model.getBaseObjectForRowColumn(row, 0);
-		return TreeTableWithIcons.getSharedTaskFont(object);
 	}
 	
 	public int getColumnAlignment()

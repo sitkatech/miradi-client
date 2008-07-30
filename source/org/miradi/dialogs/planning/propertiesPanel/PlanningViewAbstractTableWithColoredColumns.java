@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.treetables.TreeTableWithIcons;
 import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewAbstractTableWithColoredColumns extends EditableObjectTable
@@ -40,11 +38,6 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends Editab
 	public Color getColumnBackGroundColor(int tableColumn)
 	{
 		return getBackground();
-	}
-	
-	public Font getRowFont(int row)
-	{
-		return TreeTableWithIcons.Renderer.getPlainFont();
 	}
 	
 }
