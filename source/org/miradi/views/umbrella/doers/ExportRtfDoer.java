@@ -52,20 +52,15 @@ public class ExportRtfDoer extends ViewDoer
 		try
 		{
 			writeRtf(destination);
-			showErrorDialog(EAM.text("Current page was exported as RTF."));
+			EAM.notifyDialog(EAM.text("Current page was exported as RTF."));
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			showErrorDialog(EAM.text("Error occurred while trying to export current page as RTF."));
+			EAM.errorDialog(EAM.text("Error occurred while trying to export current page as RTF."));
 		}
 	}
 	
-	private void showErrorDialog(String errorMessage)
-	{
-		EAM.errorDialog(errorMessage);
-	}
-
 	private void writeRtf(File destination) throws Exception
 	{
 		RtfWriter rtfWriter = new RtfWriter(destination);
