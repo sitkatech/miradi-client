@@ -28,6 +28,6 @@ public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectTa
 {
 	public KeyEcologicalAttributeListTablePanelWithoutButtons(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse.getProject(), new ObjectListTable(modelToUse));
+		super(mainWindowToUse, new ObjectListTable(modelToUse));
 	}
 }

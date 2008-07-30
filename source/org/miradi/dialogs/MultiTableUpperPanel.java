@@ -24,15 +24,15 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.ObjectCollectionPanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class MultiTableUpperPanel extends ObjectCollectionPanel implements ListSelectionListener
 {
-	public MultiTableUpperPanel(Project projectToUse, ObjectPicker pickerToUse)
+	public MultiTableUpperPanel(MainWindow mainWindowToUse, ObjectPicker pickerToUse)
 	{
-		super(projectToUse, pickerToUse);
+		super(mainWindowToUse, pickerToUse);
 		pickerToUse.addSelectionChangeListener(this);
 	}
 	

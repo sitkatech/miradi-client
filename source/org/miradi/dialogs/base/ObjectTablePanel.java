@@ -27,16 +27,16 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 
 public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelectionListener
 {
-	public ObjectTablePanel(Project projectToUse, ObjectTable tableToUse)
+	public ObjectTablePanel(MainWindow mainWindowToUse, ObjectTable tableToUse)
 	{
-		super(projectToUse, tableToUse);
+		super(mainWindowToUse, tableToUse);
 		table = tableToUse;
 		table.addListSelectionListener(this);
 

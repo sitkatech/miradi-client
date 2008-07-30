@@ -38,7 +38,7 @@ public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 		ThreatStressRatingPropertiesPanel propertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindowToUse, multiTablePanel);
 		
 		ThreatStressRatingListTablePanel tablePanel =  ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(
-				project, multiTablePanel, propertiesPanel);
+				mainWindowToUse, multiTablePanel, propertiesPanel);
 		
 		return new ThreatStressRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
