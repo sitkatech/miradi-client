@@ -92,9 +92,41 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	{
 		return true;
 	}		
-	
+
+	//TODO this method will be refactored and moved somehwere else.  
+	// This method was a proof of concept for rtf tables
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
+		ExportableTableInterface exportableTable = getExportableTable();
+		
+		String rowHeaderContent = "{";
+		String rowHeaderFormatting = "{\\trowd \\trgaph \\trhdr \\intbl ";
+		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+		{
+			rowHeaderContent += exportableTable.getHeaderFor(headerIndex) + " \\cell ";
+			rowHeaderFormatting += " \\cellx ";
+		}
+		rowHeaderContent += "}";
+		rowHeaderFormatting += " \\row }";
+		
+		writer.writeln(rowHeaderContent);
+		writer.writeln(rowHeaderFormatting);
+		
+		for (int row = 0; row < exportableTable.getRowCount(); ++row)
+		{
+			String rowContent = "{";
+			String rowFormating = "{\\trowd \\trgaph \\intbl ";
+			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+			{
+				rowContent += exportableTable.getValueAt(row, column) +" \\cell ";
+				rowFormating += " \\cellx ";	
+			}
+			rowContent += "}";
+			rowFormating += " \\row }";
+			
+			writer.writeln(rowContent);
+			writer.writeln(rowFormating);
+		}
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");

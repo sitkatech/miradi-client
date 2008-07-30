@@ -30,4 +30,14 @@ public class RtfWriter extends UnicodeWriter
 	{
 		super(file);
 	}
+	
+	public void startRtf() throws Exception
+	{
+		write("{\\rtf ");
+	}
+	
+	public void endRtf() throws Exception
+	{
+		write("}");
+	}
 }
