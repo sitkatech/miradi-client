@@ -64,6 +64,13 @@ public class ExportRtfDoer extends ViewDoer
 	private void writeRtf(File destination) throws Exception
 	{
 		RtfWriter rtfWriter = new RtfWriter(destination);
-		getView().exportRtf(rtfWriter);			
+		try
+		{
+			getView().exportRtf(rtfWriter);
+		}
+		finally
+		{
+			rtfWriter.close();
+		}
 	}
 }
