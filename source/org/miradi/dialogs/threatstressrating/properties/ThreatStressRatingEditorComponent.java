@@ -42,7 +42,7 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 	private void createTables() throws Exception
 	{
 		threatStressRatingTableModel = new ThreatStressRatingTableModel(mainWindow.getProject());
-		threatStressRatingTable = new ThreatStressRatingTable(threatStressRatingTableModel);
+		threatStressRatingTable = new ThreatStressRatingTable(mainWindow, threatStressRatingTableModel);
 	}
 	
 	private void addTablesWithManageStressesButton()

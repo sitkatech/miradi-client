@@ -30,14 +30,14 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.miradi.main.AppPreferences;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
 public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
-	public PlanningViewWorkPlanTable(Project projectToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
+	public PlanningViewWorkPlanTable(MainWindow mainWindowToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
 		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider());

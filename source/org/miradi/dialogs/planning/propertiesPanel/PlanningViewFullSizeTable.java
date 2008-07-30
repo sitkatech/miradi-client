@@ -22,12 +22,13 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.Dimension;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewFullSizeTable extends	PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewFullSizeTable(EditableObjectTableModel modelToUse)
+	public PlanningViewFullSizeTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 	
 	public Dimension getPreferredScrollableViewportSize()

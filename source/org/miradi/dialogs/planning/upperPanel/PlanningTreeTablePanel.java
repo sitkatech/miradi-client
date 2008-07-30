@@ -127,19 +127,19 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		listenForColumnWidthChanges(getTree());
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
-		mainTable = new PlanningViewMainTable(mainModel, fontProvider);
+		mainTable = new PlanningViewMainTable(mainWindowToUse, mainModel, fontProvider);
 		mainTableScrollPane = integrateTable(treeToUse, mainTable);
 
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
-		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(annualTotalsModel, fontProvider);
+		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(mainWindowToUse, annualTotalsModel, fontProvider);
 		annualTotalsScrollPane = integrateTable(treeToUse, annualTotalsTable);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
-		measurementTable = new PlanningViewMeasurementTable(measurementModel, fontProvider);
+		measurementTable = new PlanningViewMeasurementTable(mainWindowToUse, measurementModel, fontProvider);
 		measurementScrollPane = integrateTable(treeToUse, measurementTable);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
-		futureStatusTable = new PlanningViewFutureStatusTable(futureStatusModel, fontProvider);
+		futureStatusTable = new PlanningViewFutureStatusTable(mainWindowToUse, futureStatusModel, fontProvider);
 		futureStatusScrollPane = integrateTable(treeToUse, futureStatusTable);
 		
 		

@@ -26,13 +26,14 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 {
-	public PlanningViewFutureStatusTable(PlanningViewFutureStatusTableModel model, FontForObjectTypeProvider fontProvider)
+	public PlanningViewFutureStatusTable(MainWindow mainWindowToUse, PlanningViewFutureStatusTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		renderer = new TableCellRendererForObjects(model, fontProvider);
 	}
 	

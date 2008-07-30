@@ -22,13 +22,14 @@ package org.miradi.utils;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewFullSizeTable;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 
 abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable implements RowColumnBaseObjectProvider
 {
-	public TableWithTreeTableNodes(PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
+	public TableWithTreeTableNodes(MainWindow mainWindowToUse, PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

@@ -21,13 +21,14 @@ package org.miradi.dialogs.threatstressrating.properties;
 
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.RowHeightListener;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
-	public ThreatStressRatingTable(ThreatStressRatingTableModel threatStressRatingTableModel)
+	public ThreatStressRatingTable(MainWindow mainWindowToUse, ThreatStressRatingTableModel threatStressRatingTableModel)
 	{
-		super(threatStressRatingTableModel);
+		super(mainWindowToUse, threatStressRatingTableModel);
 		rebuildColumnEditorsAndRenderers();
 		//TODO shouldn't set row height to constant value
 		setRowHeight(25);

@@ -30,15 +30,16 @@ import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.treetables.TreeTableWithIcons;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 
 public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 {
-	public PlanningViewBudgetAnnualTotalsTable(PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
+	public PlanningViewBudgetAnnualTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		renderer = new BudgetCostTreeTableCellRenderer(model, fontProvider);
 	}
 	
