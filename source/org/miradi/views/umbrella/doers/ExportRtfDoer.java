@@ -66,7 +66,9 @@ public class ExportRtfDoer extends ViewDoer
 		RtfWriter rtfWriter = new RtfWriter(destination);
 		try
 		{
+			rtfWriter.startRtf();
 			getView().exportRtf(rtfWriter);
+			rtfWriter.endRtf();
 		}
 		finally
 		{
