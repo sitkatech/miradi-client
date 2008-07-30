@@ -322,6 +322,13 @@ abstract public class TabbedView extends UmbrellaView
 		
 		return panel.isPrintable();
 	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		//FIXME needs to check to see if exportable
+		return false;
+	}
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
