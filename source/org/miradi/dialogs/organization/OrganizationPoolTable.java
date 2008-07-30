@@ -21,10 +21,11 @@ package org.miradi.dialogs.organization;
 
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.main.MainWindow;
 
 public class OrganizationPoolTable extends ObjectPoolTable
 {
-	public OrganizationPoolTable(ObjectPoolTableModel modelToUse)
+	public OrganizationPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse, DEFAULT_SORT_COLUMN);
 	}

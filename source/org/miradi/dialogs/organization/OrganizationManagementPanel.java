@@ -34,7 +34,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
 	public OrganizationManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, new OrganizationPoolTablePanel(mainWindowToUse, mainWindowToUse.getActions()),
+		super(mainWindowToUse, new OrganizationPoolTablePanel(mainWindowToUse),
 				new OrganizationPropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 	}
@@ -61,7 +61,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 
 	private OrganizationPoolTable createTable()
 	{
-		return new OrganizationPoolTable(new OrganizationPoolTableModel(getProject()));
+		return new OrganizationPoolTable(getMainWindow(), new OrganizationPoolTableModel(getProject()));
 	}
 	
 	@Override
