@@ -297,7 +297,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
 	
-	public void exportRtf(RtfWriter writer)
+	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		throw new RuntimeException("This view doesn't support exportRtf");
 	}

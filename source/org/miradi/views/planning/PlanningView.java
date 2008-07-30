@@ -198,7 +198,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.isRtfExportable();
 		}		
 		
-		public void exportRtf(RtfWriter writer)
+		public void exportRtf(RtfWriter writer) throws Exception
 		{
 			planningManagementPanel.exportRtf(writer);
 		}

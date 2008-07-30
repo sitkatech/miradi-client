@@ -334,7 +334,7 @@ abstract public class TabbedView extends UmbrellaView
 		return panel.isRtfExportable();
 	}
 	
-	public void exportRtf(RtfWriter writer)
+	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel != null)

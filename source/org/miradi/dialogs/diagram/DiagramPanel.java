@@ -217,7 +217,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		return false;
 	}
 	
-	public void exportRtf(RtfWriter writer)
+	public void exportRtf(RtfWriter writer) throws Exception
 	{
 	}
 

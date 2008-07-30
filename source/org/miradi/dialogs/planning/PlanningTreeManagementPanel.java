@@ -93,9 +93,8 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}		
 	
-	public void exportRtf(RtfWriter writer)
+	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		//FIXME need to write
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
