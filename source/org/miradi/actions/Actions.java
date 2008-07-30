@@ -266,7 +266,7 @@ public class Actions
 		registerAction(new ActionCreateIncomingJunction(mainWindow));
 		registerAction(new ActionCreateOutgoingJunction(mainWindow));
 		
-		registerAction(new ActionExportAsRtf(mainWindow));
+		registerAction(new ActionExportRtf(mainWindow));
 		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));

@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportAsRtf extends MainWindowAction
+public class ActionExportRtf extends MainWindowAction
 {
-	public ActionExportAsRtf(MainWindow mainWindowToUse)
+	public ActionExportRtf(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
