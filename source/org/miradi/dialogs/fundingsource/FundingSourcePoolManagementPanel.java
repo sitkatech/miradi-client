@@ -38,7 +38,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public FundingSourcePoolManagementPanel(MainWindow mainWindowToUse, String overviewText) throws Exception
 	{
-		super(mainWindowToUse, new FundingSourcePoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+		super(mainWindowToUse, new FundingSourcePoolTablePanel(mainWindowToUse),
 				new FundingSourcePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -68,7 +68,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	private FundingSourcePoolTable createTable()
 	{
-		return new FundingSourcePoolTable(new FundingSourcePoolTableModel(getProject()));
+		return new FundingSourcePoolTable(getMainWindow(), new FundingSourcePoolTableModel(getProject()));
 	}
 	
 	@Override

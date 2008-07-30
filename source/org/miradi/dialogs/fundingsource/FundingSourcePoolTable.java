@@ -21,10 +21,11 @@ package org.miradi.dialogs.fundingsource;
 
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.main.MainWindow;
 
 public class FundingSourcePoolTable extends ObjectPoolTable
 {
-	public FundingSourcePoolTable(ObjectPoolTableModel modelToUse)
+	public FundingSourcePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse);
 	}

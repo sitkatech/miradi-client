@@ -21,16 +21,15 @@ package org.miradi.dialogs.fundingsource;
 
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionDeleteFundingSource;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class FundingSourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public FundingSourcePoolTablePanel(Project project, Actions actions)
+	public FundingSourcePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(project, new FundingSourcePoolTable(new FundingSourcePoolTableModel(project)), 
-				actions,
+		super(mainWindowToUse.getProject(), new FundingSourcePoolTable(mainWindowToUse, new FundingSourcePoolTableModel(mainWindowToUse.getProject())), 
+				mainWindowToUse.getActions(),
 				buttons);
 	}
 	

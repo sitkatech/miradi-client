@@ -23,7 +23,6 @@ import javax.swing.BorderFactory;
 
 import org.miradi.actions.ActionCreateOrganization;
 import org.miradi.actions.ActionDeleteOrganization;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -32,9 +31,9 @@ import org.miradi.utils.Translation;
 
 public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public OrganizationPoolTablePanel(MainWindow mainWindowToUse, Actions actions) throws Exception
+	public OrganizationPoolTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), new OrganizationPoolTable(new OrganizationPoolTableModel(mainWindowToUse.getProject())), actions, buttons);
+		super(mainWindowToUse.getProject(), new OrganizationPoolTable(mainWindowToUse, new OrganizationPoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
 		
 		String html = Translation.getHtmlContent("OtherOrgOverview.html");
 		FlexibleWidthHtmlViewer htmlViewer = new FlexibleWidthHtmlViewer(mainWindowToUse, html);
