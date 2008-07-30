@@ -77,7 +77,7 @@ public class StrategyTreeTableNode extends AbstractRelevancyNode
 		for (int index = 0; index < activityRefs.size(); ++index)
 		{
 			Task task = Task.find(getProject(), activityRefs.get(index));
-			ActivityTreeTableNode activityChildNode = new ActivityTreeTableNode(getProject(), task);
+			ActivityRelevancyNode activityChildNode = new ActivityRelevancyNode(getProject(), task);
 			activityChildren.add(activityChildNode);
 		}
 	}
@@ -89,5 +89,5 @@ public class StrategyTreeTableNode extends AbstractRelevancyNode
 	}
 
 	private Strategy strategy;
-	private Vector<ActivityTreeTableNode> activityChildren;
+	private Vector<ActivityRelevancyNode> activityChildren;
 }

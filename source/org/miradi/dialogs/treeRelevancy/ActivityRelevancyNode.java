@@ -25,9 +25,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 
-public class ActivityTreeTableNode extends AbstractRelevancyNode
+public class ActivityRelevancyNode extends AbstractRelevancyNode
 {
-	public ActivityTreeTableNode(Project project, Task activityToUse)
+	public ActivityRelevancyNode(Project project, Task activityToUse)
 	{
 		super(project);
 		
