@@ -36,7 +36,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 {
 	public TeamManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), mainWindowToUse, new TeamPoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+		super(mainWindowToUse, new TeamPoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
 				new TeamMemberPropertiesPanel(mainWindowToUse.getProject()));
 	}
 

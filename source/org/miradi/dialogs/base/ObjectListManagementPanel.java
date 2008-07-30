@@ -25,7 +25,7 @@ abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 {
 	public ObjectListManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 
 }
