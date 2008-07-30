@@ -19,13 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.base;
 
-import org.miradi.actions.Actions;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ObjectListTablePanelWithParent extends ObjectTablePanelWithCreateAndDelete
 {
-	public ObjectListTablePanelWithParent(Project projectToUse, int objectTypeToUse, ObjectListTableModel model, Actions actions, Class[] buttonActionClasses)
+	public ObjectListTablePanelWithParent(MainWindow mainWindowToUse, int objectTypeToUse, ObjectListTableModel model, Class[] buttonActionClasses)
 	{
-		super(projectToUse, new ObjectTableWithParent(model), actions, buttonActionClasses);
+		super(mainWindowToUse.getProject(), new ObjectTableWithParent(model), mainWindowToUse.getActions(), buttonActionClasses);
 	}
 }

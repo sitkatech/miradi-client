@@ -33,7 +33,7 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 {
 	public MethodListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
-		super(mainWindow, new MethodListTablePanel(mainWindow.getProject(), mainWindow.getActions(), nodeRef),
+		super(mainWindow, new MethodListTablePanel(mainWindow, nodeRef),
 				TaskPropertiesPanel.createWithoutVisibilityPanel(mainWindow));
 	}
 	
