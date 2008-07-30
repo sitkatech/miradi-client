@@ -75,7 +75,7 @@ public class RootTreeTableNode extends AbstractRelevancyNode
 		for (int index = 0; index < strategyRefs.size(); ++index)
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(index));
-			StrategyTreeTableNode strategyChildNode = new StrategyTreeTableNode(getProject(), strategy);
+			StrategyRelevancyNode strategyChildNode = new StrategyRelevancyNode(getProject(), strategy);
 			strategyChildren.add(strategyChildNode);
 		}
 	}
@@ -87,5 +87,5 @@ public class RootTreeTableNode extends AbstractRelevancyNode
 	}
 
 	private ORefList strategyRefs;
-	private Vector<StrategyTreeTableNode> strategyChildren;
+	private Vector<StrategyRelevancyNode> strategyChildren;
 }
