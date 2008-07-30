@@ -38,7 +38,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public AccountingCodePoolManagementPanel(MainWindow mainWindowToUse, String overviewText) throws Exception
 	{
-		super(mainWindowToUse, new AccountingCodePoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+		super(mainWindowToUse, new AccountingCodePoolTablePanel(mainWindowToUse),
 				new AccountingCodePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -79,7 +79,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	private AccountingCodePoolTable createTable()
 	{
-		return new AccountingCodePoolTable(new AccountingCodePoolTableModel(getProject()));
+		return new AccountingCodePoolTable(getMainWindow(), new AccountingCodePoolTableModel(getProject()));
 	}
 	
 	@Override

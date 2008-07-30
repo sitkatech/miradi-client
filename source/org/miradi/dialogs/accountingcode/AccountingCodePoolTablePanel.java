@@ -22,16 +22,15 @@ package org.miradi.dialogs.accountingcode;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionImportAccountingCodes;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class AccountingCodePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public AccountingCodePoolTablePanel(Project project, Actions actions)
+	public AccountingCodePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(project, new AccountingCodePoolTable(new AccountingCodePoolTableModel(project)), 
-			actions,
+		super(mainWindowToUse.getProject(), new AccountingCodePoolTable(mainWindowToUse, new AccountingCodePoolTableModel(mainWindowToUse.getProject())), 
+			mainWindowToUse.getActions(),
 			buttons);
 	}
 	
