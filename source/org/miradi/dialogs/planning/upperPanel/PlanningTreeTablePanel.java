@@ -95,7 +95,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTableModel model = new PlanningTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse.getProject(), model);	
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
 		
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
 	}

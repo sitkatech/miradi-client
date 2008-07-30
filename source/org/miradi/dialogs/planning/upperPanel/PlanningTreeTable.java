@@ -24,15 +24,15 @@ import java.awt.Rectangle;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.utils.TableWithRowHeightManagement;
 
 public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider, TableWithRowHeightManagement
 {
-	public PlanningTreeTable(Project projectToUse, PlanningTreeTableModel planningTreeModelToUse)
+	public PlanningTreeTable(MainWindow mainWindowToUse, PlanningTreeTableModel planningTreeModelToUse)
 	{
-		super(projectToUse, planningTreeModelToUse);
+		super(mainWindowToUse.getProject(), planningTreeModelToUse);
 	}
 	
 	public String getUniqueTableIdentifier()
