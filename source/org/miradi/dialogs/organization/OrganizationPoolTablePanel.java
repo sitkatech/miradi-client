@@ -33,7 +33,7 @@ public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDel
 {
 	public OrganizationPoolTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), new OrganizationPoolTable(mainWindowToUse, new OrganizationPoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
+		super(mainWindowToUse, new OrganizationPoolTable(mainWindowToUse, new OrganizationPoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
 		
 		String html = Translation.getHtmlContent("OtherOrgOverview.html");
 		FlexibleWidthHtmlViewer htmlViewer = new FlexibleWidthHtmlViewer(mainWindowToUse, html);

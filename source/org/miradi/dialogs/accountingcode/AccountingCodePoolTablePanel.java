@@ -29,7 +29,7 @@ public class AccountingCodePoolTablePanel extends ObjectTablePanelWithCreateAndD
 {
 	public AccountingCodePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), new AccountingCodePoolTable(mainWindowToUse, new AccountingCodePoolTableModel(mainWindowToUse.getProject())), 
+		super(mainWindowToUse, new AccountingCodePoolTable(mainWindowToUse, new AccountingCodePoolTableModel(mainWindowToUse.getProject())), 
 			mainWindowToUse.getActions(),
 			buttons);
 	}

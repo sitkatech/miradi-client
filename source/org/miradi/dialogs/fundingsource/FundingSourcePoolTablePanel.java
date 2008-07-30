@@ -28,7 +28,7 @@ public class FundingSourcePoolTablePanel extends ObjectTablePanelWithCreateAndDe
 {
 	public FundingSourcePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), new FundingSourcePoolTable(mainWindowToUse, new FundingSourcePoolTableModel(mainWindowToUse.getProject())), 
+		super(mainWindowToUse, new FundingSourcePoolTable(mainWindowToUse, new FundingSourcePoolTableModel(mainWindowToUse.getProject())), 
 				mainWindowToUse.getActions(),
 				buttons);
 	}

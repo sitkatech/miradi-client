@@ -30,7 +30,7 @@ public class TeamPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public TeamPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), new TeamPoolTable(mainWindowToUse, new TeamPoolTableModel(mainWindowToUse.getProject())), 
+		super(mainWindowToUse, new TeamPoolTable(mainWindowToUse, new TeamPoolTableModel(mainWindowToUse.getProject())), 
 				mainWindowToUse.getActions(),
 				buttons);
 	}
