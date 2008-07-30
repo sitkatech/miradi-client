@@ -32,7 +32,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTreeTable;
 
@@ -41,9 +40,10 @@ import com.java.sun.jtreetable.TreeTableModel;
 abstract public class PanelTreeTable extends ExportableTreeTable 
 {
 
-	public PanelTreeTable(TreeTableModel treeTableModel)
+	public PanelTreeTable(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
+		mainWindow = mainWindowToUse;
 		setFont(getMainWindow().getUserDataPanelFont());
 		setRowHeight(getFontMetrics(getFont()).getHeight());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
@@ -61,10 +61,9 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));
 	}
 	
-	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{
-		return EAM.getMainWindow();
+		return mainWindow;
 	}
 	
 	
@@ -154,4 +153,6 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 	}
 	
 	public static final int TREE_COLUMN_INDEX = 0;
+	
+	private MainWindow mainWindow;
 }
