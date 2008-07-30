@@ -36,7 +36,7 @@ abstract public class AbstractProgressReportPopupEditor extends AbstractPopUpEdi
 	{
 		ORef parentRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressReportManagementPanel(getProject(), getMainWindow(), parentRef, getListTag(), getMainWindow().getActions(), getButtonClasses());
+		return new ProgressReportManagementPanel(getMainWindow(), parentRef, getListTag(), getMainWindow().getActions(), getButtonClasses());
 	}
 	
 	abstract protected Class[] getButtonClasses();

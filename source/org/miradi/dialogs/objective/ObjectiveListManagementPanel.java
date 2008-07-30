@@ -26,15 +26,14 @@ import org.miradi.actions.jump.ActionJumpStrategicPlanDevelopObjectivesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
-	public ObjectiveListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions, ObjectiveListTablePanel objectListPanel) throws Exception
+	public ObjectiveListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions, ObjectiveListTablePanel objectListPanel) throws Exception
 	{
-		super(splitPositionSaverToUse, objectListPanel, new ObjectivePropertiesPanel(projectToUse, actions, objectListPanel.getPicker()));
+		super(mainWindowToUse, objectListPanel, new ObjectivePropertiesPanel(mainWindowToUse.getProject(), actions, objectListPanel.getPicker()));
 	}
 	
 	public String getSplitterDescription()

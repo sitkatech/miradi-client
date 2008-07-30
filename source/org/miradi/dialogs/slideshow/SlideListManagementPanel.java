@@ -26,16 +26,15 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.SlideShowIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class SlideListManagementPanel extends ObjectListManagementPanel
 {
-	public SlideListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public SlideListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new SlideListTablePanel(projectToUse, actions, nodeRef),
-				new SlidePropertiesPanel(projectToUse, BaseId.INVALID));
+		super(mainWindowToUse, new SlideListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+				new SlidePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 	}
 
 	public String getPanelDescription()

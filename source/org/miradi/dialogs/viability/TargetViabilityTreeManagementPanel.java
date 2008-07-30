@@ -40,13 +40,13 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 {
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{
-		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
+		super(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
-		super(mainWindow.getProject(), splitPositionSaverToUse, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
+		super(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	

@@ -195,14 +195,14 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(factor.canHaveGoal())
 		{
-			goalsTab = new GoalListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			goalsTab = new GoalListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
 		if(factor.canHaveObjectives())
 		{
 			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
+			objectivesTab = new ObjectiveListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
@@ -238,7 +238,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			
 		if (factor.isTarget())
 		{
-			subTargetTab = new SubTargetManagementPanel(getProject(), mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			subTargetTab = new SubTargetManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
 		}
 		
