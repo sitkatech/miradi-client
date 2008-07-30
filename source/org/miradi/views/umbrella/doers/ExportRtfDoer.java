@@ -19,15 +19,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.MainWindowDoer;
+import java.io.File;
 
-public class ExportRtfDoer extends MainWindowDoer
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
+import org.miradi.project.Project;
+import org.miradi.utils.RtfFileChooser;
+import org.miradi.utils.RtfWriter;
+import org.miradi.views.ViewDoer;
+
+public class ExportRtfDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()
 	{
-		return false;
+		Project project = getMainWindow().getProject();
+		if(!project.isOpen())
+			return false;
+		
+		return getView().isRtfExportable();
 	}
 
 	@Override
@@ -35,5 +45,32 @@ public class ExportRtfDoer extends MainWindowDoer
 	{
 		if (!isAvailable())
 			return;
+		
+		RtfFileChooser rtfFileChooser = new RtfFileChooser(getMainWindow());
+		File destination = rtfFileChooser.displayChooser();
+		if (destination == null) 
+			return;
+
+		try
+		{
+			writeRtf(destination);
+			showErrorDialog(EAM.text("Current page was exported as RTF."));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			showErrorDialog(EAM.text("Error occurred while trying to export current page as RTF."));
+		}
+	}
+	
+	private void showErrorDialog(String errorMessage)
+	{
+		EAM.errorDialog(errorMessage);
+	}
+
+	private void writeRtf(File destination) throws Exception
+	{
+		RtfWriter rtfWriter = new RtfWriter(destination);
+		getView().exportRtf(rtfWriter);			
 	}
 }
