@@ -25,23 +25,18 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.actions.ObjectsAction;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.ExportableTableInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
 {
-	public ObjectManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		this(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
-		project = projectToUse;
-	}
-	
-	public ObjectManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
-	{
-		super(splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+		project = mainWindowToUse.getProject();
 		setDividerThick();
 		listComponent = tablePanelToUse;
 		

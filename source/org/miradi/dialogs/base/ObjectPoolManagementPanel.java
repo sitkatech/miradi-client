@@ -27,7 +27,7 @@ abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
 	public ObjectPoolManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
+		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 	abstract public Icon getIcon();	
