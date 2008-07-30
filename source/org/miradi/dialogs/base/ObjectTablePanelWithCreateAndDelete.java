@@ -23,18 +23,18 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
-	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, ObjectTable tableToUse)
+	public ObjectTablePanelWithCreateAndDelete(MainWindow mainWindowToUse, ObjectTable tableToUse)
 	{
-		super(projectToUse, tableToUse);
+		super(mainWindowToUse.getProject(), tableToUse);
 	}
 	
-	public ObjectTablePanelWithCreateAndDelete(Project projectToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
+	public ObjectTablePanelWithCreateAndDelete(MainWindow mainWindowToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
 	{
-		this(projectToUse, tableToUse);
+		this(mainWindowToUse, tableToUse);
 
 		for (int i=0; i<buttonActionClasses.length; ++i)
 		{

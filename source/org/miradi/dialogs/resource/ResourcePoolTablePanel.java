@@ -28,7 +28,7 @@ public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public ResourcePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), new ResourcePoolTable(mainWindowToUse, new ResourcePoolTableModel(mainWindowToUse.getProject())), 
+		super(mainWindowToUse, new ResourcePoolTable(mainWindowToUse, new ResourcePoolTableModel(mainWindowToUse.getProject())), 
 				mainWindowToUse.getActions(),
 				buttons);
 	}
