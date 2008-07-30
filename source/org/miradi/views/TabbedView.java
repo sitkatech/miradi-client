@@ -327,13 +327,18 @@ abstract public class TabbedView extends UmbrellaView
 	@Override
 	public boolean isRtfExportable()
 	{
-		//FIXME needs to check to see if exportable
-		return false;
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel == null)
+			return false;
+		
+		return panel.isRtfExportable();
 	}
 	
 	public void exportRtf(RtfWriter writer)
 	{
-		//FIXME needs to write rtf
+		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		if(panel != null)
+			panel.exportRtf(writer);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
