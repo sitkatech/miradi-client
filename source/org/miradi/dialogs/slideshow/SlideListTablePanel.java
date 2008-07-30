@@ -28,7 +28,6 @@ import org.miradi.actions.ActionDeleteSlide;
 import org.miradi.actions.ActionMoveSlideDown;
 import org.miradi.actions.ActionMoveSlideUp;
 import org.miradi.actions.ActionSlideShowViewer;
-import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.dialogs.base.ObjectTableModel;
@@ -40,7 +39,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Slide;
 import org.miradi.objects.SlideShow;
 import org.miradi.objects.ViewData;
-import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.views.diagram.DiagramLegendPanel;
 import org.miradi.views.diagram.DiagramView;
@@ -48,9 +46,9 @@ import org.miradi.views.diagram.DiagramView;
 
 public class SlideListTablePanel extends ObjectListTablePanel
 {
-	public SlideListTablePanel(Project project, Actions actions, ORef oref)
+	public SlideListTablePanel(MainWindow mainWindowToUse, ORef oref)
 	{
-		super(project, new SlideListTableModel(project, oref), actions, buttons);
+		super(mainWindowToUse, new SlideListTableModel(mainWindowToUse.getProject(), oref), buttons);
 	}
 	
 	static Class[] buttons = new Class[] {

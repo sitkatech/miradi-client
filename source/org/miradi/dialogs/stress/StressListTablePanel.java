@@ -23,17 +23,15 @@ import org.miradi.actions.ActionCloneStress;
 import org.miradi.actions.ActionCreateStress;
 import org.miradi.actions.ActionCreateStressFromKea;
 import org.miradi.actions.ActionDeleteStress;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public class StressListTablePanel extends ObjectListTablePanel
 {
-	public StressListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
+	public StressListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(projectToUse, new StressListTableModel(projectToUse, nodeRef), 
-				actions, 
+		super(mainWindowToUse, new StressListTableModel(mainWindowToUse.getProject(), nodeRef), 
 				buttonActionClasses);
 	}
 	

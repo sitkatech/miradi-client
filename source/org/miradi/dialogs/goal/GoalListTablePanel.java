@@ -22,17 +22,15 @@ package org.miradi.dialogs.goal;
 import org.miradi.actions.ActionCloneGoal;
 import org.miradi.actions.ActionCreateGoal;
 import org.miradi.actions.ActionDeleteGoal;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public class GoalListTablePanel extends ObjectListTablePanel
 {
-	public GoalListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
+	public GoalListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(projectToUse, new GoalListTableModel(projectToUse, nodeRef), 
-				actions, 
+		super(mainWindowToUse, new GoalListTableModel(mainWindowToUse.getProject(), nodeRef), 
 				buttonActionClasses);
 	}
 	

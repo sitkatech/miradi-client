@@ -25,18 +25,18 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
-import org.miradi.project.Project;
 
 public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 {
-	public GroupBoxLinkListTablePanel(Project projectToUse, GroupBoxLinkTableModel model)
+	public GroupBoxLinkListTablePanel(MainWindow mainWindowToUse, GroupBoxLinkTableModel model)
 	{
-		super(projectToUse, new GroupBoxLinkListTable(model));
+		super(mainWindowToUse, new GroupBoxLinkListTable(model));
 		
-		groupBoxLinkpropertiesPanel = new GroupBoxLinkPropertiesPanel(projectToUse);
+		groupBoxLinkpropertiesPanel = new GroupBoxLinkPropertiesPanel(mainWindowToUse.getProject());
 		add(groupBoxLinkpropertiesPanel,BorderLayout.BEFORE_FIRST_LINE);
 	}
 	

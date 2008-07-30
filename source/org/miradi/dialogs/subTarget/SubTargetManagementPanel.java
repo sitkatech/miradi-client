@@ -33,7 +33,7 @@ public class SubTargetManagementPanel extends ObjectListManagementPanel
 {
 	public SubTargetManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new SubTargetListTablePanel(mainWindowToUse.getProject(), actions, nodeRef), new SubTargetPropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, new SubTargetListTablePanel(mainWindowToUse, nodeRef), new SubTargetPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()

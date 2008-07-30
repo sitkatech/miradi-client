@@ -33,7 +33,7 @@ public class StressListManagementPanel extends ObjectListManagementPanel
 {
 	public StressListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+		super(mainWindowToUse, new StressListTablePanel(mainWindowToUse, nodeRef),
 				StressPropertiesPanel.createWithVisibilityPanel(mainWindowToUse));
 	}
 

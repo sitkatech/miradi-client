@@ -19,15 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.progressPercent;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public class ProgressPercentListTablePanel extends ObjectListTablePanel
 {
-	public ProgressPercentListTablePanel(Project projectToUse, Actions actions, ORef parentRef, String annotationTag, Class[] editButtonClasses)
+	public ProgressPercentListTablePanel(MainWindow mainWindowToUse, ORef parentRef, String annotationTag, Class[] editButtonClasses)
 	{
-		super(projectToUse, new ProgressPercentListTableModel(projectToUse, parentRef, annotationTag), actions, editButtonClasses);
+		super(mainWindowToUse, new ProgressPercentListTableModel(mainWindowToUse.getProject(), parentRef, annotationTag), editButtonClasses);
 	}
 }

@@ -201,7 +201,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(factor.canHaveObjectives())
 		{
-			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(getProject(), mainWindow.getActions(), getCurrentDiagramFactor().getWrappedORef());
+			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			objectivesTab = new ObjectiveListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
 			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}

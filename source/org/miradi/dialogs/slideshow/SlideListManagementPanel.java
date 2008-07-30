@@ -33,7 +33,7 @@ public class SlideListManagementPanel extends ObjectListManagementPanel
 {
 	public SlideListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new SlideListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+		super(mainWindowToUse, new SlideListTablePanel(mainWindowToUse, nodeRef),
 				new SlidePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 	}
 

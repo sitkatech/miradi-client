@@ -32,7 +32,7 @@ public class KeyEcologicalAttributeListManagementPanel extends ObjectListManagem
 {
 	public KeyEcologicalAttributeListManagementPanel(MainWindow mainWindowToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new KeyEcologicalAttributeListTablePanel(mainWindowToUse.getProject(), actions, nodeId),
+		super(mainWindowToUse, new KeyEcologicalAttributeListTablePanel(mainWindowToUse, nodeId),
 				new KeyEcologicalAttributePropertiesPanel(mainWindowToUse.getProject(), actions));
 	}
 	
