@@ -53,6 +53,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.umbrella.UmbrellaView;
 
 abstract public class TabbedView extends UmbrellaView
@@ -329,7 +330,12 @@ abstract public class TabbedView extends UmbrellaView
 		//FIXME needs to check to see if exportable
 		return false;
 	}
-
+	
+	public void exportRtf(RtfWriter writer)
+	{
+		//FIXME needs to write rtf
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
