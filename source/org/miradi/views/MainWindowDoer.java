@@ -38,6 +38,12 @@ abstract public class MainWindowDoer extends Doer
 	{
 		return getMainWindow().getProject();
 	}
+	
+	public boolean isProjectOpen()
+	{
+		Project project = getMainWindow().getProject();
+		return project.isOpen();
+	}
 
 	private MainWindow mainWindow;
 }

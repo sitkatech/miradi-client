@@ -23,7 +23,6 @@ import java.io.File;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 import org.miradi.utils.RtfFileChooser;
 import org.miradi.utils.RtfWriter;
 import org.miradi.views.ViewDoer;
@@ -33,8 +32,7 @@ public class ExportRtfDoer extends ViewDoer
 	@Override
 	public boolean isAvailable()
 	{
-		Project project = getMainWindow().getProject();
-		if(!project.isOpen())
+		if (!isProjectOpen())
 			return false;
 		
 		return getView().isRtfExportable();
