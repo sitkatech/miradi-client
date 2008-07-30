@@ -21,20 +21,21 @@ package org.miradi.dialogs.base;
 
 import javax.swing.ListSelectionModel;
 
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
 public class ObjectPoolTable extends ObjectTable
 {
-	public ObjectPoolTable(ObjectPoolTableModel modelToUse)
+	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
 	
-	public ObjectPoolTable(ObjectPoolTableModel modelToUse, int sortColumn)
+	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse, int sortColumn)
 	{
-		this(modelToUse);
+		this(mainWindowToUse, modelToUse);
 		sort(sortColumn);
 	}
 	

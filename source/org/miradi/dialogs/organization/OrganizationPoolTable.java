@@ -27,7 +27,7 @@ public class OrganizationPoolTable extends ObjectPoolTable
 {
 	public OrganizationPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(modelToUse, DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, modelToUse, DEFAULT_SORT_COLUMN);
 	}
 	
 	public String getUniqueTableIdentifier()

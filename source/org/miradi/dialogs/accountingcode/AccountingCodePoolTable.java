@@ -27,7 +27,7 @@ public class AccountingCodePoolTable extends ObjectPoolTable
 {
 	public AccountingCodePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 	
 	public String getUniqueTableIdentifier()

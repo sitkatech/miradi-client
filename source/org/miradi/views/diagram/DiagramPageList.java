@@ -47,7 +47,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 {
 	public DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel)
 	{
-		super(objectPoolTableModel, SORTABLE_COLUMN_INDEX);
+		super(mainWindowToUse, objectPoolTableModel, SORTABLE_COLUMN_INDEX);
 		project = mainWindowToUse.getProject();
 		
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
