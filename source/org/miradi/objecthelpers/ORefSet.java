@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class ORefSet extends HashSet<ORef>
 {
@@ -61,13 +60,6 @@ public class ORefSet extends HashSet<ORef>
 	
 	public ORefList toRefList()
 	{
-		ORefList refList = new ORefList();
-		for(Iterator iterator = iterator(); iterator.hasNext();)
-		{
-			ORef ref = (ORef) iterator.next();
-			refList.add(ref);
-		}
-
-		return refList;
+		return new ORefList(toArray(new ORef[0]));
 	}
 }
