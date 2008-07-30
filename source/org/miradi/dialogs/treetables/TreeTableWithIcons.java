@@ -55,6 +55,7 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -72,11 +73,11 @@ import com.java.sun.jtreetable.TreeTableModelAdapter;
 
 public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, RowColumnBaseObjectProvider
 {
-	public TreeTableWithIcons(Project projectToUse, GenericTreeTableModel treeTableModelToUse)
+	public TreeTableWithIcons(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(treeTableModelToUse);
 		treeTableModel = treeTableModelToUse;
-		project = projectToUse;
+		project = mainWindowToUse.getProject();
 		selectionListeners = new Vector();
 
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);

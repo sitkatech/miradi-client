@@ -26,18 +26,18 @@ import javax.swing.tree.TreePath;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ViewData;
-import org.miradi.project.Project;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
 public class TreeTableWithStateSaving extends TreeTableWithIcons implements TreeExpansionListener
 {
-	public TreeTableWithStateSaving(Project projectToUse, GenericTreeTableModel treeTableModel)
+	public TreeTableWithStateSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
-		super(projectToUse, treeTableModel);
-		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableModel, tree);
+		super(mainWindowToUse, treeTableModel);
+		treeTableModelAdapter = new EAMTreeTableModelAdapter(mainWindowToUse.getProject(), treeTableModel, tree);
 		
 		tree.addTreeExpansionListener(this);
 	}

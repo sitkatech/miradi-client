@@ -52,7 +52,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 {
 	public TargetViabilityTreeTable(MainWindow mainWindowToUse, GenericViabilityTreeModel targetViabilityModelToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), targetViabilityModelToUse);
+		super(mainWindowToUse, targetViabilityModelToUse);
 		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider();
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);

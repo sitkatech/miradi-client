@@ -27,7 +27,7 @@ public class StrategyActivityRelevancyTreeTable extends TreeTableWithColumnWidth
 {
 	public StrategyActivityRelevancyTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
-		super(mainWindowToUse.getProject(), treeTableModel);
+		super(mainWindowToUse, treeTableModel);
 	}
 
 	@Override

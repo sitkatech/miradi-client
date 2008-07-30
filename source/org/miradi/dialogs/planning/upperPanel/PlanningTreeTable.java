@@ -32,7 +32,7 @@ public class PlanningTreeTable extends TreeTableWithColumnWidthSaving implements
 {
 	public PlanningTreeTable(MainWindow mainWindowToUse, PlanningTreeTableModel planningTreeModelToUse)
 	{
-		super(mainWindowToUse.getProject(), planningTreeModelToUse);
+		super(mainWindowToUse, planningTreeModelToUse);
 	}
 	
 	public String getUniqueTableIdentifier()
