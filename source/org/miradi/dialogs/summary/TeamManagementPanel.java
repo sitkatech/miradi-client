@@ -36,7 +36,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 {
 	public TeamManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, new TeamPoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+		super(mainWindowToUse, new TeamPoolTablePanel(mainWindowToUse),
 				new TeamMemberPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
@@ -74,7 +74,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 
 	private TeamPoolTable createTable()
 	{
-		return new TeamPoolTable(new TeamPoolTableModel(getProject()));
+		return new TeamPoolTable(getMainWindow(), new TeamPoolTableModel(getProject()));
 	}
 	
 	@Override
