@@ -34,7 +34,7 @@ public class ThreatMatrixRowHeaderTable extends PanelTable
 {
 	public ThreatMatrixRowHeaderTable(MainWindow mainWindowToUse, TableModel rowHeaderData, ThreatGridPanel panel)
 	{
-		super(rowHeaderData);
+		super(mainWindowToUse, rowHeaderData);
 		getTableHeader().setResizingAllowed(true);
 		getTableHeader().setReorderingAllowed(false);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
