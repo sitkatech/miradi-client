@@ -22,9 +22,9 @@ package org.miradi.dialogs.treeRelevancy;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
 
-abstract public class AbstractTreeTableNode extends TreeTableNode
+abstract public class AbstractRelevancyNode extends TreeTableNode
 {
-	public AbstractTreeTableNode(Project projectToUse)
+	public AbstractRelevancyNode(Project projectToUse)
 	{
 		project = projectToUse;
 	}
