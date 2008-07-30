@@ -48,7 +48,7 @@ public class ShareActivityDoer extends AbstractShareDoer
 
 	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
-		return new ShareableActivityPoolTablePanel(getProject(), parentOfSharedObjectRefs);
+		return new ShareableActivityPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
 	}
 
 	protected int getParentType()

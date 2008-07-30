@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 abstract public class ObjectPoolTablePanel extends ObjectTablePanel
 {
-	public ObjectPoolTablePanel(Project projectToUse, int objectTypeToUse, ObjectPoolTableModel model)
+	public ObjectPoolTablePanel(MainWindow mainWindowToUse, int objectTypeToUse, ObjectPoolTableModel model)
 	{
-		super(projectToUse, new ObjectPoolTable(model, DEFAULT_SORT_COLUMN));
+		super(mainWindowToUse.getProject(), new ObjectPoolTable(model, DEFAULT_SORT_COLUMN));
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;

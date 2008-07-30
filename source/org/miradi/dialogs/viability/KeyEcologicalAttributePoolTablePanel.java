@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
 public class KeyEcologicalAttributePoolTablePanel extends ObjectPoolTablePanel
 {
-	public KeyEcologicalAttributePoolTablePanel(Project projectToUse)
+	public KeyEcologicalAttributePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(projectToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTableModel(projectToUse));
+		super(mainWindowToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTableModel(mainWindowToUse.getProject()));
 	}
 }

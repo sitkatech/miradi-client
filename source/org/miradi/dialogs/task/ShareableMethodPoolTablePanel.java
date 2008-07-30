@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.task;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
 public class ShareableMethodPoolTablePanel extends ObjectPoolTablePanel
 {
-	public ShareableMethodPoolTablePanel(Project project, ORef parentRef)
+	public ShareableMethodPoolTablePanel(MainWindow mainWindowToUse, ORef parentRef)
 	{
-		super(project, ObjectType.TASK, new ShareableMethodPoolTableModel(project, parentRef));
+		super(mainWindowToUse, ObjectType.TASK, new ShareableMethodPoolTableModel(mainWindowToUse.getProject(), parentRef));
 	}
 }

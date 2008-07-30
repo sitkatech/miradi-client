@@ -20,15 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Stress;
-import org.miradi.project.Project;
 
 public class StressPoolTablePanel extends ObjectPoolTablePanel
 {
-	public StressPoolTablePanel(Project projectToUse)
+	public StressPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(projectToUse, Stress.getObjectType(), 
-				new StressPoolTableModel(projectToUse)
+		super(mainWindowToUse, Stress.getObjectType(), 
+				new StressPoolTableModel(mainWindowToUse.getProject())
 		);
 	}
 }

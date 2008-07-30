@@ -20,15 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.goal;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
 public class GoalPoolTablePanel extends ObjectPoolTablePanel
 {
-	public GoalPoolTablePanel(Project projectToUse)
+	public GoalPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(projectToUse, ObjectType.GOAL, 
-				new GoalPoolTableModel(projectToUse)
+		super(mainWindowToUse, ObjectType.GOAL, 
+				new GoalPoolTableModel(mainWindowToUse.getProject())
 		);
 	}
 }
