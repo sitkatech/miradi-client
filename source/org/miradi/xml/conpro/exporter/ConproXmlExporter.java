@@ -91,8 +91,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
 		writeTargets(out);
-		writeKeyEcologicalAttributes(out);
-		writeViability(out);
 		writeThreats(out);
 		writeStrategies(out);
 		writeObjectives(out);
@@ -308,24 +306,14 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, THREATS);
 	}
 
-	private void writeViability(UnicodeWriter out) throws Exception
+	private void writeKeas(UnicodeWriter out, Target target) throws Exception
 	{
-		Target[] targets = getProject().getTargetPool().getTargets();
-		writeStartElement(out, VIABILITY);
-		try
-		{
-			for (int index = 0; index < targets.length; ++index)
-			{
-				if (targets[index].isViabilityModeTNC())
-				{
-					writeKeyEcologicalAttributeViability(out, targets[index]);
-				}
-			}
-		}
-		finally
-		{
-			writeEndElement(out, VIABILITY);
-		}
+		writeStartElement(out, KEY_ATTRIBUTES);
+		
+		if (target.isViabilityModeTNC())
+			writeKeyEcologicalAttributeViability(out, target);
+		
+		writeEndElement(out, KEY_ATTRIBUTES);
 	}
 
 	private void writeKeyEcologicalAttributeViability(UnicodeWriter out, Target target) throws Exception
@@ -334,12 +322,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < keaRefs.size(); ++refIndex)
 		{
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRefs.get(refIndex));
-			writeKeyEcologicalAttributeIndicatorViability(out, target, kea);
-		}				
+			writeKea(out, target, kea);
+		}
 	}
 	
 	private void writeKeyEcologicalAttributeIndicatorViability(UnicodeWriter out, Target target, KeyEcologicalAttribute kea) throws Exception
 	{
+		writeStartElement(out, VIABILITY_ASSESSMENTS);
 		ORefList indicatorRefs = kea.getIndicatorRefs();
 		indicatorRefs.sort();
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
@@ -347,13 +336,13 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(refIndex));
 			writeViability(out, target.getRef(), kea, indicator);
 		}				
+		
+		writeEndElement(out, VIABILITY_ASSESSMENTS);
 	}
 
 	private void writeViability(UnicodeWriter out, ORef targetRef, KeyEcologicalAttribute kea, Indicator indicator) throws Exception
 	{
 		writeStartElement(out, VIABILITY_ASSESSMENT);
-		writeElement(out, TARGET_ID, targetRef.getObjectId().toString());
-		writeElement(out, KEA_ID, kea.getId().toString());
 		writeElement(out, INDICATOR_ID, indicator.getId().toString());
 		
 		writeThreshold(out, INDICATOR_DESCRIPTION_POOR, indicator, StatusQuestion.POOR);
@@ -394,21 +383,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, elementName, value);
 	}
 
-	private void writeKeyEcologicalAttributes(UnicodeWriter out) throws Exception
+	private void writeKea(UnicodeWriter out, Target target, KeyEcologicalAttribute kea) throws Exception
 	{
-		KeyEcologicalAttribute keas[] = getProject().getKeyEcologicalAttributePool().getAllKeyEcologicalAttribute();
-		Arrays.sort(keas, new BaseObjectByRefSorter());
-		writeStartElement(out, KEY_ATTRIBUTES);
-		for (int index = 0; index < keas.length; ++index)
-		{
-			out.writeln("<" + KEY_ATTRIBUTE + " " + ID + "='" + keas[index].getId().toString() + "'>");
-			
-			writeLabelElement(out, NAME, keas[index], KeyEcologicalAttribute.TAG_LABEL);
-			writeOptionalElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(keas[index].getKeyEcologicalAttributeType()));
-			writeEndElement(out, KEY_ATTRIBUTE);
-		}
+		writeStartElement(out, KEY_ATTRIBUTE);
+
+		writeLabelElement(out, NAME, kea, KeyEcologicalAttribute.TAG_LABEL);
+		writeOptionalElement(out, CATEGORY, keyEcologicalAttributeTypeToXmlValue(kea.getKeyEcologicalAttributeType()));
 		
-		writeEndElement(out, KEY_ATTRIBUTES);
+		writeKeyEcologicalAttributeIndicatorViability(out, target, kea);
+		
+		writeEndElement(out, KEY_ATTRIBUTE);
 	}
 
 	private void writeTargets(UnicodeWriter out) throws Exception
@@ -432,6 +416,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeStresses(out, target);
 			writeStrategyThreatTargetAssociations(out, target);
 		
+			writeKeas(out, target);
+			
 			writeEndElement(out, TARGET);
 		}
 		writeEndElement(out, TARGETS);

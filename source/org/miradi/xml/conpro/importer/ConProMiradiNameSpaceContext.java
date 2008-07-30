@@ -24,6 +24,8 @@ import java.util.Iterator;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 
+import org.miradi.xml.conpro.ConProMiradiXml;
+
 public class ConProMiradiNameSpaceContext implements NamespaceContext
 {
 	public String getNamespaceURI(String prefix) 
@@ -32,7 +34,7 @@ public class ConProMiradiNameSpaceContext implements NamespaceContext
 			throw new NullPointerException("Null prefix");
 		
 		else if (prefix.equals(CONPRO_MIRADI_SCHEMA_PREFIX)) 
-			return "http://services.tnc.org/schema/conservation-project/0.1";
+			return ConProMiradiXml.NAME_SPACE;
 		
 		else if ("xml".equals(prefix)) 
 			return XMLConstants.XML_NS_URI;

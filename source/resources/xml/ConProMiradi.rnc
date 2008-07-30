@@ -1,9 +1,9 @@
-# $LastChangedBy$ 
-# $LastChangedDate$
-# $LastChangedRevision$ 
+# $LastChangedBy: nimbooce $ 
+# $LastChangedDate: 2008-07-28 16:29:50 -0400 (Mon, 28 Jul 2008) $
+# $LastChangedRevision: 30 $ 
 #
 
-namespace cp = "http://services.tnc.org/schema/conservation-project/0.1"
+namespace cp = "http://services.tnc.org/schema/conservation-project/0.2"
 
 #
 start = conservation_project.element
@@ -14,8 +14,6 @@ conservation_project.element =
         document_exchange.element
         & project_summary.element
         & targets.element
-        & key_attributes.element
-        & viability.element
         & threats.element
         & objectives.element
         & strategies.element
@@ -135,6 +133,7 @@ targets.element =
             & strategy_threat_target_associations.element
             & stresses.element
             & threat_target_associations.element
+            & key_attributes.element
         }*
     }
 #
@@ -197,18 +196,16 @@ threat_target_associations.element =
 key_attributes.element =
     element cp:key_attributes {
         element cp:key_attribute {
-            attribute id { vocabulary_id }
-            & element cp:name { text }
+            element cp:name { text }
             & element cp:category { vocabulary_key_ecological_attribute_category }?
+            & viability.element
         }*
     }
 #
 viability.element =
-    element cp:viability {
+    element cp:viability_assessments {
         element cp:viability_assessment {
-            element cp:target_id { vocabulary_id }
-            & element cp:indicator_id { vocabulary_id }
-            & element cp:kea_id { vocabulary_id }
+            element cp:indicator_id { vocabulary_id }
             & element cp:indicator_description_poor { text }?
             & element cp:indicator_description_fair { text }?
             & element cp:indicator_description_good { text }?
