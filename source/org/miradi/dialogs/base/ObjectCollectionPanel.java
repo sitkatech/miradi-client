@@ -30,6 +30,7 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -38,10 +39,10 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectCollectionPanel extends DisposablePanel implements CommandExecutedListener
 {
-	public ObjectCollectionPanel(Project projectToUse, ObjectPicker componentToUse)
+	public ObjectCollectionPanel(MainWindow mainWindowToUse, ObjectPicker componentToUse)
 	{
 		super(new BorderLayout());
-		project = projectToUse;
+		project = mainWindowToUse.getProject();
 		component = componentToUse;
 		MiradiScrollPane tableScrollPane = new MiradiScrollPane((JComponent)component);
 		tableScrollPane.setBackground(AppPreferences.getDataPanelBackgroundColor());

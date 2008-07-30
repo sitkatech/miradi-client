@@ -52,7 +52,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 {
 	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
-		super(mainWindowToUse.getProject(), treeToUse);
+		super(mainWindowToUse, treeToUse);
 		mainWindow = mainWindowToUse;
 		tree = treeToUse;
 		

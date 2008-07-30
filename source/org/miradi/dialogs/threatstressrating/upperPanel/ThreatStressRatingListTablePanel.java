@@ -27,23 +27,23 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.MultiTableUpperPanel;
 import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
-import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 {
-	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel threatStressRatingMultiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatStressRatingMultiTablePanel threatStressRatingMultiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
-		return new ThreatStressRatingListTablePanel(projectToUse, threatStressRatingMultiTablePanel, propertiesPanel);
+		return new ThreatStressRatingListTablePanel(mainWindowToUse, threatStressRatingMultiTablePanel, propertiesPanel);
 	}
 	
-	private ThreatStressRatingListTablePanel(Project projectToUse, ThreatStressRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
+	private ThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatStressRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
 	{
-		super(projectToUse, multiTablePanelToUse.getObjectPicker());
+		super(mainWindowToUse, multiTablePanelToUse.getObjectPicker());
 
 		multiTablePanel = multiTablePanelToUse;
 		propertiesPanel = propertiesPanelToUse;

@@ -29,7 +29,7 @@ public class ObjectTablePanelWithCreateAndDelete extends ObjectTablePanel
 {
 	public ObjectTablePanelWithCreateAndDelete(MainWindow mainWindowToUse, ObjectTable tableToUse)
 	{
-		super(mainWindowToUse.getProject(), tableToUse);
+		super(mainWindowToUse, tableToUse);
 	}
 	
 	public ObjectTablePanelWithCreateAndDelete(MainWindow mainWindowToUse, ObjectTable tableToUse, Actions actions, Class[] buttonActionClasses)
