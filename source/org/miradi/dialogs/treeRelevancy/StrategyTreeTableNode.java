@@ -29,7 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 
-public class StrategyTreeTableNode extends AbstractTreeTableNode
+public class StrategyTreeTableNode extends AbstractRelevancyNode
 {
 	public StrategyTreeTableNode(Project project, Strategy strategyToUse) throws Exception
 	{
