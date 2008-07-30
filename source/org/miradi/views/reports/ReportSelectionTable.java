@@ -25,11 +25,12 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithColumnWidthSaver;
 
 public class ReportSelectionTable extends TableWithColumnWidthSaver
 {
-	public ReportSelectionTable(ReportSelectionTableModel model)
+	public ReportSelectionTable(MainWindow mainWindowToUse, ReportSelectionTableModel model)
 	{
 		super(model);
 		

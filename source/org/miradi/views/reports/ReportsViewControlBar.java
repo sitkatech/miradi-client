@@ -44,7 +44,7 @@ public abstract class ReportsViewControlBar extends Box
 	
 	private MiradiScrollPane createReportSelectionPanel(ReportSelectionTableModel standardReportTableModel)
 	{
-		standardReportTable = new ReportSelectionTable(standardReportTableModel);
+		standardReportTable = new ReportSelectionTable(owner.getMainWindow(), standardReportTableModel);
 		standardReportTable.getSelectionModel().addListSelectionListener(new TableSelectionListener(standardReportTable));
 
 		MiradiScrollPane scroller = new MiradiScrollPane(standardReportTable);
