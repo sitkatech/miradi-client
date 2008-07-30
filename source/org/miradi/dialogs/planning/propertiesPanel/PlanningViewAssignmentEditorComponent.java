@@ -43,7 +43,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject());
+		super(mainWindowToUse);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		mainWindow = mainWindowToUse;
