@@ -49,9 +49,9 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 public class ProjectListTreeTable extends PanelTreeTable
 {
-	public ProjectListTreeTable(ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
+	public ProjectListTreeTable(MainWindow mainWindowToUse, ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
 	{
-		super(treeTableModel);
+		super(mainWindowToUse, treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
 		Renderer renderer = new Renderer();

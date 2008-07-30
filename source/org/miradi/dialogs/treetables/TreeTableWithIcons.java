@@ -75,7 +75,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 {
 	public TreeTableWithIcons(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
-		super(treeTableModelToUse);
+		super(mainWindowToUse, treeTableModelToUse);
 		treeTableModel = treeTableModelToUse;
 		project = mainWindowToUse.getProject();
 		selectionListeners = new Vector();
