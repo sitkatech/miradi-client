@@ -30,7 +30,7 @@ public class CloneObjectiveDoer extends CreateObjective
 		if (!isAvailable())
 			return;
 	
-		if (validUserChoiceForObjectToClone(new ObjectivePoolTablePanel(getProject()), EAM.text("Choose Objective to Clone")))
+		if (validUserChoiceForObjectToClone(new ObjectivePoolTablePanel(getMainWindow()), EAM.text("Choose Objective to Clone")))
 			super.doIt();
 	}
 }

@@ -59,6 +59,6 @@ public class ShareMethodDoer extends AbstractShareDoer
 
 	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
-		return new ShareableMethodPoolTablePanel(getProject(), parentOfSharedObjectRefs);
+		return new ShareableMethodPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
 	}
 }

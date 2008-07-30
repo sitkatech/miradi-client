@@ -30,7 +30,7 @@ public class CloneIndicatorDoer extends CreateIndicator
 		if (!isAvailable())
 			return;
 
-		if (validUserChoiceForObjectToClone(new IndicatorPoolTablePanel(getProject()), EAM.text("Choose Indicator to Clone")))
+		if (validUserChoiceForObjectToClone(new IndicatorPoolTablePanel(getMainWindow()), EAM.text("Choose Indicator to Clone")))
 			super.doIt();
 	}
 }

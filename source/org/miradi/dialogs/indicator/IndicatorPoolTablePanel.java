@@ -20,15 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.indicator;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
 public class IndicatorPoolTablePanel extends ObjectPoolTablePanel
 {
-	public IndicatorPoolTablePanel(Project projectToUse)
+	public IndicatorPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(projectToUse, ObjectType.INDICATOR, 
-				new IndicatorPoolTableModel(projectToUse)
+		super(mainWindowToUse, ObjectType.INDICATOR, 
+				new IndicatorPoolTableModel(mainWindowToUse.getProject())
 		);
 	}
 }
