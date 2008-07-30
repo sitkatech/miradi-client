@@ -21,14 +21,13 @@ package org.miradi.dialogs.base;
 
 import javax.swing.Icon;
 
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.main.MainWindow;
 
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
-	public ObjectPoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectPoolManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		super(mainWindowToUse.getProject(), mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
 	abstract public Icon getIcon();	

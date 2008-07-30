@@ -25,23 +25,21 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.AccountCodeIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public AccountingCodePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
+	public AccountingCodePoolManagementPanel(MainWindow mainWindowToUse, String overviewText) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, new AccountingCodePoolTablePanel(projectToUse, actionsToUse),
-				new AccountingCodePropertiesPanel(projectToUse, BaseId.INVALID));
+		super(mainWindowToUse, new AccountingCodePoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+				new AccountingCodePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 	}

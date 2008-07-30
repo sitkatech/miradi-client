@@ -22,7 +22,6 @@ package org.miradi.dialogs.organization;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpSummaryWizardRolesAndResponsibilities;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.OrganizationIcon;
@@ -30,13 +29,12 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTableInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
-	public OrganizationManagementPanel(MainWindow mainWindowToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
+	public OrganizationManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), splitPositionSaverToUse, new OrganizationPoolTablePanel(mainWindowToUse, actionsToUse),
+		super(mainWindowToUse, new OrganizationPoolTablePanel(mainWindowToUse, mainWindowToUse.getActions()),
 				new OrganizationPropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 	}

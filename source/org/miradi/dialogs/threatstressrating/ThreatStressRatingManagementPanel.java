@@ -28,7 +28,6 @@ import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiT
 import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 {
@@ -44,7 +43,7 @@ public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 		return new ThreatStressRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
 
-	public ThreatStressRatingManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public ThreatStressRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 	}
