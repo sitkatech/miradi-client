@@ -26,15 +26,14 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardReviewAndModifyTargetsStep
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.SubTargetIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class SubTargetManagementPanel extends ObjectListManagementPanel
 {
-	public SubTargetManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public SubTargetManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new SubTargetListTablePanel(projectToUse, actions, nodeRef), new SubTargetPropertiesPanel(projectToUse));
+		super(mainWindowToUse, new SubTargetListTablePanel(mainWindowToUse.getProject(), actions, nodeRef), new SubTargetPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()

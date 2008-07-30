@@ -39,7 +39,7 @@ public class EditProgressPercentDoer extends AbstractPopUpEditDoer
 	{
 		ORef parentRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressPercentManagementPanel(getProject(), getMainWindow(), parentRef, Objective.TAG_PROGRESS_PERCENT_REFS, getMainWindow().getActions(), buttonActionClasses);
+		return new ProgressPercentManagementPanel(getMainWindow(), parentRef, Objective.TAG_PROGRESS_PERCENT_REFS, getMainWindow().getActions(), buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {

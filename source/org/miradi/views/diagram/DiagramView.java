@@ -207,7 +207,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		disposeOfSlideShowDialog();
 		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
-		SlideListManagementPanel slideShowPoolManagementPanel =  new SlideListManagementPanel(getProject(), getMainWindow(), slideShowRef, getActions());
+		SlideListManagementPanel slideShowPoolManagementPanel =  new SlideListManagementPanel(getMainWindow(), slideShowRef, getActions());
 		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
 		slideShowDlg = new SlideShowDialog(getMainWindow(), slideShowPoolManagementPanel, slideShowPoolManagementPanel.getPanelDescription());
 		slideShowDlg.pack();

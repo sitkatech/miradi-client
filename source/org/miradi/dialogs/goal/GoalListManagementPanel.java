@@ -26,16 +26,15 @@ import org.miradi.actions.jump.ActionJumpStrategicPlanDevelopGoalStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.GoalIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class GoalListManagementPanel extends ObjectListManagementPanel
 {
-	public GoalListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef nodeRef, Actions actions) throws Exception
+	public GoalListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new GoalListTablePanel(projectToUse, actions, nodeRef),
-				new GoalPropertiesPanel(projectToUse));
+		super(mainWindowToUse, new GoalListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+				new GoalPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getSplitterDescription()

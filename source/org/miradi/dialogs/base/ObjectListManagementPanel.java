@@ -19,19 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.main.MainWindow;
 
 abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 {
-	public ObjectListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectListManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
+		super(mainWindowToUse.getProject(), mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
-	
-	public ObjectListManagementPanel(SplitterPositionSaverAndGetter splitPositionSaverToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
-	{
-		this(null, splitPositionSaverToUse, tablePanelToUse, propertiesPanelToUse);
-	}
-	
+
 }

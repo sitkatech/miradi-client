@@ -26,15 +26,14 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.main.MainWindow;
 
 public class KeyEcologicalAttributeListManagementPanel extends ObjectListManagementPanel
 {
-	public KeyEcologicalAttributeListManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, FactorId nodeId, Actions actions) throws Exception
+	public KeyEcologicalAttributeListManagementPanel(MainWindow mainWindowToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(splitPositionSaverToUse, new KeyEcologicalAttributeListTablePanel(projectToUse, actions, nodeId),
-				new KeyEcologicalAttributePropertiesPanel(projectToUse, actions));
+		super(mainWindowToUse, new KeyEcologicalAttributeListTablePanel(mainWindowToUse.getProject(), actions, nodeId),
+				new KeyEcologicalAttributePropertiesPanel(mainWindowToUse.getProject(), actions));
 	}
 	
 	public String getPanelDescription()

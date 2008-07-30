@@ -26,15 +26,14 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class GroupBoxLinkManagementPanel extends ObjectListManagementPanel
 {
-	public GroupBoxLinkManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef parentRef, String annotationTag, Actions actions, GroupBoxLinkListTablePanel tablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
+	public GroupBoxLinkManagementPanel(MainWindow mainWindowToUse, ORef parentRef, String annotationTag, Actions actions, GroupBoxLinkListTablePanel tablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
 	{
-		super(splitPositionSaverToUse, tablePanel, propertiesPanel);
+		super(mainWindowToUse, tablePanel, propertiesPanel);
 	}
 
 	public String getPanelDescription()

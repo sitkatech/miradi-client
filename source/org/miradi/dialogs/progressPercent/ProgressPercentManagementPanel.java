@@ -25,15 +25,14 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.ProgressPercentIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ProgressPercentManagementPanel extends ObjectListManagementPanel
 {
-	public ProgressPercentManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef parentRef, String annotationTag, Actions actions, Class[] editButtonClasses) throws Exception
+	public ProgressPercentManagementPanel(MainWindow mainWindowToUse, ORef parentRef, String annotationTag, Actions actions, Class[] editButtonClasses) throws Exception
 	{
-		super(splitPositionSaverToUse, new ProgressPercentListTablePanel(projectToUse, actions, parentRef, annotationTag, editButtonClasses), new ProgressPercentPropertiesPanel(projectToUse));
+		super(mainWindowToUse, new ProgressPercentListTablePanel(mainWindowToUse.getProject(), actions, parentRef, annotationTag, editButtonClasses), new ProgressPercentPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()
