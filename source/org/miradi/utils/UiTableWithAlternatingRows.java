@@ -33,7 +33,7 @@ abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthSav
 {
 	public UiTableWithAlternatingRows(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		initialize();
 	}
 	

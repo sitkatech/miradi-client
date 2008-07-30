@@ -53,7 +53,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 {
 	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		
 		model = modelToUse;
 		selectionListeners = new Vector();

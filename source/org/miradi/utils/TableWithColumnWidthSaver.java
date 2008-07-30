@@ -22,10 +22,11 @@ package org.miradi.utils;
 import javax.swing.table.TableModel;
 
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 {
-	public TableWithColumnWidthSaver(TableModel model)
+	public TableWithColumnWidthSaver(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(model);
 	
