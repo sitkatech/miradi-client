@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -46,11 +47,11 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class MultiTablePanel extends DisposablePanel implements ObjectPicker
 {
-	public MultiTablePanel(Project projectToUse)
+	public MultiTablePanel(MainWindow mainWindowToUse)
 	{
 		super(new BorderLayout());
 		
-		project = projectToUse;
+		project = mainWindowToUse.getProject();
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();

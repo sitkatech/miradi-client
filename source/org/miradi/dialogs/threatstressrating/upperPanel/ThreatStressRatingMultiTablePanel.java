@@ -30,15 +30,15 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
 {
-	public ThreatStressRatingMultiTablePanel(Project projectToUse) throws Exception
+	public ThreatStressRatingMultiTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse);
+		super(mainWindowToUse);
 		
 		createTables();
 		addTableToGridBag();

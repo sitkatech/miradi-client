@@ -27,14 +27,12 @@ import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTa
 import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 
 public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 {
 	public static ThreatStressRatingManagementPanel create(MainWindow mainWindowToUse) throws Exception
 	{
-		Project project = mainWindowToUse.getProject();
-		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(project);
+		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(mainWindowToUse);
 		ThreatStressRatingPropertiesPanel propertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindowToUse, multiTablePanel);
 		
 		ThreatStressRatingListTablePanel tablePanel =  ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(
