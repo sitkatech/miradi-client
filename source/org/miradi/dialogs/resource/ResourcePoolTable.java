@@ -21,11 +21,12 @@ package org.miradi.dialogs.resource;
 
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.main.MainWindow;
 
 
 public class ResourcePoolTable extends ObjectPoolTable
 {
-	public ResourcePoolTable(ObjectPoolTableModel modelToUse)
+	public ResourcePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse);
 	}

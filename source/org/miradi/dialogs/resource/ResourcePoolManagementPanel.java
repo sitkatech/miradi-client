@@ -38,7 +38,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ResourcePoolManagementPanel(MainWindow mainWindowToUse, String overviewText) throws Exception
 	{
-		super(mainWindowToUse, new ResourcePoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+		super(mainWindowToUse, new ResourcePoolTablePanel(mainWindowToUse),
 				new ResourcePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
@@ -82,7 +82,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	private ResourcePoolTable createTable()
 	{
-		return new ResourcePoolTable(new ResourcePoolTableModel(getProject()));
+		return new ResourcePoolTable(getMainWindow(), new ResourcePoolTableModel(getProject()));
 	}
 	
 	@Override
