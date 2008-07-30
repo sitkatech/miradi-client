@@ -89,8 +89,8 @@ public class SummaryView extends TabbedView
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
 		
-		teamManagementPanel = new TeamManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions());
-		organizationManagementPanel = new OrganizationManagementPanel(getMainWindow(), getMainWindow(), getMainWindow().getActions());
+		teamManagementPanel = new TeamManagementPanel(getMainWindow());
+		organizationManagementPanel = new OrganizationManagementPanel(getMainWindow());
 
 		ORef[] allRelatedRefs = new ORef[] {
 			metadata.getRef(),

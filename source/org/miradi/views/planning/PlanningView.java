@@ -114,9 +114,9 @@ public class PlanningView extends TabbedView
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable) planningTreeTablePanel.getTree();
 		PlanningTreePropertiesPanel planningTreePropertiesPanel = new PlanningTreePropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
 		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
-		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
-		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
-		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow(), getMainWindow().getActions(), "");
+		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
+		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
+		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
 		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);

@@ -24,22 +24,20 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineTeamMembers;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.icons.TeamIcon;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
 {
-	public TeamManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse) throws Exception
+	public TeamManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, new TeamPoolTablePanel(projectToUse, actionsToUse),
-				new TeamMemberPropertiesPanel(projectToUse));
+		super(mainWindowToUse.getProject(), mainWindowToUse, new TeamPoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+				new TeamMemberPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()

@@ -25,23 +25,21 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
-	public ResourcePoolManagementPanel(Project projectToUse, SplitterPositionSaverAndGetter splitPositionSaverToUse, Actions actionsToUse, String overviewText) throws Exception
+	public ResourcePoolManagementPanel(MainWindow mainWindowToUse, String overviewText) throws Exception
 	{
-		super(projectToUse, splitPositionSaverToUse, new ResourcePoolTablePanel(projectToUse, actionsToUse),
-				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));
+		super(mainWindowToUse, new ResourcePoolTablePanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()),
+				new ResourcePropertiesPanel(mainWindowToUse.getProject(), BaseId.INVALID));
 
 		add(new PanelTitleLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 	}
