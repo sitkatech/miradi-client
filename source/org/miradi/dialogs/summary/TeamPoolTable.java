@@ -21,10 +21,11 @@ package org.miradi.dialogs.summary;
 
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.main.MainWindow;
 
 public class TeamPoolTable extends ObjectPoolTable
 {
-	public TeamPoolTable(ObjectPoolTableModel modelToUse)
+	public TeamPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(modelToUse);
 	}
