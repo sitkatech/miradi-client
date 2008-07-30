@@ -31,6 +31,7 @@ import org.martus.swing.UiLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
@@ -45,7 +46,7 @@ public class ThreatGridPanel extends JPanel
 		super(new BorderLayout());
 		view = viewToUse;
 		add(createHeading(), BorderLayout.BEFORE_FIRST_LINE);
-		add(createThreatGridPanel(modelToUse));
+		add(createThreatGridPanel(view.getMainWindow(), modelToUse));
 	}
 
 	private JComponent createHeading()
@@ -56,11 +57,11 @@ public class ThreatGridPanel extends JPanel
 		return targetLabel;
 	}
 	
-	public JScrollPane createThreatGridPanel(ThreatMatrixTableModel model) throws Exception
+	public JScrollPane createThreatGridPanel(MainWindow mainWindowToUse, ThreatMatrixTableModel model) throws Exception
 	{
 		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(model);
-		rowHeaderTable =  new ThreatMatrixRowHeaderTable(newRowHeaderData, this);
-		threatTable = new ThreatMatrixTable(model, this);
+		rowHeaderTable =  new ThreatMatrixRowHeaderTable(mainWindowToUse, newRowHeaderData, this);
+		threatTable = new ThreatMatrixTable(mainWindowToUse, model, this);
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 	}
 
