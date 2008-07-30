@@ -22,17 +22,16 @@ package org.miradi.dialogs.objective;
 import org.miradi.actions.ActionCloneObjective;
 import org.miradi.actions.ActionCreateObjective;
 import org.miradi.actions.ActionDeleteObjective;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public class ObjectiveListTablePanel extends ObjectListTablePanel
 {
-	public ObjectiveListTablePanel(Project projectToUse, Actions actions, ORef nodeRef)
+	public ObjectiveListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
 	{
-		super(projectToUse, new ObjectiveListTableModel(projectToUse, nodeRef), 
-				actions, buttonActionClasses, DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, new ObjectiveListTableModel(mainWindowToUse.getProject(), nodeRef), 
+				buttonActionClasses, DEFAULT_SORT_COLUMN);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {

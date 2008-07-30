@@ -32,7 +32,7 @@ public class ProgressReportManagementPanel extends ObjectListManagementPanel
 {
 	public ProgressReportManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, String annotationTag, Actions actions, Class[] editButtonClasses) throws Exception
 	{
-		super(mainWindowToUse, new ProgressReportListTablePanel(mainWindowToUse.getProject(), actions, nodeRef, annotationTag, editButtonClasses), new ProgressReportPropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, new ProgressReportListTablePanel(mainWindowToUse, nodeRef, annotationTag, editButtonClasses), new ProgressReportPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()

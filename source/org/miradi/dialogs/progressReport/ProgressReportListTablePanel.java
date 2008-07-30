@@ -19,16 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.progressReport;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
 
 public class ProgressReportListTablePanel extends ObjectListTablePanel
 {
-	public ProgressReportListTablePanel(Project projectToUse, Actions actions, ORef nodeRef, String annotationTag, Class[] editButtonClasses)
+	public ProgressReportListTablePanel(MainWindow mainWindowToUse, ORef nodeRef, String annotationTag, Class[] editButtonClasses)
 	{
-		super(projectToUse, new ProgressReportListTableModel(projectToUse, nodeRef, annotationTag), actions, editButtonClasses, DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, new ProgressReportListTableModel(mainWindowToUse.getProject(), nodeRef, annotationTag), editButtonClasses, DEFAULT_SORT_COLUMN);
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;

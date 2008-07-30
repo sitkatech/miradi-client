@@ -21,17 +21,15 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.ids.FactorId;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class KeyEcologicalAttributeListTablePanel extends ObjectListTablePanel
 {
-	public KeyEcologicalAttributeListTablePanel(Project projectToUse, Actions actions, FactorId nodeId)
+	public KeyEcologicalAttributeListTablePanel(MainWindow mainWindowToUse, FactorId nodeId)
 	{
-		super(projectToUse, new KeyEcologicalAttributeListTableModel(projectToUse, nodeId), 
-				actions, 
+		super(mainWindowToUse, new KeyEcologicalAttributeListTableModel(mainWindowToUse.getProject(), nodeId), 
 				buttonActionClasses);
 	}
 	

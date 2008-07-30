@@ -19,28 +19,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.actions.Actions;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ObjectListTablePanel(Project projectToUse, ObjectTableModel model, Actions actions, Class[] buttonActionClasses)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model, Class[] buttonActionClasses)
 	{
-		this(projectToUse, new ObjectListTable(model), actions,buttonActionClasses);
+		this(mainWindowToUse, new ObjectListTable(model), buttonActionClasses);
 	}
 	
-	public ObjectListTablePanel(Project projectToUse, ObjectTableModel model, Actions actions, Class[] buttonActionClasses, int sortColumn)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model, Class[] buttonActionClasses, int sortColumn)
 	{
-		this(projectToUse, new ObjectListTable(model, sortColumn), actions,buttonActionClasses);
+		this(mainWindowToUse, new ObjectListTable(model, sortColumn), buttonActionClasses);
 	}
 	
-	public ObjectListTablePanel(Project projectToUse, ObjectListTable table)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectListTable table)
 	{
-		super(projectToUse, table);
+		super(mainWindowToUse.getProject(), table);
 	}
 	
-	public ObjectListTablePanel(Project projectToUse, ObjectListTable table, Actions actions, Class[] buttonActionClasses)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectListTable table, Class[] buttonActionClasses)
 	{
-		super(projectToUse, table, actions, buttonActionClasses);
+		super(mainWindowToUse.getProject(), table, mainWindowToUse.getActions(), buttonActionClasses);
 	}
 }

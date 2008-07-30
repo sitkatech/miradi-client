@@ -33,7 +33,7 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 {
 	public GoalListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new GoalListTablePanel(mainWindowToUse.getProject(), actions, nodeRef),
+		super(mainWindowToUse, new GoalListTablePanel(mainWindowToUse, nodeRef),
 				new GoalPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
