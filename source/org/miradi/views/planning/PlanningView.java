@@ -68,6 +68,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.ExportableTableInterface;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
@@ -190,6 +191,15 @@ public class PlanningView extends TabbedView
 		public boolean isPrintable()
 		{
 			return true;
+		}
+
+		public boolean isRtfExportable()
+		{
+			return false;
+		}		
+		
+		public void exportRtf(RtfWriter writer)
+		{
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;

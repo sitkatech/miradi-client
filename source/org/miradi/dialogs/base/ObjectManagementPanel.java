@@ -29,6 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
@@ -126,7 +127,16 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		return false;
 	}
-	
+
+	public boolean isRtfExportable()
+	{
+		return false;
+	}
+		
+	public void exportRtf(RtfWriter writer)
+	{
+	}
+
 	private MainWindow mainWindow;
 	private ObjectCollectionPanel listComponent;
 	public AbstractObjectDataInputPanel propertiesPanel;
