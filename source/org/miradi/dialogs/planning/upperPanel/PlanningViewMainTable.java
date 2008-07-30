@@ -12,6 +12,7 @@ import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
@@ -20,9 +21,9 @@ import org.miradi.utils.TableWithTreeTableNodes;
 
 public class PlanningViewMainTable extends TableWithTreeTableNodes
 {
-	public PlanningViewMainTable(PlanningViewMainTableModel modelToUse, FontForObjectTypeProvider fontProviderToUse)
+	public PlanningViewMainTable(MainWindow mainWindowToUse, PlanningViewMainTableModel modelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		fontProvider = fontProviderToUse;
 		setTableColumnRenderers();
 	}

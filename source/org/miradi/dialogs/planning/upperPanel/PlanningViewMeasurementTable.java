@@ -27,13 +27,14 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 {
-	public PlanningViewMeasurementTable(PlanningViewMeasurementTableModel model, FontForObjectTypeProvider fontProvider)
+	public PlanningViewMeasurementTable(MainWindow mainWindowToUse, PlanningViewMeasurementTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(model);	
+		super(mainWindowToUse, model);	
 		otherRenderer = new BasicTableCellRenderer();
 		otherRenderer.setCellBackgroundColor(getBackgroundColor());
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(model, fontProvider, getBackgroundColor());

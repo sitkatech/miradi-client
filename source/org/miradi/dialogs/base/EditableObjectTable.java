@@ -38,6 +38,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -50,7 +51,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class EditableObjectTable extends TableWithColumnWidthSaver  implements ObjectPicker
 {
-	public EditableObjectTable(EditableObjectTableModel modelToUse)
+	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 		

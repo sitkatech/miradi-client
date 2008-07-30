@@ -28,13 +28,14 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 
 
 public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
-	public PlanningViewBudgetTable(PlanningViewBudgetTableModel modelToUse)
+	public PlanningViewBudgetTable(MainWindow mainWindowToUse, PlanningViewBudgetTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		setBackground(getColumnBackGroundColor(0));
 		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider());
 	}

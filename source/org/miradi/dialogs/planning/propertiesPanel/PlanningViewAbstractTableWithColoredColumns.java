@@ -27,12 +27,13 @@ import javax.swing.JTable;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.treetables.TreeTableWithIcons;
+import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewAbstractTableWithColoredColumns extends EditableObjectTable
 {
-	public PlanningViewAbstractTableWithColoredColumns(EditableObjectTableModel modelToUse)
+	public PlanningViewAbstractTableWithColoredColumns(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 		

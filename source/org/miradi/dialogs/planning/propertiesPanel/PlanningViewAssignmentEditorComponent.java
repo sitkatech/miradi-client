@@ -126,16 +126,16 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	private void createTables() throws Exception
 	{
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
-		resourceTable = new PlanningViewResourceTable(resourceTableModel);
+		resourceTable = new PlanningViewResourceTable(mainWindow, resourceTableModel);
 		
 		workPlanModel = new PlanningViewWorkPlanTableModel(getProject());
-		workplanTable = new PlanningViewWorkPlanTable(getProject(), workPlanModel);
+		workplanTable = new PlanningViewWorkPlanTable(mainWindow, workPlanModel);
 		
 		budgetModel = new PlanningViewBudgetTableModel(getProject());
-		budgetTable = new PlanningViewBudgetTable(budgetModel);
+		budgetTable = new PlanningViewBudgetTable(mainWindow, budgetModel);
 		
 		budgetTotalsModel = new PlanningViewBudgetTotalsTableModel(getProject());
-		budgetTotalsTable = new PlanningViewBudgetTotalsTable(budgetTotalsModel);
+		budgetTotalsTable = new PlanningViewBudgetTotalsTable(mainWindow, budgetTotalsModel);
 	}
 	
 	private void addTables()

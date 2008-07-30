@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
@@ -32,9 +33,9 @@ import org.miradi.objects.ProjectResource;
 
 public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
-	public PlanningViewResourceTable(PlanningViewResourceTableModel modelToUse)
+	public PlanningViewResourceTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		model = modelToUse;
 		
 		setBackground(getColumnBackGroundColor(0));
