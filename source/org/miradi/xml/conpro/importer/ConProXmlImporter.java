@@ -149,13 +149,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		importStrategies();
 		importThreats();
-		importTargets();
-		
-		importKeyEcologicalAttributes();
 		importIndicators();
 		importObjectives();
-		
-		importViability();
+		importTargets();
 		
 		setDiagramFactorDefaultLocations();
 		
@@ -339,17 +335,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 
-	private void importViability() throws Exception
+	private void importViability(Node keaNode, ORef targetRef, ORef keaRef) throws Exception
 	{
-		NodeList keaNodeList = getNodes(getRootNode(), VIABILITY, VIABILITY_ASSESSMENT);
+		NodeList keaNodeList = getNodes(keaNode, VIABILITY_ASSESSMENTS, VIABILITY_ASSESSMENT);
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
-			
-			ORef targetRef = getNodeAsRef(viabilityAssessmentNode, TARGET_ID, Target.getObjectType());
 			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 			
-			ORef keaRef = getNodeAsRef(viabilityAssessmentNode, KEA_ID, KeyEcologicalAttribute.getObjectType());
 			String existingKeaIdsAsString = getProject().getObjectData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), existingKeaIdsAsString);
 			if(!keaIds.contains(keaRef))
@@ -416,17 +409,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(indicatorRef, Indicator.TAG_INDICATOR_THRESHOLD, thresholds.toString());
 	}
 
-	private void importKeyEcologicalAttributes() throws Exception
+	private void importKeyEcologicalAttributes(Node targetNode, ORef targetRef) throws Exception
 	{
-		NodeList keaNodeList = getNodes(getRootNode(), KEY_ATTRIBUTES, KEY_ATTRIBUTE);
+		NodeList keaNodeList = getNodes(targetNode, KEY_ATTRIBUTES, KEY_ATTRIBUTE);
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node keaNode = keaNodeList.item(nodeIndex);
-			String keaId = getAttributeValue(keaNode, ID);
-			ORef keaRef = getProject().createObject(KeyEcologicalAttribute.getObjectType(), new BaseId(keaId));
-			
+			ORef keaRef = getProject().createObject(KeyEcologicalAttribute.getObjectType());
 			importField(keaNode, NAME, keaRef, KeyEcologicalAttribute.TAG_LABEL);
-			importCodeField(keaNode, CATEGORY, keaRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getCodeMapHelper().getConProToMiradiKeaTypeMap());			
+			importCodeField(keaNode, CATEGORY, keaRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getCodeMapHelper().getConProToMiradiKeaTypeMap());
+			
+			importViability(keaNode, targetRef, keaRef);
 		}
 	}
 
@@ -549,6 +542,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importThreatToTargetAssociations(targetNode, targetRef);
 			importStrategyThreatTargetAssociations(targetNode, targetRef);
 			importStresses(targetNode, targetRef);
+			
+			importKeyEcologicalAttributes(targetNode, targetRef);
 		}
 	}
 

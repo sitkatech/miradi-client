@@ -24,7 +24,7 @@ public interface ConProMiradiXml
 	
 	public static final String CONSERVATION_PROJECT = "conservation_project";
 	public static final String XMLNS = "xmlns";
-	public static final double NAME_SPACE_VERSION = 0.1;
+	public static final double NAME_SPACE_VERSION = 0.2;
 	public static final String PARTIAL_NAME_SPACE = "http://services.tnc.org/schema/conservation-project/"; 
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String DOCUMENT_EXCHANGE = "document_exchange";
@@ -111,6 +111,7 @@ public interface ConProMiradiXml
 	public static final String CATEGORY = "category";
 	public static final String VIABILITY = "viability";
 	public static final String VIABILITY_ASSESSMENT = "viability_assessment";
+	public static final String VIABILITY_ASSESSMENTS = "viability_assessments";
 	public static final String TARGET_ID = "target_id";
 	public static final String INDICATOR_ID = "indicator_id";
 	public static final String KEA_ID = "kea_id";
