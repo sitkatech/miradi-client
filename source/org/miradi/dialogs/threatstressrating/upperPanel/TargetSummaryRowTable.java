@@ -23,11 +23,13 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 
+import org.miradi.main.MainWindow;
+
 public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
-	public TargetSummaryRowTable(TargetSummaryRowTableModel model)
+	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model)
 	{
-		super(model);
+		super(mainWindowToUse, model);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));

@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import org.miradi.main.AppPreferences;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
@@ -31,9 +32,9 @@ import org.miradi.views.threatmatrix.CreateDeletePopupMouseAdapter;
 
 public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 {
-	public TargetThreatLinkTable(TargetThreatLinkTableModel tableModel)
+	public TargetThreatLinkTable(MainWindow mainWindowToUse, TargetThreatLinkTableModel tableModel)
 	{
-		super(tableModel);
+		super(mainWindowToUse, tableModel);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

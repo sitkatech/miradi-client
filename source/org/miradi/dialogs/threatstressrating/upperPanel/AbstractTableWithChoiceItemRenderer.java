@@ -23,11 +23,12 @@ import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererWithGrayCells;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithColumnWidthSaver;
 
 abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
 {
-	public AbstractTableWithChoiceItemRenderer(TableModel model)
+	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(model);
 		

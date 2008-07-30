@@ -51,16 +51,21 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 		super(new BorderLayout());
 		
-		project = mainWindowToUse.getProject();
+		mainWindow = mainWindowToUse;
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
 		rowHeightController = new MultiTableRowHeightController();
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 	public Project getProject()
 	{
-		return project;
+		return getMainWindow().getProject();
 	}
 	
 	protected void addRowHeightControlledTable(TableWithRowHeightSaver tableToAdd)
@@ -226,7 +231,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 	}
 
-	private Project project;
+	private MainWindow mainWindow;
 	protected MultipleTableSelectionController selectionController;
 	protected MultiTableVerticalScrollController verticalController;
 	protected MultiTableHorizontalScrollController horizontalController;
