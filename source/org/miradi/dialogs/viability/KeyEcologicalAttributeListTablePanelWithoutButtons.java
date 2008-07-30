@@ -22,12 +22,12 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogs.base.ObjectListTable;
 import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.dialogs.base.ObjectTablePanel;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
 public class KeyEcologicalAttributeListTablePanelWithoutButtons extends	ObjectTablePanel
 {
-	public KeyEcologicalAttributeListTablePanelWithoutButtons(Project projectToUse, ObjectTableModel modelToUse)
+	public KeyEcologicalAttributeListTablePanelWithoutButtons(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(projectToUse, new ObjectListTable(modelToUse));
+		super(mainWindowToUse.getProject(), new ObjectListTable(modelToUse));
 	}
 }
