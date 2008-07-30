@@ -28,7 +28,7 @@ public class ObjectPoolTable extends ObjectTable
 {
 	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}

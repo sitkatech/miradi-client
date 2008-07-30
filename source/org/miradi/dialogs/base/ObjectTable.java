@@ -41,6 +41,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -50,9 +51,9 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowColumnBaseObjectProvider
 {
-	public ObjectTable(ObjectTableModel modelToUse)
+	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		selectionListeners = new Vector();
 		currentSortColumn = -1;
 		

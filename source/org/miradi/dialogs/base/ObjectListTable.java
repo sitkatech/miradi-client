@@ -35,7 +35,7 @@ public class ObjectListTable extends ObjectTable
 {
 	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
