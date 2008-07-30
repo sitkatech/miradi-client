@@ -26,27 +26,27 @@ import javax.swing.JComponent;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.utils.GenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.SimpleTableWithInheritedFunctionality;
 
 public class ObjectReadonlyObjectListField extends ObjectDataInputField
 {
-	public ObjectReadonlyObjectListField(Project projectToUse, ORef refToUse, String tagToUse)
+	public ObjectReadonlyObjectListField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse)
 	{
-		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
+		this(mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
 	}
 
-	public ObjectReadonlyObjectListField(Project projectToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
+	public ObjectReadonlyObjectListField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId idToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, idToUse, tagToUse);
+		super(mainWindowToUse.getProject(), objectTypeToUse, idToUse, tagToUse);
 		model = new GenericDefaultTableModel();
 		model.setColumnCount(1);
-		table = new SimpleTableWithInheritedFunctionality(model);
+		table = new SimpleTableWithInheritedFunctionality(mainWindowToUse, model);
 		setDefaultFieldBorder();
 		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);

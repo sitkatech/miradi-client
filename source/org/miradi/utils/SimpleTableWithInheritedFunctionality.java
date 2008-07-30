@@ -21,9 +21,11 @@ package org.miradi.utils;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.main.MainWindow;
+
 public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthSaver
 {
-	public SimpleTableWithInheritedFunctionality(TableModel model)
+	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model)
 	{	
 		super(model);
 	}

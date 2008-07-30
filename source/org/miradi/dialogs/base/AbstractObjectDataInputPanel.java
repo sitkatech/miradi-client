@@ -535,7 +535,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadOnlyObjectList(int objectType, String tag)
 	{
-		return new ObjectReadonlyObjectListField(project, objectType, getObjectIdForType(objectType), tag); 
+		// FIXME: Should have mainWindow passed into the AODIP constructor
+		MainWindow mainWindow = EAM.getMainWindow();
+		return new ObjectReadonlyObjectListField(mainWindow, objectType, getObjectIdForType(objectType), tag); 
 	}
 
 	public ObjectDataInputField createReadOnlyObjectListTableField(int objectType, String listFieldTag, int listedType, String[] columnTags)
