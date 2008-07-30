@@ -41,5 +41,5 @@ public interface MiradiTabContentsPanelInterface
 	public boolean isPrintable();
 	public Class getJumpActionClass();
 	public boolean isRtfExportable();
-	public void exportRtf(RtfWriter writer);
+	public void exportRtf(RtfWriter writer) throws Exception;
 }

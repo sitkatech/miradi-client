@@ -107,7 +107,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return false;
 	}
 	
-	public void exportRtf(RtfWriter writer)
+	public void exportRtf(RtfWriter writer) throws Exception
 	{
 	}
 
