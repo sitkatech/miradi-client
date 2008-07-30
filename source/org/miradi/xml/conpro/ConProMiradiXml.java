@@ -109,7 +109,6 @@ public interface ConProMiradiXml
 	public static final String KEY_ATTRIBUTES = "key_attributes";
 	public static final String KEY_ATTRIBUTE = "key_attribute";
 	public static final String CATEGORY = "category";
-	public static final String VIABILITY = "viability";
 	public static final String VIABILITY_ASSESSMENT = "viability_assessment";
 	public static final String VIABILITY_ASSESSMENTS = "viability_assessments";
 	public static final String TARGET_ID = "target_id";
