@@ -27,7 +27,7 @@ public class TeamPoolTable extends ObjectPoolTable
 {
 	public TeamPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 	
 	public String getUniqueTableIdentifier()

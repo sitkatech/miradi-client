@@ -28,7 +28,7 @@ public class ResourcePoolTable extends ObjectPoolTable
 {
 	public ResourcePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 	
 	public String getUniqueTableIdentifier()
