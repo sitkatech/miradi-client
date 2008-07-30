@@ -32,6 +32,7 @@ import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
+import org.martus.util.UnicodeWriter;
 import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
@@ -276,6 +277,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return false;
 	}
 	
+	public boolean isRtfExportable()
+	{
+		return false;
+	}
+	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getExportableTable");
@@ -291,6 +297,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
 	
+	public void exportRtf(UnicodeWriter writer)
+	{
+		throw new RuntimeException("This view doesn't support exportRtf");
+	}
 	
 	public BaseObject getSelectedObject()
 	{
