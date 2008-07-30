@@ -25,22 +25,18 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import org.miradi.main.MainWindow;
 
 abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthSaver
 {
-	public UiTableWithAlternatingRows(TableModel model)
+	public UiTableWithAlternatingRows(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(model);
 		initialize();
 	}
 	
-	public UiTableWithAlternatingRows(Object[][] data, String[] columnNames)
-	{
-		this(new DefaultTableModel(data, columnNames));
-	}
-
 	private void initialize()
 	{
 		backgrounds = new Color[] { Color.WHITE, new Color(0xf0, 0xf0, 0xf0), };
