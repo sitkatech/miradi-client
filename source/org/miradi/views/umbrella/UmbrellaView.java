@@ -32,7 +32,6 @@ import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
-import org.martus.util.UnicodeWriter;
 import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
@@ -59,9 +58,9 @@ import org.miradi.actions.ActionEditProgressPercent;
 import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.ActionEditStrategyRelevancyList;
 import org.miradi.actions.ActionExit;
-import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
+import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportTable;
 import org.miradi.actions.ActionExportZippedProjectFile;
 import org.miradi.actions.ActionHelpAdaptiveManagement;
@@ -107,6 +106,7 @@ import org.miradi.actions.jump.ActionJumpDefineTasks;
 import org.miradi.actions.jump.ActionJumpDevelopDraftStrategiesStep;
 import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
@@ -122,7 +122,6 @@ import org.miradi.actions.jump.ActionJumpGroundTruthRevise;
 import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.miradi.actions.jump.ActionJumpPlanDataStorage;
 import org.miradi.actions.jump.ActionJumpPlanningOverviewStep;
@@ -176,6 +175,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.RtfWriter;
 import org.miradi.views.Doer;
 import org.miradi.views.NullDoer;
 import org.miradi.views.diagram.Print;
@@ -297,7 +297,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
 	
-	public void exportRtf(UnicodeWriter writer)
+	public void exportRtf(RtfWriter writer)
 	{
 		throw new RuntimeException("This view doesn't support exportRtf");
 	}
