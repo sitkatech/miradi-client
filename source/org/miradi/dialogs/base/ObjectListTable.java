@@ -27,21 +27,22 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
 public class ObjectListTable extends ObjectTable
 {
-	public ObjectListTable(ObjectTableModel modelToUse)
+	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
 	
-	public ObjectListTable(ObjectTableModel modelToUse, int sortColumn)
+	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse, int sortColumn)
 	{
-		this(modelToUse);
+		this(mainWindowToUse, modelToUse);
 		sort(sortColumn);
 	}
 	
