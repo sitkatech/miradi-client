@@ -24,7 +24,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
@@ -50,7 +49,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
-	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef, Actions actions) throws Exception
+	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
 		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse, ORef.INVALID));
