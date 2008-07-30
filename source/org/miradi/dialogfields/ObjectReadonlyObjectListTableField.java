@@ -24,18 +24,18 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListTable;
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.project.Project;
 
 public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 {
-	public ObjectReadonlyObjectListTableField(Project projectToUse, ORef refToUse, String listFieldTag, int listedType, String[] columnTags)
+	public ObjectReadonlyObjectListTableField(MainWindow mainWindowToUse, ORef refToUse, String listFieldTag, int listedType, String[] columnTags)
 	{
-		super(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), listFieldTag);
+		super(mainWindowToUse.getProject(), refToUse.getObjectType(), refToUse.getObjectId(), listFieldTag);
 		
-		model = new ObjectListTableModel(projectToUse, refToUse, listFieldTag, listedType, columnTags);
-	    table = new ObjectListTable(model);
+		model = new ObjectListTableModel(mainWindowToUse.getProject(), refToUse, listFieldTag, listedType, columnTags);
+	    table = new ObjectListTable(mainWindowToUse, model);
 	    
 		setDefaultFieldBorder();
 		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);

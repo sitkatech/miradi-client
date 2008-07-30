@@ -34,7 +34,7 @@ public class GroupBoxLinkListTablePanel extends ObjectListTablePanel
 {
 	public GroupBoxLinkListTablePanel(MainWindow mainWindowToUse, GroupBoxLinkTableModel model)
 	{
-		super(mainWindowToUse, new GroupBoxLinkListTable(model));
+		super(mainWindowToUse, new GroupBoxLinkListTable(mainWindowToUse, model));
 		
 		groupBoxLinkpropertiesPanel = new GroupBoxLinkPropertiesPanel(mainWindowToUse.getProject());
 		add(groupBoxLinkpropertiesPanel,BorderLayout.BEFORE_FIRST_LINE);

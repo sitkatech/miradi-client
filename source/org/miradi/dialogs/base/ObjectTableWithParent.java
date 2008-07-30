@@ -19,11 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.base;
 
+import org.miradi.main.MainWindow;
+
 
 public class ObjectTableWithParent extends ObjectListTable
 {
-	public ObjectTableWithParent(ObjectListTableModel modelToUse)
+	public ObjectTableWithParent(MainWindow mainWindowToUse, ObjectListTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 }

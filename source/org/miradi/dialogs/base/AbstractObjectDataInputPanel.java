@@ -71,6 +71,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -539,7 +540,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public ObjectDataInputField createReadOnlyObjectListTableField(int objectType, String listFieldTag, int listedType, String[] columnTags)
 	{
-		return new ObjectReadonlyObjectListTableField(project, getRefForType(objectType), listFieldTag, listedType, columnTags); 
+		// FIXME: Should have mainWindow passed into the AODIP constructor
+		MainWindow mainWindow = EAM.getMainWindow();
+		return new ObjectReadonlyObjectListTableField(mainWindow, getRefForType(objectType), listFieldTag, listedType, columnTags); 
 	}
 	
 	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)

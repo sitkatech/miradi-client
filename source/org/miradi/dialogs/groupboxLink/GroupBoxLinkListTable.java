@@ -21,6 +21,7 @@ package org.miradi.dialogs.groupboxLink;
 
 import org.miradi.dialogs.base.ObjectListTable;
 import org.miradi.dialogs.base.ObjectTableModel;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -28,9 +29,9 @@ import org.miradi.objects.DiagramLink;
 
 public class GroupBoxLinkListTable extends ObjectListTable
 {
-	public GroupBoxLinkListTable(ObjectTableModel modelToUse)
+	public GroupBoxLinkListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(modelToUse);
+		super(mainWindowToUse, modelToUse);
 	}
 
 	@Override
