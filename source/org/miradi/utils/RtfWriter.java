@@ -92,23 +92,23 @@ public class RtfWriter
 	
 	public void writeRtfTable(ExportableTableInterface exportableTable) throws Exception
 	{
-		String rowHeaderContent = "{";
-		String rowHeaderFormatting = "{\\trowd \\trgaph \\trhdr \\intbl ";
+		StringBuffer rowHeaderContent = new StringBuffer("{");
+		StringBuffer rowHeaderFormatting = new StringBuffer("{\\trowd \\trgaph \\trhdr \\intbl ");
 		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
 		{
-			rowHeaderContent += exportableTable.getHeaderFor(headerIndex) + " \\cell ";
-			rowHeaderFormatting += " \\cellx3000 ";
+			rowHeaderContent.append(exportableTable.getHeaderFor(headerIndex) + " \\cell ");
+			rowHeaderFormatting.append(" \\cellx3000 ");
 		}
-		rowHeaderContent += "}";
-		rowHeaderFormatting += " \\row }";
+		rowHeaderContent.append("}");
+		rowHeaderFormatting.append(" \\row }");
 		
-		getWriter().writeln(rowHeaderContent);
-		getWriter().writeln(rowHeaderFormatting);
+		getWriter().writeln(rowHeaderContent.toString());
+		getWriter().writeln(rowHeaderFormatting.toString());
 		
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
-			String rowContent = "{";
-			String rowFormating = "{\\trowd \\trgaph \\intbl ";
+			StringBuffer rowContent = new StringBuffer("{");
+			StringBuffer rowFormating = new StringBuffer("{\\trowd \\trgaph \\intbl ");
 			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 			{
 				//FIXME this is temporaraly and under construction.  
@@ -118,20 +118,20 @@ public class RtfWriter
 					if (baseObjectForRow != null)
 						writeImage(BufferedImageFactory.getImage(IconManager.getImage(baseObjectForRow)));
 					
-					rowContent += exportableTable.getValueAt(row, column) + " \\cell ";
+					rowContent.append(exportableTable.getValueAt(row, column) + " \\cell ");
 				}
 				else
 				{
-					rowContent += exportableTable.getValueAt(row, column) + " \\cell ";
+					rowContent.append(exportableTable.getValueAt(row, column) + " \\cell ");
 				}
 				
-				rowFormating += " \\cellx3000 ";	
+				rowFormating.append(" \\cellx3000 ");	
 			}
-			rowContent += "}";
-			rowFormating += " \\row }";
+			rowContent.append("}");
+			rowFormating.append(" \\row }");
 			
-			getWriter().writeln(rowContent);
-			getWriter().writeln(rowFormating);
+			getWriter().writeln(rowContent.toString());
+			getWriter().writeln(rowFormating.toString());
 		}
 	}
 	
