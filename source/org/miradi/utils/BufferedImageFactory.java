@@ -32,6 +32,7 @@ import javax.swing.JTable;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.icons.AbstractMiradiIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -39,6 +40,22 @@ import org.miradi.views.diagram.DiagramSplitPane;
 
 public  class BufferedImageFactory
 {
+	public static BufferedImage getImage(AbstractMiradiIcon icon)
+	{
+		int width = icon.getIconWidth() + 2 * INSET;
+		int height = icon.getIconHeight() + 2 * INSET;
+		
+		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D graphics = image.createGraphics();
+		graphics.setColor(Color.WHITE);
+		graphics.fillRect(0, 0, image.getWidth(), image.getHeight());
+		
+		icon.paintIcon(null, graphics, 0, 0);
+		graphics.dispose();
+		
+		return image;
+	}
+	
 	public static BufferedImage getImage(JComponent swingComponent,  int inset) 
 	{
 		realizeComponent(swingComponent);
@@ -105,7 +122,7 @@ public  class BufferedImageFactory
 
 	public static BufferedImage createImageFromComponent(JComponent component)
 	{
-		return getImage(component,5);
+		return getImage(component, INSET);
 	}
 	
 	public static DiagramComponent createDiagramComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
@@ -123,4 +140,6 @@ public  class BufferedImageFactory
 		
 		return diagram;
 	}
+	
+	private static final int INSET = 5;
 }
