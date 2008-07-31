@@ -57,7 +57,7 @@ public class ExportRtfDoer extends ViewDoer
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error occurred while trying to export current page as RTF.\n" + e.getMessage()));
+			EAM.errorDialog(EAM.text("Error occurred while trying to export current page as RTF.\n") + e.getMessage());
 		}
 	}
 	
