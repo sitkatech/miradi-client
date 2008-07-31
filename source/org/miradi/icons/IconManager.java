@@ -19,33 +19,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
+import javax.swing.Icon;
+
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
  
 public class IconManager
 {
 	//FIXME not all Icons are AbstractMiradiIcon.  But all icons should be.
-	public static AbstractMiradiIcon getImage(BaseObject baseObject)
+	public static Icon getImage(BaseObject baseObject)
 	{
 		int type = baseObject.getType();
-	
-		//if (Indicator.is(type))
-		//	return getIndicatorIcon();
+		if (Indicator.is(type))
+			return getIndicatorIcon();
 		
-		//if (Measurement.is(type))
-		//	return getMeasurementIcon();
+		if (Measurement.is(type))
+			return getMeasurementIcon();
 		
-		//if (Goal.is(type))
-		//	return getGoalIcon();
+		if (Goal.is(type))
+			return getGoalIcon();
 		
-		//if (Objective.is(type))
-		//	return getObjectiveIcon();
+		if (Objective.is(type))
+			return getObjectiveIcon();
 		
-		//if (KeyEcologicalAttribute.is(type))
-		//	return getKeyEcologicalAttributeIcon();
+		if (KeyEcologicalAttribute.is(type))
+			return getKeyEcologicalAttributeIcon();
 
 		if (Task.is(type))
 			return getTaskIcon((Task) baseObject);
@@ -59,7 +65,7 @@ public class IconManager
 		if (ResultsChainDiagram.is(type))
 			return getConceptualModelIcon();
 		
-		throw new RuntimeException("Could not find icon for type:" + baseObject);
+		throw new RuntimeException("Could not find icon for type:" + baseObject.getType());
 	}
 
 	private static AbstractMiradiIcon getFactorIcon(Factor factor)

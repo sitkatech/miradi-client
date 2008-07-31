@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.icons.IconManager;
+import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
@@ -95,7 +97,20 @@ public class RtfWriter
 			String rowFormating = "{\\trowd \\trgaph \\intbl ";
 			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 			{
-				rowContent += exportableTable.getValueAt(row, column) +" \\cell ";
+				//FIXME this is temporaraly and under construction.  
+				if (column == 0)
+				{
+					BaseObject baseObjectForRow = exportableTable.getBaseObjectForRow(row);
+					if (baseObjectForRow != null)
+						writeImage(BufferedImageFactory.getImage(IconManager.getImage(baseObjectForRow)));
+					
+					rowContent += exportableTable.getValueAt(row, column) + " \\cell ";
+				}
+				else
+				{
+					rowContent += exportableTable.getValueAt(row, column) + " \\cell ";
+				}
+				
 				rowFormating += " \\cellx3000 ";	
 			}
 			rowContent += "}";

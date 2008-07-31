@@ -26,6 +26,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
+import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -33,7 +34,6 @@ import javax.swing.JTable;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.icons.AbstractMiradiIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -41,7 +41,7 @@ import org.miradi.views.diagram.DiagramSplitPane;
 
 public  class BufferedImageFactory
 {
-	public static BufferedImage getImage(AbstractMiradiIcon icon)
+	public static BufferedImage getImage(Icon icon)
 	{
 		int width = icon.getIconWidth() + 2 * INSET;
 		int height = icon.getIconHeight() + 2 * INSET;
