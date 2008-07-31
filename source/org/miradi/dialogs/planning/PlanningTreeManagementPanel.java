@@ -28,7 +28,6 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
-import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
@@ -94,13 +93,9 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}		
 
-	//TODO this method will be refactored and moved somehwere else.  
-	// This method was a proof of concept for rtf tables
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		writer.writeRtfTable(getExportableTable());
-		writer.writeImage(getImage());
-		writer.writeImage(new TargetIcon().getImage());
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
