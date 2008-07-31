@@ -48,21 +48,35 @@ public class RtfWriter
 	
 	public void writeImage(BufferedImage bufferedImage) throws Exception
 	{
-		String jpegHeader = "{\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
+		startBlock();
+		
+		String jpegHeader = "\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
 		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		SaveImageJPEGDoer.saveJpeg(baos, bufferedImage);	
 		byte[] imageAsBytes = baos.toByteArray();
 		baos.close();
+		final int BYTES_PER_LINE = 32;
 		for (int i = 0; i < imageAsBytes.length; ++i)
 		{
 			byte b = imageAsBytes[i];
 			getWriter().write(toHex(b));
-			if(i % 32 == 0)
+			
+			if(i % BYTES_PER_LINE == 0)
 				  getWriter().writeln();
 		}
 		
+		endBlock();
+	}
+
+	private void startBlock() throws IOException
+	{
+		getWriter().writeln("{");
+	}
+	
+	private void endBlock() throws IOException
+	{
 		getWriter().writeln("}");
 	}
 
