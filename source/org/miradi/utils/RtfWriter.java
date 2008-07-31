@@ -53,11 +53,11 @@ public class RtfWriter
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		SaveImageJPEGDoer.saveJpeg(baos, bufferedImage);	
-		byte[] imageAsByte = baos.toByteArray();
+		byte[] imageAsBytes = baos.toByteArray();
 		baos.close();
-		for (int i = 0; i < imageAsByte.length; ++i)
+		for (int i = 0; i < imageAsBytes.length; ++i)
 		{
-			byte b = imageAsByte[i];
+			byte b = imageAsBytes[i];
 			getWriter().write(toHex(b));
 			if(i % 32 == 0)
 				  getWriter().writeln();
