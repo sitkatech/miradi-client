@@ -19,25 +19,107 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
-public class RtfWriter extends UnicodeWriter
+public class RtfWriter
 {
 	public RtfWriter(File file) throws IOException
 	{
-		super(file);
+		writer = new UnicodeWriter(file);
+	}
+	
+	public void close() throws Exception
+	{
+		getWriter().close();
+	}
+	
+	public void writeln(String textToWrite) throws Exception
+	{
+		getWriter().writeln(textToWrite);
+	}
+	
+	public void writeImage(BufferedImage bufferedImage) throws Exception
+	{
+		String image = "{\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
+		getWriter().writeln(image);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		SaveImageJPEGDoer.saveJpeg(baos, bufferedImage);	
+		byte[] imageAsByte = baos.toByteArray();
+		baos.close();
+		for (int i = 0; i < imageAsByte.length; ++i)
+		{
+			byte b = imageAsByte[i];
+			getWriter().write(toHex(b));
+			if(i % 32 == 0)
+				  getWriter().writeln();
+		}
+		
+		getWriter().writeln("}");
+	}
+
+	static public String toHex(byte b)
+	{
+		Integer integer = new Integer((b << 24) >>> 24);
+		int i = integer.intValue();
+		if ( i < (byte)16 )
+			return "0"+Integer.toString(i, 16);
+		
+		return Integer.toString(i, 16);
+	}
+	
+	public void writeRtfTable(ExportableTableInterface exportableTable) throws Exception
+	{
+		String rowHeaderContent = "{";
+		String rowHeaderFormatting = "{\\trowd \\trgaph \\trhdr \\intbl ";
+		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+		{
+			rowHeaderContent += exportableTable.getHeaderFor(headerIndex) + " \\cell ";
+			rowHeaderFormatting += " \\cellx3000 ";
+		}
+		rowHeaderContent += "}";
+		rowHeaderFormatting += " \\row }";
+		
+		getWriter().writeln(rowHeaderContent);
+		getWriter().writeln(rowHeaderFormatting);
+		
+		for (int row = 0; row < exportableTable.getRowCount(); ++row)
+		{
+			String rowContent = "{";
+			String rowFormating = "{\\trowd \\trgaph \\intbl ";
+			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+			{
+				rowContent += exportableTable.getValueAt(row, column) +" \\cell ";
+				rowFormating += " \\cellx3000 ";	
+			}
+			rowContent += "}";
+			rowFormating += " \\row }";
+			
+			getWriter().writeln(rowContent);
+			getWriter().writeln(rowFormating);
+		}
 	}
 	
 	public void startRtf() throws Exception
 	{
-		write("{\\rtf ");
+		getWriter().write("{\\rtf ");
 	}
 	
 	public void endRtf() throws Exception
 	{
-		write("}");
+		getWriter().write("}");
 	}
+
+	public UnicodeWriter getWriter()
+	{
+		return writer;
+	}
+	
+	private UnicodeWriter writer;
 }
