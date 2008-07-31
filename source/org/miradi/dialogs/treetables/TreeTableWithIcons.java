@@ -25,6 +25,7 @@ import java.awt.font.TextAttribute;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.Icon;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
@@ -119,104 +120,63 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		public Renderer()
 		{	
 			targetRenderer = new DefaultTreeCellRenderer();
-			targetRenderer.setClosedIcon(new TargetIcon());
-			targetRenderer.setOpenIcon(new TargetIcon());
-			targetRenderer.setLeafIcon(new TargetIcon());
-			targetRenderer.setFont(getBoldFont());
+			setRendererDefaults(targetRenderer, new TargetIcon(), getBoldFont());
 
 			directThreatRenderer = new DefaultTreeCellRenderer();
-			directThreatRenderer.setClosedIcon(new DirectThreatIcon());
-			directThreatRenderer.setOpenIcon(new DirectThreatIcon());
-			directThreatRenderer.setLeafIcon(new DirectThreatIcon());
-			directThreatRenderer.setFont(getPlainFont());
-
+			setRendererDefaults(directThreatRenderer, new DirectThreatIcon(), getPlainFont());
+			
 			threatReductionResultRenderer = new DefaultTreeCellRenderer();
-			threatReductionResultRenderer.setClosedIcon(new ThreatReductionResultIcon());
-			threatReductionResultRenderer.setOpenIcon(new ThreatReductionResultIcon());
-			threatReductionResultRenderer.setLeafIcon(new ThreatReductionResultIcon());
-			threatReductionResultRenderer.setFont(getPlainFont());
+			setRendererDefaults(threatReductionResultRenderer, new ThreatReductionResultIcon(), getPlainFont());
 			
 			intermediateResultsRenderer = new DefaultTreeCellRenderer();
-			intermediateResultsRenderer.setClosedIcon(new IntermediateResultIcon());
-			intermediateResultsRenderer.setOpenIcon(new IntermediateResultIcon());
-			intermediateResultsRenderer.setLeafIcon(new IntermediateResultIcon());
-			intermediateResultsRenderer.setFont(getPlainFont());
+			setRendererDefaults(intermediateResultsRenderer, new IntermediateResultIcon(), getPlainFont());
 
 			strategyRenderer = new DefaultTreeCellRenderer();
-			strategyRenderer.setClosedIcon(new StrategyIcon());
-			strategyRenderer.setOpenIcon(new StrategyIcon());
-			strategyRenderer.setLeafIcon(new StrategyIcon());
-			strategyRenderer.setFont(getBoldFont());
+			setRendererDefaults(strategyRenderer, new StrategyIcon(), getBoldFont());
 
 			objectiveRenderer = new DefaultTreeCellRenderer();
-			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
-			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
-			objectiveRenderer.setLeafIcon(new ObjectiveIcon());
-			objectiveRenderer.setFont(getBoldFont());
-
+			setRendererDefaults(objectiveRenderer, new ObjectiveIcon(), getBoldFont());
+			
 			indicatorRenderer = new DefaultTreeCellRenderer();
-			indicatorRenderer.setClosedIcon(new IndicatorIcon());
-			indicatorRenderer.setOpenIcon(new IndicatorIcon());
-			indicatorRenderer.setLeafIcon(new IndicatorIcon());
-			indicatorRenderer.setFont(getBoldFont());
+			setRendererDefaults(indicatorRenderer, new IndicatorIcon(), getBoldFont());
 			
 			goalRenderer = new DefaultTreeCellRenderer();
-			goalRenderer.setClosedIcon(new GoalIcon());
-			goalRenderer.setOpenIcon(new GoalIcon());
-			goalRenderer.setLeafIcon(new GoalIcon());
-			goalRenderer.setFont(getBoldFont());
+			setRendererDefaults(goalRenderer, new GoalIcon(), getBoldFont());
 			
 			activityRenderer = new DefaultTreeCellRenderer();
-			activityRenderer.setClosedIcon(new ActivityIcon());
-			activityRenderer.setOpenIcon(new ActivityIcon());
-			activityRenderer.setLeafIcon(new ActivityIcon());
-			activityRenderer.setFont(getPlainFont());
+			setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());
 
 			keyEcologicalAttributeRenderer = new DefaultTreeCellRenderer();
-			keyEcologicalAttributeRenderer.setClosedIcon(new KeyEcologicalAttributeIcon());
-			keyEcologicalAttributeRenderer.setOpenIcon(new KeyEcologicalAttributeIcon());
-			keyEcologicalAttributeRenderer.setLeafIcon(new KeyEcologicalAttributeIcon());
-			keyEcologicalAttributeRenderer.setFont(getPlainFont());
+			setRendererDefaults(keyEcologicalAttributeRenderer, new KeyEcologicalAttributeIcon(), getPlainFont());
 			
 			methodRenderer = new DefaultTreeCellRenderer();
-			methodRenderer.setClosedIcon(new MethodIcon());
-			methodRenderer.setOpenIcon(new MethodIcon());
-			methodRenderer.setLeafIcon(new MethodIcon());
-			methodRenderer.setFont(getPlainFont());
+			setRendererDefaults(methodRenderer, new MethodIcon(), getPlainFont());
 
 			taskRenderer = new DefaultTreeCellRenderer();
-			taskRenderer.setClosedIcon(new TaskIcon());
-			taskRenderer.setOpenIcon(new TaskIcon());
-			taskRenderer.setLeafIcon(new TaskIcon());
-			taskRenderer.setFont(getPlainFont());
+			setRendererDefaults(taskRenderer, new TaskIcon(), getPlainFont());
 			
 			conceptualModelRenderer = new DefaultTreeCellRenderer();
-			conceptualModelRenderer.setClosedIcon(new ConceptualModelIcon());
-			conceptualModelRenderer.setOpenIcon(new ConceptualModelIcon());
-			conceptualModelRenderer.setLeafIcon(new ConceptualModelIcon());
-			conceptualModelRenderer.setFont(getBoldFont());
+			setRendererDefaults(conceptualModelRenderer, new ConceptualModelIcon(), getBoldFont());
 
 			resultsChainRenderer = new DefaultTreeCellRenderer();
-			resultsChainRenderer.setClosedIcon(new ResultsChainIcon());
-			resultsChainRenderer.setOpenIcon(new ResultsChainIcon());
-			resultsChainRenderer.setLeafIcon(new ResultsChainIcon());
-			resultsChainRenderer.setFont(getBoldFont());
+			setRendererDefaults(resultsChainRenderer, new ResultsChainIcon(), getBoldFont());
 
 			stringNoIconRenderer = new DefaultTreeCellRenderer();
-			stringNoIconRenderer.setClosedIcon(null);
-			stringNoIconRenderer.setOpenIcon(null);
-			stringNoIconRenderer.setLeafIcon(null);
-			Font customFont = createFristLevelFont(getPlainFont());
-			stringNoIconRenderer.setFont(customFont);
+			setRendererDefaults(stringNoIconRenderer, null, createFristLevelFont(getPlainFont()));
 			
 			defaultRenderer = new DefaultTreeCellRenderer();
 			defaultRenderer.setFont(getPlainFont());
 			
 			measurementRenderer = new DefaultTreeCellRenderer();
-			measurementRenderer.setClosedIcon(new MeasurementIcon());
-			measurementRenderer.setOpenIcon(new MeasurementIcon());
-			measurementRenderer.setLeafIcon(new MeasurementIcon());
-			measurementRenderer.setFont(getPlainFont());
+			setRendererDefaults(measurementRenderer, new MeasurementIcon(), getPlainFont());
+		}
+		
+		public void setRendererDefaults(DefaultTreeCellRenderer renderer, Icon icon, Font font)
+		{
+			renderer.setClosedIcon(icon);
+			renderer.setOpenIcon(icon);
+			renderer.setLeafIcon(icon);
+			renderer.setFont(getPlainFont());
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
