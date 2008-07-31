@@ -22,23 +22,17 @@ package org.miradi.dialogs.base;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
-import org.miradi.dialogs.treetables.TreeTableWithIcons;
-import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
@@ -47,13 +41,6 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInputPanel
 {
-	
-	public ObjectDataInputPanelSpecial(Project projectToUse, int objectType, BaseId idToUse)
-	{
-		this(projectToUse, new ORef[] {new ORef(objectType, idToUse)});
-	}
-	
-	
 	public ObjectDataInputPanelSpecial(Project projectToUse, ORef orefToUse)
 	{
 		this(projectToUse, new ORef[] {orefToUse});
@@ -128,11 +115,6 @@ abstract public class ObjectDataInputPanelSpecial extends AbstractObjectDataInpu
 		layout.setColAlignment(0, Alignment.NORTHEAST);
 		panel.setLayout(layout);
 		return panel;
-	}
-	
-	public void addBoldedTextBorder(JPanel panel, String title)
-	{
-		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), EAM.text(title), TitledBorder.LEFT, TitledBorder.DEFAULT_POSITION, TreeTableWithIcons.Renderer.deriveFont(Font.BOLD)));
 	}
 	
 	abstract public String getPanelDescription();
