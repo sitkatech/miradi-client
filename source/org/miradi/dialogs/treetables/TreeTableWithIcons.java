@@ -114,18 +114,6 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		return customFont;
 	}
 	
-	public static Font getSharedTaskFont(Task task)
-	{
-		int style = Font.PLAIN;
-		if (task.isShared())
-			style |= Font.ITALIC;
-
-		if (task.isMethod())
-			style |= Font.BOLD;
-				
-		return Renderer.deriveFont(style);
-	}
-	
 	public static class Renderer extends DefaultTreeCellRenderer
 	{		
 		public Renderer()
@@ -297,6 +285,18 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		public static Font getPlainFont()
 		{
 			return deriveFont(Font.PLAIN);
+		}
+		
+		public static Font getSharedTaskFont(Task task)
+		{
+			int style = Font.PLAIN;
+			if (task.isShared())
+				style |= Font.ITALIC;
+
+			if (task.isMethod())
+				style |= Font.BOLD;
+					
+			return Renderer.deriveFont(style);
 		}
 		
 		public static Font deriveFont(int style)
