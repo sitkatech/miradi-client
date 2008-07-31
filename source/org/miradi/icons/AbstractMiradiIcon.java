@@ -22,11 +22,19 @@ package org.miradi.icons;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 
+import org.miradi.utils.BufferedImageFactory;
+
 public abstract class AbstractMiradiIcon implements Icon
 {
+	public BufferedImage getImage()
+	{
+		return BufferedImageFactory.getImage(this);
+	}
+	
 	public int getIconHeight()
 	{
 		return 16;
