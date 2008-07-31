@@ -80,6 +80,7 @@ public class RtfWriter
 		getWriter().writeln("}");
 	}
 
+	//FIXME understand what this method needs and refactor simplify
 	static public String toHex(byte b)
 	{
 		Integer integer = new Integer((b << 24) >>> 24);
