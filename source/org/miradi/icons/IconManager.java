@@ -19,141 +19,157 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.awt.Image;
-
-//FIXME the following code has been commented out Due to lack of time and icons being exported incorrectly (pickish color) 
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.Factor;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Task;
+ 
 public class IconManager
 {
-	public static Image getImage(String objectTypeName)
+	//FIXME not all Icons are AbstractMiradiIcon.  But all icons should be.
+	public static AbstractMiradiIcon getImage(BaseObject baseObject)
 	{
-//		if (objectTypeName.equals(Indicator.OBJECT_NAME))
-//			return getIndicatorIcon();
-//		
-//		if (objectTypeName.equals(Strategy.OBJECT_NAME))
-//			return getStrategyIcon();
-//		
-//		if (objectTypeName.equals(Measurement.OBJECT_NAME))
-//			return getMeasurementIcon();
-//		
-//		if (objectTypeName.equals(Goal.OBJECT_NAME))
-//			return getGoalIcon();
-//		
-//		if (objectTypeName.equals(Objective.OBJECT_NAME))
-//			return getObjectiveIcon();
-//		
-//		if (objectTypeName.equals(Target.OBJECT_NAME))
-//			return getTargetIcon();
-//		
-//		if (objectTypeName.equals(KeyEcologicalAttribute.OBJECT_NAME))
-//			return getKeyEcologicalAttributeIcon();
-//		
-//		if (objectTypeName.equals(Task.OBJECT_NAME))
-//			return getTaskIcon();
-//		
-//		if (objectTypeName.equals(Task.METHOD_NAME))
-//			return getMethodIcon();
-//		
-//		if (objectTypeName.equals(Task.ACTIVITY_NAME))
-//			return getActivityIcon();
-//		
-//		if (objectTypeName.equals(ConceptualModelDiagram.OBJECT_NAME))
-//			return getConceptualModelIcon();
-//		
-//		if (objectTypeName.equals(ResultsChainDiagram.OBJECT_NAME))
-//			return getConceptualModelIcon();
-//
+		int type = baseObject.getType();
+	
+		//if (Indicator.is(type))
+		//	return getIndicatorIcon();
 		
-		return null;
-	}
-	
-	public static Image getKeyEcologicalAttributeIcon()
-	{
-		return null;
-		//return convertToImage(new KeyEcologicalAttributeIcon());
-	}
-	
-	public static Image getMeasurementIcon()
-	{
-		return null;
-		//return convertToImage(new MeasurementIcon());
-	}
-	
-	public static Image getGoalIcon()
-	{
-		return null;
-		//return convertToImage(new GoalIcon());
-	}
-	
-	public static Image getObjectiveIcon()
-	{
-		return null;
-		//return convertToImage(new ObjectiveIcon());
-	}
-	
-	public static Image getIndicatorIcon()
-	{
-		return null;
-		//return convertToImage(new IndicatorIcon());
-	}
-	
-	public static Image getTargetIcon()
-	{
-		return null;
-		//return convertToImage(new TargetIcon());
+		//if (Measurement.is(type))
+		//	return getMeasurementIcon();
+		
+		//if (Goal.is(type))
+		//	return getGoalIcon();
+		
+		//if (Objective.is(type))
+		//	return getObjectiveIcon();
+		
+		//if (KeyEcologicalAttribute.is(type))
+		//	return getKeyEcologicalAttributeIcon();
+
+		if (Task.is(type))
+			return getTaskIcon((Task) baseObject);
+		
+		if (Factor.isFactor(type))
+			return getFactorIcon((Factor) baseObject);
+		
+		if (ConceptualModelDiagram.is(type))
+			return getConceptualModelIcon();
+		
+		if (ResultsChainDiagram.is(type))
+			return getConceptualModelIcon();
+		
+		throw new RuntimeException("Could not find icon for type:" + baseObject);
 	}
 
-	public static Image getStrategyIcon()
+	private static AbstractMiradiIcon getFactorIcon(Factor factor)
 	{
-		return null;
-		//return convertToImage(new StrategyIcon());
-	}
-	
-	public static Image getDraftStrategyIcon()
-	{
-		return null;
-		//return convertToImage(new DraftStrategyIcon());
+		if (factor.isDirectThreat())
+			return new DirectThreatIcon();
+		
+		if (factor.isContributingFactor())
+			return new ContributingFactorIcon();
+		
+		if (factor.isStrategy())
+			return new StrategyIcon();
+		
+		if (factor.isTarget())
+			return new TargetIcon();
+		
+		if (factor.isStress())
+			return new StressIcon();
+		
+		if (factor.isActivity())
+			return new ActivityIcon();
+		
+		if (factor.isIntermediateResult())
+			return new IntermediateResultIcon();
+		
+		if (factor.isThreatReductionResult())
+			return new ThreatReductionResultIcon();
+		
+		if (factor.isTextBox())
+			return new TextBoxIcon();
+		
+		if (factor.isGroupBox())
+			return new GroupBoxIcon();
+
+		throw new RuntimeException("type is factor but there is no icon for it was found:"  + factor.getType());
 	}
 
-	public static Image getTaskIcon()
+	private static AbstractMiradiIcon getTaskIcon(Task task)
 	{
-		return null;
-		//return convertToImage(new TaskIcon());
+		if (task.isMethod())
+			return getMethodIcon();
+		
+		if (task.isActivity())
+			return getActivityIcon();
+		
+		return getTaskIcon();
+	}
+	
+	public static KeyEcologicalAttributeIcon getKeyEcologicalAttributeIcon()
+	{
+		return new KeyEcologicalAttributeIcon();
+	}
+	
+	public static MeasurementIcon getMeasurementIcon()
+	{
+		return new MeasurementIcon();
+	}
+	
+	public static GoalIcon getGoalIcon()
+	{
+		return new GoalIcon();
+	}
+	
+	public static ObjectiveIcon getObjectiveIcon()
+	{
+		return new ObjectiveIcon();
+	}
+	
+	public static IndicatorIcon getIndicatorIcon()
+	{
+		return new IndicatorIcon();
+	}
+	
+	public static TargetIcon getTargetIcon()
+	{
+		return new TargetIcon();
 	}
 
-	public static Image getMethodIcon()
+	public static StrategyIcon getStrategyIcon()
 	{
-		return null;
-		//return convertToImage(new MethodIcon());
+		return new StrategyIcon();
+	}
+	
+	public static DraftStrategyIcon getDraftStrategyIcon()
+	{
+		return new DraftStrategyIcon();
 	}
 
-	public static Image getActivityIcon()
+	public static TaskIcon getTaskIcon()
 	{
-		return null;
-		//return convertToImage(new ActivityIcon());
+		return new TaskIcon();
 	}
-	
-	public static Image getConceptualModelIcon()
-	{
-		return null;
-//		return convertToImage(new ConceptualModelIcon());
-	}
-	
-	public static Image getResultsChainIcon()
-	{
-		return null;
-		//return convertToImage(new ResultsChainIcon());
-	}
-	
-	
 
-//	private static Image convertToImage(Icon icon)
-//	{
-//		final int PADDING = 5;
-//		BufferedImage img = new BufferedImage(icon.getIconWidth() + PADDING, icon.getIconHeight() + PADDING, BufferedImage.TYPE_INT_ARGB);
-//		Graphics2D g = img.createGraphics();
-//		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//		icon.paintIcon(new JLabel(), g, 2, 2);
-//		
-//		return new ImageIcon(img).getImage();
-//	}
+	public static MethodIcon getMethodIcon()
+	{
+		return new MethodIcon();
+	}
+
+	public static ActivityIcon getActivityIcon()
+	{
+		return new ActivityIcon();
+	}
+	
+	public static ConceptualModelIcon getConceptualModelIcon()
+	{
+		return new ConceptualModelIcon();
+	}
+	
+	public static ResultsChainIcon getResultsChainIcon()
+	{
+		return new ResultsChainIcon();
+	}
 }
