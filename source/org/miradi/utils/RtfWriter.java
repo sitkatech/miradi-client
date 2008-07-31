@@ -48,8 +48,8 @@ public class RtfWriter
 	
 	public void writeImage(BufferedImage bufferedImage) throws Exception
 	{
-		String image = "{\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
-		getWriter().writeln(image);
+		String jpegHeader = "{\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
+		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		SaveImageJPEGDoer.saveJpeg(baos, bufferedImage);	
