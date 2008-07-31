@@ -39,6 +39,11 @@ public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 	
 	public void saveImage(OutputStream out, BufferedImage image) throws IOException
 	{
+		saveJpeg(out, image);
+	}
+
+	public static void saveJpeg(OutputStream out, BufferedImage image) throws IOException
+	{
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
 		JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
 		float quality = 1;
