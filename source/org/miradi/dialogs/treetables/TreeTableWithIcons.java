@@ -277,17 +277,17 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			return strategyRenderer;
 		}
 		
-		private static Font getBoldFont()
+		private Font getBoldFont()
 		{
 			return deriveFont(Font.BOLD);
 		}
 
-		public static Font getPlainFont()
+		protected Font getPlainFont()
 		{
 			return deriveFont(Font.PLAIN);
 		}
 		
-		public static Font getSharedTaskFont(Task task)
+		private Font getSharedTaskFont(Task task)
 		{
 			int style = Font.PLAIN;
 			if (task.isShared())
@@ -296,10 +296,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			if (task.isMethod())
 				style |= Font.BOLD;
 					
-			return Renderer.deriveFont(style);
+			return deriveFont(style);
 		}
 		
-		public static Font deriveFont(int style)
+		private Font deriveFont(int style)
 		{
 			Font defaultFont = EAM.getMainWindow().getUserDataPanelFont();
 			return defaultFont.deriveFont(style);
