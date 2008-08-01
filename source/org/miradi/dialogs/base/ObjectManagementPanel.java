@@ -28,7 +28,7 @@ import org.miradi.actions.ObjectsAction;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
@@ -113,7 +113,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		return null;
 	}

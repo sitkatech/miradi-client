@@ -80,7 +80,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -203,7 +203,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return false;
 	}
 	
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		return null;
 	}

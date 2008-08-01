@@ -92,7 +92,7 @@ public class RtfWriter
 		return firstDigit + secondDigit;
 	}
 	
-	public void writeRtfTable(ExportableTableInterface exportableTable) throws Exception
+	public void writeRtfTable(AbstractTableExporter exportableTable) throws Exception
 	{
 		StringBuffer rowHeaderContent = new StringBuffer("{");
 		StringBuffer rowHeaderFormatting = new StringBuffer("{\\trowd \\trgaph \\trhdr \\intbl ");
@@ -120,11 +120,11 @@ public class RtfWriter
 					if (baseObjectForRow != null)
 						writeImage(BufferedImageFactory.getImage(IconManager.getImage(baseObjectForRow)));
 					
-					rowContent.append(exportableTable.getValueAt(row, column) + " \\cell ");
+					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
 				}
 				else
 				{
-					rowContent.append(exportableTable.getValueAt(row, column) + " \\cell ");
+					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
 				}
 				
 				rowFormating.append(" \\cellx3000 ");	

@@ -174,7 +174,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.RtfWriter;
 import org.miradi.views.Doer;
 import org.miradi.views.NullDoer;
@@ -282,7 +282,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return false;
 	}
 	
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getExportableTable");
 	}

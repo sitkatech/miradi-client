@@ -30,7 +30,7 @@ import org.miradi.icons.TeamIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.TableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
@@ -68,7 +68,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return true;
 	}
 	
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		return new TableExporter(createTable());
 	}

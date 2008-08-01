@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import org.miradi.objects.BaseObject;
 
-public abstract class AbstractTableExporter implements ExportableTableInterface
+public abstract class AbstractTableExporter
 {
 	abstract public int getMaxDepthCount();
 	abstract public int getDepth(int row);

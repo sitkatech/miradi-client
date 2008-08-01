@@ -29,7 +29,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.RtfWriter;
 import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
@@ -62,7 +62,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return this;
 	}
 
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		return dataPanel.getExportableTable();
 	}

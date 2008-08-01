@@ -66,7 +66,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
@@ -173,7 +173,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getImage();
 		}
 
-		public ExportableTableInterface getExportableTable() throws Exception
+		public AbstractTableExporter getExportableTable() throws Exception
 		{
 			return planningManagementPanel.getExportableTable();
 		}

@@ -35,7 +35,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
@@ -125,9 +125,9 @@ public class PlanningTreeXmlExporter
 		return multiModelExporter.getHeaderFor(column).replaceAll(" ", "");
 	}
 	
-	private String getSafeValue(ExportableTableInterface table, int row, int column, String objectTypeName)
+	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)
 	{
-		Object value = table.getValueAt(row, column);
+		Object value = table.getTextAt(row, column);
 		if (value == null)
 			return "";
 		
