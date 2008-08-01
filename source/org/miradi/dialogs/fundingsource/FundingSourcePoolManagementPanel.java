@@ -33,6 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.TableExporter;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
@@ -80,7 +81,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable().getTableExporter();
+		return new TableExporter(createTable());
 	}
 	
 	@Override
