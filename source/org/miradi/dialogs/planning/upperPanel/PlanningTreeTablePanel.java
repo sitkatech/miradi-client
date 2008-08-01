@@ -75,6 +75,7 @@ import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TableWithRowHeightSaver;
+import org.miradi.utils.TreeTableExporter;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
@@ -318,7 +319,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		tablesPanel.removeAll();
 		multiTableExporter.clear();
 
-		multiTableExporter.addExportable(getTree());
+		multiTableExporter.addExportable(new TreeTableExporter(getTree()));
 		addTable(mainTableScrollPane, new TableExporter(mainTable));
 
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
