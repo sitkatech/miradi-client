@@ -32,7 +32,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.utils.TreeTableExporter;
 
@@ -96,7 +96,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	}
 	
 	@Override
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		return new TreeTableExporter(getTreeTable());
 	}

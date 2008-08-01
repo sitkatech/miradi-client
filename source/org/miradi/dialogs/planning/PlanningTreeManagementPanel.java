@@ -31,7 +31,7 @@ import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.RtfWriter;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
@@ -73,10 +73,10 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}
 	
-	public ExportableTableInterface getExportableTable() throws Exception
+	public AbstractTableExporter getExportableTable() throws Exception
 	{
 		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
-		ExportableTableInterface table = panel.getTableForExporting();
+		AbstractTableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
 		return table;

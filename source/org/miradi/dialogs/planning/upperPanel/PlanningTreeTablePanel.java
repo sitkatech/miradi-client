@@ -66,7 +66,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -337,7 +337,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		repaint();
 	}
 	
-	private void addTable(MiradiScrollPane scrollPane, ExportableTableInterface table)
+	private void addTable(MiradiScrollPane scrollPane, AbstractTableExporter table)
 	{
 		tablesPanel.add(scrollPane);
 		multiTableExporter.addExportable(table);
@@ -348,7 +348,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		return (PlanningTreeTableModel)getModel();
 	}
 	
-	public ExportableTableInterface getTableForExporting()
+	public AbstractTableExporter getTableForExporting()
 	{
 		return multiTableExporter;
 	}

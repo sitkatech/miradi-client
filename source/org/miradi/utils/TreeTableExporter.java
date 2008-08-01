@@ -99,11 +99,6 @@ public class TreeTableExporter extends AbstractTableExporter
 		return value.toString();
 	}
 
-	public Object getValueAt(int row, int column)
-	{
-		return getTextAt(row, column);
-	}
-	
 	public JTree getTree()
 	{
 		return getTreeTable().getTree();

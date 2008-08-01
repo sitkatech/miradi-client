@@ -88,13 +88,6 @@ public class TableExporter extends AbstractTableExporter
 		
 		return value.toString();
 	}
-	
-	//FIXME this method needs to go away once refactoring has been doen. it is being replaced
-	// by getTextAt
-	public Object getValueAt(int row, int column)
-	{
-		return getTextAt(row, column);
-	}
-	
+		
 	private JTable tableToExport;
 }

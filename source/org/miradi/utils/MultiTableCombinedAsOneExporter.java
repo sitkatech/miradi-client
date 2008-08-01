@@ -35,7 +35,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		tables = new Vector();
 	}
 	
-	public void addExportable(ExportableTableInterface table)
+	public void addExportable(AbstractTableExporter table)
 	{
 		tables.add(table);
 	}
@@ -81,11 +81,6 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tableAndColumnHolder.getTable().getHeaderFor(tableAndColumnHolder.getColumn());
 	}
 	
-	public Object getValueAt(int row, int column)
-	{
-		return getTextAt(row, column);
-	}
-	
 	@Override
 	public String getIconAt(int row, int column)
 	{
@@ -102,7 +97,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	public String getTextAt(int row, int column)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
-		Object value = tableAndColumnHolder.getTable().getValueAt(row, tableAndColumnHolder.getColumn());
+		Object value = tableAndColumnHolder.getTable().getTextAt(row, tableAndColumnHolder.getColumn());
 		if (value == null)
 			return "";
 		
@@ -121,7 +116,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		int thisColumnCount = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
-			ExportableTableInterface thisTable = tables.get(i);
+			AbstractTableExporter thisTable = tables.get(i);
 			thisColumnCount += thisTable.getColumnCount();
 			if (thisColumnCount <= column)
 			{
@@ -137,7 +132,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	private class TableAndColumnHolder
 	{
-		public TableAndColumnHolder(ExportableTableInterface tableToUse, int columnToUse)
+		public TableAndColumnHolder(AbstractTableExporter tableToUse, int columnToUse)
 		{
 			table = tableToUse;
 			column = columnToUse;
@@ -148,14 +143,14 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 			return column;
 		}
 		
-		public ExportableTableInterface getTable()
+		public AbstractTableExporter getTable()
 		{
 			return table;
 		}
 		
-		private ExportableTableInterface table;
+		private AbstractTableExporter table;
 		private int column;
 	}
 	
-	private Vector<ExportableTableInterface> tables;
+	private Vector<AbstractTableExporter> tables;
 }

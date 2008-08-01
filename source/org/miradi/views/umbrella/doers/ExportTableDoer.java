@@ -25,7 +25,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.views.ViewDoer;
 
@@ -69,7 +69,7 @@ public class ExportTableDoer extends ViewDoer
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
-			ExportableTableInterface table = getView().getExportableTable();
+			AbstractTableExporter table = getView().getExportableTable();
 			int maxDepth = table.getMaxDepthCount();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
@@ -97,16 +97,16 @@ public class ExportTableDoer extends ViewDoer
 		}
 	}
 
-	private String getSafeValue(ExportableTableInterface table, int row, int column)
+	private String getSafeValue(AbstractTableExporter table, int row, int column)
 	{
-		Object value = table.getValueAt(row, column);
+		Object value = table.getTextAt(row, column);
 		if (value == null)
 			return "";
 		
 		return value.toString();
 	}
 
-	private void putHeaders(UnicodeWriter out, ExportableTableInterface table, int maxDepeth) throws Exception
+	private void putHeaders(UnicodeWriter out, AbstractTableExporter table, int maxDepeth) throws Exception
 	{
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)

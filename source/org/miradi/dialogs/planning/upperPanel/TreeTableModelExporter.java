@@ -68,11 +68,6 @@ public class TreeTableModelExporter extends AbstractTableExporter
 		return rowObjectRefs.size();
 	}
 
-	public Object getValueAt(int row, int column)
-	{
-		return getTextAt(row, column);
-	}
-	
 	@Override
 	public int getColumnCount()
 	{
