@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -75,7 +77,7 @@ public class TreeTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getIconAt(int row, int column)
+	public Icon getIconAt(int row, int column)
 	{
 		return null;
 	}

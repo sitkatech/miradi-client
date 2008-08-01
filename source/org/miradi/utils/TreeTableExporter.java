@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import javax.swing.Icon;
 import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -51,7 +52,7 @@ public class TreeTableExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getIconAt(int row, int column)
+	public Icon getIconAt(int row, int column)
 	{
 		return null;
 	}

@@ -21,6 +21,8 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
+import javax.swing.Icon;
+
 import org.miradi.objects.BaseObject;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
@@ -82,7 +84,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 	
 	@Override
-	public String getIconAt(int row, int column)
+	public Icon getIconAt(int row, int column)
 	{
 		return null;
 	}

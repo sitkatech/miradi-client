@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import javax.swing.Icon;
+
 import org.miradi.objects.BaseObject;
 
 public abstract class AbstractTableExporter
@@ -28,7 +30,7 @@ public abstract class AbstractTableExporter
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
 	abstract public String getTextAt(int row, int column);
-	abstract public String getIconAt(int row, int column);
+	abstract public Icon getIconAt(int row, int column);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);
