@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.AbstractTableExporter;
@@ -72,7 +74,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getIconAt(int row, int column)
+	public Icon getIconAt(int row, int column)
 	{
 		return null;
 	}
