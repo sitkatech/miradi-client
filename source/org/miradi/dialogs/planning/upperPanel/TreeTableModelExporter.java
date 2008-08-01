@@ -89,7 +89,8 @@ public class TreeTableModelExporter extends AbstractTableExporter
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		return getModel().getValueAt(getBaseObjectForRow(row), column).toString();
+		Object value = getModel().getValueAt(getBaseObjectForRow(row), column);
+		return getSafeValue(value);
 	}
 	
 	private Project getProject()
