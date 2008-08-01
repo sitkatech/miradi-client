@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import org.miradi.objects.BaseObject;
 
-public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
+public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
 	public MultiTableCombinedAsOneExporter()
 	{
@@ -83,6 +83,24 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 	
 	public Object getValueAt(int row, int column)
 	{
+		return getTextAt(row, column);
+	}
+	
+	@Override
+	public String getIconAt(int row, int column)
+	{
+		return null;
+	}
+
+	@Override
+	public int getRowType(int row)
+	{
+		return 0;
+	}
+
+	@Override
+	public String getTextAt(int row, int column)
+	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
 		Object value = tableAndColumnHolder.getTable().getValueAt(row, tableAndColumnHolder.getColumn());
 		if (value == null)
@@ -90,7 +108,7 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		
 		return value.toString();
 	}
-	
+			
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(0);
@@ -138,6 +156,6 @@ public class MultiTableCombinedAsOneExporter implements ExportableTableInterface
 		private ExportableTableInterface table;
 		private int column;
 	}
-		
+	
 	private Vector<ExportableTableInterface> tables;
 }
