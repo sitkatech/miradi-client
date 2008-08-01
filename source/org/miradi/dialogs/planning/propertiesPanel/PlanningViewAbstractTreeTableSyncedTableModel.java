@@ -24,9 +24,8 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.ExportableTableInterface;
 
-abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements ExportableTableInterface
+abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel
 {
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
@@ -51,11 +50,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return objectProvider.getBaseObjectForRowColumn(row, column);
 	}
 	
-	public RowColumnBaseObjectProvider getTreeTableModelAdapter()
-	{
-		return objectProvider;
-	}
-
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 	}
@@ -63,21 +57,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return getBaseObjectForRowColumn(row, 0);
-	}
-	
-	public int getDepth(int row)
-	{
-		return 0;
-	}
-	
-	public int getMaxDepthCount()
-	{
-		return 0;
-	}
-	
-	public String getHeaderFor(int column)
-	{
-		return getColumnName(column);
 	}
 	
 	protected Project project;
