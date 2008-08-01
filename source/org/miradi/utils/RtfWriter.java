@@ -24,9 +24,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.Icon;
+
 import org.martus.util.UnicodeWriter;
-import org.miradi.icons.IconManager;
-import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
@@ -116,9 +116,9 @@ public class RtfWriter
 				//FIXME this is temporaraly and under construction.  
 				if (column == 0)
 				{
-					BaseObject baseObjectForRow = exportableTable.getBaseObjectForRow(row);
-					if (baseObjectForRow != null)
-						writeImage(BufferedImageFactory.getImage(IconManager.getImage(baseObjectForRow)));
+					Icon cellIcon = exportableTable.getIconAt(row, column);
+					if (cellIcon != null)
+						writeImage(BufferedImageFactory.getImage(cellIcon));
 					
 					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
 				}
