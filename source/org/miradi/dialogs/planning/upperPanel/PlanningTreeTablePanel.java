@@ -73,6 +73,7 @@ import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.TableExporter;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
@@ -318,17 +319,17 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		multiTableExporter.clear();
 
 		multiTableExporter.addExportable(getTree());
-		addTable(mainTableScrollPane, mainTable.getTableExporter());
+		addTable(mainTableScrollPane, new TableExporter(mainTable));
 
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-			addTable(annualTotalsScrollPane, annualTotalsTable.getTableExporter());
+			addTable(annualTotalsScrollPane, new TableExporter(annualTotalsTable));
 
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-			addTable(measurementScrollPane, measurementTable.getTableExporter());
+			addTable(measurementScrollPane, new TableExporter(measurementTable));
 
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-			addTable(futureStatusScrollPane, futureStatusTable.getTableExporter());
+			addTable(futureStatusScrollPane, new TableExporter(futureStatusTable));
 
 		
 		validate();

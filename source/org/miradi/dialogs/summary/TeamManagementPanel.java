@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ExportableTableInterface;
+import org.miradi.utils.TableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
 {
@@ -69,7 +70,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable().getTableExporter();
+		return new TableExporter(createTable());
 	}
 
 	private TeamPoolTable createTable()

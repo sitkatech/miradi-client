@@ -28,14 +28,11 @@ public class ExportableTable extends TableWithHelperMethods
 	public ExportableTable()
 	{
 		super();
-		
-		tableExporter = new TableExporter(this);
 	}
 
 	public ExportableTable(TableModel model)
 	{
-		this();
-		setModel(model);
+		super(model);
 	}
 
 	public int getDepth(int row)
@@ -56,12 +53,5 @@ public class ExportableTable extends TableWithHelperMethods
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return null;
-	}
-	
-	public TableExporter getTableExporter()
-	{
-		return tableExporter;
 	}	
-	
-	private TableExporter tableExporter;
 }
