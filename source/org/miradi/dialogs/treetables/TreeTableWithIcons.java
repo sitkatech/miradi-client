@@ -176,7 +176,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			renderer.setClosedIcon(icon);
 			renderer.setOpenIcon(icon);
 			renderer.setLeafIcon(icon);
-			renderer.setFont(getPlainFont());
+			renderer.setFont(font);
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
