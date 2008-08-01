@@ -32,4 +32,12 @@ public abstract class AbstractTableExporter
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);
+	
+	public String getSafeValue(Object object)
+	{
+		if (object == null)
+			return "";
+		
+		return object.toString();
+	}
 }

@@ -83,10 +83,7 @@ public class TableExporter extends AbstractTableExporter
 	public String getTextAt(int row, int column)
 	{
 		Object value = tableToExport.getValueAt(row, column);
-		if (value == null)
-			return "";
-		
-		return value.toString();
+		return getSafeValue(value);
 	}
 		
 	private JTable tableToExport;

@@ -98,10 +98,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
 		Object value = tableAndColumnHolder.getTable().getTextAt(row, tableAndColumnHolder.getColumn());
-		if (value == null)
-			return "";
-		
-		return value.toString();
+		return getSafeValue(value);
 	}
 			
 	public BaseObject getBaseObjectForRow(int row)

@@ -93,10 +93,7 @@ public class TreeTableExporter extends AbstractTableExporter
 			return getTree().getPathForRow(row).getLastPathComponent().toString();
 		
 		Object value = getTreeTable().getValueAt(row, column);
-		if (value == null)
-			return "";
-		
-		return value.toString();
+		return getSafeValue(value);
 	}
 
 	public JTree getTree()
