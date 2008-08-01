@@ -28,6 +28,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTable
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
+import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -52,7 +53,7 @@ public class PlanningTreeXmlExporter
 	{
 		multiModelExporter = new MultiTableCombinedAsOneExporter();
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
-		multiModelExporter.addExportable(model);
+		multiModelExporter.addExportable(new TreeTableModelExporter(getProject(), model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(getProject(), model, columnsToShow);
 		multiModelExporter.addExportable(mainModel);
