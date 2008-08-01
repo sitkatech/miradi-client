@@ -80,15 +80,16 @@ public class RtfWriter
 		getWriter().writeln("}");
 	}
 
-	//FIXME understand what this method needs and refactor simplify
 	static public String toHex(byte b)
 	{
-		Integer integer = new Integer((b << 24) >>> 24);
-		int i = integer.intValue();
-		if ( i < (byte)16 )
-			return "0"+Integer.toString(i, 16);
+		int i = b & 0xFF;
+		int firstNibble = i/16;
+		String firstDigit = Integer.toHexString(firstNibble);
 		
-		return Integer.toString(i, 16);
+		int secondNibble = i%16;
+		String secondDigit = Integer.toHexString(secondNibble);
+		
+		return firstDigit + secondDigit;
 	}
 	
 	public void writeRtfTable(ExportableTableInterface exportableTable) throws Exception

@@ -160,6 +160,7 @@ import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestMiradiMap;
 import org.miradi.utils.TestPointList;
+import org.miradi.utils.TestRtfWriter;
 import org.miradi.utils.TestStringMap;
 import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestTranslations;
@@ -249,6 +250,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMiradiMap.class));
 		suite.addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
 		suite.addTest(new TestSuite(TestDiagramCorruptionDetector.class));
+		suite.addTest(new TestSuite(TestRtfWriter.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
