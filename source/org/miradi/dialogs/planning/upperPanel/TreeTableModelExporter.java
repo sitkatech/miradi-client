@@ -19,22 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
+import org.miradi.utils.AbstractTableExporter;
 
-public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
+public class TreeTableModelExporter extends AbstractTableExporter
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
+	public TreeTableModelExporter(Project projectToUse, GenericTreeTableModel modelToUse) throws Exception
 	{
-		super(projectToUse, visibleRowCodesToUse, visibleColumnCodesToUse);
-		rowObjectRefs = getFullyExpandedRefList();
+		project = projectToUse;
+		model = modelToUse;
+		rowObjectRefs = model.getFullyExpandedRefList();
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getBaseObjectForRow(row);
+	}
+
+	public BaseObject getBaseObjectForRow(int row)
 	{
 		ORef rowObjectRef = rowObjectRefs.get(row);
 		if (rowObjectRef.isInvalid())
@@ -42,10 +48,67 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		return getProject().findObject(rowObjectRef);
 	}
 
+	public int getDepth(int row)
+	{
+		return 0;
+	}
+
+	public String getHeaderFor(int column)
+	{
+		return getModel().getColumnName(column);
+	}
+
+	public int getMaxDepthCount()
+	{
+		return 0;
+	}
+
 	public int getRowCount()
 	{
 		return rowObjectRefs.size();
 	}
+
+	public Object getValueAt(int row, int column)
+	{
+		return getTextAt(row, column);
+	}
 	
+	@Override
+	public int getColumnCount()
+	{
+		return 0;
+	}
+
+	@Override
+	public String getIconAt(int row, int column)
+	{
+		return null;
+	}
+
+	@Override
+	public int getRowType(int row)
+	{
+		return 0;
+	}
+
+	@Override
+	public String getTextAt(int row, int column)
+	{
+		return getModel().getValueAt(getBaseObjectForRow(row), column).toString();
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private GenericTreeTableModel getModel()
+	{
+		return model;
+	}
+	
+	private GenericTreeTableModel model;
 	private ORefList rowObjectRefs;
+	private Project project;
+
 }
