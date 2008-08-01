@@ -318,17 +318,17 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		multiTableExporter.clear();
 
 		multiTableExporter.addExportable(getTree());
-		addTable(mainTableScrollPane, mainTable);
+		addTable(mainTableScrollPane, mainTable.getTableExporter());
 
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-			addTable(annualTotalsScrollPane, annualTotalsTable);
+			addTable(annualTotalsScrollPane, annualTotalsTable.getTableExporter());
 
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-			addTable(measurementScrollPane, measurementTable);
+			addTable(measurementScrollPane, measurementTable.getTableExporter());
 
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-			addTable(futureStatusScrollPane, futureStatusTable);
+			addTable(futureStatusScrollPane, futureStatusTable.getTableExporter());
 
 		
 		validate();

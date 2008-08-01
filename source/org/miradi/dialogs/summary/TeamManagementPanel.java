@@ -69,7 +69,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable();
+		return createTable().getTableExporter();
 	}
 
 	private TeamPoolTable createTable()

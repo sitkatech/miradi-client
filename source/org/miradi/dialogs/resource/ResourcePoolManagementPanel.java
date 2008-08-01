@@ -77,7 +77,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable();
+		return createTable().getTableExporter();
 	}
 
 	private ResourcePoolTable createTable()

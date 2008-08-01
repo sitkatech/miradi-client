@@ -74,7 +74,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable();
+		return createTable().getTableExporter();
 	}
 	
 	private AccountingCodePoolTable createTable()

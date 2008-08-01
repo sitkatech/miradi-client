@@ -56,7 +56,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable();
+		return createTable().getTableExporter();
 	}
 
 	private OrganizationPoolTable createTable()
