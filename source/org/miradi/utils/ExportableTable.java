@@ -23,16 +23,19 @@ import javax.swing.table.TableModel;
 
 import org.miradi.objects.BaseObject;
 
-public class ExportableTable extends TableWithHelperMethods implements ExportableTableInterface
+public class ExportableTable extends TableWithHelperMethods
 {
 	public ExportableTable()
 	{
 		super();
+		
+		tableExporter = new TableExporter(this);
 	}
 
 	public ExportableTable(TableModel model)
 	{
-		super(model);
+		this();
+		setModel(model);
 	}
 
 	public int getDepth(int row)
@@ -53,5 +56,12 @@ public class ExportableTable extends TableWithHelperMethods implements Exportabl
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return null;
+	}
+	
+	public TableExporter getTableExporter()
+	{
+		return tableExporter;
 	}	
+	
+	private TableExporter tableExporter;
 }

@@ -80,7 +80,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public ExportableTableInterface getExportableTable() throws Exception
 	{
-		return createTable();
+		return createTable().getTableExporter();
 	}
 	
 	@Override
