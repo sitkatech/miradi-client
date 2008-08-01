@@ -37,11 +37,6 @@ public class TreeTableModelExporter extends AbstractTableExporter
 		rowObjectRefs = model.getFullyExpandedRefList();
 	}
 	
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return getBaseObjectForRow(row);
-	}
-
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		ORef rowObjectRef = rowObjectRefs.get(row);
