@@ -23,6 +23,7 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
@@ -56,22 +57,22 @@ public class PlanningTreeXmlExporter
 		multiModelExporter.addExportable(new TreeTableModelExporter(getProject(), model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(getProject(), model, columnsToShow);
-		multiModelExporter.addExportable(mainModel);
+		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel));
 			
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
-			multiModelExporter.addExportable(annualTotalsModel);
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(annualTotalsModel));
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), model);
-			multiModelExporter.addExportable(measurementModel);
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel));
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), model);
-			multiModelExporter.addExportable(futureStatusModel);
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel));
 		}
 	}
 	
