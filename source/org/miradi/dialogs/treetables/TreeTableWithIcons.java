@@ -44,6 +44,7 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
@@ -64,6 +65,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -119,6 +121,9 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	{		
 		public Renderer()
 		{	
+			projectMetaDataRenderer = new DefaultTreeCellRenderer();
+			setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
+
 			targetRenderer = new DefaultTreeCellRenderer();
 			setRendererDefaults(targetRenderer, new TargetIcon(), getBoldFont());
 
@@ -212,6 +217,8 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 				renderer = keyEcologicalAttributeRenderer;
 			else if(node.getType() == ObjectType.MEASUREMENT)
 				renderer = measurementRenderer;
+			else if(node.getType() == ProjectMetadata.getObjectType())
+				renderer = projectMetaDataRenderer;
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
@@ -265,6 +272,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			return defaultFont.deriveFont(style);
 		}
 
+		private DefaultTreeCellRenderer projectMetaDataRenderer;
 		private DefaultTreeCellRenderer targetRenderer;
 		private DefaultTreeCellRenderer strategyRenderer;
 		private DefaultTreeCellRenderer objectiveRenderer;
