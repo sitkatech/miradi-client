@@ -38,6 +38,18 @@ public class IconManager
 	public static Icon getImage(BaseObject baseObject)
 	{
 		int type = baseObject.getType();
+
+		if (Task.is(type))
+			return getTaskIcon((Task) baseObject);
+		
+		if (Factor.isFactor(type))
+			return getFactorIcon((Factor) baseObject);
+		
+		return getImage(type);
+	}
+
+	public static Icon getImage(int type)
+	{
 		if (Indicator.is(type))
 			return getIndicatorIcon();
 		
@@ -53,19 +65,13 @@ public class IconManager
 		if (KeyEcologicalAttribute.is(type))
 			return getKeyEcologicalAttributeIcon();
 
-		if (Task.is(type))
-			return getTaskIcon((Task) baseObject);
-		
-		if (Factor.isFactor(type))
-			return getFactorIcon((Factor) baseObject);
-		
 		if (ConceptualModelDiagram.is(type))
 			return getConceptualModelIcon();
 		
 		if (ResultsChainDiagram.is(type))
 			return getConceptualModelIcon();
 		
-		throw new RuntimeException("Could not find icon for type:" + baseObject.getType());
+		throw new RuntimeException("Could not find icon for type:" + type);
 	}
 
 	private static AbstractMiradiIcon getFactorIcon(Factor factor)

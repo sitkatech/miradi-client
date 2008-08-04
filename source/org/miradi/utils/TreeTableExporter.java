@@ -84,7 +84,8 @@ public class TreeTableExporter extends AbstractTableExporter
 	@Override
 	public int getRowType(int row)
 	{
-		return 0;
+		TreeTableNode treeTableNode = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
+		return treeTableNode.getObjectReference().getObjectType();
 	}
 
 	@Override
