@@ -24,6 +24,7 @@ import javax.swing.JTable;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
 
 public class TableExporter extends AbstractTableExporter
 {
@@ -59,6 +60,11 @@ public class TableExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
+		//FIXME is there a better way to get the choice time rather than instanceof
+		Object value = tableToExport.getValueAt(row, column);
+		if (value instanceof ChoiceItem)
+			return ((ChoiceItem)value).getIcon();
+			
 		return null;
 	}
 
