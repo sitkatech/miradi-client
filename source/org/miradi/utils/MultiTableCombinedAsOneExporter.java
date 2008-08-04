@@ -86,8 +86,8 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
-		return tableAndColumnHolder.getTable().getIconAt(row, column);
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		
+		return tableAndColumnHolder.getTable().getIconAt(row, tableAndColumnHolder.getColumn());
 	}
 
 	@Override
