@@ -23,6 +23,7 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.icons.IconManager;
 import org.miradi.objects.BaseObject;
 
 import com.java.sun.jtreetable.JTreeTable;
@@ -54,6 +55,16 @@ public class TreeTableExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
+		if (column == 0)
+		{
+			BaseObject baseObject = getBaseObjectForRow(row);
+			if (baseObject != null)
+				return IconManager.getImage(baseObject);
+			
+			int rowType = getRowType(row);
+			return IconManager.getImage(rowType);
+		}
+		//FIXME this needs to return correct cell icon
 		return null;
 	}
 

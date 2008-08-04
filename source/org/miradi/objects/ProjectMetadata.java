@@ -29,6 +29,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.PercentageData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringRefMapData;
@@ -282,6 +283,23 @@ public class ProjectMetadata extends BaseObject
 	public boolean isBudgetTimePeriodYearly()
 	{
 		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
+	}
+	
+	public static boolean is(BaseObject object)
+	{
+		if(object == null)
+			return false;
+		return is(object.getRef());
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
 	}
 
 	void clear()

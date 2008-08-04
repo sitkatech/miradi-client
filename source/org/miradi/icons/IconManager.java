@@ -29,6 +29,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
  
@@ -50,6 +51,9 @@ public class IconManager
 
 	public static Icon getImage(int type)
 	{
+		if (ProjectMetadata.is(type))
+			return getMiradiApplicationIcon();
+		
 		if (Indicator.is(type))
 			return getIndicatorIcon();
 		
@@ -143,6 +147,11 @@ public class IconManager
 	public static IndicatorIcon getIndicatorIcon()
 	{
 		return new IndicatorIcon();
+	}
+	
+	public static MiradiApplicationIcon getMiradiApplicationIcon()
+	{
+		return new MiradiApplicationIcon();
 	}
 	
 	public static TargetIcon getTargetIcon()
