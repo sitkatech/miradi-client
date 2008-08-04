@@ -140,6 +140,7 @@ public class SummaryView extends TabbedView
 		tabPanels.clear();
 	}
 	
+	//FIXME this method and PossibleTeamMembersPanel are no longer used by anyone.  
 	public void showTeamAddMembersDialog() throws Exception
 	{
 		PossibleTeamMembersPanel panel = new PossibleTeamMembersPanel(getMainWindow());
