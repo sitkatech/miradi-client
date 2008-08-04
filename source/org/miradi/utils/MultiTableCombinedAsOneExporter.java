@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
-import org.miradi.icons.IconManager;
 import org.miradi.objects.BaseObject;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
@@ -87,19 +86,8 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		if (column == 0)
-		{
-			TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(0);
-			BaseObject baseObject = tableAndColumnHolder.getTable().getBaseObjectForRow(row);
-			if (baseObject != null)
-				return IconManager.getImage(baseObject);
-			
-			int rowType = tableAndColumnHolder.getTable().getRowType(row);
-			return IconManager.getImage(rowType);
-		}
-		
-		//FIXME needs to return correct cell icon if its not column 0
-		return null;
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
+		return tableAndColumnHolder.getTable().getIconAt(row, column);
 	}
 
 	@Override
