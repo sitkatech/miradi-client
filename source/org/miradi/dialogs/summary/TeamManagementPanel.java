@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.RtfWriter;
 import org.miradi.utils.TableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
@@ -96,5 +97,15 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return ActionJumpSummaryWizardDefineTeamMembers.class;
 	}
 	
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+		
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		writer.writeRtfTable(getTableExporter());
+	}
+		
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
 }
