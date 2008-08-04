@@ -114,24 +114,14 @@ public class RtfWriter
 			StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
 			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 			{
-				//FIXME this is temporaraly and under construction.  
-				if (column == 0)
-				{
-					int paddingCount = exportableTable.getDepth(row);
-					rowContent.append(exportableTable.pad(paddingCount, column));
-					
-					Icon cellIcon = exportableTable.getIconAt(row, column);
-					if (cellIcon != null)
-						writeImage(BufferedImageFactory.getImage(cellIcon));
-					
-					
-					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
-				}
-				else
-				{
-					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
-				}
-				
+				int paddingCount = exportableTable.getDepth(row);
+				rowContent.append(exportableTable.pad(paddingCount, column));
+
+				Icon cellIcon = exportableTable.getIconAt(row, column);
+				if (cellIcon != null)
+					writeImage(BufferedImageFactory.getImage(cellIcon));
+
+				rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");				
 				rowFormating.append("\\cellx" + column + " ");	
 			}
 			rowContent.append("}");
