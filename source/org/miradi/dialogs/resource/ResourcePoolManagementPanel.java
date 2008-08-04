@@ -76,7 +76,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	}
 	
 	@Override
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		return new TableExporter(createTable());
 	}

@@ -192,7 +192,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		return getTabContentsComponent() != null;
 	}
 
-	public AbstractTableExporter getExportableTable()
+	public AbstractTableExporter getTableExporter()
 	{
 		return null;
 	}

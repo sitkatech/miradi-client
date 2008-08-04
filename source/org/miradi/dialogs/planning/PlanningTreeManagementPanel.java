@@ -73,7 +73,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		return true;
 	}
 	
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
 		AbstractTableExporter table = panel.getTableForExporting();
@@ -95,7 +95,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		writer.writeRtfTable(getExportableTable());
+		writer.writeRtfTable(getTableExporter());
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");

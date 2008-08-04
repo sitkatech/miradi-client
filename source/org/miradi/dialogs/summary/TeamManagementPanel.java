@@ -68,7 +68,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return true;
 	}
 	
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		return new TableExporter(createTable());
 	}

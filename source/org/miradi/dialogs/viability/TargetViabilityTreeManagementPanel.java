@@ -96,7 +96,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	}
 	
 	@Override
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		return new TreeTableExporter(getTreeTable());
 	}
