@@ -29,7 +29,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
 import org.miradi.utils.TableExporter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
@@ -84,15 +83,5 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return ActionJumpSummaryWizardRolesAndResponsibilities.class;
 	}
 	
-	public boolean isRtfExportable()
-	{
-		return true;
-	}
-		
-	public void exportRtf(RtfWriter writer) throws Exception
-	{
-		writer.writeRtfTable(getTableExporter());
-	}
-		
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Other Orgs"); 
 }

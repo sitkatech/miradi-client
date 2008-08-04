@@ -22,6 +22,7 @@ package org.miradi.dialogs.base;
 import javax.swing.Icon;
 
 import org.miradi.main.MainWindow;
+import org.miradi.utils.RtfWriter;
 
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
@@ -30,5 +31,15 @@ abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+		
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		writer.writeRtfTable(getTableExporter());
+	}
+			
 	abstract public Icon getIcon();	
 }
