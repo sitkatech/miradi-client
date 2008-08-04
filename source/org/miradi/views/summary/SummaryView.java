@@ -31,9 +31,7 @@ import org.miradi.actions.ActionDeleteTeamMember;
 import org.miradi.actions.ActionTeamCreateMember;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.organization.OrganizationManagementPanel;
-import org.miradi.dialogs.resource.PossibleTeamMembersPanel;
 import org.miradi.dialogs.summary.TeamManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -138,15 +136,6 @@ public class SummaryView extends TabbedView
 			panel.dispose();
 		}
 		tabPanels.clear();
-	}
-	
-	//FIXME this method and PossibleTeamMembersPanel are no longer used by anyone.  
-	public void showTeamAddMembersDialog() throws Exception
-	{
-		PossibleTeamMembersPanel panel = new PossibleTeamMembersPanel(getMainWindow());
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
-		showFloatingPropertiesDialog(dlg);
-		panel.updateSplitterLocation();
 	}
 	
 	private void addSummaryDoersToMap()
