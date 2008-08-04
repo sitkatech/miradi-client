@@ -296,7 +296,7 @@ abstract public class TabbedView extends UmbrellaView
 	}
 
 	@Override
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel == null)

@@ -69,7 +69,7 @@ public class ExportTableDoer extends ViewDoer
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
-			AbstractTableExporter table = getView().getExportableTable();
+			AbstractTableExporter table = getView().getTableExporter();
 			int maxDepth = table.getMaxDepthCount();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
