@@ -282,7 +282,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return false;
 	}
 	
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getExportableTable");
 	}
