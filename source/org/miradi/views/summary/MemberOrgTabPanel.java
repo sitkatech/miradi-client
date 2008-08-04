@@ -62,9 +62,9 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		return this;
 	}
 
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return dataPanel.getExportableTable();
+		return dataPanel.getTableExporter();
 	}
 
 	public Icon getIcon()

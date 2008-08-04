@@ -73,7 +73,7 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 		return true;
 	}
 	
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		return new TableExporter(createTable());
 	}

@@ -203,7 +203,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return false;
 	}
 	
-	public AbstractTableExporter getExportableTable() throws Exception
+	public AbstractTableExporter getTableExporter() throws Exception
 	{
 		return null;
 	}

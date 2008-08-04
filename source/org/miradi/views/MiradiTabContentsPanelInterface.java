@@ -36,7 +36,7 @@ public interface MiradiTabContentsPanelInterface
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();
-	public AbstractTableExporter getExportableTable() throws Exception;
+	public AbstractTableExporter getTableExporter() throws Exception;
 	public JComponent getPrintableComponent() throws Exception;
 	public boolean isPrintable();
 	public Class getJumpActionClass();
