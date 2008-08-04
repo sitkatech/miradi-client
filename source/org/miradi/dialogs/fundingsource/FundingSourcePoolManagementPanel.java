@@ -31,9 +31,8 @@ import org.miradi.icons.FundingSourceIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.TableExporter;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
@@ -97,15 +96,5 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 		return createTable();
 	}
 	
-	public boolean isRtfExportable()
-	{
-		return true;
-	}
-		
-	public void exportRtf(RtfWriter writer) throws Exception
-	{
-		writer.writeRtfTable(getTableExporter());
-	}
-
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Funding Sources"); 
 }
