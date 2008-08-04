@@ -95,11 +95,12 @@ public class RtfWriter
 	public void writeRtfTable(AbstractTableExporter exportableTable) throws Exception
 	{
 		StringBuffer rowHeaderContent = new StringBuffer("{");
-		StringBuffer rowHeaderFormatting = new StringBuffer("{\\trowd \\trgaph \\trhdr \\intbl ");
+		StringBuffer rowHeaderFormatting = new StringBuffer("{\\trowd \\trhdr \\trautofit1 \\intbl ");
 		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
 		{
-			rowHeaderContent.append(exportableTable.getHeaderFor(headerIndex) + " \\cell ");
-			rowHeaderFormatting.append(" \\cellx3000 ");
+			String header = exportableTable.getHeaderFor(headerIndex);
+			rowHeaderContent.append(header + " \\cell ");
+			rowHeaderFormatting.append(" \\cellx" + headerIndex + " ");
 		}
 		rowHeaderContent.append("}");
 		rowHeaderFormatting.append(" \\row }");
@@ -110,15 +111,19 @@ public class RtfWriter
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
 			StringBuffer rowContent = new StringBuffer("{");
-			StringBuffer rowFormating = new StringBuffer("{\\trowd \\trgaph \\intbl ");
+			StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
 			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 			{
 				//FIXME this is temporaraly and under construction.  
 				if (column == 0)
 				{
+					int paddingCount = exportableTable.getDepth(row);
+					rowContent.append(exportableTable.pad(paddingCount, column));
+					
 					Icon cellIcon = exportableTable.getIconAt(row, column);
 					if (cellIcon != null)
 						writeImage(BufferedImageFactory.getImage(cellIcon));
+					
 					
 					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
 				}
@@ -127,7 +132,7 @@ public class RtfWriter
 					rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");
 				}
 				
-				rowFormating.append(" \\cellx3000 ");	
+				rowFormating.append("\\cellx" + column + " ");	
 			}
 			rowContent.append("}");
 			rowFormating.append(" \\row }");
