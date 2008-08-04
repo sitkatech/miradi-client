@@ -57,7 +57,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	public ORef getObjectReference()
 	{
 		if(getObject() == null)
-			return ORef.INVALID;
+			return ORef.createInvalidWithType(getType());
+		
 		return getObject().getRef();
 	}
 	
