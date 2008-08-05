@@ -25,6 +25,7 @@ import java.awt.Component;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -37,7 +38,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
+public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
 	public static TaskPropertiesInputPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
 	{
@@ -67,11 +68,6 @@ public class TaskPropertiesInputPanel extends AbstractObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
-	public void dispose()
-	{
-		super.dispose();
-	}
-
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
