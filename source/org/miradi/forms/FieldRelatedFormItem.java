@@ -21,22 +21,22 @@ package org.miradi.forms;
 
 abstract public class FieldRelatedFormItem extends FormItem
 {
-	public FieldRelatedFormItem(int typeToUse, String tagToUse)
+	public FieldRelatedFormItem(int objectTypeToUse, String objectTagToUse)
 	{
-		type = typeToUse;
-		tag = tagToUse;
+		objectType = objectTypeToUse;
+		objectTag = objectTagToUse;
 	}
 	
-	public int getType()
+	public int getObjectType()
 	{
-		return type;
+		return objectType;
 	}
 
-	public String getTag()
+	public String getObjectTag()
 	{
-		return tag;
+		return objectTag;
 	}
 	
-	private int type;
-	private String tag;
+	private int objectType;
+	private String objectTag;
 }

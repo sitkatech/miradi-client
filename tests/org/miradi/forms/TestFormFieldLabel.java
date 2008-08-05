@@ -33,7 +33,7 @@ public class TestFormFieldLabel extends EAMTestCase
 	{
 		FormFieldLabel formFieldLabel = new FormFieldLabel(Target.getObjectType(), Target.TAG_LABEL);
 		assertTrue("is not a form field label?", formFieldLabel.isFormFieldLabel());
-		assertEquals("wrong form field label type?", Target.getObjectType(), formFieldLabel.getType());
-		assertEquals("wrong form field label tag?", Target.TAG_LABEL, formFieldLabel.getTag());
+		assertEquals("wrong form field label type?", Target.getObjectType(), formFieldLabel.getObjectType());
+		assertEquals("wrong form field label tag?", Target.TAG_LABEL, formFieldLabel.getObjectTag());
 	}
 }

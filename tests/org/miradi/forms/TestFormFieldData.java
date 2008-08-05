@@ -33,7 +33,7 @@ public class TestFormFieldData extends EAMTestCase
 	{
 		FormFieldData formFieldData = new FormFieldData(Target.getObjectType(), Target.TAG_LABEL);
 		assertTrue("is not form field Data?", formFieldData.isFormFieldData());
-		assertEquals("wrong form field data type?", Target.getObjectType(), formFieldData.getType());
-		assertEquals("wrong form field data tag?", Target.TAG_LABEL, formFieldData.getTag());
+		assertEquals("wrong form field data type?", Target.getObjectType(), formFieldData.getObjectType());
+		assertEquals("wrong form field data tag?", Target.TAG_LABEL, formFieldData.getObjectTag());
 	}
 }

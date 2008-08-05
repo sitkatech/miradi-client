@@ -60,7 +60,7 @@ public class RtfFormExporter
 			if (formItem.isFormFieldLabel())
 			{
 				FormFieldLabel formFieldLabel = (FormFieldLabel) formItem;
-				String label = EAM.fieldLabel(formFieldLabel.getType(), formFieldLabel.getTag());
+				String label = EAM.fieldLabel(formFieldLabel.getObjectType(), formFieldLabel.getObjectTag());
 				rowContent.append(label + " \\cell ");				
 				rowFormating.append("\\cellx" + (++uniqueRtfColumnId) + " ");
 			}
@@ -72,8 +72,8 @@ public class RtfFormExporter
 			if (formItem.isFormFieldData())
 			{
 				FormFieldData formFieldData = (FormFieldData) formItem;
-				ORef ref = getRefs().getRefForType(formFieldData.getType());
-				String data = getProject().getObjectData(ref, formFieldData.getTag());
+				ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
+				String data = getProject().getObjectData(ref, formFieldData.getObjectTag());
 				rowContent.append(data + " \\cell ");				
 				rowFormating.append("\\cellx" + (++uniqueRtfColumnId) + " ");
 			}

@@ -21,9 +21,9 @@ package org.miradi.forms;
 
 public class FormFieldData extends FieldRelatedFormItem
 {
-	public FormFieldData(int typeToUse, String tagToUse)
+	public FormFieldData(int objectTypeToUse, String objectTagToUse)
 	{
-		super(typeToUse, tagToUse);
+		super(objectTypeToUse, objectTagToUse);
 	}
 	
 	public boolean isFormFieldData()
