@@ -27,6 +27,7 @@ import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
@@ -115,15 +116,25 @@ public class RtfFormExporter
 		BaseObject baseObject = getProject().findObject(ref);
 		ObjectData rawObjectData = baseObject.getField(formFieldData.getObjectTag());
 		if (rawObjectData.isCodeListData())
-			return createFromCodeList(rawObjectData);
+			return createFromCodeList((CodeListData) rawObjectData);
+		
+		if (rawObjectData.isChoiceItemData())
+			return createFromChoiceData((ChoiceData) rawObjectData);
 		
 		return getProject().getObjectData(ref, formFieldData.getObjectTag());
 	}
 
-	private String createFromCodeList(ObjectData rawObjectData)
+	private String createFromChoiceData(ChoiceData choiceData)
+	{
+		ChoiceQuestion question = choiceData.getChoiceQuestion();
+		String code = choiceData.get();
+		ChoiceItem choiceItem = question.findChoiceByCode(code);
+		return choiceItem.getLabel();
+	}
+
+	private String createFromCodeList(CodeListData codeListData)
 	{
 		StringBuffer choices = new StringBuffer();
-		CodeListData codeListData = (CodeListData) rawObjectData;
 		CodeList codeList = codeListData.getCodeList();
 		ChoiceQuestion question = codeListData.getChoiceQuestion();
 		for (int index = 0; index < codeList.size(); ++index)
