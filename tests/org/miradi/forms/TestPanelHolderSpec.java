@@ -31,6 +31,17 @@ public class TestPanelHolderSpec extends TestCaseEnhanced
 	public void testBasics() throws Exception
 	{
 		PanelHolderSpec holder = new PanelHolderSpec();
-		assertNotNull(holder);
+		assertEquals("not empty to start?", 0, holder.getPanelCount());
+		
+		FieldPanelSpec panel1 = new FieldPanelSpec();
+		holder.addPanel(panel1);
+		assertEquals("didn't add panel?", 1, holder.getPanelCount());
+		
+		FieldPanelSpec panel2 = new FieldPanelSpec();
+		holder.addPanel(panel2);
+		assertEquals("didn't add second panel?", 2, holder.getPanelCount());
+		
+		FieldPanelSpec panel = holder.getPanel(0);
+		assertEquals("wrong panel order?", panel1, panel);
 	}
 }

@@ -19,7 +19,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
+import java.util.Vector;
+
 public class PanelHolderSpec
 {
+	public PanelHolderSpec()
+	{
+		 panels = new Vector<FieldPanelSpec>();
+	}
+
+	public Object getPanelCount()
+	{
+		return panels.size();
+	}
+
+	public FieldPanelSpec getPanel(int index)
+	{
+		return panels.get(index);
+	}
+
+	public void addPanel(FieldPanelSpec panelToAdd)
+	{
+		panels.add(panelToAdd);
+	}
+
+	private Vector<FieldPanelSpec> panels;
 
 }
