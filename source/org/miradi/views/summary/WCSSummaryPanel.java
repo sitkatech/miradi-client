@@ -21,9 +21,12 @@ package org.miradi.views.summary;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.summary.WcsTabForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 
 public class WCSSummaryPanel extends ObjectDataInputPanel
 {
@@ -51,4 +54,16 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 		return EAM.text("Label|WCS");
 	}
 
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new WcsTabForm());
+	}
 }
