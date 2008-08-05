@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.summary.FosTabForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.FosTrainingTypeQuestion;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
@@ -42,5 +45,18 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|FOS");
+	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new FosTabForm());
 	}
 }
