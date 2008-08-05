@@ -32,16 +32,16 @@ public class TestFormRow extends EAMTestCase
 	public void testBasics()
 	{
 		FormRow formRow = new FormRow();
-		assertEquals("left form items list not empty", 0, formRow.getLeftFormItems().size());
-		assertEquals("right form items list not empty", 0, formRow.getRightFormItems().size());
+		assertEquals("left form items list not empty", 0, formRow.getLeftFormItemsCount());
+		assertEquals("right form items list not empty", 0, formRow.getRightFormItemsCount());
 		
 		FormConstant formConstant = new FormConstant("SomeConstant");
 		FormFieldLabel formFieldLabel = new FormFieldLabel(Target.getObjectType(), Target.TAG_LABEL);
 		FormRow formRowWithLeftAndRight = new FormRow(formConstant, formFieldLabel);
-		assertEquals("incorrect left form list size?", 1, formRowWithLeftAndRight.getLeftFormItems().size());
-		assertEquals("incorrect right form list size?", 1, formRowWithLeftAndRight.getRightFormItems().size());
+		assertEquals("incorrect left form list size?", 1, formRowWithLeftAndRight.getLeftFormItemsCount());
+		assertEquals("incorrect right form list size?", 1, formRowWithLeftAndRight.getRightFormItemsCount());
 		
 		formRowWithLeftAndRight.addRightFormItem(new FormFieldData(Target.getObjectType(), Target.TAG_LABEL));
-		assertEquals("incorrect right form list size?", 2, formRowWithLeftAndRight.getRightFormItems().size());
+		assertEquals("incorrect right form list size?", 2, formRowWithLeftAndRight.getRightFormItemsCount());
 	}
 }

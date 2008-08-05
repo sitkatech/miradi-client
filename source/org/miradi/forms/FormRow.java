@@ -47,14 +47,24 @@ public class FormRow
 		rightFormItems.add(rightFormItem);
 	}
 
-	public Vector<FormItem> getLeftFormItems()
+	public int getLeftFormItemsCount()
 	{
-		return leftFormItems;
+		return leftFormItems.size();
 	}
-
-	public Vector<FormItem> getRightFormItems()
+	
+	public int getRightFormItemsCount()
 	{
-		return rightFormItems;
+		return rightFormItems.size();
+	}
+	
+	public FormItem getLeftFormItem(int index)
+	{
+		return leftFormItems.get(index);
+	}
+	
+	public FormItem getRightFormItem(int index)
+	{
+		return rightFormItems.get(index);
 	}
 	
 	private Vector<FormItem> leftFormItems;

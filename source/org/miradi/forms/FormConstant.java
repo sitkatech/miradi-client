@@ -21,12 +21,20 @@ package org.miradi.forms;
 
 public class FormConstant extends FormItem
 {
-	public FormConstant(String string)
+	public FormConstant(String constantToUse)
 	{
+		constant = constantToUse;
+	}
+	
+	public String getConstant()
+	{
+		return constant;
 	}
 	
 	public boolean isFormConstant()
 	{
 		return true;
 	}
+	
+	private String constant;
 }
