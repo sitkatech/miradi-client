@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
@@ -62,37 +63,68 @@ public class RtfFormExporter
 		StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
 		
 		int uniqueRtfColumnId = 1;
-
+		String FIELD_SPACING = " ";
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
-			if (formItem.isFormFieldLabel())
+			if (formItem.isFormConstant())
 			{
-				FormFieldLabel formFieldLabel = (FormFieldLabel) formItem;
-				String label = EAM.fieldLabel(formFieldLabel.getObjectType(), formFieldLabel.getObjectTag());
-				rowContent.append(label + " \\cell ");				
-				rowFormating.append("\\cellx" + (++uniqueRtfColumnId) + " ");
+				FormConstant formConstant = (FormConstant) formItem;
+				rowContent.append(formConstant.getConstant() + FIELD_SPACING);				
+			}
+			else if (formItem.isFormFieldLabel())
+			{
+				rowContent.append(getFieldLabel(formItem) + FIELD_SPACING);					
 			}
 		}
 		
+		rowContent.append(getCellCommand());
+		rowFormating.append(getCellxCommand(++uniqueRtfColumnId));
+		
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
-			FormItem formItem = formRow.getRightFormItem(rightColumn);				
+			FormItem formItem = formRow.getRightFormItem(rightColumn);
+			if (formItem.isFormFieldLabel())
+			{
+				rowContent.append(getFieldLabel(formItem) + FIELD_SPACING);							
+			}
 			if (formItem.isFormFieldData())
 			{
-				FormFieldData formFieldData = (FormFieldData) formItem;
-				ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
-				String data = getProject().getObjectData(ref, formFieldData.getObjectTag());
-				rowContent.append(data + " \\cell ");				
-				rowFormating.append("\\cellx" + (++uniqueRtfColumnId) + " ");
+				rowContent.append(getFieldData(formItem) + FIELD_SPACING);							
 			}
 		}
+		
+		rowContent.append(getCellCommand());				
+		rowFormating.append(getCellxCommand(++uniqueRtfColumnId));
 		
 		rowContent.append("}");
 		rowFormating.append(" \\row }");
 		
 		getWriter().writeln(rowContent.toString());
 		getWriter().writeln(rowFormating.toString());
+	}
+
+	private String getFieldData(FormItem formItem)
+	{
+		FormFieldData formFieldData = (FormFieldData) formItem;
+		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
+		return getProject().getObjectData(ref, formFieldData.getObjectTag());
+	}
+
+	private String getFieldLabel(FormItem formItem)
+	{
+		FormFieldLabel formFieldLabel = (FormFieldLabel) formItem;
+		return EAM.fieldLabel(formFieldLabel.getObjectType(), formFieldLabel.getObjectTag());
+	}
+
+	private String getCellCommand()
+	{
+		return " \\cell ";
+	}
+
+	private String getCellxCommand(int uniqueRtfColumnId)
+	{
+		return "\\cellx" + uniqueRtfColumnId + " ";
 	}
 	
 	private Project getProject()
