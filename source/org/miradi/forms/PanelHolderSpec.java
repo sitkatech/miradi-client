@@ -28,7 +28,7 @@ public class PanelHolderSpec
 		 panels = new Vector<FieldPanelSpec>();
 	}
 
-	public Object getPanelCount()
+	public int getPanelCount()
 	{
 		return panels.size();
 	}
@@ -44,5 +44,4 @@ public class PanelHolderSpec
 	}
 
 	private Vector<FieldPanelSpec> panels;
-
 }
