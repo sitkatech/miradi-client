@@ -26,6 +26,7 @@ public class FieldPanelSpec
 	public FieldPanelSpec()
 	{
 		rows = new Vector<FormRow>();
+		translatedTitle = "";
 	}
 
 	public Object getRowCount()
@@ -38,5 +39,27 @@ public class FieldPanelSpec
 		rows.add(rowToAdd);
 	}
 
+	public boolean hasBorder()
+	{
+		return hasBorder;
+	}
+
+	public void setHasBorder()
+	{
+		hasBorder = true;
+	}
+
+	public String getTranslatedTitle()
+	{
+		return translatedTitle;
+	}
+
+	public void setTranslatedTitle(String translatedTitleToUse)
+	{
+		translatedTitle = translatedTitleToUse;
+	}
+
 	private Vector<FormRow> rows;
+	private boolean hasBorder;
+	private String translatedTitle;
 }
