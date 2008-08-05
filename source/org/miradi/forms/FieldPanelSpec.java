@@ -29,7 +29,7 @@ public class FieldPanelSpec
 		translatedTitle = "";
 	}
 
-	public Object getRowCount()
+	public int getRowCount()
 	{
 		return rows.size();
 	}
@@ -39,7 +39,7 @@ public class FieldPanelSpec
 		rows.add(rowToAdd);
 	}
 
-	public Object getFormRow(int index)
+	public FormRow getFormRow(int index)
 	{
 		return rows.get(index);
 	}
