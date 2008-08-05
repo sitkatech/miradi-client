@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms;
 
 import org.miradi.main.EAMTestCase;
+import org.miradi.objects.Target;
 
 public class TestFormFieldData extends EAMTestCase
 {
@@ -30,6 +31,9 @@ public class TestFormFieldData extends EAMTestCase
 	
 	public void testBasics()
 	{
-		assertTrue("is not form field Data?", new FormFieldData().isFormFieldData());
+		FormFieldData formFieldData = new FormFieldData(Target.getObjectType(), Target.TAG_LABEL);
+		assertTrue("is not form field Data?", formFieldData.isFormFieldData());
+		assertEquals("wrong form field data type?", Target.getObjectType(), formFieldData.getType());
+		assertEquals("wrong form field data tag?", Target.TAG_LABEL, formFieldData.getTag());
 	}
 }

@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-public class FormItem
+abstract public class FormItem
 {
 	public boolean isFormConstant()
 	{
