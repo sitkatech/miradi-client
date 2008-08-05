@@ -20,24 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.forms.FormConstant;
+import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormFieldLabel;
+import org.miradi.forms.FormRow;
+import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 
-public class ProjectTabForm extends FieldPanelSpec
+public class ScopeTabHumanSubPanelForm extends FieldPanelSpec
 {
-	public ProjectTabForm()
+	public ScopeTabHumanSubPanelForm()
 	{
 		int type = ProjectMetadata.getObjectType();
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_NAME);
-		addLabelAndField(type, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		addLabelAndField(type, ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
-		addBlankHorizontalLine();
 		
-		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_URL);
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_STATUS);
-		addLabelAndField(type, ProjectMetadata.TAG_NEXT_STEPS);
+		FormRow populationRow = new FormRow();
+		populationRow.addLeftFormItem(new FormConstant(EAM.text("Label|Human Stakeholder Pop Size")));
+		populationRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_HUMAN_POPULATION));
+		populationRow.addRightFormItem(new FormFieldLabel(type, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES));
+		populationRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES));
+
+		addLabelAndField(type, ProjectMetadata.TAG_SOCIAL_CONTEXT);
 	}
 }

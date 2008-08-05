@@ -64,6 +64,18 @@ public class FieldPanelSpec
 		translatedTitle = translatedTitleToUse;
 	}
 
+	protected void addBlankHorizontalLine()
+	{
+		addFormRow(new FormRow());
+	}
+
+	protected void addLabelAndField(int type, String fieldTag)
+	{
+		FormFieldLabel label = new FormFieldLabel(type, fieldTag);
+		FormFieldData data = new FormFieldData(type, fieldTag);
+		addFormRow(new FormRow(label, data));
+	}
+
 	private Vector<FormRow> rows;
 	private boolean hasBorder;
 	private String translatedTitle;
