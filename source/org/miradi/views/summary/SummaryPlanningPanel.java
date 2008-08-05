@@ -23,11 +23,14 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
+import org.miradi.forms.summary.PlanningTabForm;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 
 public class SummaryPlanningPanel extends ObjectDataInputPanel
 {
@@ -58,5 +61,18 @@ public class SummaryPlanningPanel extends ObjectDataInputPanel
 	public Icon getIcon()
 	{
 		return new PlanningIcon();
+	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new PlanningTabForm());
 	}
 }
