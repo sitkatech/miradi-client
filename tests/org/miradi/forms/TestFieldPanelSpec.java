@@ -34,8 +34,15 @@ public class TestFieldPanelSpec extends TestCaseEnhanced
 		assertEquals("Not empty to start?", 0, spec.getRowCount());
 		
 		FormRow firstRow = new FormRow();
-		spec.addRow(firstRow);
+		spec.addFormRow(firstRow);
 		assertEquals("row not added?", 1, spec.getRowCount());
+
+		FormRow secondRow = new FormRow();
+		spec.addFormRow(secondRow);
+		assertEquals("second row not added?", 2, spec.getRowCount());
+		
+		assertEquals("Wrong first row?", firstRow, spec.getFormRow(0));
+		assertEquals("Wrong second row?", secondRow, spec.getFormRow(1));
 	}
 	
 	public void testTitleAndBorder() throws Exception
