@@ -23,7 +23,7 @@ import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.ObjectDataInputPanelSpecial;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.ids.BaseId;
@@ -37,7 +37,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 
-public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanelSpecial
+public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 {
 	public TargetViabilityTreePropertiesPanel(MainWindow mainWindow) throws Exception
 	{
