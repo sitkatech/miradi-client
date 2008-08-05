@@ -47,5 +47,16 @@ public class ChoiceData extends StringData
 		endTagToXml(out);
 	}
 
+	@Override
+	public boolean isChoiceItemData()
+	{
+		return true;
+	}
+	
+	public ChoiceQuestion getChoiceQuestion()
+	{
+		return null;
+	}
+
 	private ChoiceQuestion question;
 }

@@ -45,6 +45,16 @@ public class CodeListData extends ObjectData
 		return codes.toString();
 	}
 	
+	public boolean isCodeListData()
+	{
+		return true;
+	}
+	
+	public ChoiceQuestion getChoiceQuestion()
+	{
+		return question;
+	}
+	
 	public void set(CodeList newCodes)
 	{
 		codes = newCodes;
