@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
-import java.awt.Component;
-
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.layout.OneColumnGridLayout;
@@ -31,7 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
+public class SummaryPlanningPanel extends ObjectDataInputPanel
 {
 	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
@@ -60,9 +58,5 @@ public class SummaryPlanningPanel extends AbstractObjectDataInputPanel
 	public Icon getIcon()
 	{
 		return new PlanningIcon();
-	}
-
-	public void addFieldComponent(Component component)
-	{
 	}
 }
