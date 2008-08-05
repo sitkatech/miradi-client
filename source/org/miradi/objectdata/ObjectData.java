@@ -22,6 +22,7 @@ package org.miradi.objectdata;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.questions.ChoiceQuestion;
 
 
 abstract public class ObjectData
@@ -76,6 +77,21 @@ abstract public class ObjectData
 	public boolean isIdListData()
 	{
 		return false;
+	}
+	
+	public boolean isChoiceItemData()
+	{
+		return false;
+	}
+	
+	public boolean isCodeListData()
+	{
+		return false;
+	}
+	
+	public ChoiceQuestion getChoiceQuestion()
+	{
+		return null;
 	}
 	
 	public ORefList getRefList()

@@ -27,9 +27,15 @@ import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.CodeListData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class RtfFormExporter
 {
@@ -63,7 +69,6 @@ public class RtfFormExporter
 		StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
 		
 		int uniqueRtfColumnId = 1;
-		String FIELD_SPACING = " ";
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
@@ -74,7 +79,7 @@ public class RtfFormExporter
 			}
 			else if (formItem.isFormFieldLabel())
 			{
-				rowContent.append(getFieldLabel(formItem) + FIELD_SPACING);					
+				rowContent.append(getFieldLabel((FormFieldLabel)formItem) + FIELD_SPACING);					
 			}
 		}
 		
@@ -86,11 +91,11 @@ public class RtfFormExporter
 			FormItem formItem = formRow.getRightFormItem(rightColumn);
 			if (formItem.isFormFieldLabel())
 			{
-				rowContent.append(getFieldLabel(formItem) + FIELD_SPACING);							
+				rowContent.append(getFieldLabel((FormFieldLabel)formItem) + FIELD_SPACING);							
 			}
 			if (formItem.isFormFieldData())
 			{
-				rowContent.append(getFieldData(formItem) + FIELD_SPACING);							
+				rowContent.append(getFieldData((FormFieldData) formItem) + FIELD_SPACING);							
 			}
 		}
 		
@@ -104,16 +109,35 @@ public class RtfFormExporter
 		getWriter().writeln(rowFormating.toString());
 	}
 
-	private String getFieldData(FormItem formItem)
+	private String getFieldData(FormFieldData formFieldData)
 	{
-		FormFieldData formFieldData = (FormFieldData) formItem;
 		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
+		BaseObject baseObject = getProject().findObject(ref);
+		ObjectData rawObjectData = baseObject.getField(formFieldData.getObjectTag());
+		if (rawObjectData.isCodeListData())
+			return createFromCodeList(rawObjectData);
+		
 		return getProject().getObjectData(ref, formFieldData.getObjectTag());
 	}
 
-	private String getFieldLabel(FormItem formItem)
+	private String createFromCodeList(ObjectData rawObjectData)
 	{
-		FormFieldLabel formFieldLabel = (FormFieldLabel) formItem;
+		StringBuffer choices = new StringBuffer();
+		CodeListData codeListData = (CodeListData) rawObjectData;
+		CodeList codeList = codeListData.getCodeList();
+		ChoiceQuestion question = codeListData.getChoiceQuestion();
+		for (int index = 0; index < codeList.size(); ++index)
+		{
+			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
+			choices.append(choiceItem.getLabel());
+			choices.append(FIELD_SPACING);
+		}
+		
+		return choices.toString();
+	}
+
+	private String getFieldLabel(FormFieldLabel formFieldLabel)
+	{
 		return EAM.fieldLabel(formFieldLabel.getObjectType(), formFieldLabel.getObjectTag());
 	}
 
@@ -141,6 +165,8 @@ public class RtfFormExporter
 	{
 		return refs;
 	}
+	
+	private static final String FIELD_SPACING = "     ";
 	
 	private Project project;
 	private RtfWriter writer;
