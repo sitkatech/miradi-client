@@ -22,6 +22,7 @@ package org.miradi.views.summary;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.summary.LocationTabForm;
 import org.miradi.icons.LocationIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -29,6 +30,8 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.QuestionManager;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 
 public class SummaryLocationPanel extends ObjectDataInputPanel
 {
@@ -59,5 +62,18 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 	public Icon getIcon()
 	{
 		return new LocationIcon();
+	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new LocationTabForm());
 	}
 }
