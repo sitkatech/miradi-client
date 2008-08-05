@@ -55,6 +55,8 @@ import org.miradi.diagram.TestUndoAndRedo;
 import org.miradi.diagram.cells.TestDiagramFactor;
 import org.miradi.diagram.cells.TestLinkCell;
 import org.miradi.export.TestReportXmlExporter;
+import org.miradi.forms.TestFieldPanelSpec;
+import org.miradi.forms.TestPanelHolderSpec;
 import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
@@ -202,6 +204,10 @@ public class MainTests extends TestCase
 		// database package
 		suite.addTest(new TestSuite(TestDataUpgrader.class));
 		suite.addTest(new TestSuite(TestProjectServer.class));
+		
+		// forms package
+		suite.addTest(new TestSuite(TestFieldPanelSpec.class));
+		suite.addTest(new TestSuite(TestPanelHolderSpec.class));
 		
 		// main package
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
