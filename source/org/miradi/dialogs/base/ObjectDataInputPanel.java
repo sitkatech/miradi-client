@@ -81,6 +81,11 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		addFieldComponent(new UiLabel(" "));
 	}
 	
+	public ObjectDataInputField addRawField(ObjectDataInputField field)
+	{
+		return super.addField(field);
+	}
+	
 	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
 		super.addField(field);
