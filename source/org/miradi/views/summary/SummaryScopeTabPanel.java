@@ -23,12 +23,15 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfFormExporter;
+import org.miradi.rtf.RtfWriter;
 
 public class SummaryScopeTabPanel extends ObjectDataInputPanel
 {
@@ -69,5 +72,16 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanel
 		return ActionJumpSummaryWizardDefineProjecScope.class;
 	}
 	
-
+	@Override
+	public boolean isRtfExportable()
+	{
+		return true;
+	}
+	
+	@Override
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
+		rtfFormExporter.exportForm(new ScopeTabForm());
+	}
 }
