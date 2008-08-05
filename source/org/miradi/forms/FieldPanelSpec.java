@@ -34,9 +34,14 @@ public class FieldPanelSpec
 		return rows.size();
 	}
 
-	public void addRow(FormRow rowToAdd)
+	public void addFormRow(FormRow rowToAdd)
 	{
 		rows.add(rowToAdd);
+	}
+
+	public Object getFormRow(int index)
+	{
+		return rows.get(index);
 	}
 
 	public boolean hasBorder()
