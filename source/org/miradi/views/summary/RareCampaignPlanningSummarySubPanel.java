@@ -21,6 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.forms.summary.RareTabCampaignPlanningSubPanelForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
@@ -35,7 +36,7 @@ public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(RareProjectData.TAG_CAMPAIGN_SLOGAN));
 		addField(createMultilineField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
 		addField(createMultilineField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES));
-		addLabelsOnSingleRow(EAM.text("Related Projects"), EAM.text("(see Project tab)"));
+		addLabelsOnSingleRow(RareTabCampaignPlanningSubPanelForm.RELATED_PROJECTS_CONSTANT, RareTabCampaignPlanningSubPanelForm.SEE_PROJECT_TAB_CONSTANT);
 		addField(createMultilineField(RareProjectData.TAG_THREAT_REDUCTION_OBJECTIVE_NOTES));
 		addField(createMultilineField(RareProjectData.TAG_MONITORING_OBJECTIVE_NOTES));
 		
@@ -52,5 +53,4 @@ public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Label|Campaign Planning");
 	}
-
 }

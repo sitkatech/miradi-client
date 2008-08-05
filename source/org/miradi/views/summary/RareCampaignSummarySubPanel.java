@@ -21,6 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.forms.summary.RareTabCampaignSubPanelForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
@@ -32,14 +33,14 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		
 		addField(createStringField(RareProjectData.TAG_THREATS_ADDRESSED_NOTES));
-		addLabelsOnSingleRow(EAM.text("Threats at Site"), EAM.text("(see Diagram)"));
+		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.THREATS_AT_SITE_CONSTANT, RareTabCampaignSubPanelForm.SEE_DIAGRAM_CONSTANT);
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
 		addField(createStringField(RareProjectData.TAG_AUDIENCE));
 		
-		addLabelsOnSingleRow(EAM.text("Human Stakeholder Pop Size"), EAM.text("(see Scope tab)"));
-		addLabelsOnSingleRow(EAM.text("Biodiversity Area (ha)"), EAM.text("(see Scope tab)"));
-		addLabelsOnSingleRow(EAM.text("Habitat"), EAM.text("(see TNC tab for Ecoregions)"));
+		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);
+		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.BIODIVERSITY_AREA_HA_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);
+		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.HABITAT_CONSTANT, RareTabCampaignSubPanelForm.SEE_TNC_TAB_FOR_ECOREGIONS_CONSTANT);
 		addField(createStringField(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME));
 		addField(createStringField(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME));

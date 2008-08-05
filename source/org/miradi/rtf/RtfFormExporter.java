@@ -90,6 +90,11 @@ public class RtfFormExporter
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
 			FormItem formItem = formRow.getRightFormItem(rightColumn);
+			if (formItem.isFormConstant())
+			{
+				FormConstant formConstant = (FormConstant) formItem;
+				rowContent.append(formConstant.getConstant() + FIELD_SPACING);				
+			}
 			if (formItem.isFormFieldLabel())
 			{
 				rowContent.append(getFieldLabel((FormFieldLabel)formItem) + FIELD_SPACING);							
