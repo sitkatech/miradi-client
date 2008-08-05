@@ -55,7 +55,7 @@ public class ChoiceData extends StringData
 	
 	public ChoiceQuestion getChoiceQuestion()
 	{
-		return null;
+		return question;
 	}
 
 	private ChoiceQuestion question;
