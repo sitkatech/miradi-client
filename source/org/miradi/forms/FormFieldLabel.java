@@ -21,5 +21,8 @@ package org.miradi.forms;
 
 public class FormFieldLabel extends FormItem
 {
-
+	public boolean isFormFieldLabel()
+	{
+		return true;
+	}
 }

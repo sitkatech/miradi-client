@@ -21,5 +21,18 @@ package org.miradi.forms;
 
 public class FormItem
 {
-
+	public boolean isFormConstant()
+	{
+		return false;
+	}
+	
+	public boolean isFormFieldLabel()
+	{
+		return false;
+	}
+	
+	public boolean isFormFieldData()
+	{
+		return false;
+	}
 }

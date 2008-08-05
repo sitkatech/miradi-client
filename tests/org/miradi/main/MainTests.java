@@ -56,6 +56,9 @@ import org.miradi.diagram.cells.TestDiagramFactor;
 import org.miradi.diagram.cells.TestLinkCell;
 import org.miradi.export.TestReportXmlExporter;
 import org.miradi.forms.TestFieldPanelSpec;
+import org.miradi.forms.TestFormConstant;
+import org.miradi.forms.TestFormFieldData;
+import org.miradi.forms.TestFormFieldLabel;
 import org.miradi.forms.TestPanelHolderSpec;
 import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
@@ -208,6 +211,9 @@ public class MainTests extends TestCase
 		// forms package
 		suite.addTest(new TestSuite(TestFieldPanelSpec.class));
 		suite.addTest(new TestSuite(TestPanelHolderSpec.class));
+		suite.addTest(new TestSuite(TestFormConstant.class));
+		suite.addTest(new TestSuite(TestFormFieldLabel.class));
+		suite.addTest(new TestSuite(TestFormFieldData.class));
 		
 		// main package
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));

@@ -21,5 +21,8 @@ package org.miradi.forms;
 
 public class FormFieldData extends FormItem
 {
-
+	public boolean isFormFieldData()
+	{
+		return true;
+	}
 }

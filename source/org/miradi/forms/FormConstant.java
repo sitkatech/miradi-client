@@ -24,5 +24,9 @@ public class FormConstant extends FormItem
 	public FormConstant(String string)
 	{
 	}
-
+	
+	public boolean isFormConstant()
+	{
+		return true;
+	}
 }
