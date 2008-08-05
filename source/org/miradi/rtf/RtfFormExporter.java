@@ -120,8 +120,8 @@ public class RtfFormExporter
 		
 		if (rawObjectData.isChoiceItemData())
 			return createFromChoiceData((ChoiceData) rawObjectData);
-		
-		return getProject().getObjectData(ref, formFieldData.getObjectTag());
+	
+		return rawObjectData.get();
 	}
 
 	private String createFromChoiceData(ChoiceData choiceData)
