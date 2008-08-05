@@ -76,6 +76,18 @@ public class FieldPanelSpec
 		addFormRow(new FormRow(label, data));
 	}
 
+	protected void addLabelAndFieldsWithLabels(String translatedLabel, int type, String[] strings)
+	{
+		FormRow formRow = new FormRow();
+		formRow.addLeftFormItem(new FormConstant(translatedLabel));
+		for(int index = 0; index < strings.length; ++index)
+		{
+			formRow.addRightFormItem(new FormFieldLabel(type, strings[index]));
+			formRow.addRightFormItem(new FormFieldData(type, strings[index]));
+		}
+		addFormRow(formRow);
+	}
+
 	private Vector<FormRow> rows;
 	private boolean hasBorder;
 	private String translatedTitle;
