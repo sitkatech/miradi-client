@@ -22,22 +22,15 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
 
-public class ProjectTabForm extends FieldPanelSpec
+public class ScopeTabScopeSubPanelForm extends FieldPanelSpec
 {
-	public ProjectTabForm()
+	public ScopeTabScopeSubPanelForm()
 	{
 		int type = ProjectMetadata.getObjectType();
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_NAME);
-		addLabelAndField(type, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		addLabelAndField(type, ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
-		addBlankHorizontalLine();
 		
-		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_URL);
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_STATUS);
-		addLabelAndField(type, ProjectMetadata.TAG_NEXT_STEPS);
+		addLabelAndField(type, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_SCOPE);
+		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_VISION);
+		addLabelAndField(type, ProjectMetadata.TAG_SCOPE_COMMENTS);
 	}
 }
