@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.utils;
+package org.miradi.rtf;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -27,6 +27,8 @@ import java.io.IOException;
 import javax.swing.Icon;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter

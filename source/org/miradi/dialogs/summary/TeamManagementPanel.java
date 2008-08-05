@@ -29,9 +29,9 @@ import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.icons.TeamIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
 import org.miradi.utils.TableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel

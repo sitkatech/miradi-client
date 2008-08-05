@@ -23,8 +23,8 @@ import java.io.File;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.RtfFileChooser;
-import org.miradi.utils.RtfWriter;
 import org.miradi.views.ViewDoer;
 
 public class ExportRtfDoer extends ViewDoer
