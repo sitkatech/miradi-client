@@ -87,6 +87,14 @@ public class FieldPanelSpec
 		}
 		addFormRow(formRow);
 	}
+	
+	protected void addLeftRightConstants(String leftSide, String rightSide)
+	{
+		FormRow formRow = new FormRow();
+		formRow.addLeftFormItem(new FormConstant(leftSide));
+		formRow.addRightFormItem(new FormConstant(rightSide));		
+		addFormRow(formRow);
+	}
 
 	private Vector<FormRow> rows;
 	private boolean hasBorder;
