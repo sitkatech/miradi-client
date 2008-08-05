@@ -24,6 +24,7 @@ import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
+import org.miradi.forms.PanelHolderSpec;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -36,6 +37,14 @@ public class RtfFormExporter
 		project = projectToUse;
 		writer = writerToUse;
 		refs = refsToUse;
+	}
+	
+	public void exportForm(PanelHolderSpec panelHolderSpec) throws Exception
+	{
+		for (int index = 0; index < panelHolderSpec.getPanelCount(); ++index)
+		{
+			exportForm(panelHolderSpec.getPanel(index));
+		}
 	}
 	
 	public void exportForm(FieldPanelSpec fieldPanelSpec) throws Exception
