@@ -30,9 +30,9 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {

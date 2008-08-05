@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.main.EAMTestCase;
+import org.miradi.rtf.RtfWriter;
 
 public class TestRtfWriter extends EAMTestCase
 {

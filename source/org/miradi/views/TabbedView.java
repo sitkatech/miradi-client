@@ -50,10 +50,10 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.utils.RtfWriter;
 import org.miradi.views.umbrella.UmbrellaView;
 
 abstract public class TabbedView extends UmbrellaView

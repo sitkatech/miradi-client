@@ -25,8 +25,8 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
 
 public interface MiradiTabContentsPanelInterface
 {

@@ -28,8 +28,8 @@ import org.miradi.actions.ObjectsAction;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.RtfWriter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface

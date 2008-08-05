@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 import javax.swing.Icon;
 
 import org.miradi.main.MainWindow;
-import org.miradi.utils.RtfWriter;
+import org.miradi.rtf.RtfWriter;
 
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
