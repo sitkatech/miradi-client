@@ -19,7 +19,44 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
+import java.util.Vector;
+
 public class FormRow
 {
+	public FormRow()
+	{
+		leftFormItems = new Vector();
+		rightFormItems = new Vector();
+	}
+	
+	public FormRow(FormItem leftFormItem, FormItem rightFormItem)
+	{
+		this();
+		
+		addLeftFormItem(leftFormItem);
+		addRightFormItem(rightFormItem);
+	}
+	
+	public void addLeftFormItem(FormItem leftFormItem)
+	{
+		leftFormItems.add(leftFormItem);
+	}
+	
+	public void addRightFormItem(FormItem rightFormItem)
+	{
+		rightFormItems.add(rightFormItem);
+	}
 
+	public Vector<FormItem> getLeftFormItems()
+	{
+		return leftFormItems;
+	}
+
+	public Vector<FormItem> getRightFormItems()
+	{
+		return rightFormItems;
+	}
+	
+	private Vector<FormItem> leftFormItems;
+	private Vector<FormItem> rightFormItems;
 }
