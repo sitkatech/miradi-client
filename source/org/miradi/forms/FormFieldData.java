@@ -19,8 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-public class FormFieldData extends FormItem
+public class FormFieldData extends FieldRelatedFormItem
 {
+	public FormFieldData(int typeToUse, String tagToUse)
+	{
+		super(typeToUse, tagToUse);
+	}
+	
 	public boolean isFormFieldData()
 	{
 		return true;

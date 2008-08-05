@@ -19,21 +19,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-import org.miradi.main.EAMTestCase;
-import org.miradi.objects.Target;
-
-public class TestFormFieldLabel extends EAMTestCase
+abstract public class FieldRelatedFormItem extends FormItem
 {
-	public TestFormFieldLabel(String name)
+	public FieldRelatedFormItem(int typeToUse, String tagToUse)
 	{
-		super(name);
+		type = typeToUse;
+		tag = tagToUse;
 	}
 	
-	public void testBasics()
+	public int getType()
 	{
-		FormFieldLabel formFieldLabel = new FormFieldLabel(Target.getObjectType(), Target.TAG_LABEL);
-		assertTrue("is not a form field label?", formFieldLabel.isFormFieldLabel());
-		assertEquals("wrong form field label type?", Target.getObjectType(), formFieldLabel.getType());
-		assertEquals("wrong form field label tag?", Target.TAG_LABEL, formFieldLabel.getTag());
+		return type;
 	}
+
+	public String getTag()
+	{
+		return tag;
+	}
+	
+	private int type;
+	private String tag;
 }

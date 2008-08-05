@@ -19,8 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-public class FormFieldLabel extends FormItem
+
+public class FormFieldLabel extends FieldRelatedFormItem
 {
+	public FormFieldLabel(int typeTouse, String tagToUse)
+	{
+		super(typeTouse, tagToUse);
+	}
+	
 	public boolean isFormFieldLabel()
 	{
 		return true;
