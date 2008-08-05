@@ -104,11 +104,12 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 
 	public boolean isRtfExportable()
 	{
-		return false;
+		return dataPanel.isRtfExportable();
 	}
 	
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
+		dataPanel.exportRtf(writer);
 	}
 
 	private AbstractObjectDataInputPanel dataPanel;
