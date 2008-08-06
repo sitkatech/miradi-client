@@ -51,9 +51,19 @@ public class RtfFormExporter
 	{
 		for (int index = 0; index < panelHolderSpec.getPanelCount(); ++index)
 		{
-			exportForm(panelHolderSpec.getPanel(index));
+			FieldPanelSpec fieldPanelSpec = panelHolderSpec.getPanel(index);
+			if (fieldPanelSpec.hasBorder())
+				writeTitle(fieldPanelSpec);
+			
+			exportForm(fieldPanelSpec);
 			writer.newParagraph();
 		}
+	}
+
+	private void writeTitle(FieldPanelSpec fieldPanelSpec) throws Exception
+	{
+		writer.writeln(fieldPanelSpec.getTranslatedTitle());
+		writer.newParagraph();
 	}
 	
 	public void exportForm(FieldPanelSpec fieldPanelSpec) throws Exception

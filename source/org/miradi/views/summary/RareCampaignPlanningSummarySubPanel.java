@@ -51,6 +51,8 @@ public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Label|Campaign Planning");
+		return PANEL_DESCRIPTION;
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("Label|Campaign Planning");
 }

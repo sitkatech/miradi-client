@@ -43,6 +43,8 @@ public class RareTeamInformationSummarySubPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Label|Team Information");
+		return PANEL_DESCRIPTION;
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("Label|Team Information");
 }
