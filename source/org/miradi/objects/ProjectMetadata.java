@@ -83,18 +83,11 @@ public class ProjectMetadata extends BaseObject
 		return false;
 	}
 	
-	
-	
-	public String getData(String fieldTag)
+	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
 			return objectManager.getFileName();
 		
-		return super.getData(fieldTag);
-	}
-	
-	public String getPseudoData(String fieldTag)
-	{
 		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
 			return getAllGoalRefs().toString();
 		
@@ -437,6 +430,9 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
+		
+		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
+		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -581,5 +577,6 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData diagramFontSize;
 	private ChoiceData threatRatingMode;
 	
-	private StringRefMapData xenodataRefs; 
+	private StringRefMapData xenodataRefs;
+	private PseudoStringData projectFileName;
 }
