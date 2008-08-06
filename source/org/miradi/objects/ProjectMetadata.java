@@ -509,6 +509,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	
+	//FIXME remove this unused tag and the method and test class that use it
 	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
 
 	static final String OBJECT_NAME = "ProjectMetadata";
