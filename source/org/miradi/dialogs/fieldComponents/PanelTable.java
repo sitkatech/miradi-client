@@ -23,10 +23,10 @@ import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.ExportableTable;
 import org.miradi.utils.TableRowHeightSaver;
+import org.miradi.utils.TableWithHelperMethods;
 
-public class PanelTable extends ExportableTable
+public class PanelTable extends TableWithHelperMethods
 {
 	public PanelTable(MainWindow mainWindowToUse, TableModel model)
 	{
