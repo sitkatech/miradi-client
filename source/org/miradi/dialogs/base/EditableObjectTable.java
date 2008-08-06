@@ -106,7 +106,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(new ChoiceItemTableCellRenderer(model, new DefaultFontProvider()));
+		column.setCellRenderer(new ChoiceItemTableCellRenderer(model, new DefaultFontProvider(getMainWindow())));
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)

@@ -21,6 +21,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Font;
 
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -28,6 +29,11 @@ import org.miradi.objects.Strategy;
 
 public class PlanningViewFontProvider extends FontForObjectTypeProvider
 {
+	public PlanningViewFontProvider(MainWindow mainWindowToUse)
+	{
+		super(mainWindowToUse);
+	}
+
 	public Font getFont(int objectType)
 	{
 		Font font = super.getFont(objectType);

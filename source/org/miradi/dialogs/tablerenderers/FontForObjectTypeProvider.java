@@ -21,13 +21,13 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Font;
 
-import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 abstract public class FontForObjectTypeProvider
 {
-	public FontForObjectTypeProvider()
+	public FontForObjectTypeProvider(MainWindow mainWindowToUse)
 	{
-		plainFont = EAM.getMainWindow().getUserDataPanelFont();
+		plainFont = mainWindowToUse.getUserDataPanelFont();
 	}
 	
 	public Font getFont(int objectType)

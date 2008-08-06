@@ -42,7 +42,7 @@ public class PanelTable extends TableWithHelperMethods
 		setRowHeight(getFontMetrics(getFont()).getHeight() + VERTICAL_FONT_CUSHION);
 	}
 	
-	private MainWindow getMainWindow()
+	public MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
