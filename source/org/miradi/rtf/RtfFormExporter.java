@@ -67,7 +67,7 @@ public class RtfFormExporter
 	private void writeFormRowColumns(FormRow formRow) throws Exception
 	{
 		StringBuffer rowContent = new StringBuffer("{");
-		StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
+		StringBuffer rowFormatting = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
 		
 		int uniqueRtfColumnId = 1;
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
@@ -85,7 +85,7 @@ public class RtfFormExporter
 		}
 		
 		rowContent.append(getCellCommand());
-		rowFormating.append(getCellxCommand(++uniqueRtfColumnId));
+		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
@@ -106,13 +106,13 @@ public class RtfFormExporter
 		}
 		
 		rowContent.append(getCellCommand());				
-		rowFormating.append(getCellxCommand(++uniqueRtfColumnId));
+		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		
 		rowContent.append("}");
-		rowFormating.append(" \\row }");
+		rowFormatting.append(" \\row }");
 		
 		getWriter().writeln(rowContent.toString());
-		getWriter().writeln(rowFormating.toString());
+		getWriter().writeln(rowFormatting.toString());
 	}
 
 	private String getFieldData(FormFieldData formFieldData)
