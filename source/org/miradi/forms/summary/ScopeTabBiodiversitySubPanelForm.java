@@ -26,11 +26,15 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.views.summary.BiodiversityPanel;
 
 public class ScopeTabBiodiversitySubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabBiodiversitySubPanelForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(BiodiversityPanel.PANEL_DESCRIPTION);
+		
 		int type = ProjectMetadata.getObjectType();
 		
 		FormRow areaRow = new FormRow();

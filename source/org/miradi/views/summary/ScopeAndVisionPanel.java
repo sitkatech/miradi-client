@@ -41,7 +41,8 @@ public class ScopeAndVisionPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Scope and Vision");
+		return PANEL_DESCRIPTION; 
 	}
 
+	public static final String PANEL_DESCRIPTION = EAM.text("Scope and Vision");
 }

@@ -26,11 +26,15 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.views.summary.HumanStakeholderPanel;
 
 public class ScopeTabHumanSubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabHumanSubPanelForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(HumanStakeholderPanel.PANEL_DESCRIPTION);
+		
 		int type = ProjectMetadata.getObjectType();
 		
 		FormRow populationRow = new FormRow();
@@ -38,6 +42,7 @@ public class ScopeTabHumanSubPanelForm extends FieldPanelSpec
 		populationRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_HUMAN_POPULATION));
 		populationRow.addRightFormItem(new FormFieldLabel(type, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES));
 		populationRow.addRightFormItem(new FormFieldData(type, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES));
+		addFormRow(populationRow);
 
 		addLabelAndField(type, ProjectMetadata.TAG_SOCIAL_CONTEXT);
 	}

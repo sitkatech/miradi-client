@@ -44,7 +44,8 @@ public class BiodiversityPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Biodiversity Features");
+		return PANEL_DESCRIPTION; 
 	}
 
+	public static final String PANEL_DESCRIPTION = EAM.text("Biodiversity Features"); 
 }
