@@ -22,11 +22,15 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
+import org.miradi.views.summary.RareCampaignPlanningSummarySubPanel;
 
 public class RareTabCampaignPlanningSubPanelForm extends FieldPanelSpec
 {
 	public RareTabCampaignPlanningSubPanelForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(RareCampaignPlanningSummarySubPanel.PANEL_DESCRIPTION);
+	
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);

@@ -45,6 +45,8 @@ public class RareTrackingSummarySubPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Label|Rare Tracking");
+		return PANEL_DESCRIPTION;
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("Label|Rare Tracking");
 }

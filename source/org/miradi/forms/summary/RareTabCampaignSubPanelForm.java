@@ -22,11 +22,15 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
+import org.miradi.views.summary.RareCampaignSummarySubPanel;
 
 public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 {
 	public RareTabCampaignSubPanelForm()
-	{
+	{		
+		setHasBorder();
+		setTranslatedTitle(RareCampaignSummarySubPanel.PANEL_DESCRIPTION);
+	
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);
 		addLeftRightConstants(THREATS_AT_SITE_CONSTANT, SEE_DIAGRAM_CONSTANT);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);

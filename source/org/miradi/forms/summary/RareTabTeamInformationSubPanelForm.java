@@ -21,11 +21,15 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.RareProjectData;
+import org.miradi.views.summary.RareTeamInformationSummarySubPanel;
 
 public class RareTabTeamInformationSubPanelForm extends FieldPanelSpec
 {
 	public RareTabTeamInformationSubPanelForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(RareTeamInformationSummarySubPanel.PANEL_DESCRIPTION);
+		
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_COURSE_MANAGER_NOTES);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_REGIONAL_DIRECTOR_NOTES);
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_MANAGER_NOTES);
