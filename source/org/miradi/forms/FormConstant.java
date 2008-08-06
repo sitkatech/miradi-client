@@ -21,14 +21,14 @@ package org.miradi.forms;
 
 public class FormConstant extends FormItem
 {
-	public FormConstant(String constantToUse)
+	public FormConstant(String translatedConstantToUse)
 	{
-		constant = constantToUse;
+		translatedConstant = translatedConstantToUse;
 	}
 	
 	public String getConstant()
 	{
-		return constant;
+		return translatedConstant;
 	}
 	
 	public boolean isFormConstant()
@@ -36,5 +36,5 @@ public class FormConstant extends FormItem
 		return true;
 	}
 	
-	private String constant;
+	private String translatedConstant;
 }
