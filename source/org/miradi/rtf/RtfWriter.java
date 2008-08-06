@@ -141,7 +141,14 @@ public class RtfWriter
 	
 	public void endRtf() throws Exception
 	{
-		getWriter().write("}");
+		endBlock();
+	}	
+
+	public void newParagraph() throws Exception
+	{
+		startBlock();
+		writer.writeln("\\par");
+		endBlock();
 	}
 
 	public UnicodeWriter getWriter()
