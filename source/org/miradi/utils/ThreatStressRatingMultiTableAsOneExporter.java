@@ -19,7 +19,103 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.Vector;
+
+import javax.swing.Icon;
+
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
+
 public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
 {
+	public ThreatStressRatingMultiTableAsOneExporter()
+	{
+		super();
+	}
 
+	@Override
+	public void clear()
+	{
+		super.clear();
+
+		summaryRowTables = new Vector<AbstractTableExporter>();
+	}
+	
+	public void addAsTopRowTable(AbstractTableExporter table)
+	{
+		super.addExportable(table);
+	}
+	
+	public void addAsSummaryRowTable(int index, AbstractTableExporter table)
+	{
+		summaryRowTables.add(index, table);
+	}
+		
+	@Override
+	public int getColumnCount()
+	{
+		int columnCount = 0;
+		Vector<AbstractTableExporter> topRowTables = getTables();
+		for (int i = 0;  i < topRowTables.size(); ++i)
+		{
+			columnCount += topRowTables.get(i).getColumnCount();
+		}
+		
+		return columnCount;
+	}
+	
+	@Override
+	public int getRowCount()
+	{
+		int columnTablesRowCount = getTables().get(0).getRowCount();
+		final int SUMMARY_TABLES_ROW_COUNT = 1;
+		
+		return columnTablesRowCount +  SUMMARY_TABLES_ROW_COUNT;
+	}
+	
+	@Override
+	public Icon getIconAt(int row, int column)
+	{
+		return null;
+	}
+
+	@Override
+	public int getRowType(int row)
+	{
+		return ObjectType.FAKE;
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return null;
+	}
+	
+	@Override
+	public String getTextAt(int row, int column)
+	{	
+		if (isTopRowTable(row))
+			return super.getTextAt(row, column);
+		
+		AbstractTableExporter table = summaryRowTables.get(0);
+		int adjustedColumn = adjustColumn(column);
+		if (adjustedColumn < table.getColumnCount() )
+			return table.getTextAt(0, adjustedColumn);
+		
+		return summaryRowTables.get(1).getTextAt(0, 0);
+	}
+	
+
+	private int adjustColumn(int column)
+	{
+		int BLANK_FIRST_COLUMN_COUNT = 1;
+		
+		return column - BLANK_FIRST_COLUMN_COUNT;
+	}
+
+	private boolean isTopRowTable(int row)
+	{
+		return row < getTables().get(0).getRowCount();
+	}
+			
+	private Vector<AbstractTableExporter> summaryRowTables;
 }
