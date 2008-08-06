@@ -32,6 +32,9 @@ import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
+import org.miradi.utils.ThreatStressRatingMultiTableAsOneExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
@@ -55,24 +58,42 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private void createTables() throws Exception
 	{
+		multiTableExporter = new ThreatStressRatingMultiTableAsOneExporter();
+		
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
+		
+		addToMultiTableExporter(threatNameTable);
 		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
+		addToMultiTableExporter(targetThreatLinkTable);
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
+		addToMultiTableExporter(threatSummaryColumnTable);
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel);
+		addToMultiTableExporter(targetSummaryRowTable);
 		targetSummaryRowTable.resizeTable(1);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
+		addToMultiTableExporter(overallProjectSummaryCellTable);
 		overallProjectSummaryCellTable.resizeTable(1);
 	}
+	
+	private void addToMultiTableExporter(AbstractTableWithChoiceItemRenderer table)
+	{
+		multiTableExporter.addExportable(new TableExporter(table));
+	}
+	
+	public AbstractTableExporter getTableForExporting()
+	{
+		return multiTableExporter;
+	}	
 
 	private void listenForColumnWidthChanges(JTable table)
 	{
@@ -181,4 +202,6 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private OverallProjectSummaryCellTable overallProjectSummaryCellTable;
 	private OverallProjectSummaryCellTableModel overallProjectSummaryCellTableModel;
+	
+	private ThreatStressRatingMultiTableAsOneExporter multiTableExporter;
 }

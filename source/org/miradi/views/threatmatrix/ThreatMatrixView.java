@@ -56,6 +56,7 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.CardedView;
@@ -162,7 +163,22 @@ public class ThreatMatrixView extends CardedView
 	{
 		threatStressRatingManagementPanel.dispose();
 	}
+	
+	@Override
+	public boolean isRtfExportable()
+	{
+		if(isStressBasedMode())
+			return threatStressRatingManagementPanel.isRtfExportable();
 
+		return false;
+	}
+	
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		if(isStressBasedMode())
+			threatStressRatingManagementPanel.exportRtf(writer);
+	}
+	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			

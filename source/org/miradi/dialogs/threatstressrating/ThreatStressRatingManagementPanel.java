@@ -27,6 +27,8 @@ import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTa
 import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.AbstractTableExporter;
 
 public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 {
@@ -67,5 +69,20 @@ public class ThreatStressRatingManagementPanel extends ObjectManagementPanel
 		return null;
 	}
 	
+	public AbstractTableExporter getTableExporter() throws Exception
+	{
+		return new ThreatStressRatingMultiTablePanel(getMainWindow()).getTableForExporting();
+	}
+	
+	public boolean isRtfExportable()
+	{
+		return true;
+	}		
+
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		writer.writeRtfTable(getTableExporter());
+	}
+		
 	private static String PANEL_DESCRIPTION = "ThreatStressRating"; 
 }
