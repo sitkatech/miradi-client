@@ -56,7 +56,6 @@ import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -86,7 +85,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
-		getTree().setCellRenderer(new Renderer());
+		getTree().setCellRenderer(new Renderer(getMainWindow()));
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
 		TableCellEditor ce = new NonEditableTreeTableCellEditor();
@@ -119,8 +118,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	
 	public static class Renderer extends DefaultTreeCellRenderer
 	{		
-		public Renderer()
-		{	
+		public Renderer(MainWindow mainWindowToUse)
+		{
+			mainWindow = mainWindowToUse;
+			
 			projectMetaDataRenderer = new DefaultTreeCellRenderer();
 			setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
 
@@ -268,9 +269,16 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 		
 		private Font deriveFont(int style)
 		{
-			Font defaultFont = EAM.getMainWindow().getUserDataPanelFont();
+			Font defaultFont = getMainWindow().getUserDataPanelFont();
 			return defaultFont.deriveFont(style);
 		}
+		
+		public MainWindow getMainWindow()
+		{
+			return mainWindow;
+		}
+		
+		private MainWindow mainWindow;
 
 		private DefaultTreeCellRenderer projectMetaDataRenderer;
 		private DefaultTreeCellRenderer targetRenderer;

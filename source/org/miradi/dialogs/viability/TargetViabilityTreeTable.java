@@ -57,7 +57,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		getTree().setCellRenderer(new ViabilityTreeCellRenderer());
+		getTree().setCellRenderer(new ViabilityTreeCellRenderer(getMainWindow()));
 		setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
@@ -142,9 +142,9 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 	
 	public class ViabilityTreeCellRenderer extends Renderer
 	{
-		public ViabilityTreeCellRenderer()
+		public ViabilityTreeCellRenderer(MainWindow mainWindowToUse)
 		{
-			super();
+			super(mainWindowToUse);
 			indicatorRenderer.setFont(getPlainFont());
 			goalRenderer.setFont(getPlainFont());
 		}
