@@ -32,7 +32,6 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.ids.DiagramFactorId;
@@ -50,6 +49,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 
 abstract public class FactorCell extends EAMGraphCell
@@ -84,7 +84,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 		tip += "<TABLE width='400'><TR><TD>";
 		
-		tip += "<B>" + getSafeMultilineString(factor.getLabel()) + "</B><BR>";
+		tip += "<B>" + HtmlUtilities.plainStringWithNewlinesToHtml(factor.getLabel()) + "</B><BR>";
 		
 		String header = "";
 		String detailsTag = "";
@@ -144,19 +144,12 @@ abstract public class FactorCell extends EAMGraphCell
 		return sortedObjects;
 	}
 
-	private String getSafeMultilineString(String factorName)
-	{
-		String formattedLabel =  XmlUtilities.getXmlEncoded(factorName);
-		String formattedFactorName = formattedLabel.replace("\n", "<br>");
-		return formattedFactorName;
-	}
-
 	private String getObjectText(BaseObject object, String details)
 	{
-		String text = "<LI>" + getSafeMultilineString(object.combineShortLabelAndLabel()) + "";
+		String text = "<LI>" + HtmlUtilities.plainStringWithNewlinesToHtml(object.combineShortLabelAndLabel()) + "";
 		
 		if (details.length() > 0)
-			text += "<BR><I>" +	getSafeMultilineString(details) + "</I>";	
+			text += "<BR><I>" +	HtmlUtilities.plainStringWithNewlinesToHtml(details) + "</I>";	
 		
 		text += "</LI>";
 		return text;

@@ -67,7 +67,6 @@ import java.awt.Stroke;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
@@ -90,6 +89,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 
 
@@ -130,8 +130,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			isOwnedByGroup = node.getDiagramFactor().isCoveredByGroupBox();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
-			String formattedLabel =  XmlUtilities.getXmlEncoded(cell.toString());
-			formattedLabel = formattedLabel.replace("\n", "<br>");
+			String formattedLabel =  HtmlUtilities.plainStringWithNewlinesToHtml(cell.toString());
 			setHtmlFormViewerText(getAdditionalHtmlFontTags() + formattedLabel);
 			
 			indicatorText = null;
