@@ -178,7 +178,6 @@ import org.miradi.views.planning.TestPlanningTreeConceptualModelPageNode;
 import org.miradi.views.planning.TestPlanningTreeDirectThreatNode;
 import org.miradi.views.planning.TestPlanningTreeGoalNode;
 import org.miradi.views.planning.TestPlanningTreeIndicatorNode;
-import org.miradi.views.planning.TestPlanningTreeMetadataGoals;
 import org.miradi.views.planning.TestPlanningTreeObjectiveNode;
 import org.miradi.views.planning.TestPlanningTreeStrategyNode;
 import org.miradi.views.planning.TestPlanningTreeTargetNode;
@@ -393,7 +392,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
-		suite.addTest(new TestSuite(TestPlanningTreeMetadataGoals.class));
 		
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
