@@ -91,11 +91,6 @@ public class ProjectMetadata extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 
-	public ORefList getAllGoalRefs()
-	{
-		return objectManager.getGoalPool().getORefList();
-	}
-		
 	public ORefList getAllDiagramObjectRefs()
 	{
 		return objectManager.getAllDiagramObjectRefs(); 
