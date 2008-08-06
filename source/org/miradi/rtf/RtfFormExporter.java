@@ -119,7 +119,11 @@ public class RtfFormExporter
 	{
 		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
 		BaseObject baseObject = getProject().findObject(ref);
-		ObjectData rawObjectData = baseObject.getField(formFieldData.getObjectTag());
+		String fieldTag = formFieldData.getObjectTag();
+		if (baseObject.isPseudoField(fieldTag))
+			return baseObject.getPseudoData(fieldTag);
+
+		ObjectData rawObjectData = baseObject.getField(fieldTag);
 		if (rawObjectData.isCodeListData())
 			return createFromCodeList((CodeListData) rawObjectData);
 		
