@@ -27,11 +27,15 @@ import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.views.summary.ProtectedAreaPanel;
 
 public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabProtectedAreaSubPanelForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(ProtectedAreaPanel.PANEL_DESCRIPTION);
+		
 		int type = ProjectMetadata.getObjectType();
 		
 		FormRow categoryRow = new FormRow();

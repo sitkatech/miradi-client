@@ -43,7 +43,8 @@ public class HumanStakeholderPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Human Stakeholders");
+		return PANEL_DESCRIPTION; 
 	}
 
+	public static final String PANEL_DESCRIPTION = EAM.text("Human Stakeholders");
 }
