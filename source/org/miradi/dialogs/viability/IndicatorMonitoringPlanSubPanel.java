@@ -39,14 +39,14 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Indicator.getObjectType(), Indicator.PSEUDO_TAG_FACTOR));
 		
-		ObjectsAction editMethods = EAM.getMainWindow().getActions().getObjectsAction(ActionEditMethods.class);
+		ObjectsAction editMethods = getMainWindow().getActions().getObjectsAction(ActionEditMethods.class);
 		editMethodsButton = new ObjectsActionButton(editMethods, getPicker());
 		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(Indicator.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
 
 		addField(createRatingChoiceField(Indicator.getObjectType(), Indicator.TAG_PRIORITY, new PriorityRatingQuestion()));
 	
 		
-		ObjectsAction editProgressAction = EAM.getMainWindow().getActions().getObjectsAction(ActionEditIndicatorProgressReports.class);
+		ObjectsAction editProgressAction = getMainWindow().getActions().getObjectsAction(ActionEditIndicatorProgressReports.class);
 		editProgressReportButton = createObjectsActionButton(editProgressAction, getPicker());
 		ObjectDataInputField readOnlyProgressReportsList = createReadOnlyObjectList(Indicator.getObjectType(), Indicator.TAG_PROGRESS_REPORT_REFS);
 		addFieldWithEditButton(EAM.text("Progress Reports"), readOnlyProgressReportsList, editProgressReportButton);
