@@ -88,9 +88,6 @@ public class ProjectMetadata extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
 			return objectManager.getFileName();
 		
-		if (fieldTag.equals(PSEUDO_TAG_RELATED_GOAL_REFS))
-			return getAllGoalRefs().toString();
-		
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -505,9 +502,6 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	
-	//FIXME remove this unused tag and the method and test class that use it
-	public static final String PSEUDO_TAG_RELATED_GOAL_REFS = "PseudoTagRelatedGoalRefs";
-
 	static final String OBJECT_NAME = "ProjectMetadata";
 
 	private StringData currentWizardScreenName;
