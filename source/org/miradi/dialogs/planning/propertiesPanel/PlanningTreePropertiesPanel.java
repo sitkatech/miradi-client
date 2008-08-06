@@ -157,7 +157,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		taskPropertiesInputPanel.dataWasChanged();
 	}
 	
-	private MainWindow getMainWindow()
+	public MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
