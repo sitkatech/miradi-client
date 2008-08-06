@@ -21,10 +21,16 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Font;
 
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
 
 public class ViabilityViewFontProvider extends FontForObjectTypeProvider
 {
+	public ViabilityViewFontProvider(MainWindow mainWindowToUse)
+	{
+		super(mainWindowToUse);
+	}
+
 	public Font getFont(int objectType)
 	{
 		Font font = super.getFont(objectType);

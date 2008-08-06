@@ -124,7 +124,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		scrollController.addScrollPane(treeTableScrollPane);
 		
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
-		fontProvider = new PlanningViewFontProvider();
+		fontProvider = new PlanningViewFontProvider(getMainWindow());
 		
 		listenForColumnWidthChanges(getTree());
 		

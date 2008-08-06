@@ -42,7 +42,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	public ObjectCollectionPanel(MainWindow mainWindowToUse, ObjectPicker componentToUse)
 	{
 		super(new BorderLayout());
-		project = mainWindowToUse.getProject();
+		mainWindow = mainWindowToUse;
 		component = componentToUse;
 		MiradiScrollPane tableScrollPane = new MiradiScrollPane((JComponent)component);
 		tableScrollPane.setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -54,7 +54,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 
 		add(buttons, BorderLayout.AFTER_LAST_LINE);
 		setFocusCycleRoot(true);
-		project.addCommandExecutedListener(this);
+		getProject().addCommandExecutedListener(this);
 
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -63,7 +63,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
+		getProject().removeCommandExecutedListener(this);
 		super.dispose();
 	}
 
@@ -98,9 +98,14 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		buttons.add(button);
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 	public Project getProject()
 	{
-		return project;
+		return getMainWindow().getProject();
 	}
 	
 	public ObjectPicker getPicker()
@@ -112,7 +117,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
 	
-	private Project project;
+	private MainWindow mainWindow;
 	private OneRowPanel buttons;
 	private ObjectPicker component;
 	private AbstractObjectDataInputPanel propertiesPanel;

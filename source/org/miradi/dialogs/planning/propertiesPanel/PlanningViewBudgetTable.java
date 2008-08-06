@@ -37,7 +37,7 @@ public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPrefer
 	{
 		super(mainWindowToUse, modelToUse);
 		setBackground(getColumnBackGroundColor(0));
-		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider());
+		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider(getMainWindow()));
 	}
 
 	public TableCellRenderer getCellRenderer(int row, int column)

@@ -19,7 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import org.miradi.main.MainWindow;
+
 public class DefaultFontProvider extends FontForObjectTypeProvider
 {
+	public DefaultFontProvider(MainWindow mainWindowToUse)
+	{
+		super(mainWindowToUse);
+	}
 
 }

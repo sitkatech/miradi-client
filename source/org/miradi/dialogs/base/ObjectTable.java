@@ -66,7 +66,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		resizeTable(4);
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		
-		DefaultFontProvider fontProvider = new DefaultFontProvider();
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
 		codeListRenderer = new CodeListRenderer(this, fontProvider);
