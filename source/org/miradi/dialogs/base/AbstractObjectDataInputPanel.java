@@ -140,6 +140,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return project;
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		// FIXME: Should have mainWindow passed into the AODIP constructor
+		return EAM.getMainWindow();
+	}
+
 	public ObjectPicker getPicker()
 	{
 		return picker;
@@ -535,16 +541,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createReadOnlyObjectList(int objectType, String tag)
 	{
-		// FIXME: Should have mainWindow passed into the AODIP constructor
-		MainWindow mainWindow = EAM.getMainWindow();
-		return new ObjectReadonlyObjectListField(mainWindow, objectType, getObjectIdForType(objectType), tag); 
+		return new ObjectReadonlyObjectListField(getMainWindow(), objectType, getObjectIdForType(objectType), tag); 
 	}
 
 	public ObjectDataInputField createReadOnlyObjectListTableField(int objectType, String listFieldTag, int listedType, String[] columnTags)
 	{
-		// FIXME: Should have mainWindow passed into the AODIP constructor
-		MainWindow mainWindow = EAM.getMainWindow();
-		return new ObjectReadonlyObjectListTableField(mainWindow, getRefForType(objectType), listFieldTag, listedType, columnTags); 
+		return new ObjectReadonlyObjectListTableField(getMainWindow(), getRefForType(objectType), listFieldTag, listedType, columnTags); 
 	}
 	
 	public ObjectDataInputField createRadioChoiceField(int objectType, BaseId objectId, String tagToUse, ChoiceQuestion question)

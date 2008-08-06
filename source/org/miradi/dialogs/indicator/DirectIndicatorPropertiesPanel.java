@@ -108,7 +108,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		return blankPropertiesPanel;
 	}
 	
-	private MainWindow getMainWindow()
+	public MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
