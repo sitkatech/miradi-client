@@ -52,9 +52,14 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 		add(multiTablePanelToUse, BorderLayout.CENTER);
 	}
 	
-	public ObjectPicker getObjectPicker()
+	public ThreatStressRatingMultiTablePanel getMultiTablePanel()
 	{
 		return multiTablePanel;
+	}
+	
+	public ObjectPicker getObjectPicker()
+	{
+		return getMultiTablePanel();
 	}
 
 	public void valueChanged(ListSelectionEvent event)
