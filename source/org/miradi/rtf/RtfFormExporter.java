@@ -52,6 +52,7 @@ public class RtfFormExporter
 		for (int index = 0; index < panelHolderSpec.getPanelCount(); ++index)
 		{
 			exportForm(panelHolderSpec.getPanel(index));
+			writer.newParagraph();
 		}
 	}
 	
