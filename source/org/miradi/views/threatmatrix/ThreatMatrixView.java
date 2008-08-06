@@ -177,8 +177,8 @@ public class ThreatMatrixView extends CardedView
 	{
 		if(isStressBasedMode())
 			threatStressRatingManagementPanel.exportRtf(writer);
-		
-		grid.exportRtf(writer);
+		else
+			grid.exportRtf(writer);
 	}
 	
 	public void becomeActive() throws Exception
