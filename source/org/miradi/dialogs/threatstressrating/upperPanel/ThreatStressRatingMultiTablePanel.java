@@ -63,31 +63,28 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
 		
-		addToMultiTableExporter(threatNameTable);
+		multiTableExporter.addAsTopRowTable(new TableExporter(threatNameTable));
 		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
-		addToMultiTableExporter(targetThreatLinkTable);
+		multiTableExporter.addAsTopRowTable(new TableExporter(targetThreatLinkTable));
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
-		addToMultiTableExporter(threatSummaryColumnTable);
+		multiTableExporter.addAsTopRowTable(new TableExporter(threatSummaryColumnTable));
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel);
-		addToMultiTableExporter(targetSummaryRowTable);
+		final int FIRST_TABLE_IN_SUMMARY_ROW = 0;
+		multiTableExporter.addAsSummaryRowTable(FIRST_TABLE_IN_SUMMARY_ROW, new TableExporter(targetSummaryRowTable));
 		targetSummaryRowTable.resizeTable(1);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
-		addToMultiTableExporter(overallProjectSummaryCellTable);
+		final int SECOND_TABLE_IN_SUMMARY_ROW = 1;
+		multiTableExporter.addAsSummaryRowTable(SECOND_TABLE_IN_SUMMARY_ROW, new TableExporter(overallProjectSummaryCellTable));
 		overallProjectSummaryCellTable.resizeTable(1);
-	}
-	
-	private void addToMultiTableExporter(AbstractTableWithChoiceItemRenderer table)
-	{
-		multiTableExporter.addExportable(new TableExporter(table));
 	}
 	
 	public AbstractTableExporter getTableForExporting()

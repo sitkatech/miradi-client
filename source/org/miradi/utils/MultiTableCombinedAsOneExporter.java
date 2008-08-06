@@ -111,7 +111,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tableAndColumnHolder.getTable().getBaseObjectForRow(row);
 	}
 
-	private TableAndColumnHolder getTableAndColumn(int column)
+	protected TableAndColumnHolder getTableAndColumn(int column)
 	{
 		int columnWithinTable = column;
 		int thisColumnCount = 0;
@@ -131,7 +131,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		throw new RuntimeException("Error occurred while exporting table.");
 	}
 	
-	private class TableAndColumnHolder
+	protected class TableAndColumnHolder
 	{
 		public TableAndColumnHolder(AbstractTableExporter tableToUse, int columnToUse)
 		{
@@ -151,6 +151,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		
 		private AbstractTableExporter table;
 		private int column;
+	}
+	
+	protected Vector<AbstractTableExporter> getTables()
+	{
+		return tables;
 	}
 	
 	private Vector<AbstractTableExporter> tables;
