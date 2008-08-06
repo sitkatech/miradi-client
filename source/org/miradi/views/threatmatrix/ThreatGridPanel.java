@@ -36,15 +36,17 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
+import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.MultiTableCombinedAsOneExporter;
+import org.miradi.utils.TableExporter;
 
 public class ThreatGridPanel extends JPanel
 {
-	public ThreatGridPanel(ThreatMatrixView viewToUse,
-			ThreatMatrixTableModel modelToUse)
-			throws Exception
+	public ThreatGridPanel(ThreatMatrixView viewToUse, ThreatMatrixTableModel modelToUse) throws Exception
 	{
 		super(new BorderLayout());
 		view = viewToUse;
+		multiTableExporter = new MultiTableCombinedAsOneExporter();
 		add(createHeading(), BorderLayout.BEFORE_FIRST_LINE);
 		add(createThreatGridPanel(view.getMainWindow(), modelToUse));
 	}
@@ -62,6 +64,10 @@ public class ThreatGridPanel extends JPanel
 		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(model);
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(mainWindowToUse, newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(mainWindowToUse, model, this);
+		
+		multiTableExporter.addExportable(new TableExporter(rowHeaderTable));
+		multiTableExporter.addExportable(new TableExporter(threatTable));
+		
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 	}
 
@@ -146,11 +152,22 @@ public class ThreatGridPanel extends JPanel
 	{
 		return columnToSort<0;
 	}
+	
+	public boolean isRtfExportable()
+	{
+		return true;
+	}		
+
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		writer.writeRtfTable(multiTableExporter);
+	}
 
 	private ThreatMatrixView view;
 	private ThreatRatingBundle highlightedBundle;
 	private ThreatMatrixTable threatTable;
 	private ThreatMatrixRowHeaderTable rowHeaderTable;
+	private MultiTableCombinedAsOneExporter multiTableExporter;
 	
 	public final static int ABOUT_ONE_LINE = 20;
 	public final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
