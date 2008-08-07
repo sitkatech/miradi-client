@@ -136,7 +136,7 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			int paddingCount = exportableTable.getDepth(row);
-			writeEncoded(exportableTable.pad(paddingCount, column));
+			writeEncoded(pad(paddingCount, column));
 
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -215,6 +215,18 @@ public class RtfWriter
 		String forthDigit = Integer.toHexString(forthNibble);
 		
 		return firstDigit + secondDigit + thirdDigit + forthDigit;
+	}
+	
+	public String pad(int padCount, int column) throws IOException
+	{
+		final String FIVE_SPACES = "     ";
+		String padding = "";
+		for (int i = 0; i < padCount; ++i)
+		{
+			padding += FIVE_SPACES;
+		}
+		
+		return padding;
 	}
 	
 	public void startRtf() throws Exception
