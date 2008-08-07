@@ -51,7 +51,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		restoreRowHeight();
 	}
 	
-	public void restoreRowHeight()
+	private void restoreRowHeight()
 	{
 		if(isRowHeightAutomatic())
 			return;
