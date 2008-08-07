@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.io.IOException;
-
 import javax.swing.Icon;
 
 import org.miradi.objects.BaseObject;
@@ -43,17 +41,5 @@ public abstract class AbstractTableExporter
 			return "";
 		
 		return object.toString();
-	}
-	
-	public String pad(int padCount, int column) throws IOException
-	{
-		final String FIVE_SPACES = "     ";
-		String padding = "";
-		for (int i = 0; i < padCount; ++i)
-		{
-			padding += FIVE_SPACES;
-		}
-		
-		return padding;
 	}
 }
