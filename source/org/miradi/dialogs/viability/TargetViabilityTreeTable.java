@@ -36,6 +36,7 @@ import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
+import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.main.MainWindow;
