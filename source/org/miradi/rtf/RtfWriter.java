@@ -43,6 +43,16 @@ public class RtfWriter
 		getWriter().close();
 	}
 	
+	public void writeEncoded(String data) throws Exception
+	{
+		writeln(encode(data));
+	}
+	
+	public void writeRtfCommand(String rtfComand) throws Exception
+	{
+		writeln(rtfComand);
+	}
+	
 	public void writeln(String textToWrite) throws Exception
 	{
 		getWriter().writeln(textToWrite);
@@ -72,14 +82,14 @@ public class RtfWriter
 		endBlock();
 	}
 
-	private void startBlock() throws IOException
+	private void startBlock() throws Exception
 	{
-		getWriter().writeln("{");
+		writeRtfCommand("{");
 	}
 	
-	private void endBlock() throws IOException
+	private void endBlock() throws Exception
 	{
-		getWriter().writeln("}");
+		writeRtfCommand("}");
 	}
 
 	static public String toHex(byte b)
