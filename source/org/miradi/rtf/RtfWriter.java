@@ -136,7 +136,7 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			int paddingCount = exportableTable.getDepth(row);
-			writeEncoded(pad(paddingCount, column));
+			writeEncoded(createPadding(paddingCount, column));
 
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -217,7 +217,7 @@ public class RtfWriter
 		return firstDigit + secondDigit + thirdDigit + forthDigit;
 	}
 	
-	public String pad(int padCount, int column) throws IOException
+	public String createPadding(int padCount, int column) throws IOException
 	{
 		final String FIVE_SPACES = "     ";
 		String padding = "";
