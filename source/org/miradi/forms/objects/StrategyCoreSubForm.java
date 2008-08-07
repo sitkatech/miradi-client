@@ -19,15 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
-import org.miradi.forms.PanelHolderSpec;
+import org.miradi.forms.FieldPanelSpec;
+import org.miradi.main.EAM;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Strategy;
 
-public class StrategyPropertiesForm extends PanelHolderSpec
+public class StrategyCoreSubForm extends FieldPanelSpec
 {
-	public StrategyPropertiesForm()
-	{	
-		new StrategyCoreSubForm();
-		new StrategyForecastSubForm();
-		new StrategyRelatedItemsSubForm();
-		new StrategySummaryCommentsSubForm();
+	public StrategyCoreSubForm()
+	{
+		int type = Strategy.getObjectType();
+		
+		addLabelAndFieldsWithLabels(EAM.text("Strategy"), type, new String[]{Strategy.TAG_SHORT_LABEL, Strategy.TAG_LABEL});
+		addLabelAndField(type, Factor.TAG_TEXT);
+		addLabelAndField(type, Strategy.TAG_TAXONOMY_CODE);
+		addLabelAndFieldsWithLabels(EAM.text("Priority"), type, new String[]{Strategy.TAG_IMPACT_RATING, Strategy.TAG_FEASIBILITY_RATING, Strategy.PSEUDO_TAG_RATING_SUMMARY});
+		addLabelAndField(type, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+		addLabelAndFieldWithLabel(EAM.text("Progress"), type, Strategy.TAG_PROGRESS_REPORT_REFS);
 	}
 }
