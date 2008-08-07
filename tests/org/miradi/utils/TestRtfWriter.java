@@ -45,4 +45,20 @@ public class TestRtfWriter extends EAMTestCase
 	{
 		assertEquals("byte does not equal hex value?", expectedValue, RtfWriter.toHex(b));
 	}
+	
+	public void testEcode()
+	{
+		verifyEncoding("a", "a");
+		verifyEncoding("\\{", "{");
+		verifyEncoding("\\}", "}");
+		verifyEncoding("\\\\", "\\");
+		
+		final char UNICODE_OMEGA = 0x3A9;
+		verifyEncoding("\\u03A9", Character.toString(UNICODE_OMEGA));
+	}
+	
+	private void verifyEncoding(String expectedValue, String value)
+	{
+		assertEquals("value was not encoded properly?", expectedValue, RtfWriter.ecode(value));
+	}
 }
