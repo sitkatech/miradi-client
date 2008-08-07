@@ -41,6 +41,7 @@
  *   wrapper
  * - Replaced override of deprecated reshape method with an override 
  *   of setBounds, to avoid recursion when attempting to edit a node
+ * - Removed assumptions that the tree has a fixed row height
  */
 package com.java.sun.jtreetable;
 
@@ -247,8 +248,12 @@ public class JTreeTable extends JTable {
 	 * the table.
 	 */
 	public void setRowHeight(int rowHeight) { 
-	    if (rowHeight > 0) {
+	
+		// BENETECH: The following code was changed 2008-08-06
+		// to allow for trees with variable row heights:
+		// We always invoke super, instead of only inside the if,
 		super.setRowHeight(rowHeight); 
+	    if (rowHeight > 0) {
 		if (JTreeTable.this != null &&
 		    JTreeTable.this.getRowHeight() != rowHeight) {
 		    JTreeTable.this.setRowHeight(getRowHeight()); 
@@ -260,7 +265,12 @@ public class JTreeTable extends JTable {
 	 * This is overridden to set the height to match that of the JTable.
 	 */
 	public void setBounds(int x, int y, int w, int h) {
-	    super.setBounds(x, 0, w, JTreeTable.this.getHeight());
+		// BENETECH: The following code was changed 2008-08-06
+		// to allow for trees with variable row heights:
+		// If the tree has variable row heights, don't override h
+		if(tree != null && tree.getRowHeight() > 0)
+			h = JTreeTable.this.getHeight();
+	    super.setBounds(x, 0, w, h);
 	}
 
 	/**
@@ -268,13 +278,19 @@ public class JTreeTable extends JTable {
 	 * row will be drawn at 0,0.
 	 */
 	public void paint(Graphics g) {
-	    g.translate(0, -visibleRow * getRowHeight());
+		// BENETECH: The following code was changed 2008-08-06
+		// to allow for trees with variable row heights:
+		// Let the tree tell us the row start/height, instead of 
+		// assuming every row in the tree is the same height
+		// (affected the calls to translate and paintBorder)
+		Rectangle virtualBounds = tree.getPathBounds(tree.getPathForRow(visibleRow));
+	    g.translate(0, -virtualBounds.y);
 	    super.paint(g);
 	    // Draw the Table border if we have focus.
 	    if (highlightBorder != null) {
-		highlightBorder.paintBorder(this, g, 0, visibleRow *
-					    getRowHeight(), getWidth(),
-					    getRowHeight());
+		highlightBorder.paintBorder(this, g, 0, virtualBounds.y, 
+				getWidth(),
+				virtualBounds.height);
 	    }
 	}
 

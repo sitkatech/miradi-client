@@ -45,7 +45,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	protected void addRowHeightSaver()
 	{
 		rowHeightSaver = new TableRowHeightSaver();
-		rowHeightSaver.manage(this, getUniqueTableIdentifier());
+		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 	}
 	
 	public void addRowHeightListener(RowHeightListener listener)
@@ -68,6 +68,19 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		}
 	}
 	
+	public void setRowHeight(int row, int rowHeight)
+	{
+		super.setRowHeight(row, rowHeight);
+		
+		if(rowHeightListeners != null)
+		{
+			for(RowHeightListener listener : rowHeightListeners)
+			{
+				listener.rowHeightChanged(row, rowHeight);
+			}
+		}
+	}
+	
 	public void ensureSelectedRowVisible()
 	{
 		Rectangle cellRect = getCellRect(getSelectedRow(), 0 , true);
@@ -77,7 +90,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{
 		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);
-		if(!includeSpacing)
+		if(!includeSpacing && getMainWindow().isRowHeightModeManual())
 		{
 			cellRect.height -= TableRowHeightSaver.ROW_RESIZE_MARGIN;
 		}

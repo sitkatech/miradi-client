@@ -31,6 +31,7 @@ import javax.swing.JTable;
 
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 {
@@ -38,8 +39,10 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	{
 	}
 	
-	public void manage(JTable tableToManage, String uniqueTableIdentifierToUse)
+	public void manage(MainWindow mainWindowToUse, JTable tableToManage, String uniqueTableIdentifierToUse)
 	{
+		mainWindow = mainWindowToUse;
+		
 		table = tableToManage;
 		table.addMouseListener(this);
 		table.addMouseMotionListener(this);
@@ -90,6 +93,9 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void mousePressed(MouseEvent e)
 	{
+		if(isRowHeightAutomatic())
+			return;
+		
 		if(!inRowResizeArea(e))
 			return;
 		
@@ -104,6 +110,9 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void mouseDragged(MouseEvent e)
 	{
+		if(isRowHeightAutomatic())
+			return;
+		
 		if(!resizeInProgress)
 			return;
 		
@@ -114,6 +123,9 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void mouseMoved(MouseEvent event)
 	{
+		if(isRowHeightAutomatic())
+			return;
+		
 		if(resizeInProgress)
 			return;
 		
@@ -121,6 +133,11 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 			setResizeCursor();
 		else
 			restoreDefaultCursor();
+	}
+
+	private boolean isRowHeightAutomatic()
+	{
+		return mainWindow.isRowHeightModeAutomatic();
 	}
 
 	private boolean inRowResizeArea(MouseEvent event)
@@ -188,6 +205,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	
     public final static int ROW_RESIZE_MARGIN = 2;
 
+    private MainWindow mainWindow;
     private JTable table;
 	private String uniqueTableIdentifier;
 	

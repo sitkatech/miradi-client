@@ -889,6 +889,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedDouble(name);
 	}
 	
+	public boolean isRowHeightModeManual()
+	{
+		return !isRowHeightModeAutomatic();
+	}
+
+	public boolean isRowHeightModeAutomatic()
+	{
+		return true;
+	}
+
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
 	}

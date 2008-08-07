@@ -55,7 +55,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		selectionController = new MultipleTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
-		rowHeightController = new MultiTableRowHeightController();
+		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 	}
 	
 	public MainWindow getMainWindow()
