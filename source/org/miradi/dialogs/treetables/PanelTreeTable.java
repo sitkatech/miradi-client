@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.fieldComponents;
+package org.miradi.dialogs.treetables;
 
 import java.awt.Component;
 import java.awt.event.ComponentEvent;
@@ -33,7 +33,6 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.tree.TreePath;
 
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTreeTable;
 
