@@ -22,11 +22,13 @@ package org.miradi.utils;
 import java.util.HashSet;
 
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 public class MultiTableRowHeightController implements RowHeightListener
 {
-	public MultiTableRowHeightController()
+	public MultiTableRowHeightController(MainWindow mainWindowToUse)
 	{
+		mainWindow = mainWindowToUse;
 		tables = new HashSet<TableWithRowHeightManagement>();
 	}
 	
@@ -37,8 +39,22 @@ public class MultiTableRowHeightController implements RowHeightListener
 		rowHeightChanged(tableToAdd.getRowHeight());
 	}
 	
+	public void rowHeightChanged(int row, int newHeight)
+	{
+		for(TableWithRowHeightManagement table : tables)
+		{
+			if(table.getRowHeight(row) != newHeight)
+				table.setRowHeight(row, newHeight);
+			
+			table.ensureSelectedRowVisible();
+		}
+	}
+	
 	public void rowHeightChanged(int newHeight)
 	{
+		if(getMainWindow().isRowHeightModeAutomatic())
+			return;
+
 		EAM.logVerbose("rowHeightChanged to " + newHeight);
 		for(TableWithRowHeightManagement table : tables)
 		{
@@ -51,6 +67,12 @@ public class MultiTableRowHeightController implements RowHeightListener
 		}
 		EAM.logVerbose("rowHeightChanged done");
 	}
+	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
 
-	HashSet<TableWithRowHeightManagement> tables;
+	private MainWindow mainWindow;
+	private HashSet<TableWithRowHeightManagement> tables;
 }

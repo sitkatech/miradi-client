@@ -114,7 +114,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		newTreeScrollPane.addMouseWheelListener(this);
 		treeTableScrollPane = newTreeScrollPane;
 
-		rowHeightController = new MultiTableRowHeightController();
+		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
 		
 		selectionController = new MultipleTableSelectionController();

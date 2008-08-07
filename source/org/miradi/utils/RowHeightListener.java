@@ -22,4 +22,5 @@ package org.miradi.utils;
 public interface RowHeightListener
 {
 	public void rowHeightChanged(int newHeight);
+	public void rowHeightChanged(int row, int newHeight);
 }

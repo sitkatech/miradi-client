@@ -68,6 +68,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import com.java.sun.jtreetable.TreeTableModel;
@@ -221,7 +222,10 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			else if(node.getType() == ProjectMetadata.getObjectType())
 				renderer = projectMetaDataRenderer;
 			
-			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+			value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value.toString());
+			
+			DefaultTreeCellRenderer rendererComponent = (DefaultTreeCellRenderer)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+			return rendererComponent;
 		}
 		
 		private TreeCellRenderer getTaskRenderer(Task task)

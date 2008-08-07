@@ -48,10 +48,10 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateS
 		columnSequenceSaver.restoreColumnSequences();
 	}
 
-	private void addRowHeightSaver()
+	protected void addRowHeightSaver()
 	{
 		TableRowHeightSaver rowHeightSaver = new TableRowHeightSaver();
-		rowHeightSaver.manage(this, getUniqueTableIdentifier());
+		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 	}
 	
 	public void addRowHeightListener(RowHeightListener listener)
@@ -62,12 +62,32 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateS
 	public void setRowHeight(int rowHeight)
 	{
 		super.setRowHeight(rowHeight);
+		if(getMainWindow() == null)
+			return;
+		
+		if(getMainWindow().isRowHeightModeAutomatic())
+			return;
+		
 		if(rowHeightListeners == null)
 			return;
 		
 		for(RowHeightListener listener : rowHeightListeners)
 		{
 			listener.rowHeightChanged(rowHeight);
+		}
+	}
+	
+	@Override
+	public void setRowHeight(int row, int rowHeight)
+	{
+		super.setRowHeight(row, rowHeight);
+
+		if(rowHeightListeners == null)
+			return;
+		
+		for(RowHeightListener listener : rowHeightListeners)
+		{
+			listener.rowHeightChanged(row, rowHeight);
 		}
 	}
 	
