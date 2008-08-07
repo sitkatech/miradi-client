@@ -107,57 +107,74 @@ public class RtfWriter
 	public void writeRtfTable(AbstractTableExporter exportableTable) throws Exception
 	{
 		writeTableHeader(exportableTable);
-		
+		writeTableBody(exportableTable);
+	}
+
+	private void writeTableBody(AbstractTableExporter exportableTable) throws Exception
+	{
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
-			startBlock();
-				startBlock();
-					writeRtfCommand("\\trowd \\trautofit1 \\intbl ");
-					for (int column = 0; column < exportableTable.getColumnCount(); ++column)
-					{
-						int paddingCount = exportableTable.getDepth(row);
-						writeEncoded(exportableTable.pad(paddingCount, column));
-		
-						Icon cellIcon = exportableTable.getIconAt(row, column);
-						if (cellIcon != null)
-							writeImage(BufferedImageFactory.getImage(cellIcon));
-		
-						writeEncoded(exportableTable.getTextAt(row, column));
-						writeRtfCommand(" \\cell ");
-			
-					}
-				endBlock();
-			
-				for (int column = 0; column < exportableTable.getColumnCount(); ++column)
-				{
-					writeRtfCommand("\\cellx" + column + " ");	
-				}
-	
-				writeRtfCommand(" \\row ");
-				
-			endBlock();
+			writeTableRow(exportableTable, row);
 		}
+	}
+
+	private void writeTableRow(AbstractTableExporter exportableTable, int row) throws Exception
+	{
+		startBlock();
+		
+		writeRowData(exportableTable, row);
+		writeRowCommands(exportableTable);
+			
+		endBlock();
+	}
+
+	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
+	{
+		startBlock();
+		
+		writeRtfCommand("\\trowd \\trautofit1 \\intbl ");
+		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+		{
+			int paddingCount = exportableTable.getDepth(row);
+			writeEncoded(exportableTable.pad(paddingCount, column));
+
+			Icon cellIcon = exportableTable.getIconAt(row, column);
+			if (cellIcon != null)
+				writeImage(BufferedImageFactory.getImage(cellIcon));
+
+			writeEncoded(exportableTable.getTextAt(row, column));
+			writeRtfCommand(" \\cell ");
+		}
+
+		endBlock();
+	}
+	
+	private void writeRowCommands(AbstractTableExporter exportableTable) throws Exception
+	{
+		startBlock();
+		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+		{
+			writeRtfCommand("\\cellx" + column + " ");	
+		}
+
+		writeRtfCommand(" \\row ");
+		endBlock();
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
 		startBlock();
-			writeRtfCommand("\\trowd \\trhdr \\trautofit1 \\intbl ");
-			for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
-			{
-				String header = exportableTable.getHeaderFor(headerIndex);
-				writeEncoded(header);
-				writeRtfCommand(" \\cell ");
-			}
+
+		writeRtfCommand("\\trowd \\trhdr \\trautofit1 \\intbl ");
+		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+		{
+			String header = exportableTable.getHeaderFor(headerIndex);
+			writeEncoded(header);
+			writeRtfCommand(" \\cell ");
+		}
 		
-			startBlock();
-				for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
-				{
-					writeRtfCommand(" \\cellx" + headerIndex + " ");
-				}		
-				writeRtfCommand(" \\row ");
-			endBlock();
-		
+		writeRowCommands(exportableTable);
+
 		endBlock();
 	}
 	
