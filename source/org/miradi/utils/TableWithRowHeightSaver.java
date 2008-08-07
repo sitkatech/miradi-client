@@ -35,18 +35,13 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		super(mainWindowToUse, model);
 		rowHeightListeners = new Vector<RowHeightListener>();
 		
-		addRowHeightSaver();
+		rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 	}
 	
 	public boolean allowUserToSetRowHeight()
 	{
 		return true;
-	}
-	
-	private void addRowHeightSaver()
-	{
-		rowHeightSaver = new TableRowHeightSaver();
-		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 	}
 	
 	public void addRowHeightListener(RowHeightListener listener)
