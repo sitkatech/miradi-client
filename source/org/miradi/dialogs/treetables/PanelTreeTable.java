@@ -45,7 +45,6 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		super(treeTableModel);
 		mainWindow = mainWindowToUse;
 		setFont(getMainWindow().getUserDataPanelFont());
-		setRowHeight(getFontMetrics(getFont()).getHeight());
 		getTableHeader().setFont(getMainWindow().getUserDataPanelFont());
 		getTableHeader().addMouseMotionListener(new MouseMoveTreeColumnPreventerHandler());
 		

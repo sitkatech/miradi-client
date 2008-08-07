@@ -26,6 +26,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Vector;
 
 import javax.swing.JTable;
 
@@ -37,6 +38,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 {
 	public TableRowHeightSaver()
 	{
+		rowHeightListeners = new Vector<RowHeightListener>();
 	}
 	
 	public void manage(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToManage, String uniqueTableIdentifierToUse)
@@ -53,6 +55,27 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		}
 
 		restoreRowHeight();
+	}
+	
+	public void addRowHeightListener(RowHeightListener listener)
+	{
+		rowHeightListeners.add(listener);
+	}
+
+	public void rowHeightChanged(int newRowHeight)
+	{
+		for(RowHeightListener listener : rowHeightListeners)
+		{
+			listener.rowHeightChanged(newRowHeight);
+		}
+	}
+	
+	public void rowHeightChanged(int row, int newRowHeight)
+	{
+		for(RowHeightListener listener : rowHeightListeners)
+		{
+			listener.rowHeightChanged(row, newRowHeight);
+		}
 	}
 	
 	private void restoreRowHeight()
@@ -223,5 +246,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	private int originalRowHeight;
 	private int sizeDeltaY;
 	private Cursor oldCursor;
+	
+	private Vector<RowHeightListener> rowHeightListeners;
 }
 
