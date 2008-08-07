@@ -43,5 +43,13 @@ public class PanelHolderSpec
 		panels.add(panelToAdd);
 	}
 
+	public void addPanel(PanelHolderSpec panelToAdd)
+	{
+		for (int index = 0; index < panelToAdd.getPanelCount(); ++index)
+		{
+			panels.add(panelToAdd.getPanel(index));
+		}
+	}
+	
 	private Vector<FieldPanelSpec> panels;
 }
