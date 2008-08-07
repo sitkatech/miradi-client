@@ -46,7 +46,7 @@ import org.miradi.views.umbrella.ObjectPicker;
 import com.java.sun.jtreetable.TreeTableModel;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class ObjectTreeTable extends PanelTreeTable implements ObjectPicker, RowColumnBaseObjectProvider
+abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving implements ObjectPicker, RowColumnBaseObjectProvider
 {
 	public ObjectTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
