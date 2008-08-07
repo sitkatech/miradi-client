@@ -140,7 +140,7 @@ public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving imp
 		 private StatusQuestion statusQuestion;
 	}
 	
-	public class ViabilityTreeCellRenderer extends Renderer
+	public class ViabilityTreeCellRenderer extends ObjectTreeCellRenderer
 	{
 		public ViabilityTreeCellRenderer(MainWindow mainWindowToUse)
 		{
