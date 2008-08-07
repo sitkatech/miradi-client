@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Rectangle;
-import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
@@ -33,7 +32,6 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(mainWindowToUse, model);
-		rowHeightListeners = new Vector<RowHeightListener>();
 		
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -46,35 +44,26 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public void addRowHeightListener(RowHeightListener listener)
 	{
-		rowHeightListeners.add(listener);
+		rowHeightSaver.addRowHeightListener(listener);
 	}
 	
 	public void setRowHeight(int rowHeight)
 	{
 		super.setRowHeight(rowHeight);
-		if(rowHeightSaver != null)
-			rowHeightSaver.saveRowHeight();
+		if(rowHeightSaver == null)
+			return;
 		
-		if(rowHeightListeners != null)
-		{
-			for(RowHeightListener listener : rowHeightListeners)
-			{
-				listener.rowHeightChanged(rowHeight);
-			}
-		}
+		rowHeightSaver.saveRowHeight();
+		rowHeightSaver.rowHeightChanged(rowHeight);
 	}
 	
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
+		if(rowHeightSaver == null)
+			return;
 		
-		if(rowHeightListeners != null)
-		{
-			for(RowHeightListener listener : rowHeightListeners)
-			{
-				listener.rowHeightChanged(row, rowHeight);
-			}
-		}
+		rowHeightSaver.rowHeightChanged(row, rowHeight);
 	}
 	
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
@@ -96,5 +85,4 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	abstract public String getUniqueTableIdentifier();
 	
 	private TableRowHeightSaver rowHeightSaver;
-	private Vector<RowHeightListener> rowHeightListeners;
 }

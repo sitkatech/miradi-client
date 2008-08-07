@@ -78,6 +78,9 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 		if(getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
+		if(rowHeightSaver == null)
+			return;
+		
 		rowHeightSaver.saveRowHeight();
 		rowHeightSaver.rowHeightChanged(rowHeight);
 	}
@@ -86,6 +89,9 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
+		if(rowHeightSaver == null)
+			return;
+		
 		rowHeightSaver.rowHeightChanged(row, rowHeight);
 	}
 	
