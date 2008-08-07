@@ -85,7 +85,7 @@ public class ObjectTreeTable extends PanelTreeTable implements ObjectPicker, Row
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
-		getTree().setCellRenderer(new Renderer(getMainWindow()));
+		getTree().setCellRenderer(new ObjectTreeCellRenderer(getMainWindow()));
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
 		TableCellEditor ce = new NonEditableTreeTableCellEditor();
@@ -116,9 +116,9 @@ public class ObjectTreeTable extends PanelTreeTable implements ObjectPicker, Row
 		return customFont;
 	}
 	
-	public static class Renderer extends DefaultTreeCellRenderer
+	public static class ObjectTreeCellRenderer extends DefaultTreeCellRenderer
 	{		
-		public Renderer(MainWindow mainWindowToUse)
+		public ObjectTreeCellRenderer(MainWindow mainWindowToUse)
 		{
 			mainWindow = mainWindowToUse;
 			
