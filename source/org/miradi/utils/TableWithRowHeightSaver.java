@@ -53,7 +53,6 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		if(rowHeightSaver == null)
 			return;
 		
-		rowHeightSaver.saveRowHeight();
 		rowHeightSaver.rowHeightChanged(rowHeight);
 	}
 	
