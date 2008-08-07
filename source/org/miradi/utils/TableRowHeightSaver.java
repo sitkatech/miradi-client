@@ -64,6 +64,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void rowHeightChanged(int newRowHeight)
 	{
+		saveRowHeight();
 		for(RowHeightListener listener : rowHeightListeners)
 		{
 			listener.rowHeightChanged(newRowHeight);
@@ -91,7 +92,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		}
 	}
 	
-	public void saveRowHeight()
+	private void saveRowHeight()
 	{
 		EAM.logVerbose("saveRowHeight " + getKey() + ": " + table.getRowHeight());
 		getPreferences().setTaggedInt(getKey(), table.getRowHeight());
