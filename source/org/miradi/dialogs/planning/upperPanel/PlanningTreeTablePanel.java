@@ -65,8 +65,8 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -218,7 +218,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 	{
 		try
 		{		
-			if (doesCommandForceRebuild(event))
+			if (doesCommandForceRebuild(event) || doesCommandAffectRowHeight(event))
 				rebuildEntireTreeTable();
 			
 			if(isSelectedObjectModification(event, Assignment.getObjectType()))

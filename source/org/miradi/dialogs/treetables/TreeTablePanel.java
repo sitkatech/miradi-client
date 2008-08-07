@@ -105,7 +105,10 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	public BaseObject getSelectedObject()
 	{
-		return getSelectedTreeNode().getObject();
+		TreeTableNode selectedTreeNode = getSelectedTreeNode();
+		if(selectedTreeNode == null)
+			return null;
+		return selectedTreeNode.getObject();
 	}
 
 	public TreeTableNode getSelectedTreeNode()
@@ -215,6 +218,21 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 		if (getTopLevelAncestor() != null)
 			getTopLevelAncestor().repaint();
+	}
+
+	protected boolean doesCommandAffectRowHeight(CommandExecutedEvent event)
+	{
+		if(!event.isSetDataCommand())
+			return false;
+		
+		if(getMainWindow().isRowHeightModeManual())
+			return false;
+		
+		CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
+		String tag = command.getFieldTag();
+		if(tag.equals(BaseObject.TAG_ID) || tag.equals(BaseObject.TAG_LABEL))
+			return true;
+		return false;
 	}
 
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
