@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
-public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener
+abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener
 {
 	public TreeTableWithStateSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{

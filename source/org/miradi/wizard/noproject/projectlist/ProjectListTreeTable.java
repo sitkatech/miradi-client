@@ -36,7 +36,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.database.ProjectServer;
-import org.miradi.dialogs.treetables.PanelTreeTable;
+import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;
@@ -47,7 +47,7 @@ import org.miradi.wizard.noproject.NoProjectWizardStep;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class ProjectListTreeTable extends PanelTreeTable
+public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 {
 	public ProjectListTreeTable(MainWindow mainWindowToUse, ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
 	{

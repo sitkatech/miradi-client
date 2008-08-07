@@ -38,7 +38,7 @@ import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -49,7 +49,7 @@ import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 
-public class TargetViabilityTreeTable extends TreeTableWithColumnWidthSaving implements RowColumnBaseObjectProvider 
+public class TargetViabilityTreeTable extends TreeTableWithStateSaving implements RowColumnBaseObjectProvider 
 {
 	public TargetViabilityTreeTable(MainWindow mainWindowToUse, GenericViabilityTreeModel targetViabilityModelToUse) throws Exception
 	{

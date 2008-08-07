@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treeRelevancy;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 
-public class StrategyActivityRelevancyTreeTable extends TreeTableWithColumnWidthSaving
+public class StrategyActivityRelevancyTreeTable extends TreeTableWithStateSaving
 {
 	public StrategyActivityRelevancyTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{

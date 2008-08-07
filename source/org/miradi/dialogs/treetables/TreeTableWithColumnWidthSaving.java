@@ -27,7 +27,7 @@ import org.miradi.utils.ColumnWidthSaver;
 import org.miradi.utils.RowHeightListener;
 import org.miradi.utils.TableRowHeightSaver;
 
-abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithStateSaving
+abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 {
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
