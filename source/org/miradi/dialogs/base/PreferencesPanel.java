@@ -290,7 +290,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
-		mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
+		if(cellRatingsVisibleCheckBox != null)
+			mainWindow.setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, cellRatingsVisibleCheckBox.isSelected());
 
 		String panelFontSizeValue = getSelectedItemQuestionBox(panelFontSizeCombo);
 		mainWindow.setDataPanelFontSize(Integer.parseInt(panelFontSizeValue));
