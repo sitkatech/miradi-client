@@ -20,10 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.main.EAM;
+import org.miradi.objects.Desire;
+import org.miradi.objects.Goal;
 
 public class GoalPropertiesForm extends FieldPanelSpec
 {
 	public GoalPropertiesForm()
 	{
+		addLabelAndFieldsWithLabels(EAM.text("Goal"), Goal.getObjectType(), new String[]{Goal.TAG_SHORT_LABEL, Goal.TAG_LABEL});
+		addLabelAndField(Goal.getObjectType(), Desire.TAG_FULL_TEXT);
+		
+		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_FACTOR);
+		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_STRATEGIES);
+		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_DIRECT_THREATS);
+		addLabelAndField(Goal.getObjectType(), Desire.TAG_COMMENTS);
 	}
 }
