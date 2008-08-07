@@ -68,6 +68,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
+import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DefaultHyperlinkHandler;
@@ -889,6 +890,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return preferences.getTaggedDouble(name);
 	}
 	
+	public void setRowHeightMode(String rowHeightMode)
+	{
+		preferences.setRowHeightMode(rowHeightMode);
+	}
+
+	public String getRowHeightModeString()
+	{
+		return preferences.getRowHeightMode();
+	}
+
 	public boolean isRowHeightModeManual()
 	{
 		return !isRowHeightModeAutomatic();
@@ -896,7 +907,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public boolean isRowHeightModeAutomatic()
 	{
-		return true;
+		return getRowHeightModeString().equals(TableRowHeightModeQuestion.AUTOMATIC_MODE_CODE);
 	}
 
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
