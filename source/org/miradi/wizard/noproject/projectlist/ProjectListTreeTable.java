@@ -36,7 +36,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.database.ProjectServer;
-import org.miradi.dialogs.fieldComponents.PanelTreeTable;
+import org.miradi.dialogs.treetables.PanelTreeTable;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;

@@ -38,7 +38,6 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.miradi.dialogs.fieldComponents.PanelTreeTable;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ConceptualModelIcon;
