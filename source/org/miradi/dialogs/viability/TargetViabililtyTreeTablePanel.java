@@ -34,6 +34,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -89,6 +90,14 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithThreeButto
 		else if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_EXPANSION_LIST))
 		{
 			restoreTreeExpansionState();	
+		}
+		else if(doesCommandAffectRowHeight(event))
+		{
+			BaseObject selected = getSelectedObject();
+			treeTableModel.rebuildEntireTree();
+			restoreTreeExpansionState();
+			if(selected != null)
+				getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(selected.getRef(), -1);
 		}
 		
 		validateModifiedObject(event, KeyEcologicalAttribute.getObjectType());
