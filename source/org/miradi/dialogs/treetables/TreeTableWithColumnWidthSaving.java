@@ -21,7 +21,6 @@ package org.miradi.dialogs.treetables;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.Vector;
 
 import javax.swing.JTable;
 
@@ -37,7 +36,6 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
-		rowHeightListeners = new Vector<RowHeightListener>();
 		columnWidthSaver = new ColumnWidthSaver(this, treeTableModel, getUniqueTableIdentifier());
 		columnSequenceSaver = new ColumnSequenceSaver(this, treeTableModel, getUniqueTableIdentifier());
 
@@ -67,9 +65,10 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 
 	public void addRowHeightListener(RowHeightListener listener)
 	{
-		rowHeightListeners.add(listener);
+		rowHeightSaver.addRowHeightListener(listener);
 	}
 	
+	@Override
 	public void setRowHeight(int rowHeight)
 	{
 		super.setRowHeight(rowHeight);
@@ -79,30 +78,15 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 		if(getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
-		if(rowHeightSaver != null)
-			rowHeightSaver.saveRowHeight();
-		
-		if(rowHeightListeners == null)
-			return;
-		
-		for(RowHeightListener listener : rowHeightListeners)
-		{
-			listener.rowHeightChanged(rowHeight);
-		}
+		rowHeightSaver.saveRowHeight();
+		rowHeightSaver.rowHeightChanged(rowHeight);
 	}
 	
 	@Override
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
-
-		if(rowHeightListeners == null)
-			return;
-		
-		for(RowHeightListener listener : rowHeightListeners)
-		{
-			listener.rowHeightChanged(row, rowHeight);
-		}
+		rowHeightSaver.rowHeightChanged(row, rowHeight);
 	}
 	
 	public JTable asTable()
@@ -152,6 +136,4 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable impl
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
 	private TableRowHeightSaver rowHeightSaver;
-	private Vector<RowHeightListener> rowHeightListeners;
-
 }
