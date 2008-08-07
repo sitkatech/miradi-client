@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.ThreatReductionResult;
 
 public class ThreatReductionResultPropertiesForm extends FieldPanelSpec
 {
 	public ThreatReductionResultPropertiesForm()
 	{
+		addLabelAndField(ThreatReductionResult.getObjectType(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
 	}
 }
