@@ -19,15 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
-import org.miradi.forms.PanelHolderSpec;
+import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.BaseObject;
 
-public class StrategyPropertiesForm extends PanelHolderSpec
+public class ForecastRollupSubForm extends FieldPanelSpec
 {
-	public StrategyPropertiesForm()
-	{	
-		new StrategyCoreSubForm();
-		new StrategyForecastSubForm();
-		new StrategyRelatedItemsSubForm();
-		new StrategySummaryCommentsSubForm();
+	public ForecastRollupSubForm(int type)
+	{
+		addLabelAndField(type, BaseObject.TAG_BUDGET_COST_MODE);
+		addLabelAndField(type, BaseObject.PSEUDO_TAG_BUDGET_COST_ROLLUP);
+		addLabelAndField(type, BaseObject.PSEUDO_TAG_WHEN_ROLLUP);
+		addLabelAndField(type, BaseObject.PSEUDO_TAG_WHO_ROLLUP);
 	}
 }

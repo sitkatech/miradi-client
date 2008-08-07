@@ -76,6 +76,11 @@ public class FieldPanelSpec
 		addFormRow(new FormRow(label, data));
 	}
 
+	protected void addLabelAndFieldWithLabel(String translatedLabel, int type, String fieldTag)
+	{
+		addLabelAndFieldsWithLabels(translatedLabel, type, new String[]{fieldTag});
+	}
+	
 	protected void addLabelAndFieldsWithLabels(String translatedLabel, int type, String[] strings)
 	{
 		FormRow formRow = new FormRow();
