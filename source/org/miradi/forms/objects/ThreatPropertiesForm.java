@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.Cause;
 
 public class ThreatPropertiesForm extends FieldPanelSpec
 {
 	public ThreatPropertiesForm()
 	{
+		addLabelAndField(Cause.getObjectType(), Cause.TAG_TAXONOMY_CODE);
 	}
 }
