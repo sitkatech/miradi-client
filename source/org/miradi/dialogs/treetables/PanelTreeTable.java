@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treetables;
 
 import java.awt.Component;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
@@ -54,53 +52,14 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		// so if you later change the value to be longer, you'll get ... (ellipsis)
 		// and the text will be truncated. With it, it "just works"
 		getTree().setLargeModel(true);
-		
-		addComponentListener(new ComponentEventHandler());
-	}
-	
-	class ComponentEventHandler implements ComponentListener
-	{
-		public void componentShown(ComponentEvent e)
-		{
-			adjustRowHeights();
-		}
-		
-		public void componentHidden(ComponentEvent e)
-		{
-		}
-
-		public void componentMoved(ComponentEvent e)
-		{
-		}
-
-		public void componentResized(ComponentEvent e)
-		{
-			adjustRowHeights();
-		}
-
 	}
 	
 	public void rebuildTableCompletely() throws Exception
 	{
 		createDefaultColumnsFromModel();
 		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));
-		
-		adjustRowHeights();
 	}
 	
-	private void adjustRowHeights()
-	{
-		if(getMainWindow().isRowHeightModeManual())
-			return;
-		
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			int height = getPreferredRowHeight(row);
-			setRowHeight(row, height);
-		}
-		getTree().setRowHeight(-1);
-	}
-
 	public int getPreferredRowHeight(int row)
 	{
 		int height = tree.getPathBounds(tree.getPathForRow(row)).height;
