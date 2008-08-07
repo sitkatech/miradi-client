@@ -166,9 +166,9 @@ public class RtfWriter
 		startBlock();
 
 		writeRtfCommand("\\trowd \\trhdr \\trautofit1 \\intbl ");
-		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
-			String header = exportableTable.getHeaderFor(headerIndex);
+			String header = exportableTable.getHeaderFor(columnIndex);
 			writeEncoded(header);
 			writeRtfCommand(" \\cell ");
 		}
