@@ -154,8 +154,13 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 
 	public void ensureSelectedRowVisible()
 	{
-		Rectangle cellRect = getCellRect(getSelectedRow(), 0 , true);
-		scrollRectToVisible(cellRect);
+		ensureSelectedRowVisible(this);
+	}
+	
+	public static void ensureSelectedRowVisible(JTable table)
+	{
+		Rectangle cellRect = table.getCellRect(table.getSelectedRow(), 0 , true);
+		table.scrollRectToVisible(cellRect);
 	}
 	
 	private	int maxGridWidthPixels;

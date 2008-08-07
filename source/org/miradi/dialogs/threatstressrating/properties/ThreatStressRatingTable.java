@@ -37,10 +37,11 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	}
 	
 	@Override
-	protected void addRowHeightSaver()
+	public boolean allowUserToSetRowHeight()
 	{
-		// NOTE: Override and do nothing to prevent user from changing row height
+		return false;
 	}
+	
 	
 	@Override
 	public void addRowHeightListener(RowHeightListener listener)
