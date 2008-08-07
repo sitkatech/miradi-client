@@ -22,6 +22,7 @@ package org.miradi.utils;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
@@ -151,6 +152,12 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 		editor.stopCellEditing();
 	}
 
+	public void ensureSelectedRowVisible()
+	{
+		Rectangle cellRect = getCellRect(getSelectedRow(), 0 , true);
+		scrollRectToVisible(cellRect);
+	}
+	
 	private	int maxGridWidthPixels;
 	private	boolean useMaxWidth;
 	private int forcedPreferredScrollableViewportWidth;

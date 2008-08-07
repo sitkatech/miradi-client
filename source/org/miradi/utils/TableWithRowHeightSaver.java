@@ -81,12 +81,6 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		}
 	}
 	
-	public void ensureSelectedRowVisible()
-	{
-		Rectangle cellRect = getCellRect(getSelectedRow(), 0 , true);
-		scrollRectToVisible(cellRect);
-	}
-	
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{
 		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);
