@@ -19,17 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
-import org.miradi.forms.PanelHolderSpec;
+import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Indicator;
 
-public class IndicatorPropertiesForm extends PanelHolderSpec
+public class IndicatorMonitoringPlanSubForm extends FieldPanelSpec
 {
-	public IndicatorPropertiesForm()
+	public IndicatorMonitoringPlanSubForm()
 	{
-		addPanel(new IndicatorSubForm());
-		addPanel(new IndicatorViabilityRatingsSubForm());
-		addPanel(new IndicatorFutureStatusSubForm());
-		addPanel(new IndicatorMonitoringPlanSubForm());
-		addPanel(new ForecastSubForm(Indicator.getObjectType()));
+		int type = Indicator.getObjectType();
+		addLabelAndField(type, Indicator.PSEUDO_TAG_FACTOR);
+		addLabelAndField(type, Indicator.PSEUDO_TAG_METHODS);
+		addLabelAndField(type, Indicator.TAG_PRIORITY);
+		addLabelAndField(type, Indicator.TAG_PROGRESS_REPORT_REFS);
 	}
 }
