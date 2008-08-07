@@ -134,6 +134,45 @@ public class RtfWriter
 		}
 	}
 	
+	public static String ecode(String stringToEncode)
+	{
+		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
+		encodedString = encodedString.replaceAll("\\}", "\\\\}");
+		encodedString = encodedString.replaceAll("\\{", "\\\\{");
+		
+		StringBuffer buffer = new StringBuffer(encodedString);
+		for(int i = 0; i < buffer.length(); ++i)
+		{
+			char c = buffer.charAt(i);
+			if (c >= 128)
+			{
+				String hexValue = toHex(c);
+				buffer.replace(i, i+1, "\\u" + hexValue.toUpperCase());
+			}
+		}
+		
+		return buffer.toString();
+	}
+	
+	static public String toHex(char c)
+	{
+		int i = c & 0xFFFF;
+		
+		int firstNibble = (i & 0xF000) / 0x1000;
+		String firstDigit = Integer.toHexString(firstNibble);
+		
+		int secondNibble = (i & 0x0F00) / 0x0100;
+		String secondDigit = Integer.toHexString(secondNibble);
+		
+		int thirdNibble = (i & 0x00F0) / 0x0010;
+		String thirdDigit = Integer.toHexString(thirdNibble);
+		
+		int forthNibble = (i & 0x000F) / 0x001;
+		String forthDigit = Integer.toHexString(forthNibble);
+		
+		return firstDigit + secondDigit + thirdDigit + forthDigit;
+	}
+	
 	public void startRtf() throws Exception
 	{
 		getWriter().write("{\\rtf ");
