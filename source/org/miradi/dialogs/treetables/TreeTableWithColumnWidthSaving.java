@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.treetables;
 
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.Vector;
 
 import org.miradi.main.MainWindow;
@@ -39,6 +41,9 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 		getTableHeader().addMouseListener(columnWidthSaver);
 		getTableHeader().addMouseListener(columnSequenceSaver);
 		addRowHeightSaver();
+		
+		addComponentListener(new ComponentEventHandler());
+
 	}
 	
 	public void rebuildTableCompletely() throws Exception
@@ -46,6 +51,8 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 		super.rebuildTableCompletely();
 		columnWidthSaver.restoreColumnWidths();
 		columnSequenceSaver.restoreColumnSequences();
+		adjustRowHeights();
+
 	}
 
 	protected void addRowHeightSaver()
@@ -90,6 +97,43 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 			listener.rowHeightChanged(row, rowHeight);
 		}
 	}
+	
+	private void adjustRowHeights()
+	{
+		if(getMainWindow().isRowHeightModeManual())
+			return;
+		
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			int height = getPreferredRowHeight(row);
+			setRowHeight(row, height);
+		}
+		getTree().setRowHeight(-1);
+	}
+
+	class ComponentEventHandler implements ComponentListener
+	{
+		public void componentShown(ComponentEvent e)
+		{
+			adjustRowHeights();
+		}
+		
+		public void componentHidden(ComponentEvent e)
+		{
+		}
+
+		public void componentMoved(ComponentEvent e)
+		{
+		}
+
+		public void componentResized(ComponentEvent e)
+		{
+			adjustRowHeights();
+		}
+
+	}
+	
+
 	
 	abstract public String getUniqueTableIdentifier();
 	
