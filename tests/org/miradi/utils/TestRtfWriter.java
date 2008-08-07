@@ -59,6 +59,6 @@ public class TestRtfWriter extends EAMTestCase
 	
 	private void verifyEncoding(String expectedValue, String value)
 	{
-		assertEquals("value was not encoded properly?", expectedValue, RtfWriter.ecode(value));
+		assertEquals("value was not encoded properly?", expectedValue, RtfWriter.encode(value));
 	}
 }

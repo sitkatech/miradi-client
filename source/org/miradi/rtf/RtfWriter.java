@@ -134,7 +134,7 @@ public class RtfWriter
 		}
 	}
 	
-	public static String ecode(String stringToEncode)
+	public static String encode(String stringToEncode)
 	{
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
