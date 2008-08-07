@@ -57,7 +57,7 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 
 	protected void addRowHeightSaver()
 	{
-		TableRowHeightSaver rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 	}
 	
@@ -74,6 +74,9 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 		
 		if(getMainWindow().isRowHeightModeAutomatic())
 			return;
+		
+		if(rowHeightSaver != null)
+			rowHeightSaver.saveRowHeight();
 		
 		if(rowHeightListeners == null)
 			return;
@@ -139,6 +142,7 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 	
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
+	private TableRowHeightSaver rowHeightSaver;
 	private Vector<RowHeightListener> rowHeightListeners;
 
 }
