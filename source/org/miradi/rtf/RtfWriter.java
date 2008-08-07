@@ -110,25 +110,32 @@ public class RtfWriter
 		
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
-			StringBuffer rowContent = new StringBuffer("{");
-			StringBuffer rowFormating = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
-			for (int column = 0; column < exportableTable.getColumnCount(); ++column)
-			{
-				int paddingCount = exportableTable.getDepth(row);
-				rowContent.append(exportableTable.pad(paddingCount, column));
-
-				Icon cellIcon = exportableTable.getIconAt(row, column);
-				if (cellIcon != null)
-					writeImage(BufferedImageFactory.getImage(cellIcon));
-
-				rowContent.append(exportableTable.getTextAt(row, column) + " \\cell ");				
-				rowFormating.append("\\cellx" + column + " ");	
-			}
-			rowContent.append("}");
-			rowFormating.append(" \\row }");
+			startBlock();
+				startBlock();
+					writeRtfCommand("\\trowd \\trautofit1 \\intbl ");
+					for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+					{
+						int paddingCount = exportableTable.getDepth(row);
+						writeEncoded(exportableTable.pad(paddingCount, column));
+		
+						Icon cellIcon = exportableTable.getIconAt(row, column);
+						if (cellIcon != null)
+							writeImage(BufferedImageFactory.getImage(cellIcon));
+		
+						writeEncoded(exportableTable.getTextAt(row, column));
+						writeRtfCommand(" \\cell ");
 			
-			getWriter().writeln(rowContent.toString());
-			getWriter().writeln(rowFormating.toString());
+					}
+				endBlock();
+			
+				for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+				{
+					writeRtfCommand("\\cellx" + column + " ");	
+				}
+	
+				writeRtfCommand(" \\row ");
+				
+			endBlock();
 		}
 	}
 
