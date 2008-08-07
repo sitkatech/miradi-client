@@ -106,19 +106,7 @@ public class RtfWriter
 	
 	public void writeRtfTable(AbstractTableExporter exportableTable) throws Exception
 	{
-		StringBuffer rowHeaderContent = new StringBuffer("{");
-		StringBuffer rowHeaderFormatting = new StringBuffer("{\\trowd \\trhdr \\trautofit1 \\intbl ");
-		for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
-		{
-			String header = exportableTable.getHeaderFor(headerIndex);
-			rowHeaderContent.append(header + " \\cell ");
-			rowHeaderFormatting.append(" \\cellx" + headerIndex + " ");
-		}
-		rowHeaderContent.append("}");
-		rowHeaderFormatting.append(" \\row }");
-		
-		getWriter().writeln(rowHeaderContent.toString());
-		getWriter().writeln(rowHeaderFormatting.toString());
+		writeTableHeader(exportableTable);
 		
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
@@ -142,6 +130,28 @@ public class RtfWriter
 			getWriter().writeln(rowContent.toString());
 			getWriter().writeln(rowFormating.toString());
 		}
+	}
+
+	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
+	{
+		startBlock();
+			writeRtfCommand("\\trowd \\trhdr \\trautofit1 \\intbl ");
+			for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+			{
+				String header = exportableTable.getHeaderFor(headerIndex);
+				writeEncoded(header);
+				writeRtfCommand(" \\cell ");
+			}
+		
+			startBlock();
+				for (int headerIndex = 0; headerIndex < exportableTable.getColumnCount(); ++headerIndex)
+				{
+					writeRtfCommand(" \\cellx" + headerIndex + " ");
+				}		
+				writeRtfCommand(" \\row ");
+			endBlock();
+		
+		endBlock();
 	}
 	
 	public static String encode(String stringToEncode)
