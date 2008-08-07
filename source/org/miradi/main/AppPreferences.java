@@ -238,6 +238,16 @@ public class AppPreferences
 		wizardFontFamily = fontFamily;
 	}
 	
+	public void setRowHeightMode(String rowHeightMode)
+	{
+		rowHeightModeCode = rowHeightMode;
+	}
+
+	public String getRowHeightMode()
+	{
+		return rowHeightModeCode;
+	}
+
 	public String getCurrentLanguageCode()
 	{
 		return "en";
@@ -283,6 +293,8 @@ public class AppPreferences
 		
 		json.put(TAG_PANEL_FONT_FAMILY, panelFontFamily);
 		json.put(TAG_PANEL_FONT_SIZE, Integer.toString(panelFontSize));
+		
+		json.put(TAG_ROW_HEIGHT_MODE, rowHeightModeCode);
 		
 		json.put(TAG_TAGGED_INTS, putIntegerMapToJson());
 		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
@@ -340,6 +352,8 @@ public class AppPreferences
 		
 		panelFontFamily = json.optString(TAG_PANEL_FONT_FAMILY);
 		panelFontSize = json.optInt(TAG_PANEL_FONT_SIZE);
+		
+		rowHeightModeCode = json.optString(TAG_ROW_HEIGHT_MODE);
 		
 		taggedIntMap = loadTagIntegerMap(json);
 		taggedStringMap = loadTagStringMap(json);
@@ -482,6 +496,8 @@ public class AppPreferences
 	public static final String TAG_PANEL_FONT_FAMILY = "PanelFontFamily";
 	public static final String TAG_PANEL_FONT_SIZE = "PanelFontSize";
 	
+	public static final String TAG_ROW_HEIGHT_MODE = "TableRowHeightMode";
+	
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
 
@@ -536,7 +552,9 @@ public class AppPreferences
 	
 	private String panelFontFamily;
 	private int panelFontSize;
-	
+
+	private String rowHeightModeCode;
+
 	private HashMap taggedIntMap;
 	private HashMap taggedStringMap;
 }

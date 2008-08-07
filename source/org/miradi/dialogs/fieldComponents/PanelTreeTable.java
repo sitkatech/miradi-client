@@ -91,6 +91,9 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 	
 	private void adjustRowHeights()
 	{
+		if(getMainWindow().isRowHeightModeManual())
+			return;
+		
 		for(int row = 0; row < getRowCount(); ++row)
 		{
 			int height = tree.getPathBounds(tree.getPathForRow(row)).height;

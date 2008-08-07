@@ -81,6 +81,7 @@ public class QuestionManager
 		addQuestion(new HabitatAssociationQuestion());
 		addQuestion(new FosTrainingTypeQuestion());
 		addQuestion(new DiagramLinkColorQuestion());
+		addQuestion(new TableRowHeightModeQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

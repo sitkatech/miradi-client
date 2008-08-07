@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -51,6 +52,8 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
+import org.miradi.questions.QuestionManager;
+import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.summary.SummaryPlanningPanel;
 
@@ -118,7 +121,17 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String panelFontFamily = mainWindow.getDataPanelFontFamily();
 		panelFontFamilyCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Family"), new FontFamiliyQuestion(), panelFontFamily);
 		
+		createAndAddBlankRow(htmlTab);
+		String rowHeightMode = mainWindow.getRowHeightModeString();
+		ChoiceQuestion rowHeightModeQuestion = QuestionManager.getQuestion(TableRowHeightModeQuestion.class);
+		panelRowHeightModeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Table Row Height Mode"), rowHeightModeQuestion, rowHeightMode);
 		return htmlTab;
+	}
+
+	private void createAndAddBlankRow(JPanel htmlTab)
+	{
+		htmlTab.add(new JLabel(" "));
+		htmlTab.add(new JLabel(" "));
 	}
 
 	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, String label, ChoiceQuestion question, String sizeAsString)
@@ -284,6 +297,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		String panelFontFamilyValue = getSelectedItemQuestionBox(panelFontFamilyCombo);
 		mainWindow.setDataPanelFontFamily(panelFontFamilyValue);
+		
+		String rowHeightMode = getSelectedItemQuestionBox(panelRowHeightModeCombo);
+		mainWindow.setRowHeightMode(rowHeightMode);
 
 		try
 		{
@@ -377,4 +393,5 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	
 	private UiComboBox panelFontSizeCombo;
 	private UiComboBox panelFontFamilyCombo;
+	private UiComboBox panelRowHeightModeCombo;
 }
