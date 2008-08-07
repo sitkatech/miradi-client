@@ -73,9 +73,9 @@ import org.miradi.views.umbrella.ObjectPicker;
 import com.java.sun.jtreetable.TreeTableModel;
 import com.java.sun.jtreetable.TreeTableModelAdapter;
 
-public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, RowColumnBaseObjectProvider
+public class ObjectTreeTable extends PanelTreeTable implements ObjectPicker, RowColumnBaseObjectProvider
 {
-	public TreeTableWithIcons(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
+	public ObjectTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(mainWindowToUse, treeTableModelToUse);
 		treeTableModel = treeTableModelToUse;
@@ -470,7 +470,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 	
 	static class Reselecter implements Runnable
 	{
-		public Reselecter(TreeTableWithIcons treeTableToUse, ORef refToSelect, int rowToSelect)
+		public Reselecter(ObjectTreeTable treeTableToUse, ORef refToSelect, int rowToSelect)
 		{
 			treeTable = treeTableToUse;
 			ref = refToSelect;
@@ -482,7 +482,7 @@ public class TreeTableWithIcons extends PanelTreeTable implements ObjectPicker, 
 			treeTable.selectObject(ref, row);
 		}
 		
-		private TreeTableWithIcons treeTable;
+		private ObjectTreeTable treeTable;
 		private ORef ref;
 		private int row;
 	}
