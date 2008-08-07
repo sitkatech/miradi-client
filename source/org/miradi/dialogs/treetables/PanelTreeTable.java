@@ -33,6 +33,7 @@ import javax.swing.tree.TreePath;
 
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ExportableTreeTable;
+import org.miradi.utils.TableWithHelperMethods;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
@@ -106,6 +107,12 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		int width = c.getPreferredSize().width;
 		return width;
 	}
+	
+	public void ensureSelectedRowVisible()
+	{
+		TableWithHelperMethods.ensureSelectedRowVisible(this);
+	}
+	
 
 	public Object getRawObjectForRow(int row)
 	{

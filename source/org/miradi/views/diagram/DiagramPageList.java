@@ -73,11 +73,11 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	}
 	
 	@Override
-	protected void addRowHeightSaver()
+	public boolean allowUserToSetRowHeight()
 	{
-		//NOTE: this is called from the base class constructor
-		//By not calling super, we are disabling row hieght changing (saving)
+		return false;
 	}
+	
 	
 	@Override
 	public Dimension getPreferredScrollableViewportSize()

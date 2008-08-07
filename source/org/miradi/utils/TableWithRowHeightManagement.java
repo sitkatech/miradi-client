@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
+import javax.swing.JTable;
+
 public interface TableWithRowHeightManagement
 {
 	public abstract void addRowHeightListener(RowHeightListener listener);
@@ -26,5 +28,7 @@ public interface TableWithRowHeightManagement
 	public void setRowHeight(int row, int newHeight);
 	public int getRowHeight();
 	public int getRowHeight(int row);
+	public boolean allowUserToSetRowHeight();
 	public void ensureSelectedRowVisible(); 
+	public JTable asTable();
 }

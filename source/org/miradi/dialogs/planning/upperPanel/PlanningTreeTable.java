@@ -26,9 +26,8 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.TableWithRowHeightManagement;
 
-public class PlanningTreeTable extends TreeTableWithStateSaving implements RowColumnBaseObjectProvider, TableWithRowHeightManagement
+public class PlanningTreeTable extends TreeTableWithStateSaving implements RowColumnBaseObjectProvider
 {
 	public PlanningTreeTable(MainWindow mainWindowToUse, PlanningTreeTableModel planningTreeModelToUse)
 	{

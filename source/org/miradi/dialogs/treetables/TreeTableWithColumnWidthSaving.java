@@ -23,13 +23,16 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.Vector;
 
+import javax.swing.JTable;
+
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ColumnSequenceSaver;
 import org.miradi.utils.ColumnWidthSaver;
 import org.miradi.utils.RowHeightListener;
 import org.miradi.utils.TableRowHeightSaver;
+import org.miradi.utils.TableWithRowHeightManagement;
 
-abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
+abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable implements TableWithRowHeightManagement
 {
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
@@ -46,6 +49,11 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 
 	}
 	
+	public boolean allowUserToSetRowHeight()
+	{
+		return true;
+	}
+	
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
@@ -55,7 +63,7 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 
 	}
 
-	protected void addRowHeightSaver()
+	private void addRowHeightSaver()
 	{
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -99,6 +107,11 @@ abstract public class TreeTableWithColumnWidthSaving extends PanelTreeTable
 		{
 			listener.rowHeightChanged(row, rowHeight);
 		}
+	}
+	
+	public JTable asTable()
+	{
+		return this;
 	}
 	
 	private void adjustRowHeights()

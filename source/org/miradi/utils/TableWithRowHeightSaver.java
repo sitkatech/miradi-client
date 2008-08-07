@@ -22,6 +22,7 @@ package org.miradi.utils;
 import java.awt.Rectangle;
 import java.util.Vector;
 
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
@@ -37,7 +38,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		addRowHeightSaver();
 	}
 	
-	protected void addRowHeightSaver()
+	public boolean allowUserToSetRowHeight()
+	{
+		return true;
+	}
+	
+	private void addRowHeightSaver()
 	{
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -85,6 +91,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		}
 		return cellRect;
 	}
+	
+	public JTable asTable()
+	{
+		return this;
+	}
+	
 
 	abstract public String getUniqueTableIdentifier();
 	

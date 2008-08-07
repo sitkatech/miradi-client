@@ -39,15 +39,19 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	{
 	}
 	
-	public void manage(MainWindow mainWindowToUse, JTable tableToManage, String uniqueTableIdentifierToUse)
+	public void manage(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToManage, String uniqueTableIdentifierToUse)
 	{
 		mainWindow = mainWindowToUse;
-		
-		table = tableToManage;
-		table.addMouseListener(this);
-		table.addMouseMotionListener(this);
-
+		table = tableToManage.asTable();
+		tableWithRowManagement = tableToManage;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
+
+		if(tableWithRowManagement.allowUserToSetRowHeight())
+		{
+			table.addMouseListener(this);
+			table.addMouseMotionListener(this);
+		}
+
 		restoreRowHeight();
 	}
 	
@@ -209,6 +213,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
     public final static int ROW_RESIZE_MARGIN = 2;
 
     private MainWindow mainWindow;
+    private TableWithRowHeightManagement tableWithRowManagement;
     private JTable table;
 	private String uniqueTableIdentifier;
 	
