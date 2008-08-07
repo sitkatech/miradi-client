@@ -19,16 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms.objects;
 
-import org.miradi.forms.PanelHolderSpec;
-import org.miradi.objects.Strategy;
+import org.miradi.forms.FieldPanelSpec;
+import org.miradi.main.EAM;
+import org.miradi.objects.Task;
 
-public class StrategyPropertiesForm extends PanelHolderSpec
+public class TaskDetailsSubForm extends FieldPanelSpec
 {
-	public StrategyPropertiesForm()
-	{	
-		addPanel(new StrategyCoreSubForm());
-		addPanel(new ForecastSubForm(Strategy.getObjectType()));
-		addPanel(new StrategyRelatedItemsSubForm());
-		addPanel(new StrategySummaryCommentsSubForm());
+	public TaskDetailsSubForm()
+	{
+		addLabelAndField(Task.getObjectType(), Task.TAG_LABEL);
+		addLabelAndField(Task.getObjectType(), Task.TAG_DETAILS);
+		
+		addLabelAndFieldWithLabel(EAM.text("Progress Reports"), Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
 	}
 }
