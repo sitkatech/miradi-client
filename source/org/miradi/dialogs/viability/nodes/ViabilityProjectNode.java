@@ -31,6 +31,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 
 public class ViabilityProjectNode extends TreeTableNode
 {
@@ -79,7 +80,9 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public String toString()
 	{
-		return project.getFilename();
+		String value = project.getFilename();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 	
 	public BaseId getId()

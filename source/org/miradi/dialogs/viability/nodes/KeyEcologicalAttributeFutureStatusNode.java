@@ -26,6 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 
 public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 {
@@ -52,7 +53,9 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 
 	public String toString()
 	{
-		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
+		String value = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 
 	public int getChildCount()

@@ -26,6 +26,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {
@@ -57,7 +58,9 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 
 	public String toString()
 	{
-		return measurement.toString();
+		String value = measurement.toString();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 
 	public int getChildCount()
