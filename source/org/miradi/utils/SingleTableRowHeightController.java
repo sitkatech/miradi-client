@@ -39,6 +39,7 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		if(!isAutomaticRowHeightsEnabled())
 			return;
 		
+		table.setVariableRowHeight();
 		int rowCount = table.asTable().getRowCount();
 		for(int row = 0; row < rowCount; ++row)
 		{
@@ -46,7 +47,6 @@ public class SingleTableRowHeightController extends TableRowHeightController
 			table.asTable().setRowHeight(row, height);
 		}
 		
-		table.setVariableRowHeight();
 	}
 	
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
