@@ -47,7 +47,7 @@ public class PanelHolderSpec
 	{
 		for (int index = 0; index < panelToAdd.getPanelCount(); ++index)
 		{
-			panels.add(panelToAdd.getPanel(index));
+			addPanel(panelToAdd.getPanel(index));
 		}
 	}
 	
