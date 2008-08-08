@@ -52,19 +52,6 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	}
 		
 	@Override
-	public int getColumnCount()
-	{
-		int columnCount = 0;
-		Vector<AbstractTableExporter> topRowTables = getTables();
-		for (int i = 0;  i < topRowTables.size(); ++i)
-		{
-			columnCount += topRowTables.get(i).getColumnCount();
-		}
-		
-		return columnCount;
-	}
-	
-	@Override
 	public int getRowCount()
 	{
 		int columnTablesRowCount = getTables().get(0).getRowCount();
