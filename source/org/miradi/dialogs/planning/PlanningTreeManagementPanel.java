@@ -90,7 +90,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	
 	public boolean isRtfExportable()
 	{
-		return true;
+		return false;
 	}		
 
 	public void exportRtf(RtfWriter writer) throws Exception
