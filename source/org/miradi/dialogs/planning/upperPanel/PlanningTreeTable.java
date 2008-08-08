@@ -39,11 +39,6 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		return UNIQUE_IDENTIFIER;
 	}
 
-	public void rebuildTableCompletely() throws Exception
-	{
-		super.rebuildTableCompletely();
-	}
-
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
