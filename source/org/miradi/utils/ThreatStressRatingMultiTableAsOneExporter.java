@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.Vector;
-
 import javax.swing.Icon;
 
 import org.miradi.objecthelpers.ObjectType;
@@ -37,8 +35,6 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	public void clear()
 	{
 		super.clear();
-
-		summaryRowTables = new Vector<AbstractTableExporter>();
 	}
 	
 	public void addAsTopRowTable(AbstractTableExporter table)
@@ -46,22 +42,16 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		super.addExportable(table);
 	}
 	
-	
-	public void addAsTargetSummaryRowTable(AbstractTableExporter table)
+	public void setTargetSummaryRowTable(AbstractTableExporter table)
 	{
-		addAsSummaryRowTable(TARGET_SUMMARY_ROW_TABLE_INDEX, table);
+		targetSummaryRowTable = table;
 	}
 	
-	public void addAsOverallSummaryRowTable(AbstractTableExporter table)
+	public void setOverallSummaryRowTable(AbstractTableExporter table)
 	{
-		addAsSummaryRowTable(OVERALL_PROJECT_RATING_ROW_TABLE_INDEX, table);
+		overallProjectRatingSummaryTable = table;
 	}
 	
-	private void addAsSummaryRowTable(int index, AbstractTableExporter table)
-	{
-		summaryRowTables.add(index, table);
-	}
-		
 	@Override
 	public int getRowCount()
 	{
@@ -102,15 +92,12 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		if (isTopRowTable(row))
 			return super.getTextAt(row, column);
 		
-		AbstractTableExporter summaryTable = summaryRowTables.get(TARGET_SUMMARY_ROW_TABLE_INDEX);
 		int columnWithinSummaryTable = convertToSummaryTableColumn(column);
-		if (columnWithinSummaryTable < summaryTable.getColumnCount() )
-			return summaryTable.getTextAt(0, columnWithinSummaryTable);
+		if (columnWithinSummaryTable < targetSummaryRowTable.getColumnCount() )
+			return targetSummaryRowTable.getTextAt(0, columnWithinSummaryTable);
 		
-		AbstractTableExporter singleCellTotalTable = summaryRowTables.get(OVERALL_PROJECT_RATING_ROW_TABLE_INDEX);
-		return singleCellTotalTable.getTextAt(0, 0);
+		return overallProjectRatingSummaryTable.getTextAt(0, 0);
 	}
-	
 
 	private int convertToSummaryTableColumn(int column)
 	{
@@ -124,7 +111,8 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		return row < super.getRowCount();
 	}
 			
-	private Vector<AbstractTableExporter> summaryRowTables;
+	private AbstractTableExporter targetSummaryRowTable;
+	private AbstractTableExporter overallProjectRatingSummaryTable;
 	public static final int TARGET_SUMMARY_ROW_TABLE_INDEX = 0;
 	public static final int OVERALL_PROJECT_RATING_ROW_TABLE_INDEX = 1;
 }
