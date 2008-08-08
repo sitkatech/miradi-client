@@ -20,15 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import javax.swing.Icon;
-import javax.swing.JTable;
 
+import org.miradi.dialogs.base.ObjectTable;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 
 public class TableExporter extends AbstractTableExporter
 {
-	public TableExporter(JTable tableToUse)
+	public TableExporter(ObjectTable tableToUse)
 	{
 		tableToExport = tableToUse;
 	}
@@ -74,10 +74,12 @@ public class TableExporter extends AbstractTableExporter
 		return 0;
 	}
 	
+	//FIXME This method needs to be changed so that it accepts column
 	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
-		return null;
+		final int FIRST_COLUMN = 0;
+		return tableToExport.getBaseObjectForRowColumn(row, FIRST_COLUMN);
 	}
 	
 	@Override
@@ -93,5 +95,5 @@ public class TableExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 		
-	private JTable tableToExport;
+	private ObjectTable tableToExport;
 }

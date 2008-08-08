@@ -38,7 +38,6 @@ import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.utils.TableExporter;
 
 public class ThreatGridPanel extends JPanel
 {
@@ -65,8 +64,9 @@ public class ThreatGridPanel extends JPanel
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(mainWindowToUse, newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(mainWindowToUse, model, this);
 		
-		multiTableExporter.addExportable(new TableExporter(rowHeaderTable));
-		multiTableExporter.addExportable(new TableExporter(threatTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.addExportable(new TableExporter(rowHeaderTable));
+		//multiTableExporter.addExportable(new TableExporter(threatTable));
 		
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 	}
