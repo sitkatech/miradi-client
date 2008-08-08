@@ -35,7 +35,7 @@ public class MultiTableRowHeightController extends TableRowHeightController impl
 	public void addTable(TableWithRowHeightManagement tableToAdd)
 	{
 		tables.add(tableToAdd);
-		tableToAdd.addRowHeightListener(this);
+		tableToAdd.setMultiTableRowHeightController(this);
 		rowHeightChanged(tableToAdd.getRowHeight());
 	}
 	

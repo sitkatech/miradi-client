@@ -42,7 +42,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		return true;
 	}
 	
-	public void addRowHeightListener(RowHeightListener listener)
+	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightSaver.addRowHeightListener(listener);
 	}
