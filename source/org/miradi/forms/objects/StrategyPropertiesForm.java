@@ -27,7 +27,7 @@ public class StrategyPropertiesForm extends PanelHolderSpec
 	public StrategyPropertiesForm()
 	{	
 		addPanel(new StrategyCoreSubForm());
-		addPanel(new ForecastSubForm(Strategy.getObjectType()));
+		addAllPanels(new ForecastSubForm(Strategy.getObjectType()));
 		addPanel(new StrategyRelatedItemsSubForm());
 		addPanel(new StrategySummaryCommentsSubForm());
 	}
