@@ -21,7 +21,7 @@ package org.miradi.forms;
 
 import java.util.Vector;
 
-public class PanelHolderSpec
+public class PanelHolderSpec extends PropertiesPanelSpec
 {
 	public PanelHolderSpec()
 	{
