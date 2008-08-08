@@ -62,17 +62,26 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
+		if (isTopRowTable(row))
+			return super.getIconAt(row, column);
+		
 		return null;
 	}
 
 	@Override
 	public int getRowType(int row)
 	{
+		if (isTopRowTable(row))
+			return super.getRowType(row);
+		
 		return ObjectType.FAKE;
 	}
 	
 	public BaseObject getBaseObjectForRow(int row)
 	{
+		if (isTopRowTable(row))
+			return getBaseObjectForRow(row);
+		
 		return null;
 	}
 	
