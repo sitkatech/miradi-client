@@ -24,8 +24,6 @@ import java.awt.event.ComponentListener;
 
 import org.miradi.main.MainWindow;
 
-import com.java.sun.jtreetable.JTreeTable;
-
 
 public class SingleTableRowHeightController extends TableRowHeightController
 {
@@ -49,15 +47,9 @@ public class SingleTableRowHeightController extends TableRowHeightController
 			table.asTable().setRowHeight(row, height);
 		}
 		
-		setVariableRowHeight();
+		table.setVariableRowHeight();
 	}
 	
-	private void setVariableRowHeight()
-	{
-		// FIXME: This will not work for regular tables
-		((JTreeTable)table).getTree().setRowHeight(-1);
-	}
-
 	private int getPreferredRowHeight(int row)
 	{
 		return table.getPreferredRowHeight(row);
