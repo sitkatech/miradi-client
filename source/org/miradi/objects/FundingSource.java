@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FundingSourceId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
@@ -71,6 +72,16 @@ public class FundingSource extends BaseObject
 		return EAM.text("Label|(Undefined Accounting Code)");
 	}
 	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+		
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+			
 	public void clear()
 	{
 		super.clear();
