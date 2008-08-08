@@ -28,6 +28,7 @@ import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
 import org.miradi.forms.objects.MeasurementPropertiesForm;
 import org.miradi.forms.objects.ObjectivePropertiesForm;
+import org.miradi.forms.objects.OrganizationPropertiesForm;
 import org.miradi.forms.objects.ResourcePropertiesForm;
 import org.miradi.forms.objects.StrategyPropertiesForm;
 import org.miradi.forms.objects.TargetPropertiesForm;
@@ -43,6 +44,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -95,6 +97,9 @@ public class ObjectToFormMap
 		
 		if (AccountingCode.is(objectType))
 			return new ActivityPropertiesForm();
+		
+		if (Organization.is(objectType))
+			return new OrganizationPropertiesForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
