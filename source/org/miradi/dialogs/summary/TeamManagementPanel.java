@@ -29,6 +29,7 @@ import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.icons.TeamIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
@@ -104,7 +105,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		writer.writeRtfTable(getTableExporter());
+		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
 		
 	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
