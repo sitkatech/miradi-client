@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.EAM;
@@ -34,9 +33,8 @@ public class RtfManagementExporter
 		project = projectToUse;
 	}
 	
-	public void writeManagement(ObjectManagementPanel objectManagementPanel, RtfWriter writer) throws Exception
+	public void writeManagement(AbstractTableExporter tableExporter, RtfWriter writer) throws Exception
 	{
-		AbstractTableExporter tableExporter = objectManagementPanel.getTableExporter();
 		writer.writeRtfTable(tableExporter);
 		writer.newParagraph();
 		writePropertiesForms(writer, tableExporter);

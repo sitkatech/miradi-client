@@ -39,7 +39,7 @@ abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 		
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		new RtfManagementExporter(getProject()).writeManagement(this, writer);
+		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
 			
 	abstract public Icon getIcon();	
