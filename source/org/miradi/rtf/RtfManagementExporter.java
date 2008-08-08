@@ -37,10 +37,10 @@ public class RtfManagementExporter
 	{
 		writer.writeRtfTable(tableExporter);
 		writer.newParagraph();
-		writePropertiesForms(writer, tableExporter);
+		writePropertiesForEachObject(writer, tableExporter);
 	}
 	
-	public void writePropertiesForms(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
+	public void writePropertiesForEachObject(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
 	{
 		for (int row = 0; row < tableExporter.getRowCount(); ++row)
 		{
@@ -51,12 +51,12 @@ public class RtfManagementExporter
 				continue;
 			}
 			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
-			writePropertiesPanels(writer, baseObjectForRow, form);
+			writePropertiesPanel(writer, baseObjectForRow, form);
 			writer.newParagraph();
 		}
 	}
 
-	private void writePropertiesPanels(RtfWriter writer, BaseObject baseObjectForRow, PropertiesPanelSpec form) throws Exception
+	private void writePropertiesPanel(RtfWriter writer, BaseObject baseObjectForRow, PropertiesPanelSpec form) throws Exception
 	{
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef());
 		for (int index = 0; index < form.getPanelCount(); ++index)
