@@ -24,7 +24,7 @@ import java.util.HashSet;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class MultiTableRowHeightController extends TableRowHeightController implements RowHeightListener
+public class MultiTableRowHeightController extends TableRowHeightController 
 {
 	public MultiTableRowHeightController(MainWindow mainWindowToUse)
 	{
