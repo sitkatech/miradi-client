@@ -45,9 +45,7 @@ public class SingleTableRowHeightController extends TableRowHeightController
 	
 	public void updateAutomaticRowHeights()
 	{
-		if(!isAutomaticRowHeightsEnabled)
-			return;
-		if(!getMainWindow().isRowHeightModeAutomatic())
+		if(!isAutomaticRowHeightsEnabled())
 			return;
 		
 		int rowCount = table.asTable().getRowCount();
@@ -58,6 +56,16 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		}
 		
 		setVariableRowHeight();
+	}
+	
+	boolean isAutomaticRowHeightsEnabled()
+	{
+		if(!isAutomaticRowHeightsEnabled)
+			return false;
+		if(!getMainWindow().isRowHeightModeAutomatic())
+			return false;
+
+		return true;
 	}
 
 	private void setVariableRowHeight()
