@@ -23,7 +23,7 @@ import javax.swing.JTable;
 
 public interface TableWithRowHeightManagement
 {
-	public abstract void addRowHeightListener(RowHeightListener listener);
+	public void setMultiTableRowHeightController(MultiTableRowHeightController controller);
 	public void setRowHeight(int newHeight);
 	public void setRowHeight(int row, int newHeight);
 	public int getRowHeight();

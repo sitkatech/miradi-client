@@ -25,7 +25,7 @@ import java.awt.event.ComponentListener;
 import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
-import org.miradi.utils.RowHeightListener;
+import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.TableRowHeightSaver;
 import org.miradi.utils.TableWithRowHeightManagement;
 
@@ -55,7 +55,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 
 	}
 
-	public void addRowHeightListener(RowHeightListener listener)
+	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightSaver.addRowHeightListener(listener);
 	}
