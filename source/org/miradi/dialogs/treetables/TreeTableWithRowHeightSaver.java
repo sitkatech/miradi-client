@@ -36,6 +36,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public TreeTableWithRowHeightSaver(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
+		isAutomaticRowHeightsEnabled = true;
 
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -57,6 +58,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
+		isAutomaticRowHeightsEnabled = false;
 		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	
@@ -93,7 +95,9 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	private void updateAutomaticRowHeights()
 	{
-		if(getMainWindow().isRowHeightModeManual())
+		if(!isAutomaticRowHeightsEnabled)
+			return;
+		if(!getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
 		for(int row = 0; row < getRowCount(); ++row)
@@ -128,5 +132,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	abstract public String getUniqueTableIdentifier();
 	
+	private boolean isAutomaticRowHeightsEnabled;
 	private TableRowHeightSaver rowHeightSaver;
 }
