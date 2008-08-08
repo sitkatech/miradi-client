@@ -44,7 +44,6 @@ import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
-import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
@@ -53,11 +52,11 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.utils.HtmlUtilities;
 
-public class ObjectTreeCellRenderer extends DefaultTreeCellRenderer
+public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 {		
 	public ObjectTreeCellRenderer(ObjectTreeTable treeTableToUse)
 	{
-		treeTable = treeTableToUse;
+		super(treeTableToUse);
 		
 		projectMetaDataRenderer = new DefaultTreeCellRenderer();
 		setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
@@ -213,13 +212,6 @@ public class ObjectTreeCellRenderer extends DefaultTreeCellRenderer
 		return defaultFont.deriveFont(style);
 	}
 	
-	public MainWindow getMainWindow()
-	{
-		return treeTable.getMainWindow();
-	}
-	
-	private ObjectTreeTable treeTable;
-
 	private DefaultTreeCellRenderer projectMetaDataRenderer;
 	private DefaultTreeCellRenderer targetRenderer;
 	private DefaultTreeCellRenderer strategyRenderer;
