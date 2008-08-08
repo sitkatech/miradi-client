@@ -58,7 +58,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
-		getTree().setCellRenderer(new ObjectTreeCellRenderer(getMainWindow()));
+		getTree().setCellRenderer(new ObjectTreeCellRenderer(this));
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
 		TableCellEditor ce = new NonEditableTreeTableCellEditor();

@@ -37,6 +37,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
+import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
@@ -58,7 +59,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		getTree().setCellRenderer(new ViabilityTreeCellRenderer(getMainWindow()));
+		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
 		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
@@ -143,9 +144,9 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	
 	public class ViabilityTreeCellRenderer extends ObjectTreeCellRenderer
 	{
-		public ViabilityTreeCellRenderer(MainWindow mainWindowToUse)
+		public ViabilityTreeCellRenderer(ObjectTreeTable treeTableToUse)
 		{
-			super(mainWindowToUse);
+			super(treeTableToUse);
 			indicatorRenderer.setFont(getPlainFont());
 			goalRenderer.setFont(getPlainFont());
 		}

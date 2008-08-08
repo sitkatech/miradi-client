@@ -55,9 +55,9 @@ import org.miradi.utils.HtmlUtilities;
 
 public class ObjectTreeCellRenderer extends DefaultTreeCellRenderer
 {		
-	public ObjectTreeCellRenderer(MainWindow mainWindowToUse)
+	public ObjectTreeCellRenderer(ObjectTreeTable treeTableToUse)
 	{
-		mainWindow = mainWindowToUse;
+		treeTable = treeTableToUse;
 		
 		projectMetaDataRenderer = new DefaultTreeCellRenderer();
 		setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
@@ -215,10 +215,10 @@ public class ObjectTreeCellRenderer extends DefaultTreeCellRenderer
 	
 	public MainWindow getMainWindow()
 	{
-		return mainWindow;
+		return treeTable.getMainWindow();
 	}
 	
-	private MainWindow mainWindow;
+	private ObjectTreeTable treeTable;
 
 	private DefaultTreeCellRenderer projectMetaDataRenderer;
 	private DefaultTreeCellRenderer targetRenderer;
