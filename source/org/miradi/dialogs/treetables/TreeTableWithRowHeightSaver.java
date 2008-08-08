@@ -49,13 +49,18 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
-		rowHeightController.updateAutomaticRowHeights();
+		updateAutomaticRowHeights();
 
+	}
+
+	public void updateAutomaticRowHeights()
+	{
+		rowHeightController.updateAutomaticRowHeights();
 	}
 
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
-		rowHeightController.disable();
+		rowHeightController.setMultiTableRowHeightController(listener);
 		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	

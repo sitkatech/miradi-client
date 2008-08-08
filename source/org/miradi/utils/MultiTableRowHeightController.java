@@ -68,5 +68,54 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		EAM.logVerbose("rowHeightChanged done");
 	}
 	
+	@Override
+	public void updateAutomaticRowHeights()
+	{
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			int tallestPreferred = getTallestPreferredRowHeight(row);
+			setRowHeightInAllTables(row, tallestPreferred);
+		}
+	}
+
+	private int getRowCount()
+	{
+		int minimumRowCount = -1;
+		for(TableWithRowHeightManagement table : tables)
+		{
+			table.setVariableRowHeight();
+			
+			int rowCount = table.getRowCount();
+			if(minimumRowCount < 0)
+				minimumRowCount = rowCount;
+			minimumRowCount = Math.min(minimumRowCount, rowCount);
+		}
+		
+		if(minimumRowCount < 0)
+			minimumRowCount = 0;
+		
+		return minimumRowCount;
+	}
+
+	private int getTallestPreferredRowHeight(int row)
+	{
+		int tallest = 0;
+		for(TableWithRowHeightManagement table : tables)
+		{
+			tallest = Math.max(tallest, table.getPreferredRowHeight(row));
+		}
+		
+		return tallest;
+	}
+
+	private void setRowHeightInAllTables(int row, int newRowHeight)
+	{
+		for(TableWithRowHeightManagement table : tables)
+		{
+			table.setRowHeight(row, newRowHeight);
+		}
+	}
+
 	private HashSet<TableWithRowHeightManagement> tables;
+
 }

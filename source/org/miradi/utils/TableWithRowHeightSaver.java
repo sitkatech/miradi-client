@@ -46,8 +46,13 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
-		rowHeightController.disable();
+		rowHeightController.setMultiTableRowHeightController(listener);
 		rowHeightSaver.setMultiTableRowHeightController(listener);
+	}
+	
+	public void updateAutomaticRowHeights()
+	{
+		rowHeightController.updateAutomaticRowHeights();
 	}
 	
 	public void setVariableRowHeight()
@@ -98,5 +103,5 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	abstract public String getUniqueTableIdentifier();
 	
 	private TableRowHeightSaver rowHeightSaver;
-	private TableRowHeightController rowHeightController;
+	private SingleTableRowHeightController rowHeightController;
 }

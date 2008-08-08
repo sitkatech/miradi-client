@@ -19,20 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import org.miradi.main.MainWindow;
 
-public class TableRowHeightController
+abstract public class TableRowHeightController
 {
 	public TableRowHeightController(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
-
-		isAutomaticRowHeightsEnabled = true;
-	}
-
-	public void disable()
-	{
-		isAutomaticRowHeightsEnabled = false;
 	}
 
 	public MainWindow getMainWindow()
@@ -40,16 +36,34 @@ public class TableRowHeightController
 		return mainWindow;
 	}
 
-	protected boolean isAutomaticRowHeightsEnabled()
+	protected void listenForTableSizeChanges(TableWithRowHeightManagement table)
 	{
-		if(!isAutomaticRowHeightsEnabled)
-			return false;
-		if(!getMainWindow().isRowHeightModeAutomatic())
-			return false;
-	
-		return true;
+		table.asTable().addComponentListener(new ComponentEventHandler());
 	}
 
+	class ComponentEventHandler implements ComponentListener
+	{
+		public void componentShown(ComponentEvent e)
+		{
+			updateAutomaticRowHeights();
+		}
+		
+		public void componentHidden(ComponentEvent e)
+		{
+		}
+
+		public void componentMoved(ComponentEvent e)
+		{
+		}
+
+		public void componentResized(ComponentEvent e)
+		{
+			updateAutomaticRowHeights();
+		}
+
+	}
+	
+	abstract public void updateAutomaticRowHeights();
+
 	private MainWindow mainWindow;
-	private boolean isAutomaticRowHeightsEnabled;
 }
