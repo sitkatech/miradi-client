@@ -93,5 +93,5 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	abstract public String getUniqueTableIdentifier();
 	
 	private TableRowHeightSaver rowHeightSaver;
-	private SingleTableRowHeightController rowHeightController;
+	private TableRowHeightController rowHeightController;
 }
