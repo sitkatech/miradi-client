@@ -71,6 +71,14 @@ public class MultiTableRowHeightController extends TableRowHeightController
 	@Override
 	public void updateAutomaticRowHeights()
 	{
+		if(!getMainWindow().isRowHeightModeAutomatic())
+			return;
+		
+		for(TableWithRowHeightManagement table : tables)
+		{
+			table.setVariableRowHeight();
+		}
+		
 		for(int row = 0; row < getRowCount(); ++row)
 		{
 			int tallestPreferred = getTallestPreferredRowHeight(row);
@@ -83,8 +91,6 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		int minimumRowCount = -1;
 		for(TableWithRowHeightManagement table : tables)
 		{
-			table.setVariableRowHeight();
-			
 			int rowCount = table.getRowCount();
 			if(minimumRowCount < 0)
 				minimumRowCount = rowCount;
