@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-
 import org.miradi.main.MainWindow;
 
 
@@ -31,12 +28,14 @@ public class SingleTableRowHeightController extends TableRowHeightController
 	{
 		super(mainWindowToUse);
 		table = tableToControl;
-		
-		table.asTable().addComponentListener(new ComponentEventHandler());
+		listenForTableSizeChanges(table);
 	}
-
+	
 	public void updateAutomaticRowHeights()
 	{
+		if(controller != null)
+			controller.updateAutomaticRowHeights();
+		
 		if(!isAutomaticRowHeightsEnabled())
 			return;
 		
@@ -50,32 +49,26 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		table.setVariableRowHeight();
 	}
 	
+	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
+	{
+		controller = listener;
+	}
+
 	private int getPreferredRowHeight(int row)
 	{
 		return table.getPreferredRowHeight(row);
 	}
 
-	class ComponentEventHandler implements ComponentListener
+	private boolean isAutomaticRowHeightsEnabled()
 	{
-		public void componentShown(ComponentEvent e)
-		{
-			updateAutomaticRowHeights();
-		}
-		
-		public void componentHidden(ComponentEvent e)
-		{
-		}
-
-		public void componentMoved(ComponentEvent e)
-		{
-		}
-
-		public void componentResized(ComponentEvent e)
-		{
-			updateAutomaticRowHeights();
-		}
-
-	}
+		if(controller != null)
+			return false;
+		if(!getMainWindow().isRowHeightModeAutomatic())
+			return false;
 	
+		return true;
+	}
+
 	private TableWithRowHeightManagement table;
+	private MultiTableRowHeightController controller;
 }

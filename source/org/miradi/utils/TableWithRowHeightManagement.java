@@ -34,4 +34,6 @@ public interface TableWithRowHeightManagement
 	public JTable asTable();
 	public int getRowCount();
 	public void setVariableRowHeight();
+	public void updateAutomaticRowHeights();
+
 }
