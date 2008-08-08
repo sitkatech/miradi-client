@@ -181,6 +181,16 @@ public class ProjectResource extends BaseObject
 		return appendedResources;
 	}
 	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+		
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+			
 	public static ProjectResource find(ObjectManager objectManager, ORef projectResourceRef)
 	{
 		return (ProjectResource) objectManager.findObject(projectResourceRef);
@@ -190,7 +200,7 @@ public class ProjectResource extends BaseObject
 	{
 		return find(project.getObjectManager(), projectResourceRef);
 	}
-		
+	
 	public void clear()
 	{
 		super.clear();
