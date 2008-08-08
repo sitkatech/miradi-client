@@ -46,7 +46,18 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		super.addExportable(table);
 	}
 	
-	public void addAsSummaryRowTable(int index, AbstractTableExporter table)
+	
+	public void addAsTargetSummaryRowTable(AbstractTableExporter table)
+	{
+		addAsSummaryRowTable(TARGET_SUMMARY_ROW_TABLE_INDEX, table);
+	}
+	
+	public void addAsOverallSummaryRowTable(AbstractTableExporter table)
+	{
+		addAsSummaryRowTable(OVERALL_PROJECT_RATING_ROW_TABLE_INDEX, table);
+	}
+	
+	private void addAsSummaryRowTable(int index, AbstractTableExporter table)
 	{
 		summaryRowTables.add(index, table);
 	}
@@ -91,12 +102,12 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		if (isTopRowTable(row))
 			return super.getTextAt(row, column);
 		
-		AbstractTableExporter summaryTable = summaryRowTables.get(0);
+		AbstractTableExporter summaryTable = summaryRowTables.get(TARGET_SUMMARY_ROW_TABLE_INDEX);
 		int columnWithinSummaryTable = convertToSummaryTableColumn(column);
 		if (columnWithinSummaryTable < summaryTable.getColumnCount() )
 			return summaryTable.getTextAt(0, columnWithinSummaryTable);
 		
-		AbstractTableExporter singleCellTotalTable = summaryRowTables.get(1);
+		AbstractTableExporter singleCellTotalTable = summaryRowTables.get(OVERALL_PROJECT_RATING_ROW_TABLE_INDEX);
 		return singleCellTotalTable.getTextAt(0, 0);
 	}
 	
@@ -114,4 +125,6 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	}
 			
 	private Vector<AbstractTableExporter> summaryRowTables;
+	public static final int TARGET_SUMMARY_ROW_TABLE_INDEX = 0;
+	public static final int OVERALL_PROJECT_RATING_ROW_TABLE_INDEX = 1;
 }
