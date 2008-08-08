@@ -84,11 +84,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return rendererComponent.getPreferredSize().height;
 	}
 
-	public int getForcedRowHeight(int row)
-	{
-		return 33;
-	}
-
 	@Override
 	public void setRowHeight(int rowHeight)
 	{
