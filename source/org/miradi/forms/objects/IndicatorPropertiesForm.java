@@ -30,6 +30,6 @@ public class IndicatorPropertiesForm extends PanelHolderSpec
 		addPanel(new IndicatorViabilityRatingsSubForm());
 		addPanel(new IndicatorFutureStatusSubForm());
 		addPanel(new IndicatorMonitoringPlanSubForm());
-		addPanel(new ForecastSubForm(Indicator.getObjectType()));
+		addAllPanels(new ForecastSubForm(Indicator.getObjectType()));
 	}
 }

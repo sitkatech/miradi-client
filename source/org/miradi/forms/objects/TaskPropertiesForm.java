@@ -27,6 +27,6 @@ public class TaskPropertiesForm extends PanelHolderSpec
 	public TaskPropertiesForm()
 	{
 		addPanel(new TaskDetailsSubForm());
-		addPanel(new ForecastSubForm(Task.getObjectType()));
+		addAllPanels(new ForecastSubForm(Task.getObjectType()));
 	}
 }
