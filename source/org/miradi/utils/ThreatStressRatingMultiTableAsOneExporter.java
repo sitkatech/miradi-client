@@ -96,7 +96,8 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		if (columnWithinSummaryTable < summaryTable.getColumnCount() )
 			return summaryTable.getTextAt(0, columnWithinSummaryTable);
 		
-		return summaryRowTables.get(1).getTextAt(0, 0);
+		AbstractTableExporter singleCellTotalTable = summaryRowTables.get(1);
+		return singleCellTotalTable.getTextAt(0, 0);
 	}
 	
 
