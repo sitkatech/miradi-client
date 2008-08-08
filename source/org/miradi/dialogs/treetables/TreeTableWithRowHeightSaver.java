@@ -51,7 +51,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
-		adjustRowHeights();
+		updateAutomaticRowHeights();
 
 	}
 
@@ -91,7 +91,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return this;
 	}
 	
-	private void adjustRowHeights()
+	private void updateAutomaticRowHeights()
 	{
 		if(getMainWindow().isRowHeightModeManual())
 			return;
@@ -108,7 +108,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	{
 		public void componentShown(ComponentEvent e)
 		{
-			adjustRowHeights();
+			updateAutomaticRowHeights();
 		}
 		
 		public void componentHidden(ComponentEvent e)
@@ -121,7 +121,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 
 		public void componentResized(ComponentEvent e)
 		{
-			adjustRowHeights();
+			updateAutomaticRowHeights();
 		}
 
 	}
