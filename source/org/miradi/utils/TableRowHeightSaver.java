@@ -57,7 +57,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		restoreRowHeight();
 	}
 	
-	public void addRowHeightListener(RowHeightListener listener)
+	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightListeners.add(listener);
 	}
