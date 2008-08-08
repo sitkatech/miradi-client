@@ -102,7 +102,8 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		int tallest = 0;
 		for(TableWithRowHeightManagement table : tables)
 		{
-			tallest = Math.max(tallest, table.getPreferredRowHeight(row));
+			int rowHeight = table.getPreferredRowHeight(row);
+			tallest = Math.max(tallest, rowHeight);
 		}
 		
 		return tallest;

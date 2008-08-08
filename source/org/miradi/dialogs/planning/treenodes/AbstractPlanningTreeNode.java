@@ -44,6 +44,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 
 public abstract class AbstractPlanningTreeNode extends TreeTableNode
 {
@@ -98,7 +99,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	public String toString()
 	{
-		return getObject().combineShortLabelAndLabel();
+		String value = getObject().combineShortLabelAndLabel();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 
 	protected ORefSet getAllRefsInTree()

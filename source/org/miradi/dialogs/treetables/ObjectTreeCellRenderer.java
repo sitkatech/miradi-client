@@ -50,7 +50,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
-import org.miradi.utils.HtmlUtilities;
 
 public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 {		
@@ -156,8 +155,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = measurementRenderer;
 		else if(node.getType() == ProjectMetadata.getObjectType())
 			renderer = projectMetaDataRenderer;
-		
-		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value.toString());
 		
 		DefaultTreeCellRenderer rendererComponent = (DefaultTreeCellRenderer)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		return rendererComponent;

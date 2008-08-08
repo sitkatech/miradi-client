@@ -73,8 +73,15 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public int getPreferredRowHeight(int row)
 	{
+		Object value = tree.getPathForRow(row).getLastPathComponent();
+		boolean selected = false;
+		boolean expanded = tree.isExpanded(row);
+		boolean leaf = false;
+		boolean hasFocus = false;
+
 		VariableHeightTreeCellRenderer rendererFactory = (VariableHeightTreeCellRenderer) tree.getCellRenderer();
-		return getPreferredHeight(row, rendererFactory);
+		Component rendererComponent = rendererFactory.getTreeCellRendererComponentWithPreferredHeight(tree, value, selected, expanded, leaf, row, hasFocus);
+		return rendererComponent.getPreferredSize().height;
 	}
 
 	public int getForcedRowHeight(int row)
@@ -82,17 +89,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return 33;
 	}
 
-	private int getPreferredHeight(int row, VariableHeightTreeCellRenderer rendererFactory)
-	{
-		Object value = tree.getPathForRow(row).getLastPathComponent();
-		boolean selected = false;
-		boolean expanded = tree.isExpanded(row);
-		boolean leaf = false;
-		boolean hasFocus = false;
-		Component rendererComponent = rendererFactory.getTreeCellRendererComponentWithPreferredHeight(tree, value, selected, expanded, leaf, row, hasFocus);
-		return rendererComponent.getPreferredSize().height;
-	}
-	
 	@Override
 	public void setRowHeight(int rowHeight)
 	{
