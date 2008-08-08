@@ -50,14 +50,25 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		if(!getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
-		for(int row = 0; row < table.asTable().getRowCount(); ++row)
+		int rowCount = table.asTable().getRowCount();
+		for(int row = 0; row < rowCount; ++row)
 		{
-			int height = table.getPreferredRowHeight(row);
+			int height = getPreferredRowHeight(row);
 			table.asTable().setRowHeight(row, height);
 		}
 		
+		setVariableRowHeight();
+	}
+
+	private void setVariableRowHeight()
+	{
 		// FIXME: This will not work for regular tables
 		((JTreeTable)table).getTree().setRowHeight(-1);
+	}
+
+	private int getPreferredRowHeight(int row)
+	{
+		return table.getPreferredRowHeight(row);
 	}
 
 	private MainWindow getMainWindow()
