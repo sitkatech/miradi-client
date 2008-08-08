@@ -28,7 +28,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 
-public class ObjectToFormMapper
+public class ObjectToFormMap
 {
 	//FIXME finish this mapper
 	public static FieldPanelSpec getForm(BaseObject baseObject)
