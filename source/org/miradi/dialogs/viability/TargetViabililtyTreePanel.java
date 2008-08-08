@@ -26,6 +26,8 @@ import org.miradi.actions.ActionDeleteIndicator;
 import org.miradi.actions.ActionDeleteIndicatorMeasurement;
 import org.miradi.dialogs.diagram.FactorTreeTableNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
+import org.miradi.dialogs.viability.nodes.TargetViabilityRoot;
+import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;

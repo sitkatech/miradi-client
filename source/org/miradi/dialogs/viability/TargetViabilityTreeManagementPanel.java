@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
+import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;

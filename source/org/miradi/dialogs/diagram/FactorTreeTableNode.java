@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.dialogs.viability.ViabilityIndicatorNode;
+import org.miradi.dialogs.viability.nodes.ViabilityIndicatorNode;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;

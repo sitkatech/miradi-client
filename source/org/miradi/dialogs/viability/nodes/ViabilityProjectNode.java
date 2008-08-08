@@ -17,22 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.viability;
+package org.miradi.dialogs.viability.nodes;
 
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.StatusQuestion;
 
-public class ViabilityRoot extends TreeTableNode
+public class ViabilityProjectNode extends TreeTableNode
 {
-	public ViabilityRoot(Project projectToUse) throws Exception
+	public ViabilityProjectNode(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
+		statusQuestion = new StatusQuestion();
 		rebuild();
 	}
 	
@@ -53,41 +58,52 @@ public class ViabilityRoot extends TreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return ORef.INVALID;
+		return getProject().getMetadata().getRef();
 	}
 	
 	public int getType()
 	{
-		return ObjectType.FAKE;
-	}
-	
-	public boolean isAlwaysExpanded()
-	{
-		return true;
+		return ProjectMetadata.getObjectType();
 	}
 
 	public Object getValueAt(int column)
 	{
-		return "";
+		if (ViabilityTreeModel.columnTags[column].equals(Indicator.TAG_STATUS))
+		{
+			String code = Target.computeTNCViability(project);
+			return statusQuestion.findChoiceByCode(code);
+		}
+		
+		return null;
 	}
 
 	public String toString()
 	{
-		return "";
+		return project.getFilename();
 	}
 	
 	public BaseId getId()
 	{
 		return null;
 	}
+	
 	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
-		vector.add(new ViabilityProjectNode(project));
+		Target[] factors  = project.getTargetPool().getTargets();
+		for (int i=0; i< factors.length; ++i)
+		{
+			vector.add(new TargetViabilityNode(project, factors[i].getRef()));
+		}
 		children = vector;
 	}
 	
-	Vector children;
-	Project project;
-
+	private Project getProject()
+	{
+		return project;		
+	}
+	
+	private StatusQuestion statusQuestion;
+	private Project project;
+	private Vector children;
 }
