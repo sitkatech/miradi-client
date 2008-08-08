@@ -94,7 +94,7 @@ public class ObjectToFormMap
 			return new FundingSourcePropertiesForm();
 		
 		if (AccountingCode.is(objectType))
-			return new TargetPropertiesForm();
+			return new ActivityPropertiesForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
