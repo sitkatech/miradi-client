@@ -59,6 +59,11 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	
+	public void setVariableRowHeight()
+	{
+		getTree().setRowHeight(-1);
+	}
+	
 	@Override
 	public void setRowHeight(int rowHeight)
 	{
