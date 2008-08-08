@@ -19,7 +19,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import org.miradi.main.MainWindow;
+
 public class TableRowHeightController
 {
+	public TableRowHeightController(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
 
+		isAutomaticRowHeightsEnabled = true;
+	}
+
+	public void disable()
+	{
+		isAutomaticRowHeightsEnabled = false;
+	}
+
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+
+	protected boolean isAutomaticRowHeightsEnabled()
+	{
+		if(!isAutomaticRowHeightsEnabled)
+			return false;
+		if(!getMainWindow().isRowHeightModeAutomatic())
+			return false;
+	
+		return true;
+	}
+
+	private MainWindow mainWindow;
+	private boolean isAutomaticRowHeightsEnabled;
 }

@@ -28,7 +28,7 @@ public class MultiTableRowHeightController extends TableRowHeightController
 {
 	public MultiTableRowHeightController(MainWindow mainWindowToUse)
 	{
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse);
 		tables = new HashSet<TableWithRowHeightManagement>();
 	}
 	
@@ -68,11 +68,5 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		EAM.logVerbose("rowHeightChanged done");
 	}
 	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-
-	private MainWindow mainWindow;
 	private HashSet<TableWithRowHeightManagement> tables;
 }

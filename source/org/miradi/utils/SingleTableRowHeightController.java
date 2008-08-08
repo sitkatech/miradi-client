@@ -31,18 +31,12 @@ public class SingleTableRowHeightController extends TableRowHeightController
 {
 	public SingleTableRowHeightController(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToControl)
 	{
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse);
 		table = tableToControl;
 		
-		isAutomaticRowHeightsEnabled = true;
 		table.asTable().addComponentListener(new ComponentEventHandler());
 	}
 
-	public void disable()
-	{
-		isAutomaticRowHeightsEnabled = false;
-	}
-	
 	public void updateAutomaticRowHeights()
 	{
 		if(!isAutomaticRowHeightsEnabled())
@@ -58,16 +52,6 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		setVariableRowHeight();
 	}
 	
-	boolean isAutomaticRowHeightsEnabled()
-	{
-		if(!isAutomaticRowHeightsEnabled)
-			return false;
-		if(!getMainWindow().isRowHeightModeAutomatic())
-			return false;
-
-		return true;
-	}
-
 	private void setVariableRowHeight()
 	{
 		// FIXME: This will not work for regular tables
@@ -77,11 +61,6 @@ public class SingleTableRowHeightController extends TableRowHeightController
 	private int getPreferredRowHeight(int row)
 	{
 		return table.getPreferredRowHeight(row);
-	}
-
-	private MainWindow getMainWindow()
-	{
-		return mainWindow;
 	}
 
 	class ComponentEventHandler implements ComponentListener
@@ -106,7 +85,5 @@ public class SingleTableRowHeightController extends TableRowHeightController
 
 	}
 	
-	private MainWindow mainWindow;
 	private TableWithRowHeightManagement table;
-	private boolean isAutomaticRowHeightsEnabled;
 }
