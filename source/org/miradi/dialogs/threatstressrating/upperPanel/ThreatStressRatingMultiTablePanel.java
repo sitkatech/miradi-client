@@ -33,7 +33,6 @@ import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.TableExporter;
 import org.miradi.utils.ThreatStressRatingMultiTableAsOneExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -63,25 +62,30 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
 		
-		multiTableExporter.addAsTopRowTable(new TableExporter(threatNameTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.addAsTopRowTable(new TableExporter(threatNameTable));
 		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
-		multiTableExporter.addAsTopRowTable(new TableExporter(targetThreatLinkTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.addAsTopRowTable(new TableExporter(targetThreatLinkTable));
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
-		multiTableExporter.addAsTopRowTable(new TableExporter(threatSummaryColumnTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.addAsTopRowTable(new TableExporter(threatSummaryColumnTable));
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel);
-		multiTableExporter.setTargetSummaryRowTable(new TableExporter(targetSummaryRowTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.setTargetSummaryRowTable(new TableExporter(targetSummaryRowTable));
 		targetSummaryRowTable.resizeTable(1);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
-		multiTableExporter.setOverallSummaryRowTable(new TableExporter(overallProjectSummaryCellTable));
+		//FIXME temporarly disabled
+		//multiTableExporter.setOverallSummaryRowTable(new TableExporter(overallProjectSummaryCellTable));
 		overallProjectSummaryCellTable.resizeTable(1);
 	}
 	
