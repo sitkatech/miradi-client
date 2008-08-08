@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf;
 
 import org.miradi.forms.PropertiesPanelSpec;
+import org.miradi.forms.objects.AccountingCodePropertiesForm;
 import org.miradi.forms.objects.ActivityPropertiesForm;
 import org.miradi.forms.objects.FundingSourcePropertiesForm;
 import org.miradi.forms.objects.GoalPropertiesForm;
@@ -96,7 +97,7 @@ public class ObjectToFormMap
 			return new FundingSourcePropertiesForm();
 		
 		if (AccountingCode.is(objectType))
-			return new ActivityPropertiesForm();
+			return new AccountingCodePropertiesForm();
 		
 		if (Organization.is(objectType))
 			return new OrganizationPropertiesForm();
