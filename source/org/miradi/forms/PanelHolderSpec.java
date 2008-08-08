@@ -21,13 +21,14 @@ package org.miradi.forms;
 
 import java.util.Vector;
 
+
 public class PanelHolderSpec extends PropertiesPanelSpec
 {
 	public PanelHolderSpec()
 	{
-		 panels = new Vector<FieldPanelSpec>();
+		panels = new Vector<FieldPanelSpec>();
 	}
-
+	
 	public int getPanelCount()
 	{
 		return panels.size();

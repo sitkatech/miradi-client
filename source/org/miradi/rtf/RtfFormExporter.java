@@ -36,6 +36,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 
 public class RtfFormExporter
@@ -47,6 +48,15 @@ public class RtfFormExporter
 		refs = refsToUse;
 	}
 	
+	//FIXME finish this method
+	public void writePropertiesForms(AbstractTableExporter tableExporter)
+	{
+		for (int index = 0; index < tableExporter.getRowCount(); ++index)
+		{
+			
+		}
+	}
+		
 	public void exportForm(PanelHolderSpec panelHolderSpec) throws Exception
 	{
 		for (int index = 0; index < panelHolderSpec.getPanelCount(); ++index)
