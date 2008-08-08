@@ -59,9 +59,9 @@ public class RtfManagementExporter
 	private void writePropertiesPanel(RtfWriter writer, BaseObject baseObjectForRow, PropertiesPanelSpec form) throws Exception
 	{
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef());
-		for (int index = 0; index < form.getPanelCount(); ++index)
+		for (int subPanelIndex = 0; subPanelIndex < form.getPanelCount(); ++subPanelIndex)
 		{
-			FieldPanelSpec fieldPanelSpec = form.getPanel(index);
+			FieldPanelSpec fieldPanelSpec = form.getPanel(subPanelIndex);
 			rtfFormExporter.exportForm(fieldPanelSpec);
 		}
 	}
