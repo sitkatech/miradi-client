@@ -241,11 +241,21 @@ public class RtfWriter
 
 	public void newParagraph() throws Exception
 	{
+		writeSingleCommand("\\par ");	
+	}
+	
+	public void landscapeMode() throws Exception
+	{
+		writeRtfCommand("\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ");
+	}
+	
+	public void writeSingleCommand(String command) throws Exception
+	{
 		startBlock();
-		writer.writeln("\\par");
+		writeRtfCommand(command);
 		endBlock();
 	}
-
+	
 	public UnicodeWriter getWriter()
 	{
 		return writer;

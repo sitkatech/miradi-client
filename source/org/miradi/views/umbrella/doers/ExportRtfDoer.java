@@ -67,6 +67,7 @@ public class ExportRtfDoer extends ViewDoer
 		try
 		{
 			rtfWriter.startRtf();
+			rtfWriter.landscapeMode();
 			getView().exportRtf(rtfWriter);
 			rtfWriter.endRtf();
 		}
