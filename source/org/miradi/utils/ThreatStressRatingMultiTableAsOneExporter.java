@@ -110,7 +110,7 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 
 	private boolean isTopRowTable(int row)
 	{
-		return row < getTables().get(0).getRowCount();
+		return row < super.getRowCount();
 	}
 			
 	private Vector<AbstractTableExporter> summaryRowTables;
