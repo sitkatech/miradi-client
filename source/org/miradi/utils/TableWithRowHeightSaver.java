@@ -35,6 +35,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
+		
+		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 	}
 	
 	public boolean allowUserToSetRowHeight()
@@ -44,6 +46,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
+		rowHeightController.disable();
 		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	
@@ -67,7 +70,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public int getPreferredRowHeight(int row)
 	{
-		return getRowHeight(row);
+		// TODO: Put real calculation here
+		return getRowHeight();
 	}
 	
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
@@ -89,4 +93,5 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	abstract public String getUniqueTableIdentifier();
 	
 	private TableRowHeightSaver rowHeightSaver;
+	private SingleTableRowHeightController rowHeightController;
 }
