@@ -69,6 +69,12 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		getTree().setRowHeight(-1);
 	}
 	
+	public int getPreferredRowHeight(int row)
+	{
+		int height = tree.getPathBounds(tree.getPathForRow(row)).height;
+		return height;
+	}
+	
 	@Override
 	public void setRowHeight(int rowHeight)
 	{

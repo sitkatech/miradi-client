@@ -60,12 +60,6 @@ abstract public class PanelTreeTable extends ExportableTreeTable
 		tableChanged(new TableModelEvent(getModel(), 0, getModel().getRowCount() - 1));
 	}
 	
-	public int getPreferredRowHeight(int row)
-	{
-		int height = tree.getPathBounds(tree.getPathForRow(row)).height;
-		return height;
-	}
-	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
