@@ -22,7 +22,6 @@ package org.miradi.dialogs.threatstressrating.properties;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.RowHeightListener;
 
 public class ThreatStressRatingTable extends EditableObjectTable
 {
@@ -42,12 +41,6 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		return false;
 	}
 	
-	
-	@Override
-	public void addRowHeightListener(RowHeightListener listener)
-	{
-		// NOTE: Override and do nothing to prevent user from changing row height
-	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()
 	{
