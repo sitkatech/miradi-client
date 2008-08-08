@@ -29,6 +29,16 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		translatedTitle = "";
 	}
 
+	public int getPanelCount()
+	{
+		return 1;
+	}
+
+	public FieldPanelSpec getPanel(int index)
+	{
+		return this;
+	}
+
 	public int getRowCount()
 	{
 		return rows.size();

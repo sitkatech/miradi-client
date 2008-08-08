@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
+
 abstract public class PropertiesPanelSpec
 {
-
+	abstract public int getPanelCount();
+	
+	abstract public FieldPanelSpec getPanel(int index);
 }
