@@ -33,6 +33,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.utils.HtmlUtilities;
 
 public class TargetViabilityNode extends TreeTableNode
 {
@@ -87,7 +88,9 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public String toString()
 	{
-		return target.getLabel();
+		String value = target.getLabel();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 	
 	public BaseId getId()

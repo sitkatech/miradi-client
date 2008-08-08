@@ -34,6 +34,7 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.BaseObjectDateAndIdComparator;
+import org.miradi.utils.HtmlUtilities;
 
 public class ViabilityIndicatorNode extends TreeTableNode
 {
@@ -62,7 +63,9 @@ public class ViabilityIndicatorNode extends TreeTableNode
 
 	public String toString()
 	{
-		return indicator.toString();
+		String value = indicator.toString();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 
 	public int getChildCount()

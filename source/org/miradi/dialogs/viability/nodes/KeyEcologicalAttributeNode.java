@@ -31,6 +31,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.utils.HtmlUtilities;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
 {
@@ -85,7 +86,9 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 
 	public String toString()
 	{
-		return (String)getValueAt(0);
+		String value = (String)getValueAt(0);
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
 	}
 	
 	public BaseId getId()
