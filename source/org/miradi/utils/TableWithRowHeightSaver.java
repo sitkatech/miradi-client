@@ -65,6 +65,11 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		rowHeightSaver.rowHeightChanged(row, rowHeight);
 	}
 	
+	public int getPreferredRowHeight(int row)
+	{
+		return getRowHeight(row);
+	}
+	
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{
 		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);

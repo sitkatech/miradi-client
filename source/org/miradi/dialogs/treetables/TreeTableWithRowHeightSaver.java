@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-
 import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MultiTableRowHeightController;
+import org.miradi.utils.SingleTableRowHeightController;
 import org.miradi.utils.TableRowHeightSaver;
 import org.miradi.utils.TableWithRowHeightManagement;
 
@@ -36,12 +34,11 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public TreeTableWithRowHeightSaver(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
-		isAutomaticRowHeightsEnabled = true;
 
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
-		addComponentListener(new ComponentEventHandler());
+		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 	}
 
 	public boolean allowUserToSetRowHeight()
@@ -52,13 +49,13 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
-		updateAutomaticRowHeights();
+		rowHeightController.updateAutomaticRowHeights();
 
 	}
 
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
-		isAutomaticRowHeightsEnabled = false;
+		rowHeightController.disable();
 		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	
@@ -93,45 +90,9 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return this;
 	}
 	
-	private void updateAutomaticRowHeights()
-	{
-		if(!isAutomaticRowHeightsEnabled)
-			return;
-		if(!getMainWindow().isRowHeightModeAutomatic())
-			return;
-		
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			int height = getPreferredRowHeight(row);
-			setRowHeight(row, height);
-		}
-		getTree().setRowHeight(-1);
-	}
-
-	class ComponentEventHandler implements ComponentListener
-	{
-		public void componentShown(ComponentEvent e)
-		{
-			updateAutomaticRowHeights();
-		}
-		
-		public void componentHidden(ComponentEvent e)
-		{
-		}
-
-		public void componentMoved(ComponentEvent e)
-		{
-		}
-
-		public void componentResized(ComponentEvent e)
-		{
-			updateAutomaticRowHeights();
-		}
-
-	}
 	
 	abstract public String getUniqueTableIdentifier();
 	
-	private boolean isAutomaticRowHeightsEnabled;
 	private TableRowHeightSaver rowHeightSaver;
+	private SingleTableRowHeightController rowHeightController;
 }

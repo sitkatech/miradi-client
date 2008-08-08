@@ -28,6 +28,7 @@ public interface TableWithRowHeightManagement
 	public void setRowHeight(int row, int newHeight);
 	public int getRowHeight();
 	public int getRowHeight(int row);
+	public int getPreferredRowHeight(int row);
 	public boolean allowUserToSetRowHeight();
 	public void ensureSelectedRowVisible(); 
 	public JTable asTable();

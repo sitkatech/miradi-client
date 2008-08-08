@@ -19,7 +19,75 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
+import org.miradi.main.MainWindow;
+
+import com.java.sun.jtreetable.JTreeTable;
+
+
 public class SingleTableRowHeightController extends TableRowHeightController
 {
+	public SingleTableRowHeightController(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToControl)
+	{
+		mainWindow = mainWindowToUse;
+		table = tableToControl;
+		
+		isAutomaticRowHeightsEnabled = true;
+		table.asTable().addComponentListener(new ComponentEventHandler());
+	}
 
+	public void disable()
+	{
+		isAutomaticRowHeightsEnabled = false;
+	}
+	
+	public void updateAutomaticRowHeights()
+	{
+		if(!isAutomaticRowHeightsEnabled)
+			return;
+		if(!getMainWindow().isRowHeightModeAutomatic())
+			return;
+		
+		for(int row = 0; row < table.asTable().getRowCount(); ++row)
+		{
+			int height = table.getPreferredRowHeight(row);
+			table.asTable().setRowHeight(row, height);
+		}
+		
+		// FIXME: This will not work for regular tables
+		((JTreeTable)table).getTree().setRowHeight(-1);
+	}
+
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+
+	class ComponentEventHandler implements ComponentListener
+	{
+		public void componentShown(ComponentEvent e)
+		{
+			updateAutomaticRowHeights();
+		}
+		
+		public void componentHidden(ComponentEvent e)
+		{
+		}
+
+		public void componentMoved(ComponentEvent e)
+		{
+		}
+
+		public void componentResized(ComponentEvent e)
+		{
+			updateAutomaticRowHeights();
+		}
+
+	}
+	
+	private MainWindow mainWindow;
+	private TableWithRowHeightManagement table;
+	private boolean isAutomaticRowHeightsEnabled;
 }
