@@ -76,12 +76,12 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel);
-		multiTableExporter.addAsTargetSummaryRowTable(new TableExporter(targetSummaryRowTable));
+		multiTableExporter.setTargetSummaryRowTable(new TableExporter(targetSummaryRowTable));
 		targetSummaryRowTable.resizeTable(1);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
-		multiTableExporter.addAsOverallSummaryRowTable(new TableExporter(overallProjectSummaryCellTable));
+		multiTableExporter.setOverallSummaryRowTable(new TableExporter(overallProjectSummaryCellTable));
 		overallProjectSummaryCellTable.resizeTable(1);
 	}
 	
