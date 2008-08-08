@@ -91,16 +91,16 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 		if (isTopRowTable(row))
 			return super.getTextAt(row, column);
 		
-		AbstractTableExporter table = summaryRowTables.get(0);
-		int adjustedColumn = adjustColumn(column);
-		if (adjustedColumn < table.getColumnCount() )
-			return table.getTextAt(0, adjustedColumn);
+		AbstractTableExporter summaryTable = summaryRowTables.get(0);
+		int columnWithinSummaryTable = convertToSummaryTableColumn(column);
+		if (columnWithinSummaryTable < summaryTable.getColumnCount() )
+			return summaryTable.getTextAt(0, columnWithinSummaryTable);
 		
 		return summaryRowTables.get(1).getTextAt(0, 0);
 	}
 	
 
-	private int adjustColumn(int column)
+	private int convertToSummaryTableColumn(int column)
 	{
 		int BLANK_FIRST_COLUMN_COUNT = 1;
 		
