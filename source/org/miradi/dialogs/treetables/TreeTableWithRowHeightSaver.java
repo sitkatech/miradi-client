@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.awt.Component;
+
 import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
@@ -71,8 +73,24 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public int getPreferredRowHeight(int row)
 	{
-		int height = tree.getPathBounds(tree.getPathForRow(row)).height;
-		return height;
+		VariableHeightTreeCellRenderer rendererFactory = (VariableHeightTreeCellRenderer) tree.getCellRenderer();
+		return getPreferredHeight(row, rendererFactory);
+	}
+
+	public int getForcedRowHeight(int row)
+	{
+		return 33;
+	}
+
+	private int getPreferredHeight(int row, VariableHeightTreeCellRenderer rendererFactory)
+	{
+		Object value = tree.getPathForRow(row).getLastPathComponent();
+		boolean selected = false;
+		boolean expanded = tree.isExpanded(row);
+		boolean leaf = false;
+		boolean hasFocus = false;
+		Component rendererComponent = rendererFactory.getTreeCellRendererComponentWithPreferredHeight(tree, value, selected, expanded, leaf, row, hasFocus);
+		return rendererComponent.getPreferredSize().height;
 	}
 	
 	@Override

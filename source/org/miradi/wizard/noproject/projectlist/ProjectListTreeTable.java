@@ -37,6 +37,8 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
+import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
+import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;
@@ -54,7 +56,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		super(mainWindowToUse, treeTableModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
-		Renderer renderer = new Renderer();
+		Renderer renderer = new Renderer(this);
 		tree.setCellRenderer(renderer);
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -166,10 +168,11 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		}
 	}
 	
-	static class ProjectListItemRenderer extends DefaultTreeCellRenderer
+	static class ProjectListItemRenderer extends VariableHeightTreeCellRenderer
 	{
-		public ProjectListItemRenderer()
+		public ProjectListItemRenderer(TreeTableWithRowHeightSaver treeTableToUse)
 		{
+			super(treeTableToUse);
 			setBackgroundNonSelectionColor(AppPreferences.getDataPanelBackgroundColor());
 		}
 	}
@@ -191,16 +194,17 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 
 	}
 	
-	public static class Renderer extends DefaultTreeCellRenderer
+	public static class Renderer extends VariableHeightTreeCellRenderer
 	{		
-		public Renderer()
+		public Renderer(TreeTableWithRowHeightSaver treeTable)
 		{	
-			folderRenderer = new ProjectListItemRenderer();
+			super(treeTable);
+			folderRenderer = new ProjectListItemRenderer(treeTable);
 			folderRenderer.setClosedIcon(new FolderIcon());
 			folderRenderer.setOpenIcon(new FolderIcon());
 			folderRenderer.setLeafIcon(new FolderIcon());
 
-			projectRenderer = new ProjectListItemRenderer();
+			projectRenderer = new ProjectListItemRenderer(treeTable);
 			projectRenderer.setClosedIcon(new MiradiApplicationIcon());
 			projectRenderer.setOpenIcon(new MiradiApplicationIcon());
 			projectRenderer.setLeafIcon(new MiradiApplicationIcon());
