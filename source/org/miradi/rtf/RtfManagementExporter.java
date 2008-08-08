@@ -38,6 +38,7 @@ public class RtfManagementExporter
 	{
 		AbstractTableExporter tableExporter = objectManagementPanel.getTableExporter();
 		writer.writeRtfTable(tableExporter);
+		writer.newParagraph();
 		writePropertiesForms(writer, tableExporter);
 	}
 	
@@ -53,6 +54,7 @@ public class RtfManagementExporter
 			}
 			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
 			writePropertiesPanels(writer, baseObjectForRow, form);
+			writer.newParagraph();
 		}
 	}
 
