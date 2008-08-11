@@ -37,6 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.MainThreatTableModelExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
 public class ThreatGridPanel extends JPanel
@@ -60,13 +61,12 @@ public class ThreatGridPanel extends JPanel
 	
 	public JScrollPane createThreatGridPanel(MainWindow mainWindowToUse, ThreatMatrixTableModel model) throws Exception
 	{
-		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(model);
+		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(mainWindowToUse.getProject(), model);
 		rowHeaderTable =  new ThreatMatrixRowHeaderTable(mainWindowToUse, newRowHeaderData, this);
 		threatTable = new ThreatMatrixTable(mainWindowToUse, model, this);
 		
-		//FIXME temporarly disabled
-		//multiTableExporter.addExportable(new TableExporter(rowHeaderTable));
-		//multiTableExporter.addExportable(new TableExporter(threatTable));
+		multiTableExporter.addExportable(new MainThreatTableModelExporter(newRowHeaderData));
+		multiTableExporter.addExportable(new MainThreatTableModelExporter(model));
 		
 		return new ScrollPaneWithTableAndRowHeader(rowHeaderTable, threatTable);
 	}
