@@ -33,7 +33,7 @@ import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.TableExporter;
+import org.miradi.utils.ObjectTableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
 {
@@ -72,7 +72,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new TableExporter(createTable());
+		return new ObjectTableExporter(createTable());
 	}
 
 	private TeamPoolTable createTable()
