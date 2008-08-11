@@ -30,9 +30,8 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.BufferedImageFactory;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
@@ -86,16 +85,6 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	public JComponent getPrintableComponent() throws Exception
 	{
 		return PlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
-	}
-	
-	public boolean isRtfExportable()
-	{
-		return false;
-	}		
-
-	public void exportRtf(RtfWriter writer) throws Exception
-	{
-		writer.writeRtfTable(getTableExporter());
 	}
 	
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
