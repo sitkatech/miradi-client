@@ -23,13 +23,13 @@ import java.util.HashSet;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.threatstressrating.upperPanel.MainThreatTableModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.views.threatmatrix.AbstractThreatTargetTableModel;
 
 public class MainThreatTableModelExporter extends AbstractTableExporter
 {
-	public MainThreatTableModelExporter(MainThreatTableModel mainThreatTableModelToUse)
+	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
 	{
 		mainThreatTableModel = mainThreatTableModelToUse;
 	}
@@ -49,7 +49,7 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
-		return mainThreatTableModel.getBaseObjectForRowColumn(row, 0);
+		return mainThreatTableModel.getDirectThreat(row);
 	}
 
 	@Override
@@ -100,5 +100,5 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		return getSafeValue(mainThreatTableModel.getValueAt(row, column));
 	}
 	
-	private MainThreatTableModel mainThreatTableModel;
+	private AbstractThreatTargetTableModel mainThreatTableModel;
 }

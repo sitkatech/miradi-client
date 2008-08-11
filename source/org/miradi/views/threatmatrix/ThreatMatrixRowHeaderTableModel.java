@@ -19,14 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.threatmatrix;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 
-public class ThreatMatrixRowHeaderTableModel extends AbstractTableModel
+public class ThreatMatrixRowHeaderTableModel extends AbstractThreatTargetTableModel
 {
-	public ThreatMatrixRowHeaderTableModel(ThreatMatrixTableModel modelToUse) 
+	public ThreatMatrixRowHeaderTableModel(Project project, ThreatMatrixTableModel modelToUse) 
 	{
+		super(project);
+		
 		model = modelToUse;
 	}
 
@@ -42,9 +43,10 @@ public class ThreatMatrixRowHeaderTableModel extends AbstractTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		if (row==model.getRowCount()-1) 
+		if (row == getRowCount() - 1) 
 			return EAM.text("Summary Target Rating");
-		return model.getDirectThreats()[row];
+		
+		return getDirectThreats()[row];
 	}
 
 	public boolean isCellEditable(int row, int column)
@@ -57,6 +59,5 @@ public class ThreatMatrixRowHeaderTableModel extends AbstractTableModel
 		return 	EAM.text("THREATS");
 	}
 	
-
-	ThreatMatrixTableModel model;
+	private ThreatMatrixTableModel model;
 }
