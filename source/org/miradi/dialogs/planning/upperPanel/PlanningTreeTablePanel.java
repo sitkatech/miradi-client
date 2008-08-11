@@ -318,7 +318,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		tablesPanel.removeAll();
 		multiTableExporter.clear();
 
-		multiTableExporter.addExportable(new TreeTableExporter(getTree()));
+		multiTableExporter.addTreeTableAsFirstItem(new TreeTableExporter(getTree()));
 		addTable(mainTableScrollPane, new TableWithTreeTableNodeExporter(mainTable));
 
 		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
