@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import java.util.HashSet;
+
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.PropertiesPanelSpec;
-import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTableExporter;
@@ -42,14 +45,20 @@ public class RtfManagementExporter
 	
 	public void writePropertiesForEachObject(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
 	{
-		for (int row = 0; row < tableExporter.getRowCount(); ++row)
+		HashSet<Integer> allTypes = tableExporter.getAllTypes();
+		for(Integer integer : allTypes)
 		{
-			BaseObject baseObjectForRow = tableExporter.getBaseObjectForRow(row);
-			if (baseObjectForRow == null)
-			{
-				EAM.logDebug("Found null baseObject for row:" + row);
-				continue;
-			}
+			ORefList allRefsForType = tableExporter.getAllRefs(integer.intValue());
+			writeFormsForRefs(writer, allRefsForType);
+		}
+	}
+
+	private void writeFormsForRefs(RtfWriter writer, ORefList allRefsForType) throws Exception
+	{
+		for (int index = 0; index < allRefsForType.size(); ++index)
+		{
+			ORef ref = allRefsForType.get(index);
+			BaseObject baseObjectForRow = getProject().findObject(ref);
 			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
 			writePropertiesPanel(writer, baseObjectForRow, form);
 			writer.newParagraph();
