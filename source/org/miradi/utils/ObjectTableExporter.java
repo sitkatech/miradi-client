@@ -28,9 +28,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 
-public class TableExporter extends AbstractTableExporter
+public class ObjectTableExporter extends AbstractTableExporter
 {
-	public TableExporter(ObjectTable tableToUse)
+	public ObjectTableExporter(ObjectTable tableToUse)
 	{
 		tableToExport = tableToUse;
 	}
