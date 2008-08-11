@@ -1,0 +1,104 @@
+/* 
+Copyright 2005-2008, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.utils;
+
+import java.util.HashSet;
+
+import javax.swing.Icon;
+
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
+
+public class TableWithTreeTableNodeExporter extends AbstractTableExporter
+{
+	public TableWithTreeTableNodeExporter(TableWithTreeTableNodes tableToExprt)
+	{
+		table = tableToExprt;
+	}
+	
+	@Override
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		return table.getBaseObjectForRowColumn(row, 0);
+	}
+
+	@Override
+	public int getColumnCount()
+	{
+		return table.getColumnCount();
+	}
+
+	@Override
+	public int getDepth(int row)
+	{
+		return 0;
+	}
+
+	@Override
+	public String getHeaderFor(int column)
+	{
+		return table.getColumnName(column);
+	}
+
+	@Override
+	public Icon getIconAt(int row, int column)
+	{
+		return null;
+	}
+
+	@Override
+	public int getMaxDepthCount()
+	{
+		return 0;
+	}
+
+	@Override
+	public int getRowCount()
+	{
+		return table.getRowCount();
+	}
+
+	@Override
+	public int getRowType(int row)
+	{
+		return getBaseObjectForRow(row).getType();
+	}
+
+	@Override
+	public String getTextAt(int row, int column)
+	{
+		return getSafeValue(table.getValueAt(row, column));
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		return rowTypes;
+	}
+
+	private TableWithTreeTableNodes table;
+}
