@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 
 abstract public class ObjectListManagementPanel extends ObjectManagementPanel
@@ -36,6 +37,6 @@ abstract public class ObjectListManagementPanel extends ObjectManagementPanel
 		
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		writer.writeRtfTable(getTableExporter());
+		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
 }
