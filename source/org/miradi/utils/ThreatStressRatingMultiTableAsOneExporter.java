@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 
@@ -109,6 +112,18 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	private boolean isTopRowTable(int row)
 	{
 		return row < super.getRowCount();
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		return new HashSet<Integer>();
 	}
 			
 	private AbstractTableExporter targetSummaryRowTable;
