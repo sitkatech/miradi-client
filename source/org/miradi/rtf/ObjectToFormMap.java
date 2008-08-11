@@ -36,6 +36,7 @@ import org.miradi.forms.objects.ResultsChainPropertiesForm;
 import org.miradi.forms.objects.StrategyPropertiesForm;
 import org.miradi.forms.objects.TargetPropertiesForm;
 import org.miradi.forms.objects.TaskPropertiesForm;
+import org.miradi.forms.objects.ThreatPropertiesForm;
 import org.miradi.forms.objects.ThreatReductionResultPropertiesForm;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
@@ -114,7 +115,7 @@ public class ObjectToFormMap
 	private static PropertiesPanelSpec getCauseForm(Cause baseObject)
 	{
 		if (baseObject.isDirectThreat())
-			return new TaskPropertiesForm();
+			return new ThreatPropertiesForm();
 		
 		throw new RuntimeException("Form not found for cause");
 	}
