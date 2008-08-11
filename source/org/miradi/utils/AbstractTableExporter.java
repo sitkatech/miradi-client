@@ -25,6 +25,8 @@ import javax.swing.Icon;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public abstract class AbstractTableExporter
 {
@@ -48,4 +50,19 @@ public abstract class AbstractTableExporter
 		
 		return object.toString();
 	}
+	
+	protected String createExportableCodeList(CodeList codeList, ChoiceQuestion question)
+	{
+		StringBuffer codeListAsString = new StringBuffer();
+		for (int index = 0; index < codeList.size(); ++index)
+		{
+			ChoiceItem choiceItem = question.findChoiceByCode(codeList.get(index));
+			codeListAsString.append(choiceItem.getLabel());
+			codeListAsString.append(CODE_LIST_SEPERATOR);
+		}
+		
+		return codeListAsString.toString();
+	}
+	
+	private static final String CODE_LIST_SEPERATOR = ";";
 }
