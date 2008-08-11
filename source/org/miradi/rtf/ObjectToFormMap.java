@@ -28,6 +28,7 @@ import org.miradi.forms.objects.IndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
 import org.miradi.forms.objects.MeasurementPropertiesForm;
+import org.miradi.forms.objects.MethodPropetiesForm;
 import org.miradi.forms.objects.ObjectivePropertiesForm;
 import org.miradi.forms.objects.OrganizationPropertiesForm;
 import org.miradi.forms.objects.ResourcePropertiesForm;
@@ -124,7 +125,7 @@ public class ObjectToFormMap
 			return new ActivityPropertiesForm();
 		
 		if (task.isMethod())
-			return new MeasurementPropertiesForm();
+			return new MethodPropetiesForm();
 		
 		return new TaskPropertiesForm();
 	}
