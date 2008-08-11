@@ -167,13 +167,10 @@ public class ThreatMatrixView extends CardedView
 	@Override
 	public boolean isRtfExportable()
 	{
-		return false;
-//FIXME temporarly disabled
-//		
-//		if(isStressBasedMode())
-//			return threatStressRatingManagementPanel.isRtfExportable();
-//
-//		return grid.isRtfExportable();
+		if(isStressBasedMode())
+			return threatStressRatingManagementPanel.isRtfExportable();
+
+		return grid.isRtfExportable();
 	}
 	
 	public void exportRtf(RtfWriter writer) throws Exception
