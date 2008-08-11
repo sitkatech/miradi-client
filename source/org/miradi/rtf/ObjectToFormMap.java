@@ -31,6 +31,7 @@ import org.miradi.forms.objects.MeasurementPropertiesForm;
 import org.miradi.forms.objects.ObjectivePropertiesForm;
 import org.miradi.forms.objects.OrganizationPropertiesForm;
 import org.miradi.forms.objects.ResourcePropertiesForm;
+import org.miradi.forms.objects.ResultsChainPropertiesForm;
 import org.miradi.forms.objects.StrategyPropertiesForm;
 import org.miradi.forms.objects.TargetPropertiesForm;
 import org.miradi.forms.objects.TaskPropertiesForm;
@@ -47,6 +48,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -101,6 +103,9 @@ public class ObjectToFormMap
 		
 		if (Organization.is(objectType))
 			return new OrganizationPropertiesForm();
+		
+		if (ResultsChainDiagram.is(objectType))
+			return new ResultsChainPropertiesForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
