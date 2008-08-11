@@ -39,6 +39,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		tables = new Vector();
 	}
 	
+	public void addTreeTableAsFirstItem(AbstractTableExporter table)
+	{
+		tables.add(0, table);
+	}
+	
 	public void addExportable(AbstractTableExporter table)
 	{
 		tables.add(table);
@@ -158,14 +163,19 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		return new ORefList();
+		return getTreeTable().getAllRefs(objectType);
 	}
 
 	@Override
 	public HashSet<Integer> getAllTypes()
 	{
-		HashSet<Integer> rowTypes = new HashSet<Integer>();		
-		return rowTypes;
+		return getTreeTable().getAllTypes();
+	}
+	
+	private AbstractTableExporter getTreeTable()
+	{
+		final int TREE_TABLE_INDEX = 0;
+		return getTables().get(TREE_TABLE_INDEX);
 	}
 	
 	protected Vector<AbstractTableExporter> getTables()

@@ -135,7 +135,9 @@ public class TreeTableExporter extends AbstractTableExporter
 		HashSet<Integer> rowTypes = new HashSet<Integer>();
 		for (int row = 0; row < getRowCount(); ++row)
 		{
-			rowTypes.add(getBaseObjectForRow(row).getType());
+			BaseObject baseObjectForRow = getBaseObjectForRow(row);
+			if (baseObjectForRow != null)
+				rowTypes.add(baseObjectForRow.getType());
 		}
 		
 		return rowTypes;
