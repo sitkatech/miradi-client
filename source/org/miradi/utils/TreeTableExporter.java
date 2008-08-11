@@ -115,13 +115,29 @@ public class TreeTableExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		return new ORefList();
+		ORefList baseObjectsForType = new ORefList();
+		for (int row = 0; row < getRowCount(); ++row)
+		{
+			BaseObject baseObjectForRow = getBaseObjectForRow(row);
+			if (baseObjectForRow == null)
+				continue;
+			
+			if (baseObjectForRow.getType() == objectType)
+				baseObjectsForType.add(baseObjectForRow.getRef());
+		}
+		
+		return baseObjectsForType;
 	}
 
 	@Override
 	public HashSet<Integer> getAllTypes()
 	{
-		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		HashSet<Integer> rowTypes = new HashSet<Integer>();
+		for (int row = 0; row < getRowCount(); ++row)
+		{
+			rowTypes.add(getBaseObjectForRow(row).getType());
+		}
+		
 		return rowTypes;
 	}
 
