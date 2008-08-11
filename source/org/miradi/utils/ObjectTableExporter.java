@@ -24,9 +24,11 @@ import java.util.HashSet;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectTable;
+import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectTableExporter extends AbstractTableExporter
 {
@@ -94,9 +96,14 @@ public class ObjectTableExporter extends AbstractTableExporter
 	public String getTextAt(int row, int column)
 	{
 		Object value = tableToExport.getValueAt(row, column);
+		int modelColumn = tableToExport.convertColumnIndexToModel(column);
+		ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
+		if (tableToExport.getObjectTableModel().isCodeListColumn(column))
+			return createExportableCodeList((CodeList) value, question);
+		
 		return getSafeValue(value);
 	}
-	
+
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
@@ -116,6 +123,11 @@ public class ObjectTableExporter extends AbstractTableExporter
 		rowTypes.add(getRowType(0));
 		
 		return rowTypes;
+	}
+	
+	private ObjectTableModel getObjectTableModel()
+	{
+		return tableToExport.getObjectTableModel();
 	}
 		
 	private ObjectTable tableToExport;
