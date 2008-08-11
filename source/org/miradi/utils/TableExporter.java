@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectTable;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 
@@ -85,7 +87,7 @@ public class TableExporter extends AbstractTableExporter
 	@Override
 	public int getRowType(int row)
 	{
-		return ObjectType.FAKE;
+		return getBaseObjectForRow(row).getType();
 	}
 
 	@Override
@@ -93,6 +95,19 @@ public class TableExporter extends AbstractTableExporter
 	{
 		Object value = tableToExport.getValueAt(row, column);
 		return getSafeValue(value);
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		return rowTypes;
 	}
 		
 	private ObjectTable tableToExport;

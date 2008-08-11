@@ -19,11 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.IconManager;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
 import com.java.sun.jtreetable.JTreeTable;
@@ -107,6 +110,19 @@ public class TreeTableExporter extends AbstractTableExporter
 		
 		Object value = getTreeTable().getValueAt(row, column);
 		return getSafeValue(value);
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		return rowTypes;
 	}
 
 	public JTree getTree()

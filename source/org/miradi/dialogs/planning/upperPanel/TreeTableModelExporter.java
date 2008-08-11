@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
@@ -88,6 +90,19 @@ public class TreeTableModelExporter extends AbstractTableExporter
 	{
 		Object value = getModel().getValueAt(getBaseObjectForRow(row), column);
 		return getSafeValue(value);
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		return rowTypes;
 	}
 	
 	private Project getProject()

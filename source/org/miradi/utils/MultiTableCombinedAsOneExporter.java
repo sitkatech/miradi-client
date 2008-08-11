@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
@@ -151,6 +153,19 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		
 		private AbstractTableExporter table;
 		private int column;
+	}
+	
+	@Override
+	public ORefList getAllRefs(int objectType)
+	{
+		return new ORefList();
+	}
+
+	@Override
+	public HashSet<Integer> getAllTypes()
+	{
+		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		return rowTypes;
 	}
 	
 	protected Vector<AbstractTableExporter> getTables()

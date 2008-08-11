@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
 public abstract class AbstractTableExporter
@@ -34,6 +37,9 @@ public abstract class AbstractTableExporter
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);
+	
+	abstract public HashSet<Integer> getAllTypes();
+	abstract public ORefList getAllRefs(int objectType);
 	
 	public String getSafeValue(Object object)
 	{
