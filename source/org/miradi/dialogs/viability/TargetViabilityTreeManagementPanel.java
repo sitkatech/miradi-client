@@ -32,9 +32,10 @@ import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.utils.TreeTableExporter;
 
@@ -130,7 +131,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 		
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		writer.writeRtfTable(getTableExporter());
+		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
 			
 	protected String panelDescription;
