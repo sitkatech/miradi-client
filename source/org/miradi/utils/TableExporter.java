@@ -100,13 +100,21 @@ public class TableExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		return new ORefList();
+		ORefList allObjectRefs = new ORefList();
+		for (int row = 0; row < getRowCount(); ++row)
+		{
+			allObjectRefs.add(getBaseObjectForRow(row).getRef());
+		}
+		
+		return allObjectRefs;
 	}
 
 	@Override
 	public HashSet<Integer> getAllTypes()
 	{
-		HashSet<Integer> rowTypes = new HashSet<Integer>();		
+		HashSet<Integer> rowTypes = new HashSet<Integer>();
+		rowTypes.add(getRowType(0));
+		
 		return rowTypes;
 	}
 		
