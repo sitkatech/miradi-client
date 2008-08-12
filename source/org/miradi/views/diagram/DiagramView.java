@@ -1062,12 +1062,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		if (isResultsChainTab())
-			exportAllDiagramsOfTypeAsRtf(writer, getProject().getConceptualModelDiagramPool().getRefList());
+			exportDiagrams(writer, getProject().getConceptualModelDiagramPool().getRefList());
 		else
-			exportAllDiagramsOfTypeAsRtf(writer, getProject().getResultsChainDiagramPool().getRefList());
+			exportDiagrams(writer, getProject().getResultsChainDiagramPool().getRefList());
 	}
 	
-	private void exportAllDiagramsOfTypeAsRtf(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
+	private void exportDiagrams(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
 	{
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
