@@ -50,7 +50,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 		addMissingUpstreamIndicators(diagram);
 	}
 
-	int[] getNodeSortOrder()
+	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
 				Strategy.getObjectType(),
