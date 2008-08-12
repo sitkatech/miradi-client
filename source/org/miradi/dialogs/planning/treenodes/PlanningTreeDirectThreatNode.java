@@ -24,6 +24,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
@@ -53,6 +54,7 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
+				IntermediateResult.getObjectType(),
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
