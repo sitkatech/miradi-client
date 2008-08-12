@@ -80,9 +80,15 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = project.getFilename();
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return project.getFilename();	
 	}
 	
 	public BaseId getId()

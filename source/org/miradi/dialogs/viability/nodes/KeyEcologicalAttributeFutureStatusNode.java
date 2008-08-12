@@ -53,9 +53,15 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_DATE);
 	}
 
 	public int getChildCount()

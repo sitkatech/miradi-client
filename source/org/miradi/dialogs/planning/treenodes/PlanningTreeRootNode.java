@@ -65,6 +65,12 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 
 	public String toString()
 	{
+		return toRawString();
+	}
+	
+	@Override
+	public String toRawString()
+	{
 		return null;
 	}
 

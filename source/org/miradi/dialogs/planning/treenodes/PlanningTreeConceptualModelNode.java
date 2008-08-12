@@ -57,7 +57,12 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 
 	public String toString()
 	{
-		return EAM.text("Conceptual Model");
+		return toRawString(); 
 	}
 	
+	@Override
+	public String toRawString()
+	{
+		return EAM.text("Conceptual Model");
+	}	
 }
