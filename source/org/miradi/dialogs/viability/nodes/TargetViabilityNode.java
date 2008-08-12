@@ -88,9 +88,15 @@ public class TargetViabilityNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = target.getLabel();
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return target.getLabel();
 	}
 	
 	public BaseId getId()

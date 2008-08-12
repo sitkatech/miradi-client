@@ -86,9 +86,15 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = (String)getValueAt(0);
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return (String)getValueAt(0);
 	}
 	
 	public BaseId getId()

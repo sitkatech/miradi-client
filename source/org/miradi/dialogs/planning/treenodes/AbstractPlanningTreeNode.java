@@ -99,9 +99,15 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	public String toString()
 	{
-		String value = getObject().combineShortLabelAndLabel();
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return getObject().combineShortLabelAndLabel();
 	}
 
 	protected ORefSet getAllRefsInTree()

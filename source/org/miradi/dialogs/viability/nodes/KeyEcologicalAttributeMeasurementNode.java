@@ -58,9 +58,15 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = measurement.toString();
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return measurement.toString();
 	}
 
 	public int getChildCount()

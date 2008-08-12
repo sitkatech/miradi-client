@@ -34,6 +34,11 @@ public abstract class TreeTableNode implements Comparable
 	public abstract BaseObject getObject();
 	abstract public void rebuild() throws Exception;
 
+	public String toRawString()
+	{
+		return toString();
+	}
+	
 	public int getType()
 	{
 		return getObjectReference().getObjectType();

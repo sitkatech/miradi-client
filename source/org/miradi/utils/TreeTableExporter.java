@@ -106,7 +106,10 @@ public class TreeTableExporter extends AbstractTableExporter
 	public String getTextAt(int row, int column)
 	{
 		if (column == 0)
-			return getTree().getPathForRow(row).getLastPathComponent().toString();
+		{
+			TreeTableNode node = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
+			return node.toRawString();
+		}
 		
 		Object value = getTreeTable().getValueAt(row, column);
 		return getSafeValue(value);

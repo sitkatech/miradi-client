@@ -63,9 +63,15 @@ public class ViabilityIndicatorNode extends TreeTableNode
 
 	public String toString()
 	{
-		String value = indicator.toString();
+		String value = toRawString();
 		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
 		return value;
+	}
+	
+	@Override
+	public String toRawString()
+	{
+		return indicator.toString();
 	}
 
 	public int getChildCount()
