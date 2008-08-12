@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -1093,11 +1092,6 @@ public class Project
 		currentViewName = viewName;
 	}
 
-	public boolean isLegalViewName(String viewName)
-	{
-		return Arrays.asList(getLegalViewNames()).contains(viewName);
-	}
-	
 	public String[] getLegalViewNames()
 	{
 		return new String[] {
