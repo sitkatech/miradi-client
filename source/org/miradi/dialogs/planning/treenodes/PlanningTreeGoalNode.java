@@ -64,7 +64,7 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		addMissingUpstreamIndicators(diagram);
 	}
 
-	int[] getNodeSortOrder()
+	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
 				Strategy.getObjectType(),

@@ -187,7 +187,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	}
 	
-	int[] getNodeSortOrder()
+	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
 			ConceptualModelDiagram.getObjectType(),
