@@ -162,16 +162,16 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		return getTreeTable().getAllRefs(objectType);
+		return getMasterTable().getAllRefs(objectType);
 	}
 
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
-		return getTreeTable().getAllTypes();
+		return getMasterTable().getAllTypes();
 	}
 	
-	private AbstractTableExporter getTreeTable()
+	private AbstractTableExporter getMasterTable()
 	{
 		final int TREE_TABLE_INDEX = 0;
 		return getTables().get(TREE_TABLE_INDEX);
