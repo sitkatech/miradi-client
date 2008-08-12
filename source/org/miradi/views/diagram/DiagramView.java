@@ -147,6 +147,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
@@ -157,6 +158,8 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -1056,8 +1059,25 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
 	}
 	
-
+	public void exportRtf(RtfWriter writer) throws Exception
+	{
+		if (isResultsChainTab())
+			exportAllResultsChainsAsRtf(writer, ResultsChainDiagram.getObjectType());
+		else
+			exportAllResultsChainsAsRtf(writer, ConceptualModelDiagram.getObjectType());
+	}
 	
+	private void exportAllResultsChainsAsRtf(RtfWriter writer, int diagramType) throws Exception
+	{
+		DiagramComponent[] allDiagramComponents = getAllDiagramComponents();
+		for (int index = 0; index < allDiagramComponents.length; ++index)
+		{
+			DiagramObject diagramObject = allDiagramComponents[index].getDiagramModel().getDiagramObject();
+			if (diagramObject.getType() == diagramType)
+				writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+		}
+	}
+
 	private PropertiesDoer propertiesDoer;
 	private String mode;
 	
