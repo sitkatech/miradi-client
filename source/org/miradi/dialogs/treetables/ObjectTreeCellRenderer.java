@@ -57,59 +57,64 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	{
 		super(treeTableToUse);
 		
-		projectMetaDataRenderer = new DefaultTreeCellRenderer();
+		projectMetaDataRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
 
-		targetRenderer = new DefaultTreeCellRenderer();
+		targetRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(targetRenderer, new TargetIcon(), getBoldFont());
 
-		directThreatRenderer = new DefaultTreeCellRenderer();
+		directThreatRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(directThreatRenderer, new DirectThreatIcon(), getPlainFont());
 		
-		threatReductionResultRenderer = new DefaultTreeCellRenderer();
+		threatReductionResultRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(threatReductionResultRenderer, new ThreatReductionResultIcon(), getPlainFont());
 		
-		intermediateResultsRenderer = new DefaultTreeCellRenderer();
+		intermediateResultsRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(intermediateResultsRenderer, new IntermediateResultIcon(), getPlainFont());
 
-		strategyRenderer = new DefaultTreeCellRenderer();
+		strategyRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(strategyRenderer, new StrategyIcon(), getBoldFont());
 
-		objectiveRenderer = new DefaultTreeCellRenderer();
+		objectiveRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(objectiveRenderer, new ObjectiveIcon(), getBoldFont());
 		
-		indicatorRenderer = new DefaultTreeCellRenderer();
+		indicatorRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(indicatorRenderer, new IndicatorIcon(), getBoldFont());
 		
-		goalRenderer = new DefaultTreeCellRenderer();
+		goalRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(goalRenderer, new GoalIcon(), getBoldFont());
 		
-		activityRenderer = new DefaultTreeCellRenderer();
+		activityRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());
 
-		keyEcologicalAttributeRenderer = new DefaultTreeCellRenderer();
+		keyEcologicalAttributeRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(keyEcologicalAttributeRenderer, new KeyEcologicalAttributeIcon(), getPlainFont());
 		
-		methodRenderer = new DefaultTreeCellRenderer();
+		methodRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(methodRenderer, new MethodIcon(), getPlainFont());
 
-		taskRenderer = new DefaultTreeCellRenderer();
+		taskRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(taskRenderer, new TaskIcon(), getPlainFont());
 		
-		conceptualModelRenderer = new DefaultTreeCellRenderer();
+		conceptualModelRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(conceptualModelRenderer, new ConceptualModelIcon(), getBoldFont());
 
-		resultsChainRenderer = new DefaultTreeCellRenderer();
+		resultsChainRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(resultsChainRenderer, new ResultsChainIcon(), getBoldFont());
 
-		stringNoIconRenderer = new DefaultTreeCellRenderer();
+		stringNoIconRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(stringNoIconRenderer, null, ObjectTreeTable.createFristLevelFont(getPlainFont()));
 		
-		defaultRenderer = new DefaultTreeCellRenderer();
+		defaultRenderer = createRenderer(treeTableToUse);
 		defaultRenderer.setFont(getPlainFont());
 		
-		measurementRenderer = new DefaultTreeCellRenderer();
+		measurementRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(measurementRenderer, new MeasurementIcon(), getPlainFont());
+	}
+	
+	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
+	{
+		return new VariableHeightTreeCellRenderer(treeTableToUse);
 	}
 	
 	public void setRendererDefaults(DefaultTreeCellRenderer renderer, Icon icon, Font font)

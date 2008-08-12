@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 
 import org.miradi.main.MainWindow;
 
@@ -38,27 +38,22 @@ abstract public class TableRowHeightController
 
 	protected void listenForTableSizeChanges(TableWithRowHeightManagement table)
 	{
-		table.asTable().addComponentListener(new ComponentEventHandler());
+		table.asTable().addAncestorListener(new AncestorEventHandler());
 	}
-
-	class ComponentEventHandler implements ComponentListener
+	
+	class AncestorEventHandler implements AncestorListener
 	{
-		public void componentShown(ComponentEvent e)
+		public void ancestorAdded(AncestorEvent event)
 		{
 			updateAutomaticRowHeights();
 		}
-		
-		public void componentHidden(ComponentEvent e)
+
+		public void ancestorMoved(AncestorEvent event)
 		{
 		}
 
-		public void componentMoved(ComponentEvent e)
+		public void ancestorRemoved(AncestorEvent event)
 		{
-		}
-
-		public void componentResized(ComponentEvent e)
-		{
-			updateAutomaticRowHeights();
 		}
 
 	}
