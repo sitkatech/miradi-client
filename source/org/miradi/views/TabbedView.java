@@ -147,6 +147,11 @@ abstract public class TabbedView extends UmbrellaView
 		int selectedTabIndex = getSelectedTabIndex();
 		if(selectedTabIndex < 0)
 			return "";
+		return getTabTitle(selectedTabIndex);
+	}
+
+	public String getTabTitle(int selectedTabIndex)
+	{
 		return tabs.getTitleAt(selectedTabIndex);
 	}
 	
@@ -327,7 +332,11 @@ abstract public class TabbedView extends UmbrellaView
 	@Override
 	public boolean isRtfExportable()
 	{
-		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		return isTabRtfExportable(getSelectedTabPanel());
+	}
+
+	private boolean isTabRtfExportable(MiradiTabContentsPanelInterface panel)
+	{
 		if(panel == null)
 			return false;
 		
@@ -336,9 +345,28 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
+		exportTabAsRtf(writer, getSelectedTabPanel());
+	}
+	
+	public void exportTabAsRtf(RtfWriter writer, MiradiTabContentsPanelInterface panel) throws Exception
+	{
 		if(panel != null)
 			panel.exportRtf(writer);
+	}
+	
+
+	public void exportEntireViewAsRtf(RtfWriter writer) throws Exception
+	{
+		createTabs();
+		for (int index = 0; index < getTabCount(); ++index)
+		{
+			MiradiTabContentsPanelInterface tab = getTabPanel(getTabTitle(index));
+			if (isTabRtfExportable(tab))
+			{
+				writer.newParagraph();
+				exportTabAsRtf(writer, tab);
+			}
+		}
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

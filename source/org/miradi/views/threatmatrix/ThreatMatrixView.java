@@ -181,6 +181,12 @@ public class ThreatMatrixView extends CardedView
 			grid.exportRtf(writer);
 	}
 	
+	public void exportEntireViewAsRtf(RtfWriter writer) throws Exception
+	{
+		//FIXME This should export both threat reating modes
+		super.exportEntireViewAsRtf(writer);
+	}
+	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
