@@ -40,7 +40,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	public void addAsMasterTable(AbstractTableExporter table)
 	{
-		tables.add(0, table);
+		tables.add(MASTER_TABLE_INDEX, table);
 	}
 	
 	public void addExportable(AbstractTableExporter table)
@@ -173,8 +173,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	private AbstractTableExporter getMasterTable()
 	{
-		final int TREE_TABLE_INDEX = 0;
-		return getTables().get(TREE_TABLE_INDEX);
+		return getTables().get(MASTER_TABLE_INDEX);
 	}
 	
 	protected Vector<AbstractTableExporter> getTables()
@@ -183,4 +182,5 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 	
 	private Vector<AbstractTableExporter> tables;
+	private static final int MASTER_TABLE_INDEX = 0;
 }
