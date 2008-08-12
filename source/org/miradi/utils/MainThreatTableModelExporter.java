@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.HashSet;
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -41,7 +41,7 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public HashSet<Integer> getAllTypes()
+	public Vector<Integer> getAllTypes()
 	{
 		return null;
 	}
