@@ -24,6 +24,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.AbstractTableExporter;
@@ -103,14 +104,15 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
+		EAM.logError("getAllRefs is not implemented");
 		return new ORefList();
 	}
 
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
-		Vector<Integer> rowTypes = new Vector<Integer>();		
-		return rowTypes;
+		EAM.logError("getAllTypes is not implemented");
+		return new Vector<Integer>();
 	}
 
 	private PlanningViewAbstractTreeTableSyncedTableModel model;

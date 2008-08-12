@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -117,12 +118,14 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
+		EAM.logError("getAllRefs is not implemented");
 		return new ORefList();
 	}
 
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
+		EAM.logError("getAllTypes is not implemented");
 		return new Vector<Integer>();
 	}
 			
