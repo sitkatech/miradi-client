@@ -37,13 +37,13 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		return null;
+		throw new RuntimeException("getAllRefs has not been implemented yet");
 	}
 
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
-		return null;
+		throw new RuntimeException("getAllRefs has not been implemented yet");
 	}
 
 	@Override
