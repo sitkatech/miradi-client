@@ -1062,19 +1062,17 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		if (isResultsChainTab())
-			exportAllResultsChainsAsRtf(writer, ResultsChainDiagram.getObjectType());
+			exportAllDiagramsOfTypeAsRtf(writer, getProject().getConceptualModelDiagramPool().getRefList());
 		else
-			exportAllResultsChainsAsRtf(writer, ConceptualModelDiagram.getObjectType());
+			exportAllDiagramsOfTypeAsRtf(writer, getProject().getResultsChainDiagramPool().getRefList());
 	}
 	
-	private void exportAllResultsChainsAsRtf(RtfWriter writer, int diagramType) throws Exception
+	private void exportAllDiagramsOfTypeAsRtf(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
 	{
-		DiagramComponent[] allDiagramComponents = getAllDiagramComponents();
-		for (int index = 0; index < allDiagramComponents.length; ++index)
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
-			DiagramObject diagramObject = allDiagramComponents[index].getDiagramModel().getDiagramObject();
-			if (diagramObject.getType() == diagramType)
-				writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
 		}
 	}
 
