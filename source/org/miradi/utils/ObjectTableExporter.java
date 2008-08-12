@@ -96,12 +96,18 @@ public class ObjectTableExporter extends AbstractTableExporter
 	public String getTextAt(int row, int column)
 	{
 		Object value = tableToExport.getValueAt(row, column);
-		int modelColumn = tableToExport.convertColumnIndexToModel(column);
-		ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
+		ChoiceQuestion question = getChoiceQuestion(column);
 		if (tableToExport.getObjectTableModel().isCodeListColumn(column))
 			return createExportableCodeList((CodeList) value, question);
 		
 		return getSafeValue(value);
+	}
+
+	private ChoiceQuestion getChoiceQuestion(int column)
+	{
+		int modelColumn = tableToExport.convertColumnIndexToModel(column);
+		ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
+		return question;
 	}
 
 	@Override
