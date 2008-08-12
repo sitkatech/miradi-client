@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.HashSet;
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -40,7 +40,7 @@ public abstract class AbstractTableExporter
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);
 	
-	abstract public HashSet<Integer> getAllTypes();
+	abstract public Vector<Integer> getAllTypes();
 	abstract public ORefList getAllRefs(int objectType);
 	
 	public String getSafeValue(Object object)

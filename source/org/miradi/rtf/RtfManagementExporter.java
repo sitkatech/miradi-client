@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.util.HashSet;
+import java.util.Vector;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.PropertiesPanelSpec;
@@ -45,7 +45,7 @@ public class RtfManagementExporter
 	
 	public void writePropertiesForEachObject(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
 	{
-		HashSet<Integer> allTypes = tableExporter.getAllTypes();
+		Vector<Integer> allTypes = tableExporter.getAllTypes();
 		for(Integer integer : allTypes)
 		{
 			ORefList allRefsForType = tableExporter.getAllRefs(integer.intValue());
