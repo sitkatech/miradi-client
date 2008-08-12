@@ -174,7 +174,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return labelA.compareTo(labelB);
 		}
 		
-		int getTypeSortLocation(int type)
+		private int getTypeSortLocation(int type)
 		{
 			int[] sortOrder = getNodeSortOrder();
 			
