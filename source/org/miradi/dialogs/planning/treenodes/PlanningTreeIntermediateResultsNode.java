@@ -53,7 +53,6 @@ public class PlanningTreeIntermediateResultsNode extends AbstractPlanningTreeNod
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
-				IntermediateResult.getObjectType(),
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
