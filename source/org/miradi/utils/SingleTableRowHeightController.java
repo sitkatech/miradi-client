@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.Vector;
+
 import org.miradi.main.MainWindow;
 
 
@@ -40,13 +42,24 @@ public class SingleTableRowHeightController extends TableRowHeightController
 			return;
 		
 		table.setVariableRowHeight();
-		int rowCount = table.asTable().getRowCount();
-		for(int row = 0; row < rowCount; ++row)
-		{
-			int height = getPreferredRowHeight(row);
-			table.asTable().setRowHeight(row, height);
+ 		int rowCount = table.getRowCount();
+ 		Vector<Integer> oldRowHeights = new Vector<Integer>();
+ 		Vector<Integer> newRowHeights = new Vector<Integer>();
+ 		for(int row = 0; row < rowCount; ++row)
+ 		{
+ 			oldRowHeights.add(table.getRowHeight(row));
+			newRowHeights.add(getPreferredRowHeight(row));
 		}
-		
+ 		
+ 		if(oldRowHeights.equals(newRowHeights))
+ 			return;
+
+ 		for(int row = 0; row < rowCount; ++row)
+ 		{
+			table.setRowHeight(row, newRowHeights.get(row));
+ 		}
+ 		
+		table.setVariableRowHeight();
 	}
 	
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)

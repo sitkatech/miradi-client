@@ -22,6 +22,8 @@ package org.miradi.dialogs.treetables;
 import java.awt.Component;
 
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.tree.TreePath;
 
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -29,20 +31,24 @@ import org.miradi.utils.SingleTableRowHeightController;
 import org.miradi.utils.TableRowHeightSaver;
 import org.miradi.utils.TableWithRowHeightManagement;
 
-import com.java.sun.jtreetable.TreeTableModel;
-
 abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable implements TableWithRowHeightManagement
 {
-	public TreeTableWithRowHeightSaver(MainWindow mainWindowToUse, TreeTableModel treeTableModel)
+	public TreeTableWithRowHeightSaver(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
-		super(mainWindowToUse, treeTableModel);
+		super(mainWindowToUse, treeTableModelToUse);
 
+		treeTableModel = treeTableModelToUse;
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 	}
 
+	public GenericTreeTableModel getTreeTableModel()
+	{
+		return treeTableModel;
+	}
+	
 	public boolean allowUserToSetRowHeight()
 	{
 		return true;
@@ -51,12 +57,13 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
-		updateAutomaticRowHeights();
-
 	}
 
 	public void updateAutomaticRowHeights()
 	{
+		if(rowHeightController == null)
+			return;
+		
 		rowHeightController.updateAutomaticRowHeights();
 	}
 
@@ -73,13 +80,17 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public int getPreferredRowHeight(int row)
 	{
-		Object value = tree.getPathForRow(row).getLastPathComponent();
+		TreePath pathForRow = tree.getPathForRow(row);
+		if(pathForRow == null)
+			return 1;
+		
+		Object value = pathForRow.getLastPathComponent();
 		boolean selected = false;
 		boolean expanded = tree.isExpanded(row);
 		boolean leaf = false;
 		boolean hasFocus = false;
 
-		VariableHeightTreeCellRenderer rendererFactory = (VariableHeightTreeCellRenderer) tree.getCellRenderer();
+		VariableHeightTreeCellRenderer rendererFactory = new VariableHeightTreeCellRenderer(this);
 		Component rendererComponent = rendererFactory.getTreeCellRendererComponentWithPreferredHeight(tree, value, selected, expanded, leaf, row, hasFocus);
 		return rendererComponent.getPreferredSize().height;
 	}
@@ -101,6 +112,13 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	}
 	
 	@Override
+	public void tableChanged(TableModelEvent e)
+	{
+		super.tableChanged(e);
+		updateAutomaticRowHeights();
+	}
+	
+	@Override
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
@@ -118,6 +136,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	abstract public String getUniqueTableIdentifier();
 	
+	private GenericTreeTableModel treeTableModel;
 	private TableRowHeightSaver rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
 }

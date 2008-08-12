@@ -51,7 +51,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public ObjectTreeTable(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModelToUse)
 	{
 		super(mainWindowToUse, treeTableModelToUse);
-		treeTableModel = treeTableModelToUse;
 		project = mainWindowToUse.getProject();
 		selectionListeners = new Vector();
 
@@ -75,11 +74,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return project;
 	}
 
-	public GenericTreeTableModel getTreeTableModel()
-	{
-		return treeTableModel;
-	}
-	
 	public static Font createFristLevelFont(Font defaultFontToUse)
 	{
 		Map map = defaultFontToUse.getAttributes();
@@ -273,7 +267,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		private int row;
 	}
 
-	private GenericTreeTableModel treeTableModel;
 	Project project;
 	Vector selectionListeners;
 }
