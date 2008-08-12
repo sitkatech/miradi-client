@@ -335,10 +335,10 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		repaint();
 	}
 	
-	private void addTable(MiradiScrollPane scrollPane, AbstractTableExporter table)
+	private void addTable(MiradiScrollPane scrollPane, AbstractTableExporter tableExporter)
 	{
 		tablesPanel.add(scrollPane);
-		multiTableExporter.addExportable(table);
+		multiTableExporter.addExportable(tableExporter);
 	}
 
 	private PlanningTreeTableModel getPlanningModel()
