@@ -38,7 +38,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		tables = new Vector();
 	}
 	
-	public void addTreeTableAsFirstItem(AbstractTableExporter table)
+	public void addAsMasterTable(AbstractTableExporter table)
 	{
 		tables.add(0, table);
 	}
