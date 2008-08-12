@@ -302,6 +302,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support exportRtf");
 	}
 	
+	public void exportEntireViewAsRtf(RtfWriter writer) throws Exception
+	{
+		throw new RuntimeException("This view doesn't support exportEntireViewAsRtf");
+	}
+	
 	public BaseObject getSelectedObject()
 	{
 		return null;
