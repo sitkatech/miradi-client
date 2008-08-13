@@ -27,6 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.rtf.ProjectRtfExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.RtfFileChooser;
 import org.miradi.views.ObjectsDoer;
 
@@ -67,10 +68,13 @@ public class RunReportTemplateDoer extends ObjectsDoer
 		RtfWriter rtfWriter = new RtfWriter(destination);
 		try
 		{
-			//FIXME right now this is exporting all view tabs,  should export report template
 			rtfWriter.startRtf();
 			rtfWriter.landscapeMode();
-			new ProjectRtfExporter(getMainWindow()).exportProject(rtfWriter);
+			
+			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
+			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_CONTENT);
+			new ProjectRtfExporter(getMainWindow()).exportProject(rtfWriter, reportTemplateContent);
+			
 			rtfWriter.endRtf();
 		}
 		finally

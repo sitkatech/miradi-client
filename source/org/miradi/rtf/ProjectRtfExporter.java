@@ -25,6 +25,7 @@ import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
 import org.miradi.rtf.viewExporters.ViabilityViewRtfExporter;
 import org.miradi.rtf.viewExporters.ThreatRatingsViewRtfExporter;
+import org.miradi.utils.CodeList;
 
 public class ProjectRtfExporter
 {
@@ -33,13 +34,13 @@ public class ProjectRtfExporter
 		mainWindow = mainWindowToUse;
 	}
 	
-	public void exportProject(RtfWriter writer) throws Exception
+	public void exportProject(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer);
-		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer);
-		new ViabilityViewRtfExporter(getMainWindow()).ExportView(writer);
-		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer);
-		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer);
+		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		new ViabilityViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
 	}
 	
 	private MainWindow getMainWindow()

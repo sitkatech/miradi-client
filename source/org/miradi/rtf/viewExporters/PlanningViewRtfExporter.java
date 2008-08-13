@@ -24,8 +24,10 @@ import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.resource.ResourcePoolTableModel;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 
 public class PlanningViewRtfExporter extends RtfViewExporter
 {
@@ -35,12 +37,19 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	}
 	
 	@Override
-	public void ExportView(RtfWriter writer) throws Exception
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		exportPlanningTab(writer);
-		exportResourcesTab(writer);
-		exportAccountingCodesTab(writer);
-		exportFundingSourceTab(writer);
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_PLANNING_TAB_CODE))
+			exportPlanningTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
+			exportResourcesTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE))
+			exportAccountingCodesTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
+			exportFundingSourceTab(writer);
 	}
 
 	private void exportPlanningTab(RtfWriter writer) throws Exception

@@ -21,8 +21,10 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.MainThreatTableModelExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.views.threatmatrix.ThreatMatrixRowHeaderTableModel;
@@ -36,10 +38,13 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer) throws Exception
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		exportSimpleThreatRating(writer);
-		exportStressBasedThreatRating(writer);	
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_SIMPLE_CODE))
+			exportSimpleThreatRating(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_STRESS_BASED_CODE))
+			exportStressBasedThreatRating(writer);	
 	}
 
 	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception

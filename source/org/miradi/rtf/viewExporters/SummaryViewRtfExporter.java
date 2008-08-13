@@ -40,8 +40,10 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
 {
@@ -51,19 +53,40 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer) throws Exception
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		exportProjectTab(writer);
-		exportTeamTab(writer);
-		exportOrganizationTab(writer);
-		exportScopeTab(writer);
-		exportLocationTab(writer);
-		exportPlanningTab(writer);
-		exportTncTab(writer);
-		exportWwfTab(writer);
-		exportWcsTab(writer);
-		exportRareTab(writer);
-		exportFosTab(writer);
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_PROJECT_TAB_CODE))
+			exportProjectTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_TEAM_TAB_CODE))
+			exportTeamTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_ORGANIZATION_TAB_CODE))
+			exportOrganizationTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_SCOPE_TAB_CODE))
+			exportScopeTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_LOCATION_TAB_CODE))
+			exportLocationTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_PLANNING_TAB_CODE))
+			exportPlanningTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_TNC_TAB_CODE))
+			exportTncTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_WWF_TAB_CODE))
+			exportWwfTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_WCS_TAB_CODE))
+			exportWcsTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_RARE_TAB_CODE))
+			exportRareTab(writer);
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE))
+			exportFosTab(writer);
 	}
 
 	private void exportProjectTab(RtfWriter writer) throws Exception
