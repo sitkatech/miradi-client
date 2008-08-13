@@ -35,5 +35,5 @@ public class ReportTemplatePoolTable extends ObjectPoolTable
 		return UNIQUE_IDENTIFIER;
 	}	
 	
-	public static final String UNIQUE_IDENTIFIER = "AccountingCodePoolTable";
+	public static final String UNIQUE_IDENTIFIER = "ReportTemplatePoolTable";
 }
