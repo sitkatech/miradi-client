@@ -355,20 +355,6 @@ abstract public class TabbedView extends UmbrellaView
 	}
 	
 
-	public void exportEntireViewAsRtf(RtfWriter writer) throws Exception
-	{
-		createTabs();
-		for (int index = 0; index < getTabCount(); ++index)
-		{
-			MiradiTabContentsPanelInterface tab = getTabPanel(getTabTitle(index));
-			if (isTabRtfExportable(tab))
-			{
-				writer.newParagraph();
-				exportTabAsRtf(writer, tab);
-			}
-		}
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
