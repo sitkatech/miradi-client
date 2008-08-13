@@ -19,8 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
+import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.resource.ResourcePoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewRtfExporter extends RtfViewExporter
 {
@@ -32,5 +37,33 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		exportPlanningTab(writer);
+		exportResourcesTab(writer);
+		exportAccountingCodesTab(writer);
+		exportFundingSourceTab(writer);
+	}
+
+	private void exportPlanningTab(RtfWriter writer) throws Exception
+	{		
+		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow());
+		AbstractTableExporter table = panel.getTableForExporting();
+		panel.dispose();
+		
+		exportTable(writer, table);
+	}
+
+	private void exportResourcesTab(RtfWriter writer) throws Exception
+	{
+		exportObjectTableModel(writer, new ResourcePoolTableModel(getProject()));
+	}
+
+	private void exportAccountingCodesTab(RtfWriter writer) throws Exception
+	{
+		exportObjectTableModel(writer, new AccountingCodePoolTableModel(getProject()));
+	}
+
+	private void exportFundingSourceTab(RtfWriter writer) throws Exception
+	{
+		exportObjectTableModel(writer, new FundingSourcePoolTableModel(getProject()));
 	}
 }
