@@ -23,7 +23,7 @@ import org.miradi.dialogs.summary.TeamPoolTable;
 import org.miradi.dialogs.summary.TeamPoolTableModel;
 import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
@@ -40,7 +40,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getProjectMetadataRefList());
+		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getProjectMetadataRef());
 		rtfFormExporter.exportForm(new ProjectTabForm());
 		writer.newParagraph();
 
@@ -48,9 +48,9 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		rtfManagementExporter.writeManagement(getTeamPoolTableExporter(), writer);
 	}
 
-	private ORefList getProjectMetadataRefList()
+	private ORef getProjectMetadataRef()
 	{
-		return new ORefList(getProject().getMetadata().getRef());
+		return getProject().getMetadata().getRef();
 	}
 
 	private AbstractTableExporter getTeamPoolTableExporter() throws Exception
