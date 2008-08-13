@@ -26,6 +26,7 @@ import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTableExporter;
 
@@ -58,11 +59,19 @@ public class RtfManagementExporter
 		for (int index = 0; index < allRefsForType.size(); ++index)
 		{
 			ORef ref = allRefsForType.get(index);
+			if (hasNoForm(ref))
+				continue;
+			
 			BaseObject baseObjectForRow = getProject().findObject(ref);
 			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
 			writePropertiesPanel(writer, baseObjectForRow, form);
 			writer.newParagraph();
 		}
+	}
+
+	private boolean hasNoForm(ORef ref)
+	{
+		return ProjectMetadata.is(ref);
 	}
 
 	private void writePropertiesPanel(RtfWriter writer, BaseObject baseObjectForRow, PropertiesPanelSpec form) throws Exception
