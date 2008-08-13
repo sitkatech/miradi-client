@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf.viewExporters;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramObject;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.BufferedImageFactory;
 
 public class DiagramViewRtfExporter extends RtfViewExporter
 {
@@ -32,5 +35,17 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		exportDiagrams(writer, getProject().getConceptualModelDiagramPool().getRefList());
+		exportDiagrams(writer, getProject().getResultsChainDiagramPool().getRefList());
+	}
+
+	private void exportDiagrams(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
+	{
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			writer.newParagraph();
+		}
 	}
 }
