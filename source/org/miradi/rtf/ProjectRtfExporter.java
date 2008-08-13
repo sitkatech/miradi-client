@@ -23,7 +23,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.rtf.viewExporters.DiagramViewRtfExporter;
 import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
-import org.miradi.rtf.viewExporters.TargetViabilityRtfExporter;
+import org.miradi.rtf.viewExporters.TargetViabilityViewRtfExporter;
 import org.miradi.rtf.viewExporters.ThreatRatingsViewRtfExporter;
 
 public class ProjectRtfExporter
@@ -38,7 +38,7 @@ public class ProjectRtfExporter
 		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer);
 		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer);
 		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer);
-		new TargetViabilityRtfExporter(getMainWindow()).ExportView(writer);
+		new TargetViabilityViewRtfExporter(getMainWindow()).ExportView(writer);
 		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer);
 	}
 	

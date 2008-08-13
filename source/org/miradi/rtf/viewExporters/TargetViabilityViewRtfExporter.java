@@ -22,9 +22,9 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
 
-public class TargetViabilityRtfExporter extends RtfViewExporter
+public class TargetViabilityViewRtfExporter extends RtfViewExporter
 {
-	public TargetViabilityRtfExporter(MainWindow mainWindow)
+	public TargetViabilityViewRtfExporter(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
