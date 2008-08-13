@@ -36,6 +36,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		//TODO need to have a TreeTableModelExporter instead
 		exportTable(writer, new TreeTableExporter(getTreeTable()));
 	}
 	
