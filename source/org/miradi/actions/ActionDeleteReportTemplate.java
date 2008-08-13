@@ -17,33 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.reportTemplate;
+package org.miradi.actions;
 
-import javax.swing.Icon;
-
-import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.ObjectPoolManagementPanel;
-import org.miradi.icons.ReportTemplateIcon;
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
-public class ReportTemplateManagementPanel extends ObjectPoolManagementPanel
+public class ActionDeleteReportTemplate extends ObjectsAction
 {
-	public ReportTemplateManagementPanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag, Actions actions) throws Exception
+	public ActionDeleteReportTemplate(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ReportTemplatePoolTablePanel(mainWindowToUse, objectRef, annotationTag), new ReportTemplatePropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
-	public String getPanelDescription()
+	private static String getLabel()
 	{
-		return PANEL_DESCRIPTION;
+		return EAM.text("Action|Delete Report Template");
 	}
-	
-	public Icon getIcon()
+
+	public String getToolTipText()
 	{
-		return new ReportTemplateIcon();
+		return EAM.text("TT|Delete a Report Template");
 	}
-	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Report Templates"); 
 }
