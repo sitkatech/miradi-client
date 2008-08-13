@@ -1279,14 +1279,9 @@ public class Project
 
 	}
 
-
-	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
-	public static final String STRATEGIC_PLAN_VIEW_NAME = "Strategic Plan";
 	public static final String LIBRARY_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
 	public static final String MAP_VIEW_NAME = "Map";
-	public static final String WORK_PLAN_VIEW_NAME = "Work Plan";
-	public static final String BUDGET_VIEW_NAME = "Financial";
 	public static final String THREAT_MATRIX_VIEW_NAME = "ThreatMatrix";
 	public static final String NO_PROJECT_VIEW_NAME = "NoProject";
 	public static final String DIAGRAM_VIEW_NAME = "Diagram";
