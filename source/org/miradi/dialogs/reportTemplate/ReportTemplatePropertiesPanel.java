@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.reportTemplate;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.icons.ReportTemplateIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.ReportTemplate;
@@ -31,8 +33,10 @@ public class ReportTemplatePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ReportTemplate.getObjectType(), BaseId.INVALID);
 			
-		addField(createStringField(ReportTemplate.TAG_LABEL));
-		
+		ObjectDataInputField shortLabelField = createStringField(ReportTemplate.TAG_SHORT_LABEL, 10);
+		ObjectDataInputField labelField = createExpandableField(ReportTemplate.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text("Report Template"), new ReportTemplateIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+
 		updateFieldsFromProject();
 	}
 	
