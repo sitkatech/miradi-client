@@ -33,8 +33,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTableExporter;
 
-//FIXME there is duplicate code between this class and TreeTableExporter.  Need to start using this class and delete
-//treeTableExporter
+//FIXME there is duplicate code between this class and TreeTableExporter.  Need a parent class for common code.
 public class TreeTableModelExporter extends AbstractTableExporter
 {
 	public TreeTableModelExporter(Project projectToUse, GenericTreeTableModel modelToUse) throws Exception
