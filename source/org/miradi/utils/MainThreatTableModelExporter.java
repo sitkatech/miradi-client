@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.threatmatrix.AbstractThreatTargetTableModel;
@@ -37,13 +38,15 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	@Override
 	public ORefList getAllRefs(int objectType)
 	{
-		throw new RuntimeException("getAllRefs has not been implemented yet");
+		EAM.logError("getAllRefs is not implemented");
+		return new ORefList();
 	}
 
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
-		throw new RuntimeException("getAllRefs has not been implemented yet");
+		EAM.logError("getAllTypes is not implemented");
+		return new Vector<Integer>();
 	}
 
 	@Override
