@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ReportTemplate extends BaseObject
@@ -81,16 +83,20 @@ public class ReportTemplate extends BaseObject
 		super.clear();
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
+		content = new CodeListData(TAG_CONTENT, getQuestion(ReportTemplateContentQuestion.class));
 		comment = new StringData(TAG_COMMENT);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_CONTENT, content);
 		addField(TAG_COMMENT, comment);
 	}
 
-	public static final String TAG_SHORT_LABEL = "ShortLabel";	
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
+	public static final String TAG_CONTENT = "Content";
 	public static final String TAG_COMMENT = "Comment";
-
-	private StringData shortLabel;	
+	
+	private StringData shortLabel;
+	private CodeListData content;
 	private StringData comment;
 	
 	public static final String OBJECT_NAME = "ReportTemplate";
