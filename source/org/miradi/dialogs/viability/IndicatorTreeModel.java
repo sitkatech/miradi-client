@@ -24,15 +24,14 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 
 public class IndicatorTreeModel extends GenericViabilityTreeModel
 {
-	public IndicatorTreeModel(Project project, Object root)
+	public IndicatorTreeModel(Object root)
 	{
-		super(project, root);
+		super(root);
 	}
 
 	public Object getValueAt(Object rawNode, int column)

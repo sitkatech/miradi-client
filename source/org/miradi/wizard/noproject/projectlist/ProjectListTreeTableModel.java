@@ -21,14 +21,13 @@ package org.miradi.wizard.noproject.projectlist;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
 {
-	public ProjectListTreeTableModel(Project project, FileSystemTreeNode root)
+	public ProjectListTreeTableModel(FileSystemTreeNode root)
 	{
-		super(project, root);
+		super(root);
 	}
 
 	public String getColumnTag(int column)

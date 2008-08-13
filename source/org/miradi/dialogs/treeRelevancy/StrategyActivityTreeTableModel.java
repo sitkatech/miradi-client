@@ -22,13 +22,12 @@ package org.miradi.dialogs.treeRelevancy;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 
 public class StrategyActivityTreeTableModel extends GenericTreeTableModel
 {
-	public StrategyActivityTreeTableModel(Project project, TreeTableNode root)
+	public StrategyActivityTreeTableModel(TreeTableNode root)
 	{
-		super(project, root);
+		super(root);
 	}
 
 	public String getColumnTag(int column)

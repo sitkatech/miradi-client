@@ -47,7 +47,7 @@ public class TreeBasedProjectList extends JPanel
 		
 		File home = EAM.getHomeDirectory();
 		rootNode = new FileSystemRootNode(home);
-		model = new ProjectListTreeTableModel(mainWindow.getProject(), rootNode);
+		model = new ProjectListTreeTableModel(rootNode);
 		ProjectListTreeTable table = new ProjectListTreeTable(mainWindow, model, handlerToUse);
 
 		actions.add(new ProjectListOpenAction(table));

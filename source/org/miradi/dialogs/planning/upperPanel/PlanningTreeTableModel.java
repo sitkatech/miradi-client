@@ -39,7 +39,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
-		super(projectToUse, new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
+		super(new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
 		
 		project = projectToUse;
 		updateColumnsToShow(visibleColumnCodesToUse);

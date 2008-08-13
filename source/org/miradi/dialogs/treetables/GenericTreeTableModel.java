@@ -21,53 +21,22 @@ package org.miradi.dialogs.treetables;
 
 import javax.swing.tree.TreePath;
 
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
+public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ColumnTagProvider
 {
-	public GenericTreeTableModel(Project project, Object root)
+	public GenericTreeTableModel(Object root)
 	{
 		super(root);
 	}
 
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		try
-		{
-			ORefList allRowRefs = getFullyExpandedRefList();
-			ORef refForRow = allRowRefs.get(row);
-			return getProject().findObject(refForRow);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-	
-	public int getRowCount()
-	{
-		try
-		{
-			return getFullyExpandedRefList().size();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return 0;
-		}
-	}
-	
 	public TreePath getPathToRoot()
 	{
 		return new TreePath(getRoot());
@@ -201,13 +170,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			recursivelyGetFullyExpandedRefs(objRefListToUse, childNode);
 		}
 	}
-	
-	protected Project getProject()
-	{
-		return project;
-	}
-	
-	private Project project;
-	
+
 	public static final String DEFAULT_COLUMN = "Item";
 }
