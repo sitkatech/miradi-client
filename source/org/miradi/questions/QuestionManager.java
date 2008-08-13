@@ -82,6 +82,7 @@ public class QuestionManager
 		addQuestion(new FosTrainingTypeQuestion());
 		addQuestion(new DiagramLinkColorQuestion());
 		addQuestion(new TableRowHeightModeQuestion());
+		addQuestion(new ReportTemplateContentQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
