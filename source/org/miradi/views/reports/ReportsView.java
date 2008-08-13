@@ -23,17 +23,31 @@ import java.awt.BorderLayout;
 
 import javax.swing.JToolBar;
 
+import org.miradi.actions.ActionCreateReportTemplate;
+import org.miradi.actions.ActionDeleteReportTemplate;
+import org.miradi.actions.ActionRunReportTemplate;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
+import org.miradi.views.reports.doers.CreateReportTemplateDoer;
+import org.miradi.views.reports.doers.DeleteReportTemplateDoer;
+import org.miradi.views.reports.doers.RunReportTemplate;
 
 public class ReportsView extends TabbedView
 {
 	public ReportsView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		addDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+	
+	private void addDoersToMap()
+	{
+		addDoerToMap(ActionCreateReportTemplate.class, new CreateReportTemplateDoer());
+		addDoerToMap(ActionDeleteReportTemplate.class, new DeleteReportTemplateDoer());
+		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplate());
 	}
 
 	public String cardName() 

@@ -19,19 +19,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.reportTemplate;
 
-import org.miradi.dialogs.base.ObjectListTableModel;
+import org.miradi.actions.ActionCreateReportTemplate;
+import org.miradi.actions.ActionDeleteReportTemplate;
+import org.miradi.actions.ActionRunReportTemplate;
+import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ReportTemplate;
-import org.miradi.project.Project;
 
-public class ReportTemplateListTableModel extends ObjectListTableModel
+public class ReportTemplatePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ReportTemplateListTableModel(Project projectToUse, ORef objectRef, String annotationTag)
+	public ReportTemplatePoolTablePanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag)
 	{
-		super(projectToUse, objectRef, annotationTag, ReportTemplate.getObjectType(), COLUMN_TAGS);
+		super(mainWindowToUse, new ReportTemplatePoolTable(mainWindowToUse, new ReportTemplatePoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
 	}
-
-	public static final String[] COLUMN_TAGS = new String[] {
-		ReportTemplate.TAG_LABEL,
+	
+	private static final Class[] buttons = new Class[]{
+		ActionCreateReportTemplate.class,
+		ActionDeleteReportTemplate.class,
+		ActionRunReportTemplate.class,
 	};
 }

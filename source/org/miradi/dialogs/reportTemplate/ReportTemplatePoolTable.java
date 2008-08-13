@@ -19,31 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.reportTemplate;
 
-import javax.swing.Icon;
-
-import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.ObjectPoolManagementPanel;
-import org.miradi.icons.ReportTemplateIcon;
-import org.miradi.main.EAM;
+import org.miradi.dialogs.base.ObjectPoolTable;
+import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
-public class ReportTemplateManagementPanel extends ObjectPoolManagementPanel
+public class ReportTemplatePoolTable extends ObjectPoolTable
 {
-	public ReportTemplateManagementPanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag, Actions actions) throws Exception
+	public ReportTemplatePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, new ReportTemplatePoolTablePanel(mainWindowToUse, objectRef, annotationTag), new ReportTemplatePropertiesPanel(mainWindowToUse.getProject()));
-	}
-
-	public String getPanelDescription()
-	{
-		return PANEL_DESCRIPTION;
+		super(mainWindowToUse, modelToUse);
 	}
 	
-	public Icon getIcon()
+	public String getUniqueTableIdentifier()
 	{
-		return new ReportTemplateIcon();
-	}
+		return UNIQUE_IDENTIFIER;
+	}	
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Report Templates"); 
+	public static final String UNIQUE_IDENTIFIER = "AccountingCodePoolTable";
 }

@@ -17,21 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.reportTemplate;
+package org.miradi.views.reports.doers;
 
-import org.miradi.dialogs.base.ObjectListTablePanel;
-import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.views.ObjectsDoer;
 
-public class ReportTemplateListTablePanel extends ObjectListTablePanel
+public class DeleteReportTemplateDoer extends ObjectsDoer
 {
-	public ReportTemplateListTablePanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag)
+	@Override
+	public boolean isAvailable()
 	{
-		super(mainWindowToUse, new ReportTemplateListTableModel(mainWindowToUse.getProject(), objectRef, annotationTag), editButtonClasses, DEFAULT_SORT_COLUMN);
+		return false;
 	}
-	
-	//FIXME add edit buttons
-	private static final Class[] editButtonClasses = new Class[]{};
-	
-	private static final int DEFAULT_SORT_COLUMN = 0;
+
+	@Override
+	public void doIt() throws CommandFailedException
+	{
+		if (!isAvailable())
+			return;
+	}
 }

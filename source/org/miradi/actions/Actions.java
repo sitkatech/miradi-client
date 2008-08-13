@@ -268,6 +268,10 @@ public class Actions
 		
 		registerAction(new ActionExportRtf(mainWindow));
 		
+		registerAction(new ActionCreateReportTemplate(mainWindow));
+		registerAction(new ActionDeleteReportTemplate(mainWindow));
+		registerAction(new ActionRunReportTemplate(mainWindow));
+		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
 		registerAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));
