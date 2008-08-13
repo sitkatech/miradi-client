@@ -19,14 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.viability.TargetViabilityTreeTable;
+import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityViewRtfExporter extends RtfViewExporter
 {
@@ -38,17 +37,12 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		//TODO need to have a TreeTableModelExporter instead
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
-			exportTable(writer, new TreeTableExporter(getTreeTable()));
+			exportTable(writer, new TreeTableModelExporter(getProject(), getTreeTable()));
 	}
 	
-	private TargetViabilityTreeTable getTreeTable() throws Exception
+	private ViabilityTreeModel getTreeTable() throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
-		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
-		treeTable.restoreTreeState();
-		
-		return treeTable;
+		return new ViabilityTreeModel(new ViabilityRoot(getProject()));
 	}
 }
