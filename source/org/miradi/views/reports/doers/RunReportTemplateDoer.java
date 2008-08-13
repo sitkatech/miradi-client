@@ -28,7 +28,7 @@ import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.RtfFileChooser;
 import org.miradi.views.ObjectsDoer;
 
-public class RunReportTemplate extends ObjectsDoer
+public class RunReportTemplateDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()

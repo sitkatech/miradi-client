@@ -33,7 +33,7 @@ import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.reports.doers.CreateReportTemplateDoer;
 import org.miradi.views.reports.doers.DeleteReportTemplateDoer;
-import org.miradi.views.reports.doers.RunReportTemplate;
+import org.miradi.views.reports.doers.RunReportTemplateDoer;
 
 public class ReportsView extends TabbedView
 {
@@ -54,7 +54,7 @@ public class ReportsView extends TabbedView
 	{
 		addDoerToMap(ActionCreateReportTemplate.class, new CreateReportTemplateDoer());
 		addDoerToMap(ActionDeleteReportTemplate.class, new DeleteReportTemplateDoer());
-		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplate());
+		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplateDoer());
 	}
 
 	public String cardName() 
