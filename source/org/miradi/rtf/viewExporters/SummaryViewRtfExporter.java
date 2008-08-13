@@ -61,9 +61,9 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		exportPlanningTab(writer);
 		exportTncTab(writer);
 		exportWwfTab(writer);
-		exportWcs(writer);
+		exportWcsTab(writer);
 		exportRareTab(writer);
-		exportFos(writer);
+		exportFosTab(writer);
 	}
 
 	private void exportProjectTab(RtfWriter writer) throws Exception
@@ -109,7 +109,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		exportForm(writer, new WwfTabForm(), WwfProjectData.getObjectType());
 	}
 
-	private void exportWcs(RtfWriter writer) throws Exception
+	private void exportWcsTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new WcsTabForm(), WcsProjectData.getObjectType());
 	}
@@ -119,7 +119,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		exportForm(writer, new RareTabForm(), RareProjectData.getObjectType());
 	}
 
-	private void exportFos(RtfWriter writer) throws Exception
+	private void exportFosTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new FosTabForm(), FosProjectData.getObjectType());
 	}
