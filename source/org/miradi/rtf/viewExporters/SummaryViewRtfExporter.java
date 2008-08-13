@@ -19,16 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.summary.TeamPoolTable;
+import org.miradi.dialogs.organization.OrganizationPoolTableModel;
 import org.miradi.dialogs.summary.TeamPoolTableModel;
 import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.rtf.RtfFormExporter;
-import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.ObjectTableExporter;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
 {
@@ -40,23 +37,70 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		exportProjectTab(writer);
+		exportTeamTab(writer);
+		exportOrganizationTab(writer);
+		exportScopeTab(writer);
+		exportLocationTab(writer);
+		exportPlanningTab(writer);
+		exportTncTab(writer);
+		exportWwfTab(writer);
+		exportWcs(writer);
+		exportRareTab(writer);
+		exportFos(writer);
+	}
+
+	private void exportProjectTab(RtfWriter writer) throws Exception
+	{
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getProjectMetadataRef());
 		rtfFormExporter.exportForm(new ProjectTabForm());
 		writer.newParagraph();
+	}
 
-		RtfManagementExporter rtfManagementExporter = new RtfManagementExporter(getProject());
-		rtfManagementExporter.writeManagement(getTeamPoolTableExporter(), writer);
+	private void exportTeamTab(RtfWriter writer) throws Exception
+	{
+		exportObjectTableModel(writer, new TeamPoolTableModel(getProject()));
+	}
+	
+	private void exportOrganizationTab(RtfWriter writer) throws Exception
+	{
+		exportObjectTableModel(writer, new OrganizationPoolTableModel(getProject()));
+	}	
+
+	private void exportScopeTab(RtfWriter writer) throws Exception
+	{
+	}
+	
+	private void exportLocationTab(RtfWriter writer) throws Exception
+	{
+	}
+	
+	private void exportPlanningTab(RtfWriter writer) throws Exception
+	{
+	}
+	
+	private void exportTncTab(RtfWriter writer) throws Exception
+	{
+	}
+
+	private void exportWwfTab(RtfWriter writer) throws Exception
+	{
+	}
+
+	private void exportWcs(RtfWriter writer) throws Exception
+	{
+	}
+	
+	private void exportRareTab(RtfWriter writer) throws Exception
+	{
+	}
+
+	private void exportFos(RtfWriter writer) throws Exception
+	{
 	}
 
 	private ORef getProjectMetadataRef()
 	{
 		return getProject().getMetadata().getRef();
 	}
-
-	private AbstractTableExporter getTeamPoolTableExporter() throws Exception
-	{
-		TeamPoolTable teamPoolTable = new TeamPoolTable(getMainWindow(), new TeamPoolTableModel(getProject()));
-		return new ObjectTableExporter(teamPoolTable);
-	}
-
 }

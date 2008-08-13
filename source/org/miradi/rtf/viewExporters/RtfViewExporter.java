@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.ObjectTableModelExporter;
 
 abstract public class RtfViewExporter
 {
@@ -30,6 +33,17 @@ abstract public class RtfViewExporter
 		mainWindow = mainWindowToUse;
 	}
 	
+	protected void exportObjectTableModel(RtfWriter writer, ObjectTableModel objectTableModel) throws Exception
+	{
+		createRtfManagementRtfExporter().writeManagement(new ObjectTableModelExporter(objectTableModel), writer);
+		writer.newParagraph();
+	}
+	
+	private RtfManagementExporter createRtfManagementRtfExporter()
+	{
+		return new RtfManagementExporter(getProject());
+	}
+		
 	protected Project getProject()
 	{
 		return getMainWindow().getProject();
