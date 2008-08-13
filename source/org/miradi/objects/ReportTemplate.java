@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -73,6 +74,24 @@ public class ReportTemplate extends BaseObject
 	{
 		return find(project.getObjectManager(), eportTemplateRef);
 	}
+
+	@Override
+	void clear()
+	{
+		super.clear();
+
+		shortLabel = new StringData(TAG_SHORT_LABEL);
+		comment = new StringData(TAG_COMMENT);
+
+		addField(TAG_SHORT_LABEL, shortLabel);
+		addField(TAG_COMMENT, comment);
+	}
+
+	public static final String TAG_SHORT_LABEL = "ShortLabel";	
+	public static final String TAG_COMMENT = "Comment";
+
+	private StringData shortLabel;	
+	private StringData comment;
 	
 	public static final String OBJECT_NAME = "ReportTemplate";
 }
