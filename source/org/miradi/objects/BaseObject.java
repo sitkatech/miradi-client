@@ -306,6 +306,9 @@ abstract public class BaseObject
 			case ObjectType.PROGRESS_PERCENT:
 				return new ProgressPercent(objectManager, idAsInt, json);
 				
+			case ObjectType.REPORT_TEMPLATE:
+				return new ReportTemplate(objectManager, idAsInt, json);
+
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
