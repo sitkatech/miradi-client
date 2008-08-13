@@ -35,7 +35,7 @@ abstract public class RtfViewExporter
 		return getMainWindow().getProject();
 	}
 	
-	private MainWindow getMainWindow()
+	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
