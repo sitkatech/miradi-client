@@ -19,14 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import org.miradi.dialogs.summary.TeamPoolTable;
-import org.miradi.dialogs.summary.TeamPoolTableModel;
-import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.project.Project;
-import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.ObjectTableExporter;
+import org.miradi.rtf.viewExporters.DiagramViewRtfExporter;
+import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
+import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
+import org.miradi.rtf.viewExporters.TargetViabilityRtfExporter;
+import org.miradi.rtf.viewExporters.ThreatRatingsViewRtfExporter;
 
 public class ProjectRtfExporter
 {
@@ -35,61 +33,18 @@ public class ProjectRtfExporter
 		mainWindow = mainWindowToUse;
 	}
 	
-	//FIXME all views must be exported completely.  This is still under dev.
 	public void exportProject(RtfWriter writer) throws Exception
 	{
-		exportSummaryView(writer);
-		exportDiagramView(writer);
-		exportTargetViabilityView(writer);
-		exportThreatRatingView(writer);
-		exportPlanningView(writer);
-	}
-	
-	private void exportSummaryView(RtfWriter writer) throws Exception
-	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getProjectMetadataRefList());
-		rtfFormExporter.exportForm(new ProjectTabForm());
-		writer.newParagraph();
-		
-		RtfManagementExporter rtfManagementExporter = new RtfManagementExporter(getProject());
-		rtfManagementExporter.writeManagement(getTeamPoolTableExporter(), writer);
-	}
-	
-	private ORefList getProjectMetadataRefList()
-	{
-		return new ORefList(getProject().getMetadata().getRef());
-	}
-	
-	private AbstractTableExporter getTeamPoolTableExporter() throws Exception
-	{
-		TeamPoolTable teamPoolTable = new TeamPoolTable(getMainWindow(), new TeamPoolTableModel(getProject()));
-		return new ObjectTableExporter(teamPoolTable);
-	}
-	
-	private void exportDiagramView(RtfWriter writer)
-	{
-	}
-	
-	private void exportTargetViabilityView(RtfWriter writer)
-	{
-	}
-
-	private void exportThreatRatingView(RtfWriter writer)
-	{
-	}
-
-	private void exportPlanningView(RtfWriter writer)
-	{
+		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer);
+		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer);
+		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer);
+		new TargetViabilityRtfExporter(getMainWindow()).ExportView(writer);
+		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer);
 	}
 	
 	private MainWindow getMainWindow()
 	{
 		return mainWindow;
-	}
-	
-	private Project getProject()
-	{
-		return mainWindow.getProject();
 	}
 
 	private MainWindow mainWindow;
