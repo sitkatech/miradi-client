@@ -19,8 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.viability.TargetViabilityTreeTable;
+import org.miradi.dialogs.viability.ViabilityTreeModel;
+import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityViewRtfExporter extends RtfViewExporter
 {
@@ -32,5 +36,15 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		exportTable(writer, new TreeTableExporter(getTreeTable()));
+	}
+	
+	private TargetViabilityTreeTable getTreeTable() throws Exception
+	{
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
+		treeTable.restoreTreeState();
+		
+		return treeTable;
 	}
 }
