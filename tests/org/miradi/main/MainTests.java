@@ -107,6 +107,7 @@ import org.miradi.objects.TestProjectMetadata;
 import org.miradi.objects.TestProjectResource;
 import org.miradi.objects.TestRareProjectData;
 import org.miradi.objects.TestRatingCriterion;
+import org.miradi.objects.TestReportTemplate;
 import org.miradi.objects.TestResultsChainDiagram;
 import org.miradi.objects.TestSlide;
 import org.miradi.objects.TestSlideShow;
@@ -360,6 +361,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestWcpaProjectData.class));
 		suite.addTest(new TestSuite(TestXenodata.class));
 		suite.addTest(new TestSuite(TestProgressPercent.class));
+		suite.addTest(new TestSuite(TestReportTemplate.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
