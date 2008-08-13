@@ -106,7 +106,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 
 	private TargetViabilityTreeTable getTreeTable() throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(getProject(), new ViabilityRoot(getProject()));
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
 		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
 		treeTable.restoreTreeState();
 		return treeTable;

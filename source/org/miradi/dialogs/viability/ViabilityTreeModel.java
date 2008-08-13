@@ -25,13 +25,12 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
-import org.miradi.project.Project;
 
 public class ViabilityTreeModel extends GenericViabilityTreeModel
 {
-	public ViabilityTreeModel(Project project, Object root)
+	public ViabilityTreeModel(Object root)
 	{
-		super(project, root);
+		super(root);
 	}
 
 	public String[] getColumnTags()
