@@ -45,7 +45,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	
 	private TargetViabilityTreeTable getTreeTable() throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		ViabilityTreeModel model = new ViabilityTreeModel(getProject(), new ViabilityRoot(getProject()));
 		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
 		treeTable.restoreTreeState();
 		
