@@ -21,18 +21,16 @@ package org.miradi.dialogs.reportTemplate;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.ReportTemplateIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
 public class ReportTemplateManagementPanel extends ObjectPoolManagementPanel
 {
-	public ReportTemplateManagementPanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag, Actions actions) throws Exception
+	public ReportTemplateManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, new ReportTemplatePoolTablePanel(mainWindowToUse, objectRef, annotationTag), new ReportTemplatePropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, new ReportTemplatePoolTablePanel(mainWindowToUse), new ReportTemplatePropertiesPanel(mainWindowToUse.getProject()));
 	}
 
 	public String getPanelDescription()
