@@ -20,11 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf.viewExporters;
 
 import org.miradi.main.MainWindow;
+import org.miradi.rtf.RtfWriter;
 
 public class PlanningViewRtfExporter extends RtfViewExporter
 {
 	public PlanningViewRtfExporter(MainWindow mainWindow)
 	{
 		super(mainWindow);
+	}
+	
+	@Override
+	public void ExportView(RtfWriter writer) throws Exception
+	{
 	}
 }
