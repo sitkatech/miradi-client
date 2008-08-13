@@ -24,8 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-public class ViabilityViewTreeManagementPanel extends
-		TargetViabilityTreeManagementPanel
+public class ViabilityViewTreeManagementPanel extends TargetViabilityTreeManagementPanel
 {
 	public ViabilityViewTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
