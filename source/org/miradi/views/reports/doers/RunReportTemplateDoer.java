@@ -23,6 +23,8 @@ import java.io.File;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ReportTemplate;
 import org.miradi.rtf.ProjectRtfExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.RtfFileChooser;
@@ -33,7 +35,8 @@ public class RunReportTemplateDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
+		return (selectedReportTemplate != null);
 	}
 
 	@Override
