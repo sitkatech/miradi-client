@@ -19,8 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.MainThreatTableModelExporter;
+import org.miradi.utils.MultiTableCombinedAsOneExporter;
+import org.miradi.views.threatmatrix.ThreatMatrixRowHeaderTableModel;
+import org.miradi.views.threatmatrix.ThreatMatrixTableModel;
 
 public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 {
@@ -32,5 +38,24 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer) throws Exception
 	{
+		exportSimpleThreatRating(writer);
+		exportStressBasedThreatRating(writer);	
+	}
+
+	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception
+	{
+		AbstractTableExporter tableExporter = new ThreatStressRatingMultiTablePanel(getMainWindow()).getTableForExporting();
+		exportTable(writer, tableExporter);
+	}
+	
+	private void exportSimpleThreatRating(RtfWriter writer) throws Exception
+	{
+		ThreatMatrixTableModel model = new ThreatMatrixTableModel(getProject());
+		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(getProject(), model);
+		
+		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter();
+		multiTableExporter.addExportable(new MainThreatTableModelExporter(newRowHeaderData));
+		multiTableExporter.addExportable(new MainThreatTableModelExporter(model));
+		exportTable(writer, multiTableExporter);
 	}
 }
