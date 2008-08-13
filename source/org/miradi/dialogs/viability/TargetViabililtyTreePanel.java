@@ -36,19 +36,19 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 {
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, ORef targetRef) throws Exception
 	{
-		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetRef));
+		TargetViabilityTreeModel model = new TargetViabilityTreeModel(mainWindowToUse.getProject(), new TargetViabilityRoot(projectToUse, targetRef));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
 	}
 
 	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(mainWindowToUse.getProject()));
+		ViabilityTreeModel model = new ViabilityTreeModel(mainWindowToUse.getProject(), new ViabilityRoot(mainWindowToUse.getProject()));
 		return getTargetViabililtyTreePanel(mainWindowToUse, mainWindowToUse.getProject(), model);
 	}
 
 	public static TargetViabililtyTreePanel createFactorIndicatorPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
 	{
-		IndicatorTreeModel model = new IndicatorTreeModel(new FactorTreeTableNode(projectToUse, factorRef));
+		IndicatorTreeModel model = new IndicatorTreeModel(mainWindowToUse.getProject(), new FactorTreeTableNode(projectToUse, factorRef));
 		return getTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
 	}
 	

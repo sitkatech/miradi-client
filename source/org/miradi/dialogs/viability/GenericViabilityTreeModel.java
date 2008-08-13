@@ -26,14 +26,15 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 
 abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 {
-	public GenericViabilityTreeModel(Object root)
+	public GenericViabilityTreeModel(Project project, Object root)
 	{
-		super(root);
+		super(project, root);
 		statusQuestion = new StatusQuestion();
 	}
 
