@@ -49,6 +49,7 @@ public class ProjectRtfExporter
 	{
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getProjectMetadataRefList());
 		rtfFormExporter.exportForm(new ProjectTabForm());
+		writer.newParagraph();
 		
 		RtfManagementExporter rtfManagementExporter = new RtfManagementExporter(getProject());
 		rtfManagementExporter.writeManagement(getTeamPoolTableExporter(), writer);
