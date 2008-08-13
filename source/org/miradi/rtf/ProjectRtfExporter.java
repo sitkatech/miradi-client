@@ -37,8 +37,8 @@ public class ProjectRtfExporter
 	{
 		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer);
 		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer);
-		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer);
 		new ViabilityViewRtfExporter(getMainWindow()).ExportView(writer);
+		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer);
 		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer);
 	}
 	
