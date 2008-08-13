@@ -25,6 +25,7 @@ import org.miradi.project.Project;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.ObjectTableModelExporter;
 
 abstract public class RtfViewExporter
@@ -60,7 +61,7 @@ abstract public class RtfViewExporter
 		return mainWindow;
 	}
 
-	abstract public void ExportView(RtfWriter writer) throws Exception;
+	abstract public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception;
 	
 	private MainWindow mainWindow;
 }

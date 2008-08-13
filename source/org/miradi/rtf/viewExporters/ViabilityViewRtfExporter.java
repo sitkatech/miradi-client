@@ -23,7 +23,9 @@ import org.miradi.dialogs.viability.TargetViabilityTreeTable;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityViewRtfExporter extends RtfViewExporter
@@ -34,10 +36,11 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	}
 	
 	@Override
-	public void ExportView(RtfWriter writer) throws Exception
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		//TODO need to have a TreeTableModelExporter instead
-		exportTable(writer, new TreeTableExporter(getTreeTable()));
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
+			exportTable(writer, new TreeTableExporter(getTreeTable()));
 	}
 	
 	private TargetViabilityTreeTable getTreeTable() throws Exception

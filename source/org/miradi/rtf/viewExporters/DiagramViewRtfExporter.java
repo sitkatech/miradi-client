@@ -22,8 +22,10 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.CodeList;
 
 public class DiagramViewRtfExporter extends RtfViewExporter
 {
@@ -33,10 +35,13 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer) throws Exception
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		exportDiagrams(writer, getProject().getConceptualModelDiagramPool().getRefList());
-		exportDiagrams(writer, getProject().getResultsChainDiagramPool().getRefList());
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE))
+			exportDiagrams(writer, getProject().getConceptualModelDiagramPool().getRefList());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE))
+			exportDiagrams(writer, getProject().getResultsChainDiagramPool().getRefList());
 	}
 
 	private void exportDiagrams(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
