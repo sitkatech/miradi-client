@@ -19,7 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.reports.doers;
 
+import java.io.File;
+
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
+import org.miradi.rtf.ProjectRtfExporter;
+import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.RtfFileChooser;
 import org.miradi.views.ObjectsDoer;
 
 public class RunReportTemplate extends ObjectsDoer
@@ -27,7 +33,7 @@ public class RunReportTemplate extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
@@ -35,5 +41,38 @@ public class RunReportTemplate extends ObjectsDoer
 	{
 		if (!isAvailable())
 			return;
+		
+		RtfFileChooser rtfFileChooser = new RtfFileChooser(getMainWindow());
+		File destination = rtfFileChooser.displayChooser();
+		if (destination == null) 
+			return;
+
+		try
+		{
+			writeRtf(destination);
+			EAM.notifyDialog(EAM.text("Current page was exported as RTF."));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error occurred while trying to export current page as RTF.\n") + e.getMessage());
+		}
+	}
+	
+	private void writeRtf(File destination) throws Exception
+	{
+		RtfWriter rtfWriter = new RtfWriter(destination);
+		try
+		{
+			//FIXME right now this is exporting all view tabs,  should export report template
+			rtfWriter.startRtf();
+			rtfWriter.landscapeMode();
+			new ProjectRtfExporter(getMainWindow()).exportProject(rtfWriter);
+			rtfWriter.endRtf();
+		}
+		finally
+		{
+			rtfWriter.close();
+		}
 	}
 }

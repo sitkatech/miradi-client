@@ -26,6 +26,7 @@ import javax.swing.JToolBar;
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
+import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -41,6 +42,12 @@ public class ReportsView extends TabbedView
 		super(mainWindowToUse);
 		addDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+	
+	public void becomeActive() throws Exception
+	{
+		super.becomeActive();
+		reportTemplateManagementPanel.updateSplitterLocation();
 	}
 	
 	private void addDoersToMap()
@@ -69,16 +76,19 @@ public class ReportsView extends TabbedView
 	{
 		standardReportSplitPane = new StandardReportSplitPane(getMainWindow());
 		customReportSplitPane = new CustomReportSplitPane(getMainWindow());
+		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 
 		addTab(EAM.text("Standard Reports"), standardReportSplitPane);
 		addTab(EAM.text("Custom Reports"), customReportSplitPane);
-	}
-
-	public void deleteTabs() throws Exception
-	{
-		// lightweight tabs...nothing to dispose yet
+		addTab(EAM.text("RTF Reports"), reportTemplateManagementPanel);
 	}
 	
+	public void deleteTabs() throws Exception
+	{
+		reportTemplateManagementPanel.dispose();
+		reportTemplateManagementPanel = null;
+	}
+
 	@Override
 	public void prepareForTabSwitch()
 	{
@@ -92,4 +102,5 @@ public class ReportsView extends TabbedView
 	
 	private StandardReportSplitPane standardReportSplitPane;
 	private CustomReportSplitPane customReportSplitPane;
+	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 }

@@ -24,11 +24,10 @@ import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
 public class ReportTemplatePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ReportTemplatePoolTablePanel(MainWindow mainWindowToUse, ORef objectRef, String annotationTag)
+	public ReportTemplatePoolTablePanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, new ReportTemplatePoolTable(mainWindowToUse, new ReportTemplatePoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
 	}

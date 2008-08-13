@@ -19,21 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.reports.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
+import org.miradi.objects.ReportTemplate;
+import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
-public class CreateReportTemplateDoer extends ObjectsDoer
+public class CreateReportTemplateDoer extends CreatePoolObjectDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected int getTypeToCreate()
 	{
-		return false;
-	}
-
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
+		return ReportTemplate.getObjectType();
 	}
 }

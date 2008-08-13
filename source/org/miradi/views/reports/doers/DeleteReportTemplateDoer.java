@@ -19,21 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.reports.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
+import org.miradi.main.EAM;
+import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
-public class DeleteReportTemplateDoer extends ObjectsDoer
+public class DeleteReportTemplateDoer extends DeletePoolObjectDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected String getCustomText()
 	{
-		return false;
-	}
-
-	@Override
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
+		return EAM.text("Report Template");
 	}
 }
