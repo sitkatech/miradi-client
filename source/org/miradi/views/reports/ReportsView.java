@@ -74,12 +74,8 @@ public class ReportsView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		standardReportSplitPane = new StandardReportSplitPane(getMainWindow());
-		customReportSplitPane = new CustomReportSplitPane(getMainWindow());
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 
-		addTab(EAM.text("Standard Reports"), standardReportSplitPane);
-		addTab(EAM.text("Custom Reports"), customReportSplitPane);
 		addTab(EAM.text("RTF Reports"), reportTemplateManagementPanel);
 	}
 	
@@ -89,18 +85,5 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel = null;
 	}
 
-	@Override
-	public void prepareForTabSwitch()
-	{
-		super.prepareForTabSwitch();
-		
-		standardReportSplitPane.clear();
-		customReportSplitPane.clear();
-		standardReportSplitPane.restoreSavedLocation();
-		customReportSplitPane.restoreSavedLocation();
-	}
-	
-	private StandardReportSplitPane standardReportSplitPane;
-	private CustomReportSplitPane customReportSplitPane;
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 }
