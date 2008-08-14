@@ -131,12 +131,13 @@ public class RtfWriter
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
 		startBlock();
-		
+		final int COLUMN_TO_PAD = 0;
 		writeRtfCommand("\\trowd \\trautofit1 \\intbl ");
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			int paddingCount = exportableTable.getDepth(row);
-			writeEncoded(createPadding(paddingCount, column));
+			if (column == COLUMN_TO_PAD)
+				writeEncoded(createPadding(paddingCount, column));
 
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
