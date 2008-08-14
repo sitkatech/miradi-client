@@ -3,7 +3,7 @@
 # $LastChangedRevision: 30 $ 
 #
 
-namespace cp = "http://services.tnc.org/schema/conservation-project/0.2"
+namespace cp = "http://services.tnc.org/schema/conservation-project/0.3"
 
 #
 start = conservation_project.element
@@ -258,6 +258,7 @@ strategies.element =
             & element cp:selected { xsd:boolean }?
             & element cp:comment { text }?
             & element cp:legacy_strategy_ranking { text }?
+            & element cp:status { vocabulary_status }?
             & activities.element?
         }*
     }
@@ -268,6 +269,7 @@ activities.element =
             element cp:name { text }
             & element cp:start_date { vocabulary_date }?
             & element cp:end_date { vocabulary_date }?
+            & element cp:status { vocabulary_status }?
         }*
     }
 #
@@ -278,7 +280,7 @@ indicators.element =
             & element cp:name { text }
             & element cp:methods { text }?
             & element cp:priority { vocabulary_priority_vhhml }?
-            & element cp:status { vocabulary_indicator_status }?
+            & element cp:status { vocabulary_status }?
             & element cp:who_monitors { text }?
             & element cp:annual_cost { xsd:decimal }?
             & element cp:comment { text }?
@@ -292,7 +294,6 @@ vocabulary_doc_exchange_status = "success" | "warning" | "fail"
 vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
-vocabulary_indicator_status = "Planned" | "On Track"
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
 vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
@@ -300,7 +301,7 @@ vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_sequence = xsd:nonNegativeInteger
-vocabulary_status = "Planned" | "Off Track" | "On Track" | "Completed"
+vocabulary_status = "Planned" | "Major Issues" | "Minor Issues" | "On Track" | "Completed" | "Abandoned"
 vocabulary_team = "Owner" | "Team Leader" | "Team Member"
 vocabulary_viability_mode = "kea" | "simple"
 #
@@ -356,3 +357,7 @@ iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
 #                digits, period, colons, hyphens and the characters defined by Unicode, such as "combining"
 #                or "extender." Invalid values include 'brought classical music' (spaces are forbidden) and
 #                'bold,brash' (commas are forbidden).
+# 
+#  * - 0 or more
+#  + - 1 or more
+#  ? - Optional

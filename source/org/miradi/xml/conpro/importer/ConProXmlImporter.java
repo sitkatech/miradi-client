@@ -175,6 +175,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importStrategyStatus(strategyNode, strategyRef);
 			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			importProgressReport(strategyNode, strategyRef);
 			importActivities(strategyNode, strategyRef);
 			
 			createDiagramFactorAndAddToDiagram(strategyRef);
@@ -222,6 +223,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 					
 			importField(activityNode, NAME, activityRef, Task.TAG_LABEL);
 			importWhenOverride(activityNode, activityRef);
+			importProgressReport(activityNode, activityRef);
 		}
 		
 		setIdListFromRefListData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, Task.getObjectType());

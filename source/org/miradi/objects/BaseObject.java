@@ -1197,7 +1197,7 @@ abstract public class BaseObject
 		return progressReport.getData(ProgressReport.TAG_DETAILS);
 	}
 
-	protected ProgressReport getLatestProgressReport()
+	public ProgressReport getLatestProgressReport()
 	{
 		return null;
 	}

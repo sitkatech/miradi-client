@@ -128,9 +128,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, INDICATOR);
 	}
 
-	private void writeOptionalProgressReportStatus(UnicodeWriter out, Indicator indicator) throws Exception
+	private void writeOptionalProgressReportStatus(UnicodeWriter out, BaseObject baseObject) throws Exception
 	{
-		ProgressReport latestProgressReport = indicator.getLatestProgressReport();
+		ProgressReport latestProgressReport = baseObject.getLatestProgressReport();
 		if (latestProgressReport == null)
 			return;
 		
@@ -184,6 +184,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			writeOptionalProgressReportStatus(out, strategy);
 			writeActivities(out, strategy.getActivityRefs());
 						
 			writeEndElement(out, STRATEGY);
@@ -223,6 +224,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());
 				writeElement(out, ACTIVITY_END_DATE, whenTotal.getEndDate().toString());
 			}
+			writeOptionalProgressReportStatus(out, activity);
+			
 			writeEndElement(out, ACTIVITY);
 		}
 		
