@@ -460,6 +460,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectEditableObjectListField(mainWindowToUse, getRefForType(objectType), tagToUse);
 	}
 	
+	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
+	{
+		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), tagToUse, question, 1);
+	}
+	
 	public ObjectDataInputField createCodeListField(int objectType, String tagToUse, ChoiceQuestion question, int columnCount)
 	{
 		return new ObjectCodeListField(project, objectType, getObjectIdForType(objectType), tagToUse, question, columnCount);
