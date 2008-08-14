@@ -23,20 +23,27 @@ import java.util.Arrays;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.HtmlUtilities;
 
 public abstract class TreeTableNode implements Comparable
 {
 	abstract public ORef getObjectReference();
-	public abstract String toString();
 	public abstract int getChildCount();
 	public abstract TreeTableNode getChild(int index);
 	public abstract Object getValueAt(int column);
 	public abstract BaseObject getObject();
 	abstract public void rebuild() throws Exception;
 
+	public String toString()
+	{
+		String value = toRawString();
+		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
+		return value;
+	}
+
 	public String toRawString()
 	{
-		return toString();
+		return null;
 	}
 	
 	public int getType()

@@ -83,7 +83,7 @@ public class StrategyRelevancyNode extends AbstractRelevancyNode
 	}
 
 	@Override
-	public String toString()
+	public String toRawString()
 	{
 		return strategy.toString();
 	}

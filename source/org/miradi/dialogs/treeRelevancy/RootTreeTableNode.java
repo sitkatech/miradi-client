@@ -80,12 +80,6 @@ public class RootTreeTableNode extends AbstractRelevancyNode
 		}
 	}
 
-	@Override
-	public String toString()
-	{
-		return null;
-	}
-
 	private ORefList strategyRefs;
 	private Vector<StrategyRelevancyNode> strategyChildren;
 }

@@ -73,7 +73,8 @@ public class FactorTreeTableNode extends TreeTableNode
 		return "";
 	}
 
-	public String toString()
+	@Override
+	public String toRawString()
 	{
 		return "";
 	}

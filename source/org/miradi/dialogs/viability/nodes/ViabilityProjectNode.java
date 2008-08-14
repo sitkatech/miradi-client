@@ -31,7 +31,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.utils.HtmlUtilities;
 
 public class ViabilityProjectNode extends TreeTableNode
 {
@@ -78,13 +77,6 @@ public class ViabilityProjectNode extends TreeTableNode
 		return null;
 	}
 
-	public String toString()
-	{
-		String value = toRawString();
-		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
-		return value;
-	}
-	
 	@Override
 	public String toRawString()
 	{

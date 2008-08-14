@@ -43,11 +43,6 @@ public class PlanningTreeMeasurementNode extends AbstractPlanningTreeNode
 		return false;
 	}
 	
-	public String toString()
-	{
-		return toRawString();
-	}
-	
 	@Override
 	public String toRawString()
 	{
