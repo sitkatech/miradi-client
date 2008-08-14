@@ -32,7 +32,7 @@ public class ActionDeleteReportTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Report Template");
+		return EAM.text("Action|Delete");
 	}
 
 	public String getToolTipText()
