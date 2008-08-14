@@ -72,7 +72,7 @@ public class RunReportTemplateDoer extends ObjectsDoer
 			rtfWriter.landscapeMode();
 			
 			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
-			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_CONTENT);
+			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES);
 			new ProjectRtfExporter(getMainWindow()).exportProject(rtfWriter, reportTemplateContent);
 			
 			rtfWriter.endRtf();
