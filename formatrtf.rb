@@ -34,17 +34,16 @@ class RtfFormatter
 			if(command)
 				cmd = command[0]
 				
-				if(@commands_on_line == 0)
-					newline
-				end
-				if(@commands_on_line > 8)
+				if(forces_newline_before?(cmd))
 					newline
 				end
 				print "#{cmd} "
 				@commands_on_line += 1
-				if(forces_newline?(cmd))
+				if(forces_newline_after?(cmd))
 					newline
 				end
+				
+				@previous_command = cmd
 				@contents = @contents.sub(cmd, '')
 				next
 			end
@@ -94,12 +93,28 @@ class RtfFormatter
 	def newline
 		puts
 		@indent.times do
-			print ' '
+			print '  '
 		end
 		@commands_on_line = 0
 	end
 	
-	def forces_newline?(cmd)
+	def forces_newline_before?(cmd)
+		if(@commands_on_line == 0 || @commands_on_line > 8)
+			return true
+		end
+		
+		if(@previous_command =~ /\\tr/ && cmd =~ /\\tbl/)
+			return true
+		end
+		
+		if(@previous_command =~ /\\tbl/ && cmd =~ /\\cl/)
+			return true
+		end
+		
+		return false
+	end
+	
+	def forces_newline_after?(cmd)
 		if(cmd =~ /\\cell[\d*]/) then return true end
 		if(cmd =~ /\\cellx[\d*]/) then return true end
 		if(cmd =~ /\\row/) then return true end
