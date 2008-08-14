@@ -51,7 +51,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(PLANNING_VIEW_PLANNING_TAB_CODE, "Planning"),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, "Resources"),
 				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, "Accounting Codes"),
-				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, "Funding Source"),
+				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, "Funding Sources"),
 		};
 	}
 	
