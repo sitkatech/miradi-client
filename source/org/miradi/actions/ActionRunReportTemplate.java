@@ -31,11 +31,11 @@ public class ActionRunReportTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Run Report Template");
+		return EAM.text("Action|Run Selected...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Run a Report Template");
+		return EAM.text("TT|Run the Selected Report Template");
 	}
 }
