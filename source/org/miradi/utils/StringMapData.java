@@ -67,6 +67,11 @@ public class StringMapData extends ObjectData
 	{
 		return toString().hashCode();
 	}
-
+	
+	public boolean isStringMapData()
+	{
+		return true;
+	}
+	
 	private StringMap data;
 }

@@ -36,7 +36,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.StringMapData;
 
 public class RtfFormExporter
 {
@@ -117,7 +119,7 @@ public class RtfFormExporter
 			}
 			if (formItem.isFormFieldData())
 			{
-				rowContent.append(getFieldData((FormFieldData) formItem) + FIELD_SPACING);							
+				rowContent.append(getFieldData((FormFieldData) formItem, formRow) + FIELD_SPACING);							
 			}
 		}
 		
@@ -131,7 +133,7 @@ public class RtfFormExporter
 		getWriter().writeln(rowFormatting.toString());
 	}
 
-	private String getFieldData(FormFieldData formFieldData)
+	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
 	{
 		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
 		BaseObject baseObject = getProject().findObject(ref);
@@ -145,6 +147,9 @@ public class RtfFormExporter
 		
 		if (rawObjectData.isChoiceItemData())
 			return createFromChoiceData((ChoiceData) rawObjectData);
+		
+		if (rawObjectData.isStringMapData())
+			return createFromStringMapData((StringMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
 	}
@@ -170,6 +175,22 @@ public class RtfFormExporter
 		}
 		
 		return choices.toString();
+	}
+	
+	private String createFromStringMapData(StringMapData stringMapData, FormRow formRow)
+	{
+		if (formRow.getLeftFormItemsCount() == 0)
+			return "";
+		
+		FormItem  leftFormItem = formRow.getLeftFormItem(0);
+		if (!leftFormItem.isFormConstant())
+			return "";
+		
+		FormConstant formConstant = (FormConstant) leftFormItem;
+		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		ChoiceItem choiceItem = question.findChoiceByLabel(formConstant.getConstant());
+		
+		return stringMapData.getStringMap().get(choiceItem.getCode());
 	}
 
 	private String getFieldLabel(FormFieldLabel formFieldLabel)
