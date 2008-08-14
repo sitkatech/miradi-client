@@ -19,19 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.Vector;
-
-import javax.swing.Icon;
 import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.icons.IconManager;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
 import com.java.sun.jtreetable.JTreeTable;
 
-public class TreeTableExporter extends AbstractTableExporter
+public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 {
 	public TreeTableExporter(JTreeTable treeToUse)
 	{
@@ -55,38 +50,9 @@ public class TreeTableExporter extends AbstractTableExporter
 		return getTreeTable().getColumnCount();
 	}
 
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		if (column == 0)
-		{
-			BaseObject baseObject = getBaseObjectForRow(row);
-			if (baseObject != null)
-				return IconManager.getImage(baseObject);
-			
-			int rowType = getRowType(row);
-			return IconManager.getImage(rowType);
-		}
-		//FIXME this needs to return correct cell icon
-		return null;
-	}
-
 	public int getDepth(int row)
 	{
 		return getTree().getPathForRow(row).getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
-	}
-
-	public int getMaxDepthCount()
-	{
-		int maxRowDepth = 0;
-		int rowCount = getTree().getRowCount();
-		for (int row = 0; row < rowCount; ++row)
-		{
-			int rowDepth = getDepth(row);
-			maxRowDepth = Math.max(maxRowDepth, rowDepth);
-		}
-		
-		return maxRowDepth;
 	}
 
 	@Override
@@ -115,37 +81,6 @@ public class TreeTableExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 	
-	@Override
-	public ORefList getAllRefs(int objectType)
-	{
-		ORefList baseObjectsForType = new ORefList();
-		for (int row = 0; row < getRowCount(); ++row)
-		{
-			BaseObject baseObjectForRow = getBaseObjectForRow(row);
-			if (baseObjectForRow == null)
-				continue;
-			
-			if (baseObjectForRow.getType() == objectType)
-				baseObjectsForType.add(baseObjectForRow.getRef());
-		}
-		
-		return baseObjectsForType;
-	}
-
-	@Override
-	public Vector<Integer> getAllTypes()
-	{
-		Vector<Integer> rowTypes = new Vector<Integer>();
-		for (int row = 0; row < getRowCount(); ++row)
-		{
-			BaseObject baseObjectForRow = getBaseObjectForRow(row);
-			if (baseObjectForRow != null)
-				rowTypes.add(baseObjectForRow.getType());
-		}
-		
-		return rowTypes;
-	}
-
 	public JTree getTree()
 	{
 		return getTreeTable().getTree();
@@ -157,5 +92,4 @@ public class TreeTableExporter extends AbstractTableExporter
 	}
 
 	private JTreeTable treeTable;
-	private static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 2;
 }
