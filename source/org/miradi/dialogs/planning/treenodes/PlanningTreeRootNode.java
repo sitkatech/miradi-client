@@ -63,17 +63,6 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		return null;
 	}
 
-	public String toString()
-	{
-		return toRawString();
-	}
-	
-	@Override
-	public String toRawString()
-	{
-		return null;
-	}
-
 	public boolean attemptToAdd(ORef refToAdd)
 	{
 		return false;

@@ -26,7 +26,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.utils.HtmlUtilities;
 
 public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 {
@@ -51,13 +50,6 @@ public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
 		return Goal.getObjectType();
 	}
 
-	public String toString()
-	{
-		String value = toRawString();
-		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
-		return value;
-	}
-	
 	@Override
 	public String toRawString()
 	{

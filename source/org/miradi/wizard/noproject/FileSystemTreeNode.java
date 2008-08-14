@@ -121,7 +121,8 @@ public class FileSystemTreeNode extends TreeTableNode
 		return ProjectServer.isExistingProject(thisFile);
 	}
 
-	public String toString()
+	@Override
+	public String toRawString()
 	{
 		return thisFile.getName();
 	}

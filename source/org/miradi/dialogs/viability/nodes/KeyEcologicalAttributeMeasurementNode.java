@@ -26,7 +26,6 @@ import org.miradi.objects.Measurement;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.utils.HtmlUtilities;
 
 public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 {
@@ -56,13 +55,6 @@ public class KeyEcologicalAttributeMeasurementNode extends TreeTableNode
 		return measurement.getType();
 	}
 
-	public String toString()
-	{
-		String value = toRawString();
-		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
-		return value;
-	}
-	
 	@Override
 	public String toRawString()
 	{

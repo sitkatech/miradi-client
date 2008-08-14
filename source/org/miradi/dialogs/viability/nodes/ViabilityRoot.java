@@ -71,7 +71,8 @@ public class ViabilityRoot extends TreeTableNode
 		return "";
 	}
 
-	public String toString()
+	@Override
+	public String toRawString()
 	{
 		return "";
 	}

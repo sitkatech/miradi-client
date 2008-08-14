@@ -55,11 +55,6 @@ public class PlanningTreeConceptualModelNode extends AbstractPlanningTreeNode
 		return ConceptualModelDiagram.getObjectType();
 	}
 
-	public String toString()
-	{
-		return toRawString(); 
-	}
-	
 	@Override
 	public String toRawString()
 	{
