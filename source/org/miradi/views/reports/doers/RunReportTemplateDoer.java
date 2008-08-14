@@ -54,12 +54,12 @@ public class RunReportTemplateDoer extends ObjectsDoer
 		try
 		{
 			writeRtf(destination);
-			EAM.notifyDialog(EAM.text("Current page was exported as RTF."));
+			EAM.notifyDialog(EAM.text("Selected Report Template Was Exported as RTF."));
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error occurred while trying to export current page as RTF.\n") + e.getMessage());
+			EAM.errorDialog(EAM.text("Error occurred while trying to export selected report template as RTF.\n") + e.getMessage());
 		}
 	}
 	
