@@ -48,7 +48,9 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				
 				new ChoiceItem(THREAT_RATING_VIEW_CODE, "Threat Ratings"),
 				
-				new ChoiceItem(PLANNING_VIEW_PLANNING_TAB_CODE, "Planning"),
+				new ChoiceItem(PLANNING_VIEW_STRATEGIC_PLAN_CODE, "Strategic Plan"),
+				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, "Monitoring Plan"),
+				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, "Work Plan"),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, "Resources"),
 				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, "Accounting Codes"),
 				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, "Funding Sources"),
@@ -70,7 +72,9 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE = "DiagramViewResultsChainTab";
 	public static final String VIABILITY_VIEW_VIABILITY_TAB_CODE = "ViabilityViewViabilityTab";
 	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
-	public static final String PLANNING_VIEW_PLANNING_TAB_CODE = "PlanningViewPlanningTab";
+	public static final String PLANNING_VIEW_STRATEGIC_PLAN_CODE = "PlanningViewStrategicPlan";
+	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
+	public static final String PLANNING_VIEW_WORK_PLAN_CODE = "PlanningViewWorkPlan";
 	public static final String PLANNING_VIEW_RESOURCES_TAB_CODE = "PlanningViewResourcesTab";
 	public static final String PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE = "PlanningViewAccountingCodesTab";
 	public static final String PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE = "PlanningViewFundingSourceTab";
