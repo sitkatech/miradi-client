@@ -23,19 +23,10 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
-import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Task;
-import org.miradi.utils.CodeList;
+import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
@@ -52,28 +43,7 @@ public class PlanningTreeXmlExporter
 	//exported tree of refs instead of a table of cell values.              
 	private void createTables(CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
-		multiModelExporter = new MultiTableCombinedAsOneExporter();
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(getProject(), rowsToShow, columnsToShow);
-		multiModelExporter.addExportable(new TreeTableModelExporter(getProject(), model));
-		
-		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(getProject(), model, columnsToShow);
-		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel));
-			
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-		{
-			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), model);	
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(annualTotalsModel));
-		}
-		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-		{
-			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(getProject(), model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel));
-		}
-		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-		{
-			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel));
-		}
+		multiModelExporter = PlanningViewRtfExporter.createTables(getProject(), rowsToShow, columnsToShow); 
 	}
 	
 	public void toXmlPlanningTreeTables(UnicodeWriter out) throws Exception
