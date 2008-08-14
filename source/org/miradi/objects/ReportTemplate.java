@@ -83,16 +83,16 @@ public class ReportTemplate extends BaseObject
 		super.clear();
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		content = new CodeListData(TAG_CONTENT, getQuestion(ReportTemplateContentQuestion.class));
+		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, getQuestion(ReportTemplateContentQuestion.class));
 		comment = new StringData(TAG_COMMENT);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_CONTENT, content);
+		addField(TAG_INCLUDE_SECTION_CODES, content);
 		addField(TAG_COMMENT, comment);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
-	public static final String TAG_CONTENT = "Content";
+	public static final String TAG_INCLUDE_SECTION_CODES = "Content";
 	public static final String TAG_COMMENT = "Comment";
 	
 	private StringData shortLabel;
