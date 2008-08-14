@@ -39,7 +39,11 @@ public class ConProMiradiCodeMapHelper
 	{
 		progressStatusMap = new HashMap<String, String>();
 		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
+		progressStatusMap.put(ProgressReportStatusQuestion.MAJOR_ISSUES_CODE, CONPRO_STATUS_MAJOR_ISSUES_VALUE);
+		progressStatusMap.put(ProgressReportStatusQuestion.MINOR_ISSUES_CODE, CONPRO_STATUS_MINOR_ISSUES_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
+		progressStatusMap.put(ProgressReportStatusQuestion.COMPLETED_CODE, CONPRO_STATUS_COMPLETED_VALUE);
+		progressStatusMap.put(ProgressReportStatusQuestion.ABANDONED_CODE, CONPRO_STATUS_ABANDONED_VALUE);
 		
 		rankingMap = new HashMap<String, String>();
 		rankingMap.put("1", "Poor");
@@ -172,5 +176,9 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> viabilityModeMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
+	private static final String CONPRO_STATUS_MAJOR_ISSUES_VALUE = "Major Issues";
+	private static final String CONPRO_STATUS_MINOR_ISSUES_VALUE = "Minor Issues";
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
+	private static final String CONPRO_STATUS_COMPLETED_VALUE = "Completed";
+	private static final String CONPRO_STATUS_ABANDONED_VALUE = "Abandoned";
 }

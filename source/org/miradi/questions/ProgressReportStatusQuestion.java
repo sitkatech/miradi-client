@@ -33,14 +33,19 @@ public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified", Color.WHITE),
 				new ChoiceItem(PLANNED_CODE, "Scheduled for future implementation ", Color.WHITE),
-				new ChoiceItem("MajorIssues", "Major Issues - Ongoing, major issues that need attention", COLOR_ALERT),
-				new ChoiceItem("MinorIssues", "Minor Issues - Ongoing, has minor issues that need attention", COLOR_CAUTION),
+				new ChoiceItem(MAJOR_ISSUES_CODE, "Major Issues - Ongoing, major issues that need attention", COLOR_ALERT),
+				new ChoiceItem(MINOR_ISSUES_CODE, "Minor Issues - Ongoing, has minor issues that need attention", COLOR_CAUTION),
 				new ChoiceItem(ON_TRACK_CODE, "On-Track - Ongoing, generally on track", COLOR_OK),
-				new ChoiceItem("Completed", "Completed - Successfully accomplished", COLOR_GREAT),
-				new ChoiceItem("Abandoned", "Abandoned - No longer relevant or useful", Color.WHITE),
+				new ChoiceItem(COMPLETED_CODE, "Completed - Successfully accomplished", COLOR_GREAT),
+				new ChoiceItem(ABANDONED_CODE, "Abandoned - No longer relevant or useful", Color.WHITE),
 		};
 	}
 	
 	public static final String PLANNED_CODE = "Planned";
+	public static final String MAJOR_ISSUES_CODE = "MajorIssues";
+	public static final String MINOR_ISSUES_CODE = "MinorIssues";
 	public static final String ON_TRACK_CODE = "OnTrack";
+	public static final String COMPLETED_CODE = "Completed";
+	public static final String ABANDONED_CODE = "Abandoned";
+
 }
