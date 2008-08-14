@@ -78,7 +78,7 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			throw new RuntimeException("TeamModel.getObjectFromRow error");
+			throw new RuntimeException("TeamModel.getObjectFromRow error. row = " + row);
 		}
 	}
 	
