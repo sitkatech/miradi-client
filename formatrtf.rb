@@ -103,11 +103,16 @@ class RtfFormatter
 			return true
 		end
 		
+		if(cmd == "\\trowd")
+			return true
+		end
+		
 		if(@previous_command =~ /\\tr/ && cmd =~ /\\tbl/)
 			return true
 		end
 		
-		if(@previous_command =~ /\\tbl/ && cmd =~ /\\cl/)
+		if( (@previous_command =~ /\\tbl/ || @previous_command =~ /\\tr/) && 
+				cmd =~ /\\cl/)
 			return true
 		end
 		
