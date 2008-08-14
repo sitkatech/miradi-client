@@ -32,7 +32,7 @@ public class ActionCreateReportTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Report Template");
+		return EAM.text("Action|Create");
 	}
 
 	public String getToolTipText()
