@@ -22,6 +22,7 @@ package org.miradi.dialogs.treetables;
 import java.awt.Component;
 
 import javax.swing.JTable;
+import javax.swing.JTree;
 import javax.swing.event.TableModelEvent;
 import javax.swing.tree.TreePath;
 
@@ -76,6 +77,15 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void setVariableRowHeight()
 	{
 		getTree().setRowHeight(-1);
+		horribleHackToForceJavaToForgetCachedTreeCellHeights();
+	}
+
+	private void horribleHackToForceJavaToForgetCachedTreeCellHeights()
+	{
+		JTree thisTree = getTree();
+		boolean originalSetting = thisTree.getShowsRootHandles();
+		thisTree.setShowsRootHandles(!originalSetting);
+		thisTree.setShowsRootHandles(originalSetting);
 	}
 	
 	public int getPreferredRowHeight(int row)
