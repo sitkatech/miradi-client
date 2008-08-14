@@ -120,21 +120,19 @@ public class RtfWriter
 
 	private void writeTableRow(AbstractTableExporter exportableTable, int row) throws Exception
 	{
-		startBlock();
-		
 		writeRowData(exportableTable, row);
 		writeRowCommands(exportableTable);
-			
-		endBlock();
 	}
 
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
 		startBlock();
 		final int COLUMN_TO_PAD = 0;
-		writeRtfCommand("\\trowd \\trautofit1 \\intbl ");
+		writeRowHeader(exportableTable);
+				
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
+			startBlock();
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
 				writeEncoded(createPadding(paddingCount, column));
@@ -144,39 +142,44 @@ public class RtfWriter
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 
 			writeEncoded(exportableTable.getTextAt(row, column));
-			writeRtfCommand(" \\cell ");
+			writeRtfCommand(" \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\insrsid13244813 \\cell ");
+			endBlock();
 		}
-
-		endBlock();
 	}
-	
-	private void writeRowCommands(AbstractTableExporter exportableTable) throws Exception
+
+	private void writeRowHeader(AbstractTableExporter exportableTable) throws Exception
 	{
-		startBlock();
+		writeRtfCommand("\\trowd \\trhdr \\trautofit1 ");
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRtfCommand("\\cellx" + column + " ");	
 		}
-
-		writeRtfCommand(" \\row ");
+		
+		writeRtfCommand(" \\intbl");
+	}
+	
+	private void writeRowCommands(AbstractTableExporter exportableTable) throws Exception
+	{
+		writeRtfCommand("{\\pard \\ltrpar\\ql \\li0\\ri0\\widctlpar\\intbl\\wrapdefault\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0}");
+		writeRtfCommand("{ \\row }");
 		endBlock();
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
 		startBlock();
-
-		writeRtfCommand("\\trowd \\trhdr \\trautofit1 \\intbl ");
+		writeRowHeader(exportableTable);
+		
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
+			startBlock();
 			String header = exportableTable.getHeaderFor(columnIndex);
 			writeEncoded(header);
-			writeRtfCommand(" \\cell ");
+			writeRtfCommand(" \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\insrsid13244813 \\cell ");
+			endBlock();
 		}
 		
 		writeRowCommands(exportableTable);
-
-		endBlock();
 	}
 	
 	public static String encode(String stringToEncode)
