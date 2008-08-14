@@ -121,6 +121,9 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public Vector<Integer> getAllTypes()
 	{
+		if (getRowCount() == 0)
+			return new Vector<Integer>();
+		
 		Vector<Integer> rowTypes = new Vector<Integer>();
 		rowTypes.add(getRowType(0));
 		
