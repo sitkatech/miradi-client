@@ -57,6 +57,11 @@ public class ReportTemplate extends BaseObject
 		return ObjectType.REPORT_TEMPLATE;
 	}
 	
+	public String getShortLabel()
+	{
+		return shortLabel.get();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
