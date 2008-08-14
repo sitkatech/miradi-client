@@ -29,24 +29,24 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getContentChoices()
 	{		
 		return new ChoiceItem[] {
-				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, "Project"),
+				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, "Project Summary"),
 				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, "Team"),
-				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, "Oranization"),
+				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, "Organization"),
 				new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, "Scope"),
 				new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, "Location"),
-				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, "Planning"),
+				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, "Planning Parameters"),
 				new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, "TNC"),
 				new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, "WWF"),
 				new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, "WCS"),
 				new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, "RARE"),
 				new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, "FOS"),
 				
-				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, "Conceptual Models"),
+				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, "Conceptual Model"),
 				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, "Results Chains"),
 				
-				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, "Viability"),
+				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, "Target Viability"),
 				
-				new ChoiceItem(THREAT_RATING_VIEW_SIMPLE_CODE, "Simple"),
+				new ChoiceItem(THREAT_RATING_VIEW_SIMPLE_CODE, "Threat Ratings"),
 				new ChoiceItem(THREAT_RATING_VIEW_STRESS_BASED_CODE, "Stress Based"),
 				
 				new ChoiceItem(PLANNING_VIEW_PLANNING_TAB_CODE, "Planning"),
