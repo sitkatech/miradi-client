@@ -46,8 +46,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				
 				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, "Target Viability"),
 				
-				new ChoiceItem(THREAT_RATING_VIEW_SIMPLE_CODE, "Threat Ratings"),
-				new ChoiceItem(THREAT_RATING_VIEW_STRESS_BASED_CODE, "Stress Based"),
+				new ChoiceItem(THREAT_RATING_VIEW_CODE, "Threat Ratings"),
 				
 				new ChoiceItem(PLANNING_VIEW_PLANNING_TAB_CODE, "Planning"),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, "Resources"),
@@ -70,8 +69,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE = "DiagramViewConceptualModelTab";
 	public static final String DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE = "DiagramViewResultsChainTab";
 	public static final String VIABILITY_VIEW_VIABILITY_TAB_CODE = "ViabilityViewViabilityTab";
-	public static final String THREAT_RATING_VIEW_SIMPLE_CODE = "ThreatRatingsViewSimple";
-	public static final String THREAT_RATING_VIEW_STRESS_BASED_CODE = "ThreatRatingsViewStressBased";
+	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
 	public static final String PLANNING_VIEW_PLANNING_TAB_CODE = "PlanningViewPlanningTab";
 	public static final String PLANNING_VIEW_RESOURCES_TAB_CODE = "PlanningViewResourcesTab";
 	public static final String PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE = "PlanningViewAccountingCodesTab";

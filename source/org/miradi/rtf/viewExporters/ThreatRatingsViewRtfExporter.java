@@ -40,11 +40,19 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	@Override
 	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_SIMPLE_CODE))
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE))
+			exportThreatRating(writer);
+				
+	}
+
+	private void exportThreatRating(RtfWriter writer) throws Exception
+	{
+		if (getProject().isStressBaseMode())
+			exportStressBasedThreatRating(writer);
+		else
 			exportSimpleThreatRating(writer);
 		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_STRESS_BASED_CODE))
-			exportStressBasedThreatRating(writer);	
+			
 	}
 
 	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception
