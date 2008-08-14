@@ -74,16 +74,17 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		if(!getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
-		for(TableWithRowHeightManagement table : tables)
-		{
-			table.setVariableRowHeight();
-		}
-		
 		for(int row = 0; row < getRowCount(); ++row)
 		{
 			int tallestPreferred = getTallestPreferredRowHeight(row);
 			setRowHeightInAllTables(row, tallestPreferred);
 		}
+
+		for(TableWithRowHeightManagement table : tables)
+		{
+			table.setVariableRowHeight();
+		}
+		
 	}
 
 	private int getRowCount()

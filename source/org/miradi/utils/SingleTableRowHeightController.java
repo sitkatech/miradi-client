@@ -41,7 +41,6 @@ public class SingleTableRowHeightController extends TableRowHeightController
 		if(!isAutomaticRowHeightsEnabled())
 			return;
 		
-		table.setVariableRowHeight();
  		int rowCount = table.getRowCount();
  		Vector<Integer> oldRowHeights = new Vector<Integer>();
  		Vector<Integer> newRowHeights = new Vector<Integer>();
