@@ -92,7 +92,7 @@ public class ReportTemplate extends BaseObject
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
-	public static final String TAG_INCLUDE_SECTION_CODES = "Content";
+	public static final String TAG_INCLUDE_SECTION_CODES = "IncludeSectionCodes";
 	public static final String TAG_COMMENT = "Comment";
 	
 	private StringData shortLabel;
