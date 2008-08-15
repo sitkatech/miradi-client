@@ -23,6 +23,7 @@ import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
@@ -85,6 +86,10 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
 		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 		RelevancyOverride override = strategyRefSet.find(ref);
+		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getUpstreamNonDraftStrategies();
+		if (override == null && upstreamNonDraftStrategyRefs.contains(ref))
+			return new Boolean(true);
+		
 		if (override == null)
 			return new Boolean(false);
 		
@@ -101,14 +106,15 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		RelevancyOverrideSet strategyOverrideSet = new RelevancyOverrideSet(objectiveAsParent.getStrategyRelevancyOverrideSet());
 		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
 		RelevancyOverride existingOverride = strategyOverrideSet.find(ref);
-		if (existingOverride == null && valueAsBoolean.booleanValue())
-		{
+		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getUpstreamNonDraftStrategies();
+		if (existingOverride != null)
+			strategyOverrideSet.remove(existingOverride);	
+		
+		if (upstreamNonDraftStrategyRefs.contains(ref))
 			strategyOverrideSet.add(override);
-		}
-		else 
-		{
-			existingOverride.setOverride(valueAsBoolean.booleanValue());
-		}
+
+		else if (valueAsBoolean.booleanValue())
+			strategyOverrideSet.add(override);
 		
 		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyOverrideSet.toString());
 	}
