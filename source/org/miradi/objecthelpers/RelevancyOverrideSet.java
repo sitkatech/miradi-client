@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
@@ -59,6 +60,18 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 		json.put(TAG_RELEVANCY_OVERRIDES, array);
 		
 		return json;
+	}
+	
+	public RelevancyOverride find(ORef ref)
+	{
+		for (Iterator<RelevancyOverride> iter = iterator(); iter.hasNext();)
+		{
+			RelevancyOverride override = iter.next();
+			if (override.getRef().equals(ref))
+				return override;
+		}
+		
+		return null;
 	}
 	
 	public String toString()
