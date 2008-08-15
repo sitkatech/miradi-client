@@ -32,7 +32,7 @@ public class StrategyActivityRelevancyTreeTableModel extends GenericTreeTableMod
 
 	public String getColumnTag(int column)
 	{
-		return null;
+		return "";
 	}
 
 	public int getColumnCount()
