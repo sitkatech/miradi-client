@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -91,6 +92,11 @@ public class StrategyPool extends EAMNormalObjectPool
 	public FactorId[] getModelNodeIds()
 	{
 		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
+	}
+	
+	public ORefList getNonDraftStrategyRefs()
+	{
+		return new ORefList(getNonDraftStrategies());
 	}
 	
 	public Factor[] getNonDraftStrategies()
