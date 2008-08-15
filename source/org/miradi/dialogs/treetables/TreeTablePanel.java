@@ -23,6 +23,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -252,6 +254,24 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return false;
 	}
 	
+	public static class MouseWheelHandler implements MouseWheelListener
+	{
+		public MouseWheelHandler(JScrollBar masterScrollBarToUse)
+		{
+			scrollBar = masterScrollBarToUse;
+		}
+		
+		public void mouseWheelMoved(MouseWheelEvent e)
+		{
+			if(e.getScrollType() != e.WHEEL_UNIT_SCROLL)
+				return;
+			
+			scrollBar.setValue(scrollBar.getValue() + e.getUnitsToScroll());
+		}
+		
+		private JScrollBar scrollBar;
+	}
+		
 	public static class ModelUpdater implements TableModelListener
 	{
 		public ModelUpdater(AbstractTableModel modelToUpdateToUse)

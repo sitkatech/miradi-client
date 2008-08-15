@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.treeRelevancy;
 
 import java.awt.BorderLayout;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -48,7 +46,7 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel implements MouseWheelListener
+public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel
 {
 	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
@@ -69,7 +67,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		model = modelToUse;
 		
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		treeTableScrollPane.addMouseWheelListener(this);
+		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeTable);
@@ -127,7 +125,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.hideVerticalScrollBar();
-		scrollPane.addMouseWheelListener(this);
+		scrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 
 		scrollController.addScrollPane(scrollPane);
 		
@@ -173,14 +171,6 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		return (StrategyActivityRelevancyTreeTableModel)getModel();
 	}
 
-	public void mouseWheelMoved(MouseWheelEvent e)
-	{
-		if(e.getScrollType() != e.WHEEL_UNIT_SCROLL)
-			return;
-		
-		masterScrollBar.setValue(masterScrollBar.getValue() + e.getUnitsToScroll());
-	}
-	
 	@Override
 	protected GridLayoutPlus createButtonLayout()
 	{
