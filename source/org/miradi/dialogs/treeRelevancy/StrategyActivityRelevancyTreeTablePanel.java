@@ -30,7 +30,6 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -45,10 +44,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends MultiTreeTablePanel
 {
 	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
-		//TODO THis should be all upstream strategies for the objective
-		ORefList nonDraftStrategyRefs = mainWindowToUse.getProject().getStrategyPool().getNonDraftStrategyRefs();
-	
-		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject(), nonDraftStrategyRefs);
+		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject(), objective);
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, treeTableModel);
 		

@@ -25,16 +25,17 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 
 public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 {
-	public RootRelevancyTreeTableNode(Project project, ORefList strategyRefsToUse) throws Exception
+	public RootRelevancyTreeTableNode(Project project, Objective objective) throws Exception
 	{
 		super(project);
 		
-		strategyRefs = strategyRefsToUse;
+		strategyRefs = objective.getUpstreamNonDraftStrategies();
 		rebuild();
 	}
 	
