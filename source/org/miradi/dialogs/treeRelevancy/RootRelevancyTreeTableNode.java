@@ -28,9 +28,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 
-public class RootTreeTableNode extends AbstractRelevancyNode
+public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 {
-	public RootTreeTableNode(Project project, ORefList strategyRefsToUse) throws Exception
+	public RootRelevancyTreeTableNode(Project project, ORefList strategyRefsToUse) throws Exception
 	{
 		super(project);
 		
