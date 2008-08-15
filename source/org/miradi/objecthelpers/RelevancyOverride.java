@@ -53,6 +53,11 @@ public class RelevancyOverride
 		return ref;
 	}
 
+	public void setOverride(boolean isOverride)
+	{
+		overrideFlag = isOverride;
+	}
+	
 	public boolean isOverride()
 	{
 		return overrideFlag;

@@ -100,14 +100,14 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		Boolean valueAsBoolean = (Boolean)value;
 		RelevancyOverrideSet strategyOverrideSet = new RelevancyOverrideSet(objectiveAsParent.getStrategyRelevancyOverrideSet());
 		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
-		if (valueAsBoolean.booleanValue())
+		RelevancyOverride existingOverride = strategyOverrideSet.find(ref);
+		if (existingOverride == null && valueAsBoolean.booleanValue())
 		{
 			strategyOverrideSet.add(override);
 		}
 		else 
 		{
-			RelevancyOverride overrideToRemove = strategyOverrideSet.find(ref);
-			strategyOverrideSet.remove(overrideToRemove);
+			existingOverride.setOverride(valueAsBoolean.booleanValue());
 		}
 		
 		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyOverrideSet.toString());
