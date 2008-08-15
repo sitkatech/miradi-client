@@ -49,4 +49,21 @@ public class TestRelevancyOverrideSet extends EAMTestCase
 		assertContains("not found?", override1, buildFromJsonSet);
 		assertContains("not found?", override2, buildFromJsonSet);
 	}
+	
+	public void testFind()
+	{
+		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(44));
+		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(55));
+		
+		RelevancyOverride override1 = new RelevancyOverride(ref1, true);
+		RelevancyOverride override2 = new RelevancyOverride(ref2, false);
+		
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(override1);
+		relevancyOverrides.add(override2);
+		
+		assertEquals("didnt find correct relevancyOverride1?", override1, relevancyOverrides.find(ref1));
+		assertEquals("didnt find correct relevancyOverride2?", override2, relevancyOverrides.find(ref2));
+		assertEquals("found incorrect relevancyOverride?", null, relevancyOverrides.find(ORef.INVALID));
+	}
 }
