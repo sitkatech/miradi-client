@@ -49,7 +49,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel implements MouseWheelListener
 {
-	public StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
+	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
 		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject(), objective.getRelevantStrategyRefList());
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
@@ -58,7 +58,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable);
 	}
 	
-	public StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable) throws Exception
+	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable) throws Exception
 	{
 		super(mainWindowToUse, treeTable);
 		
