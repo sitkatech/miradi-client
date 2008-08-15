@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -70,7 +68,7 @@ import org.miradi.views.planning.PlanningView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns implements MouseWheelListener
+public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
 	{
@@ -100,7 +98,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		ScrollPaneWithHideableScrollBar newTreeScrollPane = new ScrollPaneWithHideableScrollBar(getTree());
 		newTreeScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		newTreeScrollPane.hideVerticalScrollBar();
-		newTreeScrollPane.addMouseWheelListener(this);
+		newTreeScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 		treeTableScrollPane = newTreeScrollPane;
 
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
@@ -175,7 +173,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.hideVerticalScrollBar();
-		scrollPane.addMouseWheelListener(this);
+		scrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 
 		scrollController.addScrollPane(scrollPane);
 		
@@ -350,14 +348,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 		
 		wholePanel.dispose();
 		return reformatted;
-	}
-
-	public void mouseWheelMoved(MouseWheelEvent e)
-	{
-		if(e.getScrollType() != e.WHEEL_UNIT_SCROLL)
-			return;
-		
-		masterScrollBar.setValue(masterScrollBar.getValue() + e.getUnitsToScroll());
 	}
 
 	private PlanningViewFontProvider fontProvider;
