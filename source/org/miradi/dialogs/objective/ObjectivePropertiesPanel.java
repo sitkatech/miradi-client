@@ -21,7 +21,6 @@ package org.miradi.dialogs.objective;
 
 import org.miradi.actions.ActionEditIndicatorRelevancyList;
 import org.miradi.actions.ActionEditProgressPercent;
-import org.miradi.actions.ActionEditStrategyActivityRelevancyList;
 import org.miradi.actions.ActionEditStrategyRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -59,7 +58,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyRelevancyList.class), picker));
-		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyActivityRelevancyList.class), picker));
+		//FIXME this relevancy is not currently working, will enable when ready.
+		//addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyActivityRelevancyList.class), picker));
 		
 		
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
