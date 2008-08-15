@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.awt.Dimension;
+
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
@@ -47,6 +49,7 @@ public class EditStrategyActivityRelevacyListDoer extends ObjectsDoer
 			Objective objective = getSelectedObjective();
 			StrategyActivityRelevancyTreeTablePanel panel = StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), objective);
 			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Relevant Strategies and Activities"));
+			dialog.setPreferredSize(new Dimension(600, 400));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
 		}
