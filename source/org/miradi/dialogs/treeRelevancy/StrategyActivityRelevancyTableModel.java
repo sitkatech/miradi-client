@@ -24,7 +24,6 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
@@ -83,40 +82,48 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 
 	public Object getValueAt(int row, int column)
 	{
-		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
-		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-		RelevancyOverride override = strategyRefSet.find(ref);
-		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getDefaultRelevantStrategies();
-		if (override == null && upstreamNonDraftStrategyRefs.contains(ref))
-			return new Boolean(true);
-		
-		if (override == null)
+		try
+		{
+			ORefList relevantStrategAndActivityRefs = getRelevantStrategyActivityRefs();
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			if (relevantStrategAndActivityRefs.contains(ref))
+				return new Boolean(true);
+			
 			return new Boolean(false);
-		
-		return new Boolean(override.isOverride());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new Boolean(false);
+		}
 	}
-	
+
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
 			return;
-		
-		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-		Boolean valueAsBoolean = (Boolean)value;
-		RelevancyOverrideSet strategyOverrideSet = new RelevancyOverrideSet(objectiveAsParent.getStrategyRelevancyOverrideSet());
-		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
-		RelevancyOverride existingOverride = strategyOverrideSet.find(ref);
-		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getDefaultRelevantStrategies();
-		if (existingOverride != null)
-			strategyOverrideSet.remove(existingOverride);	
-		
-		if (upstreamNonDraftStrategyRefs.contains(ref))
-			strategyOverrideSet.add(override);
 
-		else if (valueAsBoolean.booleanValue())
-			strategyOverrideSet.add(override);
-		
-		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyOverrideSet.toString());
+		try
+		{
+			ORefList all = getRelevantStrategyActivityRefs();
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			Boolean valueAsBoolean = (Boolean)value;
+			all.remove(ref);
+			if (valueAsBoolean)
+				all.add(ref);
+			
+			RelevancyOverrideSet relevancySet = objectiveAsParent.getCalculatedRelevantStrategyrOverrides(all);	
+			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, relevancySet.toString());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	private ORefList getRelevantStrategyActivityRefs() throws Exception
+	{
+		return new ORefList(objectiveAsParent.getRelevantStrategyRefList());
 	}
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
