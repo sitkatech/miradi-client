@@ -20,24 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.BoundedRangeModel;
-import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
@@ -52,7 +43,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
-import org.miradi.dialogs.treetables.TreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -67,7 +57,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -396,97 +385,4 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns 
 	private MultiTableRowHeightController rowHeightController;
 	private MultiTableCombinedAsOneExporter multiTableExporter;
 	private MultiTableVerticalScrollController scrollController;
-}
-
-class ModelUpdater implements TableModelListener
-{
-	public ModelUpdater(AbstractTableModel modelToUpdateToUse)
-	{
-		modelToUpdate = modelToUpdateToUse;
-	}
-	
-	public void tableChanged(TableModelEvent e)
-	{
-		modelToUpdate.fireTableDataChanged();
-	}
-	
-	private AbstractTableModel modelToUpdate;
-}
-
-class MasterVerticalScrollBar extends FastScrollBar implements ChangeListener
-{
-	MasterVerticalScrollBar(JScrollPane baseRangeOn)
-	{
-		super(VERTICAL);
-		baseRangeOn.getVerticalScrollBar().getModel().addChangeListener(this);
-		otherScrollBar = baseRangeOn.getVerticalScrollBar();
-	}
-
-	public void stateChanged(ChangeEvent e)
-	{
-		updateRange();
-	}
-
-	private void updateRange()
-	{
-		BoundedRangeModel ourModel = getModel();
-		BoundedRangeModel otherModel = otherScrollBar.getModel();
-		ourModel.setMinimum(otherModel.getMinimum());
-		ourModel.setMaximum(otherModel.getMaximum());
-		ourModel.setExtent(otherModel.getExtent());
-	}
-
-	private JScrollBar otherScrollBar;
-}
-
-class ShrinkToFitVerticallyHorizontalBox extends JPanel
-{
-	ShrinkToFitVerticallyHorizontalBox()
-	{
-		BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
-		setLayout(layout);
-	}
-	
-	@Override
-	public void setPreferredSize(Dimension preferredSize)
-	{
-		overriddenPreferredSize = preferredSize;
-	}
-	
-	@Override
-	public Dimension getPreferredSize()
-	{
-		if(overriddenPreferredSize != null)
-			return overriddenPreferredSize;
-		
-		Dimension size = new Dimension(super.getPreferredSize());
-		Container parent = getParent();
-		if(parent == null)
-			return size;
-		
-		setPreferredSize(new Dimension(0,0));
-		Dimension max = parent.getPreferredSize();
-		setPreferredSize(null);
-		size.height = Math.min(size.height, max.height);
-		return size;
-	}
-	
-	private Dimension overriddenPreferredSize;
-}
-
-class ScrollPaneNoExtraWidth extends ScrollPaneWithHideableScrollBar
-{
-	public ScrollPaneNoExtraWidth(Component component)
-	{
-		super(component);
-	}
-
-	@Override
-	public Dimension getMaximumSize()
-	{
-		Dimension max = super.getMaximumSize();
-		max.width = getPreferredSize().width;
-		return max;
-	}
-	
 }

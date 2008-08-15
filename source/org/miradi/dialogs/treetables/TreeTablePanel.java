@@ -21,13 +21,24 @@ package org.miradi.dialogs.treetables;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.BoundedRangeModel;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.TreePath;
 
 import org.martus.swing.UiButton;
@@ -42,6 +53,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
@@ -50,6 +62,11 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse)
+	{
+		this(mainWindowToUse, treeToUse, new Class[0]);
+	}
+	
 	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse, treeToUse);
@@ -233,6 +250,99 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		if(tag.equals(BaseObject.TAG_ID) || tag.equals(BaseObject.TAG_LABEL))
 			return true;
 		return false;
+	}
+	
+	public static class ModelUpdater implements TableModelListener
+	{
+		public ModelUpdater(AbstractTableModel modelToUpdateToUse)
+		{
+			modelToUpdate = modelToUpdateToUse;
+		}
+		
+		public void tableChanged(TableModelEvent e)
+		{
+			modelToUpdate.fireTableDataChanged();
+		}
+		
+		private AbstractTableModel modelToUpdate;
+	}
+
+	public static class MasterVerticalScrollBar extends FastScrollBar implements ChangeListener
+	{
+		public MasterVerticalScrollBar(JScrollPane baseRangeOn)
+		{
+			super(VERTICAL);
+			baseRangeOn.getVerticalScrollBar().getModel().addChangeListener(this);
+			otherScrollBar = baseRangeOn.getVerticalScrollBar();
+		}
+
+		public void stateChanged(ChangeEvent e)
+		{
+			updateRange();
+		}
+
+		private void updateRange()
+		{
+			BoundedRangeModel ourModel = getModel();
+			BoundedRangeModel otherModel = otherScrollBar.getModel();
+			ourModel.setMinimum(otherModel.getMinimum());
+			ourModel.setMaximum(otherModel.getMaximum());
+			ourModel.setExtent(otherModel.getExtent());
+		}
+
+		private JScrollBar otherScrollBar;
+	}
+
+	public static class ShrinkToFitVerticallyHorizontalBox extends JPanel
+	{
+		public ShrinkToFitVerticallyHorizontalBox()
+		{
+			BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
+			setLayout(layout);
+		}
+		
+		@Override
+		public void setPreferredSize(Dimension preferredSize)
+		{
+			overriddenPreferredSize = preferredSize;
+		}
+		
+		@Override
+		public Dimension getPreferredSize()
+		{
+			if(overriddenPreferredSize != null)
+				return overriddenPreferredSize;
+			
+			Dimension size = new Dimension(super.getPreferredSize());
+			Container parent = getParent();
+			if(parent == null)
+				return size;
+			
+			setPreferredSize(new Dimension(0,0));
+			Dimension max = parent.getPreferredSize();
+			setPreferredSize(null);
+			size.height = Math.min(size.height, max.height);
+			return size;
+		}
+		
+		private Dimension overriddenPreferredSize;
+	}
+
+	public static class ScrollPaneNoExtraWidth extends ScrollPaneWithHideableScrollBar
+	{
+		public ScrollPaneNoExtraWidth(Component component)
+		{
+			super(component);
+		}
+
+		@Override
+		public Dimension getMaximumSize()
+		{
+			Dimension max = super.getMaximumSize();
+			max.width = getPreferredSize().width;
+			return max;
+		}
+		
 	}
 
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane

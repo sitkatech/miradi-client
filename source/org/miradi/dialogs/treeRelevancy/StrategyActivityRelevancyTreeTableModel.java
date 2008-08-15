@@ -23,9 +23,9 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 
-public class StrategyActivityTreeTableModel extends GenericTreeTableModel
+public class StrategyActivityRelevancyTreeTableModel extends GenericTreeTableModel
 {
-	public StrategyActivityTreeTableModel(TreeTableNode root)
+	public StrategyActivityRelevancyTreeTableModel(TreeTableNode root)
 	{
 		super(root);
 	}
