@@ -21,17 +21,15 @@ package org.miradi.dialogs.treetables;
 
 import org.miradi.main.MainWindow;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-abstract public class TreeTablePanelWithFourButtonColumns extends MultiTreeTablePanel
+abstract public class MultiTreeTablePanel extends TreeTablePanel
 {
-	public TreeTablePanelWithFourButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
+	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse)
+	{
+		super(mainWindowToUse, treeToUse);
+	}
+	
+	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
-	}
-
-	protected GridLayoutPlus createButtonLayout()
-	{
-		return new GridLayoutPlus(2, 4, 3, 3);
 	}
 }

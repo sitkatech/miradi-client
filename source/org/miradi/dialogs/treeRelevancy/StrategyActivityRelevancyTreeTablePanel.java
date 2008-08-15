@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-import org.miradi.dialogs.treetables.TreeTablePanel;
+import org.miradi.dialogs.treetables.MultiTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -41,7 +41,7 @@ import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel
+public class StrategyActivityRelevancyTreeTablePanel extends MultiTreeTablePanel
 {
 	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
