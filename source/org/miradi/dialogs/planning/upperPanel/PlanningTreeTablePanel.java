@@ -25,7 +25,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.AbstractTableModel;
 
@@ -38,7 +37,6 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
@@ -180,11 +178,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		return scrollPane;
 	}
 
-	private void listenForColumnWidthChanges(JTable table)
-	{
-		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
-	}
-	
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
