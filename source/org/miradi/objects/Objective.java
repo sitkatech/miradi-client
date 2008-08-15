@@ -126,6 +126,11 @@ public class Objective extends Desire
 		}
 	}
 
+	public ORefList getDefaultRelevantStrategies()
+	{
+		return getUpstreamNonDraftStrategies();
+	}
+	
 	public ORefList getUpstreamNonDraftStrategies()
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();

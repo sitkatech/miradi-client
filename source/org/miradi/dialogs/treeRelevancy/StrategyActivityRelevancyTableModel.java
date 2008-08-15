@@ -86,7 +86,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
 		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 		RelevancyOverride override = strategyRefSet.find(ref);
-		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getUpstreamNonDraftStrategies();
+		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getDefaultRelevantStrategies();
 		if (override == null && upstreamNonDraftStrategyRefs.contains(ref))
 			return new Boolean(true);
 		
@@ -106,7 +106,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		RelevancyOverrideSet strategyOverrideSet = new RelevancyOverrideSet(objectiveAsParent.getStrategyRelevancyOverrideSet());
 		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
 		RelevancyOverride existingOverride = strategyOverrideSet.find(ref);
-		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getUpstreamNonDraftStrategies();
+		ORefList upstreamNonDraftStrategyRefs = objectiveAsParent.getDefaultRelevantStrategies();
 		if (existingOverride != null)
 			strategyOverrideSet.remove(existingOverride);	
 		
