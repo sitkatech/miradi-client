@@ -29,7 +29,14 @@ class RtfFormatter
 	
 	def format_rtf()
 		while(!@contents.empty?) do 
-		
+			rtf = @contents.match(/^\{\\rtf1/)
+			if(rtf)
+				print(rtf)
+				@indent = 1
+				remove(rtf[0])
+				next
+			end
+			
 			command = @contents.match(/^\\[\w\d\*-]*/)
 			if(command)
 				cmd = command[0]
@@ -44,14 +51,14 @@ class RtfFormatter
 				end
 				
 				@previous_command = cmd
-				@contents = @contents.sub(cmd, '')
+				remove(cmd)
 				next
 			end
 			
 			whitespace = @contents.match(/^\s\s*/)
 			if(whitespace)
 				#print whitespace[0]
-				@contents = @contents.sub(whitespace[0], '')
+				remove(whitespace[0])
 				next
 			end
 			
@@ -61,7 +68,7 @@ class RtfFormatter
 				newline
 				print first
 				@indent += 1
-				@contents = @contents[1...-1]
+				remove(first)
 				next
 			end
 			
@@ -69,7 +76,7 @@ class RtfFormatter
 				@indent -= 1
 				newline
 				print first
-				@contents = @contents[1...-1]
+				remove(first)
 				next
 			end
 			
@@ -79,7 +86,7 @@ class RtfFormatter
 					newline
 				end
 				print other[1]
-				@contents = @contents.sub(other[1], '')
+				remove(other[1])
 				next
 			end
 			
@@ -88,6 +95,10 @@ class RtfFormatter
 		end
 		
 		puts
+	end
+	
+	def remove(leading_string)
+		@contents = @contents[leading_string.length..-1]
 	end
 	
 	def newline
