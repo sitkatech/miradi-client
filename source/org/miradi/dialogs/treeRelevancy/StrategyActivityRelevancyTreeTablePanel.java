@@ -19,18 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Objective;
-import org.miradi.project.Project;
 
-public class StrategyActivityRelevancyTreeTablePanel extends JPanel
+public class StrategyActivityRelevancyTreeTablePanel extends DisposablePanel
 {
-	public StrategyActivityRelevancyTreeTablePanel(Project project, Objective objective) throws Exception
+	public StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
-		//FIXME temporarly disabled - deprioritized
-		//RootTreeTableNode rootNode = new RootTreeTableNode(project, objective.getRelevantStrategyRefList());
-		//StrategyActivityTreeTableModel model = new StrategyActivityTreeTableModel(rootNode); 
-		//StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(project, model);	
+		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject(), objective.getRelevantStrategyRefList());
+		StrategyActivityTreeTableModel model = new StrategyActivityTreeTableModel(rootNode); 
+		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, model);
+		
+		add(new JScrollPane(treeTable));
 	}
 }
