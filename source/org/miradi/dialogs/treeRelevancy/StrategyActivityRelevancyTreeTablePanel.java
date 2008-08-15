@@ -24,11 +24,9 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.AbstractTableModel;
 
-import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
@@ -130,11 +128,6 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel
 		scrollController.addScrollPane(scrollPane);
 		
 		return scrollPane;
-	}
-	
-	private void listenForColumnWidthChanges(JTable table)
-	{
-		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
 	private void rebuildEntireTreeTable() throws Exception

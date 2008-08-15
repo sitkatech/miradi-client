@@ -33,6 +33,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -48,6 +49,7 @@ import org.miradi.actions.Actions;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -252,6 +254,11 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		if(tag.equals(BaseObject.TAG_ID) || tag.equals(BaseObject.TAG_LABEL))
 			return true;
 		return false;
+	}
+	
+	protected void listenForColumnWidthChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
 	public static class MouseWheelHandler implements MouseWheelListener
