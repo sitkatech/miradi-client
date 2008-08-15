@@ -25,8 +25,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.table.AbstractTableModel;
 
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionTreeCreateActivity;
@@ -58,7 +56,6 @@ import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
-import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.utils.TableWithTreeTableNodeExporter;
 import org.miradi.utils.TreeTableExporter;
 import org.miradi.views.planning.ColumnManager;
@@ -115,19 +112,19 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
 		mainTable = new PlanningViewMainTable(mainWindowToUse, mainModel, fontProvider);
-		mainTableScrollPane = integrateTable(treeToUse, mainTable);
+		mainTableScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		annualTotalsTable = new PlanningViewBudgetAnnualTotalsTable(mainWindowToUse, annualTotalsModel, fontProvider);
-		annualTotalsScrollPane = integrateTable(treeToUse, annualTotalsTable);
+		annualTotalsScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, annualTotalsTable);
 		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		measurementTable = new PlanningViewMeasurementTable(mainWindowToUse, measurementModel, fontProvider);
-		measurementScrollPane = integrateTable(treeToUse, measurementTable);
+		measurementScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, measurementTable);
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		futureStatusTable = new PlanningViewFutureStatusTable(mainWindowToUse, futureStatusModel, fontProvider);
-		futureStatusScrollPane = integrateTable(treeToUse, futureStatusTable);
+		futureStatusScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, futureStatusTable);
 		
 		
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
@@ -159,25 +156,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		rebuildEntireTreeTable();
 	}
 	
-	private ScrollPaneWithHideableScrollBar integrateTable(PlanningTreeTable treeToUse, TableWithRowHeightSaver table)
-	{
-		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
-		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
-		
-		selectionController.addTable(table);
-		rowHeightController.addTable(table);
-		listenForColumnWidthChanges(table);
-
-		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.hideVerticalScrollBar();
-		scrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
-
-		scrollController.addScrollPane(scrollPane);
-		
-		return scrollPane;
-	}
-
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
