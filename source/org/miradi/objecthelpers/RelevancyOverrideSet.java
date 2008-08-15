@@ -32,7 +32,12 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 	{
 		super();
 	}
-
+	
+	public RelevancyOverrideSet(RelevancyOverrideSet overrideSet)
+	{
+		super(overrideSet);
+	}
+	
 	public RelevancyOverrideSet(String listAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(listAsJsonString));

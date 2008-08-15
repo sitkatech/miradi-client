@@ -98,10 +98,19 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		
 		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 		Boolean valueAsBoolean = (Boolean)value;
-		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
+		RelevancyOverrideSet strategyOverrideSet = new RelevancyOverrideSet(objectiveAsParent.getStrategyRelevancyOverrideSet());
 		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
-		strategyRefSet.add(override);
-		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyRefSet.toString());
+		if (valueAsBoolean.booleanValue())
+		{
+			strategyOverrideSet.add(override);
+		}
+		else 
+		{
+			RelevancyOverride overrideToRemove = strategyOverrideSet.find(ref);
+			strategyOverrideSet.remove(overrideToRemove);
+		}
+		
+		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyOverrideSet.toString());
 	}
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
