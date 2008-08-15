@@ -35,7 +35,7 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 	{
 		super(project);
 		
-		strategyRefs = objective.getUpstreamNonDraftStrategies();
+		strategyRefs = project.getStrategyPool().getNonDraftStrategyRefs();
 		rebuild();
 	}
 	
