@@ -108,6 +108,7 @@ public class RtfWriter
 	{
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
+		writeRtfCommand("{\\pard\\pard\\plain}");
 	}
 
 	private void writeTableBody(AbstractTableExporter exportableTable) throws Exception
