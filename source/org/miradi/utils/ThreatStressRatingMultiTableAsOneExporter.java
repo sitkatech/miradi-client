@@ -95,12 +95,20 @@ public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombine
 	{	
 		if (isTopRowTable(row))
 			return super.getTextAt(row, column);
-		
-		int columnWithinSummaryTable = convertToSummaryTableColumn(column);
+
+		if (isFirstBlankTableSummaryRow(column))
+			return "";
+
+		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
 		if (columnWithinSummaryTable < targetSummaryRowTable.getColumnCount() )
 			return targetSummaryRowTable.getTextAt(0, columnWithinSummaryTable);
 		
 		return overallProjectRatingSummaryTable.getTextAt(0, 0);
+	}
+
+	private boolean isFirstBlankTableSummaryRow(int column)
+	{
+		return column == 0;
 	}
 
 	private int convertToSummaryTableColumn(int column)
