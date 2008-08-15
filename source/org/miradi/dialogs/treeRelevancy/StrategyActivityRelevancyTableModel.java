@@ -59,7 +59,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 
 	public String getColumnTag(int column)
 	{
-		return null;
+		return "";
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
