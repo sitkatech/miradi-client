@@ -24,8 +24,6 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -38,7 +36,6 @@ import org.miradi.objects.Objective;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
-import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
@@ -80,7 +77,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel
 		
 		strategyActivityRelevancyTableModel = new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable, objective);
 		strategyActivityRelevancyTable = new StrategyActivityRelevancyTable(mainWindowToUse, strategyActivityRelevancyTableModel);
-		mainTableScrollPane = integrateTable(treeTable, strategyActivityRelevancyTable);
+		mainTableScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeTable, strategyActivityRelevancyTable);
 				
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
@@ -109,25 +106,6 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel
 		add(masterScrollBar, BorderLayout.AFTER_LINE_ENDS);
 		
 		rebuildEntireTreeTable();
-	}
-	
-	private ScrollPaneWithHideableScrollBar integrateTable(TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
-	{
-		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
-		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
-		
-		selectionController.addTable(table);
-		rowHeightController.addTable(table);
-		listenForColumnWidthChanges(table);
-
-		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.hideVerticalScrollBar();
-		scrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
-
-		scrollController.addScrollPane(scrollPane);
-		
-		return scrollPane;
 	}
 	
 	private void rebuildEntireTreeTable() throws Exception

@@ -35,6 +35,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
@@ -61,6 +62,10 @@ import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.MultiTableRowHeightController;
+import org.miradi.utils.MultiTableVerticalScrollController;
+import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.TableWithRowHeightSaver;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -256,6 +261,25 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		return false;
 	}
 	
+	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultipleTableSelectionController selectionController, TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
+	{
+		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
+		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
+		
+		selectionController.addTable(table);
+		rowHeightController.addTable(table);
+		listenForColumnWidthChanges(table);
+
+		ScrollPaneWithHideableScrollBar scrollPane = new ScrollPaneNoExtraWidth(table);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.hideVerticalScrollBar();
+		scrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
+
+		scrollController.addScrollPane(scrollPane);
+		
+		return scrollPane;
+	}
+		
 	protected void listenForColumnWidthChanges(JTable table)
 	{
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
