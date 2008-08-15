@@ -22,17 +22,20 @@ package org.miradi.dialogs.treeRelevancy;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 
 public class StrategyActivityRelevancyTableModel extends EditableObjectTableModel
 {
-	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse)
+	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, Objective objectiveAsParentToUse)
 	{
 		super(projectToUse);
 		
+		objectiveAsParent = objectiveAsParentToUse;
 		rowColumnBaseObjectProvider = providerToUse;
 	}
 
@@ -77,10 +80,15 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		return 1;
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
+	public Object getValueAt(int row, int column)
 	{
-		//FIXME this needs to come from objectives relevact list
-		return new Boolean(false);
+		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
+		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+		RelevancyOverride override = strategyRefSet.find(ref);
+		if (override == null)
+			return new Boolean(false);
+		
+		return new Boolean(override.isOverride());
 	}
 	
 	public void setValueAt(Object value, int row, int column)
@@ -88,11 +96,14 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		if (value == null)
 			return;
 		
-		//FIXME check to make sure this works
 		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 		Boolean valueAsBoolean = (Boolean)value;
-		setValueUsingCommand(ref, getColumnTag(column), BooleanData.toString(valueAsBoolean));
+		RelevancyOverrideSet strategyRefSet = objectiveAsParent.getStrategyRelevancyOverrideSet();
+		RelevancyOverride override = new RelevancyOverride(ref, valueAsBoolean.booleanValue());
+		strategyRefSet.add(override);
+		setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, strategyRefSet.toString());
 	}
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
+	private Objective objectiveAsParent;
 }

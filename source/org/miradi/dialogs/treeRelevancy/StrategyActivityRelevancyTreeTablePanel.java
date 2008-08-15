@@ -59,10 +59,10 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, treeTableModel);
 		
-		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable);
+		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, objective);
 	}
 	
-	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable) throws Exception
+	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Objective objective) throws Exception
 	{
 		super(mainWindowToUse, treeTable);
 		
@@ -82,7 +82,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends TreeTablePanel impl
 		
 		listenForColumnWidthChanges(getTree());
 		
-		strategyActivityRelevancyTableModel = new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable);
+		strategyActivityRelevancyTableModel = new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable, objective);
 		strategyActivityRelevancyTable = new StrategyActivityRelevancyTable(mainWindowToUse, strategyActivityRelevancyTableModel);
 		mainTableScrollPane = integrateTable(treeTable, strategyActivityRelevancyTable);
 				
