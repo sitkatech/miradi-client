@@ -138,6 +138,12 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		component.setPreferredSize( new Dimension( width, preferredSize.height ) );
 	}
 	
+	public int getPreferredHeight(int width)
+	{
+		setFixedWidth(this, width);
+		return getPreferredSize().height;
+	}
+	
 	protected void customizeStyleSheet(StyleSheet style)
 	{
 		style.addRule("body {background: #ffffff;}");
