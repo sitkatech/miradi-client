@@ -116,7 +116,7 @@ public class Objective extends Desire
 		ORefList refList;
 		try
 		{
-			refList = getRelevantStrategyRefList();
+			refList = getRelevantStrategyAndActivityRefs();
 			return refList.toString();
 		}
 		catch(Exception e)
@@ -186,7 +186,7 @@ public class Objective extends Desire
 		return calculateRefList(relevantRefList, relevantOverrides);
 	}
 
-	public ORefList getRelevantStrategyRefList() throws Exception
+	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
 	{
 		ORefSet relevantRefList = new ORefSet(getUpstreamNonDraftStrategies());
 		RelevancyOverrideSet relevantOverrides = getStrategyRelevancyOverrideSet();

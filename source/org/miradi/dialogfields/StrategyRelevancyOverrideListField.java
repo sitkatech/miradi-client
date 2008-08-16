@@ -54,7 +54,7 @@ public class StrategyRelevancyOverrideListField extends RelevancyOverrideListFie
 		try
 		{
 			Objective objective = Objective.find(getProject(), getORef());
-			ORefList relevantRefList = objective.getRelevantStrategyRefList();
+			ORefList relevantRefList = objective.getRelevantStrategyAndActivityRefs();
 			refListEditor.setText(relevantRefList.toString());
 		}
 		catch(Exception e)
