@@ -84,7 +84,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 	{
 		try
 		{
-			ORefList relevantStrategAndActivityRefs = getCurrentlySelectedRefs();
+			ORefList relevantStrategAndActivityRefs = getRelevantStrategyActivityRefs();
 			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 			if (relevantStrategAndActivityRefs.contains(ref))
 				return new Boolean(true);
@@ -125,6 +125,12 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 			checkedRefs.add(refForRow);
 	
 		return checkedRefs;
+	}
+	
+	//FIXME this needs to walk the tree to get selected refs
+	private ORefList getRelevantStrategyActivityRefs() throws Exception
+	{
+		return getCurrentlySelectedRefs();
 	}
 	
 	private ORefList getCurrentlySelectedRefs() throws Exception
