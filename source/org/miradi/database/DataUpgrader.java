@@ -198,6 +198,8 @@ public class DataUpgrader extends FileBasedProjectServer
 			if (readDataVersion(getTopDirectory()) == 34)
 				upgradeToVersion35();
 			
+			if (readDataVersion(getTopDirectory()) == 35)
+				upgradeToVersion36();
 		}
 		finally 
 		{
@@ -205,6 +207,10 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 
+	public void upgradeToVersion36() throws Exception
+	{
+		writeVersion(36);
+	}
 	
 	public void upgradeToVersion35() throws Exception
 	{
