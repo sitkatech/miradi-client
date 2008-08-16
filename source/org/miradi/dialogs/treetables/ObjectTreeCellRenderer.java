@@ -25,7 +25,6 @@ import java.awt.Font;
 
 import javax.swing.Icon;
 import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.miradi.icons.ActivityIcon;
@@ -161,7 +160,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		else if(node.getType() == ProjectMetadata.getObjectType())
 			renderer = projectMetaDataRenderer;
 		
-		DefaultTreeCellRenderer rendererComponent = (DefaultTreeCellRenderer)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
+		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
 	}
 	
@@ -175,7 +174,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return taskRenderer;
 	}
 	
-	private DefaultTreeCellRenderer getRendererWithSetSharedTaskItalicFont(DefaultTreeCellRenderer renderer, Task task)
+	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task)
 	{
 		renderer.setFont(getSharedTaskFont(task));
 		return renderer;
