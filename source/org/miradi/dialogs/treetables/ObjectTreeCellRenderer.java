@@ -117,7 +117,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return new VariableHeightTreeCellRenderer(treeTableToUse);
 	}
 	
-	public void setRendererDefaults(DefaultTreeCellRenderer renderer, Icon icon, Font font)
+	public void setRendererDefaults(VariableHeightTreeCellRenderer renderer, Icon icon, Font font)
 	{
 		renderer.setClosedIcon(icon);
 		renderer.setOpenIcon(icon);
@@ -161,7 +161,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		else if(node.getType() == ProjectMetadata.getObjectType())
 			renderer = projectMetaDataRenderer;
 		
-		DefaultTreeCellRenderer rendererComponent = (DefaultTreeCellRenderer)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+		DefaultTreeCellRenderer rendererComponent = (DefaultTreeCellRenderer)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
 	}
 	
@@ -181,7 +181,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return renderer;
 	}
 	
-	protected DefaultTreeCellRenderer getStrategyRenderer(Factor factor)
+	protected VariableHeightTreeCellRenderer getStrategyRenderer(Factor factor)
 	{
 		return strategyRenderer;
 	}
@@ -214,22 +214,22 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return defaultFont.deriveFont(style);
 	}
 	
-	private DefaultTreeCellRenderer projectMetaDataRenderer;
-	private DefaultTreeCellRenderer targetRenderer;
-	private DefaultTreeCellRenderer strategyRenderer;
-	private DefaultTreeCellRenderer objectiveRenderer;
-	protected DefaultTreeCellRenderer goalRenderer;
-	protected DefaultTreeCellRenderer indicatorRenderer;
-	private DefaultTreeCellRenderer activityRenderer;
-	private DefaultTreeCellRenderer methodRenderer;
-	private DefaultTreeCellRenderer taskRenderer;
-	private DefaultTreeCellRenderer conceptualModelRenderer;
-	private DefaultTreeCellRenderer resultsChainRenderer;
-	private DefaultTreeCellRenderer defaultRenderer;
-	private DefaultTreeCellRenderer stringNoIconRenderer;
-	private DefaultTreeCellRenderer keyEcologicalAttributeRenderer;
-	private DefaultTreeCellRenderer directThreatRenderer;
-	private DefaultTreeCellRenderer threatReductionResultRenderer;
-	private DefaultTreeCellRenderer intermediateResultsRenderer;
-	private	DefaultTreeCellRenderer measurementRenderer;
+	private VariableHeightTreeCellRenderer projectMetaDataRenderer;
+	private VariableHeightTreeCellRenderer targetRenderer;
+	private VariableHeightTreeCellRenderer strategyRenderer;
+	private VariableHeightTreeCellRenderer objectiveRenderer;
+	protected VariableHeightTreeCellRenderer goalRenderer;
+	protected VariableHeightTreeCellRenderer indicatorRenderer;
+	private VariableHeightTreeCellRenderer activityRenderer;
+	private VariableHeightTreeCellRenderer methodRenderer;
+	private VariableHeightTreeCellRenderer taskRenderer;
+	private VariableHeightTreeCellRenderer conceptualModelRenderer;
+	private VariableHeightTreeCellRenderer resultsChainRenderer;
+	private VariableHeightTreeCellRenderer defaultRenderer;
+	private VariableHeightTreeCellRenderer stringNoIconRenderer;
+	private VariableHeightTreeCellRenderer keyEcologicalAttributeRenderer;
+	private VariableHeightTreeCellRenderer directThreatRenderer;
+	private VariableHeightTreeCellRenderer threatReductionResultRenderer;
+	private VariableHeightTreeCellRenderer intermediateResultsRenderer;
+	private	VariableHeightTreeCellRenderer measurementRenderer;
 }

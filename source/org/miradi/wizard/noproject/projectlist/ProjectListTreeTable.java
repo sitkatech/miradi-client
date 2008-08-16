@@ -33,7 +33,6 @@ import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellEditor;
-import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -212,7 +211,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
-			DefaultTreeCellRenderer renderer = null;
+			VariableHeightTreeCellRenderer renderer = null;
 			
 			FileSystemTreeNode node = (FileSystemTreeNode) value;
 			if(node.isProjectDirectory())
@@ -220,13 +219,13 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 			else
 				renderer = folderRenderer;
 			
-			JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+			JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 			return configuredRenderer;
 		}
 		
 
-		private	DefaultTreeCellRenderer folderRenderer;
-		private DefaultTreeCellRenderer projectRenderer;
+		private	VariableHeightTreeCellRenderer folderRenderer;
+		private VariableHeightTreeCellRenderer projectRenderer;
 	}
 
 }
