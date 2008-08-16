@@ -69,6 +69,15 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 	{
 		return rowColumnBaseObjectProvider.getBaseObjectForRowColumn(row, column);
 	}
+	
+	public ORef getRefForRow(int row)
+	{
+		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, SINGLE_COLUMN_INDEX);
+		if (baseObjectForRow == null)
+			return ORef.INVALID;
+		
+		return baseObjectForRow.getRef();
+	}
 
 	public int getRowCount()
 	{
@@ -105,8 +114,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 
 		try
 		{
-			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, column);
-			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value,  baseObjectForRow.getRef());
+			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);
 			RelevancyOverrideSet relevancySet = objectiveAsParent.getCalculatedRelevantStrategyrOverrides(selectedRefs);	
 			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, relevancySet.toString());
 		}
@@ -116,8 +124,9 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		}
 	}
 
-	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, ORef refForRow) throws Exception
+	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
 	{
+		ORef refForRow = getRefForRow(row);
 		ORefList checkedRefs = getCurrentlySelectedRefs();
 		checkedRefs.remove(refForRow);
 		if (valueAsBoolean.booleanValue())
@@ -134,12 +143,11 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 	private ORefList getCurrentlySelectedRefs()
 	{
 		ORefList selectedRefs = new ORefList();
-		final int SINGLE_COLUMN_INDEX = 0;
 		for (int row = 0; row < getRowCount(); ++row)
 		{
 			Boolean booleanValue = (Boolean) getValueAt(row, SINGLE_COLUMN_INDEX);
 			if (booleanValue)
-				selectedRefs.add(getBaseObjectForRowColumn(row, SINGLE_COLUMN_INDEX).getRef());
+				selectedRefs.add(getRefForRow(row));
 		}
 		
 		return selectedRefs;
@@ -147,4 +155,5 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	private Objective objectiveAsParent;
+	private static final int SINGLE_COLUMN_INDEX = 0;
 }
