@@ -127,7 +127,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
 	{
 		ORef refForRow = getRefForRow(row);
-		ORefList checkedRefs = getCurrentlySelectedRefs();
+		ORefList checkedRefs = getCurrentlyCheckedRefs();
 		checkedRefs.remove(refForRow);
 		if (valueAsBoolean.booleanValue())
 			checkedRefs.add(refForRow);
@@ -140,7 +140,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
-	private ORefList getCurrentlySelectedRefs()
+	private ORefList getCurrentlyCheckedRefs()
 	{
 		ORefList selectedRefs = new ORefList();
 		for (int row = 0; row < getRowCount(); ++row)
