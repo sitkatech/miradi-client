@@ -202,7 +202,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int index = 0; index < allObjectives.size(); ++index)
 		{
 			Objective objective = Objective.find(getProject(), allObjectives.get(index));
-			ORefList relevantStrategyRefs = objective.getRelevantStrategyRefList();
+			ORefList relevantStrategyRefs = objective.getRelevantStrategyAndActivityRefs();
 			if (relevantStrategyRefs.contains(strategy.getRef()))
 				objectiveRefs.add(allObjectives.get(index));
 		}

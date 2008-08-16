@@ -123,7 +123,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 
 	private ORefList getCurrentlySelectedRefs() throws Exception
 	{
-		return new ORefList(objectiveAsParent.getRelevantStrategyRefList());
+		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
