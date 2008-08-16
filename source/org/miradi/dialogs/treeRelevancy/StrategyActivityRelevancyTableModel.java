@@ -126,15 +126,23 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		return checkedRefs;
 	}
 	
-	//FIXME this needs to walk the tree to get selected refs
 	private ORefList getRelevantStrategyActivityRefs() throws Exception
 	{
-		return getCurrentlySelectedRefs();
+		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
-	private ORefList getCurrentlySelectedRefs() throws Exception
+	private ORefList getCurrentlySelectedRefs()
 	{
-		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
+		ORefList selectedRefs = new ORefList();
+		final int SINGLE_COLUMN_INDEX = 0;
+		for (int row = 0; row < getRowCount(); ++row)
+		{
+			Boolean booleanValue = (Boolean) getValueAt(row, SINGLE_COLUMN_INDEX);
+			if (booleanValue)
+				selectedRefs.add(getBaseObjectForRowColumn(row, SINGLE_COLUMN_INDEX).getRef());
+		}
+		
+		return selectedRefs;
 	}
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
