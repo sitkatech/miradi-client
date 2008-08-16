@@ -105,13 +105,8 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 
 		try
 		{
-			ORefList selectedRefs = getCurrentlySelectedRefs();
-			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-			Boolean valueAsBoolean = (Boolean)value;
-			selectedRefs.remove(ref);
-			if (valueAsBoolean.booleanValue())
-				selectedRefs.add(ref);
-			
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, column);
+			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value,  baseObjectForRow);
 			RelevancyOverrideSet relevancySet = objectiveAsParent.getCalculatedRelevantStrategyrOverrides(selectedRefs);	
 			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, relevancySet.toString());
 		}
@@ -121,6 +116,17 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		}
 	}
 
+	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, BaseObject baseObjectForRow) throws Exception
+	{
+		ORef refForRow = baseObjectForRow.getRef();
+		ORefList checkedRefs = getCurrentlySelectedRefs();
+		checkedRefs.remove(refForRow);
+		if (valueAsBoolean.booleanValue())
+			checkedRefs.add(refForRow);
+	
+		return checkedRefs;
+	}
+	
 	private ORefList getCurrentlySelectedRefs() throws Exception
 	{
 		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
