@@ -90,7 +90,7 @@ public class Objective extends Desire
 		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
 			return getRelevantIndicatorRefsAsString();
 	
-		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS))
+		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS))
 			return getRelevantStrategyActivityRefsAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
@@ -261,7 +261,7 @@ public class Objective extends Desire
 		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
-		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS);
+		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		latestProgressPercentComplete = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		latestProgressPercentDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		
@@ -270,7 +270,7 @@ public class Objective extends Desire
 		addField(TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 		
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
-		addField(PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS, relevantStrategyRefs);
+		addField(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE, latestProgressPercentComplete);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS, latestProgressPercentDetails);
 	}
@@ -282,7 +282,7 @@ public class Objective extends Desire
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
 	
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
-	public static final String PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 	
