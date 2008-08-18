@@ -27,7 +27,7 @@ import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
@@ -37,7 +37,7 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	{
 		super(mainWindowToUse, model);
 		setBackground(getColumnBackGroundColor(0));
-		renderer = new NumericTableCellRenderer(model, new DefaultFontProvider(getMainWindow()));
+		renderer = new NumericTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
 	}
 
 	public TableCellRenderer getCellRenderer(int row, int column)
