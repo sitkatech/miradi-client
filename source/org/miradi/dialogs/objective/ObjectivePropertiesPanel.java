@@ -57,7 +57,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorRelevancyList.class), picker));
-		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyActivityRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditStrategyActivityRelevancyList.class), picker));
 		
 		
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
