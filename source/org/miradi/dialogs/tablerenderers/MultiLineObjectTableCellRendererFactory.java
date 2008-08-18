@@ -37,16 +37,22 @@ public class MultiLineObjectTableCellRendererFactory extends
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
-		rendererComponent.setText(getAsHtmlText(value));
+		String html = getAsHtmlText(value);
+		return getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
+	}
+	
+	public HtmlFormViewer getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
+	{
+		rendererComponent.setText(html);
 		return rendererComponent;
 	}
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
+		HtmlFormViewer viewer = (HtmlFormViewer)getRendererComponent(table, false, false, row, column, value);
+
 		int columnWidth = table.getCellRect(row, column, false).width;
-		String html = getAsHtmlText(value);
-		rendererComponent.setText(html);
-		int preferredHeight = rendererComponent.getPreferredHeight(columnWidth);
+		int preferredHeight = viewer.getPreferredHeight(columnWidth);
 		return preferredHeight;
 	}
 

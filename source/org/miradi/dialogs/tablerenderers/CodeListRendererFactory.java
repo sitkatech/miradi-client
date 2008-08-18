@@ -49,8 +49,8 @@ public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFac
 	@Override
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		value = getLabelText(value);
-		return super.getPreferredHeight(table, row, column, value);
+		String html = getLabelText(value);
+		return super.getPreferredHeight(table, row, column, html);
 	}
 
 	private String getLabelText(Object value)
