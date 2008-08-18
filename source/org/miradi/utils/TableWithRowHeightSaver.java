@@ -102,6 +102,10 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int column)
 	{
+		TableCellRenderer renderer = getColumnModel().getColumn(column).getCellRenderer();
+		if(renderer != null)
+			return renderer;
+		
 		return cellRendererFactory;
 	}
 	
