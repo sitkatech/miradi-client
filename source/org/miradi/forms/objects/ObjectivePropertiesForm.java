@@ -37,7 +37,7 @@ public class ObjectivePropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, Objective.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_TARGETS);
 		addLabelAndField(type, Objective.PSEUDO_RELEVANT_INDICATOR_REFS);
-		addLabelAndField(type, Objective.PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS);
+		addLabelAndField(type, Objective.PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		addLabelAndFieldsWithLabels(EAM.text("Progress Percents"), type, new String[]{Objective.TAG_PROGRESS_PERCENT_REFS});
 		addLabelAndField(type, Goal.TAG_COMMENTS);
 	}
