@@ -155,7 +155,7 @@ public class Objective extends Desire
 		return relevantOverrides;
 	}
 	
-	public RelevancyOverrideSet getCalculatedRelevantStrategyrOverrides(ORefList all) throws Exception
+	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList defaultRelevantRefList = getUpstreamNonDraftStrategies();
