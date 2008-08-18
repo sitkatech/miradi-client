@@ -21,7 +21,7 @@ package org.miradi.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.table.TableModel;
 
-import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererWithGrayCells;
+import org.miradi.dialogs.tablerenderers.ChoiceItemWithGrayCellsTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithColumnWidthSaver;
@@ -38,7 +38,7 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 	private void setColumnRenderers()
 	{
 		MainThreatTableModel model = (MainThreatTableModel) getModel();
-		ChoiceItemTableCellRendererWithGrayCells renderer = new ChoiceItemTableCellRendererWithGrayCells(model, new DefaultFontProvider(getMainWindow()));
+		ChoiceItemWithGrayCellsTableCellRendererFactory renderer = new ChoiceItemWithGrayCellsTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
 			getColumnModel().getColumn(i).setCellRenderer(renderer);
