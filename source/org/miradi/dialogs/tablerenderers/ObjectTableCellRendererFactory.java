@@ -22,7 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Component;
 import java.awt.Font;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
@@ -39,7 +39,7 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		Font font = getCellFont(row, tableColumn);
 		if(isSharedObject(row, tableColumn))
 			font = font.deriveFont(Font.ITALIC);
