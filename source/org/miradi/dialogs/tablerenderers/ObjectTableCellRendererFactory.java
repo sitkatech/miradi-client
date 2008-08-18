@@ -28,9 +28,9 @@ import javax.swing.JTable;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-public class TableCellRendererForObjects extends BasicTableCellRendererFactory
+public class ObjectTableCellRendererFactory extends BasicTableCellRendererFactory
 {
-	public TableCellRendererForObjects(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		objectProvider = providerToUse;
 		fontProvider = fontProviderToUse;
