@@ -205,12 +205,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		}
 	}
 
-	public String getColumnTag(int tableColumn)
-	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return getTreeTableModel().getColumnTag(modelColumn);
-	}
-	
 	public TreeTableModelAdapter getTreeTableAdapter()
 	{
 		return (TreeTableModelAdapter)getModel();
