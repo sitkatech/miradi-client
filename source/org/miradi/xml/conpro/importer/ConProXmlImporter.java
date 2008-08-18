@@ -1077,7 +1077,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet();
 			Objective objective = Objective.find(getProject(), objectiveRef);
-			relevancyOverrideSet.addAll(objective.getStrategyRelevancyOverrideSet());
+			relevancyOverrideSet.addAll(objective.getStrategyActivityRelevancyOverrideSet());
 			relevancyOverrideSet.add(new RelevancyOverride(strategyRef, true));
 			CommandSetObjectData addStrategy = new CommandSetObjectData(objectiveRef, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
 			getProject().executeCommand(addStrategy);
