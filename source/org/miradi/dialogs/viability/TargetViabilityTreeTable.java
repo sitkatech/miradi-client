@@ -61,7 +61,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
-		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
+		measurementValueRenderer = new MeasurementValueRendererFactory(this, fontProvider);
 		otherRenderer = new ObjectTableCellRendererFactory(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		rebuildTableCompletely();
@@ -159,7 +159,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
-	private MeasurementValueRenderer measurementValueRenderer;
+	private MeasurementValueRendererFactory measurementValueRenderer;
 	private BasicTableCellRendererFactory otherRenderer;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 }

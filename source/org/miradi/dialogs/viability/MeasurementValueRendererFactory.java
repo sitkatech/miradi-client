@@ -36,9 +36,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 
-class MeasurementValueRenderer extends ObjectTableCellRendererFactory
+class MeasurementValueRendererFactory extends ObjectTableCellRendererFactory
 {
-	public MeasurementValueRenderer(TargetViabilityTreeTable providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MeasurementValueRendererFactory(TargetViabilityTreeTable providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		question = new StatusQuestion();
