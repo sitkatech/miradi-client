@@ -24,7 +24,7 @@ import java.awt.Color;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -37,7 +37,7 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 		super(mainWindowToUse, model);	
 		otherRenderer = new BasicTableCellRendererFactory();
 		otherRenderer.setCellBackgroundColor(getBackgroundColor());
-		statusQuestionRenderer = new ChoiceItemTableCellRenderer(model, fontProvider, getBackgroundColor());
+		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(model, fontProvider, getBackgroundColor());
 	}
 
 	// TODO: This code is copied from ObjectTable--should be combined somehow
@@ -75,5 +75,5 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewMeasurementTable";
 
 	private BasicTableCellRendererFactory otherRenderer;
-	private ChoiceItemTableCellRenderer statusQuestionRenderer;
+	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 }

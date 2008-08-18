@@ -34,7 +34,7 @@ import javax.swing.table.TableCellRenderer;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -67,7 +67,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
+		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		otherRenderer = new ObjectTableCellRendererFactory(this, fontProvider);
 		codeListRenderer = new CodeListRenderer(this, fontProvider);
 	}
@@ -293,7 +293,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 
 	private Vector selectionListeners;
 	private int currentSortColumn;
-	private ChoiceItemTableCellRenderer statusQuestionRenderer;
+	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellRendererFactory otherRenderer;
 	private CodeListRenderer codeListRenderer;
 }
