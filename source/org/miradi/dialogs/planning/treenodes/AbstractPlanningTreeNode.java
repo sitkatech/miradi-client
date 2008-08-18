@@ -269,7 +269,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 		if (type == Measurement.getObjectType())
 			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
-		
+		if (type == Task.getObjectType())
+			return new PlanningTreeTaskNode(project, refToAdd, visibleRows);
+				
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
 
