@@ -28,7 +28,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
@@ -40,7 +40,7 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 		super(mainWindowToUse, modelToUse);
 		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
-		renderer = new NumericTableCellRenderer(modelToUse, new DefaultFontProvider(getMainWindow()));
+		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)

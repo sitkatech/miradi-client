@@ -6,7 +6,7 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
@@ -47,7 +47,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 	private BasicTableCellRendererFactory createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new BudgetCostTreeTableCellRenderer(this, fontProvider);
+			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		return new ObjectTableCellRendererFactory(this, fontProvider);

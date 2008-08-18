@@ -25,7 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -37,7 +37,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public PlanningViewBudgetAnnualTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(mainWindowToUse, model);
-		renderer = new BudgetCostTreeTableCellRenderer(model, fontProvider);
+		renderer = new BudgetCostTreeTableCellRendererFactory(model, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)

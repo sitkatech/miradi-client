@@ -30,9 +30,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
-public class BudgetCostTreeTableCellRenderer extends NumericTableCellRenderer
+public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();

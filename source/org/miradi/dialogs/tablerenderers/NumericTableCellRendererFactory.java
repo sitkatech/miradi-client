@@ -25,9 +25,9 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class NumericTableCellRenderer extends ObjectTableCellRendererFactory
+public class NumericTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
-	public NumericTableCellRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public NumericTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
