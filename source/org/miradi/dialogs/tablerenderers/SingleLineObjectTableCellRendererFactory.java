@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Component;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -42,10 +44,10 @@ public class SingleLineObjectTableCellRendererFactory extends
 		return renderer;
 	}
 
-	public int getPreferredHeight(Object value)
+	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		// FIXME: Do the real calculation here
-		return rendererComponent.getFont().getSize();
+		Component component = rendererComponent.getTableCellRendererComponent(table, value, false, false, row, column);
+		return component.getPreferredSize().height;
 	}
 
 	private DefaultTableCellRenderer rendererComponent;
