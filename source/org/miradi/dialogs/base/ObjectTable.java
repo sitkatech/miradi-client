@@ -38,7 +38,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.CodeListRenderer;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
+import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
@@ -68,7 +68,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
-		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
+		otherRenderer = new ObjectTableCellRendererFactory(this, fontProvider);
 		codeListRenderer = new CodeListRenderer(this, fontProvider);
 	}
 	

@@ -34,7 +34,7 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.dialogs.tablerenderers.TableCellRendererForObjects;
+import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
@@ -62,7 +62,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRenderer(this, fontProvider);
-		otherRenderer = new TableCellRendererForObjects(this, fontProvider);
+		otherRenderer = new ObjectTableCellRendererFactory(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRenderer(this, fontProvider);
 		rebuildTableCompletely();
 	}
