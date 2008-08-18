@@ -35,7 +35,7 @@ public class NumericTableCellRenderer extends TableCellRendererForObjects
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
+		renderer.setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 		return renderer;
 	}
 }
