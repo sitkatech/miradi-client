@@ -19,9 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Color;
+
 import javax.swing.JComponent;
 import javax.swing.JTable;
+import javax.swing.text.html.StyleSheet;
 
+import org.martus.swing.HyperlinkHandler;
+import org.miradi.diagram.renderers.FactorHtmlViewer;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
 
@@ -32,7 +37,7 @@ public class MultiLineObjectTableCellRendererFactory extends
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new HtmlFormViewer(mainWindowToUse, "", null);
+		rendererComponent = new TableCellHtmlRendererComponent(mainWindowToUse, null);
 	}
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
@@ -55,7 +60,23 @@ public class MultiLineObjectTableCellRendererFactory extends
 		int preferredHeight = viewer.getPreferredHeight(columnWidth);
 		return preferredHeight;
 	}
+	
+	class TableCellHtmlRendererComponent extends HtmlFormViewer
+	{
+		public TableCellHtmlRendererComponent(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
+		{
+			super(mainWindowToUse, "", hyperLinkHandler);
+		}
 
-	private HtmlFormViewer rendererComponent;
+		@Override
+		protected void customizeStyleSheet(StyleSheet style)
+		{
+			super.customizeStyleSheet(style);
+			Color color = getCellBackgroundColor();
+			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+FactorHtmlViewer.convertColorToHTMLColor(color)+";}"));
+		}
+	}
+
+	private TableCellHtmlRendererComponent rendererComponent;
 
 }
