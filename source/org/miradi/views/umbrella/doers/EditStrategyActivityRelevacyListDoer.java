@@ -49,7 +49,7 @@ public class EditStrategyActivityRelevacyListDoer extends ObjectsDoer
 			Objective objective = getSelectedObjective();
 			StrategyActivityRelevancyTreeTablePanel panel = StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), objective);
 			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, EAM.text("Relevant Strategies and Activities"));
-			dialog.setPreferredSize(new Dimension(600, 400));
+			dialog.setPreferredSize(new Dimension(600, 600));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
 		}
