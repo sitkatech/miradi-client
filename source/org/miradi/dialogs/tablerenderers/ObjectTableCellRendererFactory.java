@@ -24,6 +24,8 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
@@ -34,6 +36,16 @@ public class ObjectTableCellRendererFactory extends BasicTableCellRendererFactor
 	{
 		objectProvider = providerToUse;
 		fontProvider = fontProviderToUse;
+		
+		rendererComponent = new DefaultTableCellRenderer();
+
+	}
+
+	protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
+	{
+		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
+		renderer.setVerticalAlignment(SwingConstants.TOP);
+		return renderer;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -80,4 +92,7 @@ public class ObjectTableCellRendererFactory extends BasicTableCellRendererFactor
 
 	private RowColumnBaseObjectProvider objectProvider;
 	private FontForObjectTypeProvider fontProvider;
+	
+	private DefaultTableCellRenderer rendererComponent;
+
 }

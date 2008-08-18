@@ -26,27 +26,19 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-public class BasicTableCellRendererFactory implements TableCellRenderer
+abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 {
 	public BasicTableCellRendererFactory()
 	{
-		rendererComponent = new DefaultTableCellRenderer();
-		backgroundColor = rendererComponent.getBackground();
+		backgroundColor = Color.WHITE;
 	}
 	
-	protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
-	{
-		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
-		renderer.setVerticalAlignment(SwingConstants.TOP);
-		return renderer;
-	}
+	abstract protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html);
 
 	public void setCellBackgroundColor(Color backgroundColorToUse)
 	{
@@ -98,6 +90,5 @@ public class BasicTableCellRendererFactory implements TableCellRenderer
 	
 	public static final int CELL_MARGIN = 2;
 	
-	private DefaultTableCellRenderer rendererComponent;
 	private Color backgroundColor;
 }

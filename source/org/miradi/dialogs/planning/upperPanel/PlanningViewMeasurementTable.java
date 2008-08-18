@@ -26,6 +26,8 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithTreeTableNodes;
@@ -35,7 +37,7 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 	public PlanningViewMeasurementTable(MainWindow mainWindowToUse, PlanningViewMeasurementTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(mainWindowToUse, model);	
-		otherRenderer = new BasicTableCellRendererFactory();
+		otherRenderer = new ObjectTableCellRendererFactory(this, new PlanningViewFontProvider(getMainWindow()));
 		otherRenderer.setCellBackgroundColor(getBackgroundColor());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(model, fontProvider, getBackgroundColor());
 	}
