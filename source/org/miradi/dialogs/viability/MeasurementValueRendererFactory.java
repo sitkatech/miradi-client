@@ -27,7 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.SingleLineTableCellRendererFactory;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.GoalIcon;
 import org.miradi.objects.Goal;
@@ -36,7 +36,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 
-class MeasurementValueRendererFactory extends ObjectTableCellRendererFactory
+class MeasurementValueRendererFactory extends SingleLineTableCellRendererFactory
 {
 	public MeasurementValueRendererFactory(TargetViabilityTreeTable providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{

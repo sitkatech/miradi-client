@@ -19,23 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class NumericTableCellRendererFactory extends SingleLineTableCellRendererFactory
+public class MultiLineTableCellRendererFactory extends
+		ObjectTableCellRendererFactory
 {
-	public NumericTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
+		
+		rendererComponent = new DefaultTableCellRenderer();
 	}
-
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
+	
+	protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
 	{
-		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		renderer.setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
+		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
+		renderer.setVerticalAlignment(SwingConstants.TOP);
 		return renderer;
 	}
+
+	private DefaultTableCellRenderer rendererComponent;
+
 }
