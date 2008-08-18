@@ -35,7 +35,7 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.CodeListRenderer;
+import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
@@ -69,7 +69,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		otherRenderer = new ObjectTableCellRendererFactory(this, fontProvider);
-		codeListRenderer = new CodeListRenderer(this, fontProvider);
+		codeListRenderer = new CodeListRendererFactory(this, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
@@ -295,5 +295,5 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	private int currentSortColumn;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellRendererFactory otherRenderer;
-	private CodeListRenderer codeListRenderer;
+	private CodeListRendererFactory codeListRenderer;
 }

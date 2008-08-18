@@ -27,9 +27,9 @@ import javax.swing.JTable;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class CodeListRenderer extends ObjectTableCellRendererFactory
+public class CodeListRendererFactory extends ObjectTableCellRendererFactory
 {
-	public CodeListRenderer(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
