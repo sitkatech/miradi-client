@@ -93,7 +93,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		ScrollPaneWithHideableScrollBar newTreeScrollPane = new ScrollPaneWithHideableScrollBar(getTree());
 		newTreeScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		newTreeScrollPane.hideVerticalScrollBar();
-		newTreeScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 		treeTableScrollPane = newTreeScrollPane;
 
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
@@ -109,6 +108,10 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		fontProvider = new PlanningViewFontProvider(getMainWindow());
 		
 		listenForColumnWidthChanges(getTree());
+		
+		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
+		scrollController.addScrollBar(masterScrollBar);
+		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
 		mainTable = new PlanningViewMainTable(mainWindowToUse, mainModel, fontProvider);
@@ -138,9 +141,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
-		scrollController.addScrollBar(masterScrollBar);
-		
 		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "PlanningViewTreesPlusTables");
 		treePlusTablesPanel.setDividerSize(5);
 		// FIXME: Remove this when persistence actually works!
