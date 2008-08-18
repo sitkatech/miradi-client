@@ -26,7 +26,7 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.SingleLineTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithTreeTableNodes;
 
@@ -35,7 +35,7 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 	public PlanningViewFutureStatusTable(MainWindow mainWindowToUse, PlanningViewFutureStatusTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(mainWindowToUse, model);
-		renderer = new SingleLineTableCellRendererFactory(model, fontProvider);
+		renderer = new SingleLineObjectTableCellRendererFactory(model, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)

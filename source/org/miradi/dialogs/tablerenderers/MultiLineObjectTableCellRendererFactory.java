@@ -24,10 +24,10 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class MultiLineTableCellRendererFactory extends
+public class MultiLineObjectTableCellRendererFactory extends
 		ObjectTableCellRendererFactory
 {
-	public MultiLineTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
