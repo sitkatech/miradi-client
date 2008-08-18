@@ -30,7 +30,7 @@ public class StrategyRelevancyOverrideListField extends RelevancyOverrideListFie
 {
 	public StrategyRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Objective.TAG_RELEVANT_STRATEGY_SET);
+		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 	}
 	
 	public String getText()

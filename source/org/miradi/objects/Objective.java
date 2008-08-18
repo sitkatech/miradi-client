@@ -235,14 +235,14 @@ public class Objective extends Desire
 	{
 		super.clear();
 		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
-		relevantStrategyOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_SET);
+		relevantStrategyOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
 		
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_REFS);
 		
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
-		addField(TAG_RELEVANT_STRATEGY_SET, relevantStrategyOverrides);
+		addField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantStrategyOverrides);
 		addField(TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 		
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
@@ -252,7 +252,7 @@ public class Objective extends Desire
 	public static final String OBJECT_NAME = "Objective";
 	
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
-	public static final String TAG_RELEVANT_STRATEGY_SET = "RelevantStrategySet";
+	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
 	
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";

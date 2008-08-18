@@ -116,7 +116,7 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		{
 			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);
 			RelevancyOverrideSet relevancySet = objectiveAsParent.getCalculatedRelevantStrategyrOverrides(selectedRefs);	
-			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_SET, relevancySet.toString());
+			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
 		}
 		catch (Exception e)
 		{
