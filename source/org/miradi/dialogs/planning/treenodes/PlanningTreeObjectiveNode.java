@@ -25,8 +25,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -43,30 +41,10 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList relevantStrategyAndActivityRefs = objective.getRelevantStrategyAndActivityRefs();
-		ORefList strategiesInDiagram = getStrategyRefsInDiagram(relevantStrategyAndActivityRefs);
-		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.filterByType(Task.getObjectType());
-		ORefList strategyAndActivityRefs = new ORefList();
-		strategyAndActivityRefs.addAll(strategiesInDiagram);
-		strategyAndActivityRefs.addAll(relevantActivityRefs);
+		createAndAddChildren(relevantStrategyAndActivityRefs, diagram);
 		
-		createAndAddChildren(strategyAndActivityRefs, diagram);
-		
-		ORefList indicatorRefs = objective.getRelevantIndicatorRefList();
-		createAndAddChildren(getIndicatorsInDiagram(indicatorRefs), diagram);
-	}
-
-	private ORefList getStrategyRefsInDiagram(ORefList strategies)
-	{
-		ORefList strategiesInDiagram = new ORefList();
-		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
-		for (int i = 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			if (Strategy.is(diagramFactor.getWrappedType()) && strategies.contains(diagramFactor.getWrappedORef()))
-				strategiesInDiagram.add(diagramFactor.getWrappedORef());
-		}
-		
-		return strategiesInDiagram;
+		ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
+		createAndAddChildren(getIndicatorsInDiagram(relevantIndicatorRefs), diagram);
 	}
 
 	private ORefList getIndicatorsInDiagram(ORefList indicatorRefs)
