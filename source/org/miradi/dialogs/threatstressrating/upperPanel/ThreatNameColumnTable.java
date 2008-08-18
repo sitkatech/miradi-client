@@ -21,7 +21,8 @@ package org.miradi.dialogs.threatstressrating.upperPanel;
 
 import javax.swing.JTable;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 
 
@@ -30,7 +31,7 @@ public class ThreatNameColumnTable extends AbstractTableWithChoiceItemRenderer
 	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
 	{
 		super(mainWindowToUse, tableModel);
-		getColumnModel().getColumn(0).setCellRenderer(new BasicTableCellRendererFactory());
+		getColumnModel().getColumn(0).setCellRenderer(new ObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 		
