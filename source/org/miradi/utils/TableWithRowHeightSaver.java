@@ -27,6 +27,7 @@ import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
+import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.main.MainWindow;
 
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
@@ -84,8 +85,17 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public int getPreferredRowHeight(int row)
 	{
-		// TODO: Put real calculation here
-		return getRowHeight();
+		int maxPreferredHeight = 1;
+		for(int column = 0; column < getColumnCount(); ++column)
+		{
+			TableCellPreferredHeightProvider provider = (TableCellPreferredHeightProvider)getCellRenderer(row, column);
+			int thisHeight = provider.getPreferredHeight(this, row, column, getValueAt(row, column));
+			maxPreferredHeight = Math.max(maxPreferredHeight, thisHeight);
+		}
+		
+		final int ESTIMATED_CELL_PADDING_HEIGHT = 4;
+		maxPreferredHeight += ESTIMATED_CELL_PADDING_HEIGHT;
+		return maxPreferredHeight;
 	}
 	
 	@Override

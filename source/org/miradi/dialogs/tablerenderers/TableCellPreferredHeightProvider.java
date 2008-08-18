@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import javax.swing.JTable;
+
 public interface TableCellPreferredHeightProvider
 {
-	public int getPreferredHeight(Object value);
+	public int getPreferredHeight(JTable table, int row, int column, Object value);
 }
