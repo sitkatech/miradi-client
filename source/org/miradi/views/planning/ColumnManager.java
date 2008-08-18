@@ -52,6 +52,8 @@ public class ColumnManager
 		masterColumnList.add(Indicator.TAG_PRIORITY);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		masterColumnList.add(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
+		masterColumnList.add(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		masterColumnList.add(BaseObject.PSEUDO_TAG_WHO_TOTAL);
