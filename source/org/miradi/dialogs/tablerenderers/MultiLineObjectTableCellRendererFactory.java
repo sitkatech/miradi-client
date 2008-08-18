@@ -19,38 +19,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
+
+import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
+import org.miradi.main.MainWindow;
 
 public class MultiLineObjectTableCellRendererFactory extends
 		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
 {
-	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new DefaultTableCellRenderer();
+		rendererComponent = new HtmlFormViewer(mainWindowToUse, "", null);
 	}
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
-		String html = getAsHtmlText(value);
-		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
-		renderer.setVerticalAlignment(SwingConstants.TOP);
-		return renderer;
+		rendererComponent.setText(getAsHtmlText(value));
+		return rendererComponent;
 	}
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		Component component = rendererComponent.getTableCellRendererComponent(table, value, false, false, row, column);
-		return component.getPreferredSize().height;
+		int columnWidth = table.getCellRect(row, column, false).width;
+		String html = getAsHtmlText(value);
+		rendererComponent.setText(html);
+		int preferredHeight = rendererComponent.getPreferredHeight(columnWidth);
+		return preferredHeight;
 	}
 
-	private DefaultTableCellRenderer rendererComponent;
+	private HtmlFormViewer rendererComponent;
 
 }

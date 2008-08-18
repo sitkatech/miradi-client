@@ -140,7 +140,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public int getPreferredHeight(int width)
 	{
-		setFixedWidth(this, width);
+		setSize(new Dimension(width, Short.MAX_VALUE));
 		return getPreferredSize().height;
 	}
 	

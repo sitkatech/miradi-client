@@ -21,30 +21,36 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 import javax.swing.JTable;
 
+import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFactory
 {
-	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public CodeListRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(providerToUse, fontProviderToUse);
+		super(mainWindowToUse, providerToUse, fontProviderToUse);
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		String labelText = getLabelText(value);
+		JComponent renderer = (JComponent) super.getTableCellRendererComponent(table, labelText, isSelected, hasFocus, row, tableColumn);
 
 		if(isSelected)
 			renderer.setBackground(renderer.getBackground());
 
-		renderer.setText(labelText);
-		
 		return renderer;
+	}
+	
+	@Override
+	public int getPreferredHeight(JTable table, int row, int column, Object value)
+	{
+		value = getLabelText(value);
+		return super.getPreferredHeight(table, row, column, value);
 	}
 
 	private String getLabelText(Object value)
