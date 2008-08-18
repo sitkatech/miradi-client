@@ -481,14 +481,28 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	public void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
-		for(FactorCell factorCell : selectedFactorAndChildren)
+		HashSet<LinkCell> linksInsideGroupBoxes = getAllLinksInsideGroupBox(selectedFactorAndChildren);
+		for(LinkCell linkCell : linksInsideGroupBoxes)
 		{
-			selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren, factorCell.getDiagramFactor());	
+			linkCell.getBendPointSelectionHelper().selectAll();
+			addSelectionCell(linkCell);
 		}
 	}
-
-	private void selectAllLinksAndThierBendPointsInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren, DiagramFactor diagramFactor)
+	
+	private HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
+		HashSet<LinkCell> linkCells = new HashSet();
+		for(FactorCell factorCell : selectedFactorAndChildren)
+		{
+			linkCells.addAll(getAllLinksInsideGroupBox(selectedFactorAndChildren, factorCell.getDiagramFactor()));	
+		}
+		
+		return linkCells;
+	}
+
+	private HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren, DiagramFactor diagramFactor)
+	{
+		HashSet<LinkCell> linkCells = new HashSet();
 		DiagramModel diagramModel = getDiagramModel();
 		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
@@ -503,10 +517,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 					continue;
 						
 				LinkCell linkCell = diagramModel.findLinkCell(diagramLink);
-				linkCell.getBendPointSelectionHelper().selectAll();
-				addSelectionCell(linkCell);
+				linkCells.add(linkCell);
 			}
 		}
+		
+		return linkCells;
 	}
 	
 	public void zoom(double proportion)
