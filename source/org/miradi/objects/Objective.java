@@ -91,7 +91,7 @@ public class Objective extends Desire
 			return getRelevantIndicatorRefsAsString();
 	
 		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY__ACTIVITY_REFS))
-			return getRelevantStrategyRefsAsString();
+			return getRelevantStrategyActivityRefsAsString();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -111,7 +111,7 @@ public class Objective extends Desire
 		}
 	}
 	
-	private String getRelevantStrategyRefsAsString()
+	private String getRelevantStrategyActivityRefsAsString()
 	{
 		ORefList refList;
 		try
