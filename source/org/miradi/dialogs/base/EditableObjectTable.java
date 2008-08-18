@@ -34,7 +34,7 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
-import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -106,7 +106,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	protected void createReadonlyChoiceItemColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(new ChoiceItemTableCellRenderer(model, new DefaultFontProvider(getMainWindow())));
+		column.setCellRenderer(new ChoiceItemTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow())));
 	}
 	
 	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
