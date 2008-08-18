@@ -67,7 +67,7 @@ public class PropertiesDoer extends LocationDoer
 		if (! isInDiagram())
 			return false;
 		
-		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getOnlySelectedCells();
+		EAMGraphCell[] selected = getSelectedCells();
 		if(selected.length != 1)
 			return false;
 		
@@ -79,7 +79,6 @@ public class PropertiesDoer extends LocationDoer
 		
 		return false;
 	}
-	
 
 	public void doIt() throws CommandFailedException
 	{
@@ -106,7 +105,7 @@ public class PropertiesDoer extends LocationDoer
 
 	private EAMGraphCell getCorrectCellToShowPropertiesFor() throws Exception
 	{
-		EAMGraphCell selected = getDiagramView().getDiagramPanel().getOnlySelectedCells()[0];
+		EAMGraphCell selected = getSelectedCells()[0];
 		if (!selected.isFactor())
 			return selected;
 		
@@ -310,5 +309,10 @@ public class PropertiesDoer extends LocationDoer
 		}
 		
 		return FactorPropertiesPanel.TAB_DETAILS;
+	}
+	
+	private EAMGraphCell[] getSelectedCells()
+	{
+		return getDiagramView().getDiagramPanel().getOnlySelectedCells();
 	}
 }
