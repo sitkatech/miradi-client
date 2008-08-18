@@ -25,7 +25,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.miradi.main.AppPreferences;
@@ -73,5 +73,5 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetTotalsTable";
 
-	private BasicTableCellRenderer renderer;
+	private BasicTableCellRendererFactory renderer;
 }

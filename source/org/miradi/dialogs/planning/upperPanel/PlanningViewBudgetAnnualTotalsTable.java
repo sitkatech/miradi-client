@@ -24,7 +24,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.main.AppPreferences;
@@ -71,6 +71,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 		return UNIQUE_IDENTIFIER;
 	}
 	
-	private BasicTableCellRenderer renderer;
+	private BasicTableCellRendererFactory renderer;
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetAnnualTotalsTable";
 }

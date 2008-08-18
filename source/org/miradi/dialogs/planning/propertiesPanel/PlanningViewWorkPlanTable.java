@@ -26,7 +26,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.fieldComponents.PanelTextField;
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRenderer;
 import org.miradi.main.AppPreferences;
@@ -82,5 +82,5 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewWorkPlanTable";
 
-	private BasicTableCellRenderer renderer;
+	private BasicTableCellRendererFactory renderer;
 }

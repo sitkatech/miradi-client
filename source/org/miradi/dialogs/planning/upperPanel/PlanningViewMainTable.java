@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableColumn;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -37,14 +37,14 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 	private void setColumnRenderer(int column)
 	{
 		String columnTag = getColumnTag(column);
-		BasicTableCellRenderer renderer = createRendererForColumn(columnTag);
+		BasicTableCellRendererFactory renderer = createRendererForColumn(columnTag);
 		renderer.setCellBackgroundColor(getBackgroundColor(columnTag));
 
 		TableColumn tableColumn = getColumnModel().getColumn(column);
 		tableColumn.setCellRenderer(renderer);
 	}
 
-	private BasicTableCellRenderer createRendererForColumn(String columnTag)
+	private BasicTableCellRendererFactory createRendererForColumn(String columnTag)
 	{
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 			return new BudgetCostTreeTableCellRenderer(this, fontProvider);

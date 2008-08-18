@@ -33,9 +33,9 @@ import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-public class BasicTableCellRenderer implements TableCellRenderer
+public class BasicTableCellRendererFactory implements TableCellRenderer
 {
-	public BasicTableCellRenderer()
+	public BasicTableCellRendererFactory()
 	{
 		rendererComponent = new DefaultTableCellRenderer();
 		backgroundColor = rendererComponent.getBackground();
