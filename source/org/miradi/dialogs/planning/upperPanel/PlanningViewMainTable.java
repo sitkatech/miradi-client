@@ -9,7 +9,7 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.SingleLineTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -50,7 +50,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		return new SingleLineTableCellRendererFactory(this, fontProvider);
+		return new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 	}
 	
 	protected Color getBackgroundColor(String columnTag)

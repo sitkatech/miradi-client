@@ -29,7 +29,7 @@ import javax.swing.JTable;
 import org.miradi.icons.ColoredIcon;
 import org.miradi.questions.ChoiceItem;
 
-public class ChoiceItemTableCellRendererFactory extends SingleLineTableCellRendererFactory
+public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
 {
 	public ChoiceItemTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
