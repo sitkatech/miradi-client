@@ -23,21 +23,31 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-public class BasicTableCellRenderer extends DefaultTableCellRenderer
+public class BasicTableCellRenderer implements TableCellRenderer
 {
 	public BasicTableCellRenderer()
 	{
-		backgroundColor = getBackground();
+		rendererComponent = new DefaultTableCellRenderer();
+		backgroundColor = rendererComponent.getBackground();
 	}
 	
+	protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
+	{
+		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
+		renderer.setVerticalAlignment(SwingConstants.TOP);
+		return renderer;
+	}
+
 	public void setCellBackgroundColor(Color backgroundColorToUse)
 	{
 		backgroundColor = backgroundColorToUse;
@@ -46,8 +56,7 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		String html = getAsHtmlText(value);
-		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
-		renderer.setVerticalAlignment(SwingConstants.TOP);
+		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
 		
 		renderer.setBorder(getCellBorder());
 		
@@ -88,5 +97,7 @@ public class BasicTableCellRenderer extends DefaultTableCellRenderer
 	}
 	
 	public static final int CELL_MARGIN = 2;
+	
+	private DefaultTableCellRenderer rendererComponent;
 	private Color backgroundColor;
 }
