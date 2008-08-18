@@ -24,7 +24,6 @@ import java.awt.Component;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.TableCellRenderer;
@@ -38,7 +37,7 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 		backgroundColor = Color.WHITE;
 	}
 	
-	abstract protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html);
+	public abstract JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value);
 
 	public void setCellBackgroundColor(Color backgroundColorToUse)
 	{
@@ -47,8 +46,7 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		String html = getAsHtmlText(value);
-		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
+		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
 		
 		renderer.setBorder(getCellBorder());
 		
@@ -61,7 +59,7 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 		return renderer;
 	}
 
-	private String getAsHtmlText(Object value)
+	protected String getAsHtmlText(Object value)
 	{
 		if(value == null)
 			return null;

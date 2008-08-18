@@ -19,13 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class MultiLineObjectTableCellRendererFactory extends
-		ObjectTableCellRendererFactory
+		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
 {
 	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
@@ -34,11 +35,18 @@ public class MultiLineObjectTableCellRendererFactory extends
 		rendererComponent = new DefaultTableCellRenderer();
 	}
 	
-	protected JLabel getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
+	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
+		String html = getAsHtmlText(value);
 		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, html, isSelected, hasFocus, row, tableColumn);
 		renderer.setVerticalAlignment(SwingConstants.TOP);
 		return renderer;
+	}
+
+	public int getPreferredHeight(Object value)
+	{
+		// FIXME: Do the real calculation here
+		return rendererComponent.getFont().getSize();
 	}
 
 	private DefaultTableCellRenderer rendererComponent;

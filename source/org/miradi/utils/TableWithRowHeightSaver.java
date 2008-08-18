@@ -22,9 +22,11 @@ package org.miradi.utils;
 import java.awt.Rectangle;
 
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
+import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.main.MainWindow;
 
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
@@ -32,6 +34,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(mainWindowToUse, model);
+		
+		cellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
 		
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -84,6 +88,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		return getRowHeight();
 	}
 	
+	@Override
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{
 		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);
@@ -92,6 +97,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 			cellRect.height -= TableRowHeightSaver.ROW_RESIZE_MARGIN;
 		}
 		return cellRect;
+	}
+	
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		return cellRendererFactory;
 	}
 	
 	public JTable asTable()
@@ -104,4 +115,5 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	private TableRowHeightSaver rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
+	private DefaultTableCellRendererWithPreferredHeightFactory cellRendererFactory;
 }
