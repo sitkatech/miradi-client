@@ -52,7 +52,7 @@ class MeasurementValueRenderer extends TableCellRendererForObjects
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		Color color = getBackground();
+		Color color = renderer.getBackground();
 		renderer.setIcon(null);
 		if(value != null && !value.equals(""))
 		{
@@ -62,7 +62,7 @@ class MeasurementValueRenderer extends TableCellRendererForObjects
 		}
 		renderer.setBackground(color);
 		if (isSelected)
-			setBackground(table.getSelectionBackground());
+			renderer.setBackground(table.getSelectionBackground());
 		
 		return renderer;
 	}
