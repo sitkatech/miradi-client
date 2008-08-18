@@ -41,13 +41,13 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		ORefList relevantstrategyAndActivityRefs = objective.getRelevantStrategyAndActivityRefs();
-		createAndAddChildren(getStrategiesInDiagram(relevantstrategyAndActivityRefs), diagram);
+		createAndAddChildren(getStrategyAndActivityRefsInDiagram(relevantstrategyAndActivityRefs), diagram);
 		
 		ORefList indicatorRefs = objective.getRelevantIndicatorRefList();
 		createAndAddChildren(getIndicatorsInDiagram(indicatorRefs), diagram);
 	}
 
-	private ORefList getStrategiesInDiagram(ORefList strategies)
+	private ORefList getStrategyAndActivityRefsInDiagram(ORefList strategies)
 	{
 		ORefList strategiesInDiagram = new ORefList();
 		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
