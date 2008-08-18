@@ -21,7 +21,7 @@ package org.miradi.dialogs.fieldComponents;
 
 import javax.swing.table.TableModel;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.TableRowHeightSaver;
 import org.miradi.utils.TableWithHelperMethods;
@@ -49,7 +49,7 @@ public class PanelTable extends TableWithHelperMethods
 
 	private static final int INTERCELL_LINE_SIZE = 3;
 	private static final int VERTICAL_FONT_CUSHION = INTERCELL_LINE_SIZE + 
-			TableRowHeightSaver.ROW_RESIZE_MARGIN + 2*BasicTableCellRenderer.CELL_MARGIN;
+			TableRowHeightSaver.ROW_RESIZE_MARGIN + 2*BasicTableCellRendererFactory.CELL_MARGIN;
 	
 	private MainWindow mainWindow;
 }

@@ -30,7 +30,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRenderer;
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRenderer;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -160,6 +160,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
 	private MeasurementValueRenderer measurementValueRenderer;
-	private BasicTableCellRenderer otherRenderer;
+	private BasicTableCellRendererFactory otherRenderer;
 	private ChoiceItemTableCellRenderer statusQuestionRenderer;
 }
