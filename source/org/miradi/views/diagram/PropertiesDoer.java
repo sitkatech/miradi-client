@@ -28,6 +28,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
@@ -67,7 +68,7 @@ public class PropertiesDoer extends LocationDoer
 		if (! isInDiagram())
 			return false;
 		
-		EAMGraphCell[] selected = getSelectedCells();
+		EAMGraphCell[] selected = getSelectedCellsWithoutGroupBoxCoveredLinks();
 		if(selected.length != 1)
 			return false;
 		
@@ -105,7 +106,7 @@ public class PropertiesDoer extends LocationDoer
 
 	private EAMGraphCell getCorrectCellToShowPropertiesFor() throws Exception
 	{
-		EAMGraphCell selected = getSelectedCells()[0];
+		EAMGraphCell selected = getSelectedCellsWithoutGroupBoxCoveredLinks()[0];
 		if (!selected.isFactor())
 			return selected;
 		
@@ -311,8 +312,35 @@ public class PropertiesDoer extends LocationDoer
 		return FactorPropertiesPanel.TAB_DETAILS;
 	}
 	
-	private EAMGraphCell[] getSelectedCells()
+	private EAMGraphCell[] getSelectedCellsWithoutGroupBoxCoveredLinks()
 	{
-		return getDiagramView().getDiagramPanel().getOnlySelectedCells();
+		try
+		{
+			EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getOnlySelectedCells();
+			HashSet<FactorCell> groupBoxesAndChildren = getDiagramView().getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
+			HashSet<LinkCell> linkInsideGroupBox = getDiagramView().getDiagramComponent().getAllLinksInsideGroupBox(groupBoxesAndChildren);
+			if (linkInsideGroupBox.size() == 0)
+				return selectedCells;
+
+			HashSet<FactorCell> groupBoxes = extractGroupBoxes(groupBoxesAndChildren);
+			return groupBoxes.toArray(new FactorCell[0]);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new EAMGraphCell[0];
+		}
+	}
+
+	private HashSet<FactorCell> extractGroupBoxes(HashSet<FactorCell> groupBoxesAndChildren)
+	{
+		HashSet<FactorCell> groupBoxes = new HashSet();
+		for(FactorCell factorCell : groupBoxesAndChildren)
+		{
+			if (factorCell.isGroupBox())
+				groupBoxes.add(factorCell);
+		}
+		
+		return groupBoxes;
 	}
 }

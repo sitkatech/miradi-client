@@ -489,7 +489,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		}
 	}
 	
-	private HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
+	public HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
 		HashSet<LinkCell> linkCells = new HashSet();
 		for(FactorCell factorCell : selectedFactorAndChildren)
