@@ -56,6 +56,9 @@ public class ShowResultsChainDoer extends ViewDoer
 		if (diagramModel.isResultsChain())
 			return false;
 		
+		if (getDiagramView().isStategyBrainstormMode())
+			return false;
+		
 		Strategy strategy = (Strategy) selectedFactors[0];	
 		
 		return strategy.getResultsChains().size() >= 1;
