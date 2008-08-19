@@ -45,6 +45,10 @@ public class StandardReportPanel extends TwoColumnPanel
 
 	private void createPanel()
 	{
+		addStandardReport(getFullReportCodeList(), EAM.text("Full Report"));
+		addStandardReport(getSummaryCodeList(), EAM.text("Summary Report"));
+		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE);
+		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE);
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
@@ -52,14 +56,49 @@ public class StandardReportPanel extends TwoColumnPanel
 
 	private void addStandardReport(String code)
 	{
-		ChoiceQuestion question = getProject().getQuestion(ReportTemplateContentQuestion.class);
+		CodeList standardReportCodes = new CodeList();
+		standardReportCodes.add(code);
+		ChoiceQuestion question = getContentQuestion();
 		ChoiceItem choice = question.findChoiceByCode(code);
+		addStandardReport(standardReportCodes, choice.getLabel());
+	}
+
+	private void addStandardReport(CodeList standardReportCodeList, String standardReportLabel)
+	{
 		PanelButton runButton = new PanelButton(EAM.text("Run..."));
-		runButton.addActionListener(new ActionHandler(choice));
+		runButton.addActionListener(new ActionHandler(standardReportCodeList));
 		
-		add(new PanelTitleLabel(choice.getLabel()));
+		add(new PanelTitleLabel(EAM.text(standardReportLabel)));
 		add(runButton);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
+	}
+	
+	private CodeList getFullReportCodeList()
+	{
+		return getContentQuestion().getAllCodes();
+	}
+	
+	private CodeList getSummaryCodeList()
+	{
+		CodeList summaryCodes = new CodeList();
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_PROJECT_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_TEAM_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_ORGANIZATION_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_SCOPE_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_LOCATION_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_PLANNING_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_TNC_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_WWF_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_WCS_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_RARE_TAB_CODE);
+		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE);
+		
+		return summaryCodes;
+	}
+
+	private ChoiceQuestion getContentQuestion()
+	{
+		return getProject().getQuestion(ReportTemplateContentQuestion.class);
 	}
 	
 	private Project getProject()
@@ -74,10 +113,9 @@ public class StandardReportPanel extends TwoColumnPanel
 
 	class ActionHandler implements ActionListener
 	{
-		public ActionHandler(ChoiceItem reportTemplateChoice)
+		public ActionHandler(CodeList standardReportTemplateCodeListToUse)
 		{
-			standardReportTemplateCodeList = new CodeList();
-			standardReportTemplateCodeList.add(reportTemplateChoice.getCode());
+			standardReportTemplateCodeList =  standardReportTemplateCodeListToUse;
 		}
 
 		public void actionPerformed(ActionEvent e)
