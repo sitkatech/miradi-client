@@ -61,10 +61,15 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 
 	protected String getAsHtmlText(Object value)
 	{
+		return getAsHtmlText(value, "");
+	}
+	
+	protected String getAsHtmlText(Object value, String initialHtml)
+	{
 		if(value == null)
 			return null;
 		String plainText = value.toString();
-		return "<html>" + XmlUtilities.getXmlEncoded(plainText);
+		return "<html>" + initialHtml + XmlUtilities.getXmlEncoded(plainText);
 	}
 	
 	public Border getCellBorder()

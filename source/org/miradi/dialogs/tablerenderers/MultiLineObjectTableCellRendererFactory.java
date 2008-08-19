@@ -23,12 +23,12 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.text.html.StyleSheet;
 
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.diagram.renderers.FactorHtmlViewer;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
+import org.miradi.wizard.MiradiHtmlViewer;
 
 public class MultiLineObjectTableCellRendererFactory extends
 		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
@@ -42,8 +42,26 @@ public class MultiLineObjectTableCellRendererFactory extends
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
-		String html = getAsHtmlText(value);
+		String bgColor = getHtmlBackgroundColor(table, isSelected);
+		String fgColor = getHtmlForegroundColor(table, row, tableColumn, isSelected);
+		String html = getAsHtmlText(value, "<body bgcolor='" + bgColor + "' fgcolor = '" + fgColor + "'>");
 		return getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
+	}
+
+	private String getHtmlForegroundColor(JTable table, int row, int tableColumn, boolean isSelected)
+	{
+		Color fgColor = isSelected ? 
+				table.getSelectionForeground() : 
+				getCellForegroundColor(table, row, tableColumn);
+		return AppPreferences.convertToHexString(fgColor);
+	}
+
+	private String getHtmlBackgroundColor(JTable table, boolean isSelected)
+	{
+		Color bgColor = isSelected ? 
+				table.getSelectionBackground() : 
+				getCellBackgroundColor();
+		return AppPreferences.convertToHexString(bgColor);
 	}
 	
 	public HtmlFormViewer getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
@@ -61,20 +79,13 @@ public class MultiLineObjectTableCellRendererFactory extends
 		return preferredHeight;
 	}
 	
-	class TableCellHtmlRendererComponent extends HtmlFormViewer
+	class TableCellHtmlRendererComponent extends MiradiHtmlViewer
 	{
 		public TableCellHtmlRendererComponent(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
 		{
-			super(mainWindowToUse, "", hyperLinkHandler);
+			super(mainWindowToUse, hyperLinkHandler);
 		}
 
-		@Override
-		protected void customizeStyleSheet(StyleSheet style)
-		{
-			super.customizeStyleSheet(style);
-			Color color = getCellBackgroundColor();
-			style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+FactorHtmlViewer.convertColorToHTMLColor(color)+";}"));
-		}
 	}
 
 	private TableCellHtmlRendererComponent rendererComponent;
