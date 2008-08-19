@@ -277,7 +277,7 @@ public class RtfWriter
 	
 	private void newLine() throws Exception
 	{
-		write("");
+		writeln("");
 	}
 	
 	public UnicodeWriter getWriter()
