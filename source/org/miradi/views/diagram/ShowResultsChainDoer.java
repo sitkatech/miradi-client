@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.actions.ActionShowFullModelMode;
-import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.diagram.DiagramModel;
@@ -54,9 +52,6 @@ public class ShowResultsChainDoer extends ViewDoer
 		DiagramModel diagramModel = diagramPanel.getDiagramModel();
 		
 		if (diagramModel.isResultsChain())
-			return false;
-		
-		if (getDiagramView().isStategyBrainstormMode())
 			return false;
 		
 		Strategy strategy = (Strategy) selectedFactors[0];	
@@ -97,9 +92,8 @@ public class ShowResultsChainDoer extends ViewDoer
 		CreateResultsChainDoer.selectResultsChain(diagramView.getProject(), diagramView, firstChain);
 	}
 
-	private void setToNormalMode() throws CommandFailedException
+	private void setToNormalMode() throws Exception
 	{
-		EAMAction actionShowFullModelMode = getDiagramView().getActions().get(ActionShowFullModelMode.class);
-		actionShowFullModelMode.doAction();
+		ShowFullModelModeDoer.showFullModelMode(getProject(), getDiagramView().getDiagramComponent());
 	}
 }
