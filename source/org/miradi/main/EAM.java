@@ -137,6 +137,11 @@ public class EAM
 	{
 		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), messageFileName).showAsOkDialog();
 	}
+	
+	public static void showHtmlInfoMessageOkDialog(String messageFileName) throws Exception
+	{
+		showHtmlMessageOkDialog(messageFileName, INFORMATION_DIALOG_TITLE);
+	}
 
 	private static File getPreferredHomeDirectory()
 	{
@@ -352,7 +357,7 @@ public class EAM
 	
 	public static void notifyDialog(String text)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), text, EAM.text("Wintitle|Information"), JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), text, INFORMATION_DIALOG_TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static int confirmDialog(String title, String text, String[] buttonLabels)
@@ -544,7 +549,7 @@ public class EAM
 	public static final String STRING_TO_SUBSTITUTE = "%s";
 	public static final char DASH = '-';
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
-
+	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
 }
 
 
