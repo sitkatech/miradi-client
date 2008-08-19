@@ -66,16 +66,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORefList factorsToMakeSelected = getFactorsToMakeSelected();
-			ORef viewDataRef = getProject().getCurrentViewData().getRef();
-						
-			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
-			getProject().executeCommand(changeToDefaultMode);
-			
-			CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
-			getProject().executeCommand(clearBrainsStormNodeList);
-
-			selectFactors(factorsToMakeSelected);
+			showFullModelMode(getProject(), getDiagramView().getDiagramComponent());
 		}
 		catch (Exception e)
 		{
@@ -89,19 +80,31 @@ public class ShowFullModelModeDoer extends ViewDoer
 		}
 	}
 
-	private ORefList getFactorsToMakeSelected() throws Exception, ParseException
+	public static void showFullModelMode(Project project, DiagramComponent diagramComponent) throws Exception, ParseException, CommandFailedException
 	{
-		Project project = getMainWindow().getProject();
+		ORefList factorsToMakeSelected = getFactorsToMakeSelected(project);
+		ORef viewDataRef = project.getCurrentViewData().getRef();
+					
+		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+		project.executeCommand(changeToDefaultMode);
+		
+		CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
+		project.executeCommand(clearBrainsStormNodeList);
+
+		selectFactors(diagramComponent, factorsToMakeSelected);
+	}
+
+	private static ORefList getFactorsToMakeSelected(Project project) throws Exception, ParseException
+	{
 		String listOfORefs = project.getCurrentViewData().getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS);
 		ORefList factorsToMakeVisible = new ORefList(listOfORefs);
 		return factorsToMakeVisible;
 	}
 
-	private void selectFactors(ORefList factorORefs) throws Exception
+	private static void selectFactors(DiagramComponent diagramComponent, ORefList factorORefs) throws Exception
 	{
-		DiagramComponent diagramComponent  = ((DiagramView)getView()).getDiagramComponent();
 		GraphLayoutCache glc  = diagramComponent.getGraphLayoutCache();
-		DiagramModel diagramModel = getDiagramView().getDiagramModel();
+		DiagramModel diagramModel = diagramComponent.getDiagramModel();
 		
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
