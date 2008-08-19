@@ -30,6 +30,8 @@ import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHe
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.main.MainWindow;
 
+import com.java.sun.jtreetable.JTreeTable.TreeTableCellRenderer;
+
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
 {
 	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model)
@@ -87,11 +89,19 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public int getPreferredRowHeight(int row)
 	{
+		return getPreferredRowHeight(this, row);
+	}
+	
+	public static int getPreferredRowHeight(JTable table, int row)
+	{
 		int maxPreferredHeight = 1;
-		for(int column = 0; column < getColumnCount(); ++column)
+		for(int column = 0; column < table.getColumnCount(); ++column)
 		{
-			TableCellPreferredHeightProvider provider = (TableCellPreferredHeightProvider)getCellRenderer(row, column);
-			int thisHeight = provider.getPreferredHeight(this, row, column, getValueAt(row, column));
+			TableCellRenderer rawRenderer = table.getCellRenderer(row, column);
+			if(isTreeColumn(rawRenderer))
+				continue;
+				TableCellPreferredHeightProvider provider = (TableCellPreferredHeightProvider)rawRenderer;
+			int thisHeight = provider.getPreferredHeight(table, row, column, table.getValueAt(row, column));
 			maxPreferredHeight = Math.max(maxPreferredHeight, thisHeight);
 		}
 		
@@ -100,6 +110,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		return maxPreferredHeight;
 	}
 	
+	private static boolean isTreeColumn(TableCellRenderer rawRenderer)
+	{
+		// FIXME: This can go away when we have only single-column treetables
+		return (rawRenderer instanceof TreeTableCellRenderer);
+	}
+
 	@Override
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{

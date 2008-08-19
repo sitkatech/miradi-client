@@ -33,8 +33,10 @@ import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
 import org.miradi.database.ProjectServer;
+import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
@@ -66,6 +68,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
+		dateRenderer = new DefaultTableCellRendererWithPreferredHeightFactory();
 	}
 
 	public String getUniqueTableIdentifier()
@@ -108,6 +111,16 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		{
 			mainWindow.setCursor(cursor);
 		}
+	}
+	
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		if(column == 0)
+			return super.getCellRenderer(row, column);
+		
+		dateRenderer.setCellBackgroundColor(getBackground());
+		return dateRenderer;
 	}
 	
 	private void doContextMenu(Point point)
@@ -228,4 +241,5 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		private VariableHeightTreeCellRenderer projectRenderer;
 	}
 
+	DefaultTableCellRendererWithPreferredHeightFactory dateRenderer;
 }
