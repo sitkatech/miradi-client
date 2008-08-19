@@ -323,7 +323,7 @@ public class PropertiesDoer extends LocationDoer
 			selectedFactorsWithoutGroupBoxLinks.addAll(Arrays.asList(selectedCells));
 			selectedFactorsWithoutGroupBoxLinks.removeAll(linkInsideGroupBox);
 			
-			return selectedFactorsWithoutGroupBoxLinks.toArray(new FactorCell[0]);
+			return selectedFactorsWithoutGroupBoxLinks.toArray(new EAMGraphCell[0]);
 		}
 		catch (Exception e)
 		{
