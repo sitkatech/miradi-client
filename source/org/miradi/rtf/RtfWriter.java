@@ -236,21 +236,37 @@ public class RtfWriter
 	{
 		write(
 		"{\\rtf1\\ansi\\deff0\\adeflang1025" +
-		"{\\fonttbl{\\f0\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f1\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f2\\fswiss\\fprq2\\fcharset0 Arial;}{\\f3\\fnil\\fprq2\\fcharset0 Arial Unicode MS;}{\\f4\\fnil\\fprq2\\fcharset0 MS Mincho;}{\\f5\\fnil\\fprq2\\fcharset0 Tahoma;}{\\f6\\fnil\\fprq0\\fcharset0 Tahoma;}}" +
+		"{\\fonttbl{\\f0\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f1\\froman\\fprq2" +
+		"\\fcharset0 Times New Roman;}{\\f2\\fswiss\\fprq2\\fcharset0 Arial;}{\\f3\\fnil" +
+		"\\fprq2\\fcharset0 Arial Unicode MS;}{\\f4\\fnil\\fprq2\\fcharset0 MS Mincho;}" +
+		"{\\f5\\fnil\\fprq2\\fcharset0 Tahoma;}{\\f6\\fnil\\fprq0\\fcharset0 Tahoma;}}" +
 		"{\\colortbl;\\red0\\green0\\blue0;\\red128\\green128\\blue128;}" +
-		"{\\stylesheet{\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\snext1 Normal;}" +
-		"{\\s2\\sb240\\sa120\\keepn\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\afs28\\lang255\\ltrch\\dbch\\af4\\langfe255\\hich\\f2\\fs28\\lang1033\\loch\\f2\\fs28\\lang1033\\sbasedon1\\snext3 Heading;}" +
-		"{\\s3\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext3 Body Text;}" +
-		"{\\s4\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon3\\snext4 List;}" +
-		"{\\s5\\sb120\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ai\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\i\\loch\\f0\\fs24\\lang1033\\i\\sbasedon1\\snext5 caption;}" +
-		"{\\s6\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext6 Index;}" +
-		"{\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext7 Table Contents;}" +
-		"{\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b\\sbasedon7\\snext8 Table Heading;}}" +
-		"{\\info{\\author Miradi}{\\revtim\\yr0\\mo0\\dy0\\hr0\\min0}{\\printim\\yr0\\mo0\\dy0\\hr0\\min0}{\\comment StarWriter}{\\vern6800}}\\deftab709" +
-		"{\\*\\pgdsctbl " +
-		"{\\pgdsc0\\pgdscuse195\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\pgdscnxt0 Standard;}}" +
-		"\\paperh15840\\paperw12240\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\ftnbj\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc");
-
+		"{\\stylesheet{\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}" +
+		"\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24" +
+		"\\lang1033\\loch\\f0\\fs24\\lang1033\\snext1 Normal;}{\\s2\\sb240\\sa120\\keepn\\cf0" +
+		"{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\afs28\\lang255\\ltrch\\dbch" +
+		"\\af4\\langfe255\\hich\\f2\\fs28\\lang1033\\loch\\f2\\fs28\\lang1033\\sbasedon1\\snext3 Heading;}" +
+		"{\\s3\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24" +
+		"\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033" +
+		"\\sbasedon1\\snext3 Body Text;}{\\s4\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2" +
+		"\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033" +
+		"\\loch\\f0\\fs24\\lang1033\\sbasedon3\\snext4 List;}{\\s5\\sb120\\sa120\\cf0{\\*\\hyphen2" +
+		"\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ai\\ltrch\\dbch\\af3\\langfe255" +
+		"\\hich\\f0\\fs24\\lang1033\\i\\loch\\f0\\fs24\\lang1033\\i\\sbasedon1\\snext5 caption;}" +
+		"{\\s6\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24" +
+		"\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0" +
+		"\\fs24\\lang1033\\sbasedon1\\snext6 Index;}{\\s7\\cf0{\\*\\hyphen2\\hyphlead2" +
+		"\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich" +
+		"\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext7 Table Contents;}" +
+		"{\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24" +
+		"\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0" +
+		"\\fs24\\lang1033\\b\\sbasedon7\\snext8 Table Heading;}}{\\info{\\author Miradi}{\\revtim" +
+		"\\yr0\\mo0\\dy0\\hr0\\min0}{\\printim\\yr0\\mo0\\dy0\\hr0\\min0}{\\comment StarWriter}" +
+		"{\\vern6800}}\\deftab709{\\*\\pgdsctbl{\\pgdsc0\\pgdscuse195\\pgwsxn12240\\pghsxn15840" +
+		"\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\pgdscnxt0 Standard;}}" +
+		"\\paperh15840\\paperw12240\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone" +
+		"\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\ftnbj" +
+		"\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc");
 	}
 	
 	public void endRtf() throws Exception
