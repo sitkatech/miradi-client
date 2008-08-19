@@ -89,12 +89,12 @@ public class RtfWriter
 
 	private void startBlock() throws Exception
 	{
-		writeRtfCommand("{");
+		writeRtfCommand(START_BLOCK);
 	}
 	
 	private void endBlock() throws Exception
 	{
-		writeRtfCommand("}");
+		writeRtfCommand(END_BLOCK);
 	}
 
 	static public String toHex(byte b)
@@ -130,14 +130,14 @@ public class RtfWriter
 
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
-		
 		final int COLUMN_TO_PAD = 0;
-		writeRtfCommand("\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55");
+		writeRtfCommand(ROW_HEADER);
 		writeCellCommands(exportableTable);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			
-			writeRtfCommand("\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 {\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ");
+			writeRtfCommand(PRE_CELL_COMMAND);
+			startBlock();			
+			write(PRE_CELL_DATA_COMMAND);
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
 				writeEncoded(createPadding(paddingCount, column));
@@ -147,18 +147,20 @@ public class RtfWriter
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 
 			writeEncoded(exportableTable.getTextAt(row, column));
-			write("}\\cell ");	
+			endBlock();
+			write(CELL_COMMAND);	
 		}
 		
-		write("\\row");
+		write(ROW_COMMAND);
 		newLine();
 	}
 
 	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
 	{
+		final int ONE_INCH_IN_TWIPS = 1440;
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			write("\\cellx" + ((column  + 1) * 1440 )+ " ");	
+			write(CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS )+ " ");	
 		}
 		
 		newLine();
@@ -166,18 +168,22 @@ public class RtfWriter
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
-		writeln("\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55");
+		writeln(TABLE_ROW_HEADER);
 		writeCellCommands(exportableTable);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
 			String header = exportableTable.getHeaderFor(columnIndex);
-			write("\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b {\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b");
+			write(PRE_TABLE_HEADER_CELL_COMMAND);
+			startBlock();
+			write(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
 			writeEncoded(header);
-			write(" }\\cell ");
+			endBlock();
+			
+			write(CELL_COMMAND);
 			newLine();
 		}
 		
-		write("\\row");
+		write(ROW_COMMAND);
 		newLine();
 	}
 	
@@ -276,12 +282,12 @@ public class RtfWriter
 
 	public void newParagraph() throws Exception
 	{
-		writeSingleCommand("\\par ");	
+		writeSingleCommand(PARAGRAPH_COMMAND);	
 	}
 	
 	public void landscapeMode() throws Exception
 	{
-		writeRtfCommand("\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ");
+		writeRtfCommand(LANDSCAPE_COMMAND);
 	}
 	
 	public void writeSingleCommand(String command) throws Exception
@@ -302,4 +308,19 @@ public class RtfWriter
 	}
 	
 	private UnicodeWriter writer;
+
+	public static final String START_BLOCK = "{";
+	public static final String END_BLOCK = "}";
+	public static final String CELL_X_COMMAND = "\\cellx";
+	public static final String CELL_COMMAND = " \\cell";
+	public static final String ROW_COMMAND = "\\row";
+	public static final String PARAGRAPH_COMMAND = "\\par";
+	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
+	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
+	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
+	
+	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b ";
+	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033";
+	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b";
+	public static final String PRE_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ";
 }
