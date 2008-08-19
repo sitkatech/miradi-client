@@ -102,7 +102,7 @@ public class RtfFormExporter
 			}
 		}
 		
-		rowContent.append(getCellCommand());
+		rowContent.append(RtfWriter.CELL_COMMAND);
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
@@ -125,9 +125,9 @@ public class RtfFormExporter
 		
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		getWriter().writeln(rowFormatting.toString());
-		rowContent.append(getCellCommand());				
+		rowContent.append(RtfWriter.CELL_COMMAND);				
 		getWriter().writeln(rowContent.toString());
-		getWriter().write(RtfWriter.ROW_COMMAND + " ");
+		getWriter().write(RtfWriter.ROW_COMMAND);
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
@@ -193,11 +193,6 @@ public class RtfFormExporter
 	private String getFieldLabel(FormFieldLabel formFieldLabel)
 	{
 		return EAM.fieldLabel(formFieldLabel.getObjectType(), formFieldLabel.getObjectTag());
-	}
-
-	private String getCellCommand()
-	{
-		return " \\cell ";
 	}
 
 	private String getCellxCommand(int uniqueRtfColumnId)
