@@ -27,6 +27,7 @@ import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
+import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -75,15 +76,20 @@ public class ReportsView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
-
+		standardReportPanel = new StandardReportPanel(getMainWindow());
+		
 		addTab(EAM.text("RTF Reports"), reportTemplateManagementPanel);
+		addTab(EAM.text("Standard Reports"), standardReportPanel);
 	}
 	
 	public void deleteTabs() throws Exception
 	{
 		reportTemplateManagementPanel.dispose();
 		reportTemplateManagementPanel = null;
+		
+		standardReportPanel = null;
 	}
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
+	private StandardReportPanel standardReportPanel;
 }

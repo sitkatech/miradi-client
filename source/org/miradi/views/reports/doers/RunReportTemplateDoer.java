@@ -23,6 +23,7 @@ import java.io.File;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.rtf.ProjectRtfExporter;
@@ -45,25 +46,38 @@ public class RunReportTemplateDoer extends ObjectsDoer
 	{
 		if (!isAvailable())
 			return;
-		
-		RtfFileChooser rtfFileChooser = new RtfFileChooser(getMainWindow());
-		File destination = rtfFileChooser.displayChooser();
-		if (destination == null) 
-			return;
-
 		try
 		{
-			writeRtf(destination);
-			EAM.notifyDialog(EAM.text("Selected Report Template Was Exported as RTF."));
+			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
+			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES);
+			runReport(getMainWindow(), reportTemplateContent);
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
+	}
+
+	public static void runReport(MainWindow mainWindow, CodeList reportTemplateContent)
+	{
+		try
+		{
+			RtfFileChooser rtfFileChooser = new RtfFileChooser(mainWindow);
+			File destination = rtfFileChooser.displayChooser();
+			if (destination == null) 
+				return;
+
+			writeRtf(mainWindow, destination, reportTemplateContent);
+			EAM.notifyDialog(EAM.text("Selected Report Template Was Exported as RTF."));
+
+		}
+		catch (Exception e)
+		{
 			EAM.errorDialog(EAM.text("Error occurred while trying to export selected report template as RTF.\n") + e.getMessage());
 		}
 	}
 	
-	private void writeRtf(File destination) throws Exception
+	private static void writeRtf(MainWindow mainWindow, File destination, CodeList reportTemplateContent) throws Exception
 	{
 		RtfWriter rtfWriter = new RtfWriter(destination);
 		try
@@ -71,9 +85,7 @@ public class RunReportTemplateDoer extends ObjectsDoer
 			rtfWriter.startRtf();
 			rtfWriter.landscapeMode();
 			
-			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
-			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES);
-			new ProjectRtfExporter(getMainWindow()).exportProject(rtfWriter, reportTemplateContent);
+			new ProjectRtfExporter(mainWindow).exportProject(rtfWriter, reportTemplateContent);
 			
 			rtfWriter.endRtf();
 		}
