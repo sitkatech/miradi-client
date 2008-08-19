@@ -87,12 +87,12 @@ public class RtfWriter
 		endBlock();
 	}
 
-	private void startBlock() throws Exception
+	void startBlock() throws Exception
 	{
 		writeRtfCommand(START_BLOCK);
 	}
 	
-	private void endBlock() throws Exception
+	public void endBlock() throws Exception
 	{
 		writeRtfCommand(END_BLOCK);
 	}
@@ -157,13 +157,17 @@ public class RtfWriter
 
 	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
 	{
-		final int ONE_INCH_IN_TWIPS = 1440;
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			write(CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS )+ " ");	
+			write(createCellxCommand(column));	
 		}
 		
 		newLine();
+	}
+
+	public String createCellxCommand(final int column)
+	{
+		return CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS );
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
@@ -309,12 +313,13 @@ public class RtfWriter
 	
 	private UnicodeWriter writer;
 
+	public static final int ONE_INCH_IN_TWIPS = 1440;
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String CELL_X_COMMAND = "\\cellx";
 	public static final String CELL_COMMAND = " \\cell";
 	public static final String ROW_COMMAND = "\\row";
-	public static final String PARAGRAPH_COMMAND = "\\par";
+	public static final String PARAGRAPH_COMMAND = "\\pard\\par";
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
