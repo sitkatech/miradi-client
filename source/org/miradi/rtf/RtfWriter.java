@@ -58,6 +58,11 @@ public class RtfWriter
 		getWriter().writeln(textToWrite);
 	}
 	
+	public void write(String textToWrite) throws Exception
+	{
+		getWriter().write(textToWrite);
+	}
+	
 	public void writeImage(BufferedImage bufferedImage) throws Exception
 	{
 		startBlock();
@@ -108,7 +113,6 @@ public class RtfWriter
 	{
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
-		writeRtfCommand("{\\pard\\pard\\plain}");
 	}
 
 	private void writeTableBody(AbstractTableExporter exportableTable) throws Exception
@@ -122,18 +126,18 @@ public class RtfWriter
 	private void writeTableRow(AbstractTableExporter exportableTable, int row) throws Exception
 	{
 		writeRowData(exportableTable, row);
-		writeRowCommands(exportableTable);
 	}
 
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
-		startBlock();
+		
 		final int COLUMN_TO_PAD = 0;
-		writeRowHeader(exportableTable);
-				
+		writeRtfCommand("\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55");
+		writeCellCommands(exportableTable);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			startBlock();
+			
+			writeRtfCommand("\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 {\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ");
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
 				writeEncoded(createPadding(paddingCount, column));
@@ -143,44 +147,38 @@ public class RtfWriter
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 
 			writeEncoded(exportableTable.getTextAt(row, column));
-			writeRtfCommand(" \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\insrsid13244813 \\cell ");
-			endBlock();
-		}
-	}
-
-	private void writeRowHeader(AbstractTableExporter exportableTable) throws Exception
-	{
-		writeRtfCommand("\\trowd \\trhdr \\trautofit1 ");
-		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
-		{
-			writeRtfCommand("\\cellx" + column + " ");	
+			write("}\\cell ");	
 		}
 		
-		writeRtfCommand(" \\intbl");
+		write("\\row");
+		newLine();
 	}
-	
-	private void writeRowCommands(AbstractTableExporter exportableTable) throws Exception
+
+	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
 	{
-		writeRtfCommand("{\\pard \\ltrpar\\ql \\li0\\ri0\\widctlpar\\intbl\\wrapdefault\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0}");
-		writeRtfCommand("{ \\row }");
-		endBlock();
+		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+		{
+			write("\\cellx" + ((column  + 1) * 1440 )+ " ");	
+		}
+		
+		newLine();
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
-		startBlock();
-		writeRowHeader(exportableTable);
-		
+		writeln("\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55");
+		writeCellCommands(exportableTable);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
-			startBlock();
 			String header = exportableTable.getHeaderFor(columnIndex);
+			write("\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b {\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b");
 			writeEncoded(header);
-			writeRtfCommand(" \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\insrsid13244813 \\cell ");
-			endBlock();
+			write(" }\\cell ");
+			newLine();
 		}
 		
-		writeRowCommands(exportableTable);
+		write("\\row");
+		newLine();
 	}
 	
 	public static String encode(String stringToEncode)
@@ -236,7 +234,23 @@ public class RtfWriter
 	
 	public void startRtf() throws Exception
 	{
-		getWriter().write("{\\rtf ");
+		write(
+		"{\\rtf1\\ansi\\deff0\\adeflang1025" +
+		"{\\fonttbl{\\f0\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f1\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f2\\fswiss\\fprq2\\fcharset0 Arial;}{\\f3\\fnil\\fprq2\\fcharset0 Arial Unicode MS;}{\\f4\\fnil\\fprq2\\fcharset0 MS Mincho;}{\\f5\\fnil\\fprq2\\fcharset0 Tahoma;}{\\f6\\fnil\\fprq0\\fcharset0 Tahoma;}}" +
+		"{\\colortbl;\\red0\\green0\\blue0;\\red128\\green128\\blue128;}" +
+		"{\\stylesheet{\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\snext1 Normal;}" +
+		"{\\s2\\sb240\\sa120\\keepn\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\afs28\\lang255\\ltrch\\dbch\\af4\\langfe255\\hich\\f2\\fs28\\lang1033\\loch\\f2\\fs28\\lang1033\\sbasedon1\\snext3 Heading;}" +
+		"{\\s3\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext3 Body Text;}" +
+		"{\\s4\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon3\\snext4 List;}" +
+		"{\\s5\\sb120\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ai\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\i\\loch\\f0\\fs24\\lang1033\\i\\sbasedon1\\snext5 caption;}" +
+		"{\\s6\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext6 Index;}" +
+		"{\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext7 Table Contents;}" +
+		"{\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b\\sbasedon7\\snext8 Table Heading;}}" +
+		"{\\info{\\author Miradi}{\\revtim\\yr0\\mo0\\dy0\\hr0\\min0}{\\printim\\yr0\\mo0\\dy0\\hr0\\min0}{\\comment StarWriter}{\\vern6800}}\\deftab709" +
+		"{\\*\\pgdsctbl " +
+		"{\\pgdsc0\\pgdscuse195\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\pgdscnxt0 Standard;}}" +
+		"\\paperh15840\\paperw12240\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\ftnbj\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc");
+
 	}
 	
 	public void endRtf() throws Exception
@@ -259,6 +273,11 @@ public class RtfWriter
 		startBlock();
 		writeRtfCommand(command);
 		endBlock();
+	}
+	
+	private void newLine() throws Exception
+	{
+		write("");
 	}
 	
 	public UnicodeWriter getWriter()
