@@ -84,8 +84,8 @@ public class RtfFormExporter
 
 	private void writeFormRowColumns(FormRow formRow) throws Exception
 	{
-		StringBuffer rowContent = new StringBuffer("{");
-		StringBuffer rowFormatting = new StringBuffer("{\\trowd \\trautofit1 \\intbl ");
+		StringBuffer rowContent = new StringBuffer();
+		StringBuffer rowFormatting = new StringBuffer(RtfWriter.ROW_HEADER);
 		
 		int uniqueRtfColumnId = 1;
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
@@ -123,14 +123,11 @@ public class RtfFormExporter
 			}
 		}
 		
-		rowContent.append(getCellCommand());				
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
-		
-		rowContent.append("}");
-		rowFormatting.append(" \\row }");
-		
-		getWriter().writeln(rowContent.toString());
 		getWriter().writeln(rowFormatting.toString());
+		rowContent.append(getCellCommand());				
+		getWriter().writeln(rowContent.toString());
+		getWriter().write(RtfWriter.ROW_COMMAND + " ");
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
@@ -205,7 +202,7 @@ public class RtfFormExporter
 
 	private String getCellxCommand(int uniqueRtfColumnId)
 	{
-		return "\\cellx" + uniqueRtfColumnId + " ";
+		return getWriter().createCellxCommand(uniqueRtfColumnId);
 	}
 	
 	private Project getProject()
