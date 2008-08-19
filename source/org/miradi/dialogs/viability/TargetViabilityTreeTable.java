@@ -33,6 +33,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
@@ -62,8 +63,9 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		measurementValueRenderer = new MeasurementValueRendererFactory(this, fontProvider);
-		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
+		multiLineRenderer = new MultiLineObjectTableCellRendererFactory(getMainWindow(), this, fontProvider);
+		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 		rebuildTableCompletely();
 	}
 	
@@ -86,11 +88,18 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
 		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
 		boolean isFutureStatusNode = node.getType() == Goal.getObjectType();
+		boolean isIndicatorNode = Indicator.is(node.getType());
 		boolean isValueColumn = getViabilityModel().isChoiceItemColumn(columnTag);
+		
 		if((isMeasurementNode || isFutureStatusNode) && isValueColumn)
 		{
 			measurementValueRenderer.setColumnTag(columnTag);
 			return measurementValueRenderer;
+		}
+		
+		if(isIndicatorNode && isValueColumn)
+		{
+			return multiLineRenderer;
 		}
 		
 		boolean isChoiceItemColumn =
@@ -160,6 +169,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
 	private MeasurementValueRendererFactory measurementValueRenderer;
-	private BasicTableCellRendererFactory otherRenderer;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
+	private MultiLineObjectTableCellRendererFactory multiLineRenderer;
+	private BasicTableCellRendererFactory otherRenderer;
 }

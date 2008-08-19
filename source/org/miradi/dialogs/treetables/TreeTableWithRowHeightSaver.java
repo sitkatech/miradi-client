@@ -32,6 +32,7 @@ import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.SingleTableRowHeightController;
 import org.miradi.utils.TableRowHeightSaver;
 import org.miradi.utils.TableWithRowHeightManagement;
+import org.miradi.utils.TableWithRowHeightSaver;
 
 abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable implements TableWithRowHeightManagement
 {
@@ -92,6 +93,23 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	}
 	
 	public int getPreferredRowHeight(int row)
+	{
+		int preferredHeight = 1;
+		for(int column = 0; column < getColumnCount(); ++column)
+		{
+			int thisHeight = 1;
+			if(column == 0)
+				thisHeight = getPreferredTreeCellHeight(row);
+			else
+				thisHeight = TableWithRowHeightSaver.getPreferredRowHeight(this, row);
+			
+			preferredHeight = Math.max(preferredHeight, thisHeight);
+		}
+		
+		return preferredHeight;
+	}
+	
+	public int getPreferredTreeCellHeight(int row)
 	{
 		TreePath pathForRow = tree.getPathForRow(row);
 		if(pathForRow == null)
