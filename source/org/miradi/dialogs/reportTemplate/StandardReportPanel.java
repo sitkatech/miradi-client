@@ -49,6 +49,8 @@ public class StandardReportPanel extends TwoColumnPanel
 		addStandardReport(getSummaryCodeList(), EAM.text("Summary Report"));
 		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE);
 		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE);
+		addStandardReport(ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE);
+		addStandardReport(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE);
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
