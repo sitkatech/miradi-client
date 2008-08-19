@@ -22,12 +22,15 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.utils.CodeList;
 
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -54,18 +57,61 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	
 	public Object getValueAt(int row, int column)
 	{
-		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
-		if (!Measurement.is(objectForRow))
+		Measurement measurement = getMeasurementOrLatestIndicatorMeasurement(row, column);
+		if (measurement == null)
 			return "";
 		
 		String columnTag = getColumnTag(column);
-		String data = objectForRow.getData(columnTag);
+		String data = measurement.getData(columnTag);
 		
 		ChoiceQuestion question = getColumnQuestion(column);
 		if(question != null)
 			return question.findChoiceByCode(data);
 		
 		return data;
+	}
+
+	private Measurement getMeasurementOrLatestIndicatorMeasurement(int row, int column)
+	{
+		BaseObject rawObjectForRow = getBaseObjectForRowColumn(row, column);
+		if (Measurement.is(rawObjectForRow))
+			return (Measurement) rawObjectForRow; 
+		
+		if (!Indicator.is(rawObjectForRow))
+			return null;
+		
+		if (areMeasurementRowsVisible())
+			return null;
+		
+		return getLatetIndicatorMeasurement(rawObjectForRow);
+	}
+
+	private Measurement getLatetIndicatorMeasurement(BaseObject rawObjectForRow)
+	{
+		ORef latestMeasurementRef = ((Indicator) rawObjectForRow).getLatestMeasurementRef();
+		if (latestMeasurementRef.isInvalid())
+				return null;
+		
+		return Measurement.find(getProject(), latestMeasurementRef);
+	}
+
+	private boolean areMeasurementRowsVisible()
+	{
+		try
+		{
+			return getVisibleRowCodes().contains(Measurement.OBJECT_NAME);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	private CodeList getVisibleRowCodes() throws Exception
+	{
+		CodeList visibleRows = PlanningTreeTableModel.getVisibleRowCodes(getProject());
+		return visibleRows;
 	}
 	
 	public boolean isChoiceItemColumn(int column)
