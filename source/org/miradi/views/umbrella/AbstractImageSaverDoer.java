@@ -61,7 +61,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	protected void preNotifyUser() throws Exception
 	{
 		if (isInDiagram())
-			EAM.showHtmlMessageOkDialog(MESSAGE_FILE_NAME, "Paste");
+			EAM.showHtmlInfoMessageOkDialog(MESSAGE_FILE_NAME);
 	}
 	
 	private void saveImage(FileOutputStream out) throws Exception
