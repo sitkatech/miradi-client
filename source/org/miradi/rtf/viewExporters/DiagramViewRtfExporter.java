@@ -48,9 +48,16 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 	{
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
-			writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
 			writer.newParagraph();
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			writer.write(RtfWriter.BOLD_DIAGRAM_HEADER_FONT_COMMAND);
+			writer.writeEncoded(diagramObject.toString());
+			writer.newParagraph();
+			writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			
+			writer.pageBreak();
 		}
+		
+		writer.newParagraph();
 	}
 }

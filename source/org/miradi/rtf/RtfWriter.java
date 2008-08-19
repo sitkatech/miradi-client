@@ -289,6 +289,16 @@ public class RtfWriter
 		writeSingleCommand(PARAGRAPH_COMMAND);	
 	}
 	
+	public void insertTab() throws Exception
+	{
+		write(TAB_COMMAND);	
+	}
+	
+	public void pageBreak() throws Exception
+	{
+		write(PAGE_BREAK_COMMAND);
+	}
+	
 	public void landscapeMode() throws Exception
 	{
 		writeRtfCommand(LANDSCAPE_COMMAND);
@@ -323,6 +333,9 @@ public class RtfWriter
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
+	public static final String PAGE_BREAK_COMMAND = "\\par \\page\\pard\\plain \\ltrpar\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}";
+	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\loch\\f3\\fs34\\lang1033\\i0\\b ";
+	public static final String TAB_COMMAND = "\\tab ";
 	
 	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b ";
 	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 ";
