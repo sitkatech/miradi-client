@@ -77,9 +77,10 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
-		
-		addTab(EAM.text("RTF Reports"), reportTemplateManagementPanel);
+
 		addTab(EAM.text("Standard Reports"), standardReportPanel);
+		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
+
 	}
 	
 	public void deleteTabs() throws Exception
