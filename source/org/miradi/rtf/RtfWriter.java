@@ -317,8 +317,8 @@ public class RtfWriter
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String CELL_X_COMMAND = "\\cellx";
-	public static final String CELL_COMMAND = " \\cell";
-	public static final String ROW_COMMAND = "\\row";
+	public static final String CELL_COMMAND = " \\cell ";
+	public static final String ROW_COMMAND = "\\row ";
 	public static final String PARAGRAPH_COMMAND = "\\pard\\par";
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
