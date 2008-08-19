@@ -94,14 +94,15 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public int getPreferredRowHeight(int row)
 	{
+		final int FIRST_NON_TREE_COLUMN = 1;
 		int preferredHeight = 1;
 		for(int column = 0; column < getColumnCount(); ++column)
 		{
 			int thisHeight = 1;
-			if(column == 0)
+			if(column < FIRST_NON_TREE_COLUMN)
 				thisHeight = getPreferredTreeCellHeight(row);
 			else
-				thisHeight = TableWithRowHeightSaver.getPreferredRowHeight(this, row);
+				thisHeight = TableWithRowHeightSaver.getPreferredRowHeight(this, row, FIRST_NON_TREE_COLUMN);
 			
 			preferredHeight = Math.max(preferredHeight, thisHeight);
 		}
