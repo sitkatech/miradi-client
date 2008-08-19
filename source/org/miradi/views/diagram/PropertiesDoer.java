@@ -319,9 +319,6 @@ public class PropertiesDoer extends LocationDoer
 			EAMGraphCell[] selectedCells = getDiagramComponent().getOnlySelectedCells();
 			HashSet<FactorCell> groupBoxesAndChildren = getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
 			HashSet<LinkCell> linkInsideGroupBox = getDiagramComponent().getAllLinksInsideGroupBox(groupBoxesAndChildren);
-			if (linkInsideGroupBox.size() == 0)
-				return selectedCells;
-
 			HashSet<EAMGraphCell> selectedFactorsWithoutGroupBoxLinks = new HashSet();
 			selectedFactorsWithoutGroupBoxLinks.addAll(Arrays.asList(selectedCells));
 			selectedFactorsWithoutGroupBoxLinks.removeAll(linkInsideGroupBox);
