@@ -319,13 +319,13 @@ public class RtfWriter
 	public static final String CELL_X_COMMAND = "\\cellx";
 	public static final String CELL_COMMAND = " \\cell ";
 	public static final String ROW_COMMAND = "\\row ";
-	public static final String PARAGRAPH_COMMAND = "\\pard\\par";
-	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
-	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55";
+	public static final String PARAGRAPH_COMMAND = "\\pard\\par ";
+	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
+	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
 	
 	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b ";
-	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033";
-	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b";
+	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 ";
+	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b ";
 	public static final String PRE_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ";
 }
