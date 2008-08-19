@@ -110,7 +110,7 @@ public class PropertiesDoer extends LocationDoer
 		if (!selected.isFactor())
 			return selected;
 		
-		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramView().getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
 		HashSet<FactorCell> children = getChildrenIfAny(selected);
 		if (children.contains(topCellAtClickPoint))
 			return topCellAtClickPoint;
@@ -284,8 +284,7 @@ public class PropertiesDoer extends LocationDoer
 		if(screenPoint == null)
 			return FactorPropertiesPanel.TAB_DETAILS;
 		
-		DiagramComponent diagramComponent = getDiagramView().getDiagramComponent();
-		Point pointRelativeToCellOrigin = diagramComponent.convertScreenPointToCellRelativePoint(screenPoint, factorCell);
+		Point pointRelativeToCellOrigin = getDiagramComponent().convertScreenPointToCellRelativePoint(screenPoint, factorCell);
 
 		EAM.logVerbose(screenPoint.toString() + "->" + pointRelativeToCellOrigin.toString());
 		if(factorCell.isPointInObjective(pointRelativeToCellOrigin))
@@ -316,9 +315,9 @@ public class PropertiesDoer extends LocationDoer
 	{
 		try
 		{
-			EAMGraphCell[] selectedCells = getDiagramView().getDiagramPanel().getOnlySelectedCells();
-			HashSet<FactorCell> groupBoxesAndChildren = getDiagramView().getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
-			HashSet<LinkCell> linkInsideGroupBox = getDiagramView().getDiagramComponent().getAllLinksInsideGroupBox(groupBoxesAndChildren);
+			EAMGraphCell[] selectedCells = getDiagramComponent().getOnlySelectedCells();
+			HashSet<FactorCell> groupBoxesAndChildren = getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
+			HashSet<LinkCell> linkInsideGroupBox = getDiagramComponent().getAllLinksInsideGroupBox(groupBoxesAndChildren);
 			if (linkInsideGroupBox.size() == 0)
 				return selectedCells;
 
@@ -342,5 +341,11 @@ public class PropertiesDoer extends LocationDoer
 		}
 		
 		return groupBoxes;
+	}
+	
+
+	private DiagramComponent getDiagramComponent()
+	{
+		return getDiagramView().getDiagramComponent();
 	}
 }
