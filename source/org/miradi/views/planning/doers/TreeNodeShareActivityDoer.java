@@ -34,10 +34,10 @@ public class TreeNodeShareActivityDoer extends ShareActivityDoer
 		if (getSingleSelected(Strategy.getObjectType()) == null)
 			return false;
 			
-		return hasSharableAcitities();
+		return hasSharableActivities();
 	}
 	
-	private boolean hasSharableAcitities()
+	private boolean hasSharableActivities()
 	{
 		ORef strategyRef = getParentRefOfShareableObjects();
 		if (!Strategy.is(strategyRef))
@@ -45,10 +45,10 @@ public class TreeNodeShareActivityDoer extends ShareActivityDoer
 
 		Strategy strategy = Strategy.find(getProject(), strategyRef);
 		Vector<Task> activities = strategy.getActivities();
-		Vector<Task> allActivities = getProject().getTaskPool().getAllActivities();
-		allActivities.removeAll(activities);
+		Vector<Task> activitiesNotAlreadyInStrategy = getProject().getTaskPool().getAllActivities();
+		activitiesNotAlreadyInStrategy.removeAll(activities);
 		
-		return allActivities.size() > 0;
+		return activitiesNotAlreadyInStrategy.size() > 0;
 	}
 
 }
