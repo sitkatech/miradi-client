@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.awt.Point;
+import java.util.Arrays;
 import java.util.HashSet;
 
 import javax.swing.Box;
@@ -321,8 +322,11 @@ public class PropertiesDoer extends LocationDoer
 			if (linkInsideGroupBox.size() == 0)
 				return selectedCells;
 
-			HashSet<FactorCell> groupBoxes = extractGroupBoxes(groupBoxesAndChildren);
-			return groupBoxes.toArray(new FactorCell[0]);
+			HashSet<EAMGraphCell> selectedFactorsWithoutGroupBoxLinks = new HashSet();
+			selectedFactorsWithoutGroupBoxLinks.addAll(Arrays.asList(selectedCells));
+			selectedFactorsWithoutGroupBoxLinks.removeAll(linkInsideGroupBox);
+			
+			return selectedFactorsWithoutGroupBoxLinks.toArray(new FactorCell[0]);
 		}
 		catch (Exception e)
 		{
@@ -330,19 +334,6 @@ public class PropertiesDoer extends LocationDoer
 			return new EAMGraphCell[0];
 		}
 	}
-
-	private HashSet<FactorCell> extractGroupBoxes(HashSet<FactorCell> groupBoxesAndChildren)
-	{
-		HashSet<FactorCell> groupBoxes = new HashSet();
-		for(FactorCell factorCell : groupBoxesAndChildren)
-		{
-			if (factorCell.isGroupBox())
-				groupBoxes.add(factorCell);
-		}
-		
-		return groupBoxes;
-	}
-	
 
 	private DiagramComponent getDiagramComponent()
 	{
