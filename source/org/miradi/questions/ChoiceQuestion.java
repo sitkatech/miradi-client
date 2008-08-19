@@ -23,6 +23,7 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
+import org.miradi.utils.CodeList;
 
 
 public abstract class ChoiceQuestion
@@ -35,6 +36,17 @@ public abstract class ChoiceQuestion
 	public String getCode(int index)
 	{
 		return getChoices()[index].getCode();
+	}
+	
+	public CodeList getAllCodes()
+	{
+		CodeList allCodes = new CodeList();
+		for (int index = 0; index < size(); ++index)
+		{
+			allCodes.add(getCode(index));
+		}
+		
+		return allCodes;
 	}
 	
 	abstract public ChoiceItem[] getChoices();

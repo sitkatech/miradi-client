@@ -22,8 +22,7 @@ package org.miradi.questions;
 import java.awt.Color;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.utils.CodeList;
 
 public class TestChoiceQuestion extends TestCaseWithProject
 {
@@ -37,5 +36,16 @@ public class TestChoiceQuestion extends TestCaseWithProject
 		DiagramFactorFontColorQuestion fontColorQuestion = new DiagramFactorFontColorQuestion();
 		assertEquals("wrong choice?", null, fontColorQuestion.findChoiceByLabel("invalidLabel"));
 		assertEquals(new ChoiceItem("#FFFFFF", "White", Color.WHITE), fontColorQuestion.findChoiceByLabel("White"));
+	}
+	
+	public void testGetAllCodes()
+	{
+		StatusQuestion question = new StatusQuestion();
+		assertEquals("wrong code count?", 5, question.getAllCodes().size());
+		CodeList allCodes = question.getAllCodes();
+		assertContains("Could not find code for poor?", StatusQuestion.POOR, allCodes.toVector());
+		assertContains("Could not find code for fair?", StatusQuestion.FAIR, allCodes.toVector());
+		assertContains("Could not find code for good?", StatusQuestion.GOOD, allCodes.toVector());
+		assertContains("Could not find code for very good?", StatusQuestion.VERY_GOOD, allCodes.toVector());
 	}
 }
