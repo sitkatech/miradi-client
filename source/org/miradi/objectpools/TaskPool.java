@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
@@ -60,4 +62,17 @@ public class TaskPool extends EAMNormalObjectPool
 		return allTasks;
 	}
 
+	public Vector<Task> getAllActivities()
+	{
+		Vector<Task> allActivities = new Vector();
+		Task[] allTasks = getAllTasks();
+		for (int index = 0; index < allTasks.length; ++index)
+		{	
+			if (allTasks[index].isActivity())
+				allActivities.add(allTasks[index]);
+		}
+		
+		return allActivities;
+	}
+	
 }

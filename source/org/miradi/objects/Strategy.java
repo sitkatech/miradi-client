@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -135,6 +137,19 @@ public class Strategy extends Factor
 	public ORefList getActivityRefs()
 	{
 		return new ORefList(Task.getObjectType(), getActivityIds());
+	}
+	
+	public Vector<Task> getActivities()
+	{
+		Vector<Task> activities = new Vector();
+		ORefList activityRefs = getActivityRefs();
+		for (int index = 0; index < activityRefs.size(); ++index)
+		{
+			Task activity = Task.find(getProject(), activityRefs.get(index));
+			activities.add(activity);
+		}
+		
+		return activities;
 	}
 	
 	public String getPseudoData(String fieldTag)
