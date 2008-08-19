@@ -43,5 +43,5 @@ public class EAMZipFileChooser extends EAMFileSaveChooser
 		return ZIP_UI_EXTENSION_TAG;
 	}
 	
-	public static final String ZIP_UI_EXTENSION_TAG = "Zip";
+	public static final String ZIP_UI_EXTENSION_TAG = "MPZ";
 }
