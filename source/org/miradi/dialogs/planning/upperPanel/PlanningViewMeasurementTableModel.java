@@ -83,10 +83,10 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		if (areMeasurementRowsVisible())
 			return null;
 		
-		return getLatetIndicatorMeasurement(rawObjectForRow);
+		return getLatestIndicatorMeasurement(rawObjectForRow);
 	}
 
-	private Measurement getLatetIndicatorMeasurement(BaseObject rawObjectForRow)
+	private Measurement getLatestIndicatorMeasurement(BaseObject rawObjectForRow)
 	{
 		ORef latestMeasurementRef = ((Indicator) rawObjectForRow).getLatestMeasurementRef();
 		if (latestMeasurementRef.isInvalid())
