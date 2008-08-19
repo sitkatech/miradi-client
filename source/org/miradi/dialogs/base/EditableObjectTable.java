@@ -36,6 +36,7 @@ import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -235,7 +236,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	    }
 	}
 	
-	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer 
+	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
 	{
 	    public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
 	    {
@@ -258,6 +259,11 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	        setForeground(foreground);
 	        setBackground(background);
 	    }
+
+		public int getPreferredHeight(JTable table, int row, int column, Object value)
+		{
+			return getPreferredSize().height;
+		}
 	}
 	
 	private Vector selectionListeners;

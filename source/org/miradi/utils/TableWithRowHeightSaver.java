@@ -28,9 +28,8 @@ import javax.swing.table.TableModel;
 import org.miradi.dialogs.fieldComponents.PanelTable;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-
-import com.java.sun.jtreetable.JTreeTable.TreeTableCellRenderer;
 
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
 {
@@ -94,14 +93,15 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	public static int getPreferredRowHeight(JTable table, int row)
 	{
+		return getPreferredRowHeight(table, row, 0);
+	}
+	
+	public static int getPreferredRowHeight(JTable table, int row, int firstColumn)
+	{
 		int maxPreferredHeight = 1;
-		for(int column = 0; column < table.getColumnCount(); ++column)
+		for(int column = firstColumn; column < table.getColumnCount(); ++column)
 		{
-			TableCellRenderer rawRenderer = table.getCellRenderer(row, column);
-			if(isTreeColumn(rawRenderer))
-				continue;
-				TableCellPreferredHeightProvider provider = (TableCellPreferredHeightProvider)rawRenderer;
-			int thisHeight = provider.getPreferredHeight(table, row, column, table.getValueAt(row, column));
+			int thisHeight = getPreferredCellHeight(table, row, column);
 			maxPreferredHeight = Math.max(maxPreferredHeight, thisHeight);
 		}
 		
@@ -109,13 +109,24 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		maxPreferredHeight += ESTIMATED_CELL_PADDING_HEIGHT;
 		return maxPreferredHeight;
 	}
-	
-	private static boolean isTreeColumn(TableCellRenderer rawRenderer)
-	{
-		// FIXME: This can go away when we have only single-column treetables
-		return (rawRenderer instanceof TreeTableCellRenderer);
-	}
 
+	private static int getPreferredCellHeight(JTable table, int row, int column)
+	{
+		try
+		{
+			TableCellRenderer rawRenderer = table.getCellRenderer(row, column);
+			TableCellPreferredHeightProvider provider = (TableCellPreferredHeightProvider)rawRenderer;
+			int thisHeight = provider.getPreferredHeight(table, row, column, table.getValueAt(row, column));
+			return thisHeight;
+		}
+		catch(RuntimeException e)
+		{
+			EAM.logWarning("Error in table " + table.getClass().getName() + " column " + column);
+			EAM.logStackTrace();
+			return 1;
+		}
+	}
+	
 	@Override
 	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
 	{
