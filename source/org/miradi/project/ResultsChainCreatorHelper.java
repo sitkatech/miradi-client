@@ -373,7 +373,6 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; ++i)
 		{
 			diagramFactors.add(selectedFactorCells[i].getDiagramFactor());
-			diagramFactors.addAll(getAllOwningGroupBoxes(selectedFactorCells[i].getDiagramFactor()));
 		}
 		
 		return diagramFactors;
@@ -388,8 +387,7 @@ public class ResultsChainCreatorHelper
 			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();
 			Factor[] factorsArray = chainObject.buildNormalChainAndGetFactors(model, diagramFactor).toFactorArray();
 			
-			HashSet<DiagramFactor> diagramFactors = convertToDiagramFactors(factorsArray);
-			diagramFactors.addAll(getAllOwningGroupBoxes(diagramFactors));
+			Vector diagramFactors = convertToDiagramFactors(factorsArray);
 			allDiagramFactors.addAll(diagramFactors);
 		}
 	
@@ -564,48 +562,18 @@ public class ResultsChainCreatorHelper
 		return from.getWrappedId().equals(fromCloned.getWrappedId()) && to.getWrappedId().equals(toCloned.getWrappedId());
 	}
 	
-	private HashSet<DiagramFactor> convertToDiagramFactors(Factor[] factors)
+	private Vector convertToDiagramFactors(Factor[] factors)
 	{
-		HashSet<DiagramFactor> diagramFactors = new HashSet();
+		Vector vector = new Vector();
 		for (int i = 0; i < factors.length; i++)
 		{
 			ORef factorRef = factors[i].getRef();
 			DiagramFactor diagramFactor = model.getDiagramFactor(factorRef);
 			if (canAddTypeToResultsChain(diagramFactor))
-				diagramFactors.add(diagramFactor);
+				vector.add(diagramFactor);
 		}
 		
-		return diagramFactors;
-	}
-
-	private HashSet<DiagramFactor> getAllOwningGroupBoxes(DiagramFactor diagramFactor)
-	{
-		HashSet<DiagramFactor> diagramFactors = new HashSet();
-		diagramFactors.add(diagramFactor);
-		return getAllOwningGroupBoxes(diagramFactors);
-	}
-	
-	private HashSet<DiagramFactor> getAllOwningGroupBoxes(HashSet<DiagramFactor> diagramFactors)
-	{
-		HashSet<DiagramFactor> owningGroupBoxes = new HashSet();
-		for(DiagramFactor diagramFactor : diagramFactors)
-		{
-			if (diagramFactor.isCoveredByGroupBox())
-				owningGroupBoxes.add(getOwningGroupBox(diagramFactor));			
-		}
-		
-		return owningGroupBoxes;
-	}
-	
-	private DiagramFactor getOwningGroupBox(DiagramFactor diagramFactorChild)
-	{
-		ORef owningGroupBoxRef = diagramFactorChild.getOwningGroupBoxRef();
-		return DiagramFactor.find(getProject(), owningGroupBoxRef);
-	}
-
-	private Project getProject()
-	{
-		return project;
+		return vector;
 	}
 
 	private DiagramModel model;
