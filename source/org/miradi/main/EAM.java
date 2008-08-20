@@ -352,7 +352,7 @@ public class EAM
 	
 	public static void errorDialog(String errorMessage)
 	{
-		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAM.text("Wintitle|Error"), JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(getMainWindow(), errorMessage, EAM.text("Title|Error"), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public static void notifyDialog(String text)
