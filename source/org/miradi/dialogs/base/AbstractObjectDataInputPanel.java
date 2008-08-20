@@ -242,6 +242,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			Rectangle rect = ((ObjectDataInputField) getFields().get(0)).getComponent().getBounds();
 			scrollRectToVisible(rect);
 		}
+		
+		if (getSubPanels().size() > 0)
+		{
+			AbstractObjectDataInputPanel subPanel = getSubPanels().get(0);
+			subPanel.setFocusOnFirstField();
+		}
 	}
 		
 	public ObjectDataInputField addField(ObjectDataInputField field)
@@ -756,6 +762,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		private Vector<ListSelectionListener> listeners;
 	}
 
+	private Vector<AbstractObjectDataInputPanel> getSubPanels()
+	{
+		return subPanels; 
+	}
+	
 	public static int STD_SHORT = 5;
 	
 	private Project project;
