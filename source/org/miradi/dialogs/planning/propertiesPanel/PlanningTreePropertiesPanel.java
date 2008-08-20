@@ -61,6 +61,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.dispose();
 		taskPropertiesInputPanel.dispose();
 		measurementPropertiesPanel.dispose();
+		blankPropertiesPanel.dispose();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -70,7 +71,7 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
-		blankPropertiesPanel = new BlankPropertiesPanel();
+		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		
 		add(goalPropertiesPanel);
