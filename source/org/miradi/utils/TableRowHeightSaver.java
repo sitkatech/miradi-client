@@ -135,7 +135,10 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void mouseReleased(MouseEvent e)
 	{
-		endResizing();
+		if(!resizeInProgress)
+			return;
+		
+		endResizing(e);
 	}
 
 	public void mouseDragged(MouseEvent e)
@@ -146,7 +149,8 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		if(!resizeInProgress)
 			return;
 		
-		sizeDeltaY = e.getY() - dragStartedY;
+		int eventY = e.getY() + table.getY();
+		sizeDeltaY = eventY - dragStartedY;
 		table.setRowHeight(rowBeingResized, getNewRowHeight());
 		e.consume();
 	}
@@ -188,18 +192,18 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	
 	void beginResizing(MouseEvent event)
 	{
-		dragStartedY = event.getY();
+		table.setEnabled(false);
+		int eventY = event.getY() + table.getY();
+		dragStartedY = eventY;
 		originalRowHeight = table.getRowHeight();
 		rowBeingResized = table.rowAtPoint(event.getPoint());
 		resizeInProgress = true;
+		sizeDeltaY = 0;
 		setResizeCursor();
 	}
 
-	void endResizing()
+	void endResizing(MouseEvent event)
 	{
-		if(!resizeInProgress)
-			return;
-		
 		resizeInProgress = false;
 		restoreDefaultCursor();
 		int newHeight = getNewRowHeight();
@@ -209,6 +213,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		table.scrollRectToVisible(resized);
 		table.getSelectionModel().setSelectionInterval(rowBeingResized, rowBeingResized);
 		table.getTopLevelAncestor().repaint();
+		table.setEnabled(true);
 	}
 
 	private int getNewRowHeight()
