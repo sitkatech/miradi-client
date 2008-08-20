@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.text.ParseException;
-
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
@@ -70,10 +68,5 @@ public class CreateStressDoer extends CreateAnnotationDoer
 	public String getAnnotationListTag()
 	{
 		return Target.TAG_STRESS_REFS;
-	}
-	
-	protected CommandSetObjectData createAppendCommand(Factor factor, ORef refToAppend) throws ParseException
-	{
-		return CommandSetObjectData.createAppendORefCommand(factor, getAnnotationListTag(), refToAppend);
 	}
 }
