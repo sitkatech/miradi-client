@@ -17,24 +17,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.propertiesPanel;
+package org.miradi.dialogs.base;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class BlankPropertiesPanel extends ObjectDataInputPanel
+public abstract class OverlaidObjectDataInputPanel extends ObjectDataInputPanel
 {
-	public BlankPropertiesPanel(Project project)
+	public OverlaidObjectDataInputPanel(Project project, ORef orefToUse)
 	{
-		super(project, ORef.INVALID);
-		
-		setBackground(AppPreferences.getDataPanelBackgroundColor());
+		super(project, orefToUse);
 	}
 
-	public String getPanelDescription()
-	{
-		return "";
-	}
+	@Override
+	abstract public void setFocusOnFirstField();
 }

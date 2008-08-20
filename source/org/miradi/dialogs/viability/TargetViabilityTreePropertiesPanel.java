@@ -24,6 +24,7 @@ import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.ids.BaseId;
@@ -37,7 +38,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 
-public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
+public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputPanel
 {
 	public TargetViabilityTreePropertiesPanel(MainWindow mainWindow) throws Exception
 	{
@@ -46,7 +47,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		
-		blankPropertiesPanel = new BlankPropertiesPanel();
+		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow);
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
@@ -78,7 +79,8 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		String panelDescription = findPanel(orefsToUse).getPanelDescription();
+		currentCard = findPanel(orefsToUse);
+		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
 
 		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);
@@ -96,7 +98,7 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		repaint();
 	}
 	
-	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
+	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -119,7 +121,14 @@ public class TargetViabilityTreePropertiesPanel extends ObjectDataInputPanel
 		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
+	@Override
+	public void setFocusOnFirstField()
+	{
+		currentCard.setFocusOnFirstField();
+	}
+	
 	private CardLayout cardLayout;
+	private ObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;

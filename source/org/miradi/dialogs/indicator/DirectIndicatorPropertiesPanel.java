@@ -21,8 +21,8 @@ package org.miradi.dialogs.indicator;
 
 import java.awt.BorderLayout;
 
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorFutureStatusSubPanel;
@@ -33,7 +33,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 
-public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
+public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 {
 	public DirectIndicatorPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
@@ -50,6 +50,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel.dispose();
 		measurementPropertiesPanel.dispose();
 		futureStatusPropertiesPanel.dispose();
+		blankPropertiesPanel.dispose();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -57,7 +58,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
-		blankPropertiesPanel = new BlankPropertiesPanel();
+		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
 	}
 	
@@ -69,9 +70,9 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		DisposablePanelWithDescription panel = findPanel(orefsToUse);
+		currentPanel = findPanel(orefsToUse);
 		removeAll();
-		add(panel, BorderLayout.CENTER);
+		add(currentPanel, BorderLayout.CENTER);
 	
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
@@ -88,7 +89,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		repaint();
 	}
 	
-	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
+	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -108,6 +109,12 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 		return blankPropertiesPanel;
 	}
 	
+	@Override
+	public void setFocusOnFirstField()
+	{
+		currentPanel.setFocusOnFirstField();
+	} 
+	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
@@ -117,6 +124,7 @@ public class DirectIndicatorPropertiesPanel extends ObjectDataInputPanel
 	
 	private MainWindow mainWindow;
 	
+	private ObjectDataInputPanel currentPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
