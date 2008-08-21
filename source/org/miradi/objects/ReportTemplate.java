@@ -72,14 +72,14 @@ public class ReportTemplate extends BaseObject
 		return objectType == getObjectType();
 	}
 	
-	public static ReportTemplate find(ObjectManager objectManager, ORef eportTemplateRef)
+	public static ReportTemplate find(ObjectManager objectManager, ORef reportTemplateRef)
 	{
-		return (ReportTemplate) objectManager.findObject(eportTemplateRef);
+		return (ReportTemplate) objectManager.findObject(reportTemplateRef);
 	}
 	
-	public static ReportTemplate find(Project project, ORef eportTemplateRef)
+	public static ReportTemplate find(Project project, ORef reportTemplateRef)
 	{
-		return find(project.getObjectManager(), eportTemplateRef);
+		return find(project.getObjectManager(), reportTemplateRef);
 	}
 
 	@Override
