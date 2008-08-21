@@ -271,6 +271,8 @@ public class Actions
 		registerAction(new ActionCreateReportTemplate(mainWindow));
 		registerAction(new ActionDeleteReportTemplate(mainWindow));
 		registerAction(new ActionRunReportTemplate(mainWindow));
+		registerAction(new ActionCreateTaggedObjectSet(mainWindow));
+		registerAction(new ActionDeleteTaggedObjectSet(mainWindow));
 		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
