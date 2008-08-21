@@ -166,6 +166,9 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	private void updateCheckBoxs()
 	{
+		if (isInvalidLayerManager(getLayerManager()))
+			return;
+		
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i=0; i<keys.length; ++i)
 		{
@@ -305,6 +308,9 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	
 	public void updateLegendPanel(CodeList hiddenTypes)
 	{
+		if (isInvalidLayerManager(getLayerManager()))
+			return;
+		
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int i=0; i<keys.length; ++i)
 		{
@@ -335,9 +341,17 @@ abstract public class DiagramLegendPanel extends LegendPanel
 			mainWindow.updateActionsAndStatusBar();
 		}
 	}
+
+	protected boolean isInvalidLayerManager(LayerManager manager)
+	{
+		return manager == null;
+	}
 		
 	private LayerManager getLayerManager()
 	{
+		if (getMainWindow().getCurrentDiagramComponent() == null)
+			return null;
+		
 		return getMainWindow().getCurrentDiagramComponent().getLayerManager();
 	}
 	
