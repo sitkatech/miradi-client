@@ -49,6 +49,7 @@ import org.miradi.actions.jump.ActionJumpDevelopMap;
 import org.miradi.actions.jump.ActionJumpDevelopSchedule;
 import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardCreateInitialModelStep;
+import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
@@ -65,7 +66,6 @@ import org.miradi.actions.jump.ActionJumpImplementStrategicAndMonitoringPlans;
 import org.miradi.actions.jump.ActionJumpImplementWorkPlan;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardEditIndicatorsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardDefineAudienceStep;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardSelectMethodsStep;
 import org.miradi.actions.jump.ActionJumpObtainFinancing;
 import org.miradi.actions.jump.ActionJumpPlanDataStorage;
@@ -273,6 +273,7 @@ public class Actions
 		registerAction(new ActionRunReportTemplate(mainWindow));
 		registerAction(new ActionCreateTaggedObjectSet(mainWindow));
 		registerAction(new ActionDeleteTaggedObjectSet(mainWindow));
+		registerAction(new ActionEditTaggedObjectSet(mainWindow));
 		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));
