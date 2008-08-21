@@ -25,6 +25,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
+import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -32,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class DiagramObject extends BaseObject
@@ -331,12 +333,14 @@ abstract public class DiagramObject extends BaseObject
 		allDiagramFactorLinkIds = new IdListData(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		details = new StringData(TAG_DETAIL);
+		hiddenTyes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);
+		addField(TAG_HIDDEN_TYPES, hiddenTyes);
 		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
 	
@@ -344,11 +348,13 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
+	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";
  	
 	private IdListData allDiagramFactorIds;
 	private IdListData allDiagramFactorLinkIds;
 	private StringData shortLabel;
 	private StringData details;
+	private CodeListData hiddenTyes;
 	private PseudoStringData combinedLabel;
 }

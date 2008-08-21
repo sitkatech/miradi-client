@@ -33,6 +33,7 @@ import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.Actions;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
@@ -49,6 +50,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
@@ -60,7 +62,6 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ViewData;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.utils.CodeList;
@@ -74,10 +75,12 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	{
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
-		
+	
+		//FIXME this might go away once layer manager is constructed with a DO
+		getProject().getLayerManager().setDiagramObject(getCurrentDiagramObject());
 		createLegendCheckBoxes();
 		addAllComponents();
-		updateLegendPanel(getLegendSettings(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
+		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
 	}
 	
 	private void addAllComponents()
@@ -179,9 +182,40 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		LayerManager manager = getLayerManager();
 		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
 		updateVisiblity();
-		saveSettingsToProject(ViewData.TAG_DIAGRAM_HIDDEN_TYPES);
+		saveSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
+	}
+	
+	protected void saveSettingsToProject(String tag)
+	{
+		try
+		{
+			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(getCurrentDiagramObject().getRef(), tag, getLegendSettings().toString());
+			getProject().executeCommand(setLegendSettingsCommand);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to update diagram legend settings:" + e.getMessage());
+		}
 	}
 
+	protected CodeList getLegendSettings(String tag)
+	{
+		try
+		{
+			if (getCurrentDiagramObject() == null)
+				return new CodeList();
+			
+			return new CodeList(getCurrentDiagramObject().getData(tag));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
+			return new CodeList();
+		}
+	}
+		
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
@@ -217,7 +251,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 	{
 		removeAll();
 		addAllComponents();
-		updateLegendPanel(getLegendSettings(ViewData.TAG_DIAGRAM_HIDDEN_TYPES));
+		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
 		validate();
 	}
 	
@@ -309,8 +343,18 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		return mainWindow.getProject().getLayerManager();
 	}
 	
+	private MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	private DiagramObject getCurrentDiagramObject()
+	{
+		return getMainWindow().getDiagramView().getCurrentDiagramObject();
+	}
+	
 	public static final String SCOPE_BOX = "ScopeBox";
 
-	MainWindow mainWindow;
-	JCheckBox targetLinkCheckBox;
+	private MainWindow mainWindow;
+	private JCheckBox targetLinkCheckBox;
 }

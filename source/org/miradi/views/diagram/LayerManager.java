@@ -51,7 +51,7 @@ public class LayerManager
 		draftStrategyVisibleFlag = true;
 	}
 	
-	public boolean isVisible(DiagramObject diagramObject, FactorCell node)
+	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
 	{
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
@@ -59,7 +59,7 @@ public class LayerManager
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
 		if (isDraft)
 		{
-			if (isResultsChain(diagramObject))
+			if (isResultsChain(diagramObjectToUse))
 				return false;
 
 			if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
@@ -92,12 +92,12 @@ public class LayerManager
 		return false;
 	}
 
-	private boolean isResultsChain(DiagramObject diagramObject)
+	private boolean isResultsChain(DiagramObject diagramObjectToUse)
 	{
-		if (diagramObject == null)
+		if (diagramObjectToUse == null)
 			return false;
 		
-		return diagramObject.isResultsChain();
+		return diagramObjectToUse.isResultsChain();
 	}
 
 	public boolean isTypeVisible(Class nodeClass)
@@ -276,22 +276,33 @@ public class LayerManager
 		threatReductionResultFlag = newSetting;
 	}
 	
-	Set hiddenNodeTypes;
-	ORefList hiddenORefs;
-	String mode;
-	boolean contributingFactorsVisibleFlag;
-	boolean directThreatsVisibleFlag;
-	boolean linkagesVisibleFlag;
-	boolean targetLinkagesVisibleFlag;
-	boolean goalsVisibleFlag;
-	boolean objectivesVisibleFlag;
-	boolean indicatorsVisibleFlag;
-	boolean scopeBoxVisibleFlag;
-	boolean stressesVisibleFlag;
-	boolean activitiesVisibleFlag;
-	boolean intermediateResultFlag;
-	boolean threatReductionResultFlag;
-	boolean textBoxesVisibleFlag;
-	boolean groupBoxesVisibleFlag;
-	boolean draftStrategyVisibleFlag;
+	public void setDiagramObject(DiagramObject diagramObjectToUse)
+	{
+		diagramObject = diagramObjectToUse;
+	}
+	
+	public DiagramObject getDiagramObject()
+	{
+		return diagramObject;
+	}
+	
+	private DiagramObject diagramObject;
+	private Set hiddenNodeTypes;
+	private ORefList hiddenORefs;
+	private String mode;
+	private boolean contributingFactorsVisibleFlag;
+	private boolean directThreatsVisibleFlag;
+	private boolean linkagesVisibleFlag;
+	private boolean targetLinkagesVisibleFlag;
+	private boolean goalsVisibleFlag;
+	private boolean objectivesVisibleFlag;
+	private boolean indicatorsVisibleFlag;
+	private boolean scopeBoxVisibleFlag;
+	private boolean stressesVisibleFlag;
+	private boolean activitiesVisibleFlag;
+	private boolean intermediateResultFlag;
+	private boolean threatReductionResultFlag;
+	private boolean textBoxesVisibleFlag;
+	private boolean groupBoxesVisibleFlag;
+	private boolean draftStrategyVisibleFlag;
 }
