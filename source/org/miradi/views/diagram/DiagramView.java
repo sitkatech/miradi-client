@@ -249,7 +249,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		getMainWindow().updateToolBar();
 	}
 	
-	public DiagramComponent getDiagramComponent()
+	public DiagramComponent getCurrentDiagramComponent()
 	{
 		if(getCurrentDiagramPanel() == null)
 			return null;
@@ -259,10 +259,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramObject getCurrentDiagramObject()
 	{
-		if (getDiagramComponent() == null)
+		if (getCurrentDiagramComponent() == null)
 			return null;
 		
-		return getDiagramComponent().getDiagramModel().getDiagramObject();
+		return getCurrentDiagramComponent().getDiagramModel().getDiagramObject();
 	}
 
 	public String cardName()
@@ -282,7 +282,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public BaseObject getSelectedObject()
 	{
-		FactorCell node = getDiagramComponent().getSingleSelectedFactor();
+		FactorCell node = getCurrentDiagramComponent().getSingleSelectedFactor();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -407,9 +407,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			super.tabWasSelected();
 			getCurrentDiagramPanel().showCurrentDiagram();
 			updateVisibilityOfFactorsAndClearSelectionModel();
-			if (getDiagramComponent()!=null)
+			if (getCurrentDiagramComponent()!=null)
 			{
-				getDiagramComponent().updateDiagramZoomSetting();
+				getCurrentDiagramComponent().updateDiagramZoomSetting();
 			}
 		}
 		catch(Exception e)
@@ -597,7 +597,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public DiagramModel getDiagramModel()
 	{
-		DiagramComponent diagramComponent = getDiagramComponent();
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if(diagramComponent == null)
 			return null;
 		return diagramComponent.getDiagramModel();
@@ -624,7 +624,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void setMode(String newMode)
 	{
 		ORefList hiddenORefs = new ORefList();
-		DiagramComponent diagramComponent = getDiagramComponent();
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if (diagramComponent == null)
 			return;
 		
@@ -671,7 +671,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return;
 		
 		updateVisibilityOfFactorsAndLinks();
-		DiagramComponent diagramComponent = getDiagramComponent();
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if (diagramComponent == null)
 			return;
 		
@@ -833,7 +833,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 		clearBendPointSelectionList(cell, cmd);
 		
-		cell.update(getDiagramComponent());
+		cell.update(getCurrentDiagramComponent());
 		model.updateCell(cell);
 	}
 	
@@ -965,12 +965,12 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
 		
-		getDiagramComponent().requestFocusInWindow();
+		getCurrentDiagramComponent().requestFocusInWindow();
 		
-		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getDiagramComponent());
+		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getCurrentDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
 		FactorPropertiesDialog newDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
-		newPropertiesPanel.setCurrentDiagramFactor(getDiagramComponent(), node);
+		newPropertiesPanel.setCurrentDiagramFactor(getCurrentDiagramComponent(), node);
 		newPropertiesPanel.selectTab(startingTabIdentifier);
 		newDialog.pack();
 		Rectangle screenRect = Utilities.getViewableRectangle();
@@ -980,7 +980,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		newDialog.setSize(size);
 		newDialog.setLocation(Utilities.center(size, screenRect));
 		
-		getDiagramComponent().selectFactor(node.getWrappedORef());
+		getCurrentDiagramComponent().selectFactor(node.getWrappedORef());
 		nodePropertiesPanel = newPropertiesPanel;
 		nodePropertiesDlg = newDialog;
 
@@ -1016,14 +1016,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(isRelatedActivitySelected())
 			return;
 		
-		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
+		FactorCell selectedNode = getCurrentDiagramComponent().getSingleSelectedFactor();
 		if(selectedNode == null || !selectedNode.getDiagramFactorRef().equals(nodePropertiesPanel.getCurrentDiagramFactor().getRef()))
 			disposeOfNodePropertiesDialog();
 	}
 	
 	public boolean isRelatedStressSelected()
 	{
-		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
+		FactorCell selectedNode = getCurrentDiagramComponent().getSingleSelectedFactor();
 		if(selectedNode == null)
 			return false;
 		
@@ -1040,7 +1040,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	public boolean isRelatedActivitySelected()
 	{
-		FactorCell selectedNode = getDiagramComponent().getSingleSelectedFactor();
+		FactorCell selectedNode = getCurrentDiagramComponent().getSingleSelectedFactor();
 		if(selectedNode == null)
 			return false;
 		

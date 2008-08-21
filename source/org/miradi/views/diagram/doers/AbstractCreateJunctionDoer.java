@@ -132,7 +132,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	
 	protected EAMGraphCell[] getSelectedCells()
 	{
-		return getDiagramView().getDiagramComponent().getSelectedAndRelatedCells();
+		return getDiagramView().getCurrentDiagramComponent().getSelectedAndRelatedCells();
 	}
 	
 	private Point getJunctionPoint(Rectangle diagramFactorBounds)

@@ -138,7 +138,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 
 	private FactorCell getSingleSelectedFactor()
 	{
-		return getDiagramView().getDiagramComponent().getSingleSelectedFactor();
+		return getDiagramView().getCurrentDiagramComponent().getSingleSelectedFactor();
 	}
 
 	private void shallowDeleteDiagramFactorAndUnderlyingFactor(DiagramFactor newlyPastedDiagramFactor) throws Exception

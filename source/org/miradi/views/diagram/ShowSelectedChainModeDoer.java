@@ -77,7 +77,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			Project project = getMainWindow().getProject();
 			DiagramView view = (DiagramView)getView();
 			DiagramPanel diagramPanel = view.getDiagramPanel();
-			DiagramComponent diagram = view.getDiagramComponent();
+			DiagramComponent diagram = view.getCurrentDiagramComponent();
 			
 			if (diagramPanel.getOnlySelectedCells().length == 1)
 				SelectChainDoer.selectChainsRelatedToSelectedFactorsAndLinks(diagramPanel);

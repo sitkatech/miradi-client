@@ -144,7 +144,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	
 	private void selectParentDiagramFactor()
 	{
-		getDiagramView().getDiagramComponent().selectFactor(getParentRef());
+		getDiagramView().getCurrentDiagramComponent().selectFactor(getParentRef());
 	}
 	
 	protected BaseObject getParent()
