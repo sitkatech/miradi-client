@@ -869,7 +869,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createDiagramLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		BaseId baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
+		BaseId baseId = BaseId.INVALID;
+		if(!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
+			baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		FactorLinkId factorLinkId = new FactorLinkId(baseId.asInt());
 		
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
