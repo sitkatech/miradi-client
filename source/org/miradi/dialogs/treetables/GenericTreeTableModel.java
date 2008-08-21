@@ -177,4 +177,5 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	}
 
 	public static final String DEFAULT_COLUMN = "Item";
+	public static final int SINGLE_COLUMN_COUNT = 1;
 }
