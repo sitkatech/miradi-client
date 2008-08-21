@@ -214,25 +214,6 @@ public class TestDiagramModel extends EAMTestCase
 			Set gotLabels = getLabelSet(gotChainNodes);
 			assertEquals("wrong direct threat chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
 		}
-
-		int[][] expectedNodesInFullChain = {
-				{ 37 },
-				{ 11, 21, 31, 41 },
-				{ 13, 22, 23, 31, 32, 33, 41, 42, 43 },
-				{ 21, 11, 12, 31, 41 },
-				{ 23, 13, 32, 33, 41, 42, 43 },
-				{ 41, 11, 12, 13, 21, 22, 23, 31, 32 },
-		};
-
-		for(int nodeIndex = 0; nodeIndex < expectedNodesInFullChain.length; ++nodeIndex)
-		{
-			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
-			String label = Integer.toString(expectedChainNodeIds[0]);
-			DiagramFactor diagramFactor = findDiagramFactor(label);
-			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(diagramFactor);
-			Set gotLabels = getLabelSet(gotChainNodes);
-			assertEquals("wrong chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
-		}
 	}
 	
 	private Set toSet(int[] ints)
