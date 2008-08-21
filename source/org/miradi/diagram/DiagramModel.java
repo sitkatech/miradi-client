@@ -90,6 +90,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		project = projectToUse;
 		clear();
+		layerManager = new LayerManager(getDiagramObject());
 	}
 		
 	public void clear()
@@ -971,6 +972,11 @@ public class DiagramModel extends DefaultGraphModel
 		return diagramContents;
 	}
 	
+	public LayerManager getLayerManager()
+	{
+		return layerManager;
+	}
+	
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
@@ -997,5 +1003,6 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
+	private LayerManager layerManager;
 }
 

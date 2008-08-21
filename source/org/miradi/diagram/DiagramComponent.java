@@ -101,7 +101,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 		
 		enableToolTips();
-		layerManager = new LayerManager(getDiagramModel().getDiagramObject());
 	}
 
 	private void enableToolTips()
@@ -199,7 +198,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public LayerManager getLayerManager()
 	{
-		return layerManager;
+		return getDiagramModel().getLayerManager();
 	}
 		
 	public void showContextMenu(MouseEvent e)
@@ -209,17 +208,17 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public boolean areGoalsVisible()
 	{
-		return project.getLayerManager().areGoalsVisible();
+		return getLayerManager().areGoalsVisible();
 	}
 	
 	public boolean areObjectivesVisible()
 	{
-		return project.getLayerManager().areObjectivesVisible();
+		return getLayerManager().areObjectivesVisible();
 	}
 	
 	public boolean areIndicatorsVisible()
 	{
-		return project.getLayerManager().areIndicatorsVisible();
+		return getLayerManager().areIndicatorsVisible();
 	}
 	
 	public EAMGraphCell[] getSelectedAndRelatedCells()
@@ -798,6 +797,5 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private Project project;
 	private DiagramContextMenuHandler diagramContextMenuHandler;
 	private boolean isMarquee;
-	private LayerManager layerManager;
 }
 
