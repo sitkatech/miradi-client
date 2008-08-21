@@ -147,6 +147,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
@@ -254,6 +255,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return null;
 		
 		return getCurrentDiagramPanel().getDiagramComponent();
+	}
+	
+	public DiagramObject getCurrentDiagramObject()
+	{
+		if (getDiagramComponent() == null)
+			return null;
+		
+		return getDiagramComponent().getDiagramModel().getDiagramObject();
 	}
 
 	public String cardName()
