@@ -107,7 +107,6 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.views.diagram.LayerManager;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.miradi.views.summary.SummaryView;
@@ -136,7 +135,6 @@ public class Project
 		undoRedoState = new UndoRedoState();
 		
 		diagramClipboard = new DiagramClipboard(this);
-		layerManager = new LayerManager();
 		simpleThreatFramework = new SimpleThreatRatingFramework(this);
 		stressBasedThreatFramework = new StressBasedThreatRatingFramework(this);
 		
@@ -324,11 +322,6 @@ public class Project
 			return objectRefs.get(0);
 		
 		throw new RuntimeException("Wrong object count (count = " + objectRefs.size() + ") in pool for type:" + objectType);
-	}
-	
-	public LayerManager getLayerManager()
-	{
-		return layerManager;
 	}
 	
 	public String getCurrentView()
@@ -1315,7 +1308,6 @@ public class Project
 
 	Vector commandExecutedListeners;
 	
-	LayerManager layerManager;
 	boolean inTransaction;
 	
 	// FIXME: This should go away, but it's difficult
