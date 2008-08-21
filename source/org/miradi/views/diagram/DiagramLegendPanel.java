@@ -34,6 +34,9 @@ import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.Actions;
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
@@ -51,6 +54,8 @@ import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
@@ -74,7 +79,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
-abstract public class DiagramLegendPanel extends LegendPanel
+abstract public class DiagramLegendPanel extends LegendPanel implements CommandExecutedListener
 {
 	abstract protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel);
 	
@@ -83,9 +88,18 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 	
+		getProject().addCommandExecutedListener(this);
 		createLegendCheckBoxes();
 		addAllComponents();
 		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		getProject().removeCommandExecutedListener(this);
 	}
 	
 	private void addAllComponents()
@@ -363,6 +377,30 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		}
 	}
 
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if (isUpdateTaggedObjectSetsCommand(event))
+			resetCheckBoxes();
+	}
+	
+	private boolean isUpdateTaggedObjectSetsCommand(CommandExecutedEvent event)
+	{
+		Command command = event.getCommand();
+		if (event.isCreateObjectCommand())
+		{
+			CommandCreateObject createCommand = (CommandCreateObject) command;
+			return TaggedObjectSet.is(createCommand.getObjectType());
+		}
+		
+		if (event.isDeleteObjectCommand())
+		{
+			CommandDeleteObject deleteCommand = (CommandDeleteObject) command;
+			return TaggedObjectSet.is(deleteCommand.getObjectType());
+		}
+		
+		return event.isSetDataCommandWithThisType(TaggedObjectSet.getObjectType());
+	}
+	
 	protected boolean isInvalidLayerManager(LayerManager manager)
 	{
 		return manager == null;
