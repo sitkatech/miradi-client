@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -38,7 +39,11 @@ import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
+import org.miradi.dialogs.base.ObjectManagementPanel;
+import org.miradi.dialogs.base.ObjectRefListEditorPanel;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.icons.FactorLinkIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
@@ -58,6 +63,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -66,6 +72,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
+import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
 abstract public class DiagramLegendPanel extends LegendPanel
 {
@@ -86,10 +93,24 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		setBorder(new EmptyBorder(5,5,5,5));
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));
+		
+		DiagramObject diagramObject = getCurrentDiagramObject();
+		if (diagramObject != null)
+			addTaggedObjectSetPanel(diagramObject);
+		
 		updateCheckBoxs();
 		setMinimumSize(new Dimension(0,0));
 	}
-	
+
+	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
+	{
+		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		add(editListPanel);
+		
+		PanelButton manageButton = new PanelButton(EAM.text("Manage..."));
+		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
+		add(manageButton);
+	}
 	
 	private void createLegendCheckBoxes()
 	{
@@ -365,8 +386,30 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		return getMainWindow().getDiagramView().getCurrentDiagramObject();
 	}
 	
+	class ManageTaggedObjectSetButtonHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			showTaggedObjectSetManageDialog();
+		}
+
+		private void showTaggedObjectSetManageDialog()
+		{
+			try
+			{
+				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow());
+				AbstractPopUpEditDoer.showManagementDialog(mainWindow, panel, EAM.text("Manage Tagged Object Sets"));
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+	
 	public static final String SCOPE_BOX = "ScopeBox";
 
 	private MainWindow mainWindow;
 	private JCheckBox targetLinkCheckBox;
 }
+

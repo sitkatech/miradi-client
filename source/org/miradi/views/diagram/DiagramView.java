@@ -57,6 +57,7 @@ import org.miradi.actions.ActionCreateSlide;
 import org.miradi.actions.ActionCreateStress;
 import org.miradi.actions.ActionCreateStressFromKea;
 import org.miradi.actions.ActionCreateSubTarget;
+import org.miradi.actions.ActionCreateTaggedObjectSet;
 import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDelete;
 import org.miradi.actions.ActionDeleteActivity;
@@ -74,6 +75,7 @@ import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDeleteSlide;
 import org.miradi.actions.ActionDeleteStress;
 import org.miradi.actions.ActionDeleteSubTarget;
+import org.miradi.actions.ActionDeleteTaggedObjectSet;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionGroupBoxAddFactor;
 import org.miradi.actions.ActionGroupBoxRemoveFactor;
@@ -168,8 +170,10 @@ import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateOutgoingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
+import org.miradi.views.diagram.doers.CreateTaggedObjectSetDoer;
 import org.miradi.views.diagram.doers.DeleteGroupBoxDoer;
 import org.miradi.views.diagram.doers.DeleteStressDoer;
+import org.miradi.views.diagram.doers.DeleteTaggedObjectSetDoer;
 import org.miradi.views.diagram.doers.DiagramPropertiesShowDoer;
 import org.miradi.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
 import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
@@ -397,6 +401,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionShowActivityBubble.class, new ShowActityBubbleDoer());
 		addDoerToMap(ActionHideActivityBubble.class, new HideActivityBubbleDoer());
+		
+		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
+		addDoerToMap(ActionDeleteTaggedObjectSet.class, new DeleteTaggedObjectSetDoer());
 	}
 	
 	public void tabWasSelected()

@@ -22,7 +22,9 @@ package org.miradi.views.umbrella.doers;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
+import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.ObjectsDoer;
 
@@ -53,16 +55,20 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		
 		try
 		{
-			ObjectListManagementPanel panel = createManagementPanel();
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
-			Utilities.centerDlg(dialog);
-			panel.updateSplitterLocation();
-			dialog.setVisible(true);			
+			showManagementDialog(getMainWindow(), createManagementPanel(), getDialogTitle());			
 		}
 		catch(Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	public static void showManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle)
+	{
+		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle);
+		Utilities.centerDlg(dialog);
+		managementPanel.updateSplitterLocation();
+		dialog.setVisible(true);
 	}
 
 	protected int getTypeToFilterOn()
