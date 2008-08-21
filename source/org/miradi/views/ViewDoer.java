@@ -56,7 +56,7 @@ abstract public class ViewDoer extends MainWindowDoer
 		if (! getView().cardName().equals(DiagramView.getViewName()))
 			return false;
 		
-		if (getDiagramView().getDiagramComponent() == null)
+		if (getDiagramView().getCurrentDiagramComponent() == null)
 			return false;
 		
 		if (getDiagramView().getDiagramModel() == null)

@@ -32,6 +32,6 @@ public class ZoomOut extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
-		view.getDiagramComponent().zoom(1.0/ZoomIn.ZOOM_FACTOR);
+		view.getCurrentDiagramComponent().zoom(1.0/ZoomIn.ZOOM_FACTOR);
 	}
 }

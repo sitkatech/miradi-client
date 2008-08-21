@@ -116,7 +116,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
 	{
 		FactorCell newCell = getDiagramModel().getFactorCellByRef(diagramFactor.getRef());
-		getDiagramView().getDiagramComponent().scrollCellToVisible(newCell);
+		getDiagramView().getCurrentDiagramComponent().scrollCellToVisible(newCell);
 	}
 	
 	protected FactorCell[] getSelectedFactorCells()
@@ -178,7 +178,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private Rectangle getDiagramVisibleRect()
 	{
-		DiagramComponent diagramComponent = getDiagramView().getDiagramComponent();
+		DiagramComponent diagramComponent = getDiagramView().getCurrentDiagramComponent();
 		Rectangle visibleRectangle = diagramComponent.getVisibleRect();
 		return visibleRectangle;
 	}

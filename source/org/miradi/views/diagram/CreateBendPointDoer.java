@@ -54,7 +54,7 @@ public class CreateBendPointDoer extends LocationDoer
 		Project project = getProject();
 		
 		DiagramLink selectedLink = getDiagramView().getDiagramPanel().getOnlySelectedLinks()[0];
-		BendPointCreator bendPointCreator = new BendPointCreator(getDiagramView().getDiagramComponent());
+		BendPointCreator bendPointCreator = new BendPointCreator(getDiagramView().getCurrentDiagramComponent());
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{

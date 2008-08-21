@@ -47,7 +47,7 @@ public class SelectAllDoer extends ViewDoer
 		try
 		{
 			DiagramView diagramView = (DiagramView)getView();
-			diagramView.getDiagramComponent().selectAll();
+			diagramView.getCurrentDiagramComponent().selectAll();
 		}
 		finally
 		{

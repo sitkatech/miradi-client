@@ -61,6 +61,6 @@ public class ZoomToFitDoer extends ViewDoer
 	private DiagramComponent getDiagramComponent()
 	{
 		DiagramView view = (DiagramView)getView();
-		return view.getDiagramComponent();
+		return view.getCurrentDiagramComponent();
 	}	
 }

@@ -415,7 +415,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		if(diagramView == null)
 			return null;
-		return diagramView.getDiagramComponent();
+		return diagramView.getCurrentDiagramComponent();
 	}
 	
 	public DiagramModel getDMDiagramModel()

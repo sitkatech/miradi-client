@@ -56,8 +56,8 @@ public class DeleteGroupBoxDoer extends LocationDoer
 		try
 		{
 			LinkDeletor linkDeletor = new LinkDeletor(getProject());
-			FactorDeleteHelper deleteHelper = new FactorDeleteHelper(getDiagramView().getDiagramComponent());
-			HashSet<FactorCell> groupBoxCells = getDiagramView().getDiagramComponent().getOnlySelectedGroupBoxCells();
+			FactorDeleteHelper deleteHelper = new FactorDeleteHelper(getDiagramView().getCurrentDiagramComponent());
+			HashSet<FactorCell> groupBoxCells = getDiagramView().getCurrentDiagramComponent().getOnlySelectedGroupBoxCells();
 			for(FactorCell groupBoxCell : groupBoxCells)
 			{
 				removeAllChildrenFromGroupBox(groupBoxCell);
@@ -87,7 +87,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 	{
 		try
 		{
-			HashSet<FactorCell> groupBoxCells = getDiagramView().getDiagramComponent().getOnlySelectedGroupBoxCells();
+			HashSet<FactorCell> groupBoxCells = getDiagramView().getCurrentDiagramComponent().getOnlySelectedGroupBoxCells();
 			return (groupBoxCells.size() > 0);
 		}
 		catch (Exception e)

@@ -32,7 +32,7 @@ public class ZoomIn extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
-		view.getDiagramComponent().zoom(ZOOM_FACTOR);
+		view.getCurrentDiagramComponent().zoom(ZOOM_FACTOR);
 	}
 	
 	public static double ZOOM_FACTOR = 1.2;

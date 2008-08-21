@@ -94,6 +94,6 @@ public class ShowResultsChainDoer extends ViewDoer
 
 	private void setToNormalMode() throws Exception
 	{
-		ShowFullModelModeDoer.showFullModelMode(getProject(), getDiagramView().getDiagramComponent());
+		ShowFullModelModeDoer.showFullModelMode(getProject(), getDiagramView().getCurrentDiagramComponent());
 	}
 }

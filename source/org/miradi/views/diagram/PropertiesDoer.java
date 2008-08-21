@@ -334,6 +334,6 @@ public class PropertiesDoer extends LocationDoer
 
 	private DiagramComponent getDiagramComponent()
 	{
-		return getDiagramView().getDiagramComponent();
+		return getDiagramView().getCurrentDiagramComponent();
 	}
 }
