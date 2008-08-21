@@ -974,6 +974,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public LayerManager getLayerManager()
 	{
+		if (layerManager == null)
+			layerManager = new LayerManager(getDiagramObject());
+		
 		return layerManager;
 	}
 	
