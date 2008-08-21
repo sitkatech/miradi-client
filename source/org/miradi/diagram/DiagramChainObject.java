@@ -35,10 +35,10 @@ import org.miradi.project.Project;
 //factor so that many of these methods could be moved to the super
 public class DiagramChainObject
 {
-	public FactorLink[] buildNormalChainAndGetFactorLinks(DiagramModel model, DiagramFactor diagramFactor)
+	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		buildNormalChain(model, diagramFactor);
-		return getFactorLinksArray();
+		return processedLinks;
 	}
 	
 	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
@@ -221,16 +221,6 @@ public class DiagramChainObject
 		return factorSet;
 	}
 
-	private FactorLink[] getFactorLinksArray()
-	{
-		HashSet<FactorLink> links = new HashSet();
-		for(DiagramLink link : processedLinks)
-		{
-			links.add(link.getUnderlyingLink());
-		}
-		return links.toArray(new FactorLink[0]);
-	}
-	
 	private HashSet<Factor> getDirectlyLinkedDownstreamFactors()
 	{
 		return getDirectlyLinkedFactors(FactorLink.FROM);

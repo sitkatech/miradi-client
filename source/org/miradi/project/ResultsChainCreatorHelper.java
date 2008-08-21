@@ -47,7 +47,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -457,26 +456,11 @@ public class ResultsChainCreatorHelper
 		for (int i = 0; i < selectedFactorCells.length; i++)
 		{
 			DiagramFactor diagramFactor = selectedFactorCells[i].getDiagramFactor();
-			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();
-			Vector diagramLinks = convertToDiagramLinks(chainObject.buildNormalChainAndGetFactorLinks(model, diagramFactor));
-			allDiagramLinks.addAll(diagramLinks);
+			DiagramChainObject chainObject = diagramFactor.getDiagramChainBuilder();  
+			allDiagramLinks.addAll(chainObject.buildNormalChainAndGetDiagramLinks(model, diagramFactor));
 		}
 		
 		return allDiagramLinks.toArray(new DiagramLink[0]);
-	}
-
-	private Vector convertToDiagramLinks(FactorLink[] links) throws Exception
-	{
-		 Vector vector = new Vector();
-		 for (int i  = 0; i < links.length; i++)
-		 {
-			 ORef factorLinkRef = links[i].getRef();
-			 DiagramLink link = model.getDiagramLinkByWrappedRef(factorLinkRef);
-			 if (canAddLinkToResultsChain((link)))
-				 vector.add(link);
-		 }
-		 
-		 return vector;
 	}
 	
 	private HashMap cloneDiagramLinks(DiagramLink[] diagramLinks, HashMap diagramFactors) throws Exception
