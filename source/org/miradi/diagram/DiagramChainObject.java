@@ -64,12 +64,6 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildUpstreamDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
-	{
-		buildUpstreamDownstreamChain(model, diagramFactor);
-		return getFactors();
-	}
-	
 	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		buildDirectlyLinkedUpstreamChain(model, diagramFactor);
