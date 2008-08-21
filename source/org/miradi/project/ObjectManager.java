@@ -71,6 +71,7 @@ import org.miradi.objectpools.SlideShowPool;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objectpools.StressPool;
 import org.miradi.objectpools.SubTargetPool;
+import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
 import org.miradi.objectpools.TextBoxPool;
@@ -145,6 +146,7 @@ public class ObjectManager
 		addNormalPool(new XenodataPool(ida));
 		addNormalPool(new ProgressPercentPool(ida));
 		addNormalPool(new ReportTemplatePool(ida));
+		addNormalPool(new TaggedObjectSetPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -401,6 +403,7 @@ public class ObjectManager
 		loadPool(ObjectType.XENODATA);
 		loadPool(ObjectType.PROGRESS_PERCENT);
 		loadPool(ObjectType.REPORT_TEMPLATE);
+		loadPool(ObjectType.TAGGED_OBJECT_SET);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
