@@ -161,7 +161,7 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
 		

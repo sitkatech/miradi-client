@@ -241,7 +241,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	{
 		ORefList coveredLinkRefs = new ORefList(diagramLinkRefs);
 		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(from.getRef(), to.getRef());
-		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getDiagramObject(), extraInfoWithNoFactorLink);
+		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getTestingDiagramObject(), extraInfoWithNoFactorLink);
 		
 		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);		
 	}

@@ -308,7 +308,7 @@ public class TestCommands extends EAMTestCase
     	
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
 		DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createdId.asInt()); 
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);
 		project.executeCommand(addLink);
 		
@@ -443,7 +443,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
 		

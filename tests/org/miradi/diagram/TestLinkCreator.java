@@ -94,7 +94,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		assertTrue("diagramFactor is not groupBox?", groupBoxDiagramFactor.isGroupBoxFactor());
 		
 		getProject().createDiagramLinkAndAddToDiagram(groupBoxDiagramFactor, toDiagramFactor);
-		getDiagramModel().fillFrom(getProject().getDiagramObject());
+		getDiagramModel().fillFrom(getProject().getTestingDiagramObject());
 		assertEquals("model has wrong link count?", 1, getDiagramModel().getAllDiagramFactorLinks().size());
 		
 		assertTrue("factors are not linked?", getDiagramModel().areLinked(groupBoxDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()));

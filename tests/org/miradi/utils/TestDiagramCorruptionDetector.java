@@ -45,7 +45,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	
 	public void testHasCorruptedDiagramFactors() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram factors?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		Task task = getProject().createTask();
@@ -69,7 +69,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	
 	public void testHasCorruptedDiagramLinks() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 
 		BaseId bogusDiagramLinkId = new BaseId(9999);
@@ -100,7 +100,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	
 	public void testGroupBoxLinksShouldBeIgnored() throws Exception
 	{
-		DiagramObject diagramObject = getProject().getDiagramObject();
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		ORef groupBoxDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, GroupBox.getObjectType());

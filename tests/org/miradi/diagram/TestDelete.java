@@ -52,12 +52,12 @@ public class TestDelete extends EAMTestCase
 		
 		assertTrue("link not found?", model.areDiagramFactorsLinked(intervention.getRef(), cause.getRef()));
 
-		DiagramObject diagramObject1 = project.getDiagramObject();
+		DiagramObject diagramObject1 = project.getTestingDiagramObject();
 		CommandSetObjectData removeLink = CommandSetObjectData.createRemoveIdCommand(diagramObject1, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLink.getDiagramLinkId());
 		project.executeCommand(removeLink);
 		
 	
-		DiagramObject diagramObject2 = project.getDiagramObject();
+		DiagramObject diagramObject2 = project.getTestingDiagramObject();
 		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject2, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, cause.getDiagramFactorId());
 		project.executeCommand(removeFactor);
 		assertFalse("node not deleted?", model.doesDiagramFactorExist(cause.getRef()));
