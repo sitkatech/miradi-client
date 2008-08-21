@@ -70,13 +70,6 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildDirectThreatChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
-	{
-		buildDirectThreatChain(model, diagramFactor);
-		return getFactors();
-	}
-	
-	
 	private void buildDirectThreatChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();

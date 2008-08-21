@@ -197,25 +197,6 @@ public class TestDiagramModel extends EAMTestCase
 		}
 	}
 	
-	
-	
-	public void testGetChainIds() throws Exception
-	{
-		int[] linkagePairs = getLinkagePairs();
-		SampleDiagramBuilder.buildNodeGrid(project, 7, linkagePairs);
-		int[][] expectedNodesInChain = getExpectedNodesInChain();
-				
-		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
-		{
-			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
-			String label = Integer.toString(expectedChainNodeIds[0]);
-			DiagramFactor diagramFactor = findDiagramFactor(label);
-			FactorSet gotChainNodes = model.getDirectThreatChainNodes(diagramFactor);
-			Set gotLabels = getLabelSet(gotChainNodes);
-			assertEquals("wrong direct threat chain nodes for " + expectedChainNodeIds[0] + "?", toSet(expectedChainNodeIds), gotLabels);
-		}
-	}
-	
 	private Set toSet(int[] ints)
 	{
 		HashSet set = new HashSet();
