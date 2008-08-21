@@ -94,7 +94,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramGroupBoxCell.class, true);
+		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(DiagramGroupBoxCell.class, true);
 	}
 
 	public String getInitialText()
