@@ -636,7 +636,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 			
 
-		LayerManager manager = getProject().getLayerManager();
+		LayerManager manager = getDiagramModel().getLayerManager();
 		manager.setHiddenORefs(hiddenORefs);
 		manager.setMode(newMode);
 		mode = newMode;
