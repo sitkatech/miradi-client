@@ -180,14 +180,14 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	public DiagramModel getDiagramModel()
 	{
-		DiagramComponent diagram = getDiagramComponent();
+		DiagramComponent diagram = getCurrentDiagramComponent();
 		if (diagram != null)
-			return getDiagramComponent().getDiagramModel();
+			return getCurrentDiagramComponent().getDiagramModel();
 		
 		return null;
 	}
 	
-	public DiagramComponent getDiagramComponent()
+	public DiagramComponent getCurrentDiagramComponent()
 	{
 		return diagramCards.findByRef(getCurrentDiagramObjectRef());
 	}
