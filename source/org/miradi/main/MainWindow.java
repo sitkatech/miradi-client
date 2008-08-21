@@ -50,6 +50,7 @@ import org.martus.util.MultiCalendar;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.InvalidDateRangeException;
@@ -415,6 +416,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		if(diagramView == null)
 			return null;
 		return diagramView.getDiagramComponent();
+	}
+	
+	public DiagramModel getDMDiagramModel()
+	{
+		if (getCurrentDiagramComponent() == null)
+			return null;
+		
+		return getCurrentDiagramComponent().getDiagramModel();
 	}
 	
 	public Actions getActions()
