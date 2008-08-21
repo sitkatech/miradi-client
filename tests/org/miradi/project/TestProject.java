@@ -125,12 +125,12 @@ public class TestProject extends EAMTestCase
 		//undo create diagramFactor
 		project.undo();
 		
-		assertEquals("node not removed?", 0, project.getDiagramObject().getAllDiagramFactorIds().size());
+		assertEquals("node not removed?", 0, project.getTestingDiagramObject().getAllDiagramFactorIds().size());
 
 		project.redo();
 		
 		project.redo();
-		assertEquals("node not re-added?", 1, project.getDiagramObject().getAllDiagramFactorIds().size());
+		assertEquals("node not re-added?", 1, project.getTestingDiagramObject().getAllDiagramFactorIds().size());
 	}
 	
 	public void testGetViewData() throws Exception
@@ -311,7 +311,7 @@ public class TestProject extends EAMTestCase
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
@@ -546,7 +546,7 @@ public class TestProject extends EAMTestCase
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		assertEquals(3, project.getAllDiagramFactorIds().length);
@@ -569,12 +569,12 @@ public class TestProject extends EAMTestCase
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		Object[] selectedCells = new FactorCell[] {node1};
-		ORef diagramObjectRef = project.getDiagramObject().getRef();
+		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
 		
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData removeFactor = CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 		project.executeCommand(removeFactor);
 
@@ -616,7 +616,7 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
 		project.closeAndReopen();
@@ -637,7 +637,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
@@ -873,7 +873,7 @@ public class TestProject extends EAMTestCase
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), extraInfo);
 		
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 

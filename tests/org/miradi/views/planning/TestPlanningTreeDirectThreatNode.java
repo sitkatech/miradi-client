@@ -31,7 +31,7 @@ public class TestPlanningTreeDirectThreatNode extends TestPlanningTree
 
 	public void testPlanningTreeDirectThreatNodes() throws Exception
 	{
-		PlanningTreeDirectThreatNode node = new PlanningTreeDirectThreatNode(project, project.getDiagramObject(), getThreat().getRef(), new CodeList());
+		PlanningTreeDirectThreatNode node = new PlanningTreeDirectThreatNode(project, project.getTestingDiagramObject(), getThreat().getRef(), new CodeList());
 		assertEquals("wrong child count?", 1, node.getChildCount());
 		assertEquals("wrong child?", getObjective().getRef(), node.getChild(0).getObjectReference());
 	}

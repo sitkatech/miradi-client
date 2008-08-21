@@ -49,7 +49,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		commandStack = new Vector();
 	}
 	
-	public DiagramObject getDiagramObject()
+	public DiagramObject getTestingDiagramObject()
 	{
 		return getDiagramModel().getDiagramObject();
 	}

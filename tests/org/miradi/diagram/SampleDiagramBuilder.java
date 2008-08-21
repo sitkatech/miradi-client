@@ -65,7 +65,7 @@ public class SampleDiagramBuilder
 	private static void addDiagramFactorLink(ProjectForTesting project, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception, ParseException, CommandFailedException
 	{
 		BaseId linkId = project.createDiagramFactorLink(fromDiagramFactor, toDiagramFactor);
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactorLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, linkId);
 		project.executeCommand(addDiagramFactorLink);
 	}

@@ -836,7 +836,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void addDiagramLinkToModel(BaseId diagramLinkId) throws Exception
 	{
-		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkId);
+		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(getTestingDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkId);
 		executeCommand(addLink);
 	}
 	
@@ -856,9 +856,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef linkRef = createDiagramLink(from, to);
 		
-		IdList links = getDiagramObject().getAllDiagramFactorLinkIds();
+		IdList links = getTestingDiagramObject().getAllDiagramFactorLinkIds();
 		links.add(linkRef.getObjectId());
-		getDiagramObject().setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, links.toString());
+		getTestingDiagramObject().setData(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, links.toString());
 		return linkRef;
 	}
 	

@@ -32,7 +32,7 @@ public class TestPlanningTreeObjectiveNode extends TestPlanningTree
 	
 	public void testPlanningTreeObjectiveNode() throws Exception
 	{	
-		PlanningTreeObjectiveNode node = new PlanningTreeObjectiveNode(project, project.getDiagramObject(), getObjective().getRef(), new CodeList());
+		PlanningTreeObjectiveNode node = new PlanningTreeObjectiveNode(project, project.getTestingDiagramObject(), getObjective().getRef(), new CodeList());
 		assertEquals("wrong child count?", 2, node.getChildCount());
 		assertEquals("wrong child?", getStrategy().getRef(), node.getChild(0).getObjectReference());
 		assertEquals("wrong child?", getIndicator().getRef(), node.getChild(1).getObjectReference());

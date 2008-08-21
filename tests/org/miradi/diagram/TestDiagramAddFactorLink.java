@@ -62,7 +62,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
     	project.executeCommand(createDiagramLinkCommand);
 		
 		ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
 

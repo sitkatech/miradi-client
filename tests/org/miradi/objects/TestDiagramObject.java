@@ -49,7 +49,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
 		
 		BaseId diagramLinkId = project.createDiagramFactorLink(cause, target);
@@ -64,7 +64,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testFindReferrersOnSameDiagram() throws Exception
 	{
-		DiagramObject diagramObject = project.getDiagramObject();
+		DiagramObject diagramObject = project.getTestingDiagramObject();
 		ORef stressRef = project.createFactorAndReturnRef(Stress.getObjectType());
 		DiagramFactor targetDiagramFactor = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		

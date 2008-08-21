@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2.jar" sourcepath="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jexcel/jxl.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/tablelayout/TableLayout.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/itext-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/itext-2.0.1.jar" sourcepath="/miradi-thirdparty/Jasper/itext-src-2.0.1.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-logging-api-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/Jasper/commons-collections-2.1.jar"/>
