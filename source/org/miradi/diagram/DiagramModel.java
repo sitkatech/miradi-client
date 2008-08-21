@@ -89,8 +89,8 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramModel(Project projectToUse)
 	{
 		project = projectToUse;
-		clear();
 		layerManager = new LayerManager(getDiagramObject());
+		clear();
 	}
 		
 	public void clear()
@@ -974,9 +974,6 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public LayerManager getLayerManager()
 	{
-		if (layerManager == null)
-			layerManager = new LayerManager(getDiagramObject());
-		
 		return layerManager;
 	}
 	
