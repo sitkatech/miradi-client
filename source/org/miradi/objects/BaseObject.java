@@ -308,7 +308,10 @@ abstract public class BaseObject
 				
 			case ObjectType.REPORT_TEMPLATE:
 				return new ReportTemplate(objectManager, idAsInt, json);
-
+				
+			case ObjectType.TAGGED_OBJECT_SET:
+				return new TaggedObjectSet(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

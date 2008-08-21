@@ -114,6 +114,7 @@ import org.miradi.objects.TestSlideShow;
 import org.miradi.objects.TestStrategy;
 import org.miradi.objects.TestStress;
 import org.miradi.objects.TestSubTarget;
+import org.miradi.objects.TestTaggedObjectSet;
 import org.miradi.objects.TestTask;
 import org.miradi.objects.TestTextBox;
 import org.miradi.objects.TestThreatRatingBundle;
@@ -362,6 +363,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestXenodata.class));
 		suite.addTest(new TestSuite(TestProgressPercent.class));
 		suite.addTest(new TestSuite(TestReportTemplate.class));
+		suite.addTest(new TestSuite(TestTaggedObjectSet.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

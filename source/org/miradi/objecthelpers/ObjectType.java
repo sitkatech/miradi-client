@@ -70,7 +70,8 @@ public class ObjectType
 	public static final int XENODATA = 44;
 	public static final int PROGRESS_PERCENT = 45;
 	public static final int REPORT_TEMPLATE = 46;
+	public static final int TAGGED_OBJECT_SET = 47;
 	
-	public static final int OBJECT_TYPE_COUNT = 47;
+	public static final int OBJECT_TYPE_COUNT = 48;
 }
 
