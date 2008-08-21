@@ -19,94 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
-import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 
-public class StrategyActivityRelevancyTableModel extends EditableObjectTableModel
+public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEditableModel
 {
 	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, Objective objectiveAsParentToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, providerToUse);
 		
 		objectiveAsParent = objectiveAsParentToUse;
-		rowColumnBaseObjectProvider = providerToUse;
 	}
 
-    public Class getColumnClass(int columnIndex) 
-    {
-    	return Boolean.class;
-    }
-	
-	public boolean isCellEditable(int row, int column)
-	{
-		return true;
-	}
-    
 	public String getColumnName(int column)
 	{
 		return EAM.text("Is Relevant");
 	}	
 	
-	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		//FIXME should this do something
-	}
-
-	public String getColumnTag(int column)
-	{
-		return "";
-	}
-
-	public BaseObject getBaseObjectForRowColumn(int row, int column)
-	{
-		return rowColumnBaseObjectProvider.getBaseObjectForRowColumn(row, column);
-	}
-	
-	public ORef getRefForRow(int row)
-	{
-		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, SINGLE_COLUMN_INDEX);
-		if (baseObjectForRow == null)
-			return ORef.INVALID;
-		
-		return baseObjectForRow.getRef();
-	}
-
-	public int getRowCount()
-	{
-		return rowColumnBaseObjectProvider.getRowCount();
-	}
-
-	public int getColumnCount()
-	{
-		return 1;
-	}
-
-	public Object getValueAt(int row, int column)
-	{
-		try
-		{
-			ORefList relevantStrategAndActivityRefs = getRelevantStrategyActivityRefs();
-			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-			if (relevantStrategAndActivityRefs.contains(ref))
-				return new Boolean(true);
-			
-			return new Boolean(false);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new Boolean(false);
-		}
-	}
-
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
@@ -124,36 +58,15 @@ public class StrategyActivityRelevancyTableModel extends EditableObjectTableMode
 		}
 	}
 
-	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
-	{
-		ORef refForRow = getRefForRow(row);
-		ORefList checkedRefs = getCurrentlyCheckedRefs();
-		checkedRefs.remove(refForRow);
-		if (valueAsBoolean.booleanValue())
-			checkedRefs.add(refForRow);
-	
-		return checkedRefs;
-	}
-	
 	private ORefList getRelevantStrategyActivityRefs() throws Exception
 	{
 		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
-	private ORefList getCurrentlyCheckedRefs()
+	protected ORefList getCurrentRefList() throws Exception
 	{
-		ORefList selectedRefs = new ORefList();
-		for (int row = 0; row < getRowCount(); ++row)
-		{
-			Boolean booleanValue = (Boolean) getValueAt(row, SINGLE_COLUMN_INDEX);
-			if (booleanValue)
-				selectedRefs.add(getRefForRow(row));
-		}
-		
-		return selectedRefs;
+		return getRelevantStrategyActivityRefs();
 	}
 	
-	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	private Objective objectiveAsParent;
-	private static final int SINGLE_COLUMN_INDEX = 0;
 }
