@@ -63,7 +63,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private DiagramComponent getDiagram()
 	{
-		return mainWindow.getDiagramComponent();
+		return mainWindow.getCurrentDiagramComponent();
 	}
 
 	//Note: customMarquee Handler will get notified first
@@ -77,7 +77,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		}
 
-		if (mainWindow.getDiagramComponent().isMarquee())
+		if (mainWindow.getCurrentDiagramComponent().isMarquee())
 			return;
 		
 		startDragOperation(event);
@@ -118,7 +118,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	public void mouseReleased(MouseEvent event)
 	{
-		mainWindow.getDiagramComponent().setMarquee(false);
+		mainWindow.getCurrentDiagramComponent().setMarquee(false);
 		if(event.isPopupTrigger())
 		{
 			getDiagram().showContextMenu(event);
@@ -164,7 +164,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			getProject().recordCommand(new CommandEndTransaction());
 		}
 		
-		mainWindow.getDiagramComponent().setMarquee(false);
+		mainWindow.getCurrentDiagramComponent().setMarquee(false);
 	}
 
 	private void synchronizeFactorAndLinkCellsWithStoredObjects() throws Exception

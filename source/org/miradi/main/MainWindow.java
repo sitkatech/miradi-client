@@ -410,7 +410,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return wizardManager;
 	}
 	
-	public DiagramComponent getDiagramComponent()
+	public DiagramComponent getCurrentDiagramComponent()
 	{
 		if(diagramView == null)
 			return null;
@@ -775,8 +775,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void setBooleanPreference(String genericTag, boolean state)
 	{
 		preferences.setBoolean(genericTag, state);
-		if (getDiagramComponent()!=null)
-			getDiagramComponent().updateDiagramComponent();
+		if (getCurrentDiagramComponent()!=null)
+			getCurrentDiagramComponent().updateDiagramComponent();
 		repaint();
 	}
 	

@@ -95,7 +95,7 @@ public class FactorMoveHandler
 			MainWindow mainWindow = EAM.getMainWindow();
 			if(mainWindow != null)
 			{
-				DiagramComponent diagram = mainWindow.getDiagramComponent();
+				DiagramComponent diagram = mainWindow.getCurrentDiagramComponent();
 				diagram.setSelectionCells(diagram.getSelectionCells());
 			}
 
