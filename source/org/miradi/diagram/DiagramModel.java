@@ -355,12 +355,6 @@ public class DiagramModel extends DefaultGraphModel
 		return true;
 	}
 
-	public FactorSet getDirectThreatChainNodes(DiagramFactor directThreat)
-	{
-		DiagramChainObject chainObject = getChainBuilder();
-		return chainObject.buildDirectThreatChainAndGetFactors(this, directThreat);
-	}
-	
 	public FactorSet getNodesInChain(DiagramFactor startingFactor)
 	{
 		DiagramChainObject chainObject = getChainBuilder();
