@@ -29,6 +29,13 @@ import org.miradi.objects.ViewData;
 
 public class LayerManager
 {
+	public LayerManager(DiagramObject diagramObjectToUse)
+	{
+		this();
+		diagramObject = diagramObjectToUse;
+	}
+	
+	//FIXME this construction should go away.  Its content need to be moved up to abvoe constructor
 	public LayerManager()
 	{
 		hiddenNodeTypes = new HashSet();
