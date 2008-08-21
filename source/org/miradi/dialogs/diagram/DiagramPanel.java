@@ -147,7 +147,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	
 	public DiagramComponent getCurrentDiagramComponent()
 	{
-		DiagramComponent diagramComponent = getDiagramSplitPane().getDiagramComponent();
+		DiagramComponent diagramComponent = getDiagramSplitPane().getCurrentDiagramComponent();
 		return diagramComponent;
 	}
 
