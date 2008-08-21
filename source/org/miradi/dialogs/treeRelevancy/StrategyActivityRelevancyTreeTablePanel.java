@@ -19,28 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-
-import org.miradi.dialogs.treetables.MultiTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
-import org.miradi.utils.MultiTableRowHeightController;
-import org.miradi.utils.MultiTableVerticalScrollController;
-import org.miradi.utils.MultipleTableSelectionController;
-import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
-import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-public class StrategyActivityRelevancyTreeTablePanel extends MultiTreeTablePanel
+public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTreeTablePanel
 {
 	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
@@ -53,113 +37,21 @@ public class StrategyActivityRelevancyTreeTablePanel extends MultiTreeTablePanel
 	
 	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Objective objective) throws Exception
 	{
-		super(mainWindowToUse, treeTable);
-		
-		model = modelToUse;
-		
-		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
-
-		rowHeightController = new MultiTableRowHeightController(getMainWindow());
-		rowHeightController.addTable(treeTable);
-		
-		selectionController = new MultipleTableSelectionController();
-		selectionController.addTable(treeTable);
-		
-		scrollController = new MultiTableVerticalScrollController();
-		scrollController.addScrollPane(treeTableScrollPane);
-		
-		listenForColumnWidthChanges(getTree());
-		
-		strategyActivityRelevancyTableModel = new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable, objective);
-		strategyActivityRelevancyTable = new StrategyActivityRelevancyTable(mainWindowToUse, strategyActivityRelevancyTableModel);
-		mainTableScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeTable, strategyActivityRelevancyTable);
-				
-		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
-		treesPanel.add(treeTableScrollPane);
-		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
-		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		treesScrollPane.hideVerticalScrollBar();
-		
-		tablesPanel = new ShrinkToFitVerticallyHorizontalBox();
-		ScrollPaneWithHideableScrollBar tablesScrollPane = new ScrollPaneWithHideableScrollBar(tablesPanel);
-		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		tablesScrollPane.hideVerticalScrollBar();
-
-		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
-		scrollController.addScrollBar(masterScrollBar);
-		
-		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "StrategyActivityRelevancyTreeTablePanel");
-		treePlusTablesPanel.setDividerSize(5);
-		// FIXME: Remove this when persistence actually works!
-		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
-		treePlusTablesPanel.setTopComponent(treesScrollPane);
-		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
-		treePlusTablesPanel.setOneTouchExpandable(false);
-
-		// NOTE: Replace treeScrollPane that super constructor put in CENTER
-		add(treePlusTablesPanel, BorderLayout.CENTER);
-		add(masterScrollBar, BorderLayout.AFTER_LINE_ENDS);
-		
-		rebuildEntireTreeTable();
+		super(mainWindowToUse, modelToUse, treeTable, objective);		
 	}
 	
-	private void rebuildEntireTreeTable() throws Exception
+	protected void createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject)
 	{
-		ORef selectedRef = ORef.INVALID;
-		BaseObject[] selected = tree.getSelectedObjects();
-		if(selected.length == 1)
-			selectedRef = selected[0].getRef();
-		int selectedRow = tree.getSelectionModel().getAnchorSelectionIndex();
-
-			
-		tree.rebuildTableCompletely();
-		strategyActivityRelevancyTableModel.fireTableStructureChanged();
-		
-		// NOTE: The following rebuild the tree but don't touch the columns
-		getPlanningModel().rebuildEntireTree();
-		restoreTreeExpansionState();
-		updateRightSideTablePanels();
-
-		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
+		setEditableSingleBooleanColumnTableModel(new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable,  (Objective)baseObject));
 	}
 	
-	private void updateRightSideTablePanels() throws Exception
+	protected void createEditableTable(MainWindow mainWindowToUse)
 	{
-		tablesPanel.removeAll();
-		tablesPanel.add(mainTableScrollPane);
-		
-		validate();
-		repaint();
+		setEditableObjectTable(new StrategyActivityRelevancyTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel()));
 	}
 	
-	private StrategyActivityRelevancyTreeTableModel getPlanningModel()
+	protected String getDividerName()
 	{
-		return (StrategyActivityRelevancyTreeTableModel)getModel();
-	}
-
-	@Override
-	protected GridLayoutPlus createButtonLayout()
-	{
-		return null;
-	}
-
-	@Override
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-	}
-	
-	private StrategyActivityRelevancyTableModel strategyActivityRelevancyTableModel;
-	private StrategyActivityRelevancyTable strategyActivityRelevancyTable;
-	private JScrollBar masterScrollBar;
-	private PersistentHorizontalSplitPane treePlusTablesPanel;
-	private JPanel treesPanel;
-	private JPanel tablesPanel;
-	
-	private ScrollPaneWithHideableScrollBar treesScrollPane;
-	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
-	
-	private MultipleTableSelectionController selectionController;
-	private MultiTableRowHeightController rowHeightController;
-	private MultiTableVerticalScrollController scrollController;
+		return "StrategyActivityRelevancyTreeTablePanel";
+	}	
 }
