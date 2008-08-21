@@ -155,6 +155,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 
 	public boolean isThisLinkBodyVisible(DiagramComponent diagram)
 	{
+		if (diagram == null)
+			return false;
+		
 		if(isSelectedOrRelated(diagram))
 			return true;
 		
@@ -166,7 +169,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return layerManager.areTargetLinksVisible();
 	}
 	
-	public boolean isSelectedOrRelated(DiagramComponent diagram)
+	private boolean isSelectedOrRelated(DiagramComponent diagram)
 	{
 		if(diagram == null)
 			return false;
