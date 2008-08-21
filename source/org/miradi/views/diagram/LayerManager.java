@@ -31,13 +31,8 @@ public class LayerManager
 {
 	public LayerManager(DiagramObject diagramObjectToUse)
 	{
-		this();
 		diagramObject = diagramObjectToUse;
-	}
 	
-	//FIXME this construction should go away.  Its content need to be moved up to abvoe constructor
-	public LayerManager()
-	{
 		hiddenNodeTypes = new HashSet();
 		hiddenORefs = new ORefList();
 		mode = ViewData.MODE_DEFAULT;
@@ -281,11 +276,6 @@ public class LayerManager
 	public void setThreatReductionResultVisible(boolean newSetting)
 	{
 		threatReductionResultFlag = newSetting;
-	}
-	
-	public void setDiagramObject(DiagramObject diagramObjectToUse)
-	{
-		diagramObject = diagramObjectToUse;
 	}
 	
 	public DiagramObject getDiagramObject()

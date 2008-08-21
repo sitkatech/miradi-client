@@ -35,7 +35,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.views.diagram.LayerManager;
 
 public class TestLayerManager extends EAMTestCase
 {
@@ -73,7 +72,7 @@ public class TestLayerManager extends EAMTestCase
 
 	public void testDefaultAllVisible() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		verifyVisibility("default visible", true, intervention, manager);
 		verifyVisibility("default visible", true, factor, manager);
 		verifyVisibility("default visible", true, target, manager);
@@ -83,7 +82,7 @@ public class TestLayerManager extends EAMTestCase
 	
 	public void testHide() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		manager.setVisibility(DiagramStrategyCell.class, false);
 		
 		DiagramFactor strategyDiagramFactor = getDiagramFactor(45);
@@ -112,7 +111,7 @@ public class TestLayerManager extends EAMTestCase
 	
 	public void testHideIds() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		assertTrue("all nodes not visible to start?", manager.areAllNodesVisible());
 		ORefList ORefsToHide = new ORefList();
 		ORefsToHide.add(target.getWrappedFactorRef());
@@ -129,7 +128,7 @@ public class TestLayerManager extends EAMTestCase
 	
 	public void testGoals() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		assertTrue("Goals not visible by default?", manager.areGoalsVisible());
 		manager.setGoalsVisible(false);
 		assertFalse("Didn't set invisible?", manager.areGoalsVisible());
@@ -140,7 +139,7 @@ public class TestLayerManager extends EAMTestCase
 	
 	public void testObjectives() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		assertTrue("Objectives not visible by default?", manager.areObjectivesVisible());
 		manager.setObjectivesVisible(false);
 		assertFalse("Didn't set invisible?", manager.areObjectivesVisible());
@@ -150,7 +149,7 @@ public class TestLayerManager extends EAMTestCase
 
 	public void testIndicators() throws Exception
 	{
-		LayerManager manager = new LayerManager();
+		LayerManager manager = new LayerManager(getProject().getDiagramObject());
 		assertTrue("Indicators not visible by default?", manager.areIndicatorsVisible());
 		manager.setIndicatorsVisible(false);
 		assertFalse("Didn't set invisible?", manager.areIndicatorsVisible());
@@ -167,6 +166,11 @@ public class TestLayerManager extends EAMTestCase
 	private void verifyNodeVisibility(String text, boolean expected, FactorCell node, LayerManager manager)
 	{
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(project.getDiagramObject(), node));
+	}
+	
+	private ProjectForTesting getProject()
+	{
+		return project;
 	}
 	
 	private Target cmTarget;
