@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
 
 public class FactorLinkPool extends PoolWithIdAssigner
 {
@@ -41,6 +42,29 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	public void put(FactorLink linkage)
 	{
 		put(linkage.getId(), linkage);
+	}
+	
+	@Override
+	public void put(BaseId id, Object obj)
+	{
+		if(isIllegalLinkToOrFromGroupBox((FactorLink)obj))
+		{
+			EAM.logWarning("Ignoring FactorLink to GroupBox with LinkId:" + id);
+			return;
+		}
+		super.put(id, obj);
+	}
+
+	private boolean isIllegalLinkToOrFromGroupBox(FactorLink link)
+	{
+		final int groupBoxType = GroupBox.getObjectType();
+		if(link.getFromFactorRef().getObjectType() == groupBoxType)
+			return true;
+		
+		if(link.getToFactorRef().getObjectType() == groupBoxType)
+			return true;
+		
+		return false;
 	}
 	
 	public FactorLink find(FactorLinkId id)
