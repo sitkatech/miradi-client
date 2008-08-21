@@ -135,7 +135,7 @@ public class DiagramModelUpdater
 		if (EAM.getMainWindow() == null)
 			return;
 		
-		DiagramComponent diagram = EAM.getMainWindow().getDiagramComponent();		
+		DiagramComponent diagram = EAM.getMainWindow().getCurrentDiagramComponent();		
 		if (diagram == null)
 			return;
 		
