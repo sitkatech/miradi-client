@@ -35,14 +35,13 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
-import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ImportCpmzDoer extends ImportProjectDoer
@@ -129,9 +128,9 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	{
 		CodeList codeListWithHiddenLinkLayer = new CodeList();
 		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
-		ViewData viewData = projectToFill.getViewData(DiagramView.getViewName());
+		DiagramObject diagramObject = getMainWindow().getDiagramModel().getDiagramObject();
 		
-		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_DIAGRAM_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
+		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
 		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
 
