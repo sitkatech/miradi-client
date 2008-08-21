@@ -73,43 +73,43 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
-		DiagramComponent diagram = getDiagramComponent();
+		DiagramComponent diagram = getCurrentDiagramComponent();
 		diagram.setSelectionModel(selectionModelToUse);
 	}
 
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
-		return getDiagramComponent().getSelectedAndRelatedCells();
+		return getCurrentDiagramComponent().getSelectedAndRelatedCells();
 	}
 	
 	public void selectCells(EAMGraphCell[] cellsToSelect)
 	{
-		getDiagramComponent().selectCells(cellsToSelect);
+		getCurrentDiagramComponent().selectCells(cellsToSelect);
 	}
 	
 	public void selectFactor(ORef factorRef)
 	{
-		getDiagramComponent().selectFactor(factorRef);
+		getCurrentDiagramComponent().selectFactor(factorRef);
 	}
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells()
 	{
-		return getDiagramComponent().getOnlySelectedLinkCells();
+		return getCurrentDiagramComponent().getOnlySelectedLinkCells();
 	}
 	
 	public DiagramLink[] getOnlySelectedLinks()
 	{
-		return getDiagramComponent().getOnlySelectedLinks();
+		return getCurrentDiagramComponent().getOnlySelectedLinks();
 	}
 	
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
-		return getDiagramComponent().getOnlySelectedFactorCells();
+		return getCurrentDiagramComponent().getOnlySelectedFactorCells();
 	}
 	
 	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
 	{
-		return getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
+		return getCurrentDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
 	}
 	
 	public static FactorCell[] getOnlySelectedFactorCells(EAMGraphCell[] allSelectedCells)
@@ -119,12 +119,12 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	
 	public Factor[] getOnlySelectedFactors()
 	{
-		return getDiagramComponent().getOnlySelectedFactors();
+		return getCurrentDiagramComponent().getOnlySelectedFactors();
 	}
 	
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
-		return getDiagramComponent().getOnlySelectedCells();
+		return getCurrentDiagramComponent().getOnlySelectedCells();
 	}
 		
 	public void moveFactors(int deltaX, int deltaY, ORefList diagramFactorRefs) throws Exception 
@@ -134,7 +134,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 
 	public DiagramModel getDiagramModel()
 	{
-		DiagramComponent diagramComponent = getDiagramComponent();
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if (diagramComponent==null)
 			return null;
 		return diagramComponent.getDiagramModel();
@@ -145,7 +145,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 		return getDiagramSplitPane().getAllOwenedDiagramComponents();
 	}
 	
-	public DiagramComponent getDiagramComponent()
+	public DiagramComponent getCurrentDiagramComponent()
 	{
 		DiagramComponent diagramComponent = getDiagramSplitPane().getDiagramComponent();
 		return diagramComponent;

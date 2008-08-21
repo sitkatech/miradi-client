@@ -80,7 +80,7 @@ public class LinkCreateDialog extends EAMDialog implements ActionListener
 	{
 		linkFromList = createChoices(FactorLink.FROM);
 		linkToList = createChoices(FactorLink.TO);
-		DiagramComponent diagram = diagramPanel.getDiagramComponent();
+		DiagramComponent diagram = diagramPanel.getCurrentDiagramComponent();
 
 		GridLayoutPlus layout = new GridLayoutPlus(2,1);
 		layout.setFill(Alignment.FILL_NONE);

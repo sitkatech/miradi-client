@@ -108,7 +108,7 @@ public class NudgeDoer extends LocationDoer
 		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		
 		HashSet<LinkCell> allLinkCells = new HashSet();
-		DiagramComponent diagramComponent = diagramPanel.getDiagramComponent();
+		DiagramComponent diagramComponent = diagramPanel.getCurrentDiagramComponent();
 		diagramComponent.selectAllLinksAndThierBendPointsInsideGroupBox(selectedFactorAndChildren);
 		allLinkCells.addAll(diagramPanel.getOnlySelectedLinkCells());
 		
