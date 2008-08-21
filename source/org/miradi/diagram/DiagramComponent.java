@@ -70,6 +70,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
+import org.miradi.views.diagram.LayerManager;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
@@ -100,6 +101,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 		
 		enableToolTips();
+		layerManager = new LayerManager(getDiagramModel().getDiagramObject());
 	}
 
 	private void enableToolTips()
@@ -195,6 +197,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramModel)getModel();
 	}
 	
+	public LayerManager getLayerManager()
+	{
+		return layerManager;
+	}
+		
 	public void showContextMenu(MouseEvent e)
 	{
 		diagramContextMenuHandler.showContextMenu(e);
@@ -791,5 +798,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private Project project;
 	private DiagramContextMenuHandler diagramContextMenuHandler;
 	private boolean isMarquee;
+	private LayerManager layerManager;
 }
 
