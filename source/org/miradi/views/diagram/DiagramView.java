@@ -564,12 +564,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return 0;
 	}
 	
-	public void setTab(int newTab)
-	{
-		super.setTab(newTab);
-		updateLegendPanelCheckBoxes();	
-	}
-
 	private void updateLegendPanelCheckBoxes()
 	{
 		getMainWindow().preventActionUpdates();
