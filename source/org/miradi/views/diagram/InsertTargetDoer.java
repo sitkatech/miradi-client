@@ -37,6 +37,6 @@ public class InsertTargetDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramTargetCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramTargetCell.class, true);
 	}
 }

@@ -67,8 +67,8 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setContributingFactorsVisible(true);
-		getProject().getLayerManager().setDirectThreatsVisible(true);
+		getCurrentLayerManager().setContributingFactorsVisible(true);
+		getCurrentLayerManager().setDirectThreatsVisible(true);
 	}
 }
 

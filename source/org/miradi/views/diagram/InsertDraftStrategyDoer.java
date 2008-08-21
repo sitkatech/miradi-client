@@ -69,7 +69,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramStrategyCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramStrategyCell.class, true);
 	}
 	
 }

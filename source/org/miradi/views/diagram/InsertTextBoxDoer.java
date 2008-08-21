@@ -38,7 +38,7 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramTextBoxCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramTextBoxCell.class, true);
 	}
 
 	public String getInitialText()
