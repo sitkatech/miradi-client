@@ -76,8 +76,6 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 	
-		//FIXME this might go away once layer manager is constructed with a DO
-		getProject().getLayerManager().setDiagramObject(getCurrentDiagramObject());
 		createLegendCheckBoxes();
 		addAllComponents();
 		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
@@ -340,7 +338,7 @@ abstract public class DiagramLegendPanel extends LegendPanel
 		
 	private LayerManager getLayerManager()
 	{
-		return mainWindow.getProject().getLayerManager();
+		return getMainWindow().getCurrentDiagramComponent().getLayerManager();
 	}
 	
 	private MainWindow getMainWindow()
