@@ -292,6 +292,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return getDiagramView().getDiagramModel();
 	}
 	
+	protected LayerManager getCurrentLayerManager()
+	{
+		return getDiagramView().getDiagramModel().getLayerManager();
+	}
+	
 	public static final int TARGET_TOP_LOCATION = 150;
 	public static final int TARGET_BETWEEN_SPACING = 20;
 	public static final int TARGET_RIGHT_SPACING = 10;

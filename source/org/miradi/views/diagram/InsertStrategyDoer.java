@@ -45,7 +45,7 @@ public class InsertStrategyDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramStrategyCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramStrategyCell.class, true);
 	}
 	
 	

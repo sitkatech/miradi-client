@@ -45,6 +45,6 @@ public class InsertThreatReductionResultDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramThreatReductionResultCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramThreatReductionResultCell.class, true);
 	}
 }

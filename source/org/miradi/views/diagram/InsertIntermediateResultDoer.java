@@ -36,7 +36,7 @@ public class InsertIntermediateResultDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramIntermediateResultCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramIntermediateResultCell.class, true);
 	}
 
 	public String getInitialText()
