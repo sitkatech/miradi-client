@@ -106,7 +106,7 @@ public class DiagramObjectDeleteHelper
 
 	private void deleteFactorAndDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{		
-		DiagramComponent diagram = diagramPanel.getDiagramComponent();
+		DiagramComponent diagram = diagramPanel.getCurrentDiagramComponent();
 		FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(diagram);
 		factorDeleteHelper.deleteFactorAndDiagramFactor(diagramFactor);
 	}

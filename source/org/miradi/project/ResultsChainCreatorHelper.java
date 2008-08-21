@@ -356,7 +356,7 @@ public class ResultsChainCreatorHelper
 
 	private HashSet<DiagramFactor> getSelectedAndRelatedDiagramFactors()
 	{
-		if (diagramPanel.getDiagramComponent() == null)
+		if (diagramPanel.getCurrentDiagramComponent() == null)
 			return new HashSet<DiagramFactor>();
 		
 		FactorCell[] selectedFactorCells = getSelectedCells();
@@ -415,7 +415,7 @@ public class ResultsChainCreatorHelper
 
 	private FactorCell[] getSelectedCells()
 	{
-		if (diagramPanel.getDiagramComponent() == null)
+		if (diagramPanel.getCurrentDiagramComponent() == null)
 			return new FactorCell[0];
 		
 		return diagramPanel.getOnlySelectedFactorCells();
