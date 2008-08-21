@@ -90,6 +90,11 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	public ORefList getTaggedObjectSetRefs()
+	{
+		return taggedObjectSetRefs.getORefList();
+	}
+	
 	// TODO: This really should have a test
 	public ORefList getAllGoalRefs()
 	{
