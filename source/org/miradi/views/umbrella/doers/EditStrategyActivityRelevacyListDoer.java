@@ -19,13 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Objective;
 
 public class EditStrategyActivityRelevacyListDoer extends AbstractEditLisDoer
 {
-	protected StrategyActivityRelevancyTreeTablePanel getEditPanel() throws Exception
+	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
 	{
 		Objective objective = (Objective) getSelectedObject();
 		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), objective);

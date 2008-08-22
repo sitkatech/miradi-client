@@ -19,20 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
+import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetTreeTablePanel;
+import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
+import org.miradi.main.EAM;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
+import org.miradi.views.umbrella.doers.AbstractEditLisDoer;
 
-public class EditTaggedObjectSetDoer extends ObjectsDoer
+public class EditTaggedObjectSetDoer extends AbstractEditLisDoer
 {
-
-	@Override
-	public void doIt() throws CommandFailedException
+	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
 	{
+		DiagramObject diagramObject = getMainWindow().getDiagramModel().getDiagramObject();
+		return TaggedObjectSetTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), diagramObject);
 	}
 
-	@Override
-	public boolean isAvailable()
+	protected int getObjectType()
 	{
-		return false;
+		return TaggedObjectSet.getObjectType();
+	}
+	
+	protected String getDialogTitle()
+	{
+		return EAM.text("Tagged Factors");
 	}
 }
