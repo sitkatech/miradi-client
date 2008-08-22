@@ -340,7 +340,7 @@ abstract public class DiagramObject extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		details = new StringData(TAG_DETAIL);
 		hiddenTyes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
-		taggedObjectSetRefs = new ORefListData(TAG_TAGGED_OBJECT_SET_REFS);
+		taggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
@@ -348,7 +348,7 @@ abstract public class DiagramObject extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);
 		addField(TAG_HIDDEN_TYPES, hiddenTyes);
-		addField(TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs);
+		addField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs);
 		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
 	
@@ -357,7 +357,7 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
-	public static final String TAG_TAGGED_OBJECT_SET_REFS = "TaggedObjectSetRefs";
+	public static final String TAG_SELECTED_TAGGED_OBJECT_SET_REFS = "SelectedTaggedObjectSetRefs";
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";
  	
 	private IdListData allDiagramFactorIds;
