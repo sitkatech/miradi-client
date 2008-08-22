@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
-import java.util.Vector;
-
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -38,13 +36,13 @@ public class RootProjectNode extends TreeTableNode
 	@Override
 	public TreeTableNode getChild(int index)
 	{
-		return children.get(index);
+		return children[index];
 	}
 
 	@Override
 	public int getChildCount()
 	{
-		return children.size();
+		return children.length;
 	}
 
 	@Override
@@ -68,16 +66,17 @@ public class RootProjectNode extends TreeTableNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector();
-		
 		Factor[] allDiagramObjectFactors = currentDiagramObject.getAllWrappedFactors();
+		children = new TreeTableNode[allDiagramObjectFactors.length];
 		for (int index = 0; index < allDiagramObjectFactors.length; ++index)
 		{
 			FactorTreeTableNode factorNode = new FactorTreeTableNode(allDiagramObjectFactors[index]);
-			children.add(factorNode);
+			children[index] = factorNode;
 		}
+		
+		sortChildren(children);
 	}
 	
 	private DiagramObject currentDiagramObject;
-	private Vector<TreeTableNode> children;
+	private TreeTableNode[] children;
 }
