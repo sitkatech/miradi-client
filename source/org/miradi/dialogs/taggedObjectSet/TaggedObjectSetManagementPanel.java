@@ -28,9 +28,9 @@ import org.miradi.main.MainWindow;
 
 public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
 {
-	public TaggedObjectSetManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public TaggedObjectSetManagementPanel(MainWindow mainWindowToUse, TaggedObjectSetPoolTable poolTable) throws Exception
 	{
-		super(mainWindowToUse, new TaggedObjectSetPoolTablePanel(mainWindowToUse), new TaggedObjectSetPropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, new TaggedObjectSetPoolTablePanel(mainWindowToUse, poolTable), new TaggedObjectSetPropertiesPanel(mainWindowToUse, poolTable));
 	}
 
 	public String getPanelDescription()

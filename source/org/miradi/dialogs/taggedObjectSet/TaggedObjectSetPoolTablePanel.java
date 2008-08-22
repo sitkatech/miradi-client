@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 
 public class TaggedObjectSetPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public TaggedObjectSetPoolTablePanel(MainWindow mainWindowToUse)
+	public TaggedObjectSetPoolTablePanel(MainWindow mainWindowToUse, TaggedObjectSetPoolTable poolTable)
 	{
-		super(mainWindowToUse, new TaggedObjectSetPoolTable(mainWindowToUse, new TaggedObjectSetPoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
+		super(mainWindowToUse, poolTable, mainWindowToUse.getActions(), buttons);
 	}
 	
 	private static final Class[] buttons = new Class[]{
