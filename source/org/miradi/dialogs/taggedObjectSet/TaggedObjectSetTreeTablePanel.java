@@ -23,27 +23,27 @@ import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
 
 public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePanel
 {
-	public static TaggedObjectSetTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, DiagramObject diagramObject) throws Exception
+	public static TaggedObjectSetTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSet taggedObjectSet) throws Exception
 	{
-		RootProjectNode rootNode = new RootProjectNode(diagramObject);
+		RootProjectNode rootNode = new RootProjectNode(mainWindowToUse.getDiagramModel().getDiagramObject());
 		TaggedObjectSetTreeTableModel treeTableModel = new TaggedObjectSetTreeTableModel(rootNode); 
 		TaggedObjectSetTreeTable treeTable = new TaggedObjectSetTreeTable(mainWindowToUse, treeTableModel);
 		
-		return new TaggedObjectSetTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, diagramObject);
+		return new TaggedObjectSetTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, taggedObjectSet);
 	}
 	
-	private TaggedObjectSetTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSetTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, DiagramObject diagramObject) throws Exception
+	private TaggedObjectSetTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSetTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, TaggedObjectSet taggedObjectSet) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, treeTable, diagramObject);		
+		super(mainWindowToUse, modelToUse, treeTable, taggedObjectSet);		
 	}
 	
 	protected void createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject)
 	{
-		setEditableSingleBooleanColumnTableModel(new TaggedObjectSetEditableTableModel(mainWindowToUse.getProject(), treeTable,  (DiagramObject)baseObject));
+		setEditableSingleBooleanColumnTableModel(new TaggedObjectSetEditableTableModel(mainWindowToUse.getProject(), treeTable,  (TaggedObjectSet)baseObject));
 	}
 	
 	protected void createEditableTable(MainWindow mainWindowToUse)
