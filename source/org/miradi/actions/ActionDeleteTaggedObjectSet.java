@@ -37,6 +37,6 @@ public class ActionDeleteTaggedObjectSet extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete a Tagged Object Set");
+		return EAM.text("TT|Delete a Tag Object Set");
 	}
 }
