@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -61,6 +62,11 @@ public class TaggedObjectSet extends BaseObject
 		return shortLabel.get();
 	}
 	
+	public ORefList getTaggedObjectRefs()
+	{
+		return taggedObjectRefs.getORefList();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -87,11 +93,11 @@ public class TaggedObjectSet extends BaseObject
 		super.clear();
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		content = new ORefListData(TAG_TAGGED_OBJECT_REFS);
+		taggedObjectRefs = new ORefListData(TAG_TAGGED_OBJECT_REFS);
 		comment = new StringData(TAG_COMMENT);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_TAGGED_OBJECT_REFS, content);
+		addField(TAG_TAGGED_OBJECT_REFS, taggedObjectRefs);
 		addField(TAG_COMMENT, comment);
 	}
 
@@ -100,7 +106,7 @@ public class TaggedObjectSet extends BaseObject
 	public static final String TAG_COMMENT = "Comment";
 	
 	private StringData shortLabel;
-	private ORefListData content;
+	private ORefListData taggedObjectRefs;
 	private StringData comment;
 	
 	public static final String OBJECT_NAME = "TaggedObjectSet";
