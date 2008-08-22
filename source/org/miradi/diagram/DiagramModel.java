@@ -494,7 +494,7 @@ public class DiagramModel extends DefaultGraphModel
 		try
 		{
 			FactorCell factorCell = getFactorCellByRef(diagramFactorRef);
-			boolean shouldBeVisible = shouldFactorCellBeVisible(getLayerManager(), factorCell);
+			boolean shouldBeVisible = shouldFactorCellBeVisible(factorCell);
 
 			if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
 				getGraphLayoutCache().setVisible(factorCell, shouldBeVisible);
@@ -505,9 +505,9 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 
-	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)
+	private boolean shouldFactorCellBeVisible(FactorCell factorCell)
 	{
-		boolean isVisible = manager.isVisible(getDiagramObject(), factorCell);
+		boolean isVisible = getLayerManager().isVisible(getDiagramObject(), factorCell);
 		boolean EMPTY_SELECTION = getDiagramObject().getSelectedTaggedObjectSetRefs().isEmpty();
 		if (EMPTY_SELECTION)
 			return isVisible;
@@ -529,9 +529,9 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateVisibilityOfSingleLink(LinkCell linkCell) throws Exception
 	{
 		boolean shouldLinkBeVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
-		if(!shouldFactorCellBeVisible(getLayerManager(), linkCell.getFrom()))
+		if(!shouldFactorCellBeVisible(linkCell.getFrom()))
 			shouldLinkBeVisible = false;
-		if(!shouldFactorCellBeVisible(getLayerManager(), linkCell.getTo()))
+		if(!shouldFactorCellBeVisible(linkCell.getTo()))
 			shouldLinkBeVisible = false;
 		
 		if(shouldLinkBeVisible != getGraphLayoutCache().isVisible(linkCell))
