@@ -114,7 +114,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (diagramObject != null)
 			addTaggedObjectSetPanel(diagramObject);
 		
-		updateCheckBoxs();
+		updateCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 	}
 
@@ -201,7 +201,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		jpanel.add(new PanelTitleLabel(EAM.fieldLabel(objectType, objectName), new FactorLinkIcon()));
 	}
 	
-	private void updateCheckBoxs()
+	private void updateCheckBoxes()
 	{
 		if (isInvalidLayerManager(getLayerManager()))
 			return;
