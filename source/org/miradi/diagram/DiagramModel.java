@@ -479,8 +479,8 @@ public class DiagramModel extends DefaultGraphModel
 			if(factorCell.isTextBox() || factorCell.isActivity() || factorCell.isStress())
 				topLayerCells.add(factorCell);
 		}
-		LayerManager manager = getLayerManager();
-		boolean shouldScopeBoxBeVisible = manager.isScopeBoxVisible();
+		
+		boolean shouldScopeBoxBeVisible = getLayerManager().isScopeBoxVisible();
 		if(shouldScopeBoxBeVisible != getGraphLayoutCache().isVisible(getProjectScopeBox()))
 			getGraphLayoutCache().setVisible(getProjectScopeBox(), shouldScopeBoxBeVisible);
 		
@@ -491,9 +491,8 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		try
 		{
-			LayerManager manager = getLayerManager();
 			FactorCell factorCell = getFactorCellByRef(diagramFactorRef);
-			boolean shouldBeVisible = shouldFactorCellBeVisible(manager, factorCell);
+			boolean shouldBeVisible = shouldFactorCellBeVisible(getLayerManager(), factorCell);
 
 			if(shouldBeVisible != getGraphLayoutCache().isVisible(factorCell))
 				getGraphLayoutCache().setVisible(factorCell, shouldBeVisible);
@@ -520,12 +519,10 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void updateVisibilityOfSingleLink(LinkCell linkCell) throws Exception
 	{
-		LayerManager manager = getLayerManager();
-
 		boolean shouldLinkBeVisible = !linkCell.getDiagramLink().isCoveredByGroupBoxLink();
-		if(!shouldFactorCellBeVisible(manager, linkCell.getFrom()))
+		if(!shouldFactorCellBeVisible(getLayerManager(), linkCell.getFrom()))
 			shouldLinkBeVisible = false;
-		if(!shouldFactorCellBeVisible(manager, linkCell.getTo()))
+		if(!shouldFactorCellBeVisible(getLayerManager(), linkCell.getTo()))
 			shouldLinkBeVisible = false;
 		
 		if(shouldLinkBeVisible != getGraphLayoutCache().isVisible(linkCell))
