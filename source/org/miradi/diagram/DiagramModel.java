@@ -508,7 +508,8 @@ public class DiagramModel extends DefaultGraphModel
 	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)
 	{
 		boolean isVisible = manager.isVisible(getDiagramObject(), factorCell);
-		if (getDiagramObject().getSelectedTaggedObjectSetRefs().isEmpty())
+		boolean EMPTY_SELECTION = getDiagramObject().getSelectedTaggedObjectSetRefs().isEmpty();
+		if (EMPTY_SELECTION)
 			return isVisible;
 			
 		boolean isTagged = getTaggedObjectManager().isVisible(getDiagramObject(), factorCell.getWrappedFactorRef());
