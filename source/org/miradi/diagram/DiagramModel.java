@@ -83,6 +83,7 @@ import org.miradi.project.ThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
+import org.miradi.views.umbrella.TaggedObjectManager;
 
 public class DiagramModel extends DefaultGraphModel
 {
@@ -90,6 +91,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		project = projectToUse;
 		layerManager = new LayerManager(getDiagramObject());
+		taggedObjectManager = new TaggedObjectManager(project);
 		clear();
 	}
 		
@@ -505,7 +507,11 @@ public class DiagramModel extends DefaultGraphModel
 
 	private boolean shouldFactorCellBeVisible(LayerManager manager, FactorCell factorCell)
 	{
-		return manager.isVisible(getDiagramObject(), factorCell);
+		boolean isVisible = manager.isVisible(getDiagramObject(), factorCell);
+		if (isVisible)
+			return isVisible;
+		
+		return getTaggedObjectManager().isVisible(getDiagramObject(), factorCell.getWrappedFactorRef());
 	}
 
 	private void updateVisibilityOfLinks() throws Exception
@@ -974,6 +980,11 @@ public class DiagramModel extends DefaultGraphModel
 		return layerManager;
 	}
 	
+	public TaggedObjectManager getTaggedObjectManager()
+	{
+		return taggedObjectManager;
+	}
+	
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
@@ -1001,5 +1012,6 @@ public class DiagramModel extends DefaultGraphModel
 	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
 	private LayerManager layerManager;
+	private TaggedObjectManager taggedObjectManager;
 }
 
