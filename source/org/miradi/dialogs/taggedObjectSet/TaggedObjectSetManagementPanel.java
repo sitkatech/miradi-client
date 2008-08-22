@@ -23,7 +23,6 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
@@ -43,5 +42,5 @@ public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
 		return new TaggedObjectSetIcon();
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("TaggedObjectSet"); 
+	private static String PANEL_DESCRIPTION = "TaggedObjectSet"; 
 }
