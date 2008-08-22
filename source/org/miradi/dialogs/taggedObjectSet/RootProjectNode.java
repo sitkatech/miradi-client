@@ -29,9 +29,10 @@ import org.miradi.objects.Factor;
 
 public class RootProjectNode extends TreeTableNode
 {
-	public RootProjectNode(DiagramObject currentDiagramObjectToUse)
+	public RootProjectNode(DiagramObject currentDiagramObjectToUse) throws Exception
 	{
 		currentDiagramObject = currentDiagramObjectToUse;
+		rebuild();
 	}
 	
 	@Override
