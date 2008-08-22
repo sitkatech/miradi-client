@@ -22,7 +22,6 @@ package org.miradi.views.diagram.doers;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetTreeTablePanel;
 import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.views.umbrella.doers.AbstractEditLisDoer;
 
@@ -30,8 +29,8 @@ public class EditTaggedObjectSetDoer extends AbstractEditLisDoer
 {
 	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
 	{
-		DiagramObject diagramObject = getMainWindow().getDiagramModel().getDiagramObject();
-		return TaggedObjectSetTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), diagramObject);
+		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) getSelectedObject();
+		return TaggedObjectSetTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), taggedObjectSet);
 	}
 
 	protected int getObjectType()

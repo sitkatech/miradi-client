@@ -26,6 +26,7 @@ import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -43,6 +44,12 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		
 		addField(createMultilineField(TaggedObjectSet.TAG_COMMENT));
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void setObjectRefs(ORefList refsToUse)
+	{
+		super.setObjectRefs(refsToUse);
 	}
 	
 	public String getPanelDescription()

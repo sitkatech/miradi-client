@@ -23,16 +23,16 @@ import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 
 public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditableModel
 {
-	public TaggedObjectSetEditableTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, DiagramObject diagramObjectAsParentToUse)
+	public TaggedObjectSetEditableTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, TaggedObjectSet taggedObjectSetToUse)
 	{
 		super(projectToUse, providerToUse);
 		
-		diagramObjectAsParent = diagramObjectAsParentToUse;
+		taggedObjectSet = taggedObjectSetToUse;
 	}
 
 	public String getColumnName(int column)
@@ -48,7 +48,7 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		try
 		{
 			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);	
-			setValueUsingCommand(diagramObjectAsParent.getRef(), DiagramObject.TAG_TAGGED_OBJECT_SET_REFS, selectedRefs.toString());
+			setValueUsingCommand(taggedObjectSet.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, selectedRefs.toString());
 		}
 		catch (Exception e)
 		{
@@ -58,8 +58,8 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 
 	protected ORefList getCurrentRefList() throws Exception
 	{
-		return new ORefList(diagramObjectAsParent.getTaggedObjectSetRefs());
+		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
 	}
 	
-	private DiagramObject diagramObjectAsParent;
+	private TaggedObjectSet taggedObjectSet;
 }
