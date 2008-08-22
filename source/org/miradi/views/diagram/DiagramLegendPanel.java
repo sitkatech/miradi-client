@@ -47,6 +47,8 @@ import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
+import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
+import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTableModel;
 import org.miradi.icons.FactorLinkIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
@@ -435,7 +437,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		{
 			try
 			{
-				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow());
+				TaggedObjectSetPoolTable poolTable = new TaggedObjectSetPoolTable(getMainWindow(), new TaggedObjectSetPoolTableModel(getProject()));
+				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow(), poolTable);
 				AbstractPopUpEditDoer.showManagementDialog(mainWindow, panel, EAM.text("Manage Tagged Object Sets"));
 			}
 			catch (Exception e)

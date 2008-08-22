@@ -19,23 +19,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import org.miradi.actions.ActionEditTaggedObjectSet;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.project.Project;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaggedObjectSetPropertiesPanel(Project projectToUse) throws Exception
+	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker picker) throws Exception
 	{
-		super(projectToUse, TaggedObjectSet.getObjectType(), BaseId.INVALID);
+		super(mainWindowToUse.getProject(), TaggedObjectSet.getObjectType(), BaseId.INVALID);
 			
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Tagged Object Set"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		
+		addFieldWithEditButton(EAM.text("Edit..."), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
 		
 		addField(createMultilineField(TaggedObjectSet.TAG_COMMENT));
 		updateFieldsFromProject();
