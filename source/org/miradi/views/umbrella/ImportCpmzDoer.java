@@ -125,6 +125,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
+	//FIXME this is not working due to DiagramModel being always null.  
 	private void hideLinkLayer(Project projectToFill) throws Exception
 	{
 		CodeList codeListWithHiddenLinkLayer = new CodeList();
