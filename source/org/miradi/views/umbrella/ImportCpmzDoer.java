@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -128,8 +129,11 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	{
 		CodeList codeListWithHiddenLinkLayer = new CodeList();
 		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
-		DiagramObject diagramObject = getMainWindow().getDiagramModel().getDiagramObject();
+		DiagramModel diagramModel = getMainWindow().getDiagramModel();
+		if (diagramModel == null)
+			return;
 		
+		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
 		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
