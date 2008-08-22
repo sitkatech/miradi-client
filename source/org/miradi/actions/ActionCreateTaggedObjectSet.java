@@ -37,6 +37,6 @@ public class ActionCreateTaggedObjectSet extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a Tag Object Set");
+		return EAM.text("TT|Create a Tag");
 	}
 }
