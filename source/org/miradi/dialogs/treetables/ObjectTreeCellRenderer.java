@@ -29,8 +29,10 @@ import javax.swing.tree.TreeCellRenderer;
 
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ConceptualModelIcon;
+import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
+import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.IconManager;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
@@ -42,13 +44,17 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
+import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
 
 public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 {		
@@ -109,6 +115,15 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		measurementRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(measurementRenderer, new MeasurementIcon(), getPlainFont());
+		
+		textBoxRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(textBoxRenderer, new TextBoxIcon(), getPlainFont());
+		
+		groupBoxRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(groupBoxRenderer, new GroupBoxIcon(), getPlainFont());
+		
+		contributingFactorRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(contributingFactorRenderer, new ContributingFactorIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -138,7 +153,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		else if(node.getType() == ObjectType.TARGET)
 			renderer = targetRenderer;
 		else if(node.getType() == ObjectType.CAUSE)
-			renderer = directThreatRenderer;
+			renderer = getCauseRenderer((Cause)node.getObject());
 		else if(node.getType() == ObjectType.THREAT_REDUCTION_RESULT)
 			renderer = threatReductionResultRenderer;
 		else if(node.getType() == ObjectType.INTERMEDIATE_RESULT)
@@ -159,9 +174,21 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = measurementRenderer;
 		else if(node.getType() == ProjectMetadata.getObjectType())
 			renderer = projectMetaDataRenderer;
+		else if(node.getType() == TextBox.getObjectType())
+			renderer = textBoxRenderer;
+		else if(node.getType() == GroupBox.getObjectType())
+			renderer = groupBoxRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
+	}
+
+	private VariableHeightTreeCellRenderer getCauseRenderer(Cause cause)
+	{
+		if (cause.isDirectThreat())
+			return directThreatRenderer;
+		
+		return contributingFactorRenderer;
 	}
 	
 	private TreeCellRenderer getTaskRenderer(Task task)
@@ -231,4 +258,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer threatReductionResultRenderer;
 	private VariableHeightTreeCellRenderer intermediateResultsRenderer;
 	private	VariableHeightTreeCellRenderer measurementRenderer;
+	private	VariableHeightTreeCellRenderer textBoxRenderer;
+	private	VariableHeightTreeCellRenderer groupBoxRenderer;
+	private VariableHeightTreeCellRenderer contributingFactorRenderer;
 }
