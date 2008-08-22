@@ -123,7 +123,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 		add(editListPanel);
 		
-		PanelButton manageButton = new PanelButton(EAM.text("Manage..."));
+		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."));
 		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
 		add(manageButton);
 	}

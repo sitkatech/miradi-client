@@ -27,6 +27,6 @@ public class DeleteTaggedObjectSetDoer extends DeletePoolObjectDoer
 	@Override
 	protected String getCustomText()
 	{
-		return EAM.text("Tagged Object Set");
+		return EAM.text("Tag");
 	}
 }
