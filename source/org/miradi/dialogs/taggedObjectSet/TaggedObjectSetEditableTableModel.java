@@ -23,6 +23,8 @@ import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 
@@ -35,6 +37,18 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		taggedObjectSet = taggedObjectSetToUse;
 	}
 
+	@Override
+	public boolean isCellEditable(int row, int column)
+	{
+		return isValidFactorRow(row, column);
+	}
+
+	private boolean isValidFactorRow(int row, int column)
+	{
+		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
+		return Factor.isFactor(objectForRow.getRef());
+	}
+	
 	public String getColumnName(int column)
 	{
 		return SINGLE_COLUMN_NAME;
