@@ -19,14 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.util.Vector;
-
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.forms.PropertiesPanelSpec;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTableExporter;
 
@@ -41,49 +33,8 @@ public class RtfManagementExporter
 	{
 		writer.writeRtfTable(tableExporter);
 		writer.newParagraph();
-		writePropertiesForEachObject(writer, tableExporter);
 	}
 	
-	public void writePropertiesForEachObject(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
-	{
-		Vector<Integer> allTypes = tableExporter.getAllTypes();
-		for(Integer integer : allTypes)
-		{
-			ORefList allRefsForType = tableExporter.getAllRefs(integer.intValue());
-			writeFormsForRefs(writer, allRefsForType);
-		}
-	}
-
-	private void writeFormsForRefs(RtfWriter writer, ORefList allRefsForType) throws Exception
-	{
-		for (int index = 0; index < allRefsForType.size(); ++index)
-		{
-			ORef ref = allRefsForType.get(index);
-			if (hasNoForm(ref))
-				continue;
-			
-			BaseObject baseObjectForRow = getProject().findObject(ref);
-			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
-			writePropertiesPanel(writer, baseObjectForRow, form);
-			writer.newParagraph();
-		}
-	}
-
-	private boolean hasNoForm(ORef ref)
-	{
-		return ProjectMetadata.is(ref);
-	}
-
-	private void writePropertiesPanel(RtfWriter writer, BaseObject baseObjectForRow, PropertiesPanelSpec form) throws Exception
-	{
-		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef());
-		for (int subPanelIndex = 0; subPanelIndex < form.getPanelCount(); ++subPanelIndex)
-		{
-			FieldPanelSpec fieldPanelSpec = form.getPanel(subPanelIndex);
-			rtfFormExporter.exportForm(fieldPanelSpec);
-		}
-	}
-
 	public Project getProject()
 	{
 		return project;
