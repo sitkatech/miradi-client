@@ -30,7 +30,7 @@ public class EditTaggedObjectSetDoer extends AbstractEditLisDoer
 	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
 	{
 		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) getSelectedObject();
-		return TaggedObjectSetTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), taggedObjectSet);
+		return TaggedObjectSetTreeTablePanel.createTaggedItemTreeTablePanel(getMainWindow(), taggedObjectSet);
 	}
 
 	protected int getObjectType()

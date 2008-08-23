@@ -27,7 +27,7 @@ import org.miradi.objects.TaggedObjectSet;
 
 public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePanel
 {
-	public static TaggedObjectSetTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSet taggedObjectSet) throws Exception
+	public static TaggedObjectSetTreeTablePanel createTaggedItemTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSet taggedObjectSet) throws Exception
 	{
 		RootProjectNode rootNode = new RootProjectNode(mainWindowToUse.getDiagramModel().getDiagramObject());
 		TaggedObjectSetTreeTableModel treeTableModel = new TaggedObjectSetTreeTableModel(rootNode); 
