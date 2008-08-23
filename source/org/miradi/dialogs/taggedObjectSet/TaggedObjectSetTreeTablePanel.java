@@ -29,7 +29,7 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 {
 	public static TaggedObjectSetTreeTablePanel createTaggedItemTreeTablePanel(MainWindow mainWindowToUse, TaggedObjectSet taggedObjectSet) throws Exception
 	{
-		RootProjectNode rootNode = new RootProjectNode(mainWindowToUse.getDiagramModel().getDiagramObject());
+		RootProjectNode rootNode = new RootProjectNode(mainWindowToUse.getProject());
 		TaggedObjectSetTreeTableModel treeTableModel = new TaggedObjectSetTreeTableModel(rootNode); 
 		TaggedObjectSetTreeTable treeTable = new TaggedObjectSetTreeTable(mainWindowToUse, treeTableModel);
 		

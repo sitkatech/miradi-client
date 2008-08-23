@@ -22,65 +22,67 @@ package org.miradi.dialogs.taggedObjectSet;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 
-public class FactorTreeTableNode extends TreeTableNode
+public class DiagramObjectNode extends TreeTableNode
 {
-	public FactorTreeTableNode(Factor factorToUse)
+	public DiagramObjectNode(DiagramObject currentDiagramObjectToUse) throws Exception
 	{
-		factor = factorToUse;
+		currentDiagramObject = currentDiagramObjectToUse;
+		rebuild();
 	}
 	
 	@Override
 	public TreeTableNode getChild(int index)
 	{
-		return null;
+		return children[index];
 	}
 
 	@Override
 	public int getChildCount()
 	{
-		return 0;
+		return children.length;
 	}
 
 	@Override
 	public BaseObject getObject()
 	{
-		return factor;
+		return currentDiagramObject;
 	}
 
 	@Override
 	public ORef getObjectReference()
 	{
-		return factor.getRef();
+		return getObject().getRef();
 	}
 
 	@Override
 	public Object getValueAt(int column)
 	{
-		return factor.toString();
+		return currentDiagramObject.toString();
 	}
 
 	@Override
 	public void rebuild() throws Exception
 	{
-	}
-
-	@Override
-	public int compareTo(Object otherObject)
-	{
-		if (!(otherObject instanceof TreeTableNode))
-			return super.compareTo(otherObject);
+		Factor[] allDiagramObjectFactors = currentDiagramObject.getAllWrappedFactors();
+		children = new TreeTableNode[allDiagramObjectFactors.length];
+		for (int index = 0; index < allDiagramObjectFactors.length; ++index)
+		{
+			FactorTreeTableNode factorNode = new FactorTreeTableNode(allDiagramObjectFactors[index]);
+			children[index] = factorNode;
+		}
 		
-		TreeTableNode otherNode = (TreeTableNode) otherObject;
-		return otherNode.getObjectReference().compareTo(getObjectReference());
+		sortChildren(children);
 	}
 	
 	@Override
 	public String toRawString()
 	{
-		return factor.toString();
+		return currentDiagramObject.toString();
 	}
 	
-	private Factor factor; 
+	private DiagramObject currentDiagramObject;
+	private TreeTableNode[] children;
 }
