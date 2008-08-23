@@ -40,7 +40,7 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Tagged Object Set"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
-		addFieldWithEditButton(EAM.text("Edit..."), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
+		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
 		
 		addField(createMultilineField(TaggedObjectSet.TAG_COMMENT));
 		updateFieldsFromProject();
@@ -54,6 +54,6 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Tagged Object Set Properties Panel");
+		return EAM.text("Title|Tag Properties Panel");
 	}
 }
