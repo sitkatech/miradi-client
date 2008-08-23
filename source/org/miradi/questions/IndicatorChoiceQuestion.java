@@ -37,6 +37,6 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 	
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
-		return thisObject.getFullName() + " " +thisObject.getOwner().getLabel();
+		return thisObject.getOwner().getLabel() + ": " + thisObject.getFullName();
 	}
 }
