@@ -23,15 +23,15 @@ import org.miradi.main.MainWindow;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class TreeTablePanelWithThreeButtonColumns extends TreeTablePanel
+abstract public class TreeTablePanelWithFourButtonColumns extends TreeTablePanel
 {
-	public TreeTablePanelWithThreeButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
+	public TreeTablePanelWithFourButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}
 
 	protected GridLayoutPlus createButtonLayout()
 	{
-		return new GridLayoutPlus(2, 3, 3, 3);
+		return new GridLayoutPlus(2, 4, 3, 3);
 	}
 }

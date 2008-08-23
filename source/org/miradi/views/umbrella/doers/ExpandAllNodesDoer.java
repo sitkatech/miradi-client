@@ -19,17 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ViewData;
 
 
 public class ExpandAllNodesDoer extends AbstractTreeExpansionDoer
 {
-	protected String getExpandedNodeRefsAsString() throws Exception
+	public void doWork(ViewData viewData) throws Exception
 	{
-		PlanningTreeTableModel model = new PlanningTreeTableModel(getProject());
-		ORefList fullyExpandedRefs = model.getFullyExpandedRefList();
-		
-		return fullyExpandedRefs.toString();
+		getPicker().expandAll(viewData);
 	}
 }
