@@ -40,6 +40,6 @@ public class EditTaggedObjectSetDoer extends AbstractEditLisDoer
 	
 	protected String getDialogTitle()
 	{
-		return EAM.text("Tagged Factors");
+		return EAM.text("Tagged Items");
 	}
 }
