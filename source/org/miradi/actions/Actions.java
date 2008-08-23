@@ -424,6 +424,8 @@ public class Actions
 		registerAction(new ActionShowActivityBubble(mainWindow));
 		registerAction(new ActionHideActivityBubble(mainWindow));
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
+		registerAction(new ActionExpandAllNodes(mainWindow));
+		registerAction(new ActionCollapseAllNodes(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

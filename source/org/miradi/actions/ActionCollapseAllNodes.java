@@ -17,21 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.treetables;
+package org.miradi.actions;
 
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-import com.jhlabs.awt.GridLayoutPlus;
-
-abstract public class TreeTablePanelWithFourButtonColumns extends MultiTreeTablePanel
+public class ActionCollapseAllNodes extends ObjectsAction
 {
-	public TreeTablePanelWithFourButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
+	public ActionCollapseAllNodes(MainWindow mainWindow)
 	{
-		super(mainWindowToUse, treeToUse, buttonActionClasses);
+		super(mainWindow, getLabel());
 	}
 
-	protected GridLayoutPlus createButtonLayout()
+	private static String getLabel()
 	{
-		return new GridLayoutPlus(2, 4, 3, 3);
+		return EAM.text("Action|-");
+	}
+	
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Colapse All Tree Items");
 	}
 }

@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionAssignResource;
+import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreatePlanningViewConfiguration;
@@ -37,6 +38,7 @@ import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
+import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
@@ -91,6 +93,8 @@ import org.miradi.views.planning.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
+import org.miradi.views.umbrella.doers.CollapseAllNodesDoer;
+import org.miradi.views.umbrella.doers.ExpandAllNodesDoer;
 
 public class PlanningView extends TabbedView
 {
@@ -266,6 +270,9 @@ public class PlanningView extends TabbedView
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
+		
+		addDoerToMap(ActionExpandAllNodes.class, new ExpandAllNodesDoer());
+		addDoerToMap(ActionCollapseAllNodes.class, new CollapseAllNodesDoer());	
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
