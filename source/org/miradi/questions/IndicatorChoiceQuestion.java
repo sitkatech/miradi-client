@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 
@@ -33,5 +34,9 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 	{
 		return project.getIndicatorPool().getAllIndicators();
 	}
-
+	
+	protected String getStringToDisplay(BaseObject thisObject)
+	{
+		return thisObject.getFullName() + " " +thisObject.getOwner().getLabel();
+	}
 }
