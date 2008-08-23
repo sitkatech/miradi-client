@@ -25,6 +25,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ViewData;
 
 public interface ObjectPicker extends ListSelectionListener
 {
@@ -41,4 +42,7 @@ public interface ObjectPicker extends ListSelectionListener
 	
 	public void addSelectionChangeListener(ListSelectionListener listener);
 	public void removeSelectionChangeListener(ListSelectionListener listener);
+	
+	public void expandAll(ViewData viewData) throws Exception;
+	public void collapsAll(ViewData viewData) throws Exception;
 }

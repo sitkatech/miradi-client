@@ -21,14 +21,16 @@ package org.miradi.dialogs.viability;
 
 import java.awt.Dimension;
 
+import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
-import org.miradi.dialogs.treetables.TreeTablePanelWithThreeButtonColumns;
+import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -43,7 +45,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 
-public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithThreeButtonColumns
+public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 {
 	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
 	{
@@ -120,9 +122,11 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithThreeButto
 			ActionCreateKeyEcologicalAttribute.class, 
 			ActionCreateKeyEcologicalAttributeIndicator.class,
 			ActionCreateKeyEcologicalAttributeMeasurement.class,
+			ActionExpandAllNodes.class,
 			
 			ActionDeleteKeyEcologicalAttribute.class,
 			ActionDeleteKeyEcologicalAttributeIndicator.class,
-			ActionDeleteKeyEcologicalAttributeMeasurement.class, 
+			ActionDeleteKeyEcologicalAttributeMeasurement.class,
+			ActionCollapseAllNodes.class,
 			};
 }

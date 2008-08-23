@@ -34,12 +34,15 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -190,7 +193,24 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		selectionListeners.remove(listener);
 	}
+	
+	public void expandAll(ViewData viewData) throws Exception
+	{
+		ORefList fullExpandedRefs = getTreeTableModel().getFullyExpandedRefList();
+		updateTreeExpansionState(viewData, fullExpandedRefs);
+	}
+	
+	public void collapsAll(ViewData viewData) throws Exception
+	{	
+		updateTreeExpansionState(viewData, new ORefList());
+	}
 
+	public void updateTreeExpansionState(ViewData viewData, ORefList expandedRefs) throws CommandFailedException
+	{
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getRef() ,ViewData.TAG_CURRENT_EXPANSION_LIST, expandedRefs.toString());
+		getProject().executeCommand(cmd);
+	}
+	
 	public void valueChanged(ListSelectionEvent e)
 	{
 		super.valueChanged(e);

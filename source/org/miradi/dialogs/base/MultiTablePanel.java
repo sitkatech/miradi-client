@@ -34,6 +34,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
@@ -217,6 +218,14 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	
 	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
+	}
+	
+	public void expandAll(ViewData viewData) throws Exception
+	{
+	}
+	
+	public void collapsAll(ViewData viewData) throws Exception
+	{	
 	}
 
 	public void clearSelection()

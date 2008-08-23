@@ -77,6 +77,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -747,6 +748,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		public void removeSelectionChangeListener(ListSelectionListener listener)
 		{
 			listeners.remove(listener);
+		}
+		
+		public void expandAll(ViewData viewData) throws Exception
+		{
+		}
+		
+		public void collapsAll(ViewData viewData) throws Exception
+		{	
 		}
 
 		public void valueChanged(ListSelectionEvent e)
