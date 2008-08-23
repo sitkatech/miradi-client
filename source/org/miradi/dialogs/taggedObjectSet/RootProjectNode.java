@@ -19,64 +19,83 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
+import org.miradi.project.Project;
 
 public class RootProjectNode extends TreeTableNode
 {
-	public RootProjectNode(DiagramObject currentDiagramObjectToUse) throws Exception
+	public RootProjectNode(Project projectToUse) throws Exception
 	{
-		currentDiagramObject = currentDiagramObjectToUse;
+		project = projectToUse;
 		rebuild();
 	}
 	
 	@Override
 	public TreeTableNode getChild(int index)
 	{
-		return children[index];
+		return children.get(index);
 	}
 
 	@Override
 	public int getChildCount()
 	{
-		return children.length;
+		return children.size();
 	}
 
 	@Override
 	public BaseObject getObject()
 	{
-		return currentDiagramObject;
+		return null;
 	}
 
 	@Override
 	public ORef getObjectReference()
 	{
-		return getObject().getRef();
+		return ORef.INVALID;
 	}
 
 	@Override
 	public Object getValueAt(int column)
 	{
-		return currentDiagramObject.toString();
+		return null;
 	}
 
 	@Override
 	public void rebuild() throws Exception
 	{
-		Factor[] allDiagramObjectFactors = currentDiagramObject.getAllWrappedFactors();
-		children = new TreeTableNode[allDiagramObjectFactors.length];
-		for (int index = 0; index < allDiagramObjectFactors.length; ++index)
-		{
-			FactorTreeTableNode factorNode = new FactorTreeTableNode(allDiagramObjectFactors[index]);
-			children[index] = factorNode;
-		}
-		
-		sortChildren(children);
+		children = new Vector();
+		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getSortedRefList();
+		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getSortedRefList();
+		createAndAddChildren(conceptualModelRefs);
+		createAndAddChildren(resultsChainRefs);
 	}
 	
-	private DiagramObject currentDiagramObject;
-	private TreeTableNode[] children;
+	private void createAndAddChildren(ORefList diagramObjectRefs) throws Exception
+	{
+		for (int index = 0; index < diagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			children.add(new DiagramObjectNode(diagramObject));
+		}
+	}
+
+	@Override
+	public String toRawString()
+	{
+		return project.getFilename();
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
+	private Vector<TreeTableNode> children;
 }
