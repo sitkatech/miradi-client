@@ -43,6 +43,8 @@ import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
 import org.miradi.dialogs.base.ObjectManagementPanel;
+import org.miradi.dialogs.base.ObjectRefListEditorPanel;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
@@ -108,25 +110,23 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		add(createLegendButtonPanel(mainWindow.getActions()));
 		
-		// FIXME: Disabled temporarily so we can do a build
-//		DiagramObject diagramObject = getCurrentDiagramObject();
-//		if (diagramObject != null)
-//			addTaggedObjectSetPanel(diagramObject);
+		DiagramObject diagramObject = getCurrentDiagramObject();
+		if (diagramObject != null)
+			addTaggedObjectSetPanel(diagramObject);
 		
 		updateCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 	}
 
-// FIXME: Disabled temporarily so we can do a build
-//	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
-//	{
-//		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
-//		add(editListPanel);
-//		
-//		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."));
-//		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
-//		add(manageButton);
-//	}
+	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
+	{
+		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		add(editListPanel);
+		
+		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."));
+		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
+		add(manageButton);
+	}
 	
 	private void createLegendCheckBoxes()
 	{
