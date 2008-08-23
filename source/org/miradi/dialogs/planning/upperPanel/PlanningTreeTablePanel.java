@@ -26,7 +26,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
+import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
+import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateTask;
@@ -36,7 +38,7 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
+import org.miradi.dialogs.treetables.TreeTablePanelWithFiveButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -63,7 +65,7 @@ import org.miradi.views.planning.PlanningView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
+public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
 	{
@@ -163,11 +165,13 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 			ActionTreeCreateMethod.class,
 			ActionTreeCreateTask.class,			
 			ActionTreeNodeUp.class,
+			ActionExpandAllNodes.class,
 			
 			ActionTreeShareActivity.class,
 			ActionTreeShareMethod.class,
 			ActionDeletePlanningViewTreeNode.class,
 			ActionTreeNodeDown.class,
+			ActionCollapseAllNodes.class,
 		};
 	}
 	
