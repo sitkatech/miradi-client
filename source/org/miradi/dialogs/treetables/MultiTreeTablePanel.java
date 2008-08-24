@@ -50,12 +50,19 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 {
 	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse)
 	{
-		super(mainWindowToUse, treeToUse);
+		this(mainWindowToUse, treeToUse, new Class[0]);
 	}
 	
 	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
+		
+		// NOTE: Replace tree scroll pane created by super constructor
+		ScrollPaneWithHideableScrollBar newTreeScrollPane = new ScrollPaneWithHideableScrollBar(getTree());
+		newTreeScrollPane.hideVerticalScrollBar();
+
+		treeTableScrollPane = newTreeScrollPane;
+		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
 	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultipleTableSelectionController selectionController, TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
