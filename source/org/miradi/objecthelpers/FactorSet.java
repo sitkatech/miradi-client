@@ -25,7 +25,7 @@ import java.util.Iterator;
 
 import org.miradi.objects.Factor;
 
-public class FactorSet implements Collection
+public class FactorSet implements Collection<Factor>
 {
 	public FactorSet()
 	{
@@ -91,7 +91,7 @@ public class FactorSet implements Collection
 		return nodes.isEmpty();
 	}
 
-	public boolean add(Object o)
+	public boolean add(Factor o)
 	{
 		throw new RuntimeException("Must use attemptToAdd instead of add");
 	}
