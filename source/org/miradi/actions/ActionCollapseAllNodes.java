@@ -31,11 +31,11 @@ public class ActionCollapseAllNodes extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|-");
+		return EAM.text("Action|Collapse All");
 	}
 	
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Colapse All Tree Items");
+		return EAM.text("TT|Collapse All Tree Items");
 	}
 }

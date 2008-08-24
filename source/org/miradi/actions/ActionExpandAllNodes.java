@@ -31,7 +31,7 @@ public class ActionExpandAllNodes extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|+");
+		return EAM.text("Action|Expand All");
 	}
 	
 	public String getToolTipText()
