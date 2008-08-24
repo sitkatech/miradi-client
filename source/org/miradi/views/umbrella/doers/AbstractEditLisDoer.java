@@ -21,11 +21,13 @@ package org.miradi.views.umbrella.doers;
 
 import java.awt.Dimension;
 
+
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.ModalDialogWithCloseButNoMainScrollPane;
 import org.miradi.views.ObjectsDoer;
 
 public abstract class AbstractEditLisDoer extends ObjectsDoer
@@ -43,7 +45,7 @@ public abstract class AbstractEditLisDoer extends ObjectsDoer
 		
 		try
 		{
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), getEditPanel(), getDialogTitle());
+			ModalDialogWithClose dialog = new ModalDialogWithCloseButNoMainScrollPane(getMainWindow(), getEditPanel(), getDialogTitle());
 			dialog.setPreferredSize(new Dimension(600, 600));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
