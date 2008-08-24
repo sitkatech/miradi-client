@@ -99,9 +99,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	@Override
 	public void dispose()
 	{
-		super.dispose();
-		
 		getProject().removeCommandExecutedListener(this);
+
+		if(editListPanel != null)
+			editListPanel.dispose();
+		editListPanel = null;
+		
+		super.dispose();
 	}
 	
 	private void addAllComponents()
@@ -120,7 +124,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
 	{
-		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		// TODO: Really, we should only construct eLP once in the constructor,
+		// but that would require the subclasses to tell us what type of DO
+		// we are managing so we could pass that to the construtor. 
+		// Then, we would call eLP.setObjectRef() here
+		if(editListPanel != null)
+			editListPanel.dispose();
+		editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 		add(editListPanel);
 		
 		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."));
@@ -452,5 +462,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private MainWindow mainWindow;
 	private JCheckBox targetLinkCheckBox;
+	private ObjectRefListEditorPanel editListPanel;
 }
 
