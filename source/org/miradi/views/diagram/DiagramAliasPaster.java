@@ -54,11 +54,19 @@ public class DiagramAliasPaster extends DiagramPaster
 		createNewFactorsAndContents();
 		createNewDiagramFactors();
 		
+		reloadDiagramModelToIncludeNewlyPastedFactors();
+		
 		ORefList pastedFactorRefs = getPastedFactorRefs();
 		
 		String mode = getProject().getDiagramViewData().getData(ViewData.TAG_CURRENT_MODE);
 		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 			ensureVisible(pastedFactorRefs);
+	}
+
+	private void reloadDiagramModelToIncludeNewlyPastedFactors()
+			throws Exception
+	{
+		getDiagramModel().fillFrom(getDiagramObject());
 	}
 	
 	private void ensureVisible(ORefList refs) throws Exception

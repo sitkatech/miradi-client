@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.HashSet;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
@@ -48,7 +50,21 @@ abstract public class DiagramObject extends BaseObject
 	{
 		super(objectManager, new DiagramContentsId(idToUse), json);
 	}
+
 	
+	public HashSet<DiagramFactor> getFactorsFromDiagram(int type)
+	{
+		HashSet<DiagramFactor> filteredFactorsByType = new HashSet();
+		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
+		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
+			if (diagramFactor.getWrappedType() == type)
+				filteredFactorsByType.add(diagramFactor);
+		}
+		
+		return filteredFactorsByType;
+	}
 	
 	public DiagramLink getDiagramFactorLink(FactorLinkId factorLinkId)
 	{
