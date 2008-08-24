@@ -37,13 +37,25 @@ public class DiagramChainObject
 {
 	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, diagramFactor);
+		buildNormalChain(model.getDiagramObject(), diagramFactor);
+		return processedLinks;
+	}
+	
+	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	{
+		buildNormalChain(diagramObjectToUse, diagramFactor);
 		return processedLinks;
 	}
 	
 	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildNormalChain(model, diagramFactor);
+		buildNormalChain(model.getDiagramObject(), diagramFactor);
+		return getFactors();
+	}
+	
+	public FactorSet buildNormalChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	{
+		buildNormalChain(diagramObjectToUse, diagramFactor);
 		return getFactors();
 	}
 	
@@ -70,10 +82,8 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	private void buildDirectThreatChain(DiagramModel model, DiagramFactor diagramFactor)
+	private void buildDirectThreatChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		DiagramObject diagram = model.getDiagramObject();
-		
 		initializeChain(diagram, diagramFactor);
 		if(getStartingFactor().isDirectThreat())
 		{
@@ -82,21 +92,17 @@ public class DiagramChainObject
 		}
 	}
 
-	private void buildNormalChain(DiagramModel model, DiagramFactor diagramFactor)
+	private void buildNormalChain(DiagramObject diagram , DiagramFactor diagramFactor)
 	{
-		DiagramObject diagram = model.getDiagramObject();
-		
 		initializeChain(diagram, diagramFactor);
 		if (getStartingFactor().isDirectThreat())
-			buildDirectThreatChain(model, diagramFactor);
+			buildDirectThreatChain(diagram, diagramFactor);
 		else
-			buildUpstreamDownstreamChain(model, diagramFactor);
+			buildUpstreamDownstreamChain(diagram, diagramFactor);
 	}
 	
-	private void buildUpstreamDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
+	private void buildUpstreamDownstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		DiagramObject diagram = model.getDiagramObject();
-		
 		initializeChain(diagram, diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 		resultingFactors.addAll(getAllUpstreamFactors());
