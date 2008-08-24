@@ -508,15 +508,13 @@ public class DiagramModel extends DefaultGraphModel
 	private boolean shouldFactorCellBeVisible(FactorCell factorCell)
 	{
 		boolean isVisible = getLayerManager().isVisible(getDiagramObject(), factorCell);
-		boolean areAnyTagsSelected = getDiagramObject().getSelectedTaggedObjectSetRefs().isEmpty();
-		if (!areAnyTagsSelected)
-		{
-			boolean isTagged = getTaggedObjectManager().isVisible(getDiagramObject(), factorCell.getWrappedFactorRef());
-			
-			return isVisible && isTagged;
-		}
+		ORefList selectedTaggedRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();
+		if (selectedTaggedRefs.isEmpty())
+			return isVisible;
 		
-		return isVisible;
+		boolean isTagged = getTaggedObjectManager().isVisible(getDiagramObject(), factorCell.getWrappedFactorRef());
+			
+		return isVisible && isTagged;
 	}
 
 	private void updateVisibilityOfLinks() throws Exception
