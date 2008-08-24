@@ -54,7 +54,7 @@ class MeasurementValueRendererFactory extends SingleLineObjectTableCellRendererF
 		JLabel renderer = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		Color color = renderer.getBackground();
 		renderer.setIcon(null);
-		if(value != null && !value.equals(""))
+		if(value != null)
 		{
 			ChoiceItem choice = question.findChoiceByCode(columnTag);
 			color = choice.getColor();
