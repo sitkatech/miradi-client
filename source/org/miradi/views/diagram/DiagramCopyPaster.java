@@ -35,19 +35,19 @@ public class DiagramCopyPaster extends DiagramPaster
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 
-	public void pasteFactors(Point startPoint) throws Exception
-	{	
-		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
-		createNewFactorsAndContents();	
-		createNewDiagramFactors();
-	}
-	
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception
 	{	
 		pasteFactors(startPoint);
 		createNewFactorLinks();
 		createNewDiagramLinks();		
 		selectNewlyPastedItems();
+	}
+	
+	public void pasteFactors(Point startPoint) throws Exception
+	{	
+		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
+		createNewFactorsAndContents();	
+		createNewDiagramFactors();
 	}
 	
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
