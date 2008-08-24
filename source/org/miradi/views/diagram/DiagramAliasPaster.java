@@ -48,6 +48,13 @@ public class DiagramAliasPaster extends DiagramPaster
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 	
+	public void pasteFactorsAndLinks(Point startPoint) throws Exception
+	{
+		pasteFactors(startPoint);
+		createNewDiagramLinks();
+		selectNewlyPastedItems();
+	}
+
 	public void pasteFactors(Point startPoint) throws Exception
 	{
 		dataHelper = new PointManipulater(startPoint, transferableList.getUpperMostLeftMostCorner());
@@ -97,13 +104,6 @@ public class DiagramAliasPaster extends DiagramPaster
 		}
 		
 		return pastedFactorRefs;
-	}
-
-	public void pasteFactorsAndLinks(Point startPoint) throws Exception
-	{
-		pasteFactors(startPoint);
-		createNewDiagramLinks();
-		selectNewlyPastedItems();
 	}
 
 	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
