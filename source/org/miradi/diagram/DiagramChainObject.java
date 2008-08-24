@@ -64,9 +64,9 @@ public class DiagramChainObject
 		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 	}
 
-	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
+	public FactorSet buildUpstreamChainAndGetFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		buildUpstreamChain(diagram, diagramFactor);
+		buildUpstreamChain(diagramObjectToUse, diagramFactor);
 		return getFactors();
 	}
 	
@@ -82,9 +82,9 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	private void buildDirectThreatChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void buildDirectThreatChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramObjectToUse, diagramFactor);
 		if(getStartingFactor().isDirectThreat())
 		{
 			resultingFactors.addAll(getDirectlyLinkedDownstreamFactors());
@@ -92,25 +92,25 @@ public class DiagramChainObject
 		}
 	}
 
-	private void buildNormalChain(DiagramObject diagram , DiagramFactor diagramFactor)
+	private void buildNormalChain(DiagramObject diagramObjectToUse , DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramObjectToUse, diagramFactor);
 		if (getStartingFactor().isDirectThreat())
-			buildDirectThreatChain(diagram, diagramFactor);
+			buildDirectThreatChain(diagramObjectToUse, diagramFactor);
 		else
-			buildUpstreamDownstreamChain(diagram, diagramFactor);
+			buildUpstreamDownstreamChain(diagramObjectToUse, diagramFactor);
 	}
 	
-	private void buildUpstreamDownstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void buildUpstreamDownstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramObjectToUse, diagramFactor);
 		resultingFactors.addAll(getAllDownstreamFactors());
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
-	private void buildUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void buildUpstreamChain(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
-		initializeChain(diagram, diagramFactor);
+		initializeChain(diagramObjectToUse, diagramFactor);
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
