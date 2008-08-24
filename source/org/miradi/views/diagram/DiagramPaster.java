@@ -466,11 +466,6 @@ abstract public class DiagramPaster
 				EAM.logVerbose("Skipping link because Factor Link " + oldWrappedFactorLinkRef + " for Diagram Link " + diagramLinkRef + " is null");
 				continue;
 			}
-			if(newFactorLinkRef.isInvalid())
-			{
-				EAM.logError("Skipping link because Factor Link " + oldWrappedFactorLinkRef + " for Diagram Link " + diagramLinkRef + " is invalid");
-				continue;
-			}
 			
 			DiagramFactorId fromDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 			DiagramFactorId toDiagramFactorId = getDiagramFactorId(json, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);

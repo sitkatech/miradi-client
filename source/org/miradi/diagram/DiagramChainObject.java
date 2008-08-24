@@ -146,8 +146,6 @@ public class DiagramChainObject
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 		{
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-			if(link.isGroupBoxLink())
-				continue;
 			unprocessedFactors.addAll(processLink(getStartingFactor(), link, direction));
 		}		
 		
@@ -160,8 +158,6 @@ public class DiagramChainObject
 				for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
 				{
 					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-					if(link.isGroupBoxLink())
-						continue;
 					unprocessedFactors.addAll(processLink(thisFactor, link, direction));
 				}
 			}
