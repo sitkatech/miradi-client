@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import javax.swing.JOptionPane;
+
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
@@ -52,9 +54,7 @@ public class PasteDoer extends AbstractPasteDoer
 			DiagramPaster diagramPaster = createDiagramPasterBaseOnUserChoice(list, usersChoice);
 			if (! diagramPaster.canPaste())
 			{
-				EAM.notifyDialog(EAM.text("<HTML>These factors cannot be pasted as shared into this diagram.<BR><BR>" +
-										  "Contributing Factors and Direct Threats cannot be pasted as shared into a Results Chain.<BR>" +
-										  "Intermediate Results and Threat Reduction Results cannot be pasted as shared into a Conceptual Model page.</HTML>"));
+				EAM.notifyDialog(EAM.text("<html>This paste cannot be performed for unexpected reasons"));
 				return;
 			}
 			
@@ -95,6 +95,20 @@ public class PasteDoer extends AbstractPasteDoer
 		
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
+		
+		DiagramAliasPaster aliasPaster = new DiagramAliasPaster(getDiagramPanel(), getDiagramModel(), list);
+		if(!aliasPaster.canPaste())
+		{
+			String bodyText = EAM.text("<HTML>One or more of these factors cannot be pasted as shared into this diagram.<BR><BR>" +
+								  "Contributing Factors and Direct Threats cannot be pasted as shared into a Results Chain.<BR>" +
+								  "Intermediate Results and Threat Reduction Results cannot be pasted as shared into a Conceptual Model page.<BR><BR>" +
+								  "Do you want to paste all these factors as copies?</HTML>");
+			String[] buttons = new String[] {AS_COPY_BUTTON, CANCEL_BUTTON};
+			int result = EAM.confirmDialog(EAM.text("Paste As Copy"), bodyText, buttons); 
+			if(result == JOptionPane.CLOSED_OPTION)
+				return CANCEL_BUTTON;
+			return buttons[result];
+		}
 		
 		String[] buttons = {AS_COPY_BUTTON, AS_ALIAS_BUTTON, CANCEL_BUTTON};
 		String title = EAM.text("Paste As...");
