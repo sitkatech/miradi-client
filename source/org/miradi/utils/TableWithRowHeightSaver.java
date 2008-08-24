@@ -26,6 +26,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
+import org.miradi.dialogs.tablerenderers.BooleanTableCellRendererFactoryWithPreferredHeight;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.main.EAM;
@@ -37,7 +38,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	{
 		super(mainWindowToUse, model);
 		
-		cellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
+		defaultCellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
+		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
 		
 		rowHeightSaver = new TableRowHeightSaver();
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
@@ -139,13 +141,22 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	}
 	
 	@Override
-	public TableCellRenderer getCellRenderer(int row, int column)
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
-		TableCellRenderer renderer = getColumnModel().getColumn(column).getCellRenderer();
+		TableCellRenderer renderer = getColumnModel().getColumn(tableColumn).getCellRenderer();
 		if(renderer != null)
 			return renderer;
 		
-		return cellRendererFactory;
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		boolean isCheckbox = getModel().getColumnClass(modelColumn).equals(Boolean.class);
+		if(isCheckbox)
+		{
+			TableCellRenderer r = super.getCellRenderer(row, tableColumn);
+			r.getTableCellRendererComponent(this, false, false, false, row, tableColumn);
+			return booleanRendererFactory;
+		}
+		
+		return defaultCellRendererFactory;
 	}
 	
 	public JTable asTable()
@@ -158,5 +169,6 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	
 	private TableRowHeightSaver rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
-	private DefaultTableCellRendererWithPreferredHeightFactory cellRendererFactory;
+	private DefaultTableCellRendererWithPreferredHeightFactory defaultCellRendererFactory;
+	private BooleanTableCellRendererFactoryWithPreferredHeight booleanRendererFactory;
 }

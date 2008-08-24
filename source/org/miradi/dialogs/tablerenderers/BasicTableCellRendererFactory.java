@@ -30,7 +30,7 @@ import javax.swing.table.TableCellRenderer;
 
 import org.martus.util.xml.XmlUtilities;
 
-abstract public class BasicTableCellRendererFactory implements TableCellRenderer
+abstract public class BasicTableCellRendererFactory implements TableCellRenderer, TableCellPreferredHeightProvider
 {
 	public BasicTableCellRendererFactory()
 	{
