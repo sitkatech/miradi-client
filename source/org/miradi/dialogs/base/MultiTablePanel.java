@@ -224,7 +224,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 	}
 	
-	public void collapsAll(ViewData viewData) throws Exception
+	public void collapseAll(ViewData viewData) throws Exception
 	{	
 	}
 
