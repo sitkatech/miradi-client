@@ -64,6 +64,9 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef)
 	{
+		if(oldWrappedFactorLinkRef.isInvalid())
+			return oldWrappedFactorLinkRef;
+		
 		return getOldToNewObjectRefMap().get(oldWrappedFactorLinkRef);
 	}
 	
