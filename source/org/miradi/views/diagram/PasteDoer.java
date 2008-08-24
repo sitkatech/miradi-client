@@ -66,7 +66,7 @@ public class PasteDoer extends AbstractPasteDoer
 
 			getProject().getDiagramClipboard().incrementPasteCount();
 			paste(diagramPaster);
-			possiblyNotitfyUserIfDataWasLost(diagramPaster);
+			possiblyNotifyUserIfDataWasLost(diagramPaster);
 			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
 		} 
 		catch (Exception e) 
@@ -141,7 +141,7 @@ public class PasteDoer extends AbstractPasteDoer
 		return new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), list);
 	}
 
-	private void possiblyNotitfyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
+	private void possiblyNotifyUserIfDataWasLost(DiagramPaster diagramPaster) throws Exception
 	{
 		if (!diagramPaster.wasAnyDataLost())
 			return;
