@@ -19,16 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatstressrating.properties;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
+import org.miradi.utils.ModalDialogWithCloseButNoMainScrollPane;
 
-public class ManageStressesDialog extends ModalDialogWithClose
+public class ManageStressesDialog extends ModalDialogWithCloseButNoMainScrollPane
 {
 	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
 	{
@@ -37,8 +34,4 @@ public class ManageStressesDialog extends ModalDialogWithClose
 
 	}
 	
-	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
-	{
-		return mainPanel;
-	}
 }
