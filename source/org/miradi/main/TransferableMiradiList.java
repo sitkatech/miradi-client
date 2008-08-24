@@ -31,8 +31,6 @@ import java.io.Serializable;
 import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.FactorCell;
-import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -104,19 +102,12 @@ public class TransferableMiradiList implements Transferable, Serializable
 		for (int i = 0; i < cells.length; i++) 
 		{
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
-			addFactorDeepCopies(deepCopier, cell);
-			addFactorLinkDeepCopies(deepCopier, cell);
+			if (cell.isFactor())
+				addFactorDeepCopies(deepCopier, cell.getDiagramFactor());
+			
+			if (cell.isFactorLink())
+				addFactorLinkDeepCopies(deepCopier, cell.getDiagramLink());
 		}
-	}
-
-	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
-	{
-		if (! cell.isFactor())
-			return;
-		
-		FactorCell factorCell = (FactorCell) cell;
-		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
-		addFactorDeepCopies(deepCopier, diagramFactor);
 	}
 
 	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
@@ -154,17 +145,12 @@ public class TransferableMiradiList implements Transferable, Serializable
 		rectWithUpperMostLeftMostCorner.add(location);
 	}
 
-	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, EAMGraphCell cell)
+	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, DiagramLink diagramLink)
 	{
-		if (! cell.isFactorLink())
-			return;
-		
-		LinkCell linkCell = (LinkCell) cell;
-		FactorLink factorLink = linkCell.getFactorLink();
+		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		Vector factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
 		factorLinkDeepCopies.addAll(factorLinkJsonStrings);
 	
-		DiagramLink diagramLink = linkCell.getDiagramLink();
 		Vector diagramLinkJsonStrings = deepCopier.createDeepCopy(diagramLink);
 		diagramLinkDeepCopies.addAll(diagramLinkJsonStrings);	
 	}
