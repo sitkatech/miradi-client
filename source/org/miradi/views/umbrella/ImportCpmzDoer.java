@@ -36,11 +36,15 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
@@ -118,11 +122,20 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
 			hideLinkLayer(projectToFill);
+			splitMainDiagramByTargets(projectToFill);
 		}
 		finally
 		{
 			projectAsInputStream.close();
 		}
+	}
+
+	private void splitMainDiagramByTargets(Project filledProject) throws Exception
+	{
+		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
+		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());;
+		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
+		new ConceptualModelByTargetSplitter(getMainWindow(), filledProject).splitByTarget(conceptualModel);
 	}
 
 	//FIXME this is not working due to DiagramModel being always null.  

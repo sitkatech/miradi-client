@@ -58,6 +58,12 @@ public class DiagramChainObject
 		buildNormalChain(diagramObjectToUse, diagramFactor);
 		return getFactors();
 	}
+
+	public HashSet<DiagramFactor> buildNormalChainAndGetDiagramFactors(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	{
+		buildNormalChain(diagramObjectToUse, diagramFactor);
+		return getDiagramFactors();
+	}
 	
 	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
@@ -225,6 +231,20 @@ public class DiagramChainObject
 			factorSet.attemptToAdd(factor);
 		}
 		return factorSet;
+	}
+	
+	public HashSet<DiagramFactor> getDiagramFactors()
+	{
+		HashSet<DiagramFactor> diagramFactors = new HashSet();
+ 		FactorSet processedFactors = getFactors();
+ 		for(Factor factor : processedFactors)
+		{
+			DiagramFactor diagramFactor = diagramObject.getDiagramFactor(factor.getRef());
+			diagramFactors.add(diagramFactor);
+		}
+ 		
+ 		return diagramFactors;
+ 		
 	}
 
 	private HashSet<Factor> getDirectlyLinkedDownstreamFactors()

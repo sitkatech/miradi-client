@@ -87,6 +87,11 @@ abstract public class DiagramPaster
 		pastedCellsToSelect = new Vector();
 	}
 	
+	public void setProject(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
 	protected Vector getFactorDeepCopies()
 	{
 		return factorDeepCopies;
@@ -300,8 +305,11 @@ abstract public class DiagramPaster
 
 	private void addDiagramFactorToSelection(ORef diagramFactorRefToSelect) throws Exception
 	{
-		FactorCell cell = currentModel.getFactorCellByRef(diagramFactorRefToSelect);
-		pastedCellsToSelect.add(cell);
+		if (currentModel.containsDiagramFactor(diagramFactorRefToSelect))
+		{
+			FactorCell cell = currentModel.getFactorCellByRef(diagramFactorRefToSelect);
+			pastedCellsToSelect.add(cell);
+		}
 	}
 	
 	private void addDiagramLinkToSelection(ORef diagramLinkRefToSelect) throws Exception
@@ -469,6 +477,7 @@ abstract public class DiagramPaster
 			LinkCreator linkCreator = new LinkCreator(project);
 			if (linkCreator.linkToBePastedWasRejected(currentModel, fromDiagramFactorId, toDiagramFactorId))
 				continue;
+			
 			
 			CreateDiagramFactorLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactorId, toDiagramFactorId, newFactorLinkRef);
 			int type = getTypeFromJson(json);
