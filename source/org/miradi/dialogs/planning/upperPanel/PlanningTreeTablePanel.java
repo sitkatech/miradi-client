@@ -91,12 +91,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;
 		
-		// NOTE: Replace tree scroll pane created by super constructor
-		ScrollPaneWithHideableScrollBar newTreeScrollPane = new ScrollPaneWithHideableScrollBar(getTree());
-		newTreeScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		newTreeScrollPane.hideVerticalScrollBar();
-		treeTableScrollPane = newTreeScrollPane;
-
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
 		
