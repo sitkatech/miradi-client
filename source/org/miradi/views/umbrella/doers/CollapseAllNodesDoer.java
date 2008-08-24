@@ -26,6 +26,6 @@ public class CollapseAllNodesDoer extends AbstractTreeExpansionDoer
 {
 	public void doWork(ViewData viewData) throws Exception
 	{
-		getPicker().collapsAll(viewData);
+		getPicker().collapseAll(viewData);
 	}
 }

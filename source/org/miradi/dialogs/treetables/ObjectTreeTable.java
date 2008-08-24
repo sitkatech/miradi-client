@@ -200,7 +200,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		updateTreeExpansionState(viewData, fullExpandedRefs);
 	}
 	
-	public void collapsAll(ViewData viewData) throws Exception
+	public void collapseAll(ViewData viewData) throws Exception
 	{	
 		updateTreeExpansionState(viewData, new ORefList());
 	}

@@ -187,7 +187,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	{
 	}
 	
-	public void collapsAll(ViewData viewData) throws Exception
+	public void collapseAll(ViewData viewData) throws Exception
 	{	
 	}
 

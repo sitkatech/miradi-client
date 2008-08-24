@@ -754,7 +754,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 		}
 		
-		public void collapsAll(ViewData viewData) throws Exception
+		public void collapseAll(ViewData viewData) throws Exception
 		{	
 		}
 
