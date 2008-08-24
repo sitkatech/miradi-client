@@ -86,6 +86,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
+		
+		legendPanel.dispose();
 	}
 	
 	private void reloadDiagramCards(int objectType) throws Exception
