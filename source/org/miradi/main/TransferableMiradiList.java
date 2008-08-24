@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
@@ -97,8 +98,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	public void storeData(Object[] cells)
 	{
-		clear();
-		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
+		ObjectDeepCopier deepCopier = createObjectDeepCopier();
 		for (int i = 0; i < cells.length; i++) 
 		{
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
@@ -108,6 +108,26 @@ public class TransferableMiradiList implements Transferable, Serializable
 			if (cell.isFactorLink())
 				addFactorLinkDeepCopies(deepCopier, cell.getDiagramLink());
 		}
+	}
+	
+	public void storeData(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
+	{	
+		ObjectDeepCopier deepCopier = createObjectDeepCopier();		
+		for(DiagramFactor diagramFactor : diagramFactors)
+		{
+			addFactorDeepCopies(deepCopier, diagramFactor);
+		}
+		
+		for(DiagramLink diagramLink : diagramLinks)
+		{
+			addFactorLinkDeepCopies(deepCopier, diagramLink);
+		}
+	}
+
+	private ObjectDeepCopier createObjectDeepCopier()
+	{
+		clear();
+		return new ObjectDeepCopier(project);
 	}
 
 	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
