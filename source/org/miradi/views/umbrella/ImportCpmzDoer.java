@@ -30,8 +30,6 @@ import java.util.zip.ZipFile;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -39,11 +37,8 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
@@ -121,7 +116,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		try
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
-			hideLinkLayer(projectToFill);
 			splitMainDiagramByTargets(projectToFill);
 		}
 		finally
@@ -136,20 +130,6 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel);
-	}
-
-	//FIXME this is not working due to DiagramModel being always null.  
-	private void hideLinkLayer(Project projectToFill) throws Exception
-	{
-		CodeList codeListWithHiddenLinkLayer = new CodeList();
-		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
-		DiagramModel diagramModel = getMainWindow().getDiagramModel();
-		if (diagramModel == null)
-			return;
-		
-		DiagramObject diagramObject = diagramModel.getDiagramObject();
-		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(diagramObject.getRef(), DiagramObject.TAG_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
-		projectToFill.executeCommand(setLegendSettingsCommand);
 	}
 
 	public static byte[] extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
