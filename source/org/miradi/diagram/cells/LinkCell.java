@@ -37,6 +37,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.renderers.ArrowLineRenderer;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -156,7 +157,10 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public boolean isThisLinkBodyVisible(DiagramComponent diagram)
 	{
 		if (diagram == null)
-			return false;
+		{
+			EAM.logWarning("Diagram in LinkCell.isThisLinkBodyVisible is null.");
+			return true;
+		}
 		
 		if(isSelectedOrRelated(diagram))
 			return true;
