@@ -95,13 +95,13 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		if(isTextCell(row, modelColumn))
 			return multiLineRenderer;
 		
-		if (isChoiceItemColumn(row, modelColumn))
+		if (isChoiceItemCell(row, modelColumn))
 			return statusQuestionRenderer;
 		
 		return otherRenderer;
 	}
 	
-	private boolean isChoiceItemColumn(int row, int modelColumn)
+	private boolean isChoiceItemCell(int row, int modelColumn)
 	{
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
 		
