@@ -60,6 +60,7 @@ public class ConceptualModelByTargetSplitter
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage();
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
+
 		DiagramAliasPaster paster = new DiagramAliasPaster(getProject(), null, toDiagramModel, miradiList);
 		paster.pasteFactors(PASTE_START_POINT);
 		reloadDiagramModelToIncludeNewlyPastedFactors(toDiagramModel, conceptualModelDiagram);
