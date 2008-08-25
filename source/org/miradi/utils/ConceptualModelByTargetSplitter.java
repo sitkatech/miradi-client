@@ -47,11 +47,11 @@ public class ConceptualModelByTargetSplitter
 		HashSet<DiagramFactor> targetDiagramFactors = conceptualModel.getFactorsFromDiagram(Target.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
 		{
-			createSplitForTarget(targetDiagramFactor);
+			createDiagramForTarget(targetDiagramFactor);
 		}
 	}
 	
-	private void createSplitForTarget(DiagramFactor targetDiagramFactor) throws Exception
+	private void createDiagramForTarget(DiagramFactor targetDiagramFactor) throws Exception
 	{
 		DiagramChainObject chainObject = new DiagramChainObject();
 		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObject(), targetDiagramFactor);
