@@ -65,7 +65,7 @@ public class ConceptualModelByTargetSplitter
 		// we dont want that because paster needs to use this project.
 		paster.setProject(getProject());
 		//FIXME find a better location to start paste from,  or maybe dont need a location
-		paster.pasteFactorsAndLinks(new Point(100, 100));
+		paster.pasteFactorsAndLinks(PASTE_START_POINT);
 	}
 
 	private ConceptualModelDiagram createConceptualModelPage() throws Exception
@@ -109,4 +109,5 @@ public class ConceptualModelByTargetSplitter
 	
 	private Project project;
 	private DiagramObject diagramObject;
+	private static final Point PASTE_START_POINT = new Point(0, 0);
 }
