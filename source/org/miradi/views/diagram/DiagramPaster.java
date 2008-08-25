@@ -87,11 +87,6 @@ abstract public class DiagramPaster
 		pastedCellsToSelect = new Vector();
 	}
 	
-	public void setProject(Project projectToUse)
-	{
-		project = projectToUse;
-	}
-	
 	protected Vector getFactorDeepCopies()
 	{
 		return factorDeepCopies;
