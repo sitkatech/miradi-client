@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatstressrating.properties;
 
+import javax.swing.JTable;
+
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.miradi.main.MainWindow;
@@ -29,6 +31,8 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	{
 		super(mainWindowToUse, threatStressRatingTableModel);
 		rebuildColumnEditorsAndRenderers();
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
 		//TODO shouldn't set row height to constant value
 		setRowHeight(25);
 		setForcedPreferredScrollableViewportWidth(PREFERRED_VIEWPORT_WIDTH);
