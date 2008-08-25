@@ -135,7 +135,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
 		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());;
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
-		new ConceptualModelByTargetSplitter(getMainWindow(), filledProject).splitByTarget(conceptualModel);
+		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel);
 	}
 
 	//FIXME this is not working due to DiagramModel being always null.  
