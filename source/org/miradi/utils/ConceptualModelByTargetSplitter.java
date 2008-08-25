@@ -61,7 +61,14 @@ public class ConceptualModelByTargetSplitter
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage();
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 		DiagramAliasPaster paster = new DiagramAliasPaster(getProject(), null, toDiagramModel, miradiList);
-		paster.pasteFactorsAndLinks(PASTE_START_POINT);
+		paster.pasteFactors(PASTE_START_POINT);
+		reloadDiagramModelToIncludeNewlyPastedFactors(toDiagramModel, conceptualModelDiagram);
+		paster.pasteDiagramLinks();
+	}
+	
+	private void reloadDiagramModelToIncludeNewlyPastedFactors(DiagramModel toDiagramModel, ConceptualModelDiagram conceptualModelDiagram) throws Exception
+	{
+		toDiagramModel.fillFrom(conceptualModelDiagram);
 	}
 
 	private ConceptualModelDiagram createConceptualModelPage() throws Exception
