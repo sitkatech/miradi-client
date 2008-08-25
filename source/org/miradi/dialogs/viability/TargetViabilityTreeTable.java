@@ -83,25 +83,28 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	{
 		if(tableColumn == 0)
 			return super.getCellRenderer(row, tableColumn);
+		
 		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
-		boolean isFutureStatusNode = node.getType() == Goal.getObjectType();
-		boolean isIndicatorNode = Indicator.is(node.getType());
-		boolean isValueColumn = getViabilityModel().isChoiceItemColumn(columnTag);
 		
-		if((isMeasurementNode || isFutureStatusNode) && isValueColumn)
+		if(isMeasurementColumn(node.getType(), columnTag))
 		{
 			measurementValueRenderer.setColumnTag(columnTag);
 			return measurementValueRenderer;
 		}
 		
-		if(isIndicatorNode && isValueColumn)
-		{
+		if(isTextColumn(node.getType(), columnTag))
 			return multiLineRenderer;
-		}
 		
+		if (isChoiceItemColumn(columnTag))
+			return statusQuestionRenderer;
+		
+		return otherRenderer;
+	}
+	
+	private boolean isChoiceItemColumn(String columnTag)
+	{
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
 			columnTag == Indicator.TAG_STATUS ||
@@ -109,10 +112,28 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY || 
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS || 
 			columnTag == Measurement.TAG_STATUS_CONFIDENCE;
-		if (isChoiceItemColumn)
-			return statusQuestionRenderer;
+	
+		return isChoiceItemColumn;
+	}
+
+	private boolean isTextColumn(int nodeType, String columnTag)
+	{
+		boolean isIndicatorNode = Indicator.is(nodeType);
 		
-		return otherRenderer;
+		return isIndicatorNode && isValueColumn(columnTag);
+	}
+
+	private boolean isMeasurementColumn(int nodeType, String columnTag)
+	{
+		boolean isMeasurementNode = nodeType == Measurement.getObjectType();
+		boolean isFutureStatusNode = nodeType == Goal.getObjectType();
+		
+		return (isMeasurementNode || isFutureStatusNode) && isValueColumn(columnTag);
+	}
+
+	private boolean isValueColumn(String columnTag)
+	{
+		return getViabilityModel().isChoiceItemColumn(columnTag);
 	}
 	private void setColumnHeaderRenderers()
 	{
@@ -161,7 +182,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		}
 	}
 	
-	private GenericViabilityTreeModel getViabilityModel()
+	public GenericViabilityTreeModel getViabilityModel()
 	{
 		return (GenericViabilityTreeModel)getTreeTableModel();
 	}
