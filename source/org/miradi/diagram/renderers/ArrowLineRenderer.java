@@ -29,6 +29,7 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -59,6 +60,13 @@ public class ArrowLineRenderer extends EdgeRenderer
 	private LinkCell getLinkCell()
 	{
 		return (LinkCell)view.getCell();
+	}
+	
+	@Override
+	public Rectangle2D getPaintBounds(EdgeView viewToUse)
+	{
+		//NOTE: This does not care about the actual shape but just the bounds.
+		return createShapeWithRoundedCorners().getBounds2D();	
 	}
 	
 	public void paint(Graphics g)
