@@ -175,6 +175,8 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		{		
 			if (doesCommandForceRebuild(event) || doesCommandAffectRowHeight(event))
 				rebuildEntireTreeTable();
+			else if(isTreeExpansionCommand(event))
+				restoreTreeExpansionState();
 			
 			if(isSelectedObjectModification(event, Assignment.getObjectType()))
 				validate();

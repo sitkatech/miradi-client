@@ -42,7 +42,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButtonColumns
@@ -89,7 +88,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
 		} 
-		else if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_EXPANSION_LIST))
+		else if(isTreeExpansionCommand(event))
 		{
 			restoreTreeExpansionState();	
 		}
