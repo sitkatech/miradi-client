@@ -25,7 +25,6 @@ import java.util.HashSet;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.main.MainWindow;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -34,13 +33,11 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
-import org.miradi.views.diagram.DiagramClipboard;
 
 public class ConceptualModelByTargetSplitter
 {
-	public ConceptualModelByTargetSplitter(MainWindow mainWindowToUse, Project projectToUse)
+	public ConceptualModelByTargetSplitter(Project projectToUse)
 	{
-		mainWindow = mainWindowToUse;
 		project = projectToUse;
 	}
 	
@@ -84,8 +81,6 @@ public class ConceptualModelByTargetSplitter
 		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObject().getRef());
 		miradiList.storeData(diagramFactors, diagramLinks);
 		
-		DiagramClipboard clipboard = getProject().getDiagramClipboard();
-		clipboard.setContents(miradiList, getMainWindow());
 		return miradiList;
 	}
 	
@@ -102,11 +97,6 @@ public class ConceptualModelByTargetSplitter
 		return project;
 	}
 	
-	private MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
 	private DiagramObject getDiagramObject()
 	{
 		return diagramObject;
@@ -117,7 +107,6 @@ public class ConceptualModelByTargetSplitter
 		diagramObject = diagramObjectToUse;
 	}
 	
-	private MainWindow mainWindow;
 	private Project project;
 	private DiagramObject diagramObject;
 }

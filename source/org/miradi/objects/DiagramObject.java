@@ -52,14 +52,14 @@ abstract public class DiagramObject extends BaseObject
 	}
 
 	
-	public HashSet<DiagramFactor> getFactorsFromDiagram(int type)
+	public HashSet<DiagramFactor> getFactorsFromDiagram(int wrappedType)
 	{
 		HashSet<DiagramFactor> filteredFactorsByType = new HashSet();
 		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
 		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
-			if (diagramFactor.getWrappedType() == type)
+			if (diagramFactor.getWrappedType() == wrappedType)
 				filteredFactorsByType.add(diagramFactor);
 		}
 		
