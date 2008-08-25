@@ -84,27 +84,27 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		if(tableColumn == 0)
 			return super.getCellRenderer(row, tableColumn);
 		
-		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		
-		if(isMeasurementColumn(node.getType(), columnTag))
+		if(isMeasurementValueCell(row, modelColumn))
 		{
+			String columnTag = getViabilityModel().getColumnTag(modelColumn);
 			measurementValueRenderer.setColumnTag(columnTag);
 			return measurementValueRenderer;
 		}
 		
-		if(isTextColumn(node.getType(), columnTag))
+		if(isTextCell(row, modelColumn))
 			return multiLineRenderer;
 		
-		if (isChoiceItemColumn(columnTag))
+		if (isChoiceItemColumn(row, modelColumn))
 			return statusQuestionRenderer;
 		
 		return otherRenderer;
 	}
 	
-	private boolean isChoiceItemColumn(String columnTag)
+	private boolean isChoiceItemColumn(int row, int modelColumn)
 	{
+		String columnTag = getViabilityModel().getColumnTag(modelColumn);
+		
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
 			columnTag == Indicator.TAG_STATUS ||
@@ -116,17 +116,23 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return isChoiceItemColumn;
 	}
 
-	private boolean isTextColumn(int nodeType, String columnTag)
+	private boolean isTextCell(int row, int modelColumn)
 	{
-		boolean isIndicatorNode = Indicator.is(nodeType);
+		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
+		String columnTag = getViabilityModel().getColumnTag(modelColumn);
+		
+		boolean isIndicatorNode = Indicator.is(node.getType());
 		
 		return isIndicatorNode && isValueColumn(columnTag);
 	}
 
-	private boolean isMeasurementColumn(int nodeType, String columnTag)
+	public boolean isMeasurementValueCell(int row, int modelColumn)
 	{
-		boolean isMeasurementNode = nodeType == Measurement.getObjectType();
-		boolean isFutureStatusNode = nodeType == Goal.getObjectType();
+		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
+		String columnTag = getViabilityModel().getColumnTag(modelColumn);
+		
+		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
+		boolean isFutureStatusNode = node.getType() == Goal.getObjectType();
 		
 		return (isMeasurementNode || isFutureStatusNode) && isValueColumn(columnTag);
 	}
