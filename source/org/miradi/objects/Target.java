@@ -228,7 +228,7 @@ public class Target extends Factor
 		return new ChoiceItem[0];
 	}
 	
-	private String getTargetViability()
+	public String getTargetViability()
 	{
 		if(isViabilityModeTNC())
 			return computeTNCViability();

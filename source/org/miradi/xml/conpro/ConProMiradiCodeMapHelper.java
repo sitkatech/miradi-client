@@ -71,7 +71,7 @@ public class ConProMiradiCodeMapHelper
 		statusConfidenceMap.put(StatusConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE, "Intensive Assessment");
 		
 		viabilityModeMap = new HashMap<String, String>();
-		viabilityModeMap.put(ViabilityModeQuestion.SIMPLE_MODE_CODE, "simple");
+		viabilityModeMap.put(ViabilityModeQuestion.SIMPLE_MODE_CODE, CONPRO_TARGET_SIMPLE_MODE_VALUE);
 		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
 	}
 	
@@ -181,4 +181,6 @@ public class ConProMiradiCodeMapHelper
 	private static final String CONPRO_STATUS_ON_TRACK_VALUE = "On Track";
 	private static final String CONPRO_STATUS_COMPLETED_VALUE = "Completed";
 	private static final String CONPRO_STATUS_ABANDONED_VALUE = "Abandoned";
+	
+	public static final String CONPRO_TARGET_SIMPLE_MODE_VALUE = "simple";
 }
