@@ -133,7 +133,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	private void splitMainDiagramByTargets(Project filledProject) throws Exception
 	{
 		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
-		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());;
+		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel);
 	}
