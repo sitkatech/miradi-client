@@ -60,11 +60,7 @@ public class ConceptualModelByTargetSplitter
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage();
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
-		DiagramAliasPaster paster = new DiagramAliasPaster(null, toDiagramModel, miradiList);
-		//FIXME change the constructor of paster to accpet project instead of setting it this way.  paster gets project from model
-		// we dont want that because paster needs to use this project.
-		paster.setProject(getProject());
-		//FIXME find a better location to start paste from,  or maybe dont need a location
+		DiagramAliasPaster paster = new DiagramAliasPaster(getProject(), null, toDiagramModel, miradiList);
 		paster.pasteFactorsAndLinks(PASTE_START_POINT);
 	}
 

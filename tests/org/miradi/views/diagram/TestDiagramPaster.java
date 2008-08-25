@@ -91,7 +91,7 @@ public class TestDiagramPaster extends EAMTestCase
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(dataCells);
 		Factor factor = (Factor) project.findObject(diagramFactor.getWrappedORef());
-		DiagramPaster paster = new DiagramCopyPaster(null, project.getDiagramModel(), transferableList);
+		DiagramPaster paster = new DiagramCopyPaster(project, null, project.getDiagramModel(), transferableList);
 		paster.pasteFactors(new Point(0, 0));
 		
 		HashMap oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
