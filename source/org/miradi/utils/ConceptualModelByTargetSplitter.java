@@ -23,9 +23,11 @@ import java.awt.Point;
 import java.util.HashSet;
 
 import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -58,7 +60,7 @@ public class ConceptualModelByTargetSplitter
 		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(getDiagramObject(), targetDiagramFactor);
 		
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
-		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage();
+		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 
 		DiagramAliasPaster paster = new DiagramAliasPaster(getProject(), null, toDiagramModel, miradiList);
@@ -72,12 +74,16 @@ public class ConceptualModelByTargetSplitter
 		toDiagramModel.fillFrom(conceptualModelDiagram);
 	}
 
-	private ConceptualModelDiagram createConceptualModelPage() throws Exception
+	private ConceptualModelDiagram createConceptualModelPage(String targetNameUsedAsDiagramName) throws Exception
 	{
 		CommandCreateObject createPage = new CommandCreateObject(ConceptualModelDiagram.getObjectType());
 		getProject().executeCommand(createPage);
 		
-		return ConceptualModelDiagram.find(getProject(), createPage.getObjectRef());
+		ORef newConceptualModelRef = createPage.getObjectRef();
+		CommandSetObjectData setName = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_LABEL, targetNameUsedAsDiagramName);
+		getProject().executeCommand(setName);
+		
+		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 	}
 
 	private TransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
