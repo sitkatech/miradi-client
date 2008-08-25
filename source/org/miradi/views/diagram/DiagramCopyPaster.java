@@ -27,13 +27,12 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
-import org.miradi.project.Project;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
-	public DiagramCopyPaster(Project projectToUse, DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramCopyPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
-		super(projectToUse, diagramPanelToUse, modelToUse, transferableListToUse);
+		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception

@@ -72,7 +72,7 @@ import org.miradi.utils.PointList;
 
 abstract public class DiagramPaster
 {
-	public DiagramPaster(Project projectToUse, DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		diagramPanel = diagramPanelToUse;
 		currentModel = modelToUse;
