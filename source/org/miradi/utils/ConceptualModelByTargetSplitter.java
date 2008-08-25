@@ -32,6 +32,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
@@ -83,9 +84,20 @@ public class ConceptualModelByTargetSplitter
 		CommandSetObjectData setName = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_LABEL, targetNameUsedAsDiagramName);
 		getProject().executeCommand(setName);
 		
+		hideLinkLayer(newConceptualModelRef);
+		
 		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 	}
 
+	private void hideLinkLayer(ORef conceptualModelRef) throws Exception
+	{
+		CodeList codeListWithHiddenLinkLayer = new CodeList();
+		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
+		
+		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(conceptualModelRef, DiagramObject.TAG_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
+		getProject().executeCommand(setLegendSettingsCommand);
+	}
+	
 	private TransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{
 		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObject().getRef());
