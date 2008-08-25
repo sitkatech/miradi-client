@@ -428,13 +428,21 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeOptionalRank(UnicodeWriter out, Target target) throws Exception
 	{
-		String code = target.getData(Target.TAG_TARGET_STATUS);
-		if (code.length() == 0)
+		String targetStatusCode = target.getTargetViability();
+		if (targetStatusCode.length() == 0)
 			return;
 		
-		out.write("<" + TARGET_VIABILITY_RANK + " " + TARGET_VIABILITY_MODE + "='" + getConproCode(target.getViabilityMode(), codeMapHelper.getMiradiToConProViabilityModeMap())+ "'>");
-		writeCodeElement(out, code, codeMapHelper.getMiradiToConProRankingMap());
+		out.write("<" + TARGET_VIABILITY_RANK + " " + TARGET_VIABILITY_MODE + "='" + getTargetMode(target)+ "'>");
+		writeCodeElement(out, targetStatusCode, codeMapHelper.getMiradiToConProRankingMap());
 		writeEndElement(out, TARGET_VIABILITY_RANK);
+	}
+
+	private String getTargetMode(Target target)
+	{
+		if (target.isViabilityModeTNC())
+			return getConproCode(target.getViabilityMode(), codeMapHelper.getMiradiToConProViabilityModeMap());
+		
+		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
 	}
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
