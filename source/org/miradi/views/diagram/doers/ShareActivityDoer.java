@@ -19,21 +19,38 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram.doers;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class ShareActivityDoer extends AbstractShareDoer
 {	
 	public boolean isAvailable()
 	{
-		if (! isInDiagram())
+		if (getSingleSelected(Strategy.getObjectType()) == null)
 			return false;
+		
+		return hasSharableActivities();
+	}
 	
-		return true;
+	private boolean hasSharableActivities()
+	{
+		ORef strategyRef = getParentRefOfShareableObjects();
+		if (!Strategy.is(strategyRef))
+			return false;
+
+		Strategy strategy = Strategy.find(getProject(), strategyRef);
+		Vector<Task> activities = strategy.getActivities();
+		Vector<Task> activitiesNotAlreadyInStrategy = getProject().getTaskPool().getAllActivities();
+		activitiesNotAlreadyInStrategy.removeAll(activities);
+		
+		return activitiesNotAlreadyInStrategy.size() > 0;
 	}
 
 	protected String getParentTaskIdsTag()
