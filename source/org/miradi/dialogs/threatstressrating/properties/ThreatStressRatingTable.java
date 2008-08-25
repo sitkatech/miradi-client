@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatstressrating.properties;
 
+import java.awt.Dimension;
+
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.EditableObjectTable;
@@ -34,9 +36,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 		//TODO shouldn't set row height to constant value
-		setRowHeight(25);
-		setForcedPreferredScrollableViewportWidth(PREFERRED_VIEWPORT_WIDTH);
-		setForcedPreferredScrollableViewportHeight(PREFERRED_VIEWPORT_HEIGHT);
+		setRowHeight(26);
 	}
 	
 	@Override
@@ -45,6 +45,14 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		return false;
 	}
 	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		Dimension size = new Dimension(getPreferredSize());
+		size.height = Math.max(size.height, MINIMUM_VIEWPORT_HEIGHT);
+		size.height = Math.min(size.height, MAXIMUM_VIEWPORT_HEIGHT);
+		return size;
+	}
 	
 	public ThreatStressRatingTableModel getThreatStressRatingTableModel()
 	{
@@ -79,6 +87,6 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";
-	public static final int PREFERRED_VIEWPORT_WIDTH = 700;
-	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;
+	public static final int MINIMUM_VIEWPORT_HEIGHT = 100;
+	public static final int MAXIMUM_VIEWPORT_HEIGHT = 400;
 }
