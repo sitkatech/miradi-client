@@ -87,7 +87,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		if(isMeasurementValueCell(row, modelColumn))
 		{
-			String columnTag = getViabilityModel().getColumnTag(modelColumn);
+			String columnTag = getColumnTag(modelColumn);
 			measurementValueRenderer.setColumnTag(columnTag);
 			return measurementValueRenderer;
 		}
@@ -103,8 +103,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	
 	private boolean isChoiceItemCell(int row, int modelColumn)
 	{
-		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		
+		String columnTag = getColumnTag(modelColumn);
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
 			columnTag == Indicator.TAG_STATUS ||
@@ -119,21 +118,19 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	private boolean isTextCell(int row, int modelColumn)
 	{
 		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
-		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		
 		boolean isIndicatorNode = Indicator.is(node.getType());
 		
+		String columnTag = getColumnTag(modelColumn);
 		return isIndicatorNode && isValueColumn(columnTag);
 	}
 
 	public boolean isMeasurementValueCell(int row, int modelColumn)
 	{
 		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
-		String columnTag = getViabilityModel().getColumnTag(modelColumn);
-		
 		boolean isMeasurementNode = node.getType() == Measurement.getObjectType();
 		boolean isFutureStatusNode = node.getType() == Goal.getObjectType();
 		
+		String columnTag = getColumnTag(modelColumn);
 		return (isMeasurementNode || isFutureStatusNode) && isValueColumn(columnTag);
 	}
 
@@ -141,6 +138,12 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	{
 		return getViabilityModel().isChoiceItemColumn(columnTag);
 	}
+	
+	private String getColumnTag(int modelColumn)
+	{
+		return getViabilityModel().getColumnTag(modelColumn);
+	}
+	
 	private void setColumnHeaderRenderers()
 	{
 		ColumnHeaderRenderer headerRenderer = new ColumnHeaderRenderer();
