@@ -39,14 +39,13 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ViewData;
-import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramAliasPaster extends DiagramPaster
 {
-	public DiagramAliasPaster(Project projectToUse, DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAliasPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
-		super(projectToUse, diagramPanelToUse, modelToUse, transferableListToUse);
+		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}
 	
 	public void pasteFactorsAndLinks(Point startPoint) throws Exception

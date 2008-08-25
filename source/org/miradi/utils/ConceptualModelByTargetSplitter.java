@@ -64,7 +64,7 @@ public class ConceptualModelByTargetSplitter
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
 		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 
-		DiagramAliasPaster paster = new DiagramAliasPaster(getProject(), null, toDiagramModel, miradiList);
+		DiagramAliasPaster paster = new DiagramAliasPaster(null, toDiagramModel, miradiList);
 		paster.pasteFactors(PASTE_START_POINT);
 		reloadDiagramModelToIncludeNewlyPastedFactors(toDiagramModel, conceptualModelDiagram);
 		paster.pasteDiagramLinks();
