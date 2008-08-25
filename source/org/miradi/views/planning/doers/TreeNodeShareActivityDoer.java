@@ -19,36 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import java.util.Vector;
-
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 
 public class TreeNodeShareActivityDoer extends ShareActivityDoer
 {
-	@Override
-	public boolean isAvailable()
-	{
-		if (getSingleSelected(Strategy.getObjectType()) == null)
-			return false;
-			
-		return hasSharableActivities();
-	}
-	
-	private boolean hasSharableActivities()
-	{
-		ORef strategyRef = getParentRefOfShareableObjects();
-		if (!Strategy.is(strategyRef))
-			return false;
-
-		Strategy strategy = Strategy.find(getProject(), strategyRef);
-		Vector<Task> activities = strategy.getActivities();
-		Vector<Task> activitiesNotAlreadyInStrategy = getProject().getTaskPool().getAllActivities();
-		activitiesNotAlreadyInStrategy.removeAll(activities);
-		
-		return activitiesNotAlreadyInStrategy.size() > 0;
-	}
-
 }
