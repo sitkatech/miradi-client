@@ -86,7 +86,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return getTreeTable().getTree();
 	}
 	
-	private JTreeTable getTreeTable()
+	protected JTreeTable getTreeTable()
 	{
 		return treeTable;
 	}
