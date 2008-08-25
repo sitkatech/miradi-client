@@ -26,6 +26,8 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -46,6 +48,7 @@ public class ConceptualModelByTargetSplitter
 	
 	public void splitByTarget(ConceptualModelDiagram conceptualModel) throws Exception
 	{
+		setDiagramObjectLabel(conceptualModel.getRef(), "{" + EAM.text("All on One Page") + "}");
 		setDiagramObject(conceptualModel);
 		HashSet<DiagramFactor> targetDiagramFactors = conceptualModel.getFactorsFromDiagram(Target.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
@@ -81,12 +84,17 @@ public class ConceptualModelByTargetSplitter
 		getProject().executeCommand(createPage);
 		
 		ORef newConceptualModelRef = createPage.getObjectRef();
-		CommandSetObjectData setName = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_LABEL, targetNameUsedAsDiagramName);
-		getProject().executeCommand(setName);
+		setDiagramObjectLabel(newConceptualModelRef, targetNameUsedAsDiagramName);
 		
 		hideLinkLayer(newConceptualModelRef);
 		
 		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
+	}
+
+	private void setDiagramObjectLabel(ORef newConceptualModelRef, String targetNameUsedAsDiagramName) throws CommandFailedException
+	{
+		CommandSetObjectData setName = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_LABEL, targetNameUsedAsDiagramName);
+		getProject().executeCommand(setName);
 	}
 
 	private void hideLinkLayer(ORef conceptualModelRef) throws Exception
