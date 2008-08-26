@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.viability.nodes.MeasurementNode;
+import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -43,9 +43,9 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 										 Indicator.TAG_STATUS,
 										 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
-										 MeasurementNode.POOR,
-										 MeasurementNode.FAIR,
-										 MeasurementNode.GOOD,
-										 MeasurementNode.VERY_GOOD,
+										 ViabilityMeasurementNode.POOR,
+										 ViabilityMeasurementNode.FAIR,
+										 ViabilityMeasurementNode.GOOD,
+										 ViabilityMeasurementNode.VERY_GOOD,
 										 Measurement.TAG_STATUS_CONFIDENCE,};
 }

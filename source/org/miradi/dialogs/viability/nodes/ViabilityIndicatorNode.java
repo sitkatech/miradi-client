@@ -125,7 +125,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		for (int i = 0; i < measurementRefs.size(); ++i)
 		{
 			Measurement measurement = (Measurement) project.findObject(measurementRefs.get(i));
-			measurementAndFutureStatusObjects.add(new MeasurementNode(this, measurement));
+			measurementAndFutureStatusObjects.add(new ViabilityMeasurementNode(this, measurement));
 		}
 
 		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());		
