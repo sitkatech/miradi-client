@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability.nodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.icons.GoalIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TextAndIconChoiceItem;
 
 public class ViabilityFutureStatusNode extends TreeTableNode
 {
@@ -76,17 +78,18 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		String tag = COLUMN_TAGS[column];
 		String summaryData = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = parentNode.getObject().getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
 		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(StatusQuestion.FAIR) && StatusQuestion.FAIR.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(StatusQuestion.GOOD) && StatusQuestion.GOOD.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 		
 		return null;
 	}

@@ -19,13 +19,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.viability.nodes;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TextAndIconChoiceItem;
+import org.miradi.questions.TrendQuestion;
 
 public class ViabilityMeasurementNode extends TreeTableNode
 {
@@ -82,28 +88,45 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		String tag = COLUMN_TAGS[column];
 		String statusData = getObject().getData(Measurement.TAG_STATUS);
 		String summaryData = getObject().getData(Measurement.TAG_SUMMARY);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, getTrendIcon());		
 		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(FAIR) && StatusQuestion.FAIR.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(GOOD) && StatusQuestion.GOOD.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 
 		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
-			return summaryData;
+			return textAndIconChoiceItem;
 		
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-		{
-			String rawValue = getObject().getData(tag);
-			ChoiceItem choiceItem = new StatusConfidenceQuestion().findChoiceByCode(rawValue);
-			return choiceItem;
-		}
+			return createStatusConfidenceChoiceItem(tag);
 		
 		return null;
 	}
 
+	private Object createStatusConfidenceChoiceItem(String tag)
+	{
+		String rawValue = getObject().getData(tag);
+		return getProject().getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
+	}
+
+	public Icon getTrendIcon()
+	{
+		String trendData = getObject().getData(Measurement.TAG_TREND);
+		ChoiceQuestion trendQuestion = getProject().getQuestion(TrendQuestion.class);
+		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(trendData);
+		
+		return findChoiceByCode.getIcon();
+	}
+	
+	private Project getProject()
+	{
+		return getObject().getProject();
+	}
+	
 	public void rebuild() throws Exception
 	{
 	}
