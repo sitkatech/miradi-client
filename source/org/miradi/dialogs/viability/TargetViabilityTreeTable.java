@@ -62,7 +62,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
-		measurementValueRenderer = new MeasurementValueRendererFactory(this, fontProvider);
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		multiLineRenderer = new MultiLineObjectTableCellRendererFactory(getMainWindow(), this, fontProvider);
 		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
@@ -85,13 +84,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			return super.getCellRenderer(row, tableColumn);
 		
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if(isMeasurementValueCell(row, modelColumn))
-		{
-			String columnTag = getColumnTag(modelColumn);
-			measurementValueRenderer.setColumnTag(columnTag);
-			return measurementValueRenderer;
-		}
-		
 		if(isTextCell(row, modelColumn))
 			return multiLineRenderer;
 		
@@ -112,16 +104,10 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS || 
 			columnTag == Measurement.TAG_STATUS_CONFIDENCE;
 	
-		return isChoiceItemColumn;
-	}
-
-	public boolean isTextCell(int row, int modelColumn)
-	{
-		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
-		boolean isIndicatorNode = Indicator.is(node.getType());
+		if (isChoiceItemColumn)
+			return true;
 		
-		String columnTag = getColumnTag(modelColumn);
-		return isIndicatorNode && isValueColumn(columnTag);
+		return isMeasurementValueCell(row, modelColumn);
 	}
 
 	public boolean isMeasurementValueCell(int row, int modelColumn)
@@ -132,6 +118,15 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		
 		String columnTag = getColumnTag(modelColumn);
 		return (isMeasurementNode || isFutureStatusNode) && isValueColumn(columnTag);
+	}
+	
+	public boolean isTextCell(int row, int modelColumn)
+	{
+		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
+		boolean isIndicatorNode = Indicator.is(node.getType());
+		
+		String columnTag = getColumnTag(modelColumn);
+		return isIndicatorNode && isValueColumn(columnTag);
 	}
 
 	public boolean isValueColumn(String columnTag)
@@ -198,7 +193,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
-	private MeasurementValueRendererFactory measurementValueRenderer;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private MultiLineObjectTableCellRendererFactory multiLineRenderer;
 	private BasicTableCellRendererFactory otherRenderer;
