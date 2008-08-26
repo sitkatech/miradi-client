@@ -101,7 +101,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return otherRenderer;
 	}
 	
-	private boolean isChoiceItemCell(int row, int modelColumn)
+	public boolean isChoiceItemCell(int row, int modelColumn)
 	{
 		String columnTag = getColumnTag(modelColumn);
 		boolean isChoiceItemColumn =
@@ -115,7 +115,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return isChoiceItemColumn;
 	}
 
-	private boolean isTextCell(int row, int modelColumn)
+	public boolean isTextCell(int row, int modelColumn)
 	{
 		TreeTableNode node = (TreeTableNode)getRawObjectForRow(row);
 		boolean isIndicatorNode = Indicator.is(node.getType());
@@ -134,7 +134,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return (isMeasurementNode || isFutureStatusNode) && isValueColumn(columnTag);
 	}
 
-	private boolean isValueColumn(String columnTag)
+	public boolean isValueColumn(String columnTag)
 	{
 		return getViabilityModel().isChoiceItemColumn(columnTag);
 	}
