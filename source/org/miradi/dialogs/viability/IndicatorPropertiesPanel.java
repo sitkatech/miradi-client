@@ -44,9 +44,9 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		
 		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(getProject(), getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
-		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
+		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		
 		updateFieldsFromProject();
 	}
