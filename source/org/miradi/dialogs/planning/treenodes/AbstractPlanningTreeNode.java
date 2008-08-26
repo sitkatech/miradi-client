@@ -122,46 +122,58 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
-		for(int i = 0; i < children.size(); ++i)
+		for(AbstractPlanningTreeNode child : children)
 		{
-			AbstractPlanningTreeNode child = children.get(i);
 			child.pruneUnwantedLayers(objectTypesToShow);
+			
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
-			{
 				mergeChildIntoList(newChildren, child);
-			}
 			else
-			{
-				for(int grandchild = 0; grandchild < child.getChildCount(); ++grandchild)
-				{
-					AbstractPlanningTreeNode newChild = child.getChildren().get(grandchild);
-					mergeChildIntoList(newChildren, newChild);
-				}
-			}
+				addChildrenOfNodeToList(newChildren, child);
 		}
+		
 		if(shouldSortChildren())
-			Collections.sort(newChildren, new NodeSorter());
+			Collections.sort(newChildren, createNodeSorter());
 		children = newChildren;
 	}
 
-	private void mergeChildIntoList(Vector<AbstractPlanningTreeNode> newChildren, AbstractPlanningTreeNode newChild)
+	private NodeSorter createNodeSorter()
 	{
-		if(!doesContainNodeWithRef(newChildren, newChild.getObjectReference()))
+		return new NodeSorter();
+	}
+
+	private static void mergeChildIntoList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
+	{
+		AbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
+		if(existingNode == null)
 		{
-			newChildren.add(newChild);
+			destination.add(newChild);
+			return;
 		}
+		
+		destination = existingNode.getChildren();
+		addChildrenOfNodeToList(destination, newChild);
+
+		if(existingNode.shouldSortChildren())
+			Collections.sort(destination, existingNode.createNodeSorter());
 	}
 	
-	boolean doesContainNodeWithRef(Vector<AbstractPlanningTreeNode> list, ORef ref)
+	private static void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
+	{
+		for(AbstractPlanningTreeNode newChild : otherNode.getChildren())
+			mergeChildIntoList(destination, newChild);
+	}
+
+	static AbstractPlanningTreeNode findNodeWithRef(Vector<AbstractPlanningTreeNode> list, ORef ref)
 	{
 		for(AbstractPlanningTreeNode node : list)
 		{
 			if(ref.equals(node.getObjectReference()))
-				return true;
+				return node;
 		}
 		
-		return false;
+		return null;
 	}
 	
 	boolean shouldSortChildren()
