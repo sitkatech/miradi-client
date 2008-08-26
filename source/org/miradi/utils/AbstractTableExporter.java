@@ -43,6 +43,11 @@ public abstract class AbstractTableExporter
 	abstract public Vector<Integer> getAllTypes();
 	abstract public ORefList getAllRefs(int objectType);
 	
+	public String getStyleTagAt(int row, int column)
+	{
+		throw new RuntimeException("Need to implement getStyleTagAt");
+	}
+	
 	public String getSafeValue(Object object)
 	{
 		if (object == null)
