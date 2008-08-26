@@ -116,12 +116,11 @@ public class RtfWriter
 		// the diagram title. 72% happens to work well.
 		final int DEFUALT_SCALE = 72;
 		final int FULL_SCALE = 100;
-		double rawScale = DEFUALT_SCALE;
 		
 		if (lenght < maxLength)
-			rawScale = FULL_SCALE;
+			return FULL_SCALE;
 		
-		return rawScale;
+		return DEFUALT_SCALE;
 	}
 
 	void startBlock() throws Exception
