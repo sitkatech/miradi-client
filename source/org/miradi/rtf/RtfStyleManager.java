@@ -39,13 +39,11 @@ public class RtfStyleManager
 	{
 		styleMap = new HashMap();
 		
-		getStyleMap().put(COMMENT_STYLE_TAG, new RtfStyle(COMMENT_STYLE_TAG, CS_15_RTF_ID, "{\\*" + CS_15_RTF_ID + " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Long Text;}"));
-		
-		creatNewStyle(ConceptualModelDiagram.OBJECT_NAME, CS_16_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
-		creatNewStyle(ConceptualModelDiagram.OBJECT_NAME, CS_16_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
-		creatNewStyle(ResultsChainDiagram.OBJECT_NAME,    CS_17_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Results Chain Diagram;}");
-		creatNewStyle(Target.OBJECT_NAME,                 CS_18_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Target;}");
-		creatNewStyle(Cause.OBJECT_NAME_THREAT,           CS_19_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Direct Threat;}");
+		creatNewStyle(COMMENT_STYLE_TAG, 					CS_15_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Long Text;}");		
+		creatNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	CS_16_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
+		creatNewStyle(ResultsChainDiagram.OBJECT_NAME,    	CS_17_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Results Chain Diagram;}");
+		creatNewStyle(Target.OBJECT_NAME,                 	CS_18_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Target;}");
+		creatNewStyle(Cause.OBJECT_NAME_THREAT,           	CS_19_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Direct Threat;}");
 	}
 
 	private void creatNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand)
@@ -54,14 +52,18 @@ public class RtfStyleManager
 		getStyleMap().put(objectName, rtfStyle);
 	}
 
-	public void exportStyleTable(RtfWriter writer) throws Exception
+	public void exportRtfStyleTable(RtfWriter writer) throws Exception
 	{	
+		writer.startBlock();
+		writer.writeln("\\stylesheet ");
 		Set<String> keys = getStyleMap().keySet();
 		for(String key : keys)
 		{
 			RtfStyle rtfStyle = getStyleMap().get(key);
 			writer.writeln(rtfStyle.getRtfFormatingCommand());
 		}
+		
+		writer.endBlock();
 	}
 	
 	public String createStyleTag(BaseObject baseObject)

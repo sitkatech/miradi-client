@@ -36,6 +36,7 @@ public class RtfWriter
 	public RtfWriter(File file) throws IOException
 	{
 		writer = new UnicodeWriter(file);
+		rtfStyleManager = new RtfStyleManager();
 	}
 	
 	public void close() throws Exception
@@ -309,6 +310,8 @@ public class RtfWriter
 		"\\paperh15840\\paperw12240\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone" +
 		"\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\ftnbj" +
 		"\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc");
+		
+		getRtfStyleManager().exportRtfStyleTable(this);
 	}
 	
 	public void endRtf() throws Exception
@@ -353,7 +356,13 @@ public class RtfWriter
 		return writer;
 	}
 	
+	public RtfStyleManager getRtfStyleManager()
+	{
+		return rtfStyleManager;
+	}
+	
 	private UnicodeWriter writer;
+	private RtfStyleManager rtfStyleManager;
 
 	public static final int ONE_INCH_IN_TWIPS = 1440;
 	public static final String START_BLOCK = "{";
