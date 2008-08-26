@@ -129,26 +129,28 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
 			{
-				if(!doesContainNodeWithRef(newChildren, child.getObjectReference()))
-				{
-					newChildren.add(child);
-				}
+				mergeChildIntoList(newChildren, child);
 			}
 			else
 			{
 				for(int grandchild = 0; grandchild < child.getChildCount(); ++grandchild)
 				{
 					AbstractPlanningTreeNode newChild = child.getChildren().get(grandchild);
-					if(!doesContainNodeWithRef(newChildren, newChild.getObjectReference()))
-					{
-						newChildren.add(newChild);
-					}
+					mergeChildIntoList(newChildren, newChild);
 				}
 			}
 		}
 		if(shouldSortChildren())
 			Collections.sort(newChildren, new NodeSorter());
 		children = newChildren;
+	}
+
+	private void mergeChildIntoList(Vector<AbstractPlanningTreeNode> newChildren, AbstractPlanningTreeNode newChild)
+	{
+		if(!doesContainNodeWithRef(newChildren, newChild.getObjectReference()))
+		{
+			newChildren.add(newChild);
+		}
 	}
 	
 	boolean doesContainNodeWithRef(Vector<AbstractPlanningTreeNode> list, ORef ref)
