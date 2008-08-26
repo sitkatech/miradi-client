@@ -97,7 +97,8 @@ public class RtfWriter
 	
 	public static int calculateScale(int imageWidth, int imageHeight)
 	{
-		// NOTE: RTF inches are (pixels * 1.04) / 100 // so 11x8 inches minus margins and diagram title is about 800x600
+		// NOTE: RTF inches are (pixels * 1.04) / 100 
+		// so 11x8 inches minus margins and diagram title is about 800x600
 		final int MAX_WIDTH = 800;
 		final int MAX_HEIGHT = 600;
 		double rawXScale = calculateSingleLenghtScale(imageWidth, MAX_WIDTH);
@@ -110,6 +111,9 @@ public class RtfWriter
 
 	private static double calculateSingleLenghtScale(int lenght, int maxLength)
 	{
+		// NOTE: RTF pre-scales images to fit the page, so we just have to scale 
+		// images from page-size down to small enough to allow for margins and 
+		// the diagram title. 72% happens to work well.
 		final int DEFUALT_SCALE = 72;
 		final int FULL_SCALE = 100;
 		double rawScale = DEFUALT_SCALE;
