@@ -27,9 +27,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 
-public class MeasurementNode extends TreeTableNode
+public class ViabilityMeasurementNode extends TreeTableNode
 {
-	public MeasurementNode(ViabilityIndicatorNode parent, Measurement measurementToUse)
+	public ViabilityMeasurementNode(ViabilityIndicatorNode parent, Measurement measurementToUse)
 	{
 		measurement = measurementToUse;
 		parentNode = parent;
