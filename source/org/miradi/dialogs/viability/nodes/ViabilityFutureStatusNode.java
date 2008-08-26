@@ -27,9 +27,9 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.StatusQuestion;
 
-public class KeyEcologicalAttributeFutureStatusNode extends TreeTableNode
+public class ViabilityFutureStatusNode extends TreeTableNode
 {
-	public KeyEcologicalAttributeFutureStatusNode(TreeTableNode parentNodeToUse) throws Exception
+	public ViabilityFutureStatusNode(TreeTableNode parentNodeToUse) throws Exception
 	{
 		parentNode = parentNodeToUse;
 		rebuild();

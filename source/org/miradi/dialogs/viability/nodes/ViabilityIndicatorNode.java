@@ -129,7 +129,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		}
 
 		Collections.sort(measurementAndFutureStatusObjects, new MeasurementNodeDateComparator());		
-		measurementAndFutureStatusObjects.add(new KeyEcologicalAttributeFutureStatusNode(this));
+		measurementAndFutureStatusObjects.add(new ViabilityFutureStatusNode(this));
 		measurements = (TreeTableNode[]) measurementAndFutureStatusObjects.toArray(new TreeTableNode[0]);
 	}
 	
