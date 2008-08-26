@@ -32,12 +32,16 @@ import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
@@ -61,6 +65,10 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.dispose();
 		taskPropertiesInputPanel.dispose();
 		measurementPropertiesPanel.dispose();
+		targetPropertiesPanel.dispose();
+		threatPropertiesPanel.dispose();
+		intermediateResultPropertiesPanel.dispose();
+		threatReductionResultPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
 	}
 	
@@ -71,16 +79,24 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
-		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
+		targetPropertiesPanel = new PlanningViewTargetPropertiesPanel(getProject());
+		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
+		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
+		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
+		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
 		add(goalPropertiesPanel);
 		add(objectivePropertiesPanel);
 		add(indicatorPropertiesPanel);
 		add(strategyPropertiesPanel);
 		add(taskPropertiesInputPanel);
-		add(blankPropertiesPanel);
 		add(measurementPropertiesPanel);
+		add(targetPropertiesPanel);
+		add(threatPropertiesPanel);
+		add(intermediateResultPropertiesPanel);
+		add(threatReductionResultPropertiesPanel);
+		add(blankPropertiesPanel);
 	}
 	
 	private void add(DisposablePanelWithDescription panelToAdd)
@@ -104,6 +120,10 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
+		targetPropertiesPanel.setObjectRefs(orefsToUse);
+		threatPropertiesPanel.setObjectRefs(orefsToUse);
+		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
+		threatReductionResultPropertiesPanel.setObjectRefs(orefsToUse);
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -140,6 +160,19 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 		if (Measurement.getObjectType() == objectType)
 			return measurementPropertiesPanel;
 		
+		if (Target.getObjectType() == objectType)
+			return targetPropertiesPanel;
+		
+		if (Cause.getObjectType() == objectType)
+			return threatPropertiesPanel;
+		
+		if (IntermediateResult.getObjectType() == objectType)
+			return intermediateResultPropertiesPanel;
+		
+		if (ThreatReductionResult.getObjectType() == objectType)
+			return threatReductionResultPropertiesPanel;
+	
+		
 		return blankPropertiesPanel;
 	}
 	
@@ -174,6 +207,10 @@ public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	private BlankPropertiesPanel blankPropertiesPanel;
+	private PlanningViewTargetPropertiesPanel targetPropertiesPanel;
+	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
+	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
+	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
+	private BlankPropertiesPanel blankPropertiesPanel;
 }
