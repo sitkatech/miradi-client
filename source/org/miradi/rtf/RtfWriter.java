@@ -167,7 +167,7 @@ public class RtfWriter
 
 	public String createCellxCommand(final int column)
 	{
-		return CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS );
+		return CELL_BORDER + CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS );
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
@@ -337,4 +337,5 @@ public class RtfWriter
 	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 ";
 	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b ";
 	public static final String PRE_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ";
+	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
 }
