@@ -69,7 +69,8 @@ public class RtfWriter
 
 		int imageWidth = bufferedImage.getWidth();
 		int imageHeight = bufferedImage.getHeight();
-		String jpegHeader = "\\pict\\picscalex" + getScale(imageWidth, imageHeight) + "\\picscaley" + getScale(imageWidth, imageHeight) + "\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw" + imageWidth + "\\pich" + imageHeight + "\\jpegblip ";
+		String scaleRetainingAspectRatio = getScale(imageWidth, imageHeight);
+		String jpegHeader = "\\pict\\picscalex" + scaleRetainingAspectRatio + "\\picscaley" + scaleRetainingAspectRatio + "\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw" + imageWidth + "\\pich" + imageHeight + "\\jpegblip ";
 		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
