@@ -30,12 +30,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ViabilityViewFontProvider;
 import org.miradi.dialogs.treetables.ObjectTreeCellRenderer;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
@@ -64,7 +62,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		setColumnHeaderRenderers();
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		multiLineRenderer = new MultiLineObjectTableCellRendererFactory(getMainWindow(), this, fontProvider);
-		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 		rebuildTableCompletely();
 	}
 	
@@ -84,13 +81,10 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			return super.getCellRenderer(row, tableColumn);
 		
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if(isTextCell(row, modelColumn))
-			return multiLineRenderer;
-		
 		if (isChoiceItemCell(row, modelColumn))
 			return statusQuestionRenderer;
 		
-		return otherRenderer;
+		return multiLineRenderer;
 	}
 	
 	public boolean isChoiceItemCell(int row, int modelColumn)
@@ -102,7 +96,8 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			columnTag == BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE ||
 			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY || 
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS || 
-			columnTag == Measurement.TAG_STATUS_CONFIDENCE;
+			columnTag == Measurement.TAG_STATUS_CONFIDENCE ||
+			columnTag == KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE;
 	
 		if (isChoiceItemColumn)
 			return true;
@@ -195,5 +190,4 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private MultiLineObjectTableCellRendererFactory multiLineRenderer;
-	private BasicTableCellRendererFactory otherRenderer;
 }
