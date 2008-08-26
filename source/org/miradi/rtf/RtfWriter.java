@@ -66,8 +66,10 @@ public class RtfWriter
 	public void writeImage(BufferedImage bufferedImage) throws Exception
 	{
 		startBlock();
-		
-		String jpegHeader = "\\pict\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw"+bufferedImage.getWidth()+"\\pich"+bufferedImage.getHeight()+"\\jpegblip ";
+
+		int imageWidth = bufferedImage.getWidth();
+		int imageHeight = bufferedImage.getHeight();
+		String jpegHeader = "\\pict\\picscalex" + getScale(imageWidth, imageHeight) + "\\picscaley" + getScale(imageWidth, imageHeight) + "\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw" + imageWidth + "\\pich" + imageHeight + "\\jpegblip ";
 		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -85,6 +87,35 @@ public class RtfWriter
 		}
 		
 		endBlock();
+	}
+
+	private String getScale(int imageWidth, int imageHeight)
+	{
+		return Integer.toString(calculateScale(imageWidth, imageHeight));
+	}
+	
+	public static int calculateScale(int imageWidth, int imageHeight)
+	{
+		final int MAX_WIDTH = 800;
+		final int MAX_HEIGHT = 600;
+		double rawXScale = calculateSingleLenghtScale(imageWidth, MAX_WIDTH);
+		double rawYScale = calculateSingleLenghtScale(imageWidth, MAX_HEIGHT);
+		
+		double rawScale = Math.min(rawXScale, rawYScale);
+		
+		return (int)rawScale;
+	}
+
+	private static double calculateSingleLenghtScale(int lenght, int MAX_WIDTH)
+	{
+		final int DEFUALT_SCALE = 72;
+		final int FULL_SCALE = 100;
+		double rawScale = DEFUALT_SCALE;
+		
+		if (lenght < MAX_WIDTH)
+			rawScale = FULL_SCALE;
+		
+		return rawScale;
 	}
 
 	void startBlock() throws Exception

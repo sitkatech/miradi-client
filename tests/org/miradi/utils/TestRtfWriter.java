@@ -61,4 +61,18 @@ public class TestRtfWriter extends EAMTestCase
 	{
 		assertEquals("value was not encoded properly?", expectedValue, RtfWriter.encode(value));
 	}
+	
+	public void testGetScale()
+	{ 
+		verifyScale(100, 0, 0);
+		verifyScale(100, 50, 50);
+		verifyScale(100, 100, 100);
+		verifyScale(72, 1000, 1000);
+		verifyScale(72, 5000, 5000);
+	}
+	
+	private void verifyScale(int expectedScale, int imageWidth, int imageHeight)
+	{
+		assertEquals("wrong scale calculated?", expectedScale, RtfWriter.calculateScale(imageWidth, imageHeight));
+	}
 }
