@@ -103,9 +103,9 @@ public class RtfWriter
 		double rawXScale = calculateSingleLenghtScale(imageWidth, MAX_WIDTH);
 		double rawYScale = calculateSingleLenghtScale(imageWidth, MAX_HEIGHT);
 		
-		double rawScale = Math.min(rawXScale, rawYScale);
+		double scalePreservingAspectRatio = Math.min(rawXScale, rawYScale);
 		
-		return (int)rawScale;
+		return (int)scalePreservingAspectRatio;
 	}
 
 	private static double calculateSingleLenghtScale(int lenght, int MAX_WIDTH)
