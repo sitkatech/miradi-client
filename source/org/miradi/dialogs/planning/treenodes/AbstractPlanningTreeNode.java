@@ -122,7 +122,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
-		ORefSet newChildRefs = new ORefSet();
 		for(int i = 0; i < children.size(); ++i)
 		{
 			AbstractPlanningTreeNode child = children.get(i);
@@ -130,10 +129,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
 			{
-				if(!newChildRefs.contains(child.getObjectReference()))
+				if(!doesContainNodeWithRef(newChildren, child.getObjectReference()))
 				{
 					newChildren.add(child);
-					newChildRefs.add(child.getObjectReference());
 				}
 			}
 			else
@@ -141,10 +139,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				for(int grandchild = 0; grandchild < child.getChildCount(); ++grandchild)
 				{
 					AbstractPlanningTreeNode newChild = child.getChildren().get(grandchild);
-					if(!newChildRefs.contains(newChild.getObjectReference()))
+					if(!doesContainNodeWithRef(newChildren, newChild.getObjectReference()))
 					{
 						newChildren.add(newChild);
-						newChildRefs.add(newChild.getObjectReference());
 					}
 				}
 			}
@@ -152,6 +149,17 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		if(shouldSortChildren())
 			Collections.sort(newChildren, new NodeSorter());
 		children = newChildren;
+	}
+	
+	boolean doesContainNodeWithRef(Vector<AbstractPlanningTreeNode> list, ORef ref)
+	{
+		for(AbstractPlanningTreeNode node : list)
+		{
+			if(ref.equals(node.getObjectReference()))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	boolean shouldSortChildren()
