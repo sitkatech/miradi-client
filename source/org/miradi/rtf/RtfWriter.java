@@ -140,7 +140,7 @@ public class RtfWriter
 			write(PRE_CELL_DATA_COMMAND);
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
-				writeEncoded(createPadding(paddingCount, column));
+				createPadding(paddingCount);
 
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -230,16 +230,12 @@ public class RtfWriter
 		return firstDigit + secondDigit + thirdDigit + forthDigit;
 	}
 	
-	public String createPadding(int padCount, int column) throws IOException
+	public void createPadding(int padCount) throws Exception
 	{
-		final String FIVE_SPACES = "     ";
-		String padding = "";
 		for (int i = 0; i < padCount; ++i)
 		{
-			padding += FIVE_SPACES;
+			insertTab();
 		}
-		
-		return padding;
 	}
 	
 	public void startRtf() throws Exception
