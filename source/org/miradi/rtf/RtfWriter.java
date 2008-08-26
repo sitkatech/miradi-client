@@ -108,13 +108,13 @@ public class RtfWriter
 		return (int)scalePreservingAspectRatio;
 	}
 
-	private static double calculateSingleLenghtScale(int lenght, int MAX_WIDTH)
+	private static double calculateSingleLenghtScale(int lenght, int maxLength)
 	{
 		final int DEFUALT_SCALE = 72;
 		final int FULL_SCALE = 100;
 		double rawScale = DEFUALT_SCALE;
 		
-		if (lenght < MAX_WIDTH)
+		if (lenght < maxLength)
 			rawScale = FULL_SCALE;
 		
 		return rawScale;
