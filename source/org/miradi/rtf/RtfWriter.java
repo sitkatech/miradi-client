@@ -97,6 +97,7 @@ public class RtfWriter
 	
 	public static int calculateScale(int imageWidth, int imageHeight)
 	{
+		// NOTE: RTF inches are (pixels * 1.04) / 100 // so 11x8 inches minus margins and diagram title is about 800x600
 		final int MAX_WIDTH = 800;
 		final int MAX_HEIGHT = 600;
 		double rawXScale = calculateSingleLenghtScale(imageWidth, MAX_WIDTH);
