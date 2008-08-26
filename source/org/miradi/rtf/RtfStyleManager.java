@@ -74,6 +74,11 @@ public class RtfStyleManager
 		return styleMap;
 	} 
 	
+	public static String createTag(BaseObject baseObjectForRow)
+	{
+		return baseObjectForRow.getTypeName();
+	}
+	
 	private HashMap<String, RtfStyle> styleMap;
 	
 	public static final String RTF_STYLE_FORMATTING_START_BLOCK = "{\\*";

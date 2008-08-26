@@ -21,7 +21,9 @@ package org.miradi.dialogs.viability;
 
 import javax.swing.Icon;
 
+import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.rtf.RtfStyleManager;
 import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityTreeTableExporter extends TreeTableExporter
@@ -47,6 +49,23 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 		return super.getIconAt(row, column);
 	}
 	
+	@Override
+	public String getStyleTagAt(int row, int tableColumn)
+	{
+		int modelColumn = getViabilityTreeTable().convertColumnIndexToModel(tableColumn);
+		String columnTag = getViabilityTreeTable().getViabilityModel().getColumnTag(modelColumn);
+		if (columnTag.equals(Indicator.TAG_COMMENT))
+			return RtfStyleManager.COMMENT_STYLE_TAG;
+		
+		if (columnTag.equals(Indicator.TAG_DETAIL))
+			return RtfStyleManager.COMMENT_STYLE_TAG;
+			
+		if (isTreeColumn(tableColumn))
+			return RtfStyleManager.createTag(getBaseObjectForRow(row));
+		
+		return "";
+	}
+
 	private TargetViabilityTreeTable getViabilityTreeTable()
 	{
 		return (TargetViabilityTreeTable) getTreeTable();
