@@ -24,7 +24,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.viability.nodes.KeyEcologicalAttributeMeasurementNode;
+import org.miradi.dialogs.viability.nodes.MeasurementNode;
 import org.miradi.dialogs.viability.nodes.ViabilityIndicatorNode;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
@@ -56,7 +56,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 
 	public void deleteMeasurement() throws CommandFailedException
 	{
-		KeyEcologicalAttributeMeasurementNode measurementNode = (KeyEcologicalAttributeMeasurementNode) getSelectedTreeNodes()[0];
+		MeasurementNode measurementNode = (MeasurementNode) getSelectedTreeNodes()[0];
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
