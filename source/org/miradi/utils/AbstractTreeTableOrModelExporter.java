@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.dialogs.treetables.PanelTreeTable;
 import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -47,7 +48,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		if (column == 0)
+		if (isTreeColumn(column))
 		{
 			BaseObject baseObject = getBaseObjectForRow(row);
 			if (baseObject != null)
@@ -59,6 +60,11 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		}
 		//FIXME this needs to return correct cell icon
 		return null;
+	}
+	
+	protected boolean isTreeColumn(int column)
+	{
+		return column == PanelTreeTable.TREE_COLUMN_INDEX;
 	}
 	
 	@Override
