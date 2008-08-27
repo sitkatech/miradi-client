@@ -40,18 +40,18 @@ public class RtfStyleManager
 	{
 		styleMap = new HashMap();
 		
-		createNewStyle(NORMAL_STYLE_TAG,                    FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} Normal;}");             
-		createNewStyle(COMMENT_STYLE_TAG, 					S_15_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Long Text;}");		
-		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	S_16_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	S_17_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Results Chain Diagram;}");
-		createNewStyle(Target.OBJECT_NAME,                 	S_18_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Target;}");
-		createNewStyle(Cause.OBJECT_NAME_THREAT,           	S_19_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Direct Threat;}");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    S_20_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Accounting Code;}");
+		createNewStyle(NORMAL_STYLE_TAG,                    FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");             
+		createNewStyle(COMMENT_STYLE_TAG, 					S_15_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Long Text");		
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	S_16_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Conceptual Model Diagram");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	S_17_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Results Chain Diagram");
+		createNewStyle(Target.OBJECT_NAME,                 	S_18_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Target");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           	S_19_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Direct Threat");
+		createNewStyle(AccountingCode.OBJECT_NAME,  	    S_20_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Accounting Code");
 	}
 
-	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand)
+	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
 	{
-		RtfStyle rtfStyle = new RtfStyle(objectName, rtfStyleId, RTF_STYLE_FORMATTING_START_BLOCK + rtfStyleId + rtfFormatingCommand);
+		RtfStyle rtfStyle = new RtfStyle(objectName, rtfStyleId, rtfStyleId + rtfFormatingCommand, styleName);
 		getStyleMap().put(objectName, rtfStyle);
 	}
 
@@ -63,8 +63,10 @@ public class RtfStyleManager
 		Set<String> keys = getStyleMap().keySet();
 		for(String key : keys)
 		{
+			writer.startBlock();
 			RtfStyle rtfStyle = getStyleMap().get(key);
-			writer.writeln(rtfStyle.getRtfFormatingCommand());
+			writer.write(rtfStyle.getRtfFormatingCommand() + rtfStyle.getStyleName() + ";");
+			writer.endBlock();
 		}
 		
 		writer.endBlock();
@@ -85,9 +87,18 @@ public class RtfStyleManager
 		return baseObjectForRow.getTypeName();
 	}
 	
+	//FIXME this is a a temporary method
+	public String getStyleFormatingCommand(String styleTag)
+	{
+		RtfStyle rtfStyle = getStyleMap().get(styleTag);
+		if (rtfStyle != null)
+			return rtfStyle.getRtfFormatingCommand();
+		
+		return "";
+	}
+			
 	private HashMap<String, RtfStyle> styleMap;
 	
-	public static final String RTF_STYLE_FORMATTING_START_BLOCK = "{";
 	public static final String COMMENT_STYLE_TAG = "CommentStyle";
 	public static final String NORMAL_STYLE_TAG = "NormalStyle";
 	public static final String S_15_RTF_ID = "\\cs15";

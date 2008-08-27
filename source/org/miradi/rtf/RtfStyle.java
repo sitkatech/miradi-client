@@ -21,11 +21,12 @@ package org.miradi.rtf;
 
 public class RtfStyle
 {
-	public RtfStyle(String styleTagToUse, String styleIdToUse, String rtfFormattingCommandToUse)
+	public RtfStyle(String styleTagToUse, String styleIdToUse, String rtfFormattingCommandToUse, String styleNameToUse)
 	{
 		styleTag = styleTagToUse;
 		styleId = styleIdToUse;
 		rtfFormatingCommand = rtfFormattingCommandToUse;
+		styleName = styleNameToUse;
 	}
 	
 	public String getRtfFormatingCommand()
@@ -41,7 +42,13 @@ public class RtfStyle
 		return styleTag;
 	}
 	
+	public String getStyleName()
+	{
+		return styleName;
+	}
+	
 	private String rtfFormatingCommand;
 	private String styleId;
 	private String styleTag;
+	private String styleName;
 }

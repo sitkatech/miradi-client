@@ -126,12 +126,12 @@ public class RtfWriter
 
 	void startBlock() throws Exception
 	{
-		writeRtfCommand(START_BLOCK);
+		write(START_BLOCK);
 	}
 	
 	public void endBlock() throws Exception
 	{
-		writeRtfCommand(END_BLOCK);
+		writeln(END_BLOCK);
 	}
 
 	static public String toHex(byte b)
@@ -183,6 +183,9 @@ public class RtfWriter
 			if (cellIcon != null)
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 
+			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
+			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
+			writeln(styleFormattingCommand);
 			writeEncoded(exportableTable.getTextAt(row, column));
 			endBlock();
 			write(CELL_COMMAND);	
