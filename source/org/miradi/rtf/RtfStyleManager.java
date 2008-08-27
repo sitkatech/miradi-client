@@ -41,12 +41,12 @@ public class RtfStyleManager
 		styleMap = new HashMap();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");             
-		createNewStyle(COMMENT_STYLE_TAG, 					S_15_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Long Text");		
-		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	S_16_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Conceptual Model Diagram");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	S_17_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Results Chain Diagram");
-		createNewStyle(Target.OBJECT_NAME,                 	S_18_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Target");
-		createNewStyle(Cause.OBJECT_NAME_THREAT,           	S_19_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Direct Threat");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    S_20_RTF_ID, " \\additive \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 ", "Accounting Code");
+		createNewStyle(COMMENT_STYLE_TAG, 					S_15_RTF_ID, " \\b\\i\\fs28 ", "Long Text");		
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	S_16_RTF_ID, " \\b\\i\\fs28 ", "Conceptual Model Diagram");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	S_17_RTF_ID, " \\b\\i\\fs28 ", "Results Chain Diagram");
+		createNewStyle(Target.OBJECT_NAME,                 	S_18_RTF_ID, " \\b\\i\\fs28 ", "Target");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           	S_19_RTF_ID, " \\b\\i\\fs28 ", "Direct Threat");
+		createNewStyle(AccountingCode.OBJECT_NAME,  	    S_20_RTF_ID, " \\b\\i\\fs28 ", "Accounting Code");
 	}
 
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
@@ -92,7 +92,7 @@ public class RtfStyleManager
 	{
 		RtfStyle rtfStyle = getStyleMap().get(styleTag);
 		if (rtfStyle != null)
-			return "{" + rtfStyle.getRtfFormatingCommand() + "}";
+			return rtfStyle.getRtfFormatingCommand();
 		
 		return "";
 	}
@@ -101,11 +101,11 @@ public class RtfStyleManager
 	
 	public static final String COMMENT_STYLE_TAG = "CommentStyle";
 	public static final String NORMAL_STYLE_TAG = "NormalStyle";
-	public static final String S_15_RTF_ID = "\\cs15";
-	public static final String S_16_RTF_ID = "\\cs16";
-	public static final String S_17_RTF_ID = "\\cs17";
-	public static final String S_18_RTF_ID = "\\cs18";
-	public static final String S_19_RTF_ID = "\\cs19";
-	public static final String S_20_RTF_ID = "\\cs20";
+	public static final String S_15_RTF_ID = "\\s15";
+	public static final String S_16_RTF_ID = "\\s16";
+	public static final String S_17_RTF_ID = "\\s17";
+	public static final String S_18_RTF_ID = "\\s18";
+	public static final String S_19_RTF_ID = "\\s19";
+	public static final String S_20_RTF_ID = "\\s20";
 	public static final String FS_20_RTF_ID = "\\fs20";
 }
