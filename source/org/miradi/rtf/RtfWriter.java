@@ -173,17 +173,18 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRtfCommand(PRE_CELL_COMMAND);
-			Icon cellIcon = exportableTable.getIconAt(row, column);
-			if (cellIcon != null)
-				writeImage(BufferedImageFactory.getImage(cellIcon));
-
 			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
 			writeln(styleFormattingCommand);
-			
+		
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
 				createPadding(paddingCount);
+
+			Icon cellIcon = exportableTable.getIconAt(row, column);
+			if (cellIcon != null)
+				writeImage(BufferedImageFactory.getImage(cellIcon));
+			
 			writeEncoded(exportableTable.getTextAt(row, column));
 			
 			write(CELL_COMMAND);
