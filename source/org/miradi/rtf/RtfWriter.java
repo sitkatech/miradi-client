@@ -173,10 +173,6 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRtfCommand(PRE_CELL_COMMAND);
-			int paddingCount = exportableTable.getDepth(row);
-			if (column == COLUMN_TO_PAD)
-				createPadding(paddingCount);
-
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
 				writeImage(BufferedImageFactory.getImage(cellIcon));
@@ -184,6 +180,10 @@ public class RtfWriter
 			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
 			writeln(styleFormattingCommand);
+			
+			int paddingCount = exportableTable.getDepth(row);
+			if (column == COLUMN_TO_PAD)
+				createPadding(paddingCount);
 			writeEncoded(exportableTable.getTextAt(row, column));
 			
 			write(CELL_COMMAND);
@@ -421,7 +421,7 @@ public class RtfWriter
 	public static final String TAB_COMMAND = "\\tab ";
 	
 	public static final String PRE_TABLE_HEADER_CELL_COMMAND = " \\intbl\\qc\\b ";
-	public static final String PRE_CELL_COMMAND  = " ";
+	public static final String PRE_CELL_COMMAND  = "\\pard\\intbl\\plain ";
 	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = " ";
 	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
 }
