@@ -57,19 +57,19 @@ public class RtfStyleManager
 		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		S_16_RTF_ID, " \\b\\fs16 ", "Conceptual Model Diagram");
 		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		S_17_RTF_ID, " \\b\\fs16 ", "Results Chain Diagram");
 		createNewStyle(Target.OBJECT_NAME,                 		S_18_RTF_ID, " \\b\\fs12 ", "Target");
-		createNewStyle(Cause.OBJECT_NAME_THREAT,           		S_19_RTF_ID, " \\b\\fs12 ", "Direct Threat");
-		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   S_20_RTF_ID, " \\b\\fs12 ", "Contributing Factor");
-		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	S_21_RTF_ID, " \\b\\fs12 ", "Threat Reduction Result");
-		createNewStyle(IntermediateResult.OBJECT_NAME,   	    S_22_RTF_ID, " \\b\\fs12 ", "Intermediate Result");
-		createNewStyle(Objective.OBJECT_NAME,  	    			S_23_RTF_ID, " \\b\\fs12 ", "Objective");
-		createNewStyle(Strategy.OBJECT_NAME,  	    			S_24_RTF_ID, " \\b\\fs12 ", "Strategy");
-		createNewStyle(Task.ACTIVITY_NAME,  	    			S_25_RTF_ID, " \\b\\fs12 ", "Activity");
-		createNewStyle(Indicator.OBJECT_NAME,  	    			S_26_RTF_ID, " \\b\\fs12 ", "Indicator");
-		createNewStyle(Task.METHOD_NAME,   	    				S_27_RTF_ID, " \\b\\i\\fs12 ", "Method");
-		createNewStyle(Task.OBJECT_NAME,   	    				S_28_RTF_ID, " \\b\\i\\fs12 ", "Task");
-		createNewStyle(Measurement.OBJECT_NAME,   	    		S_29_RTF_ID, " \\b\\i\\fs12 ", "Measurement");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    	S_30_RTF_ID, " \\b\\fs12 ", "Accounting Code");
-		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	S_31_RTF_ID, " \\b\\fs12 ", "Funding Source");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           		S_19_RTF_ID, " \\b\\fs14 ", "Direct Threat");
+		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   S_20_RTF_ID, " \\b\\fs14 ", "Contributing Factor");
+		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	S_21_RTF_ID, " \\b\\fs14 ", "Threat Reduction Result");
+		createNewStyle(IntermediateResult.OBJECT_NAME,   	    S_22_RTF_ID, " \\b\\fs14 ", "Intermediate Result");
+		createNewStyle(Objective.OBJECT_NAME,  	    			S_23_RTF_ID, " \\b\\fs14 ", "Objective");
+		createNewStyle(Strategy.OBJECT_NAME,  	    			S_24_RTF_ID, " \\b\\fs14 ", "Strategy");
+		createNewStyle(Task.ACTIVITY_NAME,  	    			S_25_RTF_ID, " \\b\\fs14 ", "Activity");
+		createNewStyle(Indicator.OBJECT_NAME,  	    			S_26_RTF_ID, " \\b\\fs14 ", "Indicator");
+		createNewStyle(Task.METHOD_NAME,   	    				S_27_RTF_ID, " \\b\\i\\fs14 ", "Method");
+		createNewStyle(Task.OBJECT_NAME,   	    				S_28_RTF_ID, " \\b\\i\\fs14 ", "Task");
+		createNewStyle(Measurement.OBJECT_NAME,   	    		S_29_RTF_ID, " \\b\\i\\fs14 ", "Measurement");
+		createNewStyle(AccountingCode.OBJECT_NAME,  	    	S_30_RTF_ID, " \\b\\fs14 ", "Accounting Code");
+		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	S_31_RTF_ID, " \\b\\fs14 ", "Funding Source");
 	}
 
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
