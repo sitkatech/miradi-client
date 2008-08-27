@@ -95,6 +95,13 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		
 		return tableAndColumnHolder.getTable().getIconAt(row, tableAndColumnHolder.getColumn());
 	}
+	
+	@Override
+	public String getStyleTagAt(int row, int column)
+	{
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		
+		return tableAndColumnHolder.getTable().getStyleTagAt(row, column);
+	}
 
 	@Override
 	public int getRowType(int row)
