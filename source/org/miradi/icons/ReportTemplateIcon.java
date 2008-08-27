@@ -19,20 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.awt.Color;
+import org.miradi.utils.MiradiResourceImageIcon;
 
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RectangleRenderer;
-
-public class ReportTemplateIcon extends AbstractShapeIcon
+public class ReportTemplateIcon extends MiradiResourceImageIcon
 {
-	FactorRenderer getRenderer() 
+	public ReportTemplateIcon()
 	{
-		return new RectangleRenderer();
-	}
-
-	Color getIconColor() 
-	{
-		return Color.WHITE;
+		super("icons/document16.png");
 	}
 }
