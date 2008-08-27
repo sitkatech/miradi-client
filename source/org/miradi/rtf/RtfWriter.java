@@ -317,7 +317,23 @@ public class RtfWriter
 	private void writeColorTable() throws Exception
 	{
 		newLine();
-		writeln("{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}");
+		writeln("{\\colortbl;" +
+				"\\red0\\green0\\blue0;" +
+				"\\red0\\green0\\blue255;" +
+				"\\red0\\green255\\blue255;" +
+				"\\red0\\green255\\blue0;" +
+				"\\red255\\green0\\blue255;" +
+				"\\red255\\green0\\blue0;" +
+				"\\red255\\green255\\blue0;" +
+				"\\red255\\green255\\blue255;" +
+				"\\red0\\green0\\blue128;" +
+				"\\red0\\green128\\blue128;" +
+				"\\red0\\green128\\blue0;" +
+				"\\red128\\green0\\blue128;" +
+				"\\red128\\green0\\blue0;" +
+				"\\red128\\green128\\blue0;" +
+				"\\red128\\green128\\blue128;" +
+				"\\red192\\green192\\blue192;}");
 	}
 
 	private void writeInfo() throws Exception
