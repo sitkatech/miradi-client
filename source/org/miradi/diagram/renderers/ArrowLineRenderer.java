@@ -66,7 +66,16 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse)
 	{
 		//NOTE: This does not care about the actual shape but just the bounds.
-		return createShapeWithRoundedCorners().getBounds2D();	
+		Shape shape = createShapeWithRoundedCorners();
+		Rectangle2D shapeBounds = shape.getBounds2D();
+		clearViewShape();
+		
+		return shapeBounds;	
+	}
+
+	private void clearViewShape()
+	{
+		view.sharedPath = null;
 	}
 	
 	public void paint(Graphics g)
