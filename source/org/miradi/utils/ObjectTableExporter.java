@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.rtf.RtfStyleManager;
 
 public class ObjectTableExporter extends AbstractTableExporter
 {
@@ -103,6 +104,12 @@ public class ObjectTableExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 
+	@Override
+	public String getStyleTagAt(int row, int column)
+	{
+		return RtfStyleManager.createTag(getBaseObjectForRow(row));
+	}
+	
 	private ChoiceQuestion getChoiceQuestion(int column)
 	{
 		int modelColumn = tableToExport.convertColumnIndexToModel(column);
