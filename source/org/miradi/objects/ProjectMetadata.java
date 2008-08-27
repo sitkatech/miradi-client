@@ -497,7 +497,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	
-	static final String OBJECT_NAME = "ProjectMetadata";
+	public static final String OBJECT_NAME = "ProjectMetadata";
 
 	private StringData currentWizardScreenName;
 
