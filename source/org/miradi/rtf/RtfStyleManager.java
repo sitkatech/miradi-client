@@ -92,7 +92,7 @@ public class RtfStyleManager
 	{
 		RtfStyle rtfStyle = getStyleMap().get(styleTag);
 		if (rtfStyle != null)
-			return rtfStyle.getRtfFormatingCommand();
+			return "{" + rtfStyle.getRtfFormatingCommand() + "}";
 		
 		return "";
 	}
