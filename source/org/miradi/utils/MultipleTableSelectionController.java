@@ -42,11 +42,15 @@ public class MultipleTableSelectionController implements ListSelectionListener
 	private void adjustSelectionOfAllTables(ListSelectionEvent event)
 	{
 		ListSelectionModel source = (ListSelectionModel) event.getSource();
-		int leadSelectionIndex  = source.getLeadSelectionIndex();
+		int selectedRow  = source.getMinSelectionIndex();
 		for (int i = 0; i < tables.size(); ++i)
 		{
 			JTable table = tables.get(i);
-			table.getSelectionModel().setSelectionInterval(leadSelectionIndex, leadSelectionIndex);
+			ListSelectionModel selectionModel = table.getSelectionModel();
+			if(selectedRow == -1)
+				selectionModel.clearSelection();
+			else
+				selectionModel.setSelectionInterval(selectedRow, selectedRow);
 		}
 	}
 

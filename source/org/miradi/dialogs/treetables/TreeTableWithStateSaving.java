@@ -59,6 +59,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public void restoreTreeState() throws Exception
 	{
+		if(ignoreNotifications)
+			return;
+		
 		restoreTreeState(getExpandedNodeList());
 	}
 
@@ -73,6 +76,24 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 			ignoreNotifications = false;
 		}
+	}
+	
+	public void expandAll(ViewData viewData) throws Exception
+	{
+		ORefList fullExpandedRefs = getTreeTableModel().getFullyExpandedRefList();
+		updateTreeExpansionState(viewData, fullExpandedRefs);
+	}
+	
+	public void collapseAll(ViewData viewData) throws Exception
+	{
+		clearSelection();
+		updateTreeExpansionState(viewData, new ORefList());
+	}
+
+	public void updateTreeExpansionState(ViewData viewData, ORefList expandedRefs) throws Exception
+	{
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getRef() ,ViewData.TAG_CURRENT_EXPANSION_LIST, expandedRefs.toString());
+		getProject().executeCommand(cmd);
 	}
 	
 	public void ensureObjectVisible(ORef ref)
