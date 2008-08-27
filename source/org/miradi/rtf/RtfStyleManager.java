@@ -26,8 +26,16 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.FundingSource;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 
 public class RtfStyleManager
 {
@@ -40,13 +48,24 @@ public class RtfStyleManager
 	{
 		styleMap = new HashMap();
 		
-		createNewStyle(NORMAL_STYLE_TAG,                    FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");             
-		createNewStyle(COMMENT_STYLE_TAG, 					S_15_RTF_ID, " \\b\\i\\fs28 ", "Long Text");		
-		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	S_16_RTF_ID, " \\b\\i\\fs28 ", "Conceptual Model Diagram");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	S_17_RTF_ID, " \\b\\i\\fs28 ", "Results Chain Diagram");
-		createNewStyle(Target.OBJECT_NAME,                 	S_18_RTF_ID, " \\b\\i\\fs28 ", "Target");
-		createNewStyle(Cause.OBJECT_NAME_THREAT,           	S_19_RTF_ID, " \\b\\i\\fs28 ", "Direct Threat");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    S_20_RTF_ID, " \\b\\i\\fs28 ", "Accounting Code");
+		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");             
+		createNewStyle(COMMENT_STYLE_TAG, 						S_15_RTF_ID, " \\b\\i\\fs12 ", "Long Text");		
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		S_16_RTF_ID, " \\b\\i\\fs28 ", "Conceptual Model Diagram");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		S_17_RTF_ID, " \\b\\i\\fs28 ", "Results Chain Diagram");
+		createNewStyle(Target.OBJECT_NAME,                 		S_18_RTF_ID, " \\b\\i\\fs28 ", "Target");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           		S_19_RTF_ID, " \\b\\i\\fs28 ", "Direct Threat");
+		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   S_20_RTF_ID, " \\b\\i\\fs28 ", "Contributing Factor");
+		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	S_21_RTF_ID, " \\b\\i\\fs28 ", "Threat Reduction Result");
+		createNewStyle(IntermediateResult.OBJECT_NAME,   	    S_22_RTF_ID, " \\b\\i\\fs28 ", "Intermediate Result");
+		createNewStyle(Objective.OBJECT_NAME,  	    			S_23_RTF_ID, " \\b\\i\\fs28 ", "Objective");
+		createNewStyle(Strategy.OBJECT_NAME,  	    			S_24_RTF_ID, " \\b\\i\\fs28 ", "Strategy");
+		createNewStyle(Task.ACTIVITY_NAME,  	    			S_25_RTF_ID, " \\b\\i\\fs28 ", "Activity");
+		createNewStyle(Indicator.OBJECT_NAME,  	    			S_26_RTF_ID, " \\b\\i\\fs28 ", "Indicator");
+		createNewStyle(Task.METHOD_NAME,   	    				S_27_RTF_ID, " \\b\\i\\fs28 ", "Method");
+		createNewStyle(Task.OBJECT_NAME,   	    				S_28_RTF_ID, " \\b\\i\\fs28 ", "Task");
+		createNewStyle(Measurement.OBJECT_NAME,   	    		S_29_RTF_ID, " \\b\\i\\fs28 ", "Measurement");
+		createNewStyle(AccountingCode.OBJECT_NAME,  	    	S_30_RTF_ID, " \\b\\i\\fs28 ", "Accounting Code");
+		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	S_31_RTF_ID, " \\b\\i\\fs28 ", "Funding Source");
 	}
 
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
@@ -101,11 +120,22 @@ public class RtfStyleManager
 	
 	public static final String COMMENT_STYLE_TAG = "CommentStyle";
 	public static final String NORMAL_STYLE_TAG = "NormalStyle";
+	public static final String FS_20_RTF_ID = "\\fs20";
 	public static final String S_15_RTF_ID = "\\s15";
 	public static final String S_16_RTF_ID = "\\s16";
 	public static final String S_17_RTF_ID = "\\s17";
 	public static final String S_18_RTF_ID = "\\s18";
 	public static final String S_19_RTF_ID = "\\s19";
 	public static final String S_20_RTF_ID = "\\s20";
-	public static final String FS_20_RTF_ID = "\\fs20";
+	public static final String S_21_RTF_ID = "\\s21";
+	public static final String S_22_RTF_ID = "\\s22";
+	public static final String S_23_RTF_ID = "\\s23";
+	public static final String S_24_RTF_ID = "\\s24";
+	public static final String S_25_RTF_ID = "\\s25";
+	public static final String S_26_RTF_ID = "\\s26";
+	public static final String S_27_RTF_ID = "\\s27";
+	public static final String S_28_RTF_ID = "\\s28";
+	public static final String S_29_RTF_ID = "\\s29";
+	public static final String S_30_RTF_ID = "\\s30";
+	public static final String S_31_RTF_ID = "\\s31";
 }
