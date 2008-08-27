@@ -54,6 +54,7 @@ public class RtfStyleManager
 
 	public void exportRtfStyleTable(RtfWriter writer) throws Exception
 	{	
+		writer.newLine();
 		writer.startBlock();
 		writer.writeln("\\stylesheet ");
 		Set<String> keys = getStyleMap().keySet();
