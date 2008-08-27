@@ -45,7 +45,7 @@ public abstract class AbstractTableExporter
 	
 	public String getStyleTagAt(int row, int column)
 	{
-		throw new RuntimeException("Need to implement getStyleTagAt");
+		return "";
 	}
 	
 	public String getSafeValue(Object object)
