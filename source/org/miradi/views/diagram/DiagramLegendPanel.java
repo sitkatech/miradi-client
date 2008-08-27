@@ -54,6 +54,7 @@ import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ProjectScopeIcon;
+import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -133,7 +134,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 		add(editListPanel);
 		
-		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."));
+		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."), new TaggedObjectSetIcon());
 		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
 		add(manageButton);
 	}
