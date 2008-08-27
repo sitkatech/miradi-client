@@ -43,8 +43,8 @@ public  class BufferedImageFactory
 {
 	public static BufferedImage getImage(Icon icon)
 	{
-		int width = icon.getIconWidth() + 2 * INSET;
-		int height = icon.getIconHeight() + 2 * INSET;
+		int width = icon.getIconWidth() + 2 * ICON_INSET;
+		int height = icon.getIconHeight() + 2 * ICON_INSET;
 		
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics = image.createGraphics();
@@ -52,7 +52,7 @@ public  class BufferedImageFactory
 		graphics.setColor(Color.WHITE);
 		graphics.fillRect(0, 0, image.getWidth(), image.getHeight());
 		
-		icon.paintIcon(null, graphics, 0, 0);
+		icon.paintIcon(null, graphics, ICON_INSET, ICON_INSET);
 		graphics.dispose();
 		
 		return image;
@@ -124,7 +124,7 @@ public  class BufferedImageFactory
 
 	public static BufferedImage createImageFromComponent(JComponent component)
 	{
-		return getImage(component, INSET);
+		return getImage(component, COMPONENT_INSET);
 	}
 	
 	public static DiagramComponent createDiagramComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
@@ -143,5 +143,6 @@ public  class BufferedImageFactory
 		return diagram;
 	}
 	
-	private static final int INSET = 5;
+	private static final int COMPONENT_INSET = 5;
+	private static final int ICON_INSET = 1;
 }
