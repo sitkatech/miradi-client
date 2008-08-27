@@ -115,7 +115,13 @@ public class RtfStyleManager
 		if (ConceptualModelDiagram.is(objectType))
 			return ConceptualModelDiagram.OBJECT_NAME;
 		
-		throw new RuntimeException("Could not find object name for type,  should only use this method if no object is available.");
+		if (ProjectMetadata.is(objectType))
+			return ProjectMetadata.OBJECT_NAME;
+		
+		if (Goal.is(objectType))
+			return Goal.OBJECT_NAME;
+		
+		throw new RuntimeException("Could not find object name for type,  should only use this method if no object is available. type = " + objectType);
 	}
 	
 	//FIXME this is a a temporary method
