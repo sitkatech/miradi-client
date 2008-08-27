@@ -173,8 +173,6 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRtfCommand(PRE_CELL_COMMAND);
-			startBlock();			
-			write(PRE_CELL_DATA_COMMAND);
 			int paddingCount = exportableTable.getDepth(row);
 			if (column == COLUMN_TO_PAD)
 				createPadding(paddingCount);
@@ -187,8 +185,9 @@ public class RtfWriter
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
 			writeln(styleFormattingCommand);
 			writeEncoded(exportableTable.getTextAt(row, column));
-			endBlock();
-			write(CELL_COMMAND);	
+			
+			write(CELL_COMMAND);
+			newLine();
 		}
 		
 		write(ROW_COMMAND);
@@ -417,13 +416,12 @@ public class RtfWriter
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
-	public static final String PAGE_BREAK_COMMAND = "\\par \\page\\pard\\plain \\ltrpar\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}";
-	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\loch\\f3\\fs34\\lang1033\\i0\\b ";
+	public static final String PAGE_BREAK_COMMAND = "\\par \\page\\pard\\plain \\ltrpar{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}";
+	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\lang1033 ";
 	public static final String TAB_COMMAND = "\\tab ";
 	
-	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\pard\\plain \\intbl\\ltrpar\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0\\fs24\\lang1033\\b ";
-	public static final String PRE_CELL_COMMAND  = "\\pard\\plain \\intbl\\ltrpar\\s7\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033 ";
-	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b ";
-	public static final String PRE_CELL_DATA_COMMAND = "\\rtlch \\ltrch\\loch\\f0\\fs24\\lang1033\\i0\\b0 ";
+	public static final String PRE_TABLE_HEADER_CELL_COMMAND = " \\intbl\\qc\\b ";
+	public static final String PRE_CELL_COMMAND  = " ";
+	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = " ";
 	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
 }
