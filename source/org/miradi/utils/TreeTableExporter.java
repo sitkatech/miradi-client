@@ -23,6 +23,7 @@ import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
+import org.miradi.rtf.RtfStyleManager;
 
 import com.java.sun.jtreetable.JTreeTable;
 
@@ -79,6 +80,18 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		
 		Object value = getTreeTable().getValueAt(row, column);
 		return getSafeValue(value);
+	}
+	
+	@Override
+	public String getStyleTagAt(int row, int column)
+	{
+		if (getBaseObjectForRow(row) == null)
+			return RtfStyleManager.createTag(getRowType(row));
+		
+		if (isTreeColumn(column))
+			return RtfStyleManager.createTag(getBaseObjectForRow(row));
+		
+		return super.getStyleTagAt(row, column);
 	}
 	
 	public JTree getTree()

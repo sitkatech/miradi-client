@@ -59,7 +59,10 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 		
 		if (columnTag.equals(Indicator.TAG_DETAIL))
 			return RtfStyleManager.COMMENT_STYLE_TAG;
-			
+		
+		if (getBaseObjectForRow(row) == null)
+			return RtfStyleManager.createTag(getRowType(row));
+		
 		if (isTreeColumn(tableColumn))
 			return RtfStyleManager.createTag(getBaseObjectForRow(row));
 		
