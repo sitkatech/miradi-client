@@ -277,43 +277,64 @@ public class RtfWriter
 	
 	public void startRtf() throws Exception
 	{
-		write(
-		"{\\rtf1\\ansi\\deff0\\adeflang1025" +
-		"{\\fonttbl{\\f0\\froman\\fprq2\\fcharset0 Times New Roman;}{\\f1\\froman\\fprq2" +
-		"\\fcharset0 Times New Roman;}{\\f2\\fswiss\\fprq2\\fcharset0 Arial;}{\\f3\\fnil" +
-		"\\fprq2\\fcharset0 Arial Unicode MS;}{\\f4\\fnil\\fprq2\\fcharset0 MS Mincho;}" +
-		"{\\f5\\fnil\\fprq2\\fcharset0 Tahoma;}{\\f6\\fnil\\fprq0\\fcharset0 Tahoma;}}" +
-		"{\\colortbl;\\red0\\green0\\blue0;\\red128\\green128\\blue128;}" +
-		"{\\stylesheet{\\s1\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}" +
-		"\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24" +
-		"\\lang1033\\loch\\f0\\fs24\\lang1033\\snext1 Normal;}{\\s2\\sb240\\sa120\\keepn\\cf0" +
-		"{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\afs28\\lang255\\ltrch\\dbch" +
-		"\\af4\\langfe255\\hich\\f2\\fs28\\lang1033\\loch\\f2\\fs28\\lang1033\\sbasedon1\\snext3 Heading;}" +
-		"{\\s3\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24" +
-		"\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033" +
-		"\\sbasedon1\\snext3 Body Text;}{\\s4\\sa120\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2" +
-		"\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033" +
-		"\\loch\\f0\\fs24\\lang1033\\sbasedon3\\snext4 List;}{\\s5\\sb120\\sa120\\cf0{\\*\\hyphen2" +
-		"\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24\\lang255\\ai\\ltrch\\dbch\\af3\\langfe255" +
-		"\\hich\\f0\\fs24\\lang1033\\i\\loch\\f0\\fs24\\lang1033\\i\\sbasedon1\\snext5 caption;}" +
-		"{\\s6\\cf0{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af6\\afs24" +
-		"\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\loch\\f0" +
-		"\\fs24\\lang1033\\sbasedon1\\snext6 Index;}{\\s7\\cf0{\\*\\hyphen2\\hyphlead2" +
-		"\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24\\lang255\\ltrch\\dbch\\af3\\langfe255\\hich" +
-		"\\f0\\fs24\\lang1033\\loch\\f0\\fs24\\lang1033\\sbasedon1\\snext7 Table Contents;}" +
-		"{\\s8\\cf0\\qc{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}\\rtlch\\af5\\afs24" +
-		"\\lang255\\ab\\ltrch\\dbch\\af3\\langfe255\\hich\\f0\\fs24\\lang1033\\b\\loch\\f0" +
-		"\\fs24\\lang1033\\b\\sbasedon7\\snext8 Table Heading;}}{\\info{\\author Miradi}{\\revtim" +
-		"\\yr0\\mo0\\dy0\\hr0\\min0}{\\printim\\yr0\\mo0\\dy0\\hr0\\min0}{\\comment StarWriter}" +
-		"{\\vern6800}}\\deftab709{\\*\\pgdsctbl{\\pgdsc0\\pgdscuse195\\pgwsxn12240\\pghsxn15840" +
-		"\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\pgdscnxt0 Standard;}}" +
-		"\\paperh15840\\paperw12240\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone" +
-		"\\pgwsxn12240\\pghsxn15840\\marglsxn1134\\margrsxn1134\\margtsxn1134\\margbsxn1134\\ftnbj" +
-		"\\ftnstart1\\ftnrstcont\\ftnnar\\aenddoc\\aftnrstcont\\aftnstart1\\aftnnrlc");
-		
+		writeRtfHeader();
+		writeFontTable();
+		writeColorTable();
+		writeInfo();
 		getRtfStyleManager().exportRtfStyleTable(this);
 	}
+
+	private void writeRtfHeader() throws Exception
+	{
+		writeln("{\\rtf1\\ansi\\deff0\\adeflang1025");
+	}
 	
+	private void writeFontTable() throws Exception
+	{
+		writeln("{\\fonttbl");
+			writeln("{\\f0\\froman\\fcharset0\\fprq2{\\*\\panose 02020603050405020304}Times New Roman;}");
+			writeln("{\\f1\\fswiss\\fcharset0\\fprq2{\\*\\panose 020b0604020202020204}Arial;}");
+			writeln("{\\f37\\froman\\fcharset238\\fprq2 Times New Roman CE;}");
+			writeln("{\\f38\\froman\\fcharset204\\fprq2 Times New Roman Cyr;}");
+			writeln("{\\f40\\froman\\fcharset161\\fprq2 Times New Roman Greek;}");
+			writeln("{\\f41\\froman\\fcharset162\\fprq2 Times New Roman Tur;}");
+			writeln("{\\f42\\fbidi \\froman\\fcharset177\\fprq2 Times New Roman (Hebrew);}");
+			writeln("{\\f43\\fbidi \\froman\\fcharset178\\fprq2 Times New Roman (Arabic);}");
+			writeln("{\\f44\\froman\\fcharset186\\fprq2 Times New Roman Baltic;}");
+			writeln("{\\f45\\froman\\fcharset163\\fprq2 Times New Roman (Vietnamese);}");
+			writeln("{\\f47\\fswiss\\fcharset238\\fprq2 Arial CE;}");
+			writeln("{\\f48\\fswiss\\fcharset204\\fprq2 Arial Cyr;}");
+			writeln("{\\f50\\fswiss\\fcharset161\\fprq2 Arial Greek;}");
+			writeln("{\\f51\\fswiss\\fcharset162\\fprq2 Arial Tur;}");
+			writeln("{\\f52\\fbidi \\fswiss\\fcharset177\\fprq2 Arial (Hebrew);}");
+			writeln("{\\f53\\fbidi \\fswiss\\fcharset178\\fprq2 Arial (Arabic);}");
+			writeln("{\\f54\\fswiss\\fcharset186\\fprq2 Arial Baltic;}");
+			writeln("{\\f55\\fswiss\\fcharset163\\fprq2 Arial (Vietnamese);}");
+		writeln("}");
+	}
+
+	private void writeColorTable() throws Exception
+	{
+		writeln("{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}");
+	}
+
+	private void writeInfo() throws Exception
+	{
+		writeln("{\\info");
+			writeln("{\\title Miradi}");
+			writeln("{\\author Miradi}");
+			writeln("{\\operator Miradi}");
+			writeln("{\\creatim\\yr2008\\mo8\\dy26\\hr15}");
+			writeln("{\\revtim\\yr2008\\mo8\\dy27\\hr10\\min24}");
+			writeln("{\\edmins140}");
+			writeln("{\\nofpages1}");
+			writeln("{\\nofwords4}");
+			writeln("{\\nofchars23}");
+			writeln("{\\nofcharsws26}");
+			writeln("{\\vern24613}");
+		writeln("}");
+	}
+
 	public void endRtf() throws Exception
 	{
 		endBlock();
