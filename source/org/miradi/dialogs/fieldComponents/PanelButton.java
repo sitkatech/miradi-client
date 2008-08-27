@@ -22,6 +22,7 @@ package org.miradi.dialogs.fieldComponents;
 import java.awt.Insets;
 
 import javax.swing.Action;
+import javax.swing.Icon;
 
 import org.martus.swing.UiButton;
 import org.miradi.actions.EAMAction;
@@ -34,6 +35,12 @@ public class PanelButton extends UiButton
 	{
 		super(text);
 		setFont(getMainWindow().getUserDataPanelFont());
+	}
+	
+	public PanelButton(String text, Icon icon)
+	{
+		this(text);
+		setIcon(icon);
 	}
 	
 	public PanelButton(Action action)
