@@ -39,14 +39,14 @@ public class RtfStyleManager
 	{
 		styleMap = new HashMap();
 		
-		creatNewStyle(COMMENT_STYLE_TAG, 					CS_15_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Long Text;}");		
-		creatNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	CS_16_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
-		creatNewStyle(ResultsChainDiagram.OBJECT_NAME,    	CS_17_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Results Chain Diagram;}");
-		creatNewStyle(Target.OBJECT_NAME,                 	CS_18_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Target;}");
-		creatNewStyle(Cause.OBJECT_NAME_THREAT,           	CS_19_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Direct Threat;}");
+		createNewStyle(COMMENT_STYLE_TAG, 					CS_15_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Long Text;}");		
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 	CS_16_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Conceptual Model Diagram;}");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    	CS_17_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Results Chain Diagram;}");
+		createNewStyle(Target.OBJECT_NAME,                 	CS_18_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Target;}");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           	CS_19_RTF_ID, " \\additive \\rtlch\\fcs1 \\af0 \\ltrch\\fcs0 \\b\\i\\fs28 \\sbasedon10 \\styrsid10564856 Direct Threat;}");
 	}
 
-	private void creatNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand)
+	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand)
 	{
 		RtfStyle rtfStyle = new RtfStyle(objectName, rtfStyleId, RTF_STYLE_FORMATTING_START_BLOCK + rtfStyleId + rtfFormatingCommand);
 		getStyleMap().put(objectName, rtfStyle);
