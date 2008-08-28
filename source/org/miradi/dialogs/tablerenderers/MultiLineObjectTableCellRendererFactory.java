@@ -74,7 +74,30 @@ public class MultiLineObjectTableCellRendererFactory extends
 			setText(value.toString());
 			return getPreferredSize().height;
 		}
-
+		
+		@Override
+		public void validate()
+		{
+			//Note: overriding to imporove speed
+		}
+		
+		@Override
+		public void invalidate()
+		{
+			//Note: overriding to imporove speed
+		}
+		
+		@Override
+		public void revalidate()
+		{
+			//Note: overriding to imporove speed
+		}
+		
+		@Override
+		public void repaint()
+		{
+			//Note: overriding to imporove speed
+		}		
 	}
 
 	private TableCellHtmlRendererComponent rendererComponent;
