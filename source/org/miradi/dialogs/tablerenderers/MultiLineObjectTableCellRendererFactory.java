@@ -50,16 +50,18 @@ public class MultiLineObjectTableCellRendererFactory extends
 
 	private Color getForegroundColor(JTable table, int row, int tableColumn, boolean isSelected)
 	{
-		Color fgColor = getBackgroundColor(table, row, tableColumn, isSelected);
-		return fgColor;
+		if(isSelected)
+			return table.getSelectionForeground();
+		
+		return getCellForegroundColor(table, row, tableColumn);
 	}
 
 	private Color getBackgroundColor(JTable table, int row, int tableColumn, boolean isSelected)
 	{
-		Color fgColor = isSelected ? 
-				table.getSelectionForeground() : 
-				getCellForegroundColor(table, row, tableColumn);
-		return fgColor;
+		if(isSelected) 
+			return table.getSelectionBackground();
+		
+		return getCellBackgroundColor();
 	}
 
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
