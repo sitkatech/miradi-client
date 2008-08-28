@@ -40,6 +40,9 @@ public abstract class AbstractTableExporter
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);
 	
+	//TODO these two methods were created to export details of tree or table.
+	// we currently dont export details of tree or tables, and these methods might
+	// need to be removed
 	abstract public Vector<Integer> getAllTypes();
 	abstract public ORefList getAllRefs(int objectType);
 	
