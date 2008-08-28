@@ -38,7 +38,7 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 			
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Tagged Object Set"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addFieldsOnOneLine(EAM.text("Tag"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
 		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
 		
