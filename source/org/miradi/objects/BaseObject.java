@@ -346,6 +346,14 @@ abstract public class BaseObject
 		return other.getId().equals(getId());
 	}
 	
+	public String getSafeLabel(BaseObject baseObject)
+	{
+		if (baseObject == null)
+			return "";
+		
+		return baseObject.getLabel();
+	}
+		
 	public String getLabel()
 	{
 		return label.get();
