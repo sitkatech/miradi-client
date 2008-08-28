@@ -74,7 +74,7 @@ public class ViabilityProjectNode extends TreeTableNode
 			return statusQuestion.findChoiceByCode(code);
 		}
 		
-		return null;
+		return "";
 	}
 
 	@Override
