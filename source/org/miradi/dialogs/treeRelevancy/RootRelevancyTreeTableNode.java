@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
@@ -62,7 +63,13 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 	{
 		return ORef.INVALID;
 	}
-
+	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+	
 	@Override
 	public Object getValueAt(int column)
 	{
