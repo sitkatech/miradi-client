@@ -50,13 +50,26 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 		
 		renderer.setBorder(getCellBorder());
 		
-		if(!isSelected)
+		if(isSelected)
 		{
-			renderer.setForeground(getCellForegroundColor(table, row, tableColumn));
-			renderer.setBackground(getCellBackgroundColor());
+			Color fg = table.getSelectionForeground();
+			Color bg = table.getSelectionBackground();
+			setColors(renderer, fg, bg);
+		}
+		else
+		{
+			Color fg = getCellForegroundColor(table, row, tableColumn);
+			Color bg = getCellBackgroundColor();
+			setColors(renderer, fg, bg);
 		}
 			
 		return renderer;
+	}
+
+	private void setColors(JComponent renderer, Color fg, Color bg)
+	{
+		renderer.setForeground(fg);
+		renderer.setBackground(bg);
 	}
 
 	protected String getAsHtmlText(Object value)
