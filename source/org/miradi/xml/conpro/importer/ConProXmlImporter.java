@@ -314,8 +314,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		String methodString = getNodeContent(indicatorNode, METHODS);
 		ORef methodRef = getProject().createObject(Task.getObjectType());
-		setData(methodRef, Task.TAG_LABEL, SEE_DETAILS_FIELD_METHOD_NAME);
-		setData(methodRef, Task.TAG_DETAILS, methodString);
+		if (methodString.length() > 0)
+		{
+			setData(methodRef, Task.TAG_LABEL, SEE_DETAILS_FIELD_METHOD_NAME);
+			setData(methodRef, Task.TAG_DETAILS, methodString);
+		}
 		
 		ORefList methodRefs = new ORefList(methodRef);
 		setIdListFromRefListData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
