@@ -165,12 +165,6 @@ public class Objective extends Desire
 		}
 	}
 
-	//TODO remove this unused method
-	public ORefList getDefaultRelevantStrategies()
-	{
-		return getUpstreamNonDraftStrategies();
-	}
-	
 	public ORefList getUpstreamNonDraftStrategies()
 	{
 		ORefList nonDraftStrategyRefs = new ORefList();
