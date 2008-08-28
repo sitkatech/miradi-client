@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -46,6 +47,8 @@ import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -150,7 +153,7 @@ abstract public class DiagramPaster
 		Command commandToFixRefs = fixUpRefList(pastedObjectMap, newObject, tag);
 		return new Command[] {commandToFixRefs};
 	}
-		
+	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
 		if (Assignment.getObjectType() == newObject.getType())
@@ -195,6 +198,21 @@ abstract public class DiagramPaster
 		ORef fixedRef = fixupSingleRef(pastedObjectMap, refToFix);
 		
 		return new Command[] {new CommandSetObjectData(newObject.getRef(), tag, fixedRef.toString())};
+	}
+		
+	private Command fixUpRelevancySet(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
+	{
+		RelevancyOverrideSet newOverrideSet = new RelevancyOverrideSet();
+		RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(newObject.getData(tag));
+		for(RelevancyOverride relevancyOverride : relevancyOverrideSet)
+		{
+			ORef oldRef = relevancyOverride.getRef();
+			ORef newRef = fixupSingleRef(pastedObjectMap, oldRef);
+			RelevancyOverride override = new RelevancyOverride(newRef, relevancyOverride.isOverride());
+			newOverrideSet.add(override);
+		}
+		
+		return new CommandSetObjectData(newObject.getRef(), tag, newOverrideSet.toString());
 	}
 
 	private Command fixUpIdList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
@@ -354,6 +372,32 @@ abstract public class DiagramPaster
 			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
 			fixupRefs(getOldToNewObjectRefMap(),newObject);
+		}
+		
+		fixUpRelevancyOverrideSet();
+	}
+
+	private void fixUpRelevancyOverrideSet() throws Exception
+	{
+		Collection<ORef> newPastedRefs = getOldToNewObjectRefMap().values();
+		for(ORef ref : newPastedRefs)
+		{
+			BaseObject newObject = getProject().findObject(ref);
+			fixUpRelevancyOverrideSet(newObject);
+		}
+	}
+
+	private void fixUpRelevancyOverrideSet(BaseObject newObject) throws Exception
+	{
+		String[] fieldTags = newObject.getFieldTags();
+		for (int i = 0; i < fieldTags.length; ++i)
+		{
+			String tag = fieldTags[i];
+			if (newObject.isRelevancyOverrideSet(tag))
+			{
+				Command updateRelevancyCommand = fixUpRelevancySet(getOldToNewObjectRefMap(), newObject, tag);
+				getProject().executeCommand(updateRelevancyCommand);
+			}
 		}
 	}
 
