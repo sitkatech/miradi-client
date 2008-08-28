@@ -568,7 +568,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			ORef threatRef = getNodeAsRef(strategyThreatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
 			ORef strategyRef = getNodeAsRef(strategyThreatTargetAssociationNode, STRATEGY_ID, Strategy.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
-			createFactorLinkAndAddToDiagram(threatRef, targetRef);
 		}
 	}
 
