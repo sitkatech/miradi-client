@@ -21,7 +21,9 @@ package org.miradi.dialogs.treetables;
 
 import java.util.Arrays;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.HtmlUtilities;
 
@@ -48,6 +50,12 @@ public abstract class TreeTableNode implements Comparable
 	
 	public int getType()
 	{
+		if (getObject() == null)
+		{
+			EAM.logWarning("Object is null in getType, returning Fake as object type.");
+			return ObjectType.FAKE;
+		}
+		
 		return getObjectReference().getObjectType();
 	}
 
