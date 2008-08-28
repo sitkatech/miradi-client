@@ -141,6 +141,11 @@ abstract public class BaseObject
 		
 		return false;
 	}
+	
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		return false;
+	}
 			
 	public int getAnnotationType(String tag)
 	{

@@ -77,6 +77,17 @@ public class Objective extends Desire
 		return super.getAnnotationType(tag);
 	}
 	
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		if (tag.equals(TAG_RELEVANT_INDICATOR_SET))
+			return true;
+		
+		if (tag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+		
+		return false;
+	}
+	
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
@@ -154,6 +165,7 @@ public class Objective extends Desire
 		}
 	}
 
+	//TODO remove this unused method
 	public ORefList getDefaultRelevantStrategies()
 	{
 		return getUpstreamNonDraftStrategies();
