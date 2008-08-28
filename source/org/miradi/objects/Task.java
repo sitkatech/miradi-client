@@ -117,7 +117,12 @@ public class Task extends Factor
 		ensureCachedTypeStringIsValid();
 		return cachedObjectTypeName;
 	}
-
+	
+	public String getDetails()
+	{
+		return details.get();
+	}
+	
 	public static int getObjectType()
 	{
 		return ObjectType.TASK;
