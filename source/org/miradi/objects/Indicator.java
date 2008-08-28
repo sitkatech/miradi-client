@@ -88,7 +88,7 @@ public class Indicator extends BaseObject
 			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
-			return getSafeLabel();
+			return getSafeLabel(getDirectOrIndirectOwningFactor());
 		
 		if(fieldTag.equals(PSEUDO_TAG_METHODS))
 			return getIndicatorMethodsSingleLine();
@@ -105,15 +105,6 @@ public class Indicator extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 
-	private String getSafeLabel()
-	{
-		BaseObject owner = getTargetOwner();
-		if (owner == null)
-			return "";
-		
-		return owner.getLabel();
-	}
-	
 	public String getCurrentStatus()
 	{
 		ORef measurementRef = getLatestMeasurementRef();
@@ -154,21 +145,6 @@ public class Indicator extends BaseObject
 			return ORef.INVALID;
 		
 		return latestObject.getRef();
-	}
-	
-	public BaseObject getTargetOwner()
-	{
-		if (!isViabilityIndicator())
-			return super.getOwner();
-		
-		ORefList keaOwnerRefs = findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
-		if (keaOwnerRefs.size() != 1)
-			return null;
-		
-		ORef keaRef = keaOwnerRefs.getRefForType(KeyEcologicalAttribute.getObjectType());
-		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
-		
-		return kea.getOwner();
 	}
 	
 	@Override
