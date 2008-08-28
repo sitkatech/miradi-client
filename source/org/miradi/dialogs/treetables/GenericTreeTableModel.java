@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
+import java.util.Vector;
+
 import javax.swing.tree.TreePath;
 
 import org.miradi.ids.BaseId;
@@ -159,20 +161,35 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public ORefList getFullyExpandedRefList() throws Exception
 	{
-		TreeTableNode thisRoot = (TreeTableNode) getRoot();
-		ORefList fullyExpandedRefList = new ORefList();
-		recursivelyGetFullyExpandedRefs(fullyExpandedRefList, thisRoot);
+		ORefList fullyExpandedObjectRefs = new ORefList();
+		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathList();
+		for(TreePath treePath : fullExpandedNodeList)
+		{
+			TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
+			fullyExpandedObjectRefs.add(node.getObjectReference());
+		}
 		
-		return fullyExpandedRefList;
+		return fullyExpandedObjectRefs;
 	}
 	
-	private void recursivelyGetFullyExpandedRefs(ORefList objRefListToUse, TreeTableNode node)
+	public Vector<TreePath> getFullyExpandedTreePathList() throws Exception
 	{
-		objRefListToUse.add(node.getObjectReference());
+		TreePath pathToRoot = getPathToRoot();
+		Vector<TreePath> fullyExpandedTreePathList = new Vector();
+		recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, pathToRoot);
+		
+		return fullyExpandedTreePathList;
+	}
+	
+	private void recursivelyGetFullyExpandedTreePaths(Vector<TreePath> fullyExpandedTreePathList, TreePath treePath)
+	{
+		fullyExpandedTreePathList.add(treePath);
+		TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
 		for(int childIndex = 0; childIndex < node.getChildCount(); ++childIndex)
 		{
 			TreeTableNode childNode = node.getChild(childIndex);
-			recursivelyGetFullyExpandedRefs(objRefListToUse, childNode);
+			TreePath thisTreePath = treePath.pathByAddingChild(childNode);
+			recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, thisTreePath);
 		}
 	}
 
