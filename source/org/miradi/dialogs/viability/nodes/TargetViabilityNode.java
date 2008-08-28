@@ -80,7 +80,7 @@ public class TargetViabilityNode extends TreeTableNode
 			return new StatusQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(Target.TAG_EMPTY))
-			return null;
+			return "";
 		
 		return rawValue;
 	}

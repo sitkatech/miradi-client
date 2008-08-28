@@ -77,7 +77,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
-			return null;
+			return "";
 		
 		return kea.getData(tag);
 	}
