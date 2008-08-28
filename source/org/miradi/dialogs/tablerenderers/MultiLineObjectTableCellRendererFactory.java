@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JComponent;
@@ -48,27 +47,10 @@ public class MultiLineObjectTableCellRendererFactory extends
 		return component;
 	}
 
-	private Color getForegroundColor(JTable table, int row, int tableColumn, boolean isSelected)
-	{
-		if(isSelected)
-			return table.getSelectionForeground();
-		
-		return getCellForegroundColor(table, row, tableColumn);
-	}
-
-	private Color getBackgroundColor(JTable table, int row, int tableColumn, boolean isSelected)
-	{
-		if(isSelected) 
-			return table.getSelectionBackground();
-		
-		return getCellBackgroundColor();
-	}
-
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
 	{
 		rendererComponent.setText(html);
-		rendererComponent.setForeground(getForegroundColor(table, row, tableColumn, isSelected));
-		rendererComponent.setBackground(getBackgroundColor(table, row, tableColumn, isSelected));
+		
 		return rendererComponent;
 	}
 
