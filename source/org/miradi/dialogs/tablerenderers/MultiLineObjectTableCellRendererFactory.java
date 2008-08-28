@@ -20,15 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
 
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.wizard.MiradiHtmlViewer;
 
 public class MultiLineObjectTableCellRendererFactory extends
 		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
@@ -42,48 +41,56 @@ public class MultiLineObjectTableCellRendererFactory extends
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
-		String bgColor = getHtmlBackgroundColor(table, isSelected);
-		String fgColor = getHtmlForegroundColor(table, row, tableColumn, isSelected);
-		String html = getAsHtmlText(value, "<body bgcolor='" + bgColor + "' fgcolor = '" + fgColor + "'>");
-		return getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
+		if(value == null)
+			value = "";
+		String html = value.toString();
+		JComponent component = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, html);
+		return component;
 	}
 
-	private String getHtmlForegroundColor(JTable table, int row, int tableColumn, boolean isSelected)
+	private Color getForegroundColor(JTable table, int row, int tableColumn, boolean isSelected)
+	{
+		Color fgColor = getBackgroundColor(table, row, tableColumn, isSelected);
+		return fgColor;
+	}
+
+	private Color getBackgroundColor(JTable table, int row, int tableColumn, boolean isSelected)
 	{
 		Color fgColor = isSelected ? 
 				table.getSelectionForeground() : 
 				getCellForegroundColor(table, row, tableColumn);
-		return AppPreferences.convertToHexString(fgColor);
+		return fgColor;
 	}
 
-	private String getHtmlBackgroundColor(JTable table, boolean isSelected)
-	{
-		Color bgColor = isSelected ? 
-				table.getSelectionBackground() : 
-				getCellBackgroundColor();
-		return AppPreferences.convertToHexString(bgColor);
-	}
-	
-	public HtmlFormViewer getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
+	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, String html)
 	{
 		rendererComponent.setText(html);
+		rendererComponent.setForeground(getForegroundColor(table, row, tableColumn, isSelected));
+		rendererComponent.setBackground(getBackgroundColor(table, row, tableColumn, isSelected));
 		return rendererComponent;
 	}
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		HtmlFormViewer viewer = (HtmlFormViewer)getRendererComponent(table, false, false, row, column, value);
+		TableCellPreferredHeightProvider viewer = (TableCellPreferredHeightProvider)getRendererComponent(table, false, false, row, column, value);
 
-		int columnWidth = table.getCellRect(row, column, false).width;
-		int preferredHeight = viewer.getPreferredHeight(columnWidth);
-		return preferredHeight;
+		return viewer.getPreferredHeight(table, row, column, value);
 	}
 	
-	class TableCellHtmlRendererComponent extends MiradiHtmlViewer
+	class TableCellHtmlRendererComponent extends JTextPane implements TableCellPreferredHeightProvider
 	{
 		public TableCellHtmlRendererComponent(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
 		{
-			super(mainWindowToUse, hyperLinkHandler);
+			super();
+		}
+
+		public int getPreferredHeight(JTable table, int row, int column, Object value)
+		{
+			int width = table.getCellRect(row, column, false).width;
+			setSize(new Dimension(width, Short.MAX_VALUE));
+			setMaximumSize(new Dimension(width, Short.MAX_VALUE));
+			setText(value.toString());
+			return getPreferredSize().height;
 		}
 
 	}
