@@ -52,13 +52,16 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
-			toXml(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), "StrategicPlanTree");
+			exportReport(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
-			toXml(writer, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns(), "MonitoringPlanTree");
+			exportReport(writer, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE))
-			toXml(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns(), "WorkPlanTree");
+			exportReport(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
+			exportReport(writer, RowManager.getProgressReportRows(), ColumnManager.getProgressReportColumns());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
 			exportResourcesTab(writer);
@@ -113,7 +116,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return multiModelExporter;
 	}
 	
-	private void toXml(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow, String treeName) throws Exception
+	private void exportReport(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
 		exportTable(writer, createTables(getProject(), rowsToShow, columnsToShow));
 	}

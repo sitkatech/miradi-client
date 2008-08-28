@@ -19,10 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.util.Vector;
+
+import javax.swing.tree.TreePath;
+
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -34,12 +37,13 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	{
 		project = projectToUse;
 		model = modelToUse;
-		rowObjectRefs = model.getFullyExpandedRefList();
+		fullyExpandedTreePaths = model.getFullyExpandedTreePathList();
 	}
 	
 	public BaseObject getBaseObjectForRow(int row)
 	{
-		ORef rowObjectRef = rowObjectRefs.get(row);
+		TreeTableNode node = (TreeTableNode) fullyExpandedTreePaths.get(row).getLastPathComponent();
+		ORef rowObjectRef = node.getObjectReference();
 		if (rowObjectRef.isInvalid())
 			return null;
 		
@@ -48,11 +52,8 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 
 	public int getDepth(int row)
 	{
-		BaseObject objectForRow = getBaseObjectForRow(row);
-		if (objectForRow == null)
-			return 0;
-		
-		return  getModel().getPathOfNode(objectForRow.getRef()).getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
+		TreePath treePath = fullyExpandedTreePaths.get(row);
+		return  treePath.getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
 	}
 
 	public String getHeaderFor(int column)
@@ -62,7 +63,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 
 	public int getRowCount()
 	{
-		return rowObjectRefs.size();
+		return fullyExpandedTreePaths.size();
 	}
 
 	@Override
@@ -105,6 +106,6 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	}
 	
 	private GenericTreeTableModel model;
-	private ORefList rowObjectRefs;
+	private Vector<TreePath> fullyExpandedTreePaths;
 	private Project project;
 }

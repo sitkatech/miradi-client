@@ -54,6 +54,7 @@ public class StandardReportPanel extends TwoColumnPanel
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
 		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
+		addStandardReport(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE);
 	}
 
 	private void addStandardReport(String code)
