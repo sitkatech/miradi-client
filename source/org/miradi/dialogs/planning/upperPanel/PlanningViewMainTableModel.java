@@ -105,7 +105,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		BaseObject object = getBaseObjectForRow(row);
 		if(object == null)
-			return null;
+			return "";
 		
 		return getValueAt(object, column);
 	}
@@ -115,11 +115,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{	
 			if(baseObject == null)
-				return null;
+				return "";
 
 			String columnTag = getColumnTagForNode(baseObject.getType(), col);
 			if (! baseObject.doesFieldExist(columnTag))
-				return null;
+				return "";
 
 			String rawValue = "";
 			if (baseObject.isPseudoField(columnTag))
