@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ResultsChainDiagram;
@@ -46,6 +47,12 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	public int getChildCount()
 	{
 		return children.size();
+	}
+	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
 	}
 
 	public BaseObject getObject()
