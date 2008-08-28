@@ -156,13 +156,8 @@ public class RtfWriter
 	{
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
-			writeTableRow(exportableTable, row);
+			writeRowData(exportableTable, row);
 		}
-	}
-
-	private void writeTableRow(AbstractTableExporter exportableTable, int row) throws Exception
-	{
-		writeRowData(exportableTable, row);
 	}
 
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
