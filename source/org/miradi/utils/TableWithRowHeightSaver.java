@@ -124,7 +124,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		catch(RuntimeException e)
 		{
 			EAM.logWarning("Error in table " + table.getClass().getName() + " column " + column);
-			EAM.logStackTrace();
+			EAM.logException(e);
 			return 1;
 		}
 	}
