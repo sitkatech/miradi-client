@@ -90,7 +90,6 @@ public class MultiLineObjectTableCellRendererFactory extends
 		{
 			int width = table.getCellRect(row, column, false).width;
 			setSize(new Dimension(width, Short.MAX_VALUE));
-			setMaximumSize(new Dimension(width, Short.MAX_VALUE));
 			setText(value.toString());
 			return getPreferredSize().height;
 		}
