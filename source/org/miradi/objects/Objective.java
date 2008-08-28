@@ -105,12 +105,18 @@ public class Objective extends Desire
 	
 	private String getLatestProgressPercentDetails()
 	{
-		return getLatestProgressPercent().getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+		ProgressPercent latestProgressPercent = getLatestProgressPercent();
+		if(latestProgressPercent == null)
+			return "";
+		return latestProgressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}
 
 	private String getLatestProgressPercentComplete()
 	{
-		return getLatestProgressPercent().getData(ProgressPercent.TAG_PERCENT_COMPLETE);
+		ProgressPercent latestProgressPercent = getLatestProgressPercent();
+		if(latestProgressPercent == null)
+			return "";
+		return latestProgressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE);
 	}
 	
 	private ProgressPercent getLatestProgressPercent()
