@@ -147,7 +147,7 @@ abstract public class DiagramPaster
 		if (!newObject.isRefList(tag))
 			return new Command[0];
 		
-		Command commandToFixRefs = fixUpRefList(pastedObjectMap, newObject, tag, newObject.getAnnotationType(tag));
+		Command commandToFixRefs = fixUpRefList(pastedObjectMap, newObject, tag);
 		return new Command[] {commandToFixRefs};
 	}
 		
@@ -201,23 +201,23 @@ abstract public class DiagramPaster
 	{
 		//FIXME currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
-		IdList newList = new IdList(annotationType);
-		for (int i = 0; i < oldList.size(); ++i)
-		{
-			ORef oldRef = oldList.getRef(i);
-			ORef refToAdd = fixupSingleRef(pastedObjectMap, oldRef);
-			if (!refToAdd.isInvalid())
-				newList.addRef(refToAdd);
-		}
+		ORefList newRefList = getNewFixedUpRefList(pastedObjectMap, new ORefList(annotationType, oldList));		
+		IdList newList = newRefList.convertToIdList(annotationType);
+		
+		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
+	}
+  
+	private Command fixUpRefList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag) throws Exception
+	{
+		//FIXME currently items ids found in list but not in map are not added to new list
+		ORefList oldList = new ORefList(newObject.getData(annotationTag));
+		ORefList newList = getNewFixedUpRefList(pastedObjectMap, oldList);
 		
 		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
 	}
 
-	//TODO this is duplicate code as above exceot it deals in RefList,  
-	private Command fixUpRefList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
+	private ORefList getNewFixedUpRefList(HashMap pastedObjectMap, ORefList oldList) throws Exception
 	{
-		//FIXME currently items ids found in list but not in map are not added to new list
-		ORefList oldList = new ORefList(newObject.getData(annotationTag));
 		ORefList newList = new ORefList();
 		for (int i = 0; i < oldList.size(); ++i)
 		{
@@ -226,8 +226,7 @@ abstract public class DiagramPaster
 			if (!refToAdd.isInvalid())
 				newList.add(refToAdd);
 		}
-		
-		return new CommandSetObjectData(newObject.getRef(), annotationTag, newList.toString());
+		return newList;
 	}
 
 	
