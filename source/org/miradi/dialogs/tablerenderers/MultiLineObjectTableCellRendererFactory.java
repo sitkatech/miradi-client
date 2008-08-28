@@ -25,12 +25,11 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 
-import org.miradi.main.MainWindow;
 
 public class MultiLineObjectTableCellRendererFactory extends
 		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
 {
-	public MultiLineObjectTableCellRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

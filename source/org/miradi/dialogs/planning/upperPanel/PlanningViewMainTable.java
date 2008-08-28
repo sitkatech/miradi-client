@@ -50,7 +50,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		return new MultiLineObjectTableCellRendererFactory(getMainWindow(), this, fontProvider);
+		return new MultiLineObjectTableCellRendererFactory(this, fontProvider);
 	}
 	
 	protected Color getBackgroundColor(String columnTag)
