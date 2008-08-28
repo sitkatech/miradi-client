@@ -25,7 +25,6 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 
-import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.MainWindow;
 
 public class MultiLineObjectTableCellRendererFactory extends
@@ -35,7 +34,7 @@ public class MultiLineObjectTableCellRendererFactory extends
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new TableCellHtmlRendererComponent(mainWindowToUse, null);
+		rendererComponent = new TableCellHtmlRendererComponent();
 	}
 	
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
@@ -63,7 +62,7 @@ public class MultiLineObjectTableCellRendererFactory extends
 	
 	class TableCellHtmlRendererComponent extends JTextPane implements TableCellPreferredHeightProvider
 	{
-		public TableCellHtmlRendererComponent(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandler)
+		public TableCellHtmlRendererComponent()
 		{
 			super();
 		}
