@@ -23,7 +23,7 @@ import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 
 public class MultiLineObjectTableCellRendererFactory extends
@@ -59,13 +59,14 @@ public class MultiLineObjectTableCellRendererFactory extends
 		return viewer.getPreferredHeight(table, row, column, value);
 	}
 	
-	class TableCellHtmlRendererComponent extends JTextPane implements TableCellPreferredHeightProvider
+	class TableCellHtmlRendererComponent extends JTextArea implements TableCellPreferredHeightProvider
 	{
 		public TableCellHtmlRendererComponent()
 		{
-			super();
+			setLineWrap(true);
+			setWrapStyleWord(true);
 		}
-
+		
 		public int getPreferredHeight(JTable table, int row, int column, Object value)
 		{
 			int width = table.getCellRect(row, column, false).width;
