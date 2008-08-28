@@ -66,7 +66,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 
 	public void updateAutomaticRowHeights()
 	{
-		if(rowHeightController == null)
+		if(getParent() == null || rowHeightController == null)
 			return;
 		
 		rowHeightController.updateAutomaticRowHeights();

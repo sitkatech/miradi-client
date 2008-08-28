@@ -47,6 +47,15 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		tree.removeTreeExpansionListener(this);
 	}
 	
+	@Override
+	public void updateAutomaticRowHeights()
+	{
+		if(ignoreNotifications)
+			return;
+		
+		super.updateAutomaticRowHeights();
+	}
+	
 	public void addObjectToExpandedList(ORef ref) throws Exception
 	{
 		ORefList expandedList = getExpandedNodeList();
@@ -70,11 +79,17 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		ignoreNotifications = true;
 		try
 		{
-			updateTreeExpansion(expandedNodeRefs);
+			TreePath selectedPath = tree.getSelectionPath();
+			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
+			TreePath rootPath = new TreePath(root);
+			recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath);
+			treeTableModelAdapter.fireTableDataChanged();
+			tree.addSelectionPath(selectedPath);
 		}
 		finally
 		{
 			ignoreNotifications = false;
+			updateAutomaticRowHeights();
 		}
 	}
 	
@@ -110,24 +125,6 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error has occurred making the new object visible");
-		}
-	}
-	
-	void updateTreeExpansion(ORefList expandedList)
-	{
-		ignoreNotifications = true;
-		try
-		{
-			TreePath selectedPath = tree.getSelectionPath();
-			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
-			TreePath rootPath = new TreePath(root);
-			recursiveChangeNodeExpansionState(expandedList, rootPath);
-			treeTableModelAdapter.fireTableDataChanged();
-			tree.addSelectionPath(selectedPath);
-		}
-		finally
-		{
-			ignoreNotifications = false;
 		}
 	}
 	
