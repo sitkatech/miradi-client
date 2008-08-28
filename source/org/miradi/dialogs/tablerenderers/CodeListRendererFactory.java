@@ -32,7 +32,7 @@ public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFac
 {
 	public CodeListRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(mainWindowToUse, providerToUse, fontProviderToUse);
+		super(providerToUse, fontProviderToUse);
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
