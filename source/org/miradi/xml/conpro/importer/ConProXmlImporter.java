@@ -1104,7 +1104,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private ORef objectiveHolderRef;
 	private ORef indicatorHolderRef;
 	
-	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String PREFIX = "cp:";
 	
 	private static final int NON_DRAFT_STRATEGY_X_COLUMN = 30;
