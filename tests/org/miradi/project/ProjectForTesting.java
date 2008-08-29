@@ -85,7 +85,6 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
 import org.miradi.xml.conpro.ConProMiradiXml;
-import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 
 
@@ -514,7 +513,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_STATUS, IndicatorStatusRatingQuestion.GOING_WELL_CODE);
 		
-		Task task = createAndPopulateTask(ConProXmlImporter.SEE_DETAILS_FIELD_METHOD_NAME);
+		Task task = createAndPopulateTask("Some Method Name");
 		IdList taskIds = new IdList(Task.getObjectType());
 		taskIds.addRef(task.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_TASK_IDS, taskIds.toString());
