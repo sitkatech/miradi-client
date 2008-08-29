@@ -89,7 +89,6 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		finally
 		{
 			ignoreNotifications = false;
-			updateAutomaticRowHeights();
 		}
 	}
 	
