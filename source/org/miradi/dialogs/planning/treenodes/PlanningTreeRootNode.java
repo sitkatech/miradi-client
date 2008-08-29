@@ -79,16 +79,16 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	{
 		children = new Vector();
 
-		boolean isConceptualModelVisible = visibleRows.contains(ConceptualModelDiagram.OBJECT_NAME);
 		boolean isResultsChainVisible = visibleRows.contains(ResultsChainDiagram.OBJECT_NAME);
+		boolean isConceptualModelVisible = visibleRows.contains(ConceptualModelDiagram.OBJECT_NAME);
 		
-		boolean includeConceptualModelItems = isConceptualModelVisible || !isResultsChainVisible;
 		boolean includeResultsChainItems = isResultsChainVisible || !isConceptualModelVisible;
+		boolean includeConceptualModelItems = isConceptualModelVisible || !isResultsChainVisible;
 		
-		if(includeConceptualModelItems)
-			addConceptualModel();
 		if(includeResultsChainItems)
 			addResultsChainDiagrams();
+		if(includeConceptualModelItems)
+			addConceptualModel();
 		
 		pruneUnwantedLayers(visibleRows);
 	}
