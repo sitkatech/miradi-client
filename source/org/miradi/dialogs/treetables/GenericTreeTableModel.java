@@ -136,7 +136,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	
 	public Class getColumnClass(int column)
 	{
-		if(column == 0)
+		if(column == PanelTreeTable.TREE_COLUMN_INDEX)
 			return TreeTableModel.class;
 		return String.class;
 	}
