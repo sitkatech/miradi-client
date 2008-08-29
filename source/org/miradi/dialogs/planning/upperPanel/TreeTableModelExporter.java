@@ -52,8 +52,13 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 
 	public int getDepth(int row, int column)
 	{
-		TreePath treePath = fullyExpandedTreePaths.get(row);
-		return  treePath.getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
+		if (isTreeColumn(column))
+		{
+			TreePath treePath = fullyExpandedTreePaths.get(row);
+			return  treePath.getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
+		}
+		
+		return 0;
 	}
 
 	public String getHeaderFor(int column)
