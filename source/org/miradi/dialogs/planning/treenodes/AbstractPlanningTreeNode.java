@@ -64,7 +64,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	public String getObjectTypeName()
 	{
-		return getObject().getTypeName();
+		if (getObject() != null)
+			return getObject().getTypeName();
+		
+		EAM.logError("getObject() in getObjectTypeName is null");
+		return "";
 	}
 	
 	public TreeTableNode getChild(int index)
