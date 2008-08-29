@@ -104,7 +104,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(tag);
 		
-		return null;
+		return new ChoiceItem("", "");
 	}
 
 	private Object createStatusConfidenceChoiceItem(String tag)
