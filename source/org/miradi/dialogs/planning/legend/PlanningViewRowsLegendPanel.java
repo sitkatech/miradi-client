@@ -81,8 +81,8 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		panel.disableFill();
 		panel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
-		addIconLineWithCheckBox(panel, ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon());
 		addIconLineWithCheckBox(panel, ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon());
+		addIconLineWithCheckBox(panel, ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon());
 
 		addSeparator(panel);
 		
