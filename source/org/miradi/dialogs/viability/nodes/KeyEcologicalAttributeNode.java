@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 
@@ -77,7 +78,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
-			return "";
+			return new ChoiceItem("", "");
 		
 		return kea.getData(tag);
 	}
