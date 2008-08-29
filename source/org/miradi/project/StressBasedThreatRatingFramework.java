@@ -67,7 +67,9 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		Vector<Integer> highestTargetRatingValues = new Vector<Integer>();
 		for (int i = 0; i < targets.length; ++i)
 		{
-			int summaryRatingValue = get2PrimeSummaryRatingValue(targets[i]);
+			Factor target = targets[i];
+			int[] bundleValues = calculateSummaryRatingValues(target);
+			int summaryRatingValue = getStressBasedThreatFormula().getHighestRating357Not2Prime(bundleValues);
 			if (summaryRatingValue > 0)
 				highestTargetRatingValues.add(summaryRatingValue);
 		}

@@ -104,13 +104,13 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
 		int targetMajorityRating = framework.getTargetMajorityRating();
-		assertEquals("wrong target majority rating?", 2, targetMajorityRating);
+		assertEquals("wrong target majority rating?", 3, targetMajorityRating);
 		
 		Target emptyTarget = getProject().createTarget();
 		Cause emptyThreat = getProject().createCause();
 		getProject().createFactorLink(emptyThreat.getRef(), emptyTarget.getRef());
 		int targetMajorityRatingWithTwoTargets = framework.getTargetMajorityRating();
-		assertEquals("wrong target majority rating?", 2, targetMajorityRatingWithTwoTargets);
+		assertEquals("wrong target majority rating?", 3, targetMajorityRatingWithTwoTargets);
 	}
 	
 	public void testGetThreatThreatRatingValue() throws Exception

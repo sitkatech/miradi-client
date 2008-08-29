@@ -99,20 +99,4 @@ public class StressBasedThreatFormula extends ThreatFormula
 		return getHighestWithValue(low, medium, high, veryHigh);
 	}
 	
-	public int getHighestWithValue(int low, int medium, int high, int veryHigh)
-	{
-		if (veryHigh > 0)
-			return 4;
-		
-		if (high > 0)
-			return 3;
-		
-		if (medium > 0)
-			return 2;
-		
-		if (low > 0)
-			return 1;
-		
-		return 0;
-	}
 }
