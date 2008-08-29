@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -34,19 +35,21 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-				Indicator.PSEUDO_TAG_METHODS, 
+				Factor.TAG_TEXT,
 				Indicator.PSEUDO_TAG_FACTOR,
-				Indicator.TAG_PRIORITY,
-				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
-				});
+				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS,
+		});
 	}
 
 	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {
-				ConceptualModelDiagram.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
+				ConceptualModelDiagram.OBJECT_NAME,
 				Target.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
