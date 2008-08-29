@@ -160,7 +160,6 @@ public class RtfWriter
 
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
-		final int COLUMN_TO_PAD = 0;
 		writeRtfCommand(ROW_HEADER);
 		writeCellCommands(exportableTable);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
@@ -170,13 +169,14 @@ public class RtfWriter
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
 			writeln(styleFormattingCommand);
 		
-			int paddingCount = exportableTable.getDepth(row);
-			if (column == COLUMN_TO_PAD)
-				createPadding(paddingCount);
-
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
+			{
+				int paddingCount = exportableTable.getDepth(row);
+				insertIndents(paddingCount);
 				writeImage(BufferedImageFactory.getImage(cellIcon));
+				insertTab();
+			}
 			
 			writeEncoded(exportableTable.getTextAt(row, column));
 			
@@ -263,12 +263,12 @@ public class RtfWriter
 		return firstDigit + secondDigit + thirdDigit + forthDigit;
 	}
 	
-	public void createPadding(int padCount) throws Exception
+	public void insertIndents(int padCount) throws Exception
 	{
-		for (int i = 0; i < padCount; ++i)
-		{
-			insertTab();
-		}
+		final int EIGHTH_OF_AN_INCH = 180;
+		final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
+		int indentInTwips = (padCount * EIGHTH_OF_AN_INCH) + QUARTER_INCH;
+		write("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
 	}
 	
 	public void startRtf() throws Exception
