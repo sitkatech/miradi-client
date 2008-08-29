@@ -193,28 +193,28 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		
 	}
 	
-	public ValueOption getHighestValueForTarget(BaseId targetId)
+	public int getHighestValueForTarget(BaseId targetId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
-		if(bundleArray.length == 0)
-			return findValueOptionByNumericValue(0);
-		ValueOption highestValue = getBundleValue(bundleArray[0]);
-		for(int i = 0; i < bundleArray.length; ++i)
-		{
-			ValueOption thisValue = getBundleValue(bundleArray[i]);
-			if(thisValue.getNumericValue() > highestValue.getNumericValue())
-				highestValue = thisValue;
-		}
-		return highestValue;
+		int[] bundleValues = extractBundleValues(bundleArray);
+		return getSimpleThreatFormula().getHighestRating357Not2Prime(bundleValues);
 	}
 	
+	private int[] extractBundleValues(ThreatRatingBundle[] bundleArray)
+	{
+		int[] values = new int[bundleArray.length];
+		for(int i = 0; i < values.length; ++i)
+			values[i] = getBundleValue(bundleArray[i]).getNumericValue();
+		return values;
+	}
+
 	public ValueOption getProjectMajorityRating()
 	{
 		Factor[] targets = getProject().getTargetPool().getTargets();
 		Vector<Integer> highestValues = new Vector();
 		for(int i = 0; i < targets.length; ++i)
 		{
-			int targetRating = getHighestValueForTarget(targets[i].getId()).getNumericValue();
+			int targetRating = getHighestValueForTarget(targets[i].getId());
 			if (targetRating > 0)
 				highestValues.add(targetRating);
 		}

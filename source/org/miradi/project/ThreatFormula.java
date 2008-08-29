@@ -59,6 +59,33 @@ abstract public class ThreatFormula
 		return applyTwoPrimeRule(low, medium, high, veryHigh);
 	}
 	
+	public int getHighestRating357Not2Prime(int[] bundleValues)
+	{
+		HashMap<Integer, Integer> counts = getBundleSummariesUsing357(bundleValues);
+		int low = counts.get(1);
+		int medium = counts.get(2);
+		int high = counts.get(3);
+		int veryHigh = counts.get(4);
+		int summaryRatingValue = getHighestWithValue(low, medium, high, veryHigh);
+		return summaryRatingValue;
+	}
+	
+	public int getHighestWithValue(int low, int medium, int high, int veryHigh)
+	{
+		if (veryHigh > 0)
+			return 4;
+		
+		if (high > 0)
+			return 3;
+		
+		if (medium > 0)
+			return 2;
+		
+		if (low > 0)
+			return 1;
+		
+		return 0;
+	}
 	private int applyTwoPrimeRule(int low, int medium, int high, int veryHigh)
 	{
 		if(veryHigh >= 2)
