@@ -73,6 +73,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
+			disableMarqueeWhichGetsEnabledOnLinuxForRightPress();
 			getDiagram().showContextMenu(event);
 			return;
 		}
@@ -81,6 +82,11 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			return;
 		
 		startDragOperation(event);
+	}
+
+	private void disableMarqueeWhichGetsEnabledOnLinuxForRightPress()
+	{
+		getDiagram().setMarquee(false);
 	}
 
 	private void startDragOperation(MouseEvent event)
