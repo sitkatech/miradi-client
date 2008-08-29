@@ -71,7 +71,8 @@ public class RtfWriter
 		int imageWidth = bufferedImage.getWidth();
 		int imageHeight = bufferedImage.getHeight();
 		String scaleRetainingAspectRatio = getScale(imageWidth, imageHeight);
-		String jpegHeader = "\\pict\\picscalex" + scaleRetainingAspectRatio + "\\picscaley" + scaleRetainingAspectRatio + "\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\picw" + imageWidth + "\\pich" + imageHeight + "\\jpegblip ";
+		String jpegHeader = "\\pict\\picscalex" + scaleRetainingAspectRatio + "\\picscaley" + scaleRetainingAspectRatio + 
+				"\\piccropl0\\piccropr0\\piccropt0\\piccropb0\\jpegblip ";
 		getWriter().writeln(jpegHeader);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -103,7 +104,7 @@ public class RtfWriter
 		final int MAX_WIDTH = 800;
 		final int MAX_HEIGHT = 600;
 		double rawXScale = calculateSingleLenghtScale(imageWidth, MAX_WIDTH);
-		double rawYScale = calculateSingleLenghtScale(imageWidth, MAX_HEIGHT);
+		double rawYScale = calculateSingleLenghtScale(imageHeight, MAX_HEIGHT);
 		
 		double scalePreservingAspectRatio = Math.min(rawXScale, rawYScale);
 		
@@ -112,16 +113,13 @@ public class RtfWriter
 
 	private static double calculateSingleLenghtScale(int lenght, int maxLength)
 	{
-		// NOTE: RTF pre-scales images to fit the page, so we just have to scale 
-		// images from page-size down to small enough to allow for margins and 
-		// the diagram title. 72% happens to work well.
-		final int DEFUALT_SCALE = 72;
 		final int FULL_SCALE = 100;
 		
 		if (lenght < maxLength)
 			return FULL_SCALE;
 		
-		return DEFUALT_SCALE;
+		int scale = maxLength * 100 / lenght;
+		return scale;
 	}
 
 	void startBlock() throws Exception
