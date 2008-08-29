@@ -98,12 +98,22 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			tabPane.addTab("Threat Ratings", createThreatRatingTab());
 			tabPane.addTab("Planning", summaryPlanningPanel);
 		}
+		else
+		{
+			disableProjectSpecificCompoenents();
+		}
 		
 		tabPane.addTab("Data Location", createDataLocationTab());
 		
 		return tabPane;
 	}
 	
+	private void disableProjectSpecificCompoenents()
+	{
+		panelFontFamilyCombo.setEnabled(false);
+		panelFontSizeCombo.setEnabled(false);
+	}
+
 	private JPanel createDataLocationTab()
 	{
 		return new DataLocationChooserPanel(mainWindow);
