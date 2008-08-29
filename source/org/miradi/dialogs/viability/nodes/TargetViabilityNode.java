@@ -31,6 +31,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
@@ -80,7 +81,7 @@ public class TargetViabilityNode extends TreeTableNode
 			return new StatusQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(Target.TAG_EMPTY))
-			return "";
+			return new ChoiceItem("", "");
 		
 		return rawValue;
 	}
