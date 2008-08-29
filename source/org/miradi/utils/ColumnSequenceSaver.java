@@ -49,8 +49,12 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		for (int codeIndex = 0; codeIndex < newSequenceList.size(); ++codeIndex)
 		{			
-			int currentLocation = findCurrentTagLocation(newSequenceList.get(codeIndex));	
-			table.getColumnModel().moveColumn(currentLocation, codeIndex);
+			int currentLocation = findCurrentTagLocation(newSequenceList.get(codeIndex));
+			if(currentLocation < 0)
+				continue;
+			int destination = Math.min(codeIndex, table.getColumnModel().getColumnCount() - 1);
+			if(currentLocation != destination)
+				table.getColumnModel().moveColumn(currentLocation, destination);
 		}
 	}
 
