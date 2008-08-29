@@ -160,10 +160,22 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			if (refIndex != 0)
 				methodNames += ";";
 			
-			methodNames += method.getData(Task.TAG_LABEL);
+			methodNames += getMethodName(method);
 		}
 		
 		writeOptionalElement(out, METHODS, methodNames);
+	}
+
+	private String getMethodName(Task method)
+	{
+		String methodName = method.getData(Task.TAG_LABEL);
+		if (methodName.contains(SEE_DETAILS_FIELD_METHOD_NAME))
+		{
+			String details = method.getData(Task.TAG_DETAILS);
+			return details + "\n";
+		}
+		
+		return methodName;
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
