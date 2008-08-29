@@ -70,7 +70,7 @@ public class PlanningTreeXmlExporter
 				
 				String elementName = getElementName(column);
 				out.write("<" + elementName + ">");
-				String padding = pad(multiModelExporter.getDepth(row), column);
+				String padding = pad(multiModelExporter.getDepth(row, column), column);
 				String safeValue = getSafeValue(multiModelExporter, row, column, objectTypeName);
 				out.write(padding + safeValue);
 				out.writeln("</" + elementName + ">");

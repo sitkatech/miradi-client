@@ -56,7 +56,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getBaseObjectForRowColumn(row, 0);
 	}
 	
-	public int getDepth(int row)
+	public int getDepth(int row, int column)
 	{
 		return 0;
 	}
