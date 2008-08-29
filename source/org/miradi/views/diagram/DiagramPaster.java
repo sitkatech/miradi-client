@@ -223,9 +223,6 @@ abstract public class DiagramPaster
 		if (oldRef.isInvalid())
 			return false;
 		
-		if (oldRef.equals(newRef))
-			return false;
-		
 		return true;
 	}
 
