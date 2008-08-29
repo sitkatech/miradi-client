@@ -60,7 +60,6 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 			createAndAddChildren(extractDirectThreatRefs(upstreamFactors), diagram);
 		}
 		
-		addMissingUpstreamObjectives(diagram);
 		addMissingUpstreamNonDraftStrategies(diagram);
 		addMissingUpstreamIndicators(diagram);
 	}
