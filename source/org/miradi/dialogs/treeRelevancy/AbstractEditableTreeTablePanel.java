@@ -50,6 +50,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		model = modelToUse;
 
+		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
@@ -78,7 +79,6 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		scrollController.addScrollBar(masterScrollBar);
 
 		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getDividerName());
