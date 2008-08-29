@@ -172,7 +172,7 @@ public class RtfWriter
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
 			{
-				int paddingCount = exportableTable.getDepth(row);
+				int paddingCount = exportableTable.getDepth(row, column);
 				insertIndents(paddingCount);
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 				insertTab();

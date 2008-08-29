@@ -31,7 +31,7 @@ import org.miradi.questions.ChoiceQuestion;
 public abstract class AbstractTableExporter
 {
 	abstract public int getMaxDepthCount();
-	abstract public int getDepth(int row);
+	abstract public int getDepth(int row, int column);
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
 	abstract public String getTextAt(int row, int column);

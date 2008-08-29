@@ -80,11 +80,11 @@ public class ExportTableDoer extends ViewDoer
 			{
 				for (int column = 0; column < columnCount; ++column)
 				{
-					pad(out, table.getDepth(row), column);
+					pad(out, table.getDepth(row, column), column);
 					String safeValue = getSafeValue(table, row, column);
 					out.write(withoutTabsAndNewlines(safeValue) + "\t");
 					
-					int postPadCount = maxDepth - table.getDepth(row);
+					int postPadCount = maxDepth - table.getDepth(row, column);
 					pad(out, postPadCount, column);
 				}
 				

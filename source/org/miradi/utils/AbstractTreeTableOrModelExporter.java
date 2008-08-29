@@ -38,7 +38,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		int rowCount = getRowCount();
 		for (int row = 0; row < rowCount; ++row)
 		{
-			int rowDepth = getDepth(row);
+			int rowDepth = getDepth(row, 0);
 			maxRowDepth = Math.max(maxRowDepth, rowDepth);
 		}
 		

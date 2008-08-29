@@ -50,7 +50,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public int getDepth(int row)
+	public int getDepth(int row, int column)
 	{
 		return 0;
 	}

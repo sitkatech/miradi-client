@@ -59,12 +59,12 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return combinedCount;
 	}
 
-	public int getDepth(int row)
+	public int getDepth(int row, int column)
 	{
 		if (tables.size() == 0)
 			return 0;
 		
-		return tables.get(0).getDepth(row);
+		return tables.get(0).getDepth(row, column);
 	}
 
 	public int getMaxDepthCount()
