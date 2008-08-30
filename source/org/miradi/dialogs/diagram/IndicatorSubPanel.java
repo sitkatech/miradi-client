@@ -37,8 +37,9 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField labelField = createExpandableField(Indicator.getObjectType(), Indicator.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Indicator"), new IndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL));
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_COMMENT));
+		final int COLUMNS = 75;
+		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
+		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_COMMENT, COLUMNS));
 		
 		updateFieldsFromProject();
 	}
