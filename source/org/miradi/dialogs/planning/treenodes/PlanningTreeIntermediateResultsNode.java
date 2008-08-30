@@ -45,8 +45,8 @@ public class PlanningTreeIntermediateResultsNode extends AbstractPlanningTreeNod
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		
-		addMissingUpstreamIndicators(diagram);
+
+		createAndAddChildren(intermediateResult.getObjectiveRefs(), diagram);
 	}
 
 	protected int[] getNodeSortOrder()
