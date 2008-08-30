@@ -57,10 +57,13 @@ public class ModalRenameDialog
 	private static boolean wasCanceled(Object selectedValue)
 	{
 		if (!(selectedValue instanceof Integer))
-			return false;
-
+			return true;
+		
 		Integer userOption = (Integer) selectedValue;
-		return userOption.intValue() == JOptionPane.CANCEL_OPTION;
+		if (userOption.intValue() ==  JOptionPane.OK_OPTION)
+			return false;
+		
+		return true;
 	}	
 	
 	public static class WindowListenerHandler extends WindowAdapter
