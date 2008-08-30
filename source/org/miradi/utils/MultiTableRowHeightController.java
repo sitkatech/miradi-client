@@ -41,12 +41,24 @@ public class MultiTableRowHeightController extends TableRowHeightController
 	
 	public void rowHeightChanged(int row, int newHeight)
 	{
-		for(TableWithRowHeightManagement table : tables)
+		if(isSetRowHeightInProgress)
+			return;
+		
+		isSetRowHeightInProgress = true;
+		try
 		{
-			if(table.getRowHeight(row) != newHeight)
-				table.setRowHeight(row, newHeight);
-			
-			table.ensureSelectedRowVisible();
+			for(TableWithRowHeightManagement table : tables)
+			{
+				if(table.getRowHeight(row) != newHeight)
+				{
+					table.setRowHeight(row, newHeight);
+					table.ensureSelectedRowVisible();
+				}
+			}
+		}
+		finally
+		{
+			isSetRowHeightInProgress = false;
 		}
 	}
 	
@@ -125,5 +137,5 @@ public class MultiTableRowHeightController extends TableRowHeightController
 	}
 
 	private HashSet<TableWithRowHeightManagement> tables;
-
+	private boolean isSetRowHeightInProgress;
 }
