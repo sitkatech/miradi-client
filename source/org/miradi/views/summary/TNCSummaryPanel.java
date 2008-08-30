@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.TncTabForm;
+import org.miradi.icons.TncIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
@@ -62,6 +65,11 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("TNC");
+	}
+	
+	public Icon getIcon()
+	{
+		return new TncIcon();
 	}
 	
 	@Override
