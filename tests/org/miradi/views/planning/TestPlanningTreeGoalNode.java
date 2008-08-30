@@ -32,7 +32,6 @@ public class TestPlanningTreeGoalNode extends TestPlanningTree
 	public void testPlanningTreeGoalNodes() throws Exception
 	{
 		PlanningTreeGoalNode node = new PlanningTreeGoalNode(project, project.getTestingDiagramObject(), getGoal().getRef(), new CodeList());
-		assertEquals("wrong child count?", 1, node.getChildCount());
-		assertEquals("wrong child?", getThreat().getRef(), node.getChild(0).getObjectReference());
+		assertEquals("wrong child count?", 0, node.getChildCount());
 	}
 }
