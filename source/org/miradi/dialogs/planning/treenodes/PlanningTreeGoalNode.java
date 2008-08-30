@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
@@ -49,19 +50,10 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		Factor[] upstreamFactors = goal.getUpstreamFactors(diagram);
-		if(diagram.isResultsChain())
-		{
-			createAndAddChildren(extractThreatReductionResultRefs(upstreamFactors), diagram);
-			createAndAddChildren(extractIntermediateResultsRefs(upstreamFactors).toRefList(), diagram);
-		}
-		else
-		{
-			createAndAddChildren(extractDirectThreatRefs(upstreamFactors), diagram);
-		}
 		
-		addMissingUpstreamNonDraftStrategies(diagram);
-		addMissingUpstreamIndicators(diagram);
+		Factor factor = goal.getDirectOrIndirectOwningFactor();
+		ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
+		createAndAddChildren(indicatorRefs, diagram);
 	}
 
 	protected int[] getNodeSortOrder()

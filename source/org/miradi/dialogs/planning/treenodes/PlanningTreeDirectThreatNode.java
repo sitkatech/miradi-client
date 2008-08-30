@@ -45,9 +45,8 @@ public class PlanningTreeDirectThreatNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		
-		addMissingUpstreamNonDraftStrategies(diagram);
-		addMissingUpstreamIndicators(diagram);
+
+		createAndAddChildren(threat.getObjectiveRefs(), diagram);
 	}
 
 	protected int[] getNodeSortOrder()

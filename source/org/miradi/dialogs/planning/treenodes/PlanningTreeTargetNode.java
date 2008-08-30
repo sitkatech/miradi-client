@@ -62,12 +62,12 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	{
 		return new int[] {
 				Goal.getObjectType(),
+				Objective.getObjectType(),
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Cause.getObjectType(),
 				IntermediateResult.getObjectType(),
 				ThreatReductionResult.getObjectType(),
-				Objective.getObjectType(),
 				Task.getObjectType(),
 				Measurement.getObjectType(),
 			};
