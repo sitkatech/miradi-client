@@ -47,7 +47,8 @@ public class ObjectCodeListField extends ObjectDataInputField
 		codeListComponent = new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
 		component.add(codeListComponent, BorderLayout.CENTER);
 		
-		PanelButton selectButton = new PanelButton(EAM.text("Select..."));
+		selectButton = new PanelButton(EAM.text("Select..."));
+
 		selectButton.addActionListener(new SelectButtonHandler());
 		OneColumnPanel buttonPanel = new OneColumnPanel();
 		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
@@ -55,6 +56,14 @@ public class ObjectCodeListField extends ObjectDataInputField
 		buttonPanel.add(selectButton);
 		setDefaultFieldBorder();
 		component.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
+	}
+	
+	@Override
+	public void updateEditableState()
+	{
+		super.updateEditableState();
+		
+		selectButton.setEnabled(isValidObject());			
 	}
 	
 	@Override
@@ -89,4 +98,5 @@ public class ObjectCodeListField extends ObjectDataInputField
 	private ChoiceQuestion question;
 	private MiradiPanel component;
 	private ReadOnlyCodeListComponent codeListComponent;
+	private PanelButton selectButton;
 }
