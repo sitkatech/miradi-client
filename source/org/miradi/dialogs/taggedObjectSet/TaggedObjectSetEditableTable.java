@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import javax.swing.table.TableCellRenderer;
+
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.tablerenderers.AlwaysEmptyCellRendererFactory;
 import org.miradi.main.MainWindow;
 
 public class TaggedObjectSetEditableTable extends EditableObjectTable
@@ -30,6 +33,15 @@ public class TaggedObjectSetEditableTable extends EditableObjectTable
 		super(mainWindowToUse, modelToUse);
 	}
 
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
+	{
+		if (getModel().isCellEditable(row, tableColumn))
+			return super.getCellRenderer(row, tableColumn);
+		
+		return new AlwaysEmptyCellRendererFactory();
+	}
+	
 	@Override
 	public String getUniqueTableIdentifier()
 	{
