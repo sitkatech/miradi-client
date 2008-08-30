@@ -25,6 +25,6 @@ public class RareIcon extends MiradiResourceImageIcon
 {
 	public RareIcon()
 	{
-		super("icons/FOS/FOS16.png");
+		super("icons/RARE/RARE-16.png");
 	}
 }
