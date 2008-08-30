@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.WwfTabForm;
+import org.miradi.icons.WwfIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -61,6 +64,11 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|WWF");
+	}
+	
+	public Icon getIcon()
+	{
+		return new WwfIcon();
 	}
 	
 	@Override

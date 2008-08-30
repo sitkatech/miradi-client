@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.WcsTabForm;
+import org.miradi.icons.WcsIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.project.Project;
@@ -52,6 +55,11 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|WCS");
+	}
+	
+	public Icon getIcon()
+	{
+		return new WcsIcon();
 	}
 
 	@Override

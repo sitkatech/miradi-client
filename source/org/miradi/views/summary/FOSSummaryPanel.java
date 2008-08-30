@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.FosTabForm;
+import org.miradi.icons.FosIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
@@ -45,6 +48,11 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Label|FOS");
+	}
+	
+	public Icon getIcon()
+	{
+		return new FosIcon();
 	}
 	
 	@Override

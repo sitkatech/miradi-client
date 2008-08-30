@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.RareTabForm;
+import org.miradi.icons.RareIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
@@ -49,7 +52,11 @@ public class RARESummaryPanel extends ObjectDataInputPanel
 		return EAM.text("Label|RARE");
 	}
 	
-
+	public Icon getIcon()
+	{
+		return new RareIcon();
+	}
+	
 	@Override
 	public boolean isRtfExportable()
 	{
