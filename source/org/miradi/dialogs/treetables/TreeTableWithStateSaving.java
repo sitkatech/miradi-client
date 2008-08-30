@@ -82,13 +82,16 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			TreePath selectedPath = tree.getSelectionPath();
 			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 			TreePath rootPath = new TreePath(root);
-			recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath);
-			treeTableModelAdapter.fireTableDataChanged();
-			tree.addSelectionPath(selectedPath);
+			if(recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath))
+			{
+				treeTableModelAdapter.fireTableDataChanged();
+				tree.addSelectionPath(selectedPath);
+			}
 		}
 		finally
 		{
 			ignoreNotifications = false;
+			updateAutomaticRowHeights();
 		}
 	}
 	
@@ -127,28 +130,36 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		}
 	}
 	
-	private void recursiveChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
+	private boolean recursiveChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ORef topLevelObjRef = topLevelObject.getObjectReference();
 		
 		boolean isInExpandedList = objRefListToUse.contains(topLevelObjRef);
 		boolean isAlwaysExpanded = topLevelObject.isAlwaysExpanded();
-		boolean isExpanded = isAlwaysExpanded || isInExpandedList;
-		if(! isExpanded)
+		boolean shouldBeExpanded = isAlwaysExpanded || isInExpandedList;
+		
+		boolean needsToChange = (tree.isExpanded(thisPath) != shouldBeExpanded);
+		
+		if(!shouldBeExpanded)
 		{
-			tree.collapsePath(thisPath);
-			return;
+			if(needsToChange)
+				tree.collapsePath(thisPath);
+		}
+		else
+		{
+			if(needsToChange)
+				tree.expandPath(thisPath);
+		
+			for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+			{
+				TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
+				TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
+				recursiveChangeNodeExpansionState(objRefListToUse, secondLevelPath);
+			}
 		}
 		
-		tree.expandPath(thisPath);
-		
-		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
-		{
-			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
-			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-			recursiveChangeNodeExpansionState(objRefListToUse, secondLevelPath);
-		}
+		return needsToChange;
 	}
 
 	public void treeCollapsed(TreeExpansionEvent event)
