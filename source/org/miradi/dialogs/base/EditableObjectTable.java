@@ -222,7 +222,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 		}	
 	}
 	
-	protected class ComboBoxRenderer extends PanelComboBox implements TableCellRenderer 
+	protected class ComboBoxRenderer extends PanelComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
 	{
 	    public ComboBoxRenderer(Object[] items) 
 	    {
@@ -243,6 +243,11 @@ abstract public class EditableObjectTable extends TableWithColumnWidthSaver  imp
 	    	setBackground(background);
 	        setForeground(foreground);
 	    }
+
+		public int getPreferredHeight(JTable table, int row, int column, Object value)
+		{
+			return getPreferredSize().height;
+		}
 	}
 	
 	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
