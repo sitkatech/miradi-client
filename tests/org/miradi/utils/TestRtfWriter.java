@@ -67,8 +67,9 @@ public class TestRtfWriter extends EAMTestCase
 		verifyScale(100, 0, 0);
 		verifyScale(100, 50, 50);
 		verifyScale(100, 100, 100);
-		verifyScale(72, 1000, 1000);
-		verifyScale(72, 5000, 5000);
+		verifyScale(50, 1600, 500);
+		verifyScale(50, 700, 1200);
+		verifyScale(10, 8000, 500);
 	}
 	
 	private void verifyScale(int expectedScale, int imageWidth, int imageHeight)

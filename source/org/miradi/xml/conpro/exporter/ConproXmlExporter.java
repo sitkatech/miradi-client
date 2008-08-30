@@ -172,7 +172,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (methodName.contains(SEE_DETAILS_FIELD_METHOD_NAME))
 		{
 			String details = method.getData(Task.TAG_DETAILS);
-			return details + "\n";
+			return details;
 		}
 		
 		return methodName;
