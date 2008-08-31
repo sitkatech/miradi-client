@@ -55,6 +55,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, "Accounting Codes"),
 				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, "Funding Sources"),
 				new ChoiceItem(PROGRESS_REPORT_CODE, "Progress Report"),
+				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, "Legend Table"),
 		};
 	}
 	
@@ -80,4 +81,5 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE = "PlanningViewAccountingCodesTab";
 	public static final String PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE = "PlanningViewFundingSourceTab";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
+	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
 }

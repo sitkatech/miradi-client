@@ -61,6 +61,7 @@ public class StandardReportPanel extends TwoColumnPanel
 	{
 		CodeList standardReportCodes = new CodeList();
 		standardReportCodes.add(code);
+		standardReportCodes.add(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE);
 		ChoiceQuestion question = getContentQuestion();
 		ChoiceItem choice = question.findChoiceByCode(code);
 		addStandardReport(standardReportCodes, choice.getLabel());

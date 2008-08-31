@@ -83,6 +83,7 @@ public class QuestionManager
 		addQuestion(new DiagramLinkColorQuestion());
 		addQuestion(new TableRowHeightModeQuestion());
 		addQuestion(new ReportTemplateContentQuestion());
+		addQuestion(new RtfLegendObjectsQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
