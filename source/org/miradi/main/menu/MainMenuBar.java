@@ -182,7 +182,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportCurrentPageMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Page as..."));
-		menu.setMnemonic(KeyEvent.VK_X);
+		menu.setMnemonic(KeyEvent.VK_P);
 		
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
