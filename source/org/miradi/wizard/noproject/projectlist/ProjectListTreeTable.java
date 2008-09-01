@@ -36,6 +36,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.database.ProjectServer;
+import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
@@ -68,7 +69,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
-		dateRenderer = new DefaultTableCellRendererWithPreferredHeightFactory();
+		dateRenderer = new BorderlessTableCellRendererFactory();
 	}
 
 	public String getUniqueTableIdentifier()
