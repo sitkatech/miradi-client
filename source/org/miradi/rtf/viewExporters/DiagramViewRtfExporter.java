@@ -42,6 +42,8 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE))
 			exportDiagrams(writer, getProject().getResultsChainDiagramPool().getRefList());
+		
+		super.ExportView(writer, reportTemplateContent);
 	}
 
 	private void exportDiagrams(RtfWriter writer, ORefList diagramObjectRefs) throws Exception
