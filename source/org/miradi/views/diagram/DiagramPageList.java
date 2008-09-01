@@ -179,9 +179,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
 				return new Vector();
 			
-			Vector defaultCommandVector = new Vector();
-			defaultCommandVector.add(new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
-			return defaultCommandVector;
+			return ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(viewData.getRef());
 		}
 
 		private ORef getSelectedRef()
