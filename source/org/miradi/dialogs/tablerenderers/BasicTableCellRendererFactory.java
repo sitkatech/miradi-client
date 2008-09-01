@@ -48,7 +48,7 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 	{
 		JComponent renderer = getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
 		
-		setBorder(renderer);
+		renderer.setBorder(getCellBorder());
 		
 		if(isSelected)
 		{
@@ -64,11 +64,6 @@ abstract public class BasicTableCellRendererFactory implements TableCellRenderer
 		}
 			
 		return renderer;
-	}
-
-	protected void setBorder(JComponent renderer)
-	{
-		renderer.setBorder(getCellBorder());
 	}
 
 	private void setColors(JComponent renderer, Color fg, Color bg)
