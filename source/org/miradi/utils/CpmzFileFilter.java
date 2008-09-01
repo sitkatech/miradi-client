@@ -25,7 +25,7 @@ public class CpmzFileFilter extends GenericMiradiFileFilter
 {
 	public String getDescription()
 	{
-		return EAM.substitute(EAM.text("FileFilter|Conpro Miradi Zip (*%s)"), getFileExtension());
+		return EAM.substitute(EAM.text("FileFilter|ConPro Miradi Zip (*%s)"), getFileExtension());
 	}
 	
 	public String getFileExtension()
