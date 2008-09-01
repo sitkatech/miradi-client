@@ -30,7 +30,6 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.views.reports.ReportsViewControlBar;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
@@ -108,7 +107,7 @@ public class FileSystemTreeNode extends TreeTableNode
 
 	private boolean isCustomReportDirectory(File file)
 	{
-		return file.getName().equals(ReportsViewControlBar.EXTERNAL_REPORTS_DIR_NAME);
+		return file.getName().equals(OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME);
 	}
 	
 	private boolean isExternalResourceDirectory(File file)
@@ -147,6 +146,9 @@ public class FileSystemTreeNode extends TreeTableNode
 		
 		return toString().compareToIgnoreCase(other.toString());
 	}
+	
+	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
+
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
