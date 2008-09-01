@@ -22,8 +22,10 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.rtf.legend.RtfLegendExporter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ObjectTableModelExporter;
@@ -46,6 +48,11 @@ abstract public class RtfViewExporter
 		writer.newParagraph();
 	}
 	
+	protected void exportLegendTableReport(RtfWriter writer) throws Exception
+	{
+		new RtfLegendExporter(getProject()).exportLegend(writer);
+	}
+	
 	private RtfManagementExporter createRtfManagementRtfExporter()
 	{
 		return new RtfManagementExporter(getProject());
@@ -61,7 +68,11 @@ abstract public class RtfViewExporter
 		return mainWindow;
 	}
 
-	abstract public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception;
+	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	{
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE))
+			exportLegendTableReport(writer);
+	}
 	
 	private MainWindow mainWindow;
 }

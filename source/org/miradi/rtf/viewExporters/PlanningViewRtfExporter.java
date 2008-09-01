@@ -36,7 +36,6 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.rtf.legend.RtfLegendExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.views.planning.ColumnManager;
@@ -73,8 +72,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
 			exportFundingSourceTab(writer);
 		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE))
-			exportLegendTableReport(writer);
+		super.ExportView(writer, reportTemplateContent);
 	}
 
 	private void exportResourcesTab(RtfWriter writer) throws Exception
@@ -123,10 +121,5 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	private void exportReport(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow) throws Exception
 	{
 		exportTable(writer, createTables(getProject(), rowsToShow, columnsToShow));
-	}
-	
-	private void exportLegendTableReport(RtfWriter writer) throws Exception
-	{
-		new RtfLegendExporter(getProject()).exportLegend(writer);
 	}
 }

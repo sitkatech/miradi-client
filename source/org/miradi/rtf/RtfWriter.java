@@ -271,6 +271,12 @@ public class RtfWriter
 		write("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
 	}
 	
+	public void writeText(String text) throws Exception
+	{
+		writer.write(text);
+		newParagraph();
+	}
+	
 	public void startRtf() throws Exception
 	{
 		writeRtfHeader();
