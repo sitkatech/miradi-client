@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.jgraph.graph.GraphLayoutCache;
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -90,12 +92,19 @@ public class ShowFullModelModeDoer extends ViewDoer
 	public static void showFullModelModeWithoutSelecting(Project project) throws Exception
 	{
 		ORef viewDataRef = project.getCurrentViewData().getRef();
-					
+		project.executeCommandsWithoutTransaction(createCommandsToSwithToDefaultMode(viewDataRef));
+	}
+	
+	public static Vector<Command> createCommandsToSwithToDefaultMode(ORef viewDataRef)
+	{
+		Vector<Command> commandsToSwitch = new Vector();
 		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
-		project.executeCommand(changeToDefaultMode);
+		commandsToSwitch.add(changeToDefaultMode);
 		
 		CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
-		project.executeCommand(clearBrainsStormNodeList);
+		commandsToSwitch.add(clearBrainsStormNodeList);
+		
+		return commandsToSwitch;
 	}
 
 	private static ORefList getFactorsToMakeSelected(Project project) throws Exception, ParseException
