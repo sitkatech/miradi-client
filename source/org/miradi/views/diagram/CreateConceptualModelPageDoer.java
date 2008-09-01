@@ -57,8 +57,8 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
+			ShowFullModelModeDoer.showFullModelModeWithoutSelecting(getProject());
 			ViewData viewData = project.getViewData(getDiagramView().cardName());
-			setToDefaultMode(viewData);
 			createConceptualModelPage(viewData);
 		}
 		catch (Exception e)
@@ -70,15 +70,6 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-	}
-	
-	private void setToDefaultMode(ViewData viewData) throws Exception
-	{
-		if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
-			return;
-	
-		CommandSetObjectData setMode = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
-		getProject().executeCommand(setMode);
 	}
 	
 	private void createConceptualModelPage(ViewData viewData) throws Exception

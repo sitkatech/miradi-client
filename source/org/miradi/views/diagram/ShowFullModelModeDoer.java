@@ -83,6 +83,12 @@ public class ShowFullModelModeDoer extends ViewDoer
 	public static void showFullModelMode(Project project, DiagramComponent diagramComponent) throws Exception, ParseException, CommandFailedException
 	{
 		ORefList factorsToMakeSelected = getFactorsToMakeSelected(project);
+		showFullModelModeWithoutSelecting(project);
+		selectFactors(diagramComponent, factorsToMakeSelected);
+	}
+
+	public static void showFullModelModeWithoutSelecting(Project project) throws Exception
+	{
 		ORef viewDataRef = project.getCurrentViewData().getRef();
 					
 		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
@@ -90,8 +96,6 @@ public class ShowFullModelModeDoer extends ViewDoer
 		
 		CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
 		project.executeCommand(clearBrainsStormNodeList);
-
-		selectFactors(diagramComponent, factorsToMakeSelected);
 	}
 
 	private static ORefList getFactorsToMakeSelected(Project project) throws Exception, ParseException
