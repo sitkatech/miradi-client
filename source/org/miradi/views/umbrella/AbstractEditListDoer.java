@@ -45,7 +45,7 @@ abstract public class AbstractEditListDoer extends ObjectsDoer
 			return;
 		
 		ORef ref = getSelectionRef();
-		ObjectDataInputPanel panel = getPickListPanel(ref);
+		ObjectDataInputPanel panel = createPickListPanel(ref);
 		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
@@ -57,5 +57,5 @@ abstract public class AbstractEditListDoer extends ObjectsDoer
 	
 	abstract protected String getDialogTitle();
 	
-	abstract protected ObjectDataInputPanel getPickListPanel(ORef objectiveRef);
+	abstract protected ObjectDataInputPanel createPickListPanel(ORef objectiveRef);
 }

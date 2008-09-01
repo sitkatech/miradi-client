@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORef;
 
 public class EditStrategyRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-	protected ObjectDataInputPanel getPickListPanel(ORef objectiveRef)
+	protected ObjectDataInputPanel createPickListPanel(ORef objectiveRef)
 	{
 		return new RelevancyStrategyPanel(getProject(), objectiveRef);
 	}
