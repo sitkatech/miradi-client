@@ -169,11 +169,11 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			if (commandsToExecute.size() == 0)
 				return;
 			
-			commandsToExecute.addAll(ensureDefaultMode());
+			commandsToExecute.addAll(createSwitchToDefaultModeCommand());
 			project.executeCommandsAsTransaction((Command[]) commandsToExecute.toArray(new Command[0]));		
 		}
 
-		private Vector ensureDefaultMode() throws Exception
+		private Vector createSwitchToDefaultModeCommand() throws Exception
 		{
 			ViewData viewData = project.getCurrentViewData();
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
