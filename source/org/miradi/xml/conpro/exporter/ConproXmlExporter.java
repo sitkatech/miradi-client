@@ -1005,7 +1005,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			new ConproXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
 			new ConProMiradiXmlValidator().isValid(new FileInputStream(getXmlDestination(commandLineArguments)));
-			System.out.println("Export Conpro xml complete");
+			System.out.println("Export ConPro xml complete");
 		}
 		finally
 		{
