@@ -19,12 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import javax.swing.JComponent;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 public class BorderlessTableCellRendererFactory extends DefaultTableCellRendererWithPreferredHeightFactory
 {
-	@Override
-	protected void setBorder(JComponent renderer)
+	public Border getCellBorder()
 	{
+		return BorderFactory.createEmptyBorder();
 	}
 }
