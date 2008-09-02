@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.Vector;
@@ -1247,19 +1248,20 @@ public class Project
 	public DecimalFormat getCurrencyFormatterWithCommas()
 	{
 		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
-		DecimalFormat formatter = new DecimalFormat();
-		formatter.setMinimumFractionDigits(currencyDecimalPlaces);
-		formatter.setMaximumFractionDigits(currencyDecimalPlaces);
+		DecimalFormat currencyFormatter = new DecimalFormat();
+		currencyFormatter.setRoundingMode(RoundingMode.HALF_UP);
+		currencyFormatter.setMinimumFractionDigits(currencyDecimalPlaces);
+		currencyFormatter.setMaximumFractionDigits(currencyDecimalPlaces);
 		
-		return formatter;
+		return currencyFormatter;
 	}
 	
 	public DecimalFormat getCurrencyFormatterWithoutCommas()
 	{
-		DecimalFormat formatter = getCurrencyFormatterWithCommas();
-		formatter.setGroupingUsed(false);
+		DecimalFormat currencyFormatter = getCurrencyFormatterWithCommas();
+		currencyFormatter.setGroupingUsed(false);
 		
-		return formatter;
+		return currencyFormatter;
 	}
 	
 	public int getDiagramFontSize()
