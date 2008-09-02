@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import java.awt.Dimension;
+
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.base.EditableObjectTable;
@@ -31,6 +33,16 @@ public class TaggedObjectSetEditableTable extends EditableObjectTable
 	public TaggedObjectSetEditableTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse);
+		
+		setAutoResizeMode(AUTO_RESIZE_OFF);
+		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+			setColumnWidthToHeaderWidth(tableColumn);
+	}
+
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
 	}
 
 	@Override

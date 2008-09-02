@@ -84,16 +84,20 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getDividerName());
 		treePlusTablesPanel.setDividerSize(5);
 		// FIXME: Remove this when persistence actually works!
-		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
-		treePlusTablesPanel.setTopComponent(treesScrollPane);
-		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
-		treePlusTablesPanel.setOneTouchExpandable(false);
+		configureSplitter(tablesScrollPane);
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
 		add(treePlusTablesPanel, BorderLayout.CENTER);
 		add(masterScrollBar, BorderLayout.AFTER_LINE_ENDS);
 
 		rebuildEntireTreeTable();
+	}
+
+	private void configureSplitter(ScrollPaneWithHideableScrollBar tablesScrollPane)
+	{
+		treePlusTablesPanel.setTopComponent(treesScrollPane);
+		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
+		treePlusTablesPanel.setOneTouchExpandable(false);
 	}
 
 	private void rebuildEntireTreeTable() throws Exception

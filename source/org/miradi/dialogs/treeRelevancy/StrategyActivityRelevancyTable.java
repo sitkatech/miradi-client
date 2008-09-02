@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import java.awt.Dimension;
+
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
@@ -28,6 +30,16 @@ public class StrategyActivityRelevancyTable extends EditableObjectTable
 	public StrategyActivityRelevancyTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse);
+
+		setAutoResizeMode(AUTO_RESIZE_OFF);
+		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+			setColumnWidthToHeaderWidth(tableColumn);
+	}
+	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
 	}
 
 	@Override
