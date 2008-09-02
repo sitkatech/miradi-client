@@ -116,7 +116,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		add(createLegendButtonPanel(mainWindow.getActions()));
 		
 		DiagramObject diagramObject = getCurrentDiagramObject();
-		if (diagramObject != null)
+		if (diagramObject != null && getMainWindow().isDemoMode())
 			addTaggedObjectSetPanel(diagramObject);
 		
 		updateCheckBoxes();
@@ -134,7 +134,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		editListPanel = new ObjectRefListEditorPanel(getProject(), diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
 		add(editListPanel);
 		
-		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags..."), new TaggedObjectSetIcon());
+		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags (BETA)..."), new TaggedObjectSetIcon());
 		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
 		add(manageButton);
 	}
