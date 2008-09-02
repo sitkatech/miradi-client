@@ -63,7 +63,6 @@ import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ResourcesOverridenListField;
-import org.miradi.dialogfields.StrategyRelevancyOverrideListField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -81,8 +80,8 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.CodeList;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -455,11 +454,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
 		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
-	}
-	
-	public ObjectDataInputField createStrategyRelevancyOverrideListField(ChoiceQuestion question)
-	{
-		return new StrategyRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createEditableObjectListField(MainWindow mainWindowToUse, int objectType, String tagToUse)
