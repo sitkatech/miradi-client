@@ -91,7 +91,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			return new ProgressReportStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if(tag.equals(Indicator.TAG_EMPTY))
-			return null;
+			return "";
 		
 		String data = getObject().getData(tag);
 		

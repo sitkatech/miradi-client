@@ -53,7 +53,7 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 			if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			{
 				if(Indicator.is(node.getType()))
-					return null;
+					return "";
 
 				if (Measurement.is(node.getType()))
 				{
