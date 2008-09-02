@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
@@ -46,9 +47,9 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 		setEditableSingleBooleanColumnTableModel(new TaggedObjectSetEditableTableModel(mainWindowToUse.getProject(), treeTable,  (TaggedObjectSet)baseObject));
 	}
 	
-	protected void createEditableTable(MainWindow mainWindowToUse)
+	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
 	{
-		setEditableObjectTable(new TaggedObjectSetEditableTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel()));
+		return new TaggedObjectSetEditableTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel());
 	}
 	
 	protected String getDividerName()
