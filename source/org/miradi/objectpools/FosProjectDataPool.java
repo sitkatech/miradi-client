@@ -33,7 +33,7 @@ public class FosProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, FosProjectData.getObjectType());
 	}
 	
-	public void put(FosProjectData fosProjectData)
+	public void put(FosProjectData fosProjectData) throws Exception
 	{
 		put(fosProjectData.getId(), fosProjectData);
 	}

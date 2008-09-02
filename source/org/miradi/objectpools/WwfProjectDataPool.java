@@ -34,7 +34,7 @@ public class WwfProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.WWF_PROJECT_DATA);
 	}
 	
-	public void put(WwfProjectData wwfProjectData)
+	public void put(WwfProjectData wwfProjectData) throws Exception
 	{
 		put(wwfProjectData.getId(), wwfProjectData);
 	}

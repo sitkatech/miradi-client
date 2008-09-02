@@ -30,7 +30,7 @@ abstract public class DesirePool extends EAMNormalObjectPool
 		super(idAssignerToUse, objectTypeToStore);
 	}
 
-	public void put(Desire desire)
+	public void put(Desire desire) throws Exception
 	{
 		put(desire.getId(), desire);
 	}

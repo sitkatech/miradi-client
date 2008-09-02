@@ -30,7 +30,7 @@ public class PoolWithIdAssigner extends EAMObjectPool
 		idAssigner = idAssignerToUse;
 	}
 
-	public void put(BaseId id, Object obj)
+	public void put(BaseId id, Object obj) throws Exception
 	{
 		super.put(id, obj);
 		idAssigner.idTaken(id);

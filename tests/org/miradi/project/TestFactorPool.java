@@ -60,7 +60,7 @@ public class TestFactorPool extends TestCaseEnhanced
 		assertEquals("wrong target count?", FACTOR_COUNT, project.getPool(getObjectType()).getIds().length);
 	}
 
-	protected FactorId addNewlyCreatedNodeToPool(int type)
+	protected FactorId addNewlyCreatedNodeToPool(int type) throws Exception
 	{
 		FactorId id = takeNextModelNodeId();		
 		Factor node = Factor.createConceptualModelObject(project.getObjectManager(), id, type);

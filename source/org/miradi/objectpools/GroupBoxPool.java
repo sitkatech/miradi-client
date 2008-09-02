@@ -35,7 +35,7 @@ public class GroupBoxPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.GROUP_BOX);
 	}
 	
-	public void put(GroupBox groupBox)
+	public void put(GroupBox groupBox) throws Exception
 	{
 		put(groupBox.getId(), groupBox);
 	}

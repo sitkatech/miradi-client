@@ -35,7 +35,7 @@ public class KeyEcologicalAttributePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 	}
 	
-	public void put(KeyEcologicalAttribute keyEcologicalAttribute)
+	public void put(KeyEcologicalAttribute keyEcologicalAttribute) throws Exception
 	{
 		put(keyEcologicalAttribute.getId(), keyEcologicalAttribute);
 	}

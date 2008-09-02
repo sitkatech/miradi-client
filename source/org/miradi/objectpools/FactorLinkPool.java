@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.project.ObjectManager;
 
 public class FactorLinkPool extends PoolWithIdAssigner
 {
@@ -39,20 +40,23 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		super(ObjectType.FACTOR_LINK, idAssignerToUse);
 	}
 	
-	public void put(FactorLink linkage)
+	public void put(FactorLink linkage) throws Exception
 	{
 		put(linkage.getId(), linkage);
 	}
 	
 	@Override
-	public void put(BaseId id, Object obj)
+	public void put(BaseId id, Object obj) throws Exception
 	{
-		if(isIllegalLinkToOrFromGroupBox((FactorLink)obj))
-		{
-			EAM.logWarning("Ignoring FactorLink to GroupBox with LinkId:" + id);
-			return;
-		}
 		super.put(id, obj);
+
+		FactorLink factorLink = (FactorLink)obj;
+		if(isIllegalLinkToOrFromGroupBox(factorLink))
+		{
+			EAM.logWarning("Deleting FactorLink to GroupBox with LinkId:" + id);
+			ObjectManager objectManager = factorLink.getObjectManager();
+			objectManager.deleteObject(factorLink);
+		}
 	}
 
 	private boolean isIllegalLinkToOrFromGroupBox(FactorLink link)

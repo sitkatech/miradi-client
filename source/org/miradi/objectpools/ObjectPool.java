@@ -60,7 +60,7 @@ public class ObjectPool
 		return new ORefList(objectType, getIdList());
 	}
 
-	public void put(BaseId id, Object obj)
+	public void put(BaseId id, Object obj) throws Exception
 	{
 		if(map.containsKey(id))
 			throw new RuntimeException("Id Already Exists: " + id.asInt() + " in " + getClass().getName());

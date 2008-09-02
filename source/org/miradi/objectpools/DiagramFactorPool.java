@@ -36,7 +36,7 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.DIAGRAM_FACTOR);
 	}
 
-	public void put(DiagramFactor diagramFactor)
+	public void put(DiagramFactor diagramFactor) throws Exception
 	{
 		put(diagramFactor.getDiagramFactorId(), diagramFactor);
 	}

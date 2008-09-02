@@ -34,7 +34,7 @@ public class ProgressReportPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PROGRESS_REPORT);
 	}
 	
-	public void put(ProgressReport progressReport)
+	public void put(ProgressReport progressReport) throws Exception
 	{
 		put(progressReport.getId(), progressReport);
 	}

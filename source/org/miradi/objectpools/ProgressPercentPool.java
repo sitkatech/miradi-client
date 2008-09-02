@@ -34,7 +34,7 @@ public class ProgressPercentPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PROGRESS_PERCENT);
 	}
 	
-	public void put(ProgressPercent progressPercent)
+	public void put(ProgressPercent progressPercent) throws Exception
 	{
 		put(progressPercent.getId(), progressPercent);
 	}

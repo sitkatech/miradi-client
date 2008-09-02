@@ -35,7 +35,7 @@ public class ResultsChainDiagramPool extends DiagramObjectPool
 		super(idAssignerToUse, ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	public void put(ResultsChainDiagram resultsChainDiagram)
+	public void put(ResultsChainDiagram resultsChainDiagram) throws Exception
 	{
 		put(resultsChainDiagram.getId(), resultsChainDiagram);
 	}

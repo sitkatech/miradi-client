@@ -40,7 +40,7 @@ public class CausePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.CAUSE);
 	}
 	
-	public void put(Cause cause)
+	public void put(Cause cause) throws Exception
 	{
 		put(cause.getId(), cause);
 	}
