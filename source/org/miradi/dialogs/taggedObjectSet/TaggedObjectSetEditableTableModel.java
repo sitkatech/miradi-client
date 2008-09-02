@@ -76,5 +76,5 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 	}
 	
 	private TaggedObjectSet taggedObjectSet;
-	public static final String SINGLE_COLUMN_NAME = EAM.text("Visible");
+	public static final String SINGLE_COLUMN_NAME = EAM.text("Is Tagged");
 }
