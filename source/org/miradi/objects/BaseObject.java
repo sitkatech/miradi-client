@@ -669,7 +669,7 @@ abstract public class BaseObject
 		if (combinedDateRange == null)
 			return "";
 		
-		return  combinedDateRange.toString();
+		return  getProject().getProjectCalendar().getDateRangeName(combinedDateRange);
 	}
 	
 	public DateRange getWhenEstimate() throws Exception
