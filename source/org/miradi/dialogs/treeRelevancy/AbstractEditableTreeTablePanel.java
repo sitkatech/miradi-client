@@ -65,7 +65,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		listenForColumnWidthChanges(getTree());
 
 		createEditableTableModel(mainWindowToUse, treeTable, baseObject);
-		createEditableTable(mainWindowToUse);
+		setEditableObjectTable(createEditableTable(mainWindowToUse));
 		mainTableScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeTable, getEditableTable());
 
 		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
@@ -162,7 +162,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 	
 	abstract protected void createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject);
 	
-	abstract protected void createEditableTable(MainWindow mainWindowToUse);
+	abstract protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse);
 	
 	abstract protected String getDividerName();
 	

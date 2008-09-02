@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -45,9 +46,9 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 		setEditableSingleBooleanColumnTableModel(new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable,  (Objective)baseObject));
 	}
 	
-	protected void createEditableTable(MainWindow mainWindowToUse)
+	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
 	{
-		setEditableObjectTable(new StrategyActivityRelevancyTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel()));
+		return new StrategyActivityRelevancyTable(mainWindowToUse, getEditableSingleBooleanColumnTableModel());
 	}
 	
 	protected String getDividerName()
