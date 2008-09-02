@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.Rectangle;
-
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
@@ -127,17 +125,6 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 			EAM.logException(e);
 			return 1;
 		}
-	}
-	
-	@Override
-	public Rectangle getCellRect(int row, int column, boolean includeSpacing)
-	{
-		Rectangle cellRect = super.getCellRect(row, column, includeSpacing);
-		if(!includeSpacing && getMainWindow().isRowHeightModeManual())
-		{
-			cellRect.height -= TableRowHeightSaver.ROW_RESIZE_MARGIN;
-		}
-		return cellRect;
 	}
 	
 	@Override
