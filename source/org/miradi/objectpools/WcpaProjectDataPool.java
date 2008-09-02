@@ -34,7 +34,7 @@ public class WcpaProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.WCPA_PROJECT_DATA);
 	}
 	
-	public void put(WcpaProjectData wcpaProjectData)
+	public void put(WcpaProjectData wcpaProjectData) throws Exception
 	{
 		put(wcpaProjectData.getId(), wcpaProjectData);
 	}

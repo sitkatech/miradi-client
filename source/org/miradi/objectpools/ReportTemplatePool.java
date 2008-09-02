@@ -34,7 +34,7 @@ public class ReportTemplatePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.REPORT_TEMPLATE);
 	}
 	
-	public void put(ReportTemplate reportTemplate)
+	public void put(ReportTemplate reportTemplate) throws Exception
 	{
 		put(reportTemplate.getId(), reportTemplate);
 	}

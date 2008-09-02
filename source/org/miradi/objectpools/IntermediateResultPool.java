@@ -35,7 +35,7 @@ public class IntermediateResultPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.INTERMEDIATE_RESULT);
 	}
 	
-	public void put(IntermediateResult intermediateResult)
+	public void put(IntermediateResult intermediateResult) throws Exception
 	{
 		put(intermediateResult.getId(), intermediateResult);
 	}

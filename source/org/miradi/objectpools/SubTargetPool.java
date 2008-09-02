@@ -34,7 +34,7 @@ public class SubTargetPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.SUB_TARGET);
 	}
 	
-	public void put(SubTarget subTarget)
+	public void put(SubTarget subTarget) throws Exception
 	{
 		put(subTarget.getId(), subTarget);
 	}

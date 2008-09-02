@@ -34,7 +34,7 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.TAGGED_OBJECT_SET);
 	}
 	
-	public void put(TaggedObjectSet taggedObjectSet)
+	public void put(TaggedObjectSet taggedObjectSet) throws Exception
 	{
 		put(taggedObjectSet.getId(), taggedObjectSet);
 	}

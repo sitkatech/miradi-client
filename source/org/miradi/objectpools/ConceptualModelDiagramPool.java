@@ -35,7 +35,7 @@ public class ConceptualModelDiagramPool extends DiagramObjectPool
 		super(idAssignerToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 	}
 	
-	public void put(ConceptualModelDiagram conceptualModelDiagram)
+	public void put(ConceptualModelDiagram conceptualModelDiagram) throws Exception
 	{
 		put(conceptualModelDiagram.getId(), conceptualModelDiagram);
 	}

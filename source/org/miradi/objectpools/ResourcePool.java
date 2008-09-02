@@ -37,7 +37,7 @@ public class ResourcePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PROJECT_RESOURCE);
 	}
 	
-	public void put(ProjectResource resource)
+	public void put(ProjectResource resource) throws Exception
 	{
 		put(resource.getId(), resource);
 	}

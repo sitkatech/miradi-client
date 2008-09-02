@@ -35,7 +35,7 @@ public class SlidePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.SLIDE);
 	}
 	
-	public void put(Slide slide)
+	public void put(Slide slide) throws Exception
 	{
 		put(slide.getId(), slide);
 	}

@@ -42,7 +42,7 @@ public class StrategyPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.STRATEGY);
 	}
 	
-	public void put(Strategy strategy)
+	public void put(Strategy strategy) throws Exception
 	{
 		put(strategy.getId(), strategy);
 	}

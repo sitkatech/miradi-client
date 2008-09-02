@@ -34,7 +34,7 @@ public class ViewPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.VIEW_DATA);
 	}
 	
-	public void put(ViewData viewData)
+	public void put(ViewData viewData) throws Exception
 	{
 		put(viewData.getId(), viewData);
 	}

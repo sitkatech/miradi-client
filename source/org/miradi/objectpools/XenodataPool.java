@@ -34,7 +34,7 @@ public class XenodataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.XENODATA);
 	}
 	
-	public void put(Xenodata xenodata)
+	public void put(Xenodata xenodata) throws Exception
 	{
 		put(xenodata.getId(), xenodata);
 	}

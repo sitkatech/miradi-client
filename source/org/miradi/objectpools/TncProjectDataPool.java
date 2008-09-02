@@ -33,7 +33,7 @@ public class TncProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, TncProjectData.getObjectType());
 	}
 	
-	public void put(TncProjectData tncProjectData)
+	public void put(TncProjectData tncProjectData) throws Exception
 	{
 		put(tncProjectData.getId(), tncProjectData);
 	}

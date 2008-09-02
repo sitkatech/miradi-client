@@ -35,7 +35,7 @@ public class IndicatorPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.INDICATOR);
 	}
 	
-	public void put(Indicator indicator)
+	public void put(Indicator indicator) throws Exception
 	{
 		put(indicator.getId(), indicator);
 	}

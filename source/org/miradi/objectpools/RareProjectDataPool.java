@@ -34,7 +34,7 @@ public class RareProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.RARE_PROJECT_DATA);
 	}
 	
-	public void put(RareProjectData rareProjectData)
+	public void put(RareProjectData rareProjectData) throws Exception
 	{
 		put(rareProjectData.getId(), rareProjectData);
 	}

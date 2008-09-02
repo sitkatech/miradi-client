@@ -37,7 +37,7 @@ public class TaskPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.TASK);
 	}
 	
-	public void put(Task task)
+	public void put(Task task) throws Exception
 	{
 		put(task.getId(), task);
 	}

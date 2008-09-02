@@ -35,7 +35,7 @@ public class ThreatReductionResultPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.THREAT_REDUCTION_RESULT);
 	}
 	
-	public void put(ThreatReductionResult threatReduction)
+	public void put(ThreatReductionResult threatReduction) throws Exception
 	{
 		put(threatReduction.getId(), threatReduction);
 	}

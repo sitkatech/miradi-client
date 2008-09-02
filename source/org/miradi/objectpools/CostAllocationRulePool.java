@@ -34,7 +34,7 @@ public class CostAllocationRulePool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.COST_ALLOCATION_RULE);
 	}
 	
-	public void put(CostAllocationRule costAllocationRule)
+	public void put(CostAllocationRule costAllocationRule) throws Exception
 	{
 		put(costAllocationRule.getId(), costAllocationRule);
 	}

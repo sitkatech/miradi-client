@@ -39,7 +39,7 @@ public class TargetPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.TARGET);
 	}
 	
-	public void put(Target target)
+	public void put(Target target) throws Exception
 	{
 		put(target.getId(), target);
 	}

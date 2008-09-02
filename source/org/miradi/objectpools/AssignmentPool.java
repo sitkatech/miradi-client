@@ -34,7 +34,7 @@ public class AssignmentPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.ASSIGNMENT);
 	}
 	
-	public void put(Assignment assignment)
+	public void put(Assignment assignment) throws Exception
 	{
 		put(assignment.getId(), assignment);
 	}

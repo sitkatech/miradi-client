@@ -35,7 +35,7 @@ public class TextBoxPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.TEXT_BOX);
 	}
 	
-	public void put(TextBox textBox)
+	public void put(TextBox textBox) throws Exception
 	{
 		put(textBox.getId(), textBox);
 	}

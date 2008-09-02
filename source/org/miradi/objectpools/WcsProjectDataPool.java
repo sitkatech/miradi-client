@@ -34,7 +34,7 @@ public class WcsProjectDataPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.WCS_PROJECT_DATA);
 	}
 	
-	public void put(WcsProjectData wcsProjectData)
+	public void put(WcsProjectData wcsProjectData) throws Exception
 	{
 		put(wcsProjectData.getId(), wcsProjectData);
 	}

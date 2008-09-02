@@ -34,7 +34,7 @@ public class OrganizationPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.ORGANIZATION);
 	}
 	
-	public void put(Organization organization)
+	public void put(Organization organization) throws Exception
 	{
 		put(organization.getId(), organization);
 	}
