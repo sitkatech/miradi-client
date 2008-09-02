@@ -42,4 +42,16 @@ abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSi
 	{
 		return getPreferredSize();
 	}
+	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean shouldSaveColumnWidth()
+	{
+		return false;
+	}
 }
