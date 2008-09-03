@@ -22,6 +22,7 @@ package org.miradi.rtf;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -122,6 +123,9 @@ public class RtfStyleManager
 		
 		if (Goal.is(objectType))
 			return Goal.OBJECT_NAME;
+		
+		if (ObjectType.FAKE == objectType)
+			return "";
 		
 		throw new RuntimeException("Could not find object name for type,  should only use this method if no object is available. type = " + objectType);
 	}
