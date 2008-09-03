@@ -19,11 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.reportTemplate;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -33,47 +40,82 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.views.reports.doers.RunReportTemplateDoer;
+import org.miradi.wizard.MiradiHtmlViewer;
 
 public class StandardReportPanel extends TwoColumnPanel
 {
 	public StandardReportPanel(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
-		createPanel();
+
+		setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+		add(createReportsPanel());
+		add(createHintPanel());
 	}
 
-	private void createPanel()
+	private JComponent createReportsPanel()
 	{
-		addStandardReport(getFullReportCodeList(), EAM.text("Full Report"));
-		addStandardReport(getSummaryCodeList(), EAM.text("Summary Report"));
-		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE);
-		addStandardReport(ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE);
-		addStandardReport(ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE);
-		addStandardReport(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE);
-		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
-		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
-		addStandardReport(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
-		addStandardReport(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE);
+		TwoColumnPanel reports = new TwoColumnPanel();
+		reports.setBackground(getMainWindow().getAppPreferences().getDataPanelBackgroundColor());
+		addStandardReport(reports, getFullReportCodeList(), EAM.text("Full Report"));
+		addStandardReport(reports, getSummaryCodeList(), EAM.text("Summary Report"));
+		addStandardReport(reports, ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
+		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
+		addStandardReport(reports, ReportTemplateContentQuestion.PROGRESS_REPORT_CODE);
+		
+		return reports;
+	}
+	
+	private JComponent createHintPanel()
+	{	
+		String htmlFormatting = "<div class='DataPanel'><span class='hint'>";
+		String text = htmlFormatting + EAM.text("Select the report that you want to run. " +
+				"Miradi will then prompt you to save the report as a Rich Text Format (RTF) file. " +
+				"Once you have created this file, " +
+				"you can edit or print it using a word processing program such as MS Word or Open Office Writer. <br></br><br></br>" +
+				"Note that if you edit the report in your word processor, " +
+				"your changes will not be maintained the next time you generate a report. " +
+				"As a result, try to make the edits in the appropriate Miradi fields where possible.");
+		MiradiHtmlViewer helpfulText = new MiradiHtmlViewer(getMainWindow(), new DefaultHyperlinkHandler(getMainWindow()));
+		helpfulText.setTextWithoutScrollingToMakeFieldVisible(text);
+		int arbitraryWidth = 500;
+		int height = helpfulText.getPreferredHeight(arbitraryWidth);
+		helpfulText.setPreferredSize(new Dimension(arbitraryWidth, height));
+		
+		OneColumnPanel hintPanel = new OneColumnPanel();
+		Border cushion = BorderFactory.createEmptyBorder(0, 50, 0, 0);
+		Border titleBorder = BorderFactory.createTitledBorder(EAM.text("How Reports Work"));
+		hintPanel.setBorder(BorderFactory.createCompoundBorder(cushion, titleBorder));
+		hintPanel.setBackground(getMainWindow().getAppPreferences().getDataPanelBackgroundColor());
+		hintPanel.add(new JLabel(" "));
+		hintPanel.add(helpfulText);
+		return hintPanel;
 	}
 
-	private void addStandardReport(String code)
+	private void addStandardReport(TwoColumnPanel panel, String code)
 	{
 		CodeList standardReportCodes = new CodeList();
 		standardReportCodes.add(code);
 		standardReportCodes.add(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE);
 		ChoiceQuestion question = getContentQuestion();
 		ChoiceItem choice = question.findChoiceByCode(code);
-		addStandardReport(standardReportCodes, choice.getLabel());
+		addStandardReport(panel, standardReportCodes, choice.getLabel());
 	}
 
-	private void addStandardReport(CodeList standardReportCodeList, String standardReportLabel)
+	private void addStandardReport(TwoColumnPanel panel, CodeList standardReportCodeList, String standardReportLabel)
 	{
 		PanelButton runButton = new PanelButton(EAM.text("Run..."));
 		runButton.addActionListener(new ActionHandler(standardReportCodeList));
 		
-		add(new PanelTitleLabel(EAM.text(standardReportLabel)));
-		add(runButton);
+		panel.add(new PanelTitleLabel(EAM.text(standardReportLabel)));
+		panel.add(runButton);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 	
