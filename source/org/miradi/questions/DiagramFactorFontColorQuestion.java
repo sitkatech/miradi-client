@@ -34,46 +34,58 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", "Black (Default)", Color.BLACK),
 			new ChoiceItem(DARK_GRAY_HEX, "Dark Gray", DARK_GRAY_FROM_HEX),
-			new ChoiceItem(LIGHT_GRAY_HEX, "Light Gray", LIGHT_GRAY_FROM_HEX),
-			new ChoiceItem(BROWN_HEX, "Brown", BROWN_FROM_HEX),
-			new ChoiceItem(TAN_HEX, "Tan", TAN_FROM_HEX),
-			new ChoiceItem(WHITE_HEX, "White", WHITE_FROM_HEX),
-			new ChoiceItem(RED_HEX, "Red", RED_FROM_HEX),
-			new ChoiceItem(PINK_HEX, "Pink", PINK_FROM_HEX),
-			new ChoiceItem(ORANGE_HEX, "Orange", ORANGE_FROM_HEX),
-			new ChoiceItem(YELLOW_HEX, "Yellow", YELLOW_FROM_HEX),
+			new ChoiceItem(RED_HEX, "Dark Red", RED_FROM_HEX),
+			new ChoiceItem(DARK_ORANGE_HEX, "Dark Orange", DARK_ORANGE_FROM_HEX),
+			new ChoiceItem(DARK_YELLOW_HEX, "Dark Yellow", DARK_YELLOW_FROM_HEX),
 			new ChoiceItem(DARK_GREEN_HEX, "Dark Green", DARK_GREEN_FROM_HEX),
-			new ChoiceItem(LIGHT_GREEN_HEX, "Light Green", LIGHT_GREEN_FROM_HEX),
 			new ChoiceItem(DARK_BLUE_HEX, "Dark Blue", DARK_BLUE_FROM_HEX),
+			new ChoiceItem(DARK_PURPLE_HEX, "Dark Purple", DARK_PURPLE_FROM_HEX),
+			new ChoiceItem(BROWN_HEX, "Brown", BROWN_FROM_HEX),
+			new ChoiceItem(LIGHT_GRAY_HEX, "Light Gray", LIGHT_GRAY_FROM_HEX),
+			new ChoiceItem(WHITE_HEX, "White", WHITE_FROM_HEX),
+			new ChoiceItem(PINK_HEX, "Pink", PINK_FROM_HEX),
+			new ChoiceItem(LIGHT_ORANGE_HEX, "Light Orange", LIGHT_ORANGE_FROM_HEX),
+			new ChoiceItem(LIGHT_YELLOW_HEX, "Light Yellow", LIGHT_YELLOW_FROM_HEX),
+			new ChoiceItem(LIGHT_GREEN_HEX, "Light Green", LIGHT_GREEN_FROM_HEX),
 			new ChoiceItem(LIGHT_BLUE_HEX, "Light Blue", LIGHT_BLUE_FROM_HEX),
+			new ChoiceItem(LIGHT_PURPLE_HEX, "Light Purple", LIGHT_PURPLE_FROM_HEX),
+			new ChoiceItem(TAN_HEX, "Tan", TAN_FROM_HEX),
 		};
 	}
 	
 	public static final String DARK_GRAY_HEX = "#4E4848";
 	public static final String LIGHT_GRAY_HEX = "#6D7B8D";
+	public static final String DARK_ORANGE_HEX = "#FF6600";
+	public static final String DARK_YELLOW_HEX = "#FFCC00";
+	public static final String DARK_GREEN_HEX = "#007F00";
+	public static final String DARK_BLUE_HEX = "#0000CC";
+	public static final String DARK_PURPLE_HEX = "#9900FF";
 	public static final String BROWN_HEX = "#C85A17";
-	public static final String TAN_HEX = "#EDE275";
 	public static final String WHITE_HEX = "#FFFFFF";
 	public static final String RED_HEX = "#FF0000";
 	public static final String PINK_HEX = "#FF00FF";
-	public static final String ORANGE_HEX = "#FF8040";
-	public static final String YELLOW_HEX = "#FFFF00";
-	public static final String DARK_GREEN_HEX = "#254117";
+	public static final String LIGHT_ORANGE_HEX = "#FF8040";
+	public static final String LIGHT_YELLOW_HEX = "#FFFFCC";
 	public static final String LIGHT_GREEN_HEX = "#5FFB17";
-	public static final String DARK_BLUE_HEX = "#0000CC";
 	public static final String LIGHT_BLUE_HEX = "#00CCFF";
+	public static final String LIGHT_PURPLE_HEX = "#CC99FF";
+	public static final String TAN_HEX = "#EDE275";
 	
 	public static final Color DARK_GRAY_FROM_HEX = Color.decode(DARK_GRAY_HEX);
 	public static final Color LIGHT_GRAY_FROM_HEX = Color.decode(LIGHT_GRAY_HEX);
+	public static final Color DARK_ORANGE_FROM_HEX = Color.decode(DARK_ORANGE_HEX);
+	public static final Color DARK_YELLOW_FROM_HEX = Color.decode(DARK_YELLOW_HEX);
+	public static final Color DARK_GREEN_FROM_HEX = Color.decode(DARK_GREEN_HEX);
+	public static final Color DARK_BLUE_FROM_HEX = Color.decode(DARK_BLUE_HEX);
+	public static final Color DARK_PURPLE_FROM_HEX = Color.decode(DARK_PURPLE_HEX);
 	public static final Color BROWN_FROM_HEX = Color.decode(BROWN_HEX);
-	public static final Color TAN_FROM_HEX = Color.decode(TAN_HEX);
 	public static final Color WHITE_FROM_HEX = Color.decode(WHITE_HEX);
 	public static final Color RED_FROM_HEX = Color.decode(RED_HEX);
 	public static final Color PINK_FROM_HEX = Color.decode(PINK_HEX);
-	public static final Color ORANGE_FROM_HEX = Color.decode(ORANGE_HEX);
-	public static final Color YELLOW_FROM_HEX = Color.decode(YELLOW_HEX);
-	public static final Color DARK_GREEN_FROM_HEX = Color.decode(DARK_GREEN_HEX);
+	public static final Color LIGHT_ORANGE_FROM_HEX = Color.decode(LIGHT_ORANGE_HEX);
+	public static final Color LIGHT_YELLOW_FROM_HEX = Color.decode(LIGHT_YELLOW_HEX);
 	public static final Color LIGHT_GREEN_FROM_HEX = Color.decode(LIGHT_GREEN_HEX);
-	public static final Color DARK_BLUE_FROM_HEX = Color.decode(DARK_BLUE_HEX);
 	public static final Color LIGHT_BLUE_FROM_HEX = Color.decode(LIGHT_BLUE_HEX);	
+	public static final Color LIGHT_PURPLE_FROM_HEX = Color.decode(LIGHT_PURPLE_HEX);
+	public static final Color TAN_FROM_HEX = Color.decode(TAN_HEX);
 }
