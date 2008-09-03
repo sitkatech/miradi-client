@@ -286,7 +286,13 @@ public class ProjectMetadata extends BaseObject
 	{
 		return objectType == getObjectType();
 	}
-
+	
+	@Override
+	public String toString()
+	{
+		return getProjectName();
+	}
+	
 	void clear()
 	{
 		super.clear();
