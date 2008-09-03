@@ -22,6 +22,7 @@ package org.miradi.utils;
 import javax.swing.JTree;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
+import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
 
@@ -75,11 +76,9 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		if (isTreeColumn(column))
-		{
-			TreeTableNode node = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
-			return node.toRawString();
-		}
+		BaseObject baseObjectForRowColumn = getTreeTable().getBaseObjectForRowColumn(row, column);
+		if (isTreeColumn(column) && baseObjectForRowColumn != null)			
+			return baseObjectForRowColumn.toString();
 		
 		Object value = getTreeTable().getValueAt(row, column);
 		return getSafeValue(value);
@@ -90,9 +89,9 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return getTreeTable().getTree();
 	}
 	
-	protected JTreeTable getTreeTable()
+	protected ObjectTreeTable getTreeTable()
 	{
-		return treeTable;
+		return (ObjectTreeTable) treeTable;
 	}
 	
 	public GenericTreeTableModel getModel()

@@ -95,6 +95,9 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		if (baseObjectForRow == null)
 			return "";
 		
+		if (isTreeColumn(column))
+			return baseObjectForRow.toString();
+		
 		TreeTableNode node = (TreeTableNode) getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId()).getLastPathComponent();
 		Object value = getModel().getValueAt(node, column);
 		return getSafeValue(value);
