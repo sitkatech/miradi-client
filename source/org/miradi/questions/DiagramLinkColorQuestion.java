@@ -33,17 +33,22 @@ public class DiagramLinkColorQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Black (Default)", Color.BLACK),
 				new ChoiceItem("darkGray", "Dark Gray", DiagramFactorFontColorQuestion.DARK_GRAY_FROM_HEX),
-				new ChoiceItem("lightGray", "Light Gray", DiagramFactorFontColorQuestion.LIGHT_GRAY_FROM_HEX),
-				new ChoiceItem("brown", "Brown", DiagramFactorFontColorQuestion.BROWN_FROM_HEX),
-				new ChoiceItem("tan", "Tan", DiagramFactorFontColorQuestion.TAN_FROM_HEX),
 				new ChoiceItem("red", "Red", DiagramFactorFontColorQuestion.RED_FROM_HEX),
+				new ChoiceItem("DarkOrange", "Dark Orange", DiagramFactorFontColorQuestion.DARK_ORANGE_FROM_HEX),
+				new ChoiceItem("DarkYellow", "Dark Yellow", DiagramFactorFontColorQuestion.DARK_YELLOW_FROM_HEX),
+				new ChoiceItem("darkGreen", "Dark Green", DiagramFactorFontColorQuestion.DARK_GREEN_FROM_HEX),
+				new ChoiceItem("darkBlue", "Dark Blue", DiagramFactorFontColorQuestion.DARK_BLUE_FROM_HEX),
+				new ChoiceItem("DarkPurple", "Dark Purple", DiagramFactorFontColorQuestion.DARK_PURPLE_FROM_HEX),
+				new ChoiceItem("brown", "Brown", DiagramFactorFontColorQuestion.BROWN_FROM_HEX),
+				new ChoiceItem("lightGray", "Light Gray", DiagramFactorFontColorQuestion.LIGHT_GRAY_FROM_HEX),
+				new ChoiceItem("White", "White", DiagramFactorFontColorQuestion.WHITE_FROM_HEX),
 				new ChoiceItem("pink", "Pink", DiagramFactorFontColorQuestion.PINK_FROM_HEX),
 				new ChoiceItem("orange", "Orange", DiagramFactorFontColorQuestion.LIGHT_ORANGE_FROM_HEX),
 				new ChoiceItem("yellow", "Yellow", DiagramFactorFontColorQuestion.LIGHT_YELLOW_FROM_HEX),
-				new ChoiceItem("darkGreen", "Dark Green", DiagramFactorFontColorQuestion.DARK_GREEN_FROM_HEX),
 				new ChoiceItem("lightGreen", "Light Green", DiagramFactorFontColorQuestion.LIGHT_GREEN_FROM_HEX),
-				new ChoiceItem("darkBlue", "Dark Blue", DiagramFactorFontColorQuestion.DARK_BLUE_FROM_HEX),
 				new ChoiceItem("lightBlue", "Light Blue", DiagramFactorFontColorQuestion.LIGHT_BLUE_FROM_HEX),
+				new ChoiceItem("LightPurple", "Light Purple", DiagramFactorFontColorQuestion.LIGHT_PURPLE_FROM_HEX),
+				new ChoiceItem("tan", "Tan", DiagramFactorFontColorQuestion.TAN_FROM_HEX),
 		};
 	}
 }
