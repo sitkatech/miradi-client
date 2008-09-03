@@ -75,7 +75,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		if (column == 0)
+		if (isTreeColumn(column))
 		{
 			TreeTableNode node = (TreeTableNode) getTree().getPathForRow(row).getLastPathComponent();
 			return node.toRawString();
