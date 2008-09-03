@@ -117,22 +117,27 @@ public class MiradiLogger
 	
 	public void logError(String text)
 	{
-		log.log(Level.SEVERE, text);
+		log(Level.SEVERE, text);
 	}
 	
 	public void logWarning(String text)
 	{
-		log.log(Level.WARNING, text);
+		log(Level.WARNING, text);
 	}
 	
 	public void logDebug(String text)
 	{
-		log.log(Level.INFO, text);
+		log(Level.INFO, text);
 	}
 	
 	public void logVerbose(String text)
 	{
-		log.log(Level.FINE, text);
+		log(Level.FINE, text);
+	}
+	
+	private void log(Level level, String text)
+	{
+		log.log(level, text);
 	}
 	
 	private void removeAllHandlers()
