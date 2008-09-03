@@ -31,11 +31,11 @@ public class ActionExportProjectXml extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Project XML File");
+		return EAM.text("Action|Project XML File (BETA)");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Project XML File");
+		return EAM.text("TT|Export entire project as an XML file");
 	}
 }

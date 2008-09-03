@@ -31,11 +31,11 @@ public class ActionExportRtf extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Export as RTF");
+		return EAM.text("Action|RTF File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Export Current Page as RTF");
+		return EAM.text("TT|Export current page as an RTF file");
 	}
 }

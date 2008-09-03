@@ -149,12 +149,12 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionPrint.class, KeyEvent.VK_P);
 		menu.addSeparator();
 		
-		menu.add(createExportMenu(actions));
 		menu.add(createExportCurrentPageMenu(actions));
+		menu.add(createExportMenu(actions));
 		menu.add(createImportMenu(actions));
 		menu.addSeparator();
 		
-		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_E);
+		addMenuItem(actions, menu, ActionExit.class, KeyEvent.VK_X);
 		
 		return menu;
 	}
@@ -162,16 +162,16 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
-		menu.setMnemonic(KeyEvent.VK_X);
+		menu.setMnemonic(KeyEvent.VK_R);
 		
-		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_Z);
+		addMenuItem(actions, menu, ActionExportZippedProjectFile.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
-		menu.addSeparator();
-		
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		
 		if(MainWindow.isDemoMode())
 		{
+			menu.addSeparator();
+			
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		}
@@ -182,12 +182,12 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportCurrentPageMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Page as..."));
-		menu.setMnemonic(KeyEvent.VK_P);
+		menu.setMnemonic(KeyEvent.VK_E);
 		
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
-		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		addMenuItem(actions, menu, ActionExportRtf.class, KeyEvent.VK_R);
+		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
 		
 		return menu;
 	}
@@ -197,7 +197,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Import"));
 		menu.setMnemonic(KeyEvent.VK_I);
 		
-		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_P);
+		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportZippedConproProject.class, KeyEvent.VK_C);
 		
 		if(MainWindow.isDemoMode())
