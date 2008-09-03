@@ -105,7 +105,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return project;
 	}
 	
-	private GenericTreeTableModel getModel()
+	public GenericTreeTableModel getModel()
 	{
 		return model;
 	}
