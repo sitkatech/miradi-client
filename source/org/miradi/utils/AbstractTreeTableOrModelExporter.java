@@ -23,15 +23,49 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.PanelTreeTable;
 import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
+import org.miradi.rtf.RtfStyleManager;
 
 
 abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExporter
 {
+	@Override
+	public String getStyleTagAt(int row, int column)
+	{
+		String columnTag = getModel().getColumnTag(column);
+		if (isCommentTag(columnTag))
+			return RtfStyleManager.COMMENT_STYLE_TAG;
+		
+		if (getBaseObjectForRow(row) == null)
+			return RtfStyleManager.createTag(getRowType(row));
+		
+		if (isTreeColumn(column))
+			return RtfStyleManager.createTag(getBaseObjectForRow(row));
+		
+		return "";
+	}
+	
+	private boolean isCommentTag(String columnTag)
+	{
+		if (columnTag.equals(Indicator.TAG_DETAIL))
+			return true;
+		
+		if (columnTag.equals(Factor.TAG_TEXT))
+			return true;
+		
+		if (columnTag.equals(Factor.TAG_COMMENT))
+			return true;
+		
+		return false;
+	}
+
 	public int getMaxDepthCount()
 	{
 		int maxRowDepth = 0;
@@ -97,6 +131,8 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		
 		return rowTypes;
 	}
+	
+	abstract public GenericTreeTableModel getModel();
 	
 	protected static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 2;
 }
