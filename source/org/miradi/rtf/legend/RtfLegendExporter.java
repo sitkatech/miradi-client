@@ -43,8 +43,10 @@ public class RtfLegendExporter
 	
 	public void exportLegend(RtfWriter writer) throws Exception
 	{
+		writer.newParagraph();
 		ChoiceQuestion question = getProject().getQuestion(RtfLegendObjectsQuestion.class);
 		writer.writeRtfTable(new LegendModelExporter(question.getChoices()));
+		writer.newParagraph();
 	}
 	
 	private Project getProject()
