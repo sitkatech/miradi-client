@@ -31,7 +31,7 @@ public class ActionImportZippedConproProject extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|ConPro/Miradi (CPMZ) File (BETA)");
+		return EAM.text("Action|ConPro (CPMZ) File (BETA)");
 	}
 
 	public String getToolTipText()
