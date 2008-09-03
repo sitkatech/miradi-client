@@ -21,7 +21,6 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
@@ -37,7 +36,7 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Factor Summary Comments Panel");
+		return "";
 	}
 
 }
