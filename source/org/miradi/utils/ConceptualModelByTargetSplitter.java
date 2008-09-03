@@ -46,15 +46,17 @@ public class ConceptualModelByTargetSplitter
 		project = projectToUse;
 	}
 	
-	public void splitByTarget(ConceptualModelDiagram conceptualModel) throws Exception
+	public void splitByTarget(ConceptualModelDiagram mainConceptualModelToSplit) throws Exception
 	{
-		setDiagramObjectLabel(conceptualModel.getRef(), "{" + EAM.text("All on One Page") + "}");
-		setDiagramObject(conceptualModel);
-		HashSet<DiagramFactor> targetDiagramFactors = conceptualModel.getFactorsFromDiagram(Target.getObjectType());
+		setDiagramObjectLabel(mainConceptualModelToSplit.getRef(), "{" + EAM.text("All on One Page") + "}");
+		setDiagramObject(mainConceptualModelToSplit);
+		HashSet<DiagramFactor> targetDiagramFactors = mainConceptualModelToSplit.getFactorsFromDiagram(Target.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
 		{
 			createDiagramForTarget(targetDiagramFactor);
 		}
+		
+		hideLinkLayer(mainConceptualModelToSplit.getRef());
 	}
 	
 	private void createDiagramForTarget(DiagramFactor targetDiagramFactor) throws Exception
@@ -85,8 +87,6 @@ public class ConceptualModelByTargetSplitter
 		
 		ORef newConceptualModelRef = createPage.getObjectRef();
 		setDiagramObjectLabel(newConceptualModelRef, targetNameUsedAsDiagramName);
-		
-		hideLinkLayer(newConceptualModelRef);
 		
 		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 	}
