@@ -31,6 +31,7 @@ import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
 import org.miradi.views.reports.doers.CreateReportTemplateDoer;
 import org.miradi.views.reports.doers.DeleteReportTemplateDoer;
@@ -78,7 +79,7 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
 
-		addTab(EAM.text("Standard Reports"), standardReportPanel);
+		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
 
 	}
