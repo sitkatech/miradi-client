@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf;
 
 import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
+import org.miradi.questions.ReportTemplateContentQuestion;
+import org.miradi.rtf.legend.RtfLegendExporter;
 import org.miradi.rtf.viewExporters.DiagramViewRtfExporter;
 import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
-import org.miradi.rtf.viewExporters.ViabilityViewRtfExporter;
 import org.miradi.rtf.viewExporters.ThreatRatingsViewRtfExporter;
+import org.miradi.rtf.viewExporters.ViabilityViewRtfExporter;
 import org.miradi.utils.CodeList;
 
 public class ProjectRtfExporter
@@ -41,6 +44,18 @@ public class ProjectRtfExporter
 		new ViabilityViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
 		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
 		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		exportLegend(writer, reportTemplateContent);
+	}
+	
+	public void exportLegend(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	{
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE))
+			new RtfLegendExporter(getProject()).exportLegend(writer);
+	}
+
+	private Project getProject()
+	{
+		return getMainWindow().getProject();
 	}
 	
 	private MainWindow getMainWindow()

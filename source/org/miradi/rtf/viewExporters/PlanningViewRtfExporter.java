@@ -71,8 +71,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
 			exportFundingSourceTab(writer);
-		
-		super.ExportView(writer, reportTemplateContent);
 	}
 
 	private void exportResourcesTab(RtfWriter writer) throws Exception
