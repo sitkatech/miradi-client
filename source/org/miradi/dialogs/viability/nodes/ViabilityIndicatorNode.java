@@ -30,6 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -91,7 +92,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			return new ProgressReportStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if(tag.equals(Indicator.TAG_EMPTY))
-			return "";
+			return new ChoiceItem("", "");
 		
 		String data = getObject().getData(tag);
 		
