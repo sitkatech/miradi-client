@@ -46,7 +46,7 @@ public class DiagramFactorBackgroundQuestion extends StaticChoiceQuestion
 			new ChoiceItem("DarkGray", "Dark Gray", new Color(78, 72, 72)),
 
 			new ChoiceItem("Red", "Dark Red", new Color(255, 0, 0)),
-			new ChoiceItem("DarkOrange", "Dark Orange", new Color(255, 0, 0)),
+			new ChoiceItem("DarkOrange", "Dark Orange", new Color(255, 102, 0)),
 			new ChoiceItem("DarkYellow", "Dark Yellow", new Color(255, 204, 0)),
 			new ChoiceItem("DarkGreen", "Dark Green", new Color(0, 128, 0)),
 			new ChoiceItem("DarkBlue", "Dark Blue", new Color(0, 0, 204)),
