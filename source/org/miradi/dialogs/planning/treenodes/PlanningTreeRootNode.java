@@ -22,13 +22,15 @@ package org.miradi.dialogs.planning.treenodes;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
 public class PlanningTreeRootNode extends AbstractPlanningTreeNode
@@ -52,22 +54,25 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return ProjectMetadata.getObjectType();
 	}
 
 	public BaseObject getObject()
 	{
-		return null;
+		return project.getMetadata();
 	}
 
 	public ORef getObjectReference()
 	{
-		return ORef.INVALID;
+		return getObject().getRef();
 	}
 
 	public Object getValueAt(int column)
 	{
-		return null;
+		if (column == 0)
+			return getObject().toString();
+		
+		return new ChoiceItem("", "", new MiradiApplicationIcon());
 	}
 
 	public boolean attemptToAdd(ORef refToAdd)
