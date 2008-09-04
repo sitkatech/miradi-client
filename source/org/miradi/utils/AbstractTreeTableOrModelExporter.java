@@ -27,9 +27,7 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.PanelTreeTable;
 import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.rtf.RtfStyleManager;
@@ -45,7 +43,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			return RtfStyleManager.COMMENT_STYLE_TAG;
 		
 		if (getBaseObjectForRow(row) == null)
-			return RtfStyleManager.createTag(getSafeRowType(row));
+			return RtfStyleManager.createTag(getRowType(row));
 		
 		if (isTreeColumn(column))
 			return RtfStyleManager.createTag(getBaseObjectForRow(row));
@@ -53,15 +51,6 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		return "";
 	}
 
-	private int getSafeRowType(int row)
-	{
-		int rowType = getRowType(row);
-		if (rowType != ObjectType.FAKE)
-			return rowType;
-		
-		return ConceptualModelDiagram.getObjectType();
-	}
-	
 	private boolean isCommentTag(String columnTag)
 	{
 		if (columnTag.equals(Indicator.TAG_DETAIL))
@@ -98,7 +87,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			if (baseObject != null)
 				return IconManager.getImage(baseObject);
 			
-			int rowType = getSafeRowType(row);
+			int rowType = getRowType(row);
 			return IconManager.getImage(rowType);
 		}
 		//FIXME this needs to return correct cell icon

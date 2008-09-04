@@ -25,11 +25,8 @@ import javax.swing.tree.TreePath;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTreeTableOrModelExporter;
 
@@ -42,9 +39,15 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		fullyExpandedTreePaths = model.getFullyExpandedTreePathList();
 	}
 	
-	public BaseObject getBaseObjectForRow(int row)
+	public TreeTableNode getTreeTableNodeForRow(int row)
 	{
 		TreeTableNode node = (TreeTableNode) fullyExpandedTreePaths.get(row).getLastPathComponent();
+		return node;
+	}
+	
+	public BaseObject getBaseObjectForRow(int row)
+	{
+		TreeTableNode node = getTreeTableNodeForRow(row);
 		ORef rowObjectRef = node.getObjectReference();
 		if (rowObjectRef.isInvalid())
 			return null;
@@ -82,41 +85,19 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	@Override
 	public int getRowType(int row)
 	{
-		BaseObject baseObjectForRow = getBaseObjectForRow(row);
-		if (baseObjectForRow == null)
-			return ObjectType.FAKE;
-		
-		TreeTableNode node = (TreeTableNode) getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId()).getLastPathComponent();
+		TreeTableNode node = getTreeTableNodeForRow(row);
 		return node.getType();
 	}
 
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		BaseObject baseObjectForRow = getBaseObjectForRow(row);
+		TreeTableNode node = getTreeTableNodeForRow(row);
 		if (isTreeColumn(column))
-			return getTreeColumnText(baseObjectForRow);
+			return node.toRawString();
 		
-		if (baseObjectForRow == null)
-			return ""; 
-		
-		TreePath pathOfNode = getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId());
-		TreeTableNode node = (TreeTableNode) pathOfNode.getLastPathComponent();
 		Object value = getModel().getValueAt(node, column);
 		return getSafeValue(value);
-	}
-
-	private String getTreeColumnText(BaseObject baseObjectForRow)
-	{
-		if (baseObjectForRow != null)
-			return baseObjectForRow.toString();
-
-		TreePath pathOfNode = getModel().getPathOfNode(ConceptualModelDiagram.getObjectType(), BaseId.INVALID);
-		if (pathOfNode == null)
-			return "";
-		
-		TreeTableNode conceptualModelNode = (TreeTableNode) pathOfNode.getLastPathComponent();
-		return conceptualModelNode.toRawString();
 	}
 	
 	private Project getProject()
