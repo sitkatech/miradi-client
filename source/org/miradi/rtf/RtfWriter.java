@@ -207,10 +207,12 @@ public class RtfWriter
 	{
 		writeln(TABLE_ROW_HEADER);
 		writeCellCommands(exportableTable);
+		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
 			String header = exportableTable.getHeaderFor(columnIndex);
 			write(PRE_TABLE_HEADER_CELL_COMMAND);
+			writeln(styleFormattingCommand);
 			startBlock();
 			write(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
 			writeEncoded(header);
@@ -420,7 +422,7 @@ public class RtfWriter
 	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\lang1033 ";
 	public static final String TAB_COMMAND = "\\tab ";
 	
-	public static final String PRE_TABLE_HEADER_CELL_COMMAND = " \\intbl\\qc\\b ";
+	public static final String PRE_TABLE_HEADER_CELL_COMMAND = " \\intbl\\qc ";
 	public static final String PRE_CELL_COMMAND  = "\\pard\\intbl\\plain ";
 	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = " ";
 	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
