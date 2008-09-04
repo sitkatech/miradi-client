@@ -35,7 +35,7 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE))
 			exportDiagrams(writer, getProject().getConceptualModelDiagramPool().getRefList());

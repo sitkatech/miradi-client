@@ -53,7 +53,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_PROJECT_TAB_CODE))
 			exportProjectTab(writer);
