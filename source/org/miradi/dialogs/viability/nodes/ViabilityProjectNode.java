@@ -44,7 +44,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	
 	public BaseObject getObject()
 	{
-		return null;
+		return getProject().getMetadata();
 	}
 
 	public TreeTableNode getChild(int index)
@@ -86,7 +86,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	
 	public BaseId getId()
 	{
-		return null;
+		return getObjectReference().getObjectId();
 	}
 	
 	public void rebuild() throws Exception
