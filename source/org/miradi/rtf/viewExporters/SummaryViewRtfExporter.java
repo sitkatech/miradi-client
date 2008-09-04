@@ -97,12 +97,12 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 
 	private void exportTeamTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new TeamPoolTableModel(getProject()));
+		exportObjectTableModel(writer, new TeamPoolTableModel(getProject()), ReportTemplateContentQuestion.TEAM_LABEL);
 	}
 	
 	private void exportOrganizationTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new OrganizationPoolTableModel(getProject()));
+		exportObjectTableModel(writer, new OrganizationPoolTableModel(getProject()), ReportTemplateContentQuestion.ORGANIZATION_LABEL);
 	}	
 
 	private void exportScopeTab(RtfWriter writer) throws Exception

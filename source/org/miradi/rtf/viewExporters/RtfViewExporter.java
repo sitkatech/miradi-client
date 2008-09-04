@@ -35,13 +35,16 @@ abstract public class RtfViewExporter
 		mainWindow = mainWindowToUse;
 	}
 	
-	protected void exportObjectTableModel(RtfWriter writer, ObjectTableModel objectTableModel) throws Exception
+	protected void exportObjectTableModel(RtfWriter writer, ObjectTableModel objectTableModel, String translatedTableName) throws Exception
 	{
-		exportTable(writer, new ObjectTableModelExporter(objectTableModel));
+		exportTable(writer, new ObjectTableModelExporter(objectTableModel), translatedTableName);
 	}
 	
-	protected void exportTable(RtfWriter writer, AbstractTableExporter tableExporter) throws Exception
+	protected void exportTable(RtfWriter writer, AbstractTableExporter tableExporter, String translatedTableName) throws Exception
 	{
+		writer.writeln(translatedTableName);
+		writer.newParagraph();
+		
 		createRtfManagementRtfExporter().writeManagement(tableExporter, writer);
 		writer.newParagraph();
 	}
