@@ -26,11 +26,15 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.WcsProjectData;
+import org.miradi.views.summary.WCSSummaryPanel;
 
 public class WcsTabForm extends FieldPanelSpec
 {
 	public WcsTabForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(WCSSummaryPanel.PANEL_DESCRIPTION);
+		
 		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
 		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
 				

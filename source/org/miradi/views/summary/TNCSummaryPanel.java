@@ -64,7 +64,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("TNC");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
@@ -84,4 +84,6 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new TncTabForm());
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("TNC");
 }

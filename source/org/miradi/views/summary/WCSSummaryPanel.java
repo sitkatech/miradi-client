@@ -54,7 +54,7 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Label|WCS");
+		return PANEL_DESCRIPTION;
 	}
 	
 	public Icon getIcon()
@@ -74,4 +74,6 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new WcsTabForm());
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("Label|WCS");
 }

@@ -21,11 +21,15 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.FosProjectData;
+import org.miradi.views.summary.FOSSummaryPanel;
 
 public class FosTabForm extends FieldPanelSpec
 {
 	public FosTabForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(FOSSummaryPanel.PANEL_DESCRIPTION);
+
 		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE);
 		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_DATES);
 		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINERS);

@@ -21,11 +21,15 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.views.summary.SummaryProjectPanel;
 
 public class ProjectTabForm extends FieldPanelSpec
 {
 	public ProjectTabForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(SummaryProjectPanel.PANEL_DESCRIPTION);
+
 		int type = ProjectMetadata.getObjectType();
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_NAME);
 		addLabelAndField(type, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);

@@ -22,6 +22,7 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.views.summary.TNCSummaryPanel;
 
 
 
@@ -29,6 +30,9 @@ public class TncTabForm extends FieldPanelSpec
 {
 	public TncTabForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(TNCSummaryPanel.PANEL_DESCRIPTION);
+		
 		int projectMetadataType = ProjectMetadata.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
