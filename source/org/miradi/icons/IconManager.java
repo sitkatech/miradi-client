@@ -73,7 +73,7 @@ public class IconManager
 			return getConceptualModelIcon();
 		
 		if (ResultsChainDiagram.is(type))
-			return getConceptualModelIcon();
+			return getResultsChainIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
