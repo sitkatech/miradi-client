@@ -77,13 +77,22 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	public String getTextAt(int row, int column)
 	{
 		BaseObject baseObjectForRowColumn = getTreeTable().getBaseObjectForRowColumn(row, column);
-		if (isTreeColumn(column) && baseObjectForRowColumn != null)			
-			return baseObjectForRowColumn.toString();
+		if (isTreeColumn(column))
+			return getTextForTreeColumn(row, baseObjectForRowColumn);
 		
 		Object value = getTreeTable().getValueAt(row, column);
 		return getSafeValue(value);
 	}
 	
+	private String getTextForTreeColumn(int row, BaseObject baseObjectForRowColumn)
+	{
+		if (baseObjectForRowColumn != null)
+			return baseObjectForRowColumn.toString();
+	
+		TreeTableNode node = getTreeTable().getNodeForRow(row);
+		return node.toRawString();
+	}
+
 	public JTree getTree()
 	{
 		return getTreeTable().getTree();
