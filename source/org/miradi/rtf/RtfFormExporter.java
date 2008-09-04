@@ -65,6 +65,8 @@ public class RtfFormExporter
 			exportForm(fieldPanelSpec);
 			writer.newParagraph();
 		}
+		
+		writer.pageBreak();
 	}
 
 	private void writeTitle(FieldPanelSpec fieldPanelSpec) throws Exception
@@ -73,15 +75,13 @@ public class RtfFormExporter
 		writer.newParagraph();
 	}
 	
-	public void exportForm(FieldPanelSpec fieldPanelSpec) throws Exception
+	private void exportForm(FieldPanelSpec fieldPanelSpec) throws Exception
 	{
 		for (int row = 0; row < fieldPanelSpec.getRowCount(); ++row)
 		{
 			FormRow formRow = fieldPanelSpec.getFormRow(row);
 			writeFormRowColumns(formRow);
 		}
-		
-		writer.pageBreak();
 	}
 
 	private void writeFormRowColumns(FormRow formRow) throws Exception
