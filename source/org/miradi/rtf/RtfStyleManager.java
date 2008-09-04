@@ -53,27 +53,27 @@ public class RtfStyleManager
 		styleMap = new HashMap();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");
-		createNewStyle(Goal.OBJECT_NAME,                 		S_13_RTF_ID, " \\f1\\b\\fs20 ", "Goal");
-		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		S_14_RTF_ID, " \\f1\\b\\i\\fs24 ", "Project Metadata");
-		createNewStyle(COMMENT_STYLE_TAG, 						S_15_RTF_ID, " \\f1\\fs18 ", "Long Text");
-		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		S_16_RTF_ID, " \\f1\\b\\fs24 ", "Conceptual Model Diagram");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		S_17_RTF_ID, " \\f1\\b\\fs24 ", "Results Chain Diagram");
-		createNewStyle(Target.OBJECT_NAME,                 		S_18_RTF_ID, " \\f1\\b\\fs20 ", "Target");
-		createNewStyle(Cause.OBJECT_NAME_THREAT,           		S_19_RTF_ID, " \\f1\\b\\fs20 ", "Direct Threat");
-		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   S_20_RTF_ID, " \\f1\\b\\fs20 ", "Contributing Factor");
-		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	S_21_RTF_ID, " \\f1\\b\\fs20 ", "Threat Reduction Result");
-		createNewStyle(IntermediateResult.OBJECT_NAME,   	    S_22_RTF_ID, " \\f1\\b\\fs20 ", "Intermediate Result");
-		createNewStyle(Objective.OBJECT_NAME,  	    			S_23_RTF_ID, " \\f1\\b\\fs20 ", "Objective");
-		createNewStyle(Strategy.OBJECT_NAME,  	    			S_24_RTF_ID, " \\f1\\fs20 ", "Strategy");
-		createNewStyle(Task.ACTIVITY_NAME,  	    			S_25_RTF_ID, " \\f1\\fs18 ", "Activity");
-		createNewStyle(Indicator.OBJECT_NAME,  	    			S_26_RTF_ID, " \\f1\\fs20 ", "Indicator");
-		createNewStyle(Task.METHOD_NAME,   	    				S_27_RTF_ID, " \\f1\\fs18 ", "Method");
-		createNewStyle(Task.OBJECT_NAME,   	    				S_28_RTF_ID, " \\f1\\fs18 ", "Task");
-		createNewStyle(Measurement.OBJECT_NAME,   	    		S_29_RTF_ID, " \\f1\\fs18 ", "Measurement");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    	S_30_RTF_ID, " \\f1\\fs18 ", "Accounting Code");
-		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	S_31_RTF_ID, " \\f1\\fs18 ", "Funding Source");
-		createNewStyle(KeyEcologicalAttribute.OBJECT_NAME,   	S_32_RTF_ID, " \\f1\\fs20 ", "Key Ecological Attribute");
-		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				S_33_RTF_ID, " \\f1\\b\\fs24 ", "Column Header");
+		createNewStyle(Goal.OBJECT_NAME,                 		S_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
+		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		S_14_RTF_ID, " \\f1\\b\\i\\fs24 ", MIRADI_STYLE_PREFIX + "Project");
+		createNewStyle(COMMENT_STYLE_TAG, 						S_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		S_16_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "CM");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		S_17_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "RC");
+		createNewStyle(Target.OBJECT_NAME,                 		S_18_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Target");
+		createNewStyle(Cause.OBJECT_NAME_THREAT,           		S_19_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "DThrt");
+		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   S_20_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CFctr");
+		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	S_21_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "TRR");
+		createNewStyle(IntermediateResult.OBJECT_NAME,   	    S_22_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "IR");
+		createNewStyle(Objective.OBJECT_NAME,  	    			S_23_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Obj");
+		createNewStyle(Strategy.OBJECT_NAME,  	    			S_24_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Strat");
+		createNewStyle(Task.ACTIVITY_NAME,  	    			S_25_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Act");
+		createNewStyle(Indicator.OBJECT_NAME,  	    			S_26_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Ind");
+		createNewStyle(Task.METHOD_NAME,   	    				S_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
+		createNewStyle(Task.OBJECT_NAME,   	    				S_28_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Task");
+		createNewStyle(Measurement.OBJECT_NAME,   	    		S_29_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Msrmnt");
+		createNewStyle(AccountingCode.OBJECT_NAME,  	    	S_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
+		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	S_31_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Fndng Src");
+		createNewStyle(KeyEcologicalAttribute.OBJECT_NAME,   	S_32_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "KEA");
+		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				S_33_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "Col Hdr");
 	}
 
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
@@ -142,6 +142,7 @@ public class RtfStyleManager
 			
 	private HashMap<String, RtfStyle> styleMap;
 	
+	public static final String MIRADI_STYLE_PREFIX = "Miradi: ";
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";
 	public static final String COMMENT_STYLE_TAG = "CommentStyle";
 	public static final String NORMAL_STYLE_TAG = "NormalStyle";
