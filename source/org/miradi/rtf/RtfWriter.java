@@ -148,6 +148,7 @@ public class RtfWriter
 	{
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
+		pageBreak();
 	}
 
 	private void writeTableBody(AbstractTableExporter exportableTable) throws Exception
@@ -418,7 +419,7 @@ public class RtfWriter
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
-	public static final String PAGE_BREAK_COMMAND = "\\par \\page\\pard\\plain \\ltrpar{\\*\\hyphen2\\hyphlead2\\hyphtrail2\\hyphmax0}";
+	public static final String PAGE_BREAK_COMMAND = "{\\page\\pard\\plain } ";
 	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\lang1033 ";
 	public static final String TAB_COMMAND = "\\tab ";
 	
