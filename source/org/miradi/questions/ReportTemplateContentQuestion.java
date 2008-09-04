@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 {
 	public ReportTemplateContentQuestion()
@@ -30,8 +32,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	{		
 		return new ChoiceItem[] {
 				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, "Project Summary"),
-				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, "Team"),
-				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, "Organization"),
+				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, TEAM_LABEL),
+				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, ORGANIZATION_LABEL),
 				new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, "Scope"),
 				new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, "Location"),
 				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, "Planning Parameters"),
@@ -44,18 +46,18 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, "Conceptual Model"),
 				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, "Results Chains"),
 				
-				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, "Target Viability"),
+				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, TARGET_VIABILITY_LABEL),
 				
-				new ChoiceItem(THREAT_RATING_VIEW_CODE, "Threat Ratings"),
+				new ChoiceItem(THREAT_RATING_VIEW_CODE, THREAT_RATINGS_LABEL),
 				
-				new ChoiceItem(PLANNING_VIEW_STRATEGIC_PLAN_CODE, "Strategic Plan"),
-				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, "Monitoring Plan"),
-				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, "Work Plan"),
-				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, "Resources"),
-				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, "Accounting Codes"),
-				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, "Funding Sources"),
-				new ChoiceItem(PROGRESS_REPORT_CODE, "Progress Report"),
-				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, "Legend Table"),
+				new ChoiceItem(PLANNING_VIEW_STRATEGIC_PLAN_CODE, STRATEGIC_PLAN_LABEL),
+				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, MONITORING_PLAN_LABEL),
+				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, WORK_PLAN_LABEL),
+				new ChoiceItem(PLANNING_VIEW_RESOURCES_TAB_CODE, RESOURCES_LABEL),
+				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE, ACCOUNTING_CODES_LABEL),
+				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE, FUNDING_SOURCES_LABEL),
+				new ChoiceItem(PROGRESS_REPORT_CODE, PROGRESS_REPORT_LABEL),
+				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, LEGEND_TABLE_LABEL),
 		};
 	}
 	
@@ -82,4 +84,17 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE = "PlanningViewFundingSourceTab";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
+	
+	public static final String STRATEGIC_PLAN_LABEL = EAM.text("Strategic Plan");
+	public static final String MONITORING_PLAN_LABEL = EAM.text("Monitoring Plan");
+	public static final String WORK_PLAN_LABEL = EAM.text("Work Plan");
+	public static final String PROGRESS_REPORT_LABEL = EAM.text("Progress Report");
+	public static final String LEGEND_TABLE_LABEL = EAM.text("Legend Table");
+	public static final String TARGET_VIABILITY_LABEL = EAM.text("Target Viability");
+	public static final String THREAT_RATINGS_LABEL = EAM.text("Threat Ratings");
+	public static final String RESOURCES_LABEL = EAM.text("Resources");
+	public static final String ACCOUNTING_CODES_LABEL = EAM.text("Accounting Codes");
+	public static final String FUNDING_SOURCES_LABEL = EAM.text("Funding Sources");
+	public static final String TEAM_LABEL = EAM.text("Team");
+	public static final String ORGANIZATION_LABEL = EAM.text("Organization");
 }
