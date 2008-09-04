@@ -149,9 +149,9 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 
 	private void exportForm(RtfWriter writer, PropertiesPanelSpec form, int otherProjectDataType) throws Exception
 	{
-		ORefList singletoRefPlusMetadataRef = new ORefList(getProject().getSingletonObjectRef(otherProjectDataType));
-		singletoRefPlusMetadataRef.add(getProjectMetadataRef());
-		exportForm(writer, form, singletoRefPlusMetadataRef);
+		ORefList singletonRefPlusMetadataRef = new ORefList(getProject().getSingletonObjectRef(otherProjectDataType));
+		singletonRefPlusMetadataRef.add(getProjectMetadataRef());
+		exportForm(writer, form, singletonRefPlusMetadataRef);
 	}
 	
 	private void exportForm(RtfWriter writer, PropertiesPanelSpec form, ORefList refsForForm) throws Exception
