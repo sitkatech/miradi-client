@@ -97,7 +97,11 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		if (isTreeColumn(column))
 			return getTreeColumnText(baseObjectForRow);
 		
-		TreeTableNode node = (TreeTableNode) getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId()).getLastPathComponent();
+		if (baseObjectForRow == null)
+			return ""; 
+		
+		TreePath pathOfNode = getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId());
+		TreeTableNode node = (TreeTableNode) pathOfNode.getLastPathComponent();
 		Object value = getModel().getValueAt(node, column);
 		return getSafeValue(value);
 	}
@@ -107,7 +111,11 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		if (baseObjectForRow != null)
 			return baseObjectForRow.toString();
 
-		TreeTableNode conceptualModelNode = (TreeTableNode) getModel().getPathOfNode(ConceptualModelDiagram.getObjectType(), BaseId.INVALID).getLastPathComponent();
+		TreePath pathOfNode = getModel().getPathOfNode(ConceptualModelDiagram.getObjectType(), BaseId.INVALID);
+		if (pathOfNode == null)
+			return "";
+		
+		TreeTableNode conceptualModelNode = (TreeTableNode) pathOfNode.getLastPathComponent();
 		return conceptualModelNode.toRawString();
 	}
 	
