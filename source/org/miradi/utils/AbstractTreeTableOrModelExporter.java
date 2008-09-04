@@ -45,12 +45,21 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			return RtfStyleManager.COMMENT_STYLE_TAG;
 		
 		if (getBaseObjectForRow(row) == null)
-			return RtfStyleManager.createTag(getRowType(row));
+			return RtfStyleManager.createTag(getSafeRowType(row));
 		
 		if (isTreeColumn(column))
 			return RtfStyleManager.createTag(getBaseObjectForRow(row));
 		
 		return "";
+	}
+
+	private int getSafeRowType(int row)
+	{
+		int rowType = getRowType(row);
+		if (rowType != ObjectType.FAKE)
+			return rowType;
+		
+		return ConceptualModelDiagram.getObjectType();
 	}
 	
 	private boolean isCommentTag(String columnTag)
@@ -89,22 +98,13 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			if (baseObject != null)
 				return IconManager.getImage(baseObject);
 			
-			int rowType = getRowTypeForIcon(row);
+			int rowType = getSafeRowType(row);
 			return IconManager.getImage(rowType);
 		}
 		//FIXME this needs to return correct cell icon
 		return null;
 	}
 
-	private int getRowTypeForIcon(int row)
-	{
-		int rowType = getRowType(row);
-		if (rowType != ObjectType.FAKE)
-			return rowType;
-		
-		return ConceptualModelDiagram.getObjectType();
-	}
-	
 	protected boolean isTreeColumn(int column)
 	{
 		return column == PanelTreeTable.TREE_COLUMN_INDEX;
