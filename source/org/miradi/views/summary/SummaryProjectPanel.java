@@ -56,7 +56,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Project");
+		return PANEL_DESCRIPTION;
 	}
 	
 	@Override
@@ -83,4 +83,6 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new ProjectTabForm());
 	}
+	
+	public static final String PANEL_DESCRIPTION = EAM.text("Project");
 }

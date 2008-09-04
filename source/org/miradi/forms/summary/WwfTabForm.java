@@ -21,13 +21,17 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.views.summary.WWFSummaryPanel;
 
 public class WwfTabForm extends FieldPanelSpec
 {
 	public WwfTabForm()
 	{
+		setHasBorder();
+		setTranslatedTitle(WWFSummaryPanel.PANEL_DESCRIPTION);
+
 		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES);
 		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_REGIONS);
-		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS);
+		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS);		
 	}
 }
