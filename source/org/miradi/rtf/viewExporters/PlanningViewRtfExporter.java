@@ -49,7 +49,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	}
 	
 	@Override
-	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
 			exportReport(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), ReportTemplateContentQuestion.STRATEGIC_PLAN_LABEL);

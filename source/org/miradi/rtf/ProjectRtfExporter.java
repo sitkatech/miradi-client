@@ -39,11 +39,11 @@ public class ProjectRtfExporter
 	
 	public void exportProject(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		new SummaryViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
-		new DiagramViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
-		new ViabilityViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
-		new ThreatRatingsViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
-		new PlanningViewRtfExporter(getMainWindow()).ExportView(writer, reportTemplateContent);
+		new SummaryViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
+		new DiagramViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
+		new ViabilityViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
+		new ThreatRatingsViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
+		new PlanningViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
 		exportLegend(writer, reportTemplateContent);
 	}
 	

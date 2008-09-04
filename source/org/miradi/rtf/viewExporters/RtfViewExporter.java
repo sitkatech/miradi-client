@@ -64,7 +64,7 @@ abstract public class RtfViewExporter
 		return mainWindow;
 	}
 
-	abstract public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception;
+	abstract public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception;
 	
 	private MainWindow mainWindow;
 }

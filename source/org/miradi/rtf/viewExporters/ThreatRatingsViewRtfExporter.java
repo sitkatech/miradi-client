@@ -38,7 +38,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	}
 
 	@Override
-	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
+	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE))
 			exportThreatRating(writer);
