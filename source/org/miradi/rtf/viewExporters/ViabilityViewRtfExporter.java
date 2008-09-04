@@ -38,7 +38,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
-			exportTable(writer, new TreeTableModelExporter(getProject(), createModel()));
+			exportTable(writer, new TreeTableModelExporter(getProject(), createModel()), ReportTemplateContentQuestion.TARGET_VIABILITY_LABEL);
 	}
 	
 	private ViabilityTreeModel createModel() throws Exception

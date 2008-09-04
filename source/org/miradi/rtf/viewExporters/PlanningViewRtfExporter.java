@@ -52,16 +52,16 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public void ExportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
-			exportReport(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns());
+			exportReport(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), ReportTemplateContentQuestion.STRATEGIC_PLAN_LABEL);
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
-			exportReport(writer, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns());
+			exportReport(writer, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns(), ReportTemplateContentQuestion.MONITORING_PLAN_LABEL);
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE))
-			exportReport(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+			exportReport(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns(), ReportTemplateContentQuestion.WORK_PLAN_LABEL);
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
-			exportReport(writer, RowManager.getProgressReportRows(), ColumnManager.getProgressReportColumns());
+			exportReport(writer, RowManager.getProgressReportRows(), ColumnManager.getProgressReportColumns(), ReportTemplateContentQuestion.PROGRESS_REPORT_LABEL);
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
 			exportResourcesTab(writer);
@@ -75,17 +75,17 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 
 	private void exportResourcesTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new ResourcePoolTableModel(getProject()));
+		exportObjectTableModel(writer, new ResourcePoolTableModel(getProject()), ReportTemplateContentQuestion.RESOURCES_LABEL);
 	}
 
 	private void exportAccountingCodesTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new AccountingCodePoolTableModel(getProject()));
+		exportObjectTableModel(writer, new AccountingCodePoolTableModel(getProject()), ReportTemplateContentQuestion.ACCOUNTING_CODES_LABEL);
 	}
 
 	private void exportFundingSourceTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new FundingSourcePoolTableModel(getProject()));
+		exportObjectTableModel(writer, new FundingSourcePoolTableModel(getProject()), ReportTemplateContentQuestion.FUNDING_SOURCES_LABEL);
 	}
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, CodeList rowsToShow, CodeList columnsToShow) throws Exception
@@ -116,8 +116,8 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return multiModelExporter;
 	}
 	
-	private void exportReport(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow) throws Exception
+	private void exportReport(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow, String translatedTableName) throws Exception
 	{
-		exportTable(writer, createTables(getProject(), rowsToShow, columnsToShow));
+		exportTable(writer, createTables(getProject(), rowsToShow, columnsToShow), translatedTableName);
 	}
 }
