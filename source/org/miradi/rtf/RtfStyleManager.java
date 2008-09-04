@@ -53,6 +53,11 @@ public class RtfStyleManager
 		styleMap = new HashMap();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");
+		
+		createNewStyle(HEADING_1_STYLE_TAG,						S_1_RTF_ID, HEADING_1_STYLE, "Heading 1");
+		createNewStyle(HEADING_2_STYLE_TAG,						S_2_RTF_ID, HEADING_2_STYLE, "Heading 2");
+		createNewStyle(HEADING_3_STYLE_TAG,						S_3_RTF_ID, HEADING_3_STYLE, "Heading 3");
+		
 		createNewStyle(Goal.OBJECT_NAME,                 		S_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
 		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		S_14_RTF_ID, " \\f1\\b\\i\\fs24 ", MIRADI_STYLE_PREFIX + "Project");
 		createNewStyle(COMMENT_STYLE_TAG, 						S_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
@@ -146,7 +151,15 @@ public class RtfStyleManager
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";
 	public static final String COMMENT_STYLE_TAG = "CommentStyle";
 	public static final String NORMAL_STYLE_TAG = "NormalStyle";
+	
+	public static final String HEADING_1_STYLE_TAG = "Heading1Style";
+	public static final String HEADING_2_STYLE_TAG = "Heading2Style";
+	public static final String HEADING_3_STYLE_TAG = "Heading3Style";
+	
 	public static final String FS_20_RTF_ID = "\\fs20";
+	public static final String S_1_RTF_ID = "\\s1";
+	public static final String S_2_RTF_ID = "\\s2";
+	public static final String S_3_RTF_ID = "\\s3";
 	
 	public static final String S_13_RTF_ID = "\\s13";
 	public static final String S_14_RTF_ID = "\\s14";
@@ -169,4 +182,8 @@ public class RtfStyleManager
 	public static final String S_31_RTF_ID = "\\s31";
 	public static final String S_32_RTF_ID = "\\s32";
 	public static final String S_33_RTF_ID = "\\s33";
+	
+	public static final String HEADING_1_STYLE = "{\\s1\\ql \\li0\\ri0\\sb240\\sa60\\keepn\\widctlpar\\wrapdefault\\aspalpha\\aspnum\\faauto\\outlinelevel0\\adjustright\\rin0\\lin0\\itap0 \\rtlch\\fcs1 \\ab    \\af1\\afs32\\alang1025 \\ltrch\\fcs0 \\b   \\f1\\fs32\\lang1033\\langfe1033\\kerning32\\cgrid\\langnp1033\\langfenp1033 \\sbasedon0 \\snext0 \\styrsid6835783 heading 1;}";
+	public static final String HEADING_2_STYLE = "{\\s2\\ql \\li0\\ri0\\sb240\\sa60\\keepn\\widctlpar\\wrapdefault\\aspalpha\\aspnum\\faauto\\outlinelevel1\\adjustright\\rin0\\lin0\\itap0 \\rtlch\\fcs1 \\ab\\ai\\af1\\afs28\\alang1025 \\ltrch\\fcs0 \\b\\i\\f1\\fs28\\lang1033\\langfe1033           \\cgrid\\langnp1033\\langfenp1033 \\sbasedon0 \\snext0 \\styrsid6835783 heading 2;}";
+	public static final String HEADING_3_STYLE = "{\\s3\\ql \\li0\\ri0\\sb240\\sa60\\keepn\\widctlpar\\wrapdefault\\aspalpha\\aspnum\\faauto\\outlinelevel2\\adjustright\\rin0\\lin0\\itap0 \\rtlch\\fcs1 \\ab    \\af1\\afs26\\alang1025 \\ltrch\\fcs0 \\b   \\f1\\fs26\\lang1033\\langfe1033           \\cgrid\\langnp1033\\langfenp1033 \\sbasedon0 \\snext0 \\styrsid6835783 heading 3;}";
 }
