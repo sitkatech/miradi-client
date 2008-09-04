@@ -57,6 +57,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		FontForObjectTypeProvider fontProvider = new ViabilityViewFontProvider(getMainWindow());
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
+		getTree().setRootVisible(true);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();

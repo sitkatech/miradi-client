@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
-import org.miradi.dialogs.viability.nodes.ViabilityRoot;
+import org.miradi.dialogs.viability.nodes.ViabilityProjectNode;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -105,7 +105,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 
 	private TargetViabilityTreeTable getTreeTable() throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityProjectNode(getProject()));
 		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
 		treeTable.restoreTreeState();
 		return treeTable;
