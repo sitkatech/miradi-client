@@ -25,9 +25,11 @@ import javax.swing.tree.TreePath;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTreeTableOrModelExporter;
 
@@ -92,15 +94,21 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	public String getTextAt(int row, int column)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRow(row);
-		if (baseObjectForRow == null)
-			return "";
-		
 		if (isTreeColumn(column))
-			return baseObjectForRow.toString();
+			return getTreeColumnText(baseObjectForRow);
 		
 		TreeTableNode node = (TreeTableNode) getModel().getPathOfNode(baseObjectForRow.getType(), baseObjectForRow.getId()).getLastPathComponent();
 		Object value = getModel().getValueAt(node, column);
 		return getSafeValue(value);
+	}
+
+	private String getTreeColumnText(BaseObject baseObjectForRow)
+	{
+		if (baseObjectForRow != null)
+			return baseObjectForRow.toString();
+
+		TreeTableNode conceptualModelNode = (TreeTableNode) getModel().getPathOfNode(ConceptualModelDiagram.getObjectType(), BaseId.INVALID).getLastPathComponent();
+		return conceptualModelNode.toRawString();
 	}
 	
 	private Project getProject()

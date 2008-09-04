@@ -29,6 +29,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.rtf.RtfStyleManager;
@@ -88,12 +89,20 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			if (baseObject != null)
 				return IconManager.getImage(baseObject);
 			
-			int rowType = getRowType(row);
-			if (rowType != ObjectType.FAKE)
-				return IconManager.getImage(rowType);
+			int rowType = getRowTypeForIcon(row);
+			return IconManager.getImage(rowType);
 		}
 		//FIXME this needs to return correct cell icon
 		return null;
+	}
+
+	private int getRowTypeForIcon(int row)
+	{
+		int rowType = getRowType(row);
+		if (rowType != ObjectType.FAKE)
+			return rowType;
+		
+		return ConceptualModelDiagram.getObjectType();
 	}
 	
 	protected boolean isTreeColumn(int column)
