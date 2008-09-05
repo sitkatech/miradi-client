@@ -70,7 +70,7 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		}
 	}
 
-	protected ORefList getCurrentRefList() throws Exception
+	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
 	{
 		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
 	}

@@ -63,7 +63,7 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
-	protected ORefList getCurrentRefList() throws Exception
+	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
 	{
 		return getRelevantStrategyActivityRefs();
 	}
