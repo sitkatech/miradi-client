@@ -23,6 +23,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
@@ -98,28 +99,17 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 		//FIXME should this do something
 	}
 	
-	protected ORefList getCurrentlyCheckedRefs()
-	{
-		ORefList selectedRefs = new ORefList();
-		for (int row = 0; row < getRowCount(); ++row)
-		{
-			Boolean booleanValue = (Boolean) getValueAt(row, SINGLE_COLUMN_INDEX);
-			if (booleanValue)
-				selectedRefs.add(getRefForRow(row));
-		}
-		
-		return selectedRefs;
-	}
-	
 	protected ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
 	{
-		ORef refForRow = getRefForRow(row);
-		ORefList checkedRefs = getCurrentlyCheckedRefs();
-		checkedRefs.remove(refForRow);
-		if (valueAsBoolean.booleanValue())
-			checkedRefs.add(refForRow);
-	
-		return checkedRefs;
+		ORefSet selectedRefSet = new ORefSet(getCheckedRefsAccordingToTheDatabase());
+		ORef thisRef = getRefForRow(row);
+		boolean nowChecked = valueAsBoolean.booleanValue();
+		if(nowChecked)
+			selectedRefSet.add(thisRef);
+		else
+			selectedRefSet.remove(thisRef);
+		
+		return selectedRefSet.toRefList();
 	}
 	
 	abstract protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception;
