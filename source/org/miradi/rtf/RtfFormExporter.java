@@ -129,12 +129,8 @@ public class RtfFormExporter
 		getWriter().write(rowFormatting.toString());
 		rowContent.append(RtfWriter.CELL_COMMAND);				
 		getWriter().write(rowContent.toString());
-		getWriter().write(RtfWriter.ROW_COMMAND + getNewLine());
-	}
-
-	private String getNewLine()
-	{
-		return "\n";
+		getWriter().write(RtfWriter.ROW_COMMAND);
+		getWriter().newLine();
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
