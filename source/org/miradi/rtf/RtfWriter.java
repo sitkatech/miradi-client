@@ -122,7 +122,7 @@ public class RtfWriter
 		return scale;
 	}
 
-	void startBlock() throws Exception
+	public void startBlock() throws Exception
 	{
 		write(START_BLOCK);
 	}
@@ -272,6 +272,24 @@ public class RtfWriter
 		final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
 		int indentInTwips = (padCount * EIGHTH_OF_AN_INCH) + QUARTER_INCH;
 		write("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
+	}
+	
+	public void writeHeading1Style() throws Exception
+	{
+		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_1_STYLE_TAG);
+		writeln(styleFormattingCommand);
+	}
+	
+	public void writeHeading2Style() throws Exception
+	{
+		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_2_STYLE_TAG);
+		writeln(styleFormattingCommand);
+	}
+
+	public void writeHeading3Style() throws Exception
+	{
+		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_3_STYLE_TAG);
+		writeln(styleFormattingCommand);
 	}
 	
 	public void writeText(String text) throws Exception
