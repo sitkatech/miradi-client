@@ -152,6 +152,9 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItem("15.12", "Artificial - Mariculture Cages"), 
 				new ChoiceItem("15.13", "Artificial - Mari/Brackish-culture Ponds"), 
 				new ChoiceItem("16", "Introduced Vegetation"),
+				new ChoiceItem("TNC1", "Rivers, Creeks and Streams"),
+				new ChoiceItem("TNC2", "Riparian Areas"),
+				new ChoiceItem("TNC3", "Freshwater Lakes"),
 				new ChoiceItem("17", "Other"),
 				new ChoiceItem("18", "Unknown"),
 		};
