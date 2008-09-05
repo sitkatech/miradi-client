@@ -413,7 +413,7 @@ public class RtfWriter
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String CELL_X_COMMAND = "\\cellx";
-	public static final String CELL_COMMAND = " \\cell ";
+	public static final String CELL_COMMAND = "\\cell ";
 	public static final String ROW_COMMAND = "\\row ";
 	public static final String PARAGRAPH_COMMAND = "\\pard\\par ";
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
@@ -423,8 +423,8 @@ public class RtfWriter
 	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\lang1033 ";
 	public static final String TAB_COMMAND = "\\tab ";
 	
-	public static final String PRE_TABLE_HEADER_CELL_COMMAND = " \\intbl\\qc ";
+	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\intbl\\qc ";
 	public static final String PRE_CELL_COMMAND  = "\\pard\\intbl\\plain ";
-	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = " ";
+	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "";
 	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
 }
