@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import org.martus.util.MultiCalendar;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
@@ -39,6 +41,7 @@ public class ProjectRtfExporter
 	
 	public void exportProject(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
+		writeProjectReporteHeader(writer);
 		new SummaryViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
 		new DiagramViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
 		new ViabilityViewRtfExporter(getMainWindow()).exportView(writer, reportTemplateContent);
@@ -47,6 +50,21 @@ public class ProjectRtfExporter
 		exportLegend(writer, reportTemplateContent);
 	}
 	
+	private void writeProjectReporteHeader(RtfWriter writer) throws Exception
+	{
+		writer.startBlock();
+		writer.writeHeading1Style();
+		writer.writeEncoded(EAM.text("Project Plan For ") + getProject().getMetadata().getProjectName());
+		writer.writeParCommand();
+		
+		writer.writeHeading1Style();
+		writer.writelnEncoded(EAM.text("Verion: ") + new MultiCalendar().toIsoDateString());
+		writer.writeParCommand();
+		writer.endBlock();
+		
+		writer.newParagraph();	
+	}
+
 	public void exportLegend(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE))
