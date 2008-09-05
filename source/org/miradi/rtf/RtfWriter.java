@@ -378,6 +378,11 @@ public class RtfWriter
 		endBlock();
 	}	
 
+	public String writeParCommand()
+	{
+		return PAR_COMMAND;
+	}
+		
 	public void newParagraph() throws Exception
 	{
 		writeSingleCommand(PARAGRAPH_COMMAND);	
@@ -429,13 +434,14 @@ public class RtfWriter
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String CELL_X_COMMAND = "\\cellx";
-	public static final String CELL_COMMAND = "\\cell ";
-	public static final String ROW_COMMAND = "\\row ";
+	public static final String CELL_COMMAND = "\\cell \\pard";
+	public static final String ROW_COMMAND = "\\row \\pard";
 	public static final String PARAGRAPH_COMMAND = "\\pard\\par ";
+	public static final String PAR_COMMAND = "\\par";
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trql\\trhdr\\trpaddft3\\trpaddt55\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb55\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
-	public static final String PAGE_BREAK_COMMAND = "{\\page\\pard\\plain } ";
+	public static final String PAGE_BREAK_COMMAND = "{\\par\\page\\pard\\plain } ";
 	public static final String BOLD_DIAGRAM_HEADER_FONT_COMMAND = "\\rtlch \\ltrch\\lang1033 ";
 	public static final String TAB_COMMAND = "\\tab ";
 	

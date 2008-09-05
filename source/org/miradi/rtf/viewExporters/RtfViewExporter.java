@@ -45,6 +45,7 @@ abstract public class RtfViewExporter
 		writer.startBlock();
 		writer.writeHeading1Style();
 		writer.writelnEncoded(translatedTableName);
+		writer.writeRaw(writer.writeParCommand());
 		writer.endBlock();
 		writer.newParagraph();
 		
