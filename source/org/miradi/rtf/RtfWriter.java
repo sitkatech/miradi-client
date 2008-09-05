@@ -434,7 +434,7 @@ public class RtfWriter
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String CELL_X_COMMAND = "\\cellx";
-	public static final String CELL_COMMAND = "\\cell \\pard";
+	public static final String CELL_COMMAND = "\\cell \\pard ";
 	public static final String ROW_COMMAND = "\\row \\pard";
 	public static final String PARAGRAPH_COMMAND = "\\pard\\par ";
 	public static final String PAR_COMMAND = "\\par";
