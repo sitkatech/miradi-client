@@ -102,6 +102,12 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	{
 		return true;
 	}
+	
+	@Override
+	public String toRawString()
+	{
+		return getObject().toString();
+	}
 
 	private void addConceptualModel() throws Exception
 	{
