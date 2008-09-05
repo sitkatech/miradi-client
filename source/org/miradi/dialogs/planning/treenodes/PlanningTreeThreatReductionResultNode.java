@@ -24,6 +24,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
@@ -57,6 +58,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 				Strategy.getObjectType(),
 				Indicator.getObjectType(),
 				Objective.getObjectType(),
+				IntermediateResult.getObjectType(),
 				Task.getObjectType(),
 				Measurement.getObjectType(),
 			};
