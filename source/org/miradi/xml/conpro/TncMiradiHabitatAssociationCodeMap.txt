@@ -1,3 +1,6 @@
+#Column 1 is the current miradi codes.  Column 2 is current TNC codes
+#Column 3 contains possibly old codes but with text that should match columns 1 and 2.
+#TNC codes that have no miradi equivalent are considered orphands and are commentd out.
 1	H010.000	1. Forest
 1.1	H010.010	1.1. Boreal
 1.2	H010.020	1.2. Subarctic
@@ -29,10 +32,8 @@
 4.6	H040.060	4.6. Subtropical/Tropical Seasonally Wet/Flooded Lowland
 4.7	H040.070	4.7. Subtropical/Tropical High Altitude
 5	H100.000	5. Wetlands (inland)
-TNC1	H080.000	Rivers, Creeks and Streams
 5.1	H080.010	5.1. Permanent Rivers/Streams/Creeks [includes waterfalls]
 5.2	H080.020	5.2. Seasonal/Intermittent/Irregular Rivers/Streams/Creeks
-TNC2	H090.000	Riparian Areas
 5.3	H100.010	5.3. Shrub Dominated Wetlands
 5.4	H100.020	5.4. Bogs, Marshes, Swamps, Fens, Peatlands
 5.5	H100.030	5.7. Permanent Freshwater Marshes/Pools [under 8 ha]
@@ -42,7 +43,6 @@ TNC2	H090.000	Riparian Areas
 5.9	H100.070	5.10. Tundra Wetlands [includes pools and temporary waters from snowmelt]
 5.10	H100.080	5.11. Alpine Wetlands [includes temporary waters from snowmelt]
 5.11	H100.090	5.12. Geothermal Wetlands
-TNC3	H110.000	Freshwater Lakes
 5.12	H110.010	5.5. Permanent Freshwater Lakes [over 8 ha]
 5.13	H110.020	5.6. Seasonal/Intermittent Freshwater Lakes [over 8 ha]
 5.14	H120.000	5.9. Freshwater Springs and Oases
@@ -141,5 +141,8 @@ TNC3	H110.000	Freshwater Lakes
 15.12	H210.120	15.12. Mariculture Cages
 15.13	H210.130	15.13. Mari/Brackish-culture Ponds
 16	H220.000	16. Introduced Vegetation 
+TNC1	H080.000	Rivers, Creeks and Streams
+TNC2	H090.000	Riparian Areas
+TNC3	H110.000	Freshwater Lakes 
 17	H230.000	17. Other 
 18	H240.000	18. Unknown
