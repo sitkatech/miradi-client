@@ -162,6 +162,8 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(event.isSetDataCommand())
+			editableTable.repaint();
 	}
 	
 	abstract protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject);
