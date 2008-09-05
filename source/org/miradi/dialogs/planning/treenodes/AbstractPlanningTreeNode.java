@@ -208,7 +208,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			for(int i = 0; i < sortOrder.length; ++i)
 				if(type == sortOrder[i])
 					return i;
-			EAM.logError("NodeSorter unknown type: " + type);
+			EAM.logError("NodeSorter unknown type: " + type + " in " + AbstractPlanningTreeNode.this.getClass());
 			return sortOrder.length;
 		}
 
