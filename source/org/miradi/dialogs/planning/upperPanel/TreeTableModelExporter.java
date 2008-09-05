@@ -60,7 +60,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		if (isTreeColumn(column))
 		{
 			TreePath treePath = fullyExpandedTreePaths.get(row);
-			return  treePath.getPath().length - ROOT_PLUS_TOPLEVEL_ADJUSTMENT;
+			return  treePath.getPath().length - TOPLEVEL_ADJUSTMENT;
 		}
 		
 		return 0;
