@@ -71,7 +71,11 @@ public class RtfFormExporter
 
 	private void writeTitle(FieldPanelSpec fieldPanelSpec) throws Exception
 	{
+		writer.startBlock();
+		writer.writeHeading1Style();
 		writer.writeEncoded(fieldPanelSpec.getTranslatedTitle());
+		writer.writeParCommand();
+		writer.endBlock();
 		writer.newParagraph();
 	}
 	
