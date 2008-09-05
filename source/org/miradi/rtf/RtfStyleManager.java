@@ -19,8 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.util.HashMap;
-import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
@@ -50,7 +49,7 @@ public class RtfStyleManager
 	
 	private void clear()
 	{
-		styleMap = new HashMap();
+		sortedStyles = new Vector();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");		
 		createNewStyle(HEADING_1_STYLE_TAG,						S_1_RTF_ID, HEADING_1_STYLE, "Heading 1");
@@ -83,7 +82,7 @@ public class RtfStyleManager
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
 	{
 		RtfStyle rtfStyle = new RtfStyle(objectName, rtfStyleId, rtfStyleId + rtfFormatingCommand, styleName);
-		getStyleMap().put(objectName, rtfStyle);
+		getSortedStyles().add(rtfStyle);
 	}
 
 	public void exportRtfStyleTable(RtfWriter writer) throws Exception
@@ -91,11 +90,9 @@ public class RtfStyleManager
 		writer.newLine();
 		writer.startBlock();
 		writer.writeln("\\stylesheet ");
-		Set<String> keys = getStyleMap().keySet();
-		for(String key : keys)
+		for(RtfStyle rtfStyle : getSortedStyles())
 		{
 			writer.startBlock();
-			RtfStyle rtfStyle = getStyleMap().get(key);
 			writer.write(rtfStyle.getRtfFormatingCommand() + rtfStyle.getStyleName() + ";");
 			writer.endBlockLn();
 		}
@@ -107,11 +104,6 @@ public class RtfStyleManager
 	{
 		return baseObject.getTypeName();
 	}
-	
-	private HashMap<String, RtfStyle> getStyleMap()
-	{
-		return styleMap;
-	} 
 	
 	public static String createTag(BaseObject baseObjectForRow)
 	{
@@ -135,16 +127,25 @@ public class RtfStyleManager
 		throw new RuntimeException("Could not find object name for type,  should only use this method if no object is available. type = " + objectType);
 	}
 	
-	public String getStyleFormatingCommand(String styleTag)
+	public String getStyleFormatingCommand(String styleTagToUse)
 	{
-		RtfStyle rtfStyle = getStyleMap().get(styleTag);
-		if (rtfStyle != null)
-			return rtfStyle.getRtfFormatingCommand();
+		for (int index = 0; index < getSortedStyles().size(); ++index)
+		{
+			RtfStyle rtfStyle = getSortedStyles().get(index);
+			if (rtfStyle.getStyleTag().equals(styleTagToUse))
+				return rtfStyle.getRtfFormatingCommand();
+		}
+	
 		
 		return "";
 	}
+
+	private Vector<RtfStyle> getSortedStyles()
+	{
+		return sortedStyles;
+	}
 			
-	private HashMap<String, RtfStyle> styleMap;
+	private Vector<RtfStyle> sortedStyles;
 	
 	public static final String MIRADI_STYLE_PREFIX = "Miradi: ";
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";
@@ -182,7 +183,7 @@ public class RtfStyleManager
 	public static final String S_32_RTF_ID = "\\s32";
 	public static final String S_33_RTF_ID = "\\s33";
 	
-	public static final String HEADING_1_STYLE = "\\f1\\b\\fs35 ";
-	public static final String HEADING_2_STYLE = "\\f1\\b\\fs35 ";
-	public static final String HEADING_3_STYLE = "\\f1\\b\\fs35 ";
+	public static final String HEADING_1_STYLE = " \\f1\\b\\fs35 ";
+	public static final String HEADING_2_STYLE = " \\f1\\b\\fs35 ";
+	public static final String HEADING_3_STYLE = " \\f1\\b\\fs35 ";
 }
