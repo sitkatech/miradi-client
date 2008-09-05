@@ -183,7 +183,7 @@ public class RtfStyleManager
 	public static final String S_32_RTF_ID = "\\s32";
 	public static final String S_33_RTF_ID = "\\s33";
 	
-	public static final String HEADING_1_STYLE = " \\f1\\b\\fs35 ";
-	public static final String HEADING_2_STYLE = " \\f1\\b\\fs35 ";
-	public static final String HEADING_3_STYLE = " \\f1\\b\\fs35 ";
+	public static final String HEADING_1_STYLE = " \\f1\\b\\fs36 ";
+	public static final String HEADING_2_STYLE = " \\f1\\b\\fs28 ";
+	public static final String HEADING_3_STYLE = " \\f1\\b\\fs24 ";
 }
