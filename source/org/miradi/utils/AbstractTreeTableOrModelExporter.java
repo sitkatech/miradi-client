@@ -132,5 +132,5 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	
 	abstract public GenericTreeTableModel getModel();
 	
-	protected static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 2;
+	protected static final int ROOT_PLUS_TOPLEVEL_ADJUSTMENT = 1;
 }
