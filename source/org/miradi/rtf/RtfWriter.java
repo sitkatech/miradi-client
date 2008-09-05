@@ -43,10 +43,15 @@ public class RtfWriter
 	{
 		getWriter().close();
 	}
+
+	public void writelnEncoded(String data) throws Exception
+	{
+		writeln(encode(data));
+	}
 	
 	public void writeEncoded(String data) throws Exception
 	{
-		writeln(encode(data));
+		write(encode(data));
 	}
 	
 	public void writeRtfCommand(String rtfComand) throws Exception
@@ -129,6 +134,11 @@ public class RtfWriter
 	
 	public void endBlock() throws Exception
 	{
+		write(END_BLOCK);
+	}
+	
+	public void endBlockLn() throws Exception
+	{
 		writeln(END_BLOCK);
 	}
 
@@ -165,10 +175,10 @@ public class RtfWriter
 		writeCellCommands(exportableTable);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			writeRtfCommand(PRE_CELL_COMMAND);
+			write(PRE_CELL_COMMAND);
 			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
-			writeln(styleFormattingCommand);
+			write(styleFormattingCommand);
 		
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -187,16 +197,15 @@ public class RtfWriter
 		
 		write(ROW_COMMAND);
 		newLine();
+		newLine();
 	}
 
 	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			write(createCellxCommand(column));	
+			writeln(createCellxCommand(column));	
 		}
-		
-		newLine();
 	}
 
 	public String createCellxCommand(final int column)
@@ -213,7 +222,7 @@ public class RtfWriter
 		{
 			String header = exportableTable.getHeaderFor(columnIndex);
 			write(PRE_TABLE_HEADER_CELL_COMMAND);
-			writeln(styleFormattingCommand);
+			write(styleFormattingCommand);
 			startBlock();
 			write(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
 			writeEncoded(header);
@@ -224,6 +233,7 @@ public class RtfWriter
 		}
 		
 		write(ROW_COMMAND);
+		newLine();
 		newLine();
 	}
 	
@@ -404,9 +414,11 @@ public class RtfWriter
 	
 	public void writeSingleCommand(String command) throws Exception
 	{
+		newLine();
 		startBlock();
-		writeRtfCommand(command);
+		write(command);
 		endBlock();
+		newLine();
 	}
 	
 	public void newLine() throws Exception
