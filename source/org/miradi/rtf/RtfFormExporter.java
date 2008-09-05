@@ -71,7 +71,7 @@ public class RtfFormExporter
 
 	private void writeTitle(FieldPanelSpec fieldPanelSpec) throws Exception
 	{
-		writer.writeln(fieldPanelSpec.getTranslatedTitle());
+		writer.writeEncoded(fieldPanelSpec.getTranslatedTitle());
 		writer.newParagraph();
 	}
 	
@@ -86,7 +86,7 @@ public class RtfFormExporter
 
 	private void writeFormRowColumns(FormRow formRow) throws Exception
 	{
-		StringBuffer rowContent = new StringBuffer();
+		StringBuffer encodedRowContent = new StringBuffer();
 		StringBuffer rowFormatting = new StringBuffer(RtfWriter.ROW_HEADER);
 		
 		int uniqueRtfColumnId = 1;
@@ -96,15 +96,15 @@ public class RtfFormExporter
 			if (formItem.isFormConstant())
 			{
 				FormConstant formConstant = (FormConstant) formItem;
-				rowContent.append(formConstant.getConstant() + FIELD_SPACING);				
+				encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
 			}
 			else if (formItem.isFormFieldLabel())
 			{
-				rowContent.append(getFieldLabel((FormFieldLabel)formItem) + FIELD_SPACING);					
+				encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)) + FIELD_SPACING);					
 			}
 		}
 		
-		rowContent.append(RtfWriter.CELL_COMMAND);
+		encodedRowContent.append(RtfWriter.CELL_COMMAND);
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
@@ -113,23 +113,25 @@ public class RtfFormExporter
 			if (formItem.isFormConstant())
 			{
 				FormConstant formConstant = (FormConstant) formItem;
-				rowContent.append(formConstant.getConstant() + FIELD_SPACING);				
+				encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
 			}
 			if (formItem.isFormFieldLabel())
 			{
-				rowContent.append(getFieldLabel((FormFieldLabel)formItem) + FIELD_SPACING);							
+				String rawFieldLabel = getFieldLabel((FormFieldLabel)formItem);
+				encodedRowContent.append(writer.encode(rawFieldLabel) + FIELD_SPACING);							
 			}
 			if (formItem.isFormFieldData())
 			{
-				rowContent.append(getFieldData((FormFieldData) formItem, formRow) + FIELD_SPACING);							
+				String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
+				encodedRowContent.append(writer.encode(rawFieldData) + FIELD_SPACING);							
 			}
 		}
 		
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
-		getWriter().write(rowFormatting.toString());
-		rowContent.append(RtfWriter.CELL_COMMAND);				
-		getWriter().write(rowContent.toString());
-		getWriter().write(RtfWriter.ROW_COMMAND);
+		getWriter().writeRaw(rowFormatting.toString());
+		encodedRowContent.append(RtfWriter.CELL_COMMAND);				
+		getWriter().writeRaw(encodedRowContent.toString());
+		getWriter().writeRaw(RtfWriter.ROW_COMMAND);
 		getWriter().newLine();
 	}
 

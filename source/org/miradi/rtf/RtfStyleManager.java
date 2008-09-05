@@ -89,11 +89,11 @@ public class RtfStyleManager
 	{	
 		writer.newLine();
 		writer.startBlock();
-		writer.writeln("\\stylesheet ");
+		writer.writelnRaw("\\stylesheet ");
 		for(RtfStyle rtfStyle : getSortedStyles())
 		{
 			writer.startBlock();
-			writer.write(rtfStyle.getRtfFormatingCommand() + rtfStyle.getStyleName() + ";");
+			writer.writeRaw(rtfStyle.getRtfFormatingCommand() + rtfStyle.getStyleName() + ";");
 			writer.endBlockLn();
 		}
 		
