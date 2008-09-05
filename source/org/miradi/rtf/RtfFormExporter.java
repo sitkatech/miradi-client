@@ -108,6 +108,8 @@ public class RtfFormExporter
 			}
 		}
 		
+		//FIXME this is temprorarly done before freeze. Needs to be done as autofit.
+		final int WIDEN_TWICE = 2;
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
 		
@@ -131,7 +133,7 @@ public class RtfFormExporter
 			}
 		}
 		
-		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
+		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId * WIDEN_TWICE));
 		getWriter().writeRaw(rowFormatting.toString());
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);				
 		getWriter().writeRaw(encodedRowContent.toString());
