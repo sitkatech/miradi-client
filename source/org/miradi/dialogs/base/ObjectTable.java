@@ -201,9 +201,9 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return getObjectTableModel().findRowObject(id);
 	}
 	
-	public void sort(int sortColumn) 
+	public void sort(int sortByTableColumn) 
 	{
-		Comparator comparator = getComparator(sortColumn);
+		Comparator comparator = getComparator(sortByTableColumn);
 		Vector rows = new Vector();
 		for(int i = 0; i < getRowCount(); ++i)
 			rows.add(new Integer(i));
@@ -211,21 +211,22 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		Vector unsortedRows = (Vector)rows.clone();
 		Collections.sort(rows, comparator);
 		
-		if (sortColumn == currentSortColumn && rows.equals(unsortedRows))
+		if (sortByTableColumn == currentSortColumn && rows.equals(unsortedRows))
 			Collections.reverse(rows);
 
 		getObjectTableModel().setNewRowOrder(((Integer[])rows.toArray(new Integer[0])));
 		
 		// TODO: Should memorize sort order for each table
-		currentSortColumn = sortColumn;
+		currentSortColumn = sortByTableColumn;
 		
 		revalidate();
 		repaint();
 	}
 
-	protected Comparator getComparator(int sortColumn)
+	protected Comparator getComparator(int sortByTableColumn)
 	{
-		return getObjectTableModel().createComparator(sortColumn);
+		int sortByModelColumn = convertColumnIndexToModel(sortByTableColumn);
+		return getObjectTableModel().createComparator(sortByModelColumn);
 	}
 	
 	public void addListSelectionListener(ListSelectionListener listener)
@@ -292,9 +293,9 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 			sortByTableColumn(clickedTableColumn);
 		}
 
-		private void sortByTableColumn(int sortColumn)
+		private void sortByTableColumn(int sortByTableColumn)
 		{
-			table.sort(sortColumn);
+			table.sort(sortByTableColumn);
 		}
 
 		private ObjectTable table;
