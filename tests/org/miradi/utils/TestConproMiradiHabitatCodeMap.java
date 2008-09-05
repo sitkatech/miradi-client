@@ -34,7 +34,7 @@ public class TestConproMiradiHabitatCodeMap extends EAMTestCase
 	{
 		HashMap<String, String> habitatCodeMap = new ConproMiradiHabitatCodeMap().loadMap();
 		assertTrue("map has no values?", habitatCodeMap.size() > 0);
-		assertEquals("map has wrong size?", 122, habitatCodeMap.size());
+		assertEquals("map has wrong size?", 128, habitatCodeMap.size());
 		
 		assertEquals("wrong code found?", "H010.000", habitatCodeMap.get("1"));
 		assertEquals("wrong code found?", "H030.040", habitatCodeMap.get("3.4"));

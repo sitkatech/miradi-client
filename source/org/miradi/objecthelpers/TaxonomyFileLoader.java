@@ -38,8 +38,7 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 		String prevLevel1Code = "";
 		int level1Index = 0;
 		int level2Index = 0;
-		int firstNonHeaderRow = 1;
-		for(int i = firstNonHeaderRow; i < fileVector.size(); ++i)
+		for(int i = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = (Vector) fileVector.get(i);
 			String code = (String) row.get(0);

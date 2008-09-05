@@ -42,7 +42,7 @@ public class TestTaxonomyFileLoader extends EAMTestCase
 
 	public void testOne() throws Exception
 	{
-		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n" +
+		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader("# \t \"header\" \t \"xxxx\" \n" +
 				" H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
 		assertEquals(3, twoLevelItem.length);
 		assertEquals("--Select a classification--", twoLevelItem[0].getEntryDescription());

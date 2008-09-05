@@ -40,6 +40,12 @@ public class TestDelimitedFileLoader extends EAMTestCase
 		Vector rowVector = loadDelimitedData(new StringReader(""));
 		assertEquals(0, rowVector.size());
 	}
+	
+	public void testComment() throws IOException
+	{
+		Vector rowVector =  loadDelimitedData(new StringReader("# some commented line"));
+		assertEquals("did not ignore commented line?", 0, rowVector.size());
+	}
 
 	public void testOneElement() throws IOException
 	{

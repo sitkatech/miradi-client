@@ -29,25 +29,28 @@
 4.6	H040.060	4.6. Subtropical/Tropical Seasonally Wet/Flooded Lowland
 4.7	H040.070	4.7. Subtropical/Tropical High Altitude
 5	H100.000	5. Wetlands (inland)
+TNC1	H080.000	Rivers, Creeks and Streams
 5.1	H080.010	5.1. Permanent Rivers/Streams/Creeks [includes waterfalls]
 5.2	H080.020	5.2. Seasonal/Intermittent/Irregular Rivers/Streams/Creeks
+TNC2	H090.000	Riparian Areas
 5.3	H100.010	5.3. Shrub Dominated Wetlands
-5.4	H100.020	"5.4. Bogs, Marshes, Swamps, Fens, Peatlands"
+5.4	H100.020	5.4. Bogs, Marshes, Swamps, Fens, Peatlands
 5.5	H100.030	5.7. Permanent Freshwater Marshes/Pools [under 8 ha]
 5.6	H100.040	5.8. Seasonal/Intermittent Freshwater Marshes/Pools [under 8 ha]
-5.7	H100.050	"5.16. Permanent Saline, Brackish or Alkaline Marshes/Pools"
-5.8	H100.060	"5.17. Seasonal/Intermittent Saline, Brackish or Alkaline Marshes/Pools"
+5.7	H100.050	5.16. Permanent Saline, Brackish or Alkaline Marshes/Pools
+5.8	H100.060	5.17. Seasonal/Intermittent Saline, Brackish or Alkaline Marshes/Pools"
 5.9	H100.070	5.10. Tundra Wetlands [includes pools and temporary waters from snowmelt]
-5.1	H100.080	5.11. Alpine Wetlands [includes temporary waters from snowmelt]
+5.10	H100.080	5.11. Alpine Wetlands [includes temporary waters from snowmelt]
 5.11	H100.090	5.12. Geothermal Wetlands
+TNC3	H110.000	Freshwater Lakes
 5.12	H110.010	5.5. Permanent Freshwater Lakes [over 8 ha]
 5.13	H110.020	5.6. Seasonal/Intermittent Freshwater Lakes [over 8 ha]
 5.14	H120.000	5.9. Freshwater Springs and Oases
 5.15	H130.000	5.13. Permanent Inland Deltas
-5.16	H140.010	"5.14. Permanent Saline, Brackish or Alkaline Lakes"
-5.17	H140.020	"5.15. Seasonal/Intermittent Saline, Brackish or Alkaline Lakes and Flats"
+5.16	H140.010	5.14. Permanent Saline, Brackish or Alkaline Lakes
+5.17	H140.020	5.15. Seasonal/Intermittent Saline, Brackish or Alkaline Lakes and Flats"
 5.18	H150.000	5.18. Karst and Other Subterranean Hydrological Systems [inland]
-6	H050.000	"6. Rocky Areas [e.g. inland cliffs, mountain peaks]"
+6	H050.000	6. Rocky Areas [e.g. inland cliffs, mountain peaks]
 7	H060.000	7. Caves and Subterranean Habitats (non-aquatic)
 7.1	H060.010	7.1. Caves
 7.2	H060.020	7.2. Other Subterranean Habitats
@@ -55,12 +58,24 @@
 8.1	H070.010	8.1. Hot
 8.2	H070.020	8.2. Temperate
 8.3	H070.030	8.3. Cold
+#	H160.000	orphaned ConPro code
 9	H165.000	9. Marine Neritic (Submergent Nearshore Continental Shelf or Oceanic Island)
 9.1	H170.010	9.1. Pelagic
+#	H170.040	orphaned ConPro code
+#	H180.000	orphaned ConPro code
 9.2	H180.010	9.2. Subtidal Rock and Rocky Reefs
+#	H180.120	orphaned ConPro code
 9.3	H180.020	9.3. Subtidal Loose Rock/Pebble/Gravel
 9.5	H180.030	9.5. Subtidal Sandy
 9.6	H180.040	9.6. Subtidal Sandy-Mud
+#	H180.050	orphaned ConPro code
+#	H180.060	orphaned ConPro code
+#	H180.070	orphaned ConPro code
+#	H180.080	orphaned ConPro code
+#	H180.090	orphaned ConPro code
+#	H180.150	orphaned ConPro code
+#	H180.160	orphaned ConPro code
+#	H180.180	orphaned ConPro code
 9.7	H180.100	9.7. Macroalgal/Kelp
 9.8	H180.110	9.8. Coral Reef
 9.8.1	H180.111	9.8.1. Outer Reef Channel
@@ -70,24 +85,29 @@
 9.8.5	H180.115	9.8.5. Inter-Reef Soft Substrate
 9.8.6	H180.116	9.8.6. Inter-Reef Rubble Substrate
 9.9	H180.130	9.9. Seagrass (Submerged)
-9.1	H190.130	9.10. Estuaries
+9.10	H190.130	9.10. Estuaries
 10	H170.000	10. Marine Oceanic
+#	H170.020	orphaned ConPro code
 10.1	H170.025	10.1. Epipelagic (0-200 m)
-10.2	H170.030	"10.2. Mesopelagic (200-1,000 m)"
-10.3	H170.035	"10.3. Bathypelagic (1,000-4,000 m)"
-10.4	H170.045	"10.4. Abyssopelagic (4,000-6,000 m)"
+10.2	H170.030	10.2. Mesopelagic (200-1,000 m)
+10.3	H170.035	10.3. Bathypelagic (1,000-4,000 m)
+#	H170.040	orphaned ConPro code
+10.4	H170.045	10.4. Abyssopelagic (4,000-6,000 m)
+#	H170.050	orphaned ConPro code
+#	H170.060	orphaned ConPro code
+#	H170.070	orphaned ConPro code
 11	H175.000	11. Marine Deep Benthic
-11.1	H180.170	"11.1. Continental Slope/Bathyl Zone (200-4,000 m)"
+11.1	H180.170	11.1. Continental Slope/Bathyl Zone (200-4,000 m)
 11.1.1	H180.171	11.1.1. Hard Substrate
 11.1.2	H180.172	11.1.2. Soft Substrate
-11.2	H180.190	"11.2. Abyssal Plain (4,000-6,000 m)"
-11.3	H180.200	"11.3. Abyssal Mountain/Hills (4,000-6,000 m)"
-11.4	H180.210	"11.4. Hadal/Deep Sea Trench (>6,000 m)"
+11.2	H180.190	11.2. Abyssal Plain (4,000-6,000 m)
+11.3	H180.200	11.3. Abyssal Mountain/Hills (4,000-6,000 m)
+11.4	H180.210	11.4. Hadal/Deep Sea Trench (>6,000 m)
 11.5	H180.220	11.5. Seamount
 11.6	H180.140	11.6. Deep Sea Vents (Rifts/Seeps)
 12	H190.000	12. Marine Intertidal
 12.1	H190.010	12.1. Rocky Shoreline
-12.2	H190.050	"12.2. Sandy Shoreline and/or Beaches, Sand Bars, Spits, Etc."
+12.2	H190.050	12.2. Sandy Shoreline and/or Beaches, Sand Bars, Spits, Etc.
 12.3	H190.060	12.3. Shingle and/or Pebble Shoreline and/or Beaches
 12.4	H190.080	12.4. Mud Flats and Salt Flats
 12.5	H190.090	12.5. Salt Marshes (Emergent Grasses)
@@ -115,8 +135,8 @@
 15.6	H210.060	15.6. Wastewater Treatment Areas
 15.7	H210.070	15.7. Irrigated Land [includes irrigation channels]
 15.8	H210.080	15.8. Seasonally Flooded Agricultural Land
-15.9	H210.090	"15.9. Canals and Drainage Channels, Ditches"
-15.1	H210.100	15.10. Karst and Other Subterranean Hydrological Systems [human-made]
+15.9	H210.090	15.9. Canals and Drainage Channels, Ditches
+15.10	H210.100	15.10. Karst and Other Subterranean Hydrological Systems [human-made]
 15.11	H210.110	15.11. Marine Anthropogenic Structures
 15.12	H210.120	15.12. Mariculture Cages
 15.13	H210.130	15.13. Mari/Brackish-culture Ponds
