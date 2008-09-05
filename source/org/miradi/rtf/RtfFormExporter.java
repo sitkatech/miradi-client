@@ -126,10 +126,15 @@ public class RtfFormExporter
 		}
 		
 		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
-		getWriter().writeln(rowFormatting.toString());
+		getWriter().write(rowFormatting.toString());
 		rowContent.append(RtfWriter.CELL_COMMAND);				
-		getWriter().writeln(rowContent.toString());
-		getWriter().write(RtfWriter.ROW_COMMAND);
+		getWriter().write(rowContent.toString());
+		getWriter().write(RtfWriter.ROW_COMMAND + getNewLine());
+	}
+
+	private String getNewLine()
+	{
+		return "\n";
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)

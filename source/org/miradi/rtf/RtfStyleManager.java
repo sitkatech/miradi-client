@@ -97,10 +97,10 @@ public class RtfStyleManager
 			writer.startBlock();
 			RtfStyle rtfStyle = getStyleMap().get(key);
 			writer.write(rtfStyle.getRtfFormatingCommand() + rtfStyle.getStyleName() + ";");
-			writer.endBlock();
+			writer.endBlockLn();
 		}
 		
-		writer.endBlock();
+		writer.endBlockLn();
 	}
 	
 	public String createStyleTag(BaseObject baseObject)
