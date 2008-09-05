@@ -93,7 +93,6 @@ public class RtfFormExporter
 		StringBuffer encodedRowContent = new StringBuffer();
 		StringBuffer rowFormatting = new StringBuffer(RtfWriter.ROW_HEADER);
 		
-		int uniqueRtfColumnId = 1;
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
@@ -108,10 +107,12 @@ public class RtfFormExporter
 			}
 		}
 		
-		//FIXME this is temprorarly done before freeze. Needs to be done as autofit.
-		final int WIDEN_TWICE = 2;
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);
-		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId));
+
+		//FIXME this is temprorarly done before freeze. Needs to be done as autofit.
+		final int INCHES_FROM_LEFT_MARGIN_TO_FIRST_COLUMN_RIGHT_EDGE_MINUS_ONE = 2 - 1;
+		final int INCHES_FROM_LEFT_MARGIN_TO_SECOND_COLUMN_RIGHT_EDGE_MINUS_ONE = 8 - 1;
+		rowFormatting.append(getCellxCommand(INCHES_FROM_LEFT_MARGIN_TO_FIRST_COLUMN_RIGHT_EDGE_MINUS_ONE));
 		
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
@@ -133,7 +134,7 @@ public class RtfFormExporter
 			}
 		}
 		
-		rowFormatting.append(getCellxCommand(++uniqueRtfColumnId * WIDEN_TWICE));
+		rowFormatting.append(getCellxCommand(INCHES_FROM_LEFT_MARGIN_TO_SECOND_COLUMN_RIGHT_EDGE_MINUS_ONE));
 		getWriter().writeRaw(rowFormatting.toString());
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);				
 		getWriter().writeRaw(encodedRowContent.toString());
