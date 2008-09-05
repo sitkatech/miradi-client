@@ -279,13 +279,13 @@ public class RtfWriter
 	public void writeHeading2Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_2_STYLE_TAG);
-		writelnRaw(styleFormattingCommand);
+		writeRaw(styleFormattingCommand);
 	}
 
 	public void writeHeading3Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_3_STYLE_TAG);
-		writelnRaw(styleFormattingCommand);
+		writeRaw(styleFormattingCommand);
 	}
 	
 	public void writeText(String text) throws Exception
@@ -378,9 +378,9 @@ public class RtfWriter
 		endBlock();
 	}	
 
-	public String writeParCommand()
+	public void writeParCommand() throws Exception
 	{
-		return PAR_COMMAND;
+		writeRaw(PAR_COMMAND);
 	}
 		
 	public void newParagraph() throws Exception
