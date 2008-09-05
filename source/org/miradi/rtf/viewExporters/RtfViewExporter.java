@@ -43,7 +43,7 @@ abstract public class RtfViewExporter
 	protected void exportTable(RtfWriter writer, AbstractTableExporter tableExporter, String translatedTableName) throws Exception
 	{
 		writer.startBlock();
-		writer.writeHeading1Style();
+		writer.writeHeading2Style();
 		writer.writelnEncoded(translatedTableName);
 		writer.writeParCommand();
 		writer.endBlock();
