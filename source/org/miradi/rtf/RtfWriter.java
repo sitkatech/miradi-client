@@ -46,25 +46,25 @@ public class RtfWriter
 
 	public void writelnEncoded(String data) throws Exception
 	{
-		writeln(encode(data));
+		writelnRaw(encode(data));
 	}
 	
 	public void writeEncoded(String data) throws Exception
 	{
-		write(encode(data));
+		writeRaw(encode(data));
 	}
 	
 	public void writeRtfCommand(String rtfComand) throws Exception
 	{
-		writeln(rtfComand);
+		writelnRaw(rtfComand);
 	}
 	
-	public void writeln(String textToWrite) throws Exception
+	public void writelnRaw(String textToWrite) throws Exception
 	{
 		getWriter().writeln(textToWrite);
 	}
 	
-	public void write(String textToWrite) throws Exception
+	public void writeRaw(String textToWrite) throws Exception
 	{
 		getWriter().write(textToWrite);
 	}
@@ -129,17 +129,17 @@ public class RtfWriter
 
 	public void startBlock() throws Exception
 	{
-		write(START_BLOCK);
+		writeRaw(START_BLOCK);
 	}
 	
 	public void endBlock() throws Exception
 	{
-		write(END_BLOCK);
+		writeRaw(END_BLOCK);
 	}
 	
 	public void endBlockLn() throws Exception
 	{
-		writeln(END_BLOCK);
+		writelnRaw(END_BLOCK);
 	}
 
 	static public String toHex(byte b)
@@ -175,10 +175,10 @@ public class RtfWriter
 		writeCellCommands(exportableTable);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			write(PRE_CELL_COMMAND);
+			writeRaw(PRE_CELL_COMMAND);
 			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
-			write(styleFormattingCommand);
+			writeRaw(styleFormattingCommand);
 		
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -191,11 +191,11 @@ public class RtfWriter
 			
 			writeEncoded(exportableTable.getTextAt(row, column));
 			
-			write(CELL_COMMAND);
+			writeRaw(CELL_COMMAND);
 			newLine();
 		}
 		
-		write(ROW_COMMAND);
+		writeRaw(ROW_COMMAND);
 		newLine();
 		newLine();
 	}
@@ -204,7 +204,7 @@ public class RtfWriter
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			writeln(createCellxCommand(column));	
+			writelnRaw(createCellxCommand(column));	
 		}
 	}
 
@@ -215,30 +215,30 @@ public class RtfWriter
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
-		writeln(TABLE_ROW_HEADER);
+		writelnRaw(TABLE_ROW_HEADER);
 		writeCellCommands(exportableTable);
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
 			String header = exportableTable.getHeaderFor(columnIndex);
-			write(PRE_TABLE_HEADER_CELL_COMMAND);
-			write(styleFormattingCommand);
+			writeRaw(PRE_TABLE_HEADER_CELL_COMMAND);
+			writeRaw(styleFormattingCommand);
 			startBlock();
-			write(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
+			writeRaw(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
 			writeEncoded(header);
 			endBlock();
 			
-			write(CELL_COMMAND);
+			writeRaw(CELL_COMMAND);
 			newLine();
 		}
 		
-		write(ROW_COMMAND);
+		writeRaw(ROW_COMMAND);
 		newLine();
 		newLine();
 	}
 	
 	public static String encode(String stringToEncode)
-	{
+	{	
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
@@ -249,31 +249,17 @@ public class RtfWriter
 			char c = buffer.charAt(i);
 			if (c >= 128)
 			{
-				String hexValue = toHex(c);
-				buffer.replace(i, i+1, "\\u" + hexValue.toUpperCase());
+				String decimalValue = toDecimal(c);
+				buffer.replace(i, i+1, "\\u" + decimalValue.toUpperCase());
 			}
 		}
 		
 		return buffer.toString();
 	}
 	
-	static public String toHex(char c)
+	static public String toDecimal(char c)
 	{
-		int i = c & 0xFFFF;
-		
-		int firstNibble = (i & 0xF000) / 0x1000;
-		String firstDigit = Integer.toHexString(firstNibble);
-		
-		int secondNibble = (i & 0x0F00) / 0x0100;
-		String secondDigit = Integer.toHexString(secondNibble);
-		
-		int thirdNibble = (i & 0x00F0) / 0x0010;
-		String thirdDigit = Integer.toHexString(thirdNibble);
-		
-		int forthNibble = (i & 0x000F) / 0x001;
-		String forthDigit = Integer.toHexString(forthNibble);
-		
-		return firstDigit + secondDigit + thirdDigit + forthDigit;
+		return Integer.toString(c);
 	}
 	
 	public void insertIndents(int padCount) throws Exception
@@ -281,25 +267,25 @@ public class RtfWriter
 		final int EIGHTH_OF_AN_INCH = 180;
 		final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
 		int indentInTwips = (padCount * EIGHTH_OF_AN_INCH) + QUARTER_INCH;
-		write("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
+		writeRaw("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
 	}
 	
 	public void writeHeading1Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_1_STYLE_TAG);
-		write(styleFormattingCommand);
+		writeRaw(styleFormattingCommand);
 	}
 	
 	public void writeHeading2Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_2_STYLE_TAG);
-		writeln(styleFormattingCommand);
+		writelnRaw(styleFormattingCommand);
 	}
 
 	public void writeHeading3Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_3_STYLE_TAG);
-		writeln(styleFormattingCommand);
+		writelnRaw(styleFormattingCommand);
 	}
 	
 	public void writeText(String text) throws Exception
@@ -319,38 +305,38 @@ public class RtfWriter
 
 	private void writeRtfHeader() throws Exception
 	{
-		writeln("{\\rtf1\\ansi\\deff0\\adeflang1025");
+		writelnRaw("{\\rtf1\\ansi\\deff0\\adeflang1025");
 	}
 	
 	private void writeFontTable() throws Exception
 	{
 		newLine();
-		writeln("{\\fonttbl");
-			writeln("{\\f0\\froman\\fcharset0\\fprq2{\\*\\panose 02020603050405020304}Times New Roman;}");
-			writeln("{\\f1\\fswiss\\fcharset0\\fprq2{\\*\\panose 020b0604020202020204}Arial;}");
-			writeln("{\\f37\\froman\\fcharset238\\fprq2 Times New Roman CE;}");
-			writeln("{\\f38\\froman\\fcharset204\\fprq2 Times New Roman Cyr;}");
-			writeln("{\\f40\\froman\\fcharset161\\fprq2 Times New Roman Greek;}");
-			writeln("{\\f41\\froman\\fcharset162\\fprq2 Times New Roman Tur;}");
-			writeln("{\\f42\\fbidi \\froman\\fcharset177\\fprq2 Times New Roman (Hebrew);}");
-			writeln("{\\f43\\fbidi \\froman\\fcharset178\\fprq2 Times New Roman (Arabic);}");
-			writeln("{\\f44\\froman\\fcharset186\\fprq2 Times New Roman Baltic;}");
-			writeln("{\\f45\\froman\\fcharset163\\fprq2 Times New Roman (Vietnamese);}");
-			writeln("{\\f47\\fswiss\\fcharset238\\fprq2 Arial CE;}");
-			writeln("{\\f48\\fswiss\\fcharset204\\fprq2 Arial Cyr;}");
-			writeln("{\\f50\\fswiss\\fcharset161\\fprq2 Arial Greek;}");
-			writeln("{\\f51\\fswiss\\fcharset162\\fprq2 Arial Tur;}");
-			writeln("{\\f52\\fbidi \\fswiss\\fcharset177\\fprq2 Arial (Hebrew);}");
-			writeln("{\\f53\\fbidi \\fswiss\\fcharset178\\fprq2 Arial (Arabic);}");
-			writeln("{\\f54\\fswiss\\fcharset186\\fprq2 Arial Baltic;}");
-			writeln("{\\f55\\fswiss\\fcharset163\\fprq2 Arial (Vietnamese);}");
-		writeln("}");
+		writelnRaw("{\\fonttbl");
+			writelnRaw("{\\f0\\froman\\fcharset0\\fprq2{\\*\\panose 02020603050405020304}Times New Roman;}");
+			writelnRaw("{\\f1\\fswiss\\fcharset0\\fprq2{\\*\\panose 020b0604020202020204}Arial;}");
+			writelnRaw("{\\f37\\froman\\fcharset238\\fprq2 Times New Roman CE;}");
+			writelnRaw("{\\f38\\froman\\fcharset204\\fprq2 Times New Roman Cyr;}");
+			writelnRaw("{\\f40\\froman\\fcharset161\\fprq2 Times New Roman Greek;}");
+			writelnRaw("{\\f41\\froman\\fcharset162\\fprq2 Times New Roman Tur;}");
+			writelnRaw("{\\f42\\fbidi \\froman\\fcharset177\\fprq2 Times New Roman (Hebrew);}");
+			writelnRaw("{\\f43\\fbidi \\froman\\fcharset178\\fprq2 Times New Roman (Arabic);}");
+			writelnRaw("{\\f44\\froman\\fcharset186\\fprq2 Times New Roman Baltic;}");
+			writelnRaw("{\\f45\\froman\\fcharset163\\fprq2 Times New Roman (Vietnamese);}");
+			writelnRaw("{\\f47\\fswiss\\fcharset238\\fprq2 Arial CE;}");
+			writelnRaw("{\\f48\\fswiss\\fcharset204\\fprq2 Arial Cyr;}");
+			writelnRaw("{\\f50\\fswiss\\fcharset161\\fprq2 Arial Greek;}");
+			writelnRaw("{\\f51\\fswiss\\fcharset162\\fprq2 Arial Tur;}");
+			writelnRaw("{\\f52\\fbidi \\fswiss\\fcharset177\\fprq2 Arial (Hebrew);}");
+			writelnRaw("{\\f53\\fbidi \\fswiss\\fcharset178\\fprq2 Arial (Arabic);}");
+			writelnRaw("{\\f54\\fswiss\\fcharset186\\fprq2 Arial Baltic;}");
+			writelnRaw("{\\f55\\fswiss\\fcharset163\\fprq2 Arial (Vietnamese);}");
+		writelnRaw("}");
 	}
 
 	private void writeColorTable() throws Exception
 	{
 		newLine();
-		writeln("{\\colortbl;" +
+		writelnRaw("{\\colortbl;" +
 				"\\red0\\green0\\blue0;" +
 				"\\red0\\green0\\blue255;" +
 				"\\red0\\green255\\blue255;" +
@@ -372,19 +358,19 @@ public class RtfWriter
 	private void writeInfo() throws Exception
 	{
 		newLine();
-		writeln("{\\info");
-			writeln("{\\title Miradi}");
-			writeln("{\\author Miradi}");
-			writeln("{\\operator Miradi}");
-			writeln("{\\creatim\\yr2008\\mo8\\dy26\\hr15}");
-			writeln("{\\revtim\\yr2008\\mo8\\dy27\\hr10\\min24}");
-			writeln("{\\edmins140}");
-			writeln("{\\nofpages1}");
-			writeln("{\\nofwords4}");
-			writeln("{\\nofchars23}");
-			writeln("{\\nofcharsws26}");
-			writeln("{\\vern24613}");
-		writeln("}");
+		writelnRaw("{\\info");
+			writelnRaw("{\\title Miradi}");
+			writelnRaw("{\\author Miradi}");
+			writelnRaw("{\\operator Miradi}");
+			writelnRaw("{\\creatim\\yr2008\\mo8\\dy26\\hr15}");
+			writelnRaw("{\\revtim\\yr2008\\mo8\\dy27\\hr10\\min24}");
+			writelnRaw("{\\edmins140}");
+			writelnRaw("{\\nofpages1}");
+			writelnRaw("{\\nofwords4}");
+			writelnRaw("{\\nofchars23}");
+			writelnRaw("{\\nofcharsws26}");
+			writelnRaw("{\\vern24613}");
+		writelnRaw("}");
 	}
 
 	public void endRtf() throws Exception
@@ -399,12 +385,12 @@ public class RtfWriter
 	
 	public void insertTab() throws Exception
 	{
-		write(TAB_COMMAND);	
+		writeRaw(TAB_COMMAND);	
 	}
 	
 	public void pageBreak() throws Exception
 	{
-		write(PAGE_BREAK_COMMAND);
+		writeRaw(PAGE_BREAK_COMMAND);
 	}
 	
 	public void landscapeMode() throws Exception
@@ -416,14 +402,14 @@ public class RtfWriter
 	{
 		newLine();
 		startBlock();
-		write(command);
+		writeRaw(command);
 		endBlock();
 		newLine();
 	}
 	
 	public void newLine() throws Exception
 	{
-		writeln("");
+		writelnRaw("");
 	}
 	
 	public UnicodeWriter getWriter()
