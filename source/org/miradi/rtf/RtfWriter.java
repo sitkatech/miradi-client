@@ -287,7 +287,7 @@ public class RtfWriter
 	public void writeHeading1Style() throws Exception
 	{
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.HEADING_1_STYLE_TAG);
-		writeln(styleFormattingCommand);
+		write(styleFormattingCommand);
 	}
 	
 	public void writeHeading2Style() throws Exception
