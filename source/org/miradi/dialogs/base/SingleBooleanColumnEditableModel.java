@@ -69,7 +69,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 	{
 		try
 		{
-			ORefList currentRefList = getCurrentRefList();
+			ORefList currentRefList = getCheckedRefsAccordingToTheDatabase();
 			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
 			if (currentRefList.contains(ref))
 				return new Boolean(true);
@@ -122,8 +122,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 		return checkedRefs;
 	}
 	
-	//FIXME come up with a better name for this method
-	abstract protected ORefList getCurrentRefList() throws Exception;
+	abstract protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception;
 	
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	protected static final int SINGLE_COLUMN_INDEX = 0;
