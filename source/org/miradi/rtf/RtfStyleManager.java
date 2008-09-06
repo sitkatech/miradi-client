@@ -76,7 +76,7 @@ public class RtfStyleManager
 		createNewStyle(AccountingCode.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
 		createNewStyle(FundingSource.OBJECT_NAME, 	 	    	CS_31_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Fndng Src");
 		createNewStyle(KeyEcologicalAttribute.OBJECT_NAME,   	CS_32_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "KEA");
-		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				S_33_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "Col Hdr");
+		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				CS_33_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "Col Hdr");
 	}
 
 	private void createNewStyle(String objectName, String rtfStyleId, String rtfFormatingCommand, String styleName)
@@ -181,7 +181,7 @@ public class RtfStyleManager
 	public static final String CS_30_RTF_ID = "\\cs30";
 	public static final String CS_31_RTF_ID = "\\cs31";
 	public static final String CS_32_RTF_ID = "\\cs32";
-	public static final String S_33_RTF_ID = "\\s33";
+	public static final String CS_33_RTF_ID = "\\cs33";
 	public static final String HEADING_1_STYLE = " \\f1\\b\\fs36 ";
 	public static final String HEADING_2_STYLE = " \\f1\\b\\fs28 ";
 	public static final String HEADING_3_STYLE = " \\f1\\b\\fs24 ";
