@@ -57,10 +57,10 @@ public class RtfStyleManager
 		createNewStyle(HEADING_3_STYLE_TAG,						S_3_RTF_ID, HEADING_3_STYLE, "Heading 3");
 		
 		createNewStyle(Goal.OBJECT_NAME,                 		CS_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
-		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs24 ", MIRADI_STYLE_PREFIX + "Project");
+		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs20 ", MIRADI_STYLE_PREFIX + "Project");
 		createNewStyle(COMMENT_STYLE_TAG, 						CS_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
-		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		CS_16_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "CM");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		CS_17_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "RC");
+		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		CS_16_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CM");
+		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		CS_17_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "RC");
 		createNewStyle(Target.OBJECT_NAME,                 		CS_18_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Target");
 		createNewStyle(Cause.OBJECT_NAME_THREAT,           		CS_19_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "DThrt");
 		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   CS_20_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CFctr");
