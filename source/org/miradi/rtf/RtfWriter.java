@@ -176,9 +176,6 @@ public class RtfWriter
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRaw(PRE_CELL_COMMAND);
-			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
-			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
-			writeRaw(styleFormattingCommand);
 		
 			Icon cellIcon = exportableTable.getIconAt(row, column);
 			if (cellIcon != null)
@@ -189,6 +186,9 @@ public class RtfWriter
 				insertTab();
 			}
 			
+			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
+			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
+			writeRaw(styleFormattingCommand);
 			writeEncoded(exportableTable.getTextAt(row, column));
 			
 			writeRaw(CELL_COMMAND);
