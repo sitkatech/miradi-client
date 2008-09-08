@@ -25,8 +25,6 @@ import java.io.Reader;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import org.miradi.main.EAM;
-
 public class DelimitedFileLoader
 {
 	static String QUOTE = "\"";
@@ -48,10 +46,7 @@ public class DelimitedFileLoader
 				break;
 			
 			if (line.startsWith(COMMENT))
-			{
-				EAM.logDebug("Skipping Commented line in Delimited File Loader. Line: "+ line);
 				continue;
-			}
 			
 			line = translateLine(line);
 			StringTokenizer st = new StringTokenizer(line, TAB);
