@@ -242,7 +242,8 @@ public class RtfWriter
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
-		
+
+		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\n";
 		StringBuffer buffer = new StringBuffer(encodedString);
 		for(int i = 0; i < buffer.length(); ++i)
 		{
@@ -250,7 +251,7 @@ public class RtfWriter
 			if (c >= 128)
 			{
 				String decimalValue = toDecimal(c);
-				buffer.replace(i, i+1, "\\u" + decimalValue.toUpperCase());
+				buffer.replace(i, i+1, "\\u" + decimalValue.toUpperCase() + NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR);
 			}
 		}
 		
