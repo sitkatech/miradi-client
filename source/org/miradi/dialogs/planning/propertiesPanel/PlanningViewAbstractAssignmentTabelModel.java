@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.text.DecimalFormat;
-
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -28,6 +26,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Task;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 
 abstract public class PlanningViewAbstractAssignmentTabelModel extends EditableObjectTableModel
@@ -138,5 +137,5 @@ abstract public class PlanningViewAbstractAssignmentTabelModel extends EditableO
 	protected ORefList assignmentRefs;
 	protected Task task;
 
-	protected DecimalFormat currencyFormatter;
+	protected CurrencyFormat currencyFormatter;
 }

@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -51,6 +50,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectChainObject;
@@ -599,7 +599,7 @@ abstract public class BaseObject
 		if(cost == 0.0)
 			return "";
 		
-		DecimalFormat formater = objectManager.getProject().getCurrencyFormatterWithCommas();
+		CurrencyFormat formater = objectManager.getProject().getCurrencyFormatterWithCommas();
 		return formater.format(cost);
 	}
 	
