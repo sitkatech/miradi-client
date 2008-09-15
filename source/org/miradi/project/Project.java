@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.Vector;
@@ -1245,20 +1244,19 @@ public class Project
 		return formatter;
 	}
 	
-	public DecimalFormat getCurrencyFormatterWithCommas()
+	public CurrencyFormat getCurrencyFormatterWithCommas()
 	{
 		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
-		DecimalFormat currencyFormatter = new DecimalFormat();
-		currencyFormatter.setRoundingMode(RoundingMode.HALF_UP);
+		CurrencyFormat currencyFormatter = new CurrencyFormat();
 		currencyFormatter.setMinimumFractionDigits(currencyDecimalPlaces);
 		currencyFormatter.setMaximumFractionDigits(currencyDecimalPlaces);
 		
 		return currencyFormatter;
 	}
 	
-	public DecimalFormat getCurrencyFormatterWithoutCommas()
+	public CurrencyFormat getCurrencyFormatterWithoutCommas()
 	{
-		DecimalFormat currencyFormatter = getCurrencyFormatterWithCommas();
+		CurrencyFormat currencyFormatter = getCurrencyFormatterWithCommas();
 		currencyFormatter.setGroupingUsed(false);
 		
 		return currencyFormatter;

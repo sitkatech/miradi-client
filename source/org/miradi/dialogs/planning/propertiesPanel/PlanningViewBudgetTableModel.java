@@ -19,12 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.text.DecimalFormat;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.Utility;
@@ -78,5 +77,5 @@ public class PlanningViewBudgetTableModel extends PlanningViewAbstractBudgetTabl
 		return currencyFormatter.format(units * costPerUnit);
 	}
 	
-	private DecimalFormat currencyFormatter;
+	private CurrencyFormat currencyFormatter;
 }

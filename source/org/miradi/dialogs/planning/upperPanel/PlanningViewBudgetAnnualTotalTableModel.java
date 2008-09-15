@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
@@ -117,7 +117,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return column == getColumnCount() - 1;
 	}
 	
-	private DecimalFormat currencyFormatter;
+	private CurrencyFormat currencyFormatter;
 	
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
