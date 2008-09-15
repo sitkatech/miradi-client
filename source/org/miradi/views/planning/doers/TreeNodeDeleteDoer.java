@@ -85,10 +85,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		{
 			ORef ownerRef = ownerRefs.get(refIndex);
 			BaseObject owner = getProject().findObject(ownerRef);
-			if (Factor.isFactor(ownerRef))
-				commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, Factor.TAG_INDICATOR_IDS, selected.getRef()));
-			
-			commands.addAll(DeleteAnnotationDoer.buildCommandsToDeleteKEAIndicators(getProject(), ownerRef));
+			commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, Factor.TAG_INDICATOR_IDS, selected.getRef()));
 		}
 		
 		commands.addAll(Arrays.asList(selected.createCommandsToClear()));
