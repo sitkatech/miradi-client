@@ -243,7 +243,7 @@ public class RtfWriter
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
 
-		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\n";
+		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~\n";
 		StringBuffer buffer = new StringBuffer(encodedString);
 		for(int i = 0; i < buffer.length(); ++i)
 		{
