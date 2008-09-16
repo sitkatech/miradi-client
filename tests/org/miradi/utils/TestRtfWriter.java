@@ -54,7 +54,7 @@ public class TestRtfWriter extends EAMTestCase
 		verifyEncoding("\\\\", "\\");
 		
 		final char UNICODE_OMEGA = 0x2126;
-		verifyEncoding("\\u8486\n", Character.toString(UNICODE_OMEGA));
+		verifyEncoding("\\u8486\\~\n", Character.toString(UNICODE_OMEGA));
 	}
 	
 	private void verifyEncoding(String expectedValue, String value)
