@@ -32,10 +32,12 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -122,6 +124,7 @@ public class DeleteActivity extends ObjectsDoer
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
+		commandsToDeleteTasks.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, task));
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));
@@ -214,5 +217,26 @@ public class DeleteActivity extends ObjectsDoer
 		}
 		
 		return removeCommands;		
+	}
+
+	public static Vector<Command> buildRemoveFromObjectiveRelevancyListCommands(Project project, BaseObject objectToRemove) throws Exception
+	{
+		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		ORefList objectiveRefs = project.getObjectivePool().getORefList();
+		for (int index = 0; index < objectiveRefs.size(); ++index)
+		{
+			Objective objective = Objective.find(project, objectiveRefs.get(index));
+			ORefList relevantStrategyAndActivityRefs = objective.getRelevantStrategyAndActivityRefs();
+			if (relevantStrategyAndActivityRefs.contains(objectToRemove.getRef()))
+			{
+				ORefList listToRemoveFrom = new ORefList(relevantStrategyAndActivityRefs);
+				listToRemoveFrom.remove(objectToRemove.getRef());
+				RelevancyOverrideSet relevancySet = objective.getCalculatedRelevantStrategyActivityOverrides(listToRemoveFrom);	
+				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
+				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			}
+		}
+		
+		return removeFromRelevancyListCommands;
 	}
 }
