@@ -49,6 +49,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.AbstractTableExporter;
@@ -239,6 +240,8 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_TASK_IDS))
+			return true;
+		if(type == Objective.getObjectType() && tag.equals(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
 		return false;
 	}

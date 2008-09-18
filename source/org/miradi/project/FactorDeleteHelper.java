@@ -73,6 +73,7 @@ public class FactorDeleteHelper
 		if (Strategy.is(diagramFactorToDelete.getWrappedType()))
 		{
 			Strategy strategy = (Strategy) diagramFactorToDelete.getWrappedFactor();
+			removeStrategyFromObjectiveRelevancyList(diagramFactorToDelete);
 			deleteRelatedFactorDiagramFactors(strategy.getActivityRefs());
 		}
 		
@@ -191,6 +192,11 @@ public class FactorDeleteHelper
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(factorRef);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
+	}
+	
+	private void removeStrategyFromObjectiveRelevancyList(DiagramFactor diagramFactorToDelete) throws Exception
+	{
+		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(getProject(), diagramFactorToDelete.getWrappedFactor()));
 	}
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
