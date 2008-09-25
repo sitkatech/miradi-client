@@ -264,7 +264,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return new CodeList();
 		}
 	}
-		
+	
+	//FIXME refactor rename to setLegendVisibilityOfFactorCheckBoxes
 	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
