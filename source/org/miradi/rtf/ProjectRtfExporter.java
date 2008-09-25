@@ -58,7 +58,7 @@ public class ProjectRtfExporter
 		writer.writeParCommand();
 		
 		writer.writeHeading1Style();
-		writer.writelnEncoded(EAM.text("Verion: ") + new MultiCalendar().toIsoDateString());
+		writer.writelnEncoded(EAM.text("Version: ") + new MultiCalendar().toIsoDateString());
 		writer.writeParCommand();
 		writer.endBlock();
 		
