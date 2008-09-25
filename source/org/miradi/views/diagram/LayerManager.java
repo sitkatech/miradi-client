@@ -55,6 +55,9 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
 	{
+		if (isHiddenInDiagramObject(diagramObjectToUse, node))
+			return false;
+		
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
 		
@@ -92,6 +95,12 @@ public class LayerManager
 			return true;
 		
 		return false;
+	}
+
+	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, FactorCell node)
+	{
+		String objectTypeName = node.getUnderlyingObject().getTypeName();
+		return diagramObjectToUse.getHiddenTypes().contains(objectTypeName);
 	}
 
 	private boolean isResultsChain(DiagramObject diagramObjectToUse)

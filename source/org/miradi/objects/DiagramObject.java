@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class DiagramObject extends BaseObject
@@ -227,6 +228,11 @@ abstract public class DiagramObject extends BaseObject
 		return allDiagramFactorLinkIds.getIdList();
 	}
 	
+	public CodeList getHiddenTypes()
+	{
+		return hiddenTyes.getCodeList();
+	}
+	
 	public Factor[] getAllWrappedFactors()
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
@@ -380,6 +386,7 @@ abstract public class DiagramObject extends BaseObject
 	private IdListData allDiagramFactorLinkIds;
 	private StringData shortLabel;
 	private StringData details;
+	//TODO refactor rename to hiddenTypes
 	private CodeListData hiddenTyes;
 	private ORefListData selectedTaggedObjectSetRefs;
 	private PseudoStringData combinedLabel;
