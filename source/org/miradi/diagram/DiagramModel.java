@@ -822,12 +822,18 @@ public class DiagramModel extends DefaultGraphModel
 		clear();
 		addFactorsToModel(diagramContents.toJson());
 		addLinksToModel(diagramContents.toJson());
+		reloadLayerManager(diagramContentsToUse);
 		
 		if (isDamaged())
 			EAM.errorDialog(EAM.text("An error is preventing this diagram from displaying correctly. " +
 				 "Most likely, the project has gotten corrupted. Please contact " +
 				 "the Miradi team for help and advice. We recommend that you not " +
 				 "make any changes to this project until this problem has been resolved."));
+	}
+
+	private void reloadLayerManager(DiagramObject diagramContentsToUse)
+	{
+		getLayerManager().setDiagramObject(diagramContentsToUse);
 	}
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception

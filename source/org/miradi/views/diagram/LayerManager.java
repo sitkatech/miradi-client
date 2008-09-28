@@ -25,6 +25,12 @@ import java.util.Set;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.Goal;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
+import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 
 public class LayerManager
@@ -55,7 +61,7 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
 	{
-		if (isHiddenInDiagramObject(diagramObjectToUse, node))
+		if (isHiddenInDiagramObject(diagramObjectToUse, node.getUnderlyingObject().getTypeName()))
 			return false;
 		
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
@@ -97,10 +103,17 @@ public class LayerManager
 		return false;
 	}
 
-	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, FactorCell node)
+	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, String objectTypeName)
 	{
-		String objectTypeName = node.getUnderlyingObject().getTypeName();
-		return diagramObjectToUse.getHiddenTypes().contains(objectTypeName);
+		if (isSafeDiagramObject(diagramObjectToUse))
+			return diagramObjectToUse.getHiddenTypes().contains(objectTypeName);
+		
+		return false;
+	}
+
+	private boolean isSafeDiagramObject(DiagramObject diagramObjectToUse)
+	{
+		return diagramObjectToUse != null;
 	}
 
 	private boolean isResultsChain(DiagramObject diagramObjectToUse)
@@ -161,7 +174,7 @@ public class LayerManager
 	
 	public boolean areFactorLinksVisible()
 	{
-		return linkagesVisibleFlag;
+		return isTypeVisible(linkagesVisibleFlag, FactorLink.OBJECT_NAME);
 	}
 	
 	public void setFactorLinksVisible(boolean newSetting)
@@ -171,7 +184,7 @@ public class LayerManager
 
 	public boolean areTargetLinksVisible()
 	{
-		return targetLinkagesVisibleFlag;
+		return isTypeVisible(targetLinkagesVisibleFlag, FactorLink.OBJECT_NAME_TARGETLINK);
 	}
 	
 	public void setTargetLinksVisible(boolean newSetting)
@@ -181,12 +194,12 @@ public class LayerManager
 
 	public boolean areGoalsVisible()
 	{
-		return goalsVisibleFlag;
+		return isTypeVisible(goalsVisibleFlag, Goal.OBJECT_NAME);
 	}
 	
 	public boolean areObjectivesVisible()
 	{
-		return objectivesVisibleFlag;
+		return isTypeVisible(objectivesVisibleFlag, Objective.OBJECT_NAME);
 	}
 	
 	public void setGoalsVisible(boolean newSetting)
@@ -201,12 +214,12 @@ public class LayerManager
 	
 	public boolean areTextBoxesVisible()
 	{
-		return textBoxesVisibleFlag;
+		return isTypeVisible(textBoxesVisibleFlag, TextBox.OBJECT_NAME);
 	}
-	
+
 	public boolean areGroupBoxesVisible()
 	{
-		return groupBoxesVisibleFlag;
+		return isTypeVisible(groupBoxesVisibleFlag, GroupBox.OBJECT_NAME);
 	}
 	
 	public boolean areDraftsVisible(FactorCell node)
@@ -229,7 +242,7 @@ public class LayerManager
 
 	public boolean areIndicatorsVisible()
 	{
-		return indicatorsVisibleFlag;
+		return isTypeVisible(indicatorsVisibleFlag, Indicator.OBJECT_NAME);
 	}
 	
 	public void setIndicatorsVisible(boolean newSetting)
@@ -239,7 +252,7 @@ public class LayerManager
 
 	public boolean isScopeBoxVisible()
 	{
-		return scopeBoxVisibleFlag;
+		return isTypeVisible(scopeBoxVisibleFlag, DiagramLegendPanel.SCOPE_BOX);
 	}
 	
 	public void setScopeBoxVisible(boolean newSetting)
@@ -287,9 +300,22 @@ public class LayerManager
 		threatReductionResultFlag = newSetting;
 	}
 	
+	private boolean isTypeVisible(boolean defaultVisibility, String objectTypeName)
+	{
+		if (isHiddenInDiagramObject(getDiagramObject(), objectTypeName))
+			return false;
+		
+		return defaultVisibility;
+	}
+		
 	public DiagramObject getDiagramObject()
 	{
 		return diagramObject;
+	}
+	
+	public void setDiagramObject(DiagramObject diagramContentsToUse)
+	{
+		diagramObject = diagramContentsToUse;
 	}
 	
 	private DiagramObject diagramObject;
