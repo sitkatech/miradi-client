@@ -54,8 +54,6 @@ public class QuestionManager
 		addQuestion(new StatusConfidenceQuestion());
 		addQuestion(new StatusQuestion());
 		addQuestion(new StrategyClassificationQuestion());
-		addQuestion(new StrategyCostQuestion());
-		addQuestion(new StrategyDurationQuestion());
 		addQuestion(new StrategyFeasibilityQuestion());
 		addQuestion(new StrategyImpactQuestion());
 		addQuestion(new StrategyRatingSummaryQuestion());
