@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 public class StressIrreversibilityQuestion extends StaticChoiceQuestion
 {
 	public StressIrreversibilityQuestion()
@@ -31,11 +33,11 @@ public class StressIrreversibilityQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified", Color.WHITE),
-				new ChoiceItem(LOW_CODE, "Low", COLOR_GREAT),
-				new ChoiceItem(MEDIUM_CODE, "Medium", COLOR_OK),
-				new ChoiceItem(HIGH_CODE, "High", COLOR_CAUTION),
-				new ChoiceItem(VERY_HIGH_CODE, "Very High", COLOR_ALERT),
+				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+				new ChoiceItem(LOW_CODE, EAM.text("Low"), COLOR_GREAT),
+				new ChoiceItem(MEDIUM_CODE, EAM.text("Medium"), COLOR_OK),
+				new ChoiceItem(HIGH_CODE, EAM.text("High"), COLOR_CAUTION),
+				new ChoiceItem(VERY_HIGH_CODE, EAM.text("Very High"), COLOR_ALERT),
 		};
 	}
 	

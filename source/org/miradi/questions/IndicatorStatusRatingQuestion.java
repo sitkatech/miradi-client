@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 //FIXME remove after TAG_STATUS is removed
 public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 {
@@ -32,11 +34,11 @@ public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatusChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem(NOT_STARTED_CODE, "Not Started", COLOR_ALERT),
-			new ChoiceItem(PROBLEMS_IMPLEMENTING_CODE, "Problems Implementing", COLOR_CAUTION),
-			new ChoiceItem(GOING_WELL_CODE, "Going Well", COLOR_OK),
-			new ChoiceItem(FULLY_ON_SCHEDULE_CODE, "Fully on Schedule", COLOR_GREAT),
+			new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+			new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), COLOR_ALERT),
+			new ChoiceItem(PROBLEMS_IMPLEMENTING_CODE, EAM.text("Problems Implementing"), COLOR_CAUTION),
+			new ChoiceItem(GOING_WELL_CODE, EAM.text("Going Well"), COLOR_OK),
+			new ChoiceItem(FULLY_ON_SCHEDULE_CODE, EAM.text("Fully on Schedule"), COLOR_GREAT),
 		};
 	}
 	

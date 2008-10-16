@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 
 public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
 {
@@ -32,11 +34,11 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getFeasibilityChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified", Color.WHITE),
-			new ChoiceItem(LOW_CODE, "Low", COLOR_ALERT),
-			new ChoiceItem(MEDIUM_CODE, "Medium", COLOR_CAUTION),
-			new ChoiceItem(HIGH_CODE, "High", COLOR_OK),
-			new ChoiceItem(VERY_HIGH_CODE, "Very High", COLOR_GREAT),
+			new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+			new ChoiceItem(LOW_CODE, EAM.text("Low"), COLOR_ALERT),
+			new ChoiceItem(MEDIUM_CODE, EAM.text("Medium"), COLOR_CAUTION),
+			new ChoiceItem(HIGH_CODE, EAM.text("High"), COLOR_OK),
+			new ChoiceItem(VERY_HIGH_CODE, EAM.text("Very High"), COLOR_GREAT),
 		};
 	}
 	

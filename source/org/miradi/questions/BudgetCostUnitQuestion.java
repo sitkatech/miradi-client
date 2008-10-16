@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 {
@@ -30,12 +32,12 @@ public class BudgetCostUnitQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getCostUnitChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("Hours", "Hours"),
-				new ChoiceItem(DAYS_CODE, DAYS_CODE),
-				new ChoiceItem("Weeks", "Weeks"),
-				new ChoiceItem("Months", "Months"),
-				new ChoiceItem("Each", "Each"),
+				new ChoiceItem("", EAM.text("Not Specified")),
+				new ChoiceItem("Hours", EAM.text("Hours")),
+				new ChoiceItem(DAYS_CODE, EAM.text("Days")),
+				new ChoiceItem("Weeks", EAM.text("Weeks")),
+				new ChoiceItem("Months", EAM.text("Months")),
+				new ChoiceItem("Each", EAM.text("Each")),
 		};
 	}
 

@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 
 public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 {
@@ -32,24 +34,24 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getColorChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Black (Default)", Color.BLACK),
-			new ChoiceItem(DARK_GRAY_HEX, "Dark Gray", DARK_GRAY_FROM_HEX),
-			new ChoiceItem(RED_HEX, "Dark Red", RED_FROM_HEX),
-			new ChoiceItem(DARK_ORANGE_HEX, "Dark Orange", DARK_ORANGE_FROM_HEX),
-			new ChoiceItem(DARK_YELLOW_HEX, "Dark Yellow", DARK_YELLOW_FROM_HEX),
-			new ChoiceItem(DARK_GREEN_HEX, "Dark Green", DARK_GREEN_FROM_HEX),
-			new ChoiceItem(DARK_BLUE_HEX, "Dark Blue", DARK_BLUE_FROM_HEX),
-			new ChoiceItem(DARK_PURPLE_HEX, "Dark Purple", DARK_PURPLE_FROM_HEX),
-			new ChoiceItem(BROWN_HEX, "Brown", BROWN_FROM_HEX),
-			new ChoiceItem(LIGHT_GRAY_HEX, "Light Gray", LIGHT_GRAY_FROM_HEX),
-			new ChoiceItem(WHITE_HEX, "White", WHITE_FROM_HEX),
-			new ChoiceItem(PINK_HEX, "Pink", PINK_FROM_HEX),
-			new ChoiceItem(LIGHT_ORANGE_HEX, "Light Orange", LIGHT_ORANGE_FROM_HEX),
-			new ChoiceItem(LIGHT_YELLOW_HEX, "Light Yellow", LIGHT_YELLOW_FROM_HEX),
-			new ChoiceItem(LIGHT_GREEN_HEX, "Light Green", LIGHT_GREEN_FROM_HEX),
-			new ChoiceItem(LIGHT_BLUE_HEX, "Light Blue", LIGHT_BLUE_FROM_HEX),
-			new ChoiceItem(LIGHT_PURPLE_HEX, "Light Purple", LIGHT_PURPLE_FROM_HEX),
-			new ChoiceItem(TAN_HEX, "Tan", TAN_FROM_HEX),
+			new ChoiceItem("", EAM.text("Black (Default)"), Color.BLACK),
+			new ChoiceItem(DARK_GRAY_HEX, EAM.text("Dark Gray"), DARK_GRAY_FROM_HEX),
+			new ChoiceItem(RED_HEX, EAM.text("Dark Red"), RED_FROM_HEX),
+			new ChoiceItem(DARK_ORANGE_HEX, EAM.text("Dark Orange"), DARK_ORANGE_FROM_HEX),
+			new ChoiceItem(DARK_YELLOW_HEX, EAM.text("Dark Yellow"), DARK_YELLOW_FROM_HEX),
+			new ChoiceItem(DARK_GREEN_HEX, EAM.text("Dark Green"), DARK_GREEN_FROM_HEX),
+			new ChoiceItem(DARK_BLUE_HEX, EAM.text("Dark Blue"), DARK_BLUE_FROM_HEX),
+			new ChoiceItem(DARK_PURPLE_HEX, EAM.text("Dark Purple"), DARK_PURPLE_FROM_HEX),
+			new ChoiceItem(BROWN_HEX, EAM.text("Brown"), BROWN_FROM_HEX),
+			new ChoiceItem(LIGHT_GRAY_HEX, EAM.text("Light Gray"), LIGHT_GRAY_FROM_HEX),
+			new ChoiceItem(WHITE_HEX, EAM.text("White"), WHITE_FROM_HEX),
+			new ChoiceItem(PINK_HEX, EAM.text("Pink"), PINK_FROM_HEX),
+			new ChoiceItem(LIGHT_ORANGE_HEX, EAM.text("Light Orange"), LIGHT_ORANGE_FROM_HEX),
+			new ChoiceItem(LIGHT_YELLOW_HEX, EAM.text("Light Yellow"), LIGHT_YELLOW_FROM_HEX),
+			new ChoiceItem(LIGHT_GREEN_HEX, EAM.text("Light Green"), LIGHT_GREEN_FROM_HEX),
+			new ChoiceItem(LIGHT_BLUE_HEX, EAM.text("Light Blue"), LIGHT_BLUE_FROM_HEX),
+			new ChoiceItem(LIGHT_PURPLE_HEX, EAM.text("Light Purple"), LIGHT_PURPLE_FROM_HEX),
+			new ChoiceItem(TAN_HEX, EAM.text("Tan"), TAN_FROM_HEX),
 		};
 	}
 	

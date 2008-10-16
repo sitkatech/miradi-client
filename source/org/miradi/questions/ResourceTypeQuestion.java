@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class ResourceTypeQuestion extends StaticChoiceQuestion
 {
@@ -30,9 +32,9 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Person"),
-			new ChoiceItem("Group", "Group"),
-			new ChoiceItem("Material", "Material"),
+			new ChoiceItem("", EAM.text("Person")),
+			new ChoiceItem("Group", EAM.text("Group")),
+			new ChoiceItem("Material", EAM.text("Material")),
 		};
 	}
 

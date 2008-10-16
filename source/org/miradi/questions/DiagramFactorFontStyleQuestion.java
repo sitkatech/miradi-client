@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 {
@@ -30,10 +32,10 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStyleChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Plain (Default)"),
-			new ChoiceItem("<B>", "Bold"),
-			new ChoiceItem("<U>", "Underline"),
-			new ChoiceItem("<S>", "Strike through"),
+			new ChoiceItem("", EAM.text("Plain (Default)")),
+			new ChoiceItem("<B>", EAM.text("Bold")),
+			new ChoiceItem("<U>", EAM.text("Underline")),
+			new ChoiceItem("<S>", EAM.text("Strike through")),
 		};
 	}
 }

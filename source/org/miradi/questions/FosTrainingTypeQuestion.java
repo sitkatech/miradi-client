@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class FosTrainingTypeQuestion extends StaticChoiceQuestion
 {
@@ -30,11 +32,11 @@ public class FosTrainingTypeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getTrainingTypeChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("1", "Workshop"),
-				new ChoiceItem("2", "University"),
-				new ChoiceItem("3", "Online"),
-				new ChoiceItem("4", "Other"),
+				new ChoiceItem("", EAM.text("Not Specified")),
+				new ChoiceItem("1", EAM.text("Workshop")),
+				new ChoiceItem("2", EAM.text("University")),
+				new ChoiceItem("3", EAM.text("Online")),
+				new ChoiceItem("4", EAM.text("FOS Training Type|Other")),
 		};
 	}
 }

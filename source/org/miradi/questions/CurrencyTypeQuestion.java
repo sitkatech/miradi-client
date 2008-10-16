@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class CurrencyTypeQuestion extends StaticChoiceQuestion
 {
@@ -30,18 +32,18 @@ public class CurrencyTypeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getCurrencyChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Dollar (United States)"),
-				new ChoiceItem("EUR", "Euro"),
-				new ChoiceItem("GBP", "Pound (United Kingdom)"),
-				new ChoiceItem("JPY", "Yen (Japan)"),
-				new ChoiceItem("CAD", "Dollar (Canada)"),
-				new ChoiceItem("AUD", "Dollar (Australia)"),
-				new ChoiceItem("CHF", "Franc (Switzerland)"),
-				new ChoiceItem("RUB", "Ruble (Russia)"),
-				new ChoiceItem("CNY", "Chinese Yuan Renminbi"),
-				new ChoiceItem("ZAR", "Rand (South Africa)"),
-				new ChoiceItem("MXN", "Peso (Mexico)"),
-				new ChoiceItem("???", "Other"),
+				new ChoiceItem("", EAM.text("Dollar (United States)")),
+				new ChoiceItem("EUR", EAM.text("Euro")),
+				new ChoiceItem("GBP", EAM.text("Pound (United Kingdom)")),
+				new ChoiceItem("JPY", EAM.text("Yen (Japan)")),
+				new ChoiceItem("CAD", EAM.text("Dollar (Canada)")),
+				new ChoiceItem("AUD", EAM.text("Dollar (Australia)")),
+				new ChoiceItem("CHF", EAM.text("Franc (Switzerland)")),
+				new ChoiceItem("RUB", EAM.text("Ruble (Russia)")),
+				new ChoiceItem("CNY", EAM.text("Chinese Yuan Renminbi")),
+				new ChoiceItem("ZAR", EAM.text("Rand (South Africa)")),
+				new ChoiceItem("MXN", EAM.text("Peso (Mexico)")),
+				new ChoiceItem("???", EAM.text("Currency|Other")),
 		};
 	}
 }
