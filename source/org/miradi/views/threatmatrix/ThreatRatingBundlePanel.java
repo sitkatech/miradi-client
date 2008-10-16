@@ -34,6 +34,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -123,9 +124,9 @@ public class ThreatRatingBundlePanel extends DisposablePanel
 
 		JPanel headerBox = new JPanel(new BasicGridLayout(2, 2));	
 		headerBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		headerBox.add(new PanelTitleLabel("Threat:"));
+		headerBox.add(new PanelTitleLabel(EAM.text("Threat:")));
 		headerBox.add(threatName);
-		headerBox.add(new PanelTitleLabel("Target:"));
+		headerBox.add(new PanelTitleLabel(EAM.text("Target:")));
 		headerBox.add(targetName);
 		
 		JPanel panel = new JPanel();
