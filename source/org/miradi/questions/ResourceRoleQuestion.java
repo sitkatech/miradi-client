@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.util.Vector;
 
+import org.miradi.main.EAM;
+
 
 
 public class ResourceRoleQuestion extends StaticChoiceQuestion
@@ -33,7 +35,7 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 	private static Vector<ChoiceItem> getRoleChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector();
-		choiceItems.add(new ChoiceItem(TeamMemberRoleCode, "Team Member"));
+		choiceItems.add(new ChoiceItem(TeamMemberRoleCode, EAM.text("Team Member")));
 		choiceItems.addAll(getGenericChoiceItems());
 		
 		return choiceItems;
@@ -42,15 +44,15 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 	public static Vector<ChoiceItem> getGenericChoiceItems()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector();
-		choiceItems.add(new ChoiceItem("Contact", "Team Contact"));
-		choiceItems.add(new ChoiceItem(TeamLeaderCode, "Leader/Manager"));
-		choiceItems.add(new ChoiceItem("Facilitator", "Process Facilitator"));
-		choiceItems.add(new ChoiceItem("Advisor", "Project Advisor"));
-		choiceItems.add(new ChoiceItem("Stakeholder", "Stakeholder"));
+		choiceItems.add(new ChoiceItem("Contact", EAM.text("Team Contact")));
+		choiceItems.add(new ChoiceItem(TeamLeaderCode, EAM.text("Leader/Manager")));
+		choiceItems.add(new ChoiceItem("Facilitator", EAM.text("Process Facilitator")));
+		choiceItems.add(new ChoiceItem("Advisor", EAM.text("Project Advisor")));
+		choiceItems.add(new ChoiceItem("Stakeholder", EAM.text("Stakeholder")));
 		
 		return choiceItems;
 	}
 	
-	public static final String TeamMemberRoleCode = "TeamMember";
-	public static final String TeamLeaderCode = "Leader";
+	public static final String TeamMemberRoleCode = EAM.text("TeamMember");
+	public static final String TeamLeaderCode = EAM.text("Leader");
 }
