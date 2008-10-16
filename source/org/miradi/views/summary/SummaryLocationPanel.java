@@ -39,8 +39,8 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LATITUDE, 10), "(Latitude must be -90.0000 to +90.0000)");
-		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LONGITUDE, 10), "(Longitude must be -180.0000 to +180.0000)");
+		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LATITUDE, 10), EAM.text("(Latitude must be -90.0000 to +90.0000)"));
+		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LONGITUDE, 10), EAM.text("(Longitude must be -180.0000 to +180.0000)"));
 		
 		addField(createCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_COUNTRIES, QuestionManager.getQuestion(CountriesQuestion.class), 1));
 		addField(createStringField(ProjectMetadata.TAG_STATE_AND_PROVINCES));
