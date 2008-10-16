@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 public class FontFamiliyQuestion extends StaticChoiceQuestion
 {
 	public FontFamiliyQuestion()
@@ -29,8 +31,8 @@ public class FontFamiliyQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getFamilyChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "sans-serif"),
-			new ChoiceItem("serif", "serif"),
+			new ChoiceItem("", EAM.text("sans-serif")),
+			new ChoiceItem("serif", EAM.text("serif")),
 		};
 	}
 }

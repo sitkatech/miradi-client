@@ -22,6 +22,7 @@ package org.miradi.questions;
 import java.awt.Color;
 
 
+//FIXME: Confirm this class is no longer used, then delete it
 public class StrategyDurationQuestion extends StaticChoiceQuestion
 {
 	public StrategyDurationQuestion()

@@ -31,20 +31,20 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getContentChoices()
 	{		
 		return new ChoiceItem[] {
-				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, "Project Summary"),
+				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")),
 				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, TEAM_LABEL),
 				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, ORGANIZATION_LABEL),
-				new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, "Scope"),
-				new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, "Location"),
-				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, "Planning Parameters"),
-				new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, "TNC"),
-				new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, "WWF"),
-				new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, "WCS"),
-				new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, "RARE"),
-				new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, "FOS"),
+				new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Scope")),
+				new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, EAM.text("Location")),
+				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, EAM.text("Planning Parameters")),
+				new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, EAM.text("TNC")),
+				new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, EAM.text("WWF")),
+				new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, EAM.text("WCS")),
+				new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, EAM.text("RARE")),
+				new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, EAM.text("FOS")),
 				
-				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, "Conceptual Model"),
-				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, "Results Chains"),
+				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")),
+				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")),
 				
 				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, TARGET_VIABILITY_LABEL),
 				

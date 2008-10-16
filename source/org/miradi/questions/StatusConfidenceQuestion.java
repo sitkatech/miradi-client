@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class StatusConfidenceQuestion extends StaticChoiceQuestion
 {
@@ -30,11 +32,11 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatusConfidences()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem(ROUGH_GUESS_CODE, "Rough Guess"),
-			new ChoiceItem(EXPERT_KNOWLEDGE_CODE, "Expert Knowledge"),
-			new ChoiceItem(RAPID_ASSESSMENT_CODE, "Rapid Assessment"),
-			new ChoiceItem(INTENSIVE_ASSESSMENT_CODE, "Intensive Assessment")
+			new ChoiceItem("", EAM.text("Not Specified")),
+			new ChoiceItem(ROUGH_GUESS_CODE, EAM.text("Rough Guess")),
+			new ChoiceItem(EXPERT_KNOWLEDGE_CODE, EAM.text("Expert Knowledge")),
+			new ChoiceItem(RAPID_ASSESSMENT_CODE, EAM.text("Rapid Assessment")),
+			new ChoiceItem(INTENSIVE_ASSESSMENT_CODE, EAM.text("Intensive Assessment"))
 		};
 	}
 	

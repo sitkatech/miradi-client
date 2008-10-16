@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 {
 	public ProgressReportStatusQuestion()
@@ -31,13 +33,13 @@ public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified", Color.WHITE),
-				new ChoiceItem(PLANNED_CODE, "Scheduled for future implementation ", Color.WHITE),
-				new ChoiceItem(MAJOR_ISSUES_CODE, "Major Issues - Ongoing, major issues that need attention", COLOR_ALERT),
-				new ChoiceItem(MINOR_ISSUES_CODE, "Minor Issues - Ongoing, has minor issues that need attention", COLOR_CAUTION),
-				new ChoiceItem(ON_TRACK_CODE, "On-Track - Ongoing, generally on track", COLOR_OK),
-				new ChoiceItem(COMPLETED_CODE, "Completed - Successfully accomplished", COLOR_GREAT),
-				new ChoiceItem(ABANDONED_CODE, "Abandoned - No longer relevant or useful", Color.WHITE),
+				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+				new ChoiceItem(PLANNED_CODE, EAM.text("Scheduled for future implementation"), Color.WHITE),
+				new ChoiceItem(MAJOR_ISSUES_CODE, EAM.text("Major Issues - Ongoing, major issues that need attention"), COLOR_ALERT),
+				new ChoiceItem(MINOR_ISSUES_CODE, EAM.text("Minor Issues - Ongoing, has minor issues that need attention"), COLOR_CAUTION),
+				new ChoiceItem(ON_TRACK_CODE, EAM.text("On-Track - Ongoing, generally on track"), COLOR_OK),
+				new ChoiceItem(COMPLETED_CODE, EAM.text("Completed - Successfully accomplished"), COLOR_GREAT),
+				new ChoiceItem(ABANDONED_CODE, EAM.text("Abandoned - No longer relevant or useful"), Color.WHITE),
 		};
 	}
 	

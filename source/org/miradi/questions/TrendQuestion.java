@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.icons.IndicatorIcon;
+import org.miradi.main.EAM;
 import org.miradi.utils.MiradiResourceImageIcon;
 
 
@@ -33,13 +34,13 @@ public class TrendQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getTrends()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified", new IndicatorIcon()),
-				new ChoiceItem("Unknown", "Unknown", new MiradiResourceImageIcon("images/arrows/va_unknown16.png")),
-				new ChoiceItem("StrongIncrease", "Strong Increase", new MiradiResourceImageIcon("images/arrows/va_strongup16.png")),
-				new ChoiceItem("MildIncrease", "Mild Increase", new MiradiResourceImageIcon("images/arrows/va_mildup16.png")),
-				new ChoiceItem("Flat", "Flat", new MiradiResourceImageIcon("images/arrows/va_flat16.png")),
-				new ChoiceItem("MildDecrease", "Mild Decrease", new MiradiResourceImageIcon("images/arrows/va_milddown16.png")),
-				new ChoiceItem("StrongDecrease", "Strong Decrease", new MiradiResourceImageIcon("images/arrows/va_strongdown16.png")),
+				new ChoiceItem("", EAM.text("Not Specified"), new IndicatorIcon()),
+				new ChoiceItem("Unknown", EAM.text("Unknown"), new MiradiResourceImageIcon("images/arrows/va_unknown16.png")),
+				new ChoiceItem("StrongIncrease", EAM.text("Strong Increase"), new MiradiResourceImageIcon("images/arrows/va_strongup16.png")),
+				new ChoiceItem("MildIncrease", EAM.text("Mild Increase"), new MiradiResourceImageIcon("images/arrows/va_mildup16.png")),
+				new ChoiceItem("Flat", EAM.text("Flat"), new MiradiResourceImageIcon("images/arrows/va_flat16.png")),
+				new ChoiceItem("MildDecrease", EAM.text("Mild Decrease"), new MiradiResourceImageIcon("images/arrows/va_milddown16.png")),
+				new ChoiceItem("StrongDecrease", EAM.text("Strong Decrease"), new MiradiResourceImageIcon("images/arrows/va_strongdown16.png")),
 		};
 	}
 }

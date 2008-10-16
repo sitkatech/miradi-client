@@ -21,6 +21,8 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.EAM;
+
 public class StatusQuestion extends StaticChoiceQuestion
 {
 	public StatusQuestion()
@@ -31,11 +33,11 @@ public class StatusQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatuses()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified", Color.WHITE),
-				new ChoiceItem("1", "Poor", COLOR_ALERT),
-				new ChoiceItem("2", "Fair", COLOR_CAUTION),
-				new ChoiceItem("3", "Good", COLOR_OK),
-				new ChoiceItem("4", "Very Good", COLOR_GREAT),
+				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+				new ChoiceItem("1", EAM.text("Poor"), COLOR_ALERT),
+				new ChoiceItem("2", EAM.text("Fair"), COLOR_CAUTION),
+				new ChoiceItem("3", EAM.text("Good"), COLOR_OK),
+				new ChoiceItem("4", EAM.text("Very Good"), COLOR_GREAT),
 		};
 	}
 	

@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 {
@@ -30,10 +32,10 @@ public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getKEATypeChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", "Not Specified"),
-			new ChoiceItem(SIZE, "Size"),
-			new ChoiceItem(CONDITION, "Condition"),
-			new ChoiceItem(LANDSCAPE, "LandScape Context"),
+			new ChoiceItem("", EAM.text("Not Specified")),
+			new ChoiceItem(SIZE, EAM.text("KEA Type|Size")),
+			new ChoiceItem(CONDITION, EAM.text("KEA Type|Condition")),
+			new ChoiceItem(LANDSCAPE, EAM.text("KEA Type|LandScape Context")),
 		};
 	}
 

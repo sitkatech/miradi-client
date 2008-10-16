@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
 {
@@ -30,13 +32,13 @@ public class ProtectedAreaCategoryQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatuses()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("Ia", "Category Ia: Strict nature reserve/wilderness protection area"),
-				new ChoiceItem("Ib", "Category Ib: Wilderness area"),
-				new ChoiceItem("II", "Category II: National park"),
-				new ChoiceItem("III", "Category III: Natural monument"),
-				new ChoiceItem("IV", "Category IV: Habitat/Species Management Area"),
-				new ChoiceItem("V", "Category V: Protected Landscape/Seascape"),
-				new ChoiceItem("VI", "Category VI: Managed Resource Protected Area"),
+				new ChoiceItem("Ia", EAM.text("Category Ia: Strict nature reserve/wilderness protection area")),
+				new ChoiceItem("Ib", EAM.text("Category Ib: Wilderness area")),
+				new ChoiceItem("II", EAM.text("Category II: National park")),
+				new ChoiceItem("III", EAM.text("Category III: Natural monument")),
+				new ChoiceItem("IV", EAM.text("Category IV: Habitat/Species Management Area")),
+				new ChoiceItem("V", EAM.text("Category V: Protected Landscape/Seascape")),
+				new ChoiceItem("VI", EAM.text("Category VI: Managed Resource Protected Area")),
 		};
 	}
 }

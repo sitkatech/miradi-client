@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+
 
 public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 {
@@ -30,13 +32,13 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getFontChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Medium (Default)"),
-				new ChoiceItem("0.5", "Smallest"),
-				new ChoiceItem("0.75", "Very Small"),
-				new ChoiceItem("0.9", "Small"),
-				new ChoiceItem("1.25", "Large"),
-				new ChoiceItem("1.50", "Very Large"),
-				new ChoiceItem("2.5", "Largest"),
+				new ChoiceItem("", EAM.text("Medium (Default)")),
+				new ChoiceItem("0.5", EAM.text("Smallest")),
+				new ChoiceItem("0.75", EAM.text("Very Small")),
+				new ChoiceItem("0.9", EAM.text("Small")),
+				new ChoiceItem("1.25", EAM.text("Large")),
+				new ChoiceItem("1.50", EAM.text("Very Large")),
+				new ChoiceItem("2.5", EAM.text("Largest")),
 		};
 	}
 }

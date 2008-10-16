@@ -38,6 +38,7 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
@@ -87,23 +88,24 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String PROJECT_LABEL = "Project";
-	public static final String CONCEPTUAL_MODEL_LABEL = "Conceptual Model";
-	public static final String RESULTS_CHAIN_LABEL = "Results Chain";
-	public static final String DIRECT_THREAT_LABEL = "Direct Threat";
-	public static final String CONTRIBUTING_FACTOR_LABEL = "Contributing Factor";
-	public static final String TARGET_LABEL = "Target";
-	public static final String INTERMEDIATE_RESULT_LABEL = "Intermediate Result";
-	public static final String THREAT_REDUCTION_RESULT_LABEL = "Threat Reduction Result";
-	public static final String STRATEGY_LABEL = "Strategy";
-	public static final String GOAL_LABEL = "Goal";
-	public static final String OBJECTIVE_LABEL = "Objective";
-	public static final String INDICATOR_LABEL = "Indicator";
-	public static final String STRESS_LABEL = "Stress";
-	public static final String TEXT_BOX_LABEL = "Text Box";
-	public static final String GROUP_BOX = "Group Box";
-	public static final String TASK_LABEL = "Task";
-	public static final String METHOD_LABEL = "Method";
-	public static final String ACTIVITY_LABEL = "Activity";
+	public static final String PROJECT_LABEL = EAM.text("Project");
+	public static final String CONCEPTUAL_MODEL_LABEL = EAM.text("Conceptual Model");
+	public static final String RESULTS_CHAIN_LABEL = EAM.text("Results Chain");
+	public static final String DIRECT_THREAT_LABEL = EAM.text("Direct Threat");
+	public static final String CONTRIBUTING_FACTOR_LABEL = EAM.text("Contributing Factor");
+	public static final String TARGET_LABEL = EAM.text("Target");
+	public static final String INTERMEDIATE_RESULT_LABEL = EAM.text("Intermediate Result");
+	public static final String THREAT_REDUCTION_RESULT_LABEL = EAM.text("Threat Reduction Result");
+	public static final String STRATEGY_LABEL = EAM.text("Strategy");
+	public static final String GOAL_LABEL = EAM.text("Goal");
+	public static final String OBJECTIVE_LABEL = EAM.text("Objective");
+	public static final String INDICATOR_LABEL = EAM.text("Indicator");
+	public static final String STRESS_LABEL = EAM.text("Stress");
+	public static final String TEXT_BOX_LABEL = EAM.text("Text Box");
+	public static final String GROUP_BOX = EAM.text("Group Box");
+	public static final String TASK_LABEL = EAM.text("Task");
+	public static final String METHOD_LABEL = EAM.text("Method");
+	public static final String ACTIVITY_LABEL = EAM.text("Activity");
+	
 	public static final String MEASUREMENT_ICON = "Measurement";
 }

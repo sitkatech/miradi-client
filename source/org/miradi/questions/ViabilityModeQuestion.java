@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
+import org.miradi.main.EAM;
 
 public class ViabilityModeQuestion extends StaticChoiceQuestion
 {
@@ -32,8 +33,8 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getViabilityModeChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Simple", new IndicatorIcon()),
-				new ChoiceItem(TNC_STYLE_CODE, "Key Attribute", new KeyEcologicalAttributeIcon()),
+				new ChoiceItem("", EAM.text("Simple"), new IndicatorIcon()),
+				new ChoiceItem(TNC_STYLE_CODE, EAM.text("Key Attribute"), new KeyEcologicalAttributeIcon()),
 		};
 	}
 	
