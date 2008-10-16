@@ -103,7 +103,8 @@ public class Translation
 		if(textTranslations == null)
 			return englishHtml;
 		
-		String allOnOneLine = englishHtml.replaceAll("\\n", "");
+		String fixedNewLines = englishHtml.replaceAll("\r", "");
+		String allOnOneLine = fixedNewLines.replaceAll("\\n", "");
 		String withoutComments = allOnOneLine.replaceAll("<!--.*-->", "");
 		
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
