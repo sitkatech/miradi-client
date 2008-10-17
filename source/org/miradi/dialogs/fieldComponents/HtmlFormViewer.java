@@ -464,6 +464,8 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		{
 			super(elem);
 			name = (String)elem.getAttributes().getAttribute(HTML.Attribute.SRC);
+			if(name == null)
+				EAM.logError("Image without name at " + elem.getStartOffset());
 		}
 
 		public Image getImage()
@@ -477,6 +479,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 				}
 				catch(NullPointerException e)
 				{
+					EAM.logError("Missing image: " + name);
 					throw new RuntimeException(name, e);
 				}
 			}
