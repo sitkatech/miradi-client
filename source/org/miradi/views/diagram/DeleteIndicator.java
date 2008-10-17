@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 
@@ -37,7 +38,7 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 	
 	public String[] getDialogText()
 	{
-		return new String[] { "Are you sure you want to delete this Indicator?",};
+		return new String[] { EAM.text("Are you sure you want to delete this Indicator?"),};
 	}
 
 	public String getAnnotationIdListTag()

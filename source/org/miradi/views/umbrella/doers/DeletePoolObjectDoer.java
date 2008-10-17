@@ -39,8 +39,9 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		String[] buttons = {"Yes", "No", };
-		if(!EAM.confirmDialog("Delete " + getCustomText(), new String[]{"\nAre you sure you want to delete this " + getCustomText() + "?"}, buttons))
+		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
+		//FIXME: Translation issue...can't compose sentences like this!
+		if(!EAM.confirmDialog(EAM.text("Delete ") + getCustomText(), new String[]{EAM.text("\nAre you sure you want to delete this ") + getCustomText() + "?"}, buttons))
 			return;
 
 		try
