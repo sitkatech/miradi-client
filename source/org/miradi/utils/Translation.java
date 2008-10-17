@@ -108,7 +108,39 @@ public class Translation
 		String withoutComments = allOnOneLine.replaceAll("<!--.*-->", "");
 		
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
-		return text(key);
+		String result = text(key);
+		if(result.startsWith("~") && result.length() > 100)
+			logAnyNearMisses(key);
+
+		return result;
+	}
+
+	private static void logAnyNearMisses(String key)
+	{
+		for(String thisKey : textTranslations.keySet())
+		{
+			String prefix = extractPrefix(thisKey);
+			if(prefix.length() > 0 && key.startsWith(prefix))
+			{
+				EAM.logDebug("FOUND NEAR MISS: " + prefix);
+				EAM.logDebug(key);
+				EAM.logDebug(thisKey);
+			}
+		}
+	}
+
+	private static String extractPrefix(String thisKey)
+	{
+		int stillPartOfPrefix = 0;
+		while(true)
+		{
+			int pipe = thisKey.indexOf('|', stillPartOfPrefix);
+			if(pipe < 0)
+				break;
+			stillPartOfPrefix = pipe + 1;
+		}
+		String prefix = thisKey.substring(0, stillPartOfPrefix);
+		return prefix;
 	}
 
 	public static String translateTabDelimited(String prefix, String thisLine)
@@ -190,7 +222,7 @@ public class Translation
 			if(line.startsWith("msgid"))
 			{
 				if(id.length() > 0 && str.length() > 0)
-					properties.put(id.toString(), str.toString());
+					properties.put(matchPOEscapedCharacters(id), matchPOEscapedCharacters(str));
 				
 				id.setLength(0);
 				str.setLength(0);
@@ -211,9 +243,17 @@ public class Translation
 		}
 		
 		if(id.length() > 0 && str.length() > 0)
-			properties.put(id.toString(), str.toString());
+			properties.put(matchPOEscapedCharacters(id), matchPOEscapedCharacters(str));
 
 		return properties;
+	}
+
+	private static String matchPOEscapedCharacters(StringBuffer str)
+	{
+		String value = str.toString();
+		value = value.replaceAll("\\\\t", "\t");
+		value = value.replaceAll("\\\\\"", "\"");
+		return value;
 	}
 	
 	private static Properties loadProperties(InputStream in) throws IOException
