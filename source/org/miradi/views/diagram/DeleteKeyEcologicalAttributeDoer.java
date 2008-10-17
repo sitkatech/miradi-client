@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -40,7 +41,7 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 	
 	public String[] getDialogText()
 	{
-		return new String[] { "Are you sure you want to delete this Key Ecological Attribute?",};
+		return new String[] { EAM.text("Are you sure you want to delete this Key Ecological Attribute?"),};
 	}
 
 	public String getAnnotationIdListTag()
