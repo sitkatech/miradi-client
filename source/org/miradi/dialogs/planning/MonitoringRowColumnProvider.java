@@ -36,13 +36,12 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 	{
 		return new CodeList(new String[] {
 				Desire.TAG_FULL_TEXT,
-				Indicator.PSEUDO_TAG_FACTOR,
+				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS,
 		});
 	}
 
