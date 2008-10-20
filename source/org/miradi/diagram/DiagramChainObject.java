@@ -84,7 +84,13 @@ public class DiagramChainObject
 	
 	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
-		buildDirectlyLinkedUpstreamChain(model, diagramFactor);
+		DiagramObject diagram = model.getDiagramObject();
+		return buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, diagramFactor);
+	}
+
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramObject diagram, DiagramFactor diagramFactor)
+	{
+		buildDirectlyLinkedUpstreamChain(diagram, diagramFactor);
 		return getFactors();
 	}
 	
@@ -128,10 +134,8 @@ public class DiagramChainObject
 		resultingFactors.addAll(getAllDownstreamFactors());
 	}
 	
-	private void buildDirectlyLinkedUpstreamChain(DiagramModel model, DiagramFactor diagramFactor)
+	private void buildDirectlyLinkedUpstreamChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
-		DiagramObject diagram = model.getDiagramObject();
-		
 		initializeChain(diagram, diagramFactor);
 		resultingFactors.addAll(getDirectlyLinkedUpstreamFactors());
 	}

@@ -21,11 +21,9 @@ package org.miradi.dialogs.planning.treenodes;
 
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
@@ -42,18 +40,13 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 	public PlanningTreeGoalNode(Project projectToUse, DiagramObject diagramToUse, ORef goalRef, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
-		diagramObject = diagramToUse;
 		goal = (Goal)project.findObject(goalRef);
 		rebuild();
 	}
 	
 	public void rebuild() throws Exception
 	{
-		DiagramObject diagram = diagramObject;
-		
-		Factor factor = goal.getDirectOrIndirectOwningFactor();
-		ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
-		createAndAddChildren(indicatorRefs, diagram);
+		// Goals have no children
 	}
 
 	protected int[] getNodeSortOrder()
@@ -75,6 +68,5 @@ public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
 		return goal;
 	}
 	
-	private DiagramObject diagramObject;
 	private Goal goal;
 }

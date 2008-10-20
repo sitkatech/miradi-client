@@ -24,6 +24,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -54,7 +56,8 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		for (int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			ORefList thisIndicatorRefs = diagramFactor.getWrappedFactor().getIndicatorRefs();
+			Factor factor = diagramFactor.getWrappedFactor();
+			ORefList thisIndicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
 			indicatarRefsInDiagram.addAll(thisIndicatorRefs.getOverlappingRefs(indicatorRefs));
 		}
 		
