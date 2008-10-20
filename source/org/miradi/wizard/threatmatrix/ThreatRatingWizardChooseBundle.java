@@ -192,8 +192,8 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		return EAM.text("1) Select target and threat to work on");
 	}
 
-	static final String SELECT_A_TARGET = "--Select a Target";
-	static final String SELECT_A_THREAT = "--Select a Threat";
+	static final String SELECT_A_TARGET = EAM.text("--Select a Target");
+	static final String SELECT_A_THREAT = EAM.text("--Select a Threat");
 
 
 	JComboBox threatBox;
