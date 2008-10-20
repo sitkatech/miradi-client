@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.main.EAM;
 import org.miradi.utils.Translation;
 
 public class HelpButtonData
@@ -41,27 +42,27 @@ public class HelpButtonData
 	}
 	
 	public static final String MORE_INFO_HTML = "MoreInfo.html";
-	public static final String MORE_INFO = "More Info";
+	public static final String MORE_INFO = EAM.text("Action|More Info");
 	public static final String EXAMPLES_HTML = "Examples.html";
-	public static final String EXAMPLES = "Examples";
+	public static final String EXAMPLES = EAM.text("Action|Examples");
 	public static final String WORKSHOP_HTML = "Workshop.html";
-	public static final String WORKSHOP = "Workshop";
+	public static final String WORKSHOP = EAM.text("Action|Workshop");
 	
-	public static final String COMING_ATTACTIONS = "Coming Attactions";
+	public static final String COMING_ATTACTIONS = EAM.text("Action|Coming Attractions");
 	public static final String COMING_ATTRACTIONS_HTML = "help/ComingAttractions.html";
-	public static final String CREDITS = "Credits";
+	public static final String CREDITS = EAM.text("Action|Credits");
 	public static final String CREDITS_HTML = "help/Credits.html";
-	public static final String ABOUT_BENETECH = "About Benetech";
+	public static final String ABOUT_BENETECH = EAM.text("Action|About Benetech");
 	public static final String ABOUT_BENETECH_HTML = "help/AboutBenetech.html";
-	public static final String ABOUT_CMP = "About the CMP";
+	public static final String ABOUT_CMP = EAM.text("Action|About the CMP");
 	public static final String ABOUT_CMP_HTML = "help/AboutCMP.html";
-	public static final String AGILE_SOFTWARE = "Agile Software";
+	public static final String AGILE_SOFTWARE = EAM.text("Action|Agile Software");
 	public static final String AGILE_SOFTWARE_HTML = "help/AgileSoftware.html";
-	public static final String CMP_STANDARDS = "CMP Standards";
+	public static final String CMP_STANDARDS = EAM.text("Action|CMP Open Standards");
 	public static final String CMP_STANDARDS_HTML = "help/CMPStandards.html";
-	public static final String ADAPTIVE_MANAGEMENT = "Adaptive Management";
+	public static final String ADAPTIVE_MANAGEMENT = EAM.text("Action|Adaptive Management");
 	public static final String ADAPTIVE_MANAGEMENT_HTML = "help/AdaptiveManagement.html";
-	public static final String SUPPORT = "Support";
+	public static final String SUPPORT = EAM.text("Action|Support");
 	public static final String SUPPORT_HTML = "help/Support.html";
 	
 	public static final String IMPORT_AND_EXPORT_HTML = "demo/DemoExportAndImport.html";
