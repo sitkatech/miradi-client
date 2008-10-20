@@ -89,21 +89,21 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	JTabbedPane createTabs()
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
-		tabPane.addTab("Systemwide", createSystemwideTab());
-		tabPane.addTab("Diagram", createDiagramTab());
+		tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
+		tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 		
 		if(project.isOpen())
 		{
 			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
-			tabPane.addTab("Threat Ratings", createThreatRatingTab());
-			tabPane.addTab("Planning", summaryPlanningPanel);
+			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
+			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
 		}
 		else
 		{
 			disableProjectSpecificCompoenents();
 		}
 		
-		tabPane.addTab("Data Location", createDataLocationTab());
+		tabPane.addTab(EAM.text("Data Location"), createDataLocationTab());
 		
 		return tabPane;
 	}
