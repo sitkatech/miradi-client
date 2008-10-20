@@ -36,10 +36,8 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 	{
 		return new CodeList(new String[] {
 				Desire.TAG_FULL_TEXT,
-				Desire.PSEUDO_TAG_FACTOR,
 				Strategy.PSEUDO_TAG_RATING_SUMMARY,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				});
