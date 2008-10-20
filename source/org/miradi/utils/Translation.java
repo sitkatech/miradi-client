@@ -253,6 +253,7 @@ public class Translation
 		String value = str.toString();
 		value = value.replaceAll("\\\\t", "\t");
 		value = value.replaceAll("\\\\\"", "\"");
+		value = value.replaceAll("\\\\\\\\", "\\\\");
 		return value;
 	}
 	
