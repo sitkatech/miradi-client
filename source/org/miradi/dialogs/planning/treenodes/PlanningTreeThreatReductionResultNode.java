@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -47,8 +46,6 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 	{
 		DiagramObject diagram = diagramObject;
 		
-		Factor[] upstreamFactors = threatReductionResult.getUpstreamFactors();
-		createAndAddChildren(extractIntermediateResultsRefs(upstreamFactors).toRefList(), diagram);
 		createAndAddChildren(threatReductionResult.getObjectiveRefs(), diagram);
 	}
 

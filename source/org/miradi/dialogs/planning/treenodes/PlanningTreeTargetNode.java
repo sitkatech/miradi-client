@@ -19,10 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.diagram.DiagramChainObject;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
@@ -48,16 +53,29 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		DiagramObject diagram = diagramObject;
-		createAndAddChildren(target.getOwnedObjects(Goal.getObjectType()), diagram);
 
-		addMissingUpstreamDirectThreats(diagram);
-		addMissingUpstreamThreatReductionResults(diagram);
-		addMissingUpstreamIntermediateResults(diagram);
-		addMissingUpstreamObjectives(diagram);
-		addMissingUpstreamNonDraftStrategies(diagram);
-		addMissingUpstreamIndicators(diagram);
+		createAndAddChildren(target.getOwnedObjects(Goal.getObjectType()), diagram);
+		ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators());
+		createAndAddChildren(indicatorRefs, diagram);
+		createAndAddChildren(getDirectlyLinkedNonDraftStrategies(diagram), diagram);
 	}
 	
+	private ORefList getDirectlyLinkedNonDraftStrategies(DiagramObject diagram)
+	{
+		ORefList strategyRefs = new ORefList();
+		
+		DiagramChainObject chain = diagram.getDiagramChainBuilder();
+		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getFactorId());
+		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, targetDiagramFactor);
+		for(Factor factor : factors)
+		{
+			if(factor.isStrategy() && !factor.isStatusDraft())
+				strategyRefs.add(factor.getRef());
+		}
+		
+		return strategyRefs;
+	}
+
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
