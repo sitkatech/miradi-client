@@ -229,7 +229,7 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	protected void addIconLine(JComponent panel, String text, Icon icon, JCheckBox checkbox)
 	{
 		panel.add(checkbox);
-		panel.add(new PanelTitleLabel(EAM.text(text), icon));
+		panel.add(new PanelTitleLabel(text, icon));
 	}
 	
 	protected void addSeparator(JComponent panel)
