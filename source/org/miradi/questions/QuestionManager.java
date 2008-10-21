@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class QuestionManager
 {
-	private static void initialize()
+	public static void initialize()
 	{
 		questions = new HashMap();
 		addQuestion(new InternalQuestionWithoutValues());

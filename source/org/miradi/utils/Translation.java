@@ -31,6 +31,7 @@ import java.util.zip.ZipFile;
 import org.martus.util.UnicodeReader;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
+import org.miradi.questions.QuestionManager;
 
 public class Translation
 {
@@ -51,6 +52,7 @@ public class Translation
 		try
 		{
 			textTranslations = loadPOFile(zip, "miradi_" + languageCode + ".po");
+			QuestionManager.initialize();
 		}
 		catch(IOException e)
 		{
