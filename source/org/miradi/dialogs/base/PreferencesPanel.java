@@ -252,11 +252,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		JPanel bottomText = new JPanel();
 		bottomText.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		bottomText.add(new HyperlinkLabel( 
-				"<div class='DataPanel'><p>Why are my choices limited to one color family for each type of factor?</p>",
-				"We are trying to create a standard set of symbols that can be recognized " +
+				EAM.text("<div class='DataPanel'><p>Why are my choices limited to one color family for each type of factor?</p>"),
+				EAM.text("We are trying to create a standard set of symbols that can be recognized " +
 				"globally. Just like people the world over recognize a red octagon as a " +
 				"stop sign, we hope that they will recognize a green oval as a target or " +
-				"a yellow hexagon as a strategy"), BorderLayout.AFTER_LAST_LINE);
+				"a yellow hexagon as a strategy")), BorderLayout.AFTER_LAST_LINE);
 		bottomText.setBorder(BorderFactory.createEmptyBorder(25, 5, 25, 5));
 		
 		diagramTab.add(diagramSystemPreferencesTab);
