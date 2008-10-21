@@ -25,15 +25,18 @@ public class TableRowHeightModeQuestion extends StaticChoiceQuestion
 {
 	public TableRowHeightModeQuestion()
 	{
-		super(choices);
+		super(getRowModeChoices());
 	}
 	
 	public static String MANUAL_MODE_CODE = "";
 	public static String AUTOMATIC_MODE_CODE = "Automatic";
 
-	private static ChoiceItem[] choices = new ChoiceItem[] {
-		new ChoiceItem("", EAM.text("Manual")),
-		new ChoiceItem(AUTOMATIC_MODE_CODE, EAM.text("Automatic")),
-	};
+	private static ChoiceItem[] getRowModeChoices()
+	{
+		return new ChoiceItem[] {
+				new ChoiceItem("", EAM.text("Manual")),
+				new ChoiceItem(AUTOMATIC_MODE_CODE, EAM.text("Automatic")),
+		};
+	}
 	
 }
