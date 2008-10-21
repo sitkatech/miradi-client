@@ -63,9 +63,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 	
-		String[] buttons = {"Delete", "Retain", };
+		String[] buttons = {EAM.text("Delete"), EAM.text("Retain"), };
 		String[] dialogText = getDialogText();
-		if(!EAM.confirmDialog("Delete", dialogText, buttons))
+		if(!EAM.confirmDialog(EAM.text("Delete"), dialogText, buttons))
 			return;
 	
 		try
