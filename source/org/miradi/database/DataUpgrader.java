@@ -65,13 +65,13 @@ public class DataUpgrader extends FileBasedProjectServer
 	public static void attemptUpgrade(File projectDirectory) throws AlreadyLockedException
 	{
 		String[] migrationText = {
-				"This project was created with an older version of Miradi, " +
+				EAM.text("This project was created with an older version of Miradi, " +
 				"so it needs to be migrated to the current data format before it can be opened. " +
 				"A backup will be saved first in case anything goes wrong. " +
-				"Perform the automatic migration?"
+				"Perform the automatic migration?")
 				};
 		String[] buttons = {EAM.text("Button|Migrate"), EAM.text("Button|Cancel"),};
-		if(!EAM.confirmDialog("Project Migration Required", migrationText, buttons))
+		if(!EAM.confirmDialog(EAM.text("Project Migration Required"), migrationText, buttons))
 			return;
 		
 		File zipFile = new File(projectDirectory.getParent(), "backup-" + projectDirectory.getName() + ".mpz");
@@ -83,7 +83,7 @@ public class DataUpgrader extends FileBasedProjectServer
 					"It is probably safe to do this, unless an earlier migration attempt failed.")
 					};
 			String[] replaceButtons = {EAM.text("Button|Replace Backup"), EAM.text("Button|Cancel"), };
-			if(!EAM.confirmDialog("WARNING", backupExistsText, replaceButtons))
+			if(!EAM.confirmDialog(EAM.text("WARNING"), backupExistsText, replaceButtons))
 				return;
 		}
 		
