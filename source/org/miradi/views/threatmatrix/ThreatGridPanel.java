@@ -53,7 +53,7 @@ public class ThreatGridPanel extends JPanel
 
 	private JComponent createHeading()
 	{
-		String targetLabelText = "<html><h2>TARGETS</h2></html>";
+		String targetLabelText = EAM.text("<html><h2>TARGETS</h2></html>");
 		UiLabel targetLabel = new PanelTitleLabel(EAM.text(targetLabelText));
 		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		return targetLabel;
