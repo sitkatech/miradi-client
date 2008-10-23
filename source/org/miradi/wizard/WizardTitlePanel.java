@@ -68,7 +68,7 @@ public class WizardTitlePanel extends JPanel
 	{
 		String title = EAM.text("Intro to View");
 		if(text.length() > 0)
-			title = "Step " + XmlUtilities.getXmlEncoded(text);
+			title = EAM.text("Step ") + XmlUtilities.getXmlEncoded(text);
 		stepTitle.setText("<div class='processsteptitle'>" + title + "</div>");
 	}
 	

@@ -58,7 +58,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	
 	public String getProcessStepTitle()
 	{
-		return "Step (not available)";
+		return EAM.text("Step (not available)");
 	}
 
 	public String getWizardScreenTitle()
