@@ -111,7 +111,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete.getRef()));
 		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete.getRef()));
-		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
 		
 		return commands;
@@ -168,13 +168,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	public static Vector buildCommandsToDeleteKEAIndicators(Project project, ORef ref) throws Exception
+	public static Vector buildCommandsToDeleteKEAIndicators(Project project, BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!(ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))
+		if (!KeyEcologicalAttribute.is(annotationToDelete.getType()))
 			return commands;
 	
-		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(project, ref);
+		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)annotationToDelete;
 		
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
