@@ -109,8 +109,8 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector<Command>();
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
-		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete.getRef()));
-		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete.getRef()));
+		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete));
+		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
 		
@@ -207,14 +207,14 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Collection buildCommandsToDeleteMeasurements(Project project, ORef ref) throws Exception
+	private static Collection buildCommandsToDeleteMeasurements(Project project, BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector();
-		if (ref.getObjectType() != ObjectType.INDICATOR)
+		if (!Indicator.is(annotationToDelete))
 			return commands;
 
-		Indicator indicator = (Indicator)project.findObject(ref);
-		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(ref, Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
+		Indicator indicator = (Indicator)annotationToDelete;
+		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(annotationToDelete.getRef(), Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
 		commands.add(clearIndicatorMeasurements);
 		
 		ORefList measurementRefs = indicator.getMeasurementRefs();
@@ -233,13 +233,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector buildCommandsToDeleteMethods(Project project, ORef ref) throws Exception
+	private static Vector buildCommandsToDeleteMethods(Project project, BaseObject annotationToDelete) throws Exception
 	{
 		Vector commands = new Vector();
-		if (ref.getObjectType() != ObjectType.INDICATOR)
+		if (!Indicator.is(annotationToDelete))
 			return commands;
 	
-		Indicator indicator = (Indicator)project.findObject(ref);
+		Indicator indicator = (Indicator) annotationToDelete;
 		IdList subtaskList = indicator.getTaskIdList();
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
