@@ -174,8 +174,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if (!(ref.getObjectType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE))
 			return commands;
 	
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ref);
-		commands.addAll(Arrays.asList(kea.createCommandsToClear()));
+		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(project, ref);
 		
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
