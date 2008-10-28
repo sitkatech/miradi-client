@@ -52,6 +52,7 @@ public interface ConProMiradiXml
 	public static final String TEAM = "team";
 	public static final String ROLE = "role";
 	public static final String TEAM_LEADER_VALUE = "Team Leader";
+	public static final String TEAM_MEMBER_VALUE = "Team Member";
 	public static final String PERSON = "person";
 	public static final String GIVEN_NAME = "givenname";
 	public static final String SUR_NAME = "surname";
