@@ -64,8 +64,6 @@ import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
 import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -828,8 +826,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
 	{
-		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
-		writeElement(out, ROLE, question.findChoiceByCode(ResourceRoleQuestion.TeamMemberRoleCode).getLabel());
+		writeElement(out, ROLE, TEAM_MEMBER_VALUE);
 		if (member.isTeamLead())
 			writeElement(out, ROLE, TEAM_LEADER_VALUE);
 	}
