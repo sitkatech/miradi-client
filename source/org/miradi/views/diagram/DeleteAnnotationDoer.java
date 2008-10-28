@@ -109,10 +109,20 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector<Command>();
 		commands.add(buildCommandToRemoveAnnotationFromObject(owner, annotationIdListTag, annotationToDelete.getRef()));
-		commands.addAll(buildCommandsToDeleteMeasurements(project, annotationToDelete));
-		commands.addAll(buildCommandsToDeleteMethods(project, annotationToDelete));
-		commands.addAll(buildCommandsToDeleteKEAIndicators(project, annotationToDelete));
-		commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
+		
+		if (Indicator.is(annotationToDelete))
+		{
+			commands.addAll(buildCommandsToDeleteMeasurements(project, (Indicator)annotationToDelete));
+			commands.addAll(buildCommandsToDeleteMethods(project, (Indicator) annotationToDelete));
+		}
+		if (KeyEcologicalAttribute.is(annotationToDelete.getType()))
+		{
+			commands.addAll(buildCommandsToDeleteKEAIndicators(project, (KeyEcologicalAttribute) annotationToDelete));
+		}
+		if (Stress.is(annotationToDelete.getType()))
+		{
+			commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
+		}
 		
 		return commands;
 	}
@@ -168,14 +178,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 	
 	
-	public static Vector buildCommandsToDeleteKEAIndicators(Project project, BaseObject annotationToDelete) throws Exception
+	public static Vector buildCommandsToDeleteKEAIndicators(Project project, KeyEcologicalAttribute kea) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!KeyEcologicalAttribute.is(annotationToDelete.getType()))
-			return commands;
-	
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)annotationToDelete;
-		
 		IdList indicatorList = kea.getIndicatorIds();
 		for (int i  = 0; i < indicatorList.size(); i++)
 		{
@@ -190,9 +195,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Collection buildCommandsToDeleteThreatStressRatings(Project project, BaseObject owner, ORef stressRef) throws Exception
 	{
 		Vector commands = new Vector();
-		if (stressRef.getObjectType() != Stress.getObjectType())
-			return commands;
-		
 		Target target = (Target) owner;
 		FactorLinkSet directThreatLinkSet = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatLinkSet)
@@ -207,14 +209,10 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Collection buildCommandsToDeleteMeasurements(Project project, BaseObject annotationToDelete) throws Exception
+	private static Collection buildCommandsToDeleteMeasurements(Project project, Indicator indicator) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!Indicator.is(annotationToDelete))
-			return commands;
-
-		Indicator indicator = (Indicator)annotationToDelete;
-		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(annotationToDelete.getRef(), Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
+		CommandSetObjectData clearIndicatorMeasurements = new CommandSetObjectData(indicator.getRef(), Indicator.TAG_MEASUREMENT_REFS, new ORefList().toString());
 		commands.add(clearIndicatorMeasurements);
 		
 		ORefList measurementRefs = indicator.getMeasurementRefs();
@@ -233,13 +231,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 	
-	private static Vector buildCommandsToDeleteMethods(Project project, BaseObject annotationToDelete) throws Exception
+	private static Vector buildCommandsToDeleteMethods(Project project, Indicator indicator) throws Exception
 	{
 		Vector commands = new Vector();
-		if (!Indicator.is(annotationToDelete))
-			return commands;
-	
-		Indicator indicator = (Indicator) annotationToDelete;
 		IdList subtaskList = indicator.getTaskIdList();
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
