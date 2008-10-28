@@ -58,7 +58,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception
 	{
 		AbstractTableExporter tableExporter = new ThreatStressRatingMultiTablePanel(getMainWindow()).getTableForExporting();
-		exportTable(writer, tableExporter, ReportTemplateContentQuestion.THREAT_RATINGS_LABEL);
+		exportTable(writer, tableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 	}
 	
 	private void exportSimpleThreatRating(RtfWriter writer) throws Exception
@@ -69,6 +69,6 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter();
 		multiTableExporter.addExportable(new MainThreatTableModelExporter(newRowHeaderData));
 		multiTableExporter.addExportable(new MainThreatTableModelExporter(model));
-		exportTable(writer, multiTableExporter, ReportTemplateContentQuestion.THREAT_RATINGS_LABEL);
+		exportTable(writer, multiTableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 	}
 }
