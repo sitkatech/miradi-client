@@ -288,6 +288,11 @@ public class Strategy extends Factor
 		return find(project.getObjectManager(), strategyRef);
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
