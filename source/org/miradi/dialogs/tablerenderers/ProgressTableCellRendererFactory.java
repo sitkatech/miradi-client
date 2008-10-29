@@ -40,21 +40,21 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFac
 	@Override
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{	
-		return getRendererFactor(row, tableColumn).getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
+		return getRendererFactory(row, tableColumn).getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
 	}
 	
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		return getRendererFactor(row, column).getPreferredHeight(table, row, column, value);
+		return getRendererFactory(row, column).getPreferredHeight(table, row, column, value);
 	}	
 	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		return getRendererFactor(row, tableColumn).getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		return getRendererFactory(row, tableColumn).getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 	}
 	
-	private ObjectTableCellRendererFactory getRendererFactor(int row, int column)
+	private ObjectTableCellRendererFactory getRendererFactory(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row, column);
 		if (isChoiceItemRow(baseObject))
