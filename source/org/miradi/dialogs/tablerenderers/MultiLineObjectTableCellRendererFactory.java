@@ -26,8 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 
 
-public class MultiLineObjectTableCellRendererFactory extends
-		ObjectTableCellRendererFactory implements TableCellPreferredHeightProvider
+public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
 	public MultiLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
