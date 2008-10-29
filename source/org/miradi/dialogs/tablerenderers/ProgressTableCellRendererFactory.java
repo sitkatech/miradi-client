@@ -43,7 +43,7 @@ public class ProgressTableCellRendererFactory extends SingleLineObjectTableCellR
 		if (isChoiceItemRow(baseObject))
 			return choiceItemRendererFactory.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		
-		return singleLineRendererFactory.getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);	
+		return singleLineRendererFactory.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);	
 	}
 
 	private boolean isChoiceItemRow(BaseObject baseObject)
