@@ -10,11 +10,13 @@ import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.TableWithTreeTableNodes;
@@ -46,6 +48,8 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 
 	private BasicTableCellRendererFactory createRendererForColumn(String columnTag)
 	{
+		if(columnTag.equals(Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE) || columnTag.equals(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
+			return new ProgressTableCellRendererFactory(this, fontProvider);
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		if(isQuestionColumn(columnTag))

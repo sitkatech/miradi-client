@@ -148,7 +148,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 
-	public String getColumnTagForNode(int nodeType, int column)
+	private String getColumnTagForNode(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
 
@@ -201,7 +201,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(Objective.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
+				return Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+				return Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS;
 		}
 
 		if(Strategy.is(nodeType))
