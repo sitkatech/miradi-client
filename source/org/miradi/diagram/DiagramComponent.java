@@ -41,6 +41,7 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphLayoutCache;
+import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionContextualHelp;
@@ -74,9 +75,9 @@ import org.miradi.views.diagram.LayerManager;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
-	public DiagramComponent(MainWindow mainWindowToUse)
+	public DiagramComponent(MainWindow mainWindowToUse, DiagramModel diagramModel)
 	{
-		super();
+		super(diagramModel);
 		mainWindow = mainWindowToUse;
 		setUI(new EAMGraphUI());
 		setAntiAliased(true);
@@ -190,7 +191,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		return project;
 	}
-
+	
+	@Override
+	public void setModel(GraphModel newModel)
+	{
+		if (getModel() != null)
+			EAM.logWarning("DiagramComponent.setModel() was called after the model was already set.");
+		
+		super.setModel(newModel);
+	}
+	
 	public DiagramModel getDiagramModel()
 	{
 		return (DiagramModel)getModel();

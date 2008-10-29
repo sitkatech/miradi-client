@@ -56,8 +56,7 @@ public class TestLinkCell extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		EAM.setMainWindow(new MainWindow(project));
-		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow());
-		diagramComponent.setModel(model);
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow(), model);
 		GraphLayoutCache cache = project.getDiagramModel().getGraphLayoutCache();
 		diagramComponent.setGraphLayoutCache(cache);
 		

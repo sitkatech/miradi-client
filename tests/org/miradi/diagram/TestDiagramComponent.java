@@ -57,8 +57,7 @@ public class TestDiagramComponent extends TestCaseWithProject
 	public void testSelectAll() throws Exception
 	{
 		EAM.setMainWindow(new MainWindow(getProject()));
-		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow());
-		diagramComponent.setModel(getProject().getDiagramModel());
+		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow(), getProject().getDiagramModel());
 		diagramComponent.setGraphLayoutCache(getProject().getDiagramModel().getGraphLayoutCache());
 		
 		DiagramCauseCell hiddenNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);

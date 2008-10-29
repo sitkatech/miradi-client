@@ -114,8 +114,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
 		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
-		DiagramComponent diagram = new DiagramComponent(mainWindow);
-		diagram.setModel(diagramModel);
+		DiagramComponent diagram = new DiagramComponent(mainWindow, diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
 		return diagram;
 	}
