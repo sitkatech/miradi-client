@@ -101,7 +101,7 @@ public class ViewData extends BaseObject
 		return currentTab.asInt();
 	}
 
-	private String getCurrentMode()
+	public String getCurrentMode()
 	{
 		return currentMode.get();
 	}
