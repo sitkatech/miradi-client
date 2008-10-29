@@ -21,12 +21,13 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
+import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 
-public class ProgressTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
+public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
 	public ProgressTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
@@ -37,13 +38,29 @@ public class ProgressTableCellRendererFactory extends SingleLineObjectTableCellR
 	}
 
 	@Override
+	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
+	{	
+		return getRendererFactor(row, tableColumn).getRendererComponent(table, isSelected, hasFocus, row, tableColumn, value);
+	}
+	
+	public int getPreferredHeight(JTable table, int row, int column, Object value)
+	{
+		return getRendererFactor(row, column).getPreferredHeight(table, row, column, value);
+	}	
+	
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		BaseObject baseObject = getBaseObjectForRow(row, tableColumn);
+		return getRendererFactor(row, tableColumn).getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+	}
+	
+	private ObjectTableCellRendererFactory getRendererFactor(int row, int column)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row, column);
 		if (isChoiceItemRow(baseObject))
-			return choiceItemRendererFactory.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+			return choiceItemRendererFactory;
 		
-		return singleLineRendererFactory.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);	
+		return singleLineRendererFactory;
 	}
 
 	private boolean isChoiceItemRow(BaseObject baseObject)
