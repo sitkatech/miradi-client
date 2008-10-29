@@ -37,6 +37,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
+import org.miradi.views.diagram.DiagramView;
 
 
 public  class BufferedImageFactory
@@ -130,6 +131,8 @@ public  class BufferedImageFactory
 	public static DiagramComponent createDiagramComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
+		String currentMode = mainWindow.getProject().getCurrentViewData().getCurrentMode();
+		DiagramView.hideFactorsForMode(diagram, currentMode);
 		diagram.setScale(1.0);
 		diagram.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 		

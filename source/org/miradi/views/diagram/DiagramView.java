@@ -625,30 +625,35 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		panel.dispose();
 	}
 	
-	public void setMode(String newMode)
+	private void setMode(String newMode)
 	{
-		ORefList hiddenORefs = new ORefList();
-		DiagramComponent diagramComponent = getCurrentDiagramComponent();
-		if (diagramComponent == null)
-			return;
-		
-		diagramComponent.setToDefaultBackgroundColor();
-		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-		{
-			hiddenORefs = getORefsToHide();
-			diagramComponent.setBackground(Color.LIGHT_GRAY);
-		}
-			
-
-		LayerManager manager = getDiagramModel().getLayerManager();
-		manager.setHiddenORefs(hiddenORefs);
-		manager.setMode(newMode);
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();		
+		hideFactorsForMode(getCurrentDiagramComponent(), newMode);
+	
 		mode = newMode;
 		updateToolBar();
 		getMainWindow().updateStatusBar();
 		diagramComponent.clearSelection();
 		updateLegendPanelCheckBoxes();
 		updateVisibilityOfFactorsAndClearSelectionModel();
+	}
+
+	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode)
+	{
+		ORefList hiddenORefs = new ORefList();
+		if (diagramComponent == null)
+			return;
+		
+		diagramComponent.setToDefaultBackgroundColor();
+		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		{
+			hiddenORefs = getORefsToHide(diagramComponent.getDiagramModel());
+			diagramComponent.setBackground(Color.LIGHT_GRAY);
+		}
+			
+		LayerManager manager = diagramComponent.getDiagramModel().getLayerManager();
+		manager.setHiddenORefs(hiddenORefs);
+		manager.setMode(newMode);
 	}
 	
 	public void updateVisibilityOfFactorsAndLinks()
@@ -692,15 +697,15 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 
 
-	private ORefList getORefsToHide()
+	private static ORefList getORefsToHide(DiagramModel diagramModel)
 	{
 		ORefList oRefsToHide = new ORefList();
 		try
 		{
-			ViewData viewData = getProject().getCurrentViewData();
+			ViewData viewData = diagramModel.getProject().getCurrentViewData();
 			ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
-			visibleFactorORefs.addAll(getRelatedDraftInterventions(visibleFactorORefs));
-			DiagramFactor[] allDiagramFactors = getProject().getAllDiagramFactors();
+			visibleFactorORefs.addAll(getRelatedDraftInterventions(diagramModel, visibleFactorORefs));
+			DiagramFactor[] allDiagramFactors = diagramModel.getProject().getAllDiagramFactors();
 			for (int i = 0; i < allDiagramFactors.length; ++i)
 			{
 				DiagramFactor diagramFactor = allDiagramFactors[i];
@@ -716,11 +721,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return oRefsToHide;
 	}
 	
-	ORefList getRelatedDraftInterventions(ORefList factorORefs) throws Exception
+	private static ORefList getRelatedDraftInterventions(DiagramModel diagramModel, ORefList factorORefs) throws Exception
 	{
 		ORefList draftsToAdd = new ORefList();
 		
-		DiagramModel diagramModel = getDiagramModel();
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = diagramModel.getFactorCellByWrappedRef(factorORefs.get(i)).getDiagramFactor();
@@ -731,7 +735,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 				ORef possibleStrategyORef = ((Factor)iter.next()).getRef();
 				if(factorORefs.contains(possibleStrategyORef))
 					continue;
-				Factor possibleIntervention = Factor.findFactor(getProject(), possibleStrategyORef);
+				Factor possibleIntervention = Factor.findFactor(diagramModel.getProject(), possibleStrategyORef);
 				if(possibleIntervention.isStrategy() && possibleIntervention.isStatusDraft())
 					draftsToAdd.add(possibleIntervention.getRef());
 			}
