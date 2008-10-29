@@ -88,6 +88,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 			return;
 		}
 		
+		getDiagramView().getCurrentDiagramComponent().clearSelection();
 		removeAnyGroupBoxToNonGroupBoxLinks(groupBoxDiagramFactor, nonGroupBoxDiagramFactorRefs);
 		ORefList groupBoxChildrenRefs = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
