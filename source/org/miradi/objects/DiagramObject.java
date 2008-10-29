@@ -230,7 +230,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public CodeList getHiddenTypes()
 	{
-		return hiddenTyes.getCodeList();
+		return hiddenTypes.getCodeList();
 	}
 	
 	public Factor[] getAllWrappedFactors()
@@ -361,7 +361,7 @@ abstract public class DiagramObject extends BaseObject
 		allDiagramFactorLinkIds = new IdListData(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		details = new StringData(TAG_DETAIL);
-		hiddenTyes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
+		hiddenTypes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		selectedTaggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);	
 		
@@ -369,7 +369,7 @@ abstract public class DiagramObject extends BaseObject
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);
-		addField(TAG_HIDDEN_TYPES, hiddenTyes);
+		addField(TAG_HIDDEN_TYPES, hiddenTypes);
 		addField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, selectedTaggedObjectSetRefs);
 		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
@@ -386,8 +386,7 @@ abstract public class DiagramObject extends BaseObject
 	private IdListData allDiagramFactorLinkIds;
 	private StringData shortLabel;
 	private StringData details;
-	//TODO refactor rename to hiddenTypes
-	private CodeListData hiddenTyes;
+	private CodeListData hiddenTypes;
 	private ORefListData selectedTaggedObjectSetRefs;
 	private PseudoStringData combinedLabel;
 }
