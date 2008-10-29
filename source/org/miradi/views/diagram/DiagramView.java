@@ -702,7 +702,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		ORefList oRefsToHide = new ORefList();
 		try
 		{
-			ViewData viewData = diagramModel.getProject().getCurrentViewData();
+			ViewData viewData = diagramModel.getProject().getDiagramViewData();
 			ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
 			visibleFactorORefs.addAll(getRelatedDraftInterventions(diagramModel, visibleFactorORefs));
 			DiagramFactor[] allDiagramFactors = diagramModel.getProject().getAllDiagramFactors();
