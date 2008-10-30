@@ -34,7 +34,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MainThreatTableModelExporter;
-import org.miradi.utils.ThreatRatingMultiTableAsOneExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
