@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.threatmatrix.doers;
 
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.stress.ManageStressesDialog;
 import org.miradi.dialogs.stress.StressListManagementPanel;
-import org.miradi.dialogs.threatstressrating.properties.ManageStressesDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
