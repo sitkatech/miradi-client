@@ -57,7 +57,7 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFac
 	private ObjectTableCellRendererFactory getRendererFactory(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row, column);
-		if (isChoiceItemRow(baseObject))
+		if (baseObject != null && isChoiceItemRow(baseObject))
 			return choiceItemRendererFactory;
 		
 		return singleLineRendererFactory;
