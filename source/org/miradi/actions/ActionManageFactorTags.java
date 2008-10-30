@@ -37,6 +37,6 @@ public class ActionManageFactorTags extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Tag This Factor.");
+		return EAM.text("TT|Add/remove tags for this factor");
 	}
 }
