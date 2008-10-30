@@ -38,7 +38,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
-import org.miradi.dialogs.threatrating.StressBasedThreatRatingTabPanel;
+import org.miradi.dialogs.threatrating.ThreatRatingManagementPanel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
@@ -137,7 +137,7 @@ public class ThreatMatrixView extends CardedView
 		createThreatMatrixPanel();
 		addCard(threatMatrixPanel, getThreatMatrixCardName());
 		
-		threatStressRatingManagementPanel = StressBasedThreatRatingTabPanel.create(getMainWindow()); 
+		threatStressRatingManagementPanel = ThreatRatingManagementPanel.create(getMainWindow()); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
 	
@@ -360,7 +360,7 @@ public class ThreatMatrixView extends CardedView
 	private ThreatMatrixTableModel model;
 	private ThreatGridPanel grid;
 	private ThreatRatingBundlePanel details;
-	private StressBasedThreatRatingTabPanel threatStressRatingManagementPanel;
+	private ThreatRatingManagementPanel threatStressRatingManagementPanel;
 	private JPanel threatMatrixPanel;
 }
 
