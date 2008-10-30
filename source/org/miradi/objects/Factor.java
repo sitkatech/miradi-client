@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.factortypes.FactorTypeActivity;
@@ -421,16 +420,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList findReferringTagRefs()
 	{
-		Vector<TaggedObjectSet> allTaggedObjectSets = getProject().getTaggedObjectSetPool().getAllTaggedObjectSets();
-		ORefList referringTaggedObjectSetRefs = new ORefList();
-		for (int index = 0; index < allTaggedObjectSets.size(); ++index)
-		{
-			ORefList taggedRefs = allTaggedObjectSets.get(index).getTaggedObjectRefs();
-			if (taggedRefs.contains(getRef()))
-				referringTaggedObjectSetRefs.add(allTaggedObjectSets.get(index).getRef());
-		}
-		
-		return referringTaggedObjectSetRefs;
+		return findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
 	}
 
 	private String getFactorRelatedDirectThreats()
