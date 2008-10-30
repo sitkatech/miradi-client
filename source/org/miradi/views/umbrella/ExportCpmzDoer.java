@@ -162,6 +162,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		{
 			if (!new ConProMiradiXmlValidator().isValid(inputStream))
 			{
+				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
 				throw new ValidationException(EAM.text("Exported file does not validate."));
 			}
 
