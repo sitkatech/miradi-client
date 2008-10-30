@@ -68,7 +68,6 @@ public interface ConProMiradiXml
 	public static final String EXPORTER_NAME = "exporter_name";
 	public static final String MIRADI = "Miradi";
 	public static final String EXPORTER_VERSION = "exporter_version";
-	public static final String EXPORT_VERSION = "Unknown";
 	public static final String EXPORT_DATE = "export_date";
 	public static final String TARGETS = "targets";
 	public static final String TARGET = "target";
