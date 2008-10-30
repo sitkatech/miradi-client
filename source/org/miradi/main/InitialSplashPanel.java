@@ -41,7 +41,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 	public InitialSplashPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, AboutDoer.buildMainSection() + AboutDoer.buildEndSection());
-		selectedLanguageCode = mainWindowToUse.getAppPreferences().getCurrentLanguageCode();
+		selectedLanguageCode = mainWindowToUse.getAppPreferences().getLanguageCode();
 	}
 	
 	public String getSelectedLanguageCode()

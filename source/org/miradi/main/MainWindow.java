@@ -152,6 +152,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			String languageCode = splash.getSelectedLanguageCode();
 			if(languageCode != null && !languageCode.equals("en"))
 				setLanguage(languageCode);
+
+			getAppPreferences().setLanguageCode(languageCode);
 		}
 
 		if(hasExpired() || commandLineArguments.contains("--expired"))
@@ -205,6 +207,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
+		
+		savePreferences();
 	}
 	
 	private void setLanguage(String languageCode) throws Exception
