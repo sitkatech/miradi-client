@@ -250,6 +250,9 @@ public class Objective extends Desire
 	{
 		for(RelevancyOverride override : relevantOverrides)
 		{
+			if (getProject().findObject(override.getRef()) == null)
+				continue;
+			
 			if (override.isOverride())
 				relevantRefList.add(override.getRef());
 			else
