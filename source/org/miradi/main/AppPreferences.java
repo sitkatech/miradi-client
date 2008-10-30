@@ -108,6 +108,18 @@ public class AppPreferences
 		return mainWindowWidth;
 	}
 	
+	public void setLanguageCode(String newLanguageCode)
+	{
+		if(newLanguageCode == null)
+			newLanguageCode = DEFAULT_LANGUAGE_CODE;
+		languageCode = newLanguageCode;
+	}
+	
+	public String getLanguageCode()
+	{
+		return languageCode;
+	}
+	
 	public Color getColor(String tag)
 	{
 		if(tag.equals(TAG_COLOR_STRATEGY))
@@ -248,11 +260,6 @@ public class AppPreferences
 		return rowHeightModeCode;
 	}
 
-	public String getCurrentLanguageCode()
-	{
-		return "en";
-	}
-
 	//TODO: once we are able to save the zoom setting in app pref.
 	public void setTaggedDouble(String tag, double value)
 	{
@@ -287,6 +294,7 @@ public class AppPreferences
 		json.put(TAG_MAIN_WINDOW_Y_POSITION, mainWindowYPosition);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
+		json.put(TAG_LANGUAGE_CODE, languageCode);
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -346,6 +354,7 @@ public class AppPreferences
 		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, DEFAULT_MAIN_WINDOW_X_POSITION);
 		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, DEFAULT_MAIN_WINDOW_Y_POSITION);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, DEFAULT_IS_CELL_RATING_VISIBLE);
+		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -485,6 +494,7 @@ public class AppPreferences
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
+	public static final String TAG_LANGUAGE_CODE = "LanguageCode";
 	public static final String TAG_TAGGED_INTS = "TaggedInts";
 	public static final String TAG_TAGGED_STRINGS = "TaggedStrings";
 	public static final String TAG_DIAGRAM_ZOOM = "DiagramZoom";
@@ -522,6 +532,7 @@ public class AppPreferences
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
 	private static final boolean DEFAULT_IS_CELL_RATING_VISIBLE = false;
+	private static final String DEFAULT_LANGUAGE_CODE = "en";
 	private static final int DEFAULT_MAIN_WINDOW_HEIGHT = 600;
 	private static final int DEFAULT_MAIN_WINDOW_WIDTH = 800;
 
@@ -544,6 +555,7 @@ public class AppPreferences
 	private int mainWindowWidth;
 	private int mainWindowXPosition;
 	private int mainWindowYPosition;
+	private String languageCode;
 	
 	private double diagramZoomSetting;
 	
