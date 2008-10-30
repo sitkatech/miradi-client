@@ -31,7 +31,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -101,7 +100,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
 
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageFactorTags.class), getPicker());
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(factorToEdit.getRef().getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 		addFieldWithEditButton(EAM.text("Tags"), readOnlyTaggedObjects, chooseTagForFactorButton);
 	}
 
