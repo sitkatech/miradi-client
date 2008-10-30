@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.utils;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.util.Vector;
 
@@ -27,6 +27,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
 public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
 {
