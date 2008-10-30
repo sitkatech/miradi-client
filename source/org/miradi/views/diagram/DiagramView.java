@@ -625,7 +625,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		panel.dispose();
 	}
 	
-	private void setMode(String newMode)
+	private void setMode(String newMode) throws Exception
 	{
 		mode = newMode;
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
@@ -641,7 +641,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		updateVisibilityOfFactorsAndClearSelectionModel();
 	}
 
-	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode)
+	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode) throws Exception
 	{
 		ORefList hiddenORefs = new ORefList();
 		diagramComponent.setToDefaultBackgroundColor();
@@ -697,26 +697,19 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 
 
-	private static ORefList getORefsToHide(DiagramModel diagramModel)
+	private static ORefList getORefsToHide(DiagramModel diagramModel) throws Exception
 	{
 		ORefList oRefsToHide = new ORefList();
-		try
+		ViewData viewData = diagramModel.getProject().getDiagramViewData();
+		ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
+		visibleFactorORefs.addAll(getRelatedDraftInterventions(diagramModel, visibleFactorORefs));
+		DiagramFactor[] allDiagramFactors = diagramModel.getProject().getAllDiagramFactors();
+		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
-			ViewData viewData = diagramModel.getProject().getDiagramViewData();
-			ORefList visibleFactorORefs = new ORefList(viewData.getData(ViewData.TAG_CHAIN_MODE_FACTOR_REFS));
-			visibleFactorORefs.addAll(getRelatedDraftInterventions(diagramModel, visibleFactorORefs));
-			DiagramFactor[] allDiagramFactors = diagramModel.getProject().getAllDiagramFactors();
-			for (int i = 0; i < allDiagramFactors.length; ++i)
-			{
-				DiagramFactor diagramFactor = allDiagramFactors[i];
-				ORef ref = diagramFactor.getWrappedORef();
-				if (!visibleFactorORefs.contains(ref))
-					oRefsToHide.add(ref);
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
+			DiagramFactor diagramFactor = allDiagramFactors[i];
+			ORef ref = diagramFactor.getWrappedORef();
+			if (!visibleFactorORefs.contains(ref))
+				oRefsToHide.add(ref);
 		}
 		return oRefsToHide;
 	}
