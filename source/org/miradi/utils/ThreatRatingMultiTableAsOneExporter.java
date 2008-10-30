@@ -28,9 +28,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 
-public class ThreatStressRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
+public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
 {
-	public ThreatStressRatingMultiTableAsOneExporter()
+	public ThreatRatingMultiTableAsOneExporter()
 	{
 		super();
 	}

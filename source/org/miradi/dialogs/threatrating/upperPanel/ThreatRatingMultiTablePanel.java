@@ -34,12 +34,12 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MainThreatTableModelExporter;
-import org.miradi.utils.ThreatStressRatingMultiTableAsOneExporter;
+import org.miradi.utils.ThreatRatingMultiTableAsOneExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
+public class ThreatRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
 {
-	public ThreatStressRatingMultiTablePanel(MainWindow mainWindowToUse) throws Exception
+	public ThreatRatingMultiTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		
@@ -58,7 +58,7 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	
 	private void createTables() throws Exception
 	{
-		multiTableExporter = new ThreatStressRatingMultiTableAsOneExporter();
+		multiTableExporter = new ThreatRatingMultiTableAsOneExporter();
 		
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
@@ -198,5 +198,5 @@ public class ThreatStressRatingMultiTablePanel extends MultiTablePanel implement
 	private OverallProjectSummaryCellTable overallProjectSummaryCellTable;
 	private OverallProjectSummaryCellTableModel overallProjectSummaryCellTableModel;
 	
-	private ThreatStressRatingMultiTableAsOneExporter multiTableExporter;
+	private ThreatRatingMultiTableAsOneExporter multiTableExporter;
 }

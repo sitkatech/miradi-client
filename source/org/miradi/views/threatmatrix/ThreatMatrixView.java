@@ -39,7 +39,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.dialogs.threatrating.ThreatRatingManagementPanel;
-import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -123,7 +123,7 @@ public class ThreatMatrixView extends CardedView
 
 	private BufferedImage createStressBasedImage() throws Exception
 	{
-		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(getMainWindow());
+		ThreatRatingMultiTablePanel multiTablePanel = new ThreatRatingMultiTablePanel(getMainWindow());
 
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(multiTablePanel);
 		
