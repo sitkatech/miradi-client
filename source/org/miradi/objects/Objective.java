@@ -165,7 +165,7 @@ public class Objective extends Desire
 		}
 	}
 
-	private ORefList getDirectlyUpstreamStrategies()
+	private ORefList getDirectlyUpstreamNonDraftStrategies()
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
 		if(owningFactor == null)
@@ -197,7 +197,7 @@ public class Objective extends Desire
 	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = getDirectlyUpstreamStrategies();
+		ORefList defaultRelevantRefList = getDirectlyUpstreamNonDraftStrategies();
 		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
@@ -227,7 +227,7 @@ public class Objective extends Desire
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
 	{
-		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamStrategies());
+		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 
 		return calculateRefList(relevantRefList, relevantOverrides);
