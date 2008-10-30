@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.ActionEditStrategyProgressReports;
+import org.miradi.actions.ActionManageTagsForFactor;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -30,6 +31,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -97,6 +99,10 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
+
+		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageTagsForFactor.class), getPicker());
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+		addFieldWithEditButton(EAM.text("Tags"), readOnlyTaggedObjects, chooseTagForFactorButton);
 	}
 
 	private void addOptionalDraftStatusCheckBox(String tag)

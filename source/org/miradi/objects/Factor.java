@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.factortypes.FactorTypeActivity;
@@ -401,6 +402,9 @@ abstract public class Factor extends BaseObject
 			if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), getRef()).toString();
 			
+			if(fieldTag.equals(PSEUDO_TAG_REFERRING_TAG_REFS))
+				return getReferringTags();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch(Exception e)
@@ -410,6 +414,25 @@ abstract public class Factor extends BaseObject
 		}
 	}
 	
+	public String getReferringTags()
+	{
+		return findReferringTagRefs().toString();
+	}
+	
+	public ORefList findReferringTagRefs()
+	{
+		Vector<TaggedObjectSet> allTaggedObjectSets = getProject().getTaggedObjectSetPool().getAllTaggedObjectSets();
+		ORefList referringTaggedObjectSetRefs = new ORefList();
+		for (int index = 0; index < allTaggedObjectSets.size(); ++index)
+		{
+			ORefList taggedRefs = allTaggedObjectSets.get(index).getTaggedObjectRefs();
+			if (taggedRefs.contains(getRef()))
+				referringTaggedObjectSetRefs.add(allTaggedObjectSets.get(index).getRef());
+		}
+		
+		return referringTaggedObjectSetRefs;
+	}
+
 	private String getFactorRelatedDirectThreats()
 	{
 		ProjectChainObject chain = getProjectChainBuilder();
@@ -479,6 +502,8 @@ abstract public class Factor extends BaseObject
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_DIAGRAM_REFS);
+		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
+		
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_TEXT, text);
@@ -492,6 +517,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
+		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
 	}
 
 	public static final FactorType TYPE_ACTIVITY = new FactorTypeActivity();
@@ -517,6 +543,7 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_DIAGRAM_REFS = "PseudoTagDiagramRefs";
+	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	
 	private FactorType type;
 	private StringData comment;
@@ -533,4 +560,5 @@ abstract public class Factor extends BaseObject
 	PseudoStringData multiLineDeirectThreats;
 	PseudoStringData multiLineTargets;
 	private PseudoORefListData pseudoDiagramRefs;
+	private PseudoORefListData pseudoTagReferringTagRefs;
 }
