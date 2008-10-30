@@ -24,7 +24,6 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.EditableObjectTable;
-import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.miradi.main.MainWindow;
 
 public class ThreatStressRatingTable extends EditableObjectTable
