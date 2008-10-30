@@ -339,7 +339,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity());
 		addDoerToMap(ActionShareActivity.class, new ShareActivityDoer());
 
-		addDoerToMap(ActionCreateObjective.class, new CreateObjectiveDoer());
+		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionCloneObjective.class, new CloneObjectiveDoer());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		
