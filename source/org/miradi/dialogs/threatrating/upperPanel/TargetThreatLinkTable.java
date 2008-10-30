@@ -64,9 +64,10 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	
 	public ORefList[] getSelectedHierarchies()
 	{
+		ORefList[] nothingSelected = new ORefList[] {new ORefList()};
 		int threatIndex = getSelectedRow();
 		if(threatIndex < 0)
-			return new ORefList[0];
+			return nothingSelected;
 		
 		Factor directThreat = getTargetThreatLinkTableModel().getDirectThreat(threatIndex);
 		
@@ -74,7 +75,7 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ORefList hierarchyRefs = new ORefList();
 		if (modelColumn < 0)
-			return new ORefList[0];
+			return nothingSelected;
 		
 		Target target = getTargetThreatLinkTableModel().getTarget(modelColumn);
 		if (getTargetThreatLinkTableModel().areLinked(directThreat, target))
