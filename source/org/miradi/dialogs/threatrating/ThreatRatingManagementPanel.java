@@ -31,9 +31,9 @@ import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 
-public class StressBasedThreatRatingTabPanel extends ObjectManagementPanel
+public class ThreatRatingManagementPanel extends ObjectManagementPanel
 {
-	public static StressBasedThreatRatingTabPanel create(MainWindow mainWindowToUse) throws Exception
+	public static ThreatRatingManagementPanel create(MainWindow mainWindowToUse) throws Exception
 	{
 		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(mainWindowToUse);
 		ThreatStressRatingPropertiesPanel propertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindowToUse, multiTablePanel);
@@ -41,10 +41,10 @@ public class StressBasedThreatRatingTabPanel extends ObjectManagementPanel
 		ThreatStressRatingListTablePanel tablePanel =  ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(
 				mainWindowToUse, multiTablePanel, propertiesPanel);
 		
-		return new StressBasedThreatRatingTabPanel(mainWindowToUse, tablePanel, propertiesPanel);
+		return new ThreatRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
 
-	public StressBasedThreatRatingTabPanel(MainWindow splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public ThreatRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 	}
