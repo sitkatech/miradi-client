@@ -37,6 +37,6 @@ public class ActionManageFactorTagsFromMenu extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Tag This Factor.");
+		return EAM.text("TT|Add/remove tags for the selected factor");
 	}
 }
