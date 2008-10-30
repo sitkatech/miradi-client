@@ -172,16 +172,24 @@ public class Objective extends Desire
 			return new ORefList();
 		
 		ORefList nonDraftStrategyRefs = new ORefList();
+		if (isNonDraftStrategy(owningFactor))
+			nonDraftStrategyRefs.add(owningFactor.getRef());
+		
 		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
 		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
 		{
 			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
 			Factor fromFactor = relatedFactorLink.getFromFactor();
-			if(fromFactor.isStrategy() && !fromFactor.isStatusDraft())
+			if(isNonDraftStrategy(fromFactor))
 				nonDraftStrategyRefs.add(fromFactor.getRef());
 		}
 		
 		return nonDraftStrategyRefs;
+	}
+
+	private boolean isNonDraftStrategy(Factor factor)
+	{
+		return factor.isStrategy() && !factor.isStatusDraft();
 	}
 	
 	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
