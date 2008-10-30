@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating;
+package org.miradi.dialogs.threatstressrating.properties;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.EAM;

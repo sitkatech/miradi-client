@@ -22,7 +22,6 @@ package org.miradi.dialogs.threatstressrating.properties;
 import java.awt.BorderLayout;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.threatstressrating.ThreatStressRatingTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
