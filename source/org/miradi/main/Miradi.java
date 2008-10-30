@@ -54,9 +54,13 @@ public class Miradi
 		}
 		
 		Translation.initialize();
+		VersionConstants.setVersionString();
 		
 		List<String> argsAsList = Arrays.asList(args);
 
+		EAM.setLogLevel(EAM.LOG_VERBOSE);
+		EAM.logDebug("Miradi " + VersionConstants.VERSION_STRING);
+		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
 		{
@@ -176,7 +180,6 @@ public class Miradi
 	{
 		try
 		{
-			VersionConstants.setVersionString();
 			SwingUtilities.invokeAndWait(new MainWindowRunner(args));
 		}
 		catch(Exception e)
