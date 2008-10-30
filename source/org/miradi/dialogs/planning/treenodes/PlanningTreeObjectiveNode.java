@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.Vector;
+
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -46,22 +46,32 @@ public class PlanningTreeObjectiveNode extends AbstractPlanningTreeNode
 		createAndAddChildren(relevantStrategyAndActivityRefs, diagram);
 		
 		ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
-		createAndAddChildren(getIndicatorsInDiagram(relevantIndicatorRefs), diagram);
+		createAndAddChildren(relevantIndicatorRefs, diagram);
 	}
 
-	private ORefList getIndicatorsInDiagram(ORefList indicatorRefs)
+	@Override
+	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
-		ORefList indicatarRefsInDiagram = new ORefList();
-		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
-		for (int i = 0; i < diagramFactorRefs.size(); ++i)
+		if(!objectTypesToShow.contains(Objective.OBJECT_NAME))
+			children = getChildrenOnSameDiagram();
+
+		super.pruneUnwantedLayers(objectTypesToShow);
+	}
+	
+	private Vector<AbstractPlanningTreeNode> getChildrenOnSameDiagram()
+	{
+		Vector<AbstractPlanningTreeNode> newChildren = new Vector<AbstractPlanningTreeNode>();
+		for(AbstractPlanningTreeNode node : children)
 		{
-			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			Factor factor = diagramFactor.getWrappedFactor();
-			ORefList thisIndicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
-			indicatarRefsInDiagram.addAll(thisIndicatorRefs.getOverlappingRefs(indicatorRefs));
+			BaseObject object = node.getObject();
+			if(object == null)
+				continue;
+			Factor factor = object.getDirectOrIndirectOwningFactor();
+			if(diagram.containsWrappedFactorRef(factor.getRef()))
+				newChildren.add(node);
 		}
 		
-		return indicatarRefsInDiagram;
+		return newChildren;
 	}
 
 	public BaseObject getObject()
