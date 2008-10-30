@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;

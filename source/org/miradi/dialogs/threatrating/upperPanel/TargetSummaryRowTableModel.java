@@ -17,41 +17,63 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
-public class ThreatNameColumnTableModel extends MainThreatTableModel
+public class TargetSummaryRowTableModel extends MainThreatTableModel
 {
-	public ThreatNameColumnTableModel(Project projectToUse)
+	public TargetSummaryRowTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
-	
-	public int getColumnCount()
-	{
-		return 1;
-	}
-	
-	public String getColumnName(int column)
-	{
-		return EAM.text("Threats");
-	}
-	
+
 	public String getColumnTag(int column)
 	{
 		return "";
 	}
 	
+	public int getRowCount()
+	{
+		return 1;
+	}
+
+	public int getColumnCount()
+	{
+		return targetColumns.length;
+	}
+
 	public Object getValueAt(int row, int column)
 	{
-		return getDirectThreat(row).toString();
+		String valueToConvert = getCalculatedTargetSummaryRatingValue(column);
+		return convertToChoiceItem(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, valueToConvert);
 	}
 	
+	private String getCalculatedTargetSummaryRatingValue(int column)
+	{
+		try
+		{
+			int calculatedValue = calculateThreatSummaryRatingValue(targetColumns[column]);
+			return convertIntToString(calculatedValue);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "ERROR";
+		}
+	}
+
+	public int calculateThreatSummaryRatingValue(Factor target) throws Exception
+	{
+		return frameWork.get2PrimeSummaryRatingValue(target);
+	}
+
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return getDirectThreat(row);
+		return targetColumns[column];
 	}
 }

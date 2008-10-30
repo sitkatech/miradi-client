@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
@@ -25,39 +25,39 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
-public class TargetSummaryRowTableModel extends MainThreatTableModel
+public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 {
-	public TargetSummaryRowTableModel(Project projectToUse)
+	public ThreatSummaryColumnTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
 
+	public String getColumnName(int column)
+	{
+		return EAM.text("Summary Threat Rating");
+	}
+	
 	public String getColumnTag(int column)
 	{
 		return "";
 	}
-	
-	public int getRowCount()
+
+	public int getColumnCount()
 	{
 		return 1;
 	}
 
-	public int getColumnCount()
-	{
-		return targetColumns.length;
-	}
-
 	public Object getValueAt(int row, int column)
 	{
-		String valueToConvert = getCalculatedTargetSummaryRatingValue(column);
+		String valueToConvert = getCalculatedThreatSummaryRatingValue(row);
 		return convertToChoiceItem(FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, valueToConvert);
 	}
 	
-	private String getCalculatedTargetSummaryRatingValue(int column)
+	private String getCalculatedThreatSummaryRatingValue(int row)
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(targetColumns[column]);
+			int calculatedValue = calculateThreatSummaryRatingValue(threatRows[row]);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
@@ -66,14 +66,14 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 			return "ERROR";
 		}
 	}
-
-	public int calculateThreatSummaryRatingValue(Factor target) throws Exception
+	
+	public int calculateThreatSummaryRatingValue(Factor directThreat) throws Exception
 	{
-		return frameWork.get2PrimeSummaryRatingValue(target);
+		return frameWork.get2PrimeSummaryRatingValue(directThreat);
 	}
-
+	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return targetColumns[column];
+		return getDirectThreat(row);
 	}
 }

@@ -17,23 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
+package org.miradi.dialogs.threatrating;
 
-import org.miradi.main.MainWindow;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.EAM;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.project.Project;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
-
-
-public class ThreatSummaryColumnTable extends AbstractTableWithChoiceItemRenderer
+public class ThreatRatingPreferencesPanel extends ObjectDataInputPanel
 {
-	public ThreatSummaryColumnTable(MainWindow mainWindowToUse, ThreatSummaryColumnTableModel model)
+	public ThreatRatingPreferencesPanel(Project projectToUse)
 	{
-		super(mainWindowToUse, model);
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
+		super(projectToUse, projectToUse.getMetadata().getRef());
+
+		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion()));
+		updateFieldsFromProject();
 	}
 
-	public static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTable";	
+	public String getPanelDescription()
+	{
+		return EAM.text("Threat Rating Preferences Panel");
+	}
 }

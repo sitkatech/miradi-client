@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
+import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
