@@ -80,7 +80,7 @@ public class Miradi
 			return;
 		}
 		
-		String jarName = "MiradiContent-2.3-" + languageCode + ".jar";
+		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
@@ -99,7 +99,8 @@ public class Miradi
 		{
 			public boolean accept(File dir, String name)
 			{
-				if(name.matches("MiradiContent-2\\.2-..\\.jar"))
+				String regexp = LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.") + "..\\.jar";
+				if(name.matches(regexp))
 					return true;
 				
 				return false;
@@ -228,4 +229,6 @@ public class Miradi
 		String[] args;
 	}
 
+	private static final String MAIN_VERSION = "2.3";
+	private static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
 }
