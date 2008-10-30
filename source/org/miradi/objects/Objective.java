@@ -165,17 +165,28 @@ public class Objective extends Desire
 		}
 	}
 
+	//TODO this method needs to be removed and callers need to call getDirectlyUpstreamStrategies
 	public ORefList getUpstreamNonDraftStrategies()
 	{
+		return getDirectlyUpstreamStrategies();
+	}
+	
+	private ORefList getDirectlyUpstreamStrategies()
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor();
+		if(owningFactor == null)
+			return new ORefList();
+		
 		ORefList nonDraftStrategyRefs = new ORefList();
-		Factor[] upstreamFactors = getUpstreamFactors();
-		for(int i = 0; i < upstreamFactors.length; ++i)
+		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
 		{
-			Factor factor = upstreamFactors[i];
-			if(factor.isStrategy() && !factor.isStatusDraft())
-				nonDraftStrategyRefs.add(factor.getRef());
+			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
+			Factor fromFactor = relatedFactorLink.getFromFactor();
+			if(fromFactor.isStrategy() && !fromFactor.isStatusDraft())
+				nonDraftStrategyRefs.add(fromFactor.getRef());
 		}
-
+		
 		return nonDraftStrategyRefs;
 	}
 	
