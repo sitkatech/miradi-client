@@ -93,6 +93,7 @@ import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.ActionManageStresses;
+import org.miradi.actions.ActionManageTaggedObjectSet;
 import org.miradi.actions.ActionMoveSlideDown;
 import org.miradi.actions.ActionMoveSlideUp;
 import org.miradi.actions.ActionNudgeDown;
@@ -182,6 +183,7 @@ import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.miradi.views.diagram.doers.HideActivityBubbleDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 import org.miradi.views.diagram.doers.InsertGroupBoxDoer;
+import org.miradi.views.diagram.doers.ManageTaggedObjectSetDoer;
 import org.miradi.views.diagram.doers.PasteFactorContentDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
@@ -407,6 +409,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
 		addDoerToMap(ActionDeleteTaggedObjectSet.class, new DeleteTaggedObjectSetDoer());
 		addDoerToMap(ActionEditTaggedObjectSet.class, new EditTaggedObjectSetDoer());
+		addDoerToMap(ActionManageTaggedObjectSet.class, new ManageTaggedObjectSetDoer());
 	}
 	
 	public void tabWasSelected()

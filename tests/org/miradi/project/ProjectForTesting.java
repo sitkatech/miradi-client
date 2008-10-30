@@ -58,6 +58,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
@@ -394,6 +395,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef xenodataRef = createObject(Xenodata.getObjectType());
 		return Xenodata.find(this, xenodataRef);
+	}
+	
+	public TaggedObjectSet createTaggedObjectSet() throws Exception
+	{
+		ORef taggedObjectSetRef = createObject(TaggedObjectSet.getObjectType());
+		return TaggedObjectSet.find(this, taggedObjectSetRef);
 	}
 
 	public void populateTarget(Target target) throws Exception

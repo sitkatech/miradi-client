@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
@@ -42,6 +45,19 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 	public TaggedObjectSet find(BaseId id)
 	{
 		return (TaggedObjectSet) getRawObject(id);
+	}
+	
+	public Vector<TaggedObjectSet> getAllTaggedObjectSets()
+	{
+		ORefList allTaggedObjectSetRefs = getORefList();
+		Vector<TaggedObjectSet> allTaggedObjectSets = new Vector();
+		for (int index = 0; index < allTaggedObjectSetRefs.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = (TaggedObjectSet) findObject(allTaggedObjectSetRefs.get(index));
+			allTaggedObjectSets.add(taggedObjectSet);
+		}
+			
+		return allTaggedObjectSets;
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)

@@ -74,6 +74,7 @@ import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
 import org.miradi.objectpools.StrategyPool;
+import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
 import org.miradi.objectpools.TextBoxPool;
@@ -93,6 +94,7 @@ import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
@@ -188,7 +190,12 @@ public class Project
 	{
 		return objectManager.getAllDiagramObjectRefs();
 	}
-	
+
+	public TaggedObjectSetPool getTaggedObjectSetPool()
+	{
+		return (TaggedObjectSetPool) getPool(TaggedObjectSet.getObjectType());
+	}
+		
 	public WwfProjectDataPool getWwfProjectDataPool()
 	{
 		return (WwfProjectDataPool) getPool(WwfProjectData.getObjectType());
