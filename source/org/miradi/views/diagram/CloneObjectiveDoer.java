@@ -23,7 +23,7 @@ import org.miradi.dialogs.objective.ObjectivePoolTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
-public class CloneObjectiveDoer extends CreateObjectiveDoer
+public class CloneObjectiveDoer extends CreateObjective
 {
 	public void doIt() throws CommandFailedException
 	{
