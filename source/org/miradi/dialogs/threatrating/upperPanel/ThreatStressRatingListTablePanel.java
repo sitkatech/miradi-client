@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionEvent;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.MultiTableUpperPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -66,7 +67,7 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	{
 		super.valueChanged(event);
 		ORefList[] selectedHierarcies = multiTablePanel.getSelectedHierarchies();
-		propertiesPanel.setObjectRefs(selectedHierarcies);
+		propertiesPanel.setObjectRefs(selectedHierarcies[0]);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -83,7 +84,7 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 			return;
 		
 		ORefList[] selectedHierarcies = multiTablePanel.getSelectedHierarchies();
-		propertiesPanel.setObjectRefs(selectedHierarcies);
+		propertiesPanel.setObjectRefs(selectedHierarcies[0]);
 	}
 
 	public BaseObject getSelectedObject()
@@ -91,6 +92,6 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 		return null;
 	}
 	
-	private ThreatStressRatingPropertiesPanel propertiesPanel;
+	private ObjectDataInputPanel propertiesPanel;
 	private ThreatStressRatingMultiTablePanel multiTablePanel;
 }
