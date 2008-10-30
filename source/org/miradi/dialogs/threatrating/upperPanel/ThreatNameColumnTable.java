@@ -17,27 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
-
-import java.awt.Dimension;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 
-public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemRenderer
-{
-	public OverallProjectSummaryCellTable(MainWindow mainWindowToUse, TableModel model)
-	{
-		super(mainWindowToUse, model);
-		
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		getTableHeader().setPreferredSize(new Dimension(0, 0));
-	}
 
+public class ThreatNameColumnTable extends AbstractTableWithChoiceItemRenderer
+{
+	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
+	{
+		super(mainWindowToUse, tableModel);
+		getColumnModel().getColumn(0).setCellRenderer(new MultiLineObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	}
+		
 	public String getUniqueTableIdentifier()
 	{
-		return "";
+		return UNIQUE_IDENTIFIER;
 	}
+
+	public static final String UNIQUE_IDENTIFIER = "ThreatsTable"; 
 }

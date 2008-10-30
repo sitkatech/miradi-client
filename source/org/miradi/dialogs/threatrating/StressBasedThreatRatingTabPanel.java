@@ -17,14 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating;
+package org.miradi.dialogs.threatrating;
 
 import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectManagementPanel;
-import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
-import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingListTablePanel;
-import org.miradi.dialogs.threatstressrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingListTablePanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfManagementExporter;

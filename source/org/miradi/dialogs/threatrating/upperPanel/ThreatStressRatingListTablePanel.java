@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.awt.BorderLayout;
 
@@ -25,7 +25,7 @@ import javax.swing.event.ListSelectionEvent;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.MultiTableUpperPanel;
-import org.miradi.dialogs.threatstressrating.properties.ThreatStressRatingPropertiesPanel;
+import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;

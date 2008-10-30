@@ -43,7 +43,7 @@ import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.threatstressrating.ThreatRatingPreferencesPanel;
+import org.miradi.dialogs.threatrating.ThreatRatingPreferencesPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;

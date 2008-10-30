@@ -17,28 +17,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.threatstressrating.upperPanel;
+package org.miradi.dialogs.threatrating.upperPanel;
 
-import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.tablerenderers.ChoiceItemWithGrayCellsTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.TableWithColumnWidthSaver;
 
-
-public class ThreatNameColumnTable extends AbstractTableWithChoiceItemRenderer
+abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
 {
-	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
+	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(mainWindowToUse, tableModel);
-		getColumnModel().getColumn(0).setCellRenderer(new MultiLineObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
-		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	}
+		super(mainWindowToUse, model);
 		
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
+		setColumnRenderers();
 	}
 
-	public static final String UNIQUE_IDENTIFIER = "ThreatsTable"; 
+	private void setColumnRenderers()
+	{
+		MainThreatTableModel model = (MainThreatTableModel) getModel();
+		ChoiceItemWithGrayCellsTableCellRendererFactory renderer = new ChoiceItemWithGrayCellsTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
+		for (int i = 0; i < getColumnCount(); ++i)
+		{
+			getColumnModel().getColumn(i).setCellRenderer(renderer);
+		}
+	}
 }
