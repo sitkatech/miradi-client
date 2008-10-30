@@ -627,13 +627,16 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 	private void setMode(String newMode)
 	{
-		DiagramComponent diagramComponent = getCurrentDiagramComponent();		
-		hideFactorsForMode(getCurrentDiagramComponent(), newMode);
-	
 		mode = newMode;
+		DiagramComponent diagramComponent = getCurrentDiagramComponent();
+		if (diagramComponent != null)
+		{
+			hideFactorsForMode(diagramComponent, newMode);
+			diagramComponent.clearSelection();
+		}
+		
 		updateToolBar();
 		getMainWindow().updateStatusBar();
-		diagramComponent.clearSelection();
 		updateLegendPanelCheckBoxes();
 		updateVisibilityOfFactorsAndClearSelectionModel();
 	}
@@ -641,9 +644,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode)
 	{
 		ORefList hiddenORefs = new ORefList();
-		if (diagramComponent == null)
-			return;
-		
 		diagramComponent.setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 		{
