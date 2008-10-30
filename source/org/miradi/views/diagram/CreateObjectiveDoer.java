@@ -22,7 +22,7 @@ package org.miradi.views.diagram;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 
-public class CreateObjective extends CreateAnnotationDoer
+public class CreateObjectiveDoer extends CreateAnnotationDoer
 {
 	public int getAnnotationType()
 	{
