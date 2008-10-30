@@ -125,6 +125,7 @@ public class TestFactor extends TestCaseWithProject
 		Cause cause = getProject().createCause();
 		
 		assertEquals("there are tagged objects?", 0, taggedObjectSet1.getTaggedObjectRefs().size());
+		assertEquals(0, cause.findReferringTagRefs().size());
 		getProject().setObjectData(taggedObjectSet1.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(cause.getRef()).toString());
 		verifyTaggedObjectSet(taggedObjectSet1, cause, 1);
 		ORefList referringTagRefs = cause.findReferringTagRefs();
