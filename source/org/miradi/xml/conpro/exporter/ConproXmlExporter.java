@@ -33,6 +33,7 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
+import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
@@ -713,11 +714,23 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
 			writeCodeListElements(out, OUS, OU_CODE, getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 			
-			out.writeln("<" + EXPORTER_NAME + ">" + MIRADI + "</" + EXPORTER_NAME + ">");
-			out.writeln("<" + EXPORTER_VERSION + ">" + EXPORT_VERSION + "</" + EXPORTER_VERSION + ">");
-			out.writeln("<" + EXPORT_DATE + ">" + new MultiCalendar().toIsoDateString() + "</" + EXPORT_DATE+ ">");
+			writeElement(out, EXPORTER_NAME, MIRADI);
+			out.writeln();
+			writeElement(out, EXPORTER_VERSION, getMiradiVersionAsToken());
+			out.writeln();
+			writeElement(out, EXPORT_DATE, new MultiCalendar().toIsoDateString());
+			out.writeln();
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private String getMiradiVersionAsToken()
+	{
+		String versionToken = VersionConstants.VERSION_STRING;
+		versionToken = versionToken.replaceAll(" ", "_");
+		versionToken = versionToken.replaceAll("\\(", "");
+		versionToken = versionToken.replaceAll("\\)", "");
+		return versionToken;
 	}
 
 	private String getProjectName()

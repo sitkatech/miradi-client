@@ -22,6 +22,7 @@ package org.miradi.xml.conpro.exporter;
 import java.io.InputStream;
 import java.net.URL;
 
+import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.xml.conpro.MiradiValidationDriver;
 import org.xml.sax.InputSource;
@@ -46,7 +47,15 @@ public class ConProMiradiXmlValidator
 		if (validationDriver.loadSchema(schemaInputSource))
 		{
 			InputSource xmlInputSource = new InputSource(xmlInputStream);
-			return validationDriver.validate(xmlInputSource);
+			try
+			{
+				return validationDriver.validate(xmlInputSource);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				return false;
+			}
 		}
 		
 		throw new Exception("Could not load schema");
