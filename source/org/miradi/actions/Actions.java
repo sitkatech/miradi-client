@@ -274,8 +274,8 @@ public class Actions
 		registerAction(new ActionCreateTaggedObjectSet(mainWindow));
 		registerAction(new ActionDeleteTaggedObjectSet(mainWindow));
 		registerAction(new ActionEditTaggedObjectSet(mainWindow));
-		registerAction(new ActionManageTaggedObjectSet(mainWindow));
-		registerAction(new ActionManageTagsForFactor(mainWindow));
+		registerAction(new ActionManageFactorTagsFromMenu(mainWindow));
+		registerAction(new ActionManageFactorTags(mainWindow));
 		
 		registerAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerAction(new ActionJumpWelcomeImportStep(mainWindow));

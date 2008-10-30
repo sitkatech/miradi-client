@@ -23,9 +23,9 @@ import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionManageTaggedObjectSet extends LocationAction
+public class ActionManageFactorTags extends ObjectsAction
 {
-	public ActionManageTaggedObjectSet(MainWindow mainWindow)
+	public ActionManageFactorTags(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new TaggedObjectSetIcon());
 	}

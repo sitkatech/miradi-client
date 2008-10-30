@@ -93,7 +93,7 @@ import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.ActionManageStresses;
-import org.miradi.actions.ActionManageTaggedObjectSet;
+import org.miradi.actions.ActionManageFactorTagsFromMenu;
 import org.miradi.actions.ActionMoveSlideDown;
 import org.miradi.actions.ActionMoveSlideUp;
 import org.miradi.actions.ActionNudgeDown;
@@ -409,7 +409,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
 		addDoerToMap(ActionDeleteTaggedObjectSet.class, new DeleteTaggedObjectSetDoer());
 		addDoerToMap(ActionEditTaggedObjectSet.class, new EditTaggedObjectSetDoer());
-		addDoerToMap(ActionManageTaggedObjectSet.class, new ManageTaggedObjectSetDoer());
+		addDoerToMap(ActionManageFactorTagsFromMenu.class, new ManageTaggedObjectSetDoer());
 	}
 	
 	public void tabWasSelected()
