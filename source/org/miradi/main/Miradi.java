@@ -80,7 +80,7 @@ public class Miradi
 			return;
 		}
 		
-		String jarName = "MiradiContent-2.2-" + languageCode + ".jar";
+		String jarName = "MiradiContent-2.3-" + languageCode + ".jar";
 		File jarFile = findLanguageJar(jarName);
 		EAM.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
