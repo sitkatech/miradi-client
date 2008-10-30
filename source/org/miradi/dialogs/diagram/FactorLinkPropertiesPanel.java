@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
+import org.miradi.dialogs.threatrating.properties.StressBasedThreatRatingPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -93,7 +93,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 
 	private void addThreatStressRatingPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPicker) throws Exception
 	{
-		ThreatStressRatingPropertiesPanel threatStressRatingPropertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
+		StressBasedThreatRatingPropertiesPanel threatStressRatingPropertiesPanel = new StressBasedThreatRatingPropertiesPanel(mainWindow, objectPicker);
 		addSubPanel(threatStressRatingPropertiesPanel);
 		add(threatStressRatingPropertiesPanel);
 	}

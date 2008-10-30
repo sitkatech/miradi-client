@@ -35,9 +35,9 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingPropertiesPanel extends ObjectDataInputPanel
+public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 {
-	public ThreatStressRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
+	public StressBasedThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
