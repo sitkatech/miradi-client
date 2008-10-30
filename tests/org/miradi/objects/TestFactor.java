@@ -137,11 +137,11 @@ public class TestFactor extends TestCaseWithProject
 		assertTrue("wrong tag ref?", referringTagRefs2.contains(taggedObjectSet2.getRef()));
 	}
 
-	private void verifyTaggedObjectSet(TaggedObjectSet taggedObjectSet, Cause cause, int tagContainingCauseCount ) throws Exception
+	private void verifyTaggedObjectSet(TaggedObjectSet taggedObjectSet, Cause cause, int taggedFactorCount ) throws Exception
 	{
 		assertEquals("cause was not tagged?", 1, taggedObjectSet.getTaggedObjectRefs().size());
 		
 		ORefList referringTagRefs = cause.findReferringTagRefs();
-		assertEquals("wrong referring tag count?", tagContainingCauseCount, referringTagRefs.size());
+		assertEquals("wrong referring tag count?", taggedFactorCount, referringTagRefs.size());
 	}
 }
