@@ -25,28 +25,28 @@ import javax.swing.event.ListSelectionListener;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.ObjectsDoer;
 
-public class ManageTaggedObjectSetDoer extends ObjectsDoer implements ListSelectionListener
+public class ManageFactorTagsFromMenuDoer extends ObjectsDoer implements ListSelectionListener
 {
 	@Override
 	public boolean isAvailable()
 	{
-		//FIXME this class is under construction
-		//if (!isInDiagram())
-		//	return false;
-		
-		//EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		//return (selected.length > 0);
+//FIXME this class is under construction
+//		if (!isInDiagram())
+//			return false;
+//		
+//		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
+//		return (selected.length > 0);
 		
 		return false;
-		
 	}
 	
 	@Override
 	public void doIt() throws CommandFailedException
 	{
-		if (!isAvailable())
-			return;
-//FIXME this class and method are still under construction
+//FIXME this class is under construction
+//		if (!isAvailable())
+//			return;
+//		
 //		RefListComponent refListComponent = new RefListComponent(new TaggedObjectSetQuestion(getProject()), 1, this);
 //		DisposablePanel editListPanel = new DisposablePanel();
 //		editListPanel.add(refListComponent);
@@ -57,7 +57,6 @@ public class ManageTaggedObjectSetDoer extends ObjectsDoer implements ListSelect
 	}
 
 	public void valueChanged(ListSelectionEvent e)
-	{
-		
+	{		
 	}	
 }
