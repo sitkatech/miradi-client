@@ -23,8 +23,8 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.threatrating.properties.ThreatStressRatingPropertiesPanel;
-import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingListTablePanel;
-import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingUpperPanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfManagementExporter;
@@ -35,16 +35,16 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 {
 	public static ThreatRatingManagementPanel create(MainWindow mainWindowToUse) throws Exception
 	{
-		ThreatStressRatingMultiTablePanel multiTablePanel = new ThreatStressRatingMultiTablePanel(mainWindowToUse);
+		ThreatRatingMultiTablePanel multiTablePanel = new ThreatRatingMultiTablePanel(mainWindowToUse);
 		ThreatStressRatingPropertiesPanel propertiesPanel = new ThreatStressRatingPropertiesPanel(mainWindowToUse, multiTablePanel);
 		
-		ThreatStressRatingListTablePanel tablePanel =  ThreatStressRatingListTablePanel.createThreatStressRatingListTablePanel(
+		ThreatRatingUpperPanel tablePanel =  ThreatRatingUpperPanel.createThreatStressRatingListTablePanel(
 				mainWindowToUse, multiTablePanel, propertiesPanel);
 		
 		return new ThreatRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
 
-	public ThreatRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatStressRatingListTablePanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public ThreatRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatRatingUpperPanel listTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 	}
@@ -72,7 +72,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ThreatStressRatingMultiTablePanel(getMainWindow()).getTableForExporting();
+		return new ThreatRatingMultiTablePanel(getMainWindow()).getTableForExporting();
 	}
 	
 	public boolean isRtfExportable()

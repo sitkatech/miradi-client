@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.threatrating.upperPanel.ThreatStressRatingMultiTablePanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -57,7 +57,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 
 	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception
 	{
-		AbstractTableExporter tableExporter = new ThreatStressRatingMultiTablePanel(getMainWindow()).getTableForExporting();
+		AbstractTableExporter tableExporter = new ThreatRatingMultiTablePanel(getMainWindow()).getTableForExporting();
 		exportTable(writer, tableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 	}
 	

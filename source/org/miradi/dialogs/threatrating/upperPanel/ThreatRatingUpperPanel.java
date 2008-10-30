@@ -35,14 +35,14 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
+public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 {
-	public static ThreatStressRatingListTablePanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatStressRatingMultiTablePanel threatStressRatingMultiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
+	public static ThreatRatingUpperPanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel threatStressRatingMultiTablePanel, ThreatStressRatingPropertiesPanel propertiesPanel) throws Exception
 	{
-		return new ThreatStressRatingListTablePanel(mainWindowToUse, threatStressRatingMultiTablePanel, propertiesPanel);
+		return new ThreatRatingUpperPanel(mainWindowToUse, threatStressRatingMultiTablePanel, propertiesPanel);
 	}
 	
-	private ThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatStressRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
+	private ThreatRatingUpperPanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel multiTablePanelToUse, ThreatStressRatingPropertiesPanel propertiesPanelToUse)
 	{
 		super(mainWindowToUse, multiTablePanelToUse.getObjectPicker());
 
@@ -53,7 +53,7 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 		add(multiTablePanelToUse, BorderLayout.CENTER);
 	}
 	
-	public ThreatStressRatingMultiTablePanel getMultiTablePanel()
+	public ThreatRatingMultiTablePanel getMultiTablePanel()
 	{
 		return multiTablePanel;
 	}
@@ -93,5 +93,5 @@ public class ThreatStressRatingListTablePanel extends MultiTableUpperPanel
 	}
 	
 	private ObjectDataInputPanel propertiesPanel;
-	private ThreatStressRatingMultiTablePanel multiTablePanel;
+	private ThreatRatingMultiTablePanel multiTablePanel;
 }
