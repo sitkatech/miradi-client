@@ -203,9 +203,33 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		if (didAffectIndicatorInTree(event))
 			return true;
 		
+		if (didAffectRelevancyInTree(event))
+			return true;
+		
 		return false;
 	}
 	
+	private boolean didAffectRelevancyInTree(CommandExecutedEvent event)
+	{
+		if (! event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		ORef ref = setCommand.getObjectORef();
+		String tag = setCommand.getFieldTag();
+
+		if(Objective.is(ref))
+		{
+			if(tag.equals(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+				return true;
+			
+			if(tag.equals(Objective.TAG_RELEVANT_INDICATOR_SET))
+				return true;
+		}
+
+		return false;
+	}
+
 	private boolean didAffectIndicatorInTree(CommandExecutedEvent event)
 	{
 		if (! event.isSetDataCommand())
@@ -240,8 +264,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_TASK_IDS))
-			return true;
-		if(type == Objective.getObjectType() && tag.equals(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
 		return false;
 	}
