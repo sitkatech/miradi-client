@@ -21,11 +21,20 @@ package org.miradi.dialogs.threatrating.properties;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
+
+import org.miradi.actions.ActionManageStresses;
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatStressRatingEditorComponent extends DisposablePanel
@@ -38,6 +47,19 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 		addTablesWithManageStressesButton();
 	}
 	
+	protected JPanel createManageStressesComponent(Actions actions)
+	{
+		OneRowPanel buttonPanel = new OneRowPanel();
+		buttonPanel.setGaps(5);
+		buttonPanel.setVerticalMargin(20);
+		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
+		ObjectsActionButton manageStressesButton = createObjectsActionButton(actions.getObjectsAction(ActionManageStresses.class), objectPicker);
+		buttonPanel.add(manageStressesButton);
+		buttonPanel.add(new PanelTitleLabel(EAM.text("(Create, manage, and rate the stresses for this target)")));
+		return buttonPanel;
+	}
+	
 	private void createTables() throws Exception
 	{
 		threatStressRatingTableModel = new ThreatStressRatingTableModel(mainWindow.getProject());
@@ -48,6 +70,9 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 	{
 		MiradiScrollPane resourceScroller = new MiradiScrollPane(threatStressRatingTable);
 		add(resourceScroller, BorderLayout.CENTER);
+		
+		JPanel manageStressesPanel = createManageStressesComponent(mainWindow.getActions());
+		add(manageStressesPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
 	private ObjectPicker getObjectPicker()
