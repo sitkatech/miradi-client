@@ -40,7 +40,7 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		selectedFactor = selectedFactorToUse;
 		project.addCommandExecutedListener(this);
 	
-		setEnabled();
+		updateCheckboxesToMatchDatabase();
 	}
 	
 	@Override
@@ -68,10 +68,10 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
-			setEnabled();
+			updateCheckboxesToMatchDatabase();
 	}
 	
-	public void setEnabled()
+	public void updateCheckboxesToMatchDatabase()
 	{
 		for (int checkBoxIndex = 0; checkBoxIndex < checkBoxes.length; ++checkBoxIndex)
 		{
