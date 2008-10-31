@@ -43,9 +43,11 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		setEnabled();
 	}
 	
-	//FIXME this needs to get called when window is closed.
+	@Override
 	public void dispose()
 	{
+		super.dispose();
+		
 		getProject().removeCommandExecutedListener(this);
 	}
 	

@@ -21,7 +21,6 @@ package org.miradi.views.diagram.doers;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogfields.FactorTagListEditor;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -47,11 +46,8 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			return;
 		
 		Factor selectedFactor = getSingleSelectedFactor();
-		FactorTagListEditor refListComponent = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()), 1);
-		DisposablePanel editListPanel = new DisposablePanel();
-		editListPanel.add(refListComponent);
-		
-		ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editListPanel, EAM.text("Edit Dialog"));
+		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()), 1);
+		ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);			
 	}

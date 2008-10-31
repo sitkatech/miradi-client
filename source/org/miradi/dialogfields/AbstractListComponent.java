@@ -24,8 +24,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
-import javax.swing.JPanel;
 
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
@@ -33,7 +33,7 @@ import org.miradi.questions.ChoiceQuestion;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class AbstractListComponent extends JPanel implements ItemListener
+abstract public class AbstractListComponent extends DisposablePanel implements ItemListener
 {
 	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
