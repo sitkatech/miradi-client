@@ -51,7 +51,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	
 	private void createPropertiesPanels() throws Exception
 	{
-		simplePropertiesPanel = new BlankPropertiesPanel(getProject());
+		simplePropertiesPanel = new SimpleThreatRatingPropertiesPanel(getMainWindow(), objectPicker);
 		stressBasedPropertiesPanel = new StressBasedThreatRatingPropertiesPanel(getMainWindow(), objectPicker);
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
