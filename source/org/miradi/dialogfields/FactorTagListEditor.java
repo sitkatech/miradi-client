@@ -29,4 +29,9 @@ public class FactorTagListEditor extends AbstractListComponent
 	{
 		super(questionToUse, columnCount, listener);
 	}
+	
+	protected void valueChanged()
+	{
+		
+	}
 }

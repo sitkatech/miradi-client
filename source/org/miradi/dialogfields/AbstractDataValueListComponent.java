@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.questions.ChoiceQuestion;
@@ -30,7 +31,18 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 		super(questionToUse, columnCount, listener);
 	}
 	
+	public void valueChanged()
+	{
+		if (!skipNotice)
+		{
+			ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
+			listSelectionListener.valueChanged(event);
+		}
+	}
+	
 	abstract public String getText();
 	
-	abstract public void setText(String codesToUse); 
+	abstract public void setText(String codesToUse);
+	
+	protected boolean skipNotice;
 }
