@@ -25,8 +25,10 @@ import java.awt.Rectangle;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
@@ -47,6 +49,14 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		simplePropertiesPanel.dispose();
 		stressBasedPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
+	}
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+			showCorrectPanel();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -73,7 +83,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		cardLayout.show(this, findPanel(orefsToUse).getPanelDescription());
+		showCorrectPanel();
 	
 		simplePropertiesPanel.setObjectRefs(orefsToUse);
 		stressBasedPropertiesPanel.setObjectRefs(orefsToUse);
@@ -88,12 +98,14 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		validate();
 		repaint();
 	}
-	
-	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
+
+	private void showCorrectPanel()
 	{
-		if(orefsToUse.length == 0)
-			return blankPropertiesPanel;
-		
+		cardLayout.show(this, findPanel().getPanelDescription());
+	}
+	
+	private DisposablePanelWithDescription findPanel()
+	{
 		if (getProject().isStressBaseMode())
 			return stressBasedPropertiesPanel;
 
