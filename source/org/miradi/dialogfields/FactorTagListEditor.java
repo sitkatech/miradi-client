@@ -78,8 +78,8 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(label);
 			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
 			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
-			boolean contains = taggedSet.contains(getFactorToTag().getRef());
-			checkBoxes[checkBoxIndex].setSelected(contains);
+			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
+			checkBoxes[checkBoxIndex].setSelected(isSelected);
 		}
 	}
 
