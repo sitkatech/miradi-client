@@ -35,6 +35,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.project.SimpleThreatRatingFramework;
+import org.miradi.project.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
@@ -219,6 +221,24 @@ public class FactorLink extends BaseObject
 	}
 	
 	public int calculateThreatRatingBundleValue() throws Exception
+	{
+		if(getProject().isStressBaseMode())
+			return calculateStressBasedThreatRating();
+
+		return calculateSimpleThreatRating();
+	}
+
+	private int calculateSimpleThreatRating() throws Exception
+	{
+		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
+		ORef threatRef = getUpstreamThreatRef();
+		ORef targetRef = getDownstreamTargetRef();
+		ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
+		ValueOption valueOption = framework.getBundleValue(bundle);
+		return valueOption.getNumericValue();
+	}
+
+	private int calculateStressBasedThreatRating()
 	{
 		ORefList ratingRefs = getThreatStressRatingRefs();
 		Vector<Integer> ratingBundleValues = new Vector();
