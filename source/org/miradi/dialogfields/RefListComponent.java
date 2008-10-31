@@ -28,7 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class RefListComponent extends AbstractListComponent
+public class RefListComponent extends AbstractDataValueListComponent
 {
 	public RefListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
