@@ -34,7 +34,12 @@ import org.miradi.questions.ChoiceQuestion;
 import com.jhlabs.awt.BasicGridLayout;
 
 abstract public class AbstractListComponent extends DisposablePanel implements ItemListener
-{
+{	
+	public AbstractListComponent(ChoiceQuestion questionToUse)
+	{
+		this(questionToUse, 1);
+	}
+	
 	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		setLayout(new BasicGridLayout(0,columnCount));

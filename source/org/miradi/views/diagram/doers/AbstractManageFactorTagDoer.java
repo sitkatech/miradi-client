@@ -46,7 +46,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			return;
 		
 		Factor selectedFactor = getSingleSelectedFactor();
-		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()), 1);
+		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()));
 		ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);			

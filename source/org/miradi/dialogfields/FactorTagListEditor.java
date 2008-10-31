@@ -32,9 +32,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class FactorTagListEditor extends AbstractListComponent implements CommandExecutedListener
 {
-	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse, ChoiceQuestion questionToUse, int columnCount)
+	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, columnCount);
+		super(questionToUse);
 		
 		project = projectToUse;
 		selectedFactor = selectedFactorToUse;
